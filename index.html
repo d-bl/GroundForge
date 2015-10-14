@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>DiBL - Bobbin lace working diagrams for grounds</title>
+    <style>
+        .node {
+          fill: #aaa;
+          opacity: 0.0;
+        }
+        .link {
+          stroke: #000;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="show-graph.js"></script>
+    <script>
+        // TODO pack the matrices by incoming verticed and dynamically convert them as below
+        var graphs = {
+          "nodes":[
+            // thread diagram
+            {"text":"1"},{"text":"2"},{"text":"3"},{"text":"4"},
+            {"title":"twist"},{"title":"twist"},{"title":"cross"},{"title":"twist"},{"title":"twist"},{"title":"cross"},
+            {"text":"a"},{"text":"b"},{"text":"c"},{"text":"d"},
+            // pair diagram
+            {"text":"1"},{"text":"2"},{"text":"3"},{"text":"4"},
+            {"title":"tc"},{"title":"tc"},{"title":"tctc"},
+            {"title":"tc"},{"title":"tc"},
+            {"title":"tctc"},{"title":"tc"},{"title":"tc"},
+            {"text":"a"},{"text":"b"},{"text":"c"},{"text":"d"}],
+          "links":[
+            // thread diagram
+            {"source": 0,"target": 1,"invisible":true},
+            {"source": 1,"target": 2,"invisible":true},
+            {"source": 2,"target": 3,"invisible":true},
+            {"source": 0,"target": 4,"end":"white"},
+            {"source": 1,"target": 4},
+            {"source": 2,"target": 5,"end":"white"},
+            {"source": 3,"target": 5},
+            {"source": 4,"target": 7,"end":"white"},
+            {"source": 4,"target": 6,"start":"white"},
+            {"source": 5,"target": 6,"end":"white"},
+            {"source": 5,"target": 8,"start":"white"},
+            {"source": 6,"target": 7,"start":"white"},
+            {"source": 6,"target": 8,"end":"white"},
+            {"source": 7,"target": 9,"start":"white"},
+            {"source": 8,"target": 9,"end":"white"},
+            {"source": 7,"target":10},
+            {"source": 9,"target":11,"start":"white"},
+            {"source": 9,"target":12},
+            {"source": 8,"target":13,"start":"white"},
+            {"source":10,"target":11,"invisible":true},
+            {"source":11,"target":12,"invisible":true},
+            {"source":12,"target":13,"invisible":true},
+            // pair diagram
+            {"source":14,"target":15,"invisible":true},
+            {"source":15,"target":16,"invisible":true},
+            {"source":16,"target":17,"invisible":true},
+            {"source":14,"target":18,"end":"green"},
+            {"source":15,"target":18,"end":"green"},
+            {"source":16,"target":19,"end":"green"},
+            {"source":17,"target":19,"end":"green"},
+            {"source":18,"target":20,"start":"green","end":"red"},
+            {"source":18,"target":21,"start":"green","end":"green"},
+            {"source":19,"target":20,"start":"green","end":"red"},
+            {"source":19,"target":22,"start":"green","end":"green"},
+            {"source":20,"target":21,"start":"red","end":"green"},
+            {"source":20,"target":22,"start":"red","end":"green"},
+            {"source":21,"target":24,"start":"green","end":"green"},
+            {"source":21,"target":23,"start":"green","end":"red"},
+            {"source":22,"target":23,"start":"green","end":"red"},
+            {"source":22,"target":25,"start":"green","end":"green"},
+            {"source":23,"target":24,"start":"red","end":"green"},
+            {"source":23,"target":25,"start":"red","end":"green"},
+            {"source":24,"target":26,"start":"green"},
+            {"source":24,"target":27,"start":"green"},
+            {"source":25,"target":28,"start":"green"},
+            {"source":25,"target":29,"start":"green"},
+            {"source":26,"target":27,"invisible":true},
+            {"source":27,"target":28,"invisible":true},
+            {"source":28,"target":29,"invisible":true},
+          ]
+        };
+    </script>
+</head>
+<body>
+    <img align="right" src="../logo-big.png" width="104" height="96"></img>
+    <h1>Bobbin lace working diagrams</h1>
+    <p>Work in progress: the data used for the version based on <a href="http://jo-pol.github.io/DiBL/grounds"
+    >templates</a> needs a conversion to apply the same form here.</p>
+    <p>hints</p>
+    <ul><li>Hover over the ends or crossing for tooltips.
+    At the start the bobbins/pairs are numbered 1-2-3-4, at end the the bobbins/pairs are numbered a-b-c-d. 
+    </li><li>
+    The diagrams might be rotated or twisted: drag a corner arround, a fast move (un)twists a diagram.
+    </li></ul>
+    <div id="diagram"></div>
+    <script>showGraph('#diagram',graphs)</script>
+</body>
