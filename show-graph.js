@@ -49,15 +49,15 @@ function showGraph(container, graph) {
         .attr("class", "link")
         .style('marker-start', function(d) {return 'url(#start-'+d.start+')';})
         .style('marker-end', function(d) {return 'url(#end-'+d.end+')';})
-        .style('opacity', function(d) {return d.invisible? 0: 1})
+        .style('opacity', function(d) { return d.invisible? 0: 1})
 
     var node = svg.selectAll(".node").data(graph.nodes).enter().append("circle")
         .attr("class", "node")
         .attr("r", 6)
+        .style('opacity', function(d) { return d.text && d.text.match(/[a-zA-Z]/) ? 1: 0})
         .call(force.drag);
 
     node.append("svg:title").text(function(d) { return d.title ? d.title : d.text; })
-      // http://stackoverflow.com/questions/18164230/add-text-label-to-d3-node-in-force-directed-graph-and-resize-on-hover
       
     force.on("tick", function() {
         link.attr("x1", function(d) { return d.source.x; })
