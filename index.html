@@ -4,6 +4,8 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>DiBL - Bobbin lace working diagrams for grounds</title>
+    <link href="colorpicker/mcColorPicker.css" rel="stylesheet" type="text/css" />
+    <script src="colorpicker/mcColorPicker.js" type="text/javascript"></script>
     <style>
         .node {
           fill: #aaa;
@@ -20,47 +22,47 @@
         var graphs = {
           "nodes":[
             // thread diagram
-            {"text":"1"},{"text":"2"},{"text":"3"},{"text":"4"},
+            {"next":4},{"next":5},{"next":6},{"next":7},
             {"title":"twist"},{"title":"twist"},{"title":"cross"},{"title":"twist"},{"title":"twist"},{"title":"cross"},
-            {"text":"a"},{"text":"b"},{"text":"c"},{"text":"d"},
+            {bobbin:true},{bobbin:true},{bobbin:true},{bobbin:true},
             // pair diagram
-            {"text":"1"},{"text":"2"},{"text":"3"},{"text":"4"},
+            {},{},{},{},
             {"title":"tc"},{"title":"tc"},{"title":"tctc"},
             {"title":"tc"},{"title":"tc"},
             {"title":"tctc"},{"title":"tc"},{"title":"tc"},
-            {"text":"a"},{"text":"b"},{"text":"c"},{"text":"d"}],
+            {bobbin:true},{bobbin:true},{bobbin:true},{bobbin:true}],
           "links":[
             // thread diagram
-            {"source": 0,"target": 1,"invisible":true},
-            {"source": 1,"target": 2,"invisible":true},
-            {"source": 2,"target": 3,"invisible":true},
-            {"source": 0,"target": 4,"end":"white"},
-            {"source": 1,"target": 4},
-            {"source": 2,"target": 5,"end":"white"},
-            {"source": 3,"target": 5},
-            {"source": 4,"target": 7,"end":"white"},
-            {"source": 4,"target": 6,"start":"white"},
-            {"source": 5,"target": 6,"end":"white"},
-            {"source": 5,"target": 8,"start":"white"},
-            {"source": 6,"target": 7,"start":"white"},
-            {"source": 6,"target": 8,"end":"white"},
-            {"source": 7,"target": 9,"start":"white"},
-            {"source": 8,"target": 9,"end":"white"},
-            {"source": 7,"target":10},
-            {"source": 9,"target":11,"start":"white"},
-            {"source": 9,"target":12},
-            {"source": 8,"target":13,"start":"white"},
-            {"source":10,"target":11,"invisible":true},
-            {"source":11,"target":12,"invisible":true},
-            {"source":12,"target":13,"invisible":true},
+            /*  0 */ {"source": 0,"target": 1,"invisible":true},
+            /*  1 */ {"source": 1,"target": 2,"invisible":true},
+            /*  2 */ {"source": 2,"target": 3,"invisible":true},
+            /*  3 */ {"source": 0,"target": 4,"next": 7,"start":"pin","end":"white"},
+            /*  4 */ {"source": 1,"target": 4,"next": 9,"start":"pin"},
+            /*  5 */ {"source": 2,"target": 5,"next":10,"start":"pin","end":"white"},
+            /*  6 */ {"source": 3,"target": 5,"next": 9,"start":"pin"},
+            /*  7 */ {"source": 4,"target": 7,"next":13,"end":"white"},
+            /*  8 */ {"source": 4,"target": 6,"next":12,"start":"white"},
+            /*  9 */ {"source": 5,"target": 6,"next":11,"end":"white"},
+            /* 10 */ {"source": 5,"target": 8,"next":14,"start":"white"},
+            /* 11 */ {"source": 6,"target": 7,"next":15,"start":"white"},
+            /* 12 */ {"source": 6,"target": 8,"next":17,"end":"white"},
+            /* 13 */ {"source": 7,"target": 9,"next":17,"start":"white"},
+            /* 14 */ {"source": 8,"target": 9,"next":16,"end":"white"},
+            /* 15 */ {"source": 7,"target":10},
+            /* 16 */ {"source": 9,"target":11,"start":"white"},
+            /* 17 */ {"source": 9,"target":12},
+            /* 18 */ {"source": 8,"target":13,"start":"white"},
+            /* 19 */ {"source":10,"target":11,"invisible":true},
+            /* 20 */ {"source":11,"target":12,"invisible":true},
+            /* 21 */ {"source":12,"target":13,"invisible":true},
             // pair diagram
             {"source":14,"target":15,"invisible":true},
             {"source":15,"target":16,"invisible":true},
             {"source":16,"target":17,"invisible":true},
-            {"source":14,"target":18,"end":"green"},
-            {"source":15,"target":18,"end":"green"},
-            {"source":16,"target":19,"end":"green"},
-            {"source":17,"target":19,"end":"green"},
+            {"source":14,"target":18,"end":"green","start":"pin"},
+            {"source":15,"target":18,"end":"green","start":"pin"},
+            {"source":16,"target":19,"end":"green","start":"pin"},
+            {"source":17,"target":19,"end":"green","start":"pin"},
             {"source":18,"target":20,"start":"green","end":"red"},
             {"source":18,"target":21,"start":"green","end":"green"},
             {"source":19,"target":20,"start":"green","end":"red"},
@@ -95,6 +97,11 @@
     </li><li>
     The diagrams might be rotated or twisted: drag a corner arround, a fast move (un)twists a diagram.
     </li></ul>
+    <form>
+        <labelfor id="colorpicker">Color for threads</labelfor>
+        <input id="colorpicker" type="text" class="color" value="#CC0000"/>
+        Sorry, selecting a thread to paint is not yet implemented.
+    </form>
     <div id="diagram"></div>
     <script>showGraph('#diagram',graphs)</script>
 </body>
