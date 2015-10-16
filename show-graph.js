@@ -37,7 +37,6 @@ function endMarker (svg,id,color){
 }
 function paintThread(node, links, color) {
     link = node
-    alert(links[link.next])
     while (link.next) {
         link = links[link.next]
         // TODO paint the link
