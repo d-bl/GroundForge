@@ -22,7 +22,7 @@
         var graphs = {
           "nodes":[
             // thread diagram
-            {"next":4},{"next":5},{"next":6},{"next":7},
+            {"startOf":"thread1"},{"startOf":"thread2"},{"startOf":"thread3"},{"startOf":"thread4"},
             {"title":"twist"},{"title":"twist"},{"title":"cross"},{"title":"twist"},{"title":"twist"},{"title":"cross"},
             {bobbin:true},{bobbin:true},{bobbin:true},{bobbin:true},
             // pair diagram
@@ -31,38 +31,42 @@
             {"title":"tc"},{"title":"tc"},
             {"title":"tctc"},{"title":"tc"},{"title":"tc"},
             {bobbin:true},{bobbin:true},{bobbin:true},{bobbin:true}],
+
           "links":[
+            // invisible links keep the bobbins and start pins in proper order
+
             // thread diagram
             /*  0 */ {"source": 0,"target": 1,"invisible":true},
             /*  1 */ {"source": 1,"target": 2,"invisible":true},
             /*  2 */ {"source": 2,"target": 3,"invisible":true},
-            /*  3 */ {"source": 0,"target": 4,"next": 7,"start":"pin","end":"white"},
-            /*  4 */ {"source": 1,"target": 4,"next": 9,"start":"pin"},
-            /*  5 */ {"source": 2,"target": 5,"next":10,"start":"pin","end":"white"},
-            /*  6 */ {"source": 3,"target": 5,"next": 9,"start":"pin"},
-            /*  7 */ {"source": 4,"target": 7,"next":13,"end":"white"},
-            /*  8 */ {"source": 4,"target": 6,"next":12,"start":"white"},
-            /*  9 */ {"source": 5,"target": 6,"next":11,"end":"white"},
-            /* 10 */ {"source": 5,"target": 8,"next":14,"start":"white"},
-            /* 11 */ {"source": 6,"target": 7,"next":15,"start":"white"},
-            /* 12 */ {"source": 6,"target": 8,"next":17,"end":"white"},
-            /* 13 */ {"source": 7,"target": 9,"next":17,"start":"white"},
-            /* 14 */ {"source": 8,"target": 9,"next":16,"end":"white"},
-            /* 15 */ {"source": 7,"target":10},
-            /* 16 */ {"source": 9,"target":11,"start":"white"},
-            /* 17 */ {"source": 9,"target":12},
-            /* 18 */ {"source": 8,"target":13,"start":"white"},
+            /*  3 */ {"source": 0,"target": 4,"thread":1,"start":"thread","end":"white"},
+            /*  4 */ {"source": 1,"target": 4,"thread":2,"start":"thread"},
+            /*  5 */ {"source": 2,"target": 5,"thread":3,"start":"thread","end":"white"},
+            /*  6 */ {"source": 3,"target": 5,"thread":4,"start":"thread"},
+            /*  7 */ {"source": 4,"target": 7,"thread":2,"end":"white"},
+            /*  8 */ {"source": 4,"target": 6,"thread":1,"start":"white"},
+            /*  9 */ {"source": 5,"target": 6,"thread":4,"end":"white"},
+            /* 10 */ {"source": 5,"target": 8,"thread":3,"start":"white"},
+            /* 11 */ {"source": 6,"target": 7,"thread":4,"start":"white"},
+            /* 12 */ {"source": 6,"target": 8,"thread":1,"end":"white"},
+            /* 13 */ {"source": 7,"target": 9,"thread":2,"start":"white"},
+            /* 14 */ {"source": 8,"target": 9,"thread":3,"end":"white"},
+            /* 15 */ {"source": 7,"target":10,"thread":4},
+            /* 16 */ {"source": 9,"target":11,"thread":3,"start":"white"},
+            /* 17 */ {"source": 9,"target":12,"thread":2},
+            /* 18 */ {"source": 8,"target":13,"thread":1,"start":"white"},
             /* 19 */ {"source":10,"target":11,"invisible":true},
             /* 20 */ {"source":11,"target":12,"invisible":true},
             /* 21 */ {"source":12,"target":13,"invisible":true},
+
             // pair diagram
             {"source":14,"target":15,"invisible":true},
             {"source":15,"target":16,"invisible":true},
             {"source":16,"target":17,"invisible":true},
-            {"source":14,"target":18,"end":"green","start":"pin"},
-            {"source":15,"target":18,"end":"green","start":"pin"},
-            {"source":16,"target":19,"end":"green","start":"pin"},
-            {"source":17,"target":19,"end":"green","start":"pin"},
+            {"source":14,"target":18,"end":"green","start":"pair"},
+            {"source":15,"target":18,"end":"green","start":"pair"},
+            {"source":16,"target":19,"end":"green","start":"pair"},
+            {"source":17,"target":19,"end":"green","start":"pair"},
             {"source":18,"target":20,"start":"green","end":"red"},
             {"source":18,"target":21,"start":"green","end":"green"},
             {"source":19,"target":20,"start":"green","end":"red"},
@@ -95,14 +99,14 @@
     <ul><li>
       Hover over the end symbols (bobbins, start pins) or crossings (stitches) for tooltips.
     </li><li>
-      The diagrams might be rotated, mirrored or twisted: drag a corner around.
+      The diagrams might be rotated, mirrored or twisted: drag it around.
       A fast move (un)twists a diagram. Twist and untwist to flip.
+    </li><li>
+        <form>
+            <label for="colorpicker">Double click the square start of a thread to paint it:</label>
+            <input id="colorpicker" type="text" class="color" value="#CC0000"/>
+        </form>
     </li></ul>
-    <form>
-        <labelfor id="colorpicker">Color for threads</labelfor>
-        <input id="colorpicker" type="text" class="color" value="#CC0000"/>
-        Sorry, selecting a thread to paint is not yet implemented.
-    </form>
     <div id="diagram"></div>
-    <script>showGraph('#diagram',graphs)</script>
+    <script>showGraph('#diagram',graphs,'#colorpicker')</script>
 </body>
