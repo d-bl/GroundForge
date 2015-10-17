@@ -30,7 +30,7 @@ function startMarker (svg,id,color){
       .append('svg:path')
         .attr('d', 'M0,0L10,0')
         .attr('stroke-width', 3)
-        .attr('stroke', color);
+        .attr('stroke', color)
 }
 function endMarker (svg,id,color){
     svg.append('svg:defs').append('svg:marker')
@@ -43,24 +43,40 @@ function endMarker (svg,id,color){
       .append('svg:path')
         .attr('d', 'M0,0L10,0')
         .attr('stroke-width', 3)
-        .attr('stroke', color);
+        .attr('stroke', color)
 }
-function showGraph(container, graph, colorpickerID) {
+function showGraph(containerID, graph, colorpickerID) {
     var width = 800,
         height = 400
-        colorpicker = d3.select(colorpickerID)[0][0];
+        colorpicker = d3.select(colorpickerID)[0][0]
 
+    // TODO tweak parametrs for (pin) behaviour once we have larger diagrams
+    // https://github.com/mbostock/d3/wiki/Force-Layout#linkDistance
+    // http://grokbase.com/t/gg/d3-js/1375rpwbdt/consistent-force-directed-graph-generation
+    // http://grokbase.com/t/gg/d3-js/137xwsrbd4/how-to-dynamically-adjusting-linkdistance-and-linkstrength-to-help-reducing-crossing-edges
     var force = d3.layout.force()
+        .nodes(graph.nodes)
+        .links(graph.links)
+        .size([width, height])
         .charge(-120)
         .linkDistance(5)
         .linkStrength(5)
-        .size([width, height]);
+        .start()
 
-    var svg = d3.select(container).append("svg")
+    var svg = d3.select(containerID).append("svg")
         .attr("width", width)
-        .attr("height", height);
+        .attr("height", height)
 
-    force.nodes(graph.nodes).links(graph.links).start();
+    var dblclick = function (d) {
+        if (d.startOf) svg.selectAll("."+d.startOf).style('stroke', colorpicker.value)
+        d3.select(this).classed("fixed", d.fixed = false)
+    }
+
+    var dragstart = function (d) {
+        if (d.pin) d3.select(this).classed("fixed", d.fixed = true)
+    }
+
+    var drag = force.drag().on("dragstart", dragstart)
 
     startThread(svg)
     startPair(svg)
@@ -72,26 +88,26 @@ function showGraph(container, graph, colorpickerID) {
     endMarker(svg, 'end-white','#fff')
     var link = svg.selectAll(".link").data(graph.links).enter().append("line")
         .attr("class", function(d) { return d.thread ? "link thread" + d.thread : "link"})
-        .style('marker-start', function(d) {return 'url(#start-'+d.start+')';})
-        .style('marker-end', function(d) {return 'url(#end-'+d.end+')';})
-        .style('opacity', function(d) { return d.invisible? 0: 1})
+        .style('marker-start', function(d) {if (d.start) return 'url(#start-'+d.start+')'})
+        .style('marker-end', function(d) {if (d.end) return 'url(#end-'+d.end+')'})
+        .style('opacity', function(d) { return d.border || d.toPin ? 0: 1})
 
     var node = svg.selectAll(".node").data(graph.nodes).enter().append("circle")
         .attr("class", "node")
-        .attr("r", function(d) { return d.pin ? 3 : 6})
+        .attr("r", function(d) { return d.pin ? 4 : 6})
         .style('opacity', function(d) { return d.bobbin ? 0.5: (d.pin ? 0.2 : 0)})
-        .on('dblclick', function(d) { if (d.startOf) svg.selectAll("."+d.startOf).style('stroke', colorpicker.value) })
-        .call(force.drag);
+        .on('dblclick', dblclick)
+        .call(force.drag)
 
-    node.append("svg:title").text(function(d) { return d.title ? d.title : (d.index + 1); })
+    node.append("svg:title").text(function(d) { return d.title ? d.title : (d.pin || d.bobbin ? "" : (d.index + 1)) })
 
     force.on("tick", function() {
-        link.attr("x1", function(d) { return d.source.x; })
-            .attr("y1", function(d) { return d.source.y; })
-            .attr("x2", function(d) { return d.target.x; })
-            .attr("y2", function(d) { return d.target.y; });
+        link.attr("x1", function(d) { return d.source.x })
+            .attr("y1", function(d) { return d.source.y })
+            .attr("x2", function(d) { return d.target.x })
+            .attr("y2", function(d) { return d.target.y })
 
-        node.attr("cx", function(d) { return d.x; })
-            .attr("cy", function(d) { return d.y; });
-    });
+        node.attr("cx", function(d) { return d.x })
+            .attr("cy", function(d) { return d.y })
+    })
 }
