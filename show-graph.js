@@ -47,8 +47,39 @@ function endMarker (svg,id,color){
 }
 function showGraph(containerID, graph, colorpickerID) {
     var width = 800,
-        height = 400
+        height = 400,
         colorpicker = d3.select(colorpickerID)[0][0]
+
+    // document creation
+
+    var svg = d3.select(containerID).append("svg")
+                .attr("width", width)
+                .attr("height", height)
+
+    // marker definitions
+
+    startThread(svg)
+    startPair(svg)
+    startMarker(svg, 'start-green','#0f0')
+    endMarker(svg, 'end-green','#0f0')
+    startMarker(svg, 'start-red','#f00')
+    endMarker(svg, 'end-red','#f00')
+    startMarker(svg, 'start-white','#fff')
+    endMarker(svg, 'end-white','#fff')
+
+    // object creation and decoration
+
+    var link = svg.selectAll(".link").data(graph.links).enter().append("line")
+        .attr("class", function(d) { return d.thread ? "link thread" + d.thread : "link"})
+        .style('marker-start', function(d) { if (d.start) return 'url(#start-'+d.start+')'})
+        .style('marker-end', function(d) { if (d.end) return 'url(#end-'+d.end+')'})
+        .style('opacity', function(d) { return d.border || d.toPin ? 0 : 1})
+
+    var node = svg.selectAll(".node").data(graph.nodes).enter().append("circle")
+        .attr("class", function(d) { return d.startOf ? ("node threadStart") : (d.pin ? ("node pin") : "node")})
+        .attr("r", function(d) { return d.pin ? 4 : 6})
+        .style('opacity', function(d) { return d.bobbin ? 0.5: (d.pin ? 0.2 : 0)})
+    node.append("svg:title").text(function(d) { return d.title ? d.title : (d.pin || d.bobbin ? "" : (d.index + 1)) })
 
     // TODO tweak parametrs for (pin) behaviour once we have larger diagrams
     // https://github.com/mbostock/d3/wiki/Force-Layout#linkDistance
@@ -63,43 +94,20 @@ function showGraph(containerID, graph, colorpickerID) {
         .linkStrength(5)
         .start()
 
-    var svg = d3.select(containerID).append("svg")
-        .attr("width", width)
-        .attr("height", height)
+    // event listeners
 
-    var dblclick = function (d) {
-        if (d.startOf) svg.selectAll("."+d.startOf).style('stroke', colorpicker.value)
-        d3.select(this).classed("fixed", d.fixed = false)
-    }
-
-    var dragstart = function (d) {
+    svg.selectAll(".threadStart").on('dblclick', function (d) {
+        svg.selectAll("."+d.startOf).style('stroke', colorpicker.value)
+    })
+    svg.selectAll(".pin").on('dblclick', function (d) {
+        d3.select(this).classed("fixed", d.fixed = false) 
+    })
+    force.drag().on("dragstart", function (d) {
         if (d.pin) d3.select(this).classed("fixed", d.fixed = true)
-    }
+    })
+    node.call(force.drag)
 
-    var drag = force.drag().on("dragstart", dragstart)
-
-    startThread(svg)
-    startPair(svg)
-    startMarker(svg, 'start-green','#0f0')
-    endMarker(svg, 'end-green','#0f0')
-    startMarker(svg, 'start-red','#f00')
-    endMarker(svg, 'end-red','#f00')
-    startMarker(svg, 'start-white','#fff')
-    endMarker(svg, 'end-white','#fff')
-    var link = svg.selectAll(".link").data(graph.links).enter().append("line")
-        .attr("class", function(d) { return d.thread ? "link thread" + d.thread : "link"})
-        .style('marker-start', function(d) {if (d.start) return 'url(#start-'+d.start+')'})
-        .style('marker-end', function(d) {if (d.end) return 'url(#end-'+d.end+')'})
-        .style('opacity', function(d) { return d.border || d.toPin ? 0: 1})
-
-    var node = svg.selectAll(".node").data(graph.nodes).enter().append("circle")
-        .attr("class", "node")
-        .attr("r", function(d) { return d.pin ? 4 : 6})
-        .style('opacity', function(d) { return d.bobbin ? 0.5: (d.pin ? 0.2 : 0)})
-        .on('dblclick', dblclick)
-        .call(force.drag)
-
-    node.append("svg:title").text(function(d) { return d.title ? d.title : (d.pin || d.bobbin ? "" : (d.index + 1)) })
+    // layout simulation step
 
     force.on("tick", function() {
         link.attr("x1", function(d) { return d.source.x })

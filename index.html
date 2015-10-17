@@ -102,10 +102,10 @@
         }
     </style>
 </head>
-<body>
+<body onload="showGraph('#diagram',sample,'#colorpicker')">
     <img align="right" src="../logo-big.png" width="104" height="96"></img>
     <h1>Bobbin lace working diagrams</h1>
-    <p>Under construction: the data used for the version based on <a href="http://jo-pol.github.io/DiBL/grounds"
+    <p>Under construction: the data used for the generator based on <a href="http://jo-pol.github.io/DiBL/grounds"
        >templates</a> needs a conversion to apply the same choices here.
     </p>
     <ul><li>
@@ -118,11 +118,12 @@
     </li><li>
       Drag pins to fix their position, double-click to release.
     </li><li>
-      Hover over the start symbols or stitches for tooltips.
+      Hover over the stitches or start symbols of threads or color coded pairs for tooltips.
+    </li><li>
+      The dark grey circles represent bobbins.
     </li><li>
       The diagrams might be rotated, mirrored or twisted: dragging can fix that.
-      A fast move may (un)twist or flip a diagram. Two twists can become a flip.
+      A fast move may (un)twist or flip a diagram. Two twists can become a flip too.
     </li></ul>
     <div id="diagram"></div>
-    <script>showGraph('#diagram',sample,'#colorpicker')</script>
 </body>
