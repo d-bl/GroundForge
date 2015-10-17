@@ -7,7 +7,7 @@ function startThread (svg){
         .attr('orient', 'auto')
       .append('svg:path')
         .attr('d', d3.svg.symbol().type("square"))
-        .attr('fill', "#999");
+        .attr('fill', "#000").style('opacity',0.5)
 }
 function startPair (svg){
     svg.append('svg:defs').append('svg:marker')
@@ -18,7 +18,7 @@ function startPair (svg){
         .attr('orient', 'auto')
       .append('svg:path')
         .attr('d', d3.svg.symbol().type("diamond"))
-        .attr('fill', "#999");
+        .attr('fill', "#000").style('opacity',0.5)
 }
 function startMarker (svg,id,color){
     svg.append('svg:defs').append('svg:marker')
@@ -78,8 +78,8 @@ function showGraph(container, graph, colorpickerID) {
 
     var node = svg.selectAll(".node").data(graph.nodes).enter().append("circle")
         .attr("class", "node")
-        .attr("r", 6)
-        .style('opacity', function(d) { return d.bobbin ? 1: 0})
+        .attr("r", function(d) { return d.pin ? 3 : 6})
+        .style('opacity', function(d) { return d.bobbin ? 0.5: (d.pin ? 0.2 : 0)})
         .on('dblclick', function(d) { if (d.startOf) svg.selectAll("."+d.startOf).style('stroke', colorpicker.value) })
         .call(force.drag);
 
