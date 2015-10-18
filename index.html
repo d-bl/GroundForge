@@ -25,22 +25,21 @@
 <body onload="showGraph('#diagram',sample,'#colorpicker')">
     <img align="right" src="../logo-big.png" width="104" height="96"></img>
     <h1>Bobbin lace working diagrams</h1>
-    <p>Under construction: the data used for the generator based on <a href="http://jo-pol.github.io/DiBL/grounds"
-       >templates</a> needs a conversion to apply the same choices here.
+    <p>Under construction: the data used for the diagram generator based on <a href="http://jo-pol.github.io/DiBL/grounds"
+       >templates</a> needs a conversion to apply the same choices here. FireFox, Chrome and Safari are fine, IE has a <a href="https://connect.microsoft.com/IE/feedback/details/801938/dynamically-updated-svg-path-with-a-marker-end-does-not-update"
+       >problem</a> rendering the drawing.
     </p>
     <ul><li>
         <form>
             <label for="colorpicker">
-              Double click the square start of a thread to paint it:
+              Single click the square start of a thread to paint it:
             </label>
             <input id="colorpicker" type="text" class="color" value="#CC0000"/>
         </form>
     </li><li>
-      Drag pins to fix their position, double-click to release.
+      Drag pins to fix their position, single click to release.
     </li><li>
-      Hover over the stitches or start symbols of threads or color coded pairs for tooltips.
-    </li><li>
-      The dark grey circles represent bobbins.
+      Hover over diagram components for tooltips.
     </li><li>
       The diagrams might be rotated, mirrored or twisted: dragging can fix that.
       A fast move may (un)twist or flip a diagram. Two twists can become a flip too.

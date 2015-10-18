@@ -102,15 +102,19 @@ function showGraph(containerID, graph, colorpickerID) {
 
     // event listeners
 
-    svg.selectAll(".threadStart").on('dblclick', function (d) {
+    svg.selectAll(".threadStart").on('click', function (d) {
+        if (d3.event.defaultPrevented) return
         svg.selectAll("."+d.startOf).style('stroke', colorpicker.value)
     })
-    svg.selectAll(".pin").on('dblclick', function (d) {
+    svg.selectAll(".pin").on('click', function (d) {
+        if (d3.event.defaultPrevented) return
         d3.select(this).classed("fixed", d.fixed = false) 
     })
     force.drag().on("dragstart", function (d) {
-        if (d.pin) d3.select(this).classed("fixed", d.fixed = true)
+        if (!d.pin) return
+        d3.select(this).classed("fixed", d.fixed = true)
     })
+    // zooming made dragging less fluent, so not implemented
     node.call(force.drag)
 
     // layout simulation step
