@@ -79,7 +79,13 @@ function showGraph(containerID, graph, colorpickerID) {
         .attr("class", function(d) { return d.startOf ? ("node threadStart") : (d.pin ? ("node pin") : "node")})
         .attr("r", function(d) { return d.pin ? 4 : 6})
         .style('opacity', function(d) { return d.bobbin ? 0.5: (d.pin ? 0.2 : 0)})
-    node.append("svg:title").text(function(d) { return d.title ? d.title : (d.pin || d.bobbin ? "" : (d.index + 1)) })
+    node.append("svg:title").text(function(d) { 
+        return d.title ? d.title 
+        : d.pin ? "pin" 
+        : d.bobbin ? "bobbin"
+        : d.startOf ? d.startOf.replace("thread","thread ")
+        : ""
+    })
 
     // TODO tweak parametrs for (pin) behaviour once we have larger diagrams
     // https://github.com/mbostock/d3/wiki/Force-Layout#linkDistance
