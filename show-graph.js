@@ -69,10 +69,13 @@ function showGraph(containerID, graph, colorpickerID) {
 
     // object creation and decoration
 
+    var isIE = document.documentURI == undefined // wrong feature check
+    // http://www.sitepoint.com/detect-css3-property-browser-support/ ?
+    // problem: the CSS3 property is supported but broken on moving links
     var link = svg.selectAll(".link").data(graph.links).enter().append("line")
         .attr("class", function(d) { return d.thread ? "link thread" + d.thread : "link"})
-        .style('marker-start', function(d) { if (d.start) return 'url(#start-'+d.start+')'})
-        .style('marker-end', function(d) { if (d.end) return 'url(#end-'+d.end+')'})
+        .style('marker-start', function(d) { if (d.start && !isIE) return 'url(#start-'+d.start+')'})
+        .style('marker-end', function(d) { if (d.end && !isIE) return 'url(#end-'+d.end+')'})
         .style('opacity', function(d) { return d.border || d.toPin ? 0 : 1})
 
     var node = svg.selectAll(".node").data(graph.nodes).enter().append("circle")
