@@ -1,0 +1,63 @@
+/*
+ Copyright 2015 Jo Pol
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
+*/
+package dibl
+
+import org.scalatest._
+import scala.collection.mutable.ListBuffer
+import dibl.Matrices._
+
+/** checks for typos creaping into maps */
+class MatricesSpec extends FlatSpec with Matchers {
+
+  "chars in matrix strings" should "exist as keys for relSources" in {
+    matrixMap.values.flatten.toArray.flatten.sortWith(_ < _).distinct.toSet
+      shouldBe subsetOf(relSourcesMap.keys.toSet)
+  }
+
+  "matrix string lengths" should "match dimensions in the key" in {
+    matrixMap.keys.foreach{ key => 
+      val (rows,cols) = key.split("x")
+      matrixMap.get(key).get.foreach{ s =>
+        s.length shouldBe rows*cols
+      }
+    }
+  }
+
+  "nr of source nodes" should "match nr of target nodes" in {
+    matrixMap.keys.foreach{ key =>
+      for( i <- 0 until matrixMap.get(key).get.size) {
+        val src = toCheckerboard(getRelSources(key,i))
+        val target = Array.fill(src.size, src(0).size)(ListBuffer[(Int,Int)]())
+        val rows = src.size
+        val cols = src(0).size
+        for {
+          row <- src.indices
+          col <- src(0).indices
+        } {
+          for ((dRow, dCol) <- src(row)(col)) {
+            target((row+dRow+rows)%rows)((col+dCol+cols)%cols) += (row,col)
+          }
+        }
+        for {
+          row <- src.indices
+          col <- src(0).indices
+        } {
+          src(row)(col).size shouldBe (target(row)(col).size)
+        }
+      }
+    }
+   }
+}
