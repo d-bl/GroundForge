@@ -19,11 +19,24 @@ import scala.collection.immutable.HashMap
 import scala.collection.mutable.ListBuffer
 import scala.scalajs.js.annotation.JSExport
 import dibl.Matrices._
+import scala.scalajs.js
+import js.JSConverters._
 
 @JSExport
 object Graph {
 
   @JSExport
+  def getData(dim: String = "2x4", nr: Int = 0,
+              width: Int = 12, height: Int = 12): js.Dictionary[Any] = {
+    val brick = getRelSources(dim,nr)
+    val rel = toCheckerboard(brick)
+    val abs = toAbsSources(rel, width, height)
+    val jsData: js.Dictionary[Int] = new Object().asInstanceOf[js.Dictionary[Int]]
+//    jsData("nodes") = 3
+//    jsData("links") = 4
+    ???
+  }
+
   def get(dim: String = "2x4", nr: Int = 0,
           width: Int = 12, height: Int = 12): HashMap[String,Array[Props]] = {
     val brick = getRelSources(dim,nr)
