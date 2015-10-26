@@ -45,10 +45,10 @@ function endMarker (svg,id,color){
         .attr('stroke-width', 3)
         .attr('stroke', color)
 }
-function showGraph(containerID, graph, colorpickerID) {
+function showGraph(containerID, nodes, links, colorpickerID) {
     var width = 800,
         height = 400,
-        colorpicker = d3.select(colorpickerID)[0][0]
+        colorpicker = (colorpickerID == undefined ? d3.select(colorpickerID)[0][0] : undefined)
 
     // document creation
 
@@ -72,13 +72,13 @@ function showGraph(containerID, graph, colorpickerID) {
     var isIE = document.documentURI == undefined // wrong feature check
     // http://www.sitepoint.com/detect-css3-property-browser-support/ ?
     // problem: the CSS3 property is supported but broken on moving links
-    var link = svg.selectAll(".link").data(graph.links).enter().append("line")
+    var link = svg.selectAll(".link").data(links).enter().append("line")
         .attr("class", function(d) { return d.thread ? "link thread" + d.thread : "link"})
         .style('marker-start', function(d) { if (d.start && !isIE) return 'url(#start-'+d.start+')'})
         .style('marker-end', function(d) { if (d.end && !isIE) return 'url(#end-'+d.end+')'})
         .style('opacity', function(d) { return d.border || d.toPin ? 0 : 1})
 
-    var node = svg.selectAll(".node").data(graph.nodes).enter().append("circle")
+    var node = svg.selectAll(".node").data(nodes).enter().append("circle")
         .attr("class", function(d) { return d.startOf ? ("node threadStart") : (d.pin ? ("node pin") : "node")})
         .attr("r", function(d) { return d.pin ? 4 : 6})
         .style('opacity', function(d) { return d.bobbin ? 0.5: (d.pin ? 0.2 : 0)})
@@ -95,8 +95,8 @@ function showGraph(containerID, graph, colorpickerID) {
     // http://grokbase.com/t/gg/d3-js/1375rpwbdt/consistent-force-directed-graph-generation
     // http://grokbase.com/t/gg/d3-js/137xwsrbd4/how-to-dynamically-adjusting-linkdistance-and-linkstrength-to-help-reducing-crossing-edges
     var force = d3.layout.force()
-        .nodes(graph.nodes)
-        .links(graph.links)
+        .nodes(nodes)
+        .links(links)
         .size([width, height])
         .charge(-120)
         .linkDistance(5)
