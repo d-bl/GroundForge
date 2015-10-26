@@ -19,43 +19,43 @@ import org.scalatest._
 import scala.collection.mutable.ListBuffer
 import dibl.Matrices._
 
-/** checks for typos creaping into maps */
+/** checks for typos in HashMap-s */
 class MatricesSpec extends FlatSpec with Matchers {
 
   "chars in matrix strings" should "exist as keys for relSources" in {
-    matrixMap.values.flatten.toArray.flatten.sortWith(_ < _).distinct.toSet
-      shouldBe subsetOf(relSourcesMap.keys.toSet)
+    relSourcesMap.keys.toSet should contain
+      matrixMap.values.flatten.toArray.flatten.sortWith(_ < _).distinct
   }
 
   "matrix string lengths" should "match dimensions in the key" in {
     matrixMap.keys.foreach{ key => 
-      val (rows,cols) = key.split("x")
+      val dim = key.split("x").map(_.toInt)
       matrixMap.get(key).get.foreach{ s =>
-        s.length shouldBe rows*cols
+        s.length shouldBe dim(0)*dim(1)//TODO let message show key and index
       }
     }
   }
 
   "nr of source nodes" should "match nr of target nodes" in {
     matrixMap.keys.foreach{ key =>
-      for( i <- 0 until matrixMap.get(key).get.size) {
+      for( i <- matrixMap.get(key).get.indices) {
         val src = toCheckerboard(getRelSources(key,i))
-        val target = Array.fill(src.size, src(0).size)(ListBuffer[(Int,Int)]())
-        val rows = src.size
-        val cols = src(0).size
+        val rows = src.length
+        val cols = src(0).length
+        val target = Array.fill(rows, cols)(ListBuffer[(Int,Int)]())
         for {
           row <- src.indices
           col <- src(0).indices
         } {
           for ((dRow, dCol) <- src(row)(col)) {
-            target((row+dRow+rows)%rows)((col+dCol+cols)%cols) += (row,col)
+//FIXME            target((row+dRow+rows)%rows)((col+dCol+cols)%cols) += (row,col)
           }
         }
         for {
           row <- src.indices
           col <- src(0).indices
         } {
-          src(row)(col).size shouldBe (target(row)(col).size)
+          src(row)(col).length shouldBe target(row)(col).size
         }
       }
     }

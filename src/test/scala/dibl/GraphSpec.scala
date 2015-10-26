@@ -17,10 +17,17 @@ package dibl
 
 import org.scalatest._
 
+import scala.collection.immutable.HashMap
+
 class GraphSpec extends FlatSpec with Matchers {
-  "4x4-0" should "produce nodes and links" in {
-    val data = Graph.get()
-    data.get("nodes").size should equal (16*16)
-    data.get("links").size should equal (7*2*3*6)
+  "default graph" should "produce nodes and links" in {
+    val nodesPerTile = 6
+    val sourcesPerNode = 2
+    val tileRows = 6
+    val tileColumns = 3
+
+    val data: HashMap[String, Array[HashMap[String,Any]]] = Graph.get()
+    data.get("nodes").get.length should equal (16*16)
+    data.get("links").get.length should equal(nodesPerTile * sourcesPerNode * tileRows * tileColumns)
   }
 }

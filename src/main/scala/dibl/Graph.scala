@@ -24,9 +24,9 @@ import dibl.Matrices._
 object Graph {
 
   @JSExport
-  def get(dim: String = "2x2", nr: Int = 0,
+  def get(dim: String = "2x4", nr: Int = 0,
           width: Int = 12, height: Int = 12): HashMap[String,Array[Props]] = {
-    var brick = getRelSources(dim,nr)
+    val brick = getRelSources(dim,nr)
     val rel = toCheckerboard(brick)
     val abs = toAbsSources(rel, width, height)
     HashMap("nodes" -> toNodes(abs),
@@ -46,8 +46,8 @@ object Graph {
     */
   def toNodes (m: M): Array[Props] = {
 
-    val rows = m.size + 4
-    val cols = m(0).size +4
+    val rows = m.length + 4
+    val cols = m(0).length +4
 
     val dummy = Props()
     val stitch = Props("title" -> "stitch")
@@ -75,7 +75,7 @@ object Graph {
       nodes(cols*(row+2)   ) = bobbin
       nodes(cols*(row+2) +1) = start
       nodes(cols*(rows-1)-2) = bobbin
-      nodes(cols*(rows  )-1) = start
+      nodes(cols* rows   -1) = start
     }
     nodes
   }
@@ -83,8 +83,7 @@ object Graph {
   /** Creates color-less links for a pair diagram as in https://github.com/jo-pol/DiBL/blob/2136fe12/tensioned/sample.js */
   def  toLinks (m: M): Array[Props] = {
 
-    val rows = m.size + 4
-    val cols = m(0).size + 4
+    val cols = m(0).length + 4
 
     val links = ListBuffer[Props]()
     for (col <- m(0).indices) {

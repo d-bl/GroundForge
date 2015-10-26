@@ -33,8 +33,8 @@ object Matrices {
     * </pre>
     */
   def toCheckerboard(m: M): M = {
-    val rows = m.size
-    val cols = m(0).size
+    val rows = m.length
+    val cols = m(0).length
     val result: M = Array.ofDim[SrcNodes](2*rows, cols)
     for {
       row <- m.indices
@@ -51,8 +51,8 @@ object Matrices {
     */
   def toAbsSources(rel: M, absRows: Int, absCols: Int): M = {
     val abs: M = Array.ofDim[SrcNodes](absRows, absCols)
-    val relRows = rel.size
-    val relCols = rel(0).size
+    val relRows = rel.length
+    val relCols = rel(0).length
     for {
       absRow <- abs.indices
       absCol <- abs(0).indices
@@ -68,9 +68,9 @@ object Matrices {
     * A dash means a not used node, a digit specifies some configuration of links with source nodes.
     */
   val matrixMap: HashMap[String,Array[String]] = HashMap (
-    "2x4" -> Array[String](),
+    "2x4" -> Array[String]("5831-4-7"),
     "4x2" -> Array[String](),
-    "4x4" -> Array[String]("58314-7")
+    "4x4" -> Array[String]()
   )
 
   /** Translates a character in a matrix string into relative links with source nodes.

@@ -18,8 +18,7 @@
   <input id="colorpicker" type="text" class="color" value="#CC0000"/>
   <div id="diagram"></div>
   <script>
-    var g = dibl.Graph();
-    var data = g.get("4x4",0,12,12);
+    var data = dibl.Graph().get();
     showGraph('#diagram',data,'colorpicker');
   </script>
 </body>
