@@ -26,7 +26,7 @@ class GraphSpec extends FlatSpec with Matchers {
     val tileRows = 6
     val tileColumns = 3
 
-    val graph = getScalaGraph()
+    val graph = Graph()
     graph.nodes.length should equal (16*16)
     graph.links.length should equal(nodesPerTile * sourcesPerNode * tileRows * tileColumns)
   }

@@ -24,27 +24,31 @@ import scala.scalajs.js.Dictionary
 import scala.scalajs.js.annotation.JSExport
 import scala.scalajs.js
 
-case class Graph(nodes: Array[Dictionary[Any]],
-                 links: Array[Dictionary[Any]])
-
-case class ScalaGraph(nodes: Array[HashMap[String,Any]],
-                      links: Array[HashMap[String,Any]])
+case class Graph(nodes: Array[HashMap[String,Any]],
+                 links: Array[HashMap[String,Any]])
 
 @JSExport
 object Graph {
 
-  def apply(g: ScalaGraph): Graph = Graph(toJS(g.nodes),toJS(g.links))
-  def apply(abs: M) = ScalaGraph(toNodes(abs), toLinks(abs))
+  def apply(abs: M): Graph = Graph(toNodes(abs), toLinks(abs))
+  def apply(dim: String = "2x4",
+            nr: Int = 0,
+            width: Int = 12,
+            height: Int = 12
+            ): Graph = Graph(Matrix(getRelSources(dim, nr),
+                                    width,
+                                    height))
 
   @JSExport
-  def getD3Data(dim: String = "2x4", nr: Int = 0,
-              width: Int = 12, height: Int = 12): Graph = {
-    Graph(getScalaGraph(dim, nr, width, height))
-  }
-
-  def getScalaGraph(dim: String = "2x4", nr: Int = 0,
-               width: Int = 12, height: Int = 12): ScalaGraph = {
-    Graph(Matrix(getRelSources(dim, nr), width, height))
+  def getD3Data(dim: String = "2x4",
+                nr: Int = 0,
+                width: Int = 12,
+                height: Int = 12): Dictionary[Any] = {
+    val result = js.Object().asInstanceOf[Dictionary[Any]]
+    val g = Graph(dim, nr, width, height)
+    result("nodes") = toJS(g.nodes)
+    result("links") = toJS(g.links)
+    result
   }
 
   def toJS(items: Array[HashMap[String,Any]]): Array[Dictionary[Any]] = {
