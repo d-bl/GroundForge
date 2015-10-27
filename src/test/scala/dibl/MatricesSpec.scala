@@ -31,7 +31,7 @@ class MatricesSpec extends FlatSpec with Matchers {
     matrixMap.keys.foreach{ key => 
       val dim = key.split("x").map(_.toInt)
       matrixMap.get(key).get.foreach{ s =>
-        s.length shouldBe dim(0)*dim(1)//TODO let message show key and index
+        s.length shouldBe dim(0)*dim(1)//TODO let failure message show key and index
       }
     }
   }

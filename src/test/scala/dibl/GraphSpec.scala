@@ -26,8 +26,8 @@ class GraphSpec extends FlatSpec with Matchers {
     val tileRows = 6
     val tileColumns = 3
 
-    val data: HashMap[String, Array[HashMap[String,Any]]] = Graph.get()
-    data.get("nodes").get.length should equal (16*16)
-    data.get("links").get.length should equal(nodesPerTile * sourcesPerNode * tileRows * tileColumns)
+    val data = Graph.getData()
+    data.nodes.length should equal (16*16)
+    data.links.length should equal(nodesPerTile * sourcesPerNode * tileRows * tileColumns)
   }
 }

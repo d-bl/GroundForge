@@ -17,33 +17,34 @@ package dibl
 
 import scala.collection.immutable.HashMap
 import scala.collection.mutable.ListBuffer
+import scala.scalajs.js.Dictionary
 import scala.scalajs.js.annotation.JSExport
 import dibl.Matrices._
 import scala.scalajs.js
 import js.JSConverters._
+
+case class Graph(nodes: Array[Dictionary[Any]],
+                 links: Array[Dictionary[Any]])
 
 @JSExport
 object Graph {
 
   @JSExport
   def getData(dim: String = "2x4", nr: Int = 0,
-              width: Int = 12, height: Int = 12): js.Dictionary[Any] = {
-    val brick = getRelSources(dim,nr)
-    val rel = toCheckerboard(brick)
-    val abs = toAbsSources(rel, width, height)
-    val jsData: js.Dictionary[Int] = new Object().asInstanceOf[js.Dictionary[Int]]
-//    jsData("nodes") = 3
-//    jsData("links") = 4
-    ???
+              width: Int = 12, height: Int = 12): Graph = {
+    val abs = toAbsSources(toCheckerboard(getRelSources(dim, nr)), width, height)
+    new Graph(toJS(toNodes(abs)), toJS(toLinks(abs)))
   }
 
-  def get(dim: String = "2x4", nr: Int = 0,
-          width: Int = 12, height: Int = 12): HashMap[String,Array[Props]] = {
-    val brick = getRelSources(dim,nr)
-    val rel = toCheckerboard(brick)
-    val abs = toAbsSources(rel, width, height)
-    HashMap("nodes" -> toNodes(abs),
-            "links" -> toLinks(abs))
+  def toJS(items: Array[Props]): Array[Dictionary[Any]] = {
+    val jsItems: Array[Dictionary[Any]] = Array.ofDim(items.length)
+    for (i <- items.indices) {
+      jsItems(i) = Dictionary.empty[Any]//[Any].apply(Seq[(String,Any)]())
+      for (key <- items(i).keys) {
+        jsItems(i)(key) = items(i).get(key).get
+      }
+    }
+    jsItems
   }
 
   /** Creates nodes for a pair diagram as in https://github.com/jo-pol/DiBL/blob/2136fe12/tensioned/sample.js 
