@@ -17,7 +17,9 @@ package dibl
 
 import scala.collection.immutable.HashMap
 
-object Matrices {
+object Matrix {
+
+  def apply(rel: M, width: Int, height: Int) = toAbsSources(toCheckerboard(rel), width, height)
 
   /** Creates a checkerboard-matrix from a brick-matrix by 
     * adding two half bricks to the bottom of the brick-matrix.

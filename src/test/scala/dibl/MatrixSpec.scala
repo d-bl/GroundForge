@@ -17,10 +17,10 @@ package dibl
 
 import org.scalatest._
 import scala.collection.mutable.ListBuffer
-import dibl.Matrices._
+import dibl.Matrix._
 
 /** checks for typos in HashMap-s */
-class MatricesSpec extends FlatSpec with Matchers {
+class MatrixSpec extends FlatSpec with Matchers {
 
   "chars in matrix strings" should "exist as keys for relSources" in {
     relSourcesMap.keys.toSet should contain
@@ -42,20 +42,24 @@ class MatricesSpec extends FlatSpec with Matchers {
         val src = toCheckerboard(getRelSources(key,i))
         val rows = src.length
         val cols = src(0).length
-        val target = Array.fill(rows, cols)(ListBuffer[(Int,Int)]())
+        val target: Array[Array[ListBuffer[(Int, Int)]]] = Array.fill(rows, cols)(ListBuffer[(Int,Int)]())
         for {
           row <- src.indices
           col <- src(0).indices
         } {
           for ((dRow, dCol) <- src(row)(col)) {
-//FIXME            target((row+dRow+rows)%rows)((col+dCol+cols)%cols) += (row,col)
+            target((row+dRow+rows)%rows)((col+dCol+cols)%cols) += ((row,col))
           }
         }
+        println(src.deep.toString().replaceAll("Array","").replaceAll("-",""))
+        println(target.deep.toString().replaceAll("Array","").replaceAll("ListBuffer","").replaceAll("-",""))
+        // TODO yield both matrices to nr of nodes and compare those
         for {
           row <- src.indices
           col <- src(0).indices
         } {
-          src(row)(col).length shouldBe target(row)(col).size
+          if (src(row)(col).length != target(row)(col).length)
+            fail(s"row=$row, col=$col ${src(row)(col).length}!=${target(row)(col).length}")
         }
       }
     }

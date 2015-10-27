@@ -15,19 +15,23 @@
 */
 package dibl
 
+import dibl.Graph._
 import org.scalatest._
 
-import scala.collection.immutable.HashMap
-
 class GraphSpec extends FlatSpec with Matchers {
-  "default graph" should "produce nodes and links" in {
+
+  "get" should "produce nodes and links" in {
     val nodesPerTile = 6
     val sourcesPerNode = 2
     val tileRows = 6
     val tileColumns = 3
 
-    val data = Graph.getData()
-    data.nodes.length should equal (16*16)
-    data.links.length should equal(nodesPerTile * sourcesPerNode * tileRows * tileColumns)
+    val graph = getScalaGraph()
+    graph.nodes.length should equal (16*16)
+    graph.links.length should equal(nodesPerTile * sourcesPerNode * tileRows * tileColumns)
+  }
+
+  ignore should "run with JVM used to build scala.js libraries" in {
+    val data = Graph.getD3Data()
   }
 }

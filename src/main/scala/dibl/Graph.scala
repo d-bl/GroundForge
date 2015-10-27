@@ -15,31 +15,41 @@
 */
 package dibl
 
+import dibl.Matrix._
+import dibl.Graph._
+
 import scala.collection.immutable.HashMap
 import scala.collection.mutable.ListBuffer
 import scala.scalajs.js.Dictionary
 import scala.scalajs.js.annotation.JSExport
-import dibl.Matrices._
 import scala.scalajs.js
-import js.JSConverters._
 
 case class Graph(nodes: Array[Dictionary[Any]],
                  links: Array[Dictionary[Any]])
 
+case class ScalaGraph(nodes: Array[HashMap[String,Any]],
+                      links: Array[HashMap[String,Any]])
+
 @JSExport
 object Graph {
 
+  def apply(g: ScalaGraph): Graph = Graph(toJS(g.nodes),toJS(g.links))
+  def apply(abs: M) = ScalaGraph(toNodes(abs), toLinks(abs))
+
   @JSExport
-  def getData(dim: String = "2x4", nr: Int = 0,
+  def getD3Data(dim: String = "2x4", nr: Int = 0,
               width: Int = 12, height: Int = 12): Graph = {
-    val abs = toAbsSources(toCheckerboard(getRelSources(dim, nr)), width, height)
-    new Graph(toJS(toNodes(abs)), toJS(toLinks(abs)))
+    Graph(getScalaGraph(dim, nr, width, height))
   }
 
-  def toJS(items: Array[Props]): Array[Dictionary[Any]] = {
-    val jsItems: Array[Dictionary[Any]] = Array.ofDim(items.length)
+  def getScalaGraph(dim: String = "2x4", nr: Int = 0,
+               width: Int = 12, height: Int = 12): ScalaGraph = {
+    Graph(Matrix(getRelSources(dim, nr), width, height))
+  }
+
+  def toJS(items: Array[HashMap[String,Any]]): Array[Dictionary[Any]] = {
+    val jsItems = Array.fill(items.length)(js.Object().asInstanceOf[Dictionary[Any]])
     for (i <- items.indices) {
-      jsItems(i) = Dictionary.empty[Any]//[Any].apply(Seq[(String,Any)]())
       for (key <- items(i).keys) {
         jsItems(i)(key) = items(i).get(key).get
       }
