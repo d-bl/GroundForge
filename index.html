@@ -9,6 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <script src="show-graph.js"></script>
     <script src="sample.js"></script>
+    <script src="matrix-graphs.js"></script>
     <style>
         .node {
           fill: #000;
@@ -20,13 +21,16 @@
         .link {
           stroke: #000;
         }
+        svg {vertical-align: text-top}
     </style>
 </head>
 <body>
     <img align="right" src="../logo-big.png" width="104" height="96"></img>
     <h1>Bobbin lace working diagrams</h1>
-    <p><em>Under construction</em>: the data used for the diagram generator based on <a href="http://jo-pol.github.io/DiBL/grounds"
-       >templates</a> needs a conversion to apply the same choices here.
+    <p><em>Under construction</em>: 
+       need to figure out the edges of the big diagram, a thread version,
+       and add the choices available for the diagram generator based on <a href="http://jo-pol.github.io/DiBL/grounds"
+       >templates</a>.
     </p>
     <ul><li>
         <form>
@@ -46,15 +50,31 @@
       FireFox, Chrome and Safari are fine, IE has a <a href="https://connect.microsoft.com/IE/feedback/details/801938/dynamically-updated-svg-path-with-a-marker-end-does-not-update"
       >problem</a> rendering the color codes of pair diagrams and over-under effect of thread diagrams.
     </li></ul>
-    <div id="diagram"></div>
+    <div><span id="diagram1"></span><span id="diagram2"></span></div>
     <script>
       showGraph({
         threadColor: '#colorpicker',
-        container: '#diagram',
+        container: '#diagram1',
         width: 300,
         height: 300,
         nodes: sample.nodes,
         links: sample.links,
       })
+      var data = dibl.Graph().getD3Data();
+      showGraph({
+        threadColor: '#colorpicker',
+        container: '#diagram2',
+        width: 600,
+        height: 600,
+        nodes: data.nodes.b,
+        links: data.links.b,
+      })
     </script>
+    <p><a href="https://github.com/jo-pol/DiBL/commits/gh-pages/tensioned/"
+       >Changes</a>. Sources: <a href="https://github.com/jo-pol/DiBL/tree/gh-pages/tensioned"
+       >html, js</a>, <a href="https://github.com/jo-pol/DiBL/tree/master/web/tensioned/src/main/scala/dibl"
+       >scala</a>, contributions are welcome. Powered by: <a href="https://d3js.org"
+       >D3.js</a>, <a href="http://www.menucool.com/color-picker"
+       >Menucool</a>.
+    </p>
 </body>
