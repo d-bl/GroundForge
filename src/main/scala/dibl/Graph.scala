@@ -25,7 +25,14 @@ import scala.scalajs.js.annotation.JSExport
 import scala.scalajs.js
 
 case class Graph(nodes: Array[HashMap[String,Any]],
-                 links: Array[HashMap[String,Any]])
+                 links: Array[HashMap[String,Any]]) {
+  private var startNr = 0
+  for (link <- links.filter (_.get("start").get.toString.startsWith("pair"))){ 
+    startNr += 1
+    val source = link.get("source").get.asInstanceOf[Int]
+    nodes(source) = Props("title" -> s"Pair $startNr")
+  }
+}
 
 @JSExport
 object Graph {
@@ -34,7 +41,7 @@ object Graph {
   def apply(dim: String = "2x4",
             nr: Int = 0,
             width: Int = 12,
-            height: Int = 12
+            height: Int = 11
             ): Graph = Graph(Matrix(getRelSources(dim, nr),
                                     width,
                                     height))
@@ -43,7 +50,7 @@ object Graph {
   def getD3Data(dim: String = "2x4",
                 nr: Int = 0,
                 width: Int = 12,
-                height: Int = 12): Dictionary[Any] = {
+                height: Int = 10): Dictionary[Any] = {
     val result = js.Object().asInstanceOf[Dictionary[Any]]
     val g = Graph(dim, nr, width, height)
     result("nodes") = toJS(g.nodes)
@@ -80,30 +87,20 @@ object Graph {
     val dummy = Props()
     val stitch = Props("title" -> "stitch")
     val bobbin = Props("bobbin" -> true)
-    var startNr = 0
-    def start(row: Int,col: Int): Props = {
-      startNr += 1
-      Props("title" -> s"Pair $startNr ($row,$col)")
-    } 
 
     val nodes = Array.fill(rows*cols)(dummy)
     for {row <- m.indices
          col <- m(0).indices} {
-      nodes((row+2)*cols+col+2) = stitch
+      if (m(row)(col).length > 0)
+        nodes((row+2)*cols+col+2) = stitch
     }
     for (col <- m(0).indices) {
-      // TODO conditionally skip 
-      nodes(              col+2) = start(0,col)
-      nodes(cols         +col+2) = start(1,col)
       nodes(cols*(rows-3)+col+2) = bobbin
       nodes(cols*(rows-2)+col+2) = bobbin
     }
     for (row <- m.indices) {
-      // TODO conditionally swap/skip start/bobbin
       nodes(cols*(row+2)   ) = bobbin
-      nodes(cols*(row+2) +1) = start(row,0)
       nodes(cols*(rows-1)-2) = bobbin
-      nodes(cols* rows   -1) = start(row,cols-1)
     }
     nodes
   }
@@ -113,17 +110,27 @@ object Graph {
 
     val cols = m(0).length + 4
     val links = ListBuffer[Props]()
+    var lastSource = 0
     for {row <- m.indices
          col <- m(0).indices
          i <- m(row)(col).indices} {
       val(srcRow,srcCol) = m(row)(col)(i)
       val ds = if (srcRow < 0) (srcCol - col + 1)%2 else 0
       val dt = if (row == m.length - 1) i else 0
-      links += Props("source" -> (cols*(srcRow+2-ds)+srcCol+2),
+      val source = cols*(srcRow+2-ds)+srcCol+2
+      links += Props("source" -> source,
                      "target" -> (cols*(   row+2+dt)+   col+2), 
-                     "start" -> (if (srcRow < 0 || srcCol < 0 || srcCol+4 >= cols) 
+                     "start" -> (if (srcRow < 0 || srcCol < 0 || srcCol+4 >= cols)
                                  "pair" else "red"), 
                      "end" -> (if (row+1 < m.length) "red" else ""))
+      // FIXME connect starts to prevent haphazard flipping
+      if (srcRow < 0) {
+        if (lastSource > 0)
+          // links += Props("source" -> lastSource,
+          //                "target" -> source,
+          //                "border" -> true)
+        lastSource = source
+      }
     }
     links.toArray
   }
