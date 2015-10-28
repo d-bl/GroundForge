@@ -22,7 +22,7 @@
         }
     </style>
 </head>
-<body onload="showGraph('#diagram',sample.nodes, sample.links,'#colorpicker')">
+<body>
     <img align="right" src="../logo-big.png" width="104" height="96"></img>
     <h1>Bobbin lace working diagrams</h1>
     <p><em>Under construction</em>: the data used for the diagram generator based on <a href="http://jo-pol.github.io/DiBL/grounds"
@@ -47,4 +47,14 @@
       >problem</a> rendering the color codes of pair diagrams and over-under effect of thread diagrams.
     </li></ul>
     <div id="diagram"></div>
+    <script>
+      showGraph({
+        threadColor: '#colorpicker',
+        container: '#diagram',
+        width: 300,
+        height: 300,
+        nodes: sample.nodes,
+        links: sample.links,
+      })
+    </script>
 </body>

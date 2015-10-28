@@ -45,16 +45,14 @@ function endMarker (svg,id,color){
         .attr('stroke-width', 3)
         .attr('stroke', color)
 }
-function showGraph(containerID, nodes, links, colorpickerID) {
-    var width = 800,
-        height = 400,
-        colorpicker = (colorpickerID == undefined ? d3.select(colorpickerID)[0][0] : undefined)
+function showGraph(args) {
+    var colorpicker = (args.threadColor == undefined ? d3.select(args.threadColor)[0][0] : undefined)
 
     // document creation
 
-    var svg = d3.select(containerID).append("svg")
-                .attr("width", width)
-                .attr("height", height)
+    var svg = d3.select(args.container).append("svg")
+                .attr("width", args.width)
+                .attr("height", args.height)
 
     // marker definitions
 
@@ -72,13 +70,13 @@ function showGraph(containerID, nodes, links, colorpickerID) {
     var isIE = document.documentURI == undefined // wrong feature check
     // http://www.sitepoint.com/detect-css3-property-browser-support/ ?
     // problem: the CSS3 property is supported but broken on moving links
-    var link = svg.selectAll(".link").data(links).enter().append("line")
+    var link = svg.selectAll(".link").data(args.links).enter().append("line")
         .attr("class", function(d) { return d.thread ? "link thread" + d.thread : "link"})
         .style('marker-start', function(d) { if (d.start && !isIE) return 'url(#start-'+d.start+')'})
         .style('marker-end', function(d) { if (d.end && !isIE) return 'url(#end-'+d.end+')'})
         .style('opacity', function(d) { return d.border || d.toPin ? 0 : 1})
 
-    var node = svg.selectAll(".node").data(nodes).enter().append("circle")
+    var node = svg.selectAll(".node").data(args.nodes).enter().append("circle")
         .attr("class", function(d) { return d.startOf ? ("node threadStart") : (d.pin ? ("node pin") : "node")})
         .attr("r", function(d) { return d.pin ? 4 : 6})
         .style('opacity', function(d) { return d.bobbin ? 0.5: (d.pin ? 0.2 : 0)})
@@ -95,9 +93,9 @@ function showGraph(containerID, nodes, links, colorpickerID) {
     // http://grokbase.com/t/gg/d3-js/1375rpwbdt/consistent-force-directed-graph-generation
     // http://grokbase.com/t/gg/d3-js/137xwsrbd4/how-to-dynamically-adjusting-linkdistance-and-linkstrength-to-help-reducing-crossing-edges
     var force = d3.layout.force()
-        .nodes(nodes)
-        .links(links)
-        .size([width, height])
+        .nodes(args.nodes)
+        .links(args.links)
+        .size([args.width, args.height])
         .charge(-120)
         .linkDistance(5)
         .linkStrength(5)
