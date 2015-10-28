@@ -81,9 +81,9 @@ object Graph {
     val stitch = Props("title" -> "stitch")
     val bobbin = Props("bobbin" -> true)
     var startNr = 0
-    def start = {
+    def start(row: Int,col: Int): Props = {
       startNr += 1
-      Props("title" -> s"pair $startNr")
+      Props("title" -> s"Pair $startNr ($row,$col)")
     } 
 
     val nodes = Array.fill(rows*cols)(dummy)
@@ -93,17 +93,17 @@ object Graph {
     }
     for (col <- m(0).indices) {
       // TODO conditionally skip 
-      nodes(              col+2) = start
-      nodes(cols         +col+2) = start
+      nodes(              col+2) = start(0,col)
+      nodes(cols         +col+2) = start(1,col)
+      nodes(cols*(rows-3)+col+2) = bobbin
       nodes(cols*(rows-2)+col+2) = bobbin
-      nodes(cols*(rows-1)+col+2) = bobbin
     }
     for (row <- m.indices) {
       // TODO conditionally swap/skip start/bobbin
       nodes(cols*(row+2)   ) = bobbin
-      nodes(cols*(row+2) +1) = start
+      nodes(cols*(row+2) +1) = start(row,0)
       nodes(cols*(rows-1)-2) = bobbin
-      nodes(cols* rows   -1) = start
+      nodes(cols* rows   -1) = start(row,cols-1)
     }
     nodes
   }
@@ -112,24 +112,18 @@ object Graph {
   def  toLinks (m: M): Array[Props] = {
 
     val cols = m(0).length + 4
-
     val links = ListBuffer[Props]()
-    for (col <- m(0).indices) {
-      // links += Props("source" -> ???, "target" -> ???, "border" -> true)
-    }
-    for (row <- m.indices) {
-      // links += Props("source" -> ???, "target" -> ???, "border" -> true)
-    }
     for {row <- m.indices
-         col <- m(0).indices} {
-      val target = cols*(row+2)+col+2
-      for ((srcRow,srcCol) <- m(row)(col)) {
-        val src = cols*(srcRow+2)+srcCol+2
-        links += Props("source" -> src, 
-                       "target" -> target, 
-                       "start" -> (if (row == 0) "pair" else "red"), 
-                       "end" -> (if (row+1 == m.length) "green" else "red"))
-      }
+         col <- m(0).indices
+         i <- m(row)(col).indices} {
+      val(srcRow,srcCol) = m(row)(col)(i)
+      val ds = if (srcRow < 0) (srcCol - col + 1)%2 else 0
+      val dt = if (row == m.length - 1) i else 0
+      links += Props("source" -> (cols*(srcRow+2-ds)+srcCol+2),
+                     "target" -> (cols*(   row+2+dt)+   col+2), 
+                     "start" -> (if (srcRow < 0 || srcCol < 0 || srcCol+4 >= cols) 
+                                 "pair" else "red"), 
+                     "end" -> (if (row+1 < m.length) "red" else ""))
     }
     links.toArray
   }

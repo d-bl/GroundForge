@@ -10,32 +10,24 @@
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
   <script src="https://raw.githubusercontent.com/jo-pol/DiBL/gh-pages/tensioned/sample.js"></script>
-  <script src="https://raw.githubusercontent.com/jo-pol/DiBL/gh-pages/tensioned/show-graph.js"></script>
+  <script src="show-graph.js"></script>
   <script type="text/javascript" src="../dibl-ground-fastopt.js"></script>
   <script type="text/javascript" src="/workbench.js"></script>
 </head>
 <body>
   <input id="colorpicker" type="text" class="color" value="#CC0000"/>
   <div>
-    <span id="diagram1"></span>
     <span id="diagram2"></span>
   </div>
   <script>
-    showGraph({
-      threadColor: '#colorpicker',
-      container: '#diagram1',
-      width: 300,
-      height: 300,
-      nodes: sample.nodes,
-      links: sample.links,
-    })
     var data = dibl.Graph().getD3Data();
     showGraph({
       threadColor: '#colorpicker',
       container: '#diagram2',
-      width: 600,
-      height: 600,
+      width: 1000,
+      height: 800,
       nodes: data.nodes.u,
       links: data.links.u,
-    })  </script>
+    })
+  </script>
 </body>
