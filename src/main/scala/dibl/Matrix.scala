@@ -76,23 +76,23 @@ object Matrix {
   )
 
   /** Translates a character in a matrix string into relative links with source nodes.
-    * The source nodes are defined with relative coordinates.
-    * A node can be connected in eight directions, but source nodes are never found downwards.
+    * The source nodes are defined with relative (row,column) numbers.
+    * A node can be connected in eight directions, but source nodes are not found downwards.
     * A source node on the right means the same row and the next column hence (0,1).
     * A source node at north west means a previous row and column hence (-1,-1).
     */
   val relSourcesMap: HashMap[Char,SrcNodes] = HashMap (
                                       // ascii art of incoming links for a node
-    '0' -> SrcNodes(( 0, 1),(-1, 1)), // .../_  
-    '1' -> SrcNodes(( 0, 1),(-1, 0)), // ..|._  
-    '2' -> SrcNodes(( 0, 1),(-1,-1)), // .\.._  
-    '3' -> SrcNodes(( 0, 1),(-1, 0)), // _..._  
-    '4' -> SrcNodes((-1, 1),(-1, 0)), // ..|/.  
-    '5' -> SrcNodes((-1, 1),(-1,-1)), // .\./.  
-    '6' -> SrcNodes((-1, 1),(-1, 0)), // _../.  
-    '7' -> SrcNodes((-1, 0),(-1,-1)), // .\|..  
-    '8' -> SrcNodes((-1, 0),(-1, 0)), // _.|..  
-    '9' -> SrcNodes((-1,-1),(-1, 0)), // _\...  
+    '0' -> SrcNodes((-1, 1),( 0, 1)), // .../_  
+    '1' -> SrcNodes((-1, 0),( 0, 1)), // ..|._  
+    '2' -> SrcNodes((-1,-1),( 0, 1)), // .\.._  
+    '3' -> SrcNodes(( 0,-1),( 0, 1)), // _..._  
+    '4' -> SrcNodes((-1, 0),(-1, 1)), // ..|/.  
+    '5' -> SrcNodes((-1,-1),(-1, 1)), // .\./.  
+    '6' -> SrcNodes(( 0,-1),(-1, 1)), // _../.  
+    '7' -> SrcNodes((-1,-1),(-1, 0)), // .\|..  
+    '8' -> SrcNodes(( 0,-1),(-1, 0)), // _.|..  
+    '9' -> SrcNodes(( 0,-1),(-1,-1)), // _\...  
     '-' -> SrcNodes()                 // not used node
   )
 
