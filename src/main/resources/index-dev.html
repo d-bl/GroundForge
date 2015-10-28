@@ -16,10 +16,26 @@
 </head>
 <body>
   <input id="colorpicker" type="text" class="color" value="#CC0000"/>
-  <div id="diagram"></div>
+  <div>
+    <span id="diagram1"></span>
+    <span id="diagram2"></span>
+  </div>
   <script>
-    showGraph('#diagram',sample.nodes, sample.links,'#colorpicker');
+    showGraph({
+      threadColor: '#colorpicker',
+      container: '#diagram1',
+      width: 300,
+      height: 300,
+      nodes: sample.nodes,
+      links: sample.links,
+    })
     var data = dibl.Graph().getD3Data();
-    showGraph('#diagram',data.nodes,data.links.u,'colorpicker');
-  </script>
+    showGraph({
+      threadColor: '#colorpicker',
+      container: '#diagram2',
+      width: 600,
+      height: 600,
+      nodes: data.nodes.u,
+      links: data.links.u,
+    })  </script>
 </body>

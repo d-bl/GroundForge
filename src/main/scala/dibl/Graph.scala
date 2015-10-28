@@ -61,7 +61,7 @@ object Graph {
     jsItems
   }
 
-  /** Creates nodes for a pair diagram as in https://github.com/jo-pol/DiBL/blob/2136fe12/tensioned/sample.js 
+  /** Creates nodes for a pair diagram as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js 
     * <pre>
     * ::v v::
     * > o o <
@@ -108,7 +108,7 @@ object Graph {
     nodes
   }
 
-  /** Creates color-less links for a pair diagram as in https://github.com/jo-pol/DiBL/blob/2136fe12/tensioned/sample.js */
+  /** Creates links for a pair diagram as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js */
   def  toLinks (m: M): Array[Props] = {
 
     val cols = m(0).length + 4
@@ -125,7 +125,10 @@ object Graph {
       val target = cols*(row+2)+col+2
       for ((srcRow,srcCol) <- m(row)(col)) {
         val src = cols*(srcRow+2)+srcCol+2
-        links += Props("source" -> src, "target" -> target)
+        links += Props("source" -> src, 
+                       "target" -> target, 
+                       "start" -> (if (row == 0) "pair" else "red"), 
+                       "end" -> (if (row+1 == m.length) "green" else "red"))
       }
     }
     links.toArray
