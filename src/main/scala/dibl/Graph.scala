@@ -25,7 +25,7 @@ import scala.scalajs.js.annotation.JSExport
 
 case class Graph(nodes: Array[HashMap[String,Any]],
                  links: Array[HashMap[String,Any]]) {
-  private val startLinks = links.filter(_.get("start").get.toString.startsWith("pair"))
+  private val startLinks = links.filter(_.getOrElse("start","").toString.startsWith("pair"))
   for (i <- startLinks.indices){
     val source = startLinks(i).get("source").get.asInstanceOf[Int]
     nodes(source) = Props("title" -> s"Pair ${i+1}")
@@ -115,22 +115,22 @@ object Graph {
       val ds = if (srcRow < 0) (srcCol - col + 1)%2 else 0
       val dt = if (row == m.length - 1) i else 0
       links += Props("source" -> (cols * (srcRow + 2 - ds) + srcCol + 2),
-      "target" -> (cols * (   row + 2 + dt) +    col + 2),
-      "start" -> (if (srcRow < 0 || srcCol < 0 || srcCol+4 >= cols)
-      "pair" else "red"),
-      "end" -> (if (row+1 < m.length) "red" else ""))
+                     "target" -> (cols * (   row + 2 + dt) +    col + 2),
+                     "start" -> (if (srcRow < 0 || srcCol < 0 || srcCol+4 >= cols)
+                                 "pair" else "red"),
+                     "end" -> (if (row+1 < m.length) "red" else ""))
     }
+    // keep thread number tooltips on nodes in proper order by connecting them
     var lastSource = -1
     val startLinks = links.filter(l => l.get("start").get.asInstanceOf[String].startsWith("pair")
                                     && l.get("target").get.asInstanceOf[Int] < 3*cols
                                  )
     for (i <- startLinks.indices){
       val source = startLinks(i).get("source").get.asInstanceOf[Int]
-      // FIXME ticks seem to fail
-      // if (lastSource >= 0)
-      //   links += Props("source" -> lastSource,
-      //                  "target" -> source,
-      //                  "border" -> true)
+      if (lastSource >= 0)
+        links += Props("source" -> lastSource,
+                       "target" -> source,
+                       "border" -> true)
       lastSource = source
     }
     links.toArray
