@@ -26,11 +26,9 @@ import scala.scalajs.js
 
 case class Graph(nodes: Array[HashMap[String,Any]],
                  links: Array[HashMap[String,Any]]) {
-  private var startNr = 0
-  for (link <- links.filter (_.get("start").get.toString.startsWith("pair"))){ 
-    startNr += 1
-    val source = link.get("source").get.asInstanceOf[Int]
-    nodes(source) = Props("title" -> s"Pair $startNr")
+  for (i <- links.filter (_.get("start").get.toString.startsWith("pair")).indices){
+    val source = links(i).get("source").get.asInstanceOf[Int]
+    nodes(source) = Props("title" -> s"Pair ${i+1}")
   }
 }
 
@@ -117,20 +115,20 @@ object Graph {
       val(srcRow,srcCol) = m(row)(col)(i)
       val ds = if (srcRow < 0) (srcCol - col + 1)%2 else 0
       val dt = if (row == m.length - 1) i else 0
-      val source = cols*(srcRow+2-ds)+srcCol+2
-      links += Props("source" -> source,
-                     "target" -> (cols*(   row+2+dt)+   col+2), 
+      links += Props("source" -> (cols * (srcRow + 2 - ds) + srcCol + 2),
+                     "target" -> (cols * (   row + 2 + dt) +    col + 2),
                      "start" -> (if (srcRow < 0 || srcCol < 0 || srcCol+4 >= cols)
                                  "pair" else "red"), 
                      "end" -> (if (row+1 < m.length) "red" else ""))
-      // FIXME connect starts to prevent haphazard flipping
-      if (srcRow < 0) {
-        if (lastSource > 0)
-          // links += Props("source" -> lastSource,
-          //                "target" -> source,
-          //                "border" -> true)
-        lastSource = source
-      }
+    }
+    for (i <- links.filter (l => l.get("start").get.asInstanceOf[String].startsWith("pair")
+                              && l.get("target").get.asInstanceOf[Int] < m(0).length
+                           ).indices){
+        val source = links(i).get("source").get.asInstanceOf[Int]
+        // FIXME connect with previous source to prevent haphazard flipping
+        // links += Props("source" -> lastSource,
+        //                "target" -> source,
+        //                "border" -> true)
     }
     links.toArray
   }

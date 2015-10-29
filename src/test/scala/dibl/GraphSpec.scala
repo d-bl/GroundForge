@@ -15,7 +15,7 @@
 */
 package dibl
 
-import dibl.Graph._
+import dibl.Matrix._
 import org.scalatest._
 
 class GraphSpec extends FlatSpec with Matchers {
@@ -26,7 +26,7 @@ class GraphSpec extends FlatSpec with Matchers {
     val tileRows = 6
     val tileColumns = 3
 
-    val graph = Graph()
+    val graph = Graph(toAbsSources(getRelSources("2x4",0),12,12))
     graph.nodes.length should equal (16*16)
     graph.links.length should equal(nodesPerTile * sourcesPerNode * tileRows * tileColumns)
   }
