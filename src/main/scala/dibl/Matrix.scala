@@ -70,7 +70,7 @@ object Matrix {
     * A dash means a not used node, a digit specifies some configuration of links with source nodes.
     */
   val matrixMap: HashMap[String,Array[String]] = HashMap (
-    "2x4" -> Array[String]("5831-4-7"),
+    "2x4" -> Array[String]("83154-7-"),
     "4x2" -> Array[String](),
     "4x4" -> Array[String]()
   )
