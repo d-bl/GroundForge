@@ -98,7 +98,7 @@ object Graph {
     }
     for (row <- m.indices) {
       nodes(cols*(row+2)   ) = bobbin
-      nodes(cols*(rows-1)-2) = bobbin
+      nodes(cols*(row+1) -1) = bobbin
     }
     nodes
   }
@@ -106,6 +106,7 @@ object Graph {
   /** Creates links for a pair diagram as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js */
   def  toLinks (m: M): Array[Props] = {
 
+    val rows = m.length + 4
     val cols = m(0).length + 4
     val links = ListBuffer[Props]()
     for {row <- m.indices
@@ -120,7 +121,29 @@ object Graph {
                                  "pair" else "red"),
                      "end" -> (if (row+1 < m.length) "red" else ""))
     }
+    
+    // make footsides complete
+
+    val linksPerNode = Array.fill(rows*cols)(0)
+    links.foreach{ l =>
+      linksPerNode(l.get("source").get.asInstanceOf[Int]) += 1
+      linksPerNode(l.get("target").get.asInstanceOf[Int]) -= 1
+    }
+    for(row <- 1 until m.length) {
+      if (linksPerNode(row*cols+2) != 0) {
+        links += Props("source" -> (row*cols+2),
+                       "target" -> (row*cols),
+                       "start" -> "red")
+      }
+      if (linksPerNode((row+1)*cols-3) != 0) {
+        links += Props("source" -> ((row+1)*cols-3),
+                       "target" -> ((row+1)*cols-1),
+                       "start" -> "red")
+      }
+    }
+
     // keep thread number tooltips on nodes in proper order by connecting them
+
     var lastSource = -1
     val startLinks = links.filter(l => l.get("start").get.asInstanceOf[String].startsWith("pair")
                                     && l.get("target").get.asInstanceOf[Int] < 3*cols
