@@ -37,6 +37,7 @@ class MatrixSpec extends FlatSpec with Matchers {
   }
 
   "nr of source nodes" should "match nr of target nodes" in {
+
     matrixMap.keys.foreach{ key =>
       for( i <- matrixMap.get(key).get.indices) {
         val src = toCheckerboard(getRelSources(key,i))
@@ -63,5 +64,5 @@ class MatrixSpec extends FlatSpec with Matchers {
         }
       }
     }
-   }
+  }
 }

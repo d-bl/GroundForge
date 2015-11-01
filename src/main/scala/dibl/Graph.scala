@@ -24,33 +24,40 @@ import scala.scalajs.js.Dictionary
 import scala.scalajs.js.annotation.JSExport
 
 case class Graph(nodes: Array[HashMap[String,Any]],
-                 links: Array[HashMap[String,Any]]) {
-  private val startLinks = links.filter(_.getOrElse("start","").toString.startsWith("pair"))
-  for (i <- startLinks.indices){
-    val source = startLinks(i).get("source").get.asInstanceOf[Int]
-    nodes(source) = Props("title" -> s"Pair ${i+1}")
-  }
-}
+                 links: Array[HashMap[String,Any]])
 
 @JSExport
 object Graph {
 
-  def apply(abs: M): Graph = Graph(toNodes(abs), toLinks(abs))
-  def apply(dim: String = "2x4",
-            nr: Int = 0,
-            width: Int = 12,
-            height: Int = 11
-            ): Graph = Graph(Matrix(getRelSources(dim, nr),
-                                    width,
-                                    height))
+  def apply(set: String = "2x4",
+            nrInSet: Int = 0,
+            rows: Int = 12,
+            cols: Int = 11
+            ): Graph = {
+    val rel: M = toCheckerboard(getRelSources(set, nrInSet))
+    val abs: M = toAbsWithMargins(rel,rows,cols)
+    val last = abs.length - 3
+    val nrOfLinks = countLinks(abs)
+    val nodeNrs = Array.fill(abs.length,abs(0).length)(0)
+    var nodeNr = 0;
+    for {row <- nodeNrs.indices
+         col <- nodeNrs(0).indices
+        } {
+      if (nrOfLinks(row)(col) > 0) {
+        nodeNrs(row)(col) = nodeNr
+        nodeNr += 1
+      }
+    }
+    Graph(toNodes(abs, nrOfLinks), toLinks(abs, nodeNrs))
+  }
 
   @JSExport
-  def getD3Data(dim: String = "2x4",
-                nr: Int = 0,
-                width: Int = 12,
-                height: Int = 10): Dictionary[Any] = {
+  def getD3Data(set: String = "2x4",
+                nrInSet: Int = 0,
+                rows: Int = 11,
+                cols: Int = 10): Dictionary[Any] = {
     val result = js.Object().asInstanceOf[Dictionary[Any]]
-    val g = Graph(dim, nr, width, height)
+    val g = Graph(set, nrInSet, rows, cols)
     result("nodes") = toJS(g.nodes)
     result("links") = toJS(g.links)
     result
@@ -66,96 +73,67 @@ object Graph {
     jsItems
   }
 
-  /** Creates nodes for a pair diagram as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js 
-    * <pre>
-    * ::v v::
-    * > o o <
-    * > o o <
-    * ::^ ^::
-    * </pre>
-    * In above ascii art each "o" represent a node for a stitch, matching an element in the matrix.
-    * "::" represent invisible nodes created for simplicity. 
-    * The other symbols match two nodes for (potential) new pairs or for pairs of bobbins.    
-    */
-  def toNodes (m: M): Array[Props] = {
+  /** Creates nodes for a pair diagram as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js */
+  def toNodes (m: M, nrOfLinks: Array[Array[Int]]): Array[Props] = {
 
-    val rows = m.length + 4
-    val cols = m(0).length +4
-
-    val dummy = Props()
     val stitch = Props("title" -> "stitch")
     val bobbin = Props("bobbin" -> true)
-
-    val nodes = Array.fill(rows*cols)(dummy)
+    val nodes = ListBuffer[Props]()
+    var pairNr = 0
     for {row <- m.indices
-         col <- m(0).indices} {
-      if (m(row)(col).length > 0)
-        nodes((row+2)*cols+col+2) = stitch
+         col <- m(0).indices
+        } {
+      if (nrOfLinks(row)(col) > 0) {
+        if ((inMargin(m,row,col) && m(row)(col).length>0))
+          nodes += bobbin
+        else if (!inMargin(m,row,col))
+          nodes += stitch
+        else
+          nodes += Props("title" -> { pairNr += 1
+                                      s"pair $pairNr" 
+                                    })
+      }
     }
-    for (col <- m(0).indices) {
-      nodes(cols*(rows-3)+col+2) = bobbin
-      nodes(cols*(rows-2)+col+2) = bobbin
-    }
-    for (row <- m.indices) {
-      nodes(cols*(row+2)   ) = bobbin
-      nodes(cols*(row+1) -1) = bobbin
-    }
-    nodes
+    nodes.toArray
   }
 
   /** Creates links for a pair diagram as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js */
-  def  toLinks (m: M): Array[Props] = {
+  def  toLinks (m: M, nodeNrs: Array[Array[Int]]): Array[Props] = {
 
-    val rows = m.length + 4
-    val cols = m(0).length + 4
+    val cols = m(0).length
     val links = ListBuffer[Props]()
     for {row <- m.indices
-                       col <- m(0).indices
-                       i <- m(row)(col).indices} {
+         col <- m(0).indices
+         i <- m(row)(col).indices} {
       val(srcRow,srcCol) = m(row)(col)(i)
-      val ds = if (srcRow < 0) (srcCol - col + 1)%2 else 0
-      val dt = if (row == m.length - 1) i else 0
-      links += Props("source" -> (cols * (srcRow + 2 - ds) + srcCol + 2),
-                     "target" -> (cols * (   row + 2 + dt) +    col + 2),
-                     "start" -> (if (srcRow < 0 || srcCol < 0 || srcCol+4 >= cols)
-                                 "pair" else "red"),
-                     "end" -> (if (row+1 < m.length) "red" else ""))
+      links += Props("source" -> nodeNrs(srcRow)(srcCol),
+                     "target" -> nodeNrs(row)(col),
+                     "start" -> (if (inMargin(m,srcRow,srcCol)) "pair" else "red"),
+                     "end" -> (if (inMargin(m,row,col)) "green" else "red"))
     }
-    
-    // make footsides complete
-
-    val linksPerNode = Array.fill(rows*cols)(0)
-    links.foreach{ l =>
-      linksPerNode(l.get("source").get.asInstanceOf[Int]) += 1
-      linksPerNode(l.get("target").get.asInstanceOf[Int]) -= 1
-    }
-    for(row <- 1 until m.length) {
-      if (linksPerNode(row*cols+2) != 0) {
-        links += Props("source" -> (row*cols+2),
-                       "target" -> (row*cols),
-                       "start" -> "red")
-      }
-      if (linksPerNode((row+1)*cols-3) != 0) {
-        links += Props("source" -> ((row+1)*cols-3),
-                       "target" -> ((row+1)*cols-1),
-                       "start" -> "red")
-      }
-    }
-
-    // keep thread number tooltips on nodes in proper order by connecting them
-
-    var lastSource = -1
-    val startLinks = links.filter(l => l.get("start").get.asInstanceOf[String].startsWith("pair")
-                                    && l.get("target").get.asInstanceOf[Int] < 3*cols
-                                 )
-    for (i <- startLinks.indices){
-      val source = startLinks(i).get("source").get.asInstanceOf[Int]
-      if (lastSource >= 0)
-        links += Props("source" -> lastSource,
-                       "target" -> source,
+    // keep the loose ends in order
+    connectLoosePairs(cols,1,m(2).flatten.filter(inTopMargin)).foreach(links += _)
+    // connectLoosePairs(cols,2,column(m,2)/* TODO add target to the sources */.flatten
+    //   .filter(n => inLeftMargin(n)&& (!inTopMargin(n))).toArray
+    //   ).foreach(links += _)
+  
+    def connectLoosePairs (cols: Int, start: Int, sources: SrcNodes): Array[Props] = {
+      val links = ListBuffer[Props]()
+      for (i <- start until sources.length) {
+        val (srcRow,srcCol) = sources(i-1)
+        val (row,col) = sources(i)
+        links += Props("source" -> nodeNrs(srcRow)(srcCol),
+                       "target" -> nodeNrs(row)(col),
                        "border" -> true)
-      lastSource = source
+      }
+      links.toArray
     }
     links.toArray
+  }
+
+  def inMargin(m: M, row: Int, col: Int): Boolean = {
+    val rows = m.length
+    val cols = m(0).length
+    row < 2 || col < 2 || col >= cols - 2 || row >= rows - 2
   }
 }

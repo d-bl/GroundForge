@@ -32,4 +32,8 @@ package object dibl {
 
     type Props = HashMap[String,Any]
     def Props(xs: (String, Any)*) = HashMap(xs: _*) 
+    
+    def column[A, M[A]](matrix: M[M[A]], colIdx: Int)
+      (implicit v1: M[M[A]] => Seq[M[A]], v2: M[A] => Seq[A]): Seq[A] =
+      matrix.map(_(colIdx))
 }
