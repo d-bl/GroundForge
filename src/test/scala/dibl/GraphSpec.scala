@@ -15,20 +15,14 @@
 */
 package dibl
 
-import dibl.Matrix._
 import org.scalatest._
 
 class GraphSpec extends FlatSpec with Matchers {
 
   "get" should "produce nodes and links" in {
-    val nodesPerTile = 6
-    val sourcesPerNode = 2
-    val tileRows = 6
-    val tileColumns = 3
-
-    val graph = Graph(toAbsSources(getRelSources("2x4",0),12,12))
-    graph.nodes.length should equal (16*16)
-    graph.links.length should equal(nodesPerTile * sourcesPerNode * tileRows * tileColumns)
+    val graph = Graph("2x4",0,12,12)
+    graph.nodes.length should equal (154)
+    graph.links.length should equal(250)
   }
 
   ignore should "run with JVM used to build scala.js libraries" in {

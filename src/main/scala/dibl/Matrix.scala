@@ -47,25 +47,8 @@ object Matrix {
   }
 
   /** Converts relative source nodes in one matrix into
-    * absolute source nodes in a matrix wih different dimensions.
-    */
-  def toAbsSources(rel: M, absRows: Int, absCols: Int): M = {
-    val abs: M = Array.ofDim[SrcNodes](absRows, absCols)
-    val relRows = rel.length
-    val relCols = rel(0).length
-    for {
-      absRow <- abs.indices
-      absCol <- abs(0).indices
-    } {
-      abs(absRow)(absCol) = for ( (relRow,relCol) <- rel (absRow%relRows) (absCol%relCols) )
-        yield (absRow + relRow, absCol + relCol)
-    }
-    abs
-  }
-
-  /** Converts relative source nodes in one matrix into
-    * absolute source nodes in a matrix wih different dimensions.
-    * The margin has nodes for loose end.
+    * absolute source nodes in a matrix wih different dimensions
+    * and a margin for loose ends.
     * <pre>
     * ::v v::
     * > o o <
@@ -73,8 +56,7 @@ object Matrix {
     * ::^ ^::
     * </pre>
     * In above ascii art each "o" represent a node for a stitch, matching an element in the matrix.
-    * "::" represent invisible nodes created for simplicity. 
-    * The other symbols match two nodes for (potential) new pairs or for pairs of bobbins.    
+    * The other symbols match two nodes for (potential) new pairs or for pairs of bobbins.
     */
   def toAbsWithMargins(rel: M, absRows: Int, absCols: Int): M = {
     val abs = Array.fill(absRows + 4,absCols + 4)(SrcNodes())
@@ -103,23 +85,13 @@ object Matrix {
     // footsides
     { val links = countLinks(abs)
       val lastCol = abs(0).length - 3
-      for (row <- 0 until abs.length) {
+      for (row <- abs.indices) {
         if(links(row)(2      )==3) abs(row)(0        ) = SrcNodes((row ,2))
         if(links(row)(lastCol)==3) abs(row)(lastCol+2) = SrcNodes((row,lastCol))
       }
     }
     // result
     abs
-  }
-  
-  def inTopMargin (node: (Int, Int)): Boolean = {
-    val (row,col) = node
-    row < 2
-  }
-  
-  def inLeftMargin (node: (Int, Int)): Boolean = {
-    val (row,col) = node
-    col < 2
   }
 
   def countLinks(m: M): Array[Array[Int]] = {

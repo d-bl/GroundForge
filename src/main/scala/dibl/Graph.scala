@@ -24,7 +24,13 @@ import scala.scalajs.js.Dictionary
 import scala.scalajs.js.annotation.JSExport
 
 case class Graph(nodes: Array[HashMap[String,Any]],
-                 links: Array[HashMap[String,Any]])
+                 links: Array[HashMap[String,Any]]){
+  private val startLinks = links.filter(_.getOrElse("start","").toString.startsWith("pair"))
+  for (i <- startLinks.indices){
+    val source = startLinks(i).get("source").get.asInstanceOf[Int]
+    nodes(source) = Props("title" -> s"Pair ${i+1}")
+  }
+}
 
 @JSExport
 object Graph {
@@ -36,19 +42,23 @@ object Graph {
             ): Graph = {
     val rel: M = toCheckerboard(getRelSources(set, nrInSet))
     val abs: M = toAbsWithMargins(rel,rows,cols)
-    val last = abs.length - 3
     val nrOfLinks = countLinks(abs)
-    val nodeNrs = Array.fill(abs.length,abs(0).length)(0)
-    var nodeNr = 0;
+    val nodeNrs = assignNodeNrs(abs, nrOfLinks)
+    Graph(toNodes(abs, nrOfLinks), toLinks(abs, nodeNrs))
+  }
+
+  def assignNodeNrs(abs: M, nrOfLinks: Array[Array[Int]]): Array[Array[Int]] = {
+    val nodeNrs = Array.fill(abs.length, abs(0).length)(0)
+    var nodeNr = 0
     for {row <- nodeNrs.indices
          col <- nodeNrs(0).indices
-        } {
+    } {
       if (nrOfLinks(row)(col) > 0) {
         nodeNrs(row)(col) = nodeNr
         nodeNr += 1
       }
     }
-    Graph(toNodes(abs, nrOfLinks), toLinks(abs, nodeNrs))
+    nodeNrs
   }
 
   @JSExport
@@ -65,10 +75,9 @@ object Graph {
 
   def toJS(items: Array[HashMap[String,Any]]): Array[Dictionary[Any]] = {
     val jsItems = Array.fill(items.length)(js.Object().asInstanceOf[Dictionary[Any]])
-    for (i <- items.indices) {
-      for (key <- items(i).keys) {
-        jsItems(i)(key) = items(i).get(key).get
-      }
+    for {i <- items.indices
+         key <- items(i).keys} {
+      jsItems(i)(key) = items(i).get(key).get
     }
     jsItems
   }
@@ -79,19 +88,11 @@ object Graph {
     val stitch = Props("title" -> "stitch")
     val bobbin = Props("bobbin" -> true)
     val nodes = ListBuffer[Props]()
-    var pairNr = 0
     for {row <- m.indices
          col <- m(0).indices
         } {
       if (nrOfLinks(row)(col) > 0) {
-        if ((inMargin(m,row,col) && m(row)(col).length>0))
-          nodes += bobbin
-        else if (!inMargin(m,row,col))
-          nodes += stitch
-        else
-          nodes += Props("title" -> { pairNr += 1
-                                      s"pair $pairNr" 
-                                    })
+        nodes += (if (inMargin(m, row, col)) bobbin else stitch)
       }
     }
     nodes.toArray
@@ -102,6 +103,7 @@ object Graph {
 
     val cols = m(0).length
     val links = ListBuffer[Props]()
+    connectLoosePairs(1,m(2).flatten.filter(inTopMargin))
     for {row <- m.indices
          col <- m(0).indices
          i <- m(row)(col).indices} {
@@ -111,14 +113,12 @@ object Graph {
                      "start" -> (if (inMargin(m,srcRow,srcCol)) "pair" else "red"),
                      "end" -> (if (inMargin(m,row,col)) "green" else "red"))
     }
-    // keep the loose ends in order
-    connectLoosePairs(cols,1,m(2).flatten.filter(inTopMargin)).foreach(links += _)
-    // connectLoosePairs(cols,2,column(m,2)/* TODO add target to the sources */.flatten
+    // keep more loose ends in order
+    // connectLoosePairs(2,column(m,2)/* TODO add target to the sources */.flatten
     //   .filter(n => inLeftMargin(n)&& (!inTopMargin(n))).toArray
-    //   ).foreach(links += _)
+    //   )
   
-    def connectLoosePairs (cols: Int, start: Int, sources: SrcNodes): Array[Props] = {
-      val links = ListBuffer[Props]()
+    def connectLoosePairs (start: Int, sources: SrcNodes): Unit = {
       for (i <- start until sources.length) {
         val (srcRow,srcCol) = sources(i-1)
         val (row,col) = sources(i)
@@ -126,9 +126,18 @@ object Graph {
                        "target" -> nodeNrs(row)(col),
                        "border" -> true)
       }
-      links.toArray
     }
     links.toArray
+  }
+
+  def inTopMargin (node: (Int, Int)): Boolean = {
+    val (row,_) = node
+    row < 2
+  }
+
+  def inLeftMargin (node: (Int, Int)): Boolean = {
+    val (_,col) = node
+    col < 2
   }
 
   def inMargin(m: M, row: Int, col: Int): Boolean = {
