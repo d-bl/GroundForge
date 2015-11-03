@@ -19,8 +19,8 @@
           container: '#diagram',
           width: form.width.value,
           height: form.height.value,
-          nodes: data.nodes.b,
-          links: data.links.b,
+          nodes: data.nodes.a,
+          links: data.links.a,
         })
       }
     </script>
@@ -60,17 +60,17 @@
       >problem</a> rendering the color codes of pair diagrams and over-under effect of thread diagrams.
     </li><li>
         <label form="graph">Try another size: </label>
-        <form id="graph" action="" onsubmit="show(this);return false;">
+        <form id="graph" action="" onsubmit="show(this); return false">
 
             <label for="rows">rows</label>
-            <input id="rows" name="rows" min="0" max="20" value="10" type="number"/>
+            <input id="rows" name="rows" min="0" max="20" value="6" type="number"/>
             <label for="cols">columns</label>
-            <input id="cols" name="cols" min="0" max="20" value="9" type="number"/>
+            <input id="cols" name="cols" min="0" max="20" value="7" type="number"/>
 
             <label for="width">width (px)</label>
-            <input id="width" min="200" max="999" value="800" type="number"/>
+            <input id="width" name="width" min="200" max="999" value="800" type="number"/>
             <label for="height">height (px)</label>
-            <input id="height" min="200" max="999" value="400" type="number"/>
+            <input id="height" name="height" min="200" max="999" value="400" type="number"/>
 
             <button class="button" type="submit">draw</button>
         </form>
