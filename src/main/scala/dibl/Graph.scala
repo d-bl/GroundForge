@@ -101,9 +101,17 @@ object Graph {
   /** Creates links for a pair diagram as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js */
   def  toLinks (m: M, nodeNrs: Array[Array[Int]]): Array[Props] = {
 
-    val cols = m(0).length
     val links = ListBuffer[Props]()
-    connectLoosePairs(1,m(2).flatten.filter(inTopMargin))
+    def connectLoosePairs (start: Int, sources: Array[(Int,Int)]): Unit = {
+      for (i <- start until sources.length) {
+        val (srcRow,srcCol) = sources(i-1)
+        val (row,col) = sources(i)
+        links += Props("source" -> nodeNrs(srcRow)(srcCol),
+          "target" -> nodeNrs(row)(col),
+          "border" -> true)
+      }
+    }
+    connectLoosePairs(1,m(2).flatten.filter(src => inMargin(m,src._1,src._2)))
     for {row <- m.indices
          col <- m(0).indices
          i <- m(row)(col).indices} {
@@ -111,33 +119,21 @@ object Graph {
       links += Props("source" -> nodeNrs(srcRow)(srcCol),
                      "target" -> nodeNrs(row)(col),
                      "start" -> (if (inMargin(m,srcRow,srcCol)) "pair" else "red"),
-                     "end" -> (if (inMargin(m,row,col)) "green" else "red"))
+                     "end" -> (if (inMargin(m,row,col)) "" else "red"))
     }
-    // keep more loose ends in order
-    // connectLoosePairs(2,column(m,2)/* TODO add target to the sources */.flatten
-    //   .filter(n => inLeftMargin(n)&& (!inTopMargin(n))).toArray
-    //   )
-  
-    def connectLoosePairs (start: Int, sources: SrcNodes): Unit = {
-      for (i <- start until sources.length) {
-        val (srcRow,srcCol) = sources(i-1)
-        val (row,col) = sources(i)
-        links += Props("source" -> nodeNrs(srcRow)(srcCol),
-                       "target" -> nodeNrs(row)(col),
-                       "border" -> true)
-      }
+    val looseLeftEnds = ListBuffer[(Int,Int)]()
+    val looseRightEnds = ListBuffer[(Int,Int)]()
+    val lastCol = m(0).length - 3
+    looseLeftEnds += m(2)(2)(0)
+    for(row <- 2 until m.length-2){
+      m(row)(2).foreach { src => if (inMargin(m,src._1,src._2)&&src._1>2) looseLeftEnds += src }
+      if(m(row)(0).nonEmpty)looseLeftEnds += ((row,0))
+      m(row)(lastCol).foreach { src => if (inMargin(m,src._1,src._2)) looseRightEnds += src }
+      if(m(row)(lastCol+2).nonEmpty)looseRightEnds += ((row,lastCol+2))
     }
+    connectLoosePairs(1,looseLeftEnds.toArray)
+    connectLoosePairs(1,looseRightEnds.toArray)
     links.toArray
-  }
-
-  def inTopMargin (node: (Int, Int)): Boolean = {
-    val (row,_) = node
-    row < 2
-  }
-
-  def inLeftMargin (node: (Int, Int)): Boolean = {
-    val (_,col) = node
-    col < 2
   }
 
   def inMargin(m: M, row: Int, col: Int): Boolean = {
