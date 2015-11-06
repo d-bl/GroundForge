@@ -17,12 +17,20 @@ package dibl
 
 import org.scalatest._
 
+import scala.scalajs.js.Dictionary
+
 class GraphSpec extends FlatSpec with Matchers {
 
-  "get" should "produce nodes and links" in {
+  "apply" should "produce nodes and links" in {
     val graph = Graph("2x4",0,12,12)
     graph.nodes.length should equal (154)
-    graph.links.length should equal(250)
+    graph.links.length should equal(273)
+  }
+
+  "getD3Data" should "produce nodes and links" in {
+    val graph = Graph.getD3Data("2x4",0,12,12)
+    graph.get("nodes").get.asInstanceOf[Dictionary[Any]].size should equal (154)
+    graph.get("links").get.asInstanceOf[Dictionary[Any]].size should equal(250)
   }
 
   ignore should "run with JVM used to build scala.js libraries" in {
