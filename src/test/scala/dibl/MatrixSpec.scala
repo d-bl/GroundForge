@@ -38,31 +38,21 @@ class MatrixSpec extends FlatSpec with Matchers {
 
   "nr of source nodes" should "match nr of target nodes" in {
 
-    matrixMap.keys.foreach{ key =>
-      for( i <- matrixMap.get(key).get.indices) {
-        val src = toCheckerboard(getRelSources(key,i))
-        val rows = src.length
-        val cols = src(0).length
-        val target: Array[Array[ListBuffer[(Int, Int)]]] = Array.fill(rows, cols)(ListBuffer[(Int,Int)]())
+    matrixMap.keys.foreach { key =>
+      for (i <- matrixMap.get(key).get.indices) {
+        val rel: M = toCheckerboard(getRelSources(key, i))
+        val abs = toAbsWithMargins(rel, rel.length*3, rel(0).length*3)
+        val nrOfLinks = countLinks(abs)
         for {
-          row <- src.indices
-          col <- src(0).indices
-        } {
-          for ((dRow, dCol) <- src(row)(col)) {
-            target((row+dRow+rows)%rows)((col+dCol+cols)%cols) += ((row,col))
-          }
-        }
-        println(src.deep.toString().replaceAll("Array","").replaceAll("-",""))
-        println(target.deep.toString().replaceAll("Array","").replaceAll("ListBuffer","").replaceAll("-",""))
-        // TODO yield both matrices to nr of nodes and compare those
-        for {
-          row <- src.indices
-          col <- src(0).indices
-        } {
-          if (src(row)(col).length != target(row)(col).length)
-            fail(s"row=$row, col=$col ${src(row)(col).length}!=${target(row)(col).length}")
-        }
+          j <- 2 until nrOfLinks.length - 2
+          k <- 2 until nrOfLinks(0).length - 2
+        } if (nrOfLinks(j)(k)%4 != 0)
+          fail(s"($j,$k) has ${nrOfLinks(j)(k)} links")
+        // visualize nodes in the margins
+        println(nrOfLinks.deep.mkString("(",",",")").replaceAll("Array","\n").tail)
+        abs.foreach(s )
       }
+      def s(xs: R) = println(xs.deep.mkString(",").replaceAll("Array",""))
     }
   }
 }
