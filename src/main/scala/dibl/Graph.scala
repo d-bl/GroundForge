@@ -65,7 +65,7 @@ object Graph {
   def getD3Data(set: String = "2x4",
                 nrInSet: Int = 0,
                 rows: Int = 11,
-                cols: Int = 10): Dictionary[js.Array[Dictionary[Any]]] = {
+                cols: Int = 10): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
     val g = Graph(set, nrInSet, rows, cols)
     js.Dictionary(
       "nodes" -> toJS(g.nodes),
@@ -73,15 +73,16 @@ object Graph {
     )
   }
 
-  def toJS(items: Array[HashMap[String,Any]]): js.Array[Dictionary[Any]] = {
-    val jsItems = Array.fill(items.length)(js.Object().asInstanceOf[Dictionary[Any]])
-    val x = js.Object().asInstanceOf[js.Array[Dictionary[Any]]](items.length)
-    for {i <- items.indices
-         key <- items(i).keys} {
-      jsItems(i)(key) = items(i).get(key).get
+  def toJS(items: Array[HashMap[String,Any]]): js.Array[js.Dictionary[Any]] = {
+
+    val a = js.Array[js.Any](items.length).asInstanceOf[js.Array[js.Dictionary[Any]]]
+    for {i <- items.indices} {
+      a(i) = js.Object().asInstanceOf[js.Dictionary[Any]]
+      for {key <- items(i).keys} {
+        a(i)(key) = items(i).get(key).get
+      }
     }
-    // TODO from the JavaScript point of view the array is still wrapped somehow, issue #29
-    jsItems.asInstanceOf[js.Array[Dictionary[Any]]]
+    a
   }
 
   /** Creates nodes for a pair diagram as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js */
