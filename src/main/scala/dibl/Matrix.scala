@@ -57,6 +57,7 @@ object Matrix {
     * </pre>
     * In above ascii art each "o" represent a node for a stitch, matching an element in the matrix.
     * The other symbols match two nodes for (potential) new pairs or for pairs of bobbins.
+    * See also println's in unit tests.
     */
   def toAbsWithMargins(rel: M, absRows: Int, absCols: Int): M = {
     val abs = Array.fill(absRows + 3,absCols + 4)(SrcNodes())
@@ -69,7 +70,6 @@ object Matrix {
       abs(absRow)(absCol) = for ((relRow, relCol) <- rel(absRow % relRows)(absCol % relCols))
         yield (absRow + relRow, absCol + relCol)
     }
-    println(countLinks(abs).deep.mkString("(",",",")").replaceAll("Array","\n").tail)
     for (col <- 2 until absCols + 2) {
       for (i <- abs(2)(col).indices) {
         // top margin
@@ -82,12 +82,31 @@ object Matrix {
         abs(absRows + 1)(col) = Array(abs(absRows + 1)(col)(0))
       }
     }
+    // foot sides: join each pair-out (nrOfNodes==3) with the next pair-in (col in margin)
     val nrOfLinks = countLinks(abs)
+    def nextPairIn(row: Int, targetCol: Int, srcCol: Int, src: Int): Option[(Int, Int)] = {
+      for(r <- row+1 until absRows+2) {
+        if(abs(r)(targetCol).length>src && abs(r)(targetCol)(src)._2==srcCol)
+          return Some(abs(r)(targetCol)(src))
+      }
+      None
+    }
+    val targetCol = absCols + 1
     for (row <- 2 until absRows + 2) {
-      if(nrOfLinks(row)(2)==3)
-        abs(row)(0) = Array((row,2))
-      if(nrOfLinks(row)(absCols+1)==3)
-        abs(row)(absCols+3) = Array((row,absCols+1))
+      if(nrOfLinks(row)(2)==3) {
+        nextPairIn(row,2,1,0) match {
+          case Some((r,c)) =>
+            abs(r)(c) = SrcNodes((row,2))
+          case None => abs(row)(0) = Array((row,2))
+        }
+      }
+      if(nrOfLinks(row)(targetCol)==3) {
+        nextPairIn(row,targetCol,targetCol+1,1) match {
+          case Some((r,c)) =>
+            abs(r)(c) = SrcNodes((row,targetCol))
+          case None => abs(row)(targetCol+2) = Array((row,targetCol))
+        }
+      }
     }
     abs
   }

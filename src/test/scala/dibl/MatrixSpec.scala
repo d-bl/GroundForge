@@ -41,7 +41,7 @@ class MatrixSpec extends FlatSpec with Matchers {
     matrixMap.keys.foreach { key =>
       for (i <- matrixMap.get(key).get.indices) {
         val rel: M = toCheckerboard(getRelSources(key, i))
-        val abs = toAbsWithMargins(rel, 12, 12)
+        val abs = toAbsWithMargins(rel, 12, 11)
         val nrOfLinks = countLinks(abs)
         // visualize nodes in the margins
         println(nrOfLinks.deep.mkString("(",",",")").replaceAll("Array","\n").tail)

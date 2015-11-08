@@ -20,7 +20,6 @@ import dibl.Matrix._
 import scala.collection.immutable.HashMap
 import scala.collection.mutable.ListBuffer
 import scala.scalajs.js
-import scala.scalajs.js.Dictionary
 import scala.scalajs.js.annotation.JSExport
 
 case class Graph(nodes: Array[HashMap[String,Any]],
@@ -91,11 +90,12 @@ object Graph {
     val stitch = Props("title" -> "stitch")
     val bobbin = Props("bobbin" -> true)
     val nodes = ListBuffer[Props]()
+    var pairNr = 0
     for {row <- m.indices
          col <- m(0).indices
         } {
       if (nrOfLinks(row)(col) > 0) {
-        nodes += (if (inMargin(m, row, col)) bobbin else stitch)
+        nodes += (if (row>=m.length-2) bobbin else stitch)
       }
     }
     nodes.toArray
@@ -105,6 +105,11 @@ object Graph {
   def  toLinks (m: M, nodeNrs: Array[Array[Int]]): Array[Props] = {
 
     val links = ListBuffer[Props]()
+
+    def isStartOfPair(srcRow: Int, srcCol: Int): Boolean =
+      srcRow < 2 || (srcRow == 2 && (srcCol < 2 || srcCol > m(0).length - 3))
+    def isEndOfPair(col: Int): Boolean =
+      col > m(0).length - 2
     def connectLoosePairs (start: Int, sources: Array[(Int,Int)]): Unit = {
       for (i <- start until sources.length) {
         val (srcRow,srcCol) = sources(i-1)
@@ -121,8 +126,8 @@ object Graph {
       val(srcRow,srcCol) = m(row)(col)(i)
       links += Props("source" -> nodeNrs(srcRow)(srcCol),
                      "target" -> nodeNrs(row)(col),
-                     "start" -> (if (inMargin(m,srcRow,srcCol)) "pair" else "red"),
-                     "end" -> (if (inMargin(m,row,col)) "" else "red"))
+                     "start" -> (if (isStartOfPair(srcRow, srcCol)) "pair" else "red"),
+                     "end" -> (if (isEndOfPair(col)) "" else "red"))
     }
     val looseLeftEnds = ListBuffer[(Int,Int)]()
     val looseRightEnds = ListBuffer[(Int,Int)]()
