@@ -38,7 +38,7 @@ object Graph {
   def apply(set: String = "2x4",
             nrInSet: Int = 0,
             rows: Int = 12,
-            cols: Int = 11
+            cols: Int = 12
             ): Graph = {
     val rel: M = toCheckerboard(getRelSources(set, nrInSet))
     val abs: M = toAbsWithMargins(rel,rows,cols)
@@ -64,7 +64,7 @@ object Graph {
   @JSExport
   def getD3Data(set: String = "2x4",
                 nrInSet: Int = 0,
-                rows: Int = 11,
+                rows: Int = 10,
                 cols: Int = 10): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
     val g = Graph(set, nrInSet, rows, cols)
     js.Dictionary(

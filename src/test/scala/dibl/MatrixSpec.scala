@@ -41,16 +41,15 @@ class MatrixSpec extends FlatSpec with Matchers {
     matrixMap.keys.foreach { key =>
       for (i <- matrixMap.get(key).get.indices) {
         val rel: M = toCheckerboard(getRelSources(key, i))
-        val abs = toAbsWithMargins(rel, rel.length*3, rel(0).length*3)
+        val abs = toAbsWithMargins(rel, 12, 12)
         val nrOfLinks = countLinks(abs)
-        for {
+        // visualize nodes in the margins
+        println(nrOfLinks.deep.mkString("(",",",")").replaceAll("Array","\n").tail)
+        for { // assertions
           j <- 2 until nrOfLinks.length - 2
           k <- 2 until nrOfLinks(0).length - 2
         } if (nrOfLinks(j)(k)%4 != 0)
           fail(s"($j,$k) has ${nrOfLinks(j)(k)} links")
-        // visualize nodes in the margins
-        println(nrOfLinks.deep.mkString("(",",",")").replaceAll("Array","\n").tail)
-        abs.foreach(s )
       }
       def s(xs: R) = println(xs.deep.mkString(",").replaceAll("Array",""))
     }
