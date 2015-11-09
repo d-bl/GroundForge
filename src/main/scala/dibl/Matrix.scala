@@ -16,6 +16,7 @@
 package dibl
 
 import scala.collection.immutable.HashMap
+import scala.collection.mutable.ListBuffer
 
 object Matrix {
 
@@ -71,8 +72,8 @@ object Matrix {
         yield (absRow + relRow, absCol + relCol)
     }
     for (col <- 2 until absCols + 2) {
+      // top margin
       for (i <- abs(2)(col).indices) {
-        // top margin
         val (srcRow, srcCol) = abs(2)(col)(i)
         if (srcRow == 1) abs(2)(col)(i) = (i % 2, col)
       }
@@ -95,19 +96,35 @@ object Matrix {
     for (row <- 2 until absRows + 2) {
       if(nrOfLinks(row)(2)==3) {
         nextPairIn(row,2,1,0) match {
-          case Some((r,c)) =>
-            abs(r)(c) = SrcNodes((row,2))
+          case Some((r,c)) => abs(r)(c) = SrcNodes((row,2))
           case None => abs(row)(0) = Array((row,2))
         }
       }
       if(nrOfLinks(row)(targetCol)==3) {
         nextPairIn(row,targetCol,targetCol+1,1) match {
-          case Some((r,c)) =>
-            abs(r)(c) = SrcNodes((row,targetCol))
+          case Some((r,c)) => abs(r)(c) = SrcNodes((row,targetCol))
           case None => abs(row)(targetCol+2) = Array((row,targetCol))
         }
       }
     }
+    val nrOfLinks2 = countLinks(abs)
+    val leftFootsides = ListBuffer[(Int,Int)]()
+    val rightFootsides = ListBuffer[(Int,Int)]()
+    for (row <- 2 until absRows + 2) {
+      if(nrOfLinks2(row)(1)>0) leftFootsides += ((row,1))
+      if(nrOfLinks2(row)(targetCol+1)>0) rightFootsides += ((row,targetCol+1))
+    }
+    def connectFootsides (sources: Seq[(Int,Int)]): Unit = {
+      for (i <- 1 until sources.length) {
+        val (srcRow,srcCol) = sources(i-1)
+        val (row,col) = sources(i)
+        abs(row)(col) = abs(row)(col) :+ sources(i-1)
+      }
+    }
+    leftFootsides += ((absRows+2,1))
+    rightFootsides += ((absRows+2,targetCol+1))
+    connectFootsides(leftFootsides)
+    connectFootsides(rightFootsides)
     abs
   }
 

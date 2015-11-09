@@ -43,7 +43,7 @@ object Graph {
     val abs: M = toAbsWithMargins(rel,rows,cols)
     val nrOfLinks = countLinks(abs)
     val nodeNrs = assignNodeNrs(abs, nrOfLinks)
-    Graph(toNodes(abs, nrOfLinks), toLinks(abs, nodeNrs))
+    Graph(toNodes(abs, nrOfLinks, 2, 4), toLinks(abs, nodeNrs))
   }
 
   def assignNodeNrs(abs: M, nrOfLinks: Array[Array[Int]]): Array[Array[Int]] = {
@@ -85,7 +85,7 @@ object Graph {
   }
 
   /** Creates nodes for a pair diagram as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js */
-  def toNodes (m: M, nrOfLinks: Array[Array[Int]]): Array[Props] = {
+  def toNodes (m: M, nrOfLinks: Array[Array[Int]], rows: Int, cols: Int): Array[Props] = {
 
     val stitch = Props("title" -> "stitch")
     val bobbin = Props("bobbin" -> true)
@@ -129,18 +129,6 @@ object Graph {
                      "start" -> (if (isStartOfPair(srcRow, srcCol)) "pair" else "red"),
                      "end" -> (if (isEndOfPair(col)) "" else "red"))
     }
-    val looseLeftEnds = ListBuffer[(Int,Int)]()
-    val looseRightEnds = ListBuffer[(Int,Int)]()
-    val lastCol = m(0).length - 3
-    looseLeftEnds += m(2)(2)(0)
-    for(row <- 2 until m.length-2){
-      m(row)(2).foreach { src => if (inMargin(m,src._1,src._2)&&src._1>2) looseLeftEnds += src }
-      if(m(row)(0).nonEmpty)looseLeftEnds += ((row,0))
-      m(row)(lastCol).foreach { src => if (inMargin(m,src._1,src._2)) looseRightEnds += src }
-      if(m(row)(lastCol+2).nonEmpty)looseRightEnds += ((row,lastCol+2))
-    }
-    connectLoosePairs(1,looseLeftEnds.toArray)
-    connectLoosePairs(1,looseRightEnds.toArray)
     links.toArray
   }
 
