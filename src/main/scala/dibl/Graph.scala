@@ -90,14 +90,24 @@ object Graph {
     val stitch = Props("title" -> "stitch")
     val bobbin = Props("bobbin" -> true)
     val nodes = ListBuffer[Props]()
+    val rows = 2
+    val cols = 4
+    val margin = 2
+    val colChars = "ABCDEFGHIJKLMNOP".toCharArray
     var pairNr = 0
-    for {row <- m.indices
-         col <- m(0).indices
-        } {
-      if (nrOfLinks(row)(col) > 0) {
-        nodes += (if (row>=m.length-2) bobbin else stitch)
-      }
-    }
+    for (row <- m.indices) {
+      // see comment about brick on Matrix.toCheckerboard
+      // +2 prevents modulo of a negative number
+      val offset = ((((row - margin) / rows) + 2) % 2)  * (cols / 2) - margin
+
+      for (col <- m(0).indices) {
+        if (nrOfLinks(row)(col) > 0) {
+          nodes += (
+            if (row >= m.length - 2) bobbin
+            else Props("title" -> (
+              if (inMargin(m, row, col)) "ttctc"
+              else s"tctc ${row % rows + 1}${colChars((offset + col) % cols)}"
+    )))}}}
     nodes.toArray
   }
 
