@@ -19,8 +19,8 @@
           container: '#diagram',
           width: form.width.value,
           height: form.height.value,
-          nodes: data.nodes.a,
-          links: data.links.a,
+          nodes: data.nodes,
+          links: data.links,
         })
       }
     </script>
@@ -41,7 +41,7 @@
     </style>
 </head>
 <body>
-    <img align="right" src="../logo-big.png" width="104" height="96"></img>
+    <img align="right" src="../logo-big.png" width="104" height="96"/>
     <h1>Bobbin lace working diagrams</h1>
     <p><em>Under construction</em>: 
        need to figure out the edges of the big diagram, a thread version,
@@ -51,7 +51,8 @@
     <ul><li>
       Drag pins to fix their position, single click to release.
     </li><li>
-      Hover over diagram components for tooltips.
+      Hover over diagram components for tooltips: the stitch in terms of t(wist)c(cross)
+        + spreadsheet like coordinates matching the brick wise stacked matrix.
     </li><li>
       The diagrams might be rotated, mirrored or twisted: dragging can fix that.
       A fast move may (un)twist or flip a diagram. Two twists can become a flip too.
