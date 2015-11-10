@@ -34,19 +34,20 @@ case class Graph(nodes: Array[HashMap[String,Any]],
 @JSExport
 object Graph {
 
-  def apply(set: String = "2x4",
-            nrInSet: Int = 0,
-            rows: Int = 12,
-            cols: Int = 12
-            ): Graph = {
-    val rel: M = toCheckerboard(getRelSources(set, nrInSet))
-    val abs: M = toAbsWithMargins(rel,rows,cols)
+  def apply(set: String, nrInSet: Int, rows: Int, cols: Int
+           ): Graph = {
+    val abs: M = Matrix(set, nrInSet, rows, cols)
     val nrOfLinks = countLinks(abs)
     val nodeNrs = assignNodeNrs(abs, nrOfLinks)
-    Graph(toNodes(abs, nrOfLinks, 2, 4), toLinks(abs, nodeNrs))
+    val dim = Matrix.dim(set)
+    Graph(
+      toNodes(abs, nrOfLinks, rows = dim(0), cols = dim(1)),
+      toLinks(abs, nodeNrs)
+    )
   }
 
-  def assignNodeNrs(abs: M, nrOfLinks: Array[Array[Int]]): Array[Array[Int]] = {
+  def assignNodeNrs(abs: M, nrOfLinks: Array[Array[Int]]
+                   ): Array[Array[Int]] = {
     val nodeNrs = Array.fill(abs.length, abs(0).length)(0)
     var nodeNr = 0
     for {row <- nodeNrs.indices
@@ -61,10 +62,8 @@ object Graph {
   }
 
   @JSExport
-  def getD3Data(set: String = "2x4",
-                nrInSet: Int = 0,
-                rows: Int = 10,
-                cols: Int = 10): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
+  def getD3Data(set: String, nrInSet: Int, rows: Int, cols: Int
+               ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
     val g = Graph(set, nrInSet, rows, cols)
     js.Dictionary(
       "nodes" -> toJS(g.nodes),
@@ -72,7 +71,8 @@ object Graph {
     )
   }
 
-  def toJS(items: Array[HashMap[String,Any]]): js.Array[js.Dictionary[Any]] = {
+  def toJS(items: Array[HashMap[String,Any]]
+          ): js.Array[js.Dictionary[Any]] = {
 
     val a = js.Array[js.Any](items.length).asInstanceOf[js.Array[js.Dictionary[Any]]]
     for {i <- items.indices} {
@@ -85,13 +85,12 @@ object Graph {
   }
 
   /** Creates nodes for a pair diagram as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js */
-  def toNodes (m: M, nrOfLinks: Array[Array[Int]], rows: Int, cols: Int): Array[Props] = {
+  def toNodes (m: M, nrOfLinks: Array[Array[Int]], rows: Int, cols: Int
+              ): Array[Props] = {
 
     val stitch = Props("title" -> "stitch")
     val bobbin = Props("bobbin" -> true)
     val nodes = ListBuffer[Props]()
-    val rows = 2
-    val cols = 4
     val margin = 2
     val colChars = "ABCDEFGHIJKLMNOP".toCharArray
     var pairNr = 0
@@ -112,7 +111,8 @@ object Graph {
   }
 
   /** Creates links for a pair diagram as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js */
-  def  toLinks (m: M, nodeNrs: Array[Array[Int]]): Array[Props] = {
+  def  toLinks (m: M, nodeNrs: Array[Array[Int]]
+               ): Array[Props] = {
 
     val links = ListBuffer[Props]()
 
@@ -142,7 +142,8 @@ object Graph {
     links.toArray
   }
 
-  def inMargin(m: M, row: Int, col: Int): Boolean = {
+  def inMargin(m: M, row: Int, col: Int
+              ): Boolean = {
     val rows = m.length
     val cols = m(0).length
     row < 2 || col < 2 || col >= cols - 2 || row >= rows - 2

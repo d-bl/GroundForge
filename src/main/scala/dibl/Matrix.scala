@@ -20,6 +20,10 @@ import scala.collection.mutable.ListBuffer
 
 object Matrix {
 
+  def apply (key: String, index: Int, absRows: Int, absCols: Int): M =
+    toAbsWithMargins(toCheckerboard(getRelSources(key, index)), absRows, absCols)
+
+
   /** Creates a checkerboard-matrix from a brick-matrix by 
     * adding two half bricks to the bottom of the brick-matrix.
     * In ascii-art:
@@ -74,7 +78,7 @@ object Matrix {
     for (col <- 2 until absCols + 2) {
       // top margin
       for (i <- abs(2)(col).indices) {
-        val (srcRow, srcCol) = abs(2)(col)(i)
+        val (srcRow, _) = abs(2)(col)(i)
         if (srcRow == 1) abs(2)(col)(i) = (i % 2, col)
       }
       // bottom margin
@@ -116,7 +120,6 @@ object Matrix {
     }
     def connectFootsides (sources: Seq[(Int,Int)]): Unit = {
       for (i <- 1 until sources.length) {
-        val (srcRow,srcCol) = sources(i-1)
         val (row,col) = sources(i)
         abs(row)(col) = abs(row)(col) :+ sources(i-1)
       }
@@ -148,6 +151,14 @@ object Matrix {
     "4x4" -> Array[String]()
   )
 
+  /** Gets the dimensions from a matrixMap key
+    *
+    * @param key for matrixMap
+    * @return rows, cols and any other numbers found
+    */
+  def dim(key: String): Array[Int] =
+    key.split("[^0-9]+").map(_.toInt)
+
   /** Translates a character in a matrix string into relative links with source nodes.
     * The source nodes are defined with relative (row,column) numbers.
     * A node can be connected in eight directions, but source nodes are not found downwards.
@@ -169,7 +180,7 @@ object Matrix {
     '-' -> SrcNodes()                 // not used node
   )
 
-  def unpack(s: String): R = s.toCharArray.map {
+  private def unpack(s: String): R = s.toCharArray.map {
     relSourcesMap.get(_).get
   }
 
@@ -177,9 +188,9 @@ object Matrix {
    * @param set key for a set of predefined matrices
    * @param nr sequence number of the matrix in the set
    */
-  def getRelSources(set: String, nr: Int): M = {
+  private def getRelSources(set: String, nr: Int): M = {
     val s = matrixMap.get(set).get(nr) // TODO: both set and nr could be invalid
-    val cols = set.split("x")(1).toInt // won't fail if previous is OK
+    val cols = dim(set)(1) // won't fail if previous is OK
     unpack(s).grouped(cols).toArray
   }
 }
