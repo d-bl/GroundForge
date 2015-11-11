@@ -20,9 +20,9 @@ function startPair (svg){
         .attr('d', d3.svg.symbol().type("diamond"))
         .attr('fill', "#000").style('opacity',0.5)
 }
-function startMarker (svg,id,color){
+function markers (svg,id,color){
     svg.append('svg:defs').append('svg:marker')
-        .attr('id', id)
+        .attr('id', 'start-' + id)
         .attr('viewBox', '0 -5 10 10')
         .attr('markerWidth', 6)
         .attr('markerHeight', 8 )
@@ -31,10 +31,9 @@ function startMarker (svg,id,color){
         .attr('d', 'M0,0L10,0')
         .attr('stroke-width', 3)
         .attr('stroke', color)
-}
-function endMarker (svg,id,color){
+
     svg.append('svg:defs').append('svg:marker')
-        .attr('id', id)
+        .attr('id', 'end-' + id)
         .attr('viewBox', '0 -5 10 10')
         .attr('refX', 10)
         .attr('markerWidth', 6)
@@ -58,23 +57,23 @@ function showGraph(args) {
 
     startThread(svg)
     startPair(svg)
-    startMarker(svg, 'start-green','#0f0')
-    endMarker(svg, 'end-green','#0f0')
-    startMarker(svg, 'start-red','#f00')
-    endMarker(svg, 'end-red','#f00')
-    startMarker(svg, 'start-white','#fff')
-    endMarker(svg, 'end-white','#fff')
+    markers(svg, 'green','#0f0')
+    markers(svg, 'red','#f00')
+    markers(svg, 'purple','#609')
+    markers(svg, 'white','#fff')
 
     // object creation and decoration
 
     var isIE = document.documentURI == undefined // wrong feature check
     // http://www.sitepoint.com/detect-css3-property-browser-support/ ?
     // problem: the CSS3 property is supported but broken on moving links
-    var link = svg.selectAll(".link").data(args.links).enter().append("line")
+    var link = svg.selectAll(".path").data(args.links).enter().append("svg:path")
         .attr("class", function(d) { return d.thread ? "link thread" + d.thread : "link"})
+        .attr("id",function(d,i) { return "link_" + i; })
         .style('marker-start', function(d) { if (d.start && !isIE) return 'url(#start-'+d.start+')'})
         .style('marker-end', function(d) { if (d.end && !isIE) return 'url(#end-'+d.end+')'})
         .style('opacity', function(d) { return d.border || d.toPin ? 0 : 1})
+        .style('stroke', '#000')
 
     var node = svg.selectAll(".node").data(args.nodes).enter().append("circle")
         .attr("class", function(d) { return d.startOf ? ("node threadStart") : (d.pin ? ("node pin") : "node")})
@@ -88,10 +87,8 @@ function showGraph(args) {
         : ""
     })
 
-    // TODO tweak parametrs for (pin) behaviour once we have larger diagrams
-    // https://github.com/mbostock/d3/wiki/Force-Layout#linkDistance
-    // http://grokbase.com/t/gg/d3-js/1375rpwbdt/consistent-force-directed-graph-generation
-    // http://grokbase.com/t/gg/d3-js/137xwsrbd4/how-to-dynamically-adjusting-linkdistance-and-linkstrength-to-help-reducing-crossing-edges
+    // configure layout
+
     var force = d3.layout.force()
         .nodes(args.nodes)
         .links(args.links)
@@ -100,6 +97,18 @@ function showGraph(args) {
         .linkDistance(5)
         .linkStrength(5)
         .start()
+
+    // add twist marks
+
+    var labelText = svg.selectAll(".labelText")
+        .data(force.links()) // TODO skip links without text
+      .enter().append("text")
+        .attr("class","labelText")
+        .attr("dy", "2")
+      .append("textPath")
+        .attr("xlink:href",function(d,i) { return "#link_" + i})
+        .attr("startOffset", "50%")
+        .text(function(d,i) { return d.text})
 
     // event listeners
 
@@ -121,10 +130,10 @@ function showGraph(args) {
     // layout simulation step
 
     force.on("tick", function() {
-        link.attr("x1", function(d) { return d.source.x })
-            .attr("y1", function(d) { return d.source.y })
-            .attr("x2", function(d) { return d.target.x })
-            .attr("y2", function(d) { return d.target.y })
+        link.attr("d", function(d) {
+          return "M" + d.source.x + "," + d.source.y +
+                 " " + d.target.x + "," + d.target.y
+        })
 
         node.attr("cx", function(d) { return d.x })
             .attr("cy", function(d) { return d.y })

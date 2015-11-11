@@ -26,6 +26,7 @@
     </script>
     <style>
         input { width: 3em; }
+        #threadColor input { width: 4.5em; }
         label, form { display: inline-block; }
         .node {
           fill: #000;
@@ -34,25 +35,24 @@
         .node.fixed {
           fill: #90f;
         }
-        .link {
-          stroke: #000;
-        }
         svg {vertical-align: text-top}
+
+        /* size relates to dy-attribute of svg.selectAll(".labelText") in the script */
+        .labelText {font-size:9px; font-weight: bold; }
     </style>
 </head>
 <body>
     <img align="right" src="../logo-big.png" width="104" height="96"/>
     <h1>Bobbin lace working diagrams</h1>
-    <p><em>Under construction</em>: 
-       need to figure out the edges of the big diagram, a thread version,
-       and add the choices available for the diagram generator based on <a href="http://jo-pol.github.io/DiBL/grounds"
-       >templates</a>.
+    <p><em>Under construction</em>: <a href="https://github.com/jo-pol/DiBL/labels/enhancement"
+    >wish list</a>, see also the previous diagram generator based on <a href="http://jo-pol.github.io/DiBL/grounds"
+       >templates</a> for thread diagrams.
     </p>
     <ul><li>
       Drag pins to fix their position, single click to release.
     </li><li>
       Hover over diagram components for tooltips: the stitch in terms of t(wist)c(cross)
-        + spreadsheet like coordinates matching the brick wise stacked matrix.
+        + spreadsheet like coordinates matching a brick wise stacked matrix.
     </li><li>
       The diagrams might be rotated, mirrored or twisted: dragging can fix that.
       A fast move may (un)twist or flip a diagram. Two twists can become a flip too.
