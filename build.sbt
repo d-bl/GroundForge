@@ -4,7 +4,7 @@ enablePlugins(ScalaJSPlugin)
 
 workbenchSettings
 
-name := "DiBL-ground"
+name := "DiBL-tensioned"
 
 version := "0.1-SNAPSHOT"
 
