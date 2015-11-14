@@ -19,11 +19,10 @@ import dibl.Matrix._
 
 import scala.collection.immutable.HashMap
 import scala.collection.mutable.ListBuffer
-import scala.scalajs.js
-import scala.scalajs.js.annotation.JSExport
 
 case class Graph(nodes: Array[HashMap[String,Any]],
-                 links: Array[HashMap[String,Any]]){
+                 links: Array[HashMap[String,Any]]) {
+  // assign numbers to the source node of the first link of each pair
   private val startLinks = links.filter(_.getOrElse("start","").toString.startsWith("pair"))
   for (i <- startLinks.indices){
     val source = startLinks(i).get("source").get.asInstanceOf[Int]
@@ -31,7 +30,6 @@ case class Graph(nodes: Array[HashMap[String,Any]],
   }
 }
 
-@JSExport
 object Graph {
 
   def apply(set: String, nrInSet: Int, rows: Int, cols: Int
@@ -61,56 +59,43 @@ object Graph {
     nodeNrs
   }
 
-  @JSExport
-  def getD3Data(set: String, nrInSet: Int, rows: Int, cols: Int
-               ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
-    val g = Graph(set, nrInSet, rows, cols)
-    js.Dictionary(
-      "nodes" -> toJS(g.nodes),
-      "links" -> toJS(g.links)
-    )
-  }
-
-  def toJS(items: Array[HashMap[String,Any]]
-          ): js.Array[js.Dictionary[Any]] = {
-
-    val a = js.Array[js.Any](items.length).asInstanceOf[js.Array[js.Dictionary[Any]]]
-    for {i <- items.indices} {
-      a(i) = js.Object().asInstanceOf[js.Dictionary[Any]]
-      for {key <- items(i).keys} {
-        a(i)(key) = items(i).get(key).get
-      }
-    }
-    a
-  }
-
-  /** Creates nodes for a pair diagram as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js */
+  /** Creates nodes for a pair diagram
+    *
+    * @param m a brick wise stacked version of a predefined matrix
+    * @param nrOfLinks nr of links per node alias matrix-cell
+    * @param rows dimension of the predefined matrix
+    * @param cols dimension of the predefined matrix
+    * @return properties per node as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js
+    */
   def toNodes (m: M, nrOfLinks: Array[Array[Int]], rows: Int, cols: Int
               ): Array[Props] = {
 
-    val stitch = Props("title" -> "stitch")
     val bobbin = Props("bobbin" -> true)
     val nodes = ListBuffer[Props]()
     val margin = 2
-    val colChars = "ABCDEFGHIJKLMNOP".toCharArray
-    var pairNr = 0
+    val colChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray
     for (row <- m.indices) {
-      // see comment about brick on Matrix.toCheckerboard
-      // +2 prevents modulo of a negative number
-      val offset = ((((row - margin) / rows) + 2) % 2)  * (cols / 2) - margin
-
+      // + margin prevents modulo of a negative number
+      val brickOffset = ((((row - margin) / rows) + margin) % 2)  * (cols / 2) + margin
+      val spreadsheetLikeRow = row % rows + 1
       for (col <- m(0).indices) {
+        val spreadSheetLikeCol = colChars((brickOffset + col) % cols)
         if (nrOfLinks(row)(col) > 0) {
           nodes += (
             if (row >= m.length - 2) bobbin
             else Props("title" -> (
               if (inMargin(m, row, col)) "ttctc"
-              else s"tctc ${row % rows + 1}${colChars((offset + col) % cols)}"
+              else s"tctc - $spreadSheetLikeCol$spreadsheetLikeRow"
     )))}}}
     nodes.toArray
   }
 
-  /** Creates links for a pair diagram as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js */
+  /** Creates links for a pair diagram
+    *
+    * @param m a repeated of a predefined matrix
+    * @param nodeNrs sequence numbers assigned to actually used cells
+    * @return properties per link as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js
+    */
   def  toLinks (m: M, nodeNrs: Array[Array[Int]]
                ): Array[Props] = {
 

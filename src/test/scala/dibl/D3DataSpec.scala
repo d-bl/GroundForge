@@ -15,18 +15,11 @@
 */
 package dibl
 
-import org.scalatest._
+import org.scalatest.{Matchers, FlatSpec}
 
-import scala.scalajs.js.Dictionary
+class D3DataSpec extends FlatSpec with Matchers {
 
-class GraphSpec extends FlatSpec with Matchers {
-
-  "apply" should "produce nodes and links" in {
-    val graph = Graph("2x4",0,12,12)
-    println(graph.links.mkString("\n"))
-    println(graph.nodes.map(_.toString).sorted.distinct.mkString("\n"))
-    graph.nodes.length should be  > 100
-    graph.links.length should be > 200
-    // TODO nr of pairs should equal nr of bobbins
+  ignore should "run with JVM  used to build scala.js libraries" in {
+    val data = D3Data.get("2x4",0,12,12)
   }
 }
