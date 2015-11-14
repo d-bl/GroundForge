@@ -1,3 +1,4 @@
+fullyTransparant = 0 // global to allow override while testing
 function startThread (svg){
     svg.append('svg:defs').append('svg:marker')
         .attr('id', "start-thread")
@@ -65,20 +66,19 @@ function showGraph(args) {
     // object creation and decoration
 
     var isIE = document.documentURI == undefined // wrong feature check
-    // http://www.sitepoint.com/detect-css3-property-browser-support/ ?
-    // problem: the CSS3 property is supported but broken on moving links
+    // problem: the marker property is supported by IE but breaks on moving links
     var link = svg.selectAll(".path").data(args.links).enter().append("svg:path")
         .attr("class", function(d) { return d.thread ? "link thread" + d.thread : "link"})
         .attr("id",function(d,i) { return "link_" + i; })
         .style('marker-start', function(d) { if (d.start && !isIE) return 'url(#start-'+d.start+')'})
         .style('marker-end', function(d) { if (d.end && !isIE) return 'url(#end-'+d.end+')'})
-        .style('opacity', function(d) { return d.border || d.toPin ? 0 : 1})
+        .style('opacity', function(d) { return d.border || d.toPin ? fullyTransparant : 1})
         .style('stroke', '#000')
 
     var node = svg.selectAll(".node").data(args.nodes).enter().append("circle")
         .attr("class", function(d) { return d.startOf ? ("node threadStart") : (d.pin ? ("node pin") : "node")})
         .attr("r", function(d) { return d.pin ? 4 : 6})
-        .style('opacity', function(d) { return d.bobbin ? 0.5: (d.pin ? 0.2 : 0)})
+        .style('opacity', function(d) { return d.bobbin ? 0.5: (d.pin ? 0.2 : fullyTransparant)})
     node.append("svg:title").text(function(d) { 
         return d.title ? d.title 
         : d.pin ? "pin" 
@@ -86,6 +86,15 @@ function showGraph(args) {
         : d.startOf ? d.startOf.replace("thread","thread ")
         : ""
     })
+    svg.selectAll(".labelText")
+        .data(args.links) // TODO skip links without text
+      .enter().append("text")
+        .attr("class","labelText")
+        .attr("dy", "2")
+      .append("textPath")
+        .attr("xlink:href",function(d,i) { return "#link_" + i})
+        .attr("startOffset", "50%")
+        .text(function(d,i) { return d.text}) // a pipe symbol is a twist mark
 
     // configure layout
 
@@ -97,18 +106,6 @@ function showGraph(args) {
         .linkDistance(5)
         .linkStrength(5)
         .start()
-
-    // add twist marks
-
-    var labelText = svg.selectAll(".labelText")
-        .data(force.links()) // TODO skip links without text
-      .enter().append("text")
-        .attr("class","labelText")
-        .attr("dy", "2")
-      .append("textPath")
-        .attr("xlink:href",function(d,i) { return "#link_" + i})
-        .attr("startOffset", "50%")
-        .text(function(d,i) { return d.text})
 
     // event listeners
 
@@ -131,6 +128,8 @@ function showGraph(args) {
 
     force.on("tick", function() {
         link.attr("d", function(d) {
+          var dx = d.target.x - d.source.x,
+              dy = d.target.y - d.source.y
           return "M" + d.source.x + "," + d.source.y +
                  " " + d.target.x + "," + d.target.y
         })
