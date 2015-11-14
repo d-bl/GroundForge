@@ -28,7 +28,7 @@ class MatrixSpec extends FlatSpec with Matchers {
   }
 
   "matrix string lengths" should "match dimensions in the key" in {
-    matrixMap.keys.foreach{ key => 
+    matrixMap.keys.foreach{ key =>
       val dim = Matrix.dim(key)
       val valueLength = dim(0) * dim(1)
       matrixMap.get(key).get.foreach{ s =>
@@ -38,20 +38,22 @@ class MatrixSpec extends FlatSpec with Matchers {
     }
   }
 
-  "nr of source nodes" should "match nr of target nodes" in {
+  "predefined matrices" should "repeat without internal loose ends" in {
 
     matrixMap.keys.foreach { key =>
+      val errors = new StringBuffer()
       for (i <- matrixMap.get(key).get.indices) {
         val abs = Matrix(key, i, absRows = 12,absCols = 11)
         val nrOfLinks = countLinks(abs)
         // visualize nodes in the margins
-        println(nrOfLinks.deep.mkString("(",",",")").replaceAll("Array","\n").tail)
+        //println(nrOfLinks.deep.mkString("(",",",")").replaceAll("Array","\n").tail)
         for { // assertions
-          j <- 2 until nrOfLinks.length - 2
-          k <- 2 until nrOfLinks(0).length - 2
-        } if (nrOfLinks(j)(k)%4 != 0)
-          fail(s"($j,$k) for $key.$i has ${nrOfLinks(j)(k)} links")
+          row <- 2 until nrOfLinks.length - 2
+          col <- 3 until nrOfLinks(0).length - 3
+        } if (nrOfLinks(row)(col)%4 != 0)
+          errors.append (s"$key.$i has ${nrOfLinks(row)(col)} links at ($row,$col)\n")
       }
+      errors.toString shouldBe ""
       def s(xs: R) = println(xs.deep.mkString(",").replaceAll("Array",""))
     }
   }
