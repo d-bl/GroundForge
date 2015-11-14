@@ -15,9 +15,8 @@
 */
 package dibl
 
-import org.scalatest._
-import scala.collection.mutable.ListBuffer
 import dibl.Matrix._
+import org.scalatest._
 
 /** checks for typos in HashMap-s */
 class MatrixSpec extends FlatSpec with Matchers {
@@ -43,13 +42,13 @@ class MatrixSpec extends FlatSpec with Matchers {
     matrixMap.keys.foreach { key =>
       val errors = new StringBuffer()
       for (i <- matrixMap.get(key).get.indices) {
-        val abs = Matrix(key, i, absRows = 12,absCols = 11)
+        val abs = Matrix(key, i, absRows = 12,absCols = 11, left=1 , up=1)
         val nrOfLinks = countLinks(abs)
         // visualize nodes in the margins
         //println(nrOfLinks.deep.mkString("(",",",")").replaceAll("Array","\n").tail)
         for { // assertions
           row <- 2 until nrOfLinks.length - 2
-          col <- 3 until nrOfLinks(0).length - 3
+          col <- 3 until nrOfLinks(0).length - 3 // TODO fix foot sides to reduce 3 to 2
         } if (nrOfLinks(row)(col)%4 != 0)
           errors.append (s"$key.$i has ${nrOfLinks(row)(col)} links at ($row,$col)\n")
       }
