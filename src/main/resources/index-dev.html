@@ -18,7 +18,9 @@
 
     function show(form) {
       document.getElementById('diagram').innerHTML = ""
-      var data = dibl.D3Data().get(form.set.value, form.nrInSet.value * 1, form.rows.value * 1, form.cols.value * 1)
+      var data = dibl.D3Data().get(form.set.value, form.nrInSet.value * 1,
+                                   form.rows.value * 1, form.cols.value * 1,
+                                   form.shiftLeft.value *1)
       showGraph({
         threadColor: '#colorpicker',
         container: '#diagram',
@@ -36,7 +38,7 @@
 </head>
 <body onload="show(document.getElementById('graph'))">
   <form id="graph" action="" onsubmit="show(this); return false;">
-    <label for="set">set of predefined matrices</label>
+    <label for="set">matrix set</label>
     <select size="1" id="set" name="set" onChange="setMax(form)">
       <option data-max-nr="6">2x2</option>
       <option data-max-nr="92">4x2</option>
@@ -44,6 +46,8 @@
     </select>
     <label for="nrInSet">nr in set</label>
     <input id="nrInSet" name="nrInSet" min="0" max="46" value="3" type="number"/>
+    <label for="shiftLeft">shift footside by </label>
+    <input id="shiftLeft" name="shiftLeft" min="0" max="3" value="1" type="number"/>
     <label for="rows">rows</label>
     <input id="rows" name="rows" min="0" max="20" value="14" type="number"/>
     <label for="cols">columns</label>

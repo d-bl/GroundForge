@@ -16,7 +16,8 @@ one for the master branch, one for the gh-pages branch.
 
 # Unit tests
 
-Haven't found the proper incantation to execute the tests with sbt.
+The command `sbt test` only compiles the test classes.
+Haven't found the proper incantation to execute them with sbt.
 
 With the project imported in Intellij it is possible to execute the test classes one by one.
 Launching tests causes problems when sbt is still processing a change, just try again.

@@ -18,7 +18,7 @@ package dibl
 import dibl.Matrix._
 import org.scalatest._
 
-/** checks for typos in HashMap-s */
+/** checks for typos in HashMap-s and more */
 class MatrixSpec extends FlatSpec with Matchers {
 
   "chars in matrix strings" should "exist as keys for relSources" in {
@@ -42,18 +42,38 @@ class MatrixSpec extends FlatSpec with Matchers {
     matrixMap.keys.foreach { key =>
       val errors = new StringBuffer()
       for (i <- matrixMap.get(key).get.indices) {
-        val abs = Matrix(key, i, absRows = 12,absCols = 11, left=1 , up=1)
+        // TODO fix shift up
+        val abs = Matrix(key, i, absRows = 12,absCols = 11, left = 1, up = 0)
         val nrOfLinks = countLinks(abs)
         // visualize nodes in the margins
-        //println(nrOfLinks.deep.mkString("(",",",")").replaceAll("Array","\n").tail)
+        // println(nrOfLinks.deep.mkString("(",",",")").replaceAll("Array","\n").tail)
         for { // assertions
           row <- 2 until nrOfLinks.length - 2
-          col <- 3 until nrOfLinks(0).length - 3 // TODO fix foot sides to reduce 3 to 2
+          col <- 3 until nrOfLinks(0).length - 3 // TODO fix foot sides
         } if (nrOfLinks(row)(col)%4 != 0)
           errors.append (s"$key.$i has ${nrOfLinks(row)(col)} links at ($row,$col)\n")
       }
       errors.toString shouldBe ""
-      def s(xs: R) = println(xs.deep.mkString(",").replaceAll("Array",""))
     }
+  }
+
+  "shift" should "succeed" in {
+
+    val m1 = Array(Array[String]("a", "b", "c", "d"), Array[String]("A", "B", "C", "D"))
+    val m2 = Array(Array[String]("b", "c", "d", "a"), Array[String]("B", "C", "D", "A"))
+    val m3 = Array(Array[String]("B", "C", "D", "A"), Array[String]("b", "c", "d", "a"))
+    val m4 = Array(Array[String]("A", "B", "C", "D"), Array[String]("a", "b", "c", "d"))
+    val mA: M = Array(
+      Array(Array((11, 12)), Array((13, 14)), Array((15, 16)), Array((17, 18))),
+      Array(Array((21, 22)), Array((23, 24)), Array((25, 26)), Array((27, 28)))
+    )
+    val mB: M = Array(
+      Array(Array((23, 24)), Array((25, 26)), Array((27, 28)), Array((21, 22))),
+      Array(Array((13, 14)), Array((15, 16)), Array((17, 18)), Array((11, 12)))
+    )
+    shift(m1, left = 1, up = 0) shouldBe m2
+    shift(m1, left = 1, up = 1) shouldBe m3
+    shift(m1, left = 0, up = 1) shouldBe m4
+    shift(mA, left = 1, up = 1) shouldBe mB
   }
 }

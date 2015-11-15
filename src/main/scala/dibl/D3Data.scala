@@ -23,9 +23,9 @@ import scala.scalajs.js.annotation.JSExport
 object D3Data {
 
   @JSExport
-  def get(set: String, nrInSet: Int, rows: Int, cols: Int
+  def get(set: String, nrInSet: Int, rows: Int, cols: Int, shiftLeft: Int
          ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
-    val g = Graph(set, nrInSet, rows, cols)
+    val g = Graph(set, nrInSet, rows, cols, shiftLeft)
     js.Dictionary(
       "nodes" -> toJS(g.nodes),
       "links" -> toJS(g.links)
