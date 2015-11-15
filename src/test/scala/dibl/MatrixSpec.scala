@@ -43,15 +43,20 @@ class MatrixSpec extends FlatSpec with Matchers {
       val errors = new StringBuffer()
       for (i <- matrixMap.get(key).get.indices) {
         // TODO fix shift up
-        val abs = Matrix(key, i, absRows = 12,absCols = 11, left = 1, up = 0)
+        // TODO fix foot side, the next prohibit col 2 - l-2
+        // 46647817 2x4.31 no shift
+        // 46487127 2x4.36 no shift
+        // 66662222 2x4.38 no shift
+        // 4804-777 2x4.39 shift 2 and lots of rows
+        val abs = Matrix(key, i, absRows = 12,absCols = 12, left = 1, up = 0)
         val nrOfLinks = countLinks(abs)
         // visualize nodes in the margins
         // println(nrOfLinks.deep.mkString("(",",",")").replaceAll("Array","\n").tail)
         for { // assertions
           row <- 2 until nrOfLinks.length - 2
-          col <- 3 until nrOfLinks(0).length - 3 // TODO fix foot sides
+          col <- 3 until nrOfLinks(0).length - 3
         } if (nrOfLinks(row)(col)%4 != 0)
-          errors.append (s"$key.$i has ${nrOfLinks(row)(col)} links at ($row,$col)\n")
+          errors.append (s"${matrixMap.get(key).get(i)} $key.$i has ${nrOfLinks(row)(col)} links at ($row,$col)\n")
       }
       errors.toString shouldBe ""
     }
