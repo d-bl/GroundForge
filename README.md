@@ -9,7 +9,8 @@ Step by step changed an [example] for [D3.js]:
 - made nodes transparent except for bobbins
 - added properties to identify the links of a single thread
 - turned the links from lines to paths to add text: pipe symbols serve as twist marks
-- [scala code] compiled into `matrix-graphs.js` generates alternatives for the `sample.js`
+
+[scala code] compiled into `matrix-graphs.js` generates alternatives for the `sample.js`
 
 [example]: http://bl.ocks.org/mbostock/4062045
 [D3.js]: http://d3js.org/
