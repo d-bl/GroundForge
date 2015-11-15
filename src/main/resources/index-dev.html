@@ -10,10 +10,12 @@
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
   <script src="https://raw.githubusercontent.com/jo-pol/DiBL/gh-pages/tensioned/sample.js"></script>
-  <script src="show-graph.js"></script>
+  <script src="https://raw.githubusercontent.com/jo-pol/DiBL/gh-pages/tensioned/show-graph.js"></script>
   <script type="text/javascript" src="../dibl-tensioned-fastopt.js"></script>
   <script type="text/javascript" src="/workbench.js"></script>
   <script>
+    fullyTransparant = 0.1
+
     function show(form) {
       document.getElementById('diagram').innerHTML = ""
       var data = dibl.D3Data().get(form.set.value, form.nrInSet.value * 1, form.rows.value * 1, form.cols.value * 1)
@@ -26,6 +28,7 @@
         links: data.links,
       })
     }
+
     function setMax(form) {
       form.nrInSet.max = form.set[form.set.selectedIndex].getAttribute("data-max-nr")
     }
