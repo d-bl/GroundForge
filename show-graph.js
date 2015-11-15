@@ -81,7 +81,7 @@ function showGraph(args) {
         .style('opacity', function(d) { return d.bobbin ? 0.5: (d.pin ? 0.2 : fullyTransparant)})
     node.append("svg:title").text(function(d) { 
         return d.title ? d.title 
-        : d.pin ? "pin" 
+        : d.pin ? "pin: drag to fix, click to release"
         : d.bobbin ? "bobbin"
         : d.startOf ? d.startOf.replace("thread","thread ")
         : ""

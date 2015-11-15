@@ -13,7 +13,11 @@
     <script>
       function show(form) {
         document.getElementById('diagram').innerHTML = ""
-        var data = dibl.D3Data().get(form.set.value, form.nrInSet.value * 1, form.rows.value * 1, form.cols.value * 1)
+        var data = dibl.D3Data().get(
+          form.set.value, form.nrInSet.value * 1,
+          form.rows.value * 1, form.cols.value * 1,
+          form.shiftLeft.value * 1
+          )
         showGraph({
           threadColor: '#colorpicker',
           container: '#diagram',
@@ -52,10 +56,9 @@
        >templates</a> for thread diagrams.
     </p>
     <ul><li>
-      Drag pins to fix their position, single click to release.
-    </li><li>
-      Hover over form fields or diagram components for tooltips: the stitch in terms of t(wist)c(cross)
-        + spreadsheet like coordinates matching a brick wise stacked pattern matrix.
+      Hover over form fields or diagram components for tooltips: description, hint and/or
+        the stitch in terms of t(wist)c(cross) + spreadsheet like coordinates
+        matching a brick wise stacked pattern matrix.
     </li><li>
       The diagrams might be rotated, mirrored or twisted: dragging can fix that.
       A fast move may (un)twist or flip a diagram. Two twists can become a flip too.
@@ -71,13 +74,16 @@
                 <option data-max-nr="92">4x2</option>
                 <option data-max-nr="46" selected>2x4</option>
             </select>
-            <label for="nrInSet">nr in set</label>
-            <input id="nrInSet" name="nrInSet" min="0" max="46" value="3" type="number" title="matrix with configuration of stitch connections"/>
+            <label for="nrInSet">matrix in set</label>
+            <input id="nrInSet" name="nrInSet" min="0" max="46" value="3" type="number" title="configuration of stitch connections"/>
+
+            <label for="shiftLeft">shift footside by </label>
+            <input id="shiftLeft" name="shiftLeft" min="0" max="3" value="1" type="number" title="column of stitches"/>
 
             <label for="rows">rows</label>
-            <input id="rows" name="rows" min="0" max="20" value="8" type="number" title="number of stitches"/>
+            <input id="rows" name="rows" min="0" max="20" value="6" type="number" title="number of stitches"/>
             <label for="cols">columns</label>
-            <input id="cols" name="cols" min="0" max="20" value="5" type="number" title="number of stitches"/>
+            <input id="cols" name="cols" min="0" max="20" value="7" type="number" title="number of stitches"/>
 
             <label for="width">width</label>
             <input id="width" name="width" min="200" max="999" value="300" type="number" title="number of pixels"/>
@@ -105,9 +111,9 @@
         links: sample.links,
       })
     </script>
-    <p><a href="https://github.com/jo-pol/DiBL/commits/gh-pages/tensioned/"
-       >Changes</a>. <a href="https://github.com/jo-pol/DiBL/tree/gh-pages/tensioned"
-       >Source code</a>, contributions are welcome. Powered by: <a href="https://d3js.org"
+    <p><a href="https://github.com/jo-pol/DiBL/tree/gh-pages/tensioned"
+       >How it's made</a>, contributions are welcome, <a href="https://github.com/jo-pol/DiBL/commits/gh-pages/tensioned/"
+       >changes</a>. Powered by: <a href="https://d3js.org"
        >D3.js</a>, <a href="http://www.menucool.com/color-picker"
        >Menucool</a>.
     </p>
