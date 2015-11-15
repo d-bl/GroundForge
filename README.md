@@ -1,4 +1,4 @@
-[DEMO]
+[DEMO](http://jo-pol.github.io/DiBL/tensioned/)
 
 The code under `src/main/scala` generates  alternative data for `sample.js` in the [gh-pages branch].
 The patterns are generated from predefined [matrices].
@@ -27,8 +27,7 @@ Launching tests causes problems when sbt is still processing a change, just try 
 - Copy the content of `target\scala-2.11\dibl-tensioned-opt.js` in the master branch
   into `tensioned/matrix-graphs.js` in the [gh-pages branch]
 - Check the results with `tensioned/index.html`
-- If ok: commit, push and check the online [DEMO] 
+- If ok: commit, push and check the online demo in your own github fork: `http://YOURID.github.io/DiBL/tensioned/`
 
-[DEMO]: http://jo-pol.github.io/DiBL/tensioned/
 [gh-pages branch]: https://github.com/jo-pol/DiBL/tree/gh-pages/tensioned
 [matrices]: https://github.com/jo-pol/DiBL/blob/17a80e930df3540c95a5cb1bf68dec4f094ce202/web/tensioned/src/main/scala/dibl/Matrix.scala#L158-L167
