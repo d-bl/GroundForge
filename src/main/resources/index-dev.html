@@ -20,7 +20,7 @@
       document.getElementById('diagram').innerHTML = ""
       var data = dibl.D3Data().get(form.set.value, form.nrInSet.value * 1,
                                    form.rows.value * 1, form.cols.value * 1,
-                                   form.shiftLeft.value *1)
+                                   form.shiftLeft.value * 1, form.shiftUp.value * 1)
       showGraph({
         threadColor: '#colorpicker',
         container: '#diagram',
@@ -46,8 +46,10 @@
     </select>
     <label for="nrInSet">nr in set</label>
     <input id="nrInSet" name="nrInSet" min="0" max="46" value="3" type="number"/>
-    <label for="shiftLeft">shift footside by </label>
+    <label for="shiftLeft">shift left by </label>
     <input id="shiftLeft" name="shiftLeft" min="0" max="3" value="1" type="number"/>
+    <label for="shiftUp">shift up by </label>
+    <input id="shiftUp" name="shiftUp" min="0" max="3" value="0" type="number"/>
     <label for="rows">rows</label>
     <input id="rows" name="rows" min="0" max="40" value="14" type="number"/>
     <label for="cols">columns</label>

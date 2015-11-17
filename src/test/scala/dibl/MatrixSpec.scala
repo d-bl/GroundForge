@@ -46,7 +46,7 @@ class MatrixSpec extends FlatSpec with Matchers {
         // println(nrOfLinks.deep.mkString("(",",",")").replaceAll("Array","\n").tail)
         val mID = s"$key.$i"
         // some matrices even don't have loose ends in the foot sides
-        val topBottomMargin = 6
+        val topBottomMargin = 4
         val footsideMargin = if (key == "4x2" || mID == "2x4.37" || mID == "2x4.39" || mID == "2x2.5") 3 else 0
         // check the nodes have four or zero links but skip the margins
         for {
