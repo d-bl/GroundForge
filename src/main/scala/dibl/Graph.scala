@@ -32,9 +32,20 @@ case class Graph(nodes: Array[HashMap[String,Any]],
 
 object Graph {
 
-  def apply(set: String, nrInSet: Int, rows: Int, cols: Int, shiftLeft: Int
+  def apply(dims: String, s: String, rows: Int, cols: Int, shiftLeft: Int = 0, shiftUp: Int = 0): Graph = {
+    val abs: M = Matrix(dims, s, rows, cols, shiftLeft, shiftUp)
+    val nrOfLinks = countLinks(abs)
+    val nodeNrs = assignNodeNrs(abs, nrOfLinks)
+    val dim = Matrix.dim(dims)
+    Graph(
+      toNodes(abs, nrOfLinks, rows = dim(0), cols = dim(1)),
+      toLinks(abs, nodeNrs)
+    )
+  }
+
+  def apply(set: String, nrInSet: Int, rows: Int, cols: Int, shiftLeft: Int, shiftUp: Int
            ): Graph = {
-    val abs: M = Matrix(set, nrInSet, rows, cols, left = shiftLeft)
+    val abs: M = Matrix(set, nrInSet, rows, cols, shiftLeft, shiftUp)
     val nrOfLinks = countLinks(abs)
     val nodeNrs = assignNodeNrs(abs, nrOfLinks)
     val dim = Matrix.dim(set)
