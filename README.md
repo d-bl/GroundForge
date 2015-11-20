@@ -3,8 +3,7 @@
 The code under `src/main/scala` generates  alternative data for `sample.js` in the [gh-pages branch].
 The patterns are generated from predefined [matrices].
 
-It is convenient for a developer to have two local clones of the project,
-one for the master branch, one for the gh-pages branch.
+
 
 # Compile and preview
 
@@ -13,7 +12,8 @@ requirements:
 - a browser with proper SVG support, not IE
 
 steps:
-- Make a local clone of the project
+- Make a local clone of the project, it can be convenient to have two local clones,
+  one for the master branch, one for the gh-pages branch.
 - Go to `web/tensioned` inside the clone
 - Start the command `sbt ~fastOptJS`
 - Monitor the result on `http://localhost:12345/target/scala-2.11/classes/index-dev.html`
