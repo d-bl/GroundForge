@@ -7,7 +7,7 @@ Step by step changed an [example] for [D3.js]:
 - replaced the server side JSon with the hard-coded `sample.js`
 - applied arrow heads and flattened them to colored line ends to emulate [color coded diagrams]
 - made nodes transparent except for bobbins
-- added properties to identify the links of a single thread
+- added properties to identify the links that are part of a single thread
 - turned the links from lines to paths to add text: pipe symbols serve as twist marks
 
 [scala code] compiled into `matrix-graphs.js` generates alternatives for the `sample.js`. It uses a hard-coded [compact] version of data [published] by [Veronika Irvine].
