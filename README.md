@@ -7,11 +7,13 @@ The patterns are generated from predefined [matrices].
 
 # Compile and preview
 
-requirements:
+Requirements
+
 - [sbt] 0.13.7 or higher
 - a browser with proper SVG support, for example FireFox, Chrome, Safari but not Internet Explorer.
 
-steps:
+Steps
+
 - Make a local clone of the project, it can be convenient to have two local clones,
   one for the master branch, one for the gh-pages branch.
 - Go to `web/tensioned` inside the clone.
@@ -20,6 +22,12 @@ steps:
   It is a dressed down version of the demo page, with experimental features added.
   Nodes and links invisible in the demo page are shown faint for debugging purposes.
 - Saving code changes updates the page automatically.
+
+Important code conventions
+
+- Don't catch exceptions in a `Try` but prevent them to create a `Failure` for safe execution as JavaScript.
+- Restrict the use of raw js objects to the `D3Data` class to allow execution of the other classes with a recent JVM.
+
 
 # Unit tests
 
