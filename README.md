@@ -9,22 +9,22 @@ The patterns are generated from predefined [matrices].
 
 requirements:
 - [sbt] 0.13.7 or higher
-- a browser with proper SVG support, listed on the demo page
+- a browser with proper SVG support, for example FireFox, Chrome, Safari but not Internet Explorer.
 
 steps:
 - Make a local clone of the project, it can be convenient to have two local clones,
   one for the master branch, one for the gh-pages branch.
-- Go to `web/tensioned` inside the clone
+- Go to `web/tensioned` inside the clone.
 - Start the command `sbt ~fastOptJS`
 - Monitor the result on `http://localhost:12345/target/scala-2.11/classes/index-dev.html`
-  It is a dressed down version of the demo page, nodes and links invisible in the demo page
-  are shown faint for debugging purposes.
-- Saving code changes updates the page automatically
+  It is a dressed down version of the demo page, with experimental features added.
+  Nodes and links invisible in the demo page are shown faint for debugging purposes.
+- Saving code changes updates the page automatically.
 
 # Unit tests
 
 The command `sbt test` only compiles the test classes.
-Haven't found the proper incantation to execute them with sbt.
+Haven't found the proper incantation to execute the test with sbt.
 
 With the project imported in Intellij it is possible to execute the test classes one by one.
 Launching tests causes problems when sbt is still processing a change, just try again.
