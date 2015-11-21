@@ -9,7 +9,7 @@ The patterns are generated from predefined [matrices].
 
 requirements:
 - [sbt] 0.13.7 or higher
-- a browser with proper SVG support, not IE
+- a browser with proper SVG support, listed on the demo page
 
 steps:
 - Make a local clone of the project, it can be convenient to have two local clones,
