@@ -19,24 +19,24 @@ import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
 import scala.collection.mutable.ListBuffer
 import scala.reflect.ClassTag
-import scala.util.Try
+import scala.util.{Success, Failure, Try}
 
 object Matrix {
 
-  def apply(key: String, index: Int, absRows: Int, absCols: Int, left: Int, up: Int): M =
-    getRelSources(key, index).map(m => apply(m, absRows, absCols, left, up)).get
+  def apply(key: String, index: Int, absRows: Int, absCols: Int, left: Int, up: Int): Option[Try[M]] =
+    getRelSrcNodes(key, index).map(apply(_, absRows, absCols, left, up))
 
-  def apply(dims: String, s: String, absRows: Int, absCols: Int, left: Int, up: Int): M =
-    toSrcNodes(dims, s).map(m => apply(m, absRows, absCols, left, up)).get
+  def apply(dims: String, matrix: String, absRows: Int, absCols: Int, left: Int, up: Int): Try[M] =
+    toRelSrcNodes(dims, matrix).flatMap(apply(_, absRows, absCols, left, up))
 
-  private def apply(m: M, absRows: Int, absCols: Int, left: Int, up: Int): M =
+  private def apply(m: M, absRows: Int, absCols: Int, left: Int, up: Int): Try[M] =
     toAbsWithMargins(shift(toCheckerboard(m), left, up), absRows, absCols)
 
   @tailrec
   private def shiftX[T: ClassTag](m: Array[T], shift: Int): Array[T] =
     if (shift <= 0) m else shiftX(m.tail :+ m.head, shift - 1)
 
-  protected def shift[T: ClassTag](m: Array[Array[T]], left: Int, up: Int): Array[Array[T]] =
+  def shift[T: ClassTag](m: Array[Array[T]], left: Int, up: Int): Array[Array[T]] =
     shiftX(for (r <- m) yield shiftX(r, left), up)
 
   /** Creates a checkerboard-matrix from a brick-matrix by 
@@ -52,18 +52,11 @@ object Matrix {
     * +---+---+
     * </pre>
     */
-  def toCheckerboard(m: M): M = {
-    val rows = m.length
-    val cols = m(0).length
-    val result: M = Array.ofDim[SrcNodes](2*rows, cols)
-    for {
-      row <- m.indices
-      col <- m(0).indices
-    } {
-      result(row)(col) = m(row)(col)
-      result(row+rows)((col+cols/2)%cols) = m(row)(col)
+  private def toCheckerboard(m: M): M = {
+    m ++ m.map{r =>
+      val (left,right) = r.splitAt(r.length/2)
+      right ++ left
     }
-    result
   }
 
   /** Converts relative source nodes in one matrix into
@@ -79,72 +72,74 @@ object Matrix {
     * The other symbols match two nodes for (potential) new pairs or for pairs of bobbins.
     * See also println's in unit tests.
     */
-  def toAbsWithMargins(rel: M, absRows: Int, absCols: Int): M = {
-    val abs = Array.fill(absRows + 3,absCols + 4)(SrcNodes())
-    val relRows = rel.length
-    val relCols = rel(0).length
-    for {
-      absRow <- 2 until absRows + 2
-      absCol <- 2 until absCols + 2
-    } {
-      abs(absRow)(absCol) = for ((relRow, relCol) <- rel(absRow % relRows)(absCol % relCols))
-        yield (absRow + relRow, absCol + relCol)
-    }
-    for (col <- 2 until absCols + 2) {
-      // top margin
-      for (i <- abs(2)(col).indices) {
-        val (srcRow, _) = abs(2)(col)(i)
-        if (srcRow == 1) abs(2)(col)(i) = (i % 2, col)
+  private def toAbsWithMargins(rel: M, absRows: Int, absCols: Int): Try[M] =
+    if (absRows < 1 || absCols < 1) Failure(new IllegalArgumentException(""))
+    else Success {
+      val abs = Array.fill(absRows + 3, absCols + 4)(SrcNodes())
+      val relRows = rel.length
+      val relCols = rel(0).length
+      for {
+        absRow <- 2 until absRows + 2
+        absCol <- 2 until absCols + 2
+      } {
+        abs(absRow)(absCol) = for ((relRow, relCol) <- rel(absRow % relRows)(absCol % relCols))
+          yield (absRow + relRow, absCol + relCol)
       }
-      // bottom margin
-      if (abs(absRows + 1)(col).length > 1) {
-        abs(absRows + 2)(col) = Array(abs(absRows + 1)(col)(1))
-        abs(absRows + 1)(col) = Array(abs(absRows + 1)(col)(0))
-      }
-    }
-    // foot sides: join each pair-out (nrOfNodes==3) with the next pair-in (col in margin)
-    val nrOfLinks = countLinks(abs)
-    def nextPairIn(row: Int, targetCol: Int, srcCol: Int, src: Int): Option[(Int, Int)] = {
-      for(r <- row+1 until absRows+2) {
-        if(abs(r)(targetCol).length>src && abs(r)(targetCol)(src)._2==srcCol)
-          return Some(abs(r)(targetCol)(src))
-      }
-      None
-    }
-    val targetCol = absCols + 1
-    for (row <- 2 until absRows + 2) {
-      if(nrOfLinks(row)(2)==3) {
-        nextPairIn(row,2,1,0) match {
-          case Some((r,c)) => abs(r)(c) = SrcNodes((row,2))
-          case None => abs(row)(0) = Array((row,2))
+      for (col <- 2 until absCols + 2) {
+        // top margin
+        for (i <- abs(2)(col).indices) {
+          val (srcRow, _) = abs(2)(col)(i)
+          if (srcRow == 1) abs(2)(col)(i) = (i % 2, col)
+        }
+        // bottom margin
+        if (abs(absRows + 1)(col).length > 1) {
+          abs(absRows + 2)(col) = Array(abs(absRows + 1)(col)(1))
+          abs(absRows + 1)(col) = Array(abs(absRows + 1)(col)(0))
         }
       }
-      if(nrOfLinks(row)(targetCol)==3) {
-        nextPairIn(row,targetCol,targetCol+1,1) match {
-          case Some((r,c)) => abs(r)(c) = SrcNodes((row,targetCol))
-          case None => abs(row)(targetCol+2) = Array((row,targetCol))
+      // foot sides: join each pair-out (nrOfNodes==3) with the next pair-in (col in margin)
+      val nrOfLinks = countLinks(abs)
+      def nextPairIn(row: Int, targetCol: Int, srcCol: Int, src: Int): Option[(Int, Int)] = {
+        for (r <- row + 1 until absRows + 2) {
+          if (abs(r)(targetCol).length > src && abs(r)(targetCol)(src)._2 == srcCol)
+            return Some(abs(r)(targetCol)(src))
+        }
+        None
+      }
+      val targetCol = absCols + 1
+      for (row <- 2 until absRows + 2) {
+        if (nrOfLinks(row)(2) == 3) {
+          nextPairIn(row, 2, 1, 0) match {
+            case Some((r, c)) => abs(r)(c) = SrcNodes((row, 2))
+            case None => abs(row)(0) = Array((row, 2))
+          }
+        }
+        if (nrOfLinks(row)(targetCol) == 3) {
+          nextPairIn(row, targetCol, targetCol + 1, 1) match {
+            case Some((r, c)) => abs(r)(c) = SrcNodes((row, targetCol))
+            case None => abs(row)(targetCol + 2) = Array((row, targetCol))
+          }
         }
       }
-    }
-    val nrOfLinks2 = countLinks(abs)
-    val leftFootsides = ListBuffer[(Int,Int)]()
-    val rightFootsides = ListBuffer[(Int,Int)]()
-    for (row <- 2 until absRows + 2) {
-      if(nrOfLinks2(row)(1)>0) leftFootsides += ((row,1))
-      if(nrOfLinks2(row)(targetCol+1)>0) rightFootsides += ((row,targetCol+1))
-    }
-    def connectFootsides (sources: Seq[(Int,Int)]): Unit = {
-      for (i <- 1 until sources.length) {
-        val (row,col) = sources(i)
-        abs(row)(col) = abs(row)(col) :+ sources(i-1)
+      val nrOfLinks2 = countLinks(abs)
+      val leftFootsides = ListBuffer[(Int, Int)]()
+      val rightFootsides = ListBuffer[(Int, Int)]()
+      for (row <- 2 until absRows + 2) {
+        if (nrOfLinks2(row)(1) > 0) leftFootsides += ((row, 1))
+        if (nrOfLinks2(row)(targetCol + 1) > 0) rightFootsides += ((row, targetCol + 1))
       }
+      def connectFootsides(sources: Seq[(Int, Int)]): Unit = {
+        for (i <- 1 until sources.length) {
+          val (row, col) = sources(i)
+          abs(row)(col) = abs(row)(col) :+ sources(i - 1)
+        }
+      }
+      leftFootsides += ((absRows + 2, 1))
+      rightFootsides += ((absRows + 2, targetCol + 1))
+      connectFootsides(leftFootsides)
+      connectFootsides(rightFootsides)
+      abs
     }
-    leftFootsides += ((absRows+2,1))
-    rightFootsides += ((absRows+2,targetCol+1))
-    connectFootsides(leftFootsides)
-    connectFootsides(rightFootsides)
-    abs
-  }
 
   def countLinks(m: M): Array[Array[Int]] = {
     val links = Array.fill(m.length,m(0).length)(0)
@@ -160,6 +155,7 @@ object Matrix {
     * Each cell (alias character) represents a target node in a two-in-two-out directed graph, see relSourcesMap.
     */
   val matrixMap: HashMap[String,Array[String]] = HashMap (
+    "2x4 rose ground" -> Array[String]("5831-4-7"),
     "2x2" -> Array[String]("4368","535-","6666","684-","8811","6622","4477"),
     "2x4" -> Array[String]("46636668","48322483","563234-7","5831-4-7","4830--77","43436868","43535863","43116888","43215883","48405887","46-16868","48635663","53535353","43735-53","43126-78","43225-73","48415377","46-26-58","48-25-53","46419177","66666666","466-6686","46836-48","566-66-5","6868-4-4","-4866-48","586--4-5","688814-1","88881111","44881748","588-14-2","44667781","-43734-7","48835-43","48154-77","48487171","84647712","66662222","64647272","4804-777","5-5--5-5","44447777","46316688","563166-7","46833468","46323488","14838-48"),
     "4x2" -> Array[String]("66666666","43680099","43683486","4368-468","43684-86","43681188","43536866","43535368","43535-86","43532188","435-8666","6666-468","435-1099","435-3586","435--568","435-1288","43980088","43981166","43216688","4321-498","43214-89","43218866","66661188","43217368","43217-86","4321-768","66666622","66668811","66667-12","66669900","66662222","66009922","66-46822","66-40199","66-49811","66886611","6688-421","66888800","66881122","66887-10","66882211","66118822","66119911","667-8611","66-45-86","667--521","667-8900","66990022","6699-401","66991111","66992200","66226622","43686622","43688811","43687321","66-42188","43687-12","4368-721","43689900","43682222","43019922","43536822","43539811","435-8622","435-8911","43986611","6611-498","43983412","4398-421","43984-12","43988800","43987301","43987-10","4398-701","88881111","88118811","887--501","66112288","88991100","44447777","44774477","68-4684-","68-4217-","684--55-","6888114-","6811884-","6811-75-","687-107-","43686666","687-124-","5353535-","535-864-","535--55-")
@@ -184,35 +180,52 @@ object Matrix {
     '-' -> SrcNodes()                 // not used node
   )
 
-  /** Gets the dimensions from a matrixMap key
-    *
-    * @param key for matrixMap
-    * @return rows, cols and any other numbers found
-    */
-  def dim(key: String): Array[Int] = key.split("[^0-9]+").map(_.toInt)
-  def cols(key: String): Int = dim(key)(1)
-  def rows(key: String): Int = dim(key)(0)
-
-  def unpack(s: String): R = s.toCharArray.map {
-    relSourcesMap.get(_).get
-  }
-
   /** Gets the relative source nodes.
    * @param key key for a set of predefined matrices
    * @param nr sequence number of the matrix-string in the set
    */
-  private def getRelSources(key: String, nr: Int): Option[M] =
-    matrixMap.get(key).flatMap(strings => Try(strings(nr)).toOption)
-      .map(toSrcNodes(_, key).get) // the tests make sure matrixMap provides valid dimensions
+  private def getRelSrcNodes(key: String, nr: Int): Option[M] =
+    matrixMap.get(key).flatMap(strings => {
+      if (nr < 0 || nr >= strings.length) None
+      else Some( strings(nr))
+      // the tests of matrixMap make sure we can't run into more trouble
+    }).map(toRelSrcNodes(_, key).get)
 
-  /** @param matrix the characters in the string are keys in relSourcesMap
+  /** Translates each character into a relative source node.
+    * @param matrix the characters in the string are keys in relSourcesMap
     * @param dimensions a string with at least two sequences of digits,
     *                   s1*s2 should equal the length of the matrix string
     * @return
     */
-  private def toSrcNodes(matrix: String, dimensions: String): Try[M] = Try (
-    matrix.toCharArray.map {
-      relSourcesMap.get(_).get
-    }.grouped(cols(dimensions)).toArray
-  )
+  private def toRelSrcNodes(matrix: String, dimensions: String): Try[M] = {
+    dims(dimensions).flatMap { case (rows,cols) =>
+      val matrixSize = rows * cols
+      if (matrixSize != matrix.length)
+        Failure(new IllegalArgumentException(
+          s"length of '$matrix' is ${matrix.length} while '$dimensions' asks for $matrixSize"
+        ))
+      else if (!matrix.matches("[-0-9]+"))
+        Failure(new IllegalArgumentException(
+          s"'$matrix' is not a valid matrix string"
+        ))
+      else Success( // we can't run into trouble any more
+        matrix.toCharArray.map {
+          relSourcesMap.get(_).get
+        }.grouped(cols).toArray
+      )
+    }
+  }
+
+  /** @param s for example "4x2..."
+    * @return (rows,cols) in case of the example: (4,2)
+    */
+  def dims(s: String): Try[(Int,Int)] =
+    if (!s.matches("[0-9]+[^0-9]+[0-9]+.*"))
+      Failure(new IllegalArgumentException(
+        s"'$s' should contain at least two sequences of digits"
+      ))
+    else Success {
+      val ints = s.split("[^0-9]+").map(_.toInt)
+      (ints(0), ints(1))
+    }
 }

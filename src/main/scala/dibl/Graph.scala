@@ -32,25 +32,25 @@ case class Graph(nodes: Array[HashMap[String,Any]],
 
 object Graph {
 
-  def apply(dims: String, s: String, rows: Int, cols: Int, shiftLeft: Int = 0, shiftUp: Int = 0): Graph = {
-    val abs: M = Matrix(dims, s, rows, cols, shiftLeft, shiftUp)
+  def apply(dims: String, s: String, absRows: Int, absCols: Int, shiftLeft: Int = 0, shiftUp: Int = 0): Graph = {
+    val abs: M = Matrix(dims, s, absRows, absCols, shiftLeft, shiftUp).get
     val nrOfLinks = countLinks(abs)
     val nodeNrs = assignNodeNrs(abs, nrOfLinks)
-    val dim = Matrix.dim(dims)
+    val (relRows,relCols) = Matrix.dims(dims).get
     Graph(
-      toNodes(abs, nrOfLinks, rows = dim(0), cols = dim(1)),
+      toNodes(abs, nrOfLinks, relRows, relCols),
       toLinks(abs, nodeNrs)
     )
   }
 
-  def apply(set: String, nrInSet: Int, rows: Int, cols: Int, shiftLeft: Int, shiftUp: Int
+  def apply(set: String, nrInSet: Int, absRows: Int, absCols: Int, shiftLeft: Int, shiftUp: Int
            ): Graph = {
-    val abs: M = Matrix(set, nrInSet, rows, cols, shiftLeft, shiftUp)
+    val abs: M = Matrix(set, nrInSet, absRows, absCols, shiftLeft, shiftUp).get.get
     val nrOfLinks = countLinks(abs)
     val nodeNrs = assignNodeNrs(abs, nrOfLinks)
-    val dim = Matrix.dim(set)
+    val (relRows,relCols) = Matrix.dims(set).get
     Graph(
-      toNodes(abs, nrOfLinks, rows = dim(0), cols = dim(1)),
+      toNodes(abs, nrOfLinks, relRows, relCols),
       toLinks(abs, nodeNrs)
     )
   }
