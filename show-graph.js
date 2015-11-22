@@ -21,6 +21,19 @@ function startPair (svg){
         .attr('d', d3.svg.symbol().type("diamond"))
         .attr('fill', "#000").style('opacity',0.5)
 }
+function twistMark (svg){
+    svg.append('svg:defs').append('svg:marker')
+        .attr('id', "twist-1")
+        .attr('viewBox', '-2 -2 4 4')
+        .attr('markerWidth', 5)
+        .attr('markerHeight', 5)
+        .attr('orient', 'auto')
+      .append('svg:path')
+        .attr('d', 'M 0,6 0,-6')
+        .attr('fill', "#000")
+        .attr('stroke', "#000")
+        .attr('stroke-width', "1px")
+}
 function markers (svg,id,color){
     svg.append('svg:defs').append('svg:marker')
         .attr('id', 'start-' + id)
@@ -58,6 +71,7 @@ function showGraph(args) {
 
     startThread(svg)
     startPair(svg)
+    twistMark(svg)
     markers(svg, 'green','#0f0')
     markers(svg, 'red','#f00')
     markers(svg, 'purple','#609')
@@ -72,6 +86,7 @@ function showGraph(args) {
         .attr("id",function(d,i) { return "link_" + i; })
         .style('marker-start', function(d) { if (d.start && !isIE) return 'url(#start-'+d.start+')'})
         .style('marker-end', function(d) { if (d.end && !isIE) return 'url(#end-'+d.end+')'})
+        .style('marker-mid', function(d,i) { if (d.text) return 'url(#twist-1)'} )
         .style('opacity', function(d) { return d.border || d.toPin ? fullyTransparant : 1})
         .style('stroke', '#000')
 
@@ -86,15 +101,6 @@ function showGraph(args) {
         : d.startOf ? d.startOf.replace("thread","thread ")
         : ""
     })
-    svg.selectAll(".labelText")
-        .data(args.links) // TODO skip links without text
-      .enter().append("text")
-        .attr("class","labelText")
-        .attr("dy", "2")
-      .append("textPath")
-        .attr("xlink:href",function(d,i) { return "#link_" + i})
-        .attr("startOffset", "50%")
-        .text(function(d,i) { return d.text}) // a pipe symbol is a twist mark
 
     // configure layout
 
@@ -128,9 +134,10 @@ function showGraph(args) {
 
     force.on("tick", function() {
         link.attr("d", function(d) {
-          var dx = d.target.x - d.source.x,
-              dy = d.target.y - d.source.y
+          var middleX = (d.source.x * 1 + d.target.x * 1) / 2,
+              middleY = (d.source.y * 1 + d.target.y * 1) / 2
           return "M" + d.source.x + "," + d.source.y +
+                 " " + middleX    + "," + middleY +
                  " " + d.target.x + "," + d.target.y
         })
 
