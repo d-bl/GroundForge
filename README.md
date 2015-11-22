@@ -1,11 +1,8 @@
 [DEMO](http://jo-pol.github.io/DiBL/tensioned/)
 
 The code under `src/main/scala` generates  alternative data for `sample.js` in the [gh-pages branch].
-The patterns are generated from predefined [matrices], the numbering is the same as for the [interleaved]
-patterns based on templates but different from the [original data] publication.
+The patterns are generated from predefined [matrices].
 
-[original data]: http://web.uvic.ca/~vmi/papers/interleavedpatterns.html
-[interleaved]: http://jo-pol.github.io/DiBL/grounds/
 [matrices]: https://github.com/jo-pol/DiBL/blob/17a80e930df3540c95a5cb1bf68dec4f094ce202/web/tensioned/src/main/scala/dibl/Matrix.scala#L158-L167
 
 
@@ -39,7 +36,7 @@ The command `sbt test` only compiles the test classes.
 Haven't found the proper incantation to execute the test with sbt.
 
 With the project imported in Intellij it is possible to execute the test classes one by one.
-Launching tests causes problems when sbt is still processing a change, just try again.
+Launching tests may cause problems when sbt is still processing a change, just try again.
 
 [sbt]: http://www.scala-sbt.org/download.html
 
