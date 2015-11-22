@@ -8,7 +8,7 @@ Step by step changed an [example] for [D3.js]:
 - applied arrow heads and flattened them to colored line ends to emulate [color coded diagrams]
 - made nodes transparent except for bobbins
 - added properties to identify the links that are part of a single thread
-- turned the links from lines to paths with a third node to add twist marks
+- turned the links from lines to paths with a third node to add twist marks with mid-markers
 
 [scala code] compiled into `matrix-graphs.js` generates alternatives for the `sample.js`.
 
