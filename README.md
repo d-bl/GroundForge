@@ -5,13 +5,16 @@
 Step by step changed an [example] for [D3.js]:
 
 - replaced the server side JSon with the hard-coded `sample.js`
-- applied arrow heads reduced to colored line ends to emulate [color coded diagrams]
+- applied arrow heads and flattened them to colored line ends to emulate [color coded diagrams]
 - made nodes transparent except for bobbins
-- added properties to identify the links of a single thread
+- added properties to identify the links that are part of a single thread
 - turned the links from lines to paths to add text: pipe symbols serve as twist marks
 
-[scala code] compiled into `matrix-graphs.js` generates alternatives for the `sample.js`
+[scala code] compiled into `matrix-graphs.js` generates alternatives for the `sample.js`. It uses a hard-coded [compact] version of data [published] by [Veronika Irvine].
 
+[Veronika Irvine]: http://web.uvic.ca/~vmi/
+[published]: http://web.uvic.ca/~vmi/papers/interleavedpatterns.html
+[compact]: https://github.com/jo-pol/DiBL/blob/d1ca8207c76594af9e1de871b33eece6b73d92db/web/tensioned/src/main/scala/dibl/Matrix.scala#L159-L166
 [example]: http://bl.ocks.org/mbostock/4062045
 [D3.js]: http://d3js.org/
 [color coded diagrams]: https://en.wikipedia.org/w/index.php?title=Mesh_grounded_bobbin_lace&oldid=639789191#Worker_pair_versus_two_pair_per_pin
