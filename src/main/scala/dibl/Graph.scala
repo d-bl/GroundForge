@@ -21,41 +21,36 @@ import scala.collection.immutable.HashMap
 import scala.collection.mutable.ListBuffer
 
 case class Graph(nodes: Array[HashMap[String,Any]],
-                 links: Array[HashMap[String,Any]]) {
-  // assign numbers to the source node of the first link of each pair
-  private val startLinks = links.filter(_.getOrElse("start","").toString.startsWith("pair"))
-  for (i <- startLinks.indices){
-    val source = startLinks(i).get("source").get.asInstanceOf[Int]
-    nodes(source) = Props("title" -> s"Pair ${i+1}")
-  }
-}
+                 links: Array[HashMap[String,Any]])
 
 object Graph {
 
-  def apply(dims: String, s: String, absRows: Int, absCols: Int, shiftLeft: Int = 0, shiftUp: Int = 0): Graph = {
-    val abs: M = Matrix(dims, s, absRows, absCols, shiftLeft, shiftUp).get
-    val nrOfLinks = countLinks(abs)
-    val nodeNrs = assignNodeNrs(abs, nrOfLinks)
-    val (relRows,relCols) = Matrix.dims(dims).get
-    Graph(
-      toNodes(abs, nrOfLinks, relRows, relCols),
-      toLinks(abs, nodeNrs)
-    )
-  }
+  def apply(dims: String, s: String, absRows: Int, absCols: Int, shiftLeft: Int = 0, shiftUp: Int = 0
+           ): Graph = create(dims, Matrix(dims, s, absRows, absCols, shiftLeft, shiftUp).get)
 
   def apply(set: String, nrInSet: Int, absRows: Int, absCols: Int, shiftLeft: Int, shiftUp: Int
-           ): Graph = {
-    val abs: M = Matrix(set, nrInSet, absRows, absCols, shiftLeft, shiftUp).get.get
+           ): Graph = create(set, Matrix(set, nrInSet, absRows, absCols, shiftLeft, shiftUp).get.get)
+
+  def create(set: String, abs: M): Graph = {
+    val (relRows, relCols) = Matrix.dims(set).get
     val nrOfLinks = countLinks(abs)
     val nodeNrs = assignNodeNrs(abs, nrOfLinks)
-    val (relRows,relCols) = Matrix.dims(set).get
-    Graph(
-      toNodes(abs, nrOfLinks, relRows, relCols),
-      toLinks(abs, nodeNrs)
-    )
+    val nodes = toNodes(abs, nrOfLinks, relRows, relCols)
+    val links = toLinks(abs, nodeNrs, nodes)
+    assignPairNrs(nodes, links)
+    Graph(nodes, links)
   }
 
-  def assignNodeNrs(abs: M, nrOfLinks: Array[Array[Int]]
+  private def assignPairNrs(nodes: Array[Props], links: Array[Props]): Unit = {
+    // assign numbers to the source node of the first link of each pair
+    val startLinks = links.filter(_.getOrElse("start", "").toString.startsWith("pair"))
+    for (i <- startLinks.indices) {
+      val source = startLinks(i).get("source").get.asInstanceOf[Int]
+      nodes(source) = Props("title" -> s"Pair ${i + 1}")
+    }
+  }
+
+  private def assignNodeNrs(abs: M, nrOfLinks: Array[Array[Int]]
                    ): Array[Array[Int]] = {
     val nodeNrs = Array.fill(abs.length, abs(0).length)(0)
     var nodeNr = 0
@@ -81,23 +76,33 @@ object Graph {
   def toNodes (m: M, nrOfLinks: Array[Array[Int]], rows: Int, cols: Int
               ): Array[Props] = {
 
+    def isUsed(row: Int, col: Int): Boolean =
+      nrOfLinks(row)(col) > 0
+
+    def isInBottom(row: Int): Boolean =
+      row >= m.length - 2
+
+    def isFootside(row: Int, col: Int): Boolean =
+      col < 2 || col >= m(0).length - 2
+
     val bobbin = Props("bobbin" -> true)
     val nodes = ListBuffer[Props]()
     val margin = 2
     val colChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray
+
     for (row <- m.indices) {
       // + margin prevents modulo of a negative number
-      val brickOffset = ((((row - margin) / rows) + margin) % 2)  * (cols / 2) + margin
-      val spreadsheetLikeRow = row % rows + 1
+      val brickOffset = ((row + margin) / rows % 2)  * (cols / 2) + margin
+      val cellRow = row % rows + 1
       for (col <- m(0).indices) {
-        val spreadSheetLikeCol = colChars((brickOffset + col) % cols)
-        if (nrOfLinks(row)(col) > 0) {
-          nodes += (
-            if (row >= m.length - 2) bobbin
-            else Props("title" -> (
-              if (inMargin(m, row, col)) "ttctc"
-              else s"tctc - $spreadSheetLikeCol$spreadsheetLikeRow"
-    )))}}}
+        val cellCol = colChars((brickOffset + col) % cols)
+        if (isUsed(row, col)) nodes += (
+          if (isInBottom(row)) bobbin
+          else if (isFootside(row, col)) Props("title" -> "ttctc")
+          else Props("title" -> s"tctc - $cellCol$cellRow")
+          )
+      }
+    }
     nodes.toArray
   }
 
@@ -107,41 +112,74 @@ object Graph {
     * @param nodeNrs sequence numbers assigned to actually used cells
     * @return properties per link as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js
     */
-  def  toLinks (m: M, nodeNrs: Array[Array[Int]]
+  def  toLinks (m: M, nodeNrs: Array[Array[Int]], nodes: Array[Props]
                ): Array[Props] = {
 
     val links = ListBuffer[Props]()
+    connectLoosePairs(m(2).flatten.filter{case (r,c) => isStartOfPair(r,c)})
+    for {row <- m.indices
+         col <- m(0).indices
+         i <- m(row)(col).indices
+    } {
+      val(srcRow,srcCol) = m(row)(col)(i)
+      links += Props(
+        "source" -> nodeNrs(srcRow)(srcCol),
+        "target" -> nodeNrs(row)(col),
+        "start" -> startMarker(srcRow, srcCol),
+        "end" -> endMarker(row, col),
+        "text" -> midMarker(srcRow, srcCol,row,col)
+      )
+    }
+
+    def connectLoosePairs (sources: Array[(Int,Int)]): Unit = {
+      for (i <- 1 until sources.length) {
+        val (srcRow,srcCol) = sources(i-1)
+        val (row,col) = sources(i)
+        links += Props(
+          "source" -> nodeNrs(srcRow)(srcCol),
+          "target" -> nodeNrs(row)(col),
+          "border" -> true
+        )
+      }
+    }
+
+    def startMarker(srcRow: Int, srcCol: Int): String = {
+        val srcTitle = getNodeTitle(srcRow, srcCol)
+        if (isStartOfPair(srcRow, srcCol)) "pair"
+        else if (srcTitle.endsWith("tctc")) "red"
+        else if (srcTitle.endsWith("ctc")) "purple"
+        else if (srcTitle.endsWith("tc")) "green"
+        else if (srcTitle.startsWith("ctct")) "red"
+        else if (srcTitle.startsWith("ctc")) "purple"
+        else if (srcTitle.startsWith("ct")) "green"
+        else ""
+      }
+
+    def endMarker(targetRow: Int, targetCol: Int): String = {
+      val targetTitle = getNodeTitle(targetRow, targetCol)
+      if (isEndOfPair(targetCol)) ""
+      else if (targetTitle.endsWith("tctc")) "red"
+      else if (targetTitle.endsWith("ctc")) "purple"
+      else if (targetTitle.endsWith("tc")) "green"
+      else if (targetTitle.startsWith("ctct")) "red"
+      else if (targetTitle.startsWith("ctc")) "purple"
+      else if (targetTitle.startsWith("ct")) "green"
+      else ""
+    }
+
+    def midMarker(srcRow: Int, srcCol: Int, targetRow: Int, targetCol: Int): Boolean =
+      getNodeTitle(srcRow, srcCol).startsWith("tt") ||
+      getNodeTitle(targetRow, targetCol).endsWith("tt")
+
+    def getNodeTitle(row: Int, col: Int): String =
+      nodes(nodeNrs(row)(col)).getOrElse("title", "").toString.replaceAll(" .*","")
 
     def isStartOfPair(srcRow: Int, srcCol: Int): Boolean =
       srcRow < 2 || (srcRow == 2 && (srcCol < 2 || srcCol > m(0).length - 3))
-    def isEndOfPair(col: Int): Boolean =
-      col > m(0).length - 2
-    def connectLoosePairs (start: Int, sources: Array[(Int,Int)]): Unit = {
-      for (i <- start until sources.length) {
-        val (srcRow,srcCol) = sources(i-1)
-        val (row,col) = sources(i)
-        links += Props("source" -> nodeNrs(srcRow)(srcCol),
-          "target" -> nodeNrs(row)(col),
-          "border" -> true)
-      }
-    }
-    connectLoosePairs(1,m(2).flatten.filter(src => inMargin(m,src._1,src._2)))
-    for {row <- m.indices
-         col <- m(0).indices
-         i <- m(row)(col).indices} {
-      val(srcRow,srcCol) = m(row)(col)(i)
-      links += Props("source" -> nodeNrs(srcRow)(srcCol),
-                     "target" -> nodeNrs(row)(col),
-                     "start" -> (if (isStartOfPair(srcRow, srcCol)) "pair" else "red"),
-                     "end" -> (if (isEndOfPair(col)) "" else "red"))
-    }
-    links.toArray
-  }
 
-  def inMargin(m: M, row: Int, col: Int
-              ): Boolean = {
-    val rows = m.length
-    val cols = m(0).length
-    row < 2 || col < 2 || col >= cols - 2 || row >= rows - 2
+    def isEndOfPair(targetCol: Int): Boolean =
+      targetCol > m(0).length - 2
+
+    links.toArray
   }
 }
