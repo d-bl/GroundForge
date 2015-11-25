@@ -59,7 +59,7 @@ function markers (svg,id,color){
         .attr('stroke', color)
 }
 function showGraph(args) {
-    var colorpicker = (args.threadColor == undefined ? d3.select(args.threadColor)[0][0] : undefined)
+    var colorpicker = (args.threadColor == undefined ? undefined : d3.select(args.threadColor)[0][0])
 
     // document creation
 
