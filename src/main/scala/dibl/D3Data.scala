@@ -30,7 +30,7 @@ object D3Data {
             shiftLeft: Int,
             shiftUp: Int
            ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
-    val g = Graph(set, nrInSet, rows, cols, shiftLeft, shiftUp)
+    val g = PairDiagram(set, nrInSet, rows, cols, shiftLeft, shiftUp)
     js.Dictionary(
       "nodes" -> toJS(g.nodes),
       "links" -> toJS(g.links)
@@ -45,7 +45,7 @@ object D3Data {
              shiftLeft: Int,
              shiftUp: Int
             ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
-    val g = Graph(dim, s, rows, cols, shiftLeft, shiftUp)
+    val g = PairDiagram(dim, s, rows, cols, shiftLeft, shiftUp)
     js.Dictionary(
       "nodes" -> toJS(g.nodes),
       "links" -> toJS(g.links)

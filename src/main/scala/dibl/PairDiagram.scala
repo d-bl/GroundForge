@@ -20,25 +20,25 @@ import dibl.Matrix._
 import scala.collection.immutable.HashMap
 import scala.collection.mutable.ListBuffer
 
-case class Graph(nodes: Array[HashMap[String,Any]],
-                 links: Array[HashMap[String,Any]])
+case class PairDiagram private(nodes: Array[HashMap[String,Any]],
+                               links: Array[HashMap[String,Any]])
 
-object Graph {
+object PairDiagram {
 
   def apply(dims: String, s: String, absRows: Int, absCols: Int, shiftLeft: Int = 0, shiftUp: Int = 0
-           ): Graph = create(dims, Matrix(dims, s, absRows, absCols, shiftLeft, shiftUp).get)
+           ): PairDiagram = create(dims, Matrix(dims, s, absRows, absCols, shiftLeft, shiftUp).get)
 
   def apply(set: String, nrInSet: Int, absRows: Int, absCols: Int, shiftLeft: Int, shiftUp: Int
-           ): Graph = create(set, Matrix(set, nrInSet, absRows, absCols, shiftLeft, shiftUp).get.get)
+           ): PairDiagram = create(set, Matrix(set, nrInSet, absRows, absCols, shiftLeft, shiftUp).get.get)
 
-  def create(set: String, abs: M): Graph = {
+  def create(set: String, abs: M): PairDiagram = {
     val (relRows, relCols) = Matrix.dims(set).get
     val nrOfLinks = countLinks(abs)
     val nodeNrs = assignNodeNrs(abs, nrOfLinks)
     val nodes = toNodes(abs, nrOfLinks, relRows, relCols)
     val links = toLinks(abs, nodeNrs, nodes)
     assignPairNrs(nodes, links)
-    Graph(nodes, links)
+    PairDiagram(nodes, links)
   }
 
   private def assignPairNrs(nodes: Array[Props], links: Array[Props]): Unit = {

@@ -17,12 +17,10 @@ package dibl
 
 import org.scalatest._
 
-import scala.scalajs.js.Dictionary
-
-class GraphSpec extends FlatSpec with Matchers {
+class PairDiagramSpec extends FlatSpec with Matchers {
 
   "apply" should "produce nodes and links" in {
-    val graph = Graph("2x4",0,12,12,0,0)
+    val graph = PairDiagram("2x4",0,12,12,0,0)
     println(graph.links.mkString("\n"))
     println(graph.nodes.map(_.toString).sorted.distinct.mkString("\n"))
     graph.nodes.length should be  > 100
