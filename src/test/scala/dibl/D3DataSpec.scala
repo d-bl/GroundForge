@@ -20,6 +20,6 @@ import org.scalatest.{Matchers, FlatSpec}
 class D3DataSpec extends FlatSpec with Matchers {
 
   ignore should "run with JVM  used to build scala.js libraries" in {
-    val data = D3Data.getNr("2x4",0,12,12,0,0)
+    val data = D3Data.get("2x4",0,12,12,0,0,"A1=tc")
   }
 }

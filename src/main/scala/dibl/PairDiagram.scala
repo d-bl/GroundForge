@@ -25,17 +25,36 @@ case class PairDiagram private(nodes: Array[HashMap[String,Any]],
 
 object PairDiagram {
 
-  def apply(dims: String, s: String, absRows: Int, absCols: Int, shiftLeft: Int = 0, shiftUp: Int = 0
-           ): PairDiagram = create(dims, Matrix(dims, s, absRows, absCols, shiftLeft, shiftUp).get)
+  def apply(): PairDiagram = create(
+    set = "2x4",
+    abs = Matrix(
+      dims = "2x4",
+      matrix = "46636668",
+      absRows = 12,
+      absCols = 12,
+      left = 0,
+      up = 0).get,
+    stitches = ""
+  )
 
-  def apply(set: String, nrInSet: Int, absRows: Int, absCols: Int, shiftLeft: Int, shiftUp: Int
-           ): PairDiagram = create(set, Matrix(set, nrInSet, absRows, absCols, shiftLeft, shiftUp).get.get)
+  def apply(set: String, nrInSet: Int, absRows: Int, absCols: Int, shiftLeft: Int, shiftUp: Int, stitches: String
+           ): PairDiagram = create(
+    set = set,
+    abs = Matrix(
+      key = set,
+      index = nrInSet,
+      absRows = absRows,
+      absCols = absCols,
+      left = shiftLeft,
+      up = shiftUp).get.get,
+    stitches = stitches
+  )
 
-  def create(set: String, abs: M): PairDiagram = {
+  def create(set: String, abs: M, stitches: String): PairDiagram = {
     val (relRows, relCols) = Matrix.dims(set).get
     val nrOfLinks = countLinks(abs)
     val nodeNrs = assignNodeNrs(abs, nrOfLinks)
-    val nodes = toNodes(abs, nrOfLinks, relRows, relCols)
+    val nodes = toNodes(abs, nrOfLinks, relRows, relCols, stitches)
     val links = toLinks(abs, nodeNrs, nodes)
     assignPairNrs(nodes, links)
     PairDiagram(nodes, links)
@@ -73,7 +92,11 @@ object PairDiagram {
     * @param cols dimension of the predefined matrix
     * @return properties per node as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js
     */
-  def toNodes (m: M, nrOfLinks: Array[Array[Int]], rows: Int, cols: Int
+  def toNodes (m: M,
+               nrOfLinks: Array[Array[Int]],
+               rows: Int,
+               cols: Int,
+               stitches: String
               ): Array[Props] = {
 
     def isUsed(row: Int, col: Int): Boolean =
@@ -89,18 +112,29 @@ object PairDiagram {
     val nodes = ListBuffer[Props]()
     val margin = 2
     val colChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray
+    val stitchMap = stitches
+      .split("[^a-zA-Z0-9=]+")
+      .map(_.split("="))
+      .map(a =>
+        if (a.length < 2) "A1"->"ctc"
+        else a(0) -> a(1)
+      ).toMap
 
+    def buildProps(row: Int, col: Int, cell: String): HashMap[String, Any] = {
+      if (isInBottom(row)) bobbin
+      else if (isFootside(row, col)) Props("title" -> "ttctc")
+      else Props(
+        "title" -> s"${stitchMap.getOrElse(cell, "ctc")} - $cell"
+      )
+    }
     for (row <- m.indices) {
       // + margin prevents modulo of a negative number
       val brickOffset = ((row + margin) / rows % 2)  * (cols / 2) + margin
       val cellRow = row % rows + 1
       for (col <- m(0).indices) {
         val cellCol = colChars((brickOffset + col) % cols)
-        if (isUsed(row, col)) nodes += (
-          if (isInBottom(row)) bobbin
-          else if (isFootside(row, col)) Props("title" -> "ttctc")
-          else Props("title" -> s"tctc - $cellCol$cellRow")
-          )
+        val cell = s"$cellCol$cellRow"
+        if (isUsed(row, col)) nodes += buildProps(row, col, cell)
       }
     }
     nodes.toArray
@@ -108,7 +142,7 @@ object PairDiagram {
 
   /** Creates links for a pair diagram
     *
-    * @param m a repeated of a predefined matrix
+    * @param m a repeated version of a predefined matrix
     * @param nodeNrs sequence numbers assigned to actually used cells
     * @return properties per link as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js
     */
@@ -127,7 +161,7 @@ object PairDiagram {
         "target" -> nodeNrs(row)(col),
         "start" -> startMarker(srcRow, srcCol),
         "end" -> endMarker(row, col),
-        "text" -> midMarker(srcRow, srcCol,row,col)
+        "text" -> midMarker(srcRow, srcCol, row, col, i)
       )
     }
 
@@ -146,9 +180,11 @@ object PairDiagram {
     def startMarker(srcRow: Int, srcCol: Int): String = {
         val srcTitle = getNodeTitle(srcRow, srcCol)
         if (isStartOfPair(srcRow, srcCol)) "pair"
+        else if (srcTitle.endsWith("ctctc")) ""
         else if (srcTitle.endsWith("tctc")) "red"
         else if (srcTitle.endsWith("ctc")) "purple"
         else if (srcTitle.endsWith("tc")) "green"
+        else if (srcTitle.startsWith("ctctc")) ""
         else if (srcTitle.startsWith("ctct")) "red"
         else if (srcTitle.startsWith("ctc")) "purple"
         else if (srcTitle.startsWith("ct")) "green"
@@ -158,18 +194,24 @@ object PairDiagram {
     def endMarker(targetRow: Int, targetCol: Int): String = {
       val targetTitle = getNodeTitle(targetRow, targetCol)
       if (isEndOfPair(targetCol)) ""
+      else if (targetTitle.endsWith("ctctc")) ""
       else if (targetTitle.endsWith("tctc")) "red"
       else if (targetTitle.endsWith("ctc")) "purple"
       else if (targetTitle.endsWith("tc")) "green"
+      else if (targetTitle.startsWith("ctctc")) ""
       else if (targetTitle.startsWith("ctct")) "red"
       else if (targetTitle.startsWith("ctc")) "purple"
       else if (targetTitle.startsWith("ct")) "green"
       else ""
     }
 
-    def midMarker(srcRow: Int, srcCol: Int, targetRow: Int, targetCol: Int): Boolean =
-      getNodeTitle(srcRow, srcCol).startsWith("tt") ||
-      getNodeTitle(targetRow, targetCol).endsWith("tt")
+    def midMarker(srcRow: Int, srcCol: Int, targetRow: Int, targetCol: Int, pairNr: Int): Boolean = {
+      val targetTitle = getNodeTitle(targetRow, targetCol)
+      val sourceTitle = getNodeTitle(srcRow, srcCol)
+      targetTitle.startsWith("tt") || sourceTitle.endsWith("tt") ||
+      (pairNr == 0 && (targetTitle.startsWith("l")|| sourceTitle.endsWith("r"))) ||
+      (pairNr == 1 && (targetTitle.startsWith("r")|| sourceTitle.endsWith("l")))
+    }
 
     def getNodeTitle(row: Int, col: Int): String =
       nodes(nodeNrs(row)(col)).getOrElse("title", "").toString.replaceAll(" .*","")

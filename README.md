@@ -11,7 +11,9 @@ The patterns are generated from predefined [matrices].
 Requirements
 
 - [sbt] 0.13.7 or higher
-- a browser with proper SVG support, for example FireFox, Chrome, Safari but not Internet Explorer.
+- a browser with proper SVG support, for example FireFox or Safari but not Internet Explorer.
+  Chrome has proper SVG support but with the default settings it has intranet problems.
+
 
 Steps
 
@@ -22,7 +24,7 @@ Steps
 - Monitor the result on `http://localhost:12345/target/scala-2.11/classes/index-dev.html`
   It is a dressed down version of the demo page, with experimental features added.
   Nodes and links invisible in the demo page are shown faint for debugging purposes.
-- Saving code changes updates the page automatically.
+- Saving code changes updates the page automatically but not completely properly.
 
 Important code conventions
 
@@ -38,8 +40,6 @@ Haven't found the proper incantation to execute the test with sbt.
 With the project imported in Intellij it is possible to execute the test classes one by one.
 Launching tests may cause problems when sbt is still processing a change, just try again.
 
-[sbt]: http://www.scala-sbt.org/download.html
-
 
 # Publish
 
@@ -49,4 +49,5 @@ Launching tests may cause problems when sbt is still processing a change, just t
 - Check the results with `tensioned/index.html`
 - If ok: commit, push and check the online demo in your own github fork: `http://YOURID.github.io/DiBL/tensioned/`
 
+[sbt]: http://www.scala-sbt.org/download.html
 [gh-pages branch]: https://github.com/jo-pol/DiBL/tree/gh-pages/tensioned

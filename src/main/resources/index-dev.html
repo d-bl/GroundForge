@@ -8,6 +8,7 @@
     fieldset { display: inline-block }
     input { width: 3em; }
     #pattern { width: 6em; }
+    #stitches { width: 29em; }
     .link { stroke: #000; }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
@@ -20,31 +21,30 @@
 
     function showNr(form) {
       document.getElementById('diagram').innerHTML = ""
-      var data = dibl.D3Data().getNr(form.set.value, form.nrInSet.value * 1,
+      var data = dibl.D3Data().get(form.set.value, form.nrInSet.value * 1,
                                    form.rows.value * 1, form.cols.value * 1,
-                                   form.shiftLeft.value * 1, form.shiftUp.value * 1)
+                                   form.shiftLeft.value * 1, form.shiftUp.value * 1,
+                                   form.stitches.value)
       showGraph({
         threadColor: '#colorpicker',
         container: '#diagram',
         width: 1000,
         height: 800,
         nodes: data.nodes,
-        links: data.links,
+        links: data.links
       })
     }
 
     function showStr(form) {
       document.getElementById('diagram').innerHTML = ""
-      var data = dibl.D3Data().getStr(form.set.value, form.pattern.value,
-                                   form.rows.value * 1, form.cols.value * 1,
-                                   form.shiftLeft.value * 1, form.shiftUp.value * 1)
+      var data = dibl.D3Data().getHardCodedPattern()
       showGraph({
         threadColor: '#colorpicker',
         container: '#diagram',
         width: 1000,
         height: 800,
         nodes: data.nodes,
-        links: data.links,
+        links: data.links
       })
     }
 
@@ -55,6 +55,9 @@
 </head>
 <body onload="showNr(document.getElementById('graph'))">
   <form id="graph" action="" onsubmit="return false">
+    <button class="button" type="submit" onclick="showStr(this.form)">
+      Draw pattern hard-coded in PairDiagram.apply()
+    </button>
     <fieldset id="shift">
       <label for="shiftLeft">left by </label>
       <input id="shiftLeft" name="shiftLeft" min="0" max="3" value="1" type="number"/>
@@ -67,24 +70,27 @@
       <label for="cols">columns</label>
       <input id="cols" name="cols" min="0" max="20" value="7" type="number"/>
     </fieldset>
-    <select size="1" id="set" name="set" onChange="setMax(form)">
-      <option data-max-nr="3" value="2x4 torchon">torchon</option>
-      <option data-max-nr="2" value="2x4 bias">bias</option>
-      <option data-max-nr="0" value="2x4 paris/kat">paris/kat</option>
-      <option data-max-nr="1" value="2x4 cloth">cloth</option>
-      <option data-max-nr="0" value="2x4 vrouwkens">vrouwkens</option>
-      <option data-max-nr="1" value="2x4 small snowflakes">small snowflakes</option>
-      <option data-max-nr="2" value="2x4 rose ground" selected>rose ground</option>
-      <option data-max-nr="16">2x2</option>
-      <option data-max-nr="92">4x2</option>
-      <option data-max-nr="46">2x4</option>
-    </select>
-    <label for="nrInSet">nr</label>
-    <input id="nrInSet" name="nrInSet" min="0" max="2" value="0" type="number" onchange="this.form.pattern = "/>
-    <button class="button" type="submit" onclick="showNr(this.form)">draw</button>
-    <label for="pattern">free pattern</label>
-    <input id="pattern" name="pattern" type="text" pattern="[-0-9]+" value="46636668"/>
-    <button class="button" type="submit" onclick="showStr(this.form)">draw</button>
+    <fieldset>
+      <label for="stitches">stitches</label>
+      <input id="stitches" name="stitches" type="text" value="A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, C2=tc"/>
+    </fieldset>
+    <fieldset>
+      <select size="1" id="set" name="set" onChange="setMax(form)">
+        <option data-max-nr="3" value="2x4 torchon">torchon</option>
+        <option data-max-nr="2" value="2x4 bias">bias</option>
+        <option data-max-nr="0" value="2x4 paris/kat">paris/kat</option>
+        <option data-max-nr="1" value="2x4 cloth">cloth</option>
+        <option data-max-nr="0" value="2x4 vrouwkens">vrouwkens</option>
+        <option data-max-nr="1" value="2x4 small snowflakes">small snowflakes</option>
+        <option data-max-nr="2" value="2x4 rose ground" selected>rose ground</option>
+        <option data-max-nr="16">2x2</option>
+        <option data-max-nr="92">4x2</option>
+        <option data-max-nr="46">2x4</option>
+      </select>
+      <label for="nrInSet">nr</label>
+      <input id="nrInSet" name="nrInSet" min="0" max="2" value="0" type="number"/>
+      <button class="button" type="submit" onclick="showNr(this.form)">draw</button>
+    </fieldset>
   </form>
   <div id="diagram"></div>
 </body>

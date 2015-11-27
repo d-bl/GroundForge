@@ -27,7 +27,7 @@ object Matrix {
     getRelSrcNodes(key, index).map(apply(_, absRows, absCols, left, up))
 
   def apply(dims: String, matrix: String, absRows: Int, absCols: Int, left: Int, up: Int): Try[M] =
-    toRelSrcNodes(dims, matrix).flatMap(apply(_, absRows, absCols, left, up))
+    toRelSrcNodes(matrix, dims).flatMap(apply(_, absRows, absCols, left, up))
 
   private def apply(m: M, absRows: Int, absCols: Int, left: Int, up: Int): Try[M] =
     toAbsWithMargins(shift(toCheckerboard(m), left, up), absRows, absCols)

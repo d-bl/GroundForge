@@ -23,32 +23,27 @@ import scala.scalajs.js.annotation.JSExport
 object D3Data {
 
   @JSExport
-  def getNr(set: String,
-            nrInSet: Int,
-            rows: Int,
-            cols: Int,
-            shiftLeft: Int,
-            shiftUp: Int
-           ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
-    val g = PairDiagram(set, nrInSet, rows, cols, shiftLeft, shiftUp)
+  def get(set: String,
+          nrInSet: Int,
+          rows: Int,
+          cols: Int,
+          shiftLeft: Int,
+          shiftUp: Int,
+          stitches: String
+         ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
+    val diagram = PairDiagram(set, nrInSet, rows, cols, shiftLeft, shiftUp, stitches)
     js.Dictionary(
-      "nodes" -> toJS(g.nodes),
-      "links" -> toJS(g.links)
+      "nodes" -> toJS(diagram.nodes),
+      "links" -> toJS(diagram.links)
     )
   }
 
   @JSExport
-  def getStr(dim: String,
-             s: String,
-             rows: Int,
-             cols: Int,
-             shiftLeft: Int,
-             shiftUp: Int
-            ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
-    val g = PairDiagram(dim, s, rows, cols, shiftLeft, shiftUp)
+  def getHardCodedPattern(): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
+    val diagram = PairDiagram()
     js.Dictionary(
-      "nodes" -> toJS(g.nodes),
-      "links" -> toJS(g.links)
+      "nodes" -> toJS(diagram.nodes),
+      "links" -> toJS(diagram.links)
     )
   }
 
