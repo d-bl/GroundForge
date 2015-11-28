@@ -13,13 +13,14 @@
     <script>
       function show(form) {
         document.getElementById('diagram').innerHTML = ""
-        var data = dibl.D3Data().getNr(
+        var data = dibl.D3Data().get(
           form.set.value,
           form.nrInSet.value * 1,
           form.rows.value * 1,
           form.cols.value * 1,
           form.shiftLeft.value * 1,
-          form.shiftUp.value * 1
+          form.shiftUp.value * 1,
+          form.stitches.value
           )
         showGraph({
           threadColor: '#colorpicker',
@@ -35,24 +36,25 @@
       }
     </script>
    <style>
-        input { width: 3em; }
-        #threadColor input { width: 4.5em; }
-        form, div { display: inline-block; }
-        svg{ border: solid 1px #AAA }
-        .node {
-          fill: #000;
-          opacity: 0;
-        }
-        .node.fixed {
-          fill: #90f;
-        }
+     input { width: 3em; }
+     #threadColor input { width: 4.5em; }
+     form, div { display: inline-block; }
+     fieldset { margin-bottom: 0.4em; padding-bottom: 0.3em }
+     svg{ border: solid 1px #AAA }
+     .node {
+       fill: #000;
+       opacity: 0;
+     }
+     .node.fixed {
+       fill: #90f;
+     }
 
-        /* size relates to dy-attribute of svg.selectAll(".labelText") in the script */
-        .labelText {font-size:9px; font-weight: bold; }
+     /* size relates to dy-attribute of svg.selectAll(".labelText") in the script */
+     .labelText {font-size:9px; font-weight: bold; }
     </style>
 </head>
 <body>
-    <img align="right" src="../logo-big.png" width="104" height="96"/>
+    <img align="right" src="../logo-big.png"/>
     <h1>Bobbin lace working diagrams</h1>
     <p><em>Under construction</em>: <a href="https://github.com/jo-pol/DiBL/labels/enhancement"
     >wish list</a>, the numbering in the NxM pattern sets is the same as for the <a href="http://jo-pol.github.io/DiBL/grounds/"
@@ -77,11 +79,11 @@
             <input id="colorpicker" type="text" class="color" value="#CC0000"/>
         </form>
     </li></ul>
-    <form id="graph" action="" onsubmit="show(this); return false">
+    <form id="graph" action="" onsubmit="return false">
 
         <label for="pattern">Try another pattern </label>
         <fieldset id="pattern">
-            <input id="nrInSet" name="nrInSet" min="0" max="46" value="0" type="number"/>
+            <input id="nrInSet" name="nrInSet" min="0" max="2" value="0" type="number"/>
             <label for="set">in set</label>
             <select size="1" id="set" name="set" onChange="setMax(form)">
                 <option data-max-nr="3" value="2x4 torchon">torchon</option>
@@ -113,15 +115,23 @@
             <input id="cols" name="cols" min="0" max="20" value="7" type="number"/>
         </fieldset>
 
-        <label for="image">Image (pixels)</label>
+        <label for="image">Image size (pixels)</label>
         <fieldset id="image">
             <label for="width">width</label>
             <input id="width" name="width" min="200" max="999" value="300" type="number"/>
             <label for="height">height</label>
-            <input id="height" name="height" min="200" max="999" value="300" type="number"/>
+            <input id="height" name="height" min="200" max="999" value="403" type="number"/>
         </fieldset>
 
-        <button class="button" type="submit">draw</button>
+        <label for="st">Stitches</label>
+        <fieldset id="st">
+            <textarea rows="3" cols="30" id="stitches" name="stitches"
+            >A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, C2=tc</textarea>
+            <br/>c(ross) t(wist) l(eft-twist) r(ight-twist)
+            <br/>compare with tooltips in a pair diagram
+        </fieldset>
+
+        <button class="button" onclick="show(this.form); return false">draw</button>
     </form>
     <div id="diagram"></div>
     <script>
@@ -129,7 +139,7 @@
         threadColor: '#colorpicker',
         container: '#diagram',
         width: 300,
-        height: 300,
+        height: 403,
         nodes: sample.nodes,
         links: sample.links,
       })
