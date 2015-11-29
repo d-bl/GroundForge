@@ -42,7 +42,8 @@ class MatrixSpec extends FlatSpec with Matchers {
     val errors = new StringBuffer()
     matrixMap.keys.foreach { key =>
       for (i <- matrixMap.get(key).get.indices) {
-        val nrOfLinks = countLinks(Matrix(key, i, absRows = 40, absCols = 12, left = 1, up = 1).get.get)
+        val m = Settings(key, i, absRows = 40, absCols = 12, shiftLeft = 1, shiftUp = 1,stitches = "").get.absM
+        val nrOfLinks = countLinks(m)
         // println(nrOfLinks.deep.mkString("(",",",")").replaceAll("Array","\n").tail)
         val mID = s"$key.$i"
         val ok = Set[Int](0,2,3,4,5,6,7,8,9,10,11,13,14,15,21,22,23,24,25,44,55,75,77,80,81,82,88)

@@ -31,7 +31,7 @@ object D3Data {
           shiftUp: Int,
           stitches: String
          ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
-    val diagram = PairDiagram(set, nrInSet, rows, cols, shiftLeft, shiftUp, stitches)
+    val diagram = PairDiagram(Settings(set, nrInSet, rows, cols, shiftLeft, shiftUp, stitches).get)
     js.Dictionary(
       "nodes" -> toJS(diagram.nodes),
       "links" -> toJS(diagram.links)
@@ -39,15 +39,15 @@ object D3Data {
   }
 
   @JSExport
-  def getHardCodedPattern(): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
-    val diagram = PairDiagram()
+  def hardCodedPattern(): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
+    val diagram = PairDiagram(Settings().get)
     js.Dictionary(
       "nodes" -> toJS(diagram.nodes),
       "links" -> toJS(diagram.links)
     )
   }
 
-  def toJS(items: Array[HashMap[String,Any]]
+  def toJS(items: Seq[HashMap[String,Any]]
           ): js.Array[js.Dictionary[Any]] = {
 
     val a = js.Array[js.Any](items.length).asInstanceOf[js.Array[js.Dictionary[Any]]]

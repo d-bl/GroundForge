@@ -23,15 +23,6 @@ import scala.util.{Success, Failure, Try}
 
 object Matrix {
 
-  def apply(key: String, index: Int, absRows: Int, absCols: Int, left: Int, up: Int): Option[Try[M]] =
-    getRelSrcNodes(key, index).map(apply(_, absRows, absCols, left, up))
-
-  def apply(dims: String, matrix: String, absRows: Int, absCols: Int, left: Int, up: Int): Try[M] =
-    toRelSrcNodes(matrix, dims).flatMap(apply(_, absRows, absCols, left, up))
-
-  private def apply(m: M, absRows: Int, absCols: Int, left: Int, up: Int): Try[M] =
-    toAbsWithMargins(shift(toCheckerboard(m), left, up), absRows, absCols)
-
   @tailrec
   private def shiftX[T: ClassTag](m: Array[T], shift: Int): Array[T] =
     if (shift <= 0) m else shiftX(m.tail :+ m.head, shift - 1)
@@ -52,7 +43,7 @@ object Matrix {
     * +---+---+
     * </pre>
     */
-  private def toCheckerboard(m: M): M = {
+  def toCheckerboard(m: M): M = {
     m ++ m.map{r =>
       val (left,right) = r.splitAt(r.length/2)
       right ++ left
@@ -72,7 +63,7 @@ object Matrix {
     * The other symbols match two nodes for (potential) new pairs or for pairs of bobbins.
     * See also println's in unit tests.
     */
-  private def toAbsWithMargins(rel: M, absRows: Int, absCols: Int): Try[M] =
+  def toAbsWithMargins(rel: M, absRows: Int, absCols: Int): Try[M] =
     if (absRows < 1 || absCols < 1) Failure(new IllegalArgumentException(""))
     else Success {
       val abs = Array.fill(absRows + 3, absCols + 4)(SrcNodes())
@@ -201,24 +192,13 @@ object Matrix {
     '-' -> SrcNodes()                 // not used node
   )
 
-  /** Gets the relative source nodes.
-   * @param key key for a set of predefined matrices
-   * @param nr sequence number of the matrix-string in the set
-   */
-  private def getRelSrcNodes(key: String, nr: Int): Option[M] =
-    matrixMap.get(key).flatMap(strings => {
-      if (nr < 0 || nr >= strings.length) None
-      else Some( strings(nr))
-      // the tests of matrixMap make sure we can't run into more trouble
-    }).map(toRelSrcNodes(_, key).get)
-
   /** Translates each character into a relative source node.
     * @param matrix the characters in the string are keys in relSourcesMap
     * @param dimensions a string with at least two sequences of digits,
     *                   s1*s2 should equal the length of the matrix string
     * @return
     */
-  private def toRelSrcNodes(matrix: String, dimensions: String): Try[M] = {
+  def toRelSrcNodes(matrix: String, dimensions: String): Try[M] = {
     dims(dimensions).flatMap { case (rows,cols) =>
       val matrixSize = rows * cols
       if (matrixSize != matrix.length)

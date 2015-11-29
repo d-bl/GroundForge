@@ -20,7 +20,7 @@ import org.scalatest._
 class PairDiagramSpec extends FlatSpec with Matchers {
 
   "apply" should "produce nodes and links" in {
-    val graph = PairDiagram("2x4",0,12,12,0,0,"")
+    val graph = PairDiagram(Settings("2x4",0,12,12,0,0,"").get)
     println(graph.links.mkString("\n"))
     println(graph.nodes.map(_.toString).sorted.distinct.mkString("\n"))
     graph.nodes.length should be  > 100
@@ -28,17 +28,17 @@ class PairDiagramSpec extends FlatSpec with Matchers {
     // TODO nr of pairs should equal nr of bobbins
   }
   it should "survive empty stitches value" in {
-    val graph = PairDiagram("2x4",0,12,12,0,0,"")
+    val graph = PairDiagram(Settings("2x4",0,12,12,0,0,"").get)
     graph.nodes.length should be  > 100
     graph.links.length should be > 200
   }
   it should "survive invalid stitches value" in {
-    val graph = PairDiagram("2x4",0,12,12,0,0,"A1#$tc")
+    val graph = PairDiagram(Settings("2x4",0,12,12,0,0,"A1#$tc").get)
     graph.nodes.length should be  > 100
     graph.links.length should be > 200
   }
   it should "properly process hardcoded sample" in {
-    val graph = PairDiagram()
+    val graph = PairDiagram(Settings().get)
     graph.nodes.length should be  > 100
     graph.links.length should be > 200
   }

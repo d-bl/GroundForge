@@ -20,11 +20,16 @@
     fullyTransparant = 0.1
 
     function showNr(form) {
+      show( dibl.D3Data().get(form.set.value, form.nrInSet.value * 1,
+                              form.rows.value * 1, form.cols.value * 1,
+                              form.shiftLeft.value * 1, form.shiftUp.value * 1,
+                              form.stitches.value) )
+    }
+    function showHardCodedPattern(form) {
+      show( dibl.D3Data().hardCodedPattern() )
+    }
+    function show(data){
       document.getElementById('diagram').innerHTML = ""
-      var data = dibl.D3Data().get(form.set.value, form.nrInSet.value * 1,
-                                   form.rows.value * 1, form.cols.value * 1,
-                                   form.shiftLeft.value * 1, form.shiftUp.value * 1,
-                                   form.stitches.value)
       showGraph({
         threadColor: '#colorpicker',
         container: '#diagram',
@@ -34,30 +39,13 @@
         links: data.links
       })
     }
-
-    function showStr(form) {
-      document.getElementById('diagram').innerHTML = ""
-      var data = dibl.D3Data().getHardCodedPattern()
-      showGraph({
-        threadColor: '#colorpicker',
-        container: '#diagram',
-        width: 1000,
-        height: 800,
-        nodes: data.nodes,
-        links: data.links
-      })
-    }
-
     function setMax(form) {
       form.nrInSet.max = form.set[form.set.selectedIndex].getAttribute("data-max-nr")
     }
   </script>
 </head>
-<body onload="showNr(document.getElementById('graph'))">
+<body onload="showHardCodedPattern(document.getElementById('graph'))">
   <form id="graph" action="" onsubmit="return false">
-    <button class="button" type="submit" onclick="showStr(this.form)">
-      Draw pattern hard-coded in PairDiagram.apply()
-    </button>
     <fieldset id="shift">
       <label for="shiftLeft">left by </label>
       <input id="shiftLeft" name="shiftLeft" min="0" max="3" value="1" type="number"/>

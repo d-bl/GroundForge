@@ -17,50 +17,21 @@ package dibl
 
 import dibl.Matrix._
 
-import scala.collection.immutable.HashMap
-import scala.collection.mutable.ListBuffer
-
-case class PairDiagram private(nodes: Array[HashMap[String,Any]],
-                               links: Array[HashMap[String,Any]])
+case class PairDiagram private(nodes: Seq[Props],
+                               links: Seq[Props])
 
 object PairDiagram {
 
-  def apply(): PairDiagram = create(
-    set = "2x4",
-    abs = Matrix(
-      dims = "2x4",
-      matrix = "46636668",
-      absRows = 12,
-      absCols = 12,
-      left = 0,
-      up = 0).get,
-    stitches = ""
-  )
-
-  def apply(set: String, nrInSet: Int, absRows: Int, absCols: Int, shiftLeft: Int, shiftUp: Int, stitches: String
-           ): PairDiagram = create(
-    set = set,
-    abs = Matrix(
-      key = set,
-      index = nrInSet,
-      absRows = absRows,
-      absCols = absCols,
-      left = shiftLeft,
-      up = shiftUp).get.get,
-    stitches = stitches
-  )
-
-  def create(set: String, abs: M, stitches: String): PairDiagram = {
-    val (relRows, relCols) = Matrix.dims(set).get
-    val nrOfLinks = countLinks(abs)
-    val nodeNrs = assignNodeNrs(abs, nrOfLinks)
-    val nodes = toNodes(abs, nrOfLinks, relRows, relCols, stitches)
-    val links = toLinks(abs, nodeNrs, nodes)
+  def apply(settings: Settings): PairDiagram = {
+    val nrOfLinks = countLinks(settings.absM)
+    val nodeNrs = assignNodeNrs(settings.absM, nrOfLinks)
+    val nodes = toNodes(nrOfLinks, settings.absM, settings.stitches).toArray
+    val links = toLinks(settings.absM, nodeNrs, nodes)
     assignPairNrs(nodes, links)
     PairDiagram(nodes, links)
   }
 
-  private def assignPairNrs(nodes: Array[Props], links: Array[Props]): Unit = {
+  private def assignPairNrs(nodes: Array[Props], links: Seq[Props]): Unit = {
     // assign numbers to the source node of the first link of each pair
     val startLinks = links.filter(_.getOrElse("start", "").toString.startsWith("pair"))
     for (i <- startLinks.indices) {
@@ -70,34 +41,28 @@ object PairDiagram {
   }
 
   private def assignNodeNrs(abs: M, nrOfLinks: Array[Array[Int]]
-                   ): Array[Array[Int]] = {
-    val nodeNrs = Array.fill(abs.length, abs(0).length)(0)
-    var nodeNr = 0
-    for {row <- nodeNrs.indices
-         col <- nodeNrs(0).indices
-    } {
-      if (nrOfLinks(row)(col) > 0) {
-        nodeNrs(row)(col) = nodeNr
-        nodeNr += 1
-      }
-    }
-    nodeNrs
+                           ): Seq[Seq[Int]] = {
+    var nodeNr = -1
+    abs.indices.map { row =>
+      abs(row).indices.map { col =>
+        if (nrOfLinks(row)(col) <= 0) 0
+        else {
+          nodeNr += 1
+          nodeNr
+        }
+      }.toSeq
+    }.toSeq
   }
 
   /** Creates nodes for a pair diagram
     *
-    * @param m a brick wise stacked version of a predefined matrix
     * @param nrOfLinks nr of links per node alias matrix-cell
-    * @param rows dimension of the predefined matrix
-    * @param cols dimension of the predefined matrix
     * @return properties per node as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js
     */
-  def toNodes (m: M,
-               nrOfLinks: Array[Array[Int]],
-               rows: Int,
-               cols: Int,
-               stitches: String
-              ): Array[Props] = {
+  def toNodes (nrOfLinks: Array[Array[Int]],
+               m: M,
+               stitches: Array[Array[String]]
+              ): Seq[Props] = {
 
     def isUsed(row: Int, col: Int): Boolean =
       nrOfLinks(row)(col) > 0
@@ -108,36 +73,21 @@ object PairDiagram {
     def isFootside(row: Int, col: Int): Boolean =
       col < 2 || col >= m(0).length - 2
 
-    val bobbin = Props("bobbin" -> true)
-    val nodes = ListBuffer[Props]()
+    val relRows = stitches.length
+    val relCols = stitches(0).length
+    val bobbinProps = Props("bobbin" -> true)
+    val footSideProps = Props("title" -> "ttctc")
     val margin = 2
-    val colChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray
-    val stitchMap = stitches
-      .split("[^a-zA-Z0-9=]+")
-      .map(_.split("="))
-      .map(a =>
-        if (a.length < 2) "A1"->"ctc"
-        else a(0) -> a(1)
-      ).toMap
-
-    def buildProps(row: Int, col: Int, cell: String): HashMap[String, Any] = {
-      if (isInBottom(row)) bobbin
-      else if (isFootside(row, col)) Props("title" -> "ttctc")
-      else Props(
-        "title" -> s"${stitchMap.getOrElse(cell, "ctc")} - $cell"
-      )
-    }
-    for (row <- m.indices) {
-      // + margin prevents modulo of a negative number
-      val brickOffset = ((row + margin) / rows % 2)  * (cols / 2) + margin
-      val cellRow = row % rows + 1
-      for (col <- m(0).indices) {
-        val cellCol = colChars((brickOffset + col) % cols)
-        val cell = s"$cellCol$cellRow"
-        if (isUsed(row, col)) nodes += buildProps(row, col, cell)
+    m.indices.flatMap { row =>
+      val brickOffset = ((row + margin) / relRows % 2) * (relCols / 2) + margin
+      val cellRow = row % relRows
+      m(row).indices.filter(isUsed(row, _)).map { col =>
+        val cellCol = (brickOffset + col) % relCols
+        if (isInBottom(row)) bobbinProps
+        else if (isFootside(row, col)) footSideProps
+        else Props("title" -> s"${stitches(cellRow)(cellCol)} - ${"ABCDEFGHIJKLMNOPQRSTUVWXYZ"(cellCol)}${cellRow+1}")
       }
     }
-    nodes.toArray
   }
 
   /** Creates links for a pair diagram
@@ -146,41 +96,13 @@ object PairDiagram {
     * @param nodeNrs sequence numbers assigned to actually used cells
     * @return properties per link as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js
     */
-  def  toLinks (m: M, nodeNrs: Array[Array[Int]], nodes: Array[Props]
-               ): Array[Props] = {
-
-    val links = ListBuffer[Props]()
-    connectLoosePairs(m(2).flatten.filter{case (r,c) => isStartOfPair(r,c)})
-    for {row <- m.indices
-         col <- m(0).indices
-         i <- m(row)(col).indices
-    } {
-      val(srcRow,srcCol) = m(row)(col)(i)
-      links += Props(
-        "source" -> nodeNrs(srcRow)(srcCol),
-        "target" -> nodeNrs(row)(col),
-        "start" -> startMarker(srcRow, srcCol),
-        "end" -> endMarker(row, col),
-        "text" -> midMarker(srcRow, srcCol, row, col, i)
-      )
-    }
-
-    def connectLoosePairs (sources: Array[(Int,Int)]): Unit = {
-      for (i <- 1 until sources.length) {
-        val (srcRow,srcCol) = sources(i-1)
-        val (row,col) = sources(i)
-        links += Props(
-          "source" -> nodeNrs(srcRow)(srcCol),
-          "target" -> nodeNrs(row)(col),
-          "border" -> true
-        )
-      }
-    }
+  def  toLinks (m: M, nodeNrs: Seq[Seq[Int]], nodes: Seq[Props]
+               ): Seq[Props] = {
 
     def startMarker(srcRow: Int, srcCol: Int): String = {
         val srcTitle = getNodeTitle(srcRow, srcCol)
         if (isStartOfPair(srcRow, srcCol)) "pair"
-        else if (srcTitle.endsWith("ctctc")) ""
+        else if (srcTitle.endsWith("ctctc") || srcTitle.contains("p")) ""
         else if (srcTitle.endsWith("tctc")) "red"
         else if (srcTitle.endsWith("ctc")) "purple"
         else if (srcTitle.endsWith("tc")) "green"
@@ -194,7 +116,7 @@ object PairDiagram {
     def endMarker(targetRow: Int, targetCol: Int): String = {
       val targetTitle = getNodeTitle(targetRow, targetCol)
       if (isEndOfPair(targetCol)) ""
-      else if (targetTitle.endsWith("ctctc")) ""
+      else if (targetTitle.endsWith("ctctc") || targetTitle.contains("p")) ""
       else if (targetTitle.endsWith("tctc")) "red"
       else if (targetTitle.endsWith("ctc")) "purple"
       else if (targetTitle.endsWith("tc")) "green"
@@ -222,6 +144,31 @@ object PairDiagram {
     def isEndOfPair(targetCol: Int): Boolean =
       targetCol > m(0).length - 2
 
-    links.toArray
+    def connectLoosePairs (sources: Seq[(Int,Int)]): Seq[Props] = {
+      sources.tail.indices.map{ i =>
+        val (srcRow,srcCol) = sources(i)
+        val (row,col) = sources(i+1)
+        Props(
+          "source" -> nodeNrs(srcRow)(srcCol),
+          "target" -> nodeNrs(row)(col),
+          "border" -> true
+        )
+      }
+    }
+
+    m.indices.flatMap { row =>
+      m(row).indices.flatMap { col =>
+        m(row)(col).indices.map { linkNr =>
+          val(srcRow,srcCol) = m(row)(col)(linkNr)
+          Props(
+            "source" -> nodeNrs(srcRow)(srcCol),
+            "target" -> nodeNrs(row)(col),
+            "start" -> startMarker(srcRow, srcCol),
+            "end" -> endMarker(row, col),
+            "text" -> midMarker(srcRow, srcCol, row, col, linkNr)
+          )
+        }
+      }
+    } ++ connectLoosePairs(m(2).flatten.filter{case (r,c) => isStartOfPair(r,c)})
   }
 }
