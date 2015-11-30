@@ -4,7 +4,29 @@ import dibl.Matrix._
 
 import scala.util.{Failure, Success, Try}
 
-case class Settings private(absM: M, stitches: Array[Array[String]])
+case class Settings private(absM: M,
+                            stitches: Array[Array[String]]
+                           ) {
+  val nrOfPairLinks = countLinks(absM)
+  private val relRows = stitches.length
+  private val relCols = stitches(0).length
+  private val margin = 2
+
+  def getStitch(row: Int, col: Int): String = {
+    val (cellRow, cellCol) = toCell(row,col)
+    stitches(cellRow)(cellCol)
+  }
+
+  def getTitle(row: Int, col: Int): String = {
+    val (cellRow, cellCol) = toCell(row,col)
+    s"${stitches(cellRow)(cellCol)} - ${"ABCDEFGHIJKLMNOPQRSTUVWXYZ"(cellCol)}${cellRow+1}"
+  }
+
+  private def toCell(row: Int, col: Int): (Int, Int) = {
+    val brickOffset = ((row + margin) / relRows % 2) * (relCols / 2) + margin
+    (row % relRows, (brickOffset + col) % relCols)
+  }
+}
 
 object Settings {
 
@@ -32,7 +54,10 @@ object Settings {
                      absM: M,
                      stitches: String
                     ): Settings =
-    new Settings(absM, stitches = convert(stitches, relM.length, relM(0).length))
+    new Settings(
+      absM,
+      stitches = convert(stitches, relM.length, relM(0).length)
+    )
 
   private def convert(str: String,
                       rows: Int,
@@ -45,6 +70,7 @@ object Settings {
       .filter(_.length == 2)
       .filter(_ (0).matches("[a-z][0-9]"))
       .filter(_ (1).matches("[lrctp]+"))
+      .filter(_ (1).replaceAll("[^p]","").length < 2)
       .foreach { kv =>
         val col = kv(0)(0).toInt - 'a'.toInt
         val row = kv(0)(1).toInt - '1'.toInt

@@ -15,18 +15,15 @@
 */
 package dibl
 
-import dibl.Matrix._
-
 case class PairDiagram private(nodes: Seq[Props],
                                links: Seq[Props])
 
 object PairDiagram {
 
   def apply(settings: Settings): PairDiagram = {
-    val nrOfLinks = countLinks(settings.absM)
-    val nodeNrs = assignNodeNrs(settings.absM, nrOfLinks)
-    val nodes = toNodes(nrOfLinks, settings.absM, settings.stitches).toArray
-    val links = toLinks(settings.absM, nodeNrs, nodes)
+    val nodeNrs = assignNodeNrs(settings.absM, settings.nrOfPairLinks)
+    val nodes = toNodes(settings).toArray
+    val links = toLinks(settings, nodeNrs, nodes)
     assignPairNrs(nodes, links)
     PairDiagram(nodes, links)
   }
@@ -56,47 +53,36 @@ object PairDiagram {
 
   /** Creates nodes for a pair diagram
     *
-    * @param nrOfLinks nr of links per node alias matrix-cell
     * @return properties per node as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js
     */
-  def toNodes (nrOfLinks: Array[Array[Int]],
-               m: M,
-               stitches: Array[Array[String]]
-              ): Seq[Props] = {
+  def toNodes (s: Settings): Seq[Props] = {
 
     def isUsed(row: Int, col: Int): Boolean =
-      nrOfLinks(row)(col) > 0
+      s.nrOfPairLinks(row)(col) > 0
 
     def isInBottom(row: Int): Boolean =
-      row >= m.length - 2
+      row >= s.absM.length - 2
 
     def isFootside(row: Int, col: Int): Boolean =
-      col < 2 || col >= m(0).length - 2
+      col < 2 || col >= s.absM(0).length - 2
 
-    val relRows = stitches.length
-    val relCols = stitches(0).length
     val bobbinProps = Props("bobbin" -> true)
     val footSideProps = Props("title" -> "ttctc")
-    val margin = 2
-    m.indices.flatMap { row =>
-      val brickOffset = ((row + margin) / relRows % 2) * (relCols / 2) + margin
-      val cellRow = row % relRows
-      m(row).indices.filter(isUsed(row, _)).map { col =>
-        val cellCol = (brickOffset + col) % relCols
+    s.absM.indices.flatMap { row =>
+      s.absM(row).indices.filter(isUsed(row, _)).map { col =>
         if (isInBottom(row)) bobbinProps
         else if (isFootside(row, col)) footSideProps
-        else Props("title" -> s"${stitches(cellRow)(cellCol)} - ${"ABCDEFGHIJKLMNOPQRSTUVWXYZ"(cellCol)}${cellRow+1}")
+        else Props("title" -> s.getTitle(row,col))
       }
     }
   }
 
   /** Creates links for a pair diagram
     *
-    * @param m a repeated version of a predefined matrix
     * @param nodeNrs sequence numbers assigned to actually used cells
     * @return properties per link as in https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js
     */
-  def  toLinks (m: M, nodeNrs: Seq[Seq[Int]], nodes: Seq[Props]
+  def  toLinks (s: Settings, nodeNrs: Seq[Seq[Int]], nodes: Seq[Props]
                ): Seq[Props] = {
 
     def startMarker(srcRow: Int, srcCol: Int): String = {
@@ -139,10 +125,10 @@ object PairDiagram {
       nodes(nodeNrs(row)(col)).getOrElse("title", "").toString.replaceAll(" .*","")
 
     def isStartOfPair(srcRow: Int, srcCol: Int): Boolean =
-      srcRow < 2 || (srcRow == 2 && (srcCol < 2 || srcCol > m(0).length - 3))
+      srcRow < 2 || (srcRow == 2 && (srcCol < 2 || srcCol > s.absM(0).length - 3))
 
     def isEndOfPair(targetCol: Int): Boolean =
-      targetCol > m(0).length - 2
+      targetCol > s.absM(0).length - 2
 
     def connectLoosePairs (sources: Seq[(Int,Int)]): Seq[Props] = {
       sources.tail.indices.map{ i =>
@@ -156,10 +142,10 @@ object PairDiagram {
       }
     }
 
-    m.indices.flatMap { row =>
-      m(row).indices.flatMap { col =>
-        m(row)(col).indices.map { linkNr =>
-          val(srcRow,srcCol) = m(row)(col)(linkNr)
+    s.absM.indices.flatMap { row =>
+      s.absM(row).indices.flatMap { col =>
+        s.absM(row)(col).indices.map { linkNr =>
+          val(srcRow,srcCol) = s.absM(row)(col)(linkNr)
           Props(
             "source" -> nodeNrs(srcRow)(srcCol),
             "target" -> nodeNrs(row)(col),
@@ -169,6 +155,6 @@ object PairDiagram {
           )
         }
       }
-    } ++ connectLoosePairs(m(2).flatten.filter{case (r,c) => isStartOfPair(r,c)})
+    } ++ connectLoosePairs(s.absM(2).flatten.filter{case (r,c) => isStartOfPair(r,c)})
   }
 }

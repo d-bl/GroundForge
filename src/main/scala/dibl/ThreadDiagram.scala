@@ -15,19 +15,17 @@
 */
 package dibl
 
-import dibl.Matrix._
-
 case class ThreadDiagram private(nodes: Seq[Props],
                                  links: Seq[Props])
 
 object ThreadDiagram {
 
-  def apply(settings: Settings): ThreadDiagram = {
-    val nrOfPairLinks = countLinks(settings.absM)
-    val nodeMatrix = nrOfPairLinks.indices.map { row =>
-      nrOfPairLinks(row).indices.map { col =>
-        if (nrOfPairLinks(row)(col)<4) None else Some(
-          stitchNodes(settings.stitches(row % ???)(col % ???)))
+  def apply(s: Settings): ThreadDiagram = {
+    val nodeMatrix = s.nrOfPairLinks.indices.map { row =>
+      s.nrOfPairLinks(row).indices.map { col =>
+        if (s.nrOfPairLinks(row)(col)<4) None else Some(
+          stitchNodes(s.getStitch(row,col))
+        )
       }
     }
     val nodeMaps: Seq[(Char, Props)] =
@@ -40,8 +38,8 @@ object ThreadDiagram {
     )
   }
 
-  def stitchNodes (s: String): Seq[(Char, Props)] = {
-    s.replaceAll("t", "lr").replaceAll("rl", "lr").map {
+  def stitchNodes (str: String): Seq[(Char, Props)] = {
+    str.replaceAll("t", "lr").map {
       case c@'l' => c -> Props("title" -> "twist left")
       case c@'r' => c -> Props("title" -> "twist right")
       case c@'p' => c -> Props("pin" -> true)
