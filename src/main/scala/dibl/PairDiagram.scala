@@ -124,23 +124,15 @@ object PairDiagram {
     def getNodeTitle(row: Int, col: Int): String =
       nodes(nodeNrs(row)(col)).getOrElse("title", "").toString.replaceAll(" .*","")
 
-    def isStartOfPair(srcRow: Int, srcCol: Int): Boolean =
-      srcRow < 2 || (srcRow == 2 && (srcCol < 2 || srcCol > s.absM(0).length - 3))
+    def isStartOfPair(r: Int, c: Int): Boolean =
+      r < 2 || (r == 2 && (c < 2 || c > s.absM(0).length - 3))
 
     def isEndOfPair(targetCol: Int): Boolean =
       targetCol > s.absM(0).length - 2
 
-    def connectLoosePairs (sources: Seq[(Int,Int)]): Seq[Props] = {
-      sources.tail.indices.map{ i =>
-        val (srcRow,srcCol) = sources(i)
-        val (row,col) = sources(i+1)
-        Props(
-          "source" -> nodeNrs(srcRow)(srcCol),
-          "target" -> nodeNrs(row)(col),
-          "border" -> true
-        )
-      }
-    }
+    val startNodeNrs = s.absM(2).flatten
+      .filter{case (r,c) => isStartOfPair(r,c)}
+      .map{case (r,c) => nodeNrs(r)(c)}
 
     s.absM.indices.flatMap { row =>
       s.absM(row).indices.flatMap { col =>
@@ -155,6 +147,6 @@ object PairDiagram {
           )
         }
       }
-    } ++ connectLoosePairs(s.absM(2).flatten.filter{case (r,c) => isStartOfPair(r,c)})
+    } ++ transparentLinks(startNodeNrs)
   }
 }

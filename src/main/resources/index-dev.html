@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>DiBL - Dynamic bobbin lace working diagrams for grounds</title>
   <style>
-    fieldset { display: inline-block }
+    fieldset, svg { display: inline-block }
     input { width: 3em; }
     #pattern { width: 6em; }
     #stitches { width: 29em; }
@@ -33,10 +33,18 @@
       showGraph({
         threadColor: '#colorpicker',
         container: '#diagram',
-        width: 1000,
-        height: 800,
+        width: 1200,
+        height: 400,
         nodes: data.nodes,
         links: data.links
+      })
+      showGraph({
+        threadColor: '#colorpicker',
+        container: '#diagram',
+        width: 1200,
+        height: 800,
+        nodes: data.threadNodes,
+        links: data.threadLinks
       })
     }
     function setMax(form) {

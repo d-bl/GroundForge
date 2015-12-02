@@ -14,6 +14,7 @@
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
 
+import scala.annotation.tailrec
 import scala.language.postfixOps
 import scala.collection.immutable.HashMap
 
@@ -32,8 +33,18 @@ package object dibl {
 
     type Props = HashMap[String,Any]
     def Props(xs: (String, Any)*) = HashMap(xs: _*) 
-    
-    def column[A, M[A]](matrix: M[M[A]], colIdx: Int)
-      (implicit v1: M[M[A]] => Seq[M[A]], v2: M[A] => Seq[A]): Seq[A] =
-      matrix.map(_(colIdx))
+
+    def sourceOf(p: Props): Int = p.get("source").get.asInstanceOf[Int]
+    def targetOf(p: Props): Int = p.get("target").get.asInstanceOf[Int]
+
+    @tailrec
+    def transparentLinks (nodes: Seq[Int],
+                                  links: Seq[Props] = Seq[Props]()
+                                 ): Seq[Props] =
+        if (nodes.length < 2) links
+        else transparentLinks(nodes.tail,links :+ Props(
+            "source" -> nodes.head,
+            "target" -> nodes.tail.head,
+            "border" -> true
+        ))
 }

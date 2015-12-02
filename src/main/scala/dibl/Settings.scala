@@ -70,6 +70,7 @@ object Settings {
       .filter(_.length == 2)
       .filter(_ (0).matches("[a-z][0-9]"))
       .filter(_ (1).matches("[lrctp]+"))
+      .filter(_ (1).matches(".*c.*"))
       .filter(_ (1).replaceAll("[^p]","").length < 2)
       .foreach { kv =>
         val col = kv(0)(0).toInt - 'a'.toInt
