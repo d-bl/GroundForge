@@ -12,14 +12,14 @@ Requirements
 
 - [sbt] 0.13.7 or higher
 - a browser with proper SVG support, for example FireFox or Safari but not Internet Explorer.
-  Chrome has proper SVG support but with the default settings it has intranet problems.
+  Chrome has proper SVG support but with the default settings it has intranet problems with the development view.
 
 
 Steps
 
 - Make a local clone of the project, it can be convenient to have two local clones,
   one for the master branch, one for the gh-pages branch.
-- Go to `web/tensioned` inside the clone.
+- Go to `web/tensioned` inside the master branch of the local clone.
 - Start the command `sbt ~fastOptJS`
 - Monitor the result on `http://localhost:12345/target/scala-2.11/classes/index-dev.html`
   It is a dressed down version of the demo page, with experimental features added.
