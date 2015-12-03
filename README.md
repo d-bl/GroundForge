@@ -3,7 +3,7 @@
 The code under `src/main/scala` generates  alternative data for `sample.js` in the [gh-pages branch].
 The patterns are generated from predefined [matrices].
 
-[matrices]: https://github.com/jo-pol/DiBL/blob/17a80e930df3540c95a5cb1bf68dec4f094ce202/web/tensioned/src/main/scala/dibl/Matrix.scala#L158-L167
+[matrices]: https://github.com/jo-pol/DiBL/blob/af6f540a2d19db938c83e76388a84f2a70bd1fe5/web/tensioned/src/main/scala/dibl/Matrix.scala#L145-L174
 
 
 # Compile and preview
