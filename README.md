@@ -26,7 +26,7 @@ Don't know about version control in general or GitHub in particular? No problem:
 * hit the fork button at the top of this page
 * go to `https://github.com/YOURID/DiBL/tree/gh-pages/tensioned`, don't forget to replace YOURID
 * choose the file you want to change and hit the pencil to start editing
-* save your changes and test with your demo-page: `http://YOURID.github.io/DiBL/tensioned/`, again: don't forget to replace YOURID
+* save your changes and test with your own demo-page: `http://YOURID.github.io/DiBL/tensioned/`, again: don't forget to replace YOURID
 * create a [pull request] or drop a note
 
 [pull request]: https://help.github.com/articles/creating-a-pull-request/
