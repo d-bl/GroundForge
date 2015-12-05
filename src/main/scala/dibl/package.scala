@@ -20,31 +20,45 @@ import scala.collection.immutable.HashMap
 
 package object dibl {
 
-    // as in http://stackoverflow.com/questions/15783837/beginner-scala-type-alias-in-scala-2-10
+  // got these type aliases from http://stackoverflow.com/questions/15783837/beginner-scala-type-alias-in-scala-2-10
 
-    type SrcNodes = Array[(Int,Int)]
-    def SrcNodes(xs: (Int,Int)*) = Array(xs: _*)
+  type SrcNodes = Array[(Int,Int)]
+  def SrcNodes(xs: (Int,Int)*) = Array(xs: _*)
 
-    type R = Array[SrcNodes]
-    def R(xs: SrcNodes*) = Array(xs: _*)
+  type R = Array[SrcNodes]
+  def R(xs: SrcNodes*) = Array(xs: _*)
 
-    type M = Array[R]
-    def M(xs: R*) = Array(xs: _*) 
+  type M = Array[R]
+  def M(xs: R*) = Array(xs: _*)
 
-    type Props = HashMap[String,Any]
-    def Props(xs: (String, Any)*) = HashMap(xs: _*) 
+  type ThreadNodes = (Int, Int, Int, Int)
+  def ThreadNodes(a: Int, b: Int, c: Int, d: Int) = (a, b, c, d)
+  def ThreadNodes(pairNr: Int) =
+    (pairNr * 2, pairNr * 2 + 1, pairNr * 2, pairNr * 2 + 1)
+  def ThreadNodes(left: ThreadNodes, right: ThreadNodes) =
+    (left._3, left._4, right._1, right._2)
 
-    def sourceOf(p: Props): Int = p.get("source").get.asInstanceOf[Int]
-    def targetOf(p: Props): Int = p.get("target").get.asInstanceOf[Int]
+  /** see https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js */
+  type Props = HashMap[String,Any]
+  def Props(xs: (String, Any)*) = HashMap(xs: _*)
+  implicit class RichProps (p: Props) {
+    // link properties
+    def source: Int = p.getOrElse("source",0).asInstanceOf[Int]
+    def target: Int = p.getOrElse("target",0).asInstanceOf[Int]
+    // node properties
+    def title: String = p.getOrElse("title", "").toString
+  }
 
-    @tailrec
-    def transparentLinks (nodes: Seq[Int],
-                                  links: Seq[Props] = Seq[Props]()
-                                 ): Seq[Props] =
-        if (nodes.length < 2) links
-        else transparentLinks(nodes.tail,links :+ Props(
-            "source" -> nodes.head,
-            "target" -> nodes.tail.head,
-            "border" -> true
-        ))
+  // other tools
+
+  @tailrec
+  def transparentLinks (nodes: Seq[Int],
+                                links: Seq[Props] = Seq[Props]()
+                               ): Seq[Props] =
+      if (nodes.length < 2) links
+      else transparentLinks(nodes.tail,links :+ Props(
+          "source" -> nodes.head,
+          "target" -> nodes.tail.head,
+          "border" -> true
+      ))
 }

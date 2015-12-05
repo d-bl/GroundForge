@@ -34,9 +34,9 @@ object Settings {
             nr: Int,
             absRows: Int,
             absCols: Int,
-            shiftLeft: Int,
-            shiftUp: Int,
-            stitches: String
+            shiftLeft: Int = 0,
+            shiftUp: Int = 0,
+            stitches: String = ""
            ): Try[Settings] =
     for {
       str <- getMatrix(key, nr)
@@ -46,8 +46,8 @@ object Settings {
 
   def apply(): Try[Settings] =
     for {
-      relM <- toRelSrcNodes(matrix = "46636668", dimensions = "2x4")
-      absM <- toAbs(relM, absRows = 12, absCols = 12, shitfLeft = 0, shiftUp = 0)
+      relM <- toRelSrcNodes(matrix = "5831-4-7", dimensions = "2x4")
+      absM <- toAbs(relM, absRows = 8, absCols = 5, shitfLeft = 0, shiftUp = 0)
     } yield create(relM, absM, stitches = "A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, C2=tc")
 
   private def create(relM: M,

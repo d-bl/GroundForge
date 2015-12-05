@@ -15,12 +15,22 @@
 */
 package dibl
 
-import org.scalatest.{Matchers, FlatSpec}
+import org.scalatest.{FlatSpec, Matchers}
+
+import scala.util.Try
 
 class ThreadDiagramSpec extends FlatSpec with Matchers {
-  "apply" should "produce nodes and links" in {
-    val graph = ThreadDiagram(PairDiagram(Settings("2x4",0,12,12,0,0,"").get))
-    println(graph.nodes.map(_.toString).sorted.distinct.mkString("\n"))
-    graph.nodes.length should be  > 100
+  "ThreadDiagram" should "not throw exceptions" in {
+    // what it seems to do at the first row of stitches for most patterns
+    nrOfNodes(Settings()) should be > 10
+    nrOfNodes(Settings(key = "2x4", nr = 3, absRows = 8, absCols = 5)) should be > 10
+    nrOfNodes(Settings(key = "2x4 rose ground", nr = 1, absRows = 8, absCols = 5, shiftLeft = 1)) should be > 10
+    nrOfNodes(Settings(key = "2x4 rose ground", nr = 5, absRows = 8, absCols = 5, shiftLeft = 1)) should be > 10
+
+    // TODO break the circle of start pins
+    nrOfNodes(Settings(key = "2x4 bias", nr = 0, absRows = 8, absCols = 5, shiftLeft = 1)) should be > 10
+    nrOfNodes(Settings(key = "2x4", nr = 3, absRows = 8, absCols = 9)) should be > 10
   }
+
+  def nrOfNodes(s : Try[Settings]) = ThreadDiagram(PairDiagram(Settings().get)).nodes.length
 }
