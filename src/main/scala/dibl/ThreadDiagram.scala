@@ -38,7 +38,7 @@ object ThreadDiagram {
       Seq(x,y)
     }
     val pairNodesToThreadNodes = startPairNodeNrs.indices.map(i =>
-      startPairNodeNrs(i) ->(i * 2, i * 2 + 1)
+      startPairNodeNrs(i) ->ThreadNodes(i)
     ).toMap
     // TODO create rows until no more possible stitches,
     val (nodes, links) = createRow(
@@ -52,7 +52,7 @@ object ThreadDiagram {
 
   @tailrec
   def createRow(stitches: Seq[(String, (Int, Int))],
-                pairNodesToThreadNodes: Map[Int, (Int, Int)],
+                pairNodesToThreadNodes: Map[Int, ThreadNodes],
                 nodes: Seq[Props],
                 links: Seq[Props]
                      ): (Seq[Props], Seq[Props]) =
@@ -61,9 +61,8 @@ object ThreadDiagram {
       // apply the typ-alias AvailableNodes
     else {
       val (instructions, (left, right)) = stitches.head
-      val (a,b) = pairNodesToThreadNodes(left)
-      val (c,d) = pairNodesToThreadNodes(right)
-      val (_, accNodes, accLinks) = createStitch(instructions, (a,b,c,d), nodes,links)
+      val tn = ThreadNodes(pairNodesToThreadNodes(left), pairNodesToThreadNodes(right))
+      val (_, accNodes, accLinks) = createStitch(instructions, tn, nodes,links)
       createRow(stitches.tail, pairNodesToThreadNodes, accNodes, accLinks)
     }
 
