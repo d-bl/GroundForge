@@ -31,12 +31,17 @@ package object dibl {
   type M = Array[R]
   def M(xs: R*) = Array(xs: _*)
 
+  type TargetToSrcs = (Int, (Int, Int))
+  def TargetToSrcs (target: Int, sources: (Int, Int)) = (target, sources)
+
+  /** After twisting both pairs: (a==b), (c==d)
+    * At a start pin: (a,b)==(c,d) (or after one pair was used for a stitch)
+    * After a cross: (b==c)
+    */
   type ThreadNodes = (Int, Int, Int, Int)
-  def ThreadNodes(a: Int, b: Int, c: Int, d: Int) = (a, b, c, d)
-  def ThreadNodes(pairNr: Int) =
-    (pairNr * 2, pairNr * 2 + 1, pairNr * 2, pairNr * 2 + 1)
-  def ThreadNodes(left: ThreadNodes, right: ThreadNodes) =
-    (left._3, left._4, right._1, right._2)
+  def ThreadNodes(a: Int, b: Int, c: Int, d: Int): ThreadNodes = (a, b, c, d)
+  def ThreadNodes(left: ThreadNodes, right: ThreadNodes): ThreadNodes = (left._3, left._4, right._1, right._2)
+  def ThreadNodes(pairNr: Int): ThreadNodes = (pairNr * 2, pairNr * 2 + 1, pairNr * 2, pairNr * 2 + 1)
 
   /** see https://github.com/jo-pol/DiBL/blob/gh-pages/tensioned/sample.js */
   type Props = HashMap[String,Any]
