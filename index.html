@@ -38,7 +38,7 @@
    <style>
      input { width: 3em; }
      #threadColor input { width: 4.5em; }
-     form, div { display: inline-block; }
+     form, #diagram { display: inline-block; }
      fieldset { margin-bottom: 0.4em; padding-bottom: 0.3em }
      svg{ border: solid 1px #AAA }
      .node {
@@ -127,8 +127,8 @@
         <fieldset id="st">
             <textarea rows="3" cols="30" id="stitches" name="stitches"
             >A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, C2=tc</textarea>
-            <br/>c(ross) t(wist) l(eft-twist) r(ight-twist)
-            <br/>compare with tooltips in a pair diagram
+            <br/>c(ross) t(wist) l(eft-twist) r(ight-twist) p(in)
+            <br/>compare with tooltips in the diagrams
         </fieldset>
 
         <button class="button" onclick="show(this.form); return false">draw</button>
