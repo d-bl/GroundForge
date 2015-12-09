@@ -56,7 +56,7 @@ object D3Data {
   def toJS(items: Seq[HashMap[String,Any]]
           ): js.Array[js.Dictionary[Any]] = {
 
-    val a = js.Array[js.Any](items.length).asInstanceOf[js.Array[js.Dictionary[Any]]]
+    val a = new js.Array[js.Any](items.length).asInstanceOf[js.Array[js.Dictionary[Any]]]
     for {i <- items.indices} {
       a(i) = js.Object().asInstanceOf[js.Dictionary[Any]]
       for {key <- items(i).keys} {
