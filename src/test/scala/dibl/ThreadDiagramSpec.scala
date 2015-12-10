@@ -32,5 +32,22 @@ class ThreadDiagramSpec extends FlatSpec with Matchers {
     nrOfNodes(Settings(key = "2x4", nr = 3, absRows = 8, absCols = 9)) should be > 10
   }
 
-  def nrOfNodes(s : Try[Settings]) = ThreadDiagram(PairDiagram(Settings().get)).nodes.length
+  def nrOfNodes(s : Try[Settings]) = {
+    val d = ThreadDiagram(PairDiagram(Settings().get))
+    // mimic D3Data
+    traverse(d.nodes)
+    traverse(d.links)
+    d.nodes.length
+  }
+
+  def traverse(items: Seq[Props]) = {
+
+    val a = new Array[Any](items.length)
+    println(s"${items.length} ${a.length}")
+    for {i <- items.indices} {
+      for {key <- items(i).keys} {
+        a(i) = items(i).get(key).get
+      }
+    }
+  }
 }
