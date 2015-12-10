@@ -15,35 +15,36 @@
 */
 package dibl
 
+import dibl.Matrix._
 import org.scalatest.{FlatSpec, Matchers}
 
 import scala.util.Try
 
 class ThreadDiagramSpec extends FlatSpec with Matchers {
   "ThreadDiagram" should "not throw exceptions" in {
-    // what it seems to do at the first row of stitches for most patterns
-    nrOfNodes(Settings()) should be > 10
-    nrOfNodes(Settings(key = "2x4", nr = 3, absRows = 8, absCols = 5)) should be > 10
-    nrOfNodes(Settings(key = "2x4 rose ground", nr = 1, absRows = 8, absCols = 5, shiftLeft = 1)) should be > 10
-    nrOfNodes(Settings(key = "2x4 rose ground", nr = 5, absRows = 8, absCols = 5, shiftLeft = 1)) should be > 10
-
-    // TODO break the circle of start pins
-    nrOfNodes(Settings(key = "2x4 bias", nr = 0, absRows = 8, absCols = 5, shiftLeft = 1)) should be > 10
-    nrOfNodes(Settings(key = "2x4", nr = 3, absRows = 8, absCols = 9)) should be > 10
-  }
-
-  def nrOfNodes(s : Try[Settings]) = {
-    val d = ThreadDiagram(PairDiagram(Settings().get))
-    // mimic D3Data
-    traverse(d.nodes)
-    traverse(d.links)
-    d.nodes.length
+    // what it seems to do in situ at the first row of stitches for most patterns
+    // TODO does some try hide an index out of range? It may survive in a JVM but not in JavaScript.
+    val errors = new StringBuffer()
+    matrixMap.keys.foreach { key =>
+      for (i <- matrixMap.get(key).get.indices) {
+        for {
+          s <- Settings(key, i, absRows = 8, absCols = 5)
+          p <- Try(PairDiagram(s))
+          t <- Try(ThreadDiagram(p))
+          _ <- Try(traverse(t.nodes))
+          _ <- Try(traverse(t.links))
+        } yield ()
+      }
+      println(key)
+    }
+    println("---")
+    errors.toString shouldBe ""
   }
 
   def traverse(items: Seq[Props]) = {
-
+    // mimics D3Data.toJS, which requires a specific JVM
     val a = new Array[Any](items.length)
-    println(s"${items.length} ${a.length}")
+    //println(s"${items.length} ${a.length}")
     for {i <- items.indices} {
       for {key <- items(i).keys} {
         a(i) = items(i).get(key).get
