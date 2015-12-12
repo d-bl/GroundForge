@@ -12,7 +12,6 @@
     <script src="matrix-graphs.js"></script>
     <script>
       function show(form) {
-        document.getElementById('diagram').innerHTML = ""
         var data = dibl.D3Data().get(
           form.set.value,
           form.nrInSet.value * 1,
@@ -22,17 +21,36 @@
           form.shiftUp.value * 1,
           form.stitches.value
           )
+        document.getElementById('diagram').innerHTML = ""
         showGraph({
           threadColor: '#colorpicker',
           container: '#diagram',
-          width: form.width.value,
-          height: form.height.value,
+          width: form.pairWidth.value * 1,
+          height: form.pairHeight.value * 1,
           nodes: data.nodes,
           links: data.links,
+        })
+        showGraph({
+          threadColor: '#colorpicker',
+          container: '#diagram',
+          width: form.threadWidth.value * 1,
+          height: form.threadHeight.value * 1,
+          nodes: data.threadNodes,
+          links: data.threadLinks,
         })
       }
       function setMax(form) {
         form.nrInSet.max = form.set[form.set.selectedIndex].getAttribute("data-max-nr")
+      }
+      function init() {
+        showGraph({
+          threadColor: '#colorpicker',
+          container: '#diagram',
+          width: 300,
+          height: 468,
+          nodes: sample.nodes,
+          links: sample.links,
+        })
       }
     </script>
    <style>
@@ -40,7 +58,7 @@
      #threadColor input { width: 4.5em; }
      form, #diagram { display: inline-block; }
      fieldset { margin-bottom: 0.4em; padding-bottom: 0.3em }
-     svg{ border: solid 1px #AAA }
+     svg{ border: solid 1px #AAA; margin-right: 0.4em; }
      .node {
        fill: #000;
        opacity: 0;
@@ -53,7 +71,7 @@
      .labelText {font-size:9px; font-weight: bold; }
     </style>
 </head>
-<body>
+<body onload="init()">
     <img align="right" src="../logo-big.png"/>
     <h1>Bobbin lace working diagrams</h1>
     <p><em>Under construction</em>: <a href="https://github.com/jo-pol/DiBL/labels/enhancement"
@@ -83,6 +101,7 @@
 
         <label for="pattern">Try another pattern </label>
         <fieldset id="pattern">
+            <label for="nrInSet">nr</label>
             <input id="nrInSet" name="nrInSet" min="0" max="2" value="0" type="number"/>
             <label for="set">in set</label>
             <select size="1" id="set" name="set" onChange="setMax(form)">
@@ -99,10 +118,18 @@
             </select>
         </fieldset>
 
+        <label for="st">Stitches</label>
+        <fieldset id="st">
+            <textarea rows="3" cols="30" id="stitches" name="stitches"
+            >A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc</textarea>
+            <br/>c(ross) t(wist) l(eft-twist) r(ight-twist) p(in)
+            <br/>compare with tooltips in the diagrams
+        </fieldset>
+
         <label for="shift">Shift (stitches)</label>
         <fieldset id="shift">
             <label for="shiftLeft">footside by </label>
-            <input id="shiftLeft" name="shiftLeft" min="0" max="3" value="1" type="number"/>
+            <input id="shiftLeft" name="shiftLeft" min="0" max="3" value="0" type="number"/>
             <label for="shiftUp">top by </label>
             <input id="shiftUp" name="shiftUp" min="0" max="3" value="0" type="number"/>
         </fieldset>
@@ -115,38 +142,27 @@
             <input id="cols" name="cols" min="0" max="20" value="7" type="number"/>
         </fieldset>
 
-        <label for="image">Image size (pixels)</label>
-        <fieldset id="image">
-            <label for="width">width</label>
-            <input id="width" name="width" min="200" max="999" value="300" type="number"/>
-            <label for="height">height</label>
-            <input id="height" name="height" min="200" max="999" value="403" type="number"/>
+        <label for="pairImage">Pair image size (pixels)</label>
+        <fieldset id="pairImage">
+            <label for="pairWidth">width</label>
+            <input id="pairWidth" name="pairWidth" min="200" max="999" value="280" type="number"/>
+            <label for="pairHeight">height</label>
+            <input id="pairHeight" name="pairHeight" min="200" max="999" value="468" type="number"/>
         </fieldset>
 
-        <label for="st">Stitches</label>
-        <fieldset id="st">
-            <textarea rows="3" cols="30" id="stitches" name="stitches"
-            >A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, C2=tc</textarea>
-            <br/>c(ross) t(wist) l(eft-twist) r(ight-twist) p(in)
-            <br/>compare with tooltips in the diagrams
+        <label for="threadImage">Thread image size (pixels)</label>
+        <fieldset id="threadImage">
+            <label for="threadWidth">width</label>
+            <input id="threadWidth" name="threadWidth" min="200" max="999" value="350" type="number"/>
+            <label for="threadHeight">height</label>
+            <input id="threadHeight" name="threadHeight" min="200" max="999" value="468" type="number"/>
         </fieldset>
 
         <button class="button" onclick="show(this.form); return false">draw</button>
     </form>
     <div id="diagram"></div>
-    <script>
-      showGraph({
-        threadColor: '#colorpicker',
-        container: '#diagram',
-        width: 300,
-        height: 403,
-        nodes: sample.nodes,
-        links: sample.links,
-      })
-    </script>
     <p><a href="https://github.com/jo-pol/DiBL/tree/gh-pages/tensioned#how-its-made"
        >How it's made</a> - <a href="https://github.com/jo-pol/DiBL/tree/gh-pages/tensioned#how-to-contribute"
-       >Contributions</a> are welcome - <a href="https://github.com/jo-pol/DiBL/commits/gh-pages/tensioned/"
        >Changes</a> - Powered by: <a href="https://d3js.org"
        >D3.js</a>, <a href="http://www.menucool.com/color-picker"
        >Menucool</a>.
