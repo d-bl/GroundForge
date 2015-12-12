@@ -10,12 +10,14 @@ Step by step changed an [example] for [D3.js]:
 - added properties to identify the links that are part of a single thread
 - turned the links from lines to paths with a third node to add mid-markers for twist marks
 
-[scala code] is compiled into `matrix-graphs.js` to generate alternatives for the `sample.js`.
+[scala code] is compiled into `matrix-graphs.js` to generate alternatives for the `sample.js`. These alternatives are based on output of mathematical papers: [1], [2].
 
 [example]: http://bl.ocks.org/mbostock/4062045
 [D3.js]: http://d3js.org/
 [color coded diagrams]: https://en.wikipedia.org/w/index.php?title=Mesh_grounded_bobbin_lace&oldid=639789191#Worker_pair_versus_two_pair_per_pin
 [scala code]: https://github.com/jo-pol/DiBL/tree/master/web/tensioned/
+[1]: http://web.uvic.ca/~vmi/papers/bridges2012.html
+[2]: http://web.uvic.ca/~vmi/papers/jmm2014.html
 
 ## How to contribute
 
@@ -27,6 +29,4 @@ Don't know about version control in general or GitHub in particular? No problem:
 * go to `https://github.com/YOURID/DiBL/tree/gh-pages/tensioned`, don't forget to replace YOURID
 * choose the file you want to change and hit the pencil to start editing
 * save your changes and test with your own demo-page: `http://YOURID.github.io/DiBL/tensioned/`, again: don't forget to replace YOURID
-* create a [pull request] or drop a note
-
-[pull request]: https://help.github.com/articles/creating-a-pull-request/
+* create a pull request at `https://github.com/YOURID/DiBL/tree/gh-pages/` or drop a note
