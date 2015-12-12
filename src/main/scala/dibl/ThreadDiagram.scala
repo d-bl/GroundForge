@@ -22,68 +22,72 @@ case class ThreadDiagram private(nodes: Seq[Props],
                                  links: Seq[Props])
 
 object ThreadDiagram {
+  private val whoopsShifted = Props("title" -> "many shifted patterns are too buggy")
+  private val whoops = Props("title" -> "Sorry, ran into a bug.")
 
   def apply(pairDiagram: PairDiagram): ThreadDiagram = {
 
-    implicit val instructions = pairDiagram.nodes.map(
-      _.title.replaceAll(" .*", "").toLowerCase.replaceAll("t","lr")
-    )
-    val sourceToTargets = mapSourceToTargets(pairDiagram.links)
-    val startPins = getStartPins(pairDiagram.nodes)
-      .toArray // works around some of the index-out-of-bounds exceptions in JavaScript
-    val startThreadNodes = startPins.flatMap{ i =>
-      val n = startPins(i) * 2
+    val pairNodes = pairDiagram.nodes
+    implicit val pairLinks = pairDiagram.links.map(l => (l.source, l.target))
+    implicit val instructions = pairNodes.map(_.instructions)
+    val startPins = pairNodeNrToThreadNr(pairNodes)
+    val startPairNodeNrs = startPins.keys.toSeq
+    val startThreadNodes = startPins.flatMap { case (_, threadNr) =>
+      val n = threadNr * 2
       val x = Props("startOf" -> s"thread${n + 1}")
       val y = Props("startOf" -> s"thread${n + 2}")
       Seq(x,y)
+    }.toSeq
+    val nodesByThreadNr = startThreadNodes.indices.sortBy(startThreadNodes(_).startOf)
+    if (startThreadNodes(nodesByThreadNr.head).startOf != 1) {
+      ThreadDiagram(Seq(whoopsShifted), Seq[Props]())
     }
-    // TODO create rows until no more possible stitches,
-    val (availablePairs, nodes, links) = createRow(
-      possibleStitches(startPins, pairDiagram.links.map(l => (l.source, l.target))),
-      //getPossibleStitches(startPins, sourceToTargets),
-      startPinsToThreadNodes(startPins),
-      startThreadNodes
-    )
-    ThreadDiagram(nodes, links ++ transparentLinks(startThreadNodes.indices))
+    else {
+      val (_, nodes, links) = createRow(
+        nextPossibleStitches(startPairNodeNrs),
+        startPinsToThreadNodes(startPairNodeNrs),
+        startThreadNodes
+      )
+      ThreadDiagram(nodes, links ++ transparentLinks(nodesByThreadNr))
+    }
   }
 
-  def mapSourceToTargets(pairLinks: Seq[Props]): Map[Int, Seq[Int]] =
-    pairLinks
-      .map(props => props.source -> props.target)
-      .groupBy(_._2)
-      .map { case (t, links) =>
-        t -> links.map { case (s, _) => s }
-      }
+  private def pairNodeNrToThreadNr(nodes: Seq[Props]): Map[Int, Int] =
+    nodes.indices.toArray
+      .filter(nodes(_).title.startsWith("Pair"))
+      .map(n => n -> (nodes(n).title.replace("Pair ", "").toInt - 1)).toMap
 
-  def getPossibleStitches(availableSources: Seq[Int],
-                          sourceToTargets: Map[Int,Seq[Int]]
-                         ): Seq[(Int, Seq[Int])] = {
-    // links starting at available sources
-    availableSources.map(src => (src , sourceToTargets.get(src))).filter(_._2.isDefined)
-      .map{case (src , linkOptions) => (src,linkOptions.get) }
-    // TODO find sources with same targets
-  }
-
-  def startPinsToThreadNodes(startPairNodeNrs: Seq[Int]): Map[Int, ThreadNodes] =
+  private def startPinsToThreadNodes(startPairNodeNrs: Seq[Int]): Map[Int, ThreadNodes] =
     startPairNodeNrs.indices.map(i =>
       startPairNodeNrs(i) -> ThreadNodes(i)
     ).toMap
 
-  def getStartPins(nodes: Seq[Props]): IndexedSeq[Int] =
-    nodes.indices
-      .filter(nodes(_).title.startsWith("Pair"))
-      .map(nodes(_).title.replace("Pair ", "").toInt - 1)
+  private def terminate(nodes: Seq[Props], links: Seq[Props]) =
+    (Map[Int, ThreadNodes](), whoops +: nodes, links)
 
   @tailrec
-  def createRow(possibleStitches: Seq[TargetToSrcs],
-                availablePairs: Map[Int, ThreadNodes],
-                nodes: Seq[Props],
-                links: Seq[Props] = Seq[Props]()
-               )(implicit instructions: Seq[String]
-               ): (Map[Int, ThreadNodes], Seq[Props], Seq[Props]) =
-    if (possibleStitches.isEmpty) (availablePairs, nodes, links)
-    else {
+  private def createRow(possibleStitches: Seq[TargetToSrcs],
+                        availablePairs: Map[Int, ThreadNodes],
+                        nodes: Seq[Props],
+                        links: Seq[Props] = Seq[Props]()
+                       )(implicit
+                         instructions: Seq[String],
+                         pairLinks: Seq[(Int, Int)]
+                       ): (Map[Int, ThreadNodes], Seq[Props], Seq[Props]) =
+    if (possibleStitches.isEmpty) {
+      val ps = possibleStitches
+      val next: Seq[TargetToSrcs] = nextPossibleStitches(availablePairs.keys.toSeq)
+      val stop = next.isEmpty || nodes.length > 500 // maximized to prevent eternal loop
+      //println(s"$stop ${nodes.length} - ${availablePairs.keys.mkString(",")} - ${next.toMap.keys.mkString(",")}")
+      if (stop)
+        (availablePairs, nodes, links)
+      else
+        createRow(next, availablePairs, nodes, links)
+    } else {
       val (pairTarget, (leftPairSource, rightPairSource)) = possibleStitches.head
+      Set(leftPairSource, rightPairSource).subsetOf(availablePairs.keySet)
+      if (!Set(leftPairSource, rightPairSource).subsetOf(availablePairs.keySet))
+        return terminate(nodes, links) // TODO fix me
       val left = availablePairs(leftPairSource)
       val right = availablePairs(rightPairSource)
       val (newNodes, accNodes, accLinks) = {
@@ -103,14 +107,16 @@ object ThreadDiagram {
           else if (noMoreRight) HashMap(pairTarget -> newNodes, leftPairSource -> newLeft)
           else HashMap(pairTarget -> newNodes, rightPairSource -> newRight)
         }
-        availablePairs.slice(0, leftPairSource) ++ replacement ++
-          availablePairs.slice(leftPairSource + 1, availablePairs.size)
+//        println(s"$leftPairSource -- ${replacement.keys} -- $rightPairSource")
+//        println(availablePairs.mkString(" ## "))
+        availablePairs - leftPairSource - rightPairSource ++ replacement
       }
+//      println(replaced.mkString(" ## "))
       createRow(possibleStitches.tail, replaced, accNodes, accLinks)
     }
 
   @tailrec
-  def createStitch(instructions: String,
+  private def createStitch(instructions: String,
                    threadNodes: ThreadNodes,
                    nodes: Seq[Props],
                    links: Seq[Props]
@@ -153,9 +159,9 @@ object ThreadDiagram {
   /** @return something like (("ctc", (0, 1)), ...)
     *         meaning: make a cloth stitch with pairs at nodes (0,1), ...
     */
-  def possibleStitches(startPairs: Seq[Int],
-                       pairLinks: Seq[(Int, Int)]
-                      ): List[TargetToSrcs] = pairLinks
+  private def nextPossibleStitches(startPairs: Seq[Int]
+                                  )(implicit pairLinks: Seq[(Int, Int)]
+                                  ): List[TargetToSrcs] = pairLinks
     // get links starting at nodes in startPairs
     .filter(pairLink => startPairs.contains(pairLink._1))
     // get those ending at the same targets

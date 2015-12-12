@@ -52,6 +52,8 @@ package object dibl {
     def target: Int = p.getOrElse("target",0).asInstanceOf[Int]
     // node properties
     def title: String = p.getOrElse("title", "").toString
+    def instructions: String = p.title.replaceAll(" .*", "").toLowerCase.replaceAll("t","lr")
+    def startOf: Int = p.getOrElse("startOf","0").toString.replaceAll("thread","").toInt
   }
 
   // other tools

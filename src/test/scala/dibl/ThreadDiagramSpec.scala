@@ -22,33 +22,34 @@ import scala.util.Try
 
 class ThreadDiagramSpec extends FlatSpec with Matchers {
   "ThreadDiagram" should "not throw exceptions" in {
-    // what it seems to do in situ at the first row of stitches for most patterns
-    // TODO does some try hide an index out of range? It may survive in a JVM but not in JavaScript.
     val errors = new StringBuffer()
     matrixMap.keys.foreach { key =>
       for (i <- matrixMap.get(key).get.indices) {
-        for {
+        println(s"--------- $key $i")
+        val x = for {
           s <- Settings(key, i, absRows = 8, absCols = 5)
           p <- Try(PairDiagram(s))
           t <- Try(ThreadDiagram(p))
           _ <- Try(traverse(t.nodes))
           _ <- Try(traverse(t.links))
         } yield ()
+        if (x.isFailure)errors.append(s"$key $i ${x.failed.get}\n")
       }
-      println(key)
     }
-    println("---")
     errors.toString shouldBe ""
+  }
+  "tmp" should "not throw an exception" in {
+    ThreadDiagram(PairDiagram(Settings("2x4 rose ground", 1, absRows = 8, absCols = 9).get))
+    //ThreadDiagram(PairDiagram(Settings().get))
   }
 
   def traverse(items: Seq[Props]) = {
     // mimics D3Data.toJS, which requires a specific JVM
     val a = new Array[Any](items.length)
-    //println(s"${items.length} ${a.length}")
-    for {i <- items.indices} {
-      for {key <- items(i).keys} {
-        a(i) = items(i).get(key).get
-      }
-    }
+    for {
+      i <- items.indices
+      key <- items(i).keys
+    } a(i) = items(i)(key)
   }
+
 }
