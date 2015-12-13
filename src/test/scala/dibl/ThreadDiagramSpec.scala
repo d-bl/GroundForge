@@ -26,8 +26,8 @@ class ThreadDiagramSpec extends FlatSpec with Matchers {
     matrixMap.keys.foreach { key =>
       for (i <- matrixMap.get(key).get.indices) {
         println(s"--------- $key $i")
+        val s = Settings(key, i, absRows = 8, absCols = 5)
         val x = for {
-          s <- Settings(key, i, absRows = 8, absCols = 5)
           p <- Try(PairDiagram(s))
           t <- Try(ThreadDiagram(p))
           _ <- Try(traverse(t.nodes))
@@ -38,9 +38,24 @@ class ThreadDiagramSpec extends FlatSpec with Matchers {
     }
     errors.toString shouldBe ""
   }
+
+  "invalid key" should "render a single node" in {
+    val pd = ThreadDiagram(PairDiagram(Settings("xxx", 1, absRows = 8, absCols = 9)))
+    pd.links.length shouldBe 0
+    pd.nodes.length shouldBe 1
+    pd.nodes.head("title") shouldBe "invalid pair diagram"
+  }
+
+  "invalid dimension" should "render a single node" in {
+    val pd = ThreadDiagram(PairDiagram(Settings("2x4", 1, absRows = -8, absCols = 9)))
+    pd.links.length shouldBe 0
+    pd.nodes.length shouldBe 1
+    pd.nodes.head("title") shouldBe "invalid pair diagram"
+  }
+
   "tmp" should "not throw an exception" in {
-    ThreadDiagram(PairDiagram(Settings("2x4 rose ground", 1, absRows = 8, absCols = 9).get))
-    //ThreadDiagram(PairDiagram(Settings().get))
+    //ThreadDiagram(PairDiagram(Settings("2x4 rose ground", 1, absRows = 8, absCols = 9)))
+    ThreadDiagram(PairDiagram(Settings()))
   }
 
   def traverse(items: Seq[Props]) = {

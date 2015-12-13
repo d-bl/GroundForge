@@ -10,6 +10,7 @@
     #pattern { width: 6em; }
     #stitches { width: 29em; }
     .link { stroke: #000; }
+    svg{ border: solid 1px #AAA; margin-right: 0.4em; }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
   <script src="https://raw.githubusercontent.com/jo-pol/DiBL/gh-pages/tensioned/sample.js"></script>
@@ -33,16 +34,16 @@
       showGraph({
         threadColor: '#colorpicker',
         container: '#diagram',
-        width: 250,
-        height: 800,
+        width: 1030,
+        height: 300,
         nodes: data.nodes,
         links: data.links
       })
       showGraph({
         threadColor: '#colorpicker',
         container: '#diagram',
-        width: 1000,
-        height: 800,
+        width: 1030,
+        height: 500,
         nodes: data.threadNodes,
         links: data.threadLinks
       })
@@ -68,7 +69,8 @@
     </fieldset>
     <fieldset>
       <label for="stitches">stitches</label>
-      <input id="stitches" name="stitches" type="text" value="A1=tctpc, B1=tctc, C1=tc, D1=tctc, A2=tc, C2=tc"/>
+      <input id="stitches" name="stitches" type="text"
+             value="A1=tctpc, B1=tctpc, C1=tctpc, D1=tctpc, A2=tctpc, B2=tctpc, C2=tctpc, D2=tctpc"/>
     </fieldset>
     <fieldset>
       <select size="1" id="set" name="set" onChange="setMax(form)">

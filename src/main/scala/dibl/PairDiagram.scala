@@ -15,18 +15,24 @@
 */
 package dibl
 
+import scala.util.Try
+import scala.util.control.Breaks.TryBlock
+
 case class PairDiagram private(nodes: Seq[Props],
                                links: Seq[Props])
 
 object PairDiagram {
 
-  def apply(settings: Settings): PairDiagram = {
-    val nodeNrs = assignNodeNrs(settings.absM, settings.nrOfPairLinks)
-    val nodes = toNodes(settings).toArray
-    val links = toLinks(settings, nodeNrs, nodes)
-    assignPairNrs(nodes, links)
-    PairDiagram(nodes, links)
-  }
+  def apply(settings: Try[Settings]): PairDiagram =
+    if (settings.isFailure)
+      PairDiagram(Seq(Props("title" -> settings.failed.get.getMessage, "bobbin" -> true)), Seq[Props]())
+    else {
+      val nodeNrs = assignNodeNrs(settings.get.absM, settings.get.nrOfPairLinks)
+      val nodes = toNodes(settings.get).toArray
+      val links = toLinks(settings.get, nodeNrs, nodes)
+      assignPairNrs(nodes, links)
+      PairDiagram(nodes, links)
+    }
 
   private def assignPairNrs(nodes: Array[Props], links: Seq[Props]): Unit = {
     // assign numbers to the source node of the first link of each pair

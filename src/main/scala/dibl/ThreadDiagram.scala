@@ -22,8 +22,9 @@ case class ThreadDiagram private(nodes: Seq[Props],
                                  links: Seq[Props])
 
 object ThreadDiagram {
-  private val whoopsShifted = Props("title" -> "many shifted patterns are too buggy")
-  private val whoops = Props("title" -> "Sorry, ran into a bug.")
+  private val whoopsShifted = Props("title" -> "many shifted patterns are too buggy", "bobbin" -> true)
+  private val whoopsInvalidPD = Props("title" -> "invalid pair diagram", "bobbin" -> true)
+  private val whoops = Props("title" -> "Sorry, ran into a bug.", "bobbin" -> true)
 
   def apply(pairDiagram: PairDiagram): ThreadDiagram = {
 
@@ -39,9 +40,10 @@ object ThreadDiagram {
       Seq(x,y)
     }.toSeq
     val nodesByThreadNr = startThreadNodes.indices.sortBy(startThreadNodes(_).startOf)
-    if (startThreadNodes(nodesByThreadNr.head).startOf != 1) {
+    if (nodesByThreadNr.isEmpty)
+      ThreadDiagram(Seq(whoopsInvalidPD), Seq[Props]())
+    else if (startThreadNodes(nodesByThreadNr.head).startOf != 1)
       ThreadDiagram(Seq(whoopsShifted), Seq[Props]())
-    }
     else {
       val (_, nodes, links) = createRow(
         nextPossibleStitches(startPairNodeNrs),
@@ -156,9 +158,6 @@ object ThreadDiagram {
       }
     }
 
-  /** @return something like (("ctc", (0, 1)), ...)
-    *         meaning: make a cloth stitch with pairs at nodes (0,1), ...
-    */
   private def nextPossibleStitches(startPairs: Seq[Int]
                                   )(implicit pairLinks: Seq[(Int, Int)]
                                   ): List[TargetToSrcs] = pairLinks
