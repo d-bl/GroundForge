@@ -47,7 +47,7 @@
           threadColor: '#colorpicker',
           container: '#diagram',
           width: 300,
-          height: 468,
+          height: 437,
           nodes: sample.nodes,
           links: sample.links,
         })
@@ -57,8 +57,8 @@
      input { width: 3em; }
      #threadColor input { width: 4.5em; }
      form, #diagram { display: inline-block; }
-     fieldset { margin-bottom: 0.4em; padding-bottom: 0.3em }
      svg{ border: solid 1px #AAA; margin-right: 0.4em; }
+     fieldset { padding-right: 0.2em; padding-bottom: 0.2em}
      .node {
        fill: #000;
        opacity: 0;
@@ -74,33 +74,28 @@
 <body onload="init()">
     <img align="right" src="../logo-big.png"/>
     <h1>Bobbin lace working diagrams</h1>
-    <p><em>Under construction</em>: <a href="https://github.com/jo-pol/DiBL/labels/enhancement"
-    >wish list</a>, the numbering in the NxM pattern sets is the same as for the <a href="http://jo-pol.github.io/DiBL/grounds/"
-    >interleaved</a> patterns based on templates but different from the <a href="http://web.uvic.ca/%7Evmi/papers/interleavedpatterns.html"
-    >original data</a>.
-    </p>
     <ul><li>
-      Hover over diagram components for tooltips: description, hint and/or
-        the stitch in terms of t(wist)c(cross) + spreadsheet like coordinates
-        matching a brick wise stacked pattern matrix.
+      Thread diagrams are still incomplete and foot sides are still buggy.
     </li><li>
-      The diagrams might be rotated, mirrored or twisted: dragging can fix that.
+        Numbers of the NxM patterns are the same as for the <a href="http://jo-pol.github.io/DiBL/grounds/"
+        >interleaved</a> patterns based on templates but different from the <a href="http://web.uvic.ca/%7Evmi/papers/interleavedpatterns.html"
+        >original data</a>.
+    </li><li>
+      The diagrams might be rotated, mirrored (see thread/pair numbers in diagram tooltips) or twisted: dragging can fix that.
       A fast move may (un)twist or flip a diagram. Two twists can become a flip too.
     </li><li>
       FireFox, Chrome and Safari are fine, IE has a <a href="https://connect.microsoft.com/IE/feedback/details/801938/dynamically-updated-svg-path-with-a-marker-end-does-not-update"
       >problem</a> rendering the color codes of pair diagrams and over-under effect of thread diagrams.
     </li><li>
-        <form id="threadColor" action="" onsubmit="return false;">
-            <label for="colorpicker">
-                Single click the square start of a thread to paint it:
-            </label>
-            <input id="colorpicker" type="text" class="color" value="#CC0000"/>
-        </form>
+        More <a href="https://github.com/jo-pol/DiBL/labels/enhancement"
+        >issues</a>
     </li></ul>
+    <br clear="all"/>
     <form id="graph" action="" onsubmit="return false">
+      <fieldset>
+        <legend>Configure a pattern</legend>
 
-        <label for="pattern">Try another pattern </label>
-        <fieldset id="pattern">
+        <fieldset>
             <label for="nrInSet">nr</label>
             <input id="nrInSet" name="nrInSet" min="0" max="2" value="0" type="number"/>
             <label for="set">in set</label>
@@ -118,52 +113,66 @@
             </select>
         </fieldset>
 
-        <label for="st">Stitches</label>
-        <fieldset id="st">
+        <fieldset>
+            <legend>Stitches <img
+                    title ="c(ross) t(wist) l(eft-twist) r(ight-twist) p(in); compare with tooltips in the diagrams"
+                    src="../information-icon.png"></legend>
             <textarea rows="3" cols="30" id="stitches" name="stitches"
             >A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc</textarea>
-            <br/>c(ross) t(wist) l(eft-twist) r(ight-twist) p(in)
-            <br/>compare with tooltips in the diagrams
         </fieldset>
 
-        <label for="shift">Shift (stitches)</label>
-        <fieldset id="shift">
+        <fieldset>
+            <legend>Shift (stitches)</legend>
             <label for="shiftLeft">footside by </label>
             <input id="shiftLeft" name="shiftLeft" min="0" max="3" value="0" type="number"/>
             <label for="shiftUp">top by </label>
             <input id="shiftUp" name="shiftUp" min="0" max="3" value="0" type="number"/>
         </fieldset>
 
-        <label for="patchSize">Patch size (stitches) </label>
-        <fieldset id="patchSize">
+        <fieldset>
+            <legend>Patch size (stitches)</legend>
             <label for="rows">rows</label>
             <input id="rows" name="rows" min="0" max="20" value="6" type="number"/>
             <label for="cols">columns</label>
             <input id="cols" name="cols" min="0" max="20" value="7" type="number"/>
         </fieldset>
 
-        <label for="pairImage">Pair image size (pixels)</label>
-        <fieldset id="pairImage">
-            <label for="pairWidth">width</label>
-            <input id="pairWidth" name="pairWidth" min="200" max="999" value="280" type="number"/>
-            <label for="pairHeight">height</label>
-            <input id="pairHeight" name="pairHeight" min="200" max="999" value="468" type="number"/>
-        </fieldset>
+        <fieldset>
+            <legend>Image sizes (pixels)</legend>
 
-        <label for="threadImage">Thread image size (pixels)</label>
-        <fieldset id="threadImage">
-            <label for="threadWidth">width</label>
-            <input id="threadWidth" name="threadWidth" min="200" max="999" value="350" type="number"/>
-            <label for="threadHeight">height</label>
-            <input id="threadHeight" name="threadHeight" min="200" max="999" value="468" type="number"/>
-        </fieldset>
+            <fieldset>
+                <legend>Pair diagram</legend>
+                <label for="pairWidth">width</label>
+                <input id="pairWidth" name="pairWidth" min="200" max="999" value="275" type="number"/>
+                <label for="pairHeight">height</label>
+                <input id="pairHeight" name="pairHeight" min="200" max="999" value="437" type="number"/>
+            </fieldset>
 
-        <button class="button" onclick="show(this.form); return false">draw</button>
+            <fieldset>
+                <legend>Thread diagram</legend>
+                <label for="threadWidth">width</label>
+                <input id="threadWidth" name="threadWidth" min="200" max="999" value="350" type="number"/>
+                <label for="threadHeight">height</label>
+                <input id="threadHeight" name="threadHeight" min="200" max="999" value="437" type="number"/>
+            </fieldset>
+        </fieldset>
+      </fieldset>
+      <p>
+        <label for="colorpicker">
+            Paint threads
+            <img title ="Single click the square start of a thread to paint it" src="../information-icon.png">
+        </label>
+        <input id="colorpicker" type="text" class="color" value="#CC0000"/>
+        &nbsp; &nbsp;
+        <button class="button" onclick="show(this.form); return false"
+        >draw</button>
+          <img title ="the configured pattern" src="../information-icon.png">
+      </p>
     </form>
     <div id="diagram"></div>
     <p><a href="https://github.com/jo-pol/DiBL/tree/gh-pages/tensioned#how-its-made"
        >How it's made</a> - <a href="https://github.com/jo-pol/DiBL/commits/gh-pages/tensioned/"
-       >Changes</a> - Based on output of mathematical papers: <a href="http://web.uvic.ca/%7Evmi/papers/bridges2012.html"
+       >Changes</a> - Based on scientific papers: <a href="http://web.uvic.ca/%7Evmi/papers/bridges2012.html"
        >1</a>, <a href="http://web.uvic.ca/%7Evmi/papers/jmm2014.html"
        >2</a>. - Powered by: <a href="https://d3js.org"
        >D3.js</a>, <a href="http://www.menucool.com/color-picker"
