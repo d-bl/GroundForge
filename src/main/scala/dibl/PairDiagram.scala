@@ -43,7 +43,7 @@ object PairDiagram {
     }
   }
 
-  private def assignNodeNrs(abs: M, nrOfLinks: Array[Array[Int]]
+  def assignNodeNrs(abs: M, nrOfLinks: Array[Array[Int]]
                            ): Seq[Seq[Int]] = {
     var nodeNr = -1
     abs.indices.map { row =>

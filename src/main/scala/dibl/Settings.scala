@@ -48,7 +48,7 @@ object Settings {
     for {
       relM <- toRelSrcNodes(matrix = "5831-4-7", dimensions = "2x4")
       absM <- toAbs(relM, absRows = 8, absCols = 5, shitfLeft = 0, shiftUp = 0)
-    } yield create(relM, absM, stitches = "A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, C2=tc")
+    } yield create(relM, absM, stitches = "A1=tctpc, B1=tctc, C1=tctc, D1=tctc, A2=tc, C2=tc, D2=tctpc")
 
   private def create(relM: M,
                      absM: M,

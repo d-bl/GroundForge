@@ -54,8 +54,11 @@ class ThreadDiagramSpec extends FlatSpec with Matchers {
   }
 
   "tmp" should "not throw an exception" in {
-    //ThreadDiagram(PairDiagram(Settings("2x4 rose ground", 1, absRows = 8, absCols = 9)))
-    ThreadDiagram(PairDiagram(Settings()))
+    val settings = Settings()
+    val nodeNrs = PairDiagram.assignNodeNrs(settings.get.absM, settings.get.nrOfPairLinks)
+    nodeNrs.foreach(nodes => println(s"${nodes.mkString(", ")}"))
+    println()
+    ThreadDiagram(PairDiagram(settings))
   }
 
   def traverse(items: Seq[Props]) = {
