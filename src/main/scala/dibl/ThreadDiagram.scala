@@ -35,9 +35,10 @@ object ThreadDiagram {
                   ): (Map[Int, Threads], Seq[Props], Seq[Props]) =
     if (possibleStitches.isEmpty) {
       val next = nextPossibleStitches(availablePairs.keys.toSeq)
-      // maximized to prevent eternal loop
-      if (next.isEmpty || nodes.length > 1000)
+      if (next.isEmpty)
         (availablePairs, nodes, links)
+      else if (nodes.length > 1000)
+        (availablePairs, nodes :+ whoops("might be an eternal loop"), links)
       else
         createRows(next, availablePairs, nodes, links)
     } else {
@@ -59,7 +60,6 @@ object ThreadDiagram {
             case (false, false) => HashMap(pairTarget -> newPairs, leftPairSource -> left.leftPair,
               rightPairSource -> right.rightPair)
           })
-        println(s"${availablePairs.keys} $leftPairSource $pairTarget $rightPairSource ${replaced.keys}")
         createRows(possibleStitches.tail, replaced, accNodes, accLinks)
       }
     }
@@ -77,44 +77,41 @@ object ThreadDiagram {
       }
     }
 
-    val startPins = pairNodeNrToThreadNr(pairDiagram.nodes)
-    val startPairNodeNrs = startPins.keys.toSeq
-    val startThreadNodes = startPins.flatMap { case (nodeNr, threadNr) =>
-      val n = threadNr * 2
-      val x = Props("startOf" -> s"thread${n + 1}", "title" -> s"thread ${n + 1}, node $nodeNr")
-      val y = Props("startOf" -> s"thread${n + 2}", "title" -> s"thread ${n + 2}, node $nodeNr")
-      Seq(x,y)
-    }.toSeq
-    val nodesByThreadNr = startThreadNodes.indices.sortBy(startThreadNodes(_).startOf)
-
     if (pairLinks.isEmpty)
       ThreadDiagram(Seq(whoops("invalid pair diagram")), Seq[Props]())
-    else if (startThreadNodes(nodesByThreadNr.head).startOf != 1)
-      ThreadDiagram(Seq(whoops("try other shift values")), Seq[Props]())
     else {
+      val startPins = pairNodeNrToPairNr(pairDiagram.nodes)
+      val startPairNodeNrs = startPins.keys.toSeq
+      val threadStartNodes = startPins.flatMap { case (n, t) => startNodes(n, t) }.toSeq
+      val nodesByThreadNr = threadStartNodes.indices.sortBy(threadStartNodes(_).startOf)
       val (_, nodes, links) = createRows(
         nextPossibleStitches(startPairNodeNrs),
         startPinsToThreadNodes(startPairNodeNrs, pairDiagram.nodes),
-        startThreadNodes
+        threadStartNodes
       )
-      for {
-        link <- links.filter(l => nodesByThreadNr.contains(l.source))
-      }{
-        println (s"$link --- ${nodes(link.source)}")
-      }
-      ThreadDiagram(nodes, links.map(l => markStart(nodes, l)) ++ transparentLinks(nodesByThreadNr))
+      ThreadDiagram(nodes, markStartLinks(links, nodes) ++ transparentLinks(nodesByThreadNr))
     }
   }
 
-  def markStart(nodes: Seq[Props], link: Props): HashMap[String, Any] =
-    if (nodes(link.source).startOf == 0) link else link - "start" + ("start" -> "thread")
-
   private def whoops(msg: String) = Props("title" -> msg, "bobbin" -> true)
 
-  private def pairNodeNrToThreadNr(nodes: Seq[Props]): Map[Int, Int] =
+  private def pairNodeNrToPairNr(nodes: Seq[Props]): Map[Int, Int] =
     nodes.indices.toArray
       .filter(nodes(_).title.startsWith("Pair"))
       .map(n => n -> (nodes(n).title.replace("Pair ", "").toInt - 1)).toMap
+
+  def markStartLinks(links: Seq[Props], nodes: Seq[Props]): Seq[Props] =
+    links.map(link =>
+      if (nodes(link.source).startOf == 0) link
+      else link - "start" + ("start" -> "thread")
+    )
+
+  def startNodes(nodeNr: Int, threadNr: Int): Seq[HashMap[String, Any]] = {
+    val n = threadNr * 2
+    val x = Props("startOf" -> s"thread${n + 1}", "title" -> s"thread ${n + 1}")
+    val y = Props("startOf" -> s"thread${n + 2}", "title" -> s"thread ${n + 2}")
+    Seq(x, y)
+  }
 
   private def startPinsToThreadNodes(startPairNodeNrs: Seq[Int],
                                      pairNodes: Seq[Props]
@@ -122,7 +119,6 @@ object ThreadDiagram {
     startPairNodeNrs.indices.map(i =>
       {
         val nodeNr = startPairNodeNrs(i)
-        println(s"${pairNodes(nodeNr)}")
         val pairNr = pairNodes(nodeNr).title.split(" ")(1).toInt
         nodeNr -> Threads(i,pairNr)
       }
