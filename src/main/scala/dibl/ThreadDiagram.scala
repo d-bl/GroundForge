@@ -43,7 +43,7 @@ object ThreadDiagram {
     } else {
       val (pairTarget, (leftPairSource, rightPairSource)) = possibleStitches.head
       if (!Set(leftPairSource, rightPairSource).subsetOf(availablePairs.keySet))
-      // probably need a new pair here
+        // probably need a new pair here, rather let PairDiagram fix the footsides
         createRows(possibleStitches.tail, availablePairs, nodes, links)
       else {
         val left = availablePairs(leftPairSource)
@@ -68,7 +68,7 @@ object ThreadDiagram {
                             ): Seq[TargetToSrcs] = {
       // grouping the pairLinks by source would allow a more efficient
       // val availableLinks = pairNodes.map(pairLinksBySrc).flatten
-      // but the grouping mixes up left and right pairs in stitches
+      // but the grouping mixes up left and right pairs
       val availableLinks = pairLinks.filter(l => pairNodes.contains(l._1))
       val linksByTarget = availableLinks.sortBy(_._2).groupBy(_._2).filter(_._2.length == 2).toSeq
       linksByTarget.map { case (target: Int, pairLinks: Seq[(Int, Int)]) =>
@@ -94,12 +94,20 @@ object ThreadDiagram {
     else {
       val (_, nodes, links) = createRows(
         nextPossibleStitches(startPairNodeNrs),
-        startPinsToThreadNodes(startPairNodeNrs),
+        startPinsToThreadNodes(startPairNodeNrs, pairDiagram.nodes),
         startThreadNodes
       )
-      ThreadDiagram(nodes, links ++ transparentLinks(nodesByThreadNr))
+      for {
+        link <- links.filter(l => nodesByThreadNr.contains(l.source))
+      }{
+        println (s"$link --- ${nodes(link.source)}")
+      }
+      ThreadDiagram(nodes, links.map(l => markStart(nodes, l)) ++ transparentLinks(nodesByThreadNr))
     }
   }
+
+  def markStart(nodes: Seq[Props], link: Props): HashMap[String, Any] =
+    if (nodes(link.source).startOf == 0) link else link - "start" + ("start" -> "thread")
 
   private def whoops(msg: String) = Props("title" -> msg, "bobbin" -> true)
 
@@ -108,9 +116,16 @@ object ThreadDiagram {
       .filter(nodes(_).title.startsWith("Pair"))
       .map(n => n -> (nodes(n).title.replace("Pair ", "").toInt - 1)).toMap
 
-  private def startPinsToThreadNodes(startPairNodeNrs: Seq[Int]): Map[Int, Threads] =
+  private def startPinsToThreadNodes(startPairNodeNrs: Seq[Int],
+                                     pairNodes: Seq[Props]
+                                    ): Map[Int, Threads] =
     startPairNodeNrs.indices.map(i =>
-      startPairNodeNrs(i) -> Threads(i)
+      {
+        val nodeNr = startPairNodeNrs(i)
+        println(s"${pairNodes(nodeNr)}")
+        val pairNr = pairNodes(nodeNr).title.split(" ")(1).toInt
+        nodeNr -> Threads(i,pairNr)
+      }
     ).toMap
 
   @tailrec

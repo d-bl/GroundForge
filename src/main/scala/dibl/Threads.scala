@@ -53,11 +53,12 @@ object Threads {
   )
 
   /** start a new pair */
-  def apply(pairNr: Int) = {
+  def apply(pairNode: Int, pairNr: Int) = {
     val threadNr = pairNr * 2
+    val nodeNr = pairNode * 2
     new Threads(
-      (threadNr, threadNr + 1, threadNr, threadNr + 1),
-      (threadNr, threadNr + 1, threadNr, threadNr + 1)
+      (nodeNr, nodeNr + 1, nodeNr, nodeNr + 1),
+      (threadNr -1, threadNr, threadNr-1, threadNr)
     )
   }
 
