@@ -12,6 +12,8 @@
     .link { stroke: #000; }
     svg{ border: solid 1px #AAA; margin-right: 0.4em; }
   </style>
+  <link href="https://raw.githubusercontent.com/jo-pol/DiBL/gh-pages/tensioned/colorpicker/mcColorPicker.css" rel="stylesheet" type="text/css" />
+  <script src="https://raw.githubusercontent.com/jo-pol/DiBL/gh-pages/tensioned/colorpicker/mcColorPicker.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
   <script src="https://raw.githubusercontent.com/jo-pol/DiBL/gh-pages/tensioned/sample.js"></script>
   <script src="https://raw.githubusercontent.com/jo-pol/DiBL/gh-pages/tensioned/show-graph.js"></script>
@@ -35,7 +37,7 @@
         threadColor: '#colorpicker',
         container: '#diagram',
         width: 1030,
-        height: 300,
+        height: 500,
         nodes: data.nodes,
         links: data.links
       })
@@ -74,21 +76,22 @@
     </fieldset>
     <fieldset>
       <select size="1" id="set" name="set" onChange="setMax(form)">
-        <option data-max-nr="3" value="2x4 torchon">torchon</option>
+        <option data-max-nr="4" value="2x4 torchon">torchon</option>
         <option data-max-nr="2" value="2x4 bias">bias</option>
         <option data-max-nr="0" value="2x4 paris/kat">paris/kat</option>
-        <option data-max-nr="1" value="2x4 cloth">cloth</option>
+        <option data-max-nr="1" value="2x4 cloth" selected>cloth</option>
         <option data-max-nr="0" value="2x4 vrouwkens">vrouwkens</option>
         <option data-max-nr="1" value="2x4 small snowflakes">small snowflakes</option>
-        <option data-max-nr="5" value="2x4 rose ground" selected>rose ground</option>
+        <option data-max-nr="4" value="2x4 rose ground">rose ground</option>
         <option data-max-nr="16">2x2</option>
         <option data-max-nr="92">4x2</option>
         <option data-max-nr="46">2x4</option>
       </select>
       <label for="nrInSet">nr</label>
-      <input id="nrInSet" name="nrInSet" min="0" max="5" value="1" type="number"/>
+      <input id="nrInSet" name="nrInSet" min="0" max="1" value="1" type="number"/>
       <button class="button" type="submit" onclick="showNr(this.form)">draw</button>
     </fieldset>
+    <input id="colorpicker" type="text" class="color" value="#C00"/>
   </form>
   <div id="diagram"></div>
 </body>

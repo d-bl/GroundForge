@@ -16,7 +16,6 @@
 package dibl
 
 import scala.util.Try
-import scala.util.control.Breaks.TryBlock
 
 case class PairDiagram private(nodes: Seq[Props],
                                links: Seq[Props])
@@ -131,7 +130,7 @@ object PairDiagram {
       nodes(nodeNrs(row)(col)).getOrElse("title", "").toString.replaceAll(" .*","")
 
     def isStartOfPair(r: Int, c: Int): Boolean =
-      r < 2 || (r == 2 && (c < 2 || c > s.absM(0).length - 3))
+      r < 2 //|| (r == 2 && (c < 2 || c > s.absM(0).length - 3))
 
     def isEndOfPair(targetCol: Int): Boolean =
       targetCol > s.absM(0).length - 2

@@ -53,7 +53,7 @@ class MatrixSpec extends FlatSpec with Matchers {
           (key == "4x2" && !ok.contains(i))
           || mID == "2x4.37" || mID == "2x4.39" || mID == "2x2.5"
           || mID == "2x4 cloth.1" || mID == "2x4 bias.2"
-        ) 3 else 0
+        ) 3 else 3
         // check the nodes have four or zero links but skip the margins
         for {
           row <- topBottomMargin until nrOfLinks.length - topBottomMargin

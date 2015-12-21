@@ -12,19 +12,14 @@ case class Settings private(absM: M,
   private val relCols = stitches(0).length
   private val margin = 2
 
-  def getStitch(row: Int, col: Int): String = {
-    val (cellRow, cellCol) = toCell(row,col)
-    stitches(cellRow)(cellCol)
-  }
-
   def getTitle(row: Int, col: Int): String = {
     val (cellRow, cellCol) = toCell(row,col)
     s"${stitches(cellRow)(cellCol)} - ${"ABCDEFGHIJKLMNOPQRSTUVWXYZ"(cellCol)}${cellRow+1}"
   }
 
   private def toCell(row: Int, col: Int): (Int, Int) = {
-    val brickOffset = ((row + margin) / relRows % 2) * (relCols / 2) + margin
-    (row % relRows, (brickOffset + col) % relCols)
+    val brickOffset = ((row + margin + relRows) / relRows % 2) * (relCols / 2) + margin
+    ((row - margin + relRows) % relRows, (brickOffset + col) % relCols)
   }
 }
 
@@ -46,8 +41,8 @@ object Settings {
 
   def apply(): Try[Settings] =
     for {
-      relM <- toRelSrcNodes(matrix = "5831-4-7", dimensions = "2x4")
-      absM <- toAbs(relM, absRows = 8, absCols = 5, shitfLeft = 0, shiftUp = 0)
+      relM <- toRelSrcNodes(matrix = "6666666666666666", dimensions = "4x4")
+      absM <- toAbs(relM, absRows = 9, absCols = 9, shitfLeft = 0, shiftUp = 0)
     } yield create(relM, absM, stitches = "A1=tctpc, B1=tctc, C1=tctc, D1=tctc, A2=tc, C2=tc, D2=tctpc")
 
   private def create(relM: M,

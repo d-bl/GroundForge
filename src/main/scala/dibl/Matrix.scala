@@ -15,11 +15,12 @@
 */
 package dibl
 
+import dibl.Matrix._
+
 import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
-import scala.collection.mutable.ListBuffer
 import scala.reflect.ClassTag
-import scala.util.{Success, Failure, Try}
+import scala.util.{Failure, Success, Try}
 
 object Matrix {
 
@@ -30,7 +31,7 @@ object Matrix {
   def shift[T: ClassTag](m: Array[Array[T]], left: Int, up: Int): Array[Array[T]] =
     shiftX(for (r <- m) yield shiftX(r, left), up)
 
-  /** Creates a checkerboard-matrix from a brick-matrix by 
+  /** Creates a checkerboard-matrix from a brick-matrix by
     * adding two half bricks to the bottom of the brick-matrix.
     * In ascii-art:
     * <pre>
@@ -60,15 +61,59 @@ object Matrix {
     * ::^ ^::
     * </pre>
     * In above ascii art each "o" represent a node for a stitch, matching an element in the matrix.
-    * The other symbols match two nodes for (potential) new pairs or for pairs of bobbins.
-    * See also println's in unit tests.
+    * The 'v' symbols represent zero to two incoming pairs, the '^' symbols zero to two outgoing pairs,
+    * The '<' and '>' zero to three incoming and/or outgoing pairs.
     */
   def toAbsWithMargins(rel: M, absRows: Int, absCols: Int): Try[M] =
-    if (absRows < 1 || absCols < 1) Failure(new IllegalArgumentException(""))
-    else Success {
-      val abs = Array.fill(absRows + 3, absCols + 4)(SrcNodes())
+    if (absRows < 1 || absCols < 1)
+      Failure(new IllegalArgumentException(""))
+    else Success({
+      val abs = Array.fill(absRows + 4, absCols + 4)(SrcNodes())
       val relRows = rel.length
       val relCols = rel(0).length
+
+      def dropLinksInMargin(row: Int, targetCol: Int, sourceCol: Int): Unit = {
+        val right = abs(row)(targetCol)
+        if (right.length > 1)
+          abs(row)(targetCol) = (right(0)._2, right(1)._2) match {
+            case (`sourceCol`, `sourceCol`) => Array[(Int, Int)]()
+            case (`sourceCol`, _) => Array(right(1))
+            case (_, `sourceCol`) => Array(right(0))
+            case _ => right
+          }
+      }
+      def addBobbins(): Unit = {
+        for {col <- 2 until absCols + 2} if (abs(absRows + 1)(col).length == 2) {
+          val toLeft = {
+            val left = abs(absRows + 1)(col - 1)
+            if (left.length != 2) false
+            else {
+              val (r, c) = left(1)
+              r == absRows + 1 && c == col
+            }
+          }
+          val toRight = {
+            val right = abs(absRows + 1)(col + 1)
+            if (right.length != 2) false
+            else {
+              val (r, c) = right(0)
+              r == absRows + 1 && c == col
+            }
+          }
+          (toRight, toLeft) match {
+            case (false, false) => ()
+              abs(absRows + 2)(col) = Array((absRows + 1, col))
+              abs(absRows + 3)(col) = Array((absRows + 1, col))
+            case (true, _) =>
+              abs(absRows + 2)(col) = Array((absRows + 1, col))
+            case (_, true) =>
+              abs(absRows + 2)(col) = Array((absRows + 1, col))
+            case _ => ()
+          }
+        }
+      }
+
+      // assign incoming links for the 'o'-s in the ascii art representation
       for {
         absRow <- 2 until absRows + 2
         absCol <- 2 until absCols + 2
@@ -76,61 +121,42 @@ object Matrix {
         abs(absRow)(absCol) = for ((relRow, relCol) <- rel(absRow % relRows)(absCol % relCols))
           yield (absRow + relRow, absCol + relCol)
       }
-      for (col <- 2 until absCols + 2) {
-        // top margin
-        for (i <- abs(2)(col).indices) {
-          val (srcRow, _) = abs(2)(col)(i)
-          if (srcRow == 1) abs(2)(col)(i) = (i % 2, col)
-        }
-        // bottom margin
-        if (abs(absRows + 1)(col).length > 1) {
-          abs(absRows + 2)(col) = Array(abs(absRows + 1)(col)(1))
-          abs(absRows + 1)(col) = Array(abs(absRows + 1)(col)(0))
-        }
+
+      // footside: assign the '>'-s and '<'-s of the ascii art representation (simple case only yet)
+      for {row <- 2 until absRows + 2} {
+        // don't want to be bothered by links coming with different directions out of the margin
+        dropLinksInMargin(row, 2, 1)
+        dropLinksInMargin(row, absCols + 1, absCols + 2)
       }
-      // foot sides: join each pair-out (nrOfNodes==3) with the next pair-in (col in margin)
       val nrOfLinks = countLinks(abs)
-      def nextPairIn(row: Int, targetCol: Int, srcCol: Int, src: Int): Option[(Int, Int)] = {
-        for (r <- row + 1 until absRows + 2) {
-          if (abs(r)(targetCol).length > src && abs(r)(targetCol)(src)._2 == srcCol)
-            return Some(abs(r)(targetCol)(src))
-        }
-        None
-      }
-      val targetCol = absCols + 1
-      for (row <- 2 until absRows + 2) {
-        if (nrOfLinks(row)(2) == 3) {
-          nextPairIn(row, 2, 1, 0) match {
-            case Some((r, c)) => abs(r)(c) = SrcNodes((row, 2))
-            case None => abs(row)(0) = Array((row, 2))
-          }
-        }
-        if (nrOfLinks(row)(targetCol) == 3) {
-          nextPairIn(row, targetCol, targetCol + 1, 1) match {
-            case Some((r, c)) => abs(r)(c) = SrcNodes((row, targetCol))
-            case None => abs(row)(targetCol + 2) = Array((row, targetCol))
+      def addFootside(targetCol: Int, sourceCol: Int) = {
+        for {row <- 2 until absRows + 2} {
+          (nrOfLinks(row)(targetCol), abs(row)(targetCol).length) match {
+            case (2, 1) =>
+              abs(row)(sourceCol) = Array((row - 1, sourceCol))
+              abs(row)(targetCol) = abs(row)(targetCol) ++ Array((row, sourceCol), (row - 1, sourceCol))
+            case _ => () // TODO the more complex cases
           }
         }
       }
-      val nrOfLinks2 = countLinks(abs)
-      val leftFootsides = ListBuffer[(Int, Int)]()
-      val rightFootsides = ListBuffer[(Int, Int)]()
-      for (row <- 2 until absRows + 2) {
-        if (nrOfLinks2(row)(1) > 0) leftFootsides += ((row, 1))
-        if (nrOfLinks2(row)(targetCol + 1) > 0) rightFootsides += ((row, targetCol + 1))
-      }
-      def connectFootsides(sources: Seq[(Int, Int)]): Unit = {
-        for (i <- 1 until sources.length) {
-          val (row, col) = sources(i)
-          abs(row)(col) = abs(row)(col) :+ sources(i - 1)
+      addFootside(2, 1)
+      addFootside(absCols + 1, absCols + 2)
+
+      // The 'v'-s and '^'-s in the ascii art representation may shake hands
+      // move the the legs into one column but separate the ends in different rows
+      for {col <- 0 until absCols + 2} if (abs(2)(col).length == 2) {
+        val (leftSrcRow, leftSrcCol) = abs(2)(col)(0)
+        val (rightSrcRow, rightSrcCol) = abs(2)(col)(1)
+        (leftSrcRow,rightSrcRow) match {
+          case (2,2) => ()
+          case (2,_) => () //abs(2)(col) = Array((leftSrcRow, leftSrcCol), (1, col))
+          case (_,2) => () //abs(2)(col) = Array((0, col), (rightSrcRow, rightSrcCol))
+          case _ => abs(2)(col) = Array((0, col), (1, col))
         }
       }
-      leftFootsides += ((absRows + 2, 1))
-      rightFootsides += ((absRows + 2, targetCol + 1))
-      connectFootsides(leftFootsides)
-      connectFootsides(rightFootsides)
+      addBobbins()
       abs
-    }
+    })
 
   def countLinks(m: M): Array[Array[Int]] = {
     val links = Array.fill(m.length,m(0).length)(0)
@@ -146,13 +172,13 @@ object Matrix {
     * Each cell (alias character) represents a target node in a two-in-two-out directed graph, see relSourcesMap.
     */
   val matrixMap: HashMap[String,Array[String]] = HashMap (
-    "2x4 torchon" -> Array[String]("53535353","566-66-5","5-5--5-5","44447777"),
+    "2x4 torchon" -> Array[String]("53535353","566-66-5","5-5--5-5","44447777","66666666"),
     "2x4 bias" -> Array[String]("-4866-48","48154-77","4804-777"),
     "2x4 paris/kat" -> Array[String]("6868-4-4"),
     "2x4 cloth" -> Array[String]("88881111","66662222"),
     "2x4 vrouwkens" -> Array[String]("43126-78"), // mirrored version: mannekens
     "2x4 small snowflakes" -> Array[String]("43735-53","563234-7"),
-    "2x4 rose ground" -> Array[String]("5831-4-7","14838-48","588-14-2","4830--77","-43734-7","14838-48"),
+    "2x4 rose ground" -> Array[String]("5831-4-7","14838-48","588-14-2","4830--77","-43734-7"),
     "2x2" -> Array[String]("4368","535-","6666","684-","8811","6622","4477"),
     "2x4" -> Array[String](
       "46636668","48322483","563234-7","5831-4-7","4830--77","43436868","43535863","43116888","43215883","48405887",
