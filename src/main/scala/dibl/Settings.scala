@@ -41,8 +41,15 @@ object Settings {
 
   def apply(): Try[Settings] =
     for {
-      relM <- toRelSrcNodes(matrix = "6666666666666666", dimensions = "4x4")
-      absM <- toAbs(relM, absRows = 9, absCols = 9, shitfLeft = 0, shiftUp = 0)
+      relM <- toRelSrcNodes(matrix = "88881111", dimensions = "2x4")
+      absM <- {
+        val x = toAbs(relM, absRows = 6, absCols = 5, shitfLeft = 3, shiftUp = 1)
+        // TODO 2x2-5 has not footside at all
+
+        //x.get(2)(1) = Array((2,2), (0,1))//hack for a twisted torchon start
+        //x.get(2)(2) = Array((1,2), (0,2))//hack
+        x
+      }
     } yield create(relM, absM, stitches = "A1=tctpc, B1=tctc, C1=tctc, D1=tctc, A2=tc, C2=tc, D2=tctpc")
 
   private def create(relM: M,

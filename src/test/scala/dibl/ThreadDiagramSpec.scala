@@ -58,6 +58,8 @@ class ThreadDiagramSpec extends FlatSpec with Matchers {
     val nodeNrs = PairDiagram.assignNodeNrs(settings.get.absM, settings.get.nrOfPairLinks)
     nodeNrs.foreach(nodes => println(s"${nodes.mkString(", ")}"))
     println()
+    settings.get.absM.foreach(nodes => println(s"${nodes.deep.mkString(", ").replace("Array","")}"))
+    println()
     ThreadDiagram(PairDiagram(settings))
   }
 

@@ -34,19 +34,22 @@ object ThreadDiagram {
                    links: Seq[Props] = Seq[Props]()
                   ): (Map[Int, Threads], Seq[Props], Seq[Props]) =
     if (possibleStitches.isEmpty) {
-      val next = nextPossibleStitches(availablePairs.keys.toSeq)
+      val next = nextPossibleStitches(availablePairs.keys.toArray)
       if (next.isEmpty)
         (availablePairs, nodes, links)
       else if (nodes.length > 1000)
-        (availablePairs, nodes :+ whoops("might be an eternal loop"), links)
+        (availablePairs, nodes :+ whoops(s"Eternal loop? ${nodes.length} nodes, ${links.length} links."), links)
       else
         createRows(next, availablePairs, nodes, links)
     } else {
       val (pairTarget, (leftPairSource, rightPairSource)) = possibleStitches.head
-      if (!Set(leftPairSource, rightPairSource).subsetOf(availablePairs.keySet))
-        // probably need a new pair here, rather let PairDiagram fix the footsides
-        createRows(possibleStitches.tail, availablePairs, nodes, links)
-      else {
+      if (!Set(leftPairSource, rightPairSource).subsetOf(availablePairs.keySet)) {
+        val msg = s"Need a new pair from the footside? Missing $leftPairSource and/or $rightPairSource in ${availablePairs.keySet.mkString(",")}"
+        createRows(possibleStitches.tail, availablePairs, nodes :+ whoops(msg), links)
+      } else if (instructions(pairTarget)=="pair"){
+        val msg = s"Two pairs starting at same node? target=$pairTarget leftSource=$leftPairSource rightSource=$rightPairSource available ${availablePairs.keySet.mkString(",")}"
+        createRows(possibleStitches.tail, availablePairs - leftPairSource - rightPairSource, nodes :+ whoops(msg), links)
+      } else {
         val left = availablePairs(leftPairSource)
         val right = availablePairs(rightPairSource)
         val (newPairs, accNodes, accLinks) =
@@ -70,7 +73,7 @@ object ThreadDiagram {
       // val availableLinks = pairNodes.map(pairLinksBySrc).flatten
       // but the grouping mixes up left and right pairs
       val availableLinks = pairLinks.filter(l => pairNodes.contains(l._1))
-      val linksByTarget = availableLinks.sortBy(_._2).groupBy(_._2).filter(_._2.length == 2).toSeq
+      val linksByTarget = availableLinks.sortBy(_._2).groupBy(_._2).filter(_._2.length == 2).toArray
       linksByTarget.map { case (target: Int, pairLinks: Seq[(Int, Int)]) =>
         val ints = pairLinks.map(_._1)
         TargetToSrcs(target, (ints.head, ints.last))
@@ -81,8 +84,8 @@ object ThreadDiagram {
       ThreadDiagram(Seq(whoops("invalid pair diagram")), Seq[Props]())
     else {
       val startPins = pairNodeNrToPairNr(pairDiagram.nodes)
-      val startPairNodeNrs = startPins.keys.toSeq
-      val threadStartNodes = startPins.flatMap { case (n, t) => startNodes(n, t) }.toSeq
+      val startPairNodeNrs = startPins.keys.toArray
+      val threadStartNodes = startPins.flatMap { case (n, t) => startNodes(n, t) }.toArray
       val nodesByThreadNr = threadStartNodes.indices.sortBy(threadStartNodes(_).startOf)
       val (_, nodes, links) = createRows(
         nextPossibleStitches(startPairNodeNrs),
@@ -137,7 +140,9 @@ object ThreadDiagram {
         case 'c' => threads.cross(nodes.length)
         case 'l' => threads.twistLeft(nodes.length)
         case 'r' => threads.twistRight(nodes.length)
-        case _ => (threads,Props("bobbin"->true,"title"->whoops(s"$instructions? expecting p/c/l/r")),Seq[Props]())
+        case _ =>
+          val msg = s"$instructions? expecting p/c/l/r. nodes=${threads.nodes} threads=${threads.threads}"
+          (threads,whoops(msg),Seq[Props]())
       }
       createStitch(instructions.tail, t, nodes :+ n, l ++ links)
     }

@@ -54,109 +54,29 @@ object Matrix {
   /** Converts relative source nodes in one matrix into
     * absolute source nodes in a matrix wih different dimensions
     * and a margin for loose ends.
-    * <pre>
-    * ::v v::
-    * > o o <
-    * > o o <
-    * ::^ ^::
-    * </pre>
-    * In above ascii art each "o" represent a node for a stitch, matching an element in the matrix.
-    * The 'v' symbols represent zero to two incoming pairs, the '^' symbols zero to two outgoing pairs,
-    * The '<' and '>' zero to three incoming and/or outgoing pairs.
     */
   def toAbsWithMargins(rel: M, absRows: Int, absCols: Int): Try[M] =
     if (absRows < 1 || absCols < 1)
       Failure(new IllegalArgumentException(""))
-    else Success({
+    else Success{
       val abs = Array.fill(absRows + 4, absCols + 4)(SrcNodes())
       val relRows = rel.length
       val relCols = rel(0).length
-
-      def dropLinksInMargin(row: Int, targetCol: Int, sourceCol: Int): Unit = {
-        val right = abs(row)(targetCol)
-        if (right.length > 1)
-          abs(row)(targetCol) = (right(0)._2, right(1)._2) match {
-            case (`sourceCol`, `sourceCol`) => Array[(Int, Int)]()
-            case (`sourceCol`, _) => Array(right(1))
-            case (_, `sourceCol`) => Array(right(0))
-            case _ => right
-          }
-      }
-      def addBobbins(): Unit = {
-        for {col <- 2 until absCols + 2} if (abs(absRows + 1)(col).length == 2) {
-          val toLeft = {
-            val left = abs(absRows + 1)(col - 1)
-            if (left.length != 2) false
-            else {
-              val (r, c) = left(1)
-              r == absRows + 1 && c == col
-            }
-          }
-          val toRight = {
-            val right = abs(absRows + 1)(col + 1)
-            if (right.length != 2) false
-            else {
-              val (r, c) = right(0)
-              r == absRows + 1 && c == col
-            }
-          }
-          (toRight, toLeft) match {
-            case (false, false) => ()
-              abs(absRows + 2)(col) = Array((absRows + 1, col))
-              abs(absRows + 3)(col) = Array((absRows + 1, col))
-            case (true, _) =>
-              abs(absRows + 2)(col) = Array((absRows + 1, col))
-            case (_, true) =>
-              abs(absRows + 2)(col) = Array((absRows + 1, col))
-            case _ => ()
-          }
-        }
-      }
-
-      // assign incoming links for the 'o'-s in the ascii art representation
       for {
-        absRow <- 2 until absRows + 2
-        absCol <- 2 until absCols + 2
+        targetRow <- 2 until absRows + 2
+        targetCol <- 2 until absCols + 2
       } {
-        abs(absRow)(absCol) = for ((relRow, relCol) <- rel(absRow % relRows)(absCol % relCols))
-          yield (absRow + relRow, absCol + relCol)
+        abs(targetRow)(targetCol) = for ((relRow, relCol) <- rel(targetRow % relRows)(targetCol % relCols))
+          yield (targetRow + relRow, targetCol + relCol)
       }
-
-      // footside: assign the '>'-s and '<'-s of the ascii art representation (simple case only yet)
-      for {row <- 2 until absRows + 2} {
-        // don't want to be bothered by links coming with different directions out of the margin
-        dropLinksInMargin(row, 2, 1)
-        dropLinksInMargin(row, absCols + 1, absCols + 2)
-      }
-      val nrOfLinks = countLinks(abs)
-      def addFootside(targetCol: Int, sourceCol: Int) = {
-        for {row <- 2 until absRows + 2} {
-          (nrOfLinks(row)(targetCol), abs(row)(targetCol).length) match {
-            case (2, 1) =>
-              abs(row)(sourceCol) = Array((row - 1, sourceCol))
-              abs(row)(targetCol) = abs(row)(targetCol) ++ Array((row, sourceCol), (row - 1, sourceCol))
-            case _ => () // TODO the more complex cases
-          }
-        }
-      }
-      addFootside(2, 1)
-      addFootside(absCols + 1, absCols + 2)
-
-      // The 'v'-s and '^'-s in the ascii art representation may shake hands
-      // move the the legs into one column but separate the ends in different rows
-      for {col <- 0 until absCols + 2} if (abs(2)(col).length == 2) {
-        val (leftSrcRow, leftSrcCol) = abs(2)(col)(0)
-        val (rightSrcRow, rightSrcCol) = abs(2)(col)(1)
-        (leftSrcRow,rightSrcRow) match {
-          case (2,2) => ()
-          case (2,_) => () //abs(2)(col) = Array((leftSrcRow, leftSrcCol), (1, col))
-          case (_,2) => () //abs(2)(col) = Array((0, col), (rightSrcRow, rightSrcCol))
-          case _ => abs(2)(col) = Array((0, col), (1, col))
-        }
-      }
-      addBobbins()
+      new FootsideBuilder(abs).build()
       abs
-    })
+    }
+
+  def maybeSwap(src: Array[(Int, Int)]): Array[(Int, Int)] =
+    if (src(0)._2 >= src(1)._2) Array(src(1), src(0))
+    else if (src(0)._1 >= src(1)._1) Array(src(1), src(0))
+    else src
 
   def countLinks(m: M): Array[Array[Int]] = {
     val links = Array.fill(m.length,m(0).length)(0)
