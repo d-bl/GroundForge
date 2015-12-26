@@ -27,11 +27,16 @@ Steps
 - Saving code changes updates the page automatically but not completely properly.
 
 
-## debug a specific pattern
+## Debug a specific pattern
 
-Configure the diagram in the parameter-less apply method of the Settings class.
+Configure the diagram with an [encoded matrix] in the parameter-less [apply method] of the Settings class.
 Follow the steps above to view the result.
-Run the ad-hoc test of ThreadDiagramSpec to step through the code or analyse the println-s.
+Run the [ad-hoc] test of ThreadDiagramSpec to step through the code or analyse the println-s.
+Note that a `println` might not hurt the generated JavaScript, it is not automagically optimized away.
+
+[encoded matrix]: https://github.com/jo-pol/DiBL/blob/519e0e369e5d9e333a744943bb2d28f763f480b0/web/tensioned/src/main/scala/dibl/Matrix.scala#L122-L138
+[apply method]: https://github.com/jo-pol/DiBL/blob/519e0e369e5d9e333a744943bb2d28f763f480b0/web/tensioned/src/main/scala/dibl/Settings.scala#L44-L46
+[ad-hoc]: https://github.com/jo-pol/DiBL/blob/519e0e369e5d9e333a744943bb2d28f763f480b0/web/tensioned/src/test/scala/dibl/ThreadDiagramSpec.scala#L56
 
 
 ## Important code conventions
