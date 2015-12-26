@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<head>
-    <meta http-equiv="Content-Language" content="en">
+<head lang="en">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
-    <title>DiBL - Bobbin lace working diagrams for grounds</title>
+    <title lang="en">DiBL - Bobbin lace working diagrams for grounds</title>
     <link href="colorpicker/mcColorPicker.css" rel="stylesheet" type="text/css" />
     <script src="colorpicker/mcColorPicker.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
@@ -21,10 +20,11 @@
           form.shiftUp.value * 1,
           form.stitches.value
           )
-        document.getElementById('diagram').innerHTML = ""
+        document.getElementById('pairDiagram').innerHTML = ""
+        document.getElementById('threadDiagram').innerHTML = ""
         showGraph({
           threadColor: '#colorpicker',
-          container: '#diagram',
+          container: '#pairDiagram',
           width: form.pairWidth.value * 1,
           height: form.pairHeight.value * 1,
           nodes: data.nodes,
@@ -32,7 +32,7 @@
         })
         showGraph({
           threadColor: '#colorpicker',
-          container: '#diagram',
+          container: '#threadDiagram',
           width: form.threadWidth.value * 1,
           height: form.threadHeight.value * 1,
           nodes: data.threadNodes,
@@ -42,12 +42,23 @@
       function setMax(form) {
         form.nrInSet.max = form.set[form.set.selectedIndex].getAttribute("data-max-nr")
       }
+      function fillForm() {
+          var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+              var fields = document.getElementsByName(key)
+              if (fields.length > 0) {
+                  fields[0].value = decodeURIComponent(value).replace(/[+]/g," ")
+              }
+          });
+      }
       function init() {
-        showGraph({
+        if (window.location.href.contains("?")) {
+          fillForm()
+          show(document.getElementById('graph'))
+        } else showGraph({
           threadColor: '#colorpicker',
-          container: '#diagram',
-          width: 300,
-          height: 437,
+          container: '#pairDiagram',
+          width: 625,
+          height: 390,
           nodes: sample.nodes,
           links: sample.links,
         })
@@ -56,30 +67,20 @@
    <style>
      input { width: 3em; }
      #colorpicker { width: 5em; }
-     form, #diagram { display: inline-block; }
-     svg{ border: solid 1px #AAA; margin-right: 0.4em; }
+     form, #pairDiagram, #threadDiagram, div { display: inline-block; }
+     svg{ border: solid 1px #AAA; margin-right: 0.4em; display: inline-block; }
      fieldset { padding-right: 0.2em; padding-bottom: 0.2em}
-     .node {
-       fill: #000;
-       opacity: 0;
-     }
-     .node.fixed {
-       fill: #90f;
-     }
-
-     /* size relates to dy-attribute of svg.selectAll(".labelText") in the script */
-     .labelText {font-size:9px; font-weight: bold; }
-    </style>
+     .node {fill: #000; opacity: 0;}
+     .node.fixed {fill: #90f;}
+   </style>
 </head>
-<body onload="init()">
-    <img align="right" src="../logo-big.png"/>
+<body onload="init()" lang="en">
+  <div>
+    <img style="float: right" src="../logo-big.png" alt="DiBL logo"
+         title="3 tiles each with a single stitch. Thick coloured lines for the pair diagram, thin black lines for a thread diagram"/>
     <h1>Bobbin lace working diagrams</h1>
     <ul><li>
-      Footsides of pair diagrams are clumsy,
-      that causes incomplete (and somtimes tubular) thread diagrams.
-    </li><li>
       The diagrams might be rotated, mirrored (see thread/pair numbers in diagram tooltips) or twisted: dragging can fix that.
-      A fast move may (un)twist or flip a diagram. Two twists can become a flip too.
     </li><li>
       FireFox, Chrome and Safari are fine, IE has a <a href="https://connect.microsoft.com/IE/feedback/details/801938/dynamically-updated-svg-path-with-a-marker-end-does-not-update"
       >problem</a> rendering the color codes of pair diagrams and over-under effect of thread diagrams.
@@ -88,12 +89,27 @@
       >interleaved</a> patterns based on templates but different from the <a href="http://web.uvic.ca/%7Evmi/papers/interleavedpatterns.html"
       >original data</a>.
     </li><li>
+      Most footsides of pair diagrams are inclomplete,
+      that causes incomplete (and sometimes tubular) thread diagrams.
+      Some configurations with complete footsides:
+      <a href="?nrInSet=0&set=2x4 small snowflakes&rows=5&cols=7&shiftLeft=0&shiftUp=0&pairWidth=275&pairHeight=275&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+      >snow</a>,
+      <a href="?nrInSet=0&set=2x4 torchon&rows=5&cols=5&shiftLeft=1&shiftUp=1&pairWidth=275&pairHeight=275&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+      >torchon</a>,
+      <a href="?nrInSet=0&set=2x4 vrouwkens&rows=9&cols=9&shiftLeft=0&shiftUp=0&pairWidth=400&pairHeight=400&threadWidth=999&threadHeight=999&stitches=C2=tctc, B1=tc, A1=tc, D1=tctc, A2=tc, B2=tc, C1=tctc"
+      ><span lang="nl-BE"
+      >vrouwkens</span></a>,
+      <a href="?nrInSet=0&set=2x4 bias&rows=8&cols=5&shiftLeft=1&shiftUp=0&pairWidth=275&pairHeight=275&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+      >bias</a>.
+      Other patterns without horizontal rows may render a triangular patch as thread diagram when specifying many columns.
+    </li><li>
       More <a href="https://github.com/jo-pol/DiBL/labels/enhancement"
-      >issues</a>
+      >issues</a>. Initial <a href="index.html"
+      >sample</a>.
     </li></ul>
-    <br clear="all"/>
-    <form id="graph" action="" onsubmit="return false">
-      <fieldset>
+  </div>
+    <form id="graph" onsubmit="return false">
+      <fieldset style="border: none">
         <legend>Configure a pattern</legend>
 
         <fieldset>
@@ -101,13 +117,13 @@
             <input id="nrInSet" name="nrInSet" min="0" max="2" value="0" type="number"/>
             <label for="set">in set</label>
             <select size="1" id="set" name="set" onChange="setMax(form)">
-                <option data-max-nr="3" value="2x4 torchon">torchon</option>
+                <option data-max-nr="4" value="2x4 torchon">torchon</option>
                 <option data-max-nr="2" value="2x4 bias">bias</option>
                 <option data-max-nr="0" value="2x4 paris/kat">paris/kat</option>
                 <option data-max-nr="1" value="2x4 cloth">cloth</option>
                 <option data-max-nr="0" value="2x4 vrouwkens">vrouwkens</option>
                 <option data-max-nr="1" value="2x4 small snowflakes">small snowflakes</option>
-                <option data-max-nr="2" value="2x4 rose ground" selected>rose ground</option>
+                <option data-max-nr="4" value="2x4 rose ground" selected>rose ground</option>
                 <option data-max-nr="6">2x2</option>
                 <option data-max-nr="92">4x2</option>
                 <option data-max-nr="46">2x4</option>
@@ -115,7 +131,7 @@
         </fieldset>
 
         <fieldset>
-            <legend>Stitches <img
+            <legend>Stitches <img alt="i"
                     title ="c(ross) t(wist) l(eft-twist) r(ight-twist) p(in); compare with tooltips in the diagrams"
                     src="../information-icon.png"></legend>
             <textarea rows="3" cols="30" id="stitches" name="stitches"
@@ -152,25 +168,26 @@
             <fieldset>
                 <legend>Thread diagram</legend>
                 <label for="threadWidth">width</label>
-                <input id="threadWidth" name="threadWidth" min="200" max="999" value="350" type="number"/>
+                <input id="threadWidth" name="threadWidth" min="200" max="2000" value="350" type="number"/>
                 <label for="threadHeight">height</label>
-                <input id="threadHeight" name="threadHeight" min="200" max="999" value="437" type="number"/>
+                <input id="threadHeight" name="threadHeight" min="200" max="1024" value="437" type="number"/>
             </fieldset>
         </fieldset>
       </fieldset>
-      <p>
+      <fieldset style="border: none">
         <label for="colorpicker">
             Paint threads
-            <img title ="Single click the square start of a thread to paint it" src="../information-icon.png">
+            <img alt="i" title ="Single click the square start of a thread to paint it" src="../information-icon.png">
         </label>
         <input id="colorpicker" type="text" class="color" value="#CC0000"/>
         &nbsp;
         <button class="button" onclick="show(this.form); return false"
         >draw</button>
-          <img title ="the configured pattern" src="../information-icon.png">
-      </p>
+          <img alt="i" title ="the configured pattern" src="../information-icon.png">
+      </fieldset>
     </form>
-    <div id="diagram"></div>
+    <div id="pairDiagram"></div>
+    <div id="threadDiagram"></div>
     <p><a href="https://github.com/jo-pol/DiBL/tree/gh-pages/tensioned#how-its-made"
        >How it's made</a> - <a href="https://github.com/jo-pol/DiBL/commits/gh-pages/tensioned/"
        >Changes</a> - Based on scientific papers: <a href="http://web.uvic.ca/%7Evmi/papers/bridges2012.html"
