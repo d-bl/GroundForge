@@ -43,6 +43,7 @@
         form.nrInSet.max = form.set[form.set.selectedIndex].getAttribute("data-max-nr")
       }
       function fillForm() {
+          var location = window.location.href + ""
           var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
               var fields = document.getElementsByName(key)
               if (fields.length > 0) {
@@ -51,17 +52,20 @@
           });
       }
       function init() {
-        if (window.location.href.contains("?")) {
+        var location = window.location.href + ""
+        if (location.indexOf("?") >= 0) {
           fillForm()
           show(document.getElementById('graph'))
-        } else showGraph({
-          threadColor: '#colorpicker',
-          container: '#pairDiagram',
-          width: 625,
-          height: 390,
-          nodes: sample.nodes,
-          links: sample.links,
-        })
+        } else{
+          document.getElementById('pairDiagram').innerHTML = ""
+          showGraph({
+            threadColor: '#colorpicker',
+            container: '#pairDiagram',
+            width: 625,
+            height: 390,
+            nodes: sample.nodes,
+            links: sample.links,
+        })}
       }
     </script>
    <style>
@@ -186,7 +190,9 @@
           <img alt="i" title ="the configured pattern" src="../information-icon.png">
       </fieldset>
     </form>
-    <div id="pairDiagram"></div>
+    <div id="pairDiagram"><p>
+        Generating diagram... You might have to clear your cache to get the last update active.
+    </p></div>
     <div id="threadDiagram"></div>
     <p><a href="https://github.com/jo-pol/DiBL/tree/gh-pages/tensioned#how-its-made"
        >How it's made</a> - <a href="https://github.com/jo-pol/DiBL/commits/gh-pages/tensioned/"
