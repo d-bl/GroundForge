@@ -53,12 +53,12 @@ class ThreadDiagramSpec extends FlatSpec with Matchers {
     pd.nodes.head("title") shouldBe "invalid pair diagram"
   }
 
-  "tmp" should "not throw an exception" in {
+  "ad-hoc" should "not throw an exception" in {
     val settings = Settings()
     val nodeNrs = PairDiagram.assignNodeNrs(settings.get.absM, settings.get.nrOfPairLinks)
-    nodeNrs.foreach(nodes => println(s"${nodes.mkString(", ")}"))
-    println()
     settings.get.absM.foreach(nodes => println(s"${nodes.deep.mkString(", ").replace("Array","")}"))
+    println()
+    nodeNrs.foreach(nodes => println(s"${nodes.map(n=>f"$n%3d, ").mkString("")}"))
     println()
     ThreadDiagram(PairDiagram(settings))
   }

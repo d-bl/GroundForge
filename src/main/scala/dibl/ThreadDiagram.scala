@@ -43,8 +43,10 @@ object ThreadDiagram {
         createRows(next, availablePairs, nodes, links)
     } else {
       val (pairTarget, (leftPairSource, rightPairSource)) = possibleStitches.head
+      println( f"creating $pairTarget%3d with $leftPairSource%3d and $rightPairSource%3d of ${availablePairs.keySet.mkString(",")}")
       if (!Set(leftPairSource, rightPairSource).subsetOf(availablePairs.keySet)) {
         val msg = s"Need a new pair from the footside? Missing $leftPairSource and/or $rightPairSource in ${availablePairs.keySet.mkString(",")}"
+        println(msg)
         createRows(possibleStitches.tail, availablePairs, nodes :+ whoops(msg), links)
       } else if (instructions(pairTarget)=="pair"){
         val msg = s"Two pairs starting at same node? target=$pairTarget leftSource=$leftPairSource rightSource=$rightPairSource available ${availablePairs.keySet.mkString(",")}"
@@ -77,7 +79,7 @@ object ThreadDiagram {
       linksByTarget.map { case (target: Int, pairLinks: Seq[(Int, Int)]) =>
         val ints = pairLinks.map(_._1)
         TargetToSrcs(target, (ints.head, ints.last))
-      }
+      }.filter(node => !pairNodes.contains(node._1))//don't make the same stitch twice
     }
 
     if (pairLinks.isEmpty)
@@ -103,13 +105,13 @@ object ThreadDiagram {
       .filter(nodes(_).title.startsWith("Pair"))
       .map(n => n -> (nodes(n).title.replace("Pair ", "").toInt - 1)).toMap
 
-  def markStartLinks(links: Seq[Props], nodes: Seq[Props]): Seq[Props] =
+  private def markStartLinks(links: Seq[Props], nodes: Seq[Props]): Seq[Props] =
     links.map(link =>
       if (nodes(link.source).startOf == 0) link
       else link - "start" + ("start" -> "thread")
     )
 
-  def startNodes(nodeNr: Int, threadNr: Int): Seq[HashMap[String, Any]] = {
+  private def startNodes(nodeNr: Int, threadNr: Int): Seq[HashMap[String, Any]] = {
     val n = threadNr * 2
     val x = Props("startOf" -> s"thread${n + 1}", "title" -> s"thread ${n + 1}")
     val y = Props("startOf" -> s"thread${n + 2}", "title" -> s"thread ${n + 2}")
@@ -128,7 +130,7 @@ object ThreadDiagram {
     ).toMap
 
   @tailrec
-  def createStitch(instructions: String,
+  private def createStitch(instructions: String,
                    threads: Threads,
                    nodes: Seq[Props],
                    links: Seq[Props]

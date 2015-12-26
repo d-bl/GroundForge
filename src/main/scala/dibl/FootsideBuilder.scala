@@ -78,8 +78,11 @@ class FootsideBuilder (abs: M) {
     def addFootsideStitches(needFootside: Seq[Int], sourceRow: Int = 2): Unit =
       if (needFootside.nonEmpty) {
         val targetRow = needFootside.head
-        //println(s"Case: ${linkRatio(targetRow, targetCol)} $sourceRow [$targetRow,$targetCol]=${abs(targetRow)(targetCol).deep} [$targetRow,$sourceCol]=${abs(targetRow)(sourceCol).deep}".replace("Array",""))
         linkRatio(targetRow, targetCol) match {
+          // case (1, 0) => // TODO
+          // case (1, 1) =>
+          // case (2, 0) =>
+          // case (2, 2) =>
           case (2, 1) => // one in, one out: create |>
             abs(targetRow)(sourceCol) = swap(Array((sourceRow, sourceCol), (targetRow, targetCol)))
             abs(targetRow)(targetCol) = swap(Array((sourceRow, sourceCol)) ++ abs(targetRow)(targetCol))
@@ -90,7 +93,7 @@ class FootsideBuilder (abs: M) {
           case (3, 2) => // two in, one out: create |_
             abs(targetRow)(sourceCol) = swap(Array((sourceRow, sourceCol), (targetRow, targetCol)))
             addFootsideStitches(needFootside.tail, targetRow)
-          case (total,in) => println(s"Missed footside case: total=$total, in=$in,  cell=($targetRow, $targetCol)") // TODO more cases?
+          case (total,in) => println(s"Missed footside case: total=$total, in=$in, cell=($targetRow, $targetCol)")
             addFootsideStitches(needFootside.tail, targetRow)
         }
       }
@@ -101,8 +104,6 @@ class FootsideBuilder (abs: M) {
     // footside: assign the '>'-s and '<'-s of the ascii art representation
     addFootside(2, 1)
     addFootside(absCols + 1, absCols + 2)
-
-    println(abs(2).deep.mkString(", ").replace("Array",""))
 
     // The 'v'-s in the ascii art representation may shake hands
     // move the the legs into one column but separate the ends in different rows
