@@ -3,7 +3,7 @@
 The code under `src/main/scala` generates  alternative data for `sample.js` in the [gh-pages branch].
 The patterns are generated from predefined [matrices].
 
-[matrices]: https://github.com/jo-pol/DiBL/blob/af6f540a2d19db938c83e76388a84f2a70bd1fe5/web/tensioned/src/main/scala/dibl/Matrix.scala#L145-L174
+[matrices]: https://github.com/jo-pol/DiBL/blob/519e0e369e5d9e333a744943bb2d28f763f480b0/web/tensioned/src/main/scala/dibl/Matrix.scala#L91-L120
 
 
 ## Compile and preview
@@ -26,7 +26,15 @@ Steps
   Nodes and links invisible in the demo page are shown faint for debugging purposes.
 - Saving code changes updates the page automatically but not completely properly.
 
-Important code conventions
+
+## debug a specific pattern
+
+Configure the diagram in the parameter-less apply method of the Settings class.
+Follow the steps above to view the result.
+Run the ad-hoc test of ThreadDiagramSpec to step through the code or analyse the println-s.
+
+
+## Important code conventions
 
 - Don't catch exceptions in a `Try` but prevent them to create a `Failure` for safe execution as JavaScript.
 - Restrict the use of raw js objects to the `D3Data` class to allow execution of test classes with a recent JVM.
