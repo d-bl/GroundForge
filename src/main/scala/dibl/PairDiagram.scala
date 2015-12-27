@@ -91,49 +91,49 @@ object PairDiagram {
                ): Seq[Props] = {
 
     def startMarker(srcRow: Int, srcCol: Int): String = {
-        val srcTitle = getNodeTitle(srcRow, srcCol)
+        val srcTitle = getInstructions(srcRow, srcCol)
         if (isStartOfPair(srcRow, srcCol)) "pair"
-        else if (srcTitle.endsWith("ctctc") || srcTitle.contains("p")) ""
-        else if (srcTitle.endsWith("tctc")) "red"
-        else if (srcTitle.endsWith("ctc")) "purple"
-        else if (srcTitle.endsWith("tc")) "green"
-        else if (srcTitle.startsWith("ctctc")) ""
-        else if (srcTitle.startsWith("ctct")) "red"
-        else if (srcTitle.startsWith("ctc")) "purple"
-        else if (srcTitle.startsWith("ct")) "green"
+        else if (srcTitle.endsWith("clrclrc") || srcTitle.contains("p")) ""
+        else if (srcTitle.endsWith("lrclrc")) "red"
+        else if (srcTitle.endsWith("clrc")) "purple"
+        else if (srcTitle.endsWith("lrc")) "green"
+        else if (srcTitle.startsWith("clrclrc")) ""
+        else if (srcTitle.startsWith("clrclr")) "red"
+        else if (srcTitle.startsWith("clrc")) "purple"
+        else if (srcTitle.startsWith("clr")) "green"
         else ""
       }
 
     def endMarker(targetRow: Int, targetCol: Int): String = {
-      val targetTitle = getNodeTitle(targetRow, targetCol)
-      if (isEndOfPair(targetCol)) ""
-      else if (targetTitle.endsWith("ctctc") || targetTitle.contains("p")) ""
-      else if (targetTitle.endsWith("tctc")) "red"
-      else if (targetTitle.endsWith("ctc")) "purple"
-      else if (targetTitle.endsWith("tc")) "green"
-      else if (targetTitle.startsWith("ctctc")) ""
-      else if (targetTitle.startsWith("ctct")) "red"
-      else if (targetTitle.startsWith("ctc")) "purple"
-      else if (targetTitle.startsWith("ct")) "green"
+      val targetTitle = getInstructions(targetRow, targetCol)
+      if (targetTitle.endsWith("clrclrc") || targetTitle.contains("p")) ""
+      else if (targetTitle.endsWith("lrclrc")) "red"
+      else if (targetTitle.endsWith("clrc")) "purple"
+      else if (targetTitle.endsWith("lrc")) "green"
+      else if (targetTitle.startsWith("clrclrc")) ""
+      else if (targetTitle.startsWith("clrclr")) "red"
+      else if (targetTitle.startsWith("clrc")) "purple"
+      else if (targetTitle.startsWith("clr")) "green"
       else ""
     }
 
-    def midMarker(srcRow: Int, srcCol: Int, targetRow: Int, targetCol: Int, pairNr: Int): Boolean = {
-      val targetTitle = getNodeTitle(targetRow, targetCol)
-      val sourceTitle = getNodeTitle(srcRow, srcCol)
-      targetTitle.startsWith("tt") || sourceTitle.endsWith("tt") ||
-      (pairNr == 0 && (targetTitle.startsWith("l")|| sourceTitle.endsWith("r"))) ||
-      (pairNr == 1 && (targetTitle.startsWith("r")|| sourceTitle.endsWith("l")))
+    def midMarker(srcRow: Int, srcCol: Int, targetRow: Int, targetCol: Int, pairNr: Int): Int = {
+      val targetTwists = getInstructions(targetRow, targetCol).replaceAll("c.*","").replaceAll("p","")
+      val sourceTwists = getInstructions(srcRow, srcCol).replaceAll(".*c","").replaceAll("p","")
+      val count = if (pairNr == 0)
+        targetTwists.count(_ == 'l') + sourceTwists.count(_ == 'r')
+      else
+        targetTwists.count(_ == 'r') + sourceTwists.count(_ == 'l')
+      // TODO current implementation assumes first twist is part of the color code
+      // but that only applies to red or green end/start markers
+      if (count > 1)
+        count - 1
+      else 0
     }
 
-    def getNodeTitle(row: Int, col: Int): String =
-      nodes(nodeNrs(row)(col)).getOrElse("title", "").toString.replaceAll(" .*","")
+    def getInstructions(row: Int, col: Int): String = nodes(nodeNrs(row)(col)).instructions
 
-    def isStartOfPair(r: Int, c: Int): Boolean =
-      r < 2 //|| (r == 2 && (c < 2 || c > s.absM(0).length - 3))
-
-    def isEndOfPair(targetCol: Int): Boolean =
-      targetCol > s.absM(0).length - 2
+    def isStartOfPair(r: Int, c: Int): Boolean = r < 2
 
     val startNodeNrs = s.absM(2).flatten
       .filter{case (r,c) => isStartOfPair(r,c)}
@@ -148,7 +148,7 @@ object PairDiagram {
             "target" -> nodeNrs(row)(col),
             "start" -> startMarker(srcRow, srcCol),
             "end" -> endMarker(row, col),
-            "text" -> midMarker(srcRow, srcCol, row, col, linkNr)
+            "mid" -> midMarker(srcRow, srcCol, row, col, linkNr)
           )
         }
       }
