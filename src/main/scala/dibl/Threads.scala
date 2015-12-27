@@ -70,8 +70,9 @@ object Threads {
                                 leftNode: Int, rightNode: Int,
                                 leftThread: Int, rightThread: Int
                                ): Seq[Props] = {
-    val x = Props("source" -> leftNode, "target" -> newNode, "end" -> "white", "thread" -> leftThread)
-    val y = Props("source" -> rightNode, "target" -> newNode, "start" -> "white", "thread" -> rightThread)
+    val curved = leftNode == rightNode
+    val x = Props("source" -> leftNode, "target" -> newNode, "end" -> "white", "thread" -> leftThread, "left" -> curved)
+    val y = Props("source" -> rightNode, "target" -> newNode, "start" -> "white", "thread" -> rightThread, "right" -> curved)
     Seq(x, y)
   }
 
@@ -79,8 +80,9 @@ object Threads {
                                 leftNode: Int, rightNode: Int,
                                 leftThread: Int, rightThread: Int
                                ): Seq[Props] = {
-    val x = Props("source" -> leftNode, "target" -> newNode, "start" -> "white", "thread" -> leftThread)
-    val y = Props("source" -> rightNode, "target" -> newNode, "end" -> "white", "thread" -> rightThread)
+    val curved = leftNode == rightNode
+    val x = Props("source" -> leftNode, "target" -> newNode, "start" -> "white", "thread" -> leftThread, "left" -> curved)
+    val y = Props("source" -> rightNode, "target" -> newNode, "end" -> "white", "thread" -> rightThread, "right" -> curved)
     Seq(x, y)
   }
 }
