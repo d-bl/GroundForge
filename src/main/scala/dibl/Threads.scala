@@ -1,5 +1,7 @@
 package dibl
 
+import scala.annotation.tailrec
+
 case class Threads private
 (nodes: (Int, Int, Int, Int),
  threads: (Int, Int, Int, Int)
@@ -84,5 +86,19 @@ object Threads {
     val x = Props("source" -> leftNode, "target" -> newNode, "start" -> "white", "thread" -> leftThread, "left" -> curved)
     val y = Props("source" -> rightNode, "target" -> newNode, "end" -> "white", "thread" -> rightThread, "right" -> curved)
     Seq(x, y)
+  }
+
+  @tailrec
+  def bobbins(available: Iterable[Threads], nodes: Seq[Props], links: Seq[Props]): (Seq[Props], Seq[Props]) = {
+    if (available.isEmpty)
+      (nodes, links)
+    else {
+      val h = available.head
+      val threadNodes = if (available.head.hasSinglePair) Seq(h.n1,h.n2) else Seq(h.n1,h.n2,h.n3,h.n4)
+      // TODO white starts where appropriate
+      val bobbinNodes: Seq[Props] = threadNodes.map(n => Props("bobbin"->"true"))
+      val bobbinLinks: Seq[Props] = threadNodes.indices.map(i => Props("source" -> threadNodes(i), "target" -> (nodes.size + i)))
+      bobbins(available.tail, nodes ++ bobbinNodes, links ++ bobbinLinks)
+    }
   }
 }

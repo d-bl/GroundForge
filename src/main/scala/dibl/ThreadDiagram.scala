@@ -89,12 +89,16 @@ object ThreadDiagram {
       val startPairNodeNrs = startPins.keys.toArray
       val threadStartNodes = startPins.flatMap { case (n, t) => startNodes(n, t) }.toArray
       val nodesByThreadNr = threadStartNodes.indices.sortBy(threadStartNodes(_).startOf)
-      val (_, nodes, links) = createRows(
+      val (availablePairs, nodes, links) = createRows(
         nextPossibleStitches(startPairNodeNrs),
         startPinsToThreadNodes(startPairNodeNrs, pairDiagram.nodes),
         threadStartNodes
       )
-      ThreadDiagram(nodes, markStartLinks(links, nodes) ++ transparentLinks(nodesByThreadNr))
+      val (allNodes,allLinks) = Threads.bobbins(availablePairs.values,nodes,links)
+      ThreadDiagram(
+        allNodes,
+        markStartLinks(allLinks, allNodes) ++ transparentLinks(nodesByThreadNr)
+      )
     }
   }
 

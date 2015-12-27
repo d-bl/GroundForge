@@ -9,7 +9,7 @@
     input { width: 3em; }
     #pattern { width: 6em; }
     #stitches { width: 29em; }
-    .link { stroke: #000; }
+    .link {fill: #fff; opacity: 1;}
     svg{ border: solid 1px #AAA; margin-right: 0.4em; }
   </style>
   <link href="https://raw.githubusercontent.com/jo-pol/DiBL/gh-pages/tensioned/colorpicker/mcColorPicker.css" rel="stylesheet" type="text/css" />
@@ -44,8 +44,8 @@
       showGraph({
         threadColor: '#colorpicker',
         container: '#diagram',
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 1200,
         nodes: data.threadNodes,
         links: data.threadLinks
       })
