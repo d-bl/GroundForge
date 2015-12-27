@@ -134,11 +134,23 @@ function showGraph(args) {
 
     force.on("tick", function() {
         link.attr("d", function(d) {
-          var middleX = (d.source.x * 1 + d.target.x * 1) / 2,
-              middleY = (d.source.y * 1 + d.target.y * 1) / 2
-          return "M" + d.source.x + "," + d.source.y +
-                 " " + middleX    + "," + middleY +
-                 " " + d.target.x + "," + d.target.y
+          var sX = d.source.x
+          var sY = d.source.y
+          var tX = d.target.x
+          var tY = d.target.y
+          var mX = (d.source.x * 1 + d.target.x * 1) / 2
+          var mY = (d.source.y * 1 + d.target.y * 1) / 2
+          if (d.left) {
+            mX = sY - mY + mX
+            my = mX - sY + mY
+          }
+          if (d.right) {
+            mX = tY - mY + mX
+            my = mX - tY + mY
+          }
+          return "M" + sX + "," + sY +
+                 "S" + mX + "," + mY +
+                 " " + tX + "," + tY
         })
 
         node.attr("cx", function(d) { return d.x })
