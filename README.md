@@ -1,9 +1,9 @@
-# [DEMO](http://jo-pol.github.io/DiBL/tensioned/)
+# [DEMO](http://jo-pol.github.io/dibl-tensioned/)
 
 The code under `src/main/scala` generates  alternative data for `sample.js` in the [gh-pages branch].
 The patterns are generated from predefined [matrices].
 
-[matrices]: https://github.com/jo-pol/DiBL/blob/519e0e369e5d9e333a744943bb2d28f763f480b0/web/tensioned/src/main/scala/dibl/Matrix.scala#L91-L120
+[matrices]: https://github.com/jo-pol/dibl-tensioned/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Matrix.scala#L91-L120
 
 
 ## Compile and preview
@@ -19,7 +19,7 @@ Steps
 
 - Make a local clone of the project, it can be convenient to have two local clones,
   one for the master branch, one for the gh-pages branch.
-- Go to `web/tensioned` inside the master branch of the local clone.
+- Go to directory of your local clone
 - Start the command `sbt ~fastOptJS`
 - Monitor the result on `http://localhost:12345/target/scala-2.11/classes/index-dev.html`
   It is a dressed down version of the demo page, with experimental features added.
@@ -34,9 +34,9 @@ Follow the steps above to view the result.
 Run the [ad-hoc] test of ThreadDiagramSpec to step through the code or analyse the println-s.
 Note that a `println` might not hurt the generated JavaScript, it is not automagically optimized away.
 
-[encoded matrix]: https://github.com/jo-pol/DiBL/blob/519e0e369e5d9e333a744943bb2d28f763f480b0/web/tensioned/src/main/scala/dibl/Matrix.scala#L122-L138
-[apply method]: https://github.com/jo-pol/DiBL/blob/519e0e369e5d9e333a744943bb2d28f763f480b0/web/tensioned/src/main/scala/dibl/Settings.scala#L44-L46
-[ad-hoc]: https://github.com/jo-pol/DiBL/blob/519e0e369e5d9e333a744943bb2d28f763f480b0/web/tensioned/src/test/scala/dibl/ThreadDiagramSpec.scala#L56
+[encoded matrix]: https://github.com/jo-pol/dibl-tensioned/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Matrix.scala#L122-L138
+[apply method]: https://github.com/jo-pol/dibl-tensioned/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Settings.scala#L44-L46
+[ad-hoc]: https://github.com/jo-pol/dibl-tensioned/blob/fa4698f3282c6eb9974447caa395b273ec4db697/src/test/scala/dibl/ThreadDiagramSpec.scala#L56
 
 
 ## Important code conventions
@@ -58,9 +58,9 @@ Launching tests may cause problems when sbt is still processing a change, just t
 
 - Compile with `sbt ~fullOptJS`
 - Copy the content of `target\scala-2.11\dibl-tensioned-opt.js` in the master branch
-  into `tensioned/matrix-graphs.js` in the [gh-pages branch]
-- Check the results with `tensioned/index.html`
-- If ok: commit, push and check the online demo in your own github fork: `http://YOURID.github.io/DiBL/tensioned/`
+  into `matrix-graphs.js` in the [gh-pages branch]
+- Check the results with `index.html`
+- If ok: commit, push and check the online demo in your own github fork: `http://YOURID.github.io/dibl-tensioned/`
 
 [sbt]: http://www.scala-sbt.org/download.html
-[gh-pages branch]: https://github.com/jo-pol/DiBL/tree/gh-pages/tensioned
+[gh-pages branch]: https://github.com/jo-pol/dibl-tensioned/tree/gh-pages

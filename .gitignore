@@ -1,0 +1,22 @@
+#### Mac
+.DS_Store
+
+#### Eclipse
+.project
+.classpath
+.settings/
+
+
+#### IntelliJ 
+.idea/
+*.iml
+
+#### Scala
+.cache
+.tmpBin/
+.worksheet/
+*.sc
+
+### sbt
+project/project/
+project/target/
