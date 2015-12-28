@@ -1,4 +1,4 @@
-# [DEMO](http://jo-pol.github.io/DiBL/tensioned/)
+# [DEMO](http://jo-pol.github.io/dibl-tensioned/)
 
 ## How it's made
 
@@ -15,7 +15,7 @@ Step by step changed an [example] for [D3.js]:
 [example]: http://bl.ocks.org/mbostock/4062045
 [D3.js]: http://d3js.org/
 [color coded diagrams]: https://en.wikipedia.org/w/index.php?title=Mesh_grounded_bobbin_lace&oldid=639789191#Worker_pair_versus_two_pair_per_pin
-[scala code]: https://github.com/jo-pol/DiBL/tree/master/web/tensioned/
+[scala code]: https://github.com/jo-pol/dibl-tensioned/tree/master/
 [1]: http://web.uvic.ca/~vmi/papers/bridges2012.html
 [2]: http://web.uvic.ca/~vmi/papers/jmm2014.html
 
@@ -26,7 +26,7 @@ You may just improve the grammar on the demo-page or on this readme, improve the
 Don't know about version control in general or GitHub in particular? No problem:
 * just create a github [account](https://github.com)
 * hit the fork button at the top of this page
-* go to `https://github.com/YOURID/DiBL/tree/gh-pages/tensioned`, don't forget to replace YOURID
+* go to `https://github.com/YOURID/dibl-tensioned/tree/gh-pages/`, don't forget to replace YOURID
 * choose the file you want to change and hit the pencil to start editing
-* save your changes and test with your own demo-page: `http://YOURID.github.io/DiBL/tensioned/`, again: don't forget to replace YOURID
-* create a pull request at `https://github.com/YOURID/DiBL/tree/gh-pages/` or drop a note
+* save your changes and test with your own demo-page: `http://YOURID.github.io/dibl-tensioned/`, again: don't forget to replace YOURID
+* create a pull request at `https://github.com/YOURID/dibl-tensioned/tree/gh-pages/` or drop a note
