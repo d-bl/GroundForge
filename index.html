@@ -61,8 +61,8 @@
           showGraph({
             threadColor: '#colorpicker',
             container: '#pairDiagram',
-            width: 625,
-            height: 390,
+            width: 500,
+            height: 240,
             nodes: sample.nodes,
             links: sample.links,
         })}
@@ -77,6 +77,8 @@
      .link {fill: #fff; opacity: 1;}
      .node {fill: #000; opacity: 0;}
      .node.fixed {fill: #90f;}
+     .hidden {display: none}
+     .shown {display: inline}
    </style>
 </head>
 <body onload="init()" lang="en">
@@ -104,7 +106,7 @@
               >select another pattern</option>
               <option value="index.html"
               >initial sample</option>
-              <option value="?nrInSet=0&set=2x4 small snowflakes&rows=5&cols=7&shiftLeft=0&shiftUp=0&pairWidth=275&pairHeight=275&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              <option value="?nrInSet=0&set=2x4 small snowflakes&rows=5&cols=7&shiftLeft=0&shiftUp=0&pairWidth=275&pairHeight=250&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
               >snow</option>
               <option value="?nrInSet=0&set=2x4 torchon&rows=5&cols=5&shiftLeft=1&shiftUp=1&pairWidth=275&pairHeight=275&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
               >torchon</option>
@@ -113,10 +115,13 @@
               <option value="?nrInSet=0&set=2x4 bias&rows=8&cols=5&shiftLeft=1&shiftUp=0&pairWidth=275&pairHeight=275&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
               ><span lang="nl-BE">bias</span></option>
           </select>
+          <img alt="(i)"
+               title ="Fills the form with values that produce a pattern with complete footsides and hence a full thread diagram. The number of columns may need an increment/decrement of four"
+               src="information-icon.png">
           &nbsp;
           <button class="button" onclick="show(this.form); return false"
           >draw</button>
-          <img alt="i" title ="a variation of a previously selected pattern specified with the options below"
+          <img alt="(i)" title ="a variation of a previously selected pattern using the options below"
                src="information-icon.png">
 
         <fieldset>
@@ -128,7 +133,7 @@
         </fieldset>
 
         <fieldset>
-            <legend>Stitches <img alt="i"
+            <legend>Stitches <img alt="(i)"
                                   title ="c(ross) t(wist) l(eft-twist) r(ight-twist) p(in); compare with tooltips in the diagrams"
                                   src="information-icon.png"></legend>
           <textarea rows="3" cols="30" id="stitches" name="stitches"
@@ -137,11 +142,14 @@
       </fieldset>
 
         <fieldset style="border: none">
-        <legend>Advanced options <img alt="i"
-                                 title ="Most footsides of pair diagrams are inclomplete, that causes incomplete (and sometimes tubular) thread diagrams. Other patterns without horizontal rows may render a triangular patch as thread diagram when specifying many columns."
-                                 src="information-icon.png">
+        <legend>Advanced options
+            <img alt="(i)"
+                 title ="Most footsides of pair diagrams are inclomplete, that causes incomplete (and sometimes tubular) thread diagrams. Other patterns without horizontal rows may render a triangular patch as thread diagram when specifying many columns."
+                 src="information-icon.png">
+            <span class="show"><a href="#" onclick="document.getElementById('advanced').classList.remove('hidden');this.classList.add('hidden')=''">show</a></span>
         </legend>
 
+        <div class="hidden" id="advanced">
         <fieldset>
             <label for="nrInSet">nr</label>
             <input id="nrInSet" name="nrInSet" min="0" max="2" value="0" type="number"/>
@@ -187,12 +195,14 @@
                 <input id="threadHeight" name="threadHeight" min="200" max="1024" value="437" type="number"/>
             </fieldset>
         </fieldset>
+        </div>
       </fieldset>
+
 
       <fieldset style="border: none">
         <label for="colorpicker">
             Paint threads
-            <img alt="i" title ="Single click the square start of a thread to paint it" src="information-icon.png">
+            <img alt="(i)" title ="Single click the square start of a thread to paint it" src="information-icon.png">
         </label>
         <input id="colorpicker" type="text" class="color" value="#CC0000"/>
       </fieldset>
