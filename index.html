@@ -42,6 +42,12 @@
       function setMax(form) {
         form.nrInSet.max = form.set[form.set.selectedIndex].getAttribute("data-max-nr")
       }
+      function setLocation(e) {
+        if (e.value == '')
+          window.location.href='index.html'
+        else
+          window.location.href='?name='+e.options[e.selectedIndex].text+'&'+e.value
+      }
       function init() {
         var location = (window.location.href + "").replace("#","")
         if (location.indexOf("?") >= 0) {
@@ -97,10 +103,10 @@
       <fieldset style="border: none">
         <legend>Configure a pattern</legend>
 
-          <select size="1" onChange="window.location.href='?name='+this.options[this.selectedIndex].text+'&'+this.value">
+          <select size="1" onChange="setLocation(this)">
               <option value=""
               >select another pattern</option>
-              <option value="index.html"
+              <option value=""
               >initial sample</option>
               <option value="nrInSet=0&set=2x4 small snowflakes&shiftLeft=0&shiftUp=0&rows=5&cols=7&pairWidth=275&pairHeight=250&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
               >small snow</option>
@@ -127,7 +133,7 @@
               <option value="nrInSet=10&set=2x4&shiftLeft=0&shiftUp=0&rows=8&cols=5&pairWidth=350&pairHeight=350&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
               >mini fish and triangles</option>
               <option value="nrInSet=27&set=2x4&shiftLeft=0&shiftUp=2&rows=8&cols=5&pairWidth=350&pairHeight=350&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
-              >fish variation</option>
+              >diagonal snow</option>
               <option value="nrInSet=11&set=2x4&shiftLeft=0&shiftUp=0&rows=8&cols=5&pairWidth=350&pairHeight=350&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
               >mini fish and rectangles</option>
               <option value="nrInSet=22&set=2x4&shiftLeft=1&shiftUp=3&rows=10&cols=8&pairWidth=400&pairHeight=400&threadWidth=1200&threadHeight=999&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
