@@ -26,6 +26,7 @@ object ThreadDiagram {
 
     val pairLinks = pairDiagram.links.map(l => (l.source, l.target))
     val instructions = pairDiagram.nodes.map(_.instructions)
+    val xy: Seq[Props] = pairDiagram.nodes.map(n => Props("x"->n.x*4, "y"->n.y*4))
 
     @tailrec
     def createRows(possibleStitches: Seq[TargetToSrcs],
@@ -55,7 +56,7 @@ object ThreadDiagram {
         val left = availablePairs(leftPairSource)
         val right = availablePairs(rightPairSource)
         val (newPairs, accNodes, accLinks) =
-          createStitch(instructions(pairTarget), Threads(left, right), nodes, links)
+          createStitch(instructions(pairTarget), xy(pairTarget), Threads(left, right), nodes, links)
 
         val replaced = availablePairs - leftPairSource - rightPairSource ++
           ((left.hasSinglePair, right.hasSinglePair) match {
@@ -94,7 +95,7 @@ object ThreadDiagram {
         startPinsToThreadNodes(startPairNodeNrs, pairDiagram.nodes),
         threadStartNodes
       )
-      val (allNodes,allLinks) = Threads.bobbins(availablePairs.values,nodes,links)
+      val (allNodes,allLinks) = Threads.bobbins(availablePairs.values,nodes,links,nodes.size/threadStartNodes.length)
       ThreadDiagram(
         allNodes,
         markStartLinks(allLinks, allNodes) ++ transparentLinks(nodesByThreadNr)
@@ -115,7 +116,7 @@ object ThreadDiagram {
       else link - "start" + ("start" -> "thread")
     )
 
-  private def startNodes(nodeNr: Int, threadNr: Int): Seq[HashMap[String, Any]] = {
+  private def startNodes(nodeNr: Int, threadNr: Int): Seq[Props] = {
     val n = threadNr * 2
     val x = Props("startOf" -> s"thread${n + 1}", "title" -> s"thread ${n + 1}")
     val y = Props("startOf" -> s"thread${n + 2}", "title" -> s"thread ${n + 2}")
@@ -135,10 +136,11 @@ object ThreadDiagram {
 
   @tailrec
   private def createStitch(instructions: String,
-                   threads: Threads,
-                   nodes: Seq[Props],
-                   links: Seq[Props]
-                  ): (Threads, Seq[Props], Seq[Props]) =
+                          xy: Props,
+                          threads: Threads,
+                          nodes: Seq[Props],
+                          links: Seq[Props]
+                         ): (Threads, Seq[Props], Seq[Props]) =
     if (instructions.isEmpty) (threads, nodes, links)
     else {
       val (t,n,l) = instructions.head match {
@@ -150,6 +152,7 @@ object ThreadDiagram {
           val msg = s"$instructions? expecting p/c/l/r. nodes=${threads.nodes} threads=${threads.threads}"
           (threads,whoops(msg),Seq[Props]())
       }
-      createStitch(instructions.tail, t, nodes :+ n, l ++ links)
+      // all nodes of a stitch on one location is a good enough start of the animation
+      createStitch(instructions.tail, xy, t, nodes :+ (n ++ xy), l ++ links)
     }
 }

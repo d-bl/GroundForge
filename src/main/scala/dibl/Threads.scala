@@ -89,16 +89,25 @@ object Threads {
   }
 
   @tailrec
-  def bobbins(available: Iterable[Threads], nodes: Seq[Props], links: Seq[Props]): (Seq[Props], Seq[Props]) = {
+  def bobbins(available: Iterable[Threads],
+              nodes: Seq[Props],
+              links: Seq[Props],
+              estimatedNrOfRows: Int,
+              x: Int = 10
+             ): (Seq[Props], Seq[Props]) = {
     if (available.isEmpty)
       (nodes, links)
     else {
       val h = available.head
-      val threadNodes = if (available.head.hasSinglePair) Seq(h.n1,h.n2) else Seq(h.n1,h.n2,h.n3,h.n4)
+      val threadNodes = if (h.hasSinglePair) Seq(h.n1,h.n2) else Seq(h.n1,h.n2,h.n3,h.n4)
+      val bobbinNodes: Seq[Props] = threadNodes.map(node => { val src = nodes(node)
+        Props("bobbin" -> "true", "x" -> src.x, "y" -> (src.y + 100))
+      })
       // TODO white starts where appropriate
-      val bobbinNodes: Seq[Props] = threadNodes.map(n => Props("bobbin"->"true"))
-      val bobbinLinks: Seq[Props] = threadNodes.indices.map(i => Props("source" -> threadNodes(i), "target" -> (nodes.size + i)))
-      bobbins(available.tail, nodes ++ bobbinNodes, links ++ bobbinLinks)
+      val bobbinLinks: Seq[Props] = threadNodes.indices.map(i =>
+        Props("source" -> threadNodes(i), "target" -> (nodes.size + i))
+      )
+      bobbins(available.tail, nodes ++ bobbinNodes, links ++ bobbinLinks, estimatedNrOfRows, x+10)
     }
   }
 }

@@ -71,13 +71,13 @@ object PairDiagram {
     def isFootside(row: Int, col: Int): Boolean =
       col < 2 || col >= s.absM(0).length - 2
 
-    val bobbinProps = Props("bobbin" -> true)
-    val footSideProps = Props("title" -> "ttctc")
     s.absM.indices.flatMap { row =>
       s.absM(row).indices.filter(isUsed(row, _)).map { col =>
-        if (isInBottom(row)) bobbinProps
-        else if (isFootside(row, col)) footSideProps
-        else Props("title" -> s.getTitle(row,col))
+        val props = if (isInBottom(row)) Props("bobbin" -> true)
+        else if (isFootside(row, col)) Props("title" -> "ttctc")
+        else Props("title" -> s.getTitle(row,col), "fixed" -> false)
+        // initial coordinates prevent potential mirrored presentation
+        props + ("y" -> (25* row), "x" -> (25*col))
       }
     }
   }

@@ -35,7 +35,7 @@ package object dibl {
   def TargetToSrcs (target: Int, sources: (Int, Int)) = (target, sources)
 
   /** see https://github.com/jo-pol/dibl-tensioned/blob/gh-pages/sample.js */
-  type Props = HashMap[String,Any]
+  type Props = Map[String,Any]
   def Props(xs: (String, Any)*) = HashMap(xs: _*)
   implicit class RichProps (p: Props) {
     // link properties
@@ -45,6 +45,8 @@ package object dibl {
     def title: String = p.getOrElse("title", "").toString
     def instructions: String = p.title.replaceAll(" .*", "").toLowerCase.replaceAll("t","lr")
     def startOf: Int = p.getOrElse("startOf","0").toString.replaceAll("thread","").toInt
+    def x: Int = p.getOrElse("x","0").toString.toInt
+    def y: Int = p.getOrElse("y","0").toString.toInt
   }
 
   // other tools

@@ -15,7 +15,6 @@
 */
 package dibl
 
-import scala.collection.immutable.HashMap
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExport
 
@@ -53,7 +52,7 @@ object D3Data {
     )
   }
 
-  def toJS(items: Seq[HashMap[String,Any]]
+  def toJS(items: Seq[Props]
           ): js.Array[js.Dictionary[Any]] = {
 
     val a = new js.Array[js.Any](items.length).asInstanceOf[js.Array[js.Dictionary[Any]]]
