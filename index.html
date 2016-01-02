@@ -42,19 +42,15 @@
       function setMax(form) {
         form.nrInSet.max = form.set[form.set.selectedIndex].getAttribute("data-max-nr")
       }
-      function fillForm() {
-          var location = window.location.href + ""
-          var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      function init() {
+        var location = (window.location.href + "").replace("#","")
+        if (location.indexOf("?") >= 0) {
+          location.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
               var fields = document.getElementsByName(key)
               if (fields.length > 0) {
                   fields[0].value = decodeURIComponent(value).replace(/[+]/g," ")
               }
-          });
-      }
-      function init() {
-        var location = window.location.href + ""
-        if (location.indexOf("?") >= 0) {
-          fillForm()
+          })
           show(document.getElementById('graph'))
         } else{
           document.getElementById('pairDiagram').innerHTML = ""
@@ -81,13 +77,13 @@
      .shown {display: inline}
    </style>
 </head>
-<body onload="init()" lang="en">
+<body onload="init();setMax(document.getElementById('graph'))" lang="en">
   <div>
     <img style="float: right" src="logo-big.png" alt="DiBL logo"
          title="3 tiles each with a single stitch. Thick coloured lines for the pair diagram, thin black lines for a thread diagram"/>
     <h1>Bobbin lace working diagrams</h1>
     <ul><li>
-      The diagrams might be rotated, mirrored (see thread/pair numbers in diagram tooltips) or twisted: dragging can fix that.
+      Drag a diagram around for the proper orientation.
     </li><li>
       FireFox, Chrome and Safari are fine, IE has a <a href="https://connect.microsoft.com/IE/feedback/details/801938/dynamically-updated-svg-path-with-a-marker-end-does-not-update"
       >problem</a> rendering the color codes of pair diagrams and over-under effect of thread diagrams.
@@ -97,29 +93,57 @@
       >original data</a>.
     </li></ul>
   </div>
-    <form id="graph" onsubmit="return false">
+    <form id="graph" onsubmit="return true">
       <fieldset style="border: none">
         <legend>Configure a pattern</legend>
 
-          <select onChange="window.location.href=this.value">
+          <select size="1" onChange="window.location.href='?name='+this.options[this.selectedIndex].text+'&'+this.value">
               <option value=""
               >select another pattern</option>
               <option value="index.html"
               >initial sample</option>
-              <option value="?nrInSet=0&set=2x4 small snowflakes&rows=5&cols=7&shiftLeft=0&shiftUp=0&pairWidth=275&pairHeight=250&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
-              >snow</option>
-              <option value="?nrInSet=0&set=2x4 torchon&rows=5&cols=5&shiftLeft=1&shiftUp=1&pairWidth=275&pairHeight=275&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              <option value="nrInSet=0&set=2x4 small snowflakes&shiftLeft=0&shiftUp=0&rows=5&cols=7&pairWidth=275&pairHeight=250&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              >small snow</option>
+              <option value="nrInSet=22&set=2x4&shiftLeft=1&shiftUp=3&rows=10&cols=8&pairWidth=400&pairHeight=400&threadWidth=1200&threadHeight=999&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              >small snow and hexagons</option>
+              <option value="nrInSet=16&set=2x4&shiftLeft=1&shiftUp=0&rows=10&cols=8&pairWidth=400&pairHeight=400&threadWidth=1200&threadHeight=999&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              >open snow</option>
+              <option value="nrInSet=0&set=2x4 torchon&shiftLeft=1&rows=5&cols=5&shiftUp=1&pairWidth=275&pairHeight=275&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
               >torchon</option>
-              <option value="?nrInSet=0&set=2x4 vrouwkens&rows=9&cols=9&shiftLeft=0&shiftUp=0&pairWidth=400&pairHeight=400&threadWidth=999&threadHeight=999&stitches=C2=tctc, B1=tc, A1=tc, D1=tctc, A2=tc, B2=tc, C1=tctc"
-              >vrouwkens</option>
-              <option value="?nrInSet=0&set=2x4 bias&rows=8&cols=5&shiftLeft=1&shiftUp=0&pairWidth=275&pairHeight=275&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
-              ><span lang="nl-BE">bias</span></option>
+              <option value="nrInSet=4&set=2x2&shiftLeft=0&rows=5&cols=5&shiftUp=1&pairWidth=275&pairHeight=275&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              >cloth</option>
+              <option value="nrInSet=2&set=2x4 rose ground&shiftLeft=0&shiftUp=2&rows=10&cols=8&pairWidth=275&pairHeight=275&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              >rose ground variation</option>
+              <option value="nrInSet=0&set=2x4 vrouwkens&shiftLeft=0&rows=9&cols=9&shiftUp=0&pairWidth=400&pairHeight=400&threadWidth=999&threadHeight=999&stitches=C2=tctc, B1=tc, A1=tc, D1=tctc, A2=tc, B2=tc, C1=tctc"
+                      lang="nl-BE">vrouwkens</option>
+              <option value="nrInSet=0&set=2x4 bias&shiftLeft=1&rows=8&cols=5&shiftUp=0&pairWidth=275&pairHeight=275&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              >bias</option>
+              <option value="nrInSet=0&set=2x4 paris/kat&shiftLeft=1&rows=8&cols=7&shiftUp=1&pairWidth=275&pairHeight=275&threadWidth=900&threadHeight=900&stitches=A1=tctc, C1=tctc, C2=tctc, D2=tctc, A2=tctc, B2=tctc"
+              >paris/kat</option>
+              <option value="nrInSet=0&set=2x2&shiftLeft=0&shiftUp=2&rows=8&cols=5&pairWidth=275&pairHeight=275&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              >kat variation</option>
+              <option value="nrInSet=5&set=2x4&shiftLeft=0&shiftUp=0&rows=8&cols=5&pairWidth=350&pairHeight=350&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              >mini fish</option>
+              <option value="nrInSet=10&set=2x4&shiftLeft=0&shiftUp=0&rows=8&cols=5&pairWidth=350&pairHeight=350&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              >mini fish and triangles</option>
+              <option value="nrInSet=27&set=2x4&shiftLeft=0&shiftUp=2&rows=8&cols=5&pairWidth=350&pairHeight=350&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              >fish variation</option>
+              <option value="nrInSet=11&set=2x4&shiftLeft=0&shiftUp=0&rows=8&cols=5&pairWidth=350&pairHeight=350&threadWidth=800&threadHeight=800&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              >mini fish and rectangles</option>
+              <option value="nrInSet=22&set=2x4&shiftLeft=1&shiftUp=3&rows=10&cols=8&pairWidth=400&pairHeight=400&threadWidth=1200&threadHeight=999&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              >tilted fish</option>
+              <option value="nrInSet=6&set=2x4&shiftLeft=0&shiftUp=0&rows=7&cols=8&pairWidth=350&pairHeight=350&threadWidth=900&threadHeight=900&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              >interlocked snow</option>
+              <option value="nrInSet=9&set=2x4&shiftLeft=0&shiftUp=0&rows=10&cols=5&pairWidth=350&pairHeight=350&threadWidth=900&threadHeight=900&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              >asym chained snow</option>
+              <option value="nrInSet=29&set=2x4&shiftLeft=0&shiftUp=1&rows=10&cols=5&pairWidth=350&pairHeight=350&threadWidth=900&threadHeight=900&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
+              >whatever</option>
           </select>
           <img alt="(i)"
                title ="Fills the form with values that produce a pattern with complete footsides and hence a full thread diagram. The number of columns may need an increment/decrement of four"
                src="information-icon.png">
           &nbsp;
-          <button class="button" onclick="show(this.form); return false"
+          <button class="button" onclick="show(this.form)"
           >draw</button>
           <img alt="(i)" title ="a variation of a previously selected pattern using the options below"
                src="information-icon.png">
@@ -144,7 +168,7 @@
         <fieldset style="border: none">
         <legend>Advanced options
             <img alt="(i)"
-                 title ="Most footsides of pair diagrams are inclomplete, that causes incomplete (and sometimes tubular) thread diagrams. Other patterns without horizontal rows may render a triangular patch as thread diagram when specifying many columns."
+                 title ="Most footsides of pair diagrams are inclomplete, that causes incomplete (and sometimes tubular) thread diagrams. Some of these may render a triangular patch as thread diagram when specifying enough columns."
                  src="information-icon.png">
             <span class="show"><a href="#" onclick="document.getElementById('advanced').classList.remove('hidden');this.classList.add('hidden')=''">show</a></span>
         </legend>

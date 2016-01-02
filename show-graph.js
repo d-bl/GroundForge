@@ -1,6 +1,6 @@
 fullyTransparant = 0 // global to allow override while testing
-function startThread (svg){
-    svg.append('svg:defs').append('svg:marker')
+function startThread (svgDefs){
+    svgDefs.append('svg:marker')
         .attr('id', "start-thread")
         .attr('viewBox', '-7 -7 14 14')
         .attr('markerWidth', 12)
@@ -10,8 +10,8 @@ function startThread (svg){
         .attr('d', d3.svg.symbol().type("square"))
         .attr('fill', "#000").style('opacity',0.5)
 }
-function startPair (svg){
-    svg.append('svg:defs').append('svg:marker')
+function startPair (svgDefs){
+    svgDefs.append('svg:marker')
         .attr('id', "start-pair")
         .attr('viewBox', '-7 -7 14 14')
         .attr('markerWidth', 10)
@@ -21,8 +21,8 @@ function startPair (svg){
         .attr('d', d3.svg.symbol().type("diamond"))
         .attr('fill', "#000").style('opacity',0.5)
 }
-function twistMark (svg){
-    svg.append('svg:defs').append('svg:marker')
+function twistMark (svgDefs){
+    svgDefs.append('svg:marker')
         .attr('id', "twist-1")
         .attr('viewBox', '-2 -2 4 4')
         .attr('markerWidth', 5)
@@ -34,8 +34,8 @@ function twistMark (svg){
         .attr('stroke', "#000")
         .attr('stroke-width', "1px")
 }
-function markers (svg,id,color){
-    svg.append('svg:defs').append('svg:marker')
+function markers (svgDefs,id,color){
+    svgDefs.append('svg:marker')
         .attr('id', 'start-' + id)
         .attr('viewBox', '0 -5 10 10')
         .attr('markerWidth', 6)
@@ -46,7 +46,7 @@ function markers (svg,id,color){
         .attr('stroke-width', 3)
         .attr('stroke', color)
 
-    svg.append('svg:defs').append('svg:marker')
+    svgDefs.append('svg:marker')
         .attr('id', 'end-' + id)
         .attr('viewBox', '0 -5 10 10')
         .attr('refX', 10)
@@ -69,13 +69,14 @@ function showGraph(args) {
 
     // marker definitions
 
-    startThread(svg)
-    startPair(svg)
-    twistMark(svg)
-    markers(svg, 'green','#0f0')
-    markers(svg, 'red','#f00')
-    markers(svg, 'purple','#609')
-    markers(svg, 'white','#fff')
+    var defs = svg.append('svg:defs')
+    startThread(defs)
+    startPair(defs)
+    twistMark(defs)
+    markers(defs, 'green','#0f0')
+    markers(defs, 'red','#f00')
+    markers(defs, 'purple','#609')
+    markers(defs, 'white','#fff')
 
     // object creation and decoration
 
@@ -127,11 +128,9 @@ function showGraph(args) {
         if (!d.pin) return
         d3.select(this).classed("fixed", d.fixed = true)
     })
-    // zooming made dragging less fluent, so not implemented
     node.call(force.drag)
 
     // layout simulation step
-
     force.on("tick", function() {
         link.attr("d", function(d) {
           var sX = d.source.x
