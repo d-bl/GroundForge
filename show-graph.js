@@ -63,13 +63,14 @@ function showGraph(args) {
 
     // document creation
 
-    var svg = d3.select(args.container).append("svg")
+    var svgRoot = d3.select(args.container).append("svg")
                 .attr("width", args.width)
                 .attr("height", args.height)
+                .attr("pointer-events", "all")
 
     // marker definitions
 
-    var defs = svg.append('svg:defs')
+    var defs = svgRoot.append('svg:defs')
     startThread(defs)
     startPair(defs)
     twistMark(defs)
@@ -78,11 +79,29 @@ function showGraph(args) {
     markers(defs, 'purple','#609')
     markers(defs, 'white','#fff')
 
+    // zoom functionality
+
+    var container = svgRoot.append('svg:g')
+                .call(d3.behavior.zoom().scale(args.scale).on("zoom", redraw))
+              .append('svg:g')
+                .attr("transform", args.transform)
+
+    container.append('svg:rect')
+        .attr('width', args.width * (1/args.scale))
+        .attr('height', args.height * (1/args.scale))
+        .attr('fill', 'white')
+
+    function redraw() {
+      container.attr("transform",
+          "translate(" + d3.event.translate + ")"
+          + " scale(" + d3.event.scale + ")");
+    }
+
     // object creation and decoration
 
     var isIE = document.documentURI == undefined // wrong feature check
     // problem: the marker property is supported by IE but breaks on moving links
-    var link = svg.selectAll(".path").data(args.links).enter().append("svg:path")
+    var link = container.selectAll(".path").data(args.links).enter().append("svg:path")
         .attr("class", function(d) { return d.thread ? "link thread" + d.thread : "link"})
         .attr("id",function(d,i) { return "link_" + i; })
         .style('marker-start', function(d) { if (d.start && !isIE) return 'url(#start-'+d.start+')'})
@@ -91,7 +110,7 @@ function showGraph(args) {
         .style('opacity', function(d) { return d.border || d.toPin ? fullyTransparant : 1})
         .style('stroke', '#000')
 
-    var node = svg.selectAll(".node").data(args.nodes).enter().append("circle")
+    var node = container.selectAll(".node").data(args.nodes).enter().append("circle")
         .attr("class", function(d) { return d.startOf ? ("node threadStart") : (d.pin ? ("node pin") : "node")})
         .attr("r", function(d) { return d.pin ? 4 : 6})
         .style('opacity', function(d) { return d.bobbin ? 0.5: (d.pin ? 0.2 : fullyTransparant)})
@@ -117,11 +136,11 @@ function showGraph(args) {
 
     // event listeners
 
-    svg.selectAll(".threadStart").on('click', function (d) {
+    container.selectAll(".threadStart").on('click', function (d) {
         if (d3.event.defaultPrevented) return
-        svg.selectAll("."+d.startOf).style('stroke', colorpicker.value)
+        container.selectAll("."+d.startOf).style('stroke', colorpicker.value)
     })
-    svg.selectAll(".pin").on('click', function (d) {
+    container.selectAll(".pin").on('click', function (d) {
         if (d3.event.defaultPrevented) return
         d3.select(this).classed("fixed", d.fixed = false) 
     })
@@ -140,16 +159,19 @@ function showGraph(args) {
           var tY = d.target.y
           var mX = (d.source.x * 1 + d.target.x * 1) / 2
           var mY = (d.source.y * 1 + d.target.y * 1) / 2
+          var s = " "
           if (d.left) {
             mX = sY - mY + mX
             my = mX - sY + mY
+            s = "S"
           }
           if (d.right) {
             mX = tY - mY + mX
             my = mX - tY + mY
+            s = "S"
           }
           return "M" + sX + "," + sY +
-                 "S" + mX + "," + mY +
+                 s   + mX + "," + mY +
                  " " + tX + "," + tY
         })
 
