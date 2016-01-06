@@ -92,13 +92,6 @@ object Matrix {
     * Each cell (alias character) represents a target node in a two-in-two-out directed graph, see relSourcesMap.
     */
   val matrixMap: HashMap[String,Array[String]] = HashMap (
-    "2x4 torchon" -> Array[String]("53535353","566-66-5","5-5--5-5","44447777","66666666"),
-    "2x4 bias" -> Array[String]("-4866-48","48154-77","4804-777"),
-    "2x4 paris/kat" -> Array[String]("6868-4-4"),
-    "2x4 cloth" -> Array[String]("88881111","66662222"),
-    "2x4 vrouwkens" -> Array[String]("43126-78"), // mirrored version: mannekens
-    "2x4 small snowflakes" -> Array[String]("43735-53","563234-7"),
-    "2x4 rose ground" -> Array[String]("5831-4-7","14838-48","588-14-2","4830--77","-43734-7"),
     "2x2" -> Array[String]("4368","535-","6666","684-","8811","6622","4477"),
     "2x4" -> Array[String](
       "46636668","48322483","563234-7","5831-4-7","4830--77","43436868","43535863","43116888","43215883","48405887",

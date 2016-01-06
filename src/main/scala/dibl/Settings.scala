@@ -39,6 +39,27 @@ object Settings {
       absM <- toAbs(relM, absRows, absCols, shiftLeft, shiftUp)
     } yield create(relM, absM, stitches)
 
+  def create(str: String,
+            absRows: Int,
+            absCols: Int,
+            shiftLeft: Int = 0,
+            shiftUp: Int = 0,
+            stitches: String = ""
+           ): Try[Settings] = {
+    val lines = str.split("[^-0-9]+")
+    val dims = s"${lines.length}x${lines(0).length}"
+    for {
+        _    <- hasEqualLengths(lines)
+        relM <- toRelSrcNodes(matrix = lines.mkString(""), dimensions = dims)
+        absM <- toAbs(relM, absRows, absCols, shiftLeft, shiftUp)
+      } yield create(relM, absM, stitches)
+    }
+
+  def hasEqualLengths(lines: Array[String]): Try[Unit] = {
+    if (lines.map(_.length).sortBy(n => n).distinct.length == 1) Success(Unit)
+    else Failure(new scala.Exception("lines of matrix have varying lengths"))
+  }
+
   def apply(): Try[Settings] =
     for {
       relM <- toRelSrcNodes(matrix = "43126-78", dimensions = "2x4")

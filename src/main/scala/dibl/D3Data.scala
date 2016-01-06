@@ -41,6 +41,24 @@ object D3Data {
   }
 
   @JSExport
+  def get(str: String,
+          rows: Int,
+          cols: Int,
+          shiftLeft: Int,
+          shiftUp: Int,
+          stitches: String
+         ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
+    val pairDiagram = PairDiagram(Settings.create(str, rows, cols, shiftLeft, shiftUp, stitches))
+    val threadDiagram = ThreadDiagram(pairDiagram)
+    js.Dictionary(
+      "nodes" -> toJS(pairDiagram.nodes),
+      "links" -> toJS(pairDiagram.links),
+      "threadNodes" -> toJS(threadDiagram.nodes),
+      "threadLinks" -> toJS(threadDiagram.links)
+    )
+  }
+
+  @JSExport
   def hardCodedPattern(): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
     val pairDiagram = PairDiagram(Settings())
     val threadDiagram = ThreadDiagram(pairDiagram)
