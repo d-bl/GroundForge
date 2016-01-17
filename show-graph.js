@@ -144,11 +144,13 @@ function showGraph(args) {
         if (d3.event.defaultPrevented) return
         d3.select(this).classed("fixed", d.fixed = false) 
     })
-    force.drag().on("dragstart", function (d) {
+    var drag = force.drag().on("dragstart", function (d) {
+        d3.event.sourceEvent.preventDefault();
+        d3.event.sourceEvent.stopPropagation();
         if (!d.pin) return
         d3.select(this).classed("fixed", d.fixed = true)
     })
-    node.call(force.drag)
+    node.call(drag)
 
     // layout simulation step
     force.on("tick", function() {
