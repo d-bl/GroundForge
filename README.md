@@ -41,7 +41,7 @@ Note that a `println` translates to console.log and can be analysed by a browser
 
 ## Important code conventions
 
-- Don't catch exceptions in a `Try` but prevent them to create a `Failure` for safe execution as JavaScript.
+- Don't catch exceptions in a `Try` but prevent them to create a `Failure` for safe execution with JavaScript.
 - Restrict the use of raw js objects to the `D3Data` class to allow execution of test classes with a recent JVM.
 
 
