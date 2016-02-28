@@ -19,7 +19,7 @@ Steps
 
 - Make a local clone of the project, it can be convenient to have two local clones,
   one for the master branch, one for the gh-pages branch.
-- Go to directory of your local clone
+- Go to the directory of your local clone with the master branche
 - Start the command `sbt ~fastOptJS`
 - Monitor the result on `http://localhost:12345/target/scala-2.11/classes/index-dev.html`
   It is a dressed down version of the demo page, with experimental features added.
