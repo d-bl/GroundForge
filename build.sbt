@@ -4,7 +4,7 @@ enablePlugins(ScalaJSPlugin)
 
 workbenchSettings
 
-name := "DiBL-tensioned"
+name := "TessedLace"
 
 version := "0.1-SNAPSHOT"
 

@@ -58,7 +58,7 @@ object PairDiagram {
 
   /** Creates nodes for a pair diagram
     *
-    * @return properties per node as in https://github.com/jo-pol/dibl-tensioned/blob/gh-pages/sample.js
+    * @return properties per node as in https://github.com/d-bl/TessedLace/blob/gh-pages/sample.js
     */
   def toNodes (s: Settings): Seq[Props] = {
 
@@ -85,7 +85,7 @@ object PairDiagram {
   /** Creates links for a pair diagram
     *
     * @param nodeNrs sequence numbers assigned to actually used cells
-    * @return properties per link as in https://github.com/jo-pol/dibl-tensioned/blob/gh-pages/sample.js
+    * @return properties per link as in https://github.com/d-bl/TessedLace/blob/gh-pages/sample.js
     */
   def  toLinks (s: Settings, nodeNrs: Seq[Seq[Int]], nodes: Seq[Props]
                ): Seq[Props] = {

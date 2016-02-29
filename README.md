@@ -57,10 +57,10 @@ Launching tests may cause problems when sbt is still processing a change, just t
 ## Publish
 
 - Compile with `sbt ~fullOptJS`
-- Copy the content of `target\scala-2.11\dibl-tensioned-opt.js` in the master branch
+- Copy the content of `target\scala-2.11\tessedlace-opt.js` in the master branch
   into `matrix-graphs.js` in the [gh-pages branch]
 - Check the results with `index.html`
-- If ok: commit, push and check the online demo in your own github fork: `http://YOURID.github.io/dibl-tensioned/`
+- If ok: commit, push and check the online demo in your own github fork: `http://YOURID.github.io/TessedLace/`
 
 [sbt]: http://www.scala-sbt.org/download.html
 [gh-pages branch]: https://github.com/d-bl/TessedLace/tree/gh-pages
