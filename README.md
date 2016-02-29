@@ -28,7 +28,7 @@ You may just improve the grammar on the demo-page or on this readme, improve the
 Don't know about version control in general or GitHub in particular? No problem:
 * just create a github [account](https://github.com)
 * hit the fork button at the top of this page
-* go to `https://github.com/YOURID/dibl-tensioned/tree/gh-pages/`, don't forget to replace YOURID
+* go to `https://github.com/YOURID/TessedLace/tree/gh-pages/`, don't forget to replace YOURID
 * choose the file you want to change and hit the pencil to start editing
-* save your changes and test with your own demo-page: `http://YOURID.github.io/dibl-tensioned/`, again: don't forget to replace YOURID
-* create a pull request at `https://github.com/YOURID/dibl-tensioned/tree/gh-pages/` or drop a note
+* save your changes and test with your own demo-page: `http://YOURID.github.io/TessedLace/`, again: don't forget to replace YOURID
+* create a pull request at `https://github.com/YOURID/TessedLace/tree/gh-pages/` or drop a note
