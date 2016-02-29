@@ -1,4 +1,6 @@
-# [DEMO](http://jo-pol.github.io/dibl-tensioned/)
+# [DEMO](https://d-bl.github.io/TessedLace/)
+Diagrams with variable stitches and thread styles for patterns found by [TesseLace.com].
+[TesseLace.com](http://TesseLace.com)
 
 ## How it's made
 
@@ -10,12 +12,12 @@ Step by step changed an [example] for [D3.js]:
 - added properties to identify the links that are part of a single thread
 - turned the links from lines to paths with a third node to add mid-markers for twist marks
 
-[scala code] is compiled into `matrix-graphs.js` to generate alternatives for the `sample.js`. These alternatives are based on output of mathematical papers: [1], [2].
+[scala code] is compiled into `matrix-graphs.js` to generate alternatives for the `sample.js`. These alternatives are based on patterns found by [TesseLace.com].
 
 [example]: http://bl.ocks.org/mbostock/4062045
 [D3.js]: http://d3js.org/
 [color coded diagrams]: https://en.wikipedia.org/w/index.php?title=Mesh_grounded_bobbin_lace&oldid=639789191#Worker_pair_versus_two_pair_per_pin
-[scala code]: https://github.com/jo-pol/dibl-tensioned/tree/master/
+[scala code]: https://d-bl.github.io/TessedLace/tree/master/
 [1]: http://web.uvic.ca/~vmi/papers/bridges2012.html
 [2]: http://web.uvic.ca/~vmi/papers/jmm2014.html
 
