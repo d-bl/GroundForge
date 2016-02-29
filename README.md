@@ -17,7 +17,7 @@ Step by step changed an [example] for [D3.js]:
 [example]: http://bl.ocks.org/mbostock/4062045
 [D3.js]: http://d3js.org/
 [color coded diagrams]: https://en.wikipedia.org/w/index.php?title=Mesh_grounded_bobbin_lace&oldid=639789191#Worker_pair_versus_two_pair_per_pin
-[scala code]: https://d-bl.github.io/TessedLace/tree/master/
+[scala code]: https://github.com/d-bl/TessedLace/tree/master/
 [1]: http://web.uvic.ca/~vmi/papers/bridges2012.html
 [2]: http://web.uvic.ca/~vmi/papers/jmm2014.html
 
