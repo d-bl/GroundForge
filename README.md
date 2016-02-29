@@ -1,6 +1,6 @@
 # [DEMO](https://d-bl.github.io/TessedLace/)
 Diagrams with variable stitches and thread styles for patterns found by [TesseLace.com].
-[TesseLace.com](http://TesseLace.com)
+[TesseLace.com]: http://TesseLace.com
 
 ## How it's made
 
