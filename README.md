@@ -1,9 +1,12 @@
-# [DEMO](https://d-bl.github.io/TessedLace/)
+# [DEMO](https://d-bl.github.io/TesseLaceD/)
+TesseLaceD : [TesseLace] Diargrams - variable stitches and thread styles in matching pair an thread diagrams.
 
 The code under `src/main/scala` generates  alternative data for `sample.js` in the [gh-pages branch].
-The patterns are generated from predefined [matrices].
+The patterns are generated from predefined [matrices] found by [TesseLace.com].
 
-[matrices]: https://github.com/d-bl/TessedLace/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Matrix.scala#L91-L120
+[matrices]: https://github.com/d-bl/TesseLaceD/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Matrix.scala#L91-L120
+[TesseLace]: http://TesseLace.com
+[TesseLace.com]: http://TesseLace.com
 
 
 ## Compile and preview
@@ -34,9 +37,9 @@ Follow the steps above to view the result.
 Run the [ad-hoc] test of ThreadDiagramSpec to step through the code or analyse the println-s.
 Note that a `println` translates to console.log and can be analysed by a browser too.
 
-[encoded matrix]: https://github.com/d-bl/TessedLace/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Matrix.scala#L122-L138
-[apply method]: https://github.com/d-bl/TessedLace/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Settings.scala#L44-L46
-[ad-hoc]: https://github.com/d-bl/TessedLace/blob/fa4698f3282c6eb9974447caa395b273ec4db697/src/test/scala/dibl/ThreadDiagramSpec.scala#L56
+[encoded matrix]: https://github.com/d-bl/TesseLaceD/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Matrix.scala#L122-L138
+[apply method]: https://github.com/d-bl/TesseLaceD/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Settings.scala#L44-L46
+[ad-hoc]: https://github.com/d-bl/TesseLaceD/blob/fa4698f3282c6eb9974447caa395b273ec4db697/src/test/scala/dibl/ThreadDiagramSpec.scala#L56
 
 
 ## Important code conventions
@@ -60,7 +63,7 @@ Launching tests may cause problems when sbt is still processing a change, just t
 - Copy the content of `target\scala-2.11\tessedlace-opt.js` in the master branch
   into `matrix-graphs.js` in the [gh-pages branch]
 - Check the results with `index.html`
-- If ok: commit, push and check the online demo in your own github fork: `http://YOURID.github.io/TessedLace/`
+- If ok: commit, push and check the online demo in your own github fork: `http://YOURID.github.io/TesseLaceD/`
 
 [sbt]: http://www.scala-sbt.org/download.html
-[gh-pages branch]: https://github.com/d-bl/TessedLace/tree/gh-pages
+[gh-pages branch]: https://github.com/d-bl/TesseLaceD/tree/gh-pages
