@@ -11,12 +11,14 @@
     <script src="matrix-graphs.js"></script>
     <script src="util.js"></script>
    <style>
-     .h1accent { color: #777}
+     body { max-width: 60.5em;  padding: 1em; margin-left: auto; margin-right: auto; }
+     .h1accent { color: #444}
      input { width: 3em; }
      #colorpicker { width: 5em; }
-     form, #pairDiagram, #threadDiagram { display: inline-block; }
+     form, #pairDiagram, #threadDiagram { display: inline-block; vertical-align: top; }
      svg{ border: solid 1px #AAA; margin-right: 0.4em; display: inline-block; }
-     fieldset { padding-right: 0.2em; padding-bottom: 0.2em}
+     fieldset { padding-left: 0; padding-right: 0.2em; padding-bottom: 0.2em}
+     fieldset fieldset { padding-left: 0.5em;}
      .link {fill: #fff; opacity: 1;}
      .node {fill: #000; opacity: 0;}
      .node.fixed {fill: #90f;}
