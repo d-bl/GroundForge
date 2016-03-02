@@ -2,7 +2,7 @@
 <head lang="en">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
-    <title lang="en">TesseLaceD - TesseLace Diagrams with variable stitches and thread styles</title>
+    <title lang="en">TesseLaceD : TesseLace Diagrams - with variable stitches and thread styles</title>
     <link href="colorpicker/mcColorPicker.css" rel="stylesheet" type="text/css" />
     <script src="colorpicker/mcColorPicker.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.12/d3.min.js"></script>
@@ -25,7 +25,7 @@
      .node {fill: #000; opacity: 0;}
      .node.fixed {fill: #90f;}
      .hidden {display: none}
-       #footer { text-align: right; }
+       #footer { text-align: right; clear: both; }
    </style>
 </head>
 <body onload="init();setMax(document.getElementById('graph'))" lang="en">
@@ -44,8 +44,6 @@
   <div style="clear: both">
     <form id="graph" onsubmit="return false">
       <fieldset style="border: none">
-        <legend>Configure a pattern</legend>
-
           <select size="1" onChange="setLocation(this)">
               <option value="">select a configuration</option>
               <option value="nrInSet=13&set=2x4&shiftLeft=0&shiftUp=2&rows=5&cols=3&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"
@@ -114,7 +112,8 @@
             <img alt="(i)"
                  title ="The footside is not completely implemented for many configurations, that causes incomplete (and sometimes tubular) thread diagrams. Some of these may render a triangular patch as thread diagram when specifying enough columns."
                  src="images/information-icon.png">
-            <a id="advancedShow" href="javascript:showOptions('advanced')">show</a>
+            <a id="advancedShow" href="javascript:showOptions('advanced');showOptions('hideAdvanced')">show</a>
+            <a id="hideAdvanced" class="hidden" href="javascript:hideOptions('advanced');hideOptions('hideAdvanced')">(hide)</a>
         </legend>
 
         <div class="hidden" id="advanced">
