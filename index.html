@@ -119,11 +119,23 @@
         </legend>
 
         <div class="hidden" id="advanced">
+
             <fieldset>
-                <legend>Predefined matrix <img alt="(i)"
-                                               title ="Ignored if a custom matrix is specified."
-                                               src="images/information-icon.png">
-                </legend>
+                <legend>Shift stitches within patch</legend>
+                <label for="shiftLeft">footside by </label>
+                <input id="shiftLeft" name="shiftLeft" min="0" max="3" value="0" type="number"/>
+                <label for="shiftUp">top by </label>
+                <input id="shiftUp" name="shiftUp" min="0" max="3" value="2" type="number"/>
+            </fieldset>
+
+            <fieldset>
+                <legend>More patterns</legend>
+                <fieldset>
+                    <legend>select a predefined matrix ...
+                        <img alt="(i)"
+                             title ="Clear custom matrix to enable."
+                             src="images/information-icon.png">
+                    </legend>
                     <label for="nrInSet">nr</label>
                     <input id="nrInSet" name="nrInSet" min="0" max="1" value="13" type="number"/>
                     <label for="set">in set</label>
@@ -132,25 +144,17 @@
                         <option data-max-nr="92">4x2</option>
                         <option data-max-nr="46" selected>2x4</option>
                     </select>
-                <a href="images/overview.png" target="_blank">overview</a>
-            </fieldset>
-
-            <fieldset>
-                <legend>Shift (stitches)</legend>
-                <label for="shiftLeft">footside by </label>
-                <input id="shiftLeft" name="shiftLeft" min="0" max="3" value="0" type="number"/>
-                <label for="shiftUp">top by </label>
-                <input id="shiftUp" name="shiftUp" min="0" max="3" value="2" type="number"/>
-            </fieldset>
-
-            <fieldset>
-                <legend>Custom matrix <img alt="(i)"
-                                           title ="Alternative for a predefined matrix."
-                                           src="images/information-icon.png">
-                </legend>
-                <textarea id="matrix" rows="3" cols="30" name="matrix"></textarea><br/>
-                <a id="digitsShow" href="javascript:showOptions('digits')">show legend</a>
-                <div id="digits" class="hidden">
+                    <a href="images/overview.png" target="_blank">overview</a>
+                </fieldset>
+                <fieldset>
+                    <legend>... or define a custom matrix
+                        <img alt="(i)"
+                             title ="Clear to select a predefined matrix above."
+                             src="images/information-icon.png">
+                    </legend>
+                    <textarea id="matrix" rows="3" cols="26" name="matrix"></textarea><br>
+                    <a id="digitsShow" href="javascript:showOptions('digits')">show legend</a>
+                    <div id="digits" class="hidden">
                     <a href="javascript:hideOptions('digits')">(hide legend)</a>
     For example: <pre>
     588-
@@ -174,6 +178,7 @@
     bababa
     dcdcdc</pre>
                 </div>
+                </fieldset>
             </fieldset>
         </div>
       </fieldset>
