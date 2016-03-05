@@ -34,8 +34,7 @@ function show(form) {
     height: 400,
     nodes: data.threadNodes,
     links: data.threadLinks,
-    scale: 0.5,
-    transform: "translate(0,0)scale(0.5)",
+    scale: 1,
   })
 }
 function setMax(form) {

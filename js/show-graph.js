@@ -128,11 +128,11 @@ function showGraph(args) {
         .nodes(args.nodes)
         .links(args.links)
         .size([args.width, args.height])
-        .charge(-120)
-        .linkDistance(5)
-        .linkStrength(5)
+        .charge(-20)
+        .linkDistance(10)
+        .linkStrength(10)
         .start()
-        .alpha(0.01)
+        .alpha(0.02)
 
     // event listeners
 
