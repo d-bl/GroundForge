@@ -26,7 +26,6 @@
      .node.fixed {fill: #90f;}
      .hidden {display: none}
      #footer { text-align: center; clear: both; }
-     #slider { width:460px; height: 145px; overflow: auto; border: solid black 1px; }
    </style>
 </head>
 <body onload="init();setMax(document.getElementById('graph'))" lang="en">
@@ -38,7 +37,7 @@
         variable stitches and thread styles in matching pair an thread diagrams.
     </em></p>
   </div>
-  <div id="slider"><img src="images/samples.png" alt="" usemap="#Map" /></div>
+  <img src="images/samples.png" alt="" usemap="#Map" />
   <map name="Map" id="Map">
       <!-- initially created with http://imagemap-generator.dariodomi.de/ -->
       <area shape="poly" coords="4,4,84,4,85,82,6,83,6,83"        title="1 Flanders"
@@ -51,37 +50,37 @@
             href="index.html?nrInSet=5&set=2x4&shiftLeft=0&shiftUp=0&rows=8&cols=5&stitches=A1=tctc, B1=lctc, C1=tc, D1=ctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
       <area shape="poly" coords="351,3,427,4,430,82,351,84"       title="5 chained"
             href="index.html?nrInSet=6&set=2x4&shiftLeft=0&shiftUp=0&rows=7&cols=8&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
-
-      <area shape="poly" coords="4,87,84,88,85,167,4,165"         title="6 asymmetrical"
-            href="index.html?nrInSet=9&set=2x4&shiftLeft=1&shiftUp=0&rows=9&cols=4&stitches=A1=lc, B1=ctc, C1=tc, D1=tptctc, A2=rctc, B2=tc, C2=tc, D2=lctc"/>
-      <area shape="poly" coords="91,89,169,88,170,165,91,168"     title="7"
-            href="index.html?nrInSet=10&set=2x4&shiftLeft=0&shiftUp=0&rows=8&cols=5&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
-      <area shape="poly" coords="177,88,256,89,257,166,178,168"   title="8"
-            href="index.html?nrInSet=11&set=2x4&shiftLeft=0&shiftUp=0&rows=8&cols=5&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
-      <area shape="poly" coords="264,88,342,88,343,167,265,168"   title="9 surprise"
-            href="index.html?nrInSet=12&set=2x4&shiftLeft=1&rows=5&cols=5&shiftUp=1&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
-      <area shape="poly" coords="351,88,429,89,430,166,352,168"   title="10 vrouwkens (Torchon)"
-            href="index.html?nrInSet=14&set=2x4&shiftLeft=0&rows=9&cols=9&shiftUp=0&stitches=C2=tctc, B1=tc, A1=tc, D1=tctc, A2=tc, B2=tc, C1=tctc"/>
-
-      <area shape="poly" coords="5,173,83,173,84,252,6,252,6,252" title="11"
-            href="index.html?nrInSet=16&set=2x4&shiftLeft=1&shiftUp=0&rows=8&cols=6&stitches=A1=tc, B1=tc, C1=tctc, D1=tctc, A2=tctc, B2=tctc, C2=tc, D2=tc"/>
-      <area shape="poly" coords="91,172,169,173,170,252,91,253"   title="12 croissants"
-            href="index.html?nrInSet=22&set=2x4&shiftLeft=1&shiftUp=3&rows=6&cols=4&stitches=D2=tctc A2=rctc B1=tc C1=lctc B2=lctc D1=tctc C2=tctc"/>
-      <area shape="poly" coords="178,173,256,172,257,252,177,252" title="13 paris / kat"
-            href="index.html?nrInSet=24&set=2x4&shiftLeft=1&rows=8&cols=7&shiftUp=1&stitches=A1=tctc, C1=tctc, C2=tctc, D2=tctc, A2=tctc, B2=tctc"/>
-      <area shape="poly" coords="264,172,343,173,342,252,264,252" title="14"
-            href="index.html?nrInSet=25&set=2x4&shiftLeft=1&rows=8&cols=5&shiftUp=0&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
-      <area shape="poly" coords="351,173,429,174,428,250,350,252" title="15 bias"
-            href="index.html?nrInSet=27&set=2x4&shiftLeft=0&shiftUp=2&rows=9&cols=5&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
-
-      <area shape="poly" coords="6,257,82,257,84,334,4,335"       title="16"
+      <area shape="poly" coords="438,6,515,6,515,83,438,83"       title="6"
             href="index.html?nrInSet=28&set=2x4&shiftLeft=0&rows=8&cols=5&shiftUp=1&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
-      <area shape="poly" coords="91,257,170,257,170,334,92,334"   title="17"
+      <area shape="poly" coords="526,6,602,6,602,82,525,82"       title="7"
             href="index.html?nrInSet=29&set=2x4&shiftLeft=0&shiftUp=1&rows=10&cols=5&stitches=A1=tc, B1=rc, C1=tc, D1=tc, A2=tctc, B2=tctctc, C2=tc, D2=rc"/>
-      <area shape="poly" coords="177,257,256,257,258,335,179,335" title="18"
-            href="index.html?nrInSet=30&set=2x4&shiftLeft=0&shiftUp=2&rows=10&cols=8&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
-      <area shape="poly" coords="263,256,343,256,343,335,264,335" title="" href="#"/>
-      <area shape="poly" coords="351,256,429,256,430,336,352,335" title="" href="#"/>
+
+      <area shape="poly" coords="4,87,84,88,85,167,4,165"               title="8 asymmetrical"
+            href="index.html?nrInSet=9&set=2x4&shiftLeft=1&shiftUp=0&rows=9&cols=4&stitches=A1=lc, B1=ctc, C1=tc, D1=tptctc, A2=rctc, B2=tc, C2=tc, D2=lctc"/>
+      <area shape="poly" coords="91,89,169,88,170,165,91,168"           title="9"
+            href="index.html?nrInSet=10&set=2x4&shiftLeft=0&shiftUp=0&rows=8&cols=5&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
+      <area shape="poly" coords="177,88,256,89,257,166,178,168"         title="10"
+            href="index.html?nrInSet=11&set=2x4&shiftLeft=0&shiftUp=0&rows=8&cols=5&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
+      <area shape="poly" coords="264,88,342,88,343,167,265,168"         title="11 surprise"
+            href="index.html?nrInSet=12&set=2x4&shiftLeft=1&rows=5&cols=5&shiftUp=1&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
+      <area shape="poly" coords="351,88,429,89,430,166,352,168"         title="12 vrouwkens (Torchon)"
+            href="index.html?nrInSet=14&set=2x4&shiftLeft=0&rows=9&cols=9&shiftUp=0&stitches=C2=tctc, B1=tc, A1=tc, D1=tctc, A2=tc, B2=tc, C1=tctc"/>
+      <area shape="poly" coords="439,90,515,90,515,166,438,167,438,167" title="13"
+            href="index.html?nrInSet=30&set=2x4&shiftLeft=0&shiftUp=2&rows=10&cols=8&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc" />
+      <area shape="poly" coords="525,91,601,91,601,166,525,168" />
+
+      <area shape="poly" coords="5,173,83,173,84,252,6,252,6,252" title="15"
+            href="index.html?nrInSet=16&set=2x4&shiftLeft=1&shiftUp=0&rows=8&cols=6&stitches=A1=tc, B1=tc, C1=tctc, D1=tctc, A2=tctc, B2=tctc, C2=tc, D2=tc"/>
+      <area shape="poly" coords="91,172,169,173,170,252,91,253"   title="16 croissants"
+            href="index.html?nrInSet=22&set=2x4&shiftLeft=1&shiftUp=3&rows=6&cols=4&stitches=D2=tctc A2=rctc B1=tc C1=lctc B2=lctc D1=tctc C2=tctc"/>
+      <area shape="poly" coords="178,173,256,172,257,252,177,252" title="17 paris / kat"
+            href="index.html?nrInSet=24&set=2x4&shiftLeft=1&rows=8&cols=7&shiftUp=1&stitches=A1=tctc, C1=tctc, C2=tctc, D2=tctc, A2=tctc, B2=tctc"/>
+      <area shape="poly" coords="264,172,343,173,342,252,264,252" title="18"
+            href="index.html?nrInSet=25&set=2x4&shiftLeft=1&rows=8&cols=5&shiftUp=0&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
+      <area shape="poly" coords="351,173,429,174,428,250,350,252" title="19 bias"
+            href="index.html?nrInSet=27&set=2x4&shiftLeft=0&shiftUp=2&rows=9&cols=5&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
+      <area shape="poly" coords="438,175,513,175,514,251,438,251" />
+      <area shape="poly" coords="525,175,602,175,603,252,525,252" />
   </map>
   <p>Choose a pattern above, adjust it with the form below.
       Hover over diagram symbols and thread/pair crossings for tooltips.
@@ -134,7 +133,11 @@
         <div class="hidden" id="advanced">
 
             <fieldset>
-                <legend>Shift stitches within patch</legend>
+                <legend>Shift stitches within patch
+                    <img alt="(i)"
+                         title ="See issue #46 about foot sides."
+                         src="images/information-icon.png">
+                </legend>
                 <label for="shiftLeft">footside by </label>
                 <input id="shiftLeft" name="shiftLeft" min="0" max="3" value="0" type="number"/>
                 <label for="shiftUp">top by </label>
@@ -170,26 +173,24 @@
                     <div id="digits" class="hidden">
                     <a href="javascript:hideOptions('digits')">(hide legend)</a>
     For example: <pre>
-    588-
-    14-2</pre>
-    Each digit defines two pairs<br/>
-    arriving at a grid position.<br/>
-    In ascci-art: <pre>
-    0 .../_
-    1 ..|._
-    2 .\.._
-    3 _..._
-    4 ..|/.
-    5 .\./.
-    6 _../.
-    7 .\|..
-    8 _.|..
-    9 _\...
-    - not used grid position</pre>Matrices are stacked as bricks:<pre>
-    ababab
-    cdcdcd
-    bababa
-    dcdcdc</pre>
+588-
+14-2
+8-58
+-214</pre>
+Each digit defines two pairs<br/>
+arriving at a grid position.<br/>
+In ascci-art: <pre>
+0 .../_
+1 ..|._
+2 .\.._
+3 _..._
+4 ..|/.
+5 .\./.
+6 _../.
+7 .\|..
+8 _.|..
+9 _\...
+- not used grid position</pre>
                 </div>
                 </fieldset>
             </fieldset>

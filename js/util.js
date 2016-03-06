@@ -48,12 +48,6 @@ function hideOptions(id){
   document.getElementById(id).classList.add('hidden')
   document.getElementById(id+'Show').classList.remove('hidden')
 }
-function setLocation(e) {
-  if (e.value == '')
-    window.location.href='index.html'
-  else
-    window.location.href='?name='+e.options[e.selectedIndex].text+'&'+e.value
-}
 function init() {
   var location = (window.location.href + "").replace("#","")
   if (location.indexOf("?") >= 0) {
