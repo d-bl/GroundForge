@@ -51,7 +51,7 @@ object Settings {
     for {
         _    <- hasEqualLengths(lines)
         relM <- toRelSrcNodes(matrix = lines.mkString(""), dimensions = dims)
-        absM <- toAbs(relM, absRows, absCols, shiftLeft, shiftUp)
+        absM <- toAbsWithMargins(shift(relM, shiftLeft, shiftUp), absRows, absCols)
       } yield create(relM, absM, stitches)
     }
 
@@ -64,7 +64,7 @@ object Settings {
     for {
       relM <- toRelSrcNodes(matrix = "43126-78", dimensions = "2x4")
       absM <- {
-        val x = toAbs(relM, absRows = 9, absCols = 9, shitfLeft = 0, shiftUp = 0)
+        val x = toAbs(relM, absRows = 9, absCols = 9, shiftLeft = 0, shiftUp = 0)
         // TODO 2x2-5 has not footside at all
 
         //x.get(2)(1) = Array((2,2), (0,1))//hack for a twisted torchon start
@@ -107,10 +107,10 @@ object Settings {
   private def toAbs(m: M,
                     absRows: Int,
                     absCols: Int,
-                    shitfLeft: Int,
+                    shiftLeft: Int,
                     shiftUp: Int
                    ): Try[M] =
-    toAbsWithMargins(shift(toCheckerboard(m), shitfLeft, shiftUp), absRows, absCols)
+    toAbsWithMargins(shift(toCheckerboard(m), shiftLeft, shiftUp), absRows, absCols)
 
   private def getMatrix(key: String,
                         nr: Int
