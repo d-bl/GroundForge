@@ -74,10 +74,9 @@
         <legend>Pair diagrams</legend>
         <select id="pairs" size="1" onChange="showPairs(this.value)">
             <option value="">select a set</option>
-            <option value="2x2:0-6">2x2 (0-6)</option>
-            <option value="2x4:0-46">2x4 (0-46)</option>
-            <option value="4x2:0-49">4x2 (0-49)</option>
-            <option value="4x2:50-92">4x2 (50-92)</option>
+            <option value="2x2:0">2x2 (0-6)</option>
+            <option value="2x4:0-33">2x4 (0-33)</option>
+            <option value="4x2:0-12">4x2 (0-12)</option>
         </select>
         <p>
             The animation of pair diagrams applies some tension to the original diagrams
@@ -87,9 +86,9 @@
     </fieldset>
     <fieldset>
         <legend>Thread diagrams</legend>
-        <label for="_2x2">2x2 </label><input id="_2x2" max="6"  onchange="showThreads('2x2',this.value)" min="0" value="-1" type="number"/>
-        <label for="_2x4">2x4 </label><input id="_2x4" max="46" onchange="showThreads('2x4',this.value)" min="0" value="-1" type="number"/>
-        <label for="_4x2">4x2 </label><input id="_4x2" max="92" onchange="showThreads('4x2',this.value)" min="0" value="-1" type="number"/>
+        <label for="_2x2">2x2 </label><input id="_2x2" max="0"  onchange="showThreads('2x2',this.value)" min="0" value="-1" type="number"/>
+        <label for="_2x4">2x4 </label><input id="_2x4" max="33" onchange="showThreads('2x4',this.value)" min="0" value="-1" type="number"/>
+        <label for="_4x2">4x2 </label><input id="_4x2" max="12" onchange="showThreads('4x2',this.value)" min="0" value="-1" type="number"/>
         <p>
             The thread diagrams show if any shift configuration has a footside implemented
             without a (partial) tubular effect. If at most one footside is okay,
