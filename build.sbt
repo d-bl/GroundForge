@@ -4,7 +4,7 @@ enablePlugins(ScalaJSPlugin)
 
 workbenchSettings
 
-name := "TessedLace"
+name := "TesseLaceD"
 
 version := "0.1-SNAPSHOT"
 

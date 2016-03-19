@@ -23,32 +23,17 @@
     fullyTransparant = 0.1
 
     function showNr(form) {
+      var doc = dibl.Pricking().get(form.set.value, form.nrInSet.value * 1)
+      document.getElementById('pricking').href = 'data:image/svg+xml,' + encodeURIComponent(doc)
       show( dibl.D3Data().get(form.set.value, form.nrInSet.value * 1,
                               form.rows.value * 1, form.cols.value * 1,
                               form.shiftLeft.value * 1, form.shiftUp.value * 1,
                               form.stitches.value) )
     }
     function showHardCodedPattern(form) {
+      var doc = dibl.Pricking().get("2x4", 0)
+      document.getElementById('pricking').href = 'data:image/svg+xml,' + encodeURIComponent(doc)
       show( dibl.D3Data().hardCodedPattern() )
-    }
-    function show(data){
-      document.getElementById('diagram').innerHTML = ""
-      showGraph({
-        threadColor: '#colorpicker',
-        container: '#diagram',
-        width: 350,
-        height: 350,
-        nodes: data.nodes,
-        links: data.links
-      })
-      showGraph({
-        threadColor: '#colorpicker',
-        container: '#diagram',
-        width: 1200,
-        height: 1200,
-        nodes: data.threadNodes,
-        links: data.threadLinks
-      })
     }
     function setMax(form) {
       form.nrInSet.max = form.set[form.set.selectedIndex].getAttribute("data-max-nr")
@@ -56,6 +41,7 @@
   </script>
 </head>
 <body onload="showHardCodedPattern(document.getElementById('graph'))">
+  <a href="#" id="pricking" download="pricking">pricking</a>
   <form id="graph" action="" onsubmit="return false">
     <fieldset id="shift">
       <label for="shiftLeft">left by </label>

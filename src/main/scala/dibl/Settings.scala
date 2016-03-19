@@ -112,7 +112,7 @@ object Settings {
                    ): Try[M] =
     toAbsWithMargins(shift(toCheckerboard(m), shiftLeft, shiftUp), absRows, absCols)
 
-  private def getMatrix(key: String,
+  def getMatrix(key: String,
                         nr: Int
                        ): Try[String] = {
     val matrices = matrixMap.get(key)
