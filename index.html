@@ -31,16 +31,19 @@
 <body onload="init();setMax(document.getElementById('graph'))" lang="en">
   <div>
     <img style="float: right" src="images/logo-big.png" alt="DiBL logo"
-         title="3 tiles each with a single stitch. Thick coloured lines for the pair diagram, thin black lines for a thread diagram"/>
+         title="3 tiles each with a single stitch.&#013;Thick coloured lines for the pair diagram,&#013;thin black lines for a thread diagram"/>
     <h1>Tesse<span class="h1accent">Lace</span>D</h1>
     <p><em><a href="http://tesselace.com">TesseLace</a> Diagrams -
         variable stitches and thread styles in matching pair an thread diagrams.
     </em></p>
   </div>
   <p>
-      Pins choose their own position and doing so might be nudged off a traditional grid,
-      for some patterns worse than others, along the edges worse than in the center.
-      Rather use the diagrams as cheat-sheets alias <a href="http://www.mail-archive.com/lace%40arachne.com/msg43449.html"
+      Pins in diagrams choose their own position.
+      Download the pricking and choose your own pin positions with an <a
+          href="https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support"
+          title="Sort the overview by the SVG column,&#013; still not all will be suite the purpose."
+      >SVG editor</a>.
+      Use the diagrams as cheat-sheets alias <a href="http://www.mail-archive.com/lace%40arachne.com/msg43449.html"
       >voodoo boards</a> while creating the lace, or to plan stitches in combination with multiple thread styles.
   </p>
   <img src="images/samples.png" alt="" usemap="#Map" />
@@ -98,7 +101,6 @@
   </p>
   <div style="clear: both">
     <form id="graph" onsubmit="return false">
-
       <fieldset style="border: none">
           <label for="colorpicker">
               Paint threads
@@ -130,6 +132,14 @@
           <img alt="(i)" title ="a variation of a selected pattern&#013;using the options below"
                src="images/information-icon.png">
       </fieldset>
+
+        <p>Pricking
+            <img alt="(i)" title ="Not implemented for custom matrices."
+                 src="images/information-icon.png">:
+            <a href="#" id="pricking" download="pricking">download</a>
+            -
+            <a href="images/pricking-guide.svg">quick guide</a>
+        </p>
 
         <fieldset style="border: none">
         <legend>Advanced options
