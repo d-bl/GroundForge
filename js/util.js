@@ -37,7 +37,7 @@ function show(form) {
     scale: 1,
   })
   var doc = dibl.Pricking().get(form.set.value, form.nrInSet.value * 1)
-  document.getElementById('pricking').href = 'data:image/svg+xml,' + encodeURIComponent(doc)
+  document.getElementById('pattern').href = 'data:image/svg+xml,' + encodeURIComponent(doc)
 }
 function setMax(form) {
   form.nrInSet.max = form.set[form.set.selectedIndex].getAttribute("data-max-nr")

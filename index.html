@@ -38,8 +38,8 @@
     </em></p>
   </div>
   <p>
-      Pins in diagrams choose their own position.
-      Download the pricking and choose your own pin positions with an <a
+      The diagrams choose their own shapes and pin position.
+      Download a pattern and reshape it with an <a
           href="https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support"
           title="Sort the overview by the SVG column,&#013; still not all will be suite the purpose."
       >SVG editor</a>.
@@ -94,7 +94,7 @@
       <area shape="poly" coords="525,175,602,175,603,252,525,252" title="23" href="#" />
       <area shape="poly" coords="610,173,688,173,688,252,610,252" title="24" href="#" />
   </map>
-  <p>Pick a pattern from the selection above or configure one with the advanced options.
+  <p>Pick a diagram from the selection above or configure one with the advanced options.
       Adjust the details with the form below.
       Hover over diagram elements for tooltips.
       Zoom or pan the diagrams if required.
@@ -109,6 +109,14 @@
           </label>
           <input id="colorpicker" type="text" class="color" value="#CC0000"/>
       </fieldset>
+
+      <p>Pattern
+          <img alt="(i)" title ="Not implemented for custom matrices."
+               src="images/information-icon.png">:
+          <a href="#" id="pattern" download="pattern">download</a>
+          -
+          <a href="images/pattern-guide.svg">quick guide</a>
+      </p>
 
       <fieldset style="border: none">
         <fieldset>
@@ -127,21 +135,13 @@
           >A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc</textarea>
         </fieldset>
 
-          <button class="button" onclick="show(this.form)"
+        <button class="button" onclick="show(this.form)"
           >draw</button>
-          <img alt="(i)" title ="a variation of a selected pattern&#013;using the options below"
+        <img alt="(i)" title ="a variation of a selected diagram&#013;using the options below"
                src="images/information-icon.png">
       </fieldset>
 
-        <p>Pricking
-            <img alt="(i)" title ="Not implemented for custom matrices."
-                 src="images/information-icon.png">:
-            <a href="#" id="pricking" download="pricking">download</a>
-            -
-            <a href="images/pricking-guide.svg">quick guide</a>
-        </p>
-
-        <fieldset style="border: none">
+      <fieldset style="border: none">
         <legend>Advanced options
             <img alt="(i)"
                  title ="The footside is not completely implemented for many configurations, that causes incomplete (and sometimes tubular) thread diagrams. Some of these may render a triangular patch as thread diagram when specifying enough columns."
@@ -165,7 +165,7 @@
             </fieldset>
 
             <fieldset>
-                <legend>More patterns</legend>
+                <legend>More diagrams</legend>
                 <fieldset>
                     <legend>select a predefined matrix ...
                         <img alt="(i)"
