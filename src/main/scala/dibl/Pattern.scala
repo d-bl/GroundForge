@@ -5,7 +5,7 @@ import dibl.Matrix._
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
-object Pricking {
+object Pattern {
 
   @JSExport
   def get(key: String, nr: Int): String = {
@@ -56,6 +56,6 @@ object Pricking {
     val (dy, dx) = src
     val offset = 120
     val s = s"${offset + (x * 10)},${offset + (y * 10)} ${offset + (dx + x) * 10},${offset + (dy + y) * 10}"
-    s"<path id='$id' d='M $s' style='stroke:#000'/>"
+    s"<path id='$id' d='M $s' style='stroke:#000;fill:none'/>"
   }
 }

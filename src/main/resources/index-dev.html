@@ -31,7 +31,7 @@
                               form.stitches.value) )
     }
     function showHardCodedPattern(form) {
-      var doc = dibl.Pricking().get("2x4", 0)
+      var doc = dibl.Pattern().get("2x4", 0)
       document.getElementById('pricking').href = 'data:image/svg+xml,' + encodeURIComponent(doc)
       show( dibl.D3Data().hardCodedPattern() )
     }

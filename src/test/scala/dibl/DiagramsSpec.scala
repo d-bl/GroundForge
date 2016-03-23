@@ -20,7 +20,7 @@ import org.scalatest.{FlatSpec, Matchers}
 
 import scala.util.Try
 
-class ThreadDiagramSpec extends FlatSpec with Matchers {
+class DiagramsSpec extends FlatSpec with Matchers {
   "ThreadDiagram" should "not throw exceptions" in {
     val errors = new StringBuffer()
     matrixMap.keys.foreach { key =>
