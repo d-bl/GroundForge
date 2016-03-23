@@ -36,7 +36,7 @@ function show(form) {
     links: data.threadLinks,
     scale: 1,
   })
-  var doc = dibl.Pricking().get(form.set.value, form.nrInSet.value * 1)
+  var doc = dibl.Pattern().get(form.set.value, form.nrInSet.value * 1)
   document.getElementById('pattern').href = 'data:image/svg+xml,' + encodeURIComponent(doc)
 }
 function setMax(form) {
