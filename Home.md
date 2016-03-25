@@ -23,7 +23,8 @@ The diagram generator can relief much tedious work that would go into these step
 
 The thumbnails of figure a are just a subset of [algorithmically designed patterns].Figures b-d show the diagrams and download for one of the patterns, figure e-g show customized versions of the download. The blue lines in figure e illustrate how the initial changes are made by nudging three intersections downwards. Figure f and g represent traditional grounds. Figure f is a virgin ground as in c, figure g presents small Binche snowflakes which are traditionally worked in cloth stitch with twisted connections. The intersections in figure d can be moved in many other directions by a half or full grid position and still produce a pattern that would need neither starch nor wire to keep its shape. 
 
-Varying stitches and playing with the download renders a myriad of variations for a single pattern. Shortening [Jane Atkinson]'s citation of the Bauhaus school of art: experiment, play, think. Some experiments may result in innovations, but even when reinventing wheels it is your own discovery and not taught.
+Varying stitches and playing with the download renders a myriad of variations for a single pattern. Shortening [Jane Atkinson]'s [citation] of the Bauhaus school of art: experiment, play, think. Some experiments may result in innovations, but even when reinventing wheels it is your own discovery and not taught.
 
 [algorithmically designed patterns]: http://tesselace.com/
 [Jane Atkinson]: http://www.contemporarylace.com/
+[citation]: https://raw.githubusercontent.com/wiki/d-bl/TesseLaceD/bauhaus.png
