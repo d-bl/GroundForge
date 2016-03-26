@@ -1,8 +1,7 @@
 # [DEMO](https://d-bl.github.io/TesseLaceD/)
-TesseLaceD : [TesseLace] Diargrams - variable stitches and thread styles in matching pair an thread diagrams.
+A toolbox to design bobbin lace grounds with matching diagrams.
 
 The code under `src/main/scala` generates  alternative data for `sample.js` in the [gh-pages branch].
-The patterns are generated from predefined [matrices] found by [TesseLace.com].
 
 [matrices]: https://github.com/d-bl/TesseLaceD/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Matrix.scala#L91-L120
 [TesseLace]: http://TesseLace.com
