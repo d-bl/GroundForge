@@ -22,7 +22,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
         <cc:license
            rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
       </cc:Work>
@@ -58,12 +58,12 @@
      inkscape:window-height="972"
      id="namedview113"
      showgrid="false"
-     inkscape:zoom="0.76543687"
+     inkscape:zoom="1"
      inkscape:cx="374.7155"
-     inkscape:cy="637.35061"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
+     inkscape:cy="548.82546"
+     inkscape:window-x="-32000"
+     inkscape:window-y="-32000"
+     inkscape:window-maximized="0"
      inkscape:current-layer="svg2"
      inkscape:snap-grids="false"
      inkscape:snap-to-guides="false"
@@ -81,66 +81,66 @@
   <g
      id="g1"
      transform="translate(70.089664,58.29888)"
-     style="stroke:#000000">
+     style="stroke:#0000ff">
     <path
        id="p10000"
        d="M 50,50 40,40"
-       style="stroke:#000000"
+       style="stroke:#0000ff"
        inkscape:connector-curvature="0" />
     <path
        id="p20000"
        d="M 50,50 60,40"
-       style="stroke:#000000"
+       style="stroke:#0000ff"
        inkscape:connector-curvature="0" />
     <path
        id="p10001"
        d="M 60,50 50,50"
-       style="stroke:#000000"
+       style="stroke:#0000ff"
        inkscape:connector-curvature="0" />
     <path
        id="p20001"
        d="M 60,50 60,40"
-       style="stroke:#000000"
+       style="stroke:#0000ff"
        inkscape:connector-curvature="0" />
     <path
        id="p10002"
        d="M 70,50 60,50"
-       style="stroke:#000000"
+       style="stroke:#0000ff"
        inkscape:connector-curvature="0" />
     <path
        id="p20002"
        d="m 70,50 10,0"
-       style="stroke:#000000"
+       style="stroke:#0000ff"
        inkscape:connector-curvature="0" />
     <path
        id="p10003"
        d="M 80,50 80,40"
-       style="stroke:#000000"
+       style="stroke:#0000ff"
        inkscape:connector-curvature="0" />
     <path
        id="p20003"
        d="m 80,50 10,0"
-       style="stroke:#000000"
+       style="stroke:#0000ff"
        inkscape:connector-curvature="0" />
     <path
        id="p10101"
        d="M 60,60 60,50"
-       style="stroke:#000000"
+       style="stroke:#0000ff"
        inkscape:connector-curvature="0" />
     <path
        id="p20101"
        d="M 60,60 70,50"
-       style="stroke:#000000"
+       style="stroke:#0000ff"
        inkscape:connector-curvature="0" />
     <path
        id="p10103"
        d="M 80,60 70,50"
-       style="stroke:#000000"
+       style="stroke:#0000ff"
        inkscape:connector-curvature="0" />
     <path
        id="p20103"
        d="M 80,60 80,50"
-       style="stroke:#000000"
+       style="stroke:#0000ff"
        inkscape:connector-curvature="0" />
   </g>
   <use
@@ -151,7 +151,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(20,-20)"
      xlink:href="#g1"
@@ -160,7 +160,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(60,-20)"
      xlink:href="#g1"
@@ -169,7 +169,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(100,-20)"
      xlink:href="#g1"
@@ -178,7 +178,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(140,-19.999996)"
      xlink:href="#g1"
@@ -187,7 +187,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(-40,0)"
      xlink:href="#g1"
@@ -196,7 +196,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(40,0)"
      xlink:href="#g1"
@@ -205,7 +205,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(80,0)"
      xlink:href="#g1"
@@ -214,7 +214,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(120,3.5900002e-6)"
      xlink:href="#g1"
@@ -223,7 +223,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(-20,20)"
      xlink:href="#g1"
@@ -232,7 +232,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(20,20)"
      xlink:href="#g1"
@@ -241,7 +241,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(60,20)"
      xlink:href="#g1"
@@ -250,7 +250,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(100,20)"
      xlink:href="#g1"
@@ -259,7 +259,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(140,20.000004)"
      xlink:href="#g1"
@@ -268,7 +268,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(-40,40)"
      xlink:href="#g1"
@@ -277,7 +277,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(0,40)"
      xlink:href="#g1"
@@ -286,7 +286,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(40,40)"
      xlink:href="#g1"
@@ -295,7 +295,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(80,40)"
      xlink:href="#g1"
@@ -304,7 +304,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(120,40.000004)"
      xlink:href="#g1"
@@ -313,7 +313,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(-20,60)"
      xlink:href="#g1"
@@ -322,7 +322,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(20,60)"
      xlink:href="#g1"
@@ -331,7 +331,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(60,60)"
      xlink:href="#g1"
@@ -340,7 +340,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(100,60)"
      xlink:href="#g1"
@@ -349,7 +349,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(140,60.000004)"
      xlink:href="#g1"
@@ -358,7 +358,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(-40,80)"
      xlink:href="#g1"
@@ -367,7 +367,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(0,80)"
      xlink:href="#g1"
@@ -376,7 +376,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(40,80)"
      xlink:href="#g1"
@@ -385,7 +385,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(80,80)"
      xlink:href="#g1"
@@ -394,7 +394,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(120,80.000004)"
      xlink:href="#g1"
@@ -403,7 +403,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(-20,100)"
      xlink:href="#g1"
@@ -412,7 +412,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(20,100)"
      xlink:href="#g1"
@@ -421,7 +421,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(60,100)"
      xlink:href="#g1"
@@ -430,7 +430,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(100,100)"
      xlink:href="#g1"
@@ -439,7 +439,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(140,100)"
      xlink:href="#g1"
@@ -448,7 +448,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(-40,120)"
      xlink:href="#g1"
@@ -457,7 +457,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(0,120)"
      xlink:href="#g1"
@@ -466,7 +466,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(40,120)"
      xlink:href="#g1"
@@ -475,7 +475,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(80,120)"
      xlink:href="#g1"
@@ -484,7 +484,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(120,120)"
      xlink:href="#g1"
@@ -493,7 +493,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(-20,140)"
      xlink:href="#g1"
@@ -502,7 +502,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(20,140)"
      xlink:href="#g1"
@@ -511,7 +511,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(60,140)"
      xlink:href="#g1"
@@ -520,7 +520,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(100,140)"
      xlink:href="#g1"
@@ -529,7 +529,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(140,140)"
      xlink:href="#g1"
@@ -538,7 +538,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(-40,160)"
      xlink:href="#g1"
@@ -547,7 +547,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(0,160)"
      xlink:href="#g1"
@@ -556,7 +556,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(40,160)"
      xlink:href="#g1"
@@ -565,7 +565,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(80,160)"
      xlink:href="#g1"
@@ -574,7 +574,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <use
      transform="translate(120,160)"
      xlink:href="#g1"
@@ -583,7 +583,7 @@
      width="100%"
      y="0"
      x="0"
-     style="stroke:#000000" />
+     style="stroke:#0000ff" />
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#008000;fill-opacity:1;stroke:none"
@@ -709,28 +709,28 @@
      style="fill:#008000;fill-rule:evenodd;stroke:none" />
   <text
      xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-     x="388.95319"
+     style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+     x="382.95319"
      y="117.52923"
      id="text6890"
      sodipodi:linespacing="0%"><tspan
        sodipodi:role="line"
        id="tspan6892"
-       x="388.95319"
+       x="382.95319"
        y="117.52923"
-       style="font-size:15px;fill:#008000">1</tspan></text>
+       style="font-size:15px;fill:#008000">F1</tspan></text>
   <text
      sodipodi:linespacing="0%"
      id="text6894"
      y="146.52068"
-     x="388.56195"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+     x="382.56195"
+     style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
      xml:space="preserve"><tspan
        style="font-size:15px;fill:#008000"
        y="146.52068"
-       x="388.56195"
+       x="382.56195"
        id="tspan6896"
-       sodipodi:role="line">2</tspan></text>
+       sodipodi:role="line">F2</tspan></text>
   <image
      y="91.16925"
      x="427.15936"
@@ -752,7 +752,7 @@
        sodipodi:role="line">the clones will change along</tspan></text>
   <text
      xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#008000;fill-opacity:1;stroke:none"
+     style="font-size:11.25px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;letter-spacing:0px;word-spacing:0px;fill:#008000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
      x="488.13632"
      y="146.24091"
      id="text6652"
@@ -760,18 +760,18 @@
        sodipodi:role="line"
        id="tspan6654"
        x="488.13632"
-       y="146.24091">2 - select all - nudge pin positions </tspan></text>
+       y="146.24091">F2 - select all - nudge pin positions </tspan></text>
   <text
      sodipodi:linespacing="0%"
      id="text6822"
      y="133.84344"
      x="487.25104"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#008000;fill-opacity:1;stroke:none"
+     style="font-size:11.25px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;letter-spacing:0px;word-spacing:0px;fill:#008000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
      xml:space="preserve"><tspan
        y="133.84344"
        x="487.25104"
        id="tspan6824"
-       sodipodi:role="line">1 - right click - enter 2nd top left group</tspan></text>
+       sodipodi:role="line">F1 - right click - enter 2nd top left group</tspan></text>
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#008000;fill-opacity:1;stroke:none"
@@ -935,4 +935,28 @@
        id="tspan5504"
        x="81.206306"
        y="346.819">Add columns and rows to the generated patch</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+     x="382.56195"
+     y="776.52069"
+     id="text3468"
+     sodipodi:linespacing="0%"><tspan
+       sodipodi:role="line"
+       id="tspan3470"
+       x="382.56195"
+       y="776.52069"
+       style="font-size:15px;fill:#008000">M</tspan></text>
+  <text
+     sodipodi:linespacing="0%"
+     id="text3472"
+     y="378.52069"
+     x="366.56195"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+     xml:space="preserve"><tspan
+       style="font-size:15px;fill:#008000"
+       y="378.52069"
+       x="366.56195"
+       id="tspan3474"
+       sodipodi:role="line">%</tspan></text>
 </svg>
