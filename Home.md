@@ -1,10 +1,11 @@
-Designing new grounds
-=====================
+Designing Bobbin Lace grounds
+=============================
 
-The pages listed in the sidebar provide tutorials, tips and tricks to use the generated diagrams. Though screenshots and procedures may be geared to the free [InkScape], other SVG compatible [editors] will have similar functions. Please feel welcome to improve the wiki pages and add your own: create a github account and hit the edit button.
+[TesseLaceD] is a web based toolbox to design your own grounds. The pages listed in the sidebar provide tutorials, tips and tricks to use the generated diagrams. Though screenshots and procedures may be geared to the free [InkScape], other SVG compatible [editors] will have similar functions. Please feel welcome to improve the wiki pages for this toolbox: create a github account and while logged in you will see buttons to edit pages or create new ones.
 
 Varying stitches and playing with the download renders a myriad of variations for a single pattern. Shortening [Jane Atkinson]'s [citation] of the Bauhaus school of art: _experiment, play, think. Some experiments may result in innovations, but even when reinventing wheels it is your own discovery and not taught._
 
+[TesseLaceD]: https://d-bl.github.io/TesseLaceD/
 [Jane Atkinson]: http://www.contemporarylace.com/
 [citation]: https://raw.githubusercontent.com/wiki/d-bl/TesseLaceD/bauhaus.png
 [InkScape]: https://inkscape.org
