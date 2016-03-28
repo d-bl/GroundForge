@@ -19,7 +19,7 @@ The matrices contain geometric information used to initialise the animation to s
 As a side effect the increased speed prevents rotated diagrams.
 In the end the diagrams lack the geometric information, so topological duplicates were removed from the selection of matrices.
 Users can reinvent the geometric variations by customising the download version of the diagrams,
-this customizing allows infinite intermediate versions of these variations.
+this customizing allows infinite intermediate versions of the variations.
 
 
 [example]: http://bl.ocks.org/mbostock/4062045
