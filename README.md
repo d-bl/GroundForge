@@ -1,5 +1,5 @@
 # [DEMO](https://d-bl.github.io/TesseLaceD/)
-A toolbox to design bobbin lace grounds with matching diagrams.
+A web based toolbox to design bobbin lace grounds with matching diagrams.
 
 [TesseLace.com]: http://TesseLace.com
 
