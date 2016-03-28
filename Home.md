@@ -1,7 +1,7 @@
 Designing Bobbin Lace grounds
 =============================
 
-[TesseLaceD] is a web based toolkit to design your own grounds. The pages listed in the sidebar provide tutorials, tips and tricks to use the generated diagrams. Though screenshots and procedures may be geared to the free [InkScape], other SVG compatible [editors] will have similar functions. Please feel welcome to improve the wiki pages for this toolbox: create a github account and while logged in you will see buttons to edit pages or create new ones.
+[TesseLaceD] is a web based toolkit to design your own grounds. The toolkit is based on a set of configurable matching diagrams. The pages listed in the sidebar provide tutorials, tips and tricks to use the diagrams. Though screenshots and procedures may be geared to the free [InkScape], other SVG compatible [editors] will have similar functions. Please feel welcome to improve the wiki pages for this toolbox: create a github account and while logged in you will have access to buttons to edit pages or create new ones.
 
 Varying stitches and playing with the download renders a myriad of variations for a single pattern. Shortening [Jane Atkinson]'s [citation] of the Bauhaus school of art: _experiment, play, think. Some experiments may result in innovations, but even when reinventing wheels it is your own discovery and not taught._
 
@@ -15,7 +15,7 @@ Varying stitches and playing with the download renders a myriad of variations fo
 Purpose of the Diagrams
 -----------------------
 
-The toolkit is based on a set of configurable matching diagrams. Each type of diagram plays its own role while designing bobbin lace grounds. The creative process involves several decisions:
+Each type of diagram plays its own role while designing bobbin lace grounds. The creative process involves several decisions:
 
 * Determine the paths taken by the pairs or when to make a stitch with which pairs.
 * The choice of stitches that determine the actual flow of threads.
