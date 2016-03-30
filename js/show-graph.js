@@ -116,7 +116,7 @@ function showGraph(args) {
         .style('opacity', function(d) { return d.bobbin ? 0.5: (d.pin ? 0.2 : fullyTransparant)})
     node.append("svg:title").text(function(d) { 
         return d.title ? d.title 
-        : d.pin ? "pin: drag to fix, click to release"
+        : d.pin ? "pin"
         : d.bobbin ? "bobbin"
         : d.startOf ? d.startOf.replace("thread","thread ")
         : ""
@@ -140,15 +140,9 @@ function showGraph(args) {
         if (d3.event.defaultPrevented) return
         container.selectAll("."+d.startOf).style('stroke', colorpicker.value)
     })
-    container.selectAll(".pin").on('click', function (d) {
-        if (d3.event.defaultPrevented) return
-        d3.select(this).classed("fixed", d.fixed = false) 
-    })
     var drag = force.drag().on("dragstart", function (d) {
         d3.event.sourceEvent.preventDefault();
         d3.event.sourceEvent.stopPropagation();
-        if (!d.pin) return
-        d3.select(this).classed("fixed", d.fixed = true)
     })
     node.call(drag)
 
