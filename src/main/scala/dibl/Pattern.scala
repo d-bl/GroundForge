@@ -18,15 +18,15 @@ object Pattern {
         map(w => clone(w, i)+clone(w-width*5, ii)).mkString("")
     }
     val clones = List.range(start = -height * 10, end = 500, step = height * 20).
-      map(h => cloneRows(h)).mkString("").replace(clone(0,0),"")
+      map(h => cloneRows(h)).mkString("").replace(clone(0,0),clone(0,0).replace("#000","#f00"))
     val nameSpaces = "xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'"
     val a4 = "height='1052' width='744'"
-    s"<svg version='1.1' id='svg2' $a4 $nameSpaces><g id='g1'>${createOriginal(m)}</g>$clones</svg>"
+    s"<svg version='1.1' id='svg2' $a4 $nameSpaces>$clones<g id='g1'>${createOriginal(m)}</g></svg>"
   }
 
   def clone(i: Int, j: Int): String = {
     val id = createId(i, j)
-    s"<use transform='translate($i,$j)' xlink:href='#g1' id='u$id' height='100%' width='100%' y='0' x='0'/>"
+    s"<use transform='translate($i,$j)' xlink:href='#g1' id='u$id' height='100%' width='100%' y='0' x='0' style='stroke:#000;fill:none'/>"
   }
 
   def createOriginal(m: M): String = {
@@ -56,6 +56,6 @@ object Pattern {
     val (dy, dx) = src
     val offset = 120
     val s = s"${offset + (x * 10)},${offset + (y * 10)} ${offset + (dx + x) * 10},${offset + (dy + y) * 10}"
-    s"<path id='$id' d='M $s' style='stroke:#000;fill:none'/>"
+    s"<path id='$id' d='M $s'/>"
   }
 }
