@@ -8,7 +8,7 @@ A web based toolbox to design bobbin lace grounds with matching diagrams.
 Development started with `js/show-graph.js` and `js/sample.js`.
 To get a proof of concept an [example] for [D3.js] was changed into tiny thread an pair diagrams diagrams with the following steps:
 
-- Replaced the server side JSon with the hard-coded `js/sample.js`.
+- Replaced the server side JSon with the hard-coded `js/sample.js` assembled from a manual sketch `js/sample.png`.
 - Applied arrow heads and flattened them to line ends to emulate [color coded pair diagrams] or to emulate the over/under effect in thread diagrams.
 - Made nodes transparent except for bobbins.
 - Assigned the thread number as a class to each section of a thread to assign colors.
