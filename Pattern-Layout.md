@@ -1,14 +1,12 @@
 Reshape Pattern Layout
 ======================
 
-The second "brick" from the top and left is a group that contains the original line sections. The other "bricks" are clones that change along with the original.
+Right click to enter the group with dark blue lines and select all objects in that group.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/TesseLaceD/original.png)
 
-Drag the nodes of the lines in the original group to change the layout.
+Switch to the node tool to move the intersections, the black lines will change accordingly. Make sure to fix lost connections.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/TesseLaceD/nodes.png)
 
-Note that nodes along the perimeter of the group connect to nodes in a clone. To move such an intersection you may have to move nodes at different locations. In the annotated example below you will have to move p along with b, in another pattern you might have to move f along with b.
-
-![](https://raw.githubusercontent.com/wiki/d-bl/TesseLaceD/matching-nodes.png)
+Note that nodes along the perimeter of the group connect to nodes in a clone. To move such an intersection you may have to move nodes at different locations.
