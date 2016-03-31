@@ -18,7 +18,7 @@ object Pattern {
         map(w => clone(w, i)+clone(w-width*5, ii)).mkString("")
     }
     val clones = List.range(start = -height * 10, end = 500, step = height * 20).
-      map(h => cloneRows(h)).mkString("").replace(clone(0,0),clone(0,0).replace("#000","#f00"))
+      map(h => cloneRows(h)).mkString("").replace(clone(0,0),clone(0,0).replace("#000","#008"))
     val nameSpaces = "xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'"
     val a4 = "height='1052' width='744'"
     s"<svg version='1.1' id='svg2' $a4 $nameSpaces>$clones<g id='g1'>${createOriginal(m)}</g></svg>"
