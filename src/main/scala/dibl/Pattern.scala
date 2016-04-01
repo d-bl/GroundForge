@@ -1,3 +1,18 @@
+/*
+ Copyright 2016 Jo Pol
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
+*/
 package dibl
 
 import dibl.Matrix._
@@ -11,14 +26,18 @@ object Pattern {
   def get(key: String, nr: Int): String = {
     val s = matrixMap.get(key).map(_ (nr)).get // TODO error handling
     val m = toRelSrcNodes(matrix = s, dimensions = key).get
+    createDoc(key, m)
+  }
+
+  def createDoc(key: String, m: M): String = {
     val (height, width) = dims(key).get
     def cloneRows(i: Int): String = {
       val ii = i + height * 10
       List.range(start = -width * 5, end = 500, step = width * 10).
-        map(w => clone(w, i)+clone(w-width*5, ii)).mkString("")
+        map(w => clone(w, i) + clone(w - width * 5, ii)).mkString("")
     }
     val clones = List.range(start = -height * 10, end = 500, step = height * 20).
-      map(h => cloneRows(h)).mkString("").replace(clone(0,0),clone(0,0).replace("#000","#008"))
+      map(h => cloneRows(h)).mkString("").replace(clone(0, 0), clone(0, 0).replace("#000", "#008"))
     val nameSpaces = "xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'"
     val a4 = "height='1052' width='744'"
     s"<svg version='1.1' id='svg2' $a4 $nameSpaces>$clones<g id='g1'>${createOriginal(m)}</g></svg>"
