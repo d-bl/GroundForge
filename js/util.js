@@ -36,8 +36,7 @@ function show(form) {
     links: data.threadLinks,
     scale: 1,
   })
-  var doc = dibl.Pattern().get(form.set.value, form.nrInSet.value * 1)
-  document.getElementById('pattern').href = 'data:image/svg+xml,' + encodeURIComponent(doc)
+  document.getElementById('pattern').href = 'patterns/' + form.set.value + '_' + form.nrInSet.value + '.svg'
 }
 function setMax(form) {
   form.nrInSet.max = form.set[form.set.selectedIndex].getAttribute("data-max-nr")
