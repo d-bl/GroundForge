@@ -52,8 +52,9 @@ Note that a `println` translates to console.log and can be analysed by a browser
 The command `sbt test` only compiles the test classes.
 Haven't found the proper incantation to execute the test with sbt.
 
-With the project imported in Intellij it is possible to execute the test classes one by one.
-Launching tests may cause problems when sbt is still processing a change, just try again.
+The command `mvn clean install` executes the tests but does not create a JavaScript.
+
+Launching tests with the IDE while sbt is still processing a change may cause weird errors, just try again.
 
 
 ## Publish
