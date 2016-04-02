@@ -36,7 +36,9 @@ function show(form) {
     links: data.threadLinks,
     scale: 1,
   })
-  document.getElementById('pattern').href = 'patterns/' + form.set.value + '_' + form.nrInSet.value + '.svg'
+  var link = 'patterns/' + form.set.value + '_' + form.nrInSet.value + '.svg'
+  document.getElementById('pattern-link').href = link
+  document.getElementById('pattern').src = link
 }
 function setMax(form) {
   form.nrInSet.max = form.set[form.set.selectedIndex].getAttribute("data-max-nr")

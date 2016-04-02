@@ -11,14 +11,14 @@
     <script src="js/matrix-graphs.js"></script>
     <script src="js/util.js"></script>
    <style>
-     body { max-width: 60em;  padding: 1em; margin-left: auto; margin-right: auto; }
+     body { max-width: 62em;  padding: 1em; margin-left: auto; margin-right: auto; }
      .h1accent { color: #444}
      input { width: 3em; }
      #colorpicker { width: 5em; }
      form { float: left; }
      #pairDiagram, #threadDiagram { display: inline-block; vertical-align: top; }
      #browsers { vertical-align: bottom; }
-     svg{ border: solid 1px #AAA; margin-right: 0.4em; display: inline-block; }
+     img, svg{ border: solid 1px #AAA; margin-right: 0.4em; display: inline-block; }
      fieldset { padding-left: 0; padding-right: 0.2em; padding-bottom: 0.2em}
      fieldset fieldset { padding-left: 0.5em;}
      .link {fill: #fff; opacity: 1;}
@@ -35,15 +35,6 @@
     <h1>Tesse<span class="h1accent">Lace</span>D</h1>
     <p><em>A toolbox to design bobbin lace grounds with matching diagrams.</em></p>
   </div>
-  <p>
-      The diagrams choose their own shapes and pin position.
-      Download a pattern and reshape it with an <a
-          href="https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support"
-          title="Sort the overview by the SVG column,&#013; still not all will be suite the purpose."
-      >SVG editor</a>.
-      Use the diagrams as cheat-sheets alias <a href="http://www.mail-archive.com/lace%40arachne.com/msg43449.html"
-      >voodoo boards</a> while creating the lace, or to plan stitches in combination with multiple thread styles.
-  </p>
   <img src="images/samples.png" alt="" usemap="#Map" />
   <map name="Map" id="Map">
       <!-- initially created with http://imagemap-generator.dariodomi.de/ -->
@@ -107,14 +98,6 @@
           </label>
           <input id="colorpicker" type="text" class="color" value="#CC0000"/>
       </fieldset>
-
-      <p>Pattern
-          <img alt="(i)" title ="Variants of the pair diagrams that excactly match a grid,&#013;some of the intersections are moved a little.&#013;Create your own variants.&#013;&#013;Not implemented for custom matrices."
-               src="images/information-icon.png">:
-          <a href="#" id="pattern" download="pattern">download</a>
-          -
-          <a href="images/pattern-guide.svg">quick guide</a>
-      </p>
 
       <fieldset style="border: none">
         <fieldset>
@@ -205,6 +188,24 @@
         Generating diagram... You might have to clear your cache to get the last update active.
     </p></div>
     <div id="threadDiagram"></div>
+    <div>
+        <p>
+            The diagrams above choose their own shapes and pin position.
+            Use them as cheat-sheets alias <a href="http://www.mail-archive.com/lace%40arachne.com/msg43449.html"
+            >voodoo boards</a> while creating the lace, or to plan stitches in combination with multiple thread styles.
+        </p><p>
+            The pattern variations below (not implemented for the custom matrices under the advances options)
+            match the pair diagram with pins nudged to different grid positions.
+            <a href="#" id="pattern-link" download="pattern">Download</a> the sheet to adjust one to your own taste and needs
+            with an <a
+                href="https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support"
+                title="Sort the overview by the SVG column,&#013; still not all will be suite the purpose."
+            >SVG editor</a>. The black parts are clones that change along with the blue parts.
+            More help is available in the <a href="https://github.com/d-bl/TesseLaceD/wiki"
+            >user guide</a>.
+        </p>
+        <img src="#" id="pattern"/>
+    </div>
   </div>
     <p id="footer">
         <a href="https://github.com/d-bl/TesseLaceD/tree/gh-pages/#how-its-made"
