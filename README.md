@@ -1,9 +1,9 @@
-# [DEMO](https://d-bl.github.io/TesseLaceD/)
+# [DEMO](https://d-bl.github.io/GroundForge/)
 A toolbox to design bobbin lace grounds with matching diagrams.
 
 The code under `src/main/scala` generates  alternative data for `sample.js` in the [gh-pages branch].
 
-[matrices]: https://github.com/d-bl/TesseLaceD/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Matrix.scala#L91-L120
+[matrices]: https://github.com/d-bl/GroundForge/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Matrix.scala#L91-L120
 [TesseLace]: http://TesseLace.com
 [TesseLace.com]: http://TesseLace.com
 
@@ -36,9 +36,9 @@ Follow the steps above to view the result.
 Run the [ad-hoc] test of ThreadDiagramSpec to step through the code or analyse the println-s.
 Note that a `println` translates to console.log and can be analysed by a browser too.
 
-[encoded matrix]: https://github.com/d-bl/TesseLaceD/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Matrix.scala#L122-L138
-[apply method]: https://github.com/d-bl/TesseLaceD/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Settings.scala#L44-L46
-[ad-hoc]: https://github.com/d-bl/TesseLaceD/blob/fa4698f3282c6eb9974447caa395b273ec4db697/src/test/scala/dibl/ThreadDiagramSpec.scala#L56
+[encoded matrix]: https://github.com/d-bl/GroundForge/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Matrix.scala#L122-L138
+[apply method]: https://github.com/d-bl/GroundForge/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Settings.scala#L44-L46
+[ad-hoc]: https://github.com/d-bl/GroundForge/blob/fa4698f3282c6eb9974447caa395b273ec4db697/src/test/scala/dibl/ThreadDiagramSpec.scala#L56
 
 
 ## Important code conventions
@@ -63,7 +63,7 @@ Launching tests with the IDE while sbt is still processing a change may cause we
 - Copy the content of `target\scala-2.11\tessedlace-opt.js` in the master branch
   into `matrix-graphs.js` in the [gh-pages branch]
 - Check the results with `index.html`
-- If ok: commit, push and check the online demo in your own github fork: `http://YOURID.github.io/TesseLaceD/`
+- If ok: commit, push and check the online demo in your own github fork: `http://YOURID.github.io/GroundForge/`
 
 [sbt]: http://www.scala-sbt.org/download.html
-[gh-pages branch]: https://github.com/d-bl/TesseLaceD/tree/gh-pages
+[gh-pages branch]: https://github.com/d-bl/GroundForge/tree/gh-pages

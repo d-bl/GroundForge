@@ -34,7 +34,7 @@ package object dibl {
   type TargetToSrcs = (Int, (Int, Int))
   def TargetToSrcs (target: Int, sources: (Int, Int)) = (target, sources)
 
-  /** see https://github.com/d-bl/TesseLaceD/blob/gh-pages/sample.js */
+  /** see https://github.com/d-bl/GroundForge/blob/gh-pages/sample.js */
   type Props = Map[String,Any]
   def Props(xs: (String, Any)*) = HashMap(xs: _*)
   implicit class RichProps (p: Props) {
