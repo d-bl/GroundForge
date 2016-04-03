@@ -1,4 +1,4 @@
-# [DEMO](https://d-bl.github.io/TesseLaceD/)
+# [DEMO](https://d-bl.github.io/GroundForge/)
 A web based toolbox to design bobbin lace grounds with matching diagrams.
 
 [TesseLace.com]: http://TesseLace.com
@@ -26,7 +26,7 @@ this customizing allows infinite intermediate versions of the variations.
 [example]: http://bl.ocks.org/mbostock/4062045
 [D3.js]: http://d3js.org/
 [color coded pair diagrams]: https://en.wikipedia.org/w/index.php?title=Mesh_grounded_bobbin_lace&oldid=639789191#Worker_pair_versus_two_pair_per_pin
-[scala code]: https://github.com/d-bl/TesseLaceD/tree/master/
+[scala code]: https://github.com/d-bl/GroundForge/tree/master/
 
 ## How to Contribute
 
@@ -35,7 +35,7 @@ You may just improve the grammar on the demo-page or on this readme, improve the
 Don't know about version control in general or GitHub in particular? No problem:
 * just create a github [account](https://github.com)
 * hit the fork button at the top of this page
-* go to `https://github.com/YOURID/TesseLaceD/tree/gh-pages/`, of course replace YOURID
+* go to `https://github.com/YOURID/GroundForge/tree/gh-pages/`, of course replace YOURID
 * choose the file you want to change and hit the pencil to start editing
-* save your changes and test with your own demo-page: `http://YOURID.github.io/TesseLaceD/`, again: replace YOURID
-* create a pull request at `https://github.com/YOURID/TesseLaceD/tree/gh-pages/` or drop a note
+* save your changes and test with your own demo-page: `http://YOURID.github.io/GroundForge/`, again: replace YOURID
+* create a pull request at `https://github.com/YOURID/GroundForge/tree/gh-pages/` or drop a note
