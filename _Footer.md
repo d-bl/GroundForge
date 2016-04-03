@@ -1,1 +1,1 @@
-[Under the hood](https://github.com/d-bl/GroundForge/tree/gh-pages/#how-its-made) — [Release notes](https://github.com/d-bl/GroundForge/releases/) — [Issues](https://github.com/d-bl/GroundForge/issues/)
+[Under the hood](https://github.com/d-bl/GroundForge/tree/gh-pages/#how-its-made--under-the-hood) — [Release notes](https://github.com/d-bl/GroundForge/releases/) — [Issues](https://github.com/d-bl/GroundForge/issues/)
