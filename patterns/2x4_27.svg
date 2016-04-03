@@ -41,9 +41,9 @@
      inkscape:window-height="972"
      id="namedview4490"
      showgrid="true"
-     inkscape:zoom="19.79899"
-     inkscape:cx="545"
-     inkscape:cy="640"
+     inkscape:zoom="0.74619772"
+     inkscape:cx="372"
+     inkscape:cy="526"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -507,7 +507,7 @@
      style="fill:none;stroke:#000000" />
   <g
      id="g1"
-     transform="translate(-37.46849,-46.87945)">
+     transform="translate(352.53151,-51.87945)">
     <path
        inkscape:connector-curvature="0"
        id="p1500500"
@@ -1030,7 +1030,7 @@
      style="fill:none;stroke:#000000" />
   <g
      id="g1-3"
-     transform="translate(-180,392)">
+     transform="translate(345,432)">
     <path
        id="p1500500-2"
        d="m 120,120 0,-10"
@@ -1539,7 +1539,7 @@
      style="fill:none;stroke:#000000" />
   <g
      id="g1-1"
-     transform="translate(-298.21954,88.59103)">
+     transform="translate(-23.21954,188.59103)">
     <path
        inkscape:connector-curvature="0"
        id="p1500500-0"
@@ -1612,7 +1612,7 @@
        sodipodi:nodetypes="cc" />
   </g>
   <use
-     transform="translate(-20,-9.7297298)"
+     transform="translate(-29.52381,-14.362934)"
      xlink:href="#g1-1-6"
      id="u480480-5-5"
      height="1052"
@@ -1621,7 +1621,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(-40,0)"
+     transform="translate(-59.047619,0)"
      xlink:href="#g1-1-6"
      id="u460500-6-5"
      height="1052"
@@ -1630,7 +1630,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(20,-9.7297298)"
+     transform="translate(29.52381,-14.362934)"
      xlink:href="#g1-1-6"
      id="u520480-12-0"
      height="1052"
@@ -1647,7 +1647,7 @@
      x="0"
      style="fill:none;stroke:#000088" />
   <use
-     transform="translate(60,-9.7297298)"
+     transform="translate(88.571429,-14.362934)"
      xlink:href="#g1-1-6"
      id="u560480-3-8"
      height="1052"
@@ -1656,7 +1656,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(40,0)"
+     transform="translate(59.047619,0)"
      xlink:href="#g1-1-6"
      id="u540500-3-7"
      height="1052"
@@ -1665,7 +1665,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(100,-9.7297298)"
+     transform="translate(147.61905,-14.362934)"
      xlink:href="#g1-1-6"
      id="u600480-1-3"
      height="1052"
@@ -1674,7 +1674,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(80,0)"
+     transform="translate(118.09524,0)"
      xlink:href="#g1-1-6"
      id="u580500-3-4"
      height="1052"
@@ -1683,7 +1683,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(140,-9.7297298)"
+     transform="translate(206.66667,-14.362934)"
      xlink:href="#g1-1-6"
      id="u640480-5-0"
      height="1052"
@@ -1692,7 +1692,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(120,0)"
+     transform="translate(177.14286,0)"
      xlink:href="#g1-1-6"
      id="u620500-08-4"
      height="1052"
@@ -1701,7 +1701,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(-20,9.7297298)"
+     transform="translate(-29.52381,14.362934)"
      xlink:href="#g1-1-6"
      id="u480520-8-2"
      height="1052"
@@ -1710,7 +1710,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(-40,19.45946)"
+     transform="translate(-59.047619,28.72587)"
      xlink:href="#g1-1-6"
      id="u460540-6-0"
      height="1052"
@@ -1719,7 +1719,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(20,9.7297298)"
+     transform="translate(29.52381,14.362934)"
      xlink:href="#g1-1-6"
      id="u520520-3-0"
      height="1052"
@@ -1728,7 +1728,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(0,19.45946)"
+     transform="translate(0,28.72587)"
      xlink:href="#g1-1-6"
      id="u500540-1-1"
      height="1052"
@@ -1737,7 +1737,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(60,9.7297298)"
+     transform="translate(88.571429,14.362934)"
      xlink:href="#g1-1-6"
      id="u560520-2-6"
      height="1052"
@@ -1746,7 +1746,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(40,19.45946)"
+     transform="translate(59.047619,28.72587)"
      xlink:href="#g1-1-6"
      id="u540540-8-0"
      height="1052"
@@ -1755,7 +1755,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(100,9.7297298)"
+     transform="translate(147.61905,14.362934)"
      xlink:href="#g1-1-6"
      id="u600520-9-3"
      height="1052"
@@ -1764,7 +1764,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(80,19.45946)"
+     transform="translate(118.09524,28.72587)"
      xlink:href="#g1-1-6"
      id="u580540-7-8"
      height="1052"
@@ -1773,7 +1773,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(140,9.7297298)"
+     transform="translate(206.66667,14.362934)"
      xlink:href="#g1-1-6"
      id="u640520-9-9"
      height="1052"
@@ -1782,7 +1782,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(120,19.45946)"
+     transform="translate(177.14286,28.72587)"
      xlink:href="#g1-1-6"
      id="u620540-9-7"
      height="1052"
@@ -1791,7 +1791,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(-20,29.189189)"
+     transform="translate(-29.52381,43.088803)"
      xlink:href="#g1-1-6"
      id="u480560-1-8"
      height="1052"
@@ -1800,7 +1800,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(-40,38.918918)"
+     transform="translate(-59.047619,57.451736)"
      xlink:href="#g1-1-6"
      id="u460580-1-7"
      height="1052"
@@ -1809,7 +1809,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(20,29.189189)"
+     transform="translate(29.52381,43.088803)"
      xlink:href="#g1-1-6"
      id="u520560-5-5"
      height="1052"
@@ -1818,7 +1818,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(0,38.918918)"
+     transform="translate(0,57.451736)"
      xlink:href="#g1-1-6"
      id="u500580-7-1"
      height="1052"
@@ -1827,7 +1827,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(60,29.189189)"
+     transform="translate(88.571429,43.088803)"
      xlink:href="#g1-1-6"
      id="u560560-5-9"
      height="1052"
@@ -1836,7 +1836,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(40,38.918918)"
+     transform="translate(59.047619,57.451736)"
      xlink:href="#g1-1-6"
      id="u540580-13-3"
      height="1052"
@@ -1845,7 +1845,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(100,29.189189)"
+     transform="translate(147.61905,43.088803)"
      xlink:href="#g1-1-6"
      id="u600560-6-5"
      height="1052"
@@ -1854,7 +1854,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(80,38.918918)"
+     transform="translate(118.09524,57.451736)"
      xlink:href="#g1-1-6"
      id="u580580-0-6"
      height="1052"
@@ -1863,7 +1863,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(140,29.189189)"
+     transform="translate(206.66667,43.088803)"
      xlink:href="#g1-1-6"
      id="u640560-0-0"
      height="1052"
@@ -1872,7 +1872,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(120,38.918918)"
+     transform="translate(177.14286,57.451736)"
      xlink:href="#g1-1-6"
      id="u620580-3-6"
      height="1052"
@@ -1881,7 +1881,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(-20,48.648648)"
+     transform="translate(-29.52381,71.814671)"
      xlink:href="#g1-1-6"
      id="u480600-3-6"
      height="1052"
@@ -1890,7 +1890,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(-40,58.378378)"
+     transform="translate(-59.047619,86.177606)"
      xlink:href="#g1-1-6"
      id="u460620-90-4"
      height="1052"
@@ -1899,7 +1899,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(20,48.648648)"
+     transform="translate(29.52381,71.814671)"
      xlink:href="#g1-1-6"
      id="u520600-0-3"
      height="1052"
@@ -1908,7 +1908,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(0,58.378378)"
+     transform="translate(0,86.177606)"
      xlink:href="#g1-1-6"
      id="u500620-5-4"
      height="1052"
@@ -1917,7 +1917,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(60,48.648648)"
+     transform="translate(88.571429,71.814671)"
      xlink:href="#g1-1-6"
      id="u560600-7-5"
      height="1052"
@@ -1926,7 +1926,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(40,58.378378)"
+     transform="translate(59.047619,86.177606)"
      xlink:href="#g1-1-6"
      id="u540620-1-9"
      height="1052"
@@ -1935,7 +1935,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(100,48.648648)"
+     transform="translate(147.61905,71.814671)"
      xlink:href="#g1-1-6"
      id="u600600-2-6"
      height="1052"
@@ -1944,7 +1944,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(80,58.378378)"
+     transform="translate(118.09524,86.177606)"
      xlink:href="#g1-1-6"
      id="u580620-8-4"
      height="1052"
@@ -1953,7 +1953,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(140,48.648648)"
+     transform="translate(206.66667,71.814671)"
      xlink:href="#g1-1-6"
      id="u640600-36-2"
      height="1052"
@@ -1962,7 +1962,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(120,58.378378)"
+     transform="translate(177.14286,86.177606)"
      xlink:href="#g1-1-6"
      id="u620620-3-8"
      height="1052"
@@ -1971,7 +1971,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(-20,68.108108)"
+     transform="translate(-29.52381,100.54054)"
      xlink:href="#g1-1-6"
      id="u480640-4-4"
      height="1052"
@@ -1980,7 +1980,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(-40,77.837837)"
+     transform="translate(-59.047619,114.90347)"
      xlink:href="#g1-1-6"
      id="u460660-9-1"
      height="1052"
@@ -1989,7 +1989,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(20,68.108108)"
+     transform="translate(29.52381,100.54054)"
      xlink:href="#g1-1-6"
      id="u520640-0-3"
      height="1052"
@@ -1998,7 +1998,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(0,77.837837)"
+     transform="translate(0,114.90347)"
      xlink:href="#g1-1-6"
      id="u500660-7-1"
      height="1052"
@@ -2007,7 +2007,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(60,68.108108)"
+     transform="translate(88.571429,100.54054)"
      xlink:href="#g1-1-6"
      id="u560640-2-9"
      height="1052"
@@ -2016,7 +2016,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(40,77.837837)"
+     transform="translate(59.047619,114.90347)"
      xlink:href="#g1-1-6"
      id="u540660-8-9"
      height="1052"
@@ -2025,7 +2025,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(100,68.108108)"
+     transform="translate(147.61905,100.54054)"
      xlink:href="#g1-1-6"
      id="u600640-8-6"
      height="1052"
@@ -2034,7 +2034,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(80,77.837837)"
+     transform="translate(118.09524,114.90347)"
      xlink:href="#g1-1-6"
      id="u580660-3-5"
      height="1052"
@@ -2043,7 +2043,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(140,68.108108)"
+     transform="translate(206.66667,100.54054)"
      xlink:href="#g1-1-6"
      id="u640640-6-6"
      height="1052"
@@ -2052,7 +2052,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <use
-     transform="translate(120,77.837837)"
+     transform="translate(177.14286,114.90347)"
      xlink:href="#g1-1-6"
      id="u620660-4-7"
      height="1052"
@@ -2062,7 +2062,7 @@
      style="fill:none;stroke:#000000" />
   <g
      id="g1-1-6"
-     transform="matrix(1,0,0,0.48648648,-298.21954,-3.1719306)">
+     transform="matrix(1.4761905,0,0,0.71814671,-68.085988,-25.44814)">
     <path
        inkscape:connector-curvature="0"
        id="p1500500-0-5"
@@ -2629,7 +2629,7 @@
      x="0"
      style="fill:none;stroke:#000000" />
   <g
-     transform="translate(405,292)"
+     transform="translate(345,192)"
      id="g1-6">
     <path
        inkscape:connector-curvature="0"
@@ -2691,12 +2691,12 @@
   <text
      xml:space="preserve"
      style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
-     x="-215"
-     y="162"
+     x="75"
+     y="213"
      id="text6360"
      sodipodi:linespacing="0%"><tspan
        sodipodi:role="line"
        id="tspan6362"
-       x="-215"
-       y="162">Just another angle</tspan></text>
+       x="75"
+       y="213">squeezed and resized for another angle</tspan></text>
 </svg>
