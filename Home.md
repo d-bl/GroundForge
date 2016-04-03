@@ -1,13 +1,13 @@
 Designing Bobbin Lace grounds
 =============================
 
-[TesseLaceD] is a web based toolkit to design your own grounds. The toolkit is based on a set of configurable matching diagrams. The pages listed in the sidebar provide tutorials, tips and tricks to use the diagrams. Though screenshots and procedures may be geared to the free [InkScape], other SVG compatible [editors] will have similar functions. Please feel welcome to improve the wiki pages for this toolbox: create a github account and while logged in you will have access to buttons to edit pages or create new ones.
+[GroundForge] is a web based toolkit to design your own grounds. The toolkit is based on a set of configurable matching diagrams. The pages listed in the sidebar provide tutorials, tips and tricks to use the diagrams. Though screenshots and procedures may be geared to the free [InkScape], other SVG compatible [editors] will have similar functions. Please feel welcome to improve the wiki pages for this toolbox: create a github account and while logged in you will have access to buttons to edit pages or create new ones.
 
 Varying stitches and playing with the download renders a myriad of variations for a single pattern. Shortening [Jane Atkinson]'s [citation] of the Bauhaus school of art: _experiment, play, think. Some experiments may result in innovations, but even when reinventing wheels it is your own discovery and not taught._
 
-[TesseLaceD]: https://d-bl.github.io/TesseLaceD/
+[GroundForge]: https://d-bl.github.io/GroundForge/
 [Jane Atkinson]: http://www.contemporarylace.com/
-[citation]: https://raw.githubusercontent.com/wiki/d-bl/TesseLaceD/bauhaus.png
+[citation]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/bauhaus.png
 [InkScape]: https://inkscape.org
 [editors]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
 
@@ -30,7 +30,7 @@ The diagram generator can relief much tedious work that would go into these step
 * Download figure d and customize it into e-h or whatever your fancy.
 
 
-![](https://raw.githubusercontent.com/wiki/d-bl/TesseLaceD/intro.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/intro.png)
 
 Like the London Tube maps inform you about destinations and connections but not about geographic locations or travel time, the diagrams in figure b and c just provide instructions to create a patch of lace. 
 

@@ -9,7 +9,7 @@ Rows and columns
 
 You may want more or less rows or columns to put on your pillow. Note that the line segments are grouped brick wise. Use snap functions to add additional columns or rows in exactly the right place. 
 
-![](https://raw.githubusercontent.com/wiki/d-bl/TesseLaceD/add-column.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/add-column.png)
 
 Fringes
 -------
