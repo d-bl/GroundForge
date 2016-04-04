@@ -17,12 +17,8 @@ package dibl
 
 import dibl.Matrix._
 
-import scala.scalajs.js.annotation.JSExport
-
-@JSExport
 object Pattern {
 
-  @JSExport
   def get(key: String, nr: Int): String = {
     val s = matrixMap.get(key).map(_ (nr)).get // TODO error handling
     val m = toRelSrcNodes(matrix = s, dimensions = key).get

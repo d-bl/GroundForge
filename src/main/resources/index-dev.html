@@ -7,41 +7,60 @@
   <style>
     fieldset, svg { display: inline-block }
     input { width: 3em; }
-    #pattern { width: 6em; }
     #stitches { width: 29em; }
     .link {fill: #fff; opacity: 1;}
     svg{ border: solid 1px #AAA; margin-right: 0.4em; }
   </style>
   <link href="https://raw.githubusercontent.com/d-bl/GroundForge/colorpicker/mcColorPicker.css" rel="stylesheet" type="text/css" />
-  <script src="https://raw.githubusercontent.com/d-bl/GroundForge/gh-pages/colorpicker/mcColorPicker.js" type="text/javascript"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-  <script src="https://raw.githubusercontent.com/d-bl/GroundForge/gh-pages/sample.js"></script>
-  <script src="https://raw.githubusercontent.com/d-bl/GroundForge/gh-pages/show-graph.js"></script>
-  <script type="text/javascript" src="../tesselaced-fastopt.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="https://raw.githubusercontent.com/d-bl/GroundForge/gh-pages/js/show-graph.js"></script>
+  <script type="text/javascript" src="../groundforge-fastopt.js"></script>
   <script type="text/javascript" src="/workbench.js"></script>
   <script>
     fullyTransparant = 0.1
 
-    function showNr(form) {
-      var doc = dibl.Pricking().get(form.set.value, form.nrInSet.value * 1)
-      document.getElementById('pricking').href = 'data:image/svg+xml,' + encodeURIComponent(doc)
-      show( dibl.D3Data().get(form.set.value, form.nrInSet.value * 1,
+    function showFromForm() {
+      var form = document.getElementById('graph')
+      showData( dibl.D3Data().get(form.set.value, form.nrInSet.value * 1,
                               form.rows.value * 1, form.cols.value * 1,
                               form.shiftLeft.value * 1, form.shiftUp.value * 1,
-                              form.stitches.value) )
+                              form.stitches.value)
+      )
     }
-    function showHardCodedPattern(form) {
-      var doc = dibl.Pattern().get("2x4", 0)
-      document.getElementById('pricking').href = 'data:image/svg+xml,' + encodeURIComponent(doc)
-      show( dibl.D3Data().hardCodedPattern() )
+
+    function showHardCoded() {
+      showData( dibl.D3Data().hardCodedPattern() )
     }
+
+    function showData(data) {
+      document.getElementById('pairDiagram').innerHTML = ""
+      document.getElementById('threadDiagram').innerHTML = ""
+      showGraph({
+        threadColor: '#colorpicker',
+        container: '#pairDiagram',
+        width: 250,
+        height: 250,
+        nodes: data.nodes,
+        links: data.links,
+        scale: 1,
+      })
+      showGraph({
+        threadColor: '#colorpicker',
+        container: '#threadDiagram',
+        width: 400,
+        height: 400,
+        nodes: data.threadNodes,
+        links: data.threadLinks,
+        scale: 1,
+      })
+    }
+
     function setMax(form) {
       form.nrInSet.max = form.set[form.set.selectedIndex].getAttribute("data-max-nr")
     }
   </script>
 </head>
-<body onload="showHardCodedPattern(document.getElementById('graph'))">
-  <a href="#" id="pricking" download="pricking">pricking</a>
+<body onload="showHardCoded()">
   <form id="graph" action="" onsubmit="return false">
     <fieldset id="shift">
       <label for="shiftLeft">left by </label>
@@ -75,9 +94,10 @@
       </select>
       <label for="nrInSet">nr</label>
       <input id="nrInSet" name="nrInSet" min="0" max="6" value="0" type="number"/>
-      <button class="button" type="submit" onclick="showNr(this.form)">draw</button>
+      <button class="button" type="submit" onclick="showFromForm()">draw</button>
     </fieldset>
     <input id="colorpicker" type="text" class="color" value="#C00"/>
   </form>
-  <div id="diagram"></div>
+  <div id="pairDiagram"></div>
+  <div id="threadDiagram"></div>
 </body>
