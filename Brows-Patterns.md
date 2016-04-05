@@ -13,7 +13,7 @@ The preconfigured samples present diagrams with proper footsides. The algorithm 
 ![](https://d-bl.github.io/GroundForge/images/overview.png)
 
 
-The Mac Finder, note that you can increase the panels size for more details.
+A screenshot of the Mac Finder, note that you can increase the panel size for more details.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/browse-mac.png)
 
