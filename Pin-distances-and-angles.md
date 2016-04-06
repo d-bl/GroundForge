@@ -1,6 +1,3 @@
-Pin distances and angle
-=======================
-
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/scale.png)
 
 InkScape requires holding down the control-key while dragging a corner arrow to resize. Otherwise the angle changes.
