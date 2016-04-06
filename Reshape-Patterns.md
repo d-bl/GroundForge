@@ -1,14 +1,17 @@
 Reshape Patterns
 ================
 
-A downloadable pattern sheet of [GroundForge] may have multiple patterns. In some cases it may be relatively easy to see how one pattern is reshaped in another one. For example in the first set below the hexagon is reshaped in to a brick for the second variant and the centre of the bow-tie in the second variant is lowered for the third variant. For the second set it becomes harder to see. Applying the same color to shapes surrounded with the same number of line segments can help to identify the transition.
+A downloadable pattern sheet of [GroundForge] may have multiple patterns. In some cases it may be relatively easy to see how one pattern is reshaped in another one. For example in the first set below the hexagon of the first variant is reshaped in to a brick for the second variant and the centre of the bow-tie in the second variant is lowered for the third variant. For the second set it becomes harder to see. Applying the same color to shapes surrounded with the same number of line segments can help to identify the transition. Note that an edge of a shape may span multiple line segments.
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/reshape.png)
 
 The advanced patterns may come with just a single pattern that does not look at all like the color coded pair diagram. To create a regular patch that does look like the pair diagram (or any other shape you might prefer) you would have to do the reshaping by yourself by nudging the position of intersections. That is one of the factors that makes these patterns advanced.
- 
+
+Clones
+------
+
 The pattern repeats itself with clones, so changing the original (highlighted with dark blue) changes the rest too. Below some hints to deal with these clones.
 
 Copy-paste a Patch
