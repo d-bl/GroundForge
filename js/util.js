@@ -45,11 +45,16 @@ function setMax(form) {
 }
 function showOptions(id){
   document.getElementById(id).classList.remove('hidden')
-  document.getElementById(id+'Show').classList.add('hidden')
+  document.getElementById('show'+id).classList.add('hidden')
+  document.getElementById('hide'+id).classList.remove('hidden')
 }
 function hideOptions(id){
   document.getElementById(id).classList.add('hidden')
-  document.getElementById(id+'Show').classList.remove('hidden')
+  document.getElementById('show'+id).classList.remove('hidden')
+  document.getElementById('hide'+id).classList.add('hidden')
+}
+function clear(id){
+  document.getElementById(id).value='';
 }
 function init() {
   var location = (window.location.href + "").replace("#","")
