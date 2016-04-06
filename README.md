@@ -52,7 +52,8 @@ Note that a `println` translates to console.log and can be analysed by a browser
 The command `sbt test` only compiles the test classes.
 Haven't found the proper incantation to execute the test with sbt.
 
-The command `mvn clean install` executes the tests but does not create a JavaScript.
+The command `mvn clean test` executes the tests.
+To completely [replace sbt](http://stackoverflow.com/questions/26512750/how-to-use-scala-js-from-maven) seems quite a detour.
 
 Launching tests with the IDE while sbt is still processing a change may cause weird errors, just try again.
 
