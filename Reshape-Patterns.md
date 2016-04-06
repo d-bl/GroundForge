@@ -1,5 +1,5 @@
-Reshape Pattern Layout
-======================
+Reshape Patterns
+================
 
 Right click to enter the group with dark blue lines and select all objects in that group.
 
