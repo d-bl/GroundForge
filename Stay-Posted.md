@@ -1,6 +1,3 @@
-Stay posted
------------
-
 To receive email alerts about discussions, use the "watch" button almost on top of this page.
 
 The following feeds alert you when something changes in:
