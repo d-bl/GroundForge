@@ -1,6 +1,3 @@
-Reshape Patterns
-================
-
 A downloadable pattern sheet of [GroundForge] may have multiple patterns. In some cases it may be relatively easy to see how one pattern is reshaped in another one. For example in the first set below the hexagon of the first variant is reshaped in to a brick for the second variant and the centre of the bow-tie in the second variant is lowered for the third variant. For the second set it becomes harder to see. Applying the same color to shapes surrounded with the same number of line segments can help to identify the transition. Note that an edge of a shape may span multiple line segments.
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
