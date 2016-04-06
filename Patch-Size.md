@@ -1,6 +1,3 @@
-Patch size
-==========
-
 * [Rows and columns](#rows-and-columns)
 * [Fringes](#fringes)
 
