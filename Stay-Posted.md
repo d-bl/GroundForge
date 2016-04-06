@@ -8,5 +8,5 @@ The following feeds alert you when something changes in:
 * the [wiki pages](https://github.com/d-bl/GroundForge/wiki.atom)
 
 Alternatively visit the change history of:
-* the [GroundForge page or its readme](https://github.com/d-bl/GroundForge/commits/master)
+* the [GroundForge page or its readme](https://github.com/d-bl/GroundForge/commits/gh-pages)
 * the [wiki pages](https://github.com/d-bl/GroundForge/wiki/_history)
