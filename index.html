@@ -29,7 +29,7 @@
 </head>
 <body onload="init();setMax(document.getElementById('graph'))" lang="en">
   <div>
-    <img style="float: right" src="images/logo-big.png" alt="DiBL logo"
+    <img style="float: right" src="images/logo-medium.png" alt="DiBL logo"
          title="3 tiles each with a single stitch.&#013;Thick coloured lines for the pair diagram,&#013;thin black lines for a thread diagram"/>
     <h1>GroundForge</h1>
     <p><em>A toolbox to design bobbin lace grounds with matching diagrams.</em></p>
@@ -83,15 +83,30 @@
       <area shape="poly" coords="525,175,602,175,603,252,525,252" title="23" href="#" />
       <area shape="poly" coords="610,173,688,173,688,252,610,252" title="24" href="#" />
   </map>
-  <p>Pick a diagram from the selection above or configure one with the advanced options.
-      Adjust the details with the form below.
-      Hover over diagram elements for tooltips.
-      Zoom or pan the diagrams if required.
-  </p><p>
-      The diagrams choose their own shapes and pin position.
-      Use them as cheat-sheets alias <a href="http://www.mail-archive.com/lace%40arachne.com/msg43449.html"
-      >voodoo boards</a> while creating the lace, or to plan stitches in combination with multiple thread styles.
-  </p>
+  <article>
+      <p>To design your own bobbin lace ground you can use the following steps:</p>
+      <ul>
+          <li>Select a thumbnail above, or use the advanced options to configure even more patterns.
+              The thumbnail diagrams tell you when to make a stitch with which pairs.
+          </li>
+          <li>Use the form below to define where to apply which stitch.
+              Hover over a stitch in the color coded pair diagram to discover its id.
+              You also might want to see a bigger patch if your system is fast enough.
+          </li>
+          <li>Decide where to apply a contrasting color or thread size:
+              select the square start of a thread to paint it and see its path.
+          </li>
+          <li>Decide where to put pins or not.
+              <a href="#" id="pattern-link" download="pattern">Download</a> the pattern sheet,
+              it contains reshaped variants of the pair diagram.
+              Customize one to your own taste and needs with an <a
+                      href="https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support"
+                      title="Sort the overview by the SVG column,&#013; still not all will be suite the purpose."
+              >SVG editor</a>, see the <a href="https://github.com/d-bl/GroundForge/wiki"
+              >user guide</a> for tips and tricks.
+          </li>
+      </ul>
+  </article>
   <div style="clear: both">
     <form id="graph" onsubmit="return false">
       <fieldset style="border: none">
@@ -190,19 +205,7 @@
         Generating diagram... You might have to clear your cache to get the last update active.
     </p></div>
     <div id="threadDiagram"></div>
-    <div>
-        <p>
-            The pattern variations below (not implemented for the custom matrices under the advances options)
-            match the pair diagram with pins nudged to different grid positions.
-            <a href="#" id="pattern-link" download="pattern">Download</a> the sheet to adjust one to your own taste and needs
-            with an <a
-                href="https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support"
-                title="Sort the overview by the SVG column,&#013; still not all will be suite the purpose."
-            >SVG editor</a>, see the <a href="https://github.com/d-bl/GroundForge/wiki"
-            >user guide</a> for tips and tricks.
-        </p>
-        <img src="#" id="pattern"/>
-    </div>
+    <img src="#" id="pattern"/>
   </div>
     <p id="footer">
         <a href="https://github.com/d-bl/GroundForge/tree/gh-pages/#how-its-made--under-the-hood"
