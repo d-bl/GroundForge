@@ -21,7 +21,7 @@ The diagram generator can relief much tedious work that would go into these step
 * Start with selecting a diagram from the thumbnails (figure **a**) or the advanced options.
 * Specify stitches for figure **b** and **c**.
 * Apply colors to individual threads in figure **c**.
-* Download figure d and customize it into **e-h** or whatever your fancy.
+* Download figure **d** and customize it into **e-h** or whatever your fancy.
 
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/intro.png)
