@@ -149,22 +149,24 @@ function showGraph(args) {
     // layout simulation step
     force.on("tick", function() {
         link.attr("d", function(d) {
-          var sX = d.source.x
-          var sY = d.source.y
-          var tX = d.target.x
-          var tY = d.target.y
-          var mX = (d.source.x * 1 + d.target.x * 1) / 2
-          var mY = (d.source.y * 1 + d.target.y * 1) / 2
-          var s = " "
-          if (d.left) {
-            mX = sY - mY + mX
-            my = mX - sY + mY
-            s = "S"
-          }
+          var sX = d.source.x * 1
+          var sY = d.source.y * 1
+          var tX = d.target.x * 1
+          var tY = d.target.y * 1
+          var dX = (tX - sX) / 2
+          var dY = (tY - sY) / 2
           if (d.right) {
-            mX = tY - mY + mX
-            my = mX - tY + mY
+            mX = sX + dY + dX
+            mY = sY + dY - dX
             s = "S"
+          } else if (d.left) {
+            mX = sX - dY + dX
+            mY = sY + dX + dY
+            s = "S"
+          } else {
+            mX = sX + dX
+            mY = sY + dY
+            s = " "
           }
           return "M" + sX + "," + sY +
                  s   + mX + "," + mY +
