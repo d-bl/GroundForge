@@ -15,11 +15,11 @@
      .h1accent { color: #444}
      input { width: 3em; }
      #colorpicker { width: 5em; }
-     form { float: left; }
-     #pairDiagram, #threadDiagram { display: inline-block; vertical-align: top; }
+     #threadDiagram { float: left; }
+     #pairDiagram, #threadDiagram, #graph { display: inline-block; vertical-align: top; }
      #browsers { vertical-align: bottom; }
      #pattern, svg{ border: solid 1px #AAA; margin-right: 0.4em; display: inline-block; }
-     fieldset { padding-left: 0; padding-right: 0.2em; padding-bottom: 0.2em}
+     fieldset { border: solid 1px #AAA; padding-left: 0; padding-right: 0.2em; padding-bottom: 0.2em}
      fieldset fieldset { padding-left: 0.5em;}
      .link {fill: #fff; opacity: 1;}
      .node {fill: #000; opacity: 0;}
@@ -30,98 +30,108 @@
 </head>
 <body onload="init();setMax(document.getElementById('graph'))" lang="en">
   <div>
-    <img style="float: right" src="images/logo-medium.png" alt="DiBL logo"
-         title="3 tiles each with a single stitch.&#013;Thick coloured lines for the pair diagram,&#013;thin black lines for a thread diagram"/>
-    <h1>GroundForge</h1>
-    <p><em>A toolbox to design bobbin lace grounds with matching diagrams.</em></p>
-  </div>
-  <img src="images/samples.png" alt="" usemap="#Map" />
-  <map name="Map" id="Map">
+    <article>
+      <a href="https://d-bl.github.io/"
+         title="More tools by DiBL"
+      ><img style="float: right" src="images/logo-medium.png" alt="DiBL logo"/></a>
+      <h1>GroundForge</h1>
+      <p><em>A toolbox to design bobbin lace grounds with matching diagrams.</em></p>
+    </article>
+    <img src="images/samples.png" alt="" usemap="#Map" />
+    <map name="Map" id="Map">
       <!-- initially created with http://imagemap-generator.dariodomi.de/ -->
-      <area shape="poly" coords="4,4,84,4,85,82,6,83,6,83"        title="1 Flanders"
-            href="index.html?nrInSet=0&set=2x4&shiftLeft=1&shiftUp=3&rows=9&cols=9&stitches=A1=tc, C1=tc, A2=tc, B2=ptc, C2=tc, D2=tc"/>
-      <area shape="poly" coords="91,4,169,4,169,83,91,83"         title="2 see page 90 &#013;Kant in Vlaanderen en 's Gravenmoer&#013;by the LOKK.&#013;Second type of virgin ground"
-            href="index.html?nrInSet=1&set=2x4&shiftLeft=0&shiftUp=2&rows=5&cols=3&stitches=A1=tplc, B1=tctptc, C1=tprc, D1=ttcttpc, A2=rtc, B2=tc, C2=ltc, D2=tc"/>
+      <area shape="poly" coords="4,4,84,4,85,82,6,83,6,83"        title="1 Flanders or Rose ground"
+            href="index.html?nrInSet=0&set=2x4&shiftLeft=1&shiftUp=3&rows=9&cols=9&stitches=A1=tc,+C1=tc,+A2=tc,+B2=ptc,+C2=tc,+D2=tc"/>
+      <area shape="poly" coords="91,4,169,4,169,83,91,83"         title="2 Virgin ground variation. &#013; See page 90 &#013;Kant in Vlaanderen en 's Gravenmoer&#013;by the LOKK."
+            href="index.html?nrInSet=1&set=2x4&shiftLeft=0&shiftUp=2&rows=5&cols=3&stitches=A1=tplc,+B1=tctptc,+C1=tprc,+D1=ttcttpc,+A2=rtc,+B2=tc,+C2=ltc,+D2=tc"/>
       <area shape="poly" coords="178,4,256,4,258,83,176,83"       title="3"
-            href="index.html?nrInSet=0&set=2x2&shiftLeft=0&shiftUp=2&rows=8&cols=5&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
-      <area shape="poly" coords="264,4,343,4,342,82,262,83"       title="4 tiny fish"
-            href="index.html?nrInSet=2&set=2x4&shiftLeft=0&shiftUp=0&rows=8&cols=5&stitches=A1=tctc, B1=lctc, C1=tc, D1=ctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
-      <area shape="poly" coords="351,3,427,4,430,82,351,84"       title="5 chained"
-            href="index.html?nrInSet=3&set=2x4&shiftLeft=0&shiftUp=0&rows=7&cols=8&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
+            href="index.html?nrInSet=0&set=2x2&shiftLeft=0&shiftUp=2&rows=8&cols=5&stitches=A1=tc,+B1=tctc,+C1=tc,+D1=tctc,+A2=tc,+B2=tc,+C2=tc,+D2=tc"/>
+      <area shape="poly" coords="264,4,343,4,342,82,262,83"       title="4"
+            href="index.html?nrInSet=2&set=2x4&shiftLeft=0&shiftUp=0&rows=8&cols=5&stitches=A1=tctc,+B1=lctc,+C1=tc,+D1=ctc,+A2=tc,+B2=tc,+C2=tc,+D2=tc"/>
+      <area shape="poly" coords="351,3,427,4,430,82,351,84"       title="5"
+            href="index.html?nrInSet=3&set=2x4&shiftLeft=0&shiftUp=0&rows=7&cols=8&stitches=A1=tc,+B1=tctc,+C1=tc,+D1=tctc,+A2=tc,+B2=tc,+C2=tc,+D2=tc"/>
       <area shape="poly" coords="438,6,515,6,515,83,438,83"       title="6"
-            href="index.html?nrInSet=4&set=2x4&shiftLeft=0&rows=8&cols=5&shiftUp=1&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
+            href="index.html?nrInSet=4&set=2x4&shiftLeft=0&rows=8&cols=5&shiftUp=1&stitches=A1=tc,+B1=tctc,+C1=tc,+D1=tctc,+A2=tc,+B2=tc,+C2=tc,+D2=tc"/>
       <area shape="poly" coords="526,6,602,6,602,82,525,82"       title="7"
-            href="index.html?nrInSet=5&set=2x4&shiftLeft=0&shiftUp=1&rows=10&cols=5&stitches=A1=tc, B1=rc, C1=tc, D1=tc, A2=tctc, B2=tctctc, C2=tc, D2=rc"/>
-      <area shape="poly" coords="609,4,688,4,688,83,610,83"       title="8 connected plaits"
+            href="index.html?nrInSet=5&set=2x4&shiftLeft=0&shiftUp=1&rows=10&cols=5&stitches=A1=tc,+B1=rc,+C1=tc,+D1=tc,+A2=tctc,+B2=tctctc,+C2=tc,+D2=rc"/>
+      <area shape="poly" coords="609,4,688,4,688,83,610,83"       title="8 connected plaits&#013;A sample is shared on issue #50"
             href="index.html??nrInSet=27&set=2x4&shiftLeft=1&shiftUp=0&rows=8&cols=6&stitches=D2=tctpc A1=tc B1=tc C1=tc D1=tc A2=tc B2=tc" />
 
-      <area shape="poly" coords="4,87,84,88,85,167,4,165"               title="9 asymmetrical"
-            href="index.html?nrInSet=6&set=2x4&shiftLeft=1&shiftUp=0&rows=9&cols=4&stitches=A1=lc, B1=ctc, C1=tc, D1=tptctc, A2=rctc, B2=tc, C2=tc, D2=lctc"/>
+      <area shape="poly" coords="4,87,84,88,85,167,4,165"               title="9"
+            href="index.html?nrInSet=6&set=2x4&shiftLeft=1&shiftUp=0&rows=9&cols=4&stitches=A1=lc,+B1=ctc,+C1=tc,+D1=tptctc,+A2=rctc,+B2=tc,+C2=tc,+D2=lctc"/>
       <area shape="poly" coords="91,89,169,88,170,165,91,168"           title="10"
-            href="index.html?nrInSet=7&set=2x4&shiftLeft=0&shiftUp=0&rows=8&cols=5&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
+            href="index.html?nrInSet=7&set=2x4&shiftLeft=0&shiftUp=0&rows=8&cols=5&stitches=A1=tc,+B1=tctc,+C1=tc,+D1=tctc,+A2=tc,+B2=tc,+C2=tc,+D2=tc"/>
       <area shape="poly" coords="177,88,256,89,257,166,178,168"         title="11"
-            href="index.html?nrInSet=8&set=2x4&shiftLeft=0&shiftUp=0&rows=8&cols=5&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
+            href="index.html?nrInSet=8&set=2x4&shiftLeft=0&shiftUp=0&rows=8&cols=5&stitches=A1=tc,+B1=tctc,+C1=tc,+D1=tctc,+A2=tc,+B2=tc,+C2=tc,+D2=tc"/>
       <area shape="poly" coords="264,88,342,88,343,167,265,168"         title="12"
-            href="index.html?nrInSet=9&set=2x4&shiftLeft=1&rows=5&cols=5&shiftUp=1&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
+            href="index.html?nrInSet=9&set=2x4&shiftLeft=1&rows=5&cols=5&shiftUp=1&stitches=A1=tc,+B1=tctc,+C1=tc,+D1=tctc,+A2=tc,+B2=tc,+C2=tc,+D2=tc"/>
       <area shape="poly" coords="351,88,429,89,430,166,352,168"         title="13 vrouwkens (Torchon)"
-            href="index.html?nrInSet=10&set=2x4&shiftLeft=0&rows=9&cols=9&shiftUp=0&stitches=C2=tctc, B1=tc, A1=tc, D1=tctc, A2=tc, B2=tc, C1=tctc"/>
+            href="index.html?nrInSet=10&set=2x4&shiftLeft=0&rows=9&cols=9&shiftUp=0&stitches=C2=tctc,+B1=tc,+A1=tc,+D1=tctc,+A2=tc,+B2=tc,+C1=tctc"/>
       <area shape="poly" coords="439,90,515,90,515,166,438,167,438,167" title="14"
-            href="index.html?nrInSet=11&set=2x4&shiftLeft=0&shiftUp=2&rows=10&cols=8&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc" />
+            href="index.html?nrInSet=11&set=2x4&shiftLeft=0&shiftUp=2&rows=10&cols=8&stitches=A1=tc,+B1=tctc,+C1=tc,+D1=tctc,+A2=tc,+B2=tc,+C2=tc,+D2=tc" />
       <area shape="poly" coords="525,91,601,91,601,166,525,168"         title="15" href="#"  />
       <area shape="poly" coords="610,88,688,89,688,166,610,165"         title="16" href="#" />
 
       <area shape="poly" coords="5,173,83,173,84,252,6,252,6,252" title="17"
-            href="index.html?nrInSet=12&set=2x4&shiftLeft=1&shiftUp=0&rows=8&cols=6&stitches=A1=tc, B1=tc, C1=tctc, D1=tctc, A2=tctc, B2=tctc, C2=tc, D2=tc"/>
+            href="index.html?nrInSet=12&set=2x4&shiftLeft=1&shiftUp=0&rows=8&cols=6&stitches=A1=tc,+B1=tc,+C1=tctc,+D1=tctc,+A2=tctc,+B2=tctc,+C2=tc,+D2=tc"/>
       <area shape="poly" coords="91,172,169,173,170,252,91,253"   title="18 croissants"
             href="index.html?nrInSet=13&set=2x4&shiftLeft=1&shiftUp=3&rows=6&cols=4&stitches=D2=tctc A2=rctc B1=tc C1=lctc B2=lctc D1=tctc C2=tctc"/>
       <area shape="poly" coords="178,173,256,172,257,252,177,252" title="19 paris / kat"
-            href="index.html?nrInSet=14&set=2x4&shiftLeft=1&rows=8&cols=7&shiftUp=1&stitches=A1=tctc, C1=tctc, C2=tctc, D2=tctc, A2=tctc, B2=tctc"/>
+            href="index.html?nrInSet=14&set=2x4&shiftLeft=1&rows=8&cols=7&shiftUp=1&stitches=A1=tctc,+C1=tctc,+C2=tctc,+D2=tctc,+A2=tctc,+B2=tctc"/>
       <area shape="poly" coords="264,172,343,173,342,252,264,252" title="20"
-            href="index.html?nrInSet=15&set=2x4&shiftLeft=1&rows=8&cols=5&shiftUp=0&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
+            href="index.html?nrInSet=15&set=2x4&shiftLeft=1&rows=8&cols=5&shiftUp=0&stitches=A1=tc,+B1=tctc,+C1=tc,+D1=tctc,+A2=tc,+B2=tc,+C2=tc,+D2=tc"/>
       <area shape="poly" coords="351,173,429,174,428,250,350,252" title="21 bias"
-            href="index.html?nrInSet=16&set=2x4&shiftLeft=0&shiftUp=2&rows=9&cols=5&stitches=A1=tc, B1=tctc, C1=tc, D1=tctc, A2=tc, B2=tc, C2=tc, D2=tc"/>
+            href="index.html?nrInSet=16&set=2x4&shiftLeft=0&shiftUp=2&rows=9&cols=5&stitches=A1=tc,+B1=tctc,+C1=tc,+D1=tctc,+A2=tc,+B2=tc,+C2=tc,+D2=tc"/>
       <area shape="poly" coords="438,175,513,175,514,251,438,251" title="22" href="#" />
       <area shape="poly" coords="525,175,602,175,603,252,525,252" title="23" href="#" />
       <area shape="poly" coords="610,173,688,173,688,252,610,252" title="24" href="#" />
-  </map>
-  <article>
+    </map>
+    <article>
       <p>To design your own bobbin lace ground you can use the following steps:</p>
       <ul>
-          <li>Select a thumbnail above, or use the advanced options to configure even more patterns.
+          <li>
+              Select a thumbnail above, or use the advanced options to configure even more patterns.
+          </li>
+          <li>
               The thumbnail diagrams tell you when to make a stitch with which pairs.
-          </li>
-          <li>Use the form below to define where to apply which stitch.
+              Use the form to define where to apply which stitch.
               Hover over a stitch in the color coded pair diagram to discover its id.
-              You also might want to see a bigger patch if your system is fast enough.
+              You might want a bigger patch if your system is fast enough,
+              or zoom and pan a diagram.
           </li>
-          <li>Decide where to apply a contrasting color or thread size:
+          <li>
+              Decide where to apply a contrasting color or thread size:
               select the square start of a thread to paint it and see its path.
           </li>
-          <li>Decide where to put pins or not:
+          <li>
+              Decide where to put pins or not:
               <a href="#" id="pattern-link" download="pattern">download</a> the pattern sheet,
               it contains reshaped variants of the pair diagram.
-              Customize one to your own taste and needs with an <a
+              Customize a patch to your own taste and needs with an <a
                       href="https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support"
                       title="Sort the overview by the SVG column,&#013; still not all will be suite the purpose."
               >SVG editor</a>, see the <a href="https://github.com/d-bl/GroundForge/wiki"
               >user guide</a> for tips and tricks.
           </li>
       </ul>
-  </article>
-  <div style="clear: both">
-    <form id="graph" onsubmit="return false">
-      <fieldset style="border: none">
-          <label for="colorpicker">
-              Paint threads
-              <img alt="(i)" title ="Single click the square start of a thread to paint it.&#013;A tooltip with thread number tells the mouse is on the spot."
-                   src="images/information-icon.png">
-          </label>
-          <input id="colorpicker" type="text" class="color" value="#CC0000"/>
-      </fieldset>
-
-      <fieldset style="border: none">
+    </article>
+    <div style="clear: both">
+      <div id="threadDiagram"></div>
+      <div id="pairDiagram"><p>
+          Generating diagram... You might have to clear your cache of your browser to get the last update active.
+      </p></div>
+      <form id="graph" onsubmit="return false">
+        <fieldset style="border: none">
+            <label for="colorpicker">
+                Paint threads
+                <img alt="(i)" title ="Single click the square start of a thread to paint it.&#013;A tooltip with thread number tells the mouse is on the spot."
+                     src="images/information-icon.png">
+            </label>
+            <input id="colorpicker" type="text" class="color" value="#CC0000"/>
+        </fieldset>
+        <fieldset style="border: none">
         <fieldset>
-            <legend>Patch size (stitches)</legend>
+            <legend>Patch size</legend>
             <label for="rows">rows</label>
             <input id="rows" name="rows" min="0" max="20" value="5" type="number"/>
             <label for="cols">columns</label>
@@ -138,21 +148,16 @@
 
         <button class="button" onclick="show(this.form)"
           >draw</button>
-        <img alt="(i)" title ="a variation of a selected diagram&#013;using the options below"
-               src="images/information-icon.png">
       </fieldset>
-
-      <fieldset style="border: none">
-        <legend>Advanced options
-            <a href="https://github.com/d-bl/GroundForge/wiki"><img alt="(i)"
-                 title ="Challenges:&#013;- proper combination of setting to enable thread diagrams&#013;- reshape a patch in the pattern sheet to make it look like the pair diagram&#013;See the user guide."
-                 src="images/information-icon.png"></a>
-            <a id="showAdvanced" href="javascript:showOptions('Advanced')">show</a>
-            <a id="hideAdvanced" class="hidden" href="javascript:hideOptions('Advanced')">(hide)</a>
-        </legend>
-
-        <div class="hidden" id="Advanced">
-
+        <fieldset style="border: none">
+          <legend>Advanced options
+              <a href="https://github.com/d-bl/GroundForge/wiki"><img alt="(i)"
+                   title ="Challenges:&#013;- proper combination of settings to enable thread diagrams&#013;- reshape a patch in the pattern sheet to make it look like the pair diagram&#013;See the user guide."
+                   src="images/information-icon.png"></a>
+              <a id="showAdvanced" href="javascript:showOptions('Advanced')">show</a>
+              <a id="hideAdvanced" class="hidden" href="javascript:hideOptions('Advanced')">(hide)</a>
+          </legend>
+          <div class="hidden" id="Advanced">
             <fieldset>
                 <legend>Shift stitches within patch
                     <img alt="(i)"
@@ -164,8 +169,7 @@
                 <label for="shiftUp">top by </label>
                 <input id="shiftUp" name="shiftUp" min="0" max="3" value="2" type="number"/>
             </fieldset>
-
-            <fieldset>
+            <fieldset style="border: none; padding-left: 0; margin-left: 0; padding-right: 0">
                 <legend>More diagrams</legend>
                 <fieldset>
                     <legend>select a predefined matrix ...</legend>
@@ -199,16 +203,13 @@
                     <img src="images/legend.png"><br/>
                 </fieldset>
             </fieldset>
-        </div>
-      </fieldset>
-    </form>
-    <div id="pairDiagram"><p>
-        Generating diagram... You might have to clear your cache to get the last update active.
-    </p></div>
-    <div id="threadDiagram"></div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
     <img src="#" id="pattern"/>
   </div>
-    <p id="footer">
+  <p id="footer">
         <a href="https://github.com/d-bl/GroundForge/tree/gh-pages/#how-its-made--under-the-hood"
        >Under the Hood</a>
         &mdash; <a href="https://github.com/d-bl/GroundForge/releases/"
