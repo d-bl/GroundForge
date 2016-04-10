@@ -87,8 +87,8 @@ function showGraph(args) {
                 .attr("transform", args.transform)
 
     container.append('svg:rect')
-        .attr('width', args.width * (1/args.scale))
-        .attr('height', args.height * (1/args.scale))
+        .attr('width', args.width * (5/args.scale))
+        .attr('height', args.height * (5/args.scale))
         .attr('fill', 'white')
 
     function redraw() {
