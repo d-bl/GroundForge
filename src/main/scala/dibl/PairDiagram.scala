@@ -52,8 +52,8 @@ object PairDiagram {
           nodeNr += 1
           nodeNr
         }
-      }.toSeq
-    }.toSeq
+      }
+    }
   }
 
   /** Creates nodes for a pair diagram

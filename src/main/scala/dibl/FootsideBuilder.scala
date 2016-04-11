@@ -119,17 +119,5 @@ class FootsideBuilder (abs: M) {
         case _ => Array((0, col), (1, col)) // put both sources in a single column
       }
     }
-
-    // add bobbins
-    for {col <- 0 until absCols + 4} if (abs(absRows + 1)(col).length == 2) {
-      nrOfLinks(absRows + 1)(col) match {
-        case (2) => ()
-          abs(absRows + 2)(col) = Array((absRows + 1, col))
-          abs(absRows + 3)(col) = Array((absRows + 1, col))
-        case (3) =>
-          abs(absRows + 2)(col) = Array((absRows + 1, col))
-        case _ => ()
-      }
-    }
   }
 }
