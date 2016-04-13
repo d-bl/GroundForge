@@ -132,7 +132,7 @@ function showGraph(args) {
         .linkDistance(10)
         .linkStrength(10)
         .start()
-        .alpha(0.02)
+        .alpha(0.01)
 
     // event listeners
 
