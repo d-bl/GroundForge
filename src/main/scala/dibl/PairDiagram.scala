@@ -77,7 +77,7 @@ object PairDiagram {
         else if (isFootside(row, col)) Props("title" -> "ttctc")
         else Props("title" -> s.getTitle(row,col), "fixed" -> false)
         // initial coordinates prevent potential mirrored presentation
-        props + ("y" -> (25* row), "x" -> (25*col))
+        props + ("y" -> (15* row), "x" -> (15*col))
       }
     }
   }
