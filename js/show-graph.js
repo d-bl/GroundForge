@@ -148,6 +148,7 @@ function showGraph(args) {
 
     // layout simulation step
     force.on("tick", function() {
+
         link.attr("d", function(d) {
           var sX = d.source.x * 1
           var sY = d.source.y * 1
@@ -155,6 +156,9 @@ function showGraph(args) {
           var tY = d.target.y * 1
           var dX = (tX - sX) / 2
           var dY = (tY - sY) / 2
+          var mX
+          var mY
+          var s
           if (d.right) {
             mX = sX + dY + dX
             mY = sY + dY - dX
