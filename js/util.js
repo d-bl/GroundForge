@@ -18,7 +18,7 @@ function show(form) {
   )
   document.getElementById('pairDiagram').innerHTML = ""
   document.getElementById('threadDiagram').innerHTML = ""
-  showGraph({
+  diagram.showGraph({
     threadColor: '#colorpicker',
     container: '#pairDiagram',
     width: 250,
@@ -27,7 +27,7 @@ function show(form) {
     links: data.links,
     scale: 1,
   })
-  showGraph({
+  diagram.showGraph({
     threadColor: '#colorpicker',
     container: '#threadDiagram',
     width: 400,

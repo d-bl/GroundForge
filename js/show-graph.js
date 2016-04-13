@@ -1,5 +1,6 @@
 fullyTransparant = 0 // global to allow override while testing
-function startThread (svgDefs){
+var diagram = {}
+diagram.startThread = function(svgDefs){
     svgDefs.append('svg:marker')
         .attr('id', "start-thread")
         .attr('viewBox', '-7 -7 14 14')
@@ -10,7 +11,7 @@ function startThread (svgDefs){
         .attr('d', d3.svg.symbol().type("square"))
         .attr('fill', "#000").style('opacity',0.5)
 }
-function startPair (svgDefs){
+diagram.startPair = function(svgDefs){
     svgDefs.append('svg:marker')
         .attr('id', "start-pair")
         .attr('viewBox', '-7 -7 14 14')
@@ -21,7 +22,7 @@ function startPair (svgDefs){
         .attr('d', d3.svg.symbol().type("diamond"))
         .attr('fill', "#000").style('opacity',0.5)
 }
-function twistMark (svgDefs){
+diagram.twistMark = function(svgDefs){
     svgDefs.append('svg:marker')
         .attr('id', "twist-1")
         .attr('viewBox', '-2 -2 4 4')
@@ -34,7 +35,7 @@ function twistMark (svgDefs){
         .attr('stroke', "#000")
         .attr('stroke-width', "1px")
 }
-function markers (svgDefs,id,color){
+diagram.markers = function(svgDefs,id,color){
     svgDefs.append('svg:marker')
         .attr('id', 'start-' + id)
         .attr('viewBox', '0 -5 10 10')
@@ -58,7 +59,36 @@ function markers (svgDefs,id,color){
         .attr('stroke-width', 3)
         .attr('stroke', color)
 }
-function showGraph(args) {
+diagram.dx = function(d) { return d.x }
+diagram.dy = function(d) { return d.y }
+diagram.path = function(d) {
+    var sX = d.source.x * 1
+    var sY = d.source.y * 1
+    var tX = d.target.x * 1
+    var tY = d.target.y * 1
+    var dX = (tX - sX) / 2
+    var dY = (tY - sY) / 2
+    var mX
+    var mY
+    var s
+    if (d.right) {
+      mX = sX + dY + dX
+      mY = sY + dY - dX
+      s = "S"
+    } else if (d.left) {
+      mX = sX - dY + dX
+      mY = sY + dX + dY
+      s = "S"
+    } else {
+      mX = sX + dX
+      mY = sY + dY
+      s = " "
+    }
+    return "M" + sX + "," + sY +
+           s   + mX + "," + mY +
+           " " + tX + "," + tY
+}
+diagram.showGraph = function(args) {
     var colorpicker = (args.threadColor == undefined ? undefined : d3.select(args.threadColor)[0][0])
 
     // document creation
@@ -71,13 +101,13 @@ function showGraph(args) {
     // marker definitions
 
     var defs = svgRoot.append('svg:defs')
-    startThread(defs)
-    startPair(defs)
-    twistMark(defs)
-    markers(defs, 'green','#0f0')
-    markers(defs, 'red','#f00')
-    markers(defs, 'purple','#609')
-    markers(defs, 'white','#fff')
+    diagram.startThread(defs)
+    diagram.startPair(defs)
+    diagram.twistMark(defs)
+    diagram.markers(defs, 'green','#0f0')
+    diagram.markers(defs, 'red','#f00')
+    diagram.markers(defs, 'purple','#609')
+    diagram.markers(defs, 'white','#fff')
 
     // zoom functionality
 
@@ -148,36 +178,14 @@ function showGraph(args) {
 
     // layout simulation step
     force.on("tick", function() {
-
-        link.attr("d", function(d) {
-          var sX = d.source.x * 1
-          var sY = d.source.y * 1
-          var tX = d.target.x * 1
-          var tY = d.target.y * 1
-          var dX = (tX - sX) / 2
-          var dY = (tY - sY) / 2
-          var mX
-          var mY
-          var s
-          if (d.right) {
-            mX = sX + dY + dX
-            mY = sY + dY - dX
-            s = "S"
-          } else if (d.left) {
-            mX = sX - dY + dX
-            mY = sY + dX + dY
-            s = "S"
-          } else {
-            mX = sX + dX
-            mY = sY + dY
-            s = " "
-          }
-          return "M" + sX + "," + sY +
-                 s   + mX + "," + mY +
-                 " " + tX + "," + tY
-        })
-
-        node.attr("cx", function(d) { return d.x })
-            .attr("cy", function(d) { return d.y })
+        // window.performance.mark('mark_start_tick');
+        link.attr("d", diagram.path)
+        node.attr("cx", diagram.dx)
+            .attr("cy", diagram.dy)
+        // window.performance.mark('mark_end_tick');
+        // window.performance.measure('measure-tick','mark_start_tick','mark_end_tick');
+        // var items = console.log ( window.performance.getEntriesByType('measure')
+        // var item = items[items.length-1]
+        // console.log(item.duration))
     })
 }
