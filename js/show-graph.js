@@ -60,7 +60,14 @@ diagram.markers = function(svgDefs,id,color){
         .attr('stroke', color)
 }
 diagram.pathStraight = function(d) {
-    return "M" + d.source.x + "," + d.source.y + " " + d.target.x + "," + d.target.y
+    var sX = d.source.x
+    var sY = d.source.y
+    var tX = d.target.x
+    var tY = d.target.y
+    var dX = (tX - sX) / 2
+    var dY = (tY - sY) / 2
+    return "M"+ sX + "," + sY + " " + (sX + dX) + "," + (sY + dY) + " " + tX + "," + tY
+    //return "M"+ sX + "," + sY + " " + tX + "," + tY
 }
 diagram.pathRight = function(d) {
     var sX = d.source.x
