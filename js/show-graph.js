@@ -59,35 +59,31 @@ diagram.markers = function(svgDefs,id,color){
         .attr('stroke-width', 3)
         .attr('stroke', color)
 }
-diagram.dx = function(d) { return d.x }
-diagram.dy = function(d) { return d.y }
-diagram.path = function(d) {
-    var sX = d.source.x * 1
-    var sY = d.source.y * 1
-    var tX = d.target.x * 1
-    var tY = d.target.y * 1
+diagram.pathStraight = function(d) {
+    return "M" + d.source.x + "," + d.source.y + " " + d.target.x + "," + d.target.y
+}
+diagram.pathRight = function(d) {
+    var sX = d.source.x
+    var sY = d.source.y
+    var tX = d.target.x
+    var tY = d.target.y
     var dX = (tX - sX) / 2
     var dY = (tY - sY) / 2
-    var mX
-    var mY
-    var s
-    if (d.right) {
-      mX = sX + dY + dX
-      mY = sY + dY - dX
-      s = "S"
-    } else if (d.left) {
-      mX = sX - dY + dX
-      mY = sY + dX + dY
-      s = "S"
-    } else {
-      mX = sX + dX
-      mY = sY + dY
-      s = " "
-    }
-    return "M" + sX + "," + sY +
-           s   + mX + "," + mY +
-           " " + tX + "," + tY
+    return "M"+ sX + "," + sY + "S" + (sX + dY + dX) + "," + (sY + dY - dX) + " " + tX + "," + tY
 }
+diagram.pathLeft = function(d) {
+    var sX = d.source.x
+    var sY = d.source.y
+    var tX = d.target.x
+    var tY = d.target.y
+    var dX = (tX - sX) / 2
+    var dY = (tY - sY) / 2
+    return "M"+ sX + "," + sY + "S" + (sX - dY + dX) + "," + (sY + dX + dY) + " " + tX + "," + tY
+}
+diagram.dx = function(d) { return d.x } // called 11356 times for the tiny default diagram
+diagram.dy = function(d) { return d.y } // called 11356 times for the tiny default diagram
+diagram.path = function(d) { return d.path(d) } // called 20536 times for the tiny default diagram
+
 diagram.showGraph = function(args) {
     var colorpicker = (args.threadColor == undefined ? undefined : d3.select(args.threadColor)[0][0])
 
@@ -132,7 +128,11 @@ diagram.showGraph = function(args) {
     var isIE = document.documentURI == undefined // wrong feature check
     // problem: the marker property is supported by IE but breaks on moving links
     var link = container.selectAll(".path").data(args.links).enter().append("svg:path")
-        .attr("class", function(d) { return d.thread ? "link thread" + d.thread : "link"})
+        .attr("class", function(d) {
+           // called 302 times for the tiny default diagram: once for each link in both diagrams
+           d.path = (d.left) ? diagram.pathLeft : d.right ? diagram.pathRight : diagram.pathStraight
+           return d.thread ? "link thread" + d.thread : "link"
+        })
         .attr("id",function(d,i) { return "link_" + i; })
         .style('marker-start', function(d) { if (d.start && !isIE) return 'url(#start-'+d.start+')'})
         .style('marker-end', function(d) { if (d.end && !isIE) return 'url(#end-'+d.end+')'})
@@ -178,14 +178,14 @@ diagram.showGraph = function(args) {
 
     // layout simulation step
     force.on("tick", function() {
-        // window.performance.mark('mark_start_tick');
+//        window.performance.mark('mark_start_tick');
         link.attr("d", diagram.path)
         node.attr("cx", diagram.dx)
             .attr("cy", diagram.dy)
-        // window.performance.mark('mark_end_tick');
-        // window.performance.measure('measure-tick','mark_start_tick','mark_end_tick');
-        // var items = console.log ( window.performance.getEntriesByType('measure')
-        // var item = items[items.length-1]
-        // console.log(item.duration))
+//         window.performance.mark('mark_end_tick');
+//         window.performance.measure('measure-tick','mark_start_tick','mark_end_tick');
+//         var items = window.performance.getEntriesByType('measure')
+//         var item = items[items.length-1]
+//         console.log(args.container+" "+item.startTime+" "+item.duration)
     })
 }
