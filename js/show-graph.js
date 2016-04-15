@@ -161,8 +161,11 @@ diagram.showGraph = function(args) {
     })
     node.call(drag)
 
+    var mod = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream ? 10 : 1
+    var step = 0
     // layout simulation step
     force.on("tick", function() {
+        if ( ((step++)%mod) != 0) return
         // window.performance.mark('mark_start_tick');
         link.attr("d", diagram.path)
         node.attr("cx", diagram.dx)
