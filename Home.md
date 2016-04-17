@@ -3,7 +3,7 @@ Designing Bobbin Lace grounds
 
 [GroundForge] is a web based toolkit to design your own grounds. The toolkit is based on a set of configurable matching diagrams. The pages listed in the sidebar provide tutorials, tips and tricks to use the diagrams. Though screenshots and procedures may be geared to the free [InkScape], other SVG compatible [editors] will have similar functions. Please feel welcome to improve the wiki pages for this toolbox: create a github account and while logged in you will have access to buttons to edit pages or create new ones.
 
-Varying stitches and playing with the download renders a myriad of variations for a single pattern. Shortening [Jane Atkinson]'s [citation] of the Bauhaus school of art: _experiment, play, think. Some experiments may result in innovations, but even when reinventing wheels it is your own discovery and not taught._
+Varying stitches and playing with the download renders a myriad of variations for a single pattern. Shortening [Jane Atkinson]'s [citation] of the Bauhaus school of art: _experiment, play, think. Some experiments may result in innovations, but even when reinventing wheels it is your own discovery._
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
 [Jane Atkinson]: http://www.contemporarylace.com/
