@@ -1,1 +1,7 @@
-[Share your patterns](https://github.com/d-bl/GroundForge/issues/50) — [Under the hood](https://github.com/d-bl/GroundForge/tree/gh-pages/#how-its-made--under-the-hood) — [Release notes](https://github.com/d-bl/GroundForge/releases/) — [Issues](https://github.com/d-bl/GroundForge/issues/) — [Browser issues](https://github.com/d-bl/GroundForge/issues?q=is%3Aissue+is%3Aopen+label%3A%22Browser+support%22)
+[Share your patterns] — [Under the hood] — [Release notes] — [Issues] — [Browser issues]
+
+[Share your patterns]: https://github.com/d-bl/GroundForge/issues/50
+[Under the hood]: https://github.com/d-bl/GroundForge/tree/gh-pages/#how-its-made--under-the-hood
+[Release notes]: https://github.com/d-bl/GroundForge/releases/
+[Issues]: https://github.com/d-bl/GroundForge/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+-label%3A%22Browser+support%22+-label%3A%22nice+to+have%22+
+[Browser issues]: https://github.com/d-bl/GroundForge/issues?q=is%3Aissue+is%3Aopen+label%3A%22Browser+support%22
