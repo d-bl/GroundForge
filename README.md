@@ -5,7 +5,7 @@ A web based toolbox to design bobbin lace grounds with matching diagrams.
 
 ## How it's Made / Under the Hood
 
-### Proof of concept
+### Proof of concept with D3.js
 
 Development started with `js/show-graph.js` and `js/sample.js`.
 To get a proof of concept a force graph [example] with [D3.js] was changed into tiny thread an pair diagrams diagrams with the following steps:
@@ -29,6 +29,10 @@ Downloadable pattern sheets provide geometric variations that can be customised 
 [D3.js]: http://d3js.org/
 [color coded pair diagrams]: https://en.wikipedia.org/w/index.php?title=Mesh_grounded_bobbin_lace&oldid=639789191#Worker_pair_versus_two_pair_per_pin
 [scala code]: https://github.com/d-bl/GroundForge/tree/master/
+
+### Color-picker by menucool
+
+Painting threads required a color-picker. Among the paid ui elements the [color-picker](http://www.menucool.com/color-picker) was free.
 
 ## How to Contribute
 
