@@ -1,13 +1,5 @@
 function show(form) {
-  var data = form.matrix.value
-  ? dibl.D3Data().get(
-    form.matrix.value,
-    form.rows.value * 1,
-    form.cols.value * 1,
-    form.shiftLeft.value * 1,
-    form.shiftUp.value * 1,
-    form.stitches.value
-  ): dibl.D3Data().get(
+  var data = dibl.D3Data().get(
     form.set.value,
     form.nrInSet.value * 1,
     form.rows.value * 1,
@@ -22,9 +14,9 @@ function show(form) {
     threadColor: '#colorpicker',
     container: '#pairDiagram',
     width: 250,
-    height: 250,
-    nodes: data.nodes,
-    links: data.links,
+    height: 400,
+    nodes: data.pairNodes,
+    links: data.pairLinks,
     scale: 1,
   })
   diagram.showGraph({

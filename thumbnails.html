@@ -5,9 +5,8 @@
   <meta charset="UTF-8">
   <title>DiBL - Dynamic bobbin lace diagrams thumbnails for grounds</title>
   <style>
-      body { max-width: 60.5em;  padding: 1em; margin-left: auto; margin-right: auto; }
+    body { max-width: 60.5em;  padding: 1em; margin-left: auto; margin-right: auto; }
     svg { display: inline-block }
-    .link {fill: #fff; opacity: 1;}
     svg{ border: solid 1px #AAA; margin-right: 0.4em; }
     div { width: 890px }
     input { width: 3em; }
@@ -16,13 +15,6 @@
   <script src="js/show-graph.js"></script>
   <script src="js/matrix-graphs.js"></script>
   <script>
-    function showPairs(argString){
-      document.getElementById("diagram").innerHTML = ""
-      var args = argString.split(":")
-      var range = args[1].split("-")
-      for (i=range[0] ; i<=range[1] ; i++)
-        showPair(dibl.D3Data().get(args[0],i, 8,8, 0,0, ''))
-    }
     function showThreads(set,nr){
       document.getElementById("diagram").innerHTML = ""
       var dims = set.split("x")
@@ -34,20 +26,8 @@
             showThread(dibl.D3Data().get(set,nr, 8,8+k, i,j, ''))
       }
     }
-    function showPair(data){
-      showGraph({
-        threadColor: '#colorpicker',
-        container: '#diagram',
-        width: 78,
-        height: 78,
-        nodes: data.nodes,
-        links: data.links,
-        scale: 1,
-        transform: "translate(0,0)scale(1)",
-      })
-    }
     function showThread(data){
-      showGraph({
+      diagram.showGraph({
         threadColor: '#colorpicker',
         container: '#diagram',
         width: 100,
@@ -60,42 +40,22 @@
     }
   </script>
 </head>
-<body onload="showAll()">
+<body>
     <img style="float: right" src="images/logo-big.png" alt="DiBL logo"
          title="3 tiles each with a single stitch. Thick coloured lines for the pair diagram, thin black lines for a thread diagram"/>
     <h1>GroundForge - thumbnails</h1>
-    <p>Overview of available <a href="index.html">patterns</a>.</p>
+    <p>
+        The thread diagrams show which configurations have a footside implemented
+        without a (partial) tubular effect.
+        The configurations are shown in the following L(eft)-U(p)-C(olumns) order:
+    </p>
     <p><strong>Select a set</strong> of diagrams by changing a field
         <strong>and have some patience</strong> for the thumbnails to render and let the animation complete.
     </p>
-    <fieldset>
-        <legend>Pair diagrams</legend>
-        <select id="pairs" size="1" onChange="showPairs(this.value)">
-            <option value="">select a set</option>
-            <option value="2x2:0">2x2 (0-6)</option>
-            <option value="2x4:0-33">2x4 (0-33)</option>
-            <option value="4x2:0-12">4x2 (0-12)</option>
-        </select>
-        <p>
-            The animation of pair diagrams applies some tension to the original diagrams
-            on <a href="http://web.uvic.ca/~vmi/papers/interleavedpatterns.html"
-            >http://web.uvic.ca/~vmi/papers/interleavedpatterns.html</a>
-        </p>
-    </fieldset>
-    <fieldset>
-        <legend>Thread diagrams</legend>
-        <label for="_2x2">2x2 </label><input id="_2x2" max="0"  onchange="showThreads('2x2',this.value)" min="0" value="-1" type="number"/>
-        <label for="_2x4">2x4 </label><input id="_2x4" max="33" onchange="showThreads('2x4',this.value)" min="0" value="-1" type="number"/>
-        <label for="_4x2">4x2 </label><input id="_4x2" max="12" onchange="showThreads('4x2',this.value)" min="0" value="-1" type="number"/>
-        <p>
-            The thread diagrams show which configurations have a footside implemented
-            without a (partial) tubular effect.
-            The configurations are shown in the following L(eft)-U(p)-C(olumns) order:
-        </p><p>
-            L0-U0-C8, L0-U0-C9, ..., L0-U1-C8, L0-U1-C9, ..., L1-U0-C8, L1-U0-C9, ..., L1-U1-C8, L1-U1-C9, ...
-        </p>
-
-    </fieldset>
+    <label for="_2x2">2x2 </label><input id="_2x2" max="0"  onchange="showThreads('2x2',this.value)" min="0" value="-1" type="number"/>
+    <label for="_2x4">2x4 </label><input id="_2x4" max="33" onchange="showThreads('2x4',this.value)" min="0" value="-1" type="number"/>
+    <label for="_4x2">4x2 </label><input id="_4x2" max="12" onchange="showThreads('4x2',this.value)" min="0" value="-1" type="number"/>
+    <p>L0-U0-C8, L0-U0-C9, ..., L0-U1-C8, L0-U1-C9, ..., L1-U0-C8, L1-U0-C9, ..., L1-U1-C8, L1-U1-C9, ...</p>
     <div id="diagram"></div>
     <!-- Start of StatCounter Code for Default Guide -->
     <script type="text/javascript">

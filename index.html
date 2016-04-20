@@ -12,18 +12,13 @@
     <script src="js/util.js"></script>
    <style>
      body { max-width: 62em;  padding: 1em; margin-left: auto; margin-right: auto; }
-     .h1accent { color: #444}
      input { width: 3em; }
      #colorpicker { width: 5em; }
-     #threadDiagram { float: left; }
      #pairDiagram, #threadDiagram, #graph { display: inline-block; vertical-align: top; }
      #browsers { vertical-align: bottom; }
      #pattern, svg{ border: solid 1px #AAA; margin-right: 0.4em; display: inline-block; }
      fieldset { border: solid 1px #AAA; padding-left: 0; padding-right: 0.2em; padding-bottom: 0.2em}
      fieldset fieldset { padding-left: 0.5em;}
-     .link {fill: #fff; opacity: 1;}
-     .node {fill: #000; opacity: 0;}
-     .node.fixed {fill: #90f;}
      .hidden {display: none}
      #footer {clear: both}
    </style>
@@ -89,7 +84,7 @@
     <article>
       <p>The diagrams and patches on the pattern sheet match up as a tool set to design a bobbin lace ground.
          You can create variations with the following steps, the <a href="https://github.com/d-bl/GroundForge/wiki"
-          >user guide</a> provides more tips and tricks.</p>
+          >user guide</a> provides more tips and tricks.
       </p>
       <ul>
           <li>
@@ -119,10 +114,10 @@
       </ul>
     </article>
     <div style="clear: both">
-      <div id="threadDiagram"></div>
       <div id="pairDiagram"><p>
           Generating diagram... You might have to clear your cache of your browser to get the last update active.
       </p></div>
+      <div id="threadDiagram"></div>
       <form id="graph" onsubmit="return false">
         <fieldset style="border: none">
             <label for="colorpicker">
@@ -172,10 +167,8 @@
                 <label for="shiftUp">top by </label>
                 <input id="shiftUp" name="shiftUp" min="0" max="3" value="2" type="number"/>
             </fieldset>
-            <fieldset style="border: none; padding-left: 0; margin-left: 0; padding-right: 0">
+            <fieldset>
                 <legend>More diagrams</legend>
-                <fieldset>
-                    <legend>select a predefined matrix ...</legend>
                     <label for="nrInSet">nr</label>
                     <input id="nrInSet" name="nrInSet" min="0" max="11" value="1" type="number"/>
                     <label for="set">in set</label>
@@ -184,27 +177,7 @@
                         <option data-max-nr="33">4x2</option>
                         <option data-max-nr="11" selected>2x4</option>
                     </select>
-                </fieldset>
-                ... or define
-                <a id="showCustom" href="javascript:showOptions('Custom')">a custom matrix</a>
-                <fieldset class="hidden" id="Custom">
-                    <legend>a custom matrix
-                        <a id="hideCustom" class="hidden" href="javascript:hideOptions('Custom');clear('matrix')">(hide)</a>
-                        <img alt="(i)"
-                             title ="Hide to select a predefined matrix."
-                             src="images/information-icon.png">
-                    </legend>
-                    <textarea id="matrix" rows="3" cols="25" name="matrix"></textarea><br>
-                    Paste for example the following <br/>
-                    lines in the field above: <pre>
-586-
--4-5
-5-21
--5-7</pre>Each digit defines two pairs arriving<br/>
-                    at a grid position. A dash means a not<br/>
-                    used position.<br/>
-                    <img src="images/legend.png"><br/>
-                </fieldset>
+                <a href="images/overview.png">overview</a>
             </fieldset>
           </div>
         </fieldset>

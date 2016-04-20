@@ -124,6 +124,7 @@ diagram.showGraph = function(args) {
         .style('marker-mid', function(d,i) { if (d.mid) return 'url(#twist-1)' } )
         .style('opacity', function(d) { return d.border || d.toPin ? fullyTransparant : 1})
         .style('stroke', '#000')
+        .style('fill', 'none')
 
     var node = container.selectAll(".node").data(args.nodes).enter().append("circle")
         .attr("class", function(d) { return d.startOf ? ("node threadStart") : (d.pin ? ("node pin") : "node")})
@@ -161,8 +162,11 @@ diagram.showGraph = function(args) {
     })
     node.call(drag)
 
+    var step = 1;
+    var n = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream ? 10 : 1
     // layout simulation step
     force.on("tick", function() {
+        if ( ((step++)%n) != 0) return
         // window.performance.mark('mark_start_tick');
         link.attr("d", diagram.path)
         node.attr("cx", diagram.dx)

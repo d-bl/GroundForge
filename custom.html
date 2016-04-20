@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+  <style>div { display: inline-block; }</style>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <title lang="en">GroundForge : Customised diagram.</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="js/show-graph.js"></script>
+  <script src="js/matrix-graphs.js"></script>
+</head>
+<body>
+  <div id="pairs"></div>
+  <div id="threads"></div>
+  <script>
+    var matrix = "586- -4-5 5-21 -5-7"
+    var stackAsBricks = false
+    var nrOfRows = 15
+    var nrOfCols = 13
+    var shiftLeft = 1
+    var shiftUp = 1
+    var stitches = 'A3=tc B2=tctc A4=tctpct'
+    var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, stackAsBricks)
+    diagram.showGraph({
+      container: '#pairs',
+      width: 300,
+      height: 400,
+      nodes: data.pairNodes,
+      links: data.pairLinks,
+      scale: 1,
+      transform: "translate(0,0)scale(1)",
+    })
+    diagram.showGraph({
+      container: '#threads',
+      width: 400,
+      height: 400,
+      nodes: data.threadNodes,
+      links: data.threadLinks,
+      scale: 0.6,
+      transform: "translate(0,0)scale(0.6)",
+    })
+  </script>
+</body>
