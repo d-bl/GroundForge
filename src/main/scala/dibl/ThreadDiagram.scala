@@ -44,13 +44,14 @@ object ThreadDiagram {
         createRows(next, availablePairs, nodes, links)
     } else {
       val (pairTarget, (leftPairSource, rightPairSource)) = possibleStitches.head
-      println( f"creating $pairTarget%3d with $leftPairSource%3d and $rightPairSource%3d of ${availablePairs.keySet.mkString(",")}")
+      //println( f"creating $pairTarget%3d with $leftPairSource%3d and $rightPairSource%3d of ${availablePairs.keySet.mkString(",")}")
+      def availableKeys: String = availablePairs.keySet.mkString(",")
       if (!Set(leftPairSource, rightPairSource).subsetOf(availablePairs.keySet)) {
-        val msg = s"Need a new pair from the footside? Missing $leftPairSource and/or $rightPairSource in ${availablePairs.keySet.mkString(",")}"
+        val msg = s"Need a new pair from the footside? Missing $leftPairSource and/or $rightPairSource in $availableKeys"
         println(msg)
         createRows(possibleStitches.tail, availablePairs, nodes :+ whoops(msg), links)
       } else if (instructions(pairTarget)=="pair"){
-        val msg = s"Two pairs starting at same node? target=$pairTarget leftSource=$leftPairSource rightSource=$rightPairSource available ${availablePairs.keySet.mkString(",")}"
+        val msg = s"Two pairs starting at same node? target=$pairTarget leftSource=$leftPairSource rightSource=$rightPairSource available $availableKeys"
         createRows(possibleStitches.tail, availablePairs - leftPairSource - rightPairSource, nodes :+ whoops(msg), links)
       } else {
         val left = availablePairs(leftPairSource)

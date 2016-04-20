@@ -55,6 +55,7 @@ object Settings {
     } yield create(relM, absM, stitches)
 
   def create(str: String,
+            bricks: Boolean,
             absRows: Int,
             absCols: Int,
             shiftLeft: Int = 0,
@@ -66,7 +67,8 @@ object Settings {
     for {
         _    <- hasEqualLengths(lines)
         relM <- toRelSrcNodes(matrix = lines.mkString(""), dimensions = dims)
-        absM <- toAbsWithMargins(shift(relM, shiftLeft, shiftUp), absRows, absCols)
+        absM <- if (bricks) toAbs(relM, absRows, absCols, shiftLeft, shiftUp)
+                else toAbsWithMargins(shift(relM, shiftLeft, shiftUp), absRows, absCols)
       } yield create(relM, absM, stitches)
     }
 

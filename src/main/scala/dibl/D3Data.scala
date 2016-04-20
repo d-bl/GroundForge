@@ -33,8 +33,8 @@ object D3Data {
     val pairDiagram = PairDiagram(Settings(set, nrInSet, rows, cols, shiftLeft, shiftUp, stitches))
     val threadDiagram = ThreadDiagram(pairDiagram)
     js.Dictionary(
-      "nodes" -> toJS(pairDiagram.nodes),
-      "links" -> toJS(pairDiagram.links),
+      "pairNodes" -> toJS(pairDiagram.nodes),
+      "pairLinks" -> toJS(pairDiagram.links),
       "threadNodes" -> toJS(threadDiagram.nodes),
       "threadLinks" -> toJS(threadDiagram.links)
     )
@@ -48,11 +48,30 @@ object D3Data {
           shiftUp: Int,
           stitches: String
          ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
-    val pairDiagram = PairDiagram(Settings.create(str, rows, cols, shiftLeft, shiftUp, stitches))
+    val pairDiagram = PairDiagram(Settings.create(str, bricks = false, rows, cols, shiftLeft, shiftUp, stitches))
     val threadDiagram = ThreadDiagram(pairDiagram)
     js.Dictionary(
-      "nodes" -> toJS(pairDiagram.nodes),
-      "links" -> toJS(pairDiagram.links),
+      "pairNodes" -> toJS(pairDiagram.nodes),
+      "pairLinks" -> toJS(pairDiagram.links),
+      "threadNodes" -> toJS(threadDiagram.nodes),
+      "threadLinks" -> toJS(threadDiagram.links)
+    )
+  }
+
+  @JSExport
+  def get(str: String,
+          rows: Int,
+          cols: Int,
+          shiftLeft: Int,
+          shiftUp: Int,
+          stitches: String,
+          bricks: Boolean
+         ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
+    val pairDiagram = PairDiagram(Settings.create(str, bricks,  rows, cols, shiftLeft, shiftUp, stitches))
+    val threadDiagram = ThreadDiagram(pairDiagram)
+    js.Dictionary(
+      "pairNodes" -> toJS(pairDiagram.nodes),
+      "pairLinks" -> toJS(pairDiagram.links),
       "threadNodes" -> toJS(threadDiagram.nodes),
       "threadLinks" -> toJS(threadDiagram.links)
     )
@@ -63,8 +82,8 @@ object D3Data {
     val pairDiagram = PairDiagram(Settings())
     val threadDiagram = ThreadDiagram(pairDiagram)
     js.Dictionary(
-      "nodes" -> toJS(pairDiagram.nodes),
-      "links" -> toJS(pairDiagram.links),
+      "pairNodes" -> toJS(pairDiagram.nodes),
+      "pairLinks" -> toJS(pairDiagram.links),
       "threadNodes" -> toJS(threadDiagram.nodes),
       "threadLinks" -> toJS(threadDiagram.links)
     )
