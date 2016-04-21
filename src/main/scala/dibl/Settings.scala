@@ -20,7 +20,8 @@ import dibl.Matrix._
 import scala.util.{Failure, Success, Try}
 
 case class Settings private(absM: M,
-                            stitches: Array[Array[String]]
+                            stitches: Array[Array[String]],
+                            bricks: Boolean
                            ) {
   val nrOfPairLinks = countLinks(absM)
   private val relRows = stitches.length
@@ -33,7 +34,7 @@ case class Settings private(absM: M,
   }
 
   private def toCell(row: Int, col: Int): (Int, Int) = {
-    val brickOffset = ((row + margin + relRows) / relRows % 2) * (relCols / 2) + margin
+    val brickOffset = if (!bricks) 0 else ((row + margin + relRows) / relRows % 2) * (relCols / 2) + margin
     ((row - margin + relRows) % relRows, (brickOffset + col) % relCols)
   }
 }
@@ -52,7 +53,7 @@ object Settings {
       str <- getMatrix(key, nr)
       relM <- toRelSrcNodes(matrix = str, dimensions = key)
       absM <- toAbs(relM, absRows, absCols, shiftLeft, shiftUp)
-    } yield create(relM, absM, stitches)
+    } yield create(relM, absM, stitches, bricks = true)
 
   def create(str: String,
             bricks: Boolean,
@@ -69,7 +70,7 @@ object Settings {
         relM <- toRelSrcNodes(matrix = lines.mkString(""), dimensions = dims)
         absM <- if (bricks) toAbs(relM, absRows, absCols, shiftLeft, shiftUp)
                 else toAbsWithMargins(shift(relM, shiftLeft, shiftUp), absRows, absCols)
-      } yield create(relM, absM, stitches)
+      } yield create(relM, absM, stitches, bricks)
     }
 
   def hasEqualLengths(lines: Array[String]): Try[Unit] = {
@@ -88,15 +89,13 @@ object Settings {
         //x.get(2)(2) = Array((1,2), (0,2))//hack
         x
       }
-    } yield create(relM, absM, stitches = "A1=tctpc, B1=tctc, C1=tctc, D1=tctc, A2=tc, C2=tc, D2=tctpc")
+    } yield create(relM, absM, stitches = "A1=tctpc, B1=tctc, C1=tctc, D1=tctc, A2=tc, C2=tc, D2=tctpc", bricks = true)
 
-  private def create(relM: M,
-                     absM: M,
-                     stitches: String
-                    ): Settings =
+  private def create(relM: M, absM: M, stitches: String, bricks: Boolean): Settings =
     new Settings(
       absM,
-      stitches = convert(stitches, relM.length, relM(0).length)
+      stitches = convert(stitches, relM.length, relM(0).length),
+      bricks
     )
 
   private def convert(str: String,
