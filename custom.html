@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <style>div { display: inline-block; }</style>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <style>div, #colorpicker { display: inline-block; border: solid 1px; vertical-align: top;}</style>
   <meta charset="UTF-8">
   <title lang="en">GroundForge : Customised diagram.</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
@@ -11,8 +10,10 @@
 <body>
   <div id="pairs"></div>
   <div id="threads"></div>
+  <input id="colorpicker" type="text" value="#CC0000"/>
   <script>
-    var matrix = "586- -4-5 5-21 -5-7"
+    fullyTransparant = 0
+    var matrix = "586-,-4-5,5-21,-5-7"
     var stackAsBricks = false
     var nrOfRows = 15
     var nrOfCols = 13
@@ -30,6 +31,7 @@
       transform: "translate(0,0)scale(1)",
     })
     diagram.showGraph({
+      threadColor: '#colorpicker',
       container: '#threads',
       width: 400,
       height: 400,
