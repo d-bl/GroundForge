@@ -30,9 +30,9 @@ Downloadable pattern sheets provide geometric variations that can be customised 
 [color coded pair diagrams]: https://en.wikipedia.org/w/index.php?title=Mesh_grounded_bobbin_lace&oldid=639789191#Worker_pair_versus_two_pair_per_pin
 [scala code]: https://github.com/d-bl/GroundForge/tree/master/
 
-### Color-picker by menucool
+### Color-picker by MenuCool
 
-Painting threads required a color-picker. Among the paid ui elements the [color-picker](http://www.menucool.com/color-picker) was free.
+Safari nor Internet Explorer support `<input type="color">`. The free [color-picker](http://www.menucool.com/color-picker) by MenuCool works on both platforms.
 
 ## How to Contribute
 
