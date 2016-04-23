@@ -32,7 +32,7 @@ Downloadable pattern sheets provide geometric variations that can be customised 
 
 ### Color-picker by MenuCool
 
-Safari nor Internet Explorer support `<input type="color">`. The free [color-picker](http://www.menucool.com/color-picker) by MenuCool works on both platforms.
+Safari nor Internet Explorer support `<input type="color">`. The free [color-picker](http://www.menucool.com/color-picker) by MenuCool works on both platforms and was easy to apply.
 
 ## How to Contribute
 
