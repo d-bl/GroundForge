@@ -10,5 +10,5 @@ The thumbnails below show an overview of all currently available pair diagrams. 
 
 A screenshot of the Mac Finder, note that you can increase the panel size for more details.
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/browse-mac.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/browse-mac.png)
 

@@ -7,7 +7,7 @@ Varying stitches and playing with the patches on a downloaded pattern sheet rend
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
 [Jane Atkinson]: http://www.contemporarylace.com/
-[citation]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/bauhaus.png
+[citation]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/bauhaus.png
 [InkScape]: https://inkscape.org
 [editors]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
 
@@ -24,7 +24,7 @@ The diagram generator can relief much tedious work that would go into these step
 * Download figure **d** and customize it into **e-h** or whatever your fancy.
 
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/intro.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/intro.png)
 
 Like the London Tube maps inform you about destinations and connections but not about geographic locations or travel time, the diagrams in figure **b** and **c** just provide instructions to create a patch of lace. 
 

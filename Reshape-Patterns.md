@@ -2,7 +2,7 @@ A downloadable pattern sheet of [GroundForge] may have multiple patterns. In som
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/reshape.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/reshape.png)
 
 The advanced patterns may come with just a single pattern that does not look at all like the color coded pair diagram. To create a regular patch that does look like the pair diagram (or any other shape you might prefer) you would have to do the reshaping by yourself by nudging the position of intersections. That is one of the factors that makes these patterns advanced.
 
@@ -21,12 +21,12 @@ Nudge the Intersections
 
 Right click to enter the highlighted group of objects and select all objects in that group.
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/original.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/original.png)
 
 Switch to the node tool to move the intersections, the black lines will change accordingly. Note that nodes along the perimeter of the group connect to nodes in a clone. To move such an intersection you may have to move nodes at different locations.
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/nodes.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/nodes.png)
 
 Select the full patch and apply skewing (the straight arrows along the edges) to move the relative position of horizontal or vertical lines.
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/skew.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/skew.png)
