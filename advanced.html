@@ -159,8 +159,8 @@ C4=tctc</textarea>
         >show hidden components</label>
         <input id="transparency" name="transparency" step="0.1" min="0" max="1" value="0" type="number"
                title="0 = completely transparent&#013;1 = completely opaque"/><br/>
-        <button onclick="load(false); return false" title="no page reload">show</button>
-        <button onclick="location.reload(true); return false" title="reload page">reset</button>
+        <button onclick="load(); return false" title="no page reload">show</button>
+        <button type="reset">reset</button>
         <button onclick="location.href='?'; return false" title="reduce URL">default</button>
         <button title="change URL to current configuration&#013;what allows to bookmark the pattern ">submit</button>
     </fieldset>
