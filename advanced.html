@@ -34,9 +34,9 @@
     <a href="https://d-bl.github.io/"
        title="More tools by DiBL"
     ><img style="float: right" src="images/logo-medium.png" alt="DiBL logo"/></a>
-    <h1>GroundForge : customised diagrams</h1>
+    <h1>GroundForge : Customised diagrams with advanced options.</h1>
     <p>
-        Try the completely <a href="index.html">preconfigured</a> patterns,
+        Try the completely <a href="index.html">configured</a> patterns,
         <select onChange="setMatrix(this)" title="thumbnail number of preconfigured&#013;pattern between square brackets">
             <option disabled selected>select a pattern matrix</option>
             <option value="43     68">2x2  0  [3]</option>
@@ -91,6 +91,10 @@
             <option value="68 -4 21 7-">4x2 11</option>
         </select>
         or fill in your own matrix.
+        The <a href="https://github.com/d-bl/GroundForge/wiki"
+        >user guide</a> has thumbnails of available patterns,
+        explains where to find matching pattern sheets, how to reshape the patches on the sheets
+        and provides more tips and tricks.
     </p>
 </article>
 <form>
@@ -159,14 +163,17 @@ C4=tctc</textarea>
         >show hidden components</label>
         <input id="transparency" name="transparency" step="0.1" min="0" max="1" value="0" type="number"
                title="0 = completely transparent&#013;1 = completely opaque"/><br/>
-        <button onclick="load(); return false" title="no page reload">show</button>
-        <button type="reset">reset</button>
-        <button onclick="location.href='?'; return false" title="reduce URL">default</button>
+        <button onclick="load(); return false"
+                title="generate diagrams&#013;no page reload">show</button>
+        <button type="reset"
+                title="reset form value&#013;without page reload&#013;nor regenerating diagrams">reset</button>
+        <button onclick="location.href='?'; return false"
+                title="reduce URL&#013;page reload&#013;generates default diagrams">default</button>
         <button title="change URL to current configuration&#013;what allows to bookmark the pattern ">submit</button>
     </fieldset>
 </form>
 <div id="diagrams">
-    <div id="pairs">Please wait for the diagrams to load.</div>
+    <div id="pairs"><img src="images/advanced-preview.png" title="preview while scripts are loading and execusting"></div>
     <div id="threads"></div>
 </div>
 
