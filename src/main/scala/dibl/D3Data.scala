@@ -46,40 +46,11 @@ object D3Data {
           cols: Int,
           shiftLeft: Int,
           shiftUp: Int,
-          stitches: String
-         ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
-    val pairDiagram = PairDiagram(Settings.create(str, bricks = false, rows, cols, shiftLeft, shiftUp, stitches))
-    val threadDiagram = ThreadDiagram(pairDiagram)
-    js.Dictionary(
-      "pairNodes" -> toJS(pairDiagram.nodes),
-      "pairLinks" -> toJS(pairDiagram.links),
-      "threadNodes" -> toJS(threadDiagram.nodes),
-      "threadLinks" -> toJS(threadDiagram.links)
-    )
-  }
-
-  @JSExport
-  def get(str: String,
-          rows: Int,
-          cols: Int,
-          shiftLeft: Int,
-          shiftUp: Int,
           stitches: String,
           bricks: Boolean
          ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
-    val pairDiagram = PairDiagram(Settings.create(str, bricks,  rows, cols, shiftLeft, shiftUp, stitches))
-    val threadDiagram = ThreadDiagram(pairDiagram)
-    js.Dictionary(
-      "pairNodes" -> toJS(pairDiagram.nodes),
-      "pairLinks" -> toJS(pairDiagram.links),
-      "threadNodes" -> toJS(threadDiagram.nodes),
-      "threadLinks" -> toJS(threadDiagram.links)
-    )
-  }
 
-  @JSExport
-  def hardCodedPattern(): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
-    val pairDiagram = PairDiagram(Settings())
+    val pairDiagram = PairDiagram(Settings.create(str, bricks,  rows, cols, shiftLeft, shiftUp, stitches))
     val threadDiagram = ThreadDiagram(pairDiagram)
     js.Dictionary(
       "pairNodes" -> toJS(pairDiagram.nodes),

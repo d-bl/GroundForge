@@ -37,9 +37,4 @@ class PairDiagramSpec extends FlatSpec with Matchers {
     graph.nodes.length should be  > 100
     graph.links.length should be > 200
   }
-  it should "properly process hardcoded sample" in {
-    val graph = PairDiagram(Settings())
-    graph.nodes.length should be  > 40
-    graph.links.length should be > 60
-  }
 }
