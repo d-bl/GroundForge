@@ -15,7 +15,7 @@ To get a proof of concept a force graph [example] with [D3.js] was changed into 
 - Made nodes transparent except for bobbins.
 - Assigned the thread number as a class to each section of a thread to assign colors.
 - Turned the links from lines to paths with a third node to add mid-markers for twist marks.
-- Initial coordinates replace the default random values, thus the animation stabalizes much quicker and it prevents rotated and flipped diagrams.
+- Initial coordinates replace the default random values, thus the animation stabalizes much quicker which prevents rotated and flipped diagrams.
 
 ### Using data from TesseLace
 
@@ -36,12 +36,13 @@ Safari nor Internet Explorer support `<input type="color">`. The free [color-pic
 
 ## How to Contribute
 
-You may just improve the grammar on the demo-page or on this readme, improve the layout or fix a more technical issue.
+You may just want to improve some grammar. To edit the user guide alias wiki pages you just need a github [account](https://github.com)
 
-Don't know about version control in general or GitHub in particular? No problem:
-* just create a github [account](https://github.com)
+Changing the grammar on this readme, the demo page or advanced page requires a little more:
 * hit the fork button at the top of this page
 * go to `https://github.com/YOURID/GroundForge/tree/gh-pages/`, of course replace YOURID
 * choose the file you want to change and hit the pencil to start editing
 * save your changes and test with your own demo-page: `http://YOURID.github.io/GroundForge/`, again: replace YOURID
 * create a pull request at `https://github.com/YOURID/GroundForge/tree/gh-pages/` or drop a note
+
+Of course more advanced webmasters and developers are welcome to tackle one of the issues or propose other contributions.
