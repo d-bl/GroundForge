@@ -1,51 +1,58 @@
 package dibl
 
+import dibl.Matrix.relSourcesMap
 import org.scalatest.{FlatSpec, Matchers}
 
 class Convert4x4checker extends FlatSpec with Matchers {
 
-  implicit class RichArray (p: Array[Array[SrcNodes]]) {
-     def deepToString = p.deep.mkString(",").replaceAll("Array","")
-  }
+  def swap(nodes: Array[(Int,Int)]) = (nodes(1),nodes(0))
+  def toTuple(nodes: Array[(Int,Int)]) = (nodes(0),nodes(1))
+  def swapSrcNodes: ((Int, Int)) => (Int, Int) = x => (x._2, x._1)
+  def toChar: (Array[Array[(Int, Int)]]) => Array[Char] = _.map(srcNodes => if (srcNodes.isEmpty) '-' else nodeMap.getOrElse(toTuple(srcNodes),'@'))
 
-  val nodeMap = Matrix.relSourcesMap.groupBy(_._2).mapValues(_.keys.mkString(""))
-  def toCharOption(srcNodes: SrcNodes): Option[Object] = if (srcNodes.isEmpty) Some("-") else nodeMap.get(srcNodes)
-  println("keys: " + nodeMap.keys.toArray.deep.mkString("").replaceAll("Array",""))
-  println("values: " + nodeMap.values.toArray.deep.mkString(","))
-
-  def toSrcNodes(sn: List[(Int, Int)]): Array[(Int, Int)] = {
-    if (sn.isEmpty) SrcNodes() else SrcNodes(sn(0), sn(1))
+  val nodeMap: Map[((Int, Int), (Int, Int)), Char] = {
+    val keys = "0123456789".toCharArray
+    val invertedMap = keys.map(key => toTuple(relSourcesMap(key) ) -> key)
+    val swappedInvertedMap= keys.map(key => swap(relSourcesMap(key)) -> key)
+    (invertedMap ++ swappedInvertedMap).toMap
   }
 
   "convert" should "run" in {
 
     // a single list in one object is too large for the compiler
-    for (m <- List1.matrices4x4 ++ List1.matrices4x4) {
-      val matrix = Array.fill(4, 4)(List[(Int, Int)]())
-      for (t <- m) {
-        // https://tesselace.com/tools/inkscape-extension/
-        // https://i1.wp.com/web.uvic.ca/~vmi/laceTools/Inkscape1/template.png
-        val (x1, y1, x2, y2, x3, y3) = t
-        val dx2 = -(x2 - x1)
-        val dy2 = -(y2 - y1)
-        val dx3 = -(x3 - x1)
-        val dy3 = -(y3 - y1)
-        val c2 = (x2 + 4) % 4
-        val r2 = (y2 + 4) % 4
-        val c3 = (x3 + 4) % 4
-        val r3 = (y3 + 4) % 4
-        matrix(r2)(c2) = matrix(r2)(c2) ++ List((dx2, dy2))
-        matrix(r3)(c3) = matrix(r3)(c3) ++ List((dx3, dy3))
-      }
-      val notSwapped = matrix.map(_.map(toSrcNodes))
-      val swapped = matrix.map(_.map(toSrcNodes(_).map(t=>(t._2,t._1))))
-      println("swapped: "+swapped.deep.mkString(",").replaceAll("Array",""))
-      println("notSwapped: "+notSwapped.deep.mkString(",").replaceAll("Array",""))
-      println("swapped: "+swapped.map(_.map(toCharOption)).deep.mkString(",").replaceAll("Array",""))
-      val s = notSwapped.map(_.map(toCharOption)).deep.mkString(",").replaceAll("Array", "")
-      println("notSwapped: "+s)
-      //notSwapped.flatMap(_.map(toCharOption)) should not contain None
+    for (input <- List1.matrices4x4 ++ List1.matrices4x4) {
+      println
+      println("input: " + input.deep.mkString)
+      val relative = toRelativeMatrix(input)
+      println("output: " + relative.map(toChar).map(_.mkString("")).mkString(","))
     }
+  }
+
+  /**
+    * @param m https://i1.wp.com/web.uvic.ca/~vmi/laceTools/Inkscape1/template.png
+    * https://tesselace.com/tools/inkscape-extension/
+    * @return each cell(row,col) represents a node pointing to both ancestors with relative coordinates
+    *         order of left and right ancestor is not determined
+    */
+  def toRelativeMatrix(m: Array[(Int, Int, Int, Int, Int, Int)]) = {
+    val matrix = Array.fill(4, 4)(List[(Int, Int)]())
+    for (t <- m) {
+      val (x1, y1, x2, y2, x3, y3) = t
+      val dCol2 = -(x2 - x1)
+      val dRow2 = -(y2 - y1)
+      val dCol3 = -(x3 - x1)
+      val dRow3 = -(y3 - y1)
+      val col2 = (x2 + 4) % 4
+      val row2 = (y2 + 4) % 4
+      val col3 = (x3 + 4) % 4
+      val row3 = (y3 + 4) % 4
+      //println(s"$t has arrows arriving at ($row2,$col2) from ($dRow2,$dCol2) and at ($row3,$col3) from ($dRow3,$dCol3)")
+      // swap (dx,dy) into (dRow,dCol)
+      matrix(row2)(col2) = matrix(row2)(col2) ++ List((dRow2, dCol2))
+      matrix(row3)(col3) = matrix(row3)(col3) ++ List((dRow3, dCol3))
+    }
+    println("relative: "+matrix.deep.toString.replaceAll("Array","\n").replaceAll("List","").replaceAll(" ",""))
+    matrix.map(_.map(_.toArray))
   }
 }
 
