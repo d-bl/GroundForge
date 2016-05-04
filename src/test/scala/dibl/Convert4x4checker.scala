@@ -21,10 +21,11 @@ class Convert4x4checker extends FlatSpec with Matchers {
 
     // a single list in one object is too large for the compiler
     for (input <- List1.matrices4x4 ++ List1.matrices4x4) {
-      println
-      println("input: " + input.deep.mkString)
+      //println
+      //println("input: " + input.deep.mkString)
       val relative = toRelativeMatrix(input)
-      println("output: " + relative.map(toChar).map(_.mkString("")).mkString(","))
+      val s = relative.map(toChar).map(_.mkString("")).mkString(" ")
+      if (!s.contains("a")) println(s)
     }
   }
 
@@ -51,7 +52,7 @@ class Convert4x4checker extends FlatSpec with Matchers {
       matrix(row2)(col2) = matrix(row2)(col2) ++ List((dRow2, dCol2))
       matrix(row3)(col3) = matrix(row3)(col3) ++ List((dRow3, dCol3))
     }
-    println("relative: "+matrix.deep.toString.replaceAll("Array","\n").replaceAll("List","").replaceAll(" ",""))
+    //println("relative: "+matrix.deep.toString.replaceAll("Array","\n").replaceAll("List","").replaceAll(" ",""))
     matrix.map(_.map(_.toArray))
   }
 }
