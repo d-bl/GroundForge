@@ -15,7 +15,10 @@
 */
 package dibl
 
+import java.io.File
+
 import dibl.Matrix._
+import org.apache.commons.io.FileUtils
 
 object Pattern {
 
@@ -72,5 +75,14 @@ object Pattern {
     val offset = 120
     val s = s"${offset + (x * 10)},${offset + (y * 10)} ${offset + (dx + x) * 10},${offset + (dy + y) * 10}"
     s"\t\t<path id='$id' d='M $s'/>\n"
+  }
+
+  def main(args: Array[String]): Unit = {
+    matrixMap.keys.foreach{ key =>
+      for (i <- matrixMap.get(key).get.indices){
+        val fileName = s"target/patterns/${key}_$i.svg"
+        FileUtils.write(new File(fileName), Pattern.get(key, i))
+      }
+    }
   }
 }
