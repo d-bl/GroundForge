@@ -4,15 +4,15 @@
     body { max-width: 62em;  padding: 1em; margin-left: auto; margin-right: auto; }
     div div { overflow: hidden; border: solid 1px #AAA; }
     div, fieldset { display: inline-block; }
-    fieldset { padding: 0.5em; }
     div, input, textarea, img { vertical-align: top;}
     button, #buttons { vertical-align: bottom;}
     button a, button { text-decoration: none; color: #000 }
     input { width: 3em; }
+    fieldset { padding: 0.5em; margin-left: 0; margin-right:0.1em; }
     fieldset p { margin-bottom:0; padding-bottom: 0; }
     #color { width: 5em; }
-    #pattern { float: left }
-    #diagrams { clear: left }
+    #pattern { float: left; margin-right:0.4em; }
+    #diagrams { clear: left; margin-top: 0.5em; }
     #pairs { clear: both }
     #pairs, #threads { padding: 0 }
     #buttons { border: none; padding: 0; }
@@ -36,7 +36,8 @@
     ><img style="float: right" src="images/logo-medium.png" alt="DiBL logo"/></a>
     <h1>GroundForge : Customised diagrams with advanced options.</h1>
     <p>
-        Try the completely <a href="index.html">configured</a> patterns, or try a matrix.
+        Try one of the completely <a href="index.html">configured</a> patterns,
+        or do it yourself by choosing a matrix and other parameters.
         The <a href="https://github.com/d-bl/GroundForge/wiki"
         >user guide</a> has thumbnails of available patterns,
         explains where to find matching pattern sheets, how to reshape the patches on the sheets
@@ -87,50 +88,50 @@
             <option value="4632 3488">33: 4632 3488  </option>
             <option value="1483 8-48">34: 1483 8-48  </option>
             <option disabled>--- 4x2 brick ---</option>
-            <option> 0: 43 68 66 66</option>
-            <option> 1: 43 5- 86 66</option>
-            <option> 2: 43 5- -5 68</option>
-            <option> 3: 43 53 53 68</option>
-            <option> 4: 43 21 -7 68</option>
-            <option> 5: 66 66 -4 68</option>
-            <option> 6: 43 53 68 66</option>
-            <option> 7: 66 -4 5- 86</option>
-            <option> 8: 43 5- 35 86</option>
-            <option> 9: 43 21 -4 98</option>
-            <option>10: 43 68 34 86</option>
-            <option>11: 68 -4 21 7-</option>
-            <option>12: 68 4- -5 5-</option>
+            <option value="43 68 66 66"> 0: 43 68 66 66</option>
+            <option value="43 5- 86 66"> 1: 43 5- 86 66</option>
+            <option value="43 5- -5 68"> 2: 43 5- -5 68</option>
+            <option value="43 53 53 68"> 3: 43 53 53 68</option>
+            <option value="43 21 -7 68"> 4: 43 21 -7 68</option>
+            <option value="66 66 -4 68"> 5: 66 66 -4 68</option>
+            <option value="43 53 68 66"> 6: 43 53 68 66</option>
+            <option value="66 -4 5- 86"> 7: 66 -4 5- 86</option>
+            <option value="43 5- 35 86"> 8: 43 5- 35 86</option>
+            <option value="43 21 -4 98"> 9: 43 21 -4 98</option>
+            <option value="43 68 34 86">10: 43 68 34 86</option>
+            <option value="68 -4 21 7-">11: 68 -4 21 7-</option>
+            <option value="68 4- -5 5-">12: 68 4- -5 5-</option>
             <option disabled>--- 4x4 brick ---</option>
-            <option> 0: 466- 6315 6-76 8666</option>
-            <option> 1: 4631 66-7 3156 8866</option>
-            <option> 2: 466- 66-5 6-56 8666</option>
-            <option> 3: 4631 6688 6-46 8666</option>
-            <option> 4: 4631 6688 3146 8866</option>
-            <option> 5: 4631 6317 6-76 8666</option>
-            <option> 6: 4631 6317 3176 8866</option>
-            <option> 7: 4343 5353 5-21 8688</option>
-            <option> 8: 586- -4-5 5-21 -5-7</option>
-            <option> 9: 5831 -4-7 5831 -4-7</option>
-            <option>10: 6868 -114 6888 -4-4</option>
-            <option>11: 586- -4-5 6868 -4-4</option>
-            <option>12: 586- -4-5 5-5- -5-5</option>
-            <option>13: 586- -789 2111 -4-4</option>
-            <option>14: 586- -4-5 215- -7-5</option>
-            <option>15: 586- -4-5 2121 -7-7</option>
-            <option>16: 586- 8889 1111 -4-4</option>
-            <option>17: 586- -115 6888 -4-4</option>
-            <option>18: 586- -115 588- -4-5</option>
-            <option>19: 586- -115 6-78 -5-4</option>
-            <option>20: 586- -115 5-7- -5-5</option>
-            <option>21: 586- 1112 788- -4-5</option>
-            <option>22: 586- 1112 8-78 -5-4</option>
-            <option>23: 586- 1112 7-7- -5-5</option>
-            <option>24: 5831 -4-7 6868 -4-4</option>
-            <option>25: 5831 -4-7 5-5- -5-5</option>
-            <option>26: 5831 -4-7 6-58 -5-4</option>
-            <option>27: 466- 6686 6-46 8666</option>
-            <option>28: 586- -4-5 6-58 -5-4</option>
-            <option>29: 6868 88-7 1121 -4-4</option>
+            <option value="466- 6315 6-76 8666"> 0: 466- 6315 6-76 8666</option>
+            <option value="4631 66-7 3156 8866"> 1: 4631 66-7 3156 8866</option>
+            <option value="466- 66-5 6-56 8666"> 2: 466- 66-5 6-56 8666</option>
+            <option value="4631 6688 6-46 8666"> 3: 4631 6688 6-46 8666</option>
+            <option value="4631 6688 3146 8866"> 4: 4631 6688 3146 8866</option>
+            <option value="4631 6317 6-76 8666"> 5: 4631 6317 6-76 8666</option>
+            <option value="4631 6317 3176 8866"> 6: 4631 6317 3176 8866</option>
+            <option value="4343 5353 5-21 8688"> 7: 4343 5353 5-21 8688</option>
+            <option value="586- -4-5 5-21 -5-7"> 8: 586- -4-5 5-21 -5-7</option>
+            <option value="5831 -4-7 5831 -4-7"> 9: 5831 -4-7 5831 -4-7</option>
+            <option value="6868 -114 6888 -4-4">10: 6868 -114 6888 -4-4</option>
+            <option value="586- -4-5 6868 -4-4">11: 586- -4-5 6868 -4-4</option>
+            <option value="586- -4-5 5-5- -5-5">12: 586- -4-5 5-5- -5-5</option>
+            <option value="586- -789 2111 -4-4">13: 586- -789 2111 -4-4</option>
+            <option value="586- -4-5 215- -7-5">14: 586- -4-5 215- -7-5</option>
+            <option value="586- -4-5 2121 -7-7">15: 586- -4-5 2121 -7-7</option>
+            <option value="586- 8889 1111 -4-4">16: 586- 8889 1111 -4-4</option>
+            <option value="586- -115 6888 -4-4">17: 586- -115 6888 -4-4</option>
+            <option value="586- -115 588- -4-5">18: 586- -115 588- -4-5</option>
+            <option value="586- -115 6-78 -5-4">19: 586- -115 6-78 -5-4</option>
+            <option value="586- -115 5-7- -5-5">20: 586- -115 5-7- -5-5</option>
+            <option value="586- 1112 788- -4-5">21: 586- 1112 788- -4-5</option>
+            <option value="586- 1112 8-78 -5-4">22: 586- 1112 8-78 -5-4</option>
+            <option value="586- 1112 7-7- -5-5">23: 586- 1112 7-7- -5-5</option>
+            <option value="5831 -4-7 6868 -4-4">24: 5831 -4-7 6868 -4-4</option>
+            <option value="5831 -4-7 5-5- -5-5">25: 5831 -4-7 5-5- -5-5</option>
+            <option value="5831 -4-7 6-58 -5-4">26: 5831 -4-7 6-58 -5-4</option>
+            <option value="466- 6686 6-46 8666">27: 466- 6686 6-46 8666</option>
+            <option value="586- -4-5 6-58 -5-4">28: 586- -4-5 6-58 -5-4</option>
+            <option value="6868 88-7 1121 -4-4">29: 6868 88-7 1121 -4-4</option>
         </select><br/>
 <textarea id="matrix" name="matrix" rows="4" cols="6" spellcheck="false"
 >586-
