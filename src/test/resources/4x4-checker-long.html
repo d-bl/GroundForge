@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+  <style>svg { display: inline-block; border: solid 1px #AAA; margin-right: 0.4em; }</style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="https://d-bl.github.io/GroundForge/js/show-graph.js"></script>
+  <!--<script src="../../../target/scala-2.11/groundforge-opt.js"></script>-->
+  <script src="https://d-bl.github.io/GroundForge/js/matrix-graphs.js"></script>
+</head>
+<body>
+<div id="diagrams"></div>
+  <script>
+    var x = [
+      "B83A -4-7 6868 -4--", "B83A -4-7 6-58 -5--", "B83A -4-7 3158 -7--", "B83A -4-- 6-CD -5--", "B83A -4-- 68DD -4--",
+      "B83A -4-- 31CD -7--", "B83A ---7 3AB8 -7--", "B8D- -4-5 586- -4--", "B8D- -4-5 5-5- -5--", "B8D- -4-5 215- -7--",
+
+      "B8D- -115 588- -4--", "B8D- -115 5-7- -5--", "B8D- ---5 2AB- -7--", "68DD ---4 2AA1 -7--", "B8D- 14-2 7-5- -5--",
+      "B8D- 1112 788- -4--", "B8D- 1112 7-7- -5--", "68DD -7-7 0101 -7--", "68DD -7-- 01AA -7--", "68DD -4-- A12A -7--",
+
+      "68DD -4-- B-2A -5--", "68DD ---7 AA01 -7--", "68DD ---- AAAA -7--", "6868 -4-4 5--- -C-B", "6868 ---4 2AA1 -7-7",
+      "6868 ---- AAAA -7-7", "6868 ---7 AA01 -7-7", "586- -4-5 5--- -C-B", "586- ---5 2AB- -7-5", "586- ---5 2AA1 -7-7",
+
+      "5831 -4-7 5--- -C-B", "B86- -4-B 58D- -4-C", "B86- -4-B 5-C- -5-C", "B86- -4-B 21C- -7-C", "B86- -4-B 6-B8 -C-7",
+      "B86- 88-C 4-B- -B-5", "B86- 88-C 11C- -4-B", "B86- 88-C 4-A1 -B-7", "B86- -11C D-78 -B-4", "B86- -7-C 21C- -4-B",
+
+      "B86- -4-C D-58 -B-4", "B86- -7-C 5-B- -B-5", "B86- -4-C C-5- -B-5", "B86- -4-C C-21 -B-7", "58D- -4-C B-5- -5-B",
+      "B86- -7-C 5-A1 -B-7", "58D- -7-C 01B- -7-B", "58D- ---C AAB- -7-B", "58D- -7-C 5-A1 -B-4", "58D- -4-C A15- -7-B",
+
+      "B88- -4-B 58D- -11C", "B88- -4-B 5-C- -21C", "B88- -4-B 9-C8 -A14", "B88- 88-C 4-C- -01B", "B88- 88-C 11C- -11B",
+      "B88- -7-C 5-C- -01B", "B88- -7-C 5-B- -A15", "B88- -11C D-78 -A14", "B88- -4-C D-58 -A14", "B88- -4-C C-5- -A15",
+
+      "B3C3 5353 5-5- -5--", "B3C- 6325 6-25 -5--", "B-C- -5-5 5-5- -5--", "B-5- -5-B 5-C- -5-C", "CDD- ---C AAB- ---B",
+      "B-B- -B-B C-C- -C-C", "4632 56-2 5--- 8D3B", "486- -4-5 5--- 8D-B", "486- ---5 2AB- 88-5", "486- ---5 2AA1 88-7",
+
+      "486- -4-- A1C- 88-5", "4831 -4-7 5--- 8D-B", "4831 -4-- 6-CD 86-4", "4831 ---7 3AB8 88-4", "4831 ---7 2AB- 88-5",
+      "4831 ---7 2AA1 88-7", "48D- -4-B 6-B8 8D-4", "48D- 14-A 4-B- 89-C", "48D- -4-B 5-B- 8D-5", "48D- -4-B 5-A1 8D-7",
+
+      "48D- -48D A14- 88-B", "48D- -4-C A15- 88-B", "48D- -4-C B-01 8D-7", "48D- ---C AAB- 88-B", "48D- -11C A17- 88-B",
+      "48D- -11C B-11 8D-7", "4353 5353 5--- 8D-B", "DDDD ---- AAAA ----", "B-C- ---5 C-B- -5--"]
+
+    // avoid color codes, with less markers rendering may get faster
+    var stitches = 'A1=ctctc A2=ctctc A3=ctctc A4=ctctc '+
+                   'B1=ctctc B2=ctctc B3=ctctc B4=ctctc '+
+                   'C1=ctctc C2=ctctc C3=ctctc C4=ctctc '+
+                   'D1=ctctc D2=ctctc D3=ctctc D4=ctctc '
+
+    var container = document.getElementById('diagrams')
+    for (i=0 ; i< 90 ; i++) {
+      var data = dibl.D3Data().get(x[i], 12,12, 0,0, stitches, false)
+      diagram.showGraph({
+        container: '#diagrams',
+        width: 78,
+        height: 78,
+        nodes: data.pairNodes,
+        links: data.pairLinks,
+        scale: 0.5,
+        transform: "translate(0,0)scale(0.5)",
+      })
+      container.childNodes[i].id = 'brick ' + x[i]
+    }
+  </script>
+</body>

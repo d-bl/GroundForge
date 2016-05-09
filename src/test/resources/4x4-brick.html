@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <head>
-  <style>
-    svg { display: inline-block; border: solid 1px #AAA; margin-right: 0.4em; }
-    div { width: 890px; }
-  </style>
+  <style>svg { display: inline-block; border: solid 1px #AAA; margin-right: 0.4em; }</style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
   <script src="https://d-bl.github.io/GroundForge/js/show-graph.js"></script>
   <script src="https://d-bl.github.io/GroundForge/js/matrix-graphs.js"></script>
 </head>
 <body>
-<div id="diagram"></div>
+<div id="diagrams"></div>
   <script>
     var x = [
      "466- 6315 6-76 8666", "4631 66-7 3156 8866", "466- 66-5 6-56 8666", "4631 6688 6-46 8666", "4631 6688 3146 8866",
@@ -26,10 +23,18 @@
 
      "6868 -7-7 2121 -4-4", "4343 5353 5-5- 8686", "4343 5353 2121 8888", "6868 -7-7 0101 -7-7", "5353 5353 5-5- -5-5",
      "6868 -4-4 5-5- -5-5", "5831 -4-7 3158 -7-4", "4631 66-7 6-56 8666"]
+
+    // avoid color codes, with less markers rendering may get faster
+    var stitches = 'A1=ctctc A2=ctctc A3=ctctc A4=ctctc '+
+                   'B1=ctctc B2=ctctc B3=ctctc B4=ctctc '+
+                   'C1=ctctc C2=ctctc C3=ctctc C4=ctctc '+
+                   'D1=ctctc D2=ctctc D3=ctctc D4=ctctc '
+
+    var container = document.getElementById('diagrams')
     for (i=0 ; i< 49 ; i++) {
-      var data = dibl.D3Data().get(x[i], 12,12, 0,0, '', true)
+      var data = dibl.D3Data().get(x[i], 12,12, 0,0, stitches, true)
       diagram.showGraph({
-        container: '#diagram',
+        container: '#diagrams',
         width: 78,
         height: 78,
         nodes: data.pairNodes,
@@ -37,6 +42,7 @@
         scale: 0.5,
         transform: "translate(0,0)scale(0.5)",
       })
+      container.childNodes[i].id = 'brick ' + x[i]
     }
   </script>
 </body>

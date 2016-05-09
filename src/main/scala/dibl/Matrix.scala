@@ -15,7 +15,7 @@
 */
 package dibl
 
-import dibl.Matrix._
+import java.lang.Math.{max, min}
 
 import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
@@ -67,7 +67,7 @@ object Matrix {
         targetCol <- 2 until absCols + 2
       } {
         abs(targetRow)(targetCol) = for ((relRow, relCol) <- rel(targetRow % relRows)(targetCol % relCols))
-          yield (targetRow + relRow, targetCol + relCol)
+          yield (max(1,targetRow + relRow), max(1,targetCol + relCol))
       }
       new FootsideBuilder(abs).build()
       abs
@@ -129,6 +129,11 @@ object Matrix {
     '7' -> SrcNodes((-1,-1),(-1, 0)), // .\|..
     '8' -> SrcNodes(( 0,-1),(-1, 0)), // _.|..
     '9' -> SrcNodes(( 0,-1),(-1,-1)), // _\...
+    // double length for vertical link
+    'A' -> SrcNodes((-2, 0),( 0, 1)), // ..|._
+    'B' -> SrcNodes((-2, 0),(-1, 1)), // ..|/.
+    'C' -> SrcNodes((-1,-1),(-2, 0)), // .\|..
+    'D' -> SrcNodes(( 0,-1),(-2, 0)), // _.|..
     '-' -> SrcNodes()                 // not used node
   )
 
@@ -145,7 +150,7 @@ object Matrix {
         Failure(new IllegalArgumentException(
           s"length of '$matrix' is ${matrix.length} while '$dimensions' asks for $matrixSize"
         ))
-      else if (!matrix.matches("[-0-9]+"))
+      else if (!matrix.matches("[-0-9ABCD]+"))
         Failure(new IllegalArgumentException(
           s"'$matrix' is not a valid matrix string"
         ))

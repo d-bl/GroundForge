@@ -63,7 +63,7 @@ object Settings {
             shiftUp: Int = 0,
             stitches: String = ""
            ): Try[Settings] = {
-    val lines = str.split("[^-0-9]+")
+    val lines = str.split("[^-0-9ABCD]+")
     val dims = s"${lines.length}x${lines(0).length}"
     for {
         _    <- hasEqualLengths(lines)
