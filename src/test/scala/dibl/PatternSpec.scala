@@ -17,7 +17,7 @@ package dibl
 
 import java.io.File
 
-import dibl.Matrix.matrixMap
+import dibl.Matrix.{matrixMap, toRelSrcNodes}
 import org.apache.commons.io.FileUtils
 import org.scalatest.{FlatSpec, Matchers}
 
@@ -29,5 +29,15 @@ class PatternSpec extends FlatSpec {
         FileUtils.write(new File(fileName), Pattern.get(key, i))
       }
     }
+  }
+  "pinwheel brick" should "succeed" in {
+    val fileName = s"target/patterns/pinwheel.svg"
+    val doc = Pattern.createDoc("586--4-55-21-5-7")(isBrick = true, (4, 4))
+    FileUtils.write(new File(fileName), doc)
+  }
+  "checker" should "succeed" in {
+    val fileName = s"target/patterns/checker.svg"
+    val doc = Pattern.createDoc("4831-1175-7-86-5")(isBrick = false, (4, 4))
+    FileUtils.write(new File(fileName), doc)
   }
 }

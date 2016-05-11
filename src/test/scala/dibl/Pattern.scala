@@ -15,74 +15,89 @@
 */
 package dibl
 
-import java.io.File
-
 import dibl.Matrix._
-import org.apache.commons.io.FileUtils
 
 object Pattern {
 
   def get(key: String, nr: Int): String = {
-    val s = matrixMap.get(key).map(_ (nr)).get // TODO error handling
-    val m = toRelSrcNodes(matrix = s, dimensions = key).get
-    createDoc(key, m)
+    val m = matrixMap.get(key).map(_ (nr)).get
+    createDoc(m)(isBrick = true, dims(key).get)
   }
 
-  def createDoc(key: String, m: M): String = {
-    val (height, width) = dims(key).get
-    def cloneRows(i: Int): String = {
-      val ii = i + height * 10
-      List.range(start = -width * 5, end = 500, step = width * 10).
-        map(w => clone(w, i) + clone(w - width * 5, ii)).mkString("")
-    }
-    val clones = List.range(start = -height * 10, end = 500, step = height * 20).
-      map(h => cloneRows(h)).mkString("").replace(clone(0, 0), clone(0, 0).replace("#000", "#008"))
-    val nameSpaces = "xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'"
+  def createDoc(m:String)
+               (implicit isBrick: Boolean, dims: (Int, Int)) = {
+    val (height, width) = dims
+    val hXw = s"${height}x$width"
+    val relative = toRelSrcNodes(matrix = m, dimensions = hXw).get
+
     val a4 = "height='1052' width='744'"
-    s"<svg version='1.1' id='svg2' $a4 $nameSpaces>\n$clones\t<g id='g1'>\n${createOriginal(m)}\t</g>\n</svg>"
+    val nameSpaces = "xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'"
+    val root = s"<svg version='1.1' id='svg2' $a4 $nameSpaces>"
+    val tag = s"<text x='80' y='60'><tspan>$hXw $m</tspan></text>"
+    s"$root\n$clones\n\t$tag\n\t<g id='g1'>\n${original(relative)}\t</g>\n</svg>"
+  }
+
+  def clones()(implicit isBrick: Boolean, dims: (Int, Int)): String = {
+    val (height, width) = dims
+    val brickOffset = if (isBrick) width * 5 else 0
+    def cloneRows(row1: Int): String = {
+      val row2 = row1 + height * 10
+      List.range(start = -(if (isBrick)brickOffset else 10*width), end = 250, step = width * 10).
+        map(w => {
+          clone(w, row1) + clone(w - brickOffset, row2)
+        }).mkString("")
+    }
+    val clones = List.range(start = -height * 10, end = 250, step = height * 20).
+      map(h => cloneRows(h)).mkString("").replace(clone(0, 0), clone(0, 0).replace("#000", "#008"))
+    clones
   }
 
   def clone(i: Int, j: Int): String = {
     val id = createId(i, j)
-    s"\t<use transform='translate($i,$j)' xlink:href='#g1' id='u$id' height='100%' width='100%' y='0' x='0' style='stroke:#000;fill:none'/>\n"
+    val props = "height='100%' width='100%' y='0' x='0' style='stroke:#000;fill:none'"
+    val cloneOf = "g1"
+    s"\t<use transform='translate($i,$j)' xlink:href='#$cloneOf' id='u$id' $props/>\n"
   }
 
-  def createOriginal(m: M): String = {
+  def original(m: M)
+              (implicit isBrick: Boolean, dims: (Int, Int)): String = {
     var paths = ""
     for {
-      i <- m.indices
-      j <- m(0).indices
-    } paths = paths + createNode((i, j), m(i)(j))
+      row <- m.indices
+      col <- m(0).indices
+    } paths = paths + createNode((row, col), m(row)(col))
     paths
   }
 
-  def createNode(target: (Int, Int), n: SrcNodes) = {
+  def createNode(target: (Int, Int), n: SrcNodes)
+                (implicit isBrick: Boolean, dims: (Int, Int)) = {
     if (n.length < 2) ""
     else {
-      val (i, j) = target
-      val id = createId(i, j)
+      val (targetRow, targetCol) = target
+      val id = createId(targetRow, targetCol)
       createLink(s"p1$id", target, n(0)) +
         createLink(s"p2$id", target, n(1))
     }
   }
 
-  def createId(i: Int, j: Int): String =
-    f"${i + 500}%03d${j + 500}%03d"
+  def createId(i: Int, j: Int): String = f"${i + 500}%03d${j + 500}%03d"
 
-  def createLink(id: String, target: (Int, Int), src: (Int, Int)): String = {
-    val (y, x) = target
-    val (dy, dx) = src
+  def createLink(id: String, target: (Int, Int), source: (Int, Int))
+                (implicit isBrick: Boolean, dims: (Int, Int)): String = {
     val offset = 120
-    val s = s"${offset + (x * 10)},${offset + (y * 10)} ${offset + (dx + x) * 10},${offset + (dy + y) * 10}"
-    s"\t\t<path id='$id' d='M $s'/>\n"
+    val (height, width) = dims
+    val (targetRow, targetCol) = target
+    val (dRow, dCol) = source
+    val sourceCol = (targetCol + dCol + (if (isBrick) width/2 else width)) % width // FIXME
+    val sourceRow = (targetRow + dRow + height) % height
+    val tag = s"${s"${toNodeId(sourceCol, sourceRow)}"}-${toNodeId(targetCol, targetRow)}"
+    val targetNode = s"${offset + (targetCol * 10)},${offset + (targetRow * 10)}"
+    val sourceNode = s"${offset + (dCol + targetCol) * 10},${offset + (dRow + targetRow) * 10}"
+    val pathData = s"M $sourceNode $targetNode"
+    s"\t\t<path id='$id' d='$pathData'><title>$tag</title></path>\n"
   }
 
-  def main(args: Array[String]): Unit = {
-    matrixMap.keys.foreach{ key =>
-      for (i <- matrixMap.get(key).get.indices){
-        val fileName = s"target/patterns/${key}_$i.svg"
-        FileUtils.write(new File(fileName), Pattern.get(key, i))
-      }
-    }
-  }
+  def toNodeId(col: Int, row: Int)
+              (implicit isBrick: Boolean, dims: (Int, Int)): String =
+    "ABCDEFGIIJKLMNOPQRSTUVWXYZ" (col) + row.toString
 }
