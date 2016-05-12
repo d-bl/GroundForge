@@ -31,7 +31,7 @@ class PatternSpec extends FlatSpec {
     }
   }
   "pinwheel brick" should "succeed" in {
-    val fileName = s"target/patterns/pinwheel.svg"
+    val fileName = s"target/patterns/brick.svg"
     val doc = Pattern.createDoc("586--4-55-21-5-7")(isBrick = true, (4, 4))
     FileUtils.write(new File(fileName), doc)
   }

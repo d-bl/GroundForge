@@ -26,15 +26,25 @@ object Pattern {
 
   def createDoc(m:String)
                (implicit isBrick: Boolean, dims: (Int, Int)) = {
+    val a4 = "height='1052' width='744'"
+    val nameSpaces = "xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'"
+    s"${s"<svg version='1.1' id='svg2' $a4 $nameSpaces>"}\n${pattern(m)}\n</svg>"
+  }
+
+  def pattern(m: String)
+             (implicit isBrick: Boolean, dims: (Int, Int)): String = {
     val (height, width) = dims
     val hXw = s"${height}x$width"
     val relative = toRelSrcNodes(matrix = m, dimensions = hXw).get
 
-    val a4 = "height='1052' width='744'"
-    val nameSpaces = "xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'"
-    val root = s"<svg version='1.1' id='svg2' $a4 $nameSpaces>"
-    val tag = s"<text x='80' y='60'><tspan>$hXw $m</tspan></text>"
-    s"$root\n$clones\n\t$tag\n\t<g id='g1'>\n${original(relative)}\t</g>\n</svg>"
+    val link = "https://d-bl.github.io/GroundForge/advanced.html?matrix=" + m.grouped(4).toArray.mkString("%0D")
+    val tag = s"<text style='font-family:Arial;font-size:10'>\n" +
+      s"\t <tspan x='80' y='30'>${if (isBrick) "brick wall" else "checker board"} $hXw $m</tspan>\n" +
+      s"\t <tspan x='80' y='50' style='fill:#008;'>\n" +
+      s"\t  <a xlink:href='$link'>pair/thread diagrams</a>\n" +
+      s"\t </tspan>\n" +
+      s"\t</text>\n"
+    s"$clones\n\t$tag\n\t<g id='g1'>\n${original(relative)}\t</g>"
   }
 
   def clones()(implicit isBrick: Boolean, dims: (Int, Int)): String = {
@@ -88,8 +98,11 @@ object Pattern {
     val (height, width) = dims
     val (targetRow, targetCol) = target
     val (dRow, dCol) = source
-    val sourceCol = (targetCol + dCol + (if (isBrick) width/2 else width)) % width // FIXME
     val sourceRow = (targetRow + dRow + height) % height
+    val sourceCol =
+      if (isBrick && targetRow == 0 && dRow != 0)
+        (targetCol + dCol + width/2) % width
+      else (targetCol + dCol + width) % width
     val tag = s"${s"${toNodeId(sourceCol, sourceRow)}"}-${toNodeId(targetCol, targetRow)}"
     val targetNode = s"${offset + (targetCol * 10)},${offset + (targetRow * 10)}"
     val sourceNode = s"${offset + (dCol + targetCol) * 10},${offset + (dRow + targetRow) * 10}"
