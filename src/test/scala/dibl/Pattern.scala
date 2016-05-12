@@ -37,9 +37,10 @@ object Pattern {
     val hXw = s"${height}x$width"
     val relative = toRelSrcNodes(matrix = m, dimensions = hXw).get
 
-    val link = "https://d-bl.github.io/GroundForge/advanced.html?matrix=" + m.grouped(4).toArray.mkString("%0D")
-    val tag = s"<text style='font-family:Arial;font-size:10'>\n" +
-      s"\t <tspan x='80' y='30'>${if (isBrick) "brick wall" else "checker board"} $hXw $m</tspan>\n" +
+    val link = "https://d-bl.github.io/GroundForge/advanced.html" +
+      "?matrix=" + m.grouped(4).toArray.mkString("%0D") + (if (isBrick) "&amp;bricks=" else "")
+    val tag = s"<text style='font-family:Arial;font-size:11pt'>\n" +
+      s"\t <tspan x='80' y='30'>${if (isBrick) "brick wall" else "checker board"}, $hXw, $m</tspan>\n" +
       s"\t <tspan x='80' y='50' style='fill:#008;'>\n" +
       s"\t  <a xlink:href='$link'>pair/thread diagrams</a>\n" +
       s"\t </tspan>\n" +
