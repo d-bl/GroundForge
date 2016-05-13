@@ -15,41 +15,37 @@
 */
 package dibl
 
-import dibl.Matrix._
+import dibl.Matrix.toRelSrcNodes
 
 object Pattern {
 
-  def get(key: String, nr: Int): String = {
-    val m = matrixMap.get(key).map(_ (nr)).get
-    createDoc(m)(isBrick = true, dims(key).get)
-  }
+  private val a4 = "height='1052' width='744'"
+  private val nameSpaces = "xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'"
 
-  def createDoc(m:String)
-               (implicit isBrick: Boolean, dims: (Int, Int)) = {
-    val a4 = "height='1052' width='744'"
-    val nameSpaces = "xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'"
-    s"${s"<svg version='1.1' id='svg2' $a4 $nameSpaces>"}\n${pattern(m)}\n</svg>"
-  }
+  def doc(patch: String) =
+    s"${s"<svg version='1.1' id='svg2' $a4 $nameSpaces>"}\n$patch\n</svg>"
+}
 
-  def pattern(m: String)
-             (implicit isBrick: Boolean, dims: (Int, Int)): String = {
-    val (height, width) = dims
-    val hXw = s"${height}x$width"
+class Pattern (m:String, isBrick: Boolean, height: Int, width: Int,
+               groupId: String = "g1", offsetX: Int = 80, offsetY: Int = 120) {
+
+  private val hXw = s"${height}x$width"
+
+  def patch: String = {
     val relative = toRelSrcNodes(matrix = m, dimensions = hXw).get
-
+    val mType = if (isBrick) "brick wall" else "checker board"
     val link = "https://d-bl.github.io/GroundForge/advanced.html" +
       "?matrix=" + m.grouped(4).toArray.mkString("%0D") + (if (isBrick) "&amp;bricks=" else "")
     val tag = s"<text style='font-family:Arial;font-size:11pt'>\n" +
-      s"\t <tspan x='80' y='30'>${if (isBrick) "brick wall" else "checker board"}, $hXw, $m</tspan>\n" +
-      s"\t <tspan x='80' y='50' style='fill:#008;'>\n" +
+      s"\t <tspan x='${offsetX - 50}' y='${offsetY - 80}'>$mType, $hXw, $m</tspan>\n" +
+      s"\t <tspan x='${offsetX - 50}' y='${offsetY - 60}' style='fill:#008;'>\n" +
       s"\t  <a xlink:href='$link'>pair/thread diagrams</a>\n" +
       s"\t </tspan>\n" +
       s"\t</text>\n"
-    s"$clones\n\t$tag\n\t<g id='g1'>\n${original(relative)}\t</g>"
+    s"\n<g>\n$clones\n\t$tag\n\t<g id='$groupId'>\n${original(relative)}\t</g>\n</g>\n"
   }
 
-  def clones()(implicit isBrick: Boolean, dims: (Int, Int)): String = {
-    val (height, width) = dims
+  private def clones: String = {
     val brickOffset = if (isBrick) width * 5 else 0
     def cloneRows(row1: Int): String = {
       val row2 = row1 + height * 10
@@ -58,45 +54,29 @@ object Pattern {
           clone(w, row1) + clone(w - brickOffset, row2)
         }).mkString("")
     }
-    val clones = List.range(start = -height * 10, end = 250, step = height * 20).
-      map(h => cloneRows(h)).mkString("").replace(clone(0, 0), clone(0, 0).replace("#000", "#008"))
-    clones
+    val cloneAtOriginal = clone(0, 0)
+    List.range(start = -height * 10, end = 200, step = height * 20)
+      .map(h => cloneRows(h)).mkString("")
+      .replace(cloneAtOriginal, cloneAtOriginal.replace("#000", "#008"))
   }
 
-  def clone(i: Int, j: Int): String = {
-    val id = createId(i, j)
-    val props = "height='100%' width='100%' y='0' x='0' style='stroke:#000;fill:none'"
-    val cloneOf = "g1"
-    s"\t<use transform='translate($i,$j)' xlink:href='#$cloneOf' id='u$id' $props/>\n"
-  }
+  private def clone(i: Int, j: Int): String =
+    s"\t<use transform='translate($i,$j)' xlink:href='#$groupId' ${"style='stroke:#000;fill:none'"}/>\n"
 
-  def original(m: M)
-              (implicit isBrick: Boolean, dims: (Int, Int)): String = {
-    var paths = ""
-    for {
-      row <- m.indices
-      col <- m(0).indices
-    } paths = paths + createNode((row, col), m(row)(col))
-    paths
-  }
+  private def original(m: M): String =
+    m.indices.flatMap(row =>
+      m(row).indices.flatMap(col =>
+        createNode((row, col), m(row)(col))
+      )
+    ).mkString("")
 
-  def createNode(target: (Int, Int), n: SrcNodes)
-                (implicit isBrick: Boolean, dims: (Int, Int)) = {
+  private def createNode(target: (Int, Int), n: SrcNodes): String =
     if (n.length < 2) ""
     else {
-      val (targetRow, targetCol) = target
-      val id = createId(targetRow, targetCol)
-      createLink(s"p1$id", target, n(0)) +
-        createLink(s"p2$id", target, n(1))
+      createLink(target, n(0)) + createLink(target, n(1))
     }
-  }
 
-  def createId(i: Int, j: Int): String = f"${i + 500}%03d${j + 500}%03d"
-
-  def createLink(id: String, target: (Int, Int), source: (Int, Int))
-                (implicit isBrick: Boolean, dims: (Int, Int)): String = {
-    val offset = 120
-    val (height, width) = dims
+  private def createLink(target: (Int, Int), source: (Int, Int)): String = {
     val (targetRow, targetCol) = target
     val (dRow, dCol) = source
     val sourceRow = (targetRow + dRow + height) % height
@@ -105,13 +85,12 @@ object Pattern {
         (targetCol + dCol + width/2) % width
       else (targetCol + dCol + width) % width
     val tag = s"${s"${toNodeId(sourceCol, sourceRow)}"}-${toNodeId(targetCol, targetRow)}"
-    val targetNode = s"${offset + (targetCol * 10)},${offset + (targetRow * 10)}"
-    val sourceNode = s"${offset + (dCol + targetCol) * 10},${offset + (dRow + targetRow) * 10}"
+    val targetNode = s"${offsetX + (targetCol * 10)},${offsetY + (targetRow * 10)}"
+    val sourceNode = s"${offsetX + (dCol + targetCol) * 10},${offsetY + (dRow + targetRow) * 10}"
     val pathData = s"M $sourceNode $targetNode"
-    s"\t\t<path id='$id' d='$pathData'><title>$tag</title></path>\n"
+    s"\t\t<path d='$pathData'><title>$tag</title></path>\n"
   }
 
-  def toNodeId(col: Int, row: Int)
-              (implicit isBrick: Boolean, dims: (Int, Int)): String =
+  private def toNodeId(col: Int, row: Int): String =
     "ABCDEFGIIJKLMNOPQRSTUVWXYZ" (col) + row.toString
 }
