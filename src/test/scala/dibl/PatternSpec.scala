@@ -18,40 +18,44 @@ package dibl
 import java.io.File
 
 import dibl.Matrix._
-import dibl.Pattern.doc
 import org.apache.commons.io.FileUtils
 import org.scalatest.{FlatSpec, Matchers}
 
-class PatternSpec extends FlatSpec {
+class PatternSpec extends FlatSpec with Matchers {
   "get" should "succeed" in {
     matrixMap.keys.foreach{ key =>
       for (nr <- matrixMap.get(key).get.indices){
         val m = matrixMap.get(key).map(_ (nr)).get
         val (height,  width) = dims(key).get
-        val s = new Pattern(m, true, height,  width).patch
-        FileUtils.write(new File(s"target/patterns/${key}_$nr.svg"), doc(s))
+        val s = new PatternSheet().add(m, isBrick = true, rows = height,  cols = width).toSvgDoc()
+        FileUtils.write(new File(s"target/patterns/${key}_$nr.svg"), s)
+        s should include ("#008")
       }
     }
   }
 
-  "pinwheel brick" should "succeed" in {
-    val fileName = s"target/patterns/brick.svg"
-    val s = new Pattern("586--4-55-21-5-7", isBrick = true, height = 4, width = 4).patch
-    FileUtils.write(new File(fileName), doc(s))
+  "rose" should "succeed" in {
+    val patterns = new PatternSheet
+    patterns.add("5831-4-7", isBrick = true, rows = 2, cols = 4)
+    patterns.add("-43734-7", isBrick = true, rows = 2, cols = 4)
+    patterns.add("5831-4-73158-7-4", isBrick = false, rows = 4, cols = 4)
+    patterns.add("4830--77", isBrick = true, rows = 2, cols = 4)
+    FileUtils.write(new File(s"target/patterns/rose.svg"), patterns.toSvgDoc())
   }
 
-  "checker" should "succeed" in {
-    val fileName = s"target/patterns/checker.svg"
-    val s = new Pattern("4831-1175-7-86-5", isBrick = false, height = 4, width = 4).patch
-    FileUtils.write(new File(fileName), doc(s))
+  "pattern sheet" should "succeed" in {
+    val patterns = new PatternSheet
+    patterns.add("586--4-55-21-5-7", isBrick = true, rows = 4, cols = 4)
+    patterns.add("586--4-55-21-5-7", isBrick = true, rows = 4, cols = 4)
+    patterns.add("4831-1175-7-86-5", isBrick = false, rows = 4, cols = 4)
+    patterns.add("48322483", isBrick = true, rows = 2, cols = 4)
+    patterns.add("588--4-56-58-214", isBrick = false, rows = 4, cols = 4)
+    FileUtils.write(new File(s"target/patterns/pattern-sheet.svg"), patterns.toSvgDoc())
   }
 
-  "multiple patches" should "succeed" in {
-    val fileName = s"target/patterns/multi.svg"
-    val s =
-      new Pattern("586--4-55-21-5-7", true, 4, 4, "g1", 80, 120).patch +
-      new Pattern("4831-1175-7-86-5", false, 4, 4, "g2", 420, 450).patch +
-      new Pattern("48322483", true, 2, 4, "g3", 80, 780).patch
-    FileUtils.write(new File(fileName), doc(s))
+  "minimal" should "succeed" in {
+    val patterns = new PatternSheet(1, "width='340' height='330'")
+    patterns.add("586--4-55-21-5-7", isBrick = true, rows = 4, cols = 4)
+    FileUtils.write(new File(s"target/patterns/minimal.svg"), patterns.toSvgDoc())
   }
 }

@@ -17,19 +17,10 @@ package dibl
 
 import dibl.Matrix.toRelSrcNodes
 
-object Pattern {
-
-  private val a4 = "height='1052' width='744'"
-  private val nameSpaces = "xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'"
-
-  def doc(patch: String) =
-    s"${s"<svg version='1.1' id='svg2' $a4 $nameSpaces>"}\n$patch\n</svg>"
-}
-
-class Pattern (m:String, isBrick: Boolean, height: Int, width: Int,
+class Pattern (m:String, isBrick: Boolean, rows: Int, cols: Int,
                groupId: String = "g1", offsetX: Int = 80, offsetY: Int = 120) {
 
-  private val hXw = s"${height}x$width"
+  private val hXw = s"${rows}x$cols"
 
   def patch: String = {
     val relative = toRelSrcNodes(matrix = m, dimensions = hXw).get
@@ -46,16 +37,16 @@ class Pattern (m:String, isBrick: Boolean, height: Int, width: Int,
   }
 
   private def clones: String = {
-    val brickOffset = if (isBrick) width * 5 else 0
+    val brickOffset = if (isBrick) cols * 5 else 0
     def cloneRows(row1: Int): String = {
-      val row2 = row1 + height * 10
-      List.range(start = -(if (isBrick)brickOffset else 10*width), end = 250, step = width * 10).
+      val row2 = row1 + rows * 10
+      List.range(start = -(if (isBrick)brickOffset else 10*cols), end = 250, step = cols * 10).
         map(w => {
           clone(w, row1) + clone(w - brickOffset, row2)
         }).mkString("")
     }
     val cloneAtOriginal = clone(0, 0)
-    List.range(start = -height * 10, end = 200, step = height * 20)
+    List.range(start = -rows * 10, end = 200, step = rows * 20)
       .map(h => cloneRows(h)).mkString("")
       .replace(cloneAtOriginal, cloneAtOriginal.replace("#000", "#008"))
   }
@@ -79,11 +70,11 @@ class Pattern (m:String, isBrick: Boolean, height: Int, width: Int,
   private def createLink(target: (Int, Int), source: (Int, Int)): String = {
     val (targetRow, targetCol) = target
     val (dRow, dCol) = source
-    val sourceRow = (targetRow + dRow + height) % height
+    val sourceRow = (targetRow + dRow + rows) % rows
     val sourceCol =
       if (isBrick && targetRow == 0 && dRow != 0)
-        (targetCol + dCol + width/2) % width
-      else (targetCol + dCol + width) % width
+        (targetCol + dCol + cols/2) % cols
+      else (targetCol + dCol + cols) % cols
     val tag = s"${s"${toNodeId(sourceCol, sourceRow)}"}-${toNodeId(targetCol, targetRow)}"
     val targetNode = s"${offsetX + (targetCol * 10)},${offsetY + (targetRow * 10)}"
     val sourceNode = s"${offsetX + (dCol + targetCol) * 10},${offsetY + (dRow + targetRow) * 10}"
