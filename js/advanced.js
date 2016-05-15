@@ -43,8 +43,14 @@ function init() {
   if (location.indexOf("?") >= 0) {
     location.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
         var fields = document.getElementsByName(key)
+        var val = decodeURIComponent(value).replace(/[+]/g," ")
         if (fields.length > 0) {
-            fields[0].value = decodeURIComponent(value).replace(/[+]/g," ")
+          if (fields[0].type!="checkbox")
+            fields[0].value = val
+          else {
+          val = val.toLowerCase()
+            fields[0].checked = (val=='on' || val=='true' || val == '')
+          }
         }
     })
   }
