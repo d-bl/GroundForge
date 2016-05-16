@@ -15,7 +15,7 @@ The 4x4 pages explore patterns of the [inkscape plugin] some of the checker boar
 
 * Let the animation of the html page complete.
 * Use the inspector of the browser to copy all the SVG objects into a file, say: thumbs.txt
-* Split the one liner file into multiple lines at each  the smallest ones may not be valid.
+* Split the one liner file into multiple lines at each `<svg id=` the smallest ones may not be valid.
 * Execute the following commands and figure out how to assign the SVG id to the png property 'title' or change the file name.
 
         cat thumbs.txt | awk '/<svg id/ {n++}{print > "thumb-" n ".svg"}'
