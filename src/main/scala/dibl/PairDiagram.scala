@@ -58,7 +58,7 @@ object PairDiagram {
 
   /** Creates nodes for a pair diagram
     *
-    * @return properties per node as in https://github.com/d-bl/GroundForge/blob/gh-pages/sample.js
+    * @return properties per node as in https://github.com/d-bl/GroundForge/blob/gh-pages/js/sample.js
     */
   def toNodes (s: Settings): Seq[Props] = {
 

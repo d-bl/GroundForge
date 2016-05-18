@@ -41,11 +41,11 @@ object Convert {
   def main (args: Array[String]) = {
 
     // a single list in one object is too large for the compiler
-    for (input <- M4x4a.matrices ++ M4x4b.matrices) {
-      val s = toChars(toRelative(4,4,input))
-      if (s.matches(".*[ABCD].*"))
-        println(s)
-    }
+//    for (input <- M4x4a.matrices ++ M4x4b.matrices) {
+//      val s = toChars(toRelative(4,4,input))
+//      if (s.matches(".*[ABCD].*"))
+//        println(s)
+//    }
     for (input <- Misc.m1x1) {
       val s = toChars(toRelative(1,1,input))
       if (!s.contains("@"))
@@ -68,6 +68,11 @@ object Convert {
     }
     for (input <- Misc.m3x3) {
       val s = toChars(toRelative(3,3,input))
+      if (!s.contains("@"))
+        println(s)
+    }
+    for (input <- Misc.m4x4) {
+      val s = toChars(toRelative(4,4,input))
       if (!s.contains("@"))
         println(s)
     }
