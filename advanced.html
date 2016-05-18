@@ -36,103 +36,16 @@
     ><img style="float: right" src="images/logo-medium.png" alt="DiBL logo"/></a>
     <h1>GroundForge : Customised diagrams with advanced options.</h1>
     <p>
-        Try one of the completely <a href="index.html">configured</a> patterns,
-        or do it yourself by choosing a matrix and other parameters.
+        Select an easy-to-use pattern from the thumbnails on the <a href="index.html">intro</a> page,
+        select a more do-it-yourself pattern from all available <a href="thumbs.html">thumb nails</a>
+        or try your own matrix.
         The <a href="https://github.com/d-bl/GroundForge/wiki"
-        >user guide</a> has thumbnails of available patterns,
-        explains where to find matching pattern sheets, how to reshape the patches on the sheets
-        and provides more tips and tricks.
+        >user guide</a> provides tips and tricks.
     </p>
 </article>
 <form>
     <fieldset id="pattern">
         <legend>Pattern matrix</legend>
-        <select onChange="setMatrix(this)" title="thumbnail number of preconfigured&#013;pattern between square brackets">
-            <option disabled selected>select a valid matrix</option>
-            <option disabled>--- 2x2 brick ---</option>
-            <option value="43     68">1: 43 68 [3]</option>
-            <option disabled>--- 2x4 brick ---</option>
-            <option value="5831 -4-7"> 0: 5831 -4-7  [1]</option>
-            <option value="5831 -4-7"> 1: 5831 -4-7  [2]</option>
-            <option value="4373 5-53"> 2: 4373 5-53  [4]</option>
-            <option value="4343 6868"> 3: 4343 6868  [5]</option>
-            <option value="4353 5863"> 4: 4353 5863  [6]</option>
-            <option value="8888 1111"> 5: 8888 1111  [7]</option>
-            <option value="4488 1748"> 6: 4488 1748  [9]</option>
-            <option value="4840 5887"> 7: 4840 5887 [10]</option>
-            <option value="46-1 6868"> 8: 46-1 6868 [11]</option>
-            <option value="4863 5663"> 9: 4863 5663 [12]</option>
-            <option value="5353 5353">10: 5353 5353 [13]</option>
-            <option value="4312 6-78">11: 4312 6-78 [14]</option>
-            <option value="588- 14-2">12: 588- 14-2 [17]</option>
-            <option value="4841 5377">13: 4841 5377 [18]</option>
-            <option value="4683 6-48">14: 4683 6-48 [19]</option>
-            <option value="6868 -4-4">15: 6868 -4-4 [20]</option>
-            <option value="-486 6-48">16: -486 6-48 [21]</option>
-            <option value="6888 14-1">17: 6888 14-1     </option>
-            <option value="4663 6668">18: 4663 6668     </option>
-            <option value="4311 6888">19: 4311 6888     </option>
-            <option value="4832 2483">20: 4832 2483     </option>
-            <option value="4322 5-73">21: 4322 5-73     </option>
-            <option value="46-2 6-58">22: 46-2 6-58     </option>
-            <option value="48-2 5-53">23: 48-2 5-53     </option>
-            <option value="466- 6686">24: 466- 6686     </option>
-            <option value="586- -4-5">25: 586- -4-5     </option>
-            <option value="4466 7781">26: 4466 7781     </option>
-            <option value="4883 5-43">27: 4883 5-43  [8]</option>
-            <option value="4815 4-77">28: 4815 4-77  </option>
-            <option value="4848 7171">29: 4848 7171  </option>
-            <option value="8464 7712">30: 8464 7712  </option>
-            <option value="4631 6688">31: 4631 6688  </option>
-            <option value="4683 3468">32: 4683 3468  </option>
-            <option value="4632 3488">33: 4632 3488  </option>
-            <option value="1483 8-48">34: 1483 8-48  </option>
-            <option disabled>--- 4x2 brick ---</option>
-            <option value="43 68 66 66"> 0: 43 68 66 66</option>
-            <option value="43 5- 86 66"> 1: 43 5- 86 66</option>
-            <option value="43 5- -5 68"> 2: 43 5- -5 68</option>
-            <option value="43 53 53 68"> 3: 43 53 53 68</option>
-            <option value="43 21 -7 68"> 4: 43 21 -7 68</option>
-            <option value="66 66 -4 68"> 5: 66 66 -4 68</option>
-            <option value="43 53 68 66"> 6: 43 53 68 66</option>
-            <option value="66 -4 5- 86"> 7: 66 -4 5- 86</option>
-            <option value="43 5- 35 86"> 8: 43 5- 35 86</option>
-            <option value="43 21 -4 98"> 9: 43 21 -4 98</option>
-            <option value="43 68 34 86">10: 43 68 34 86</option>
-            <option value="68 -4 21 7-">11: 68 -4 21 7-</option>
-            <option value="68 4- -5 5-">12: 68 4- -5 5-</option>
-            <option disabled>--- 4x4 brick ---</option>
-            <option value="466- 6315 6-76 8666"> 0: 466- 6315 6-76 8666</option>
-            <option value="4631 66-7 3156 8866"> 1: 4631 66-7 3156 8866</option>
-            <option value="466- 66-5 6-56 8666"> 2: 466- 66-5 6-56 8666</option>
-            <option value="4631 6688 6-46 8666"> 3: 4631 6688 6-46 8666</option>
-            <option value="4631 6688 3146 8866"> 4: 4631 6688 3146 8866</option>
-            <option value="4631 6317 6-76 8666"> 5: 4631 6317 6-76 8666</option>
-            <option value="4631 6317 3176 8866"> 6: 4631 6317 3176 8866</option>
-            <option value="4343 5353 5-21 8688"> 7: 4343 5353 5-21 8688</option>
-            <option value="586- -4-5 5-21 -5-7"> 8: 586- -4-5 5-21 -5-7</option>
-            <option value="5831 -4-7 5831 -4-7"> 9: 5831 -4-7 5831 -4-7</option>
-            <option value="6868 -114 6888 -4-4">10: 6868 -114 6888 -4-4</option>
-            <option value="586- -4-5 6868 -4-4">11: 586- -4-5 6868 -4-4</option>
-            <option value="586- -4-5 5-5- -5-5">12: 586- -4-5 5-5- -5-5</option>
-            <option value="586- -789 2111 -4-4">13: 586- -789 2111 -4-4</option>
-            <option value="586- -4-5 215- -7-5">14: 586- -4-5 215- -7-5</option>
-            <option value="586- -4-5 2121 -7-7">15: 586- -4-5 2121 -7-7</option>
-            <option value="586- 8889 1111 -4-4">16: 586- 8889 1111 -4-4</option>
-            <option value="586- -115 6888 -4-4">17: 586- -115 6888 -4-4</option>
-            <option value="586- -115 588- -4-5">18: 586- -115 588- -4-5</option>
-            <option value="586- -115 6-78 -5-4">19: 586- -115 6-78 -5-4</option>
-            <option value="586- -115 5-7- -5-5">20: 586- -115 5-7- -5-5</option>
-            <option value="586- 1112 788- -4-5">21: 586- 1112 788- -4-5</option>
-            <option value="586- 1112 8-78 -5-4">22: 586- 1112 8-78 -5-4</option>
-            <option value="586- 1112 7-7- -5-5">23: 586- 1112 7-7- -5-5</option>
-            <option value="5831 -4-7 6868 -4-4">24: 5831 -4-7 6868 -4-4</option>
-            <option value="5831 -4-7 5-5- -5-5">25: 5831 -4-7 5-5- -5-5</option>
-            <option value="5831 -4-7 6-58 -5-4">26: 5831 -4-7 6-58 -5-4</option>
-            <option value="466- 6686 6-46 8666">27: 466- 6686 6-46 8666</option>
-            <option value="586- -4-5 6-58 -5-4">28: 586- -4-5 6-58 -5-4</option>
-            <option value="6868 88-7 1121 -4-4">29: 6868 88-7 1121 -4-4</option>
-        </select><br/>
 <textarea id="matrix" name="matrix" rows="4" cols="6" spellcheck="false"
 >586-
 -4-5
@@ -140,7 +53,7 @@
 -5-7</textarea>
         <input id="bricks" name="bricks" type="checkbox"><label for="bricks">stack as bricks</label><br/>
         <p>Legend :</p><img src="images/legend.png" id="legend" alt="legend">
-        <p>A-D represent longer vertical lines <br/>(skipping a node)</p>
+        <p>A-D represent longer vertical lines <br/>(skipping a grid position)</p>
     </fieldset>
     <fieldset>
         <legend>Stitches</legend>
@@ -211,26 +124,25 @@ C4=tctc</textarea>
     <div id="threads"></div>
 </div>
 
-<p id="footer">
-    <a href="https://github.com/d-bl/GroundForge/issues/50"
-    >Share your samples</a>
-    &mdash; <a href="https://github.com/d-bl/GroundForge/releases"
->Release notes</a>
-    &mdash; <a href="https://github.com/d-bl/GroundForge/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+-label%3A%22Browser+support%22+-label%3A%22nice+to+have%22+"
->Issues</a>
-    &mdash; <a href="https://github.com/d-bl/GroundForge/issues?q=is%3Aissue+is%3Aopen+label%3A%22Browser+support%22"
-               title="Modern desktop versions of Chrome, FireFox and Safari are fine&#013;Follow the link for issues in other situations."
-><img id="browsers" src="images/browsers.png"
-></a><!-- image assembled from http://www.iconarchive.com -->
-    &mdash; Powered<sup>&nbsp;<a href="https://github.com/d-bl/GroundForge/tree/gh-pages#how-its-made--under-the-hood"
->how</a></sup>&nbsp;by:&nbsp;<a href="https://tesselace.com" title="Algorithmically designed lace tessellations"
->TesseLace</a>,&nbsp;<a href="https://d3js.org" title="Data Driven Documents"
->D3.js</a>,&nbsp;<a href="http://www.menucool.com/color-picker" title="MenuCool Color Picker"
->Menucool</a>
-</p>
-
-<!-- Start of StatCounter Code for Default Guide -->
-<script type="text/javascript">
+  <p id="footer">
+        <a href="https://github.com/d-bl/GroundForge/issues/50"
+        >Share your samples</a>
+        &mdash; <a href="https://github.com/d-bl/GroundForge/releases"
+       >Release notes</a>
+        &mdash; <a href="https://github.com/d-bl/GroundForge/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+-label%3A%22Browser+support%22+-label%3A%22nice+to+have%22+"
+       >Issues</a>
+        &mdash; <a href="https://github.com/d-bl/GroundForge/issues?q=is%3Aissue+is%3Aopen+label%3A%22Browser+support%22"
+                   title="Modern desktop versions of Chrome, FireFox and Safari are fine&#013;Follow the link for issues in other situations."
+       ><img id="browsers" src="images/browsers.png"
+       ></a><!-- image assembled from http://www.iconarchive.com -->
+        &mdash; Powered<sup>&nbsp;<a href="https://github.com/d-bl/GroundForge/tree/gh-pages#how-its-made--under-the-hood"
+       >how</a></sup>&nbsp;by:&nbsp;<a href="https://tesselace.com" title="Algorithmically designed lace tessellations"
+       >TesseLace</a>,&nbsp;<a href="https://d3js.org" title="Data Driven Documents"
+       >D3.js</a>,&nbsp;<a href="http://www.menucool.com/color-picker" title="MenuCool Color Picker"
+       >Menucool</a>
+    </p>
+  <!-- Start of StatCounter Code for Default Guide -->
+  <script type="text/javascript">
         var sc_project=10865294;
         var sc_invisible=0;
         var sc_security="2e4f5d96";
@@ -240,11 +152,10 @@ C4=tctc</textarea>
         scJsHost+
         "statcounter.com/counter/counter.js'></"+"script>");
         </script>
-<noscript><div class="statcounter"><a title="web analytics"
-                                      href="http://statcounter.com/" target="_blank"><img
-        class="statcounter"
-        src="http://c.statcounter.com/10865294/0/2e4f5d96/0/"
-        alt="web analytics"></a></div></noscript>
-<!-- End of StatCounter Code for Default Guide -->
-
+  <noscript><div class="statcounter"><a title="web analytics"
+                                        href="http://statcounter.com/" target="_blank"><img
+          class="statcounter"
+          src="http://c.statcounter.com/10865294/0/2e4f5d96/0/"
+          alt="web analytics"></a></div></noscript>
+  <!-- End of StatCounter Code for Default Guide -->
 </body>
