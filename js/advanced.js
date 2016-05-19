@@ -32,18 +32,15 @@ function load() {
     transform: "translate(0,0)scale(" + threadScale + ")",
   })
 }
-function setMatrix(x){
-   document.getElementById('matrix').value = x.options[x.selectedIndex].value.replace(/ +/g,'\n')
-   document.getElementById('bricks').checked = true
-   x.selectedIndex = 0
-   load()
-}
 function init() {
   var location = (window.location.href + "").replace("#","")
+  var patterns = new dibl.PatternSheet(2, "height='210mm' width='297mm'")
   if (location.indexOf("?") >= 0) {
     location.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+
+        // fill form
         var fields = document.getElementsByName(key)
-        var val = decodeURIComponent(value).replace(/[+]/g," ")
+        var val = decodeURIComponent(value).replace(/[+]/g, " ")
         if (fields.length > 0) {
           if (fields[0].type!="checkbox")
             fields[0].value = val
@@ -52,6 +49,15 @@ function init() {
             fields[0].checked = (val=='on' || val=='true' || val == '')
           }
         }
+        // create pattern sheet
+        if (key && key == 'patch') {
+           var patchArgs = val.split(";")
+           patterns.add(patchArgs[0], patchArgs[1]=='bricks', patchArgs[2]*1, patchArgs[3]*1)
+        }
     })
   }
+  var doc = patterns.toSvgDoc().trim()
+  var container = document.getElementById("sheet")
+  if (container && doc != "" && location.includes('patch='))
+    container.innerHTML = patterns.toSvgDoc()
 }
