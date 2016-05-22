@@ -36,7 +36,7 @@ function init() {
   var location = (window.location.href + "").replace("#","")
   var patterns = new dibl.PatternSheet(2, "height='210mm' width='297mm'")
   if (location.indexOf("?") >= 0) {
-    location.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+    location.replace(/[?&]+([^=&]+)(=([^&]*))?/gi, function(m,key,m2,value) {
 
         // fill form
         var fields = document.getElementsByName(key)
@@ -45,19 +45,23 @@ function init() {
           if (fields[0].type!="checkbox")
             fields[0].value = val
           else {
-          val = val.toLowerCase()
-            fields[0].checked = (val=='on' || val=='true' || val == '')
+            val = val.toLowerCase().trim()
+            fields[0].checked = (!value || val=='on' || val=='true' || val == '')
           }
         }
         // create pattern sheet
-        if (key && key == 'patch') {
+        if (key && key == 'matrix') {
+           var rows = val.split(/[^-0-9A-D]+/)
+           var m = val.replace(/[^-0-9A-D]+/g,'')
+           patterns.add(m, location.indexOf('&bricks') >= 0, rows.length, rows[0].length)
+        }
+        else if (key && key == 'patch') {
            var patchArgs = val.split(";")
-           patterns.add(patchArgs[0], patchArgs[1]=='bricks', patchArgs[2]*1, patchArgs[3]*1)
+           var rows = patchArgs[0].split(/[^-0-9A-D]+/)
+           var m = patchArgs[0].replace(/[^-0-9A-D]+/g,'')
+           patterns.add(m, patchArgs[1]=='bricks', rows.length, rows[0].length)
         }
     })
   }
-  var doc = patterns.toSvgDoc().trim()
-  var container = document.getElementById("sheet")
-  if (container && doc != "" && location.includes('patch='))
-    container.innerHTML = patterns.toSvgDoc()
+  document.getElementById("sheet").innerHTML = patterns.toSvgDoc().trim()
 }
