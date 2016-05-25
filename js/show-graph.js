@@ -7,6 +7,7 @@ diagram.startThread = function(svgDefs){
         .attr('markerWidth', 12)
         .attr('markerHeight', 12 )
         .attr('orient', 'auto')
+        .attr('markerUnits', 'userSpaceOnUse')
       .append('svg:path')
         .attr('d', d3.svg.symbol().type("square"))
         .attr('fill', "#000").style('opacity',0.5)
@@ -18,6 +19,7 @@ diagram.startPair = function(svgDefs){
         .attr('markerWidth', 10)
         .attr('markerHeight', 12 )
         .attr('orient', 'auto')
+        .attr('markerUnits', 'userSpaceOnUse')
       .append('svg:path')
         .attr('d', d3.svg.symbol().type("diamond"))
         .attr('fill', "#000").style('opacity',0.5)
@@ -29,6 +31,7 @@ diagram.twistMark = function(svgDefs){
         .attr('markerWidth', 5)
         .attr('markerHeight', 5)
         .attr('orient', 'auto')
+        .attr('markerUnits', 'userSpaceOnUse')
       .append('svg:path')
         .attr('d', 'M 0,6 0,-6')
         .attr('fill', "#000")
@@ -42,6 +45,7 @@ diagram.markers = function(svgDefs,id,color){
         .attr('markerWidth', 6)
         .attr('markerHeight', 8 )
         .attr('orient', 'auto')
+        .attr('markerUnits', 'userSpaceOnUse')
       .append('svg:path')
         .attr('d', 'M0,0L10,0')
         .attr('stroke-width', 3)
@@ -54,24 +58,31 @@ diagram.markers = function(svgDefs,id,color){
         .attr('markerWidth', 6)
         .attr('markerHeight', 8 )
         .attr('orient', 'auto')
+        .attr('markerUnits', 'userSpaceOnUse')
       .append('svg:path')
         .attr('d', 'M0,0L10,0')
         .attr('stroke-width', 3)
         .attr('stroke', color)
 }
-diagram.dx = function(d) { return d.x } // called 11356 times for the tiny default diagram
-diagram.dy = function(d) { return d.y } // called 11356 times for the tiny default diagram
-diagram.path = function(d) { // called 20536 times for the tiny default diagram
+diagram.dx = function(d) { return d.x }
+diagram.dy = function(d) { return d.y }
+diagram.path = function(d) {
     var sX = d.source.x
     var sY = d.source.y
     var tX = d.target.x
     var tY = d.target.y
-    var dX = (tX - sX) / 2
-    var dY = (tY - sY) / 2
-    var mid = d.left ? ("S" + (sX - dY + dX) + "," + (sY + dX + dY)) :
-              d.right ? ("S" + (sX + dY + dX) + "," + (sY + dY - dX)) :
-                         " " + (sX + dX) + "," + (sY + dY)
-    return "M"+ sX + "," + sY + mid + " " + tX + "," + tY
+    var dX = (tX - sX)
+    var dY = (tY - sY)
+    var mid = d.left ? ("S" + (sX - dY/3 + dX/3) + "," + (sY + dX/3 + dY/3)) :
+              d.right ? ("S" + (sX + dY/3 + dX/3) + "," + (sY + dY/3 - dX/3)) :
+                         " "
+    if (d.end && d.end == "white")
+        return "M"+ sX + "," + sY + mid + " " + (tX - dX/4) + "," + (tY - dY/4)
+    if (d.start && d.start == "white")
+        return "M"+ (sX + dX/4) + "," + (sY + dY/4) + mid + " " + tX + "," + tY
+    if (d.mid)
+        return "M"+ sX + "," + sY + " " + (sX + dX/2) + "," + (sY + dY/2) + " " + tX + "," + tY
+    return "M"+ sX + "," + sY + " " + tX + "," + tY
 }
 diagram.showGraph = function(args) {
     var colorpicker = (args.threadColor == undefined ? undefined : d3.select(args.threadColor)[0][0])
@@ -92,7 +103,7 @@ diagram.showGraph = function(args) {
     diagram.markers(defs, 'green','#0f0')
     diagram.markers(defs, 'red','#f00')
     diagram.markers(defs, 'purple','#609')
-    diagram.markers(defs, 'white','#fff')
+    //diagram.markers(defs, 'white','#fff')
 
     // zoom functionality
 
@@ -116,11 +127,12 @@ diagram.showGraph = function(args) {
 
     var isIE = document.documentURI == undefined // wrong feature check
     // problem: the marker property is supported by IE but breaks on moving links
+
     var link = container.selectAll(".path").data(args.links).enter().append("svg:path")
         .attr("class", function(d) { return d.thread ? "link thread" + d.thread : "link"})
         .attr("id",function(d,i) { return "link_" + i; })
-        .style('marker-start', function(d) { if (d.start && !isIE) return 'url(#start-'+d.start+')'})
-        .style('marker-end', function(d) { if (d.end && !isIE) return 'url(#end-'+d.end+')'})
+        .style('marker-start', function(d) { if (d.start && d.start != "white" && !isIE) return 'url(#start-'+d.start+')'})
+        .style('marker-end', function(d) { if (d.end && d.end != "white" && !isIE) return 'url(#end-'+d.end+')'})
         .style('marker-mid', function(d,i) { if (d.mid) return 'url(#twist-1)' } )
         .style('opacity', function(d) { return d.border || d.toPin ? fullyTransparant : 1})
         .style('stroke', '#000')
@@ -167,14 +179,8 @@ diagram.showGraph = function(args) {
     // layout simulation step
     force.on("tick", function() {
         if ( ((step++)%mod) != 0) return
-        // window.performance.mark('mark_start_tick');
         link.attr("d", diagram.path)
         node.attr("cx", diagram.dx)
             .attr("cy", diagram.dy)
-        // window.performance.mark('mark_end_tick');
-        // window.performance.measure('measure-tick','mark_start_tick','mark_end_tick');
-        // var items = console.log ( window.performance.getEntriesByType('measure')
-        // var item = items[items.length-1]
-        // console.log(item.duration))
     })
 }
