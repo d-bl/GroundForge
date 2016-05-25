@@ -2,24 +2,34 @@
 <head>
     <style>
     body { max-width: 57.5em;  padding: 1em; margin-left: auto; margin-right: auto; }
-    div div, a img { overflow: hidden; border: solid 1px #AAA; }
+    #pairs, #threads { width: 28em; height: 15em; }
+    #sheet { width: 56.4em; height: 35em; }
+    .wide { width: 25em }
+    input { width: 3em; }
+    #color { width: 5em; }
+
+    #pairs, #threads, #sheet { overflow: scroll; resize:both; border: solid 1px #AAA; }
+    a img { overflow: hide; border: solid 1px #AAA; }
+
     a img { vertical-align: middle; margin-bottom: 1em; }
-    #logo img { border: none; }
-    div, fieldset { display: inline-block; }
+    #logo img, #footer img { border: none; }
     div, input, textarea, #browsers { vertical-align: top;}
     button, #buttons { vertical-align: bottom;}
     button a, button { text-decoration: none; color: #000 }
-    input { width: 3em; }
     fieldset { padding: 0.5em; margin-left: 0; margin-right:0.1em; }
     fieldset p { margin-bottom:0; padding-bottom: 0; }
-    #color { width: 5em; }
-    #pattern { float: left; margin-right:0.4em; }
+    form { margin-bottom: 1em }
     #sheet { margin-top: 0.2em; }
-    #diagrams { clear: left; margin-top: 0.5em; }
-    #pairs { clear: both }
     #pairs, #threads { padding: 0 }
     #buttons { border: none; padding: 0; }
-    form { margin-bottom: 1em }
+
+    #logo img { float: right }
+    #pattern, #stitchFiedSet { float: left; margin-right:0.4em; }
+    #pairs { clear: both }
+    #diagrams { clear: left; margin-top: 0.5em; }
+
+    div, fieldset, .show { display: inline-block; }
+    .hide { display: none }
     </style>
     <meta charset="UTF-8">
     <title lang="en">GroundForge : Advanced diagram configuration</title>
@@ -38,26 +48,53 @@
     <a id="logo"
        href="https://d-bl.github.io/"
        title="More tools by DiBL"
-    ><img style="float: right" src="images/logo-medium.png" alt="DiBL logo"/></a>
+    ><img src="images/logo-medium.png" alt="DiBL logo"/></a>
     <h1>GroundForge</h1>
-    <p><em>A toolbox to design bobbin lace grounds with matching diagrams.</em></p>
+    <p><em>A toolbox to design bobbin lace grounds or braids with matching diagrams.</em></p>
+
+    <p>The <a href="https://github.com/d-bl/GroundForge/wiki"
+        >user guide</a> provides more details, tips and tricks on the following steps.
+    </p>
+    <ul>
+        <li>
+            Select a thumbnail, or try the <a href="?">advanced</a> options to configure even more patterns.
+        </li>
+        <li>
+            Choose stitches, those with an odd number of crossings cause threads to follow other paths than pairs.
+        </li>
+        <li>
+            Decide where to apply a contrasting thread:
+            select the square start of a thread to paint it and see its path.
+        </li>
+        <li>
+            Nudging pins to slightly different positions can have a significant effect on the shapes in the pair diagram.
+            The pattern sheet contains reshaped variants,
+            customize a patch to your own taste and needs with an <a
+                href="https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support"
+                title="Sort the overview by the SVG column,&#013; still not all will be suite the purpose."
+        >SVG editor</a>.
+        </li>
+    </ul>
     <p>
-        Select a thumbnail or try your own matrix.
-        The <a href="https://github.com/d-bl/GroundForge/wiki"
-        >user guide</a> provides tips and tricks.
-        The patterns on this page may require more tweaking than
-        the patterns on the <a href="index.html">intro page</a>.
+        We'd love to see <a href="https://github.com/d-bl/GroundForge/issues/50"
+        >your creations</a>.
     </p>
 
-    <a href="advanced.html?matrix=5- -5&patch=5353 5353 5-5- -5-5&patch=5632 56-2 5-5- -535&patch=53 5- -5 5-;bricks&patch=44 77 44 77;bricks&patch=44 44 77 77;bricks"><img src="thumbs/214.png" title="Torchon (with variations)"></a>
-    <a href="advanced.html?matrix=5632 34-7&bricks=on&patch=-5-5 5-5- -5-- B-C-;bricks&patch=256- ---5 C3B-;bricks&patch=5632 34-7;bricks&patch=4373 5-53;bricks"><img src="thumbs/135.png" title="small snow (Binche)"></a>
-    <a href="advanced.html?matrix=5831 -4-7&bricks=on&patch=5831 -4-7;bricks&patch=-437 34-7;bricks&patch=4830 --77;bricks&patch=5831 -4-7 3158 -7-4"><img src="thumbs/130.png" title="rose (Torchon) / Flanders"></a>
-    <a href="advanced.html?matrix=5831 -4-7&patch=68 -4&patch=5831 -4-7&patch=B-C- ---5 C-B- -5--&patch=5831 -4-7 5--- -C-B;bricks"><img src="thumbs/376.png" title="kat / paris"></a>
-    <a href="advanced.html?matrix=586- -4-5 5-21 -5-7"><img src="thumbs/001.png" title="pinwheel"></a>
-    <a href="thumbs.html">More...</a>
+    Thumbnails:
+    <a href="?hideAdvanced&matrix=5632 5632&patch=5- -5&patch=5353 5353 5-5- -5-5&patch=5632 56-2 5-5- -535&patch=44 77 44 77;bricks&patch=44 44 77 77;bricks&rows=5&cols=7&left=1&up=1&stitches=A1=tc,B1=tctc,C1=tc,D1=tctc,A2=tc,B2=tc,C2=tc,D2=tc"><img src="thumbs/214.png" title="Torchon (with variations)"></a>
+
+    <a href="?hideAdvanced&matrix=5632 34-7&bricks=on&patch=-5-5 5-5- -5-- B-C-;bricks&patch=256- ---5 C3B-;bricks&patch=5632 34-7;bricks&patch=4373 5-53;bricks&rows=5&cols=3&up=3&left=1&stitches=A1=tplc,B1=tctptc,C1=tprc,D1=ttcttpc,A2=rtc,B2=tc,C2=ltc,D2=tc"><img src="thumbs/135.png" title="small snow (Binche)"></a>
+
+    <a href="?hideAdvanced&matrix=5831 -4-7&bricks=on&patch=5831 -4-7;bricks&patch=-437 34-7;bricks&patch=4830 --77;bricks&patch=5831 -4-7 3158 -7-4&up=3&left=1&rows=8&cols=7&stitches=A1=tc,C1=tc,A2=tc,B2=ptc,C2=tc,D2=tc"><img src="thumbs/130.png" title="rose (Torchon) / Flanders"></a>
+
+    <a href="?hideAdvanced&matrix=5831 -4-7&patch=68 -4&patch=5831 -4-7&patch=B-C- ---5 C-B- -5--&patch=5831 -4-7 5--- -C-B;bricks&left=4&up=1&rows=7&cols=7&stitches=A1=tctc,C1=tctc,D1=tctc,A2=tctc,B1=tctc,C2=tctc"><img src="thumbs/376.png" title="kat / paris"></a>
+
+    <a href="?hideAdvanced&matrix=586- -4-5 5-21 -5-7&rows=12&cols=9&&left=1&up=1&stitches=A3=tctc,D4=lctc,B4=rctc,A1=ctc,A2=tctc,C1=tctc,D2=rctc,B2=lctc,C3=ctc,C4=tctc"><img src="thumbs/001.png" title="pinwheel"></a>
+
+    <a href="thumbs.html">more...</a>
 </article>
 <form>
-    <fieldset id="pattern">
+    <fieldset id="pattern" class="advanced hide">
         <legend>Pattern matrix</legend>
 <textarea id="matrix" name="matrix" rows="4" cols="6" spellcheck="false"
 >586-
@@ -68,9 +105,9 @@
         <p>Legend :</p><img src="images/legend.png" id="legend" alt="legend">
         <p>A-D represent longer vertical lines <br/>(skipping a grid position)</p>
     </fieldset>
-    <fieldset>
+    <fieldset id="stitchFiedSet" class="wide">
         <legend>Stitches</legend>
-<textarea id="stitches" name="stitches" rows="4" cols="46" spellcheck="false"
+<textarea id="stitches" name="stitches" rows="4" cols="45" spellcheck="false"
 >A3=tctc D4=lctc B4=rctc A1=ctc
 A2=tctc
 C1=tctc D2=rctc B2=lctc C3=ctc
@@ -78,56 +115,56 @@ C4=tctc</textarea>
         <br/>Hover over stitches in the pair diagram for IDs.
         <br/>Legend: c(ross) t(wist) l(eft-twist) r(ight-twist) p(in)
     </fieldset>
-    <br/>
     <fieldset>
         <legend>Patch size</legend>
         <label for="rows">rows</label>
-        <input id="rows" name="rows" min="3" value="15" type="number"/>
+        <input id="rows" name="rows" min="3" value="12" type="number"/>
         <label for="cols">columns</label>
-        <input id="cols" name="cols" min="3" value="13" type="number"/>
+        <input id="cols" name="cols" min="3" value="9" type="number"/>
     </fieldset>
-    <fieldset>
+    <fieldset class="advanced hide">
         <legend>Shift</legend>
-        <label for="left">rows</label>
-        <input id="left" name="left" min="0" value="1" type="number"/>
-        <label for="up">columns</label>
-        <input id="up" name="up" min="0" value="1" type="number"/>
+        <label for="up">rows</label>
+        <input id="up" name="left" min="0" value="1" type="number"/>
+        <label for="left">columns</label>
+        <input id="left" name="up" min="0" value="1" type="number"/>
     </fieldset>
-    <br/>
-    <fieldset>
-        <legend>Pair diagram size</legend>
-        <label for="pairWidth">width</label>
-        <input id="pairWidth" name="pairWidth" min="100" value="300" type="number"/>
-        <label for="pairHeight">height</label>
-        <input id="pairHeight" name="pairHeight" min="100" value="300" type="number"/>
-        <label for="pairScale">scale</label>
+    <fieldset class="advanced hide">
+        <legend>Initial zoom</legend>
+        <label for="pairScale">pair diagram</label>
         <input id="pairScale" name="pairScale" step="0.1" min="0.2" max="5" value="1" type="number"/>
-    </fieldset>
-    <fieldset>
-        <legend>Thread diagram size</legend>
-        <label for="threadWidth">width</label>
-        <input id="threadWidth" name="threadWidth" min="100" value="500" type="number"/>
-        <label for="threadHeight">height</label>
-        <input id="threadHeight" name="threadHeight" min="100" value="300" type="number"/>
-        <label for="threadScale">scale</label>
+        <label for="threadScale">thread diagram</label>
         <input id="threadScale" name="threadScale" step="0.1" min="0.2" max="5" value="0.6" type="number"/>
     </fieldset>
-    <br/>
-    <fieldset>
+    <fieldset class="wide">
         <legend>Threads</legend>
         <input id="color" name="color" class="color" value="#CC0000" pattern="#[a-fA-F0-9]{6}"/>
         <label for="color">paint a thread by selecting its square start</label>
     </fieldset>
+    <fieldset class="advanced hide">
+        <label for="transparency" class="advanced hide"
+        >show hidden
+            <img alt="(i)" title="such as connections between twists and pins"
+                 src="images/information-icon.png">
+            diagram components
+        </label>
+        <input id="transparency" name="transparency" step="0.1" min="0" max="1" value="0" type="number" class="advanced hide"/>
+        <img alt="(i)" title="0 = completely transparent&#013;1 = completely opaque"
+             src="images/information-icon.png">
+    </fieldset>
     <fieldset id="buttons">
-        <label for="transparency" title="such as connections between twists and pins"
-        >show hidden diagram components</label>
-        <input id="transparency" name="transparency" step="0.1" min="0" max="1" value="0" type="number"
-               title="0 = completely transparent&#013;1 = completely opaque"/><br/>
-        <button onclick="load(); return false"
-                title="generate diagrams&#013;no page reload">show</button>
-        <button onclick="location.href='?'; return false"
-                title="reduce URL&#013;page reload&#013;generates default diagrams">default</button>
-        <button title="change URL to current configuration&#013;what allows to bookmark the pattern ">submit</button>
+        <button onclick="load(); return false">show</button>
+        <img alt="(i)" title="Generate diagrams.&#013;No page reload."
+             src="images/information-icon.png">
+        <button onclick="allDownloadable(); return false">make downloadable</button>
+        <img alt="(i)" title="Wait until the animation completed,&#013;then turn the diagrams and pattern sheet into downloadable images.&#013;The diagrams will no longer be dragable nor zoomable.&#013;No page reload."
+             src="images/information-icon.png">
+        <button onclick="location.href='?'; return false">default</button>
+        <img alt="(i)" title="Generate default diagrams.&#013;The page address is reduced.&#013;The page reloads."
+             src="images/information-icon.png">
+        <button>submit</button>
+        <img alt="(i)" title="Change page address to current form content.&#013;It allows to bookmark the pattern.&#013;The page reloads."
+             src="images/information-icon.png">
     </fieldset>
 </form>
 <div id="diagrams">
@@ -137,9 +174,7 @@ C4=tctc</textarea>
 </div>
 
   <p id="footer">
-        <a href="https://github.com/d-bl/GroundForge/issues/50"
-        >Share your samples</a>
-        &mdash; <a href="https://github.com/d-bl/GroundForge/releases"
+        <a href="https://github.com/d-bl/GroundForge/releases"
        >Release notes</a>
         &mdash; <a href="https://github.com/d-bl/GroundForge/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+-label%3A%22Browser+support%22+-label%3A%22nice+to+have%22+"
        >Issues</a>
