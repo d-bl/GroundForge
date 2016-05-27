@@ -57,7 +57,7 @@
     </p>
     <ul>
         <li>
-            Select a thumbnail, or try the <a href="?">advanced</a> options to configure even more patterns.
+            Select a thumbnail, or try the <a href="?showAdvanced">advanced</a> options to configure even more patterns.
         </li>
         <li>
             Choose stitches, those with an odd number of crossings cause threads to follow other paths than pairs.
@@ -136,21 +136,20 @@ C4=tctc</textarea>
         <label for="threadScale">thread diagram</label>
         <input id="threadScale" name="threadScale" step="0.1" min="0.2" max="5" value="0.6" type="number"/>
     </fieldset>
+    <fieldset class="advanced hide">
+        <legend>Hidden diagram components
+            <img alt="(i)" title="such as connections between twists and pins"
+                 src="images/information-icon.png">
+        </legend>
+        <label for="transparency" class="advanced hide">transparency</label>
+        <input id="transparency" name="transparency" step="0.1" min="0" max="1" value="0" type="number" class="advanced hide"/>
+        <img alt="(i)" title="0 = completely transparent&#013;1 = completely opaque"
+             src="images/information-icon.png">
+    </fieldset>
     <fieldset class="wide">
         <legend>Threads</legend>
         <input id="color" name="color" class="color" value="#CC0000" pattern="#[a-fA-F0-9]{6}"/>
         <label for="color">paint a thread by selecting its square start</label>
-    </fieldset>
-    <fieldset class="advanced hide">
-        <label for="transparency" class="advanced hide"
-        >show hidden
-            <img alt="(i)" title="such as connections between twists and pins"
-                 src="images/information-icon.png">
-            diagram components
-        </label>
-        <input id="transparency" name="transparency" step="0.1" min="0" max="1" value="0" type="number" class="advanced hide"/>
-        <img alt="(i)" title="0 = completely transparent&#013;1 = completely opaque"
-             src="images/information-icon.png">
     </fieldset>
     <fieldset id="buttons">
         <button onclick="load(); return false">show</button>
