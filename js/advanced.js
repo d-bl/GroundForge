@@ -37,7 +37,8 @@ function init() {
   var patterns = new dibl.PatternSheet(2, "height='210mm' width='297mm'")
 
   // no advanced options for default page and fully configured thumbnail links
-  if (location.indexOf('?') >= 0 && !location.endsWith('?') && location.indexOf('hideAdvanced') < 0 ) {
+  var iq = location.indexOf('?')
+  if (iq >= 0 && iq+1 != location.length && location.indexOf('hideAdvanced') < 0 ) {
     var elems = document.getElementsByClassName('advanced')
     for (i=0 ; i<elems.length ; i++) {
         elems[i].classList.remove('hide')
