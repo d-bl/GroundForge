@@ -6,7 +6,7 @@ Now and then visit:
 * the [release notes] which may be a little behind on the actual [changes]
 
 [history]: https://github.com/d-bl/GroundForge/wiki/_history
-[release notes]: https://github.com/d-bl/GroundForge/releses
+[release notes]: https://github.com/d-bl/GroundForge/releases
 [changes]: https://github.com/d-bl/GroundForge/commits/gh-pages
 
 
