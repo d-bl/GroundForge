@@ -1,3 +1,0 @@
-The preconfigured samples present diagrams with proper footsides. These footsides are required to generated thread diagrams. The algorithm is not clever enough to figure out footsides for all possible values for number of columns or shift values. The [interactive thumbnail] page can help to figure out a configuration that works.
-
-[interactive thumbnail]: https://d-bl.github.io/GroundForge/thumbnails.html
