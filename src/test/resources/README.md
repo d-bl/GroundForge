@@ -17,7 +17,7 @@ The 4x4 and misc pages explore patterns of the [inkscape plugin]. Some of the ch
 
             cat thumbs.txt | awk '/<svg id/ {n++}{print > sprintf("%03d.svg", n)}'
             for i in *.svg; do '/C/Program Files/Inkscape/inkscape.exe' $i --export-png=`echo $i | sed -e 's/svg$/png/'`; done
-            grep svg *.svg | sed -e 's!" .*!!' -e 's!\([0-9][0-9][0-9]\)[^"]*"\(checker\|brick\) \(.*\)!<a href="advanced.html?matrix=\3\&\2s=on"><img src="\1.png"></a>!' > tmp.html
+            grep svg *.svg | sed -e 's!" .*!!' -e 's!\([0-9][0-9][0-9]\)[^"]*"\(checker\|brick\) \(.*\)!<a href="index.html?matrix=\3\&\2s=on"><img src="\1.png"></a>!' > tmp.html
 
 * For as far as the thumbnails were not in the desired order in the original web pages(s): Use the inspector again to drag the `<svg>` elements inside the inspector into other positions. Don't know were you dropped the last one? Find the selected element, hover with the mouse over it and the thumbnail gets highlighted.
 

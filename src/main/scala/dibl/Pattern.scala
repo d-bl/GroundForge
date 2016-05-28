@@ -25,7 +25,7 @@ class Pattern (m:String, isBrick: Boolean, rows: Int, cols: Int,
   def patch: String = {
     val relative = toRelSrcNodes(matrix = m, dimensions = hXw).get
     val mType = if (isBrick) "brick wall" else "checker board"
-    val link = "https://d-bl.github.io/GroundForge/advanced.html" +
+    val link = "https://d-bl.github.io/GroundForge/index.html" +
       "?matrix=" + m.grouped(4).toArray.mkString("%0D") + (if (isBrick) "&amp;bricks=" else "")
     val tag = s"<text style='font-family:Arial;font-size:11pt'>\n" +
       s"\t <tspan x='${offsetX - 50}' y='${offsetY - 80}'>$mType, $hXw, $m</tspan>\n" +
