@@ -48,7 +48,7 @@ Safari nor Internet Explorer support `<input type="color">`. The free [color-pic
 
 You may just want to improve some grammar. To edit the user guide alias wiki pages you just need a github [account](https://github.com)
 
-Changing the grammar on this readme, the demo page or advanced page requires a little more:
+Changing the grammar on this readme or the demo page requires a little more:
 * hit the fork button at the top of this page
 * go to `https://github.com/YOURID/GroundForge/tree/gh-pages/`, of course replace YOURID
 * choose the file you want to change and hit the pencil to start editing
