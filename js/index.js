@@ -63,25 +63,14 @@ function init() {
       // create pattern sheet
       if (key && key == 'matrix') {
          // the matrix and bricks arguments also fill form fields
-         var rows = val.split(/[^-0-9A-D]+/)
-         var m = val.replace(/[^-0-9A-D]+/g,'')
-         patterns.add(m, location.indexOf('&bricks') >= 0, rows.length, rows[0].length)
+         patterns.add(val, location.indexOf('&bricks') >= 0)
       } else if (key && key == 'patch') {
          // a patch argument is only used for the pattern sheet
          // we have to split the value in the matrix and optional bricks flag
          var patchArgs = val.split(";")
-         var rows = patchArgs[0].split(/[^-0-9A-D]+/)
-         var m = patchArgs[0].replace(/[^-0-9A-D]+/g,'')
-         patterns.add(m, patchArgs[1]=='bricks', rows.length, rows[0].length)
+         patterns.add(patchArgs[0], patchArgs[1]=='bricks')
       }
   })
-  if (location.indexOf("patch") < 0) {
-    var stackAsBricks = document.getElementById('bricks').checked
-    var matrix = document.getElementById('matrix').value
-    var rows = matrix.split(/[^-0-9A-D]+/)
-    var m = matrix.replace(/[^-0-9A-D]+/g,'')
-    patterns.add(m, stackAsBricks, rows.length, rows[0].length)
-  }
   document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
 }
 function wrapSvg(svg){
