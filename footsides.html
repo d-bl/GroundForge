@@ -1,129 +1,144 @@
 <!DOCTYPE html>
 <head>
-    <meta http-equiv="Content-Language" content="en">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
-    <title>DiBL - Dynamic bobbin lace diagrams thumbnails for grounds</title>
-    <style>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <style>
     body { max-width: 60.5em;  padding: 1em; margin-left: auto; margin-right: auto; }
-    div { display: inline-block; border: solid 1px; margin: 3px; }
+    div { display: inline-block; border: solid 1px; margin-bottom: 0.2em; }
   </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-    <script src="js/show-graph.js"></script>
-    <script src="js/matrix-graphs.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="js/show-graph.js"></script>
+  <script src="js/matrix-graphs.js"></script>
+  <script>
+    function show() {
+      var stitches = 'A1=ctc A2=ctc A3=ctc A4=ctc '+
+                     'B1=ctc B2=ctc B3=ctc B4=ctc '+
+                     'C1=ctc C2=ctc C3=ctc C4=ctc '+
+                     'D1=ctc D2=ctc D3=ctc D4=ctc '
+      var m = document.getElementById('matrix').value
+      var mRows = m.split(/[^-0-9A-B]+/)
+      var rows = mRows.length
+      var cols = mRows[0].length
+      var bricks = document.getElementById('matrix').checked
+      var nrOfRows = 6
+      for (nrOfCols=6 ; nrOfCols < 6+cols ; nrOfCols++) {
+        for (shiftUp=0 ; shiftUp < rows ; shiftUp++) {
+          for (shiftLeft=0 ; shiftLeft < cols ; shiftLeft++) {
+            data = dibl.D3Data().get(m, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, bricks)
+            diagram.showGraph({
+              threadColor: '#colorpicker',
+              container: '#d'+nrOfCols+shiftUp+shiftLeft,
+              width: 200,
+              height: 200,
+              nodes: data.threadNodes,
+              links: data.threadLinks,
+              scale: 0.5,
+              transform: "translate(0,0)scale(0.5)",
+            })
+            var id = 'L'+nrOfCols+shiftUp+shiftLeft
+            document.getElementById(id).href = 'index.html?hideAdvanced&matrix=' +
+              document.getElementById('matrix').value.replace( /[^-0-9A-D]+/g, '%0D') +
+              (document.getElementById('matrix').checked ? '&bricks' : '') +
+              '&rows=9&cols=' + nrOfCols +
+              '&up' + shiftUp +
+              '&left' + shiftLeft
+          }
+        }
+      }
+    }
+  </script>
+  <title>GroundForge : Select foot sides</title>
 </head>
 <body>
   <img style="float: right" src="images/logo-medium.png" alt="DiBL logo"
        title="3 tiles each with a single stitch. Thick coloured lines for the pair diagram, thin black lines for a thread diagram"/>
   <h1>GroundForge - select foot sides</h1>
-  <p><em>N.B: rendering so many thumbnails requires a lot of resources, so may not be suited for tablets.</em></p>
   <p>
-      The left upper thumbnail of each group doesn't shift the matrix rows and columns.
-      Each next row and/or column does shift the matrix to get another foot side.
-      Say you like the foot side of the third thumbnail on the second row,
-      Then you should specify as shift options: rows 2 and columns 1.
-      You can add the width of the matrix to the title of the group of thumbnails you like.
-      Say you like the foot side in the group of thumbnails in the group titled "7 columns"
-      and the matrix is four columns wide, then eleven or fifteen columns are also okay.
+    The advanced options of the <a href="index.html">main</a> page allow to choose the positions of the (false) foot sides in a pattern.
+    With the current poor implementation to calculate a foot side, few configurations will render a proper thread diagram.
+    This page lets you choose a configuration.
   </p>
+
+  <label for="matrix">Pattern matrix</label>
+<textarea id="matrix" name="matrix" rows="4" cols="6" spellcheck="false"
+>586-
+-4-5
+5-21
+-5-7</textarea>
+  <br/>
+  <label for="bricks">Stack as bricks</label>
+  <input id="bricks" name="bricks" type="checkbox">
+  <p><button onclick="show(); return false">show</button><em>
+    N.B: Please have patience, may not be suited for tablets.
+    It might also ask you to continue a slow script.
+  </em></p>
+
   <h2>6 columns</h2>
-    <div id="d600"></div>
-    <div id="d601"></div>
-    <div id="d602"></div>
-    <div id="d603"></div><br>
-    <div id="d610"></div>
-    <div id="d611"></div>
-    <div id="d612"></div>
-    <div id="d613"></div><br>
-    <div id="d630"></div>
-    <div id="d631"></div>
-    <div id="d632"></div>
-    <div id="d633"></div><br>
-    <div id="d640"></div>
-    <div id="d641"></div>
-    <div id="d642"></div>
-    <div id="d643"></div>
-  <h2>7 columns</h2>
-    <div id="d700"></div>
-    <div id="d701"></div>
-    <div id="d702"></div>
-    <div id="d703"></div><br>
-    <div id="d710"></div>
-    <div id="d711"></div>
-    <div id="d712"></div>
-    <div id="d713"></div><br>
-    <div id="d730"></div>
-    <div id="d731"></div>
-    <div id="d732"></div>
-    <div id="d733"></div><br>
-    <div id="d740"></div>
-    <div id="d741"></div>
-    <div id="d742"></div>
-    <div id="d743"></div>
-  <h2>8 columns</h2>
-    <div id="d800"></div>
-    <div id="d801"></div>
-    <div id="d802"></div>
-    <div id="d803"></div><br>
-    <div id="d810"></div>
-    <div id="d811"></div>
-    <div id="d812"></div>
-    <div id="d813"></div><br>
-    <div id="d830"></div>
-    <div id="d831"></div>
-    <div id="d832"></div>
-    <div id="d833"></div><br>
-    <div id="d840"></div>
-    <div id="d841"></div>
-    <div id="d842"></div>
-    <div id="d843"></div>
-  <h2>9 columns</h2>
-    <div id="d900"></div>
-    <div id="d901"></div>
-    <div id="d902"></div>
-    <div id="d903"></div><br>
-    <div id="d910"></div>
-    <div id="d911"></div>
-    <div id="d912"></div>
-    <div id="d913"></div><br>
-    <div id="d930"></div>
-    <div id="d931"></div>
-    <div id="d932"></div>
-    <div id="d933"></div><br>
-    <div id="d940"></div>
-    <div id="d941"></div>
-    <div id="d942"></div>
-    <div id="d943"></div>
-  <script>
-    var stitches = 'A1=ctctc A2=ctctc A3=ctctc A4=ctctc '+
-                   'B1=ctctc B2=ctctc B3=ctctc B4=ctctc '+
-                   'C1=ctctc C2=ctctc C3=ctctc C4=ctctc '+
-                   'D1=ctctc D2=ctctc D3=ctctc D4=ctctc '
-    var args = (location+"").split('?')[1].split(';')
-    var m = args[0]
-    var mRows = m.split(',')
-    var rows = mRows.length
-    var cols = mRows[0].length
-    var bricks = args[1] && args[1] == "bricks"
-    var nrOfRows = 6
-    for (nrOfCols=6 ; nrOfCols < 6+cols ; nrOfCols++) {
-      for (shiftUp=0 ; shiftUp < rows ; shiftUp++) {
-        for (shiftLeft=0 ; shiftLeft <= cols ; shiftLeft++) {
-          data = dibl.D3Data().get(m, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, bricks)
-          diagram.showGraph({
-            threadColor: '#colorpicker',
-            container: '#d'+nrOfCols+shiftUp+shiftLeft,
-            width: 100,
-            height: 100,
-            nodes: data.threadNodes,
-            links: data.threadLinks,
-            scale: 0.5,
-            transform: "translate(0,0)scale(0.5)",
-          })
-        }
-      }
-    }
-  </script>
+    <div id="d600"></div><a id="L600" href="#">( )</a>
+    <div id="d601"></div><a id="L601" href="#">( )</a>
+    <div id="d602"></div><a id="L602" href="#">( )</a>
+    <div id="d603"></div><a id="L603" href="#">( )</a><br>
+    <div id="d610"></div><a id="L610" href="#">( )</a>
+    <div id="d611"></div><a id="L611" href="#">( )</a>
+    <div id="d612"></div><a id="L612" href="#">( )</a>
+    <div id="d613"></div><a id="L613" href="#">( )</a><br>
+    <div id="d620"></div><a id="L620" href="#">( )</a>
+    <div id="d621"></div><a id="L621" href="#">( )</a>
+    <div id="d622"></div><a id="L622" href="#">( )</a>
+    <div id="d623"></div><a id="L623" href="#">( )</a><br>
+    <div id="d630"></div><a id="L630" href="#">( )</a>
+    <div id="d631"></div><a id="L631" href="#">( )</a>
+    <div id="d632"></div><a id="L632" href="#">( )</a>
+    <div id="d633"></div><a id="L633" href="#">( )</a><h2>7 columns</h2>
+    <div id="d700"></div><a id="L700" href="#">( )</a>
+    <div id="d701"></div><a id="L701" href="#">( )</a>
+    <div id="d702"></div><a id="L702" href="#">( )</a>
+    <div id="d703"></div><a id="L703" href="#">( )</a><br>
+    <div id="d710"></div><a id="L710" href="#">( )</a>
+    <div id="d711"></div><a id="L711" href="#">( )</a>
+    <div id="d712"></div><a id="L712" href="#">( )</a>
+    <div id="d713"></div><a id="L713" href="#">( )</a><br>
+    <div id="d720"></div><a id="L720" href="#">( )</a>
+    <div id="d721"></div><a id="L721" href="#">( )</a>
+    <div id="d722"></div><a id="L722" href="#">( )</a>
+    <div id="d723"></div><a id="L723" href="#">( )</a><br>
+    <div id="d730"></div><a id="L730" href="#">( )</a>
+    <div id="d731"></div><a id="L731" href="#">( )</a>
+    <div id="d732"></div><a id="L732" href="#">( )</a>
+    <div id="d733"></div><a id="L733" href="#">( )</a><h2>8 columns</h2>
+    <div id="d800"></div><a id="L800" href="#">( )</a>
+    <div id="d801"></div><a id="L801" href="#">( )</a>
+    <div id="d802"></div><a id="L802" href="#">( )</a>
+    <div id="d803"></div><a id="L803" href="#">( )</a><br>
+    <div id="d810"></div><a id="L810" href="#">( )</a>
+    <div id="d811"></div><a id="L811" href="#">( )</a>
+    <div id="d812"></div><a id="L812" href="#">( )</a>
+    <div id="d813"></div><a id="L813" href="#">( )</a><br>
+    <div id="d820"></div><a id="L820" href="#">( )</a>
+    <div id="d821"></div><a id="L821" href="#">( )</a>
+    <div id="d822"></div><a id="L822" href="#">( )</a>
+    <div id="d823"></div><a id="L823" href="#">( )</a><br>
+    <div id="d830"></div><a id="L830" href="#">( )</a>
+    <div id="d831"></div><a id="L831" href="#">( )</a>
+    <div id="d832"></div><a id="L832" href="#">( )</a>
+    <div id="d833"></div><a id="L833" href="#">( )</a><h2>9 columns</h2>
+    <div id="d900"></div><a id="L900" href="#">( )</a>
+    <div id="d901"></div><a id="L901" href="#">( )</a>
+    <div id="d902"></div><a id="L902" href="#">( )</a>
+    <div id="d903"></div><a id="L903" href="#">( )</a><br>
+    <div id="d910"></div><a id="L910" href="#">( )</a>
+    <div id="d911"></div><a id="L911" href="#">( )</a>
+    <div id="d912"></div><a id="L912" href="#">( )</a>
+    <div id="d913"></div><a id="L913" href="#">( )</a><br>
+    <div id="d920"></div><a id="L920" href="#">( )</a>
+    <div id="d921"></div><a id="L921" href="#">( )</a>
+    <div id="d922"></div><a id="L922" href="#">( )</a>
+    <div id="d923"></div><a id="L923" href="#">( )</a><br>
+    <div id="d930"></div><a id="L930" href="#">( )</a>
+    <div id="d931"></div><a id="L931" href="#">( )</a>
+    <div id="d932"></div><a id="L932" href="#">( )</a>
+    <div id="d933"></div><a id="L933" href="#">( )</a>
 
 <p id="footer">
     <a href="https://github.com/d-bl/GroundForge/releases"
