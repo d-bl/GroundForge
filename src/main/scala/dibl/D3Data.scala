@@ -22,25 +22,6 @@ import scala.scalajs.js.annotation.JSExport
 object D3Data {
 
   @JSExport
-  def get(set: String,
-          nrInSet: Int,
-          rows: Int,
-          cols: Int,
-          shiftLeft: Int,
-          shiftUp: Int,
-          stitches: String
-         ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
-    val pairDiagram = PairDiagram(Settings(set, nrInSet, rows, cols, shiftLeft, shiftUp, stitches))
-    val threadDiagram = ThreadDiagram(pairDiagram)
-    js.Dictionary(
-      "pairNodes" -> toJS(pairDiagram.nodes),
-      "pairLinks" -> toJS(pairDiagram.links),
-      "threadNodes" -> toJS(threadDiagram.nodes),
-      "threadLinks" -> toJS(threadDiagram.links)
-    )
-  }
-
-  @JSExport
   def get(str: String,
           rows: Int,
           cols: Int,

@@ -53,16 +53,6 @@ class DiagramsSpec extends FlatSpec with Matchers {
     pd.nodes.head("title") shouldBe "invalid pair diagram"
   }
 
-  "ad-hoc" should "not throw an exception" in {
-    val settings = Settings()
-    val nodeNrs = PairDiagram.assignNodeNrs(settings.get.absM, settings.get.nrOfPairLinks)
-    settings.get.absM.foreach(nodes => println(s"${nodes.deep.mkString(", ").replace("Array","")}"))
-    println()
-    nodeNrs.foreach(nodes => println(s"${nodes.map(n=>f"$n%3d, ").mkString("")}"))
-    println()
-    ThreadDiagram(PairDiagram(settings))
-  }
-
   def traverse(items: Seq[Props]) = {
     // mimics D3Data.toJS, which requires a specific JVM
     val a = new Array[Any](items.length)

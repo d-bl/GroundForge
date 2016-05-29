@@ -12,11 +12,12 @@ case class PatternSheet(patchRows: Int = 3, pageSize: String = "height='297mm' w
   private val patterns = new ListBuffer[Pattern]
 
   @JSExport
-  def add(m: String, isBrick: Boolean, rows: Int, cols: Int): PatternSheet = {
+  def add(m: String, isBrick: Boolean): PatternSheet = {
     val n = patterns.size
     val x = 70 + (n / patchRows) * 360
     val y = 120 + (n % patchRows) * 335
-    patterns.append(new Pattern(m, isBrick, rows, cols, s"g$n", x, y))
+    val lines = Matrix.toMatrixLines(m).get
+    patterns.append(new Pattern(lines.mkString(""), isBrick, lines.length, lines(0).length, s"g$n", x, y))
     this
   }
 

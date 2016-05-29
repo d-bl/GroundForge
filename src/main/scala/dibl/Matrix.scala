@@ -15,7 +15,7 @@
 */
 package dibl
 
-import java.lang.Math.{max, min}
+import java.lang.Math.max
 
 import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
@@ -138,6 +138,7 @@ object Matrix {
   )
 
   /** Translates each character into a relative source node.
+    *
     * @param matrix the characters in the string are keys in relSourcesMap
     * @param dimensions a string with at least two sequences of digits,
     *                   s1*s2 should equal the length of the matrix string
@@ -160,6 +161,20 @@ object Matrix {
         }.grouped(cols).toArray
       )
     }
+  }
+
+  def toRelSrcNodes(str: String): Try[M] = {
+    for {
+      lines <- toMatrixLines(str)
+      dims = s"${lines.length}x${lines(0).length}"
+      relM <- toRelSrcNodes(matrix = lines.mkString(""), dimensions = dims)
+    } yield relM
+  }
+
+  def toMatrixLines(str: String): Try[Array[String]] = {
+    val lines = str.split("[^-0-9ABCD]+")
+    if (lines.map(_.length).sortBy(n => n).distinct.length == 1) Success(lines)
+    else Failure(new scala.Exception("lines of matrix have varying lengths"))
   }
 
   /** @param s for example "4x2..."

@@ -63,33 +63,12 @@ object Settings {
             shiftUp: Int = 0,
             stitches: String = ""
            ): Try[Settings] = {
-    val lines = str.split("[^-0-9ABCD]+")
-    val dims = s"${lines.length}x${lines(0).length}"
     for {
-        _    <- hasEqualLengths(lines)
-        relM <- toRelSrcNodes(matrix = lines.mkString(""), dimensions = dims)
+        relM <- toRelSrcNodes(str)
         absM <- if (bricks) toAbs(relM, absRows, absCols, shiftLeft, shiftUp)
                 else toAbsWithMargins(shift(relM, shiftLeft, shiftUp), absRows, absCols)
       } yield create(relM, absM, stitches, bricks)
     }
-
-  def hasEqualLengths(lines: Array[String]): Try[Unit] = {
-    if (lines.map(_.length).sortBy(n => n).distinct.length == 1) Success(Unit)
-    else Failure(new scala.Exception("lines of matrix have varying lengths"))
-  }
-
-  def apply(): Try[Settings] =
-    for {
-      relM <- toRelSrcNodes(matrix = "43126-78", dimensions = "2x4")
-      absM <- {
-        val x = toAbs(relM, absRows = 9, absCols = 9, shiftLeft = 0, shiftUp = 0)
-        // TODO 2x2-5 has not footside at all
-
-        //x.get(2)(1) = Array((2,2), (0,1))//hack for a twisted torchon start
-        //x.get(2)(2) = Array((1,2), (0,2))//hack
-        x
-      }
-    } yield create(relM, absM, stitches = "A1=tctpc, B1=tctc, C1=tctc, D1=tctc, A2=tc, C2=tc, D2=tctpc", bricks = true)
 
   private def create(relM: M, absM: M, stitches: String, bricks: Boolean): Settings =
     new Settings(
