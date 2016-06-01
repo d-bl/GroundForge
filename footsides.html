@@ -26,9 +26,11 @@
         for (shiftUp=0 ; shiftUp < rows ; shiftUp++) {
           for (shiftLeft=0 ; shiftLeft < cols ; shiftLeft++) {
             data = dibl.D3Data().get(m, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, bricks)
+            var id = ''+nrOfCols+shiftUp+shiftLeft
+            document.getElementById('d'+id).innerHTML = ""
             diagram.showGraph({
               threadColor: '#colorpicker',
-              container: '#d'+nrOfCols+shiftUp+shiftLeft,
+              container: '#d'+id,
               width: 200,
               height: 200,
               nodes: data.threadNodes,
@@ -36,8 +38,7 @@
               scale: 0.5,
               transform: "translate(0,0)scale(0.5)",
             })
-            var id = 'L'+nrOfCols+shiftUp+shiftLeft
-            document.getElementById(id).href = 'index.html?hideAdvanced&matrix=' +
+            document.getElementById('L'+id).href = 'index.html?hideAdvanced&matrix=' +
               document.getElementById('matrix').value.replace( /[^-0-9A-D]+/g, '%0D') +
               (document.getElementById('matrix').checked ? '&bricks' : '') +
               '&rows=9&cols=' + nrOfCols +
@@ -56,10 +57,10 @@
   <h1>GroundForge - select foot sides</h1>
   <p>
     The advanced options of the <a href="index.html">main</a> page allow to choose the positions of the (false) foot sides in a pattern.
-    With the current poor implementation to calculate a foot side, few configurations will render a proper thread diagram.
-    This page lets you choose a configuration.
+    With the current poor implementation to calculate a foot side, few configurations might render a proper thread diagram.
+    This page lets you choose a configuration. It is limited to 4x4 matrices.
   </p>
-
+  <form>
   <label for="matrix">Pattern matrix</label>
 <textarea id="matrix" name="matrix" rows="4" cols="6" spellcheck="false"
 >586-
@@ -69,10 +70,11 @@
   <br/>
   <label for="bricks">Stack as bricks</label>
   <input id="bricks" name="bricks" type="checkbox">
-  <p><button onclick="show(); return false">show</button><em>
+  <p><button >clear</button><button onclick="show(); return false">show</button><em>
     N.B: Please have patience, may not be suited for tablets.
     It might also ask you to continue a slow script.
   </em></p>
+  </form>
 
   <h2>6 columns</h2>
     <div id="d600"></div><a id="L600" href="#">( )</a>

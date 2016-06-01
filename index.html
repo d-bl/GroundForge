@@ -103,7 +103,7 @@
 -5-7</textarea>
         <input id="bricks" name="bricks" type="checkbox"><label for="bricks">stack as bricks</label><br/>
         <p>Legend :</p><img src="images/legend.png" id="legend" alt="legend">
-        <p>A-D represent longer vertical lines <br/>(skipping a grid position)</p>
+        <p>Larger arrows represent double length lines <br/>(skipping a grid position)</p>
     </fieldset>
     <fieldset id="stitchFiedSet" class="wide">
         <legend>Stitches</legend>
@@ -119,7 +119,10 @@ C4=tctc</textarea>
         <legend>Patch size</legend>
         <label for="rows">rows</label>
         <input id="rows" name="rows" min="3" value="12" type="number"/>
-        <label for="cols">columns</label>
+        <label for="cols">columns
+            <img alt="(i)" title="This is not the number of pairs.&#013;Hover over the diamond start of pairs&#013;or the square start of threads&#013;to reveal their number."
+                 src="images/information-icon.png">
+        </label>
         <input id="cols" name="cols" min="3" value="9" type="number"/>
     </fieldset>
     <fieldset class="advanced hide">

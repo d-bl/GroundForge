@@ -133,7 +133,7 @@ diagram.showGraph = function(args) {
         .attr("id",function(d,i) { return "link_" + i; })
         .style('marker-start', function(d) { if (d.start && d.start != "white" && !isIE) return 'url(#start-'+d.start+')'})
         .style('marker-end', function(d) { if (d.end && d.end != "white" && !isIE) return 'url(#end-'+d.end+')'})
-        .style('marker-mid', function(d,i) { if (d.mid) return 'url(#twist-1)' } )
+        .style('marker-mid', function(d,i) { if (d.mid && !isIE) return 'url(#twist-1)' } )
         .style('opacity', function(d) { return d.border || d.toPin ? fullyTransparant : 1})
         .style('stroke', '#000')
         .style('fill', 'none')
