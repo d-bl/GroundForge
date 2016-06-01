@@ -129,11 +129,23 @@ object Matrix {
     '7' -> SrcNodes((-1,-1),(-1, 0)), // .\|..
     '8' -> SrcNodes(( 0,-1),(-1, 0)), // _.|..
     '9' -> SrcNodes(( 0,-1),(-1,-1)), // _\...
-    // double length for vertical link
+    // double length for vertical link only
     'A' -> SrcNodes((-2, 0),( 0, 1)), // ..|._
     'B' -> SrcNodes((-2, 0),(-1, 1)), // ..|/.
     'C' -> SrcNodes((-1,-1),(-2, 0)), // .\|..
     'D' -> SrcNodes(( 0,-1),(-2, 0)), // _.|..
+    // double length for horizontal links too
+    'E' -> SrcNodes((-1, 1),( 0, 2)), // .../_
+    'F' -> SrcNodes((-1, 0),( 0, 2)), // ..|._
+    'G' -> SrcNodes((-2, 0),( 0, 2)), // ..|._
+    'H' -> SrcNodes((-1,-1),( 0, 2)), // .\.._
+    'I' -> SrcNodes(( 0,-1),( 0, 2)), // _..._
+    'J' -> SrcNodes(( 0,-2),( 0, 1)), // _..._
+    'K' -> SrcNodes(( 0,-2),( 0, 2)), // _..._
+    'L' -> SrcNodes(( 0,-2),(-1, 1)), // _../.
+    'M' -> SrcNodes(( 0,-2),(-1, 0)), // _.|..
+    'N' -> SrcNodes(( 0,-2),(-2, 0)), // _.|..
+    'O' -> SrcNodes(( 0,-2),(-1,-1)), // _\...
     '-' -> SrcNodes()                 // not used node
   )
 
@@ -151,7 +163,7 @@ object Matrix {
         Failure(new IllegalArgumentException(
           s"length of '$matrix' is ${matrix.length} while '$dimensions' asks for $matrixSize"
         ))
-      else if (!matrix.matches("[-0-9ABCD]+"))
+      else if (!matrix.matches("[-0-9A-O]+"))
         Failure(new IllegalArgumentException(
           s"'$matrix' is not a valid matrix string"
         ))
@@ -172,7 +184,7 @@ object Matrix {
   }
 
   def toMatrixLines(str: String): Try[Array[String]] = {
-    val lines = str.split("[^-0-9ABCD]+")
+    val lines = str.split("[^-0-9A-O]+")
     if (lines.map(_.length).sortBy(n => n).distinct.length == 1) Success(lines)
     else Failure(new scala.Exception("lines of matrix have varying lengths"))
   }

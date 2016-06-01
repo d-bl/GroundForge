@@ -59,6 +59,15 @@ class PatternSpec extends FlatSpec with Matchers {
     links.length shouldBe 1
   }
 
+  it should "process double length horizontal lines" in {
+    val patterns = new PatternSheet
+    patterns.add("-5---5-5 5-O-E-5-", isBrick = true)
+    val svgString = patterns.toSvgDoc()
+    FileUtils.write(new File(s"target/patterns/double-length.svg"), svgString)
+    val links = svgString.split("\n").filter(_.contains("href='http"))
+    links.length shouldBe 1
+  }
+
   "minimal" should "succeed" in {
     val patterns = new PatternSheet(1, "width='340' height='330'")
     patterns.add("586- -4-5 5-21 -5-7", isBrick = true)
