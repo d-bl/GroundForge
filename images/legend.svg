@@ -22,7 +22,7 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4444088"
+     inkscape:zoom="1.6417424"
      inkscape:cx="277.37991"
      inkscape:cy="516.93652"
      inkscape:document-units="px"
@@ -4470,6 +4470,6 @@
          y="508.62289"
          x="34.084927"
          id="tspan23034"
-         sodipodi:role="line">Labeling nodes rather than labeling vertices</tspan></text>
+         sodipodi:role="line">GroundForge labels nodes rather than vertices</tspan></text>
   </g>
 </svg>

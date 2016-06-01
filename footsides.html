@@ -20,13 +20,13 @@
       var mRows = m.split(/[^-0-9A-B]+/)
       var rows = mRows.length
       var cols = mRows[0].length
-      var bricks = document.getElementById('matrix').checked
-      var nrOfRows = 6
+      var bricks = document.getElementById('bricks').checked
+      var nrOfRows = 10
       for (nrOfCols=6 ; nrOfCols < 6+cols ; nrOfCols++) {
-        for (shiftUp=0 ; shiftUp < rows ; shiftUp++) {
-          for (shiftLeft=0 ; shiftLeft < cols ; shiftLeft++) {
-            data = dibl.D3Data().get(m, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, bricks)
-            var id = ''+nrOfCols+shiftUp+shiftLeft
+        for (shiftLeft=0 ; shiftLeft < rows ; shiftLeft++) {
+          for (shiftUp=0 ; shiftUp < cols ; shiftUp++) {
+            data = dibl.D3Data().get(m, nrOfRows, nrOfCols, shiftUp, shiftLeft, stitches, bricks)
+            var id = ''+nrOfCols+shiftLeft+shiftUp
             document.getElementById('d'+id).innerHTML = ""
             diagram.showGraph({
               threadColor: '#colorpicker',
@@ -40,10 +40,10 @@
             })
             document.getElementById('L'+id).href = 'index.html?hideAdvanced&matrix=' +
               document.getElementById('matrix').value.replace( /[^-0-9A-D]+/g, '%0D') +
-              (document.getElementById('matrix').checked ? '&bricks' : '') +
+              (bricks ? '&bricks' : '') +
               '&rows=9&cols=' + nrOfCols +
-              '&up' + shiftUp +
-              '&left' + shiftLeft
+              '&left=' + shiftLeft +
+              '&up=' + shiftUp
           }
         }
       }
@@ -70,7 +70,7 @@
   <br/>
   <label for="bricks">Stack as bricks</label>
   <input id="bricks" name="bricks" type="checkbox">
-  <p><button >clear</button><button onclick="show(); return false">show</button><em>
+  <p><button>reset</button><button onclick="show(); return false">show</button><em>
     N.B: Please have patience, may not be suited for tablets.
     It might also ask you to continue a slow script.
   </em></p>
