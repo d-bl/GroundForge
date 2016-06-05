@@ -41,8 +41,6 @@
     <script src="colorpicker/mcColorPicker.js" type="text/javascript"></script>
 </head>
 <body onload="init();load()">
-<script>
-</script>
 
 <article>
     <a id="logo"
@@ -164,9 +162,6 @@ C4=tctc</textarea>
         <button onclick="load(); return false">show</button>
         <img alt="(i)" title="Generate diagrams.&#013;No page reload."
              src="images/information-icon.png">
-        <button onclick="allDownloadable(); return false">make downloadable</button>
-        <img alt="(i)" title="Please wait until the animation completed,&#013;then turn the diagrams and pattern sheet into downloadable images.&#013;The diagrams will no longer be dragable nor zoomable.&#013;No page reload."
-             src="images/information-icon.png">
         <button onclick="location.href='?'; return false">default</button>
         <img alt="(i)" title="Generate default diagrams.&#013;The page address is reduced.&#013;The page reloads."
              src="images/information-icon.png">
@@ -175,6 +170,21 @@ C4=tctc</textarea>
              src="images/information-icon.png">
     </fieldset>
 </form>
+<p>
+    Download the <a
+        onmousedown="setHref(this, 'pairs')"
+        download target="_blank"
+        href="#"
+>pair diagram</a>, <a
+        onmousedown="setHref(this,'threads')"
+        download target="_blank"
+        href="#"
+>thread diagram</a> or <a
+        onmousedown="setHref(this, 'sheet')"
+        download target="_blank"
+        href="#"
+>pattern sheet</a>.
+</p>
 <div id="diagrams">
     <div id="pairs"><img src="images/preview.png" title="preview while scripts are loading and execusting"></div>
     <div id="threads"></div>
