@@ -82,7 +82,11 @@ function makeDownloadable(id) {
   if (container) {
     if (container.firstElementChild.localName == "img") return
     var namespaces = 'xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"'
-    var svg = container.innerHTML.replace('pointer-events="all"',namespaces)
+    var svg = container.innerHTML.
+      replace('pointer-events="all"',namespaces).
+      replace(/<rect.*?rect>/,'').
+      replace(/<circle [^>]+opacity: 0;.+?circle>/g,'').
+      replace(/<path [^>]+opacity: 0;.+?path>/g,'')
     container.innerHTML = wrapSvg(svg)
   }
 }
