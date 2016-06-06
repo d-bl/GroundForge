@@ -73,25 +73,19 @@ function init() {
   })
   document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
 }
-function wrapSvg(svg){
-  var xmlHead = '<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->'
-  return "<img src='data:image/svg+xml," + encodeURIComponent(xmlHead + svg) + "' download='diagram.svg'/>"
-}
-function makeDownloadable(id) {
+function setHref (comp, id) {
   var container = document.getElementById(id)
-  if (container) {
-    if (container.firstElementChild.localName == "img") return
-    var namespaces = 'xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"'
-    var svg = container.innerHTML.
-      replace('pointer-events="all"',namespaces).
-      replace(/<rect.*?rect>/,'').
-      replace(/<circle [^>]+opacity: 0;.+?circle>/g,'').
-      replace(/<path [^>]+opacity: 0;.+?path>/g,'')
-    container.innerHTML = wrapSvg(svg)
-  }
-}
-function allDownloadable () {
-  makeDownloadable('pairs')
-  makeDownloadable('threads')
-  makeDownloadable('sheet')
+  if (!container) return
+  if (container.firstElementChild.localName != "svg") return
+  var svg = id == 'sheet'
+    ? container.innerHTML
+    : container.innerHTML.
+      replace('pointer-events="all"', 'xmlns:svg="http://www.w3.org/2000/svg" ' +
+                                      'xmlns="http://www.w3.org/2000/svg" ' +
+                                      'xmlns:xlink="http://www.w3.org/1999/xlink"').
+      replace(/transform="[^"]+"/, '').
+      replace(/<rect.*?rect>/, '').
+      replace(/<circle [^>]+opacity: 0;.+?circle>/g, '').
+      replace(/<path [^>]+opacity: 0;.+?path>/g, '')
+  comp.href = 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
 }
