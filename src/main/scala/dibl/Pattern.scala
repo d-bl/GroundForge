@@ -18,7 +18,7 @@ package dibl
 import dibl.Matrix.toRelSrcNodes
 
 class Pattern (m:String, isBrick: Boolean, rows: Int, cols: Int,
-               groupId: String = "g1", offsetX: Int = 80, offsetY: Int = 120) {
+               groupId: String = "GFP1", offsetX: Int = 80, offsetY: Int = 120) {
 
   private val hXw = s"${rows}x$cols"
 
