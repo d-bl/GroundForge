@@ -31,7 +31,7 @@ object D3Data {
           bricks: Boolean
          ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
 
-    val pairDiagram = PairDiagram(Settings.create(str, bricks,  rows, cols, shiftLeft, shiftUp, stitches))
+    val pairDiagram = PairDiagram(Settings(str, bricks,  rows, cols, shiftLeft, shiftUp, stitches))
     val threadDiagram = ThreadDiagram(pairDiagram)
     js.Dictionary(
       "pairNodes" -> toJS(pairDiagram.nodes),

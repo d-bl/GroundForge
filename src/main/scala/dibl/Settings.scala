@@ -17,7 +17,7 @@ package dibl
 
 import dibl.Matrix._
 
-import scala.util.{Failure, Success, Try}
+import scala.util.Try
 
 case class Settings private(absM: M,
                             stitches: Array[Array[String]],
@@ -41,21 +41,7 @@ case class Settings private(absM: M,
 
 object Settings {
 
-  def apply(key: String,
-            nr: Int,
-            absRows: Int,
-            absCols: Int,
-            shiftLeft: Int = 0,
-            shiftUp: Int = 0,
-            stitches: String = ""
-           ): Try[Settings] =
-    for {
-      str <- getMatrix(key, nr)
-      relM <- toRelSrcNodes(matrix = str, dimensions = key)
-      absM <- toAbs(relM, absRows, absCols, shiftLeft, shiftUp)
-    } yield create(relM, absM, stitches, bricks = true)
-
-  def create(str: String,
+  def apply(str: String,
             bricks: Boolean,
             absRows: Int,
             absCols: Int,
@@ -64,18 +50,14 @@ object Settings {
             stitches: String = ""
            ): Try[Settings] = {
     for {
-        relM <- toRelSrcNodes(str)
-        absM <- if (bricks) toAbs(relM, absRows, absCols, shiftLeft, shiftUp)
-                else toAbsWithMargins(shift(relM, shiftLeft, shiftUp), absRows, absCols)
-      } yield create(relM, absM, stitches, bricks)
-    }
-
-  private def create(relM: M, absM: M, stitches: String, bricks: Boolean): Settings =
-    new Settings(
-      absM,
-      stitches = convert(stitches, relM.length, relM(0).length),
-      bricks
-    )
+      relative <- toRelSrcNodes(str)
+      checker = if (bricks) brickWallToCheckerboard(relative) else relative
+      shifted = shift(checker, shiftLeft, shiftUp)
+      absolute <- toAbsWithMargins(shifted, absRows, absCols)
+      _ = new FootsideBuilder(absolute).build()
+      stitchMatrix = convert(stitches, relative.length, relative(0).length)
+    } yield new Settings(absolute, stitchMatrix, bricks)
+  }
 
   private def convert(str: String,
                       rows: Int,
@@ -83,36 +65,20 @@ object Settings {
                      ): Array[Array[String]] = {
     val result = Array.fill(rows, cols)("ctc")
     str.toLowerCase()
-      .split("[^a-z0-9=]+")
-      .map(_.split("="))
-      .filter(_.length == 2)
-      .filter(_ (0).matches("[a-z][0-9]"))
-      .filter(_ (1).matches("[lrctp]+"))
-      .filter(_ (1).matches(".*c.*"))
-      .filter(_ (1).replaceAll("[^p]","").length < 2)
+      .split("[^a-z0-9=]+") // split on sequences of delimiting characters (white space, punctuation and anything unknown)
+      .map(_.split("=")) // split each component into key value pairs
+      .filter(_.length == 2) // omit key=value=something arrays
+      .filter(_ (0).matches("[a-z]+[0-9]+")) // the key should be a valid grid id
+      .filter(_ (1).matches("[lrctp]+")) // the value should contain valid stitch symbols
+      .filter(_ (1).matches(".*c.*")) // a stitch should have at least a cross (2nd thread over 3rd)
+      .filter(_ (1).replaceAll("[^p]","").length < 2) // a stitch should have more than a pin
       .foreach { kv =>
-        val col = kv(0)(0).toInt - 'a'.toInt
-        val row = kv(0)(1).toInt - '1'.toInt
+        val key = kv(0)
+        val col = key(0).toInt - 'a'.toInt
+        val row = key(1).toInt - '1'.toInt
         if (row < rows && col < cols)
           result(row)(col) = kv(1)
       }
     result
-  }
-
-  private def toAbs(m: M,
-                    absRows: Int,
-                    absCols: Int,
-                    shiftLeft: Int,
-                    shiftUp: Int
-                   ): Try[M] =
-    toAbsWithMargins(shift(toCheckerboard(m), shiftLeft, shiftUp), absRows, absCols)
-
-  def getMatrix(key: String,
-                        nr: Int
-                       ): Try[String] = {
-    val matrices = matrixMap.get(key)
-    if (matrices.isEmpty) Failure(new Exception(s"$key not found"))
-    else if (nr < 0 || nr >= matrices.get.length) Failure(new Exception(s"$nr is invalid for $key"))
-    else Success(matrices.get(nr))
   }
 }

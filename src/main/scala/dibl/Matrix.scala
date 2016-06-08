@@ -44,7 +44,7 @@ object Matrix {
     * +---+---+
     * </pre>
     */
-  def toCheckerboard(m: M): M = {
+  def brickWallToCheckerboard(m: M): M = {
     m ++ m.map{r =>
       val (left,right) = r.splitAt(r.length/2)
       right ++ left
@@ -52,7 +52,7 @@ object Matrix {
   }
 
   /** Converts relative source nodes in one matrix into
-    * absolute source nodes in a matrix wih different dimensions
+    * absolute source nodes in a matrix with different dimensions
     * and a margin for loose ends.
     */
   def toAbsWithMargins(rel: M, absRows: Int, absCols: Int): Try[M] =
@@ -69,7 +69,6 @@ object Matrix {
         abs(targetRow)(targetCol) = for ((relRow, relCol) <- rel(targetRow % relRows)(targetCol % relCols))
           yield (max(1,targetRow + relRow), max(1,targetCol + relCol))
       }
-      new FootsideBuilder(abs).build()
       abs
     }
 
@@ -88,30 +87,6 @@ object Matrix {
     }
     links
   }
-  /** Each string represents a matrix from: http://web.uvic.ca/~vmi/papers/interleavedpatterns.html
-    * Each cell (alias character) represents a target node in a two-in-two-out directed graph, see relSourcesMap.
-    */
-  val matrixMap: HashMap[String,Array[String]] = HashMap (
-    "2x2" -> Array[String]("4368"),
-    "2x4" -> Array[String](
-      "5831-4-7","43735-53","43436868","43535863","88881111","44881748","48405887","46-16868","48635663","53535353",
-      "43126-78","588-14-2","48415377","46836-48","6868-4-4","-4866-48","688814-1","46636668","43116888","48322483",
-      "43225-73","46-26-58","48-25-53","466-6686","586--4-5","44667781","48835-43","48154-77","48487171","84647712",
-      "46316688","46833468","46323488","14838-48"
-    ),
-    "4x2" -> Array[String](
-      "43686666","435-8666","435--568","43535368","4321-768","6666-468","43536866","66-45-86","435-3586","4321-498",
-      "43683486","68-4217-","66992200","66226622","88881111","88118811","66112288","88991100","66882211","66118822",
-      "66119911","66990022","66991111","66881122","66662222","66009922","66886611","66668811","66888800","66669900",
-      "66666622","66661188","44447777","5353535-","535--55-","66666666","44774477","66-42188","66887-10","66-40199",
-      "66667-12","6688-421","66-49811","6699-401","6811884-","66-46822","6888114-","6611-498","667-8611","667-8900",
-      "43688811","43981166","43986611","43988800","43218866","43216688","43980088","43689900","43681188","43680099",
-      "43019922","43686622","43682222","887--501","6811-75-","667--521","435-1099","435-8622","435-8911","435-1288",
-      "43536822","43539811","43532188","4398-421","43987-10","43217-86","4368-721","43684-86","68-4684-","687-124-",
-      "687-107-","684--55-","43535-86","43687321","43987301","43983412","43217368","43984-12","4398-701","43687-12",
-      "43214-89","4368-468","535-864-"
-    )
-  )
 
   /** Translates a character in a matrix string into relative links with two source nodes.
     * The source nodes are defined with relative (row,column) numbers.
@@ -186,7 +161,7 @@ object Matrix {
   def toMatrixLines(str: String): Try[Array[String]] = {
     val lines = str.split("[^-0-9A-O]+")
     if (lines.map(_.length).sortBy(n => n).distinct.length == 1) Success(lines)
-    else Failure(new scala.Exception("lines of matrix have varying lengths"))
+    else Failure(new scala.Exception(s"lines of matrix have varying lengths $str ==> ${lines.mkString(", ")}"))
   }
 
   /** @param s for example "4x2..."
