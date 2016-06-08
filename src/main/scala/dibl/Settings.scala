@@ -15,6 +15,7 @@
 */
 package dibl
 
+import dibl.Footsides.createFootsides
 import dibl.Matrix._
 
 import scala.util.Try
@@ -54,7 +55,7 @@ object Settings {
       checker = if (bricks) brickWallToCheckerboard(relative) else relative
       shifted = shift(checker, shiftLeft, shiftUp)
       absolute <- toAbsWithMargins(shifted, absRows, absCols)
-      _ = new FootsideBuilder(absolute).build()
+      _ = createFootsides(absolute)
       stitchMatrix = convert(stitches, relative.length, relative(0).length)
     } yield new Settings(absolute, stitchMatrix, bricks)
   }
