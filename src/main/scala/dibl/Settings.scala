@@ -20,24 +20,22 @@ import dibl.Matrix._
 
 import scala.util.Try
 
-case class Settings private(absM: M,
-                            stitches: Array[Array[String]],
-                            bricks: Boolean
+abstract class Settings private(val absM: M,
+                                val stitches: Array[Array[String]]
                            ) {
   val nrOfPairLinks = countLinks(absM)
-  private val relRows = stitches.length
-  private val relCols = stitches(0).length
-  private val margin = 2
+  protected val relRows = stitches.length
+  protected val relCols = stitches(0).length
+  protected val margin = 2
 
+  /** Gets the tooltip for a stitch: its ID and the symbols specifying the thread movements */
   def getTitle(row: Int, col: Int): String = {
-    val (cellRow, cellCol) = toCell(row,col)
+    val (cellRow, cellCol) = toStitchId(row,col)
     s"${stitches(cellRow)(cellCol)} - ${"ABCDEFGHIJKLMNOPQRSTUVWXYZ"(cellCol)}${cellRow+1}"
   }
 
-  private def toCell(row: Int, col: Int): (Int, Int) = {
-    val brickOffset = if (!bricks) 0 else ((row + margin + relRows) / relRows % 2) * (relCols / 2) + margin
-    ((row - margin + relRows) % relRows, (brickOffset + col) % relCols)
-  }
+  /** Recalculates a cell ID from the large matrix back to the original matrix */
+  def toStitchId(row: Int, col: Int): (Int, Int)
 }
 
 object Settings {
@@ -50,15 +48,35 @@ object Settings {
             shiftUp: Int = 0,
             stitches: String = ""
            ): Try[Settings] = {
+    val (toSettings, toCheckerBoard) = tileTypes(bricks)
     for {
       relative <- toRelSrcNodes(str)
-      checker = if (bricks) brickWallToCheckerboard(relative) else relative
+      checker = toCheckerBoard(relative)
       shifted = shift(checker, shiftLeft, shiftUp)
       absolute <- toAbsWithMargins(shifted, absRows, absCols)
       _ = createFootsides(absolute)
       stitchMatrix = convert(stitches, relative.length, relative(0).length)
-    } yield new Settings(absolute, stitchMatrix, bricks)
+    } yield toSettings(absolute, stitchMatrix)
   }
+
+  val toCheckerSettings: (M, Array[Array[String]]) => Settings = (absolute, stitchMatrix) =>
+    new Settings(absolute, stitchMatrix) {
+      def toStitchId(row: Int, col: Int) =
+        ((row - margin + relRows) % relRows, col % relCols)
+    }
+  val toBrickSettings: (M, Array[Array[String]]) => Settings = (absolute, stitchMatrix) =>
+    new Settings(absolute, stitchMatrix) {
+      def toStitchId(row: Int, col: Int) = {
+        val brickOffset = ((row + margin + relRows) / relRows % 2) * (relCols / 2) + margin
+        ((row - margin + relRows) % relRows, (brickOffset + col) % relCols)
+      }
+    }
+  val brickToChecker: (M) => M = (m) => brickWallToCheckerboard(m)
+  val checkerToChecker: (M) => M = (m) => identity(m)
+  val tileTypes = Map(
+    true -> (toBrickSettings, brickToChecker),
+    false -> (toCheckerSettings, checkerToChecker)
+  )
 
   private def convert(str: String,
                       rows: Int,
