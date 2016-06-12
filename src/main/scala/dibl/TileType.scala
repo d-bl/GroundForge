@@ -22,12 +22,9 @@ abstract class TileType {
 }
 
 object TileType {
-  def apply(key: Boolean) = tileTypes.getOrElse(key,Checker)
-  def apply(key: String) = tileTypes.getOrElse(key,Checker)
-  private val tileTypes = Map(
-    true -> Brick,// for a web page with a checkbox to choose between a brick wall or checker board
-    "bricks" -> Brick // for a web page with radio buttons to choose the type of tiling
-  )
+  def apply(key: String) = Map(
+    "bricks" -> Brick
+  ).getOrElse(key,Checker)
 }
 
 object Checker extends TileType {

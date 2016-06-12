@@ -51,8 +51,8 @@ object Settings {
   /** Creates a [[dibl.Settings]] instance.
     *
     * @param str A string with matrix lines. Any character in [[dibl.Matrix.relSourcesMap.keySet]]
-    *            is considered a matrix cell. Any sequence of other characters separates matrix lines.
-    * @param bricks The [[dibl.TileType]] of the matrix.
+    *            is converted to a matrix cell. Any sequence of other characters separates matrix lines.
+    * @param bricks A key selecting the [[dibl.TileType]] of the matrix.
     * @param absRows The desired number of rows for the patch of lace.
     * @param absCols The desired number of columns for the patch of lace.
     * @param shiftLeft The number or columns to the tile to the left foot side.
@@ -61,7 +61,7 @@ object Settings {
     * @return a [[dibl.Settings]] instance
     */
   def apply(str: String,
-            bricks: Boolean,
+            bricks: String,
             absRows: Int,
             absCols: Int,
             shiftLeft: Int = 0,

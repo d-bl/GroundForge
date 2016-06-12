@@ -20,7 +20,7 @@
     var shiftLeft = 1
     var shiftUp = 1
     var stitches = ''
-    var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, stackAsBricks)
+    var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, stackAsBricks ? "bricks" : "checker")
     diagram.showGraph({
       container: '#pairs',
       width: 300,

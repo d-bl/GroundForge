@@ -44,7 +44,7 @@
 
     var container = document.getElementById('diagrams')
     for (i=0 ; i< 124 ; i++) {
-      var data = dibl.D3Data().get(x[i], 10,10, 0,0, stitches, false)
+      var data = dibl.D3Data().get(x[i], 10,10, 0,0, stitches, "checker")
       diagram.showGraph({
         container: '#diagrams',
         width: 78,

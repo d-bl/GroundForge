@@ -126,12 +126,12 @@ class MatrixSpec extends FlatSpec with Matchers {
     for (i <- matrices.indices) {
         val args: Array[String] = matrices(i).split(";")
         val matrix = args(0)
-        val bricks = args.length > 1 && args(1) == "bricks"
-        val m = Settings(matrix, bricks, absRows = 40, absCols = 12, shiftLeft = 1, shiftUp = 1,stitches = "").get.absM
+        val tileType = if (args.length > 1) args(1) else ""
+        val m = Settings(matrix, tileType, absRows = 40, absCols = 12, shiftLeft = 1, shiftUp = 1,stitches = "").get.absM
         val nrOfLinks = countLinks(m)
         // some rough sifting of matrices with a different a different range for internal
         val topMargin =
-          if (bricks && Set("25 66 -4 21 88", "27 88 11", "28 66 88 66 11", "179 66 -4 5- 86" ).contains(matrix)) 1
+          if (tileType=="bricks" && Set("25 66 -4 21 88", "27 88 11", "28 66 88 66 11", "179 66 -4 5- 86" ).contains(matrix)) 1
           else 2
         val bottomMargin =
           if (matrices(i).endsWith(" -4-4 5--- -C-B;bricks")

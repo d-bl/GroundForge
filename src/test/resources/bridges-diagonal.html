@@ -245,7 +245,7 @@
 
     var container = document.getElementById('diagrams')
     for (i=0 ; i < 230 ; i++) {
-      var data = dibl.D3Data().get(x[i], 14,20, 0,0, stitches, true)
+      var data = dibl.D3Data().get(x[i], 14,20, 0,0, stitches, "bricks")
       diagram.showGraph({
         container: '#diagrams',
         width: 78,

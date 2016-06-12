@@ -14,6 +14,6 @@ libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.8.0"
 
 libraryDependencies += "org.scalatest" % "scalatest_2.11" % "2.2.1" % "test"
 
-bootSnippet := "dibl.D3Data().getNr('2x4',0,12,12,0,0);"
+bootSnippet := "dibl.D3Data().get('-437 34-7', 10, 10, 0, 0, '', 'bricks');"
 
 updateBrowsers <<= updateBrowsers.triggeredBy(fastOptJS in Compile)
