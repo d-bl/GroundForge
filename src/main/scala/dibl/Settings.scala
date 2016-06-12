@@ -20,26 +20,46 @@ import dibl.Matrix._
 
 import scala.util.Try
 
-abstract class Settings private(val absM: M,
-                                val stitches: Array[Array[String]]
-                           ) {
-  val nrOfPairLinks = countLinks(absM)
+/** Parameters for the constructor of a [[dibl.PairDiagram]]
+  *
+  * @param absM A matrix for a patch of lace with repeated tiles. Each cell represents a node in a two-in-two-out directed graph.
+  *             A cell contains tuples pointing to other cells for both incoming links and outgoing links for a node.
+  * @param stitches A matrix for a single tile with stitch instructions (tcplr) per cell.
+  */
+abstract class Settings(val absM: M,
+                        val stitches: Array[Array[String]]
+                       ) {
+  val nrOfPairLinks: Array[Array[Int]] = countLinks(absM)
   protected val relRows = stitches.length
   protected val relCols = stitches(0).length
   protected val margin = 2
 
-  /** Gets the tooltip for a stitch: its ID and the symbols specifying the thread movements */
+  /** Gets the tooltip for a stitch: the ID of a cell (a letter for the column, a digit for a row)
+    * in a tile and the symbols specifying the stitch instructions.
+    */
   def getTitle(row: Int, col: Int): String = {
-    val (cellRow, cellCol) = toStitchId(row,col)
+    val (cellRow, cellCol) = toOriginalPosition(row,col)
     s"${stitches(cellRow)(cellCol)} - ${"ABCDEFGHIJKLMNOPQRSTUVWXYZ"(cellCol)}${cellRow+1}"
   }
 
-  /** Recalculates a cell ID from the large matrix back to the original matrix */
-  def toStitchId(row: Int, col: Int): (Int, Int)
+  /** Recalculates the position of a cell from the full patch to the tile */
+  protected def toOriginalPosition(row: Int, col: Int): (Int, Int)
 }
 
 object Settings {
 
+  /** Creates a [[dibl.Settings]] instance.
+    *
+    * @param str A string with matrix lines. Any character in [[dibl.Matrix.relSourcesMap.keySet]]
+    *            is considered a matrix cell. Any sequence of other characters separates matrix lines.
+    * @param bricks The [[dibl.TileType]] of the matrix.
+    * @param absRows The desired number of rows for the patch of lace.
+    * @param absCols The desired number of columns for the patch of lace.
+    * @param shiftLeft The number or columns to the tile to the left foot side.
+    * @param shiftUp The number of rows to shift the tile up to the top (read to the false foot side).
+    * @param stitches Stitch instructions per tile-cell.
+    * @return a [[dibl.Settings]] instance
+    */
   def apply(str: String,
             bricks: Boolean,
             absRows: Int,
@@ -48,40 +68,29 @@ object Settings {
             shiftUp: Int = 0,
             stitches: String = ""
            ): Try[Settings] = {
-    val (toSettings, toCheckerBoard) = tileTypes(bricks)
+    val tileType = TileType(bricks)
     for {
-      relative <- toRelSrcNodes(str)
-      checker = toCheckerBoard(relative)
-      shifted = shift(checker, shiftLeft, shiftUp)
-      absolute <- toAbsWithMargins(shifted, absRows, absCols)
-      _ = createFootsides(absolute)
-      stitchMatrix = convert(stitches, relative.length, relative(0).length)
-    } yield toSettings(absolute, stitchMatrix)
+      relative    <- toRelSrcNodes(str)
+      checker      = tileType.toChecker(relative)
+      shifted      = shift(checker, shiftLeft, shiftUp)
+      absolute    <- toAbsWithMargins(shifted, absRows, absCols)
+      _            = createFootsides(absolute)
+      stitchMatrix = toStitchMatrix(stitches, relative.length, relative(0).length)
+    } yield tileType.toSettings(absolute, stitchMatrix)
   }
 
-  val toCheckerSettings: (M, Array[Array[String]]) => Settings = (absolute, stitchMatrix) =>
-    new Settings(absolute, stitchMatrix) {
-      def toStitchId(row: Int, col: Int) =
-        ((row - margin + relRows) % relRows, col % relCols)
-    }
-  val toBrickSettings: (M, Array[Array[String]]) => Settings = (absolute, stitchMatrix) =>
-    new Settings(absolute, stitchMatrix) {
-      def toStitchId(row: Int, col: Int) = {
-        val brickOffset = ((row + margin + relRows) / relRows % 2) * (relCols / 2) + margin
-        ((row - margin + relRows) % relRows, (brickOffset + col) % relCols)
-      }
-    }
-  val brickToChecker: (M) => M = (m) => brickWallToCheckerboard(m)
-  val checkerToChecker: (M) => M = (m) => identity(m)
-  val tileTypes = Map(
-    true -> (toBrickSettings, brickToChecker),
-    false -> (toCheckerSettings, checkerToChecker)
-  )
-
-  private def convert(str: String,
-                      rows: Int,
-                      cols: Int
-                     ): Array[Array[String]] = {
+  /** Converts a string with stitch instructions into a matrix.
+    *
+    * @param str Key-value pairs, a key is an ID of a cell in a matrix, separated with an '=' from the value.
+    *            A value is a sequence of stitch instructions defaulting to 'ctc' for not mentioned cells.
+    * @param rows The number of rows in a tile.
+    * @param cols The number of columns in a tile.
+    * @return A matrix with stitch instructions.
+    */
+  private def toStitchMatrix(str: String,
+                             rows: Int,
+                             cols: Int
+                            ): Array[Array[String]] = {
     val result = Array.fill(rows, cols)("ctc")
     str.toLowerCase()
       .split("[^a-z0-9=]+") // split on sequences of delimiting characters (white space, punctuation and anything unknown)
