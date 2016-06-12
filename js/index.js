@@ -9,7 +9,7 @@ function load() {
   var shiftUp = document.getElementById('up').value
   var matrix = document.getElementById('matrix').value
   var stitches = document.getElementById('stitches').value
-  var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, stackAsBricks)
+  var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, stackAsBricks ? "bricks" : "checker")
   var pairScale = document.getElementById('pairScale').value * 1
   var threadScale = document.getElementById('threadScale').value * 1
   diagram.showGraph({

@@ -25,7 +25,7 @@
       for (nrOfCols=6 ; nrOfCols < 6+cols ; nrOfCols++) {
         for (shiftLeft=0 ; shiftLeft < rows ; shiftLeft++) {
           for (shiftUp=0 ; shiftUp < cols ; shiftUp++) {
-            data = dibl.D3Data().get(m, nrOfRows, nrOfCols, shiftUp, shiftLeft, stitches, bricks)
+            data = dibl.D3Data().get(m, nrOfRows, nrOfCols, shiftUp, shiftLeft, stitches, bricks? "bricks" : "checker")
             var id = ''+nrOfCols+shiftLeft+shiftUp
             document.getElementById('d'+id).innerHTML = ""
             diagram.showGraph({
