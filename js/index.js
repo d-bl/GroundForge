@@ -2,14 +2,15 @@ function load() {
   fullyTransparant = document.getElementById('transparency').value
   document.getElementById('pairs').innerHTML = ""
   document.getElementById('threads').innerHTML = ""
-  var stackAsBricks = document.getElementById('bricks').checked
   var nrOfRows = document.getElementById('rows').value
   var nrOfCols = document.getElementById('cols').value
   var shiftLeft = document.getElementById('left').value
   var shiftUp = document.getElementById('up').value
   var matrix = document.getElementById('matrix').value
   var stitches = document.getElementById('stitches').value
-  var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, stackAsBricks ? "bricks" : "checker")
+  var e = document.getElementById('tiles')
+  var tileType = e.selectedIndex >=0 ? e.options[e.selectedIndex].value : ""
+  var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, tileType)
   var pairScale = document.getElementById('pairScale').value * 1
   var threadScale = document.getElementById('threadScale').value * 1
   diagram.showGraph({
@@ -52,25 +53,24 @@ function init() {
       var fields = document.getElementsByName(key)
       var val = decodeURIComponent(value).replace(/[+]/g, " ")
       if (fields.length > 0) {
-        if (fields[0].type != "checkbox")
+        if (fields[0].type != "select-one")
           fields[0].value = val
-        else {
-          // the value of a flag is ignored
-          // because it is also ignored when the pattern sheet is created
-          fields[0].checked = true
-        }
+        else
+          for(index = 0 ; index < fields[0].length ; index++)
+            if(fields[0][index].value == val) {
+              fields[0].selectedIndex = index
+              break
+            }
       }
       // create pattern sheet
-      if (key && key == 'matrix') {
-         // the matrix and bricks arguments also fill form fields
-         patterns.add(val, location.indexOf('&bricks') >= 0)
-      } else if (key && key == 'patch') {
-         // a patch argument is only used for the pattern sheet
-         // we have to split the value in the matrix and optional bricks flag
+      if (key && key == 'patch') {
+         // a patch argument is used for the pattern sheet, not for a form field
+         // we have to split the value in the matrix and optional type of tiles
          var patchArgs = val.split(";")
-         patterns.add(patchArgs[0], patchArgs[1]=='bricks')
+         patterns.add(patchArgs[0], patchArgs[1])
       }
   })
+  patterns.add(document.getElementById("matrix").value, document.getElementById("tiles").value)
   document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
 }
 function setHref (comp, id) {
