@@ -3,9 +3,9 @@ A downloadable pattern sheet of [GroundForge] may have multiple patterns. In som
 [GroundForge]: https://d-bl.github.io/GroundForge/
 [patterns]: https://github.com/d-bl/GroundForge/tree/gh-pages/patterns
 
-<a href="https://d-bl.github.io/GroundForge/patterns/2x4_1.svg">![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/reshape.png)</a>
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/reshape.png)
 
-The a manipulated screenshot links to the real pattern sheet. Other [patterns] may come with just a single pattern that does not look at all like the color coded pair diagram. To create a regular patch that does look like the pair diagram (or any other shape you might prefer) you would have to do the reshaping by yourself by nudging the position of intersections. That is one of the factors that makes these patterns advanced.
+The a manipulated screenshot reflects a manipulated pattern sheet. The generated sheets don't have intersections between grid positions. Other sheets may come with just a single pattern that does not look at all like the color coded pair diagram. To create a regular patch that does look like the pair diagram (or any other shape you might prefer) you would have to do the reshaping by yourself by nudging the position of intersections. That is one of the factors that makes these patterns advanced.
 
 Clones
 ------
