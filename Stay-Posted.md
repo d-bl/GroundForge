@@ -12,5 +12,6 @@ Now and then visit:
 
 Feeds can alert you about changes in the:
 * [application](https://github.com/d-bl/GroundForge/commits/gh-pages.atom)
-* [wiki pages](https://github.com/d-bl/GroundForge/wiki.atom) 
+* [wiki pages](https://github.com/d-bl/GroundForge/wiki.atom)
+* [release notes](https://github.com/d-bl/GroundForge/releases.atom)
 
