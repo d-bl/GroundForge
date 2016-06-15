@@ -101,13 +101,22 @@ object Threads {
       val h = available.head
       val threadNodes = if (h.hasSinglePair) Seq(h.n1,h.n2) else Seq(h.n1,h.n2,h.n3,h.n4)
       val bobbinNodes: Seq[Props] = threadNodes.map(node => { val src = nodes(node)
-        Props("bobbin" -> "true", "x" -> src.x, "y" -> (src.y + 100))
+        Props("bobbin" -> "true", "title" -> s"bobbin $node", "x" -> src.x, "y" -> (src.y + 100))
       })
-      // TODO white starts where appropriate
-      val bobbinLinks: Seq[Props] = threadNodes.indices.map(i =>
-        Props("source" -> threadNodes(i), "target" -> (nodes.size + i))
+      val bobbinLinks: Seq[Props] = threadNodes.indices.map(i => {
+        val base = Props("source" -> threadNodes(i), "target" -> (nodes.size + i))
+        // TODO check twisted pairs, add thread nr
+        if (i % 2 == 0) base else base ++ Props("start" -> "white")
+      })
+      val newNodes = bobbinLinks.map(props => props.target)
+      val newLinks = bobbinLinks ++ transparentLinks(newNodes) // TODO add links between recursive calls
+      println(s"$threadNodes $newLinks")
+      bobbins(available.tail,
+        nodes ++ bobbinNodes,
+        links ++ newLinks,
+        estimatedNrOfRows,
+        x+10
       )
-      bobbins(available.tail, nodes ++ bobbinNodes, links ++ bobbinLinks, estimatedNrOfRows, x+10)
     }
   }
 }
