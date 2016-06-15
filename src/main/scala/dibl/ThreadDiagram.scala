@@ -96,7 +96,7 @@ object ThreadDiagram {
         startPinsToThreadNodes(startPairNodeNrs, pairDiagram.nodes),
         threadStartNodes
       )
-      val (allNodes,allLinks) = Threads.bobbins(availablePairs.values,nodes,links,nodes.size/threadStartNodes.length)
+      val (allNodes,allLinks) = Threads.bobbins(availablePairs.values, nodes, links)
       ThreadDiagram(
         allNodes,
         markStartLinks(allLinks, allNodes) ++ transparentLinks(nodesByThreadNr)
