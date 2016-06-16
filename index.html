@@ -28,7 +28,7 @@
     #pairs { clear: both }
     #diagrams { clear: left; margin-top: 0.5em; }
 
-    div, fieldset, .show { display: inline-block; }
+    #pairs, #threads, #sheet, fieldset, .show { display: inline-block; }
     .hide { display: none }
     </style>
     <meta charset="UTF-8">
@@ -159,6 +159,12 @@ C4=tctc</textarea>
     </fieldset>
     <fieldset class="wide">
         <legend>Threads</legend>
+        <label for="colors">default colors</label>
+        <select name="colors" id="colors">
+            <option value="#000000" selected>black & white</option>
+            <option value="#D40000,#0066FF,#D4AA00,#008000">4 colors</option>
+            <option value="#FFCC00,#008800,#008080,#000080,#800080,#FF00FF,#FF55555,#AA8800">8 colors</option>
+        </select><br/>
         <input id="color" name="color" class="color" value="#CC0000" pattern="#[a-fA-F0-9]{6}"/>
         <label for="color">paint a thread by selecting its square start</label>
     </fieldset>

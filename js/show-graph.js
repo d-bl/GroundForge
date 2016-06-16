@@ -162,6 +162,14 @@ diagram.showGraph = function(args) {
         .start()
         .alpha(0.01)
 
+    if ( args.palette ) {
+      var colors = args.palette.split(',')
+      for(i=0; i < 100 ; i++) {
+        var n = i %  colors.length
+        container.selectAll(".thread"+i).style('stroke', colors[n])
+      }
+    }
+
     // event listeners
 
     container.selectAll(".threadStart").on('click', function (d) {
