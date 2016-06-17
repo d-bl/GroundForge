@@ -165,7 +165,7 @@ diagram.showGraph = function(args) {
     if ( args.palette ) {
       var colors = args.palette.split(',')
       for(i=0; i < 100 ; i++) {
-        var n = i %  colors.length
+        var n = (i - 1 + colors.length) % colors.length
         container.selectAll(".thread"+i).style('stroke', colors[n])
       }
     }
