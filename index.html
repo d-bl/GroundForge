@@ -6,8 +6,8 @@
     #sheet { width: 56.4em; height: 35em; }
     .wide { width: 25em }
     input { width: 3em; }
-    .color { display: none }
-    #color { display: inline; width: 5em; }
+    .jscolor { width: 1.1em; }
+    #color { display: inline; width: 4em; }
 
     #pairs, #threads, #sheet { overflow: scroll; resize:both; border: solid 1px #AAA; }
     a img { overflow: hide; border: solid 1px #AAA; }
@@ -38,8 +38,7 @@
     <script src="js/show-graph.js"></script>
     <script src="js/matrix-graphs.js"></script>
     <script src="js/index.js"></script>
-    <link href="colorpicker/mcColorPicker.css" rel="stylesheet" type="text/css" />
-    <script src="colorpicker/mcColorPicker.js" type="text/javascript"></script>
+    <script src="js/jscolor.min.js" type="text/javascript"></script>
 </head>
 <body onload="init();load()">
 
@@ -160,28 +159,28 @@ C4=tctc</textarea>
     </fieldset>
     <fieldset class="wide">
         <legend>Thread colors</legend>
-        <input id="color1" name="color1" class="color" value="#000000"/>
-        <input id="color2" name="color2" class="color" value="#000000"/>
-        <input id="color3" name="color3" class="color" value="#000000"/>
-        <input id="color4" name="color4" class="color" value="#000000"/>
-        <input id="color5" name="color5" class="color" value="#000000"/>
-        <input id="color6" name="color6" class="color" value="#000000"/>
-        <input id="color7" name="color7" class="color" value="#000000"/>
-        <input id="color8" name="color8" class="color" value="#000000"/>
-        <input id="color9" name="color9" class="color" value="#000000"/>
-        <input id="color10" name="color10" class="color" value="#000000"/>
-        <input id="color11" name="color11" class="color" value="#000000"/>
-        <input id="color12" name="color12" class="color" value="#000000"/>
-        <input id="color13" name="color13" class="color" value="#000000"/>
-        <input id="color14" name="color14" class="color" value="#000000"/>
-        <input id="color15" name="color15" class="color" value="#000000"/>
-        <input id="color16" name="color16" class="color" value="#000000"/>
-        <br/>apply the sequence with the show button
-        <img alt="(i)" title="or paste your favorite sequence in the url&#013;for example alternating red-green:&#013;color1=%23FF0000&color2=%2300FF00"
+        <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color1" name="color1" class="jscolor" value="000000"/>
+        <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color2" name="color2" class="jscolor" value="000000"/>
+        <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color3" name="color3" class="jscolor" value="000000"/>
+        <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color4" name="color4" class="jscolor" value="000000"/>
+        <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color5" name="color5" class="jscolor" value="000000"/>
+        <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color6" name="color6" class="jscolor" value="000000"/>
+        <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color7" name="color7" class="jscolor" value="000000"/>
+        <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color8" name="color8" class="jscolor" value="000000"/>
+        <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color9" name="color9" class="jscolor" value="000000"/>
+        <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color10" name="color10" class="jscolor" value="000000"/>
+        <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color11" name="color11" class="jscolor" value="000000"/>
+        <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color12" name="color12" class="jscolor" value="000000"/>
+        <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color13" name="color13" class="jscolor" value="000000"/>
+        <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color14" name="color14" class="jscolor" value="000000"/>
+        <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color15" name="color15" class="jscolor" value="000000"/>
+        <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color16" name="color16" class="jscolor" value="000000"/>
+        <br/>apply the sequence with the <em>show</em> button
+        <img alt="(i)" title="or paste your favorite sequence in the url&#013;for example alternating red-green:&#013;color1=%23FF0000&color2=%2300FF00&...&color16=FFFFFF"
              src="images/information-icon.png">
-        <br/>shorten the sequence with white swatches
+        <br/>white ( FFFFFF ) terminates the sequence
         <br/>
-        <input id="color" name="color" class="color" value="#CC0000" pattern="#[a-fA-F0-9]{6}"/>
+        <input id="color" name="color" class="jscolor" value="CC0000" pattern="[a-fA-F0-9]{6}"/>
         <label for="color"> apply with the square start of a thread</label>
     </fieldset>
     <fieldset id="buttons">

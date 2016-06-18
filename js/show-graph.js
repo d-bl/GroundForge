@@ -174,7 +174,7 @@ diagram.showGraph = function(args) {
 
     container.selectAll(".threadStart").on('click', function (d) {
         if (d3.event.defaultPrevented) return
-        container.selectAll("."+d.startOf).style('stroke', colorpicker.value)
+        container.selectAll("."+d.startOf).style('stroke', '#'+colorpicker.value)
     })
     var drag = force.drag().on("dragstart", function (d) {
         d3.event.sourceEvent.preventDefault();

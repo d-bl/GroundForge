@@ -16,9 +16,12 @@ function load() {
   var pairScale = document.getElementById('pairScale').value * 1
   var threadScale = document.getElementById('threadScale').value * 1
   var colors = ''
-  for(i=1; i <= 16 ; i++)
-    colors += document.getElementById('color' + i).value + ','
-  colors = colors.replace(/transparent,/g,'').replace(/#FFFFFF,/g,'').replace(/^$/g,'#000000').replace(/,$/,'')
+  for(i=1; i <= 16 ; i++) {
+    var el = document.getElementById('color' + i)
+    el.style.backgroundColor = '#' + el.value
+    colors += ',#'+ el.value
+  }
+  colors = colors.replace(/,#FFFFFF/g,'').replace(/^,/,'')
 
   diagram.showGraph({
     container: '#pairs',
@@ -40,6 +43,17 @@ function load() {
     transform: "translate(0,0)scale(" + threadScale + ")",
     palette: colors
   })
+}
+function onChangeColor(el) {
+  if (el.value == 'FFFFFF') {
+    var i = el.id.replace('color','') * 1
+    for (i = i+1 ; i <=16 ; i++) {
+      el2 = document.getElementById('color' + i)
+      el2.value = 'FFFFFF'
+      el2.style.backgroundColor = '#FFFFFF'
+      el2.style.color = '#000000'
+    }
+  }
 }
 function init() {
   var location = (window.location.href + "").replace("#","")
