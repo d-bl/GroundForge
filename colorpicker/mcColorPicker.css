@@ -76,7 +76,7 @@ div.transChooser
 }     
 span.colorChooser
 {
-    width: 37px;
+    width: 20px;
     height: 20px;
     background: transparent url(colorChooser.gif);
     margin-left: 1px;

@@ -28,6 +28,9 @@
     #pairs { clear: both }
     #diagrams { clear: left; margin-top: 0.5em; }
 
+    .color { display : none }
+    #color { display : inline }
+
     #pairs, #threads, #sheet, fieldset, .show { display: inline-block; }
     .hide { display: none }
     </style>
@@ -159,13 +162,26 @@ C4=tctc</textarea>
     </fieldset>
     <fieldset class="wide">
         <legend>Thread colors</legend>
-        <select name="colors" id="colors">
-            <option value="#000000" selected>black & white</option>
-            <option value="#D40000,#0066FF,#D4AA00,#008000">4 colors</option>
-            <option value="#FFCC00,#008800,#008080,#000080,#800080,#FF00FF,#FF55555,#AA8800">8 colors</option>
-            <option value="#000000,#000000,#000000,#000000,#FF0000,#FF0000,#008800,#008800,#0000FF,#0000FF,#000000,#000000">4b 2r 2g 2n 2b</option>
-        </select>
-        <label for="colors"> apply with the show button</label>
+        <input id="color1" name="color1" class="color" value="#000000" pattern="#[a-fA-F0-9]{6}"/>
+        <input id="color2" name="color2" class="color" value="#000000" pattern="#[a-fA-F0-9]{6}"/>
+        <input id="color3" name="color3" class="color" value="#000000" pattern="#[a-fA-F0-9]{6}"/>
+        <input id="color4" name="color4" class="color" value="#000000" pattern="#[a-fA-F0-9]{6}"/>
+        <input id="color5" name="color5" class="color" value="#000000" pattern="#[a-fA-F0-9]{6}"/>
+        <input id="color6" name="color6" class="color" value="#000000" pattern="#[a-fA-F0-9]{6}"/>
+        <input id="color7" name="color7" class="color" value="#000000" pattern="#[a-fA-F0-9]{6}"/>
+        <input id="color8" name="color8" class="color" value="#000000" pattern="#[a-fA-F0-9]{6}"/>
+        <input id="color9" name="color9" class="color" value="#000000" pattern="#[a-fA-F0-9]{6}"/>
+        <input id="color10" name="color10" class="color" value="#000000" pattern="#[a-fA-F0-9]{6}"/>
+        <input id="color11" name="color11" class="color" value="#000000" pattern="#[a-fA-F0-9]{6}"/>
+        <input id="color12" name="color12" class="color" value="#000000" pattern="#[a-fA-F0-9]{6}"/>
+        <input id="color13" name="color13" class="color" value="#000000" pattern="#[a-fA-F0-9]{6}"/>
+        <input id="color14" name="color14" class="color" value="#000000" pattern="#[a-fA-F0-9]{6}"/>
+        <input id="color15" name="color15" class="color" value="#000000" pattern="#[a-fA-F0-9]{6}"/>
+        <input id="color16" name="color16" class="color" value="#000000" pattern="#[a-fA-F0-9]{6}"/>
+        <br/>apply the sequence with the show button
+        <img alt="(i)" title="or paste your favorite sequence in the url&#013;for example alternating red-green:&#013;color1=%23FF0000&color2=%2300FF00"
+             src="images/information-icon.png">
+        <br/>shorten the sequence with white swatches
         <br/>
         <input id="color" name="color" class="color" value="#CC0000" pattern="#[a-fA-F0-9]{6}"/>
         <label for="color"> apply with the square start of a thread</label>

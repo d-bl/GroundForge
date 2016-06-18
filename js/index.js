@@ -12,10 +12,14 @@ function load() {
   var matrix = document.getElementById('matrix').value
   var stitches = document.getElementById('stitches').value
   var tileType = getValueOf('tiles', '')
-  var colors = getValueOf('colors', '#000000')
   var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, tileType)
   var pairScale = document.getElementById('pairScale').value * 1
   var threadScale = document.getElementById('threadScale').value * 1
+  var colors = ''
+  for(i=1; i <= 16 ; i++)
+    colors += document.getElementById('color' + i).value + ','
+  colors = colors.replace(/,$/,'').replace(/transparent,/g,'').replace(/#FFFFFF,/g,'').replace(/^$/g,'#000000')
+
   diagram.showGraph({
     container: '#pairs',
     width: 500,
