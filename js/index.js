@@ -18,7 +18,7 @@ function load() {
   var colors = ''
   for(i=1; i <= 16 ; i++)
     colors += document.getElementById('color' + i).value + ','
-  colors = colors.replace(/,$/,'').replace(/transparent,/g,'').replace(/#FFFFFF,/g,'').replace(/^$/g,'#000000')
+  colors = colors.replace(/transparent,/g,'').replace(/#FFFFFF,/g,'').replace(/^$/g,'#000000').replace(/,$/,'')
 
   diagram.showGraph({
     container: '#pairs',
