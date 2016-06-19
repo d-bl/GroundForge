@@ -143,14 +143,15 @@ diagram.showGraph = function(args) {
         .style('stroke', '#000')
         .style('fill', 'none')
 
+    var sh // an inline assignment prevent two lookups
     var node = container.selectAll(".node").data(args.nodes).enter().append("svg:path")
         .attr("d", function(d) { return (d.bobbin ? diagram.shape.bobbin : d.pin ? diagram.shape.pin : diagram.shape.stitch)})
         .attr("class", function(d) { return "node " + (d.startOf ? "threadStart" : d.thread ? ("thread"+d.thread) : "")})
-        .style('opacity', function(d) { return d.bobbin ? 1 : (d.pin ? 0.2 : fullyTransparant)})
-        .style('fill', function(d) { return d.bobbin ? '#999999' : '#000000'})
-        .style('stroke', function(d) { return d.bobbin ? '#999999' : '#000000'})
+        .style('opacity', function(d) { return d.bobbin || d.pin ? 1 : fullyTransparant})
+        .style('fill', function(d) { return '#999999'})
+        .style('stroke', function(d) { return d.pin ? 'none' : '#000000'})
 
-     node.append("svg:title").text(function(d) { return d.pin ? "pin" : d.title ? d.title : "" })
+     node.append("svg:title").text(function(d) { return d.title ? d.title : "" })
 
     // configure layout
 

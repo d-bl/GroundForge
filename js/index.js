@@ -89,10 +89,11 @@ function init() {
          // a patch argument is used for the pattern sheet, not for a form field
          // we have to split the value in the matrix and optional type of tiles
          var patchArgs = val.split(";")
-         patterns.add(patchArgs[0], patchArgs[1])
+         patterns.add(patchArgs[0], patchArgs[1] ? patchArgs[1] : "checker")
       }
   })
-  patterns.add(document.getElementById("matrix").value, document.getElementById("tiles").value)
+  var tiles = document.getElementById("tiles").value
+  patterns.add(document.getElementById("matrix").value, tiles ? tiles : "checker")
   document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
 }
 function setHref (comp, id) {
