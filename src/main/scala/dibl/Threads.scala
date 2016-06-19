@@ -88,29 +88,39 @@ object Threads {
     Seq(x, y)
   }
 
-  @tailrec
   def bobbins(available: Iterable[Threads],
               nodes: Seq[Props],
-              links: Seq[Props],
-              connect: Seq[Int] = Seq[Int]()
+              links: Seq[Props]
              ): (Seq[Props], Seq[Props]) = {
-    if (available.isEmpty) {
-      val sortedBobbins = connect.sortBy(i => nodes(i).x)
-      (nodes, links ++ transparentLinks(sortedBobbins))
-    } else {
-      val h = available.head
-      val threadNodes = if (h.hasSinglePair) Seq(h.n1,h.n2) else Seq(h.n1,h.n2,h.n3,h.n4)
-      val bobbinNodes: Seq[Props] = threadNodes.map(node => {
-        val src = nodes(node)
-        Props("bobbin" -> "true", "title" -> s"bobbin ${nodes.size}", "x" -> src.x, "y" -> (src.y + 100))
-      })
-      val bobbinLinks: Seq[Props] = threadNodes.indices.map(i => {
-        // TODO add thread nr
-        val base = Props("source" -> threadNodes(i), "target" -> (nodes.size + i))
-        if (i % 2 == 0) base else base ++ Props("start" -> "white")
-      })
-      val newNodes = bobbinLinks.map(props => props.target)
-      bobbins(available.tail, nodes ++ bobbinNodes, links ++ bobbinLinks, connect ++ newNodes)
+    val threadNodes = available.flatMap(h => if (h.hasSinglePair) Seq(h.n1, h.n2) else Seq(h.n1, h.n2, h.n3, h.n4)).toSeq
+    val targetToThreadNr = links.filter(n => threadNodes.contains(n.target)).map(n => n.target -> n("thread"))
+
+    @tailrec
+    def loop(available: Iterable[Threads],
+             nodes: Seq[Props],
+             links: Seq[Props],
+             connect: Seq[Int] = Seq[Int]()
+            ): (Seq[Props], Seq[Props]) = {
+      if (available.isEmpty) {
+        val sortedBobbins = connect.sortBy(i => nodes(i).x)
+        (nodes, links ++ transparentLinks(sortedBobbins))
+      } else {
+        val h = available.head
+        val threadNodes = if (h.hasSinglePair) Seq(h.n1, h.n2) else Seq(h.n1, h.n2, h.n3, h.n4)
+        val threads = if (h.hasSinglePair) Seq(h.t1, h.t2) else Seq(h.t1, h.t2, h.t3, h.t4)
+        val bobbinNodes: Seq[Props] = threadNodes.indices.map(i => {
+          val src = nodes(threadNodes(i))
+          Props("bobbin" -> "true", "x" -> src.x, "y" -> (src.y + 100), "thread" -> threads(i))
+        })
+        val bobbinLinks: Seq[Props] = threadNodes.indices.map(i => {
+          val threadNrs = targetToThreadNr.filter(t => t._1 == threadNodes(i)).map(x => x._2)
+          val base = Props("source" -> threadNodes(i), "target" -> (nodes.size + i), "thread" -> threads(i))
+          if (i % 2 == 0) base else base ++ Props("start" -> "white")
+        })
+        val newNodes = bobbinLinks.map(props => props.target)
+        loop(available.tail, nodes ++ bobbinNodes, links ++ bobbinLinks, connect ++ newNodes)
+      }
     }
+    loop(available,nodes,links)
   }
 }
