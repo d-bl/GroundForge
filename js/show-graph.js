@@ -64,8 +64,12 @@ diagram.markers = function(svgDefs,id,color){
         .attr('stroke-width', 3)
         .attr('stroke', color)
 }
-diagram.dx = function(d) { return d.x }
-diagram.dy = function(d) { return d.y }
+diagram.dx = function(d) {
+    return d.x
+}
+diagram.dy = function(d) {
+    return d.y + (this.classList[1] == "bobbin") + 5
+}
 diagram.path = function(d) {
     var sX = d.source.x
     var sY = d.source.y
@@ -139,9 +143,11 @@ diagram.showGraph = function(args) {
         .style('fill', 'none')
 
     var node = container.selectAll(".node").data(args.nodes).enter().append("circle")
-        .attr("class", function(d) { return d.startOf ? ("node threadStart") : (d.pin ? ("node pin") : "node")})
+        .attr("class", function(d) { return d.startOf ? "node threadStart"
+                                   : (d.pin ? "node pin" : (d.thread ? "node bobbin thread" + d.thread : "node"))})
         .attr("r", function(d) { return d.pin ? 4 : 6})
-        .style('opacity', function(d) { return d.bobbin ? 0.5: (d.pin ? 0.2 : fullyTransparant)})
+        .style('opacity', function(d) { return d.bobbin ? 1 : (d.pin ? 0.2 : fullyTransparant)})
+        .style('fill', function(d) { return d.bobbin ? '#999999' : '#000000'})
     node.append("svg:title").text(function(d) {
         return d.title ? d.title
         : d.pin ? "pin"
