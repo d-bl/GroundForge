@@ -17,6 +17,7 @@ package dibl
 
 abstract class TileType {
   def toSettings(m: M, stitchMatrix: Array[Array[String]]): Settings
+  // TODO add method(s) for Pattern class
 
   def toChecker(m: M): M
 }

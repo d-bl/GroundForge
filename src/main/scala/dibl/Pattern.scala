@@ -17,18 +17,17 @@ package dibl
 
 import dibl.Matrix.toRelSrcNodes
 
-class Pattern (m:String, isBrick: Boolean, rows: Int, cols: Int,
+class Pattern (m:String, tileType: String, rows: Int, cols: Int,
                groupId: String = "GFP1", offsetX: Int = 80, offsetY: Int = 120) {
 
   private val hXw = s"${rows}x$cols"
 
   def patch: String = {
     val relative = toRelSrcNodes(matrix = m, dimensions = hXw).get
-    val mType = if (isBrick) "brick wall" else "checker board"
     val link = "https://d-bl.github.io/GroundForge/index.html" +
-      "?matrix=" + m.grouped(cols).toArray.mkString("%0D") + (if (isBrick) "&bricks" else "")
+      "?matrix=" + m.grouped(cols).toArray.mkString("%0D") + s"&tiles=$tileType"
     val tag = s"<text style='font-family:Arial;font-size:11pt'>\n" +
-      s"\t <tspan x='${offsetX - 50}' y='${offsetY - 80}'>$mType, $hXw, $m</tspan>\n" +
+      s"\t <tspan x='${offsetX - 50}' y='${offsetY - 80}'>$tileType, $hXw, $m</tspan>\n" +
       s"\t <tspan x='${offsetX - 50}' y='${offsetY - 60}' style='fill:#008;'>\n" +
       s"\t  <a xlink:href='$link'>pair/thread diagrams</a>\n" +
       s"\t </tspan>\n" +
@@ -37,10 +36,10 @@ class Pattern (m:String, isBrick: Boolean, rows: Int, cols: Int,
   }
 
   private def clones: String = {
-    val brickOffset = if (isBrick) cols * 5 else 0
+    val brickOffset = if (tileType == "bricks") cols * 5 else 0
     def cloneRows(row1: Int): String = {
-      val row2 = row1 + rows * 10
-      List.range(start = -(if (isBrick)brickOffset else 10*cols), end = 250, step = cols * 10).
+      val row2 = row1 + rows * 10 // TODO refactor into TileType
+      List.range(start = -(if (tileType == "bricks")brickOffset else 10*cols), end = 250, step = cols * 10).
         map(w => {
           clone(w, row1) + clone(w - brickOffset, row2)
         }).mkString("")
@@ -71,8 +70,8 @@ class Pattern (m:String, isBrick: Boolean, rows: Int, cols: Int,
     val (targetRow, targetCol) = target
     val (dRow, dCol) = source
     val sourceRow = (targetRow + dRow + rows) % rows
-    val sourceCol =
-      if (isBrick && targetRow == 0 && dRow != 0)
+    val sourceCol = // TODO refactor into TileType
+      if (tileType == "bricks" && targetRow == 0 && dRow != 0)
         (targetCol + dCol + cols/2) % cols
       else (targetCol + dCol + cols) % cols
     val tag = s"${s"${toNodeId(sourceCol, sourceRow)}"}-${toNodeId(targetCol, targetRow)}"

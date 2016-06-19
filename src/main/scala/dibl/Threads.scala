@@ -64,7 +64,7 @@ object Threads {
     )
   }
 
-  private val pinProps = Props("pin" -> "true")
+  private val pinProps = Props("title" -> "pin", "pin" -> "true")
   private val crossedNodeProps = Props("title" -> "cross")
   private val twistedNodeProps = Props("title" -> "twist")
 
@@ -92,8 +92,6 @@ object Threads {
               nodes: Seq[Props],
               links: Seq[Props]
              ): (Seq[Props], Seq[Props]) = {
-    val threadNodes = available.flatMap(h => if (h.hasSinglePair) Seq(h.n1, h.n2) else Seq(h.n1, h.n2, h.n3, h.n4)).toSeq
-    val targetToThreadNr = links.filter(n => threadNodes.contains(n.target)).map(n => n.target -> n("thread"))
 
     @tailrec
     def loop(available: Iterable[Threads],
@@ -113,7 +111,6 @@ object Threads {
           Props("bobbin" -> "true", "x" -> src.x, "y" -> (src.y + 100), "thread" -> threads(i))
         })
         val bobbinLinks: Seq[Props] = threadNodes.indices.map(i => {
-          val threadNrs = targetToThreadNr.filter(t => t._1 == threadNodes(i)).map(x => x._2)
           val base = Props("source" -> threadNodes(i), "target" -> (nodes.size + i), "thread" -> threads(i))
           if (i % 2 == 0) base else base ++ Props("start" -> "white")
         })

@@ -13,13 +13,13 @@
 <input id="colorpicker" type="text" value="#CC0000"/>
   <script>
     fullyTransparant = 0
-    var matrix = "586- -4-5 5-21 -5-7"
-    var stackAsBricks = false
-    var nrOfRows = 12
-    var nrOfCols = 9
+    var matrix = "5632 34-7"
+    var stackAsBricks = true
+    var nrOfRows = 4
+    var nrOfCols = 4
     var shiftLeft = 1
-    var shiftUp = 1
-    var stitches = ''
+    var shiftUp = 3
+    var stitches = 'D1=ttcttpc,A1=tplc,B1=tctptc,C1=tprc,D1=ttcttpc,A2=rtc,B2=tc,C2=ltc,D2=tc'
     var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, stackAsBricks ? "bricks" : "checker")
     diagram.showGraph({
       container: '#pairs',
