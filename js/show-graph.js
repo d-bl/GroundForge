@@ -64,16 +64,13 @@ diagram.markers = function(svgDefs,id,color){
         .attr('stroke-width', 3)
         .attr('stroke', color)
 }
-diagram.dx = function(d) {
-    return d.x
-}
-diagram.dy = function(d) {
-    return d.y + (this.classList[1] == "bobbin") + 5
-}
 diagram.shape = {}
 diagram.shape.stitch = "M 6,0 A 6,6 0 0 1 0,6 6,6 0 0 1 -6,0 6,6 0 0 1 0,-6 6,6 0 0 1 6,0 Z" // larger circle
 diagram.shape.pin = "M 4,0 A 4,4 0 0 1 0,4 4,4 0 0 1 -4,0 4,4 0 0 1 0,-4 4,4 0 0 1 4,0 Z" // smaller circle
 diagram.shape.bobbin = "m 0,40.839856 c -3.4075867,0 -6.0135054,3.60204 -1.632691,3.60204 0,0 0.00279,0.290427 0.00515,1.041986 5.249e-4,0.166984 -0.4474921,0.356732 -0.4470421,0.571116 C -2.0733531,46.644639 0,46.807377 0,46.807377 c 0,0 -2.0747976,-0.07449 -2.0782161,0.839791 C -2.0816346,48.561451 0,48.558405 0,48.558405 c 0,0 -2.1134183,-0.621879 -2.1273613,0.82057 -0.00182,0.188085 0.4448321,0.399374 0.4428921,0.630466 -0.027732,3.313461 -0.067563,10.698355 -0.1242943,12.135284 -0.031037,0.78614 0.35211,1.57119 -0.7908199,2.22383 -2.4753801,1.3408 -0.42951,4.9472 -0.3608,7.1695 1.0825399,4.117205 1.0596899,8.408805 0.3478,12.585505 -1.64596,10.564 -2.2015401,21.6357 1.2555199,31.9161 0.3219301,0.5457 0.69042007,2.8026 1.40054007,2.7636 0.71047,0.04 1.07854993,-2.2177 1.40056993,-2.7636 3.45706,-10.2804 2.9029,-21.3521 1.25695,-31.9161 -0.7119,-4.1767 -0.73619,-8.4683 0.34636,-12.585505 0.0687,-2.2223 2.11603,-5.8287 -0.35934,-7.1695 C 1.295109,63.632725 1.6393472,62.818342 1.6152571,62.031956 1.5718248,60.614171 1.5542634,53.373027 1.5528838,50.132229 1.5527814,49.891641 2.0012902,49.6731 2.0013622,49.480624 2.001883,48.088031 0,48.558405 0,48.558405 c 0,0 2.0336469,0.308522 2.0460054,-0.600477 C 2.0583638,47.048929 0,46.807377 0,46.807377 c 0,0 2.1256409,0.112943 2.1256409,-0.473743 0,-0.488459 -0.4256971,-0.570197 -0.4181031,-0.896492 0.00759,-0.326294 0.012141,-0.995246 0.012141,-0.995246 4.1490227,0 1.7659954,-3.605449 -1.7196788,-3.60204 L 0,-0.04325 Z"
+diagram.transform = function(d) {
+    return "translate(" + d.x + "," + d.y + ")"
+}
 diagram.path = function(d) {
     var sX = d.source.x
     var sY = d.source.y
@@ -147,19 +144,13 @@ diagram.showGraph = function(args) {
         .style('fill', 'none')
 
     var node = container.selectAll(".node").data(args.nodes).enter().append("svg:path")
-        .attr("d", function(d) { return (d.pin ? diagram.shape.pin : d.bobbin ? diagram.shape.bobbin : diagram.shape.stitch)})
-        .attr("class", function(d) { return d.startOf ? "node threadStart"
-                                   : (d.pin ? "node pin" : (d.thread ? "node bobbin thread" + d.thread : "node"))})
+        .attr("d", function(d) { return (d.bobbin ? diagram.shape.bobbin : d.pin ? diagram.shape.pin : diagram.shape.stitch)})
+        .attr("class", function(d) { return "node " + (d.startOf ? "threadStart" : d.thread ? ("thread"+d.thread) : "")})
         .style('opacity', function(d) { return d.bobbin ? 1 : (d.pin ? 0.2 : fullyTransparant)})
         .style('fill', function(d) { return d.bobbin ? '#999999' : '#000000'})
         .style('stroke', function(d) { return d.bobbin ? '#999999' : '#000000'})
-      node.append("svg:title").text(function(d) {
-        return d.title ? d.title
-        : d.pin ? "pin"
-        : d.bobbin ? "bobbin"
-        : d.startOf ? d.startOf.replace("thread","thread ")
-        : ""
-    })
+
+     node.append("svg:title").text(function(d) { return d.pin ? "pin" : d.title ? d.title : "" })
 
     // configure layout
 
@@ -199,6 +190,6 @@ diagram.showGraph = function(args) {
     force.on("tick", function() {
         if ( ((step++)%mod) != 0) return
         link.attr("d", diagram.path)
-        node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"})
+        node.attr("transform", diagram.transform)
     })
 }
