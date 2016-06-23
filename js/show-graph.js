@@ -71,6 +71,12 @@ diagram.shape.bobbin = "m 0,40.839856 c -3.4075867,0 -6.0135054,3.60204 -1.63269
 diagram.transform = function(d) {
     return "translate(" + d.x + "," + d.y + ")"
 }
+diagram.markLinks = function(links) {
+  links
+    .style('marker-start', function(d) { if (d.start != "white") return 'url(#start-'+d.start+')' })
+    .style('marker-end', function(d) { if (d.end != "white") return 'url(#end-'+d.end+')' })
+    .style('marker-mid', function(d,i) { if (d.mid) return 'url(#twist-1)' })
+}
 diagram.path = function(d) {
     var sX = d.source.x
     var sY = d.source.y
@@ -131,17 +137,15 @@ diagram.showGraph = function(args) {
     // object creation and decoration
 
     var isIE = document.documentURI == undefined // wrong feature check
-    // problem: the marker property is supported by IE but breaks on moving links
+    var isMobileMac = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
 
     var link = container.selectAll(".path").data(args.links).enter().append("svg:path")
         .attr("class", function(d) { return d.thread ? "link thread" + d.thread : "link"})
         .attr("id",function(d,i) { return "link_" + i; })
-        .style('marker-start', function(d) { if (d.start != "white" && !isIE) return 'url(#start-'+d.start+')'})
-        .style('marker-end', function(d) { if (d.end != "white" && !isIE) return 'url(#end-'+d.end+')'})
-        .style('marker-mid', function(d,i) { if (d.mid && !isIE) return 'url(#twist-1)' } )
         .style('opacity', function(d) { return d.border || d.toPin ? fullyTransparant : 1})
         .style('stroke', '#000')
         .style('fill', 'none')
+    if (!isIE) diagram.markLinks(link)
 
     var sh // an inline assignment prevent two lookups
     var node = container.selectAll(".node").data(args.nodes).enter().append("svg:path")
@@ -152,6 +156,7 @@ diagram.showGraph = function(args) {
         .style('stroke', function(d) { return d.pin ? 'none' : '#000000'})
 
      node.append("svg:title").text(function(d) { return d.title ? d.title : "" })
+     var threadStarts = container.selectAll(".threadStart")
 
     // configure layout
 
@@ -167,7 +172,7 @@ diagram.showGraph = function(args) {
 
     if ( args.palette ) {
       var colors = args.palette.split(',')
-      for(i=0; i < 100 ; i++) {
+      for(i=threadStarts[0].length ; i >= 0 ; i--) {
         var n = (i - 1 + colors.length) % colors.length
         container.selectAll(".thread"+i).style('stroke', colors[n])
       }
@@ -175,17 +180,13 @@ diagram.showGraph = function(args) {
 
     // event listeners
 
-    container.selectAll(".threadStart").on('click', function (d) {
+    threadStarts.on('click', function (d) {
         if (d3.event.defaultPrevented) return
         container.selectAll("."+d.startOf).style('stroke', '#'+colorpicker.value)
     })
-    var drag = force.drag().on("dragstart", function (d) {
-        d3.event.sourceEvent.preventDefault();
-        d3.event.sourceEvent.stopPropagation();
-    })
-    node.call(drag)
 
-    var mod = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream ? 10 : 1
+    // a higher speed for IE as marks only appear when the animation is finished
+    var mod = isMobileMac ? 10 : isIE ? 3 : 2
     var step = 0
     // layout simulation step
     force.on("tick", function() {
@@ -194,9 +195,6 @@ diagram.showGraph = function(args) {
         node.attr("transform", diagram.transform)
     })
     force.on("end", function(){
-      if (isIE)
-        link.style('marker-start', function(d) { if (d.start != "white") return 'url(#start-'+d.start+')' })
-            .style('marker-end', function(d) { if (d.end != "white") return 'url(#end-'+d.end+')' })
-            .style('marker-mid', function(d,i) { if (d.mid) return 'url(#twist-1)' })
+      if (isIE) diagram.markLinks(link)
     })
 }
