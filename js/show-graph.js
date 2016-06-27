@@ -67,7 +67,7 @@ diagram.markers = function(svgDefs,id,color){
 diagram.shape = {}
 diagram.shape.stitch = "M 6,0 A 6,6 0 0 1 0,6 6,6 0 0 1 -6,0 6,6 0 0 1 0,-6 6,6 0 0 1 6,0 Z" // larger circle
 diagram.shape.pin = "M 4,0 A 4,4 0 0 1 0,4 4,4 0 0 1 -4,0 4,4 0 0 1 0,-4 4,4 0 0 1 4,0 Z" // smaller circle
-diagram.shape.bobbin = "m 0,40.839856 c -3.4075867,0 -6.0135054,3.60204 -1.632691,3.60204 0,0 0.00279,0.290427 0.00515,1.041986 5.249e-4,0.166984 -0.4474921,0.356732 -0.4470421,0.571116 C -2.0733531,46.644639 0,46.807377 0,46.807377 c 0,0 -2.0747976,-0.07449 -2.0782161,0.839791 C -2.0816346,48.561451 0,48.558405 0,48.558405 c 0,0 -2.1134183,-0.621879 -2.1273613,0.82057 -0.00182,0.188085 0.4448321,0.399374 0.4428921,0.630466 -0.027732,3.313461 -0.067563,10.698355 -0.1242943,12.135284 -0.031037,0.78614 0.35211,1.57119 -0.7908199,2.22383 -2.4753801,1.3408 -0.42951,4.9472 -0.3608,7.1695 1.0825399,4.117205 1.0596899,8.408805 0.3478,12.585505 -1.64596,10.564 -2.2015401,21.6357 1.2555199,31.9161 0.3219301,0.5457 0.69042007,2.8026 1.40054007,2.7636 0.71047,0.04 1.07854993,-2.2177 1.40056993,-2.7636 3.45706,-10.2804 2.9029,-21.3521 1.25695,-31.9161 -0.7119,-4.1767 -0.73619,-8.4683 0.34636,-12.585505 0.0687,-2.2223 2.11603,-5.8287 -0.35934,-7.1695 C 1.295109,63.632725 1.6393472,62.818342 1.6152571,62.031956 1.5718248,60.614171 1.5542634,53.373027 1.5528838,50.132229 1.5527814,49.891641 2.0012902,49.6731 2.0013622,49.480624 2.001883,48.088031 0,48.558405 0,48.558405 c 0,0 2.0336469,0.308522 2.0460054,-0.600477 C 2.0583638,47.048929 0,46.807377 0,46.807377 c 0,0 2.1256409,0.112943 2.1256409,-0.473743 0,-0.488459 -0.4256971,-0.570197 -0.4181031,-0.896492 0.00759,-0.326294 0.012141,-0.995246 0.012141,-0.995246 4.1490227,0 1.7659954,-3.605449 -1.7196788,-3.60204 L 0,-0.04325 Z"
+diagram.shape.bobbin = "m 0,40 c -3.40759,0 -6.01351,3.60204 -1.63269,3.60204 l 0,17.47253 c 0,0.78676 0.18573,1.81903 -0.96704,2.45413 -2.46573,1.35845 -0.75806,4.98191 -0.3608,7.16949 0.76065,4.18864 1.01701,8.40176 0.3478,12.58551 -1.68869,10.55725 -2.31894,21.67593 1.25552,31.9161 0.2088,0.59819 0.68935,2.7631 1.40054,2.7636 0.71159,5e-4 1.19169,-2.16521 1.40057,-2.7636 3.57448,-10.24016 2.94564,-21.35885 1.25695,-31.9161 -0.66921,-4.18375 -0.41429,-8.39687 0.34636,-12.58551 0.39726,-2.18758 2.12102,-5.83795 -0.35934,-7.16949 -1.38797,-0.74511 -0.96836,-1.66738 -0.96836,-2.45413 l 0,-17.47253 c 4.14902,0 1.76599,-3.60545 -1.71968,-3.60204 l 0,-40 z"
 diagram.transform = function(d) {
     return "translate(" + d.x + "," + d.y + ")"
 }
@@ -152,7 +152,7 @@ diagram.showGraph = function(args) {
         .attr("d", function(d) { return (d.bobbin ? diagram.shape.bobbin : d.pin ? diagram.shape.pin : diagram.shape.stitch)})
         .attr("class", function(d) { return "node " + (d.startOf ? "threadStart" : d.thread ? ("thread"+d.thread) : "")})
         .style('opacity', function(d) { return d.bobbin || d.pin ? 1 : fullyTransparant})
-        .style('fill', function(d) { return '#999999'})
+        .style('fill', '#000000')
         .style('stroke', function(d) { return d.pin ? 'none' : '#000000'})
 
      node.append("svg:title").text(function(d) { return d.title ? d.title : "" })
@@ -174,7 +174,9 @@ diagram.showGraph = function(args) {
       var colors = args.palette.split(',')
       for(i=threadStarts[0].length ; i >= 0 ; i--) {
         var n = (i - 1 + colors.length) % colors.length
-        container.selectAll(".thread"+i).style('stroke', colors[n])
+        container.selectAll(".thread"+i)
+          .style('stroke', colors[n])
+          .style('fill', function(d) { return d.bobbin ? colors[n] : 'none'})
       }
     }
 
@@ -182,7 +184,9 @@ diagram.showGraph = function(args) {
 
     threadStarts.on('click', function (d) {
         if (d3.event.defaultPrevented) return
-        container.selectAll("."+d.startOf).style('stroke', '#'+colorpicker.value)
+        container.selectAll("."+d.startOf)
+          .style('stroke', '#'+colorpicker.value)
+          .style('fill', function(d) { return d.bobbin ? '#'+colorpicker.value : 'none' })
     })
 
     // a higher speed for IE as marks only appear when the animation is finished
