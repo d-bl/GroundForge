@@ -1,4 +1,4 @@
-function getValueOf(id, defaultValue) {
+function getValueOfDropDown(id, defaultValue) {
   var e = document.getElementById(id)
   return e.selectedIndex >=0 ? e.options[e.selectedIndex].value : defaultValue
 }
@@ -6,14 +6,17 @@ function load() {
   fullyTransparant = document.getElementById('transparency').value
   document.getElementById('pairs').innerHTML = ""
   document.getElementById('threads').innerHTML = ""
+
   var nrOfRows = document.getElementById('rows').value
   var nrOfCols = document.getElementById('cols').value
   var shiftLeft = document.getElementById('left').value
   var shiftUp = document.getElementById('up').value
   var matrix = document.getElementById('matrix').value
   var stitches = document.getElementById('stitches').value
-  var tileType = getValueOf('tiles', '')
+  var tileType = getValueOfDropDown('tiles', '')
+
   var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, tileType)
+
   var pairScale = document.getElementById('pairScale').value * 1
   var threadScale = document.getElementById('threadScale').value * 1
   var colors = ''

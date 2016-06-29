@@ -1,0 +1,73 @@
+body { max-width: 57.5em;  padding: 1em; margin-left: auto; margin-right: auto; }
+#pairs, #threads { width: 28em; height: 15em; }
+#sheet { width: 56.4em; height: 35em; }
+.wide { width: 25em }
+input { width: 3em; }
+.jscolor { width: 1.1em; }
+#color { display: inline; width: 4em; }
+
+#pairs, #threads, #sheet { overflow: scroll; resize:both; border: solid 1px #AAA; }
+a img { overflow: hide; border: solid 1px #AAA; }
+
+a img { vertical-align: middle; margin-bottom: 1em; }
+#logo img, #footer img { border: none; }
+div, input, textarea, #browsers { vertical-align: top;}
+button, #buttons { vertical-align: bottom;}
+button a, button { text-decoration: none; color: #000 }
+fieldset { padding: 0.5em; margin-left: 0; margin-right:0.1em; }
+fieldset p { margin-bottom:0; padding-bottom: 0; }
+form { margin-bottom: 1em }
+#sheet { margin-top: 0.2em; }
+#pairs, #threads { padding: 0 }
+#buttons { border: none; padding: 0; }
+
+#logo img { float: right }
+#pattern, #stitchFiedSet { float: left; margin-right:0.4em; }
+#pairs { clear: both }
+#diagrams { clear: left; margin-top: 0.5em; }
+
+#pairs, #threads, #sheet, fieldset, .show { display: inline-block; }
+.hide { display: none }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+.tooltip img {  vertical-align: middle; }
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: #FFFB84;
+    opacity: 0.9;
+    color: #000;
+    text-align: left;
+    border: solid #999 1px; /* same as border-color for pointer from tip to tool */
+    border-radius: 0.4em;
+    padding: 0.4em;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    /* the next two depend on one another
+     * and on the border width for the
+     * pointer from tip to tool
+     */
+    width: 220px;
+    margin-left: -122px;
+}
+
+/* the pointer from tip to tool */
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    margin-top: 1px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #999 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
