@@ -1,6 +1,7 @@
 function getValueOf(id, defaultValue) {
   var e = document.getElementById(id)
-  return e.selectedIndex >=0 ? e.options[e.selectedIndex].value : defaultValue}
+  return e.selectedIndex >=0 ? e.options[e.selectedIndex].value : defaultValue
+}
 function load() {
   fullyTransparant = document.getElementById('transparency').value
   document.getElementById('pairs').innerHTML = ""
@@ -28,19 +29,21 @@ function load() {
     nodes: data.pairNodes,
     links: data.pairLinks,
     scale: pairScale,
-    transform: "translate(0,-120)scale(" + pairScale + ")",
+    transform: "translate(0,0)scale(" + pairScale + ")",
+    onAnimationEnd: function() { setHref(document.getElementById("dlPair"),'pairs') }
   })
   diagram.showGraph({
-    threadColor: '#color',
     container: '#threads',
     nodes: data.threadNodes,
     links: data.threadLinks,
     scale: threadScale,
-    transform: "translate(0,-90)scale(" + threadScale + ")",
-    palette: colors
+    transform: "translate(0,0)scale(" + threadScale + ")",
+    threadColor: '#color',
+    palette: colors,
+    onAnimationEnd: function() {setHref(document.getElementById("dlThread"),'threads')}
   })
-  var p = document.getElementById("pairs"  ); p.scrollTop = p.scrollTop==0 ? 60 : p.scrollTop
-  var t = document.getElementById("threads"); t.scrollTop = t.scrollTop==0 ? 40 : t.scrollTop
+  var p = document.getElementById("pairs"  ); p.scrollTop = p.scrollTop==0 ? 180 : p.scrollTop
+  var t = document.getElementById("threads"); t.scrollTop = t.scrollTop==0 ? 140 : t.scrollTop
 }
 function onChangeColor(el) {
   if (el.value == 'FFFFFF') {
@@ -93,10 +96,7 @@ function init() {
   var tiles = document.getElementById("tiles").value
   patterns.add(document.getElementById("matrix").value, tiles ? tiles : "checker")
   document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
-
-  document.getElementById("dlPair").addEventListener("touchstart", function (e) {setHref(e,'pairs')})
-  document.getElementById("dlThread").addEventListener("touchstart", function (e) {setHref(e,'threads')})
-  document.getElementById("dlSheet").addEventListener("touchstart", function (e) {setHref(e,'sheets')})
+  setHref(document.getElementById("dlSheet"),'sheet')
 }
 
 function setHref (comp, id) {

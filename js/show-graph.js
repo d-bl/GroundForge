@@ -125,7 +125,7 @@ diagram.showGraph = function(args) {
               .append('svg:g')
                 .attr("transform", args.transform)
 
-    container.append('svg:rect')
+    container.append('svg:rect') // TODO somehow just surround the graph
         .attr('width', args.width * (5/args.scale))
         .attr('height', args.height * (5/args.scale))
         .attr('fill', 'white')
@@ -202,5 +202,6 @@ diagram.showGraph = function(args) {
     })
     force.on("end", function(){
       if (isIE) diagram.markLinks(link)
+      args.onAnimationEnd()
     })
 }
