@@ -25,24 +25,22 @@ function load() {
 
   diagram.showGraph({
     container: '#pairs',
-    width: 500,
-    height: 500,
     nodes: data.pairNodes,
     links: data.pairLinks,
     scale: pairScale,
-    transform: "translate(0,0)scale(" + pairScale + ")",
+    transform: "translate(0,-120)scale(" + pairScale + ")",
   })
   diagram.showGraph({
     threadColor: '#color',
     container: '#threads',
-    width: 700,
-    height:  700,
     nodes: data.threadNodes,
     links: data.threadLinks,
     scale: threadScale,
-    transform: "translate(0,0)scale(" + threadScale + ")",
+    transform: "translate(0,-90)scale(" + threadScale + ")",
     palette: colors
   })
+  var p = document.getElementById("pairs"  ); p.scrollTop = p.scrollTop==0 ? 60 : p.scrollTop
+  var t = document.getElementById("threads"); t.scrollTop = t.scrollTop==0 ? 40 : t.scrollTop
 }
 function onChangeColor(el) {
   if (el.value == 'FFFFFF') {
@@ -95,7 +93,12 @@ function init() {
   var tiles = document.getElementById("tiles").value
   patterns.add(document.getElementById("matrix").value, tiles ? tiles : "checker")
   document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
+
+  document.getElementById("dlPair").addEventListener("touchstart", function (e) {setHref(e,'pairs')})
+  document.getElementById("dlThread").addEventListener("touchstart", function (e) {setHref(e,'threads')})
+  document.getElementById("dlSheet").addEventListener("touchstart", function (e) {setHref(e,'sheets')})
 }
+
 function setHref (comp, id) {
   var container = document.getElementById(id)
   if (!container) return

@@ -98,8 +98,10 @@ diagram.path = function(d) {
 diagram.showGraph = function(args) {
     var colorpicker = (args.threadColor == undefined ? undefined : d3.select(args.threadColor)[0][0])
 
-    // document creation
+    args.width = args.width ? args.width : 744
+    args.height = args.height? args.height : 1052
 
+    // document creation
     var svgRoot = d3.select(args.container).append("svg")
                 .attr("width", args.width)
                 .attr("height", args.height)
