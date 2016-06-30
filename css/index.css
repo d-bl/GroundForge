@@ -29,12 +29,21 @@ form { margin-bottom: 1em }
 #pairs, #threads, #sheet, fieldset, .show { display: inline-block; }
 .hide { display: none }
 
-.tooltip {
+.tooltip, node {
     position: relative;
     display: inline-block;
 }
-.tooltip img {  vertical-align: middle; }
-.tooltip .tooltiptext {
+.tooltip {
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/information-icon.png);
+    vertical-align: middle;
+    margin-right: 0.7em;
+}
+legend .tooltip {
+    margin-right: 0em;
+}
+.tooltip .tooltiptext, node title {
     visibility: hidden;
     background-color: #FFFB84;
     opacity: 0.9;
@@ -64,6 +73,6 @@ form { margin-bottom: 1em }
     border-color: #999 transparent transparent transparent;
 }
 
-.tooltip:hover .tooltiptext {
+.tooltip:hover .tooltiptext, node text {
     visibility: visible;
 }
