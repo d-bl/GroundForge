@@ -47,12 +47,8 @@ form { margin-bottom: 1em }
     z-index: 1;
     bottom: 150%;
     left: 50%;
-    /* the next two depend on one another
-     * and on the border width for the
-     * pointer from tip to tool
-     */
-    width: 220px;
-    margin-left: -122px;
+    width: 8em; /* twice the margin-left */
+    margin-left: -4em;
 }
 
 /* the pointer from tip to tool */
@@ -61,9 +57,9 @@ form { margin-bottom: 1em }
     position: absolute;
     top: 100%;
     left: 50%;
-    margin-left: -5px;
     margin-top: 1px;
-    border-width: 10px;
+    margin-left: -1.4em; /* twice the border width */
+    border-width: 0.7em;
     border-style: solid;
     border-color: #999 transparent transparent transparent;
 }
