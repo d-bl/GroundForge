@@ -202,6 +202,6 @@ diagram.showGraph = function(args) {
     })
     force.on("end", function(){
       if (isIE) diagram.markLinks(link)
-      args.onAnimationEnd()
+      if (args.onAnimationEnd) args.onAnimationEnd()
     })
 }

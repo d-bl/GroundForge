@@ -40,9 +40,9 @@ These [pages] were used to sort/group the patterns topologically.
 [color coded pair diagrams]: https://en.wikipedia.org/w/index.php?title=Mesh_grounded_bobbin_lace&oldid=639789191#Worker_pair_versus_two_pair_per_pin
 [scala code]: https://github.com/d-bl/GroundForge/tree/master/
 
-### Color-picker by MenuCool
+### Color-picker: jscolor
 
-Safari nor Internet Explorer support `<input type="color">`. The free [color-picker](http://www.menucool.com/color-picker) by MenuCool works on both platforms and was easy to apply.
+Safari nor Internet Explorer support `<input type="color">`. The free [color-picker](http://jscolor.com/) works on both platforms and was easy to apply.
 
 ## How to Contribute
 

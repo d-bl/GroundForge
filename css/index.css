@@ -56,8 +56,8 @@ legend .tooltip {
     z-index: 1;
     bottom: 150%;
     left: 50%;
-    width: 8em; /* twice the margin-left */
-    margin-left: -4em;
+    width: 8em;
+    margin-left: -4.35em; /* ( width + border-width of pointer )/2 */
 }
 
 /* the pointer from tip to tool */
@@ -67,7 +67,7 @@ legend .tooltip {
     top: 100%;
     left: 50%;
     margin-top: 1px;
-    margin-left: -1.4em; /* twice the border width */
+    margin-left: -0.7em; /* same as border-width */
     border-width: 0.7em;
     border-style: solid;
     border-color: #999 transparent transparent transparent;

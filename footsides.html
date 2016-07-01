@@ -17,7 +17,7 @@
                      'C1=ctc C2=ctc C3=ctc C4=ctc '+
                      'D1=ctc D2=ctc D3=ctc D4=ctc '
       var m = document.getElementById('matrix').value
-      var mRows = m.split(/[^-0-9A-B]+/)
+      var mRows = m.split(/[^-0-9A-O]+/)
       var rows = mRows.length
       var cols = mRows[0].length
       var bricks = document.getElementById('bricks').checked
@@ -27,7 +27,9 @@
           for (shiftUp=0 ; shiftUp < cols ; shiftUp++) {
             data = dibl.D3Data().get(m, nrOfRows, nrOfCols, shiftUp, shiftLeft, stitches, bricks? "bricks" : "checker")
             var id = ''+nrOfCols+shiftLeft+shiftUp
-            document.getElementById('d'+id).innerHTML = ""
+            var el = document.getElementById('d'+id)
+            if (!el) continue
+            el.innerHTML = ""
             diagram.showGraph({
               threadColor: '#colorpicker',
               container: '#d'+id,
@@ -154,8 +156,8 @@
     &mdash; Powered<sup>&nbsp;<a href="https://github.com/d-bl/GroundForge/tree/gh-pages#how-its-made--under-the-hood"
 >how</a></sup>&nbsp;by:&nbsp;<a href="https://tesselace.com" title="Algorithmically designed lace tessellations"
 >TesseLace</a>,&nbsp;<a href="https://d3js.org" title="Data Driven Documents"
->D3.js</a>,&nbsp;<a href="http://www.menucool.com/color-picker" title="MenuCool Color Picker"
->Menucool</a>
+>D3.js</a>,&nbsp;<a href="http://jscolor.com/" title="Color Picker"
+>jsColor</a>
 </p>
 <!-- Start of StatCounter Code for Default Guide -->
 <script type="text/javascript">
