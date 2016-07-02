@@ -32,7 +32,8 @@ The diagrams lack the original geometric information after completion of the ani
 so topological duplicates were removed from the generated thumbnails.
 Downloadable pattern sheets provide geometric variations that can be customised into intermediate and other variations.
 
-The thread diagrams are not generated from the matrices, but from the generated pair diagrams by replacing nodes with stitches.
+The thread diagrams are not generated from the matrices,
+but from the generated JSon data for pair diagrams by replacing nodes with stitches.
 To paint threads each segment has a class identifying the thread it belongs to.
 To keep track of the threads while constructing the diagram, 
 the algorithm has to figure out a working order to create the lace just like a real lace maker does.
