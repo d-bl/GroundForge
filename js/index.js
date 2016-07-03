@@ -45,8 +45,6 @@ function load() {
     palette: colors,
     onAnimationEnd: function() {setHref(document.getElementById("dlThread"),'threads')}
   })
-  var p = document.getElementById("pairs"  ); p.scrollTop = p.scrollTop==0 ? 180 : p.scrollTop
-  var t = document.getElementById("threads"); t.scrollTop = t.scrollTop==0 ? 140 : t.scrollTop
 }
 function onChangeColor(el) {
   if (el.value == 'FFFFFF') {
