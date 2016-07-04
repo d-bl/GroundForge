@@ -211,8 +211,9 @@ diagram.showGraph = function(args) {
 // https://github.com/d3/d3/blob/master/CHANGES.md#forces-d3-force
     var sim = d3.forceSimulation()
         .force("link", d3.forceLink(links))
-        .force("charge", d3.forceManyBody().distanceMin(5).distanceMax(30))
+        .force("charge", d3.forceManyBody().distanceMin(5).distanceMax(50).strength(-20))
         .force("center", d3.forceCenter(args.width / 4, args.height / 6))
+        .alpha(0.5)
     sim.nodes(args.nodes).on("tick", simTicked)
     sim.on("end", simEnded)
 }
