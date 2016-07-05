@@ -210,10 +210,11 @@ diagram.showGraph = function(args) {
 // The power of the v4 API requires more insight.
 // https://github.com/d3/d3/blob/master/CHANGES.md#forces-d3-force
     var sim = d3.forceSimulation()
-        .force("link", d3.forceLink(links))
-        .force("charge", d3.forceManyBody().distanceMin(5).distanceMax(50).strength(-20))
+        .force("link", d3.forceLink(links).strength(5).distance(10).iterations(2))
+        .force("charge", d3.forceManyBody().distanceMin(7).distanceMax(25).strength(-20))
         .force("center", d3.forceCenter(args.width / 4, args.height / 6))
-        .alpha(0.5)
+        .force("collide", d3.forceCollide().radius(8).strength(1))
+        .alpha(2)
     sim.nodes(args.nodes).on("tick", simTicked)
     sim.on("end", simEnded)
 }
