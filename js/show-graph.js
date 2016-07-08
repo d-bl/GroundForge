@@ -130,7 +130,7 @@ diagram.showGraph = function(args) {
     var threadStarts = container.selectAll(".threadStart")
     if ( args.palette ) {
       var colors = args.palette.split(',')
-      for(i=threadStarts._groups[0].length ; i >= 0 ; i--) {
+      for(i=threadStarts.size() ; i >= 0 ; i--) {
         var n = (i - 1 + colors.length) % colors.length
         container.selectAll(".thread"+i)
           .style('stroke', colors[n])
@@ -140,13 +140,13 @@ diagram.showGraph = function(args) {
 
     // event listeners
 
-    var colorpicker = (args.threadColor == undefined ? undefined : d3.select(args.threadColor)._groups[0])
+    var colorpicker = (args.threadColor == undefined ? undefined : d3.select(args.threadColor).node())
     if (colorpicker) {
         threadStarts.on('click', function (d) {
             if (d3.event.defaultPrevented) return
             container.selectAll("."+d.startOf)
-              .style('stroke', '#'+colorpicker[0].value)
-              .style('fill', function(d) { return d.bobbin ? '#'+colorpicker[0].value : 'none' })
+              .style('stroke', '#'+colorpicker.value)
+              .style('fill', function(d) { return d.bobbin ? '#'+colorpicker.value : 'none' })
         })
     }
 
