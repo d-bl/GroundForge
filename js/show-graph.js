@@ -138,19 +138,17 @@ diagram.showGraph = function(args) {
       }
     }
 
-        // event listeners
+    // event listeners
 
-//    if ( args.threadColor && threadStarts._groups[0] ) {
-//        var colorpicker = (args.threadColor == undefined ? undefined : d3.select(args.threadColor)[0][0])
-//        if (colorpicker) {
-//            threadStarts.on('click', function (d) {
-//                if (d3.event.defaultPrevented) return
-//                container.selectAll("."+d.startOf)
-//                  .style('stroke', '#'+colorpicker.value)
-//                  .style('fill', function(d) { return d.bobbin ? '#'+colorpicker.value : 'none' })
-//            })
-//        }
-//    }
+    var colorpicker = (args.threadColor == undefined ? undefined : d3.select(args.threadColor)._groups[0])
+    if (colorpicker) {
+        threadStarts.on('click', function (d) {
+            if (d3.event.defaultPrevented) return
+            container.selectAll("."+d.startOf)
+              .style('stroke', '#'+colorpicker[0].value)
+              .style('fill', function(d) { return d.bobbin ? '#'+colorpicker[0].value : 'none' })
+        })
+    }
 
     var drawPath = function(d) {
         var source = args.nodes[d.source]
@@ -202,7 +200,7 @@ diagram.showGraph = function(args) {
     var sim = d3.forceSimulation()
         .force("link", d3.forceLink(links).strength(5).distance(10).iterations(2))
         .force("charge", d3.forceManyBody().distanceMin(7).distanceMax(25).strength(-20))
-        .force("center", d3.forceCenter(args.width / 4, args.height / 6))
+        .force("center", d3.forceCenter(args.width / (args.palette?2:4), args.height / (args.palette?2:6)))
         .force("collide", d3.forceCollide().radius(8).strength(1))
         .alpha(2)
     sim.nodes(args.nodes).on("tick", simTicked)
