@@ -1,27 +1,15 @@
 fullyTransparant = 0 // global to allow override while testing
 var diagram = {}
-diagram.startThread = function(svgDefs){
+diagram.start = function(svgDefs, id, shape){
     svgDefs.append('svg:marker')
-        .attr('id', "start-thread")
+        .attr('id', id)
         .attr('viewBox', '-7 -7 14 14')
         .attr('markerWidth', 12)
         .attr('markerHeight', 12 )
         .attr('orient', 'auto')
         .attr('markerUnits', 'userSpaceOnUse')
       .append('svg:path')
-        .attr('d', diagram.shape.square)
-        .attr('fill', "#000").style('opacity',0.5)
-}
-diagram.startPair = function(svgDefs){
-    svgDefs.append('svg:marker')
-        .attr('id', "start-pair")
-        .attr('viewBox', '-7 -7 14 14')
-        .attr('markerWidth', 10)
-        .attr('markerHeight', 12 )
-        .attr('orient', 'auto')
-        .attr('markerUnits', 'userSpaceOnUse')
-      .append('svg:path')
-        .attr('d', diagram.shape.diamond)
+        .attr('d', shape)
         .attr('fill', "#000").style('opacity',0.5)
 }
 diagram.twistMark = function(svgDefs){
@@ -90,8 +78,8 @@ diagram.showGraph = function(args) {
     // marker definitions
 
     var defs = svgRoot.append('svg:defs')
-    diagram.startThread(defs)
-    diagram.startPair(defs)
+    diagram.start(defs, "start-thread", diagram.shape.square)
+    diagram.start(defs, "start-pair", diagram.shape.diamond)
     diagram.twistMark(defs)
     diagram.markers(defs, 'green','#0f0')
     diagram.markers(defs, 'red','#f00')
@@ -139,10 +127,10 @@ diagram.showGraph = function(args) {
 
      nodes.append("svg:title").text(function(d) { return d.title ? d.title : "" })
 
-    var threadStarts = container.selectAll(".threadStart") // TODO fixme (bleeding edge?)
-    if ( args.palette && threadStarts[0] ) {
+    var threadStarts = container.selectAll(".threadStart")
+    if ( args.palette ) {
       var colors = args.palette.split(',')
-      for(i=threadStarts[0].length ; i >= 0 ; i--) {
+      for(i=threadStarts._groups[0].length ; i >= 0 ; i--) {
         var n = (i - 1 + colors.length) % colors.length
         container.selectAll(".thread"+i)
           .style('stroke', colors[n])
@@ -150,16 +138,18 @@ diagram.showGraph = function(args) {
       }
     }
 
-    // event listeners
+        // event listeners
 
-//    var colorpicker = (args.threadColor == undefined ? undefined : d3.select(args.threadColor)[0][0])
-//    if (colorpicker) {
-//        threadStarts.on('click', function (d) {
-//            if (d3.event.defaultPrevented) return
-//            container.selectAll("."+d.startOf)
-//              .style('stroke', '#'+colorpicker.value)
-//              .style('fill', function(d) { return d.bobbin ? '#'+colorpicker.value : 'none' })
-//        })
+//    if ( args.threadColor && threadStarts._groups[0] ) {
+//        var colorpicker = (args.threadColor == undefined ? undefined : d3.select(args.threadColor)[0][0])
+//        if (colorpicker) {
+//            threadStarts.on('click', function (d) {
+//                if (d3.event.defaultPrevented) return
+//                container.selectAll("."+d.startOf)
+//                  .style('stroke', '#'+colorpicker.value)
+//                  .style('fill', function(d) { return d.bobbin ? '#'+colorpicker.value : 'none' })
+//            })
+//        }
 //    }
 
     var drawPath = function(d) {
