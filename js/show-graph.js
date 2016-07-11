@@ -149,6 +149,10 @@ diagram.showGraph = function(args) {
               .style('fill', function(d) { return d.bobbin ? '#'+colorpicker.value : 'none' })
         })
     }
+    nodes.call(d3.drag()
+                   .on("start", dragstarted)
+                   .on("drag", dragged)
+                   .on("end", dragended))
 
     var drawPath = function(d) {
         var source = args.nodes[d.source]
@@ -171,13 +175,16 @@ diagram.showGraph = function(args) {
         return "M"+ sX + "," + sY + " " + tX + "," + tY
     }
     var moveNode = function(d) {
+        d.x = d.x ? d.x : 0
+        d.y = d.y ? d.y : 0
         return "translate(" + d.x + "," + d.y + ")"
     }
     // a higher speed for IE as marks only appear when the animation is finished
     var mod = isMobileMac ? 10 : isIE ? 3 : 2
     var step = 0
     var simTicked = function() {
-                         if ( ((step++)%mod) != 0) return // skip rendering
+                         //if ( ((step++)%mod) != 0) return // skip rendering
+                         //step++
                          nodes.attr("transform", moveNode)
                          links.attr("d", drawPath)
                      }
@@ -197,12 +204,27 @@ diagram.showGraph = function(args) {
 // Above calibration with the v3 API resulted in a relative quick compact animation.
 // The power of the v4 API requires more insight.
 // https://github.com/d3/d3/blob/master/CHANGES.md#forces-d3-force
-    var sim = d3.forceSimulation()
-        .force("link", d3.forceLink(links).strength(5).distance(10).iterations(2))
-        .force("charge", d3.forceManyBody().distanceMin(7).distanceMax(25).strength(-20))
+    var sim = d3.forceSimulation(nodes)
+        .force("link", d3.forceLink(links).strength(50).distance(10))
+        .force("charge", d3.forceManyBody().distanceMin(3).distanceMax(18).strength(-40))
         .force("center", d3.forceCenter(args.width / (args.palette?2:4), args.height / (args.palette?2:6)))
         .force("collide", d3.forceCollide().radius(8).strength(1))
         .alpha(2)
     sim.nodes(args.nodes).on("tick", simTicked)
     sim.on("end", simEnded)
+
+    function dragstarted(d) {
+      if (!d3.event.active) sim.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+    function dragged(d) {
+      d.fx = d3.event.x;
+      d.fy = d3.event.y;
+    }
+    function dragended(d) {
+      if (!d3.event.active) sim.alphaTarget(0.3);
+      d.fx = null;
+      d.fy = null;
+    }
 }
