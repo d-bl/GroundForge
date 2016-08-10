@@ -202,10 +202,8 @@ diagram.showGraph = function(args) {
 //        .start()
 //        .alpha(0.01)
 // Above calibration with the v3 API resulted in a relative quick compact animation.
-// The power of the v4 API requires more insight.
-// https://github.com/d3/d3/blob/master/CHANGES.md#forces-d3-force
-    var sim = d3.forceSimulation(nodes)
-        .force("link", d3.forceLink(links).strength(50).distance(10))
+    var sim = d3.forceSimulation(args.nodes)
+        .force("link", d3.forceLink(args.links).strength(50).distance(10))
         .force("charge", d3.forceManyBody().distanceMin(3).distanceMax(18).strength(-40))
         .force("center", d3.forceCenter(args.width / (args.palette?2:4), args.height / (args.palette?2:6)))
         .force("collide", d3.forceCollide().radius(8).strength(1))
