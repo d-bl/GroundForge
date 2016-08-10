@@ -69,6 +69,13 @@ diagram.showGraph = function(args) {
     args.width = args.width ? args.width : 744
     args.height = args.height? args.height : 1052
 
+    var m = args.links.length
+    for (i = 0; i < m; ++i) {
+      var link = args.links[i]
+      link.source = args.nodes[link.source];
+      link.target = args.nodes[link.target];
+    }
+
     // document creation
     var svgRoot = d3.select(args.container).append("svg")
                 .attr("width", args.width)
@@ -155,12 +162,10 @@ diagram.showGraph = function(args) {
                    .on("end", dragended))
 
     var drawPath = function(d) {
-        var source = args.nodes[d.source]
-        var target = args.nodes[d.target]
-        var sX = source.x
-        var sY = source.y
-        var tX = target.x
-        var tY = target.y
+        var sX = d.source.x
+        var sY = d.source.y
+        var tX = d.target.x
+        var tY = d.target.y
         var dX = (tX - sX)
         var dY = (tY - sY)
         var mid = d.left ? ("S" + (sX - dY/3 + dX/3) + "," + (sY + dX/3 + dY/3)) :
@@ -203,13 +208,10 @@ diagram.showGraph = function(args) {
 //        .alpha(0.01)
 // Above calibration with the v3 API resulted in a relative quick compact animation.
     var sim = d3.forceSimulation(args.nodes)
-        .force("link", d3.forceLink(args.links).strength(50).distance(10))
-        .force("charge", d3.forceManyBody().distanceMin(3).distanceMax(18).strength(-40))
-        .force("center", d3.forceCenter(args.width / (args.palette?2:4), args.height / (args.palette?2:6)))
-        .force("collide", d3.forceCollide().radius(8).strength(1))
-        .alpha(2)
-    sim.nodes(args.nodes).on("tick", simTicked)
-    sim.on("end", simEnded)
+        .force("charge", d3.forceManyBody().strength(-2))
+        .force("link", d3.forceLink(links).strength(1).distance(5).iterations(10))
+        .on("tick", simTicked)
+        .on("end", simEnded)
 
     function dragstarted(d) {
       if (!d3.event.active) sim.alphaTarget(0.3).restart();
