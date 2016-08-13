@@ -196,7 +196,7 @@ diagram.showGraph = function(args) {
         .on("end", simEnded)
 
     function dragstarted(d) {
-      if (!d3.event.active) sim.alphaTarget(0.3).restart();
+      if (!d3.event.active) sim.alphaTarget(0.01).restart();
       d.fx = d.x;
       d.fy = d.y;
     }
@@ -205,7 +205,7 @@ diagram.showGraph = function(args) {
       d.fy = d3.event.y;
     }
     function dragended(d) {
-      if (!d3.event.active) sim.alphaTarget(0.3);
+      if (!d3.event.active) sim.alphaTarget(0.01);
       d.fx = null;
       d.fy = null;
     }
