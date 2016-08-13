@@ -70,7 +70,8 @@ diagram.showGraph = function(args) {
     args.height = args.height? args.height : 1052
 
     // document creation
-    var svgRoot = d3.select(args.container).append("svg")
+    var htmlContainer = d3.select(args.container)
+    var svgRoot = htmlContainer.append("svg")
                 .attr("width", args.width)
                 .attr("height", args.height)
                 .attr("pointer-events", "all")
@@ -86,31 +87,14 @@ diagram.showGraph = function(args) {
     diagram.markers(defs, 'purple','#609')
     //diagram.markers(defs, 'white','#fff')
 
-    // zoom functionality
-
-    var container = svgRoot.append('svg:g')
-                //.call(d3.zoom().scaleTo(args.scale).on("zoom", redraw))
-                //https://github.com/d3/d3/blob/master/CHANGES.md#zooming-d3-zoom
-              .append('svg:g')
-                .attr("transform", args.transform)
-
-    container.append('svg:rect') // TODO somehow just surround the graph
-        .attr('width', args.width * (5/args.scale))
-        .attr('height', args.height * (5/args.scale))
-        .attr('fill', 'white')
-
-    function redraw() {
-      container.attr("transform",
-          "translate(" + d3.event.translate + ")"
-          + " scale(" + d3.event.scale + ")");
-    }
+    var svgContainer = svgRoot.append('svg:g')
 
     // object creation and decoration
 
     var isIE = document.documentURI == undefined // wrong feature check
     var isMobileMac = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
 
-    var links = container.selectAll(".path").data(args.links).enter().append("svg:path")
+    var links = svgContainer.selectAll(".path").data(args.links).enter().append("svg:path")
         .attr("class", function(d) { return d.thread ? "link thread" + d.thread : "link" })
         .attr("id",function(d,i) { return "link_" + i; })
         .style('opacity', function(d) { return d.border || d.toPin ? fullyTransparant : 1})
@@ -118,21 +102,21 @@ diagram.showGraph = function(args) {
         .style('fill', 'none')
     if (!isIE) diagram.markLinks(links)
 
-    var nodes = container.selectAll(".node").data(args.nodes).enter().append("svg:path")
+    var nodes = svgContainer.selectAll(".node").data(args.nodes).enter().append("svg:path")
         .attr("d", function(d) { return (d.bobbin ? diagram.shape.bobbin : d.pin ? diagram.shape.pin : diagram.shape.stitch)})
         .attr("class", function(d) { return "node " + (d.startOf ? "threadStart" : d.thread ? ("thread"+d.thread) : "")})
         .style('opacity', function(d) { return d.bobbin || d.pin ? 1 : fullyTransparant})
         .style('fill', '#000000')
         .style('stroke', function(d) { return d.pin ? 'none' : '#000000'})
 
-     nodes.append("svg:title").text(function(d) { return d.title ? d.title : "" })
+    nodes.append("svg:title").text(function(d) { return d.title ? d.title : "" })
 
-    var threadStarts = container.selectAll(".threadStart")
+    var threadStarts = svgContainer.selectAll(".threadStart")
     if ( args.palette ) {
       var colors = args.palette.split(',')
       for(i=threadStarts.size() ; i >= 0 ; i--) {
         var n = (i - 1 + colors.length) % colors.length
-        container.selectAll(".thread"+i)
+        svgContainer.selectAll(".thread"+i)
           .style('stroke', colors[n])
           .style('fill', function(d) { return d.bobbin ? colors[n] : 'none'})
       }
@@ -144,15 +128,11 @@ diagram.showGraph = function(args) {
     if (colorpicker) {
         threadStarts.on('click', function (d) {
             if (d3.event.defaultPrevented) return
-            container.selectAll("."+d.startOf)
+            svgContainer.selectAll("."+d.startOf)
               .style('stroke', '#'+colorpicker.value)
               .style('fill', function(d) { return d.bobbin ? '#'+colorpicker.value : 'none' })
         })
     }
-    nodes.call(d3.drag()
-                   .on("start", dragstarted)
-                   .on("drag", dragged)
-                   .on("end", dragended))
 
     var drawPath = function(d) {
         var sX = d.source.x
@@ -175,6 +155,7 @@ diagram.showGraph = function(args) {
     var moveNode = function(d) {
         return "translate(" + d.x + "," + d.y + ")"
     }
+
     // a higher speed for IE as marks only appear when the animation is finished
     var mod = isMobileMac ? 10 : isIE ? 3 : 2
     var step = 0
@@ -195,6 +176,19 @@ diagram.showGraph = function(args) {
         .on("tick", simTicked)
         .on("end", simEnded)
 
+    // zooming and panning
+
+    htmlContainer.call( d3.zoom().on("zoom", zoomed) )
+    function zoomed() {
+      svgContainer.attr("transform", d3.event.transform);
+    }
+
+    // dragging nodes
+
+    nodes.call(d3.drag()
+                   .on("start", dragstarted)
+                   .on("drag", dragged)
+                   .on("end", dragended))
     function dragstarted(d) {
       if (!d3.event.active) sim.alphaTarget(0.01).restart();
       d.fx = d.x;
