@@ -155,12 +155,10 @@ diagram.showGraph = function(args) {
                    .on("end", dragended))
 
     var drawPath = function(d) {
-        var source = args.nodes[d.source]
-        var target = args.nodes[d.target]
-        var sX = source.x
-        var sY = source.y
-        var tX = target.x
-        var tY = target.y
+        var sX = d.source.x
+        var sY = d.source.y
+        var tX = d.target.x
+        var tY = d.target.y
         var dX = (tX - sX)
         var dY = (tY - sY)
         var mid = d.left ? ("S" + (sX - dY/3 + dX/3) + "," + (sY + dX/3 + dY/3)) :
@@ -175,8 +173,6 @@ diagram.showGraph = function(args) {
         return "M"+ sX + "," + sY + " " + tX + "," + tY
     }
     var moveNode = function(d) {
-        d.x = d.x ? d.x : 0
-        d.y = d.y ? d.y : 0
         return "translate(" + d.x + "," + d.y + ")"
     }
     // a higher speed for IE as marks only appear when the animation is finished
@@ -192,26 +188,12 @@ diagram.showGraph = function(args) {
                       if (isIE) diagram.markLinks(links)
                       if (args.onAnimationEnd) args.onAnimationEnd()
                     }
-//    var force = d3.layout.force()
-//        .nodes(args.nodes)
-//        .links(args.links)
-//        .size([args.width, args.height])
-//        .charge(-20)
-//        .linkDistance(10)
-//        .linkStrength(10)
-//        .start()
-//        .alpha(0.01)
-// Above calibration with the v3 API resulted in a relative quick compact animation.
-// The power of the v4 API requires more insight.
-// https://github.com/d3/d3/blob/master/CHANGES.md#forces-d3-force
-    var sim = d3.forceSimulation(nodes)
-        .force("link", d3.forceLink(links).strength(50).distance(10))
-        .force("charge", d3.forceManyBody().distanceMin(3).distanceMax(18).strength(-40))
-        .force("center", d3.forceCenter(args.width / (args.palette?2:4), args.height / (args.palette?2:6)))
-        .force("collide", d3.forceCollide().radius(8).strength(1))
-        .alpha(2)
-    sim.nodes(args.nodes).on("tick", simTicked)
-    sim.on("end", simEnded)
+    var sim = d3.forceSimulation(args.nodes)
+        .force("charge", d3.forceManyBody().strength(-10))
+        .force("link", d3.forceLink(args.links).strength(2).distance(10).iterations(20))
+        .alpha(0.01)
+        .on("tick", simTicked)
+        .on("end", simEnded)
 
     function dragstarted(d) {
       if (!d3.event.active) sim.alphaTarget(0.3).restart();
