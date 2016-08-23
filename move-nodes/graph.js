@@ -1,6 +1,6 @@
 var diagram = {}
 diagram.shape = {}
-diagram.shape.stitch = "M 6,0 A 6,6 0 0 1 0,6 6,6 0 0 1 -6,0 6,6 0 0 1 0,-6 6,6 0 0 1 6,0 Z" // larger circle
+diagram.shape.stitch = "M 3,0 A 3,3 0 0 1 0,3 3,3 0 0 1 -3,0 3,3 0 0 1 0,-3 3,3 0 0 1 3,0 Z" // larger circle
 diagram.showGraph = function(args) {
     var container = d3.select(args.container)
               .append("svg")
@@ -44,7 +44,22 @@ diagram.showGraph = function(args) {
         d.fy = d.y;
         return "translate(" + d.x + "," + d.y + ")"
     }
+    var startX
+    var startY
+    var dX
+    var dY
+    var movedNode
+    function moveNode2 (d) {
+        if (movedNode != d.index) {
+            d.x -= dX
+            d.y -= dY;
+        }
+        moveNode(d)
+    }
     function dragstarted(d) {
+        startX = d.x
+        startY = d.y
+        movedNode = d.index
         if (!d3.event.active) sim.alphaTarget(0.05).restart();
     }
     function dragged(d) {
@@ -54,7 +69,9 @@ diagram.showGraph = function(args) {
     function dragended(d) {
         var cl = "."+tr(d.title)
         var sel = container.selectAll(cl)
-        sel.attr("transform", moveNode)
+        dX = startX - d.x
+        dY = startY - d.y
+        sel.attr("transform", moveNode2)
     }
     function tr(title) {
         return (title ? title : "").replace("Pair ","pair").replace("ctc - ","")
