@@ -8,7 +8,7 @@ import scala.scalajs.js.annotation.JSExport
   */
 @JSExport
 case class PatternSheet(patchRows: Int = 3, pageSize: String = "height='297mm' width='210mm'") {
-  private val nameSpaces = "xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'"
+  private val nameSpaces = "xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape'"
   private val patterns = new ListBuffer[Pattern]
 
   @JSExport

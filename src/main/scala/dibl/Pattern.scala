@@ -15,70 +15,74 @@
 */
 package dibl
 
-import dibl.Matrix.toRelSrcNodes
+import dibl.Matrix.{toAbsWithMargins, toRelSrcNodes}
 
 class Pattern (m:String, tileType: String, rows: Int, cols: Int,
                groupId: String = "GFP1", offsetX: Int = 80, offsetY: Int = 120) {
 
   private val hXw = s"${rows}x$cols"
 
-  def patch: String = {
-    val relative = toRelSrcNodes(matrix = m, dimensions = hXw).get
+  def patch: String = (
+    for {
+      relative <- toRelSrcNodes(matrix = m, dimensions = hXw)
+      checker = TileType(tileType).toChecker(relative)
+      absolute <- toAbsWithMargins(checker, 22, 22)
+    } yield
+      s"""<g>
+          |  $createTag
+          |  <g id='$groupId'>
+          |    ${createConnectors(absolute)}
+          |  </g>
+          |</g>
+          |""".stripMargin
+    ).get
+
+  def createTag: String = {
     val link = "https://d-bl.github.io/GroundForge/index.html" +
       "?matrix=" + m.grouped(cols).toArray.mkString("%0D") + s"&tiles=$tileType"
-    val tag = s"<text style='font-family:Arial;font-size:11pt'>\n" +
-      s"\t <tspan x='${offsetX - 50}' y='${offsetY - 80}'>$tileType, $hXw, $m</tspan>\n" +
-      s"\t <tspan x='${offsetX - 50}' y='${offsetY - 60}' style='fill:#008;'>\n" +
-      s"\t  <a xlink:href='$link'>pair/thread diagrams</a>\n" +
-      s"\t </tspan>\n" +
-      s"\t</text>\n"
-    s"\n<g>\n$clones\n\t$tag\n\t<g id='$groupId'>\n${original(relative)}\t</g>\n</g>\n"
+    s"""
+      |<text style='font-family:Arial;font-size:11pt'>
+      | <tspan x='${offsetX - 50}' y='${offsetY - 80}'>$tileType, $hXw, $m</tspan>
+      | <tspan x='${offsetX - 50}' y='${offsetY - 60}' style='fill:#008;'>
+      |  <a xlink:href='$link'>pair/thread diagrams</a>
+      | </tspan>
+      |</text>"""
   }
 
-  private def clones: String = {
-    val brickOffset = if (tileType == "bricks") cols * 5 else 0
-    def cloneRows(row1: Int): String = {
-      val row2 = row1 + rows * 10 // TODO refactor into TileType
-      List.range(start = -(if (tileType == "bricks")brickOffset else 10*cols), end = 250, step = cols * 10).
-        map(w => {
-          clone(w, row1) + clone(w - brickOffset, row2)
-        }).mkString("")
+  def createConnectors(m: M): String = {
+    def createTwoIn(row: Int, col: Int, cell: SrcNodes): String = if (cell.isEmpty) "" else {
+
+      val nodeX = col * 10 + offsetX
+      val nodeY = row * 10 + offsetY
+      val (leftRow, leftCol)= cell(0)
+      val (rightRow, rightCol) = cell(1)
+
+      def createPath(startRow: Int, startCol: Int): String = if (m(startRow)(startCol).isEmpty) "" else
+        s"""  <path
+           |    style='stroke:#000000;fill:none'
+           |    d='M ${startCol * 10 + offsetX},${startRow * 10 + offsetY} $nodeX,$nodeY'
+           |    inkscape:connector-type='polyline'
+           |    inkscape:connector-curvature='0'
+           |    inkscape:connection-start='#${groupId}n${toNodeId(startCol, startRow)}'
+           |    inkscape:connection-end='#${groupId}n${toNodeId(col, row)}'
+           |  />""".stripMargin
+      val node =
+        f"""  <circle
+           |    style='fill:#00${(row % cols + 1) * 32}%2X${(col % rows + 1) * 32}%2X;stroke:none'
+           |    id='${groupId}n${toNodeId(row, col)}'
+           |    cx='$nodeX'
+           |    cy='$nodeY'
+           |    r='2'
+           |  />""".stripMargin
+      s"""  <!-- row=$row col=$col left : (row=$leftRow, col=$leftCol) right : (row=$rightRow, col=$rightCol)-->
+         |$node
+         |${createPath(leftRow, leftCol)}
+         |${createPath(rightRow, rightCol)}
+         |""".stripMargin
     }
-    val cloneAtOriginal = clone(0, 0)
-    List.range(start = -rows * 10, end = 200, step = rows * 20)
-      .map(h => cloneRows(h)).mkString("")
-      .replace(cloneAtOriginal, cloneAtOriginal.replace("#000", "#008"))
-  }
-
-  private def clone(i: Int, j: Int): String =
-    s"\t<use transform='translate($i,$j)' xlink:href='#$groupId' ${"style='stroke:#000;fill:none'"}/>\n"
-
-  private def original(m: M): String =
-    m.indices.flatMap(row =>
-      m(row).indices.flatMap(col =>
-        createNode((row, col), m(row)(col))
-      )
-    ).mkString("")
-
-  private def createNode(target: (Int, Int), n: SrcNodes): String =
-    if (n.length < 2) ""
-    else {
-      createLink(target, n(0)) + createLink(target, n(1))
-    }
-
-  private def createLink(target: (Int, Int), source: (Int, Int)): String = {
-    val (targetRow, targetCol) = target
-    val (dRow, dCol) = source
-    val sourceRow = (targetRow + dRow + rows) % rows
-    val sourceCol = // TODO refactor into TileType
-      if (tileType == "bricks" && targetRow == 0 && dRow != 0)
-        (targetCol + dCol + cols/2) % cols
-      else (targetCol + dCol + cols) % cols
-    val tag = s"${s"${toNodeId(sourceCol, sourceRow)}"}-${toNodeId(targetCol, targetRow)}"
-    val targetNode = s"${offsetX + (targetCol * 10)},${offsetY + (targetRow * 10)}"
-    val sourceNode = s"${offsetX + (dCol + targetCol) * 10},${offsetY + (dRow + targetRow) * 10}"
-    val pathData = s"M $sourceNode $targetNode"
-    s"\t\t<path d='$pathData'><title>$tag</title></path>\n"
+    m.indices.flatMap(row => m(row).indices.flatMap(col =>
+      createTwoIn(row, col, m(row)(col))
+    )).toArray.mkString("")
   }
 
   private def toNodeId(col: Int, row: Int): String =
