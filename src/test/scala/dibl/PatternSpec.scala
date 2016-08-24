@@ -24,27 +24,27 @@ class PatternSpec extends FlatSpec with Matchers {
 
   "rose" should "succeed" in {
     val patterns = new PatternSheet
-    patterns.add("5831 -4-7", isBrick = true)
-    patterns.add("-437 34-7", isBrick = true)
-    patterns.add("5831 -4-7 3158 -7-4", isBrick = false)
-    patterns.add("4830 --77", isBrick = true)
+    patterns.add("5831 -4-7", "bricks")
+    patterns.add("-437 34-7", "bricks")
+    patterns.add("5831 -4-7 3158 -7-4", "checker")
+    patterns.add("4830 --77", "bricks")
     FileUtils.write(new File(s"target/patterns/rose.svg"), patterns.toSvgDoc())
   }
 
   "pattern sheet" should "succeed" in {
     val patterns = new PatternSheet
-    patterns.add("586- -4-5 5-21 -5-7", isBrick = true)
-    patterns.add("586- -4-5 5-21 -5-7", isBrick = true)
-    patterns.add("4831 -117 5-7- 86-5", isBrick = false)
-    patterns.add("4832 2483", isBrick = true)
-    patterns.add("588- -4-5 6-58 -214", isBrick = false)
+    patterns.add("586- -4-5 5-21 -5-7" ,"bricks")
+    patterns.add("586- -4-5 5-21 -5-7", "bricks")
+    patterns.add("4831 -117 5-7- 86-5", "checker")
+    patterns.add("4832 2483", "bricks")
+    patterns.add("588- -4-5 6-58 -214", "checker")
     FileUtils.write(new File(s"target/patterns/pattern-sheet.svg"), patterns.toSvgDoc())
   }
 
   it should "not mix up dimensions" in {
     val patterns = new PatternSheet
-    patterns.add("88 11", isBrick = true)
-    patterns.add("66,99+22\n00", isBrick = true)
+    patterns.add("88 11", "bricks")
+    patterns.add("66,99+22\n00", "bricks")
     val svgString = patterns.toSvgDoc()
     val links = svgString.split("\n").filter(_.contains("href='http")).mkString("\n")
     links should include ("?matrix=88%0D11&tiles=bricks'")
@@ -53,7 +53,7 @@ class PatternSpec extends FlatSpec with Matchers {
 
   it should "produce a single patch" in {
     val patterns = new PatternSheet
-    patterns.add("88 11", isBrick = true)
+    patterns.add("88 11", "bricks")
     val svgString = patterns.toSvgDoc()
     val links = svgString.split("\n").filter(_.contains("href='http"))
     links.length shouldBe 1
@@ -61,7 +61,7 @@ class PatternSpec extends FlatSpec with Matchers {
 
   it should "process double length horizontal lines" in {
     val patterns = new PatternSheet
-    patterns.add("-5---5-5 5-O-E-5-", isBrick = true)
+    patterns.add("-5---5-5 5-O-E-5-", "bricks")
     val svgString = patterns.toSvgDoc()
     FileUtils.write(new File(s"target/patterns/double-length.svg"), svgString)
     val links = svgString.split("\n").filter(_.contains("href='http"))
@@ -70,7 +70,7 @@ class PatternSpec extends FlatSpec with Matchers {
 
   "minimal" should "succeed" in {
     val patterns = new PatternSheet(1, "width='340' height='330'")
-    patterns.add("586- -4-5 5-21 -5-7", isBrick = true)
+    patterns.add("586- -4-5 5-21 -5-7","bricks")
     FileUtils.write(new File(s"target/patterns/minimal.svg"), patterns.toSvgDoc())
   }
 }
