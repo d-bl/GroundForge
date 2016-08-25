@@ -42,14 +42,26 @@ class Pattern (m:String, tileType: String, rows: Int, cols: Int,
       "?matrix=" + m.grouped(cols).toArray.mkString("%0D") + s"&tiles=$tileType"
     s"""
       |<text style='font-family:Arial;font-size:11pt'>
-      | <tspan x='${offsetX - 50}' y='${offsetY - 80}'>$tileType, $hXw, $m</tspan>
-      | <tspan x='${offsetX - 50}' y='${offsetY - 60}' style='fill:#008;'>
+      | <tspan x='${offsetX + 15}' y='${offsetY - 20}'>$tileType, $hXw, $m</tspan>
+      | <tspan x='${offsetX + 15}' y='${offsetY -  0}' style='fill:#008;'>
       |  <a xlink:href='$link'>pair/thread diagrams</a>
       | </tspan>
       |</text>"""
   }
 
   def createConnectors(m: M): String = {
+    def createNode(row: Int, col: Int, cell: SrcNodes): String = if (cell.isEmpty) "" else {
+
+      val nodeX = col * 10 + offsetX
+      val nodeY = row * 10 + offsetY
+      f"""  <circle
+         |    style='fill:#00${(row % cols + 1) * 32}%2X${(col % rows + 1) * 32}%2X;stroke:none'
+         |    id='${toNodeId(row, col)}'
+         |    cx='$nodeX'
+         |    cy='$nodeY'
+         |    r='2'
+         |  />""".stripMargin
+    }
     def createTwoIn(row: Int, col: Int, cell: SrcNodes): String = if (cell.isEmpty) "" else {
 
       val nodeX = col * 10 + offsetX
@@ -63,28 +75,22 @@ class Pattern (m:String, tileType: String, rows: Int, cols: Int,
            |    d='M ${startCol * 10 + offsetX},${startRow * 10 + offsetY} $nodeX,$nodeY'
            |    inkscape:connector-type='polyline'
            |    inkscape:connector-curvature='0'
-           |    inkscape:connection-start='#${groupId}n${toNodeId(startCol, startRow)}'
-           |    inkscape:connection-end='#${groupId}n${toNodeId(col, row)}'
-           |  />""".stripMargin
-      val node =
-        f"""  <circle
-           |    style='fill:#00${(row % cols + 1) * 32}%2X${(col % rows + 1) * 32}%2X;stroke:none'
-           |    id='${groupId}n${toNodeId(row, col)}'
-           |    cx='$nodeX'
-           |    cy='$nodeY'
-           |    r='2'
+           |    inkscape:connection-start='#${toNodeId(startRow, startCol)}'
+           |    inkscape:connection-end='#${toNodeId(row, col)}'
            |  />""".stripMargin
       s"""  <!-- row=$row col=$col left : (row=$leftRow, col=$leftCol) right : (row=$rightRow, col=$rightCol)-->
-         |$node
          |${createPath(leftRow, leftCol)}
          |${createPath(rightRow, rightCol)}
          |""".stripMargin
     }
     m.indices.flatMap(row => m(row).indices.flatMap(col =>
+      createNode(row, col, m(row)(col))
+    )).toArray.mkString("") +
+    m.indices.flatMap(row => m(row).indices.flatMap(col =>
       createTwoIn(row, col, m(row)(col))
     )).toArray.mkString("")
   }
 
-  private def toNodeId(col: Int, row: Int): String =
-    "ABCDEFGIIJKLMNOPQRSTUVWXYZ" (col) + row.toString
+  private def toNodeId(row: Int, col: Int): String =
+    s"${groupId}r${row}c$col"
 }
