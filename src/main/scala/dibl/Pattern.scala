@@ -39,7 +39,7 @@ class Pattern (m:String, tileType: String, rows: Int, cols: Int,
 
   def createTag: String = {
     val link = "https://d-bl.github.io/GroundForge/index.html" +
-      "?matrix=" + m.grouped(cols).toArray.mkString("%0D") + s"&tiles=$tileType"
+      "?matrix=" + m.grouped(cols).toArray.mkString("%0D") + s"&amp;tiles=$tileType"
     s"""
       |<text style='font-family:Arial;font-size:11pt'>
       | <tspan x='${offsetX + 15}' y='${offsetY - 20}'>$tileType, $hXw, $m</tspan>
