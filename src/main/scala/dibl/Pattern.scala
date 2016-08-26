@@ -27,70 +27,58 @@ class Pattern (m:String, tileType: String, rows: Int, cols: Int,
       relative <- toRelSrcNodes(matrix = m, dimensions = hXw)
       checker = TileType(tileType).toChecker(relative)
       absolute <- toAbsWithMargins(checker, 22, 22)
+      q = "matrix=" + m.grouped(cols).toArray.mkString("%0D") + s"&amp;tiles=$tileType"
+      url = "https://d-bl.github.io/GroundForge/index.html"
     } yield
       s"""<g>
-          |  $createTag
-          |  <g id='$groupId'>
-          |    ${createConnectors(absolute)}
-          |  </g>
-          |</g>
-          |""".stripMargin
+         |  <text style='font-family:Arial;font-size:11pt'>
+         |   <tspan x='${offsetX + 15}' y='${offsetY - 20}'>$tileType, $hXw, $m</tspan>
+         |   <tspan x='${offsetX + 15}' y='${offsetY -  0}' style='fill:#008;'>
+         |    <a xlink:href='$url?$q'>pair/thread diagrams</a>
+         |   </tspan>
+         |  </text>
+         |  <g id='$groupId'>
+         |    ${createDiagram(absolute)}
+         |  </g>
+         |</g>
+         |""".stripMargin
     ).get
 
-  def createTag: String = {
-    val link = "https://d-bl.github.io/GroundForge/index.html" +
-      "?matrix=" + m.grouped(cols).toArray.mkString("%0D") + s"&amp;tiles=$tileType"
-    s"""
-      |<text style='font-family:Arial;font-size:11pt'>
-      | <tspan x='${offsetX + 15}' y='${offsetY - 20}'>$tileType, $hXw, $m</tspan>
-      | <tspan x='${offsetX + 15}' y='${offsetY -  0}' style='fill:#008;'>
-      |  <a xlink:href='$link'>pair/thread diagrams</a>
-      | </tspan>
-      |</text>"""
-  }
-
-  def createConnectors(m: M): String = {
-    def createNode(row: Int, col: Int, cell: SrcNodes): String = if (cell.isEmpty) "" else {
-
-      val nodeX = col * 10 + offsetX
-      val nodeY = row * 10 + offsetY
-      f"""  <circle
-         |    style='fill:#00${(row % cols + 1) * 32}%2X${(col % rows + 1) * 32}%2X;stroke:none'
-         |    id='${toNodeId(row, col)}'
-         |    cx='$nodeX'
-         |    cy='$nodeY'
-         |    r='2'
-         |  />""".stripMargin
-    }
-    def createTwoIn(row: Int, col: Int, cell: SrcNodes): String = if (cell.isEmpty) "" else {
-
-      val nodeX = col * 10 + offsetX
-      val nodeY = row * 10 + offsetY
-      val (leftRow, leftCol)= cell(0)
-      val (rightRow, rightCol) = cell(1)
-
-      def createPath(startRow: Int, startCol: Int): String = if (m(startRow)(startCol).isEmpty) "" else
-        s"""  <path
-           |    style='stroke:#000000;fill:none'
-           |    d='M ${startCol * 10 + offsetX},${startRow * 10 + offsetY} $nodeX,$nodeY'
-           |    inkscape:connector-type='polyline'
-           |    inkscape:connector-curvature='0'
-           |    inkscape:connection-start='#${toNodeId(startRow, startCol)}'
-           |    inkscape:connection-end='#${toNodeId(row, col)}'
-           |  />""".stripMargin
-      s"""  <!-- row=$row col=$col left : (row=$leftRow, col=$leftCol) right : (row=$rightRow, col=$rightCol)-->
-         |${createPath(leftRow, leftCol)}
-         |${createPath(rightRow, rightCol)}
+  def createDiagram(m: M): String = {
+    def createNode(row: Int, col: Int) =
+      s"""    <circle
+         |      style='fill:#${toColor(row, col)};stroke:none'
+         |      id='${toNodeId(row, col)}'
+         |      cx='${toX(col)}'
+         |      cy='${toY(row)}'
+         |      r='2'
+         |    />
          |""".stripMargin
+
+    def createTwoIn(row: Int, col: Int): String = {
+      val srcNodes = m(row)(col)
+      def createPath(start: (Int, Int)): String = {
+        val (startRow, startCol) = start
+        if (m(startRow)(startCol).isEmpty) "" else
+          s"""    <path
+             |      style='stroke:#000000;fill:none'
+             |      d='M ${toX(startCol)},${toY(startRow)} ${toX(col)},${toY(row)}'
+             |      inkscape:connector-type='polyline'
+             |      inkscape:connector-curvature='0'
+             |      inkscape:connection-start='#${toNodeId(startRow, startCol)}'
+             |      inkscape:connection-end='#${toNodeId(row, col)}'
+             |    />
+             |""".stripMargin
+      }
+      s"""${createPath(srcNodes(0))}
+         |${createPath(srcNodes(1))}""".stripMargin
     }
-    m.indices.flatMap(row => m(row).indices.flatMap(col =>
-      createNode(row, col, m(row)(col))
-    )).toArray.mkString("") +
-    m.indices.flatMap(row => m(row).indices.flatMap(col =>
-      createTwoIn(row, col, m(row)(col))
-    )).toArray.mkString("")
+    m.indices.flatMap(row => m(row).indices.filter(m(row)(_).nonEmpty).flatMap(col => createNode(row, col))).toArray.mkString("") +
+    m.indices.flatMap(row => m(row).indices.filter(m(row)(_).nonEmpty).flatMap(col => createTwoIn(row, col))).toArray.mkString("")
   }
 
-  private def toNodeId(row: Int, col: Int): String =
-    s"${groupId}r${row}c$col"
+  private def toX(col: Int): Int = col * 10 + offsetX
+  private def toY(row: Int): Int = row * 10 + offsetY
+  private def toNodeId(row: Int, col: Int): String = s"${groupId}r${row}c$col"
+  private def toColor(row: Int, col: Int): String = f"00${(row % cols + 1) * 32}%2X${(col % rows + 1) * 32}%2X"
 }
