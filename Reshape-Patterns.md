@@ -1,33 +1,47 @@
-A downloadable pattern sheet of [GroundForge] may have multiple patterns. In some cases it may be relatively easy to see how one pattern is reshaped in another one. For example in the first set below the hexagon of the first variant is reshaped in to a brick for the second variant and the centre of the bow-tie in the second variant is lowered for the third variant. For the second set it becomes harder to see. Applying the same color to shapes surrounded with the same number of line segments can help to identify the transition. Note that an edge of a shape may span multiple line segments.
+A downloadable pattern sheet of [GroundForge] may have multiple patterns. In some cases it may be relatively easy to see how one pattern is reshaped in another one. For example in the first set below the hexagon of the first variant is reshaped in to a brick for the second variant and the centre of the bow-tie in the second variant is lowered for the third variant. For the second set it becomes harder to see. Applying the same colour to shapes surrounded with the same number of line segments can help to identify the transition. Note that an edge of a shape may span multiple line segments.
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
 [patterns]: https://github.com/d-bl/GroundForge/tree/gh-pages/patterns
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/reshape.png)
 
-The a manipulated screenshot reflects a manipulated pattern sheet. The generated sheets don't have intersections between grid positions. Other sheets may come with just a single pattern that does not look at all like the color coded pair diagram. To create a regular patch that does look like the pair diagram (or any other shape you might prefer) you would have to do the reshaping by yourself by nudging the position of intersections. That is one of the factors that makes these patterns advanced.
+The a manipulated screenshot above reflects a manipulated pattern sheet. The generated sheets only use full grid positions. Other sheets may come with just a single pattern that does not look at all like the colour coded pair diagram. To create a regular patch that does look like the pair diagram (or any other shape you might prefer) you would have to do the reshaping by yourself by nudging the position of intersections. That is one of the factors that makes these patterns advanced.
 
-Clones
-------
+Reshape with InkScape
+=====================
 
-The pattern repeats itself with clones, so changing the original (highlighted with dark blue) changes the rest too. Below some hints to deal with these clones.
+The lines that connect the dots are InkScape connectors. When a dot moves the adjacent lines follow. Other SVG editors won't recognize the connectors and will treat the dots and lines independently. 
 
-Copy-paste a Patch
-------------------
+Select dots
+-----------
 
-When copy-pasting a patch, InkScape puts the original group of objects at another positions than the highlighted clone. Other editors may behave differently. To get the original at the right position, group the patch before you copy it and ungroup both after copying. The larger a patch, the longer the (un)grouping takes. To locate the original, select one of the black clones, type a capital D or via the menu: edit - clone - select original.
+At first selecting the dots is a bit hard as invisible line ends are sitting on top, this is visible on the web page where you downloaded the sheet. Follow the steps shown in the [screenshot](#screenshot) to get the dots on top:
 
-Nudge the Intersections
------------------------
+1. drag a rectangle with your mouse around a dot
+2. from the context menu or from the _edit_ menu: _select same object type_
+3. raise selection to top
 
-Right click to enter the highlighted group of objects and select all objects in that group.
+From now on yo can select dots also by clicking on them.
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/original.png)
+Dots with the same colour should move together to keep the pattern regular. You might not see much differences with some of the dots, but your computer can tell them apart. To move related dots select one and then apply _select same fill colour_. Then you can drag the dots with the mouse or move them with the arrows on your keyboard. Five times with an arrow key is a full grid position. Shift + arrow-key once is two grid positions.
 
-Switch to the node tool to move the intersections, the black lines will change accordingly. Note that nodes along the perimeter of the group connect to nodes in a clone. To move such an intersection you may have to move nodes at different locations.
+Prevent hick-ups and recover
+----------------------------
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/nodes.png)
+Working with lots of connectors is a heavy task for InkScape, so be gentle for your system resources by deleting anything but the patch you are going to manipulate.
 
-Select the full patch and apply skewing (the straight arrows along the edges) to move the relative position of horizontal or vertical lines.
+When using the arrow keys the lines get a step behind and other weird things may happen in various situations. To recover select all the dots (start with one, then _select same object type_) and drag the full diagram a bit with the mouse. Then InkScape realigns the lines properly with the dots.
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/skew.png)
+Don't forget about the undo button and regularly save your changes.
+
+Finish up
+---------
+
+When done with adjusting the pattern you might do all kind of other things with it. Such as filling some shape in your design, curve it to make a fan, extend the patch or whatever. InkScape has lots of tutorials and manuals for these tasks. 
+
+To be gentle with your system resources it might be wise to first disconnect the lines and the dots. Don't forget to make a copy of your achievements so far to fall back on when getting second thoughts, undoing and attempts to recover from the next procedure might not have the expected results. Select all lines like you selected dots: start with one, then _select same object type_. Use an arrow key to nudge the lines a step away from the dots and move the same step back. From now on the lines won't follow the dots any more, check that fact to see whether you succeeded.
+
+Screenshot
+----------
+
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/select-dots.png)
