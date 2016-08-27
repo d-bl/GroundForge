@@ -20,6 +20,14 @@ abstract class TileType {
   // TODO add method(s) for Pattern class
 
   def toChecker(m: M): M
+
+  /** @param row row number in the generated patch
+    * @param col col number in the generated patch
+    * @param rows height of the matrix that defines the pattern
+    * @param cols width of the matrix that defines the pattern
+    * @return reduced values for (row,col)
+    */
+  def toOriginal(row: Int, col: Int, rows: Int, cols: Int): (Int, Int)
 }
 
 object TileType {
@@ -36,6 +44,12 @@ object Checker extends TileType {
     }
 
   def toChecker(m: M): M = m
+
+  def toOriginal(row: Int, col: Int, rows: Int, cols: Int): (Int, Int) = {
+    val c = col % cols
+    val r = row % rows
+    (r,c)
+  }
 }
 
 object Brick extends TileType {
@@ -46,6 +60,13 @@ object Brick extends TileType {
         ((row - margin + relRows) % relRows, (brickOffset + col) % relCols)
       }
     }
+
+  def toOriginal(row: Int, col: Int, rows: Int, cols: Int): (Int, Int) = {
+    val offset = (row / rows % 2) * (cols / 2)
+    val c = (col + offset) % cols
+    val r = row % rows
+    (r,c)
+  }
 
   /** Creates a checkerboard-matrix from a brick-matrix by
     * adding two half bricks to the bottom of the brick-matrix.
