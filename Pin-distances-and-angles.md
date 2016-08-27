@@ -3,7 +3,7 @@
 [Brenda Paternoster] and [Martina Wolter-Kampmann] wrote references to estimate pin distances related to thread widths. The refrences are geared to traditional types of lace, you might need to adjust for your taste in experimental lace.
 
 [Brenda Paternoster]: http://paternoster.orpheusweb.co.uk/lace/threadsize/threadsize.html
-[Martina Wolter-Kampmann]: 
+[Martina Wolter-Kampmann]: http://www.wolter-kampmann.de/verlag_en.html
 
 A grid in the background can help to resize your design to the desired pin distance. InkScape also provides a tool to check distances and angles, configure a grid with the document properties under the file menu.
 
