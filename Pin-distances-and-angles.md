@@ -5,7 +5,7 @@
 [Brenda Paternoster]: http://paternoster.orpheusweb.co.uk/lace/threadsize/threadsize.html
 [Martina Wolter-Kampmann]: http://www.wolter-kampmann.de/verlag_en.html
 
-Groundforge generates patterns at a fixed grid size, so you will have to resize with an SVG editor. A grid in the background can help to resize your design to the desired pin distance. InkScape also provides a tool to check distances and angles.
+Groundforge generates patterns at a fixed grid size, so you will have to resize with an SVG editor. A grid in the background can help to resize your design to the desired pin distance. InkScape also provides a tool to check distances and angles. Both are shown in the screen shot below.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/measure.png)
 
