@@ -17,8 +17,6 @@ function load() {
 
   var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, tileType)
 
-  var pairScale = document.getElementById('pairScale').value * 1
-  var threadScale = document.getElementById('threadScale').value * 1
   var colors = ''
   for(i=1; i <= 16 ; i++) {
     var el = document.getElementById('color' + i)
@@ -31,16 +29,12 @@ function load() {
     container: '#pairs',
     nodes: data.pairNodes,
     links: data.pairLinks,
-    scale: pairScale,
-    transform: "translate(0,0)scale(" + pairScale + ")",
     onAnimationEnd: function() { setHref(document.getElementById("dlPair"),'pairs') }
   })
   diagram.showGraph({
     container: '#threads',
     nodes: data.threadNodes,
     links: data.threadLinks,
-    scale: threadScale,
-    transform: "translate(0,0)scale(" + threadScale + ")",
     threadColor: '#color',
     palette: colors,
     onAnimationEnd: function() {setHref(document.getElementById("dlThread"),'threads')}
