@@ -37,7 +37,9 @@ Don't forget about the undo button and regularly save your changes.
 Finish up
 ---------
 
-When done with adjusting the pattern you might do all kind of other things with it. Such as filling some shape in your design, curve it to make a fan, extend the patch or whatever. InkScape has lots of tutorials and manuals for these tasks. 
+When done with adjusting the pattern you might do all kind of other things with it. Such as filling some shape in your design, [bend] it to make a fan, add coloumns or rows to the patch or whatever. InkScape has lots of tutorials and manuals for these tasks. 
+
+[bend]: http://tavmjong.free.fr/INKSCAPE/MANUAL/html/Paths-LivePathEffects-BendTool.html
 
 To be gentle with your system resources it might be wise to first disconnect the lines and the dots. Don't forget to make a copy of your achievements so far to fall back on when getting second thoughts, undoing and attempts to recover from the next procedure might not have the expected results. Select all lines like you selected dots: start with one, then _select same object type_. Use an arrow key to nudge the lines a step away from the dots and move the same step back. From now on the lines won't follow the dots any more, check that fact to see whether you succeeded.
 
