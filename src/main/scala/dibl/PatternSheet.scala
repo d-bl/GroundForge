@@ -25,5 +25,5 @@ case class PatternSheet(patchRows: Int = 3, pageSize: String = "height='297mm' w
   @JSExport // parentheses are required for JavaScript
   def toSvgDoc():String = s"${s"<svg version='1.1' id='svg2' $pageSize $nameSpaces>"}\n$toSvgGroups\n</svg>"
   def toList: List[Pattern] = patterns.toList
-  def toSvgGroups: String = patterns.map(_.patch).mkString("")
+  def toSvgGroups: String = patterns.map(_.patch()).mkString("")
 }

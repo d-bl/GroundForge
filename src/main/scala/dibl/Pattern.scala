@@ -20,14 +20,20 @@ import dibl.Matrix.{toAbsWithMargins, toRelSrcNodes}
 class Pattern (m:String, tileType: String, rows: Int, cols: Int,
                groupId: String = "GFP1", offsetX: Int = 80, offsetY: Int = 120) {
 
-  private val hXw = s"${rows}x$cols"
+  require(rows * cols == m.length, "invalid matrix dimensions")
 
-  def patch: String = (
-    for {
+  private val hXw = s"${rows}x$cols"
+  private val tt = TileType(tileType)
+
+  def patch(rows: Int = 22, cols: Int = 22): String = {
+
+    require(offsetX > 0 && offsetY > 0, "invalid patch dimensions")
+
+    (for {
       relative <- toRelSrcNodes(matrix = m, dimensions = hXw)
-      checker = TileType(tileType).toChecker(relative)
-      absolute <- toAbsWithMargins(checker, 22, 22)
-      q = "matrix=" + m.grouped(cols).toArray.mkString("%0D") + s"&amp;tiles=$tileType"
+      checker = tt.toChecker(relative)
+      absolute <- toAbsWithMargins(checker, rows, cols)
+      q = "matrix=" + m.grouped(this.cols).toArray.mkString("%0D") + s"&amp;tiles=$tileType"
       url = "https://d-bl.github.io/GroundForge/index.html"
     } yield
       s"""<g>
@@ -37,22 +43,20 @@ class Pattern (m:String, tileType: String, rows: Int, cols: Int,
          |    <a xlink:href='$url?$q'>pair/thread diagrams</a>
          |   </tspan>
          |  </text>
-         |  <g id='$groupId'>
-         |    ${createDiagram(absolute)}
-         |  </g>
+         |  ${createDiagram(absolute)}
          |</g>
          |""".stripMargin
-    ).get
+    ).get}
 
   def createDiagram(m: M): String = {
     def createNode(row: Int, col: Int) =
-      s"""    <circle
-         |      style='fill:#${toColor(row, col)};stroke:none'
-         |      id='${toNodeId(row, col)}'
-         |      cx='${toX(col)}'
-         |      cy='${toY(row)}'
-         |      r='2'
-         |    />
+      s"""  <circle
+         |    style='fill:#${toColor(row, col)};stroke:none'
+         |    id='${toNodeId(row, col)}'
+         |    cx='${toX(col)}'
+         |    cy='${toY(row)}'
+         |    r='2'
+         |  />
          |""".stripMargin
 
     def createTwoIn(row: Int, col: Int): String = {
@@ -60,14 +64,14 @@ class Pattern (m:String, tileType: String, rows: Int, cols: Int,
       def createPath(start: (Int, Int)): String = {
         val (startRow, startCol) = start
         if (m(startRow)(startCol).isEmpty) "" else
-          s"""    <path
-             |      style='stroke:#000000;fill:none'
-             |      d='M ${toX(startCol)},${toY(startRow)} ${toX(col)},${toY(row)}'
-             |      inkscape:connector-type='polyline'
-             |      inkscape:connector-curvature='0'
-             |      inkscape:connection-start='#${toNodeId(startRow, startCol)}'
-             |      inkscape:connection-end='#${toNodeId(row, col)}'
-             |    />
+          s"""  <path
+             |    style='stroke:#000000;fill:none'
+             |    d='M ${toX(startCol)},${toY(startRow)} ${toX(col)},${toY(row)}'
+             |    inkscape:connector-type='polyline'
+             |    inkscape:connector-curvature='0'
+             |    inkscape:connection-start='#${toNodeId(startRow, startCol)}'
+             |    inkscape:connection-end='#${toNodeId(row, col)}'
+             |  />
              |""".stripMargin
       }
       s"""${createPath(srcNodes(0))}
@@ -80,5 +84,8 @@ class Pattern (m:String, tileType: String, rows: Int, cols: Int,
   private def toX(col: Int): Int = col * 10 + offsetX
   private def toY(row: Int): Int = row * 10 + offsetY
   private def toNodeId(row: Int, col: Int): String = s"${groupId}r${row}c$col"
-  private def toColor(row: Int, col: Int): String = f"00${(row % cols + 1) * 32}%2X${(col % rows + 1) * 32}%2X"
+  private def toColor(row: Int, col: Int): String = {
+    val (r,c) = tt.toOriginal(row, col, rows, cols)
+    f"00${c * (256/cols)}%02X${r * (256/rows)}%02X"
+  }
 }
