@@ -17,7 +17,7 @@ case class PatternSheet(patchRows: Int = 3, pageSize: String = "height='297mm' w
     val x = 70 + (n / patchRows) * 360
     val y = 90 + (n % patchRows) * 335
     val lines = Matrix.toMatrixLines(m).get
-    patterns.append(new Pattern(lines.mkString(""), tileType, lines.length, lines(0).length, s"GFP$n", x, y))
+    patterns.append(ConnectedPattern(lines.mkString(""), tileType, lines.length, lines(0).length, s"GFP$n", x, y))
     this
   }
 
