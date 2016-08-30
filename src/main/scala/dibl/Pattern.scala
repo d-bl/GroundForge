@@ -51,7 +51,7 @@ abstract class Pattern (m:String,
     val url = "https://d-bl.github.io/GroundForge/index.html"
     s"""<g>
        |  <text style='font-family:Arial;font-size:11pt'>
-       |   <tspan x='${offsetX + 15}' y='${offsetY - 20}'>$tileType, $hXw, $m</tspan>
+       |   <tspan x='${offsetX + 15}' y='${offsetY - 20}'>$tileType; $hXw; ${lines.mkString(",")}</tspan>
        |   <tspan x='${offsetX + 15}' y='${offsetY - 0}' style='fill:#008;'>
        |    <a xlink:href='$url?${options.mkString("&amp;")}'>pair/thread diagrams</a>
        |   </tspan>
