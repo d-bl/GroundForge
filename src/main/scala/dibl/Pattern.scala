@@ -19,18 +19,17 @@ import dibl.Matrix.{toAbsWithMargins, toRelSrcNodes}
 
 abstract class Pattern (m:String,
                         tileType: String,
-                        rows: Int,
-                        cols: Int,
                         groupId: String = "GFP1",
                         offsetX: Int = 80,
                         offsetY: Int = 120) {
-
-  require(rows * cols == m.length, "invalid matrix dimensions")
   require(offsetX > 0 && offsetY > 0, "invalid patch dimensions")
 
+  protected val lines = Matrix.toMatrixLines(m).get
+  protected val rows = lines.length
+  protected val cols = lines(0).length
   protected val hXw = s"${rows}x$cols"
-  private val tt = TileType(tileType)
 
+  private val tt = TileType(tileType)
   protected def toX(col: Int): Int = col * 10 + offsetX
   protected def toY(row: Int): Int = row * 10 + offsetY
   protected def toNodeId(row: Int, col: Int): String = s"${groupId}r${row}c$col"
@@ -41,20 +40,20 @@ abstract class Pattern (m:String,
 
   def patch(rows: Int = 22, cols: Int = 22): String = (
     for {
-      relative <- toRelSrcNodes(matrix = m, dimensions = hXw)
+      relative <- toRelSrcNodes(matrix = lines.mkString(""), dimensions = hXw)
       checker = tt.toChecker(relative)
       absolute <- toAbsWithMargins(checker, rows, cols)
     } yield absolute
     ).map(createGroup).getOrElse("whoops")
 
   protected def createGroup(m: M): String = {
-    val q = s"matrix=${this.m}&amp;tiles=$tileType"
+    val options = Array(s"matrix=${lines.mkString("%0D")}", s"tiles=$tileType")
     val url = "https://d-bl.github.io/GroundForge/index.html"
     s"""<g>
        |  <text style='font-family:Arial;font-size:11pt'>
        |   <tspan x='${offsetX + 15}' y='${offsetY - 20}'>$tileType, $hXw, $m</tspan>
        |   <tspan x='${offsetX + 15}' y='${offsetY - 0}' style='fill:#008;'>
-       |    <a xlink:href='$url?$q'>pair/thread diagrams</a>
+       |    <a xlink:href='$url?${options.mkString("&amp;")}'>pair/thread diagrams</a>
        |   </tspan>
        |  </text>
        |  ${createDiagram(m)}
@@ -65,14 +64,22 @@ abstract class Pattern (m:String,
   protected def createDiagram(absolute: M): String
 }
 
-case class ConnectedPattern(m: String,
-                            tileType: String,
-                            rows: Int,
-                            cols: Int,
-                            groupId: String = "GFP1",
-                            offsetX: Int = 80,
-                            offsetY: Int = 120)
-  extends Pattern(m, tileType, rows, cols, groupId, offsetX, offsetY) {
+object Pattern {
+
+  def apply (m:String,
+             tileType: String,
+             groupId: String = "GFP1",
+             offsetX: Int = 80,
+             offsetY: Int = 120,
+             sheetType: String = "InkScapeConnectors"
+            ): Pattern = sheetType match {
+    case "InkScapeConnectors" => ConnectedPattern(m, tileType, groupId, offsetX, offsetY)
+    case _ => new ClonedPattern(m, tileType, groupId, offsetX, offsetY)
+  }
+}
+
+private case class ConnectedPattern(m: String, tileType: String, groupId: String = "GFP1", offsetX: Int = 80, offsetY: Int = 120)
+  extends Pattern(m, tileType, groupId, offsetX, offsetY) {
 
   def createDiagram(m: M) = {
     def createNode(row: Int, col: Int) =
@@ -109,9 +116,9 @@ case class ConnectedPattern(m: String,
     m.indices.flatMap(row => m(row).indices.filter(m(row)(_).nonEmpty).flatMap(col => createTwoIn(row, col))).toArray.mkString("")
   }
 }
-class ClonedPattern (m:String, tileType: String, rows: Int, cols: Int,
-               groupId: String = "GFP1", offsetX: Int = 80, offsetY: Int = 120)
-  extends Pattern(m, tileType, rows, cols, groupId, offsetX, offsetY) {
+
+private class ClonedPattern (m:String, tileType: String, groupId: String = "GFP1", offsetX: Int = 80, offsetY: Int = 120)
+  extends Pattern(m, tileType, groupId, offsetX, offsetY) {
 
   val relative = toRelSrcNodes(matrix = m, dimensions = hXw).get // TODO repeating a previous action
   def createDiagram(m: M): String = clones + original(relative)
@@ -159,7 +166,10 @@ class ClonedPattern (m:String, tileType: String, rows: Int, cols: Int,
     val targetNode = s"${offsetX + (targetCol * 10)},${offsetY + (targetRow * 10)}"
     val sourceNode = s"${offsetX + (dCol + targetCol) * 10},${offsetY + (dRow + targetRow) * 10}"
     val pathData = s"M $sourceNode $targetNode"
-    s"\t\t<path d='$pathData'><title>$tag</title></path>\n"
+    s"""    <path d='$pathData'>
+       |      <title>$tag</title>
+       |    </path>
+       |""".stripMargin
   }
 }
 
