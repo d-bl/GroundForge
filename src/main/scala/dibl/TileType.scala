@@ -62,8 +62,8 @@ object Brick extends TileType {
     }
 
   def toOriginal(row: Int, col: Int, rows: Int, cols: Int): (Int, Int) = {
-    val offset = (row / rows % 2) * (cols / 2)
-    val c = (col + offset) % cols
+    val offset = ((row + rows) / rows % 2) * (cols / 2)
+    val c = (col + cols + offset) % cols
     val r = row % rows
     (r,c)
   }

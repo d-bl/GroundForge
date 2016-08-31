@@ -69,7 +69,7 @@ class PatternSpec extends FlatSpec with Matchers {
   }
 
   "minimal" should "succeed" in {
-    val patterns = new PatternSheet(1, "width='340' height='330'")
+    val patterns = PatternSheet(1, "width='340' height='330'")
     patterns.add("586- -4-5 5-21 -5-7","bricks")
     FileUtils.write(new File(s"target/patterns/minimal.svg"), patterns.toSvgDoc())
   }
