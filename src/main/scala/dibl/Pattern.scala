@@ -19,28 +19,28 @@ import dibl.Matrix.{toAbsWithMargins, toRelSrcNodes}
 
 object Pattern {
 
-  def apply (m:String,
+  def apply (tileMatrix:String,
              tileType: String,
              groupId: String = "GFP1",
              offsetX: Int = 80,
              offsetY: Int = 120,
-             sheetType: String = "InkScapeConnectorsXXX"
+             sheetType: String = "Clones"
             ): Pattern = sheetType match {
     case "InkScapeConnectors" =>
-      ConnectedPattern(m, tileType, groupId, offsetX, offsetY)
+      ConnectedPattern(tileMatrix, tileType, groupId, offsetX, offsetY)
     case _ =>
-      ClonedPattern(m, tileType, groupId, offsetX, offsetY)
+      ClonedPattern(tileMatrix, tileType, groupId, offsetX, offsetY)
   }
 }
 
-abstract class Pattern (m:String,
+abstract class Pattern (tileMatrix:String,
                         tileType: String,
                         groupId: String,
                         offsetX: Int,
                         offsetY: Int) {
   require(offsetX > 0 && offsetY > 0, "invalid patch dimensions")
 
-  protected val lines = Matrix.toMatrixLines(m).get
+  protected val lines = Matrix.toMatrixLines(tileMatrix).get
   protected val rows = lines.length
   protected val cols = lines(0).length
   protected val hXw = s"${rows}x$cols"
@@ -50,12 +50,12 @@ abstract class Pattern (m:String,
   protected def toY(row: Int): Int = row * 10 + offsetY
   protected def toNodeId(row: Int, col: Int): String = s"${groupId}r${row}c$col"
   protected def toColor(row: Int, col: Int): String = {
-    val (r,c) = tt.toOriginal(row, col, rows, cols)
+    val (r,c) = tt.toTileIndices(row, col, rows, cols)
     val n = rows * cols + 0f
-    val hue = (((r * cols ) + c) % n) / n
-    hslToRgb(hue, 1f, 0.4f)
-    //f"00${c * (256/cols)}%02X${r * (256/rows)}%02X"
-    // see also http://ridiculousfish.com/blog/posts/colors.html
+    val i = ((r * cols) + c) % n
+    val hue = i / n
+    val lightness = 0.2f + 0.15f * (i %3)
+    hslToRgb(hue, 1f, lightness)
   }
 
   protected def createTag: String = {
@@ -81,8 +81,8 @@ abstract class Pattern (m:String,
   def patch(rows: Int = 22, cols: Int = 22): String
 }
 
-private case class ConnectedPattern(m: String, tileType: String, groupId: String, offsetX: Int, offsetY: Int)
-  extends Pattern(m, tileType, groupId, offsetX, offsetY) {
+private case class ConnectedPattern(tileMatrix: String, tileType: String, groupId: String, offsetX: Int, offsetY: Int)
+  extends Pattern(tileMatrix, tileType, groupId, offsetX, offsetY) {
   val triedM = for {
     relative <- toRelSrcNodes(matrix = lines.mkString(""), dimensions = hXw)
     checker = tt.toChecker(relative)
@@ -123,8 +123,8 @@ private case class ConnectedPattern(m: String, tileType: String, groupId: String
   }
 }
 
-private case class ClonedPattern(m: String, tileType: String, groupId: String, offsetX: Int, offsetY: Int)
-  extends Pattern(m, tileType, groupId, offsetX, offsetY) {
+private case class ClonedPattern(tileMatrix: String, tileType: String, groupId: String, offsetX: Int, offsetY: Int)
+  extends Pattern(tileMatrix, tileType, groupId, offsetX, offsetY) {
 
   val triedM = for {
     relative <- toRelSrcNodes(matrix = lines.mkString(""), dimensions = hXw)
@@ -149,7 +149,7 @@ private case class ClonedPattern(m: String, tileType: String, groupId: String, o
       def createPath(sourceNode: (Int, Int)): String = {
         val (sourceRow, sourceCol) = sourceNode
         (if (m(sourceRow)(sourceCol).isEmpty) {
-          val (r, c) = tt.toOriginal(sourceRow, sourceCol, rows, cols)
+          val (r, c) = tt.toTileIndices(sourceRow, sourceCol, rows, cols)
           createNode(sourceRow, sourceCol)
         } else "") +
         s"""  <path
