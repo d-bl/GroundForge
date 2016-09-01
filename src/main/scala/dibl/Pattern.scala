@@ -17,173 +17,93 @@ package dibl
 
 import dibl.Matrix.{toAbsWithMargins, toRelSrcNodes}
 
-object Pattern {
-
-  def apply (tileMatrix:String,
-             tileType: String,
-             groupId: String = "GFP1",
-             offsetX: Int = 80,
-             offsetY: Int = 120,
-             sheetType: String = "Clones"
-            ): Pattern = sheetType match {
-    case "InkScapeConnectors" =>
-      ConnectedPattern(tileMatrix, tileType, groupId, offsetX, offsetY)
-    case _ =>
-      ClonedPattern(tileMatrix, tileType, groupId, offsetX, offsetY)
-  }
-}
-
-abstract class Pattern (tileMatrix:String,
-                        tileType: String,
-                        groupId: String,
-                        offsetX: Int,
-                        offsetY: Int) {
+case class Pattern(tileMatrix: String,
+                   tileType: String,
+                   groupId: String,
+                   offsetX: Int = 80,
+                   offsetY: Int = 120) {
   require(offsetX > 0 && offsetY > 0, "invalid patch dimensions")
 
-  protected val lines = Matrix.toMatrixLines(tileMatrix).get
-  protected val rows = lines.length
-  protected val cols = lines(0).length
-  protected val hXw = s"${rows}x$cols"
-
-  protected val tt = TileType(tileType)
-  protected def toX(col: Int): Int = col * 10 + offsetX
-  protected def toY(row: Int): Int = row * 10 + offsetY
-  protected def toNodeId(row: Int, col: Int): String = s"${groupId}r${row}c$col"
-  protected def toColor(row: Int, col: Int): String = {
-    val (r,c) = tt.toTileIndices(row, col, rows, cols)
-    val n = rows * cols + 0f
-    val i = ((r * cols) + c) % n
-    val hue = i / n
-    val lightness = 0.2f + 0.15f * (i %3)
-    hslToRgb(hue, 1f, lightness)
-  }
-
-  protected def createTag: String = {
-    val options = Array(s"matrix=${lines.mkString("%0D")}", s"tiles=$tileType")
-    val url = "https://d-bl.github.io/GroundForge/index.html"
-    s"""
-       |  <text style='font-family:Arial;font-size:11pt'>
-       |   <tspan x='${offsetX + 15}' y='${offsetY - 20}'>$tileType; $hXw; ${lines.mkString(",")}</tspan>
-       |   <tspan x='${offsetX + 15}' y='${offsetY - 0}' style='fill:#008;'>
-       |    <a xlink:href='$url?${options.mkString("&amp;")}'>pair/thread diagrams</a>
-       |   </tspan>
-       |  </text>
-       |""".stripMargin
-  }
-
-  def createNode(row: Int, col: Int) =
-    s"""  <path id='${toNodeId(row, col)}'
-       |    d='m ${toX(col) + 2},${toY(row)} a 2,2 0 0 1 -2,2 2,2 0 0 1 -2,-2 2,2 0 0 1 2,-2 2,2 0 0 1 2,2 z'
-       |    style='fill:#${toColor(row, col)};stroke:none'
-       |  />
-       |""".stripMargin
-
-  def patch(rows: Int = 22, cols: Int = 22): String
-}
-
-private case class ConnectedPattern(tileMatrix: String, tileType: String, groupId: String, offsetX: Int, offsetY: Int)
-  extends Pattern(tileMatrix, tileType, groupId, offsetX, offsetY) {
-  val triedM = for {
+  private val tt = TileType(tileType)
+  private val lines = Matrix.toMatrixLines(tileMatrix).get
+  private val tileRows = lines.length
+  private val tileCols = lines(0).length
+  private val hXw = s"${tileRows}x$tileCols"
+  val options = Array(s"matrix=${lines.mkString("%0D")}", s"tiles=$tileType")
+  val url = "https://d-bl.github.io/GroundForge/index.html"
+  private val triedM = for {
     relative <- toRelSrcNodes(matrix = lines.mkString(""), dimensions = hXw)
-    checker = tt.toChecker(relative)
-    absolute <- toAbsWithMargins(checker, rows, cols)
+    absolute <- toAbsWithMargins(relative, tileRows, tileCols)
   } yield absolute
 
-
-  def patch(rows: Int = 22, cols: Int = 22): String =
-    triedM.map(m =>
-       s"""<g>
-          |$createTag
-          |${createDiagram(m)}
-          |</g>
-          |""".stripMargin
-    ).getOrElse("whoops") // TODO improve error message
-
-  def createDiagram(m: M) = {
-    def createTwoIn(row: Int, col: Int): String = {
-      val srcNodes = m(row)(col)
-      def createPath(start: (Int, Int)): String = {
-        val (startRow, startCol) = start
-        if ( m(startRow)(startCol).isEmpty) "" else
-          s"""  <path
-              |    style='stroke:#000000;fill:none'
-              |    d='M ${toX(startCol)},${toY(startRow)} ${toX (col)},${toY(row)}'
-              |    inkscape:connector-type='polyline'
-              |    inkscape:connector-curvature='0'
-              |    inkscape:connection-start='#${toNodeId(startRow, startCol)}'
-              |    inkscape:connection-end='#${toNodeId(row, col)}'
-              |  />
-              |""".stripMargin
-      }
-      s"""${createPath(srcNodes(0))}
-         |${createPath(srcNodes(1))}""".stripMargin
-    }
-    m.indices.flatMap(row => m(row).indices.filter(m(row)(_).nonEmpty).flatMap(col => createNode(row, col))).toArray.mkString("") +
-    m.indices.flatMap(row => m(row).indices.filter(m(row)(_).nonEmpty).flatMap(col => createTwoIn(row, col))).toArray.mkString("")
-  }
-}
-
-private case class ClonedPattern(tileMatrix: String, tileType: String, groupId: String, offsetX: Int, offsetY: Int)
-  extends Pattern(tileMatrix, tileType, groupId, offsetX, offsetY) {
-
-  val triedM = for {
-    relative <- toRelSrcNodes(matrix = lines.mkString(""), dimensions = hXw)
-    absolute <- toAbsWithMargins(relative, this.rows, this.cols)
-  } yield absolute
-
-  def patch(rows: Int = 22, cols: Int = 22): String =
-    triedM.map(m => s"""
-                   |$createTag
-                   |<g id ="$groupId">
-                   |${createDiagram(m)}
-                   |</g>
-                   |<g>
-                   |$clones
-                   |</g>
-                   |""".stripMargin
-    ).getOrElse("whoops") // TODO improve error message
+  def patch : String = triedM.map { m => s"""
+    |  <text style='font-family:Arial;font-size:11pt'>
+    |   <tspan x='${offsetX + 15}' y='${offsetY - 20}'>$tileType; $hXw; ${lines.mkString(",")}</tspan>
+    |   <tspan x='${offsetX + 15}' y='${offsetY - 0}' style='fill:#008;'>
+    |    <a xlink:href='$url?${options.mkString("&amp;")}'>pair/thread diagrams</a>
+    |   </tspan>
+    |  </text>
+    |  <g id ="$groupId">
+    |${createDiagram(m)}
+    |  </g>
+    |  <g>
+    |$clones
+    |  </g>
+    |""".stripMargin
+  }.getOrElse("whoops") // TODO improve error message
 
   def createDiagram(m: M) = {
-    def createTwoIn(targetRow: Int, targetCol: Int): String = {
-      val srcNodes = m(targetRow)(targetCol)
-      def createPath(sourceNode: (Int, Int)): String = {
+    def createTwoIn(targetRow: Int, targetCol: Int): String =
+      m(targetRow)(targetCol).map { sourceNode =>
         val (sourceRow, sourceCol) = sourceNode
-        (if (m(sourceRow)(sourceCol).isEmpty) {
-          val (r, c) = tt.toTileIndices(sourceRow, sourceCol, rows, cols)
-          createNode(sourceRow, sourceCol)
-        } else "") +
-        s"""  <path
-            |    style='stroke:#000000;fill:none'
-            |    d='M ${toX(sourceCol)},${toY(sourceRow)} ${toX (targetCol)},${toY(targetRow)}'
-            |  />
-            |""".stripMargin
-      }
-      s"""${createPath(srcNodes(0))}
-         |${createPath(srcNodes(1))}""".stripMargin
-    }
+        s"""    <path
+           |      style='stroke:#000;fill:none'
+           |      d='M ${toX(sourceCol)},${toY(sourceRow)} ${toX (targetCol)},${toY(targetRow)}'
+           |    />
+           |""".stripMargin + (
+          if (m(sourceRow)(sourceCol).nonEmpty) ""
+          else createNode(sourceRow, sourceCol))
+      }.mkString("")
     m.indices.flatMap(row => m(row).indices.filter(m(row)(_).nonEmpty).flatMap(col => createTwoIn(row, col))).toArray.mkString("") +
     m.indices.flatMap(row => m(row).indices.filter(m(row)(_).nonEmpty).flatMap(col => createNode(row, col))).toArray.mkString("")
   }
 
+  private def toX(col: Int): Int = col * 10 + offsetX
+  private def toY(row: Int): Int = row * 10 + offsetY
+  private def toColor(row: Int, col: Int): String = {
+    val (r,c) = tt.toTileIndices(row, col, tileRows, tileCols)
+    val n = tileRows * tileCols + 0f
+    val i = ((r * tileCols) + c) % n
+    val hue = i / n
+    val brightness = 0.2f + 0.15f * (i %3)
+    hslToRgb(hue, 1f, brightness)  }
+
+  def createNode(row: Int, col: Int) =
+     s"""    <path
+        |      d='m ${toX(col) + 2},${toY(row)} a 2,2 0 0 1 -2,2 2,2 0 0 1 -2,-2 2,2 0 0 1 2,-2 2,2 0 0 1 2,2 z'
+        |      style='fill:#${toColor(row, col)};stroke:none'
+        |    />
+        |""".stripMargin
+
   private def clones: String = {
-    val brickOffset = if (tileType == "bricks") cols * 5 else 0
+    val brickOffset = if (tileType == "bricks") tileCols * 5 else 0
     def cloneRows(row1: Int): String = {
-      val row2 = row1 + rows * 10 // TODO refactor into TileType
-      List.range(start = -(if (tileType == "bricks")brickOffset else 10*cols), end = 200, step = cols * 10).
+      val row2 = row1 + tileRows * 10 // TODO refactor into TileType
+      List.range(start = -(if (tileType == "bricks")brickOffset else 10*tileCols), end = 200, step = tileCols * 10).
         map(w => {
           clone(w, row1) + clone(w - brickOffset, row2)
         }).mkString("")
     }
-    List.range(start = -rows * 10, end = 200, step = rows * 20)
+    List.range(start = -tileRows * 10, end = 200, step = tileRows * 20)
       .map(h => cloneRows(h)).mkString("")
   }
 
   private def clone(i: Int, j: Int): String =
-    s"""  <use
-       |    transform='translate(${i+100},${j+40})'
-       |    xlink:href='#$groupId'
-       |    style='stroke:#000;fill:none'
-       |  />
+    s"""    <use
+       |      transform='translate(${i+100},${j+40})'
+       |      xlink:href='#$groupId'
+       |      style='stroke:#000;fill:none'
+       |    />
        |""".stripMargin
 }
 

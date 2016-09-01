@@ -28,5 +28,5 @@ case class PatternSheet(patchRows: Int = 3, pageSize: String = "height='297mm' w
        |</svg>
        |""".stripMargin
   def toList: List[Pattern] = patterns.toList
-  def toSvgGroups: String = patterns.map(_.patch()).mkString("")
+  def toSvgGroups: String = patterns.map(_.patch).mkString("")
 }
