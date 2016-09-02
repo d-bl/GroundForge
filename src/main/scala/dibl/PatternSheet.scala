@@ -9,7 +9,7 @@ import scala.scalajs.js.annotation.JSExport
 @JSExport
 case class PatternSheet(patchRows: Int = 3, pageSize: String = "height='297mm' width='210mm'") {
   private val nameSpaces = "xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape'"
-  private val patterns = new ListBuffer[Pattern]
+  private val patterns = new ListBuffer[String]
 
   @JSExport
   def add(m: String, tileType: String): PatternSheet = {
@@ -27,6 +27,6 @@ case class PatternSheet(patchRows: Int = 3, pageSize: String = "height='297mm' w
        |$toSvgGroups
        |</svg>
        |""".stripMargin
-  def toList: List[Pattern] = patterns.toList
-  def toSvgGroups: String = patterns.map(_.patch).mkString("")
+  def toList: List[String] = patterns.toList
+  def toSvgGroups: String = patterns.mkString("")
 }
