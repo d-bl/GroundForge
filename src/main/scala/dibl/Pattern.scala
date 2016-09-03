@@ -17,56 +17,46 @@ package dibl
 
 import dibl.Matrix.{countLinks, toAbsWithMargins, toRelSrcNodes}
 
+import scala.collection.immutable.IndexedSeq
+import scala.util.Try
+
 object Pattern {
+
+  def failureMessage(tried: Try[_]): String =
+    s"<text><tspan x='2' y='14'>${tried.failed.get.getMessage}</tspan></text>"
+
   def apply(tileMatrix: String,
             tileType: String,
             groupId: String = "GF0",
             offsetX: Int = 80,
             offsetY: Int = 120
            ): String = {
-
+    val lines = {
+      val triedLines = Matrix.toMatrixLines(tileMatrix)
+      if (triedLines.isFailure) return failureMessage(triedLines)
+      triedLines.get
+    }
     val tt = TileType(tileType)
-    val lines = Matrix.toMatrixLines(tileMatrix).get // TODO fix exception
     val tileRows = lines.length
     val tileCols = lines(0).length
     val hXw = s"${tileRows}x$tileCols"
-    val options = Array(s"matrix=${lines.mkString("%0D")}", s"tiles=$tileType")
-    val url = "https://d-bl.github.io/GroundForge/index.html"
-
-    def createPatch(m: M) =
-      s"""
-      |  <text style='font-family:Arial;font-size:11pt'>
-      |   <tspan x='${offsetX + 15}' y='${offsetY - 20}'>$tileType; $hXw; ${lines.mkString(",")}</tspan>
-      |   <tspan x='${offsetX + 15}' y='${offsetY - 0}' style='fill:#008;'>
-      |    <a xlink:href='$url?${options.mkString("&amp;")}'>pair/thread diagrams</a>
-      |   </tspan>
-      |  </text>
-      |  <g id ="$groupId">
-      |${createDiagram(m)}
-      |  </g>
-      |  <g>
-      |$clones
-      |  </g>
-      |""".stripMargin
+    def toX(col: Int): Int = col * 10 + offsetX
+    def toY(row: Int): Int = row * 10 + offsetY
+    def stripMargins(m: M) = countLinks(m).slice(2, 2 + tileRows).map(_.slice(2, 2 + tileCols))
 
     def createDiagram(m: M) = {
 
       val needColor: Seq[(Int, Int)] = {
         val c = stripMargins(m)
-        //println(c.toList.toArray.deep.mkString("\n") + "\n")
         c.indices.flatMap(row => c(row).indices.map(col => (row, col, c(row)(col) % 4 > 0)))
           .filter(t => t._3).map(t => (t._1, t._2))
       }
-      //println(needColor.mkString(" ") + "\n------------- " + needColor.indexOf((2,3)))
 
-      def toX(col: Int): Int = col * 10 + offsetX
-      def toY(row: Int): Int = row * 10 + offsetY
       def toColor(row: Int, col: Int): String = {
-        val cell@(r,c) = tt.toTileIndices(row, col, tileRows, tileCols)
+        val cell = tt.toTileIndices(row, col, tileRows, tileCols)
         val i = needColor.indexOf(cell) + 0f
         if (i < 0) "999999" else {
           val hue = i / needColor.size
-          //println(s"hue=$hue i=$i row=$row,$r col=$col,$c i=$i n=${ needColor.size}")
           val brightness = 0.2f + 0.15f * (i % 3)
           hslToRgb(hue, 1f, brightness)
         }
@@ -84,14 +74,23 @@ object Pattern {
           val (sourceRow, sourceCol) = sourceNode
           s"""    <path
              |      style='stroke:#000;fill:none'
-             |      d='M ${toX(sourceCol)},${toY(sourceRow)} ${toX (targetCol)},${toY(targetRow)}'
+             |      d='M ${toX(sourceCol)},${toY(sourceRow)} ${toX(targetCol)},${toY(targetRow)}'
              |    />
              |""".stripMargin + (
             if (m(sourceRow)(sourceCol).nonEmpty) ""
             else createNode(sourceRow, sourceCol))
         }.mkString("")
-      m.indices.flatMap(row => m(row).indices.filter(m(row)(_).nonEmpty).flatMap(col => createTwoIn(row, col))).toArray.mkString("") +
-      m.indices.flatMap(row => m(row).indices.filter(m(row)(_).nonEmpty).flatMap(col => createNode(row, col))).toArray.mkString("")
+
+      def forAllCells(createSvgObject: (Int, Int) => String): IndexedSeq[Char] =
+        m.indices.
+          flatMap(row => m(row).indices.
+            filter(col => m(row)(col).nonEmpty).
+            flatMap(col => createSvgObject(row, col))
+          )
+
+      (forAllCells(createTwoIn) ++
+        forAllCells(createNode)
+        ).toArray.mkString("")
     }
 
     def clones: String = {
@@ -115,7 +114,23 @@ object Pattern {
          |    />
          |""".stripMargin
 
-    def stripMargins(m: M) = countLinks(m).slice(2, 2 + tileRows).map(_.slice(2, 2 + tileCols))
+    val options = Array(s"matrix=${lines.mkString("%0D")}", s"tiles=$tileType")
+    val url = "https://d-bl.github.io/GroundForge/index.html"
+    def createPatch(m: M) =
+      s"""
+         |  <text style='font-family:Arial;font-size:11pt'>
+         |   <tspan x='${offsetX + 15}' y='${offsetY - 20}'>$tileType; $hXw; ${lines.mkString(",")}</tspan>
+         |   <tspan x='${offsetX + 15}' y='${offsetY - 0}' style='fill:#008;'>
+         |    <a xlink:href='$url?${options.mkString("&amp;")}'>pair/thread diagrams</a>
+         |   </tspan>
+         |  </text>
+         |  <g id ="$groupId">
+         |${createDiagram(m)}
+         |  </g>
+         |  <g>
+         |$clones
+         |  </g>
+         |""".stripMargin
 
     val triedSVG = for {
       relative <- toRelSrcNodes(matrix = lines.mkString(""), dimensions = hXw)
@@ -123,8 +138,6 @@ object Pattern {
       svg = createPatch(m)
     } yield svg
 
-    triedSVG.getOrElse(s"<text><tspan>${triedSVG.failed.get.getMessage}</tspan></text>")
+    triedSVG.getOrElse(failureMessage(triedSVG))
   }
 }
-
-

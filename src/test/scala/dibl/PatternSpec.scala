@@ -33,11 +33,16 @@ class PatternSpec extends FlatSpec with Matchers {
 
   "pattern sheet" should "succeed" in {
     val patterns = new PatternSheet
-    patterns.add("586- -4-5 5-21 -5-7" ,"bricks")
     patterns.add("586- -4-5 5-21 -5-7", "bricks")
     patterns.add("4831 -117 5-7- 86-5", "checker")
     patterns.add("4832 2483", "bricks")
     patterns.add("588- -4-5 6-58 -214", "checker")
+    patterns.add("-4-5 6-58 -214 588-", "checker")
+    patterns.add("5831 -4-7" ,"bricks")
+    //            -5---5-5 5-O-E-5-
+    patterns.add("-5---5-5 5-O-E-5-", "bricks") // double length horizontal lines
+    patterns.add("5---5-5- -O-E-5-5", "bricks") // double length horizontal lines
+    patterns.add("586- -4-5 5-21 -5-777", "checker") // reports an error
     FileUtils.write(new File(s"target/patterns/pattern-sheet.svg"), patterns.toSvgDoc())
   }
 
