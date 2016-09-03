@@ -46,8 +46,12 @@ object Checker extends TileType {
   def toChecker(m: M): M = m
 
   def toTileIndices(row: Int, col: Int, rows: Int, cols: Int): (Int, Int) = {
-    val c = col % cols
-    val r = row % rows
+    // correct for the margin but keep positive
+    val rowI = row - 2 + rows
+    val colI = col - 2 + cols
+
+    val c = colI % cols
+    val r = rowI % rows
     (r,c)
   }
 }
@@ -62,9 +66,13 @@ object Brick extends TileType {
     }
 
   def toTileIndices(row: Int, col: Int, rows: Int, cols: Int): (Int, Int) = {
-    val offset = ((row + rows) / rows % 2) * (cols / 2)
-    val c = (col + cols + offset) % cols
-    val r = row % rows
+    // correct for the margin but keep positive
+    val rowI = row - 2 + rows
+    val colI = col - 2 + cols
+
+    val offset = ((rowI + rows) / rows % 2) * (cols / 2)
+    val c = (colI + cols + offset) % cols
+    val r = rowI % rows
     (r,c)
   }
 
