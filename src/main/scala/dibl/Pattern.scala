@@ -109,7 +109,7 @@ object Pattern {
 
     def clone(i: Int, j: Int): String =
       s"""    <use
-         |      transform='translate(${i+100},${j+40})'
+         |      transform='translate(${i+95},${j+45})'
          |      xlink:href='#$groupId'
          |      style='stroke:#000;fill:none'
          |    />
@@ -120,8 +120,8 @@ object Pattern {
     def createPatch(relative: M, absolute: M) =
       s"""
          |  <text style='font-family:Arial;font-size:11pt'>
-         |   <tspan x='${offsetX + 15}' y='${offsetY - 20}'>$tileType; ${tileRows}x$tileCols; ${lines.mkString(",")}</tspan>
-         |   <tspan x='${offsetX + 15}' y='${offsetY - 0}' style='fill:#008;'>
+         |   <tspan x='${offsetX - 15}' y='${offsetY - 50}'>$tileType; ${tileRows}x$tileCols; ${lines.mkString(",")}</tspan>
+         |   <tspan x='${offsetX - 15}' y='${offsetY - 30}' style='fill:#008;'>
          |    <a xlink:href='$url?${options.mkString("&amp;")}'>pair/thread diagrams</a>
          |   </tspan>
          |  </text>
