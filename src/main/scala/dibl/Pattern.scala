@@ -39,17 +39,16 @@ object Pattern {
     val tt = TileType(tileType)
     val tileRows = lines.length
     val tileCols = lines(0).length
-    val hXw = s"${tileRows}x$tileCols"
     def toX(col: Int): Int = col * 10 + offsetX
     def toY(row: Int): Int = row * 10 + offsetY
     def stripMargins(m: M) = countLinks(m).slice(2, 2 + tileRows).map(_.slice(2, 2 + tileCols))
 
-    def createDiagram(m: M) = {
+    def createDiagram(relative: M, absolute: M) = {
 
       val needColor: Seq[(Int, Int)] = {
-        val c = stripMargins(m)
-        c.indices.flatMap(row => c(row).indices.map(col => (row, col, c(row)(col) % 4 > 0)))
-          .filter(t => t._3).map(t => (t._1, t._2))
+        val m = stripMargins(absolute)
+        m.indices.flatMap(row => m(row).indices.map(col => (row, col))).
+          filter(t => m(t._1)(t._2) % 4 > 0)
       }
 
       def toColor(row: Int, col: Int): String = {
@@ -70,21 +69,23 @@ object Pattern {
            |""".stripMargin
 
       def createTwoIn(targetRow: Int, targetCol: Int): String =
-        m(targetRow)(targetCol).map { sourceNode =>
-          val (sourceRow, sourceCol) = sourceNode
+        relative(targetRow)(targetCol).map { sourceNode =>
+          val (r, c) = sourceNode
+          val sourceRow = r + targetRow
+          val sourceCol = c + targetCol
           s"""    <path
              |      style='stroke:#000;fill:none'
              |      d='M ${toX(sourceCol)},${toY(sourceRow)} ${toX(targetCol)},${toY(targetRow)}'
              |    />
              |""".stripMargin + (
-            if (m(sourceRow)(sourceCol).nonEmpty) ""
+            if (absolute(sourceRow+2)(sourceCol+2).nonEmpty) ""
             else createNode(sourceRow, sourceCol))
         }.mkString("")
 
       def forAllCells(createSvgObject: (Int, Int) => String): IndexedSeq[Char] =
-        m.indices.
-          flatMap(row => m(row).indices.
-            filter(col => m(row)(col).nonEmpty).
+        relative.indices.
+          flatMap(row => relative(row).indices.
+            filter(col => relative(row)(col).nonEmpty).
             flatMap(col => createSvgObject(row, col))
           )
 
@@ -116,16 +117,16 @@ object Pattern {
 
     val options = Array(s"matrix=${lines.mkString("%0D")}", s"tiles=$tileType")
     val url = "https://d-bl.github.io/GroundForge/index.html"
-    def createPatch(m: M) =
+    def createPatch(relative: M, absolute: M) =
       s"""
          |  <text style='font-family:Arial;font-size:11pt'>
-         |   <tspan x='${offsetX + 15}' y='${offsetY - 20}'>$tileType; $hXw; ${lines.mkString(",")}</tspan>
+         |   <tspan x='${offsetX + 15}' y='${offsetY - 20}'>$tileType; ${tileRows}x$tileCols; ${lines.mkString(",")}</tspan>
          |   <tspan x='${offsetX + 15}' y='${offsetY - 0}' style='fill:#008;'>
          |    <a xlink:href='$url?${options.mkString("&amp;")}'>pair/thread diagrams</a>
          |   </tspan>
          |  </text>
          |  <g id ="$groupId">
-         |${createDiagram(m)}
+         |${createDiagram(relative, absolute)}
          |  </g>
          |  <g>
          |$clones
@@ -133,10 +134,9 @@ object Pattern {
          |""".stripMargin
 
     val triedSVG = for {
-      relative <- toRelSrcNodes(matrix = lines.mkString(""), dimensions = hXw)
-      m <- toAbsWithMargins(relative, tileRows, tileCols)
-      svg = createPatch(m)
-    } yield svg
+      relative <- toRelSrcNodes(tileMatrix)
+      absolute <- toAbsWithMargins(relative, tileRows, tileCols)
+    } yield createPatch(relative,absolute)
 
     triedSVG.getOrElse(failureMessage(triedSVG))
   }
