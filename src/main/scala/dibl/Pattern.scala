@@ -15,7 +15,7 @@
 */
 package dibl
 
-import dibl.Matrix.{countLinks, toAbsWithMargins, toMatrixLines, toRelSrcNodes}
+import dibl.Matrix.{toAbsWithMargins, toMatrixLines, toRelSrcNodes}
 
 import scala.collection.immutable.IndexedSeq
 import scala.util.Try
@@ -62,24 +62,40 @@ private class Pattern (tileMatrix: String,
                        relative: M,
                        absolute: M
                       ){
+
   val tt = TileType(tileType)
   val tileRows = lines.length
   val tileCols = lines(0).length
   def toX(col: Int): Int = col * 10 + offsetX
   def toY(row: Int): Int = row * 10 + offsetY
-  def stripMargins(m: M) = countLinks(m).slice(2, 2 + tileRows).map(_.slice(2, 2 + tileCols))
 
   val needColor: Seq[(Int, Int)] = {
-    val m = stripMargins(absolute)
-    m.indices.flatMap(row => m(row).indices.map(col => (row, col))).
-      filter(t => m(t._1)(t._2) % 4 > 0)
+
+    val linkCount = Array.fill(tileRows, tileCols)(0)
+    relative.indices.foreach(row =>
+      relative(row).indices.foreach(col =>
+        relative(row)(col).foreach { srcNode =>
+          val (srcRow, srcCol) = srcNode
+          val r = row + srcRow
+          val c = col + srcCol
+          if (r >= 0 && r < tileRows && c >= 0 && c < tileCols)
+            linkCount(r)(c) += 1
+          linkCount(row)(col) += 1
+        }
+      )
+    )
+    linkCount.indices.flatMap(row => linkCount(row).indices.map(col => (row, col))).
+      filter(t => {
+        val (r,c) = t
+        linkCount(r)(c) % 4 > 0
+      })
   }
 
   def toColor(row: Int, col: Int): String = {
-    val cell = tt.toTileIndices(row, col, tileRows, tileCols)
-    val i = needColor.indexOf(cell) + 0f
+    val cell = tt.toAbsTileIndices(row, col, tileRows, tileCols)
+    val i = needColor.indexOf(cell)
     if (i < 0) "999999" else {
-      val hue = i / needColor.size
+      val hue = (i + 0f) / needColor.size
       val brightness = 0.2f + 0.15f * (i % 3)
       hslToRgb(hue, 1f, brightness)
     }
@@ -97,20 +113,20 @@ private class Pattern (tileMatrix: String,
       val (r, c) = sourceNode
       val sourceRow = r + targetRow
       val sourceCol = c + targetCol
+      val needSourceNode = sourceRow < 0 || sourceCol < 0 || sourceRow >= tileRows || sourceCol >= tileCols
       s"""    <path
           |      style='stroke:#000;fill:none'
           |      d='M ${toX(sourceCol)},${toY(sourceRow)} ${toX(targetCol)},${toY(targetRow)}'
           |    />
-          |""".stripMargin + (
-        if (absolute(sourceRow+2)(sourceCol+2).nonEmpty) ""
-        else createNode(sourceRow, sourceCol))
+          |""".stripMargin +
+        (if (needSourceNode) createNode(sourceRow, sourceCol) else "")
     }.mkString("")
 
-  def forAllCells(createSvgObject: (Int, Int) => String): IndexedSeq[Char] =
+  def flatMapAllCells(func: (Int, Int) => String): IndexedSeq[Char] =
     relative.indices.
       flatMap(row => relative(row).indices.
         filter(col => relative(row)(col).nonEmpty).
-        flatMap(col => createSvgObject(row, col))
+        flatMap(col => func(row, col))
       )
 
   def clones: String = {
@@ -145,7 +161,7 @@ private class Pattern (tileMatrix: String,
        |   </tspan>
        |  </text>
        |  <g id ="$groupId">
-       |${(forAllCells(createTwoIn) ++ forAllCells(createNode)).toArray.mkString("")}
+       |${(flatMapAllCells(createTwoIn) ++ flatMapAllCells(createNode)).toArray.mkString("")}
        |  </g>
        |  <g>
        |$clones
