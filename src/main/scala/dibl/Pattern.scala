@@ -15,7 +15,7 @@
 */
 package dibl
 
-import dibl.Matrix.{toAbsWithMargins, toMatrixLines, toRelSrcNodes}
+import dibl.Matrix.{toMatrixLines, toRelSrcNodes}
 
 import scala.collection.immutable.IndexedSeq
 import scala.util.Try
@@ -35,9 +35,6 @@ object Pattern {
     val triedSVG = for {
       lines <- toMatrixLines(tileMatrix)
       relative <- toRelSrcNodes(tileMatrix)
-      rows = lines.length
-      cols = lines(0).length
-      absolute <- toAbsWithMargins(relative, rows, cols)
     } yield new Pattern(
       tileMatrix,
       tileType,
@@ -45,8 +42,7 @@ object Pattern {
       offsetX,
       offsetY,
       lines,
-      relative,
-      absolute
+      relative
     ).createPatch
 
     triedSVG.getOrElse(failureMessage(triedSVG))
@@ -59,8 +55,7 @@ private class Pattern (tileMatrix: String,
                        offsetX: Int = 80,
                        offsetY: Int = 120,
                        lines: Array[String],
-                       relative: M,
-                       absolute: M
+                       relative: M
                       ){
 
   val tt = TileType(tileType)
@@ -130,9 +125,9 @@ private class Pattern (tileMatrix: String,
       )
 
   def clones: String = {
-    val brickOffset = if (tileType == "bricks") tileCols * 5 else 0
+    val brickOffset = if (tileType == "bricks") tileCols * 5 else 0 // TODO refactor into TileType
     def cloneRows(row1: Int): String = {
-      val row2 = row1 + tileRows * 10 // TODO refactor into TileType
+      val row2 = row1 + tileRows * 10
       List.range(start = -(if (tileType == "bricks")brickOffset else 10*tileCols), end = 200, step = tileCols * 10).
         map(w => {
           clone(w, row1) + clone(w - brickOffset, row2)

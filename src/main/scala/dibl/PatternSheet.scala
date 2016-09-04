@@ -7,15 +7,15 @@ import scala.scalajs.js.annotation.JSExport
   * @param pageSize default A4, in fact attributes for the SVG root element
   */
 @JSExport
-case class PatternSheet(patchRows: Int = 3, pageSize: String = "height='297mm' width='210mm'") {
+case class PatternSheet(patchRows: Int = 2, pageSize: String = "height='210mm' width='297mm'") {
   private val nameSpaces = "xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape'"
   private val patterns = new ListBuffer[String]
 
   @JSExport
   def add(m: String, tileType: String): PatternSheet = {
     val n = patterns.size
-    val x = 70 + (n / patchRows) * 360
-    val y = 90 + (n % patchRows) * 335
+    val x = 25 + (n / patchRows) * 360
+    val y = 95 + (n % patchRows) * 335
     patterns.append(Pattern(m, tileType, s"GFP$n", x, y))
     this
   }
