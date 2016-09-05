@@ -7,23 +7,26 @@ import scala.scalajs.js.annotation.JSExport
   * @param pageSize default A4, in fact attributes for the SVG root element
   */
 @JSExport
-case class PatternSheet(patchRows: Int = 3, pageSize: String = "height='297mm' width='210mm'") {
+case class PatternSheet(patchRows: Int = 2, pageSize: String = "height='210mm' width='297mm'") {
   private val nameSpaces = "xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape'"
-  private val patterns = new ListBuffer[Pattern]
+  private val patterns = new ListBuffer[String]
 
   @JSExport
   def add(m: String, tileType: String): PatternSheet = {
     val n = patterns.size
-    val x = 70 + (n / patchRows) * 360
-    val y = 90 + (n % patchRows) * 335
-    val lines = Matrix.toMatrixLines(m).get
-    patterns.append(new Pattern(lines.mkString(""), tileType, lines.length, lines(0).length, s"GFP$n", x, y))
+    val x = 25 + (n / patchRows) * 360
+    val y = 95 + (n % patchRows) * 335
+    patterns.append(Pattern(m, tileType, s"GFP$n", x, y))
     this
   }
 
   //noinspection AccessorLikeMethodIsEmptyParen
   @JSExport // parentheses are required for JavaScript
-  def toSvgDoc():String = s"${s"<svg version='1.1' id='svg2' $pageSize $nameSpaces>"}\n$toSvgGroups\n</svg>"
-  def toList: List[Pattern] = patterns.toList
-  def toSvgGroups: String = patterns.map(_.patch()).mkString("")
+  def toSvgDoc():String = s"""
+       |<svg version='1.1' id='svg2' $pageSize $nameSpaces>
+       |$toSvgGroups
+       |</svg>
+       |""".stripMargin
+  def toList: List[String] = patterns.toList
+  def toSvgGroups: String = patterns.mkString("")
 }

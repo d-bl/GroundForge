@@ -15,77 +15,151 @@
 */
 package dibl
 
-import dibl.Matrix.{toAbsWithMargins, toRelSrcNodes}
+import dibl.Matrix.{toMatrixLines, toRelSrcNodes}
 
-class Pattern (m:String, tileType: String, rows: Int, cols: Int,
-               groupId: String = "GFP1", offsetX: Int = 80, offsetY: Int = 120) {
+import scala.collection.immutable.IndexedSeq
+import scala.util.Try
 
-  require(rows * cols == m.length, "invalid matrix dimensions")
+object Pattern {
 
-  private val hXw = s"${rows}x$cols"
-  private val tt = TileType(tileType)
+  def failureMessage(tried: Try[_]): String =
+    s"<text><tspan x='2' y='14'>${tried.failed.get.getMessage}</tspan></text>"
 
-  def patch(rows: Int = 22, cols: Int = 22): String = {
+  def apply(tileMatrix: String,
+            tileType: String,
+            groupId: String = "GF0",
+            offsetX: Int = 80,
+            offsetY: Int = 120
+           ): String = {
 
-    require(offsetX > 0 && offsetY > 0, "invalid patch dimensions")
+    val triedSVG = for {
+      lines <- toMatrixLines(tileMatrix)
+      relative <- toRelSrcNodes(tileMatrix)
+    } yield new Pattern(
+      tileMatrix,
+      tileType,
+      groupId,
+      offsetX,
+      offsetY,
+      lines,
+      relative
+    ).createPatch
 
-    (for {
-      relative <- toRelSrcNodes(matrix = m, dimensions = hXw)
-      checker = tt.toChecker(relative)
-      absolute <- toAbsWithMargins(checker, rows, cols)
-      q = "matrix=" + m.grouped(this.cols).toArray.mkString("%0D") + s"&amp;tiles=$tileType"
-      url = "https://d-bl.github.io/GroundForge/index.html"
-    } yield
-      s"""<g>
-         |  <text style='font-family:Arial;font-size:11pt'>
-         |   <tspan x='${offsetX + 15}' y='${offsetY - 20}'>$tileType, $hXw, $m</tspan>
-         |   <tspan x='${offsetX + 15}' y='${offsetY -  0}' style='fill:#008;'>
-         |    <a xlink:href='$url?$q'>pair/thread diagrams</a>
-         |   </tspan>
-         |  </text>
-         |  ${createDiagram(absolute)}
-         |</g>
-         |""".stripMargin
-    ).get}
+    triedSVG.getOrElse(failureMessage(triedSVG))
+  }
+}
 
-  def createDiagram(m: M): String = {
-    def createNode(row: Int, col: Int) =
-      s"""  <circle
-         |    style='fill:#${toColor(row, col)};stroke:none'
-         |    id='${toNodeId(row, col)}'
-         |    cx='${toX(col)}'
-         |    cy='${toY(row)}'
-         |    r='2'
-         |  />
-         |""".stripMargin
+private class Pattern (tileMatrix: String,
+                       tileType: String,
+                       groupId: String = "GF0",
+                       offsetX: Int = 80,
+                       offsetY: Int = 120,
+                       lines: Array[String],
+                       relative: M
+                      ){
 
-    def createTwoIn(row: Int, col: Int): String = {
-      val srcNodes = m(row)(col)
-      def createPath(start: (Int, Int)): String = {
-        val (startRow, startCol) = start
-        if (m(startRow)(startCol).isEmpty) "" else
-          s"""  <path
-             |    style='stroke:#000000;fill:none'
-             |    d='M ${toX(startCol)},${toY(startRow)} ${toX(col)},${toY(row)}'
-             |    inkscape:connector-type='polyline'
-             |    inkscape:connector-curvature='0'
-             |    inkscape:connection-start='#${toNodeId(startRow, startCol)}'
-             |    inkscape:connection-end='#${toNodeId(row, col)}'
-             |  />
-             |""".stripMargin
-      }
-      s"""${createPath(srcNodes(0))}
-         |${createPath(srcNodes(1))}""".stripMargin
+  val tt = TileType(tileType)
+  val tileRows = lines.length
+  val tileCols = lines(0).length
+  def toX(col: Int): Int = col * 10 + offsetX
+  def toY(row: Int): Int = row * 10 + offsetY
+
+  val needColor: Seq[(Int, Int)] = {
+
+    val linkCount = Array.fill(tileRows, tileCols)(0)
+    relative.indices.foreach(row =>
+      relative(row).indices.foreach(col =>
+        relative(row)(col).foreach { srcNode =>
+          val (srcRow, srcCol) = srcNode
+          val r = row + srcRow
+          val c = col + srcCol
+          if (r >= 0 && r < tileRows && c >= 0 && c < tileCols)
+            linkCount(r)(c) += 1
+          linkCount(row)(col) += 1
+        }
+      )
+    )
+    linkCount.indices.flatMap(row => linkCount(row).indices.map(col => (row, col))).
+      filter(t => {
+        val (r,c) = t
+        linkCount(r)(c) % 4 > 0
+      })
+  }
+
+  def toColor(row: Int, col: Int): String = {
+    val cell = tt.toAbsTileIndices(row, col, tileRows, tileCols)
+    val i = needColor.indexOf(cell)
+    if (i < 0) "999999" else {
+      val hue = (i + 0f) / needColor.size
+      val brightness = 0.2f + 0.15f * (i % 3)
+      hslToRgb(hue, 1f, brightness)
     }
-    m.indices.flatMap(row => m(row).indices.filter(m(row)(_).nonEmpty).flatMap(col => createNode(row, col))).toArray.mkString("") +
-    m.indices.flatMap(row => m(row).indices.filter(m(row)(_).nonEmpty).flatMap(col => createTwoIn(row, col))).toArray.mkString("")
   }
 
-  private def toX(col: Int): Int = col * 10 + offsetX
-  private def toY(row: Int): Int = row * 10 + offsetY
-  private def toNodeId(row: Int, col: Int): String = s"${groupId}r${row}c$col"
-  private def toColor(row: Int, col: Int): String = {
-    val (r,c) = tt.toOriginal(row, col, rows, cols)
-    f"00${c * (256/cols)}%02X${r * (256/rows)}%02X"
+  def createNode(row: Int, col: Int) =
+    s"""    <path
+        |      d='m ${toX(col) + 2},${toY(row)} a 2,2 0 0 1 -2,2 2,2 0 0 1 -2,-2 2,2 0 0 1 2,-2 2,2 0 0 1 2,2 z'
+        |      style='fill:#${toColor(row, col)};fill-opacity:0.85;stroke:none'
+        |    />
+        |""".stripMargin
+
+  def createTwoIn(targetRow: Int, targetCol: Int): String =
+    relative(targetRow)(targetCol).map { sourceNode =>
+      val (r, c) = sourceNode
+      val sourceRow = r + targetRow
+      val sourceCol = c + targetCol
+      val needSourceNode = sourceRow < 0 || sourceCol < 0 || sourceRow >= tileRows || sourceCol >= tileCols
+      s"""    <path
+          |      style='stroke:#000;fill:none'
+          |      d='M ${toX(sourceCol)},${toY(sourceRow)} ${toX(targetCol)},${toY(targetRow)}'
+          |    />
+          |""".stripMargin +
+        (if (needSourceNode) createNode(sourceRow, sourceCol) else "")
+    }.mkString("")
+
+  def flatMapAllCells(func: (Int, Int) => String): IndexedSeq[Char] =
+    relative.indices.
+      flatMap(row => relative(row).indices.
+        filter(col => relative(row)(col).nonEmpty).
+        flatMap(col => func(row, col))
+      )
+
+  def clones: String = {
+    val brickOffset = if (tileType == "bricks") tileCols * 5 else 0 // TODO refactor into TileType
+    def cloneRows(row1: Int): String = {
+      val row2 = row1 + tileRows * 10
+      List.range(start = -(if (tileType == "bricks")brickOffset else 10*tileCols), end = 200, step = tileCols * 10).
+        map(w => {
+          clone(w, row1) + clone(w - brickOffset, row2)
+        }).mkString("")
+    }
+    List.range(start = -tileRows * 10, end = 200, step = tileRows * 20)
+      .map(h => cloneRows(h)).mkString("")
   }
+
+  def clone(i: Int, j: Int): String =
+    s"""    <use
+        |      transform='translate(${i+95},${j+45})'
+        |      xlink:href='#$groupId'
+        |      style='stroke:#000;fill:none'
+        |    />
+        |""".stripMargin
+
+  val options = Array(s"matrix=${lines.mkString("%0D")}", s"tiles=$tileType")
+  val url = "https://d-bl.github.io/GroundForge/index.html"
+  def createPatch =
+    s"""
+       |  <text style='font-family:Arial;font-size:11pt'>
+       |   <tspan x='${offsetX - 15}' y='${offsetY - 50}'>$tileType; ${tileRows}x$tileCols; ${lines.mkString(",")}</tspan>
+       |   <tspan x='${offsetX - 15}' y='${offsetY - 30}' style='fill:#008;'>
+       |    <a xlink:href='$url?${options.mkString("&amp;")}'>pair/thread diagrams</a>
+       |   </tspan>
+       |  </text>
+       |  <g id ="$groupId">
+       |${(flatMapAllCells(createTwoIn) ++ flatMapAllCells(createNode)).toArray.mkString("")}
+       |  </g>
+       |  <g>
+       |$clones
+       |  </g>
+       |""".stripMargin
 }

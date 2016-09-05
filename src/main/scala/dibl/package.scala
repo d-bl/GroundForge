@@ -85,4 +85,41 @@ package object dibl {
           "target" -> nodes.tail.head,
           "border" -> true
       ))
+
+  /**
+    * Converts an HSL color value to RGB. Conversion formula
+    * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
+    * Assumes h, s, and l are contained in the set [0, 1] and
+    * returns r, g, and b in the set [0, 255].
+    *
+    * from https://gist.github.com/mjackson/5311256
+    *
+    * @param h The hue
+    * @param s The saturation
+    * @param l The lightness
+    * @return The Hexadecimal RGB representation
+    */
+  def hslToRgb(h: Float, s: Float, l: Float): String = {
+
+    val (r, g, b) =
+    if (s == 0) (1,1,1) /* achromatic */ else {
+      def hue2rgb(p: Float, q: Float, t: Float): Float = {
+        var tt = t
+        if (tt < 0f) tt += 1f
+        if (tt > 1f) tt -= 1f
+        if (tt < 1f/6f) return p + (q - p) * 6f * tt
+        if (tt < 1f/2f) return q
+        if (tt < 2f/3f) return p + (q - p) * (2f/3f - tt) * 6f
+        p
+      }
+      val q = if (l < 0.5f)  l * (1f + s) else l + s - l * s
+      val p = 2f * l - q
+
+      ( (255 * hue2rgb(p, q, h + 1f/3f)).toInt
+      , (255 * hue2rgb(p, q, h)).toInt
+      , (255 * hue2rgb(p, q, h - 1f/3f)).toInt
+      )
+    }
+    f"$r%02X$g%02X$b%02X"
+  }
 }

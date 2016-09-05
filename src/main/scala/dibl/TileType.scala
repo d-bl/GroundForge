@@ -21,13 +21,13 @@ abstract class TileType {
 
   def toChecker(m: M): M
 
-  /** @param row row number in the generated patch
-    * @param col col number in the generated patch
-    * @param rows height of the matrix that defines the pattern
-    * @param cols width of the matrix that defines the pattern
+  /** @param row relative row number in the generated patch
+    * @param col relative col number in the generated patch
+    * @param tileRows height of the tile matrix that defines the pattern
+    * @param tileCols width of the tile matrix that defines the pattern
     * @return reduced values for (row,col)
     */
-  def toOriginal(row: Int, col: Int, rows: Int, cols: Int): (Int, Int)
+  def toAbsTileIndices(row: Int, col: Int, tileRows: Int, tileCols: Int): (Int, Int)
 }
 
 object TileType {
@@ -45,10 +45,8 @@ object Checker extends TileType {
 
   def toChecker(m: M): M = m
 
-  def toOriginal(row: Int, col: Int, rows: Int, cols: Int): (Int, Int) = {
-    val c = col % cols
-    val r = row % rows
-    (r,c)
+  def toAbsTileIndices(row: Int, col: Int, tileRows: Int, tileCols: Int): (Int, Int) = {
+    ((row + tileRows) % tileRows, (col + tileCols) % tileCols)
   }
 }
 
@@ -61,11 +59,9 @@ object Brick extends TileType {
       }
     }
 
-  def toOriginal(row: Int, col: Int, rows: Int, cols: Int): (Int, Int) = {
-    val offset = (row / rows % 2) * (cols / 2)
-    val c = (col + offset) % cols
-    val r = row % rows
-    (r,c)
+  def toAbsTileIndices(row: Int, col: Int, tileRows: Int, tileCols: Int): (Int, Int) = {
+    val cell@(r,c) = Checker.toAbsTileIndices(row, col, tileRows, tileCols)
+    if (row >= 0) cell else (r, (c + tileCols / 2) % tileCols )
   }
 
   /** Creates a checkerboard-matrix from a brick-matrix by
