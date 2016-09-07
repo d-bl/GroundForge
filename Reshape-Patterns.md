@@ -42,8 +42,8 @@ When done with adjusting the pattern you might do all kind of other things with 
 
 [bend]: http://tavmjong.free.fr/INKSCAPE/MANUAL/html/Paths-LivePathEffects-BendTool.html
 
-Screenshot
-----------
+Screenshots
+-----------
 
 On the left: depending on the dimensions of the tile, you may have to drag the patch out of the way.
 
