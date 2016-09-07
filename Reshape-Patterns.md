@@ -7,43 +7,49 @@ A downloadable pattern sheet of [GroundForge] may have multiple patterns. In som
 
 The a manipulated screenshot above reflects a manipulated pattern sheet. The generated sheets only use full grid positions. Other sheets may come with just a single pattern that does not look at all like the colour coded pair diagram. To create a regular patch that does look like the pair diagram (or any other shape you might prefer) you would have to do the reshaping by yourself by nudging the position of intersections. That is one of the factors that makes these patterns advanced.
 
-Reshape with InkScape
-=====================
+Requirements
+------------
 
-The lines that connect the dots are InkScape connectors. When a dot moves the adjacent lines follow. Other SVG editors won't recognize the connectors and will treat the dots and lines independently. 
+A state of the art general purpose vector editor like Adobe Illustartor, Corel Draw or the free InkScape. Perhaps Open Office Draw or others are suitable too.
 
-Select dots
------------
+The editor should have full support for clones (as InkScape calls the feature) or `<use>` elements in SVG terminology. 'Full' means that the clones are not plain copies but reflect changes made to the original. For example InkPad imports clones properly but does not have the ’full’ support.
 
-At first selecting the dots is a bit hard as invisible line ends are sitting on top, this is visible on the web page where you downloaded the sheet. Follow the steps shown in the [screenshot](#screenshot) to get the dots on top:
+The editor should have a mode to manipulate objects, and a mode to deal with nodes on objects.
 
-1. drag a rectangle with your mouse around a dot
-2. from the context menu or from the _edit_ menu: _select same object type_
-3. raise selection to top
 
-From now on yo can select dots also by clicking on them.
+The procedure
+-------------
 
-Dots with the same colour should move together to keep the pattern regular. You might not see much differences with some of the dots, but your computer can tell them apart. To move related dots select one and then apply _select same fill colour_. Then you can drag the dots with the mouse or move them with the arrows on your keyboard. Five times with an arrow key is a full grid position. Shift + arrow-key once is two grid positions.
+In short:
 
-Prevent hick-ups and recover
-----------------------------
+All tiles in a patch change along with the separate tile. Select a dot by its nodes to drag the connected lines along, move nodes with the same color together to move all four connected lines.
 
-Working with lots of connectors is a heavy task for InkScape, so be gentle for your system resources by deleting anything but the patch you are going to manipulate.
+The following step by step procedure is tested with InkScape, some details may be slightly different in other editors.
 
-When using the arrow keys the lines get a step behind and other weird things may happen in various situations. To recover select all the dots (start with one, then _select same object type_) and drag the full diagram a bit with the mouse. Then InkScape realigns the lines properly with the dots.
+* Start with object mode.
+* Right-click the tile that sits next to the cloned patch to enter the group of objects.
+* Select all the objects in the group of the tile.
+* Switch to node mode.
+* Select a dot by dragging a square around it. This way the end of the adjacent lines are also selected and will move along with the dot.
+* Less than four adjacent lines on the selected dot? Hold down the shift key when selecting the second or even third dot of the same colour.
+* Drag the dots with the mouse or nudge them with arrow keys. Five time an arrow key in InkScape is a full grid position. One time shift+arrow is two grid positions.
 
-Don't forget about the undo button and regularly save your changes.
 
 Finish up
 ---------
 
-When done with adjusting the pattern you might do all kind of other things with it. Such as filling some shape in your design, [bend] it to make a fan, add coloumns or rows to the patch or whatever. InkScape has lots of tutorials and manuals for these tasks. 
+When done with adjusting the pattern you might do all kind of other things with it. Such as scaling to match your thread width, fill a shape in your design, [bend] it to make a fan, add colomns or rows to the patch or whatever. The editor of your choice will have its own tutorials and manuals for these tasks. 
 
 [bend]: http://tavmjong.free.fr/INKSCAPE/MANUAL/html/Paths-LivePathEffects-BendTool.html
 
-To be gentle with your system resources it might be wise to first disconnect the lines and the dots. Don't forget to make a copy of your achievements so far to fall back on when getting second thoughts, undoing and attempts to recover from the next procedure might not have the expected results. Select all lines like you selected dots: start with one, then _select same object type_. Use an arrow key to nudge the lines a step away from the dots and move the same step back. From now on the lines won't follow the dots any more, check that fact to see whether you succeeded.
-
 Screenshot
 ----------
+
+On the left: depending on the dimensions of the tile, you may have to drag the patch out of the way.
+
+On the right: dots selected as objects, note how the toolbar indicates object mode.
+
+At the bottom: dots and line ends selected together by their nodes, the toolbar indicates node mode.
+
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/select-dots.png)
