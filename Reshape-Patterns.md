@@ -49,7 +49,7 @@ On the left: depending on the dimensions of the tile, you may have to drag the p
 
 On the right: dots selected as objects, note how the toolbar indicates object mode with the first icon.
 
-At the bottom: dots and line ends selected together by their nodes, the toolbar indicates node mode with the second icon.
+At the bottom: light blue dots and their line ends selected by their nodes, the toolbar indicates node mode with the second icon.
 
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/select-dots.png)
