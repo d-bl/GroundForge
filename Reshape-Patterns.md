@@ -47,9 +47,9 @@ Screenshots
 
 On the left: depending on the dimensions of the tile, you may have to drag the patch out of the way.
 
-On the right: dots selected as objects, note how the toolbar indicates object mode.
+On the right: dots selected as objects, note how the toolbar indicates object mode with the first icon.
 
-At the bottom: dots and line ends selected together by their nodes, the toolbar indicates node mode.
+At the bottom: dots and line ends selected together by their nodes, the toolbar indicates node mode with the second icon.
 
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/select-dots.png)
