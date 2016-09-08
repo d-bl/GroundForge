@@ -103,18 +103,18 @@ private class Pattern (tileMatrix: String,
         |""".stripMargin
 
   def createTwoIn(targetRow: Int, targetCol: Int): String =
-
-    relative(targetRow)(targetCol).map { case (relativeSourceRow, relativeSourceCol) =>
-      val sourceRow = relativeSourceRow + targetRow
-      val sourceCol = relativeSourceCol + targetCol
-      val needSourceNode = sourceRow < 0 || sourceCol < 0 || sourceRow >= tileRows || sourceCol >= tileCols
-      s"""    <path
-          |      style='stroke:#000;fill:none'
-          |      d='M ${toX(sourceCol)},${toY(sourceRow)} ${toX(targetCol)},${toY(targetRow)}'
-          |    />
-          |""".stripMargin +
-        (if (needSourceNode) createNode(sourceRow, sourceCol) else "")
-    }.mkString
+    (for{
+      (relativeSourceRow, relativeSourceCol) <- relative(targetRow)(targetCol)
+      sourceRow = relativeSourceRow + targetRow
+      sourceCol = relativeSourceCol + targetCol
+      needSourceNode = sourceRow < 0 || sourceCol < 0 || sourceRow >= tileRows || sourceCol >= tileCols
+    } yield s"""    <path
+                |      style='stroke:#000;fill:none'
+                |      d='M ${toX(sourceCol)},${toY(sourceRow)} ${toX(targetCol)},${toY(targetRow)}'
+                |    />
+                |""".stripMargin +
+      (if (needSourceNode) createNode(sourceRow, sourceCol) else "")
+    ).mkString
 
   def forAllCells(func: (Int, Int) => String): String =
     (for {
