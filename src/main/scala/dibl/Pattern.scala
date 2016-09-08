@@ -78,11 +78,11 @@ private class Pattern (tileMatrix: String,
         }
       )
     )
-    linkCount.indices.flatMap(row => linkCount(row).indices.map(col => (row, col))).
-      filter(t => {
-        val (r,c) = t
-        linkCount(r)(c) % 4 > 0
-      })
+    for {
+      row <- relative.indices
+      col <- relative(row).indices
+      if linkCount(row)(col) % 4 > 0
+    } yield (row, col)
   }
 
   def toColor(row: Int, col: Int): String = {
@@ -103,6 +103,7 @@ private class Pattern (tileMatrix: String,
         |""".stripMargin
 
   def createTwoIn(targetRow: Int, targetCol: Int): String =
+
     relative(targetRow)(targetCol).map { case (relativeSourceRow, relativeSourceCol) =>
       val sourceRow = relativeSourceRow + targetRow
       val sourceCol = relativeSourceCol + targetCol
