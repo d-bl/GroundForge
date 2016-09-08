@@ -104,10 +104,9 @@ private class Pattern (tileMatrix: String,
         |""".stripMargin
 
   def createTwoIn(targetRow: Int, targetCol: Int): String =
-    relative(targetRow)(targetCol).map { sourceNode =>
-      val (r, c) = sourceNode
-      val sourceRow = r + targetRow
-      val sourceCol = c + targetCol
+    relative(targetRow)(targetCol).map { case (relativeSourceRow, relativeSourceCol) =>
+      val sourceRow = relativeSourceRow + targetRow
+      val sourceCol = relativeSourceCol + targetCol
       val needSourceNode = sourceRow < 0 || sourceCol < 0 || sourceRow >= tileRows || sourceCol >= tileCols
       s"""    <path
           |      style='stroke:#000;fill:none'
@@ -117,12 +116,13 @@ private class Pattern (tileMatrix: String,
         (if (needSourceNode) createNode(sourceRow, sourceCol) else "")
     }.mkString("")
 
-  def flatMapAllCells(func: (Int, Int) => String): IndexedSeq[Char] =
-    relative.indices.
-      flatMap(row => relative(row).indices.
-        filter(col => relative(row)(col).nonEmpty).
-        flatMap(col => func(row, col))
-      )
+  def forAllCells(func: (Int, Int) => String): String =
+    (for {
+      row <- relative.indices
+      col <- relative(row).indices
+      if relative(row)(col).nonEmpty
+      result <- func(row, col)
+    } yield result).mkString
 
   def clones: String = {
     val brickOffset = if (tileType == "bricks") tileCols * 5 else 0 // TODO refactor into TileType
@@ -156,7 +156,8 @@ private class Pattern (tileMatrix: String,
        |   </tspan>
        |  </text>
        |  <g id ="$groupId">
-       |${(flatMapAllCells(createTwoIn) ++ flatMapAllCells(createNode)).toArray.mkString("")}
+       |${forAllCells(createTwoIn)}
+       |${forAllCells(createNode)}
        |  </g>
        |  <g>
        |$clones
