@@ -17,7 +17,6 @@ package dibl
 
 import dibl.Matrix.{toMatrixLines, toRelSrcNodes}
 
-import scala.collection.immutable.IndexedSeq
 import scala.util.Try
 
 object Pattern {
@@ -114,7 +113,7 @@ private class Pattern (tileMatrix: String,
           |    />
           |""".stripMargin +
         (if (needSourceNode) createNode(sourceRow, sourceCol) else "")
-    }.mkString("")
+    }.mkString
 
   def forAllCells(func: (Int, Int) => String): String =
     (for {
@@ -126,20 +125,17 @@ private class Pattern (tileMatrix: String,
 
   def clones: String = {
     val brickOffset = if (tileType == "bricks") tileCols * 5 else 0 // TODO refactor into TileType
-    def cloneRows(row1: Int): String = {
-      val row2 = row1 + tileRows * 10
-      List.range(start = -(if (tileType == "bricks")brickOffset else 10*tileCols), end = 200, step = tileCols * 10).
-        map(w => {
-          clone(w, row1) + clone(w - brickOffset, row2)
-        }).mkString("")
-    }
-    List.range(start = -tileRows * 10, end = 200, step = tileRows * 20)
-      .map(h => cloneRows(h)).mkString("")
+    val startX = if (brickOffset > 0) brickOffset else 10 * tileCols
+    (for {
+      dY <- List.range(start = -tileRows * 10, end = 200, step = tileRows * 20)
+      dX <- List.range(start = -startX, end = 200, step = tileCols * 10)
+      result <- clone(dX, dY) + clone(dX - brickOffset, dY + tileRows * 10)
+    } yield result).mkString
   }
 
-  def clone(i: Int, j: Int): String =
+  def clone(dX: Int, dY: Int): String =
     s"""    <use
-        |      transform='translate(${i+95},${j+45})'
+        |      transform='translate(${dX+95},${dY+45})'
         |      xlink:href='#$groupId'
         |      style='stroke:#000;fill:none'
         |    />
