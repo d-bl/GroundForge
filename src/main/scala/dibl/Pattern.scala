@@ -22,7 +22,7 @@ import scala.util.Try
 object Pattern {
 
   def failureMessage(tried: Try[_]): String =
-    s"<text><tspan x='2' y='14'>${tried.failed.get.getMessage}</tspan></text>"
+    s"<text><tspan x='2' y='14' style='fill:#FF0000'>${tried.failed.get.getMessage}</tspan></text>"
 
   def apply(tileMatrix: String,
             tileType: String,
@@ -125,22 +125,17 @@ private class Pattern (tileMatrix: String,
     } yield result).mkString
 
   def clones: String = {
-    val brickOffset = if (tileType == "bricks") tileCols * 5 else 0 // TODO refactor into TileType
-    val startX = if (brickOffset > 0) brickOffset else 10 * tileCols
     (for {
-      dY <- List.range(start = -tileRows * 10, end = 200, step = tileRows * 20)
-      dX <- List.range(start = -startX, end = 200, step = tileCols * 10)
-      result <- clone(dX, dY) + clone(dX - brickOffset, dY + tileRows * 10)
-    } yield result).mkString
+      dY <- List.range(start = 0, end = 250 - tileRows * 10, step = tileRows * 10)
+      startX = if (tileType != "bricks" || 0 == dY % (tileRows * 20)) 0 else 5 * tileCols
+      dX <- List.range(start = startX, end = 320 - tileCols * 10, step = tileCols * 10)
+    } yield s"""    <use
+                |      transform='translate($dX,$dY)'
+                |      xlink:href='#$groupId'
+                |      style='stroke:#000;fill:none'
+                |    />
+                |""".stripMargin).tail.mkString
   }
-
-  def clone(dX: Int, dY: Int): String =
-    s"""    <use
-        |      transform='translate(${dX+95},${dY+45})'
-        |      xlink:href='#$groupId'
-        |      style='stroke:#000;fill:none'
-        |    />
-        |""".stripMargin
 
   val options = Array(s"matrix=${lines.mkString("%0D")}", s"tiles=$tileType")
   val url = "https://d-bl.github.io/GroundForge/index.html"
@@ -156,7 +151,7 @@ private class Pattern (tileMatrix: String,
        |${forAllCells(createTwoIn)}
        |${forAllCells(createNode)}
        |  </g>
-       |  <g>
+       |  <g transform='translate(15,5)'>
        |$clones
        |  </g>
        |""".stripMargin

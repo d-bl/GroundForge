@@ -144,7 +144,7 @@ object Matrix {
         ))
       else Success( // we can't run into trouble any more
         matrix.toCharArray.map {
-          relSourcesMap.get(_).get
+          relSourcesMap(_)
         }.grouped(cols).toArray
       )
     }
@@ -161,7 +161,7 @@ object Matrix {
   def toMatrixLines(str: String): Try[Array[String]] = {
     val lines = str.split("[^-0-9A-O]+")
     if (lines.map(_.length).sortBy(n => n).distinct.length == 1) Success(lines)
-    else Failure(new scala.Exception(s"lines of matrix have varying lengths $str ==> ${lines.mkString(", ")}"))
+    else Failure(new scala.Exception(s"Matrix lines have varying lengths: $str ==> ${lines.mkString(", ")}"))
   }
 
   /** @param s for example "4x2..."
