@@ -45,7 +45,7 @@ When done with adjusting the pattern you might do all kind of other things with 
 Screenshots
 -----------
 
-_On the left_: shows how the patch repeats the slightly off-set "tile" in the top left, not unlink the [logo] tiles.
+_On the left_: shows how the patch repeats the slightly off-set "tile" in the top left, not unlike the [logo] tiles.
 
 _On the right_: dots selected as objects, note how the toolbar indicates object mode with the first icon.
 
