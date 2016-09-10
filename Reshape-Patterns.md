@@ -10,9 +10,9 @@ The a manipulated screenshot above reflects a manipulated pattern sheet. The gen
 Requirements
 ------------
 
-A state of the art general purpose vector editor like Adobe Illustartor, Corel Draw or the free InkScape. Perhaps Open Office Draw or others are suitable too.
+A state of the art general purpose vector editor like the free InkScape. Perhaps Adobe Illustrator, Corel Draw or others are suitable too.
 
-The editor should have full support for clones (as InkScape calls the feature) or `<use>` elements in SVG terminology. 'Full' means that the clones are not plain copies but reflect changes made to the original. For example InkPad imports clones properly but does not have the ’full’ support.
+The editor should have "full" support for clones (as InkScape calls the feature) or `<use>` elements in SVG terminology. "Full" means that the clones are not plain copies but reflect changes made to the original. For example InkPad and OpenOffice Draw import clones properly but don't have the "full" support.
 
 The editor should have a mode to manipulate objects, and a mode to deal with nodes on objects.
 
@@ -45,11 +45,11 @@ When done with adjusting the pattern you might do all kind of other things with 
 Screenshots
 -----------
 
-_On the left_: depending on the dimensions of the tile, you may have to drag the patch out of the way.
+_On the left_: shows how the patch repeats the slightly off-set "tile" in the top left, not unlink the [logo] tiles.
 
 _On the right_: dots selected as objects, note how the toolbar indicates object mode with the first icon.
 
 _At the bottom_: light blue dots and their line ends selected by their nodes, the toolbar indicates node mode with the second icon.
 
-
+[logo]: https://d-bl.github.io/GroundForge/images/logo-medium.png
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/select-dots.png)
