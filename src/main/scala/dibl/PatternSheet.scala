@@ -3,14 +3,22 @@ package dibl
 import scala.collection.mutable.ListBuffer
 import scala.scalajs.js.annotation.JSExport
 
-/** @param patchRows an A4 can contain 2 columns and 3 rows
-  * @param pageSize default A4, in fact attributes for the SVG root element
+/** @param patchRows a landscape A4 can contain 3 columns and 2 rows
+  * @param pageSize attributes for the SVG root element, default landscape A4
   */
 @JSExport
 case class PatternSheet(patchRows: Int = 2, pageSize: String = "height='210mm' width='297mm'") {
   private val nameSpaces = "xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape'"
   private val patterns = new ListBuffer[String]
 
+  /**
+    *
+    * @param m See https://github.com/d-bl/GroundForge/blob/gh-pages/images/legend.png
+    *          On the right an example, on the left the meaning of the characters,
+    *          thick arrows indicate vertices traveling two cells.
+    * @param tileType how the matrix is stacked to build a pattern: like a brick wall or a checker board
+    * @return this, to allow chaining
+    */
   @JSExport
   def add(m: String, tileType: String): PatternSheet = {
     val n = patterns.size
@@ -24,9 +32,7 @@ case class PatternSheet(patchRows: Int = 2, pageSize: String = "height='210mm' w
   @JSExport // parentheses are required for JavaScript
   def toSvgDoc():String = s"""
        |<svg version='1.1' id='svg2' $pageSize $nameSpaces>
-       |$toSvgGroups
+       |${patterns.mkString}
        |</svg>
        |""".stripMargin
-  def toList: List[String] = patterns.toList
-  def toSvgGroups: String = patterns.mkString("")
 }

@@ -21,9 +21,19 @@ import scala.util.Try
 
 object Pattern {
 
-  def failureMessage(tried: Try[_]): String =
+  private def failureMessage(tried: Try[_]): String =
     s"<text><tspan x='2' y='14' style='fill:#FF0000'>${tried.failed.get.getMessage}</tspan></text>"
 
+/** Builds an SVG drawing
+  *
+  * @param tileMatrix See https://github.com/d-bl/GroundForge/blob/gh-pages/images/legend.png
+  *                   on the right an example, on the left the meaning of the characters
+  *                   thick arrows indicate vertices traveling two cells
+  * @param tileType how the tile is stacked to build a pattern: like a brick wall or a checker board
+  * @param groupId the id of the to-be-cloned group of objects
+  * @param offsetX relative horizontal position on a sheet
+  * @param offsetY relative vertical position on a sheet
+  */
   def apply(tileMatrix: String,
             tileType: String,
             groupId: String = "GF0",
@@ -48,6 +58,18 @@ object Pattern {
   }
 }
 
+/** Builder of an SVG drawing
+  *
+  * @param tileMatrix see apply method
+  * @param tileType see apply method
+  * @param groupId see apply method
+  * @param offsetX see apply method
+  * @param offsetY see apply method
+  * @param lines the tileMatrix split into lines
+  * @param relative a converted version of the tileMatrix, e.g.
+  *                 '5' which has incoming vertices from the north east and north west
+  *                 becomes SrcNodes((-1,-1),(-1, 1))
+  */
 private class Pattern (tileMatrix: String,
                        tileType: String,
                        groupId: String = "GF0",
@@ -63,21 +85,30 @@ private class Pattern (tileMatrix: String,
   def toX(col: Int): Int = col * 10 + offsetX
   def toY(row: Int): Int = row * 10 + offsetY
 
+  /**
+    * Cells of the matrix for which the dot should get a color.
+    * The position of the cell in the sequence becomes the position
+    * of the color (hue) in the rainbow.
+    *
+    * Each cell should have two vertices coming in, and two out.
+    * Think the matrix wrapped around a donut, thus cells at one
+    * side connect with cells on the other side of the matrix.
+    * To indicate which cells connect in that way, they get the same color.
+    * Cells in the middle (having 4 vertices without wrapping) become grey.
+    */
   val needColor: Seq[(Int, Int)] = {
 
     val linkCount = Array.fill(tileRows, tileCols)(0)
-    relative.indices.foreach(row =>
-      relative(row).indices.foreach(col =>
-        relative(row)(col).foreach { srcNode =>
-          val (srcRow, srcCol) = srcNode
-          val r = row + srcRow
-          val c = col + srcCol
-          if (r >= 0 && r < tileRows && c >= 0 && c < tileCols)
-            linkCount(r)(c) += 1
-          linkCount(row)(col) += 1
-        }
-      )
-    )
+    for {
+      row <- relative.indices
+      col <- relative(row).indices
+      (srcRow, srcCol) <- relative(row)(col)
+      r = row + srcRow
+      c = col + srcCol
+      _ = if (r >= 0 && r < tileRows && c >= 0 && c < tileCols)
+        linkCount(r)(c) += 1
+      _ = linkCount(row)(col) += 1
+    } yield()
     for {
       row <- relative.indices
       col <- relative(row).indices
@@ -85,22 +116,19 @@ private class Pattern (tileMatrix: String,
     } yield (row, col)
   }
 
-  def toColor(row: Int, col: Int): String = {
-    val cell = tt.toAbsTileIndices(row, col, tileRows, tileCols)
-    val i = needColor.indexOf(cell)
-    if (i < 0) "999999" else {
+  def createNode(row: Int, col: Int): String = {
+    val i = needColor.indexOf(tt.toAbsTileIndices(row, col, tileRows, tileCols))
+    val color = if (i < 0) "999999" else {
       val hue = (i + 0f) / needColor.size
       val brightness = 0.2f + 0.15f * (i % 3)
       hslToRgb(hue, 1f, brightness)
     }
-  }
-
-  def createNode(row: Int, col: Int) =
     s"""    <path
         |      d='m ${toX(col) + 2},${toY(row)} a 2,2 0 0 1 -2,2 2,2 0 0 1 -2,-2 2,2 0 0 1 2,-2 2,2 0 0 1 2,2 z'
-        |      style='fill:#${toColor(row, col)};fill-opacity:0.85;stroke:none'
+        |      style='fill:#$color;fill-opacity:0.85;stroke:none'
         |    />
         |""".stripMargin
+  }
 
   def createTwoIn(targetRow: Int, targetCol: Int): String =
     (for{
@@ -125,7 +153,7 @@ private class Pattern (tileMatrix: String,
     } yield result).mkString
 
   def clones: String = {
-    (for {
+    (for { // TODO somehow refactor computations into TileType
       dY <- List.range(start = 0, end = 250 - tileRows * 10, step = tileRows * 10)
       startX = if (tileType != "bricks" || 0 == dY % (tileRows * 20)) 0 else 5 * tileCols
       dX <- List.range(start = startX, end = 320 - tileCols * 10, step = tileCols * 10)
