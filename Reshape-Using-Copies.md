@@ -27,7 +27,7 @@ Screenshots
 
 _On top_: Generated patches with the initial tile/repeat selected.
 
-_Second row_: Assembling a new patch with four copies of the initial tile/repeat. Dots with the same color should still "merge" by snapping the groups of objects together. Between the two examples a close up of "merged" dots: some lines a less visible through the dot than others.
+_Second row_: Assembling a new patch with four copies of the initial tile/repeat. Dots with the same color should still "merge" by snapping the groups of objects together. Between the two examples a close up of "merged" dots: some lines are less visible through the dot than others.
 
 _At the bottom_: One dot per tile/repeat selected and nudged to another position.
 
