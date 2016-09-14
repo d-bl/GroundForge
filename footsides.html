@@ -40,7 +40,7 @@
               scale: 0.5,
               transform: "translate(0,0)scale(0.5)",
             })
-            document.getElementById('L'+id).href = 'index.html?hideAdvanced&matrix=' +
+            document.getElementById('L'+id).href = 'index.html?matrix=' +
               document.getElementById('matrix').value.replace( /[^-0-9A-D]+/g, '%0D') +
               (bricks ? '&bricks' : '') +
               '&rows=9&cols=' + nrOfCols +
@@ -58,7 +58,7 @@
        title="3 tiles each with a single stitch. Thick coloured lines for the pair diagram, thin black lines for a thread diagram"/>
   <h1>GroundForge - select foot sides</h1>
   <p>
-    The advanced options of the <a href="index.html">main</a> page allow to choose the positions of the (false) foot sides in a pattern.
+    The <a href="index.html">main</a> page allows to choose the positions of the (false) foot sides in a pattern.
     With the current poor implementation to calculate a foot side, few configurations might render a proper thread diagram.
     This page lets you choose a configuration. It is limited to 4x4 matrices.
   </p>

@@ -51,7 +51,7 @@ function onChangeColor(el) {
     }
   }
 }
-var lastShown = "intro"
+var lastShown = "thumbnails"
 function toggle(id, radio){
   if (lastShown != undefined ) {
     var el1a = document.getElementById(lastShown+"FieldSet")
@@ -73,15 +73,6 @@ function init() {
   var location = (window.location.href + "").replace("#","")
   var patterns = new dibl.PatternSheet(2, "height='210mm' width='297mm'")
 
-  // no advanced options for default page and fully configured thumbnail links
-  var iq = location.indexOf('?')
-  if (iq >= 0 && iq+1 != location.length && location.indexOf('hideAdvanced') < 0 ) {
-    var elems = document.getElementsByClassName('advanced')
-    for (i=0 ; i<elems.length ; i++) {
-        elems[i].classList.remove('hide')
-        elems[i].classList.add('show')
-    }
-  }
   // for each key-value pair in the URL query
   location.replace(/[?&]+([^=&]+)(=([^&]*))?/gi, function(m,key,m2,value) {
 
