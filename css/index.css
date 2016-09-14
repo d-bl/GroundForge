@@ -6,8 +6,10 @@ input { width: 3em; }
 .jscolor { width: 1.1em; }
 #color { display: inline; width: 4em; }
 
-#pairs, #threads, #sheet { overflow: scroll; resize:both; border: solid 1px #AAA; }
-a img { overflow: hide; border: solid 1px #AAA; }
+#sheet { overflow: scroll; resize:both; } /* IE-9 doesn't resize */
+#pairs, #threads { overflow: hidden } /* resize combined with zooming and panning is buggy in firefox */
+#pairs, #threads, #sheet { border: solid 1px #AAA; }
+a img { overflow: hidden; border: solid 1px #AAA; }
 
 a img { vertical-align: middle; margin-bottom: 1em; }
 #logo img, #footer img { border: none; }
