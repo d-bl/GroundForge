@@ -20,127 +20,134 @@
     <p><em>A toolbox to design bobbin lace grounds or braids with matching diagrams.</em></p>
 
     <p>The <a href="https://github.com/d-bl/GroundForge/wiki"
-        >user guide</a> provides more details and hints for the following steps.
-        You are invited to enhance it so other users can benefit from your experience.
-    </p>
-    <ul>
-        <li>
-            Select a thumbnail, or try the <a href="?showAdvanced">advanced</a> options to invent your own patterns.
-        </li>
-        <li>
-            Choose stitches, those with an odd number of crossings cause threads to follow other paths than pairs.
-        </li>
-        <li>
-            Decide where to apply a contrasting thread,
-            the real lace could apply another width rather than another color.
-        </li>
-        <li>
-            Nudging pins to slightly different positions can have a significant effect on the shapes in the pair diagram.
-            The pattern sheet below the diagrams has one or more variants.
-            The colors of the dots help to customize one to your own taste and needs with an <a
-                href="https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support"
-                title="Sort the overview by the SVG column,&#013; still not all will be suite the purpose."
-        >SVG editor</a>.
-        </li>
-    </ul>
-    <p>
+        >user guide</a> provides more details and hints than given in the tabs.
+        You are invited to enhance the user guide so other users can benefit from your experience.
         We'd love to see <a href="https://github.com/d-bl/GroundForge/issues/50"
         >your creations</a>.
     </p>
-
-    Thumbnails:
-    <a href="?hideAdvanced&matrix=5632 5632&patch=5- -5&patch=5353 5353 5-5- -5-5&patch=5632 56-2 5-5- -535&patch=44 77 44 77;bricks&patch=44 44 77 77;bricks&rows=5&cols=7&left=1&up=1&stitches=A1=tc,B1=tctc,C1=tc,D1=tctc,A2=tc,B2=tc,C2=tc,D2=tc"><img src="thumbs/214.png" title="Torchon (with variations)"></a>
-
-    <a href="?hideAdvanced&matrix=5632 34-7&tiles=bricks&patch=-5-5 5-5- -5-- B-C-;bricks&patch=256- ---5 C3B-;bricks&patch=5632 34-7;bricks&patch=4373 5-53;bricks&rows=5&cols=3&up=3&left=1&stitches=A1=tplc,B1=tcttpc,C1=tprc,D1=ttcttpc,A2=rtc,B2=tcttpc,C2=ltc,D2=tc"><img src="thumbs/135.png" title="small snow (Binche)"></a>
-
-    <a href="?hideAdvanced&matrix=5831 -4-7&tiles=bricks&patch=-437 34-7;bricks&patch=4830 --77;bricks&up=3&left=1&rows=8&cols=7&stitches=A1=tc,C1=tc,A2=tc,B2=ptc,C2=tc,D2=tc"><img src="thumbs/130.png" title="rose (Torchon) / Flanders"></a>
-
-    <a href="?hideAdvanced&matrix=5831 -4-7&patch=68 -4&patch=5831 -4-7&patch=B-C- ---5 C-B- -5--&patch=5831 -4-7 5--- -C-B;bricks&patch=5-O-E- -E-5-O 5-O-E-;bricks&left=4&up=1&rows=7&cols=7&stitches=A1=tctc,C1=tctc,D1=tctc,A2=tctc,B1=tctc,C2=tctc"><img src="thumbs/376.png" title="kat / paris"></a>
-
-    <a href="?hideAdvanced&matrix=4815%0D4-77&tiles=bricks&patch=-5---5-5%0D5-O-E-5-;bricks&patch=4804%0D-777;bricks&patch=B-5-C-%0D-5-5--%0DB---C-;bricks&rows=12&cols=6&left=0&up=1&stitches=D2=tctpc%20A1=tc%20B1=tc%20C1=tc%20D1=tc%20A2=tc%20B2=tc"><img src="thumbs/127.png" title="meandering plaits"></a>
-
-    <a href="?hideAdvanced&matrix=586- -4-5 5-21 -5-7&rows=12&cols=9&&left=1&up=1&stitches=A3=tctc,D4=lctc,B4=rctc,A1=ctc,A2=tctc,C1=tctc,D2=rctc,B2=lctc,C3=ctc,C4=tctc"><img src="thumbs/001.png" title="pinwheel"></a>
-
-    <a href="thumbs.html">more...</a>
 </article>
 <form>
-    <fieldset id="pattern" class="advanced hide">
+    <p class="tabs">
+        <button class="activeTab" id="introTab" onclick="toggle('intro');return false">introduction</button>
+        <button class="inactiveTab" id="downloadTab" onclick="toggle('download');return false">downloads</button>
+        <button class="inactiveTab" id="thumbnailsTab" onclick="toggle('thumbnails');return false">thumbnails</button>
+        <button class="inactiveTab" id="patternTab" onclick="toggle('pattern');return false">matrix</button>
+        <button class="inactiveTab" id="stitchTab" onclick="toggle('stitch');return false">stitches</button>
+        <button class="inactiveTab" id="threadTab" onclick="toggle('thread');return false">thread colors</button>
+        <button class="inactiveTab" id="sizeTab" onclick="toggle('size');return false">patch size</button>
+        <button class="inactiveTab" id="shiftTab" onclick="toggle('shift');return false">shift footside</button>
+        <button class="inactiveTab" id="hiddenTab" onclick="toggle('hidden');return false">hidden objects</button>
+    </p>
+    <fieldset id="introFieldSet" class="show">
+        <legend>Introduction</legend>
+        <ul>
+            <li>
+                Select a thumbnail or matrix as the basis for your pattern.
+            </li>
+            <li>
+                Choose stitches, those with an odd number of crossings cause threads to follow other paths than pairs.
+            </li>
+            <li>
+                Decide where to apply a contrasting thread,
+                the real lace could apply another width rather than another color.
+            </li>
+            <li>
+                Nudging pins to slightly different positions can have a significant effect on the shapes in the pair diagram.
+                The pattern sheet below the diagrams has one or more variants.
+                The colors of the dots help to customize a patch to your own taste and needs.
+            </li>
+        </ul>
+    </fieldset>
+    <fieldset id="thumbnailsFieldSet" class="hide">
+        <legend>Thumbnails</legend>
+        <a href="?hideAdvanced&matrix=5632 5632&patch=5- -5&patch=5353 5353 5-5- -5-5&patch=5632 56-2 5-5- -535&patch=44 77 44 77;bricks&patch=44 44 77 77;bricks&rows=5&cols=7&left=1&up=1&stitches=A1=tc,B1=tctc,C1=tc,D1=tctc,A2=tc,B2=tc,C2=tc,D2=tc"><img src="thumbs/214.png" title="Torchon (with variations)"></a>
+
+        <a href="?hideAdvanced&matrix=5632 34-7&tiles=bricks&patch=-5-5 5-5- -5-- B-C-;bricks&patch=256- ---5 C3B-;bricks&patch=5632 34-7;bricks&patch=4373 5-53;bricks&rows=5&cols=3&up=3&left=1&stitches=A1=tplc,B1=tcttpc,C1=tprc,D1=ttcttpc,A2=rtc,B2=tcttpc,C2=ltc,D2=tc"><img src="thumbs/135.png" title="small snow (Binche)"></a>
+
+        <a href="?hideAdvanced&matrix=5831 -4-7&tiles=bricks&patch=-437 34-7;bricks&patch=4830 --77;bricks&up=3&left=1&rows=8&cols=7&stitches=A1=tc,C1=tc,A2=tc,B2=ptc,C2=tc,D2=tc"><img src="thumbs/130.png" title="rose (Torchon) / Flanders"></a>
+
+        <a href="?hideAdvanced&matrix=5831 -4-7&patch=68 -4&patch=5831 -4-7&patch=B-C- ---5 C-B- -5--&patch=5831 -4-7 5--- -C-B;bricks&patch=5-O-E- -E-5-O 5-O-E-;bricks&left=4&up=1&rows=7&cols=7&stitches=A1=tctc,C1=tctc,D1=tctc,A2=tctc,B1=tctc,C2=tctc"><img src="thumbs/376.png" title="kat / paris"></a>
+
+        <a href="?hideAdvanced&matrix=4815%0D4-77&tiles=bricks&patch=-5---5-5%0D5-O-E-5-;bricks&patch=4804%0D-777;bricks&patch=B-5-C-%0D-5-5--%0DB---C-;bricks&rows=12&cols=6&left=0&up=1&stitches=D2=tctpc%20A1=tc%20B1=tc%20C1=tc%20D1=tc%20A2=tc%20B2=tc"><img src="thumbs/127.png" title="meandering plaits"></a>
+
+        <a href="?hideAdvanced&matrix=586- -4-5 5-21 -5-7&rows=12&cols=9&&left=1&up=1&stitches=A3=tctc,D4=lctc,B4=rctc,A1=ctc,A2=tctc,C1=tctc,D2=rctc,B2=lctc,C3=ctc,C4=tctc"><img src="thumbs/001.png" title="pinwheel"></a>
+
+        <a href="thumbs.html">more...</a>
+    </fieldset>
+    <fieldset id="patternFieldSet" class="hide">
         <legend>Pattern matrix</legend>
-<textarea id="matrix" name="matrix" rows="4" cols="6" spellcheck="false"
->586-
+        <img src="images/legend.png" id="legend" alt="legend" align="right">
+        <div>
+            <select name="tiles" id="tiles">
+                <option value="bricks">Brick wall</option>
+                <option value="checker" selected>Checker board</option>
+            </select>
+            <label for="tiles"> tiles</label>
+        </div>
+        <textarea id="matrix" name="matrix" rows="4" cols="6" spellcheck="false"
+        >586-
 -4-5
 5-21
 -5-7</textarea>
-        <select name="tiles" id="tiles">
-            <option value="bricks">Brick wall</option>
-            <option value="checker" selected>Checker board</option>
-        </select>
-        <label for="tiles"> tiles</label>
-        <p>Legend :</p><img src="images/legend.png" id="legend" alt="legend">
-        <p>Larger arrows represent double length lines <br/>(skipping a grid position)</p>
+        <p>Note on the legend: larger arrows represent double length lines (skipping a grid position)</p>
     </fieldset>
-    <fieldset id="stitchFiedSet" class="wide">
+    <fieldset id="stitchFieldSet" class="hide wide">
         <legend>Stitches</legend>
-<textarea id="stitches" name="stitches" rows="4" cols="45" spellcheck="false"
->A3=tctc D4=lctc B4=rctc A1=ctc
-A2=tctc
-C1=tctc D2=rctc B2=lctc C3=ctc
-C4=tctc</textarea>
-        <br/>Hover over stitches in the pair diagram for IDs.
-        <br/>Legend: c(ross) t(wist) l(eft-twist) r(ight-twist) p(in)
+<textarea id="stitches" name="stitches" rows="2" cols="100" spellcheck="false"
+>A3=tctc D4=lctc B4=rctc A1=ctc A2=tctc
+C1=tctc D2=rctc B2=lctc C3=ctc C4=tctc</textarea>
+        <br/>
+        Legend: c(ross) t(wist) l(eft-twist) r(ight-twist) p(in)
+        Hover over stitches in the pair diagram for IDs.
     </fieldset>
-    <fieldset>
+    <fieldset id="sizeFieldSet" class="hide">
         <legend>Patch size</legend>
         <label for="rows">rows</label>
         <input id="rows" name="rows" min="3" value="12" type="number"/>
         <label for="cols">columns
-            <span class="tooltip">
-                <span class="tooltiptext">
-                    This is not the number of pairs.
-                    Hover over the diamond start of pairs
-                    or the square start of threads
-                    to reveal their number.
-                </span>
-            </span>
         </label>
         <input id="cols" name="cols" min="3" value="9" type="number"/>
+        <p>
+            The numbers are related to the dots in the pattern sheet.
+        </p><p>
+            Hover over the diamond start of pairs
+            or the square start of threads
+            to reveal their number.
+        </p>
     </fieldset>
-    <fieldset class="advanced hide">
+    <fieldset id="shiftFieldSet" class="hide">
         <legend>Shift
-            <span class="tooltip">
-                <span class="tooltiptext">
-                    Copy the matrix,
-                    remember the brick checkbox.
-                    Fill in on <a href="footsides.html" target="_blank">foot sides</a> page,
-                    have some patience
-                    make your choice.
-                </span>
-            </span>
         </legend>
         <label for="up">rows</label>
         <input id="up" name="left" min="0" value="1" type="number"/>
         <label for="left">columns</label>
         <input id="left" name="up" min="0" value="1" type="number"/>
+        <p>
+            Fiddling with these parameters may help to get a proper foot side and thread diagram,
+            but the possibilities grow exponentially with the matrix dimensions.
+        </p>
+        <p>
+            Copy the matrix, remember the type of tile arrangement.
+            Fill in both on the <a href="footsides.html" target="_blank">foot sides</a> page,
+            have some patience and make your choice.
+        </p>
     </fieldset>
-    <fieldset class="advanced hide">
-        <legend>
-            <span class="tooltip">
-                <span class="tooltiptext">
-                    such as connections between twists and pins
-                </span>
-            </span>
-            Hidden diagram components
-        </legend>
-        <label for="transparency" class="advanced hide">transparency</label>
-        <input id="transparency" name="transparency" step="0.1" min="0" max="1" value="0" type="number" class="advanced hide"/>
-        <span class="tooltip">
-            <span class="tooltiptext">
-                0 = transparent<br/>
-                1 = opaque
-            </span>
-        </span>
+    <fieldset id="hiddenFieldSet" class="hide">
+        <legend>Hidden diagram components</legend>
+        <p>
+            The diagrams contains contain hidden elements such as connections between twists and pins.
+            Revealing them may help to understand their behaviour.
+        </p>
+        <p>
+            <label for="transparency">transparency</label>
+            <input id="transparency" name="transparency" step="0.1" min="0" max="1" value="0" type="number"/>
+        </p>
+        <p>
+            0 = transparent<br/>
+            1 = opaque
+        </p>
     </fieldset>
-    <fieldset class="wide">
+    <fieldset id="threadFieldSet" class="hide wide">
         <legend>Thread colors</legend>
         <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color1" name="color1" class="jscolor" value="000000"/>
         <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color2" name="color2" class="jscolor" value="000000"/>
@@ -158,64 +165,44 @@ C4=tctc</textarea>
         <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color14" name="color14" class="jscolor" value="000000"/>
         <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color15" name="color15" class="jscolor" value="000000"/>
         <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color16" name="color16" class="jscolor" value="000000"/>
-        <br/>apply the sequence with the <em>show</em> button
-        <span class="tooltip">
-            <span class="tooltiptext">
-                FFFFFF terminates the repeating sequence.
-                FEFEFE blends a thread with the background.
-                To save your favorite sequence: submit and copy-paste the URL fragment.
-            </span>
-        </span>
+        Apply the sequence with the <em>apply options</em> button
+        <br/>
+        FFFFFF terminates the repeating sequence,
+        FEFEFE blends a thread with the background.
+        <br/>
+        To save your favorite sequence: submit and copy-paste the URL fragment.
+        <br/>
         <br/>
         <input id="color" name="color" class="jscolor" value="CC0000" pattern="[a-fA-F0-9]{6}"/>
         <label for="color"> apply with the square start of a thread</label>
     </fieldset>
+    <fieldset id="downloadFieldSet" class="hide">
+        <legend>Downloads</legend>
+        <p>
+            A tablet will show a snapshot of the drawings in a new tab.
+            On a desk-top you can right-click to make the same choice.
+        </p>
+        <p>
+            <a id="dlPair" download="pair-diagram.svg" target="_blank" href="#"
+            >pair diagram</a>, <a id="dlThread" download="thread-diagram.svg" target="_blank" href="#"
+            >thread diagram</a>
+        </p>
+        <p>
+            Occasionally a foot side may be slightly tangled.
+            Pull gently to fix.
+            The thread diagram will shrink after a gentle nudge.
+        </p>
+        <p>
+            <a id="dlSheet" download="pattern-sheet.svg" target="_blank" href="#"
+            >pattern sheet</a>
+        </p>
+    </fieldset>
     <fieldset id="buttons">
-        <button onclick="load(); return false">show</button>
-        <span class="tooltip">
-            <span class="tooltiptext">
-                Generate diagrams.<br>
-                No page reload.
-            </span>
-        </span>
-        <button onclick="location.href='?'; return false">default</button>
-        <span class="tooltip">
-            <span class="tooltiptext">
-                Generate default diagrams.
-                The page address is reduced.<br>
-                The page reloads.
-            </span>
-        </span>
-        <button>submit</button>
-        <span class="tooltip">
-            <span class="tooltiptext">
-                Change page address to current form content.
-                It allows to bookmark the pattern.<br>
-                The page reloads.
-            </span>
-        </span>
+        <button onclick="load(); return false">apply options</button>
+        <button onclick="location.href='?'; return false">default configuration</button>
+        <button>configuration to address</button>
     </fieldset>
 </form>
-<p>
-    Download the <a id="dlPair" download="pair-diagram.svg" target="_blank" href="#"
->pair diagram</a>, <a id="dlThread" download="thread-diagram.svg" target="_blank" href="#"
->thread diagram</a>
-    <span class="tooltip">
-        <span class="tooltiptext">
-            Occasionally a footside may be slightly tangled.
-            Pull gently to fix.<br>
-            The thread diagram will shrink after a gentle nudge.<br>
-            Please wait until the animation completes before downloading.
-        </span>
-    </span> or <a id="dlSheet" download="pattern-sheet.svg" target="_blank" href="#"
->pattern sheet</a>.
-    <span class="tooltip">
-        <span class="tooltiptext">
-            A tablet will show the diagram in a new tab.
-            On a desk-top you can right-click to make the same choice.
-        </span>
-    </span>
-</p>
 <div id="diagrams">
     <div id="pairs"><img src="images/preview.png" title="preview while scripts are loading and execusting"></div>
     <div id="threads"></div>
@@ -240,5 +227,21 @@ C4=tctc</textarea>
       >D3.js</a>,&nbsp;<a href="http://jscolor.com/" title="Color Picker"
       >jsColor</a>
     </p>
-<script src="https://www.w3counter.com/tracker.js?id=102601"></script>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+        var sc_project=10865294;
+        var sc_invisible=0;
+        var sc_security="2e4f5d96";
+        var scJsHost = (("https:" == document.location.protocol) ?
+        "https://secure." : "http://www.");
+        document.write("<sc"+"ript type='text/javascript' src='" +
+        scJsHost+
+        "statcounter.com/counter/counter.js'></"+"script>");
+        </script>
+<noscript><div class="statcounter"><a title="web analytics"
+                                      href="http://statcounter.com/" target="_blank"><img
+        class="statcounter"
+        src="http://c.statcounter.com/10865294/0/2e4f5d96/0/"
+        alt="web analytics"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
 </body>

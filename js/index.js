@@ -51,6 +51,24 @@ function onChangeColor(el) {
     }
   }
 }
+var lastShown = "intro"
+function toggle(id, radio){
+  if (lastShown != undefined ) {
+    var el1a = document.getElementById(lastShown+"FieldSet")
+    el1a.classList.remove('show')
+    el1a.classList.add('hide')
+    var el1b = document.getElementById(lastShown+"Tab")
+    el1b.classList.remove('activeTab')
+    el1b.classList.add('inactiveTab')
+  }
+  var el2a = document.getElementById(id+"FieldSet")
+  el2a.classList.remove('hide')
+  el2a.classList.add('show')
+  var el2b = document.getElementById(id+"Tab")
+  el2b.classList.remove('inactiveTab')
+  el2b.classList.add('activeTab')
+  lastShown = id
+}
 function init() {
   var location = (window.location.href + "").replace("#","")
   var patterns = new dibl.PatternSheet(2, "height='210mm' width='297mm'")

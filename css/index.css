@@ -1,27 +1,38 @@
 body { max-width: 57.5em;  padding: 1em; margin-left: auto; margin-right: auto; }
 #pairs, #threads { width: 28em; height: 15em; }
+fieldset { width: 55em; }
 #sheet { width: 56.4em; height: 35em; }
-.wide { width: 25em }
 input { width: 3em; }
 .jscolor { width: 1.1em; }
 #color { display: inline; width: 4em; }
 
 #sheet { overflow: scroll; resize:both; } /* IE-9 doesn't resize */
 #pairs, #threads { overflow: hidden } /* resize combined with zooming and panning is buggy in firefox */
-#pairs, #threads, #sheet { border: solid 1px #AAA; }
+#pairs, #threads, #sheet, fieldset { border: solid 1px #AAA; }
 a img { overflow: hidden; border: solid 1px #AAA; }
 
 a img { vertical-align: middle; margin-bottom: 1em; }
 #logo img, #footer img { border: none; }
 div, input, textarea, #browsers { vertical-align: top;}
-button, #buttons { vertical-align: bottom;}
-button a, button { text-decoration: none; color: #000 }
-fieldset { padding: 0.5em; margin-left: 0; margin-right:0.1em; }
-fieldset p { margin-bottom:0; padding-bottom: 0; }
 form { margin-bottom: 1em }
 #sheet { margin-top: 0.2em; }
 #pairs, #threads { padding: 0 }
 #buttons { border: none; padding: 0; }
+
+.tabs { margin-bottom: 0; }
+.activeTab, .inactiveTab {
+    border-bottom: 0;
+    margin-bottom: 0;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.activeTab { background-color: #CCCCCC; }
+.inactiveTab { background-color: #EEEEEE; }
+legend { display: none; }
+fieldset { margin-bottom: 1em; }
+fieldset p { margin-bottom:0; padding-bottom: 0; }
 
 #logo img { float: right }
 #pattern, #stitchFiedSet { float: left; margin-right:0.4em; }
@@ -30,51 +41,3 @@ form { margin-bottom: 1em }
 
 #pairs, #threads, #sheet, fieldset, .show { display: inline-block; }
 .hide { display: none }
-
-.tooltip, node {
-    position: relative;
-    display: inline-block;
-}
-.tooltip {
-    width: 16px;
-    height: 16px;
-    background-image: url(../images/information-icon.png);
-    vertical-align: middle;
-    margin-right: 0.7em;
-}
-legend .tooltip {
-    margin-right: 0em;
-}
-.tooltip .tooltiptext, node title {
-    visibility: hidden;
-    background-color: #FFFB84;
-    opacity: 0.9;
-    color: #000;
-    text-align: left;
-    border: solid #999 1px; /* same as border-color for pointer from tip to tool */
-    border-radius: 0.4em;
-    padding: 0.4em;
-    position: absolute;
-    z-index: 1;
-    bottom: 150%;
-    left: 50%;
-    width: 8em;
-    margin-left: -4.35em; /* ( width + border-width of pointer )/2 */
-}
-
-/* the pointer from tip to tool */
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-top: 1px;
-    margin-left: -0.7em; /* same as border-width */
-    border-width: 0.7em;
-    border-style: solid;
-    border-color: #999 transparent transparent transparent;
-}
-
-.tooltip:hover .tooltiptext, node text {
-    visibility: visible;
-}
