@@ -118,14 +118,14 @@ private class Pattern (tileMatrix: String,
 
   def createNode(row: Int, col: Int): String = {
     val i = needColor.indexOf(tt.toAbsTileIndices(row, col, tileRows, tileCols))
-    val color = if (i < 0) "999999" else {
+    val color = if (i < 0) "333333" else {
       val hue = (i + 0f) / needColor.size
       val brightness = 0.2f + 0.15f * (i % 3)
       hslToRgb(hue, 1f, brightness)
     }
     s"""    <path
         |      d='m ${toX(col) + 2},${toY(row)} a 2,2 0 0 1 -2,2 2,2 0 0 1 -2,-2 2,2 0 0 1 2,-2 2,2 0 0 1 2,2 z'
-        |      style='fill:#$color;fill-opacity:0.85;stroke:none'
+        |      style='fill:#$color;stroke:none'
         |    />
         |""".stripMargin
   }
@@ -154,13 +154,13 @@ private class Pattern (tileMatrix: String,
 
   def clones: String = {
     (for { // TODO somehow refactor computations into TileType
-      dY <- List.range(start = 0, end = 250 - tileRows * 10, step = tileRows * 10)
+      dY <- List.range(start = 0, end = 270 - tileRows * 10, step = tileRows * 10)
       startX = if (tileType != "bricks" || 0 == dY % (tileRows * 20)) 0 else 5 * tileCols
-      dX <- List.range(start = startX, end = 320 - tileCols * 10, step = tileCols * 10)
+      dX <- List.range(start = startX, end = 330 - tileCols * 10, step = tileCols * 10)
     } yield s"""    <use
                 |      transform='translate($dX,$dY)'
                 |      xlink:href='#$groupId'
-                |      style='stroke:#000;fill:none'
+                |      style='fill-opacity:0.1'
                 |    />
                 |""".stripMargin).tail.mkString
   }
