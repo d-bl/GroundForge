@@ -54,6 +54,7 @@
             <li>
                 Nudging pins to slightly different positions can have a significant effect on the shapes in the pair diagram.
                 The pattern sheet below the diagrams has one or more variants.
+                These variants are limited to some predefined grid.
                 The colors of the dots help to customize a patch to your own taste and needs.
             </li>
         </ul>
@@ -74,10 +75,15 @@
 
         <a href="?matrix=586- -4-5 5-21 -5-7&rows=12&cols=9&&left=1&up=1&stitches=A3=tctc,D4=lctc,B4=rctc,A1=ctc,A2=tctc,C1=tctc,D2=rctc,B2=lctc,C3=ctc,C4=tctc"><img src="thumbs/001.png" title="pinwheel"></a>
         </p>
-        <p>Many <a href="thumbs.html">more</a>, most might need some tuning of footsides and stitches.</p>
+        <p>Many <a href="thumbs.html">more</a>...</p>
     </fieldset>
     <fieldset id="patternFieldSet" class="hide">
         <legend>Pattern matrix</legend>
+        <p>
+            Each thumbnail is defined with a matrix.
+            How the matrix works is explained with a legend and an example.
+            Note on the legend: larger arrows represent double length lines, they skip a grid position.
+        </p>
         <img src="images/legend.png" id="legend" alt="legend" align="right">
         <div>
             <select name="tiles" id="tiles">
@@ -91,16 +97,14 @@
 -4-5
 5-21
 -5-7</textarea>
-        <p>Note on the legend: larger arrows represent double length lines (skipping a grid position)</p>
     </fieldset>
     <fieldset id="stitchFieldSet" class="hide wide">
         <legend>Stitches</legend>
+        <p>Legend: c(ross) t(wist) l(eft-twist) r(ight-twist) p(in)</p>
 <textarea id="stitches" name="stitches" rows="2" cols="100" spellcheck="false"
 >A3=tctc D4=lctc B4=rctc A1=ctc A2=tctc
 C1=tctc D2=rctc B2=lctc C3=ctc C4=tctc</textarea>
-        <br/>
-        Legend: c(ross) t(wist) l(eft-twist) r(ight-twist) p(in)
-        Hover over stitches in the pair diagram for IDs.
+        <p>Hover over stitches in the pair diagram for IDs.</p>
     </fieldset>
     <fieldset id="sizeFieldSet" class="hide">
         <legend>Patch size</legend>
@@ -125,14 +129,21 @@ C1=tctc D2=rctc B2=lctc C3=ctc C4=tctc</textarea>
         <label for="left">columns</label>
         <input id="left" name="up" min="0" value="1" type="number"/>
         <p>
-            Fiddling with these parameters may help to get a proper foot side and thread diagram,
-            but the possibilities grow exponentially with the matrix dimensions.
+            A proper footside is required to generate a thread diagram.
+            The current implementation to calculate a foot side is quite poor
+            so only some combination of values above may render a thread diagram.
+            For matrices up to 4x4 you can use the following procedure to pick values that work.
         </p>
-        <p>
-            Copy the matrix, remember the type of tile arrangement.
-            Fill in both on the <a href="footsides.html" target="_blank">foot sides</a> page,
-            have some patience and make your choice.
-        </p>
+        <ul>
+            <li>Copy the text field of the matrix tab.</li>
+            <li>Rremember the type of tile arrangement.</li>
+            <li>Go to the <a href="footsides.html" target="_blank">foot sides</a> page.</li>
+            <li>Fill in the above two values.</li>
+            <li>Even for a computer exploring all the possibilieties can be a herculanium task.
+                So have some patience, perhaps confirm to continue the JavaScript once.
+            </li>
+            <li>Scroll down the page and make your choice</li>
+        </ul>
     </fieldset>
     <fieldset id="hiddenFieldSet" class="hide">
         <legend>Hidden diagram components</legend>
