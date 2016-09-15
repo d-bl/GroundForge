@@ -5,6 +5,7 @@ fieldset { width: 55em; }
 input { width: 3em; }
 .jscolor { width: 1.1em; }
 #color { display: inline; width: 4em; }
+ul { padding-left: 1.5em; }
 
 #sheet { overflow: scroll; resize:both; } /* IE-9 doesn't resize */
 #pairs, #threads { overflow: hidden } /* resize combined with zooming and panning is buggy in firefox */
@@ -31,7 +32,7 @@ form { margin-bottom: 1em }
 .activeTab { background-color: #CCCCCC; }
 .inactiveTab { background-color: #EEEEEE; }
 legend { display: none; }
-fieldset { margin-bottom: 1em; }
+fieldset { margin-bottom: 1em; padding-left: 2em; padding-right: 2em; }
 fieldset p { margin-bottom:0; padding-bottom: 0; }
 
 #logo img { float: right }
