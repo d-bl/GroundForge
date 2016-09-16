@@ -4,8 +4,7 @@ fieldset { width: 52em; }
 fieldset { margin: 0; margin-bottom: 1em; padding-left: 2em; padding-right: 2em; }
 #sheet { width: 56.4em; height: 35em; }
 input { width: 3em; }
-.jscolor { width: 1.1em; }
-#color { display: inline; width: 4em; }
+.jscolor { width: 3.3em; }
 ul { padding-left: 1.5em; }
 
 #sheet { overflow: scroll; resize:both; } /* IE-9 doesn't resize */
@@ -26,8 +25,8 @@ form { margin-bottom: 1em }
     border-bottom: 0;
     margin-bottom: 0;
     padding-bottom: 0;
-    border-top-left-radius: 0.5em;
-    border-top-right-radius: 0.5em;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }

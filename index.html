@@ -82,18 +82,19 @@
         <legend>Pattern matrix</legend>
         <p>
             Each thumbnail is defined with a matrix.
-            How the matrix works is explained with a legend and an example.
-            Note on the legend: larger arrows represent double length lines, they skip a grid position.
+            Arrows in the legend show the meaning of the characters.
+            Larger arrows represent double length lines, they skip a grid position.
+            The grey shapes show how the matrices are tiled.
         </p>
         <img src="images/legend.png" id="legend" alt="legend" align="right">
         <div>
-            <select name="tiles" id="tiles">
+            <select name="tiles" id="tiles" onchange="updatePatternSheet()">
                 <option value="bricks">Brick wall</option>
                 <option value="checker" selected>Checker board</option>
             </select>
             <label for="tiles"> tiles</label>
         </div>
-        <textarea id="matrix" name="matrix" rows="4" cols="6" spellcheck="false"
+        <textarea id="matrix" name="matrix" rows="4" cols="6" spellcheck="false" onchange="updatePatternSheet()"
         >586-
 -4-5
 5-21
@@ -118,13 +119,13 @@
             <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color14" name="color14" class="jscolor" value="000000"/>
             <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color15" name="color15" class="jscolor" value="000000"/>
             <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color16" name="color16" class="jscolor" value="000000"/>
-            Apply the sequence with the <em>apply options</em> button
         </p>
         <p>
-            FFFFFF terminates the repeating sequence,
+            Apply the repeating sequence above with the <em>apply options</em> button
+            FFFFFF terminates the sequence,
             FEFEFE blends a thread with the background.
+            To save your favorite sequence: submit and copy-paste the URL fragment.
         </p>
-        To save your favorite sequence: submit and copy-paste the URL fragment.
         <p>
             <input id="color" name="color" class="jscolor" value="CC0000" pattern="[a-fA-F0-9]{6}"/>
             <label for="color"> apply with the square start of a thread</label>
