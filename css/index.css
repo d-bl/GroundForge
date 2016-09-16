@@ -1,6 +1,7 @@
 body { max-width: 57.5em;  padding: 1em; margin-left: auto; margin-right: auto; }
 #pairs, #threads { width: 28em; height: 15em; }
-fieldset { width: 55em; }
+fieldset { width: 52em; }
+fieldset { margin: 0; margin-bottom: 1em; padding-left: 2em; padding-right: 2em; }
 #sheet { width: 56.4em; height: 35em; }
 input { width: 3em; }
 .jscolor { width: 1.1em; }
@@ -20,10 +21,11 @@ form { margin-bottom: 1em }
 #pairs, #threads { padding: 0 }
 #buttons { border: none; padding: 0; }
 
-.tabs { margin-bottom: 0; }
+.tabs { margin-bottom: 0; padding-bottom: 0; }
 .activeTab, .inactiveTab {
     border-bottom: 0;
     margin-bottom: 0;
+    padding-bottom: 0;
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
     border-bottom-left-radius: 0;
@@ -32,12 +34,10 @@ form { margin-bottom: 1em }
 .activeTab { background-color: #CCCCCC; }
 .inactiveTab { background-color: #EEEEEE; }
 legend { display: none; }
-fieldset { margin-bottom: 1em; padding-left: 2em; padding-right: 2em; }
-fieldset p { margin-bottom:0; padding-bottom: 0; }
 
 #logo img { float: right }
 #pattern, #stitchFiedSet { float: left; margin-right:0.4em; }
-#pairs { clear: both }
+#pairs, form { clear: both }
 #diagrams { clear: left; margin-top: 0.5em; }
 
 #pairs, #threads, #sheet, fieldset, .show { display: inline-block; }
