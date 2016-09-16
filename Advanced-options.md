@@ -17,13 +17,3 @@ The matrices can be stacked as a brick wall or as a checkerboard:
     |___|___|___|    |___|___|___|
     __|___|___|__    |___|___|___|
     |___|___|___|    |___|___|___|
-
-# Hidden diagram components
-
-Hidden components may enlighten the current problems with pins, see also [issue #51].
-
-# Buttons
-
-* `Show` (re)generates both diagrams without requiring web access. The pattern sheet is not affected.
-* `Default` requires web access. It shortens the URL by stripping the part after the question mark an generates the default diagrams.
-* `Submit` requires web access and regenerates both diagrams. It creates new values after the question mark in the URL and reloads the page from the web. The new URL allow to create a bookmark or favorite with the chosen configuration.
