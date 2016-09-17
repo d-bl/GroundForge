@@ -157,11 +157,11 @@ diagram.showGraph = function(args) {
     }
 
     // a higher speed for IE as marks only appear when the animation is finished
-    var mod = isMobileMac ? 10 : isIE ? 3 : 2
+    var mod = isMobileMac ? 10 : isIE ? 6 : 3
     var step = 0
     var simTicked = function() {
-                         //if ( ((step++)%mod) != 0) return // skip rendering
-                         //step++
+                         if ( ((step++)%mod) != 0) return // skip rendering
+                         step++
                          nodes.attr("transform", moveNode)
                          links.attr("d", drawPath)
                      }
@@ -172,6 +172,7 @@ diagram.showGraph = function(args) {
     var sim = d3.forceSimulation(args.nodes)
         .force("charge", d3.forceManyBody().strength(-10))
         .force("link", d3.forceLink(args.links).strength(2).distance(10).iterations(20))
+        .force("center", d3.forceCenter(220,130))
         .alpha(0.01)
         .on("tick", simTicked)
         .on("end", simEnded)

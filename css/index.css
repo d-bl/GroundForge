@@ -4,7 +4,7 @@ fieldset { width: 52em; }
 fieldset { margin: 0; margin-bottom: 1em; padding-left: 2em; padding-right: 2em; }
 #sheet { width: 56.4em; height: 35em; }
 input { width: 3em; }
-.jscolor { width: 3.3em; }
+.jscolor { width: 3.7em; font-family: "Courier New", "Monospace"; font-size: 0.7em; }
 ul { padding-left: 1.5em; }
 
 #sheet { overflow: scroll; resize:both; } /* IE-9 doesn't resize */

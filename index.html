@@ -19,9 +19,8 @@
     <h1>GroundForge</h1>
     <p><em>A toolbox to design bobbin lace grounds or braids with matching diagrams.</em></p>
 
-    <p>The <a href="https://github.com/d-bl/GroundForge/wiki"
-        >user guide</a> provides more details and hints than given in the tabs.
-        You are invited to enhance the user guide so other users can benefit from your experience.
+    <p>
+        The "introduction" and "download" tabs are recommended for first-time visitors.
         We'd love to see <a href="https://github.com/d-bl/GroundForge/issues/50"
         >your creations</a>.
     </p>
@@ -29,7 +28,7 @@
 <form>
     <p class="tabs">
         <button class="inactiveTab" id="introTab" onclick="toggle('intro');return false">introduction</button>
-        <button class="inactiveTab" id="downloadTab" onclick="toggle('download');return false">downloads</button>
+        <button class="inactiveTab" id="downloadTab" onclick="toggle('download');return false">download</button>
         <button class="activeTab" id="thumbnailsTab" onclick="toggle('thumbnails');return false">thumbnails</button>
         <button class="inactiveTab" id="patternTab" onclick="toggle('pattern');return false">matrix</button>
         <button class="inactiveTab" id="stitchTab" onclick="toggle('stitch');return false">stitches</button>
@@ -59,6 +58,12 @@
                 The colors of the dots help to customize a patch to your own taste and needs.
             </li>
         </ul>
+        <p>
+            Changes made in the matrix tab are immediately shown in the pattern sheet.
+            As the animation takes some time, updating the pair and thread diagrams requires confirmation with
+            the "apply options" or "prepare bookmark" button, the latter reloads the full page
+            and allows to save your configuration.
+        </p>
     </fieldset>
     <fieldset id="thumbnailsFieldSet" class="show">
         <legend>Thumbnails</legend>
@@ -66,7 +71,7 @@
         <p>
         <a href="?matrix=5632 5632&patch=5- -5&patch=5353 5353 5-5- -5-5&patch=5632 56-2 5-5- -535&patch=44 77 44 77;bricks&patch=44 44 77 77;bricks&rows=5&cols=7&left=1&up=1&stitches=A1=tc,B1=tctc,C1=tc,D1=tctc,A2=tc,B2=tc,C2=tc,D2=tc"><img src="thumbs/214.png" title="Torchon (with variations)"></a>
 
-        <a href="?matrix=5632 34-7&tiles=bricks&patch=-5-5 5-5- -5-- B-C-;bricks&patch=256- ---5 C3B-;bricks&patch=5632 34-7;bricks&patch=4373 5-53;bricks&rows=5&cols=3&up=3&left=1&stitches=A1=tplc,B1=tcttpc,C1=tprc,D1=ttcttpc,A2=rtc,B2=tcttpc,C2=ltc,D2=tc"><img src="thumbs/135.png" title="small snow (Binche)"></a>
+        <a href="?matrix=5632 34-7&tiles=bricks&patch=-5-5 5-5- -5-- B-C-;bricks&patch=256- ---5 C3B-;bricks&bricks&patch=4373 5-53;bricks&rows=5&cols=3&up=3&left=1&stitches=A1=tplc,B1=tcttpc,C1=tprc,D1=ttcttpc,A2=rtc,B2=tcttpc,C2=ltc,D2=tc"><img src="thumbs/135.png" title="small snow (Binche)"></a>
 
         <a href="?matrix=5831 -4-7&tiles=bricks&patch=-437 34-7;bricks&patch=4830 --77;bricks&up=3&left=1&rows=8&cols=7&stitches=A1=tc,C1=tc,A2=tc,B2=ptc,C2=tc,D2=tc"><img src="thumbs/130.png" title="rose (Torchon) / Flanders"></a>
 
@@ -196,28 +201,42 @@ C1=tctc D2=rctc B2=lctc C3=ctc C4=tctc</textarea>
         </p>
     </fieldset>
     <fieldset id="downloadFieldSet" class="hide">
-        <legend>Downloads</legend>
+        <legend>Download</legend>
         <p>
-            <a id="dlPair" download="pair-diagram.svg" target="_blank" href="#"
-            >pair diagram</a>, <a id="dlThread" download="thread-diagram.svg" target="_blank" href="#"
-            >thread diagram</a> or
-            <a id="dlSheet" download="pattern-sheet.svg" target="_blank" href="#"
-            >pattern sheet</a>
+            The links below allow to download the images as <a href="https://wikipedia.org/wiki/Scalable_Vector_Graphics"
+            >SVG</a> documents, or show them in a new tab or window to see a complete image.
+            Download is the default behaviour for desktop browsers, a new tab is the default for iPad-Safari.
+            For Internet Explorer right-click the desired image itself and choose "save image as...".
         </p>
         <p>
-            A tablet will show a snapshot of the drawings in a new tab.
-            On a desk-top you can right-click to make the same choice.
-            Occasionally a foot side may be slightly tangled.
-            Pull gently to fix.
-            The thread diagram will shrink after a gentle nudge.
+            <a id="dlSheet" download="pattern-sheet.svg" target="_blank" href="#"
+            >pattern sheet</a> &mdash; <a id="dlPair" download="pair-diagram.svg" target="_blank" href="#"
+            >pair diagram</a> &mdash; <a id="dlThread" download="thread-diagram.svg" target="_blank" href="#"
+            >thread diagram</a>
+        </p>
+        <p>
+            The generated pattern sheet is limited to a fixed grid,
+            intermediate positions allow more interesting configurations.
+            The <a href="https://github.com/d-bl/GroundForge/wiki"
+            >user guide</a> explains how to customize a pattern sheet.
+            You are invited to enhance the user guide so other users can benefit from your experience.
+        </p>
+        <p>
+            You may want to position a diagram in the top left corner before viewing in another tab
+            and/or shrink the thread diagram. Shrinking is a side-effect of a gentle nudge.
+            Your own fantasy may have a purpose to edit a downloaded diagram.
         </p>
     </fieldset>
     <fieldset id="buttons">
         <button onclick="load(); return false">apply options</button>
         <button onclick="location.href='?'; return false">default configuration</button>
-        <button>configuration to address</button>
+        <button>prepare bookmark</button>
     </fieldset>
 </form>
+<p>
+    Occasionally the pair diagram may have slightly tangled footsides, pull gently to fix.
+    The thread diagram will shrink considerably as a side effect of a gentle nudge.
+</p>
 <div id="diagrams">
     <div id="pairs"><img src="images/preview.png" title="preview while scripts are loading and execusting"></div>
     <div id="threads"></div>
