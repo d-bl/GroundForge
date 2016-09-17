@@ -20,10 +20,10 @@ When satisfied you can create a bigger patch the same way you moved the first fo
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
 [SVG editor]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
+[logo]: https://d-bl.github.io/GroundForge/images/logo-medium.png
 
-
-Screenshots
------------
+Screenshots with InkScape 0.91
+------------------------------
 
 _On top_: Generated patches with the initial tile/repeat selected.
 
@@ -31,5 +31,13 @@ _Second row_: Assembling a new patch with four copies of the initial tile/repeat
 
 _At the bottom_: One dot per tile/repeat selected and nudged to another position.
 
-[logo]: https://d-bl.github.io/GroundForge/images/logo-medium.png
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/reshape-using-copies.png)
+
+Screenshots with Adobe Illustrator v2015-3.1
+--------------------------------------------
+
+_Left_ Assembling a new patch
+
+_Right_ Moving corresponding dots after selecting them "select direct"
+
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/reshape-with-ai.png)
