@@ -20,8 +20,8 @@ When satisfied you can create a bigger patch the same way you moved the first fo
 [SVG editor]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
 [logo]: https://d-bl.github.io/GroundForge/images/logo-medium.png
 
-Screenshots with InkScape 0.91
-------------------------------
+Screenshots with InkScape v0.91
+-------------------------------
 
 _On top_: Generated patches with the initial tile/repeat selected.
 
