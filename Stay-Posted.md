@@ -2,7 +2,7 @@ To receive email alerts about discussions:
 * use the "watch" button almost on top of this page.
 
 Now and then visit:
-* the  the change [history] of the wiki pages alias the user guide
+* the change [history] of the wiki pages alias the user guide
 * the [release notes] which may be a little behind on the actual [changes]
 
 [history]: https://github.com/d-bl/GroundForge/wiki/_history
