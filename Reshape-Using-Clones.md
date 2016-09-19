@@ -4,7 +4,7 @@ _Customize a generated pattern to your own taste._
 Editor Requirements
 -------------------
 
-The SVG editor should have "full" support for clones or `<use>` elements in SVG terminology. "Full" means that the clones are not plain copies but reflect changes made to the original. For example InkPad importS clones properly but doesn't have the "full" support. On the other hand does CorelDRAW have the full suport of clones, but doesn't import them correctly. So in case of CorelDRAW you need some preparations.
+The SVG editor should have "full" support for clones or `<use>` elements in SVG terminology. "Full" means that the clones are not plain copies but reflect changes made to the original. For example InkPad importS clones properly but doesn't have the "full" support. On the other hand does CorelDRAW have the full suport of clones, but doesn't import them correctly. So in case of [CorelDRAW] you need some preparations.
 
 The editor should have a mode to manipulate objects, and a mode to deal with nodes on objects.
 
@@ -12,12 +12,15 @@ The editor should have a mode to manipulate objects, and a mode to deal with nod
 The procedure
 -------------
 
+The procedure is written for two specific SVG editors but might work with small differences for other editors too.
+
 In short:
 
 Download a pattern-sheet from [GroundForge] and open it with the SVG editor. 
 All tiles (or repeats) in a patch change along with changes made to the slightly separated tile/repeat in the top left corner. Select a dot by its nodes to drag the connected lines along, move nodes with the same color together to move all four connected lines.
 
 [InkScape]: http://inkscape.org
+[CorelDRAW]: http://www.coreldraw.com/en/product/graphic-design-software/
 [GroundForge]: https://d-bl.github.io/GroundForge/
 
 ### Step by step for [InkScape] v0.91.
