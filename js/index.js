@@ -119,9 +119,6 @@ function setHref (comp, id) {
       replace('pointer-events="all"', 'xmlns:svg="http://www.w3.org/2000/svg" ' +
                                       'xmlns="http://www.w3.org/2000/svg" ' +
                                       'xmlns:xlink="http://www.w3.org/1999/xlink"').
-      replace(/transform="[^"]+"/, '').
-      replace(/<rect.*?rect>/, '').
-      replace(/<circle [^>]+opacity: 0;.+?circle>/g, '').
       replace(/<path [^>]+opacity: 0;.+?path>/g, '')
   comp.href = 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
 }

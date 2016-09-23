@@ -157,23 +157,24 @@ diagram.showGraph = function(args) {
     }
 
     // a higher speed for IE as marks only appear when the animation is finished
-    var mod = isMobileMac ? 10 : isIE ? 6 : 3
+    var mod = isMobileMac ? 15 : isIE ? 9 : 5
     var step = 0
     var simTicked = function() {
                          if ( ((step++)%mod) != 0) return // skip rendering
-                         step++
+                         console.log(step+' '+sim.alpha()+' '+sim.alphaDecay())
                          nodes.attr("transform", moveNode)
                          links.attr("d", drawPath)
                      }
     var simEnded = function(){
+                      if (step < 400 && !isIE) sim.alpha(0.02).restart() // restart shrinking
                       if (isIE) diagram.markLinks(links)
                       if (args.onAnimationEnd) args.onAnimationEnd()
                     }
     var sim = d3.forceSimulation(args.nodes)
         .force("charge", d3.forceManyBody().strength(-10))
-        .force("link", d3.forceLink(args.links).strength(2).distance(10).iterations(20))
+        .force("link", d3.forceLink(args.links).strength(1).distance(10).iterations(15))
         .force("center", d3.forceCenter(220,130))
-        .alpha(0.01)
+        .alpha(0.02)
         .on("tick", simTicked)
         .on("end", simEnded)
 
@@ -181,7 +182,8 @@ diagram.showGraph = function(args) {
 
     htmlContainer.call( d3.zoom().on("zoom", zoomed) )
     function zoomed() {
-      svgContainer.attr("transform", d3.event.transform);
+      svgContainer.attr("transform", d3.event.transform)
+      if (args.onAnimationEnd) args.onAnimationEnd()
     }
 
     // dragging nodes
@@ -191,7 +193,7 @@ diagram.showGraph = function(args) {
                    .on("drag", dragged)
                    .on("end", dragended))
     function dragstarted(d) {
-      if (!d3.event.active) sim.alphaTarget(0.01).restart();
+      if (!d3.event.active) sim.alpha(0.02).restart()
       d.fx = d.x;
       d.fy = d.y;
     }
@@ -200,7 +202,7 @@ diagram.showGraph = function(args) {
       d.fy = d3.event.y;
     }
     function dragended(d) {
-      if (!d3.event.active) sim.alphaTarget(0.01);
+      if (!d3.event.active) sim.alpha(0.02).restart()
       d.fx = null;
       d.fy = null;
     }
