@@ -11,21 +11,25 @@
   <script src="js/show-graph.js"></script>
   <script src="js/matrix-graphs.js"></script>
   <script>
-    function show() {
+    function init() {
+      var args = {}
+      var location = (window.location.href + "").replace("#","")
+      // for each key-value pair in the URL query
+      location.replace(/[?&]+([^=&]+)(=([^&]*))?/gi, function(m,key,m2,value) {
+          args[key] = decodeURIComponent(value)
+      })
       var stitches = 'A1=ctc A2=ctc A3=ctc A4=ctc '+
                      'B1=ctc B2=ctc B3=ctc B4=ctc '+
                      'C1=ctc C2=ctc C3=ctc C4=ctc '+
                      'D1=ctc D2=ctc D3=ctc D4=ctc '
-      var m = document.getElementById('matrix').value
-      var mRows = m.split(/[^-0-9A-O]+/)
+      var mRows = args.matrix.split(/[^-0-9A-O]+/)
       var rows = mRows.length
       var cols = mRows[0].length
-      var bricks = document.getElementById('bricks').checked
       var nrOfRows = 10
       for (nrOfCols=6 ; nrOfCols < 6+cols ; nrOfCols++) {
         for (shiftLeft=0 ; shiftLeft < rows ; shiftLeft++) {
           for (shiftUp=0 ; shiftUp < cols ; shiftUp++) {
-            data = dibl.D3Data().get(m, nrOfRows, nrOfCols, shiftUp, shiftLeft, stitches, bricks? "bricks" : "checker")
+            data = dibl.D3Data().get(mRows, nrOfRows, nrOfCols, shiftUp, shiftLeft, stitches, args.tiles)
             var id = ''+nrOfCols+shiftLeft+shiftUp
             var el = document.getElementById('d'+id)
             if (!el) continue
@@ -41,8 +45,8 @@
               transform: "translate(0,0)scale(0.5)",
             })
             document.getElementById('L'+id).href = 'index.html?matrix=' +
-              document.getElementById('matrix').value.replace( /[^-0-9A-D]+/g, '%0D') +
-              '&tiles=' + (bricks ? 'bricks' : 'checker') +
+              args.matrix.replace( /[^-0-9A-D]+/g, '%0D') +
+              '&tiles=' + args.tiles +
               '&rows=9&cols=' + nrOfCols +
               '&left=' + shiftLeft +
               '&up=' + shiftUp
@@ -53,7 +57,7 @@
   </script>
   <title>GroundForge : Select foot sides</title>
 </head>
-<body>
+<body onload="init()">
   <img style="float: right" src="images/logo-medium.png" alt="DiBL logo"
        title="3 tiles each with a single stitch. Thick coloured lines for the pair diagram, thin black lines for a thread diagram"/>
   <h1>GroundForge - select foot sides</h1>
@@ -62,87 +66,79 @@
     With the current poor implementation to calculate a foot side, few configurations might render a proper thread diagram.
     This page lets you choose a configuration. It is limited to 4x4 matrices.
   </p>
-  <form>
-  <label for="matrix">Pattern matrix</label>
-<textarea id="matrix" name="matrix" rows="4" cols="6" spellcheck="false"
->586-
--4-5
-5-21
--5-7</textarea>
-  <br/>
-  <label for="bricks">Stack as bricks</label>
-  <input id="bricks" name="bricks" type="checkbox">
-  <p><button>reset</button><button onclick="show(); return false">show</button><em>
+  <p><em>
     N.B: Please have patience, may not be suited for tablets.
     It might also ask you to continue a slow script.
   </em></p>
-  </form>
+  <p>
+    Zoom and pan to examine, use one of the linked arrows to make your choice.
+  </p>
 
   <h2>6 columns</h2>
-    <div id="d600"></div><a id="L600" href="#">( )</a>
-    <div id="d601"></div><a id="L601" href="#">( )</a>
-    <div id="d602"></div><a id="L602" href="#">( )</a>
-    <div id="d603"></div><a id="L603" href="#">( )</a><br>
-    <div id="d610"></div><a id="L610" href="#">( )</a>
-    <div id="d611"></div><a id="L611" href="#">( )</a>
-    <div id="d612"></div><a id="L612" href="#">( )</a>
-    <div id="d613"></div><a id="L613" href="#">( )</a><br>
-    <div id="d620"></div><a id="L620" href="#">( )</a>
-    <div id="d621"></div><a id="L621" href="#">( )</a>
-    <div id="d622"></div><a id="L622" href="#">( )</a>
-    <div id="d623"></div><a id="L623" href="#">( )</a><br>
-    <div id="d630"></div><a id="L630" href="#">( )</a>
-    <div id="d631"></div><a id="L631" href="#">( )</a>
-    <div id="d632"></div><a id="L632" href="#">( )</a>
-    <div id="d633"></div><a id="L633" href="#">( )</a><h2>7 columns</h2>
-    <div id="d700"></div><a id="L700" href="#">( )</a>
-    <div id="d701"></div><a id="L701" href="#">( )</a>
-    <div id="d702"></div><a id="L702" href="#">( )</a>
-    <div id="d703"></div><a id="L703" href="#">( )</a><br>
-    <div id="d710"></div><a id="L710" href="#">( )</a>
-    <div id="d711"></div><a id="L711" href="#">( )</a>
-    <div id="d712"></div><a id="L712" href="#">( )</a>
-    <div id="d713"></div><a id="L713" href="#">( )</a><br>
-    <div id="d720"></div><a id="L720" href="#">( )</a>
-    <div id="d721"></div><a id="L721" href="#">( )</a>
-    <div id="d722"></div><a id="L722" href="#">( )</a>
-    <div id="d723"></div><a id="L723" href="#">( )</a><br>
-    <div id="d730"></div><a id="L730" href="#">( )</a>
-    <div id="d731"></div><a id="L731" href="#">( )</a>
-    <div id="d732"></div><a id="L732" href="#">( )</a>
-    <div id="d733"></div><a id="L733" href="#">( )</a><h2>8 columns</h2>
-    <div id="d800"></div><a id="L800" href="#">( )</a>
-    <div id="d801"></div><a id="L801" href="#">( )</a>
-    <div id="d802"></div><a id="L802" href="#">( )</a>
-    <div id="d803"></div><a id="L803" href="#">( )</a><br>
-    <div id="d810"></div><a id="L810" href="#">( )</a>
-    <div id="d811"></div><a id="L811" href="#">( )</a>
-    <div id="d812"></div><a id="L812" href="#">( )</a>
-    <div id="d813"></div><a id="L813" href="#">( )</a><br>
-    <div id="d820"></div><a id="L820" href="#">( )</a>
-    <div id="d821"></div><a id="L821" href="#">( )</a>
-    <div id="d822"></div><a id="L822" href="#">( )</a>
-    <div id="d823"></div><a id="L823" href="#">( )</a><br>
-    <div id="d830"></div><a id="L830" href="#">( )</a>
-    <div id="d831"></div><a id="L831" href="#">( )</a>
-    <div id="d832"></div><a id="L832" href="#">( )</a>
-    <div id="d833"></div><a id="L833" href="#">( )</a><h2>9 columns</h2>
-    <div id="d900"></div><a id="L900" href="#">( )</a>
-    <div id="d901"></div><a id="L901" href="#">( )</a>
-    <div id="d902"></div><a id="L902" href="#">( )</a>
-    <div id="d903"></div><a id="L903" href="#">( )</a><br>
-    <div id="d910"></div><a id="L910" href="#">( )</a>
-    <div id="d911"></div><a id="L911" href="#">( )</a>
-    <div id="d912"></div><a id="L912" href="#">( )</a>
-    <div id="d913"></div><a id="L913" href="#">( )</a><br>
-    <div id="d920"></div><a id="L920" href="#">( )</a>
-    <div id="d921"></div><a id="L921" href="#">( )</a>
-    <div id="d922"></div><a id="L922" href="#">( )</a>
-    <div id="d923"></div><a id="L923" href="#">( )</a><br>
-    <div id="d930"></div><a id="L930" href="#">( )</a>
-    <div id="d931"></div><a id="L931" href="#">( )</a>
-    <div id="d932"></div><a id="L932" href="#">( )</a>
-    <div id="d933"></div><a id="L933" href="#">( )</a>
+    <div id="d600"></div><a id="L600" href="#">=></a>&emsp;
+    <div id="d601"></div><a id="L601" href="#">=></a>&emsp;
+    <div id="d602"></div><a id="L602" href="#">=></a>&emsp;
+    <div id="d603"></div><a id="L603" href="#">=></a>&emsp;<br>
+    <div id="d610"></div><a id="L610" href="#">=></a>&emsp;
+    <div id="d611"></div><a id="L611" href="#">=></a>&emsp;
+    <div id="d612"></div><a id="L612" href="#">=></a>&emsp;
+    <div id="d613"></div><a id="L613" href="#">=></a>&emsp;<br>
+    <div id="d620"></div><a id="L620" href="#">=></a>&emsp;
+    <div id="d621"></div><a id="L621" href="#">=></a>&emsp;
+    <div id="d622"></div><a id="L622" href="#">=></a>&emsp;
+    <div id="d623"></div><a id="L623" href="#">=></a>&emsp;<br>
+    <div id="d630"></div><a id="L630" href="#">=></a>&emsp;
+    <div id="d631"></div><a id="L631" href="#">=></a>&emsp;
+    <div id="d632"></div><a id="L632" href="#">=></a>&emsp;
+    <div id="d633"></div><a id="L633" href="#">=></a>&emsp;<h2>7 columns</h2>
+    <div id="d700"></div><a id="L700" href="#">=></a>&emsp;
+    <div id="d701"></div><a id="L701" href="#">=></a>&emsp;
+    <div id="d702"></div><a id="L702" href="#">=></a>&emsp;
+    <div id="d703"></div><a id="L703" href="#">=></a>&emsp;<br>
+    <div id="d710"></div><a id="L710" href="#">=></a>&emsp;
+    <div id="d711"></div><a id="L711" href="#">=></a>&emsp;
+    <div id="d712"></div><a id="L712" href="#">=></a>&emsp;
+    <div id="d713"></div><a id="L713" href="#">=></a>&emsp;<br>
+    <div id="d720"></div><a id="L720" href="#">=></a>&emsp;
+    <div id="d721"></div><a id="L721" href="#">=></a>&emsp;
+    <div id="d722"></div><a id="L722" href="#">=></a>&emsp;
+    <div id="d723"></div><a id="L723" href="#">=></a>&emsp;<br>
+    <div id="d730"></div><a id="L730" href="#">=></a>&emsp;
+    <div id="d731"></div><a id="L731" href="#">=></a>&emsp;
+    <div id="d732"></div><a id="L732" href="#">=></a>&emsp;
+    <div id="d733"></div><a id="L733" href="#">=></a>&emsp;<h2>8 columns</h2>
+    <div id="d800"></div><a id="L800" href="#">=></a>&emsp;
+    <div id="d801"></div><a id="L801" href="#">=></a>&emsp;
+    <div id="d802"></div><a id="L802" href="#">=></a>&emsp;
+    <div id="d803"></div><a id="L803" href="#">=></a>&emsp;<br>
+    <div id="d810"></div><a id="L810" href="#">=></a>&emsp;
+    <div id="d811"></div><a id="L811" href="#">=></a>&emsp;
+    <div id="d812"></div><a id="L812" href="#">=></a>&emsp;
+    <div id="d813"></div><a id="L813" href="#">=></a>&emsp;<br>
+    <div id="d820"></div><a id="L820" href="#">=></a>&emsp;
+    <div id="d821"></div><a id="L821" href="#">=></a>&emsp;
+    <div id="d822"></div><a id="L822" href="#">=></a>&emsp;
+    <div id="d823"></div><a id="L823" href="#">=></a>&emsp;<br>
+    <div id="d830"></div><a id="L830" href="#">=></a>&emsp;
+    <div id="d831"></div><a id="L831" href="#">=></a>&emsp;
+    <div id="d832"></div><a id="L832" href="#">=></a>&emsp;
+    <div id="d833"></div><a id="L833" href="#">=></a>&emsp;<h2>9 columns</h2>
+    <div id="d900"></div><a id="L900" href="#">=></a>&emsp;
+    <div id="d901"></div><a id="L901" href="#">=></a>&emsp;
+    <div id="d902"></div><a id="L902" href="#">=></a>&emsp;
+    <div id="d903"></div><a id="L903" href="#">=></a>&emsp;<br>
+    <div id="d910"></div><a id="L910" href="#">=></a>&emsp;
+    <div id="d911"></div><a id="L911" href="#">=></a>&emsp;
+    <div id="d912"></div><a id="L912" href="#">=></a>&emsp;
+    <div id="d913"></div><a id="L913" href="#">=></a>&emsp;<br>
+    <div id="d920"></div><a id="L920" href="#">=></a>&emsp;
+    <div id="d921"></div><a id="L921" href="#">=></a>&emsp;
+    <div id="d922"></div><a id="L922" href="#">=></a>&emsp;
+    <div id="d923"></div><a id="L923" href="#">=></a>&emsp;<br>
+    <div id="d930"></div><a id="L930" href="#">=></a>&emsp;
+    <div id="d931"></div><a id="L931" href="#">=></a>&emsp;
+    <div id="d932"></div><a id="L932" href="#">=></a>&emsp;
+    <div id="d933"></div><a id="L933" href="#">=></a>&emsp;
 
 <p id="footer">
     <a href="https://github.com/d-bl/GroundForge/releases"

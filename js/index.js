@@ -29,7 +29,7 @@ function load() {
     container: '#pairs',
     nodes: data.pairNodes,
     links: data.pairLinks,
-    onAnimationEnd: function() { setHref(document.getElementById("dlPair"),'pairs') }
+    onAnimationEnd: function() { setDownloadContent(document.getElementById("dlPair"),'pairs') }
   })
   diagram.showGraph({
     container: '#threads',
@@ -37,7 +37,7 @@ function load() {
     links: data.threadLinks,
     threadColor: '#color',
     palette: colors,
-    onAnimationEnd: function() {setHref(document.getElementById("dlThread"),'threads')}
+    onAnimationEnd: function() {setDownloadContent(document.getElementById("dlThread"),'threads')}
   })
 }
 function onChangeColor(el) {
@@ -100,16 +100,23 @@ function init() {
   var tiles = document.getElementById("tiles").value
   patterns.add(document.getElementById("matrix").value, tiles ? tiles : "checker")
   document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
-  setHref(document.getElementById("dlSheet"),'sheet')
+  setDownloadContent(document.getElementById("dlSheet"),'sheet')
 }
 function updatePatternSheet() {
   var tiles = document.getElementById("tiles").value
   var patterns = new dibl.PatternSheet(2, "height='140mm' width='180mm'")
   patterns.add(document.getElementById("matrix").value, tiles ? tiles : "checker")
   document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
-  setHref(document.getElementById("dlSheet"),'sheet')
+  setDownloadContent(document.getElementById("dlSheet"),'sheet')
 }
-function setHref (comp, id) {
+function setFootsideQuery () {
+  document.getElementById("footsideLink").href =
+   "footsides.html?tiles=" +
+     getValueOfDropDown('tiles', '') +
+       "&matrix=" +
+         document.getElementById('matrix').value
+}
+function setDownloadContent (comp, id) {
   var container = document.getElementById(id)
   if (!container) return
   if (container.firstElementChild.localName != "svg") return

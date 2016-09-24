@@ -190,7 +190,6 @@ diagram.showGraph = function(args) {
     htmlContainer.call( d3.zoom().on("zoom", zoomed) )
     function zoomed() {
       svgContainer.attr("transform", d3.event.transform)
-      if (args.onAnimationEnd) args.onAnimationEnd()
     }
 
     // dragging nodes

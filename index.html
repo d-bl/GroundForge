@@ -36,7 +36,7 @@
         <button class="inactiveTab" id="stitchTab" onclick="toggle('stitch');return false">stitches</button>
         <button class="inactiveTab" id="threadTab" onclick="toggle('thread');return false">thread colors</button>
         <button class="inactiveTab" id="sizeTab" onclick="toggle('size');return false">patch size</button>
-        <button class="inactiveTab" id="shiftTab" onclick="toggle('shift');return false">shift footside</button>
+        <button class="inactiveTab" id="shiftTab" onclick="toggle('shift');setFootsideQuery();return false">shift footside</button>
         <button class="inactiveTab" id="hiddenTab" onclick="toggle('hidden');return false">hidden objects</button>
     </p>
     <fieldset id="introFieldSet" class="hide">
@@ -107,7 +107,7 @@
 5-21
 -5-7</textarea>
     </fieldset>
-    <fieldset id="threadFieldSet" class="hide wide">
+    <fieldset id="threadFieldSet" class="hide">
         <legend>Thread colors</legend>
         <p>
             <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color1" name="color1" class="jscolor" value="000000"/>
@@ -138,7 +138,7 @@
             <label for="color"> apply with the square start of a thread</label>
         </p>
     </fieldset>
-    <fieldset id="stitchFieldSet" class="hide wide">
+    <fieldset id="stitchFieldSet" class="hide">
         <legend>Stitches</legend>
         <p>Legend: c(ross) t(wist) l(eft-twist) r(ight-twist) p(in)</p>
 <textarea id="stitches" name="stitches" rows="2" cols="100" spellcheck="false"
@@ -173,19 +173,12 @@ C1=tctc D2=rctc B2=lctc C3=ctc C4=tctc</textarea>
         <p>
             A proper footside is required to generate a thread diagram.
             The current implementation to calculate a foot side is quite poor
-            so only some combination of values above may render a thread diagram.
-            For matrices up to 4x4 you can use the following procedure to pick values that work.
+            so only some combination of the values above may render a thread diagram.
+            Exploring all the possibilities can be a herculaneum task.
+            Even for a browser, but for matrices up to 4x4 you can try the <a
+                id="footsideLink" href="footsides.html" target="_blank"
+            >foot sides</a> page, have some patience and make your choice.
         </p>
-        <ul>
-            <li>Copy the text field of the matrix tab.</li>
-            <li>Rremember the type of tile arrangement.</li>
-            <li>Go to the <a href="footsides.html" target="_blank">foot sides</a> page.</li>
-            <li>Fill in the above two values.</li>
-            <li>Even for a computer exploring all the possibilieties can be a herculanium task.
-                So have some patience, perhaps confirm to continue the JavaScript once.
-            </li>
-            <li>Scroll down the page and make your choice</li>
-        </ul>
     </fieldset>
     <fieldset id="hiddenFieldSet" class="hide">
         <legend>Hidden diagram components</legend>
@@ -207,8 +200,7 @@ C1=tctc D2=rctc B2=lctc C3=ctc C4=tctc</textarea>
         <p>
             The links below allow to download the images as SVG documents,
             or show them in a new tab or window to get a complete image for printing purposes.
-            You may want to position a diagram in the top left corner before viewing in another tab
-            and/or shrink the thread diagram. Shrinking is a side-effect of a gentle nudge.
+            You may want to position a diagram in the top left corner before viewing in another tab.
         </p>
         <p>
             Download is the default behaviour of the links for desktop browsers, a new tab is the default for iPad-Safari.
@@ -244,7 +236,7 @@ C1=tctc D2=rctc B2=lctc C3=ctc C4=tctc</textarea>
     <div id="pairs"><img src="images/preview.png" title="preview while scripts are loading and execusting"></div>
     <div id="threads"></div>
 
-    <p>Pattern sheet below, to customize and embed in a pricking, see the download tab.</p>
+    <p>To customize a patch below and embed it in a pricking, use the pattern sheet on the download tab.</p>
     <div id="sheet"></div>
 </div>
 
