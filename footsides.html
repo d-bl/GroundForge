@@ -42,7 +42,7 @@
             })
             document.getElementById('L'+id).href = 'index.html?matrix=' +
               document.getElementById('matrix').value.replace( /[^-0-9A-D]+/g, '%0D') +
-              (bricks ? '&bricks' : '') +
+              '&tiles=' + (bricks ? 'bricks' : 'checker') +
               '&rows=9&cols=' + nrOfCols +
               '&left=' + shiftLeft +
               '&up=' + shiftUp

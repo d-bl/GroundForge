@@ -91,6 +91,7 @@ diagram.showGraph = function(args) {
 
     // object creation and decoration
 
+    var isThreadDiagram = args.nodes[0].title == 'thread 1'
     var isIE = document.documentURI == undefined // wrong feature check
     var isMobileMac = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
 
@@ -161,20 +162,26 @@ diagram.showGraph = function(args) {
     var step = 0
     var simTicked = function() {
                          if ( ((step++)%mod) != 0) return // skip rendering
-                         console.log(step+' '+sim.alpha()+' '+sim.alphaDecay())
                          nodes.attr("transform", moveNode)
                          links.attr("d", drawPath)
                      }
     var simEnded = function(){
-                      if (step < 400 && !isIE) sim.alpha(0.02).restart() // restart shrinking
-                      if (isIE) diagram.markLinks(links)
-                      if (args.onAnimationEnd) args.onAnimationEnd()
+                        if (step < 250 && !isIE) {
+                            // more untangling
+                            sim.alpha(0.01).restart()
+                        } else if (step < 650 && !isIE && isThreadDiagram) {
+                            // shrinking
+                            sim.force("charge", d3.forceManyBody().strength(-1))
+                               .alpha(0.02).restart()
+                        }
+                        if (isIE) diagram.markLinks(links)
+                        if (args.onAnimationEnd) args.onAnimationEnd()
                     }
     var sim = d3.forceSimulation(args.nodes)
         .force("charge", d3.forceManyBody().strength(-10))
         .force("link", d3.forceLink(args.links).strength(1).distance(10).iterations(15))
         .force("center", d3.forceCenter(220,130))
-        .alpha(0.02)
+        .alpha(0.01)
         .on("tick", simTicked)
         .on("end", simEnded)
 
@@ -202,7 +209,8 @@ diagram.showGraph = function(args) {
       d.fy = d3.event.y;
     }
     function dragended(d) {
-      if (!d3.event.active) sim.alpha(0.02).restart()
+      step = 0
+      if (!d3.event.active) sim.alpha(0.01).restart()
       d.fx = null;
       d.fy = null;
     }
