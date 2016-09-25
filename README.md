@@ -30,7 +30,11 @@ Steps
 ## Important code conventions
 
 - Don't catch exceptions in a `Try` but prevent them to create a `Failure` for safe execution with JavaScript.
-- Restrict the use of raw js objects to the `D3Data` class to allow execution of test classes with a recent JVM.
+- Restrict the use of raw js objects to the API: the classes and methods annotated with `@JSExport`. This allows execution of test classes with another JVM than ScalaJS was built with.
+
+The applied Scala coding techniques are explained by this [course] up and including workshop 3, except that the main code doesn't use any io, and the simple io in the test code doesn't justify the use of any library. 
+
+[course]: https://github.com/DANS-KNAW/course-scala
 
 
 ## Unit tests
@@ -38,10 +42,12 @@ Steps
 The command `sbt test` only compiles the test classes.
 Haven't found the proper incantation to execute the test with sbt.
 
-The command `mvn clean test` executes the tests.
-To completely [replace sbt](http://stackoverflow.com/questions/26512750/how-to-use-scala-js-from-maven) seems quite a detour.
+The command `mvn clean test` executes the tests, your IDE might too.
+To completely [replace sbt] seems quite a detour.
 
 Launching tests with the IDE while sbt is still processing a change may cause weird errors, just try again.
+
+[replace sbt]: http://stackoverflow.com/questions/26512750/how-to-use-scala-js-from-maven
 
 
 ## Publish
