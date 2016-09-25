@@ -21,9 +21,6 @@ import scala.util.Try
 
 object Pattern {
 
-  private def failureMessage(tried: Try[_]): String =
-    s"<text><tspan x='2' y='14' style='fill:#FF0000'>${tried.failed.get.getMessage}</tspan></text>"
-
 /** Builds an SVG drawing
   *
   * @param tileMatrix See https://github.com/d-bl/GroundForge/blob/gh-pages/images/legend.png
@@ -39,23 +36,18 @@ object Pattern {
             groupId: String = "GF0",
             offsetX: Int = 80,
             offsetY: Int = 120
-           ): String = {
-
-    val triedSVG = for {
-      lines <- toMatrixLines(tileMatrix)
-      relative <- toRelSrcNodes(tileMatrix)
-    } yield new Pattern(
-      tileMatrix,
-      tileType,
-      groupId,
-      offsetX,
-      offsetY,
-      lines,
-      relative
-    ).createPatch
-
-    triedSVG.getOrElse(failureMessage(triedSVG))
-  }
+           ): Try[String] = for {
+             lines <- toMatrixLines(tileMatrix)
+             relative <- toRelSrcNodes(tileMatrix)
+           } yield new Pattern(
+             tileMatrix,
+             tileType,
+             groupId,
+             offsetX,
+             offsetY,
+             lines,
+             relative
+           ).createPatch
 }
 
 /** Builder of an SVG drawing

@@ -19,12 +19,6 @@
             <version>0.6.8</version>
         </dependency>
         <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.4</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_2.11</artifactId>
             <version>2.2.1</version>
