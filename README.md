@@ -1,9 +1,7 @@
 # [DEMO](https://d-bl.github.io/GroundForge/)
 A toolbox to design bobbin lace grounds with matching diagrams.
 
-The code under `src/main/scala` generates  alternative data for `sample.js` in the [gh-pages branch].
-
-[matrices]: https://github.com/d-bl/GroundForge/blob/3158d5de673af09c9569a17737f07f6c5e8afa15/src/main/scala/dibl/Matrix.scala#L91-L120
+The code under `src/main/scala` generates  alternative data for `sample.js` in the initial [gh-pages branch].
 
 
 ## Compile and preview
@@ -60,4 +58,4 @@ Launching tests with the IDE while sbt is still processing a change may cause we
 - Create a pull request
 
 [sbt]: http://www.scala-sbt.org/download.html
-[gh-pages branch]: https://github.com/d-bl/GroundForge/tree/gh-pages
+[gh-pages branch]: https://github.com/d-bl/GroundForge/commit/84eee36324e448bf16c12dec08b55bf4814bedb0
