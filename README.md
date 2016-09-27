@@ -1,7 +1,7 @@
 # [DEMO](https://d-bl.github.io/GroundForge/)
+
 A web based toolbox to design bobbin lace grounds with matching diagrams.
 
-[TesseLace.com]: http://TesseLace.com
 
 ## How it's Made / Under the Hood
 
@@ -16,8 +16,12 @@ To get a proof of concept a force graph [example] with originally v3 of [D3.js] 
 - Turned the links from lines to paths with a third node to add mid-markers for twist marks.
 - Initial coordinates replace the default random values, thus the animation stabalizes much quicker which prevents rotated and flipped diagrams.
 
+[example]: http://bl.ocks.org/mbostock/4062045
+[D3.js]: http://d3js.org/
 [js/sample.js]: https://github.com/d-bl/GroundForge/blob/7a94b670636a138b1f417c0640561bfb1cbc5fc7/js/sample.js
 [js/sample.png]: https://github.com/d-bl/GroundForge/blob/50421a210ee28c73bcdddbc997802d48128ce6b9/js/sample.png
+[color coded pair diagrams]: https://en.wikipedia.org/w/index.php?title=Mesh_grounded_bobbin_lace&oldid=639789191#Worker_pair_versus_two_pair_per_pin
+
 
 ### Using data from TesseLace
 
@@ -37,14 +41,14 @@ the algorithm has to figure out a working order to create the lace just like a r
 
 [pages]: https://github.com/d-bl/GroundForge/blob/master/src/test/resources/
 [compact]: https://d-bl.github.io/GroundForge/images/legend.png
-[example]: http://bl.ocks.org/mbostock/4062045
-[D3.js]: http://d3js.org/
-[color coded pair diagrams]: https://en.wikipedia.org/w/index.php?title=Mesh_grounded_bobbin_lace&oldid=639789191#Worker_pair_versus_two_pair_per_pin
 [scala code]: https://github.com/d-bl/GroundForge/tree/master/
+[TesseLace.com]: http://TesseLace.com
+
 
 ### Color-picker: jscolor
 
 Safari nor Internet Explorer support `<input type="color">`. The free [color-picker](http://jscolor.com/) works on both platforms and was easy to apply.
+
 
 ## How to Contribute
 
