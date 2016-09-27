@@ -1,8 +1,14 @@
 # [DEMO](https://d-bl.github.io/GroundForge/)
 A toolbox to design bobbin lace grounds with matching diagrams.
 
-The code under `src/main/scala` generates  alternative data for `sample.js` in the initial [gh-pages branch].
+The code under `src/main/scala` generates alternative [data] for the initial [proof of concept] that was created by hand using a [sketch].
+The data is computed from [matrices] resulting from scientific research presented at [TesseLace].
 
+[matrices]: https://github.com/d-bl/GroundForge/blob/22f607724dd2bb5e8dd5d315d3fe5fbfdc8c9039/images/legend.png
+[proof of concept]: https://cdn.rawgit.com/d-bl/GroundForge/84eee36324e448bf16c12dec08b55bf4814bedb0/index.html
+[data]: https://github.com/d-bl/GroundForge/blob/84eee36324e448bf16c12dec08b55bf4814bedb0/index.html#L21-L84
+[sketch]: https://github.com/d-bl/GroundForge/commit/f358191e441449fdd7096ecf8dbed4e0a0ca79ba
+[TesseLace]: https:tesselace.com
 
 ## Compile and preview
 
@@ -58,4 +64,4 @@ Launching tests with the IDE while sbt is still processing a change may cause we
 - Create a pull request
 
 [sbt]: http://www.scala-sbt.org/download.html
-[gh-pages branch]: https://github.com/d-bl/GroundForge/commit/84eee36324e448bf16c12dec08b55bf4814bedb0
+[gh-pages branch]: https://github.com/d-bl/GroundForge/tree/gh-pages
