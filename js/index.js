@@ -111,10 +111,8 @@ function updatePatternSheet() {
 }
 function setFootsideQuery () {
   document.getElementById("footsideLink").href =
-   "footsides.html?tiles=" +
-     getValueOfDropDown('tiles', '') +
-       "&matrix=" +
-         document.getElementById('matrix').value
+    "footsides.html?tiles=" + getValueOfDropDown('tiles', '') +
+      "&matrix=" + encodeURIComponent(document.getElementById('matrix').value)
 }
 function setDownloadContent (comp, id) {
   var container = document.getElementById(id)
