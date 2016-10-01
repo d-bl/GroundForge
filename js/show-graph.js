@@ -129,6 +129,7 @@ diagram.showGraph = function(args) {
     if (colorpicker) {
         threadStarts.on('click', function (d) {
             if (d3.event.defaultPrevented) return
+            sim.alpha(0).stop()
             svgContainer.selectAll("."+d.startOf)
               .style('stroke', '#'+colorpicker.value)
               .style('fill', function(d) { return d.bobbin ? '#'+colorpicker.value : 'none' })
@@ -199,7 +200,6 @@ diagram.showGraph = function(args) {
                    .on("drag", dragged)
                    .on("end", dragended))
     function dragstarted(d) {
-      if (!d3.event.active) sim.alpha(0.02).restart()
       d.fx = d.x;
       d.fy = d.y;
     }

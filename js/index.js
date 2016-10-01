@@ -100,14 +100,12 @@ function init() {
   var tiles = document.getElementById("tiles").value
   patterns.add(document.getElementById("matrix").value, tiles ? tiles : "checker")
   document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
-  setDownloadContent(document.getElementById("dlSheet"),'sheet')
 }
 function updatePatternSheet() {
   var tiles = document.getElementById("tiles").value
   var patterns = new dibl.PatternSheet(2, "height='140mm' width='180mm'")
   patterns.add(document.getElementById("matrix").value, tiles ? tiles : "checker")
   document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
-  setDownloadContent(document.getElementById("dlSheet"),'sheet')
 }
 function setFootsideQuery () {
   document.getElementById("footsideLink").href =
