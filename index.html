@@ -20,8 +20,10 @@
     <p><em>A toolbox to design bobbin lace grounds or braids with matching diagrams.</em></p>
 
     <p>
+        Some <a href="https://github.com/d-bl/GroundForge/releases"
+        >release notes</a> may have screen casts attached showing you around.
         The "introduction" tab is a summary of the <a href="https://github.com/d-bl/GroundForge/wiki"
-        >user guide</a>'s home page, the "download" is recommended for first-time visitors too.
+        >user guide</a>'s home page.
         You are invited to enhance the user guide so other users can benefit from your experience.
         We'd love to see <a href="https://github.com/d-bl/GroundForge/issues/50"
         >your creations</a>.
@@ -30,7 +32,7 @@
 <form>
     <p class="tabs">
         <button class="inactiveTab" id="introTab" onclick="toggle('intro');return false">introduction</button>
-        <button class="inactiveTab" id="downloadTab" onclick="toggle('download');return false">download</button>
+        <button class="inactiveTab" id="downloadTab" onclick="toggle('download');return false">download/print</button>
         <button class="activeTab" id="thumbnailsTab" onclick="toggle('thumbnails');return false">thumbnails</button>
         <button class="inactiveTab" id="patternTab" onclick="toggle('pattern');return false">matrix</button>
         <button class="inactiveTab" id="stitchTab" onclick="toggle('stitch');return false">stitches</button>
@@ -41,23 +43,27 @@
     </p>
     <fieldset id="introFieldSet" class="hide">
         <legend>Introduction</legend>
+        <p>
+            A workflow to design your own ground:
+        </p>
         <ul>
             <li>
                 Select a thumbnail or matrix as the basis for your pattern.
             </li>
             <li>
-                Choose stitches, those with an odd number of crossings cause threads to follow other paths than pairs.
+                Choose stitches, play with odd number of crossings and twists to make threads follow other paths than pairs.
             </li>
             <li>
                 Decide where to apply a contrasting thread,
                 the real lace could apply another width rather than another color.
             </li>
             <li>
-                Nudging pins to slightly different positions can have a significant effect on the shapes in the pair diagram.
+                Nudge pins to different positions.
                 The pattern sheet below the diagrams has one or more variants.
                 These variants are limited to some predefined grid.
-                Download and edit for intermediate positions and breaking other rules.
-                The colors of the dots help to customize a patch to your own taste and needs.
+                Download and edit for more variations.
+                The <a href="https://github.com/d-bl/GroundForge/wiki"
+                >user guide</a> explains how the colors of the dots assist the editing process.
             </li>
         </ul>
         <p>
@@ -213,11 +219,9 @@ C1=tctc D2=rctc B2=lctc C3=ctc C4=tctc</textarea>
             >thread diagram</a>
         </p>
         <p>
-            The generated pattern sheet is limited to a fixed grid,
-            intermediate positions allow more interesting configurations.
-            The <a href="https://github.com/d-bl/GroundForge/wiki"
-            >user guide</a> explains how to customize a pattern sheet.
-            Most important clue: dots with the same color match when "sewing" repeats together.
+            Download a patternsheet to customize a patch to your own taste and fit it into a pricking.
+            Most important clue from the <a href="https://github.com/d-bl/GroundForge/wiki"
+            >user guide</a>: dots with the same color match when "sewing" repeats together, they should also move together.
         </p>
         <p>
             Your own fantasy may have a purpose to edit a downloaded diagram.

@@ -14,6 +14,7 @@ a img { overflow: hidden; border: solid 1px #AAA; }
 
 a img { vertical-align: middle; margin-bottom: 1em; }
 #logo img, #footer img { border: none; }
+#logo img { padding-left: 4em; }
 div, input, textarea, #browsers { vertical-align: top;}
 form { margin-bottom: 1em }
 #sheet { margin-top: 0.2em; }
