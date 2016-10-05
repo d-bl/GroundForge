@@ -25,19 +25,18 @@
         The "introduction" tab is a summary of the <a href="https://github.com/d-bl/GroundForge/wiki"
         >user guide</a>'s home page.
         You are invited to enhance the user guide so other users can benefit from your experience.
-        We'd love to see <a href="https://github.com/d-bl/GroundForge/issues/50"
-        >your creations</a>.
     </p>
 </article>
 <form>
     <p class="tabs">
         <button class="inactiveTab" id="introTab" onclick="toggle('intro');return false">introduction</button>
-        <button class="inactiveTab" id="downloadTab" onclick="toggle('download');return false">download/print</button>
         <button class="activeTab" id="thumbnailsTab" onclick="toggle('thumbnails');return false">thumbnails</button>
-        <button class="inactiveTab" id="patternTab" onclick="toggle('pattern');return false">matrix</button>
+        <button class="inactiveTab" id="sizeTab" onclick="toggle('size');return false">patch size</button>
         <button class="inactiveTab" id="stitchTab" onclick="toggle('stitch');return false">stitches</button>
         <button class="inactiveTab" id="threadTab" onclick="toggle('thread');return false">thread colors</button>
-        <button class="inactiveTab" id="sizeTab" onclick="toggle('size');return false">patch size</button>
+        <button class="inactiveTab" id="downloadTab" onclick="toggle('download');return false">download/print</button>
+        &emsp14;&emsp14;
+        <button class="inactiveTab" id="patternTab" onclick="toggle('pattern');return false">matrix</button>
         <button class="inactiveTab" id="shiftTab" onclick="toggle('shift');setFootsideQuery();return false">shift footside</button>
         <button class="inactiveTab" id="hiddenTab" onclick="toggle('hidden');return false">hidden objects</button>
     </p>
@@ -77,89 +76,110 @@
         <legend>Thumbnails</legend>
         <p>A selection of dressed up examples for a quick start.</p>
         <p>
-        <a href="?matrix=5632 5632&patch=5- -5&patch=5353 5353 5-5- -5-5&patch=5632 56-2 5-5- -535&patch=44 77 44 77;bricks&patch=44 44 77 77;bricks&rows=5&cols=7&left=1&up=1&stitches=A1=tc,B1=tctc,C1=tc,D1=tctc,A2=tc,B2=tc,C2=tc,D2=tc"><img src="thumbs/214.png" title="Torchon (with variations)"></a>
+        <a href="?matrix=5632 5632&tiles=checker&patch=5- -5&patch=5353 5353 5-5- -5-5&patch=5632 56-2 5-5- -535&patch=44 77 44 77;bricks&patch=44 44 77 77;bricks&rows=5&cols=7&left=1&up=1&stitches=A1=tc,B1=tctc,C1=tc,D1=tctc,A2=tc,B2=tc,C2=tc,D2=tc"><img src="thumbs/214.png" title="Torchon (with variations)"></a>
 
         <a href="?matrix=5632 34-7&tiles=bricks&rows=5&cols=5&left=1&up=1&patch=-5-5 5-5- -5-- B-C-;bricks&patch=256- ---5 C3B-;bricks&bricks&patch=4373 5-53;bricks&stitches=B1=ttcttpc,A2=ltc,C2=rtc,B2=tc,C1=tplc,A1=tprc,B1=tcttpc,D2=tcttpc"><img src="thumbs/135.png" title="small snow (Binche)"></a>
 
         <a href="?matrix=5831 -4-7&tiles=bricks&patch=-437 34-7;bricks&patch=4830 --77;bricks&up=3&left=1&rows=8&cols=7&stitches=A1=tc,C1=tc,A2=tc,B2=ptc,C2=tc,D2=tc"><img src="thumbs/130.png" title="rose (Torchon) / Flanders"></a>
 
-        <a href="?matrix=5831 -4-7&patch=68 -4&patch=5831 -4-7&patch=B-C- ---5 C-B- -5--&patch=5831 -4-7 5--- -C-B;bricks&patch=5-O-E- -E-5-O 5-O-E-;bricks&left=4&up=1&rows=7&cols=7&stitches=A1=tctc,C1=tctc,D1=tctc,A2=tctc,B1=tctc,C2=tctc"><img src="thumbs/376.png" title="kat / paris"></a>
+        <a href="?matrix=5831 -4-7&tiles=checker&patch=68 -4&patch=5831 -4-7&patch=B-C- ---5 C-B- -5--&patch=5831 -4-7 5--- -C-B;bricks&patch=5-O-E- -E-5-O 5-O-E-;bricks&left=4&up=1&rows=7&cols=7&stitches=A1=tctc,C1=tctc,D1=tctc,A2=tctc,B1=tctc,C2=tctc"><img src="thumbs/376.png" title="kat / paris"></a>
 
         <a href="?matrix=4815%0D4-77&tiles=bricks&patch=-5---5-5%0D5-O-E-5-;bricks&patch=4804%0D-777;bricks&patch=B-5-C-%0D-5-5--%0DB---C-;bricks&rows=12&cols=6&left=0&up=1&stitches=D2=tctpc%20A1=tc%20B1=tc%20C1=tc%20D1=tc%20A2=tc%20B2=tc"><img src="thumbs/127.png" title="meandering plaits"></a>
 
-        <a href="?matrix=586- -4-5 5-21 -5-7&rows=12&cols=9&&left=1&up=1&stitches=A3=tctc,D4=lctc,B4=rctc,A1=ctc,A2=tctc,C1=tctc,D2=rctc,B2=lctc,C3=ctc,C4=tctc"><img src="thumbs/001.png" title="pinwheel"></a>
+        <a href="?matrix=586- -4-5 5-21 -5-7&tiles=checker&rows=12&cols=9&&left=1&up=1&stitches=A3=tctc,D4=lctc,B4=rctc,A1=ctc,A2=tctc,C1=tctc,D2=rctc,B2=lctc,C3=ctc,C4=tctc"><img src="thumbs/001.png" title="pinwheel"></a>
 
-            Many <a href="thumbs.html">more</a>...</p>
+            Many <a href="thumbs.html">more</a>...
+            We'd love to see <a href="https://github.com/d-bl/GroundForge/issues/50"
+            >your creations</a> too.
+        </p>
     </fieldset>
     <fieldset id="patternFieldSet" class="hide">
         <legend>Pattern matrix</legend>
         <p>
             Each thumbnail is defined with a matrix.
-            Arrows in the legend show the meaning of the characters.
+            Each character represents two incoming arrows.
             Larger arrows represent double length lines, they skip a grid position.
-            The grey shapes show the tile arrangements.
+            The grey rectangles show possible tile (repeat) arrangements.
+            Only some matrices are valid for both types of tile arrangement.
         </p>
         <img src="images/legend.png" id="legend" alt="legend" align="right">
         <div>
             <select name="tiles" id="tiles" onchange="updatePatternSheet()">
-                <option value="bricks">Brick wall</option>
-                <option value="checker" selected>Checker board</option>
+                <option value="bricks" selected>Brick wall</option>
+                <option value="checker">Checker board</option>
             </select>
             <label for="tiles"> tiles</label>
         </div>
         <textarea id="matrix" name="matrix" rows="4" cols="6" spellcheck="false" onchange="updatePatternSheet()"
-        >586-
--4-5
-5-21
--5-7</textarea>
+        >5632
+34-7</textarea>
     </fieldset>
     <fieldset id="threadFieldSet" class="hide">
         <legend>Thread colors</legend>
+        <table>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+            </tr>
+            <tr>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color1" name="color1" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color2" name="color2" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color3" name="color3" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color4" name="color4" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color5" name="color5" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color6" name="color6" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color7" name="color7" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color8" name="color8" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color9" name="color9" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color10" name="color10" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color11" name="color11" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color12" name="color12" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color13" name="color13" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color14" name="color14" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color15" name="color15" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color16" name="color16" class="jscolor" value="000000"/></td>
+            </tr>
+        </table>
         <p>
-            <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color1" name="color1" class="jscolor" value="000000"/>
-            <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color2" name="color2" class="jscolor" value="000000"/>
-            <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color3" name="color3" class="jscolor" value="000000"/>
-            <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color4" name="color4" class="jscolor" value="000000"/>
-            <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color5" name="color5" class="jscolor" value="000000"/>
-            <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color6" name="color6" class="jscolor" value="000000"/>
-            <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color7" name="color7" class="jscolor" value="000000"/>
-            <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color8" name="color8" class="jscolor" value="000000"/>
-            <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color9" name="color9" class="jscolor" value="000000"/>
-            <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color10" name="color10" class="jscolor" value="000000"/>
-            <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color11" name="color11" class="jscolor" value="000000"/>
-            <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color12" name="color12" class="jscolor" value="000000"/>
-            <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color13" name="color13" class="jscolor" value="000000"/>
-            <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color14" name="color14" class="jscolor" value="000000"/>
-            <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color15" name="color15" class="jscolor" value="000000"/>
-            <input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color16" name="color16" class="jscolor" value="000000"/>
-        </p>
-        <p>
-            Apply the repeating sequence above with the <em>apply options</em> button
-            FFFFFF terminates the sequence,
-            FEFEFE blends a thread with the background.
+            Apply the repeating sequence above with the <em>apply options</em> button.
+            White (FFFFFF) terminates the sequence,
+            warning: off-white (e.g. FEFEFE) blends a thread with the background.
             To save your favorite sequence: submit and copy-paste the URL fragment.
         </p>
         <p>
             <input id="color" name="color" class="jscolor" value="CC0000" pattern="[a-fA-F0-9]{6}"/>
-            <label for="color"> apply with the square start of a thread</label>
+            <label for="color"> apply with the square start of a thread, not saved by "prepare bookmark".</label>
         </p>
     </fieldset>
     <fieldset id="stitchFieldSet" class="hide">
         <legend>Stitches</legend>
         <p>Legend: c(ross) t(wist) l(eft-twist) r(ight-twist) p(in)</p>
 <textarea id="stitches" name="stitches" rows="2" cols="100" spellcheck="false"
->A3=tctc D4=lctc B4=rctc A1=ctc A2=tctc
-C1=tctc D2=rctc B2=lctc C3=ctc C4=tctc</textarea>
+>B1=ttcttpc, A2=ltc, C2=rtc, B2=tc, C1=tplc, A1=tprc, B1=tcttpc, D2=tcttpc</textarea>
         <p>Hover over stitches in the pair diagram for IDs.</p>
     </fieldset>
     <fieldset id="sizeFieldSet" class="hide">
         <legend>Patch size</legend>
         <p>
             <label for="rows">rows</label>
-            <input id="rows" name="rows" min="3" value="12" type="number"/>
+            <input id="rows" name="rows" min="3" value="5" type="number"/>
             <label for="cols">columns
             </label>
-            <input id="cols" name="cols" min="3" value="9" type="number"/>
+            <input id="cols" name="cols" min="3" value="5" type="number"/>
         </p>
         <p>
             The numbers are related to the dots in the pattern sheet.
@@ -170,6 +190,7 @@ C1=tctc D2=rctc B2=lctc C3=ctc C4=tctc</textarea>
     <fieldset id="shiftFieldSet" class="hide">
         <legend>Shift
         </legend>
+        <img src="images/shift.png" id="shift-legend" alt="legend" align="right">
         <p>
             <label for="up">rows</label>
             <input id="up" name="left" min="0" value="1" type="number"/>
@@ -179,11 +200,20 @@ C1=tctc D2=rctc B2=lctc C3=ctc C4=tctc</textarea>
         <p>
             A proper footside is required to generate a thread diagram.
             The current implementation to calculate a foot side is quite poor
-            so only some combination of the values above may render a thread diagram.
-            Exploring all the possibilities can be a herculaneum task.
-            Even for a browser, but for matrices up to 4x4 you can try the <a
+            so only some combinations of the values above may render a thread diagram.
+        </p>
+        <p>
+            Exploring all the possibilities can be a tedious task.
+            Even for a browser, but for values up to 4x4 you can try all at once with the <a
                 id="footsideLink" href="footsides.html" target="_blank"
             >foot sides</a> page, have some patience and make your choice.
+            Some patterns may not have a proper footside at all.
+        </p>
+        <p>
+            The grey rectangles show how the repeats take part in the generated diagrams.
+            Both figures on the right show repeats shifted by a column resulting in a different footside.
+            The figures at the bottom show repeats shifted by a row,
+            what might fix or break the corners of the footsides and thus the thread diagram.
         </p>
     </fieldset>
     <fieldset id="hiddenFieldSet" class="hide">
@@ -213,9 +243,18 @@ C1=tctc D2=rctc B2=lctc C3=ctc C4=tctc</textarea>
             For Internet Explorer right-click the desired image itself and choose "save image as...".
         </p>
         <p>
-            <a id="dlSheet" download="pattern-sheet.svg" target="_blank" href="#download" onselect="setDownloadContent(this,'pairs')"
-            >pattern sheet</a> &mdash; <a id="dlPair" download="pair-diagram.svg" target="_blank" href="#download" onselect="setDownloadContent(this,'threads')"
-            >pair diagram</a> &mdash; <a id="dlThread" download="thread-diagram.svg" target="_blank" href="#download" onselect="setDownloadContent(this,'sheet')"
+            <a id="dlSheet"
+               download="pattern-sheet.svg"
+               target="_blank" href="#download"
+               onmousedown="setDownloadContent(this,'sheet')"
+            >pattern sheet</a> &mdash; <a id="dlPair"
+                                     download="pair-diagram.svg"
+                                     target="_blank" href="#download"
+                                     onmousedown="setDownloadContent(this,'pairs')"
+            >pair diagram</a> &mdash; <a id="dlThread"
+                                    download="thread-diagram.svg"
+                                    target="_blank" href="#download"
+                                    onmousedown="setDownloadContent(this,'threads')"
             >thread diagram</a>
         </p>
         <p>
@@ -240,7 +279,10 @@ C1=tctc D2=rctc B2=lctc C3=ctc C4=tctc</textarea>
     <div id="pairs"><img src="images/preview.png" title="preview while scripts are loading and execusting"></div>
     <div id="threads"></div>
 
-    <p>To customize a patch below and embed it in a pricking, use the pattern sheet on the download tab.</p>
+    <p>
+        Below a pattern sheet with variant(s) of the pair diagram with pins at regular, possibly different, positions.
+        Download and edit for more variations.
+    </p>
     <div id="sheet"></div>
 </div>
 

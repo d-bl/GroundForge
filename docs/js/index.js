@@ -28,16 +28,14 @@ function load() {
   diagram.showGraph({
     container: '#pairs',
     nodes: data.pairNodes,
-    links: data.pairLinks,
-    onAnimationEnd: function() { setDownloadContent(document.getElementById("dlPair"),'pairs') }
+    links: data.pairLinks
   })
   diagram.showGraph({
     container: '#threads',
     nodes: data.threadNodes,
     links: data.threadLinks,
     threadColor: '#color',
-    palette: colors,
-    onAnimationEnd: function() {setDownloadContent(document.getElementById("dlThread"),'threads')}
+    palette: colors
   })
 }
 function onChangeColor(el) {

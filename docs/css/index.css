@@ -1,6 +1,6 @@
 body { max-width: 57.5em;  padding: 1em; margin-left: auto; margin-right: auto; }
 #pairs, #threads { width: 28em; height: 15em; }
-fieldset { width: 52em; }
+fieldset, .tabs { width: 52em; }
 fieldset { margin: 0; margin-bottom: 1em; padding-left: 2em; padding-right: 2em; }
 #sheet { width: 56.4em; height: 35em; }
 input { width: 3em; }
@@ -20,6 +20,7 @@ form { margin-bottom: 1em }
 #sheet { margin-top: 0.2em; }
 #pairs, #threads { padding: 0 }
 #buttons { border: none; padding: 0; }
+#threadFieldSet td { text-align: center }
 
 .tabs { margin-bottom: 0; padding-bottom: 0; }
 .activeTab, .inactiveTab {
