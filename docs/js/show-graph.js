@@ -159,8 +159,8 @@ diagram.showGraph = function(args) {
     }
 
     // a higher speed for IE as marks only appear when the animation is finished
-    var mod = isMobileMac ? 15 : isIE ? 9 : 5
-    var step = 0
+    var mod = isMobileMac ? 7 : isIE ? 5 : 3
+    var step = 1
     var simTicked = function() {
                          if ( ((step++)%mod) != 0) return // skip rendering
                          nodes.attr("transform", moveNode)
