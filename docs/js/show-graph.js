@@ -162,7 +162,7 @@ diagram.showGraph = function(args) {
     var mod = isMobileMac ? 4 : isIE ? 3 : 2
     var step = 0
     var simTicked = function() {
-                         if ( step < 4 || ((step++) % mod) != 0) return // skip rendering
+                         if ( step++ < 4 || (step % mod) != 0) return // skip rendering
                          nodes.attr("transform", moveNode)
                          links.attr("d", drawPath)
                      }
