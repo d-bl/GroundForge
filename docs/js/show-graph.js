@@ -184,4 +184,26 @@ diagram.showGraph = function(args) {
     function zoomed() {
       svgContainer.attr("transform", d3.event.transform)
     }
+
+    // dragging nodes
+
+    nodes.call(d3.drag()
+                   .on("start", dragstarted)
+                   .on("drag", dragged)
+                   .on("end", dragended))
+    function dragstarted(d) {
+      if (!d3.event.active) sim.alpha(0.005).restart()
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+    function dragged(d) {
+      d.fx = d3.event.x;
+      d.fy = d3.event.y;
+    }
+    function dragended(d) {
+      step = 0
+      if (!d3.event.active) sim.alpha(0.005).restart()
+      d.fx = null;
+      d.fy = null;
+    }
 }
