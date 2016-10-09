@@ -167,22 +167,14 @@ diagram.showGraph = function(args) {
                          links.attr("d", drawPath)
                      }
     var simEnded = function(){
-                        if (step < 250 && !isIE) {
-                            // more untangling
-                            sim.alpha(0.01).restart()
-                        } else if (step < 650 && !isIE && isThreadDiagram) {
-                            // shrinking
-                            sim.force("charge", d3.forceManyBody().strength(-1))
-                               .alpha(0.02).restart()
-                        }
                         if (isIE) diagram.markLinks(links)
                         if (args.onAnimationEnd) args.onAnimationEnd()
                     }
     var sim = d3.forceSimulation(args.nodes)
-        .force("charge", d3.forceManyBody().strength(-10))
-        .force("link", d3.forceLink(args.links).strength(1).distance(10).iterations(15))
+        .force("charge", d3.forceManyBody().strength(-1000))
+        .force("link", d3.forceLink(args.links).strength(50).distance(12).iterations(30))
         .force("center", d3.forceCenter(220,130))
-        .alpha(0.01)
+        .alpha(0.0035)
         .on("tick", simTicked)
         .on("end", simEnded)
 
@@ -191,26 +183,5 @@ diagram.showGraph = function(args) {
     htmlContainer.call( d3.zoom().on("zoom", zoomed) )
     function zoomed() {
       svgContainer.attr("transform", d3.event.transform)
-    }
-
-    // dragging nodes
-
-    nodes.call(d3.drag()
-                   .on("start", dragstarted)
-                   .on("drag", dragged)
-                   .on("end", dragended))
-    function dragstarted(d) {
-      d.fx = d.x;
-      d.fy = d.y;
-    }
-    function dragged(d) {
-      d.fx = d3.event.x;
-      d.fy = d3.event.y;
-    }
-    function dragended(d) {
-      step = 0
-      if (!d3.event.active) sim.alpha(0.01).restart()
-      d.fx = null;
-      d.fy = null;
     }
 }
