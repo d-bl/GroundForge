@@ -101,7 +101,7 @@ diagram.showGraph = function(args) {
         .style('opacity', function(d) { return d.border || d.toPin ? fullyTransparant : 1})
         .style('stroke', '#000')
         .style('fill', 'none')
-    if (!isIE) diagram.markLinks(links)
+    if (!isIE && !isMobileMac) diagram.markLinks(links)
 
     var nodes = svgContainer.selectAll(".node").data(args.nodes).enter().append("svg:path")
         .attr("d", function(d) { return (d.bobbin ? diagram.shape.bobbin : d.pin ? diagram.shape.pin : diagram.shape.stitch)})
@@ -167,7 +167,7 @@ diagram.showGraph = function(args) {
                          links.attr("d", drawPath)
                      }
     var simEnded = function(){
-                        if (isIE) diagram.markLinks(links)
+                        if (isIE || isMobileMac) diagram.markLinks(links)
                         if (args.onAnimationEnd) args.onAnimationEnd()
                     }
     var sim = d3.forceSimulation(args.nodes)
