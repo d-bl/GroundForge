@@ -14,7 +14,8 @@ diagram.showGraph = function(args) {
     var nodes = container.selectAll(".node").data(args.nodes).enter().append("svg:path")
         .attr("d", diagram.shape.stitch)
         .attr("class", "node")
-        .style('fill', '#000000')
+        .style('fill', '#000')
+        .style('opacity', 0.1)
         .style('stroke', 'none')
     var drawPath = function(d) {
         var sX = d.source.x

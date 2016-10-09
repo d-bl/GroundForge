@@ -15,6 +15,7 @@ diagram.showGraph = function(args) {
         .attr("d", diagram.shape.stitch)
         .attr("class", "node")
         .style('fill', '#000000')
+        .style('opacity', 0.1)
         .style('stroke', 'none')
     var drawPath = function(d) {
         var sX = d.source.x
