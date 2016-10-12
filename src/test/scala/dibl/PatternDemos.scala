@@ -36,7 +36,7 @@ class PatternDemos extends FlatSpec with Matchers {
     patterns.add("-437 34-7", "bricks")
     patterns.add("5831 -4-7 3158 -7-4", "checker")
     patterns.add("4830 --77", "bricks")
-    write(new File(s"target/patterns/rose.svg"), patterns.toSvgDoc())
+    write(new File("target/patterns/rose.svg"), patterns.toSvgDoc())
   }
 
   "pattern sheet" should "succeed" in {
@@ -54,7 +54,7 @@ class PatternDemos extends FlatSpec with Matchers {
     patterns.add("5---5-5- -O-E-5-5", "bricks") // double length horizontal lines
 
     patterns.add("586- -4-5 5-21 -5-777", "checker") // reports an error
-    write(new File(s"target/patterns/pattern-sheet.svg"), patterns.toSvgDoc())
+    write(new File("target/patterns/pattern-sheet.svg"), patterns.toSvgDoc())
   }
 
   it should "not mix up dimensions" in {
@@ -87,6 +87,6 @@ class PatternDemos extends FlatSpec with Matchers {
   "minimal" should "succeed" in {
     val patterns = PatternSheet(1, "width='340' height='330'")
     patterns.add("586- -4-5 5-21 -5-7","bricks")
-    write(new File(s"target/patterns/minimal.svg"), patterns.toSvgDoc())
+    write(new File("target/patterns/minimal.svg"), patterns.toSvgDoc())
   }
 }

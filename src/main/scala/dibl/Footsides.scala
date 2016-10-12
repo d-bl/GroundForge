@@ -114,7 +114,7 @@ object Footsides {
             case (3, 2) => // two in, one out: create |_
               abs(targetRow)(sourceCol) = swap(Array((sourceRow, sourceCol), (targetRow, targetCol)))
               addFootsideStitches(needFootside.tail, targetRow)
-            case (total,in) => println(s"Missed footside case: total=$total, in=$in, cell=($targetRow, $targetCol)")
+            case (total,in) => //println(s"Missed footside case: total=$total, in=$in, cell=($targetRow, $targetCol)")
               addFootsideStitches(needFootside.tail, targetRow)
           }
         }

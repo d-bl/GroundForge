@@ -28,14 +28,18 @@ function load() {
   diagram.showGraph({
     container: '#pairs',
     nodes: data.pairNodes,
-    links: data.pairLinks
+    links: data.pairLinks,
+    viewWidth: 440,
+    viewHeight: 260
   })
   diagram.showGraph({
     container: '#threads',
     nodes: data.threadNodes,
     links: data.threadLinks,
     threadColor: '#color',
-    palette: colors
+    palette: colors,
+    viewWidth: 440,
+    viewHeight: 260
   })
 }
 function onChangeColor(el) {

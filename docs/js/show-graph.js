@@ -66,11 +66,14 @@ diagram.markLinks = function(links) {
 }
 
 diagram.showGraph = function(args) {
+    var htmlContainer = d3.select(args.container)
+
     args.width = args.width ? args.width : 744
     args.height = args.height? args.height : 1052
+    args.viewWidth = args.viewWidth ? args.viewWidth : (args.width / 2)
+    args.viewHeight = args.viewHeight? args.viewHeight : (args.height / 2)
 
     // document creation
-    var htmlContainer = d3.select(args.container)
     var svgRoot = htmlContainer.append("svg")
                 .attr("width", args.width)
                 .attr("height", args.height)
@@ -173,7 +176,7 @@ diagram.showGraph = function(args) {
     var sim = d3.forceSimulation(args.nodes)
         .force("charge", d3.forceManyBody().strength(-1000))
         .force("link", d3.forceLink(args.links).strength(50).distance(12).iterations(30))
-        .force("center", d3.forceCenter(220,130))
+        .force("center", d3.forceCenter(args.viewWidth / 2, args.viewHeight / 2))
         .alpha(0.0035)
         .on("tick", simTicked)
         .on("end", simEnded)
