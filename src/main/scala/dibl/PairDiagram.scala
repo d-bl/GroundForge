@@ -74,7 +74,7 @@ object PairDiagram {
     s.absM.indices.flatMap { row =>
       s.absM(row).indices.filter(isUsed(row, _)).map { col =>
         val props = if (isInBottom(row)) Props("bobbin" -> true)
-        else if (isFootside(row, col)) Props("title" -> "ttctc")
+        else if (isFootside(row, col)) Props("title" -> s.footside)
         else Props("title" -> s.getTitle(row,col), "fixed" -> false)
         // initial coordinates prevent potential mirrored presentation
         props + ("y" -> (15* row), "x" -> (15*col))

@@ -27,7 +27,8 @@ import scala.util.Try
   * @param stitches A matrix for a single tile with stitch instructions (tcplr) per cell.
   */
 abstract class Settings(val absM: M,
-                        val stitches: Array[Array[String]]
+                        val stitches: Array[Array[String]],
+                        val footside: String = "ttctc"
                        ) {
   val nrOfPairLinks: Array[Array[Int]] = countLinks(absM)
   protected val relRows = stitches.length
@@ -58,6 +59,7 @@ object Settings {
     * @param shiftLeft The number or columns to the tile to the left foot side.
     * @param shiftUp The number of rows to shift the tile up to the top (read to the false foot side).
     * @param stitches Stitch instructions per tile-cell.
+    * @param footside Stitch for the footsides
     * @return a [[dibl.Settings]] instance
     */
   def apply(str: String,
@@ -66,7 +68,8 @@ object Settings {
             absCols: Int,
             shiftLeft: Int = 0,
             shiftUp: Int = 0,
-            stitches: String = ""
+            stitches: String,
+            footside: String
            ): Try[Settings] = {
     val tileType = TileType(bricks)
     for {
@@ -76,7 +79,7 @@ object Settings {
       absolute    <- toAbsWithMargins(shifted, absRows, absCols)
       _            = createFootsides(absolute)
       stitchMatrix = toStitchMatrix(stitches, relative.length, relative(0).length)
-    } yield tileType.toSettings(absolute, stitchMatrix)
+    } yield tileType.toSettings(absolute, stitchMatrix, footside)
   }
 
   /** Converts a string with stitch instructions into a matrix.

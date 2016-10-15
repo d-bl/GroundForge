@@ -167,10 +167,12 @@
     </fieldset>
     <fieldset id="stitchFieldSet" class="hide">
         <legend>Stitches</legend>
-        <p>Legend: c(ross) t(wist) l(eft-twist) r(ight-twist) p(in)</p>
-<textarea id="stitches" name="stitches" rows="2" cols="100" spellcheck="false"
+        <label for="footside">Footside</label>
+        <input id="footside" name="footside" type="text" value="ttctc"/><br/>
+        <label for="stitches">Hover over stitches in the pair diagram for IDs:</label>
+        <textarea id="stitches" name="stitches" rows="2" cols="100" spellcheck="false"
 >B1=ttcttpc, A2=ltc, C2=rtc, B2=tc, C1=tplc, A1=tprc, B1=tcttpc, D2=tcttpc</textarea>
-        <p>Hover over stitches in the pair diagram for IDs.</p>
+        <p>Legend: c(ross) t(wist) l(eft-twist) r(ight-twist) p(in)</p>
     </fieldset>
     <fieldset id="sizeFieldSet" class="hide">
         <legend>Patch size</legend>
@@ -179,7 +181,7 @@
             <input id="rows" name="rows" min="3" value="5" type="number"/>
             <label for="cols">columns
             </label>
-            <input id="cols" name="cols" min="3" value="5" type="number"/>
+            <input id="cols" name="cols" min="3" value="5" max="26" type="number"/>
         </p>
         <p>
             The numbers are related to the dots in the pattern sheet.

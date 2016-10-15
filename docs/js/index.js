@@ -13,9 +13,12 @@ function load() {
   var shiftUp = document.getElementById('up').value
   var matrix = document.getElementById('matrix').value
   var stitches = document.getElementById('stitches').value
+  var footside = document.getElementById('footside').value
   var tileType = getValueOfDropDown('tiles', '')
 
-  var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, tileType)
+  if (!footside) footside = "ttctc"
+
+  var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, tileType, footside)
 
   var colors = ''
   for(i=1; i <= 16 ; i++) {
