@@ -23,7 +23,7 @@ object Pattern {
 
 /** Builds an SVG drawing
   *
-  * @param tileMatrix See https://github.com/d-bl/GroundForge/blob/gh-pages/images/legend.png
+  * @param tileMatrix See https://github.com/d-bl/GroundForge/blob/master/docs/images/legend.png
   *                   on the right an example, on the left the meaning of the characters
   *                   thick arrows indicate vertices traveling two cells
   * @param tileType how the tile is stacked to build a pattern: like a brick wall or a checker board

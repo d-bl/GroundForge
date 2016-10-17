@@ -58,7 +58,7 @@ object PairDiagram {
 
   /** Creates nodes for a pair diagram
     *
-    * @return properties per node as in https://github.com/d-bl/GroundForge/blob/gh-pages/js/sample.js
+    * @return properties per node as in https://github.com/d-bl/GroundForge/blob/7a94b67/js/sample.js
     */
   def toNodes (s: Settings): Seq[Props] = {
 
@@ -85,7 +85,7 @@ object PairDiagram {
   /** Creates links for a pair diagram
     *
     * @param nodeNrs sequence numbers assigned to actually used cells
-    * @return properties per link as in https://github.com/d-bl/GroundForge/blob/gh-pages/sample.js
+    * @return properties per link as in https://github.com/d-bl/GroundForge/blob/7a94b67/js/sample.js
     */
   def  toLinks (s: Settings, nodeNrs: Seq[Seq[Int]], nodes: Seq[Props]
                ): Seq[Props] = {
