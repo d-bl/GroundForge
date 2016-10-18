@@ -56,14 +56,14 @@ Safari nor Internet Explorer support `<input type="color">`. The free [color-pic
 
 Scala code
 ==========
+ 
+The scala code takes care of the number crunching that assembles the data for D3js and the SVG for the pattern sheet. The scala code is compiled into `matrix-graphs.js`. An HTML form takes care of configuration, JavaSript  feeds the assembled data to the [D3.js] API with `show-graphs.js` and takes care of event handling with `index.js` and `jscolor.js`.
 
-Event handling (by `index.js` and `jscolor.js`) and calling the [D3.js] API (by `show-graphs.js`) is done with JavaScript. The scala code takes care of the number crunching that assembles the data for D3js and the SVG for the pattern sheet. The scala code is compiled into `matrix-graphs.js`
-
-[API Demo](https://d-bl.github.io/GroundForge/API)
-
-The code under `src/main/scala/dibl` has two classes with `@JSExport` annotations. The `dibl.D3Data` results are visualised with D3js. The toSVG result of `dibl.PatternSheet` is written to files by unit tests, and assigned to the innerHTML of a DOM element on the web pages. Modern browsers can display the SVG test files. 
+The code under `src/main/scala/dibl` has two classes with `@JSExport` annotations. The `dibl.D3Data` results are visualised with D3js. The toSVG result of `dibl.PatternSheet` is written to files by unit tests or assigned to the innerHTML of a DOM element on the web pages. Modern browsers can display the SVG test files. 
 
 The scripts and page in `docs/API` are minimalistic versions of its siblings in `docs` and `docs/js`, the dressed up version adds decoration, event handling, configuration and some help. The development view for the thread and pair diagrams is a slightly less minimal page. For that purpose `src/main/resources/index-dev.html` is served by sbt as `http://localhost:12345/target/scala-2.11/classes/index-dev.html`, this page immediately reflects changes in the scala code though the animation doesn't start.
+
+[API Demo](https://d-bl.github.io/GroundForge/API)
 
 
 Compile and preview
