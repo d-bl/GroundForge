@@ -19,6 +19,9 @@ abstract class TileType {
   def toSettings(m: M, stitchMatrix: Array[Array[String]], footside: String): Settings
   // TODO add method(s) for Pattern class
 
+  def toChecker (lines: Array[String]): Array[String]
+
+    @Deprecated
   def toChecker(m: M): M
 
   /** @param row relative row number in the generated patch
@@ -45,9 +48,12 @@ object Checker extends TileType {
 
   def toChecker(m: M): M = m
 
+  def toChecker(lines: Array[String]): Array[String] = lines
+
   def toAbsTileIndices(row: Int, col: Int, tileRows: Int, tileCols: Int): (Int, Int) = {
     ((row + tileRows) % tileRows, (col + tileCols) % tileCols)
   }
+
 }
 
 object Brick extends TileType {
@@ -66,17 +72,30 @@ object Brick extends TileType {
 
   /** Creates a checkerboard-matrix from a brick-matrix by
     * adding two half bricks to the bottom of the brick-matrix.
-    * In ascii-art:
-    * <pre>
-    * +-------+
-    * | a   b |
-    * | c   d |
-    * +---+---+
-    *   b | a
-    *   d | c
-    * +---+---+
-    * </pre>
+    *
+    * @param lines having all the same length.
+    *              <pre>
+    *              +------+
+    *              | a  b |
+    *              | c  d |
+    *              +------+
+    *              </pre>
+    * @return In ascii-art:
+    *         <pre>
+    *         +-------+
+    *         | a   b |
+    *         | c   d |
+    *         +---+---+
+    *           b | a
+    *           d | c
+    *         +---+---+
+    *         </pre>
     */
+  def toChecker (lines: Array[String]): Array[String] = {
+    val n = lines(0).length / 2
+    lines ++ lines.map(line => line.drop(n) ++ line.take(n))
+  }
+
   def toChecker(m: M): M = {
     m ++ m.map { r =>
       val (left, right) = r.splitAt(r.length / 2)

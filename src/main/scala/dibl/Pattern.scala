@@ -15,7 +15,7 @@
 */
 package dibl
 
-import dibl.Matrix.{toMatrixLines, toRelSrcNodes}
+import dibl.Matrix.toValidMatrixLines
 
 import scala.util.Try
 
@@ -24,7 +24,6 @@ object Pattern {
 /** Builds an SVG drawing
   *
   * @param tileMatrix See https://github.com/d-bl/GroundForge/blob/master/docs/images/legend.png
-  *                   on the right an example, on the left the meaning of the characters
   *                   thick arrows indicate vertices traveling two cells
   * @param tileType how the tile is stacked to build a pattern: like a brick wall or a checker board
   * @param groupId the id of the to-be-cloned group of objects
@@ -37,8 +36,7 @@ object Pattern {
             offsetX: Int = 80,
             offsetY: Int = 120
            ): Try[String] = for {
-             lines <- toMatrixLines(tileMatrix)
-             relative <- toRelSrcNodes(tileMatrix)
+            lines <- toValidMatrixLines(tileMatrix)
            } yield new Pattern(
              tileMatrix,
              tileType,
@@ -46,7 +44,7 @@ object Pattern {
              offsetX,
              offsetY,
              lines,
-             relative
+             lines.map(_.map(Matrix.relSourcesMap).toArray)
            ).createPatch
 }
 
@@ -94,17 +92,20 @@ private class Pattern (tileMatrix: String,
     for {
       row <- relative.indices
       col <- relative(row).indices
-      (srcRow, srcCol) <- relative(row)(col)
-      r = row + srcRow
-      c = col + srcCol
-      _ = if (r >= 0 && r < tileRows && c >= 0 && c < tileCols)
-        linkCount(r)(c) += 1
-      _ = linkCount(row)(col) += 1
-    } yield()
+      (relSrcRow, relSrcCol) <- relative(row)(col) // zero or two elements
+    }{
+      val absSrcRow = row + relSrcRow
+      val absSrcCol = col + relSrcCol
+      val srcRowInMatric = absSrcRow >= 0 && absSrcRow < tileRows
+      val srcColInMatrix = absSrcCol >= 0 && absSrcCol < tileCols
+      val inMatrix = srcRowInMatric && srcColInMatrix
+      if (inMatrix) linkCount(absSrcRow)(absSrcCol) += 1
+      linkCount(row)(col) += 1
+    }
     for {
       row <- relative.indices
       col <- relative(row).indices
-      if linkCount(row)(col) % 4 > 0
+      if linkCount(row)(col) % 4 > 0 // zero nor four
     } yield (row, col)
   }
 

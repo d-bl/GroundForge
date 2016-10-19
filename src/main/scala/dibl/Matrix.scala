@@ -31,26 +31,6 @@ object Matrix {
   def shift[T: ClassTag](m: Array[Array[T]], left: Int, up: Int): Array[Array[T]] =
     shiftX(for (r <- m) yield shiftX(r, left), up)
 
-  /** Creates a checkerboard-matrix from a brick-matrix by
-    * adding two half bricks to the bottom of the brick-matrix.
-    * In ascii-art:
-    * <pre>
-    * +-------+
-    * | a   b |
-    * | c   d |
-    * +---+---+
-    *   b | a
-    *   d | c
-    * +---+---+
-    * </pre>
-    */
-  def brickWallToCheckerboard(m: M): M = {
-    m ++ m.map{r =>
-      val (left,right) = r.splitAt(r.length/2)
-      right ++ left
-    }
-  }
-
   /** Converts relative source nodes in one matrix into
     * absolute source nodes in a matrix with different dimensions
     * and a margin for loose ends.
@@ -71,11 +51,6 @@ object Matrix {
       }
       abs
     }
-
-  def maybeSwap(src: Array[(Int, Int)]): Array[(Int, Int)] =
-    if (src(0)._2 >= src(1)._2) Array(src(1), src(0))
-    else if (src(0)._1 >= src(1)._1) Array(src(1), src(0))
-    else src
 
   def countLinks(m: M): Array[Array[Int]] = {
     val links = Array.fill(m.length,m(0).length)(0)
@@ -124,56 +99,14 @@ object Matrix {
     '-' -> SrcNodes()                 // not used node
   )
 
-  /** Translates each character into a relative source node.
+  /** Split on sequences of characters that are not a key of [[relSourcesMap]].
     *
-    * @param matrix the characters in the string are keys in relSourcesMap
-    * @param dimensions a string with at least two sequences of digits,
-    *                   s1*s2 should equal the length of the matrix string
-    * @return
+    * @param str compact matrix specifying a 2-in-2out-directed graph
+    * @return Failure if resulting lines do not have equal length.
     */
-  def toRelSrcNodes(matrix: String, dimensions: String): Try[M] = {
-    dims(dimensions).flatMap { case (rows,cols) =>
-      val matrixSize = rows * cols
-      if (matrixSize != matrix.length)
-        Failure(new IllegalArgumentException(
-          s"length of '$matrix' is ${matrix.length} while '$dimensions' asks for $matrixSize"
-        ))
-      else if (!matrix.matches("[-0-9A-O]+"))
-        Failure(new IllegalArgumentException(
-          s"'$matrix' is not a valid matrix string"
-        ))
-      else Success( // we can't run into trouble any more
-        matrix.toCharArray.map {
-          relSourcesMap(_)
-        }.grouped(cols).toArray
-      )
-    }
-  }
-
-  def toRelSrcNodes(str: String): Try[M] = {
-    for {
-      lines <- toMatrixLines(str)
-      dims = s"${lines.length}x${lines(0).length}"
-      relM <- toRelSrcNodes(matrix = lines.mkString(""), dimensions = dims)
-    } yield relM
-  }
-
-  def toMatrixLines(str: String): Try[Array[String]] = {
+  def toValidMatrixLines(str: String): Try[Array[String]] = {
     val lines = str.split("[^-0-9A-O]+")
     if (lines.map(_.length).sortBy(n => n).distinct.length == 1) Success(lines)
     else Failure(new scala.Exception(s"Matrix lines have varying lengths: $str ==> ${lines.mkString(", ")}"))
   }
-
-  /** @param s for example "4x2..."
-    * @return (rows,cols) in case of the example: (4,2)
-    */
-  def dims(s: String): Try[(Int,Int)] =
-    if (!s.matches("[0-9]+[^0-9]+[0-9]+.*"))
-      Failure(new IllegalArgumentException(
-        s"'$s' should contain at least two sequences of digits"
-      ))
-    else Success {
-      val ints = s.split("[^0-9]+").map(_.toInt)
-      (ints(0), ints(1))
-    }
 }

@@ -127,7 +127,7 @@ class MatrixSpec extends FlatSpec with Matchers {
         val args: Array[String] = matrices(i).split(";")
         val matrix = args(0)
         val tileType = if (args.length > 1) args(1) else ""
-        val m = Settings(matrix, tileType, absRows = 40, absCols = 12, shiftLeft = 1, shiftUp = 1,stitches = "").get.absM
+        val m = Settings(matrix, tileType, absRows = 40, absCols = 12, shiftLeft = 1, shiftUp = 1).get.absM
         val nrOfLinks = countLinks(m)
         // some rough sifting of matrices with a different a different range for internal
         val topMargin =

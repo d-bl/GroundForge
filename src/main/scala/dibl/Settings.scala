@@ -68,17 +68,17 @@ object Settings {
             absCols: Int,
             shiftLeft: Int = 0,
             shiftUp: Int = 0,
-            stitches: String,
-            footside: String
+            stitches: String = "",
+            footside: String = "ttctc"
            ): Try[Settings] = {
     val tileType = TileType(bricks)
     for {
-      relative    <- toRelSrcNodes(str)
-      checker      = tileType.toChecker(relative)
-      shifted      = shift(checker, shiftLeft, shiftUp)
+      lines       <- toValidMatrixLines(str)
+      relative     = tileType.toChecker(lines).map(_.map(relSourcesMap).toArray)
+      shifted      = shift(relative, shiftLeft, shiftUp)
       absolute    <- toAbsWithMargins(shifted, absRows, absCols)
       _            = createFootsides(absolute)
-      stitchMatrix = toStitchMatrix(stitches, relative.length, relative(0).length)
+      stitchMatrix = toStitchMatrix(stitches, lines.length, lines(0).length)
     } yield tileType.toSettings(absolute, stitchMatrix, footside)
   }
 
