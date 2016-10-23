@@ -2,7 +2,7 @@
 <head>
   <style>div, #colorpicker { display: inline-block; border: solid 1px; vertical-align: top;}</style>
   <meta charset="UTF-8">
-  <script src="https://d3js.org/d3.v4.js" type="text/javascript"></script>
+  <script src="../../../docs/js/d3.v4.min.js" type="text/javascript"></script>
   <script src="../../../docs/js/show-graph.js"></script>
   <script type="text/javascript" src="../groundforge-fastopt.js"></script>
   <script type="text/javascript" src="/workbench.js"></script>
@@ -14,12 +14,12 @@
   <div id="threads"></div>
   <script>
     fullyTransparant = 0.07
-    var matrix = "5632 34-7"
-    var nrOfRows = 5
-    var nrOfCols = 5
-    var shiftLeft = 1
+    var matrix = "5831 -4-7"
+    var nrOfRows = 8
+    var nrOfCols = 7
+    var shiftLeft = 3
     var shiftUp = 1
-    var stitches = 'D1=ttcttpc,A1=tplc,B1=tctptc,C1=tprc,D1=ttcttpc,A2=rtc,B2=tc,C2=ltc,D2=tc'
+    var stitches = 'A1=tc,C1=tc,A2=tc,B2=ptc,C2=tc,D2=tc'
     var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, "bricks")
     diagram.showGraph({
       container: '#pairs',
