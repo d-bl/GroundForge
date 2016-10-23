@@ -88,7 +88,7 @@ To completely [replace sbt] seems quite a detour.
 
 - Fork the project and make a local clone.
 - Avoid working on the master branch, rather create branches and pull requests.
-- Go to the root of the local project and start the command `sbt ~fastOptJS`
+- Go to the root of the local project and start the command `sbt '~fastOptJS'`
 - Monitor the result on `http://localhost:12345/target/scala-2.11/classes/index-dev.html`
   It is a dressed down version of the published page, with possibly experimental features added.
   Nodes and links invisible in the published page are shown faint for debugging purposes.
@@ -118,7 +118,7 @@ The command `mvn clean test` executes the tests, your IDE might too. Launching t
 Publish
 -------
 
-- Compile with `sbt ~fullOptJS`
+- Compile with `sbt '~fullOptJS'`
 - Copy the content of `target\scala-2.11\groundforge-opt.js` into `docs/js/matrix-graphs.js`
 - Check the results with `index.html`
 - If ok: commit, push and create a pull request 
