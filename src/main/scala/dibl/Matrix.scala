@@ -15,51 +15,77 @@
 */
 package dibl
 
-import java.lang.Math.max
+import java.lang.Math._
 
-import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
 import scala.reflect.ClassTag
 import scala.util.{Failure, Success, Try}
 
 object Matrix {
 
-  @tailrec
-  private def shiftX[T: ClassTag](m: Array[T], shift: Int): Array[T] =
-    if (shift <= 0) m else shiftX(m.tail :+ m.head, shift - 1)
-
-  def shift[T: ClassTag](m: Array[Array[T]], left: Int, up: Int): Array[Array[T]] =
-    shiftX(for (r <- m) yield shiftX(r, left), up)
-
-  /** Converts relative source nodes in one matrix into
-    * absolute source nodes in a matrix with different dimensions
-    * and a margin for loose ends.
+  /** @param lines for example: <pre>
+    *              ab
+    *              cd
+    *              </pre>
+    * @return <pre>
+    *         --------
+    *         --------
+    *         --abab--
+    *         --cdcd--
+    *         --abab--
+    *         --cdcd--
+    *         --------
+    *         --------
+    *         </pre>
     */
-  def toAbsWithMargins(rel: M, absRows: Int, absCols: Int): Try[M] =
-    if (absRows < 1 || absCols < 1)
-      Failure(new IllegalArgumentException(""))
-    else Success{
-      val abs = Array.fill(absRows + 4, absCols + 4)(SrcNodes())
-      val relRows = rel.length
-      val relCols = rel(0).length
-      for {
-        targetRow <- 2 until absRows + 2
-        targetCol <- 2 until absCols + 2
-      } {
-        abs(targetRow)(targetCol) = for ((relRow, relCol) <- rel(targetRow % relRows)(targetCol % relCols))
-          yield (max(1,targetRow + relRow), max(1,targetCol + relCol))
-      }
-      abs
-    }
+  def extend(lines: Array[String], absRows: Int, absCols: Int): Array[String] = {
+    def repeatRows(rows: Array[String]): Array[String] =
+      Array.fill((absRows + rows.length) / rows.length)(rows).flatten.take(absRows)
+    def repeatCols(row: String): String =
+      (row * ((absCols + row.length) / row.length)).take(absCols)
+    val marginRows = Array.fill(2)("-" * (absCols + 4))
+    marginRows ++ repeatRows(lines.map("--" + repeatCols(_) + "--")) ++ marginRows
+  }
 
+  def shift[T: ClassTag](xs: Array[T], n: Int): Array[T] = {
+    val modN = n % xs.length
+    xs.takeRight(xs.length - modN) ++ xs.take(modN)
+  }
+
+  def shiftChars(xs: String, n: Int): String = {
+    val modN = n % xs.length
+    xs.takeRight(xs.length - modN) ++ xs.take(modN)
+  }
+
+  /** Converts a matrix with multiple tuples per cell pointing to source cells
+    *
+    * @param m tuples have relative positions
+    * @return tuples have absolute position
+    */
+  def toAbsolute(m: M): M = {
+    Array.tabulate(m.length)(targetRow =>
+      Array.tabulate(m(0).length)(targetCol =>
+        for ((relSrcRow, relSrcCol) <- m(targetRow)(targetCol))
+          // not allowing zero helps creating footsides, should be done there
+          yield (max(1, targetRow + relSrcRow), max(1, targetCol + relSrcCol))
+      )
+    )
+  }
+
+  /** Counts the numbers of links arriving at or leaving from a cell
+    *
+    * @param m tuples have absolute positions
+    * @return a matrix with the same dimensions as m
+    */
   def countLinks(m: M): Array[Array[Int]] = {
     val links = Array.fill(m.length,m(0).length)(0)
-    for {row <- m.indices
-         col <- m(row).indices
-        } {
-      links(row)(col) += m(row)(col).length
-      for {(srcRow,srcCol) <- m(row)(col)} links(srcRow)(srcCol) += 1
-    }
+    for {
+      row <- m.indices
+      col <- m(row).indices
+      _  = links(row)(col) += m(row)(col).length
+      (srcRow,srcCol) <- m(row)(col)
+      _ = links(srcRow)(srcCol) += 1
+    } {}
     links
   }
 
@@ -99,14 +125,21 @@ object Matrix {
     '-' -> SrcNodes()                 // not used node
   )
 
+  /** Matches any sequence of characters that are not a key of [[relSourcesMap]] */
+  val separator: String = "[^-0-9A-O]+"
+
   /** Split on sequences of characters that are not a key of [[relSourcesMap]].
     *
     * @param str compact matrix specifying a 2-in-2out-directed graph
-    * @return Failure if resulting lines do not have equal length.
+    * @return Failure if resulting lines do not have equal length,
+    *         or are longer than 26 as stitch ID's tag columns with a single capital letter.
     */
   def toValidMatrixLines(str: String): Try[Array[String]] = {
-    val lines = str.split("[^-0-9A-O]+")
-    if (lines.map(_.length).sortBy(n => n).distinct.length == 1) Success(lines)
-    else Failure(new scala.Exception(s"Matrix lines have varying lengths: $str ==> ${lines.mkString(", ")}"))
+    val lines = str.split(separator)
+    if (lines.map(_.length).sortBy(n => n).distinct.length != 1)
+      Failure(new scala.Exception(s"Matrix lines have varying lengths: $str ==> ${lines.mkString(", ")}"))
+    else if (lines(0).length > 26)
+      Failure(new scala.Exception(s"Matrix lines exceeds maximum length of 26: $str ==> ${lines.mkString(", ")}"))
+    else Success(lines)
   }
 }

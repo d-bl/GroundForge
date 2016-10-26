@@ -21,9 +21,6 @@ abstract class TileType {
 
   def toChecker (lines: Array[String]): Array[String]
 
-    @Deprecated
-  def toChecker(m: M): M
-
   /** @param row relative row number in the generated patch
     * @param col relative col number in the generated patch
     * @param tileRows height of the tile matrix that defines the pattern
@@ -45,8 +42,6 @@ object Checker extends TileType {
       def toOriginalPosition(row: Int, col: Int) =
         ((row - margin + relRows) % relRows, col % relCols)
     }
-
-  def toChecker(m: M): M = m
 
   def toChecker(lines: Array[String]): Array[String] = lines
 
@@ -80,8 +75,7 @@ object Brick extends TileType {
     *              | c  d |
     *              +------+
     *              </pre>
-    * @return In ascii-art:
-    *         <pre>
+    * @return <pre>
     *         +-------+
     *         | a   b |
     *         | c   d |
@@ -94,13 +88,6 @@ object Brick extends TileType {
   def toChecker (lines: Array[String]): Array[String] = {
     val n = lines(0).length / 2
     lines ++ lines.map(line => line.drop(n) ++ line.take(n))
-  }
-
-  def toChecker(m: M): M = {
-    m ++ m.map { r =>
-      val (left, right) = r.splitAt(r.length / 2)
-      right ++ left
-    }
   }
 }
 

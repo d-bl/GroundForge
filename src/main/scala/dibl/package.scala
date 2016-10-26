@@ -33,6 +33,9 @@ package object dibl {
   /** Matrix of tuples, each tuple points to another cell in the matrix. */
   type M = Array[R]
   def M(xs: R*) = Array(xs: _*)
+  implicit class ImplicitMatrix(left: M) {
+    def toS: String = left.deep.mkString(",").replace("Array","").replace("(((","\n(((").replace("(()","\n(()")
+  }
 
   type TargetToSrcs = (Int, (Int, Int))
   def TargetToSrcs (target: Int, sources: (Int, Int)) = (target, sources)

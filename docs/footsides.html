@@ -27,22 +27,19 @@
       var cols = mRows[0].length
       var nrOfRows = 10
       for (nrOfCols=6 ; nrOfCols < 6+cols ; nrOfCols++) {
-        for (shiftLeft=0 ; shiftLeft < rows ; shiftLeft++) {
-          for (shiftUp=0 ; shiftUp < cols ; shiftUp++) {
+        for (shiftLeft=0 ; shiftLeft < 4 ; shiftLeft++) {
+          for (shiftUp=0 ; shiftUp < 4 ; shiftUp++) {
             data = dibl.D3Data().get(mRows, nrOfRows, nrOfCols, shiftUp, shiftLeft, stitches, args.tiles)
             var id = ''+nrOfCols+shiftLeft+shiftUp
             var el = document.getElementById('d'+id)
             if (!el) continue
             el.innerHTML = ""
             diagram.showGraph({
-              threadColor: '#colorpicker',
               container: '#d'+id,
               width: 200,
               height: 200,
               nodes: data.threadNodes,
               links: data.threadLinks,
-              scale: 0.5,
-              transform: "translate(0,0)scale(0.5)",
             })
             document.getElementById('L'+id).href = 'index.html?matrix=' +
               args.matrix.replace( /[^-0-9A-D]+/g, '%0D') +

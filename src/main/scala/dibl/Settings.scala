@@ -18,13 +18,14 @@ package dibl
 import dibl.Footsides.createFootsides
 import dibl.Matrix._
 
-import scala.util.Try
+import scala.util.{Failure, Success, Try}
 
 /** Parameters for the constructor of a [[dibl.PairDiagram]]
   *
   * @param absM A matrix for a patch of lace with repeated tiles. Each cell represents a node in a two-in-two-out directed graph.
   *             A cell contains tuples pointing to other cells for both incoming links and outgoing links for a node.
   * @param stitches A matrix for a single tile with stitch instructions (tcplr) per cell.
+  * @param footside Stitch for the footsides
   */
 abstract class Settings(val absM: M,
                         val stitches: Array[Array[String]],
@@ -71,12 +72,17 @@ object Settings {
             stitches: String = "",
             footside: String = "ttctc"
            ): Try[Settings] = {
-    val tileType = TileType(bricks)
+
+    val legalArguments = absCols > 1 && absRows > 1 && shiftLeft >= 0 && shiftUp >= 0
     for {
+      _           <- if (legalArguments) Success() else Failure(new IllegalArgumentException())
       lines       <- toValidMatrixLines(str)
-      relative     = tileType.toChecker(lines).map(_.map(relSourcesMap).toArray)
-      shifted      = shift(relative, shiftLeft, shiftUp)
-      absolute    <- toAbsWithMargins(shifted, absRows, absCols)
+      tileType     = TileType(bricks)
+      checker      = tileType.toChecker(lines)
+      // shift +2 mimics previous margin of extended matrix to prevent changing link results
+      shifted      = shift(checker, shiftUp + 2).map(shiftChars(_, shiftLeft + 2))
+      relative     = extend(shifted, absRows, absCols).map(_.map(relSourcesMap).toArray)
+      absolute     = toAbsolute(relative)
       _            = createFootsides(absolute)
       stitchMatrix = toStitchMatrix(stitches, lines.length, lines(0).length)
     } yield tileType.toSettings(absolute, stitchMatrix, footside)

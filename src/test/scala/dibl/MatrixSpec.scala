@@ -18,6 +18,8 @@ package dibl
 import dibl.Matrix._
 import org.scalatest._
 
+import scala.reflect.ClassTag
+
 /** checks for typos in HashMap-s and more */
 class MatrixSpec extends FlatSpec with Matchers {
 
@@ -121,7 +123,7 @@ class MatrixSpec extends FlatSpec with Matchers {
       "5-L-L-K- -L-L-L-O H-H-5--- -H-H-H-E;bricks", "5-L-L-K- -L-L-L-O --H-H-5- -E-H-H-H;bricks", "5-L-L-K- -L-L-L-O H-H-H-H- -H-H-H-H;bricks",
       "5-L-L-K- -L-K-5-O L-L-O-L- -E-E-E-E;bricks", "5-L-L-K- -L-K-5-O 5-L-O-K- -E-E-E-H;bricks", "5-L-L-K- -L-K-5-O 5-L-O--- -E-E-H-E;bricks",
       "5-L-L-K- -L-K-5-O K-5-O-L- -H-E-E-E;bricks", "5-L-L-K- -L-K-5-O --5-O-L- -E-E-E-H;bricks"    )
-
+//
     val errors = new StringBuffer()
     for (i <- matrices.indices) {
         val args: Array[String] = matrices(i).split(";")
@@ -152,12 +154,24 @@ class MatrixSpec extends FlatSpec with Matchers {
     errors.toString shouldBe ""
   }
 
+  "separator" should "match anything but Matrix.relSourcesMap.keySet" in {
+    // Note that the constant Matrix.separator is repeated in JavaScript on footsides.html
+    // which is a workaround for an incomplete solution of hte Footsides class.
+    // If this separator value needs fixing, that JavaScript value need fixing too.
+    val allChars = for {char <- Char.MinValue until Char.MaxValue} yield char
+    val nonSeparatorChars = allChars.toString().split(Matrix.separator).mkString("")
+    nonSeparatorChars.length shouldBe Matrix.relSourcesMap.keySet.size
+    // As long as building (with sbt) and testing (with maven) is not integrated,
+    // we might consider to add this check as an assert to the matrix class
+    // but that would reduce performance of the JavaScript.
+  }
+
   "shift" should "succeed" in {
 
-    val m1 = Array(Array[String]("a", "b", "c", "d"), Array[String]("A", "B", "C", "D"))
-    val m2 = Array(Array[String]("b", "c", "d", "a"), Array[String]("B", "C", "D", "A"))
-    val m3 = Array(Array[String]("B", "C", "D", "A"), Array[String]("b", "c", "d", "a"))
-    val m4 = Array(Array[String]("A", "B", "C", "D"), Array[String]("a", "b", "c", "d"))
+    val m1 = Array("abcd", "ABCD")
+    val m2 = Array("bcda", "BCDA")
+    val m3 = Array("BCDA", "bcda")
+    val m4 = Array("ABCD", "abcd")
     val mA: M = Array(
       Array(Array((11, 12)), Array((13, 14)), Array((15, 16)), Array((17, 18))),
       Array(Array((21, 22)), Array((23, 24)), Array((25, 26)), Array((27, 28)))
@@ -166,9 +180,16 @@ class MatrixSpec extends FlatSpec with Matchers {
       Array(Array((23, 24)), Array((25, 26)), Array((27, 28)), Array((21, 22))),
       Array(Array((13, 14)), Array((15, 16)), Array((17, 18)), Array((11, 12)))
     )
-    shift(m1, left = 1, up = 0) shouldBe m2
-    shift(m1, left = 1, up = 1) shouldBe m3
-    shift(m1, left = 0, up = 1) shouldBe m4
-    shift(mA, left = 1, up = 1) shouldBe mB
+
+    def myShift(xs: Array[String], left: Int, up: Int): Array[String] =
+      shift(xs, up).map(shiftChars(_, left))
+
+    def myShift2[T: ClassTag](xs: Array[Array[T]], left: Int, up: Int): Array[Array[T]] =
+      shift(xs, up).map(shift(_, left))
+
+    myShift(m1, left = 1, up = 0) shouldBe m2
+    myShift(m1, left = 1, up = 1) shouldBe m3
+    myShift(m1, left = 0, up = 1) shouldBe m4
+    myShift2(mA, left = 1, up = 1) shouldBe mB
   }
 }
