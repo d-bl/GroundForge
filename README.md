@@ -69,6 +69,9 @@ The scripts and page in `docs/API` are minimalistic versions of its siblings in 
 Compile and preview
 -------------------
 
+[![Build Status](https://travis-ci.org/d-bl/GroundForge.svg?branch=master)](https://travis-ci.org/d-bl/GroundForge)
+
+
 ### Requirements
 
 - The pages in the docs directory don't require any compilation until the publish phase described below.

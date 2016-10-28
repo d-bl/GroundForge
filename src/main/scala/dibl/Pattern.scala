@@ -44,7 +44,7 @@ object Pattern {
              offsetX,
              offsetY,
              lines,
-             lines.map(_.map(Matrix.relSourcesMap).toArray)
+             lines.map(_.map(Matrix.charToRelativeTuples).toArray)
            ).createPatch
 }
 

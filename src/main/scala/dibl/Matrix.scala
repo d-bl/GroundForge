@@ -93,7 +93,7 @@ object Matrix {
     * The source nodes are defined with relative (row,column) numbers.
     * A node can be connected in eight directions, but source nodes are not found downwards.
     */
-  val relSourcesMap: HashMap[Char,SrcNodes] = HashMap (
+  val charToRelativeTuples: HashMap[Char,SrcNodes] = HashMap (
                                       // ascii art of incoming links for a node
     '0' -> SrcNodes((-1, 1),( 0, 1)), // .../_
     '1' -> SrcNodes((-1, 0),( 0, 1)), // ..|._
@@ -125,10 +125,10 @@ object Matrix {
     '-' -> SrcNodes()                 // not used node
   )
 
-  /** Matches any sequence of characters that are not a key of [[relSourcesMap]] */
+  /** Matches any sequence of characters that are not a key of [[charToRelativeTuples]] */
   val separator: String = "[^-0-9A-O]+"
 
-  /** Split on sequences of characters that are not a key of [[relSourcesMap]].
+  /** Split on sequences of characters that are not a key of [[charToRelativeTuples]].
     *
     * @param str compact matrix specifying a 2-in-2out-directed graph
     * @return Failure if resulting lines do not have equal length,

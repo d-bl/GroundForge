@@ -31,9 +31,12 @@ abstract class TileType {
 }
 
 object TileType {
-  def apply(key: String) = Map(
-    "bricks" -> Brick
-  ).getOrElse(key,Checker)
+  val stringToType: Map[String, TileType] = Map(
+    "bricks" -> Brick,
+    "checker" -> Checker
+  )
+
+  def apply(key: String) = stringToType.getOrElse(key,Checker)
 }
 
 object Checker extends TileType {
