@@ -23,9 +23,9 @@ import scala.util.{Failure, Success, Try}
 /** Parameters for the constructor of a [[dibl.PairDiagram]]
   *
   * @param absM A matrix for a patch of lace with repeated tiles. Each cell represents a node in a two-in-two-out directed graph.
-  *             A cell contains tuples pointing to other cells for both incoming links and outgoing links for a node.
+  *             A cell contains absolute tuples pointing to other cells for both incoming links and outgoing links for a node.
   * @param stitches A matrix for a single tile with stitch instructions (tcplr) per cell.
-  * @param footside Stitch for the footsides
+  * @param footside Stitch instructions for the footsides
   */
 abstract class Settings(val absM: M,
                         val stitches: Array[Array[String]],
@@ -52,9 +52,9 @@ object Settings {
 
   /** Creates a [[dibl.Settings]] instance.
     *
-    * @param str A string with matrix lines. Any character in [[dibl.Matrix.relSourcesMap.keySet]]
+    * @param str A string with matrix lines. Any character in [[dibl.Matrix.charToRelativeTuples.keySet]]
     *            is converted to a matrix cell. Any sequence of other characters separates matrix lines.
-    * @param bricks A key selecting the [[dibl.TileType]] of the matrix.
+    * @param bricks A key of [[dibl.TileType.stringToType]] for the matrix.
     * @param absRows The desired number of rows for the patch of lace.
     * @param absCols The desired number of columns for the patch of lace.
     * @param shiftLeft The number or columns to the tile to the left foot side.
@@ -81,7 +81,7 @@ object Settings {
       checker      = tileType.toChecker(lines)
       // shift +2 mimics previous margin of extended matrix to prevent changing link results
       shifted      = shift(checker, shiftUp + 2).map(shiftChars(_, shiftLeft + 2))
-      relative     = extend(shifted, absRows, absCols).map(_.map(relSourcesMap).toArray)
+      relative     = extend(shifted, absRows, absCols).map(_.map(charToRelativeTuples).toArray)
       absolute     = toAbsolute(relative)
       _            = createFootsides(absolute)
       stitchMatrix = toStitchMatrix(stitches, lines.length, lines(0).length)

@@ -160,7 +160,7 @@ class MatrixSpec extends FlatSpec with Matchers {
     // If this separator value needs fixing, that JavaScript value need fixing too.
     val allChars = for {char <- Char.MinValue until Char.MaxValue} yield char
     val nonSeparatorChars = allChars.toString().split(Matrix.separator).mkString("")
-    nonSeparatorChars.length shouldBe Matrix.relSourcesMap.keySet.size
+    nonSeparatorChars.length shouldBe Matrix.charToRelativeTuples.keySet.size
     // As long as building (with sbt) and testing (with maven) is not integrated,
     // we might consider to add this check as an assert to the matrix class
     // but that would reduce performance of the JavaScript.
