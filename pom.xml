@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.scala-js</groupId>
             <artifactId>scalajs-library_2.11</artifactId>
-            <version>0.6.8</version>
+            <version>0.6.9</version>
         </dependency>
         <dependency>
             <groupId>org.scalatest</groupId>
