@@ -1,5 +1,10 @@
 # [DEMO](https://d-bl.github.io/GroundForge/)
-A toolbox to design bobbin lace grounds with matching diagrams.
+_A toolbox to design bobbin lace grounds with matching diagrams._
+
+[![Build Status](https://travis-ci.org/d-bl/GroundForge.svg?branch=master)](https://travis-ci.org/d-bl/GroundForge) 
+Note that building does not copy a [compile]d version of `src/test/scala` to `docs/js/matrix-graph.js` (part of the client-side demo), the other JavaScripts are not involved in the automated tests.
+
+[compile]: #compile-and-preview
 
 How it's Made / third party data and scripts
 ============================================
@@ -57,11 +62,11 @@ Safari nor Internet Explorer support `<input type="color">`. The free [color-pic
 Scala code
 ==========
  
-The scala code takes care of the number crunching that assembles the data for D3js and the SVG for the pattern sheet. The scala code is compiled into `matrix-graphs.js`. An HTML form takes care of configuration, JavaSript  feeds the assembled data to the [D3.js] API with `show-graphs.js` and takes care of event handling with `index.js` and `jscolor.js`.
+The scala code takes care of the number crunching that assembles the data for D3js and the SVG for the pattern sheet. The scala code is compiled into `matrix-graphs.js`. An HTML form takes care of configuration collected with `index.js` and `jscolor.js` and feeds it to the [D3.js] API with `show-graphs.js`.
 
 The code under `src/main/scala/dibl` has two classes with `@JSExport` annotations. The `dibl.D3Data` results are visualised with D3js. The toSVG result of `dibl.PatternSheet` is written to files by unit tests or assigned to the innerHTML of a DOM element on the web pages. Modern browsers can display the SVG test files. 
 
-The scripts and page in `docs/API` are minimalistic versions of its siblings in `docs` and `docs/js`, the dressed up version adds decoration, event handling, configuration and some help. The development view for the thread and pair diagrams is a slightly less minimal page. For that purpose `src/main/resources/index-dev.html` is served by sbt as `http://localhost:12345/target/scala-2.11/classes/index-dev.html`, this page immediately reflects changes in the scala code though the animation doesn't start.
+The scripts and page in `docs/API` are minimalistic versions of its siblings in `docs` and `docs/js`, the dressed up version adds decoration, event handling, configuration and some help. The development view for the thread and pair diagrams is a slightly less minimal page. For that purpose `src/main/resources/index-dev.html` is served by sbt as `http://localhost:12345/target/scala-2.11/classes/index-dev.html`, this page immediately reflects changes in the scala code though the simulation doesn't start.
 
 [API Demo](https://d-bl.github.io/GroundForge/API)
 
@@ -69,25 +74,23 @@ The scripts and page in `docs/API` are minimalistic versions of its siblings in 
 Compile and preview
 -------------------
 
+
 ### Requirements
 
 - The pages in the docs directory don't require any compilation until the publish phase described below.
-- [sbt] 0.13.7 or higher, to compile the source code to JavaScript
-- [maven], to run the test with another JVM than scala was built with
-- a browser with proper SVG support, for example FireFox or Safari but not Internet Explorer.
+- To compile the source code to JavaScript: [sbt] 0.13.9 or higher
+- To run the tests with sbt: [node.js] and/or ???, maven can execute the tests but uses JVM
+- For the developer view of the diagrams: a browser with proper SVG support, for example FireFox or Safari but not Internet Explorer.
   Chrome has proper SVG support but with the default settings it has intranet problems with the development view.
 
-To completely [replace sbt] seems quite a detour.
-
-[replace sbt]: http://stackoverflow.com/questions/26512750/how-to-use-scala-js-from-maven
+[node.js]: https://nodejs.org/en/download/
 [sbt]: http://www.scala-sbt.org/download.html
-[maven]: https://maven.apache.org/
 
 
 ### Steps
 
 - Fork the project and make a local clone.
-- Avoid working on the master branch, rather create branches and pull requests.
+- Don't push to the master branch, create branches and pull requests.
 - Go to the root of the local project and start the command `sbt '~fastOptJS'`
 - Monitor the result on `http://localhost:12345/target/scala-2.11/classes/index-dev.html`
   It is a dressed down version of the published page, with possibly experimental features added.
@@ -101,7 +104,7 @@ Important code conventions
 - Never catch exceptions in a `Try` as exceptions terminate the JavaScript. Prevent exceptions like illegal arguments and indexes and create a `Failure` for safe execution with JavaScript.
 - Restrict the use of raw js objects to the API level: the classes and methods annotated with `@JSExport`. This allows execution of test classes with another JVM than ScalaJS was built with.
 
-The applied Scala coding techniques are explained by this [course] up and including workshop 3, except that the main code doesn't use any io, and the hand full of files written by tests hardly justify the clutter of closing files let alone using a library. 
+The applied Scala coding techniques are explained by this [course] up and including workshop 3. The main code doesn't use any io, and the hand full of files written by tests barely justify the clutter of closing files let alone using a library. So you can save the last task of the FileIO assignment for other purposes.
 
 [course]: https://github.com/DANS-KNAW/course-scala
 
@@ -109,17 +112,16 @@ The applied Scala coding techniques are explained by this [course] up and includ
 Unit tests
 ----------
 
-The command `sbt test` only compiles the test classes.
-Haven't found the proper incantation to execute the test with sbt, might be caused by a dependency conflict.
+The incantation to execute the test with sbt is not yet complete.
 
-The command `mvn clean test` executes the tests, your IDE might too. Launching tests with the IDE while sbt is still processing a change may cause weird errors, just try again.
+Some of the unit test are rather demo's creating SVG documents in a target directory for a visual check. As test they are nothing more that a smoke test.
 
 
 Publish
 -------
 
-- Compile with `sbt '~fullOptJS'`
+- Compile with `sbt '~fullOptJS'` (drop the quotes on windows)
 - Copy the content of `target\scala-2.11\groundforge-opt.js` into `docs/js/matrix-graphs.js`
 - Check the results with `index.html`
 - If ok: commit, push and create a pull request 
-- Optional: if merged with your master branch you can check the online demo in your own github fork: `http://YOURID.github.io/GroundForge/` 
+- Optional (if you know what you are doing): if merged with your master branch you can check the online demo in your own github fork: `http://YOURID.github.io/GroundForge/` 

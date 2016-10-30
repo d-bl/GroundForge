@@ -21,6 +21,8 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class PatternDemos extends FlatSpec with Matchers {
 
+  new File("target/patterns/").mkdirs()
+
   def write(file: File, content: String) ={
     val fos = new FileOutputStream(file)
     try {
