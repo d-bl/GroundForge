@@ -78,8 +78,11 @@ Compile and preview
 ### Requirements
 
 - The pages in the docs directory don't require any compilation until the publish phase described below.
-- To compile the source code to JavaScript: [sbt] 0.13.9 or higher
-- To run the tests with sbt: [node.js] and/or ???, maven can execute the tests but uses JVM
+- To compile `src/main/scala` to JavaScript: [sbt] 0.13.9 or higher
+- To run the tests with sbt (maven can execute the tests but uses JVM)
+  - a file ` ~/.sbt/0.13/global.sbt` containing<br>
+    `resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"`
+  - [node.js] and/or ???
 - For the developer view of the diagrams: a browser with proper SVG support, for example FireFox or Safari but not Internet Explorer.
   Chrome has proper SVG support but with the default settings it has intranet problems with the development view.
 
@@ -87,12 +90,12 @@ Compile and preview
 [sbt]: http://www.scala-sbt.org/download.html
 
 
-### Steps
+### Steps to change the scala code
 
 - Fork the project and make a local clone.
 - Don't push to the master branch, create branches and pull requests.
 - Go to the root of the local project and start the command `sbt '~fastOptJS'`
-- Monitor the result on `http://localhost:12345/target/scala-2.11/classes/index-dev.html`
+- Monitor the result of your changes on `http://localhost:12345/target/scala-2.11/classes/index-dev.html`
   It is a dressed down version of the published page, with possibly experimental features added.
   Nodes and links invisible in the published page are shown faint for debugging purposes.
 - Saving code changes updates the page automatically but the animation does not start.
@@ -101,7 +104,7 @@ Compile and preview
 Important code conventions
 --------------------------
 
-- Never catch exceptions in a `Try` as exceptions terminate the JavaScript. Prevent exceptions like illegal arguments and indexes and create a `Failure` for safe execution with JavaScript.
+- Never catch exceptions in a `Try` as exceptions terminate the JavaScript. The tests might succeed with maven, but the JavaScript breaks. Prevent exceptions like illegal arguments and indexes and create a `Failure` for safe execution with JavaScript.
 - Restrict the use of raw js objects to the API level: the classes and methods annotated with `@JSExport`. This allows execution of test classes with another JVM than ScalaJS was built with.
 
 The applied Scala coding techniques are explained by this [course] up and including workshop 3. The main code doesn't use any io, and the hand full of files written by tests barely justify the clutter of closing files let alone using a library. So you can save the last task of the FileIO assignment for other purposes.
