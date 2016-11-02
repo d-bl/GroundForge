@@ -168,7 +168,7 @@ private class Pattern (tileMatrix: String,
        |    <a xlink:href='$url?${options.mkString("&amp;")}'>pair/thread diagrams</a>
        |   </tspan>
        |  </text>
-       |  <g id ="$groupId">
+       |  <g id ='$groupId'>
        |${forAllCells(createTwoIn)}
        |${forAllCells(createNode)}
        |  </g>
