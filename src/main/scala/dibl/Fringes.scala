@@ -38,16 +38,16 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
 
   def Link(source: Cell, target: Cell) = (source, target)
 
-  private lazy val leftTargetCol: Int = 2
-  private lazy val rightTargetCol: Int = absSrcNodes(0).length - leftTargetCol
-  private lazy val topTargetRow: Int = 2
+  private val drawingScale = 10
+  private val topTargetRow: Int = 2
+  private val leftTargetCol: Int = 2
+  private lazy val rightTargetCol: Int = absSrcNodes(0).length - leftTargetCol - 1
 
   /** @param targetCol   the first column next to a margin for the fringes
-    * @param fromOutside figured out with extract parameter as explained on
-    *                    https://github.com/DANS-KNAW/course-scala/pull/14#issuecomment-253437387
+    * @param fromOutside filter for the links to return
     * @return the kicking feet of the `|<` or `>|` shaped footside stitches.
     */
-  private def reusedPair(targetCol: Int, fromOutside: (Int) => Boolean): Seq[Link] = {
+  private def intoSide(targetCol: Int, fromOutside: (Int) => Boolean): Seq[Link] = {
 
     val col: Array[SrcNodes] = absSrcNodes.map(_ (targetCol)) // either zero or two incoming pairs per element
     val firstUsedNode = col.map(_.length).indexOf(2) // find the first with two incoming pairs
@@ -61,26 +61,81 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     )
   }
 
-  /** The right feet of the `|<` shaped footside stitches. */
-  lazy val reusedLeft: Seq[Link] = reusedPair(leftTargetCol, fromOutside = _ < leftTargetCol)
-
-  /** The left feet of the `>|` shaped footside stitches. */
-  lazy val reusedRight: Seq[Link] = reusedPair(rightTargetCol, fromOutside = _ > rightTargetCol)
-
-  /** The pairs needed to start a patch of lace along the top and corners,
-    * each link is one leg of the `v`'s in the ascii art diagram of the class */
-  lazy val newPairs: Seq[Link] = {
-
-    val row: Array[SrcNodes] = absSrcNodes(topTargetRow)
+  private def intoTop(targetRow: Int, fromOutside: (Int, Int, Int) => Boolean): Seq[Link] = {
+    val row = absSrcNodes(targetRow)
     for {
       targetCol <- leftTargetCol to rightTargetCol
       (sourceRow, sourceCol) <- row(targetCol)
-      if sourceRow < topTargetRow || // skip horizontal links
-        (targetCol == leftTargetCol && sourceCol < leftTargetCol) || //  unless at a corner
-        (targetCol == rightTargetCol && sourceCol > rightTargetCol)
+      if fromOutside(targetCol, sourceRow, sourceCol)
     } yield Link(
       source = Cell(sourceRow, sourceCol),
-      target = Cell(topTargetRow, targetCol)
-    ) // TODO add the pairs for the corners in case the corner was a not used node
+      target = Cell(targetRow, targetCol)
+    )
   }
+
+  lazy val allLinks: Seq[Link] = for {
+    targetRow <- absSrcNodes.indices
+    targetCol <- absSrcNodes(targetRow).indices
+    source <- absSrcNodes(targetRow)(targetCol)
+  } yield Link(source, Cell(targetRow, targetCol))
+
+  /** The right feet of the `|<` shaped footside stitches. */
+  lazy val reusedLeft: Seq[Link] = {
+    intoSide(leftTargetCol, fromOutside = _ < leftTargetCol) ++
+      intoSide(leftTargetCol + 1, fromOutside = _ < leftTargetCol)
+  }
+
+  /** The left feet of the `>|` shaped footside stitches. */
+  lazy val reusedRight: Seq[Link] = {
+    intoSide(rightTargetCol, fromOutside = (sourceCol) => sourceCol > rightTargetCol) ++
+      intoSide(rightTargetCol - 1, fromOutside = (sourceCol) => sourceCol  > rightTargetCol)
+  }
+
+  /** The red links in the [[svgDoc]],
+    * the pairs needed to start a patch of lace along the top and corners,
+    * each link is one leg of the `v`'s in the ascii art diagram of the class */
+  lazy val newPairs: Seq[Link] = {
+    intoTop(topTargetRow, fromOutside = (targetCol, sourceRow, sourceCol) =>
+      sourceRow < topTargetRow || // vertical/diagonal links
+        (targetCol == leftTargetCol && sourceCol < leftTargetCol) || // from outer left
+        (targetCol == rightTargetCol && sourceCol > rightTargetCol) // from outer right
+    ) ++
+      intoTop(topTargetRow + 1, (targetCol, sourceRow, sourceCol) =>
+        sourceRow < topTargetRow // double length vertical links
+      )
+    // TODO add the pairs for the corners in case the corner was a not used node
+  }
+
+  /** TODO additional links so all nodes have two incoming links except for the sources of [[newPairs]] */
+  lazy val footSides: Seq[Link] = ???
+
+  /** an SVG document with all links of the two-in-two-out directed graph in black,
+    * incoming links along the top drawn in read on top of the black,
+    * incoming links along the side in green on top of the black.
+    * TODO add the not yet implemented [[footSides]] in blue
+    */
+  lazy val svgDoc =
+  s"""<svg
+      |  version='1.1'
+      |  id='svg2' height='90mm'
+      |  width='90mm' xmlns:xlink='http://www.w3.org/1999/xlink'
+      |  xmlns='http://www.w3.org/2000/svg'
+      |  xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape'
+      |>
+      |<g transform='translate($drawingScale,$drawingScale)'>
+      |${draw(allLinks, "#000")}
+      |${draw(newPairs, "#F00")}
+      |${draw(reusedLeft, "#0F0")}
+      |${draw(reusedRight, "#0F0")}
+      |</g>
+      |</svg>""".stripMargin
+
+  private def draw(links: Seq[Link], color: String): String = (for {
+    ((sourceRow, sourceCol), (targetRow, targetCol)) <- links
+  } yield {
+    s"""<path style='stroke:$color;fill:none'
+        |  d='M ${sourceCol * drawingScale},${sourceRow * drawingScale} ${targetCol * drawingScale},${targetRow * drawingScale}'
+        |/>
+        |""".stripMargin
+  }).mkString
 }
