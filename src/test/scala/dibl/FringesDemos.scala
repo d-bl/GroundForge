@@ -24,7 +24,7 @@ class FringesDemos extends FlatSpec with Matchers {
 
   new File("target/test/fringes").mkdirs()
 
-  "pattern sheet" should "succeed" in {
+  "links" should "add up" in {
 
     for (specs <- Matrices.values.map(_.split(";"))) {
       val matrixLines = toValidMatrixLines(specs.head).get
@@ -35,17 +35,21 @@ class FringesDemos extends FlatSpec with Matchers {
       val relative = extended.map(_.map(charToRelativeTuples).toArray)
       val absolute = toAbsolute(relative)
       val fringes = new Fringes(absolute)
+
+      // preparation of visual verification
       val spaceLess = matrixLines.mkString("_")
       write(new File(s"target/test/fringes/${spaceLess}_$tileSpec.svg"), fringes.svgDoc)
 
-      val reusedSet = (fringes.reusedLeft ++ fringes.reusedRight).toSet
-      (fringes.reusedLeft ++ fringes.reusedRight ++ fringes.newPairs ++ fringes.coreLinks).
-        toSet shouldBe fringes.allLinks.toSet
+      // automated verification
+      val accumulatedLinks = fringes.reusedLeft ++ fringes.reusedRight ++ fringes.newPairs ++ fringes.coreLinks
+      accumulatedLinks.size shouldBe fringes.allLinks.size
+      accumulatedLinks.toSet shouldBe fringes.allLinks.toSet
 
+      // log which ones might have interesting properties to examine
       val absDiff = Math.abs(fringes.reusedLeft.size - fringes.needsOutLeft.size)
-      val duplicates =  fringes.needsOutLeft.size - fringes.needsOutLeft.toSet.size
-      if (absDiff > 0 || duplicates > 0 )
-        println (s"$absDiff $duplicates $spaceLess ")
+      val duplicateOuts =  fringes.needsOutLeft.size - fringes.needsOutLeft.toSet.size
+      if (absDiff > 0 && duplicateOuts > 0 )
+        println (s"$absDiff $duplicateOuts $spaceLess ")
     }
   }
 
