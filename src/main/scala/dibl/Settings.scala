@@ -75,7 +75,7 @@ object Settings {
 
     val legalArguments = absCols > 1 && absRows > 1 && shiftLeft >= 0 && shiftUp >= 0
     for {
-      _           <- if (legalArguments) Success() else Failure(new IllegalArgumentException())
+      _           <- if (legalArguments) Success(Unit) else Failure(new IllegalArgumentException())
       lines       <- toValidMatrixLines(str)
       tileType     = TileType(bricks)
       checker      = tileType.toChecker(lines)
