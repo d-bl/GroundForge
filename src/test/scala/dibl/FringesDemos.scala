@@ -47,9 +47,12 @@ class FringesDemos extends FlatSpec with Matchers {
 
       // log which ones might have interesting properties to examine
       val absDiff = Math.abs(fringes.reusedLeft.size - fringes.needsOutLeft.size)
-      val duplicateOuts =  fringes.needsOutLeft.size - fringes.needsOutLeft.toSet.size
-      if (absDiff > 0 && duplicateOuts > 0 )
-        println (s"$absDiff $duplicateOuts $spaceLess ")
+      val duplicateOuts = fringes.needsOutLeft.size - fringes.needsOutLeft.toSet.size +
+        fringes.needsOutRight.size - fringes.needsOutRight.toSet.size
+      val nodesOnInnerCols = fringes.needsOutLeft.count { case (_, sourceCol) => sourceCol == 3 } +
+        fringes.needsOutLeft.count { case (_, sourceCol) => sourceCol == 23 }
+      if (nodesOnInnerCols > 0 && duplicateOuts > 1)
+        println(s"$absDiff $duplicateOuts    $spaceLess")
     }
   }
 
