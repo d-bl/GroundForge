@@ -79,10 +79,7 @@ Compile and preview
 
 - The pages in the docs directory don't require any compilation until the publish phase described below.
 - To compile `src/main/scala` to JavaScript: [sbt] 0.13.9 or higher
-- To run the tests with sbt (maven can execute the tests but uses JVM)
-  - a file ` ~/.sbt/0.13/global.sbt` containing<br>
-    `resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"`
-  - [node.js] and/or ???
+- To run the tests with sbt (maven can execute the tests but uses JVM) [node.js]
 - For the developer view of the diagrams: a browser with proper SVG support, for example FireFox or Safari but not Internet Explorer.
   Chrome has proper SVG support but with the default settings it has intranet problems with the development view.
 
@@ -115,7 +112,7 @@ The applied Scala coding techniques are explained by this [course] up and includ
 Unit tests
 ----------
 
-Both `sbt test` and `mvn clean test` do execute the tests.
+Both `sbt test` (using a JavaScript environment) and `mvn clean test` (using JVM) do execute the tests.
 Some classes under `src/test` are suffixed with `Demos` rather than `Spec` these runnable objects create SVG documents in a target directory for a visual check.
 
 
