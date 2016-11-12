@@ -115,9 +115,8 @@ The applied Scala coding techniques are explained by this [course] up and includ
 Unit tests
 ----------
 
-The incantation to execute the test with sbt is not yet complete.
-
-Some of the unit test are rather demo's creating SVG documents in a target directory for a visual check. As test they are nothing more that a smoke test.
+Both `sbt test` and `mvn clean test` do execute the tests.
+Some classes under `src/test` are suffixed with `Demos` rather than `Spec` these runnable objects create SVG documents in a target directory for a visual check.
 
 
 Publish
