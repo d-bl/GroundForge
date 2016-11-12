@@ -126,4 +126,4 @@ Publish
 - Copy the content of `target\scala-2.11\groundforge-opt.js` into `docs/js/matrix-graphs.js`
 - Check the results with `index.html`
 - If ok: commit, push and create a pull request 
-- Optional (if you know what you are doing): if merged with your master branch you can check the online demo in your own github fork: `http://YOURID.github.io/GroundForge/` 
+- Optional (if you know what you are doing): after merging with your master branch you can check the online demo in your own github fork: `http://YOURID.github.io/GroundForge/` 
