@@ -15,79 +15,45 @@
 */
 package dibl
 
-import java.io.{File, FileOutputStream}
+import scala.reflect.io.File
 
-import org.scalatest.{FlatSpec, Matchers}
+object PatternDemos {
 
-class PatternDemos extends FlatSpec with Matchers {
+  def main(args: Array[String]): Unit = {
 
-  new File("target/test/").mkdirs()
-  def write(file: File, content: String) ={
-    val fos = new FileOutputStream(file)
-    try {
-      fos.write(content.getBytes("UTF8"))
-    } finally {
-      fos.close()
+    File("target/patterns/").createDirectory()
+
+    {
+      val patterns = new PatternSheet
+      patterns.add("5831 -4-7", "bricks")
+      patterns.add("-437 34-7", "bricks")
+      patterns.add("5831 -4-7 3158 -7-4", "checker")
+      patterns.add("4830 --77", "bricks")
+      File("target/patterns/rose.svg").writeAll(patterns.toSvgDoc())
     }
-  }
 
-  "rose" should "succeed" in {
-    val patterns = new PatternSheet
-    patterns.add("5831 -4-7", "bricks")
-    patterns.add("-437 34-7", "bricks")
-    patterns.add("5831 -4-7 3158 -7-4", "checker")
-    patterns.add("4830 --77", "bricks")
-    write(new File("target/test/rose.svg"), patterns.toSvgDoc())
-  }
+    {
+      val patterns = new PatternSheet
+      patterns.add("B-5-C- -5-5-- B---C-", "bricks") // double length vertical rows
+      patterns.add("-5---5-5 5-O-E-5-", "bricks") // double length horizontal lines
 
-  "pattern sheet" should "succeed" in {
-    val patterns = new PatternSheet
-    patterns.add("B-5-C- -5-5-- B---C-", "bricks") // double length vertical rows
-    patterns.add("-5---5-5 5-O-E-5-", "bricks") // double length horizontal lines
+      patterns.add("586- -4-5 5-21 -5-7", "bricks")
+      patterns.add("4831 -117 5-7- 86-5", "checker")
 
-    patterns.add("586- -4-5 5-21 -5-7", "bricks")
-    patterns.add("4831 -117 5-7- 86-5", "checker")
+      patterns.add("588- -4-5 6-58 -214", "checker")
+      patterns.add("5831 -4-7", "bricks")
 
-    patterns.add("588- -4-5 6-58 -214", "checker")
-    patterns.add("5831 -4-7" ,"bricks")
+      patterns.add("4832 2483", "bricks")
+      patterns.add("5---5-5- -O-E-5-5", "bricks") // double length horizontal lines
 
-    patterns.add("4832 2483", "bricks")
-    patterns.add("5---5-5- -O-E-5-5", "bricks") // double length horizontal lines
+      patterns.add("586- -4-5 5-21 -5-777", "checker") // reports an error
+      File("target/patterns/pattern-sheet.svg").writeAll(patterns.toSvgDoc())
+    }
 
-    patterns.add("586- -4-5 5-21 -5-777", "checker") // reports an error
-    write(new File("target/test/pattern-sheet.svg"), patterns.toSvgDoc())
-  }
-
-  it should "not mix up dimensions" in {
-    val patterns = new PatternSheet
-    patterns.add("88 11", "bricks")
-    patterns.add("66,99+22\n00", "bricks")
-    val svgString = patterns.toSvgDoc()
-    val links = svgString.split("\n").filter(_.contains("href='http")).mkString("\n")
-    links should include ("?matrix=88%0D11&amp;tiles=bricks'")
-    links should include ("?matrix=66%0D99%0D22%0D00&amp;tiles=bricks'")
-  }
-
-  it should "produce a single patch" in {
-    val patterns = new PatternSheet
-    patterns.add("88 11", "bricks")
-    val svgString = patterns.toSvgDoc()
-    val links = svgString.split("\n").filter(_.contains("href='http"))
-    links.length shouldBe 1
-  }
-
-  it should "process double length horizontal lines" in {
-    val patterns = new PatternSheet
-    patterns.add("-5---5-5 5-O-E-5-", "bricks")
-    val svgString = patterns.toSvgDoc()
-    write(new File(s"target/test/double-length.svg"), svgString)
-    val links = svgString.split("\n").filter(_.contains("href='http"))
-    links.length shouldBe 1
-  }
-
-  "minimal" should "succeed" in {
-    val patterns = PatternSheet(1, "width='340' height='330'")
-    patterns.add("586- -4-5 5-21 -5-7","bricks")
-    write(new File("target/test/minimal.svg"), patterns.toSvgDoc())
+    {
+      val patterns = PatternSheet(1, "width='340' height='330'")
+      patterns.add("586- -4-5 5-21 -5-7", "bricks")
+      File("target/patterns/minimal.svg").writeAll(patterns.toSvgDoc())
+    }
   }
 }
