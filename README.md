@@ -112,7 +112,8 @@ The applied Scala coding techniques are explained by this [course] up and includ
 Unit tests
 ----------
 
-Both `sbt test` (slow JS environment, but it's the target environment) and `mvn clean test` (faster JVM environment) do execute the tests.
+Both `sbt test` and `mvn clean test` do execute the tests.
+Maven is much faster but uses JVM while the JS used by SBT is the actual target environment.
 Some classes under `src/test` are suffixed with `Demos` rather than `Spec` these runnable objects create SVG documents in a `target/test` directory for a visual check.
 
 

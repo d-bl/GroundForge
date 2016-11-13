@@ -15,9 +15,6 @@
 */
 package dibl
 
-import java.io.{File, FileOutputStream}
-
-import dibl.Matrix.{charToRelativeTuples, extend, toAbsolute, toValidMatrixLines}
 import org.scalatest.{FlatSpec, Matchers}
 
 class FringesSpec extends FlatSpec with Matchers {

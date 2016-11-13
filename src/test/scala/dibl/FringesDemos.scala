@@ -15,8 +15,6 @@
 */
 package dibl
 
-import java.io.FileOutputStream
-
 import scala.reflect.io.File
 
 object FringesDemos extends  {
