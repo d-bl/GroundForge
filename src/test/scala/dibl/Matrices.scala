@@ -15,8 +15,10 @@
 */
 package dibl
 
+import dibl.Matrix.{charToRelativeTuples, extend, toAbsolute}
+
 object Matrices {
-  val values = Array (
+  val values = Array(
     "5831 -4-7;bricks", "1483 8-48;bricks", "5831 -4-7", "6868 -4-4 2121 -7-7;bricks", "4815 4-77;bricks", "486- -486 6-48 86-4", "4641 9177;bricks",
     "6868 ---4 2AA1 -7-7;bricks", "5831 -4-7 6868 -4-4", "586- -4-5 2121 -7-7", "486- -486 2111 88-7", "5632 56-2 6-58 -534", "586- -4-5 215- -7-5",
     "4373 5353 5-5- 8315", "434- 6325 6-25 8686", "6868 -4-4 5-5- -5-5", "6464 7272;bricks", "4343 6868;bricks", "4663 6668;bricks",
@@ -114,6 +116,16 @@ object Matrices {
     "5-L-L-K- -L-L-L-O K-H-5-L- -H-H-E-E;bricks", "5-L-K-E- -L-L-O-O H-5---H- -5-K-E-H;bricks", "5-L-L-K- -L-L-L-O --H-5-L- -E-H-E-H;bricks",
     "5-L-L-K- -L-L-L-O H-H-5--- -H-H-H-E;bricks", "5-L-L-K- -L-L-L-O --H-H-5- -E-H-H-H;bricks", "5-L-L-K- -L-L-L-O H-H-H-H- -H-H-H-H;bricks",
     "5-L-L-K- -L-K-5-O L-L-O-L- -E-E-E-E;bricks", "5-L-L-K- -L-K-5-O 5-L-O-K- -E-E-E-H;bricks", "5-L-L-K- -L-K-5-O 5-L-O--- -E-E-H-E;bricks",
-    "5-L-L-K- -L-K-5-O K-5-O-L- -H-E-E-E;bricks", "5-L-L-K- -L-K-5-O --5-O-L- -E-E-E-H;bricks"    )
+    "5-L-L-K- -L-K-5-O K-5-O-L- -H-E-E-E;bricks", "5-L-L-K- -L-K-5-O --5-O-L- -E-E-E-H;bricks")
 
+  def toAbsolute(args: String) = {
+    val specs = args.split(";")
+    val matrixLines = Matrix.toValidMatrixLines(specs.head).get
+    val tileSpec = if (specs.length > 1) specs(1) else "checker"
+    val tileType = TileType(tileSpec)
+    val checker = tileType.toChecker(matrixLines)
+    val extended = extend(checker, 22, 22)
+    val relative = extended.map(_.map(charToRelativeTuples).toArray)
+    Matrix.toAbsolute(relative)
+  }
 }

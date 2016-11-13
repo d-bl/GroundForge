@@ -15,35 +15,22 @@
 */
 package dibl
 
-import java.io.{File, FileOutputStream}
+import java.io.FileOutputStream
 
-import dibl.Matrix.{charToRelativeTuples, extend, toAbsolute, toValidMatrixLines}
-import org.scalatest.{FlatSpec, Matchers}
+import scala.reflect.io.File
 
-class FringesDemos extends FlatSpec with Matchers {
+object FringesDemos extends  {
 
-  new File("target/test/fringes").mkdirs()
+  File("target/test/fringes/").createDirectory()
 
-  "links" should "add up" in {
+  def main(args: Array[String]): Unit = {
 
-    for (specs <- Matrices.values.map(_.split(";"))) {
-      val matrixLines = toValidMatrixLines(specs.head).get
-      val tileSpec = if (specs.length > 1) specs(1) else "checker"
-      val tileType = TileType(tileSpec)
-      val checker = tileType.toChecker(matrixLines)
-      val extended = extend(checker, 22, 22)
-      val relative = extended.map(_.map(charToRelativeTuples).toArray)
-      val absolute = toAbsolute(relative)
-      val fringes = new Fringes(absolute)
+    for (specs <- Matrices.values) {
+      val fringes = new Fringes(Matrices.toAbsolute(specs))
 
       // preparation of visual verification
-      val spaceLess = matrixLines.mkString("_")
-      write(new File(s"target/test/fringes/${spaceLess}_$tileSpec.svg"), fringes.svgDoc)
-
-      // automated verification
-      val accumulatedLinks = fringes.reusedLeft ++ fringes.reusedRight ++ fringes.newPairs ++ fringes.coreLinks
-      accumulatedLinks.size shouldBe fringes.allLinks.size
-      accumulatedLinks.toSet shouldBe fringes.allLinks.toSet
+      val spaceLess = specs.replace(" ","_").replace(";","_")
+      File(s"target/test/fringes/$spaceLess.svg").writeAll(fringes.svgDoc)
 
       // log which ones might have interesting properties to examine
       val absDiff = Math.abs(fringes.reusedLeft.size - fringes.needsOutLeft.size)
@@ -53,15 +40,6 @@ class FringesDemos extends FlatSpec with Matchers {
         fringes.needsOutLeft.count { case (_, sourceCol) => sourceCol == 23 }
       if (nodesOnInnerCols > 0 && duplicateOuts > 1)
         println(s"$absDiff $duplicateOuts    $spaceLess")
-    }
-  }
-
-  def write(file: File, content: String) = {
-    val fos = new FileOutputStream(file)
-    try {
-      fos.write(content.getBytes("UTF8"))
-    } finally {
-      fos.close()
     }
   }
 }
