@@ -170,7 +170,7 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
       } yield links
     }.flatten
 
-    createLinks(2 to 3) ++ createLinks (rightTargetCol to (rightTargetCol - 1, -1))
+    createLinks(leftTargetCol to rightTargetCol) ++ createLinks (rightTargetCol to (rightTargetCol - 1, -1))
     // TODO add the remaining stack elements to [[newPairs]]
   }
 
