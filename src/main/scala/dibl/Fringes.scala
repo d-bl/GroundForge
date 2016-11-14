@@ -15,6 +15,10 @@
 */
 package dibl
 
+import scala.collection.immutable.IndexedSeq
+import scala.collection.immutable.Range.Inclusive
+import scala.collection.mutable
+
 /**
   * Below a schematic ascii visualisation of a definition of a
   * two-in-two out directed graph representing a bobbin lace pair diagram.
@@ -60,7 +64,7 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
   private val rightTargetCol = absSrcNodes(0).length - leftTargetCol - 1
   private val bottomTargetRow = absSrcNodes.length - topTargetRow - 1
 
-  private def fromOutside(targetCol: Int, sourceRow: Int, sourceCol: Int) : Boolean =
+  private def fromOutside(targetCol: Int, sourceRow: Int, sourceCol: Int): Boolean =
     sourceRow < topTargetRow || // vertical/diagonal links
       sourceCol < leftTargetCol || // from outer left
       sourceCol > rightTargetCol // from outer right
@@ -142,7 +146,33 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
   /** variants of [[reusedLeft]] and [[reusedRight]] with sources moved
     * to [[needsOutLeft]] respective [[needsOutRight]]
     */
-  lazy val footSides: Seq[Link] = ???
+  lazy val footSides: Seq[Link] = {
+
+    val targets = mutable.Stack[Cell]()
+
+    def popLinks(sourceRow: Int, sourceCol: Int): Seq[Link] = for {
+      _ <- 1 to (4 - count(sourceRow)(sourceCol)) % 4 // nr of needed links out
+      if targets.nonEmpty
+    } yield Link(Cell(sourceRow, sourceCol), targets.pop())
+
+    def pushLinks(targetRow: Int, targetCol: Int): Unit = absSrcNodes(targetRow)(targetCol).foreach {
+      case (sourceRow, sourceCol) =>
+        if (fromOutside(targetCol, sourceRow, sourceCol))
+          targets.push(Cell(targetRow, targetCol))
+    }
+
+    def createLinks(cols: Inclusive): IndexedSeq[Link] = {
+      for {
+        row <- bottomTargetRow to (topTargetRow, -1)
+        col <- cols
+        links = popLinks(row, col)
+        _ = pushLinks(row, col)
+      } yield links
+    }.flatten
+
+    createLinks(2 to 3) ++ createLinks (rightTargetCol to (rightTargetCol - 1, -1))
+    // TODO add the remaining stack elements to [[newPairs]]
+  }
 
   /** An SVG document with all links of the two-in-two-out directed graph,
     * The core links are black, incoming links along the top drawn are red,
