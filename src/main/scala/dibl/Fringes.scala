@@ -95,14 +95,10 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     if !fromOutside(targetCol, sourceRow, sourceCol)
   } yield Link(Cell(sourceRow, sourceCol), Cell(targetRow, targetCol))
 
-  /** The right feet of the `|<` shaped footside stitches alias the pairs coming out of the footside.
-    * TODO merge both sub sets, inner before outer
-    */
+  /** The right feet of the `|<` shaped footside stitches alias the pairs coming out of the footside. */
   lazy val reusedLeft: Seq[Link] = intoSide(leftTargetCol) ++ intoSide(leftTargetCol + 1)
 
-  /** The left feet of the `>|` shaped footside stitches alias the pairs coming out of the footside.
-    * TODO merge both sub sets, inner before outer
-    */
+  /** The left feet of the `>|` shaped footside stitches alias the pairs coming out of the footside. */
   lazy val reusedRight: Seq[Link] = intoSide(rightTargetCol) ++ intoSide(rightTargetCol - 1)
 
   /** The red links in the [[svgDoc]],
@@ -163,29 +159,34 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
 
     def createLinks(cols: Inclusive): IndexedSeq[Link] = {
       for {
-        row <- bottomTargetRow to (topTargetRow, -1)
+        row <- bottomTargetRow to(topTargetRow, -1)
         col <- cols
         links = popLinks(row, col)
         _ = pushLinks(row, col)
       } yield links
     }.flatten
 
-    createLinks(leftTargetCol to rightTargetCol) ++ createLinks (rightTargetCol to (rightTargetCol - 1, -1))
-    // TODO add the remaining stack elements to [[newPairs]]
+    def leftOvers(source: Cell) = targets.toArray
+      .filter{case (sourceRow, _) => sourceRow > topTargetRow}
+      .map(target => Link(source, target))
+
+    val left = createLinks(leftTargetCol to leftTargetCol + 1) ++ leftOvers(Cell(0, 0))
+    targets.clear()
+    left ++ createLinks(rightTargetCol to(rightTargetCol - 1, -1)) ++ leftOvers(Cell(0, rightTargetCol + 2))
+    // TODO rather add the left over stack elements to [[newPairs]]
   }
 
   /** An SVG document with all links of the two-in-two-out directed graph,
     * The core links are black, incoming links along the top drawn are red,
     * incoming links along the side are green,
     * dots for nodes that need outgoing links, darker dots require two links.
-    * TODO add the not yet implemented [[footSides]] in blue
     */
   lazy val svgDoc =
   s"""<svg
       |  version='1.1'
       |  id='svg2'
-      |  height='90mm'
-      |  width='90mm' xmlns:xlink='http://www.w3.org/1999/xlink'
+      |  height='80mm'
+      |  width='80mm' xmlns:xlink='http://www.w3.org/1999/xlink'
       |  xmlns='http://www.w3.org/2000/svg'
       |>
       |<g transform='translate($drawingScale,$drawingScale)'>
@@ -193,29 +194,28 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
       |${draw(needsOutRight)}
       |${draw(coreLinks, "#000")}
       |${draw(newPairs, "#F00")}
-      |${draw(reusedLeft, "#0F0")}
-      |${draw(reusedRight, "#0F0")}
+      |${draw(reusedLeft, "#080")}
+      |${draw(reusedRight, "#080")}
+      |${draw(footSides, "#808")}
       |</g>
       |</svg>""".stripMargin
 
-  private def draw(nodes: Seq[Cell]): String = (for {
-    (sourceRow, sourceCol) <- nodes
-  } yield {
-    s"""<circle style='fill:#888;fill-opacity:0.4;stroke:none'
-        |  cx='${sourceCol * drawingScale}'
-        |  cy='${sourceRow * drawingScale}'
-        |  r='3'
-        |/>
-        |""".stripMargin
-  }).mkString
+  private def draw(nodes: Seq[Cell]): String = nodes.map {
+    case (sourceRow, sourceCol) =>
+      s"""<circle style='fill:#888;fill-opacity:0.4;stroke:none'
+          |  cx='${sourceCol * drawingScale}'
+          |  cy='${sourceRow * drawingScale}'
+          |  r='3'
+          |/>
+          |""".stripMargin
+  }.mkString
 
-  private def draw(links: Seq[Link], color: String): String = (for {
-    ((sourceRow, sourceCol), (targetRow, targetCol)) <- links
-  } yield {
-    val sourceX = sourceCol * drawingScale
-    val sourceY = sourceRow * drawingScale
-    val targetX = targetCol * drawingScale
-    val targetY = targetRow * drawingScale
-    s"""<path style='stroke:$color;fill:none' d='M $sourceX,$sourceY $targetX,$targetY'/>"""
-  }).mkString("\n")
+  private def draw(links: Seq[Link], color: String): String = links.map {
+    case ((sourceRow, sourceCol), (targetRow, targetCol)) =>
+      val sourceX = sourceCol * drawingScale
+      val sourceY = sourceRow * drawingScale
+      val targetX = targetCol * drawingScale
+      val targetY = targetRow * drawingScale
+      s"""<path style='stroke:$color;stroke-opacity:0.4;fill:none' d='M $sourceX,$sourceY $targetX,$targetY'/>"""
+  }.mkString
 }
