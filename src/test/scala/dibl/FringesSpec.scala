@@ -24,9 +24,8 @@ class FringesSpec extends FlatSpec with Matchers {
     for (specs <- Matrices.values) {
       val absolute = Matrices.toAbsolute(specs)
       val fringes = new Fringes(absolute)
-      val accumulatedLinks = fringes.reusedLeft ++ fringes.reusedRight ++ fringes.newPairs ++ fringes.coreLinks
-      accumulatedLinks.size shouldBe fringes.allLinks.size
-      accumulatedLinks.toSet shouldBe fringes.allLinks.toSet
+      val accumulatedLinks = fringes.footSides ++ fringes.newPairs ++ fringes.coreLinks
+      accumulatedLinks.size shouldBe absolute.flatMap(_.map(_.length)).sum
     }
   }
 }

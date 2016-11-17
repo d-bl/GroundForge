@@ -41,7 +41,6 @@ import scala.collection.mutable
   * the upwards reaching arm and kicking foot is a pair coming into play again for a new row of stitches.
   *
   * @param absSrcNodes Defines the o's in the ascii art diagram by two incoming pairs.
-  *                    Changing the content after creation may render unpredicted results.
   *                    The row and col of a cell define the target of incoming links.
   *                    The tuples in a cell define the row/col of either zero or two sources of a link.
   *                    The outgoing pairs follow implicitly from neighbouring nodes beside and/or below.
@@ -82,30 +81,18 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     )
   }
 
-  lazy val allLinks: Seq[Link] = for {
-    targetRow <- absSrcNodes.indices
-    targetCol <- absSrcNodes(targetRow).indices
-    source <- absSrcNodes(targetRow)(targetCol)
-  } yield Link(source, Cell(targetRow, targetCol))
-
-  lazy val coreLinks: Seq[Link] = for {
+  val coreLinks: Seq[Link] = for {
     targetRow <- absSrcNodes.indices
     targetCol <- absSrcNodes(targetRow).indices
     (sourceRow, sourceCol) <- absSrcNodes(targetRow)(targetCol)
     if !fromOutside(targetCol, sourceRow, sourceCol)
   } yield Link(Cell(sourceRow, sourceCol), Cell(targetRow, targetCol))
 
-  /** The right feet of the `|<` shaped footside stitches alias the pairs coming out of the footside. */
-  lazy val reusedLeft: Seq[Link] = intoSide(leftTargetCol) ++ intoSide(leftTargetCol + 1)
-
-  /** The left feet of the `>|` shaped footside stitches alias the pairs coming out of the footside. */
-  lazy val reusedRight: Seq[Link] = intoSide(rightTargetCol) ++ intoSide(rightTargetCol - 1)
-
   /** The red links in the [[svgDoc]],
     * the pairs needed to start a patch of lace along the top and corners,
     * each link is one leg of the `v`'s in the ascii art diagram of the class
     */
-  lazy val newPairs: Seq[Link] = {
+  private val regularNewPairs: Seq[Link] = {
     val row = absSrcNodes(topTargetRow)
     for {
       targetCol <- leftTargetCol to rightTargetCol
@@ -117,8 +104,12 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     )
   }
 
-  private lazy val count = Matrix.countLinks(absSrcNodes)
+  private val count = Matrix.countLinks(absSrcNodes)
 
+  /** Nodes that need a link going into the footside.
+    * Nodes that needs two out going links are returned twice.
+    * Nodes in the outer column come before the previous column.
+    */
   private def needsOutLink(outerCol: Int, innerCol: Int): Seq[Cell] = {
     for {
       targetRow <- topTargetRow until bottomTargetRow
@@ -127,59 +118,44 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     } yield Cell(targetRow, targetCol)
   }
 
-  /** Nodes that need a link going into the left footside.
-    * Nodes that needs two out going links are returned twice.
-    * Nodes in the outer column come before the next column.
-    */
-  lazy val needsOutLeft: Seq[Cell] = needsOutLink(leftTargetCol, leftTargetCol + 1)
+  private val targets = mutable.Stack[Cell]()
 
-  /** Nodes that need a link going into the right footside.
-    * Nodes that needs two out going links are returned twice.
-    * Nodes in the outer column come before the previous column.
-    */
-  lazy val needsOutRight: Seq[Cell] = needsOutLink(rightTargetCol, rightTargetCol - 1)
+  private def popLinks(sourceRow: Int, sourceCol: Int): Seq[Link] = for {
+    _ <- 1 to (4 - count(sourceRow)(sourceCol)) % 4 // nr of needed links out
+    if targets.nonEmpty
+  } yield Link(Cell(sourceRow, sourceCol), targets.pop())
 
-  /** variants of [[reusedLeft]] and [[reusedRight]] with sources moved
-    * to [[needsOutLeft]] respective [[needsOutRight]]
-    */
-  lazy val footSides: Seq[Link] = {
-
-    val targets = mutable.Stack[Cell]()
-
-    def popLinks(sourceRow: Int, sourceCol: Int): Seq[Link] = for {
-      _ <- 1 to (4 - count(sourceRow)(sourceCol)) % 4 // nr of needed links out
-      if targets.nonEmpty
-    } yield Link(Cell(sourceRow, sourceCol), targets.pop())
-
-    def pushLinks(targetRow: Int, targetCol: Int): Unit = absSrcNodes(targetRow)(targetCol).foreach {
-      case (sourceRow, sourceCol) =>
-        if (fromOutside(targetCol, sourceRow, sourceCol))
-          targets.push(Cell(targetRow, targetCol))
-    }
-
-    def createLinks(cols: Inclusive): IndexedSeq[Link] = {
-      for {
-        row <- bottomTargetRow to(topTargetRow, -1)
-        col <- cols
-        links = popLinks(row, col)
-        _ = pushLinks(row, col)
-      } yield links
-    }.flatten
-
-    def leftOvers(source: Cell) = targets.toArray
-      .filter{case (sourceRow, _) => sourceRow > topTargetRow}
-      .map(target => Link(source, target))
-
-    val left = createLinks(leftTargetCol to leftTargetCol + 1) ++ leftOvers(Cell(0, 0))
-    targets.clear()
-    left ++ createLinks(rightTargetCol to(rightTargetCol - 1, -1)) ++ leftOvers(Cell(0, rightTargetCol + 2))
-    // TODO rather add the left over stack elements to [[newPairs]]
+  private def pushLinks(targetRow: Int, targetCol: Int): Unit = absSrcNodes(targetRow)(targetCol).foreach {
+    case (sourceRow, sourceCol) =>
+      if (fromOutside(targetCol, sourceRow, sourceCol))
+        targets.push(Cell(targetRow, targetCol))
   }
+
+  private def createLinks(cols: Inclusive): IndexedSeq[Link] = {
+    for {
+      row <- bottomTargetRow to(topTargetRow, -1)
+      col <- cols
+      links = popLinks(row, col)
+      _ = pushLinks(row, col)
+    } yield links
+  }.flatten
+
+  private def leftOvers(source: Cell) = targets.toArray
+    .filter { case (sourceRow, _) => sourceRow > topTargetRow }
+    .map(target => Link(source, target))
+
+  private val leftFootSides = createLinks(leftTargetCol to leftTargetCol + 1)
+  private val leftNewPairs = leftOvers(Cell(0, 0))
+  targets.clear()
+  val footSides = leftFootSides ++ createLinks(rightTargetCol to(rightTargetCol - 1, -1))
+  val newPairs = leftNewPairs ++ regularNewPairs ++ leftOvers(Cell(0, rightTargetCol + 2))
 
   /** An SVG document with all links of the two-in-two-out directed graph,
     * The core links are black, incoming links along the top drawn are red,
     * incoming links along the side are green,
     * dots for nodes that need outgoing links, darker dots require two links.
+    *
+    * Changing the content after creation renders inconsistent results.
     */
   lazy val svgDoc =
   s"""<svg
@@ -190,12 +166,12 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
       |  xmlns='http://www.w3.org/2000/svg'
       |>
       |<g transform='translate($drawingScale,$drawingScale)'>
-      |${draw(needsOutLeft)}
-      |${draw(needsOutRight)}
+      |${draw(needsOutLink(leftTargetCol, leftTargetCol + 1))}
+      |${draw(needsOutLink(rightTargetCol, rightTargetCol - 1))}
       |${draw(coreLinks, "#000")}
       |${draw(newPairs, "#F00")}
-      |${draw(reusedLeft, "#080")}
-      |${draw(reusedRight, "#080")}
+      |${draw(intoSide(leftTargetCol) ++ intoSide(leftTargetCol + 1), "#080")}
+      |${draw(intoSide(rightTargetCol) ++ intoSide(rightTargetCol - 1), "#080")}
       |${draw(footSides, "#808")}
       |</g>
       |</svg>""".stripMargin

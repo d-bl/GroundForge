@@ -17,7 +17,7 @@ package dibl
 
 import scala.reflect.io.File
 
-object FringesDemos extends  {
+object FringesDemos extends {
 
   File("target/test/fringes/").createDirectory()
 
@@ -27,17 +27,18 @@ object FringesDemos extends  {
       val fringes = new Fringes(Matrices.toAbsolute(specs))
 
       // preparation of visual verification
-      val spaceLess = specs.replace(" ","_").replace(";","_")
+      val spaceLess = specs.replace(" ", "_").replace(";", "_")
       File(s"target/test/fringes/$spaceLess.svg").writeAll(fringes.svgDoc)
 
       // log which ones might have interesting properties to examine
-      val absDiff = Math.abs(fringes.reusedLeft.size - fringes.needsOutLeft.size)
-      val duplicateOuts = fringes.needsOutLeft.size - fringes.needsOutLeft.toSet.size +
-        fringes.needsOutRight.size - fringes.needsOutRight.toSet.size
-      val nodesOnInnerCols = fringes.needsOutLeft.count { case (_, sourceCol) => sourceCol == 3 } +
-        fringes.needsOutLeft.count { case (_, sourceCol) => sourceCol == 23 }
-      if (nodesOnInnerCols > 0 && duplicateOuts > 1)
-        println(s"$absDiff $duplicateOuts    $spaceLess")
+      val groupedByTarget = fringes.footSides.groupBy { case (source, target) => target }
+      val duplicateTargets = groupedByTarget.count { case (target, links) => links.size > 1 }
+      val nodesOnInnerCols = groupedByTarget.keys.count { case (_, targetCol) => targetCol == 3 || targetCol == 22 }
+      val accumulatedLinks = fringes.footSides ++ fringes.newPairs ++ fringes.coreLinks
+      val parallelLinks = accumulatedLinks.size - accumulatedLinks.toSet.size
+
+      if (nodesOnInnerCols > 0 && duplicateTargets > 0)
+        println(s"$duplicateTargets $parallelLinks    $spaceLess")
     }
   }
 }
