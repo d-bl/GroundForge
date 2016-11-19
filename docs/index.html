@@ -37,7 +37,7 @@
         <button class="inactiveTab" id="downloadTab" onclick="toggle('download');return false">download/print</button>
         &emsp14;&emsp14;
         <button class="inactiveTab" id="patternTab" onclick="toggle('pattern');return false">matrix</button>
-        <button class="inactiveTab" id="shiftTab" onclick="toggle('shift');setFootsideQuery();return false">shift footside</button>
+        <button class="inactiveTab" id="shiftTab" onclick="toggle('shift');return false">shift footside</button>
         <button class="inactiveTab" id="hiddenTab" onclick="toggle('hidden');return false">hidden objects</button>
     </p>
     <fieldset id="introFieldSet" class="hide">
@@ -200,22 +200,18 @@
             <input id="left" name="up" min="0" value="1" type="number"/>
         </p>
         <p>
-            A proper footside is required to generate a thread diagram.
-            The current implementation to calculate a foot side is quite poor
-            so only some combinations of the values above may render a thread diagram.
+            Footsides may be messy because of plaits between two pins and/or pairs skipping pins.
+            Diagrams might also pull together like bonnets.
+            Shifting the columns may improve the left footside,
+            additionally adjusting the width may fix the right footside.
+        </p>
+        <p>
+            Note that stitches need to be reconfigured after shifting either columns or rows.
         </p>
         <p>
             The grey rectangles show how the repeats take part in the generated diagrams.
             Both figures on the right show repeats shifted by a column resulting in different footsides.
-            The figures at the bottom show repeats shifted by a row,
-            what might fix or break the corners of the footsides and thus the thread diagram.
-        </p>
-        <p>
-            Exploring all the possibilities can be a tedious task.
-            Even for a browser, but for values up to 4x4 you can try all at once with the <a
-                id="footsideLink" href="footsides.html" target="_blank"
-            >foot sides</a> page, have some patience and make your choice.
-            Some patterns may not have a proper footside at all.
+            The figures at the bottom show repeats shifted by a row.
         </p>
     </fieldset>
     <fieldset id="hiddenFieldSet" class="hide">

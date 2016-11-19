@@ -18,7 +18,9 @@ function load() {
 
   if (!footside) footside = "ttctc"
 
+  var startTime = new Date().getTime()
   var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, tileType, footside)
+  console.log ("D3Data.get elapse time "+(new Date().getTime() - startTime))
 
   var colors = ''
   for(i=1; i <= 16 ; i++) {
@@ -111,11 +113,6 @@ function updatePatternSheet() {
   var patterns = new dibl.PatternSheet(2, "height='140mm' width='180mm'")
   patterns.add(document.getElementById("matrix").value, tiles ? tiles : "checker")
   document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
-}
-function setFootsideQuery () {
-  document.getElementById("footsideLink").href =
-    "footsides.html?tiles=" + getValueOfDropDown('tiles', '') +
-      "&matrix=" + encodeURIComponent(document.getElementById('matrix').value)
 }
 function setDownloadContent (comp, id) {
   var container = document.getElementById(id)

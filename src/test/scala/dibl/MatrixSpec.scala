@@ -56,9 +56,6 @@ class MatrixSpec extends FlatSpec with Matchers {
   }
 
   "separator" should "match anything but Matrix.relSourcesMap.keySet" in {
-    // Note that the constant Matrix.separator is repeated in JavaScript on footsides.html
-    // which is a workaround for an incomplete solution of hte Footsides class.
-    // If this separator value needs fixing, that JavaScript value need fixing too.
     val allChars = for {char <- Char.MinValue until Char.MaxValue} yield char
     val nonSeparatorChars = allChars.toString().split(Matrix.separator).mkString("")
     nonSeparatorChars.length shouldBe Matrix.charToRelativeTuples.keySet.size
