@@ -22,136 +22,70 @@ case class PairDiagram private(nodes: Seq[Props],
 
 object PairDiagram {
 
-  def apply(settings: Try[Settings]): PairDiagram =
-    if (settings.isFailure)
-      PairDiagram(Seq(Props("title" -> settings.failed.get.getMessage, "bobbin" -> true)), Seq[Props]())
-    else {
-      val nodeNrs = assignNodeNrs(settings.get.absM, settings.get.nrOfPairLinks)
-      val nodes = toNodes(settings.get).toArray
-      val links = toLinks(settings.get, nodeNrs, nodes)
-      assignPairNrs(nodes, links)
-      PairDiagram(nodes, links)
+  def apply(triedSettings: Try[Settings]): PairDiagram = if (triedSettings.isFailure)
+    PairDiagram(Seq(Props("title" -> triedSettings.failed.get.getMessage, "bobbin" -> true)), Seq[Props]())
+  else {
+    val settings: Settings = triedSettings.get
+    def getStitch(sourceRow: Int, sourceCol: Int): String = {
+      settings.getTitle(sourceRow, sourceCol).split(" ")(0).replace("t", "lr")
     }
 
-  private def assignPairNrs(nodes: Array[Props], links: Seq[Props]): Unit = {
-    // assign numbers to the source node of the first link of each pair
-    val startLinks = links.filter(_.getOrElse("start", "").toString.startsWith("pair"))
-    for (i <- startLinks.indices) {
-      val source = startLinks(i).get("source").get.asInstanceOf[Int]
-      nodes(source) = Props("title" -> s"Pair ${i + 1}")
-    }
+    val fringes = new Fringes(triedSettings.get.absM)
+    val newPairs = for {i <- fringes.newPairs.indices} yield ((0, i), fringes.newPairs(i)._2)
+    val sources = newPairs.map { case (source, _) => source }
+    val plainLinks = fringes.coreLinks ++ fringes.footSides ++ newPairs
+    val targets = plainLinks.groupBy { case (_, target) => target }.keys.toArray // TODO too expensive?
+    val nodeMap: Map[(Int, Int), Int] = {
+      val nodes = sources ++ targets
+      nodes.indices.map(n => (nodes(n), n))
+    }.toMap
+
+    val nodes = sources.map { case (row, col) =>
+      Props(
+        "title" -> s"Pair ${1 + nodeMap((row, col))}",
+        "y" -> 15 * row,
+        "x" -> 15 * col
+      )
+    } ++ targets.map { case (row, col) => Props(
+      "title" -> settings.getTitle(row, col),
+      "y" -> 15 * row,
+      "x" -> 15 * col
+    )}
+    val links = transparentLinks(sources.indices.toArray) ++
+      plainLinks.map { case ((sourceRow, sourceCol), (targetRow, targetCol)) =>
+        val sourceStitch = getStitch(sourceRow, sourceCol)
+        val targetStitch = getStitch(targetRow, targetCol)
+        val toLeftOfTarget = settings.absM(targetRow)(targetCol)(0) == (sourceRow, sourceCol)
+        Props(
+          "source" -> nodeMap((sourceRow, sourceCol)),
+          "target" -> nodeMap((targetRow, targetCol)),
+          "start" -> (if (sourceRow < 2) "pair" else marker(sourceStitch)),
+          "mid" -> (if (sourceRow < 2) 0 else midMarker(sourceStitch, targetStitch, toLeftOfTarget)),
+          "end" -> marker(targetStitch)
+        )
+      }
+    new PairDiagram(nodes, links)
   }
 
-  def assignNodeNrs(abs: M, nrOfLinks: Array[Array[Int]]
-                           ): Seq[Seq[Int]] = {
-    var nodeNr = -1
-    abs.indices.map { row =>
-      abs(row).indices.map { col =>
-        if (nrOfLinks(row)(col) <= 0) 0
-        else {
-          nodeNr += 1
-          nodeNr
-        }
-      }
-    }
+  def marker(stitch: String): String = {
+    if (stitch.endsWith("clrclrc") || stitch.contains("p")) ""
+    else if (stitch.endsWith("lrclrc")) "red"
+    else if (stitch.endsWith("clrc")) "purple"
+    else if (stitch.endsWith("lrc")) "green"
+    else if (stitch.startsWith("clrclrc")) ""
+    else if (stitch.startsWith("clrclr")) "red"
+    else if (stitch.startsWith("clrc")) "purple"
+    else if (stitch.startsWith("clr")) "green"
+    else ""
   }
 
-  /** Creates nodes for a pair diagram
-    *
-    * @return properties per node as in https://github.com/d-bl/GroundForge/blob/7a94b67/js/sample.js
-    */
-  def toNodes (s: Settings): Seq[Props] = {
-
-    def isUsed(row: Int, col: Int): Boolean =
-      s.nrOfPairLinks(row)(col) > 0
-
-    def isInBottom(row: Int): Boolean =
-      row >= s.absM.length - 2
-
-    def isFootside(row: Int, col: Int): Boolean =
-      col < 2 || col >= s.absM(0).length - 2
-
-    s.absM.indices.flatMap { row =>
-      s.absM(row).indices.filter(isUsed(row, _)).map { col =>
-        val props = if (isInBottom(row)) Props("bobbin" -> true)
-        else if (isFootside(row, col)) Props("title" -> s.footside)
-        else Props("title" -> s.getTitle(row,col), "fixed" -> false)
-        // initial coordinates prevent potential mirrored presentation
-        props + ("y" -> (15* row), "x" -> (15*col))
-      }
-    }
-  }
-
-  /** Creates links for a pair diagram
-    *
-    * @param nodeNrs sequence numbers assigned to actually used cells
-    * @return properties per link as in https://github.com/d-bl/GroundForge/blob/7a94b67/js/sample.js
-    */
-  def  toLinks (s: Settings, nodeNrs: Seq[Seq[Int]], nodes: Seq[Props]
-               ): Seq[Props] = {
-
-    def startMarker(srcRow: Int, srcCol: Int): String = {
-        val srcTitle = getInstructions(srcRow, srcCol)
-        if (isStartOfPair(srcRow, srcCol)) "pair"
-        else if (srcTitle.endsWith("clrclrc") || srcTitle.contains("p")) ""
-        else if (srcTitle.endsWith("lrclrc")) "red"
-        else if (srcTitle.endsWith("clrc")) "purple"
-        else if (srcTitle.endsWith("lrc")) "green"
-        else if (srcTitle.startsWith("clrclrc")) ""
-        else if (srcTitle.startsWith("clrclr")) "red"
-        else if (srcTitle.startsWith("clrc")) "purple"
-        else if (srcTitle.startsWith("clr")) "green"
-        else ""
-      }
-
-    def endMarker(targetRow: Int, targetCol: Int): String = {
-      val targetTitle = getInstructions(targetRow, targetCol)
-      if (targetTitle.endsWith("clrclrc") || targetTitle.contains("p")) ""
-      else if (targetTitle.endsWith("lrclrc")) "red"
-      else if (targetTitle.endsWith("clrc")) "purple"
-      else if (targetTitle.endsWith("lrc")) "green"
-      else if (targetTitle.startsWith("clrclrc")) ""
-      else if (targetTitle.startsWith("clrclr")) "red"
-      else if (targetTitle.startsWith("clrc")) "purple"
-      else if (targetTitle.startsWith("clr")) "green"
-      else ""
-    }
-
-    def midMarker(srcRow: Int, srcCol: Int, targetRow: Int, targetCol: Int, pairNr: Int): Int = {
-      val targetTwists = getInstructions(targetRow, targetCol).replaceAll("c.*","").replaceAll("p","")
-      val sourceTwists = getInstructions(srcRow, srcCol).replaceAll(".*c","").replaceAll("p","")
-      val count = if (pairNr == 0)
-        targetTwists.count(_ == 'l') + sourceTwists.count(_ == 'r')
-      else
-        targetTwists.count(_ == 'r') + sourceTwists.count(_ == 'l')
-      // TODO current implementation assumes first twist is part of the color code
-      // but that only applies to red or green end/start markers
-      if (count > 1)
-        count - 1
-      else 0
-    }
-
-    def getInstructions(row: Int, col: Int): String = nodes(nodeNrs(row)(col)).instructions
-
-    def isStartOfPair(r: Int, c: Int): Boolean = r < 2
-
-    val startNodeNrs = s.absM(2).flatten
-      .filter{case (r,c) => isStartOfPair(r,c)}
-      .map{case (r,c) => nodeNrs(r)(c)}
-
-    s.absM.indices.flatMap { row =>
-      s.absM(row).indices.flatMap { col =>
-        s.absM(row)(col).indices.map { linkNr =>
-          val(srcRow,srcCol) = s.absM(row)(col)(linkNr)
-          Props(
-            "source" -> nodeNrs(srcRow)(srcCol),
-            "target" -> nodeNrs(row)(col),
-            "start" -> startMarker(srcRow, srcCol),
-            "end" -> endMarker(row, col),
-            "mid" -> midMarker(srcRow, srcCol, row, col, linkNr)
-          )
-        }
-      }
-    } ++ transparentLinks(startNodeNrs)
+  def midMarker(sourceStitch: String, targetStitch: String, toLeftOfTarget: Boolean): Int = {
+    val targetTwists = targetStitch.replaceAll("c.*", "").replaceAll("p", "")
+    val sourceTwists = sourceStitch.replaceAll(".*c", "").replaceAll("p", "")
+    val nrOfTwists = if (toLeftOfTarget)
+      targetTwists.count(_ == 'l') + sourceTwists.count(_ == 'r')
+    else
+      targetTwists.count(_ == 'r') + sourceTwists.count(_ == 'l')
+    Math.max(0, nrOfTwists - 1)
   }
 }

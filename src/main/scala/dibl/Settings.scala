@@ -83,7 +83,6 @@ object Settings {
       shifted      = shift(checker, shiftUp + 2).map(shiftChars(_, shiftLeft + 2))
       relative     = extend(shifted, absRows, absCols).map(_.map(charToRelativeTuples).toArray)
       absolute     = toAbsolute(relative)
-      _            = createFootsides(absolute)
       stitchMatrix = toStitchMatrix(stitches, lines.length, lines(0).length)
     } yield tileType.toSettings(absolute, stitchMatrix, footside)
   }
