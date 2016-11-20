@@ -51,7 +51,7 @@ object PairDiagram {
       "y" -> 15 * row,
       "x" -> 15 * col
     )}
-    val links = transparentLinks(sources.indices.toArray) ++
+    val links =
       plainLinks.map { case ((sourceRow, sourceCol), (targetRow, targetCol)) =>
         val sourceStitch = getStitch(sourceRow, sourceCol)
         val targetStitch = getStitch(targetRow, targetCol)
@@ -63,7 +63,7 @@ object PairDiagram {
           "mid" -> (if (sourceRow < 2) 0 else midMarker(sourceStitch, targetStitch, toLeftOfTarget)),
           "end" -> marker(targetStitch)
         )
-      }
+      } ++ transparentLinks(sources.indices.toArray) // last for proper thread diagrams
     new PairDiagram(nodes, links)
   }
 
@@ -80,12 +80,9 @@ object PairDiagram {
   }
 
   def midMarker(sourceStitch: String, targetStitch: String, toLeftOfTarget: Boolean): Int = {
-    val targetTwists = targetStitch.replaceAll("c.*", "").replaceAll("p", "")
-    val sourceTwists = sourceStitch.replaceAll(".*c", "").replaceAll("p", "")
-    val nrOfTwists = if (toLeftOfTarget)
-      targetTwists.count(_ == 'l') + sourceTwists.count(_ == 'r')
-    else
-      targetTwists.count(_ == 'r') + sourceTwists.count(_ == 'l')
-    Math.max(0, nrOfTwists - 1)
+    val twists = (targetStitch.replaceAll("c.*", "") + sourceStitch.replaceAll(".*c", ""))
+      .replaceAll("p", "")
+    val c = if (toLeftOfTarget) 'l' else 'r'
+    Math.max(0, twists.count(_ == c) - 1)
   }
 }
