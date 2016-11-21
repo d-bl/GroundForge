@@ -26,10 +26,6 @@ object PairDiagram {
     PairDiagram(Seq(Props("title" -> triedSettings.failed.get.getMessage, "bobbin" -> true)), Seq[Props]())
   else {
     val settings: Settings = triedSettings.get
-    def getStitch(sourceRow: Int, sourceCol: Int): String = {
-      settings.getTitle(sourceRow, sourceCol).split(" ")(0).replace("t", "lr")
-    }
-
     val fringes = new Fringes(triedSettings.get.absM)
     val newPairs = for {i <- fringes.newPairs.indices} yield ((0, i), fringes.newPairs(i)._2)
     val sources = newPairs.map { case (source, _) => source }
@@ -53,8 +49,8 @@ object PairDiagram {
     )}
     val links =
       plainLinks.map { case ((sourceRow, sourceCol), (targetRow, targetCol)) =>
-        val sourceStitch = getStitch(sourceRow, sourceCol)
-        val targetStitch = getStitch(targetRow, targetCol)
+        val sourceStitch = settings.getStitch(sourceRow, sourceCol)
+        val targetStitch = settings.getStitch(targetRow, targetCol)
         val toLeftOfTarget = settings.absM(targetRow)(targetCol)(0) == (sourceRow, sourceCol)
         Props(
           "source" -> nodeMap((sourceRow, sourceCol)),

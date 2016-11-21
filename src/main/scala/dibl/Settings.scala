@@ -15,7 +15,6 @@
 */
 package dibl
 
-import dibl.Footsides.createFootsides
 import dibl.Matrix._
 
 import scala.util.{Failure, Success, Try}
@@ -42,6 +41,11 @@ abstract class Settings(val absM: M,
   def getTitle(row: Int, col: Int): String = {
     val (cellRow, cellCol) = toOriginalPosition(row,col)
     s"${stitches(cellRow)(cellCol)} - ${"ABCDEFGHIJKLMNOPQRSTUVWXYZ"(cellCol)}${cellRow+1}"
+  }
+
+  def getStitch(row: Int, col: Int): String = {
+    val (cellRow, cellCol) = toOriginalPosition(row,col)
+    stitches(cellRow)(cellCol).replace("t", "lr")
   }
 
   /** Recalculates the position of a cell from the full patch to the tile */

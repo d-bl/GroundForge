@@ -14,7 +14,6 @@
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
 
-import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
 import scala.language.postfixOps
 
@@ -78,16 +77,19 @@ package object dibl {
 
   // other tools
 
-  @tailrec
   def transparentLinks (nodes: Seq[Int],
                                 links: Seq[Props] = Seq[Props]()
                                ): Seq[Props] =
       if (nodes.length < 2) links
-      else transparentLinks(nodes.tail,links :+ Props(
-          "source" -> nodes.head,
-          "target" -> nodes.tail.head,
-          "border" -> true
-      ))
+      else {
+        nodes.take(nodes.length - 1).zip(nodes.tail).map{case (source, target) =>
+          Props(
+            "source" -> source,
+            "target" -> target,
+            "border" -> true
+          )
+        }
+      }
 
   /**
     * Converts an HSL color value to RGB. Conversion formula
