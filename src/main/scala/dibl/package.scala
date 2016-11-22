@@ -82,7 +82,7 @@ package object dibl {
                                ): Seq[Props] =
       if (nodes.length < 2) links
       else {
-        nodes.take(nodes.length - 1).zip(nodes.tail).map{case (source, target) =>
+        nodes.zip(nodes.tail).map{case (source, target) =>
           Props(
             "source" -> source,
             "target" -> target,

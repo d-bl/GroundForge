@@ -88,10 +88,6 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     if !fromOutside(targetCol, sourceRow, sourceCol)
   } yield Link(Cell(sourceRow, sourceCol), Cell(targetRow, targetCol))
 
-  /** The red links in the [[svgDoc]],
-    * the pairs needed to start a patch of lace along the top and corners,
-    * each link is one leg of the `v`'s in the ascii art diagram of the class
-    */
   private val regularNewPairs: Seq[Link] = {
     val row = absSrcNodes(topTargetRow)
     for {
@@ -144,16 +140,25 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     .filter { case (sourceRow, _) => sourceRow > topTargetRow }
     .map(target => Link(source, target))
 
-  private val leftFootSides = createLinks(leftTargetCol to leftTargetCol + 1)
+  val leftFootSides = createLinks(leftTargetCol to leftTargetCol + 1)
   private val leftNewPairs = leftOvers(Cell(0, 0))
   targets.clear()
-  val footSides = leftFootSides ++ createLinks(rightTargetCol to(rightTargetCol - 1, -1))
-  val newPairs = leftNewPairs ++ regularNewPairs ++ leftOvers(Cell(0, rightTargetCol + 2))
+  val rightFootSides = createLinks(rightTargetCol to(rightTargetCol - 1, -1))
+
+  private val requiredPairs = leftNewPairs ++ regularNewPairs ++ leftOvers(Cell(0, rightTargetCol + 2))
+
+  /** The pairs needed to start a patch of lace along the top and for the footsides,
+    * each link is one leg of the `v`'s in the ascii art diagram of the class.
+    * Each link has a unique source node.
+    * The red links in the [[svgDoc]].
+    */
+  val newPairs = for {i <- requiredPairs.indices} yield Link((0, i), requiredPairs(i)._2)
 
   /** An SVG document with all links of the two-in-two-out directed graph,
     * The core links are black, incoming links along the top drawn are red,
     * incoming links along the side are green,
     * dots for nodes that need outgoing links, darker dots require two links.
+    * Semi transparency makes the color lighter unless multiple links are stacked.
     *
     * Changing the content after creation renders inconsistent results.
     */
@@ -172,7 +177,7 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
       |${draw(newPairs, "#F00")}
       |${draw(intoSide(leftTargetCol) ++ intoSide(leftTargetCol + 1), "#080")}
       |${draw(intoSide(rightTargetCol) ++ intoSide(rightTargetCol - 1), "#080")}
-      |${draw(footSides, "#808")}
+      |${draw(leftFootSides ++ rightFootSides, "#808")}
       |</g>
       |</svg>""".stripMargin
 

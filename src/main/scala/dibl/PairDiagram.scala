@@ -15,6 +15,7 @@
 */
 package dibl
 
+import scala.collection.immutable.IndexedSeq
 import scala.util.Try
 
 case class PairDiagram private(nodes: Seq[Props],
@@ -27,15 +28,22 @@ object PairDiagram {
   else {
     val settings: Settings = triedSettings.get
     val fringes = new Fringes(triedSettings.get.absM)
-    val newPairs = for {i <- fringes.newPairs.indices} yield ((0, i), fringes.newPairs(i)._2)
-    val sources = newPairs.map { case (source, _) => source }
-    val plainLinks = fringes.coreLinks ++ fringes.footSides ++ newPairs
-    val targets = plainLinks.groupBy { case (_, target) => target }.keys.toArray // TODO too expensive?
+    val sources = fringes.newPairs.map { case (source, _) => source }
+    val plainLinks = fringes.newPairs ++ fringes.leftFootSides ++ fringes.coreLinks ++ fringes.rightFootSides
+    val linksByTarget = plainLinks.groupBy { case (_, target) => target }
+    val targets = linksByTarget.keys.toArray
     val nodeMap: Map[(Int, Int), Int] = {
       val nodes = sources ++ targets
       nodes.indices.map(n => (nodes(n), n))
     }.toMap
 
+    def getStitchTitle(row: Int, col: Int): String = {
+      def getNodeNr(row: Int, col: Int, link: Int): Int = {
+        val ((r,c),_) = linksByTarget((row, col))(link)
+        nodeMap((r,c))
+      }
+      settings.getTitle(row, col) + s" debug-info: (${getNodeNr(row, col, 0)},${getNodeNr(row, col, 1)}) > ${nodeMap((row, col))}"
+    }
     val nodes = sources.map { case (row, col) =>
       Props(
         "title" -> s"Pair ${1 + nodeMap((row, col))}",
@@ -43,10 +51,11 @@ object PairDiagram {
         "x" -> 15 * col
       )
     } ++ targets.map { case (row, col) => Props(
-      "title" -> settings.getTitle(row, col),
+      "title" -> getStitchTitle(row, col),
       "y" -> 15 * row,
       "x" -> 15 * col
     )}
+
     val links =
       plainLinks.map { case ((sourceRow, sourceCol), (targetRow, targetCol)) =>
         val sourceStitch = settings.getStitch(sourceRow, sourceCol)

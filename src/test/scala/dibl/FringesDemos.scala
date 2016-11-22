@@ -15,6 +15,7 @@
 */
 package dibl
 
+import scala.collection.immutable.IndexedSeq
 import scala.reflect.io.File
 
 object FringesDemos extends {
@@ -30,11 +31,12 @@ object FringesDemos extends {
       val spaceLess = specs.replace(" ", "_").replace(";", "_")
       File(s"target/test/fringes/$spaceLess.svg").writeAll(fringes.svgDoc)
 
+      val footsides = fringes.leftFootSides ++ fringes.rightFootSides
       // log which ones might have interesting properties to examine
-      val groupedByTarget = fringes.footSides.groupBy { case (source, target) => target }
+      val groupedByTarget = footsides.groupBy { case (source, target) => target }
       val duplicateTargets = groupedByTarget.count { case (target, links) => links.size > 1 }
       val nodesOnInnerCols = groupedByTarget.keys.count { case (_, targetCol) => targetCol == 3 || targetCol == 22 }
-      val accumulatedLinks = fringes.footSides ++ fringes.newPairs ++ fringes.coreLinks
+      val accumulatedLinks = footsides ++ fringes.newPairs ++ fringes.coreLinks
       val parallelLinks = accumulatedLinks.size - accumulatedLinks.toSet.size
 
       if (nodesOnInnerCols > 0 && duplicateTargets > 0)
