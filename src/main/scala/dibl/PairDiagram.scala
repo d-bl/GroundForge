@@ -15,6 +15,7 @@
 */
 package dibl
 
+import scala.annotation.tailrec
 import scala.util.Try
 
 case class PairDiagram private(nodes: Seq[Props],
@@ -29,8 +30,8 @@ object PairDiagram {
     val fringes = new Fringes(triedSettings.get.absM)
     val sources: Seq[Cell] = fringes.newPairs.map { case (source, _) => source }
     val plainLinks: Seq[Link] = fringes.newPairs ++ fringes.leftFootSides ++ fringes.coreLinks ++ fringes.rightFootSides
-    val linksByTarget: Map[Cell,Seq[Link]] = plainLinks.groupBy { case (_, target) => target }
-    val targets = linksByTarget.keys.toArray
+    val linksByTarget: Map[Cell,Seq[Link]] = replaceYsWithVs(plainLinks.groupBy { case (_, target) => target })
+    val targets: Seq[Cell] = linksByTarget.keys.toSeq
     val nodeMap: Map[Cell, Int] = {
       val nodes = sources ++ targets
       nodes.indices.map(n => (nodes(n), n))
@@ -54,7 +55,7 @@ object PairDiagram {
     )}
 
     val links =
-      plainLinks.map { case ((sourceRow, sourceCol), (targetRow, targetCol)) =>
+      linksByTarget.values.flatten.map { case ((sourceRow, sourceCol), (targetRow, targetCol)) =>
         val sourceStitch = settings.getStitch(sourceRow, sourceCol)
         val targetStitch = settings.getStitch(targetRow, targetCol)
         val toLeftOfTarget = settings.absM(targetRow)(targetCol)(0) == (sourceRow, sourceCol)
@@ -65,8 +66,44 @@ object PairDiagram {
           "mid" -> (if (sourceRow < 2) 0 else midMarker(sourceStitch, targetStitch, toLeftOfTarget)),
           "end" -> marker(targetStitch)
         )
-      } ++ transparentLinks(sources.indices.toArray) // last for proper thread diagrams
+      }.toSeq ++ transparentLinks(sources.indices.toArray)
     new PairDiagram(nodes, links)
+  }
+
+  /** Y and V are ascii art representations of sections in the two-in-two out graph
+    * with the leg of the Y representing parallel links alias plaits
+    *
+    * @param linksByTarget a map of nodes to their two links coming into the node
+    * @return idem, with the parallel legs of the Y's replaced by a single node
+    */
+  def replaceYsWithVs(linksByTarget: Map[Cell, Seq[Link]]): Map[Cell, Seq[Link]] = {
+
+    val plaitSources: Set[Cell] = linksByTarget.values
+      .filter (twoIn => twoIn(0) == twoIn(1) )
+      .map (twoIn => twoIn(0)._1 )
+      .toSeq
+      .toSet
+
+    @tailrec
+    def sourceOfParallelLinks (node: Cell):Cell = {
+      val leftSource = linksByTarget(node)(1)._1
+      if (!plaitSources.contains(leftSource))
+        node
+      else sourceOfParallelLinks(leftSource)
+    }
+
+    linksByTarget
+      .filter { case (target, _) => !plaitSources.contains(target)}
+      .map { case (target, twoIn) =>
+        if (twoIn(0) != twoIn(1))
+          (target, twoIn)
+        else {
+          val leftSource: Cell = twoIn(1)._1
+          val replacedTwoIn = linksByTarget(sourceOfParallelLinks(leftSource))
+          val newTwoIn = replacedTwoIn.map { case (source, _) => (source, target)}
+          (target, newTwoIn)
+        }
+      }
   }
 
   /** Property of a link, the Belgian color code of a node tells a lace maker which stitch to make.
