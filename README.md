@@ -91,7 +91,7 @@ Compile and preview
 
 - Fork the project and make a local clone.
 - Don't push to the master branch, create branches and pull requests.
-- Go to the root of the local project and start the command `sbt '~fastOptJS'`
+- Go to the root of the local project and start the command `sbt '~fastOptJS'`, with `~` compilation is restarted as soon as a source is saved, without the compilation is executed once.
 - Monitor the result of your changes on `http://localhost:12345/target/scala-2.11/classes/index-dev.html`
   It is a dressed down version of the published page, with possibly experimental features added.
   Nodes and links invisible in the published page are shown faint for debugging purposes.

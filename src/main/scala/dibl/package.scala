@@ -21,6 +21,14 @@ package object dibl {
 
   // got these type aliases from http://stackoverflow.com/questions/15783837/beginner-scala-type-alias-in-scala-2-10
 
+  type Cell = (Int, Int)
+
+  def Cell(row: Int, col: Int) = (row, col)
+
+  type Link = (Cell, Cell)
+
+  def Link(source: Cell, target: Cell) = (source, target)
+
   /** Tuples pointing to another cell in the matrix. */
   type SrcNodes = Array[(Int,Int)]
   def SrcNodes(xs: (Int,Int)*) = Array(xs: _*)

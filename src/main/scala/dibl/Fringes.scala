@@ -49,14 +49,6 @@ import scala.collection.mutable
   */
 class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
 
-  type Cell = (Int, Int)
-
-  def Cell(row: Int, col: Int) = (row, col)
-
-  type Link = (Cell, Cell)
-
-  def Link(source: Cell, target: Cell) = (source, target)
-
   private val drawingScale = 10
   private val topTargetRow = 2
   private val leftTargetCol = 2

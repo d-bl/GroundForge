@@ -15,7 +15,6 @@
 */
 package dibl
 
-import scala.collection.immutable.IndexedSeq
 import scala.util.Try
 
 case class PairDiagram private(nodes: Seq[Props],
@@ -28,21 +27,19 @@ object PairDiagram {
   else {
     val settings: Settings = triedSettings.get
     val fringes = new Fringes(triedSettings.get.absM)
-    val sources = fringes.newPairs.map { case (source, _) => source }
-    val plainLinks = fringes.newPairs ++ fringes.leftFootSides ++ fringes.coreLinks ++ fringes.rightFootSides
-    val linksByTarget = plainLinks.groupBy { case (_, target) => target }
+    val sources: Seq[Cell] = fringes.newPairs.map { case (source, _) => source }
+    val plainLinks: Seq[Link] = fringes.newPairs ++ fringes.leftFootSides ++ fringes.coreLinks ++ fringes.rightFootSides
+    val linksByTarget: Map[Cell,Seq[Link]] = plainLinks.groupBy { case (_, target) => target }
     val targets = linksByTarget.keys.toArray
-    val nodeMap: Map[(Int, Int), Int] = {
+    val nodeMap: Map[Cell, Int] = {
       val nodes = sources ++ targets
       nodes.indices.map(n => (nodes(n), n))
     }.toMap
 
     def getStitchTitle(row: Int, col: Int): String = {
-      def getNodeNr(row: Int, col: Int, link: Int): Int = {
-        val ((r,c),_) = linksByTarget((row, col))(link)
-        nodeMap((r,c))
-      }
-      settings.getTitle(row, col) + s" debug-info: (${getNodeNr(row, col, 0)},${getNodeNr(row, col, 1)}) > ${nodeMap((row, col))}"
+      val twoIn: Seq[Link] = linksByTarget((row, col))
+      def src(i: Int) = nodeMap.getOrElse(twoIn(i)._1,("?","?"))
+      settings.getTitle(row, col) + s" debug-info: (${src(0)},${src(1)}) > ${nodeMap((row, col))}"
     }
     val nodes = sources.map { case (row, col) =>
       Props(
@@ -72,6 +69,16 @@ object PairDiagram {
     new PairDiagram(nodes, links)
   }
 
+  /** Property of a link, the Belgian color code of a node tells a lace maker which stitch to make.
+    * The end marker and start marker of a link take the color of the node.
+    *
+    * @param stitch lower case instructions, t(wist), already expanded to l(eft)r(ight).
+    *               A stitch is made with two pair alias four threads.
+    *               A twist means even threads/bobbins (2nd and/or 4th) to the left by one position.
+    *               A c(ross) means the second thread to the right by one position.
+    *               A p(in) is put between the two pairs.
+    * @return the color of a node
+    */
   def marker(stitch: String): String = {
     if (stitch.endsWith("clrclrc") || stitch.contains("p")) ""
     else if (stitch.endsWith("lrclrc")) "red"
@@ -84,6 +91,13 @@ object PairDiagram {
     else ""
   }
 
+  /** Property of a link, a cross mark indicates additional twist(s).
+    *
+    * @param sourceStitch as for [[marker]]
+    * @param targetStitch idem
+    * @param toLeftOfTarget which pair of the two-in
+    * @return the number of additional twists, assuming the first twist is part of the Belgian color code
+    */
   def midMarker(sourceStitch: String, targetStitch: String, toLeftOfTarget: Boolean): Int = {
     val twists = (targetStitch.replaceAll("c.*", "") + sourceStitch.replaceAll(".*c", ""))
       .replaceAll("p", "")
