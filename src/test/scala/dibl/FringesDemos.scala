@@ -15,7 +15,6 @@
 */
 package dibl
 
-import scala.collection.immutable.IndexedSeq
 import scala.reflect.io.File
 
 object FringesDemos extends {
@@ -24,8 +23,12 @@ object FringesDemos extends {
 
   def main(args: Array[String]): Unit = {
 
+    val special =  new Fringes(Matrices.toAbsolute("586- -789 2111 -4-4;bricks",23,14,1,1))
+    File(s"target/test/fringesMixedUp.svg").writeAll(special.svgDoc)
+
     for (specs <- Matrices.values) {
-      val fringes = new Fringes(Matrices.toAbsolute(specs))
+      val absolute = Matrices.toAbsolute(specs)
+      val fringes = new Fringes(absolute)
 
       // preparation of visual verification
       val spaceLess = specs.replace(" ", "_").replace(";", "_")

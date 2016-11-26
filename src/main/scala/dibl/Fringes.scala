@@ -132,7 +132,7 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     .filter { case (sourceRow, _) => sourceRow > topTargetRow }
     .map(target => Link(source, target))
 
-  val leftFootSides = createLinks(leftTargetCol to leftTargetCol + 1)
+  val leftFootSides = createLinks(leftTargetCol to leftTargetCol + 1).sortBy{case ((row,col),target) => (target,row)}
   private val leftNewPairs = leftOvers(Cell(0, 0))
   targets.clear()
   val rightFootSides = createLinks(rightTargetCol to(rightTargetCol - 1, -1))

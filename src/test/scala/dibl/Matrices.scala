@@ -15,7 +15,7 @@
 */
 package dibl
 
-import dibl.Matrix.{charToRelativeTuples, extend, toAbsolute}
+import dibl.Matrix.{charToRelativeTuples, extend}
 
 object Matrices {
   val values = Array(
@@ -118,13 +118,14 @@ object Matrices {
     "5-L-L-K- -L-K-5-O L-L-O-L- -E-E-E-E;bricks", "5-L-L-K- -L-K-5-O 5-L-O-K- -E-E-E-H;bricks", "5-L-L-K- -L-K-5-O 5-L-O--- -E-E-H-E;bricks",
     "5-L-L-K- -L-K-5-O K-5-O-L- -H-E-E-E;bricks", "5-L-L-K- -L-K-5-O --5-O-L- -E-E-E-H;bricks")
 
-  def toAbsolute(args: String) = {
+  def toAbsolute(args: String, rows: Int =22, cols:Int = 22, shiftUp: Int =0, shiftLeft: Int = 0) = {
     val specs = args.split(";")
     val matrixLines = Matrix.toValidMatrixLines(specs.head).get
     val tileSpec = if (specs.length > 1) specs(1) else "checker"
     val tileType = TileType(tileSpec)
     val checker = tileType.toChecker(matrixLines)
-    val extended = extend(checker, 22, 22)
+    val shifted = Matrix.shift(checker, shiftUp + 2).map(Matrix.shiftChars(_, shiftLeft + 2))
+    val extended = extend(shifted, rows, cols)
     val relative = extended.map(_.map(charToRelativeTuples).toArray)
     Matrix.toAbsolute(relative)
   }
