@@ -23,7 +23,7 @@ object FringesDemos extends {
 
   def main(args: Array[String]): Unit = {
 
-    val special =  new Fringes(Matrices.toAbsolute("586- -789 2111 -4-4;bricks",23,14,1,1))
+    val special =  new Fringes(Matrices.toAbsolute("5831 -4-7",11,12))
     File(s"target/test/fringesMixedUp.svg").writeAll(special.svgDoc)
 
     for (specs <- Matrices.values) {

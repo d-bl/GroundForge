@@ -165,11 +165,12 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
       |<g transform='translate($drawingScale,$drawingScale)'>
       |${draw(needsOutLink(leftTargetCol, leftTargetCol + 1))}
       |${draw(needsOutLink(rightTargetCol, rightTargetCol - 1))}
-      |${draw(coreLinks, "#000")}
-      |${draw(newPairs, "#F00")}
       |${draw(intoSide(leftTargetCol) ++ intoSide(leftTargetCol + 1), "#080")}
       |${draw(intoSide(rightTargetCol) ++ intoSide(rightTargetCol - 1), "#080")}
-      |${draw(leftFootSides ++ rightFootSides, "#808")}
+      |${draw(newPairs, "#F00")}
+      |${draw(leftFootSides, "#808")}
+      |${draw(coreLinks, "#000")}
+      |${draw(rightFootSides, "#808")}
       |</g>
       |</svg>""".stripMargin
 
