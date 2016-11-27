@@ -124,7 +124,7 @@ object Matrices {
     val tileSpec = if (specs.length > 1) specs(1) else "checker"
     val tileType = TileType(tileSpec)
     val checker = tileType.toChecker(matrixLines)
-    val shifted = Matrix.shift(checker, shiftUp + 2).map(Matrix.shiftChars(_, shiftLeft + 2))
+    val shifted = Matrix.shift(checker, shiftUp).map(Matrix.shiftChars(_, shiftLeft))
     val extended = extend(shifted, rows, cols)
     val relative = extended.map(_.map(charToRelativeTuples).toArray)
     Matrix.toAbsolute(relative)
