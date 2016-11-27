@@ -80,7 +80,7 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     if !fromOutside(targetCol, sourceRow, sourceCol)
   } yield Link(Cell(sourceRow, sourceCol), Cell(targetRow, targetCol))
 
-  private val regularNewPairs: Seq[Link] = {
+  val regularNewPairs: Seq[Link] = {
     val row = absSrcNodes(topTargetRow)
     for {
       targetCol <- leftTargetCol to rightTargetCol
@@ -133,11 +133,19 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     .map(target => Link(source, target))
 
   val leftFootSides = createLinks(leftTargetCol to leftTargetCol + 1).sortBy{case ((row,col),target) => (target,row)}
-  private val leftNewPairs = leftOvers(Cell(0, 0))
+  val leftNewPairs = leftOvers(Cell(0, 0))
   targets.clear()
   val rightFootSides = createLinks(rightTargetCol to(rightTargetCol - 1, -1))
+  val rightNewPairs = leftOvers(Cell(0, rightTargetCol + 2))
+  private val requiredPairs = leftNewPairs ++ regularNewPairs ++ rightNewPairs
 
-  private val requiredPairs = leftNewPairs ++ regularNewPairs ++ leftOvers(Cell(0, rightTargetCol + 2))
+  val isLeftPair: Seq[Boolean] =
+    leftNewPairs.map(_ => true) ++
+      regularNewPairs.indices.map { i =>
+        val (source, (targetRow, targetCol)) = regularNewPairs(i)
+        absSrcNodes(targetRow)(targetCol)(0) == source
+      } ++
+      rightNewPairs.map(_ => false)
 
   /** The pairs needed to start a patch of lace along the top and for the footsides,
     * each link is one leg of the `v`'s in the ascii art diagram of the class.

@@ -29,9 +29,16 @@ object PairDiagram {
     val settings: Settings = triedSettings.get
     val fringes = new Fringes(triedSettings.get.absM)
     val sources: Seq[Cell] = fringes.newPairs.map { case (source, _) => source }
-    val plainLinks: Seq[Link] = fringes.newPairs ++ fringes.leftFootSides ++ fringes.coreLinks ++ fringes.rightFootSides
+    val sourcesIndices = sources.indices
+    val plainLinks: Seq[Link] =
+      sourcesIndices.filter(i => fringes.isLeftPair(i)).map(i => fringes.newPairs(i)) ++
+      fringes.leftFootSides ++
+      fringes.coreLinks ++
+      sourcesIndices.filter(i => !fringes.isLeftPair(i)).map(i => fringes.newPairs(i)) ++
+      fringes.rightFootSides
     val linksByTarget: Map[Cell,Seq[Link]] = replaceYsWithVs(plainLinks.groupBy { case (_, target) => target })
     val targets: Seq[Cell] = linksByTarget.keys.toSeq
+
     val nodeMap: Map[Cell, Int] = {
       val nodes = sources ++ targets
       nodes.indices.map(n => (nodes(n), n))
@@ -66,7 +73,7 @@ object PairDiagram {
           "mid" -> (if (sourceRow < 2) 0 else midMarker(sourceStitch, targetStitch, toLeftOfTarget)),
           "end" -> marker(targetStitch)
         )
-      }.toSeq ++ transparentLinks(sources.indices.toArray)
+      }.toSeq ++ transparentLinks(sourcesIndices.toArray)
     new PairDiagram(nodes, links)
   }
 
