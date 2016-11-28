@@ -104,7 +104,7 @@ diagram.showGraph = function(args) {
         .style('opacity', function(d) { return d.border || d.toPin ? fullyTransparant : 1})
         .style('stroke', '#000')
         .style('fill', 'none')
-    if (isThreadDiagram) links.style('stroke-width', '3px')
+    if (isThreadDiagram) links.style('stroke-width', '2px')
     if (!isIE && !isMobileMac) diagram.markLinks(links)
 
     var nodes = svgContainer.selectAll(".node").data(args.nodes).enter().append("svg:path")

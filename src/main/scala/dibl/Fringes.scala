@@ -55,7 +55,7 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
   private val rightTargetCol = absSrcNodes(0).length - leftTargetCol - 1
   private val bottomTargetRow = absSrcNodes.length - topTargetRow - 1
 
-  private def fromOutside(targetCol: Int, sourceRow: Int, sourceCol: Int): Boolean =
+  private def fromOutside(sourceRow: Int, sourceCol: Int): Boolean =
     sourceRow < topTargetRow || // vertical/diagonal links
       sourceCol < leftTargetCol || // from outer left
       sourceCol > rightTargetCol // from outer right
@@ -66,7 +66,7 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     for {
       targetRow <- topTargetRow + 1 until col.length - 2
       (sourceRow, sourceCol) <- col(targetRow)
-      if fromOutside(targetCol, sourceRow, sourceCol)
+      if fromOutside(sourceRow, sourceCol)
     } yield Link(
       source = Cell(sourceRow, sourceCol),
       target = Cell(targetRow, targetCol)
@@ -77,7 +77,7 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     targetRow <- absSrcNodes.indices
     targetCol <- absSrcNodes(targetRow).indices
     (sourceRow, sourceCol) <- absSrcNodes(targetRow)(targetCol)
-    if !fromOutside(targetCol, sourceRow, sourceCol)
+    if !fromOutside(sourceRow, sourceCol)
   } yield Link(Cell(sourceRow, sourceCol), Cell(targetRow, targetCol))
 
   val regularNewPairs: Seq[Link] = {
@@ -85,7 +85,7 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     for {
       targetCol <- leftTargetCol to rightTargetCol
       (sourceRow, sourceCol) <- row(targetCol)
-      if fromOutside(targetCol, sourceRow, sourceCol)
+      if fromOutside(sourceRow, sourceCol)
     } yield Link(
       source = Cell(sourceRow, sourceCol),
       target = Cell(topTargetRow, targetCol)
@@ -93,6 +93,9 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
   }
 
   private val count = Matrix.countLinks(absSrcNodes)
+
+  def requiredNrOfLinks(targetRow: Int, targetCol: Int): Int =
+    (4 - count(targetRow)(targetCol)) % 4
 
   /** Nodes that need a link going into the footside.
     * Nodes that needs two out going links are returned twice.
@@ -102,32 +105,51 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     for {
       targetRow <- topTargetRow until bottomTargetRow
       targetCol <- outerCol to(innerCol, innerCol - outerCol)
-      _ <- 1 to (4 - count(targetRow)(targetCol)) % 4
+      _ <- 1 to requiredNrOfLinks(targetRow, targetCol)
     } yield Cell(targetRow, targetCol)
   }
 
+  /** Links coming out of the margin for which no node was yet found needing a link going into the margin. */
   private val targets = mutable.Stack[Cell]()
 
-  private def popLinks(sourceRow: Int, sourceCol: Int): Seq[Link] = for {
-    _ <- 1 to (4 - count(sourceRow)(sourceCol)) % 4 // nr of needed links out
-    if targets.nonEmpty
-  } yield Link(Cell(sourceRow, sourceCol), targets.pop())
+  private def popLinks(sourceRow: Int, sourceCol: Int): Seq[Link] = {
+    val requiredAt = Cell(sourceRow, sourceCol)
+    for {
+      _ <- 1 to requiredNrOfLinks(sourceRow, sourceCol)
+      if targets.nonEmpty
+    } yield {
+      Link(requiredAt, targets.pop())
+    }
+  }
 
   private def pushLinks(targetRow: Int, targetCol: Int): Unit = absSrcNodes(targetRow)(targetCol).foreach {
     case (sourceRow, sourceCol) =>
-      if (fromOutside(targetCol, sourceRow, sourceCol))
+      if (fromOutside(sourceRow, sourceCol))
         targets.push(Cell(targetRow, targetCol))
   }
 
+  /** Connects nodes with a link coming out of the margin, to nodes requiring a link going into the margin.
+    *
+    * @param cols iterates of two columns,
+    *             first the outer column next to the margin,
+    *             then the next column away from the margin
+    * @return zero to two links that are part of the footside
+    */
   private def createLinks(cols: Inclusive): IndexedSeq[Link] = {
     for {
-      row <- bottomTargetRow to(topTargetRow, -1)
+      row <- bottomTargetRow.to(topTargetRow, -1)
       col <- cols
       links = popLinks(row, col)
       _ = pushLinks(row, col)
     } yield links
   }.flatten
 
+  /** Pop what is left on the stack.
+    *
+    * @param source starting point for the links
+    * @return New pairs required to start the footside, alias links coming out of the margin
+    *         without a previous node needing a link going into the margin.
+    */
   private def leftOvers(source: Cell) = targets.toArray
     .filter { case (sourceRow, _) => sourceRow > topTargetRow }
     .map(target => Link(source, target))
@@ -139,6 +161,9 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
   val rightNewPairs = leftOvers(Cell(0, rightTargetCol + 2))
   private val requiredPairs = leftNewPairs ++ regularNewPairs ++ rightNewPairs
 
+  /** Should the corresponding items of [[newPairs]] go before (or to the left) of the [[coreLinks]]
+    * or after (or to the right) to be able to group the links clockwise by their target node.
+    */
   val isLeftPair: Seq[Boolean] =
     leftNewPairs.map(_ => true) ++
       regularNewPairs.indices.map { i =>
@@ -156,8 +181,8 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
 
   /** An SVG document with all links of the two-in-two-out directed graph,
     * The core links are black, incoming links along the top drawn are red,
-    * incoming links along the side are green,
-    * dots for nodes that need outgoing links, darker dots require two links.
+    * incoming links along the side are green.
+    * Dots represent nodes that need outgoing links, darker dots require two links.
     * Semi transparency makes the color lighter unless multiple links are stacked.
     *
     * Changing the content after creation renders inconsistent results.

@@ -35,4 +35,7 @@ class PairDiagramSpec extends FlatSpec with Matchers {
     nonTransparent.count(_ ("mid") == 0) shouldNot be(0)
     nonTransparent.count(_ ("mid") == 1) shouldNot be(0)
   }
+  "486- -486 6-48 86-4" should "not fail but does" in {
+
+  }
 }

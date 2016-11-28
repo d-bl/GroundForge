@@ -39,7 +39,7 @@
         <button class="inactiveTab" id="downloadTab" onclick="toggle('download');return false">download/print</button>
         &emsp14;&emsp14;
         <button class="inactiveTab" id="patternTab" onclick="toggle('pattern');return false">matrix</button>
-        <button class="inactiveTab" id="shiftTab" onclick="toggle('shift');return false">shift footside</button>
+        <button class="inactiveTab" id="shiftTab" onclick="toggle('shift');return false">footsides</button>
         <button class="inactiveTab" id="hiddenTab" onclick="toggle('hidden');return false">hidden objects</button>
     </p>
     <fieldset id="introFieldSet" class="hide">
@@ -194,15 +194,14 @@
         </legend>
         <img src="images/shift.png" id="shift-legend" alt="legend" align="right">
         <p>
-            <label for="up">rows</label>
+            <label for="up">shift rows up by</label>
             <input id="up" name="left" min="0" value="1" type="number"/>
-            <label for="left">columns</label>
+            <label for="left">shift columns left by</label>
             <input id="left" name="up" min="0" value="1" type="number"/>
         </p>
         <p>
-            Footsides may be messy because of long pairs pulling sections together,
-            and the algorithm mixing up left and right pairs at the first row.
-            Shifting rows may fix the top,
+            Footsides may be messy because of long pairs pulling sections together.
+            Shifting rows may improve the top,
             shifting columns may improve the left footside,
             subsequently adjusting the width may fix the right footside.
         </p>

@@ -44,11 +44,6 @@ object PairDiagram {
       nodes.indices.map(n => (nodes(n), n))
     }.toMap
 
-    def getStitchTitle(row: Int, col: Int): String = {
-      val twoIn: Seq[Link] = linksByTarget((row, col))
-      def src(i: Int) = nodeMap.getOrElse(twoIn(i)._1,("?","?"))
-      settings.getTitle(row, col) + s" debug-info: (${src(0)},${src(1)}) > ${nodeMap((row, col))}"
-    }
     val nodes = sources.map { case (row, col) =>
       Props(
         "title" -> s"Pair ${1 + nodeMap((row, col))}",
@@ -56,7 +51,7 @@ object PairDiagram {
         "x" -> 15 * col
       )
     } ++ targets.map { case (row, col) => Props(
-      "title" -> getStitchTitle(row, col),
+      "title" -> settings.getTitle(row, col),
       "y" -> 15 * row,
       "x" -> 15 * col
     )}
