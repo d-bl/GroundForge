@@ -1,10 +1,17 @@
-# [DEMO](https://d-bl.github.io/GroundForge/)
 _A toolbox to design bobbin lace grounds with matching diagrams._
+
+DEMO's
+======
+
+A [dressed up](https://d-bl.github.io/GroundForge/) version.
+
+The dressed down [API](https://d-bl.github.io/GroundForge/API) version, showing a starting point to configure your own web interface or embed just some of the diagrams on your own web page, though you may want to start with the `show-graph.js` of the dressed up version.
 
 [![Build Status](https://travis-ci.org/d-bl/GroundForge.svg?branch=master)](https://travis-ci.org/d-bl/GroundForge) 
 Note that building does not copy a [compile]d version of `src/test/scala` to `docs/js/matrix-graph.js` (part of the client-side demo), the other JavaScripts are not involved in the automated tests.
 
 [compile]: #compile-and-preview
+
 
 How it's Made / third party data and scripts
 ============================================
@@ -104,7 +111,7 @@ Important code conventions
 - Never catch exceptions in a `Try` as exceptions terminate the JavaScript. The tests might succeed with maven, but the JavaScript breaks. Prevent exceptions like illegal arguments and indexes and create a `Failure` for safe execution with JavaScript.
 - Restrict the use of raw js objects to the API level: the classes and methods annotated with `@JSExport`. This allows execution of test classes with another JVM than ScalaJS was built with.
 
-The applied Scala coding techniques are explained by this [course] up and including workshop 3. The main code doesn't use any io, and the hand full of files written by tests barely justify the clutter of closing files let alone using a library. So you can save the last task of the FileIO assignment for other purposes.
+The applied Scala coding techniques are explained by this [course] up and including workshop 3. The main code doesn't use any io, and the hand full of files written by test/demo classes don't justify using a library. So you can save the last task of the FileIO assignment for other purposes.
 
 [course]: https://github.com/DANS-KNAW/course-scala
 
