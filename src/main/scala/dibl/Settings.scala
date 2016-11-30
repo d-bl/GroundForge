@@ -24,15 +24,13 @@ import scala.util.{Failure, Success, Try}
   * @param absM A matrix for a patch of lace with repeated tiles. Each cell represents a node in a two-in-two-out directed graph.
   *             A cell contains absolute tuples pointing to other cells for both incoming links and outgoing links for a node.
   * @param stitches A matrix for a single tile with stitch instructions (tcplr) per cell.
-  * @param footside Stitch instructions for the footsides
   */
 abstract class Settings(val absM: M,
-                        val stitches: Array[Array[String]],
-                        val footside: String = "ttctc"
+                        val stitches: Array[Array[String]]
                        ) {
   val nrOfPairLinks: Array[Array[Int]] = countLinks(absM)
-  protected val relRows = stitches.length
-  protected val relCols = stitches(0).length
+  protected val relRows: Int = stitches.length
+  protected val relCols: Int = stitches(0).length
   protected val margin = 2
 
   /** Gets the tooltip for a stitch: the ID of a cell (a letter for the column, a digit for a row)
@@ -49,7 +47,7 @@ abstract class Settings(val absM: M,
   }
 
   /** Recalculates the position of a cell from the full patch to the tile */
-  protected def toOriginalPosition(row: Int, col: Int): (Int, Int)
+  protected def toOriginalPosition(row: Int, col: Int): Cell
 }
 
 object Settings {
@@ -64,7 +62,6 @@ object Settings {
     * @param shiftLeft The number or columns to the tile to the left foot side.
     * @param shiftUp The number of rows to shift the tile up to the top (read to the false foot side).
     * @param stitches Stitch instructions per tile-cell.
-    * @param footside Stitch for the footsides
     * @return a [[dibl.Settings]] instance
     */
   def apply(str: String,
@@ -73,8 +70,7 @@ object Settings {
             absCols: Int,
             shiftLeft: Int = 0,
             shiftUp: Int = 0,
-            stitches: String = "",
-            footside: String = "ttctc"
+            stitches: String = ""
            ): Try[Settings] = {
 
     val legalArguments = absCols > 1 && absRows > 1 && shiftLeft >= 0 && shiftUp >= 0
@@ -88,7 +84,7 @@ object Settings {
       relative     = extend(shifted, absRows, absCols).map(_.map(charToRelativeTuples).toArray)
       absolute     = toAbsolute(relative)
       stitchMatrix = toStitchMatrix(stitches, lines.length, lines(0).length)
-    } yield tileType.toSettings(absolute, stitchMatrix, footside)
+    } yield tileType.toSettings(absolute, stitchMatrix)
   }
 
   /** Converts a string with stitch instructions into a matrix.

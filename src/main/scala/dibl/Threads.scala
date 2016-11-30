@@ -70,7 +70,7 @@ object Threads {
   )
 
   /** start a new pair */
-  def apply(pairNode: Int, pairNr: Int) = {
+  def apply(pairNode: Int, pairNr: Int): Threads = {
     val threadNr = pairNr * 2
     val nodeNr = pairNode * 2
     new Threads(

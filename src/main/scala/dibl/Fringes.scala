@@ -154,11 +154,12 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     .filter { case (sourceRow, _) => sourceRow > topTargetRow }
     .map(target => Link(source, target))
 
-  val leftFootSides = createLinks(leftTargetCol to leftTargetCol + 1).sortBy{case ((row,col),target) => (target,row)}
-  val leftNewPairs = leftOvers(Cell(0, 0))
+  val leftFootSides: Seq[Link] = createLinks(leftTargetCol to leftTargetCol + 1)
+    .sortBy{case ((row,col),target) => (target,row)}
+  val leftNewPairs: Seq[Link] = leftOvers(Cell(0, 0))
   targets.clear()
-  val rightFootSides = createLinks(rightTargetCol to(rightTargetCol - 1, -1))
-  val rightNewPairs = leftOvers(Cell(0, rightTargetCol + 2))
+  val rightFootSides: Seq[Link] = createLinks(rightTargetCol to(rightTargetCol - 1, -1))
+  val rightNewPairs: Seq[Link] = leftOvers(Cell(0, rightTargetCol + 2))
   private val requiredPairs = leftNewPairs ++ regularNewPairs ++ rightNewPairs
 
   /** Should the corresponding items of [[newPairs]] go before (or to the left) of the [[coreLinks]]
@@ -177,7 +178,7 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     * Each link has a unique source node.
     * The red links in the [[svgDoc]].
     */
-  val newPairs = for {i <- requiredPairs.indices} yield Link((0, i), requiredPairs(i)._2)
+  val newPairs: Seq[Link] = for {i <- requiredPairs.indices} yield Link((0, i), requiredPairs(i)._2)
 
   /** An SVG document with all links of the two-in-two-out directed graph,
     * The core links are black, incoming links along the top drawn are red,
@@ -187,7 +188,7 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     *
     * Changing the content after creation renders inconsistent results.
     */
-  lazy val svgDoc =
+  lazy val svgDoc: String =
   s"""<svg
       |  version='1.1'
       |  id='svg2'

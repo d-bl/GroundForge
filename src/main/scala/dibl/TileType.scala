@@ -16,7 +16,7 @@
 package dibl
 
 abstract class TileType {
-  def toSettings(m: M, stitchMatrix: Array[Array[String]], footside: String): Settings
+  def toSettings(m: M, stitchMatrix: Array[Array[String]]): Settings
   // TODO add method(s) for Pattern class
 
   def toChecker (lines: Array[String]): Array[String]
@@ -36,13 +36,13 @@ object TileType {
     "checker" -> Checker
   )
 
-  def apply(key: String) = stringToType.getOrElse(key,Checker)
+  def apply(key: String): TileType = stringToType.getOrElse(key,Checker)
 }
 
 object Checker extends TileType {
-  def toSettings(m: M, stitchMatrix: Array[Array[String]], footside: String): Settings =
-    new Settings(m, stitchMatrix, footside) {
-      def toOriginalPosition(row: Int, col: Int) =
+  def toSettings(m: M, stitchMatrix: Array[Array[String]]): Settings =
+    new Settings(m, stitchMatrix) {
+      def toOriginalPosition(row: Int, col: Int): Cell =
         ((row - margin + relRows) % relRows, col % relCols)
     }
 
@@ -55,9 +55,9 @@ object Checker extends TileType {
 }
 
 object Brick extends TileType {
-  def toSettings(m: M, stitchMatrix: Array[Array[String]], footside: String): Settings =
-    new Settings(m, stitchMatrix, footside) {
-      def toOriginalPosition(row: Int, col: Int) = {
+  def toSettings(m: M, stitchMatrix: Array[Array[String]]): Settings =
+    new Settings(m, stitchMatrix) {
+      def toOriginalPosition(row: Int, col: Int): Cell = {
         val brickOffset = ((row + margin + relRows) / relRows % 2) * (relCols / 2) + margin
         ((row - margin + relRows) % relRows, (brickOffset + col) % relCols)
       }

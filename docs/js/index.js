@@ -13,13 +13,10 @@ function load() {
   var shiftUp = document.getElementById('up').value
   var matrix = document.getElementById('matrix').value
   var stitches = document.getElementById('stitches').value
-  var footside = document.getElementById('footside').value
   var tileType = getValueOfDropDown('tiles', '')
 
-  if (!footside) footside = "ttctc"
-
   var startTime = new Date().getTime()
-  var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, tileType, footside)
+  var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, tileType)
   console.log ("D3Data.get elapse time "+(new Date().getTime() - startTime))
 
   var colors = ''
