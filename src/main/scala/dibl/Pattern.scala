@@ -44,7 +44,7 @@ object Pattern {
              offsetX,
              offsetY,
              lines,
-             lines.map(_.map(Matrix.relSourcesMap).toArray)
+             lines.map(_.map(Matrix.charToRelativeTuples).toArray)
            ).createPatch
 }
 
@@ -69,11 +69,11 @@ private class Pattern (tileMatrix: String,
                        relative: M
                       ){
 
-  val tt = TileType(tileType)
-  val tileRows = lines.length
-  val tileCols = lines(0).length
-  def toX(col: Int): Int = col * 10 + offsetX
-  def toY(row: Int): Int = row * 10 + offsetY
+  private val tt = TileType(tileType)
+  private val tileRows = lines.length
+  private val tileCols = lines(0).length
+  private def toX(col: Int): Int = col * 10 + offsetX
+  private def toY(row: Int): Int = row * 10 + offsetY
 
   /**
     * Cells of the matrix for which the dot should get a color.
@@ -160,7 +160,7 @@ private class Pattern (tileMatrix: String,
 
   val options = Array(s"matrix=${lines.mkString("%0D")}", s"tiles=$tileType")
   val url = "https://d-bl.github.io/GroundForge/index.html"
-  def createPatch =
+  def createPatch: String =
     s"""
        |  <text style='font-family:Arial;font-size:11pt'>
        |   <tspan x='${offsetX - 15}' y='${offsetY - 50}'>$tileType; ${tileRows}x$tileCols; ${lines.mkString(",")}</tspan>
@@ -168,7 +168,7 @@ private class Pattern (tileMatrix: String,
        |    <a xlink:href='$url?${options.mkString("&amp;")}'>pair/thread diagrams</a>
        |   </tspan>
        |  </text>
-       |  <g id ="$groupId">
+       |  <g id ='$groupId'>
        |${forAllCells(createTwoIn)}
        |${forAllCells(createNode)}
        |  </g>

@@ -28,11 +28,10 @@ object D3Data {
           shiftLeft: Int,
           shiftUp: Int,
           stitches: String,
-          tyleType: String,
-          footside: String = "ttctc"
+          tyleType: String
          ): js.Dictionary[js.Array[js.Dictionary[Any]]] = {
 
-    val pairDiagram = PairDiagram(Settings(str, tyleType,  rows, cols, shiftLeft, shiftUp, stitches, footside))
+    val pairDiagram = PairDiagram(Settings(str, tyleType,  rows, cols, shiftLeft, shiftUp, stitches))
     val threadDiagram = ThreadDiagram(pairDiagram)
     js.Dictionary(
       "pairNodes" -> toJS(pairDiagram.nodes),

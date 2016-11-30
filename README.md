@@ -1,10 +1,15 @@
-# [DEMO](https://d-bl.github.io/GroundForge/)
 _A toolbox to design bobbin lace grounds with matching diagrams._
 
+DEMO's
+======
+
+A [dressed up](https://d-bl.github.io/GroundForge/) version and a dressed down [docs/API](https://d-bl.github.io/GroundForge/API) version, the latter shows a starting point to configure your own web interface or embed just some of the diagrams on your own web page, though you may want to start with the `show-graph.js` of the dressed up version.
+
 [![Build Status](https://travis-ci.org/d-bl/GroundForge.svg?branch=master)](https://travis-ci.org/d-bl/GroundForge) 
-Note that building does not copy a [compile]d version of `src/test/scala` to `docs/js/matrix-graph.js` (part of the client-side demo), the other JavaScripts are not involved in the automated tests.
+Note that just building does not copy the compiled code to the demo's.
 
 [compile]: #compile-and-preview
+
 
 How it's Made / third party data and scripts
 ============================================
@@ -68,8 +73,6 @@ The code under `src/main/scala/dibl` has two classes with `@JSExport` annotation
 
 The scripts and page in `docs/API` are minimalistic versions of its siblings in `docs` and `docs/js`, the dressed up version adds decoration, event handling, configuration and some help. The development view for the thread and pair diagrams is a slightly less minimal page. For that purpose `src/main/resources/index-dev.html` is served by sbt as `http://localhost:12345/target/scala-2.11/classes/index-dev.html`, this page immediately reflects changes in the scala code though the simulation doesn't start.
 
-[API Demo](https://d-bl.github.io/GroundForge/API)
-
 
 Compile and preview
 -------------------
@@ -77,9 +80,9 @@ Compile and preview
 
 ### Requirements
 
-- The pages in the docs directory don't require any compilation until the publish phase described below.
+- The pages in the docs directory don't require any compilation
 - To compile `src/main/scala` to JavaScript: [sbt] 0.13.9 or higher
-- To run the tests with sbt (maven can execute the tests but uses JVM) [node.js]
+- To execute the tests: maven or sbt
 - For the developer view of the diagrams: a browser with proper SVG support, for example FireFox or Safari but not Internet Explorer.
   Chrome has proper SVG support but with the default settings it has intranet problems with the development view.
 
@@ -91,7 +94,7 @@ Compile and preview
 
 - Fork the project and make a local clone.
 - Don't push to the master branch, create branches and pull requests.
-- Go to the root of the local project and start the command `sbt '~fastOptJS'`
+- Go to the root of the local project and start the command `sbt '~fastOptJS'`, with `~` compilation is restarted as soon as a source is saved, without the compilation is executed once.
 - Monitor the result of your changes on `http://localhost:12345/target/scala-2.11/classes/index-dev.html`
   It is a dressed down version of the published page, with possibly experimental features added.
   Nodes and links invisible in the published page are shown faint for debugging purposes.
@@ -104,7 +107,7 @@ Important code conventions
 - Never catch exceptions in a `Try` as exceptions terminate the JavaScript. The tests might succeed with maven, but the JavaScript breaks. Prevent exceptions like illegal arguments and indexes and create a `Failure` for safe execution with JavaScript.
 - Restrict the use of raw js objects to the API level: the classes and methods annotated with `@JSExport`. This allows execution of test classes with another JVM than ScalaJS was built with.
 
-The applied Scala coding techniques are explained by this [course] up and including workshop 3. The main code doesn't use any io, and the hand full of files written by tests barely justify the clutter of closing files let alone using a library. So you can save the last task of the FileIO assignment for other purposes.
+The applied Scala coding techniques are explained by this [course] up and including workshop 3. The main code doesn't use any io, and the hand full of files written by test/demo classes don't justify using a library. So you can save the last task of the FileIO assignment for other purposes.
 
 [course]: https://github.com/DANS-KNAW/course-scala
 
@@ -112,8 +115,9 @@ The applied Scala coding techniques are explained by this [course] up and includ
 Unit tests
 ----------
 
-Both `sbt test` (using a JavaScript environment) and `mvn clean test` (using JVM) do execute the tests.
-Some classes under `src/test` are suffixed with `Demos` rather than `Spec` these runnable objects create SVG documents in a target directory for a visual check.
+Both `sbt test` and `mvn clean test` do execute the tests.
+Maven is much faster but uses JVM while the JS used by SBT is the actual target environment.
+Some classes under `src/test` are suffixed with `Demos` rather than `Spec` these runnable objects create SVG documents in a `target/test` directory for a visual check.
 
 
 Publish

@@ -25,6 +25,8 @@
         The "introduction" tab is a summary of the <a href="https://github.com/d-bl/GroundForge/wiki"
         >user guide</a>'s home page.
         You are invited to enhance the user guide so other users can benefit from your experience.
+        We'd also love to see <a href="https://github.com/d-bl/GroundForge/issues/50"
+        >your creations</a>.
     </p>
 </article>
 <form>
@@ -37,7 +39,7 @@
         <button class="inactiveTab" id="downloadTab" onclick="toggle('download');return false">download/print</button>
         &emsp14;&emsp14;
         <button class="inactiveTab" id="patternTab" onclick="toggle('pattern');return false">matrix</button>
-        <button class="inactiveTab" id="shiftTab" onclick="toggle('shift');setFootsideQuery();return false">shift footside</button>
+        <button class="inactiveTab" id="shiftTab" onclick="toggle('shift');return false">footsides</button>
         <button class="inactiveTab" id="hiddenTab" onclick="toggle('hidden');return false">hidden objects</button>
     </p>
     <fieldset id="introFieldSet" class="hide">
@@ -89,8 +91,6 @@
         <a href="?matrix=586- -4-5 5-21 -5-7&tiles=checker&rows=12&cols=9&&left=1&up=1&stitches=A3=tctc,D4=lctc,B4=rctc,A1=ctc,A2=tctc,C1=tctc,D2=rctc,B2=lctc,C3=ctc,C4=tctc"><img src="thumbs/001.png" title="pinwheel"></a>
 
             Many <a href="thumbs.html">more</a>...
-            We'd love to see <a href="https://github.com/d-bl/GroundForge/issues/50"
-            >your creations</a> too.
         </p>
     </fieldset>
     <fieldset id="patternFieldSet" class="hide">
@@ -167,8 +167,6 @@
     </fieldset>
     <fieldset id="stitchFieldSet" class="hide">
         <legend>Stitches</legend>
-        <label for="footside">Footside</label>
-        <input id="footside" name="footside" type="text" value="ttctc"/><br/>
         <label for="stitches">Hover over stitches in the pair diagram for IDs:</label>
         <textarea id="stitches" name="stitches" rows="2" cols="100" spellcheck="false"
 >B1=ttcttpc, A2=ltc, C2=rtc, B2=tc, C1=tplc, A1=tprc, B1=tcttpc, D2=tcttpc</textarea>
@@ -194,28 +192,24 @@
         </legend>
         <img src="images/shift.png" id="shift-legend" alt="legend" align="right">
         <p>
-            <label for="up">rows</label>
+            <label for="up">shift rows up by</label>
             <input id="up" name="left" min="0" value="1" type="number"/>
-            <label for="left">columns</label>
+            <label for="left">shift columns left by</label>
             <input id="left" name="up" min="0" value="1" type="number"/>
         </p>
         <p>
-            A proper footside is required to generate a thread diagram.
-            The current implementation to calculate a foot side is quite poor
-            so only some combinations of the values above may render a thread diagram.
+            Footsides may be messy because of long pairs pulling sections together.
+            Shifting rows may improve the top,
+            shifting columns may improve the left footside,
+            subsequently adjusting the width may fix the right footside.
+        </p>
+        <p>
+            Note that stitches need to be reconfigured after shifting either columns or rows.
         </p>
         <p>
             The grey rectangles show how the repeats take part in the generated diagrams.
             Both figures on the right show repeats shifted by a column resulting in different footsides.
-            The figures at the bottom show repeats shifted by a row,
-            what might fix or break the corners of the footsides and thus the thread diagram.
-        </p>
-        <p>
-            Exploring all the possibilities can be a tedious task.
-            Even for a browser, but for values up to 4x4 you can try all at once with the <a
-                id="footsideLink" href="footsides.html" target="_blank"
-            >foot sides</a> page, have some patience and make your choice.
-            Some patterns may not have a proper footside at all.
+            The figures at the bottom show repeats shifted by a row.
         </p>
     </fieldset>
     <fieldset id="hiddenFieldSet" class="hide">

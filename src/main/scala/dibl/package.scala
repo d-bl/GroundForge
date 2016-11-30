@@ -14,7 +14,6 @@
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
 
-import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
 import scala.language.postfixOps
 
@@ -22,9 +21,17 @@ package object dibl {
 
   // got these type aliases from http://stackoverflow.com/questions/15783837/beginner-scala-type-alias-in-scala-2-10
 
+  type Cell = (Int, Int)
+
+  def Cell(row: Int, col: Int): Cell = (row, col)
+
+  type Link = (Cell, Cell)
+
+  def Link(source: Cell, target: Cell): Link = (source, target)
+
   /** Tuples pointing to another cell in the matrix. */
   type SrcNodes = Array[(Int,Int)]
-  def SrcNodes(xs: (Int,Int)*) = Array(xs: _*)
+  def SrcNodes(xs: Cell*) = Array(xs: _*)
 
   /** Row in a matrix of tuples, each tuple points to another cell in the matrix. */
   type R = Array[SrcNodes]
@@ -37,12 +44,12 @@ package object dibl {
     def toS: String = left.deep.mkString(",").replace("Array","").replace("(((","\n(((").replace("(()","\n(()")
   }
 
-  type TargetToSrcs = (Int, (Int, Int))
-  def TargetToSrcs (target: Int, sources: (Int, Int)) = (target, sources)
+  type TargetToSrcs = (Int, Cell)
+  def TargetToSrcs (target: Int, sources: Cell): TargetToSrcs = (target, sources)
 
   /** see https://github.com/d-bl/GroundForge/blob/7a94b67/js/sample.js */
   type Props = Map[String,Any]
-  def Props(xs: (String, Any)*) = HashMap(xs: _*)
+  def Props(xs: (String, Any)*): Props = HashMap(xs: _*)
 
   /** Bridges the JavaScript way of accessing object properties like a HashMap
     * and the scala way allowing code-completion
@@ -78,16 +85,19 @@ package object dibl {
 
   // other tools
 
-  @tailrec
   def transparentLinks (nodes: Seq[Int],
                                 links: Seq[Props] = Seq[Props]()
                                ): Seq[Props] =
       if (nodes.length < 2) links
-      else transparentLinks(nodes.tail,links :+ Props(
-          "source" -> nodes.head,
-          "target" -> nodes.tail.head,
-          "border" -> true
-      ))
+      else {
+        nodes.zip(nodes.tail).map{case (source, target) =>
+          Props(
+            "source" -> source,
+            "target" -> target,
+            "border" -> true
+          )
+        }
+      }
 
   /**
     * Converts an HSL color value to RGB. Conversion formula

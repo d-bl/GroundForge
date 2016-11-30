@@ -21,7 +21,7 @@ object PatternDemos {
 
   def main(args: Array[String]): Unit = {
 
-    File("target/patterns/").createDirectory()
+    File("target/test/pattern/").createDirectory()
 
     {
       val patterns = new PatternSheet
@@ -29,7 +29,7 @@ object PatternDemos {
       patterns.add("-437 34-7", "bricks")
       patterns.add("5831 -4-7 3158 -7-4", "checker")
       patterns.add("4830 --77", "bricks")
-      File("target/patterns/rose.svg").writeAll(patterns.toSvgDoc())
+      File("target/test/pattern/rose.svg").writeAll(patterns.toSvgDoc())
     }
 
     {
@@ -47,13 +47,13 @@ object PatternDemos {
       patterns.add("5---5-5- -O-E-5-5", "bricks") // double length horizontal lines
 
       patterns.add("586- -4-5 5-21 -5-777", "checker") // reports an error
-      File("target/patterns/pattern-sheet.svg").writeAll(patterns.toSvgDoc())
+      File("target/test/pattern/pattern-sheet.svg").writeAll(patterns.toSvgDoc())
     }
 
     {
       val patterns = PatternSheet(1, "width='340' height='330'")
       patterns.add("586- -4-5 5-21 -5-7", "bricks")
-      File("target/patterns/minimal.svg").writeAll(patterns.toSvgDoc())
+      File("target/test/pattern/minimal.svg").writeAll(patterns.toSvgDoc())
     }
   }
 }

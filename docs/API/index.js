@@ -1,14 +1,14 @@
 function load() {
 
-  var matrix = "586-,-4-5,5-21,-5-7"
+  var matrix = "586- -789 2111 -4-4"
   var nrOfRows = 12
   var nrOfCols = 9
   var shiftLeft = 1
   var shiftUp = 1
-  var stitches = 'A3=tctc,D4=lctc,B4=rctc,A1=ctc,A2=tctc,C1=tctc,D2=rctc,B2=lctc,C3=ctc,C4=tctc'
+  var stitches = 'A3=ctc,D4=ctc'
 
   var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, "checker")
-  var patterns = new dibl.PatternSheet(2, "height='210mm' width='297mm'")
+  var patterns = new dibl.PatternSheet(2, "height='90mm' width='100mm'")
   patterns.add(matrix, "checker")
   var svg = (patterns.toSvgDoc().trim())
 

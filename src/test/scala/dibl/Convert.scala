@@ -15,7 +15,7 @@
 */
 package dibl
 
-import dibl.Matrix.relSourcesMap
+import dibl.Matrix.charToRelativeTuples
 
 object Convert {
 
@@ -33,8 +33,8 @@ object Convert {
 
   val nodeMap: Map[((Int, Int), (Int, Int)), Char] = {
     val keys = "0123456789ABCD".toCharArray
-    val invertedMap = keys.map(key => toTuple(relSourcesMap(key)) -> key)
-    val swappedInvertedMap = keys.map(key => swap(relSourcesMap(key)) -> key)
+    val invertedMap = keys.map(key => toTuple(charToRelativeTuples(key)) -> key)
+    val swappedInvertedMap = keys.map(key => swap(charToRelativeTuples(key)) -> key)
     (invertedMap ++ swappedInvertedMap).toMap
   }
 
