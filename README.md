@@ -73,8 +73,6 @@ The code under `src/main/scala/dibl` has two classes with `@JSExport` annotation
 
 The scripts and page in `docs/API` are minimalistic versions of its siblings in `docs` and `docs/js`, the dressed up version adds decoration, event handling, configuration and some help. The development view for the thread and pair diagrams is a slightly less minimal page. For that purpose `src/main/resources/index-dev.html` is served by sbt as `http://localhost:12345/target/scala-2.11/classes/index-dev.html`, this page immediately reflects changes in the scala code though the simulation doesn't start.
 
-[API Demo](https://d-bl.github.io/GroundForge/API)
-
 
 Compile and preview
 -------------------
