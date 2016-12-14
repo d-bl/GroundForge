@@ -44,13 +44,11 @@ object PairDiagram {
       nodes.indices.map(n => (nodes(n), n))
     }.toMap
 
-    val nodes = sources.map { case (row, col) =>
-      Props(
-        "title" -> s"Pair ${1 + nodeMap((row, col))}",
-        "y" -> 15 * row,
-        "x" -> 15 * col
-      )
-    } ++ targets.map { case (row, col) => Props(
+    val nodes = sourcesIndices.map(col => Props(
+      "title" -> s"Pair ${1 + nodeMap((0, col))}",
+      "y" -> 0,
+      "x" -> 15 * col
+    )) ++ targets.map { case (row, col) => Props(
       "title" -> settings.getTitle(row, col),
       "y" -> 15 * row,
       "x" -> 15 * col

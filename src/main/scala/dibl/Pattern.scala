@@ -27,22 +27,16 @@ object Pattern {
   *                   thick arrows indicate vertices traveling two cells
   * @param tileType how the tile is stacked to build a pattern: like a brick wall or a checker board
   * @param groupId the id of the to-be-cloned group of objects
-  * @param offsetX relative horizontal position on a sheet
-  * @param offsetY relative vertical position on a sheet
   */
   def apply(tileMatrix: String,
             tileType: String,
-            groupId: String = "GF0",
-            offsetX: Int = 80,
-            offsetY: Int = 120
+            groupId: String = "GF0"
            ): Try[String] = for {
             lines <- toValidMatrixLines(tileMatrix)
            } yield new Pattern(
              tileMatrix,
              tileType,
              groupId,
-             offsetX,
-             offsetY,
              lines,
              lines.map(_.map(Matrix.charToRelativeTuples).toArray)
            ).createPatch
@@ -53,8 +47,6 @@ object Pattern {
   * @param tileMatrix see apply method
   * @param tileType see apply method
   * @param groupId see apply method
-  * @param offsetX see apply method
-  * @param offsetY see apply method
   * @param lines the tileMatrix split into lines
   * @param relative a converted version of the tileMatrix, e.g.
   *                 '5' which has incoming vertices from the north east and north west
@@ -63,8 +55,6 @@ object Pattern {
 private class Pattern (tileMatrix: String,
                        tileType: String,
                        groupId: String = "GF0",
-                       offsetX: Int = 80,
-                       offsetY: Int = 120,
                        lines: Array[String],
                        relative: M
                       ){
@@ -72,8 +62,8 @@ private class Pattern (tileMatrix: String,
   private val tt = TileType(tileType)
   private val tileRows = lines.length
   private val tileCols = lines(0).length
-  private def toX(col: Int): Int = col * 10 + offsetX
-  private def toY(row: Int): Int = row * 10 + offsetY
+  private def toX(col: Int): Int = col * 10
+  private def toY(row: Int): Int = row * 10
 
   /**
     * Cells of the matrix for which the dot should get a color.
@@ -86,7 +76,7 @@ private class Pattern (tileMatrix: String,
     * To indicate which cells connect in that way, they get the same color.
     * Cells in the middle (having 4 vertices without wrapping) become grey.
     */
-  val needColor: Seq[(Int, Int)] = {
+  private val needColor: Seq[(Int, Int)] = {
 
     val linkCount = Array.fill(tileRows, tileCols)(0)
     for {
@@ -109,7 +99,7 @@ private class Pattern (tileMatrix: String,
     } yield (row, col)
   }
 
-  def createNode(row: Int, col: Int): String = {
+  private def createNode(row: Int, col: Int): String = {
     val i = needColor.indexOf(tt.toAbsTileIndices(row, col, tileRows, tileCols))
     val color = if (i < 0) "333333" else {
       val hue = (i + 0f) / needColor.size
@@ -123,7 +113,7 @@ private class Pattern (tileMatrix: String,
         |""".stripMargin
   }
 
-  def createTwoIn(targetRow: Int, targetCol: Int): String =
+  private def createTwoIn(targetRow: Int, targetCol: Int): String =
     (for{
       (relativeSourceRow, relativeSourceCol) <- relative(targetRow)(targetCol)
       sourceRow = relativeSourceRow + targetRow
@@ -137,7 +127,7 @@ private class Pattern (tileMatrix: String,
       (if (needSourceNode) createNode(sourceRow, sourceCol) else "")
     ).mkString
 
-  def forAllCells(func: (Int, Int) => String): String =
+  private def forAllCells(func: (Int, Int) => String): String =
     (for {
       row <- relative.indices
       col <- relative(row).indices
@@ -145,7 +135,7 @@ private class Pattern (tileMatrix: String,
       result <- func(row, col)
     } yield result).mkString
 
-  def clones: String = {
+  private def clones: String = {
     (for { // TODO somehow refactor computations into TileType
       dY <- List.range(start = 0, end = 270 - tileRows * 10, step = tileRows * 10)
       startX = if (tileType != "bricks" || 0 == dY % (tileRows * 20)) 0 else 5 * tileCols
@@ -158,13 +148,13 @@ private class Pattern (tileMatrix: String,
                 |""".stripMargin).tail.mkString
   }
 
-  val options = Array(s"matrix=${lines.mkString("%0D")}", s"tiles=$tileType")
-  val url = "https://d-bl.github.io/GroundForge/index.html"
-  def createPatch: String =
+  private val options = Array(s"matrix=${lines.mkString("%0D")}", s"tiles=$tileType")
+  private val url = "https://d-bl.github.io/GroundForge/index.html"
+  private def createPatch: String =
     s"""
        |  <text style='font-family:Arial;font-size:11pt'>
-       |   <tspan x='${offsetX - 15}' y='${offsetY - 50}'>$tileType; ${tileRows}x$tileCols; ${lines.mkString(",")}</tspan>
-       |   <tspan x='${offsetX - 15}' y='${offsetY - 30}' style='fill:#008;'>
+       |   <tspan x='15' y='-20'>$tileType; ${tileRows}x$tileCols; ${lines.mkString(",")}</tspan>
+       |   <tspan x='15' y='-40' style='fill:#008;'>
        |    <a xlink:href='$url?${options.mkString("&amp;")}'>pair/thread diagrams</a>
        |   </tspan>
        |  </text>
