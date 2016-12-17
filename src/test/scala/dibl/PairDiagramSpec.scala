@@ -21,19 +21,27 @@ class PairDiagramSpec extends FlatSpec with Matchers {
 
   "rose ground" should "have color and some mid markers" in {
     val triedS = Settings("5831 -4-7", "bricks", stitches = "A1=tctc,C1=ttc,A2=ttc,B2=pttc,C2=ctc,D2=ttc",
-      absRows = 8, absCols = 7, shiftLeft = 1, shiftUp = 3)
+      absRows = 12, absCols = 11, shiftLeft = 1, shiftUp = 3)
     val d = PairDiagram(triedS)
     d.nodes.size shouldNot be(0)
     d.links.size shouldNot be(0)
-    val nonTransparent = d.links.filter(_.getOrElse("border",false) == false)
-    nonTransparent.count(_ ("end") == "green") shouldNot be(0)
-    nonTransparent.count(_ ("start") == "green") shouldNot be(0)
-    nonTransparent.count(_ ("end") == "red") shouldNot be(0)
-    nonTransparent.count(_ ("start") == "red") shouldNot be(0)
-    nonTransparent.count(_ ("end") == "purple") shouldNot be(0)
-    nonTransparent.count(_ ("start") == "purple") shouldNot be(0)
-    nonTransparent.count(_ ("mid") == 0) shouldNot be(0)
-    nonTransparent.count(_ ("mid") == 1) shouldNot be(0)
+
+    // additional twists in the footsides
+    val titles = d.nodes
+      .map(_.title)
+      .filter(!_.startsWith("Pair"))
+      .mkString(", ")
+    titles should include ("l")
+    titles should include ("r")
+
+    d.links.count(_.getOrElse("end","").toString == "green") shouldNot be(0)
+    d.links.count(_.getOrElse("start","").toString == "green") shouldNot be(0)
+    d.links.count(_.getOrElse("end","").toString == "red") shouldNot be(0)
+    d.links.count(_.getOrElse("start","").toString == "red") shouldNot be(0)
+    d.links.count(_.getOrElse("end","").toString == "purple") shouldNot be(0)
+    d.links.count(_.getOrElse("start","").toString == "purple") shouldNot be(0)
+    d.links.count(_.getOrElse("mid","") == 1) shouldNot be(0)
+    d.links.count(_.getOrElse("mid","") == 0) shouldNot be(0)
   }
   "486- -486 6-48 86-4" should "not fail but does" in {
 

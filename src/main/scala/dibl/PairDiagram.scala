@@ -45,21 +45,29 @@ object PairDiagram {
       "title" -> s"Pair ${1 + nodeMap((0, col))}",
       "y" -> 0,
       "x" -> 15 * col
-    )) ++ targets.map { case (row, col) => Props(
-      "title" -> settings.getTitle(row, col),
-      "y" -> 15 * row,
-      "x" -> 15 * col
-    )}
+    )) ++ targets.map { case (row, col) =>
+      val lengths = linksByTarget(Cell(row,col)).map{case ((sRow,_),(tRow,_))=> tRow - sRow}
+      val lengthLeft = lengths(0) - 2
+      val lengthRight = lengths(1) - 2
+      val twists = if(lengthLeft > 0) "l" * lengthLeft else if (lengthRight > 0) "r" * lengthRight else ""
+      Props(
+        "title" -> (twists + settings.getTitle(row, col)),
+        "y" -> 15 * row,
+        "x" -> 15 * col
+      )
+    }
 
     val cols = Set(2, settings.absM(0).length - 2)
     val links =
       linksByTarget.values.flatten.map { case ((sourceRow, sourceCol), (targetRow, targetCol)) =>
-        val sourceStitch = settings.getStitch(sourceRow, sourceCol)
-        val targetStitch = settings.getStitch(targetRow, targetCol)
+        val sourceNode = nodeMap((sourceRow, sourceCol))
+        val targetNode = nodeMap((targetRow, targetCol))
+        val sourceStitch = nodes(sourceNode).title.replaceAll(" .*","").replaceAll("t","lr")
+        val targetStitch = nodes(targetNode).title.replaceAll(" .*","").replaceAll("t","lr")
         val toLeftOfTarget = settings.absM(targetRow)(targetCol)(0) == (sourceRow, sourceCol)
         Props(
-          "source" -> nodeMap((sourceRow, sourceCol)),
-          "target" -> nodeMap((targetRow, targetCol)),
+          "source" -> sourceNode,
+          "target" -> targetNode,
           "start" -> (if (sourceRow < 2) "pair" else marker(sourceStitch)),
           "mid" -> (if (sourceRow < 2) 0 else midMarker(sourceStitch, targetStitch, toLeftOfTarget)),
           "end" -> marker(targetStitch),
