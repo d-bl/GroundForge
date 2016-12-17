@@ -95,26 +95,35 @@ object Settings {
     * @param cols The number of columns in a tile.
     * @return A matrix with stitch instructions.
     */
-  private def toStitchMatrix(str: String,
-                             rows: Int,
-                             cols: Int
-                            ): Array[Array[String]] = {
-    val result = Array.fill(rows, cols)("ctc")
-    str.toLowerCase()
-      .split("[^a-z0-9=]+") // split on sequences of delimiting characters (white space, punctuation and anything unknown)
-      .map(_.split("=")) // split each component into key value pairs
-      .filter(_.length == 2) // omit key=value=something arrays
+  def toStitchMatrix(str: String,
+                     rows: Int,
+                     cols: Int
+                    ): Array[Array[String]] = {
+    val keyValues: Array[Array[String]] = str
+      .toLowerCase()
+      .split("[^a-z0-9=]+")
+      .map(_.split("="))
+    val default = if (keyValues.isEmpty || keyValues.head.length != 1)
+      "ctc" // cloth stitch as default
+    else keyValues.head.head // the first "pair" is a value without key
+      .replaceAll("[^lrtcp]", "") // drop illegal characters
+      .replaceAll("^[p]*$", "ctc") // default if nothing but a pin remains
+
+    val result = Array.fill(rows, cols)(default)
+    keyValues
+      .filter(_.length == 2) // omit key=value=something "pairs"
       .filter(_ (0).matches("[a-z]+[0-9]+")) // the key should be a valid grid id
       .filter(_ (1).matches("[lrctp]+")) // the value should contain valid stitch symbols
       .filter(_ (1).matches(".*c.*")) // a stitch should have at least a cross (2nd thread over 3rd)
-      .filter(_ (1).replaceAll("[^p]","").length < 2) // a stitch should have more than a pin
-      .foreach { kv =>
-        val key = kv(0)
-        val col = key(0).toInt - 'a'.toInt
-        val row = key(1).toInt - '1'.toInt
-        if (row < rows && col < cols)
-          result(row)(col) = kv(1)
+      .filter(_ (1).replaceAll("[^p]", "").length < 2) // a stitch should have more than a pin
+      .map { kv =>
+        val key = kv.head
+        val col = key.head.toInt - 'a'.toInt
+        val row = key.tail.toInt - 1
+        (row, col, kv(1))
       }
+      .filter { case (row, col, value) => row >= 0 && row < rows && col >= 0 && col < cols}
+      .foreach { case (row, col, value) => result(row)(col) = value}
     result
   }
 }
