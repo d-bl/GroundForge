@@ -15,8 +15,6 @@
 */
 package dibl
 
-import java.lang.Math._
-
 import scala.collection.immutable.HashMap
 import scala.reflect.ClassTag
 import scala.util.{Failure, Success, Try}
@@ -67,7 +65,7 @@ object Matrix {
       Array.tabulate(m(0).length)(targetCol =>
         for ((relSrcRow, relSrcCol) <- m(targetRow)(targetCol))
           // not allowing zero helps creating footsides, should be done there
-          yield (max(1, targetRow + relSrcRow), max(1, targetCol + relSrcCol))
+          yield (Math.max(1, targetRow + relSrcRow), Math.max(1, targetCol + relSrcCol))
       )
     )
   }

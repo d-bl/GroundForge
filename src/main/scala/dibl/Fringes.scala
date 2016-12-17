@@ -113,9 +113,18 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
   private val targets = mutable.Stack[Cell]()
 
   private def popLinks(sourceRow: Int, sourceCol: Int): Seq[Link] = {
+    val requiredNr = requiredNrOfLinks(sourceRow, sourceCol)
     val requiredAt = Cell(sourceRow, sourceCol)
+
+    // debug
+    if (targets.size > requiredNr && targets.size > 1) {
+      val stackHeadLength = targets.map { case (row, _) => row - sourceRow }.head
+      if (stackHeadLength > 2)
+        println(s"head $stackHeadLength, size ${targets.size}, required $requiredNr ")
+    }
+
     for {
-      _ <- 1 to requiredNrOfLinks(sourceRow, sourceCol)
+      _ <- 1 to requiredNr
       if targets.nonEmpty
     } yield {
       Link(requiredAt, targets.pop())
@@ -155,7 +164,7 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     .map(target => Link(source, target))
 
   val leftFootSides: Seq[Link] = createLinks(leftTargetCol to leftTargetCol + 1)
-    .sortBy{case ((row,col),target) => (target,row)}
+    .sortBy{case ((row,_),target) => (target,row)}
   val leftNewPairs: Seq[Link] = leftOvers(Cell(0, 0))
   targets.clear()
   val rightFootSides: Seq[Link] = createLinks(rightTargetCol to(rightTargetCol - 1, -1))

@@ -18,11 +18,8 @@ package dibl
 import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
 
-case class ThreadDiagram private(nodes: Seq[Props],
-                                 links: Seq[Props])
-
 object ThreadDiagram {
-  def apply(pairDiagram: PairDiagram): ThreadDiagram = {
+  def apply(pairDiagram: Diagram, maxNrOfNodes: Int): Diagram = {
 
     val pairLinks = pairDiagram.links.map(l => (l.source, l.target))
     val instructions = pairDiagram.nodes.map(_.instructions)
@@ -38,8 +35,8 @@ object ThreadDiagram {
       val next = nextPossibleStitches(availablePairs.keys.toArray)
       if (next.isEmpty)
         (availablePairs, nodes, links)
-      else if (nodes.length > 1000)
-        (availablePairs, nodes :+ whoops(s"Eternal loop? ${nodes.length} nodes, ${links.length} links."), links)
+      else if (nodes.length > maxNrOfNodes)
+        (availablePairs, nodes :+ whoops(s"Too many nodes: ${nodes.length} nodes, ${links.length} links."), links)
       else
         createRows(next, availablePairs, nodes, links)
     } else {
@@ -85,7 +82,7 @@ object ThreadDiagram {
     }
 
     if (pairLinks.isEmpty)
-      ThreadDiagram(Seq(whoops("invalid pair diagram")), Seq[Props]())
+      Diagram(Seq(whoops("invalid pair diagram")), Seq[Props]())
     else {
       val startPins = pairNodeNrToPairNr(pairDiagram.nodes)
       val startPairNodeNrs = startPins.keys.toArray
@@ -97,7 +94,7 @@ object ThreadDiagram {
         threadStartNodes
       )
       val (allNodes,allLinks) = Threads.bobbins(availablePairs.values, nodes, links)
-      ThreadDiagram(
+      Diagram(
         allNodes,
         markStartLinks(allLinks, allNodes) ++ transparentLinks(nodesByThreadNr)
       )

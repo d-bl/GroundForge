@@ -100,7 +100,6 @@ diagram.showGraph = function(args) {
 
     var links = svgContainer.selectAll(".path").data(args.links).enter().append("svg:path")
         .attr("class", function(d) { return d.thread ? "link thread" + d.thread : "link" })
-        .attr("id",function(d,i) { return "link_" + i; })
         .style('opacity', function(d) { return d.border || d.toPin ? fullyTransparant : 1})
         .style('stroke', '#000')
         .style('fill', 'none')
@@ -174,9 +173,10 @@ diagram.showGraph = function(args) {
                         if (isIE || isMobileMac) diagram.markLinks(links)
                         if (args.onAnimationEnd) args.onAnimationEnd()
                     }
+    function strength(link){ return link.weak ? 2 : 50 }
     var sim = d3.forceSimulation(args.nodes)
         .force("charge", d3.forceManyBody().strength(-1000))
-        .force("link", d3.forceLink(args.links).strength(50).distance(12).iterations(30))
+        .force("link", d3.forceLink(args.links).strength(strength).distance(12).iterations(30))
         .force("center", d3.forceCenter(args.viewWidth / 2, args.viewHeight / 2))
         .alpha(0.0035)
         .on("tick", simTicked)

@@ -29,15 +29,15 @@ function load() {
 
   diagram.showGraph({
     container: '#pairs',
-    nodes: data.pairNodes,
-    links: data.pairLinks,
+    nodes: data.pairNodes(),
+    links: data.pairLinks(),
     viewWidth: 440,
     viewHeight: 260
   })
   diagram.showGraph({
     container: '#threads',
-    nodes: data.threadNodes,
-    links: data.threadLinks,
+    nodes: data.threadNodes(),
+    links: data.threadLinks(),
     threadColor: '#color',
     palette: colors,
     viewWidth: 440,

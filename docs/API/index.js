@@ -15,8 +15,8 @@ function load() {
   document.getElementById("sheet").innerHTML = svg
   diagram.showGraph({
     container: '#pairs',
-    nodes: data.pairNodes,
-    links: data.pairLinks
+    nodes: data.pairNodes(),
+    links: data.pairLinks()
   })
   diagram.showGraph({
     container: '#threads',

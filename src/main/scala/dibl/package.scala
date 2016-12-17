@@ -19,6 +19,8 @@ import scala.language.postfixOps
 
 package object dibl {
 
+  case class Diagram (nodes: Seq[Props], links: Seq[Props])
+
   // got these type aliases from http://stackoverflow.com/questions/15783837/beginner-scala-type-alias-in-scala-2-10
 
   type Cell = (Int, Int)
@@ -94,7 +96,8 @@ package object dibl {
           Props(
             "source" -> source,
             "target" -> target,
-            "border" -> true
+            "border" -> true,
+            "weak" -> true
           )
         }
       }

@@ -14,27 +14,27 @@
   <div id="threads"></div>
   <script>
     fullyTransparant = 0.07
-    var matrix = "5831 -4-7"
-    var nrOfRows = 8
-    var nrOfCols = 7
-    var shiftLeft = 3
-    var shiftUp = 1
-    var stitches = 'A1=tc,C1=tc,A2=tc,B2=ptc,C2=tc,D2=tc'
+    var matrix = "5-K-5-K- -L-O-L-O 5-L---H- -E-H-E-H"
+    var nrOfRows = 22
+    var nrOfCols = 15
+    var shiftLeft = 0
+    var shiftUp = 0
+    var stitches = 'tttcttc'
     var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, "bricks")
     diagram.showGraph({
       container: '#pairs',
       width: 300,
       height: 400,
-      nodes: data.pairNodes,
-      links: data.pairLinks,
+      nodes: data.pairNodes(),
+      links: data.pairLinks(),
     })
     diagram.showGraph({
       threadColor: '#colorpicker',
       container: '#threads',
       width: 400,
       height: 400,
-      nodes: data.threadNodes,
-      links: data.threadLinks,
+      nodes: data.threadNodes(),
+      links: data.threadLinks(),
     })
   </script>
 </body>

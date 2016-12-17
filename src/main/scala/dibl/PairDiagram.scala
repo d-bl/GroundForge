@@ -18,13 +18,10 @@ package dibl
 import scala.annotation.tailrec
 import scala.util.Try
 
-case class PairDiagram private(nodes: Seq[Props],
-                               links: Seq[Props])
-
 object PairDiagram {
 
-  def apply(triedSettings: Try[Settings]): PairDiagram = if (triedSettings.isFailure)
-    PairDiagram(Seq(Props("title" -> triedSettings.failed.get.getMessage, "bobbin" -> true)), Seq[Props]())
+  def apply(triedSettings: Try[Settings]): Diagram = if (triedSettings.isFailure)
+    Diagram(Seq(Props("title" -> triedSettings.failed.get.getMessage, "bobbin" -> true)), Seq[Props]())
   else {
     val settings: Settings = triedSettings.get
     val fringes = new Fringes(triedSettings.get.absM)
@@ -54,6 +51,7 @@ object PairDiagram {
       "x" -> 15 * col
     )}
 
+    val cols = Set(2, settings.absM(0).length - 2)
     val links =
       linksByTarget.values.flatten.map { case ((sourceRow, sourceCol), (targetRow, targetCol)) =>
         val sourceStitch = settings.getStitch(sourceRow, sourceCol)
@@ -64,10 +62,11 @@ object PairDiagram {
           "target" -> nodeMap((targetRow, targetCol)),
           "start" -> (if (sourceRow < 2) "pair" else marker(sourceStitch)),
           "mid" -> (if (sourceRow < 2) 0 else midMarker(sourceStitch, targetStitch, toLeftOfTarget)),
-          "end" -> marker(targetStitch)
+          "end" -> marker(targetStitch),
+          "weak" -> (cols.contains(sourceCol) || targetRow - sourceRow > 1)
         )
       }.toSeq ++ transparentLinks(sourcesIndices.toArray)
-    new PairDiagram(nodes, links)
+    Diagram(nodes, links)
   }
 
   /** Y and V are ascii art representations of sections in the two-in-two out graph
@@ -76,6 +75,7 @@ object PairDiagram {
     * @param linksByTarget a map of nodes to their two links coming into the node
     * @return idem, with the parallel legs of the Y's replaced by a single node
     */
+  //noinspection ZeroIndexToHead
   def replaceYsWithVs(linksByTarget: Map[Cell, Seq[Link]]): Map[Cell, Seq[Link]] = {
 
     val plaitSources: Set[Cell] = linksByTarget.values
