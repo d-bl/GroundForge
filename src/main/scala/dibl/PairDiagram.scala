@@ -36,6 +36,18 @@ object PairDiagram {
     val linksByTarget: Map[Cell,Seq[Link]] = replaceYsWithVs(plainLinks.groupBy { case (_, target) => target })
     val targets: Seq[Cell] = linksByTarget.keys.toSeq
 
+    def footsideTwists(row: Int, col: Int) = {
+      val lengths = linksByTarget(Cell(row, col))
+        .map { case ((sRow, _), (tRow, _)) =>
+          if (sRow < 2) 0 else tRow - sRow - 2
+        }
+      //noinspection ZeroIndexToHead
+      val twists =
+        "l" * Math.max(0, lengths(0)) +
+          "r" * Math.max(0, lengths(1))
+      twists
+    }
+
     val nodeMap: Map[Cell, Int] = {
       val nodes = sources ++ targets
       nodes.indices.map(n => (nodes(n), n))
@@ -46,12 +58,8 @@ object PairDiagram {
       "y" -> 0,
       "x" -> 15 * col
     )) ++ targets.map { case (row, col) =>
-      val lengths = linksByTarget(Cell(row,col)).map{case ((sRow,_),(tRow,_))=> tRow - sRow}
-      val lengthLeft = lengths(0) - 2
-      val lengthRight = lengths(1) - 2
-      val twists = if(lengthLeft > 0) "l" * lengthLeft else if (lengthRight > 0) "r" * lengthRight else ""
       Props(
-        "title" -> (twists + settings.getTitle(row, col)),
+        "title" -> (footsideTwists(row, col) + settings.getTitle(row, col)),
         "y" -> 15 * row,
         "x" -> 15 * col
       )

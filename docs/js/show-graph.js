@@ -173,7 +173,7 @@ diagram.showGraph = function(args) {
                         if (isIE || isMobileMac) diagram.markLinks(links)
                         if (args.onAnimationEnd) args.onAnimationEnd()
                     }
-    function strength(link){ return link.weak ? 2 : 50 }
+    function strength(link){ return link.weak ? 5 : 50 }
     var sim = d3.forceSimulation(args.nodes)
         .force("charge", d3.forceManyBody().strength(-1000))
         .force("link", d3.forceLink(args.links).strength(strength).distance(12).iterations(30))
