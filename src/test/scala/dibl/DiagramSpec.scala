@@ -17,14 +17,17 @@ package dibl
 
 import org.scalatest.{FlatSpec, Matchers}
 
-class PairDiagramSpec extends FlatSpec with Matchers {
+class DiagramSpec extends FlatSpec with Matchers {
 
-  "rose ground" should "have color and some mid markers" in {
-    val triedS = Settings("5831 -4-7", "bricks", stitches = "A1=tctc,C1=ttc,A2=ttc,B2=pttc,C2=ctc,D2=ttc",
-      absRows = 12, absCols = 11, shiftLeft = 1, shiftUp = 3)
-    val d = PairDiagram(triedS)
-    d.nodes.size shouldNot be(0)
-    d.links.size shouldNot be(0)
+  "rose ground pair diagram" should "have color and some mid markers" in {
+
+    val d = PairDiagram(Settings(
+      "5831 -4-7", "bricks",
+      stitches = "ttc,A1=tctc,B2=pttc,C2=ctc",
+      absRows = 12, absCols = 11,
+      shiftLeft = 1, shiftUp = 3)
+    )
+    verifyLinks(d)
 
     // additional twists in the footsides
     val titles = d.nodes
@@ -43,7 +46,22 @@ class PairDiagramSpec extends FlatSpec with Matchers {
     d.links.count(_.getOrElse("mid","") == 1) shouldNot be(0)
     d.links.count(_.getOrElse("mid","") == 0) shouldNot be(0)
   }
-  "486- -486 6-48 86-4" should "not fail but does" in {
 
+  "5- bricks" should "create diagrams recursively" in {
+
+    val pairDiagram = PairDiagram("tctc", ThreadDiagram(PairDiagram(
+      Settings("5-", "bricks", stitches = "tctc", absRows = 6, absCols = 6)
+    )))
+    verifyLinks(ThreadDiagram(pairDiagram))
+    verifyLinks(pairDiagram)
+  }
+
+  private def verifyLinks(p: Diagram) = {
+    p.nodes.size shouldNot be(0)
+    p.links.size shouldNot be(0)
+    p.links.exists(_.source >= p.nodes.size) shouldBe false
+    p.links.exists(_.source < 0) shouldBe false
+    p.links.exists(_.target >= p.nodes.size) shouldBe false
+    p.links.exists(_.target < 0) shouldBe false
   }
 }

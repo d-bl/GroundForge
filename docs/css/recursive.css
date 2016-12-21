@@ -1,0 +1,10 @@
+#logo img, #footer img { border: none; }
+#logo img { padding-left: 4em; }
+#logo img { float: right }
+#d0, #d1, #d2, #d3, #d4 {
+  width: 45em;
+  height: 20em;
+  border: solid 1px #AAA;
+  padding 0;
+  overflow: hidden
+}

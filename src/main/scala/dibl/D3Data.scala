@@ -18,6 +18,13 @@ package dibl
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExport
 
+/** An object with links and nodes for a pair diagram and thread diagram.
+  * Evaluation of the thread diagram only takes place when accessed.
+  * Accessing just the thread diagram will only skip the conversion to raw JavaScript
+  * of the pair diagram.
+  *
+  * @param pairDiagram nodes and links for a color coded pair diagram
+  */
 class D3Data (pairDiagram: Diagram) {
 
   lazy val threadDiagram = ThreadDiagram(pairDiagram, maxNrOfNodes = 2000)
@@ -50,7 +57,7 @@ class D3Data (pairDiagram: Diagram) {
 @JSExport
 object D3Data {
 
-  /** Creates nodes and links from values in form fields of docs/index.html
+  /** Creates a pair and thread diagrams from values in form fields of docs/index.html
     *
     * @param compactMatrix see legend on matrix tab
     * @param tileType see values for drop down on matrix tab
@@ -59,10 +66,7 @@ object D3Data {
     * @param cols see patch size tab
     * @param shiftLeft see footside tab
     * @param shiftUp see footside tab
-    * @return An object with links and nodes for a pair diagram and thread diagram.
-    *         Evaluation of the thread diagram only takes place when accessed.
-    *         Accessing just the thread diagram will only skip the conversion to raw JavaScript
-    *         of the pair diagram.
+    * @return an object with a pair diagram and thread diagram.
     */
   @JSExport
   def get(compactMatrix: String, rows: Int, cols: Int, shiftLeft: Int, shiftUp: Int, stitches: String, tileType: String
@@ -70,4 +74,14 @@ object D3Data {
   new D3Data(PairDiagram(Settings(
     compactMatrix, tileType, rows, cols, shiftLeft, shiftUp, stitches
   )))
+
+  /** Creates a new pair and thread diagram from a thread diagram assuming threads are pairs.
+    *
+    * @param d3Data object with a thread diagram
+    * @param stitch the stitch that replaces each cross and twist
+    * @return
+    */
+  @JSExport
+  def get(stitch: String, d3Data: D3Data): D3Data =
+    new D3Data(PairDiagram(stitch, d3Data.threadDiagram))
 }

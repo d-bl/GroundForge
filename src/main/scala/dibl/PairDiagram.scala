@@ -20,6 +20,30 @@ import scala.util.Try
 
 object PairDiagram {
 
+  def apply(stitch: String, treadDiagram: Diagram): Diagram = {
+    val nodes = treadDiagram
+      .nodes
+      .filter(!_.getOrElse("pin","false").toString.toBoolean)
+      .filter(!_.getOrElse("bobbin","false").toString.toBoolean)
+      .map(p => Props(
+        "x" -> p.x,
+        "y" -> p.y,
+        "title" -> (if (p.title.startsWith("thread "))
+                        p.title.replace("thread","Pair")
+                    else s"$stitch - ?")
+      ))
+    val links = treadDiagram
+      .links
+      .filter(!_.getOrElse("border","false").toString.toBoolean)
+      .filter(_.source < nodes.size)
+      .filter(_.target < nodes.size)
+      .map(p => Props(
+        "source" -> p.source,
+        "target" -> p.target
+      ))
+    Diagram(nodes, links)
+  }
+
   def apply(triedSettings: Try[Settings]): Diagram = if (triedSettings.isFailure)
     Diagram(Seq(Props("title" -> triedSettings.failed.get.getMessage, "bobbin" -> true)), Seq[Props]())
   else {

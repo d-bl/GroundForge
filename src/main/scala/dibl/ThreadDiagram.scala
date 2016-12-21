@@ -19,7 +19,7 @@ import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
 
 object ThreadDiagram {
-  def apply(pairDiagram: Diagram, maxNrOfNodes: Int): Diagram = {
+  def apply(pairDiagram: Diagram, maxNrOfNodes: Int = 4000): Diagram = {
 
     val pairLinks = pairDiagram.links.map(l => (l.source, l.target))
     val instructions = pairDiagram.nodes.map(_.instructions)
