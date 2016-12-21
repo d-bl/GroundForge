@@ -2,18 +2,26 @@ var data = [0,1,2,3,4]
 function getRadioVal(radioName) {
   var rads = document.getElementsByName(radioName);
 
-  for(var rad in rads) {
-    if(rads[rad].checked)
-      return rads[rad].value;
+  for(var i=0; i<rads.length; i++) {
+    if(rads[i].checked)
+      return rads[i].value;
   }
   return null;
 }
 function pairDiagram(value) {
   var p = value.split(";")
-  var matrix = p[0]
-  var tiling = p[1]
-  var nrOfRows = p[2]
-  var nrOfCols = p[3]
+  if (p.length == 4) {
+      var matrix = p[0]
+      var tiling = p[1]
+      var nrOfRows = p[2]
+      var nrOfCols = p[3]
+  } else {
+      var matrix = document.getElementById("matrix").value
+      var tiling = document.getElementById("tiles").value
+      var nrOfRows = document.getElementById("rows").value
+      var nrOfCols = document.getElementById("cols").value
+  }
+
   var shiftLeft = 0
   var shiftUp = 0
   var stitch = document.getElementById("s1").value
@@ -23,12 +31,17 @@ function pairDiagram(value) {
   diagram.showGraph({
     container: '#d0',
     nodes: data[1].pairNodes(),
-    links: data[1].pairLinks()
+    links: data[1].pairLinks(),
+    viewWidth: 360,
+    viewHeight: 160
   })
   diagram.showGraph({
     container: '#d1',
     nodes: data[1].threadNodes(),
-    links: data[1].threadLinks()
+    links: data[1].threadLinks(),
+    threadColor: '#color',
+    viewWidth: 360,
+    viewHeight: 160
   })
 }
 function threadDiagram(n) {
@@ -38,6 +51,9 @@ function threadDiagram(n) {
   diagram.showGraph({
     container: '#d' + n,
     nodes: data[n].threadNodes(),
-    links: data[n].threadLinks()
+    links: data[n].threadLinks(),
+    threadColor: '#color',
+    viewWidth: 660,
+    viewHeight: 300
   })
 }
