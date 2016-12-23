@@ -20,14 +20,17 @@
 <p>
 </p>
     When limiting the choices to the three most common stitches we get 3+9+27 thread diagrams for one start pattern,
-    add the ctctc frequently used in free-hand lace, the numbers become 4+16+64.
+    add the ctctc with or without an additional twist (frequently used in Alpine free-hand lace where normal Torchon uses pins),
+    the numbers become 5+25+125. No repeated twist are possible, so further variations
+    can only drop a left or right twist or make the Alpine mini plait longer.
 <p>
     First select the start pattern, then show the diagrams top to bottom with the desired stitches.
     The <a href="index.html"
-           >main</a> page explains the options in more details.
+           >main</a> page explains the options for the configurable start pattern
+    on the matrix tab and patch size tab.
 </p>
 <form onsubmit="return false">
-    <input type="radio" name="p" value="5- -5;checker;8;5"><img src="thumbs/214.png">
+    <input type="radio" name="p" value="5- -5;checker;8;5" checked><img src="thumbs/214.png">
     <input type="radio" name="p" value="88 11;checker;8;4"><img src="thumbs/181.png">
     <input type="radio" name="p" value="">
     <div class="matrixOpts">
@@ -51,9 +54,10 @@
             </p>
         </div>
     </div>
-    <input id="color" name="color" class="jscolor" value="CC0000" pattern="[a-fA-F0-9]{6}"/>
-
-    <br>
+    <p>
+        <input id="color" name="color" class="jscolor" value="CC0000" pattern="[a-fA-F0-9]{6}"/>
+        <label for="color">Select a square thread start to apply the color.</label>
+    </p>
 
     <label for="s1">stitches</label>
     <input id="s1" name="s" spellcheck="false" value="tc">
