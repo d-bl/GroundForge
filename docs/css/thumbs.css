@@ -1,5 +1,4 @@
 body { padding-left: 1em; padding-right: 4em; }
-div { display: inline-block; padding-right: 2em; }
 img { border: solid 1px #AAA; width:78; height:78;}
-#logo img, #footer img { border: 0; }
-#logo { float: right; }
+div { display: inline-block; padding-right: 2em; }
+

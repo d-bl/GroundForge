@@ -1,10 +1,14 @@
 body { max-width: 57.5em;  padding: 1em; margin-left: auto; margin-right: auto; }
+#logo img { padding-left: 1em; }
+#logo img, #footer img { border: none; }
+#logo img { float: right; }
+.jscolor { width: 3.7em; font-family: "Courier New", "Monospace"; font-size: 0.7em; }
+
 #pairs, #threads { width: 27.5em; height: 15em; }
 fieldset, .tabs { width: 52em; }
 fieldset { margin: 0; margin-bottom: 1em; padding-left: 2em; padding-right: 2em; }
 #sheet { width: 56.4em; height: 27em; }
 input { width: 3em; }
-.jscolor { width: 3.7em; font-family: "Courier New", "Monospace"; font-size: 0.7em; }
 ul { padding-left: 1.5em; }
 
 #sheet { overflow: scroll; resize:both; } /* IE-9 doesn't resize */
@@ -13,8 +17,6 @@ ul { padding-left: 1.5em; }
 a img { overflow: hidden; border: solid 1px #AAA; }
 
 a img { vertical-align: middle; margin-bottom: 1em; }
-#logo img, #footer img { border: none; }
-#logo img { padding-left: 4em; }
 div, input, textarea, #browsers { vertical-align: top;}
 form { margin-bottom: 1em }
 #sheet { margin-top: 0.2em; }
@@ -36,7 +38,6 @@ form { margin-bottom: 1em }
 .inactiveTab { background-color: #EEEEEE; }
 legend { display: none; }
 
-#logo img { float: right }
 #pattern, #stitchFiedSet { float: left; margin-right:0.4em; }
 #pairs, form { clear: both }
 #diagrams { clear: left; margin-top: 0.5em; }

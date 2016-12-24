@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title lang="en">GroundForge : A web based toolbox to design bobbin lace grounds with matching diagrams.</title>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/logo.css"/>
     <script src="js/d3.v4.min.js" type="text/javascript"></script>
     <script src="js/show-graph.js" type="text/javascript"></script>
     <script src="js/matrix-graphs.js" type="text/javascript"></script>
@@ -90,7 +91,8 @@
 
         <a href="?matrix=586- -4-5 5-21 -5-7&tiles=checker&rows=12&cols=9&&left=1&up=1&stitches=tctc,D4=lctc,B4=rctc,A1=ctc,D2=rctc,B2=lctc,C3=ctc&color1=000000&color2=000000&color3=000000&color4=000000&color5=000000&color6=000000&color7=000000&color8=000000&color9=000000&color10=000000&color11=000000&color12=000000&color13=000000&color14=000000&color15=000000&color16=000000"><img src="thumbs/001.png" title="pinwheel"></a>
 
-            Many <a href="thumbs.html">more</a>...
+            More <a href="thumbs.html">thumbnails</a> and
+            <a href="recursive.html">recursive</a> patterns.
         </p>
     </fieldset>
     <fieldset id="patternFieldSet" class="hide">
@@ -161,7 +163,7 @@
             To save your favorite sequence: submit and copy-paste the URL fragment.
         </p>
         <p>
-            <input id="color" name="color" class="jscolor" value="CC0000" pattern="[a-fA-F0-9]{6}"/>
+            <input id="color" name="color" class="jscolor" value="00CC11" pattern="[a-fA-F0-9]{6}"/>
             <label for="color"> apply with the square start of a thread, not saved by "prepare bookmark".</label>
         </p>
     </fieldset>
@@ -269,14 +271,13 @@
 </form>
 <div id="diagrams">
     <p>
-        Occasionally the pair diagram (left) and/or thread diagram (right) may have slightly tangled edges, pull a stitch to fix.
+        Occasionally the pair diagram (left) and/or thread diagram (right) may have slightly tangled edges,
+        pull a stitch to fix or examine.
+        At the botttom a pattern sheet with variants of the pair diagram
+        with pins at regular, possibly different, positions.
     </p>
     <div id="pairs"><img src="images/busy.gif" title="busy bobbins"></div>
     <div id="threads"><img src="images/tipped-over.png" title="tiipped over pillow"></div>
-    <p>
-        Below a pattern sheet with variant(s) of the pair diagram with pins at regular, possibly different, positions.
-        Download and edit for more variations.
-    </p>
     <div id="sheet"></div>
 </div>
 

@@ -1,17 +1,15 @@
-body { max-width: 50em;  padding: 1em; margin-left: auto; margin-right: auto; }
-#logo img, #footer img { border: none; }
-#logo img { padding-left: 4em; }
-#logo img { float: right }
+body { max-width: 45em;  padding: 1em; margin-left: auto; margin-right: auto; }
+.jscolor { width: 3.7em; font-family: "Courier New", "Monospace"; font-size: 0.7em; }
 
 #d0, #d1, #d2, #d3, #d4 {
-  width: 45em;
+  width: 44.8em;
   height: 20em;
   padding 0;
   overflow: hidden
 }
 #d0, #d1 {
   display: inline-block;
-  width: 22.3em;
+  width: 22.2em;
   height: 10em;
 }
 .matrixOpts, form img, #d0, #d1, #d2, #d3, #d4{
@@ -19,13 +17,13 @@ body { max-width: 50em;  padding: 1em; margin-left: auto; margin-right: auto; }
 }
 .matrixOpts {
   padding: 0.2em;
+  float: right;
 }
 .matrixOpts p{
   margin: 0;
 }
 #matrix {
-  margin-left: 0.5em;
-  margin-right: 0.5em;
+  margin-left: 0.2em;
 }
 .matrixOpts, .matrixOpts div {
   display: inline-block;
@@ -38,8 +36,5 @@ input[type="number"] {
   width: 2.5em;
   text-align: right;
 }
-#color {
-  display: inline-block;
-  width: 4em;
-}
+
 
