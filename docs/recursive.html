@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title lang="en">GroundForge : Recursive diagrams.</title>
-    <link rel="stylesheet" type="text/css" href="css/recursive.css"/>
     <script src="js/d3.v4.min.js" type="text/javascript"></script>
     <script src="js/show-graph.js" type="text/javascript"></script>
     <script src="js/matrix-graphs.js" type="text/javascript"></script>
     <script src="js/recursive.js" type="text/javascript"></script>
     <script src="js/jscolor.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/legend.css"/>
+    <link rel="stylesheet" type="text/css" href="css/recursive.css"/>
 </head>
 <body>
 <a id="logo"
@@ -18,23 +19,39 @@
 <h1>GroundForge</h1>
 <p><em>Uses a thread diagram as pair diagram to create another thread diagram.</em></p>
 <p>
+    Create Binche, Flanders or paris from a plain Torchon (respectively ctctc, ctct or ct with the first thumbnail),
+    and many more.</p>
+<h2>Numbers</h2>
+<p>
 </p>
-    When limiting the choices to the three most common stitches we get 3+9+27 thread diagrams for one start pattern,
-    add the ctctc with or without an additional twist (frequently used in Alpine free-hand lace where normal Torchon uses pins),
+    When limiting the choices to the three most common stitches we get 3+9+27 thread diagrams for one start pattern.
+    Extending the choice of stitches with ctctc with or without an additional twist
+    (frequently used in traditional Alpine free-hand lace where normal Torchon uses pins),
     the numbers become 5+25+125. No repeated twist are possible, so further variations
     can only drop a left or right twist or make the Alpine mini plait longer.
 <p>
-    First select the start pattern, then show the diagrams top to bottom with the desired stitches.
-    The <a href="index.html"
-           >main</a> page explains the options for the configurable start pattern
-    on the matrix tab and patch size tab.
+<h2>Usage</h2>
+<p>
+    The main page explains the paramters on the matrix tab, patch size tab and footside tab.
 </p>
+<ul>
+    <li>
+        Select a thumbnail to set the parameters or copy values from the
+        <a href="index.html">main</a> page or <a href="thumbs.html">thumbnail</a> page.
+    </li>
+    <li>
+        Show the diagrams top to bottom with the desired stitches.
+    </li>
+</ul>
 <form onsubmit="return false">
-    <input type="radio" name="p" value="5- -5;checker;8;5" checked><img src="thumbs/214.png">
-    <input type="radio" name="p" value="88 11;checker;8;4"><img src="thumbs/181.png">
-    <input type="radio" name="p" value="">
-    <div class="matrixOpts">
-        <textarea id="matrix" name="matrix" rows="4" cols="4" spellcheck="false" onchange="updatePatternSheet()"
+
+    <img src="thumbs/214.png" onclick="setMatrix('5-%0D-5;checker;8;5;0;0')">
+    <img src="thumbs/181.png" onclick="setMatrix('88%0D11;checker;8;4;0;0')">
+    <img src="thumbs/015.png" onclick="setMatrix('5-O-H-%0D-L-5-O E-5-E-;bricks;9;8;0;0')">
+    <img src="thumbs/002.png" onclick="setMatrix('6868%0D---4%0D2AA1%0D-7-7;bricks;10;7;0;0')">
+    <img src="thumbs/425.png" onclick="setMatrix('5831%0D-4-7%0D6868%0D-4-4;checker;10;7;0;0')">
+    <div class="matrixOpts" data-title="hello">
+        <textarea id="matrix" name="matrix" rows="5" cols="9" spellcheck="false"
         >5-</textarea>
         <div>
             <p>
@@ -46,13 +63,22 @@
             </p>
             <p>
                 <label for="rows">rows:</label>
-                <input id="rows" name="rows" min="3" value="7" type="number"/>
+                <input id="rows" name="rows" min="3" value="7" max="30" type="number"/>
             </p>
             <p>
                 <label for="cols">columns:</label>
-                <input id="cols" name="cols" min="3" value="5" type="number"/>
+                <input id="cols" name="cols" min="3" value="5" max="30" type="number"/>
+            </p>
+            <p>
+                <label for="shiftLeft">shift left:</label>
+                <input id="shiftLeft" name="rows" min="0" value="0" type="number"/>
+            </p>
+            <p>
+                <label for="shiftUp">shift up:</label>
+                <input id="shiftUp" name="cols" min="0" value="0" type="number"/>
             </p>
         </div>
+
     </div>
     <p>
         <input id="color" name="color" class="jscolor" value="CC0000" pattern="[a-fA-F0-9]{6}"/>
@@ -60,7 +86,11 @@
     </p>
 
     <label for="s1">stitches</label>
-    <input id="s1" name="s" spellcheck="false" value="tc">
+    <input id="s1"
+           name="s"
+           value="tc A1=tc"
+           pattern="([lrt]?[c]+)+[lrt]?([;,]? +[A-K][0-9]=([lrt]?[c]+)+[lrt]?)*"
+           title="a default stitch and/or stitches per cell">
     <button onclick="pairDiagram(getRadioVal('p'))">show</button>
     <div>
         <div id="d0"></div>
@@ -68,12 +98,20 @@
     </div>
 
     <label for="s2">just one stitch</label>
-    <input id="s2" name="s" spellcheck="false" value="ctc">
+    <input id="s2"
+           name="s"
+           spellcheck="false"
+           value="ctc"
+           pattern="([lrt]?[c]+)+[lrt]?" title="lrct">
     <button onclick="threadDiagram(2)">show</button>
     <div id="d2"></div>
 
     <label for="s3">just one stitch</label>
-    <input id="s3" name="s" spellcheck="false" value="tctc">
+    <input id="s3"
+           name="s"
+           spellcheck="false"
+           value="tctc"
+           pattern="([lrt]?[c]+)+[lrt]?" title="lrct">
     <button onclick="threadDiagram(3)">show</button>
     <div id="d3"></div>
 </form>

@@ -2,21 +2,7 @@ body { max-width: 50em;  padding: 1em; margin-left: auto; margin-right: auto; }
 #logo img, #footer img { border: none; }
 #logo img { padding-left: 4em; }
 #logo img { float: right }
-#d0, #d1, #d2, #d3, #d4, .matrixOpts, form img {
-  border: solid 1px #AAA;
-}
-.matrixOpts {
-  padding: 0;
-  padding-right: 0.5em;
-}
-form img {
-  vertical-align: text-bottom;
-}
-textarea {
-  margin: 0;
-  border-left: 0;
-  border-top: 0;
-}
+
 #d0, #d1, #d2, #d3, #d4 {
   width: 45em;
   height: 20em;
@@ -28,17 +14,32 @@ textarea {
   width: 22.3em;
   height: 10em;
 }
-.matrixOpts, .matrixOpts div{
-  display: inline-block;
+.matrixOpts, form img, #d0, #d1, #d2, #d3, #d4{
+  border: solid 1px #AAA;
 }
-#color {
-  display: block;
-  width: 4em;
+.matrixOpts {
+  padding: 0.2em;
 }
 .matrixOpts p{
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
 }
-#rows, #cols {
-  width: 2em;
+#matrix {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
+.matrixOpts, .matrixOpts div {
+  display: inline-block;
+}
+.matrixOpts label {
+  display:inline-block;
+  width: 4em;
+}
+input[type="number"] {
+  width: 2.5em;
+  text-align: right;
+}
+#color {
+  display: inline-block;
+  width: 4em;
+}
+

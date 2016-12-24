@@ -8,22 +8,25 @@ function getRadioVal(radioName) {
   }
   return null;
 }
-function pairDiagram(value) {
-  var p = value.split(";")
-  if (p.length == 4) {
-      var matrix = p[0]
-      var tiling = p[1]
-      var nrOfRows = p[2]
-      var nrOfCols = p[3]
-  } else {
-      var matrix = document.getElementById("matrix").value
-      var tiling = document.getElementById("tiles").value
-      var nrOfRows = document.getElementById("rows").value
-      var nrOfCols = document.getElementById("cols").value
+function setMatrix(value) {
+  var p = unescape(value).split(";")
+  if (p.length == 6) {
+      document.getElementById("matrix").value = p[0]
+      document.getElementById("tiles").value = p[1]
+      document.getElementById("rows").value = p[2]
+      document.getElementById("cols").value = p[3]
+      document.getElementById("shiftLeft").value = p[4]
+      document.getElementById("shiftUp").value = p[5]
   }
+}
+function pairDiagram(value) {
+  var matrix = document.getElementById("matrix").value
+  var tiling = document.getElementById("tiles").value
+  var nrOfRows = document.getElementById("rows").value
+  var nrOfCols = document.getElementById("cols").value
+  var shiftLeft = document.getElementById("shiftLeft").value
+  var shiftUp = document.getElementById("shiftUp").value
 
-  var shiftLeft = 0
-  var shiftUp = 0
   var stitch = document.getElementById("s1").value
   data[1] = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitch, tiling)
   document.getElementById('d0').innerHTML = ""
