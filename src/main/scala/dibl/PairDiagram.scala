@@ -20,26 +20,43 @@ import scala.util.Try
 
 object PairDiagram {
 
-  def apply(stitch: String, treadDiagram: Diagram): Diagram = {
-    val nodes = treadDiagram
+  def apply(stitch: String, threadDiagram: Diagram): Diagram = {
+    val targetsBySource: Map[Int, Seq[Int]] = threadDiagram.links
+      .groupBy(_.source)
+      .map { case (source, links1) =>
+        (source, links1.map(_.target))
+      }
+
+    //noinspection ZeroIndexToHead
+    def sameTargets(targets: Seq[Int]): Boolean = targets.size > 1 && targets(0) == targets(1)
+
+    val hasDuplicateLinksOut = targetsBySource
+      .filter(s2t => sameTargets(s2t._2))
+      .keySet
+
+    @tailrec
+    def realTarget(target: Int): Int =
+      if (hasDuplicateLinksOut.contains(target))
+        realTarget(targetsBySource(target).head)
+      else
+        target
+
+    val links = threadDiagram
+      .links
+      .filter(link => !link.getOrElse("border","false").toString.toBoolean)
+      .filter(link => !hasDuplicateLinksOut.contains(link.source))
+      .map(link => Props(
+        "source" -> link.source,
+        "target" -> realTarget(link.target)
+      ))
+    val nodes = threadDiagram
       .nodes
-      .filter(!_.getOrElse("pin","false").toString.toBoolean)
-      .filter(!_.getOrElse("bobbin","false").toString.toBoolean)
       .map(p => Props(
         "x" -> p.x,
         "y" -> p.y,
         "title" -> (if (p.title.startsWith("thread "))
-                        p.title.replace("thread","Pair")
-                    else s"$stitch - ?")
-      ))
-    val links = treadDiagram
-      .links
-      .filter(!_.getOrElse("border","false").toString.toBoolean)
-      .filter(_.source < nodes.size)
-      .filter(_.target < nodes.size)
-      .map(p => Props(
-        "source" -> p.source,
-        "target" -> p.target
+          p.title.replace("thread","Pair")
+        else s"$stitch - ?")
       ))
     Diagram(nodes, links)
   }

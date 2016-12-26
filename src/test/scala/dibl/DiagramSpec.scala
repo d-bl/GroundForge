@@ -52,13 +52,36 @@ class DiagramSpec extends FlatSpec with Matchers {
     val pairDiagram = PairDiagram("tctc", ThreadDiagram(PairDiagram(
       Settings("5-", "bricks", stitches = "tctc", absRows = 6, absCols = 6)
     )))
-    verifyLinks(ThreadDiagram(pairDiagram))
     verifyLinks(pairDiagram)
+    verifyLinks(ThreadDiagram(pairDiagram))
   }
 
+  it should "reduce twists" in {
+
+    val threadDiagram = ThreadDiagram(PairDiagram(
+      Settings("5-", "bricks", stitches = "tttc", absRows = 6, absCols = 6)
+    ))
+    val pairFromThread = PairDiagram("tc", threadDiagram)
+    verifyLinks(pairFromThread)
+    verifyLinks(threadDiagram)
+    hasDuplicateLinks(threadDiagram.links) shouldNot be(
+    hasDuplicateLinks(pairFromThread.links)
+    )
+    hasDuplicateLinks(threadDiagram.links) shouldNot be(0)
+    hasDuplicateLinks(pairFromThread.links) shouldBe 0
+
+    verifyLinks(ThreadDiagram(pairFromThread))
+    pairFromThread.links.count(n =>
+      pairFromThread.nodes(n.source).title.startsWith("Pair")
+    ) shouldNot be(0)
+  }
+
+  private def hasDuplicateLinks(links:  Seq[Props]) =
+    links.groupBy(l => (l.source, l.target)).count(_._2.size > 1)
+
   private def verifyLinks(p: Diagram) = {
-    p.nodes.size shouldNot be(0)
     p.links.size shouldNot be(0)
+    p.nodes.size shouldNot be(0)
     p.links.exists(_.source >= p.nodes.size) shouldBe false
     p.links.exists(_.source < 0) shouldBe false
     p.links.exists(_.target >= p.nodes.size) shouldBe false
