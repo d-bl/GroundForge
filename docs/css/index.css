@@ -1,23 +1,29 @@
 body { max-width: 57.5em;  padding: 1em; margin-left: auto; margin-right: auto; }
-#logo img { padding-left: 1em; }
-#logo img, #footer img { border: none; }
-#logo img { float: right; }
 .jscolor { width: 3.7em; font-family: "Courier New", "Monospace"; font-size: 0.7em; }
 
 #pairs, #threads { width: 27.5em; height: 15em; }
 fieldset, .tabs { width: 52em; }
 fieldset { margin: 0; margin-bottom: 1em; padding-left: 2em; padding-right: 2em; }
 #sheet { width: 56.4em; height: 27em; }
-input { width: 3em; }
+#sizeFieldSet input, #shiftFieldSet input { width: 3em; }
 ul { padding-left: 1.5em; }
 
-#sheet { overflow: scroll; resize:both; } /* IE-9 doesn't resize */
-#pairs, #threads { overflow: hidden } /* resize combined with zooming and panning is buggy in firefox */
+#sheet {
+  resize:both; /* IE-9 doesn't resize */
+  overflow: scroll;
+}
+#pairs, #threads {
+   /* resize combined with zooming and panning is buggy in firefox */
+  overflow: hidden
+}
 #pairs, #threads, #sheet, fieldset { border: solid 1px #AAA; }
-a img { overflow: hidden; border: solid 1px #AAA; }
-
-a img { vertical-align: middle; margin-bottom: 1em; }
-div, input, textarea, #browsers { vertical-align: top;}
+#thumbnailsFieldSet img {
+  overflow: hidden;
+  border: solid 1px #AAA;
+  vertical-align: middle;
+  margin-bottom: 1em;
+}
+div, input, textarea { vertical-align: top;}
 form { margin-bottom: 1em }
 #sheet { margin-top: 0.2em; }
 #pairs, #threads { padding: 0 }

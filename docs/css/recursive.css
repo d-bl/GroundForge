@@ -1,7 +1,7 @@
-body { max-width: 45em;  padding: 1em; margin-left: auto; margin-right: auto; }
+body { max-width: 45em; padding: 1em; margin-left: auto; margin-right: auto; }
 .jscolor { width: 3.7em; font-family: "Courier New", "Monospace"; font-size: 0.7em; }
 
-#d0, #d1, #d2, #d3, #d4 {
+#d0, #d1, #d2, #d3 {
   width: 44.8em;
   height: 20em;
   padding 0;
@@ -12,7 +12,7 @@ body { max-width: 45em;  padding: 1em; margin-left: auto; margin-right: auto; }
   width: 22.2em;
   height: 10em;
 }
-.matrixOpts, form img, #d0, #d1, #d2, #d3, #d4{
+.matrixOpts, form img, #d0, #d1, #d2, #d3{
   border: solid 1px #AAA;
 }
 .matrixOpts {
@@ -32,7 +32,7 @@ body { max-width: 45em;  padding: 1em; margin-left: auto; margin-right: auto; }
   display:inline-block;
   width: 4em;
 }
-input[type="number"] {
+.matrixOpts input[type="number"] {
   width: 2.5em;
   text-align: right;
 }

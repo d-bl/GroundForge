@@ -1,3 +1,11 @@
-#logo img { padding-left: 1em; }
-#logo img, #footer img { border: none; }
-#logo img { float: right; }
+#logo img {
+  padding-left: 1em;
+  float: right;
+}
+#logo img,
+#footer img {
+  border: none;
+}
+#browsers {
+  vertical-align: top;
+}

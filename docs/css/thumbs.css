@@ -1,4 +1,21 @@
-body { padding-left: 1em; padding-right: 4em; }
-img { border: solid 1px #AAA; width:78; height:78;}
-div { display: inline-block; padding-right: 2em; }
+article {
+  padding: 1em;
+  max-width: 45em;
+}
+#footer{
+  padding-left: 1em;
+}
+#thumbs, #logo img {
+  padding-left: 1em;
+  padding-right: 4em; /* need space for the tooltip */
+}
+.drag img {
+  border: solid 1px #AAA;
+  width:78px;
+  height:78px;
+}
+div {
+  display: inline-block;
+  padding-right: 2em;
+}
 
