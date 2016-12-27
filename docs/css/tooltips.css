@@ -12,20 +12,23 @@
     color: #000;
     background: #CCC;
 }
-.matrixOpts:hover .legend,
+#matrixOpts:hover .legend,
 .drag:hover span {
     display: inline;
 }
 /* variations */
-.legend {
-    margin-top: 6.6em;
-    margin-left: -22em;
-    width: 335px;
-}
 .drag span {
     margin-top: 66px;
     margin-left: -12px;
     width:auto;
     border-top-left-radius: 0;
     font-family: Monospace;
+}
+body, form, #matrix {
+    position: relative;
+}
+.legend {
+    top: 128px;
+    right: 2px;
+    width: 335px;
 }

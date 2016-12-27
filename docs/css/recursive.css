@@ -12,29 +12,30 @@ body { max-width: 45em; padding: 1em; margin-left: auto; margin-right: auto; }
   width: 22.2em;
   height: 10em;
 }
-.matrixOpts, form img, #d0, #d1, #d2, #d3{
+form img, #d0, #d1, #d2, #d3{
   border: solid 1px #AAA;
 }
-.matrixOpts {
+#matrixOpts {
   padding: 0.2em;
   float: right;
 }
-.matrixOpts p{
+#matrixOpts p{
   margin: 0;
 }
 #matrix {
   margin-left: 0.2em;
 }
-.matrixOpts, .matrixOpts div {
+#matrixOpts, #matrixOpts div {
   display: inline-block;
 }
-.matrixOpts label {
+#matrixOpts label {
   display:inline-block;
   width: 4em;
 }
-.matrixOpts input[type="number"] {
+#matrixOpts input[type="number"] {
   width: 2.5em;
   text-align: right;
+  margin: 0;
 }
 
 

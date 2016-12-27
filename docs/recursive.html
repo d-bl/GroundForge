@@ -42,10 +42,10 @@
         <a href="thumbs.html">thumbnail</a> page.
     </li>
     <li>
-        Show the diagrams top to bottom with the desired stitches.
+        Show the diagrams step by step with the desired stitches.
     </li>
     <li>
-        Note that repeated twists cause trouble for the next step.
+        The number of repeated twists does't affect the next step.
     </li>
     <li>
         With large patterns and complex stitches,
@@ -54,8 +54,8 @@
 </ul>
 <form onsubmit="return false">
 
-    <div class="matrixOpts">
-        <p><em>Parameters</em></p>
+    <fieldset id="matrixOpts">
+        <legend>Parameters</legend>
         <textarea id="matrix" name="matrix" rows="5" cols="9" spellcheck="false"
         >5-</textarea>
         <div>
@@ -90,10 +90,10 @@
             the patch size tab for rows/coloms
             and the footside tab for the shift parameters.
             <br>
-            A matrix defines the working order of the stitches:
+            The cheat sheet for the matrix that defines which pairs are used for a stitch:
             <img src="images/arrows.png">
         </span>
-    </div>
+    </fieldset>
     <a href="" onclick="return false"><img src="thumbs/214.png" onclick="setMatrix('5-%0D-5;checker;8;5;0;0')"></a>
     <a href="" onclick="return false"><img src="thumbs/181.png" onclick="setMatrix('88%0D11;checker;8;4;0;0')"></a>
     <a href="" onclick="return false"><img src="thumbs/015.png" onclick="setMatrix('5-O-H-%0D-L-5-O%0DE-5-E-;bricks;9;8;0;0')"></a>
@@ -104,35 +104,36 @@
         <label for="color">Select a square thread start to apply the color and examine its path through the pattern.</label>
     </p>
 
-    <label for="s1">stitches</label>
+    <label for="s1">Step 1: stitches</label>
     <input id="s1"
            name="s"
-           value="tc A1=tc"
+           spellcheck="false"
+           value="ct A1=ct"
            pattern="([lrt]?[c]+)+[lrt]?([;,]? +[A-K][0-9]=([lrt]?[c]+)+[lrt]?)*"
-           title="a default stitch and/or stitches per cell">
+           title="A default stitch and/or stitches per cell. Hover over the pair diagram to find the ID of a stitch">
     <button onclick="pairDiagram(getRadioVal('p'))">show</button>
     <div>
         <div id="d0"></div>
         <div id="d1"></div>
     </div>
 
-    <label for="s2">just one stitch</label>
+    <label for="s2">Step 2: just one stitch</label>
     <input id="s2"
            name="s"
            spellcheck="false"
            value="ctc"
            pattern="([lrt]?[c]+)+[lrt]?"
-           title="valid characters are 'lrct': left twist, right twist, twist, cross; no repeated twists">
+           title="Valid characters are 'ctlr': cross, twist, left twist, right twist. No repeated twists">
     <button onclick="threadDiagram(2)">show</button>
     <div id="d2"></div>
 
-    <label for="s3">just one stitch</label>
+    <label for="s3">Step 3: just one stitch</label>
     <input id="s3"
            name="s"
            spellcheck="false"
            value="tctc"
            pattern="([lrt]?[c]+)+[lrt]?"
-           title="valid characters are 'lrct': left twist, right twist, twist, cross; no repeated twists">
+           title="Valid characters are 'ctlr': cross, twist, left twist, right twist. No repeated twists">
     <button onclick="threadDiagram(3)">show</button>
     <div id="d3"></div>
 </form>
