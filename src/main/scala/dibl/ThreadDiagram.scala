@@ -23,7 +23,7 @@ object ThreadDiagram {
 
     val pairLinks = pairDiagram.links.map(l => (l.source, l.target))
     val instructions = pairDiagram.nodes.map(_.instructions)
-    val xy: Seq[Props] = pairDiagram.nodes.map(n => Props("x"->n.x*4, "y"->n.y*4))
+    val xy: Seq[Props] = pairDiagram.nodes.map(n => Props("x"->n.x*2, "y"->n.y*2))
 
     @tailrec
     def createRows(possibleStitches: Seq[TargetToSrcs],
