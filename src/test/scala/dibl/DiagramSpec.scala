@@ -23,8 +23,8 @@ class DiagramSpec extends FlatSpec with Matchers {
 
     val d = PairDiagram(Settings(
       "5831 -4-7", "bricks",
-      stitches = "ttc,A1=tctc,B2=pttc,C2=ctc",
-      absRows = 12, absCols = 11,
+      stitches = "ttc,A1=tctc,B2=pttc,C2=tctc, C1=ctc",
+      absRows = 9, absCols = 8,
       shiftLeft = 1, shiftUp = 3)
     )
     verifyLinks(d)
@@ -34,8 +34,8 @@ class DiagramSpec extends FlatSpec with Matchers {
       .map(_.title)
       .filter(!_.startsWith("Pair"))
       .mkString(", ")
-    titles should include ("l")
-    titles should include ("r")
+    // titles should include ("l")
+    // titles should include ("r")
 
     d.links.count(_.getOrElse("end","").toString == "green") shouldNot be(0)
     d.links.count(_.getOrElse("start","").toString == "green") shouldNot be(0)
@@ -45,6 +45,24 @@ class DiagramSpec extends FlatSpec with Matchers {
     d.links.count(_.getOrElse("start","").toString == "purple") shouldNot be(0)
     d.links.count(_.getOrElse("mid","") == 1) shouldNot be(0)
     d.links.count(_.getOrElse("mid","") == 0) shouldNot be(0)
+  }
+
+  "spiders" should "work with shift 1" in {
+
+    val pairDiagram = PairDiagram("tctc", ThreadDiagram(PairDiagram(
+      Settings("6-2A158D,-5-22566,5-5--5--", "bricks", stitches = "ctc", absRows = 6, absCols = 8, shiftLeft = 1, shiftUp = 1)
+    )))
+    verifyLinks(pairDiagram)
+    verifyLinks(ThreadDiagram(pairDiagram))
+  }
+
+  it should "work without shift" in {
+
+    val pairDiagram = PairDiagram("tctc", ThreadDiagram(PairDiagram(
+      Settings("6-2A158D,-5-22566,5-5--5--", "bricks", stitches = "ctc", absRows = 6, absCols = 8)
+    )))
+    verifyLinks(pairDiagram)
+    verifyLinks(ThreadDiagram(pairDiagram))
   }
 
   "5- bricks" should "create diagrams recursively" in {

@@ -85,7 +85,7 @@ object PairDiagram {
       //noinspection ZeroIndexToHead
       val twists =
         "l" * Math.max(0, lengths(0)) +
-          "r" * Math.max(0, lengths(1))
+          "r" * Math.max(0, if(lengths.size<2) 0 else lengths(1))
       twists
     }
 
@@ -136,7 +136,7 @@ object PairDiagram {
   def replaceYsWithVs(linksByTarget: Map[Cell, Seq[Link]]): Map[Cell, Seq[Link]] = {
 
     val plaitSources: Set[Cell] = linksByTarget.values
-      .filter (twoIn => twoIn(0) == twoIn(1) )
+      .filter (twoIn => twoIn.size > 2 && twoIn(0) == twoIn(1) )
       .map (twoIn => twoIn(0)._1 )
       .toSeq
       .toSet
@@ -152,7 +152,7 @@ object PairDiagram {
     linksByTarget
       .filter { case (target, _) => !plaitSources.contains(target)}
       .map { case (target, twoIn) =>
-        if (twoIn(0) != twoIn(1))
+        if (twoIn.size < 2 || twoIn(0) != twoIn(1))
           (target, twoIn)
         else {
           val leftSource: Cell = twoIn(1)._1
