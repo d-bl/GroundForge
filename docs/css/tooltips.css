@@ -28,7 +28,8 @@ body, form, #matrix {
     position: relative;
 }
 .legend {
-    top: 128px;
-    right: 2px;
+    top: -17.5em;
+    right: 13em;
     width: 335px;
+    border-bottom-right-radius: 0;
 }
