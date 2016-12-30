@@ -1,10 +1,19 @@
 _Customize a generated pattern to your own taste._
 
+Table of contents
+-----------------
+
+* [Editor Requirements](#editor-requirements)
+* [The procedure](#the-procedure)
+  * [Step by step for InkScape v0.91](#step-by-step-for-inkscape-v091)
+  * [CorelDRAW X8 preparations](#coreldraw-x8-preparations)
+* [Screenshots for InkScape v0.91](#screenshots-for-inkscape-v091)
+* [Screenshots for CorelDraw X8](https://github.com/d-bl/GroundForge/wiki/Reshape-Using-Clones#screenshots-for-coreldraw-x8)
 
 Editor Requirements
 -------------------
 
-The SVG editor should have "full" support for clones or `<use>` elements in SVG terminology. "Full" means that the clones are not plain copies but reflect changes made to the original. For example InkPad imports clones properly but doesn't have the "full" support. On the other hand does [CorelDRAW] have the full suport of clones, but doesn't import them correctly. So in case of CorelDRAW you need some preparations.
+The SVG editor should have "full" support for clones or `<use>` elements in SVG terminology. "Full" means that the clones are not plain copies but reflect changes made to the original. For example InkPad imports clones properly but doesn't have the "full" support. On the other hand does CorelDRAW have the full suport of clones, but doesn't import them correctly. So in case of CorelDRAW you need some preparations.
 
 The editor should have a mode to manipulate objects, and a mode to deal with nodes on objects.
 
@@ -33,7 +42,7 @@ All tiles (or repeats) in a patch change along with changes made to the slightly
 * Less than four adjacent lines on the selected dot? Hold down the shift key when selecting the second or even third dot of the same colour.
 * Drag the dots with the mouse or nudge them with arrow keys. Five time an arrow key in InkScape is a full grid position. One time shift+arrow is two grid positions.
 
-### CorelDRAW X8 preparations.
+### [CorelDRAW] X8 preparations.
 
 The patch witch very faint dots should be reconstructed manually from the single repeat with the bright dots.
 
