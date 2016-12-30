@@ -1,17 +1,15 @@
-_User guide for [GroundForge], a web based toolkit to design your own grounds._
+_User guide for [GroundForge], a web based toolbox to design bobbin lace grounds or braids with matching diagrams._
 
 Designing Bobbin Lace grounds
 =============================
 
-The toolkit is based on a set of configurable matching diagrams. The pages listed in the sidebar provide tutorials, tips and tricks to use the diagrams. Though screenshots and procedures may be geared to the free [InkScape], other SVG compatible [editors] will have similar functions. Please feel welcome to improve the wiki pages for this toolbox: create a github account and while logged in you will have access to buttons to edit pages or create new ones.
+The toolkit is based on a set of configurable matching diagrams. The pages listed in the sidebar provide tutorials, tips and tricks to use the diagrams. Please feel welcome to improve the wiki pages for this toolbox: create a github account and while logged in you will have access to buttons to edit pages or create new ones.
 
 Varying stitches and playing with the patches on a downloaded pattern sheet renders a myriad of variations for a single pattern. Shortening [Jane Atkinson]'s [citation] of the Bauhaus school of art: _experiment, play, think. Some experiments may result in innovations, but even when reinventing wheels it is your own discovery._
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
 [Jane Atkinson]: http://www.contemporarylace.com/
 [citation]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/bauhaus.png
-[InkScape]: https://inkscape.org
-[editors]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
 
 
 Purpose of the Diagrams
@@ -20,11 +18,11 @@ Purpose of the Diagrams
 Each type of diagram plays its own role while designing bobbin lace grounds. The creative process involves several decisions, each playing a role in an iterative process.
 The diagram generator can relief much tedious work that would go into these steps in ink and paper times and reduce (but not eliminate) the trial and error of experimental patches. In short:
 
-* Start with selecting a diagram from the thumbnails (figure **a**) or the advanced options.
+* Start with selecting a diagram from the thumbnails (figure **a**) or change stitches and other options in other tabs.
 * Specify stitches for figure **b** and **c**.
 * Apply colors to individual threads in figure **c**.
 * Download figure **d** and customize it into **e-h** or whatever your fancy.
-
+* The pair diagrams of Binche, Flanders or Paris grounds are thread diagrams of a plain Torchon ground with respectively ctctc, ctct or ct. This principle can be applied recursively on any pattern allowing for many more patterns.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/intro.png)
 
