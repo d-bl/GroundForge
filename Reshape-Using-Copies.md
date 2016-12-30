@@ -1,5 +1,16 @@
 _Customize a generated pattern to your own taste._
 
+Table of contents
+-----------------
+
+* [Introduction](#introduction)
+* [The Procedure](#the-procedure)
+* [Screenshots with InkScape v0.91](#screenshots-with-inkscape-v091)
+* [Screenshots with Adobe Illustrator v2015-3.1](#screenshots-with-adobe-illustrator-v2015-31)
+
+Introduction
+------------
+
 Colored dots help performing the tasks: they should match up and move together. Too many colors would be hard to distinguish, therefore the colors are limited to dots with less than four lines connecting with other dots. The procedure is written for any state of the art [SVG editor] but might be slightly different with the editor of your choice.
 
 
