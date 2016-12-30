@@ -4,7 +4,7 @@ _Customize a generated pattern to your own taste._
 Editor Requirements
 -------------------
 
-The SVG editor should have "full" support for clones or `<use>` elements in SVG terminology. "Full" means that the clones are not plain copies but reflect changes made to the original. For example InkPad importS clones properly but doesn't have the "full" support. On the other hand does CorelDRAW have the full suport of clones, but doesn't import them correctly. So in case of [CorelDRAW] you need some preparations.
+The SVG editor should have "full" support for clones or `<use>` elements in SVG terminology. "Full" means that the clones are not plain copies but reflect changes made to the original. For example InkPad imports clones properly but doesn't have the "full" support. On the other hand does [CorelDRAW] have the full suport of clones, but doesn't import them correctly. So in case of CorelDRAW you need some preparations.
 
 The editor should have a mode to manipulate objects, and a mode to deal with nodes on objects.
 
