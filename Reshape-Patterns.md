@@ -5,7 +5,7 @@ A downloadable pattern sheet of [GroundForge] may have multiple patterns. In som
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/reshape.png)
 
-The a manipulated screenshot above reflects a manipulated pattern sheet. The generated sheets only use full grid positions. Other sheets may come with just a single pattern that does not look at all like the colour coded pair diagram. To create a regular patch that does look like the pair diagram (or any other shape you might prefer) you would have to do the reshaping by yourself by nudging the position of intersections. That is one of the factors that makes these patterns advanced.
+The a manipulated screenshot above reflects a manipulated pattern sheet. The generated sheets only use full grid positions. Other sheets may come with just a single pattern that does not look at all like the colour coded pair diagram. To create a regular patch that does look like the pair diagram (or any other shape you might prefer) you would have to do the reshaping by yourself by nudging the position of intersections.
 
 The procedure
 -------------
