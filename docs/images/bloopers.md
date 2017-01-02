@@ -23,3 +23,10 @@ extend the forces in [docs/show-graph.js] with something like
 
 Same [download](https://github.com/d-bl/GroundForge/archive/52459fe36c69cf9dcf869148c8321577e6f3dd1d.zip),
 try repeated twists for the first thread diagram in the page `docs/recursive.html` then show the second thread diagram.
+
+3
+-
+
+![unfolding wave](unfolding.png)
+
+Not really a blooper, but a delicate balance between pattern, forces and interaction such as zooming during animation.
