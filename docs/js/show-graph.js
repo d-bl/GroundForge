@@ -1,5 +1,20 @@
+/*
+ Copyright 2017 Jo Pol
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
+*/
 fullyTransparant = 0 // global to allow override while testing
-var diagram = {}
+diagram = {}
 diagram.start = function(svgDefs, id, shape){
     svgDefs.append('svg:marker')
         .attr('id', id)
@@ -75,9 +90,14 @@ diagram.showGraph = function(args) {
 
     // document creation
     var svgRoot = htmlContainer.append("svg")
+                .attr("id", "svg2")
+                .attr("version", "1.1")
                 .attr("width", args.width)
                 .attr("height", args.height)
                 .attr("pointer-events", "all")
+                .attr("xmlns", "http://www.w3.org/2000/svg")
+                .attr("xmlns:svg", "http://www.w3.org/2000/svg")
+                .attr("xmlns:xlink", "http://www.w3.org/1999/xlink")
 
     // marker definitions
 
