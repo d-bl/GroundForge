@@ -1,8 +1,54 @@
 The [recursive] page uses a thread diagram as pair diagram to create another thread diagram. It does so at most two times. Even with so few steps larger dimensions could quickly overwhelm a browser, while you need larger dimensions to see the full pattern.
 
-Batch execution is much faster and doesn't make a fuss if it takes a while. It needs a few [hoops] to jump through. The actual value for the triple question marks depends on where you [unzipped] GroundForge, respectively executed the `npm` command, which comes with `node.js`. Less techy users might need more detailed instructions to execute and map the last couple of [lines] with the web page for variations. So far the procedure has been tested using the _git shell_ that comes with the _GitHub Desktop_.
+Batch execution is faster and doesn't make a fuss if it takes a while though it requires a few hoops to jump through. Many variations of the following steps will work too.
 
+* Download and unzip [GroundForge].
+* Install [node.js].
+* This will create the commands `node` and `npm`.
+* Execute: `npm install jsdom`
+* Per command line session:
+  * dos: `set NODE_PATH="C:\???\docs\js;/C:\???\node_modules"`
+  * shell: `export NODE_PATH="/???/docs/js;/???/node_modules"`
+
+  The actual value for the triple question marks depends on where you unzipped GroundForge, respectively executed the `npm` command. If you understand what you are doing you can set the [environment variable] in the registry or some profile, details vary per operating system and your choice of command line terminal.
+* Create a diagram:
+
+        node -i -e 'require("batch.js");svgFile="tmp.svg"'            
+        > createSVG(steps="ct;ctc", colors="#000,#000,#f00,#f00", animations=1)
+        > .exit
+
+  The example above shows a mix of statements as command line arguments and in interactive mode. It seems a dos environment only works properly with interactive statements. You can also write down the statements in a file and execute them with require.
+
+  Remember to change the `svgFile` for each call to `createSVG`, otherwise you overwrite the previous results without getting any warning. You can override the [initial pattern] with a variant of the call or reset by repeating the call.
+
+[environment variable]: https://en.wikipedia.org/wiki/Environment_variable
+[node.js]: https://nodejs.org
+[main]:https://d-bl.github.io/GroundForge/
 [recursive]:https://d-bl.github.io/GroundForge/recursive.html
-[hoops]: https://github.com/d-bl/GroundForge/blob/d51f43efc6d96719cbc8000328b55acd1a3e3bb1/docs/js/batch.js#L17-L22
-[lines]: https://github.com/d-bl/GroundForge/blob/d51f43efc6d96719cbc8000328b55acd1a3e3bb1/docs/js/batch.js#L51-L62
-[unzipped]: https://github.com/d-bl/GroundForge/archive/master.zip
+[initial pattern]: https://github.com/d-bl/GroundForge/blob/f2081625adfae862cf974dbcd25d73b3e836aec7/docs/js/batch.js#L65-L73
+[GroundForge]: https://github.com/d-bl/GroundForge/archive/master.zip
+
+Parameters
+==========
+
+dibl.D3Data().get
+-----------------
+
+Details on the [main] web page.
+
+* **compactMatrix** - see legend on matrix tab
+* **tileType** - see values for drop down on matrix tab: `checker` or `bricks`
+* **stitches** - see stitches tab
+* **rows** - see patch size tab
+* **cols** - see patch size tab
+* **shiftLeft** - see footside tab
+* **shiftUp** - see footside tab
+
+creatSVG
+--------
+
+The global variable `svgFile` should contain the file name, `d3data` the result of `dibl.D3Data().get`.
+
+* **steps** - split at `;`, for each value a thread diagram is used for the next pair diagram
+* **colors** - split at `,`, colors applied to the threads
+* **animations** - increase the value if a (large) pattern doesn't stretch out properly, same effect as a gentle nudge on the web page
