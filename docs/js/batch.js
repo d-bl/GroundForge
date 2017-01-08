@@ -21,7 +21,7 @@
  shell:        export NODE_PATH="/???/docs/js;/???/node_modules"
 
  execute:      node -i -e 'require("batch.js");svgFile="tmp.svg"'            
-               > createSVG("ct;ctc","#000,#000,#f00,#f00",1)
+               > d3data = createSVG(d3data, "ct;ctc","#000,#000,#f00,#f00",1)
                > .exit
 *******************************************************************/
 
@@ -35,17 +35,17 @@ fs = require("fs")
 document = require("jsdom").jsdom()
 navigator = {}
 
-createSVG = function (stitches, colors, countDown) {
+createSVG = function (data, stitches, colors, countDown) {
   stitches.split(";").forEach(function(s){
-    console.log("applying " + s + " to " + d3data.threadNodes().length + " nodes")
-    d3data = dibl.D3Data().get(s, d3data)
+    console.log("applying " + s + " to " + data.threadNodes().length + " nodes")
+    data = dibl.D3Data().get(s, data)
   })
-  console.log("created " + d3data.threadNodes().length + " nodes")
+  console.log("created " + data.threadNodes().length + " nodes")
   document.body.innerHTML = ""
   diagram.showGraph({
     container: document.body,
-    nodes: d3data.threadNodes(),
-    links: d3data.threadLinks(),
+    nodes: data.threadNodes(),
+    links: data.threadLinks(),
     viewWidth: 744,
     viewHeight: 1052,
     palette: colors,
@@ -59,6 +59,7 @@ createSVG = function (stitches, colors, countDown) {
       })
     }
   })
+  return data
 }
 
 // the initial pattern
