@@ -14,22 +14,23 @@ Batch execution is faster and doesn't make a fuss if it takes a while though it 
 * Create a diagram:
 
         node -i -e 'require("batch.js");svgFile="tmp.svg"'            
-        > createSVG(steps="ct;ctc", colors="#000,#000,#f00,#f00", animations=1)
+        > createSVG(d3data, steps="ct;ctc", colors="#000,#000,#f00,#f00", animations=1)
         > .exit
 
-  The example above shows a mix of statements as command line arguments and in interactive mode. It seems a dos environment only works properly with interactive statements. You can also write down the statements in a file and execute them with require.
+  The example above shows a mix of statements as command line arguments and in interactive mode. It seems a dos environment only works properly with interactive statements. [More...](https://nodejs.org/dist/latest-v7.x/docs/api/synopsis.html)
 
-  Remember to change the `svgFile` for each call to `createSVG`, otherwise you overwrite the previous results without getting any warning. You can override the [initial pattern] with a variant of the call or reset by repeating the call.
+  Subsequent calls to `createSVG` without changing the `svgFile` overwrites previous results without any warning. You can override the [initial pattern] with a variant of the call or reset by repeating the call.
 
 [environment variable]: https://en.wikipedia.org/wiki/Environment_variable
 [node.js]: https://nodejs.org
 [main]:https://d-bl.github.io/GroundForge/
 [recursive]:https://d-bl.github.io/GroundForge/recursive.html
-[initial pattern]: https://github.com/d-bl/GroundForge/blob/f2081625adfae862cf974dbcd25d73b3e836aec7/docs/js/batch.js#L65-L73
+[initial pattern]: https://github.com/d-bl/GroundForge/blob/abd29a92bccaaa6c8aeb73c819a59ab62a6d0ccd/docs/js/batch.js#L66-L74
 [GroundForge]: https://github.com/d-bl/GroundForge/archive/master.zip
 
-Parameters
-==========
+
+Functions and Parameters
+========================
 
 dibl.D3Data().get
 -----------------
@@ -47,8 +48,9 @@ Details on the [main] web page.
 creatSVG
 --------
 
-The global variable `svgFile` should contain the file name, `d3data` the result of `dibl.D3Data().get`.
+The global variable `svgFile` should contain the file name.
 
+* **d3data** - the result of `dibl.D3Data().get` or this function
 * **steps** - split at `;`, for each value a thread diagram is used for the next pair diagram
 * **colors** - split at `,`, colors applied to the threads
 * **animations** - increase the value if a (large) pattern doesn't stretch out properly, same effect as a gentle nudge on the web page
