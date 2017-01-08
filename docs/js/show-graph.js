@@ -152,7 +152,7 @@ diagram.showGraph = function(args) {
     if (colorpicker) {
         threadStarts.on('click', function (d) {
             if (d3.event.defaultPrevented) return
-            sim.alpha(0).stop()
+            diagram.sim.alpha(0).stop()
             svgContainer.selectAll("."+d.startOf)
               .style('stroke', '#'+colorpicker.value)
               .style('fill', function(d) { return d.bobbin ? '#'+colorpicker.value : 'none' })
@@ -194,7 +194,7 @@ diagram.showGraph = function(args) {
                         if (args.onAnimationEnd) args.onAnimationEnd()
                     }
     function strength(link){ return link.weak ? 5 : 50 }
-    var sim = d3.forceSimulation(args.nodes)
+    diagram.sim = d3.forceSimulation(args.nodes)
         .force("charge", d3.forceManyBody().strength(-1000))
         .force("link", d3.forceLink(args.links).strength(strength).distance(12).iterations(30))
         .force("center", d3.forceCenter(args.viewWidth / 2, args.viewHeight / 2))
@@ -216,7 +216,7 @@ diagram.showGraph = function(args) {
                    .on("drag", dragged)
                    .on("end", dragended))
     function dragstarted(d) {
-      if (!d3.event.active) sim.alpha(0.005).restart()
+      if (!d3.event.active) diagram.sim.alpha(0.005).restart()
       d.fx = d.x;
       d.fy = d.y;
     }
@@ -226,7 +226,7 @@ diagram.showGraph = function(args) {
     }
     function dragended(d) {
       step = 0
-      if (!d3.event.active) sim.alpha(0.005).restart()
+      if (!d3.event.active) diagram.sim.alpha(0.005).restart()
       d.fx = null;
       d.fy = null;
     }

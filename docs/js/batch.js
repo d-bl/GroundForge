@@ -16,47 +16,58 @@
 /******************************************************************
  install:      node.js
  execute:      nmp install jsdom
- dos terminal: NODE_PATH=C:\???\docs\js;/C:\???\node_modules
- shell:        export NODE_PATH=/???/docs/js;/???/node_modules
+ 
+ dos terminal: set NODE_PATH="C:\???\docs\js;/C:\???\node_modules"
+ shell:        export NODE_PATH="/???/docs/js;/???/node_modules"
 
- execute:      node -e 'require("batch.js");svgFile="tmp.svg"'
+ execute:      node -i -e 'require("batch.js");svgFile="tmp.svg"'            
+               > createSVG("ct;ctc","#000,#000,#f00,#f00",1)
+               > .exit
 *******************************************************************/
 
-// from GroundForge/docs/js
+// from docs/js
 require("matrix-graphs.js")
 require("show-graph.js")
 d3 = require("d3.v4.min.js")
 // from node_modules
 fs = require("fs")
-document = require("jsdom").jsdom()
 
+document = require("jsdom").jsdom()
 navigator = {}
-function createSVG (colors) {
+
+createSVG = function (stitches, colors, countDown) {
+  stitches.split(";").forEach(function(s){
+    console.log("applying " + s + " to " + d3data.threadNodes().length + " nodes")
+    d3data = dibl.D3Data().get(s, d3data)
+  })
+  console.log("created " + d3data.threadNodes().length + " nodes")
+  document.body.innerHTML = ""
   diagram.showGraph({
     container: document.body,
-    nodes: finalStep.threadNodes(),
-    links: finalStep.threadLinks(),
+    nodes: d3data.threadNodes(),
+    links: d3data.threadLinks(),
     viewWidth: 744,
     viewHeight: 1052,
     palette: colors,
     onAnimationEnd: function() {
-      fs.writeFile(svgFile, document.body.innerHTML, function(err) {
+      if (--countDown > 0) {
+          console.log("nudging animation " + countDown)
+          diagram.sim.alpha(0.005).restart()
+      } else fs.writeFile(svgFile, document.body.innerHTML, function(err) {
         if(err) return console.log(err)
-        else console.log(svgFile + " was saved!")
+        else console.log(svgFile + " was saved")
       })
     }
   })
 }
 
-// initial parameters
-var matrix = "5-"
-var tiling = "bricks"
-var nrOfRows = 9
-var nrOfCols = 9
-var shiftLeft = 0
-var shiftUp = 1
-
-// calculate the patterns step by step
-var step1 = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, "ctct", tiling)
-var finalStep = dibl.D3Data().get("ctct", step1)
-createSVG("#000,#000,#F00,#F00")
+// the initial pattern
+d3data = dibl.D3Data().get(
+    matrix = "5-",
+    nrOfRows = 5,
+    nrOfCols = 5,
+    shiftLeft = 0,
+    shiftUp = 1,
+    stitches = "ctct",
+    tiling = "bricks"
+)
