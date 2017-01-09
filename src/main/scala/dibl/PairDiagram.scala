@@ -20,7 +20,7 @@ import scala.util.Try
 
 object PairDiagram {
 
-  def apply(stitch: String, threadDiagram: Diagram): Diagram = {
+  def apply(stitches: String, threadDiagram: Diagram): Diagram = {
     val targetsBySource: Map[Int, Seq[Int]] = threadDiagram.links
       .groupBy(_.source)
       .map { case (source, links1) =>
@@ -41,6 +41,25 @@ object PairDiagram {
       else
         target
 
+    val stitchList = stitches.split("[^a-zA-Z0-9=]+")
+    val defaultStitch = if (stitchList.isEmpty || ! stitchList(0).contains('=')) "ctc" else stitchList(0).split("=")(1)
+    val stitchMap =
+      if (stitchList.isEmpty)
+        Map("cross" -> "ctc", "twist" -> "ctc")
+      else stitchList
+        .filter(s => s.contains('='))
+        .map { s =>
+          val xs = s.split("=")
+          xs(0) -> xs(1)
+        }.toMap
+
+    def translateTitle(p: Props) = {
+      val threadTitle: String = p.title
+      if (threadTitle.startsWith("thread "))
+        threadTitle.replace("thread", "Pair")
+      else stitchMap.getOrElse(threadTitle, defaultStitch)
+    }
+
     val links = threadDiagram
       .links
       .filter(link => !link.getOrElse("border","false").toString.toBoolean)
@@ -49,15 +68,9 @@ object PairDiagram {
         "source" -> link.source,
         "target" -> realTarget(link.target)
       ))
-    val nodes = threadDiagram
-      .nodes
-      .map(p => Props(
-        "x" -> p.x,
-        "y" -> p.y,
-        "title" -> (if (p.title.startsWith("thread "))
-          p.title.replace("thread","Pair")
-        else s"$stitch - ?")
-      ))
+    val nodes = threadDiagram.nodes.map(p =>
+      Props("x" -> p.x, "y" -> p.y, "title" -> translateTitle(p))
+    )
     Diagram(nodes, links)
   }
 

@@ -47,13 +47,18 @@ class DiagramSpec extends FlatSpec with Matchers {
     d.links.count(_.getOrElse("mid","") == 0) shouldNot be(0)
   }
 
-  "5- bricks" should "create diagrams recursively" in {
+  "recursive 5- bricks" should "replace cross and twist with different stitches" in {
 
-    val pairDiagram = PairDiagram("tctc", ThreadDiagram(PairDiagram(
-      Settings("5-", "bricks", stitches = "tctc", absRows = 6, absCols = 6)
+    val pairDiagram = PairDiagram("cross=tc twist=tct", ThreadDiagram(PairDiagram(
+      Settings("5-", "bricks", stitches = "ctc", absRows = 6, absCols = 6)
     )))
     verifyLinks(pairDiagram)
     verifyLinks(ThreadDiagram(pairDiagram))
+    pairDiagram
+      .nodes
+      .filter(n => !n.title.startsWith("Pair"))
+      .map(n => n.title)
+      .toSet shouldBe Set("tc", "tct")
   }
 
   it should "reduce twists" in {

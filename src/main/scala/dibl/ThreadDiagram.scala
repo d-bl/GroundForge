@@ -35,8 +35,6 @@ object ThreadDiagram {
       val next = nextPossibleStitches(availablePairs.keys.toArray)
       if (next.isEmpty)
         (availablePairs, nodes, links)
-      else if (nodes.length > maxNrOfNodes)
-        (availablePairs, nodes :+ whoops(s"Too many nodes: ${nodes.length} nodes, ${links.length} links."), links)
       else
         createRows(next, availablePairs, nodes, links)
     } else {
