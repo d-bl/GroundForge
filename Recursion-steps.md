@@ -18,7 +18,7 @@ Requirements
   * dos: `set NODE_PATH="C:\???\docs\js;/C:\???\node_modules"`
   * shell: `export NODE_PATH="/???/docs/js;/???/node_modules"`
 
-The actual value for the triple question marks depends on where you unzipped GroundForge, respectively executed the `npm` command. If you understand what you are doing you can set the [environment variable] in the registry or some profile, details vary per operating system and your choice of command line terminal. An easier solution is putting the NODE_PATH command above and node command below in a `.bat` or `.sh` file.
+The actual value for the triple question marks depends on where you unzipped GroundForge, respectively executed the `npm` command. If you understand what you are doing you can set the [environment variable] in the registry or some profile, details vary per operating system and your choice of command line terminal. An easier solution is putting the NODE_PATH command above and `node` command below in a `.bat` or `.sh` file.
 
 Create a diagram
 ----------------
