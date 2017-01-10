@@ -34,6 +34,9 @@
     two for ctc, six for ctct another six for ctctc and twelve for ctctct.
     That makes 32 stitches, 1024 possibilities for the second thread diagram and over a million for the third.
     This doesn't even count multiple stitches at each step.
+    Collecting the interesting ones with a simple action like a swiping or click,
+    and spending on average one second per diagram, would take twelve days non-stop.
+    So you need to develop an intuition to take your picks.
 </p>
 <h2>Usage</h2>
 <ul>
@@ -122,9 +125,9 @@
     <input id="s2"
            name="s"
            spellcheck="false"
-           value="ctc"
-           pattern="([lrt]?[c]+)+[lrt]?"
-           title="Valid characters are 'ctlr': cross, twist, left twist, right twist. No repeated twists">
+           value="cross=ctc twist=ctc"
+           pattern="(cross=[lrtc]+ +twist=)?[lrtc]+"
+           title="Valid characters for stitches are 'ctlr': cross, twist, left twist, right twist. No repeated twists">
     <button onclick="threadDiagram(2)">show</button>
     <div id="d2"></div>
 
@@ -132,9 +135,8 @@
     <input id="s3"
            name="s"
            spellcheck="false"
-           value="tctc"
-           pattern="([lrt]?[c]+)+[lrt]?"
-           title="Valid characters are 'ctlr': cross, twist, left twist, right twist. No repeated twists">
+           pattern="(cross=[lrtc]+ +twist=)?[lrtc]+"
+           title="Valid characters for stitches are 'ctlr': cross, twist, left twist, right twist. No repeated twists">
     <button onclick="threadDiagram(3)">show</button>
     <div id="d3"></div>
 </form>
