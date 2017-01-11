@@ -17,18 +17,18 @@
  install:      node.js
  execute:      nmp install jsdom
  
- dos terminal: set NODE_PATH="C:\???\docs\js;/C:\???\node_modules"
- shell:        export NODE_PATH="/???/docs/js;/???/node_modules"
-
- execute:      node -i -e 'require("batch.js");svgFile="tmp.svg"'            
-               > d3data = createSVG(d3data, "ct;ctc","#000,#000,#f00,#f00",1)
+ execute:      node
+               > require("./../../Users/???/docs/js/batch.svg")
+               > svgFile = "./../../Users/???/Documents/???.svg"
+               > data1 = dibl.D3Data().get("5-",rows=5,cols=5,left=0,up=1,"ctct","bricks")
+               > data2 = createSVG(data1, "ct;ctc","#000,#000,#f00,#f00",1)
                > .exit
 *******************************************************************/
 
 // from docs/js
-require("matrix-graphs.js")
-require("show-graph.js")
-d3 = require("d3.v4.min.js")
+require("./matrix-graphs.js")
+require("./show-graph.js")
+d3 = require("./d3.v4.min.js")
 // from node_modules
 fs = require("fs")
 
@@ -36,11 +36,12 @@ document = require("jsdom").jsdom()
 navigator = {}
 
 createSVG = function (data, stitches, colors, countDown) {
-  stitches.split(";").forEach(function(s){
+  if (stitches.trim().length > 0) stitches.split(";").forEach(function(s){
     console.log("applying " + s + " to " + data.threadNodes().length + " nodes")
     data = dibl.D3Data().get(s, data)
   })
   console.log("created " + data.threadNodes().length + " nodes")
+  console.log("countdown until file gets saved: " + countDown)
   document.body.innerHTML = ""
   diagram.showGraph({
     container: document.body,
@@ -51,7 +52,7 @@ createSVG = function (data, stitches, colors, countDown) {
     palette: colors,
     onAnimationEnd: function() {
       if (--countDown > 0) {
-          console.log("nudging animation " + countDown)
+          console.log("countdown " + countDown)
           diagram.sim.alpha(0.005).restart()
       } else fs.writeFile(svgFile, document.body.innerHTML, function(err) {
         if(err) return console.log(err)
@@ -61,14 +62,3 @@ createSVG = function (data, stitches, colors, countDown) {
   })
   return data
 }
-
-// the initial pattern
-d3data = dibl.D3Data().get(
-    matrix = "5-",
-    nrOfRows = 5,
-    nrOfCols = 5,
-    shiftLeft = 0,
-    shiftUp = 1,
-    stitches = "ctct",
-    tiling = "bricks"
-)
