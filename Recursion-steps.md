@@ -15,7 +15,11 @@ Requirements
 * Download and unzip [GroundForge].
 * Start a terminal, for example the `node.js command prompt`
   * go to the directory where you unzipped GroundForge
-  * execute: `npm install jsdom`
+  * execute `npm install jsdom`, this creates a directory [node_modules] which must be either in the same folders as the `.js` files of GoundForge, or at a higher level.
+
+[node.js]: https://nodejs.org
+[GroundForge]: https://github.com/d-bl/GroundForge/archive/master.zip
+[node_modules]: https://nodejs.org/download/release/v6.9.1/docs/api/modules.html#modules_loading_from_node_modules_folders
 
 Create a diagram
 ----------------
@@ -25,7 +29,7 @@ An example session of `node`:
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/batch-session.png)
 
 You need to type the lines in red rectangles.
-With the up and down arrows on your keyboard you can repeat and edit previous lines, even of previous sessions. [More](https://nodejs.org/download/release/v6.9.1/docs/api/repl.html#repl_commands_and_special_keys)... (than you might want to know as it quickly goes into details for developers).
+With the up and down arrows on your keyboard you can repeat and edit previous lines, even of previous sessions. [More...](https://nodejs.org/download/release/v6.9.1/docs/api/repl.html#repl_commands_and_special_keys) than you might want to know as it quickly goes into details for developers.
 
 The greyed parts depend on
 * where you unzipped GroundForge
@@ -35,14 +39,6 @@ The greyed parts depend on
 What goes between `(...)` is documented below.
 
 The countdown process until the diagram gets saved runs in the back ground. Wait with new commands to prevent overwhelming your system. The more nodes where created, the longer each countdown step takes and the easier your system gets overwhelmed.
-
-[environment variable]: https://en.wikipedia.org/wiki/Environment_variable
-[node.js]: https://nodejs.org
-[main]:https://d-bl.github.io/GroundForge/
-[recursive]:https://d-bl.github.io/GroundForge/recursive.html
-[initial default pattern]: https://github.com/d-bl/GroundForge/blob/abd29a92bccaaa6c8aeb73c819a59ab62a6d0ccd/docs/js/batch.js#L66-L74
-[GroundForge]: https://github.com/d-bl/GroundForge/archive/master.zip
-[stretch]: https://github.com/d-bl/GroundForge/blob/master/docs/images/bloopers.md#3
 
 
 Functions and Parameters
@@ -70,3 +66,7 @@ The global variable `svgFile` should contain the file name. Subsequent calls wit
 * **steps** - gets split at "`;`" into stitch instructions, each value is used to create a new thread diagram from a previous thread diagram used as pair diagram, see also step 2 and 3 on the [recursive] page. An empty string creates the initial thread diagram.
 * **colors** - gets split at "`,`" into a color per thread, each value should start with a `#` followed by three or six hexadecimal digits.
 * **countDown** - increase the value if a (large) pattern doesn't [stretch] out properly, each increment has same effect as a gentle nudge on the web page. The value should possibly be some function of `rows`, `cols` and the final number of created nodes.
+
+
+[recursive]:https://d-bl.github.io/GroundForge/recursive.html
+[stretch]: https://github.com/d-bl/GroundForge/blob/master/docs/images/bloopers.md#3
