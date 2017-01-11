@@ -68,5 +68,6 @@ The global variable `svgFile` should contain the file name. Subsequent calls wit
 * **countDown** - increase the value if a (large) pattern doesn't [stretch] out properly, each increment has same effect as a gentle nudge on the web page. The value should possibly be some function of `rows`, `cols` and the final number of created nodes.
 
 
-[recursive]:https://d-bl.github.io/GroundForge/recursive.html
+[recursive]: https://d-bl.github.io/GroundForge/recursive.html
+[main]: https://d-bl.github.io/GroundForge/
 [stretch]: https://github.com/d-bl/GroundForge/blob/master/docs/images/bloopers.md#3
