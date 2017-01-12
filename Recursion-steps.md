@@ -29,7 +29,7 @@ An example session of `node`:
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/batch-session.png)
 
 You need to type the lines in red rectangles.
-Note that `svgFile` is required for `createSVG`, and the `data` returned by d3Data().get is used by `createSVG`.
+Note that `svgFile` is required for `createSVG`, and the result of `d3Data().get` is used by `createSVG`.
 
 With the up and down arrows on your keyboard you can repeat and edit previous lines, even of previous sessions. [More...](https://nodejs.org/download/release/v6.9.1/docs/api/repl.html#repl_commands_and_special_keys) than you might want to know as it quickly goes into details for developers.
 
