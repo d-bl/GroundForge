@@ -14,8 +14,8 @@ Requirements
 * This will create the commands `node` and `npm`.
 * Download and unzip [GroundForge].
 * Start a terminal, for example the `node.js command prompt`
-  * go to the directory where you unzipped GroundForge
-  * execute `npm install jsdom`, this creates a directory [node_modules] which must be either in the same folders as the `.js` files of GoundForge, or at a higher level.
+  * Go to a directory somewhere on the path to the `docs/js` files in the unzipped GroundForge.
+  * Execute `npm install jsdom`, this creates a directory [node_modules].
 
 [node.js]: https://nodejs.org
 [GroundForge]: https://github.com/d-bl/GroundForge/releases
