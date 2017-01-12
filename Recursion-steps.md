@@ -10,6 +10,8 @@ Many variations of the following steps will work too.
 Requirements
 ------------
 
+An environment to [run JavaScript] without a browser. For example:
+
 * Install [node.js].
 * This will create the commands `node` and `npm`.
 * Download and unzip [GroundForge].
@@ -17,6 +19,7 @@ Requirements
   * Go to a directory somewhere on the path to the `docs/js` files in the unzipped GroundForge.
   * Execute `npm install jsdom`, this creates a directory [node_modules].
 
+[run JavaScript]: https://en.wikipedia.org/wiki/List_of_ECMAScript_engines
 [node.js]: https://nodejs.org
 [GroundForge]: https://github.com/d-bl/GroundForge/releases
 [node_modules]: https://nodejs.org/download/release/v6.9.1/docs/api/modules.html#modules_loading_from_node_modules_folders
