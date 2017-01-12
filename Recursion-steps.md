@@ -18,7 +18,7 @@ Requirements
   * execute `npm install jsdom`, this creates a directory [node_modules] which must be either in the same folders as the `.js` files of GoundForge, or at a higher level.
 
 [node.js]: https://nodejs.org
-[GroundForge]: https://github.com/d-bl/GroundForge/archive/master.zip
+[GroundForge]: https://github.com/d-bl/GroundForge/releases
 [node_modules]: https://nodejs.org/download/release/v6.9.1/docs/api/modules.html#modules_loading_from_node_modules_folders
 
 Create a diagram
