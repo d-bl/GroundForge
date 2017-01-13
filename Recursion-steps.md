@@ -10,15 +10,19 @@ Many variations of the following steps will work too.
 Requirements
 ------------
 
-An environment to [run JavaScript] without a browser. For example:
+A few steps are required to create an environment to [run JavaScript] without a browser. For example:
 
 * Install [node.js].
 * This will create the commands `node` and `npm`.
 * Download and unzip [GroundForge].
-* Start a terminal, for example the `node.js command prompt`
-  * Go to a directory somewhere on the path to the `docs/js` files in the unzipped GroundForge.
+* Finally install libraries required by `node.js`. Start a terminal for that purpose, for example the `node.js command prompt` but any dos/bash/shell prompt might do.
+  * Go to a directory somewhere on the path to the [docs/js] files in the unzipped GroundForge.
   * Execute `npm install jsdom`, this creates a directory [node_modules].
 
+Should you choose to use another environment, you may have to write a variant of [batch.js].
+
+[docs/js]: https://github.com/d-bl/GroundForge/tree/master/docs/js
+[batch.js]: https://github.com/d-bl/GroundForge/blob/master/docs/js/batch.js
 [run JavaScript]: https://en.wikipedia.org/wiki/List_of_ECMAScript_engines
 [node.js]: https://nodejs.org
 [GroundForge]: https://github.com/d-bl/GroundForge/releases
@@ -27,7 +31,7 @@ An environment to [run JavaScript] without a browser. For example:
 Create a diagram
 ----------------
 
-An example session of `node`:
+An example session of `node.js`:
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/batch-session.png)
 
