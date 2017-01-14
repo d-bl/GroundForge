@@ -2,6 +2,16 @@ The [recursive] page uses a thread diagram as pair diagram to create another thr
 
 Batch execution is faster, doesn't make a fuss if it takes a while and allows as many recursion steps as your system can handle. Downside: it requires a few hoops to jump through.
 
+<sub><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></sub>
+
+- [Batch execution](#batch-execution)
+  * [Requirements](#requirements)
+  * [Create a diagram](#create-a-diagram)
+- [Functions and Parameters](#functions-and-parameters)
+  * [dibl.D3Data().get](#dibld3data--get)
+  * [createSVG](#createsvg)
+
+
 Batch execution
 ===============
 
@@ -12,14 +22,16 @@ Requirements
 
 A few steps are required to create an environment to [run JavaScript] without a browser. For example:
 
-* Install [node.js].
-* This will create the commands `node` and `npm`.
+* Install [node.js] which should work on any operating system. It creates the commands `node`, `npm` and a `node.js command prompt`. A screen shot for Windows 10:
+
+  [<img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/nodejs-command-search-thumb.png">](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/nodejs-command-search-on-windows-10.png)
 * Download and unzip [GroundForge].
-* Finally install libraries required by `node.js`. Start a terminal for that purpose, for example the `node.js command prompt` but any dos/bash/shell prompt might do.
+* Finally install required libraries. Start a terminal for that purpose. For example the `node.js command prompt`, not to be confused with `node.js` itself but any dos/bash/shell prompt should do.
   * Go to a directory somewhere on the path to the [docs/js] files in the unzipped GroundForge.
   * Execute `npm install jsdom`, this creates a directory [node_modules].
 
 Should you choose to use another environment, you may have to write a variant of [batch.js].
+
 
 [docs/js]: https://github.com/d-bl/GroundForge/tree/master/docs/js
 [batch.js]: https://github.com/d-bl/GroundForge/blob/master/docs/js/batch.js
@@ -43,12 +55,13 @@ With the up and down arrows on your keyboard you can repeat and edit previous li
 The greyed parts depend on
 * where you unzipped GroundForge
 * where you want to save your diagram
-* whether you changed the properties (start at) of `node.js`, by Windows' default you probably need to start with `./../../Documents`. Note that you need the unix-style slashes even on a Windows operating system.
+* whether you changed the [properties] of the `node.js` shortcut. The `./` of the `require` command is equivalent with the 'start in' property, `../` goes one directory up, so you probably need to start with `./../../Documents`. Note that you need the unix-style slashes even on a Windows operating system.
 
 What goes between `(...)` is documented below.
 
 The countdown process until the diagram gets saved runs in the back ground. Wait with new commands to prevent overwhelming your system. The more nodes where created, the longer each countdown step takes and the easier your system gets overwhelmed.
 
+[properties]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/nodejs-shortcut-properties.png
 
 Functions and Parameters
 ========================
@@ -69,7 +82,7 @@ Details on the [main] web page.
 createSVG
 ---------
 
-The global variable `svgFile` should contain the file name. Subsequent calls without changing `svgFile` overwrites previous results without any warning.
+Defined in [batch.js]. The global variable `svgFile` should contain the file name. Subsequent calls without changing `svgFile` overwrites previous results without any warning.
 
 * **data** - the result of `dibl.D3Data().get` or the result of this function
 * **steps** - gets split at "`;`" into stitch instructions, each value is used to create a new thread diagram from a previous thread diagram used as pair diagram, see also step 2 and 3 on the [recursive] page. An empty string creates the initial thread diagram.
