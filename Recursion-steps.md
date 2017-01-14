@@ -71,13 +71,16 @@ dibl.D3Data().get
 
 Details on the [main] web page.
 
-* **compactMatrix** - see legend on matrix tab
+* **compactMatrix** - see legend on matrix tab. You can copy-paste from tool tips on the [thumbnails] page, any sequence of non-alphanumeric characters is treated as a line separator.
 * **tileType** - see values for drop down on matrix tab: `checker` or `bricks`
 * **stitches** - see stitches tab
 * **rows** - see patch size tab
 * **cols** - see patch size tab
 * **shiftLeft** - see footside tab
 * **shiftUp** - see footside tab
+
+[thumbnails]: https://d-bl.github.io/GroundForge/thumbs.html
+
 
 createSVG
 ---------
