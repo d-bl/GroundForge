@@ -66,31 +66,36 @@ The countdown process until the diagram gets saved runs in the back ground. Wait
 Functions and Parameters
 ========================
 
-dibl.D3Data().get
------------------
+`dibl.D3Data().get`
+-------------------
 
 Details on the [main] web page.
 
-* **compactMatrix** - see legend on matrix tab. You can copy-paste from tool tips on the [thumbnails] page, any sequence of non-alphanumeric characters is treated as a line separator.
-* **tileType** - see values for drop down on matrix tab: `checker` or `bricks`
-* **stitches** - see stitches tab
-* **rows** - see patch size tab
-* **cols** - see patch size tab
-* **shiftLeft** - see footside tab
-* **shiftUp** - see footside tab
+* **`compactMatrix`** - see legend on matrix tab. You can copy-paste from the tool tips on the [thumbnails] page, any sequence of non-alphanumeric characters is treated as a line separator.
+* **`tileType`** - see values for drop down on matrix tab: `checker` or `bricks`
+* **`stitches`** - see stitches tab
+* **`rows`** - see patch size tab
+* **`cols`** - see patch size tab
+* **`shiftLeft`** - see footside tab
+* **`shiftUp`** - see footside tab
 
 [thumbnails]: https://d-bl.github.io/GroundForge/thumbs.html
 
+Another signature used by createSVG:
 
-createSVG
----------
+* **`stitches`** - see step 2 and 3 on the [recursive] page
+* **`data`** - the result of `dibl.D3Data().get` or the result of `createSVG`
+
+
+`createSVG`
+-----------
 
 Defined in [batch.js]. The global variable `svgFile` should contain the file name. Subsequent calls without changing `svgFile` overwrites previous results without any warning.
 
-* **data** - the result of `dibl.D3Data().get` or the result of this function
-* **steps** - gets split at "`;`" into stitch instructions, each value is used to create a new thread diagram from a previous thread diagram used as pair diagram, see also step 2 and 3 on the [recursive] page. An empty string creates the initial thread diagram.
-* **colors** - gets split at "`,`" into a color per thread, each value should start with a `#` followed by three or six hexadecimal digits.
-* **countDown** - increase the value if a (large) pattern doesn't [stretch] out properly, each increment has same effect as a gentle nudge on the web page. The value should possibly be some function of `rows`, `cols` and the final number of created nodes.
+* **`data`** - the result of `dibl.D3Data().get` or the result of this function
+* **`steps`** - gets split at "`;`" into stitch instructions, each value is used to create a new thread diagram from a previous thread diagram used as pair diagram, see also step 2 and 3 on the [recursive] page. An empty string creates the initial thread diagram.
+* **`colors`** - gets split at "`,`" into a color per thread, each value should start with a `#` followed by three or six hexadecimal digits.
+* **`countDown`** - increase the value if a (large) pattern doesn't [stretch] out properly, each increment has same effect as a gentle nudge on the web page. The value should possibly be some function of `rows`, `cols` and the final number of created nodes.
 
 
 [recursive]: https://d-bl.github.io/GroundForge/recursive.html
