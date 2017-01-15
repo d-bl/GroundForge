@@ -25,7 +25,7 @@ A few steps are required to create an environment to [run JavaScript] without a 
 * Install [node.js] which should work on any operating system. It creates the commands `node`, `npm` and a `node.js command prompt`. A screen shot for Windows 10:
 
   [<img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/nodejs-command-search-thumb.png">](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/nodejs-command-search-on-windows-10.png)
-* Download and unzip [GroundForge].
+* Download and unzip a [release] \(since 2017-01-11) or the very [latest version] of `GroundForge`.
 * Finally install required libraries. Start a terminal for that purpose. For example the `node.js command prompt`, not to be confused with `node.js` itself but any dos/bash/shell prompt should do.
   * Go to a directory somewhere on the path to the [docs/js] files in the unzipped GroundForge.
   * Execute `npm install jsdom`, this creates a directory [node_modules].
@@ -37,7 +37,8 @@ Should you choose to use another environment, you may have to write a variant of
 [batch.js]: https://github.com/d-bl/GroundForge/blob/master/docs/js/batch.js
 [run JavaScript]: https://en.wikipedia.org/wiki/List_of_ECMAScript_engines
 [node.js]: https://nodejs.org
-[GroundForge]: https://github.com/d-bl/GroundForge/releases
+[release]: https://github.com/d-bl/GroundForge/releases
+[latest version]: https://github.com/d-bl/GroundForge/archive/master.zip
 [node_modules]: https://nodejs.org/download/release/v6.9.1/docs/api/modules.html#modules_loading_from_node_modules_folders
 
 Create a diagram
@@ -47,8 +48,10 @@ An example session of `node.js`:
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/batch-session.png)
 
-You need to type the lines in red rectangles.
+You need to type the lines in red rectangles. 
+Please compare the screen shot above with the actual usage comment in your version of `batch.js`.
 Note that `svgFile` is required for `createSVG`, and the result of `d3Data().get` is used by `createSVG`.
+Hint: type `;0` at the end of a line to reduce the returned clutter.
 
 With the up and down arrows on your keyboard you can repeat and edit previous lines, even of previous sessions. [More...](https://nodejs.org/download/release/v6.9.1/docs/api/repl.html#repl_commands_and_special_keys) than you might want to know as it quickly goes into details for developers.
 
