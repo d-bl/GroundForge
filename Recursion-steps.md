@@ -25,7 +25,9 @@ A few steps are required to create an environment to [run JavaScript] without a 
 * Install [node.js] which should work on any operating system. It creates the commands `node`, `npm` and a `node.js command prompt`. A screen shot for Windows 10:
 
   [<img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/nodejs-command-search-thumb.png">](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/nodejs-command-search-on-windows-10.png)
-* Download and unzip a [release] \(since 2017-01-11) or the very [latest version] of `GroundForge`.
+* Download and unzip `GroundForge`:
+  * either a [release], since 2017-01-11
+  * or the latest version, possibly not yet tagged as a release: [zip] or [tar.gz]
 * Finally install required libraries. Start a terminal for that purpose. For example the `node.js command prompt`, not to be confused with `node.js` itself but any dos/bash/shell prompt should do.
   * Go to a directory somewhere on the path to the [docs/js] files in the unzipped GroundForge.
   * Execute `npm install jsdom`, this creates a directory [node_modules].
@@ -38,7 +40,8 @@ Should you choose to use another environment, you may have to write a variant of
 [run JavaScript]: https://en.wikipedia.org/wiki/List_of_ECMAScript_engines
 [node.js]: https://nodejs.org
 [release]: https://github.com/d-bl/GroundForge/releases
-[latest version]: https://github.com/d-bl/GroundForge/archive/master.zip
+[zip]: https://github.com/d-bl/GroundForge/archive/master.zip
+[tar.gz]: https://github.com/d-bl/GroundForge/archive/master.tar.gz
 [node_modules]: https://nodejs.org/download/release/v6.9.1/docs/api/modules.html#modules_loading_from_node_modules_folders
 
 Create a diagram
