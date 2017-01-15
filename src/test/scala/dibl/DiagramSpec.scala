@@ -58,7 +58,35 @@ class DiagramSpec extends FlatSpec with Matchers {
       .nodes
       .filter(n => !n.title.startsWith("Pair"))
       .map(n => n.title)
-      .toSet shouldBe Set("tc", "tct")
+      .toSet shouldBe Set("tc", "tct", "ctc") // bobbins get the default "ctc" tag
+  }
+
+  it should "apply the custom default" in {
+
+    val pairDiagram = PairDiagram("tct", ThreadDiagram(PairDiagram(
+      Settings("5-", "bricks", stitches = "ctc", absRows = 6, absCols = 6)
+    )))
+    verifyLinks(pairDiagram)
+    verifyLinks(ThreadDiagram(pairDiagram))
+    pairDiagram
+      .nodes
+      .filter(n => !n.title.startsWith("Pair"))
+      .map(n => n.title)
+      .toSet shouldBe Set("tct")
+  }
+
+  it should "apply the default ctc" in {
+
+    val pairDiagram = PairDiagram("", ThreadDiagram(PairDiagram(
+      Settings("5-", "bricks", stitches = "ctct", absRows = 6, absCols = 6)
+    )))
+    verifyLinks(pairDiagram)
+    verifyLinks(ThreadDiagram(pairDiagram))
+    pairDiagram
+      .nodes
+      .filter(n => !n.title.startsWith("Pair"))
+      .map(n => n.title)
+      .toSet shouldBe Set("ctc")
   }
 
   it should "reduce twists" in {

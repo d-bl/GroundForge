@@ -42,16 +42,13 @@ object PairDiagram {
         target
 
     val stitchList = stitches.split("[^a-zA-Z0-9=]+")
-    val defaultStitch = if (stitchList.isEmpty || ! stitchList(0).contains('=')) "ctc" else stitchList(0).split("=")(1)
-    val stitchMap =
-      if (stitchList.isEmpty)
-        Map("cross" -> "ctc", "twist" -> "ctc")
-      else stitchList
-        .filter(s => s.contains('='))
-        .map { s =>
-          val xs = s.split("=")
-          xs(0) -> xs(1)
-        }.toMap
+    val defaultStitch = if (stitchList(0).isEmpty || stitchList(0).contains('=')) "ctc" else stitchList(0)
+    val stitchMap = stitchList
+      .filter(s => s.contains('='))
+      .map { s =>
+        val xs = s.split("=")
+        xs(0) -> xs(1)
+      }.toMap
 
     def translateTitle(p: Props) = {
       val threadTitle: String = p.title
