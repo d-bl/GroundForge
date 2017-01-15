@@ -38,7 +38,7 @@ fs = require("fs")
 document = require("jsdom").jsdom()
 navigator = {}
 
-function createSVG (svgFile, data, stitches, colors, countDown) {
+createSVG = function (svgFile, data, stitches, colors, countDown) {
   if (stitches.trim().length > 0) stitches.split(";").forEach(function(s){
     console.log("applying " + s + " to " + data.threadNodes().length + " nodes")
     data = dibl.D3Data().get(s, data)
