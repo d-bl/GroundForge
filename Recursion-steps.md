@@ -1,6 +1,6 @@
 The [recursive] page uses a thread diagram as pair diagram to create another thread diagram. It does so at most two times. Even with so few steps larger dimensions could quickly overwhelm a browser, while you need larger dimensions to see the full pattern.
 
-Batch execution is faster, doesn't make a fuss if it takes a while and allows as many recursion steps as your system can handle. Downside: it requires a few hoops to jump through.
+Batch execution is faster, doesn't make a fuss if it takes a while and allows as many recursion steps as your system can handle. Downside: it requires a few hoops to jump through: install an environment to execute JavaScript without a browser and two function calls.
 
 <sub><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></sub>
 
