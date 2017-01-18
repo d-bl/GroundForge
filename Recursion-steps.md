@@ -72,13 +72,31 @@ The countdown process until the diagram gets saved runs in the back ground. Wait
 Functions and Parameters
 ========================
 
-Both functions return a data object which can in turn be used as first argument for `createSVG`. This JavaScript object will have functions returning arrays of maps:
+Both functions return a data object which can in turn be used as first argument for `createSVG`. This object will have functions returning arrays of maps:
 - **`pairNodes()`**
 - **`pairLinks()`**
 - **`threadNodes()`**
-- **`threadLinks()`** - The following example shows the top section of a twist. The `thread` property allows to paint threads, the `left`/`right` properties determine the curve direction of repeated twists, the `source`/`target` properties are indexes in the `threadNodes` array, the `end`/`start` properties with value `white` determine which end has some distance to the node.
+- **`threadLinks()`** - The `thread` property is required to paint threads, the `left`/`right` properties determine the curve direction (required for repeated twists), the `source`/`target` properties are indexes in the `threadNodes` array, the `end`/`start` properties with value `white` determine which end has some distance to the node.
 
-         [ { source: 3495, left: true, thread: 94, end: 'white', target: 3513 }, { source: 3495, thread: 92, target: 3513, start: 'white', right: true }]
+Without stitches for recursive steps, the following example creates a thread diagram of a twist:
+
+    data = new function() {
+      this.threadNodes = function (){ return [
+        { x: 500, y: 500, startOf: 'thread1', title: 1 },
+        { x:   0, y: 500, startOf: 'thread2', title: 2 },
+        { title: 'twist' },
+        { x: 500, y:   0, bobbin: 'true' },
+        { x:   0, y:   0, bobbin: 'true' }]
+      }
+      this.threadLinks = function(){ return [
+        { source: 0, target: 2, thread: 1, start: 'thread', end: 'white' },
+        { source: 1, target: 2, thread: 2, start: 'thread' },
+        { source: 2, target: 3, thread: 2, end: 'white', left: true },
+        { source: 2, target: 4, thread: 1, start: 'white', right: true }
+      ]}
+    }
+    createSVG("./twist.svg",data,"","#f00,#0f0",1);0
+
 
 `dibl.D3Data().get`
 -------------------
