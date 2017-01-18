@@ -76,9 +76,13 @@ Both functions return a data object which can in turn be used as first argument 
 - **`pairNodes()`**
 - **`pairLinks()`**
 - **`threadNodes()`**
-- **`threadLinks()`** - The `thread` property is required to paint threads, the `left`/`right` properties determine the curve direction (required for repeated twists), the `source`/`target` properties are indexes in the `threadNodes` array, the `end`/`start` properties with value `white` determine which end has some distance to the node.
+- **`threadLinks()`**
+  - The `thread` property is required to paint threads.
+  - The `left`/`right` properties determine the curve direction, required for repeated twists.
+  - The `source`/`target` properties are indexes in the `threadNodes` array.
+  - The `end`/`start` properties with value `white` determine which end has some distance to the node for the over/ubder effect. Value `thread` marks the start of a thread to paint an individual thread in interactive mode.
 
-Without stitches for recursive steps, the following example creates a thread diagram of a twist:
+The following example creates a thread diagram of a twist. Note that you can't specify stitches for recursive steps as that recuires a scala object.
 
     data = new function() {
       this.threadNodes = function (){ return [
@@ -86,8 +90,8 @@ Without stitches for recursive steps, the following example creates a thread dia
         { x:   0, y: 500, startOf: 'thread2', title: 2 },
         { title: 'twist' },
         { x: 500, y:   0, bobbin: 'true' },
-        { x:   0, y:   0, bobbin: 'true' }]
-      }
+        { x:   0, y:   0, bobbin: 'true' }
+      ]}
       this.threadLinks = function(){ return [
         { source: 0, target: 2, thread: 1, start: 'thread', end: 'white' },
         { source: 1, target: 2, thread: 2, start: 'thread' },
