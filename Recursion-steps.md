@@ -72,6 +72,14 @@ The countdown process until the diagram gets saved runs in the back ground. Wait
 Functions and Parameters
 ========================
 
+Both functions return a data object which can in turn be used as first argument for `createSVG`. This JavaScript object will have functions returning arrays of maps:
+- **`pairNodes()`**
+- **`pairLinks()`**
+- **`threadNodes()`**
+- **`threadLinks()`** - The following example shows the top section of a twist. The `thread` property allows to paint threads, the `left`/`right` properties determine the curve direction of repeated twists, the `source`/`target` properties are indexes in the `threadNodes` array, the `end`/`start` properties with value `white` determine which end has some distance to the node.
+
+         [ { source: 3495, left: true, thread: 94, end: 'white', target: 3513 }, { source: 3495, thread: 92, target: 3513, start: 'white', right: true }]
+
 `dibl.D3Data().get`
 -------------------
 
