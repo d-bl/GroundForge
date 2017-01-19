@@ -27,7 +27,7 @@ import scala.scalajs.js.annotation.JSExport
   */
 class D3Data (pairDiagram: Diagram) {
 
-  lazy val threadDiagram = ThreadDiagram(pairDiagram, maxNrOfNodes = 2000)
+  lazy val threadDiagram = ThreadDiagram(pairDiagram)
 
   @JSExport
   def pairNodes(): js.Array[js.Dictionary[Any]] = toJS(pairDiagram.nodes)
