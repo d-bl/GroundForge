@@ -2,9 +2,9 @@ The [recursive] page uses a thread diagram as pair diagram to create another thr
 
 Batch execution is faster, doesn't make a fuss if it takes a while and allows as many recursion steps as your system can handle. Downside: it requires a few hoops to jump through: install an environment to execute JavaScript without a browser and two function calls.
 
-<sub><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></sub>
+<sub>_[Table of contents generated with markdown-toc](http://ecotrust-canada.github.io/markdown-toc/)_</sub>
 
-- [Batch execution](#batch-execution)
+- [Off-line execution](#off-line-execution)
   * [Requirements](#requirements)
   * [Create a diagram](#create-a-diagram)
 - [Functions and Parameters](#functions-and-parameters)
@@ -13,10 +13,10 @@ Batch execution is faster, doesn't make a fuss if it takes a while and allows as
   * [Returned object](#returned-object)
 
 
-Batch execution
-===============
+Off-line execution
+==================
 
-Many variations of the following steps will work too.
+The SVG documents can also be generated in other JavaScript environments than a web-browser. Many variations of the following steps are possible.
 
 Requirements
 ------------
