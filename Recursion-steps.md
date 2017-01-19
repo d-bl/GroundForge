@@ -5,12 +5,14 @@ Off-line execution is faster, doesn't make a fuss if it takes a while, allows yo
 <sub>_[Table of contents generated with markdown-toc](http://ecotrust-canada.github.io/markdown-toc/)_</sub>
 
 - [Off-line execution](#off-line-execution)
-  * [Requirements](#requirements)
-  * [Create a diagram](#create-a-diagram)
+  * [Set up node.js](#set-up-nodejs)
+  * [Create thread diagram with node.js](#create-thread-diagram-with-nodejs)
 - [Functions and Parameters](#functions-and-parameters)
-  * [`dibl.D3Data().get`](#-dibld3data--get-)
-  * [`createSVG`](#-createsvg-)
-  * [Returned object](#returned-object)
+  * [Function `createSVG`](#function--createsvg-)
+  * [Object `dibl.D3Data`](#object--dibld3data-)
+    + [Constructor](#constructor)
+    + [Factory methods `get`](#factory-methods--get-)
+
 
 
 Off-line execution
@@ -18,8 +20,8 @@ Off-line execution
 
 The SVG documents with the diagrams can also be generated in other JavaScript environments than a web-browser. Many variations of the following steps are possible.
 
-Requirements
-------------
+Set up node.js
+--------------
 
 A few steps are required to create an environment to [run JavaScript] without a browser. For example:
 
@@ -45,8 +47,8 @@ Should you choose to use another environment, you may have to write a variant of
 [tar.gz]: https://github.com/d-bl/GroundForge/archive/master.tar.gz
 [node_modules]: https://nodejs.org/download/release/v6.9.1/docs/api/modules.html#modules_loading_from_node_modules_folders
 
-Create a diagram
-----------------
+Create thread diagram with node.js
+----------------------------------
 
 An example session of `node.js`:
 
@@ -73,38 +75,15 @@ The countdown process until the diagram gets saved runs in the back ground. Wait
 Functions and Parameters
 ========================
 
-`dibl.D3Data().get`
--------------------
-
-Both Scala and JavaScript.
-
-Details on the [main] web page.
-
-* **`compactMatrix`** - see legend on matrix tab. You can copy-paste from the tool tips on the [thumbnails] page, any sequence of non-alphanumeric characters is treated as a line separator.
-* **`tileType`** - see values for drop down on matrix tab: `checker` or `bricks`
-* **`stitches`** - see stitches tab
-* **`rows`** - see patch size tab
-* **`cols`** - see patch size tab
-* **`shiftLeft`** - see footside tab
-* **`shiftUp`** - see footside tab
-
-[thumbnails]: https://d-bl.github.io/GroundForge/thumbs.html
-
-Another signature used by createSVG:
-
-* **`stitches`** - see step 2 and 3 on the [recursive] page
-* **`data`** - the result of `dibl.D3Data().get` or the result of `createSVG`
-
-
-`createSVG`
------------
+Function `createSVG`
+--------------------
 
 Only JavaScript
 
-Defined in [batch.js]. The global variable `svgFile` should contain the file name. Subsequent calls without changing `svgFile` overwrites previous results without any warning.
+Defined in [batch.js].
 
-* **`svgFile`** - the global variable became the first argument _after [release] 2017-01-11_
-* **`data`** - the result of `dibl.D3Data().get` or the result of this function. With an empty string for steps, this argument can be a JavaScrript object with just the functions `threadNodes()` and `threadLinks()`. 
+* **`svgFile`** - the global variable became the first argument _after [release] 2017-01-11_. Existing files are overwritten without a warning.
+* **`data`** - the result of `dibl.D3Data().get` or the result of this function. With an empty string for steps, this argument can be a JavaScript object with just the functions `threadNodes()` and `threadLinks()`. 
 * **`steps`** - gets split at "`;`" into stitch instructions, each value is used to create a new thread diagram from a previous thread diagram used as pair diagram, see also step 2 and 3 on the [recursive] page. An empty string creates the initial thread diagram.
 * **`colors`** - gets split at "`,`" into a color per thread, each value should start with a `#` followed by three or six hexadecimal digits.
 * **`countDown`** - increase the value if a (large) pattern doesn't [stretch] out properly, each increment has same effect as a gentle nudge on the web page. The value should possibly be some function of `rows`, `cols` and the final number of created nodes.
@@ -114,30 +93,7 @@ Defined in [batch.js]. The global variable `svgFile` should contain the file nam
 [main]: https://d-bl.github.io/GroundForge/
 [stretch]: https://github.com/d-bl/GroundForge/blob/master/docs/images/bloopers.md#3
 
-
-Returned object
----------------
-
-The listed functions return a data object which can in turn be used as an argument for `createSVG`. The (Scala only) constructor of this object expects a pair diagram as argument which is an object with functions returning arrays of maps:
-  - **`nodes()`** - assigned as is to the returned object
-  - **`links()`** - assigned as is to the returned object
-
-The object will have functions returning arrays of maps:
-- **`pairNodes()`**
-  - ...
-- **`pairLinks()`**
-  - ...
-- **`threadNodes()`**
-  - The `title` property is shown as tool tip by the major desktip browsers when hovering with the mouse over the node
-  - The `x`/`y` properties are the initial position of the node and can prevent a rotated and/or flipped diagram
-  - ... 
-- **`threadLinks()`**
-  - The `thread` property is required to paint threads.
-  - The `left`/`right` properties determine the curve direction, to prevent the links of repeated twists lying on top of one another.
-  - The `source`/`target` properties are indexes in the `threadNodes` array.
-  - The `end`/`start` properties with value `white` determine which end has some distance to the node for the over/under effect. Value `thread` marks the start of a thread to paint an individual thread in interactive mode.
-
-The following example creates a thread diagram of a twist.
+The following example (with an empty string for `steps`) creates a thread diagram of a twist.
 
     data = new function() {
       this.threadNodes = function (){ return [
@@ -156,3 +112,48 @@ The following example creates a thread diagram of a twist.
     }
     createSVG("./twist.svg",data,"","#f00,#0f0",1);0
 
+
+Object `dibl.D3Data`
+--------------------
+
+The object has functions returning arrays of maps:
+- **`pairNodes()`**
+  - ...
+- **`pairLinks()`**
+  - ...
+- **`threadNodes()`**
+  - The `title` property is shown as tool tip by the major desktip browsers when hovering with the mouse over the node
+  - The `x`/`y` properties are the initial position of the node and can prevent a rotated and/or flipped diagram
+  - The `startOf` property is required to paint threads. Its value should start with '`thread`' followed by a number.
+  - The `bobbin` property causes a special shape for the node.
+- **`threadLinks()`**
+  - The `thread` property is required to paint threads.
+  - The `left`/`right` properties determine the curve direction, to prevent the links of repeated twists lying on top of one another.
+  - The `source`/`target` properties are indexes in the `threadNodes` array.
+  - The `end`/`start` properties with value `white` determine which end has some distance to the node for the over/under effect. Value `thread` marks the start of a thread to paint an individual thread in interactive mode.
+
+
+### Constructor
+
+The (Scala only) constructor expects a pair diagram as argument which is an object with functions returning arrays of maps:
+  - **`nodes()`** - assigned as is to the returned object
+  - **`links()`** - assigned as is to the returned object
+
+### Factory methods `get`
+
+Both Scala and JavaScript, details on the [main] web page.
+
+* **`compactMatrix`** - see legend on matrix tab. You can copy-paste from the tool tips on the [thumbnails] page, any sequence of non-alphanumeric characters is treated as a line separator.
+* **`tileType`** - see values for drop down on matrix tab: `checker` or `bricks`
+* **`stitches`** - see stitches tab
+* **`rows`** - see patch size tab
+* **`cols`** - see patch size tab
+* **`shiftLeft`** - see footside tab
+* **`shiftUp`** - see footside tab
+
+[thumbnails]: https://d-bl.github.io/GroundForge/thumbs.html
+
+Another signature used by createSVG:
+
+* **`stitches`** - see step 2 and 3 on the [recursive] page
+* **`data`** - the result of `dibl.D3Data().get` or the result of `createSVG`
