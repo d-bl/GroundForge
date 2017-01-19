@@ -12,7 +12,11 @@ Off-line execution is faster, doesn't make a fuss if it takes a while, allows yo
   * [Object `dibl.D3Data`](#object--dibld3data-)
     + [Constructor](#constructor)
     + [Factory methods `get`](#factory-methods--get-)
-
+  * [Object `dibl.PatternSheet`](#object--diblpatternsheet-)
+    + [Constructor](#constructor-1)
+    + [method **`add`**](#method----add---)
+    + [JavaScript example](#javascript-example)
+    + [Java example](#java-example)
 
 
 Off-line execution
@@ -93,25 +97,26 @@ Defined in [batch.js].
 [main]: https://d-bl.github.io/GroundForge/
 [stretch]: https://github.com/d-bl/GroundForge/blob/master/docs/images/bloopers.md#3
 
-The following example (with an empty string for `steps`) creates a thread diagram of a twist.
+The following JavaScript example (with an empty string for `steps`) creates a thread diagram of a twist.
 
-    data = new function() {
-      this.threadNodes = function (){ return [
-        { x: 500, y: 500, startOf: 'thread1', title: 1 },
-        { x:   0, y: 500, startOf: 'thread2', title: 2 },
-        { title: 'twist' },
-        { x: 500, y:   0, bobbin: 'true' },
-        { x:   0, y:   0, bobbin: 'true' }
-      ]}
-      this.threadLinks = function(){ return [
-        { source: 0, target: 2, thread: 1, start: 'thread', end: 'white' },
-        { source: 1, target: 2, thread: 2, start: 'thread' },
-        { source: 2, target: 3, thread: 2, end: 'white', left: true },
-        { source: 2, target: 4, thread: 1, start: 'white', right: true }
-      ]}
-    }
-    createSVG("./twist.svg",data,"","#f00,#0f0",1);0
-
+```JavaSCript
+data = new function() {
+  this.threadNodes = function (){ return [
+    { x: 500, y: 500, startOf: 'thread1', title: 1 },
+    { x:   0, y: 500, startOf: 'thread2', title: 2 },
+    { title: 'twist' },
+    { x: 500, y:   0, bobbin: 'true' },
+    { x:   0, y:   0, bobbin: 'true' }
+  ]}
+  this.threadLinks = function(){ return [
+    { source: 0, target: 2, thread: 1, start: 'thread', end: 'white' },
+    { source: 1, target: 2, thread: 2, start: 'thread' },
+    { source: 2, target: 3, thread: 2, end: 'white', left: true },
+    { source: 2, target: 4, thread: 1, start: 'white', right: true }
+  ]}
+}
+createSVG("./twist.svg",data,"","#f00,#0f0",1);0
+```
 
 Object `dibl.D3Data`
 --------------------
@@ -157,3 +162,37 @@ Another signature used by createSVG:
 
 * **`stitches`** - see step 2 and 3 on the [recursive] page
 * **`data`** - the result of `dibl.D3Data().get` or the result of `createSVG`
+
+
+
+Object `dibl.PatternSheet`
+--------------------------
+
+### Constructor
+
+* **`patchRows`** - number of rows for the generated patterns. Recommended value: 3 for a portrait A4 or letter sheet, 2 for landscape. 
+* **`pageSize`** - string with attributes for the root SVG element, in practice the dimensions of the page.
+
+### method **`add`**
+
+* **`compactMatrix`** - see legend on matrix tab of the [main] web page. You can copy-paste from the tool tips on the [thumbnails] page, any sequence of non-alphanumeric characters is treated as a line separator.
+* **`tileType`** - see values for drop down on matrix tab: `checker` or `bricks`.
+
+### JavaScript example
+
+```JavaScript
+var patterns = new dibl.PatternSheet(2, "height='100mm' width='110mm'")
+patterns.add("586- -789 2111 -4-4", "checker");0
+fs.writeFile("./sheet.svg", patterns.toSvgDoc(), function(err) {
+    if(err) return console.log(err)
+    else console.log("saved")
+});0
+```
+
+### Java example
+
+```java
+PatternSheet patterns = new dibl.PatternSheet(2, "height='100mm' width='110mm'");
+patterns.add("586- -789 2111 -4-4", "checker");
+new java.io.FileOutputStream("sheet.svg").write(patterns.toSvgDoc().getBytes());
+```
