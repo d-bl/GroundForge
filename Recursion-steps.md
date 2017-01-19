@@ -1,6 +1,6 @@
 The [recursive] page uses a thread diagram as pair diagram to create another thread diagram. It does so at most two times. Even with so few steps larger dimensions could quickly overwhelm a browser, while you need larger dimensions to see the full pattern.
 
-Batch execution is faster, doesn't make a fuss if it takes a while and allows as many recursion steps as your system can handle. Downside: it requires a few hoops to jump through: install an environment to execute JavaScript without a browser and two function calls.
+Off-line execution is faster, doesn't make a fuss if it takes a while, allows you to abort at your own discretion and allows as many recursion steps as your system can handle. Downside: it requires a few hoops to jump through: install an environment to execute JavaScript without a browser and get familiar with two or three function calls.
 
 <sub>_[Table of contents generated with markdown-toc](http://ecotrust-canada.github.io/markdown-toc/)_</sub>
 
@@ -16,7 +16,7 @@ Batch execution is faster, doesn't make a fuss if it takes a while and allows as
 Off-line execution
 ==================
 
-The SVG documents can also be generated in other JavaScript environments than a web-browser. Many variations of the following steps are possible.
+The SVG documents with the diagrams can also be generated in other JavaScript environments than a web-browser. Many variations of the following steps are possible.
 
 Requirements
 ------------
