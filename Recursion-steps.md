@@ -29,7 +29,7 @@ The SVG documents with the diagrams can also be generated in other environments 
 Scala / Java
 ------------
 
-So far only `PatternSheet` is ready for a pure Java of Scala environment. You can build the the project with maven from the source code, or download the jar from the latest [release] in which case you'll need some [dependencies].
+So far only `PatternSheet` is ready for a pure Java or Scala environment. You can build the the project with maven from the source code, or download the jar from the latest [release] in which case you'll need some [dependencies].
 
 [dependencies]: https://github.com/d-bl/GroundForge/blob/b97deb1963be7e9cacb8836e708783174c3f877a/pom.xml#L12-L28
 
