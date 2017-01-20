@@ -5,6 +5,7 @@ Off-line execution is faster, doesn't make a fuss if it takes a while, allows yo
 <sub>_[Table of contents generated with markdown-toc](http://ecotrust-canada.github.io/markdown-toc/)_</sub>
 
 - [Off-line execution](#off-line-execution)
+  * [Scala / Java](#scala---java)
   * [Set up node.js](#set-up-nodejs)
   * [Create thread diagram with node.js](#create-thread-diagram-with-nodejs)
 - [Functions and Parameters](#functions-and-parameters)
@@ -19,10 +20,18 @@ Off-line execution is faster, doesn't make a fuss if it takes a while, allows yo
     + [Java example](#java-example)
 
 
+
 Off-line execution
 ==================
 
-The SVG documents with the diagrams can also be generated in other JavaScript environments than a web-browser. Many variations of the following steps are possible.
+The SVG documents with the diagrams can also be generated in other environments than a web-browser. Many variations are possible.
+
+Scala / Java
+------------
+
+So far only `PatternSheet` is ready for a pure Java of Scala environment. You can build the the project with maven from the source code, or download the jar from the latest [release] in which case you'll need some [dependencies].
+
+[dependencies]: https://github.com/d-bl/GroundForge/blob/b97deb1963be7e9cacb8836e708783174c3f877a/pom.xml#L12-L28
 
 Set up node.js
 --------------
@@ -72,7 +81,7 @@ The greyed parts depend on
 
 What goes between `(...)` is documented below.
 
-The countdown process until the diagram gets saved runs in the back ground. Wait with new commands to prevent overwhelming your system. The more nodes where created, the longer each countdown step takes and the easier your system gets overwhelmed.
+The countdown process until the diagram gets saved runs in the back ground. The more nodes where created, the longer each countdown step takes. Issuing a new command might abort the one still running.
 
 [properties]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/nodejs-shortcut-properties.png
 
