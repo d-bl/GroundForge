@@ -260,5 +260,5 @@ Of course you should close the stream.
 ```scala
 val patterns = dibl.PatternSheet(2, "height='100mm' width='110mm'")
 patterns.add("586- -789 2111 -4-4", "checker")
-scala.reflect.io.File("C:/Users/Falkink/XXX/target/sheet.svg").writeAll(patterns.toSvgDoc())
+scala.reflect.io.File("PATH/TO/GroundForge/target/sheet.svg").writeAll(patterns.toSvgDoc())
 ```
