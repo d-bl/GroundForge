@@ -15,6 +15,8 @@
 */
 package dibl
 
+import dibl.D3Data.toJS
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExport
 
@@ -41,7 +43,11 @@ class D3Data (pairDiagram: Diagram) {
   @JSExport
   def threadLinks(): js.Array[js.Dictionary[Any]] = toJS(threadDiagram.links)
 
-  private def toJS(scalaItems: Seq[Props]): js.Array[js.Dictionary[Any]] = {
+}
+
+ object D3Data {
+
+  def toJS(scalaItems: Seq[Props]): js.Array[js.Dictionary[Any]] = {
 
     val jsItems = new js.Array[js.Any](scalaItems.length).asInstanceOf[js.Array[js.Dictionary[Any]]]
     for {i <- scalaItems.indices} {
@@ -52,10 +58,6 @@ class D3Data (pairDiagram: Diagram) {
     }
     jsItems
   }
-}
-
-@JSExport
-object D3Data {
 
   /** Creates a pair and thread diagrams from values in form fields of docs/index.html
     *

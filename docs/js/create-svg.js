@@ -32,13 +32,15 @@
 require("./matrix-graphs.js")  // loads dibl.D3Data() compiled from scala code
 require("./show-graph.js")     // loads diagram which feeds the dibl-data to D3js
 d3 = require("./d3.v4.min.js") // loads third party modules
-// from node_modules
+// built-in by node.js
 fs = require("fs")
-
+// from node_modules
 document = require("jsdom").jsdom()
-navigator = {}
 
-createSVG = function (svgFile, data, stitches, colors, countDown) {
+window = {}
+navigator = "no-browser"
+
+createThreadSVG = function (svgFile, data, stitches, colors, countDown) {
   if (stitches.trim().length > 0) stitches.split(";").forEach(function(s){
     console.log("applying " + s + " to " + data.threadNodes().length + " nodes")
     data = dibl.D3Data().get(s, data)
@@ -54,6 +56,28 @@ createSVG = function (svgFile, data, stitches, colors, countDown) {
     viewWidth: 744,
     viewHeight: 1052,
     palette: colors,
+    onAnimationEnd: function() {
+      if (--countDown > 0) {
+          console.log("countdown " + countDown)
+          diagram.sim.alpha(0.005).restart()
+      } else fs.writeFile(diagram.svgFile, document.body.innerHTML, function(err) {
+        if(err) return console.log(err)
+        else console.log(svgFile + " was saved")
+      })
+    }
+  })
+  return data
+}
+
+createPairSVG = function (svgFile, data, countDown) {
+  document.body.innerHTML = ""
+  diagram.svgFile = svgFile
+  diagram.showGraph({
+    container: document.body,
+    nodes: data.pairNodes(),
+    links: data.pairLinks(),
+    viewWidth: 744,
+    viewHeight: 1052,
     onAnimationEnd: function() {
       if (--countDown > 0) {
           console.log("countdown " + countDown)

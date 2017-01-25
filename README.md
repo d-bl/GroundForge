@@ -3,12 +3,11 @@ _A toolbox to design bobbin lace grounds with matching diagrams._
 DEMO's
 ======
 
-A [dressed up](https://d-bl.github.io/GroundForge/) version and a dressed down [docs/API](https://d-bl.github.io/GroundForge/API) version, the latter shows a starting point to configure your own web interface or embed just some of the diagrams on your own web page, though you may want to start with the `show-graph.js` of the dressed up version.
+A [dressed up](https://d-bl.github.io/GroundForge/) version and a dressed down [docs/API](https://d-bl.github.io/GroundForge/API) version. The latter shows a starting point to configure your own web interface or embed just some of the diagrams on your own web page, though you may want to start by injecting the `show-graph.js` of the dressed up version into the dressed down version. See also the [API] for other environments than a web-browser.
 
+[API]: docs/API.md
 [![Build Status](https://travis-ci.org/d-bl/GroundForge.svg?branch=master)](https://travis-ci.org/d-bl/GroundForge) 
-Note that just building does not copy the compiled code to the demo's.
-
-[compile]: #compile-and-preview
+Note that just building does not copy the compiled code into a local version of the demo's.
 
 
 How it's Made / third party data and scripts
@@ -64,19 +63,8 @@ Color-picker: jscolor
 Safari nor Internet Explorer support `<input type="color">`. The free [color-picker](http://jscolor.com/) works on both platforms and was easy to apply.
 
 
-Scala code
-==========
- 
-The scala code takes care of the number crunching that assembles the data for D3js and the SVG for the pattern sheet. The scala code is compiled into `matrix-graphs.js`. An HTML form takes care of configuration collected with `index.js` and `jscolor.js` and feeds it to the [D3.js] API with `show-graphs.js`.
-
-The code under `src/main/scala/dibl` has two classes with `@JSExport` annotations. The `dibl.D3Data` results are visualised with D3js. The toSVG result of `dibl.PatternSheet` is written to files by unit tests or assigned to the innerHTML of a DOM element on the web pages. Modern browsers can display the SVG test files. 
-
-The scripts and page in `docs/API` are minimalistic versions of its siblings in `docs` and `docs/js`, the dressed up version adds decoration, event handling, configuration and some help. The development view for the thread and pair diagrams is a slightly less minimal page. For that purpose `src/main/resources/index-dev.html` is served by sbt as `http://localhost:12345/target/scala-2.11/classes/index-dev.html`, this page immediately reflects changes in the scala code though the simulation doesn't start.
-
-
 Compile and preview
 -------------------
-
 
 ### Requirements
 
@@ -105,7 +93,7 @@ Important code conventions
 --------------------------
 
 - Never catch exceptions in a `Try` as exceptions terminate the JavaScript. The tests might succeed with maven, but the JavaScript breaks. Prevent exceptions like illegal arguments and indexes and create a `Failure` for safe execution with JavaScript.
-- Restrict the use of raw js objects to the API level: the classes and methods annotated with `@JSExport`. This allows execution of test classes with another JVM than ScalaJS was built with.
+- Restrict the use of raw js objects to the [API](docs/API.md) level: the classes and methods annotated with `@JSExport`. This allows execution of test classes with another JVM than ScalaJS was built with.
 
 The applied Scala coding techniques are explained by this [course] up and including workshop 3. The main code doesn't use any io, and the hand full of files written by test/demo classes don't justify using a library. So you can save the last task of the FileIO assignment for other purposes.
 

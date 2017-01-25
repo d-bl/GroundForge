@@ -184,12 +184,16 @@ diagram.showGraph = function(args) {
     // a higher speed for IE as marks only appear when the animation is finished
     var mod = isMobileMac ? 4 : isIE ? 3 : 2
     var step = 0
-    var simTicked = function() {
+    var simTicked = navigator == "no-browser" ? function(){} : function() {
                          if ( step++ > 2 && (step % mod) != 0) return // skip rendering
                          nodes.attr("transform", moveNode)
                          links.attr("d", drawPath)
                      }
     var simEnded = function(){
+                        if (navigator == "no-browser") {
+                            nodes.attr("transform", moveNode)
+                            links.attr("d", drawPath)
+                        }
                         if (isIE || isMobileMac) diagram.markLinks(links)
                         if (args.onAnimationEnd) args.onAnimationEnd()
                     }
