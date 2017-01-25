@@ -66,7 +66,7 @@ A few steps are required to create an environment to [run JavaScript] without a 
 
 * Install [node.js] which should work on any operating system. It creates the commands `node`, `npm` and a `node.js command prompt`. A screen shot for Windows 10:
 
-  [<img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/nodejs-command-search-thumb.png">](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/nodejs-command-search-on-windows-10.png)
+  [<img src="images/nodejs-command-search-thumb.png">](images/nodejs-command-search-on-windows-10.png)
 * Download and unzip `GroundForge`:
   * either a [release], since 2017-01-11
   * or the latest version, possibly not yet tagged as a release: [zip] or [tar.gz]
@@ -111,7 +111,7 @@ What goes between `(...)` is documented below.
 
 The countdown process until the diagram gets saved runs in the back ground. The more nodes where created, the longer each countdown step takes. Issuing a new command might abort the one still running.
 
-[properties]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/nodejs-shortcut-properties.png
+[properties]: images/nodejs-shortcut-properties.png
 
  
 Functions and Classes
