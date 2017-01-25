@@ -55,7 +55,7 @@ An IDE can compile and run the worksheet as you type.
 So far only `PatternSheet` is ready to create an SVG in JVM environment. An attempt to create the thread diagram and/or pair diagram in a JVM is started in a [Demo class].
 
 [facades]: https://github.com/spaced/scala-js-d3/issues/25
-[Demo class]: src\test\scala\dibl\Demo.scala
+[Demo class]: src/test/scala/dibl/Demo.scala
 [dependencies]: https://github.com/d-bl/GroundForge/blob/b97deb1963be7e9cacb8836e708783174c3f877a/pom.xml#L12-L28
 
 
