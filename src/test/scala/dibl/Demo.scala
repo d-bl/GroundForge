@@ -35,7 +35,7 @@ object Demo extends App {
       |  }
       |  return result
       |}
-      |function applyForce(center, data) {
+      |function applyForce(center, data, forceGraph) {
       |  var nodes = nodesToJS(data.nodes())
       |  var links = linksToJS(nodes, data.links())
       |  d3.forceSimulation(nodes)
@@ -44,14 +44,14 @@ object Demo extends App {
       |    .force("center", d3.forceCenter(center.x(), center.y()))
       |    .alpha(0.0035)
       |    .on("end", function() {
-      |      Java.type("dibl.Demo").onEnd(nodes)
+      |      Java.type("dibl.Demo").onEnd(nodes, forceGraph)
       |    })
       |}
       |print("javascript engine started")
       |""".stripMargin)
 
-  def onEnd(jsNodes: ScriptObjectMirror): Unit = {
-    val nodes: Array[Point] = jsNodes
+  def onEnd(jsNodes: ScriptObjectMirror, forceGraph: ForceGraph): Unit = {
+    forceGraph.applyNodePositions(jsNodes
       .values()
       .toArray()
       .map(ps => {
@@ -60,24 +60,35 @@ object Demo extends App {
           props.get("x").asInstanceOf[Double],
           props.get("y").asInstanceOf[Double]
         )
-      })
-    println(nodes.mkString(", "))
-    println("substitute points in nodes of not yet implemented SVG document")
-    // somehow the main thread should wait for this moment
-    // perhaps rewrite the event_loop to achieve synchronous execution
-    System.exit(0)
+      }))
   }
 
   case class Point(x: Double, y: Double)
 
-  def applyForce(center: Point, diagram: Diagram): Unit = {
+  abstract class ForceGraph {
+    /** @param nodePositions calculated by [[applyForce]] from the [[Diagram]] */
+    def applyNodePositions(nodePositions: Array[Point]): Unit
+  }
+
+  def applyForce(center: Point, diagram: Diagram, forceGraph: ForceGraph): Unit = {
     println(s"SCALA nodes: ${diagram.nodes}")
     println(s"SCALA links: ${diagram.links}")
-    invocable.invokeFunction("applyForce", Point(200,200), diagram)
+    invocable.invokeFunction("applyForce", Point(200,200), diagram, forceGraph)
   }
 
   ////////////////////////////////////////////////
-  applyForce( Point(200,200), PairDiagram(Settings(
+  private val pairDiagram = PairDiagram(Settings(
     "5-", "bricks", stitches = "ctc", absRows = 3, absCols = 3
-  )))
+  ))
+  private val graph = new ForceGraph {
+    override def applyNodePositions(nodePositions: Array[Point]): Unit = {
+      println(nodePositions.mkString(", "))
+      ???
+    }
+  }
+  applyForce( Point(200,200), pairDiagram, graph)
+  // TODO System.exit(0) when all threads completed
+  // see event_loop.js
+  //    java.util.Timer is not a deamon
+  //    java.util.concurrent.Phaser
 }
