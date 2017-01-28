@@ -45,7 +45,8 @@ class D3Data (pairDiagram: Diagram) {
 
 }
 
- object D3Data {
+@JSExport
+object D3Data {
 
   def toJS(scalaItems: Seq[Props]): js.Array[js.Dictionary[Any]] = {
 
