@@ -76,7 +76,7 @@ object Force {
     */
   def onEnd(jsNodePositions: ScriptObjectMirror,
             callback: (Array[Point]) => Unit
-           ): Unit =
+           ): Unit = {
     callback(jsNodePositions
       .values()
       .toArray()
@@ -88,6 +88,10 @@ object Force {
         )
       })
     )
+    busy = false
+  }
+
+  private var busy = false
 
   case class Point(x: Double, y: Double)
 
@@ -99,16 +103,20 @@ object Force {
     *                 for https://github.com/d3/d3-force/#links
     *                 the boolean link.weak is converted to a strength value
     * @param center   used for https://github.com/d3/d3-force/#forceCenter
+    * @param interval time to wait to check whether D3js is ready
     * @param callback called when the D3js simulation’s timer stops:
     *                 https://github.com/d3/d3-force/#simulation_on
     */
   def simulate(diagram: Diagram,
                center: Point = Point(0, 0),
+               interval: Long = 200,
                callback: (Array[Point]) => Unit = { points => println(points.mkString(", ")) }
               ): Unit = {
-    invocable.invokeFunction("applyForce", center, diagram, callback)
+    busy = true
     println()
     println(s"nodes: ${diagram.nodes}")
     println(s"links: ${diagram.links}")
+    invocable.invokeFunction("applyForce", center, diagram, callback)
+    while (busy) Thread.sleep(interval) // TODO will hang in case of an exception in the thread
   }
 }
