@@ -52,7 +52,7 @@ object Force {
          |  return result
          |}
          |function strength(link){return link.weak? 5 : 50}
-         |function applyForce(center, data, callback) {
+         |function applyForce(center, data) {
          |  var nodes = nodesToJS(data.nodes())
          |  var links = linksToJS(nodes, data.links())
          |  d3.forceSimulation(nodes)
@@ -61,7 +61,7 @@ object Force {
          |    .force("center", d3.forceCenter(center.x(), center.y()))
          |    .alpha(0.0035)
          |    .on("end", function() {
-         |      Java.type("dibl.Force").onEnd(nodes, callback)
+         |      Java.type("dibl.Force").onEnd(nodes)
          |    })
          |}
          |print("javascript engine started")
@@ -69,15 +69,15 @@ object Force {
     engine.asInstanceOf[Invocable]
   }
 
-  /** For internal use by the evaluated script
+  /** For internal use
+    *
+    * called when the D3js simulation’s timer stops:
+    * https://github.com/d3/d3-force/#simulation_on
     *
     * @param jsNodePositions converted to a callback argument
-    * @param callback        called when the D3js simulation’s timer stops
     */
-  def onEnd(jsNodePositions: ScriptObjectMirror,
-            callback: (Array[Point]) => Unit
-           ): Unit = {
-    callback(jsNodePositions
+  def onEnd(jsNodePositions: ScriptObjectMirror): Unit = try {
+    points = jsNodePositions
       .values()
       .toArray()
       .map(ps => {
@@ -87,10 +87,11 @@ object Force {
           props.get("y").asInstanceOf[Double]
         )
       })
-    )
+  } finally {
     busy = false
   }
 
+  private var points: Array[Point] = _ // TODO make it a Try[Array[Point]]
   private var busy = false
 
   case class Point(x: Double, y: Double)
@@ -103,20 +104,17 @@ object Force {
     *                 for https://github.com/d3/d3-force/#links
     *                 the boolean link.weak is converted to a strength value
     * @param center   used for https://github.com/d3/d3-force/#forceCenter
-    * @param interval time to wait to check whether D3js is ready
-    * @param callback called when the D3js simulation’s timer stops:
-    *                 https://github.com/d3/d3-force/#simulation_on
+    * @param interval time to wait to check whether D3js is ready,
+    *                 balance the overhead of a small value against spilled idle time
     */
   def simulate(diagram: Diagram,
                center: Point = Point(0, 0),
-               interval: Long = 200,
-               callback: (Array[Point]) => Unit = { points => println(points.mkString(", ")) }
-              ): Unit = {
+               interval: Long = 200
+              ): Array[Point] = {
     busy = true
-    println()
-    println(s"nodes: ${diagram.nodes}")
-    println(s"links: ${diagram.links}")
-    invocable.invokeFunction("applyForce", center, diagram, callback)
-    while (busy) Thread.sleep(interval) // TODO will hang in case of an exception in the thread
+    points = null
+    invocable.invokeFunction("applyForce", center, diagram)
+    while (busy) Thread.sleep(interval)
+    points // returned via onEnd()
   }
 }
