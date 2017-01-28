@@ -1,9 +1,9 @@
 
 <sub>_[Table of contents generated with markdown-toc](http://ecotrust-canada.github.io/markdown-toc/)_</sub>
 
-- [Web interface](#web-interface)
-- [Off-line execution](#off-line-execution)
-  * [Scala / Java](#scala---java)
+- [Execution environments](#execution-environments)
+  * [Web browser](#web-browser)
+  * [JVM alias Scala / Java](#jvm-alias-scala---java)
   * [Set up node.js for JavaScript](#set-up-nodejs-for-javascript)
   * [Create a thread diagram with node.js](#create-a-thread-diagram-with-nodejs)
 - [Functions and Classes](#functions-and-classes)
@@ -24,13 +24,17 @@
 Scala code takes care of the number crunching that assembles the data for D3js and the SVG for the pattern sheet. The compiled scala code is copied into `matrix-graphs.js`.
 The scripts `index.js` and `jscolor.js` collect the configuration from an HTML form then `show-graphs.js` feeds it to the [D3.js] API.
 
+
+The SVG components on the [main] page can also be generated in other environments than a web-browser. Many variations alternatives and mash-ups are possible.
 Modern browsers can display the SVG files resulting from the  demo classes under `src/test`, or created by off-line execution. 
 
 [D3.js]: http://d3js.org/
 
+Execution environments
+======================
 
-Web interface
-=============
+Web browser
+-----------
 
 Demos: the [dressed up](https://d-bl.github.io/GroundForge/) version and the dressed down [docs/API](https://d-bl.github.io/GroundForge/API) version.
 
@@ -39,23 +43,18 @@ The scripts and page in `docs/API` are minimalistic versions of its siblings in 
 The dressed up version adds decoration, event handling, configuration and some help. The development view for the thread and pair diagrams is a slightly less minimal page. For that purpose `src/main/resources/index-dev.html` is served by sbt as `http://localhost:12345/target/scala-2.11/classes/index-dev.html`, this page immediately reflects changes in the scala code though the simulation doesn't start.
 
 
-Off-line execution
-==================
+JVM alias Scala / Java
+----------------------
 
-The SVG documents on the [main] pages can also be generated in other environments than a web-browser. Many variations are possible.
-
-
-Scala / Java
-------------
-
-To skip a build and/or put the jar with [dependencies] on your class path, you can create a worksheet between the source code.
+To skip a build and/or put the jar with [dependencies] on your class path, you can create a scala worksheet between the source code.
 The extension of worksheets is `.sc` which is git-ignored.
 An IDE can compile and run the worksheet as you type.
 
-So far only `PatternSheet` is ready to create an SVG in JVM environment. An attempt to create the thread diagram and/or pair diagram in a JVM is started in a [Demo class].
+The `PatternSheet` is ready to create an SVG in a JVM environment.
+A [ForceDemo class] is under construction for batch generation of pair/thread diagrams. Though written in scala both can as easily be used in java.
 
 [facades]: https://github.com/spaced/scala-js-d3/issues/25
-[Demo class]: ../src/test/scala/dibl/Demo.scala
+[ForceDemo class]: ../src/test/scala/dibl/ForceDemo.scala
 [dependencies]: https://github.com/d-bl/GroundForge/blob/b97deb1963be7e9cacb8836e708783174c3f877a/pom.xml#L12-L28
 
 
