@@ -76,7 +76,9 @@ object Force {
     * Called when the D3js simulation’s timer stops:
     * https://github.com/d3/d3-force/#simulation_on
     *
-    * @param jsNodePositions converted to a value for the simulate method to return
+    * @param jsNodePositions A deep copy of [[Diagram.nodes]] with x/y values changed by D3js.
+    *                        Note that as long as the Diagram.nodes are a map, 'deep' stops at the values in the map,
+    *                        but copied values other than Integers or Doubles are an error.
     */
   def onEnd(jsNodePositions: ScriptObjectMirror): Unit = try {
     points = Success(jsNodePositions
