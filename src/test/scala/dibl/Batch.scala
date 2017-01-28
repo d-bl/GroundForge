@@ -1,5 +1,5 @@
 /*
- Copyright 2015 Jo Pol
+ Copyright 2017 Jo Pol
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -110,11 +110,12 @@ object Batch {
 
   /** usage example */
   def main(args: Array[String]) {
-    val pairDiagram = PairDiagram(Settings("5-", "bricks", stitches = "ctc", absRows = 3, absCols = 3))
+    val pairDiagram = PairDiagram("5-", "bricks", stitches = "ctc", absRows = 3, absCols = 3).get
 
     // TODO rather wait for the D3js threads than just sleep
-    // an attempt to hack event_loop.js to prevent threads caused a stack overflow
-    // it uses java.util.Timer and java.util.concurrent.Phaser
+    // event_loop.js implements setTimeout(func, delay) and setInterval(func, delay)
+    // for D3js with java.util.Timer and java.util.concurrent.Phaser
+    // it needs more hoops than onEnd to define them in scala
     applyForce(pairDiagram); Thread.sleep(2000)
     applyForce(pairDiagram); Thread.sleep(2000)
     applyForce(pairDiagram); Thread.sleep(2000)
@@ -125,6 +126,7 @@ object Batch {
     // https://github.com/d-bl/GroundForge/blob/2d85c7a/docs/API.md#functions-createsvg-createthreadsvg-createpairsvg
     val threadDiagram = ThreadDiagram(pairDiagram)
     PairDiagram("ctc",threadDiagram)
+    // TODO at last generate SVG in a scala way rather than feed it to show-graph.js
 
     System.exit(0)
   }
