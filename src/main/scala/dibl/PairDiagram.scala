@@ -71,20 +71,33 @@ object PairDiagram {
     Diagram(nodes, links)
   }
 
+  def apply(str: String,
+            bricks: String,
+            absRows: Int,
+            absCols: Int,
+            shiftLeft: Int = 0,
+            shiftUp: Int = 0,
+            stitches: String = ""
+           ): Try[Diagram] =
+    Settings(str, bricks, absRows, absCols, shiftLeft, shiftUp, stitches)
+      .map(PairDiagram(_))
+
   def apply(triedSettings: Try[Settings]): Diagram = if (triedSettings.isFailure)
     Diagram(Seq(Props("title" -> triedSettings.failed.get.getMessage, "bobbin" -> true)), Seq[Props]())
-  else {
-    val settings: Settings = triedSettings.get
-    val fringes = new Fringes(triedSettings.get.absM)
+  else apply(triedSettings.get)
+
+  private def apply(settings: Settings) = {
+
+    val fringes = new Fringes(settings.absM)
     val sources: Seq[Cell] = fringes.newPairs.map { case (source, _) => source }
     val sourcesIndices = sources.indices
     val plainLinks: Seq[Link] =
       sourcesIndices.filter(i => fringes.isLeftPair(i)).map(i => fringes.newPairs(i)) ++
-      fringes.leftFootSides ++
-      fringes.coreLinks ++
-      sourcesIndices.filter(i => !fringes.isLeftPair(i)).map(i => fringes.newPairs(i)) ++
-      fringes.rightFootSides
-    val linksByTarget: Map[Cell,Seq[Link]] = replaceYsWithVs(plainLinks.groupBy { case (_, target) => target })
+        fringes.leftFootSides ++
+        fringes.coreLinks ++
+        sourcesIndices.filter(i => !fringes.isLeftPair(i)).map(i => fringes.newPairs(i)) ++
+        fringes.rightFootSides
+    val linksByTarget: Map[Cell, Seq[Link]] = replaceYsWithVs(plainLinks.groupBy { case (_, target) => target })
     val targets: Seq[Cell] = linksByTarget.keys.toSeq
 
     def footsideTwists(row: Int, col: Int) = {
@@ -121,8 +134,8 @@ object PairDiagram {
       linksByTarget.values.flatten.map { case ((sourceRow, sourceCol), (targetRow, targetCol)) =>
         val sourceNode = nodeMap((sourceRow, sourceCol))
         val targetNode = nodeMap((targetRow, targetCol))
-        val sourceStitch = nodes(sourceNode).title.replaceAll(" .*","").replaceAll("t","lr")
-        val targetStitch = nodes(targetNode).title.replaceAll(" .*","").replaceAll("t","lr")
+        val sourceStitch = nodes(sourceNode).title.replaceAll(" .*", "").replaceAll("t", "lr")
+        val targetStitch = nodes(targetNode).title.replaceAll(" .*", "").replaceAll("t", "lr")
         val toLeftOfTarget = settings.absM(targetRow)(targetCol)(0) == (sourceRow, sourceCol)
         Props(
           "source" -> sourceNode,
@@ -134,6 +147,7 @@ object PairDiagram {
         )
       }.toSeq ++ transparentLinks(sourcesIndices.toArray)
     Diagram(nodes, links)
+
   }
 
   /** Y and V are ascii art representations of sections in the two-in-two out graph
