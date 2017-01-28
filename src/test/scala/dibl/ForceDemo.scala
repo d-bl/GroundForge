@@ -15,24 +15,15 @@
 */
 package dibl
 
-import java.lang.Thread.sleep
-
 import dibl.Force.Point
 
 object ForceDemo {
   def main(args: Array[String]) {
     val pairDiagram = PairDiagram("5-", "bricks", stitches = "ctc", absRows = 3, absCols = 3).get
 
-    // TODO rather wait for the D3js threads than just sleep
-    // event_loop.js implements setTimeout(func, delay) and setInterval(func, delay)
-    // for D3js with java.util.Timer and java.util.concurrent.Phaser
-    // it needs more hoops than Force.onEnd to define them in scala
     Force.simulate(pairDiagram)
-    sleep(2000)
     Force.simulate(pairDiagram, center = Point(200,200))
-    sleep(2000)
     Force.simulate(pairDiagram, callback = applyNodePositions)
-    sleep(2000)
 
     // TODO apply scaled nodePositions to a diagram before calculating the next
     // it might prevent https://github.com/d-bl/GroundForge/blob/87d706d/docs/images/bloopers.md#3
@@ -42,7 +33,7 @@ object ForceDemo {
     PairDiagram("ctc",threadDiagram)
     // TODO at last generate SVG in a scala way rather than feed the diagram to show-graph.js
 
-    System.exit(0)
+    System.exit(0) // TODO terminate script engine more elegantly
   }
 
   private def applyNodePositions (points: Array[Point]) = println(points.mkString(", "))
