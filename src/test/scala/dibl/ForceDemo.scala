@@ -20,10 +20,12 @@ import dibl.Force.Point
 object ForceDemo {
   def main(args: Array[String]) {
     val pairDiagram = PairDiagram("5-", "bricks", stitches = "ctc", absRows = 3, absCols = 3).get
+    println(s"nodes: ${pairDiagram.nodes}")
+    println(s"links: ${pairDiagram.links}")
 
-    Force.simulate(pairDiagram)
-    Force.simulate(pairDiagram, center = Point(200,200))
-    Force.simulate(pairDiagram, callback = applyNodePositions)
+    println(Force.simulate(pairDiagram).mkString(", "))
+    println(Force.simulate(pairDiagram, center = Point(200,200)).mkString(", "))
+    println(Force.simulate(pairDiagram, interval = 100).mkString(", "))
 
     // TODO apply scaled nodePositions to a diagram before calculating the next
     // it might prevent https://github.com/d-bl/GroundForge/blob/87d706d/docs/images/bloopers.md#3
@@ -35,6 +37,4 @@ object ForceDemo {
 
     System.exit(0) // TODO terminate script engine more elegantly
   }
-
-  private def applyNodePositions (points: Array[Point]) = println(points.mkString(", "))
 }
