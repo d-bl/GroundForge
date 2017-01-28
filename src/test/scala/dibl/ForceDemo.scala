@@ -23,9 +23,9 @@ object ForceDemo {
     println(s"nodes: ${pairDiagram.nodes}")
     println(s"links: ${pairDiagram.links}")
 
-    println(Force.simulate(pairDiagram).mkString(", "))
-    println(Force.simulate(pairDiagram, center = Point(200,200)).mkString(", "))
-    println(Force.simulate(pairDiagram, interval = 100).mkString(", "))
+    println(Force.simulate(pairDiagram).map(_.mkString(", ")))
+    println(Force.simulate(pairDiagram, center = Point(200,200)).map(_.mkString(", ")))
+    println(Force.simulate(pairDiagram, interval = 100).map(_.mkString(", ")))
 
     // TODO apply scaled nodePositions to a diagram before calculating the next
     // it might prevent https://github.com/d-bl/GroundForge/blob/87d706d/docs/images/bloopers.md#3

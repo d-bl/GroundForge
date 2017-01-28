@@ -20,6 +20,8 @@ import javax.script.{Invocable, ScriptContext, ScriptEngine, ScriptEngineManager
 
 import jdk.nashorn.api.scripting.ScriptObjectMirror
 
+import scala.util.{Failure, Success, Try}
+
 object Force {
   private val invocable = {
     val engine: ScriptEngine = (new ScriptEngineManager).getEngineByName("nashorn")
@@ -69,15 +71,15 @@ object Force {
     engine.asInstanceOf[Invocable]
   }
 
-  /** For internal use
+  /** For internal use, should possibly be added to the engineScope to make it private.
     *
-    * called when the D3js simulation’s timer stops:
+    * Called when the D3js simulation’s timer stops:
     * https://github.com/d3/d3-force/#simulation_on
     *
-    * @param jsNodePositions converted to a callback argument
+    * @param jsNodePositions converted to a value for the simulate method to return
     */
   def onEnd(jsNodePositions: ScriptObjectMirror): Unit = try {
-    points = jsNodePositions
+    points = Success(jsNodePositions
       .values()
       .toArray()
       .map(ps => {
@@ -86,17 +88,23 @@ object Force {
           props.get("x").asInstanceOf[Double],
           props.get("y").asInstanceOf[Double]
         )
-      })
+      }))
+  } catch {
+    case e: Throwable => points = Failure(e)
   } finally {
     busy = false
   }
 
-  private var points: Array[Point] = _ // TODO make it a Try[Array[Point]]
+  private var points: Try[Array[Point]] = _
   private var busy = false
 
   case class Point(x: Double, y: Double)
 
-  /** Calculates new node position with D3js in a background process.
+  /** Calculates new node positions, NOT THREAD SAFE!
+    *
+    * D3js executes the calculation in a thread as it is time consuming
+    * and the library is primarily intended for animations in a browser.
+    * This method waits until the calculation completes for sequential batch execution.
     *
     * @param diagram  collections converted to nodes (x: Int, y: Int)
     *                 for https://github.com/d3/d3-force/#forceSimulation
@@ -110,11 +118,10 @@ object Force {
   def simulate(diagram: Diagram,
                center: Point = Point(0, 0),
                interval: Long = 200
-              ): Array[Point] = {
-    busy = true
-    points = null
+              ): Try[Array[Point]] = {
+    busy = true // set to false by onEnd when the invoked applyForce completes.
     invocable.invokeFunction("applyForce", center, diagram)
     while (busy) Thread.sleep(interval)
-    points // returned via onEnd()
+    points // set by onEnd()
   }
 }
