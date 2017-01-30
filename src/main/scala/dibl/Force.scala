@@ -16,6 +16,7 @@
 package dibl
 
 import java.io.FileReader
+import java.util.concurrent.{CyclicBarrier, TimeUnit}
 import javax.script.{Invocable, ScriptContext, ScriptEngine, ScriptEngineManager}
 
 import jdk.nashorn.api.scripting.ScriptObjectMirror
@@ -58,11 +59,11 @@ object Force {
   } catch {
     case e: Throwable => points = Failure(e)
   } finally {
-    busy = false
+    barier.await()
   }
 
   private var points: Try[Array[Point]] = _
-  private var busy = false
+  private val barier = new CyclicBarrier(2)
 
   case class Point(x: Double, y: Double)
 
@@ -78,20 +79,19 @@ object Force {
     *                 for https://github.com/d3/d3-force/#links
     *                 the boolean link.weak is converted to a strength value
     * @param center   used for https://github.com/d3/d3-force/#forceCenter
-    * @param interval time to wait to check whether D3js is ready,
-    *                 balance the overhead of a small value against spilled idle time
+    * @param timeout  maximum time to wait for D3js calculations
     */
   def simulate(diagram: Diagram,
                center: Point = Point(0, 0),
-               interval: Long = 200
+               timeout: Long = 10000
               ): Try[Array[Point]] = {
-    busy = true // set to false by onEnd when the invoked applyForce completes.
     try {
       invocable.invokeFunction("applyForce", center, diagram)
     } catch {
       case e: Throwable => return Failure(e)
     }
-    while (busy) Thread.sleep(interval)
-    points // set by onEnd()
+    Try {
+      barier.await(timeout, TimeUnit.MILLISECONDS)
+    }.flatMap(_ => points)
   }
 }
