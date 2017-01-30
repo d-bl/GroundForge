@@ -16,11 +16,27 @@
 package dibl
 
 import scala.annotation.tailrec
-import scala.util.Try
+import scala.util.{Failure, Try}
 
 object PairDiagram {
 
-  def apply(stitches: String, threadDiagram: Diagram): Diagram = {
+  def apply(stitches: String,
+            threadDiagram: Diagram
+           ): Diagram = {
+    // only one overloaded alternative of a method can define default arguments.
+    apply(stitches, threadDiagram, Failure(new Exception("")))
+  }
+
+  /** @param stitches see step 2/3 on https://d-bl.github.io/GroundForge/recursive.html
+    * @param threadDiagram the over/under effect in this diagram will be replaced with color codes
+    * @param forceNodes may prevent incomplete simulations as on
+    *                   https://github.com/d-bl/GroundForge/blob/87d706d/docs/images/bloopers.md#3
+    * @return
+    */
+  def apply(stitches: String,
+            threadDiagram: Diagram,
+            forceNodes: Try[Array[Force.Point]]
+           ): Diagram = {
     val targetsBySource: Map[Int, Seq[Int]] = threadDiagram.links
       .groupBy(_.source)
       .map { case (source, links1) =>
@@ -57,7 +73,7 @@ object PairDiagram {
       else stitchMap.getOrElse(threadTitle, defaultStitch)
     }
 
-    val links = threadDiagram
+    val pairLinks = threadDiagram
       .links
       .filter(link => !link.getOrElse("border","false").toString.toBoolean)
       .filter(link => !hasDuplicateLinksOut.contains(link.source))
@@ -65,10 +81,17 @@ object PairDiagram {
         "source" -> link.source,
         "target" -> realTarget(link.target)
       ))
-    val nodes = threadDiagram.nodes.map(p =>
-      Props("x" -> p.x, "y" -> p.y, "title" -> translateTitle(p))
-    )
-    Diagram(nodes, links)
+
+    val pairNodes = if (forceNodes.isFailure) threadDiagram.nodes.map(p => Props(
+      "x" -> p.x,
+      "y" -> p.y,
+      "title" -> translateTitle(p)
+    )) else threadDiagram.nodes.indices.map(i => Props(
+      "x" -> forceNodes.get(i).x.toInt,
+      "y" -> forceNodes.get(i).y.toInt,
+      "title" -> translateTitle(threadDiagram.nodes(i))
+    ))
+    Diagram(pairNodes, pairLinks)
   }
 
   def apply(str: String,

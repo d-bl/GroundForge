@@ -17,13 +17,26 @@ package dibl
 
 import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
+import scala.util.{Failure, Try}
 
 object ThreadDiagram {
-  def apply(pairDiagram: Diagram): Diagram = {
+
+  /** @param pairDiagram single lines through the graph to be interpreted as double lines
+    * @param forceNodes may prevent incomplete simulations as on
+    *                   https://github.com/d-bl/GroundForge/blob/87d706d/docs/images/bloopers.md#3
+    * @return each two-in-two-out node of the pairDiagram is replaced with
+    *         a two-in two-out sub graph with in total four-in and four-out
+    */
+  def apply(pairDiagram: Diagram,
+            forceNodes: Try[Array[Force.Point]] = Failure(new Exception(""))
+           ): Diagram = {
 
     val pairLinks = pairDiagram.links.map(l => (l.source, l.target))
     val instructions = pairDiagram.nodes.map(_.instructions)
-    val xy: Seq[Props] = pairDiagram.nodes.map(n => Props("x"->n.x*2, "y"->n.y*2))
+    val xy: Seq[Props] = if (forceNodes.isFailure)
+      pairDiagram.nodes.map(n => Props("x" -> n.x * 2, "y" -> n.y * 2))
+    else
+      forceNodes.get.map(p => Props("x" -> (p.x * 2).toInt, "y" -> (p.y * 2).toInt))
 
     @tailrec
     def createRows(possibleStitches: Seq[TargetToSrcs],

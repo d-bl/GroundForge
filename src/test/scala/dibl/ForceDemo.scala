@@ -15,7 +15,7 @@
 */
 package dibl
 
-import dibl.Force.Point
+import dibl.Force.{Point, simulate}
 
 object ForceDemo {
   def main(args: Array[String]) {
@@ -23,16 +23,12 @@ object ForceDemo {
     println(s"nodes: ${pairDiagram.nodes}")
     println(s"links: ${pairDiagram.links}")
 
-    println(Force.simulate(pairDiagram).map(_.mkString(", ")))
-    println(Force.simulate(pairDiagram, center = Point(200,200)).map(_.mkString(", ")))
-    println(Force.simulate(pairDiagram, interval = 100).map(_.mkString(", ")))
+    println(simulate(pairDiagram).map(_.mkString(", ")))
+    println(simulate(pairDiagram, center = Point(200,200)).map(_.mkString(", ")))
+    println(simulate(pairDiagram, interval = 100).map(_.mkString(", ")))
 
-    // TODO apply scaled nodePositions to a diagram before calculating the next
-    // it might prevent https://github.com/d-bl/GroundForge/blob/87d706d/docs/images/bloopers.md#3
-    // without needing the countDown loop at
-    // https://github.com/d-bl/GroundForge/blob/2d85c7a/docs/API.md#functions-createsvg-createthreadsvg-createpairsvg
-    val threadDiagram = ThreadDiagram(pairDiagram)
-    PairDiagram("ctc",threadDiagram)
+    val threadDiagram = ThreadDiagram(pairDiagram, simulate(pairDiagram))
+    PairDiagram("ctc", threadDiagram, simulate(threadDiagram))
     // TODO at last generate SVG in a scala way rather than feed the diagram to show-graph.js
 
     System.exit(0) // TODO terminate script engine more elegantly
