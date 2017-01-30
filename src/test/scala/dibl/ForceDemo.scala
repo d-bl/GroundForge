@@ -23,17 +23,13 @@ object ForceDemo {
     println(s"nodes: ${pairDiagram1.nodes}")
     println(s"links: ${pairDiagram1.links}")
 
-    // demonstrating optional arguments
+    // demonstrating one of the optional arguments
     println(
       simulate(pairDiagram1)
         .map(_.mkString(", "))
     )
     println(
       simulate(pairDiagram1, center = Point(200, 200))
-        .map(_.mkString(", "))
-    )
-    println(
-      simulate(pairDiagram1, interval = 100)
         .map(_.mkString(", "))
     )
 

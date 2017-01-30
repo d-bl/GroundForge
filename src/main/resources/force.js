@@ -20,8 +20,8 @@ function nodesToJS(arrayOfMaps) {
   for ( i = arrayOfMaps.size() ; i-- > 0 ; ){
     map = arrayOfMaps.apply(i)
     result[i] = {
-      x: map.get('x').get(),
-      y: map.get('y').get()
+      x: (map.get('x').getClass().getName()=="scala.None$") ? 0 : map.get('x').get(),
+      y: (map.get('y').getClass().getName()=="scala.None$") ? 0 : map.get('y').get()
     }
   }
   return result
@@ -35,7 +35,7 @@ function linksToJS(arrayOfMaps) {
     result[i] = {
       source: map.get('source').get(),
       target: map.get('target').get(),
-      weak: map.get('weak').get()
+      weak: (map.get('weak').getClass().getName()=="scala.None$") ? false : map.get('weak').get()
     }
   }
   return result
