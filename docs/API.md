@@ -78,7 +78,7 @@ Should you choose to use another environment, you may have to write a variant of
 
 [docs/js]: https://github.com/d-bl/GroundForge/tree/master/docs/js
 [batch.js]: https://github.com/d-bl/GroundForge/blob/master/docs/js/batch.js
-[create-svg.js]: https://github.com/d-bl/GroundForge/blob/master/docs/js/batch.js
+[create-svg.js]: https://github.com/d-bl/GroundForge/blob/master/src/main/resources/batch.js
 [run JavaScript]: https://en.wikipedia.org/wiki/List_of_ECMAScript_engines
 [node.js]: https://nodejs.org
 [release]: https://github.com/d-bl/GroundForge/releases
