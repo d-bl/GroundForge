@@ -17,7 +17,9 @@ package dibl
 
 import dibl.Force.{Point, simulate}
 
-object ForceDemo {
+import scala.reflect.io.File
+
+object ForceDemoS {
   def main(args: Array[String]) {
     val pairDiagram1 = PairDiagram("5-", "bricks", stitches = "ct", absRows = 3, absCols = 3).get
     println(s"nodes: ${pairDiagram1.nodes}")
@@ -34,27 +36,25 @@ object ForceDemo {
     )
 
     /*
-      The first pair diagram has positions initialised from the matrix. These values are an estimate to prevent
-      flipped and rotated diagrams. These positions are nudged by a force simulation.
-      A thread diagram is created from a pair diagram by replacing each node with a couple of new nodes. These new
-      nodes are all placed on the spot of their original node and are also nudged by a force simulation.
+      The first pair diagram has positions initialised using the matrix cells as coordinates.
+      These values are an estimate to prevent flipped and rotated diagrams.
+      These positions are nudged by a force simulation.
+      A thread diagram is created from a pair diagram by replacing each node with a couple of new nodes.
+      These new nodes are all placed on the spot of their original node and are also nudged by a force simulation.
       A subsequent transition from a thread diagram to a pair diagram only restyles the nodes,
       their positions don't need nudging to optimise the next step.
     */
     val threadDiagram1 = ThreadDiagram(pairDiagram1, simulate(pairDiagram1))
     val pairDiagram2 = PairDiagram("ctc", threadDiagram1)
-    val threadDiagram2a = ThreadDiagram(pairDiagram2)
-    val threadDiagram2b = ThreadDiagram(threadDiagram2a, simulate(threadDiagram2a))
-    val pairDiagram3 = PairDiagram("ctct", threadDiagram2b)
+    val threadDiagram2 = ThreadDiagram(pairDiagram2)
+    val pairDiagram3 = PairDiagram("ctct", threadDiagram2, simulate(threadDiagram2))
 
-    /* TODO generate SVG in a scala way rather than feed a diagram to show-graph.js
-       For now, you can view the thread diagrams and first pair diagram on
-       https://d-bl.github.io/GroundForge/recursive.html
-       though the force.simulation is not applied when creating one diagram from another
-     */
-    println(
-      simulate(threadDiagram2a)
-        .map(_.mkString(", "))
+    // TODO under construction
+    File("target/demo.svg").writeAll(
+      """<?xml version="1.0" encoding="UTF-8"?>""" +
+        SVG.render(PairDiagram(
+          "ctc", pairDiagram1, simulate(pairDiagram1, center = Point(200, 200))
+        ))
     )
 
     System.exit(0) // TODO terminate script engine more elegantly
