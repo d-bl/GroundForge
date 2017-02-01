@@ -23,7 +23,9 @@ import jdk.nashorn.api.scripting.ScriptObjectMirror
 
 import scala.util.{Failure, Success, Try}
 
-/** A dedicated JavaScript engine with a predefined D3js force simulation */
+/** A dedicated JavaScript engine with a predefined D3js force simulation,
+  * intended for single threaded batch execution in a JVM environment.
+  */
 object Force {
   private val invocable = {
     val engine: ScriptEngine = (new ScriptEngineManager).getEngineByName("nashorn")
@@ -34,8 +36,10 @@ object Force {
     engine.eval(new FileReader("src/main/resources/event_loop.js"))
     engine.eval(new FileReader("src/main/resources/force.js"))
     engine.eval(
+      // because of this (not state of the art) declaration
+      // each thread needs its own instance of the engine
       s"""var onEnd = Java.type("dibl.Force").onEnd
-         |print("javascript engine started")
+         |print("JavaCcript engine with D3-Force configuration started")
          |""".stripMargin)
     engine.asInstanceOf[Invocable]
   }
@@ -59,31 +63,37 @@ object Force {
   } catch {
     case e: Throwable => points = Failure(e)
   } finally {
-    barier.await()
+    barrier.await()
   }
 
+  // the result of the asynchronous calculation
   private var points: Try[Array[Point]] = _
-  private val barier = new CyclicBarrier(2)
+
+  // turns the asynchronous calculation in a synchronous call
+  private val barrier = new CyclicBarrier(2)
 
   case class Point(x: Double, y: Double)
 
   /** Calculates new node positions in a dedicated JavaScript engine, NOT THREAD SAFE!
     *
-    * D3js executes the calculation in a thread as it is time consuming
-    * and the library is primarily intended for client-side animations in a browser.
+    * The calculations are executed in a thread as it is time consuming
+    * and the D3js library is primarily intended for client-side animations in a browser.
     * This method waits until the calculation completes for sequential batch execution.
     *
     * @param diagram  collections that are converted to nodes (x: Int, y: Int)
     *                 for https://github.com/d3/d3-force/#simulation_nodes
     *                 and links (source: Int , target: Int)
     *                 for https://github.com/d3/d3-force/#links
-    *                 the boolean link.weak is converted to a strength value
+    *                 the boolean link.weak is converted to a predefined value for
+    *                 https://github.com/d3/d3-force/#link_strength
     * @param center   used for https://github.com/d3/d3-force/#forceCenter
-    * @param timeout  maximum time to wait for D3js calculations
+    * @param timeout  maximum time allowed for the D3js calculations
+    * @param timeUnit the time unit of the timeout parameter
     */
   def simulate(diagram: Diagram,
                center: Point = Point(0, 0),
-               timeout: Long = 10000
+               timeout: Long = 20,
+               timeUnit: TimeUnit = TimeUnit.SECONDS
               ): Try[Array[Point]] = {
     try {
       invocable.invokeFunction("applyForce", center, diagram)
@@ -91,7 +101,11 @@ object Force {
       case e: Throwable => return Failure(e)
     }
     Try {
-      barier.await(timeout, TimeUnit.MILLISECONDS)
+      println(s"waiting $timeout $timeUnit")
+      barrier.await(timeout, timeUnit)
+      println(s"done waiting")
+      // at this moment another thread with the same instance
+      // could start a new calculation and overwrite points before it is used
     }.flatMap(_ => points)
   }
 }
