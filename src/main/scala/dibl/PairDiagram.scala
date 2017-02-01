@@ -27,7 +27,9 @@ object PairDiagram {
     apply(stitches, threadDiagram, Failure(new Exception("")))
   }
 
-  /** @param stitches see step 2/3 on https://d-bl.github.io/GroundForge/recursive.html
+  /** Restyles the nodes of a diagram into nodes for a pair diagram.
+    *
+    * @param stitches see step 2/3 on https://d-bl.github.io/GroundForge/recursive.html
     * @param threadDiagram the over/under effect in this diagram will be replaced with color codes
     * @param forceNodes may prevent incomplete simulations as on
     *                   https://github.com/d-bl/GroundForge/blob/87d706d/docs/images/bloopers.md#3
