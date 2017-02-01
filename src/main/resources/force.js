@@ -13,6 +13,9 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
+function getOrElse(mapValue, defaultValue) {
+  (mapValue.getClass().getName()=="scala.None$") ? 0 : mapValue.get()
+}
 
 // converts x/y of Diagram.nodes to https://github.com/d3/d3-force/#simulation_nodes
 function nodesToJS(arrayOfMaps) {
@@ -20,8 +23,8 @@ function nodesToJS(arrayOfMaps) {
   for ( i = arrayOfMaps.size() ; i-- > 0 ; ){
     map = arrayOfMaps.apply(i)
     result[i] = {
-      x: (map.get('x').getClass().getName()=="scala.None$") ? 0 : map.get('x').get(),
-      y: (map.get('y').getClass().getName()=="scala.None$") ? 0 : map.get('y').get()
+      x: getOrElse(map.get('x'), 0),
+      y: getOrElse(map.get('y'), 0)
     }
   }
   return result
@@ -35,7 +38,7 @@ function linksToJS(arrayOfMaps) {
     result[i] = {
       source: map.get('source').get(),
       target: map.get('target').get(),
-      weak: (map.get('weak').getClass().getName()=="scala.None$") ? false : map.get('weak').get()
+      weak: getOrElse(map.get('weak'), false)
     }
   }
   return result
