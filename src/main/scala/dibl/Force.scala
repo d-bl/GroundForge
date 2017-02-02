@@ -101,7 +101,7 @@ object Force {
       case e: Throwable => return Failure(e)
     }
     Try {
-      println(s"waiting $timeout $timeUnit")
+      println(s"waiting at most $timeout $timeUnit to simulate forces")
       barrier.await(timeout, timeUnit)
       println(s"done waiting")
       // at this moment another thread with the same instance
