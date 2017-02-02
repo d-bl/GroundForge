@@ -19,7 +19,7 @@ import dibl.Force.{Point, simulate}
 
 import scala.reflect.io.File
 
-object ForceDemoS {
+object ForceDemo {
   def main(args: Array[String]) {
     val pairDiagram1 = PairDiagram("5-", "bricks", stitches = "ct", absRows = 3, absCols = 3).get
     println(s"nodes: ${pairDiagram1.nodes}")
@@ -50,9 +50,9 @@ object ForceDemoS {
     val pairDiagram3 = PairDiagram("ctct", threadDiagram2, simulate(threadDiagram2))
 
     // TODO under construction
+    val prolog = """<?xml version="1.0" encoding="UTF-8"?>"""
     File("target/demo.svg").writeAll(
-      """<?xml version="1.0" encoding="UTF-8"?>""" +
-        SVG.render(PairDiagram(
+      prolog + SVG.render(PairDiagram(
           "ctc", pairDiagram1, simulate(pairDiagram1, center = Point(200, 200))
         ))
     )
