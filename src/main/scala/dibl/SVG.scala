@@ -16,6 +16,9 @@
 
 package dibl
 
+import scala.scalajs.js.annotation.JSExport
+
+@JSExport
 object SVG {
   private val stitch = circle(6)
   private val pin = circle(4)
@@ -102,7 +105,7 @@ object SVG {
        |  </defs>""".stripMargin.stripLineEnd
   }
 
-  private def markerRef (key: String, node: Props) =
+  private def markerRef (key: String, node: Props): Option[String] =
     node
       .get(key)
       .filter(value => value != "white")
@@ -110,24 +113,54 @@ object SVG {
         s"; marker-$key: url('#$key-$value')"
       )
 
-  private def renderLink(link: Props, source: Props, target: Props): String = {
-    val style =
-      "opacity: 1; stroke: rgb(0, 0, 0); fill: none" +
-      markerRef("start", link).getOrElse("") +
-      markerRef("end", link).getOrElse("")
-    s"""
-       |  <path class="link" d="M${source.x},${source.y} ${target.x},${target.y}"
-       |   style="$style"></path>
-       |"""
-  }.stripMargin.stripLineEnd
+  @JSExport
+  def pathDescription(link: Props, source: Props, target: Props): String = {
+    val sX = source.x
+    val sY = source.y
+    val tX = target.x
+    val tY = target.y
+    val dX = tX - sX
+    val dY = tY - sY
+    val left = link.getOrElse("left", false).asInstanceOf[Boolean]
+    val right = link.getOrElse("right", false).asInstanceOf[Boolean]
+    val start = link.getOrElse("start", "").asInstanceOf[String]
+    val end = link.getOrElse("end", "").asInstanceOf[String]
+    val nrOfTwists = link.getOrElse("mid", 0).asInstanceOf[Int]
+
+    def mid = if (left )
+      s"S${sX - dY / 3 + dX / 3},${sY + dX / 3 + dY / 3}"
+    else if (right)
+      s"S${sX + dY / 3 + dX / 3},${sY + dY / 3 - dX / 3}"
+    else  " "
+
+    // TODO https://github.com/d-bl/GroundForge/issues/70
+    if (end == "white")
+      s"M$sX,${sY + mid} ${tX - dX/4},${tY - dY/4}"
+    else if (start == "white")
+      s"M${sX + dX/4},${(sY + dY/4) + mid } $tX,$tY"
+    else if (nrOfTwists > 0)
+       "M"+ sX + "," + sY + " " + (sX + dX/2) + "," + (sY + dY/2) + " " + tX + "," + tY
+    else s"M${source.x},${source.y} ${target.x},${target.y}"
+  }
+
+  private def renderLinks(diagram: Diagram) = diagram.links.map(link => {
+
+    val transparent = link.getOrElse("border", false).asInstanceOf[Boolean] || link.getOrElse("toPin", false).asInstanceOf[Boolean]
+    val style = s"opacity: ${if (transparent) 0 else 1}; stroke: rgb(0, 0, 0); fill: none" +
+        markerRef("start", link).getOrElse("") +
+        markerRef("end", link).getOrElse("") // TODO midMarker for twists
+    val pd = pathDescription(link, diagram.nodes(link.source), diagram.nodes(link.target))
+    s"""<path class="link" d="$pd" style="$style"></path>"""
+  }).mkString
 
   /** under construction */
+  @JSExport
   def render(diagram: Diagram): String = {
     val isThreadDiagram = diagram.nodes.head.title == "thread 1"
     s"""
        |<svg $rootAttributes>
        |$markerDefinitions
-       |${diagram.links.map(l => renderLink(l, diagram.nodes(l.source), diagram.nodes(l.target))).mkString}
+       |${renderLinks(diagram)}
        |</svg>""".stripMargin.stripLineEnd
   }
 }
