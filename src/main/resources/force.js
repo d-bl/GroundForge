@@ -13,9 +13,6 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
-function getOrElse(mapValue, defaultValue) {
-  (mapValue.getClass().getName()=="scala.None$") ? 0 : mapValue.get()
-}
 
 // converts x/y of Diagram.nodes to https://github.com/d3/d3-force/#simulation_nodes
 function nodesToJS(arrayOfMaps) {
@@ -23,8 +20,8 @@ function nodesToJS(arrayOfMaps) {
   for ( i = arrayOfMaps.size() ; i-- > 0 ; ){
     map = arrayOfMaps.apply(i)
     result[i] = {
-      x: getOrElse(map.get('x'), 0),
-      y: getOrElse(map.get('y'), 0)
+      x: (map.get('x').getClass().getName()=="scala.None$") ? 0 : map.get('x').get(),
+      y: (map.get('y').getClass().getName()=="scala.None$") ? 0 : map.get('y').get()
     }
   }
   return result
@@ -38,7 +35,7 @@ function linksToJS(arrayOfMaps) {
     result[i] = {
       source: map.get('source').get(),
       target: map.get('target').get(),
-      weak: getOrElse(map.get('weak'), false)
+      weak: (map.get('weak').getClass().getName()=="scala.None$") ? false : map.get('weak').get()
     }
   }
   return result
@@ -51,7 +48,9 @@ function strength(link){
 function applyForce(center, data) {
   var nodes = nodesToJS(data.nodes())
   var links = linksToJS(data.links())
-  d3.forceSimulation(nodes)
+  // print("== nodes == "+JSON.stringify(nodes))
+  // print("== links == "+JSON.stringify(links))
+  var sim = d3.forceSimulation(nodes)
     .force("charge", d3.forceManyBody().strength(-1000))
     .force("link", d3.forceLink(links).strength(strength).distance(12).iterations(30))
     .force("center", d3.forceCenter(center.x(), center.y()))
