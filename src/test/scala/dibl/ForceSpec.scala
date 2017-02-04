@@ -35,7 +35,7 @@ class ForceSpec extends FlatSpec with Matchers {
   }
 
   "simulate" should "succeed on recursive diagrams" in {
-    val threadDiagram1 = ThreadDiagram(pairDiagram1, simulate(pairDiagram1))
+    val threadDiagram1 = ThreadDiagram(pairDiagram1.nudgeNodes().get)
     val threadDiagram2 = ThreadDiagram(PairDiagram("ctc", threadDiagram1))
     val triedPoints = simulate(threadDiagram2)
     // TODO accumulation results are unpredictable but never right in this case

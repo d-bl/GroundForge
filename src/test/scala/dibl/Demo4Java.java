@@ -18,28 +18,40 @@ package dibl;
 import dibl.Force.Point;
 import scala.util.Try;
 
-import java.util.concurrent.TimeUnit;
-
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class Demo4Java {
     public static void main(String[] args) throws Throwable {
         // No named arguments in java, so you have to specify all default values
-        // .apply is a scala-pattern for factory methods and indexing
+        // .apply is a scala-pattern for factory methods and fetching an indexed element
 
-        // some calls from Pattern.scala
-        PatternSheet ps = PatternSheet.apply(2,"");
-        ps.add("5-","bricks");
-        String svgPatternSheet = ps.toSvgDoc();
+        PatternSheet patternSheet = PatternSheet.apply(2, "");
+        patternSheet.add("5-", "bricks");
+        String svgPatternSheet = patternSheet.toSvgDoc();
 
-        // some calls from ForceDemo.scala
-        Try<Diagram> triedDiagram = PairDiagram.apply("5-", "bricks", 3, 3, 0, 0, "ct");
-        if (triedDiagram.isFailure()) throw triedDiagram.failed().get();
-        Diagram pairDiagram1 = triedDiagram.get(); // might be a single dot with an error as tooltip
-        Try<Point[]> positions = Force.simulate(pairDiagram1, new Point(200, 200), 20, SECONDS);
-        Diagram threadDiagram1 = ThreadDiagram.apply(pairDiagram1, positions);
-        String svgDiagram = SVG.render(pairDiagram1);
+        Try<Diagram> triedPairDiagram = PairDiagram.apply(
+                "5-", "bricks",
+                3, 3,
+                0, 0,
+                "ct"
+        );
+        if (triedPairDiagram.isFailure())
+            throw triedPairDiagram
+                    .failed()
+                    .get();
+        Point center = new Point(200, 200);
+        Diagram nudgedPairDiagram =
+                triedPairDiagram
+                        .get()
+                        .nudgeNodes(center, 20, SECONDS)
+                        .get();
+        Diagram threadDiagram =
+                ThreadDiagram
+                        .apply(nudgedPairDiagram)
+                        .nudgeNodes(center, 20, SECONDS)
+                        .get();
+        String svgDiagram = SVG.render(threadDiagram);
 
-        System.exit(0); /// required because of Force.simulate
+        System.exit(0); /// required because of Force.simulate to nudge nodes
     }
 }
