@@ -17,26 +17,13 @@ package dibl
 
 import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
-import scala.util.{Failure, Try}
 
 object ThreadDiagram {
-
-  /** @param pairDiagram single lines through the graph to be interpreted as double lines
-    * @param forceNodes may prevent incomplete simulations as on
-    *                   https://github.com/d-bl/GroundForge/blob/87d706d/docs/images/bloopers.md#3
-    * @return each two-in-two-out node of the pairDiagram is replaced with
-    *         a two-in two-out sub graph with in total four-in and four-out
-    */
-  def apply(pairDiagram: Diagram,
-            forceNodes: Try[Array[Force.Point]] = Failure(new Exception(""))
-           ): Diagram = {
+  def apply(pairDiagram: Diagram): Diagram = {
 
     val pairLinks = pairDiagram.links.map(l => (l.source, l.target))
     val instructions = pairDiagram.nodes.map(_.instructions)
-    val xy: Seq[Props] = if (forceNodes.isFailure)
-      pairDiagram.nodes.map(n => Props("x" -> n.x * 2, "y" -> n.y * 2))
-    else
-      forceNodes.get.map(p => Props("x" -> (p.x * 2).toInt, "y" -> (p.y * 2).toInt))
+    val xy: Seq[Props] = pairDiagram.nodes.map(n => Props("x"->n.x*2, "y"->n.y*2))
 
     @tailrec
     def createRows(possibleStitches: Seq[TargetToSrcs],
@@ -44,40 +31,40 @@ object ThreadDiagram {
                    nodes: Seq[Props],
                    links: Seq[Props] = Seq[Props]()
                   ): (Map[Int, Threads], Seq[Props], Seq[Props]) =
-    if (possibleStitches.isEmpty) {
-      val next = nextPossibleStitches(availablePairs.keys.toArray)
-      if (next.isEmpty)
-        (availablePairs, nodes, links)
-      else
-        createRows(next, availablePairs, nodes, links)
-    } else {
-      val (pairTarget, (leftPairSource, rightPairSource)) = possibleStitches.head
-      //println( f"creating $pairTarget%3d with $leftPairSource%3d and $rightPairSource%3d of ${availablePairs.keySet.mkString(",")}")
-      def availableKeys: String = availablePairs.keySet.mkString(",")
-      if (!Set(leftPairSource, rightPairSource).subsetOf(availablePairs.keySet)) {
-        val msg = s"Need a new pair from the footside? Missing $leftPairSource and/or $rightPairSource in $availableKeys"
-        println(msg)
-        createRows(possibleStitches.tail, availablePairs, nodes :+ whoops(msg), links)
-      } else if (instructions(pairTarget)=="pair"){
-        val msg = s"Two pairs starting at same node? target=$pairTarget leftSource=$leftPairSource rightSource=$rightPairSource available $availableKeys"
-        createRows(possibleStitches.tail, availablePairs - leftPairSource - rightPairSource, nodes :+ whoops(msg), links)
+      if (possibleStitches.isEmpty) {
+        val next = nextPossibleStitches(availablePairs.keys.toArray)
+        if (next.isEmpty)
+          (availablePairs, nodes, links)
+        else
+          createRows(next, availablePairs, nodes, links)
       } else {
-        val left = availablePairs(leftPairSource)
-        val right = availablePairs(rightPairSource)
-        val (newPairs, accNodes, accLinks) =
-          createStitch(instructions(pairTarget), xy(pairTarget), Threads(left, right), nodes, links)
+        val (pairTarget, (leftPairSource, rightPairSource)) = possibleStitches.head
+        //println( f"creating $pairTarget%3d with $leftPairSource%3d and $rightPairSource%3d of ${availablePairs.keySet.mkString(",")}")
+        def availableKeys: String = availablePairs.keySet.mkString(",")
+        if (!Set(leftPairSource, rightPairSource).subsetOf(availablePairs.keySet)) {
+          val msg = s"Need a new pair from the footside? Missing $leftPairSource and/or $rightPairSource in $availableKeys"
+          println(msg)
+          createRows(possibleStitches.tail, availablePairs, nodes :+ whoops(msg), links)
+        } else if (instructions(pairTarget)=="pair"){
+          val msg = s"Two pairs starting at same node? target=$pairTarget leftSource=$leftPairSource rightSource=$rightPairSource available $availableKeys"
+          createRows(possibleStitches.tail, availablePairs - leftPairSource - rightPairSource, nodes :+ whoops(msg), links)
+        } else {
+          val left = availablePairs(leftPairSource)
+          val right = availablePairs(rightPairSource)
+          val (newPairs, accNodes, accLinks) =
+            createStitch(instructions(pairTarget), xy(pairTarget), Threads(left, right), nodes, links)
 
-        val replaced = availablePairs - leftPairSource - rightPairSource ++
-          ((left.hasSinglePair, right.hasSinglePair) match {
-            case (true, true) => HashMap(pairTarget -> newPairs)
-            case (false, true) => HashMap(pairTarget -> newPairs, leftPairSource -> left.leftPair)
-            case (true, false) => HashMap(pairTarget -> newPairs, rightPairSource -> right.rightPair)
-            case (false, false) => HashMap(pairTarget -> newPairs, leftPairSource -> left.leftPair,
-              rightPairSource -> right.rightPair)
-          })
-        createRows(possibleStitches.tail, replaced, accNodes, accLinks)
+          val replaced = availablePairs - leftPairSource - rightPairSource ++
+            ((left.hasSinglePair, right.hasSinglePair) match {
+              case (true, true) => HashMap(pairTarget -> newPairs)
+              case (false, true) => HashMap(pairTarget -> newPairs, leftPairSource -> left.leftPair)
+              case (true, false) => HashMap(pairTarget -> newPairs, rightPairSource -> right.rightPair)
+              case (false, false) => HashMap(pairTarget -> newPairs, leftPairSource -> left.leftPair,
+                rightPairSource -> right.rightPair)
+            })
+          createRows(possibleStitches.tail, replaced, accNodes, accLinks)
+        }
       }
-    }
 
     def nextPossibleStitches(pairNodes: Seq[Int]
                             ): Seq[TargetToSrcs] = {
@@ -136,20 +123,20 @@ object ThreadDiagram {
                                      pairNodes: Seq[Props]
                                     ): Map[Int, Threads] =
     startPairNodeNrs.indices.map(i =>
-      {
-        val nodeNr = startPairNodeNrs(i)
-        val pairNr = pairNodes(nodeNr).title.split(" ")(1).toInt
-        nodeNr -> Threads(i,pairNr)
-      }
+    {
+      val nodeNr = startPairNodeNrs(i)
+      val pairNr = pairNodes(nodeNr).title.split(" ")(1).toInt
+      nodeNr -> Threads(i,pairNr)
+    }
     ).toMap
 
   @tailrec
   private def createStitch(instructions: String,
-                          xy: Props,
-                          threads: Threads,
-                          nodes: Seq[Props],
-                          links: Seq[Props]
-                         ): (Threads, Seq[Props], Seq[Props]) =
+                           xy: Props,
+                           threads: Threads,
+                           nodes: Seq[Props],
+                           links: Seq[Props]
+                          ): (Threads, Seq[Props], Seq[Props]) =
     if (instructions.isEmpty) (threads, nodes, links)
     else {
       val (t,n,l) = instructions.head match {
