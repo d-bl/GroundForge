@@ -43,7 +43,7 @@ object Demo {
     (for {
       pairDiagram <- PairDiagram(
         "586- -4-5 5-21 -5-7", "checker",
-        stitches = "tctc,D4=lctc,B4=rctc,A1=ctc,D2=rctc,B2=lctc,C3=ctc",
+        stitches = "tctc,D4=llctc,B4=rrctc,A1=ctc,D2=rctc,B2=lctc,C3=ctc",
         absRows = 9, absCols = 9
       )
       nudgedPairDiagram <- pairDiagram.nudgeNodes(center = Point(100, 100))
@@ -51,17 +51,30 @@ object Demo {
       _ <- SafeWriter("target/demoP1b.svg").write(prolog + render(nudgedPairDiagram))
       threadDiagram = ThreadDiagram(pairDiagram)
       nudgedThreadDiagram <- threadDiagram.nudgeNodes(center = Point(200, 200))
-      _ <- SafeWriter("target/demoT1a.svg").write(prolog + render(threadDiagram))
-      _ <- SafeWriter("target/demoT1b.svg").write(prolog + render(nudgedThreadDiagram))
-      _ <- SafeWriter("target/demoP2.svg").write(prolog + render(PairDiagram("ct",nudgedThreadDiagram)))
+      _ <- SafeWriter("target/demoT1a.svg").write(prolog + render(threadDiagram, "2px"))
+      _ <- SafeWriter("target/demoT1b.svg").write(prolog + render(nudgedThreadDiagram, "2px"))
+      _ <- SafeWriter("target/demoP2.svg").write(prolog + render(PairDiagram("ct", nudgedThreadDiagram)))
+      _ <- SafeWriter("target/demoP1b.html").write(
+        s"""<!DOCTYPE html>
+          |<html>
+          |<style>
+          |${SVG.threadsCSS()}
+          |</style>
+          |<body>
+          |${render(nudgedPairDiagram)}
+          |</body>
+          |</html>
+          |
+        """.stripMargin)
     } yield ()).recover {
       case e: Throwable => e.printStackTrace()
     }
     System.exit(0)
     // TODO terminate script engine more elegantly
-    // https://github.com/d3/d3-force/#simulation_stop
+    // calling https://github.com/d3/d3-force/#simulation_stop
     // after Force.onEnd doesn't seem to help
   }
+
 
   private case class SafeWriter(fileName: String) {
     def write(content: String): Try[Unit] = Try(

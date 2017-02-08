@@ -60,6 +60,14 @@ package object dibl {
 
     /** The id of the target node */
     def target: Int = p.getOrElse("target", 0).asInstanceOf[Int]
+
+    def left: Boolean = p.getOrElse("left", false).asInstanceOf[Boolean]
+    def right: Boolean = p.getOrElse("right", false).asInstanceOf[Boolean]
+    def start: String = p.getOrElse("start", "").asInstanceOf[String]
+    def end: String = p.getOrElse("end", "").asInstanceOf[String]
+    def nrOfTwists: Int = p.getOrElse("mid", 0).asInstanceOf[Int]
+    def border: Boolean = p.getOrElse("border", false).asInstanceOf[Boolean]
+    def toPin: Boolean = p.getOrElse("toPin", false).asInstanceOf[Boolean]
   }
 
   /** Bridges the JavaScript way of accessing object properties like a HashMap
@@ -81,6 +89,10 @@ package object dibl {
 
     /** Initial position for the animation */
     def y: Int = p.getOrElse("y", "0").toString.toInt
+
+    def pin: Boolean = p.getOrElse("pin", false).asInstanceOf[Boolean]
+    def bobbin: Boolean = p.getOrElse("bobbin", false).toString.toBoolean
+    def stitch: Boolean = p.getOrElse("stitch", false).asInstanceOf[Boolean]
   }
 
   // other tools

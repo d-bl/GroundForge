@@ -65,7 +65,7 @@ object PairDiagram {
 
     val links = threadDiagram
       .links
-      .filter(link => !link.getOrElse("border","false").toString.toBoolean)
+      .filter(link => !link.border)
       .filter(link => !hasDuplicateLinksOut.contains(link.source))
       .map(link => Props(
         "source" -> link.source,
