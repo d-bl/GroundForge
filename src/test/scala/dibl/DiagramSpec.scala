@@ -37,14 +37,14 @@ class DiagramSpec extends FlatSpec with Matchers {
     titles should include ("l")
     titles should include ("r")
 
-    d.links.count(_.getOrElse("end","").toString == "green") shouldNot be(0)
-    d.links.count(_.getOrElse("start","").toString == "green") shouldNot be(0)
-    d.links.count(_.getOrElse("end","").toString == "red") shouldNot be(0)
-    d.links.count(_.getOrElse("start","").toString == "red") shouldNot be(0)
-    d.links.count(_.getOrElse("end","").toString == "purple") shouldNot be(0)
-    d.links.count(_.getOrElse("start","").toString == "purple") shouldNot be(0)
-    d.links.count(_.getOrElse("mid","") == 1) shouldNot be(0)
-    d.links.count(_.getOrElse("mid","") == 0) shouldNot be(0)
+    d.links.count(_.end == "green") shouldNot be(0)
+    d.links.count(_.start == "green") shouldNot be(0)
+    d.links.count(_.end == "red") shouldNot be(0)
+    d.links.count(_.start == "red") shouldNot be(0)
+    d.links.count(_.end == "purple") shouldNot be(0)
+    d.links.count(_.start == "purple") shouldNot be(0)
+    d.links.count(_.nrOfTwists == 1) shouldNot be(0)
+    d.links.count(_.nrOfTwists == 0) shouldNot be(0)
   }
 
   "recursive 5- bricks" should "replace cross and twist with different stitches" in {

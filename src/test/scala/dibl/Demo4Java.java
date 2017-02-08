@@ -20,6 +20,7 @@ import scala.util.Try;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
+@SuppressWarnings("unused")
 public class Demo4Java {
     public static void main(String[] args) throws Throwable {
         // No named arguments in java, so you have to specify all default values
@@ -50,7 +51,8 @@ public class Demo4Java {
                         .apply(nudgedPairDiagram)
                         .nudgeNodes(center, 20, SECONDS)
                         .get();
-        String svgDiagram = SVG.render(threadDiagram);
+        String s = SVG.render(threadDiagram, "2px", true);
+        SVG.threadsCSS("".split(","));
 
         System.exit(0); /// required because of Force.simulate to nudge nodes
     }
