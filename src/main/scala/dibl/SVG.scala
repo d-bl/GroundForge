@@ -170,12 +170,11 @@ object SVG {
       case _ => "node"
     }
     s"""<path
-       | title="${node.title}"
        | class="$cssClasses"
        | d="${shape(node)}"
        | style="fill: rgb(0, 0, 0); stroke: $stroke; opacity: $opacity"
        | transform="translate(${node.x},${node.y})"
-       |></path>""".stripMargin
+       |><title>${node.title}</title></path>""".stripMargin
   }.mkString
 
   /** Prefix required when writing to an SVG file */
