@@ -23,7 +23,7 @@ import scala.util.{Success, Try}
 class ForceSpec extends FlatSpec with Matchers {
 
   // smaller row/col values cause less accurate average positions, larger values slow down recursion exponentially
-  private val pairDiagram1 = PairDiagram("5-", "bricks", stitches = "ct", absRows = 7, absCols = 7).get
+  private val pairDiagram1 = PairDiagram("5-", "bricks", absRows = 7, absCols = 7, stitches = "ct").get
 
   "points" should "should be spread around the default origin" in {
     accumulate(simulate(pairDiagram1)) shouldBe Point(0, 0)
