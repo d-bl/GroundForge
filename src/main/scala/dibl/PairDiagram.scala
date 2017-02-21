@@ -77,15 +77,19 @@ object PairDiagram {
     Diagram(nodes, links)
   }
 
-  def apply(str: String,
-            bricks: String,
-            absRows: Int,
-            absCols: Int,
-            shiftLeft: Int = 0,
-            shiftUp: Int = 0,
-            stitches: String = ""
-           ): Try[Diagram] =
-    Settings(str, bricks, absRows, absCols, shiftLeft, shiftUp, stitches)
+  /** Creates a pair diagram. Parameters are explained on the tabs of https://d-bl.github.io/GroundForge/
+    *
+    * @param compactMatrix see matrix tab
+    * @param tiling values 'bricks' or 'checker', see also matrix tab
+    * @param absRows see patch size tab
+    * @param absCols see patch size tab
+    * @param shiftLeft see footsides tab
+    * @param shiftUp see footsides tab
+    * @param stitches see stitches tab
+    * @return collections of nodes and links for D3js
+    */
+  def apply(compactMatrix: String, tiling: String, absRows: Int, absCols: Int, shiftLeft: Int = 0, shiftUp: Int = 0, stitches: String = ""): Try[Diagram] =
+    Settings(compactMatrix, tiling, absRows, absCols, shiftLeft, shiftUp, stitches)
       .map(PairDiagram(_))
 
   def apply(triedSettings: Try[Settings]): Diagram = if (triedSettings.isFailure)

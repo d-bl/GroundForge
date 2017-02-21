@@ -18,7 +18,9 @@ package dibl
 import scala.collection.mutable.ListBuffer
 import scala.scalajs.js.annotation.JSExport
 
-/** @param patchRows The number of generated rows.
+/** SVG document builder.
+  *
+  * @param patchRows The number of generated rows.
   *                  A landscape A4 can contain 3 columns and 2 rows.
   * @param pageSize Attributes for the SVG root element.
   *                 Defaults to landscape A4.

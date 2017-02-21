@@ -191,7 +191,9 @@ object SVG {
 
 
   /** @param diagram     collections of nodes and links
-    * @param strokeWidth the color code for pair diagram is slightly more than 1px
+    * @param strokeWidth recommended values: "1px" for pair diagrams, "2px" for thread diagrams
+    *                    thicker lines improve zooming out
+    *                    the color code for pair diagram is slightly more than 1px
     *                    the gap for a thread behind another is about 7px
     * @param markers     implement color coding of pair diagrams
     *                    but can slow down animation significantly

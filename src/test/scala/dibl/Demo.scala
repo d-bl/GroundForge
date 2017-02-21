@@ -41,11 +41,7 @@ object Demo {
       their positions don't need nudging to optimise the next step.
      */
     (for {
-      pairDiagram <- PairDiagram(
-        "586- -4-5 5-21 -5-7", "checker",
-        stitches = "tctc,D4=llctc,B4=rrctc,A1=ctc,D2=rctc,B2=lctc,C3=ctc",
-        absRows = 9, absCols = 9
-      )
+      pairDiagram <- PairDiagram("586- -4-5 5-21 -5-7", "checker", absRows = 9, absCols = 9, stitches = "tctc,D4=llctc,B4=rrctc,A1=ctc,D2=rctc,B2=lctc,C3=ctc")
       nudgedPairDiagram <- pairDiagram.nudgeNodes(center = Point(100, 100))
       _ <- SafeWriter("target/demoP1a.svg").write(prolog + render(pairDiagram))
       _ <- SafeWriter("target/demoP1b.svg").write(prolog + render(nudgedPairDiagram))
