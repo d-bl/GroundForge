@@ -133,9 +133,7 @@ function setDownloadContent (comp, id) {
   var svg = id == 'sheet'
     ? container.innerHTML
     : container.innerHTML.
-      replace('pointer-events="all"', 'xmlns:svg="http://www.w3.org/2000/svg" ' +
-                                      'xmlns="http://www.w3.org/2000/svg" ' +
-                                      'xmlns:xlink="http://www.w3.org/1999/xlink"').
+      replace('pointer-events="all"', '').
       replace(/<path [^>]+opacity: 0;.+?path>/g, '')
   comp.href = 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
 }
