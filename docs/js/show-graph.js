@@ -15,71 +15,6 @@
 */
 fullyTransparant = 0 // global to allow override while testing
 diagram = {}
-diagram.start = function(svgDefs, id, shape){
-    svgDefs.append('svg:marker')
-        .attr('id', id)
-        .attr('viewBox', '-7 -7 14 14')
-        .attr('markerWidth', 12)
-        .attr('markerHeight', 12 )
-        .attr('orient', 'auto')
-        .attr('markerUnits', 'userSpaceOnUse')
-      .append('svg:path')
-        .attr('d', shape)
-        .attr('fill', "#000").style('opacity',0.5)
-}
-diagram.twistMark = function(svgDefs){
-    svgDefs.append('svg:marker')
-        .attr('id', "twist-1")
-        .attr('viewBox', '-2 -2 4 4')
-        .attr('markerWidth', 5)
-        .attr('markerHeight', 5)
-        .attr('orient', 'auto')
-        .attr('markerUnits', 'userSpaceOnUse')
-      .append('svg:path')
-        .attr('d', 'M 0,6 0,-6')
-        .attr('fill', "#000")
-        .attr('stroke', "#000")
-        .attr('stroke-width', "1px")
-}
-diagram.markers = function(svgDefs,id,color){
-    svgDefs.append('svg:marker')
-        .attr('id', 'start-' + id)
-        .attr('viewBox', '0 -5 10 10')
-        .attr('markerWidth', 6)
-        .attr('markerHeight', 8 )
-        .attr('orient', 'auto')
-        .attr('markerUnits', 'userSpaceOnUse')
-      .append('svg:path')
-        .attr('d', 'M0,0L10,0')
-        .attr('stroke-width', 3)
-        .attr('stroke', color)
-
-    svgDefs.append('svg:marker')
-        .attr('id', 'end-' + id)
-        .attr('viewBox', '0 -5 10 10')
-        .attr('refX', 10)
-        .attr('markerWidth', 6)
-        .attr('markerHeight', 8 )
-        .attr('orient', 'auto')
-        .attr('markerUnits', 'userSpaceOnUse')
-      .append('svg:path')
-        .attr('d', 'M0,0L10,0')
-        .attr('stroke-width', 3)
-        .attr('stroke', color)
-}
-diagram.shape = {}
-diagram.shape.stitch = "M 6,0 A 6,6 0 0 1 0,6 6,6 0 0 1 -6,0 6,6 0 0 1 0,-6 6,6 0 0 1 6,0 Z" // larger circle
-diagram.shape.pin = "M 4,0 A 4,4 0 0 1 0,4 4,4 0 0 1 -4,0 4,4 0 0 1 0,-4 4,4 0 0 1 4,0 Z" // smaller circle
-diagram.shape.square = "M -6,-6 6,-6 6,6 -6,6 Z"
-diagram.shape.diamond = "M -5,0 0,8 5,0 0,-8 Z"
-diagram.shape.bobbin = "m 0,40 c -3.40759,0 -6.01351,3.60204 -1.63269,3.60204 l 0,19.82157 c -3.67432,-0.008 -1.7251,5.087 -1.32784,7.27458 0.76065,4.18864 1.01701,8.40176 0.3478,12.58551 -1.68869,10.55725 -2.31894,21.67593 1.25552,31.9161 0.2088,0.59819 0.68935,2.7631 1.40054,2.7636 0.71159,0 1.19169,-2.16521 1.40057,-2.7636 C 5.01838,104.95964 4.38954,93.84095 2.70085,83.2837 2.03164,79.09995 2.28656,74.88683 3.04721,70.69819 3.44447,68.51061 5.61865,63.44146 1.71951,63.42361 l 0,-19.82157 C 5.86853,43.60204 3.4855,39.99659 0,40 L 0,0"
-diagram.markLinks = function(links) {
-  links
-    .style('marker-start', function(d) { if (d.start != "white") return 'url(#start-'+d.start+')' })
-    .style('marker-end', function(d) { if (d.end != "white") return 'url(#end-'+d.end+')' })
-    .style('marker-mid', function(d,i) { if (d.mid) return 'url(#twist-1)' })
-}
-
 diagram.showGraph = function(args) {
     var htmlContainer = d3.select(args.container)
 
@@ -99,17 +34,7 @@ diagram.showGraph = function(args) {
                 .attr("xmlns:svg", "http://www.w3.org/2000/svg")
                 .attr("xmlns:xlink", "http://www.w3.org/1999/xlink")
 
-    // marker definitions
-
-    var defs = svgRoot.append('svg:defs')
-    diagram.start(defs, "start-thread", diagram.shape.square)
-    diagram.start(defs, "start-pair", diagram.shape.diamond)
-    diagram.twistMark(defs)
-    diagram.markers(defs, 'green','#0f0')
-    diagram.markers(defs, 'red','#f00')
-    diagram.markers(defs, 'purple','#609')
-    //diagram.markers(defs, 'white','#fff')
-
+    svgRoot.append('svg:defs').node().innerHTML = dibl.SVG().markerDefinitions
     var svgContainer = svgRoot.append('svg:g')
 
     // object creation and decoration
@@ -123,11 +48,21 @@ diagram.showGraph = function(args) {
         .style('opacity', function(d) { return d.border || d.toPin ? fullyTransparant : 1})
         .style('stroke', '#000')
         .style('fill', 'none')
-    if (isThreadDiagram) links.style('stroke-width', '2px')
-    if (!isIE && !isMobileMac) diagram.markLinks(links)
 
+    function markLinks() {
+      links
+        .style('marker-start', function(d) { if (d.start != "white") return 'url(#start-'+d.start+')' })
+        .style('marker-end', function(d) { if (d.end != "white") return 'url(#end-'+d.end+')' })
+        .style('marker-mid', function(d,i) { if (d.mid) return 'url(#twist-1)' })
+    }
+    if (isThreadDiagram) links.style('stroke-width', '2px')
+    if (!isIE && !isMobileMac) markLinks()
+
+    var bobbinShape = dibl.SVG().bobbin
+    var pinShape = dibl.SVG().circle(4)
+    var stitchShape = dibl.SVG().circle(6)
     var nodes = svgContainer.selectAll(".node").data(args.nodes).enter().append("svg:path")
-        .attr("d", function(d) { return (d.bobbin ? diagram.shape.bobbin : d.pin ? diagram.shape.pin : diagram.shape.stitch)})
+        .attr("d", function(d) { return (d.bobbin ? bobbinShape : d.pin ? pinShape : stitchShape)})
         .attr("class", function(d) { return "node " + (d.startOf ? "threadStart" : d.thread ? ("thread"+d.thread) : "")})
         .style('opacity', function(d) { return d.bobbin || d.pin ? 1 : fullyTransparant})
         .style('fill', '#000000')
@@ -194,7 +129,7 @@ diagram.showGraph = function(args) {
                             nodes.attr("transform", moveNode)
                             links.attr("d", drawPath)
                         }
-                        if (isIE || isMobileMac) diagram.markLinks(links)
+                        if (isIE || isMobileMac) markLinks()
                         if (args.onAnimationEnd) args.onAnimationEnd()
                     }
     function strength(link){ return link.weak ? 5 : 50 }
