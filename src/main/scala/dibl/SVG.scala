@@ -20,23 +20,29 @@ import scala.scalajs.js.annotation.JSExport
 
 @JSExport
 object SVG {
-  private def circle(r: Int) = s"M $r,0 A $r,$r 0 0 1 0,$r $r,$r 0 0 1 -$r,0 $r,$r 0 0 1 0,-$r $r,$r 0 0 1 $r,0 Z"
+
+  @JSExport
+  def circle(r: Int): String = s"M $r,0 A $r,$r 0 0 1 0,$r $r,$r 0 0 1 -$r,0 $r,$r 0 0 1 0,-$r $r,$r 0 0 1 $r,0 Z"
+
+  @JSExport
+  val bobbin: String = "m 0,40" +
+    " c -3.40759,0 -6.01351,3.60204 -1.63269,3.60204" +
+    " l 0,19.82157" +
+    " c -3.67432,-0.008 -1.7251,5.087 -1.32784,7.27458 0.76065,4.18864 1.01701,8.40176 0.3478,12.58551 -1.68869,10.55725 -2.31894,21.67593 1.25552,31.9161 0.2088,0.59819 0.68935,2.7631 1.40054,2.7636 0.71159,0 1.19169,-2.16521 1.40057,-2.7636" +
+    " C 5.01838,104.95964 4.38954,93.84095 2.70085,83.2837 2.03164,79.09995 2.28656,74.88683 3.04721,70.69819 3.44447,68.51061 5.61865,63.44146 1.71951,63.42361" +
+    " l 0,-19.82157" +
+    " C 5.86853,43.60204 3.4855,39.99659 0,40" +
+    " L 0,0"
+
   private val square = "M -6,-6 6,-6 6,6 -6,6 Z"
   private val diamond = "M -5,0 0,8 5,0 0,-8 Z"
   private def shape(node: Props) = // See https://www.w3.org/TR/SVG/paths.html#PathDataMovetoCommands
     if (node.pin) circle(4)
-    else if (node.bobbin)
-      "m 0,40" +
-      " c -3.40759,0 -6.01351,3.60204 -1.63269,3.60204" +
-      " l 0,19.82157" +
-      " c -3.67432,-0.008 -1.7251,5.087 -1.32784,7.27458 0.76065,4.18864 1.01701,8.40176 0.3478,12.58551 -1.68869,10.55725 -2.31894,21.67593 1.25552,31.9161 0.2088,0.59819 0.68935,2.7631 1.40054,2.7636 0.71159,0 1.19169,-2.16521 1.40057,-2.7636" +
-      " C 5.01838,104.95964 4.38954,93.84095 2.70085,83.2837 2.03164,79.09995 2.28656,74.88683 3.04721,70.69819 3.44447,68.51061 5.61865,63.44146 1.71951,63.42361" +
-      " l 0,-19.82157" +
-      " C 5.86853,43.60204 3.4855,39.99659 0,40" +
-      " L 0,0"
+    else if (node.bobbin) bobbin
     else circle(6)
 
-  private val markerDefinitions: String = {
+  @JSExport
+  val markerDefinitions: String = {
     def startMarker(colorName: String,
                     colorValue: String
                    ) = endMarker(colorName, colorValue, "start", "")
@@ -187,20 +193,19 @@ object SVG {
                 ): String =
     colors.indices
       .map(i => s".thread$i { color: #${colors(i)} }")
-      .mkString(System.lineSeparator())
+      .mkString("\n")
 
 
   /** @param diagram     collections of nodes and links
     * @param strokeWidth recommended values: "1px" for pair diagrams, "2px" for thread diagrams
     *                    thicker lines improve zooming out
-    *                    the color code for pair diagram is slightly more than 1px
+    *                    the color code width for pair diagram is slightly more than 1px
     *                    the gap for a thread behind another is about 7px
-    * @param markers     implement color coding of pair diagrams
-    *                    but can slow down animation significantly
+    * @param markers     if true color coding of pair diagrams is rendered
+    *                    which can slow down animation significantly
     *                    and breaks animation on IE, see issue #52
     * @return and SVG document as String
     */
-  @JSExport
   def render(diagram: Diagram, strokeWidth: String = "1px", markers: Boolean = true): String =
   s"""
      |<svg
