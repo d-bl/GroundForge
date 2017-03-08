@@ -19,10 +19,21 @@ import java.util.concurrent.TimeUnit
 
 import dibl.Force.Point
 
+import scala.scalajs.js.annotation.JSExport
 import scala.util.Try
 
-case class Diagram(nodes: Seq[Props], links: Seq[Props]) {
+@JSExport
+case class Diagram(nodes: Seq[Props],
+                   links: Seq[Props]) {
 
+  @JSExport
+  def node(i: Int): Props = nodes(i)
+
+  @JSExport
+  def link(i: Int): Props = links(i)
+
+  /** Calculates new node positions in a dedicated JavaScript engine, NOT THREAD SAFE!
+    */
   def nudgeNodes(center: Point = Point(0, 0),
                  timeout: Long = 20,
                  timeUnit: TimeUnit = TimeUnit.SECONDS

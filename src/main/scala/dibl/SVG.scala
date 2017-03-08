@@ -108,12 +108,19 @@ object SVG {
        |</defs>""".stripMargin.stripLineEnd
   }
 
-  @JSExport
-  def pathDescription(link: Props, source: Props, target: Props): String = {
+
+  private def pathDescription(diagram: Diagram, link: Props): String = {
+    val source = diagram.nodes(link.source)
+    val target = diagram.nodes(link.target)
     val sX = source.x
     val sY = source.y
     val tX = target.x
     val tY = target.y
+    pathDescription(link, sX, sY, tX, tY)
+  }
+
+  @JSExport
+  def pathDescription(link: Props, sX: Int, sY: Int, tX: Int, tY: Int): String = {
     val dX = tX - sX
     val dY = tY - sY
     val left = link.left
@@ -122,23 +129,23 @@ object SVG {
     val end = link.end
     val nrOfTwists = link.nrOfTwists
 
-    def mid = if (left )
+    def mid = if (left)
       s"S${sX - dY / 3 + dX / 3},${sY + dX / 3 + dY / 3}"
     else if (right)
       s"S${sX + dY / 3 + dX / 3},${sY + dY / 3 - dX / 3}"
-    else  " "
+    else " "
 
     // TODO see issue #70 to calculate a white end/start
     if (end == "white")
-      s"M$sX,${sY + mid} ${tX - dX/4},${tY - dY/4}"
+      s"M$sX,${sY + mid} ${tX - dX / 4},${tY - dY / 4}"
     else if (start == "white")
-      s"M${sX + dX/4},${(sY + dY/4) + mid } $tX,$tY"
+      s"M${sX + dX / 4},${(sY + dY / 4) + mid} $tX,$tY"
     else if (nrOfTwists > 0)
-       "M"+ sX + "," + sY + " " + (sX + dX/2) + "," + (sY + dY/2) + " " + tX + "," + tY
-    else s"M${source.x},${source.y} ${target.x},${target.y}"
+      "M" + sX + "," + sY + " " + (sX + dX / 2) + "," + (sY + dY / 2) + " " + tX + "," + tY
+    else s"M$sX,$sY $tX,$tY"
   }
 
-  private def markerRef (key: String, node: Props): Option[String] =
+  private def markerRef(key: String, node: Props): Option[String] =
     node
       .get(key)
       .filter(value => value != "white")
@@ -147,15 +154,15 @@ object SVG {
       )
 
   private def renderLinks(diagram: Diagram,
-                          strokeWidth: String,
-                          markers: Boolean
-                         ) = diagram.links.map{link =>
+                  strokeWidth: String,
+                  markers: Boolean
+                 ): String = diagram.links.map { link =>
     val opacity = if (link.border || link.toPin) 0 else 1
     val markerRefs = if (!markers) "" else
       link.get("mid").map(_ => s"; marker-mid: url('#twist-1')").getOrElse("") +
         markerRef("start", link).getOrElse("") +
         markerRef("end", link).getOrElse("")
-    val pd = pathDescription(link, diagram.nodes(link.source), diagram.nodes(link.target))
+    val pd = pathDescription(diagram, link)
     val cl = link.get("thread").map(nr => s"link thread$nr").getOrElse("link")
     // TODO no stroke color/width would allow styling threads with CSS
     // what in turn allows changes without repeating the simulation
@@ -167,7 +174,8 @@ object SVG {
        |></path>""".stripMargin
   }.mkString
 
-  private def renderNodes(nodes: Seq[Props]) = nodes.map { node =>
+  private def renderNodes(nodes: Seq[Props]
+                 ): String = nodes.map { node =>
     val opacity = if (node.bobbin || node.pin) 1 else 0
     val stroke = if (node.bobbin) "rgb(0, 0, 0); stroke-width: 2px" else "none"
     val cssClasses = (node.get("startOf"), node.get("thread")) match {
@@ -184,10 +192,8 @@ object SVG {
   }.mkString
 
   /** Prefix required when writing to an SVG file */
-  @JSExport
   val prolog = "<?xml version='1.0' encoding='UTF-8'?>"
 
-  @JSExport
   def threadsCSS(colors: Array[String]
                  = ("f00,f00,000,000,00f,00f,000,000"*20).split(",")
                 ): String =
@@ -206,12 +212,19 @@ object SVG {
     *                    and breaks animation on IE, see issue #52
     * @return and SVG document as String
     */
-  def render(diagram: Diagram, strokeWidth: String = "1px", markers: Boolean = true): String =
+  @JSExport
+  def render(diagram: Diagram,
+             strokeWidth: String = "1px",
+             markers: Boolean = true,
+             width: Int = 744,
+             height: Int = 1052
+            ): String =
   s"""
      |<svg
      | id="svg2"
      | version="1.1"
-     | width="744" height="1052"
+     | width="$width"
+     | height="$height"
      | pointer-events="all"
      | xmlns="http://www.w3.org/2000/svg"
      | xmlns:svg="http://www.w3.org/2000/svg"

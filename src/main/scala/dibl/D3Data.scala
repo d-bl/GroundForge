@@ -17,8 +17,9 @@ package dibl
 
 import dibl.D3Data.toJS
 
+import scala.annotation.meta.field
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{JSExport, JSExportAll, JSExportDescendentObjects}
 
 /** An object with links and nodes for a pair diagram and thread diagram.
   * Evaluation of the thread diagram only takes place when accessed.
@@ -27,8 +28,9 @@ import scala.scalajs.js.annotation.JSExport
   *
   * @param pairDiagram nodes and links for a color coded pair diagram
   */
-class D3Data (pairDiagram: Diagram) {
+case class D3Data (@(JSExport @field) pairDiagram: Diagram) {
 
+  @JSExport
   lazy val threadDiagram = ThreadDiagram(pairDiagram)
 
   @JSExport
