@@ -51,7 +51,7 @@ public class Demo4Java {
                         .apply(nudgedPairDiagram)
                         .nudgeNodes(center, 20, SECONDS)
                         .get();
-        String s = SVG.render(threadDiagram, "2px", true);
+        String s = SVG.render(threadDiagram, "2px", true, 744, 1052);
         SVG.threadsCSS("".split(","));
 
         System.exit(0); /// required because of Force.simulate to nudge nodes
