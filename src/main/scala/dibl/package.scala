@@ -82,7 +82,7 @@ package object dibl {
     def instructions: String = p.title.replaceAll(" .*", "").toLowerCase.replaceAll("t", "lr")
 
     /** If none-zero the node the first one of the thread with that number */
-    def startOf: Int = p.getOrElse("startOf", "0").toString.replaceAll("thread", "").toInt
+    def startOf: Int = p.getOrElse("startOf", "thread0").toString.replaceAll("thread", "").toInt
 
     /** Initial position for the animation */
     def x: Int = p.getOrElse("x", "0").toString.toInt

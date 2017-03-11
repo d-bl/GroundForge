@@ -43,20 +43,24 @@ function load() {
   colors = colors.replace(/,#FFFFFF/g,'').replace(/^,/,'')
 
   diagram.showGraph({
-    container: '#pairs',
+    container: d3.select('#pairs'),
     nodes: data.pairNodes(),
     links: data.pairLinks(),
     viewWidth: 440,
-    viewHeight: 260
+    viewHeight: 260,
+    diagram: data.pairDiagram,
+    stroke: "1px"
   })
   diagram.showGraph({
-    container: '#threads',
+    container: d3.select('#threads'),
     nodes: data.threadNodes(),
     links: data.threadLinks(),
     threadColor: '#color',
     palette: colors,
     viewWidth: 440,
-    viewHeight: 260
+    viewHeight: 260,
+    diagram: data.threadDiagram,
+    stroke: "2px"
   })
 }
 function onChangeColor(el) {

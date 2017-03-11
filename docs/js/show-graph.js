@@ -16,66 +16,27 @@
 fullyTransparant = 0 // global to allow override while testing
 diagram = {}
 diagram.showGraph = function(args) {
-    var htmlContainer = d3.select(args.container)
-
     args.width = args.width ? args.width : 744
     args.height = args.height? args.height : 1052
     args.viewWidth = args.viewWidth ? args.viewWidth : (args.width / 2)
     args.viewHeight = args.viewHeight? args.viewHeight : (args.height / 2)
 
-    // document creation
-    var svgRoot = htmlContainer.append("svg")
-                .attr("id", "svg2")
-                .attr("version", "1.1")
-                .attr("width", args.width)
-                .attr("height", args.height)
-                .attr("pointer-events", "all")
-                .attr("xmlns", "http://www.w3.org/2000/svg")
-                .attr("xmlns:svg", "http://www.w3.org/2000/svg")
-                .attr("xmlns:xlink", "http://www.w3.org/1999/xlink")
-
-    svgRoot.append('svg:defs').node().innerHTML = dibl.SVG().markerDefinitions
-    var svgContainer = svgRoot.append('svg:g')
-
-    // object creation and decoration
-
     var isThreadDiagram = args.nodes[0].title == 'thread 1'
     var isIE = document.documentURI == undefined // wrong feature check
     var isMobileMac = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
+    var markers = !isMobileMac && !isIE
 
-    var links = svgContainer.selectAll(".path").data(args.links).enter().append("svg:path")
-        .attr("class", function(d) { return d.thread ? "link thread" + d.thread : "link" })
-        .style('opacity', function(d) { return d.border || d.toPin ? fullyTransparant : 1})
-        .style('stroke', '#000')
-        .style('fill', 'none')
+    args.container.node().innerHTML = dibl.SVG().render(args.diagram, args.stroke, markers, args.width, args.height)
 
-    function markLinks() {
-      links
-        .style('marker-start', function(d) { if (d.start != "white") return 'url(#start-'+d.start+')' })
-        .style('marker-end', function(d) { if (d.end != "white") return 'url(#end-'+d.end+')' })
-        .style('marker-mid', function(d,i) { if (d.mid) return 'url(#twist-1)' })
-    }
-    if (isThreadDiagram) links.style('stroke-width', '2px')
-    if (!isIE && !isMobileMac) markLinks()
+    var links = args.container.selectAll(".link").data(args.links)
+    var nodes = args.container.selectAll(".node").data(args.nodes)
 
-    var bobbinShape = dibl.SVG().bobbin
-    var pinShape = dibl.SVG().circle(4)
-    var stitchShape = dibl.SVG().circle(6)
-    var nodes = svgContainer.selectAll(".node").data(args.nodes).enter().append("svg:path")
-        .attr("d", function(d) { return (d.bobbin ? bobbinShape : d.pin ? pinShape : stitchShape)})
-        .attr("class", function(d) { return "node " + (d.startOf ? "threadStart" : d.thread ? ("thread"+d.thread) : "")})
-        .style('opacity', function(d) { return d.bobbin || d.pin ? 1 : fullyTransparant})
-        .style('fill', '#000000')
-        .style('stroke', function(d) { return d.pin ? 'none' : '#000000'})
-
-    nodes.append("svg:title").text(function(d) { return d.title ? d.title : "" })
-
-    var threadStarts = svgContainer.selectAll(".threadStart")
+    var threadStarts = args.container.selectAll(".threadStart")
     if ( args.palette ) {
       var colors = args.palette.split(',')
       for(i=threadStarts.size() ; i >= 0 ; i--) {
         var n = (i - 1 + colors.length) % colors.length
-        svgContainer.selectAll(".thread"+i)
+        args.container.selectAll(".thread"+i)
           .style('stroke', colors[n])
           .style('fill', function(d) { return d.bobbin ? colors[n] : 'none'})
       }
@@ -88,31 +49,18 @@ diagram.showGraph = function(args) {
         threadStarts.on('click', function (d) {
             if (d3.event.defaultPrevented) return
             sim.alpha(0).stop()
-            svgContainer.selectAll("."+d.startOf)
+            args.container.selectAll("."+d.startOf)
               .style('stroke', '#'+colorpicker.value)
               .style('fill', function(d) { return d.bobbin ? '#'+colorpicker.value : 'none' })
         })
     }
-
-    var drawPath = function(d) {
-        var sX = d.source.x
-        var sY = d.source.y
-        var tX = d.target.x
-        var tY = d.target.y
-        var dX = (tX - sX)
-        var dY = (tY - sY)
-        var mid = d.left ? ("S" + (sX - dY/3 + dX/3) + "," + (sY + dX/3 + dY/3)) :
-                  d.right ? ("S" + (sX + dY/3 + dX/3) + "," + (sY + dY/3 - dX/3)) :
-                             " "
-        if (d.end && d.end == "white")
-            return "M"+ sX + "," + sY + mid + " " + (tX - dX/4) + "," + (tY - dY/4)
-        if (d.start && d.start == "white")
-            return "M"+ (sX + dX/4) + "," + (sY + dY/4) + mid + " " + tX + "," + tY
-        if (d.mid)
-            return "M"+ sX + "," + sY + " " + (sX + dX/2) + "," + (sY + dY/2) + " " + tX + "," + tY
-        return "M"+ sX + "," + sY + " " + tX + "," + tY
+    function drawPath(jsLink) {
+        var s = jsLink.source
+        var t = jsLink.target
+        var l = args.diagram.link(jsLink.index)
+        return  dibl.SVG().pathDescription(l, s.x, s.y, t.x, t.y)
     }
-    var moveNode = function(d) {
+    function moveNode(d) {
         return "translate(" + d.x + "," + d.y + ")"
     }
 
@@ -124,12 +72,18 @@ diagram.showGraph = function(args) {
                          nodes.attr("transform", moveNode)
                          links.attr("d", drawPath)
                      }
-    var simEnded = function(){
+    function markStart(d) { if (d.start != "white") return 'url(#start-'+d.start+')' }
+    function markEnd(d) { if (d.end != "white") return 'url(#end-'+d.end+')' }
+    function markMid(d,i) { if (d.mid) return 'url(#twist-1)' }
+    function simEnded() {
                         if (navigator == "no-browser") {
                             nodes.attr("transform", moveNode)
                             links.attr("d", drawPath)
                         }
-                        if (isIE || isMobileMac) markLinks()
+                        if (!markers) links
+                            .style('marker-start', markStart)
+                            .style('marker-end', markEnd)
+                            .style('marker-mid', markMid)
                         if (args.onAnimationEnd) args.onAnimationEnd()
                     }
     function strength(link){ return link.weak ? 5 : 50 }
@@ -143,7 +97,8 @@ diagram.showGraph = function(args) {
 
     // zooming and panning
 
-    htmlContainer.call( d3.zoom().on("zoom", zoomed) )
+    var svgContainer = args.container.select('svg')
+    svgContainer.call( d3.zoom().on("zoom", zoomed) )
     function zoomed() {
       svgContainer.attr("transform", d3.event.transform)
     }
