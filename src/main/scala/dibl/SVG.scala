@@ -179,8 +179,10 @@ object SVG {
     val opacity = if (node.bobbin || node.pin) 1 else 0
     val stroke = if (node.bobbin) "rgb(0, 0, 0); stroke-width: 2px" else "none"
     val cssClasses = (node.get("startOf"), node.get("thread")) match {
-      case (Some(_), Some(t)) => s"node threadStart$t"
-      case (None, Some(t)) => s"node thread$t"
+      case (Some(_), _) =>
+        s"node threadStart"
+      case (None, Some(t)) =>
+        s"node thread$t"
       case _ => "node"
     }
     s"""<path

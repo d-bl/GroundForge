@@ -92,8 +92,15 @@ class DiagramSpec extends FlatSpec with Matchers {
   it should "reduce twists" in {
 
     val threadDiagram = ThreadDiagram(PairDiagram(
-      Settings("5-", "bricks", stitches = "tttc", absRows = 6, absCols = 6)
+      Settings("5-", "bricks", stitches = "tttpc", absRows = 6, absCols = 6)
     ))
+    threadDiagram.nodes.count(_.title == "twist") shouldNot be(0)
+    threadDiagram.nodes.count(_.title == "cross") shouldNot be(0)
+    threadDiagram.nodes.count(_.title == "pin") shouldNot be(0)
+    threadDiagram.nodes.count(_.title == "thread 14") should be(1)
+    threadDiagram.nodes.count(_.startOf == 14) should be(1)
+    threadDiagram.toString should include("startOf -> thread14")
+
     val pairFromThread = PairDiagram("tc", threadDiagram)
     verifyLinks(pairFromThread)
     verifyLinks(threadDiagram)

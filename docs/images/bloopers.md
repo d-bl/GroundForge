@@ -30,3 +30,11 @@ try repeated twists for the first thread diagram in the page `docs/recursive.htm
 ![unfolding wave](unfolding.png)
 
 Not really a blooper, but a delicate balance between pattern, forces and interaction such as zooming during animation.
+
+4
+-
+
+![rotational blurr](blurred.png)
+
+Try to drag or paint threads with Internet Explorer version 11.
+On the left with [download](https://github.com/d-bl/GroundForge/archive/f0e832e.zip) on the right with the next.

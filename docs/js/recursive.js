@@ -44,22 +44,24 @@ function pairDiagram(value) {
 
   var stitch = document.getElementById("s1").value
   data[1] = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitch, tiling)
-  document.getElementById('d0').innerHTML = ""
-  document.getElementById('d1').innerHTML = ""
   diagram.showGraph({
-    container: '#d0',
+    container: d3.select('#d0'),
     nodes: data[1].pairNodes(),
     links: data[1].pairLinks(),
     viewWidth: 360,
-    viewHeight: 160
+    viewHeight: 160,
+    diagram: data[1].pairDiagram,
+    stroke: "1px"
   })
   diagram.showGraph({
-    container: '#d1',
+    container: d3.select('#d1'),
     nodes: data[1].threadNodes(),
     links: data[1].threadLinks(),
     threadColor: '#color',
     viewWidth: 360,
-    viewHeight: 160
+    viewHeight: 160,
+    diagram: data[1].threadDiagram,
+    stroke: "2px"
   })
 }
 function threadDiagram(n) {
@@ -67,11 +69,13 @@ function threadDiagram(n) {
   data[n] = dibl.D3Data().get(stitch, data[n-1])
   document.getElementById('d'+n).innerHTML = ""
   diagram.showGraph({
-    container: '#d' + n,
+    container: d3.select('#d' + n),
     nodes: data[n].threadNodes(),
     links: data[n].threadLinks(),
     threadColor: '#color',
     viewWidth: 660,
-    viewHeight: 300
+    viewHeight: 300,
+    diagram: data[n].threadDiagram,
+    stroke: "2px"
   })
 }
