@@ -97,10 +97,9 @@ diagram.showGraph = function(args) {
 
     // zooming and panning
 
-    var svgContainer = args.container.select('svg')
-    svgContainer.call( d3.zoom().on("zoom", zoomed) )
+    args.container.call( d3.zoom().on("zoom", zoomed) )
     function zoomed() {
-      svgContainer.attr("transform", d3.event.transform)
+      args.container.select('g').attr("transform", d3.event.transform)
     }
 
     // dragging nodes
