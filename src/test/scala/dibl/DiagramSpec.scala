@@ -94,6 +94,8 @@ class DiagramSpec extends FlatSpec with Matchers {
     val threadDiagram = ThreadDiagram(PairDiagram(
       Settings("5-", "bricks", stitches = "tttpc", absRows = 6, absCols = 6)
     ))
+    threadDiagram.nodes.count(n => n.title == "twist" && n.x.toInt==0 && n.y.toInt==0) shouldBe 0
+    threadDiagram.nodes.count(n => n.title == "cross" && n.x.toInt==0 && n.y.toInt==0) shouldBe 0
     threadDiagram.nodes.count(_.title == "twist") shouldNot be(0)
     threadDiagram.nodes.count(_.title == "cross") shouldNot be(0)
     threadDiagram.nodes.count(_.title == "pin") shouldNot be(0)
