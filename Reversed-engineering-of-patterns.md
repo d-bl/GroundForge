@@ -4,7 +4,9 @@ Like you can reshape generated patterns to your taste, you can reshape tradition
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template.png)
 
-Each symbol has six free snapping points, two of them should be connected with other objects. Copy-paste these objects to assemble a pattern without changing the length or directions of lines connecting the symbols. It might need some out-of-the-box thinking: the Binche snow flake example that comes with the template has horizontal connections and the vertical connection is reduced to a shared stitch. Stretching the shared stitch into a kind of plait (`ctcttctc`) reveals a traditional [snow flake] connection in the thread diagram. The final step is figuring out the tiling and read the matrix from the symbols within one tile.
+Each symbol has six free snapping points, two of them should be connected with other objects. Copy-paste these objects to assemble a pattern without changing the length or directions of lines connecting the symbols. It might need some out-of-the-box thinking: the Binche snow flake example below has horizontal connections and the vertical connection is reduced to a shared stitch. Stretching the shared stitch into a kind of plait (`ctcttctc`) reveals a traditional [snow flake] connection in the thread diagram. The final step is figuring out the tiling and read the matrix from the symbols within one tile.
+
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-example.png)
 
 [tesselace]: http://tesselace.com
 [SVG]: https://github.com/d-bl/GroundForge/blob/master/docs/images/legend.svg
