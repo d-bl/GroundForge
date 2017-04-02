@@ -7,7 +7,7 @@ The image below shows screen shot snippets of a pattern and its stitches.
   The digits inside the circles determine the configuration of arrows arriving at that position. 
 * _Top right:_ how the pattern definition looks like when repeated. The colored dots are explained on the "reshape" pages.
 * _Bottom:_ the diagrams generated with the chosen stitches.
-  When hovering with your mouse over a stitch, your browser is supposed to show the ID and instructions of a stitch.
+  When hovering with your mouse over a stitch (in a generated pattern, not the screenshot above), your browser is supposed to show the ID and instructions of a stitch.
 
 
 If the first stitch definition is not prefixed with an ID,
