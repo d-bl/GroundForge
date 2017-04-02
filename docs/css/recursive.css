@@ -15,6 +15,9 @@ body { max-width: 45em; padding: 1em; margin-left: auto; margin-right: auto; }
 form img, #d0, #d1, #d2, #d3{
   border: solid 1px #AAA;
 }
+label img, legend img {
+  border: 0;
+}
 #matrixOpts {
   padding: 0.2em;
   float: right;
