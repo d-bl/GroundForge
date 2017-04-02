@@ -7,7 +7,7 @@ your browser is supposed to show the ID and instructions of a stitch.
 * _Top left:_ the definition of a pattern. You can choose one from thumbnails, or [assemble] something else.
   The rows and columns determine the ID's assigned to stitches.
   The digits inside the circles determine the configuration of incoming arrows at that position. 
-* _Top right:_ how the pattern definition looks like when repeated
+* _Top right:_ how the pattern definition looks like when repeated. The colored dots are explained on the "reshape" pages.
 * _Bottom:_ the diagrams generated with the chosen stitches
 
 
