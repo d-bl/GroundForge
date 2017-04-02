@@ -1,4 +1,4 @@
-The image below shows an example of a pattern and its stitches.
+The image below shows screen shots of a pattern and its stitches.
 When hovering with your mouse over a stitch in a generated diagram,
 your browser is supposed to show the ID and instructions of a stitch.
 
