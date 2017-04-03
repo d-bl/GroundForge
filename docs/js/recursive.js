@@ -48,8 +48,6 @@ function pairDiagram(value) {
     container: d3.select('#d0'),
     nodes: data[1].pairNodes(),
     links: data[1].pairLinks(),
-    viewWidth: 360,
-    viewHeight: 160,
     diagram: data[1].pairDiagram,
     stroke: "1px"
   })
@@ -58,8 +56,6 @@ function pairDiagram(value) {
     nodes: data[1].threadNodes(),
     links: data[1].threadLinks(),
     threadColor: '#color',
-    viewWidth: 360,
-    viewHeight: 160,
     diagram: data[1].threadDiagram,
     stroke: "2px"
   })
@@ -73,8 +69,6 @@ function threadDiagram(n) {
     nodes: data[n].threadNodes(),
     links: data[n].threadLinks(),
     threadColor: '#color',
-    viewWidth: 660,
-    viewHeight: 300,
     diagram: data[n].threadDiagram,
     stroke: "2px"
   })

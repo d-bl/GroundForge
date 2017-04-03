@@ -1,16 +1,19 @@
-body { max-width: 45em; padding: 1em; margin-left: auto; margin-right: auto; }
+article { max-width: 45em; }
+body, article { padding: 1em; margin-left: auto; margin-right: auto; }
 .jscolor { width: 3.7em; font-family: "Courier New", "Monospace"; font-size: 0.7em; }
 
 #d0, #d1, #d2, #d3 {
-  width: 44.8em;
+  max-width: 98%;
+  width: 144.8em;
   height: 20em;
   padding 0;
   overflow: hidden
 }
 #d0, #d1 {
   display: inline-block;
-  width: 22.2em;
-  height: 10em;
+  max-width: 49%;
+  width: 122.2em;
+  height: 15em;
 }
 form img, #d0, #d1, #d2, #d3{
   border: solid 1px #AAA;
