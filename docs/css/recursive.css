@@ -2,6 +2,9 @@ article { max-width: 45em; }
 body, article { padding: 1em; margin-left: auto; margin-right: auto; }
 .jscolor { width: 3.7em; font-family: "Courier New", "Monospace"; font-size: 0.7em; }
 
+#logo img {
+  max-width: 18%;
+}
 #d0, #d1, #d2, #d3 {
   max-width: 98%;
   width: 144.8em;
@@ -11,7 +14,7 @@ body, article { padding: 1em; margin-left: auto; margin-right: auto; }
 }
 #d0, #d1 {
   display: inline-block;
-  max-width: 49%;
+  max-width: 48%;
   width: 122.2em;
   height: 15em;
 }
