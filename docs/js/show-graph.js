@@ -16,8 +16,8 @@
 fullyTransparant = 0 // global to allow override while testing
 diagram = {}
 diagram.showGraph = function(args) {
-    args.width = args.width ? args.width : 744
-    args.height = args.height? args.height : 1052
+    args.width = args.container.node().scrollWidth
+    args.height = args.container.node().scrollHeight
     args.viewWidth = args.viewWidth ? args.viewWidth : (args.width / 2)
     args.viewHeight = args.viewHeight? args.viewHeight : (args.height / 2)
 
