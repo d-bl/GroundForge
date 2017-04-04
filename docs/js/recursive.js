@@ -32,6 +32,9 @@ function setMatrix(value) {
       document.getElementById("cols").value = p[3]
       document.getElementById("shiftLeft").value = p[4]
       document.getElementById("shiftUp").value = p[5]
+      document.getElementById("#step1").style.display = 'none'
+      document.getElementById("#step2").style.display = 'none'
+      document.getElementById("#step3").style.display = 'none'
   }
 }
 function pairDiagram(value) {
@@ -41,6 +44,9 @@ function pairDiagram(value) {
   var nrOfCols = document.getElementById("cols").value
   var shiftLeft = document.getElementById("shiftLeft").value
   var shiftUp = document.getElementById("shiftUp").value
+  document.getElementById("step1").style.display = 'block'
+  document.getElementById("step2").style.display = 'none'
+  document.getElementById("step3").style.display = 'none'
 
   var stitch = document.getElementById("s1").value
   data[1] = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitch, tiling)
@@ -62,6 +68,9 @@ function pairDiagram(value) {
 }
 function threadDiagram(n) {
   var stitch = document.getElementById("s" + n).value
+  document.getElementById("step"+n).style.display = 'block'
+  if (n==2)
+    document.getElementById("step"+(n+1)).style.display = 'none'
   data[n] = dibl.D3Data().get(stitch, data[n-1])
   document.getElementById('d'+n).innerHTML = ""
   diagram.showGraph({
