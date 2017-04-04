@@ -99,39 +99,52 @@
         </p>
     </article>
 
-    <label for="s1">Step 1: stitches <a href="https://github.com/d-bl/GroundForge/wiki/Choose-Stitches"><img src="images/information-icon.png"></a></label>
-    <input id="s1"
-           name="s"
-           spellcheck="false"
-           value="ct A1=ct"
-           pattern="([lrt]?[c]+)+[lrt]?([;,]? +[A-K][0-9]=([lrt]?[c]+)+[lrt]?)*"
-    >
-    <button onclick="pairDiagram(getRadioVal('p'))">show</button>
-    <div>
-        <div id="d0"></div>
-        <div id="d1"></div>
+    <article>
+        <label for="s1">Step 1: stitches <a href="https://github.com/d-bl/GroundForge/wiki/Choose-Stitches"><img src="images/information-icon.png"></a></label>
+        <input id="s1"
+               name="s"
+               spellcheck="false"
+               value="ct A1=ct"
+               pattern="([lrt]?[c]+)+[lrt]?([;,]? +[A-K][0-9]=([lrt]?[c]+)+[lrt]?)*"
+        >
+        <button onclick="pairDiagram(getRadioVal('p'))">show</button>
+    </article>
+    <div id="step1">
+        <div>
+            <div id="d0"></div>
+            <div id="d1"></div>
+        </div>
+
+        <article>
+            <label for="s2">Step 2: stitches</label>
+            <input id="s2"
+                   name="s"
+                   spellcheck="false"
+                   value="cross=ctc twist=ctc"
+                   pattern="(cross=[lrtc]+ +twist=)?[lrtc]+"
+                   title="Valid characters for stitches are 'ctlr': cross, twist, left twist, right twist.">
+            <button onclick="threadDiagram(2)">show</button>
+        </article>
+        <div id="step2">
+            <div id="d2"></div>
+
+            <article>
+                <label for="s3">Step 3: stitches</label>
+                <input id="s3"
+                       name="s"
+                       spellcheck="false"
+                       pattern="(cross=[lrtc]+ +twist=)?[lrtc]+"
+                       title="Valid characters for stitches are 'ctlr': cross, twist, left twist, right twist.">
+                <button onclick="threadDiagram(3)">show</button>
+            </article>
+            <div id="step3">
+                <div id="d3"></div>
+            </div>
+        </div>
     </div>
-
-    <label for="s2">Step 2: stitches</label>
-    <input id="s2"
-           name="s"
-           spellcheck="false"
-           value="cross=ctc twist=ctc"
-           pattern="(cross=[lrtc]+ +twist=)?[lrtc]+"
-           title="Valid characters for stitches are 'ctlr': cross, twist, left twist, right twist.">
-    <button onclick="threadDiagram(2)">show</button>
-    <div id="d2"></div>
-
-    <label for="s3">Step 3: stitches</label>
-    <input id="s3"
-           name="s"
-           spellcheck="false"
-           pattern="(cross=[lrtc]+ +twist=)?[lrtc]+"
-           title="Valid characters for stitches are 'ctlr': cross, twist, left twist, right twist.">
-    <button onclick="threadDiagram(3)">show</button>
-    <div id="d3"></div>
 </form>
 
+<article>
 <p id="footer">
     <a href="https://github.com/d-bl/GroundForge/releases"
     >Release notes</a>
@@ -167,5 +180,6 @@
         src="http://c.statcounter.com/10865294/0/2e4f5d96/0/"
         alt="web analytics"></a></div></noscript>
 <!-- End of StatCounter Code for Default Guide -->
+</article>
 </body>
 </html>
