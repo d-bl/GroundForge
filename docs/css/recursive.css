@@ -62,14 +62,14 @@ ul {
         padding-left: 1em;
     }
     body {
-        margin: 0.1em;
+        margin: 1px;
         padding: 0;
     }
     #step1 {
         padding-right: 1em;
     }
     article {
-        margin: 0;
+        margin: 0.5em;
         padding: 0;
     }
 }
