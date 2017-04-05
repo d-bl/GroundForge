@@ -29,29 +29,19 @@
     Even just choosing stitches for the provided base patterns results in a myriad of possibilities.
     The generated diagrams can help to select the interesting ones with an educated guess.
 </p>
-<h2>Usage</h2>
-<ul>
-    <li>
-        Select the thumbnail of the desired base pattern to initialize the parameters.
-        For more patterns go to the
-        <a href="thumbs.html">thumbnail</a> page and copy-paste the content of a tooltip
-        or select a thumbnail and copy the matrix/tiling from the main page
-        or <a href="https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns"
-        >assemble</a> your own pattern.
-    </li>
-    <li>
-        Step one generates a pair diagram and thread diagram from the selected parameters.
-        The pair diagram will be a color coded version of the chosen thumbnail.
-    </li>
-    <li>
-        The next steps use the previous thread diagram as pair diagram to generate another thread diagram.
-        The number of repeated twists does't affect the next step.
-    </li>
-    <li>
-        <em>Warning:</em> With complex stitches and large numbers of rows and columns,
-        your browser can get overwhelmed with step two or three.
-    </li>
-</ul>
+<h2>Get started</h2>
+<p>
+    Select the thumbnail of the desired base pattern to initialize the parameters.
+    For more patterns go to the
+    <a href="thumbs.html">thumbnail</a> page and copy-paste the content of a tooltip
+    or select a thumbnail and copy the matrix/tiling from the main page.
+    For even more patterns you can <a href="https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns"
+    >assemble</a> your own.
+</p>
+<p>
+    <em>Warning:</em> With complex stitches and large numbers of rows and columns,
+    your browser can get overwhelmed with step two or three.
+</p>
 </article>
 <form onsubmit="return false">
     <article>
@@ -93,54 +83,62 @@
             <a href="" onclick="return false"><img src="thumbs/138.png" onclick="setMatrix('4641%0D9177;bricks;9;7;0;0')"></a>
             <a href="" onclick="return false"><img src="thumbs/405.png" onclick="setMatrix('4631%0D6688%0D3146%0D8866;bricks;8;10;0;0')"></a>
         </fieldset>
-        <p style="clear: both">
+        <p class="step1 hide" id="paint1">
             <input id="color" name="color" class="jscolor" value="00CC11" pattern="[a-fA-F0-9]{6}"/>
             <label for="color">Select a square thread start to apply the color and examine its path through the pattern.</label>
         </p>
     </article>
 
     <article>
-        <label for="s1">Step 1: stitches <a href="https://github.com/d-bl/GroundForge/wiki/Choose-Stitches"><img src="images/information-icon.png"></a></label>
+        <h2>Step 1</h2>
+        <p>
+            Generate a pair diagram and thread diagram from the selected parameters.
+            The pair diagram will be a color coded version of the chosen thumbnail.
+        </p>
+        <label for="s1">Stitches <a href="https://github.com/d-bl/GroundForge/wiki/Choose-Stitches"><img src="images/information-icon.png"></a></label>
         <input id="s1"
                name="s"
                spellcheck="false"
                value="ct A1=ct"
                pattern="([lrt]?[c]+)+[lrt]?([;,]? +[A-K][0-9]=([lrt]?[c]+)+[lrt]?)*"
         >
-        <button onclick="pairDiagram(getRadioVal('p'))">show</button>
+        <button class="show" onclick="pairDiagram(getRadioVal('p'))">show</button>
     </article>
-    <div id="step1">
-        <div>
-            <div id="d0"></div>
-            <div id="d1"></div>
-        </div>
+    <div class="step1 hide">
+        <div id="d0"></div>
+        <div id="d1"></div>
+    </div>
 
-        <article>
-            <label for="s2">Step 2: stitches</label>
-            <input id="s2"
-                   name="s"
-                   spellcheck="false"
-                   value="cross=ctc twist=ctc"
-                   pattern="(cross=[lrtc]+ +twist=)?[lrtc]+"
-                   title="Valid characters for stitches are 'ctlr': cross, twist, left twist, right twist.">
-            <button onclick="threadDiagram(2)">show</button>
-        </article>
-        <div id="step2">
-            <div id="d2"></div>
-
-            <article>
-                <label for="s3">Step 3: stitches</label>
-                <input id="s3"
-                       name="s"
-                       spellcheck="false"
-                       pattern="(cross=[lrtc]+ +twist=)?[lrtc]+"
-                       title="Valid characters for stitches are 'ctlr': cross, twist, left twist, right twist.">
-                <button onclick="threadDiagram(3)">show</button>
-            </article>
-            <div id="step3">
-                <div id="d3"></div>
-            </div>
-        </div>
+    <article>
+        <h2>Step 2</h2>
+        <p>
+            Use the previous thread diagram as pair diagram to generate another thread diagram.
+            The number of repeated twists of he previous thread diagram doesn't make any difference.</p>
+        <label for="s2">Stitches</label>
+        <input id="s2"
+               name="s"
+               spellcheck="false"
+               value="cross=ctc twist=ctc"
+               pattern="(cross=[lrtc]+ +twist=)?[lrtc]+"
+               title="Valid characters for stitches are 'ctlr': cross, twist, left twist, right twist.">
+        <button class="step1 hide" onclick="threadDiagram(2)">show</button>
+    </article>
+    <div class="step2 hide">
+        <div id="d2"></div>
+    </div>
+    <article>
+        <h2>Step 3</h2>
+        <p>As step 2.</p>
+        <label for="s3">Stitches</label>
+        <input id="s3"
+               name="s"
+               spellcheck="false"
+               pattern="(cross=[lrtc]+ +twist=)?[lrtc]+"
+               title="Valid characters for stitches are 'ctlr': cross, twist, left twist, right twist.">
+        <button class="step2 hide" onclick="threadDiagram(3)">show</button>
+    </article>
+    <div class="step3 hide">
+        <div id="d3"></div>
     </div>
 </form>
 

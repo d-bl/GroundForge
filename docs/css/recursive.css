@@ -1,5 +1,5 @@
 article { max-width: 45em; }
-body, article { padding: 1em; margin-left: auto; margin-right: auto; }
+body, article { padding: 1em; padding-bottom: 0; margin-left: auto; margin-right: auto; }
 .jscolor { width: 3.7em; font-family: "Courier New", "Monospace"; font-size: 0.7em; }
 
 #logo img {
@@ -7,7 +7,7 @@ body, article { padding: 1em; margin-left: auto; margin-right: auto; }
 }
 #d0, #d1, #d2, #d3 {
   max-width: 98%;
-  width: 144.8em;
+  width: 180em;
   height: 20em;
   padding 0;
   overflow: hidden
@@ -15,7 +15,7 @@ body, article { padding: 1em; margin-left: auto; margin-right: auto; }
 #d0, #d1 {
   display: inline-block;
   max-width: 48%;
-  width: 122.2em;
+  width: 180em;
   height: 15em;
 }
 form img, #d0, #d1, #d2, #d3{
@@ -50,8 +50,14 @@ label img, legend img {
   text-align: right;
   margin: 0;
 }
-#step1, #step2, #step3 {
+#paint1 {
+  clear: both;
+}
+.hide {
     display: none;
+}
+.show {
+    display: block;
 }
 ul {
     padding: 0;
