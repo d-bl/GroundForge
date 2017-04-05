@@ -32,10 +32,9 @@ function setMatrix(value) {
       document.getElementById("cols").value = p[3]
       document.getElementById("shiftLeft").value = p[4]
       document.getElementById("shiftUp").value = p[5]
-      document.getElementById("#singleColor").style.display = 'none'
-      document.getElementById("#step1").style.display = 'none'
-      document.getElementById("#step2").style.display = 'none'
-      document.getElementById("#step3").style.display = 'none'
+      replaceClass("step1", "show","hide")
+      replaceClass("step2", "show", "hide")
+      replaceClass("step3", "show", "hide")
   }
 }
 function replaceClass(select, oldValue, newValue) {
