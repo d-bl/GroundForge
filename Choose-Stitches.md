@@ -3,8 +3,9 @@ The image below shows screen shot snippets of a pattern and its stitches.
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/stitch-ids.png)
 
 * _Top left:_ the definition of a pattern. You can choose one from thumbnails, or [assemble] something else.
-  The rows and columns determine the ID's assigned to stitches.
   The digits inside the circles determine the configuration of arrows arriving at that position. 
+  The rows and columns determine the ID's assigned to stitches.
+  For example the top-left (5) gets ID A1
 * _Top right:_ how the pattern definition looks like when repeated. The colored dots are explained on the "reshape" pages.
 * _Bottom:_ the diagrams generated with the chosen stitches.
   When hovering with your mouse over a stitch (in a generated pattern, not the screenshot above), your browser is supposed to show the ID and instructions of a stitch.
