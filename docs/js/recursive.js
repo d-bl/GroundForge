@@ -14,15 +14,6 @@
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
 var data = [0,1,2,3,4]
-function getRadioVal(radioName) {
-  var rads = document.getElementsByName(radioName);
-
-  for(var i=0; i<rads.length; i++) {
-    if(rads[i].checked)
-      return rads[i].value;
-  }
-  return null;
-}
 function setMatrix(value) {
   var p = unescape(value).split(";")
   if (p.length == 6) {
