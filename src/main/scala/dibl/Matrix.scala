@@ -135,7 +135,7 @@ object Matrix {
   def toValidMatrixLines(str: String): Try[Array[String]] = {
     val lines = str.split(separator)
     if (lines.map(_.length).sortBy(n => n).distinct.length != 1)
-      Failure(new scala.Exception(s"Matrix lines have varying lengths: $str ==> ${lines.mkString(", ")}"))
+      Failure(new scala.Exception(s"Matrix lines have varying lengths: $str ==> ${lines.map(s => s"$s(${s.length})").mkString(", ")}"))
     else if (lines(0).length > 26)
       Failure(new scala.Exception(s"Matrix lines exceeds maximum length of 26: $str ==> ${lines.mkString(", ")}"))
     else Success(lines)

@@ -13,7 +13,7 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
-fullyTransparant = 0 // global to allow override while testing
+fullyTransparent = 0 // global to allow override while testing
 diagram = {}
 diagram.showGraph = function(args) {
     args.width = args.container.node().scrollWidth
@@ -26,7 +26,7 @@ diagram.showGraph = function(args) {
     var isMobileMac = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
     var markers = !isMobileMac && !isIE
 
-    args.container.node().innerHTML = dibl.SVG().render(args.diagram, args.stroke, markers, args.width, args.height)
+    args.container.node().innerHTML = dibl.SVG().render(args.diagram, args.stroke, markers, args.width, args.height, fullyTransparent)
 
     var links = args.container.selectAll(".link").data(args.links)
     var nodes = args.container.selectAll(".node").data(args.nodes)
@@ -49,7 +49,7 @@ diagram.showGraph = function(args) {
         threadStarts.on('click', function (d) {
             if (d3.event.defaultPrevented) return
             sim.alpha(0).stop()
-            args.container.selectAll("."+d.startOf)
+            args.container.selectAll(".thread"+d.startOf)
               .style('stroke', '#'+colorpicker.value)
               .style('fill', function(d) { return d.bobbin ? '#'+colorpicker.value : 'none' })
         })

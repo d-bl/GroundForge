@@ -15,7 +15,7 @@
 */
 package dibl
 
-import dibl.Force.Point
+import dibl.Force.{Point, nudgeNodes}
 import dibl.SVG.{prolog, render}
 
 import scala.reflect.io.File
@@ -41,12 +41,12 @@ object Demo {
       their positions don't need nudging to optimise the next step.
      */
     (for {
-      pairDiagram <- PairDiagram("586- -4-5 5-21 -5-7", "checker", absRows = 9, absCols = 9, stitches = "tctc,D4=llctc,B4=rrctc,A1=ctc,D2=rctc,B2=lctc,C3=ctc")
-      nudgedPairDiagram <- pairDiagram.nudgeNodes(center = Point(100, 100))
+      pairDiagram <- PairDiagram.create("586- -4-5 5-21 -5-7", "checker", absRows = 9, absCols = 9, stitches = "tctc,D4=llctc,B4=rrctc,A1=ctc,D2=rctc,B2=lctc,C3=ctc")
+      nudgedPairDiagram <- nudgeNodes(pairDiagram, center = Point(100, 100))
       _ <- SafeWriter("target/demoP1a.svg").write(prolog + render(pairDiagram))
       _ <- SafeWriter("target/demoP1b.svg").write(prolog + render(nudgedPairDiagram))
       threadDiagram = ThreadDiagram(pairDiagram)
-      nudgedThreadDiagram <- threadDiagram.nudgeNodes(center = Point(200, 200))
+      nudgedThreadDiagram <- nudgeNodes(threadDiagram, center = Point(200, 200))
       _ <- SafeWriter("target/demoT1a.svg").write(prolog + render(threadDiagram, "2px"))
       _ <- SafeWriter("target/demoT1b.svg").write(prolog + render(nudgedThreadDiagram, "2px"))
       _ <- SafeWriter("target/demoP2.svg").write(prolog + render(PairDiagram("ct", nudgedThreadDiagram)))

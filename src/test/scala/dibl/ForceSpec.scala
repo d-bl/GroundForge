@@ -15,41 +15,38 @@
 */
 package dibl
 
-import dibl.Force.{Point, simulate}
+import dibl.Force.{Point, nudgeNodes}
 import org.scalatest.{FlatSpec, Matchers}
-
-import scala.util.{Success, Try}
 
 class ForceSpec extends FlatSpec with Matchers {
 
   // smaller row/col values cause less accurate average positions, larger values slow down recursion exponentially
-  private val pairDiagram1 = PairDiagram("5-", "bricks", absRows = 7, absCols = 7, stitches = "ct").get
+  private val pairDiagram1 = PairDiagram.create("5-", "bricks", absRows = 7, absCols = 7, stitches = "ct").get
 
   "points" should "should be spread around the default origin" in {
-    accumulate(simulate(pairDiagram1)) shouldBe Point(0, 0)
+    accumulate(nudgeNodes(pairDiagram1).get.nodes) shouldBe Point(0, 0)
   }
 
   it should "have some allowance for a custom origin" in {
     val origin = Point(6, 6)
-    accumulate(simulate(pairDiagram1, origin), origin) shouldBe Point(5, 5)
+    accumulate(nudgeNodes(pairDiagram1, origin).get.nodes, origin) shouldBe Point(6, 5)
   }
 
   "simulate" should "succeed on recursive diagrams" in {
-    val threadDiagram2 = ThreadDiagram(pairDiagram1.nudgeNodes().get)
-    val threadDiagram3 = ThreadDiagram(PairDiagram("ct", threadDiagram2)).nudgeNodes().get
-    val threadDiagram4 = ThreadDiagram(PairDiagram("ctc", threadDiagram3)).nudgeNodes()
-    threadDiagram4 shouldBe a[Success[_]]
+    val threadDiagram2 = ThreadDiagram(nudgeNodes(pairDiagram1).get)
+    val threadDiagram3 = ThreadDiagram(nudgeNodes(PairDiagram("ct", threadDiagram2)).get)
+    val threadDiagram4 = ThreadDiagram(nudgeNodes(PairDiagram("ctc", threadDiagram3)).get)
+    threadDiagram4 shouldBe a[Diagram]
     // accumulated positions are unpredictable
   }
 
   private def round(b: Point) = Point(Math.round(b.x*10)/10, Math.round(b.y*10)/10)
 
-  private def accumulate(triedPoints: Try[Array[Point]], origin: Point = Point(0, 0)) = round(
-    triedPoints
-      .get
+  private def accumulate(nodes: Seq[NodeProps], origin: Point = Point(0, 0)) = round(
+    nodes
       .foldLeft(origin) {
-        case (Point(ax, ay), Point(bx, by)) =>
-          Point(ax + bx - origin.x, ay + by - origin.y)
+        case (acc, next) =>
+          Point(acc.x + next.x - origin.x, acc.y + next.y - origin.y)
       }
   )
 }

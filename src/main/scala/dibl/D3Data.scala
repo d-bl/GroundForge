@@ -15,11 +15,9 @@
 */
 package dibl
 
-import dibl.D3Data.toJS
-
 import scala.annotation.meta.field
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSExport, JSExportAll, JSExportDescendentObjects}
+import scala.scalajs.js.annotation.JSExport
 
 /** An object with links and nodes for a pair diagram and thread diagram.
   * Evaluation of the thread diagram only takes place when accessed.
@@ -28,39 +26,27 @@ import scala.scalajs.js.annotation.{JSExport, JSExportAll, JSExportDescendentObj
   *
   * @param pairDiagram nodes and links for a color coded pair diagram
   */
+@deprecated
 case class D3Data (@(JSExport @field) pairDiagram: Diagram) {
 
   @JSExport
   lazy val threadDiagram = ThreadDiagram(pairDiagram)
 
   @JSExport
-  def pairNodes(): js.Array[js.Dictionary[Any]] = toJS(pairDiagram.nodes)
+  def pairNodes(): js.Array[js.Dictionary[Any]] = pairDiagram.jsNodes()
 
   @JSExport
-  def pairLinks(): js.Array[js.Dictionary[Any]] = toJS(pairDiagram.links)
+  def pairLinks(): js.Array[js.Dictionary[Any]] = pairDiagram.jsLinks()
 
   @JSExport
-  def threadNodes(): js.Array[js.Dictionary[Any]] = toJS(threadDiagram.nodes)
+  def threadNodes(): js.Array[js.Dictionary[Any]] = threadDiagram.jsNodes()
 
   @JSExport
-  def threadLinks(): js.Array[js.Dictionary[Any]] = toJS(threadDiagram.links)
-
+  def threadLinks(): js.Array[js.Dictionary[Any]] = threadDiagram.jsLinks()
 }
 
 @JSExport
 object D3Data {
-
-  def toJS(scalaItems: Seq[Props]): js.Array[js.Dictionary[Any]] = {
-
-    val jsItems = new js.Array[js.Any](scalaItems.length).asInstanceOf[js.Array[js.Dictionary[Any]]]
-    for {i <- scalaItems.indices} {
-      jsItems(i) = js.Object().asInstanceOf[js.Dictionary[Any]]
-      for {key <- scalaItems(i).keys} {
-        jsItems(i)(key) = scalaItems(i)(key)
-      }
-    }
-    jsItems
-  }
 
   /** Creates a pair and thread diagrams from values in form fields of docs/index.html
     *
@@ -75,11 +61,12 @@ object D3Data {
     */
   @JSExport
   def get(compactMatrix: String, rows: Int, cols: Int, shiftLeft: Int, shiftUp: Int, stitches: String, tileType: String
-         ): D3Data =
-  new D3Data(PairDiagram(Settings(
-    compactMatrix, tileType, rows, cols, shiftLeft, shiftUp, stitches
-  )))
-
+         ): D3Data = {
+    val triedDiagram = PairDiagram.create(
+      compactMatrix, tileType, rows, cols, shiftLeft, shiftUp, stitches
+    )
+    new D3Data(triedDiagram.getOrRecover)
+  }
   /** Creates a new pair and thread diagram from a thread diagram assuming threads are pairs.
     *
     * @param d3Data object with a thread diagram

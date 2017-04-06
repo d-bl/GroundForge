@@ -36,7 +36,7 @@ object SVG {
 
   private val square = "M -6,-6 6,-6 6,6 -6,6 Z"
   private val diamond = "M -5,0 0,8 5,0 0,-8 Z"
-  private def shape(node: Props) = // See https://www.w3.org/TR/SVG/paths.html#PathDataMovetoCommands
+  private def shape(node: NodeProps) = // See https://www.w3.org/TR/SVG/paths.html#PathDataMovetoCommands
     if (node.pin) circle(4)
     else if (node.bobbin) bobbin
     else circle(6)
@@ -108,8 +108,7 @@ object SVG {
        |</defs>""".stripMargin.stripLineEnd
   }
 
-
-  private def pathDescription(diagram: Diagram, link: Props): String = {
+  private def pathDescription(diagram: Diagram, link: LinkProps): String = {
     val source = diagram.nodes(link.source)
     val target = diagram.nodes(link.target)
     val sX = source.x
@@ -120,7 +119,7 @@ object SVG {
   }
 
   @JSExport
-  def pathDescription(link: Props, sX: Int, sY: Int, tX: Int, tY: Int): String = {
+  def pathDescription(link: LinkProps, sX: Double, sY: Double, tX: Double, tY: Double): String = {
     val dX = tX - sX
     val dY = tY - sY
     val left = link.left
@@ -145,49 +144,32 @@ object SVG {
     else s"M$sX,$sY $tX,$tY"
   }
 
-  private def markerRef(key: String, node: Props): Option[String] =
-    node
-      .get(key)
-      .filter(value => value != "white")
-      .map(value =>
-        s"; marker-$key: url('#$key-$value')"
-      )
-
   private def renderLinks(diagram: Diagram,
-                  strokeWidth: String,
-                  markers: Boolean
-                 ): String = diagram.links.map { link =>
-    val opacity = if (link.border || link.toPin) 0 else 1
-    val markerRefs = if (!markers) "" else
-      link.get("mid").map(_ => s"; marker-mid: url('#twist-1')").getOrElse("") +
-        markerRef("start", link).getOrElse("") +
-        markerRef("end", link).getOrElse("")
+                          strokeWidth: String,
+                          markers: Boolean,
+                          opacityOfHiddenObjects: Double = 0
+                         ): String = diagram.links.map { link =>
+    val opacity = if (link.border || link.toPin) opacityOfHiddenObjects else 1
+    println("links ==="+opacityOfHiddenObjects+ "===" +opacity)
     val pd = pathDescription(diagram, link)
-    val cl = link.get("thread").map(nr => s"link thread$nr").getOrElse("link")
     // TODO no stroke color/width would allow styling threads with CSS
     // what in turn allows changes without repeating the simulation
     // stand-alone SVG does require stroke details
     s"""<path
-       | class="$cl"
+       | class="${link.cssClass}"
        | d="$pd"
-       | style="stroke: rgb(0, 0, 0); stroke-width: $strokeWidth; fill: none; opacity: $opacity$markerRefs"
+       | style="stroke: rgb(0, 0, 0); stroke-width: $strokeWidth; fill: none; opacity: $opacity${link.markerRefs}"
        |></path>""".stripMargin
   }.mkString
 
-  private def renderNodes(nodes: Seq[Props]
-                 ): String = nodes.map { node =>
-    val opacity = if (node.bobbin || node.pin) 1 else 0
+  private def renderNodes(nodes: Seq[NodeProps],
+                          opacityOfHiddenObjects: Double = 0
+                         ): String = nodes.map { node =>
+    val opacity = if (node.bobbin || node.pin) 1 else opacityOfHiddenObjects
+    println("nodes ==="+opacityOfHiddenObjects+ "===" +opacity)
     val stroke = if (node.bobbin) "rgb(0, 0, 0); stroke-width: 2px" else "none"
-    val cssClasses = (node.get("startOf"), node.get("thread")) match {
-      case (Some(_), _) =>
-        s"node threadStart"
-      case (None, Some(t)) =>
-        s"node thread$t"
-      case _ =>
-        s"node"
-    }
     s"""<path
-       | class="$cssClasses"
+       | class="${node.cssClasses}"
        | d="${shape(node)}"
        | style="fill: rgb(0, 0, 0); stroke: $stroke; opacity: $opacity"
        | transform="translate(${node.x},${node.y})"
@@ -220,7 +202,8 @@ object SVG {
              strokeWidth: String = "1px",
              markers: Boolean = true,
              width: Int = 744,
-             height: Int = 1052
+             height: Int = 1052,
+             opacityOfHiddenObjects: Double = 0
             ): String =
   s"""
      |<svg
@@ -235,8 +218,8 @@ object SVG {
      |>
      |<g>
      |$markerDefinitions
-     |${renderLinks(diagram, strokeWidth, markers)}
-     |${renderNodes(diagram.nodes)}
+     |${renderLinks(diagram, strokeWidth, markers, opacityOfHiddenObjects)}
+     |${renderNodes(diagram.nodes, opacityOfHiddenObjects)}
      |</g>
      |</svg>""".stripMargin.stripLineEnd
 }

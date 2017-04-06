@@ -18,7 +18,7 @@ function getValueOfDropDown(id, defaultValue) {
   return e.selectedIndex >=0 ? e.options[e.selectedIndex].value : defaultValue
 }
 function load() {
-  fullyTransparant = document.getElementById('transparency').value
+  fullyTransparent = document.getElementById('transparency').value
   document.getElementById('pairs').innerHTML = ""
   document.getElementById('threads').innerHTML = ""
 

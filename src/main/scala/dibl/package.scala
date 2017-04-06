@@ -14,8 +14,9 @@
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
 
-import scala.collection.immutable.HashMap
 import scala.language.postfixOps
+import scala.scalajs.js.annotation.JSExport
+import scala.util.{Success, Try}
 
 package object dibl {
 
@@ -47,70 +48,15 @@ package object dibl {
   type TargetToSrcs = (Int, Cell)
   def TargetToSrcs (target: Int, sources: Cell): TargetToSrcs = (target, sources)
 
-  /** see https://github.com/d-bl/GroundForge/blob/7a94b67/js/sample.js */
-  type Props = Map[String,Any]
-  def Props(xs: (String, Any)*): Props = HashMap(xs: _*)
-
-  /** Bridges the JavaScript way of accessing object properties like a HashMap
-    * and the scala way allowing code-completion
-    */
-  implicit class LinkProps(p: Props) {
-    /** The id of the source node */
-    def source: Int = p.getOrElse("source", 0).asInstanceOf[Int]
-
-    /** The id of the target node */
-    def target: Int = p.getOrElse("target", 0).asInstanceOf[Int]
-
-    def left: Boolean = p.getOrElse("left", false).asInstanceOf[Boolean]
-    def right: Boolean = p.getOrElse("right", false).asInstanceOf[Boolean]
-    def start: String = p.getOrElse("start", "").asInstanceOf[String]
-    def end: String = p.getOrElse("end", "").asInstanceOf[String]
-    def nrOfTwists: Int = p.getOrElse("mid", 0).asInstanceOf[Int]
-    def border: Boolean = p.getOrElse("border", false).asInstanceOf[Boolean]
-    def toPin: Boolean = p.getOrElse("toPin", false).asInstanceOf[Boolean]
+  implicit class TriedDiagram(left: Try[Diagram]) {
+    @JSExport
+    def getOrRecover: Diagram = left
+      .recoverWith { case e => Success(Diagram(
+        Seq(NodeProps.errorNode(e.getMessage)),
+        Seq[LinkProps]()
+      ))
+      }.get
   }
-
-  /** Bridges the JavaScript way of accessing object properties like a HashMap
-    * and the scala way allowing code-completion
-    */
-  implicit class NodeProps(p: Props) {
-
-    /** The title alias tooltip (ID and instructions for a stitch) */
-    def title: String = p.getOrElse("title", "").toString
-
-    /** The stitch instructions from the title */
-    def instructions: String = p.title.replaceAll(" .*", "").toLowerCase.replaceAll("t", "lr")
-
-    /** If none-zero the node the first one of the thread with that number */
-    def startOf: Int = p.getOrElse("startOf", "thread0").toString.replaceAll("thread", "").toInt
-
-    /** Initial position for the animation */
-    def x: Int = p.getOrElse("x", "0").toString.toInt
-
-    /** Initial position for the animation */
-    def y: Int = p.getOrElse("y", "0").toString.toInt
-
-    def pin: Boolean = p.getOrElse("pin", false).asInstanceOf[Boolean]
-    def bobbin: Boolean = p.getOrElse("bobbin", false).toString.toBoolean
-    def stitch: Boolean = p.getOrElse("stitch", false).asInstanceOf[Boolean]
-  }
-
-  // other tools
-
-  def transparentLinks (nodes: Seq[Int],
-                                links: Seq[Props] = Seq[Props]()
-                               ): Seq[Props] =
-      if (nodes.length < 2) links
-      else {
-        nodes.zip(nodes.tail).map{case (source, target) =>
-          Props(
-            "source" -> source,
-            "target" -> target,
-            "border" -> true,
-            "weak" -> true
-          )
-        }
-      }
 
   /**
     * Converts an HSL color value to RGB. Conversion formula
