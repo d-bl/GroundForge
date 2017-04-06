@@ -18,32 +18,22 @@ package dibl
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExport
 
-@JSExport
-case class Diagram(nodes: Seq[NodeProps],
-                   links: Seq[LinkProps]
-                  ) {
+/** Object required by D3js and [[SVG]]. For D3js see also drawNode and drawLink on
+  * https://bl.ocks.org/mbostock/1b64ec067fcfc51e7471d944f51f1611
+  */
+trait Props {
 
-  @JSExport
-  def node(i: Int): NodeProps = nodes(i)
-
-  @JSExport
-  def link(i: Int): LinkProps = links(i)
-
+  /** Conversion for a JavaScript environment such as
+    * a browser (e.g. docs/js/draw-graph.js)
+    * or node.js (e.g. src/main/resources/create-svg.js)
+    *
+    * @return values required by the D3js scripts
+    */
   //noinspection AccessorLikeMethodIsEmptyParen
   @JSExport
-  def jsNodes(): js.Array[js.Dictionary[Any]] = toJS(nodes)
+  def toJS(): js.Dictionary[Any]
 
-  //noinspection AccessorLikeMethodIsEmptyParen
-  @JSExport
-  def jsLinks(): js.Array[js.Dictionary[Any]] = toJS(links)
-
-  private def toJS(items: Seq[Props]): js.Array[js.Dictionary[Any]] = {
-
-    val jsItems = new js.Array[js.Any](items.length).asInstanceOf[js.Array[js.Dictionary[Any]]]
-    for {i <- items.indices} {
-      jsItems(i) = items(i).toJS()
-      jsItems(i)("index") = i
-    }
-    jsItems
-  }
+  // TODO conversion for a JDK nashorn environment (Force.class + force.js, tested with ForceSpec)
+  // We need arrays of maps for D3js, the link below demonstrates a map
+  // http://stackoverflow.com/questions/24691142/nashorns-scriptobjectmirror#26030296
 }

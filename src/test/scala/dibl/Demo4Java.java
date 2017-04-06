@@ -18,6 +18,7 @@ package dibl;
 import dibl.Force.Point;
 import scala.util.Try;
 
+import static dibl.Force.nudgeNodes;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 @SuppressWarnings("unused")
@@ -30,7 +31,7 @@ public class Demo4Java {
         patternSheet.add("5-", "bricks");
         String svgPatternSheet = patternSheet.toSvgDoc();
 
-        Try<Diagram> triedPairDiagram = PairDiagram.apply(
+        Try<Diagram> triedPairDiagram = PairDiagram.create(
                 "5-", "bricks",
                 3, 3,
                 0, 0,
@@ -41,17 +42,13 @@ public class Demo4Java {
                     .failed()
                     .get();
         Point center = new Point(200, 200);
-        Diagram nudgedPairDiagram =
-                triedPairDiagram
-                        .get()
-                        .nudgeNodes(center, 20, SECONDS)
-                        .get();
-        Diagram threadDiagram =
-                ThreadDiagram
-                        .apply(nudgedPairDiagram)
-                        .nudgeNodes(center, 20, SECONDS)
-                        .get();
-        String s = SVG.render(threadDiagram, "2px", true, 744, 1052);
+        Diagram nudgedPairDiagram = nudgeNodes(
+                triedPairDiagram.get(), center, 20, SECONDS
+        ).get();
+        Diagram threadDiagram = nudgeNodes(
+                ThreadDiagram.apply(nudgedPairDiagram), center, 20, SECONDS
+        ).get();
+        String s = SVG.render(threadDiagram, "2px", true, 744, 1052, 0);
         SVG.threadsCSS("".split(","));
 
         System.exit(0); /// required because of Force.simulate to nudge nodes

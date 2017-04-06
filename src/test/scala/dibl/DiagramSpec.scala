@@ -101,7 +101,7 @@ class DiagramSpec extends FlatSpec with Matchers {
     threadDiagram.nodes.count(_.title == "pin") shouldNot be(0)
     threadDiagram.nodes.count(_.title == "thread 14") should be(1)
     threadDiagram.nodes.count(_.startOf == 14) should be(1)
-    threadDiagram.toString should include("startOf -> thread14")
+    threadDiagram.toString should include("thread,14")
 
     val pairFromThread = PairDiagram("tc", threadDiagram)
     verifyLinks(pairFromThread)
@@ -118,7 +118,7 @@ class DiagramSpec extends FlatSpec with Matchers {
     ) shouldNot be(0)
   }
 
-  private def hasDuplicateLinks(links:  Seq[Props]) =
+  private def hasDuplicateLinks(links:  Seq[LinkProps]) =
     links.groupBy(l => (l.source, l.target)).count(_._2.size > 1)
 
   private def verifyLinks(p: Diagram) = {

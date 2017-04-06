@@ -15,7 +15,11 @@
 */
 package dibl
 
+import dibl.LinkProps.{pairLink, transparentLinks}
+import dibl.NodeProps.{errorNode, node}
+
 import scala.annotation.tailrec
+import scala.scalajs.js.annotation.JSExport
 import scala.util.Try
 
 object PairDiagram {
@@ -40,13 +44,6 @@ object PairDiagram {
       .filter(s2t => sameTargets(s2t._2))
       .keySet
 
-    @tailrec
-    def realTarget(target: Int): Int =
-      if (hasDuplicateLinksOut.contains(target))
-        realTarget(targetsBySource(target).head)
-      else
-        target
-
     val stitchList = stitches.split("[^a-zA-Z0-9=]+")
     val defaultStitch = if (stitchList(0).isEmpty || stitchList(0).contains('=')) "ctc" else stitchList(0)
     val stitchMap = stitchList
@@ -56,8 +53,8 @@ object PairDiagram {
         xs(0) -> xs(1)
       }.toMap
 
-    def translateTitle(p: Props) = {
-      val threadTitle: String = p.title
+    def translateTitle(title: String) = {
+      val threadTitle: String = title
       if (threadTitle.startsWith("thread "))
         threadTitle.replace("thread", "Pair")
       else stitchMap.getOrElse(threadTitle, defaultStitch)
@@ -67,13 +64,8 @@ object PairDiagram {
       .links
       .filter(link => !link.border)
       .filter(link => !hasDuplicateLinksOut.contains(link.source))
-      .map(link => Props(
-        "source" -> link.source,
-        "target" -> realTarget(link.target)
-      ))
-    val nodes = threadDiagram.nodes.map(p =>
-      Props("x" -> p.x, "y" -> p.y, "title" -> translateTitle(p))
-    )
+      .map(link => LinkProps.simpleLink(link.source, link.target))
+    val nodes = threadDiagram.nodes.map(p => node(translateTitle(p.title), p.x, p.y))
     Diagram(nodes, links)
   }
 
@@ -86,14 +78,16 @@ object PairDiagram {
     * @param shiftLeft see footsides tab
     * @param shiftUp see footsides tab
     * @param stitches see stitches tab
-    * @return collections of nodes and links for D3js
+    * @return In case of an error, the getOrRecover method returns
+    *         a diagram with just a node that has an error message as title
     */
-  def apply(compactMatrix: String, tiling: String, absRows: Int, absCols: Int, shiftLeft: Int = 0, shiftUp: Int = 0, stitches: String = ""): Try[Diagram] =
+  @JSExport
+  def create(compactMatrix: String, tiling: String, absRows: Int, absCols: Int, shiftLeft: Int = 0, shiftUp: Int = 0, stitches: String = ""): Try[Diagram] =
     Settings(compactMatrix, tiling, absRows, absCols, shiftLeft, shiftUp, stitches)
       .map(PairDiagram(_))
 
   def apply(triedSettings: Try[Settings]): Diagram = if (triedSettings.isFailure)
-    Diagram(Seq(Props("title" -> triedSettings.failed.get.getMessage, "bobbin" -> true)), Seq[Props]())
+    Diagram(Seq(errorNode(triedSettings)), Seq[LinkProps]())
   else apply(triedSettings.get)
 
   private def apply(settings: Settings) = {
@@ -127,17 +121,12 @@ object PairDiagram {
       nodes.indices.map(n => (nodes(n), n))
     }.toMap
 
-    val nodes = sourcesIndices.map(col => Props(
-      "title" -> s"Pair ${1 + nodeMap((0, col))}",
-      "y" -> 0,
-      "x" -> 15 * col
-    )) ++ targets.map { case (row, col) =>
-      Props(
-        "title" -> (footsideTwists(row, col) + settings.getTitle(row, col)),
-        "y" -> 15 * row,
-        "x" -> 15 * col
-      )
-    }
+    val nodes = sourcesIndices.map(col =>
+      node(s"Pair ${1 + nodeMap((0, col))}", x = 15.0 * col, y = 0.0)) ++
+      targets.map { case (row, col) =>
+        val title = footsideTwists(row, col) + settings.getTitle(row, col)
+        node(title, x = 15.0 * col, y = 15.0 * row)
+      }
 
     val cols = Set(2, settings.absM(0).length - 2)
     val links =
@@ -147,13 +136,11 @@ object PairDiagram {
         val sourceStitch = nodes(sourceNode).title.replaceAll(" .*", "").replaceAll("t", "lr")
         val targetStitch = nodes(targetNode).title.replaceAll(" .*", "").replaceAll("t", "lr")
         val toLeftOfTarget = settings.absM(targetRow)(targetCol)(0) == (sourceRow, sourceCol)
-        Props(
-          "source" -> sourceNode,
-          "target" -> targetNode,
-          "start" -> (if (sourceRow < 2) "pair" else marker(sourceStitch)),
-          "mid" -> (if (sourceRow < 2) 0 else midMarker(sourceStitch, targetStitch, toLeftOfTarget)),
-          "end" -> marker(targetStitch),
-          "weak" -> (cols.contains(sourceCol) || targetRow - sourceRow > 1)
+        pairLink(sourceNode, targetNode,
+          start = if (sourceRow < 2) "pair" else marker(sourceStitch),
+          mid = if (sourceRow < 2) 0 else midMarker(sourceStitch, targetStitch, toLeftOfTarget),
+          end = marker(targetStitch),
+          weak = cols.contains(sourceCol) || targetRow - sourceRow > 1
         )
       }.toSeq ++ transparentLinks(sourcesIndices.toArray)
     Diagram(nodes, links)

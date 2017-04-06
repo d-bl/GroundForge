@@ -15,45 +15,45 @@
 */
 
 // converts x/y of Diagram.nodes to https://github.com/d3/d3-force/#simulation_nodes
-function nodesToJS(arrayOfMaps) {
-  var result = new Array(arrayOfMaps.size())
-  for ( i = arrayOfMaps.size() ; i-- > 0 ; ){
-    map = arrayOfMaps.apply(i)
+function nodesToJS(sNodes) {
+  var result = new Array(sNodes.size())
+  for ( i = sNodes.size() ; i-- > 0 ; ){
+    link = sNodes.apply(i)
     result[i] = {
-      x: (map.get('x').getClass().getName()=="scala.None$") ? 0 : map.get('x').get(),
-      y: (map.get('y').getClass().getName()=="scala.None$") ? 0 : map.get('y').get()
+      x: link.x(),
+      y: link.y()
     }
   }
+//  print("== nodes == "+JSON.stringify(result))
   return result
 }
 
 // converts Diagram.links for https://github.com/d3/d3-force/#links
-function linksToJS(arrayOfMaps) {
-  var result = new Array(arrayOfMaps.size())
-  for ( i = arrayOfMaps.size() ; i-- > 0 ; ){
-    map = arrayOfMaps.apply(i)
+function linksToJS(sLinks) {
+  var result = new Array(sLinks.size())
+  for ( i = sLinks.size() ; i-- > 0 ; ){
+    link = sLinks.apply(i)
     result[i] = {
-      source: map.get('source').get(),
-      target: map.get('target').get(),
-      weak: (map.get('weak').getClass().getName()=="scala.None$") ? false : map.get('weak').get()
+      source: link.source(),
+      target: link.target(),
+      weak: link.weak()
     }
   }
+//  print("== links == "+JSON.stringify(result))
   return result
 }
 
-function strength(link){
-  return link.weak? 5 : 50
-}
-
-function applyForce(center, data) {
-  var nodes = nodesToJS(data.nodes())
-  var links = linksToJS(data.links())
-  // print("== nodes == "+JSON.stringify(nodes))
-  // print("== links == "+JSON.stringify(links))
-  var sim = d3.forceSimulation(nodes)
+// nudges the x/y values in the converted Diagram.nodes
+function applyForce(barrier, center, nodes, links) {
+  var forceLink = d3
+    .forceLink(links)
+    .strength(function(link){ return link.weak? 5 : 50 })
+    .distance(12)
+    .iterations(30)
+  d3.forceSimulation(nodes)
     .force("charge", d3.forceManyBody().strength(-1000))
-    .force("link", d3.forceLink(links).strength(strength).distance(12).iterations(30))
+    .force("link", forceLink)
     .force("center", d3.forceCenter(center.x(), center.y()))
     .alpha(0.0035)
-    .on("end", function() { onEnd(nodes) })
+    .on("end", function() { barrier.await() })
 }

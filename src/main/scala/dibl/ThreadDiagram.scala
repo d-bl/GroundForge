@@ -15,6 +15,9 @@
 */
 package dibl
 
+import dibl.LinkProps.transparentLinks
+import dibl.NodeProps.{errorNode, node, threadStartNode}
+
 import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
 
@@ -23,14 +26,14 @@ object ThreadDiagram {
 
     val pairLinks = pairDiagram.links.map(l => (l.source, l.target))
     val instructions = pairDiagram.nodes.map(_.instructions)
-    val xy: Seq[Props] = pairDiagram.nodes.map(n => Props("x"->n.x*2, "y"->n.y*2))
+    val xy: Seq[NodeProps] = pairDiagram.nodes.map(n => node(n.x*2, n.y*2))
 
     @tailrec
     def createRows(possibleStitches: Seq[TargetToSrcs],
                    availablePairs: Map[Int, Threads],
-                   nodes: Seq[Props],
-                   links: Seq[Props] = Seq[Props]()
-                  ): (Map[Int, Threads], Seq[Props], Seq[Props]) =
+                   nodes: Seq[NodeProps],
+                   links: Seq[LinkProps] = Seq[LinkProps]()
+                  ): (Map[Int, Threads], Seq[NodeProps], Seq[LinkProps]) =
       if (possibleStitches.isEmpty) {
         val next = nextPossibleStitches(availablePairs.keys.toArray)
         if (next.isEmpty)
@@ -43,11 +46,10 @@ object ThreadDiagram {
         def availableKeys: String = availablePairs.keySet.mkString(",")
         if (!Set(leftPairSource, rightPairSource).subsetOf(availablePairs.keySet)) {
           val msg = s"Need a new pair from the footside? Missing $leftPairSource and/or $rightPairSource in $availableKeys"
-          println(msg)
-          createRows(possibleStitches.tail, availablePairs, nodes :+ whoops(msg), links)
+          createRows(possibleStitches.tail, availablePairs, nodes :+ errorNode(msg), links)
         } else if (instructions(pairTarget)=="pair"){
           val msg = s"Two pairs starting at same node? target=$pairTarget leftSource=$leftPairSource rightSource=$rightPairSource available $availableKeys"
-          createRows(possibleStitches.tail, availablePairs - leftPairSource - rightPairSource, nodes :+ whoops(msg), links)
+          createRows(possibleStitches.tail, availablePairs - leftPairSource - rightPairSource, nodes :+ errorNode(msg), links)
         } else {
           val left = availablePairs(leftPairSource)
           val right = availablePairs(rightPairSource)
@@ -80,11 +82,13 @@ object ThreadDiagram {
     }
 
     if (pairLinks.isEmpty)
-      Diagram(Seq(whoops("invalid pair diagram")), Seq[Props]())
+      Diagram(Seq(errorNode("invalid pair diagram")), Seq[LinkProps]())
     else {
       val startPins = pairNodeNrToPairNr(pairDiagram.nodes)
       val startPairNodeNrs = startPins.keys.toArray
-      val threadStartNodes = startPins.flatMap { case (n, t) => startNodes(n, t) }.toArray
+      val threadStartNodes = startPins.flatMap { case (_, t) =>
+        Seq(threadStartNode(t * 2 + 1), threadStartNode(t * 2 + 2))
+      }.toArray
       val nodesByThreadNr = threadStartNodes.indices.sortBy(threadStartNodes(_).startOf)
       val (availablePairs, nodes, links) = createRows(
         nextPossibleStitches(startPairNodeNrs),
@@ -99,28 +103,19 @@ object ThreadDiagram {
     }
   }
 
-  private def whoops(msg: String) = Props("title" -> msg, "bobbin" -> true)
-
-  private def pairNodeNrToPairNr(nodes: Seq[Props]): Map[Int, Int] =
+  private def pairNodeNrToPairNr(nodes: Seq[NodeProps]): Map[Int, Int] =
     nodes.indices.toArray
       .filter(nodes(_).title.startsWith("Pair"))
       .map(n => n -> (nodes(n).title.replace("Pair ", "").toInt - 1)).toMap
 
-  private def markStartLinks(links: Seq[Props], nodes: Seq[Props]): Seq[Props] =
+  private def markStartLinks(links: Seq[LinkProps], nodes: Seq[NodeProps]): Seq[LinkProps] =
     links.map(link =>
       if (nodes(link.source).startOf == 0) link
-      else link - "start" + ("start" -> "thread")
+      else link.markedAsStart
     )
 
-  private def startNodes(nodeNr: Int, threadNr: Int): Seq[Props] = {
-    val n = threadNr * 2
-    val x = Props("startOf" -> s"thread${n + 1}", "title" -> s"thread ${n + 1}")
-    val y = Props("startOf" -> s"thread${n + 2}", "title" -> s"thread ${n + 2}")
-    Seq(x, y)
-  }
-
   private def startPinsToThreadNodes(startPairNodeNrs: Seq[Int],
-                                     pairNodes: Seq[Props]
+                                     pairNodes: Seq[NodeProps]
                                     ): Map[Int, Threads] =
     startPairNodeNrs.indices.map(i =>
     {
@@ -132,23 +127,22 @@ object ThreadDiagram {
 
   @tailrec
   private def createStitch(instructions: String,
-                           xy: Props,
+                           pairNode: NodeProps,
                            threads: Threads,
-                           nodes: Seq[Props],
-                           links: Seq[Props]
-                          ): (Threads, Seq[Props], Seq[Props]) =
-    if (instructions.isEmpty) (threads, nodes, links)
+                           threadNodes: Seq[NodeProps],
+                           threadLinks: Seq[LinkProps]
+                          ): (Threads, Seq[NodeProps], Seq[LinkProps]) =
+    if (instructions.isEmpty) (threads, threadNodes, threadLinks)
     else {
       val (t,n,l) = instructions.head match {
-        case 'p' => threads.putPin(nodes.length)
-        case 'c' => threads.cross(nodes.length)
-        case 'l' => threads.twistLeft(nodes.length)
-        case 'r' => threads.twistRight(nodes.length)
+        case 'p' => threads.putPin(threadNodes.length)
+        case 'c' => threads.cross(threadNodes.length)
+        case 'l' => threads.twistLeft(threadNodes.length)
+        case 'r' => threads.twistRight(threadNodes.length)
         case _ =>
           val msg = s"$instructions? expecting p/c/l/r. nodes=${threads.nodes} threads=${threads.threads}"
-          (threads,whoops(msg),Seq[Props]())
+          (threads,errorNode(msg),Seq[LinkProps]())
       }
-      // all nodes of a stitch on one location is a good enough start of the animation
-      createStitch(instructions.tail, xy, t, nodes :+ (n ++ xy), l ++ links)
+      createStitch(instructions.tail, pairNode, t, threadNodes :+ n.withLocationOf(pairNode), l ++ threadLinks)
     }
 }

@@ -17,64 +17,28 @@ package dibl
 
 import java.io.FileReader
 import java.util.concurrent.{CyclicBarrier, TimeUnit}
-import javax.script.{Invocable, ScriptContext, ScriptEngine, ScriptEngineManager}
+import javax.script.{Invocable, ScriptEngine, ScriptEngineManager}
 
 import jdk.nashorn.api.scripting.ScriptObjectMirror
 
-import scala.util.{Failure, Success, Try}
+import scala.util.Try
 
 /** A dedicated JavaScript engine with a predefined D3js force simulation,
-  * intended for single threaded batch execution in a JVM environment.
+  * for batch execution in a JVM environment.
   */
 object Force {
   private val invocable = {
     val engine: ScriptEngine = (new ScriptEngineManager).getEngineByName("nashorn")
-    val engineScope = engine.getBindings(ScriptContext.ENGINE_SCOPE)
-    engineScope.put("window", engineScope)
-    // TODO improve errors, currently: ... in <eval> at line number ... at column number ...
-    engine.eval(new FileReader("docs/js/d3.v4.min.js")) // drop ".min" for debugging purposes
+    // TODO add source to errors, currently just:
+    // ... in <eval> at line number ... at column number ...
+    engine.eval(new FileReader("docs/js/d3.v4.min.js"))
     engine.eval(new FileReader("src/main/resources/event_loop.js"))
     engine.eval(new FileReader("src/main/resources/force.js"))
-    engine.eval(
-      // because of this (not state of the art) declaration
-      // each thread needs its own instance of the engine
-      s"""var onEnd = Java.type("dibl.Force").onEnd
-         |print("JavaCcript engine with D3-Force configuration started")
-         |""".stripMargin)
+    engine.eval("print('JavaScript engine with D3-Force configuration started')")
     engine.asInstanceOf[Invocable]
   }
 
-  /** For internal use, called when the D3js simulation’s timer stops:
-    * https://github.com/d3/d3-force/#simulation_on
-    *
-    * @param jsNodePositions A copy of the x/y values of [[Diagram.nodes]] changed by D3js.
-    */
-  def onEnd(jsNodePositions: ScriptObjectMirror): Unit = try {
-    points = Success(jsNodePositions
-      .values()
-      .toArray()
-      .map(ps => {
-        val props = ps.asInstanceOf[ScriptObjectMirror]
-        Point(
-          props.get("x").asInstanceOf[Double],
-          props.get("y").asInstanceOf[Double]
-        )
-      }))
-  } catch {
-    case e: Throwable => points = Failure(e)
-  } finally {
-    barrier.await()
-  }
-
-  // the result of the asynchronous calculation
-  private var points: Try[Array[Point]] = _
-
-  // turns the asynchronous calculation in a synchronous call
-  private val barrier = new CyclicBarrier(2)
-
-  case class Point(x: Double, y: Double)
-
-  /** Calculates new node positions in a dedicated JavaScript engine, NOT THREAD SAFE!
+  /** Calculates new node positions in a dedicated JavaScript engine.
     *
     * The calculations are executed in a thread as it is time consuming
     * and the D3js library is primarily intended for client-side animations in a browser.
@@ -90,22 +54,40 @@ object Force {
     * @param timeout  maximum time allowed for the D3js calculations
     * @param timeUnit the time unit of the timeout parameter
     */
-  def simulate(diagram: Diagram,
-               center: Point = Point(0, 0),
-               timeout: Long = 20,
-               timeUnit: TimeUnit = TimeUnit.SECONDS
-              ): Try[Array[Point]] = {
-    try {
-      invocable.invokeFunction("applyForce", center, diagram)
-    } catch {
-      case e: Throwable => return Failure(e)
+  def nudgeNodes(diagram: Diagram,
+                 center: Point = Point(0, 0),
+                 timeout: Long = 20,
+                 timeUnit: TimeUnit = TimeUnit.SECONDS
+                ): Try[Diagram] = Try {
+    val nodes = toJS("nodesToJS", diagram.nodes)
+    val links = toJS("linksToJS", diagram.links)
+
+    def toScalaNode(i: Int): NodeProps = {
+      val node = nodes.get(i.toString).asInstanceOf[ScriptObjectMirror]
+      diagram.nodes(i).withLocation(
+        node.get("x").asInstanceOf[Double],
+        node.get("y").asInstanceOf[Double]
+      )
     }
-    Try {
-      println(s"waiting at most $timeout $timeUnit to simulate forces")
-      barrier.await(timeout, timeUnit)
-      println(s"done waiting")
-      // at this moment another thread with the same instance
-      // could start a new calculation and overwrite points before it is used
-    }.flatMap(_ => points)
+
+    invocable.invokeFunction("applyForce", barrier, center, nodes, links)
+    println(s"waiting at most $timeout $timeUnit to simulate forces")
+    barrier.await(timeout, timeUnit)
+    println(s"done waiting")
+    Diagram(
+      diagram.nodes.indices.map(i => toScalaNode(i)),
+      diagram.links
+    )
+  }
+
+  /** turns the asynchronous calculation in a synchronous call */
+  private val barrier = new CyclicBarrier(2)
+
+  case class Point(x: Double, y: Double)
+
+  private def toJS(jsFunction: String, props: Seq[Props]) = {
+    invocable
+      .invokeFunction(jsFunction, props)
+      .asInstanceOf[ScriptObjectMirror]
   }
 }
