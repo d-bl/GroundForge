@@ -14,6 +14,28 @@
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
 var data = [0,1,2,3,4]
+function loadUrlArgs() {
+  var location = (window.location.href + "").replace("#","")
+  // for each key-value pair in the URL query
+  location.replace(/[?&]+([^=&]+)(=([^&]*))?/gi, function(m,key,m2,value) {
+    if(key=="m") setMatrix(value)
+    else if(key.match(/s[1-3]/).length > 0)
+      document.getElementById(key).value = decodeURIComponent(value).replace(/[+]/g, " ")
+  })
+}
+function createUrlArgs() {
+    var result = "?m=" +
+      document.getElementById("matrix").value +";" +
+      document.getElementById("tiles").value +";" +
+      document.getElementById("rows").value +";" +
+      document.getElementById("cols").value +";" +
+      document.getElementById("shiftLeft").value +";" +
+      document.getElementById("shiftUp").value +"&s1=" +
+      document.getElementById("s1").value +"&s2=" +
+      document.getElementById("s2").value +"&s3=" +
+      document.getElementById("s3").value
+    return result
+}
 function setMatrix(value) {
   var p = unescape(value).split(";")
   if (p.length == 6) {

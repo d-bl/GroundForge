@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/recursive.css"/>
     <link rel="stylesheet" type="text/css" href="css/logo.css"/>
 </head>
-<body>
+<body onload="loadUrlArgs()">
 <article>
 <a id="logo"
    href="index.html"
@@ -89,6 +89,7 @@
             <input id="color" name="color" class="jscolor" value="00CC11" pattern="[a-fA-F0-9]{6}"/>
             <label for="color">Select a square thread start to apply the color and examine its path through the pattern.</label>
         </p>
+        <p id="permalink"><a href="" onmouseover="this.href=createUrlArgs(); return false">&infin;</a></p>
     </article>
 
     <article>
