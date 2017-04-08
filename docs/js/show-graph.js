@@ -49,7 +49,7 @@ diagram.showGraph = function(args) {
         threadStarts.on('click', function (d) {
             if (d3.event.defaultPrevented) return
             sim.alpha(0).stop()
-            args.container.selectAll(".thread"+d.startOf)
+            args.container.selectAll("."+d.startOf)
               .style('stroke', '#'+colorpicker.value)
               .style('fill', function(d) { return d.bobbin ? '#'+colorpicker.value : 'none' })
         })
