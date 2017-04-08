@@ -24,8 +24,8 @@ function loadUrlArgs() {
   })
 }
 function createUrlArgs() {
-    var result = "?m=" +
-      document.getElementById("matrix").value +";" +
+    var result = "recursive.html?m=" +
+      escape(document.getElementById("matrix").value) +";" +
       document.getElementById("tiles").value +";" +
       document.getElementById("rows").value +";" +
       document.getElementById("cols").value +";" +
@@ -39,7 +39,7 @@ function createUrlArgs() {
 function setMatrix(value) {
   var p = unescape(value).split(";")
   if (p.length == 6) {
-      document.getElementById("matrix").value = p[0]
+      document.getElementById("matrix").value = decode(p[0])
       document.getElementById("tiles").value = p[1]
       document.getElementById("rows").value = p[2]
       document.getElementById("cols").value = p[3]

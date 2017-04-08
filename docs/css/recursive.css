@@ -8,7 +8,7 @@ fieldset img, #d0, #d1, #d2, #d3{
 legend img {
   border: none;
 }
-#permalink, button {
+button {
   border-radius:0.5em;
   border:0.23em solid #999;
   border-style:outset;
@@ -16,16 +16,10 @@ legend img {
   text-align: center;
   width: 6em;
   height: 2em;
-}
-#permalink a, button {
   font-weight: bold;
   color: #000;
   text-decoration: none;
   text-align: center;
-}
-#permalink {
-  width: 4.5em;
-  height: 1.2em;
 }
 
 #logo img {
