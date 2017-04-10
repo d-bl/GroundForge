@@ -6,7 +6,7 @@ Like you can reshape generated patterns to your taste, you can reshape tradition
 
 Each symbol has six free snapping points, two of them should be connected with other objects. Copy-paste these objects to assemble a pattern without changing the length or directions of lines connecting the symbols. It might need some out-of-the-box thinking: the Binche snow flake example below has horizontal connections and the vertical connection is reduced to a shared stitch. Stretching the shared stitch into a kind of plait (`ctcttctc`) reveals traditional connections in the thread diagram.
 
-The final step is figuring out the tiling and read the matrix from the symbols within one tile. Note that empty spots require a dash as show on [choose stitches](Choose-Stitches) as it would get confusing with this example.
+The final step is figuring out the tiling and read the matrix from the symbols within one tile. Note that empty spots require a dash as show on [choose stitches](Choose-Stitches), it would get confusing with this example.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-example.png)
 
