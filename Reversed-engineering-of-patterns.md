@@ -1,6 +1,6 @@
 The [thumbnails] show patterns collected from [TesseLace] in the period 2012-2014. This collection contains exotic patterns and some traditional grounds. To experiment with other traditional patterns they should be defined with a matrix, this might not always be possible.
 
-Like you can reshape generated patterns to your taste, you can reshape traditional patterns to meet the requirements for a compact matrix. These requirements are visualized in two ways with the [SVG] version of the matrix legend. One of the visualizations is used on the matrix tab of the [main] GroundForge page. The other method is designed for the reverse engineering process. For that purpose a template provides objects each consisting of a symbol and two arrows:
+Like you can reshape generated patterns to your taste, you can reshape traditional patterns to meet the requirements for a compact matrix. These requirements are visualized in two ways with the [SVG] version of the matrix legend. One of the visualizations is used on the matrix tab of the [main] GroundForge page. The other variant is designed to download and use as template components with a vector image editor like CorelDraw, Adobe Illustrator or the free InkScape. The template components are objects consisting of a symbol and two arrows:
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template.png)
 
