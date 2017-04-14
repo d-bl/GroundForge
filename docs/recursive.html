@@ -23,29 +23,82 @@
 <h1>GroundForge</h1>
 <p><em>Choose patterns and stitches to generate diagrams for grounds of bobbin lace.</em></p>
 <p>
-    Thread diagrams of a plain Torchon ground (with respectively ctctc, ctct or ct),
-    are pair diagrams for Binche, Flanders or Paris grounds.
-    The method can be repeated and applied to many more patterns.
-    Even just choosing stitches for the provided base patterns results in a myriad of possibilities.
+    Thread diagrams of a plain Torchon ground (with respectively ct or ctct),
+    are pair diagrams for a Paris or Flanders alias five-hole ground.
+    The method can be applied to many more stitches, combination of stitches and even repeated.
+    This results in a myriad of possibilities.
     The generated diagrams can help to select the interesting ones with an educated guess.
 </p>
 <h2>Get started</h2>
-<p>
-    Initialize the parameters with a base pattern or one of the 376 <a href="thumbs.html">thumbnails</a>.
-    For even more patterns read the user guide to
-    <a href="https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns"
-    >assemble</a> your own.
-</p>
-<p>
-    <em>Warning:</em> With complex stitches and large numbers of rows and columns,
-    your browser can get overwhelmed with step two or three.
-</p>
+<dl>
+    <dt>Option 1:</dt>
+    <dd>Initialize the parameters with one of the 376 patterns listed with <a href="thumbs.html">thumbnails</a>.</dd>
+    <dt>Option 2:</dt>
+    <dd>
+        As an alternative decide how many stitches you want to choose at the first step for one of the base patterns.
+        Try for example the smallest matrix dimensions with
+        <a href="recursive.html?m=5-%3Bbricks%3B7%3B5%3B0%3B0&s1=ct&s2=ctct&s3="
+        >ct</a>,
+        <a href="recursive.html?m=5-%3Bbricks%3B7%3B5%3B0%3B0&s1=ctct&s2=cross%3Dctct twist%3Dct&s3="
+        >ctct</a>,
+        <a href="recursive.html?m=5-%3Bbricks%3B7%3B5%3B0%3B0&s1=ctctc&s2=ctc%20B14%3Dctcll%20B15%3Dctcrr%20B16%3Dctctt&s3="
+        >ctctc</a> or
+        <a href="recursive.html?m=5-%3Bbricks%3B7%3B5%3B0%3B0&s1=clcrclc&s2=ctc%20B13%3Dctcrr%20B15%3Dctcll%20B16%3Dctctt&s3="
+        >clcrclc</a>
+        at the first step and vary stitches at step two.</dd>
+    <dt>Advanced options:</dt>
+    <dd>
+        Read the
+        <a href="https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns"
+        >user guide</a> to vary on other traditional patterns.
+    </dd>
+    <dt><em>Warning:</em></dt>
+    <dd>
+        With complex stitches and large numbers of rows and columns,
+        your browser can get overwhelmed with step two or three.
+    </dd>
+</dl>
 </article>
 <form onsubmit="return false">
     <article>
+        <fieldset id="base">
+            <legend>Base patterns</legend>
+            <div>
+                <img src="images/base1.png">
+                <select style="display: block" onchange="setMatrix(this.value)">
+                    <option value="5-;bricks;5;5;0;0" selected>1x2</option>
+                    <option value="5-%0D-5;checker;5;5;0;0" selected>2x2</option>
+                    <option value="5-%0D-5%0D5-;bricks;8;5;0;0" selected>3x2</option>
+                    <option value="5-%0D-5%0D5-%0D-5;checker;9;5;0;0" selected>4x2</option>
+                    <option value="5-%0D-5%0D5-%0D-5%0D5-;bricks;11;5;0;0" selected>5x2</option>
+                    <option value="5-%0D-5%0D5-%0D-5%0D5-%0D-5;checker;11;5;0;0" selected>6x2</option>
+                    <option value="5-5-%0D-5-5;checker;5;8;0;0" selected>2x4</option>
+                    <option value="5-5-%0D-5-5%0D5-5-%0D-5-5;checker;7;8;0;0" selected>4x4</option>
+                    <option value="5-5-%0D-5-5%0D5-5-%0D-5-5%0D5-5-%0D-5-5;checker;11;8;0;0" selected>6x4</option>
+                    <option value="5-5-5-%0D-5-5-5;checker;8;9;0;0" selected>2x6</option>
+                    <option value="5-5-5-%0D-5-5-5%0D5-5-5-;bricks;5;9;0;0" selected>3x6</option>
+                    <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5;checker;7;11;0;0" selected>4x6</option>
+                    <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5%0D5-5-5-;bricks;9;11;0;0" selected>5x6</option>
+                    <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5;checker;9;11;0;0" selected>6x6</option>
+                </select>
+            </div>
+            <div>
+                <img src="images/base2.png">
+                <select style="display: block" onchange="setMatrix(this.value)">
+                    <option value="8%0D1;checker;8;4;0;0" selected>2x1</option>
+                    <option value="88%0D11;checker;8;4;0;0" selected>2x2</option>
+                    <option value="888%0D111;checker;8;4;0;0" selected>2x3</option>
+                    <option value="8888%0D1111;checker;8;4;0;0" selected>2x4</option>
+                    <option value="8%0D1%0D8%0D1;checker;8;4;0;0" selected>4x1</option>
+                    <option value="88%0D11%0D88%0D11;checker;8;4;0;0" selected>4x2</option>
+                    <option value="888%0D111%0D888%0D111;checker;8;4;0;0" selected>4x3</option>
+                    <option value="8888%0D1111%0D8888%0D1111;checker;8;4;0;0" selected>4x4</option>
+                </select>
+            </div>
+        </fieldset>
         <fieldset id="matrixOpts">
             <legend>Parameters <a href="https://github.com/d-bl/GroundForge/wiki/Parameters"><img src="images/information-icon.png"></a></legend>
-            <textarea id="matrix" name="matrix" rows="5" cols="9" spellcheck="false"
+            <textarea id="matrix" name="matrix" rows="6" cols="9" spellcheck="false"
             >5-</textarea>
             <div>
                 <p>
@@ -72,14 +125,6 @@
                     <input id="shiftUp" name="cols" min="0" value="0" type="number"/>
                 </p>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Base patterns</legend>
-            <a href="#"><img src="thumbs/214.png" onclick="setMatrix('5-%0D-5;checker;8;5;0;0')"></a>
-            <a href="#"><img src="thumbs/181.png" onclick="setMatrix('88%0D11;checker;8;4;0;0')"></a>
-            <a href="#"><img src="thumbs/015.png" onclick="setMatrix('5-O-H-%0D-L-5-O%0DE-5-E-;bricks;9;8;0;0')"></a>
-            <a href="#"><img src="thumbs/138.png" onclick="setMatrix('4641%0D9177;bricks;9;7;0;0')"></a>
-            <a href="#"><img src="thumbs/405.png" onclick="setMatrix('4631%0D6688%0D3146%0D8866;bricks;8;10;0;0')"></a>
         </fieldset>
         <p><a onmouseenter="this.href=createUrlArgs()"
               href=""><button type="button">#</button></a>
