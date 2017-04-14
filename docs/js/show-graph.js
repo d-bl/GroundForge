@@ -16,17 +16,13 @@
 fullyTransparent = 0 // global to allow override while testing
 diagram = {}
 diagram.showGraph = function(args) {
-    args.width = args.container.node().scrollWidth
-    args.height = args.container.node().scrollHeight
-    args.viewWidth = args.viewWidth ? args.viewWidth : (args.width / 2)
-    args.viewHeight = args.viewHeight? args.viewHeight : (args.height / 2)
 
     var isThreadDiagram = args.nodes[0].title == 'thread 1'
     var isIE = document.documentURI == undefined // wrong feature check
     var isMobileMac = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
     var markers = !isMobileMac && !isIE
 
-    args.container.node().innerHTML = dibl.SVG().render(args.diagram, args.stroke, markers, args.width, args.height, fullyTransparent)
+    args.container.node().innerHTML = dibl.SVG().render(args.diagram, args.stroke, markers, 2481, 3507, fullyTransparent)
 
     var links = args.container.selectAll(".link").data(args.links)
     var nodes = args.container.selectAll(".node").data(args.nodes)
@@ -86,11 +82,15 @@ diagram.showGraph = function(args) {
                             .style('marker-mid', markMid)
                         if (args.onAnimationEnd) args.onAnimationEnd()
                     }
+    var cx = args.container.node().clientWidth / 2
+    var cy = args.container.node().clientHeight / 2
+    if (!cx) cx = 200
+    if (!cy) cy = 100
     function strength(link){ return link.weak ? 5 : 50 }
     var sim = d3.forceSimulation(args.nodes)
         .force("charge", d3.forceManyBody().strength(-1000))
         .force("link", d3.forceLink(args.links).strength(strength).distance(12).iterations(30))
-        .force("center", d3.forceCenter(args.viewWidth / 2, args.viewHeight / 2))
+        .force("center", d3.forceCenter(cx, cy))
         .alpha(0.0035)
         .on("tick", simTicked)
         .on("end", simEnded)
