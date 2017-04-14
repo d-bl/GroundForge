@@ -20,13 +20,18 @@ import dibl.NodeProps.{errorNode, node, threadStartNode}
 
 import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
+import scala.scalajs.js.annotation.JSExport
 
+@JSExport
 object ThreadDiagram {
+
+  @JSExport
+  def create(pairDiagram: Diagram): Diagram = apply(pairDiagram)
+
   def apply(pairDiagram: Diagram): Diagram = {
 
     val pairLinks = pairDiagram.links.map(l => (l.source, l.target))
-    val instructions = pairDiagram.nodes.map(_.instructions)
-    val xy: Seq[NodeProps] = pairDiagram.nodes.map(n => node(n.x*2, n.y*2))
+    def scale(n: NodeProps) = node(n.title, n.x*2, n.y*2)
 
     @tailrec
     def createRows(possibleStitches: Seq[TargetToSrcs],
@@ -47,24 +52,31 @@ object ThreadDiagram {
         if (!Set(leftPairSource, rightPairSource).subsetOf(availablePairs.keySet)) {
           val msg = s"Need a new pair from the footside? Missing $leftPairSource and/or $rightPairSource in $availableKeys"
           createRows(possibleStitches.tail, availablePairs, nodes :+ errorNode(msg), links)
-        } else if (instructions(pairTarget)=="pair"){
-          val msg = s"Two pairs starting at same node? target=$pairTarget leftSource=$leftPairSource rightSource=$rightPairSource available $availableKeys"
-          createRows(possibleStitches.tail, availablePairs - leftPairSource - rightPairSource, nodes :+ errorNode(msg), links)
         } else {
-          val left = availablePairs(leftPairSource)
-          val right = availablePairs(rightPairSource)
-          val (newPairs, accNodes, accLinks) =
-            createStitch(instructions(pairTarget), xy(pairTarget), Threads(left, right), nodes, links)
-
-          val replaced = availablePairs - leftPairSource - rightPairSource ++
-            ((left.hasSinglePair, right.hasSinglePair) match {
-              case (true, true) => HashMap(pairTarget -> newPairs)
-              case (false, true) => HashMap(pairTarget -> newPairs, leftPairSource -> left.leftPair)
-              case (true, false) => HashMap(pairTarget -> newPairs, rightPairSource -> right.rightPair)
-              case (false, false) => HashMap(pairTarget -> newPairs, leftPairSource -> left.leftPair,
-                rightPairSource -> right.rightPair)
-            })
-          createRows(possibleStitches.tail, replaced, accNodes, accLinks)
+          val pairNode = pairDiagram.nodes(pairTarget)
+          if (pairNode.instructions == "pair") {
+            val msg = s"Two pairs starting at same node? target=$pairTarget leftSource=$leftPairSource rightSource=$rightPairSource available $availableKeys"
+            createRows(possibleStitches.tail, availablePairs - leftPairSource - rightPairSource, nodes :+ errorNode(msg), links)
+          } else {
+            val left = availablePairs(leftPairSource)
+            val right = availablePairs(rightPairSource)
+            val (newPairs, accNodes, accLinks) = createStitch(
+              pairNode.instructions.replaceAll("t", "lr"),
+              scale(pairNode),
+              Threads(left, right),
+              nodes,
+              links
+            )
+            val replaced = availablePairs - leftPairSource - rightPairSource ++
+              ((left.hasSinglePair, right.hasSinglePair) match {
+                case (true, true) => HashMap(pairTarget -> newPairs)
+                case (false, true) => HashMap(pairTarget -> newPairs, leftPairSource -> left.leftPair)
+                case (true, false) => HashMap(pairTarget -> newPairs, rightPairSource -> right.rightPair)
+                case (false, false) => HashMap(pairTarget -> newPairs, leftPairSource -> left.leftPair,
+                  rightPairSource -> right.rightPair)
+              })
+            createRows(possibleStitches.tail, replaced, accNodes, accLinks)
+          }
         }
       }
 
@@ -81,7 +93,7 @@ object ThreadDiagram {
       }.filter(node => !pairNodes.contains(node._1))//don't make the same stitch twice
     }
 
-    if (pairLinks.isEmpty)
+    if (pairDiagram.links.isEmpty)
       Diagram(Seq(errorNode("invalid pair diagram")), Seq[LinkProps]())
     else {
       val startPins = pairNodeNrToPairNr(pairDiagram.nodes)
@@ -130,19 +142,20 @@ object ThreadDiagram {
                            pairNode: NodeProps,
                            threads: Threads,
                            threadNodes: Seq[NodeProps],
-                           threadLinks: Seq[LinkProps]
+                           threadLinks: Seq[LinkProps],
+                           idSuffix: Int = 0
                           ): (Threads, Seq[NodeProps], Seq[LinkProps]) =
     if (instructions.isEmpty) (threads, threadNodes, threadLinks)
     else {
       val (t,n,l) = instructions.head match {
         case 'p' => threads.putPin(threadNodes.length)
-        case 'c' => threads.cross(threadNodes.length)
-        case 'l' => threads.twistLeft(threadNodes.length)
-        case 'r' => threads.twistRight(threadNodes.length)
+        case 'c' => threads.cross(threadNodes.length, pairNode.id, idSuffix)
+        case 'l' => threads.twistLeft(threadNodes.length, pairNode.id, idSuffix)
+        case 'r' => threads.twistRight(threadNodes.length, pairNode.id, idSuffix)
         case _ =>
           val msg = s"$instructions? expecting p/c/l/r. nodes=${threads.nodes} threads=${threads.threads}"
           (threads,errorNode(msg),Seq[LinkProps]())
       }
-      createStitch(instructions.tail, pairNode, t, threadNodes :+ n.withLocationOf(pairNode), l ++ threadLinks)
+      createStitch(instructions.tail, pairNode, t, threadNodes :+ n.withLocationOf(pairNode), l ++ threadLinks, idSuffix + 1)
     }
 }

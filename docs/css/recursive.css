@@ -2,7 +2,7 @@ article { max-width: 45em; }
 body, article { padding: 1em; padding-bottom: 0; margin-left: auto; margin-right: auto; }
 .jscolor { width: 3.7em; font-family: "Courier New", "Monospace"; font-size: 0.7em; }
 
-fieldset img, #d0, #d1, #d2, #d3{
+fieldset img, .diagram {
   border: solid 1px #AAA;
 }
 legend img {
@@ -21,22 +21,21 @@ button {
   text-decoration: none;
   text-align: center;
 }
-
+#s1, #s2, #s3 {
+  margin-left: 0.3em;
+  margin-bottom: 0.3em;
+}
 #logo img {
   max-width: 30%;
 }
-#d0, #d1, #d2, #d3 {
-  max-width: 98%;
-  width: 180em;
-  height: 20em;
+.diagram {
   padding 0;
-  overflow: hidden
-}
-#d0, #d1 {
+  margin: 0;
+  overflow: hidden;
   display: inline-block;
-  max-width: 48%;
   width: 180em;
   height: 15em;
+  max-width: 48%;
 }
 #matrixOpts {
   padding: 0.2em;

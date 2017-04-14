@@ -13,7 +13,6 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
-var data = [0,1,2,3,4]
 function loadUrlArgs() {
   var location = (window.location.href + "").replace("#","")
   // for each key-value pair in the URL query
@@ -59,48 +58,45 @@ function replaceClass(select, oldValue, newValue) {
       x[i].className = x[i].className.replace(oldValue,newValue)
   }
 }
-function pairDiagram(value) {
-  var matrix = document.getElementById("matrix").value
-  var tiling = document.getElementById("tiles").value
-  var nrOfRows = document.getElementById("rows").value
-  var nrOfCols = document.getElementById("cols").value
-  var shiftLeft = document.getElementById("shiftLeft").value
-  var shiftUp = document.getElementById("shiftUp").value
+var data = [0,1,2,3,4]
+function firstStep() {
   replaceClass("step1", "hide","show")
   replaceClass("step2", "show", "hide")
   replaceClass("step3", "show", "hide")
 
-  var stitch = document.getElementById("s1").value
-  data[1] = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitch, tiling)
-  diagram.showGraph({
-    container: d3.select('#d0'),
-    nodes: data[1].pairNodes(),
-    links: data[1].pairLinks(),
-    diagram: data[1].pairDiagram,
-    stroke: "1px"
-  })
-  diagram.showGraph({
-    container: d3.select('#d1'),
-    nodes: data[1].threadNodes(),
-    links: data[1].threadLinks(),
-    threadColor: '#color',
-    diagram: data[1].threadDiagram,
-    stroke: "2px"
-  })
+  var p = dibl.PairDiagram().get(
+    document.getElementById("matrix").value,
+    document.getElementById("tiles").value,
+    document.getElementById("rows").value,
+    document.getElementById("cols").value,
+    document.getElementById("shiftLeft").value,
+    document.getElementById("shiftUp").value,
+    document.getElementById("s1").value
+  )
+  var t = dibl.ThreadDiagram().create(p)
+  data[1] = { pairDiagram: p, threadDiagram: t }
+  showDiagram("#p1", "1px", p)
+  showDiagram("#t1", "2px", t)
 }
-function threadDiagram(n) {
-  var stitch = document.getElementById("s" + n).value
+function nextStep(n) {
   replaceClass("step"+n, "hide","show")
   if (n==2)
     replaceClass("step3", "show","hide")
-  data[n] = dibl.D3Data().get(stitch, data[n-1])
-  document.getElementById('d'+n).innerHTML = ""
+
+  var stitches = document.getElementById("s" + n).value
+  var p = dibl.PairDiagram().create(stitches, data[n-1].threadDiagram)
+  var t = dibl.ThreadDiagram().create(p)
+  data[n] = { pairDiagram: p, threadDiagram: t }
+  showDiagram("#p"+n, "1px", p)
+  showDiagram("#t"+n, "2px", t)
+}
+function showDiagram(id, threadWidth, data) {
   diagram.showGraph({
-    container: d3.select('#d' + n),
-    nodes: data[n].threadNodes(),
-    links: data[n].threadLinks(),
+    container: d3.select(id),
+    nodes: data.jsNodes(),
+    links: data.jsLinks(),
     threadColor: '#color',
-    diagram: data[n].threadDiagram,
-    stroke: "2px"
+    diagram: data,
+    stroke: threadWidth
   })
 }

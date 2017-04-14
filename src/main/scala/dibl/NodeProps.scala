@@ -37,7 +37,10 @@ case class NodeProps private(elems: Seq[(String, Any)]) extends Props {
   val title: String = m.getOrElse("title", "").asInstanceOf[String]
 
   /** The stitch instructions from the title */
-  val instructions: String = title.replaceAll(" .*", "").toLowerCase.replaceAll("t", "lr")
+  val instructions: String = title.replaceAll(" .*", "").toLowerCase
+
+  /** The stitch id within a tile */
+  val id: String = title.replaceAll(".* ", "")
 
   /** If none-zero the node is the first one of the thread with that number */
   val startOf: Int = m.getOrElse("startOf", "thread0").toString.replaceAll("thread", "").toInt
@@ -74,9 +77,14 @@ case class NodeProps private(elems: Seq[(String, Any)]) extends Props {
 object NodeProps {
   def pinNode = NodeProps(Seq("title" -> "pin", "pin" -> "true"))
 
-  def crossNode = NodeProps(Seq("title" -> "cross"))
+  // allows a plait of 20 half stitches
+  private val digits = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ?"
 
-  def twistNode = NodeProps(Seq("title" -> "twist"))
+  private def title(id: String, suffix: Int, instructions: String) = s"$instructions - $id${digits(suffix%63)}"
+
+  def crossNode(id: String, suffix: Int) = NodeProps(Seq("title" -> title(id, suffix, "cross")))
+
+  def twistNode(id: String, suffix: Int) = NodeProps(Seq("title" -> title(id, suffix, "twist")))
 
   def errorNode(tried: Try[_]) = NodeProps(Seq("title" -> tried.failed.get.getMessage, "bobbin" -> true))
 
@@ -87,6 +95,4 @@ object NodeProps {
   def threadStartNode(n: Int) = NodeProps(Seq("title" -> s"thread $n", "startOf" -> s"thread$n"))
 
   def node(title: String, x: Double, y: Double) = NodeProps(Seq("title" -> title, "x" -> x, "y" -> y))
-
-  def node(x: Double, y: Double) = NodeProps(Seq("x" -> x, "y" -> y))
 }

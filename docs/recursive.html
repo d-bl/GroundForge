@@ -75,20 +75,20 @@
         </fieldset>
         <fieldset>
             <legend>Base patterns</legend>
-            <a href="" onclick="return false"><img src="thumbs/214.png" onclick="setMatrix('5-%0D-5;checker;8;5;0;0')"></a>
-            <a href="" onclick="return false"><img src="thumbs/181.png" onclick="setMatrix('88%0D11;checker;8;4;0;0')"></a>
-            <a href="" onclick="return false"><img src="thumbs/015.png" onclick="setMatrix('5-O-H-%0D-L-5-O%0DE-5-E-;bricks;9;8;0;0')"></a>
-            <a href="" onclick="return false"><img src="thumbs/138.png" onclick="setMatrix('4641%0D9177;bricks;9;7;0;0')"></a>
-            <a href="" onclick="return false"><img src="thumbs/405.png" onclick="setMatrix('4631%0D6688%0D3146%0D8866;bricks;8;10;0;0')"></a>
+            <a href="#"><img src="thumbs/214.png" onclick="setMatrix('5-%0D-5;checker;8;5;0;0')"></a>
+            <a href="#"><img src="thumbs/181.png" onclick="setMatrix('88%0D11;checker;8;4;0;0')"></a>
+            <a href="#"><img src="thumbs/015.png" onclick="setMatrix('5-O-H-%0D-L-5-O%0DE-5-E-;bricks;9;8;0;0')"></a>
+            <a href="#"><img src="thumbs/138.png" onclick="setMatrix('4641%0D9177;bricks;9;7;0;0')"></a>
+            <a href="#"><img src="thumbs/405.png" onclick="setMatrix('4631%0D6688%0D3146%0D8866;bricks;8;10;0;0')"></a>
         </fieldset>
+        <p><a onmouseenter="this.href=createUrlArgs()"
+              href=""><button type="button">#</button></a>
+            <a href="recursive.html"><button type="button">default</button></a>
+        </p>
         <p class="step1 hide" id="paint1">
             <input id="color" name="color" class="jscolor" value="00CC11" pattern="[a-fA-F0-9]{6}"/>
             <label for="color">Select a square thread start to apply the color and examine its path through the pattern.</label>
         </p>
-        <p><a onmouseover="this.href=createUrlArgs()"
-              href=""
-        ><button type="button">#</button></a>
-            <a href="recursive.html"><button type="button">default</button></a> </p>
     </article>
 
     <article>
@@ -102,13 +102,13 @@
                name="s"
                spellcheck="false"
                value="ct A1=ct"
-               pattern="([lrt]?[c]+)+[lrt]?([;,]? +[A-K][0-9]=([lrt]?[c]+)+[lrt]?)*"
+               pattern="[lrtc]*([;, ]*[A-K][0-9]=[lrtc]+)*"
         >
-        <button class="show" onclick="pairDiagram()">show</button>
+        <button class="show" onclick="firstStep()">show</button>
     </article>
     <div class="step1 hide">
-        <div id="d0"></div>
-        <div id="d1"></div>
+        <div id="p1" class="diagram"></div>
+        <div id="t1" class="diagram"></div>
     </div>
 
     <article>
@@ -121,26 +121,27 @@
                name="s"
                spellcheck="false"
                value="cross=ctc twist=ctc"
-               pattern="(cross=[lrtc]+ +twist=)?[lrtc]+"
-               title="Valid characters for stitches are 'ctlr': cross, twist, left twist, right twist.">
-        <button class="step1 hide" onclick="threadDiagram(2)">show</button>
+               pattern="[lrtc]*([;, ]*(cross|twist|[A-K][0-9][0-9a-zA-Z])=[lrtc]+)*"
+        >
+        <button class="step1 hide" onclick="nextStep(2)">show</button>
     </article>
     <div class="step2 hide">
-        <div id="d2"></div>
+        <div id="p2" class="diagram"></div>
+        <div id="t2" class="diagram"></div>
     </div>
     <article>
-        <h2>Step 3</h2>
-        <p>As step 2.</p>
+        <h2>Step 3 (as 2)</h2>
         <label for="s3">Stitches</label>
         <input id="s3"
                name="s"
                spellcheck="false"
-               pattern="(cross=[lrtc]+ +twist=)?[lrtc]+"
-               title="Valid characters for stitches are 'ctlr': cross, twist, left twist, right twist.">
-        <button class="step2 hide" onclick="threadDiagram(3)">show</button>
+               pattern="[lrtc]*([;, ]*(cross|twist|[A-K][0-9][0-9a-zA-Z]{2})=[lrtc]+)*"
+        >
+        <button class="step2 hide" onclick="nextStep(3)">show</button>
     </article>
     <div class="step3 hide">
-        <div id="d3"></div>
+        <div id="p3" class="diagram"></div>
+        <div id="t3" class="diagram"></div>
     </div>
 </form>
 

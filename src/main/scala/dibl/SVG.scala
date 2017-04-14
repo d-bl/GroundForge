@@ -150,7 +150,6 @@ object SVG {
                           opacityOfHiddenObjects: Double = 0
                          ): String = diagram.links.map { link =>
     val opacity = if (link.border || link.toPin) opacityOfHiddenObjects else 1
-    println("links ==="+opacityOfHiddenObjects+ "===" +opacity)
     val pd = pathDescription(diagram, link)
     // TODO no stroke color/width would allow styling threads with CSS
     // what in turn allows changes without repeating the simulation
@@ -166,7 +165,6 @@ object SVG {
                           opacityOfHiddenObjects: Double = 0
                          ): String = nodes.map { node =>
     val opacity = if (node.bobbin || node.pin) 1 else opacityOfHiddenObjects
-    println("nodes ==="+opacityOfHiddenObjects+ "===" +opacity)
     val stroke = if (node.bobbin) "rgb(0, 0, 0); stroke-width: 2px" else "none"
     s"""<path
        | class="${node.cssClasses}"
