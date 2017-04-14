@@ -36,27 +36,27 @@ case class Threads private
     *
     * @return (self', new threadNode, new threadLinks )
     */
-  def cross(newNode: Int): (Threads, NodeProps, Seq[LinkProps]) =
+  def cross(newNode: Int, stitchID: String, idSuffix: Int): (Threads, NodeProps, Seq[LinkProps]) =
     (new Threads((n1, newNode, newNode, n4), (t1, t3, t2, t4)),
-      crossNode,
+      crossNode(stitchID, idSuffix),
       crossedLinks(newNode, n2, n3, t2, t3))
 
   /** moves the second thread over the first
     *
     * @return (self', new threadNode, new threadLinks )
     */
-  def twistLeft(newNode: Int): (Threads, NodeProps, Seq[LinkProps]) =
+  def twistLeft(newNode: Int, stitchID: String, idSuffix: Int): (Threads, NodeProps, Seq[LinkProps]) =
     (new Threads((newNode, newNode, n3, n4), (t2, t1, t3, t4)),
-      twistNode,
+      twistNode(stitchID, idSuffix),
       twistedLinks(newNode, n1, n2, t1, t2))
 
   /** moves the fourth thread over the third
     *
     * @return (self', new threadNode, new threadLinks )
     */
-  def twistRight(newNode: Int): (Threads, NodeProps, Seq[LinkProps]) =
+  def twistRight(newNode: Int, stitchID: String, idSuffix: Int): (Threads, NodeProps, Seq[LinkProps]) =
     (new Threads((n1, n2, newNode, newNode), (t1, t2, t4, t3)),
-      twistNode,
+      twistNode(stitchID, idSuffix),
       twistedLinks(newNode, n3, n4, t3, t4))
 
   def leftPair: Threads = new Threads((n1, n2, n1, n2), (t1, t2, t1, t2))

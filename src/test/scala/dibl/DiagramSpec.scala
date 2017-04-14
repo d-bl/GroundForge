@@ -57,7 +57,7 @@ class DiagramSpec extends FlatSpec with Matchers {
     pairDiagram
       .nodes
       .filter(n => !n.title.startsWith("Pair"))
-      .map(n => n.title)
+      .map(n => n.instructions)
       .toSet shouldBe Set("tc", "tct", "ctc") // bobbins get the default "ctc" tag
   }
 
@@ -71,7 +71,7 @@ class DiagramSpec extends FlatSpec with Matchers {
     pairDiagram
       .nodes
       .filter(n => !n.title.startsWith("Pair"))
-      .map(n => n.title)
+      .map(n => n.instructions)
       .toSet shouldBe Set("tct")
   }
 
@@ -85,7 +85,7 @@ class DiagramSpec extends FlatSpec with Matchers {
     pairDiagram
       .nodes
       .filter(n => !n.title.startsWith("Pair"))
-      .map(n => n.title)
+      .map(n => n.instructions)
       .toSet shouldBe Set("ctc")
   }
 
@@ -94,11 +94,11 @@ class DiagramSpec extends FlatSpec with Matchers {
     val threadDiagram = ThreadDiagram(PairDiagram(
       Settings("5-", "bricks", stitches = "tttpc", absRows = 6, absCols = 6)
     ))
-    threadDiagram.nodes.count(n => n.title == "twist" && n.x.toInt==0 && n.y.toInt==0) shouldBe 0
-    threadDiagram.nodes.count(n => n.title == "cross" && n.x.toInt==0 && n.y.toInt==0) shouldBe 0
-    threadDiagram.nodes.count(_.title == "twist") shouldNot be(0)
-    threadDiagram.nodes.count(_.title == "cross") shouldNot be(0)
-    threadDiagram.nodes.count(_.title == "pin") shouldNot be(0)
+    threadDiagram.nodes.count(n => n.instructions == "twist" && n.x.toInt==0 && n.y.toInt==0) shouldBe 0
+    threadDiagram.nodes.count(n => n.instructions == "cross" && n.x.toInt==0 && n.y.toInt==0) shouldBe 0
+    threadDiagram.nodes.count(_.instructions == "twist") shouldNot be(0)
+    threadDiagram.nodes.count(_.instructions == "cross") shouldNot be(0)
+    threadDiagram.nodes.count(_.instructions == "pin") shouldNot be(0)
     threadDiagram.nodes.count(_.title == "thread 14") should be(1)
     threadDiagram.nodes.count(_.startOf == 14) should be(1)
     threadDiagram.toString should include("thread,14")

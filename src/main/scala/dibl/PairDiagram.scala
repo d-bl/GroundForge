@@ -22,7 +22,11 @@ import scala.annotation.tailrec
 import scala.scalajs.js.annotation.JSExport
 import scala.util.Try
 
+@JSExport
 object PairDiagram {
+
+  @JSExport
+  def create(stitches: String, threadDiagram: Diagram): Diagram = apply(stitches, threadDiagram)
 
   /** Restyles the nodes of a diagram into nodes for a pair diagram.
     *
@@ -53,19 +57,45 @@ object PairDiagram {
         xs(0) -> xs(1)
       }.toMap
 
-    def translateTitle(title: String) = {
-      val threadTitle: String = title
-      if (threadTitle.startsWith("thread "))
-        threadTitle.replace("thread", "Pair")
-      else stitchMap.getOrElse(threadTitle, defaultStitch)
+    def translateTitle(n: NodeProps) = {
+      if (n.title.startsWith("thread "))
+        n.title.replace("thread", "Pair")
+      else {
+        val s = stitchMap.getOrElse(
+          n.id,
+          stitchMap.getOrElse(
+            n.instructions,
+            defaultStitch
+          ))
+        s"$s - ${ n.id }"
+      }
     }
 
+    val nodes = threadDiagram.nodes.map(n => node(translateTitle(n), n.x, n.y))
     val links = threadDiagram
       .links
       .filter(link => !link.border)
       .filter(link => !hasDuplicateLinksOut.contains(link.source))
-      .map(link => LinkProps.simpleLink(link.source, link.target))
-    val nodes = threadDiagram.nodes.map(p => node(translateTitle(p.title), p.x, p.y))
+      .map{link =>
+        val srourceInstructions = nodes(link.source).instructions.replaceAll("t","lr")
+        val targetInstructions = nodes(link.target).instructions.replaceAll("t","lr")
+        val toLeftOfTarget =
+          (threadDiagram.nodes(link.target).instructions,
+            link.end
+          ) match {
+            case ("cross", "white") => true
+            case ("cross", "") => false
+            case ("twist", "white") => false
+            case ("twist", "") => true
+            case _ => false
+          }
+        pairLink(link.source, link.target,
+          start = marker(srourceInstructions),
+          mid = midMarker(srourceInstructions, targetInstructions, toLeftOfTarget),
+          end = marker(targetInstructions),
+          weak = false
+        )
+      }
     Diagram(nodes, links)
   }
 
@@ -82,6 +112,9 @@ object PairDiagram {
     *         a diagram with just a node that has an error message as title
     */
   @JSExport
+  def get(compactMatrix: String, tiling: String, absRows: Int, absCols: Int, shiftLeft: Int = 0, shiftUp: Int = 0, stitches: String = ""): Diagram =
+    create(compactMatrix, tiling, absRows, absCols, shiftLeft, shiftUp, stitches).getOrRecover
+
   def create(compactMatrix: String, tiling: String, absRows: Int, absCols: Int, shiftLeft: Int = 0, shiftUp: Int = 0, stitches: String = ""): Try[Diagram] =
     Settings(compactMatrix, tiling, absRows, absCols, shiftLeft, shiftUp, stitches)
       .map(PairDiagram(_))
