@@ -39,7 +39,6 @@ button {
 }
 #matrixOpts {
   padding: 0.2em;
-  float: right;
 }
 #matrixOpts p {
   margin: 0;
@@ -47,7 +46,10 @@ button {
 #matrix {
   margin-left: 0.2em;
 }
-#matrixOpts, #matrixOpts div {
+#matrixOpts, #base {
+  vertical-align: top;
+}
+#matrixOpts, #matrixOpts div, #base, #base div {
   display: inline-block;
 }
 #matrixOpts label {
@@ -76,6 +78,10 @@ ul {
     padding: 0;
     padding-left: 2em;
 }
+dt {
+    margin-top: 0.3em;
+    margin-bottom: 0.2em;
+}
 @media only screen and (max-width: 35em) {
     ul {
         padding-left: 1em;
@@ -91,9 +97,7 @@ ul {
         margin: 0.5em;
         padding: 0;
     }
-}
-@media only screen and (max-width: 440px) {
-    #matrixOpts div {
-        display: block;
+    dd {
+      margin-left: 1.5em;
     }
 }
