@@ -1,4 +1,41 @@
-The [thumbnails] show patterns collected from [TesseLace] in the period 2012-2014. This collection contains exotic patterns and some traditional grounds. To experiment with other traditional patterns they should be defined with a matrix, this might not always be possible.
+The [thumbnails] show patterns collected from [TesseLace] in the period 2012-2014. This collection contains exotic patterns and some traditional grounds. Different methods allow to reproduce a pattern with GroundForge.
+
+
+2-Step method
+==============
+
+The image below tries to show how dissect a pair diagram as if it is a thread diagram.
+The blue shapes enclose stitches with two pairs alias threads.
+The read shapes collect stitches into a repeat that matches a matrix.
+
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/disect-pairs-as-threads.png)
+
+The pattern analysed above needs a `brick` matrix:
+
+    5-
+    -5
+    5-
+
+The ID calculator can sometimes shift a column as shown in the table below for this particular matrix.
+Fixing this bug would break deep links for existing problems,
+a solution which is worse than the problem.
+So hover over stitches in the pair diagram to find out the actual ID of a stitch.
+At step one we need the following stitch definition to reproduce the pattern.
+
+    A1=ct B2=cr B3=crcl
+
+|  .  |     |  A  |  B  |     |  A  |  B  |
+| --- | --- | --- | --- | --- | --- | --- |
+|  1  |     | A1  | B1  |     | A1  | B1  |
+|  2  |     | A2  | B2  |     | A2  | B2  |
+|  3  |     | B3  | A3  |     | B3  | A3  |
+|     |     |     |     |     |     |     |
+|  1  |     | B1  | A1  |     | B1  | A1  |
+|  2  |     | B2  | A2  |     | B2  | A2  |
+|  3  |     | A3  | B3  |     | A3  | B3  |
+
+Matrix from pair diagram
+========================
 
 Like you can reshape generated patterns to your taste, you can reshape traditional patterns to meet the requirements for a compact matrix. These requirements are visualized in two ways with the [SVG] version of the matrix legend. One of the visualizations is used on the matrix tab of the [main] GroundForge page. The other variant is designed to download and use as template components with a vector image editor like CorelDraw, Adobe Illustrator or the free InkScape. The template components are objects consisting of a symbol and two arrows:
 
