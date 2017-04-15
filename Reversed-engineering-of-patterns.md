@@ -6,15 +6,14 @@ The [thumbnails] show patterns collected from [TesseLace] in the period 2012-201
 
 The image below tries to show how dissect a pair diagram as if it is a thread diagram.
 The blue shapes enclose stitches with two pairs alias threads.
-The read shapes collect stitches into a repeat that matches a matrix.
-
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/disect-pairs-as-threads.png)
-
-The pattern analysed above needs a `brick` matrix:
+The read shapes collect stitches into a repeat that matches a `brick` matrix:
 
     5-
     -5
     5-
+
+
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/disect-pairs-as-threads.png)
 
 The ID calculator can sometimes shift a column as shown in the table below for this particular matrix.
 Fixing this bug would break deep links for existing problems,
@@ -23,6 +22,8 @@ So hover over stitches in the pair diagram to find out the actual ID of a stitch
 At step one we need the following stitch definition to reproduce the pattern.
 
     A1=ct B2=cr B3=crcl
+
+The result of the mistaken ID calculator:
 
 |  .  |     |  A  |  B  |     |  A  |  B  |
 | --- | --- | --- | --- | --- | --- | --- |
