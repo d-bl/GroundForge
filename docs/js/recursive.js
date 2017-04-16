@@ -101,10 +101,7 @@ function showDiagram(id, threadWidth, data) {
   })
 }
 function setDownloadContent (comp, id) {
-  var container = document.getElementById(id)
-  if (!container) return
-  if (container.firstElementChild.localName != "svg") return
-  var svg = container.innerHTML.
+  document.getElementById(id).innerHTML.
       replace('pointer-events="all"', '').
       replace(/<path [^>]+opacity: 0;.+?path>/g, '')
   comp.href = 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
