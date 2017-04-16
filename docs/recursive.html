@@ -152,8 +152,30 @@
         <button class="show" onclick="firstStep()">show</button>
     </article>
     <div class="step1 hide">
-        <div id="p1" class="diagram"></div>
-        <div id="t1" class="diagram"></div>
+        <div class="diagramContainer">
+            <div id="p1" class="diagram"></div>
+            <span class="controls">
+                <a target="_blank" href="#fullcreen"
+                   onblur="this.href='#fullcreen'"
+                   onmousedown="setDownloadContent(this,'p1')"><img src="images/fullscreen.jpg"></a>
+                <a download="thread-diagram.svg"
+                   onblur="this.href='#download'"
+                   target="_blank" href="#download"
+                   onmousedown="setDownloadContent(this,'p1')"><img src="images/download.jpg"></a>
+            </span>
+        </div>
+        <div class="diagramContainer">
+            <div id="t1" class="diagram"></div>
+            <span class="controls">
+                <a target="_blank" href="#fullcreen"
+                   onblur="this.href='#fullcreen'"
+                   onmousedown="setDownloadContent(this,'t1')"><img src="images/fullscreen.jpg"></a>
+                <a download="thread-diagram.svg"
+                   onblur="this.href='#download'"
+                   target="_blank" href="#download"
+                   onmousedown="setDownloadContent(this,'t1')"><img src="images/download.jpg"></a>
+            </span>
+        </div>
     </div>
 
     <article>
@@ -171,8 +193,30 @@
         <button class="step1 hide" onclick="nextStep(2)">show</button>
     </article>
     <div class="step2 hide">
-        <div id="p2" class="diagram"></div>
-        <div id="t2" class="diagram"></div>
+        <div class="diagramContainer">
+            <div id="p2" class="diagram"></div>
+            <span class="controls">
+                <a target="_blank" href="#fullcreen"
+                   onblur="this.href='#fullcreen'"
+                   onmousedown="setDownloadContent(this,'p2')"><img src="images/fullscreen.jpg"></a>
+                <a download="thread-diagram.svg"
+                   onblur="this.href='#download'"
+                   target="_blank" href="#download"
+                   onmousedown="setDownloadContent(this,'p2')"><img src="images/download.jpg"></a>
+            </span>
+        </div>
+        <div class="diagramContainer">
+            <div id="t2" class="diagram"></div>
+            <span class="controls">
+                <a target="_blank" href="#fullcreen"
+                   onblur="this.href='#fullcreen'"
+                   onmousedown="setDownloadContent(this,'t2')"><img src="images/fullscreen.jpg"></a>
+                <a download="thread-diagram.svg"
+                   onblur="this.href='#download'"
+                   target="_blank" href="#download"
+                   onmousedown="setDownloadContent(this,'t2')"><img src="images/download.jpg"></a>
+            </span>
+        </div>
     </div>
     <article>
         <h2>Step 3 (as 2)</h2>
@@ -185,8 +229,30 @@
         <button class="step2 hide" onclick="nextStep(3)">show</button>
     </article>
     <div class="step3 hide">
-        <div id="p3" class="diagram"></div>
-        <div id="t3" class="diagram"></div>
+        <div class="diagramContainer">
+            <div id="p3" class="diagram"></div>
+            <span class="controls">
+                <a target="_blank" href="#fullcreen"
+                   onblur="this.href='#fullcreen'"
+                   onmousedown="setDownloadContent(this,'p3')"><img src="images/fullscreen.jpg"></a>
+                <a download="thread-diagram.svg"
+                   onblur="this.href='#download'"
+                   target="_blank" href="#download"
+                   onmousedown="setDownloadContent(this,'p3')"><img src="images/download.jpg"></a>
+            </span>
+        </div>
+        <div class="diagramContainer">
+            <div id="t3" class="diagram"></div>
+            <span class="controls">
+                <a target="_blank" href="#fullcreen"
+                   onblur="this.href='#fullcreen'"
+                   onmousedown="setDownloadContent(this,'t3')"><img src="images/fullscreen.jpg"></a>
+                <a download="thread-diagram.svg"
+                   onblur="this.href='#download'"
+                   target="_blank" href="#download"
+                   onmousedown="setDownloadContent(this,'t3')"><img src="images/download.jpg"></a>
+            </span>
+        </div>
     </div>
 </form>
 
