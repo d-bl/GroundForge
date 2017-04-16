@@ -42,6 +42,12 @@ button {
 #matrixOpts {
   padding: 0.2em;
 }
+table, tr, td {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
 #matrixOpts p {
   margin: 0;
 }
