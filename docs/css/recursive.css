@@ -47,6 +47,7 @@ table, tr, td {
   margin-bottom: 0;
   padding-top: 0;
   padding-bottom: 0;
+  text-align: center;
 }
 #matrixOpts p {
   margin: 0;
