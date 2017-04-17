@@ -42,7 +42,7 @@
     <dd>
         Read the
         <a href="https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns"
-        >user guide</a> to vary on other traditional patterns.
+        >user guide</a> to vary on traditional patterns.
     </dd>
     <dt><em>Warning:</em></dt>
     <dd>
@@ -118,27 +118,23 @@
                 </p>
             </div>
         </fieldset>
-        <p><a onmouseenter="this.href=createUrlArgs()"
-              href=""><button type="button" title="perma link">#</button></a>
-            <a href="recursive.html"><button type="button">default</button></a>
-        </p>
-        <p class="step1 hide" id="paint1">
-            <input id="color" name="color" class="jscolor" value="00CC11" pattern="[a-fA-F0-9]{6}"/>
-            <label for="color">Select a square thread start to apply the color and examine its path through the pattern.</label>
-        </p>
-        <p>
-            Just some stitches, mix them, mirror them, add or drop twists at will.
+    </article>
+    <article>
+        <label for="stitchExamples">
+            Just some examples of stitches for the next steps.
+            Mix them, mirror them, add or drop twists at will.
             The linked ones produce traditional patterns at step two.
-        </p>
-        <table>
+        </label>
+        <table id="stitchExamples">
             <tr>
-                <td><img src="stitches/torchon-ct.png"></td>
-                <td><img src="stitches/torchon-ctct.png"></td>
-                <td><img src="stitches/torchon-crclct.png"></td>
-                <td><img src="stitches/torchon-clcrclc.png"></td>
-                <td><img src="stitches/torchon-ctctc.png"></td>
-                <td><img src="stitches/torchon-ctclctc.png"></td>
-                <td><img src="stitches/torchon-ctclcrctc.png"></td>
+                <td><img src="stitches/ct.png"></td>
+                <td><img src="stitches/ctct.png"></td>
+                <td><img src="stitches/crclct.png"></td>
+                <td><img src="stitches/clcrclc.png"></td>
+                <td><img src="stitches/ctctc.png"></td>
+                <td><img src="stitches/ctclctc.png"></td>
+                <td><img src="stitches/ctclcrctc.png"></td>
+                <td><img src="stitches/ctcttctc.png"></td>
             </tr>
             <tr>
                 <td><a href="recursive.html?m=5-%3Bbricks%3B7%3B5%3B0%3B0&s1=ct&s2=ctct&s3="
@@ -152,8 +148,17 @@
                 >ctctc</a></td>
                 <td>ctclctc</td>
                 <td>ctclcrctc</td>
+                <td>ctcttctc</td>
             </tr>
         </table>
+        <p><a onmouseenter="this.href=createUrlArgs()"
+              href=""><button type="button" title="perma link">#</button></a>
+            <a href="recursive.html"><button type="button">default</button></a>
+        </p>
+        <p class="step1 hide" id="paint1">
+            <input id="color" name="color" class="jscolor" value="00CC11" pattern="[a-fA-F0-9]{6}"/>
+            <label for="color">Select a square thread start to apply the color and examine its path through the pattern.</label>
+        </p>
     </article>
 
     <article>
