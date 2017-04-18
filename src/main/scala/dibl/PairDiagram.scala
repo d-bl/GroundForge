@@ -113,10 +113,10 @@ object PairDiagram {
     */
   @JSExport
   def get(compactMatrix: String, tiling: String, absRows: Int, absCols: Int, shiftLeft: Int = 0, shiftUp: Int = 0, stitches: String = ""): Diagram =
-    create(compactMatrix, tiling, absRows, absCols, shiftLeft, shiftUp, stitches).getOrRecover
+    create(compactMatrix.trim, tiling, absRows, absCols, shiftLeft, shiftUp, stitches).getOrRecover
 
   def create(compactMatrix: String, tiling: String, absRows: Int, absCols: Int, shiftLeft: Int = 0, shiftUp: Int = 0, stitches: String = ""): Try[Diagram] =
-    Settings(compactMatrix, tiling, absRows, absCols, shiftLeft, shiftUp, stitches)
+    Settings(compactMatrix.trim, tiling, absRows, absCols, shiftLeft, shiftUp, stitches)
       .map(PairDiagram(_))
 
   def apply(triedSettings: Try[Settings]): Diagram = if (triedSettings.isFailure)
