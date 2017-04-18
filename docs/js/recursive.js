@@ -17,10 +17,31 @@ function loadUrlArgs() {
   var location = (window.location.href + "").replace("#","")
   // for each key-value pair in the URL query
   location.replace(/[?&]+([^=&]+)(=([^&]*))?/gi, function(m,key,m2,value) {
+  val = decodeURIComponent(value).replace(/[+]/g, " ")
+    var match = key.match(/s[1-3]/)
     if(key=="m") setMatrix(value)
-    else if(key.match(/s[1-3]/).length > 0)
-      document.getElementById(key).value = decodeURIComponent(value).replace(/[+]/g, " ")
+    else if(match && match.length > 0)
+      document.getElementById(key).value = val
+      // backward compatible links
+    else if(key == "stitches")
+      document.getElementById("s1").value = val
+    else if(key == "left")
+      document.getElementById("shiftLeft").value = val
+    else if(key == "up")
+      document.getElementById("shiftUp").value = val
+    else if(key == "rows" || key == "cols" || key == "matrix")
+      document.getElementById(key).value = val
+    else if( key == "tiles")
+      setTiling(val)
   })
+}
+function setTiling (val) {
+  var el = document.getElementById("tiles")
+  for(index = 0 ; index < el.length ; index++)
+    if(el[index].value == val) {
+      el.selectedIndex = index
+      break
+    }
 }
 function createUrlArgs() {
     var result = "recursive.html?m=" +
@@ -41,7 +62,7 @@ function setMatrix(value) {
   var p = decodeURIComponent(value).split(";")
   if (p.length == 6) {
       document.getElementById("matrix").value = p[0]
-      document.getElementById("tiles").value = p[1]
+      setTiling(p[1])
       document.getElementById("rows").value = p[2]
       document.getElementById("cols").value = p[3]
       document.getElementById("shiftLeft").value = p[4]
