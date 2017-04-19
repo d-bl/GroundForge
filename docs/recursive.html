@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title lang="en">GroundForge : Recursive bobbin lace diagrams.</title>
+    <title lang="en">GroundForge : Diagrams for bobbin lace grounds.</title>
     <meta name="description" content="Choose patterns and stitches to generate diagrams for grounds of bobbin lace">
     <meta name="keywords" content="bobbin lace, pair diagram, thread diagram, patterns, stitches">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -177,10 +177,6 @@
               href=""><button type="button" title="perma link">#</button></a>
             <a href="recursive.html"><button type="button">default</button></a>
         </p>
-        <p class="step1 hide" id="paint1">
-            <input id="color" name="color" class="jscolor" value="00CC11" pattern="[a-fA-F0-9]{6}"/>
-            <label for="color">Select a square thread start to apply the color and examine its path through the pattern.</label>
-        </p>
     </article>
 
     <article>
@@ -196,6 +192,30 @@
                value="ct A1=ct"
                pattern="[lrtc]*([;, ]*[A-K][0-9]=[lrtc]+)*"
         >
+        <table class="step1 hide">
+            <tr>
+                <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+                <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td>
+            </tr>
+            <tr>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c1" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c2" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c3" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c4" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c5" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c6" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c7" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c8" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c9" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c10" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c11" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c12" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c13" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c14" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c15" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c16" class="jscolor" value="FF0000"/></td>
+            </tr>
+        </table>
         <button class="show" onclick="firstStep()">show</button>
     </article>
     <div class="step1 hide">
@@ -245,6 +265,30 @@
                value="cross=ctc twist=ctc"
                pattern="[lrtc]*([;, ]*(cross|twist|[A-K][0-9][0-9a-zA-Z])=[lrtc]+)*"
         >
+        <table class="step2 hide">
+            <tr>
+                <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+                <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td>
+            </tr>
+            <tr>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c1" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c2" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c3" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c4" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c5" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c6" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c7" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c8" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c9" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c10" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c11" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c12" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c13" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c14" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c15" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c16" class="jscolor" value="FF0000"/></td>
+            </tr>
+        </table>
         <button class="step1 hide" onclick="nextStep(2)">show</button>
     </article>
     <div class="step2 hide">
@@ -289,6 +333,30 @@
                spellcheck="false"
                pattern="[lrtc]*([;, ]*(cross|twist|[A-K][0-9][0-9a-zA-Z]{2})=[lrtc]+)*"
         >
+        <table class="step3 hide">
+            <tr>
+                <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+                <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td>
+            </tr>
+            <tr>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c1" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c2" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c3" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c4" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c5" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c6" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c7" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c8" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c9" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c10" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c11" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c12" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c13" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c14" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c15" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c16" class="jscolor" value="FF0000"/></td>
+            </tr>
+        </table>
         <button class="step2 hide" onclick="nextStep(3)">show</button>
     </article>
     <div class="step3 hide">

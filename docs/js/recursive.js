@@ -22,7 +22,7 @@ function loadUrlArgs() {
     if(key=="m") setMatrix(value)
     else if(match && match.length > 0)
       document.getElementById(key).value = val
-      // backward compatible links
+      // support for backward compatible links:
     else if(key == "stitches")
       document.getElementById("s1").value = val
     else if(key == "left")
@@ -97,7 +97,7 @@ function firstStep() {
   var t = dibl.ThreadDiagram().create(p)
   data[1] = { pairDiagram: p, threadDiagram: t }
   showDiagram("#p1", "1px", p)
-  showDiagram("#t1", "2px", t)
+  showDiagram("#t1", "2px", t, "s1c")
 }
 function nextStep(n) {
   replaceClass("step"+n, "hide","show")
@@ -108,17 +108,18 @@ function nextStep(n) {
   var p = dibl.PairDiagram().create(stitches, data[n-1].threadDiagram)
   var t = dibl.ThreadDiagram().create(p)
   data[n] = { pairDiagram: p, threadDiagram: t }
-  showDiagram("#p"+n, "1px", p)
-  showDiagram("#t"+n, "2px", t)
+  showDiagram("#p" + n, "1px", p)
+  showDiagram("#t" + n, "2px", t, "s" + n + "c")
 }
-function showDiagram(id, threadWidth, data) {
+function showDiagram(id, threadWidth, data, colorIdPrefix) {
   diagram.showGraph({
     container: d3.select(id),
     nodes: data.jsNodes(),
     links: data.jsLinks(),
     threadColor: '#color',
     diagram: data,
-    stroke: threadWidth
+    stroke: threadWidth,
+    palette: (colorIdPrefix? getColors(colorIdPrefix): "")
   })
 }
 function setDownloadContent (comp, id) {
@@ -126,5 +127,25 @@ function setDownloadContent (comp, id) {
       replace('pointer-events="all"', '').
       replace(/<path [^>]+opacity: 0;.+?path>/g, '')
   comp.href = 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
+}
+function getColors (idPrefix) {
+  var colors = ''
+  for(i=1; i <= 16 ; i++) {
+    var el = document.getElementById(idPrefix + i)
+    el.style.backgroundColor = '#' + el.value
+    colors += ',#'+ el.value
+  }
+  return colors.replace(/,#FFFFFF/g,'').replace(/^,/,'')
+}
+function onChangeColor(el) {
+  if (el.value == 'FFFFFF') {
+    var i = el.id.replace('color','') * 1
+    for (i = i+1 ; i <=16 ; i++) {
+      el2 = document.getElementById('color' + i)
+      el2.value = 'FFFFFF'
+      el2.style.backgroundColor = '#FFFFFF'
+      el2.style.color = '#000000'
+    }
+  }
 }
 
