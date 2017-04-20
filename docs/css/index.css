@@ -1,52 +1,118 @@
-body { max-width: 57.5em;  padding: 1em; margin-left: auto; margin-right: auto; }
+article { max-width: 45em; }
+body, article { padding: 1em; padding-bottom: 0; margin-left: auto; margin-right: auto; }
 .jscolor { width: 3.7em; font-family: "Courier New", "Monospace"; font-size: 0.7em; }
 
-#pairs, #threads { width: 27.5em; height: 15em; }
-fieldset, .tabs { width: 52em; }
-fieldset { margin: 0; margin-bottom: 1em; padding-left: 2em; padding-right: 2em; }
-#sheet { width: 56.4em; height: 27em; }
-#sizeFieldSet input, #shiftFieldSet input { width: 3em; }
-ul { padding-left: 1.5em; }
-
-#sheet {
-  resize:both; /* IE-9 doesn't resize */
-  overflow: scroll;
-}
-#pairs, #threads {
-   /* resize combined with zooming and panning is buggy in firefox */
-  overflow: hidden
-}
-#pairs, #threads, #sheet, fieldset { border: solid 1px #AAA; }
-#thumbnailsFieldSet img {
-  overflow: hidden;
+fieldset img, .diagram {
   border: solid 1px #AAA;
-  vertical-align: middle;
-  margin-bottom: 1em;
 }
-div, input, textarea { vertical-align: top;}
-form { margin-bottom: 1em }
-#sheet { margin-top: 0.2em; }
-#pairs, #threads { padding: 0 }
-#buttons { border: none; padding: 0; }
-#threadFieldSet td { text-align: center }
-
-.tabs { margin-bottom: 0; padding-bottom: 0; }
-.activeTab, .inactiveTab {
-    border-bottom: 0;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-top-left-radius: 1em;
-    border-top-right-radius: 1em;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+legend img {
+  border: none;
 }
-.activeTab { background-color: #CCCCCC; }
-.inactiveTab { background-color: #EEEEEE; }
-legend { display: none; }
-
-#pattern, #stitchFiedSet { float: left; margin-right:0.4em; }
-#pairs, form { clear: both }
-#diagrams { clear: left; margin-top: 0.5em; }
-
-#pairs, #threads, #sheet, fieldset, .show { display: inline-block; }
-.hide { display: none }
+button {
+  border-radius:0.5em;
+  border:0.23em solid #999;
+  border-style:outset;
+  background-color: #EEE;
+  text-align: center;
+  width: 6em;
+  height: 2em;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+}
+#s1, #s2, #s3 {
+  margin-left: 0.3em;
+  margin-bottom: 0.3em;
+}
+#logo img {
+  max-width: 30%;
+}
+.diagramContainer {
+  display: inline-block;
+  width: 180em;
+  max-width: 48%;
+}
+.diagram {
+  height: 15em;
+  padding 0;
+  margin: 0;
+  overflow: hidden;
+}
+#matrixOpts {
+  padding: 0.2em;
+}
+table, tr, td {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-align: center;
+}
+#matrixOpts p {
+  margin: 0;
+}
+#matrix {
+  margin-left: 0.2em;
+}
+#matrixOpts, #base {
+  vertical-align: top;
+}
+#matrixOpts, #matrixOpts div, #base, #base div {
+  display: inline-block;
+}
+#matrixOpts label {
+  display:inline-block;
+  width: 4em;
+}
+#s1, #s2, #s3 {
+  max-width: 90%;
+  width: 47em;
+}
+#matrixOpts input[type="number"] {
+  width: 2.5em;
+  text-align: right;
+  margin: 0;
+}
+#paint1 {
+  clear: both;
+}
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
+ul {
+    padding: 0;
+    padding-left: 2em;
+}
+dt {
+    margin-top: 0.3em;
+    margin-bottom: 0.2em;
+}
+.controls {
+  display: block;
+  position: relative;
+  top: -1.2em;
+  margin-left: 0.2em;
+}
+@media only screen and (max-width: 35em) {
+    ul {
+        padding-left: 1em;
+    }
+    body {
+        margin: 1px;
+        padding: 0;
+    }
+    #step1 {
+        padding-right: 1em;
+    }
+    article {
+        margin: 0.5em;
+        padding: 0;
+    }
+    dd {
+      margin-left: 1.5em;
+    }
+}

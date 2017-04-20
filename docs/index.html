@@ -1,306 +1,415 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title lang="en">GroundForge : Toolbox for bobbin lace grounds.</title>
-    <link rel="stylesheet" type="text/css" href="css/index.css"/>
-    <link rel="stylesheet" type="text/css" href="css/logo.css"/>
+    <title lang="en">GroundForge : Diagrams for bobbin lace grounds.</title>
+    <meta name="description" content="Choose patterns and stitches to generate diagrams for grounds of bobbin lace">
+    <meta name="keywords" content="bobbin lace, pair diagram, thread diagram, patterns, stitches">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/d3.v4.min.js" type="text/javascript"></script>
     <script src="js/show-graph.js" type="text/javascript"></script>
     <script src="js/matrix-graphs.js" type="text/javascript"></script>
     <script src="js/index.js" type="text/javascript"></script>
     <script src="js/jscolor.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/logo.css"/>
 </head>
-<body onload="init();load()">
-
+<body onload="loadUrlArgs()">
 <article>
-    <a id="logo"
-       href="https://d-bl.github.io/"
-       title="More tools by DiBL"
-    ><img src="images/logo-medium.png" alt="DiBL logo"/></a>
-    <h1>GroundForge</h1>
-    <p><em>A toolbox to design bobbin lace grounds or braids with matching diagrams.</em></p>
-
-    <p>
-        Some <a href="https://github.com/d-bl/GroundForge/releases"
-        >release notes</a> may have screen casts attached showing you around.
-        You are invited to enhance the <a href="https://github.com/d-bl/GroundForge/wiki"
-        >user guide</a> so other users can benefit from your experience.
-        We'd also love to see <a href="https://github.com/d-bl/GroundForge/issues/50"
-        >your creations</a>.
-    </p>
+<a id="logo"
+   href="index.html"
+   title="Main page"
+><img src="images/logo-medium.png" alt="DiBL logo"/></a>
+<h1>GroundForge</h1>
+<p><em>Choose patterns and stitches to generate diagrams for grounds of bobbin lace.</em></p>
+<p>
+    Thread diagrams of a plain Torchon ground (with respectively ct or ctct),
+    are pair diagrams for a Paris or Flanders alias five-hole ground.
+    The method can be applied to many more stitches, combination of stitches and even repeated.
+    This results in a myriad of possibilities.
+    The generated diagrams can help to select the interesting ones with an educated guess.
+</p>
+<h2>Get started</h2>
+<dl>
+    <dt>Option A:</dt>
+    <dd>Initialize the parameters with one of the 376 patterns listed with <a href="thumbs.html">thumbnails</a>.</dd>
+    <dt>Option B:</dt>
+    <dd>
+        As an alternative decide how many stitches you want to choose at the first step
+        for one of the base patterns and vary stitches at step one and two.
+    </dd>
+    <dt>Advanced options:</dt>
+    <dd>
+        Read the
+        <a href="https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns"
+        >user guide</a> to vary on traditional patterns.
+    </dd>
+    <dt><em>Warning:</em></dt>
+    <dd>
+        With complex stitches and large numbers of rows and columns,
+        your browser can get overwhelmed with step two or three.
+    </dd>
+</dl>
 </article>
-<form>
-    <p class="tabs">
-        <button class="inactiveTab" id="introTab" onclick="toggle('intro');return false">introduction</button>
-        <button class="activeTab" id="thumbnailsTab" onclick="toggle('thumbnails');return false">thumbnails</button>
-        <button class="inactiveTab" id="sizeTab" onclick="toggle('size');return false">patch size</button>
-        <button class="inactiveTab" id="stitchTab" onclick="toggle('stitch');return false">stitches</button>
-        <button class="inactiveTab" id="threadTab" onclick="toggle('thread');return false">thread colors</button>
-        <button class="inactiveTab" id="downloadTab" onclick="toggle('download');return false">download/print</button>
-        <button class="inactiveTab" id="patternTab" onclick="toggle('pattern');return false">matrix</button>
-        <button class="inactiveTab" id="shiftTab" onclick="toggle('shift');return false">footsides</button>
-        <button class="inactiveTab" id="hiddenTab" onclick="toggle('hidden');return false">hidden objects</button>
-    </p>
-    <fieldset id="introFieldSet" class="hide">
-        <legend>Introduction</legend>
-        <p>
-            A workflow to design your own ground:
+<form onsubmit="return false">
+    <article>
+        <fieldset id="base">
+            <legend>Base patterns</legend>
+            <div>
+                <img src="images/base1.png">
+                <select style="display: block" onchange="setMatrix(this.value)">
+                    <option value="5-;bricks;5;5;0;0" selected>1x2</option>
+                    <option value="5-%0D-5;checker;5;5;0;0" selected>2x2</option>
+                    <option value="5-%0D-5%0D5-;bricks;8;5;0;0" selected>3x2</option>
+                    <option value="5-%0D-5%0D5-%0D-5;checker;9;5;0;0" selected>4x2</option>
+                    <option value="5-%0D-5%0D5-%0D-5%0D5-;bricks;11;5;0;0" selected>5x2</option>
+                    <option value="5-%0D-5%0D5-%0D-5%0D5-%0D-5;checker;11;5;0;0" selected>6x2</option>
+                    <option value="5-5-%0D-5-5;checker;5;8;0;0" selected>2x4</option>
+                    <option value="5-5-%0D-5-5%0D5-5-%0D-5-5;checker;7;8;0;0" selected>4x4</option>
+                    <option value="5-5-%0D-5-5%0D5-5-%0D-5-5%0D5-5-%0D-5-5;checker;11;8;0;0" selected>6x4</option>
+                    <option value="5-5-5-%0D-5-5-5;checker;8;9;0;0" selected>2x6</option>
+                    <option value="5-5-5-%0D-5-5-5%0D5-5-5-;bricks;5;9;0;0" selected>3x6</option>
+                    <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5;checker;7;11;0;0" selected>4x6</option>
+                    <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5%0D5-5-5-;bricks;9;11;0;0" selected>5x6</option>
+                    <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5;checker;9;11;0;0" selected>6x6</option>
+                </select>
+            </div>
+            <div>
+                <img src="images/base2.png">
+                <select style="display: block" onchange="setMatrix(this.value)">
+                    <option value="8%0D1;checker;8;4;0;0" selected>2x1</option>
+                    <option value="88%0D11;checker;8;4;0;0" selected>2x2</option>
+                    <option value="888%0D111;checker;8;4;0;0" selected>2x3</option>
+                    <option value="8888%0D1111;checker;8;4;0;0" selected>2x4</option>
+                    <option value="8%0D1%0D8%0D1;checker;8;4;0;0" selected>4x1</option>
+                    <option value="88%0D11%0D88%0D11;checker;8;4;0;0" selected>4x2</option>
+                    <option value="888%0D111%0D888%0D111;checker;8;4;0;0" selected>4x3</option>
+                    <option value="8888%0D1111%0D8888%0D1111;checker;8;4;0;0" selected>4x4</option>
+                </select>
+            </div>
+        </fieldset>
+        <fieldset id="matrixOpts">
+            <legend>Parameters <a href="https://github.com/d-bl/GroundForge/wiki/Parameters"><img src="images/information-icon.png"></a></legend>
+            <textarea id="matrix" name="matrix" rows="6" cols="9" spellcheck="false"
+            >5-</textarea>
+            <div>
+                <p>
+                    <label for="tiles">tiling:</label>
+                    <select name="tiles" id="tiles">
+                        <option value="bricks" selected>Brick</option>
+                        <option value="checker">Checker</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="rows">rows:</label>
+                    <input id="rows" name="rows" min="3" value="7" max="30" type="number"/>
+                </p>
+                <p>
+                    <label for="cols">columns:</label>
+                    <input id="cols" name="cols" min="3" value="5" max="30" type="number"/>
+                </p>
+                <p>
+                    <label for="shiftLeft">shift left:</label>
+                    <input id="shiftLeft" name="rows" min="0" value="0" type="number"/>
+                </p>
+                <p>
+                    <label for="shiftUp">shift up:</label>
+                    <input id="shiftUp" name="cols" min="0" value="0" type="number"/>
+                </p>
+            </div>
+        </fieldset>
+        <p><a onmouseenter="this.href=createUrlArgs()"
+              href=""><button type="button" title="perma link">#</button></a>
+            <a href="index.html"><button type="button">default</button></a>
         </p>
-        <ul>
-            <li>
-                Select a thumbnail or matrix as the basis for your pattern.
-            </li>
-            <li>
-                Choose stitches, play with odd number of crossings and twists to make threads follow other paths than pairs.
-            </li>
-            <li>
-                Decide where to apply a contrasting thread,
-                the real lace could apply another width rather than another color.
-            </li>
-            <li>
-                Nudge pins to different positions.
-                The pattern sheet below the diagrams has one or more variants.
-                These variants are limited to some predefined grid.
-                Download and edit for more variations.
-                The <a href="https://github.com/d-bl/GroundForge/wiki"
-                >user guide</a> explains how the colors of the dots assist the editing process.
-            </li>
-        </ul>
-        <p>
-            Changes in the matrix tab change the pattern sheet.
-            Updating the other diagrams requires confirmation with
-            "apply options" or "prepare bookmark" because the animation takes some time.
-            The "prepare bookmark" button reloads the full page
-            and allows to save your configuration as favorite or bookmark.
-        </p>
-    </fieldset>
-    <fieldset id="thumbnailsFieldSet" class="show">
-        <legend>Thumbnails</legend>
-        <p>A selection of dressed up examples for a quick start.</p>
-        <p>
-        <a href="?matrix=5632 5632&tiles=checker&patch=5- -5&patch=5353 5353 5-5- -5-5&patch=5632 56-2 5-5- -535&patch=44 77 44 77;bricks&patch=44 44 77 77;bricks&rows=7&cols=7&left=1&up=1&stitches=tc,B1=tctc,D1=tctc&color1=000000&color2=000000&color3=000000&color4=CC0000&color5=000000&color6=000000&color7=000000&color8=000000&color9=000000&color10=000000&color11=000000&color12=000000&color13=CC0000&color14=000000&color15=000000&color16=000000"><img src="thumbs/214.png" title="Torchon (with variations)"></a>
-
-        <a href="?matrix=5632 34-7&tiles=bricks&rows=6&cols=9&left=1&up=1&patch=-5-5 5-5- -5-- B-C-;bricks&patch=256- ---5 C3B-;bricks&bricks&patch=4373 5-53;bricks&stitches=B1=ttcttpc,A2=ltc,C2=rtc,B2=tc,C1=tplc,A1=tprc,B1=tcttpc,D2=tcttpc&color1=000000&color2=000000&color3=000000&color4=000000&color5=000000&color6=000000&color7=000000&color8=000000&color9=000000&color10=CC0000&color11=000000&color12=000000&color13=000000&color14=000000&color15=CC0000&color16=000000"><img src="thumbs/135.png" title="small snow (Binche)"></a>
-
-        <a href="?matrix=5831 -4-7&tiles=bricks&patch=-437 34-7;bricks&patch=4830 --77;bricks&up=0&left=0&rows=8&cols=7&stitches=tc,C1=ptc&color1=000000&color2=000000&color3=000000&color4=000000&color5=000000&color6=000000&color7=000000&color8=000000&color9=000000&color10=000000&color11=000000&color12=000000&color13=000000&color14=000000&color15=000000&color16=000000"><img src="thumbs/130.png" title="rose (Torchon) / Flanders"></a>
-
-        <a href="?matrix=5831 -4-7&tiles=checker&patch=68 -4&patch=5831 -4-7&patch=B-C- ---5 C-B- -5--&patch=5831 -4-7 5--- -C-B;bricks&patch=5-O-E- -E-5-O 5-O-E-;bricks&left=4&up=1&rows=7&cols=7&stitches=tc,D1=tctc,B1=tctc&color1=000000&color2=000000&color3=000000&color4=000000&color5=000000&color6=000000&color7=CC0000&color8=000000&color9=000000&color10=CC0000&color11=000000&color12=000000&color13=000000&color14=000000&color15=000000&color16=000000"><img src="thumbs/376.png" title="kat / paris"></a>
-
-        <a href="?matrix=4815%0D4-77&tiles=bricks&patch=-5---5-5%0D5-O-E-5-;bricks&patch=4804%0D-777;bricks&patch=B-5-C-%0D-5-5--%0DB---C-;bricks&rows=12&cols=6&left=0&up=1&stitches=D2=tctpc%20A1=tc%20B1=tc%20C1=tc%20D1=tc%20A2=tc,B2=tc&color1=000000&color2=000000&color3=000000&color4=000000&color5=000000&color6=000000&color7=000000&color8=CC0000&color9=000000&color10=000000&color11=000000&color12=000000&color13=CC0000&color14=000000&color15=000000&color16=000000"><img src="thumbs/127.png" title="meandering plaits"></a>
-
-        <a href="?matrix=586- -4-5 5-21 -5-7&tiles=checker&rows=12&cols=9&&left=1&up=1&stitches=tctc,D4=lctc,B4=rctc,A1=ctc,D2=rctc,B2=lctc,C3=ctc&color1=000000&color2=000000&color3=000000&color4=000000&color5=000000&color6=000000&color7=000000&color8=000000&color9=000000&color10=000000&color11=000000&color12=000000&color13=000000&color14=000000&color15=000000&color16=000000"><img src="thumbs/001.png" title="pinwheel"></a>
-
-            More <a href="thumbs.html">thumbnails</a> and
-            <a href="recursive.html">recursive</a> patterns.
-        </p>
-    </fieldset>
-    <fieldset id="patternFieldSet" class="hide">
-        <legend>Pattern matrix</legend>
-        <p>
-            Each thumbnail is defined with a matrix.
-            Each character represents two incoming arrows.
-            Larger arrows represent double length lines, they skip a grid position.
-            The solid grey rectangles show possible tile (repeat) arrangements.
-            Only some matrices are valid for both types of tile arrangement.
-            The grey digits and letters explain the ID's of stitches
-            that pop up when you hover over one with your mouse.
-        </p>
-        <img src="images/legend.png" id="legend" alt="legend" align="right">
-        <div>
-            <select name="tiles" id="tiles" onchange="updatePatternSheet()">
-                <option value="bricks">Brick wall</option>
-                <option value="checker" selected>Checker board</option>
-            </select>
-            <label for="tiles"> tiles</label>
-        </div>
-        <textarea id="matrix" name="matrix" rows="4" cols="6" spellcheck="false" onchange="updatePatternSheet()"
-        >5831
--4-7</textarea>
-    </fieldset>
-    <fieldset id="threadFieldSet" class="hide">
-        <legend>Thread colors</legend>
-        <table>
+    </article>
+    <article>
+        <h2>Stitches</h2>
+        <label for="stitchExamples">
+            Just some examples of stitches for the next steps.
+            Mix them, mirror them, add or drop twists at will.
+            The linked stitches produce traditional patterns at step two.
+        </label>
+        <table id="stitchExamples">
             <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-                <td>7</td>
-                <td>8</td>
-                <td>9</td>
-                <td>10</td>
-                <td>11</td>
-                <td>12</td>
-                <td>13</td>
-                <td>14</td>
-                <td>15</td>
-                <td>16</td>
+                <td></td>
+                <td><img src="stitches/ctct-color2a.png"> <img src="stitches/ctct-color2b.png"></td>
+                <td><img src="stitches/crclct-color2.png"></td>
+                <td><img src="stitches/clcrclc-color2.png"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
-                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color1" name="color1" class="jscolor" value="000000"/></td>
-                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color2" name="color2" class="jscolor" value="000000"/></td>
-                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color3" name="color3" class="jscolor" value="000000"/></td>
-                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color4" name="color4" class="jscolor" value="000000"/></td>
-                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color5" name="color5" class="jscolor" value="000000"/></td>
-                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color6" name="color6" class="jscolor" value="000000"/></td>
-                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color7" name="color7" class="jscolor" value="CC0000"/></td>
-                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color8" name="color8" class="jscolor" value="000000"/></td>
-                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color9" name="color9" class="jscolor" value="000000"/></td>
-                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color10" name="color10" class="jscolor" value="CC0000"/></td>
-                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color11" name="color11" class="jscolor" value="000000"/></td>
-                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color12" name="color12" class="jscolor" value="000000"/></td>
-                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color13" name="color13" class="jscolor" value="000000"/></td>
-                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color14" name="color14" class="jscolor" value="000000"/></td>
-                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color15" name="color15" class="jscolor" value="000000"/></td>
-                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="color16" name="color16" class="jscolor" value="000000"/></td>
+                <td><img src="stitches/ct.png"></td>
+                <td><img src="stitches/ctct.png"></td>
+                <td><img src="stitches/crclct.png"></td>
+                <td><img src="stitches/clcrclc.png"></td>
+                <td><img src="stitches/ctctc.png"></td>
+                <td><img src="stitches/ctclctc.png"></td>
+                <td><img src="stitches/ctclcrctc.png"></td>
+                <td><img src="stitches/ctcttctc.png"></td>
+            </tr>
+            <tr>
+                <td><img src="stitches/ct-color1.png"></td>
+                <td><img src="stitches/ctct-color1a.png"> <img src="stitches/ctct-color1b.png"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><img src="stitches/ctcttctc-color1.png"></td>
+            </tr>
+            <tr>
+                <td><a href="index.html?m=5-;bricks;7;5;0;0&s1=ct&s2=ctct&s3="
+                >ct</a></td>
+                <td><a href="index.html?m=5-;bricks;7;5;0;0&s1=ctct&s2=cross=ctct,twist=ct&s3="
+                >ctct</a></td>
+                <td><a href="index.html?m=5-;bricks;7;5;0;0&s1=crclct&s2=ctct,B12=ct,B15=ct,B16=ct&s3="
+                >crclct</a></td>
+                <td><a href="index.html?m=5-;bricks;7;5;0;0&s1=clcrclc&s2=ctc,B13=ctcrrctcrr,B15=ctcll,B16=ctctt&s3="
+                >clcrclc</a></td>
+                <td><a href="index.html?m=5-;bricks;7;5;0;0&s1=ctctc&s2=ctc,B14=ctcll,B15=ctcrr,B16=ctctt&s3="
+                >ctctc</a></td>
+                <td>ctclctc</td>
+                <td>ctclcrctc</td>
+                <td>ctcttctc</td>
             </tr>
         </table>
-        <p>
-            Apply the repeating sequence above with the <em>apply options</em> button.
-            White (FFFFFF) terminates the sequence,
-            warning: off-white (e.g. FEFEFE) blends a thread with the background.
-            To save your favorite sequence: submit and copy-paste the URL fragment.
-        </p>
-        <p>
-            <input id="color" name="color" class="jscolor" value="00CC11" pattern="[a-fA-F0-9]{6}"/>
-            <label for="color"> apply with the square start of a thread, not saved by "prepare bookmark".</label>
-        </p>
-    </fieldset>
-    <fieldset id="stitchFieldSet" class="hide">
-        <legend>Stitches</legend>
-        <label for="stitches">Hover over stitches in the pair diagram for IDs:</label>
-        <textarea id="stitches" name="stitches" rows="2" cols="100" spellcheck="false"
-        >tc, D1=tctc,  B1=tctc</textarea>
-        <p>Legend: c(ross) t(wist) l(eft-twist) r(ight-twist) p(in)</p>
-    </fieldset>
-    <fieldset id="sizeFieldSet" class="hide">
-        <legend>Patch size</legend>
-        <p>
-            <label for="rows">rows</label>
-            <input id="rows" name="rows" min="3" value="7" type="number"/>
-            <label for="cols">columns</label>
-            <input id="cols" name="cols" min="3" value="7" type="number"/>
-        </p>
-        <p>
-            The numbers are related to the dots in the pattern sheet.
-            To find out the number of threads or pairs:
-            Hover over their diamond or square starts.
-        </p>
-    </fieldset>
-    <fieldset id="shiftFieldSet" class="hide">
-        <legend>Shift
-        </legend>
-        <img src="images/shift.png" id="shift-legend" alt="legend" align="right">
-        <p>
-            <label for="up">shift rows up by</label>
-            <input id="up" name="left" min="0" value="0" type="number"/>
-            <label for="left">shift columns left by</label>
-            <input id="left" name="up" min="0" value="1" type="number"/>
-        </p>
-        <p>
-            Footside calculation is still primitive occasionally causing
-            pairs traveling a long distance along the footside
-            or slightly folded footsides.
-            Shifting rows may improve a jagged top,
-            shifting columns may improve the left footside,
-            subsequently adjusting the width may fix the right footside.
-        </p>
-        <p>
-            Note that stitches need to be reconfigured after shifting either columns or rows.
-        </p>
-        <p>
-            The grey rectangles show how the repeats take part in the generated diagrams.
-            Both figures on the right show repeats shifted by a column resulting in different footsides.
-            The figures at the bottom show repeats shifted by a row.
-        </p>
-    </fieldset>
-    <fieldset id="hiddenFieldSet" class="hide">
-        <legend>Hidden diagram components</legend>
-        <p>
-            The diagrams contain hidden elements such as connections between twists and pins.
-            Revealing the connections may help to understand the behaviour of the pins.
-        </p>
-        <p>
-            <label for="transparency">transparency</label>
-            <input id="transparency" name="transparency" step="0.1" min="0" max="1" value="0" type="number"/>
-        </p>
-        <p>
-            0 = transparent<br/>
-            1 = opaque
-        </p>
-    </fieldset>
-    <fieldset id="downloadFieldSet" class="hide">
-        <legend>Download</legend>
-        <p>
-            The links below allow to download the images as SVG documents,
-            or show them in a new tab or window to get a complete image for printing purposes.
-            You may want to position a diagram in the top left corner before viewing in another tab.
-        </p>
-        <p>
-            Download is the default behaviour of the links for desktop browsers, a new tab is the default for iPad-Safari.
-            For Internet Explorer right-click the desired image itself and choose "save image as...".
-        </p>
-        <p>
-            <a id="dlSheet"
-               download="pattern-sheet.svg"
-               target="_blank" href="#download"
-               onmousedown="setDownloadContent(this,'sheet')"
-            >pattern sheet</a> &mdash; <a id="dlPair"
-                                     download="pair-diagram.svg"
-                                     target="_blank" href="#download"
-                                     onmousedown="setDownloadContent(this,'pairs')"
-            >pair diagram</a> &mdash; <a id="dlThread"
-                                    download="thread-diagram.svg"
-                                    target="_blank" href="#download"
-                                    onmousedown="setDownloadContent(this,'threads')"
-            >thread diagram</a>
-        </p>
-        <p>
-            Download a patternsheet to customize a patch to your own taste and fit it into a pricking.
-            Most important clue from the <a href="https://github.com/d-bl/GroundForge/wiki"
-            >user guide</a>: dots with the same color match when "sewing" repeats together, they should also move together.
-            Download a diagram to fix the clumsy pins in a thread diagram, or the irregular footsides of a pair diagram.
-        </p>
-    </fieldset>
-    <fieldset id="buttons">
-        <button onclick="load(); return false">apply options</button>
-        <button onclick="location.href='?'; return false">default configuration</button>
-        <button>prepare bookmark</button>
-    </fieldset>
-</form>
-<div id="diagrams">
-    <p>
-        Occasionally the pair diagram (left) and/or thread diagram (right) may have slightly tangled edges,
-        pull a stitch to fix or examine.
-        At the botttom a pattern sheet with variants of the pair diagram
-        with pins at regular, possibly different, positions.
-    </p>
-    <div id="pairs"><img src="images/busy.gif" title="busy bobbins"></div>
-    <div id="threads"><img src="images/tipped-over.png" title="tipped over pillow"></div>
-    <div id="sheet"><img src="images/unfolding.png" title="unfolding pattern"></div>
-</div>
+    </article>
 
-  <p id="footer">
-      <a href="https://github.com/d-bl/GroundForge/releases"
-      >Release notes</a>
-      &mdash;
-      <a href="https://github.com/d-bl/GroundForge/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+-label%3A%22Browser+support%22+-label%3A%22nice+to+have%22+"
-      >Issues</a>
-      &mdash;
-      <a href="https://github.com/d-bl/GroundForge/issues?q=is%3Aissue+is%3Aopen+label%3A%22Browser+support%22"
-         title="Modern desktop versions of Chrome, FireFox and Safari are fine&#013;Follow the link for issues in other situations."
-      ><img id="browsers" src="images/browsers.png"
-      ></a><!-- image assembled from http://www.iconarchive.com -->
-      &mdash;
-      Powered<sup>&nbsp;<a href="https://github.com/d-bl/GroundForge#readme"
-      >how</a></sup>&nbsp;by:&nbsp;<a href="https://tesselace.com" title="Algorithmically designed lace tessellations"
-      >TesseLace</a>,&nbsp;<a href="https://d3js.org" title="Data Driven Documents"
-      >D3.js</a>,&nbsp;<a href="http://jscolor.com/" title="Color Picker"
-      >jsColor</a>
-    </p>
+    <article>
+        <h2>Step 1</h2>
+        <p>
+            Generate a pair diagram and thread diagram from the selected parameters.
+            The pair diagram will be a color coded version of the chosen thumbnail.
+        </p>
+        <label for="s1">Stitches <a href="https://github.com/d-bl/GroundForge/wiki/Choose-Stitches"><img src="images/information-icon.png"></a></label>
+        <input id="s1"
+               name="s"
+               spellcheck="false"
+               value="ct A1=ct"
+               pattern="[lrtc]*([;, ]*[A-K][0-9]=[lrtc]+)*"
+        >
+        <table class="step1 hide">
+            <tr>
+                <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+                <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td>
+            </tr>
+            <tr>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c1" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c2" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c3" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c4" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c5" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c6" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c7" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c8" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c9" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c10" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c11" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c12" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c13" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c14" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c15" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c16" class="jscolor" value="FF0000"/></td>
+            </tr>
+        </table>
+        <button class="show" onclick="firstStep()">show</button>
+    </article>
+    <div class="step1 hide">
+        <div class="diagramContainer">
+            <div id="p1" class="diagram"></div>
+            <span class="controls">
+                <a target="_blank"
+                   href="#fullscreen"
+                   title="fullscreen"
+                   onblur="this.href='#fullscreen'"
+                   onmousedown="setDownloadContent(this,'p1')"><img src="images/fullscreen.jpg"></a>
+                <a download="thread-diagram.svg"
+                   onblur="this.href='#download'"
+                   target="_blank"
+                   href="#download"
+                   title="download"
+                   onmousedown="setDownloadContent(this,'p1')"><img src="images/download.jpg"></a>
+            </span>
+        </div>
+        <div class="diagramContainer">
+            <div id="t1" class="diagram"></div>
+            <span class="controls">
+                <a target="_blank"
+                   href="#fullscreen"
+                   title="fullscreen"
+                   onblur="this.href='#fullscreen'"
+                   onmousedown="setDownloadContent(this,'t1')"><img src="images/fullscreen.jpg"></a>
+                <a download="thread-diagram.svg"
+                   onblur="this.href='#download'"
+                   target="_blank"
+                   href="#download"
+                   title="download"
+                   onmousedown="setDownloadContent(this,'t1')"><img src="images/download.jpg"></a>
+            </span>
+        </div>
+    </div>
+
+    <article>
+        <h2>Step 2</h2>
+        <p>
+            Use the previous thread diagram as pair diagram to generate another thread diagram.
+            The number of repeated twists of he previous thread diagram doesn't make any difference.</p>
+        <label for="s2">Stitches</label>
+        <input id="s2"
+               name="s"
+               spellcheck="false"
+               value="cross=ctc twist=ctc"
+               pattern="[lrtc]*([;, ]*(cross|twist|[A-K][0-9][0-9a-zA-Z])=[lrtc]+)*"
+        >
+        <table class="step2 hide">
+            <tr>
+                <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+                <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td>
+            </tr>
+            <tr>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c1" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c2" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c3" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c4" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c5" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c6" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c7" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c8" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c9" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c10" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c11" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c12" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c13" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c14" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c15" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s2c16" class="jscolor" value="FF0000"/></td>
+            </tr>
+        </table>
+        <button class="step1 hide" onclick="nextStep(2)">show</button>
+    </article>
+    <div class="step2 hide">
+        <div class="diagramContainer">
+            <div id="p2" class="diagram"></div>
+            <span class="controls">
+                <a target="_blank"
+                   href="#fullscreen"
+                   title="fullscreen"
+                   onblur="this.href='#fullscreen'"
+                   onmousedown="setDownloadContent(this,'p2')"><img src="images/fullscreen.jpg"></a>
+                <a download="thread-diagram.svg"
+                   onblur="this.href='#download'"
+                   target="_blank"
+                   href="#download"
+                   title="download"
+                   onmousedown="setDownloadContent(this,'p2')"><img src="images/download.jpg"></a>
+            </span>
+        </div>
+        <div class="diagramContainer">
+            <div id="t2" class="diagram"></div>
+            <span class="controls">
+                <a target="_blank"
+                   href="#fullscreen"
+                   title="fullscreen"
+                   onblur="this.href='#fullscreen'"
+                   onmousedown="setDownloadContent(this,'t2')"><img src="images/fullscreen.jpg"></a>
+                <a download="thread-diagram.svg"
+                   onblur="this.href='#download'"
+                   target="_blank"
+                   href="#download"
+                   title="download"
+                   onmousedown="setDownloadContent(this,'t2')"><img src="images/download.jpg"></a>
+            </span>
+        </div>
+    </div>
+    <article>
+        <h2>Step 3 (as 2)</h2>
+        <label for="s3">Stitches</label>
+        <input id="s3"
+               name="s"
+               spellcheck="false"
+               pattern="[lrtc]*([;, ]*(cross|twist|[A-K][0-9][0-9a-zA-Z]{2})=[lrtc]+)*"
+        >
+        <table class="step3 hide">
+            <tr>
+                <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+                <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td>
+            </tr>
+            <tr>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c1" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c2" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c3" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c4" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c5" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c6" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c7" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c8" class="jscolor" value="00CC00"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c9" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c10" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c11" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c12" class="jscolor" value="000000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c13" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c14" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c15" class="jscolor" value="FF0000"/></td>
+                <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s3c16" class="jscolor" value="FF0000"/></td>
+            </tr>
+        </table>
+        <button class="step2 hide" onclick="nextStep(3)">show</button>
+    </article>
+    <div class="step3 hide">
+        <div class="diagramContainer">
+            <div id="p3" class="diagram"></div>
+            <span class="controls">
+                <a target="_blank"
+                   href="#fullscreen"
+                   onblur="this.href='#fullscreen'"
+                   title="fullscreen"
+                   onmousedown="setDownloadContent(this,'p3')"><img src="images/fullscreen.jpg"></a>
+                <a download="thread-diagram.svg"
+                   onblur="this.href='#download'"
+                   target="_blank" href="#download"
+                   onmousedown="setDownloadContent(this,'p3')"><img src="images/download.jpg"></a>
+            </span>
+        </div>
+        <div class="diagramContainer">
+            <div id="t3" class="diagram"></div>
+            <span class="controls">
+                <a target="_blank"
+                   href="#fullscreen"
+                   title="fullscreen"
+                   onblur="this.href='#fullscreen'"
+                   onmousedown="setDownloadContent(this,'t3')"><img src="images/fullscreen.jpg"></a>
+                <a download="thread-diagram.svg"
+                   onblur="this.href='#download'"
+                   target="_blank" href="#download"
+                   onmousedown="setDownloadContent(this,'t3')"><img src="images/download.jpg"></a>
+            </span>
+        </div>
+    </div>
+</form>
+
+<article>
+<p id="footer">
+    <a href="https://github.com/d-bl/GroundForge/releases"
+    >Release notes</a>
+    &mdash;
+    <a href="https://github.com/d-bl/GroundForge/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+-label%3A%22Browser+support%22+-label%3A%22nice+to+have%22+"
+    >Issues</a>
+    &mdash;
+    <a href="https://github.com/d-bl/GroundForge/issues?q=is%3Aissue+is%3Aopen+label%3A%22Browser+support%22"
+       title="Modern desktop versions of Chrome, FireFox and Safari are fine&#013;Follow the link for issues in other situations."
+    ><img id="browsers" src="images/browsers.png"
+    ></a><!-- image assembled from http://www.iconarchive.com -->
+    &mdash;
+    Powered<sup>&nbsp;<a href="https://github.com/d-bl/GroundForge#readme"
+>how</a></sup>&nbsp;by:&nbsp;<a href="https://tesselace.com" title="Algorithmically designed lace tessellations"
+>TesseLace</a>,&nbsp;<a href="https://d3js.org" title="Data Driven Documents"
+>D3.js</a>,&nbsp;<a href="http://jscolor.com/" title="Color Picker"
+>jsColor</a>
+</p>
 <!-- Start of StatCounter Code for Default Guide -->
 <script type="text/javascript">
         var sc_project=10865294;
@@ -318,5 +427,6 @@
         src="http://c.statcounter.com/10865294/0/2e4f5d96/0/"
         alt="web analytics"></a></div></noscript>
 <!-- End of StatCounter Code for Default Guide -->
+</article>
 </body>
 </html>

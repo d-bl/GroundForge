@@ -13,55 +13,129 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
-function getValueOfDropDown(id, defaultValue) {
-  var e = document.getElementById(id)
-  return e.selectedIndex >=0 ? e.options[e.selectedIndex].value : defaultValue
+function loadUrlArgs() {
+  var location = (window.location.href + "").replace("#","")
+  // for each key-value pair in the URL query
+  location.replace(/[?&]+([^=&]+)(=([^&]*))?/gi, function(m,key,m2,value) {
+  val = decodeURIComponent(value).replace(/[+]/g, " ")
+    var match = key.match(/s[1-3]/)
+    if(key=="m") setMatrix(value)
+    else if(match && match.length > 0)
+      document.getElementById(key).value = val
+      // support for backward compatible links:
+    else if(key == "stitches")
+      document.getElementById("s1").value = val
+    else if(key == "left")
+      document.getElementById("shiftLeft").value = val
+    else if(key == "up")
+      document.getElementById("shiftUp").value = val
+    else if(key == "rows" || key == "cols" || key == "matrix")
+      document.getElementById(key).value = val
+    else if( key == "tiles")
+      setTiling(val)
+  })
 }
-function load() {
-  fullyTransparent = document.getElementById('transparency').value
-  document.getElementById('pairs').innerHTML = ""
-  document.getElementById('threads').innerHTML = ""
+function setTiling (val) {
+  var el = document.getElementById("tiles")
+  for(index = 0 ; index < el.length ; index++)
+    if(el[index].value == val) {
+      el.selectedIndex = index
+      break
+    }
+}
+function createUrlArgs() {
+    var result = "index.html?m=" +
+      encodeURIComponent(
+        document.getElementById("matrix").value +";" +
+        document.getElementById("tiles").value +";" +
+        document.getElementById("rows").value +";" +
+        document.getElementById("cols").value +";" +
+        document.getElementById("shiftLeft").value +";" +
+        document.getElementById("shiftUp").value
+      ) +"&s1=" +
+      encodeURIComponent(document.getElementById("s1").value) +"&s2=" +
+      encodeURIComponent(document.getElementById("s2").value) +"&s3=" +
+      encodeURIComponent(document.getElementById("s3").value)
+    return result
+}
+function setMatrix(value) {
+  var p = decodeURIComponent(value).split(";")
+  if (p.length == 6) {
+      document.getElementById("matrix").value = p[0]
+      setTiling(p[1])
+      document.getElementById("rows").value = p[2]
+      document.getElementById("cols").value = p[3]
+      document.getElementById("shiftLeft").value = p[4]
+      document.getElementById("shiftUp").value = p[5]
+      replaceClass("step1", "show","hide")
+      replaceClass("step2", "show", "hide")
+      replaceClass("step3", "show", "hide")
+  }
+}
+function replaceClass(select, oldValue, newValue) {
+  var x = document.getElementsByClassName(select);
+  var i;
+  for (i = 0; i < x.length; i++) {
+      x[i].className = x[i].className.replace(oldValue,newValue)
+  }
+}
+var data = [0,1,2,3,4]
+function firstStep() {
+  replaceClass("step1", "hide","show")
+  replaceClass("step2", "show", "hide")
+  replaceClass("step3", "show", "hide")
 
-  var nrOfRows = document.getElementById('rows').value
-  var nrOfCols = document.getElementById('cols').value
-  var shiftLeft = document.getElementById('left').value
-  var shiftUp = document.getElementById('up').value
-  var matrix = document.getElementById('matrix').value
-  var stitches = document.getElementById('stitches').value
-  var tileType = getValueOfDropDown('tiles', '')
+  var p = dibl.PairDiagram().get(
+    document.getElementById("matrix").value,
+    document.getElementById("tiles").value,
+    document.getElementById("rows").value,
+    document.getElementById("cols").value,
+    document.getElementById("shiftLeft").value,
+    document.getElementById("shiftUp").value,
+    document.getElementById("s1").value
+  )
+  var t = dibl.ThreadDiagram().create(p)
+  data[1] = { pairDiagram: p, threadDiagram: t }
+  showDiagram("#p1", "1px", p)
+  showDiagram("#t1", "2px", t, "s1c")
+}
+function nextStep(n) {
+  replaceClass("step"+n, "hide","show")
+  if (n==2)
+    replaceClass("step3", "show","hide")
 
-  var startTime = new Date().getTime()
-  var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, tileType)
-  console.log ("D3Data.get elapse time "+(new Date().getTime() - startTime))
-
+  var stitches = document.getElementById("s" + n).value
+  var p = dibl.PairDiagram().create(stitches, data[n-1].threadDiagram)
+  var t = dibl.ThreadDiagram().create(p)
+  data[n] = { pairDiagram: p, threadDiagram: t }
+  showDiagram("#p" + n, "1px", p)
+  showDiagram("#t" + n, "2px", t, "s" + n + "c")
+}
+function showDiagram(id, threadWidth, data, colorIdPrefix) {
+  diagram.showGraph({
+    container: d3.select(id),
+    nodes: data.jsNodes(),
+    links: data.jsLinks(),
+    threadColor: '#color',
+    diagram: data,
+    stroke: threadWidth,
+    palette: (colorIdPrefix? getColors(colorIdPrefix): "")
+  })
+}
+function setDownloadContent (comp, id) {
+  document.getElementById(id).innerHTML.
+      replace('pointer-events="all"', '').
+      replace(/<path [^>]+opacity: 0;.+?path>/g, '')
+  comp.href = 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
+}
+function getColors (idPrefix) {
   var colors = ''
   for(i=1; i <= 16 ; i++) {
-    var el = document.getElementById('color' + i)
+    var el = document.getElementById(idPrefix + i)
     el.style.backgroundColor = '#' + el.value
     colors += ',#'+ el.value
   }
-  colors = colors.replace(/,#FFFFFF/g,'').replace(/^,/,'')
-
-  diagram.showGraph({
-    container: d3.select('#pairs'),
-    nodes: data.pairNodes(),
-    links: data.pairLinks(),
-    viewWidth: 440,
-    viewHeight: 260,
-    diagram: data.pairDiagram,
-    stroke: "1px"
-  })
-  diagram.showGraph({
-    container: d3.select('#threads'),
-    nodes: data.threadNodes(),
-    links: data.threadLinks(),
-    threadColor: '#color',
-    palette: colors,
-    viewWidth: 440,
-    viewHeight: 260,
-    diagram: data.threadDiagram,
-    stroke: "2px"
-  })
+  return colors.replace(/,#FFFFFF/g,'').replace(/^,/,'')
 }
 function onChangeColor(el) {
   if (el.value == 'FFFFFF') {
@@ -74,70 +148,4 @@ function onChangeColor(el) {
     }
   }
 }
-var lastShown = "thumbnails"
-function toggle(id, radio){
-  if (lastShown != undefined ) {
-    var el1a = document.getElementById(lastShown+"FieldSet")
-    el1a.classList.remove('show')
-    el1a.classList.add('hide')
-    var el1b = document.getElementById(lastShown+"Tab")
-    el1b.classList.remove('activeTab')
-    el1b.classList.add('inactiveTab')
-  }
-  var el2a = document.getElementById(id+"FieldSet")
-  el2a.classList.remove('hide')
-  el2a.classList.add('show')
-  var el2b = document.getElementById(id+"Tab")
-  el2b.classList.remove('inactiveTab')
-  el2b.classList.add('activeTab')
-  lastShown = id
-}
-function init() {
-  var location = (window.location.href + "").replace("#","")
-  var patterns = new dibl.PatternSheet(2, "height='210mm' width='297mm'")
 
-  // for each key-value pair in the URL query
-  location.replace(/[?&]+([^=&]+)(=([^&]*))?/gi, function(m,key,m2,value) {
-
-      // assign the value to the field that has the key as id
-      var fields = document.getElementsByName(key)
-      var val = decodeURIComponent(value).replace(/[+]/g, " ")
-      if (fields.length > 0) {
-        if (fields[0].type != "select-one")
-          fields[0].value = val
-        else
-          for(index = 0 ; index < fields[0].length ; index++)
-            if(fields[0][index].value == val) {
-              fields[0].selectedIndex = index
-              break
-            }
-      }
-      // create pattern sheet
-      if (key && key == 'patch') {
-         // a patch argument is used for the pattern sheet, not for a form field
-         // we have to split the value in the matrix and optional type of tiles
-         var patchArgs = val.split(";")
-         patterns.add(patchArgs[0], patchArgs[1] ? patchArgs[1] : "checker")
-      }
-  })
-  var tiles = document.getElementById("tiles").value
-  patterns.add(document.getElementById("matrix").value, tiles ? tiles : "checker")
-  document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
-}
-function updatePatternSheet() {
-  var tiles = document.getElementById("tiles").value
-  var patterns = new dibl.PatternSheet(2, "height='140mm' width='180mm'")
-  patterns.add(document.getElementById("matrix").value, tiles ? tiles : "checker")
-  document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
-}
-function setDownloadContent (comp, id) {
-  var container = document.getElementById(id)
-  if (!container) return
-  if (container.firstElementChild.localName != "svg") return
-  var svg = id == 'sheet'
-    ? container.innerHTML
-    : container.innerHTML.
-      replace('pointer-events="all"', '').
-      replace(/<path [^>]+opacity: 0;.+?path>/g, '')
-  comp.href = 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
-}
