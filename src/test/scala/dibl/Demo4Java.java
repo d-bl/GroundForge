@@ -27,7 +27,7 @@ public class Demo4Java {
         // No named arguments in java, so you have to specify all default values
         // .apply is a scala-pattern for factory methods and fetching an indexed element
 
-        PatternSheet patternSheet = PatternSheet.apply(2, "");
+        PatternSheet patternSheet = PatternSheet.apply(2, "", "GF");
         patternSheet.add("5-", "bricks");
         String svgPatternSheet = patternSheet.toSvgDoc();
 
