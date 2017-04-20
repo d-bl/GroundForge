@@ -30,7 +30,7 @@ object PairDiagram {
 
   /** Restyles the nodes of a diagram into nodes for a pair diagram.
     *
-    * @param stitches see step 2/3 on https://d-bl.github.io/GroundForge/recursive.html
+    * @param stitches see step 2/3 on https://d-bl.github.io/GroundForge/main.html
     * @param threadDiagram the nodes will be replaced with color codes
     * @return
     */

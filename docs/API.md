@@ -194,7 +194,7 @@ The constructor (Scala/Java only) expects a pair diagram as argument which is an
 
 ### Factory methods `get`
 
-Details on the [main] web page.
+Download version [0f39fa2](https://github.com/d-bl/GroundForge/archive/0f39fa2.zip) and examine `docs/index.html` for details.
 
 * **`compactMatrix`** - see legend on matrix tab. You can copy-paste from the tool tips on the [thumbnails] page, any sequence of non-alphanumeric characters or dashes is treated as a line separator.
 * **`tileType`** - see values for drop down on matrix tab: `checker` or `bricks`

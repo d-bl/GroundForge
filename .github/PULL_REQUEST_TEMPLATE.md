@@ -7,17 +7,11 @@ Open checkboxes indicate a preview that is not yet ready for merge.
 * [ ] ...
 
 
-Where should the reviewer @d-bl start?
---------------------------------------
-
-...
-
-
 How should this be manually tested?
 -----------------------------------
 
 * Run `sbt fullOptJS` from the root of the project
 * There should be no differences between `target/scala-2.11/groundforge-opt.js` and `docs/js/matrix-graphs.js`, otherwise paste the first into the latter.
-* Explore `docs/index.html`, `docs/API/index.html` and `docs\recursive.html`
-* Run the demo classes between the tests and examine the produced `target/*svg` files
+* Explore the pages `docs/*.html` and `docs/*.md`.
+* Run the demo classes between the tests and examine the produced `target/*.svg` files.
 * ...
