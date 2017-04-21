@@ -94,10 +94,7 @@ function firstStep() {
     document.getElementById("shiftUp").value,
     document.getElementById("s1").value
   )
-  var t = dibl.ThreadDiagram().create(p)
-  data[1] = { pairDiagram: p, threadDiagram: t }
-  showDiagram("#p1", "1px", p)
-  showDiagram("#t1", "2px", t, "s1c")
+  showDiagrams(1, p)
 }
 function nextStep(n) {
   replaceClass("step"+n, "hide","show")
@@ -105,21 +102,22 @@ function nextStep(n) {
     replaceClass("step3", "show","hide")
 
   var stitches = document.getElementById("s" + n).value
-  var p = dibl.PairDiagram().create(stitches, data[n-1].threadDiagram)
-  var t = dibl.ThreadDiagram().create(p)
-  data[n] = { pairDiagram: p, threadDiagram: t }
-  showDiagram("#p" + n, "1px", p)
-  showDiagram("#t" + n, "2px", t, "s" + n + "c")
+  showDiagrams(n, dibl.PairDiagram().create(stitches, data[n-1].threadDiagram))
 }
-function showDiagram(id, threadWidth, data, colorIdPrefix) {
+function showDiagrams(stepNr, pairDiagram){
+  var threadDiagram = dibl.ThreadDiagram().create(pairDiagram)
+  data[stepNr] = { "pairDiagram": pairDiagram, "threadDiagram": threadDiagram }
+  showDiagram("#p" + stepNr, "1px", pairDiagram, "")
+  showDiagram("#t" + stepNr, "2px", threadDiagram, getColors("s" + stepNr + "c"))
+}
+function showDiagram(id, threadWidth, data, colors) {
   diagram.showGraph({
     container: d3.select(id),
     nodes: data.jsNodes(),
     links: data.jsLinks(),
-    threadColor: '#color',
     diagram: data,
     stroke: threadWidth,
-    palette: (colorIdPrefix? getColors(colorIdPrefix): "")
+    palette: colors
   })
 }
 function setDownloadContent (comp, id) {

@@ -27,10 +27,10 @@ diagram.showGraph = function(args) {
     var links = args.container.selectAll(".link").data(args.links)
     var nodes = args.container.selectAll(".node").data(args.nodes)
 
-    var threadStarts = args.container.selectAll(".threadStart")
     if ( args.palette ) {
+      var nrOfThreads = args.container.selectAll(".threadStart").size()
       var colors = args.palette.split(',')
-      for(i=threadStarts.size() ; i >= 0 ; i--) {
+      for(i=0 ; i<nrOfThreads ; i++) {
         var n = (i - 1 + colors.length) % colors.length
         args.container.selectAll(".thread"+i)
           .style('stroke', colors[n])
@@ -38,18 +38,6 @@ diagram.showGraph = function(args) {
       }
     }
 
-    // event listeners
-
-    var colorpicker = (args.threadColor == undefined ? undefined : d3.select(args.threadColor).node())
-    if (colorpicker) {
-        threadStarts.on('click', function (d) {
-            if (d3.event.defaultPrevented) return
-            sim.alpha(0).stop()
-            args.container.selectAll("."+d.startOf)
-              .style('stroke', '#'+colorpicker.value)
-              .style('fill', function(d) { return d.bobbin ? '#'+colorpicker.value : 'none' })
-        })
-    }
     function drawPath(jsLink) {
         var s = jsLink.source
         var t = jsLink.target
