@@ -21,33 +21,25 @@
    title="Main page"
 ><img src="images/logo-medium.png" alt="DiBL logo"/></a>
 <h1>GroundForge</h1>
-<p><em>Choose patterns and stitches to generate diagrams for grounds of bobbin lace.</em></p>
-<p>
-    Thread diagrams of a plain Torchon ground (with respectively ct or ctct),
-    are pair diagrams for a Paris or Flanders alias five-hole ground.
-    The method can be applied to many more stitches, combination of stitches and even repeated.
-    This results in a myriad of possibilities.
-    The generated diagrams can help to select the interesting ones with an educated guess.
-</p>
+<p><em>Choose patterns and stitches to generate diagrams for variations of bobbin lace grounds.</em></p>
 <h2>Get started</h2>
 <dl>
-    <dt>The easy way:</dt>
+    <dt>An easy way:</dt>
     <dd>
-        Select the diagram link from one of the 376 <a href="thumbs.html">patterns</a>,
+        Select a <em>choose stitches</em> link from a <a href="gallery.html">gallery</a> with 376 patterns,
         select stitches at step one and show it.
-        For larger diagrams increase rows and columns in the parameters.
+        For larger diagrams increase rows and columns in the parameters form.
     </dd>
-    <dt>More patterns:</dt>
+    <dt>More easy patterns:</dt>
     <dd>
-        Use a link from the stitches section, show step one and two. Try other stitches at both steps.
-        To mix stitches choose a larger base pattern:
-        the left one for diagonal pairs, the right one for horizontal weaving pairs.
+        Use a link from the stitches section below, show step one and two. Try other stitches at both steps.
+        To mix stitches choose a larger base pattern.
     </dd>
     <dt>Advanced options:</dt>
     <dd>
-        Read the
-        <a href="https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns"
-        >user guide</a> to vary on traditional patterns.
+        The
+        <a href="https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns" target="_blank"
+        >user guide</a> explains two methods to vary on traditional patterns.
     </dd>
     <dt><em>Warning:</em></dt>
     <dd>
@@ -60,9 +52,10 @@
     <article>
         <fieldset id="base">
             <legend>Base patterns</legend>
-            <div>
-                <img src="images/base1.png">
-                <select style="display: block" onchange="setMatrix(this.value)">
+            <div id="baseleft">
+                <label for="base1img"><a href="#" onclick="setMatrix(document.getElementById('base1').value);return false">diagonal</a> pairs</label>
+                <img id="base1img" src="images/base1.png" title="no odd number of columns possible">
+                <select id="base1" onchange="setMatrix(this.value)">
                     <option value="5-;bricks;5;5;0;0" selected>1x2</option>
                     <option value="5-%0D-5;checker;5;5;0;0" selected>2x2</option>
                     <option value="5-%0D-5%0D5-;bricks;8;5;0;0" selected>3x2</option>
@@ -80,8 +73,9 @@
                 </select>
             </div>
             <div>
-                <img src="images/base2.png">
-                <select style="display: block" onchange="setMatrix(this.value)">
+                <label for="base2img"><a href="#" onclick="setMatrix(document.getElementById('base2').value);return false">weaving</a> pairs</label>
+                <img id="base2img" src="images/base2.png">
+                <select id="base2" onchange="setMatrix(this.value)">
                     <option value="8%0D1;checker;8;4;0;0" selected>2x1</option>
                     <option value="88%0D11;checker;8;4;0;0" selected>2x2</option>
                     <option value="888%0D111;checker;8;4;0;0" selected>2x3</option>
@@ -94,7 +88,7 @@
             </div>
         </fieldset>
         <fieldset id="matrixOpts">
-            <legend>Parameters <a href="https://github.com/d-bl/GroundForge/wiki/Parameters"><img src="images/information-icon.png"></a></legend>
+            <legend>Parameters <a href="https://github.com/d-bl/GroundForge/wiki/Parameters" target="_blank"><img src="images/information-icon.png"></a></legend>
             <textarea id="matrix" name="matrix" rows="6" cols="9" spellcheck="false"
             >5-</textarea>
             <div>
@@ -134,6 +128,7 @@
             Just some examples of stitches for the next steps.
             Mix them, mirror them, add or drop twists at will.
             The linked stitches produce traditional patterns at step two.
+            <em>Note:</em> The generated pair diagrams draws a plait or something-pin-something like a simple stitch.
         </label>
         <table id="stitchExamples">
             <tr>
@@ -190,7 +185,7 @@
             Generate diagrams from the selected parameters.
             The pair diagram will be a color coded version of the chosen thumbnail.
         </p>
-        <label for="s1">Stitches <a href="https://github.com/d-bl/GroundForge/wiki/Choose-Stitches"><img src="images/information-icon.png"></a></label>
+        <label for="s1">Stitches <a href="https://github.com/d-bl/GroundForge/wiki/Choose-Stitches" target="_blank"><img src="images/information-icon.png"></a></label>
         <input id="s1"
                name="s"
                spellcheck="false"

@@ -196,7 +196,7 @@ The constructor (Scala/Java only) expects a pair diagram as argument which is an
 
 Download version [0f39fa2](https://github.com/d-bl/GroundForge/archive/0f39fa2.zip) and examine `docs/index.html` for details.
 
-* **`compactMatrix`** - see legend on matrix tab. You can copy-paste from the tool tips on the [thumbnails] page, any sequence of non-alphanumeric characters or dashes is treated as a line separator.
+* **`compactMatrix`** - see legend on matrix tab. You can copy-paste from the tool tips on the [gallery] page, any sequence of non-alphanumeric characters or dashes is treated as a line separator.
 * **`tileType`** - see values for drop down on matrix tab: `checker` or `bricks`
 * **`stitches`** - see stitches tab
 * **`rows`** - see patch size tab
@@ -204,7 +204,7 @@ Download version [0f39fa2](https://github.com/d-bl/GroundForge/archive/0f39fa2.z
 * **`shiftLeft`** - see footside tab
 * **`shiftUp`** - see footside tab
 
-[thumbnails]: https://d-bl.github.io/GroundForge/thumbs.html
+[gallery]: https://d-bl.github.io/GroundForge/gallery.html
 
 Another signature used by `createThreadSVG`:
 
