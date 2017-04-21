@@ -61,8 +61,12 @@ table, tr, td {
 #matrixOpts, #matrixOpts div, #base, #base div {
   display: inline-block;
 }
-#base img {
+#base img, #base2 {
   display: block;
+}
+#base2 {
+  margin-top: 0.3em;
+  margin-left: 4em;
 }
 #baseleft {
   margin-right: 1.5em;

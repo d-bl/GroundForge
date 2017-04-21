@@ -26,7 +26,7 @@
 <dl>
     <dt>An easy way:</dt>
     <dd>
-        Select a <em>choose stitches</em> link from a <a href="gallery.html">gallery</a> with 376 patterns,
+        Select a <em>choose stitches</em> link from the <a href="gallery.html">gallery</a> with 376 patterns,
         select stitches at step one and show it.
         For larger diagrams increase rows and columns in the parameters form.
     </dd>
@@ -53,39 +53,39 @@
         <fieldset id="base">
             <legend>Base patterns</legend>
             <div id="baseleft">
-                <label for="base1img"><a href="#" onclick="setMatrix(document.getElementById('base1').value);return false">diagonal</a> pairs</label>
+                <label for="base1img">diagonal pairs</label>
                 <img id="base1img" src="images/base1.png" title="no odd number of columns possible">
-                <select id="base1" onchange="setMatrix(this.value)">
-                    <option value="5-;bricks;5;5;0;0" selected>1x2</option>
-                    <option value="5-%0D-5;checker;5;5;0;0" selected>2x2</option>
-                    <option value="5-%0D-5%0D5-;bricks;8;5;0;0" selected>3x2</option>
-                    <option value="5-%0D-5%0D5-%0D-5;checker;9;5;0;0" selected>4x2</option>
-                    <option value="5-%0D-5%0D5-%0D-5%0D5-;bricks;11;5;0;0" selected>5x2</option>
-                    <option value="5-%0D-5%0D5-%0D-5%0D5-%0D-5;checker;11;5;0;0" selected>6x2</option>
-                    <option value="5-5-%0D-5-5;checker;5;8;0;0" selected>2x4</option>
-                    <option value="5-5-%0D-5-5%0D5-5-%0D-5-5;checker;7;8;0;0" selected>4x4</option>
-                    <option value="5-5-%0D-5-5%0D5-5-%0D-5-5%0D5-5-%0D-5-5;checker;11;8;0;0" selected>6x4</option>
-                    <option value="5-5-5-%0D-5-5-5;checker;8;9;0;0" selected>2x6</option>
-                    <option value="5-5-5-%0D-5-5-5%0D5-5-5-;bricks;5;9;0;0" selected>3x6</option>
-                    <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5;checker;7;11;0;0" selected>4x6</option>
-                    <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5%0D5-5-5-;bricks;9;11;0;0" selected>5x6</option>
-                    <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5;checker;9;11;0;0" selected>6x6</option>
-                </select>
             </div>
             <div>
-                <label for="base2img"><a href="#" onclick="setMatrix(document.getElementById('base2').value);return false">weaving</a> pairs</label>
+                <label for="base2img">weaving pairs</label>
                 <img id="base2img" src="images/base2.png">
-                <select id="base2" onchange="setMatrix(this.value)">
-                    <option value="8%0D1;checker;8;4;0;0" selected>2x1</option>
-                    <option value="88%0D11;checker;8;4;0;0" selected>2x2</option>
-                    <option value="888%0D111;checker;8;4;0;0" selected>2x3</option>
-                    <option value="8888%0D1111;checker;8;4;0;0" selected>2x4</option>
-                    <option value="8%0D1%0D8%0D1;checker;8;4;0;0" selected>4x1</option>
-                    <option value="88%0D11%0D88%0D11;checker;8;4;0;0" selected>4x2</option>
-                    <option value="888%0D111%0D888%0D111;checker;8;4;0;0" selected>4x3</option>
-                    <option value="8888%0D1111%0D8888%0D1111;checker;8;4;0;0" selected>4x4</option>
-                </select>
             </div>
+            <select id="base2" onchange="setMatrix(this.value)">
+                <option value="" disabled>sets parameters</option>
+                <option value="5-;bricks;5;5;0;0" selected>diagonal 1x2</option>
+                <option value="5-%0D-5;checker;5;5;0;0">diagonal 2x2</option>
+                <option value="5-%0D-5%0D5-;bricks;8;5;0;0">diagonal 3x2</option>
+                <option value="5-%0D-5%0D5-%0D-5;checker;9;5;0;0">diagonal 4x2</option>
+                <option value="5-%0D-5%0D5-%0D-5%0D5-;bricks;11;5;0;0">diagonal 5x2</option>
+                <option value="5-%0D-5%0D5-%0D-5%0D5-%0D-5;checker;11;5;0;0">diagonal 6x2</option>
+                <option value="5-5-%0D-5-5;checker;5;8;0;0">diagonal 2x4</option>
+                <option value="5-5-%0D-5-5%0D5-5-%0D-5-5;checker;7;8;0;0">diagonal 4x4</option>
+                <option value="5-5-%0D-5-5%0D5-5-%0D-5-5%0D5-5-%0D-5-5;checker;11;8;0;0">diagonal 6x4</option>
+                <option value="5-5-5-%0D-5-5-5;checker;8;9;0;0">diagonal 2x6</option>
+                <option value="5-5-5-%0D-5-5-5%0D5-5-5-;bricks;5;9;0;0">diagonal 3x6</option>
+                <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5;checker;7;11;0;0">diagonal 4x6</option>
+                <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5%0D5-5-5-;bricks;9;11;0;0">diagonal 5x6</option>
+                <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5;checker;9;11;0;0">diagonal 6x6</option>
+                <option value="" disabled>---------</option>
+                <option value="8%0D1;checker;8;4;0;0">weaving 2x1</option>
+                <option value="88%0D11;checker;8;4;0;0">weaving 2x2</option>
+                <option value="888%0D111;checker;8;4;0;0">weaving 2x3</option>
+                <option value="8888%0D1111;checker;8;4;0;0">weaving 2x4</option>
+                <option value="8%0D1%0D8%0D1;checker;8;4;0;0">weaving 4x1</option>
+                <option value="88%0D11%0D88%0D11;checker;8;4;0;0">weaving 4x2</option>
+                <option value="888%0D111%0D888%0D111;checker;8;4;0;0">weaving 4x3</option>
+                <option value="8888%0D1111%0D8888%0D1111;checker;8;4;0;0">weaving 4x4</option>
+            </select>
         </fieldset>
         <fieldset id="matrixOpts">
             <legend>Parameters <a href="https://github.com/d-bl/GroundForge/wiki/Parameters" target="_blank"><img src="images/information-icon.png"></a></legend>
