@@ -6,12 +6,13 @@ The [thumbnails] show patterns collected from [TesseLace] in the period 2012-201
 
 The image below tries to show how dissect a pair diagram as if it is a thread diagram.
 The blue shapes enclose stitches with two pairs alias threads.
-The read shapes collect stitches into a repeat that matches a `brick` matrix:
+The red shapes collect stitches into a repeat with three rows of the diagonal base pattern, its matrix:
 
     5-
     -5
     5-
 
+The weaving base pattern has always a checkerboard tiling. The diagonal base pattern needs a brick tiling with an odd number of rows and a checkeboard tiling with an even number of rows.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/disect-pairs-as-threads.png)
 
@@ -44,7 +45,7 @@ Like you can reshape generated patterns to your taste, you can reshape tradition
 
 Each symbol has six free snapping points, two of them should be connected with other objects. Copy-paste these objects to assemble a pattern without changing the length or directions of lines connecting the symbols. It might need some out-of-the-box thinking: the Binche snow flake example below has horizontal connections and the vertical connection is reduced to a single stitch. Stretching the stitch into a kind of plait with a hole (`ctcttctc`) reveals traditional connections in the thread diagram.
 
-The final step is figuring out the tiling and read the matrix from the symbols within one tile. Note that empty spots require a dash as show on [choose stitches](Choose-Stitches), it would get confusing with this example.
+The next step is figuring out the tiling. The tiles in the example are surrounded with a red-dotted line and stacked as bricks in a wall. An alternative stacking method is like a checker board. Finally read the matrix from the symbols within one tile. Note that empty spots require a dash as shown on [choose stitches](Choose-Stitches), it would get confusing with this example.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-example.png)
 
