@@ -1,8 +1,12 @@
 Different methods allow to reproduce a pattern with GroundForge.
+
+Recognize patterns
+==================
+
 The easiest methods to experiment with grounds are explained in the [main] page.
 The [gallery] explains that plaits and something-pin-something are drawn as plain cloth stitches.
 Furthermore are the distances between stitches optimized to some average distance.
-So you may have to simplify the pattern, mirror and mould it to recognize it in the gallery. 
+So you may have to simplify the desired pattern, mirror and mould it to recognize it in the gallery. 
 
 
 2-Step method
