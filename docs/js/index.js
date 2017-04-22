@@ -121,7 +121,7 @@ function showDiagram(id, threadWidth, data, colors) {
   })
 }
 function setDownloadContent (comp, id) {
-  document.getElementById(id).innerHTML.
+  svg = document.getElementById(id).innerHTML.
       replace('pointer-events="all"', '').
       replace(/<path [^>]+opacity: 0;.+?path>/g, '')
   comp.href = 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
