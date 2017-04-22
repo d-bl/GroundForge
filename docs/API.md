@@ -21,7 +21,7 @@
     + [Scala example](#scala-example)
 
 
-Scala code takes care of the number crunching that assembles the data for D3js and the SVG for the pattern sheet. The compiled scala code is copied into `matrix-graphs.js`.
+Scala code takes care of the number crunching that assembles the data for D3js and the SVG for the pricking prototype. The compiled scala code is copied into `matrix-graphs.js`.
 The scripts `index.js` and `jscolor.js` collect the configuration from an HTML form then `show-graphs.js` feeds it to the [D3.js] API.
 
 

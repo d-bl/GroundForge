@@ -45,7 +45,7 @@ The geometric information within the matrices is used to initialise the thread d
 These [pages] were used to create the thumbnails for a selection of patterns.
 The diagrams lack the original geometric information after completion of the animation,
 so topological duplicates were removed from the generated thumbnails.
-Downloadable pattern sheets provide geometric variations that can be customised into intermediate and other variations.
+Downloadable pricking prototypes provide geometric variations that can be customised into intermediate and other variations.
 
 The thread diagrams are not generated from the matrices,
 but from the generated JSon data for pair diagrams by replacing nodes with stitches.
