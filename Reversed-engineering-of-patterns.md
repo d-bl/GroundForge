@@ -85,12 +85,10 @@ This method can be quite error prone.
 When using pencil and paper start with the simplifications and moulding as described under [Recognize patterns](#recognize-patterns). Then lookup the digits or letters from the template.
 
 You can also use a general purpose editor like Adobe-Illustrator, CorelDraw or the free InkScape
-and the SVG template (<a href="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/template.svg" download="GroundForge-template.svg">download</a>, [preview]).
+and the SVG template (<a href="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/template.svg" download="GroundForge-template.svg">download</a>).
 The objects are shown two times on the template, once in a compact group, once in an alpha-numerical order.
 The symbol in each object has six free snapping points, two of them should be connected with other objects.
 Copy-paste these objects to assemble a pattern without changing the length or directions of lines connecting the symbols. It might need some out-of-the-box thinking: the Binche snow flake example below has horizontal connections and the vertical connection is reduced to a single stitch. Stretching the stitch into a kind of plait with a hole (`ctcttctc`) reveals traditional connections in the thread diagram.
-
-[preview]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/template.svg
 
 The next step is figuring out the tiling. The tiles in the example are surrounded with a red-dotted line and stacked as bricks in a wall. An alternative stacking method looks like a checker board though the tiles can be rectangles. Finally read the matrix from the symbols within one tile. Note that empty spots require a dash as shown on [choose stitches](Choose-Stitches), it would get confusing with this example.
 
