@@ -38,18 +38,17 @@ Simplifying stitches might need some out of the box thinking as shown with the B
 Matrix from pair diagram
 ========================
 
-A template contains objects to assemble a matrix required for the parameters.
+Start with the simplifications and distortions as described under [Recognize patterns](#recognize-patterns).
+The snapped versions of the example happen to abide the rules for a valid matrix:
+diagonal connections span just one square, horizontal and vertical span one or two squares.
+Lookup the digits or letters from the template below and fill them in on the adjusted diagram.
+
+The template contains objects to assemble a matrix required for the parameters.
 Each object represents a stitch and the pairs used to make the stitch.
-The objects consist of a symbol and two arrows.
 A less compact [variant] of the template has the objects in alpha-numerical order:
 counter clock-wise, shortest first.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template.png)
-
-Start with the simplifications and distortions as described under [Recognize patterns](#recognize-patterns).
-The snapped versions of the example happen to abide the rules for a valid matrix:
-diagonal connections span just one square, horizontal and vertical span one or two squares.
-Lookup the digits or letters from the template and fill them in on the adjusted diagram.
 
 
 Tiling
