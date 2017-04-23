@@ -1,8 +1,10 @@
 Different methods allow to reproduce a pattern with GroundForge.
 
 - [Recognize patterns](#recognize-patterns)
-- [2-Step method](#2-step-method)
 - [Matrix from pair diagram](#matrix-from-pair-diagram)
+  * [Tiling](#tiling)
+  * [With an SVG editor](#with-an-svg-editor)
+- [2-Step method](#2-step-method)
 
 <sub><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></sub>
 
@@ -10,9 +12,11 @@ Recognize patterns
 ==================
 
 The easiest methods to experiment with grounds are explained in the [main] page.
-The generated pair diagrams don't care about plaits and something-pin-something and draw them as plain cloth stitches.
+The generated pair diagrams don't care about plaits and something-pin-something
+and draw them as plain cloth stitches.
 Furthermore are the distances between stitches optimized to some average.
-So you may have to simplify the desired pattern, mirror and mould it to recognize it in the gallery. 
+So you may have to simplify the desired pattern,
+mirror and distort it to recognize it in the gallery. 
 
 An example:
 
@@ -20,16 +24,57 @@ An example:
 
 * left: the desired pattern
 * 2nd: simplified something-pin-something to plain stitches
-* 3rd: snapping stitches to grid positions, they happen to abide the rules for a valid matrix
-  (diagonal connections span just one square, horizontal and vertical span one or two squares)
-* 4th: a partially squeezed version that also abides the rules
+* 3rd: snapping stitches to grid positions
+* 4th: a partially squeezed version also snapping to grid positions
 * top right: the matching pattern from the [gallery]
 * bottom right: a flipped version of the stitches on the [main] page also matches
 
-Not all patterns abiding matrix requirements are that easy to match with a pattern from the gallery as shown below.
-In that case forget the grid when moulding to look for a matching pattern or stitch.
+Snapping to a rectangular grid positions might not help to recognize the corresponding pattern in the gallery.
+But in this case it does and we'll get back to snapping later.
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/recognize2.png)
+Simplifying stitches might need some out of the box thinking as shown with the Binche snow-flakes under [tiling](#tiling)
+
+
+Matrix from pair diagram
+========================
+
+A template contains objects to assemble a matrix required for the parameters.
+Each object represents a stitch and the pairs used to make the stitch.
+The objects consist of a symbol and two arrows.
+A less compact [variant] of the template has the objects in alpha-numerical order:
+counter clock-wise, shortest first.
+
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template.png)
+
+Start with the simplifications and distortions as described under [Recognize patterns](#recognize-patterns).
+The snapped versions of the example happen to abide the rules for a valid matrix:
+diagonal connections span just one square, horizontal and vertical span one or two squares.
+Lookup the digits or letters from the template and fill them in on the adjusted diagram.
+
+
+Tiling
+------
+
+The next step is figuring out the tiling.
+GroundForge uses only rectangular tiles, that might not match the natural repeat of a pattern.
+The tiles in the example are surrounded with a red-dotted line and stacked as bricks in a wall. 
+An alternative stacking method looks like a checker board though the tiles can be rectangles.
+Finally read the matrix from the symbols within one tile.
+Note that empty spots require a dash as shown on [choose stitches](Choose-Stitches),
+it would get confusing with this example.
+
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-example.png)
+
+
+With an SVG editor
+------------------
+
+You can also use a general purpose editor like Adobe-Illustrator, CorelDraw or the free InkScape
+and the [SVG version] (right click to download) of the template.
+
+The symbol in each object has six free snapping points, two of them should be connected with other objects.
+Copy-paste these objects to assemble a pattern without changing the length or directions of lines connecting the symbols. It might need some out-of-the-box thinking: the Binche snow flake example below has horizontal connections and the vertical connection is reduced to a single stitch. Stretching the stitch into a kind of plait with a hole (`ctcttctc`) reveals traditional connections in the thread diagram.
+
 
 2-Step method
 ==============
@@ -46,7 +91,7 @@ The weaving base pattern has always a checkerboard tiling. The diagonal base pat
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/disect-pairs-as-threads.png)
 
-The ID calculator can sometimes shift a column.
+The ID calculator of GroundForge can sometimes shift a column.
 The effect for this particular matrix is shown in the table below.
 Fixing this bug would break existing links beyond control of the project.
 As usually the patterns are distorted beyond recognizing the underlying matrix,
@@ -69,31 +114,10 @@ The result of the mistaken ID calculator:
 |  2  |     | B2  | A2  |     | B2  | A2  |
 |  3  |     | A3  | B3  |     | A3  | B3  |
 
-Matrix from pair diagram
-========================
 
-A template contains objects to analyse the matrix required for the parameters.
-Each object represents a stitch and the pairs used to make the stitch.
-The objects consist of a symbol and two arrows.
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template.png)
-
-The purpose is to copy-paste these objects together to something that looks like
-a (distorted) version of the desired pattern.
-This method can be quite error prone.
-
-When using pencil and paper start with the simplifications and moulding as described under [Recognize patterns](#recognize-patterns). Then lookup the digits or letters from the template.
-
-You can also use a general purpose editor like Adobe-Illustrator, CorelDraw or the free InkScape
-and the SVG template (<a href="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/template.svg" download="GroundForge-template.svg">download</a>).
-The objects are shown two times on the template, once in a compact group, once in an alpha-numerical order.
-The symbol in each object has six free snapping points, two of them should be connected with other objects.
-Copy-paste these objects to assemble a pattern without changing the length or directions of lines connecting the symbols. It might need some out-of-the-box thinking: the Binche snow flake example below has horizontal connections and the vertical connection is reduced to a single stitch. Stretching the stitch into a kind of plait with a hole (`ctcttctc`) reveals traditional connections in the thread diagram.
-
-The next step is figuring out the tiling. The tiles in the example are surrounded with a red-dotted line and stacked as bricks in a wall. An alternative stacking method looks like a checker board though the tiles can be rectangles. Finally read the matrix from the symbols within one tile. Note that empty spots require a dash as shown on [choose stitches](Choose-Stitches), it would get confusing with this example.
-
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-example.png)
-
+[SVG version]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/template.svg
 [main]: https://d-bl.github.io/GroundForge/
+[variant]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template.png
 [gallery]: https://d-bl.github.io/GroundForge/gallery.html
 [snow flake]: https://d-bl.github.io/GroundForge/?tiles=bricks&matrix=L3H-AB-CD-%0D%0A6-2H-256-L%0D%0A-5----5---&stitches=ctc+H3%3Dctcttctc+A1%3Dctcll+B2%3Dctcll+E1%3Dctcrr+D2%3Dctcrr&rows=12&cols=14&left=1&up=1&transparency=0&#steps
