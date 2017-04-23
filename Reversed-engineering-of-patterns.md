@@ -117,6 +117,6 @@ The result of the mistaken ID calculator:
 
 [SVG version]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/template.svg
 [main]: https://d-bl.github.io/GroundForge/
-[variant]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template.png
+[variant]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template2.png
 [gallery]: https://d-bl.github.io/GroundForge/gallery.html
 [snow flake]: https://d-bl.github.io/GroundForge/?tiles=bricks&matrix=L3H-AB-CD-%0D%0A6-2H-256-L%0D%0A-5----5---&stitches=ctc+H3%3Dctcttctc+A1%3Dctcll+B2%3Dctcll+E1%3Dctcrr+D2%3Dctcrr&rows=12&cols=14&left=1&up=1&transparency=0&#steps
