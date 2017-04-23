@@ -71,7 +71,7 @@ With an SVG editor
 You can also use a general purpose editor like Adobe-Illustrator, CorelDraw or the free InkScape
 and the [SVG version] (right click to download) of the template.
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template-object.png)
 
 The symbol in each template object has six free snapping points,
 two of them should be connected with other objects.
