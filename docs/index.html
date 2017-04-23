@@ -29,7 +29,7 @@
             <dd>
                 <p>
                     Select one of the 376 patterns from the <a href="gallery.html">gallery</a>.
-                    The <em>choose stitches</em> link returns you further down on this page,
+                    The <em>choose stitches</em> link on the tooltips returns you further down on this page,
                     select stitches at step one and show it.
                 </p>
                 <p>
@@ -40,8 +40,8 @@
             <dt>More easy patterns:</dt>
             <dd>
                 <p>
-                    Use a link from the stitches section below, show step one and two. Try other stitches at both steps.
-                    To mix stitches choose a larger base pattern.
+                    Use a link from the stitches section below, show step one and two
+                    to uncover a traditional pattern and create your own variations.
                 </p>
             </dd>
             <dt>Advanced pattern creation:</dt>
@@ -49,7 +49,7 @@
                 <p>
                     The
                     <a href="https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns" target="_blank"
-                    >user guide</a> explains two methods to vary on existing patterns.
+                    >user guide</a> explains methods to vary on existing patterns.
                 </p>
                 <fieldset id="base">
                     <legend>Base patterns</legend>
@@ -64,30 +64,23 @@
                     <select id="base2" onchange="setMatrix(this.value)">
                         <option value="" disabled>sets parameters</option>
                         <option value="5-;bricks;5;5;0;0" selected>diagonal 1x2</option>
+                        <option value="8%0D1;checker;8;4;0;0">weaving 2x1</option>
                         <option value="5-%0D-5;checker;5;5;0;0">diagonal 2x2</option>
+                        <option value="88%0D11;checker;8;4;0;0">weaving 2x2</option>
+                        <option value="888%0D111;checker;8;4;0;0">weaving 2x3</option>
                         <option value="5-%0D-5%0D5-;bricks;8;5;0;0">diagonal 3x2</option>
+                        <option value="8%0D1%0D8%0D1;checker;8;4;0;0">weaving 4x1</option>
                         <option value="5-%0D-5%0D5-%0D-5;checker;9;5;0;0">diagonal 4x2</option>
-                        <option value="5-%0D-5%0D5-%0D-5%0D5-;bricks;11;5;0;0">diagonal 5x2</option>
-                        <option value="5-%0D-5%0D5-%0D-5%0D5-%0D-5;checker;11;5;0;0">diagonal 6x2</option>
+                        <option value="88%0D11%0D88%0D11;checker;8;4;0;0">weaving 4x2</option>
+                        <option value="888%0D111%0D888%0D111;checker;8;4;0;0">weaving 4x3</option>
+                        <option value="8888%0D1111;checker;8;4;0;0">weaving 2x4</option>
                         <option value="5-5-%0D-5-5;checker;5;8;0;0">diagonal 2x4</option>
                         <option value="5-5-%0D-5-5%0D5-5-%0D-5-5;checker;7;8;0;0">diagonal 4x4</option>
+                        <option value="8888%0D1111%0D8888%0D1111;checker;8;4;0;0">weaving 4x4</option>
                         <option value="5-5-%0D-5-5%0D5-5-%0D-5-5%0D5-5-%0D-5-5;checker;11;8;0;0">diagonal 6x4</option>
                         <option value="5-5-5-%0D-5-5-5;checker;8;9;0;0">diagonal 2x6</option>
                         <option value="5-5-5-%0D-5-5-5%0D5-5-5-;bricks;5;9;0;0">diagonal 3x6</option>
                         <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5;checker;7;11;0;0">diagonal 4x6</option>
-                        <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5%0D5-5-5-;bricks;9;11;0;0">diagonal 5x6</option>
-                        <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5;checker;9;11;0;0">diagonal
-                            6x6
-                        </option>
-                        <option value="" disabled>---------</option>
-                        <option value="8%0D1;checker;8;4;0;0">weaving 2x1</option>
-                        <option value="88%0D11;checker;8;4;0;0">weaving 2x2</option>
-                        <option value="888%0D111;checker;8;4;0;0">weaving 2x3</option>
-                        <option value="8888%0D1111;checker;8;4;0;0">weaving 2x4</option>
-                        <option value="8%0D1%0D8%0D1;checker;8;4;0;0">weaving 4x1</option>
-                        <option value="88%0D11%0D88%0D11;checker;8;4;0;0">weaving 4x2</option>
-                        <option value="888%0D111%0D888%0D111;checker;8;4;0;0">weaving 4x3</option>
-                        <option value="8888%0D1111%0D8888%0D1111;checker;8;4;0;0">weaving 4x4</option>
                     </select>
                 </fieldset>
                 <fieldset id="matrixOpts">
@@ -144,8 +137,8 @@
         <h2>Stitches</h2>
         <label for="stitchExamples">
             Just some examples of stitches for the next steps.
-            Mix them, mirror them, add or drop twists at will.
-            <em>Note:</em> The generated pair diagrams draws a plait or something-pin-something like a simple stitch.
+            <em>Notes:</em> The generated pair diagrams draws a plait or something-pin-something like a simple stitch.
+            The generated thread diagrams lack pins.
         </label>
         <table id="stitchExamples">
             <tr>
@@ -196,14 +189,16 @@
         </table>
         <label for="stitchExamples">
             Select one of the linked stitches and show step one and two to uncover a traditional pattern.
+            Mirror, mix, add or drop twists and try the weaving base pattern.
+            Mixing stitches at step one requires a larger base pattern.
         </label>
     </article>
 
     <article>
         <h2><a name="steps">Step 1</a></h2>
         <p>
-            Generate diagrams from the selected parameters.
-            The pair diagram will be a color coded version of the chosen gallery pattern.
+            Generate diagrams from the selected gallery pattern, stitch above or customized parameters.
+            The pair diagram will be a color coded version of the chosen gallery pattern or stitch.
         </p>
         <label for="s1">Stitches <a href="https://github.com/d-bl/GroundForge/wiki/Choose-Stitches"
                                     target="_blank"><img src="images/information-icon.png"></a></label>
