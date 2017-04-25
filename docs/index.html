@@ -23,6 +23,12 @@
         ><img src="images/logo-medium.png" alt="DiBL logo"/></a>
         <h1>GroundForge</h1>
         <p><em>Choose patterns and stitches to generate diagrams for variations of bobbin lace grounds.</em></p>
+        <p>
+            Giving different colors to different threads reveals how they flow through a pattern.
+            Though the threads don't flow with natural tension around pins and the pin positions are not even predefined,
+            the toolbox nevertheless helps selecting possibly interesting patterns from a myriad of choices and combinations.
+            Your fantasy should finish the design process.
+        </p>
         <h2>Get started</h2>
         <dl>
             <dt>Easy patterns:</dt>
@@ -31,10 +37,6 @@
                     Select one of the 376 patterns from the <a href="gallery.html">gallery</a>.
                     The <em>choose stitches</em> link on the tooltips returns you further down on this page,
                     select stitches at step one and show it.
-                </p>
-                <p>
-                    For larger diagrams increase <em>rows</em> and <em>columns</em> in the parameters form.
-                    To try another foot side, change the value of <em>shift left</em>.
                 </p>
             </dd>
             <dt>More patterns:</dt>
@@ -49,7 +51,7 @@
                 <p>
                     The
                     <a href="https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns" target="_blank"
-                    >user guide</a> explains methods to vary on existing patterns.
+                    >user guide</a> explains how to recognize and recreate existing patterns.
                 </p>
                 <fieldset id="matrixOpts">
                     <legend>Parameters <a href="https://github.com/d-bl/GroundForge/wiki/Parameters"
@@ -84,10 +86,29 @@
                     </div>
                 </fieldset>
             </dd>
-            <dt><em>Warning:</em></dt>
+        </dl>
+        <h2>Hints</h2>
+        <dl>
+            <dt>Diagram size:</dt>
             <dd>
-                With complex stitches and large numbers of rows and columns,
-                your browser can get overwhelmed with step two or three.
+                <p>
+                    For larger diagrams in the sense of more stitches,
+                    increase <em>rows</em> and <em>columns</em> in the parameters form.
+                </p>
+            </dd>
+            <dt>Footsides:</dt>
+            <dd>
+                <p>
+                    To try another foot side, change the value of <em>shift left</em> in the parameters form.
+                    The algorithm however is limited and may produce bugs for some values in some patterns.
+                </p>
+            </dd>
+            <dt>Warning:</dt>
+            <dd>
+                <p>
+                    With complex stitches and large numbers of rows and columns,
+                    your browser can get overwhelmed at step two or three.
+                </p>
             </dd>
         </dl>
     </article>
@@ -194,7 +215,7 @@
     <article>
         <h2><a name="steps">Step 1</a></h2>
         <p>
-            Generate diagrams from the selected gallery pattern, stitch above or customized parameters.
+            Generate diagrams from the selected gallery pattern, the stitches paragraph above or customized parameters.
             The pair diagram will be a color coded version of the chosen gallery pattern or stitch.
         </p>
         <label for="s1">Stitches <a href="https://github.com/d-bl/GroundForge/wiki/Choose-Stitches"
