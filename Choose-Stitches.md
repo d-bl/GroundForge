@@ -1,4 +1,4 @@
-A text field takes the definition of stitches to use. When hovering with your mouse over a stitch in the pair diagram, it shows you an ID of a stitch like `A1`. Assign stitches to theses ID's with `c` , `t`, `l`, `r` for cross, twist, left-twist and right-twist. If you drop the ID for the first stitch definition, it is used as default for not mentioned ID's in the pattern.
+A text field takes the definition of stitches to use. When hovering with your mouse over a stitch in the pair diagram, it shows you an ID of a stitch like `A1`. Assign stitches to theses ID's with `c` , `t`, `l`, `r` for cross, twist, left-twist and right-twist. If you drop the ID for the first stitch definition, it is used as default for not mentioned ID's in the pattern. At step 2 and three you can also use `cross` and `twist`, these stitch definition also serve as defaults for not mentioned real ID's.
 
 No spaces are allowed around the equal sign between the ID and instruction of a stitch definition.
 Any sequence of punctuation characters separates the stitch definitions.
