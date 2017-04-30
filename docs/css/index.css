@@ -108,8 +108,11 @@ dd p {
 .controls {
   display: block;
   position: relative;
-  top: -1.2em;
-  margin-left: 0.2em;
+  top: -1.3em;
+  margin-left: 0.1em;
+}
+.controls img {
+  border: 0.1em solid #FFF;
 }
 @media only screen and (max-width: 35em) {
     ul {

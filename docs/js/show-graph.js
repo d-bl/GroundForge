@@ -23,6 +23,64 @@ diagram.showGraph = function(args) {
     var markers = !isMobileMac && !isIE
 
     args.container.node().innerHTML = dibl.SVG().render(args.diagram, args.stroke, markers, 2481, 3507, fullyTransparent)
+    var svgDoc = args.container.select('svg')
+    var svgGroup = args.container.select('g')
+    var cx = args.container.node().clientWidth / 2
+    var cy = args.container.node().clientHeight / 2
+    if (!cx) cx = 200
+    if (!cy) cy = 100
+
+    var containerID = args.container.attr("id")
+    var controls = d3.select("#" + containerID + "controls")
+    controls.node().innerHTML = ""
+    controls.append("a")
+        .attr("target","_blank")
+        .attr("href","#fullscreen")
+        .attr("title","fullscreen")
+        .attr("onblur","this.href='#fullscreen'")
+        .attr("onmousedown","setDownloadContent(this,'" + containerID + "')")
+      .append("img","")
+        .attr("src","images/fullscreen.jpg")
+    controls.append("a")
+        .attr("download",containerID + "-diagram.svg")
+        .attr("onblur","this.href='#download'")
+        .attr("target","_blank")
+        .attr("href","#download")
+        .attr("title","download")
+        .attr("onmousedown","setDownloadContent(this,'" + containerID  + "')")
+      .append("img","")
+        .attr("src","images/download.jpg")
+
+    // zooming and panning
+
+    var zoom =  d3.zoom().on("zoom", function() {
+      svgGroup.attr("transform", d3.event.transform)
+    })
+    function zoomIn() {
+      var t = d3.zoomTransform(svgDoc.node())
+      t.k *= 1.2
+      if (t.k) zoom.transform(svgDoc, t)
+    }
+    function zoomOut() {
+      var t = d3.zoomTransform(svgDoc.node())
+      t.k /= 1.2
+      zoom.transform(svgDoc, t)
+    }
+    svgDoc.call( zoom )
+    controls
+      .append("a")
+        .attr("href","#zoom-in")
+        .attr("title","zoom in")
+        .attr("onclick","return false")
+      .append("img","").attr("src","images/zoom-in.jpg").on("click", zoomIn)
+    controls
+      .append("a")
+        .attr("href","#zoom-out")
+        .attr("title","zoom out")
+        .attr("onclick","return false")
+      .append("img","").attr("src","images/zoom-out.jpg").on("click", zoomOut)
+
+    // bind SVG with data
 
     var links = args.container.selectAll(".link").data(args.links)
     var nodes = args.container.selectAll(".node").data(args.nodes)
@@ -70,10 +128,6 @@ diagram.showGraph = function(args) {
                             .style('marker-mid', markMid)
                         if (args.onAnimationEnd) args.onAnimationEnd()
                     }
-    var cx = args.container.node().clientWidth / 2
-    var cy = args.container.node().clientHeight / 2
-    if (!cx) cx = 200
-    if (!cy) cy = 100
     function strength(link){ return link.weak ? 5 : 50 }
     var sim = d3.forceSimulation(args.nodes)
         .force("charge", d3.forceManyBody().strength(-1000))
@@ -82,13 +136,6 @@ diagram.showGraph = function(args) {
         .alpha(0.0035)
         .on("tick", simTicked)
         .on("end", simEnded)
-
-    // zooming and panning
-
-    args.container.call( d3.zoom().on("zoom", zoomed) )
-    function zoomed() {
-      args.container.select('g').attr("transform", d3.event.transform)
-    }
 
     // dragging nodes
 
