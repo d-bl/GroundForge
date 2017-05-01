@@ -22,7 +22,7 @@ An example:
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/recognize.png)
 
-* left: the desired pattern
+* left: the desired pattern (pattern 3086 of "Gründe mit System" by Uta Ulrich, stretched by Kitty Zuidgeest)
 * 2nd: simplified something-pin-something to plain stitches
 * 3rd: snapping stitches to grid positions
 * 4th: a partially squeezed version also snapping to grid positions
