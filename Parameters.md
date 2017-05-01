@@ -14,7 +14,11 @@ To try another foot side, change the value of shift left in the parameters form.
 Pattern: Matrix and tiling
 --------------------------
 
-When choosing a pattern via a thumbnail, the most important form fields that determine a pattern (matrix and tiling) are filled in, perhaps some more.
+The "getting started " paragraph of the main page explains various methods to set the matrix and tiling parameters.
+
+
+An example
+----------
 
 In theory a pattern can be repeated endlessly in both directions.
 A generated diagram is a cutout or patch,
