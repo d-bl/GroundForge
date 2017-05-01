@@ -1,18 +1,13 @@
 Diagram size
 ------------
 For larger diagrams in the sense of more stitches, increase rows and columns in the parameters form.
-
+Warning With complex stitches and large numbers of rows and columns, your browser can get overwhelmed at step two or three.
+_Warning_: With complex stitches and large numbers of rows and columns, your browser can get overwhelmed at step two or three.
 
 Footsides
 ---------
 
 To try another foot side, change the value of shift left in the parameters form. The algorithm however is limited and may produce bugs for some values in some patterns.
-
-
-Warning
--------
-
-With complex stitches and large numbers of rows and columns, your browser can get overwhelmed at step two or three.
 
 
 Matrix and tiling
