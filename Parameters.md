@@ -11,8 +11,8 @@ Footsides
 To try another foot side, change the value of shift left in the parameters form. The algorithm however is limited and may produce bugs for some values in some patterns.
 
 
-Matrix and tiling
------------------
+Pattern: Matrix and tiling
+--------------------------
 
 When choosing a pattern via a thumbnail, the most important form fields that determine a pattern (matrix and tiling) are filled in, perhaps some more.
 
