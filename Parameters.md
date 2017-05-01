@@ -14,7 +14,7 @@ To try another foot side, change the value of shift left in the parameters form.
 Pattern: Matrix and tiling
 --------------------------
 
-The "getting started " paragraph of the main page explains various methods to set the matrix and tiling parameters.
+The "getting started " paragraph of the [main](https://d-bl.github.io/GroundForge/index.html) page explains various methods to set the matrix and tiling parameters.
 
 
 An example
