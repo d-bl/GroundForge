@@ -95,6 +95,12 @@ table, tr, td {
 .show {
     display: block;
 }
+article {
+  padding-top: 0;
+}
+dl, #matrixOpts{
+  margin-bottom: 0;
+}
 ul {
     padding: 0;
     padding-left: 2em;
