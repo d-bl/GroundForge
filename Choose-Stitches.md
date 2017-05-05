@@ -9,7 +9,7 @@ see issue [51](https://github.com/d-bl/GroundForge/issues/51) for the technical 
 
 ---
 
-The show button doesn't store your choice of stitches (nor thread colors) in your browser history. When the cursor is in the stitch field you can return to a previous choice with CTRL-Z (Windows, *nix systems) or COMMAND-Z (Mac). You can save all your choices in the browser history with the ![](https://d-bl.github.io/GroundForge/images/link.png) button. This action also allows you to bookmark your configuration alias add it to your favorites.
+The show button doesn't store your choice of stitches (nor thread colors, nor manual changes to the parameters form) in your browser history. When the cursor is in the stitch field you can return to a previous choice with CTRL-Z (Windows, *nix systems) or COMMAND-Z (Mac). You can save the combination of all your choices in the browser history with the ![](https://d-bl.github.io/GroundForge/images/link.png) button. This action also allows you to bookmark your configuration alias add it to your favorites. You will have to show the generated diagrams again.
 
 ---
 
