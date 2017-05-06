@@ -1,4 +1,4 @@
-The [recursive] page uses a thread diagram as pair diagram to create another thread diagram. It does so at most two times. Even with so few steps larger dimensions could quickly overwhelm a browser, while you need larger dimensions to see the full pattern.
+The [main] page can show three pairs of thread and pair diagram, each next pair diagram is a color coded version of the previous thread diagram. It does so at most two times. Even with so few steps larger dimensions could quickly overwhelm a browser, while you need larger dimensions to see the full pattern.
 
 Off-line execution is faster, doesn't make a fuss if it takes a while, allows you to abort at your own discretion and allows as many recursion steps as your system can handle. Downside: it requires a few [hoops] to jump through: install an environment to execute JavaScript without a browser and get familiar with two or three function calls. Another option is downloading the code and adjust one of the demo classes to your needs.
 
@@ -17,5 +17,5 @@ Collecting the interesting ones with a simple action like a swiping or click,
 and spending on average one second per diagram, would take twelve days non-stop.
 So you need to develop an intuition to take your picks.
 
-[recursive]: https://d-bl.github.io/GroundForge/recursive.html
+[main]: https://d-bl.github.io/GroundForge/
 [hoops]: https://github.com/d-bl/GroundForge/blob/master/docs/API.md
