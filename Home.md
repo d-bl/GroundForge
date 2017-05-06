@@ -22,7 +22,8 @@ The diagram generator can relief much tedious work that would go into these step
 * Specify stitches for figure **b** and **c**.
 * Apply colors to individual threads in figure **c**.
 * Download figure **d** and customize it into **e-h** or whatever your fancy.
-* The pair diagrams of Binche, Flanders or Paris grounds are thread diagrams of a plain Torchon ground with respectively ctctc, ctct or ct. This principle can be applied recursively on any pattern allowing for many more patterns.
+* The pair diagrams of Binche, Flanders or Paris grounds are thread diagrams of a plain Torchon ground with respectively ctctc, ctct or ct.
+  This principle can be applied to more stitch variations and repeated like a Droste effect.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/intro.png)
 
