@@ -1,13 +1,18 @@
 One of the methods to design patterns requires a matrix for a base pattern.
 Both types are shown below, diagonal in the two left columns, and weaving in the two right columns. 
 
-The red rectangles illustrate the tiling. 
-The diagonal base pattern needs an even number of columns and brick tiling in case of an odd number of rows.
-The weaving base pattern requires an even number of rows and always checker board tiling.
-For your convenience a few dimensions are pre-configured, you can select one from a drop down list.
+The red rectangles illustrate a possible tiling.
+Some dimensions will work with both checker board as brick tiling.
 
-When you want larger tiles to vary more stitches or are using another pattern from the gallery,
-you will have to multiply the matrix manually.
-Most patterns will require some multitude for odd and even.
+A weaving base pattern requires an even number of rows and
+will always work with a checker board tiling.
+
+A diagonal base pattern requires an even number of columns
+and brick tiling in case of an odd number of rows.
+An odd number of rows puts further constraints on the possible number of columns,
+for example three rows won't work with four columns.
+
+For your convenience a few dimensions are pre-configured.
+You can select one from a drop down list.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/base-patterns.png)
