@@ -9,8 +9,7 @@ will always work with a checker board tiling.
 
 A diagonal base pattern requires an even number of columns
 and brick tiling in case of an odd number of rows.
-An odd number of rows puts further constraints on the possible number of columns,
-for example three rows won't work with four columns.
+An odd number of rows won't work with a number of columns divisible by four.
 
 For your convenience a few dimensions are pre-configured.
 You can select one from a drop down list.
