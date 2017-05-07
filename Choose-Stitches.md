@@ -1,7 +1,7 @@
 Stitch specifications
 ---------------------
 
-A text field takes the definition of stitches to use. When hovering with your mouse over a stitch in the pair diagram, it shows you an ID of a stitch like `A1`. Assign stitches to theses ID's with `c` , `t`, `l`, `r` for cross, twist, left-twist and right-twist. A stitch requires at least a cross, violating this requirements would implicitly change the pair diagram.
+A text field takes the definition of stitches to use. When hovering with your mouse over a stitch in the pair diagram, it shows you an ID of a stitch like `A1`. Assign stitches to theses ID's with `c` , `t`, `l`, `r` for cross, twist, left-twist and right-twist. A stitch requires at least a cross, violating this requirement would implicitly change the pair diagram.
 
 If you drop the ID for the first stitch definition, it is used as default for not mentioned ID's in the pattern. When using thread diagrams as pair diagrams, you can also use `cross` and `twist` as defaults.
 
