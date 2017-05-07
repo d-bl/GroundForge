@@ -101,93 +101,103 @@
         </p>
     </article>
     <article>
-        <h2>Stitch examples</h2>
-        <label for="stitchExamples">
-            Just some examples of stitches to copy-paste into the next steps.
-            <em>Notes:</em> (1) The generated pair diagrams draws a plait or something-pin-something like a simple stitch.
-            (2) The generated thread diagrams lack pins.
-        </label>
-        <table id="stitchExamples">
-            <tr>
-                <td></td>
-                <td><img src="stitches/ctct-color2a.png"> <img src="stitches/ctct-color2b.png"></td>
-                <td><img src="stitches/crclct-color2.png"></td>
-                <td><img src="stitches/clcrclc-color2.png"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td><img src="stitches/ct.png"></td>
-                <td><img src="stitches/ctct.png"></td>
-                <td><img src="stitches/crclct.png"></td>
-                <td><img src="stitches/clcrclc.png"></td>
-                <td><img src="stitches/ctctc.png"></td>
-                <td><img src="stitches/ctclctc.png"></td>
-                <td><img src="stitches/ctclcrctc.png"></td>
-                <td><img src="stitches/ctcttctc.png"></td>
-            </tr>
-            <tr>
-                <td><img src="stitches/ct-color1.png"></td>
-                <td><img src="stitches/ctct-color1a.png"> <img src="stitches/ctct-color1b.png"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><img src="stitches/ctcttctc-color1.png"></td>
-            </tr>
-            <tr>
-                <td><a href="?m=5-;bricks;7;5;0;0&s1=ct&s2=ctct&s3=&#steps"
-                >ct</a></td>
-                <td><a href="?m=5-;bricks;7;5;0;0&s1=ctct&s2=cross=ctct,twist=ct&s3=&#steps"
-                >ctct</a></td>
-                <td><a href="?m=5-;bricks;7;5;0;0&s1=crclct&s2=ctct,B12=ct,B15=ct,B16=ct&s3=&#steps"
-                >crclct</a></td>
-                <td><a href="?m=5-;bricks;7;5;0;0&s1=clcrclc&s2=ctc,B13=ctcrrctcrr,B15=ctcll,B16=ctctt&s3=&#steps"
-                >clcrclc</a></td>
-                <td><a href="?m=5-;bricks;7;5;0;0&s1=ctctc&s2=ctc,B14=ctcll,B15=ctcrr,B16=ctctt&s3=&#steps"
-                >ctctc</a></td>
-                <td>ctclctc</td>
-                <td>ctclcrctc</td>
-                <td>ctcttctc</td>
-            </tr>
-        </table>
-        <label for="stitchExamples">
-            The links take you down to step one with a diagonal base pattern.
-            Show step one and two to uncover a traditional pattern.
-            Mirror, mix, add or drop twists and/or try a weaving base pattern.
-        </label>
-        <p>
-            <label for="base">
-                Mixing stitches at step one requires a larger base pattern
-                <a href="https://github.com/d-bl/GroundForge/wiki/Base-Patterns"
-                   target="_blank"><img src="images/information-icon.png"></a>
+        <h2>Stitch examples <a title="less"
+                               id="less"
+                               class="showi"
+                               onclick="toggleLess(this, 'more');return 0"
+        ><img src="images/less.png"></a><a title="more"
+                                           id="more"
+                                           class="hide"
+                                           onclick="toggleMore(this, 'less');return 0"
+        ><img src="images/more.png"></a></h2>
+        <div id="examples-content" class="showi">
+            <label for="stitchExamples" class="examples-less show">
+                Just some examples of stitches to copy-paste into the next steps.
+                <em>Notes:</em> (1) The generated pair diagrams draws a plait or something-pin-something like a simple stitch.
+                (2) The generated thread diagrams lack pins.
             </label>
-            <select id="base">
-                <option value="" disabled>sets parameters</option>
-                <option value="5-;bricks;7;5;0;0" selected>diagonal 1x2</option>
-                <option value="8%0D1;checker;5;5;0;0">weaving 2x1</option>
-                <option value="5-%0D-5;checker;8;5;0;0">diagonal 2x2</option>
-                <option value="88%0D11;checker;5;5;0;0">weaving 2x2</option>
-                <option value="888%0D111;checker;5;5;0;0">weaving 2x3</option>
-                <option value="5-%0D-5%0D5-;bricks;9;6;0;0">diagonal 3x2</option>
-                <option value="8%0D1%0D8%0D1;checker;5;5;0;0">weaving 4x1</option>
-                <option value="5-%0D-5%0D5-%0D-5;checker;9;5;0;0">diagonal 4x2</option>
-                <option value="88%0D11%0D88%0D11;checker;6;6;0;0">weaving 4x2</option>
-                <option value="888%0D111%0D888%0D111;checker;8;4;0;0">weaving 4x3</option>
-                <option value="8888%0D1111;checker;6;6;0;0">weaving 2x4</option>
-                <option value="5-5-%0D-5-5;checker;9;5;0;0">diagonal 2x4</option>
-                <option value="5-5-%0D-5-5%0D5-5-%0D-5-5;checker;10;6;0;0">diagonal 4x4</option>
-                <option value="8888%0D1111%0D8888%0D1111;checker;6;6;0;0">weaving 4x4</option>
-                <option value="5-5-%0D-5-5%0D5-5-%0D-5-5%0D5-5-%0D-5-5;checker;11;8;0;0">diagonal 6x4</option>
-                <option value="5-5-5-%0D-5-5-5;checker;8;9;0;0">diagonal 2x6</option>
-                <option value="5-5-5-%0D-5-5-5%0D5-5-5-;bricks;5;9;0;0">diagonal 3x6</option>
-                <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5;checker;7;11;0;0">diagonal 4x6</option>
-            </select>
-            <button onclick="setMatrix(document.getElementById('base').value);firstStep()">show</button>
-        </p>
+            <table id="stitchExamples">
+                <tr>
+                    <td></td>
+                    <td><img src="stitches/ctct-color2a.png"> <img src="stitches/ctct-color2b.png"></td>
+                    <td><img src="stitches/crclct-color2.png"></td>
+                    <td><img src="stitches/clcrclc-color2.png"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><img src="stitches/ct.png"></td>
+                    <td><img src="stitches/ctct.png"></td>
+                    <td><img src="stitches/crclct.png"></td>
+                    <td><img src="stitches/clcrclc.png"></td>
+                    <td><img src="stitches/ctctc.png"></td>
+                    <td><img src="stitches/ctclctc.png"></td>
+                    <td><img src="stitches/ctclcrctc.png"></td>
+                    <td><img src="stitches/ctcttctc.png"></td>
+                </tr>
+                <tr>
+                    <td><img src="stitches/ct-color1.png"></td>
+                    <td><img src="stitches/ctct-color1a.png"> <img src="stitches/ctct-color1b.png"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="stitches/ctcttctc-color1.png"></td>
+                </tr>
+                <tr>
+                    <td><a href="?m=5-;bricks;7;5;0;0&s1=ct&s2=ctct&s3=&#steps"
+                    >ct</a></td>
+                    <td><a href="?m=5-;bricks;7;5;0;0&s1=ctct&s2=cross=ctct,twist=ct&s3=&#steps"
+                    >ctct</a></td>
+                    <td><a href="?m=5-;bricks;7;5;0;0&s1=crclct&s2=ctct,B12=ct,B15=ct,B16=ct&s3=&#steps"
+                    >crclct</a></td>
+                    <td><a href="?m=5-;bricks;7;5;0;0&s1=clcrclc&s2=ctc,B13=ctcrrctcrr,B15=ctcll,B16=ctctt&s3=&#steps"
+                    >clcrclc</a></td>
+                    <td><a href="?m=5-;bricks;7;5;0;0&s1=ctctc&s2=ctc,B14=ctcll,B15=ctcrr,B16=ctctt&s3=&#steps"
+                    >ctctc</a></td>
+                    <td>ctclctc</td>
+                    <td>ctclcrctc</td>
+                    <td>ctcttctc</td>
+                </tr>
+            </table>
+            <label for="stitchExamples">
+                The links take you down to step one with a diagonal base pattern.
+                Show step one and two to uncover a traditional pattern.
+                Mirror, mix, add or drop twists and/or try a weaving base pattern.
+            </label>
+            <p id="base-pattern">
+                <label for="base">
+                    Mixing stitches with a base pattern requires larger dimensions
+                    <a href="https://github.com/d-bl/GroundForge/wiki/Base-Patterns"
+                       target="_blank"><img src="images/information-icon.png"></a>
+                </label>
+                <select id="base">
+                    <option value="" disabled>sets parameters</option>
+                    <option value="5-;bricks;7;5;0;0" selected>diagonal 1x2</option>
+                    <option value="8%0D1;checker;5;5;0;0">weaving 2x1</option>
+                    <option value="5-%0D-5;checker;8;5;0;0">diagonal 2x2</option>
+                    <option value="88%0D11;checker;5;5;0;0">weaving 2x2</option>
+                    <option value="888%0D111;checker;5;5;0;0">weaving 2x3</option>
+                    <option value="5-%0D-5%0D5-;bricks;9;6;0;0">diagonal 3x2</option>
+                    <option value="8%0D1%0D8%0D1;checker;5;5;0;0">weaving 4x1</option>
+                    <option value="5-%0D-5%0D5-%0D-5;checker;9;5;0;0">diagonal 4x2</option>
+                    <option value="88%0D11%0D88%0D11;checker;6;6;0;0">weaving 4x2</option>
+                    <option value="888%0D111%0D888%0D111;checker;8;4;0;0">weaving 4x3</option>
+                    <option value="8888%0D1111;checker;6;6;0;0">weaving 2x4</option>
+                    <option value="5-5-%0D-5-5;checker;9;5;0;0">diagonal 2x4</option>
+                    <option value="5-5-%0D-5-5%0D5-5-%0D-5-5;checker;10;6;0;0">diagonal 4x4</option>
+                    <option value="8888%0D1111%0D8888%0D1111;checker;6;6;0;0">weaving 4x4</option>
+                    <option value="5-5-%0D-5-5%0D5-5-%0D-5-5%0D5-5-%0D-5-5;checker;11;8;0;0">diagonal 6x4</option>
+                    <option value="5-5-5-%0D-5-5-5;checker;8;9;0;0">diagonal 2x6</option>
+                    <option value="5-5-5-%0D-5-5-5%0D5-5-5-;bricks;5;9;0;0">diagonal 3x6</option>
+                    <option value="5-5-5-%0D-5-5-5%0D5-5-5-%0D-5-5-5;checker;7;11;0;0">diagonal 4x6</option>
+                </select>
+                <button onclick="setMatrix(document.getElementById('base').value);firstStep()">show</button>
+            </p>
+        </div>
     </article>
 
     <article>

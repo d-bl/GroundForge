@@ -89,12 +89,11 @@ table, tr, td {
 #paint1 {
   clear: both;
 }
-.hide {
-    display: none;
-}
-.show {
-    display: block;
-}
+.hide { display: none; }
+.show { display: block; }
+.showi { display: inline; }
+h2 img, h2 a { display: inline; }
+#base-pattern { margin-top: 0; }
 article {
   padding-top: 0;
 }

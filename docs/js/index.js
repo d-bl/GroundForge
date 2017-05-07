@@ -79,6 +79,19 @@ function replaceClass(select, oldValue, newValue) {
       x[i].className = x[i].className.replace(oldValue,newValue)
   }
 }
+function toggle(el,id) {
+  el.className = el.className.replace("showi","hide")
+  el2 = document.getElementById(id)
+  el2.className = el2.className.replace("hide","showi")
+}
+function toggleMore(el,id) {
+  toggle(el, id)
+  document.getElementById("examples-content").className = "showi"
+}
+function toggleLess(el,id) {
+  toggle(el, id)
+  document.getElementById("examples-content").className = "hide"
+}
 var data = [0,1,2,3,4]
 function firstStep() {
   replaceClass("step1", "hide","show")
