@@ -1,4 +1,4 @@
-One of the methods to create pair and thread diagrams requires a matrix for a base pattern.
+One of the methods to design patterns requires a matrix for a base pattern.
 Both types are shown below, diagonal in the two left columns, and weaving in the two right columns. 
 
 The red rectangles illustrate the tiling. 
