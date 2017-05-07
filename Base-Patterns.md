@@ -6,7 +6,8 @@ The diagonal base pattern needs an even number of columns and brick tiling in ca
 The weaving base pattern requires an even number of rows and always checker board tiling.
 For your convenience a few dimensions are pre-configured, you can select one from a drop down list.
 
-When using another pattern from the gallery, you will have to multiply the matrix manually.
+When you want larger tiles to vary more stitches or are using another pattern from the gallery,
+you will have to multiply the matrix manually.
 Most patterns will require some multitude for odd and even.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/base-patterns.png)
