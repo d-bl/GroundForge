@@ -130,12 +130,11 @@ Convenience methods defined for a node.js environment, defined in <strike>[batch
 
 * **`svgFile`** - the global variable became the first argument _after [release] 2017-01-11_. Existing files are overwritten without a warning.
 * **`data`** - the result of `dibl.D3Data().get` or the result of this function. With an empty string for steps, this argument can be a JavaScript object with just the functions `threadNodes()` and `threadLinks()`. 
-* **`steps`** - gets split at "`;`" into stitch instructions, each value is used to create a new thread diagram from a previous thread diagram used as pair diagram, see also step 2 and 3 on the [recursive] page. An empty string creates the initial thread diagram.
+* **`steps`** - gets split at "`;`" into stitch instructions, each value is used to create a new thread diagram from a previous thread diagram used as pair diagram, see also step 2 and 3 on the [main] page. An empty string creates the initial thread diagram.
 * **`colors`** - gets split at "`,`" into a color per thread, each value should start with a `#` followed by three or six hexadecimal digits.
 * **`countDown`** - increase the value if a (large) pattern doesn't [stretch] out properly, each increment has same effect as a gentle nudge on the web page. The value should possibly be some function of `rows`, `cols` and the final number of created nodes.
 
 
-[recursive]: https://d-bl.github.io/GroundForge/recursive.html
 [main]: https://d-bl.github.io/GroundForge/
 [stretch]: https://github.com/d-bl/GroundForge/blob/master/docs/images/bloopers.md#3
 
@@ -208,7 +207,7 @@ Download version [0f39fa2](https://github.com/d-bl/GroundForge/archive/0f39fa2.z
 
 Another signature used by `createThreadSVG`:
 
-* **`stitches`** - see step 2 and 3 on the [recursive] page
+* **`stitches`** - see step 2 and 3 on the [main] page
 * **`data`** - the result of `dibl.D3Data().get` or the result of `createSVG`
 
 
