@@ -23,7 +23,8 @@ An example
 In theory a pattern can be repeated endlessly in both directions.
 A generated diagram is a cutout or patch,
 for example the red rectangle in the image below.
-
 The example has eight rows, nine columns and is shifted by one in both directions.
+
+_Due to a bug there must be a stitch in both upper corners._
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/cutout.png)
