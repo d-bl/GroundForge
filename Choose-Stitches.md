@@ -10,10 +10,14 @@ Any sequence of punctuation characters separates the stitch definitions.
 You can try a `p` for a pin in a stitch definition, but that rarely works as desired,
 see issue [51](https://github.com/d-bl/GroundForge/issues/51) for the technical details.
 
-Show Buttons and Browser History
---------------------------------
+Buttons and Browser History
+---------------------------
 
-The show button doesn't store your choice of stitches (nor thread colors, nor manual changes to the parameters form) in your browser history. When the cursor is in the stitch field you can return to a previous choice with CTRL-Z (Windows, *nix systems) or COMMAND-Z (Mac). You can save the combination of all your choices in the browser history with the ![](https://d-bl.github.io/GroundForge/images/link.png) button. This action also allows you to bookmark your configuration alias add it to your favorites. You will have to show the generated diagrams again.
+The show buttons doesn't store your choice of stitches (nor thread colors, nor manual changes to the parameters form) in your browser history.
+
+When the cursor is in a stitch field you can return to a previous choice for that field with CTRL-Z (Windows, *nix systems) or COMMAND-Z (Mac), FireFox and Chrome also let you choose from a list of previous values with the same start, erase the field and the down or up arrow of your keyboard shows all your previous choices.
+
+Right-click the ![](https://d-bl.github.io/GroundForge/images/link.png) button button to save the complete set of choices (except for the thread colors) as bookmark, favorite or however your browser calls it. When recalling the bookmark you will have to generate the diagrams again with the show button. Just clicking the button saves the set of choices in the browser history allowing you to return with the back button of your browser, you will have to regenerate the diagrams. Your browser will automatically remember the choices you made on the gallery page or the linked stitches examples you choose. The browser history gets lost when you close the browser, you bookmarks or favorites will stay.
 
 An Example
 ----------
