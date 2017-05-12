@@ -8,22 +8,11 @@ import scala.collection.JavaConverters._
 
 class GallerySpec extends FlatSpec with Matchers {
   "each gallery pattern" should "succeed, except one" in {
-    new BufferedReader(new FileReader("docs/gallery.html"))
-      .lines()
-      .iterator()
-      .asScala
-      .filter(_.contains("matrix="))
-      .flatMap(_
-        .replaceAll(".*matrix=", "")
-        .replace("&tiles=", ";")
-        .replace("&#steps\">stitches</a>,<br>* <a href=\"sheet.html?", "&")
-        .replaceAll("\".*", "")
-        .split("&patch=")
-        .toSet
-        .toStream
-      ).filter { l =>
+    Matrices.values.filter { l =>
       val f = l.split(";")
-      PairDiagram.create(f(0), f(1), absRows = 9, absCols = 9).isFailure
+      val cols = if (f.size > 3) f(3).toInt else 9
+      println(l)
+      PairDiagram.create(f(0), f(1), absRows = 9, absCols = cols).isFailure
     }.toSeq shouldBe Seq("B-B- -B-B C-C- -C-C;bricks")
   }
 

@@ -23,38 +23,6 @@ import scala.reflect.ClassTag
 /** checks for typos in HashMap-s and more */
 class MatrixSpec extends FlatSpec with Matchers {
 
-  "matrices" should "repeat without internal loose ends" in {
-//
-    val errors = new StringBuffer()
-    for (i <- Matrices.values.indices) {
-        val args: Array[String] = Matrices.values(i).split(";")
-        val matrix = args(0)
-        val tileType = if (args.length > 1) args(1) else ""
-        val m = Settings(matrix, tileType, absRows = 40, absCols = 12, shiftLeft = 1, shiftUp = 1).get.absM
-        val nrOfLinks = countLinks(m)
-        // some rough sifting of matrices with a different a different range for internal
-        val topMargin =
-          if (tileType=="bricks" && Set("25 66 -4 21 88", "27 88 11", "28 66 88 66 11", "179 66 -4 5- 86" ).contains(matrix)) 1
-          else 2
-        val bottomMargin =
-          if (Matrices.values(i).endsWith(" -4-4 5--- -C-B;bricks")
-            || Matrices.values(i).endsWith(" -4-5 5--- -C-B;bricks")
-          ) 4
-          else 3
-        val footsideMargin =
-          if (matrix.matches(".*[HE].*")) 4
-          else if (matrix.matches(".*[-48].*")) 3
-          else 0
-        // check the nodes have four or zero links but skip the margins
-        for {
-          row <- topMargin until nrOfLinks.length - bottomMargin
-          col <- footsideMargin until nrOfLinks(0).length - footsideMargin
-        } if (!Set(0,4).contains(nrOfLinks(row)(col)))
-          errors.append (s"$i: [${Matrices.values(i)}] has ${nrOfLinks(row)(col)} links at ($row,$col)\n")
-    }
-    errors.toString shouldBe ""
-  }
-
   "separator" should "match anything but Matrix.relSourcesMap.keySet" in {
     val allChars = for {char <- Char.MinValue until Char.MaxValue} yield char
     val nonSeparatorChars = allChars.toString().split(Matrix.separator).mkString("")
