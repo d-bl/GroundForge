@@ -23,6 +23,10 @@ import scala.reflect.ClassTag
 /** checks for typos in HashMap-s and more */
 class MatrixSpec extends FlatSpec with Matchers {
 
+  "test values" should  "find matrices in docs/gallery.html" in {
+    Matrices.values.size shouldBe 824
+  }
+
   "separator" should "match anything but Matrix.relSourcesMap.keySet" in {
     val allChars = for {char <- Char.MinValue until Char.MaxValue} yield char
     val nonSeparatorChars = allChars.toString().split(Matrix.separator).mkString("")
