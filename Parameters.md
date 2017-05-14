@@ -8,7 +8,7 @@ _Warning_ : With complex stitches and large numbers of rows and columns, your br
 Footsides
 ---------
 
-To try another foot side, change the value of shift left in the parameters form. The algorithm however is limited and may produce bugs for some values in some patterns.
+To try another foot side, change the value of shift left in the parameters form. The algorithm however is limited and may produce bugs for some values in some patterns. 18 out of 824 patterns (including the pricking variations) may suffer from bug [#93](https://github.com/d-bl/GroundForge/issues/93).
 
 
 Pattern: Matrix and tiling
