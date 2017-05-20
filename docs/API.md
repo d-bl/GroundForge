@@ -207,7 +207,7 @@ Download version [0f39fa2](https://github.com/d-bl/GroundForge/archive/0f39fa2.z
 
 Another signature used by `createThreadSVG`:
 
-* **`stitches`** - see step 2 and 3 on the [main] page
+* **`stitches`** - see level 2 and 3 on the [main] page
 * **`data`** - the result of `dibl.D3Data().get` or the result of `createSVG`
 
 
