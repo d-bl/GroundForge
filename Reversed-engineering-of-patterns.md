@@ -30,7 +30,7 @@ Explaining the process with an example:
 * bottom right: a flipped version of the stitches on the [main] page also matches
 
 Snapping to a rectangular grid might not help to recognize the corresponding pattern in the gallery.
-See also the trick with colors on the [Reshape-Patterns] page,
+See also the trick with colors on the [Reshape Patterns](Reshape-Patterns) page,
 we'll get back to snapping further down the page.
 
 Simplifying stitches might need some out of the box thinking as shown with the Binche snow-flakes under [tiling](#tiling)
