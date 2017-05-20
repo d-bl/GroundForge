@@ -18,7 +18,7 @@ Furthermore are the distances between stitches optimized to some average.
 So you may have to simplify the desired pattern,
 mirror and distort it to recognize it in the gallery. 
 
-An example:
+Explaining the process with an example:
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/recognize.png)
 
@@ -29,8 +29,9 @@ An example:
 * top right: the matching pattern from the [gallery]
 * bottom right: a flipped version of the stitches on the [main] page also matches
 
-Snapping to a rectangular grid positions might not help to recognize the corresponding pattern in the gallery.
-But in this case it does and we'll get back to snapping later.
+Snapping to a rectangular grid might not help to recognize the corresponding pattern in the gallery.
+See also the trick with colors on the [Reshape-Patterns] page,
+we'll get back to snapping further down the page.
 
 Simplifying stitches might need some out of the box thinking as shown with the Binche snow-flakes under [tiling](#tiling)
 
@@ -63,6 +64,12 @@ An alternative stacking method looks like a checker board though the tiles can b
 Finally read the matrix from the symbols within one tile.
 Note that empty spots require a dash as shown on [choose stitches](Choose-Stitches),
 it would get confusing with this example.
+
+To see if it is possible to reduce a rectangular tile to bricks,
+divide the rectangle in four quadrants.
+If the upper left equals the lower right and the upper right equals bottom left,
+you can use the top half or bottom half as brick tile.
+It saves id's of stitches to assign.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-example.png)
 
@@ -102,7 +109,7 @@ As usually the patterns are distorted beyond recognizing the underlying matrix,
 fixing the bug would introduce a worse problem.
 
 Hover over stitches in the pair diagram to find out the actual ID of a stitch.
-At step one we need the following stitch definitions to reproduce the pattern at step two.
+At the first set of diagrams we need the following stitch definitions to reproduce the pattern at level two.
 
     A1=ct B2=cr B3=crcl
 
@@ -124,4 +131,4 @@ The result of the mistaken ID calculator:
 [main]: https://d-bl.github.io/GroundForge/
 [variant]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template2.png
 [gallery]: https://d-bl.github.io/GroundForge/gallery.html
-[snow flake]: https://d-bl.github.io/GroundForge/?tiles=bricks&matrix=L3H-AB-CD-%0D%0A6-2H-256-L%0D%0A-5----5---&stitches=ctc+H3%3Dctcttctc+A1%3Dctcll+B2%3Dctcll+E1%3Dctcrr+D2%3Dctcrr&rows=12&cols=14&left=1&up=1&transparency=0&#steps
+[snow flake]: https://d-bl.github.io/GroundForge/?tiles=bricks&matrix=L3H-AB-CD-%0D%0A6-2H-256-L%0D%0A-5----5---&stitches=ctc+H3%3Dctcttctc+A1%3Dctcll+B2%3Dctcll+E1%3Dctcrr+D2%3Dctcrr&rows=12&cols=14&left=1&up=1&transparency=0&#diagrams

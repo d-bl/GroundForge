@@ -1,9 +1,9 @@
 Diagram size
 ------------
 For larger diagrams in the sense of more stitches, increase rows and columns in the parameters form.
-Warning With complex stitches and large numbers of rows and columns, your browser can get overwhelmed at step two or three.
+Warning With complex stitches and large numbers of rows and columns, your browser can get overwhelmed at level two or three.
 
-_Warning_ : With complex stitches and large numbers of rows and columns, your browser can get overwhelmed when showing the diagrams of step two or three.
+_Warning_ : With complex stitches and large numbers of rows and columns, your browser can get overwhelmed when showing the diagrams of level two or three.
 
 Footsides
 ---------
