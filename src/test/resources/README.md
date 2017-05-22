@@ -24,5 +24,4 @@ Requirements: InkScape, Bash
 * **Note**: Reducing the initial [scale] of the diagrams is not supported since the upgrade to v4 of D3js.
 
 [inkscape plugin]: https://github.com/d-bl/inkscape-bobbinlace/tree/master/input/lace_ground/checker
-[Rearrange]: https://github.com/d-bl/inkscape-bobbinlace/issues/14
 [scale]: https://github.com/d-bl/GroundForge/commit/be75dde4e74f6255677154b67696209236a43802#diff-d954fe9b7e3c4b571ef0e2859242bb80L124
