@@ -135,12 +135,21 @@ object SVG {
     else " "
 
     // TODO see issue #70 to calculate a white end/start
-    if (end == "white")
-      s"M$sX,${sY + mid} ${tX - dX / 4},${tY - dY / 4}"
-    else if (start == "white")
-      s"M${sX + dX / 4},${(sY + dY / 4) + mid} $tX,$tY"
-    else if (nrOfTwists > 0)
-      "M" + sX + "," + sY + " " + (sX + dX / 2) + "," + (sY + dY / 2) + " " + tX + "," + tY
+    if (end == "white") {
+      val t1X = tX - dX / 4
+      val t1Y = tY - dY / 4
+      s"M$sX,$sY$mid $t1X,$t1Y"
+    }
+    else if (start == "white") {
+      val s1X = sX + dX / 4
+      val s1Y = sY + dY / 4
+      s"M$s1X,$s1Y$mid $tX,$tY"
+    }
+    else if (nrOfTwists > 0) {
+      val mX = sX + dX / 2
+      val mY = sY + dY / 2
+      s"M$sX,$sY $mX,$mY $tX,$tY"
+    }
     else s"M$sX,$sY $tX,$tY"
   }
 
