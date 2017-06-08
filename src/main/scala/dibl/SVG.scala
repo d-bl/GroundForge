@@ -118,29 +118,44 @@ object SVG {
     pathDescription(link, sX, sY, tX, tY)
   }
 
+  val l = 25
   @JSExport
   def pathDescription(link: LinkProps, sX: Double, sY: Double, tX: Double, tY: Double): String = {
-    val dX = tX - sX
-    val dY = tY - sY
-    val left = link.left
-    val right = link.right
+    lazy val nrOfTwists = link.nrOfTwists
+    lazy val left = link.left
+    lazy val right = link.right
     val start = link.start
     val end = link.end
-    val nrOfTwists = link.nrOfTwists
+    val dX = tX - sX
+    val dY = tY - sY
 
-    def mid = if (left)
-      s"S${sX - dY / 3 + dX / 3},${sY + dX / 3 + dY / 3}"
-    else if (right)
-      s"S${sX + dY / 3 + dX / 3},${sY + dY / 3 - dX / 3}"
-    else " "
+    lazy val w = Math.sqrt((BigInt((sX - tX).toInt).pow(2) + BigInt((sY - tY).toInt).pow(2)).toDouble)
 
     // TODO see issue #70 to calculate a white end/start
     if (end == "white") {
+      // move target towards the source at a fixed distance
+      val tX1 = sX - ((l * (sX - tX)) / w)
+      val tY1 = sY - ((l * (sY - tY)) / w)
+      // delta between source and moved target
+      val dX1 = tX1 - sX
+      val dY1 = tY1 - sY
+      // bezier control point
+      val mid = if (left)
+        s"S${sX - dY1 / 3 + dX1 / 3},${sY + dX1 / 3 + dY1 / 3}"
+      else if (right)
+        s"S${sX + dY1 / 3 + dX1 / 3},${sY + dY1 / 3 - dX1 / 3}"
+      else " "
+      // move target towards source with a relative distance
       val t1X = tX - dX / 4
       val t1Y = tY - dY / 4
       s"M$sX,$sY$mid $t1X,$t1Y"
     }
     else if (start == "white") {
+      lazy val mid = if (left)
+        s"S${sX - dY / 3 + dX / 3},${sY + dX / 3 + dY / 3}"
+      else if (right)
+        s"S${sX + dY / 3 + dX / 3},${sY + dY / 3 - dX / 3}"
+      else " "
       val s1X = sX + dX / 4
       val s1Y = sY + dY / 4
       s"M$s1X,$s1Y$mid $tX,$tY"
