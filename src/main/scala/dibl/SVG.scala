@@ -124,23 +124,24 @@ object SVG {
     lazy val nrOfTwists = link.nrOfTwists
     lazy val left = link.left
     lazy val right = link.right
-    val start = link.start
-    val end = link.end
-    val dX = tX - sX
-    val dY = tY - sY
-
+    lazy val start = link.start
+    lazy val end = link.end
+    lazy val dX = tX - sX
+    lazy val dY = tY - sY
     lazy val w = Math.sqrt((BigInt((sX - tX).toInt).pow(2) + BigInt((sY - tY).toInt).pow(2)).toDouble)
+    lazy val wX = (l * (sX - tX)) / w
+    lazy val wY = (l * (sY - tY)) / w
 
     // TODO see issue #70 to calculate a white end/start
     if (end == "white") {
       // move target towards the source at a fixed distance
-      val tX1 = sX - ((l * (sX - tX)) / w)
-      val tY1 = sY - ((l * (sY - tY)) / w)
+      val tX1 = sX - wX
+      val tY1 = sY - wY
       // delta between source and moved target
       val dX1 = tX1 - sX
       val dY1 = tY1 - sY
       // bezier control point
-      val mid = if (left)
+      val curveTo = if (left)
         s"S${sX - dY1 / 3 + dX1 / 3},${sY + dX1 / 3 + dY1 / 3}"
       else if (right)
         s"S${sX + dY1 / 3 + dX1 / 3},${sY + dY1 / 3 - dX1 / 3}"
@@ -148,17 +149,25 @@ object SVG {
       // move target towards source with a relative distance
       val t1X = tX - dX / 4
       val t1Y = tY - dY / 4
-      s"M$sX,$sY$mid $t1X,$t1Y"
+      s"M$sX,$sY$curveTo $t1X,$t1Y"
     }
     else if (start == "white") {
-      lazy val mid = if (left)
-        s"S${sX - dY / 3 + dX / 3},${sY + dX / 3 + dY / 3}"
+      // move source towards the target at a fixed distance
+      val sX1 = tX + wX
+      val sY1 = tY + wY
+      // delta between moved source and target
+      val dX1 = tX - sX1
+      val dY1 = tY - sY1
+      // bezier control point
+      val curveTo = if (left)
+        s"S${sX1 - dY / 3 + dX / 3},${sY1 + dX / 3 + dY / 3}"
       else if (right)
-        s"S${sX + dY / 3 + dX / 3},${sY + dY / 3 - dX / 3}"
+        s"S${sX1 + dY / 3 + dX / 3},${sY1 + dY / 3 - dX / 3}"
       else " "
+      // move source towards target with a relative distance
       val s1X = sX + dX / 4
       val s1Y = sY + dY / 4
-      s"M$s1X,$s1Y$mid $tX,$tY"
+      s"M$s1X,$s1Y$curveTo $tX,$tY"
     }
     else if (nrOfTwists > 0) {
       val mX = sX + dX / 2
