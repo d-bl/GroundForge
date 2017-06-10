@@ -16,6 +16,8 @@
 
 package dibl
 
+import java.lang.Math.{pow, sqrt}
+
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
@@ -121,60 +123,62 @@ object SVG {
   val l = 25
   @JSExport
   def pathDescription(link: LinkProps, sX: Double, sY: Double, tX: Double, tY: Double): String = {
-    lazy val nrOfTwists = link.nrOfTwists
-    lazy val left = link.left
-    lazy val right = link.right
-    lazy val start = link.start
-    lazy val end = link.end
+    lazy val needsTwistMark = link.nrOfTwists > 0
+    lazy val isLeftThread = link.left
+    lazy val isRightThread = link.right
+    lazy val startIsWhite = link.start == "white"
+    lazy val endIsWhite = link.end == "white"
     lazy val dX = tX - sX
     lazy val dY = tY - sY
-    lazy val w = Math.sqrt((BigInt((sX - tX).toInt).pow(2) + BigInt((sY - tY).toInt).pow(2)).toDouble)
+    lazy val w = sqrt(pow(sX - tX, 2) + pow(sY - tY, 2))
     lazy val wX = (l * (sX - tX)) / w
     lazy val wY = (l * (sY - tY)) / w
 
     // TODO see issue #70 to calculate a white end/start
-    if (end == "white") {
+    if (endIsWhite) {
       // move target towards the source at a fixed distance
-      val tX1 = sX - wX
-      val tY1 = sY - wY
+      lazy val tX1 = sX - wX
+      lazy val tY1 = sY - wY
       // delta between source and moved target
-      val dX1 = tX1 - sX
-      val dY1 = tY1 - sY
+      lazy val dX1 = tX1 - sX
+      lazy val dY1 = tY1 - sY
       // bezier control point
-      val curveTo = if (left)
-        s"S${sX - dY1 / 3 + dX1 / 3},${sY + dX1 / 3 + dY1 / 3}"
-      else if (right)
-        s"S${sX + dY1 / 3 + dX1 / 3},${sY + dY1 / 3 - dX1 / 3}"
-      else " "
+      val curveTo = if (isLeftThread)
+        s" S ${sX - dY1 / 3 + dX1 / 3},${sY + dX1 / 3 + dY1 / 3}"
+      else if (isRightThread)
+        s" S ${sX + dY1 / 3 + dX1 / 3},${sY + dY1 / 3 - dX1 / 3}"
+      else "" // the most common case
       // move target towards source with a relative distance
       val t1X = tX - dX / 4
       val t1Y = tY - dY / 4
-      s"M$sX,$sY$curveTo $t1X,$t1Y"
-    }
-    else if (start == "white") {
+      // create the path description
+      s"M $sX,$sY$curveTo $t1X,$t1Y"
+    } else if (startIsWhite) {
       // move source towards the target at a fixed distance
-      val sX1 = tX + wX
-      val sY1 = tY + wY
+      lazy val sX1 = tX + wX
+      lazy val sY1 = tY + wY
       // delta between moved source and target
-      val dX1 = tX - sX1
-      val dY1 = tY - sY1
+      lazy val dX1 = tX - sX1
+      lazy val dY1 = tY - sY1
       // bezier control point
-      val curveTo = if (left)
-        s"S${sX1 - dY / 3 + dX / 3},${sY1 + dX / 3 + dY / 3}"
-      else if (right)
-        s"S${sX1 + dY / 3 + dX / 3},${sY1 + dY / 3 - dX / 3}"
-      else " "
+      val curveTo = if (isLeftThread)
+        s" S ${sX1 - dY1 / 3 + dX1 / 3},${sY1 + dX1 / 3 + dY1 / 3}"
+      else if (isRightThread)
+        s" S ${sX1 + dY1 / 3 + dX1 / 3},${sY1 + dY1 / 3 - dX1 / 3}"
+      else "" // the most common case: a straight line
       // move source towards target with a relative distance
       val s1X = sX + dX / 4
       val s1Y = sY + dY / 4
-      s"M$s1X,$s1Y$curveTo $tX,$tY"
-    }
-    else if (nrOfTwists > 0) {
+      // create the path description
+      s"M $s1X,$s1Y$curveTo $tX,$tY"
+    } // now we are dealing with a pair diagram
+    else if (needsTwistMark) {
       val mX = sX + dX / 2
       val mY = sY + dY / 2
-      s"M$sX,$sY $mX,$mY $tX,$tY"
+      // a straight path with two sections
+      s"M $sX,$sY $mX,$mY $tX,$tY"
     }
-    else s"M$sX,$sY $tX,$tY"
+    else s"M $sX,$sY $tX,$tY"
   }
 
   private def renderLinks(diagram: Diagram,
