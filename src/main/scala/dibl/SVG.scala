@@ -136,41 +136,41 @@ object SVG {
 
     // TODO see issue #70 to calculate a white end/start
     if (endIsWhite) {
-      // move target towards the source at a fixed distance
-      lazy val tX1 = sX - wX
-      lazy val tY1 = sY - wY
-      // delta between source and moved target
-      lazy val dX1 = tX1 - sX
-      lazy val dY1 = tY1 - sY
-      // bezier control point
-      val curveTo = if (isLeftThread)
-        s" S ${sX - dY1 / 3 + dX1 / 3},${sY + dX1 / 3 + dY1 / 3}"
-      else if (isRightThread)
-        s" S ${sX + dY1 / 3 + dX1 / 3},${sY + dY1 / 3 - dX1 / 3}"
-      else "" // the most common case
       // move target towards source with a relative distance
       val t1X = tX - dX / 4
       val t1Y = tY - dY / 4
-      // create the path description
-      s"M $sX,$sY$curveTo $t1X,$t1Y"
+      if (!isLeftThread) s"M $sX,$sY $t1X,$t1Y"
+      else {
+        // move target towards the source at a fixed distance
+        val tX1 = sX - wX
+        val tY1 = sY - wY
+        // delta between source and moved target
+        val dX1 = tX1 - sX
+        val dY1 = tY1 - sY
+        // curve to (moved target rotated clockwise around source by 45 degrees)
+        val cX = sX - dY1 / 3 + dX1 / 3
+        val cY = sY + dX1 / 3 + dY1 / 3
+        // create the path description
+        s"M $sX,$sY S $cX,$cY $t1X,$t1Y"
+      }
     } else if (startIsWhite) {
-      // move source towards the target at a fixed distance
-      lazy val sX1 = tX + wX
-      lazy val sY1 = tY + wY
-      // delta between moved source and target
-      lazy val dX1 = tX - sX1
-      lazy val dY1 = tY - sY1
-      // bezier control point
-      val curveTo = if (isLeftThread)
-        s" S ${sX1 - dY1 / 3 + dX1 / 3},${sY1 + dX1 / 3 + dY1 / 3}"
-      else if (isRightThread)
-        s" S ${sX1 + dY1 / 3 + dX1 / 3},${sY1 + dY1 / 3 - dX1 / 3}"
-      else "" // the most common case: a straight line
       // move source towards target with a relative distance
       val s1X = sX + dX / 4
       val s1Y = sY + dY / 4
-      // create the path description
-      s"M $s1X,$s1Y$curveTo $tX,$tY"
+      if (!isRightThread) s"M $s1X,$s1Y $tX,$tY"
+      else {
+        // move source towards the target at a fixed distance
+        val sX1 = tX + wX
+        val sY1 = tY + wY
+        // delta between moved source and target
+        val dX1 = tX - sX1
+        val dY1 = tY - sY1
+        // curve to (moved source rotated clockwise around target by 45 degrees)
+        val cX = sX1 + dY1 / 3 + dX1 / 3
+        val cY = sY1 + dY1 / 3 - dX1 / 3
+        // create the path description
+        s"M $s1X,$s1Y S $cX,$cY $tX,$tY"
+      }
     } // now we are dealing with a pair diagram
     else if (needsTwistMark) {
       val mX = sX + dX / 2
