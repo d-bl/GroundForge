@@ -120,7 +120,7 @@ object SVG {
     pathDescription(link, sX, sY, tX, tY)
   }
 
-  val l = 25
+  val l = 8
   @JSExport
   def pathDescription(link: LinkProps, sX: Double, sY: Double, tX: Double, tY: Double): String = {
     lazy val needsTwistMark = link.nrOfTwists > 0
@@ -130,9 +130,9 @@ object SVG {
     lazy val endIsWhite = link.end == "white"
     lazy val dX = tX - sX
     lazy val dY = tY - sY
-    lazy val w = sqrt(pow(sX - tX, 2) + pow(sY - tY, 2))
-    lazy val wX = (l * (sX - tX)) / w
-    lazy val wY = (l * (sY - tY)) / w
+    lazy val linkLength = sqrt(dX*dX + dY*dY)
+    lazy val dX1 = dX * (l / linkLength)
+    lazy val dY1 = dY * (l / linkLength)
 
     // TODO see issue #70 to calculate a white end/start
     if (endIsWhite) {
@@ -141,15 +141,9 @@ object SVG {
       val t1Y = tY - dY / 4
       if (!isLeftThread) s"M $sX,$sY $t1X,$t1Y"
       else {
-        // move target towards the source at a fixed distance
-        val tX1 = sX - wX
-        val tY1 = sY - wY
-        // delta between source and moved target
-        val dX1 = tX1 - sX
-        val dY1 = tY1 - sY
-        // curve to (moved target rotated clockwise around source by 45 degrees)
-        val cX = sX - dY1 / 3 + dX1 / 3
-        val cY = sY + dX1 / 3 + dY1 / 3
+        // curve to (point at fixed distance to source rotated clockwise around source by 45 degrees)
+        val cX = sX - dY1 + dX1
+        val cY = sY + dX1 + dY1
         // create the path description
         s"M $sX,$sY S $cX,$cY $t1X,$t1Y"
       }
@@ -159,15 +153,9 @@ object SVG {
       val s1Y = sY + dY / 4
       if (!isRightThread) s"M $s1X,$s1Y $tX,$tY"
       else {
-        // move source towards the target at a fixed distance
-        val sX1 = tX + wX
-        val sY1 = tY + wY
-        // delta between moved source and target
-        val dX1 = tX - sX1
-        val dY1 = tY - sY1
-        // curve to (moved source rotated clockwise around target by 45 degrees)
-        val cX = sX1 + dY1 / 3 + dX1 / 3
-        val cY = sY1 + dY1 / 3 - dX1 / 3
+        // curve to (point at fixed distance to target rotated clockwise around target by 45 degrees)
+        val cX = tX + dY1 - dX1
+        val cY = tY - dX1 - dY1
         // create the path description
         s"M $s1X,$s1Y S $cX,$cY $tX,$tY"
       }
