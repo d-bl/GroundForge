@@ -16,6 +16,8 @@
 
 package dibl
 
+import java.lang.Math.sqrt
+
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
@@ -120,28 +122,61 @@ object SVG {
 
   @JSExport
   def pathDescription(link: LinkProps, sX: Double, sY: Double, tX: Double, tY: Double): String = {
-    val dX = tX - sX
-    val dY = tY - sY
-    val left = link.left
-    val right = link.right
-    val start = link.start
-    val end = link.end
-    val nrOfTwists = link.nrOfTwists
+    lazy val needsTwistMark = link.nrOfTwists > 0
+    lazy val isLeftThread = link.left
+    lazy val isRightThread = link.right
+    lazy val startIsWhite = link.start == "white"
+    lazy val endIsWhite = link.end == "white"
+    lazy val dX = tX - sX
+    lazy val dY = tY - sY
+    lazy val linkLength = sqrt(dX*dX + dY*dY)
+    lazy val dX1 = dX * (10 / linkLength)
+    lazy val dY1 = dY * (10 / linkLength)
+    lazy val dX4 = dX1 / 4
+    lazy val dY4 = dY1 / 4
 
-    def mid = if (left)
-      s"S${sX - dY / 3 + dX / 3},${sY + dX / 3 + dY / 3}"
-    else if (right)
-      s"S${sX + dY / 3 + dX / 3},${sY + dY / 3 - dX / 3}"
-    else " "
-
-    // TODO see issue #70 to calculate a white end/start
-    if (end == "white")
-      s"M$sX,${sY + mid} ${tX - dX / 4},${tY - dY / 4}"
-    else if (start == "white")
-      s"M${sX + dX / 4},${(sY + dY / 4) + mid} $tX,$tY"
-    else if (nrOfTwists > 0)
-      "M" + sX + "," + sY + " " + (sX + dX / 2) + "," + (sY + dY / 2) + " " + tX + "," + tY
-    else s"M$sX,$sY $tX,$tY"
+    // see issue #70 for images, TODO turn into methods of LinkProps subclasses
+    if (endIsWhite) {
+      if (isLeftThread) {
+        // curve to: point at fixed distance to source rotated clockwise around source by 45 degrees
+        val cX = sX - dY1 + dX1
+        val cY = sY + dX1 + dY1
+        // move target a fixed distance back and rotate it counter clockwise by 45 degrees
+        val t1X = tX - dY4 - dX4
+        val t1Y = tY + dX4 - dY4
+        // create the path description
+        s"M $sX,$sY S $cX,$cY $t1X,$t1Y"
+      } else {
+        // move target towards source with a fixed distance
+        val t1X = tX - dX1 / 2
+        val t1Y = tY - dY1 / 2
+        s"M $sX,$sY $t1X,$t1Y"
+      }
+    } else if (startIsWhite) {
+      if (isRightThread) {
+        // curve to: point at fixed distance to target rotated clockwise around target by 45 degrees
+        val cX = tX + dY1 - dX1
+        val cY = tY - dX1 - dY1
+        // move target a fixed distance back and rotate it counter clockwise by 45 degrees
+        val s1X = sX + dY4 + dX4
+        val s1Y = sY - dX4 + dY4
+        // create the path description
+        s"M $s1X,$s1Y S $cX,$cY $tX,$tY"
+      }
+      else {
+        // move source towards target with a fixed distance
+        val s1X = sX + dX1 / 2
+        val s1Y = sY + dY1 / 2
+        s"M $s1X,$s1Y $tX,$tY"
+      }
+    } // now we are dealing with a pair diagram
+    else if (needsTwistMark) {
+      val mX = sX + dX / 2
+      val mY = sY + dY / 2
+      // a straight path with two sections
+      s"M $sX,$sY $mX,$mY $tX,$tY"
+    }
+    else s"M $sX,$sY $tX,$tY"
   }
 
   private def renderLinks(diagram: Diagram,
