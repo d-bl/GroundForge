@@ -16,7 +16,7 @@
 
 package dibl
 
-import java.lang.Math.{pow, sqrt}
+import java.lang.Math.sqrt
 
 import scala.scalajs.js.annotation.JSExport
 
@@ -120,7 +120,6 @@ object SVG {
     pathDescription(link, sX, sY, tX, tY)
   }
 
-  val l = 8
   @JSExport
   def pathDescription(link: LinkProps, sX: Double, sY: Double, tX: Double, tY: Double): String = {
     lazy val needsTwistMark = link.nrOfTwists > 0
@@ -131,33 +130,44 @@ object SVG {
     lazy val dX = tX - sX
     lazy val dY = tY - sY
     lazy val linkLength = sqrt(dX*dX + dY*dY)
-    lazy val dX1 = dX * (l / linkLength)
-    lazy val dY1 = dY * (l / linkLength)
+    lazy val dX1 = dX * (10 / linkLength)
+    lazy val dY1 = dY * (10 / linkLength)
+    lazy val dX4 = dX1 / 4
+    lazy val dY4 = dY1 / 4
 
-    // TODO see issue #70 to calculate a white end/start
+    // see issue #70 for images, TODO turn into methods of LinkProps subclasses
     if (endIsWhite) {
-      // move target towards source with a relative distance
-      val t1X = tX - dX / 4
-      val t1Y = tY - dY / 4
-      if (!isLeftThread) s"M $sX,$sY $t1X,$t1Y"
-      else {
-        // curve to (point at fixed distance to source rotated clockwise around source by 45 degrees)
+      if (isLeftThread) {
+        // curve to: point at fixed distance to source rotated clockwise around source by 45 degrees
         val cX = sX - dY1 + dX1
         val cY = sY + dX1 + dY1
+        // move target a fixed distance back and rotate it counter clockwise by 45 degrees
+        val t1X = tX - dY4 - dX4
+        val t1Y = tY + dX4 - dY4
         // create the path description
         s"M $sX,$sY S $cX,$cY $t1X,$t1Y"
+      } else {
+        // move target towards source with a fixed distance
+        val t1X = tX - dX1 / 2
+        val t1Y = tY - dY1 / 2
+        s"M $sX,$sY $t1X,$t1Y"
       }
     } else if (startIsWhite) {
-      // move source towards target with a relative distance
-      val s1X = sX + dX / 4
-      val s1Y = sY + dY / 4
-      if (!isRightThread) s"M $s1X,$s1Y $tX,$tY"
-      else {
-        // curve to (point at fixed distance to target rotated clockwise around target by 45 degrees)
+      if (isRightThread) {
+        // curve to: point at fixed distance to target rotated clockwise around target by 45 degrees
         val cX = tX + dY1 - dX1
         val cY = tY - dX1 - dY1
+        // move target a fixed distance back and rotate it counter clockwise by 45 degrees
+        val s1X = sX + dY4 + dX4
+        val s1Y = sY - dX4 + dY4
         // create the path description
         s"M $s1X,$s1Y S $cX,$cY $tX,$tY"
+      }
+      else {
+        // move source towards target with a fixed distance
+        val s1X = sX + dX1 / 2
+        val s1Y = sY + dY1 / 2
+        s"M $s1X,$s1Y $tX,$tY"
       }
     } // now we are dealing with a pair diagram
     else if (needsTwistMark) {
