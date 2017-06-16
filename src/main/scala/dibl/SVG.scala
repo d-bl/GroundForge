@@ -120,6 +120,9 @@ object SVG {
     pathDescription(link, sX, sY, tX, tY)
   }
 
+  private val twistWidth = 6
+  private val straightDistance = twistWidth / 5
+  private val curvedDistance = straightDistance * 2
   @JSExport
   def pathDescription(link: LinkProps, sX: Double, sY: Double, tX: Double, tY: Double): String = {
     lazy val needsTwistMark = link.nrOfTwists > 0
@@ -130,10 +133,10 @@ object SVG {
     lazy val dX = tX - sX
     lazy val dY = tY - sY
     lazy val linkLength = sqrt(dX*dX + dY*dY)
-    lazy val dX1 = dX * (10 / linkLength)
-    lazy val dY1 = dY * (10 / linkLength)
-    lazy val dX4 = dX1 / 4
-    lazy val dY4 = dY1 / 4
+    lazy val dX1 = dX * (twistWidth / linkLength)
+    lazy val dY1 = dY * (twistWidth / linkLength)
+    lazy val dX4 = dX1 / curvedDistance
+    lazy val dY4 = dY1 / curvedDistance
 
     // see issue #70 for images, TODO turn into methods of LinkProps subclasses
     if (endIsWhite) {
@@ -147,9 +150,9 @@ object SVG {
         // create the path description
         s"M $sX,$sY S $cX,$cY $t1X,$t1Y"
       } else {
-        // move target towards source with a fixed distance
-        val t1X = tX - dX1 / 2
-        val t1Y = tY - dY1 / 2
+        // move target back with a fixed distance
+        val t1X = tX - dX1 / straightDistance
+        val t1Y = tY - dY1 / straightDistance
         s"M $sX,$sY $t1X,$t1Y"
       }
     } else if (startIsWhite) {
@@ -157,16 +160,16 @@ object SVG {
         // curve to: point at fixed distance to target rotated clockwise around target by 45 degrees
         val cX = tX + dY1 - dX1
         val cY = tY - dX1 - dY1
-        // move target a fixed distance back and rotate it counter clockwise by 45 degrees
+        // move source a fixed distance and rotate it counter clockwise by 45 degrees
         val s1X = sX + dY4 + dX4
         val s1Y = sY - dX4 + dY4
         // create the path description
         s"M $s1X,$s1Y S $cX,$cY $tX,$tY"
       }
       else {
-        // move source towards target with a fixed distance
-        val s1X = sX + dX1 / 2
-        val s1Y = sY + dY1 / 2
+        // move source with a fixed distance
+        val s1X = sX + dX1 / straightDistance
+        val s1Y = sY + dY1 / straightDistance
         s"M $s1X,$s1Y $tX,$tY"
       }
     } // now we are dealing with a pair diagram
