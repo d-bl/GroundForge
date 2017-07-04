@@ -13,7 +13,7 @@ Each pricking in such a set can be morphed into the others by nudging pins.
 Each pricking links to a diagram page where you can choose alternative stitches
 and show the corresponding pair and thread diagrams.
 
-Note that GroundForge doesn't support picots or tallies.
+Note that GroundForge doesn't support picots and treats tallies and plaits like simple stitches.
 
 [index]: http://gwydir.demon.co.uk/jo/lace/whiting/index.htm#picindex
 [scan]: https://www2.cs.arizona.edu/patterns/weaving/books/whiting.jpg
