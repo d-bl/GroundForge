@@ -6,7 +6,7 @@ Under Construction
 The book is also available in four PDF's at the late professor Griswold's [Digital Archive],
 including a [scan] of the original index.
 
-Below the same index republished: each `W` links to a page of Jo Edkins with a scan from the book and her notes.
+Below the same index republished: each `W` links to a scanned page of the Whiting book with annotations by Jo Edkins.
 The lower case links go to a set of pricking prototypes in GroundForge with variations for pin positions.
 The same letter links to the same set of prickings.
 Each pricking in such a set can be morphed into the others by nudging pins.
