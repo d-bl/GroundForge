@@ -1,4 +1,4 @@
-*Jo Edkins* went through a lot of trouble to create an annotated online [index] on the grounds in
+*Jo Edkins* went through a lot of work to create an annotated online [index] on the grounds in
 '_A Lace Guide for Makers and Collectors_' by Gertrude Whiting which dates from 1920.
 The book is available with a higher resolution in four PDF's at the late professor Griswold's [Digital Archive],
 including a [scan] of the original index.
