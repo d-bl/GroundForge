@@ -1,6 +1,3 @@
-Under Construction
-==================
-
 *Jo Edkins* went through a lot of trouble to create and annotate an online [index] on the grounds in
 '_A Lace Guide for Makers and Collectors_' by Gertrude Whiting which dates from 1920.
 The book is also available in four PDF's at the late professor Griswold's [Digital Archive],
@@ -8,16 +5,24 @@ including a [scan] of the original index.
 
 Below the same index republished: each `W` links to a scanned page of the Whiting book with annotations by Jo Edkins.
 The lower case links go to a set of pricking prototypes in GroundForge with variations for pin positions.
-The same letter links to the same set of prickings.
-Each pricking in such a set can be morphed into the others by nudging pins.
-Each pricking links to a diagram page where you can choose alternative stitches
+Each pricking in turn links to a diagram page where you can choose alternative stitches
 and show the corresponding pair and thread diagrams.
 
-Note that GroundForge doesn't support picots and treats tallies, plaits and stitch-pin-stitch like simple stitches.
+The same lower case letter links to the same set of prickings.
+Each pricking in such a set can be morphed into the others by nudging pins.
+The number of grounds with the same lower case link
+illustrate the differences made by other stitches or nudging pin positions.
+What is shown is still just the tip of an ice berg.
+
+Note that GroundForge doesn't support picots and tallies, plaits and stitch-pin-stitch are treated like simple stitches.
 
 [index]: http://gwydir.demon.co.uk/jo/lace/whiting/index.htm#picindex
 [scan]: https://www2.cs.arizona.edu/patterns/weaving/books/whiting.jpg
 [Digital Archive]: https://www2.cs.arizona.edu/patterns/weaving/lace.html#books
+
+
+Under Construction
+==================
 
 [c]: https://d-bl.github.io/GroundForge/sheet.html?patch=88%2011;bricks&patch=66%2022;bricks&patch=88%2099%2011%2000;bricks&patch=66%2011%2088%2022;bricks&patch=66%2099%2022%2000;bricks
 [t]: https://d-bl.github.io/GroundForge/sheet.html?patch=53%2053%2053%205-;bricks&patch=5663%205663;checker&patch=53%205-;bricks&patch=563%20563%20563;checker&patch=53%2053;checker&patch=5632%205632;checker&patch5353%205353;bricks&patch=5-%20-5;checker&patch=5353%205353%205-5-%20-5-5;checker&patch=5632%2056-2%205-5-%20-535;checker&patch=53%205-%20-5%205-;bricks&patch=44%2077%2044%2077;bricks&patch=44%2044%2077%2077;bricks&patch=66%2088%2066%2011;bricks&patch=66%2066%2088%2011;checker&patch=66%2066%2099%2000;checker&patch=6;checker&patch=566-%2066-5%206-56%20-566;checker
