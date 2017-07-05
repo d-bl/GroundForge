@@ -1,6 +1,6 @@
-*Jo Edkins* went through a lot of trouble to create and annotate an online [index] on the grounds in
+*Jo Edkins* went through a lot of trouble to create an annotated online [index] on the grounds in
 '_A Lace Guide for Makers and Collectors_' by Gertrude Whiting which dates from 1920.
-The book is also available in four PDF's at the late professor Griswold's [Digital Archive],
+The book is available with a higher resolution in four PDF's at the late professor Griswold's [Digital Archive],
 including a [scan] of the original index.
 
 Below the same index republished: each `W` links to a scanned page of the Whiting book with annotations by Jo Edkins.
@@ -8,7 +8,8 @@ The lower case links go to a set of pricking prototypes in GroundForge with vari
 Each pricking in turn links to a diagram page where you can choose alternative stitches
 and show the corresponding pair and thread diagrams.
 
-The same lower case letter links to the same set of prickings.
+The same lower case letter links to the same set of pricking prototypes.
+Prototype means: adjustable to your own taste and needs with a third party editor.
 Each pricking in such a set can be morphed into the others by nudging pins.
 The number of grounds with the same lower case link
 illustrate the differences made by other stitches or nudging pin positions.
