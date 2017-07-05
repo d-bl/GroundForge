@@ -1,12 +1,12 @@
 Under Construction
 ==================
 
-*Jo Edkins* created in her online  Lace School an [index] on the grounds in
+*Jo Edkins* went through the trouble to create and annotate an online [index] on the grounds in
 '_A Lace Guide for Makers and Collectors_' by Gertrude Whiting which dates from 1920.
 The book is also available in four PDF's at the late professor Griswold's [Digital Archive],
 including a [scan] of the original index.
 
-Below a copy of the same index, each `W` links to a page of Jo Edkins with a scan from the book and her notes.
+Below the same index republished: each `W` links to a page of Jo Edkins with a scan from the book and her notes.
 The lower case links go to a set of pricking prototypes in GroundForge with variations for pin positions.
 The same letter links to the same set of prickings.
 Each pricking in such a set can be morphed into the others by nudging pins.
