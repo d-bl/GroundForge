@@ -7,7 +7,7 @@ Below the same index republished: each `W` links to a scanned page of the Whitin
 The lower case links go to a set of pricking prototypes in GroundForge with variations for pin positions.
 Each pricking in turn links to a diagram page where you can choose alternative stitches
 and show the corresponding pair and thread diagrams.
-Patterns not in the Tesselace [gallery] are figured out by [Marian Temples].
+Patterns not in the Tesselace [gallery] (such as H2) are figured out by [Marian Temples].
 
 The same lower case letter links to the same set of pricking prototypes.
 Prototype means: adjustable to your own taste and needs with a third party editor.
