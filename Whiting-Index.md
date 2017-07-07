@@ -8,13 +8,13 @@ The lower case links go to a set of pricking prototypes in GroundForge with vari
 Each pricking in turn links to a diagram page where you can choose alternative stitches
 and show the corresponding pair and thread diagrams.
 GroundForge pattern links not in the Tesselace [gallery] (such as H2) are figured out by [Marian Temples],
-[bs] is from the [reversed engineering] help page by [Jo Pol].
+[bs] is from the [reversed engineering] page by [Jo Pol].
 
 The same lower case letter links to the same set of pricking prototypes.
 Prototype means: adjustable to your own taste and needs with a third party editor.
 Each pricking in such a set can be morphed into the others by nudging pins.
-The number of grounds with the same lower case link
-illustrate the differences made by other stitches or nudging pin positions.
+Only four of the links (c,t,k,v) cover over fifty of the grounds, a ratio that illustrates
+how many variations can be made by changing stitches or nudging pin positions.
 What is shown is still just the tip of an ice berg.
 
 Note that GroundForge doesn't support picots nor sewings and in pair diagrams it treats tallies, plaits and stitch-pin-stitch like simple stitches.
@@ -37,15 +37,26 @@ Under Construction
 [v]: https://d-bl.github.io/GroundForge/sheet.html?patch=5831%0A-4-7;bricks&patch=-437%0A34-7;bricks&patch=4830%0A--77;bricks
 [k]: https://d-bl.github.io/GroundForge/sheet.html?patch=B-C-%0A---5%0AC-B-%0A-5--;checker&patch=5831%0A-4-7;checker&patch=68%0A-4;checker&patch=-4-7%0A5---%0A-C-B%0A3158;bricks&patch=5-O-E-%0A-E-5-O%0A5-O-E-;bricks
 [wk]: https://d-bl.github.io/GroundForge/sheet.html?patch=6868%0A-4-4%0A2121%0A-7-7;checker&patch=L-O-L-O-%0A---5---5%0AH-E-H-E-%0A-5---5--;bricks
-[H2]: https://d-bl.github.io/GroundForge/sheet.html?patch=5---5---%0A-CD632AB%0A56663222%0A5666-222;bricks
+[q]: https://d-bl.github.io/GroundForge/sheet.html?patch=5---5---%0A-CD632AB%0A56663222%0A5666-222;bricks
 [ts]: https://d-bl.github.io/GroundForge/sheet.html?patch=5-5-%0A-5--%0AB-C-%0A-5-5;bricks&patch=5632%0A34-7;bricks&patch=256-%0A---5%0AC3B-;bricks&patch=4373%0A5-53;bricks
 [z]: https://d-bl.github.io/GroundForge/sheet.html?patch=1483%0A8-48;bricks
-[bs]: https://d-bl.github.io/GroundForge/sheet.html?patch=L3H-AB-CD-%0A6-2H-256-L%0A-5----5---;bricks
+[bs]: https://d-bl.github.io/GroundForge/sheet.html?patch=5-25-56-%0A-5--5--5%0A5-C6-2B-%0A-56-5-25%0A5--5-5--%0A-2B-5-C6;checker
+
+The alphanumeric links go directly to pair/thread diagrams,
+need to fix #93 and #96 before adding links with a mix of stitches.
+
+[A1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=ct
+[B1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=ctctpctct
+[C1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=ctpct
+[D1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=cttpctt
+[E1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=ctpcttt
+[F1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=cttpcttt
+[G1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=cttt
 
 |   | A | B | C | D | E | F | G | H |
 |---|---|---|---|---|---|---|---|---|
-|  1 | [c], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page70.htm)![](w/page70a.gif) | [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page94.htm)![](w/page94a.gif) | [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page114.htm)![](w/page114a.gif) | [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page134.htm)![](w/page134a.gif) | [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page155.htm)![](w/page155a.gif) | [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page177.htm)![](w/page177a.gif) | [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page198.htm)![](w/page198a.gif) | [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page219.htm)![](w/page219a.gif) |
-|  2 | [v], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page71.htm)![](w/page71a.gif) | [v], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page95.htm)![](w/page95a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page115.htm)![](w/page115a.gif) | [bs], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page135.htm)![](w/page135a.gif) | [bs], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page156.htm)![](w/page156a.gif) | [ts], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page178.htm)![](w/page178a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page199.htm)![](w/page199a.gif) | [H2], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page220.htm)![](w/page220a.gif) |
+|  1 | [A1], [c], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page70.htm)![](w/page70a.gif) | [B1], [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page94.htm)![](w/page94a.gif) | [C1], [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page114.htm)![](w/page114a.gif) | [D1], [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page134.htm)![](w/page134a.gif) | [E1], [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page155.htm)![](w/page155a.gif) | [F1], [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page177.htm)![](w/page177a.gif) | [G1], [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page198.htm)![](w/page198a.gif) | [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page219.htm)![](w/page219a.gif) |
+|  2 | [v], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page71.htm)![](w/page71a.gif) | [v], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page95.htm)![](w/page95a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page115.htm)![](w/page115a.gif) | [bs], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page135.htm)![](w/page135a.gif) | [bs], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page156.htm)![](w/page156a.gif) | [ts], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page178.htm)![](w/page178a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page199.htm)![](w/page199a.gif) | [q], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page220.htm)![](w/page220a.gif) |
 |  3 | [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page73.htm)![](w/page73a.gif) | [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page96.htm)![](w/page96a.gif) | [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page117.htm)![](w/page117a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page136.htm)![](w/page136a.gif) | [k], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page157.htm)![](w/page157a.gif) | [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page179.htm)![](w/page179a.gif) | [t], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page200.htm)![](w/page200a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page221.htm)![](w/page221a.gif) |
 |  4 | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page74.htm)![](w/page74a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page97.htm)![](w/page97a.gif) | [k], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page118.htm)![](w/page118a.gif) | [k], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page137.htm)![](w/page137a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page158.htm)![](w/page158a.gif) | [v], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page180.htm)![](w/page180a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page201.htm)![](w/page201a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page222.htm)![](w/page222a.gif) |
 |  5 | [k], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page75.htm)![](w/page75a.gif) | [k], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page98.htm)![](w/page98a.gif) | [k], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page119.htm)![](w/page119a.gif) | [c], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page138.htm)![](w/page138a.gif) | [c], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page159.htm)![](w/page159a.gif) | [c], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page181.htm)![](w/page181a.gif) | [c], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page203.htm)![](w/page203a.gif) | [c], [W](http://gwydir.demon.co.uk/jo/lace/whiting/page224.htm)![](w/page224a.gif) |
