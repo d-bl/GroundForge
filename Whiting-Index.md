@@ -43,7 +43,7 @@ Under Construction
 [bs]: https://d-bl.github.io/GroundForge/sheet.html?patch=5-25-56-%0A-5--5--5%0A5-C6-2B-%0A-56-5-25%0A5--5-5--%0A-2B-5-C6;checker
 
 The alphanumeric links go directly to pair/thread diagrams,
-need to fix #93 and #96 before adding links with a mix of stitches.
+need to fix [#93] and [#96] before adding links with a mix of stitches.
 
 [#93]: https://github.com/d-bl/GroundForge/issues/93
 [#96]: https://github.com/d-bl/GroundForge/issues/96
