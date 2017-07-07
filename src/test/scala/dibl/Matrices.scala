@@ -35,6 +35,7 @@ object Matrices {
       .split("&patch=")
       .toSet
       .toStream
+      .distinct
     )
 
   def toAbsolute(args: String, rows: Int =22, cols:Int = 22, shiftUp: Int =0, shiftLeft: Int = 0): M = {
