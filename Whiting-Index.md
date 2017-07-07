@@ -7,7 +7,8 @@ Below the same index republished: each `W` links to a scanned page of the Whitin
 The lower case links go to a set of pricking prototypes in GroundForge with variations for pin positions.
 Each pricking in turn links to a diagram page where you can choose alternative stitches
 and show the corresponding pair and thread diagrams.
-Patterns not in the Tesselace [gallery] (such as H2) are figured out by [Marian Temples].
+GroundForge pattern links not in the Tesselace [gallery] (such as H2) are figured out by [Marian Temples],
+[bs] is from the [reversed engineering] help page by [Jo Pol].
 
 The same lower case letter links to the same set of pricking prototypes.
 Prototype means: adjustable to your own taste and needs with a third party editor.
@@ -19,8 +20,10 @@ What is shown is still just the tip of an ice berg.
 Note that GroundForge doesn't support picots nor sewings and in pair diagrams it treats tallies, plaits and stitch-pin-stitch like simple stitches.
 A `-` means the ground uses sewings and thus can't have a link to GroundForge, picots and tallies are too obvious to require such an annotation.
 
+[reversed engineering]: Reversed-engineering-of-patterns
 [gallery]: https://d-bl.github.io/GroundForge/gallery.html
 [Marian Temples]: https://github.com/MAETempels
+[Jo Pol]: https://github.com/jo-pol
 [index]: http://gwydir.demon.co.uk/jo/lace/whiting/index.htm#picindex
 [scan]: https://www2.cs.arizona.edu/patterns/weaving/books/whiting.jpg
 [Digital Archive]: https://www2.cs.arizona.edu/patterns/weaving/lace.html#books
