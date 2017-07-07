@@ -39,7 +39,7 @@ Under Construction
 [H2]: https://d-bl.github.io/GroundForge/sheet.html?patch=5---5---%0A-CD632AB%0A56663222%0A5666-222;bricks
 [ts]: https://d-bl.github.io/GroundForge/sheet.html?patch=5-5-%0A-5--%0AB-C-%0A-5-5;bricks&patch=5632%0A34-7;bricks&patch=256-%0A---5%0AC3B-;bricks&patch=4373%0A5-53;bricks
 [z]: https://d-bl.github.io/GroundForge/sheet.html?patch=1483%0A8-48;bricks
-[bs]; https://d-bl.github.io/GroundForge/sheet.html?patch=L3H-AB-CD-%0A6-2H-256-L%0A-5----5---;bricks
+[bs]: https://d-bl.github.io/GroundForge/sheet.html?patch=L3H-AB-CD-%0A6-2H-256-L%0A-5----5---;bricks
 
 |   | A | B | C | D | E | F | G | H |
 |---|---|---|---|---|---|---|---|---|
