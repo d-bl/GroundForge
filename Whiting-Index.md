@@ -45,6 +45,9 @@ Under Construction
 The alphanumeric links go directly to pair/thread diagrams,
 need to fix #93 and #96 before adding links with a mix of stitches.
 
+[#93]: https://github.com/d-bl/GroundForge/issues/93
+[#96]: https://github.com/d-bl/GroundForge/issues/96
+
 [A1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=ct
 [B1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=ctctpctct
 [C1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=ctpct
