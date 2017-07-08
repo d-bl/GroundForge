@@ -4,13 +4,13 @@ The book is available with a higher resolution in four PDF's at the late profess
 including a [scan] of the original index.
 
 Below the same index republished: each `W` links to a scanned page of the Whiting book with annotations by Jo Edkins.
-The lower case links go to a set of pricking prototypes in GroundForge with variations for pin positions.
-Each pricking in turn links to a diagram page where you can choose alternative stitches
-and show the corresponding pair and thread diagrams.
-GroundForge pattern links not in the Tesselace [gallery] (such as H2) are figured out by [Marian Temples],
-[bs] is from the [reversed engineering] page by [Jo Pol].
+The other links go to GroundForge. GroundForge pattern links not in the Tesselace [gallery]
+(such as [q] and [bs]) are figured out by [Marian Temples].
 
-The same lower case letter links to the same set of pricking prototypes.
+The alphanumeric links go directly to a page where you can show the pair/thread diagrams.
+
+Identical lower case links go to identical sets of pricking prototypes,
+in turn linking to a diagram page where you can choose alternative stitches.
 Prototype means: adjustable to your own taste and needs with a third party editor.
 Each pricking in such a set can be morphed into the others by nudging pins.
 Only four of the links (c,t,k,v) cover over fifty of the grounds, a ratio that illustrates
@@ -23,7 +23,6 @@ A `-` means the ground uses sewings and thus can't have a link to GroundForge, p
 [reversed engineering]: Reversed-engineering-of-patterns
 [gallery]: https://d-bl.github.io/GroundForge/gallery.html
 [Marian Temples]: https://github.com/MAETempels
-[Jo Pol]: https://github.com/jo-pol
 [index]: http://gwydir.demon.co.uk/jo/lace/whiting/index.htm#picindex
 [scan]: https://www2.cs.arizona.edu/patterns/weaving/books/whiting.jpg
 [Digital Archive]: https://www2.cs.arizona.edu/patterns/weaving/lace.html#books
@@ -42,21 +41,20 @@ Under Construction
 [z]: https://d-bl.github.io/GroundForge/sheet.html?patch=1483%0A8-48;bricks
 [bs]: https://d-bl.github.io/GroundForge/sheet.html?patch=5-25-56-%0A-5--5--5%0A5-C6-2B-%0A-56-5-25%0A5--5-5--%0A-2B-5-C6;checker
 
-The alphanumeric links go directly to pair/thread diagrams,
-need to fix [#93] and [#96] before adding links with a mix of stitches.
+Need to fix [#93] and [#96] before adding links with a mix of stitches.
 
 [#93]: https://github.com/d-bl/GroundForge/issues/93
 [#96]: https://github.com/d-bl/GroundForge/issues/96
 
-[A1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=ct
-[B1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=ctctpctct
-[C1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=ctpct
-[D1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=cttpctt
-[E1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=ctpcttt
-[F1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=cttpcttt
-[G1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=cttt
-[C3]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11%3Bbricks%3B7%3B5%3B0%3B0&s1=ctctpctctt
-[H9]: https://d-bl.github.io/GroundForge/index.html?m=5-%3Bbricks%3B7%3B7%3B0%3B0&s1=ctcttptctcttt
+[A1]: https://d-bl.github.io/GroundForge/index.html?m=88%0A11;bricks;7;5;0;0&s1=ct
+[B1]: https://d-bl.github.io/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=ctctpctct
+[C1]: https://d-bl.github.io/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=ctpct
+[D1]: https://d-bl.github.io/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=cttpctt
+[E1]: https://d-bl.github.io/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=ctpcttt
+[F1]: https://d-bl.github.io/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=cttpcttt
+[G1]: https://d-bl.github.io/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=cttt
+[C3]: https://d-bl.github.io/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=ctctpctctt
+[H9]: https://d-bl.github.io/GroundForge/index.html?m=5-;bricks;7;7;0;0&s1=ctcttptctcttt
 
 |   | A | B | C | D | E | F | G | H |
 |---|---|---|---|---|---|---|---|---|
