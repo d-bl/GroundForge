@@ -4,7 +4,7 @@ The book is available with a higher resolution in four PDF's at the late profess
 including a [scan] of the original index.
 
 Below the same index republished: each `W` links to a scanned page of the Whiting book with annotations by Jo Edkins.
-The other links go to GroundForge. GroundForge pattern links not in the Tesselace [gallery]
+The other links go to GroundForge, pattern links not in the Tesselace [gallery]
 (such as [q] and [bs]) are figured out by [Marian Temples].
 
 The alphanumeric links go directly to a page where you can show the pair/thread diagrams.
