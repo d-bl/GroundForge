@@ -4,7 +4,7 @@ The book is available with a higher resolution in four PDF's at the late profess
 including a [scan] of the original index.
 
 Below the same index republished: each `W` links to a scanned page of the Whiting book with annotations by Jo Edkins.
-The other links go to GroundForge, pattern links not in the Tesselace [gallery]
+The other links go to GroundForge, pattern links not in the [gallery] derived from [Tesselace]
 (such as [q] and [bs]) are figured out by [Marian Temples].
 
 The alphanumeric links go directly to a page where you can show the pair/thread diagrams.
@@ -22,6 +22,7 @@ A `-` means the ground uses sewings or three-pair stitches and thus can't have a
 
 [reversed engineering]: Reversed-engineering-of-patterns
 [gallery]: https://d-bl.github.io/GroundForge/gallery.html
+[Tesselace]: https://tesselace.com
 [Marian Temples]: https://github.com/MAETempels
 [index]: http://gwydir.demon.co.uk/jo/lace/whiting/index.htm#picindex
 [scan]: https://www2.cs.arizona.edu/patterns/weaving/books/whiting.jpg
