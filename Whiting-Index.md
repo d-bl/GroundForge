@@ -5,7 +5,7 @@ including a [scan] of the original index.
 
 Below the index republished once more: each `W` links to a scanned page of the Whiting book with annotations by Jo Edkins.
 The other links go to GroundForge, pattern links not in the [gallery] derived from [Tesselace]
-(such as [q] and [bs]) are figured out by [Marian Temples].
+(such as [q] and [bs]) are figured out by [Marian Tempels].
 
 The alphanumeric links go directly to a page where you can show the pair/thread diagrams.
 
