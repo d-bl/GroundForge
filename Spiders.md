@@ -45,6 +45,9 @@ Mrs. Whiting ground no G4.
 
 > 5-27-256-46-, -5----5----5, 5-CD-B3C-AB-, -56866-22125
 
+## Spider with a hole, in a square
+> 4x4 legs: -5---5---5, 5-CD632AB-, -566632225, 56666-2222, 5666-5-222
+
 ***
 
 
