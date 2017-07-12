@@ -16,9 +16,9 @@ Nrs. F2 and E4 in mrs. Whiting index are connected spiders, with 4x2 and 4x3 leg
 Another nice ground can be made when using the corresponding checkers-matrix, but set the tiling parameter to "brick".
 
 ## Spiders with a hole
-> 4x2 legs: -5-5; 5-5-    
+> 4x2 legs: 5-5-, -5-5     
 > 4x3 legs: 5-5-5-, -5---5, 5-C-B-, -5-5-5, 5-5-5-     
-> 4x4 legs: (follows)
+> 4x4 legs: 5-25-56-, -5-----5, 5-CD-AB-, -56-5-25, 56-535-2, 5-56-25-   
 
 Mind: to get a clear hole in te middle, the stiches in the eye of the spider have to be chosen like the following example for the 4x3 legged spider.
 > ctc E5=ctc**r**ctc A5=ctc**l**ctc D1=ctcll B2=ctcll C3=ctctt B1=ctcrr D2=ctcrr
