@@ -4,6 +4,8 @@ Pictures follow as soon as I learn how to.
 
 Adding legs to a spider is the equivalent of adding a ring to it. So, after discovering the matrix for a 4x3 legged spider, a 4x4 or bigger spider is easy. 
 
+### UNDER CONSTRUCTION
+
 ## Spiders, traditional
 Nrs. F2 and E4 in mrs. Whiting index are connected spiders, with 4x2 and 4x3 legs.
 > [[4x2 legs|mt_st2]], [[4x3 legs|mt_st3]], [[4x4 legs|st4]], [[4x5 legs|st5]]  
@@ -13,9 +15,9 @@ Please note: for a traditional spider, a stitch like ctctctc has to be chosen in
 Another nice ground can be made when using the corresponding checkers-matrix, but set the tiling parameter to "brick".
 
 [mt_st2]: https://d-bl.github.io/GroundForge/index.html?m=5-5-%0A-5-5%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20B2%3Dctclctcr%20D2%3Dctcrctcl&s2=cross%3Dctc%20twist%3Dctc
-[mt_st3]: https://d-bl.github.io/GroundForge/index.html?m=-5----%20B-CD-A%20256-5-%20-5-535%205-56-2%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc
-[st4]: https://d-bl.github.io/GroundForge/index.html?m=-5------%2C%20%20%20%20B-CDD-AA%2C%20%20%20%202566-5-2%2C%20%20%20%20256-535-%2C%20%20%20%20-5-56325%2C%20%20%20%205-566-22%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20H5%3Dctctctc
-[st5]: https://d-bl.github.io/GroundForge/index.html?m=-5--------%2C%20%20%20%20B-CDDD-AAA%2C%20%20%20%2025666-5-22%2C%20%20%20%202566-535-2%2C%20%20%20%20256-56325-%2C%20%20%20%20-5-5663225%2C%20%20%20%205-5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20I6%3Dtctct
+[mt_st3]: https://d-bl.github.io/GroundForge/index.html?m=-5----%0B-CD-A%0256-5-%0-5-535%05-56-2%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc
+[st4]: https://d-bl.github.io/GroundForge/index.html?m=-5------%0B-CDD-AA%02566-5-2%0256-535-%0-5-56325%05-566-22%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20H5%3Dctctctc
+[st5]: https://d-bl.github.io/GroundForge/index.html?m=-5--------%0B-CDDD-AAA%025666-5-22%02566-535-2%0256-56325-%0-5-5663225%05-5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20I6%3Dtctct
 
 
 ## Spiders with a hole
@@ -24,7 +26,7 @@ Another nice ground can be made when using the corresponding checkers-matrix, bu
 Mind: to get a clear hole in te middle, the stiches in the eye of the spider have to be chosen like the following example for the 4x3 legged spider.
 > ctc E5=ctc**r**ctc A5=ctc**l**ctc D1=ctcll B2=ctcll C3=ctctt B1=ctcrr D2=ctcrr
 
-[sh2]: https://d-bl.github.io/GroundForge/index.html?m=-5--------%2C%20%20%20%20B-CDDD-AAA%2C%20%20%20%2025666-5-22%2C%20%20%20%202566-535-2%2C%20%20%20%20256-56325-%2C%20%20%20%20-5-5663225%2C%20%20%20%205-5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20I6%3Dtctct
+[sh2]: https://d-bl.github.io/GroundForge/index.html?m=-5--------%0B-CDDD-AAA%2C%025666-5-22%02566-535-2%0256-56325-%2C%20%20%20%20-5-5663225%2C%20%20%20%205-5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20I6%3Dtctct
 [sh3]: https://d-bl.github.io/GroundForge/index.html?m=5-5-5-%2C%20-5---5%2C%205-C-B-%2C%20-5-5-5%2C%205-5-5-%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20E5%3Dctcrctc%20A5%3Dctclctc%20D1%3Dctcll%20B2%3Dctcll%20C3%3Dctctt%20B1%3Dctcrr%20D2%3Dctcrr
 [sh4]: https://d-bl.github.io/GroundForge/index.html?m=5-25-56-%2C%20-5-----5%2C%205-CD-AB-%2C%20-56-5-25%2C%2056-535-2%2C%205-56-25-%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20F6%3Dctcrrctc%20H6%3Dctcllctc%20D1%3Dctcll%20E2%3Dctcll%20B3%3Dctcll%20C4%3Dctctt%20B1%3Dctcrr%20A2%3Dctcrr%20D3%3Dctcrr
 
