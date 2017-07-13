@@ -12,7 +12,7 @@ Please note: for a traditional spider, a stitch like ctctctc has to be chosen in
 
 Another nice ground can be made when using the corresponding checkers-matrix, but set the tiling parameter to "brick".
 
-       https://d-bl.github.io/GroundForge/index.html?m=88%0A11;bricks;7;5;0;0&s1=ct
+       
 
 [st2]: https://d-bl.github.io/GroundForge/index.html?m=-5--%0B-C-%0-5-5%05-5-%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20B3%3Dctcttctc%20A4%3Dctcll%20D1%3Dctctt%20%20C4%3Dctcrr
 [st3]: https://d-bl.github.io/GroundForge/index.html?m=-5----%20B-CD-A%20256-5-%20-5-535%205-56-2%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc
