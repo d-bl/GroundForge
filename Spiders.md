@@ -1,11 +1,10 @@
 # Spiders
-On this page we show examples of matrices for grounds with spiders. All matrices are "bricks". Adjust the number of rows and collumns to 24. In the matrices on this page we have added colons for clearance. Groundforge ignores (semi-)colons.
+On this page we show examples of matrices for grounds with spiders. All matrices are "bricks". Adjust the number of rows and collumns to 24. In the matrices on this page we have added colons for clearance. Groundforge ignores (semi-)colons.  
 Pictures follow as soon as I learn how to.  
-Please note: for a traditional spider, a stitch like ctctctc has to be chosen in the heart of the spider.
 
 Adding legs to a spider is the equivalent of adding a ring to it. So, after discovering the matrix for a 4x3 legged spider, a 4x4 or bigger spider is easy. 
 
-## Spiders
+## Spiders, traditional
 Nrs. F2 and E4 in mrs. Whiting index are connected spiders, with 4x2 and 4x3 legs. The following matrices work.
 > 4x2 legs: -5--, B-C-,   -5-5,    5-5-    
 > 4x3 legs: -5----,    B-CD-A,    256-5-,    -5-535,    5-56-2    
@@ -13,6 +12,8 @@ Nrs. F2 and E4 in mrs. Whiting index are connected spiders, with 4x2 and 4x3 leg
 > 4x5 legs: -5--------,    B-CDDD-AAA,    25666-5-22,    2566-535-2,    256-56325-,    -5-5663225,    5-5666-222
 
 (Please note: these matrices starts with "-".)   
+Please note: for a traditional spider, a stitch like ctctctc has to be chosen in the heart of the spider.
+
 Another nice ground can be made when using the corresponding checkers-matrix, but set the tiling parameter to "brick".
 
 ## Spiders with a hole
