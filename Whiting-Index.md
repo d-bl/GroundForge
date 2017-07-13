@@ -23,7 +23,7 @@ A `-` means the ground uses sewings or three-pair stitches and thus can't have a
 [reversed engineering]: Reversed-engineering-of-patterns
 [gallery]: https://d-bl.github.io/GroundForge/gallery.html
 [Tesselace]: https://tesselace.com
-[Marian Temples]: https://github.com/MAETempels
+[Marian Tempels]: https://github.com/MAETempels
 [index]: http://gwydir.demon.co.uk/jo/lace/whiting/index.htm#picindex
 [scan]: https://www2.cs.arizona.edu/patterns/weaving/books/whiting.jpg
 [Digital Archive]: https://www2.cs.arizona.edu/patterns/weaving/lace.html#books
