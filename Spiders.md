@@ -12,7 +12,9 @@ Please note: for a traditional spider, a stitch like ctctctc has to be chosen in
 
 Another nice ground can be made when using the corresponding checkers-matrix, but set the tiling parameter to "brick".
 
-[st2]: https://d-bl.github.io/GroundForge/index.html?m=-5--%2C%20B-C-%2C%20-5-5%2C%205-5-%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20B3%3Dctcttctc%20A4%3Dctcll%20D1%3Dctctt%20%20C4%3Dctcrr
+       https://d-bl.github.io/GroundForge/index.html?m=88%0A11;bricks;7;5;0;0&s1=ct
+
+[st2]: https://d-bl.github.io/GroundForge/index.html?m=-5--%0B-C-%0-5-5%05-5-%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20B3%3Dctcttctc%20A4%3Dctcll%20D1%3Dctctt%20%20C4%3Dctcrr
 [st3]: https://d-bl.github.io/GroundForge/index.html?m=-5----%20B-CD-A%20256-5-%20-5-535%205-56-2%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc
 [st4]: https://d-bl.github.io/GroundForge/index.html?m=-5------%2C%20%20%20%20B-CDD-AA%2C%20%20%20%202566-5-2%2C%20%20%20%20256-535-%2C%20%20%20%20-5-56325%2C%20%20%20%205-566-22%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20H5%3Dctctctc
 [st5]: https://d-bl.github.io/GroundForge/index.html?m=-5--------%2C%20%20%20%20B-CDDD-AAA%2C%20%20%20%2025666-5-22%2C%20%20%20%202566-535-2%2C%20%20%20%20256-56325-%2C%20%20%20%20-5-5663225%2C%20%20%20%205-5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20I6%3Dtctct
