@@ -6,7 +6,7 @@ Adding legs to a spider is the equivalent of adding a ring to it. So, after disc
 
 ## Spiders, traditional
 Nrs. F2 and E4 in mrs. Whiting index are connected spiders, with 4x2 and 4x3 legs. The following matrices work.
-> 4x2 legs: -5--, B-C-,   -5-5,    5-5-    
+> 4x2 legs: -5--, B-C-,   -5-5,    5-5-    [st2]  
 > 4x3 legs: -5----,    B-CD-A,    256-5-,    -5-535,    5-56-2    
 > 4x4 legs: -5------,    B-CDD-AA,    2566-5-2,    256-535-,    -5-56325,    5-566-22    
 > 4x5 legs: -5--------,    B-CDDD-AAA,    25666-5-22,    2566-535-2,    256-56325-,    -5-5663225,    5-5666-222
@@ -15,6 +15,8 @@ Nrs. F2 and E4 in mrs. Whiting index are connected spiders, with 4x2 and 4x3 leg
 Please note: for a traditional spider, a stitch like ctctctc has to be chosen in the heart of the spider.
 
 Another nice ground can be made when using the corresponding checkers-matrix, but set the tiling parameter to "brick".
+
+[st2]: https://d-bl.github.io/GroundForge/index.html?m=-5--%2C%20B-C-%2C%20-5-5%2C%205-5-%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20B3%3Dctcttctc%20A4%3Dctcll%20D1%3Dctctt%20%20C4%3Dctcrr
 
 ## Spiders with a hole
 > 4x2 legs: 5-5-, -5-5     
