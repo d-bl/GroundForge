@@ -16,7 +16,8 @@ Please note: for a traditional spider, a stitch like ctctctc has to be chosen in
 [st2]: https://d-bl.github.io/GroundForge/index.html?m=5-5-%0A-5-5%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20B2%3Drctclctcr%20D2%3Dlctcrctcl
 [st3]: https://d-bl.github.io/GroundForge/index.html?m=-5----%0AB-CD-A%0A256-5-%0A-5-535%0A5-56-2%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc
 [st4]: https://d-bl.github.io/GroundForge/index.html?m=-5------%0AB-CDD-AA%0A2566-5-2%0A256-535-%0A-5-56325%0A5-566-22%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20H5%3Dctctctc
-[st5]: https://d-bl.github.io/GroundForge/index.html?m=-5--------%0AB-CDDD-AAA%0A25666-5-22%0A2566-535-2%0A256-56325-%0A-5-5663225%05-5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20I6%3Dtctct
+[st5]: https://d-bl.github.io/GroundForge/index.html?m=-5--------%0AB-CDDD-AAA%0A25666-5-22%0A2566-535-2%0A256-56325-%0A-5-5663225%0A5-5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20I6%3Dtctct&s2=cross%3Dctc
+
 [sa1]: https://d-bl.github.io/GroundForge/index.html?m=-5--%0AB-C-%0A-5-5%0A5-5-%0A---5%0AC-B-%0A-5-5%0A5-5-%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20D5%3Dtctct&s2=cross%3Dctc
 
 ## Spiders with a hole
