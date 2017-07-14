@@ -37,8 +37,8 @@ Mrs. Whitings ground nrs G2 and H2.
 Ground G2 has the following working scheme: (picture follows)  
 It consists of a 3 legged spider with a ring in double stitch, making it a four legged spider. This spider is embedded in a square. Several of these squares are connected.  
 
-> [[4x2 legs|sq2]], [[4x3 legs|sq3]], [[4x4 legs|sq4]], [[4x5 legs|sq5]]  
-> [[4x6 legs|sq6]], [[4x7 legs|sq7]], [[4x8 legs|sq8]]
+> [4x2 legs][sq2], [4x3 legs][sq3], [4x4 legs][sq4], [4x5 legs][sq5] 
+> [4x6 legs][sq6], [4x7 legs][sq7], [4x8 legs][sq8]
 (not finished yet)
   
 [sq2]: https://d-bl.github.io/GroundForge/index.html?m=5--5--%0-C632B%0566-22%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20F3%3Dctc%20E1%3Dctc%20A1%3Dctc%20F2%3Dctcttctc%20B3%3Dctcl%20D3%3Dctcr
@@ -49,12 +49,12 @@ It consists of a 3 legged spider with a ring in double stitch, making it a four 
 ## Binche spider (bolletje)
 
 Mrs. Whiting ground no G4.
-> [[binche spider|bb]]
+> [binche spider][bb]
 
 [bb]: https://d-bl.github.io/GroundForge/index.html?m=5-27-256-46-%0-5----5----5%05-CD-B3C-AB-%0-56866-22125%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20I1%3Dctc%20H2%3Dctc%20J2%3Dctc%20I3%3Dctc%20G3%3Dctc%20K3%3Dctc%20H4%3Dctc%20J4%3Dctc%20C1%3Dctc%20A1%3Dctcl%20E1%3Dctcr%20B2%3Dctcl%20D2%3Dctcr
 
 ## Spider with a hole, in a square
-> [[4x4 legs|shq4]] 
+> [4x4 legs][shq4]
 
 [shq4]: https://d-bl.github.io/GroundForge/index.html?m=-5---5---5%05-CD632AB-%0-566632225%056666-2222%05666-5-222%3Bbricks%3B24%3B24%3B0%3B0&s1=G4%3Dtctct%20I4%3Dtctct%20C4%3Dctct%20B5%3Dctct%20A1%3Dctct%20E2%3Dctct%20D3%3Dctct%20D5%3Dctct%20E1%3Dctct%20A2%3Dctct%20B3%3Dctct%20C4%3Dctct
 
