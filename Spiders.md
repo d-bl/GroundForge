@@ -26,7 +26,7 @@ Please note: for a traditional spider, a stitch like ctctctc has to be chosen in
 Mind: to get a clear hole in te middle, the stiches in the eye of the spider have to be chosen like the following example for the 4x3 legged spider.
 > ctc E5=ctc**r**ctc A5=ctc**l**ctc D1=ctcll B2=ctcll C3=ctctt B1=ctcrr D2=ctcrr
 
-[sh2]: https://d-bl.github.io/GroundForge/index.html?m=-5--------%0AB-CDDD-AAA%0A25666-5-22%0A2566-535-2%0A256-56325-%0A-5-5663225%0A5-5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20I6%3Dtctct
+[sh2]: https://d-bl.github.io/GroundForge/index.html?m=5-5-%0A-5-5%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20B2%3Drctclctcr%20D2%3Dlctcrctcl
 [sh3]: https://d-bl.github.io/GroundForge/index.html?m=5-5-5-%0A-5---5%0A5-C-B-%0A-5-5-5%0A5-5-5-%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20E5%3Dctcrctc%20A5%3Dctclctc%20D1%3Dctcll%20B2%3Dctcll%20C3%3Dctctt%20B1%3Dctcrr%20D2%3Dctcrr
 [sh4]: https://d-bl.github.io/GroundForge/index.html?m=5-25-56-%0A-5-----5%0A5-CD-AB-%0A-56-5-25%0A56-535-2%0A5-56-25-%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20F6%3Dctcrrctc%20H6%3Dctcllctc%20D1%3Dctcll%20E2%3Dctcll%20B3%3Dctcll%20C4%3Dctctt%20B1%3Dctcrr%20A2%3Dctcrr%20D3%3Dctcrr
 
