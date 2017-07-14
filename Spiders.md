@@ -8,14 +8,14 @@ Adding legs to a spider is the equivalent of adding a ring to it. So, after disc
 
 ## Spiders, traditional
 Nrs. F2 and E4 in mrs. Whiting index are connected spiders, with 4x2 and 4x3 legs.
-> [[4x2 legs|mt_st2]], [[4x3 legs|mt_st3]], [[4x4 legs|st4]], [[4x5 legs|st5]]  
+> [st2], [[4x2 legs|st2]], [[4x3 legs|st3]], [[4x4 legs|st4]], [[4x5 legs|st5]]  
 
 Please note: for a traditional spider, a stitch like ctctctc has to be chosen in the heart of the spider.
 
 Another nice ground can be made when using the corresponding checkers-matrix, but set the tiling parameter to "brick".
 
-[mt_st2]: https://d-bl.github.io/GroundForge/index.html?m=5-5-%0A-5-5%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20B2%3Dctclctcr%20D2%3Dctcrctcl&s2=cross%3Dctc%20twist%3Dctc
-[mt_st3]: https://d-bl.github.io/GroundForge/index.html?m=-5----%0B-CD-A%0256-5-%0-5-535%05-56-2%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc
+[st2]: https://d-bl.github.io/GroundForge/index.html?m=5-5-%0A-5-5%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20B2%3Dctclctcr%20D2%3Dctcrctcl&s2=cross%3Dctc%20twist%3Dctc
+[st3]: https://d-bl.github.io/GroundForge/index.html?m=-5----%0B-CD-A%0256-5-%0-5-535%05-56-2%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc
 [st4]: https://d-bl.github.io/GroundForge/index.html?m=-5------%0B-CDD-AA%02566-5-2%0256-535-%0-5-56325%05-566-22%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20H5%3Dctctctc
 [st5]: https://d-bl.github.io/GroundForge/index.html?m=-5--------%0B-CDDD-AAA%025666-5-22%02566-535-2%0256-56325-%0-5-5663225%05-5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20I6%3Dtctct
 
