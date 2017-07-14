@@ -4,14 +4,13 @@ Pictures follow as soon as I learn how to.
 
 Adding legs to a spider is the equivalent of adding a ring to it. So, after discovering the matrix for a 4x3 legged spider, a 4x4 or bigger spider is easy. 
 
-### UNDER CONSTRUCTION
 ## Spiders, traditional
 Nrs. F2 and E4 in mrs. Whiting index are connected spiders, with 4x2 and 4x3 legs.
 > [4x2 legs][st2], [4x3 legs][st3], [4x4 legs][st4], [4x5 legs][st5]  
 
 Please note: for a traditional spider, a stitch like ctctctc has to be chosen in the heart of the spider.
 
-[Another][sa1] nice ground can be made when using the corresponding checkers-matrix, but set the tiling parameter to "brick".
+[Another][sa1] ground can be made using the corresponding checkers-matrix, but set the tiling parameter to "brick".
 
 [st2]: https://d-bl.github.io/GroundForge/index.html?m=-5--%0AB-C-%0A-5-5%0A5-5-%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20B3%3Dctcttctc%20A4%3Dctcll%20D1%3Dctctt%20%20C4%3Dctcrr&s2=cross%3Dctc
 [st3]: https://d-bl.github.io/GroundForge/index.html?m=-5----%0AB-CD-A%0A256-5-%0A-5-535%0A5-56-2%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc
@@ -32,7 +31,7 @@ Please note: to get a clear hole in te middle, the stiches in the eye of the spi
 
 ## Spiders in a square
 
-Mrs. Whitings ground nrs G2 and H2.
+Mrs. Whiting's index nrs G2 and H2.
 
 Ground G2 has the following working scheme: (picture follows)  
 It consists of a 3 legged spider with a ring in double stitch, making it a four legged spider. This spider is embedded in a square. Several of these squares are connected.  
