@@ -41,7 +41,7 @@ It consists of a 3 legged spider with a ring in double stitch, making it a four 
 > [4x6 legs][sq6], [4x7 legs][sq7], [4x8 legs][sq8]
 (not finished yet)
   
-[sq2]: https://d-bl.github.io/GroundForge/index.html?m=5--5--%0A-C632B%0566-22%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20F3%3Dctc%20E1%3Dctc%20A1%3Dctc%20F2%3Dctcttctc%20B3%3Dctcl%20D3%3Dctcr
+[sq2]: https://d-bl.github.io/GroundForge/index.html?m=5--5--%0A-C632B%0A566-22%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20F3%3Dctc%20E1%3Dctc%20A1%3Dctc%20F2%3Dctcttctc%20B3%3Dctcl%20D3%3Dctcr
 [sq3]: https://d-bl.github.io/GroundForge/index.html?m=5---5---%0A-CD632AB%0A56663222%0A5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20&
 [sq4]: https://d-bl.github.io/GroundForge/index.html?m=5----5----%0A-CDD632AAB%0A5666632222%0A5666632222%0A56666-2222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20%20C1%3Dctc%20G2%3Dctc%20I2%3Dctc%20F3%3Dctc%20J3%3Dctc%20H2%3Dctc%20G3%3Dctc%20I3%3Dctc%20G5%3Dctc%20I5%3Dctc%20H1%3Dctc%20H4%3Dcttc%20F5%3Dctcl%20G1%3Dctcl%20J5%3Dctcr%20I1%3Dctcr%20
 
