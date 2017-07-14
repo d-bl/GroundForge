@@ -23,8 +23,7 @@ Please note: for a traditional spider, a stitch like ctctctc has to be chosen in
 ## Spiders with a hole
 > [4x2 legs][sh2], [4x3 legs][sh3], [4x4 legs][sh4]
 
-Mind: to get a clear hole in te middle, the stiches in the eye of the spider have to be chosen like the following example for the 4x3 legged spider.
-> ctc E5=ctc**r**ctc A5=ctc**l**ctc D1=ctcll B2=ctcll C3=ctctt B1=ctcrr D2=ctcrr
+Mind: to get a clear hole in te middle, the stiches in the eye of the spider have to be chosen like the example for the 4x3 legged spider.
 
 [sh2]: https://d-bl.github.io/GroundForge/index.html?m=5-5-%0A-5-5%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20B2%3Drctclctcr%20D2%3Dlctcrctcl
 [sh3]: https://d-bl.github.io/GroundForge/index.html?m=5-5-5-%0A-5---5%0A5-C-B-%0A-5-5-5%0A5-5-5-%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20E5%3Dctcrctc%20A5%3Dctclctc%20D1%3Dctcll%20B2%3Dctcll%20C3%3Dctctt%20B1%3Dctcrr%20D2%3Dctcrr
