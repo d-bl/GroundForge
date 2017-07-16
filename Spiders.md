@@ -41,9 +41,9 @@ Larger spiders are possible, but it will take Groundforge some time to generate 
 > [4x2 legs][sq2], [4x3 legs][sq3], [4x4 legs][sq4], [4x5 legs][sq5] 
   
 [sq2]: https://d-bl.github.io/GroundForge/index.html?m=5--5--%0A-C632B%0A566-22%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20F3%3Dctc%20E1%3Dctc%20A1%3Dctc%20F2%3Dctcttctc%20B3%3Dctcl%20D3%3Dctcr
-[sq3]: https://d-bl.github.io/GroundForge/index.html?m=5---5---%0A-CD632AB%0A56663222%0A5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct
+[sq3]: https://d-bl.github.io/GroundForge/index.html?m=5---5---%0A-CD632AB%0A56663222%0A5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20C4%3Dctc%20F1%3Dctc%20E2%3Dctc%20H1%3Dctc%20G1%3Dctc%20F2%3Dctc%20A2%3Dctc%20H2%3Dctc%20G3%3Dctcctc%20F4%3Dctc%20%20H4%3Dctc%20%20C1%3Dctc%20E4%3Dctcl%20%20B1%3Dctcl%20A4%3Dctcr%20D1%3Dctcr&s2=cross%3Dctc
 [sq4]: https://d-bl.github.io/GroundForge/index.html?m=5----5----%0A-CDD632AAB%0A5666632222%0A5666632222%0A56666-2222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20%20C1%3Dctc%20G2%3Dctc%20I2%3Dctc%20F3%3Dctc%20J3%3Dctc%20H2%3Dctc%20G3%3Dctc%20I3%3Dctc%20G5%3Dctc%20I5%3Dctc%20H1%3Dctc%20H4%3Dcttc%20F5%3Dctcl%20G1%3Dctcl%20J5%3Dctcr%20I1%3Dctcr
-[sq5]: https://d-bl.github.io/GroundForge/index.html?m=5-----5-----%0A-CDDD632AAAB%0A566666322222%0A566666322222%0A566666322222%0A566666-22222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct&s2=cross%3Dctc
+[sq5]: https://d-bl.github.io/GroundForge/index.html?m=5-----5-----%0A-CDDD632AAAB%0A566666322222%0A566666322222%0A566666322222%0A566666-22222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct
 
 
 
