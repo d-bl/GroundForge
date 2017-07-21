@@ -23,7 +23,7 @@ Please note: for a traditional spider, a stitch like ctctctc has to be chosen in
 ## Spiders with an eye
 > [4x2 legs][sh2], [4x3 legs][sh3], [4x4 legs][sh4]
 
-Please note: to get a clear eye in te middle, the stiches in the eye of the spider have to be chosen like the example for the 4x3 legged spider.
+Please note: to get a clear eye in te middle, the stitches in the eye of the spider have to be chosen like the example for the 4x3 legged spider.
 
 [sh2]: https://d-bl.github.io/GroundForge/index.html?m=5-5-%0A-5-5%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20B2%3Drctclctcr%20D2%3Dlctcrctcl
 [sh3]: https://d-bl.github.io/GroundForge/index.html?m=5-5-5-%0A-5---5%0A5-C-B-%0A-5-5-5%0A5-5-5-%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20E5%3Dctcrctc%20A5%3Dctclctc%20D1%3Dctcll%20B2%3Dctcll%20C3%3Dctctt%20B1%3Dctcrr%20D2%3Dctcrr
@@ -55,8 +55,7 @@ Mrs. Whiting ground no G4.
 [bb]: https://d-bl.github.io/GroundForge/index.html?m=5-27-256-46-%0A-5----5----5%0A5-CD-B3C-AB-%0A-56866-22125%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20I1%3Dctc%20H2%3Dctc%20J2%3Dctc%20I3%3Dctc%20G3%3Dctc%20K3%3Dctc%20H4%3Dctc%20J4%3Dctc%20C1%3Dctc%20A1%3Dctcl%20E1%3Dctcr%20B2%3Dctcl%20D2%3Dctcr
 
 ## Spider with an eye, in a square 
-> [4x3 legs][shq3]   
-> [4x4 legs][shq4]
+> [4x3 legs][shq3], [4x4 legs][shq4]
 
 [shq3]: https://d-bl.github.io/GroundForge/index.html?m=-5--5--5%0A5-C632B-%0A-566-225%0A566-5-22%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20C3%3Dtctct%20B4%3Dlctct%20E1%3Dlctct%20D2%3Dlctct%20D4%3Drctct%20A1%3Drctct%20B2%3Drctct%20F3%3Dctcrctc%20H3%3Dctclctc
 [shq4]: https://d-bl.github.io/GroundForge/index.html?m=-5---5---5%0A5-CD632AB-%0A-566632225%0A56666-2222%0A5666-5-222%3Bbricks%3B24%3B24%3B0%3B0&s1=G4%3Dtctct%20I4%3Dtctct%20C4%3Dctct%20B5%3Dctct%20A1%3Dctct%20E2%3Dctct%20D3%3Dctct%20D5%3Dctct%20E1%3Dctct%20A2%3Dctct%20B3%3Dctct%20C4%3Dctct
