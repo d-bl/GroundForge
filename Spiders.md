@@ -1,4 +1,14 @@
-# Spiders
+# Spiders   
+
+## Table of contents
+- [Introduction]
+- [Traditional spiders](#c1)
+- [Spiders with an eye]
+- [Spiders in a square]
+- [Binche spiders]
+- [Spiders with an eye, in a square]
+
+## Introduction
 On this page we show (via links) examples of matrices for grounds with spiders.     
 Pictures follow as soon as I learn how to.  
 
@@ -11,7 +21,7 @@ Nrs. F2 and E4 in mrs. Whiting's index are connected spiders, with 4x2 and 4x3 l
 
 Please note: for a traditional spider, a stitch like ctctctc has to be chosen in the heart of the spider.
 
-[Another][sa1] ground can be made using the corresponding checkers-matrix, but set the tiling parameter to "brick".
+[Another][sa1] ground can be obtained using the corresponding checkers-matrix, but set the tiling parameter to "brick".
 
 [st2]: https://d-bl.github.io/GroundForge/index.html?m=-5--%0AB-C-%0A-5-5%0A5-5-%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20B3%3Dctcttctc%20A4%3Dctcll%20D1%3Dctctt%20%20C4%3Dctcrr
 [st3]: https://d-bl.github.io/GroundForge/index.html?m=-5----%0AB-CD-A%0A256-5-%0A-5-535%0A5-56-2%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc
