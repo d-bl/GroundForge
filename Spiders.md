@@ -2,11 +2,11 @@
 
 ## Table of contents
 - [Introduction](#introduction)
-- [Traditional spiders](#traditional_spiders)
-- [Spiders with an eye](#spiders_with_an_eye)
-- [Spiders in a square](#spiders_in_a_square)
-- [Binche spiders](#binche_spiders)
-- [Spiders with an eye, in a square](spiders_with_a_eye_in_a_square)
+- [Traditional spiders](#traditional-spiders)
+- [Spiders with an eye](#spiders-with-an-eye)
+- [Spiders in a square](#spiders-in-a-square)
+- [Binche spiders](#binche-spiders)
+- [Spiders with an eye, in a square](#spiders-with-an-eye-in-a-square)
 
 ## Introduction
 On this page we show (via links) examples of matrices for grounds with spiders.     
@@ -57,14 +57,13 @@ Larger spiders are possible, but it will take Groundforge some time to generate 
 
 
 
-## Binche spider (bolletje)
-
-Mrs. Whiting ground no G4.
+## Binche spiders 
+"Bolletje". Mrs. Whiting ground no G4.
 > [binche spider][bb]
 
 [bb]: https://d-bl.github.io/GroundForge/index.html?m=5-27-256-46-%0A-5----5----5%0A5-CD-B3C-AB-%0A-56866-22125%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20I1%3Dctc%20H2%3Dctc%20J2%3Dctc%20I3%3Dctc%20G3%3Dctc%20K3%3Dctc%20H4%3Dctc%20J4%3Dctc%20C1%3Dctc%20A1%3Dctcl%20E1%3Dctcr%20B2%3Dctcl%20D2%3Dctcr
 
-## Spider with an eye, in a square 
+## Spiders with an eye in a square 
 > [4x3 legs][shq3], [4x4 legs][shq4]
 
 [shq3]: https://d-bl.github.io/GroundForge/index.html?m=-5--5--5%0A5-C632B-%0A-566-225%0A566-5-22%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20C3%3Dtctct%20B4%3Dlctct%20E1%3Dlctct%20D2%3Dlctct%20D4%3Drctct%20A1%3Drctct%20B2%3Drctct%20F3%3Dctcrctc%20H3%3Dctclctc
