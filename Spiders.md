@@ -1,12 +1,12 @@
 # Spiders   
 
 ## Table of contents
-- [Introduction]
-- [Traditional spiders](#c1)
-- [Spiders with an eye]
-- [Spiders in a square]
-- [Binche spiders]
-- [Spiders with an eye, in a square]
+- [Introduction](#introduction)
+- [Traditional spiders](#traditional_spiders)
+- [Spiders with an eye](#spiders_with_an_eye)
+- [Spiders in a square](#spiders_in_a_square)
+- [Binche spiders](#binche_spiders)
+- [Spiders with an eye, in a square](spiders_with_a_eye_in_a_square)
 
 ## Introduction
 On this page we show (via links) examples of matrices for grounds with spiders.     
@@ -15,7 +15,7 @@ Pictures follow as soon as I learn how to.
 Adding legs to a spider is the equivalent of adding a ring to it. So, after discovering the matrix for a 4x3 legged spider, a 4x4 or bigger spider is easy.    
 For the scheme's we chose to connect the spiders with a diagonal. Of course, connecting with a horizontal line will also work. For the spiders in a square, the connection between spider and square has to be horizontal. (pictures follow)
 
-## Spiders, traditional
+## Traditional spiders
 Nrs. F2 and E4 in mrs. Whiting's index are connected spiders, with 4x2 and 4x3 legs.
 > [4x2 legs][st2], [4x3 legs][st3], [4x4 legs][st4], [4x5 legs][st5]  
 
