@@ -47,6 +47,8 @@ Ground G2 has the following working scheme: (picture follows)
 It consists of a 3 legged spider with a ring in whole stitch and twist, making it a four legged spider. This spider is embedded in a square. Several of these squares are connected.  
 Larger spiders are possible, but it will take Groundforge some time to generate te pictures.
 
+![working scheme](https://github.com/MAETempels/maeTempels/blob/images/spin%204s%20wt.bmp)
+
 > [4x2 legs][sq2], [4x3 legs][sq3], [4x4 legs][sq4], [4x5 legs][sq5] 
   
 [sq2]: https://d-bl.github.io/GroundForge/index.html?m=5--5--%0A-C632B%0A566-22%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20F3%3Dctc%20E1%3Dctc%20A1%3Dctc%20F2%3Dctcttctc%20B3%3Dctcl%20D3%3Dctcr
