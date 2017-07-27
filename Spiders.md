@@ -10,7 +10,7 @@
    
 ## Introduction
 On this page we show (via links) examples of matrices for grounds with spiders.     
-Pictures follow as soon as I learn how to.  
+More pictures follow.
 
 Adding legs to a spider is the equivalent of adding a ring to it. So, after discovering the matrix for a 4x3 legged spider, a 4x4 or bigger spider is easy.    
 For the scheme's we chose to connect the spiders with a diagonal. Of course, connecting with a horizontal line will also work. For the spiders in a square, the connection between spider and square has to be horizontal. (pictures follow)
@@ -43,14 +43,13 @@ Please note: to get a clear eye in te middle, the stitches in the eye of the spi
 
 Mrs. Whiting's index nrs G2 and H2.
 
-Ground G2 has the following working scheme: (picture follows)  
-It consists of a 3 legged spider with a ring in whole stitch and twist, making it a four legged spider. This spider is embedded in a square. Several of these squares are connected.  
-Larger spiders are possible, but it will take Groundforge some time to generate te pictures.
+Ground G2 has the following working scheme:      
+It consists of a 3 legged spider with a ring in whole stitch and twist, making it a four legged spider. This spider is embedded in a square. Several of these squares are connected.   
+![working scheme](https://github.com/MAETempels/maeTempels/blob/images/spin%204s%20wt2.bmp) 
 
-![working scheme](https://github.com/MAETempels/maeTempels/blob/images/spin%204s%20wt.bmp)
+> [4x2 legs][sq2], [4x3 legs][sq3], [4x4 legs][sq4], [4x5 legs][sq5]      
+Larger spiders are possible, but it will take Groundforge some time to generate te pictures.   
 
-> [4x2 legs][sq2], [4x3 legs][sq3], [4x4 legs][sq4], [4x5 legs][sq5] 
-  
 [sq2]: https://d-bl.github.io/GroundForge/index.html?m=5--5--%0A-C632B%0A566-22%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20F3%3Dctc%20E1%3Dctc%20A1%3Dctc%20F2%3Dctcttctc%20B3%3Dctcl%20D3%3Dctcr
 [sq3]: https://d-bl.github.io/GroundForge/index.html?m=5---5---%0A-CD632AB%0A56663222%0A5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20C4%3Dctc%20F1%3Dctc%20E2%3Dctc%20H1%3Dctc%20G1%3Dctc%20F2%3Dctc%20A2%3Dctc%20H2%3Dctc%20G3%3Dctcctc%20F4%3Dctc%20H4%3Dctc%20C1%3Dctc%20E4%3Dctcl%20%20B1%3Dctcl%20A4%3Dctcr%20D1%3Dctcr
 [sq4]: https://d-bl.github.io/GroundForge/index.html?m=5----5----%0A-CDD632AAB%0A5666632222%0A5666632222%0A56666-2222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20C1%3Dctc%20G2%3Dctc%20I2%3Dctc%20F3%3Dctc%20J3%3Dctc%20H2%3Dctc%20G3%3Dctc%20I3%3Dctc%20G5%3Dctc%20I5%3Dctc%20H1%3Dctc%20H4%3Dcttc%20F5%3Dctcl%20G1%3Dctcl%20J5%3Dctcr%20I1%3Dctcr
