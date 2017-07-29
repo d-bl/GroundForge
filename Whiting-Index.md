@@ -3,19 +3,23 @@
 The book is available with a higher resolution in four PDF's at the [Digital Archive] of the late professor Griswold,
 including a [scan] of the original index.
 
-Below the index republished once more: each `W` links to a scanned page of the Whiting book with annotations by Jo Edkins.
-The other links go to GroundForge, pattern links not in the [gallery] derived from [Tesselace]
-(such as [q] and [bs]) are figured out by [Marian Tempels].
+Below the index is republished once more with a couple of links:
+* **Each `W`**
+  links to a scanned page of the Whiting book with annotations by Jo Edkins.
+  The other links go to GroundForge, pattern links not in the [gallery] derived from [Tesselace]
+  (such as [q] and [bs]) are figured out by [Marian Tempels].
 
-The alphanumeric links go directly to a page where you can show the pair/thread diagrams.
+* **Alphanumeric links**
+  go directly to a page where you can show the pair/thread diagrams.
 
-Identical lower case links go to identical sets of pricking prototypes,
-in turn linking to a diagram page where you can choose alternative stitches.
-Prototype means: adjustable to your own taste and needs with a third party editor.
-Each pricking in such a set can be morphed into the others by nudging pins.
-Only four of the links (c,t,k,v) cover more than a third of the grounds, a ratio that illustrates
-how many variations can be made by changing stitches or nudging pin positions.
-What is shown is still just the tip of an ice berg.
+* **Identical lower case links**
+  go to identical sets of pricking prototypes,
+  in turn linking to a diagram page where you can choose alternative stitches.
+  Prototype means: adjustable to your own taste and needs with a third party editor.
+  Each pricking in such a set can be morphed into the others by nudging pins.
+  Only four of the links (c,t,k,v) cover more than a third of the grounds, a ratio that illustrates
+  how many variations can be made by changing stitches or nudging pin positions.
+  What is shown is still just the tip of an ice berg.
 
 Note that GroundForge doesn't support picots nor sewings and in pair diagrams it treats tallies, plaits and stitch-pin-stitch like simple stitches.
 A `-` means the ground uses sewings or three-pair stitches and thus can't have a link to GroundForge, picots and tallies are too obvious to require such an annotation.
