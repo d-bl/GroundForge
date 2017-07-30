@@ -1,1 +1,0 @@
-Page move to [here](https://github.com/MAETempels/MAE-gf/wiki).
