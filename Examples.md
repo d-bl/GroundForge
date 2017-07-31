@@ -1,7 +1,10 @@
 Various pages scattered around the web provide examples patterns.
+In one or two steps these examples link to the main [GroundForge] page
+with applicable values in the parameter form.
 Though the number of patterns might be overwhelming,
-there is still a lot of room to make further variations
-with the links to GroundForge.
+there is still a lot of room to generate further diagram variations
+by changing dimensions, footsides, stitches or (for more advanced users)
+matrices that define the flow of pairs.
 
 * A [gallery] shows 376  patterns by thumbnails of pair diagrams.
   The patterns are collected from [TesseLace.com],
@@ -15,6 +18,7 @@ with the links to GroundForge.
 
 Explore, experiment and play!
 
+[GroundForge]: https://d-bl.github.io/GroundForge/
 [gallery]: https://d-bl.github.io/GroundForge/gallery.html
 [TesseLace.com]: https://tesselace.com
 [index]: Whiting-Index
