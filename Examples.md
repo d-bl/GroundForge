@@ -21,7 +21,7 @@ matrices that define the flow of pairs.
   and/or propose candidates for this overview,
   you will need a github account for that purpose.
 
-Explore, experiment and play!
+Explore, experiment, play and discover!
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
 [Droste]: https://d-bl.github.io/GroundForge/droste.html
