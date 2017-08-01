@@ -11,7 +11,7 @@ matrices that define the flow of pairs.
   resulting from Ph.D research on _Algorithmically designed lace tessellations_.
   When following the links from the gallery to `pin positions` you will discover patterns
   from the tesselace [slide show].
-* Another page shows traditional grounds created with the [Droste] effect:
+* Another page shows traditional grounds created with the [Droste effect]:
   using thread diagrams as pair diagrams.
   Many variations and new grounds are possible using the same method.
 * An [index] shows 144 patches of worked lace from
@@ -24,7 +24,7 @@ matrices that define the flow of pairs.
 Explore, experiment, play and discover!
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
-[Droste]: https://d-bl.github.io/GroundForge/droste.html
+[Droste effect]: https://d-bl.github.io/GroundForge/droste.html
 [gallery]: https://d-bl.github.io/GroundForge/gallery.html
 [tesseLace.com]: https://tesselace.com
 [slide show]: https://tesselace.com/tools/inkscape-extension/
