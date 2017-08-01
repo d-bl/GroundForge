@@ -30,65 +30,54 @@
             Exact pin positions and how threads are tensioned around them are left to your imagination.
         </p>
         <h2>Get started</h2>
-        <dl>
-            <dt>Easy patterns:</dt>
-            <dd>
-                <p>
-                    Select one of the 376 patterns from the <a href="gallery.html">gallery</a>.
-                    The <em>choose stitches</em> link on the tooltips returns you further down on this page,
-                    select stitches at the first set of diagrams and show your version.
-                </p>
-            </dd>
-            <dt>More patterns:</dt>
-            <dd>
-                <p>
-                    Use a link from the stitch examples section below, show the first two sets of diagrams
-                    to uncover a traditional pattern and create your own variations.
-                </p>
-            </dd>
-            <dt>Advanced pattern creation:</dt>
-            <dd>
-                <p>
-                    The methods above set at least the matrix and tiling parameters.
-                    The <a href="https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns"
-                           target="_blank"
-                    >user guide</a> explains how to recognize existing patterns in the gallery
-                    and if not there, how to customize the parameters for other patterns.
-                </p>
-                <fieldset id="matrixOpts">
-                    <legend>Parameters <a href="https://github.com/d-bl/GroundForge/wiki/Parameters"
-                                          target="_blank"><img
-                            src="images/information-icon.png"></a></legend>
-                    <textarea id="matrix" name="matrix" rows="6" cols="9" spellcheck="false"
-                    >-5</textarea>
-                    <div>
-                        <p>
-                            <label for="tiles">tiling:</label>
-                            <select name="tiles" id="tiles">
-                                <option value="bricks" selected>Brick</option>
-                                <option value="checker">Checker</option>
-                            </select>
-                        </p>
-                        <p>
-                            <label for="rows">rows:</label>
-                            <input id="rows" name="rows" min="3" value="7" max="30" type="number"/>
-                        </p>
-                        <p>
-                            <label for="cols">columns:</label>
-                            <input id="cols" name="cols" min="3" value="5" max="30" type="number"/>
-                        </p>
-                        <p>
-                            <label for="shiftLeft">shift left:</label>
-                            <input id="shiftLeft" name="rows" min="0" value="0" type="number"/>
-                        </p>
-                        <p>
-                            <label for="shiftUp">shift up:</label>
-                            <input id="shiftUp" name="cols" min="0" value="0" type="number"/>
-                        </p>
-                    </div>
-                </fieldset>
-            </dd>
-        </dl>
+        <p>
+            Various pages with sets of
+            <a href="https://github.com/d-bl/GroundForge/wiki/Examples"
+            >examples</a> link back to this page filling in the parameter form and perhaps stitches.
+            Follow the links of your choice, show the diagrams, play with stitch variations,
+            thread colours and whatever you feel up to when you get the hang of it.
+        </p>
+        <h2>Advanced pattern creation</h2>
+        <div>
+            <p>
+                The <a href="https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns"
+                       target="_blank"
+                >user guide</a> explains how to recognize existing patterns in the gallery page
+                and if not there, how to customize the parameters for other patterns.
+            </p>
+            <fieldset id="matrixOpts">
+                <legend>Parameters <a href="https://github.com/d-bl/GroundForge/wiki/Parameters"
+                                      target="_blank"><img
+                        src="images/information-icon.png"></a></legend>
+                <textarea id="matrix" name="matrix" rows="6" cols="9" spellcheck="false"
+                >-5</textarea>
+                <div>
+                    <p>
+                        <label for="tiles">tiling:</label>
+                        <select name="tiles" id="tiles">
+                            <option value="bricks" selected>Brick</option>
+                            <option value="checker">Checker</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="rows">rows:</label>
+                        <input id="rows" name="rows" min="3" value="7" max="30" type="number"/>
+                    </p>
+                    <p>
+                        <label for="cols">columns:</label>
+                        <input id="cols" name="cols" min="3" value="5" max="30" type="number"/>
+                    </p>
+                    <p>
+                        <label for="shiftLeft">shift left:</label>
+                        <input id="shiftLeft" name="rows" min="0" value="0" type="number"/>
+                    </p>
+                    <p>
+                        <label for="shiftUp">shift up:</label>
+                        <input id="shiftUp" name="cols" min="0" value="0" type="number"/>
+                    </p>
+                </div>
+            </fieldset>
+        </div>
     </article>
     <article>
         <p>
@@ -99,108 +88,6 @@
             <a href="index.html"><button type="button">reset</button></a>
             <!-- @formatter:on -->
         </p>
-    </article>
-    <article>
-        <h2>Stitch examples <a title="less"
-                               id="less"
-                               class="showi"
-                               onclick="toggleLess(this, 'more');return 0"
-        ><img src="images/less.png"></a><a title="more"
-                                           id="more"
-                                           class="hide"
-                                           onclick="toggleMore(this, 'less');return 0"
-        ><img src="images/more.png"></a></h2>
-        <div id="examples-content" class="showi">
-            <label for="stitchExamples" class="examples-less show">
-                Just some examples of stitches to copy-paste and create variations of the diagrams.
-                <em>Notes:</em> (1) The generated pair diagrams draws a plait or something-pin-something like a simple stitch.
-                (2) The generated thread diagrams lack pins.
-            </label>
-            <table id="stitchExamples">
-                <tr>
-                    <td></td>
-                    <td><img src="stitches/ctct-color2a.png"> <img src="stitches/ctct-color2b.png"></td>
-                    <td><img src="stitches/crclct-color2.png"></td>
-                    <td><img src="stitches/clcrclc-color2.png"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td><img src="stitches/ct.png"></td>
-                    <td><img src="stitches/ctct.png"></td>
-                    <td><img src="stitches/crclct.png"></td>
-                    <td><img src="stitches/clcrclc.png"></td>
-                    <td><img src="stitches/ctctc.png"></td>
-                    <td><img src="stitches/ctclctc.png"></td>
-                    <td><img src="stitches/ctclcrctc.png"></td>
-                    <td><img src="stitches/ctcttctc.png"></td>
-                </tr>
-                <tr>
-                    <td><img src="stitches/ct-color1.png"></td>
-                    <td><img src="stitches/ctct-color1a.png"> <img src="stitches/ctct-color1b.png"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><img src="stitches/ctcttctc-color1.png"></td>
-                </tr>
-                <tr>
-                    <td><a href="?m=5-;bricks;7;5;0;0&s1=ct&s2=ctct&s3=&#diagrams"
-                    >ct</a></td>
-                    <td><a href="?m=5-;bricks;7;5;0;0&s1=ctct&s2=cross=ctct,twist=ct&s3=&#diagrams"
-                    >ctct</a></td>
-                    <td><a href="?m=5-;bricks;7;5;0;0&s1=crclct&s2=ctct,B12=ct,B15=ct,B16=ct&s3=&#diagrams"
-                    >crclct</a></td>
-                    <td><a href="?m=5-;bricks;7;5;0;0&s1=clcrclc&s2=ctc,B13=ctcrrctcrr,B15=ctcll,B16=ctctt&s3=&#diagrams"
-                    >clcrclc</a></td>
-                    <td><a href="?m=5-;bricks;7;5;0;0&s1=ctctc&s2=ctc,B14=ctcll,B15=ctcrr,B16=ctctt&s3=&#diagrams"
-                    >ctctc</a></td>
-                    <td>ctclctc</td>
-                    <td>ctclcrctc</td>
-                    <td>ctcttctc</td>
-                </tr>
-            </table>
-            <label for="stitchExamples">
-                The links take you down to the first set of diagrams with a diagonal base pattern.
-                Show the first two sets to uncover a traditional pattern.
-                Mirror, mix, add or drop twists and/or try a weaving base pattern.
-            </label>
-            <p id="base-pattern">
-                <label for="base">
-                    Mixing stitches with a base pattern requires larger dimensions
-                    <a href="https://github.com/d-bl/GroundForge/wiki/Base-Patterns"
-                       target="_blank"><img src="images/information-icon.png"></a>
-                </label>
-                <select id="base">
-                    <option value="5-;bricks;7;5;0;0" selected>diagonal 1x2, bricks</option>
-                    <option value="5-%0D-5;checker;8;5;0;0">diagonal 2x2, checker</option>
-                    <option value="5-%0D-5%0D5-;bricks;9;6;0;0">diagonal 3x2, bricks</option>
-                    <option value="5-5-%0D-5-5;bricks;9;5;0;0">diagonal 2x4, bricks</option>
-                    <option value="5-5-%0D-5-5;checker;9;5;0;0">diagonal 2x4, checker</option>
-                    <option value="5-%0D-5%0D5-%0D-5;checker;9;5;0;0">diagonal 4x2, checker</option>
-                    <option value="5-5-%0D-5-5%0D5-5-%0D-5-5;checker;10;6;0;0">diagonal 4x4, checker</option>
-                    <option value="" disabled>—————————</option>
-                    <option value="8%0D1;checker;5;5;0;0">weaving 2x1, checker</option>
-                    <option value="88%0D11;bricks;5;5;0;0">weaving 2x2, bricks</option>
-                    <option value="88%0D11;checker;5;5;0;0">weaving 2x2, checker</option>
-                    <option value="888%0D111;checker;5;5;0;0">weaving 2x3, checker</option>
-                    <option value="8888%0D1111;bricks;6;6;0;0">weaving 2x4, bricks</option>
-                    <option value="8888%0D1111;checker;6;6;0;0">weaving 2x4, checker</option>
-                    <option value="8%0D1%0D8%0D1;checker;5;5;0;0">weaving 4x1, checker</option>
-                    <option value="88%0D11%0D88%0D11;bricks;6;6;0;0">weaving 4x2, bricks</option>
-                    <option value="88%0D11%0D88%0D11;checker;6;6;0;0">weaving 4x2, checker</option>
-                    <option value="888%0D111%0D888%0D111;checker;8;4;0;0">weaving 4x3, checker</option>
-                    <option value="8888%0D1111%0D8888%0D1111;bricks;6;6;0;0">weaving 4x4, bricks</option>
-                    <option value="8888%0D1111%0D8888%0D1111;checker;6;6;0;0">weaving 4x4, checker</option>
-                </select>
-                <button onclick="setMatrix(document.getElementById('base').value);firstStep()"
-                        title="sets matrix/tiling parameters with selected base pattern"
-                >show</button>
-            </p>
-        </div>
     </article>
 
     <article>
