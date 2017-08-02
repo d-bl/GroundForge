@@ -15,7 +15,7 @@ matrices that define the flow of pairs.
 * The [Whiting index] shows 144 patches of worked lace from
   _A Lace Guide for Makers and Collectors_ by Gertrude Whiting which dates from 1920
 * The [Droste effect](Droste-effect) (thread diagrams becoming pair diagrams)
-  is used to show traditional grounds.
+  is used to show some traditional grounds.
   Many variations and different grounds are possible.
 * The [MAE-gf] pages systematically explore various families of grounds.
 * For those to shy to meddle with this wiki can post personal finds on a [discussion] 
