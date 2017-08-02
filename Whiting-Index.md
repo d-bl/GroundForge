@@ -3,7 +3,7 @@
 The book is available with a higher resolution in four PDF's at the [Digital Archive] of the late professor Griswold,
 including a [scan] of the original index.
 
-Below the index is republished once more with a couple of links:
+Below the index is republished (with kind permission) once more with a couple of links:
 * **Each `W`**
   links to a scanned page of the Whiting book with annotations by Jo Edkins.
   The other links go to GroundForge, pattern links not in the [gallery] derived from [Tesselace]
