@@ -2,7 +2,8 @@
 
 Patterns
 * [Example Pages](Examples)
-* [Reshape (Intro)](Reshape-Patterns)
+* Reshape Pair Diagrams 
+  * [Intro](Reshape-Patterns)
   * [Using Clones](Reshape-Using-Clones)
   * [Using Copies](Reshape-Using-Copies)
 * [Reversed engineering](Reversed-engineering-of-patterns)
