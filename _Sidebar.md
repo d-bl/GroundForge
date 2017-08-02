@@ -1,7 +1,7 @@
 [Home](Home)
 
 Patterns
-* [Examples Pages](Examples)
+* [Example Pages](Examples)
 * [Reshape (Intro)](Reshape-Patterns)
   * [Using Clones](Reshape-Using-Clones)
   * [Using Copies](Reshape-Using-Copies)
