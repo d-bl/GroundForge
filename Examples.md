@@ -1,9 +1,10 @@
-Various pages scattered around the web provide examples patterns.
+Various pages scattered around the web provide examples patterns
+collected with different view points.
 In one or two steps these examples link to the main [GroundForge] page
 with applicable values in the parameter form.
 Though the number of patterns might be overwhelming,
 there is still a lot of room to generate further diagram variations
-by changing dimensions, footsides, stitches or (for more advanced users)
+by changing dimensions, shifting footsides, stitches or (for more advanced users)
 matrices that define the flow of pairs.
 
 * A [gallery] shows 376  patterns by thumbnails of pair diagrams.
