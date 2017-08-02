@@ -18,12 +18,10 @@ Purpose of the Diagrams
 Each type of diagram plays its own role while designing bobbin lace grounds. The creative process involves several decisions, each playing a role in an iterative process.
 The diagram generator can relief much tedious work that would go into these steps in ink and paper times and reduce (but not eliminate) the trial and error of experimental patches. In short:
 
-* Start with selecting a diagram from the thumbnails (figure **a**) or change stitches and other options in other tabs.
+* Start with selecting pattern from the example pages such as the thumbnails in figure **a**.
 * Specify stitches for figure **b** and **c**.
 * Apply colors to individual threads in figure **c**.
 * Download figure **d** and customize it into **e-h** or whatever your fancy.
-* The pair diagrams of Binche, Flanders or Paris grounds are thread diagrams of a plain Torchon ground with respectively ctctc, ctct or ct.
-  This principle can be applied to more stitch variations and repeated like a Droste effect.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/intro.png)
 
