@@ -13,8 +13,6 @@ where you can choose stitches for a color coded pair diagram and thread diagram.
 
 <sub><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></sub>
 
-A line divides between images with multiple patterns and a single pattern.
-
 _Edit hint_: copy the link location of the image you want to move, start editing, use the browser search to find the link location.
 
 Milanese Fish and Lotus variations
@@ -38,7 +36,7 @@ see also [MEA-gf](https://github.com/MAETempels/MAE-gf/wiki/Milanese:-Fish)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/169.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=66%20-4%2021%2088;bricks&patch=66%2066%20-4%2068;bricks&patch=5-K-5-K-%20-L-O-L-O%20E-E-E-E-%20-L-L-L-L;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/431.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=6868%201111%208888%20-4-4;checker&patch=43%2068%2066%2066;bricks&patch=466-%206686%206-46%208666;checker&patch=6888%20-114;checker&patch=L-L-L-L-%20-L-L-L-L%205---5---%20-H-E-H-E;bricks&patch=5-L-L---%20-L-L-O-L%20L-L---5-%20-E-H-E-E;bricks)
 
----
+Single pattern per image:
 
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/152.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=43%2021%20-4%2098;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/071.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4832%202483;bricks)
@@ -82,7 +80,7 @@ Others
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/181.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=88%2011;bricks&patch=66%2022;bricks&patch=88%2099%2011%2000;bricks&patch=66%2011%2088%2022;bricks&patch=66%2099%2022%2000;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/214.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5-%20-5;checker&patch=5353%205353%205-5-%20-5-5;checker&patch=5632%2056-2%205-5-%20-535;checker&patch=53%205-%20-5%205-;bricks&patch=44%2077%2044%2077;bricks&patch=44%2044%2077%2077;bricks&patch=66%2088%2066%2011;bricks&patch=66%2066%2088%2011;checker&patch=66%2066%2099%2000;checker&patch=6;checker&patch=566-%2066-5%206-56%20-566;checker&patch=53%2053%2053%205-;bricks&patch=5663%205663;checker&patch=53%205-;bricks&patch=563%20563%20563;checker&patch=53%2053;checker&patch=5632%205632;checker&patch5353%205353;bricks)
 
----
+Single pattern per image:
 
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/133.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=588-%2014-2;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/115.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4831%20-488%20214-%2088-5;checker)
