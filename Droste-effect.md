@@ -21,8 +21,8 @@ Mixing stitches requires larger tile dimensions.
     </tr>
     <tr>
         <td></td>
-        <td><img src="stitches/ct.png"></td>
-        <td><img src="stitches/ct-color1.png"></td>
+        <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ct.png"></td>
+        <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ct-color1.png"></td>
         <td><a href="index.html?m=5-;bricks;7;5;0;0&s1=ct&s2=ctct&s3=&#diagrams"
         >ct</a></td>
         <td>diagonal 1x2</td>
@@ -30,8 +30,8 @@ Mixing stitches requires larger tile dimensions.
     </tr>
     <tr>
         <td></td>
-        <td><img src="stitches/ctc-ctcr.png"></td>
-        <td><img src="stitches/ctc-ctcr-color.png"></td>
+        <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ctc-ctcr.png"></td>
+        <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ctc-ctcr-color.png"></td>
         <td>
             <a href="index.html?m=8%0A1;checker;8;6;0;0&s1=A1%3Dctc,A2%3Dctcr&s2=ctc,A24%3Dtctct,A12%3Dctcr,A13%3Dctcr,A20%3Dctc,A21%3Dctcl,A23%3Dctcl&s3=ctct"
             >ctc-ctcr</a></td>
@@ -39,17 +39,17 @@ Mixing stitches requires larger tile dimensions.
         <td>D16</td>
     </tr>
     <tr>
-        <td><img src="stitches/ctct-color2a.png"> <img src="stitches/ctct-color2b.png"></td>
-        <td><img src="stitches/ctct.png"></td>
-        <td><img src="stitches/ctct-color1a.png"> <img src="stitches/ctct-color1b.png"></td>
+        <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ctct-color2a.png"> <img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ctct-color2b.png"></td>
+        <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ctct.png"></td>
+        <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ctct-color1a.png"> <img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ctct-color1b.png"></td>
         <td><a href="index.html?m=5-;bricks;7;5;0;0&s1=ctct&s2=cross=ctct,twist=ct&s3=&#diagrams"
         >ctct</a></td>
         <td>diagonal 1x2</td>
         <td>variant of<br>A2 and D2</td>
     </tr>
     <tr>
-        <td><img src="stitches/crclct-color2.png"></td>
-        <td><img src="stitches/crclct.png"></td>
+        <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/crclct-color2.png"></td>
+        <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/crclct.png"></td>
         <td></td>
         <td><a href="index.html?m=5-;bricks;7;5;0;0&s1=crclct&s2=ctct,B12=ct,B15=ct,B16=ct&s3=&#diagrams"
         >crclct</a></td>
@@ -57,28 +57,28 @@ Mixing stitches requires larger tile dimensions.
         <td>D6</td>
     </tr>
     <tr>
-        <td><img src="stitches/clcrclc-color2.png"></td>
-        <td><img src="stitches/clcrclc.png"></td>
+        <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/clcrclc-color2.png"></td>
+        <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/clcrclc.png"></td>
         <td></td>
         <td>
-            <a href="index.html?m=5-;bricks;7;5;0;0&s1=clcrclc&s2=ctc,B13=ctcrrctcrr,B15=ctcll,B16=ctctt&s3=&#diagrams"
+            <a href="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=clcrclc&s2=ctc,B13=ctcrrctcrr,B15=ctcll,B16=ctctt&s3=&#diagrams"
             >clcrclc</a></td>
         <td>diagonal 1x2</td>
         <td></td>
     </tr>
     <tr>
         <td></td>
-        <td><img src="stitches/ctctc.png"></td>
+        <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ctctc.png"></td>
         <td></td>
         <td>
-            <a href="index.html?m=5-;bricks;7;5;0;0&s1=ctctc&s2=ctc,B14=ctcll,B15=ctcrr,B16=ctctt&s3=&#diagrams"
+            <a href="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=ctctc&s2=ctc,B14=ctcll,B15=ctcrr,B16=ctctt&s3=&#diagrams"
             >ctctc</a></td>
         <td>diagonal 1x2</td>
         <td>variant of<br>F2</td>
     </tr>
     <tr>
         <td></td>
-        <td><img src="stitches/ctclctc.png"></td>
+        <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ctclctc.png"></td>
         <td></td>
         <td>ctclctc</td>
         <td></td>
@@ -86,7 +86,7 @@ Mixing stitches requires larger tile dimensions.
     </tr>
     <tr>
         <td></td>
-        <td><img src="stitches/ctclcrctc.png"></td>
+        <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ctclcrctc.png"></td>
         <td></td>
         <td>ctclcrctc</td>
         <td></td>
@@ -94,8 +94,8 @@ Mixing stitches requires larger tile dimensions.
     </tr>
     <tr>
         <td></td>
-        <td><img src="stitches/ctcttctc.png"></td>
-        <td><img src="stitches/ctcttctc-color1.png"></td>
+        <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ctcttctc.png"></td>
+        <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ctcttctc-color1.png"></td>
         <td>ctcttctc</td>
         <td></td>
         <td></td>
