@@ -54,7 +54,7 @@ Mixing stitches requires larger tile dimensions.
         <td><a href="index.html?m=5-;bricks;7;5;0;0&s1=crclct&s2=ctct,B12=ct,B15=ct,B16=ct&s3=&#diagrams"
         >crclct</a></td>
         <td>diagonal 1x2</td>
-        <td>Mirrored version of <a href="http://gwydir.demon.co.uk/jo/lace/whiting/page139.htm">D6</a></td>
+        <td>mirrored version of <a href="http://gwydir.demon.co.uk/jo/lace/whiting/page139.htm">D6</a></td>
     </tr>
     <tr>
         <td><img src="https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/clcrclc-color2.png"></td>
