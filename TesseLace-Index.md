@@ -8,6 +8,8 @@ where you can choose stitches for a color coded pair diagram and thread diagram.
 [slide show]: https://tesselace.com/tools/inkscape-extension/
 [GroundForge]: https://d-bl.github.io/GroundForge
 
+_Edit hint_: copy the link location of the image you want to move, start editing, use the browser search to find the link location.
+
 Multiple patterns per image
 ---------------------------
 
@@ -18,15 +20,20 @@ Multiple patterns per image
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/257.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=6868%20-4-4%202121%20-7-7;checker&patch=L-O-L-O-%20---5---5%20H-E-H-E-%20-5---5--;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/015.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5-O-H-%20-L-5-O%20E-5-E-;bricks&patch=586-%20---5%202AB-%20-7-5;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/127.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4815%204-77;bricks&patch=-5---5-5%205-O-E-5-;bricks&patch=4804%20-777;bricks)
-[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/030.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=486-%20-486%206-48%2086-4;checker&patch=68%204-;bricks&patch=6868%20-7-7%200101%20-7-7;checker&patch=6868%20-7-7%202121%20-4-4;checker&patch=L-O-L-O-%20-5---5--%20E-H-E-H-%20-5---5--;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/138.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4641%209177;bricks&patch=4841%205377;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/002.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=6868%20---4%202AA1%20-7-7;bricks&patch=586-%20-4-5%202121%20-7-7;bricks&patch=586-%20-4-5%206868%20-4-4;checker)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/425.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5831%20-4-7%206868%20-4-4;checker&patch=5831%20-4-7%206868%20-4-4;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/004.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=586-%20-4-5%202121%20-7-7;checker&patch=586-%20-4-5%206868%20-4-4;bricks&patch=5831%20-4-7%20586-%20-4-5;checker)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/083.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=486-%20-486%202111%2088-7;checker&patch=4831%20-488%202111%2088-7;checker&patch=4831%20-488%205-11%2086-7;checker)
-[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/095.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5632%2056-2%206-58%20-534;checker&patch=4632%2056-2%205-5-%208635;checker&patch=4353%205353%205-5-%2086-5;checker&patch=435-%206325%206-25%2086-5;checker)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/103.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=586-%20-4-5%20215-%20-7-5;checker&patch=5831%20-4-7%205-5-%20-5-5;checker)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/106.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4373%205353%205-5-%208315;checker&patch=437-%206325%206-25%208315;checker&patch=5632%2056-2%203158%20-734;checker)
+[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/181.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=88%2011;bricks&patch=66%2022;bricks&patch=88%2099%2011%2000;bricks&patch=66%2011%2088%2022;bricks&patch=66%2099%2022%2000;bricks)
+[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/214.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5-%20-5;checker&patch=5353%205353%205-5-%20-5-5;checker&patch=5632%2056-2%205-5-%20-535;checker&patch=53%205-%20-5%205-;bricks&patch=44%2077%2044%2077;bricks&patch=44%2044%2077%2077;bricks&patch=66%2088%2066%2011;bricks&patch=66%2066%2088%2011;checker&patch=66%2066%2099%2000;checker&patch=6;checker&patch=566-%2066-5%206-56%20-566;checker&patch=53%2053%2053%205-;bricks&patch=5663%205663;checker&patch=53%205-;bricks&patch=563%20563%20563;checker&patch=53%2053;checker&patch=5632%205632;checker&patch5353%205353;bricks)
+
+Milanese Fish and Lotus variations, see also [MEA-gf](https://github.com/MAETempels/MAE-gf/wiki/Milanese:-Fish)
+
+[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/095.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5632%2056-2%206-58%20-534;checker&patch=4632%2056-2%205-5-%208635;checker&patch=4353%205353%205-5-%2086-5;checker&patch=435-%206325%206-25%2086-5;checker)
+[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/030.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=486-%20-486%206-48%2086-4;checker&patch=68%204-;bricks&patch=6868%20-7-7%200101%20-7-7;checker&patch=6868%20-7-7%202121%20-4-4;checker&patch=L-O-L-O-%20-5---5--%20E-H-E-H-%20-5---5--;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/435.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=434-%206325%206-25%208686;checker&patch=4343%205353%205-5-%208686;checker)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/446.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=6868%20-4-4%205-5-%20-5-5;checker&patch=586-%20-4-5;checker)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/167.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=6464%207272;bricks&patch=43%2068;bricks&patch=B-B-%20-B-B%20C-C-%20-C-C;bricks&patch=4848%207171;bricks&patch=5-O-5-O-%20-E-5-E-5%205-O-5-O-%20-E-5-E-5;bricks&patch=5-K-5-K-%20-L-O-L-O%205-K-5-K-%20-E-H-E-H;bricks)
@@ -40,8 +47,6 @@ Multiple patterns per image
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/451.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=6868%20----%20AAAA%20-7-7;bricks&patch=586-%20-4-5;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/169.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=66%20-4%2021%2088;bricks&patch=66%2066%20-4%2068;bricks&patch=5-K-5-K-%20-L-O-L-O%20E-E-E-E-%20-L-L-L-L;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/431.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=6868%201111%208888%20-4-4;checker&patch=43%2068%2066%2066;bricks&patch=466-%206686%206-46%208666;checker&patch=6888%20-114;checker&patch=L-L-L-L-%20-L-L-L-L%205---5---%20-H-E-H-E;bricks&patch=5-L-L---%20-L-L-O-L%20L-L---5-%20-E-H-E-E;bricks)
-[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/181.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=88%2011;bricks&patch=66%2022;bricks&patch=88%2099%2011%2000;bricks&patch=66%2011%2088%2022;bricks&patch=66%2099%2022%2000;bricks)
-[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/214.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5-%20-5;checker&patch=5353%205353%205-5-%20-5-5;checker&patch=5632%2056-2%205-5-%20-535;checker&patch=53%205-%20-5%205-;bricks&patch=44%2077%2044%2077;bricks&patch=44%2044%2077%2077;bricks&patch=66%2088%2066%2011;bricks&patch=66%2066%2088%2011;checker&patch=66%2066%2099%2000;checker&patch=6;checker&patch=566-%2066-5%206-56%20-566;checker&patch=53%2053%2053%205-;bricks&patch=5663%205663;checker&patch=53%205-;bricks&patch=563%20563%20563;checker&patch=53%2053;checker&patch=5632%205632;checker&patch5353%205353;bricks)
 
 Single pattern per image
 ------------------------
