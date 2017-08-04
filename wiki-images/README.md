@@ -3,7 +3,7 @@ Upload wiki images
 
 GitHub doesn't provide a web-interface to upload images into wiki pages.
 You can put them anywhere on the web, use them and leave it to techies
-to sooner or later integrate copies into the wiki.
+to sooner or later integrate copies into the [wiki](https://github.com/d-bl/GroundForge/wiki).
 
 If your image was created with some [vector] application, please also upload the source,
 thus future contributors won't have to start all over again to improve when you are no longer among us.
