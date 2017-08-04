@@ -38,8 +38,6 @@ see also [MEA-gf](https://github.com/MAETempels/MAE-gf/wiki/Milanese:-Fish)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/148.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=68%204-%20-5%205-;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/147.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4343%206868;bricks&patch=5-K-5-K-%20-L-O-L-O%20K-5-K-5-%20-H-E-H-E;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/030.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=486-%20-486%206-48%2086-4;checker&patch=68%204-;bricks&patch=6868%20-7-7%200101%20-7-7;checker&patch=6868%20-7-7%202121%20-4-4;checker&patch=L-O-L-O-%20-5---5--%20E-H-E-H-%20-5---5--;bricks)
-[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/152.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=43%2021%20-4%2098;bricks)
-[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/452.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=486-%20-486%205-4-%2086-5;checker&patch=6868%20---7%20AA01%20-7-7;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/451.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=6868%20----%20AAAA%20-7-7;bricks&patch=586-%20-4-5;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/175.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=66%20-4%205-%2086;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/174.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=43%2053%2068%2066;bricks)
@@ -56,6 +54,8 @@ see also [MEA-gf](https://github.com/MAETempels/MAE-gf/wiki/Milanese:-Fish)
 
 Mixed, shifted under and angle and with swim lanes. More under Others.
 
+[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/452.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=486-%20-486%205-4-%2086-5;checker&patch=6868%20---7%20AA01%20-7-7;bricks)
+[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/152.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=43%2021%20-4%2098;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/067.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5631%2066-7;bricks&patch=4322%205-73;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/095.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5632%2056-2%206-58%20-534;checker&patch=4632%2056-2%205-5-%208635;checker&patch=4353%205353%205-5-%2086-5;checker&patch=435-%206325%206-25%2086-5;checker)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/167.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=6464%207272;bricks&patch=43%2068;bricks&patch=B-B-%20-B-B%20C-C-%20-C-C;bricks&patch=4848%207171;bricks&patch=5-O-5-O-%20-E-5-E-5%205-O-5-O-%20-E-5-E-5;bricks&patch=5-K-5-K-%20-L-O-L-O%205-K-5-K-%20-E-H-E-H;bricks)
