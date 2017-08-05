@@ -59,7 +59,7 @@ see also [MEA-gf](https://github.com/MAETempels/MAE-gf/wiki/Milanese:-Fish)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/022.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4343%205353%202121%208888;checker)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/431.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=6868%201111%208888%20-4-4;checker&patch=43%2068%2066%2066;bricks&patch=466-%206686%206-46%208666;checker&patch=6888%20-114;checker&patch=L-L-L-L-%20-L-L-L-L%205---5---%20-H-E-H-E;bricks&patch=5-L-L---%20-L-L-O-L%20L-L---5-%20-E-H-E-E;bricks)
 
-Mixed, shifted under and angle and with swim lanes. More under Others, even mixed with spiders.
+Mixed, shifted under and angle and/or with swim lanes. More under [others](#Others), even mixed with spiders.
 
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/452.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=486-%20-486%205-4-%2086-5;checker&patch=6868%20---7%20AA01%20-7-7;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/152.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=43%2021%20-4%2098;bricks)
