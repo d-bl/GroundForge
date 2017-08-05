@@ -25,7 +25,7 @@ matrices that define the flow of pairs.
 Explore, experiment, play and discover!
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
-[Tesselace index]: https://d-bl.github.io/GroundForge/gallery.html
+[Tesselace index]: #TesseLace-Index
 [tesseLace.com]: https://tesselace.com
 [slide show]: https://tesselace.com/tools/inkscape-extension/
 [Whiting index]: Whiting-Index
