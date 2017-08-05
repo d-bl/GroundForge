@@ -78,8 +78,8 @@ Mixed, shifted under and angle and/or with swim lanes. More under [others](#Othe
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/151.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=68%20-4%2021%207-;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/165.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=43%2021%20-7%2068;bricks)
 
-Virgin or Rose variations
-=========================
+Virgin or Rose and bias variations
+==================================
 
 See also the [Droste](Droste-effect) page, a twist more or less at the first step, alternate and you have another variation. The ID's for the stitches also will have more logic, though they don't stick to the underlying grid position.
 
