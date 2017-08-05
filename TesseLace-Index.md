@@ -10,7 +10,7 @@ where you can choose stitches for a color coded pair diagram and thread diagram.
 
 - [Common Grounds](#common-grounds)
 - [Fish and Lotus variations](#fish-and-lotus-variations)
-- [Virgin or Rose variations](#virgin-or-rose-variations)
+- [Virgin or Rose and bias variations](#virgin-or-rose-and-bias-variations)
 - [Others](#others)
 
 <sub><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></sub>
