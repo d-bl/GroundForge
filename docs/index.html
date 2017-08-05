@@ -42,8 +42,8 @@
             <p>
                 The <a href="https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns"
                        target="_blank"
-                >user guide</a> explains how to recognize existing patterns in the gallery page
-                and if not there, how to customize the parameters for other patterns.
+                >user guide</a> explains how to recognize existing patterns
+                and if not available, how to customize the parameters for other patterns.
             </p>
             <fieldset id="matrixOpts">
                 <legend>Parameters <a href="https://github.com/d-bl/GroundForge/wiki/Parameters"
@@ -82,9 +82,17 @@
     <article>
         <p>
             <!-- @formatter:off -->
+            <a onmouseenter="this.href=createPrickingArgs()"
+               target="_blank"
+               href=""
+            ><button type="button"
+                     title="pricking prototype of current pattern in a new tab or window"
+            >pricking</button></a>
             <a onmouseenter="this.href=createUrlArgs()"
-              href=""><button type="button"
-                              title="link to current pattern"><img src="images/link.png"></button></a>
+               href=""
+            ><button type="button"
+                     title="link to current pattern and stitches"
+            ><img src="images/link.png"></button></a>
             <a href="index.html"><button type="button">reset</button></a>
             <!-- @formatter:on -->
         </p>

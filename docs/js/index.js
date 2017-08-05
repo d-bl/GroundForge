@@ -58,6 +58,14 @@ function createUrlArgs() {
       encodeURIComponent(document.getElementById("s3").value)
     return result
 }
+function createPrickingArgs() {
+    var result = "sheet.html?patch=" +
+      encodeURIComponent(
+        document.getElementById("matrix").value +";" +
+        document.getElementById("tiles").value
+      )
+    return result
+}
 function setMatrix(value) {
   var p = decodeURIComponent(value).split(";")
   if (p.length == 6) {
