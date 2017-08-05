@@ -16,7 +16,7 @@ The generated pair diagrams don't care about plaits and something-pin-something
 and draw them as plain cloth stitches.
 Furthermore are the distances between stitches optimized to some average.
 So you may have to simplify the desired pattern,
-mirror and distort it to recognize it in the gallery. 
+mirror and distort it to recognize it in the [TesseLace Index](Tesselace-Index). 
 
 Explaining the process with an example:
 
@@ -26,10 +26,10 @@ Explaining the process with an example:
 * 2nd: simplified something-pin-something to plain stitches
 * 3rd: snapping stitches to grid positions
 * 4th: a partially squeezed version also snapping to grid positions
-* top right: the matching pattern from the [gallery]
+* top right: the matching pattern from the [TesseLace Index](Tesselace-Index)
 * bottom right: a flipped version of the stitches on the [main] page also matches
 
-Snapping to a rectangular grid might not help to recognize the corresponding pattern in the gallery.
+Snapping to a rectangular grid might not help to recognize the corresponding pattern in the index.
 See also the trick with colors on the [Reshape Patterns](Reshape-Patterns) page,
 we'll get back to snapping further down the page.
 
@@ -52,7 +52,7 @@ You might need more repeats than expected to figure out a tiling.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template.png)
 
-Note that 18 out of 824 patterns known on the [gallery] page (including the pricking variations) may suffer from bug [#93](https://github.com/d-bl/GroundForge/issues/93).
+Note that 18 out of 824 patterns known on the [TesseLace Index](Tesselace-Index) page (including the pricking variations) may suffer from bug [#93](https://github.com/d-bl/GroundForge/issues/93).
 
 Tiling
 ------
@@ -130,5 +130,4 @@ The result of the mistaken ID calculator:
 [SVG version]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/template.svg
 [main]: https://d-bl.github.io/GroundForge/
 [variant]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template2.png
-[gallery]: https://d-bl.github.io/GroundForge/gallery.html
 [snow flake]: https://d-bl.github.io/GroundForge/?tiles=bricks&matrix=L3H-AB-CD-%0D%0A6-2H-256-L%0D%0A-5----5---&stitches=ctc+H3%3Dctcttctc+A1%3Dctcll+B2%3Dctcll+E1%3Dctcrr+D2%3Dctcrr&rows=12&cols=14&left=1&up=1&transparency=0&#diagrams

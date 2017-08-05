@@ -6,7 +6,7 @@ including a [scan] of the original index.
 Below the index is republished (with kind permission) once more with a couple of links:
 * **Each `W`**
   links to a scanned page of the Whiting book with annotations by Jo Edkins.
-  The other links go to GroundForge, pattern links not in the [gallery] derived from [Tesselace]
+  The other links go to GroundForge, pattern links not in the [TesseLace Index](Tesselace-Index)
   (such as [q] and [bs]) are figured out by [Marian Tempels].
 
 * **Alphanumeric links**
@@ -25,8 +25,6 @@ Note that GroundForge doesn't support picots nor sewings and in pair diagrams it
 A `-` means the ground uses sewings or three-pair stitches and thus can't have a link to GroundForge, picots and tallies are too obvious to require such an annotation.
 
 [reversed engineering]: Reversed-engineering-of-patterns
-[gallery]: https://d-bl.github.io/GroundForge/gallery.html
-[Tesselace]: https://tesselace.com
 [Marian Tempels]: https://github.com/MAETempels
 [index]: http://gwydir.demon.co.uk/jo/lace/whiting/index.htm#picindex
 [scan]: https://www2.cs.arizona.edu/patterns/weaving/books/whiting.jpg
