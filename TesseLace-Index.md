@@ -81,7 +81,7 @@ Mixed, shifted under and angle and/or with swim lanes. More under [others](#Othe
 Virgin or Rose and bias variations
 ==================================
 
-See also the [Droste](Droste-effect) page, a twist more or less at the first step, alternate and you have another variation. The ID's for the stitches also will have more logic, though they don't stick to the underlying grid position.
+See also the [Droste](Droste-effect) page, a twist more or less at the first step or alternating stitches in one or two directions and you have another variation. The ID's for the stitches also will have more logic, though they won't stick to the underlying grid position.
 
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/130.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5831%20-4-7;bricks&patch=-437%2034-7;bricks&patch=4830%20--77;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/129.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=1483%208-48;bricks&patch=4831%20-488%203148%2088-4;checker)
@@ -107,8 +107,9 @@ Others
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/015.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5-O-H-%20-L-5-O%20E-5-E-;bricks&patch=586-%20---5%202AB-%20-7-5;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/138.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4641%209177;bricks&patch=4841%205377;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/410.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5831%20-4-7%203158%20-7-4;bricks)
-[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/551.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5-L-K-H-%20-L-L-O-O%205-L-K-H-%20-E-E-H-H;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/552.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5-L-K-H-%20-L-L-O-O%205-L---H-%20-E-H-E-H;bricks)
+[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/551.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5-L-K-H-%20-L-L-O-O%205-L-K-H-%20-E-E-H-H;bricks)
+[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/558.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5-L-K-H-%20-L-L-O-O%205---5---%20-H-E-H-E;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/127.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4815%204-77;bricks&patch=-5---5-5%205-O-E-5-;bricks&patch=4804%20-777;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/002.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=6868%20---4%202AA1%20-7-7;bricks&patch=586-%20-4-5%202121%20-7-7;bricks&patch=586-%20-4-5%206868%20-4-4;checker)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/425.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5831%20-4-7%206868%20-4-4;checker&patch=5831%20-4-7%206868%20-4-4;bricks)
@@ -277,7 +278,6 @@ Others
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/555.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5-L-K-H-%20-L-L-O-O%205-K-5---%20-E-H-H-E;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/556.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5-L-K-H-%20-L-L-O-O%205---5-K-%20-H-E-E-H;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/557.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5-L-L-K-%20-L---5-O%20E-H-E-E-%20-L-L-L-L;bricks)
-[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/558.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5-L-K-H-%20-L-L-O-O%205---5---%20-H-E-H-E;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/559.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5-L-K-H-%20-L-L-O-O%20L-K-H-5-%20-E-H-H-E;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/560.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5-L-K-H-%20-L-L-O-O%20--5-L-L-%20-E-E-E-H;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/561.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5-L-K-H-%20-L-L-O-O%20--5-K-5-%20-E-E-H-H;bricks)
