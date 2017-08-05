@@ -42,9 +42,9 @@ GroundForge uses a [compact] matrix format using a character to tag a node. The 
 The `src/maini/scala` code compiled into `docs/js/matrix-graphs.js` transforms these matrices into data for D3js.
 
 The geometric information within the matrices is used to initialise the thread diagrams, speeding up the animation as explained for the proof of concept.
-These [pages] were used to create the gallery images for a selection of patterns.
+These [pages] were used to create the [TesseLace inxex](https://github.com/d-bl/GroundForge/wiki/TesseLace-Index) images for a selection of patterns.
 The diagrams lack the original geometric information after completion of the animation,
-so topological duplicates were removed from the generated gallery patterns.
+so topological duplicates were removed from the generated index.
 Downloadable pricking prototypes provide geometric variations that can be customised into intermediate and other variations.
 
 The thread diagrams are not generated from the matrices,
