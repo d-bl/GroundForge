@@ -7,12 +7,12 @@ thus future contributors won't have to start all over again to improve when you 
 Upload for non-techies
 ----------------------
 
-GitHub doesn't provide a web-interface to upload images into wiki pages.
+GitHub doesn't provide a web-interface to upload images into [wiki] pages.
 You can put your images anywhere on the web, and embed them in a wiki page with the toolbar:
 
 ![embed]
 
-Leave it to techies to sooner or later integrate copies into the [wiki](https://github.com/d-bl/GroundForge/wiki).
+Leave it to techies to sooner or later integrate copies into the wiki.
 
 ### Don't have a good place to upload?
 
@@ -56,6 +56,7 @@ Please kindly accept further uploads on a closed pull request,
 we don't want to loose contributors by imposing strict procedures on non-techies.
 
 [embed]: https://help.github.com/assets/images/help/wiki/wiki_add_image.png
+[wiki]: https://github.com/d-bl/GroundForge/wiki
 [help-page]: https://help.github.com/articles/editing-files-in-another-user-s-repository/
 [vector]: https://en.wikipedia.org/wiki/Vector_graphics#/media/File:VectorBitmapExample.svg
 [this page]: https://github.com/d-bl/GroundForge/blob/master/wiki-images/README.md
