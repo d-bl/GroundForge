@@ -1,6 +1,6 @@
 function setVisibility() {
 
-  var diagonal = document.getElementById("matrix").value == "5-"
+  var diagonal = document.getElementById("matrix").value == "-5"
   var values = document.getElementById("tileDimension").value.split("x")
   var height = values[0]
   var width = values[1]
