@@ -14,7 +14,7 @@
         fieldset {display: inline-block}
     </style>
 </head>
-<body>
+<body onload="setVisibility()">
 <article>
     <a id="logo"
        href="index.html"
@@ -44,17 +44,19 @@
                 <option>...</option>.
                 <option selected="selected">4x8</option>
             </select>
-            <input type="radio" name="tiling" id="tilingBricks" value="bricks" onchange="setVisibility()" checked="checked"/><label
-                for="tilingBricks">bricks</label>
-            <input type="radio" name="tiling" id="tilingChecker" value="checker" onchange="setVisibility()"/><label
-                for="tilingChecker">checker</label>
+            <select name="tiling" id="tiling" onchange="setVisibility()">
+                <option>bricks</option>
+                <option>checker</option>
+            </select>
         </fieldset>
         <fieldset>
             <legend>pattern</legend>
-            <input type="radio" name="matrix" id="matrixDiagonal" value="5-" onchange="setVisibility()" checked="checked"/><label
-                for="matrixDiagonal">diagonal</label>
-            <input type="radio" name="matrix" id="matrixWeaving" value="8 1" onchange="setVisibility()"/><label for="matrixWeaving">weaving</label>
+            <select name="matrix" id="matrix" onchange="setVisibility()">
+                <option value="5-">diagonal</option>
+                <option value="8 1">weaving</option>
+            </select>
         </fieldset>
+        <br>
         <fieldset>
             <legend>Stitches</legend>
             <table>
@@ -101,7 +103,10 @@
             </table>
         </fieldset>
         <p>
-            <button id="submit" onclick="alert('not yet implemented');return false">Show</button>
+            <a id="link"
+               target="_blank"
+               href="#"
+            >show</a>
             <label for="submit">pair/thread diagrams</label>
         </p>
     </form>
