@@ -17,7 +17,9 @@ Leave it to techies to sooner or later integrate copies into the [wiki](https://
 ### Don't have a good place to upload?
 
 After completing a few steps you can explore your images and upload new ones at a location like
-`https://github.com/<YOUR-ACCOUNT>/GroundForge/blob/patch-1/docs/wiki-images`.
+
+    https://github.com/<YOUR-ACCOUNT>/GroundForge/blob/patch-1/docs/wiki-images
+
 Of course you have to replace the `<YOUR-ACCOUNT>` part
 and the patch number might increase under circumstances.
 Follow the link to a raw image, that gives you the address to use in the
