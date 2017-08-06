@@ -27,7 +27,7 @@ wiki page you want to embellish with an image.
 
 _The steps_
 
-When signed-in you will find pencil button at the top of [this page].
+When signed-in you will find a pencil button at the top of [this page].
 Make some dummy change, like adding a second empty line somewhere, it won't change the appearance of the page.
 Saving the change with `Propose file change` creates a copy under your own account and you are all set.
 See also this [help-page], the steps up to 6 should do the job.
