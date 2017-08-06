@@ -9,6 +9,7 @@ Upload for non-techies
 
 GitHub doesn't provide a web-interface to upload images into wiki pages.
 You can put your images anywhere on the web, and embed them in a wiki page with the toolbar:
+
 ![embed]
 
 Leave it to techies to sooner or later integrate copies into the [wiki](https://github.com/d-bl/GroundForge/wiki).
