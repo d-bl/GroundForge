@@ -47,9 +47,10 @@ When non-techies used a too massive or less compatible format, please convert.
 ### Moderators
 
 When moving images of non-techies into the wiki repo and changing the image links,
-please commit [on behalf] of the contributor or document an external source in the commit comment.
+please commit [on behalf] of the contributor or document the external source in the commit comment.
 Commit corrections of typos and more under your own name.
-Close (never merge!) the pull request for images by dropping a link to the page that compares the commit with the previous one.
+If a pull request was made to upload images for the wiki:
+close it (don't merge!) by dropping a link to the page that compares the wiki commit with the previous one.
 Start following the fork to not miss any further commits or questions.
 Please kindly accept further uploads on a closed pull request,
 we don't want to loose contributors by imposing strict procedures on non-techies.
