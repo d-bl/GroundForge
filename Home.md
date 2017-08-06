@@ -25,8 +25,9 @@ The diagram generator can relief much tedious work that would go into these step
 
 Like the London Tube maps inform you about destinations and connections but not about geographic locations or travel time, the diagrams in figure `b` and `c` just provide instructions to create a patch of lace but don't inform you about the positions of the pins. 
 
-The blue lines in figure `e` and `h` show the lines of nudging pins of figure `d`. 
-Figure `f` and `g` represent traditional grounds. 
+The blue lines in figure `e` and `h` show the lines of nudging pins of figure `d`.
+
 Figure `f` is a virgin ground as in `c`, a traditional pricking would only show the dots for the pins and something like a Z connecting the pins to indicate the netted sections within the barred sections.
+
 Figure `g` presents small Binche snowflakes which are traditionally worked in cloth stitch with twisted connections, a traditional pricking would only show the dots for the pins and perhaps a circle to annotate indicate the type of snowflake.
 For your own grounds you might have to invent your own annotations that make the pricking less cluttered yet keep you on track while making the lace.
