@@ -23,7 +23,7 @@ function setVisibility() {
   + ";" + document.getElementById("tiling").value
   + ";8;8;0;0"
   + "&s1=" + stitches
-  + "&s2=&s3=&"
+  + "&s2=twist=ct,cross=ctct&s3=&"
 }
 function setEnabled(id, enabled) {
   var x = document.getElementById(id)
