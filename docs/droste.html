@@ -22,6 +22,10 @@
     ><img src="images/logo-medium.png" alt="DiBL logo"/></a>
     <h1>GroundForge</h1>
     <p><em>Choose patterns and stitches to generate diagrams for variations of bobbin lace grounds.</em></p>
+    <p>
+        <a href="https://github.com/d-bl/GroundForge/wiki/Droste-effect"
+        >User guide</a>
+    </p>
     <form onsubmit="return false">
         <fieldset>
             <legend>tiling</legend>
@@ -38,7 +42,7 @@
                 <option>4x3</option>,
                 <option>4x4</option>.
                 <option>...</option>.
-                <option>4x8</option>
+                <option selected="selected">4x8</option>
             </select>
             <input type="radio" name="tiling" id="tilingBricks" value="bricks" onchange="setVisibility()" checked="checked"/><label
                 for="tilingBricks">bricks</label>
@@ -51,48 +55,55 @@
                 for="matrixDiagonal">diagonal</label>
             <input type="radio" name="matrix" id="matrixWeaving" value="8 1" onchange="setVisibility()"/><label for="matrixWeaving">weaving</label>
         </fieldset>
-        <table>
-            <tr>
-                <td><input id="r1-c1" name="A1" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
-                <td><input id="r1-c2" name="B1" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
-                <td><input id="r1-c3" name="C1" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
-                <td><input id="r1-c4" name="D1" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
-                <td><input id="r1-c5" name="E1" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
-                <td><input id="r1-c6" name="F1" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
-                <td><input id="r1-c7" name="G1" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
-                <td><input id="r1-c8" name="H1" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
-            </tr>
-            <tr>
-                <td><input id="r2-c1" name="A2" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
-                <td><input id="r2-c2" name="B2" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
-                <td><input id="r2-c3" name="C2" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
-                <td><input id="r2-c4" name="D2" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
-                <td><input id="r2-c5" name="E2" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
-                <td><input id="r2-c6" name="F2" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
-                <td><input id="r2-c7" name="G2" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
-                <td><input id="r2-c8" name="H2" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
-            </tr>
-            <tr>
-                <td><input id="r3-c1" name="A3" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
-                <td><input id="r3-c2" name="B3" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
-                <td><input id="r3-c3" name="C3" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
-                <td><input id="r3-c4" name="D3" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
-                <td><input id="r3-c5" name="E3" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
-                <td><input id="r3-c6" name="F3" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
-                <td><input id="r3-c7" name="G3" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
-                <td><input id="r3-c8" name="H3" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
-            </tr>
-            <tr>
-                <td><input id="r4-c1" name="A4" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
-                <td><input id="r4-c2" name="B4" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
-                <td><input id="r4-c3" name="C4" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
-                <td><input id="r4-c4" name="D4" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
-                <td><input id="r4-c5" name="E4" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
-                <td><input id="r4-c6" name="F4" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
-                <td><input id="r4-c7" name="G4" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
-                <td><input id="r4-c8" name="H4" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
-            </tr>
-        </table>
+        <fieldset>
+            <legend>Stitches</legend>
+            <table>
+                <tr>
+                    <td><input id="r1-c1" name="A1" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
+                    <td><input id="r1-c2" name="B1" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
+                    <td><input id="r1-c3" name="C1" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
+                    <td><input id="r1-c4" name="D1" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
+                    <td><input id="r1-c5" name="E1" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
+                    <td><input id="r1-c6" name="F1" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
+                    <td><input id="r1-c7" name="G1" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
+                    <td><input id="r1-c8" name="H1" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
+                </tr>
+                <tr>
+                    <td><input id="r2-c1" name="A2" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
+                    <td><input id="r2-c2" name="B2" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
+                    <td><input id="r2-c3" name="C2" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
+                    <td><input id="r2-c4" name="D2" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
+                    <td><input id="r2-c5" name="E2" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
+                    <td><input id="r2-c6" name="F2" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
+                    <td><input id="r2-c7" name="G2" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
+                    <td><input id="r2-c8" name="H2" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
+                </tr>
+                <tr>
+                    <td><input id="r3-c1" name="A3" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
+                    <td><input id="r3-c2" name="B3" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
+                    <td><input id="r3-c3" name="C3" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
+                    <td><input id="r3-c4" name="D3" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
+                    <td><input id="r3-c5" name="E3" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
+                    <td><input id="r3-c6" name="F3" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
+                    <td><input id="r3-c7" name="G3" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
+                    <td><input id="r3-c8" name="H3" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
+                </tr>
+                <tr>
+                    <td><input id="r4-c1" name="A4" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
+                    <td><input id="r4-c2" name="B4" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
+                    <td><input id="r4-c3" name="C4" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
+                    <td><input id="r4-c4" name="D4" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
+                    <td><input id="r4-c5" name="E4" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
+                    <td><input id="r4-c6" name="F4" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
+                    <td><input id="r4-c7" name="G4" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch show"></td>
+                    <td><input id="r4-c8" name="H4" spellcheck="false" value="ctct" pattern="[lrtc]*" class="stitch hide"></td>
+                </tr>
+            </table>
+        </fieldset>
+        <p>
+            <button id="submit" onclick="alert('not yet implemented');return false">Show</button>
+            <label for="submit">pair/thread diagrams</label>
+        </p>
     </form>
 </article>
 <article>
