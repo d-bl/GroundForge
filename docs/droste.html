@@ -47,7 +47,7 @@
                 <option>4x2</option>,
                 <option>4x3</option>,
                 <option>4x4</option>.
-                <option>...</option>.
+                <option disabled="disabled">...</option>.
                 <option selected="selected">4x8</option>
             </select>
             <select name="tiling" id="tiling" onchange="setVisibility()">
@@ -58,8 +58,9 @@
         <fieldset>
             <legend>pattern</legend>
             <select name="matrix" id="matrix" onchange="setVisibility()">
-                <option value="-5">diagonal<!-- the matrix doesn't match the form to compensate for issue 96 --></option>
-                <option value="8%0A1">weaving</option>
+                <!-- the diagonal matrix doesn't match the form to compensate for issue #96 -->
+                <option value="-5-5-5-5%0A5-5-5-5-%0A-5-5-5-5%0A5-5-5-5-">diagonal</option>
+                <option value="88888888%0A11111111%0A88888888%0A11111111">weaving</option>
             </select>
         </fieldset>
         <br>

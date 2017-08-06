@@ -1,12 +1,16 @@
 function setVisibility() {
 
-  var diagonal = document.getElementById("matrix").value == "-5"
+  var matrixLines = document.getElementById("matrix").value.split("%0A")
+  var diagonal = document.getElementById("matrix").value.startsWith("-5")
   var values = document.getElementById("tileDimension").value.split("x")
   var height = values[0]
   var width = values[1]
   var stitches = ""
-  for (c = 0; c < 8; c++) {
-    for (r = 0; r < 4; r++) {
+  var m = []
+  for (r = 0; r < 4; r++) {
+    if (r < height)
+      m[r] = matrixLines[r].substring(0,width)
+    for (c = 0; c < 8; c++) {
       var enable =  c < width && r < height && (!diagonal || c%2 == r%2)
       var id = "r" + (r + 1) + "-c" + (c + 1)
       setEnabled(id, enable)
@@ -15,8 +19,7 @@ function setVisibility() {
             + "=" + document.getElementById(id).value + " "
     }
   }
-  document.getElementById("link").href = "index.html?m="
-  + document.getElementById("matrix").value
+  document.getElementById("link").href = "index.html?m=" + m
   + ";" + document.getElementById("tiling").value
   + ";8;8;0;0"
   + "&s1=" + stitches
