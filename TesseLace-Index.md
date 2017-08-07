@@ -85,11 +85,10 @@ See also the [Droste](Droste-effect) page, a twist more or less at the first ste
 
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/130.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5831%20-4-7;bricks&patch=-437%2034-7;bricks&patch=4830%20--77;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/129.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=1483%208-48;bricks&patch=4831%20-488%203148%2088-4;checker)
-[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/112.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4831%20-117%206-78%2086-4;checker)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/133.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=588-%2014-2;bricks)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/115.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4831%20-488%20214-%2088-5;checker)
-[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/117.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4831%20-4-7%203158%2088-4;checker)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/118.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4831%20-117%203178%2088-4;checker)
+[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/117.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4831%20-4-7%203158%2088-4;checker)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/123.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4831%20-117%205-7-%2086-5;checker)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/080.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4831%20-488%206-48%2086-4;checker)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/081.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4831%20-488%205-4-%2086-5;checker)
@@ -99,6 +98,7 @@ See also the [Droste](Droste-effect) page, a twist more or less at the first ste
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/121.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=5831%20-4-7%206-58%20-5-4;checker)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/122.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4831%20-4-7%20215-%2088-5;checker)
 [![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/124.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4831%20-4-7%206-58%2086-4;checker)
+[![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/112.png)](https://d-bl.github.io/GroundForge/sheet.html?patch=4831%20-117%206-78%2086-4;checker)
 
 
 Others
