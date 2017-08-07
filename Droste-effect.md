@@ -122,6 +122,7 @@ Mixing stitches requires larger tile dimensions.
 Mix
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/crclct.png) with ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ctct.png)
 and/or drop the last left and/or right twist of these two stitches.
+Just some examples:
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/115.png)
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/133.png)
