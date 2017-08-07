@@ -114,7 +114,9 @@ draw a plait or something-pin-something like a simple stitch.
 Families of patterns to play with
 =================================
 
-Mirror, mix, add or drop twists from the stitches above and/or switch diagonal with weaving to get get a myriad of patterns.
+The links in the stiches table above let you play with stitches for the level 2 diagrams.
+You can create even more variations starting at the first step.
+Simply mix and mirror the stitches above, add or drop twists and/or switch diagonal with weaving.
 Mixing stitches requires larger tile dimensions.
 
 Mix
@@ -126,6 +128,12 @@ and/or drop the last left and/or right twist of these two stitches.
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/129.png)
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/130.png)
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/118.png)
+
+You can create fish of two pair wide at level 2 and four pairs wide at level 3.
+The traditional receipt needs ctc and horizontal rows of vertical twists in the first diagram,
+these twist become a tctct at level 2.
+Ad horizontal twists at the last level you want to use. See als o the example pages of MAE-gf.
+
 
 Tiling
 ======
