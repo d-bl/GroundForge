@@ -1,16 +1,25 @@
+- [Stitches](#stitches)
+- [Families of patterns to play with](#families-of-patterns-to-play-with)
+- [Tiling](#tiling)
+- [Offline-execution](#offline-execution)
+- [Numbers of patterns](#numbers-of-patterns)
+
+<sub><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></sub>
+
+
 The [GroundForge] main page can show three pairs of thread and pair diagrams.
 Each next pair diagram is a color coded version of the previous thread diagram.
 When choosing one and the same stitch for each pair of diagrams you get a Droste effect.
 In theory more levels are possible but a browser might easily choke even with so few levels,
 average complex stitches and not very large numbers of rows and columns.
 
+Stitches
+========
+
 The table shows the most interesting stitches and demonstrates some traditional patterns.
 The left column shows the official color coded diagrams for level 2.
 The generated diagrams however don't have pins and the pair diagrams
 draw a plait or something-pin-something like a simple stitch.
-
-Mirror, mix, add or drop twists and/or switch diagonal with weaving to get get a myriad of patterns.
-Mixing stitches requires larger tile dimensions.
 
 <table>
     <tr>
@@ -102,9 +111,24 @@ Mixing stitches requires larger tile dimensions.
     </tr>
 </table>
 
+Families of patterns to play with
+=================================
+
+Mirror, mix, add or drop twists from the stitches above and/or switch diagonal with weaving to get get a myriad of patterns.
+Mixing stitches requires larger tile dimensions.
+
+Mix
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/crclct.png) with ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ctct.png)
+and/or drop the last left and/or right twist of these two stitches.
+
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/115.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/133.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/129.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/130.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/118.png)
 
 Tiling
-------
+======
 
 The matrix and its tiling arrangement defines the flow of pairs in a pattern.
 They are illustrated below with red rectangles.
@@ -149,7 +173,7 @@ You can select one from the following links.
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/base-patterns.png)
 
 Offline-execution
------------------
+=================
 
 Off-line execution is faster, doesn't make a fuss if it takes a while,
 allows you to abort at your own discretion and allows as many levels as your system can handle.
@@ -158,7 +182,7 @@ install an environment to execute JavaScript without a browser and get familiar 
 Another option is downloading the code and adjust one of the demo classes to your needs.
 
 Numbers of patterns
--------------------
+===================
 
 When limiting the choices to the three most common stitches
 we get 3+9+27 thread diagrams for one start pattern.
