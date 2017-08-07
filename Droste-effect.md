@@ -122,21 +122,23 @@ Mixing stitches requires larger tile dimensions.
 Mix
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/crclct.png) with ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ctct.png)
 and/or drop the last left and/or right twist of these two stitches.
-Just some examples:
+See also [MAE-gf](https://github.com/MAETempels/MAE-gf/wiki/Bias-ground),
+just some examples:
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/115.png)
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/133.png)
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/129.png)
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/130.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/129.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/133.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/115.png)
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/118.png)
 
-You can create fish of two pair wide at level 2 and four pairs wide at level 3.
+You can create fish (see also [MAE-gf](https://github.com/MAETempels/MAE-gf/wiki/Milanese-Fish))
+of two pair wide at level 2 and four pairs wide at level 3.
 The traditional receipt needs ctc and horizontal rows of vertical twists in the first diagram,
 these twist become a tctct at level 2.
 As the weaving pattern requires an even number of rows 
 you need to specify two rows of fishes for bodies of two rows high.
-Ad horizontal twists at the last level you want to use. See als o the example pages of
-[MAE-gf](https://github.com/MAETempels/MAE-gf/wiki/Milanese-Fish).
+Ad horizontal twists at the last level you want to use.
+
 
 
 
