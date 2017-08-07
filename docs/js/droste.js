@@ -7,7 +7,7 @@ function setVisibility() {
   var width = matrixLines[0].length
   var stitches = ""
   var m = []
-  for (r = 0; r < 4; r++) {
+  for (r = 0; r < 6; r++) {
     for (c = 0; c < 8; c++) {
       var enable =  c < width && r < height && (!diagonal || c%2 == r%2)
       var id = "r" + (r + 1) + "-c" + (c + 1)
