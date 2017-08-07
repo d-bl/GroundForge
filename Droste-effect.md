@@ -132,15 +132,23 @@ and/or drop the last left and/or right twist of these two stitches.
 You can create fish of two pair wide at level 2 and four pairs wide at level 3.
 The traditional receipt needs ctc and horizontal rows of vertical twists in the first diagram,
 these twist become a tctct at level 2.
-Ad horizontal twists at the last level you want to use. See als o the example pages of MAE-gf.
+As the weaving pattern requires an even number of rows 
+you need to specify two rows of fishes for bodies of two rows high.
+Ad horizontal twists at the last level you want to use. See als o the example pages of
+[MAE-gf](https://github.com/MAETempels/MAE-gf/wiki/Milanese-Fish).
+
 
 
 Tiling
 ======
 
-The matrix and its tiling arrangement defines the flow of pairs in a pattern.
-They are illustrated below with red rectangles.
-The numbers define from which direction the pairs arrive at a stitch.
+A matrix and its tiling arrangement defines the flow of pairs in a pattern.
+The red rectangles illustrate the tiling.
+The numbers in circles define from which direction the pairs arrive at a stitch.
+
+For your convenience you can select some valid tile configurations from a drop down on a [special] page.
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/base-patterns.png)
+
 
 A weaving pattern requires an even number of rows and
 will always work with a checker board tiling.
@@ -149,36 +157,6 @@ A diagonal pattern requires an even number of columns
 and brick tiling in case of an odd number of rows.
 An odd number of rows won't work with a number of columns divisible by four.
 
-For your convenience a few tile dimensions are pre-configured.
-You can select one from the following links.
-
-* Diagonal
-  * checker:
-    [2x2](https://d-bl.github.io/GroundForge/?m=5-%0D-5;checker;8;5;0;0),
-    [2x4](https://d-bl.github.io/GroundForge/?m=5-5-%0D-5-5;checker;9;5;0;0),
-    [4x2](https://d-bl.github.io/GroundForge/?m=5-%0D-5%0D5-%0D-5;checker;9;5;0;0),
-    [4x4](https://d-bl.github.io/GroundForge/?m=5-5-%0D-5-5%0D5-5-%0D-5-5;checker;10;6;0;0).
-  * bricks:
-    [1x2](https://d-bl.github.io/GroundForge/?m=5-;bricks;7;5;0;0),
-    [3x2](https://d-bl.github.io/GroundForge/?m=5-%0D-5%0D5-;bricks;9;6;0;0),
-    [2x4](https://d-bl.github.io/GroundForge/?m=5-5-%0D-5-5;bricks;9;5;0;0).
-* Weaving
-  * checker
-    [2x1](https://d-bl.github.io/GroundForge/?m=8%0D1;checker;5;5;0;0),
-    [2x2](https://d-bl.github.io/GroundForge/?m=88%0D11;checker;5;5;0;0),
-    [2x3](https://d-bl.github.io/GroundForge/?m=888%0D111;checker;5;5;0;0),
-    [2x4](https://d-bl.github.io/GroundForge/?m=8888%0D1111;checker;6;6;0;0),
-    [4x1](https://d-bl.github.io/GroundForge/?m=8%0D1%0D8%0D1;checker;5;5;0;0),
-    [4x2](https://d-bl.github.io/GroundForge/?m=88%0D11%0D88%0D11;checker;6;6;0;0),
-    [4x3](https://d-bl.github.io/GroundForge/?m=888%0D111%0D888%0D111;checker;8;4;0;0),
-    [4x4](https://d-bl.github.io/GroundForge/?m=8888%0D1111%0D8888%0D1111;checker;6;6;0;0).
-  * bricks:
-    [2x2](https://d-bl.github.io/GroundForge/?m=88%0D11;bricks;5;5;0;0),
-    [2x4](https://d-bl.github.io/GroundForge/?m=8888%0D1111;bricks;6;6;0;0),
-    [4x2](https://d-bl.github.io/GroundForge/?m=88%0D11%0D88%0D11;bricks;6;6;0;0),
-    [4x4](https://d-bl.github.io/GroundForge/?m=8888%0D1111%0D8888%0D1111;bricks;6;6;0;0).
-
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/base-patterns.png)
 
 Offline-execution
 =================
@@ -202,4 +180,5 @@ Nevertheless selecting the real pleasing patterns would take a lot of time.
 So you need to develop an intuition to take your picks.
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
+[special]: https://d-bl.github.io/GroundForge/drost.html
 [hoops]: https://github.com/d-bl/GroundForge/blob/master/docs/API.md
