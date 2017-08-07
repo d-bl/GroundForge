@@ -1,15 +1,13 @@
 function setVisibility() {
 
-  var matrixLines = document.getElementById("matrix").value.split("%0A")
-  var diagonal = document.getElementById("matrix").value.startsWith("-5")
-  var values = document.getElementById("tileDimension").value.split("x")
-  var height = values[0]
-  var width = values[1]
+  var base = document.getElementById("base").value
+  var diagonal = base.startsWith("5") || base.startsWith("-")
+  var matrixLines = base.split(";")[0].split("%0D")
+  var height = matrixLines.length
+  var width = matrixLines[0].length
   var stitches = ""
   var m = []
   for (r = 0; r < 4; r++) {
-    if (r < height)
-      m[r] = matrixLines[r].substring(0,width)
     for (c = 0; c < 8; c++) {
       var enable =  c < width && r < height && (!diagonal || c%2 == r%2)
       var id = "r" + (r + 1) + "-c" + (c + 1)
@@ -19,11 +17,9 @@ function setVisibility() {
             + "=" + document.getElementById(id).value + " "
     }
   }
-  document.getElementById("link").href = "index.html?m=" + m
-  + ";" + document.getElementById("tiling").value
-  + ";8;8;0;0"
-  + "&s1=" + stitches
-  + "&s2=twist=ct,cross=ctct&s3=&"
+  document.getElementById("link").href = "index.html?m="
+   + document.getElementById("base").value
+   + stitches
 }
 function setEnabled(id, enabled) {
   var x = document.getElementById(id)
@@ -31,5 +27,4 @@ function setEnabled(id, enabled) {
                 ? x.className.replace("hide","show")
                 : x.className.replace("show","hide")
                 )
-  x.disabled = !enabled
 }
