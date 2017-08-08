@@ -183,5 +183,5 @@ Nevertheless selecting the real pleasing patterns would take a lot of time.
 So you need to develop an intuition to take your picks.
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
-[special]: https://d-bl.github.io/GroundForge/drost.html
+[special]: https://d-bl.github.io/GroundForge/droste.html
 [hoops]: https://github.com/d-bl/GroundForge/blob/master/docs/API.md
