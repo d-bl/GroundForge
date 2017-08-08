@@ -131,14 +131,16 @@ just some examples:
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/115.png)
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/118.png)
 
-You can create fish (see also [MAE-gf](https://github.com/MAETempels/MAE-gf/wiki/Milanese-Fish))
-of two pair wide at level 2 and four pairs wide at level 3.
-The traditional receipt needs ctc and horizontal rows of vertical twists in the first diagram,
-these twist become a tctct at level 2.
+You can create Milanese fish or lotus patterns with mainly ctc at the first step
+and now and then a row of stitches starting and/or ending with a left and/or right twist.
+The fish become two pair wide when adding the horizontal twists at the level 2 diagrams
+or four pairs wide when adding the twist at level 3 diagrams.
 As the weaving pattern requires an even number of rows 
-you need to specify two rows of fishes for bodies of two rows high.
-Ad horizontal twists at the last level you want to use.
+you may need to specify two rows of fishes for bodies of the desired height.
+More possibilities and completed examples at [MAE-gf](https://github.com/MAETempels/MAE-gf/wiki/Milanese:-Fish) and the [Tesselace Index](Tesselace-Index), just some examples:
 
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/173.png)
+![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/169.png)
 
 
 
