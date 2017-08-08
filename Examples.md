@@ -1,7 +1,7 @@
 Various pages scattered around the web provide examples of patterns
 collected with different lines of approach.
 Each resource has individual examples, sections or pages on families of stitches such as
-bias, Milanese fish and lotus, spiders and just fancy examples.
+spiders, bias and Milanese fish or lotus.
 In one or two steps the examples link to the main [GroundForge] page
 with applicable values in the parameter form.
 
