@@ -1,12 +1,10 @@
-Various pages scattered around the web provide examples patterns
-collected with different view points.
-In one or two steps these examples link to the main [GroundForge] page
+Various pages scattered around the web provide examples of patterns
+collected with different lines of approach.
+Each resource has individual examples, sections or pages on families of stitches such as
+bias, Milanese fish and lotus, spiders and just fancy examples.
+In one or two steps the examples link to the main [GroundForge] page
 with applicable values in the parameter form.
-Though the number of patterns might be overwhelming,
-there is still a lot of room for further variations.
 
-Each resource may have some examples, sections or pages on families of stitches such as
-spiders, bias, Milanese fish and lotus.
 
 * The [Tesselace index] shows 376  patterns by thumbnails of pair diagrams.
   The diagrams are collected from [tesseLace.com],
@@ -15,12 +13,15 @@ spiders, bias, Milanese fish and lotus.
 * The [Whiting index] shows 144 patches of worked lace from
   _A Lace Guide for Makers and Collectors_ by Gertrude Whiting which dates from 1920.
 * The [Droste effect](Droste-effect) (thread diagrams becoming pair diagrams)
-  is used to show some traditional grounds.
-  Many variations and different grounds are possible.
+  starts with some ready-to-show traditional grounds
+  and explains how to mix and match you own variations.
 * The [MAE-gf] pages systematically explore various families of grounds.
 * For those to shy to meddle with this wiki can post personal finds on a [discussion] 
   and/or propose candidates for this overview.
   You will need a github account for both types of contribution.
+
+Though the number of patterns (also available in copyrighted resources) might be overwhelming,
+there is still a lot of room for further variations.
 
 Explore, experiment, play and discover!
 
