@@ -9,7 +9,7 @@ with applicable values in the parameter form.
 * The [Tesselace index] shows 376  patterns by thumbnails of pair diagrams.
   The diagrams are collected from [tesseLace.com],
   resulting from Ph.D research on _Algorithmically designed lace tessellations_.
-  When following the image links you will discover patterns from the tesselace [slide show].
+  When following an image link you will discover one or more patterns from the tesselace [slide show].
 * The [Whiting index] shows 144 patches of worked lace from
   _A Lace Guide for Makers and Collectors_ by Gertrude Whiting which dates from 1920.
 * The [Droste effect](Droste-effect) (thread diagrams becoming pair diagrams)
