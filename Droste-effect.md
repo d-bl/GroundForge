@@ -154,7 +154,7 @@ The numbers in circles ([more](https://raw.githubusercontent.com/wiki/d-bl/Groun
 define from which location the pairs arrive at a stitch.
 
 For your convenience you can select some valid tile configurations from a drop down on a [special] page.
-You can create larger tiles (or checkered diagonal tiles with 3 or 5 of rows) on the main page.
+You can create larger tiles (or diagonal tiles with 3 or 5 of rows) on the main page.
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/base-patterns.png)
 
 
