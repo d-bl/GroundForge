@@ -150,7 +150,7 @@ Tiling
 
 A matrix and its tiling arrangement defines the flow of pairs in a pattern.
 The red rectangles illustrate the tiling.
-The numbers in circles [more](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template.png)
+The numbers in circles ([more](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template.png))
 define from which location the pairs arrive at a stitch.
 
 For your convenience you can select some valid tile configurations from a drop down on a [special] page.
