@@ -10,8 +10,7 @@
 The [GroundForge] main page can show three pairs of thread and pair diagrams.
 Each next pair diagram is a color coded version of the previous thread diagram.
 When choosing one and the same stitch for each pair of diagrams you get a Droste effect.
-In theory more levels are possible but a browser might easily choke even with so few levels,
-average complex stitches and not very large numbers of rows and columns.
+In theory more levels are possible but a browser might easily choke.
 
 Stitches
 ========
@@ -25,7 +24,7 @@ draw a plait or something-pin-something like a simple stitch.
     <tr>
         <th>level 2</th>
         <th colspan="3">level 1</th>
-        <th>tiling</th>
+        <th><a href="#Tiling">tiling</a></th>
         <th><a href="Whiting-index">Whiting index</a></th>
     </tr>
     <tr>
@@ -114,16 +113,18 @@ draw a plait or something-pin-something like a simple stitch.
 Families of patterns to play with
 =================================
 
-The links in the stiches table above let you play with stitches for the level 2 diagrams.
-You can create even more variations starting at the first step.
-Simply mix and mirror the stitches above, add or drop twists and/or switch diagonal with weaving.
-Mixing stitches requires larger tile dimensions.
+Following the linked stitches in the level 1 column above, you get some traditional grounds
+but you can play with stitches at the level 2 diagrams for variations.
+You can create even more variations by mixing and mirroring stitches at the first step with [this page].
+Add or drop twists and/or switch diagonal with weaving too.
+
+You can find more examples of the following families in the [Tesselace Index](Tesselace-Index)
+and fully completed examples in the [MAE-gf](https://github.com/MAETempels/MAE-gf/wiki) pages.
 
 Mix
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/crclct.png) with ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/stitches/ctct.png)
 and/or drop the last left and/or right twist of these two stitches.
-See also [MAE-gf](https://github.com/MAETempels/MAE-gf/wiki/Bias-ground),
-just some examples:
+Just some examples:
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/130.png)
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/129.png)
@@ -131,13 +132,13 @@ just some examples:
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/115.png)
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/118.png)
 
-You can create Milanese fish or lotus patterns with mainly ctc at the first step
+Milanese fish or lotus patterns have mainly ctc stitches at the first step
 and now and then a row of stitches starting and/or ending with a left and/or right twist.
 The fish become two pair wide when adding the horizontal twists at the level 2 diagrams
 or four pairs wide when adding the twists at level 3 diagrams.
 As the weaving pattern requires an even number of rows 
 you may need to specify two rows of fishes for the desired height.
-More possibilities in the [Tesselace Index](Tesselace-Index) and completed examples in [MAE-gf](https://github.com/MAETempels/MAE-gf/wiki/Milanese:-Fish), just two examples to illustrate the difference between a fish and lotus and some variations between their rows:
+Just two examples to illustrate the difference between a fish and lotus, each with something different between their rows:
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/169.png)
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/tl/173.png)
@@ -149,9 +150,11 @@ Tiling
 
 A matrix and its tiling arrangement defines the flow of pairs in a pattern.
 The red rectangles illustrate the tiling.
-The numbers in circles define from which direction the pairs arrive at a stitch.
+The numbers in circles [more](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template.png)
+define from which location the pairs arrive at a stitch.
 
 For your convenience you can select some valid tile configurations from a drop down on a [special] page.
+You can create larger tiles (or checkered diagonal tiles with 3 or 5 of rows) on the main page.
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/base-patterns.png)
 
 
@@ -186,4 +189,5 @@ So you need to develop an intuition to take your picks.
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
 [special]: https://d-bl.github.io/GroundForge/droste.html
+[this page]: https://d-bl.github.io/GroundForge/droste.html
 [hoops]: https://github.com/d-bl/GroundForge/blob/master/docs/API.md
