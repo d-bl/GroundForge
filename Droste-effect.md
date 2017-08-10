@@ -153,8 +153,9 @@ The red rectangles illustrate the tiling.
 The numbers in circles ([more](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template.png))
 define from which location the pairs arrive at a stitch.
 
-For your convenience you can select some valid tile configurations from a drop down on a [special] page.
-You can create larger tiles (or diagonal tiles with 3 or 5 of rows) on the main page.
+A [special] page lets you simply select a valid tile configuration
+that doesn't suffer from the known bugs [#93] and [#96].
+You can create larger tiles on the main page.
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/base-patterns.png)
 
 
@@ -187,6 +188,8 @@ The resulting collection will contain mirrored stitches and perhaps other duplic
 Nevertheless selecting the real pleasing patterns would take a lot of time.
 So you need to develop an intuition to take your picks.
 
+[#96]: https://github.com/d-bl/GroundForge/issues/96
+[#93]: https://github.com/d-bl/GroundForge/issues/93
 [GroundForge]: https://d-bl.github.io/GroundForge/
 [special]: https://d-bl.github.io/GroundForge/droste.html
 [this page]: https://d-bl.github.io/GroundForge/droste.html
