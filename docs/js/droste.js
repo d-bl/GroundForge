@@ -14,7 +14,7 @@ function setVisibility() {
       setEnabled(id, enable)
       if (enable)
         stitches += document.getElementById(id).name
-            + "=" + document.getElementById(id).value + " "
+            + "=" + document.getElementById(id).value.trim() + " "
     }
   }
   document.getElementById("link").href = "index.html?m="
