@@ -12,6 +12,8 @@ with applicable values in the parameter form.
   When following an image link you will discover one or more patterns from the tesselace [slide show].
 * The [Whiting index] shows 144 patches of worked lace from
   _A Lace Guide for Makers and Collectors_ by Gertrude Whiting which dates from 1920.
+  Though each peace is just one interpretation of a pattern,
+  it shows the texture of real lace.
 * The [Droste effect](Droste-effect) (thread diagrams becoming pair diagrams)
   starts with some ready-to-show traditional grounds
   and explains how to mix and match you own variations.
