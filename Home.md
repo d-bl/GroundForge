@@ -23,7 +23,10 @@ The diagram generator can relief much tedious work that would go into these step
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/intro.png)
 
-Like the London Tube maps inform you about destinations and connections but not about geographic locations or travel time, the diagrams in figure `b` and `c` just provide instructions to create a patch of lace but don't inform you about the positions of the pins. 
+The diagrams in figure `b` and `c` just provide instructions to create a patch of lace
+but don't inform you about the positions of the pins,
+like the London Tube maps inform you about destinations and connections
+but not about geographic locations or travel time.
 
 The blue lines in figure `e` and `h` show the lines of nudging pins of figure `d`.
 
