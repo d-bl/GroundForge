@@ -22,6 +22,7 @@ with applicable values in the parameter form.
 * For those to shy to meddle with this wiki can post personal finds on a [discussion] 
   and/or propose candidates for this overview.
   You will need a github account for both types of contribution.
+  Fixing our non-native grammar would be much appreciated.
 
 Though the number of patterns (also available in copyrighted resources) might be overwhelming,
 there is still a lot of room for further variations.
