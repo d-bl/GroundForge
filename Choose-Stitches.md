@@ -1,3 +1,13 @@
+Two methods are used to specify stitches.
+
+* The [droste] page has one field per stitch.
+  The position in the form reflects the position in the pattern.
+  A cheat-sheet provides a visual representation for some less trivial stitches.
+* The [main] page has one text field to define all stitches.
+  Hover with the cursor over stitches in the pair diagram
+  and your browser should show a tool tip with the id
+  for a position in the pattern and the current stitch.
+
 Stitch specifications
 ---------------------
 
@@ -10,14 +20,6 @@ Any sequence of punctuation characters separates the stitch definitions.
 You can try a `p` for a pin in a stitch definition, but that rarely works as desired,
 see issue [51](https://github.com/d-bl/GroundForge/issues/51) for the technical details.
 
-Buttons and Browser History
----------------------------
-
-The show buttons doesn't store your choice of stitches (nor thread colors, nor manual changes to the parameters form) in your browser history.
-
-When the cursor is in a stitch field you can return to a previous choice for that field with CTRL-Z (Windows, *nix systems) or COMMAND-Z (Mac), FireFox and Chrome also let you choose from a list of previous values with the same start, erase the field and the down or up arrow of your keyboard shows all your previous choices.
-
-Right-click the ![](https://d-bl.github.io/GroundForge/images/link.png) button button to save the complete set of choices (except for the thread colors) as bookmark, favorite or however your browser calls it. When recalling the bookmark you will have to generate the diagrams again with the show button. Just clicking the button saves the set of choices in the browser history allowing you to return with the back button of your browser, you will have to regenerate the diagrams. Your browser will automatically remember the choices you made on an example page or the linked stitches examples you choose. The browser history gets lost when you close the browser, you bookmarks or favorites will stay.
 
 An Example
 ----------
@@ -36,5 +38,17 @@ The image below shows screen shot snippets of a pattern and its stitches.
 * _Bottom:_ the diagrams generated with the chosen stitches.
   When hovering with your mouse over a stitch (in a generated pattern, not the screenshot above), your browser is supposed to show the ID and instructions of a stitch.
 
+[droste]: https://d-bl.github.io/GroundForge/droste.html
+[main]: https://d-bl.github.io/GroundForge/
 [assemble]: https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns
 [51]: https://github.com/d-bl/GroundForge/issues/51
+
+
+Buttons and Browser History
+---------------------------
+
+The show buttons doesn't store your choice of stitches (nor thread colors, nor manual changes to the parameters form) in your browser history.
+
+When the cursor is in a stitch field you can return to a previous choice for that field with CTRL-Z (Windows, *nix systems) or COMMAND-Z (Mac), FireFox and Chrome also let you choose from a list of previous values with the same start, erase the field and the down or up arrow of your keyboard shows all your previous choices.
+
+Right-click the ![](https://d-bl.github.io/GroundForge/images/link.png) button button to save the complete set of choices (except for the thread colors) as bookmark, favorite or however your browser calls it. When recalling the bookmark you will have to generate the diagrams again with the show button. Just clicking the button saves the set of choices in the browser history allowing you to return with the back button of your browser, you will have to regenerate the diagrams. Your browser will automatically remember the choices you made on an example page or the linked stitches examples you choose. The browser history gets lost when you close the browser, you bookmarks or favorites will stay.
