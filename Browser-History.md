@@ -11,7 +11,7 @@ Right-click the button to save the complete set of choices (except for the threa
 as bookmark, favorite or however your browser calls it.
 When recalling the bookmark you will have to generate the diagrams again with the show button.
 Your browser will automatically remember the choices you made on an example page.
-The browser history gets lost when you close the browser, you bookmarks or favorites will stay.
+The browser history gets lost when you close the browser, your bookmarks or favorites will stay.
 
 When the cursor is in a stitch field you can return to a previous choice
 for that field with CTRL-Z (Windows, *nix systems) or COMMAND-Z (Mac),
