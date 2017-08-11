@@ -1,51 +1,75 @@
+- [Form fields](Form-fields)
+- [Stitch definitions](#stitch-definitions)
+- [Assign stitches](#assign-stitches)
+- [An Example](#an-example)
+- [Buttons and Browser History](#buttons-and-browser-history)
+
+<sub><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></sub>
+
+
+Form fields
+===========
+
 Two methods are used to specify stitches.
 
 * The [droste] page has one field per stitch.
-  The position in the form reflects the position in the pattern.
+  The position of the fields in the form reflects the position in the pattern.
   A cheat-sheet provides a visual representation for some less trivial stitches.
-* The [main] page has one text field to define all stitches.
+* The [main] page has one text field to define all stitches of a pattern.
   Hover with the cursor over stitches in the pair diagram
   and your browser should show a tool tip with the id
-  for a position in the pattern and the current stitch.
+  for a position in the pattern and the current stitch assigned to the id.
 
-Stitch specifications
----------------------
 
-A text field takes the definition of stitches to use. When hovering with your mouse over a stitch in the pair diagram, it shows you an ID of a stitch like `A1`. Assign stitches to theses ID's with `c` , `t`, `l`, `r` for cross, twist, left-twist and right-twist. A stitch requires at least a cross, violating this requirement would implicitly change the pair diagram.
+Stitch definitions
+==================
 
-If you drop the ID for the first stitch definition, it is used as default for not mentioned ID's in the pattern. When using thread diagrams as pair diagrams, you can also use `cross` and `twist` as defaults.
+The definition of a stitch consists of a sequence  of the characters
+`c`, `t`, `l`, `r` for cross, twist, left-twist and right-twist. 
+A stitch requires at least a cross, violating this requirement would implicitly change the pair diagram.
+Invalid characters are ignored.
 
-No spaces are allowed around the equal sign between the ID and instruction of a stitch definition.
-Any sequence of punctuation characters separates the stitch definitions.
-You can try a `p` for a pin in a stitch definition, but that rarely works as desired,
-see issue [51](https://github.com/d-bl/GroundForge/issues/51) for the technical details.
+You can try a `p` for a pin, but that rarely works as desired,
+see issue [#51] for the technical details.
+
+
+
+Assign stitches
+===============
+
+The form fields for stitches on the main page expect defaults and/or assignments. For example `A1=ctc` assigns a plain cloth stitch to id A1 which represents the upper left stitch of the pattern.
+No spaces are allowed around the equal sign between the id and stitch definition.
+
+If a form field starts with a stitch definition, it is used as default.
+When a thread diagrams is used as pair diagram, you can use the keywords `cross` and `twist` as id's for defaults.
 
 
 An Example
-----------
+==========
 
 The image below shows screen shot snippets of a pattern and its stitches.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/stitch-ids.png)
 
-* _Top left:_ the definition of a pattern. You can choose one from thumbnails, or [assemble] something else.
+* _Top left:_ the definition of a pattern created by one of the example page.
   The digits inside the circles determine the configuration of arrows arriving at that position. 
-  The rows and columns determine the ID's assigned to stitches.
-  For example the top-left (5) gets ID A1. Well, that's the theory.
-  Under circumstance the ID's in a row of stitches may start somewhere halfway the matrix
-  and the stitches wander a little away from their matrix position.
+  The rows and columns determine the id's assigned to stitches.
+  For example the top-left (5) gets id A1. Well, that's the theory.
+  Under circumstance the id's in a row of stitches may start somewhere halfway the matrix
+  and the stitches wander a little away from their matrix position,
+  see issue [#96].
 * _Top right:_ how the pattern definition looks like when repeated. The colored dots are explained on the "reshape" pages.
 * _Bottom:_ the diagrams generated with the chosen stitches.
-  When hovering with your mouse over a stitch (in a generated pattern, not the screenshot above), your browser is supposed to show the ID and instructions of a stitch.
+  When hovering with your mouse over a stitch (in a generated pattern, not the screenshot above), your browser is supposed to show the id and instructions of a stitch.
 
 [droste]: https://d-bl.github.io/GroundForge/droste.html
 [main]: https://d-bl.github.io/GroundForge/
 [assemble]: https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns
-[51]: https://github.com/d-bl/GroundForge/issues/51
-
+[#51]: https://github.com/d-bl/GroundForge/issues/51
+[#96]: https://github.com/d-bl/GroundForge/issues/96
 
 Buttons and Browser History
----------------------------
+===========================
 
 The show buttons doesn't store your choice of stitches (nor thread colors, nor manual changes to the parameters form) in your browser history.
 
