@@ -1,6 +1,7 @@
 [Home](Home)
 
 Patterns
+
 * [Example Pages](Examples)
 * Reshape Pair Diagrams 
   * [Intro](Reshape-Patterns)
@@ -9,7 +10,11 @@ Patterns
 * [Advanced Design](Reversed-engineering-of-patterns)
 
 Miscellaneous
+
 * [Pin distances and angles](Pin-distances-and-angles)
+
+Wiki maintenance
+
 * [Fix Old Links](Fix-Old-Links)
 * [Stay Posted](Stay-Posted)
 * [upload wiki images](https://github.com/d-bl/GroundForge/blob/master/wiki-images/README.md)
