@@ -15,6 +15,6 @@ Miscellaneous
 
 Wiki maintenance
 
-* [Fix Old Links](Fix-Old-Links)
 * [Stay Posted](Stay-Posted)
 * [upload wiki images](https://github.com/d-bl/GroundForge/blob/master/wiki-images/README.md)
+* [Fix Old Links](Fix-Old-Links)
