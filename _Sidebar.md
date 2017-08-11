@@ -9,6 +9,12 @@ Patterns
   * [Using Copies](Reshape-Using-Copies)
 * [Advanced Design](Reversed-engineering-of-patterns)
 
+Help on forms and buttons
+
+* [Stitches](Choose-Stitches)
+* [Parameters](Parameters)
+* [![](https://d-bl.github.io/GroundForge/images/link.png) and browser history](Choose-Stitches#buttons-and-browser-history)
+
 Miscellaneous
 
 * [Pin distances and angles](Pin-distances-and-angles)
