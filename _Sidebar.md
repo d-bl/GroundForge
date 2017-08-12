@@ -19,8 +19,8 @@ Miscellaneous
 
 * [Pin distances and angles](Pin-distances-and-angles)
 
-Wiki maintenance
+Maintenance & Contribution
 
+* [upload wiki images](https://github.com/d-bl/GroundForge/pull/103#issue-249789778)
 * [Stay Posted](Stay-Posted)
-* [upload wiki images](https://github.com/d-bl/GroundForge/blob/master/wiki-images/README.md)
 * [Fix Old Links](Fix-Old-Links)
