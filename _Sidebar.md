@@ -21,6 +21,6 @@ Miscellaneous
 
 Maintenance & Contribution
 
-* [upload wiki images](https://github.com/d-bl/GroundForge/pull/103#issue-249789778)
+* [Upload Wiki Images](https://github.com/d-bl/GroundForge/pull/103#issue-249789778)
 * [Stay Posted](Stay-Posted)
 * [Fix Old Links](Fix-Old-Links)
