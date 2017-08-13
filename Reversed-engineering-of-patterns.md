@@ -4,30 +4,31 @@ Different methods allow to reproduce a pattern with GroundForge.
 - [Matrix from pair diagram](#matrix-from-pair-diagram)
   * [Tiling](#tiling)
   * [With an SVG editor](#with-an-svg-editor)
-- [2-Step method](#2-step-method)
+- [Droste method](#Droste-method)
 
 <sub><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></sub>
 
 Recognize patterns
 ==================
 
-The easiest methods to experiment with grounds are explained in the [main] page.
+The [example pages](Examples) are the easiest way to start experimenting with grounds.
 The generated pair diagrams don't care about plaits and something-pin-something
 and draw them as plain cloth stitches.
 Furthermore are the distances between stitches optimized to some average.
-So you may have to simplify the desired pattern,
-mirror and distort it to recognize it in the [TesseLace Index](Tesselace-Index). 
+So when trying to start with some familiar pattern to make variations,
+you may have to simplify, mirror and distort it
+to recognize it in the [TesseLace Index](Tesselace-Index). 
 
-Explaining the process with an example:
+Let us the process with an example:
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/recognize.png)
 
-* left: the desired pattern (pattern 3086 of "Gründe mit System" by Uta Ulrich, stretched by Kitty Zuidgeest, 4F in mrs Whiting index)
+* left: the desired pattern (pattern 3086 of "Gründe mit System" by Uta Ulrich, stretched by Kitty Zuidgeest, 4F in mrs [Whiting index](Whiting-Index))
 * 2nd: simplified something-pin-something to plain stitches
 * 3rd: snapping stitches to grid positions
 * 4th: a partially squeezed version also snapping to grid positions
 * top right: the matching pattern from the [TesseLace Index](Tesselace-Index)
-* bottom right: a flipped version of the stitches on the [main] page also matches
+* bottom right: a flipped version of the stitches on the [droste](Droste-effect) page also matches
 
 Snapping to a rectangular grid might not help to recognize the corresponding pattern in the index.
 See also the trick with colors on the [Reshape Patterns](Reshape-Patterns) page,
@@ -87,8 +88,10 @@ two of them should be connected with other objects.
 Copy-paste these objects to assemble a pattern without changing the length or directions of lines connecting the symbols. It might need some out-of-the-box thinking: the Binche snow flake example above has horizontal connections and the vertical connection is reduced to a single stitch. Stretching the stitch into a kind of plait with a hole (`ctcttctc`) reveals traditional connections in the thread diagram.
 
 
-2-Step method
-==============
+Droste method
+=============
+
+The Droste method uses thread diagrams as pair diagram.
 
 The image below tries to show how to dissect a pair diagram as if it is a thread diagram.
 The blue shapes enclose stitches with two pairs alias threads.
@@ -128,6 +131,5 @@ The result of the mistaken ID calculator:
 
 
 [SVG version]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/template.svg
-[main]: https://d-bl.github.io/GroundForge/
 [variant]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template2.png
 [snow flake]: https://d-bl.github.io/GroundForge/?tiles=bricks&matrix=L3H-AB-CD-%0D%0A6-2H-256-L%0D%0A-5----5---&stitches=ctc+H3%3Dctcttctc+A1%3Dctcll+B2%3Dctcll+E1%3Dctcrr+D2%3Dctcrr&rows=12&cols=14&left=1&up=1&transparency=0&#diagrams
