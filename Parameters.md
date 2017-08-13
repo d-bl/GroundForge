@@ -19,8 +19,8 @@ For larger diagrams in the sense of more stitches, increase rows and columns in 
 _Warning_ : With complex stitches and large numbers of rows and columns, your browser can get overwhelmed when showing the diagrams of level two or three.
 
 Note that the numbers don't reflect the number of pairs.
-The diagram below illustrates the initial state of the animated pair diagram
-which is a cutout or patch as for example the red rectangle.
-The example has eight rows, nine columns and is shifted by one in both directions.
+The diagram below illustrates the initial state of the animated pair diagram.
+The red rectangle is a cutout or patch, shifted by one in both directions.
+The patch has nine columns but uses only six pairs.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/cutout.png)
