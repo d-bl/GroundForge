@@ -75,7 +75,7 @@ table, tr, td {
 }
 #matrixOpts label {
   display:inline-block;
-  width: 4em;
+  width: 4.6em;
 }
 #s1, #s2, #s3 {
   max-width: 90%;
@@ -119,6 +119,7 @@ dd p {
 .controls img {
   border: 0.1em solid #FFF;
 }
+fieldset fieldset {display: inline-block; vertical-align: text-top; }
 @media only screen and (max-width: 35em) {
     ul {
         padding-left: 1em;
