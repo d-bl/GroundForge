@@ -1,11 +1,16 @@
-This page is about undo tricks on the [main](https://d-bl.github.io/GroundForge/) of GroundForge.
+In short: the ![](https://d-bl.github.io/GroundForge/images/link.png)
+button on the [main] page marks Ann undo point for your changes to the parameters or stitches.
+Use the back button of the browser to return.
+
+[main]: https://d-bl.github.io/GroundForge/
 
 The browser history keeps track of many of your actions on the web.
 The show buttons however don't store your choice of stitches
 (nor thread colors, nor manual changes to the parameters form)
 in your browser history.
 
-Click the ![](https://d-bl.github.io/GroundForge/images/link.png)
+Click 
+the ![](https://d-bl.github.io/GroundForge/images/link.png)
 button to save the set of choices in the browser history.
 It allows to return with the back button of your browser,
 you will have to regenerate the diagrams.
