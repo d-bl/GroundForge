@@ -11,9 +11,13 @@ Pattern: Matrix and tiling
 --------------------------
 
 The [example pages](Example) initialize the parameters with a valid set of values and may recommend experiments.
-The letters and digits in the text field match the dots within the green rectangle of the image below.
-With non-zero shift values for the footsides, columns and rows are virtualy moved to the end.
-Usualy only one tiling value is valid for a particular matrix.
+
+The letters and digits in the text field define the dots within the green rectangle of the image below.
+With non-zero shift values for the footsides, columns and rows are virtually moved to the end.
+
+The tiling defines how the green section is repeated in the pattern.
+Usually only one tiling value is valid for a particular matrix.
+
 More on the page to [design](Reversed-engineering-of-patterns) your own patterns from scratch.
 
 
