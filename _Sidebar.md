@@ -13,7 +13,7 @@ Help on forms and buttons
 
 * [Stitches](Choose-Stitches)
 * [Parameters](Parameters)
-* [![](https://d-bl.github.io/GroundForge/images/link.png) and browser history](Browser-History)
+* [![](https://d-bl.github.io/GroundForge/images/link.png) and undo](Browser-History)
 
 Miscellaneous
 
