@@ -1,8 +1,11 @@
 In short: the ![](https://d-bl.github.io/GroundForge/images/link.png)
-button on the [main] page marks Ann undo point for your changes to the parameters or stitches.
+button on the [main] page marks an undo point for your changes to the parameters or stitches.
 Use the back button of the browser to return.
 
 [main]: https://d-bl.github.io/GroundForge/
+
+The details
+-----------
 
 The browser history keeps track of many of your actions on the web.
 The show buttons however don't store your choice of stitches
