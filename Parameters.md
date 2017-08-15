@@ -1,3 +1,7 @@
+The section in this page reflect the sets of fields in the parameters from on the main [GroundForge] page.
+
+[GroundForge]: https://d-bl.github.io/GroundForge/
+
 Footsides
 ---------
 
