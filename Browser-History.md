@@ -1,3 +1,5 @@
+This page is about undo tricks on the [main](https://d-bl.github.io/GroundForge/) of GroundForge.
+
 The browser history keeps track of many of your actions on the web.
 The show buttons however don't store your choice of stitches
 (nor thread colors, nor manual changes to the parameters form)
