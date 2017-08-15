@@ -1,4 +1,7 @@
-In short: the ![](https://d-bl.github.io/GroundForge/images/link.png)
+The short story
+---------------
+
+The ![](https://d-bl.github.io/GroundForge/images/link.png)
 button on the [main] page marks an undo point for your changes to the parameters or stitches.
 Use the back button of the browser to return.
 
