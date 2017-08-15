@@ -6,11 +6,11 @@
 
 <sub><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></sub>
 
+This page is about choosing stitches for a pair diagram and its corresponding thread diagram.
+Different pages use different form fields to choose stitches.
 
 Form fields
 ===========
-
-Two methods are used to specify stitches.
 
 * The [droste] page has one field per stitch.
   The position of the fields in the form reflects the position in the pattern.
