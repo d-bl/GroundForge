@@ -71,32 +71,47 @@ object PairDiagram {
       }
     }
 
-    val nodes = threadDiagram.nodes.map(n => node(translateTitle(n), n.x, n.y))
+    val pairNodes = threadDiagram.nodes.map(n => node(translateTitle(n), n.x, n.y))
     val links = threadDiagram
       .links
       .filter(link => !link.border)
       .filter(link => !hasDuplicateLinksOut.contains(link.source))
-      .map{link =>
-        val srourceInstructions = nodes(link.source).instructions.replaceAll("t","lr")
-        val targetInstructions = nodes(link.target).instructions.replaceAll("t","lr")
-        val toLeftOfTarget =
-          (threadDiagram.nodes(link.target).instructions,
-            link.end
-          ) match {
-            case ("cross", "white") => true
-            case ("cross", "") => false
-            case ("twist", "white") => false
-            case ("twist", "") => true
-            case _ => false
-          }
-        pairLink(link.source, link.target,
-          start = marker(srourceInstructions),
-          mid = midMarker(srourceInstructions, targetInstructions, toLeftOfTarget),
-          end = marker(targetInstructions),
-          weak = false
+      .map { link =>
+        createPairLink(
+          link,
+          pairNodes(link.source),
+          pairNodes(link.target),
+          threadDiagram.nodes(link.source).instructions,
+          threadDiagram.nodes(link.target).instructions
         )
       }
-    Diagram(nodes, links)
+    Diagram(pairNodes, links)
+  }
+
+  private def createPairLink(link: LinkProps,
+                             sourcePairNode: NodeProps,
+                             targetPairNode: NodeProps,
+                             sourceThreadNode: String,
+                             targetThreadNode: String
+                            ) = {
+    val nrOfTwists: Int =
+      (sourceThreadNode, targetThreadNode, link.end) match {
+        case ("cross", "cross", "white") => sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsRight
+        case ("cross", "cross", "") => sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsLeft
+        case ("twist", "cross", "white") => sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsRight
+        case ("twist", "cross", "") => sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsLeft
+        case ("cross", "twist", "white") => sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsLeft
+        case ("cross", "twist", "") => sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsRight
+        case ("twist", "twist", "white") => sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsLeft
+        case ("twist", "twist", "") => sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsRight
+        case _ => 0
+      }
+    pairLink(link.source, link.target,
+      start = marker(sourcePairNode.instructions.replaceAll("t", "lr")),
+      mid = nrOfTwists - 1,
+      end = marker(targetPairNode.instructions.replaceAll("t", "lr")),
+      weak = false
+    )
   }
 
   /** Creates a pair diagram. Parameters are explained on the tabs of https://d-bl.github.io/GroundForge/

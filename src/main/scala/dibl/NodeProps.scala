@@ -72,6 +72,15 @@ case class NodeProps private(elems: Seq[(String, Any)]) extends Props {
     val map = m - "x" - "y" + ("x"-> newX) + ("y"-> newY)
     NodeProps(map.toSeq)
   }
+
+  // TODO next properties apply to subclass PairNode
+
+  private val openingTwists: String = instructions.replaceAll("c.*","").replaceAll("t","lr")
+  private val closingTwists = instructions.replaceAll(".*c","").replaceAll("t","lr")
+  val openingTwistsLeft: Int = openingTwists.count(_ == 'l')
+  val openingTwistsRight: Int = openingTwists.count(_ == 'r')
+  val closingTwistsLeft: Int = closingTwists.count(_ == 'l')
+  val closingTwistsRight: Int = closingTwists.count(_ == 'r')
 }
 
 object NodeProps {
