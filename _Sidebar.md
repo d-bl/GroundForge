@@ -18,10 +18,10 @@ Help on forms and buttons
 Miscellaneous
 
 * [Pin distances and angles](Pin-distances-and-angles)
-* Color code: [#49], twist marks: [#104]
+* [Color code], [Twist marks]
 
-[#49]: https://github.com/d-bl/GroundForge/issues/49
-[#104]: https://github.com/d-bl/GroundForge/issues/104
+[Color code]: https://github.com/d-bl/GroundForge/issues/49
+[Twist marks]: https://github.com/d-bl/GroundForge/issues/104
 
 Maintenance & Contribution
 
