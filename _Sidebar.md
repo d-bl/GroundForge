@@ -18,7 +18,7 @@ Help on forms and buttons
 Miscellaneous
 
 * [Pin distances and angles](Pin-distances-and-angles)
-* [Color code], [Twist marks]
+* [Color code]; [Twist marks]
 
 [Color code]: https://github.com/d-bl/GroundForge/issues/49
 [Twist marks]: https://github.com/d-bl/GroundForge/issues/104
