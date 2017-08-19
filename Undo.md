@@ -1,10 +1,13 @@
 The short story
 ---------------
 
-The ![](https://d-bl.github.io/GroundForge/images/link.png)
-button on the [main] page marks an undo point for your changes to the parameters or stitches.
-Use the back button of the browser to return.
-Right click the button for a link or bookmark.
+Right click the ![link](https://d-bl.github.io/GroundForge/images/link.png)
+button on the [main] page for a link or bookmark
+to the current configuration of the diagrams.
+
+Left click the button for an undo point for your changes to the parameters or stitches.
+Use the back button of the browser to return to a previously saved configuration.
+Push the show buttons again after both actions.
 
 [main]: https://d-bl.github.io/GroundForge/
 
