@@ -183,7 +183,8 @@ object PairDiagram {
         val targetNode = nodeMap((targetRow, targetCol))
         val sourceStitch = nodes(sourceNode).instructions
         val targetStitch = nodes(targetNode).instructions.replaceAll("t", "lr")
-        val countedTargetChar = if (settings.absM(targetRow)(targetCol)(0) == (sourceRow, sourceCol)) 'l' else 'r'
+        val sourceCells = settings.absM(targetRow)(targetCol)
+        val countedTargetChar = if (sourceCells(0) == (sourceRow, sourceCol)) 'l' else 'r'
         val countedSourceChar = 't' // TODO figure out which leg of the source stitch
         val nrOfTwists = sourceStitch.replaceAll(".*c","").count(_ == countedSourceChar) +
           targetStitch.replaceAll("c.*","").count(_ == countedTargetChar)
