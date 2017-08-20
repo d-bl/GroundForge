@@ -181,18 +181,20 @@ object PairDiagram {
       linksByTarget.values.flatten.map { case ((sourceRow, sourceCol), (targetRow, targetCol)) =>
         val sourceNode = nodeMap((sourceRow, sourceCol))
         val targetNode = nodeMap((targetRow, targetCol))
-        val sourceStitch = nodes(sourceNode).title.replaceAll(" .*", "").replaceAll("t", "lr")
-        val targetStitch = nodes(targetNode).title.replaceAll(" .*", "").replaceAll("t", "lr")
-        val toLeftOfTarget = settings.absM(targetRow)(targetCol)(0) == (sourceRow, sourceCol)
+        val sourceStitch = nodes(sourceNode).instructions
+        val targetStitch = nodes(targetNode).instructions.replaceAll("t", "lr")
+        val countedTargetChar = if (settings.absM(targetRow)(targetCol)(0) == (sourceRow, sourceCol)) 'l' else 'r'
+        val countedSourceChar = 't' // TODO figure out which leg of the source stitch
+        val nrOfTwists = sourceStitch.replaceAll(".*c","").count(_ == countedSourceChar) +
+          targetStitch.replaceAll("c.*","").count(_ == countedTargetChar)
         pairLink(sourceNode, targetNode,
-          start = if (sourceRow < 2) "pair" else marker(sourceStitch),
-          mid = if (sourceRow < 2) 0 else midMarker(sourceStitch, targetStitch, toLeftOfTarget),
+          start = if (sourceRow < 2) "pair" else marker(sourceStitch.replaceAll("t", "lr")),
+          mid = if (sourceRow < 2) 0 else nrOfTwists - 1,
           end = marker(targetStitch),
           weak = cols.contains(sourceCol) || targetRow - sourceRow > 1
         )
       }.toSeq ++ transparentLinks(sourcesIndices.toArray)
     Diagram(nodes, links)
-
   }
 
   /** Y and V are ascii art representations of sections in the two-in-two out graph
