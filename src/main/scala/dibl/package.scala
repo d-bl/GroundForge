@@ -23,16 +23,23 @@ package object dibl {
   // got these type aliases from http://stackoverflow.com/questions/15783837/beginner-scala-type-alias-in-scala-2-10
 
   type Cell = (Int, Int)
-
   def Cell(row: Int, col: Int): Cell = (row, col)
 
   type Link = (Cell, Cell)
-
   def Link(source: Cell, target: Cell): Link = (source, target)
+  implicit class RichLink(left: Link) {
+    def source: Cell = left._1
+    def target: Cell = left._2
+  }
 
   /** Tuples pointing to another cell in the matrix. */
-  type SrcNodes = Array[(Int,Int)]
-  def SrcNodes(xs: Cell*) = Array(xs: _*)
+  type SrcNodes = Array[Cell]
+  def SrcNodes(leftIn: Cell, rightIn: Cell): SrcNodes = Array(leftIn, rightIn)
+  def SrcNodes(): SrcNodes = Array[Cell]()
+  implicit class RichSrcNodes(left: SrcNodes) {
+    def leftIn: Cell = left(0)
+    def rightIn: Cell = left(1)
+  }
 
   /** Row in a matrix of tuples, each tuple points to another cell in the matrix. */
   type R = Array[SrcNodes]
@@ -41,7 +48,7 @@ package object dibl {
   /** Matrix of tuples, each tuple points to another cell in the matrix. */
   type M = Array[R]
   def M(xs: R*) = Array(xs: _*)
-  implicit class ImplicitMatrix(left: M) {
+  implicit class RichMatrix(left: M) {
     def toS: String = left.deep.mkString(",").replace("Array","").replace("(((","\n(((").replace("(()","\n(()")
   }
 

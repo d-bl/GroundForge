@@ -187,7 +187,7 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
     * Each link has a unique source node.
     * The red links in the [[svgDoc]].
     */
-  val newPairs: Seq[Link] = for {i <- requiredPairs.indices} yield Link((0, i), requiredPairs(i)._2)
+  val newPairs: Seq[Link] = for {i <- requiredPairs.indices} yield Link((0, i), requiredPairs(i).target)
 
   /** An SVG document with all links of the two-in-two-out directed graph,
     * The core links are black, incoming links along the top drawn are red,

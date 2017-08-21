@@ -93,33 +93,33 @@ object Matrix {
     */
   val charToRelativeTuples: HashMap[Char,SrcNodes] = HashMap (
                                       // ascii art of incoming links for a node
-    '0' -> SrcNodes((-1, 1),( 0, 1)), // .../_
-    '1' -> SrcNodes((-1, 0),( 0, 1)), // ..|._
-    '2' -> SrcNodes((-1,-1),( 0, 1)), // .\.._
-    '3' -> SrcNodes(( 0,-1),( 0, 1)), // _..._
-    '4' -> SrcNodes((-1, 0),(-1, 1)), // ..|/.
-    '5' -> SrcNodes((-1,-1),(-1, 1)), // .\./.
-    '6' -> SrcNodes(( 0,-1),(-1, 1)), // _../.
-    '7' -> SrcNodes((-1,-1),(-1, 0)), // .\|..
-    '8' -> SrcNodes(( 0,-1),(-1, 0)), // _.|..
-    '9' -> SrcNodes(( 0,-1),(-1,-1)), // _\...
+    '0' -> SrcNodes(Cell(-1, 1),Cell( 0, 1)), // .../_
+    '1' -> SrcNodes(Cell(-1, 0),Cell( 0, 1)), // ..|._
+    '2' -> SrcNodes(Cell(-1,-1),Cell( 0, 1)), // .\.._
+    '3' -> SrcNodes(Cell( 0,-1),Cell( 0, 1)), // _..._
+    '4' -> SrcNodes(Cell(-1, 0),Cell(-1, 1)), // ..|/.
+    '5' -> SrcNodes(Cell(-1,-1),Cell(-1, 1)), // .\./.
+    '6' -> SrcNodes(Cell( 0,-1),Cell(-1, 1)), // _../.
+    '7' -> SrcNodes(Cell(-1,-1),Cell(-1, 0)), // .\|..
+    '8' -> SrcNodes(Cell( 0,-1),Cell(-1, 0)), // _.|..
+    '9' -> SrcNodes(Cell( 0,-1),Cell(-1,-1)), // _\...
     // double length for vertical link only
-    'A' -> SrcNodes((-2, 0),( 0, 1)), // ..|._
-    'B' -> SrcNodes((-2, 0),(-1, 1)), // ..|/.
-    'C' -> SrcNodes((-1,-1),(-2, 0)), // .\|..
-    'D' -> SrcNodes(( 0,-1),(-2, 0)), // _.|..
+    'A' -> SrcNodes(Cell(-2, 0),Cell( 0, 1)), // ..|._
+    'B' -> SrcNodes(Cell(-2, 0),Cell(-1, 1)), // ..|/.
+    'C' -> SrcNodes(Cell(-1,-1),Cell(-2, 0)), // .\|..
+    'D' -> SrcNodes(Cell( 0,-1),Cell(-2, 0)), // _.|..
     // double length for horizontal links too
-    'E' -> SrcNodes((-1, 1),( 0, 2)), // .../_
-    'F' -> SrcNodes((-1, 0),( 0, 2)), // ..|._
-    'G' -> SrcNodes((-2, 0),( 0, 2)), // ..|._
-    'H' -> SrcNodes((-1,-1),( 0, 2)), // .\.._
-    'I' -> SrcNodes(( 0,-1),( 0, 2)), // _..._
-    'J' -> SrcNodes(( 0,-2),( 0, 1)), // _..._
-    'K' -> SrcNodes(( 0,-2),( 0, 2)), // _..._
-    'L' -> SrcNodes(( 0,-2),(-1, 1)), // _../.
-    'M' -> SrcNodes(( 0,-2),(-1, 0)), // _.|..
-    'N' -> SrcNodes(( 0,-2),(-2, 0)), // _.|..
-    'O' -> SrcNodes(( 0,-2),(-1,-1)), // _\...
+    'E' -> SrcNodes(Cell(-1, 1),Cell( 0, 2)), // .../_
+    'F' -> SrcNodes(Cell(-1, 0),Cell( 0, 2)), // ..|._
+    'G' -> SrcNodes(Cell(-2, 0),Cell( 0, 2)), // ..|._
+    'H' -> SrcNodes(Cell(-1,-1),Cell( 0, 2)), // .\.._
+    'I' -> SrcNodes(Cell( 0,-1),Cell( 0, 2)), // _..._
+    'J' -> SrcNodes(Cell( 0,-2),Cell( 0, 1)), // _..._
+    'K' -> SrcNodes(Cell( 0,-2),Cell( 0, 2)), // _..._
+    'L' -> SrcNodes(Cell( 0,-2),Cell(-1, 1)), // _../.
+    'M' -> SrcNodes(Cell( 0,-2),Cell(-1, 0)), // _.|..
+    'N' -> SrcNodes(Cell( 0,-2),Cell(-2, 0)), // _.|..
+    'O' -> SrcNodes(Cell( 0,-2),Cell(-1,-1)), // _\...
     '-' -> SrcNodes()                 // not used node
   )
 
