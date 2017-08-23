@@ -4,33 +4,30 @@ The book is available with a higher resolution in four PDF's at the [Digital Arc
 including a [scan] of the original index.
 
 Below the index is republished (with kind permission) once more with a couple of links:
-* **`W`**:
-  links to a scanned page of the Whiting book with annotations by Jo Edkins.
-  The other links go to GroundForge, pattern links not in the [TesseLace Index](Tesselace-Index)
-  (such as [q] and [bs]) are figured out by [Marian Tempels].
+* **W**:
+  Each capital W links to a scanned page of the Whiting book with annotations by Jo Edkins.
+  The other links go to GroundForge.
 
-* **XN**: alphanumeric links
+* **XN**: Alphanumeric links
   go directly to a page where you can show the pair/thread diagrams.
 
 * **XN<sup>2</sup>**:
   A superscript of two means you have to show two levels of diagrams to get the pattern.
 
-* **x**: Identical lower case links
-  go to identical sets of pricking prototypes,
-  in turn linking to a diagram page where you can choose alternative stitches.
-  Prototype means: adjustable to your own taste and needs with a third party editor.
+* **x**: Lower case links
+  go to sets of [TesseLace](TesseLace-Index) patterns,
+  in turn linking to a diagram page where you can choose stitches.
   Each pricking in such a set can be morphed into the others by nudging pins.
-  Only four of the links (c,t,k,v) cover more than a third of the grounds, a ratio that illustrates
+  Only four of these links (c,t,k,v) cover more than a third of the grounds below, a ratio that illustrates
   how many variations can be made by changing stitches or nudging pin positions.
-  What is shown is still just the tip of an ice berg.
   
 * **&sim;**:
   The pattern does not exactly match, may need different dimensions for the matrix or a stitch or twist more or less.
 
 * **-**:
-  The ground uses sewings or three-pair stitches or odd number of threads.
-  None of these are not supported by GroundForge.
-  Picots and tallies also not supported but they are too obvious to require such an annotation.
+  The ground uses sewings, three-pair stitches or odd number of threads.
+  None of these are supported by GroundForge.
+  Picots and tallies are also not supported but they are too obvious to require such an annotation.
 
 
 [reversed engineering]: Reversed-engineering-of-patterns
@@ -42,6 +39,11 @@ Below the index is republished (with kind permission) once more with a couple of
 
 Under Construction
 ==================
+
+The page [history](https://github.com/d-bl/GroundForge/wiki/Whiting-Index/_history)
+may show when a pattern was last fixed, and who authored the fix.
+The maintainer needs to fill in the _edit note_ to list the changed/added patterns.
+
 
 [c]: https://d-bl.github.io/GroundForge/sheet.html?patch=88%0A11;bricks&patch=66%0A22;bricks&patch=88%0A99%0A11%0A00;bricks&patch=66%0A11%0A88%0A22;bricks&patch=66%0A99%0A22%0A00;bricks
 [t]: https://d-bl.github.io/GroundForge/sheet.html?patch=53%0A53%0A53%0A5-;bricks&patch=5663%0A5663;checker&patch=53%0A5-;bricks&patch=563%0A563%0A563;checker&patch=53%0A53;checker&patch=5632%0A5632;checker&patch5353%0A5353;bricks&patch=5-%0A-5;checker&patch=5353%0A5353%0A5-5-%0A-5-5;checker&patch=5632%0A56-2%0A5-5-%0A-535;checker&patch=53%0A5-%0A-5%0A5-;bricks&patch=44%0A77%0A44%0A77;bricks&patch=44%0A44%0A77%0A77;bricks&patch=66%0A88%0A66%0A11;bricks&patch=66%0A66%0A88%0A11;checker&patch=66%0A66%0A99%0A00;checker&patch=6;checker&patch=566-%0A66-5%0A6-56%0A-566;checker
@@ -88,10 +90,6 @@ Under Construction
 [E16]: https://d-bl.github.io/GroundForge/index.html?m=-5-L-H%0AH-E-21%0A-O8-M8%0A-1F-1F%0A-M86-M%0A5-4-K-%3Bchecker%3B16%3B16%3B0%3B0&s1=C6%3Dctcll%20F6%3Dctcll%20E1%3Dctcrr%20B1%3Dctcrr%20C2%3Dctcll%20F2%3Dctcll%20D3%3Dctcrr%20B3%3Dctcrr%20E4%3Dtctct%20B5%3Dtctct&s2=&s3=
 [F16]: https://d-bl.github.io/GroundForge/index.html?m=5-%0A-5%0A5-%0A12%0A99%0A11%0A66%0A4-%3Bbricks%3B19%3B9%3B0%3B0&s1=ctc%20B7%3Dtctct%20A8%3Dctct%20B2%3Dctcll%20B3%3Dctcrr%20A4%3Dctcll%20B5%3Dctcrr&s2=&s3=
 [G16]: https://d-bl.github.io/GroundForge/index.html?m=5-%0A-5%0A5-%0A12%0A88%0A4-%3Bbricks%3B16%3B9%3B0%3B0&s1=ctc%20A6%3Dctctt%20B5%3Dctctt%20B2%3Dctcll%20B3%3Dctcrr%20A4%3Dctctt%20&s2=&s3=
-
-The page [history](https://github.com/d-bl/GroundForge/wiki/Whiting-Index/_history)
-may show when a pattern was last fixed.
-The maintainer needs to fill in the _edit note_ for that purpose.
 
 |   | A | B | C | D | E | F | G | H |
 |---|---|---|---|---|---|---|---|---|
