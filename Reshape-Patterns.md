@@ -7,6 +7,12 @@ A downloadable pricking of [GroundForge] may have multiple patterns. In some cas
 
 The a manipulated screenshot above reflects a manipulated pattern sheet. The generated sheets only use full grid positions. Other sheets may come with just a single pattern that does not look at all like the colour coded pair diagram. To create a regular patch that does look like the pair diagram (or any other shape you might prefer) you would have to do the reshaping by yourself by nudging the position of intersections.
 
+The animation below uses some of [these](https://d-bl.github.io/GroundForge/sheet.html?patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks) TesseLace patterns.
+Dragging dots with the same color simultaneously keeps the diagram valid.
+For variants not in the animation, the figure with colored dots would need to span a larger section of the pattern to allow a transformation. 
+
+![](https://d-bl.github.io/GroundForge/animation/GIFCreator-me.gif)
+
 The procedure
 -------------
 
