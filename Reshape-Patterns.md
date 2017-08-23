@@ -2,7 +2,7 @@ The animation below uses some of [these](https://d-bl.github.io/GroundForge/shee
 Dragging dots with the same color simultaneously keeps the diagram valid.
 For variants not in the animation, the figure with colored dots would need to span a larger section of the pattern to allow a transformation. 
 
-![](https://d-bl.github.io/GroundForge/animation/GIFCreator-me.gif)
+![](animation/GIFCreator-me.gif)
 
 In some cases it may be relatively easy to see how one pattern is reshaped in another one. For example in the first row below the hexagon of the first variant is reshaped in to a brick for the second variant and the center of the bow-tie in the second variant is lowered for the third variant. For the second row it is harder to see. Applying the same color to shapes surrounded with the same number of line segments can help to identify the transition. Note that an edge of a shape may span multiple line segments.
 
