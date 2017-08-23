@@ -1,4 +1,10 @@
-A downloadable pricking of [GroundForge] may have multiple patterns. In some cases it may be relatively easy to see how one pattern is reshaped in another one. For example in the first row below the hexagon of the first variant is reshaped in to a brick for the second variant and the centre of the bow-tie in the second variant is lowered for the third variant. For the second row it is harder to see. Applying the same colour to shapes surrounded with the same number of line segments can help to identify the transition. Note that an edge of a shape may span multiple line segments.
+The animation below uses some of [these](https://d-bl.github.io/GroundForge/sheet.html?patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks) TesseLace patterns.
+Dragging dots with the same color simultaneously keeps the diagram valid.
+For variants not in the animation, the figure with colored dots would need to span a larger section of the pattern to allow a transformation. 
+
+![](https://d-bl.github.io/GroundForge/animation/GIFCreator-me.gif)
+
+In some cases it may be relatively easy to see how one pattern is reshaped in another one. For example in the first row below the hexagon of the first variant is reshaped in to a brick for the second variant and the center of the bow-tie in the second variant is lowered for the third variant. For the second row it is harder to see. Applying the same color to shapes surrounded with the same number of line segments can help to identify the transition. Note that an edge of a shape may span multiple line segments.
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
 [patterns]: https://github.com/d-bl/GroundForge/tree/gh-pages/patterns
@@ -7,11 +13,6 @@ A downloadable pricking of [GroundForge] may have multiple patterns. In some cas
 
 The a manipulated screenshot above reflects a manipulated pattern sheet. The generated sheets only use full grid positions. Other sheets may come with just a single pattern that does not look at all like the colour coded pair diagram. To create a regular patch that does look like the pair diagram (or any other shape you might prefer) you would have to do the reshaping by yourself by nudging the position of intersections.
 
-The animation below uses some of [these](https://d-bl.github.io/GroundForge/sheet.html?patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks) TesseLace patterns.
-Dragging dots with the same color simultaneously keeps the diagram valid.
-For variants not in the animation, the figure with colored dots would need to span a larger section of the pattern to allow a transformation. 
-
-![](https://d-bl.github.io/GroundForge/animation/GIFCreator-me.gif)
 
 The procedure
 -------------
