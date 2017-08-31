@@ -18,7 +18,7 @@ with applicable values in the parameter form.
   _A Lace Guide for Makers and Collectors_ by Gertrude Whiting which dates from 1920.
   Though each peace is just one interpretation of a pattern,
   it shows the texture of real lace.
-* The [MAE-gf] pages systematically explore various families of grounds.
+* The [MAE-gf] pages systematically explore various families of grounds, including spiders and triangular grounds.
 * For those to shy to meddle with this wiki can post personal finds on a [discussion] 
   and/or propose candidates for this overview.
   You will need a github account for both types of contribution.
