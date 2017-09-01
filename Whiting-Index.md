@@ -18,7 +18,7 @@ Below the index is republished (with kind permission) once more with a couple of
   go to sets of [TesseLace](TesseLace-Index) patterns,
   in turn linking to a diagram page where you can choose stitches.
   Each pricking in such a set can be morphed into the others by nudging pins.
-  Only four of these links (c,t,k,v) cover more than a third of the grounds below, a ratio that illustrates
+  Only four of these links ([c],[t],[k],[v]) cover more than a third of the grounds below, a ratio that illustrates
   how many variations can be made by changing stitches or nudging pin positions.
   
 * **&sim;**:
