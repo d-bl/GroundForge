@@ -1,6 +1,3 @@
-Bloopers
-========
-
 To err is human, for a real mess you need a computer.
 
 1
