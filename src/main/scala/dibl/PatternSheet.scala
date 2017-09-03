@@ -30,7 +30,7 @@ import scala.scalajs.js.annotation.JSExport
 
   /**
     *
-    * @param m See https://github.com/d-bl/GroundForge/blob/master/docs/images/legend.png
+    * @param m See https://github.com/d-bl/GroundForge/blob/62f22ec/docs/images/legend.png
     *          On the right an example, on the left the meaning of the characters,
     *          thick arrows indicate vertices traveling two cells.
     * @param tileType how the matrix is stacked to build a pattern: like a brick wall or a checker board
