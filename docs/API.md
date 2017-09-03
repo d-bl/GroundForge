@@ -136,7 +136,7 @@ Convenience methods defined for a node.js environment, defined in <strike>[batch
 
 
 [main]: https://d-bl.github.io/GroundForge/
-[stretch]: https://github.com/d-bl/GroundForge/blob/master/docs/images/bloopers.md#3
+[stretch]: https://github.com/d-bl/GroundForge/wiki/Bloopers#3
 
 
 ### JavaScript example
