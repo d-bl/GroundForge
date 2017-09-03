@@ -15,28 +15,26 @@
 */
 package dibl
 
-import java.io.{BufferedReader, FileReader}
+import java.io.{BufferedReader, FileReader, InputStreamReader, Reader}
+import java.net.{URL, URLDecoder}
 
 import dibl.Matrix.{charToRelativeTuples, extend}
+
 import scala.collection.JavaConverters._
 
 object Matrices {
-  val values: Seq[String] = new BufferedReader(new FileReader("docs/gallery.html"))
-    .lines()
+  val values: Seq[String] = new BufferedReader(new InputStreamReader(
+    new URL("https://raw.githubusercontent.com/wiki/d-bl/GroundForge/TesseLace-Index.md").openStream()
+  )).lines()
     .iterator()
     .asScala
-    .filter(_.contains("?m="))
+    .filter(_.contains("?patch="))
     .toSeq
-    .flatMap(_
-      .replaceAll(".*m=", "")
-      .replace("&tiles=", ";")
-      .replace("&#\">stitches</a>,<br>* <a href=\"sheet.html?", "&")
-      .replaceAll("\".*", "")
+    .flatMap(s => URLDecoder.decode(s,"UTF8")
+      .replaceAll(".*html.patch=", "")
+      .replace(")", "")
       .split("&patch=")
-      .toSet
-      .toStream
-      .distinct
-    )
+    ).distinct
 
   def toAbsolute(args: String, rows: Int =22, cols:Int = 22, shiftUp: Int =0, shiftLeft: Int = 0): M = {
     val specs = args.split(";")

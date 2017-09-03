@@ -6,14 +6,15 @@ import scala.util.Success
 
 class GallerySpec extends FlatSpec with Matchers {
   "each gallery pattern" should "succeed (one fails because of bug #93)" in {
-    Matrices.values.filter { l =>
+    val result = Matrices.values.filter { l =>
       val f = l.split(";")
       val cols = if (f.size > 3) f(3).toInt else 9
       PairDiagram.create(f(0), f(1), absRows = 9, absCols = cols).isFailure ||
         PairDiagram.create(f(0), f(1), absRows = 9, absCols = cols + 1).isFailure ||
         PairDiagram.create(f(0), f(1), absRows = 9, absCols = cols + 2).isFailure ||
         PairDiagram.create(f(0), f(1), absRows = 9, absCols = cols + 3).isFailure
-    } shouldBe Seq("B-B- -B-B C-C- -C-C;bricks")
+    }
+    result shouldBe Seq("B-B- -B-B C-C- -C-C;bricks")
   }
 
   "some patterns" should "document bug #93 by failing" in {
