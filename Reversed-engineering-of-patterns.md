@@ -53,7 +53,7 @@ You might need more repeats than expected to figure out a tiling.
 
 ![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/matrix-template.png)
 
-Note that 18 out of 824 patterns known on the [TesseLace Index](Tesselace-Index) page (including the pricking variations) may suffer from bug [#93](https://github.com/d-bl/GroundForge/issues/93).
+Note that 18 out of 449 patterns known on the [TesseLace Index](Tesselace-Index) page (including the pricking variations) may suffer from bug [#93](https://github.com/d-bl/GroundForge/issues/93).
 
 Tiling
 ------

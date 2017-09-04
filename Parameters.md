@@ -17,7 +17,7 @@ Footsides: shift
 To try another foot side, change the shift values in the parameters form.
 
 The algorithm is limited and may produce bugs for some values in some patterns.
-18 out of 824 patterns (including the pricking variations) may suffer from bug [#93](https://github.com/d-bl/GroundForge/issues/93),
+18 out of 449 patterns (including the pricking variations) may suffer from bug [#93](https://github.com/d-bl/GroundForge/issues/93),
 play with the shift values to workaround the problem.
 Just one pattern from the [TesseLace-Index](TesseLace-Index) doesn't work at all.
 
