@@ -1,5 +1,7 @@
 To err is human, for a real mess you need a computer.
 
+On this page some images of the mess that came along during development of the site.
+
 1
 -
 
