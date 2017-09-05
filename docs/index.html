@@ -29,55 +29,51 @@
             Giving different colors to threads reveals how they flow through a pattern.
             Exact pin positions and how threads are tensioned around them are left to your imagination.
         </p>
-        <h2>Get started</h2>
-        <p>
+        <fieldset>
+            <legend>Get started</legend>
             Use the
             <a href="https://github.com/d-bl/GroundForge/wiki/Examples"
             >examples</a> to fill in the parameter form and perhaps stitches.
             Subsequently show the diagrams and play with stitch variations and/or thread colours.
-        </p>
-        <div>
-            <fieldset id="matrixOpts">
-                <legend>Parameters <a href="https://github.com/d-bl/GroundForge/wiki/Parameters"
-                                      target="_blank"><img
-                        src="images/information-icon.png"></a></legend>
-                <div>
-                    <fieldset>
-                        <legend>patsh size</legend>
-                        <p>
-                            <label for="rows">rows:</label>
-                            <input id="rows" name="rows" min="3" value="7" max="30" type="number"/>
-                        </p>
-                        <p>
-                            <label for="cols">columns:</label>
-                            <input id="cols" name="cols" min="3" value="5" max="30" type="number"/>
-                        </p>
-                    </fieldset>
-                    <fieldset>
-                        <legend>footside</legend>
-                        <!-- footside move oposite to matrix content -->
-                        <p>
-                            <label for="shiftLeft">shift&nbsp;right:</label>
-                            <input id="shiftLeft" name="rows" min="0" value="0" type="number"/>
-                        </p>
-                        <p>
-                            <label for="shiftUp">shift&nbsp;down:</label>
-                            <input id="shiftUp" name="cols" min="0" value="0" type="number"/>
-                        </p>
-                    </fieldset>
-                </div>
-                <fieldset>
-                    <legend>pattern - (advanced)</legend>
-                    <label for="tiles" style="width:2.6em;">tiling:</label>
-                    <select name="tiles" id="tiles">
-                        <option value="bricks" selected>Brick</option>
-                        <option value="checker">Checker</option>
-                    </select><br>
-                    <textarea id="matrix" name="matrix" rows="4" cols="12" spellcheck="false"
-                    >-5</textarea>
-                </fieldset>
+        </fieldset>
+        <fieldset id="matrixOpts">
+            <legend>Parameters <a href="https://github.com/d-bl/GroundForge/wiki/Parameters"
+                                  target="_blank"><img
+                    src="images/information-icon.png"></a></legend>
+            <fieldset>
+                <legend>patch size</legend>
+                <p>
+                    <label for="rows">rows:</label>
+                    <input id="rows" name="rows" min="3" value="7" max="30" type="number"/>
+                </p>
+                <p>
+                    <label for="cols">columns:</label>
+                    <input id="cols" name="cols" min="3" value="5" max="30" type="number"/>
+                </p>
             </fieldset>
-        </div>
+            <fieldset>
+                <legend>footside</legend>
+                <!-- footside move oposite to matrix content -->
+                <p>
+                    <label for="shiftLeft">shift&nbsp;right:</label>
+                    <input id="shiftLeft" name="rows" min="0" value="0" type="number"/>
+                </p>
+                <p>
+                    <label for="shiftUp">shift&nbsp;down:</label>
+                    <input id="shiftUp" name="cols" min="0" value="0" type="number"/>
+                </p>
+            </fieldset>
+            <fieldset>
+                <legend>pattern - (advanced)</legend>
+                <label for="tiles" style="width:2.6em;">tiling:</label>
+                <select name="tiles" id="tiles">
+                    <option value="bricks" selected>Brick</option>
+                    <option value="checker">Checker</option>
+                </select><br>
+                <textarea id="matrix" name="matrix" rows="4" cols="12" spellcheck="false"
+                >-5</textarea>
+            </fieldset>
+        </fieldset>
     </article>
     <article>
         <p>

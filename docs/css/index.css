@@ -40,8 +40,13 @@ button {
   margin: 0;
   overflow: hidden;
 }
+fieldset {
+  margin-bottom: 0.5em;
+}
 #matrixOpts {
   padding: 0.2em;
+  padding-left:0.5em;
+  padding-right:0.5em;
   margin-bottom: 1em;
 }
 table, tr, td {
