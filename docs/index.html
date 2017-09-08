@@ -52,7 +52,7 @@
                 </p>
             </fieldset>
             <fieldset>
-                <legend>footside</legend>
+                <legend>footside <img src="images/under-construction.png" height="16" title="under construction: displaces chosen stitches, might break or fix the pair/thread-diagrams"></legend>
                 <!-- footside move oposite to matrix content -->
                 <p>
                     <label for="shiftLeft">shift&nbsp;right:</label>
@@ -64,7 +64,7 @@
                 </p>
             </fieldset>
             <fieldset>
-                <legend>pattern - (advanced)</legend>
+                <legend>pattern <img src="images/graduation-cap.png" height="16" title="advanced/custom designs"></legend>
                 <label for="tiles" style="width:2.6em;">tiling:</label>
                 <select name="tiles" id="tiles">
                     <option value="bricks" selected>Brick</option>
@@ -72,18 +72,20 @@
                 </select><br>
                 <textarea id="matrix" name="matrix" rows="4" cols="12" spellcheck="false"
                 >-5</textarea>
+                <!-- @formatter:off -->
+                <a onmouseenter="this.href=createPrickingArgs()"
+                   target="_blank"
+                   href=""
+                ><button type="button"
+                         title="pricking prototype of the pattern in a new tab or window"
+                >diagram</button></a>
+                <!-- @formatter:on -->
             </fieldset>
         </fieldset>
     </article>
     <article>
         <p>
             <!-- @formatter:off -->
-            <a onmouseenter="this.href=createPrickingArgs()"
-               target="_blank"
-               href=""
-            ><button type="button"
-                     title="pricking prototype of current pattern in a new tab or window"
-            >pricking</button></a>
             <a onmouseenter="this.href=createUrlArgs()"
                href=""
             ><button id="permalink" type="button"
@@ -91,13 +93,19 @@
             ><img src="images/link.png"></button></a>
             <label for="permalink"><a href="https://github.com/d-bl/GroundForge/wiki/Undo"
                                     target="_blank"><img src="images/information-icon.png"></a></label>
-            <a href="index.html"><button type="button">reset</button></a>
+            <a href="index.html">
+            <a onmouseenter="this.href='http://web.archive.org/*/https://d-bl.github.io/GroundForge/'+createUrlArgs()"
+               href="" target="_blank"
+            ><button id="archivedlink" type="button"
+                     title="future proof link: confirm the wayback machine to archive a snapshot of your pattern"
+            ><img src="images/clock.png" height="13"> &nbsp; <img src="images/link.png"></button></a>
+            <button type="button">reset</button></a>
             <!-- @formatter:on -->
         </p>
     </article>
 
     <article>
-        <h2><a name="diagrams">Diagrams</a></h2>
+        <h2><a name="diagrams">Pair/Thread Diagrams</a></h2>
         <p>
             Generate the diagrams of the selected pattern.
             The pair diagram will be a color coded version of the chosen pattern or stitch.
@@ -164,7 +172,7 @@
     </div>
 
     <article>
-        <h2>Diagrams - level 2</h2>
+        <h2>Pair/Thread Diagrams - level 2</h2>
         <p>
             Use the previous thread diagram as pair diagram to generate another thread diagram.
         </p>
@@ -228,7 +236,7 @@
         </div>
     </div>
     <article>
-        <h2>Diagrams - level 3</h2>
+        <h2>Pair/Thread Diagrams - level 3</h2>
         <label for="s3">Stitches</label>
         <input id="s3"
                name="s"
