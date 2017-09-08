@@ -50,6 +50,8 @@ With non-zero shift values for the footsides, columns and rows are virtually mov
 The tiling defines how the green section is repeated in the pattern.
 Usually only one tiling value is valid for a particular matrix.
 
+The diagram button will show the configured pattern (pricking prototype) on another tab.
+
 More on the page to [design](Reversed-engineering-of-patterns) your own patterns from scratch.
 
 
