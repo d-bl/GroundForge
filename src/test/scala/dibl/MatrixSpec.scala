@@ -24,7 +24,7 @@ import scala.reflect.ClassTag
 class MatrixSpec extends FlatSpec with Matchers {
 
   "test values" should  "find matrices in docs/gallery.html" in {
-    Matrices.values.size shouldBe 822
+    Matrices.values.size shouldBe 449
   }
 
   "separator" should "match anything but Matrix.relSourcesMap.keySet" in {
