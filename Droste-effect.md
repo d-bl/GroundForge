@@ -191,6 +191,6 @@ So you need to develop an intuition to take your picks.
 [#96]: https://github.com/d-bl/GroundForge/issues/96
 [#93]: https://github.com/d-bl/GroundForge/issues/93
 [GroundForge]: https://d-bl.github.io/GroundForge/
-[special]: https://d-bl.github.io/GroundForge/droste.html
-[this page]: https://d-bl.github.io/GroundForge/droste.html
+[special]: https://d-bl.github.io/GroundForge/stitches.html
+[this page]: https://d-bl.github.io/GroundForge/stitches.html
 [hoops]: https://github.com/d-bl/GroundForge/blob/master/docs/API.md

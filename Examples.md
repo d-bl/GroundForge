@@ -30,7 +30,7 @@ there is still a lot of room for further variations.
 Explore, experiment, play and discover!
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
-[simple form]: https://d-bl.github.io/GroundForge/droste.html
+[simple form]: https://d-bl.github.io/GroundForge/stitches.html
 [Tesselace index]: TesseLace-Index
 [tesseLace.com]: https://tesselace.com
 [slide show]: https://tesselace.com/tools/inkscape-extension/

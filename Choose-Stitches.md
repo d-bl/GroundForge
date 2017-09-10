@@ -12,13 +12,14 @@ Different pages use different form fields to choose stitches.
 Form fields
 ===========
 
-* The [droste] page has one field per stitch.
-  The position of the fields in the form reflects the position in the pattern.
-  A cheat-sheet provides a visual representation for some less trivial stitches.
 * The [main] page has one text field to define all stitches of a pattern.
   Hover with the cursor over stitches in the pair diagram
-  and your browser should show a tool tip with the id
-  for a position in the pattern and the current stitch assigned to the id.
+  and your browser should show a tool tip with
+  an id and the stitch currently assigned to the id.
+* The [stitches] page breaks the text field down into one field per stitch.
+  A cheat-sheet provides a visual representation for some less trivial stitches.
+  The page assembles the content for the first stitch field of the main page.
+  The page works only for two patterns and a limited set of dimensions.
 
 
 Stitch definitions
@@ -31,7 +32,6 @@ Invalid characters are ignored.
 
 You can try a `p` for a pin, but that rarely works as desired,
 see issue [#51] for the technical details.
-
 
 
 Assign stitches
@@ -62,7 +62,7 @@ The image below shows screen shot snippets of a pattern and its stitches.
 * _Bottom:_ the diagrams generated with the chosen stitches.
   When hovering with your mouse over a stitch (in a generated pattern, not the screenshot above), your browser is supposed to show the id and instructions of a stitch.
 
-[droste]: https://d-bl.github.io/GroundForge/droste.html
+[stitches]: https://d-bl.github.io/GroundForge/stitches.html
 [main]: https://d-bl.github.io/GroundForge/
 [assemble]: https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns
 [#51]: https://github.com/d-bl/GroundForge/issues/51
