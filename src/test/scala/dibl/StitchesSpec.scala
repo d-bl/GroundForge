@@ -53,4 +53,13 @@ class StitchesSpec extends FlatSpec with Matchers {
   it should "ignore an invalid node" in {
     Settings.toStitchMatrix(".=tc", 2, 3) shouldBe allClothStitches
   }
+
+  "Stitches.toMatrix" should "start counting at one" in {
+    new Stitches("ct A1=B3=ctc").toMatrix(3,3) shouldBe
+    Seq(
+      Seq("ctc","ct","ct"),
+      Seq("ct","ct","ct"),
+      Seq("ct","ctc","ct")
+    )
+  }
 }
