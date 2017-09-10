@@ -5,8 +5,18 @@ body, article { padding: 1em; padding-bottom: 0; margin-left: auto; margin-right
 fieldset img, .diagram {
   border: solid 1px #AAA;
 }
+legend {
+  font-weight: bold;
+}
+fieldset fieldset legend {
+  font-weight: normal;
+}
 legend img {
   border: none;
+  vertical-align: text-top;
+}
+button img {
+  vertical-align: text-top;
 }
 button {
   border-radius:0.5em;
@@ -14,7 +24,7 @@ button {
   border-style:outset;
   background-color: #EEE;
   text-align: center;
-  width: 6em;
+  width: 6.8em;
   height: 2em;
   font-weight: bold;
   color: #000;
