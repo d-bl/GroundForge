@@ -55,11 +55,11 @@ class StitchesSpec extends FlatSpec with Matchers {
   }
 
   "Stitches.toMatrix" should "start counting at one" in {
-    new Stitches("ct A1=B3=ctc").toMatrix(3,3) shouldBe
+    new Stitches("ct A1=B3=ctc").toMatrix(3,2) shouldBe
     Seq(
-      Seq("ctc","ct","ct"),
-      Seq("ct","ct","ct"),
-      Seq("ct","ctc","ct")
+      Seq("ctc","ct"),
+      Seq("ct","ct"),
+      Seq("ct","ctc")
     )
   }
 }
