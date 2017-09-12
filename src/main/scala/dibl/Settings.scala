@@ -26,7 +26,7 @@ import scala.util.{Failure, Success, Try}
   * @param stitches A matrix for a single tile with stitch instructions (tcplr) per cell.
   */
 abstract class Settings(val absM: M,
-                        val stitches: Array[Array[String]]
+                        val stitches: Seq[Seq[String]]
                        ) {
   val nrOfPairLinks: Array[Array[Int]] = countLinks(absM)
   protected val relRows: Int = stitches.length
@@ -83,7 +83,7 @@ object Settings {
       shifted      = shift(checker, shiftUp + 2).map(shiftChars(_, shiftLeft + 2))
       relative     = extend(shifted, absRows, absCols).map(_.map(charToRelativeTuples).toArray)
       absolute     = toAbsolute(relative)
-      stitchMatrix = toStitchMatrix(stitches, lines.length, lines(0).length)
+      stitchMatrix = new Stitches(stitches).toMatrix(lines.length, lines(0).length)
     } yield tileType.toSettings(absolute, stitchMatrix)
   }
 

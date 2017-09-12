@@ -19,42 +19,42 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class StitchesSpec extends FlatSpec with Matchers {
 
-  val allClothStitches = Array(
-    Array("ctc", "ctc", "ctc"),
-    Array("ctc", "ctc", "ctc")
+  val allClothStitches = Seq(
+    Seq("ctc", "ctc", "ctc"),
+    Seq("ctc", "ctc", "ctc")
   )
-  "Settings.toStitchMatrix" should "default to cloth stitches" in {
-    Settings.toStitchMatrix("", 2, 3) shouldBe allClothStitches
+  "Stitches.toMatrix" should "default to cloth stitches" in {
+    new Stitches("").toMatrix(2, 3) shouldBe allClothStitches
   }
   it should "apply a custom default and be case insensitive" in {
-    Settings.toStitchMatrix("tc a2=ctc B1=TCtc", 2, 3) shouldBe Array(
-      Array("tc", "tctc", "tc"),
-      Array("ctc", "tc", "tc")
+    new Stitches("tc a2=ctc B1=TCtc").toMatrix(2, 3) shouldBe Seq(
+      Seq("tc", "tctc", "tc"),
+      Seq("ctc", "tc", "tc")
     )
   }
   it should "ignore an invalid default stitch" in {
-    Settings.toStitchMatrix("p", 2, 3) shouldBe allClothStitches
+    new Stitches("p").toMatrix(2, 3) shouldBe allClothStitches
   }
   it should "ignore a node id without a stitch" in {
-    Settings.toStitchMatrix("A1=", 2, 3) shouldBe allClothStitches
+    new Stitches("A1=").toMatrix(2, 3) shouldBe allClothStitches
   }
   it should "ignore a stitch with just a pin" in {
-    Settings.toStitchMatrix("A1=p", 2, 3) shouldBe allClothStitches
+    new Stitches("A1=p").toMatrix(2, 3) shouldBe allClothStitches
   }
   it should "ignore an invalid stitch" in {
-    Settings.toStitchMatrix("A1=.", 2, 3) shouldBe allClothStitches
+    new Stitches("A1=.").toMatrix(2, 3) shouldBe allClothStitches
   }
   it should "ignore a node with the column out of range" in {
-    Settings.toStitchMatrix("D1=tc", 2, 3) shouldBe allClothStitches
+    new Stitches("D1=tc").toMatrix(2, 3) shouldBe allClothStitches
   }
   it should "ignore a node with the row out of range" in {
-    Settings.toStitchMatrix("a22=tc", 2, 3) shouldBe allClothStitches
+    new Stitches("a22=tc").toMatrix(2, 3) shouldBe allClothStitches
   }
   it should "ignore an invalid node" in {
-    Settings.toStitchMatrix(".=tc", 2, 3) shouldBe allClothStitches
+    new Stitches(".=tc").toMatrix(2, 3) shouldBe allClothStitches
   }
 
-  "Stitches.toMatrix" should "start counting at one" in {
+  it should "start counting at one" in {
     new Stitches("ct A1=B3=ctc").toMatrix(3,2) shouldBe
     Seq(
       Seq("ctc","ct"),
