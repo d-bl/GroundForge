@@ -24,38 +24,38 @@ class StitchesSpec extends FlatSpec with Matchers {
     Seq("ctc", "ctc", "ctc")
   )
   "Stitches.toMatrix" should "default to cloth stitches" in {
-    new Stitches("").toMatrix(2, 3) shouldBe allClothStitches
+    new Stitches("").instructions(2, 3) shouldBe allClothStitches
   }
   it should "apply a custom default and be case insensitive" in {
-    new Stitches("tc a2=ctc B1=TCtc").toMatrix(2, 3) shouldBe Seq(
+    new Stitches("tc a2=ctc B1=TCtc").instructions(2, 3) shouldBe Seq(
       Seq("tc", "tctc", "tc"),
       Seq("ctc", "tc", "tc")
     )
   }
   it should "ignore an invalid default stitch" in {
-    new Stitches("p").toMatrix(2, 3) shouldBe allClothStitches
+    new Stitches("p").instructions(2, 3) shouldBe allClothStitches
   }
   it should "ignore a node id without a stitch" in {
-    new Stitches("A1=").toMatrix(2, 3) shouldBe allClothStitches
+    new Stitches("A1=").instructions(2, 3) shouldBe allClothStitches
   }
   it should "ignore a stitch with just a pin" in {
-    new Stitches("A1=p").toMatrix(2, 3) shouldBe allClothStitches
+    new Stitches("A1=p").instructions(2, 3) shouldBe allClothStitches
   }
   it should "ignore an invalid stitch" in {
-    new Stitches("A1=.").toMatrix(2, 3) shouldBe allClothStitches
+    new Stitches("A1=.").instructions(2, 3) shouldBe allClothStitches
   }
   it should "ignore a node with the column out of range" in {
-    new Stitches("D1=tc").toMatrix(2, 3) shouldBe allClothStitches
+    new Stitches("D1=tc").instructions(2, 3) shouldBe allClothStitches
   }
   it should "ignore a node with the row out of range" in {
-    new Stitches("a22=tc").toMatrix(2, 3) shouldBe allClothStitches
+    new Stitches("a22=tc").instructions(2, 3) shouldBe allClothStitches
   }
   it should "ignore an invalid node" in {
-    new Stitches(".=tc").toMatrix(2, 3) shouldBe allClothStitches
+    new Stitches(".=tc").instructions(2, 3) shouldBe allClothStitches
   }
 
   it should "start counting at one" in {
-    new Stitches("ct A1=B3=ctc").toMatrix(3,2) shouldBe
+    new Stitches("ct A1=B3=ctc").instructions(3,2) shouldBe
     Seq(
       Seq("ctc","ct"),
       Seq("ct","ct"),

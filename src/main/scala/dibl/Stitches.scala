@@ -22,29 +22,51 @@ import dibl.Stitches._
 import scala.annotation.tailrec
 
 class Stitches(src: String) {
+
   private val (assignments, defaults) = src
     .toLowerCase
     .split("[^a-z0-9=]+")
     .partition(_.contains("="))
 
-  private val default =
-    if (defaults.isEmpty) "ctc"
-    else makeValid(defaults.head, "ctc")
+  private val default = defaults.mkString match {
+    case "" => "ctc"
+    case s => makeValid(s, "ctc")
+  }
 
-  private val map = assignments.flatMap {
-    splitAssignment(_, default)
+  private val tuples = assignments.flatMap(splitAssignment)
+
+  private val stitches: Map[StitchId, Instructions] = tuples.map {
+    case (id, instructions, _) => (id, makeValid(instructions, default))
+  }.toMap
+
+  private val colors: Map[StitchId, Instructions] = tuples.map {
+    case (id, stitch, color) =>
+      (id,
+        if (color != "") color
+        else stitch match {
+          case s if s.contains("p") => ""
+          case s if s.count(_ == 'c') > 2 => "" // TODO "blue", need a single t between c's
+          case s if s.contains("ctct") || s.contains("tctc") => "red"
+          case s if s.contains("ctc") => "purple"
+          case _ => ""
+          // TODO see https://github.com/d-bl/GroundForge/issues/49#issuecomment-328344801
+        }
+      )
   }.toMap
 
   /**
     * @param id one or two letters followed by digits
     * @return the default stitch in case of an invalid id
     */
-  def apply(id: String): String = {
-    map.getOrElse(id.toLowerCase(), default)
+  def stitch(id: StitchId): Instructions = {
+    stitches.getOrElse(id.toLowerCase(), default)
   }
 
-  def apply(row: Int, col: Int): String = {
-    map.getOrElse(s"${toAlpha(col)}${row + 1}", default)
+  /**
+    * @return the default stitch if a row/col is out of bounds
+    */
+  def stitch(row: Int, col: Int): Instructions = {
+    stitch(s"${toAlpha(col)}${row + 1}")
   }
 
   /**
@@ -52,10 +74,18 @@ class Stitches(src: String) {
     * @param nrOfCols negative is interpreted as zero
     * @return a matrix with stitch instruction of at least 1x1
     */
-  def toMatrix(nrOfRows: Int, nrOfCols: Int): Seq[Seq[String]] = {
+  def instructions(nrOfRows: Int, nrOfCols: Int): Seq[Seq[Instructions]] = {
     (0 until max(0, nrOfRows)).map { row =>
       (0 until max(0, nrOfCols)).map { col =>
-        apply(row, col)
+        stitch(row, col)
+      }
+    }
+  }
+
+  def colors(nrOfRows: Int, nrOfCols: Int): Seq[Seq[ColorName]] = {
+    (0 until max(0, nrOfRows)).map { row =>
+      (0 until max(0, nrOfCols)).map { col =>
+        ???
       }
     }
   }
@@ -63,29 +93,30 @@ class Stitches(src: String) {
 
 object Stitches {
 
+  type StitchId = String
+  type ColorName = String
+  type Instructions = String
+
   private val letters = 'a' to 'z'
+  private val availableColors = Set("red", "green", "puple")
 
   @tailrec
-  private def toAlpha(col: Int, r: String = ""): String = {
+  private def toAlpha(col: Int, r: String = ""): StitchId = {
     val s = s"${letters(col % 26)}$r"
     if (col < 26) s else toAlpha(col / 26 - 1, s)
   }
 
   /**
     * @param assignment example: A1=B3=ctct, partition in the class takes care of at least one '='
-    * @param default    example: ctc
     * @return
     */
-  private def splitAssignment(assignment: String, default: String) = {
-    val items = assignment.split("=")
-    val instructions = makeValid(items.last, default)
-    items.init // now we've got the IDs
-      // should be "cross", "twist" or a valid grid id (letters followed by digits)
-      .filter(_.matches("([a-z]+[0-9]+|cross|twist)"))
-      .map(_ -> instructions)
+  private def splitAssignment(assignment: String): Array[(StitchId, Instructions, ColorName)] = {
+    val (ids, values) = assignment.split("=").partition(_.matches("([a-z]+[0-9]+|cross|twist)"))
+    val (colors, instructions) = values.partition(availableColors.contains)
+    ids.map(id => (id, instructions.mkString, colors.mkString))
   }
 
-  private def makeValid(instructions: String, default: String) = {
+  private def makeValid(instructions: String, default: Instructions): Instructions = {
     instructions.replaceAll("[^ctrlp]", "") match {
       // skip invalid characters
       case s if s.replaceAll("[^p]", "").length > 1 => default // at most one pin
