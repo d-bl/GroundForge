@@ -23,7 +23,7 @@ class StitchesSpec extends FlatSpec with Matchers {
     Seq("ctc", "ctc", "ctc"),
     Seq("ctc", "ctc", "ctc")
   )
-  "Stitches.toMatrix" should "default to cloth stitches" in {
+  "Stitches.instructions" should "default to cloth stitches" in {
     new Stitches("").instructions(2, 3) shouldBe allClothStitches
   }
   it should "apply a custom default and be case insensitive" in {
@@ -60,6 +60,15 @@ class StitchesSpec extends FlatSpec with Matchers {
       Seq("ctc","ct"),
       Seq("ct","ct"),
       Seq("ct","ctc")
+    )
+  }
+
+  "Stitches.colors" should "apply defaults" in {
+    new Stitches("ct A1=ctc A2=ctct A3=t B1=cltct B2=crtct C1=clrctc C2=ctctct ").colors(3,3) shouldBe
+    Seq(
+      Seq("purple","red",""),
+      Seq("brown","brown","green"),
+      Seq("","blue","green")
     )
   }
 }
