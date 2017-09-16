@@ -55,7 +55,8 @@ class StitchesSpec extends FlatSpec with Matchers {
   }
 
   it should "start counting at one" in {
-    new Stitches("ct A1=B3=ctc").instructions(3,2) shouldBe
+    new Stitches("ct A1=B3=ctc")
+      .instructions(3,2) shouldBe
     Seq(
       Seq("ctc","ct"),
       Seq("ct","ct"),
@@ -63,12 +64,13 @@ class StitchesSpec extends FlatSpec with Matchers {
     )
   }
 
-  "Stitches.colors" should "apply defaults" in {
-    new Stitches("ct A1=ctc A2=ctct A3=t B1=cltct B2=crtct C1=clrctc C2=ctctct ").colors(3,3) shouldBe
-    Seq(
-      Seq("purple","red",""),
-      Seq("brown","brown","green"),
-      Seq("","blue","green")
-    )
-  }
+  "ctc" should "be purple" in { new Stitches("ctc").colors(1,1) shouldBe Seq(Seq("purple"))}
+  "ctct" should "be red" in { new Stitches("ctct").colors(1,1) shouldBe Seq(Seq("red"))}
+  "cltct" should "be brown" in { new Stitches("cltct").colors(1,1) shouldBe Seq(Seq("brown"))}
+  "ctctct" should "be blue" in { new Stitches("ctctc").colors(1,1) shouldBe Seq(Seq("blue"))}
+  "ct" should "be green" in { new Stitches("ct").colors(1,1) shouldBe Seq(Seq("green"))}
+  "tc" should "be green" in {new Stitches("tc").colors(1,1) shouldBe Seq(Seq("green"))}
+  "clr" should "be -" in {new Stitches("clr").colors(1,1) shouldBe Seq(Seq(""))}
+  "rlc" should "be -" in {new Stitches("rlc").colors(1,1) shouldBe Seq(Seq(""))}
+  "l" should "be -" in {new Stitches("rlc").colors(1,1) shouldBe Seq(Seq(""))}
 }

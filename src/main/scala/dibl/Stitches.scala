@@ -123,36 +123,41 @@ object Stitches {
 
   /** Just single t's between c's **/
   private def singleTwists(stitch: String) = {
-    stitch.split("c").distinct.mkString == "t"
+    stitch.split("c").count(_ == "t") * 2 + 1 == stitch.length
   }
 
-  /** At least one pair twisted twice */
-  private def repeatedTwists(stitch: String) = {
-    stitch.replace("", "lr") match {
+  /** At least one pair twisted more than once */
+  private def repeatedTwist(stitch: String) = {
+    stitch.replace("t", "lr") match {
       case s if s.count('r' == _) > 1 => true
       case s if s.count('l' == _) > 1 => true
       case _ => false
     }
   }
 
-  val r: Regex = "([lrt]*)(.*c)(.*)".r()
+  /** Number of times both pairs are twisted */
+  private def twists(s: String) = s.count('t' == _)
+
+  /** Split string into
+    * - everything before the first c
+    * - the first c up to and including the last c
+    * - everything after the last c
+    */
+  private val regex: Regex = "([lrt]*)(.*c)(.*)".r()
 
   private def defaultColor(s: String) = {
-    val crossed = s.count('c' == _)
-    val pins = s.count('p' == _)
-    if (crossed == 0 || pins != 0) ""
-    else {
-      val r(openTwists, stitch, closeTwists) = s
-      val twisted =
-        openTwists.count('t' == _) > 0 ||
-          closeTwists.count('t' == _) > 0
-      if (stitch == "c" && twisted) "green"
-      else if (stitch == "ctc")
-             if (twisted) "red"
-             else "purple"
-      else if (crossed > 2 && singleTwists(stitch)) "blue"
-      else if (crossed == 2 && repeatedTwists(stitch)) "brown"
-      else ""
+    val hasPins = s.count('p' == _) > 0
+    lazy val crossCount = s.count('c' == _)
+    lazy val regex(openTwists, stitch, closeTwists) = s
+    lazy val twisted = twists(openTwists) > 0 || twists(closeTwists) > 0
+    (hasPins, crossCount, stitch, twisted) match {
+      case (true, _, _, _) => ""
+      case (false, 1, _, true) => "green"
+      case (false, 2, _, _) if repeatedTwist(stitch) => "brown"
+      case (false, 2, "ctc", true) => "red"
+      case (false, 2, "ctc", false) => "purple"
+      case (false, n, _, _) if n > 2 && singleTwists(stitch) => "blue"
+      case _ => ""
     }
   }
 }
