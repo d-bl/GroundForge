@@ -64,13 +64,17 @@ class StitchesSpec extends FlatSpec with Matchers {
     )
   }
 
-  "ctc" should "be purple" in { new Stitches("ctc").colors(1,1) shouldBe Seq(Seq("purple"))}
-  "ctct" should "be red" in { new Stitches("ctct").colors(1,1) shouldBe Seq(Seq("red"))}
-  "cltct" should "be brown" in { new Stitches("cltct").colors(1,1) shouldBe Seq(Seq("brown"))}
-  "ctctct" should "be blue" in { new Stitches("ctctc").colors(1,1) shouldBe Seq(Seq("blue"))}
-  "ct" should "be green" in { new Stitches("ct").colors(1,1) shouldBe Seq(Seq("green"))}
-  "tc" should "be green" in {new Stitches("tc").colors(1,1) shouldBe Seq(Seq("green"))}
-  "clr" should "be -" in {new Stitches("clr").colors(1,1) shouldBe Seq(Seq(""))}
-  "rlc" should "be -" in {new Stitches("rlc").colors(1,1) shouldBe Seq(Seq(""))}
-  "l" should "be -" in {new Stitches("rlc").colors(1,1) shouldBe Seq(Seq(""))}
+  "ctc" should "be purple" in {colorOf("ctc") shouldBe "purple"}
+  "ctct" should "be red" in {colorOf("ctct") shouldBe "red"}
+  "cltct" should "be brown" in {colorOf("cltct") shouldBe "brown"}
+  "ctctct" should "be blue" in {colorOf("ctctc") shouldBe "blue"}
+  "ct" should "be green" in {colorOf("ct") shouldBe "green"}
+  "tc" should "be green" in {colorOf("tc") shouldBe "green"}
+  "clr" should "have no color" in {colorOf("clr") shouldBe ""}
+  "rlc" should "have no color" in {colorOf("rlc") shouldBe ""}
+  "l" should "have no color" in {colorOf("rlc") shouldBe ""}
+
+  private def colorOf(ctc: String) = {
+    new Stitches(ctc).colors(1, 1).head.head
+  }
 }
