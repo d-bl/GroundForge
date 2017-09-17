@@ -15,23 +15,36 @@
 */
 package dibl
 
+import org.scalatest.prop.TableDrivenPropertyChecks
 import org.scalatest.{FlatSpec, Matchers}
 
-class StitchesSpec extends FlatSpec with Matchers {
+class StitchesSpec extends FlatSpec with Matchers with TableDrivenPropertyChecks{
 
-  checkColorAtA1("ctct" -> "red")
-  checkColorAtA1("cltct" -> "brown")
-  checkColorAtA1("ctctct" -> "blue")
-  checkColorAtA1("ct" -> "green")
-  checkColorAtA1("tc" -> "green")
-  checkColorAtA1("lrc" -> "") // use t wherever possible
-  checkColorAtA1("clr" -> "")
-  checkColorAtA1("rlc" -> "")
+  "the stitch at matrix position A1" should "get a proper color" in {
 
-  // default colors overridden by user, any order is accepted
-  checkColorAtA1("A1=B3=ct=red" -> "red")
-  checkColorAtA1("brown=ctctc=A1" -> "brown")
-  checkColorAtA1("ctctc=green=A1" -> "green")
+    val colors = Table("input" -> "color",
+
+      // ordinary cases
+      "ctct" -> "red",
+      "cltct" -> "brown",
+      "ctctct" -> "blue",
+      "ct" -> "green",
+      "tc" -> "green",
+      "clr" -> "", // use t wherever possible
+      "clr" -> "",
+      "rlc" -> "",
+
+      // default colors overridden by user, any order is accepted
+      "A1=B3=ct=red" -> "red",
+      "brown=ctctc=A1" -> "brown",
+      "ctctc=green=A1" -> "green"
+    )
+    forAll(colors) { (input: String, color: String) =>
+      new Stitches(input).colors(1, 1)
+        .headOption.flatMap(_.headOption)
+        .getOrElse("no A1 at all") shouldBe color
+    }
+  }
 
   // garbage in...
   checkColorAtA1("clrc" -> "") // lr is not recognised as t
@@ -120,15 +133,29 @@ class StitchesSpec extends FlatSpec with Matchers {
   private def checkColorAtA1(both: (String, String)): Unit = {
     val (left, right) = both
     s"stitch field: $left" should s"assign color $right to A1" in {
-      new Stitches(left).colors(1, 1).head.head shouldBe right
+      colorA1(left) shouldBe right
     }
   }
 
   private def checkStitchAtA1(both: (String, String)): Unit = {
     val (left, right) = both
     s"stitch field: $left" should s"assign stitch $right to A1" in {
-      new Stitches(left).instructions(1, 1).head.head shouldBe right
+      stitchA1(left) shouldBe right
     }
+  }
+
+
+  it should "B" in {
+  it.should("")
+     colorA1("ctc") shouldBe "purple"
+  }
+
+  private def colorA1(stitchesField: String) = {
+    new Stitches(stitchesField).colors(1, 1).head.head
+  }
+
+  private def stitchA1(stitchesField: String) = {
+    new Stitches(stitchesField).instructions(1, 1).head.head
   }
 }
 
