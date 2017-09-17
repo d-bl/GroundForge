@@ -19,11 +19,12 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class StitchesSpec extends FlatSpec with Matchers {
 
-  checkColorAtA1("ctct" ->"red")
+  checkColorAtA1("ctct" -> "red")
   checkColorAtA1("cltct" -> "brown")
   checkColorAtA1("ctctct" -> "blue")
   checkColorAtA1("ct" -> "green")
   checkColorAtA1("tc" -> "green")
+  checkColorAtA1("lrc" -> "") // use t wherever possible
   checkColorAtA1("clr" -> "")
   checkColorAtA1("rlc" -> "")
 
@@ -33,84 +34,97 @@ class StitchesSpec extends FlatSpec with Matchers {
   checkColorAtA1("ctctc=green=A1" -> "green")
 
   // garbage in...
-  checkStitchAtA1("ctc tc" ->"ctctc")// multiple default stitches get concatenated
-  checkStitchAtA1("A1=ctc=rood" ->"ctcr")// valid characters of a not supported color merges with the stitch
-  checkStitchAtA1("l" -> "ctc")
+  checkColorAtA1("clrc" -> "") // lr is not recognised as t
+  checkStitchAtA1("ctc, tc" -> "ctc") // the first default stitch is applied
+  checkColorAtA1("ctc, tc" -> "purple")
+  checkStitchAtA1("A1=kd" -> "ctc") // neither a valid color nor a valid stitch
+  checkColorAtA1("A1=ctc=orange=ct" -> "purple") // not supported color is ignored, the first stitch is used
+  checkColorAtA1("A1=green=A2=ctc=blue" -> "green") // the first color is applied
+  checkStitchAtA1("l" -> "ctc") // a stitch should have at least a cross
   checkColorAtA1("l" -> "purple")
 
   "Stitches.instructions" should "start counting at one" in {
     new Stitches("ct A1=B3=ctc")
-      .instructions(3,2) shouldBe
-      Seq(
-        Seq("ctc","ct"),
-        Seq("ct","ct"),
-        Seq("ct","ctc")
-      )
+      .instructions(3, 2) shouldBe Seq(
+      Seq("ctc", "ct"),
+      Seq("ct", "ct"),
+      Seq("ct", "ctc")
+    )
   }
 
   it should "default to cloth stitches" in {
-    new Stitches("").instructions(2, 3) shouldBe Seq(
+    new Stitches("")
+      .instructions(2, 3) shouldBe Seq(
       Seq("ctc", "ctc", "ctc"),
       Seq("ctc", "ctc", "ctc")
     )
   }
 
   it should "apply a custom default and be case insensitive" in {
-    new Stitches("tc a2=ctc B1=TCtc").instructions(2, 3) shouldBe Seq(
+    new Stitches("tc a2=ctc B1=TCtc")
+      .instructions(2, 3) shouldBe Seq(
       Seq("tc", "tctc", "tc"),
       Seq("ctc", "tc", "tc")
     )
   }
   it should "ignore an invalid default stitch" in {
-    new Stitches("p").instructions(2, 3) shouldBe Seq(
+    new Stitches("p")
+      .instructions(2, 3) shouldBe Seq(
       Seq("ctc", "ctc", "ctc"),
       Seq("ctc", "ctc", "ctc")
     )
   }
   it should "ignore a node id without a stitch" in {
-    new Stitches("A1=").instructions(2, 3) shouldBe Seq(
+    new Stitches("A1=")
+      .instructions(2, 3) shouldBe Seq(
       Seq("ctc", "ctc", "ctc"),
       Seq("ctc", "ctc", "ctc")
     )
   }
   it should "ignore a stitch with just a pin" in {
-    new Stitches("A1=p").instructions(2, 3) shouldBe Seq(
+    new Stitches("A1=p")
+      .instructions(2, 3) shouldBe Seq(
       Seq("ctc", "ctc", "ctc"),
       Seq("ctc", "ctc", "ctc")
     )
   }
   it should "ignore an invalid stitch" in {
-    new Stitches("A1=.").instructions(2, 3) shouldBe Seq(
+    new Stitches("A1=.")
+      .instructions(2, 3) shouldBe Seq(
       Seq("ctc", "ctc", "ctc"),
       Seq("ctc", "ctc", "ctc")
     )
   }
   it should "ignore a node with the column out of range" in {
-    new Stitches("D1=tc").instructions(2, 3) shouldBe Seq(
+    new Stitches("D1=tc")
+      .instructions(2, 3) shouldBe Seq(
       Seq("ctc", "ctc", "ctc"),
       Seq("ctc", "ctc", "ctc")
     )
   }
   it should "ignore a node with the row out of range" in {
-    new Stitches("a22=tc").instructions(2, 3) shouldBe Seq(
+    new Stitches("a22=tc")
+      .instructions(2, 3) shouldBe Seq(
       Seq("ctc", "ctc", "ctc"),
       Seq("ctc", "ctc", "ctc")
     )
   }
   it should "ignore an invalid node" in {
-    new Stitches(".=tc").instructions(2, 3) shouldBe Seq(
+    new Stitches(".=tc")
+      .instructions(2, 3) shouldBe Seq(
       Seq("ctc", "ctc", "ctc"),
       Seq("ctc", "ctc", "ctc")
     )
   }
 
-   private def checkColorAtA1( both: (String, String)): Unit = {
+  private def checkColorAtA1(both: (String, String)): Unit = {
     val (left, right) = both
     s"stitch field: $left" should s"assign color $right to A1" in {
       new Stitches(left).colors(1, 1).head.head shouldBe right
     }
   }
-  private def checkStitchAtA1( both: (String, String)): Unit = {
+
+  private def checkStitchAtA1(both: (String, String)): Unit = {
     val (left, right) = both
     s"stitch field: $left" should s"assign stitch $right to A1" in {
       new Stitches(left).instructions(1, 1).head.head shouldBe right

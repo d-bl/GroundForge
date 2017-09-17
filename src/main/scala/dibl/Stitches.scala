@@ -46,7 +46,7 @@ class Stitches(src: String) {
 
   private val tuples = assignments.flatMap(splitAssignment)
 
-  private val defaultStitch = defaults.mkString match {
+  private val defaultStitch = defaults.headOption.getOrElse("") match {
     case "" => "ctc"
     case s => makeValid(s, "ctc")
   }
@@ -123,8 +123,12 @@ object Stitches {
    */
   private def splitAssignment(assignment: String): Array[(StitchId, String, String)] = {
     val (ids, values) = assignment.split("=").partition(_.matches("([a-z]+[0-9]+|cross|twist)"))
-    val (colors, instructions) = values.partition(availableColors.contains)
-    ids.map(id => (id, instructions.mkString, colors.mkString))
+    val (instructions, colors) = values.partition(_.matches("[ctlrp]+"))
+    ids.map(id => (
+      id,
+      instructions.headOption.getOrElse("ctc"),
+      colors.find(availableColors.contains).getOrElse("")
+    ))
   }
 
   private def makeValid(String: String, default: String): String = {
@@ -141,6 +145,15 @@ object Stitches {
     *  @return true if both pairs are twisted at least once
     */
   private def bothTwisted(s: String) = s.count('t' == _) > 0
+
+  /**
+    * @param core a sequence of l/r/t bwteen c's
+    * @return true if one of the pair is twisted multiple times
+    */
+  private def repeatedTwisted(core: String) = {
+    core.replaceAll("[cl]","").length > 1 || // mutiple r's and/or t's
+    core.replaceAll("[cr]","").length > 1 // multiple l's and/or t's
+  }
 
   /** Split  a string (with any sequence of ctlr but at least a c) into
     * - everything before the first c
@@ -170,7 +183,7 @@ object Stitches {
     (hasPins, crossCount, coreStitch, twisted) match {
       case (false, 0, _, _) => "" // prevents evaluation of lazies
       case (false, 1, _, true) => "green"
-      case (false, 2, core, _) if core.length > 3 => "brown"
+      case (false, 2, core, _) if repeatedTwisted(core) => "brown"
       case (false, 2, "ctc", true) => "red"
       case (false, 2, "ctc", false) => "purple"
       case (false, n, core, _) if n > 2 && core.matches("c(tc)+") => "blue"
