@@ -132,10 +132,9 @@ object Stitches {
   }
 
   private def makeValid(String: String, default: String): String = {
+    // skip invalid characters
     String.replaceAll("[^ctrlp]", "") match {
-      // skip invalid characters
-      case s if s.replaceAll("[^p]", "").length > 1 => default // at most one pin
-      case s if s.replaceAll("[^c]", "").length < 1 => default // at least one cross
+      case s if s.replaceAll("[^p]", "").length > 0 => default // at most one pin
       case s => s
     }
   }
@@ -160,7 +159,7 @@ object Stitches {
     * - the first c up to and including the last c
     * - everything after the last c
     */
-  private val regex: Regex = "([lrt]*)(.*c)(.*)".r()
+  private val regex: Regex = "([lrt]*)(.*c)?(.*)".r()
 
   /**
     * @param stitch Any sequence of "ctrlp" of at least length one.
@@ -177,9 +176,9 @@ object Stitches {
     */
   private def defaultColor(stitch: String) = {
     val hasPins = stitch.count('p' == _) > 0
-    lazy val crossCount = stitch.count('c' == _)
-    lazy val regex(openTwists, coreStitch, closeTwists) = stitch
-    lazy val twisted = bothTwisted(openTwists) || bothTwisted(closeTwists)
+    val crossCount = stitch.count('c' == _)
+    val regex(openTwists, coreStitch, closeTwists) = stitch
+    val twisted = bothTwisted(openTwists) || bothTwisted(closeTwists)
     (hasPins, crossCount, coreStitch, twisted) match {
       case (false, 0, _, _) => "" // prevents evaluation of lazies
       case (false, 1, _, true) => "green"

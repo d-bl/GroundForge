@@ -53,8 +53,8 @@ class StitchesSpec extends FlatSpec with Matchers with TableDrivenPropertyChecks
   checkStitchAtA1("A1=kd" -> "ctc") // neither a valid color nor a valid stitch
   checkColorAtA1("A1=ctc=orange=ct" -> "purple") // not supported color is ignored, the first stitch is used
   checkColorAtA1("A1=green=A2=ctc=blue" -> "green") // the first color is applied
-  checkStitchAtA1("l" -> "ctc") // a stitch should have at least a cross
-  checkColorAtA1("l" -> "purple")
+  checkStitchAtA1("l" -> "l") // a stitch should have at least a cross
+  checkColorAtA1("l" -> "")
 
   "Stitches.instructions" should "start counting at one" in {
     new Stitches("ct A1=B3=ctc")
@@ -62,6 +62,13 @@ class StitchesSpec extends FlatSpec with Matchers with TableDrivenPropertyChecks
       Seq("ctc", "ct"),
       Seq("ct", "ct"),
       Seq("ct", "ctc")
+    )
+  }
+
+  "xxx" should "start counting at one" in {
+    new Stitches("t")
+      .colors(1, 1) shouldBe Seq(
+      Seq("")
     )
   }
 
