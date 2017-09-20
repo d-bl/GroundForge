@@ -2,9 +2,13 @@ Various pages scattered around the web provide examples of patterns
 collected with different lines of approach.
 Each resource has individual examples, sections or pages on families of stitches such as
 spiders, bias and Milanese fish or lotus.
-In one or two steps the examples link to the main [GroundForge] page
-with applicable values in the parameter form.
 
+The examples are just starting points to create your own variations
+and even the examples are just the tip of an iceberg.
+In one or two steps the examples link to the main [GroundForge] page
+Where you can choose other stitches.
+
+Explore, experiment, play and discover!
 
 * The [Tesselace index] shows 376  patterns by thumbnails of pair diagrams.
   The diagrams are collected from [tesseLace.com],
@@ -24,10 +28,6 @@ with applicable values in the parameter form.
   You will need a github account for both types of contribution.
   Fixing our non-native grammar would be much appreciated.
 
-Though the number of patterns (also available in copyrighted resources) might be overwhelming,
-there is still a lot of room for further variations.
-
-Explore, experiment, play and discover!
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
 [simple form]: https://d-bl.github.io/GroundForge/stitches.html
