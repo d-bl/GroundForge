@@ -18,151 +18,102 @@ package dibl
 import org.scalatest.prop.TableDrivenPropertyChecks
 import org.scalatest.{FlatSpec, Matchers}
 
-class StitchesSpec extends FlatSpec with Matchers with TableDrivenPropertyChecks{
+class StitchesSpec extends FlatSpec with Matchers with TableDrivenPropertyChecks {
 
-  "the stitch at matrix position A1" should "get a proper color" in {
+  "the stitch at matrix position A1" should "have expected color" in {
 
-    val colors = Table("input" -> "color",
+    forAll(Table("input" -> "color",
 
       // ordinary cases
-      "ctct" -> "red",
-      "cltct" -> "brown",
-      "ctctct" -> "blue",
+      "" -> "purple", // default is ctc
+      "t" -> "",
       "ct" -> "green",
       "tc" -> "green",
-      "clr" -> "", // use t wherever possible
-      "clr" -> "",
-      "rlc" -> "",
+      "tct" -> "green",
+      "ctc" -> "purple",
+      "ctct" -> "red",
+      "tctc" -> "red",
+      "tctct" -> "red",
+      "ttctc" -> "red",
+      "ctctt" -> "red",
+      "cttc" -> "turquoise",
+      "tcttc" -> "turquoise",
+      "cttct" -> "turquoise",
+      "cltc" -> "brown",
+      "crtc" -> "brown",
+      "crrc" -> "brown",
+      "clllc" -> "brown",
+      "ctttc" -> "brown",
+      "ctctc" -> "blue",
+      "ctctct" -> "blue",
+      "tctctc" -> "blue",
+      "ctctctc" -> "blue",
 
       // default colors overridden by user, any order is accepted
       "A1=B3=ct=red" -> "red",
       "brown=ctctc=A1" -> "brown",
-      "ctctc=green=A1" -> "green"
-    )
-    forAll(colors) { (input: String, color: String) =>
+      "ctctc=green=A1" -> "green",
+
+      // garbage in is default out
+      "clr" -> "", // use t wherever possible
+      "crl" -> "",
+      "rlc" -> "",
+      "lrc" -> "",
+      "p" -> "purple", // nothing but a pin becomes ctc
+      "ctpctp" -> "purple", // multiple pins becomes ctc
+      "ct, ctc" -> "green", // the first solitary stitch is used as default
+      "A1=ctct=orange=ct" -> "red", // not supported color is ignored, the first stitch is used
+      "A1=green=A2=ctct=blue" -> "green", // the first color is applied
+      "A1=kd" -> "purple" // neither a valid color nor a valid stitch
+
+    )) { case (input: String, color: String) =>
       new Stitches(input).colors(1, 1)
         .headOption.flatMap(_.headOption)
         .getOrElse("no A1 at all") shouldBe color
     }
   }
 
-  // garbage in...
-  checkColorAtA1("clrc" -> "") // lr is not recognised as t
-  checkStitchAtA1("ctc, tc" -> "ctc") // the first default stitch is applied
-  checkColorAtA1("ctc, tc" -> "purple")
-  checkStitchAtA1("A1=kd" -> "ctc") // neither a valid color nor a valid stitch
-  checkColorAtA1("A1=ctc=orange=ct" -> "purple") // not supported color is ignored, the first stitch is used
-  checkColorAtA1("A1=green=A2=ctc=blue" -> "green") // the first color is applied
-  checkStitchAtA1("l" -> "l") // a stitch should have at least a cross
-  checkColorAtA1("l" -> "")
+  "the stitch field" should "produce expected matrices" in {
 
-  "Stitches.instructions" should "start counting at one" in {
-    new Stitches("ct A1=B3=ctc")
-      .instructions(3, 2) shouldBe Seq(
-      Seq("ctc", "ct"),
-      Seq("ct", "ct"),
-      Seq("ct", "ctc")
-    )
-  }
+    forAll(Table(("dimensions", "input", "stitches", "colors"),
 
-  "xxx" should "start counting at one" in {
-    new Stitches("t")
-      .colors(1, 1) shouldBe Seq(
-      Seq("")
-    )
-  }
+      ((2, 3), "tc a2=ctc B1=TCtc", Seq( // case insensitive
+        Seq("tc", "tctc", "tc"),
+        Seq("ctc", "tc", "tc")
+      ), Seq(
+        Seq("green", "red", "green"),
+        Seq("purple", "green", "green")
+      )),
 
-  it should "default to cloth stitches" in {
-    new Stitches("")
-      .instructions(2, 3) shouldBe Seq(
-      Seq("ctc", "ctc", "ctc"),
-      Seq("ctc", "ctc", "ctc")
-    )
-  }
+      ((2, 3), "a22=tc", Seq( // row out of range is ignored
+        Seq("ctc", "ctc", "ctc"),
+        Seq("ctc", "ctc", "ctc")
+      ), Seq(
+        Seq("purple", "purple", "purple"),
+        Seq("purple", "purple", "purple")
+      )),
 
-  it should "apply a custom default and be case insensitive" in {
-    new Stitches("tc a2=ctc B1=TCtc")
-      .instructions(2, 3) shouldBe Seq(
-      Seq("tc", "tctc", "tc"),
-      Seq("ctc", "tc", "tc")
-    )
-  }
-  it should "ignore an invalid default stitch" in {
-    new Stitches("p")
-      .instructions(2, 3) shouldBe Seq(
-      Seq("ctc", "ctc", "ctc"),
-      Seq("ctc", "ctc", "ctc")
-    )
-  }
-  it should "ignore a node id without a stitch" in {
-    new Stitches("A1=")
-      .instructions(2, 3) shouldBe Seq(
-      Seq("ctc", "ctc", "ctc"),
-      Seq("ctc", "ctc", "ctc")
-    )
-  }
-  it should "ignore a stitch with just a pin" in {
-    new Stitches("A1=p")
-      .instructions(2, 3) shouldBe Seq(
-      Seq("ctc", "ctc", "ctc"),
-      Seq("ctc", "ctc", "ctc")
-    )
-  }
-  it should "ignore an invalid stitch" in {
-    new Stitches("A1=.")
-      .instructions(2, 3) shouldBe Seq(
-      Seq("ctc", "ctc", "ctc"),
-      Seq("ctc", "ctc", "ctc")
-    )
-  }
-  it should "ignore a node with the column out of range" in {
-    new Stitches("D1=tc")
-      .instructions(2, 3) shouldBe Seq(
-      Seq("ctc", "ctc", "ctc"),
-      Seq("ctc", "ctc", "ctc")
-    )
-  }
-  it should "ignore a node with the row out of range" in {
-    new Stitches("a22=tc")
-      .instructions(2, 3) shouldBe Seq(
-      Seq("ctc", "ctc", "ctc"),
-      Seq("ctc", "ctc", "ctc")
-    )
-  }
-  it should "ignore an invalid node" in {
-    new Stitches(".=tc")
-      .instructions(2, 3) shouldBe Seq(
-      Seq("ctc", "ctc", "ctc"),
-      Seq("ctc", "ctc", "ctc")
-    )
-  }
+      ((2, 3), "AB1=tc", Seq( // column out of range is ignored
+        Seq("ctc", "ctc", "ctc"),
+        Seq("ctc", "ctc", "ctc")
+      ), Seq(
+        Seq("purple", "purple", "purple"),
+        Seq("purple", "purple", "purple")
+      )),
 
-  private def checkColorAtA1(both: (String, String)): Unit = {
-    val (left, right) = both
-    s"stitch field: $left" should s"assign color $right to A1" in {
-      colorA1(left) shouldBe right
+      ((2, 28), "c AB2=ctc", Seq( // more than 26 columns
+        Seq("c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c"),
+        Seq("c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "ctc")
+      ), Seq(
+        Seq("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""),
+        Seq("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "purple")
+      ))
+
+    )) { case ((rows: Int, cols: Int), input: String, stitches: Seq[Seq[String]], colors: Seq[Seq[String]]) =>
+      val obj = new Stitches(input)
+      obj.instructions(rows, cols) should contain theSameElementsAs stitches
+      obj.colors(rows, cols) should contain theSameElementsAs colors
     }
-  }
-
-  private def checkStitchAtA1(both: (String, String)): Unit = {
-    val (left, right) = both
-    s"stitch field: $left" should s"assign stitch $right to A1" in {
-      stitchA1(left) shouldBe right
-    }
-  }
-
-
-  it should "B" in {
-  it.should("")
-     colorA1("ctc") shouldBe "purple"
-  }
-
-  private def colorA1(stitchesField: String) = {
-    new Stitches(stitchesField).colors(1, 1).head.head
-  }
-
-  private def stitchA1(stitchesField: String) = {
-    new Stitches(stitchesField).instructions(1, 1).head.head
   }
 }
 

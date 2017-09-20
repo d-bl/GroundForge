@@ -104,7 +104,7 @@ object Stitches {
   type StitchId = String
 
   private val letters = 'a' to 'z'
-  private val availableColors = Set("red", "green", "purple", "blue", "brown")
+  private val availableColors = Set("red", "green", "purple", "blue", "brown", "turquoise")
 
   @tailrec
   private def toAlpha(col: Int, r: String = ""): StitchId = {
@@ -131,12 +131,11 @@ object Stitches {
     ))
   }
 
-  private def makeValid(String: String, default: String): String = {
-    // skip invalid characters
-    String.replaceAll("[^ctrlp]", "") match {
-      case s if s.replaceAll("[^p]", "").length > 0 => default // at most one pin
-      case s => s
-    }
+  private def makeValid(s: String, default: String): String = {
+    val strippedPins = s.replaceAll("p", "")
+    if (strippedPins.length == 0) default // need more than a pin
+    else if (s.length - strippedPins.length > 1) default // at most one pin
+    else s
   }
 
   /**
@@ -182,6 +181,7 @@ object Stitches {
     (hasPins, crossCount, coreStitch, twisted) match {
       case (false, 0, _, _) => "" // prevents evaluation of lazies
       case (false, 1, _, true) => "green"
+      case (false, 2, "cttc", _) => "turquoise"
       case (false, 2, core, _) if repeatedTwisted(core) => "brown"
       case (false, 2, "ctc", true) => "red"
       case (false, 2, "ctc", false) => "purple"
