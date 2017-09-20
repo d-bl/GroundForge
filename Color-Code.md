@@ -1,12 +1,18 @@
+- [Color code dialects](#color-code-dialects)
+- [Twist marks by GroundForge](#twist-marks-by-groundforge)
+- [Colors by GroundForge](#colors-by-groundforge)
+- [Tweak Colors](#tweak-colors)
+
+<sup><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></sup>
+
+
 Color code dialects
 -------------------
 
 Various dialects of color codes for pair diagrams are used by bobbin lace designers:
 a [Belgian] version, a simplified [Danish] version, a [red-blue] version and perhaps more.
 Allowing -even encouraging- unorthodox stitches, the liberty to use both open and closed stitches
-and poor or no support for tallies, pins and gimps in GroundForge asks for yet another dialect,
-this dialect is still under construction,
-see [issue#49](https://github.com/d-bl/GroundForge/issues/49).
+and poor or no support for tallies, pins and gimps in GroundForge asks for yet another dialect.
 
 [Belgian]: https://www.mail-archive.com/lace@arachne.com/msg51345.html
 [Danish]: https://www.mail-archive.com/lace@arachne.com/msg51355.html
@@ -19,7 +25,15 @@ Twist marks by GroundForge
 The intention is a twist mark wherever there are multiple twists in a pair.
 Open stitches abide this rule. Closed stitches lack twist marks if just one of the pairs need one.
 
-See [issue#104]( https://github.com/d-bl/GroundForge/issues/104)
+Follow the progress of issue [#104]( https://github.com/d-bl/GroundForge/issues/104).
+
+Colors by GroundForge
+---------------------
+
+This dialect is still under construction,
+follow the progress of issue [#49](https://github.com/d-bl/GroundForge/issues/49).
+
+Anyway a plait in a pair diagram is drawn as `X`, not as `>---<`.
 
 
 Tweak Colors
