@@ -39,6 +39,8 @@ case class NodeProps private(elems: Seq[(String, Any)]) extends Props {
   /** The stitch instructions from the title */
   val instructions: String = title.replaceAll(" .*", "").toLowerCase
 
+  val color: String = m.getOrElse("color", Stitches.defaultColor(instructions)).asInstanceOf[String]
+
   /** The stitch id within a tile */
   val id: String = title.replaceAll(".* ", "")
 
@@ -104,4 +106,6 @@ object NodeProps {
   def threadStartNode(n: Int) = NodeProps(Seq("title" -> s"thread $n", "startOf" -> s"thread$n"))
 
   def node(title: String, x: Double, y: Double) = NodeProps(Seq("title" -> title, "x" -> x, "y" -> y))
+
+  def node(title: String, color: String, x: Double, y: Double) = NodeProps(Seq("title" -> title, "color" -> color, "x" -> x, "y" -> y))
 }

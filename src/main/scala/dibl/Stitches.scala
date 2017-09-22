@@ -113,7 +113,7 @@ object Stitches {
     else toAlpha(col / 26 - 1, s)
   }
 
-  private def toID(row: Int, col: Int) = {
+  def toID(row: Int, col: Int): String = {
     s"${ toAlpha(col) }${ row + 1 }"
   }
 
@@ -173,13 +173,12 @@ object Stitches {
     *         We don't have gimps nor tallies. Instead we use brown when
     *         having repeated twists between two crosses.
     */
-  private def defaultColor(stitch: String) = {
+  def defaultColor(stitch: String) = {
     val hasPins = stitch.count('p' == _) > 0
     val crossCount = stitch.count('c' == _)
     val regex(openTwists, coreStitch, closeTwists) = stitch
     val twisted = bothTwisted(openTwists) || bothTwisted(closeTwists)
     (hasPins, crossCount, coreStitch, twisted) match {
-      case (false, 0, _, _) => "" // prevents evaluation of lazies
       case (false, 1, _, true) => "green"
       case (false, 2, "cttc", _) => "turquoise"
       case (false, 2, core, _) if repeatedTwisted(core) => "brown"

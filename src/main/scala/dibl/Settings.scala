@@ -26,11 +26,12 @@ import scala.util.{Failure, Success, Try}
   * @param stitches A matrix for a single tile with stitch instructions (tcplr) per cell.
   */
 abstract class Settings(val absM: M,
-                        val stitches: Seq[Seq[String]]
+                        private val stitches: Seq[Seq[String]],
+                        private val colors: Seq[Seq[String]]
                        ) {
   val nrOfPairLinks: Array[Array[Int]] = countLinks(absM)
   protected val relRows: Int = stitches.length
-  protected val relCols: Int = stitches(0).length
+  protected val relCols: Int = stitches.head.length
   protected val margin = 2
 
   /** Gets the tooltip for a stitch: the ID of a cell (a letter for the column, a digit for a row)
@@ -38,12 +39,17 @@ abstract class Settings(val absM: M,
     */
   def getTitle(row: Int, col: Int): String = {
     val (cellRow, cellCol) = toOriginalPosition(row,col)
-    s"${stitches(cellRow)(cellCol)} - ${"ABCDEFGHIJKLMNOPQRSTUVWXYZ"(cellCol)}${cellRow+1}"
+    s"${stitches(cellRow)(cellCol)} - ${Stitches.toID(cellRow, cellCol)}"
   }
 
   def getStitch(row: Int, col: Int): String = {
     val (cellRow, cellCol) = toOriginalPosition(row,col)
     stitches(cellRow)(cellCol).replace("t", "lr")
+  }
+
+  def getColor(row: Int, col: Int): String = {
+    val (cellRow, cellCol) = toOriginalPosition(row,col)
+    colors(cellRow)(cellCol)
   }
 
   /** Recalculates the position of a cell from the full patch to the tile */
@@ -83,47 +89,9 @@ object Settings {
       shifted      = shift(checker, shiftUp + 2).map(shiftChars(_, shiftLeft + 2))
       relative     = extend(shifted, absRows, absCols).map(_.map(charToRelativeTuples).toArray)
       absolute     = toAbsolute(relative)
-      stitchMatrix = new Stitches(stitches).instructions(lines.length, lines(0).length)
-    } yield tileType.toSettings(absolute, stitchMatrix)
-  }
-
-  /** Converts a string with stitch instructions into a matrix.
-    *
-    * @param str Key-value pairs, a key is an ID of a cell in a matrix, separated with an '=' from the value.
-    *            A value is a sequence of stitch instructions defaulting to 'ctc' for not mentioned cells.
-    * @param rows The number of rows in a tile.
-    * @param cols The number of columns in a tile.
-    * @return A matrix with stitch instructions.
-    */
-  def toStitchMatrix(str: String,
-                     rows: Int,
-                     cols: Int
-                    ): Array[Array[String]] = {
-    val keyValues: Array[Array[String]] = str
-      .toLowerCase()
-      .split("[^a-z0-9=]+")
-      .map(_.split("="))
-    val default = if (keyValues.isEmpty || keyValues.head.length != 1)
-      "ctc" // cloth stitch as default
-    else keyValues.head.head // the first "pair" is a value without key
-      .replaceAll("[^lrtcp]", "") // drop illegal characters
-      .replaceAll("^[p]*$", "ctc") // default if nothing but a pin remains
-
-    val result = Array.fill(rows, cols)(default)
-    keyValues
-      .filter(_.length == 2) // omit key=value=something "pairs"
-      .filter(_ (0).matches("[a-z]+[0-9]+")) // the key should be a valid grid id
-      .filter(_ (1).matches("[lrctp]+")) // the value should contain valid stitch symbols
-      .filter(_ (1).matches(".*c.*")) // a stitch should have at least a cross (2nd thread over 3rd)
-      .filter(_ (1).replaceAll("[^p]", "").length < 2) // a stitch should have more than a pin
-      .map { kv =>
-        val key = kv.head
-        val col = key.head.toInt - 'a'.toInt
-        val row = key.tail.toInt - 1
-        (row, col, kv(1))
-      }
-      .filter { case (row, col, value) => row >= 0 && row < rows && col >= 0 && col < cols}
-      .foreach { case (row, col, value) => result(row)(col) = value}
-    result
+      stitchesObject  = new Stitches(stitches)
+      stitchMatrix = stitchesObject.instructions(lines.length, lines(0).length)
+      colorMatrix = stitchesObject.instructions(lines.length, lines(0).length)
+    } yield tileType.toSettings(absolute, stitchMatrix, colorMatrix)
   }
 }
