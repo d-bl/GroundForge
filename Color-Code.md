@@ -31,7 +31,7 @@ Colors by GroundForge
 ---------------------
 
 This dialect is still under construction,
-follow the progress of issue [#49](https://github.com/d-bl/GroundForge/issues/49).
+follow the progress of pull request [#106](https://github.com/d-bl/GroundForge/pull/106).
 
 Anyway a plait in a pair diagram is drawn as `X`, not as `>---<`.
 
