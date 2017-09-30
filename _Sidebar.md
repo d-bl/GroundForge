@@ -12,6 +12,7 @@ Patterns
 Help on forms and buttons
 
 * [Stitches](Choose-Stitches)
+* [Thread colors](Thread-Colors)
 * [Parameters](Parameters)
 * [![](https://d-bl.github.io/GroundForge/images/link.png) and undo](Undo)
 
