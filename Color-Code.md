@@ -11,8 +11,9 @@ Color code dialects
 
 Various dialects of color codes for pair diagrams are used by bobbin lace designers:
 a [Belgian] version, a simplified [Danish] version, a [red-blue] version and perhaps more.
-Allowing -even encouraging- unorthodox stitches, the liberty to use both open and closed stitches
-and poor or no support for tallies, pins and gimps in GroundForge asks for yet another dialect.
+Allowing -even encouraging- unorthodox stitches, the liberty to use both open and closed stitches,
+poor or no support for tallies, pins and gimps in GroundForge and last but not least
+only "X" not ">&odot;<" for stitches asks for yet another dialect.
 
 [Belgian]: https://www.mail-archive.com/lace@arachne.com/msg51345.html
 [Danish]: https://www.mail-archive.com/lace@arachne.com/msg51355.html
