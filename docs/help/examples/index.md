@@ -29,8 +29,8 @@ Explore, experiment, play and discover!
   Fixing our non-native grammar would be much appreciated.
 
 
-[GroundForge]: https://d-bl.github.io/GroundForge/
-[simple form]: https://d-bl.github.io/GroundForge/stitches.html
+[GroundForge]: index.html
+[simple form]: /GroundForge/stitches.html
 [Tesselace index]: TesseLace-Index
 [tesseLace.com]: https://tesselace.com
 [slide show]: https://tesselace.com/tools/inkscape-extension/

@@ -8,7 +8,7 @@ Table of contents
   * [Step by step for InkScape v0.91](#step-by-step-for-inkscape-v091)
   * [CorelDRAW X8 preparations](#coreldraw-x8-preparations)
 * [Screenshots for InkScape v0.91](#screenshots-for-inkscape-v091)
-* [Screenshots for CorelDraw X8](https://github.com/d-bl/GroundForge/wiki/Reshape-Using-Clones#screenshots-for-coreldraw-x8)
+* [Screenshots for CorelDraw X8](/GroundForge/help/Reshape-Using-Clones#screenshots-for-coreldraw-x8)
 
 Editor Requirements
 -------------------
@@ -30,7 +30,7 @@ All tiles (or repeats) in a patch change along with changes made to the slightly
 
 [InkScape]: http://inkscape.org
 [CorelDRAW]: http://www.coreldraw.com/en/product/graphic-design-software/
-[GroundForge]: https://d-bl.github.io/GroundForge/
+[GroundForge]: /GroundForge/
 
 ### Step by step for [InkScape] v0.91.
 
@@ -67,12 +67,12 @@ _On the right_: dots selected as objects, note the dashed rectangles around the 
 
 _At the bottom_: light blue dots and their line ends selected by their nodes. The toolbar indicates node mode with the second icon.
 
-[logo]: https://d-bl.github.io/GroundForge/images/logo-medium.png
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/reshape-using-clones.png)
+[logo]: /GroundForge/images/logo-medium.png
+![](/GroundForge/images/reshape-using-clones.png)
 
 Screenshots for CorelDraw X8
 ----------------------------
 
 Moving the blue dots reveals there was a duplicate dot that wasn't removed.
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/reshape-with-cdr.png)
+![](/GroundForge/images/reshape-with-cdr.png)

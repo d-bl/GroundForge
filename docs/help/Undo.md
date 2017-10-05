@@ -1,7 +1,7 @@
 Undo a pattern configuration
 ----------------------------
 
-Right click the ![link](https://d-bl.github.io/GroundForge/images/link.png)
+Right click the ![link](/GroundForge/images/link.png)
 button on the [main] page for a link or bookmark
 to the current configuration of the diagrams.
 
@@ -9,7 +9,7 @@ Left click the button for an undo point for your changes to the parameters or st
 Use the back button of the browser to return to a previously saved configuration.
 Push the show buttons again after both actions.
 
-[main]: https://d-bl.github.io/GroundForge/
+[main]: /GroundForge/
 
 When recalling the bookmark you will have to generate the diagrams again with the show button.
 Your browser will automatically remember the choices you made on an example page.

@@ -5,9 +5,9 @@ Designing Bobbin Lace grounds
 
 Varying stitches and playing with downloadable diagrams renders a myriad of variations for a single pattern. Shortening [Jane Atkinson]'s [citation] of the Bauhaus school of art: _experiment, play, think. Some experiments may result in innovations, but even when reinventing wheels it is your own discovery._
 
-[GroundForge]: https://d-bl.github.io/GroundForge/
+[GroundForge]: /GroundForge/
 [Jane Atkinson]: http://www.contemporarylace.com/
-[citation]: https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/bauhaus.png
+[citation]: /GroundForge/images/bauhaus.png
 
 
 Approach
@@ -21,7 +21,7 @@ The diagram generator can relief much tedious work that would go into these step
 * Apply colors to individual threads in figure `c` to plan contrasting threads (thickness or color) in your work.
 * Download figure `d` and customize it with a third party editor into `e-h` or whatever your fancy.
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/intro.png)
+![](/GroundForge/images/intro.png)
 
 The diagrams in figure `b` and `c` just provide instructions to create a patch of lace
 but don't inform you about the positions of the pins,

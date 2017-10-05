@@ -49,7 +49,7 @@ An Example
 
 The image below shows screen shot snippets of a pattern and its stitches.
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/stitch-ids.png)
+![](/GroundForge/images/stitch-ids.png)
 
 * _Top left:_ the definition of a pattern created by one of the example page.
   The digits inside the circles determine the configuration of arrows arriving at that position. 
@@ -62,8 +62,8 @@ The image below shows screen shot snippets of a pattern and its stitches.
 * _Bottom:_ the diagrams generated with the chosen stitches.
   When hovering with your mouse over a stitch (in a generated pattern, not the screenshot above), your browser is supposed to show the id and instructions of a stitch.
 
-[stitches]: https://d-bl.github.io/GroundForge/stitches.html
-[main]: https://d-bl.github.io/GroundForge/
-[assemble]: https://github.com/d-bl/GroundForge/wiki/Reversed-engineering-of-patterns
+[stitches]: /GroundForge/stitches.html
+[main]: /GroundForge/
+[assemble]: /GroundForge/help/Reversed-engineering-of-patterns
 [#51]: https://github.com/d-bl/GroundForge/issues/51
 [#96]: https://github.com/d-bl/GroundForge/issues/96

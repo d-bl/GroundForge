@@ -9,7 +9,7 @@
 
 This page is about the sets of fields in the parameters form on the main [GroundForge] page.
 
-[GroundForge]: https://d-bl.github.io/GroundForge/
+[GroundForge]: /GroundForge/
 
 Patch size: columns and rows
 ----------------------------
@@ -34,7 +34,7 @@ a self designed pattern however might get fixed.
 [One] pattern from the [TesseLace-Index](TesseLace-Index) works only for 5 columns.
 18 more out of 449 TesseLace patterns (including the pricking variations) may suffer from bug [#93](https://github.com/d-bl/GroundForge/issues/93).
 
-[One]: https://d-bl.github.io/GroundForge/?m=B-B-%20-B-B%20C-C-%20-C-C%3Bbricks%3B12%3B5%3B0%3B0&s1=ct%20A1%3Dct&s2=cross%3Dctc%20twist%3Dctc&s3=
+[One]: /GroundForge/?m=B-B-%20-B-B%20C-C-%20-C-C%3Bbricks%3B12%3B5%3B0%3B0&s1=ct%20A1%3Dct&s2=cross%3Dctc%20twist%3Dctc&s3=
 
 
 Pattern: Matrix and tiling
@@ -67,4 +67,4 @@ Compare the top-left corner with the green repeat:
 it is shifted by one, both horizontally and vertically.
 The patch has nine columns but uses only six pairs.
 
-![](https://raw.githubusercontent.com/wiki/d-bl/GroundForge/images/cutout.png)
+![](/GroundForge/images/cutout.png)
