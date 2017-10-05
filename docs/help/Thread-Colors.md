@@ -1,3 +1,6 @@
+Thread Colors
+=============
+
 Pure white is is skipped as it blends in with the background,
 the remaining colors are repeated if there are more threads.
 

@@ -1,3 +1,6 @@
+Parameters
+==========
+
 - [Patch size: columns and rows](#patch-size--columns-and-rows)
 - [Footsides: shift](#footsides--shift)
 - [Pattern: Matrix and tiling](#pattern--matrix-and-tiling)

@@ -1,3 +1,6 @@
+Reversed engineering of patterns
+================================
+
 Different methods allow to reproduce a pattern with GroundForge.
 
 - [Recognize patterns](#recognize-patterns)
@@ -9,7 +12,7 @@ Different methods allow to reproduce a pattern with GroundForge.
 <sub><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></sub>
 
 Recognize patterns
-==================
+------------------
 
 The [example pages](Examples) are the easiest way to start experimenting with grounds.
 The generated pair diagrams don't care about plaits and something-pin-something
@@ -38,7 +41,7 @@ Simplifying stitches might need some out of the box thinking as shown with the B
 
 
 Matrix from pair diagram
-========================
+------------------------
 
 The template below contains objects to assemble a matrix required for the parameters.
 Each object represents a stitch and the pairs used to make the stitch.
@@ -55,8 +58,7 @@ You might need more repeats than expected to figure out a tiling.
 
 Note that 18 out of 449 patterns known on the [TesseLace Index](Tesselace-Index) page (including the pricking variations) may suffer from bug [#93](https://github.com/d-bl/GroundForge/issues/93).
 
-Tiling
-------
+### Tiling
 
 The next step is figuring out the tiling.
 GroundForge uses only rectangular tiles, that might not match the natural repeat of a pattern.
@@ -75,8 +77,7 @@ It saves id's of stitches to assign.
 ![](/GroundForge/images/matrix-example.png)
 
 
-With an SVG editor
-------------------
+### With an SVG editor
 
 You can also use a general purpose editor like Adobe-Illustrator, CorelDraw or the free InkScape
 and the [SVG version] (right click to download) of the template.
@@ -89,7 +90,7 @@ Copy-paste these objects to assemble a pattern without changing the length or di
 
 
 Droste method
-=============
+-------------
 
 The Droste method uses thread diagrams as pair diagram.
 

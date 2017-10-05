@@ -1,3 +1,6 @@
+Tesselace Index
+===============
+
 The diagrams are collected from [TesseLace.com],
 resulting from Ph.D research on _Algorithmically designed lace tessellations_.
 The images link to patterns like the TesseLace [slide show].
@@ -20,7 +23,7 @@ Note that the choice to put a pattern in a group may be arbitrary, duplicating t
 _Edit hint_: copy the link location of the image you want to move, start editing, use the browser search to find the link location.
 
 Common Grounds
-==============
+--------------
 
 You might need to change some angles and distances to recognize a ground. See this [animation] and the reshape pages in the sidebar.
 
@@ -37,7 +40,7 @@ You might need to change some angles and distances to recognize a ground. See th
 
 
 Fish and Lotus variations
-=========================
+-------------------------
 
 see also [MEA-gf](https://github.com/MAETempels/MAE-gf/wiki/Milanese:-Fish)
 
@@ -79,7 +82,7 @@ Mixed, shifted under and angle and/or with swim lanes. More under [others](#Othe
 [![](tl//165.png)](/GroundForge/sheet.html?patch=43%2021%20-7%2068;bricks)
 
 Virgin or Rose and bias variations
-==================================
+----------------------------------
 
 See also the [Droste](Droste-effect) page, a twist more or less at the first step or alternating stitches in one or two directions and you have another variation. The ID's for the stitches also will have more logic, though they won't stick to the underlying grid position.
 
@@ -102,7 +105,7 @@ See also the [Droste](Droste-effect) page, a twist more or less at the first ste
 
 
 Others
-======
+------
 
 [![](tl//015.png)](/GroundForge/sheet.html?patch=5-O-H-%20-L-5-O%20E-5-E-;bricks&patch=586-%20---5%202AB-%20-7-5;bricks)
 [![](tl//138.png)](/GroundForge/sheet.html?patch=4641%209177;bricks&patch=4841%205377;bricks)

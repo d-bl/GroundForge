@@ -1,7 +1,8 @@
-_User guide for [GroundForge], a web based toolbox to design bobbin lace grounds or braids with matching diagrams._
+Help Intro
+==========
 
 Designing Bobbin Lace grounds
-=============================
+-----------------------------
 
 Varying stitches and playing with downloadable diagrams renders a myriad of variations for a single pattern. Shortening [Jane Atkinson]'s [citation] of the Bauhaus school of art: _experiment, play, think. Some experiments may result in innovations, but even when reinventing wheels it is your own discovery._
 

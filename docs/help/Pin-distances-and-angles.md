@@ -1,3 +1,6 @@
+Pin distances and Angles
+========================
+
 [Brenda Paternoster] and [Martina Wolter-Kampmann] wrote references to estimate pin distances related to thread widths. The refrences are geared to traditional types of lace, you might need to adjust for your taste in experimental lace.
 
 [Brenda Paternoster]: http://paternoster.orpheusweb.co.uk/lace/threadsize/threadsize.html

@@ -1,3 +1,6 @@
+Droste effect
+=============
+
 - [Stitches](#stitches)
 - [Families of patterns to play with](#families-of-patterns-to-play-with)
 - [Tiling](#tiling)
@@ -13,7 +16,7 @@ When choosing one and the same stitch for each pair of diagrams you get a Droste
 In theory more levels are possible but a browser might easily choke.
 
 Stitches
-========
+--------
 
 The table shows the most interesting stitches and demonstrates some traditional patterns.
 The left column shows the official color coded diagrams for level 2.
@@ -111,7 +114,7 @@ draw a plait or something-pin-something like a simple stitch.
 </table>
 
 Families of patterns to play with
-=================================
+---------------------------------
 
 Following the linked stitches in the level 1 column above, you get some traditional grounds
 but you can play with stitches at the level 2 diagrams for variations.
@@ -146,7 +149,7 @@ Just two examples to illustrate the difference between a fish and lotus, each wi
 
 
 Tiling
-======
+------
 
 A matrix and its tiling arrangement defines the flow of pairs in a pattern.
 The red rectangles illustrate the tiling.
@@ -168,7 +171,7 @@ An odd number of rows won't work with a number of columns divisible by four.
 
 
 Offline-execution
-=================
+-----------------
 
 Off-line execution is faster, doesn't make a fuss if it takes a while,
 allows you to abort at your own discretion and allows as many levels as your system can handle.
@@ -177,7 +180,7 @@ install an environment to execute JavaScript without a browser and get familiar 
 Another option is downloading the code and adjust one of the demo classes to your needs.
 
 Numbers of patterns
-===================
+-------------------
 
 When limiting the choices to the three most common stitches
 we get 3+9+27 thread diagrams for one start pattern.

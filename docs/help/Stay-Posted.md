@@ -1,3 +1,6 @@
+Stay Posted
+===========
+
 To receive email alerts about discussions:
 * use the "watch" button almost on top of this page.
 

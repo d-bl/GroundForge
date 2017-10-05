@@ -1,3 +1,6 @@
+Examples
+========
+
 Various pages scattered around the web provide examples of patterns
 collected with different lines of approach.
 Each resource has individual examples, sections or pages on families of stitches such as

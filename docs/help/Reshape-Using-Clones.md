@@ -1,3 +1,6 @@
+Reshape Using clones
+====================
+
 _Customize a generated pattern to your own taste._
 
 Table of contents

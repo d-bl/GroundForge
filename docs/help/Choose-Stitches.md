@@ -1,3 +1,6 @@
+Choose Stitches
+===============
+
 - [Form fields](Form-fields)
 - [Stitch definitions](#stitch-definitions)
 - [Assign stitches](#assign-stitches)
@@ -10,7 +13,7 @@ This page is about choosing stitches for a pair diagram and its corresponding th
 Different pages use different form fields to choose stitches.
 
 Form fields
-===========
+-----------
 
 * The [main] page has one text field to define all stitches of a pattern.
   Hover with the cursor over stitches in the pair diagram
@@ -23,7 +26,7 @@ Form fields
 
 
 Stitch definitions
-==================
+------------------
 
 The definition of a stitch consists of a sequence  of the characters
 `c`, `t`, `l`, `r` for cross, twist, left-twist and right-twist. 
@@ -35,7 +38,7 @@ see issue [#51] for the technical details.
 
 
 Assign stitches
-===============
+---------------
 
 The form fields for stitches on the main page expect defaults and/or assignments. For example `A1=ctc` assigns a plain cloth stitch to id A1 which represents the upper left stitch of the pattern.
 No spaces are allowed around the equal sign between the id and stitch definition.
@@ -45,7 +48,7 @@ When a thread diagrams is used as pair diagram, you can use the keywords `cross`
 
 
 An Example
-==========
+----------
 
 The image below shows screen shot snippets of a pattern and its stitches.
 

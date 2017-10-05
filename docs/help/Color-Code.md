@@ -1,3 +1,6 @@
+Color Code
+==========
+
 - [Color code dialects](#color-code-dialects)
 - [Twist marks by GroundForge](#twist-marks-by-groundforge)
 - [Colors by GroundForge](#colors-by-groundforge)

@@ -1,3 +1,6 @@
+Whiting index
+=============
+
 *Jo Edkins* went through a lot of work to create an annotated online [index] on the grounds in
 '_A Lace Guide for Makers and Collectors_' by Gertrude Whiting which dates from 1920.
 The book is available with a higher resolution in four PDF's at the [Digital Archive] of the late professor Griswold,
@@ -38,7 +41,7 @@ Below the index is republished (with kind permission) once more with a couple of
 
 
 Under Construction
-==================
+------------------
 
 The page [history](/GroundForge/help/examples/Whiting-Index/_history)
 may show when a pattern was last fixed, and who authored the fix.

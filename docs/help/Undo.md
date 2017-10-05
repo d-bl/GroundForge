@@ -1,3 +1,6 @@
+Undo
+====
+
 Undo a pattern configuration
 ----------------------------
 
