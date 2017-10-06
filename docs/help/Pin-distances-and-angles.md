@@ -8,9 +8,9 @@ Pin distances and Angles
 
 Groundforge generates patterns at a fixed grid size, so you will have to resize with an SVG editor. A grid in the background can help to resize your design to the desired pin distance. InkScape is an SVG editor that provides a tool to check distances and angles. Both are shown in the screen shot below.
 
-![](/GroundForge/images/measure.png)
+![](images/measure.png)
 
 
 To resize with a mouse, InkScape requires holding down the control-key while dragging a corner. Otherwise the angle changes.
 
-![](/GroundForge/images/scale.png)
+![](images/scale.png)

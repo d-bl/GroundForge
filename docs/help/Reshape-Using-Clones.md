@@ -70,12 +70,12 @@ _On the right_: dots selected as objects, note the dashed rectangles around the 
 
 _At the bottom_: light blue dots and their line ends selected by their nodes. The toolbar indicates node mode with the second icon.
 
-[logo]: /GroundForge/images/logo-medium.png
-![](/GroundForge/images/reshape-using-clones.png)
+[logo]: /GroundForge/docs/images/logo-medium.png
+![](images/reshape-using-clones.png)
 
 Screenshots for CorelDraw X8
 ----------------------------
 
 Moving the blue dots reveals there was a duplicate dot that wasn't removed.
 
-![](/GroundForge/images/reshape-with-cdr.png)
+![](images/reshape-with-cdr.png)

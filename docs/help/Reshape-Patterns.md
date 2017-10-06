@@ -13,7 +13,7 @@ In some cases it may be relatively easy to see how one pattern is reshaped in an
 [GroundForge]: /GroundForge/
 [patterns]: https://github.com/d-bl/GroundForge/tree/gh-pages/patterns
 
-![](/GroundForge/images/reshape.png)
+![](images/reshape.png)
 
 The manipulated screenshot above reflects a manipulated pattern sheet. The generated sheets only use full grid positions. Other sheets may come with just a single pattern that does not look at all like the colour coded pair diagram. To create a regular patch that does look like the pair diagram (or any other shape you might prefer) you would have to do the reshaping by yourself by nudging the position of intersections.
 

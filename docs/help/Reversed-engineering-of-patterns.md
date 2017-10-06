@@ -24,7 +24,7 @@ to recognize it in the [TesseLace Index](Tesselace-Index).
 
 Let us the process with an example:
 
-![](/GroundForge/images/recognize.png)
+![](images/recognize.png)
 
 * left: the desired pattern (pattern 3086 of "Gründe mit System" by Uta Ulrich, stretched by Kitty Zuidgeest, 4F in mrs [Whiting index](Whiting-Index))
 * 2nd: simplified something-pin-something to plain stitches
@@ -54,7 +54,7 @@ diagonal connections span just one square, horizontal and vertical span one or t
 Lookup the digits or letters from the template and fill them in on the adjusted diagram.
 You might need more repeats than expected to figure out a tiling.
 
-![](/GroundForge/images/matrix-template.png)
+![](images/matrix-template.png)
 
 Note that 18 out of 449 patterns known on the [TesseLace Index](Tesselace-Index) page (including the pricking variations) may suffer from bug [#93](https://github.com/d-bl/GroundForge/issues/93).
 
@@ -74,7 +74,7 @@ If the upper left equals the lower right and the upper right equals bottom left,
 you can use the top half or bottom half as brick tile.
 It saves id's of stitches to assign.
 
-![](/GroundForge/images/matrix-example.png)
+![](images/matrix-example.png)
 
 
 ### With an SVG editor
@@ -82,7 +82,7 @@ It saves id's of stitches to assign.
 You can also use a general purpose editor like Adobe-Illustrator, CorelDraw or the free InkScape
 and the [SVG version] (right click to download) of the template.
 
-![](/GroundForge/images/matrix-template-object.png)
+![](images/matrix-template-object.png)
 
 The symbol in each template object has six free snapping points,
 two of them should be connected with other objects.
@@ -104,7 +104,7 @@ The red shapes collect stitches into a repeat with three rows of the diagonal ba
 
 The weaving base pattern has always a checkerboard tiling. The diagonal base pattern needs a brick tiling with an odd number of rows and a checkeboard tiling with an even number of rows.
 
-![](/GroundForge/images/disect-pairs-as-threads.png)
+![](images/disect-pairs-as-threads.png)
 
 The ID calculator of GroundForge can sometimes shift a column.
 The effect for this particular matrix is shown in the table below.
@@ -131,6 +131,6 @@ The result of the mistaken ID calculator:
 
 
 
-[SVG version]: /GroundForge/images/template.svg
-[variant]: /GroundForge/images/matrix-template2.png
+[SVG version]: images/template.svg
+[variant]: images/matrix-template2.png
 [snow flake]: /GroundForge/?tiles=bricks&matrix=L3H-AB-CD-%0D%0A6-2H-256-L%0D%0A-5----5---&stitches=ctc+H3%3Dctcttctc+A1%3Dctcll+B2%3Dctcll+E1%3Dctcrr+D2%3Dctcrr&rows=12&cols=14&left=1&up=1&transparency=0&#diagrams

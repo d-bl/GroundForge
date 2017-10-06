@@ -52,7 +52,7 @@ An Example
 
 The image below shows screen shot snippets of a pattern and its stitches.
 
-![](/GroundForge/images/stitch-ids.png)
+![](images/stitch-ids.png)
 
 * _Top left:_ the definition of a pattern created by one of the example page.
   The digits inside the circles determine the configuration of arrows arriving at that position. 

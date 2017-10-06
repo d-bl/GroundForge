@@ -8,7 +8,7 @@ Varying stitches and playing with downloadable diagrams renders a myriad of vari
 
 [GroundForge]: /GroundForge/
 [Jane Atkinson]: http://www.contemporarylace.com/
-[citation]: /GroundForge/images/bauhaus.png
+[citation]: images/bauhaus.png
 
 
 Approach
@@ -22,7 +22,7 @@ The diagram generator can relief much tedious work that would go into these step
 * Apply colors to individual threads in figure `c` to plan contrasting threads (thickness or color) in your work.
 * Download figure `d` and customize it with a third party editor into `e-h` or whatever your fancy.
 
-![](/GroundForge/images/intro.png)
+![](images/intro.png)
 
 The diagrams in figure `b` and `c` just provide instructions to create a patch of lace
 but don't inform you about the positions of the pins,

@@ -37,7 +37,7 @@ Precautions
 
 To prevent having to track down the proper version you can archive a page.
 Before linking to or archive the home page, make sure to click the
-![link](/GroundForge/images/link.png) button.
+![link](images/link.png) button.
 
 To be able to share any archived page you can use a general online service
 like the [web archive] (alias way back machine) which preserves

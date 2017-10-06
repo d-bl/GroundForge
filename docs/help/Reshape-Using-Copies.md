@@ -43,7 +43,7 @@ _Second row_: Assembling a new patch with four copies of the initial tile/repeat
 
 _At the bottom_: One dot per tile/repeat selected and nudged to another position.
 
-![](/GroundForge/images/reshape-using-copies.png)
+![](images/reshape-using-copies.png)
 
 Screenshots with Adobe Illustrator v2015-3.1
 --------------------------------------------
@@ -52,4 +52,4 @@ _Left_ Moving the fouth repeat into position
 
 _Right_ Moving corresponding dots after selecting them "select direct"
 
-![](/GroundForge/images/reshape-with-ai.png)
+![](images/reshape-with-ai.png)
