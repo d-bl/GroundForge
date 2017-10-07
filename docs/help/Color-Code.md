@@ -1,3 +1,8 @@
+---
+layout: default
+title: Color Code
+---
+
 Color Code
 ==========
 

@@ -18,9 +18,9 @@
 <form onsubmit="return false">
     <article>
         <a id="logo"
-           href="index.html"
+           href="/GroundForge/"
            title="Main page"
-        ><img src="images/logo-medium.png" alt="DiBL logo"/></a>
+        ><img src="/GroundForge/images/logo-medium.png" alt="DiBL logo"/></a>
         <h1>GroundForge</h1>
         <p><em>Choose patterns and stitches to generate diagrams for variations of bobbin lace grounds.</em></p>
         <p>
@@ -32,18 +32,18 @@
         <fieldset>
             <legend>Get started</legend>
             Use the
-            <a href="https://github.com/d-bl/GroundForge/wiki/Examples">examples</a>
-            (<a href="https://github.com/d-bl/GroundForge/wiki/Droste-effect">D</a>,
+            <a href="/GroundForge/help/examples">examples</a>
+            (<a href="/GroundForge/help/examples/Droste-effect">D</a>,
             <a href="https://github.com/MAETempels/MAE-gf/wiki">M</a>,
-            <a href="https://github.com/d-bl/GroundForge/wiki/TesseLace-Index">T</a>,
-            <a href="https://github.com/d-bl/GroundForge/wiki/Whiting-Index">W</a>)
+            <a href="/GroundForge/help/examples/TesseLace-Index">T</a>,
+            <a href="/GroundForge/help/examples/Whiting-Index">W</a>)
             to fill in the parameter form and perhaps stitches.
             Subsequently show the diagrams and play with stitch variations and/or thread colours.
         </fieldset>
         <fieldset id="matrixOpts">
-            <legend>Parameters <a href="https://github.com/d-bl/GroundForge/wiki/Parameters"
+            <legend>Parameters <a href="/GroundForge/help/Parameters"
                                   target="_blank"><img
-                    src="images/information-icon.png"></a></legend>
+                    src="/GroundForge/images/information-icon.png"></a></legend>
             <fieldset>
                 <legend>patch size</legend>
                 <p>
@@ -56,7 +56,7 @@
                 </p>
             </fieldset>
             <fieldset>
-                <legend>footside <img src="images/under-construction.png" title="under construction: displaces chosen stitches, might break or fix the pair/thread-diagrams"></legend>
+                <legend>footside <img src="/GroundForge/images/under-construction.png" title="under construction: displaces chosen stitches, might break or fix the pair/thread-diagrams"></legend>
                 <!-- footside move oposite to matrix content -->
                 <p>
                     <label for="shiftLeft">shift&nbsp;right:</label>
@@ -68,7 +68,7 @@
                 </p>
             </fieldset>
             <fieldset>
-                <legend>pattern <img src="images/graduation-cap.png" title="advanced/custom designs"></legend>
+                <legend>pattern <img src="/GroundForge/images/graduation-cap.png" title="advanced/custom designs"></legend>
                 <label for="tiles" style="width:2.6em;">tiling:</label>
                 <select name="tiles" id="tiles">
                     <option value="bricks" selected>Brick</option>
@@ -94,15 +94,15 @@
                href=""
             ><button id="permalink" type="button"
                      title="link to current pattern and stitches"
-            ><img src="images/link.png"></button></a>
-            <label for="permalink"><a href="https://github.com/d-bl/GroundForge/wiki/Undo"
-                                    target="_blank"><img src="images/information-icon.png"></a></label>
+            ><img src="/GroundForge/images/link.png"></button></a>
+            <label for="permalink"><a href="/GroundForge/help/Undo"
+                                    target="_blank"><img src="/GroundForge/images/information-icon.png"></a></label>
             <a href="index.html">
-            <a onmouseenter="this.href='http://web.archive.org/*/https://d-bl.github.io/GroundForge/'+createUrlArgs()"
+            <a onmouseenter="this.href='http://web.archive.org/*/https://GroundForge/'+createUrlArgs()"
                href="" target="_blank"
             ><button id="archivedlink" type="button"
                      title="future proof link: confirm the wayback machine to archive a snapshot of your pattern"
-            ><img src="images/clock.png"> <img src="images/link.png"></button></a>
+            ><img src="/GroundForge/images/clock.png"> <img src="/GroundForge/images/link.png"></button></a>
             <button type="button">reset</button></a>
             <!-- @formatter:on -->
         </p>
@@ -114,8 +114,8 @@
             Generate the diagrams of the selected pattern.
             The pair diagram will be a color coded version of the chosen pattern or stitch.
         </p>
-        <label for="s1">Stitches <a href="https://github.com/d-bl/GroundForge/wiki/Choose-Stitches"
-                                    target="_blank"><img src="images/information-icon.png"></a></label>
+        <label for="s1">Stitches <a href="/GroundForge/help/Choose-Stitches"
+                                    target="_blank"><img src="/GroundForge/images/information-icon.png"></a></label>
         <input id="s1"
                name="s"
                spellcheck="false"
@@ -144,8 +144,8 @@
             </tr>
             <tr>
                 <!-- @formatter:off -->
-                <td><a href="https://github.com/d-bl/GroundForge/wiki/Thread-Colors"
-                       target="_blank"><img src="images/information-icon.png"></a></td>
+                <td><a href="/GroundForge/help/Thread-Colors"
+                       target="_blank"><img src="/GroundForge/images/information-icon.png"></a></td>
                 <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c1"  class="jscolor" value="000000"/></td>
                 <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c2"  class="jscolor" value="000000"/></td>
                 <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c3"  class="jscolor" value="00CC00"/></td>
@@ -314,7 +314,7 @@
     &mdash;
     <a href="https://github.com/d-bl/GroundForge/issues?q=is%3Aissue+is%3Aopen+label%3A%22Browser+support%22"
        title="Modern desktop versions of Chrome, FireFox and Safari are fine&#013;Follow the link for issues in other situations."
-    ><img id="browsers" src="images/browsers.png"
+    ><img id="browsers" src="/GroundForge/images/browsers.png"
     ></a><!-- image assembled from http://www.iconarchive.com -->
     &mdash;
     Powered&nbsp;by:&nbsp;<a href="https://tesselace.com" title="Algorithmically designed lace tessellations"

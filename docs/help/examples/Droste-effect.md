@@ -1,3 +1,8 @@
+---
+layout: default
+title: Droste effect
+---
+
 Droste effect
 =============
 
@@ -28,7 +33,7 @@ draw a plait or something-pin-something like a simple stitch.
         <th>level 2</th>
         <th colspan="3">level 1</th>
         <th><a href="#tiling">tiling</a></th>
-        <th><a href="Whiting-Index">Whiting index</a></th>
+        <th><a href="/GroundForge/help/examples/Whiting-Index">Whiting index</a></th>
     </tr>
     <tr>
         <td></td>
@@ -121,7 +126,7 @@ but you can play with stitches at the level 2 diagrams for variations.
 You can create even more variations by mixing and mirroring stitches at the first step with [this page].
 Add or drop twists and/or switch diagonal with weaving too.
 
-You can find more examples of the following families in the [Tesselace Index](Tesselace-Index)
+You can find more examples of the following families in the [Tesselace Index](/GroundForge/help/examples/TesseLace-Index)
 and fully completed examples in the [MAE-gf](https://github.com/MAETempels/MAE-gf/wiki) pages.
 
 Mix
@@ -194,6 +199,6 @@ So you need to develop an intuition to take your picks.
 [#96]: https://github.com/d-bl/GroundForge/issues/96
 [#93]: https://github.com/d-bl/GroundForge/issues/93
 [GroundForge]: /GroundForge/
-[special]: /GroundForge/help/stitches.html
-[this page]: /GroundForge/help/stitches.html
+[special]: /GroundForge/stitches.html
+[this page]: /GroundForge/stitches.html
 [hoops]: https://github.com/d-bl/GroundForge/blob/master/docs/API.md

@@ -1,3 +1,8 @@
+---
+layout: default
+title: Examples
+---
+
 Examples
 ========
 
@@ -17,7 +22,7 @@ Explore, experiment, play and discover!
   The diagrams are collected from [tesseLace.com],
   resulting from Ph.D research on _Algorithmically designed lace tessellations_.
   When following an image link you will discover one or more patterns from the tesselace [slide show].
-* The [Droste effect](Droste-effect) page (thread diagrams used as pair diagrams)
+* The [Droste effect](/GroundForge/help/examples/Droste-effect) page (thread diagrams used as pair diagrams)
   starts with some ready-to-show traditional grounds
   and explains with a few families of patterns
   how to mix and match you own variations with a [simple form].
@@ -32,11 +37,11 @@ Explore, experiment, play and discover!
   Fixing our non-native grammar would be much appreciated.
 
 
-[GroundForge]: index.html
+[GroundForge]: /GroundForge/index.html
 [simple form]: /GroundForge/stitches.html
-[Tesselace index]: TesseLace-Index
+[Tesselace index]: /GroundForge/help/examples/TesseLace-Index
 [tesseLace.com]: https://tesselace.com
 [slide show]: https://tesselace.com/tools/inkscape-extension/
-[Whiting index]: Whiting-Index
+[Whiting index]: /GroundForge/help/examples/Whiting-Index
 [MAE-gf]: https://github.com/MAETempels/MAE-gf/wiki
 [discussion]: https://github.com/d-bl/GroundForge/issues/50

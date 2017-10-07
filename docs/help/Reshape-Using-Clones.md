@@ -1,3 +1,8 @@
+---
+layout: default
+title: Reshape Using clones
+---
+
 Reshape Using clones
 ====================
 
@@ -70,12 +75,12 @@ _On the right_: dots selected as objects, note the dashed rectangles around the 
 
 _At the bottom_: light blue dots and their line ends selected by their nodes. The toolbar indicates node mode with the second icon.
 
-[logo]: /GroundForge/docs/images/logo-medium.png
-![](images/reshape-using-clones.png)
+[logo]: /GroundForge/images/logo-medium.png
+![](/GroundForge/help/images/reshape-using-clones.png)
 
 Screenshots for CorelDraw X8
 ----------------------------
 
 Moving the blue dots reveals there was a duplicate dot that wasn't removed.
 
-![](images/reshape-with-cdr.png)
+![](/GroundForge/help/images/reshape-with-cdr.png)

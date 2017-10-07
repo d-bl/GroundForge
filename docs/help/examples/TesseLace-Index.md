@@ -1,3 +1,8 @@
+---
+layout: default
+title: Tesselace Index
+---
+
 Tesselace Index
 ===============
 
@@ -9,7 +14,7 @@ where you can choose stitches for a color coded pair diagram and thread diagram.
 
 [TesseLace.com]: https://tesselace.com
 [slide show]: https://tesselace.com/tools/inkscape-extension/
-[GroundForge]: /GroundForge
+[GroundForge]: /GroundForge/
 
 - [Common Grounds](#common-grounds)
 - [Fish and Lotus variations](#fish-and-lotus-variations)
@@ -27,7 +32,7 @@ Common Grounds
 
 You might need to change some angles and distances to recognize a ground. See this [animation] and the reshape pages in the sidebar.
 
-[animation]: /GroundForge/animation/GIFCreator-me.gif
+[animation]: /GroundForge/help/animation/GIFCreator-me.gif
 
 [![](tl//181.png)](/GroundForge/sheet.html?patch=88%2011;bricks&patch=66%2022;bricks&patch=88%2099%2011%2000;bricks&patch=66%2011%2088%2022;bricks&patch=66%2099%2022%2000;bricks)
 [![](tl//214.png)](/GroundForge/sheet.html?patch=5-%20-5;checker&patch=5353%205353%205-5-%20-5-5;checker&patch=5632%2056-2%205-5-%20-535;checker&patch=53%205-%20-5%205-;bricks&patch=44%2077%2044%2077;bricks&patch=44%2044%2077%2077;bricks&patch=66%2088%2066%2011;bricks&patch=66%2066%2088%2011;checker&patch=66%2066%2099%2000;checker&patch=6;checker&patch=566-%2066-5%206-56%20-566;checker&patch=53%2053%2053%205-;bricks&patch=5663%205663;checker&patch=53%205-;bricks&patch=563%20563%20563;checker&patch=53%2053;checker&patch=5632%205632;checker&patch=5353%205353;bricks)

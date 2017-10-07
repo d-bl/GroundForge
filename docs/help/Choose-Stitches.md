@@ -1,11 +1,15 @@
+---
+layout: default
+title: Choose Stitches
+---
+
 Choose Stitches
 ===============
 
-- [Form fields](Form-fields)
+- [Form fields](#Form-fields)
 - [Stitch definitions](#stitch-definitions)
 - [Assign stitches](#assign-stitches)
 - [An Example](#an-example)
-- [Buttons and Browser History](#buttons-and-browser-history)
 
 <sub><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></sub>
 

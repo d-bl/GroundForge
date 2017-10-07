@@ -3,9 +3,9 @@ _A toolbox to design bobbin lace grounds with matching diagrams._
 DEMO's
 ======
 
-A [dressed up](https://d-bl.github.io/GroundForge/) version and a dressed down [docs/API](https://d-bl.github.io/GroundForge/API) version. The latter shows a starting point to configure your own web interface or embed just some of the diagrams on your own web page, though you may want to start by injecting the `show-graph.js` of the dressed up version into the dressed down version. See also the [API] for other environments than a web-browser.
+A [dressed up](https://d-bl.github.io/GroundForge/) version and a dressed down [API](/GroundForge/API/index.html) version. The latter shows a starting point to configure your own web interface or embed just some of the diagrams on your own web page, though you may want to start by injecting the `show-graph.js` of the dressed up version into the dressed down version. See also the [API] for other environments than a web-browser.
 
-[API]: docs/API.md
+[API]: /GroundForge/docs/API.md
 [![Build Status](https://travis-ci.org/d-bl/GroundForge.svg?branch=master)](https://travis-ci.org/d-bl/GroundForge) 
 Note that just building does not copy the compiled code into a local version of the demo's.
 

@@ -1,3 +1,8 @@
+---
+layout: default
+title: Advanced Design
+---
+
 Reversed engineering of patterns
 ================================
 
@@ -14,27 +19,27 @@ Different methods allow to reproduce a pattern with GroundForge.
 Recognize patterns
 ------------------
 
-The [example pages](Examples) are the easiest way to start experimenting with grounds.
+The [example pages](examples) are the easiest way to start experimenting with grounds.
 The generated pair diagrams don't care about plaits and something-pin-something
 and draw them as plain cloth stitches.
 Furthermore are the distances between stitches optimized to some average.
 So when trying to start with some familiar pattern to make variations,
 you may have to simplify, mirror and distort it
-to recognize it in the [TesseLace Index](Tesselace-Index). 
+to recognize it in the [TesseLace Index](/GroundForge/help/examples/TesseLace-Index). 
 
 Let us the process with an example:
 
 ![](images/recognize.png)
 
-* left: the desired pattern (pattern 3086 of "Gründe mit System" by Uta Ulrich, stretched by Kitty Zuidgeest, 4F in mrs [Whiting index](Whiting-Index))
+* left: the desired pattern (pattern 3086 of "Gründe mit System" by Uta Ulrich, stretched by Kitty Zuidgeest, 4F in mrs [Whiting index](/GroundForge/help/examples/Whiting-Index))
 * 2nd: simplified something-pin-something to plain stitches
 * 3rd: snapping stitches to grid positions
 * 4th: a partially squeezed version also snapping to grid positions
-* top right: the matching pattern from the [TesseLace Index](Tesselace-Index)
-* bottom right: a flipped version of the stitches on the [droste](Droste-effect) page also matches
+* top right: the matching pattern from the [TesseLace Index](/GroundForge/help/examples/TesseLace-Index)
+* bottom right: a flipped version of the stitches on the [droste](/GroundForge/help/examples/Droste-effect) page also matches
 
 Snapping to a rectangular grid might not help to recognize the corresponding pattern in the index.
-See also the trick with colors on the [Reshape Patterns](Reshape-Patterns) page,
+See also the trick with colors on the [Reshape Patterns](/GroundForge/help/Reshape-Patterns) page,
 we'll get back to snapping further down the page.
 
 Simplifying stitches might need some out of the box thinking as shown with the Binche snow-flakes under [tiling](#tiling)
@@ -56,7 +61,7 @@ You might need more repeats than expected to figure out a tiling.
 
 ![](images/matrix-template.png)
 
-Note that 18 out of 449 patterns known on the [TesseLace Index](Tesselace-Index) page (including the pricking variations) may suffer from bug [#93](https://github.com/d-bl/GroundForge/issues/93).
+Note that 18 out of 449 patterns known on the [TesseLace Index](/GroundForge/help/examples/TesseLace-Index) page (including the pricking variations) may suffer from bug [#93](https://github.com/d-bl/GroundForge/issues/93).
 
 ### Tiling
 
@@ -74,7 +79,7 @@ If the upper left equals the lower right and the upper right equals bottom left,
 you can use the top half or bottom half as brick tile.
 It saves id's of stitches to assign.
 
-![](images/matrix-example.png)
+![](/GroundForge/help/images/matrix-example.png)
 
 
 ### With an SVG editor
@@ -82,7 +87,7 @@ It saves id's of stitches to assign.
 You can also use a general purpose editor like Adobe-Illustrator, CorelDraw or the free InkScape
 and the [SVG version] (right click to download) of the template.
 
-![](images/matrix-template-object.png)
+![](/GroundForge/help/images/matrix-template-object.png)
 
 The symbol in each template object has six free snapping points,
 two of them should be connected with other objects.
@@ -131,6 +136,6 @@ The result of the mistaken ID calculator:
 
 
 
-[SVG version]: images/template.svg
-[variant]: images/matrix-template2.png
+[SVG version]: /GroundForge/help/images/template.svg
+[variant]: /GroundForge/help/images/matrix-template2.png
 [snow flake]: /GroundForge/?tiles=bricks&matrix=L3H-AB-CD-%0D%0A6-2H-256-L%0D%0A-5----5---&stitches=ctc+H3%3Dctcttctc+A1%3Dctcll+B2%3Dctcll+E1%3Dctcrr+D2%3Dctcrr&rows=12&cols=14&left=1&up=1&transparency=0&#diagrams

@@ -1,3 +1,8 @@
+---
+layout: default
+title: Whiting index
+---
+
 Whiting index
 =============
 
@@ -18,7 +23,7 @@ Below the index is republished (with kind permission) once more with a couple of
   A superscript of two means you have to show two levels of diagrams to get the pattern.
 
 * **x**: Lower case links
-  go to sets of [TesseLace](TesseLace-Index) patterns,
+  go to sets of [TesseLace](/GroundForge/help/examples/TesseLace-Index) patterns,
   in turn linking to a diagram page where you can choose stitches.
   Each pattern in such a set can be morphed into the others by nudging pins.
   Only four of the lower-case links ([c],[t],[k],[v]) cover more than a third of the grounds below, a ratio that illustrates
@@ -33,7 +38,7 @@ Below the index is republished (with kind permission) once more with a couple of
   Picots and tallies are also not supported but they are too obvious to require such an annotation.
 
 
-[reversed engineering]: Reversed-engineering-of-patterns
+[reversed engineering]: /GroundForge/Reversed-engineering-of-patterns
 [Marian Tempels]: https://github.com/MAETempels
 [index]: http://gwydir.demon.co.uk/jo/lace/whiting/index.htm#picindex
 [scan]: https://www2.cs.arizona.edu/patterns/weaving/books/whiting.jpg
@@ -43,9 +48,10 @@ Below the index is republished (with kind permission) once more with a couple of
 Under Construction
 ------------------
 
-The page [history](/GroundForge/help/examples/Whiting-Index/_history)
+The page [history](https://github.com/jo-pol/GroundForge/commits/master/docs/help/examples/Whiting-Index.md)
+(and older [changes](https://github.com/d-bl/GroundForge/wiki/Whiting-Index/_history))
 may show when a pattern was last fixed, and who authored the fix.
-The maintainer needs to fill in the _edit note_ to list the changed/added patterns.
+For that purpose, the maintainer needs to fill in the _edit note_ to list the changed/added patterns.
 
 
 [c]: /GroundForge/sheet.html?patch=88%0A11;bricks&patch=66%0A22;bricks&patch=88%0A99%0A11%0A00;bricks&patch=66%0A11%0A88%0A22;bricks&patch=66%0A99%0A22%0A00;bricks

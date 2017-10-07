@@ -1,3 +1,8 @@
+---
+layout: default
+title: Pin distances and Angles
+---
+
 Pin distances and Angles
 ========================
 

@@ -1,3 +1,8 @@
+---
+layout: default
+title: Reshape Patterns
+---
+
 Reshape Patterns
 ================
 
@@ -6,7 +11,7 @@ Occasionally multiple colors are moved together to preserve symmetry.
 The animation uses some of [these](/GroundForge/sheet.html?patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks) TesseLace patterns.
 For variants not in the animation, the figure with colored dots would need to span a larger section of the pattern to allow a transformation. 
 
-![](/GroundForge/animation/GIFCreator-me.gif)
+![](/GroundForge/help/animation/GIFCreator-me.gif)
 
 In some cases it may be relatively easy to see how one pattern is reshaped in another one. For example in the first row below the hexagon of the first variant is reshaped in to a brick for the second variant and the center of the bow-tie in the second variant is lowered for the third variant. For the second row it is harder to see. Applying the same color to shapes surrounded with the same number of line segments can help to identify the transition. Note that an edge of a shape may span multiple line segments.
 

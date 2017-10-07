@@ -1,3 +1,8 @@
+---
+layout: default
+title: Reshape using copies
+---
+
 Reshape using copies
 ====================
 
