@@ -5,13 +5,16 @@ matrix:
       jdk: oraclejdk8
       addons:
         apt:
-          packages: oracle-java8-installer
+          packages:
+            - oracle-java8-installer
       script: mvn clean verify
 
     - language: ruby
-      rvm: 2.3.3
+      rvm:
+      - 2.3.3
       sudo: false
       env:
-        global: NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+        global:
+        - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
       install: gem install jekyll html-proofer jekyll-theme-architect jekyll-relative-links
       script: jekyll build --source docs && htmlproofer ./_site --disable-external --assume_extension --empty_alt_ignore --url-swap "\/GroundForge\/:/" --url-ignore "#"
