@@ -40,7 +40,7 @@ diagram.showGraph = function(args) {
         .attr("onblur","this.href='#fullscreen'")
         .attr("onmousedown","setDownloadContent(this,'" + containerID + "')")
       .append("img","")
-        .attr("src","/GroundForge/help/images/fullscreen.jpg")
+        .attr("src","/GroundForge/images/fullscreen.jpg")
     controls.append("a")
         .attr("download",containerID + "-diagram.svg")
         .attr("onblur","this.href='#download'")
@@ -49,7 +49,7 @@ diagram.showGraph = function(args) {
         .attr("title","download")
         .attr("onmousedown","setDownloadContent(this,'" + containerID  + "')")
       .append("img","")
-        .attr("src","/GroundForge/help/images/download.jpg")
+        .attr("src","/GroundForge/images/download.jpg")
 
     // zooming and panning
 
@@ -72,13 +72,13 @@ diagram.showGraph = function(args) {
         .attr("href","#zoom-in")
         .attr("title","zoom in")
         .attr("onclick","return false")
-      .append("img","").attr("src","/GroundForge/help/images/zoom-in.jpg").on("click", zoomIn)
+      .append("img","").attr("src","/GroundForge/images/zoom-in.jpg").on("click", zoomIn)
     controls
       .append("a")
         .attr("href","#zoom-out")
         .attr("title","zoom out")
         .attr("onclick","return false")
-      .append("img","").attr("src","/GroundForge/help/images/zoom-out.jpg").on("click", zoomOut)
+      .append("img","").attr("src","/GroundForge/images/zoom-out.jpg").on("click", zoomOut)
 
     // bind SVG with data
 
