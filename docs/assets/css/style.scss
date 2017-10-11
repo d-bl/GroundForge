@@ -1,0 +1,9 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* stitches form */
+#stitch-form input { width: 100%; }
+.hide { display: none; }
+.show { display: block; }

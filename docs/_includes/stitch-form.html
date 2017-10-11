@@ -1,0 +1,95 @@
+<form onsubmit="return false" id="stitch-form">
+    <label for="base">Pattern</label>
+    <select id="base" onchange="setVisibility()">
+        <option value="-5;bricks;7;5;0;0&s3=&s2=cross=ctct,twist=ct&s1=" selected>diagonal 1x2 bricks</option>
+        <option value="5-5-%0D-5-5;bricks;9;5;0;0&s3=&s2=cross=ctct,twist=ct&s1=">diagonal 2x4 bricks</option>
+        <option value="" disabled>—————————</option>
+        <option value="5-%0D-5;checker;8;5;0;0&s3=&s2=cross=ctct,twist=ct&s1=">diagonal 2x2 checker</option>
+        <option value="5-5-%0D-5-5;checker;9;5;0;0&s3=&s2=cross=ctct,twist=ct&s1=">diagonal 2x4 checker</option>
+        <option value="5-%0D-5%0D5-%0D-5;checker;9;5;0;0&s3=&s2=cross=ctct,twist=ct&s1=">diagonal 4x2 checker</option>
+        <option value="5-5-%0D-5-5%0D5-5-%0D-5-5;checker;10;6;0;0&s3=&s2=cross=ctct,twist=ct&s1=">diagonal 4x4 checker</option>
+        <option value="" disabled>—————————</option>
+        <option value="88%0D11;bricks;5;5;0;0&s3=&s2=cross=ctct,twist=ct&s1=">weaving 2x2 bricks</option>
+        <option value="8888%0D1111;bricks;6;6;0;0&s3=&s2=cross=ctct,twist=ct&s1=">weaving 2x4 bricks</option>
+        <option value="88%0D11%0D88%0D11;bricks;6;6;0;0&s3=&s2=cross=ctct,twist=ct&s1=">weaving 4x2 bricks</option>
+        <option value="8888%0D1111%0D8888%0D1111;bricks;6;6;0;0&s3=&s2=cross=ctct,twist=ct&s1=">weaving 4x4 bricks</option>
+        <option value="" disabled>—————————</option>
+        <option value="8%0D1;checker;5;5;0;0&s3=&s2=cross=ctct,twist=ct&s1=">weaving 2x1 checker</option>
+        <option value="88%0D11;checker;5;5;0;0&s3=&s2=cross=ctct,twist=ct&s1=">weaving 2x2 checker</option>
+        <option value="888%0D111;checker;5;5;0;0&s3=&s2=cross=ctct,twist=ct&s1=">weaving 2x3 checker</option>
+        <option value="8888%0D1111;checker;6;6;0;0&s3=&s2=cross=ctct,twist=ct&s1=">weaving 2x4 checker</option>
+        <option value="8%0D1%0D8%0D1;checker;5;5;0;0&s3=&s2=cross=ctct,twist=ct&s1=">weaving 4x1 checker</option>
+        <option value="88%0D11%0D88%0D11;checker;6;6;0;0&s3=&s2=cross=ctct,twist=ct&s1=">weaving 4x2 checker</option>
+        <option value="888%0D111%0D888%0D111;checker;8;4;0;0&s3=&s2=cross=ctct,twist=ct&s1=">weaving 4x3 checker</option>
+        <option value="8888%0D1111%0D8888%0D1111;checker;6;6;0;0&s3=&s2=cross=ctct,twist=ct&s1=">weaving 4x4 checker</option>
+        <option value="8888%0D1111%0D8888%0D1111%0D8888%0D1111;checker;6;6;0;0&s3=&s2=cross=ctct,twist=ct&s1=">weaving 6x4 checker</option>
+    </select>
+    <a href="/GroundForge/help/examples/Droste-effect#tiling" target="_blank"><img src="/GroundForge/images/information-icon.png"></a>
+    <br>
+    <fieldset>
+        <legend>Stitches</legend>
+        <table>
+            <tr>
+                <td><input id="r1-c1" name="A1" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r1-c2" name="B1" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r1-c3" name="C1" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r1-c4" name="D1" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r1-c5" name="E1" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r1-c6" name="F1" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r1-c7" name="G1" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r1-c8" name="H1" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+            </tr>
+            <tr>
+                <td><input id="r2-c1" name="A2" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r2-c2" name="B2" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r2-c3" name="C2" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r2-c4" name="D2" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r2-c5" name="E2" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r2-c6" name="F2" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r2-c7" name="G2" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r2-c8" name="H2" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+            </tr>
+            <tr>
+                <td><input id="r3-c1" name="A3" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r3-c2" name="B3" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r3-c3" name="C3" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r3-c4" name="D3" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r3-c5" name="E3" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r3-c6" name="F3" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r3-c7" name="G3" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r3-c8" name="H3" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+            </tr>
+            <tr>
+                <td><input id="r4-c1" name="A4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r4-c2" name="B4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r4-c3" name="C4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r4-c4" name="D4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r4-c5" name="E4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r4-c6" name="F4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r4-c7" name="G4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r4-c8" name="H4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+            </tr>
+            <tr>
+                <td><input id="r5-c1" name="A4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r5-c2" name="B4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r5-c3" name="C4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r5-c4" name="D4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r5-c5" name="E4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r5-c6" name="F4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r5-c7" name="G4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r5-c8" name="H4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+            </tr>
+            <tr>
+                <td><input id="r6-c1" name="A4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r6-c2" name="B4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r6-c3" name="C4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r6-c4" name="D4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r6-c5" name="E4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r6-c6" name="F4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+                <td><input id="r6-c7" name="G4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch show" onchange="setVisibility()"></td>
+                <td><input id="r6-c8" name="H4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="stitch hide" onchange="setVisibility()"></td>
+            </tr>
+        </table>
+    </fieldset>
+    <a id="link" target="_blank" href="#"><button type="button">Go</button></a>
+</form>

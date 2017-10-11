@@ -17,7 +17,7 @@ function setVisibility() {
             + "=" + document.getElementById(id).value.trim() + " "
     }
   }
-  document.getElementById("link").href = "index.html?m="
+  document.getElementById("link").href = "/GroundForge/index.html?m="
    + document.getElementById("base").value
    + stitches
 }
@@ -28,3 +28,4 @@ function setEnabled(id, enabled) {
                 : x.className.replace("show","hide")
                 )
 }
+

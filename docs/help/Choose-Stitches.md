@@ -6,26 +6,34 @@ title: Choose Stitches
 Choose Stitches
 ===============
 
-- [Form fields](#Form-fields)
 - [Stitch definitions](#stitch-definitions)
 - [Assign stitches](#assign-stitches)
 - [An Example](#an-example)
 
-This page is about choosing stitches for a pair diagram and its corresponding thread diagram.
-Different pages use different form fields to choose stitches.
+This form sets stitches for the first pair of diagrams on the main page.
+The pattern choice reveals the required fields in the stitches form,
+The pattern is also filled out in the parameters form.
+Subsequent paragraphs explain how to set the stitches field manually
+for not covered patterns and dimensions.
 
-Form fields
------------
+<script>{% include stitches.js %}</script>
+{% include stitch-form.html %}
+<script>setVisibility()</script>
 
-* The [main] page has one text field to define all stitches of a pattern.
-  Hover with the cursor over stitches in the pair diagram
-  and your browser should show a tool tip with
-  an id and the stitch currently assigned to the id.
-* The [stitches] page breaks the text field down into one field per stitch.
-  A cheat-sheet provides a visual representation for some less trivial stitches.
-  The page assembles the content for the first stitch field of the main page.
-  The page works only for two patterns and a limited set of dimensions.
+Below some less trivial stitches to copy-paste into the form.
+A second string is the mirrored version of the stitch.
 
+![](/GroundForge/help/stitches/crclct.png) crclct 
+
+![](/GroundForge/help/stitches/clcrclc.png) clcrclc, crclcrc
+
+![](/GroundForge/help/stitches/ctctc.png) ctctc
+
+![](/GroundForge/help/stitches/ctclctc.png) ctclctc, ctcrctc
+
+![](/GroundForge/help/stitches/ctclcrctc.png) ctclcrctc, ctcrclctc
+
+![](/GroundForge/help/stitches/ctcttctc.png) ctcttctc
 
 Stitch definitions
 ------------------
