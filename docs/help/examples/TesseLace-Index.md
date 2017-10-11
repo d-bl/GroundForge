@@ -21,8 +21,6 @@ where you can choose stitches for a color coded pair diagram and thread diagram.
 - [Virgin or Rose and bias variations](#virgin-or-rose-and-bias-variations)
 - [Others](#others)
 
-<sub><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></sub>
-
 Note that the choice to put a pattern in a group may be arbitrary, duplicating too many in multiple groups would make the page too slow.
 
 _Edit hint_: copy the link location of the image you want to move, start editing, use the browser search to find the link location.

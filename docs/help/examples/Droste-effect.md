@@ -127,7 +127,7 @@ You can create even more variations by mixing and mirroring stitches at the firs
 Add or drop twists and/or switch diagonal with weaving too.
 
 You can find more examples of the following families in the [Tesselace Index](/GroundForge/help/examples/TesseLace-Index)
-and fully completed examples in the [MAE-gf](https://github.com/MAETempels/MAE-gf/wiki) pages.
+and fully completed examples in the [MAE-gf](https://maetempels.github.io/MAE-gf/) pages.
 
 Mix
 ![](/GroundForge/help/stitches/crclct.png) with ![](/GroundForge/help/stitches/ctct.png)

@@ -11,10 +11,6 @@ Parameters
   * [Pattern: Matrix and tiling](#pattern-matrix-and-tiling)
   * [Illustration](#illustration)
 
-
-<sub><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></sub>
-
-
 This page is about the sets of fields in the parameters form on the main [GroundForge] page.
 
 [GroundForge]: /GroundForge/

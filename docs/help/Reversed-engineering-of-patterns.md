@@ -14,8 +14,6 @@ Different methods allow to reproduce a pattern with GroundForge.
   * [With an SVG editor](#with-an-svg-editor)
 - [Droste method](#Droste-method)
 
-<sub><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></sub>
-
 Recognize patterns
 ------------------
 

@@ -11,8 +11,6 @@ Choose Stitches
 - [Assign stitches](#assign-stitches)
 - [An Example](#an-example)
 
-<sub><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></sub>
-
 This page is about choosing stitches for a pair diagram and its corresponding thread diagram.
 Different pages use different form fields to choose stitches.
 
