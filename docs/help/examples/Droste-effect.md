@@ -199,6 +199,6 @@ So you need to develop an intuition to take your picks.
 [#96]: https://github.com/d-bl/GroundForge/issues/96
 [#93]: https://github.com/d-bl/GroundForge/issues/93
 [GroundForge]: /GroundForge/
-[special]: /GroundForge/stitches.html
-[this page]: /GroundForge/stitches.html
+[special]: /GroundForge/help/stitches.html
+[this page]: /GroundForge/help/stitches.html
 [hoops]: https://github.com/d-bl/GroundForge/blob/master/docs/API.md
