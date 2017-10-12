@@ -23,17 +23,17 @@ for not covered patterns and dimensions.
 Below some less trivial stitches to copy-paste into the form.
 A second string is the mirrored version of the stitch.
 
-![](/GroundForge/help/stitches/crclct.png) crclct 
+![](stitches/crclct.png) crclct 
 
-![](/GroundForge/help/stitches/clcrclc.png) clcrclc, crclcrc
+![](stitches/clcrclc.png) clcrclc, crclcrc
 
-![](/GroundForge/help/stitches/ctctc.png) ctctc
+![](stitches/ctctc.png) ctctc
 
-![](/GroundForge/help/stitches/ctclctc.png) ctclctc, ctcrctc
+![](stitches/ctclctc.png) ctclctc, ctcrctc
 
-![](/GroundForge/help/stitches/ctclcrctc.png) ctclcrctc, ctcrclctc
+![](stitches/ctclcrctc.png) ctclcrctc, ctcrclctc
 
-![](/GroundForge/help/stitches/ctcttctc.png) ctcttctc
+![](stitches/ctcttctc.png) ctcttctc
 
 Stitch definitions
 ------------------
