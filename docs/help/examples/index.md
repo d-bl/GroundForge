@@ -38,7 +38,7 @@ Explore, experiment, play and discover!
 
 
 [GroundForge]: /GroundForge/index.html
-[simple form]: /GroundForge/help/stitches.html
+[simple form]: /GroundForge/help/Choose-Stitches.html
 [Tesselace index]: /GroundForge/help/examples/TesseLace-Index
 [tesseLace.com]: https://tesselace.com
 [slide show]: https://tesselace.com/tools/inkscape-extension/
