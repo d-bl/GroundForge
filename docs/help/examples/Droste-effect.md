@@ -37,8 +37,8 @@ draw a plait or something-pin-something like a simple stitch.
     </tr>
     <tr>
         <td></td>
-        <td><img src="/GroundForge/help/stitches/ct.png"></td>
-        <td><img src="/GroundForge/help/stitches/ct-color1.png"></td>
+        <td><img src="stitches/ct.png"></td>
+        <td><img src="stitches/ct-color1.png"></td>
         <td><a href="/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=ct&s2=ctct&s3=&#diagrams"
         >ct</a></td>
         <td>diagonal 1x2</td>
@@ -46,8 +46,8 @@ draw a plait or something-pin-something like a simple stitch.
     </tr>
     <tr>
         <td></td>
-        <td><img src="/GroundForge/help/stitches/ctc-ctcr.png"></td>
-        <td><img src="/GroundForge/help/stitches/ctc-ctcr-color.png"></td>
+        <td><img src="stitches/ctc-ctcr.png"></td>
+        <td><img src="stitches/ctc-ctcr-color.png"></td>
         <td>
             <a href="/GroundForge/index.html?m=8%0A1;checker;8;6;0;0&s1=A1%3Dctc,A2%3Dctcr&s2=ctc,A24%3Dtctct,A12%3Dctcr,A13%3Dctcr,A20%3Dctc,A21%3Dctcl,A23%3Dctcl&s3=ctct"
             >ctc-ctcr</a></td>
@@ -55,17 +55,17 @@ draw a plait or something-pin-something like a simple stitch.
         <td><a href="http://gwydir.demon.co.uk/jo/lace/whiting/page150.htm">D16</a></td>
     </tr>
     <tr>
-        <td><img src="/GroundForge/help/stitches/ctct-color2a.png"> <img src="/GroundForge/help/stitches/ctct-color2b.png"></td>
-        <td><img src="/GroundForge/help/stitches/ctct.png"></td>
-        <td><img src="/GroundForge/help/stitches/ctct-color1a.png"> <img src="/GroundForge/help/stitches/ctct-color1b.png"></td>
+        <td><img src="stitches/ctct-color2a.png"> <img src="stitches/ctct-color2b.png"></td>
+        <td><img src="stitches/ctct.png"></td>
+        <td><img src="stitches/ctct-color1a.png"> <img src="stitches/ctct-color1b.png"></td>
         <td><a href="/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=ctct&s2=cross=ctct,twist=ct&s3=&#diagrams"
         >ctct</a></td>
         <td>diagonal 1x2</td>
         <td>variant of <a href="http://gwydir.demon.co.uk/jo/lace/whiting/page71.htm">A2</a> and <a href="http://gwydir.demon.co.uk/jo/lace/whiting/page95.htm">B2</a></td>
     </tr>
     <tr>
-        <td><img src="/GroundForge/help/stitches/crclct-color2.png"></td>
-        <td><img src="/GroundForge/help/stitches/crclct.png"></td>
+        <td><img src="stitches/crclct-color2.png"></td>
+        <td><img src="stitches/crclct.png"></td>
         <td></td>
         <td><a href="/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=crclct&s2=ctct,B12=ct,B15=ct,B16=ct&s3=&#diagrams"
         >crclct</a></td>
@@ -73,8 +73,8 @@ draw a plait or something-pin-something like a simple stitch.
         <td>mirrored version of <a href="http://gwydir.demon.co.uk/jo/lace/whiting/page139.htm">D6</a></td>
     </tr>
     <tr>
-        <td><img src="/GroundForge/help/stitches/clcrclc-color2.png"></td>
-        <td><img src="/GroundForge/help/stitches/clcrclc.png"></td>
+        <td><img src="stitches/clcrclc-color2.png"></td>
+        <td><img src="stitches/clcrclc.png"></td>
         <td></td>
         <td>
             <a href="/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=clcrclc&s2=ctc,B13=ctcrrctcrr,B15=ctcll,B16=ctctt&s3=&#diagrams"
@@ -84,7 +84,7 @@ draw a plait or something-pin-something like a simple stitch.
     </tr>
     <tr>
         <td></td>
-        <td><img src="/GroundForge/help/stitches/ctctc.png"></td>
+        <td><img src="stitches/ctctc.png"></td>
         <td></td>
         <td>
             <a href="/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=ctctc&s2=ctc,B14=ctcll,B15=ctcrr,B16=ctctt&s3=&#diagrams"
@@ -94,7 +94,7 @@ draw a plait or something-pin-something like a simple stitch.
     </tr>
     <tr>
         <td></td>
-        <td><img src="/GroundForge/help/stitches/ctclctc.png"></td>
+        <td><img src="stitches/ctclctc.png"></td>
         <td></td>
         <td>ctclctc</td>
         <td></td>
@@ -102,7 +102,7 @@ draw a plait or something-pin-something like a simple stitch.
     </tr>
     <tr>
         <td></td>
-        <td><img src="/GroundForge/help/stitches/ctclcrctc.png"></td>
+        <td><img src="stitches/ctclcrctc.png"></td>
         <td></td>
         <td>ctclcrctc</td>
         <td></td>
@@ -110,8 +110,8 @@ draw a plait or something-pin-something like a simple stitch.
     </tr>
     <tr>
         <td></td>
-        <td><img src="/GroundForge/help/stitches/ctcttctc.png"></td>
-        <td><img src="/GroundForge/help/stitches/ctcttctc-color1.png"></td>
+        <td><img src="stitches/ctcttctc.png"></td>
+        <td><img src="stitches/ctcttctc-color1.png"></td>
         <td>ctcttctc</td>
         <td></td>
         <td></td>
@@ -126,11 +126,11 @@ but you can play with stitches at the level 2 diagrams for variations.
 You can create even more variations by mixing and mirroring stitches at the first step with [this page].
 Add or drop twists and/or switch diagonal with weaving too.
 
-You can find more examples of the following families in the [Tesselace Index](/GroundForge/help/examples/TesseLace-Index)
+You can find more examples of the following families in the [Tesselace Index](TesseLace-Index)
 and fully completed examples in the [MAE-gf](https://maetempels.github.io/MAE-gf/) pages.
 
 Mix
-![](/GroundForge/help/stitches/crclct.png) with ![](/GroundForge/help/stitches/ctct.png)
+![](stitches/crclct.png) with ![](stitches/ctct.png)
 and/or drop the last left and/or right twist of these two stitches.
 Just some examples:
 

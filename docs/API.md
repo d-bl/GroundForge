@@ -65,7 +65,7 @@ A few steps are required to create an environment to [run JavaScript] without a 
 
 * Install [node.js] which should work on any operating system. It creates the commands `node`, `npm` and a `node.js command prompt`. A screen shot for Windows 10:
 
-  [<img src="/GroundForge/help/images/nodejs-command-search-thumb.png">](images/nodejs-command-search-on-windows-10.png)
+  [<img src="images/nodejs-command-search-thumb.png">](images/nodejs-command-search-on-windows-10.png)
 * Download and unzip `GroundForge`:
   * either a [release], since 2017-01-11
   * or the latest version, possibly not yet tagged as a release: [zip] or [tar.gz]

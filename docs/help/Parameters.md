@@ -71,4 +71,4 @@ Compare the top-left corner with the green repeat:
 it is shifted by one, both horizontally and vertically.
 The patch has nine columns but uses only six pairs.
 
-![](/GroundForge/help/images/cutout.png)
+![](images/cutout.png)

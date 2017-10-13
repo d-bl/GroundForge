@@ -23,17 +23,17 @@ for not covered patterns and dimensions.
 Below some less trivial stitches to copy-paste into the form.
 A second string is the mirrored version of the stitch.
 
-![](stitches/crclct.png) crclct 
+![](examples/stitches/crclct.png) crclct 
 
-![](stitches/clcrclc.png) clcrclc, crclcrc
+![](examples/stitches/clcrclc.png) clcrclc, crclcrc
 
-![](stitches/ctctc.png) ctctc
+![](examples/stitches/ctctc.png) ctctc
 
-![](stitches/ctclctc.png) ctclctc, ctcrctc
+![](examples/stitches/ctclctc.png) ctclctc, ctcrctc
 
-![](stitches/ctclcrctc.png) ctclcrctc, ctcrclctc
+![](examples/stitches/ctclcrctc.png) ctclcrctc, ctcrclctc
 
-![](stitches/ctcttctc.png) ctcttctc
+![](examples/stitches/ctcttctc.png) ctcttctc
 
 Stitch definitions
 ------------------
