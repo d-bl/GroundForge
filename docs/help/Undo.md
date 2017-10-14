@@ -9,7 +9,7 @@ Undo
 Undo a pattern configuration
 ----------------------------
 
-Right click the ![link](images/link.png)
+Right click the ![link](/GroundForge/images/link.png)
 button on the [main] page for a link or bookmark
 to the current configuration of the diagrams.
 
