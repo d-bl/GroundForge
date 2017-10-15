@@ -3,6 +3,11 @@
 
 @import "{{ site.theme }}";
 
+#sidebar ul { padding-left:0; margin-bottom:0px; }
+#sidebar ul ul { padding-left:15px; }
+#sidebar li { list-style-type:none; padding-bottom: 8px; }
+#sidebar li li { list-style-type:disc; padding-bottom:0;}
+
 /* stitches form */
 #stitch-form input { width: 100%; }
 .hide { display: none; }
