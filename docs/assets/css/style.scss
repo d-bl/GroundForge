@@ -10,6 +10,13 @@
 
 #sidebar hr { height: 12px; border: 0; box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.2); }
 
+#main-content h1::before { content: ","; }
+#main-content h2::before { content: ",,"; }
+#main-content h3::before { content: ",,,"; }
+#main-content h4::before { content: ",,,,"; }
+#main-content h5::before { content: ",,,,,"; }
+#main-content h6::before { content: ",,,,,,"; }
+
 /* stitches form */
 #stitch-form input { width: 100%; }
 .hide { display: none; }
