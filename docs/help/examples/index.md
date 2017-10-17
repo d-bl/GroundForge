@@ -43,5 +43,5 @@ Explore, experiment, play and discover!
 [tesseLace.com]: https://tesselace.com
 [slide show]: https://tesselace.com/tools/inkscape-extension/
 [Whiting index]: /GroundForge/help/examples/Whiting-Index
-[MAE-gf]: https://maetempels.github.io/MAE-gf/
+[MAE-gf]: https://github.com/MAETempels/MAE-gf/wiki/
 [discussion]: https://github.com/d-bl/GroundForge/issues/50
