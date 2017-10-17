@@ -18,6 +18,7 @@
 #main-content h6::before { content: ",,,,,,"; }
 
 /* stitches form */
-#stitch-form input { width: 100%; }
+#stitch-form input { width: 90%; }
+#stitch-form table, #stitch-form td { border: 0; }
 .hide { display: none; }
 .show { display: block; }
