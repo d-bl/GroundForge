@@ -45,7 +45,7 @@ You might need to change some angles and distances to recognize a ground. See th
 Fish and Lotus variations
 -------------------------
 
-see also [MEA-gf](https://github.com/MAETempels/MAE-gf/wiki/Milanese:-Fish)
+see also [MEA-gf](https://maetempels.github.io/MAE-gf/docs/fish)
 
 [![](tl//150.png)](/GroundForge/sheet.html?patch=43%205-%2035%2086;bricks)
 [![](tl//148.png)](/GroundForge/sheet.html?patch=68%204-%20-5%205-;bricks)

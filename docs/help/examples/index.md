@@ -31,7 +31,7 @@ Explore, experiment, play and discover!
   Though each peace is just one interpretation of a pattern,
   it shows the texture of real lace.
 * The [MAE-gf] pages made by M. Tempels systematically explore various families of grounds, including spiders and triangular grounds.
-* For those to shy to meddle with this wiki can post personal finds on a [discussion] 
+* For those to shy to meddle with these help pages can post personal finds on a [discussion] 
   and/or propose candidates for this overview.
   You will need a github account for both types of contribution.
   Fixing our non-native grammar would be much appreciated.
@@ -43,5 +43,5 @@ Explore, experiment, play and discover!
 [tesseLace.com]: https://tesselace.com
 [slide show]: https://tesselace.com/tools/inkscape-extension/
 [Whiting index]: /GroundForge/help/examples/Whiting-Index
-[MAE-gf]: https://github.com/MAETempels/MAE-gf/wiki/
+[MAE-gf]: https://maetempels.github.io/MAE-gf/
 [discussion]: https://github.com/d-bl/GroundForge/issues/50

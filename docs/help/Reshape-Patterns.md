@@ -27,7 +27,7 @@ The procedure
 -------------
 
 Depending on the features provided by your [SVG editor] you can use different methods to customize a pattern.
-The procedure using clones (listed in the side bar of the wiki) is less elaborate but is supported by less editors, the procedure using copies is more flexible, allowing for example metamorphoses from one shape into another. 
+The procedure using clones (listed in the side bar of the help pages) is less elaborate but is supported by less editors, the procedure using copies is more flexible, allowing for example metamorphoses from one shape into another. 
 
 [SVG editor]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
 
