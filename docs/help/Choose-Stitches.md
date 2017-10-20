@@ -10,30 +10,32 @@ Choose Stitches
 - [Assign stitches](#assign-stitches)
 - [An Example](#an-example)
 
-This form sets stitches for the first pair of diagrams on the main page.
-The pattern choice reveals the required fields in the stitches form,
-The pattern is also filled out in the parameters form.
-Subsequent paragraphs explain how to set the stitches field manually
-for not covered patterns and dimensions.
+Subsequent paragraphs explain how to set a stitches field manually
+for patterns and dimensions not covered by this convenience form.
 
 <script>{% include stitches.js %}</script>
 {% include stitch-form.html %}
 <script>setVisibility()</script>
 
-Below some less trivial stitches to copy-paste into the form.
+**Pattern properties:**
+{% include gallery.html src="help/examples/stitches/diagonal.png" caption="diagonal" %}
+{% include gallery.html src="help/examples/stitches/weaving.png" caption="weaving" %}
+{% include gallery.html src="help/examples/stitches/bricks.png" caption="bricks" %}
+{% include gallery.html src="help/examples/stitches/checker.png" caption="checker" %}
+
+The position of a field in the form reflects the position of a stitch
+within one brick or checkerboard field of the pattern.
+
+**Stitches to copy-paste:**
+{% include gallery.html src="help/examples/stitches/crclct.png" caption="crclct<br>&nbsp;" %}
+{% include gallery.html src="help/examples/stitches/clcrclc.png" caption="clcrclc<br>crclcrc" %}
+{% include gallery.html src="help/examples/stitches/ctctc.png" caption="ctctc<br>&nbsp;" %}
+{% include gallery.html src="help/examples/stitches/ctclctc.png" caption="ctclctc<br>ctcrctc" %}
+{% include gallery.html src="help/examples/stitches/ctclcrctc.png" caption="ctclcrctc<br>ctcrclctc" %}
+{% include gallery.html src="help/examples/stitches/ctcttctc.png" caption="ctcttctc<br>&nbsp;" %}
+
+Only less trivial stitches are listed, drop or add twists at will.
 A second string is the mirrored version of the stitch.
-
-![](examples/stitches/crclct.png) crclct 
-
-![](examples/stitches/clcrclc.png) clcrclc, crclcrc
-
-![](examples/stitches/ctctc.png) ctctc
-
-![](examples/stitches/ctclctc.png) ctclctc, ctcrctc
-
-![](examples/stitches/ctclcrctc.png) ctclcrctc, ctcrclctc
-
-![](examples/stitches/ctcttctc.png) ctcttctc
 
 Stitch definitions
 ------------------

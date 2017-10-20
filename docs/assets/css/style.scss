@@ -17,7 +17,10 @@
 #main-content h5::before { content: ",,,,,"; }
 #main-content h6::before { content: ",,,,,,"; }
 
-/* stitches form */
+figure { display: inline-block; margin-left:0; margin-top:0; margin-right:1em; }
+figure image, figcaption { display: block; }
+
+#stitch-form { padding-bottom: 1em; margin-bottom: 1em; }
 #stitch-form input { width: 90%; }
 #stitch-form table, #stitch-form td { border: 0; }
 .hide { display: none; }
