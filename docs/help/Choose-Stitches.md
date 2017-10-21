@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Choose Stitches
+javascript: /GroundForge/js/stitches.js
 ---
 
 Choose Stitches
@@ -13,7 +14,6 @@ Choose Stitches
 Subsequent paragraphs explain how to set a stitches field manually
 for patterns and dimensions not covered by this convenience form.
 
-<script>{% include stitches.js %}</script>
 {% include stitch-form.html %}
 <script>setVisibility()</script>
 
