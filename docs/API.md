@@ -53,10 +53,11 @@ The extension of worksheets is `.sc` which is git-ignored.
 An IDE can compile and run the worksheet as you type.
 
 The `PatternSheet` is ready to create an SVG in a JVM environment.
-A [ForceDemo class] is under construction for batch generation of pair/thread diagrams. Though written in scala both can as easily be used in java.
+A [PatternDemos class] shows batch generation of pair/thread diagrams.
+Though written in scala both can as easily be used in java.
 
 [facades]: https://github.com/spaced/scala-js-d3/issues/25
-[ForceDemo class]: ../src/test/scala/dibl/ForceDemo.scala
+[PatternDemos class]: ../src/test/scala/dibl/PatternDemos.scala
 [dependencies]: https://github.com/d-bl/GroundForge/blob/b97deb1963be7e9cacb8836e708783174c3f877a/pom.xml#L12-L28
 
 
@@ -112,7 +113,7 @@ What goes between `(...)` is documented below.
 
 The countdown process until the diagram gets saved runs in the back ground. The more nodes where created, the longer each countdown step takes. Issuing a new command might abort the one still running.
 
-[properties]: /GroundForge/help/images/nodejs-shortcut-properties.png
+[properties]: /GroundForge/images/nodejs-shortcut-properties.png
 
  
 Functions and Classes
