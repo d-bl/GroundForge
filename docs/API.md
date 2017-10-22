@@ -5,11 +5,11 @@ title: API
 
 - [Execution environments](#execution-environments)
   * [Web browser](#web-browser)
-  * [JVM alias Scala / Java](#jvm-alias-scala-java)
+  * [JVM alias Scala / Java](#jvm-alias-scala--java)
   * [Set up node.js for JavaScript](#set-up-nodejs-for-javascript)
   * [Create a thread diagram with node.js](#create-a-thread-diagram-with-nodejs)
 - [Functions and Classes](#functions-and-classes)
-  * [Functions <strike>`createSVG`</strike>, `createThreadSVG`, `createPairSVG`](#functions-strike-createsvg-strike-createthreadsvg-createpairsvg)
+  * [Functions <strike>`createSVG`</strike>, `createThreadSVG`, `createPairSVG`](#functions-createsvg-createthreadsvg-createpairsvg)
     + [JavaScript example](#javascript-example)
   * [Class `dibl.D3Data`](#class-dibld3data)
     + [Methods, all returning arrays of maps](#methods-all-returning-arrays-of-maps)
