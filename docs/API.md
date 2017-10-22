@@ -1,6 +1,3 @@
-
-<sub>_[Table of contents generated with markdown-toc](http://ecotrust-canada.github.io/markdown-toc/)_</sub>
-
 - [Execution environments](#execution-environments)
   * [Web browser](#web-browser)
   * [JVM alias Scala / Java](#jvm-alias-scala---java)
