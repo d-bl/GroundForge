@@ -1,3 +1,8 @@
+---
+layout: default
+title: API
+---
+
 - [Execution environments](#execution-environments)
   * [Web browser](#web-browser)
   * [JVM alias Scala / Java](#jvm-alias-scala---java)
