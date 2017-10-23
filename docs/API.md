@@ -3,6 +3,9 @@ layout: default
 title: API
 ---
 
+API
+===
+
 - [Execution environments](#execution-environments)
   * [Web browser](#web-browser)
   * [JVM alias Scala / Java](#jvm-alias-scala--java)
@@ -23,14 +26,10 @@ title: API
     + [Scala example](#scala-example)
 
 
-Scala code takes care of the number crunching that assembles the data for D3js and the SVG for the pricking prototype. The compiled scala code is copied into `matrix-graphs.js`.
-The scripts `index.js` and `jscolor.js` collect the configuration from an HTML form then `show-graphs.js` feeds it to the [D3.js] API.
+Many alternative environments and mash-ups are possible.
+Modern browsers can display the SVG files resulting from
+the demo classes under `src/test`, or created by off-line execution.
 
-
-The SVG components on the [main] page can also be generated in other environments than a web-browser. Many variations alternatives and mash-ups are possible.
-Modern browsers can display the SVG files resulting from the  demo classes under `src/test`, or created by off-line execution. 
-
-[D3.js]: http://d3js.org/
 
 Execution environments
 ======================
@@ -38,17 +37,29 @@ Execution environments
 Web browser
 -----------
 
-Demos: the [dressed up](/) version and the dressed down [docs/API](API/index.html) version.
+Demos: a [dressed up](/) version and a dressed down [docs/API](API/index.html) version.
 
 The scripts and page in `docs/API` are minimalistic versions of its siblings in `docs` and `docs/js`.
+The dressed up version adds decoration, event handling, configuration and some help.
 
-The dressed up version adds decoration, event handling, configuration and some help. The development view for the thread and pair diagrams is a slightly less minimal page. For that purpose `src/main/resources/index-dev.html` is served by sbt as `http://localhost:12345/target/scala-2.11/classes/index-dev.html`, this page immediately reflects changes in the scala code though the simulation doesn't start.
+The scripts `index.js` and `jscolor.js` collect the configuration from an HTML form.
+The collected data is passed on to the scala code compiled into `matrix-graphs.js`. 
+This scala code does the number crunching to create the diagrams bound by a squared grid
+and creates input for [D3.js] to render the dynamic pair and thread diagrams.
+
+The development view for the thread and pair diagrams is a slightly less minimal page.
+For that purpose `src/main/resources/index-dev.html` is served by sbt as
+`http://localhost:12345/target/scala-2.11/classes/index-dev.html`,
+this page immediately reflects changes in the scala code though the simulation doesn't start.
+
+[D3.js]: http://d3js.org/
 
 
 JVM alias Scala / Java
 ----------------------
 
-To skip a build and/or put the jar with [dependencies] on your class path, you can create a scala worksheet between the source code.
+To skip a build and/or put the jar with [dependencies] on your class path,
+you can create a scala worksheet between the source code.
 The extension of worksheets is `.sc` which is git-ignored.
 An IDE can compile and run the worksheet as you type.
 
@@ -80,8 +91,7 @@ Should you choose to use another environment, you may have to write a variant of
 
 
 [docs/js]: https://github.com/d-bl/GroundForge/tree/master/docs/js
-[batch.js]: https://github.com/d-bl/GroundForge/blob/master/docs/js/batch.js
-[create-svg.js]: https://github.com/d-bl/GroundForge/blob/master/src/main/resources/batch.js
+[create-svg.js]: https://github.com/d-bl/GroundForge/blob/master/src/main/resources/create-svg.js
 [run JavaScript]: https://en.wikipedia.org/wiki/List_of_ECMAScript_engines
 [node.js]: https://nodejs.org
 [release]: https://github.com/d-bl/GroundForge/releases
@@ -102,7 +112,11 @@ Please compare the screen shot above with the actual usage comment in your versi
 Note that the result of `d3Data().get` is used by `createSVG`,
 the `;0` at the end of a line reduces the returned clutter.
 
-With the up and down arrows on your keyboard you can repeat and edit previous lines, even of previous sessions. [More...](https://nodejs.org/download/release/v6.9.1/docs/api/repl.html#repl_commands_and_special_keys) than you might want to know as it quickly goes into details for developers.
+With the up and down arrows on your keyboard you can repeat and edit previous lines,
+even of previous sessions. [More...] than you might want to know
+as it quickly goes into details for developers.
+
+[More...]: https://nodejs.org/download/release/v6.9.1/docs/api/repl.html#repl_commands_and_special_keys
 
 The greyed parts depend on
 * where you unzipped GroundForge
@@ -126,7 +140,9 @@ This allows to access them in a JavaScript environment such as browsers and node
 Functions <strike>`createSVG`</strike>, `createThreadSVG`, `createPairSVG`
 -------------------------------------------------------------------------
 
-Convenience methods defined for a node.js environment, defined in <strike>[batch.js]</strike> [create-svg.js], _the script was renamed after [release] 2017-01-11_.
+Convenience methods defined for a node.js environment,
+defined in <strike>batch.js</strike> [create-svg.js],
+_the script was renamed after [release] 2017-01-11_.
 
     createThreadSVG(svgFile,data,steps,colors,countDown)
     createPairSVG(svgFile,data,countDown)
@@ -216,32 +232,45 @@ Another signature used by `createThreadSVG`:
 
 Class `dibl.PatternSheet`
 --------------------------
-See the bottom section of the [main] page, an A4 or US-letter sized [sheet of paper] can take 2x3 patches.
-
+This [demo](https://d-bl.github.io/GroundForge/sheet.html?img=376&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks)
+shows a set of diagrams arranged depending on the available width.
 
 ### Method **`add`**
 
-* **`compactMatrix`** - see legend on matrix tab of the [main] web page. You can copy-paste from the tool tips on the [thumbnails] page, any sequence of non-alphanumeric characters or dashes is treated as a line separator.
-* **`tileType`** - see values for drop down on matrix tab: `checker` or `bricks`.
+* **`compactMatrix`** - Matrix as explained in this [help page](help/Reversed-engineering-of-patterns), for example `B-C-,---5,C-B-,-5--`.
+More examples are available via the [TesseLace Index](help/examples/TesseLace-Index).
+Select one and copy-paste the matrices displayed just above one of the diagrams. 
+* **`tileType`** - `checker` or `bricks`.
 
 
 ### Constructor
 
 * **`patchRows`** - default: `2`. Number of rows for the generated patterns. 
-* **`pageSize`** - default: `"height='210mm' width='297mm'"` which is a landscape A4. String with attributes for the root SVG element.
+* **`pageSize`** - default: `"height='210mm' width='297mm'"` which is a landscape A4. String with attributes for the root SVG element. An A4 or US-letter sized [sheet of paper] can take 2x3 patches.
 
 [sheet of paper]: https://en.wikipedia.org/wiki/Paper_size
 
 
 ### JavaScript example
 
-```javascript
-var patterns = new dibl.PatternSheet(1, "height='100mm' width='110mm'")
-patterns.add("586- -789 2111 -4-4", "checker");0
-fs.writeFile("./sheet.svg", patterns.toSvgDoc(), function(err) {
-    if(err) return console.log(err)
-    else console.log("saved")
-});0
+With a local copy of `show-graph.js` from the source code of release
+[2017-06-05](https://github.com/d-bl/GroundForge/releases/tag/2017-06-05)
+or possibly a later version:
+
+```html
+<html>
+<head>
+    <script src="matrix-graphs.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="diagram"></div>
+    <script>
+        var sheet = new dibl.PatternSheet(2, "height='100mm' width='100mm'", "1")
+        sheet.add("B-C-,---5,C-B-,-5--","checker")
+        document.getElementById("diagram").innerHTML += sheet.toSvgDoc().trim()
+    </script>
+</body>
+</html>
 ```
 
 
