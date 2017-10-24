@@ -33,7 +33,7 @@ matrix:
       - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
     install: gem install jekyll html-proofer jekyll-theme-architect jekyll-relative-links
     my_validation:
-    script: jekyll build --source docs && htmlproofer ./_site --disable-external --assume_extension --empty_alt_ignore --url-swap "\/GroundForge\/:/" --url-ignore "#" && cd _site && zip webpages.zip *
+    script: jekyll build --source docs && htmlproofer ./_site --disable-external --assume_extension --empty_alt_ignore --url-swap "\/GroundForge\/:/" --url-ignore "#" && cd _site && zip webpages.zip * && ls -l *
     deploy:
       provider: releases
       api_key:
