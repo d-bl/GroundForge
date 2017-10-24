@@ -1,12 +1,12 @@
 matrix:
-  api_key:
-    secure: n/h/ofXxOmF4P6M/zBhsfi6ixOVMMdas620fXUufgXGmG5qBtpzPsYql/gNuyESpOl3WQmLanvpKVBDxsky7nu2q6o3WZg7Rc6EOAQybIgdxkByCZxXWTiHgJCJKela6Iza6Bs7pGa8AvC/l62wcT25lKBjv1FqeVKPi5rAudiXg5jqnPqW5g8EailFQ1dNHMRvOigJl4W0ThhGew2Kb989TxAKKwg1MXIYkE91F8Mqi7czG8SAOI+3ygkOm2mbmyKrvEhk2TaDYvQI9H5xu6023C82KsnS8y4xexN8cZ+7Jdt+60Er8stW7lu2MFjiGw8gmbI/TSgRpeflfCPJT3pTPH6lW/xh3Ln9xI5CmHlOdsVKuoeeq32Z1I3iU2fzasyWPXVsY0ZFCfXgF18mZNrOOjO7VYmUua5q+rS86usQwQiIyZBMVeDK4Cs1szdZqhUVDF/fWIsBsgBt3QcH1cE1WTPuielZifryOMzgVvbyURQ6S0XQcuDv61scVXN9di2gAKx6LJWb7bq1vZmkzBJvpI3QCm/jsrMzQQrUVk/SdLmKu2rMoNv5esP93Cq0wLbWT7xyM36VnuLZYTiY0tOqmqAKA5ouBMfdS1u/OgGAnhr5Y9Q+Lvof2INhBssnOGBGOVji1aQ6IXPj1fui7eKRcyOufM53XtkGgwucFa1U=
   include:
   - language: scala
     sudo: false
     script: sbt fullOptJS
     deploy:
       provider: releases
+      api_key:
+        secure: n/h/ofXxOmF4P6M/zBhsfi6ixOVMMdas620fXUufgXGmG5qBtpzPsYql/gNuyESpOl3WQmLanvpKVBDxsky7nu2q6o3WZg7Rc6EOAQybIgdxkByCZxXWTiHgJCJKela6Iza6Bs7pGa8AvC/l62wcT25lKBjv1FqeVKPi5rAudiXg5jqnPqW5g8EailFQ1dNHMRvOigJl4W0ThhGew2Kb989TxAKKwg1MXIYkE91F8Mqi7czG8SAOI+3ygkOm2mbmyKrvEhk2TaDYvQI9H5xu6023C82KsnS8y4xexN8cZ+7Jdt+60Er8stW7lu2MFjiGw8gmbI/TSgRpeflfCPJT3pTPH6lW/xh3Ln9xI5CmHlOdsVKuoeeq32Z1I3iU2fzasyWPXVsY0ZFCfXgF18mZNrOOjO7VYmUua5q+rS86usQwQiIyZBMVeDK4Cs1szdZqhUVDF/fWIsBsgBt3QcH1cE1WTPuielZifryOMzgVvbyURQ6S0XQcuDv61scVXN9di2gAKx6LJWb7bq1vZmkzBJvpI3QCm/jsrMzQQrUVk/SdLmKu2rMoNv5esP93Cq0wLbWT7xyM36VnuLZYTiY0tOqmqAKA5ouBMfdS1u/OgGAnhr5Y9Q+Lvof2INhBssnOGBGOVji1aQ6IXPj1fui7eKRcyOufM53XtkGgwucFa1U=
       file: target/scala-2.11/groundforge-opt.js
       skip_cleanup: true
       on:
@@ -17,6 +17,8 @@ matrix:
     jdk: oraclejdk8
     deploy:
       provider: releases
+      api_key:
+        secure: n/h/ofXxOmF4P6M/zBhsfi6ixOVMMdas620fXUufgXGmG5qBtpzPsYql/gNuyESpOl3WQmLanvpKVBDxsky7nu2q6o3WZg7Rc6EOAQybIgdxkByCZxXWTiHgJCJKela6Iza6Bs7pGa8AvC/l62wcT25lKBjv1FqeVKPi5rAudiXg5jqnPqW5g8EailFQ1dNHMRvOigJl4W0ThhGew2Kb989TxAKKwg1MXIYkE91F8Mqi7czG8SAOI+3ygkOm2mbmyKrvEhk2TaDYvQI9H5xu6023C82KsnS8y4xexN8cZ+7Jdt+60Er8stW7lu2MFjiGw8gmbI/TSgRpeflfCPJT3pTPH6lW/xh3Ln9xI5CmHlOdsVKuoeeq32Z1I3iU2fzasyWPXVsY0ZFCfXgF18mZNrOOjO7VYmUua5q+rS86usQwQiIyZBMVeDK4Cs1szdZqhUVDF/fWIsBsgBt3QcH1cE1WTPuielZifryOMzgVvbyURQ6S0XQcuDv61scVXN9di2gAKx6LJWb7bq1vZmkzBJvpI3QCm/jsrMzQQrUVk/SdLmKu2rMoNv5esP93Cq0wLbWT7xyM36VnuLZYTiY0tOqmqAKA5ouBMfdS1u/OgGAnhr5Y9Q+Lvof2INhBssnOGBGOVji1aQ6IXPj1fui7eKRcyOufM53XtkGgwucFa1U=
       file: target/GroundForge-0.x-SNAPSHOT.jar
       skip_cleanup: true
       on:
@@ -30,10 +32,12 @@ matrix:
       global:
       - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
     install: gem install jekyll html-proofer jekyll-theme-architect jekyll-relative-links
-    my_validation: htmlproofer ./_site --disable-external --assume_extension --empty_alt_ignore --url-swap "\/GroundForge\/:/" --url-ignore "#"
-    script: jekyll build --source docs && {{ my_validation }} && cd _site && zip webpages.zip *
+    my_validation:
+    script: jekyll build --source docs && htmlproofer ./_site --disable-external --assume_extension --empty_alt_ignore --url-swap "\/GroundForge\/:/" --url-ignore "#" && cd _site && zip webpages.zip *
     deploy:
       provider: releases
+      api_key:
+        secure: n/h/ofXxOmF4P6M/zBhsfi6ixOVMMdas620fXUufgXGmG5qBtpzPsYql/gNuyESpOl3WQmLanvpKVBDxsky7nu2q6o3WZg7Rc6EOAQybIgdxkByCZxXWTiHgJCJKela6Iza6Bs7pGa8AvC/l62wcT25lKBjv1FqeVKPi5rAudiXg5jqnPqW5g8EailFQ1dNHMRvOigJl4W0ThhGew2Kb989TxAKKwg1MXIYkE91F8Mqi7czG8SAOI+3ygkOm2mbmyKrvEhk2TaDYvQI9H5xu6023C82KsnS8y4xexN8cZ+7Jdt+60Er8stW7lu2MFjiGw8gmbI/TSgRpeflfCPJT3pTPH6lW/xh3Ln9xI5CmHlOdsVKuoeeq32Z1I3iU2fzasyWPXVsY0ZFCfXgF18mZNrOOjO7VYmUua5q+rS86usQwQiIyZBMVeDK4Cs1szdZqhUVDF/fWIsBsgBt3QcH1cE1WTPuielZifryOMzgVvbyURQ6S0XQcuDv61scVXN9di2gAKx6LJWb7bq1vZmkzBJvpI3QCm/jsrMzQQrUVk/SdLmKu2rMoNv5esP93Cq0wLbWT7xyM36VnuLZYTiY0tOqmqAKA5ouBMfdS1u/OgGAnhr5Y9Q+Lvof2INhBssnOGBGOVji1aQ6IXPj1fui7eKRcyOufM53XtkGgwucFa1U=
       file: _site
       skip_cleanup: true
       on:
