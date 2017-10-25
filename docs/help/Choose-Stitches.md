@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Choose Stitches
-javascript: /GroundForge/js/stitches.js
+javascript: ../js/stitches.js
 ---
 
 Choose Stitches
