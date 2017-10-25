@@ -35,7 +35,7 @@ Chosen stitches will no longer match the pattern,
 proper pair/thread diagrams might break,
 a self designed pattern however might get fixed.
 
-[One] pattern from the [TesseLace-Index](/GroundForge/help/examples/TesseLace-Index) works only for 5 columns.
+[One] pattern from the [TesseLace-Index](TesseLace-Index) works only for 5 columns.
 18 more out of 449 TesseLace patterns (including the pricking variations) may suffer from bug [#93](https://github.com/d-bl/GroundForge/issues/93).
 
 [One]: /GroundForge/?m=B-B-%20-B-B%20C-C-%20-C-C%3Bbricks%3B12%3B5%3B0%3B0&s1=ct%20A1%3Dct&s2=cross%3Dctc%20twist%3Dctc&s3=
@@ -44,7 +44,7 @@ a self designed pattern however might get fixed.
 Pattern: Matrix and tiling
 --------------------------
 
-The [example pages](/GroundForge/help/examples/) initialize the parameters with a valid set of values
+The [example pages]() initialize the parameters with a valid set of values
 and may recommend experiments.
 
 The letters and digits in the text field define the connections between the dots within
@@ -56,7 +56,7 @@ Usually only one tiling value is valid for a particular matrix.
 
 The diagram button will show the configured pattern (pricking prototype) on another tab.
 
-More on the page to [design](/GroundForge/help/Reversed-engineering-of-patterns) your own patterns from scratch.
+More on the page to [design](Reversed-engineering-of-patterns) your own patterns from scratch.
 
 
 Illustration

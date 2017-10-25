@@ -23,7 +23,7 @@ Below the index is republished (with kind permission) once more with a couple of
   A superscript of two means you have to show two levels of diagrams to get the pattern.
 
 * **x**: Lower case links
-  go to sets of [TesseLace](/GroundForge/help/examples/TesseLace-Index) patterns,
+  go to sets of [TesseLace](TesseLace-Index) patterns,
   in turn linking to a diagram page where you can choose stitches.
   Each pattern in such a set can be morphed into the others by nudging pins.
   Only four of the lower-case links ([c],[t],[k],[v]) cover more than a third of the grounds below, a ratio that illustrates
@@ -48,56 +48,56 @@ Below the index is republished (with kind permission) once more with a couple of
 Under Construction
 ------------------
 
-The page [history](https://github.com/jo-pol/GroundForge/commits/master/docs/help/examples/Whiting-Index.md)
+The page [history](https://github.com/d-bl/GroundForge/commits/master/docs/help/Whiting-Index.md)
 (and older [changes](https://github.com/d-bl/GroundForge/wiki/Whiting-Index/_history))
 may show when a pattern was last fixed, and who authored the fix.
 For that purpose, the maintainer needs to fill in the _edit note_ to list the changed/added patterns.
 
 
-[c]: /GroundForge/sheet.html?patch=88%0A11;bricks&patch=66%0A22;bricks&patch=88%0A99%0A11%0A00;bricks&patch=66%0A11%0A88%0A22;bricks&patch=66%0A99%0A22%0A00;bricks
-[t]: /GroundForge/sheet.html?patch=53%0A53%0A53%0A5-;bricks&patch=5663%0A5663;checker&patch=53%0A5-;bricks&patch=563%0A563%0A563;checker&patch=53%0A53;checker&patch=5632%0A5632;checker&patch5353%0A5353;bricks&patch=5-%0A-5;checker&patch=5353%0A5353%0A5-5-%0A-5-5;checker&patch=5632%0A56-2%0A5-5-%0A-535;checker&patch=53%0A5-%0A-5%0A5-;bricks&patch=44%0A77%0A44%0A77;bricks&patch=44%0A44%0A77%0A77;bricks&patch=66%0A88%0A66%0A11;bricks&patch=66%0A66%0A88%0A11;checker&patch=66%0A66%0A99%0A00;checker&patch=6;checker&patch=566-%0A66-5%0A6-56%0A-566;checker
-[v]: /GroundForge/sheet.html?patch=5831%0A-4-7;bricks&patch=-437%0A34-7;bricks&patch=4830%0A--77;bricks
-[k]: /GroundForge/sheet.html?patch=B-C-%0A---5%0AC-B-%0A-5--;checker&patch=5831%0A-4-7;checker&patch=68%0A-4;checker&patch=-4-7%0A5---%0A-C-B%0A3158;bricks&patch=5-O-E-%0A-E-5-O%0A5-O-E-;bricks
-[wk]: /GroundForge/sheet.html?patch=6868%0A-4-4%0A2121%0A-7-7;checker&patch=L-O-L-O-%0A---5---5%0AH-E-H-E-%0A-5---5--;bricks
-[ts]: /GroundForge/sheet.html?patch=5-5-%0A-5--%0AB-C-%0A-5-5;bricks&patch=5632%0A34-7;bricks&patch=256-%0A---5%0AC3B-;bricks&patch=4373%0A5-53;bricks
-[z]: /GroundForge/sheet.html?patch=1483%0A8-48;bricks&patch=C-B-%0A-5--%0AB8D-%0A-4--;bricks&patch=-48-%0AB--2%0A8-B8;bricks&patch=-4--%0AB-C3%0A8-48;bricks
+[c]: ../sheet.html?patch=88%0A11;bricks&patch=66%0A22;bricks&patch=88%0A99%0A11%0A00;bricks&patch=66%0A11%0A88%0A22;bricks&patch=66%0A99%0A22%0A00;bricks
+[t]: ../sheet.html?patch=53%0A53%0A53%0A5-;bricks&patch=5663%0A5663;checker&patch=53%0A5-;bricks&patch=563%0A563%0A563;checker&patch=53%0A53;checker&patch=5632%0A5632;checker&patch5353%0A5353;bricks&patch=5-%0A-5;checker&patch=5353%0A5353%0A5-5-%0A-5-5;checker&patch=5632%0A56-2%0A5-5-%0A-535;checker&patch=53%0A5-%0A-5%0A5-;bricks&patch=44%0A77%0A44%0A77;bricks&patch=44%0A44%0A77%0A77;bricks&patch=66%0A88%0A66%0A11;bricks&patch=66%0A66%0A88%0A11;checker&patch=66%0A66%0A99%0A00;checker&patch=6;checker&patch=566-%0A66-5%0A6-56%0A-566;checker
+[v]: ../sheet.html?patch=5831%0A-4-7;bricks&patch=-437%0A34-7;bricks&patch=4830%0A--77;bricks
+[k]: ../sheet.html?patch=B-C-%0A---5%0AC-B-%0A-5--;checker&patch=5831%0A-4-7;checker&patch=68%0A-4;checker&patch=-4-7%0A5---%0A-C-B%0A3158;bricks&patch=5-O-E-%0A-E-5-O%0A5-O-E-;bricks
+[wk]: ../sheet.html?patch=6868%0A-4-4%0A2121%0A-7-7;checker&patch=L-O-L-O-%0A---5---5%0AH-E-H-E-%0A-5---5--;bricks
+[ts]: ../sheet.html?patch=5-5-%0A-5--%0AB-C-%0A-5-5;bricks&patch=5632%0A34-7;bricks&patch=256-%0A---5%0AC3B-;bricks&patch=4373%0A5-53;bricks
+[z]: ../sheet.html?patch=1483%0A8-48;bricks&patch=C-B-%0A-5--%0AB8D-%0A-4--;bricks&patch=-48-%0AB--2%0A8-B8;bricks&patch=-4--%0AB-C3%0A8-48;bricks
 
-[A1]: /GroundForge/index.html?m=88%0A11;bricks;7;5;0;0&s1=ct
-[B1]: /GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=ctctpctct
-[C1]: /GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=ctpct
-[D1]: /GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=cttpctt
-[E1]: /GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=ctpcttt
-[F1]: /GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=cttpcttt
-[G1]: /GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=cttt
+[A1]: ../index.html?m=88%0A11;bricks;7;5;0;0&s1=ct
+[B1]: ../index.html?m=5-;bricks;7;5;0;0&s1=ctctpctct
+[C1]: ../index.html?m=5-;bricks;7;5;0;0&s1=ctpct
+[D1]: ../index.html?m=5-;bricks;7;5;0;0&s1=cttpctt
+[E1]: ../index.html?m=5-;bricks;7;5;0;0&s1=ctpcttt
+[F1]: ../index.html?m=5-;bricks;7;5;0;0&s1=cttpcttt
+[G1]: ../index.html?m=5-;bricks;7;5;0;0&s1=cttt
 
-[A2]: /GroundForge/index.html?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=A1%3Dctct&s2=ctct%20A14%3Dct%20A15%3Dct&s3=
-[B2]: /GroundForge/index.html?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=ctct&s2=ctct&s3=
-[E2]: /GroundForge/index.html?m=5---5---%0A-CD632AB%0A5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20C2%3Dctctttctc%20A3%3Dctclll%20B1%3Dctclll%20E3%3Dctcrrr%20D1%3Dctcrrr%20G2%3Dctctctc&s2=&s3=
-[F2]: /GroundForge/index.html?m=-5--%0AB-C-%0A-5-5%0A5-5-%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20B3%3Dctcttctc%20A4%3Dctcll%20D1%3Dctctt%20%20C4%3Dctcrr&s2=&s3=
-[G2]: /GroundForge/index.html?m=5----5----%0A-CDD632AAB%0A5666632222%0A5666632222%0A56666-2222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20C1%3Dctc%20G2%3Dctc%20I2%3Dctc%20F3%3Dctc%20J3%3Dctc%20H2%3Dctc%20G3%3Dctc%20I3%3Dctc%20G5%3Dctc%20I5%3Dctc%20H1%3Dctc%20H4%3Dcttc%20F5%3Dctcl%20G1%3Dctcl%20J5%3Dctcr%20I1%3Dctcr&s2=&s3=
-[H2]: /GroundForge/index.html?m=5---5---%0A-CD632AB%0A56663222%0A5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=cttctt%20C2%3Dctctt%20C4%3Dctc%20F1%3Dctc%20E2%3Dctc%20H1%3Dctc%20G1%3Dctc%20F2%3Dctc%20A2%3Dctc%20H2%3Dctc%20G3%3Dctcctc%20F4%3Dctc%20H4%3Dctc%20C1%3Dctc%20E4%3Dctcll%20%20B1%3Dctcll%20A4%3Dctcrr%20D1%3Dctcrr&s2=cross%3Dctc%20twist%3Dctc&s3=
+[A2]: ../index.html?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=A1%3Dctct&s2=ctct%20A14%3Dct%20A15%3Dct&s3=
+[B2]: ../index.html?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=ctct&s2=ctct&s3=
+[E2]: ../index.html?m=5---5---%0A-CD632AB%0A5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20C2%3Dctctttctc%20A3%3Dctclll%20B1%3Dctclll%20E3%3Dctcrrr%20D1%3Dctcrrr%20G2%3Dctctctc&s2=&s3=
+[F2]: ../index.html?m=-5--%0AB-C-%0A-5-5%0A5-5-%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20B3%3Dctcttctc%20A4%3Dctcll%20D1%3Dctctt%20%20C4%3Dctcrr&s2=&s3=
+[G2]: ../index.html?m=5----5----%0A-CDD632AAB%0A5666632222%0A5666632222%0A56666-2222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20C1%3Dctc%20G2%3Dctc%20I2%3Dctc%20F3%3Dctc%20J3%3Dctc%20H2%3Dctc%20G3%3Dctc%20I3%3Dctc%20G5%3Dctc%20I5%3Dctc%20H1%3Dctc%20H4%3Dcttc%20F5%3Dctcl%20G1%3Dctcl%20J5%3Dctcr%20I1%3Dctcr&s2=&s3=
+[H2]: ../index.html?m=5---5---%0A-CD632AB%0A56663222%0A5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=cttctt%20C2%3Dctctt%20C4%3Dctc%20F1%3Dctc%20E2%3Dctc%20H1%3Dctc%20G1%3Dctc%20F2%3Dctc%20A2%3Dctc%20H2%3Dctc%20G3%3Dctcctc%20F4%3Dctc%20H4%3Dctc%20C1%3Dctc%20E4%3Dctcll%20%20B1%3Dctcll%20A4%3Dctcrr%20D1%3Dctcrr&s2=cross%3Dctc%20twist%3Dctc&s3=
 
-[C3]: /GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=ctctpctctt
-[E3]: /GroundForge/index.html?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=A1%3Dctt&s2=&s3=
+[C3]: ../index.html?m=5-;bricks;7;5;0;0&s1=ctctpctctt
+[E3]: ../index.html?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=A1%3Dctt&s2=&s3=
 
-[E4]: /GroundForge/index.html?m=-5----%0AB-CD-A%0A256-5-%0A-5-535%0A5-56-2%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20A4%3Dctctctc%20C5%3Dctcrr%20B1%3Dctcrr%20E5%3Dctcll%20F1%3Dctcll%20D2%3Dctctt&s2=&s3=
-[F4]: /GroundForge/index.html?m=1483%0A8-48%3Bbricks%3B16%3B16%3B0%3B0&s1=ctc%20A2%3Dctcllctc%20C2%3Dctcrrctc
-[H4]: /GroundForge/index.html?m=5-25-56-%0A-5--5--5%0A5-C6-2B-%3Bbricks%3B16%3B16%3B0%3B0&s1=ctc%20G3%3Dctcttctc%20A1%3Dctcll%20B2%3Dctcll%20E1%3Dctcrr%20D2%3Dctcrr&s2=&s3=
+[E4]: ../index.html?m=-5----%0AB-CD-A%0A256-5-%0A-5-535%0A5-56-2%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20A4%3Dctctctc%20C5%3Dctcrr%20B1%3Dctcrr%20E5%3Dctcll%20F1%3Dctcll%20D2%3Dctctt&s2=&s3=
+[F4]: ../index.html?m=1483%0A8-48%3Bbricks%3B16%3B16%3B0%3B0&s1=ctc%20A2%3Dctcllctc%20C2%3Dctcrrctc
+[H4]: ../index.html?m=5-25-56-%0A-5--5--5%0A5-C6-2B-%3Bbricks%3B16%3B16%3B0%3B0&s1=ctc%20G3%3Dctcttctc%20A1%3Dctcll%20B2%3Dctcll%20E1%3Dctcrr%20D2%3Dctcrr&s2=&s3=
 
-[C6]: /GroundForge/index.html?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=A1%3Dctct&s2=ct%20A10%3Dctct%20A13%3Dctct&s3=
-[B6]: /GroundForge/index.html?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=ctct&s2=cttctt&s3=
-[D6]: /GroundForge/index.html?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=crclct&s2=ct%20A10%3Dctct%20A11%3Dctct%20A13%3Dctct%20A14%3Dctct&s3=
-[E6]: /GroundForge/index.html?m=1488-483%208-483148%20831488-4%20488-4831%3Bbricks%3B12%3B10%3B0%3B0&s1=ct%20F3%3Dctct%20E4%3Dctct%20G4%3Dctct%20B1%3Dctct%20H1%3Dctct%20C4%3Dctct%20A2%3Dctct%20H3%3Dctct%20B3%3Dctct%20A4%3Dctct%20D1%3Dctct%20C2%3Dctct%20E2%3Dctct%20D3%3Dctct%20F1%3Dctct%20G4%3Dctct%20G2%3Dctct&s2=&s3=
+[C6]: ../index.html?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=A1%3Dctct&s2=ct%20A10%3Dctct%20A13%3Dctct&s3=
+[B6]: ../index.html?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=ctct&s2=cttctt&s3=
+[D6]: ../index.html?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=crclct&s2=ct%20A10%3Dctct%20A11%3Dctct%20A13%3Dctct%20A14%3Dctct&s3=
+[E6]: ../index.html?m=1488-483%208-483148%20831488-4%20488-4831%3Bbricks%3B12%3B10%3B0%3B0&s1=ct%20F3%3Dctct%20E4%3Dctct%20G4%3Dctct%20B1%3Dctct%20H1%3Dctct%20C4%3Dctct%20A2%3Dctct%20H3%3Dctct%20B3%3Dctct%20A4%3Dctct%20D1%3Dctct%20C2%3Dctct%20E2%3Dctct%20D3%3Dctct%20F1%3Dctct%20G4%3Dctct%20G2%3Dctct&s2=&s3=
 
-[C9]: /GroundForge/index.html?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=ctct&s2=ctcttt&s3=
-[D9]: /GroundForge/index.html?m=5-%0A-5%3Bchecker%3B8%3B8%3B0%3B0&s1=A1%3Dctctt%20B2%3Dctt&s2=&s3=
-[H9]: /GroundForge/index.html?m=5-;bricks;7;7;0;0&s1=ctcttptctcttt
+[C9]: ../index.html?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=ctct&s2=ctcttt&s3=
+[D9]: ../index.html?m=5-%0A-5%3Bchecker%3B8%3B8%3B0%3B0&s1=A1%3Dctctt%20B2%3Dctt&s2=&s3=
+[H9]: ../index.html?m=5-;bricks;7;7;0;0&s1=ctcttptctcttt
 
-[G14]: /GroundForge/index.html?m=5-%0A12%0A88%0A4-%3Bbricks%3B16%3B11%3B0%3B0&s1=ctc%20A2%3Dctctt%20B4%3Dctcll%20B1%3Dctcrr&s2=&s3=
+[G14]:..//index.html?m=5-%0A12%0A88%0A4-%3Bbricks%3B16%3B11%3B0%3B0&s1=ctc%20A2%3Dctctt%20B4%3Dctcll%20B1%3Dctcrr&s2=&s3=
 
-[E16]: /GroundForge/index.html?m=-5-L-H%0AH-E-21%0A-O8-M8%0A-1F-1F%0A-M86-M%0A5-4-K-%3Bchecker%3B16%3B16%3B0%3B0&s1=C6%3Dctcll%20F6%3Dctcll%20E1%3Dctcrr%20B1%3Dctcrr%20C2%3Dctcll%20F2%3Dctcll%20D3%3Dctcrr%20B3%3Dctcrr%20E4%3Dtctct%20B5%3Dtctct&s2=&s3=
-[F16]: /GroundForge/index.html?m=5-%0A-5%0A5-%0A12%0A99%0A11%0A66%0A4-%3Bbricks%3B19%3B9%3B0%3B0&s1=ctc%20B7%3Dtctct%20A8%3Dctct%20B2%3Dctcll%20B3%3Dctcrr%20A4%3Dctcll%20B5%3Dctcrr&s2=&s3=
-[G16]: /GroundForge/index.html?m=5-%0A-5%0A5-%0A12%0A88%0A4-%3Bbricks%3B16%3B9%3B0%3B0&s1=ctc%20A6%3Dctctt%20B5%3Dctctt%20B2%3Dctcll%20B3%3Dctcrr%20A4%3Dctctt%20&s2=&s3=
+[E16]:..//index.html?m=-5-L-H%0AH-E-21%0A-O8-M8%0A-1F-1F%0A-M86-M%0A5-4-K-%3Bchecker%3B16%3B16%3B0%3B0&s1=C6%3Dctcll%20F6%3Dctcll%20E1%3Dctcrr%20B1%3Dctcrr%20C2%3Dctcll%20F2%3Dctcll%20D3%3Dctcrr%20B3%3Dctcrr%20E4%3Dtctct%20B5%3Dtctct&s2=&s3=
+[F16]:..//index.html?m=5-%0A-5%0A5-%0A12%0A99%0A11%0A66%0A4-%3Bbricks%3B19%3B9%3B0%3B0&s1=ctc%20B7%3Dtctct%20A8%3Dctct%20B2%3Dctcll%20B3%3Dctcrr%20A4%3Dctcll%20B5%3Dctcrr&s2=&s3=
+[G16]:..//index.html?m=5-%0A-5%0A5-%0A12%0A88%0A4-%3Bbricks%3B16%3B9%3B0%3B0&s1=ctc%20A6%3Dctctt%20B5%3Dctctt%20B2%3Dctcll%20B3%3Dctcrr%20A4%3Dctctt%20&s2=&s3=
 
 |   | A | B | C | D | E | F | G | H |
 |---|---|---|---|---|---|---|---|---|

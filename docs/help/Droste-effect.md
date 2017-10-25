@@ -33,13 +33,13 @@ draw a plait or something-pin-something like a simple stitch.
         <th>level 2</th>
         <th colspan="3">level 1</th>
         <th><a href="#tiling">tiling</a></th>
-        <th><a href="/GroundForge/help/examples/Whiting-Index">Whiting index</a></th>
+        <th><a href="Whiting-Index">Whiting index</a></th>
     </tr>
     <tr>
         <td></td>
         <td><img src="stitches/ct.png"></td>
         <td><img src="stitches/ct-color1.png"></td>
-        <td><a href="/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=ct&s2=ctct&s3=&#diagrams"
+        <td><a href="../index.html?m=5-;bricks;7;5;0;0&s1=ct&s2=ctct&s3=&#diagrams"
         >ct</a></td>
         <td>diagonal 1x2</td>
         <td><a href="http://gwydir.demon.co.uk/jo/lace/whiting/page75.htm">A5</a></td>
@@ -58,7 +58,7 @@ draw a plait or something-pin-something like a simple stitch.
         <td><img src="stitches/ctct-color2a.png"> <img src="stitches/ctct-color2b.png"></td>
         <td><img src="stitches/ctct.png"></td>
         <td><img src="stitches/ctct-color1a.png"> <img src="stitches/ctct-color1b.png"></td>
-        <td><a href="/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=ctct&s2=cross=ctct,twist=ct&s3=&#diagrams"
+        <td><a href="../index.html?m=5-;bricks;7;5;0;0&s1=ctct&s2=cross=ctct,twist=ct&s3=&#diagrams"
         >ctct</a></td>
         <td>diagonal 1x2</td>
         <td>variant of <a href="http://gwydir.demon.co.uk/jo/lace/whiting/page71.htm">A2</a> and <a href="http://gwydir.demon.co.uk/jo/lace/whiting/page95.htm">B2</a></td>
@@ -77,7 +77,7 @@ draw a plait or something-pin-something like a simple stitch.
         <td><img src="stitches/clcrclc.png"></td>
         <td></td>
         <td>
-            <a href="/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=clcrclc&s2=ctc,B13=ctcrrctcrr,B15=ctcll,B16=ctctt&s3=&#diagrams"
+            <a href="../index.html?m=5-;bricks;7;5;0;0&s1=clcrclc&s2=ctc,B13=ctcrrctcrr,B15=ctcll,B16=ctctt&s3=&#diagrams"
             >clcrclc</a></td>
         <td>diagonal 1x2</td>
         <td></td>
@@ -87,7 +87,7 @@ draw a plait or something-pin-something like a simple stitch.
         <td><img src="stitches/ctctc.png"></td>
         <td></td>
         <td>
-            <a href="/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=ctctc&s2=ctc,B14=ctcll,B15=ctcrr,B16=ctctt&s3=&#diagrams"
+            <a href="../index.html?m=5-;bricks;7;5;0;0&s1=ctctc&s2=ctc,B14=ctcll,B15=ctcrr,B16=ctctt&s3=&#diagrams"
             >ctctc</a></td>
         <td>diagonal 1x2</td>
         <td>variant of <a href="http://gwydir.demon.co.uk/jo/lace/whiting/page178.htm">F2</a></td>
@@ -158,13 +158,13 @@ Tiling
 
 A matrix and its tiling arrangement defines the flow of pairs in a pattern.
 The red rectangles illustrate the tiling.
-The numbers in circles ([more](/GroundForge/help/images/matrix-template.png))
+The numbers in circles ([more](images/matrix-template.png))
 define from which location the pairs arrive at a stitch.
 
 A [special] page lets you simply select a valid tile configuration
 that doesn't suffer from the known bugs [#93] and [#96].
 You can create larger tiles on the main page.
-![](/GroundForge/help/images/base-patterns.png)
+![](images/base-patterns.png)
 
 
 A weaving pattern requires an even number of rows and
@@ -199,6 +199,6 @@ So you need to develop an intuition to take your picks.
 [#96]: https://github.com/d-bl/GroundForge/issues/96
 [#93]: https://github.com/d-bl/GroundForge/issues/93
 [GroundForge]: /GroundForge/
-[special]: /GroundForge/help/Choose-Stitches.html
-[this page]: /GroundForge/help/Choose-Stitches.html
+[special]: Choose-Stitches.html
+[this page]: Choose-Stitches.html
 [hoops]: https://github.com/d-bl/GroundForge/blob/master/docs/API.md

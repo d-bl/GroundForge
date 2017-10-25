@@ -18,21 +18,21 @@ for patterns and dimensions not covered by this convenience form.
 <script>setVisibility()</script>
 
 **Pattern properties:**
-{% include gallery.html src="help/examples/stitches/diagonal.png" caption="diagonal" %}
-{% include gallery.html src="help/examples/stitches/weaving.png" caption="weaving" %}
-{% include gallery.html src="help/examples/stitches/bricks.png" caption="bricks" %}
-{% include gallery.html src="help/examples/stitches/checker.png" caption="checker" %}
+{% include gallery.html src="help/stitches/diagonal.png" caption="diagonal" %}
+{% include gallery.html src="help/stitches/weaving.png" caption="weaving" %}
+{% include gallery.html src="help/stitches/bricks.png" caption="bricks" %}
+{% include gallery.html src="help/stitches/checker.png" caption="checker" %}
 
 The position of a field in the form reflects the position of a stitch
 within one brick or checkerboard field of the pattern.
 
 **Stitches to copy-paste:**
-{% include gallery.html src="help/examples/stitches/crclct.png" caption="crclct<br>&nbsp;" %}
-{% include gallery.html src="help/examples/stitches/clcrclc.png" caption="clcrclc<br>crclcrc" %}
-{% include gallery.html src="help/examples/stitches/ctctc.png" caption="ctctc<br>&nbsp;" %}
-{% include gallery.html src="help/examples/stitches/ctclctc.png" caption="ctclctc<br>ctcrctc" %}
-{% include gallery.html src="help/examples/stitches/ctclcrctc.png" caption="ctclcrctc<br>ctcrclctc" %}
-{% include gallery.html src="help/examples/stitches/ctcttctc.png" caption="ctcttctc<br>&nbsp;" %}
+{% include gallery.html src="help/stitches/crclct.png" caption="crclct<br>&nbsp;" %}
+{% include gallery.html src="help/stitches/clcrclc.png" caption="clcrclc<br>crclcrc" %}
+{% include gallery.html src="help/stitches/ctctc.png" caption="ctctc<br>&nbsp;" %}
+{% include gallery.html src="help/stitches/ctclctc.png" caption="ctclctc<br>ctcrctc" %}
+{% include gallery.html src="help/stitches/ctclcrctc.png" caption="ctclcrctc<br>ctcrclctc" %}
+{% include gallery.html src="help/stitches/ctcttctc.png" caption="ctcttctc<br>&nbsp;" %}
 
 Only less trivial stitches are listed, drop or add twists at will.
 A second string is the mirrored version of the stitch.
@@ -79,6 +79,6 @@ The image below shows screen shot snippets of a pattern and its stitches.
 
 [stitches]: /GroundForge/stitches.html
 [main]: /GroundForge/
-[assemble]: /GroundForge/help/Reversed-engineering-of-patterns
+[assemble]: Reversed-engineering-of-patterns
 [#51]: https://github.com/d-bl/GroundForge/issues/51
 [#96]: https://github.com/d-bl/GroundForge/issues/96

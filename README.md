@@ -68,7 +68,7 @@ the algorithm has to figure out a working order to create the lace just like a r
 [pages]: https://github.com/d-bl/GroundForge/blob/master/src/test/resources/
 [compact]: https://d-bl.github.io/GroundForge/docs/images/legend.png
 [TesseLace]: http://TesseLace.com
-[TesseLace index]: https://d-bl.github.io/GroundForge/help/examples/TesseLace-Index
+[TesseLace index]: https://d-bl.github.io/GroundForge/help/TesseLace-Index
 
 Color-picker: jscolor
 ---------------------
