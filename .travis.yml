@@ -2,7 +2,8 @@ matrix:
   include:
   - language: scala
     sudo: false
-    script: sbt fullOptJS
+    script:
+     - sbt fullOptJS
     deploy:
       provider: releases
       api_key:
@@ -33,7 +34,13 @@ matrix:
       - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
     install: gem install jekyll html-proofer jekyll-theme-architect jekyll-relative-links
     my_validation:
-    script: jekyll build --source docs && htmlproofer ./_site --disable-external --assume_extension --empty_alt_ignore --url-swap "\/GroundForge\/:/" --url-ignore "#" && cd _site/help && sed -i -e 's!/assets!../assets!' *.html && sed -i -e 's!/GroundForge/help/!!' *.html && cd .. && zip -r -q GroundForge-pages.zip *
+    script:
+      - jekyll build --source docs
+      - htmlproofer ./_site --disable-external --assume_extension --empty_alt_ignore --url-swap "\/GroundForge\/:/" --url-ignore "#"
+    before_deploy:
+      - sed -i -e 's!/assets/!../assets/!' _site/help/*.html
+      - sed -i -e 's!/GroundForge/help/!!' _site/help/*.html
+      - cd _site && zip -r -q GroundForge-pages.zip *
     deploy:
       provider: releases
       api_key:
