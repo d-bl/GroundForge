@@ -24,14 +24,9 @@ function load() {
 
   var patterns = new dibl.PatternSheet(2, "height='90mm' width='100mm'")
   patterns.add(matrix, "checker")
-  var svg = (patterns.toSvgDoc().trim())
-  var sheetElement = document.getElementById("sheet")
-  sheetElement.innerHTML = svg
+  document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
 
-  var start = new Date().getTime()
   var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, "checker")
-  console.log("time for pair diagram " + (new Date().getTime() - start))
-
   showGraph({
     container: d3.select('#pairs'),
     nodes: data.pairNodes(),
@@ -39,17 +34,13 @@ function load() {
     diagram: data.pairDiagram,
     stroke: "1px"
   })
-
-  start = new Date().getTime()
-  var args = {
+  showGraph({
     container: d3.select('#threads'),
     nodes: data.threadNodes(),
     links: data.threadLinks(),
     diagram: data.threadDiagram,
     stroke: "2px"
-  }
-  console.log("time for thread diagram " + (new Date().getTime() - start))
-  showGraph(args)
+  })
 }
 function showGraph(args) {
     var svg = dibl.SVG()
@@ -80,10 +71,10 @@ function showGraph(args) {
     // duplication of src/main/resources/force.js.applyForce(...)
     function strength(link){ return link.weak ? 1 : 50 }
     d3.forceSimulation(args.nodes)
-        .force("charge", d3.forceManyBody().strength(-1000))
-        .force("link", d3.forceLink(args.links).strength(strength).distance(12).iterations(30))
-        .force("center", d3.forceCenter(200, 200))
-        .alpha(0.0035)
-        .on("tick", onTick)
-        .on("end", onEnd)
+      .force("charge", d3.forceManyBody().strength(-1000))
+      .force("link", d3.forceLink(args.links).strength(strength).distance(12).iterations(30))
+      .force("center", d3.forceCenter(200, 200))
+      .alpha(0.0035)
+      .on("tick", onTick)
+      .on("end", onEnd)
 }

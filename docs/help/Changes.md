@@ -22,7 +22,7 @@ The latter shows who was the last to touch a line, might be just a space or typo
 
 [project files]: https://github.com/d-bl/GroundForge/commits/gh-pages.atom
 [release notes]: https://github.com/d-bl/GroundForge/releases.atom
-[help pages]: https://github.com/jo-pol/GroundForge/tree/master/docs/help
+[help pages]: https://github.com/d-bl/GroundForge/tree/master/docs/help
 
 Desired changes
 ---------------
