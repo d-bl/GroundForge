@@ -21,11 +21,11 @@ Convenience Forms
 -----------------
 
 You can create convenience forms for specific families of patterns.
-An example is a dynamic link to the main page created with a
-[html](https://github.com/d-bl/GroundForge/blob/master/docs/_includes/stitch-form.html)
-form  to [choose stitches](Choose-Stitches).
+An example is a dynamic link to the main page created with this
+[html form](https://github.com/d-bl/GroundForge/blob/master/docs/_includes/stitch-form.html)
+embedded in the help page to [choose stitches](Choose-Stitches).
 A [JavaScript](https://github.com/d-bl/GroundForge/blob/master/docs/js/stitches.js)
-creates the dynamic link of the `go` button and dis/en-ables stitch fields for the selected dimension and type of pattern.
+creates the dynamic link of the `go` button and dis/en-ables stitch fields for the selected pattern variant.
 The script requires the following CSS:
 
 ```css
@@ -33,20 +33,19 @@ The script requires the following CSS:
 .show { display: block; }
 ```
 
-More CCS on [#stitch-form](https://github.com/d-bl/GroundForge/blob/master/docs/assets/css/style.scss) elements.
+[Optional CCS](https://github.com/d-bl/GroundForge/blob/master/docs/assets/css/style.scss)
+on `#stitch-form` elements.
 
 
 Diagrams with a square grid
 ---------------------------
 
-Links as in the TesseLace index wrap diagrams in a help page, for example:
-
-[![376](https://d-bl.github.io/GroundForge/help/tl/376.png)](https://d-bl.github.io/GroundForge/sheet.html?img=376&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks)
-
+Links as in the TesseLace index ([example(https://d-bl.github.io/GroundForge/sheet.html?img=376&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks)])
+wrap diagrams in a help page.
 Download `groundforge-opt.js` from a [release](https://github.com/d-bl/GroundForge/releases)
 to create pages with diagrams and the annotations and decoration you prefer.
 The following paragraphs show some examples.
-More details in the [API]
+More details in the [API].
 
 [API]: (https://d-bl.github.io/GroundForge/help/API
 
