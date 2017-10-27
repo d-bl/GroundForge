@@ -41,7 +41,7 @@ Diagrams with a square grid
 ---------------------------
 
 Links as in the TesseLace index ([example](https://d-bl.github.io/GroundForge/sheet.html?img=376&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks))
-wrap diagrams in a help page.
+wrap diagrams in page with additional information.
 Download `groundforge-opt.js` from a [release](https://github.com/d-bl/GroundForge/releases)
 to create pages with diagrams and the annotations and decoration you prefer.
 The following paragraphs show some examples.
