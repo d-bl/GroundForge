@@ -3,12 +3,12 @@
 
 @import "{{ site.theme }}";
 
-#sidebar ul { padding-left:0; margin-bottom:0px; font-weight: bold; font-size: 14px; }
+#sidebar ul { padding-left:0; margin-bottom:0; font-weight: bold; font-size: 14px; }
 #sidebar ul ul { padding-left:15px; font-weight: normal; font-size: 12px;}
 #sidebar li { list-style-type:none; padding-bottom: 8px; }
-#sidebar li li { list-style-type:disc; padding-bottom:0;}
+#sidebar li li { list-style-type:disc; }
 
-li li { padding-bottom:0; }
+ul ul { padding-bottom:0; }
 
 #sidebar hr { height: 12px; border: 0; box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.2); }
 
