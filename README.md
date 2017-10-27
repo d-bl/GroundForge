@@ -52,7 +52,7 @@ Using data from TesseLace
 Scientific research presented at [TesseLace] resulted in patterns defined by matrices.
 These patterns are alternatives for the `js/sample.js` used for the proof of concept.
 GroundForge uses a [compact] matrix format using a character to tag a node. The character defines the composition of incoming pairs of the node.
-The `src/maini/scala` code compiled into `docs/js/matrix-graphs.js` transforms these matrices into data for D3js.
+The `src/maini/scala` code compiled into `docs/js/GroundForge-opt.js` transforms these matrices into data for D3js.
 
 The geometric information within the matrices is used to initialise the thread diagrams, speeding up the animation as explained for the proof of concept.
 These [pages] were used to create the [TesseLace index] images for a selection of patterns.
@@ -126,7 +126,7 @@ Publish
 -------
 
 - Compile with `sbt '~fullOptJS'` (drop the quotes on windows)
-- Copy the content of `target\scala-2.11\groundforge-opt.js` into `docs/js/matrix-graphs.js`
+- Copy the content of `target/scala-2.11/groundforge-opt.js` into `docs/js/`
 - Check the results with `index.html`
 - If ok: commit, push and create a pull request 
 - Optional (if you know what you are doing): after merging with your master branch you can check the online demo in your own github fork: `http://YOURID.github.io/GroundForge/` 

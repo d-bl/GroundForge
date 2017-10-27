@@ -29,7 +29,7 @@
  ************************************************************************************************/
 
 // from docs/js
-require("../../../docs/js/matrix-graphs.js")  // loads dibl.D3Data() compiled from scala code
+require("../../../docs/js/GroundForge-opt.js")  // loads dibl.D3Data() compiled from scala code
                                               // use "target/scala-2.11/groundforge-fastopt.js" for
                                               // debugging purposes, it is created with 'sbt fastOptJS'
 require("../../../docs/js/show-graph.js")     // loads diagram object which feeds the dibl-data to D3js
