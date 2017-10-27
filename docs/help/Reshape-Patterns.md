@@ -8,7 +8,7 @@ Reshape Patterns
 
 The animation below shows how dragging all dots of a color simultaneously keeps the diagram valid.
 Occasionally multiple colors are moved together to preserve symmetry.
-The animation uses some of [these](/GroundForge/sheet.html?patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks) TesseLace patterns.
+The animation uses some of [these](../sheet.html?patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks) TesseLace patterns.
 For variants not in the animation, the figure with colored dots would need to span a larger section of the pattern to allow a transformation. 
 
 ![](animation/GIFCreator-me.gif)

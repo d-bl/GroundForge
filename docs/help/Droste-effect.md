@@ -49,7 +49,7 @@ draw a plait or something-pin-something like a simple stitch.
         <td><img src="stitches/ctc-ctcr.png"></td>
         <td><img src="stitches/ctc-ctcr-color.png"></td>
         <td>
-            <a href="/GroundForge/index.html?m=8%0A1;checker;8;6;0;0&s1=A1%3Dctc,A2%3Dctcr&s2=ctc,A24%3Dtctct,A12%3Dctcr,A13%3Dctcr,A20%3Dctc,A21%3Dctcl,A23%3Dctcl&s3=ctct"
+            <a href="../index.html?m=8%0A1;checker;8;6;0;0&s1=A1%3Dctc,A2%3Dctcr&s2=ctc,A24%3Dtctct,A12%3Dctcr,A13%3Dctcr,A20%3Dctc,A21%3Dctcl,A23%3Dctcl&s3=ctct"
             >ctc-ctcr</a></td>
         <td>weaving 2x1</td>
         <td><a href="http://gwydir.demon.co.uk/jo/lace/whiting/page150.htm">D16</a></td>
@@ -67,7 +67,7 @@ draw a plait or something-pin-something like a simple stitch.
         <td><img src="stitches/crclct-color2.png"></td>
         <td><img src="stitches/crclct.png"></td>
         <td></td>
-        <td><a href="/GroundForge/index.html?m=5-;bricks;7;5;0;0&s1=crclct&s2=ctct,B12=ct,B15=ct,B16=ct&s3=&#diagrams"
+        <td><a href="../index.html?m=5-;bricks;7;5;0;0&s1=crclct&s2=ctct,B12=ct,B15=ct,B16=ct&s3=&#diagrams"
         >crclct</a></td>
         <td>diagonal 1x2</td>
         <td>mirrored version of <a href="http://gwydir.demon.co.uk/jo/lace/whiting/page139.htm">D6</a></td>
@@ -201,4 +201,4 @@ So you need to develop an intuition to take your picks.
 [GroundForge]: /GroundForge/
 [special]: Choose-Stitches.html
 [this page]: Choose-Stitches.html
-[hoops]: https://github.com/d-bl/GroundForge/blob/master/docs/API.md
+[hoops]: API

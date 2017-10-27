@@ -37,7 +37,6 @@ When satisfied you can create a bigger patch the same way you moved the first fo
 
 [GroundForge]: /GroundForge/
 [SVG editor]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
-[logo]: /GroundForge/images/logo-medium.png
 
 Screenshots with InkScape v0.91
 -------------------------------

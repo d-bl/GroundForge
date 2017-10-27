@@ -43,7 +43,7 @@ The scripts and page in `docs/API` are minimalistic versions of its siblings in 
 The dressed up version adds decoration, event handling, configuration and some help.
 
 The scripts `index.js` and `jscolor.js` collect the configuration from an HTML form.
-The collected data is passed on to the scala code compiled into `matrix-graphs.js`. 
+The collected data is passed on to the scala code which is compiled into `GroundForge-opt.js`. 
 This scala code does the number crunching to create the diagrams bound by a squared grid
 and creates input for [D3.js] to render the dynamic pair and thread diagrams.
 
@@ -260,7 +260,7 @@ or possibly a later version:
 ```html
 <html>
 <head>
-    <script src="matrix-graphs.js" type="text/javascript"></script>
+    <script src="GroundForge-opt.js" type="text/javascript"></script>
 </head>
 <body>
     <div id="diagram"></div>

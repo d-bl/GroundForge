@@ -38,7 +38,7 @@ Below the index is republished (with kind permission) once more with a couple of
   Picots and tallies are also not supported but they are too obvious to require such an annotation.
 
 
-[reversed engineering]: /GroundForge/Reversed-engineering-of-patterns
+[reversed engineering]: Reversed-engineering-of-patterns
 [Marian Tempels]: https://github.com/MAETempels
 [index]: http://gwydir.demon.co.uk/jo/lace/whiting/index.htm#picindex
 [scan]: https://www2.cs.arizona.edu/patterns/weaving/books/whiting.jpg

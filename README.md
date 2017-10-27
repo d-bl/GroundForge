@@ -20,7 +20,7 @@ DEMO's
 A [dressed up](https://d-bl.github.io/GroundForge/) version and a dressed down [API](/GroundForge/API/index.html) version.
 The latter shows a starting point to configure your own web interface or embed just some of the diagrams on your own web page,
 though you may want to start by injecting the `show-graph.js` of the dressed up version into the dressed down version. 
-See also the [API](/GroundForge/docs/API.md) for other environments than a web-browser.
+See also the [API](https://d-bl.github.io/GroundForge/docs/API.md) for other environments than a web-browser.
 
 
 How it's Made / third party data and scripts

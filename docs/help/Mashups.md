@@ -40,14 +40,14 @@ on `#stitch-form` elements.
 Diagrams with a square grid
 ---------------------------
 
-Links as in the TesseLace index ([example](https://d-bl.github.io/GroundForge/sheet.html?img=376&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks))
+Links as in the TesseLace index ([example](../sheet.html?img=376&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks))
 wrap diagrams in page with additional information.
 Download `groundforge-opt.js` from a [release](https://github.com/d-bl/GroundForge/releases)
 to create pages with diagrams and the annotations and decoration you prefer.
 The following paragraphs show some examples.
 More details in the [API].
 
-[API]: (https://d-bl.github.io/GroundForge/help/API
+[API]: API
 
 
 ### Fixed layout on a landscape A4
@@ -113,5 +113,4 @@ The javascript for pair and thread diagrams is more complex,
 even without all the bells and whistles like panning, zooming dragging and downloads.
 Because of the complexity just links to the
 [source code](https://github.com/d-bl/GroundForge/tree/master/docs/API)
-for a simple [example page](https://d-bl.github.io/GroundForge/API/)
-with all three types of diagrams.
+for a simple [example page](../API/) with all three types of diagrams.
