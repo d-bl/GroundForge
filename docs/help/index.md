@@ -17,8 +17,7 @@ a short version of her [citation] of the Bauhaus school of art:
 _experiment, play, think. Some experiments may result in innovations,
 but even when reinventing wheels it is your own discovery._
 
-
-[GroundForge]: ../index.html
+[GroundForge]: /GroundForge/index.html
 [Jane Atkinson]: http://www.contemporarylace.com/
 [citation]: images/bauhaus.png
 
