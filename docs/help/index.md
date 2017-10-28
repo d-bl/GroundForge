@@ -12,12 +12,11 @@ Designing Bobbin Lace grounds
 Varying stitches and playing with downloadable diagrams renders
 a myriad of variations for a single pattern.
 No affiliation, but [Jane Atkinson]'s philosophy as written down in
-"Pattern Design for Torchon Lace" applies also to using GroundForge as a tool,
+"_Pattern Design for Torchon Lace_" applies also to using GroundForge as a tool,
 a short version of her [citation] of the Bauhaus school of art:
 _experiment, play, think. Some experiments may result in innovations,
 but even when reinventing wheels it is your own discovery._
 
-[GroundForge]: /GroundForge/index.html
 [Jane Atkinson]: http://www.contemporarylace.com/
 [citation]: images/bauhaus.png
 
