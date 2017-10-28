@@ -20,7 +20,7 @@ Explore, experiment, play and discover!
 
 * The [Tesselace index] shows 376  patterns by thumbnails of pair diagrams.
   The diagrams are collected from [tesseLace.com],
-  resulting from Ph.D research on _Algorithmically designed lace tessellations_.
+  resulting from Ph.D research on _Algorithmically designed lace tessellations_ by Veronika Irvine.
   When following an image link you will discover one or more patterns from the tesselace [slide show].
 * The [Droste effect](Droste-effect) page (thread diagrams used as pair diagrams)
   starts with some ready-to-show traditional grounds

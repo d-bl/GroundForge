@@ -7,7 +7,8 @@ Tesselace Index
 ===============
 
 The diagrams are collected from [TesseLace.com],
-resulting from Ph.D research on _Algorithmically designed lace tessellations_.
+resulting from Ph.D research on _Algorithmically designed lace tessellations_
+by Veronika Irvine.
 The images link to patterns like the TesseLace [slide show].
 In turn these patterns link to the main [GroundForge] page
 where you can choose stitches for a color coded pair diagram and thread diagram.
