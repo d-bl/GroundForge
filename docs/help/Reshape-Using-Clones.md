@@ -16,7 +16,7 @@ Table of contents
   * [Step by step for InkScape v0.91](#step-by-step-for-inkscape-v091)
   * [CorelDRAW X8 preparations](#coreldraw-x8-preparations)
 * [Screenshots for InkScape v0.91](#screenshots-for-inkscape-v091)
-* [Screenshots for CorelDraw X8](Reshape-Using-Clones#screenshots-for-coreldraw-x8)
+* [Screenshots for CorelDraw X8](#screenshots-for-coreldraw-x8)
 
 Editor Requirements
 -------------------

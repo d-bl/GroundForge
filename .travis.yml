@@ -40,6 +40,9 @@ matrix:
     before_deploy:
       - sed -i -e 's!/assets/!../assets/!' _site/help/*.html
       - sed -i -e 's!/GroundForge/help/!!' _site/help/*.html
+      - sed -i -e 's!<li><a href="/GroundForge/help/!<li><a href="!' _site/help/*.html
+      - sed -i -e 's!<li><a href="/GroundForge/images/!<li><a href="../images/!' _site/help/*.html
+      - sed -i -e 's!<li><a href="/GroundForge/images/!<li><a href="images/!' _site/js/show-graph.js
       - cd _site && zip -r -q GroundForge-pages.zip *
     deploy:
       provider: releases
