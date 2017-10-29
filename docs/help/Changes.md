@@ -39,4 +39,4 @@ Link rot
 Future changes can change the result of current links with diagram configurations.
 Take precautions for an easy [fix].
 
-[fix]: Fix-Old-Links
+[fix]: /GroundForge/help/Fix-Old-Links

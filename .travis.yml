@@ -36,15 +36,21 @@ matrix:
     my_validation:
     script:
       - jekyll build --source docs
-      - htmlproofer ./_site --disable-external --assume_extension --empty_alt_ignore --url-swap "\/GroundForge\/:/" --url-ignore "#"
-      - sed -i -e 's!/assets/!../assets/!' _site/help/*.html
-      - sed -i -e 's!/GroundForge/help/!!' _site/help/*.html
-      - sed -i -e 's!<li><a href="/GroundForge/help/!<li><a href="!' _site/help/*.html
-      - sed -i -e 's!="/GroundForge/images/!="../images/!' _site/help/*.html
-      - sed -i -e '/<li><a[^#]*$/ s!">!.html">!' _site/help/*.html
-      - sed -i -e 's!mp4.html!mp4!' _site/help/*.html
-      - sed -i -e 's!<li><a href="/GroundForge/images/!<li><a href="images/!' _site/js/show-graph.js
-      - htmlproofer ./_site --disable-external --empty_alt_ignore
+      - htmlproofer _site --url-swap "\/GroundForge\/:/" --url-ignore "#" --disable-external --empty_alt_ignore --assume_extension
+      - sed -i -e 's!/GroundForge/help/!!g'                 _site/help/*.html
+      - sed -i -e 's!/GroundForge/images/!../images/!g'     _site/help/*.html
+      - sed -i -e 's!/assets/!../assets/!g'                 _site/help/*.html
+      - sed -i -e 's!/GroundForge/!../!g'                   _site/help/*.html
+      - sed -i -e '/^[^#:]*$/ s!">!.html">!'                _site/help/*.html
+      - sed -i -e 's!mp4.html!mp4!g'                        _site/help/*.html
+      - sed -i -e 's!png.html!png!g'                        _site/help/*.html
+      - sed -i -e 's!gif.html!gif!g'                        _site/help/*.html
+      - sed -i -e 's!/.html!../!g'                          _site/help/*.html
+      - sed -i -e 's!/GroundForge/help/!help/!g'            _site/*.html _site/js/show-graph.js
+      - sed -i -e 's!/GroundForge/images/!images/!g'        _site/*.html _site/js/show-graph.js
+      - sed -i -e 's!/GroundForge/!./!g'                    _site/*.html _site/js/show-graph.js
+      - sed -i -e '/="help/ s!" target!.html" target>!'     _site/*.html
+      - htmlproofer ./_site --disable-external --empty_alt_ignore  --url-ignore "#"
     before_deploy:
       - cd _site && zip -r -q GroundForge-pages.zip *
     deploy:

@@ -14,4 +14,4 @@ Typing colors is also possible.
 To quickly set a sequence of colors into black or white
 repeat tabbing to the next color and type `000` or `fff`.
 
-![](images/thread-colors.png)
+![](/GroundForge/help/images/thread-colors.png)

@@ -75,7 +75,7 @@ _On the right_: dots selected as objects, note the dashed rectangles around the 
 
 _At the bottom_: light blue dots and their line ends selected by their nodes. The toolbar indicates node mode with the second icon.
 
-[logo]: ../images/logo-medium.png
+[logo]: /GroundForge/images/logo-medium.png
 ![](images/reshape-using-clones.png)
 
 Screenshots for CorelDraw X8

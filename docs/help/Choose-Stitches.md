@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Choose Stitches
-javascript: ../js/stitches.js
+javascript: /GroundForge/js/stitches.js
 ---
 
 Choose Stitches
@@ -64,7 +64,7 @@ An Example
 
 The image below shows screen shot snippets of a pattern and its stitches.
 
-![](images/stitch-ids.png)
+![](/GroundForge/help/images/stitch-ids.png)
 
 * _Top left:_ the definition of a pattern created by one of the example page.
   The digits inside the circles determine the configuration of arrows arriving at that position. 
@@ -77,8 +77,7 @@ The image below shows screen shot snippets of a pattern and its stitches.
 * _Bottom:_ the diagrams generated with the chosen stitches.
   When hovering with your mouse over a stitch (in a generated pattern, not the screenshot above), your browser is supposed to show the id and instructions of a stitch.
 
-[stitches]: /GroundForge/stitches.html
 [main]: /GroundForge/
-[assemble]: Reversed-engineering-of-patterns
+[assemble]: /GroundForge/help/Reversed-engineering-of-patterns
 [#51]: https://github.com/d-bl/GroundForge/issues/51
 [#96]: https://github.com/d-bl/GroundForge/issues/96
