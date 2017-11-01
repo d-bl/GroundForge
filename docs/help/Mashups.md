@@ -6,10 +6,10 @@ Create mash-ups
 ===============
 
 * [Convenience Forms](#convenience-forms)
+* [Pair and thread diagrams](#pair-and-thread-diagrams)
 * [Diagrams with a square grid](#diagrams-with-a-square-grid)
     + [Fixed layout on a landscape A4](#fixed-layout-on-a-landscape-a4)
     + [Dynamic layout](#dynamic-layout)
-* [Pair and thread diagrams](#pair-and-thread-diagrams)
 
 You can mix and match components of the pages
 or create SVG documents in a JVM or node.js environment.
@@ -33,8 +33,18 @@ The script requires the following CSS:
 .show { display: block; }
 ```
 
-[Optional CCS](https://github.com/d-bl/GroundForge/blob/master/docs/assets/css/style.scss)
-on `#stitch-form` elements.
+Some [optional CCS](https://github.com/d-bl/GroundForge/blob/master/docs/assets/css/style.scss)
+on `#stitch-form` elements (ignore the rest) that suites the [architect theme](https://github.com/pages-themes/architect#readme).
+
+Pair and thread diagrams
+------------------------
+
+The javascript for pair and thread diagrams is quite complex,
+even without all the bells and whistles like panning, zooming dragging and downloads.
+Because of the complexity a link to a [demo](../API/)
+(which also includes three JavaScript lines for a diagram on a square grid) 
+and a link to actual the [source code](https://github.com/d-bl/GroundForge/tree/master/docs/API)
+of the demo.
 
 
 Diagrams with a square grid
@@ -43,7 +53,7 @@ Diagrams with a square grid
 Links as in the TesseLace index ([example](../sheet.html?img=376&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks))
 wrap diagrams in page with additional information.
 Download `groundforge-opt.js` from a [release](https://github.com/d-bl/GroundForge/releases)
-to create pages with diagrams and the annotations and decoration you prefer.
+to create pages with personalised annotations and decoration.
 The following paragraphs show some examples.
 More details in the [API].
 
@@ -87,7 +97,7 @@ The dynamic layout will fit as many diagrams on a row as allowed by your monitor
     <style>svg {display : inline-block;}</style>
     <script>
         var nr = 0
-            function add(matrix, tiling) {
+        function add(matrix, tiling) {
             var singleSheet = new dibl.PatternSheet(2, "height='250px' width='250px'", "PATTERN" + nr++)
             singleSheet.add(matrix, tiling)
             document.getElementsByTagName("BODY")[0].innerHTML += (singleSheet.toSvgDoc().trim())
@@ -105,12 +115,3 @@ The dynamic layout will fit as many diagrams on a row as allowed by your monitor
 </body>
 </html>
 ```
-
-Pair and thread diagrams
-------------------------
-
-The javascript for pair and thread diagrams is more complex,
-even without all the bells and whistles like panning, zooming dragging and downloads.
-Because of the complexity just links to the
-[source code](https://github.com/d-bl/GroundForge/tree/master/docs/API)
-for a simple [example page](../API/) with all three types of diagrams.
