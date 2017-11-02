@@ -20,8 +20,7 @@ Color code dialects
 Various dialects of color codes for pair diagrams are used by bobbin lace designers:
 a [Belgian] version, a simplified [Danish] version, a [red-blue] version and perhaps more.
 Allowing -even encouraging- unorthodox stitches, the liberty to use both open and closed stitches,
-poor or no support for tallies, pins and gimps in GroundForge and last but not least
-only "X" not ">&#x02299;<" for stitches asks for yet another dialect.
+poor or no support for tallies, pins and gimps in GroundForge and other limitations asks for yet another dialect.
 
 [Belgian]: https://www.mail-archive.com/lace@arachne.com/msg51345.html
 [Danish]: https://www.mail-archive.com/lace@arachne.com/msg51355.html
@@ -42,8 +41,7 @@ Colors by GroundForge
 This dialect is still under construction,
 follow the progress of pull request [#106](https://github.com/d-bl/GroundForge/pull/106).
 
-Anyway a plait in a pair diagram is drawn as `X`, not as `>---<`.
-
+Anyway, a plait in a pair diagram is not drawn as ">---<" and stitch-pin-stitch is not as "ꅉ" but both as "X".
 
 Tweak Colors
 ------------
