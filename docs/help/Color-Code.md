@@ -11,8 +11,6 @@ Color Code
 - [Colors by GroundForge](#colors-by-groundforge)
 - [Tweak Colors](#tweak-colors)
 
-<sup><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></sup>
-
 
 Color code dialects
 -------------------
