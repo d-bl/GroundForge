@@ -37,19 +37,20 @@ matrix:
     script:
       - jekyll build --source docs
       - htmlproofer _site --url-swap "\/GroundForge\/:/" --url-ignore "#" --disable-external --empty_alt_ignore --assume_extension
-      - sed -i -e 's!/GroundForge/help/!!g'                 _site/help/*.html
-      - sed -i -e 's!/GroundForge/images/!../images/!g'     _site/help/*.html
-      - sed -i -e 's!/assets/!../assets/!g'                 _site/help/*.html
-      - sed -i -e 's!/GroundForge/!../!g'                   _site/help/*.html
-      - sed -i -e '/^[^#:]*$/ s!">!.html">!'                _site/help/*.html
-      - sed -i -e 's!mp4.html!mp4!g'                        _site/help/*.html
-      - sed -i -e 's!png.html!png!g'                        _site/help/*.html
-      - sed -i -e 's!gif.html!gif!g'                        _site/help/*.html
-      - sed -i -e 's!/.html!../!g'                          _site/help/*.html
-      - sed -i -e 's!/GroundForge/help/!help/!g'            _site/*.html _site/js/show-graph.js
-      - sed -i -e 's!/GroundForge/images/!images/!g'        _site/*.html _site/js/show-graph.js
-      - sed -i -e 's!/GroundForge/!./!g'                    _site/*.html _site/js/show-graph.js
-      - sed -i -e '/="help/ s!" target!.html" target>!'     _site/*.html
+      - sed -i -e 's!href="/GroundForge/help/*\([#"]\)!href="index.html\1!g' _site/help/*.html
+      - sed -i -e 's!/GroundForge/help/!!g'                                  _site/help/*.html
+      - sed -i -e 's!/GroundForge/images/!../images/!g'                      _site/help/*.html
+      - sed -i -e 's!/assets/!../assets/!g'                                  _site/help/*.html
+      - sed -i -e 's!href="/GroundForge/*\([#"]\)!href="../index.html\1!g'   _site/help/*.html
+      - sed -i -e 's!/GroundForge/!../!g'                                    _site/help/*.html
+      - sed -i -e 's!\(href="[^#][^"#?.:]*\)\([#"?]\)!\1.html\2!'            _site/help/*.html
+      - sed -i -e 's!/.html!../index.html/!g'                                _site/help/*.html
+      - sed -i -e 's!/GroundForge/help/!help/!g'                             _site/*.html _site/js/show-graph.js
+      - sed -i -e 's!/GroundForge/images/!images/!g'                         _site/*.html _site/js/show-graph.js
+      - sed -i -e 's!/GroundForge/!./!g'                                     _site/*.html _site/js/show-graph.js
+      - sed -i -e '/="help/ s!" target!.html" target>!'                      _site/*.html
+      - sed -i -e 's!\(href="[^#][^"#?.:]*\)\([#"?]\)!\1.html\2!'            _site/*.html
+      - sed -i -e 's!./.html!index.html/!g'                                  _site/*.html
       - htmlproofer ./_site --disable-external --empty_alt_ignore  --url-ignore "#"
     before_deploy:
       - cd _site && zip -r -q GroundForge-pages.zip *
