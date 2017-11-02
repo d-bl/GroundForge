@@ -17,7 +17,7 @@
 <body onload="loadUrlArgs()">
 <form onsubmit="return false">
     <article>
-        <img src="images/logo-medium.png" alt="DiBL logo"/>
+        <a id="logo" href="/GroundForge/" title="Main page"><img src="images/logo-medium.png" alt="DiBL logo"/></a>
         <h1>GroundForge</h1>
         <p><em>Choose patterns and stitches to generate diagrams for variations of bobbin lace grounds.</em></p>
         <p>
@@ -29,16 +29,16 @@
         <fieldset>
             <legend>Get started</legend>
             Use the
-            <a href="help/examples" target="_blank">examples</a>
-            (<a href="help/Droste-effect" target="_blank" title="Droste effect">D</a>,
+            <a href="/GroundForge/help/examples" target="_blank">examples</a>
+            (<a href="/GroundForge/help/Droste-effect" target="_blank" title="Droste effect">D</a>,
             <a href="https://maetempels.github.io/MAE-gf/" target="_blank" title="MAE-gf">M</a>,
-            <a href="help/TesseLace-Index" target="_blank" title="TesseLace Index">T</a>,
-            <a href="help/Whiting-Index" target="_blank" title="Whiting Index">W</a>)
+            <a href="/GroundForge/help/TesseLace-Index" target="_blank" title="TesseLace Index">T</a>,
+            <a href="/GroundForge/help/Whiting-Index" target="_blank" title="Whiting Index">W</a>)
             to fill in the parameter form and perhaps stitches.
             Subsequently show the diagrams and play with stitch variations and/or thread colours.
         </fieldset>
         <fieldset id="matrixOpts">
-            <legend>Parameters <a href="help/Parameters"
+            <legend>Parameters <a href="/GroundForge/help/Parameters"
                                   target="_blank"><img
                     src="help/images/information-icon.png"></a></legend>
             <fieldset>
@@ -92,11 +92,11 @@
             ><button id="permalink" type="button"
                      title="link to current pattern and stitches"
             ><img src="images/link.png"></button></a>
-            <label for="permalink"><a href="help/Undo"
+            <label for="permalink"><a href="/GroundForge/help/Undo"
                                     target="_blank"><img src="help/images/information-icon.png"></a></label>
-            <a href="index.html">
+            <a href="/GroundForge/">
             <a onmouseenter="this.href='http://web.archive.org/*/https://d-bl.github.io/GroundForge/'+createUrlArgs()"
-               href="" target="_blank"
+               href="#" target="_blank"
             ><button id="archivedlink" type="button"
                      title="future proof link: confirm the wayback machine to archive a snapshot of your pattern"
             ><img src="images/clock.png"> <img src="images/link.png"></button></a>
@@ -111,7 +111,7 @@
             Generate the diagrams of the selected pattern.
             The pair diagram will be a color coded version of the chosen pattern or stitch.
         </p>
-        <label for="s1">Stitches <a href="help/Choose-Stitches"
+        <label for="s1">Stitches <a href="/GroundForge/help/Choose-Stitches"
                                     target="_blank"><img src="help/images/information-icon.png"></a></label>
         <input id="s1"
                name="s"
@@ -141,7 +141,7 @@
             </tr>
             <tr>
                 <!-- @formatter:off -->
-                <td><a href="help/Thread-Colors"
+                <td><a href="/GroundForge/help/Thread-Colors"
                        target="_blank"><img src="help/images/information-icon.png"></a></td>
                 <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c1"  class="jscolor" value="000000"/></td>
                 <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c2"  class="jscolor" value="000000"/></td>

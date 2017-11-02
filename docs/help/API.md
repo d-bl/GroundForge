@@ -37,7 +37,7 @@ Execution environments
 Web browser
 -----------
 
-Demos: a [dressed up](/) version and a dressed down [docs/API](../API/index.html) version.
+Demos: a [dressed up](/GroundForge/) version and a dressed down [docs/API](/GroundForge/API/index.html) version.
 
 The scripts and page in `docs/API` are minimalistic versions of its siblings in `docs` and `docs/js`.
 The dressed up version adds decoration, event handling, configuration and some help.
@@ -68,7 +68,7 @@ A [PatternDemos class] shows batch generation of pair/thread diagrams.
 Though written in scala both can as easily be used in java.
 
 [facades]: https://github.com/spaced/scala-js-d3/issues/25
-[PatternDemos class]: ../../src/test/scala/dibl/PatternDemos.scala
+[PatternDemos class]: https://github.com/d-bl/GroundForge/blob/master/src/test/scala/dibl/PatternDemos.scala
 [dependencies]: https://github.com/d-bl/GroundForge/blob/b97deb1963be7e9cacb8836e708783174c3f877a/pom.xml#L12-L28
 
 
@@ -79,7 +79,7 @@ A few steps are required to create an environment to [run JavaScript] without a 
 
 * Install [node.js] which should work on any operating system. It creates the commands `node`, `npm` and a `node.js command prompt`. A screen shot for Windows 10:
 
-  [<img src="images/nodejs-command-search-thumb.png">](images/nodejs-command-search-on-windows-10.png)
+  [<img src="/GroundForge/help/images/nodejs-command-search-thumb.png">](/GroundForge/help/images/nodejs-command-search-on-windows-10.png)
 * Download and unzip `GroundForge`:
   * either a [release], since 2017-01-11
   * or the latest version, possibly not yet tagged as a release: [zip] or [tar.gz]
@@ -105,7 +105,7 @@ Create a thread diagram with node.js
 
 An example session of `node.js`:
 
-![node.js session](images/node-js-session.png)
+![node.js session](/GroundForge/help/images/node-js-session.png)
 
 Type the lines after the prompt `>`. 
 Please compare the screen shot above with the actual usage comment in your version of <strike>`batch.js`</strike> `create-svg.js`.
@@ -127,7 +127,7 @@ What goes between `(...)` is documented below.
 
 The countdown process until the diagram gets saved runs in the back ground. The more nodes where created, the longer each countdown step takes. Issuing a new command might abort the one still running.
 
-[properties]: images/nodejs-shortcut-properties.png
+[properties]: /GroundForge/help/images/nodejs-shortcut-properties.png
 
  
 Functions and Classes
@@ -154,8 +154,8 @@ _the script was renamed after [release] 2017-01-11_.
 * **`countDown`** - increase the value if a (large) pattern doesn't [stretch] out properly, each increment has same effect as a gentle nudge on the web page. The value should possibly be some function of `rows`, `cols` and the final number of created nodes.
 
 
-[main]: ../index.html
-[stretch]: Bloopers#3
+[main]: /GroundForge/
+[stretch]: /GroundForge/help/Bloopers#3
 
 
 ### JavaScript example
@@ -214,15 +214,13 @@ The constructor (Scala/Java only) expects a pair diagram as argument which is an
 
 Download version [0f39fa2](https://github.com/d-bl/GroundForge/archive/0f39fa2.zip) and examine `docs/index.html` for details.
 
-* **`compactMatrix`** - see legend on matrix tab. You can copy-paste from the tool tips on the [gallery] page, any sequence of non-alphanumeric characters or dashes is treated as a line separator.
+* **`compactMatrix`** - ..., any sequence of non-alphanumeric characters or dashes is treated as a line separator.
 * **`tileType`** - see values for drop down on matrix tab: `checker` or `bricks`
 * **`stitches`** - see stitches tab
 * **`rows`** - see patch size tab
 * **`cols`** - see patch size tab
 * **`shiftLeft`** - see footside tab
 * **`shiftUp`** - see footside tab
-
-[gallery]: TesseLace-Index.html
 
 Another signature used by `createThreadSVG`:
 
@@ -232,13 +230,13 @@ Another signature used by `createThreadSVG`:
 
 Class `dibl.PatternSheet`
 --------------------------
-This [demo](../sheet.html?img=376&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks)
+This [demo](/GroundForge/sheet.html?img=376&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks)
 shows a set of diagrams arranged depending on the available width.
 
 ### Method **`add`**
 
-* **`compactMatrix`** - Matrix as explained in this [help page](Reversed-engineering-of-patterns), for example `B-C-,---5,C-B-,-5--`.
-More examples are available via the [TesseLace Index](TesseLace-Index).
+* **`compactMatrix`** - Matrix as explained in this [help page](/GroundForge/help/Reversed-engineering-of-patterns), for example `B-C-,---5,C-B-,-5--`.
+More examples are available via the [TesseLace Index](/GroundForge/help/TesseLace-Index).
 Select one and copy-paste the matrices displayed just above one of the diagrams. 
 * **`tileType`** - `checker` or `bricks`.
 
