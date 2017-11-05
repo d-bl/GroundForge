@@ -17,8 +17,9 @@ li li { padding-bottom:0; }
 figure { display: inline-block; margin-left:0; margin-top:0; margin-right:1em; }
 figure image, figcaption { display: block; }
 
-#stitch-form { padding-bottom: 1em; margin-bottom: 1em; }
-#stitch-form input { width: 90%; }
-#stitch-form table, #stitch-form td { border: 0; }
+#stitch-form, #tiles-form { padding-bottom: 1em; margin-bottom: 1em; }
+#stitch-form input, #tiles-form input { width: 90%; }
+#stitch-form table, #stitch-form td,  #tiles-form table, #stitch-form td { border: 0; }
+#shift, #rows, #cols { display: inline-block; }
 .hide { display: none; }
 .show { display: block; }
