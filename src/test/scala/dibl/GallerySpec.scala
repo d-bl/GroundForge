@@ -5,7 +5,7 @@ import org.scalatest.{FlatSpec, Matchers}
 import scala.util.Success
 
 class GallerySpec extends FlatSpec with Matchers {
-  "each gallery pattern" should "succeed (one fails because of bug #93)" ignore {
+  "each gallery pattern" should "succeed (one fails because of bug #93)" in {
     val result = Matrices.values.filter { l =>
       val f = l.split(";")
       val cols = if (f.size > 3) f(3).toInt else 9

@@ -28,10 +28,10 @@ object Matrices {
   )).lines()
     .iterator()
     .asScala
-    .filter(_.contains("?patch="))
+    .filter(_.contains("&patch="))
     .toSeq
     .flatMap(s => URLDecoder.decode(s,"UTF8")
-      .replaceAll(".*html.patch=", "")
+      .replaceAll(".*img=...&patch=", "")
       .replace(")", "")
       .split("&patch=")
     ).distinct
