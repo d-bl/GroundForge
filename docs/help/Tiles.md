@@ -7,11 +7,10 @@ javascript: /GroundForge/js/tiles.js
 Tiles
 =====
 
-The stitch form matches the input field in the pattern form:
-one stitch field for each non-dash in the pattern definition.
-The digits and letters of a pattern tell where the pairs com from.
-With letters at least one of the pairs travels across a dash.
-An odd number of matrix rows is not possible, see issue
-[#96](https://github.com/d-bl/GroundForge/issues/96).
-
 {% include tiles-form.html %}
+
+Each non-dash of the pattern definition matches one field in the stitches form.
+The digits and letters of a pattern tell where the pairs com from.
+With a letter at least one of the pairs travels across a dash.
+The visual representation of the pattern gets updated when you leave the definition:
+use the tab key to go to the next field or click somewhere else on the page.

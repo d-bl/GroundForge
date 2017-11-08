@@ -20,6 +20,9 @@ figure image, figcaption { display: block; }
 #stitch-form, #tiles-form { padding-bottom: 1em; margin-bottom: 1em; }
 #stitch-form input, #tiles-form input { width: 90%; }
 #stitch-form table, #stitch-form td,  #tiles-form table, #stitch-form td { border: 0; }
-#shift, #rows, #cols { display: inline-block; }
 .hide { display: none; }
 .show { display: block; }
+
+#repeats-form input[type="number"] { width:3em; }
+#repeats-form div { display: inline-block; padding-right: 1em; }
+#repeats-form div div { display: inline-block; padding-right: 0; vertical-align: middle; }

@@ -13,18 +13,22 @@ function setVisibility() {
       if (r < rows) cols = Math.min(8,matrixLines[r].length)
       var enable =  r < rows && c >= 0 && c < cols && matrixLines[r][c] != "-"
       var id = "r" + (r + 1) + "-c" + (c + 1)
-      console.log("r="+r+" c="+c +" enable="+enable+" id="+id)
+//      console.log("r="+r+" c="+c +" enable="+enable+" id="+id)
       setEnabled(id, enable)
     }
   }
   // TODO document.getElementById("diagram").innerHTML += "generating diagram"
   document.getElementById("link").href = "javascript:alert('not yet implemented')"
-}
+  document.getElementById('patternByName')[0].selected = "selected"
+ }
 function setEnabled(id, enabled) {
   var x = document.getElementById(id)
   x.className = (enabled
                 ? x.className.replace("hide","show")
                 : x.className.replace("show","hide")
                 )
+}
+function setPattern (value) {
+  document.getElementById('matrix').value = value
 }
 
