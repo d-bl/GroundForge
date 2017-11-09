@@ -13,8 +13,13 @@ function setVisibility() {
       if (r < rows) cols = Math.min(8,matrixLines[r].length)
       var enable =  r < rows && c >= 0 && c < cols && matrixLines[r][c] != "-"
       var id = "r" + (r + 1) + "-c" + (c + 1)
-//      console.log("r="+r+" c="+c +" enable="+enable+" id="+id)
       setEnabled(id, enable)
+      var svgId = "svgR" + (r + 1) + "-C" + (c + 1)
+      var href = document.getElementById(svgId).attributes["xlink:href"]
+      if (enable)
+        href.value = "#g" + matrixLines[r][c]
+      else
+        href.value = "#g-"
     }
   }
   // TODO document.getElementById("diagram").innerHTML += "generating diagram"
@@ -28,7 +33,10 @@ function setEnabled(id, enabled) {
                 : x.className.replace("show","hide")
                 )
 }
-function setPattern (value) {
-  document.getElementById('matrix').value = value
+function setPattern (matrix, shift, direction) {
+  document.getElementById('matrix').value = matrix
+  document.getElementById('shift').value = shift
+  document.getElementById(direction).checked = true
+  setVisibility()
 }
 
