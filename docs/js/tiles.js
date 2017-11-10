@@ -7,19 +7,26 @@ function setVisibility() {
   var stitches = ""
   var r = 0
   var c = 0
+  var noShift = document.getElementById('shift').value == 0
   for (r = 0; r < 8; r++) {
+    cols = Math.min(8,matrixLines[r%rows].length)
     for (c = 0; c < 8; c++) {
-      var cols = -1
-      if (r < rows) cols = Math.min(8,matrixLines[r].length)
-      var enable =  r < rows && c >= 0 && c < cols && matrixLines[r][c] != "-"
+      var enable =  r < rows && c < cols && matrixLines[r][c] != "-"
       var id = "r" + (r + 1) + "-c" + (c + 1)
       setEnabled(id, enable)
       var svgId = "svgR" + (r + 1) + "-C" + (c + 1)
-      var href = document.getElementById(svgId).attributes["xlink:href"]
-      if (enable)
+      var el = document.getElementById(svgId)
+      var href = el.attributes["xlink:href"]
+      if (enable) {
         href.value = "#g" + matrixLines[r][c]
-      else
+        el.style = "opacity:1.0;"
+      } else if (noShift) {
+        href.value = "#g" + matrixLines[r%rows][c%cols]
+        el.style = "opacity:0.4;"
+      } else {
         href.value = "#g-"
+        el.style = "opacity:0.4;"
+      }
     }
   }
   // TODO document.getElementById("diagram").innerHTML += "generating diagram"
