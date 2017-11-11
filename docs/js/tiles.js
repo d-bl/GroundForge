@@ -1,7 +1,7 @@
 function setVisibility() {
 
   var matrix = document.getElementById("matrix").value
-  var matrixLines = matrix.split(/[^-a-zA-Z0-9]+/)
+  var matrixLines = matrix.toUpperCase().trim().split(/[^-A-Z0-9]+/)
   var rows = Math.min(8,matrixLines.length)
 
   var stitches = ""
