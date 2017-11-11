@@ -27,7 +27,7 @@ function setVisibility() {
   // TODO document.getElementById("diagram").innerHTML += "generating diagram"
   document.getElementById("link").href = "javascript:alert('not yet implemented')"
   document.getElementById('patternByName')[0].selected = "selected"
-    }
+}
 function setEnabled(id, enabled) {
   var x = document.getElementById(id)
   x.className = (enabled

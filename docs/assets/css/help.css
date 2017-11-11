@@ -29,3 +29,4 @@ figcaption { text-align: center; background-color: #ddd; border-radius: 3px; mar
 #repeats-form input[type="number"] { width:3em; }
 #repeats-form div { display: inline-block; padding-right: 1em; }
 #repeats-form div div { display: inline-block; padding-right: 0; vertical-align: middle; }
+#get-started p { margin-top: 0; margin-bottom: 0; }
