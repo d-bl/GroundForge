@@ -15,7 +15,7 @@ function setVisibility() {
       var enable =  r < rows && c < cols && matrixLines[r][c] != "-"
       var id = "r" + (r + 1) + "-c" + (c + 1)
       setEnabled(id, enable)
-      var svgEl = document.getElementById("svgR" + (r + 1) + "-C" + (c + 1))
+      var svgEl = document.getElementById("svg-" + id)
       var firstTile = r < rows && c < cols
       var colOffset = (!shiftCols ? 0 : Math.floor(r/rows) * shift)
       var rowOffset = (shiftCols ? 0 : Math.floor(c/cols) * shift)
@@ -24,9 +24,22 @@ function setVisibility() {
       svgEl.attributes["xlink:href"].value = "#g" + hrefValue
     }
   }
-  // TODO document.getElementById("diagram").innerHTML += "generating diagram"
-  document.getElementById("link").href = "javascript:alert('not yet implemented')"
-  document.getElementById('patternByName')[0].selected = "selected"
+  document.getElementById("link").href = "../index.html" +
+    "?matrix=" + matrixLines.join(",") +
+    "&tiles=" + (shift == 0 ? "checker" : ((shift * 2 == matrixLines[0].length ) && shiftCols ? "bricks" : "notYetImplemented" )) +
+    "&" + (shiftCols ? "shiftCols=" : "shiftRows=" ) + shift +
+    "&s1=" + getChosenStitches() +
+    ""
+}
+function getChosenStitches() {
+  var els = document.getElementById("stitch-form").elements;
+  var kvpairs = [];
+  for (i=0; i < els.length; i++) {
+     var e = els[i];
+     if (e.className != "hide")
+       kvpairs.push(e.name + "=" + e.value)
+  }
+  return kvpairs.join(",")
 }
 function setEnabled(id, enabled) {
   var x = document.getElementById(id)
