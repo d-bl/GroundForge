@@ -1,4 +1,4 @@
-<form onsubmit="return false" id="stitch-form">
+<form onsubmit="return false">
     <label for="base">Pattern</label>
     <select id="base" onchange="setVisibility()">
         <option value="-5;bricks;7;5;0;0&s3=&s2=cross=ctct,twist=ct&s1=" selected>diagonal 1x2 bricks</option>
@@ -26,7 +26,7 @@
     </select>
     <a href="/GroundForge/help/Droste-effect#tiling" target="_blank"><img src="/GroundForge/help/images/information-icon.png"></a>
     <br>
-    <fieldset>
+    <fieldset id="stitch-form">
         <legend>Stitches</legend>
         <table>
             <tr>
