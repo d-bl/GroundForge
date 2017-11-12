@@ -24,10 +24,11 @@ function setVisibility() {
       svgEl.attributes["xlink:href"].value = "#g" + hrefValue
     }
   }
+  var tiling = (shift == 0 ? "checker" : ((shift * 2 == matrixLines[0].length ) && shiftCols ? "bricks" : "notYetImplemented" ))
   document.getElementById("link").href = "../index.html" +
-    "?matrix=" + matrixLines.join(",") +
-    "&tiles=" + (shift == 0 ? "checker" : ((shift * 2 == matrixLines[0].length ) && shiftCols ? "bricks" : "notYetImplemented" )) +
-    "&" + (shiftCols ? "shiftCols=" : "shiftRows=" ) + shift +
+    "?m=" + matrixLines.join(",") +
+    ";" + tiling + ";12;12;0;2" +
+    "&" + (shiftCols ? "shiftCols=" : "shiftRows=" ) + shift + // the new tiling
     "&s1=" + getChosenStitches() +
     ""
 }
