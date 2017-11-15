@@ -45,7 +45,7 @@ matrix:
       - sed -i -e 's!/GroundForge/!../!g'                                    _site/help/*.html
       - sed -i -e 's!\(href="[^#][^"#?.:]*\)\([#"?]\)!\1.html\2!'            _site/help/*.html
       - sed -i -e 's!/.html!../index.html/!g'                                _site/help/*.html
-      - sed -i -e 's!/GroundForge../assets/!../assets!g'                     _site/help/*.html
+      - sed -i -e 's!/GroundForge../assets/!../assets/!g'                     _site/help/*.html
       - sed -i -e 's!https://d-bl.github.io/GroundForge/!!g'                 _site/js/GroundForge-opt.js
       - sed -i -e 's!/GroundForge/help/!help/!g'                             _site/*.html _site/js/show-graph.js
       - sed -i -e 's!/GroundForge/images/!images/!g'                         _site/*.html _site/js/show-graph.js
