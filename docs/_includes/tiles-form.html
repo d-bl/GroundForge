@@ -482,7 +482,12 @@
                 <input type="number" name="shift" id="shift" min="0" max="7" value="1" onchange="setVisibility()">
             </div>
             <div>
-                <label for="shift">stitch(es).</label>
+                <input type="radio" name="direction" id="cols" checked="checked" onchange="setVisibility()"><label for="cols">column(s)</label>
+                <br>
+                <input type="radio" name="direction" id="rows" onchange="setVisibility()"><label for="rows">row(s)</label>
+            </div>
+            <div>
+                <label for="shift">of stitches.</label>
             </div>
         </div>
         <div>
