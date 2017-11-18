@@ -1,0 +1,594 @@
+<head>
+    <link rel="stylesheet" href="../assets/css/help.css" type="text/css">
+    <script src="../js/tiles.js"></script>
+</head>
+<body>
+<form onsubmit="return false">
+    <fieldset id="get-started">
+        <legend>Get started</legend>
+        <figure>
+            <a href="javascript:setPattern('8\n1', 0, 'cols')"><img src="../help/tl/181.png"></a>
+            <figcaption><a href="https://d-bl.github.io/GroundForge/sheet.html?img=181&patch=88%2011;bricks&patch=66%2022;bricks&patch=88%2099%2011%2000;bricks&patch=66%2011%2088%2022;bricks&patch=66%2099%2022%2000;bricks"
+                           target="_blank">...&#8599;</a>
+            </figcaption>
+        </figure>
+        <figure>
+            <a href="javascript:setPattern('5-', 1, 'cols')"><img src="../help/tl/214.png"></a>
+            <figcaption>
+                <a href="javascript:setPattern('5353\n5353\n5-5-\n-5-5', 0, 'cols')">2</a>
+                <a href="javascript:setPattern('5632\n56-2\n5-5-\n-535', 0, 'cols')">3</a>
+                <a href="https://d-bl.github.io/GroundForge/sheet.html?img=214&patch=5-%20-5;checker&patch=5353%205353%205-5-%20-5-5;checker&patch=5632%2056-2%205-5-%20-535;checker&patch=53%205-%20-5%205-;bricks&patch=44%2077%2044%2077;bricks&patch=44%2044%2077%2077;bricks&patch=66%2088%2066%2011;bricks&patch=66%2066%2088%2011;checker&patch=66%2066%2099%2000;checker&patch=6;checker&patch=566-%2066-5%206-56%20-566;checker&patch=53%2053%2053%205-;bricks&patch=5663%205663;checker&patch=53%205-;bricks&patch=563%20563%20563;checker&patch=53%2053;checker&patch=5632%205632;checker&patch=5353%205353;bricks"
+                   target="_blank">...&#8599;</a>
+            </figcaption>
+        </figure>
+        <figure>
+            <a href="javascript:setPattern('B-C-\n---5\nC-B-\n-5--', 0, 'cols')"><img src="../help/tl/376.png"></a>
+            <figcaption>
+                <a href="javascript:setPattern('5831\n-4-7', 0, 'cols')">2</a>
+                <a href="javascript:setPattern('-4-7\n5---\n-C-B\n3158', 2, 'cols')">3</a>
+                <a href="javascript:setPattern('5-O-E-\n-E-5-O\n5-O-E-', 3, 'cols')">4</a>
+                <a href="javascript:setPattern('68\n-4', 0, 'cols')">5</a>
+                <a href="javascript:setPattern('86\n-4', 1, 'cols')">6</a>
+            </figcaption>
+        </figure>
+        <figure>
+            <a href="javascript:setPattern('L-O-\n---5\nH-E-\n-5--', 0, 'cols')"><img src="../help/tl/257.png"></a>
+            <figcaption>
+                <a href="javascript:setPattern('68\n-4\n21\n-7', 0, 'cols')">2</a>
+            </figcaption>
+        </figure>
+        <figure>
+            <a href="javascript:setPattern('5-5-\n-5--\nB-C-\n-5-5', 2, 'cols')"><img src="../help/tl/135.png"></a>
+            <figcaption>
+                <a href="javascript:setPattern('5632\n34-7', 2, 'cols')">2</a>
+                <a href="javascript:setPattern('256-\n---5\nC3B-', 2, 'cols')">3</a>
+                <a href="javascript:setPattern('4373\n5-53', 2, 'cols')">4</a>
+            </figcaption>
+        </figure>
+        <figure>
+            <a href="javascript:setPattern('5831\n-4-7', 2, 'cols')"><img src="../help/tl/130.png"></a>
+            <figcaption>
+                <a href="javascript:setPattern('-437\n34-7', 2, 'cols')">2</a>
+                <a href="javascript:setPattern('4830\n--77', 2, 'cols')">3</a>
+            </figcaption>
+        </figure>
+        <figure>
+            <a href="javascript:setPattern('1483\n8-48', 2, 'cols')"><img src="../help/tl/129.png"></a>
+            <figcaption>&nbsp;
+            </figcaption>
+        </figure>
+        <figure>
+            <a href="javascript:setPattern('4-12\n-5--\n6-CD', 2, 'cols')"><img src="../help/tl/128.png"></a>
+            <figcaption>
+                <a href="javascript:setPattern('4312\n6-78', 2, 'cols')">2</a>
+            </figcaption>
+        </figure>
+        <p>Select an image (or one of the links below) to set the pattern definition and shift parameters for repeats.</p>
+    </fieldset>
+    <fieldset>
+        <legend>Pattern</legend>
+        <figure>
+            <textarea id="matrix" name="matrix" rows="8" cols="8" spellcheck="false"
+                      onchange="setVisibility()">-5</textarea>
+            <figcaption>definition</figcaption>
+        </figure>
+        <figure>
+            <svg xmlns:dc="http://purl.org/dc/elements/1.1/"
+                 xmlns:cc="http://creativecommons.org/ns#"
+                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                 xmlns="http://www.w3.org/2000/svg"
+                 width="214"
+                 height="186"
+                 id="svg2"
+                 version="1.1">
+                <title id="title5579">Template for GroundForge Matrices</title>
+                <defs id="defs4">
+                    <marker orient="auto" refY="0" refX="0" id="Arrow1Mend" style="overflow:visible">
+                        <path d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z" style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt" transform="matrix(-0.4,0,0,-0.4,-4,0)"/>
+                    </marker>
+                </defs>
+                <metadata id="metadata7">
+                    <rdf:RDF>
+                        <cc:Work rdf:about="">
+                            <dc:format>image/svg+xml</dc:format>
+                            <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+                            <dc:title>Prototype for a GroundForge Matrix</dc:title>
+                            <cc:license rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+                            <dc:creator>
+                                <cc:Agent>
+                                    <dc:title>J. Pol</dc:title>
+                                </cc:Agent>
+                            </dc:creator>
+                            <dc:subject>
+                                <rdf:Bag>
+                                    <rdf:li>Bobbin Lcae</rdf:li>
+                                    <rdf:li>grounds</rdf:li>
+                                </rdf:Bag>
+                            </dc:subject>
+                        </cc:Work>
+                        <cc:License rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+                            <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction" />
+                            <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution" />
+                            <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+                        </cc:License>
+                    </rdf:RDF>
+                </metadata>
+                <g id="layer1" transform="matrix(2,0,0,2,-0.09509441,-1920.0075)">
+                    <g id="g2">
+                        <path   d="m -18.064645,978.05982 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41422 -0.361929,0.36192 -0.861929,0.58578 -1.414213,0.58578 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58578 -0.361929,-0.36193 -0.585787,-0.86193 -0.585787,-1.41422 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"
+                                style="fill:none;stroke:#000000;stroke-width:0.4"/>
+                        <text   y="979.27722"
+                                x="-21.02791"
+                                style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none">2</text>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -12.051706,978.09704 -6.012939,-0.0372"/>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -28.650432,969.47404 7.171574,7.17157"/>
+                    </g>
+                    <g id="g0">
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4"
+                                d="m -18.064637,978.05982 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41422 -0.361929,0.36192 -0.861929,0.58578 -1.414213,0.58578 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58578 -0.361929,-0.36193 -0.585787,-0.86193 -0.585787,-1.41422 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"/>
+                        <text   style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none"
+                                x="-21.024918"
+                                y="979.27948">0</text>
+                        <path   d="m -12.051698,978.09705 -6.012939,-0.0372"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                        <path   d="m -11.47885,969.47404 -7.171574,7.17157"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                    </g>
+                    <g id="g1">
+                        <path   d="m -18.064645,978.0598 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41421 -0.361929,0.36193 -0.861929,0.58579 -1.414213,0.58579 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58579 -0.361929,-0.36192 -0.585787,-0.86192 -0.585787,-1.41421 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"
+                                style="fill:none;stroke:#000000;stroke-width:0.4"/>
+                        <text   y="979.27722"
+                                x="-21.037527"
+                                style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none">1</text>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -12.051706,978.09702 -6.012939,-0.0372"/>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -20.064645,970.0598 0,6"/>
+                    </g>
+                    <g id="gI">
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4"
+                                d="m -18.064637,978.0598 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41421 -0.361929,0.36193 -0.861929,0.58579 -1.414213,0.58579 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58579 -0.361929,-0.36192 -0.585787,-0.86192 -0.585787,-1.41421 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"/>
+                        <text   style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none"
+                                x="-20.534775"
+                                y="979.27777">I</text>
+                        <path   d="m -2.064637,978.0598 -16,0"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                        <path   d="m -28.051698,978.09702 5.987061,-0.0372"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                    </g>
+                    <g id="g4">
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4"
+                                d="m -18.064635,978.05982 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41421 -0.361929,0.36193 -0.861929,0.58579 -1.414213,0.58579 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58579 -0.361929,-0.36192 -0.585787,-0.86192 -0.585787,-1.41421 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"/>
+                        <text   style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none"
+                                x="-21.030315"
+                                y="979.27777">4</text>
+                        <path   d="m -11.478848,969.47403 -7.171574,7.17158"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                        <path   d="m -20.064635,970.05982 0,6"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                    </g>
+                    <g id="g5">
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4"
+                                d="m -18.077585,978.02257 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41421 -0.361929,0.36193 -0.861929,0.58579 -1.414213,0.58579 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58579 -0.361929,-0.36192 -0.585787,-0.86192 -0.585787,-1.41421 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"/>
+                        <text   style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none"
+                                x="-21.036425"
+                                y="979.24457">5</text>
+                        <path   d="m -11.491798,969.43678 -7.171574,7.17158"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                        <path   d="m -28.663372,969.43678 7.171574,7.17158"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                    </g>
+                    <g id="g7">
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4"
+                                d="m -18.064645,978.05982 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41421 -0.361929,0.36193 -0.861929,0.58579 -1.414213,0.58579 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58579 -0.361929,-0.36192 -0.585787,-0.86192 -0.585787,-1.41421 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"/>
+                        <text   style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none"
+                                x="-21.023394"
+                                y="979.27948">7</text>
+                        <path   d="m -20.064645,970.05982 0,6"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                        <path   d="m -28.650432,969.47403 7.171574,7.17158"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                    </g>
+                    <g id="g8">
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4"
+                                d="m -18.064645,978.0598 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41421 -0.361929,0.36193 -0.861929,0.58579 -1.414213,0.58579 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58579 -0.361929,-0.36192 -0.585787,-0.86192 -0.585787,-1.41421 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"/>
+                        <text   style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none"
+                                x="-21.024385"
+                                y="979.27948">8</text>
+                        <path   d="m -20.064645,970.0598 0,6"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                        <path   d="m -28.064645,978.0598 6,0"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                    </g>
+                    <g id="g9">
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4"
+                                d="m -18.077585,978.02258 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41422 -0.361929,0.36192 -0.861929,0.58578 -1.414213,0.58578 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58578 -0.361929,-0.36193 -0.585787,-0.86193 -0.585787,-1.41422 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"/>
+                        <text   style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none"
+                                x="-21.037144"
+                                y="979.24225">9</text>
+                        <path   d="m -28.663372,969.4368 7.171574,7.17157"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                        <path   d="m -28.077585,978.02258 6,0"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                    </g>
+                    <g id="gA">
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4"
+                                d="m -18.064645,978.05982 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41422 -0.361929,0.36192 -0.861929,0.58578 -1.414213,0.58578 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58578 -0.361929,-0.36193 -0.585787,-0.86193 -0.585787,-1.41422 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"/>
+                        <text   style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none"
+                                x="-21.210878"
+                                y="979.27777">A</text>
+                        <path   d="m -12.051706,978.09704 -6.012939,-0.0372"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                        <path   d="m -20.064645,960.05982 0,16"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                    </g>
+                    <g id="gB">
+                        <path   d="m -18.064637,978.05982 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41422 -0.361929,0.36192 -0.861929,0.58578 -1.414213,0.58578 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58578 -0.361929,-0.36193 -0.585787,-0.86193 -0.585787,-1.41422 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"
+                                style="fill:none;stroke:#000000;stroke-width:0.4"/>
+                        <text   y="979.27777"
+                                x="-20.999619"
+                                style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none">B</text>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -11.47885,969.47404 -7.171574,7.17157"/>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -20.064637,960.05982 0,16"/>
+                    </g>
+                    <g id="gC">
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4"
+                                d="m -18.064645,978.05982 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41422 -0.361929,0.36192 -0.861929,0.58578 -1.414213,0.58578 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58578 -0.361929,-0.36193 -0.585787,-0.86193 -0.585787,-1.41422 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"/>
+                        <text   style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none"
+                                x="-21.284788"
+                                y="979.27777">C</text>
+                        <path   d="m -20.064645,960.05982 0,16"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                        <path   d="m -28.650432,969.47404 7.171574,7.17157"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                    </g>
+                    <g id="gD">
+                        <path   d="m -18.064645,978.05982 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41422 -0.361929,0.36192 -0.861929,0.58578 -1.414213,0.58578 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58578 -0.361929,-0.36193 -0.585787,-0.86193 -0.585787,-1.41422 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"
+                                style="fill:none;stroke:#000000;stroke-width:0.4"/>
+                        <text   y="979.27777"
+                                x="-20.988737"
+                                style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none">D</text>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -20.064645,960.05982 0,16"/>
+                        <path   d="m -28.051706,978.09702 5.987061,-0.0372"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                    </g>
+                    <g id="gE">
+                        <path   d="m -18.077577,978.02257 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41421 -0.361929,0.36193 -0.861929,0.58579 -1.414213,0.58579 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58579 -0.361929,-0.36192 -0.585787,-0.86192 -0.585787,-1.41421 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"
+                                style="fill:none;stroke:#000000;stroke-width:0.4"/>
+                        <text   y="979.24054"
+                                x="-21.187687"
+                                style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none">E</text>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -2.090516,977.98535 -15.987061,0.0372"/>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -11.49179,969.43678 -7.171574,7.17158"/>
+                    </g>
+                    <g id="gF">
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4"
+                                d="m -18.077585,978.0226 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41422 -0.361929,0.36192 -0.861929,0.58578 -1.414213,0.58578 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58578 -0.361929,-0.36193 -0.585787,-0.86193 -0.585787,-1.41422 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"/>
+                        <text   style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none"
+                                x="-21.019949"
+                                y="979.24054">F</text>
+                        <path   d="m -2.077585,978.0226 -16,0"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                        <path   d="m -20.077585,970.0226 0,6"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                    </g>
+                    <g id="gG">
+                        <path   d="m -18.077585,978.0226 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41422 -0.361929,0.36192 -0.861929,0.58578 -1.414213,0.58578 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58578 -0.361929,-0.36193 -0.585787,-0.86193 -0.585787,-1.41422 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"
+                                style="fill:none;stroke:#000000;stroke-width:0.4"/>
+                        <text   y="979.24054"
+                                x="-21.371141"
+                                style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none">G</text>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -2.077585,978.0226 -16,0"/>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -20.077585,960.0226 0,16"/>
+                    </g>
+                    <g id="gH">
+                        <path   d="m -18.064645,978.05982 c 0,0.55228 -0.22385,1.05228 -0.58578,1.41421 -0.36193,0.36193 -0.86193,0.58579 -1.41422,0.58579 -0.55228,0 -1.05228,-0.22386 -1.41421,-0.58579 -0.36193,-0.36193 -0.58579,-0.86193 -0.58579,-1.41421 0,-0.55229 0.22386,-1.05229 0.58579,-1.41421 0.36193,-0.36193 0.86193,-0.58579 1.41421,-0.58579 0.55229,0 1.05229,0.22386 1.41422,0.58579 0.36193,0.36192 0.58578,0.86192 0.58578,1.41421 z"
+                                style="fill:none;stroke:#000000;stroke-width:0.4"/>
+                        <text   y="979.27783"
+                                x="-21.228058"
+                                style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none">H</text>
+                        <g
+                                transform="translate(-33.156219,968.76183)"
+                                id="g26789">
+                            <path       d="m 31.078634,9.260772 -15.98706,0.0372"
+                                    style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                        </g>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -28.650425,969.47403 7.17157,7.17158"/>
+                    </g>
+                    <g id="gK">
+                        <path   d="m -18.064645,978.0598 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41421 -0.361929,0.36193 -0.861929,0.58579 -1.414213,0.58579 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58579 -0.361929,-0.36192 -0.585787,-0.86192 -0.585787,-1.41421 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"
+                                style="fill:none;stroke:#000000;stroke-width:0.4"/>
+                        <text   y="979.27777"
+                                x="-21.136003"
+                                style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none">K</text>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -2.064645,978.0598 -16,0"/>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -38.064645,978.0598 16,0"/>
+                    </g>
+                    <g id="gJ">
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4"
+                                d="m -18.077585,978.02257 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41421 -0.361929,0.36193 -0.861929,0.58579 -1.414213,0.58579 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58579 -0.361929,-0.36192 -0.585787,-0.86192 -0.585787,-1.41421 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"/>
+                        <text   style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none"
+                                x="-21.056063"
+                                y="979.2428">J</text>
+                        <path   d="m -38.077585,978.02257 16,0"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                        <path   d="m -12.090524,978.05979 -5.987061,-0.0372"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                    </g>
+                    <g id="gL">
+                        <path   d="m -18.077577,978.02257 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41421 -0.361929,0.36193 -0.861929,0.58579 -1.414213,0.58579 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58579 -0.361929,-0.36192 -0.585787,-0.86192 -0.585787,-1.41421 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"
+                                style="fill:none;stroke:#000000;stroke-width:0.4"/>
+                        <text   y="979.24054"
+                                x="-21.029755"
+                                style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none">L</text>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -11.49179,969.43678 -7.171574,7.17158"/>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -38.077577,978.02257 16,0"/>
+                    </g>
+                    <g id="g6">
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4"
+                                d="m -18.077577,978.02257 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41421 -0.361929,0.36193 -0.861929,0.58579 -1.414213,0.58579 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58579 -0.361929,-0.36192 -0.585787,-0.86192 -0.585787,-1.41421 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"/>
+                        <text   style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none"
+                                x="-21.038216"
+                                y="979.24225">6</text>
+                        <path   d="m -11.49179,969.43678 -7.171574,7.17158"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                        <path   d="m -28.077577,978.02257 6,0"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                    </g>
+                    <g id="gN">
+                        <path   d="m -18.077585,978.02257 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41421 -0.361929,0.36193 -0.861929,0.58579 -1.414213,0.58579 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58579 -0.361929,-0.36192 -0.585787,-0.86192 -0.585787,-1.41421 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"
+                                style="fill:none;stroke:#000000;stroke-width:0.4"/>
+                        <text   y="979.24054"
+                                x="-21.29775"
+                                style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none">N</text>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -20.077585,960.02257 0,16"/>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -38.077585,978.02257 16,0"/>
+                    </g>
+                    <g id="gM">
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4"
+                                d="m -18.077585,978.02257 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41421 -0.361929,0.36193 -0.861929,0.58579 -1.414213,0.58579 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58579 -0.361929,-0.36192 -0.585787,-0.86192 -0.585787,-1.41421 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"/>
+                        <text   style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none"
+                                x="-21.44375"
+                                y="979.24054">M</text>
+                        <path   d="m -20.077585,970.02257 0,6"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                        <path   d="m -38.077585,978.02257 16,0"
+                                style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"/>
+                    </g>
+                    <g id="gO">
+                        <path   d="m -18.077585,978.02257 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41421 -0.361929,0.36193 -0.861929,0.58579 -1.414213,0.58579 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58579 -0.361929,-0.36192 -0.585787,-0.86192 -0.585787,-1.41421 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"
+                                style="fill:none;stroke:#000000;stroke-width:0.4"/>
+                        <text   y="979.24042"
+                                x="-21.347433"
+                                style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none">O</text>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -28.663372,969.43678 7.171574,7.17158"/>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -38.064646,978.05979 15.987061,-0.0372"/>
+                    </g>
+                    <g id="g3">
+                        <path   d="m -18.077585,978.02257 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41421 -0.361929,0.36193 -0.861929,0.58579 -1.414213,0.58579 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58579 -0.361929,-0.36192 -0.585787,-0.86192 -0.585787,-1.41421 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"
+                                style="fill:none;stroke:#000000;stroke-width:0.4"/>
+                        <text   y="979.24231"
+                                x="-21.037325"
+                                style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none">3</text>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -28.064646,978.05979 5.987061,-0.0372"/>
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4;marker-end:url(#Arrow1Mend)"
+                                d="m -12.090524,978.05979 -5.987061,-0.0372"/>
+                    </g>
+                    <g id="g-">
+                        <path   style="fill:none;stroke:#000000;stroke-width:0.4"
+                                d="m -18.064645,978.05982 c 0,0.55229 -0.22386,1.05229 -0.58579,1.41422 -0.36193,0.36192 -0.86193,0.58578 -1.41421,0.58578 -0.55228,0 -1.05228,-0.22386 -1.41421,-0.58578 -0.36193,-0.36193 -0.58579,-0.86193 -0.58579,-1.41422 0,-0.55228 0.22386,-1.05228 0.58579,-1.41421 0.36193,-0.36193 0.86193,-0.58579 1.41421,-0.58579 0.55228,0 1.05228,0.22386 1.41421,0.58579 0.36193,0.36193 0.58579,0.86193 0.58579,1.41421 z"/>
+                        <text   style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none"
+                                x="-20.569208"
+                                y="979.2818">-</text>
+                    </g>
+                    <use id="svg-r1-c1" xlink:href="#gN" transform="translate(38,1)"/>
+                    <use id="svg-r1-c2" xlink:href="#g-" transform="translate(48,1)"/>
+                    <use id="svg-r1-c3" xlink:href="#g-" transform="translate(58,1)"/>
+                    <use id="svg-r1-c4" xlink:href="#g-" transform="translate(68,1)"/>
+                    <use id="svg-r1-c5" xlink:href="#g-" transform="translate(78,1)"/>
+                    <use id="svg-r1-c6" xlink:href="#g-" transform="translate(88,1)"/>
+                    <use id="svg-r1-c7" xlink:href="#g-" transform="translate(98,1)"/>
+                    <use id="svg-r1-c8" xlink:href="#gG" transform="translate(108,1)"/>
+                    <use id="svg-r2-c1" xlink:href="#g-" transform="translate(38,11)"/>
+                    <use id="svg-r2-c2" xlink:href="#g-" transform="translate(48,11)"/>
+                    <use id="svg-r2-c3" xlink:href="#g-" transform="translate(58,11)"/>
+                    <use id="svg-r2-c4" xlink:href="#g-" transform="translate(68,11)"/>
+                    <use id="svg-r2-c5" xlink:href="#g-" transform="translate(78,11)"/>
+                    <use id="svg-r2-c6" xlink:href="#g-" transform="translate(88,11)"/>
+                    <use id="svg-r2-c7" xlink:href="#g-" transform="translate(98,11)"/>
+                    <use id="svg-r2-c8" xlink:href="#g-" transform="translate(108,11)"/>
+                    <use id="svg-r3-c1" xlink:href="#g-" transform="translate(38,21)"/>
+                    <use id="svg-r3-c2" xlink:href="#g1" transform="translate(48,21)"/>
+                    <use id="svg-r3-c3" xlink:href="#g5" transform="translate(58,21)"/>
+                    <use id="svg-r3-c4" xlink:href="#g8" transform="translate(68,21)"/>
+                    <use id="svg-r3-c5" xlink:href="#g3" transform="translate(78,21)"/>
+                    <use id="svg-r3-c6" xlink:href="#g1" transform="translate(88,21)"/>
+                    <use id="svg-r3-c7" xlink:href="#g-" transform="translate(98,21)"/>
+                    <use id="svg-r3-c8" xlink:href="#g-" transform="translate(108,21)"/>
+                    <use id="svg-r4-c1" xlink:href="#g-" transform="translate(38,31)"/>
+                    <use id="svg-r4-c2" xlink:href="#g-" transform="translate(48,31)"/>
+                    <use id="svg-r4-c3" xlink:href="#g-" transform="translate(58,31)"/>
+                    <use id="svg-r4-c4" xlink:href="#g4" transform="translate(68,31)"/>
+                    <use id="svg-r4-c5" xlink:href="#g-" transform="translate(78,31)"/>
+                    <use id="svg-r4-c6" xlink:href="#g7" transform="translate(88,31)"/>
+                    <use id="svg-r4-c7" xlink:href="#g-" transform="translate(98,31)"/>
+                    <use id="svg-r4-c8" xlink:href="#g-" transform="translate(108,31)"/>
+                    <use id="svg-r5-c1" xlink:href="#g-" transform="translate(38,41)"/>
+                    <use id="svg-r5-c2" xlink:href="#g-" transform="translate(48,41)"/>
+                    <use id="svg-r5-c3" xlink:href="#g3" transform="translate(58,41)"/>
+                    <use id="svg-r5-c4" xlink:href="#g1" transform="translate(68,41)"/>
+                    <use id="svg-r5-c5" xlink:href="#g5" transform="translate(78,41)"/>
+                    <use id="svg-r5-c6" xlink:href="#g8" transform="translate(88,41)"/>
+                    <use id="svg-r5-c7" xlink:href="#g-" transform="translate(98,41)"/>
+                    <use id="svg-r5-c8" xlink:href="#g-" transform="translate(108,41)"/>
+                    <use id="svg-r6-c1" xlink:href="#g-" transform="translate(38,51)"/>
+                    <use id="svg-r6-c2" xlink:href="#g4" transform="translate(48,51)"/>
+                    <use id="svg-r6-c3" xlink:href="#g-" transform="translate(58,51)"/>
+                    <use id="svg-r6-c4" xlink:href="#g7" transform="translate(68,51)"/>
+                    <use id="svg-r6-c5" xlink:href="#g-" transform="translate(78,51)"/>
+                    <use id="svg-r6-c6" xlink:href="#g-" transform="translate(88,51)"/>
+                    <use id="svg-r6-c7" xlink:href="#g-" transform="translate(98,51)"/>
+                    <use id="svg-r6-c8" xlink:href="#g-" transform="translate(108,51)"/>
+                    <use id="svg-r7-c1" xlink:href="#g-" transform="translate(38,61)"/>
+                    <use id="svg-r7-c2" xlink:href="#g-" transform="translate(48,61)"/>
+                    <use id="svg-r7-c3" xlink:href="#g-" transform="translate(58,61)"/>
+                    <use id="svg-r7-c4" xlink:href="#g-" transform="translate(68,61)"/>
+                    <use id="svg-r7-c5" xlink:href="#g-" transform="translate(78,61)"/>
+                    <use id="svg-r7-c6" xlink:href="#g-" transform="translate(88,61)"/>
+                    <use id="svg-r7-c7" xlink:href="#g-" transform="translate(98,61)"/>
+                    <use id="svg-r7-c8" xlink:href="#g-" transform="translate(108,61)"/>
+                    <use id="svg-r8-c1" xlink:href="#g-" transform="translate(38,71)"/>
+                    <use id="svg-r8-c2" xlink:href="#g-" transform="translate(48,71)"/>
+                    <use id="svg-r8-c3" xlink:href="#g-" transform="translate(58,71)"/>
+                    <use id="svg-r8-c4" xlink:href="#g-" transform="translate(68,71)"/>
+                    <use id="svg-r8-c5" xlink:href="#g-" transform="translate(78,71)"/>
+                    <use id="svg-r8-c6" xlink:href="#g-" transform="translate(88,71)"/>
+                    <use id="svg-r8-c7" xlink:href="#g-" transform="translate(98,71)"/>
+                    <use id="svg-r8-c8" xlink:href="#g-" transform="translate(108,71)"/>
+                </g>
+            </svg>
+            <figcaption>prototype</figcaption>
+        </figure>
+        <figure>
+            <img src="../help/images/matrix-template.png" alt="cheat sheet">
+            <figcaption>cheat sheet</figcaption>
+        </figure>
+    </fieldset>
+    <fieldset id="repeats-form">
+        <legend>Repeats</legend>
+        <div>
+            <div>
+                <label for="shift">Shifted by</label>
+                <input type="number" name="shift" id="shift" min="0" max="7" value="1" onchange="setVisibility()">
+            </div>
+            <div>
+                <input type="radio" name="direction" id="cols" checked="checked" onchange="setVisibility()"><label for="cols">column(s)</label>
+                <br>
+                <input type="radio" name="direction" id="rows" onchange="setVisibility()"><label for="rows">row(s)</label>
+            </div>
+            <div>
+                <label for="shift">of stitches.</label>
+            </div>
+        </div>
+        <div>
+            <div>
+                Variants:
+            </div>
+            <div>
+                <input type="number" name="colVariants" id="colVariants" min="1" max="1" value="1"><label for="colVariants">per column</label>
+                <br>
+                <input type="number" name="rowVariants" id="rowVariants" min="1" max="1" value="1"><label for="rowVariants">per row</label>
+            </div>
+            <div>
+                of repeats.
+            </div>
+        </div>
+    </fieldset>
+    <fieldset id="stitch-form">
+        <legend>Stitches</legend>
+        <table>
+            <tr>
+                <td><input id="r1-c1" name="A1" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r1-c2" name="B1" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r1-c3" name="C1" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r1-c4" name="D1" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r1-c5" name="E1" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r1-c6" name="F1" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r1-c7" name="G1" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r1-c8" name="H1" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+            </tr>
+            <tr>
+                <td><input id="r2-c1" name="A2" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r2-c2" name="B2" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r2-c3" name="C2" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r2-c4" name="D2" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r2-c5" name="E2" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r2-c6" name="F2" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r2-c7" name="G2" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r2-c8" name="H2" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+            </tr>
+            <tr>
+                <td><input id="r3-c1" name="A3" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r3-c2" name="B3" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r3-c3" name="C3" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r3-c4" name="D3" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r3-c5" name="E3" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r3-c6" name="F3" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r3-c7" name="G3" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r3-c8" name="H3" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+            </tr>
+            <tr>
+                <td><input id="r4-c1" name="A4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r4-c2" name="B4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r4-c3" name="C4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r4-c4" name="D4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r4-c5" name="E4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r4-c6" name="F4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r4-c7" name="G4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r4-c8" name="H4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+            </tr>
+            <tr>
+                <td><input id="r5-c1" name="A4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r5-c2" name="B4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r5-c3" name="C4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r5-c4" name="D4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r5-c5" name="E4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r5-c6" name="F4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r5-c7" name="G4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r5-c8" name="H4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+            </tr>
+            <tr>
+                <td><input id="r6-c1" name="A4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r6-c2" name="B4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r6-c3" name="C4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r6-c4" name="D4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r6-c5" name="E4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r6-c6" name="F4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r6-c7" name="G4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r6-c8" name="H4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+            </tr>
+            <tr>
+                <td><input id="r7-c1" name="A4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r7-c2" name="B4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r7-c3" name="C4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r7-c4" name="D4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r7-c5" name="E4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r7-c6" name="F4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r7-c7" name="G4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r7-c8" name="H4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+            </tr>
+            <tr>
+                <td><input id="r8-c1" name="A4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r8-c2" name="B4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r8-c3" name="C4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r8-c4" name="D4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r8-c5" name="E4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r8-c6" name="F4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r8-c7" name="G4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+                <td><input id="r8-c8" name="H4" spellcheck="false" value="ctct" pattern=" *[lrtc]+ *" class="show" onchange="setVisibility()"></td>
+            </tr>
+        </table>
+    </fieldset>
+    <a id="link" target="_blank" href="#)"><button type="button">Go</button></a>
+    <script>setVisibility()</script>
+</form>
