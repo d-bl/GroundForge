@@ -10,6 +10,7 @@ Choose Stitches
 - [Stitch definitions](#stitch-definitions)
 - [Assign stitches](#assign-stitches)
 - [An Example](#an-example)
+- [ID's](#id-s)
 
 Subsequent paragraphs explain how to set a stitches field manually
 for patterns and dimensions not covered by this convenience form.
@@ -42,7 +43,8 @@ Stitch definitions
 
 The definition of a stitch consists of a sequence  of the characters
 `c`, `t`, `l`, `r` for cross, twist, left-twist and right-twist. 
-A stitch requires at least a cross, violating this requirement would implicitly change the pair diagram.
+A stitch requires at least a cross,
+violating this requirement would implicitly change the pair diagram.
 Invalid characters are ignored.
 
 You can try a `p` for a pin, but that rarely works as desired,
@@ -52,11 +54,14 @@ see issue [#51] for the technical details.
 Assign stitches
 ---------------
 
-The form fields for stitches on the main page expect defaults and/or assignments. For example `A1=ctc` assigns a plain cloth stitch to id A1 which represents the upper left stitch of the pattern.
+The form fields for stitches on the main page expect defaults and/or assignments.
+For example `A1=B2=ct` assigns a closed half stitch to id A1 and B2
+which represents the upper left stitch of the pattern and the stitch south-east of A1.
 No spaces are allowed around the equal sign between the id and stitch definition.
 
 If a form field starts with a stitch definition, it is used as default.
-When a thread diagrams is used as pair diagram, you can use the keywords `cross` and `twist` as id's for defaults.
+When a thread diagrams is used as pair diagram,
+you can use the keywords `cross` and `twist` as id's for defaults.
 
 
 An Example
@@ -68,11 +73,6 @@ The image below shows screen shot snippets of a pattern and its stitches.
 
 * _Top left:_ the definition of a pattern created by one of the example page.
   The digits inside the circles determine the configuration of arrows arriving at that position. 
-  The rows and columns determine the id's assigned to stitches.
-  For example the top-left (5) gets id A1. Well, that's the theory.
-  Under circumstance the id's in a row of stitches may start somewhere halfway the matrix
-  and the stitches wander a little away from their matrix position,
-  see issue [#96].
 * _Top right:_ how the pattern definition looks like when repeated. The colored dots are explained on the "reshape" pages.
 * _Bottom:_ the diagrams generated with the chosen stitches.
   When hovering with your mouse over a stitch (in a generated pattern, not the screenshot above), your browser is supposed to show the id and instructions of a stitch.
@@ -81,3 +81,21 @@ The image below shows screen shot snippets of a pattern and its stitches.
 [assemble]: /GroundForge/help/Reversed-engineering-of-patterns
 [#51]: https://github.com/d-bl/GroundForge/issues/51
 [#96]: https://github.com/d-bl/GroundForge/issues/96
+
+Id's
+----
+
+The rows and columns determine the id's assigned to stitches.
+Well, that's the theory.
+Under circumstances the id's in a row of stitches may be off by one column,
+see issue [#96]. As for example with the following brick matrix:
+
+` ` | ` ` | => | ` ` | ` ` 
+----|-----|----|-----|----
+`-` | `5` |    | A1  | B1
+`5` | `-` |    | A2  | B2
+`-` | `5` |    | B3  | A3
+
+Also the distortion between matrix and pair diagram may be confusing
+as the influence of footside.
+So hover with your mouse over a stitch in the pair diagram to be sure.

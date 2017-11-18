@@ -36,15 +36,25 @@ Follow the progress of issue [#104](https://github.com/d-bl/GroundForge/issues/1
 Colors by GroundForge
 ---------------------
 
-This dialect is still under construction,
-follow the progress of pull request [#106](https://github.com/d-bl/GroundForge/pull/106).
+A stitch-pin-stitch is not drawn as "ꅉ" (pins are hardly supported anyway) and 
+a plait in a pair diagram is not drawn as ">---<" but both as "X".
 
-Anyway, a plait in a pair diagram is not drawn as ">---<" and stitch-pin-stitch is not as "ꅉ" but both as "X".
+stitch name         | color      | examples and notes (neither are exhaustive)
+--------------------|------------|--------------------------------------------
+half stitch         | green      | `ct`, `tc`, `ttc`, `tct` (just one time `c` and both pairs twisted at least once)
+cloth stitch        | purple     | `ctc`, `ctcl`, `rctc` (just `ctc` and at most on pair twisted)
+2x half stitches    | red        | `ctct`, `tctc`, `ctct` (just `ctc` and both pairs twisted at least once)
+plait               | blue       | `ctctc` (a `c` followed by at least two times `tc`)
+turning stitch      | turquoise  | `cttc` (no more than two times `c`)
+,, variants         | brown      | `cllc`, `crrc`, `ctlc`, `ctrc`
+
+Stitches not matching anything above will be black.
+
 
 Tweak Colors
 ------------
 
-A pair diagram has a predefined palette of colors applied to stitches. You can tweak colors to accomodate your monitor, printer or color-blindness.
+A pair diagram has a predefined palette of colors applied to stitches. You can tweak colors to accommodate your monitor, printer or color-blindness.
 
 Download a pair diagram and open it with some plain text editor (or show it full screen and right click to show the page source), you will see a start/end marker definition for each color except black, something like:
 ```xml
