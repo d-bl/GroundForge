@@ -6,12 +6,13 @@ title: Help Intro
 Help Intro
 ==========
 
-Designing Bobbin Lace grounds
------------------------------
+Experiment with Bobbin Lace Grounds
+-----------------------------------
 
 Varying stitches and playing with downloadable diagrams renders
 a myriad of variations for a single pattern.
-No affiliation, but [Jane Atkinson]'s philosophy as written down in
+No affiliation, but Jane Atkinson's[➚](http://www.contemporarylace.com/)
+philosophy as written down in
 "_Pattern Design for Torchon Lace_" applies also to using GroundForge as a tool,
 a short version of her [citation] of the Bauhaus school of art:
 _experiment, play, think. Some experiments may result in innovations,
