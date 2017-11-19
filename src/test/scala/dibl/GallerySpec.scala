@@ -20,11 +20,13 @@ class GallerySpec extends FlatSpec with Matchers {
   "some patterns" should "document bug #93 by failing" in {
     Seq(
       // discovered by @MAETempels
+      ("C-B-5---,-5---C-B,--C-B-5-,-B-5---C","checker",0),// up to 7 columns
+      ("5---C-B-,-C-B-5--,B-5---C-,---C-B-5","checker",0),// up to 5 columns
       ("5---,-C-B,--5-,-B-C", "checker", 0),
       ("5831,-4-7,--5-,-B-C", "checker", 0),
       ("5831,-4-7,--5-,-B-C,3158,-7-4,5---,-C-B", "checker", 0),
       ("6--4,-C-4,--58,-B68,-46-,-4-C,58--,68-B", "checker", 0),
-      // from Matrices.values, in other words: from docs/gallery.html
+      // from Matrices.values, in other words: from Tesselace-index.md
       ("---5,C-B-,-5--,B-C-", "checker", 0),
       ("---5,C3B-,256-", "checker", 0),
       ("256-,---5,C3B-", "checker", 0),

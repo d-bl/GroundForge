@@ -1,13 +1,26 @@
-_A toolbox to design bobbin lace grounds with matching diagrams._
+[![Build Status](https://travis-ci.org/d-bl/GroundForge.svg?branch=master)](https://travis-ci.org/d-bl/GroundForge) 
+_A toolbox to design bobbin lace grounds with matching sets of pair/thread diagrams._
+
+- [DEMO's](#demo-s)
+- [How it's Made / third party data and scripts](#how-it-s-made---third-party-data-and-scripts)
+  * [Proof of concept with D3.js](#proof-of-concept-with-d3js)
+  * [Using data from TesseLace](#using-data-from-tesselace)
+  * [Color-picker: jscolor](#color-picker--jscolor)
+- [Compile and preview](#compile-and-preview)
+  * [Requirements](#requirements)
+  * [Steps to change the scala code](#steps-to-change-the-scala-code)
+  * [Important code conventions](#important-code-conventions)
+  * [Unit tests](#unit-tests)
+  * [Publish](#publish)
+
 
 DEMO's
 ======
 
-A [dressed up](https://d-bl.github.io/GroundForge/) version and a dressed down [docs/API](https://d-bl.github.io/GroundForge/API) version. The latter shows a starting point to configure your own web interface or embed just some of the diagrams on your own web page, though you may want to start by injecting the `show-graph.js` of the dressed up version into the dressed down version. See also the [API] for other environments than a web-browser.
-
-[API]: docs/API.md
-[![Build Status](https://travis-ci.org/d-bl/GroundForge.svg?branch=master)](https://travis-ci.org/d-bl/GroundForge) 
-Note that just building does not copy the compiled code into a local version of the demo's.
+A [dressed up](https://d-bl.github.io/GroundForge/) version and a dressed down [API](/GroundForge/API/index.html) version.
+The latter shows a starting point to configure your own web interface or embed just some of the diagrams on your own web page,
+though you may want to start by injecting the `show-graph.js` of the dressed up version into the dressed down version. 
+See also the [API](https://d-bl.github.io/GroundForge/docs/API.md) for other environments than a web-browser.
 
 
 How it's Made / third party data and scripts
@@ -39,10 +52,10 @@ Using data from TesseLace
 Scientific research presented at [TesseLace] resulted in patterns defined by matrices.
 These patterns are alternatives for the `js/sample.js` used for the proof of concept.
 GroundForge uses a [compact] matrix format using a character to tag a node. The character defines the composition of incoming pairs of the node.
-The `src/maini/scala` code compiled into `docs/js/matrix-graphs.js` transforms these matrices into data for D3js.
+The `src/maini/scala` code compiled into `docs/js/GroundForge-opt.js` transforms these matrices into data for D3js.
 
 The geometric information within the matrices is used to initialise the thread diagrams, speeding up the animation as explained for the proof of concept.
-These [pages] were used to create the [TesseLace inxex](https://github.com/d-bl/GroundForge/wiki/TesseLace-Index) images for a selection of patterns.
+These [pages] were used to create the [TesseLace index] images for a selection of patterns.
 The diagrams lack the original geometric information after completion of the animation,
 so topological duplicates were removed from the generated index.
 Downloadable pricking prototypes provide geometric variations that can be customised into intermediate and other variations.
@@ -55,7 +68,7 @@ the algorithm has to figure out a working order to create the lace just like a r
 [pages]: https://github.com/d-bl/GroundForge/blob/master/src/test/resources/
 [compact]: https://d-bl.github.io/GroundForge/docs/images/legend.png
 [TesseLace]: http://TesseLace.com
-
+[TesseLace index]: https://d-bl.github.io/GroundForge/help/TesseLace-Index
 
 Color-picker: jscolor
 ---------------------
@@ -64,9 +77,10 @@ Safari nor Internet Explorer support `<input type="color">`. The free [color-pic
 
 
 Compile and preview
--------------------
+===================
 
-### Requirements
+Requirements
+------------
 
 - The pages in the docs directory don't require any compilation
 - To compile `src/main/scala` to JavaScript: [sbt] 0.13.9 or higher
@@ -78,7 +92,8 @@ Compile and preview
 [sbt]: http://www.scala-sbt.org/download.html
 
 
-### Steps to change the scala code
+Steps to change the scala code
+------------------------------
 
 - Fork the project and make a local clone.
 - Don't push to the master branch, create branches and pull requests.
@@ -99,10 +114,10 @@ The applied Scala coding techniques are explained by this [course] up and includ
 [course]: https://github.com/DANS-KNAW/course-scala
 
 
-Unit tests
-----------
+Tests
+-----
 
-Both `sbt test` and `mvn clean test` do execute the tests.
+Both `sbt test` and `mvn clean test` do execute the unit tests.
 Maven is much faster but uses JVM while the JS used by SBT is the actual target environment.
 Some classes under `src/test` are suffixed with `Demos` rather than `Spec` these runnable objects create SVG documents in a `target/test` directory for a visual check.
 
@@ -111,7 +126,7 @@ Publish
 -------
 
 - Compile with `sbt '~fullOptJS'` (drop the quotes on windows)
-- Copy the content of `target\scala-2.11\groundforge-opt.js` into `docs/js/matrix-graphs.js`
+- Copy the content of `target/scala-2.11/groundforge-opt.js` into `docs/js/`
 - Check the results with `index.html`
 - If ok: commit, push and create a pull request 
 - Optional (if you know what you are doing): after merging with your master branch you can check the online demo in your own github fork: `http://YOURID.github.io/GroundForge/` 

@@ -35,6 +35,7 @@ button {
 #s1, #s2, #s3 {
   margin-left: 0.3em;
   margin-bottom: 0.3em;
+  height: 1em;
 }
 #logo img {
   max-width: 30%;

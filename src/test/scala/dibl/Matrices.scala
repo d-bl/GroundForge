@@ -15,7 +15,7 @@
 */
 package dibl
 
-import java.io.{BufferedReader, FileReader, InputStreamReader, Reader}
+import java.io._
 import java.net.{URL, URLDecoder}
 
 import dibl.Matrix.{charToRelativeTuples, extend}
@@ -24,14 +24,14 @@ import scala.collection.JavaConverters._
 
 object Matrices {
   val values: Seq[String] = new BufferedReader(new InputStreamReader(
-    new URL("https://raw.githubusercontent.com/wiki/d-bl/GroundForge/TesseLace-Index.md").openStream()
+    new FileInputStream("docs/help/TesseLace-Index.md")
   )).lines()
     .iterator()
     .asScala
-    .filter(_.contains("?patch="))
+    .filter(_.contains("&patch="))
     .toSeq
     .flatMap(s => URLDecoder.decode(s,"UTF8")
-      .replaceAll(".*html.patch=", "")
+      .replaceAll(".*img=...&patch=", "")
       .replace(")", "")
       .split("&patch=")
     ).distinct
