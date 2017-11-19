@@ -10,7 +10,7 @@ Choose Stitches
 - [Stitch definitions](#stitch-definitions)
 - [Assign stitches](#assign-stitches)
 - [An Example](#an-example)
-- [ID's](#id-s)
+- [ID's](#ids)
 
 Subsequent paragraphs explain how to set a stitches field manually
 for patterns and dimensions not covered by this convenience form.
