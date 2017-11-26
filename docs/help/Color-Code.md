@@ -28,27 +28,32 @@ poor or no support for tallies, pins and gimps in GroundForge and other limitati
 Twist marks by GroundForge
 --------------------------
 
-The intention is a twist mark wherever there are multiple twists in a pair.
+The _intention_ is a twist mark wherever there are multiple twists in a pair.
 Open stitches abide this rule. Closed stitches lack twist marks if just one of the pairs need one.
-
 Follow the progress of issue [#104](https://github.com/d-bl/GroundForge/issues/104).
+
 
 Colors by GroundForge
 ---------------------
 
-A stitch-pin-stitch is not drawn as "ꅉ" (pins are hardly supported anyway) and 
-a plait in a pair diagram is not drawn as ">---<" but both as "X".
+A plait in a pair diagram is not drawn as ">---<" but as "X" but still blue.
+Same for "&#41289;" (pins are hardly supported anyway)
+turquoise and brown represent this family of stitches.
 
-stitch name         | color      | examples and notes (neither are exhaustive)
---------------------|------------|--------------------------------------------
-half stitch         | green      | `ct`, `tc`, `ttc`, `tct` (just one time `c` and both pairs twisted at least once)
-cloth stitch        | purple     | `ctc`, `ctcl`, `rctc` (just `ctc` and at most on pair twisted)
-2x half stitches    | red        | `ctct`, `tctc`, `ctct` (just `ctc` and both pairs twisted at least once)
-plait               | blue       | `ctctc` (a `c` followed by at least two times `tc`)
-turning stitch      | turquoise  | `cttc` (no more than two times `c`)
-,, variants         | brown      | `cllc`, `crrc`, `ctlc`, `ctrc`
+stitch name             | color     | examples and notes
+------------------------|-----------|--------------------------------------------
+half stitch             | green     | `ct`, `tc`, `ttc`, `tct` (just one time `c` and both pairs twisted at least once)
+cloth stitch            | purple    | `ctc`, `ctcl`, `rctc` (just `ctc` and at most on pair twisted)
+double stitch           | red       | `ctct`, `tctc`, `tctct` (just `ctc` and both pairs twisted at least once)
+plait                   | blue      | `ctctc` (a `ctc` followed by at least one `tc`)
+turning stitch          | turquoise | `cttc` (no more than two times `c` and both pairs twisted twice in between)
+turning stitch variants | brown     | `cllc`, `crrc`, `ctlc`, `ctrc` (just two time `c` and anything in between but `t` or `tt`)
+tally                   | yellow    | `cllcrrcllc`, `crrlccllc`, (at least four `c`'s and alternating `ll`/`rr` in between)
+anything else           | black     | e.g. `ctcttc`, `lcr`
 
-Stitches not matching anything above will be black.
+The examples and notes are not exhaustive.
+At least there can be additional twists (left, right or both pairs)
+at the start and/or end of the examples.
 
 
 Tweak Colors

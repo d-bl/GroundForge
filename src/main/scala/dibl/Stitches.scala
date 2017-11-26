@@ -144,15 +144,6 @@ object Stitches {
     */
   private def bothTwisted(s: String) = s.count('t' == _) > 0
 
-  /**
-    * @param core a sequence of l/r/t bwteen c's
-    * @return true if one of the pair is twisted multiple times
-    */
-  private def repeatedTwisted(core: String) = {
-    core.replaceAll("[cl]","").length > 1 || // mutiple r's and/or t's
-    core.replaceAll("[cr]","").length > 1 // multiple l's and/or t's
-  }
-
   /** Split  a string (with any sequence of ctlr but at least a c) into
     * - everything before the first c
     * - the first c up to and including the last c
@@ -166,14 +157,8 @@ object Stitches {
     *               meaning (ignoring pins): between, before and after c's only
     *               either [l's and/or t's] or [r's and/or t's]
     * @return An empty string or the default color name for a stitch.
-    *         See also the multicolor system on
-    *         http://susanroberts.info/Working%20diagrams%20-%20part%202.pdf
-    *         archived at
-    *         https://web.archive.org/web/20170916135839/http://susanroberts.info/Working%20diagrams%20-%20part%202.pdf
-    *         We don't have gimps nor tallies. Instead we use brown when
-    *         having repeated twists between two crosses.
     */
-  def defaultColor(stitch: String) = {
+  def defaultColor(stitch: String): StitchId = {
     val hasPins = stitch.count('p' == _) > 0
     val crossCount = stitch.count('c' == _)
     val regex(openTwists, coreStitch, closeTwists) = stitch
@@ -181,10 +166,11 @@ object Stitches {
     (hasPins, crossCount, coreStitch, twisted) match {
       case (false, 1, _, true) => "green"
       case (false, 2, "cttc", _) => "turquoise"
-      case (false, 2, core, _) if repeatedTwisted(core) => "brown"
       case (false, 2, "ctc", true) => "red"
       case (false, 2, "ctc", false) => "purple"
+      case (false, 2, core, _) if !core.matches("c(t|tt)c") => "brown"
       case (false, n, core, _) if n > 2 && core.matches("c(tc)+") => "blue"
+      case (false, n, core, _) if n > 3 && core.replaceAll("c","").matches("(rr)?(llrr)+(ll?)") => "yellow"
       case _ => ""
     }
   }

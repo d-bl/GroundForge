@@ -48,6 +48,10 @@ class StitchesSpec extends FlatSpec with Matchers with TableDrivenPropertyChecks
       "ctctct" -> "blue",
       "tctctc" -> "blue",
       "ctctctc" -> "blue",
+      "cllcrrcllc" -> "yellow",
+      "crrcllcrrc" -> "yellow",
+      "cllcrrcllcrrc" -> "yellow",
+      "crrcllcrrcllc" -> "yellow",
 
       // default colors overridden by user, any order is accepted
       "A1=B3=ct=red" -> "red",
