@@ -48,7 +48,7 @@ double stitch           | red       | `ctct`, `tctc`, `tctct` (just `ctc` and bo
 plait                   | blue      | `ctctc` (a `ctc` followed by at least one `tc`)
 turning stitch          | turquoise | `cttc` (no more than two times `c` and both pairs twisted twice in between)
 turning stitch variants | brown     | `cllc`, `crrc`, `ctlc`, `ctrc` (just two time `c` and anything in between but `t` or `tt`)
-tally                   | yellow    | `cllcrrcllc`, `crrlccllc`, (at least four `c`'s and alternating `ll`/`rr` in between)
+tally                   | yellow    | `cllcrrcllc`, `crrcllcrrc`, (at least four `c`'s and alternating `ll`/`rr` in between)
 anything else           | black     | e.g. `ctcttc`, `lcr`
 
 The examples and notes are not exhaustive.
