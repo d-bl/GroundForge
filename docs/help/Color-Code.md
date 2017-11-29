@@ -55,15 +55,18 @@ The examples and notes are not exhaustive.
 At least there can be additional twists (left, right or both pairs)
 at the start and/or end of the examples.
 The exact mathematical/functional definition can be found at the bottom of the class
-[Stitches](https://github.com/jo-pol/GroundForge/blob/master/src/main/scala/dibl/Stitches.scala).
+[Stitches](https://github.com/d-bl/GroundForge/blob/master/src/main/scala/dibl/Stitches.scala).
 
 
 Tweak Colors
 ------------
 
-A pair diagram has a predefined palette of colors applied to stitches. You can tweak colors to accommodate your monitor, printer or color-blindness.
+A pair diagram has a predefined palette of colors applied to stitches as shown with the following sample.
 
-Download a pair diagram and open it with some plain text editor (or show it full screen and right click to show the page source), you will see a start/end marker definition for each color except black, something like:
+![](images/color-sample.jpg)
+
+You can tweak downloaded diagrams colors to accommodate your monitor, printer or color-blindness. 
+Open the downloaded `.svg` file with some plain text editor (or show it full screen and right click to show the page source), you will see a start/end marker definition for each color except black, something like:
 ```xml
 <svg ...>
   <g>
