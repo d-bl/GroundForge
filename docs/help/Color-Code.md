@@ -46,8 +46,8 @@ half stitch             | green     | `ct`, `tc`, `ttc`, `tct` (just one time `c
 cloth stitch            | purple    | `ctc`, `ctcl`, `rctc` (just `ctc` and at most on pair twisted)
 double stitch           | red       | `ctct`, `tctc`, `tctct` (just `ctc` and both pairs twisted at least once)
 plait                   | blue      | `ctctc` (a `ctc` followed by at least one `tc`)
-turning stitch          | turquoise | `cttc` (no more than two times `c` and both pairs twisted twice in between)
-turning stitch variants | brown     | `cllc`, `crrc`, `ctlc`, `ctrc` (just two time `c` and any number (>0) of left and/or right twists in between but `t` or `tt`)
+turning stitch          | turquoise | `cttc` (just two times `c` and both pairs twisted twice in between)
+turning stitch variants | brown     | `cllc`, `crrc`, `ctlc`, `ctrc` (just two times `c` and any number (>0) of left and/or right twists in between but `t` or `tt`)
 tally                   | yellow    | `cllcrrcllc`, `crrcllcrrc`, (at least four `c`'s and alternating `ll`/`rr` in between)
 anything else           | black     | e.g. `ctcttc`, `lcr`
 
