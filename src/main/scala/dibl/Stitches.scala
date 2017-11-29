@@ -144,7 +144,7 @@ object Stitches {
     */
   private def bothTwisted(s: String) = s.count('t' == _) > 0
 
-  /** Split  a string (with any sequence of ctlr but at least a c) into
+  /** Split a string (with any sequence of ctlr) into
     * - everything before the first c
     * - the first c up to and including the last c
     * - everything after the last c
@@ -156,9 +156,10 @@ object Stitches {
     *               Though rl=lr=t the t should be used wherever possible,
     *               meaning (ignoring pins): between, before and after c's only
     *               either [l's and/or t's] or [r's and/or t's]
-    * @return An empty string or the default color name for a stitch.
+    * @return An empty string (rendered as black) or the color name for a stitch.
     */
   def defaultColor(stitch: String): StitchId = {
+    // keep this method at the bottom of this class or adjust help/color-code.md
     val hasPins = stitch.count('p' == _) > 0
     val crossCount = stitch.count('c' == _)
     val regex(openTwists, coreStitch, closeTwists) = stitch

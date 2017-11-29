@@ -47,13 +47,15 @@ cloth stitch            | purple    | `ctc`, `ctcl`, `rctc` (just `ctc` and at m
 double stitch           | red       | `ctct`, `tctc`, `tctct` (just `ctc` and both pairs twisted at least once)
 plait                   | blue      | `ctctc` (a `ctc` followed by at least one `tc`)
 turning stitch          | turquoise | `cttc` (no more than two times `c` and both pairs twisted twice in between)
-turning stitch variants | brown     | `cllc`, `crrc`, `ctlc`, `ctrc` (just two time `c` and anything in between but `t` or `tt`)
+turning stitch variants | brown     | `cllc`, `crrc`, `ctlc`, `ctrc` (just two time `c` and any number (>0) of left and/or right twists in between but `t` or `tt`)
 tally                   | yellow    | `cllcrrcllc`, `crrcllcrrc`, (at least four `c`'s and alternating `ll`/`rr` in between)
 anything else           | black     | e.g. `ctcttc`, `lcr`
 
 The examples and notes are not exhaustive.
 At least there can be additional twists (left, right or both pairs)
 at the start and/or end of the examples.
+The exact mathematical/functional definition can be found at the bottom of the class
+[Stitches](https://github.com/jo-pol/GroundForge/blob/master/src/main/scala/dibl/Stitches.scala).
 
 
 Tweak Colors
