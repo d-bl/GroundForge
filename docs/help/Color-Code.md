@@ -65,7 +65,7 @@ A pair diagram has a predefined palette of colors applied to stitches as shown w
 
 ![](images/color-sample.jpg)
 
-You can tweak downloaded diagrams colors to accommodate your monitor, printer or color-blindness. 
+You can tweak the colors of a downloaded diagram to accommodate your monitor, printer or color-blindness. 
 Open the downloaded `.svg` file with some plain text editor (or show it full screen and right click to show the page source), you will see a start/end marker definition for each color except black, something like:
 ```xml
 <svg ...>
@@ -73,6 +73,8 @@ Open the downloaded `.svg` file with some plain text editor (or show it full scr
     <defs>
       ...
       <marker id="start-red" ...><path ... stroke="#f00"></path></marker>
+      ...
+      <marker id="end-red" ...><path ... stroke="#f00"></path></marker>
       ...
     </defs>
   </g>
