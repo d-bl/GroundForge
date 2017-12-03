@@ -28,31 +28,53 @@ poor or no support for tallies, pins and gimps in GroundForge and other limitati
 Twist marks by GroundForge
 --------------------------
 
-The intention is a twist mark wherever there are multiple twists in a pair.
+The _intention_ is a twist mark wherever there are multiple twists in a pair.
 Open stitches abide this rule. Closed stitches lack twist marks if just one of the pairs need one.
-
 Follow the progress of issue [#104](https://github.com/d-bl/GroundForge/issues/104).
+
 
 Colors by GroundForge
 ---------------------
 
-This dialect is still under construction,
-follow the progress of pull request [#106](https://github.com/d-bl/GroundForge/pull/106).
+A plait in a pair diagram is not drawn as ">---<" but as "X" but still blue.
+Same for "&#41289;" (pins are hardly supported anyway)
+turquoise and brown represent this family of stitches.
 
-Anyway, a plait in a pair diagram is not drawn as ">---<" and stitch-pin-stitch is not as "ꅉ" but both as "X".
+stitch name             | color     | examples and notes
+------------------------|-----------|--------------------------------------------
+half stitch             | green     | `ct`, `tc`, `ttc`, `tct` (just one time `c` and both pairs twisted at least once)
+cloth stitch            | purple    | `ctc`, `ctcl`, `rctc` (just `ctc` and at most on pair twisted)
+double stitch           | red       | `ctct`, `tctc`, `tctct` (just `ctc` and both pairs twisted at least once)
+plait                   | blue      | `ctctc` (a `ctc` followed by at least one `tc`)
+turning stitch          | turquoise | `cttc` (just two times `c` and both pairs twisted twice in between)
+turning stitch variants | brown     | `cllc`, `crrc`, `ctlc`, `ctrc` (just two times `c` and in between both pair twisted more than twice or each pair another number of twists between the `c`'s)
+tally                   | yellow    | `cllcrrcllc`, `crrcllcrrc`, (at least four `c`'s and alternating `ll`/`rr` in between)
+anything else           | black     | e.g. `ctcttc`, `lcr`
+
+The examples and notes are not exhaustive.
+At least there can be additional twists (left, right or both pairs)
+at the start and/or end of the examples.
+The exact mathematical/functional definition can be found at the bottom of the class
+[Stitches](https://github.com/d-bl/GroundForge/blob/master/src/main/scala/dibl/Stitches.scala).
+
 
 Tweak Colors
 ------------
 
-A pair diagram has a predefined palette of colors applied to stitches. You can tweak colors to accomodate your monitor, printer or color-blindness.
+A pair diagram has a predefined palette of colors applied to stitches as shown with the following sample.
 
-Download a pair diagram and open it with some plain text editor (or show it full screen and right click to show the page source), you will see a start/end marker definition for each color except black, something like:
+![](images/color-sample.jpg)
+
+You can tweak the colors of a downloaded diagram to accommodate your monitor, printer or color-blindness. 
+Open the downloaded `.svg` file with some plain text editor (or show it full screen and right click to show the page source), you will see a start/end marker definition for each color except black, something like:
 ```xml
 <svg ...>
   <g>
     <defs>
       ...
       <marker id="start-red" ...><path ... stroke="#f00"></path></marker>
+      ...
+      <marker id="end-red" ...><path ... stroke="#f00"></path></marker>
       ...
     </defs>
   </g>

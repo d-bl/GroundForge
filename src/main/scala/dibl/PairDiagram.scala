@@ -107,9 +107,9 @@ object PairDiagram {
         case _ => 0
       }
     pairLink(link.source, link.target,
-      start = marker(sourcePairNode.instructions.replaceAll("t", "lr")),
+      start = sourcePairNode.color,
       mid = nrOfTwists - 1,
-      end = marker(targetPairNode.instructions.replaceAll("t", "lr")),
+      end = targetPairNode.color,
       weak = false
     )
   }
@@ -173,7 +173,7 @@ object PairDiagram {
       node(s"Pair ${1 + nodeMap((0, col))}", x = 15.0 * col, y = 0.0)) ++
       targets.map { case (row, col) =>
         val title = footsideTwists(row, col) + settings.getTitle(row, col)
-        node(title, x = 15.0 * col, y = 15.0 * row)
+        node(title, settings.getColor(row, col),  x = 15.0 * col, y = 15.0 * row)
       }
 
     val cols = Set(2, settings.absM(0).length - 2)
@@ -182,16 +182,16 @@ object PairDiagram {
         val sourceNode = nodeMap((sourceRow, sourceCol))
         val targetNode = nodeMap((targetRow, targetCol))
         val sourceStitch = nodes(sourceNode).instructions
-        val targetStitch = nodes(targetNode).instructions.replaceAll("t", "lr")
+        val targetStitch = nodes(targetNode).instructions
         val sourceCells = settings.absM(targetRow)(targetCol)
         val countedTargetChar = if (sourceCells(0) == (sourceRow, sourceCol)) 'l' else 'r'
         val countedSourceChar = 't' // TODO figure out which leg of the source stitch
         val nrOfTwists = sourceStitch.replaceAll(".*c","").count(_ == countedSourceChar) +
-          targetStitch.replaceAll("c.*","").count(_ == countedTargetChar)
+          targetStitch.replaceAll("t", "lr").replaceAll("c.*","").count(_ == countedTargetChar)
         pairLink(sourceNode, targetNode,
-          start = if (sourceRow < 2) "pair" else marker(sourceStitch.replaceAll("t", "lr")),
+          start = if (sourceRow < 2) "pair" else Stitches.defaultColor(sourceStitch),
           mid = if (sourceRow < 2) 0 else nrOfTwists - 1,
-          end = marker(targetStitch),
+          end = Stitches.defaultColor(targetStitch),
           weak = cols.contains(sourceCol) || targetRow - sourceRow > 1
         )
       }.toSeq ++ transparentLinks(sourcesIndices.toArray)
@@ -235,31 +235,9 @@ object PairDiagram {
       }
   }
 
-  /** Property of a link, the Belgian color code of a node tells a lace maker which stitch to make.
-    * The end marker and start marker of a link take the color of the node.
-    *
-    * @param stitch lower case instructions, t(wist), already expanded to l(eft)r(ight).
-    *               A stitch is made with two pair alias four threads.
-    *               A twist means even threads/bobbins (2nd and/or 4th) to the left by one position.
-    *               A c(ross) means the second thread to the right by one position.
-    *               A p(in) is put between the two pairs.
-    * @return the color of a node
-    */
-  def marker(stitch: String): String = {
-    if (stitch.endsWith("clrclrc") || stitch.contains("p")) ""
-    else if (stitch.endsWith("lrclrc")) "red"
-    else if (stitch.endsWith("clrc")) "purple"
-    else if (stitch.endsWith("lrc")) "green"
-    else if (stitch.startsWith("clrclrc")) ""
-    else if (stitch.startsWith("clrclr")) "red"
-    else if (stitch.startsWith("clrc")) "purple"
-    else if (stitch.startsWith("clr")) "green"
-    else ""
-  }
-
   /** Property of a link, a cross mark indicates additional twist(s).
     *
-    * @param sourceStitch as for [[marker]]
+    * @param sourceStitch stitch instructions in terms of ctrlp
     * @param targetStitch idem
     * @param toLeftOfTarget which pair of the two-in
     * @return the number of additional twists, assuming the first twist is part of the Belgian color code

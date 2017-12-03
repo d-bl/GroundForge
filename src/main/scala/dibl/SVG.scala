@@ -102,11 +102,19 @@ object SVG {
        |  ${pairMarker()}
        |  ${twistMark()}
        |  ${startMarker("red", "#f00")}
-       |  ${startMarker("green", "#0f0")}
-       |  ${startMarker("purple", "#609")}
+       |  ${startMarker("blue", "#18C")}
+       |  ${startMarker("green", "#080")}
+       |  ${startMarker("brown", "#c90")}
+       |  ${startMarker("purple", "#c3f")}
+       |  ${startMarker("yellow", "#ee0")}
+       |  ${startMarker("turquoise", "#0f9")}
        |  ${endMarker("red", "#f00")}
-       |  ${endMarker("green", "#0f0")}
-       |  ${endMarker("purple", "#609")}
+       |  ${endMarker("blue", "#18C")}
+       |  ${endMarker("green", "#080")}
+       |  ${endMarker("brown", "#c90")}
+       |  ${endMarker("purple", "#c3f")}
+       |  ${endMarker("yellow", "#ee0")}
+       |  ${endMarker("turquoise", "#0f9")}
        |</defs>""".stripMargin.stripLineEnd
   }
 
