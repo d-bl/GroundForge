@@ -7,28 +7,34 @@ function setVisibility() {
   var stitches = ""
   var r = 0
   var c = 0
-  var shift = document.getElementById('shift').value * 1
-  var shiftCols = document.getElementById('cols').checked
-  for (r = 0; r < 8; r++) {
-    var cols = Math.min(8,matrixLines[r%rows].length)
-    for (c = 0; c < 8; c++) {
+  var shiftRows = document.getElementById('shiftRows').value * 1
+  var shiftCols = document.getElementById('shiftCols').value * 1
+  var overlapRows = document.getElementById('overlapRows').value * 1
+  var overlapCols = document.getElementById('overlapCols').value * 1
+  for (r = 0; r < 12; r++) {
+    var cols = Math.min(12,matrixLines[r%rows].length)
+    for (c = 0; c < 12; c++) {
       var enable =  r < rows && c < cols && matrixLines[r][c] != "-"
       var id = "r" + (r + 1) + "-c" + (c + 1)
-      setEnabled(id, enable)
+      if (r<8 && c<8)
+       setEnabled(id, enable)
       var svgEl = document.getElementById("svg-" + id)
       var firstTile = r < rows && c < cols
-      var colOffset = (!shiftCols ? 0 : Math.floor(r/rows) * shift)
-      var rowOffset = (shiftCols ? 0 : Math.floor(c/cols) * shift)
+      var colOffset = Math.floor(r/rows) * shiftCols
+      var rowOffset = Math.floor(c/cols) * shiftRows
       var hrefValue = matrixLines[(r+rowOffset)%rows][(c+colOffset)%cols]
       svgEl.style = "opacity:" + (!firstTile || hrefValue == "-" ? "0.3;" : "1;")
       svgEl.attributes["xlink:href"].value = "#g" + hrefValue
     }
   }
-  var tiling = (shift == 0 ? "checker" : ((shift * 2 == matrixLines[0].length ) && shiftCols ? "bricks" : "notYetImplemented" ))
+  var tiling = "notYetImplemented"
+  if (shiftCols == 0 && shiftRows == 0) tiling = "checker"
+  else if (shiftRows == 0) tiling = shiftCols * 2 == matrixLines[0].length
   document.getElementById("link").href = "../index.html" +
     "?m=" + matrixLines.join(",") +
     ";" + tiling + ";12;12;0;2" +
-    "&" + (shiftCols ? "shiftCols=" : "shiftRows=" ) + shift + // the new tiling
+    "&shiftCols=" + shiftCols + // the new tiling
+    "&shiftRows=" + shiftRows + // idem
     "&s1=" + getChosenStitches() +
     ""
 }
@@ -51,8 +57,8 @@ function setEnabled(id, enabled) {
 }
 function setPattern (matrix, shift, direction) {
   document.getElementById('matrix').value = matrix
-  document.getElementById('shift').value = shift
-  document.getElementById(direction).checked = true
+  document.getElementById('shiftCols').value = shift
+  document.getElementById('shiftRows').value = 0
   setVisibility()
 }
 
