@@ -6,6 +6,9 @@
 <form onsubmit="return false">
     <fieldset id="get-started">
         <legend>Get started (for test and demo purposes)</legend>
+        <p>
+            Select one of the links to set the pattern definition and shift parameters for repeats.
+        </p>
         <figure>
             <img src="../help/tl/181.png">
             <figcaption>
@@ -73,24 +76,31 @@
             </figcaption>
         </figure>
         <p>
-            Select one of the digits to set the pattern definition and shift parameters for repeats.
-        </p>
-        <p>
             A pattern as
             <a href="javascript:setPattern('88-14-5', 4, 'cols')">horizontal</a> /
             <a href="javascript:setPattern('5\n1\n8\n4\n8\n-\n-', 2, 'rows')">vertical</a>
             brick.
-            Another
+            Different dimensions for
+            <a href="javascript:setPattern('886\n4-1', 1, 'cols')">h</a> /
+            <a href="javascript:setPattern('8\n4\n8\n-\n6\n1', 2, 'rows')">v</a>.
+            Bias variations:
             <a href="javascript:setPattern('7--2A1C--', 5, 'cols')">h</a> /
-            <a href="javascript:setPattern('2\n-\na\n7\n1\n-\nc\n-\n-', 2, 'rows')">v</a>.
-            An overlapping pattern <a href="javascript:sample()">under construction</a>.
+            <a href="javascript:setPattern('2\n-\na\n7\n1\n-\nc\n-\n-', 2, 'rows')">v</a>;
+            <a href="javascript:setPattern('148312\n7-488-', 4, 'cols')">h</a>.
+            A paris variation:
+            <a href="javascript:setPattern('5---C-B-', 3, 'cols')">h</a>.
+            A diagonal lotus:
+            <a href="javascript:setPattern('N6-5---4-58-', 7, 'cols')">h</a>.
+        </p>
+        <p>
+            Under construction: overlapping patterns <a href="javascript:sample('889C\n468-\n468D\n2748\n17-4',3,3)">A</a>.
         </p>
     </fieldset>
     <fieldset>
         <legend>Pattern</legend>
         <figure>
             <textarea id="matrix" name="matrix" rows="8" cols="8" spellcheck="false"
-                      onchange="setVisibility()">-5</textarea>
+                      onchange="setVisibility()"></textarea>
             <figcaption>definition</figcaption>
         </figure>
         <figure>
@@ -103,7 +113,6 @@
                  height="266"
                  id="svg2"
                  version="1.1">
-                <title id="title5579">Template for GroundForge Matrices</title>
                 <defs id="defs4">
                     <marker orient="auto" refY="0" refX="0" id="Arrow1Mend" style="overflow:visible">
                         <path d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z" style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt" transform="matrix(-0.4,0,0,-0.4,-4,0)"/>
@@ -455,27 +464,10 @@
                 <input type="number" name="shiftRows" id="shiftRows" min="0" max="12" value="1" onchange="setVisibility()"><label for="shiftRows">row(s)</label>
             </div>
             <div>
-                of stitches with an overlap of
-            </div>
-            <div>
-                <input type="number" name="overlapCols" id="overlapCols" min="0" max="7" value="1" onchange="setVisibility()">
-                <br>
-                <input type="number" name="overlapRows" id="overlapRows" min="0" max="7" value="1" onchange="setVisibility()">
+                of stitches.
             </div>
         </div>
-        <div>
-            <div>
-                Variants:
-            </div>
-            <div>
-                <input type="number" name="colVariants" id="colVariants" min="1" max="1" value="1"><label for="colVariants">per column</label>
-                <br>
-                <input type="number" name="rowVariants" id="rowVariants" min="1" max="1" value="1"><label for="rowVariants">per row</label>
-            </div>
-            <div>
-                of repeats.
-            </div>
-        </div>
+        <img src="../help/images/shift-directions.png" style="vertical-align: top">
     </fieldset>
     <fieldset id="stitch-form">
         <legend>Stitches</legend>

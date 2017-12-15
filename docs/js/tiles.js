@@ -7,8 +7,6 @@ function setVisibility() {
 
   var shiftRows = document.getElementById('shiftRows').value * 1
   var shiftCols = document.getElementById('shiftCols').value * 1
-  var overlapRows = document.getElementById('overlapRows').value * 1
-  var overlapCols = document.getElementById('overlapCols').value * 1
 
   // dis/en-able stitches
   for (var r = 0; r < 8; r++) {
@@ -24,22 +22,32 @@ function setVisibility() {
 
   // pattern prototype
   if (shiftCols == 0 || shiftRows == 0)
+    // checkers and bricks without overlap, TODO omit once the else part is completed
     for (var r = 0; r < 12; r++) {
       for (var c = 0; c < 12; c++) {
         var colOffset = Math.floor(r/rows) * shiftCols
         var rowOffset = Math.floor(c/cols) * shiftRows
-        var hrefValue = matrixLines[(r+rowOffset)%rows][(c+colOffset)%cols]
-        setNode(r, c, hrefValue, r < rows && c < cols)
+        // s in rs/cs stands for source cell
+        var rs = (r+rowOffset)%rows
+        var cs = (c+colOffset)%cols
+        setNode(r, c, matrixLines[rs][cs], r < rows && c < cols)
       }
     }
-  else
-    for (var r = 0; r < 12; r++) {
-      for (var c = 0; c < 12; c++) {
-        // TODO
-        var hrefValue = (r<rows && c<cols ? matrixLines[r%rows][c%cols] : "-")
-        setNode(r, c, hrefValue, r < rows && c < cols)
-      }
-    }
+  else {
+    // clear the matrix as the NE and SW parts will not be filled
+    for (var r = 0; r < 12; r++)
+      for (var c = 0; c < 12; c++)
+        setNode(r, c, "-", true)
+    // so far just one diagonal of overlapping tiles
+    for (var i=0 ; i<12 ; i++) // tiles in a diagonal
+      for (var r=0; r+(i*shiftRows) < 12 && r<rows; r++)
+        for (var c=0 ; c+(i*shiftCols) < 12 && c<cols; c++) {
+          // t in rt/ct stands for target cell
+          var rt = r+(i*shiftRows)
+          var ct = c+(i*shiftCols)
+          setNode(rt, ct, matrixLines[r][c], rt < rows && ct < cols)
+        }
+  }
 
   // href of go button
   var link = document.getElementById("link")
@@ -82,22 +90,16 @@ function setPattern (matrix, shift, direction) {
   if (direction == "cols") {
     document.getElementById('shiftCols').value = shift
     document.getElementById('shiftRows').value = 0
-    document.getElementById('overlapCols').value = 0
-    document.getElementById('overlapRows').value = 0
   } else {
     document.getElementById('shiftCols').value = 0
     document.getElementById('shiftRows').value = shift
-    document.getElementById('overlapCols').value = 0
-    document.getElementById('overlapRows').value = 0
   }
   setVisibility()
 }
-function sample() {
-  document.getElementById('matrix').value = "889C 468- 468D 2748  17-4"
-  document.getElementById('shiftCols').value = 1
-  document.getElementById('shiftRows').value = 2
-  document.getElementById('overlapCols').value = 1
-  document.getElementById('overlapRows').value = 2
+function sample(matrix, shiftRows, shiftCols) {
+  document.getElementById('matrix').value = matrix
+  document.getElementById('shiftCols').value = shiftCols
+  document.getElementById('shiftRows').value = shiftRows
   setVisibility()
 }
 
