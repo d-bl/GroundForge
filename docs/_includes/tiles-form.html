@@ -87,13 +87,14 @@
             <a href="javascript:setPattern('7--2A1C--', 5, 'cols')">h</a> /
             <a href="javascript:setPattern('2\n-\na\n7\n1\n-\nc\n-\n-', 2, 'rows')">v</a>;
             <a href="javascript:setPattern('148312\n7-488-', 4, 'cols')">h</a>.
+            <a href="javascript:setPattern('14\n7-\n12\n8-\n83\n48', 4, 'rows')">v</a>.
             A paris variation:
             <a href="javascript:setPattern('5---C-B-', 3, 'cols')">h</a>.
             A diagonal lotus:
             <a href="javascript:setPattern('N6-5---4-58-', 7, 'cols')">h</a>.
         </p>
         <p>
-            Under construction: overlapping patterns <a href="javascript:sample('889C\n468-\n468D\n2748\n17-4',3,3)">A</a>.
+            Overlapping patterns <a href="javascript:sample('889C\n468-\n468D\n2748\n17-4',3,3, -1,5)">A</a>.
         </p>
     </fieldset>
     <fieldset>
@@ -459,12 +460,20 @@
                 Shifted by
             </div>
             <div>
-                <input type="number" name="shiftCols" id="shiftCols" min="0" max="12" value="1" onchange="setVisibility()"><label for="shiftCols">col(s)</label>
+                <input type="number" name="shiftCols" id="shiftColsSE" min="0" max="12" value="1" onchange="setVisibility()"><label for="shiftColsSE">col(s)</label>
                 <br>
-                <input type="number" name="shiftRows" id="shiftRows" min="0" max="12" value="1" onchange="setVisibility()"><label for="shiftRows">row(s)</label>
+                <input type="number" name="shiftRows" id="shiftRowsSE" min="0" max="12" value="1" onchange="setVisibility()"><label for="shiftRowsSE">row(s)</label>
             </div>
             <div>
-                of stitches.
+                of stitches south-east and
+            </div>
+            <div>
+                <input type="number" name="shiftCols" id="shiftColsSW" min="-12" max="12" value="1" onchange="setVisibility()">
+                <br>
+                <input type="number" name="shiftRows" id="shiftRowsSW" min="-12" max="12" value="1" onchange="setVisibility()">
+            </div>
+            <div>
+                south-west.
             </div>
         </div>
         <img src="../help/images/shift-directions.png" style="vertical-align: top">

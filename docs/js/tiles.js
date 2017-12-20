@@ -5,8 +5,10 @@ function setVisibility() {
   var rows = matrixLines.length
   var cols = matrixLines[0].length
 
-  var shiftRows = document.getElementById('shiftRows').value * 1
-  var shiftCols = document.getElementById('shiftCols').value * 1
+  var shiftRowsSE = document.getElementById('shiftRowsSE').value * 1
+  var shiftColsSE = document.getElementById('shiftColsSE').value * 1
+  var shiftRowsSW = document.getElementById('shiftRowsSW').value * 1
+  var shiftColsSW = document.getElementById('shiftColsSW').value * 1
 
   // dis/en-able stitches
   for (var r = 0; r < 8; r++) {
@@ -21,12 +23,12 @@ function setVisibility() {
   }
 
   // pattern prototype
-  if (shiftCols == 0 || shiftRows == 0)
+  if (shiftColsSE == 0 || shiftRowsSE == 0 && (shiftColsSW == 0 || shiftRowsSW == 0))
     // checkers and bricks without overlap, TODO omit once the else part is completed
     for (var r = 0; r < 12; r++) {
       for (var c = 0; c < 12; c++) {
-        var colOffset = Math.floor(r/rows) * shiftCols
-        var rowOffset = Math.floor(c/cols) * shiftRows
+        var colOffset = Math.floor(r/rows) * shiftColsSE
+        var rowOffset = Math.floor(c/cols) * shiftRowsSE
         // s in rs/cs stands for source cell
         var rs = (r+rowOffset)%rows
         var cs = (c+colOffset)%cols
@@ -40,29 +42,34 @@ function setVisibility() {
         setNode(r, c, "-", true)
     // so far just one diagonal of overlapping tiles
     for (var i=0 ; i<12 ; i++) // tiles in a diagonal
-      for (var r=0; r+(i*shiftRows) < 12 && r<rows; r++)
-        for (var c=0 ; c+(i*shiftCols) < 12 && c<cols; c++) {
-          // t in rt/ct stands for target cell
-          var rt = r+(i*shiftRows)
-          var ct = c+(i*shiftCols)
-          setNode(rt, ct, matrixLines[r][c], rt < rows && ct < cols)
-        }
+      for (var j=-12 ; j<12 ; j++) // parallel diagonals
+        for (var r=0; r+(i*shiftRowsSE)+(j*shiftRowsSW) < 12 && r<rows; r++)
+          for (var c=0 ; c+(i*shiftColsSE)+(j*shiftColsSW) < 12 && c<cols; c++) {
+            // t in rt/ct stands for target cell
+            var rt = r+(i*shiftRowsSE)+(j*shiftRowsSW)
+            var ct = c+(i*shiftColsSE)+(j*shiftColsSW)
+            if (rt >= 0 && ct >=0)
+              setNode(rt, ct, matrixLines[r][c], i==0 && j==0)
+          }
   }
 
   // href of go button
   var link = document.getElementById("link")
-  var tiling = "notYetImplemented"
-  if (shiftCols == 0 && shiftRows == 0) tiling = "checker"
-  else if (shiftRows == 0) tiling = shiftCols * 2 == matrixLines[0].length
+  var oldTiling = "notYetImplemented"
+  if (shiftColsSW == 0 && shiftRowsSW == 0  && shiftRowsSE == 0)
+    if (shiftColsSE == 0) tiling = "checker"
+    else oldTiling = shiftCols * 2 == matrixLines[0].length
   if (tiling == "notYetImplemented")
     link.style = "display:none"
   else {
     link.style = "display:inline-block"
     link.href = "../index.html" +
       "?m=" + matrixLines.join(",") +
-      ";" + tiling + ";12;12;0;2" +
-      "&shiftCols=" + shiftCols + // the new tiling
-      "&shiftRows=" + shiftRows + // idem
+      ";" + oldTiling + ";12;12;0;2" +
+      "&shiftColsSE=" + shiftColsSE +
+      "&shiftRowsSE=" + shiftRowsSE +
+      "&shiftColsSW=" + shiftColsSW +
+      "&shiftRowsSW=" + shiftRowsSW +
       "&s1=" + getChosenStitches() +
       ""
   }
@@ -88,18 +95,24 @@ function getChosenStitches() {
 function setPattern (matrix, shift, direction) {
   document.getElementById('matrix').value = matrix
   if (direction == "cols") {
-    document.getElementById('shiftCols').value = shift
-    document.getElementById('shiftRows').value = 0
+    document.getElementById('shiftColsSE').value = shift
+    document.getElementById('shiftRowsSE').value = 0
+    document.getElementById('shiftColsSW').value = 0
+    document.getElementById('shiftRowsSW').value = 0
   } else {
-    document.getElementById('shiftCols').value = 0
-    document.getElementById('shiftRows').value = shift
+    document.getElementById('shiftColsSE').value = 0
+    document.getElementById('shiftRowsSE').value = shift
+    document.getElementById('shiftColsSW').value = 0
+    document.getElementById('shiftRowsSW').value = 0
   }
   setVisibility()
 }
-function sample(matrix, shiftRows, shiftCols) {
+function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW) {
   document.getElementById('matrix').value = matrix
-  document.getElementById('shiftCols').value = shiftCols
-  document.getElementById('shiftRows').value = shiftRows
+  document.getElementById('shiftColsSE').value = shiftColsSE
+  document.getElementById('shiftRowsSE').value = shiftRowsSE
+  document.getElementById('shiftColsSW').value = shiftColsSW
+  document.getElementById('shiftRowsSW').value = shiftRowsSW
   setVisibility()
 }
 
