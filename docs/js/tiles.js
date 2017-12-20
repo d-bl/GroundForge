@@ -39,8 +39,7 @@ function setVisibility() {
             setNode(rt, ct, matrixLines[r][c], i==0 && j==0)
         }
 
-  // href of go button
-  var link = document.getElementById("link")
+  // go button
   var oldTiling = "notYetImplemented"
   if (shiftColsSW == cols && shiftRowsSW == rows && ( (shiftColsSE == -cols && shiftRowsSE == 0)
                                                    || (shiftColsSE == 0     && shiftRowsSE == rows)
@@ -48,6 +47,7 @@ function setVisibility() {
     oldTiling = "checker"
   if (shiftColsSW*2 == cols && shiftRowsSW == rows && shiftColsSE*2 == -cols && shiftRowsSW == rows)
     oldTiling = "bricks"
+  var link = document.getElementById("link")
   if (oldTiling == "notYetImplemented")
     link.style = "display:none"
   else {
