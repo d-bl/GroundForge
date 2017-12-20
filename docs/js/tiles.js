@@ -22,44 +22,33 @@ function setVisibility() {
     }
   }
 
+  // clear the prototype as there might be gaps between overlapping tiles
+  for (var r = 0; r < 12; r++)
+    for (var c = 0; c < 12; c++)
+      setNode(r, c, "-", true)
+
   // pattern prototype
-  if (shiftColsSE == 0 || shiftRowsSE == 0 && (shiftColsSW == 0 || shiftRowsSW == 0))
-    // checkers and bricks without overlap, TODO omit once the else part is completed
-    for (var r = 0; r < 12; r++) {
-      for (var c = 0; c < 12; c++) {
-        var colOffset = Math.floor(r/rows) * shiftColsSE
-        var rowOffset = Math.floor(c/cols) * shiftRowsSE
-        // s in rs/cs stands for source cell
-        var rs = (r+rowOffset)%rows
-        var cs = (c+colOffset)%cols
-        setNode(r, c, matrixLines[rs][cs], r < rows && c < cols)
-      }
-    }
-  else {
-    // clear the matrix as the NE and SW parts will not be filled
-    for (var r = 0; r < 12; r++)
-      for (var c = 0; c < 12; c++)
-        setNode(r, c, "-", true)
-    // so far just one diagonal of overlapping tiles
-    for (var i=0 ; i<12 ; i++) // tiles in a diagonal
-      for (var j=-12 ; j<12 ; j++) // parallel diagonals
-        for (var r=0; r+(i*shiftRowsSE)+(j*shiftRowsSW) < 12 && r<rows; r++)
-          for (var c=0 ; c+(i*shiftColsSE)+(j*shiftColsSW) < 12 && c<cols; c++) {
-            // t in rt/ct stands for target cell
-            var rt = r+(i*shiftRowsSE)+(j*shiftRowsSW)
-            var ct = c+(i*shiftColsSE)+(j*shiftColsSW)
-            if (rt >= 0 && ct >=0)
-              setNode(rt, ct, matrixLines[r][c], i==0 && j==0)
-          }
-  }
+  for (var i=0 ; i<12 ; i++) // tiles in a diagonal
+    for (var j=-12 ; j<12 ; j++) // parallel diagonals
+      for (var r=0; r+(i*shiftRowsSE)+(j*shiftRowsSW) < 12 && r<rows; r++)
+        for (var c=0 ; c+(i*shiftColsSE)+(j*shiftColsSW) < 12 && c<cols; c++) {
+          // t in rt/ct stands for target cell
+          var rt = r+(i*shiftRowsSE)+(j*shiftRowsSW)
+          var ct = c+(i*shiftColsSE)+(j*shiftColsSW)
+          if (rt >= 0 && ct >=0)
+            setNode(rt, ct, matrixLines[r][c], i==0 && j==0)
+        }
 
   // href of go button
   var link = document.getElementById("link")
   var oldTiling = "notYetImplemented"
-  if (shiftColsSW == 0 && shiftRowsSW == 0  && shiftRowsSE == 0)
-    if (shiftColsSE == 0) tiling = "checker"
-    else oldTiling = shiftCols * 2 == matrixLines[0].length
-  if (tiling == "notYetImplemented")
+  if (shiftColsSW == cols && shiftRowsSW == rows && ( (shiftColsSE == -cols && shiftRowsSE == 0)
+                                                   || (shiftColsSE == 0     && shiftRowsSE == rows)
+                                                    ))
+    oldTiling = "checker"
+  if (shiftColsSW*2 == cols && shiftRowsSW == rows && shiftColsSE*2 == -cols && shiftRowsSW == rows)
+    oldTiling = "bricks"
+  if (oldTiling == "notYetImplemented")
     link.style = "display:none"
   else {
     link.style = "display:inline-block"
@@ -91,21 +80,6 @@ function getChosenStitches() {
        kvpairs.push(e.name + "=" + e.value)
   }
   return kvpairs.join(",")
-}
-function setPattern (matrix, shift, direction) {
-  document.getElementById('matrix').value = matrix
-  if (direction == "cols") {
-    document.getElementById('shiftColsSE').value = shift
-    document.getElementById('shiftRowsSE').value = 0
-    document.getElementById('shiftColsSW').value = 0
-    document.getElementById('shiftRowsSW').value = 0
-  } else {
-    document.getElementById('shiftColsSE').value = 0
-    document.getElementById('shiftRowsSE').value = shift
-    document.getElementById('shiftColsSW').value = 0
-    document.getElementById('shiftRowsSW').value = 0
-  }
-  setVisibility()
 }
 function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW) {
   document.getElementById('matrix').value = matrix
