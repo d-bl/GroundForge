@@ -457,24 +457,32 @@
     <fieldset id="repeats-form">
         <legend>Repeats</legend>
         <div>
+            <p>As
+                <a href="javascript:asChecker()">checker</a>.
+                Bricks:
+                <a href="javascript:brickToLeft()">&lt;-</a>,
+                <a href="javascript:brickToRight()">-&gt;</a>
+            </p>
             <div>
-                Shifted by
-            </div>
-            <div>
-                <input type="number" name="shiftCols" id="shiftColsSE" min="0" max="12" value="0" onchange="setVisibility()"><label for="shiftColsSE">col(s)</label>
-                <br>
-                <input type="number" name="shiftRows" id="shiftRowsSE" min="0" max="12" value="0" onchange="setVisibility()"><label for="shiftRowsSE">row(s)</label>
-            </div>
-            <div>
-                of stitches &#8600; and
-            </div>
-            <div>
-                <input type="number" name="shiftCols" id="shiftColsSW" min="-12" max="0" value="0" onchange="setVisibility()">
-                <br>
-                <input type="number" name="shiftRows" id="shiftRowsSW" min="0" max="12" value="0" onchange="setVisibility()">
-            </div>
-            <div>
-                &#8601;
+                <div>
+                    Shifted by
+                </div>
+                <div>
+                    <input type="number" name="shiftCols" id="shiftColsSE" min="0" max="12" value="0" onchange="setVisibility()"><label for="shiftColsSE">col(s)</label>
+                    <br>
+                    <input type="number" name="shiftRows" id="shiftRowsSE" min="0" max="12" value="0" onchange="setVisibility()"><label for="shiftRowsSE">row(s)</label>
+                </div>
+                <div>
+                    of stitches &#8664; and
+                </div>
+                <div>
+                    <input type="number" name="shiftCols" id="shiftColsSW" min="-12" max="0" value="0" onchange="setVisibility()">
+                    <br>
+                    <input type="number" name="shiftRows" id="shiftRowsSW" min="0" max="12" value="0" onchange="setVisibility()">
+                </div>
+                <div>
+                    &#8665;
+                </div>
             </div>
         </div>
         <img src="../help/images/shift-directions.png" style="vertical-align: top">

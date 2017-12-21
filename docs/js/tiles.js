@@ -1,7 +1,6 @@
 function setVisibility() {
 
-  var matrix = document.getElementById("matrix").value
-  var matrixLines = matrix.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+  var matrixLines = getMatrixLines()
   var rows = matrixLines.length
   var cols = matrixLines[0].length
 
@@ -87,6 +86,34 @@ function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW) {
   document.getElementById('shiftRowsSE').value = shiftRowsSE
   document.getElementById('shiftColsSW').value = shiftColsSW
   document.getElementById('shiftRowsSW').value = shiftRowsSW
+  setVisibility()
+}
+function getMatrixLines() {
+
+  var matrix = document.getElementById("matrix").value
+  return matrix.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+}
+function asChecker() {
+
+  var matrixLines = getMatrixLines()
+  var rows = matrixLines.length
+  var cols = matrixLines[0].length
+  document.getElementById('shiftRowsSE').value = rows
+  document.getElementById('shiftColsSE').value = cols
+  document.getElementById('shiftRowsSW').value = rows
+  document.getElementById('shiftColsSW').value = 0
+  setVisibility()
+}
+function brickToLeft() {
+
+  document.getElementById('shiftColsSE').value--
+  document.getElementById('shiftColsSW').value--
+  setVisibility()
+}
+function brickToRight() {
+
+  document.getElementById('shiftColsSE').value++
+  document.getElementById('shiftColsSW').value++
   setVisibility()
 }
 
