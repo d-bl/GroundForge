@@ -40,11 +40,11 @@ function setVisibility() {
 
   // go button
   var oldTiling = "notYetImplemented"
-  if (shiftColsSW == cols && shiftRowsSW == rows && ( (shiftColsSE == -cols && shiftRowsSE == 0)
-                                                   || (shiftColsSE == 0     && shiftRowsSE == rows)
+  if (shiftColsSE == cols && shiftRowsSE == rows && ( (shiftColsSW == -cols && shiftRowsSW == 0)
+                                                   || (shiftColsSW == 0     && shiftRowsSW == rows)
                                                     ))
     oldTiling = "checker"
-  if (shiftColsSW*2 == cols && shiftRowsSW == rows && shiftColsSE*2 == -cols && shiftRowsSW == rows)
+  if (shiftColsSE*2 == cols && shiftRowsSE == rows && shiftColsSW*2 == -cols && shiftRowsSW == rows)
     oldTiling = "bricks"
   var link = document.getElementById("link")
   if (oldTiling == "notYetImplemented")
