@@ -46,31 +46,52 @@ function setVisibility() {
     oldTiling = "checker"
   if (shiftColsSE*2 == cols && shiftRowsSE == rows && shiftColsSW*2 == -cols && shiftRowsSW == rows)
     oldTiling = "bricks"
+  var ids = getChosenStitches()
+  document.getElementById("ids").innerHTML = ids.replace(/,/g,", ")
   var link = document.getElementById("link")
   if (oldTiling == "notYetImplemented")
     link.style = "display:none"
   else {
     link.style = "display:inline-block"
     link.href = "../index.html" +
-      "?m=" + matrixLines.join(",") +
-      ";" + oldTiling + ";12;12;0;2" +
-      "&shiftColsSE=" + shiftColsSE +
+      "?s2=&s3=&"+
+      "shiftColsSE=" + shiftColsSE +
       "&shiftRowsSE=" + shiftRowsSE +
       "&shiftColsSW=" + shiftColsSW +
       "&shiftRowsSW=" + shiftRowsSW +
-      "&s1=" + getChosenStitches() +
+      "&s1=" + ids +
+      "&m=" + matrixLines.join(",") +
+      ";" + oldTiling + ";12;12;0;2" +
       ""
   }
 }
 function setNode(r, c, val, firstTile) {
+
   var svgEl = document.getElementById("svg-" + id(r,c))
-  svgEl.style = "opacity:" + (!firstTile || val == "-" ? "0.3;" : "1;")
+  var activeNode = firstTile && val != "-"
   svgEl.attributes["xlink:href"].value = "#g" + val
+  svgEl.attributes["onclick"].value = (activeNode ? "setStitch(this)" : "")
+  svgEl.style = "stroke:#000;opacity:" + (activeNode ? "1;" : "0.3;")
+  var formEl = document.getElementById(id(r,c))
+  svgEl.innerHTML = (formEl && val != "-" ? "<title>"+formEl.value+"</title>" : "")
+}
+function setStitch(source) {
+
+  var id = source.attributes["id"].value.substr(4)
+  var target = document.getElementById(id) // TODO replace hidden form with data array
+  selected = prompt("Stitch for " + id, target.value) // TODO no action for "-"
+  if (selected) {
+    target.value = selected
+    setVisibility()
+    source.style = "stroke:#d0d;opacity:1"
+  }
 }
 function id(r, c) {
+
   return "r" + (r + 1) + "-c" + (c + 1)
 }
 function getChosenStitches() {
+
   var els = document.getElementById("stitch-form").elements;
   var kvpairs = [];
   for (var i=0; i < els.length; i++) {
@@ -80,18 +101,19 @@ function getChosenStitches() {
   }
   return kvpairs.join(",")
 }
+function getMatrixLines() {
+
+  var matrix = document.getElementById("matrix").value
+  return matrix.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+}
 function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW) {
+
   document.getElementById('matrix').value = matrix
   document.getElementById('shiftColsSE').value = shiftColsSE
   document.getElementById('shiftRowsSE').value = shiftRowsSE
   document.getElementById('shiftColsSW').value = shiftColsSW
   document.getElementById('shiftRowsSW').value = shiftRowsSW
   setVisibility()
-}
-function getMatrixLines() {
-
-  var matrix = document.getElementById("matrix").value
-  return matrix.toUpperCase().trim().split(/[^-A-Z0-9]+/)
 }
 function asChecker() {
 
@@ -114,6 +136,16 @@ function brickToRight() {
 
   document.getElementById('shiftColsSE').value++
   document.getElementById('shiftColsSW').value++
+  setVisibility()
+}
+function brickUp() {
+
+  document.getElementById('shiftRowsSE').value--
+  setVisibility()
+}
+function brickDown() {
+
+  document.getElementById('shiftRowsSE').value++
   setVisibility()
 }
 
