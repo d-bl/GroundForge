@@ -1,3 +1,5 @@
+var stitches = {}
+
 function setVisibility() {
 
   var matrixLines = getMatrixLines()
@@ -8,17 +10,6 @@ function setVisibility() {
   var shiftColsSE = document.getElementById('shiftColsSE').value * 1
   var shiftRowsSW = document.getElementById('shiftRowsSW').value * 1
   var shiftColsSW = document.getElementById('shiftColsSW').value * 1
-
-  // dis/en-able stitches
-  for (var r = 0; r < 8; r++) {
-    for (var c = 0; c < 8; c++) {
-      var x = document.getElementById(id(r,c))
-      x.className = (r < rows && c < cols && matrixLines[r][c] != "-"
-                    ? x.className.replace("hide","show")
-                    : x.className.replace("show","hide")
-                    )
-    }
-  }
 
   // clear the prototype as there might be gaps between overlapping tiles
   for (var r = 0; r < 12; r++)
@@ -45,7 +36,7 @@ function setVisibility() {
     tiling = "checker"
   else if (shiftColsSE*2 == cols && shiftRowsSE == rows && shiftColsSW*2 == -cols && shiftRowsSW == rows)
     tiling = "bricks"
-  var stitches = getChosenStitches()
+  var stitches = getChosenStitches(matrixLines)
   var link = document.getElementById("link")
   if (tiling == "other")
     link.style = "display:none"
@@ -66,39 +57,40 @@ function setVisibility() {
 }
 function setNode(r, c, val, firstTile) {
 
-  var svgEl = document.getElementById("svg-" + id(r,c))
+  var id = "r" + (r + 1) + "-c" + (c + 1)
+  var svgEl = document.getElementById("svg-" + id)
   var activeNode = firstTile && val != "-"
   svgEl.attributes["xlink:href"].value = "#g" + val
   svgEl.attributes["onclick"].value = (activeNode ? "setStitch(this)" : "")
   svgEl.style = "stroke:#000;opacity:" + (activeNode ? "1;" : "0.3;")
-  var formEl = document.getElementById(id(r,c))
-  svgEl.innerHTML = (formEl && val != "-" ? "<title>"+formEl.value+"</title>" : "")
+  var stitch = stitches[id]
+  svgEl.innerHTML = (stitch != "-" ? "<title>"+stitch+"</title>" : "")
 }
 function setStitch(source) {
 
   var id = source.attributes["id"].value.substr(4)
-  var target = document.getElementById(id) // TODO replace hidden form of stitches with data array
-  selected = prompt("Stitch for " + id, target.value)
+  selected = prompt("Stitch for " + id, stitches[id])
   if (selected) {
-    target.value = selected
+    stitches[id] = selected
     setVisibility()
     source.style = "stroke:#d0d;opacity:1"
   }
 }
-function getChosenStitches() {
-
-  var els = document.getElementById("stitch-form").elements;
-  var kvpairs = [];
-  for (var i=0; i < els.length; i++) {
-     var e = els[i];
-     if (e.className != "hide")
-       kvpairs.push(e.name + "=" + e.value)
+function getChosenStitches(matrixLines) {
+  var rows = matrixLines.length
+  var cols = matrixLines[0].length
+  var kvs = []
+  var keys = Object.keys(stitches)
+  for (var i=0 ; i<keys.length ; i++) {
+    var rc = keys[i].split("-")
+    var r = rc[0].substr(1) * 1 - 1
+    var c = rc[1].substr(1) * 1 - 1
+    if (r < rows && c < cols && matrixLines[r][c] != "-") {
+      c = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[rc[1].substr(1) * 1 - 1]
+      kvs.push(c + (r+1) + "=" + stitches[keys[i]])
+    }
   }
-  return kvpairs.join(",")
-}
-function id(r, c) {
-
-  return "r" + (r + 1) + "-c" + (c + 1)
+  return kvs.join(",")
 }
 function getMatrixLines() {
 
@@ -146,4 +138,3 @@ function brickDown() {
   document.getElementById('shiftRowsSE').value++
   setVisibility()
 }
-
