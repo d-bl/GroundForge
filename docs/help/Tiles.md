@@ -9,7 +9,6 @@ Tiles
 
 {% include tiles-form.html %}
 
-Each non-dash of the pattern definition matches one field in the stitches form.
 The digits and letters of a pattern tell where the pairs com from.
 With a letter at least one of the pairs travels across a dash.
 The visual representation of the pattern gets updated when you leave the definition:

@@ -12,9 +12,8 @@ function setVisibility() {
   // dis/en-able stitches
   for (var r = 0; r < 8; r++) {
     for (var c = 0; c < 8; c++) {
-      var enable =  r < rows && c < cols && matrixLines[r][c] != "-"
       var x = document.getElementById(id(r,c))
-      x.className = (enable
+      x.className = (r < rows && c < cols && matrixLines[r][c] != "-"
                     ? x.className.replace("hide","show")
                     : x.className.replace("show","hide")
                     )
@@ -39,31 +38,31 @@ function setVisibility() {
         }
 
   // go button
-  var oldTiling = "notYetImplemented"
+  var tiling = "other" // meaning: use the new arguments [r/c][SE/SW]
   if (shiftColsSE == cols && shiftRowsSE == rows && ( (shiftColsSW == -cols && shiftRowsSW == 0)
                                                    || (shiftColsSW == 0     && shiftRowsSW == rows)
                                                     ))
-    oldTiling = "checker"
-  if (shiftColsSE*2 == cols && shiftRowsSE == rows && shiftColsSW*2 == -cols && shiftRowsSW == rows)
-    oldTiling = "bricks"
-  var ids = getChosenStitches()
-  document.getElementById("ids").innerHTML = ids.replace(/,/g,", ")
+    tiling = "checker"
+  else if (shiftColsSE*2 == cols && shiftRowsSE == rows && shiftColsSW*2 == -cols && shiftRowsSW == rows)
+    tiling = "bricks"
+  var stitches = getChosenStitches()
   var link = document.getElementById("link")
-  if (oldTiling == "notYetImplemented")
+  if (tiling == "other")
     link.style = "display:none"
   else {
     link.style = "display:inline-block"
     link.href = "../index.html" +
-      "?s2=&s3=&"+
-      "shiftColsSE=" + shiftColsSE +
-      "&shiftRowsSE=" + shiftRowsSE +
-      "&shiftColsSW=" + shiftColsSW +
-      "&shiftRowsSW=" + shiftRowsSW +
-      "&s1=" + ids +
+      "?s2=&s3="+
+      "&cSE=" + shiftColsSE +
+      "&rSE=" + shiftRowsSE +
+      "&cSW=" + shiftColsSW +
+      "&rSW=" + shiftRowsSW +
+      "&s1=" + stitches +
       "&m=" + matrixLines.join(",") +
-      ";" + oldTiling + ";12;12;0;2" +
+      ";" + tiling + ";12;12;0;2" +
       ""
   }
+  document.getElementById("stitches").innerHTML = stitches.replace(/,/g,", ")
 }
 function setNode(r, c, val, firstTile) {
 
@@ -78,17 +77,13 @@ function setNode(r, c, val, firstTile) {
 function setStitch(source) {
 
   var id = source.attributes["id"].value.substr(4)
-  var target = document.getElementById(id) // TODO replace hidden form with data array
-  selected = prompt("Stitch for " + id, target.value) // TODO no action for "-"
+  var target = document.getElementById(id) // TODO replace hidden form of stitches with data array
+  selected = prompt("Stitch for " + id, target.value)
   if (selected) {
     target.value = selected
     setVisibility()
     source.style = "stroke:#d0d;opacity:1"
   }
-}
-function id(r, c) {
-
-  return "r" + (r + 1) + "-c" + (c + 1)
 }
 function getChosenStitches() {
 
@@ -101,10 +96,13 @@ function getChosenStitches() {
   }
   return kvpairs.join(",")
 }
+function id(r, c) {
+
+  return "r" + (r + 1) + "-c" + (c + 1)
+}
 function getMatrixLines() {
 
-  var matrix = document.getElementById("matrix").value
-  return matrix.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+  return document.getElementById("matrix").value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
 }
 function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW) {
 
