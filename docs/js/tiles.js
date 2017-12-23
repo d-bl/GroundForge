@@ -40,7 +40,7 @@ function setVisibility() {
     var r = rc[0].substr(1) * 1 - 1
     var c = rc[1].substr(1) * 1 - 1
     if (r < rows && c < cols && matrixLines[r][c] != "-") {
-      var id = dibl.Stitches().toID(r, c)
+      var id = dibl.Stitches().toID(r, c).toUpperCase()
       kvs.push(id + "=" + stitches[keys[i]])
     }
   }
@@ -81,7 +81,7 @@ function setNode(r, c, arrows, stitch, firstTile) {
   var activeNode = firstTile && arrows != "-"
 
   var color = ""
-  if (stitch && stitch != "") {
+  if (stitch && stitch != "" && arrows != "-") {
     color = dibl.Stitches().defaultColor(stitch)
     if (color == "")
       color = "black"
