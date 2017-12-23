@@ -14,7 +14,7 @@ function setVisibility() {
   // clear the prototype as there might be gaps between overlapping tiles
   for (var r = 0; r < 12; r++)
     for (var c = 0; c < 12; c++)
-      setNode(r, c, "-", true)
+      setNode(r, c, "-", "", true)
 
   // pattern prototype
   for (var i=0 ; i<12 ; i++) // tiles in a diagonal
@@ -25,7 +25,7 @@ function setVisibility() {
           var rt = r+(i*shiftRowsSE)+(j*shiftRowsSW)
           var ct = c+(i*shiftColsSE)+(j*shiftColsSW)
           if (rt >= 0 && ct >=0)
-            setNode(rt, ct, matrixLines[r][c], i==0 && j==0)
+            setNode(rt, ct, matrixLines[r][c], stitches["r"+(r+1)+"-c"+(c+1)], i==0 && j==0)
         }
 
   // go button
@@ -36,7 +36,7 @@ function setVisibility() {
     tiling = "checker"
   else if (shiftColsSE*2 == cols && shiftRowsSE == rows && shiftColsSW*2 == -cols && shiftRowsSW == rows)
     tiling = "bricks"
-  var stitches = getChosenStitches(matrixLines)
+  var chosenStitches = getChosenStitches(matrixLines)
   var link = document.getElementById("link")
   if (tiling == "other")
     link.style = "display:none"
@@ -48,22 +48,22 @@ function setVisibility() {
       "&rSE=" + shiftRowsSE +
       "&cSW=" + shiftColsSW +
       "&rSW=" + shiftRowsSW +
-      "&s1=" + stitches +
+      "&s1=" + chosenStitches +
       "&m=" + matrixLines.join(",") +
       ";" + tiling + ";12;12;0;2" +
       ""
   }
-  document.getElementById("stitches").innerHTML = stitches.replace(/,/g,", ")
+  document.getElementById("stitches").innerHTML = chosenStitches.replace(/,/g,", ")
 }
-function setNode(r, c, val, firstTile) {
+function setNode(r, c, arrows, stitch, firstTile) {
 
   var id = "r" + (r + 1) + "-c" + (c + 1)
   var svgEl = document.getElementById("svg-" + id)
-  var activeNode = firstTile && val != "-"
-  svgEl.attributes["xlink:href"].value = "#g" + val
+  var activeNode = firstTile && arrows != "-"
+  var color = (stitch && stitch != "" ? dibl.Stitches().defaultColor(stitch) : "")
+  svgEl.attributes["xlink:href"].value = "#g" + arrows
   svgEl.attributes["onclick"].value = (activeNode ? "setStitch(this)" : "")
-  svgEl.style = "stroke:#000;opacity:" + (activeNode ? "1;" : "0.3;")
-  var stitch = stitches[id]
+  svgEl.style = "stroke:" + color + ";opacity:" + (activeNode ? "1;" : "0.3;")
   svgEl.innerHTML = (stitch != "-" ? "<title>"+stitch+"</title>" : "")
 }
 function setStitch(source) {
@@ -73,7 +73,6 @@ function setStitch(source) {
   if (selected) {
     stitches[id] = selected
     setVisibility()
-    source.style = "stroke:#d0d;opacity:1"
   }
 }
 function getChosenStitches(matrixLines) {
@@ -86,8 +85,8 @@ function getChosenStitches(matrixLines) {
     var r = rc[0].substr(1) * 1 - 1
     var c = rc[1].substr(1) * 1 - 1
     if (r < rows && c < cols && matrixLines[r][c] != "-") {
-      c = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[rc[1].substr(1) * 1 - 1]
-      kvs.push(c + (r+1) + "=" + stitches[keys[i]])
+      var id = dibl.Stitches().toID(r, c)
+      kvs.push(id + "=" + stitches[keys[i]])
     }
   }
   return kvs.join(",")

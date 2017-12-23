@@ -20,6 +20,7 @@ import java.lang.Math.max
 import dibl.Stitches._
 
 import scala.annotation.tailrec
+import scala.scalajs.js.annotation.JSExport
 import scala.util.matching.Regex
 
 /**
@@ -99,6 +100,7 @@ class Stitches(src: String) {
   }
 }
 
+@JSExport
 object Stitches {
 
   type StitchId = String
@@ -113,6 +115,7 @@ object Stitches {
     else toAlpha(col / 26 - 1, s)
   }
 
+  @JSExport
   def toID(row: Int, col: Int): String = {
     s"${ toAlpha(col) }${ row + 1 }"
   }
@@ -158,7 +161,8 @@ object Stitches {
     *               either [l's and/or t's] or [r's and/or t's]
     * @return An empty string (rendered as black) or the color name for a stitch.
     */
-  def defaultColor(stitch: String): StitchId = {
+  @JSExport
+  def defaultColor(stitch: String): String = {
     // keep this method at the bottom of this class or adjust help/color-code.md
     val hasPins = stitch.count('p' == _) > 0
     val crossCount = stitch.count('c' == _)
