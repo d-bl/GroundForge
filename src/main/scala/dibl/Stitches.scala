@@ -94,7 +94,7 @@ class Stitches(src: String) {
     (0 until max(0, nrOfRows)).map { row =>
       (0 until max(0, nrOfCols)).map { col =>
         val id = toID(row, col)
-        colors.getOrElse(id, defaultColor(stitches.getOrElse(id, defaultStitch)))
+        colors.getOrElse(id, defaultColorName(stitches.getOrElse(id, defaultStitch)))
       }
     }
   }
@@ -141,6 +141,23 @@ object Stitches {
     else s
   }
 
+  val colors: Map[String, String] = Map(
+    "" -> "#000",
+    "red" -> "#f00",
+    "blue" -> "#18C",
+    "green" -> "#080",
+    "brown" -> "#c90",
+    "purple" -> "#c3f",
+    "yellow" -> "#ee0",
+    "turquoise" -> "#0f9")
+
+  @JSExport
+  def defaultColorValue(stitch: String): String = {
+    val validStitch = makeValid(stitch, stitch + stitch)
+    if (stitch != validStitch) ""
+    else Stitches.colors.getOrElse(defaultColorName(stitch), "#000")
+  }
+
   /**
     * @param s a sequence of': (either l's or r's) and/or t's
     *  @return true if both pairs are twisted at least once
@@ -161,8 +178,7 @@ object Stitches {
     *               either [l's and/or t's] or [r's and/or t's]
     * @return An empty string (rendered as black) or the color name for a stitch.
     */
-  @JSExport
-  def defaultColor(stitch: String): String = {
+  def defaultColorName(stitch: String): String = {
     // keep this method at the bottom of this class or adjust help/color-code.md
     val hasPins = stitch.count('p' == _) > 0
     val crossCount = stitch.count('c' == _)

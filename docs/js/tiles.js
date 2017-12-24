@@ -1,16 +1,5 @@
 var stitches = {}
 
-// Keep in sync with SVG.scala/markerDefinitions/startMarker(s)
-var colors = {}
-colors["red"]= "#f00"
-colors["blue"]= "#18C"
-colors["green"]= "#080"
-colors["brown"]= "#c90"
-colors["purple"]= "#c3f"
-colors["yellow"]= "#ee0"
-colors["turquoise"]= "#0f9"
-colors["black"]= "#000"
-
 // number of cloned elements in the built-in SVG
 var maxRows = 12
 var maxCols = 12
@@ -93,13 +82,13 @@ function setNode(r, c, arrows, stitch, firstTile) {
 
   var color = ""
   if (stitch && stitch != "" && arrows != "-") {
-    color = dibl.Stitches().defaultColor(stitch)
+    color = dibl.Stitches().defaultColorValue(stitch)
     if (color == "")
       color = "black"
   }
   svgEl.attributes["xlink:href"].value = "#g" + arrows
   svgEl.attributes["onclick"].value = (activeNode ? "setStitch(this)" : "")
-  svgEl.style = "stroke:" + colors[color] + ";opacity:" + (activeNode ? "1;" : "0.3;")
+  svgEl.style = "stroke:" + color + ";opacity:" + (activeNode ? "1;" : "0.3;")
   svgEl.innerHTML = (stitch != "-" ? "<title>"+stitch+"</title>" : "")
 }
 function setStitch(source) {
