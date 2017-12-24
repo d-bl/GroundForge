@@ -173,7 +173,7 @@ object Stitches {
       case (false, 2, "cttc", _) => "turquoise"
       case (false, 2, "ctc", true) => "red"
       case (false, 2, "ctc", false) => "purple"
-      case (false, 2, core, _) if !core.matches("c(t|tt)c") => "brown"
+      case (false, 2, core, _) if !core.matches("c(|.|tt)c") => "brown"
       case (false, n, core, _) if n > 2 && core.matches("c(tc)+") => "blue"
       case (false, n, core, _) if n > 3 && core.matches("(crr)?(cllcrr)+(cll)?c") => "yellow"
       case _ => ""
