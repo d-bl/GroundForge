@@ -20,6 +20,7 @@ import java.lang.Math.max
 import dibl.Stitches._
 
 import scala.annotation.tailrec
+import scala.scalajs.js.annotation.JSExport
 import scala.util.matching.Regex
 
 /**
@@ -93,12 +94,13 @@ class Stitches(src: String) {
     (0 until max(0, nrOfRows)).map { row =>
       (0 until max(0, nrOfCols)).map { col =>
         val id = toID(row, col)
-        colors.getOrElse(id, defaultColor(stitches.getOrElse(id, defaultStitch)))
+        colors.getOrElse(id, defaultColorName(stitches.getOrElse(id, defaultStitch)))
       }
     }
   }
 }
 
+@JSExport
 object Stitches {
 
   type StitchId = String
@@ -113,6 +115,7 @@ object Stitches {
     else toAlpha(col / 26 - 1, s)
   }
 
+  @JSExport
   def toID(row: Int, col: Int): String = {
     s"${ toAlpha(col) }${ row + 1 }"
   }
@@ -138,6 +141,23 @@ object Stitches {
     else s
   }
 
+  val colors: Map[String, String] = Map(
+    "" -> "#000",
+    "red" -> "#f00",
+    "blue" -> "#18C",
+    "green" -> "#080",
+    "brown" -> "#c90",
+    "purple" -> "#c3f",
+    "yellow" -> "#ee0",
+    "turquoise" -> "#0f9")
+
+  @JSExport
+  def defaultColorValue(stitch: String): String = {
+    val validStitch = makeValid(stitch, stitch + stitch)
+    if (stitch != validStitch) ""
+    else Stitches.colors.getOrElse(defaultColorName(stitch), "#000")
+  }
+
   /**
     * @param s a sequence of': (either l's or r's) and/or t's
     *  @return true if both pairs are twisted at least once
@@ -158,7 +178,7 @@ object Stitches {
     *               either [l's and/or t's] or [r's and/or t's]
     * @return An empty string (rendered as black) or the color name for a stitch.
     */
-  def defaultColor(stitch: String): StitchId = {
+  def defaultColorName(stitch: String): String = {
     // keep this method at the bottom of this class or adjust help/color-code.md
     val hasPins = stitch.count('p' == _) > 0
     val crossCount = stitch.count('c' == _)
@@ -169,7 +189,7 @@ object Stitches {
       case (false, 2, "cttc", _) => "turquoise"
       case (false, 2, "ctc", true) => "red"
       case (false, 2, "ctc", false) => "purple"
-      case (false, 2, core, _) if !core.matches("c(t|tt)c") => "brown"
+      case (false, 2, core, _) if !core.matches("c(|.|tt)c") => "brown"
       case (false, n, core, _) if n > 2 && core.matches("c(tc)+") => "blue"
       case (false, n, core, _) if n > 3 && core.matches("(crr)?(cllcrr)+(cll)?c") => "yellow"
       case _ => ""

@@ -45,15 +45,12 @@ object SVG {
 
   @JSExport
   val markerDefinitions: String = {
-    def startMarker(colorName: String,
-                    colorValue: String
-                   ) = endMarker(colorName, colorValue, "start", "")
+    def startMarker(colorName: String) = endMarker(colorName, "start", "")
 
     def endMarker(colorName: String,
-                  colorValue: String,
                   idPrefix: String = "end",
                   properties: String = """refX="10""""
-                 ) =
+                 ): String =
       s"""<marker $properties
          | id="$idPrefix-$colorName"
          | viewBox="0 -5 10 10"
@@ -63,7 +60,7 @@ object SVG {
          | markerUnits="userSpaceOnUse">
          | <path d="M0,0L10,0"
          |  stroke-width="3"
-         |  stroke="$colorValue"></path>
+         |  stroke="${Stitches.colors(colorName)}"></path>
          |</marker>
          |""".
         stripMargin.stripLineEnd.replaceAll("[\n\r]", "")
@@ -101,20 +98,20 @@ object SVG {
        |  ${threadMarker()}
        |  ${pairMarker()}
        |  ${twistMark()}
-       |  ${startMarker("red", "#f00")}
-       |  ${startMarker("blue", "#18C")}
-       |  ${startMarker("green", "#080")}
-       |  ${startMarker("brown", "#c90")}
-       |  ${startMarker("purple", "#c3f")}
-       |  ${startMarker("yellow", "#ee0")}
-       |  ${startMarker("turquoise", "#0f9")}
-       |  ${endMarker("red", "#f00")}
-       |  ${endMarker("blue", "#18C")}
-       |  ${endMarker("green", "#080")}
-       |  ${endMarker("brown", "#c90")}
-       |  ${endMarker("purple", "#c3f")}
-       |  ${endMarker("yellow", "#ee0")}
-       |  ${endMarker("turquoise", "#0f9")}
+       |  ${startMarker("red")}
+       |  ${startMarker("blue")}
+       |  ${startMarker("green")}
+       |  ${startMarker("brown")}
+       |  ${startMarker("purple")}
+       |  ${startMarker("yellow")}
+       |  ${startMarker("turquoise")}
+       |  ${endMarker("red")}
+       |  ${endMarker("blue")}
+       |  ${endMarker("green")}
+       |  ${endMarker("brown")}
+       |  ${endMarker("purple")}
+       |  ${endMarker("yellow")}
+       |  ${endMarker("turquoise")}
        |</defs>""".stripMargin.stripLineEnd
   }
 

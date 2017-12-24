@@ -189,9 +189,9 @@ object PairDiagram {
         val nrOfTwists = sourceStitch.replaceAll(".*c","").count(_ == countedSourceChar) +
           targetStitch.replaceAll("t", "lr").replaceAll("c.*","").count(_ == countedTargetChar)
         pairLink(sourceNode, targetNode,
-          start = if (sourceRow < 2) "pair" else Stitches.defaultColor(sourceStitch),
+          start = if (sourceRow < 2) "pair" else Stitches.defaultColorName(sourceStitch),
           mid = if (sourceRow < 2) 0 else nrOfTwists - 1,
-          end = Stitches.defaultColor(targetStitch),
+          end = Stitches.defaultColorName(targetStitch),
           weak = cols.contains(sourceCol) || targetRow - sourceRow > 1
         )
       }.toSeq ++ transparentLinks(sourcesIndices.toArray)

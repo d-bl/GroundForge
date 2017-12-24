@@ -39,7 +39,7 @@ case class NodeProps private(elems: Seq[(String, Any)]) extends Props {
   /** The stitch instructions from the title */
   val instructions: String = title.replaceAll(" .*", "").toLowerCase
 
-  val color: String = m.getOrElse("color", Stitches.defaultColor(instructions)).asInstanceOf[String]
+  val color: String = m.getOrElse("color", Stitches.defaultColorName(instructions)).asInstanceOf[String]
 
   /** The stitch id within a tile */
   val id: String = title.replaceAll(".* ", "")
