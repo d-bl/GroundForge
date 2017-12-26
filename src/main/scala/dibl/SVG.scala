@@ -145,13 +145,22 @@ object SVG {
 
     // see issue #70 for images, TODO turn into methods of LinkProps subclasses
     if (endIsWhite) {
-      if (isLeftThread) {
+      if (isLeftThread) { // twist
         // curve to: point at fixed distance to source rotated clockwise around source by 45 degrees
         val cX = sX - dY1 + dX1
         val cY = sY + dX1 + dY1
         // move target a fixed distance back and rotate it counter clockwise by 45 degrees
         val t1X = tX - dY4 - dX4
         val t1Y = tY + dX4 - dY4
+        // create the path description
+        s"M $sX,$sY S $cX,$cY $t1X,$t1Y"
+      } else if (isRightThread) {// cross FIXME
+        // curve to: point at fixed distance to source rotated counter clockwise around source by 45 degrees
+        val cX = sX + dY1 + dX1
+        val cY = sY - dX1 + dY1
+        // move target a fixed distance back and rotate it clockwise by 45 degrees
+        val t1X = tX + dY4 - dX4
+        val t1Y = tY - dX4 - dY4
         // create the path description
         s"M $sX,$sY S $cX,$cY $t1X,$t1Y"
       } else {
@@ -161,7 +170,7 @@ object SVG {
         s"M $sX,$sY $t1X,$t1Y"
       }
     } else if (startIsWhite) {
-      if (isRightThread) {
+      if (isRightThread) { // twist
         // curve to: point at fixed distance to target rotated clockwise around target by 45 degrees
         val cX = tX + dY1 - dX1
         val cY = tY - dX1 - dY1
@@ -170,8 +179,16 @@ object SVG {
         val s1Y = sY - dX4 + dY4
         // create the path description
         s"M $s1X,$s1Y S $cX,$cY $tX,$tY"
-      }
-      else {
+      } else if (isLeftThread) { // cross FIXME
+        // curve to: point at fixed distance to target rotated counter clockwise around target by 45 degrees
+        val cX = tX - dY1 - dX1
+        val cY = tY + dX1 - dY1
+        // move source a fixed distance and rotate it clockwise by 45 degrees
+        val s1X = sX - dY4 + dX4
+        val s1Y = sY + dX4 + dY4
+        // create the path description
+        s"M $s1X,$s1Y S $cX,$cY $tX,$tY"
+      } else {
         // move source with a fixed distance
         val s1X = sX + dX1 / straightDistance
         val s1Y = sY + dY1 / straightDistance
