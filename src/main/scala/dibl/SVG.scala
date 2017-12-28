@@ -147,7 +147,7 @@ object SVG {
                           markers: Boolean,
                           opacityOfHiddenObjects: Double = 0
                          ): String = diagram.links.map { link =>
-    val opacity = if (link.border || link.toPin) opacityOfHiddenObjects else 1
+    val opacity = if (link.border) opacityOfHiddenObjects else 1
     val pd = pathDescription(diagram, link)
     val markers = link.markers.map{
       case ("mid",_) => s"; marker-mid: url('#twist-1')"
