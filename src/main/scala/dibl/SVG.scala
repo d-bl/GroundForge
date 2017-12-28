@@ -130,19 +130,13 @@ object SVG {
   @JSExport
   def pathDescription(link: LinkProps, sX: Double, sY: Double, tX: Double, tY: Double): String = {
 
-    if (!link.isInstanceOf[PlainLink])
-      renderCurve(link.renderedPath(Path(Point(sX, sY), Point(tX, tY))))
-    else if (link.nrOfTwists > 0) {
+    if (link.nrOfTwists > 0) {
       val mX = sX + (tX - sX) / 2
       val mY = sY + (tY - sY) / 2
-      // a straight path with two sections
+      // a straight path with two sections allows a twistMark
       s"M $sX,$sY $mX,$mY $tX,$tY"
     }
-    else renderCurve(Path(Point(sX, sY), Point(tX, tY)))
-  }
-
-  private def renderCurve (path: Path) = {
-    path match {
+    else link.renderedPath(Path(Point(sX, sY), Point(tX, tY)))match {
       case Path(s, t, None) => s"M ${ s.x },${ s.y } ${ t.x },${ t.y }"
       case Path(s, t, Some(c)) => s"M ${ s.x },${ s.y } S ${ c.x },${ c.y } ${ t.x },${ t.y }"
     }
@@ -155,13 +149,17 @@ object SVG {
                          ): String = diagram.links.map { link =>
     val opacity = if (link.border || link.toPin) opacityOfHiddenObjects else 1
     val pd = pathDescription(diagram, link)
+    val markers = link.markers.map{
+      case ("mid",_) => s"; marker-mid: url('#twist-1')"
+      case (key,value) => s"; marker-$key: url('#$key-$value')"
+    }.mkString("")
     // TODO no stroke color/width would allow styling threads with CSS
     // what in turn allows changes without repeating the simulation
     // stand-alone SVG does require stroke details
     s"""<path
        | class="${link.cssClass}"
        | d="$pd"
-       | style="stroke: rgb(0, 0, 0); stroke-width: $strokeWidth; fill: none; opacity: $opacity${link.markerRefs}"
+       | style="stroke: rgb(0, 0, 0); stroke-width: $strokeWidth; fill: none; opacity: $opacity$markers"
        |></path>""".stripMargin
   }.mkString
 

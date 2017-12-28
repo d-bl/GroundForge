@@ -22,230 +22,185 @@ import dibl.Force.Point
 import scala.scalajs.js
 
 trait LinkProps extends Props {
+
+  @deprecated
   val elems: Seq[(String, Any)]
 
-  private val m = elems.toMap
+  @deprecated
+  private val props: Map[String, Any] = elems.toMap
 
   /** The id of the source node. */
-  val source: Int = m.getOrElse("source", 0).asInstanceOf[Int]
+  val source: Int = props.getOrElse("source", 0).asInstanceOf[Int]
 
   /** The id of the target node. */
-  val target: Int = m.getOrElse("target", 0).asInstanceOf[Int]
-
-  val weak: Boolean = m.getOrElse("left", false).asInstanceOf[Boolean]
+  val target: Int = props.getOrElse("target", 0).asInstanceOf[Int]
 
   override def toJS(): js.Dictionary[Any] = {
     val jsItem = js.Object().asInstanceOf[js.Dictionary[Any]]
     jsItem("source") = source
     jsItem("target") = target
     jsItem("weak") = weak
-    jsItem("markerRefs") = markerRefs
-    // the next 3 can be dropped when show-grap.js/simEnded knows how to use markerRefs
     jsItem("start") = start
     jsItem("end") = end
     jsItem("mid") = nrOfTwists
     jsItem
   }
 
-  val start: String = m.getOrElse("start", "").asInstanceOf[String]
-  val end: String = m.getOrElse("end", "").asInstanceOf[String]
-  val nrOfTwists: Int = m.getOrElse("mid", 0).asInstanceOf[Int]
-  val left: Boolean = m.getOrElse("left", false).asInstanceOf[Boolean]
-  val right: Boolean = m.getOrElse("right", false).asInstanceOf[Boolean]
-  val border: Boolean = m.getOrElse("border", false).asInstanceOf[Boolean]
-  val toPin: Boolean = m.getOrElse("toPin", false).asInstanceOf[Boolean]
-  val cssClass: String = m.get("thread").map(nr => s"link thread$nr").getOrElse("link")
-  val markerRefs: String =
-    markerRef("start") +
-      markerRef("end") +
-      m.get("mid").map(_ => s"; marker-mid: url('#twist-1')").getOrElse("")
+  val start: String = props.getOrElse("start", "").asInstanceOf[String]
+  val end: String = props.getOrElse("end", "").asInstanceOf[String]
+  val nrOfTwists: Int = props.getOrElse("mid", 0).asInstanceOf[Int]
+  val right: Boolean = false
+  val left: Boolean = false
+  val weak: Boolean = props.getOrElse("weak", false).asInstanceOf[Boolean]
+  val border: Boolean = props.getOrElse("border", false).asInstanceOf[Boolean]
+  val toPin: Boolean = props.getOrElse("toPin", false).asInstanceOf[Boolean]
+  val cssClass: String = props.get("thread").map(nr => s"link thread$nr").getOrElse("link")
+  val markers: Map[String, Any] = props.filter{case (k,_) => Seq("start", "end", "mid").contains(k)}
 
   /** Creates a copy of the link which is marked as the start of a thread. */
-  def markedAsStart: LinkProps = PlainLink((m - "start" + ("start" -> "thread")).toSeq)
+  def markedAsStart: LinkProps
+  def elemsWithThreadStart: Seq[(String, Any)] = (props + ("start" -> "thread")).toSeq
 
-  private def markerRef(key: String): String = m.get(key)
-    .filter(value => value != "white")
-    .map(value => s"; marker-$key: url('#$key-$value')")
-    .getOrElse("")
-
-  // see issue #70 for images
+  // see issue #70 for images of curved threads
   def renderedPath(p: Path): Path
-}
-
-case class PlainLink(override val elems: Seq[(String, Any)]) extends LinkProps {
-  override def markedAsStart: LinkProps = PlainLink((elems.toMap - "start" + ("start" -> "thread")).toSeq)
-  def renderedPath(p: Path): Path = p
-}
-
-case class WhiteEnd(override val elems: Seq[(String, Any)]) extends LinkProps {
-
-  override def markedAsStart: LinkProps = WhiteEnd((elems.toMap - "start" + ("start" -> "thread")).toSeq)
-
-  def renderedPath(p: Path): Path = {
-    Path(p.source, Point(p.target.x - p.straightDX, p.target.y - p.straightDY))
-  }
-}
-
-case class WhiteStart(override val elems: Seq[(String, Any)]) extends LinkProps {
-
-  override def markedAsStart: LinkProps = WhiteStart((elems.toMap - "start" + ("start" -> "thread")).toSeq)
-
-  def renderedPath(p: Path): Path = {
-    Path(Point(p.source.x + p.straightDX, p.source.y + p.straightDY), p.target)
-  }
-}
-
-case class WhiteEndRight(override val elems: Seq[(String, Any)]) extends LinkProps {
-
-  override def markedAsStart: LinkProps = WhiteEndRight((elems.toMap - "start" + ("start" -> "thread")).toSeq)
-
-  def renderedPath(p: Path): Path = {
-    Path(
-      p.source,
-      Point(// move target a fixed distance back and rotate it clockwise by 45 degrees
-        p.target.x + p.dY4 - p.dX4,
-        p.target.y - p.dX4 - p.dY4),
-      Some(Point(// curve to: point at fixed distance to source rotated counter clockwise around source by 45 degrees
-        p.source.x + p.dY1 + p.dX1,
-        p.source.y - p.dX1 + p.dY1))
-    )
-  }
-}
-
-case class WhiteEndLeft(override val elems: Seq[(String, Any)]) extends LinkProps {
-
-  override def markedAsStart: LinkProps = WhiteEndLeft((elems.toMap - "start" + ("start" -> "thread")).toSeq)
-
-  def renderedPath(p: Path): Path = {
-    Path(
-      p.source,
-      Point(// move target a fixed distance back and rotate it counter clockwise by 45 degrees
-        p.target.x - p.dY4 - p.dX4,
-        p.target.y + p.dX4 - p.dY4),
-      Some(Point(// curve to: point at fixed distance to source rotated clockwise around source by 45 degrees
-        p.source.x - p.dY1 + p.dX1,
-        p.source.y + p.dX1 + p.dY1))
-    )
-  }
-}
-
-case class WhiteStartRight(override val elems: Seq[(String, Any)]) extends LinkProps {
-
-  override def markedAsStart: LinkProps = WhiteStartRight((elems.toMap - "start" + ("start" -> "thread")).toSeq)
-
-  def renderedPath(p: Path): Path = {
-    Path(
-      Point(// move source a fixed distance and rotate it counter clockwise by 45 degrees
-        p.source.x + p.dY4 + p.dX4,
-        p.source.y - p.dX4 + p.dY4),
-      p.target,
-      Some(Point(// move source a fixed distance and rotate it counter clockwise by 45 degrees
-        p.target.x + p.dY1 - p.dX1,
-        p.target.y - p.dX1 - p.dY1))
-    )
-  }
-}
-
-case class WhiteStartLeft(override val elems: Seq[(String, Any)]) extends LinkProps {
-
-  override def markedAsStart: LinkProps = WhiteStartLeft((elems.toMap - "start" + ("start" -> "thread")).toSeq)
-
-  def renderedPath(p: Path): Path = {
-    Path(
-      Point(// move source a fixed distance and rotate it clockwise by 45 degrees
-        p.source.x - p.dY4 + p.dX4,
-        p.source.y + p.dX4 + p.dY4),
-      p.target,
-      Some(Point(// curve to: point at fixed distance to target rotated counter clockwise around target by 45 degrees
-        p.target.x - p.dY1 - p.dX1,
-        p.target.y + p.dX1 - p.dY1))
-    )
-  }
 }
 
 case class Path(source: Point, target: Point, curveTo: Option[Point] = None) {
   private val twistWidth = 6
   private val straightDistance = twistWidth / 5
   private val curvedDistance = straightDistance * 2
-  lazy val dX = target.x - source.x
-  lazy val dY = target.y - source.y
-  lazy val linkLength = sqrt(dX*dX + dY*dY)
-  lazy val dX1 = dX * (twistWidth / linkLength)
-  lazy val dY1 = dY * (twistWidth / linkLength)
-  lazy val dX4 = dX1 / curvedDistance
-  lazy val dY4 = dY1 / curvedDistance
-  lazy val straightDX = dX1 / straightDistance
-  lazy val straightDY = dY1 / straightDistance
+  private lazy val dX: Double = target.x - source.x
+  private lazy val dY: Double = target.y - source.y
+  private lazy val linkLength: Double = sqrt(dX*dX + dY*dY)
+  lazy val dX1: Double = dX * (twistWidth / linkLength)
+  lazy val dY1: Double = dY * (twistWidth / linkLength)
+  lazy val dX4: Double = dX1 / curvedDistance
+  lazy val dY4: Double = dY1 / curvedDistance
+  lazy val straightDX: Double = dX1 / straightDistance
+  lazy val straightDY: Double = dY1 / straightDistance
 }
 
 object LinkProps {
 
-  def twistedLinks(newNode: Int,
-                   leftNode: Int, rightNode: Int,
-                   leftThread: Int, rightThread: Int
-                  ): Seq[LinkProps] = {
-    val curved = leftNode == rightNode
-    val x = if (curved) WhiteEndLeft(Seq(
-      "source" -> leftNode,
-      "target" -> newNode,
-      "end" -> "white",
-      "thread" -> leftThread,
-      "left" -> true
-    ))else WhiteEnd(Seq(
-      "source" -> leftNode,
-      "target" -> newNode,
-      "end" -> "white",
-      "thread" -> leftThread,
-      "left" -> false
-    ))
-    val y = if (curved) WhiteStartRight(Seq(
-      "source" -> rightNode,
-      "target" -> newNode,
-      "start" -> "white",
-      "thread" -> rightThread,
-      "right" -> true
-    ))else WhiteStart(Seq(
-      "source" -> rightNode,
-      "target" -> newNode,
-      "start" -> "white",
-      "thread" -> rightThread,
-      "right" -> false
-    ))
-    Seq(x, y)
+  case class PlainLink(override val elems: Seq[(String, Any)]) extends LinkProps {
+    override def markedAsStart: LinkProps = PlainLink(elems)
+    def renderedPath(p: Path): Path = p
   }
 
-  def crossedLinks(newNode: Int,
-                   leftNode: Int, rightNode: Int,
-                   leftThread: Int, rightThread: Int
+  case class WhiteEnd(override val elems: Seq[(String, Any)]) extends LinkProps {
+
+    override def markedAsStart: LinkProps = WhiteEnd(elemsWithThreadStart)
+
+    def renderedPath(p: Path): Path = {
+      Path(p.source, Point(p.target.x - p.straightDX, p.target.y - p.straightDY))
+    }
+  }
+
+  case class WhiteStart(override val elems: Seq[(String, Any)]) extends LinkProps {
+
+    override def markedAsStart: LinkProps = WhiteStart(elemsWithThreadStart)
+
+    def renderedPath(p: Path): Path = {
+      Path(Point(p.source.x + p.straightDX, p.source.y + p.straightDY), p.target)
+    }
+  }
+
+  case class WhiteEndRight(override val elems: Seq[(String, Any)]) extends LinkProps {
+
+    override val right = true
+    override def markedAsStart: LinkProps = WhiteEndRight(elemsWithThreadStart)
+
+    def renderedPath(p: Path): Path = {
+      Path(
+        p.source,
+        Point(// move target a fixed distance back and rotate it clockwise by 45 degrees
+          p.target.x + p.dY4 - p.dX4,
+          p.target.y - p.dX4 - p.dY4),
+        Some(Point(// curve to: point at fixed distance to source rotated counter clockwise around source by 45 degrees
+          p.source.x + p.dY1 + p.dX1,
+          p.source.y - p.dX1 + p.dY1))
+      )
+    }
+  }
+
+  case class WhiteEndLeft(override val elems: Seq[(String, Any)]) extends LinkProps {
+
+    override val left = true
+    override def markedAsStart: LinkProps = WhiteEndLeft(elemsWithThreadStart)
+
+    def renderedPath(p: Path): Path = {
+      Path(
+        p.source,
+        Point(// move target a fixed distance back and rotate it counter clockwise by 45 degrees
+          p.target.x - p.dY4 - p.dX4,
+          p.target.y + p.dX4 - p.dY4),
+        Some(Point(// curve to: point at fixed distance to source rotated clockwise around source by 45 degrees
+          p.source.x - p.dY1 + p.dX1,
+          p.source.y + p.dX1 + p.dY1))
+      )
+    }
+  }
+
+  case class WhiteStartRight(override val elems: Seq[(String, Any)]) extends LinkProps {
+
+    override val right = true
+    override def markedAsStart: LinkProps = WhiteStartRight(elemsWithThreadStart)
+
+    def renderedPath(p: Path): Path = {
+      Path(
+        Point(// move source a fixed distance and rotate it counter clockwise by 45 degrees
+          p.source.x + p.dY4 + p.dX4,
+          p.source.y - p.dX4 + p.dY4),
+        p.target,
+        Some(Point(// move source a fixed distance and rotate it counter clockwise by 45 degrees
+          p.target.x + p.dY1 - p.dX1,
+          p.target.y - p.dX1 - p.dY1))
+      )
+    }
+  }
+
+  case class WhiteStartLeft(override val elems: Seq[(String, Any)]) extends LinkProps {
+
+    override val left = true
+    override def markedAsStart: LinkProps = WhiteStartLeft(elemsWithThreadStart)
+
+    def renderedPath(p: Path): Path = {
+      Path(
+        Point(// move source a fixed distance and rotate it clockwise by 45 degrees
+          p.source.x - p.dY4 + p.dX4,
+          p.source.y + p.dX4 + p.dY4),
+        p.target,
+        Some(Point(// curve to: point at fixed distance to target rotated counter clockwise around target by 45 degrees
+          p.target.x - p.dY1 - p.dX1,
+          p.target.y + p.dX1 - p.dY1))
+      )
+    }
+  }
+
+  def twistedLinks(target: Int,
+                   leftSource: Int, rightSource: Int,
+                   leftThreadNr: Int, rightThreadNr: Int
                   ): Seq[LinkProps] = {
-    val curved = leftNode == rightNode
-    val x = if (curved) WhiteStartLeft(Seq(
-      "source" -> leftNode,
-      "target" -> newNode,
-      "start" -> "white",
-      "thread" -> leftThread,
-      "left" -> true
-    ))else WhiteStart(Seq(
-      "source" -> leftNode,
-      "target" -> newNode,
-      "start" -> "white",
-      "thread" -> leftThread,
-      "left" -> false
-    ))
-    val y = if(curved) WhiteEndRight(Seq(
-      "source" -> rightNode,
-      "target" -> newNode,
-      "end" -> "white",
-      "thread" -> rightThread,
-      "right" -> true
-    ))else WhiteEnd(Seq(
-      "source" -> rightNode,
-      "target" -> newNode,
-      "end" -> "white",
-      "thread" -> rightThread,
-      "right" -> false
-    ))
-    Seq(x, y)
+    if (leftSource == rightSource) Seq( // curved as otherwise on top of one another
+      WhiteEndLeft(threadProps(leftSource, target, leftThreadNr)),
+      WhiteStartRight(threadProps(rightSource, target, rightThreadNr))
+    )else  Seq(
+      WhiteEnd(threadProps(leftSource, target, leftThreadNr)),
+      WhiteStart(threadProps(rightSource, target, rightThreadNr))
+    )
+  }
+
+  def crossedLinks(target: Int,
+                   leftSource: Int, rightSource: Int,
+                   leftThreadNr: Int, rightThreadNr: Int
+                  ): Seq[LinkProps] = {
+    if (leftSource == rightSource) Seq( // curved as otherwise on top of one another
+      WhiteStartLeft(threadProps(leftSource, target, leftThreadNr)),
+      WhiteEndRight(threadProps(rightSource, target, rightThreadNr))
+    )else  Seq(
+      WhiteStart(threadProps(leftSource, target, leftThreadNr)),
+      WhiteEnd(threadProps(rightSource, target, rightThreadNr))
+    )
   }
 
   def threadLink(source: Int,
@@ -253,16 +208,15 @@ object LinkProps {
                  threadNr: Int,
                  whiteStart: Boolean
                 ): LinkProps =
-    if (whiteStart) WhiteStart(Seq(
-      "source" -> source,
-      "target" -> target,
-      "thread" -> threadNr,
-      "start" -> "white"
-    )) else PlainLink(Seq(
-      "source" -> source,
-      "target" -> target,
-      "thread" -> threadNr
-    ))
+    if (whiteStart)
+      WhiteStart(threadProps(source, target, threadNr))
+    else PlainLink(threadProps(source, target, threadNr))//connected to the leash of a bobbin
+
+  private def threadProps(source: Int, target: Int, threadNr: Int) = Seq(
+    "source" -> source,
+    "target" -> target,
+    "thread" -> threadNr
+  )
 
   def pairLink(source: Int,
                target: Int,
@@ -285,9 +239,8 @@ object LinkProps {
       "target" -> target
     ))
 
-  def transparentLinks(nodes: Seq[Int]
-                      ): Seq[LinkProps] =
-    if (nodes.length < 2)
+  def transparentLinks(nodes: Seq[Int]): Seq[LinkProps] =
+    if (2 > nodes.length)
       Seq[LinkProps]()
     else nodes
       .zip(nodes.tail)

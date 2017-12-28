@@ -114,8 +114,8 @@ diagram.showGraph = function(args) {
                          nodes.attr("transform", moveNode)
                          links.attr("d", drawPath)
                      }
-    function markStart(d) { if (d.start != "white") return 'url(#start-'+d.start+')' }
-    function markEnd(d) { if (d.end != "white") return 'url(#end-'+d.end+')' }
+    function markStart(d) { if (d.start) return 'url(#start-'+d.start+')' }
+    function markEnd(d) { if (d.end) return 'url(#end-'+d.end+')' }
     function markMid(d,i) { if (d.mid) return 'url(#twist-1)' }
     function simEnded() {
                         if (navigator == "no-browser") {

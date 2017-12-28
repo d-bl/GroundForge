@@ -96,13 +96,9 @@ object PairDiagram {
                             ) = {
     val nrOfTwists: Int =
       (sourceThreadNode, targetThreadNode, link.end) match {
-        case ("cross", "cross", "white") => sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsRight
         case ("cross", "cross", "") => sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsLeft
-        case ("twist", "cross", "white") => sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsRight
         case ("twist", "cross", "") => sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsLeft
-        case ("cross", "twist", "white") => sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsLeft
         case ("cross", "twist", "") => sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsRight
-        case ("twist", "twist", "white") => sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsLeft
         case ("twist", "twist", "") => sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsRight
         case _ => 0
       }
