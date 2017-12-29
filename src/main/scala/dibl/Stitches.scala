@@ -55,6 +55,7 @@ class Stitches(src: String) {
   private val stitches: Map[StitchId, String] = tuples.map {
     case (id, instructions, _) => (id, makeValid(instructions, defaultStitch))
   }.toMap
+  println(stitches)
 
   private val colors: Map[StitchId, String] = tuples
     .filter(tuple => availableColors.contains(tuple._3))
@@ -66,8 +67,14 @@ class Stitches(src: String) {
    * @param id one or two letters followed by digits
    * @return the default stitch in case of an invalid id
    */
-  def stitch(id: StitchId): String = {
-    stitches.getOrElse(id.toLowerCase(), defaultStitch)
+  def stitch(id: StitchId, default: StitchId = defaultStitch): String = {
+    val d = default.toLowerCase match {
+      case "cross" => stitches.getOrElse("cross", defaultStitch)
+      case "twist" => stitches.getOrElse("twist", defaultStitch)
+      case _ => defaultStitch
+    }
+    println(s"id=$id default=$default d=$d")
+    stitches.getOrElse(id.toLowerCase(), d)
   }
 
   /**
