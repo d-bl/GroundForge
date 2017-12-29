@@ -35,18 +35,6 @@ object PairDiagram {
     * @return
     */
   def apply(stitches: String, threadDiagram: Diagram): Diagram = {
-    val targetsBySource: Map[Int, Seq[Int]] = threadDiagram.links
-      .groupBy(_.source)
-      .map { case (source, links1) =>
-        (source, links1.map(_.target))
-      }
-
-    //noinspection ZeroIndexToHead
-    def sameTargets(targets: Seq[Int]): Boolean = targets.size > 1 && targets(0) == targets(1)
-
-    val hasDuplicateLinksOut = targetsBySource
-      .filter(s2t => sameTargets(s2t._2))
-      .keySet
 
     val stitchList = stitches.split("[^a-zA-Z0-9=]+")
     val defaultStitch = if (stitchList(0).isEmpty || stitchList(0).contains('=')) "ctc" else stitchList(0)
@@ -73,36 +61,34 @@ object PairDiagram {
 
     val pairNodes = threadDiagram.nodes.map(n => node(translateTitle(n), n.x, n.y))
     val links = threadDiagram
-      .links
-      .filter(link => !link.border)
-      .filter(link => !hasDuplicateLinksOut.contains(link.source))
-      .map { link =>
+      .filterLinks
+      .map { case (source, target) =>
         createPairLink(
-          link,
-          pairNodes(link.source),
-          pairNodes(link.target),
-          threadDiagram.nodes(link.source).instructions,
-          threadDiagram.nodes(link.target).instructions
+          source, target,
+          pairNodes(source),
+          pairNodes(target),
+          threadDiagram.nodes(source).instructions,
+          threadDiagram.nodes(target).instructions
         )
       }
     Diagram(pairNodes, links)
   }
 
-  private def createPairLink(link: LinkProps,
+  private def createPairLink(source: Int, target: Int,
                              sourcePairNode: NodeProps,
                              targetPairNode: NodeProps,
                              sourceThreadNode: String,
                              targetThreadNode: String
                             ) = {
     val nrOfTwists: Int =
-      (sourceThreadNode, targetThreadNode, link.end) match {
-        case ("cross", "cross", "") => sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsLeft
-        case ("twist", "cross", "") => sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsLeft
-        case ("cross", "twist", "") => sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsRight
-        case ("twist", "twist", "") => sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsRight
+      (sourceThreadNode, targetThreadNode) match {
+        case ("cross", "cross") => sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsLeft
+        case ("twist", "cross") => sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsLeft
+        case ("cross", "twist") => sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsRight
+        case ("twist", "twist") => sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsRight
         case _ => 0
       }
-    pairLink(link.source, link.target,
+    pairLink(source, target,
       start = sourcePairNode.color,
       mid = nrOfTwists - 1,
       end = targetPairNode.color,

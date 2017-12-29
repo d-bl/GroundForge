@@ -19,6 +19,13 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class DiagramSpec extends FlatSpec with Matchers {
 
+  "filterLinks" should "return reduce repeated twists/cross's to a single one" in {
+    val Seq(single, double) = Seq("ct", "cctt").map(stitch => ThreadDiagram(PairDiagram(
+      Settings("5-", "bricks", stitches = stitch, absRows = 4, absCols = 4)
+    )))
+    single.filterLinks.size shouldBe double.filterLinks.size
+  }
+
   "rose ground pair diagram" should "have color and some mid markers" in {
 
     val d = PairDiagram(Settings(
