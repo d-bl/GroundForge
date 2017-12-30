@@ -18,6 +18,8 @@ package dibl
 
 import java.lang.Math.sqrt
 
+import dibl.Force.Point
+
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
@@ -125,66 +127,19 @@ object SVG {
     pathDescription(link, sX, sY, tX, tY)
   }
 
-  private val twistWidth = 6
-  private val straightDistance = twistWidth / 5
-  private val curvedDistance = straightDistance * 2
   @JSExport
   def pathDescription(link: LinkProps, sX: Double, sY: Double, tX: Double, tY: Double): String = {
-    lazy val needsTwistMark = link.nrOfTwists > 0
-    lazy val isLeftThread = link.left
-    lazy val isRightThread = link.right
-    lazy val startIsWhite = link.start == "white"
-    lazy val endIsWhite = link.end == "white"
-    lazy val dX = tX - sX
-    lazy val dY = tY - sY
-    lazy val linkLength = sqrt(dX*dX + dY*dY)
-    lazy val dX1 = dX * (twistWidth / linkLength)
-    lazy val dY1 = dY * (twistWidth / linkLength)
-    lazy val dX4 = dX1 / curvedDistance
-    lazy val dY4 = dY1 / curvedDistance
 
-    // see issue #70 for images, TODO turn into methods of LinkProps subclasses
-    if (endIsWhite) {
-      if (isLeftThread) {
-        // curve to: point at fixed distance to source rotated clockwise around source by 45 degrees
-        val cX = sX - dY1 + dX1
-        val cY = sY + dX1 + dY1
-        // move target a fixed distance back and rotate it counter clockwise by 45 degrees
-        val t1X = tX - dY4 - dX4
-        val t1Y = tY + dX4 - dY4
-        // create the path description
-        s"M $sX,$sY S $cX,$cY $t1X,$t1Y"
-      } else {
-        // move target back with a fixed distance
-        val t1X = tX - dX1 / straightDistance
-        val t1Y = tY - dY1 / straightDistance
-        s"M $sX,$sY $t1X,$t1Y"
-      }
-    } else if (startIsWhite) {
-      if (isRightThread) {
-        // curve to: point at fixed distance to target rotated clockwise around target by 45 degrees
-        val cX = tX + dY1 - dX1
-        val cY = tY - dX1 - dY1
-        // move source a fixed distance and rotate it counter clockwise by 45 degrees
-        val s1X = sX + dY4 + dX4
-        val s1Y = sY - dX4 + dY4
-        // create the path description
-        s"M $s1X,$s1Y S $cX,$cY $tX,$tY"
-      }
-      else {
-        // move source with a fixed distance
-        val s1X = sX + dX1 / straightDistance
-        val s1Y = sY + dY1 / straightDistance
-        s"M $s1X,$s1Y $tX,$tY"
-      }
-    } // now we are dealing with a pair diagram
-    else if (needsTwistMark) {
-      val mX = sX + dX / 2
-      val mY = sY + dY / 2
-      // a straight path with two sections
+    if (link.nrOfTwists > 0) {
+      val mX = sX + (tX - sX) / 2
+      val mY = sY + (tY - sY) / 2
+      // a straight path with two sections allows a twistMark
       s"M $sX,$sY $mX,$mY $tX,$tY"
     }
-    else s"M $sX,$sY $tX,$tY"
+    else link.renderedPath(Path(Point(sX, sY), Point(tX, tY)))match {
+      case Path(s, t, None) => s"M ${ s.x },${ s.y } ${ t.x },${ t.y }"
+      case Path(s, t, Some(c)) => s"M ${ s.x },${ s.y } S ${ c.x },${ c.y } ${ t.x },${ t.y }"
+    }
   }
 
   private def renderLinks(diagram: Diagram,
@@ -192,15 +147,19 @@ object SVG {
                           markers: Boolean,
                           opacityOfHiddenObjects: Double = 0
                          ): String = diagram.links.map { link =>
-    val opacity = if (link.border || link.toPin) opacityOfHiddenObjects else 1
+    val opacity = if (link.border) opacityOfHiddenObjects else 1
     val pd = pathDescription(diagram, link)
+    val markers = link.markers.map{
+      case ("mid",_) => s"; marker-mid: url('#twist-1')"
+      case (key,value) => s"; marker-$key: url('#$key-$value')"
+    }.mkString("")
     // TODO no stroke color/width would allow styling threads with CSS
     // what in turn allows changes without repeating the simulation
     // stand-alone SVG does require stroke details
     s"""<path
        | class="${link.cssClass}"
        | d="$pd"
-       | style="stroke: rgb(0, 0, 0); stroke-width: $strokeWidth; fill: none; opacity: $opacity${link.markerRefs}"
+       | style="stroke: rgb(0, 0, 0); stroke-width: $strokeWidth; fill: none; opacity: $opacity$markers"
        |></path>""".stripMargin
   }.mkString
 

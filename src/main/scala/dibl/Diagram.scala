@@ -15,6 +15,7 @@
 */
 package dibl
 
+import scala.annotation.tailrec
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExport
 
@@ -45,5 +46,33 @@ case class Diagram(nodes: Seq[NodeProps],
       jsItems(i)("index") = i
     }
     jsItems
+  }
+
+  /**
+   * @return Visible links as source/target-tuples of indexes in nodes, stripped of duplicates.
+   *         An example: the 8 links in ascii-art ">==<" graph should be reduced to 4 links as "><".
+   *         This means recursively replace the sources of "<" links with the sources of "=" links.
+   */
+  def filterLinks: Seq[(Int, Int)] = {
+    val visibleLinks = links
+      .withFilter(!_.border)
+      .map(l => (l.source, l.target))
+    val targetsOfDuplicates = visibleLinks
+      .groupBy { case (s: Int, t: Int) => (s, t) }
+      .filter { case (_, duplicates) => 1 < duplicates.size }
+      .keySet
+      .map(_._2)
+    val linksByTarget = visibleLinks.groupBy { case (_, t: Int) => t }
+
+    @tailrec
+    def FindSource(s: Int): Int = {
+      if (targetsOfDuplicates.contains(s))
+        FindSource(linksByTarget(s).head._1)
+      else s
+    }
+
+    visibleLinks
+      .withFilter { case (_, t) => !targetsOfDuplicates.contains(t) }
+      .map { case (s, t) => (FindSource(s), t) }
   }
 }
