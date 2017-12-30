@@ -64,53 +64,40 @@ function tiling() {
   return "other"// meaning: use the new arguments [r/c][SE/SW]
 }
 function show() {
-  var matrixLines = getMatrixLines()
   var stitches = document.getElementById("stitches").innerHTML
-  var pairDiagram = dibl.PairDiagram().get(matrixLines.join(" "),tiling(),12,12,0,0,stitches)
+  var pairDiagram = dibl.PairDiagram().get(getMatrixLines().join(" "),tiling(),12,12,0,0,stitches)
   var diagram = dibl.ThreadDiagram().create(pairDiagram)
-  showGraph({
-    nodes: diagram.jsNodes(),
-    links: diagram.jsLinks(),
-    diagram: diagram,
-    container: "#diagram"
-  })
-}
-function showGraph(args) {
-    var svg = dibl.SVG()
-    var markers = true // use false for slow devices and IE-11, set them at onEnd
-    var container = d3.select(args.container)
-    container.node().innerHTML = svg.render(args.diagram, "2px", markers, 300, 260)
-    var links = container.selectAll(".link").data(args.links)
-    var nodes = container.selectAll(".node").data(args.nodes)
-    function moveNode(jsNode) {
-        return 'translate('+jsNode.x+','+jsNode.y+')'
-    }
-    function drawPath(jsLink) {
-        var s = jsLink.source
-        var t = jsLink.target
-        var l = args.diagram.link(jsLink.index)
-        return  svg.pathDescription(l, s.x, s.y, t.x, t.y)
-    }
-    function onTick() {
-        links.attr("d", drawPath);
-        nodes.attr("transform", moveNode);
-        count++
-    }
-    function onEnd() {
-        console.log("time for " + count + " ticks " + (new Date().getTime() - tickStart))
-    }
-    var count = 0
-    var tickStart = new Date().getTime()
+  var nodeDefs = diagram.jsNodes()
+  var linkDefs = diagram.jsLinks()
+  var container = d3.select("#diagram")
+  var svg = dibl.SVG()
+  var markers = true // use false for slow devices and IE-11, set them at onEnd
+  container.node().innerHTML = svg.render(diagram, "2px", markers, 300, 260)
+  var links = container.selectAll(".link").data(linkDefs)
+  var nodes = container.selectAll(".node").data(nodeDefs)
 
-    // duplication of src/main/resources/force.js.applyForce(...)
-    function strength(link){ return link.weak ? 1 : 50 }
-    d3.forceSimulation(args.nodes)
-        .force("charge", d3.forceManyBody().strength(-1000))
-        .force("link", d3.forceLink(args.links).strength(strength).distance(12).iterations(30))
-        .force("center", d3.forceCenter(cx, cy))
-        .alpha(0.0035)
-        .on("tick", simTicked)
-        .on("end", simEnded)
+  function moveNode(jsNode) {
+      return 'translate('+jsNode.x+','+jsNode.y+')'
+  }
+  function drawPath(jsLink) {
+      var s = jsLink.source
+      var t = jsLink.target
+      var l = diagram.link(jsLink.index)
+      return  svg.pathDescription(l, s.x, s.y, t.x, t.y)
+  }
+  function onTick() {
+      links.attr("d", drawPath);
+      nodes.attr("transform", moveNode);
+  }
+
+  // duplication of src/main/resources/force.js.applyForce(...)
+  function strength(link){ return link.weak ? 1 : 50 }
+  d3.forceSimulation(nodeDefs)
+    .force("charge", d3.forceManyBody().strength(-1000))
+    .force("link", d3.forceLink(linkDefs).strength(strength).distance(12).iterations(30))
+    .force("center", d3.forceCenter(150, 125))
+    .alpha(0.0035)
+    .on("tick", onTick)
 }
 function setNode(r, c, arrows, stitch, firstTile) {
 
