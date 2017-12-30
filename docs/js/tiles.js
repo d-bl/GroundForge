@@ -65,7 +65,7 @@ function tiling() {
 }
 function show() {
   var stitches = document.getElementById("stitches").innerHTML
-  var pairDiagram = dibl.PairDiagram().get(getMatrixLines().join(" "),tiling(),12,12,0,0,stitches)
+  var pairDiagram = dibl.PairDiagram().get(getMatrixLines().join(" "),tiling(),12,12,0,2,stitches)
   var diagram = dibl.ThreadDiagram().create(pairDiagram)
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()
