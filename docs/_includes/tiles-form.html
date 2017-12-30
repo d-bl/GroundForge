@@ -1,7 +1,8 @@
 <head>
     <link rel="stylesheet" href="../assets/css/help.css" type="text/css">
     <script src="../js/tiles.js"></script>
-    <script src="../js/GroundForge-opt.js"></script>
+    <script src="../js/d3.v4.min.js" type="text/javascript"></script>
+    <script src="../js/GroundForge-opt.js" type="text/javascript"></script>
 </head>
 <body>
 <form onsubmit="return false">
@@ -83,7 +84,7 @@
             </figcaption>
         </figure>
         <p>
-            N: natural repeat, subscript: same matrix, different tiling.
+            N: natural repeat, subscript: same matrix, different tiling hence another pattern.
         </p>
         <p>
             A pattern as
@@ -458,10 +459,15 @@
             </svg>
             <figcaption>prototype (click/hover black symbols)</figcaption>
         </figure>
-        <figure>
-            <img src="../help/images/matrix-template.png" alt="cheat sheet">
-            <figcaption>cheat sheet</figcaption>
-        </figure>
+        <div style="display:inline-block">
+            <button type="button" onClick="show()" style="display:inline-block">Show threads</button>
+            <div id="diagram" style="display:inline-block">
+                <figure>
+                    <img src="../help/images/matrix-template.png" alt="cheat sheet">
+                    <figcaption>cheat sheet</figcaption>
+                </figure>
+            </div>
+        </div>
     </fieldset>
     <fieldset>
         <legend>Stitches</legend>
@@ -505,5 +511,4 @@
         </div>
         <img src="../help/images/shift-directions.png" style="vertical-align: top">
     </fieldset>
-    <a id="link" target="_blank" href="#"><button type="button">Go</button></a>
 </form>
