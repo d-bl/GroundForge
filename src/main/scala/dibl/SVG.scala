@@ -16,9 +16,8 @@
 
 package dibl
 
-import java.lang.Math.sqrt
-
 import dibl.Force.Point
+import dibl.Stitches.defaultColorValue
 
 import scala.scalajs.js.annotation.JSExport
 
@@ -125,6 +124,26 @@ object SVG {
     val tX = target.x
     val tY = target.y
     pathDescription(link, sX, sY, tX, tY)
+  }
+
+  @JSExport
+  def createPrototype(urlQuery: String): String = {
+    val config = Config(urlQuery)
+    (for {
+      r <- config.totalMatrix.indices
+      c <- config.totalMatrix.head.indices
+    } yield {
+      val id = config.popupId(r, c) // match filter for stitches from the urlQuery
+      val stitch = config.fields.getOrElse(id,"ctc")
+      val color = defaultColorValue(stitch)
+      val opacity = if (config.isOpaque(r, c)) "0.3" else "1"
+      s"""<use xlink:href='#g${ config.vectorCode(r, c) }'
+         |  style='stroke:${if (color.nonEmpty) color else "#000"};opacity:$opacity"'
+         |  transform='translate(${c*10+38},${r*10+1})'
+         |  ${if (opacity=="1") s"id='svg-$id' onclick='setStitch(this)'" else ""}
+         |><title>$stitch</title>
+         |</use>""".stripMargin
+    }).mkString("\n")
   }
 
   @JSExport

@@ -106,12 +106,18 @@
         </p>
         <p>
             Overlapping patterns <a href="javascript:sample('889C\n468-\n468D\n274-\n17--',3,3, -1,5)">A</a>.
+            Under construction: custom <a href="javascript:sample('---7888D--\n--A1114---\n---7888D--\n--A1114---',10,4, 0,4,'-7\nA1','D\n-')">foot/head</a>-side,
+            <a href="javascript:sample('8\n1',10,4, 0,4,'-7\nA1','D\n-');newProto(this)">same</a>.
         </p>
     </fieldset>
     <fieldset>
         <legend>Pattern</legend>
         <figure>
-            <textarea id="matrix" name="matrix" rows="8" cols="8" spellcheck="false"
+            <textarea id="footside" name="footside" rows="12" cols="3" spellcheck="false"
+                      onchange="setVisibility()"></textarea>
+            <textarea id="matrix" name="matrix" rows="12" cols="10" spellcheck="false"
+                      onchange="setVisibility()"></textarea>
+            <textarea id="headside" name="headside" rows="12" cols="3" spellcheck="false"
                       onchange="setVisibility()"></textarea>
             <figcaption>definition</figcaption>
         </figure>
@@ -157,6 +163,7 @@
                     </rdf:RDF>
                 </metadata>
                 <g id="layer1" transform="matrix(2,0,0,2,-0.09509441,-1920.0075)">
+                  <g>
                     <g id="g2">
                         <path   d="m -18.064645,978.05982 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41422 -0.361929,0.36192 -0.861929,0.58578 -1.414213,0.58578 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58578 -0.361929,-0.36193 -0.585787,-0.86193 -0.585787,-1.41422 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"
                                 style="fill:none;stroke-width:1"/>
@@ -443,6 +450,8 @@
                                 x="-20.569208"
                                 y="979.2818">-</text>
                     </g>
+                  </g>
+                  <g id="clones">
                     <use id="svg-r1-c1"  xlink:href="#g-" onclick="" transform="translate(38,1)" /><use id="svg-r1-c2"   xlink:href="#g-" onclick="" transform="translate(48,1)"  /><use id="svg-r1-c3"  xlink:href="#g-" onclick="" transform="translate(58,1)"  /><use id="svg-r1-c4"  xlink:href="#g-" onclick="" transform="translate(68,1)"  /><use id="svg-r1-c5"  xlink:href="#g-" onclick="" transform="translate(78,1)"  /><use id="svg-r1-c6"  xlink:href="#g-" onclick="" transform="translate(88,1)"  /><use id="svg-r1-c7"  xlink:href="#g-" onclick="" transform="translate(98,1)"  /><use id="svg-r1-c8"  xlink:href="#g-" onclick="" transform="translate(108,1)"  /><use id="svg-r1-c9"  xlink:href="#g-" onclick="" transform="translate(118,1)"  /><use id="svg-r1-c10"  xlink:href="#g-" onclick="" transform="translate(128,1)"  /><use id="svg-r1-c11"  xlink:href="#g-" onclick="" transform="translate(138,1)"  /><use id="svg-r1-c12"  xlink:href="#g-" onclick="" transform="translate(148,1)" />
                     <use id="svg-r2-c1"  xlink:href="#g-" onclick="" transform="translate(38,11)"/><use id="svg-r2-c2"   xlink:href="#g-" onclick="" transform="translate(48,11)" /><use id="svg-r2-c3"  xlink:href="#g-" onclick="" transform="translate(58,11)" /><use id="svg-r2-c4"  xlink:href="#g-" onclick="" transform="translate(68,11)" /><use id="svg-r2-c5"  xlink:href="#g-" onclick="" transform="translate(78,11)" /><use id="svg-r2-c6"  xlink:href="#g-" onclick="" transform="translate(88,11)" /><use id="svg-r2-c7"  xlink:href="#g-" onclick="" transform="translate(98,11)" /><use id="svg-r2-c8"  xlink:href="#g-" onclick="" transform="translate(108,11)" /><use id="svg-r2-c9"  xlink:href="#g-" onclick="" transform="translate(118,11)" /><use id="svg-r2-c10"  xlink:href="#g-" onclick="" transform="translate(128,11)" /><use id="svg-r2-c11"  xlink:href="#g-" onclick="" transform="translate(138,11)" /><use id="svg-r2-c12"  xlink:href="#g-" onclick="" transform="translate(148,11)"/>
                     <use id="svg-r3-c1"  xlink:href="#g-" onclick="" transform="translate(38,21)"/><use id="svg-r3-c2"   xlink:href="#g-" onclick="" transform="translate(48,21)" /><use id="svg-r3-c3"  xlink:href="#g-" onclick="" transform="translate(58,21)" /><use id="svg-r3-c4"  xlink:href="#g-" onclick="" transform="translate(68,21)" /><use id="svg-r3-c5"  xlink:href="#g-" onclick="" transform="translate(78,21)" /><use id="svg-r3-c6"  xlink:href="#g-" onclick="" transform="translate(88,21)" /><use id="svg-r3-c7"  xlink:href="#g-" onclick="" transform="translate(98,21)" /><use id="svg-r3-c8"  xlink:href="#g-" onclick="" transform="translate(108,21)" /><use id="svg-r3-c9"  xlink:href="#g-" onclick="" transform="translate(118,21)" /><use id="svg-r3-c10"  xlink:href="#g-" onclick="" transform="translate(128,21)" /><use id="svg-r3-c11"  xlink:href="#g-" onclick="" transform="translate(138,21)" /><use id="svg-r3-c12"  xlink:href="#g-" onclick="" transform="translate(148,21)"/>
@@ -455,12 +464,13 @@
                     <use id="svg-r10-c1" xlink:href="#g-" onclick="" transform="translate(38,91)"/><use id="svg-r10-c2"  xlink:href="#g-" onclick="" transform="translate(48,91)" /><use id="svg-r10-c3" xlink:href="#g-" onclick="" transform="translate(58,91)" /><use id="svg-r10-c4" xlink:href="#g-" onclick="" transform="translate(68,91)" /><use id="svg-r10-c5" xlink:href="#g-" onclick="" transform="translate(78,91)" /><use id="svg-r10-c6" xlink:href="#g-" onclick="" transform="translate(88,91)" /><use id="svg-r10-c7" xlink:href="#g-" onclick="" transform="translate(98,91)" /><use id="svg-r10-c8" xlink:href="#g-" onclick="" transform="translate(108,91)" /><use id="svg-r10-c9" xlink:href="#g-" onclick="" transform="translate(118,91)" /><use id="svg-r10-c10" xlink:href="#g-" onclick="" transform="translate(128,91)" /><use id="svg-r10-c11" xlink:href="#g-" onclick="" transform="translate(138,91)" /><use id="svg-r10-c12" xlink:href="#g-" onclick="" transform="translate(148,91)"/>
                     <use id="svg-r11-c1" xlink:href="#g-" onclick="" transform="translate(38,101)"/><use id="svg-r11-c2" xlink:href="#g-" onclick="" transform="translate(48,101)"/><use id="svg-r11-c3" xlink:href="#g-" onclick="" transform="translate(58,101)"/><use id="svg-r11-c4" xlink:href="#g-" onclick="" transform="translate(68,101)"/><use id="svg-r11-c5" xlink:href="#g-" onclick="" transform="translate(78,101)"/><use id="svg-r11-c6" xlink:href="#g-" onclick="" transform="translate(88,101)"/><use id="svg-r11-c7" xlink:href="#g-" onclick="" transform="translate(98,101)"/><use id="svg-r11-c8" xlink:href="#g-" onclick="" transform="translate(108,101)"/><use id="svg-r11-c9" xlink:href="#g-" onclick="" transform="translate(118,101)"/><use id="svg-r11-c10" xlink:href="#g-" onclick="" transform="translate(128,101)"/><use id="svg-r11-c11" xlink:href="#g-" onclick="" transform="translate(138,101)"/><use id="svg-r11-c12" xlink:href="#g-" onclick="" transform="translate(148,101)"/>
                     <use id="svg-r12-c1" xlink:href="#g-" onclick="" transform="translate(38,111)"/><use id="svg-r12-c2" xlink:href="#g-" onclick="" transform="translate(48,111)"/><use id="svg-r12-c3" xlink:href="#g-" onclick="" transform="translate(58,111)"/><use id="svg-r12-c4" xlink:href="#g-" onclick="" transform="translate(68,111)"/><use id="svg-r12-c5" xlink:href="#g-" onclick="" transform="translate(78,111)"/><use id="svg-r12-c6" xlink:href="#g-" onclick="" transform="translate(88,111)"/><use id="svg-r12-c7" xlink:href="#g-" onclick="" transform="translate(98,111)"/><use id="svg-r12-c8" xlink:href="#g-" onclick="" transform="translate(108,111)"/><use id="svg-r12-c9" xlink:href="#g-" onclick="" transform="translate(118,111)"/><use id="svg-r12-c10" xlink:href="#g-" onclick="" transform="translate(128,111)"/><use id="svg-r12-c11" xlink:href="#g-" onclick="" transform="translate(138,111)"/><use id="svg-r12-c12" xlink:href="#g-" onclick="" transform="translate(148,111)"/>
+                  </g>
                 </g>
             </svg>
             <figcaption>prototype (click/hover black symbols)</figcaption>
         </figure>
         <div style="display:inline-block">
-            <button type="button" onClick="show()" style="display:inline-block">Show threads</button>
+            <button type="button" onClick="show(this)" style="display:inline-block">Show threads</button>
             <div id="diagram" style="display:inline-block">
                 <figure>
                     <img src="../help/images/matrix-template.png" alt="cheat sheet">
@@ -473,12 +483,19 @@
         <legend>Stitches</legend>
         Set
         <a href="javascript:defaultStitches()">defaults</a>,
-        <a href="javascript:allStitches()">all</a> &#9602;
-        <span id="stitches"></span>
+        <a href="javascript:allStitches()">all</a>
+        <p id="stitches"></p>
     </fieldset>
     <fieldset id="repeats-form">
         <legend>Repeats</legend>
         <div>
+            <div>
+                <label for="repeatWidth">Show in thread diagram with</label>
+                <input type="number" name="repeatWidth" id="repeatWidth" min="0" max="30" value="3" onchange="setVisibility()">
+                <label for="repeatWidth">col(s)</label>
+                <input type="number" name="repeatHeight" id="repeatHeight" min="0" max="30" value="3" onchange="setVisibility()">
+                <label for="repeatHeight">rows(s)</label>
+            </div>
             <p>Initialize as
                 <a href="javascript:asChecker()">checker</a>,
                 nudge bricks:

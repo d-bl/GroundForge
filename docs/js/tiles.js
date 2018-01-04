@@ -35,6 +35,7 @@ function setVisibility() {
   // collect chosen stitches
   var kvs = []
   var keys = Object.keys(stitches)
+  console.log(keys)
   for (var i=0 ; i<keys.length ; i++) {
     var rc = keys[i].split("-")
     var r = rc[0].substr(1) * 1 - 1
@@ -44,6 +45,7 @@ function setVisibility() {
       kvs.push(id + "=" + stitches[keys[i]])
     }
   }
+  console.log(kvs.join(", "))
   document.getElementById("stitches").innerHTML = kvs.join(", ")
 }
 function tiling() {
@@ -63,12 +65,14 @@ function tiling() {
     return "bricks"
   return "other"// meaning: use the new arguments [r/c][SE/SW]
 }
-function show() {
+function show(button) {
+
   var stitches = document.getElementById("stitches").innerHTML
-  var pairDiagram = dibl.PairDiagram().get(getMatrixLines().join(" "),tiling(),12,12,0,2,stitches)
+  var cols = document.getElementById('footside').value == "" ? 12 : 10
+  var pairDiagram = dibl.PairDiagram().get(getMatrixLines().join(" "),tiling(),12,cols,0,2,stitches)
   var diagram = dibl.ThreadDiagram().create(pairDiagram)
   var nodeDefs = diagram.jsNodes()
-  var linkDefs = diagram.jsLinks()
+  var linkDefs = diagram.jsLinks()//can't inline
   var container = d3.select("#diagram")
   var svg = dibl.SVG()
   var markers = true // use false for slow devices and IE-11, set them at onEnd
@@ -118,42 +122,73 @@ function setNode(r, c, arrows, stitch, firstTile) {
 function setStitch(source) {
 
   var id = source.attributes["id"].value.substr(4)
-  selected = prompt("Stitch for " + id, stitches[id])
+  selected = askForStitch("Stitch for " + id, stitches[id] ? stitches[id] : "ctc")
   if (selected && selected != "") {
-    stitches[id] = selected.trim()
+    stitches[id] = selected
     setVisibility()
   }
 }
-function allStitches(source) {
+function allStitches() {
 
-  selected = prompt("reset all stitches to: ", "ctc")
+  selected = askForStitch("reset all stitches to: ", "")
   if (selected && selected.trim() != "") {
     for (var r=1; r <= maxRows; r++)
       for (var c=1 ; c <= maxCols; c++)
-        stitches["r"+r+"-c"+c] = selected.trim()
+        stitches["r"+r+"-c"+c] = selected
     setVisibility()
   }
 }
-function defaultStitches(source) {
+function defaultStitches() {
 
-  selected = prompt("set remaining stitches to: ", "ctc")
+  selected = askForStitch("set remaining stitches to: ", "ctc")
   if (selected && selected.trim() != "") {
     for (var r=1; r <= maxRows; r++)
       for (var c=1 ; c <= maxCols; c++) {
         var id = "r"+r+"-c"+c
         if (!stitches[id] || stitches[id] == "")
-          stitches[id] = selected.trim()
+          stitches[id] = selected
       }
     setVisibility()
   }
 }
+function askForStitch(s, defaultStitch){
+  // making the input valid as early as possible protects against injection when displaying the value
+  return dibl.Stitches().makeValid(prompt(s, defaultStitch? defaultStitch : "ctc"), defaultStitch)
+}
 function getMatrixLines() {
 
-  return document.getElementById("matrix").value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+  var footside = toLines(document.getElementById('footside').value)
+  var headside = toLines(document.getElementById('headside').value)
+  var tile = toLines(document.getElementById('matrix').value)
+  return tile
 }
-function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW) {
+function toLines(s) {
+  return s.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+}
+function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, stitchSpecs) {
+  setSample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, stitchSpecs)
+  setVisibility()
+}
+function query() {
+  var kvpairs = []
+  var els = document.forms[0].elements
+  for ( var i = 0; i < els.length; i++ ) {
+     var e = els[i]
+     if (e && e.name && e.value)
+     kvpairs.push((e.name).replace("matrix","tile") + "=" + (e.value).replace(/\n/g,","))//encodeURIComponent
+  }
+  return kvpairs.join("&") + "&" + document.getElementById("stitches").innerHTML
+}
+function newProto() {
+  console.log(query())
+  var q = "headside=-7,A1&tile=8,1&footside=D,-&repeatHeight=4&repeatWidth=3"
+  document.getElementById('clones').innerHTML = dibl.SVG().createPrototype(query())
+}
+function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, stitchSpecs) {
 
   document.getElementById('matrix').value = matrix
+  document.getElementById('footside').value = footside ? footside : ""
+  document.getElementById('headside').value = headside ? headside : ""
   document.getElementById('shiftColsSE').value = shiftColsSE
   document.getElementById('shiftRowsSE').value = shiftRowsSE
   document.getElementById('shiftColsSW').value = shiftColsSW
