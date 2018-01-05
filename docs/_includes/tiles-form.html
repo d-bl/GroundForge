@@ -470,7 +470,7 @@
             <figcaption>prototype (click/hover black symbols)</figcaption>
         </figure>
         <div style="display:inline-block">
-            <button type="button" onClick="show(this)" style="display:inline-block">Show threads</button>
+            <button type="button" onClick="show(getMatrixLines().join(' '),tiling())" style="display:inline-block">Show threads</button>
             <div id="diagram" style="display:inline-block">
                 <figure>
                     <img src="../help/images/matrix-template.png" alt="cheat sheet">
@@ -493,7 +493,7 @@
                 <label for="repeatWidth">Show in thread diagram with</label>
                 <input type="number" name="repeatWidth" id="repeatWidth" min="0" max="30" value="3" onchange="setVisibility()">
                 <label for="repeatWidth">col(s)</label>
-                <input type="number" name="repeatHeight" id="repeatHeight" min="0" max="30" value="3" onchange="setVisibility()">
+                <input type="number" name="repeatHeight" id="repeatHeight" min="0" max="30" value="12" onchange="setVisibility()">
                 <label for="repeatHeight">rows(s)</label>
             </div>
             <p>Initialize as

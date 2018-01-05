@@ -4,9 +4,9 @@ import java.net.URLDecoder
 
 import dibl.Config._
 
-import scala.collection.immutable
+import scala.scalajs.js.annotation.JSExport
 
-case class Config(urlQuery: String) {
+class Config(urlQuery: String) {
 
   private val keyValueStrings: Seq[String] = urlQuery
     .split("&")
@@ -59,7 +59,9 @@ case class Config(urlQuery: String) {
       ).toUpperCase.toCharArray)
 
   def isOpaque(row: Int, col: Int): Boolean = {
-    true//TODO
+    // use TODO above
+    col > 1 && col < 2 + leftMatrix(0).length + centerMatrix(0).length &&
+    row < centerMatrix.length
   }
 
   def popupId(row: Int, col: Int): String = {
@@ -71,7 +73,15 @@ case class Config(urlQuery: String) {
   }
 }
 
+@JSExport
 object Config {
+
+  @JSExport
+  def createMatrix(urlQuery: String): String = new Config(urlQuery)
+    .totalMatrix
+    .map(_.mkString)
+    .mkString(",")
+
   private val types: String = Config.MatrixType.values.map(_.toString.toCharArray.head).mkString
 
   // must match keyValueStrings where the keys are returned popupId's and values are stitch definitions

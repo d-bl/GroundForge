@@ -128,7 +128,7 @@ object SVG {
 
   @JSExport
   def createPrototype(urlQuery: String): String = {
-    val config = Config(urlQuery)
+    val config = new Config(urlQuery)
     (for {
       r <- config.totalMatrix.indices
       c <- config.totalMatrix.head.indices
@@ -136,11 +136,12 @@ object SVG {
       val id = config.popupId(r, c) // match filter for stitches from the urlQuery
       val stitch = config.fields.getOrElse(id,"ctc")
       val color = defaultColorValue(stitch)
-      val opacity = if (config.isOpaque(r, c)) "0.3" else "1"
+      val opacity = if (config.isOpaque(r, c)) "1" else "0.3"
       s"""<use xlink:href='#g${ config.vectorCode(r, c) }'
-         |  style='stroke:${if (color.nonEmpty) color else "#000"};opacity:$opacity"'
+         |  id='svg-r${r+1}-c${c+1}'
          |  transform='translate(${c*10+38},${r*10+1})'
-         |  ${if (opacity=="1") s"id='svg-$id' onclick='setStitch(this)'" else ""}
+         |  style='stroke:${if (color.nonEmpty) color else "#000"};opacity:$opacity;"'
+         |  onclick='${if (opacity=="1") "setStitch(this)" else ""}'
          |><title>$stitch</title>
          |</use>""".stripMargin
     }).mkString("\n")
