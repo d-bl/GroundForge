@@ -2,10 +2,9 @@ package dibl
 
 import java.net.URLDecoder
 
-import dibl.Config._
-
 import scala.scalajs.js.annotation.JSExport
 
+@JSExport
 class Config(urlQuery: String) {
 
   private val keyValueStrings: Seq[String] = urlQuery
@@ -21,10 +20,6 @@ class Config(urlQuery: String) {
     => Some(s"https://web.archive.org/web/20170908061030/https://d-bl.github.io/GroundForge/?$urlQuery")
     case _ => None
   }.find(_.isDefined).flatten
-
-  val stitches: String = keyValueStrings
-    .filter(_.toLowerCase.matches(popupIdFilter))
-    .mkString(" ")
 
   val repeatRows: Int = fields.getOrElse("repeatHeight", "12").replaceAll("[^0-9]", "*").toInt
   val repeatCols: Int = fields.getOrElse("repeatWidth", "12").replaceAll("[^0-9]", "*").toInt
@@ -55,17 +50,22 @@ class Config(urlQuery: String) {
       leftMatrix(row % leftMatrix.length) +
       repeatedCenter(row % centerMatrix.length) +
       rightMatrix(row % rightMatrix.length) +
-      "----------"
+      "--"
       ).toUpperCase.toCharArray)
 
-  def isOpaque(row: Int, col: Int): Boolean = {
-    // use TODO above
-    col > 1 && col < 2 + leftMatrix(0).length + centerMatrix(0).length &&
-    row < centerMatrix.length
-  }
+  @JSExport
+  val encodedMatrix: String = totalMatrix.map(_.mkString).mkString(",")
 
-  def popupId(row: Int, col: Int): String = {
-    "notYetImplemented"//TODO
+  def isOpaque(row: Int, col: Int): Boolean = {
+    val margin = 2
+    val leftLen = margin + leftMatrix(0).length
+    val centerLen = leftLen + centerMatrix(0).length
+    val rightStart = leftLen + centerMatrix(0).length * this.repeatCols
+    val rightLen = rightMatrix(0).length
+    val inLeft = margin <= col && col < leftLen && row < leftMatrix.length
+    val inCenter = leftLen <= col && col < centerLen && row < centerMatrix.length
+    val inRight = rightStart <= col && col < rightStart + rightLen && row < rightMatrix.length
+    inLeft || inCenter || inRight
   }
 
   def vectorCode(row: Int, col: Int): Char = {
@@ -77,18 +77,5 @@ class Config(urlQuery: String) {
 object Config {
 
   @JSExport
-  def createMatrix(urlQuery: String): String = new Config(urlQuery)
-    .totalMatrix
-    .map(_.mkString)
-    .mkString(",")
-
-  private val types: String = Config.MatrixType.values.map(_.toString.toCharArray.head).mkString
-
-  // must match keyValueStrings where the keys are returned popupId's and values are stitch definitions
-  private val popupIdFilter = s"[$types]-r[0-9]+-c[0-9]+=[ctlrp]+"
-
-  object MatrixType extends Enumeration {
-    type MatrixPrefix = Value
-    val HEAD_SIDE, TILE, FOOT_SIDE = Value
-  }
+  def create(urlQuery: String): Config = new Config(urlQuery)
 }

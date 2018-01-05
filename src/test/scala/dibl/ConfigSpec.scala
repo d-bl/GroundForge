@@ -5,12 +5,12 @@ import org.scalatest.{ FlatSpec, Matchers }
 class ConfigSpec extends FlatSpec with Matchers {
 
   "empty query" should "return emtpty dashed matrix" in {
-    Config("").totalMatrix.map(_.mkString).mkString("\n")+"\n" shouldBe
+    new Config("").totalMatrix.map(_.mkString).mkString("\n")+"\n" shouldBe
       ("------------\n" * 12)
   }
 
   "custom checker braid" should "" in {
-    val specs = Config("headside=-7,A1&tile=8,1&footside=D,-&repeatHeight=4&repeatWidth=3")
+    val specs = new Config("headside=-7,A1&tile=8,1&footside=D,-&repeatHeight=4&repeatWidth=3")
     specs.totalMatrix.map(_.mkString).mkString("\n") shouldBe
       """---7888d----------
         |--a1111-----------

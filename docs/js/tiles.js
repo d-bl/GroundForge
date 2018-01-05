@@ -15,13 +15,10 @@ function setVisibility() {
   var shiftRowsSW = document.getElementById('shiftRowsSW').value * 1
   var shiftColsSW = document.getElementById('shiftColsSW').value * 1
 
-  console.log("maxRows="+maxRows + " maxCols="+maxCols)
-
   // clear the prototype as there might be gaps between overlapping tiles
   for (var r = 0; r < maxRows; r++)
     for (var c = 0; c < maxCols; c++)
       setNode(r, c, "-", "", true)
-  console.log("prototype cleared")
 
   // pattern prototype
   for (var i=0 ; i<maxRows ; i++) // tiles in a diagonal
@@ -34,7 +31,6 @@ function setVisibility() {
           if (rt >= 0 && ct >=0)
             setNode(rt, ct, matrixLines[r][c], stitches["r"+(r+1)+"-c"+(c+1)], i==0 && j==0)
         }
-  console.log("prototype filled")
 
   // collect chosen stitches
   var kvs = []
@@ -43,11 +39,12 @@ function setVisibility() {
     var rc = keys[i].split("-")
     var r = rc[0].substr(1) * 1 - 1
     var c = rc[1].substr(1) * 1 - 1
-    if (r < rows && c < cols && matrixLines[r][c] != "-") {
+//    if (r < rows && c < cols && matrixLines[r][c] != "-") {
       var id = dibl.Stitches().toID(r, c).toUpperCase()
       kvs.push(id + "=" + stitches[keys[i]])
-    }
+//    }
   }
+  console.log(stitches)
   document.getElementById("stitches").innerHTML = kvs.join(", ")
 }
 function tiling() {
@@ -71,7 +68,6 @@ function show(matrix, tiling) {
 
   var stitches = document.getElementById("stitches").innerHTML
   var cols = document.getElementById('footside').value == "" ? 12 : 10
-  console.log("show matrix " + matrix + tiling)
   var pairDiagram = dibl.PairDiagram().get(matrix,tiling,12,cols,0,2,stitches)
   var diagram = dibl.ThreadDiagram().create(pairDiagram)
   var nodeDefs = diagram.jsNodes()
@@ -109,10 +105,8 @@ function show(matrix, tiling) {
 function setNode(r, c, arrows, stitch, firstTile) {
 
   var svgEl = document.getElementById("svg-r" + (r + 1) + "-c" + (c + 1))
-  if(!svgEl) {
-    console.log ("no node for row="+r+" col"+c)
+  if(!svgEl)
     return // after newProto there might be less rows or columns
-  }
   var activeNode = firstTile && arrows != "-"
 
   var color = ""
@@ -172,10 +166,6 @@ function getMatrixLines() {
 function toLines(s) {
   return s.toUpperCase().trim().split(/[^-A-Z0-9]+/)
 }
-function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, stitchSpecs) {
-  setSample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, stitchSpecs)
-  setVisibility()
-}
 function query() {
   var kvpairs = []
   var els = document.forms[0].elements
@@ -184,12 +174,13 @@ function query() {
      if (e && e.name && e.value)
      kvpairs.push((e.name).replace("matrix","tile") + "=" + (e.value).replace(/\n/g,","))//encodeURIComponent
   }
-  return kvpairs.join("&") + "&" + document.getElementById("stitches").innerHTML
+  return kvpairs.join("&") + "&" + document.getElementById("stitches").innerHTML.replace(/, /g,"&")
 }
 function newProto() {
-  var urlQuery = query()
-  document.getElementById('clones').innerHTML = dibl.SVG().createPrototype(urlQuery)
-  var matrix = dibl.Config().createMatrix(urlQuery)
+  var config = dibl.Config().create(query())
+  console.log(query())
+  document.getElementById('clones').innerHTML = dibl.SVG().createPrototype(config)
+  var matrix = config.encodedMatrix
   var lines = matrix.split(",")
   maxRows = lines.length
   maxCols = lines[0].length
