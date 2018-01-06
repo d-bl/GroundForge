@@ -28,8 +28,9 @@ function setVisibility() {
           // t in rt/ct stands for target cell
           var rt = r+(i*shiftRowsSE)+(j*shiftRowsSW)
           var ct = c+(i*shiftColsSE)+(j*shiftColsSW)
-          if (rt >= 0 && ct >=0)
+          if (rt >= 0 && ct >=0) {
             setNode(rt, ct, matrixLines[r][c], stitches["r"+(r+1)+"-c"+(c+1)], i==0 && j==0)
+          }
         }
 
   // collect chosen stitches
@@ -169,7 +170,7 @@ function toLines(s) {
 function query() {
   var kvpairs = []
   var els = document.forms[0].elements
-  for ( var i = 0; i < els.length; i++ ) {
+  for (i in els) {
      var e = els[i]
      if (e && e.name && e.value)
      kvpairs.push((e.name).replace("matrix","tile") + "=" + (e.value).replace(/\n/g,","))//encodeURIComponent
@@ -207,6 +208,7 @@ function asChecker() {
   document.getElementById('shiftRowsSW').value = rows
   document.getElementById('shiftColsSW').value = 0
   setVisibility()
+  dibl.Config().create(query())
 }
 function brickToLeft() {
 

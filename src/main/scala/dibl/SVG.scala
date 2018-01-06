@@ -132,7 +132,7 @@ object SVG {
       r <- config.totalMatrix.indices
       c <- config.totalMatrix.head.indices
     } yield {
-      val stitch = config.fields.getOrElse(Stitches.toID(r,c).toUpperCase,"ctc")
+      val stitch = config.stitch(r,c)
       val color = defaultColorValue(stitch)
       val opacity = if (config.isOpaque(r, c)) "1" else "0.3"
       s"""<use xlink:href='#g${ config.vectorCode(r, c) }'
