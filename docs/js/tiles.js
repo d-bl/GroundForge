@@ -33,19 +33,18 @@ function setVisibility() {
           }
         }
 
-  // collect chosen stitches
+  collectStitches()
+}
+function collectStitches() {
   var kvs = []
   var keys = Object.keys(stitches)
   for (var i=0 ; i<keys.length ; i++) {
     var rc = keys[i].split("-")
     var r = rc[0].substr(1) * 1 - 1
     var c = rc[1].substr(1) * 1 - 1
-//    if (r < rows && c < cols && matrixLines[r][c] != "-") {
-      var id = dibl.Stitches().toID(r, c).toUpperCase()
-      kvs.push(id + "=" + stitches[keys[i]])
-//    }
+    var id = dibl.Stitches().toID(r, c).toUpperCase()
+    kvs.push(id + "=" + stitches[keys[i]])
   }
-  console.log(stitches)
   document.getElementById("stitches").innerHTML = kvs.join(", ")
 }
 function tiling() {
@@ -65,11 +64,10 @@ function tiling() {
     return "bricks"
   return "other"// meaning: use the new arguments [r/c][SE/SW]
 }
-function show(matrix, tiling) {
+function show(matrix, tiling, rows, cols) {
 
   var stitches = document.getElementById("stitches").innerHTML
-  var cols = document.getElementById('footside').value == "" ? 12 : 10
-  var pairDiagram = dibl.PairDiagram().get(matrix,tiling,12,cols,0,2,stitches)
+  var pairDiagram = dibl.PairDiagram().get(matrix,tiling,rows,cols,0,2,stitches)
   var diagram = dibl.ThreadDiagram().create(pairDiagram)
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()//can't inline
@@ -179,16 +177,14 @@ function query() {
 }
 function newProto() {
   var config = dibl.Config().create(query())
-  console.log(query())
   document.getElementById('clones').innerHTML = dibl.SVG().createPrototype(config)
-  var matrix = config.encodedMatrix
-  var lines = matrix.split(",")
-  maxRows = lines.length
-  maxCols = lines[0].length
-  show(matrix,"checker")
+  maxRows = config.totalRows
+  maxCols = config.totalCols
+  show(config.encodedMatrix,"checker", maxRows, maxCols)
 }
-function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, stitchSpecs) {
+function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, repeatWidth) {
 
+  document.getElementById('repeatWidth').value = repeatWidth ? repeatWidth : (footside?3:12)
   document.getElementById('matrix').value = matrix
   document.getElementById('footside').value = footside ? footside : ""
   document.getElementById('headside').value = headside ? headside : ""
@@ -197,6 +193,7 @@ function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, foot
   document.getElementById('shiftColsSW').value = shiftColsSW
   document.getElementById('shiftRowsSW').value = shiftRowsSW
   setVisibility()
+  if (footside && headside) newProto()
 }
 function asChecker() {
 

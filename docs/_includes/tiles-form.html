@@ -55,7 +55,7 @@
                 <a href="javascript:sample('5632\n34-7', 2,2,-2,2)">2</a>
                 <a href="javascript:sample('256-\n---5\nC3B-', 2,3,-2,3)">3</a>
                 <a href="javascript:sample('4373\n5-53', 2,2,-2,2)">4</a>
-                <a href="javascript:sample('-5-\n5-5\n-5-\nB-C\n-5-', 2,4,-2,4)">N</a>
+                <a href="javascript:sample('-5-\n5-5\n-5-\nB-C\n-5-', 2,4,-2,4,'-5\nB-\n-5\nB-\n-B\nB-\n-5\nB-','C-\n-C\n5-\n-C\n5-\n-C\n5-\n-C',5);newProto()">N</a>
             </figcaption>
         </figure>
         <figure>
@@ -106,19 +106,20 @@
         </p>
         <p>
             Overlapping patterns <a href="javascript:sample('889C\n468-\n468D\n274-\n17--',3,3, -1,5)">A</a>.
-            Under construction: custom
-            <a href="javascript:sample('8\n1\n8\n1',1,4, 0,4,'-7\nA1','8D\n4-');newProto(this)">foot/head</a>-side.
+            <strong>Under construction</strong>: custom
+            <a href="javascript:sample('8\n1\n8\n1',1,4, 0,4,'-7\nA1','8D\n4-',3);newProto(this)">foot/head</a>-side,
+            with <a href="javascript:sample('889C\n468-\n468D\n274-\n17--',3,3, -1,5,'--D\n-7-\nB-C\n-5-\nB-C\n-58\nB-M\n---\n---\n---\n---','',6);newProto(this)">overlap too</a>.
         </p>
     </fieldset>
     <fieldset>
         <legend>Pattern</legend>
         <figure>
             <textarea id="footside" name="footside" rows="12" cols="3" spellcheck="false"
-                      onchange="setVisibility()"></textarea>
+                      onchange="setVisibility();if(this.value!='')newProto()"></textarea>
             <textarea id="matrix" name="matrix" rows="12" cols="10" spellcheck="false"
                       onchange="setVisibility()"></textarea>
             <textarea id="headside" name="headside" rows="12" cols="3" spellcheck="false"
-                      onchange="setVisibility()"></textarea>
+                      onchange="setVisibility();if(this.value!='')newProto()"></textarea>
             <figcaption>definition</figcaption>
         </figure>
         <figure>
@@ -470,7 +471,7 @@
             <figcaption>prototype (click/hover dark symbols)</figcaption>
         </figure>
         <div style="display:inline-block">
-            <button type="button" onClick="show(getMatrixLines().join(' '),tiling())" style="display:inline-block">Show threads</button>
+            <button type="button" onClick="show(getMatrixLines().join(' '),tiling(),12,12)" style="display:inline-block">Show threads</button>
             <div id="diagram" style="display:inline-block">
                 <figure>
                     <img src="../help/images/matrix-template.png" alt="cheat sheet">

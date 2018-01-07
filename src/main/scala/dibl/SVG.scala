@@ -128,14 +128,15 @@ object SVG {
 
   @JSExport
   def createPrototype(config: Config): String = {
+    val itemMatrix = config.itemMatrix
     (for {
-      r <- config.totalMatrix.indices
-      c <- config.totalMatrix.head.indices
+      r <- itemMatrix.indices
+      c <- itemMatrix.head.indices
     } yield {
-      val stitch = config.stitch(r,c)
+      val stitch = itemMatrix(r)(c).stitch
       val color = defaultColorValue(stitch)
-      val opacity = if (config.isOpaque(r, c)) "1" else "0.3"
-      s"""<use xlink:href='#g${ config.vectorCode(r, c) }'
+      val opacity = if (itemMatrix(r)(c).isOpaque) "1" else "0.3"
+      s"""<use xlink:href='#g${ itemMatrix(r)(c).vectorCode.toString.toUpperCase }'
          |  id='svg-r${r+1}-c${c+1}'
          |  transform='translate(${c*10+38},${r*10+1})'
          |  style='stroke:${if (color.nonEmpty) color else "#000"};opacity:$opacity;"'

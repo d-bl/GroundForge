@@ -1,11 +1,10 @@
 package dibl
 
-import java.net.URLDecoder
-
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
 class Config(urlQuery: String) {
+  println(urlQuery)
 
   private val keyValueStrings: Seq[String] = urlQuery
     .split("&")
@@ -13,13 +12,6 @@ class Config(urlQuery: String) {
   val fields: Map[String, String] = keyValueStrings
     .map { kv: String => (kv.replaceAll("=.*", ""), kv.replaceAll(".*=", "")) }
     .toMap
-
-  // TODO how to save a new version of the page?
-  val wayBack: Option[String] = keyValueStrings.map {
-    case s if URLDecoder.decode(s, "UTF-8").matches("m=.*;(bricks|checker)[;0-9]*")
-    => Some(s"https://web.archive.org/web/20170908061030/https://d-bl.github.io/GroundForge/?$urlQuery")
-    case _ => None
-  }.find(_.isDefined).flatten
 
   private def getMatrix(key: String): Array[String] = {
     fields.getOrElse(key, "").toLowerCase.split("[^-a-z0-9]+")
@@ -40,7 +32,27 @@ class Config(urlQuery: String) {
 
   // See https://github.com/d-bl/GroundForge/blob/7b1effb/docs/help/images/shift-directions.png
   // JS-filters on https://github.com/jo-pol/GroundForge/blob/d442e96/docs/js/tiles.js#L24-L33
-  private val repCenter = Array.fill[Array[Item]](maxRows)(Array.fill[Item](maxCols)(Item()))
+  val itemMatrix: Array[Array[Item]] = Array.fill[Array[Item]](maxRows)(
+    Array.fill[Item](maxCols + 4 + leftMatrix.head.length + rightMatrix.head.length)(Item())
+  )
+
+  private val leftMarginWidth = 2 + leftMatrix.head.length
+  private val offsetRightMargin = 2 + leftMarginWidth + centerMatrix.head.length
+  for {r <- 0 until maxRows} {
+    for {c <- 0 until leftMatrix.head.length} {
+      val rSource = r % leftMatrix.length
+      val id = Stitches.toID(rSource, c + 2)
+      val stitch = fields.getOrElse(id, "ctc")
+      itemMatrix(r)(c + 2) = Item(leftMatrix(rSource)(c), stitch, r < leftMatrix.length)
+    }
+    for {c <- 0 until rightMatrix.head.length} {
+      val rSource = r % rightMatrix.length
+      val id = Stitches.toID(rSource, c + offsetRightMargin)
+      val stitch = fields.getOrElse(id, "ctc")
+      itemMatrix(r)(c + offsetRightMargin) = Item(rightMatrix(rSource)(c), stitch, r < rightMatrix.length)
+    }
+
+  }
   for {
     i <- 0 until maxRows
     j <- -maxCols until maxCols
@@ -53,46 +65,24 @@ class Config(urlQuery: String) {
     val rt = r + translateRow
     val ct = c + translateCol
     if (rt >= 0 && ct >= 0 && rt < maxRows && ct < maxCols) {
-      val id = Stitches.toID(r + 2 + leftMatrix.head.length, c).toUpperCase
+      val id = Stitches.toID(r, c+leftMarginWidth).toUpperCase
       val stitch = fields.getOrElse(id, "ctc")
       val vectorCode = centerMatrix(r)(c)
-      repCenter(rt)(ct) = Item(vectorCode, stitch, r == rt && c == ct)
+      itemMatrix(rt)(ct + leftMarginWidth) = Item(vectorCode, stitch, r == rt && c == ct)
     }
   }
-  println(urlQuery)
-  println(s"repeatRows=$maxRows repeatCols=$maxCols shiftColsSE=$shiftColsSE shiftColsSW=$shiftColsSW shiftRowsSE=$shiftRowsSE shiftRowsSW=$shiftRowsSW")
-
-  // TODO change into Seq[Seq[(VectorCode:Char,StitchId:String:[ctlrp]*,IsOpaque:Boolean)]]
-  val totalMatrix: Seq[String] = (0 until maxRows)
-    .map(row => ("--" +
-      leftMatrix(row % leftMatrix.length) +
-      repCenter(row).map(_.vectorCode).mkString +
-      rightMatrix(row % rightMatrix.length) +
-      "--"
-      ).toUpperCase)
 
   @JSExport
-  val encodedMatrix: String = totalMatrix.map(_.mkString).mkString(",")
+  val encodedMatrix: String = itemMatrix
+    .map(_.map(_.vectorCode).mkString)
+    .mkString(",")
+    .toUpperCase
 
-  def vectorCode(row: Int, col: Int): Char = {
-    totalMatrix(row)(col) //TODO prevent index out of bound
-  }
+  @JSExport
+  val totalRows: Int = itemMatrix.length
 
-  def stitch(row: Int, col: Int): String = {
-    fields.getOrElse(Stitches.toID(row, col).toUpperCase, "ctc")
-  }
-
-  def isOpaque(row: Int, col: Int): Boolean = {
-    val margin = 2
-    val leftLen = margin + leftMatrix(0).length
-    val centerLen = leftLen + centerMatrix(0).length
-    val rightStart = leftLen + centerMatrix(0).length * this.maxCols
-    val rightLen = rightMatrix(0).length
-    val inLeft = margin <= col && col < leftLen && row < leftMatrix.length
-    val inCenter = leftLen <= col && col < centerLen && row < centerMatrix.length
-    val inRight = rightStart <= col && col < rightStart + rightLen && row < rightMatrix.length
-    inLeft || inCenter || inRight
-  }
+  @JSExport
+  val totalCols: Int = itemMatrix.head.length
 }
 
 @JSExport
