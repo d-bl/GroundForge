@@ -37,7 +37,7 @@ class Config(urlQuery: String) {
   )
 
   private val leftMarginWidth = 2 + leftMatrix.head.length
-  private val offsetRightMargin = 2 + leftMarginWidth + centerMatrix.head.length
+  private val offsetRightMargin = leftMarginWidth + maxCols
   for {r <- 0 until maxRows} {
     for {c <- 0 until leftMatrix.head.length} {
       val rSource = r % leftMatrix.length
