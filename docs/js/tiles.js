@@ -173,7 +173,7 @@ function query() {
      if (e && e.name && e.value)
      kvpairs.push((e.name).replace("matrix","tile") + "=" + (e.value).replace(/\n/g,","))//encodeURIComponent
   }
-  return kvpairs.join("&") + "&" + document.getElementById("stitches").innerHTML.replace(/, /g,"&")
+  return kvpairs.join("&") + "&" + document.getElementById("stitches").innerHTML.replace(/, /g,"&").toLowercase()
 }
 function newProto() {
   var config = dibl.Config().create(query())

@@ -122,7 +122,7 @@ object Stitches {
 
   @JSExport
   def toID(row: Int, col: Int): String = {
-    s"${ toAlpha(col) }${ row + 1 }".toUpperCase
+    s"${ toAlpha(col) }${ row + 1 }"
   }
 
   /**

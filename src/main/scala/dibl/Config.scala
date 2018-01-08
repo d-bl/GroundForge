@@ -65,7 +65,7 @@ class Config(urlQuery: String) {
     val rt = r + translateRow
     val ct = c + translateCol
     if (rt >= 0 && ct >= 0 && rt < maxRows && ct < maxCols) {
-      val id = Stitches.toID(r, c+leftMarginWidth).toUpperCase
+      val id = Stitches.toID(r, c+leftMarginWidth)
       val stitch = fields.getOrElse(id, "ctc")
       val vectorCode = centerMatrix(r)(c)
       itemMatrix(rt)(ct + leftMarginWidth) = Item(vectorCode, stitch, r == rt && c == ct)
