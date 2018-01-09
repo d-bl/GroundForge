@@ -24,23 +24,6 @@ function collectStitches() {
   }
   document.getElementById("stitches").innerHTML = kvs.join(", ")
 }
-function tiling() {
-  var matrixLines = getMatrixLines()
-  var rows = matrixLines.length
-  var cols = matrixLines[0].length
-  var shiftRowsSE = document.getElementById('shiftRowsSE').value * 1
-  var shiftColsSE = document.getElementById('shiftColsSE').value * 1
-  var shiftRowsSW = document.getElementById('shiftRowsSW').value * 1
-  var shiftColsSW = document.getElementById('shiftColsSW').value * 1
-  if (shiftColsSE ==  cols && shiftRowsSE == rows &&
-   ( (shiftColsSW == -cols && shiftRowsSW == 0)
-  || (shiftColsSW == 0     && shiftRowsSW == rows)
-   )
-  ) return "checker"
-  else if (shiftColsSE*2 == cols && shiftRowsSE == rows && shiftColsSW*2 == -cols && shiftRowsSW == rows)
-    return "bricks"
-  return "other"// meaning: use the new arguments [r/c][SE/SW]
-}
 function show() {
 
   var config = dibl.Config().create(query())
@@ -52,7 +35,8 @@ function show() {
   var container = d3.select("#diagram")
   var svg = dibl.SVG()
   var markers = true // use false for slow devices and IE-11, set them at onEnd
-  container.node().innerHTML = svg.render(diagram, "2px", markers, 300, 260)
+  container.node().style = "width:300px;height:320px;"
+  container.node().innerHTML = svg.render(diagram, "2px", markers, 300, 320)
   var links = container.selectAll(".link").data(linkDefs)
   var nodes = container.selectAll(".node").data(nodeDefs)
 
@@ -78,24 +62,6 @@ function show() {
     .force("center", d3.forceCenter(150, 125))
     .alpha(0.0035)
     .on("tick", onTick)
-}
-function setNode(r, c, arrows, stitch, firstTile) {
-
-  var svgEl = document.getElementById("svg-r" + (r + 1) + "-c" + (c + 1))
-  if(!svgEl)
-    return
-  var activeNode = firstTile && arrows != "-"
-
-  var color = ""
-  if (stitch && stitch != "" && arrows != "-") {
-    color = dibl.Stitches().defaultColorValue(stitch)
-    if (color == "")
-      color = "black"
-  }
-  svgEl.attributes["xlink:href"].value = "#g" + arrows
-  svgEl.style = "stroke:" + color + ";opacity:" + (activeNode ? "1;" : "0.3;")
-  svgEl.innerHTML = (stitch != "-" ? "<title>"+stitch+"</title>" : "")
-  svgEl.attributes["onclick"].value = (activeNode ? "setStitch(this)" : "")
 }
 function setStitch(source) {
 
@@ -134,16 +100,6 @@ function askForStitch(s, defaultStitch){
   // making the input valid as early as possible protects against injection when displaying the value
   return dibl.Stitches().makeValid(prompt(s, defaultStitch? defaultStitch : "ctc"), defaultStitch)
 }
-function getMatrixLines() {
-
-  var footside = toLines(document.getElementById('footside').value)
-  var headside = toLines(document.getElementById('headside').value)
-  var tile = toLines(document.getElementById('matrix').value)
-  return tile
-}
-function toLines(s) {
-  return s.toUpperCase().trim().split(/[^-A-Z0-9]+/)
-}
 function query() {
   var kvpairs = []
   var els = document.forms[0].elements
@@ -154,9 +110,10 @@ function query() {
   }
   return kvpairs.join("&") + "&" + document.getElementById("stitches").innerHTML.replace(/, /g,"&").toLowerCase()
 }
-function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, repeatWidth) {
+function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, repeatWidth, repeatHeight) {
 
   document.getElementById('repeatWidth').value = repeatWidth ? repeatWidth : (footside?3:12)
+  document.getElementById('repeatHeight').value = repeatHeight ? repeatHeight : 12
   document.getElementById('matrix').value = matrix
   document.getElementById('footside').value = footside ? footside : ""
   document.getElementById('headside').value = headside ? headside : ""
@@ -168,7 +125,7 @@ function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, foot
 }
 function asChecker() {
 
-  var matrixLines = getMatrixLines()
+  var matrixLines = document.getElementById('matrix').value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
   var rows = matrixLines.length
   var cols = matrixLines[0].length
   document.getElementById('shiftRowsSE').value = rows
@@ -176,7 +133,6 @@ function asChecker() {
   document.getElementById('shiftRowsSW').value = rows
   document.getElementById('shiftColsSW').value = 0
   setVisibility()
-  dibl.Config().create(query())
 }
 function brickToLeft() {
 
