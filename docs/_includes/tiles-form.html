@@ -115,11 +115,11 @@
         <legend>Pattern</legend>
         <figure>
             <textarea id="footside" name="footside" rows="12" cols="3" spellcheck="false"
-                      onchange="setVisibility();if(this.value!='')newProto()"></textarea>
+                      onchange="setVisibility()"></textarea>
             <textarea id="matrix" name="matrix" rows="12" cols="10" spellcheck="false"
                       onchange="setVisibility()"></textarea>
             <textarea id="headside" name="headside" rows="12" cols="3" spellcheck="false"
-                      onchange="setVisibility();if(this.value!='')newProto()"></textarea>
+                      onchange="setVisibility()"></textarea>
             <figcaption>definition</figcaption>
         </figure>
         <figure >
@@ -470,10 +470,9 @@
                 </g>
             </svg>
             </div>
-            <figcaption>prototype (click/hover dark symbols)</figcaption>
+            <figcaption title="choosing a stitch shows/refreshes the thread diagram">prototype (click/hover bold symbols)</figcaption>
         </figure>
         <div style="display:inline-block">
-            <button type="button" onClick="show(getMatrixLines().join(' '),tiling(),12,12)" style="display:inline-block">Show threads</button>
             <div id="diagram" style="display:inline-block">
                 <figure>
                     <img src="../help/images/matrix-template.png" alt="cheat sheet">

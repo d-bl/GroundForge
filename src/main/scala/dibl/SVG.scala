@@ -140,7 +140,7 @@ object SVG {
          |  id='svg-r${r+1}-c${c+1}'
          |  transform='translate(${c*10+38},${r*10+1})'
          |  style='stroke:${if (color.nonEmpty) color else "#000"};opacity:$opacity;"'
-         |  onclick='${if (opacity=="1") "setStitch(this);newProto()" else ""}'
+         |  onclick='${if (opacity=="1") "setStitch(this)" else ""}'
          |><title>$stitch</title>
          |</use>""".stripMargin
     }).mkString("\n")

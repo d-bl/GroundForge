@@ -6,33 +6,10 @@ var maxCols = 12
 
 function setVisibility() {
 
-  var matrixLines = getMatrixLines()
-  var rows = matrixLines.length
-  var cols = matrixLines[0].length
-
-  var shiftRowsSE = document.getElementById('shiftRowsSE').value * 1
-  var shiftColsSE = document.getElementById('shiftColsSE').value * 1
-  var shiftRowsSW = document.getElementById('shiftRowsSW').value * 1
-  var shiftColsSW = document.getElementById('shiftColsSW').value * 1
-
-  // clear the prototype as there might be gaps between overlapping tiles
-  for (var r = 0; r < maxRows; r++)
-    for (var c = 0; c < maxCols; c++)
-      setNode(r, c, "-", "", true)
-
-  // pattern prototype
-  for (var i=0 ; i<maxRows ; i++) // tiles in a diagonal
-    for (var j=-maxCols ; j<maxCols ; j++) // parallel diagonals
-      for (var r=0; r+(i*shiftRowsSE)+(j*shiftRowsSW) < maxRows && r<rows; r++)
-        for (var c=0 ; c+(i*shiftColsSE)+(j*shiftColsSW) < maxCols && c<cols; c++) {
-          // t in rt/ct stands for target cell
-          var rt = r+(i*shiftRowsSE)+(j*shiftRowsSW)
-          var ct = c+(i*shiftColsSE)+(j*shiftColsSW)
-          if (rt >= 0 && ct >=0) {
-            setNode(rt, ct, matrixLines[r][c], stitches["r"+(r+1)+"-c"+(c+1)], i==0 && j==0)
-          }
-        }
-
+  var config = dibl.Config().create(query())
+  document.getElementById('clones').innerHTML = dibl.SVG().createPrototype(config)
+  maxRows = config.totalRows
+  maxCols = config.totalCols
   collectStitches()
 }
 function collectStitches() {
@@ -64,10 +41,11 @@ function tiling() {
     return "bricks"
   return "other"// meaning: use the new arguments [r/c][SE/SW]
 }
-function show(matrix, tiling, rows, cols) {
+function show() {
 
+  var config = dibl.Config().create(query())
   var stitches = document.getElementById("stitches").innerHTML
-  var pairDiagram = dibl.PairDiagram().get(matrix,tiling,rows,cols,0,2,stitches)
+  var pairDiagram = dibl.PairDiagram().get(config.encodedMatrix,"checker",maxRows,maxCols,0,2,stitches)
   var diagram = dibl.ThreadDiagram().create(pairDiagram)
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()//can't inline
@@ -105,7 +83,7 @@ function setNode(r, c, arrows, stitch, firstTile) {
 
   var svgEl = document.getElementById("svg-r" + (r + 1) + "-c" + (c + 1))
   if(!svgEl)
-    return // after newProto there might be less rows or columns
+    return
   var activeNode = firstTile && arrows != "-"
 
   var color = ""
@@ -126,6 +104,7 @@ function setStitch(source) {
   if (selected && selected != "") {
     stitches[id] = selected
     setVisibility()
+    show()
   }
 }
 function allStitches() {
@@ -175,13 +154,6 @@ function query() {
   }
   return kvpairs.join("&") + "&" + document.getElementById("stitches").innerHTML.replace(/, /g,"&").toLowerCase()
 }
-function newProto() {
-  var config = dibl.Config().create(query())
-  document.getElementById('clones').innerHTML = dibl.SVG().createPrototype(config)
-  maxRows = config.totalRows
-  maxCols = config.totalCols
-  show(config.encodedMatrix,"checker", maxRows, maxCols)
-}
 function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, repeatWidth) {
 
   document.getElementById('repeatWidth').value = repeatWidth ? repeatWidth : (footside?3:12)
@@ -193,7 +165,6 @@ function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, foot
   document.getElementById('shiftColsSW').value = shiftColsSW
   document.getElementById('shiftRowsSW').value = shiftRowsSW
   setVisibility()
-  if (footside && headside) newProto()
 }
 function asChecker() {
 
