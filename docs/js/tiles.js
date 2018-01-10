@@ -72,6 +72,12 @@ function setStitch(source) {
     showThreadDiagram()
   }
 }
+function clearStitches() {
+
+  stitches = {}
+  collectStitches()
+  showProto()
+}
 function allStitches() {
 
   selected = askForStitch("reset all stitches to: ", "")
@@ -79,6 +85,7 @@ function allStitches() {
     for (var r=1; r <= maxRows; r++)
       for (var c=1 ; c <= maxCols; c++)
         stitches["r"+r+"-c"+c] = selected
+    collectStitches()
     showProto()
   }
 }
@@ -92,6 +99,7 @@ function defaultStitches() {
         if (!stitches[id] || stitches[id] == "")
           stitches[id] = selected
       }
+    collectStitches()
     showProto()
   }
 }

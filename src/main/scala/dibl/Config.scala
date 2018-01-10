@@ -47,10 +47,10 @@ class Config(urlQuery: String) {
       (if (offsetRightMargin == 0) 0
        else 2 + rightMatrix.head.length)
 
-  case class Item(vectorCode: Char = '-', stitch: String = "ctc", isOpaque: Boolean = false)
+  case class Item(id: String, vectorCode: Char = '-', stitch: String = "", isOpaque: Boolean = false)
 
   val itemMatrix: Array[Array[Item]] = Array.fill[Array[Item]](totalRows)(
-    Array.fill[Item](totalCols)(Item())
+    Array.fill[Item](totalCols)(Item(""))
   )
 
   if (leftMarginWidth > 0)
@@ -58,8 +58,9 @@ class Config(urlQuery: String) {
       for {c <- 0 until leftMatrix.head.length} {
         val rSource = r % leftMatrix.length
         val id = Stitches.toID(rSource, c + 2)
-        val stitch = fields.getOrElse(id, "ctc")
-        itemMatrix(r)(c + 2) = Item(leftMatrix(rSource)(c), stitch, r < leftMatrix.length)
+        val vectorCode = leftMatrix(rSource)(c)
+        val stitch = if (vectorCode=='-') "" else fields.getOrElse(id, "tctct")
+        itemMatrix(r)(c + 2) = Item(id, vectorCode, stitch, r < leftMatrix.length)
       }
     }
   if (offsetRightMargin > 0)
@@ -67,8 +68,9 @@ class Config(urlQuery: String) {
       for {c <- 0 until rightMatrix.head.length} {
         val rSource = r % rightMatrix.length
         val id = Stitches.toID(rSource, c + offsetRightMargin)
-        val stitch = fields.getOrElse(id, "ctc")
-        itemMatrix(r)(c + offsetRightMargin) = Item(rightMatrix(rSource)(c), stitch, r < rightMatrix.length)
+        val vectorCode = rightMatrix(rSource)(c)
+        val stitch = if (vectorCode=='-') "" else fields.getOrElse(id, "tctct")
+        itemMatrix(r)(c + offsetRightMargin) = Item(id, vectorCode, stitch, r < rightMatrix.length)
       }
     }
 
@@ -87,9 +89,9 @@ class Config(urlQuery: String) {
     val ct = c + translateCol
     if (rt >= 0 && ct >= 0 && rt < totalRows && ct < centerCols) {
       val id = Stitches.toID(r, c + leftMarginWidth)
-      val stitch = fields.getOrElse(id, "ctc")
       val vectorCode = centerMatrix(r)(c)
-      itemMatrix(rt)(ct + leftMarginWidth) = Item(vectorCode, stitch, r == rt && c == ct)
+      val stitch = if (vectorCode=='-') "" else fields.getOrElse(id, "ctc")
+      itemMatrix(rt)(ct + leftMarginWidth) = Item(id, vectorCode, stitch, r == rt && c == ct)
     }
   }
 
