@@ -135,12 +135,12 @@ object SVG {
     } yield {
       val stitch = itemMatrix(r)(c).stitch
       val color = defaultColorValue(stitch)
-      val opacity = if (itemMatrix(r)(c).isOpaque) "1" else "0.3"
       val vectorCode = itemMatrix(r)(c).vectorCode.toString.toUpperCase
+      val opacity = if (vectorCode == "-") "0.05" else if (itemMatrix(r)(c).isOpaque) "1" else "0.3"
       s"""<use xlink:href='#g${ vectorCode }'
          |  id='svg-r${r+1}-c${c+1}'
          |  transform='translate(${c*10+38},${r*10+1})'
-         |  style='stroke:${if (vectorCode == "-")"#fff" else if (color.nonEmpty) color else "#000"};opacity:$opacity;"'
+         |  style='stroke:${if (color.nonEmpty) color else "#000"};opacity:$opacity;"'
          |  onclick='${if (opacity=="1") "setStitch(this)" else ""}'
          |><title>$stitch</title>
          |</use>""".stripMargin
