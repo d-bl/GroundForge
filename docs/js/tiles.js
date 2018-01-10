@@ -4,13 +4,12 @@ var stitches = {}
 var maxRows = 12
 var maxCols = 12
 
-function setVisibility() {
+function showProto() {
 
   var config = dibl.Config().create(query())
   document.getElementById('clones').innerHTML = dibl.SVG().createPrototype(config)
   maxRows = config.totalRows
   maxCols = config.totalCols
-  collectStitches()
 }
 function collectStitches() {
   var kvs = []
@@ -24,7 +23,7 @@ function collectStitches() {
   }
   document.getElementById("stitches").innerHTML = kvs.join(", ")
 }
-function show() {
+function showThreadDiagram() {
 
   var config = dibl.Config().create(query())
   var stitches = document.getElementById("stitches").innerHTML
@@ -35,7 +34,7 @@ function show() {
   var container = d3.select("#diagram")
   var svg = dibl.SVG()
   var markers = true // use false for slow devices and IE-11, set them at onEnd
-    container.node().innerHTML = svg.render(diagram, "2px", markers, 270, 270)
+   container.node().innerHTML = svg.render(diagram, "2px", markers, 270, 270)
   var links = container.selectAll(".link").data(linkDefs)
   var nodes = container.selectAll(".node").data(nodeDefs)
 
@@ -68,8 +67,9 @@ function setStitch(source) {
   selected = askForStitch("Stitch for " + id, stitches[id] ? stitches[id] : "ctc")
   if (selected && selected != "") {
     stitches[id] = selected
-    setVisibility()
-    show()
+    collectStitches()
+    showProto()
+    showThreadDiagram()
   }
 }
 function allStitches() {
@@ -79,7 +79,7 @@ function allStitches() {
     for (var r=1; r <= maxRows; r++)
       for (var c=1 ; c <= maxCols; c++)
         stitches["r"+r+"-c"+c] = selected
-    setVisibility()
+    showProto()
   }
 }
 function defaultStitches() {
@@ -92,7 +92,7 @@ function defaultStitches() {
         if (!stitches[id] || stitches[id] == "")
           stitches[id] = selected
       }
-    setVisibility()
+    showProto()
   }
 }
 function askForStitch(s, defaultStitch){
@@ -120,7 +120,7 @@ function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, foot
   document.getElementById('shiftRowsSE').value = shiftRowsSE
   document.getElementById('shiftColsSW').value = shiftColsSW
   document.getElementById('shiftRowsSW').value = shiftRowsSW
-  setVisibility()
+  showProto()
 }
 function asChecker() {
 
@@ -131,27 +131,27 @@ function asChecker() {
   document.getElementById('shiftColsSE').value = cols
   document.getElementById('shiftRowsSW').value = rows
   document.getElementById('shiftColsSW').value = 0
-  setVisibility()
+  showProto()
 }
 function brickToLeft() {
 
   document.getElementById('shiftColsSE').value--
   document.getElementById('shiftColsSW').value--
-  setVisibility()
+  showProto()
 }
 function brickToRight() {
 
   document.getElementById('shiftColsSE').value++
   document.getElementById('shiftColsSW').value++
-  setVisibility()
+  showProto()
 }
 function brickUp() {
 
   document.getElementById('shiftRowsSE').value--
-  setVisibility()
+  showProto()
 }
 function brickDown() {
 
   document.getElementById('shiftRowsSE').value++
-  setVisibility()
+  showProto()
 }

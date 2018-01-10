@@ -14,7 +14,7 @@
         <figure>
             <img src="../help/tl/181.png">
             <figcaption>
-                <a href="javascript:sample('8\n1',1,2, 0,2,'-7\nA1','8D\n4-',3)">1"</a>
+                <a href="javascript:sample('8\n1',0,2, -1,2,'-7\nA1','8D\n4-',3,8)">1"</a>
                 <a href="https://d-bl.github.io/GroundForge/sheet.html?img=181&patch=88%2011;bricks&patch=66%2022;bricks&patch=88%2099%2011%2000;bricks&patch=66%2011%2088%2022;bricks&patch=66%2099%2022%2000;bricks"
                            target="_blank">...&#8599;</a>
             </figcaption>
@@ -113,11 +113,11 @@
         <legend>Pattern</legend>
         <figure>
             <textarea id="footside" name="footside" rows="12" cols="3" spellcheck="false"
-                      onchange="setVisibility()"></textarea>
+                      onchange="showProto()"></textarea>
             <textarea id="matrix" name="matrix" rows="12" cols="10" spellcheck="false"
-                      onchange="setVisibility()"></textarea>
+                      onchange="showProto()"></textarea>
             <textarea id="headside" name="headside" rows="12" cols="3" spellcheck="false"
-                      onchange="setVisibility()"></textarea>
+                      onchange="showProto()"></textarea>
             <figcaption>definition</figcaption>
         </figure>
         <figure >
@@ -488,9 +488,9 @@
         <div>
             <div>
                 <label for="repeatWidth">Show in thread diagram with</label>
-                <input type="number" name="repeatWidth" id="repeatWidth" min="0" max="30" value="3" onchange="setVisibility()">
+                <input type="number" name="repeatWidth" id="repeatWidth" min="0" max="30" value="3" onchange="showProto()">
                 <label for="repeatWidth">col(s)</label>
-                <input type="number" name="repeatHeight" id="repeatHeight" min="0" max="30" value="12" onchange="setVisibility()">
+                <input type="number" name="repeatHeight" id="repeatHeight" min="0" max="30" value="12" onchange="showProto()">
                 <label for="repeatHeight">rows(s)</label>
             </div>
             <p>Initialize as
@@ -506,17 +506,17 @@
                     Shifted by
                 </div>
                 <div>
-                    <input type="number" name="shiftColsSE" id="shiftColsSE" min="0" max="12" value="0" onchange="setVisibility()"><label for="shiftColsSE">col(s)</label>
+                    <input type="number" name="shiftColsSE" id="shiftColsSE" min="0" max="12" value="0" onchange="showProto()"><label for="shiftColsSE">col(s)</label>
                     <br>
-                    <input type="number" name="shiftRowsSE" id="shiftRowsSE" min="0" max="12" value="0" onchange="setVisibility()"><label for="shiftRowsSE">row(s)</label>
+                    <input type="number" name="shiftRowsSE" id="shiftRowsSE" min="0" max="12" value="0" onchange="showProto()"><label for="shiftRowsSE">row(s)</label>
                 </div>
                 <div>
                     of stitches &#8664; and
                 </div>
                 <div>
-                    <input type="number" name="shiftColsSW" id="shiftColsSW" min="-12" max="0" value="0" onchange="setVisibility()">
+                    <input type="number" name="shiftColsSW" id="shiftColsSW" min="-12" max="0" value="0" onchange="showProto()">
                     <br>
-                    <input type="number" name="shiftRowsSW" id="shiftRowsSW" min="0" max="12" value="0" onchange="setVisibility()">
+                    <input type="number" name="shiftRowsSW" id="shiftRowsSW" min="0" max="12" value="0" onchange="showProto()">
                 </div>
                 <div>
                     &#8665;
