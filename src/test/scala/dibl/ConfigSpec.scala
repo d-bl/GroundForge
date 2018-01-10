@@ -6,7 +6,7 @@ class ConfigSpec extends FlatSpec with Matchers {
 
   "empty string" should "return emtpty dashed matrix" in {
     new Config("").encodedMatrix + "," shouldBe
-      ("----------------," * 12)
+      ("------------," * 12)
   }
 
   "valid matrix" should "produce a valid pair diagram and different stitches" in {

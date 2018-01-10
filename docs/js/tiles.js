@@ -28,15 +28,14 @@ function show() {
 
   var config = dibl.Config().create(query())
   var stitches = document.getElementById("stitches").innerHTML
-  var pairDiagram = dibl.PairDiagram().get(config.encodedMatrix,"checker",maxRows,maxCols,0,2,stitches)
+  var pairDiagram = dibl.PairDiagram().get(config.encodedMatrix,"checker",config.totalRows,config.totalCols,0,2,stitches)
   var diagram = dibl.ThreadDiagram().create(pairDiagram)
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()//can't inline
   var container = d3.select("#diagram")
   var svg = dibl.SVG()
   var markers = true // use false for slow devices and IE-11, set them at onEnd
-  container.node().style = "width:300px;height:320px;"
-  container.node().innerHTML = svg.render(diagram, "2px", markers, 300, 320)
+    container.node().innerHTML = svg.render(diagram, "2px", markers, 270, 270)
   var links = container.selectAll(".link").data(linkDefs)
   var nodes = container.selectAll(".node").data(nodeDefs)
 
