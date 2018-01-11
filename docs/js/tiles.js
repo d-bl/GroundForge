@@ -29,6 +29,7 @@ function showThreadDiagram() {
   var stitches = document.getElementById("stitches").innerHTML
   var pairDiagram = dibl.PairDiagram().get(config.encodedMatrix,"checker",config.totalRows,config.totalCols,0,2,stitches)
   var diagram = dibl.ThreadDiagram().create(pairDiagram)
+  if (diagram.jsNodes().length == 1) diagram = pairDiagram
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()//can't inline
   var container = d3.select("#diagram")
