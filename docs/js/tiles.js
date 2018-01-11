@@ -31,7 +31,9 @@ function showThreadDiagram() {
   var container = d3.select("#diagram")
   var svg = dibl.SVG()
   var markers = true // use false for slow devices and IE-11, set them at onEnd
-  container.node().innerHTML = svg.render(diagram, "2px", markers, 270, 270)
+  container.node().innerHTML = svg.render(diagram, "2px", markers, 744, 1052)
+  container.node().scrollTop = 400
+  container.node().scrollLeft = 240
   var links = container.selectAll(".link").data(linkDefs)
   var nodes = container.selectAll(".node").data(nodeDefs)
 
@@ -54,7 +56,7 @@ function showThreadDiagram() {
   d3.forceSimulation(nodeDefs)
     .force("charge", d3.forceManyBody().strength(-1000))
     .force("link", d3.forceLink(linkDefs).strength(strength).distance(12).iterations(30))
-    .force("center", d3.forceCenter(150, 125))
+    .force("center", d3.forceCenter(372, 526))
     .alpha(0.0035)
     .on("tick", onTick)
 }
