@@ -24,7 +24,6 @@ class Config(urlQuery: String) {
   val rightMatrix: Array[String] = getMatrix("headside")
 
   // TODO defaults based on the dimensions of the above matrices
-  @JSExport
   val totalRows: Int = fields.getOrElse("repeatHeight", "12").replaceAll("[^0-9-]", "").toInt
   val centerCols: Int = fields.getOrElse("repeatWidth", "12").replaceAll("[^0-9-]", "").toInt
   val shiftRowsSE: Int = fields.getOrElse("shiftRowsSE", "12").replaceAll("[^0-9-]", "").toInt
@@ -41,11 +40,10 @@ class Config(urlQuery: String) {
       leftMarginWidth + centerCols
     else 0
 
-  @JSExport
   val totalCols: Int = centerCols +
-      leftMarginWidth +
-      (if (offsetRightMargin == 0) 0
-       else 2 + rightMatrix.head.length)
+    leftMarginWidth +
+    (if (offsetRightMargin == 0) 0
+     else 2 + rightMatrix.head.length)
 
   case class Item(id: String, vectorCode: Char = '-', stitch: String = "", isOpaque: Boolean = false)
 
@@ -59,7 +57,8 @@ class Config(urlQuery: String) {
         val rSource = r % leftMatrix.length
         val id = Stitches.toID(rSource, c + 2)
         val vectorCode = leftMatrix(rSource)(c)
-        val stitch = if (vectorCode=='-') "" else fields.getOrElse(id, "tctct")
+        val stitch = if (vectorCode == '-') ""
+                     else fields.getOrElse(id, "tctct")
         itemMatrix(r)(c + 2) = Item(id, vectorCode, stitch, r < leftMatrix.length)
       }
     }
@@ -69,7 +68,8 @@ class Config(urlQuery: String) {
         val rSource = r % rightMatrix.length
         val id = Stitches.toID(rSource, c + offsetRightMargin)
         val vectorCode = rightMatrix(rSource)(c)
-        val stitch = if (vectorCode=='-') "" else fields.getOrElse(id, "tctct")
+        val stitch = if (vectorCode == '-') ""
+                     else fields.getOrElse(id, "tctct")
         itemMatrix(r)(c + offsetRightMargin) = Item(id, vectorCode, stitch, r < rightMatrix.length)
       }
     }
@@ -90,16 +90,33 @@ class Config(urlQuery: String) {
     if (rt >= 0 && ct >= 0 && rt < totalRows && ct < centerCols) {
       val id = Stitches.toID(r, c + leftMarginWidth)
       val vectorCode = centerMatrix(r)(c)
-      val stitch = if (vectorCode=='-') "" else fields.getOrElse(id, "ctc")
+      val stitch = if (vectorCode == '-') ""
+                   else fields.getOrElse(id, "ctc")
       itemMatrix(rt)(ct + leftMarginWidth) = Item(id, vectorCode, stitch, r == rt && c == ct)
     }
   }
 
   @JSExport
-  val encodedMatrix: String = itemMatrix
-    .map(_.map(_.vectorCode).mkString)
-    .mkString(",")
-    .toUpperCase
+  lazy val pairDiagram: Diagram = {
+    val encodedMatrix: String = itemMatrix
+      .map(_.map(_.vectorCode).mkString)
+      .mkString(",")
+      .toUpperCase
+    val stitches: String = {
+      (for {
+        r <- itemMatrix.indices
+        c <- itemMatrix.head.indices
+      } yield {
+        Stitches.toID(r, c) -> itemMatrix(r)(c).id
+      }).groupBy { case (_, v) => v }
+        .map { case (k: String, vs: Seq[(String, String)]) =>
+          s"${vs.map{case (k2,_) => k2}.mkString("=")}=${fields.getOrElse(k,"ctc")}"
+        }.mkString(" ")
+    }
+    println(encodedMatrix)
+    println(stitches)
+    PairDiagram.get(encodedMatrix,"checker",totalRows,totalCols,0,2,stitches)
+  }
 }
 
 @JSExport

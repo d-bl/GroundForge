@@ -8,8 +8,6 @@ function showProto() {
 
   var config = dibl.Config().create(query())
   document.getElementById('clones').innerHTML = dibl.SVG().createPrototype(config)
-  maxRows = config.totalRows
-  maxCols = config.totalCols
 }
 function collectStitches() {
   var kvs = []
@@ -25,9 +23,7 @@ function collectStitches() {
 }
 function showThreadDiagram() {
 
-  var config = dibl.Config().create(query())
-  var stitches = document.getElementById("stitches").innerHTML
-  var pairDiagram = dibl.PairDiagram().get(config.encodedMatrix,"checker",config.totalRows,config.totalCols,0,2,stitches)
+  var pairDiagram = dibl.Config().create(query()).pairDiagram
   var diagram = dibl.ThreadDiagram().create(pairDiagram)
   if (diagram.jsNodes().length == 1) diagram = pairDiagram
   var nodeDefs = diagram.jsNodes()
@@ -35,7 +31,7 @@ function showThreadDiagram() {
   var container = d3.select("#diagram")
   var svg = dibl.SVG()
   var markers = true // use false for slow devices and IE-11, set them at onEnd
-   container.node().innerHTML = svg.render(diagram, "2px", markers, 270, 270)
+  container.node().innerHTML = svg.render(diagram, "2px", markers, 270, 270)
   var links = container.selectAll(".link").data(linkDefs)
   var nodes = container.selectAll(".node").data(nodeDefs)
 
