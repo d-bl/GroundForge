@@ -58,7 +58,7 @@ class Config(urlQuery: String) {
         val id = Stitches.toID(rSource, c + 2)
         val vectorCode = leftMatrix(rSource)(c)
         val stitch = if (vectorCode == '-') ""
-                     else fields.getOrElse(id, "tctct")
+                     else fields.getOrElse(id, "")
         itemMatrix(r)(c + 2) = Item(id, vectorCode, stitch, r < leftMatrix.length)
       }
     }
@@ -69,7 +69,7 @@ class Config(urlQuery: String) {
         val id = Stitches.toID(rSource, c + offsetRightMargin)
         val vectorCode = rightMatrix(rSource)(c)
         val stitch = if (vectorCode == '-') ""
-                     else fields.getOrElse(id, "tctct")
+                     else fields.getOrElse(id, "")
         itemMatrix(r)(c + offsetRightMargin) = Item(id, vectorCode, stitch, r < rightMatrix.length)
       }
     }
