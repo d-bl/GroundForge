@@ -479,44 +479,47 @@
     </fieldset>
     <fieldset id="repeats-form" style="display:inline-block;vertical-align:top;">
         <legend>Repeats</legend>
-        <div style="display:inline-block;vertical-align:top;">
+        <p>
+            <label for="repeatWidth">Patch size</label>
+            <input type="number" name="repeatWidth" id="repeatWidth" min="0" max="30" value="3" onchange="showProto()">
+            <label for="repeatWidth">col(s)</label>
+            <input type="number" name="repeatHeight" id="repeatHeight" min="0" max="30" value="12" onchange="showProto()">
+            <label for="repeatHeight">rows(s)</label>
+        </p>
+        <div>
             <div>
-                <label for="repeatWidth">Show with</label>
-                <input type="number" name="repeatWidth" id="repeatWidth" min="0" max="30" value="3" onchange="showProto()">
-                <label for="repeatWidth">col(s)</label>
-                <input type="number" name="repeatHeight" id="repeatHeight" min="0" max="30" value="12" onchange="showProto()">
-                <label for="repeatHeight">rows(s)</label>
+                Shift by
             </div>
-            <p>Initialize as
-                <a href="javascript:asChecker()">checker</a>,
-                nudge bricks:
-                <a href="javascript:brickToLeft()">&#8592;</a>
-                <a href="javascript:brickToRight()">&#8594;</a>
-                <a href="javascript:brickUp()">&#8593;</a>
-                <a href="javascript:brickDown()">&#8595;</a>
-            </p>
             <div>
-                <div>
-                    Shifted by
-                </div>
-                <div>
-                    <input type="number" name="shiftColsSE" id="shiftColsSE" min="0" max="12" value="0" onchange="showProto()"><label for="shiftColsSE">col(s)</label>
-                    <br>
-                    <input type="number" name="shiftRowsSE" id="shiftRowsSE" min="0" max="12" value="0" onchange="showProto()"><label for="shiftRowsSE">row(s)</label>
-                </div>
-                <div>
-                    of stitches &#8664; and
-                </div>
-                <div>
-                    <input type="number" name="shiftColsSW" id="shiftColsSW" min="-12" max="0" value="0" onchange="showProto()">
-                    <br>
-                    <input type="number" name="shiftRowsSW" id="shiftRowsSW" min="0" max="12" value="0" onchange="showProto()">
-                </div>
-                <div>
-                    &#8665;
-                </div>
+                <input type="number" name="shiftColsSE" id="shiftColsSE" min="0" max="12" value="0" onchange="showProto()"><label for="shiftColsSE">col(s)</label>
+                <br>
+                <input type="number" name="shiftRowsSE" id="shiftRowsSE" min="0" max="12" value="0" onchange="showProto()"><label for="shiftRowsSE">row(s)</label>
+            </div>
+            <div>
+                &#8664; and
+            </div>
+            <div>
+                <input type="number" name="shiftColsSW" id="shiftColsSW" min="-12" max="0" value="0" onchange="showProto()">
+                <br>
+                <input type="number" name="shiftRowsSW" id="shiftRowsSW" min="0" max="12" value="0" onchange="showProto()">
+            </div>
+            <div>
+                &#8665;
             </div>
         </div>
+        <p>
+            <em>Initialize and nudge shift:</em>
+            <a href="javascript:asStack()">stacked</a>
+            <a href="javascript:brickToSW()">&#8601;</a>
+            <a href="javascript:brickToNE()">&#8599;</a>
+            <a href="javascript:brickToSE()">&#8600;</a>
+            <a href="javascript:brickToNW()">&#8598;</a>
+            <a href="javascript:asChecker()">checker</a>
+            <a href="javascript:brickToLeft()">&#8592;</a>
+            <a href="javascript:brickToRight()">&#8594;</a>
+            <a href="javascript:brickUp()">&#8593;</a>
+            <a href="javascript:brickDown()">&#8595;</a>
+        </p>
         <img src="../help/images/shift-directions.png" style="display:block">
     </fieldset>
 </form>

@@ -162,3 +162,35 @@ function brickDown() {
   document.getElementById('shiftRowsSE').value++
   showProto()
 }
+function asStack() {
+
+  document.getElementById('shiftRowsSE').value = 0
+  document.getElementById('shiftColsSE').value = 0
+  document.getElementById('shiftRowsSW').value = 0
+  document.getElementById('shiftColsSW').value = 0
+  showProto()
+}
+function brickToSW() {
+
+  document.getElementById('shiftColsSW').value--
+  document.getElementById('shiftRowsSW').value++
+  showProto()
+}
+function brickToNE() {
+
+  document.getElementById('shiftColsSW').value++
+  document.getElementById('shiftRowsSW').value--
+  showProto()
+}
+function brickToSE() {
+
+  document.getElementById('shiftColsSE').value++
+  document.getElementById('shiftRowsSE').value++
+  showProto()
+}
+function brickToNW() {
+
+  document.getElementById('shiftColsSE').value--
+  document.getElementById('shiftRowsSE').value--
+  showProto()
+}
