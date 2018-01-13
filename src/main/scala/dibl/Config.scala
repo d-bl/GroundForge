@@ -96,12 +96,13 @@ class Config(urlQuery: String) {
     }
   }
 
+  val encodedMatrix: String = itemMatrix
+    .map(_.map(_.vectorCode).mkString)
+    .mkString(",")
+    .toUpperCase
+
   @JSExport
   lazy val pairDiagram: Diagram = {
-    val encodedMatrix: String = itemMatrix
-      .map(_.map(_.vectorCode).mkString)
-      .mkString(",")
-      .toUpperCase
     val stitches: String = {
       (for {
         r <- itemMatrix.indices

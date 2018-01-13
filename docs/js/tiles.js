@@ -8,6 +8,7 @@ function showProto() {
 
   var config = dibl.Config().create(query())
   document.getElementById('clones').innerHTML = dibl.SVG().createPrototype(config)
+  document.getElementById('link').href = '?'+query()
 }
 function collectStitches() {
   var kvs = []
@@ -111,16 +112,30 @@ function query() {
   var els = document.forms[0].elements
   for (i in els) {
      var e = els[i]
-     if (e && e.name && e.value)
-     kvpairs.push((e.name).replace("matrix","tile") + "=" + (e.value).replace(/\n/g,","))//encodeURIComponent
+     var v = e.value
+     if (e && e.name && v)
+     kvpairs.push(e.name + "=" + (v).replace(/\n/g,","))//encodeURIComponent
   }
   return kvpairs.join("&") + "&" + document.getElementById("stitches").innerHTML.replace(/, /g,"&").toLowerCase()
 }
-function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, repeatWidth, repeatHeight) {
-
+function load() {
+  var kvpairs = (window.location.href + '').replace(/.*\?/,"").split("&")
+  for (var i in kvpairs) {
+    var kv = kvpairs[i].split("=")
+    if (kv.length == 2) {
+      var k = kv[0].trim()
+      var v = kv[1].trim().replace(/,/g,"\n")
+      var el = document.getElementById(k)
+      if (el) el.value = v
+    }
+  }
+  showProto()
+  showThreadDiagram()
+}
+function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, repeatWidth, repeatHeight) {
   document.getElementById('repeatWidth').value = repeatWidth ? repeatWidth : (footside?3:12)
   document.getElementById('repeatHeight').value = repeatHeight ? repeatHeight : 12
-  document.getElementById('matrix').value = matrix
+  document.getElementById('tile').value = tile
   document.getElementById('footside').value = footside ? footside : ""
   document.getElementById('headside').value = headside ? headside : ""
   document.getElementById('shiftColsSE').value = shiftColsSE
@@ -131,7 +146,7 @@ function sample(matrix, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, foot
 }
 function asChecker() {
 
-  var matrixLines = document.getElementById('matrix').value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+  var matrixLines = document.getElementById('tile').value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
   var rows = matrixLines.length
   var cols = matrixLines[0].length
   document.getElementById('shiftRowsSE').value = rows
@@ -139,6 +154,7 @@ function asChecker() {
   document.getElementById('shiftRowsSW').value = rows
   document.getElementById('shiftColsSW').value = 0
   showProto()
+  showThreadDiagram()
 }
 function brickToLeft() {
 
