@@ -28,7 +28,7 @@
 </p>
 </article>
 <form onsubmit="return false">
-    <fieldset>
+    <fieldset id="diagrams">
         <legend>Diagrams</legend>
         <figure >
             <div>
@@ -377,7 +377,7 @@
         </figure>
         <a id="link" href=""><button type="button"><img src="images/link.png"></button></a>
     </fieldset>
-    <fieldset style="display:inline-block;vertical-align:top;">
+    <fieldset>
         <legend>Pattern</legend>
         <figure>
             <textarea id="footside" name="footside" rows="12" cols="3" spellcheck="false"
@@ -393,7 +393,7 @@
             <figcaption>Cheat sheet</figcaption>
         </figure>
     </fieldset>
-    <fieldset id="repeats-form" style="display:inline-block;vertical-align:top;">
+    <fieldset>
         <legend>Repeats</legend>
         <p>
             <label for="repeatWidth">Patch size</label>
@@ -445,7 +445,7 @@
         </table>
         <img src="help/images/shift-directions.png">
     </fieldset>
-    <fieldset id="get-started" style="display:inline-block">
+    <fieldset>
         <legend>Demo's</legend>
         <dl>
             <dt>Some special examples that fill the forms to catch the spirit:</dt>
@@ -475,9 +475,9 @@
         <figure>
             <img src="help/tl/214.png">
             <figcaption>
-                <a href="javascript:sample('5-', 1, 1, -1, 1,'-\nB','C\n-',6,8)">1"</a>
+                <a href="javascript:sample('5-', 1, 1, -1, 1,'-\nB','C\n-',6,8)">1"<sup>v</sup></a>
                 <a href="javascript:sample('5353\n5353\n5-5-\n-5-5', 4,4,-4,0)">2<sup>v</sup></a>
-                <a href="javascript:sample('5', 1, 1, -1, 1)">N</a>
+                <a href="javascript:sample('5', 1, 1, -1, 1)">N<sup>v</sup></a>
                 <a href="https://d-bl.github.io/GroundForge/sheet.html?img=214&patch=5-%20-5;checker&patch=5353%205353%205-5-%20-5-5;checker&patch=5632%2056-2%205-5-%20-535;checker&patch=53%205-%20-5%205-;bricks&patch=44%2077%2044%2077;bricks&patch=44%2044%2077%2077;bricks&patch=66%2088%2066%2011;bricks&patch=66%2066%2088%2011;checker&patch=66%2066%2099%2000;checker&patch=6;checker&patch=566-%2066-5%206-56%20-566;checker&patch=53%2053%2053%205-;bricks&patch=5663%205663;checker&patch=53%205-;bricks&patch=563%20563%20563;checker&patch=53%2053;checker&patch=5632%205632;checker&patch=5353%205353;bricks"
                    target="_blank">...&#8599;</a>
             </figcaption>
@@ -537,8 +537,8 @@
         </figure>
         <p>
             Bias variations:
-            <a href="javascript:sample('7--2A1C--', 4,1,-5,1)">h</a> /
-            <a href="javascript:sample('2\n-\na\n7\n1\n-\nc\n-\n-', 1,7,1,-2)">v</a>;
+            <a href="javascript:sample('7--2A1C--', 4,1,-5,1,'-1\nB8\n48\n41\n48\n48\n48\n48\n48',12,17)">h'</a> /
+            <a href="javascript:sample('2\n-\na\n7\n1\n-\nc\n-\n-', 1,7,1,-2,'41\n48\n48\n48\n48\n48\n-1\nB8\n48')">v'</a>;
             <a href="javascript:sample('148312\n7-488-', 2,2,-4,2)">h<sup>v</sup></a>,
             <a href="javascript:sample('14\n7-\n12\n8-\n83\n48', 2,2,2,-4)">v<sup>v</sup></a>.
             A paris variation:
