@@ -6,9 +6,10 @@ var maxCols = 12
 
 function showProto() {
 
-  var config = dibl.Config().create(query())
+  var q = query()
+  var config = dibl.Config().create(q)
   document.getElementById('clones').innerHTML = dibl.SVG().createPrototype(config)
-  document.getElementById('link').href = '?'+query()
+  document.getElementById('link').href = '?'+q
 }
 function collectStitches() {
   var kvs = []
@@ -20,19 +21,28 @@ function collectStitches() {
     var id = dibl.Stitches().toID(r, c).toUpperCase()
     kvs.push(id + "=" + stitches[keys[i]])
   }
-  document.getElementById("stitches").innerHTML = kvs.join(", ")
+  return kvs.join(", ")
 }
 function showThreadDiagram() {
 
+  var markers = true // use false for slow devices and IE-11, set them at onEnd
+  var container = d3.select("#threadDiagram")
+  container.node().innerHTML = ""
+
   var pairDiagram = dibl.Config().create(query()).pairDiagram
-  var diagram = dibl.ThreadDiagram().create(pairDiagram)
-  if (diagram.jsNodes().length == 1) diagram = pairDiagram
+  d3.select("#pairDiagram").node().innerHTML = dibl.SVG().render(pairDiagram, "1px", markers, 744, 1052)
+  if (pairDiagram.jsNodes().length == 1) return
+
+  var threadDiagram = dibl.ThreadDiagram().create(pairDiagram)
+  container.node().innerHTML = dibl.SVG().render(threadDiagram, "2px", markers, 744, 1052)
+  if (threadDiagram.jsNodes().length == 1 || container.node().innerHTML.indexOf("Need a new pair from") >= 0)  return
+
+  animate(threadDiagram, container)
+}
+function animate(diagram, container) {
+
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()//can't inline
-  var container = d3.select("#diagram")
-  var svg = dibl.SVG()
-  var markers = true // use false for slow devices and IE-11, set them at onEnd
-  container.node().innerHTML = svg.render(diagram, "2px", markers, 744, 1052)
   container.node().scrollTop = 400
   container.node().scrollLeft = 240
   var links = container.selectAll(".link").data(linkDefs)
@@ -45,11 +55,12 @@ function showThreadDiagram() {
       var s = jsLink.source
       var t = jsLink.target
       var l = diagram.link(jsLink.index)
-      return  svg.pathDescription(l, s.x, s.y, t.x, t.y)
+      return  dibl.SVG().pathDescription(l, s.x, s.y, t.x, t.y)
   }
   function onTick() {
-      links.attr("d", drawPath);
-      nodes.attr("transform", moveNode);
+      links.attr("d", drawPath)
+      nodes.attr("transform", moveNode)
+      //terminateAnimation()
   }
 
   // duplication of src/main/resources/force.js.applyForce(...)
@@ -116,7 +127,7 @@ function query() {
      if (e && e.name && v)
      kvpairs.push(e.name + "=" + (v).replace(/\n/g,","))//encodeURIComponent
   }
-  return kvpairs.join("&") + "&" + document.getElementById("stitches").innerHTML.replace(/, /g,"&").toLowerCase()
+  return kvpairs.join("&") + "&" + collectStitches().replace(/, /g,"&").toLowerCase()
 }
 function load() {
   var kvpairs = (window.location.href + '').replace(/.*\?/,"").split("&")
@@ -143,6 +154,7 @@ function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footsi
   document.getElementById('shiftColsSW').value = shiftColsSW
   document.getElementById('shiftRowsSW').value = shiftRowsSW
   showProto()
+  showThreadDiagram()
 }
 function asChecker() {
 

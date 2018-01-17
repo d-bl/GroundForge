@@ -1,15 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="../assets/css/help.css" type="text/css">
-    <script src="../js/tiles.js"></script>
-    <script src="../js/d3.v4.min.js" type="text/javascript"></script>
-    <script src="../js/GroundForge-opt.js" type="text/javascript"></script>
+    <meta charset="UTF-8">
+    <title lang="en">GroundForge : minimal tiles</title>
+    <meta name="description" content="Choose patterns and stitches to generate diagrams for grounds of bobbin lace">
+    <meta name="keywords" content="bobbin lace, pair diagram, thread diagram, patterns, stitches">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/tiles.css" type="text/css">
+    <script src="js/tiles.js"></script>
+    <script src="js/d3.v4.min.js" type="text/javascript"></script>
+    <script src="js/GroundForge-opt.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/logo.css"/>
 </head>
 <body onload="load()">
+<article>
+<a id="logo" href="/GroundForge/" title="Main page"><img src="images/logo-medium.png" alt="DiBL logo"/></a>
+<h1>Under construction</h1>
+<p>
+    Bobbin lace patterns on the
+    <a href="/GroundForge/help/examples" target="_blank"
+    >example</a> pages may refer to this page.
+    Use the prototype diagram to vary stitches in a pattern
+    (<a href="javascript:clearStitches()">clear</a> all,
+    set <a href="javascript:defaultStitches()">defaults</a>,
+    set <a href="javascript:allStitches()">all</a>).
+    With the forms below the diagrams you can adjust the patch size or design a pattern from scratch.
+</p>
+</article>
 <form onsubmit="return false">
     <fieldset>
         <legend>Diagrams</legend>
         <figure >
-            <div style="resize:both;overflow:auto;width:250px;height:250px;">
+            <div>
                 <svg  xmlns:dc="http://purl.org/dc/elements/1.1/"
                       xmlns:cc="http://creativecommons.org/ns#"
                       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -346,28 +368,15 @@
             <figcaption title="choosing a stitch shows/refreshes the thread diagram">Prototype (click bold symbols)</figcaption>
         </figure>
         <figure >
-            <div id="diagram" style="resize:both;overflow:auto;display:inline-block;width:250px;height:250px;max-width:744px;max-height:1052px"></div>
+            <div id="pairDiagram"></div>
+            <figcaption>Pair diagram</figcaption>
+        </figure>
+        <figure >
+            <div id="threadDiagram"></div>
             <figcaption>Thread diagram</figcaption>
         </figure>
-        <a id="link" href=""><button type="button"><img src="../images/link.png"></button></a>
+        <a id="link" href=""><button type="button"><img src="images/link.png"></button></a>
     </fieldset>
-    <fieldset>
-        <legend>Stitches</legend>
-        <a href="javascript:clearStitches()">Clear</a> all,
-        set
-        <a href="javascript:defaultStitches()">defaults</a>,
-        <a href="javascript:allStitches()">all</a>.
-        <p id="stitches"></p>
-    </fieldset>
-    <p>
-        Select other patterns from the
-        <a href="/GroundForge/help/examples" target="_blank">example</a> pages
-        (<a href="/GroundForge/help/Droste-effect" target="_blank" title="Droste effect">Droste</a>,
-        <a href="https://maetempels.github.io/MAE-gf/" target="_blank" title="MAE-gf">MAE-gf</a>,
-        <a href="/GroundForge/help/TesseLace-Index" target="_blank" title="TesseLace Index">Tesselace</a>,
-        <a href="/GroundForge/help/Whiting-Index" target="_blank" title="Whiting Index">Whiting</a>)
-        or design your own patterns with the forms below.
-    </p>
     <fieldset style="display:inline-block;vertical-align:top;">
         <legend>Pattern</legend>
         <figure>
@@ -380,7 +389,7 @@
             <figcaption>Definition</figcaption>
         </figure>
         <figure>
-            <img src="../help/images/matrix-template.png" alt="cheat sheet">
+            <img src="help/images/matrix-template.png" alt="cheat sheet">
             <figcaption>Cheat sheet</figcaption>
         </figure>
     </fieldset>
@@ -395,7 +404,7 @@
         </p>
         <div>
             <div>
-                Shift block
+                Shift tiles
             </div>
             <div style="border:3px solid #5500d4;border-radius: 3px;">
                 <input type="number" name="shiftColsSE" id="shiftColsSE" min="0" max="12" value="0" onchange="showProto()"><label for="shiftColsSE">col(s)</label>
@@ -414,128 +423,179 @@
                 &#8665;
             </div>
         </div>
-        <p>
-            <em>Initialize/move blocks:</em>
-            <a href="javascript:asStack()">stacked</a>
-            <a href="javascript:brickToSW()">&#8601;</a>
-            <a href="javascript:brickToNE()">&#8599;</a>
-            <a href="javascript:brickToSE()">&#8600;</a>
-            <a href="javascript:brickToNW()">&#8598;</a>
-            <a href="javascript:asChecker()">checker</a>
-            <a href="javascript:brickToLeft()">&#8592;</a>
-            <a href="javascript:brickToRight()">&#8594;</a>
-            <a href="javascript:brickUp()">&#8593;</a>
-            <a href="javascript:brickDown()">&#8595;</a>
-        </p>
-            <img src="../help/images/shift-directions.png">
+        <table>
+            <tr>
+                <td><em>Initialize/move tiles:</em></td><td></td>
+                <td><a href="javascript:brickToNW()">&#8598;</a></td>
+                <td><a href="javascript:brickUp()">&#8593;</a></td>
+                <td><a href="javascript:brickToNE()">&#8599;</a></td>
+            </tr>
+            <tr>
+                <td></td><td><a href="javascript:asStack()">stacked</a></td>
+                <td><a href="javascript:brickToLeft()">&#8592;</a></td>
+                <td></td>
+                <td><a href="javascript:brickToRight()">&#8594;</a></td>
+            </tr>
+            <tr>
+                <td></td><td><a href="javascript:asChecker()">checker</a></td>
+                <td><a href="javascript:brickToSW()">&#8601;</a></td>
+                <td><a href="javascript:brickDown()">&#8595;</a></td>
+                <td><a href="javascript:brickToSE()">&#8600;</a></td>
+            </tr>
+        </table>
+        <img src="help/images/shift-directions.png">
     </fieldset>
-    <fieldset id="get-started">
+    <fieldset id="get-started" style="display:inline-block">
         <legend>Demo's</legend>
+        <dl>
+            <dt>Some special examples that fill the forms to catch the spirit:</dt>
+            <dd>
+                Chained spiders defined with different dimensions for
+                <a href="javascript:sample('886\n4-1', 2,2,-1,2)">horizontal*</a> and
+                <a href="javascript:sample('8\n4\n8\n-\n6\n1', 1,4,1,-2)">vertical*</a> bricks.
+            </dd>
+            <dt>To understand shifting repeat tiles try the scenarios's:</dt>
+            <dd>
+                <a href="javascript:sample('831\n4-7\n-5-',0,0,0,0)">rose</a> + stacked + &#8600; + &#8600; + &#8601; + &#8601;<sup>v</sup>
+                <em>or</em>
+                <a href="javascript:sample('5-5-\n-5--\nB-C-\n-5-5',0,0,0,0)">spider</a> + checker<sup>v</sup> + &#8592; + &#8592;*
+            </dd>
+        </dl>
         <p>
-            To understand shifting repeat blocks try the scenarios's:
-            <a href="javascript:sample('831\n4-7\n-5-',0,0,0,0)">rose</a> + stacked + &#8600; + &#8600; + &#8601; + &#8601;
-            <em>or</em>
-            <a href="javascript:sample('5-5-\n-5--\nB-C-\n-5-5',0,0,0,0)">spider</a> + checker + &#8592; + &#8592;
-        </p>
-        <p>
-            Some more examples that fill the forms to catch the spirit:
+            Some common examples:
         </p>
         <figure>
-            <img src="../help/tl/181.png">
+            <img src="help/tl/181.png">
             <figcaption>
-                <a href="javascript:sample('8\n1',0,2, -1,2,'-7\nA1','8D\n4-',3,8)">1"</a>
+                <a href="javascript:sample('8\n1',0,2, -1,2,'-7\nA1','8D\n4-',3,8)">1"<sup>v</sup></a>
                 <a href="https://d-bl.github.io/GroundForge/sheet.html?img=181&patch=88%2011;bricks&patch=66%2022;bricks&patch=88%2099%2011%2000;bricks&patch=66%2011%2088%2022;bricks&patch=66%2099%2022%2000;bricks"
                    target="_blank">...&#8599;</a>
             </figcaption>
         </figure>
         <figure>
-            <img src="../help/tl/214.png">
+            <img src="help/tl/214.png">
             <figcaption>
                 <a href="javascript:sample('5-', 1, 1, -1, 1,'-\nB','C\n-',6,8)">1"</a>
-                <a href="javascript:sample('5353\n5353\n5-5-\n-5-5', 4,4,-4,0)">2</a>
-                <a href="javascript:sample('5632\n56-2\n5-5-\n-535', 4,4,0,4)">3</a>
+                <a href="javascript:sample('5353\n5353\n5-5-\n-5-5', 4,4,-4,0)">2<sup>v</sup></a>
                 <a href="javascript:sample('5', 1, 1, -1, 1)">N</a>
                 <a href="https://d-bl.github.io/GroundForge/sheet.html?img=214&patch=5-%20-5;checker&patch=5353%205353%205-5-%20-5-5;checker&patch=5632%2056-2%205-5-%20-535;checker&patch=53%205-%20-5%205-;bricks&patch=44%2077%2044%2077;bricks&patch=44%2044%2077%2077;bricks&patch=66%2088%2066%2011;bricks&patch=66%2066%2088%2011;checker&patch=66%2066%2099%2000;checker&patch=6;checker&patch=566-%2066-5%206-56%20-566;checker&patch=53%2053%2053%205-;bricks&patch=5663%205663;checker&patch=53%205-;bricks&patch=563%20563%20563;checker&patch=53%2053;checker&patch=5632%205632;checker&patch=5353%205353;bricks"
                    target="_blank">...&#8599;</a>
             </figcaption>
         </figure>
         <figure>
-            <img src="../help/tl/376.png">
+            <img src="help/tl/376.png">
             <figcaption>
-                <a href="javascript:sample('B-C-\n---5\nC-B-\n-5--', 4,4,0,4)">1</a>
-                <a href="javascript:sample('5831\n-4-7', 4,2,0,2)">2</a>
-                <a href="javascript:sample('-4-7\n5---\n-C-B\n3158', 2,4,-2,4)">3</a>
-                <a href="javascript:sample('5-O-E-\n-E-5-O\n5-O-E-', 3,3,-3,3)">4</a>
-                <a href="javascript:sample('68\n-4', 2,2,0,2)">5</a>
-                <a href="javascript:sample('86\n-4', 1,2,-1,2)">6</a>
+                <a href="javascript:sample('B-C-\n---5\nC-B-\n-5--', 4,4,0,4)">1<sup>v</sup></a>
+                <a href="javascript:sample('5831\n-4-7', 4,2,0,2)">2<sup>v</sup></a>
+                <a href="javascript:sample('-4-7\n5---\n-C-B\n3158', 2,4,-2,4)">3*</a>
+                <a href="javascript:sample('5-O-E-\n-E-5-O\n5-O-E-', 3,3,-3,3)">4<sup>v</sup></a>
+                <a href="javascript:sample('68\n-4', 2,2,0,2)">5<sup>v</sup></a>
+                <a href="javascript:sample('86\n-4', 1,2,-1,2)">6<sup>v</sup></a>
             </figcaption>
         </figure>
         <figure>
-            <img src="../help/tl/257.png">
+            <img src="help/tl/257.png">
             <figcaption>
-                <a href="javascript:sample('L-O-\n---5\nH-E-\n-5--', 4,4,0,4)">1</a>
-                <a href="javascript:sample('68\n-4\n21\n-7', 2,4,0,4)">2</a>
+                <a href="javascript:sample('L-O-\n---5\nH-E-\n-5--', 4,4,0,4)">1<sup>v</sup></a>
+                <a href="javascript:sample('68\n-4\n21\n-7', 2,4,0,4)">2<sup>v</sup></a>
             </figcaption>
         </figure>
         <figure>
-            <img src="../help/tl/135.png">
+            <img src="help/tl/135.png">
             <figcaption>
-                <a href="javascript:sample('5-5-\n-5--\nB-C-\n-5-5', 2,4,-2,4)">1</a>
-                <a href="javascript:sample('5632\n34-7', 2,2,-2,2)">2</a>
+                <a href="javascript:sample('5-5-\n-5--\nB-C-\n-5-5', 2,4,-2,4)">1*</a>
+                <a href="javascript:sample('5632\n34-7', 2,2,-2,2)">2<sup>v</sup></a>
                 <a href="javascript:sample('256-\n---5\nC3B-', 2,3,-2,3)">3</a>
-                <a href="javascript:sample('4373\n5-53', 2,2,-2,2)">4</a>
-                <a href="javascript:sample('-5-\n5-5\n-5-\nB-C\n-5-', 2,4,-2,4,'B-5\n-5-\nB--\n-C-\nB-5\n-5-\nB-5\n-5-','-C\n5-\n-C\n5-\n-C\n5-\n-C\nB-',6)">N"</a>
+                <a href="javascript:sample('4373\n5-53', 2,2,-2,2)">4<sup>v</sup></a>
+                <a href="javascript:sample('-5-\n5-5\n-5-\nB-C\n-5-', 2,4,-2,4,'B-5\n-5-\nB--\n-C-\nB-5\n-5-\nB-5\n-5-','-C\n5-\n-C\n5-\n-C\n5-\n-C\nB-',6,16)">N"*</a>
             </figcaption>
         </figure>
         <figure>
-            <img src="../help/tl/130.png">
+            <img src="help/tl/130.png">
             <figcaption>
-                <a href="javascript:sample('5831\n-4-7', 2,2,-2,2)">1</a>
-                <a href="javascript:sample('-437\n34-7', 2,2,-2,2)">2</a>
-                <a href="javascript:sample('4830\n--77', 2,2,-2,2)">3</a>
-                <a href="javascript:sample('831\n4-7\n-5-', 2,2,-2,2)">N</a>
+                <a href="javascript:sample('5831\n-4-7', 2,2,-2,2)">1<sup>v</sup></a>
+                <a href="javascript:sample('-437\n34-7', 2,2,-2,2)">2<sup>v</sup></a>
+                <a href="javascript:sample('4830\n--77', 2,2,-2,2)">3<sup>v</sup></a>
+                <a href="javascript:sample('831\n4-7\n-5-', 2,2,-2,2)">N<sup>v</sup></a>
                 <a href="javascript:sample('831\n4-7\n-5-', 2,2,-1,3)"><sub>a</sub></a>
             </figcaption>
         </figure>
         <figure>
-            <img src="../help/tl/129.png">
+            <img src="help/tl/129.png">
             <figcaption>
-                <a href="javascript:sample('1483\n8-48', 2,2,-2,2)">1</a>
-                <a href="javascript:sample('831\n488\n148', 2,2,-2,2)">N</a>
-                <a href="javascript:sample('831\n488\n148', 0,3,-3,1)"><sub>a</sub></a>
+                <a href="javascript:sample('1483\n8-48', 2,2,-2,2)">1<sup>v</sup></a>
+                <a href="javascript:sample('831\n488\n148', 2,2,-2,2)">N<sup>v</sup></a>
+                <a href="javascript:sample('831\n488\n148', 0,3,-3,1, '-7\nB-\n12','4-\n-C\n68')"><sub>a*</sub></a>
             </figcaption>
         </figure>
         <figure>
-            <img src="../help/tl/128.png">
+            <img src="help/tl/128.png">
             <figcaption>
                 <a href="javascript:sample('4-12\n-5--\n6-CD', 2,3,-2,3)">1</a>
-                <a href="javascript:sample('4312\n6-78', 2,2,-2,2)">2</a>
+                <a href="javascript:sample('4312\n6-78', 2,2,-2,2)">2<sup>v</sup></a>
             </figcaption>
         </figure>
-        <p>
-            Legend: N = natural repeat (with overlapping blocks), " = custom head/foot-side, subscript = same matrix, different tiling hence another pattern.
-        </p>
-        <p>
-            Chained spiders defined with
-            <a href="javascript:sample('88-14-5', 3,1,-4,1)">horizontal</a> /
-            <a href="javascript:sample('5\n1\n8\n4\n8\n-\n-', 1,5,1,-2)">vertical</a>
-            bricks and overlapping
-            <a href="javascript:sample('-14\n588', 2,3,-1,2)">blocks</a>,
-            with smaller holes and different dimensions for
-            <a href="javascript:sample('886\n4-1', 2,2,-1,2)">h</a> /
-            <a href="javascript:sample('8\n4\n8\n-\n6\n1', 1,4,1,-2)">v</a>.
-        </p>
         <p>
             Bias variations:
             <a href="javascript:sample('7--2A1C--', 4,1,-5,1)">h</a> /
             <a href="javascript:sample('2\n-\na\n7\n1\n-\nc\n-\n-', 1,7,1,-2)">v</a>;
-            <a href="javascript:sample('148312\n7-488-', 2,2,-4,2)">h</a>.
-            <a href="javascript:sample('14\n7-\n12\n8-\n83\n48', 2,2,2,-4)">v</a>.
+            <a href="javascript:sample('148312\n7-488-', 2,2,-4,2)">h<sup>v</sup></a>,
+            <a href="javascript:sample('14\n7-\n12\n8-\n83\n48', 2,2,2,-4)">v<sup>v</sup></a>.
             A paris variation:
             <a href="javascript:sample('5---C-B-', 5,1,-3,1)">h</a>.
             A diagonal lotus:
-            <a href="javascript:sample('N6-5---4-58-', 5,1,-7,1)">h</a>.
-            <a href="javascript:sample('889C\n468-\n468D\n274-\n17--',3,3, -1,5,'158\n-7-\nB-C\n-5-\nB-O\n-58\nB-7\n-58\nG-7\n-21\nB37\n484\n-44\nB-7\n-54\nB-7\n-5-\nB-C','',8,19)">Under construction</a>.
+            <a href="javascript:sample('N6-5---4-58-', 5,1,-7,1)">h*</a>.
+            <a href="javascript:sample('B-C-\n---5\nC-B-\n-5--',4,4,0,4,'-7\nB4\n17\n17','4-\n7C\n48\n48,',11,12)">Paris"</a>.
         </p>
+        <p>Legend:</p>
+        <ul>
+            <li>N = natural repeat (with overlapping tiles)</li>
+            <li>" = custom head/foot-side</li>
+            <li>...&#8599; = refers to a sheet with variants that are the same when the holes are made as round as possible</li>
+            <li><sup>v</sup>/* = <sup>v</sup>does / *doesn't apply stitches properly in the thread diagram. Neither of the two: thread diagram doesnt work at all.</li>
+            <li>subscript = same matrix, different tiling hence another pattern</li>
+        </ul>
     </fieldset>
 </form>
+<article>
+    <p id="footer">
+        <a href="https://github.com/d-bl/GroundForge/releases"
+           target="_blank"
+        >Release notes</a>
+        &mdash;
+        <a href="https://github.com/d-bl/GroundForge/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+-label%3A%22Browser+support%22+-label%3A%22nice+to+have%22+"
+           target="_blank"
+        >Issues</a>
+        &mdash;
+        <a href="https://github.com/d-bl/GroundForge/issues?q=is%3Aissue+is%3Aopen+label%3A%22Browser+support%22"
+           target="_blank"
+           title="Modern desktop versions of Chrome, FireFox and Safari are fine&#013;Follow the link for issues in other situations."
+        ><img id="browsers" src="images/browsers.png"
+        ></a><!-- image assembled from http://www.iconarchive.com -->
+        &mdash;
+        Powered&nbsp;by:&nbsp;<a href="https://tesselace.com" title="Algorithmically designed lace tessellations" target="_blank"
+    >TesseLace</a>,&nbsp;<a href="https://d3js.org" title="Data Driven Documents" target="_blank"
+    >D3.js</a>,&nbsp;<a href="http://jscolor.com/" title="Color Picker" target="_blank"
+    >jsColor</a>
+    </p>
+    <!-- Start of StatCounter Code for Default Guide -->
+    <script type="text/javascript">
+        var sc_project=10865294;
+        var sc_invisible=0;
+        var sc_security="2e4f5d96";
+        var scJsHost = (("https:" == document.location.protocol) ?
+        "https://secure." : "http://www.");
+        document.write("<sc"+"ript type='text/javascript' src='" +
+        scJsHost+
+        "statcounter.com/counter/counter.js'></"+"script>");
+        </script>
+    <noscript><div class="statcounter"><a title="web analytics"
+                                          href="http://statcounter.com/"
+                                          target="_blank"><img
+            class="statcounter"
+            src="http://c.statcounter.com/10865294/0/2e4f5d96/0/"
+            alt="web analytics"></a></div></noscript>
+    <!-- End of StatCounter Code for Default Guide -->
+</article>
+</body>
+</html>
