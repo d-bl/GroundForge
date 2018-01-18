@@ -130,7 +130,7 @@ object Stitches {
    * @return
    */
   private def splitAssignment(assignment: String): Array[(StitchId, String, String)] = {
-    val (ids, values) = assignment.split("=").partition(_.matches("([a-z]+[0-9]+|cross|twist)"))
+    val (ids, values) = assignment.split("=").partition(_.matches("([a-z]+[0-9]+[0-9a-z]*|cross|twist)"))
     val (instructions, colors) = values.partition(_.matches("[ctlrp]+"))
     ids.map(id => (
       id,
