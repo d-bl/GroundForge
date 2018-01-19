@@ -22,7 +22,7 @@ function load() {
   var shiftUp = 1
   var stitches = ''
 
-  var patterns = new dibl.PatternSheet(2, "height='90mm' width='100mm'")
+  var patterns = new dibl.SheetSVG(2, "height='90mm' width='100mm'")
   patterns.add(matrix, "checker")
   document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
 
@@ -43,7 +43,7 @@ function load() {
   })
 }
 function showGraph(args) {
-    var svg = dibl.SVG()
+    var svg = dibl.D3jsSVG()
     var markers = true // use false for slow devices and IE-11, set them at onEnd
     args.container.node().innerHTML = svg.render(args.diagram, args.stroke, markers, 400, 400)
     var links = args.container.selectAll(".link").data(args.links)

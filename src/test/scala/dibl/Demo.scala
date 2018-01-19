@@ -16,7 +16,7 @@
 package dibl
 
 import dibl.Force.{Point, nudgeNodes}
-import dibl.SVG.{prolog, render}
+import dibl.D3jsSVG.{prolog, render}
 
 import scala.reflect.io.File
 import scala.util.Try
@@ -24,7 +24,7 @@ import scala.util.Try
 object Demo {
   def main(args: Array[String]): Unit = {
 
-    val patternSheet = PatternSheet()
+    val patternSheet = SheetSVG()
     patternSheet.add("5-", "bricks")
     SafeWriter("target/demoPatternSheet.svg")
       .write(prolog + patternSheet.toSvgDoc)
@@ -54,7 +54,7 @@ object Demo {
         s"""<!DOCTYPE html>
           |<html>
           |<style>
-          |${SVG.threadsCSS()}
+          |${D3jsSVG.threadsCSS()}
           |</style>
           |<body>
           |${render(nudgedPairDiagram)}

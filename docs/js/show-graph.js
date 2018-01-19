@@ -22,7 +22,7 @@ diagram.showGraph = function(args) {
     var isMobileMac = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
     var markers = !isMobileMac && !isIE
 
-    args.container.node().innerHTML = dibl.SVG().render(args.diagram, args.stroke, markers, 2481, 3507, fullyTransparent)
+    args.container.node().innerHTML = dibl.D3jsSVG().render(args.diagram, args.stroke, markers, 2481, 3507, fullyTransparent)
     var svgDoc = args.container.select('svg')
     var svgGroup = args.container.select('g')
     var cx = args.container.node().clientWidth / 2
@@ -100,7 +100,7 @@ diagram.showGraph = function(args) {
         var s = jsLink.source
         var t = jsLink.target
         var l = args.diagram.link(jsLink.index)
-        return  dibl.SVG().pathDescription(l, s.x, s.y, t.x, t.y)
+        return  dibl.D3jsSVG().pathDescription(l, s.x, s.y, t.x, t.y)
     }
     function moveNode(d) {
         return "translate(" + d.x + "," + d.y + ")"

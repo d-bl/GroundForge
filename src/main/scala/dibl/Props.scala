@@ -18,7 +18,7 @@ package dibl
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExport
 
-/** Object required by D3js and [[SVG]]. For D3js see also drawNode and drawLink on
+/** Object required by D3js and [[D3jsSVG]]. For D3js see also drawNode and drawLink on
   * https://bl.ocks.org/mbostock/1b64ec067fcfc51e7471d944f51f1611
   */
 trait Props {

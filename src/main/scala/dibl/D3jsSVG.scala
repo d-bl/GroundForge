@@ -17,12 +17,11 @@
 package dibl
 
 import dibl.Force.Point
-import dibl.Stitches.defaultColorValue
 
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
-object SVG {
+object D3jsSVG {
 
   @JSExport
   def circle(r: Int): String = s"M $r,0 A $r,$r 0 0 1 0,$r $r,$r 0 0 1 -$r,0 $r,$r 0 0 1 0,-$r $r,$r 0 0 1 $r,0 Z"
@@ -124,27 +123,6 @@ object SVG {
     val tX = target.x
     val tY = target.y
     pathDescription(link, sX, sY, tX, tY)
-  }
-
-  @JSExport
-  def createPrototype(config: Config): String = {
-    val itemMatrix = config.itemMatrix
-    (for {
-      r <- itemMatrix.indices
-      c <- itemMatrix.head.indices
-    } yield {
-      val stitch = itemMatrix(r)(c).stitch
-      val color = defaultColorValue(stitch)
-      val vectorCode = itemMatrix(r)(c).vectorCode.toString.toUpperCase
-      val opacity = if (vectorCode == "-") "0.05" else if (itemMatrix(r)(c).isOpaque) "1" else "0.3"
-      s"""<use xlink:href='#g${ vectorCode }'
-         |  id='svg-r${r+1}-c${c+1}'
-         |  transform='translate(${c*10+38},${r*10+1})'
-         |  style='stroke:${if (color.nonEmpty) color else "#000"};opacity:$opacity;"'
-         |  onclick='${if (opacity=="1") "setStitch(this)" else ""}'
-         |><title>$stitch</title>
-         |</use>""".stripMargin
-    }).mkString("\n")
   }
 
   @JSExport

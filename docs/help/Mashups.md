@@ -62,7 +62,7 @@ More details in the [API].
 
 ### Fixed layout on a landscape A4
 
-The first argument of `dibl.PatternSheet` specifies the number of diagrams per column,
+The first argument of `dibl.SheetSVG` specifies the number of diagrams per column,
 2 for landscape A4/letter, 3 for portrait A4/letter.  
 
 ```html
@@ -73,7 +73,7 @@ The first argument of `dibl.PatternSheet` specifies the number of diagrams per c
 <body>
     <div id="diagrams"></div>
     <script>
-        var sheet = new dibl.PatternSheet(2, "height='210mm' width='297mm'")
+        var sheet = new dibl.SheetSVG(2, "height='210mm' width='297mm'")
         sheet.add("B-C-,---5,C-B-,-5--","checker")
         sheet.add("5831,-4-7","checker")
         sheet.add("68,-4","checker")
@@ -98,7 +98,7 @@ The dynamic layout will fit as many diagrams on a row as allowed by your monitor
     <script>
         var nr = 0
         function add(matrix, tiling) {
-            var singleSheet = new dibl.PatternSheet(2, "height='250px' width='250px'", "PATTERN" + nr++)
+            var singleSheet = new dibl.SheetSVG(2, "height='250px' width='250px'", "PATTERN" + nr++)
             singleSheet.add(matrix, tiling)
             document.getElementsByTagName("BODY")[0].innerHTML += (singleSheet.toSvgDoc().trim())
         }

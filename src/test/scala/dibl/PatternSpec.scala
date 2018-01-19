@@ -20,7 +20,7 @@ import org.scalatest.{FlatSpec, Matchers}
 class PatternSpec extends FlatSpec with Matchers {
 
   "patterns" should "not mix up dimensions" in {
-    val patterns = new PatternSheet
+    val patterns = new SheetSVG
     patterns.add("88 11", "bricks")
     patterns.add("66,99+22\n00", "bricks")
     val svgString = patterns.toSvgDoc()
@@ -30,7 +30,7 @@ class PatternSpec extends FlatSpec with Matchers {
   }
 
   it should "produce a single patch" in {
-    val patterns = new PatternSheet
+    val patterns = new SheetSVG
     patterns.add("88 11", "bricks")
     val svgString = patterns.toSvgDoc()
     val links = svgString.split("\n").filter(_.contains("href='http"))
@@ -38,7 +38,7 @@ class PatternSpec extends FlatSpec with Matchers {
   }
 
   it should "process double length horizontal lines" in {
-    val patterns = new PatternSheet
+    val patterns = new SheetSVG
     patterns.add("-5---5-5 5-O-E-5-", "bricks")
     val svgString = patterns.toSvgDoc()
     val links = svgString.split("\n").filter(_.contains("href='http"))

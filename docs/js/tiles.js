@@ -8,7 +8,7 @@ function showProto() {
 
   var q = query()
   var config = dibl.Config().create(q)
-  document.getElementById('clones').innerHTML = dibl.SVG().createPrototype(config)
+  document.getElementById('clones').innerHTML = dibl.InteractiveSVG().create(config)
   document.getElementById('link').href = '?'+q
 }
 function collectStitches() {
@@ -30,11 +30,11 @@ function showThreadDiagram() {
   container.node().innerHTML = ""
 
   var pairDiagram = dibl.Config().create(query()).pairDiagram
-  d3.select("#pairDiagram").node().innerHTML = dibl.SVG().render(pairDiagram, "1px", markers, 744, 1052)
+  d3.select("#pairDiagram").node().innerHTML = dibl.D3jsSVG().render(pairDiagram, "1px", markers, 744, 1052)
   if (pairDiagram.jsNodes().length == 1) return
 
   var threadDiagram = dibl.ThreadDiagram().create(pairDiagram)
-  container.node().innerHTML = dibl.SVG().render(threadDiagram, "2px", markers, 744, 1052)
+  container.node().innerHTML = dibl.D3jsSVG().render(threadDiagram, "2px", markers, 744, 1052)
   if (threadDiagram.jsNodes().length == 1 || container.node().innerHTML.indexOf("Need a new pair from") >= 0)  return
 
   animate(threadDiagram, container)
@@ -55,7 +55,7 @@ function animate(diagram, container) {
       var s = jsLink.source
       var t = jsLink.target
       var l = diagram.link(jsLink.index)
-      return  dibl.SVG().pathDescription(l, s.x, s.y, t.x, t.y)
+      return  dibl.D3jsSVG().pathDescription(l, s.x, s.y, t.x, t.y)
   }
   function onTick() {
       links.attr("d", drawPath)
