@@ -31,7 +31,7 @@
     <fieldset id="diagrams">
         <legend>Diagrams</legend>
         <figure >
-            <div>
+            <div id="prototype">
                 <svg  xmlns:dc="http://purl.org/dc/elements/1.1/"
                       xmlns:cc="http://creativecommons.org/ns#"
                       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -365,15 +365,45 @@
                     </g>
                 </svg>
             </div>
-            <figcaption title="choosing a stitch shows/refreshes the thread diagram">Prototype (click bold symbols)</figcaption>
+            <figcaption title="choosing a stitch shows/refreshes the thread diagram">
+                Prototype -
+                click bold symbols -
+                <a download="prototype.svg"
+                   onfocus="setDownloadContent(this,'prototype')"
+                   onblur="this.href='?#download'"
+                   target="_blank"
+                   href="?#download"
+                   title="download"
+                >download</a>
+            </figcaption>
         </figure>
         <figure >
             <div id="pairDiagram"></div>
-            <figcaption>Pair diagram</figcaption>
+            <figcaption>
+                Pair diagram -
+                <a href="javascript:animateDiagram(d3.select('#pairDiagram'))">animate</a> -
+                <a download="pair-diagram.svg"
+                   onfocus="setDownloadContent(this,'pairDiagram')"
+                   onblur="this.href='?#download'"
+                   target="_blank"
+                   href="?#download"
+                   title="download"
+                >download</a>
+            </figcaption>
         </figure>
         <figure >
             <div id="threadDiagram"></div>
-            <figcaption>Thread diagram</figcaption>
+            <figcaption>
+                Thread diagram -
+                click squares -
+                <a download="thread-diagram.svg"
+                   onfocus="setDownloadContent(this,'threadDiagram')"
+                   onblur="this.href='?#download'"
+                   target="_blank"
+                   href="?#download"
+                   title="download"
+                >download</a>
+            </figcaption>
         </figure>
         <a id="link" href=""><button type="button"><img src="images/link.png"></button></a>
     </fieldset>
@@ -381,11 +411,11 @@
         <legend>Pattern</legend>
         <figure>
             <textarea id="footside" name="footside" rows="12" cols="3" spellcheck="false"
-                      onchange="showProto()"></textarea>
+                      onchange="showProto();showThreadDiagram()"></textarea>
             <textarea id="tile" name="tile" rows="12" cols="10" spellcheck="false"
-                      onchange="showProto()"></textarea>
+                      onchange="showProto();showThreadDiagram()"></textarea>
             <textarea id="headside" name="headside" rows="12" cols="3" spellcheck="false"
-                      onchange="showProto()"></textarea>
+                      onchange="showProto();showThreadDiagram()"></textarea>
             <figcaption>Definition</figcaption>
         </figure>
         <figure>
@@ -425,21 +455,19 @@
         </div>
         <table>
             <tr>
-                <td><em>Initialize/move tiles:</em></td><td></td>
-                <td><a href="javascript:brickToNW()">&#8598;</a></td>
+                <td><em>Initialize/move tiles:</em>
+                <td><a href="javascript:asStack()">stacked</a> &nbsp; </td>
                 <td><a href="javascript:brickUp()">&#8593;</a></td>
+                <td><a href="javascript:brickToRight()">&#8594;</a> &nbsp; </td>
+                <td><a href="javascript:brickToNW()">&#8598;</a> &nbsp; </td>
                 <td><a href="javascript:brickToNE()">&#8599;</a></td>
             </tr>
             <tr>
-                <td></td><td><a href="javascript:asStack()">stacked</a></td>
-                <td><a href="javascript:brickToLeft()">&#8592;</a></td>
                 <td></td>
-                <td><a href="javascript:brickToRight()">&#8594;</a></td>
-            </tr>
-            <tr>
-                <td></td><td><a href="javascript:asChecker()">checker</a></td>
-                <td><a href="javascript:brickToSW()">&#8601;</a></td>
-                <td><a href="javascript:brickDown()">&#8595;</a></td>
+                <td><a href="javascript:asChecker()">checker</a> &nbsp; </td>
+                <td><a href="javascript:brickToLeft()">&#8592;</a></td>
+                <td><a href="javascript:brickDown()">&#8595;</a> &nbsp; </td>
+                <td><a href="javascript:brickToSW()">&#8601;</a> &nbsp; </td>
                 <td><a href="javascript:brickToSE()">&#8600;</a></td>
             </tr>
         </table>
@@ -456,9 +484,9 @@
             </dd>
             <dt>To understand shifting repeat tiles try the scenarios's:</dt>
             <dd>
-                <a href="javascript:sample('831\n4-7\n-5-',0,0,0,0)">rose</a> + stacked + &#8600; + &#8600; + &#8601; + &#8601;<sup>v</sup>
+                <a href="javascript:sample('831\n4-7\n-5-',0,0,0,0)">rose</a> + stacked + 2 x  &#8600; &#8601;<sup>v</sup>
                 <em>or</em>
-                <a href="javascript:sample('5-5-\n-5--\nB-C-\n-5-5',0,0,0,0)">spider</a> + checker<sup>v</sup> + &#8592; + &#8592;*
+                <a href="javascript:sample('5-5-\n-5--\nB-C-\n-5-5',0,0,0,0)">spider</a> + checker<sup>v</sup> + 2 x &#8592;*
             </dd>
         </dl>
         <p>
@@ -551,8 +579,14 @@
         <ul>
             <li>N = natural repeat (with overlapping tiles)</li>
             <li>" = custom head/foot-side</li>
-            <li>...&#8599; = refers to a sheet with variants that are the same when the holes are made as round as possible</li>
-            <li><sup>v</sup>/* = <sup>v</sup>does / *doesn't apply stitches properly in the thread diagram. Neither of the two: thread diagram doesnt work at all.</li>
+            <li>...&#8599; = refers to a sheet with variants that are the same when the holes are made as round as possible by the animation.</li>
+            <li><sup>v</sup>/* = <sup>v</sup> works with (0,2) * requires something else for:
+                <input type="number" name="patchCols" id="patchCols" min="0" value="0" onchange="showProto()"><label for="patchCols">col(s)</label>
+                <input type="number" name="patchRows" id="patchRows" min="0" value="2" onchange="showProto()"><label for="patchRows">row(s)</label>
+                to apply the chosen stitches in the diagrams.
+                Note that the patch height should match a checker matrix.
+                Neither of the two markers: thread diagram doesnt work at all.
+            </li>
             <li>subscript = same matrix, different tiling hence another pattern</li>
         </ul>
     </fieldset>

@@ -31,6 +31,10 @@ class Config(urlQuery: String) {
   val shiftColsSE: Int = fields.getOrElse("shiftColsSE", "12").replaceAll("[^0-9-]", "").toInt
   val shiftColsSW: Int = fields.getOrElse("shiftColsSW", "12").replaceAll("[^0-9-]", "").toInt
 
+  // Hack to fix the stitches for patterns that don't work with the provisional transformation to a pair diagram
+  val patchCols: Int = fields.getOrElse("patchCols", "0").replaceAll("[^0-9-]", "").toInt
+  val patchRows: Int = fields.getOrElse("patchRows", "2").replaceAll("[^0-9-]", "").toInt
+
   private val leftMarginWidth =
     if (leftMatrix.length > 0 && leftMatrix.head.trim.length > 0)
       2 + leftMatrix.head.length
@@ -116,7 +120,7 @@ class Config(urlQuery: String) {
     }
     println(encodedMatrix)
     println(stitches)
-    PairDiagram.get(encodedMatrix,"checker",totalRows,totalCols,0,2,stitches)
+    PairDiagram.get(encodedMatrix,"checker",totalRows,totalCols,patchCols,patchRows,stitches)
   }
 }
 

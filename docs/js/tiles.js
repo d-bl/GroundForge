@@ -23,24 +23,38 @@ function collectStitches() {
   }
   return kvs.join(", ")
 }
+function paintThread() {
+  var className = "."+d3.event.target.firstChild.innerHTML.replace(" ","")
+  d3.selectAll(className).style("stroke", d3.event.altKey? "#000" : "#F00")
+}
 function showThreadDiagram() {
 
   var markers = true // use false for slow devices and IE-11, set them at onEnd
-  var container = d3.select("#threadDiagram")
-  container.node().innerHTML = ""
+  var threadContainer = d3.select("#threadDiagram")
+  var threadContainerNode = threadContainer.node()
+  threadContainerNode.innerHTML = ""
 
-  var pairDiagram = dibl.Config().create(query()).pairDiagram
-  d3.select("#pairDiagram").node().innerHTML = dibl.D3jsSVG().render(pairDiagram, "1px", markers, 744, 1052)
+  var pairContainerNode = d3.select("#pairDiagram").node()
+  var pairDiagram = pairContainerNode.data = dibl.Config().create(query()).pairDiagram
+  pairContainerNode.innerHTML = dibl.D3jsSVG().render(pairDiagram, "1px", markers, 744, 1052)
   if (pairDiagram.jsNodes().length == 1) return
 
-  var threadDiagram = dibl.ThreadDiagram().create(pairDiagram)
-  container.node().innerHTML = dibl.D3jsSVG().render(threadDiagram, "2px", markers, 744, 1052)
-  if (threadDiagram.jsNodes().length == 1 || container.node().innerHTML.indexOf("Need a new pair from") >= 0)  return
+  var threadDiagram = threadContainerNode.data = dibl.ThreadDiagram().create(pairDiagram)
+  threadContainerNode.innerHTML = dibl.D3jsSVG().render(threadDiagram, "2px", markers, 744, 1052)
+  if (threadDiagram.jsNodes().length == 1 || threadContainer.node().innerHTML.indexOf("Need a new pair from") >= 0)  return
 
-  animate(threadDiagram, container)
+  animateDiagram(threadContainer)
+  threadContainer.selectAll(".threadStart").on("click", paintThread)
 }
-function animate(diagram, container) {
+function setDownloadContent (comp, id) {
+  svg = document.getElementById(id).innerHTML.
+      replace('pointer-events="all"', '').
+      replace(/<path [^>]+opacity: 0;.+?path>/g, '')
+  comp.href = 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
+}
+function animateDiagram(container) {
 
+  var diagram = container.node().data
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()//can't inline
   container.node().scrollTop = 400
