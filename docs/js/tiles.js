@@ -11,7 +11,10 @@ function showProto() {
   d3.select('#clones').node().innerHTML = dibl.InteractiveSVG().create(config)
   d3.select('#link').node().href = '?'+q
   d3.select("#threadDiagram").node().innerHTML = ""
-  d3.select("#pairDiagram").node().innerHTML = ""
+  var pairNode = d3.select("#pairDiagram").node()
+  pairNode.innerHTML = ""
+  pairNode.scrollTop = 400
+  pairNode.scrollLeft = 220
 }
 function collectStitches() {
 
