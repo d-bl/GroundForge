@@ -10,6 +10,8 @@ function showProto() {
   var config = dibl.Config().create(q)
   d3.select('#clones').node().innerHTML = dibl.InteractiveSVG().create(config)
   d3.select('#link').node().href = '?'+q
+  d3.select("#threadDiagram").node().innerHTML = ""
+  d3.select("#pairDiagram").node().innerHTML = ""
 }
 function collectStitches() {
 
@@ -35,15 +37,14 @@ function paintThread() {
 function showThreadDiagram() {
 
   var markers = true // use false for slow devices and IE-11, set them at onEnd
-  var threadContainer = d3.select("#threadDiagram")
-  var threadContainerNode = threadContainer.node()
-  threadContainerNode.innerHTML = ""
 
   var pairContainerNode = d3.select("#pairDiagram").node()
   var pairDiagram = pairContainerNode.data = dibl.Config().create(query()).pairDiagram
   pairContainerNode.innerHTML = dibl.D3jsSVG().render(pairDiagram, "1px", markers, 744, 1052)
   if (pairDiagram.jsNodes().length == 1) return
 
+  var threadContainer = d3.select("#threadDiagram")
+  var threadContainerNode = threadContainer.node()
   var threadDiagram = threadContainerNode.data = dibl.ThreadDiagram().create(pairDiagram)
   threadContainerNode.innerHTML = dibl.D3jsSVG().render(threadDiagram, "2px", markers, 744, 1052)
   if (threadDiagram.jsNodes().length == 1 || threadContainer.node().innerHTML.indexOf("Need a new pair from") >= 0)  return
