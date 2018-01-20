@@ -1,6 +1,6 @@
 var stitches = {}
 
-// number of cloned elements in the built-in SVG
+// number of cloned elements in the built-in SVG FIXME not maintained
 var maxRows = 12
 var maxCols = 12
 
@@ -8,10 +8,11 @@ function showProto() {
 
   var q = query()
   var config = dibl.Config().create(q)
-  document.getElementById('clones').innerHTML = dibl.InteractiveSVG().create(config)
-  document.getElementById('link').href = '?'+q
+  d3.select('#clones').node().innerHTML = dibl.InteractiveSVG().create(config)
+  d3.select('#link').node().href = '?'+q
 }
 function collectStitches() {
+
   var kvs = []
   var keys = Object.keys(stitches)
   for (var i=0 ; i<keys.length ; i++) {
@@ -24,8 +25,12 @@ function collectStitches() {
   return kvs.join(", ")
 }
 function paintThread() {
-  var className = "."+d3.event.target.firstChild.innerHTML.replace(" ","")
-  d3.selectAll(className).style("stroke", d3.event.altKey? "#000" : "#F00")
+  // firstChild == <title>
+  var className = "."+d3.event.target.firstChild.innerHTML.replace(" ", "")
+  var segments = d3.selectAll(className)
+  var newColor = d3.event.altKey? "#000" : "#F00"
+  segments.style("stroke", newColor)
+  segments.filter(".node").style("fill", newColor)
 }
 function showThreadDiagram() {
 
@@ -47,7 +52,8 @@ function showThreadDiagram() {
   threadContainer.selectAll(".threadStart").on("click", paintThread)
 }
 function setDownloadContent (comp, id) {
-  svg = document.getElementById(id).innerHTML.
+
+  svg = d3.select(id).node().innerHTML.
       replace('pointer-events="all"', '').
       replace(/<path [^>]+opacity: 0;.+?path>/g, '')
   comp.href = 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
@@ -129,10 +135,12 @@ function defaultStitches() {
   }
 }
 function askForStitch(s, defaultStitch){
+
   // making the input valid as early as possible protects against injection when displaying the value
   return dibl.Stitches().makeValid(prompt(s, defaultStitch? defaultStitch : "ctc"), defaultStitch)
 }
 function query() {
+
   var kvpairs = []
   var els = document.forms[0].elements
   for (i in els) {
@@ -144,13 +152,14 @@ function query() {
   return kvpairs.join("&") + "&" + collectStitches().replace(/, /g,"&").toLowerCase()
 }
 function load() {
+
   var kvpairs = (window.location.href + '').replace(/.*\?/,"").split("&")
   for (var i in kvpairs) {
     var kv = kvpairs[i].split("=")
     if (kv.length == 2) {
       var k = kv[0].trim()
       var v = kv[1].trim().replace(/,/g,"\n")
-      var el = document.getElementById(k)
+      var el = d3.select("#"+k).node()
       if (el) el.value = v
     }
   }
@@ -158,81 +167,81 @@ function load() {
   showThreadDiagram()
 }
 function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, repeatWidth, repeatHeight) {
-  document.getElementById('repeatWidth').value = repeatWidth ? repeatWidth : (footside?3:12)
-  document.getElementById('repeatHeight').value = repeatHeight ? repeatHeight : 12
-  document.getElementById('tile').value = tile
-  document.getElementById('footside').value = footside ? footside : ""
-  document.getElementById('headside').value = headside ? headside : ""
-  document.getElementById('shiftColsSE').value = shiftColsSE
-  document.getElementById('shiftRowsSE').value = shiftRowsSE
-  document.getElementById('shiftColsSW').value = shiftColsSW
-  document.getElementById('shiftRowsSW').value = shiftRowsSW
+
+  d3.select('#repeatWidth').property("value",repeatWidth ? repeatWidth : (footside?3:12))
+  d3.select('#repeatHeight').property("value",repeatHeight ? repeatHeight : 12)
+  d3.select('#tile').property("value",tile)
+  d3.select('#footside').property("value",footside ? footside : "")
+  d3.select('#headside').property("value",headside ? headside : "")
+  d3.select('#shiftColsSE').property("value",shiftColsSE)
+  d3.select('#shiftRowsSE').property("value",shiftRowsSE)
+  d3.select('#shiftColsSW').property("value",shiftColsSW)
+  d3.select('#shiftRowsSW').property("value",shiftRowsSW)
   showProto()
   showThreadDiagram()
 }
 function asChecker() {
 
-  var matrixLines = document.getElementById('tile').value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+  var matrixLines = d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
   var rows = matrixLines.length
   var cols = matrixLines[0].length
-  document.getElementById('shiftRowsSE').value = rows
-  document.getElementById('shiftColsSE').value = cols
-  document.getElementById('shiftRowsSW').value = rows
-  document.getElementById('shiftColsSW').value = 0
+  d3.select('#shiftRowsSE').property("value", rows)
+  d3.select('#shiftColsSE').property("value", cols)
+  d3.select('#shiftRowsSW').property("value", rows)
+  d3.select('#shiftColsSW').property("value", 0)
   showProto()
-  showThreadDiagram()
 }
 function brickToLeft() {
 
-  document.getElementById('shiftColsSE').value--
-  document.getElementById('shiftColsSW').value--
+  d3.select('#shiftColsSE').node().value--
+  d3.select('#shiftColsSW').node().value--
   showProto()
 }
 function brickToRight() {
 
-  document.getElementById('shiftColsSE').value++
-  document.getElementById('shiftColsSW').value++
+  d3.select('#shiftColsSE').node().value++
+  d3.select('#shiftColsSW').node().value++
   showProto()
 }
 function brickUp() {
 
-  document.getElementById('shiftRowsSE').value--
+  d3.select('#shiftRowsSE').node().value--
   showProto()
 }
 function brickDown() {
 
-  document.getElementById('shiftRowsSE').value++
+  d3.select('#shiftRowsSE').node().value++
   showProto()
 }
 function asStack() {
 
-  document.getElementById('shiftRowsSE').value = 0
-  document.getElementById('shiftColsSE').value = 0
-  document.getElementById('shiftRowsSW').value = 0
-  document.getElementById('shiftColsSW').value = 0
+  d3.select('#shiftRowsSE').property("value",0)
+  d3.select('#shiftColsSE').property("value",0)
+  d3.select('#shiftRowsSW').property("value",0)
+  d3.select('#shiftColsSW').property("value",0)
   showProto()
 }
 function brickToSW() {
 
-  document.getElementById('shiftColsSW').value--
-  document.getElementById('shiftRowsSW').value++
+  d3.select('#shiftColsSW').node().value--
+  d3.select('#shiftRowsSW').node().value++
   showProto()
 }
 function brickToNE() {
 
-  document.getElementById('shiftColsSW').value++
-  document.getElementById('shiftRowsSW').value--
+  d3.select('#shiftColsSW').node().value++
+  d3.select('#shiftRowsSW').node().value--
   showProto()
 }
 function brickToSE() {
 
-  document.getElementById('shiftColsSE').value++
-  document.getElementById('shiftRowsSE').value++
+  d3.select('#shiftColsSE').node().value++
+  d3.select('#shiftRowsSE').node().value++
   showProto()
 }
 function brickToNW() {
 
-  document.getElementById('shiftColsSE').value--
-  document.getElementById('shiftRowsSE').value--
+  d3.select('#shiftColsSE').node().value--
+  d3.select('#shiftRowsSE').node().value--
   showProto()
 }
