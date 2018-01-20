@@ -58,7 +58,7 @@ function animateDiagram(container) {
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()//can't inline
   container.node().scrollTop = 400
-  container.node().scrollLeft = 240
+  container.node().scrollLeft = 220
   var links = container.selectAll(".link").data(linkDefs)
   var nodes = container.selectAll(".node").data(nodeDefs)
 

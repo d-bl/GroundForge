@@ -24,7 +24,10 @@
     (<a href="javascript:clearStitches()">clear</a> all,
     set <a href="javascript:defaultStitches()">defaults</a>,
     set <a href="javascript:allStitches()">all</a>).
-    With the forms below the diagrams you can adjust the patch size or design a pattern from scratch.
+    With the forms below the diagrams you can
+    adjust the patch size,
+    work around the bug for stitches
+    or design a pattern from scratch.
 </p>
 </article>
 <form onsubmit="return false">
@@ -395,7 +398,7 @@
             <div id="threadDiagram"></div>
             <figcaption>
                 Thread diagram -
-                click squares -
+                (alt) click squares -
                 <a download="thread-diagram.svg"
                    onfocus="setDownloadContent(this,'threadDiagram')"
                    onblur="this.href='?#download'"
