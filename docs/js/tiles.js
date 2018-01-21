@@ -1,20 +1,16 @@
-var stitches = {}
+var valueFilter = /[^a-zA-Z0-9,-]/g
 
 // number of cloned elements in the built-in SVG FIXME not maintained
 var maxRows = 12
 var maxCols = 12
 
-function showProto() {
+var stitches = {}
 
-  var q = query()
-  var config = dibl.Config().create(q)
-  d3.select('#clones').node().innerHTML = dibl.InteractiveSVG().create(config)
-  d3.select('#link').node().href = '?'+q
-  d3.select("#threadDiagram").node().innerHTML = ""
-  var pairNode = d3.select("#pairDiagram").node()
-  pairNode.innerHTML = ""
-  pairNode.scrollTop = 400
-  pairNode.scrollLeft = 220
+function askForStitch(s, defaultStitch){
+
+  // TODO custom modal should show stitch cheat cheat
+  // making the input valid as early as possible protects against injection when displaying the value
+  return dibl.Stitches().makeValid(prompt(s, defaultStitch? defaultStitch : "ctc"), defaultStitch)
 }
 function collectStitches() {
 
@@ -27,22 +23,79 @@ function collectStitches() {
     var id = dibl.Stitches().toID(r, c).toUpperCase()
     kvs.push(id + "=" + stitches[keys[i]])
   }
-  return kvs.join(", ")
+  return "&" + kvs.join("&").toLowerCase()
 }
-function paintThread() {
-  // firstChild == <title>
-  var className = "."+d3.event.target.firstChild.innerHTML.replace(" ", "")
-  var segments = d3.selectAll(className)
-  var newColor = d3.event.altKey? "#000" : "#F00"
-  segments.style("stroke", newColor)
-  segments.filter(".node").style("fill", newColor)
+function setStitch(sourceNode) {
+
+  var id = sourceNode.attributes["id"].value.substr(4)
+  selected = askForStitch("Stitch for " + id, stitches[id] ? stitches[id] : "ctc")
+  if (selected && selected != "") {
+    stitches[id] = selected
+    showProto()
+    showDiagrams()
+  }
 }
-function showThreadDiagram() {
+function clearStitches() {
+
+  stitches = {}
+  showProto()
+}
+function allStitches() {
+
+  selected = askForStitch("reset all stitches to: ", "")
+  if (selected && selected.trim() != "") {
+    for (var r=1; r <= maxRows; r++)
+      for (var c=1 ; c <= maxCols; c++)
+        stitches["r"+r+"-c"+c] = selected
+    showProto()
+  }
+}
+function defaultStitches() {
+
+  selected = askForStitch("set remaining stitches to: ", "ctc")
+  if (selected && selected.trim() != "") {
+    for (var r=1; r <= maxRows; r++)
+      for (var c=1 ; c <= maxCols; c++) {
+        var id = "r"+r+"-c"+c
+        if (!stitches[id] || stitches[id] == "")
+          stitches[id] = selected
+      }
+    showProto()
+  }
+}
+function submitQuery() {
+
+  var kvpairs = []
+  var nodes = d3.selectAll('input,textarea').nodes()
+  for (i in nodes) {
+    var node = nodes[i]
+    var n = node.name
+    var v = node.value
+    if (n && v) {
+      var trimmed = v.replace(/\n/g,",").replace(valueFilter,"")
+      kvpairs.push(n + "=" + trimmed)
+    }
+  }
+  return kvpairs.join("&")
+}
+function showProto() {
+
+  var query = submitQuery()
+  var config = dibl.Config().create(query + collectStitches())
+  d3.select('#clones').node().innerHTML = dibl.InteractiveSVG().create(config)
+  d3.select('#link').node().href = '?'+ query
+  d3.select("#threadDiagram").node().innerHTML = ""
+  var pairNode = d3.select("#pairDiagram").node()
+  pairNode.innerHTML = ""
+  pairNode.scrollTop = 400
+  pairNode.scrollLeft = 220
+}
+function showDiagrams() {
 
   var markers = true // use false for slow devices and IE-11, set them at onEnd
 
   var pairContainerNode = d3.select("#pairDiagram").node()
-  var pairDiagram = pairContainerNode.data = dibl.Config().create(query()).pairDiagram
+  var pairDiagram = pairContainerNode.data = dibl.Config().create(submitQuery() + collectStitches()).pairDiagram
   pairContainerNode.innerHTML = dibl.D3jsSVG().render(pairDiagram, "1px", markers, 744, 1052)
   if (pairDiagram.jsNodes().length == 1) return
 
@@ -54,13 +107,6 @@ function showThreadDiagram() {
 
   animateDiagram(threadContainer)
   threadContainer.selectAll(".threadStart").on("click", paintThread)
-}
-function setDownloadContent (comp, id) {
-
-  svg = d3.select(id).node().innerHTML.
-      replace('pointer-events="all"', '').
-      replace(/<path [^>]+opacity: 0;.+?path>/g, '')
-  comp.href = 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
 }
 function animateDiagram(container) {
 
@@ -96,93 +142,46 @@ function animateDiagram(container) {
     .alpha(0.0035)
     .on("tick", onTick)
 }
-function setStitch(source) {
+function paintThread() {
 
-  var id = source.attributes["id"].value.substr(4)
-  selected = askForStitch("Stitch for " + id, stitches[id] ? stitches[id] : "ctc")
-  if (selected && selected != "") {
-    stitches[id] = selected
-    collectStitches()
-    showProto()
-    showThreadDiagram()
-  }
+  // firstChild == <title>
+  var className = "."+d3.event.target.firstChild.innerHTML.replace(" ", "")
+  var newColor = d3.event.altKey ? "#000" : "#F00"
+  var segments = d3.selectAll(className)
+  segments.style("stroke", newColor)
+  segments.filter(".node").style("fill", newColor)
 }
-function clearStitches() {
+function setDownloadContent (linkNode, id) {
 
-  stitches = {}
-  collectStitches()
-  showProto()
-}
-function allStitches() {
-
-  selected = askForStitch("reset all stitches to: ", "")
-  if (selected && selected.trim() != "") {
-    for (var r=1; r <= maxRows; r++)
-      for (var c=1 ; c <= maxCols; c++)
-        stitches["r"+r+"-c"+c] = selected
-    collectStitches()
-    showProto()
-  }
-}
-function defaultStitches() {
-
-  selected = askForStitch("set remaining stitches to: ", "ctc")
-  if (selected && selected.trim() != "") {
-    for (var r=1; r <= maxRows; r++)
-      for (var c=1 ; c <= maxCols; c++) {
-        var id = "r"+r+"-c"+c
-        if (!stitches[id] || stitches[id] == "")
-          stitches[id] = selected
-      }
-    collectStitches()
-    showProto()
-  }
-}
-function askForStitch(s, defaultStitch){
-
-  // making the input valid as early as possible protects against injection when displaying the value
-  return dibl.Stitches().makeValid(prompt(s, defaultStitch? defaultStitch : "ctc"), defaultStitch)
-}
-function query() {
-
-  var kvpairs = []
-  var els = document.forms[0].elements
-  for (i in els) {
-     var e = els[i]
-     var v = e.value
-     if (e && e.name && v)
-     kvpairs.push(e.name + "=" + (v).replace(/\n/g,","))//encodeURIComponent
-  }
-  return kvpairs.join("&") + "&" + collectStitches().replace(/, /g,"&").toLowerCase()
+  svg = d3.select(id).node().innerHTML.
+      replace('pointer-events="all"', '').
+      replace(/<path [^>]+opacity: 0;.+?path>/g, '')
+  linkNode.href = 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
 }
 function load() {
 
   var kvpairs = (window.location.href + '').replace(/.*\?/,"").split("&")
+  var kvs = {}
   for (var i in kvpairs) {
     var kv = kvpairs[i].split("=")
-    if (kv.length == 2) {
-      var k = kv[0].trim()
-      var v = kv[1].trim().replace(/,/g,"\n")
-      var el = d3.select("#"+k).node()
-      if (el) el.value = v
-    }
+    var k = kv[0].trim().replace(/[^a-zA-Z]/g,"")
+    kvs[k] = kv[1].trim().replace(valueFilter,"").replace(/,/g,"\n")
   }
-  showProto()
-  showThreadDiagram()
+  sample(kvs["tile"],kvs["shiftColsSE"],kvs["shiftRowsSE"],kvs["shiftColsSW"],kvs["shiftRowsSW"],kvs["footside"],kvs["headside"],kvs["repeatWidth"],kvs["repeatHeight"])
 }
 function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, repeatWidth, repeatHeight) {
 
-  d3.select('#repeatWidth').property("value",repeatWidth ? repeatWidth : (footside?3:12))
-  d3.select('#repeatHeight').property("value",repeatHeight ? repeatHeight : 12)
-  d3.select('#tile').property("value",tile)
-  d3.select('#footside').property("value",footside ? footside : "")
-  d3.select('#headside').property("value",headside ? headside : "")
-  d3.select('#shiftColsSE').property("value",shiftColsSE)
-  d3.select('#shiftRowsSE').property("value",shiftRowsSE)
-  d3.select('#shiftColsSW').property("value",shiftColsSW)
-  d3.select('#shiftRowsSW').property("value",shiftRowsSW)
+  d3.select('#repeatWidth').property("value", repeatWidth ? repeatWidth : (footside?3:12))
+  d3.select('#repeatHeight').property("value", repeatHeight ? repeatHeight : 12)
+  d3.select('#tile').property("value", tile)
+  d3.select('#footside').property("value", footside ? footside : "")
+  d3.select('#headside').property("value", headside ? headside : "")
+  d3.select('#shiftColsSE').property("value", shiftColsSE)
+  d3.select('#shiftRowsSE').property("value", shiftRowsSE)
+  d3.select('#shiftColsSW').property("value", shiftColsSW)
+  d3.select('#shiftRowsSW').property("value", shiftRowsSW)
   showProto()
-  showThreadDiagram()
+  showDiagrams()
 }
 function asChecker() {
 
@@ -219,10 +218,10 @@ function brickDown() {
 }
 function asStack() {
 
-  d3.select('#shiftRowsSE').property("value",0)
-  d3.select('#shiftColsSE').property("value",0)
-  d3.select('#shiftRowsSW').property("value",0)
-  d3.select('#shiftColsSW').property("value",0)
+  d3.select('#shiftRowsSE').property("value", 0)
+  d3.select('#shiftColsSE').property("value", 0)
+  d3.select('#shiftRowsSW').property("value", 0)
+  d3.select('#shiftColsSW').property("value", 0)
   showProto()
 }
 function brickToSW() {
