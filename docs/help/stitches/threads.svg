@@ -183,8 +183,8 @@
      id="namedview5060"
      showgrid="true"
      inkscape:zoom="0.6"
-     inkscape:cx="224.47902"
-     inkscape:cy="748.59238"
+     inkscape:cx="347.05918"
+     inkscape:cy="794.65276"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -2127,186 +2127,6 @@
      style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
      d="m 103.28426,176.6897 -11.445641,6.37548"
      class="link thread7" />
-  <path
-     inkscape:connector-curvature="0"
-     id="path6906"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 77.536469,179.31991 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title6908">twist - A1a</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path6910"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 65.299539,188.7708 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title6912">cross - A1b</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path6950"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 109.28426,176.6897 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6.000001,-6 6,6 0 0 1 6.000001,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title6952">twist - A19</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path6958"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 122.37195,184.57214 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title6960">cross - A1b</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path7010"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 94.023409,185.19034 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title7012">cross - A10</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path7014"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 82.049539,195.50993 a 6,6 0 0 1 -6,5.99999 6,6 0 0 1 -6,-5.99999 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title7016">twist - A11</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path7018"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 107.17038,193.96731 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6.000001,-6 6,6 0 0 1 6.000001,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title7020">twist - A12</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path7022"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 95.077319,201.33778 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title7024">cross - A13</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path7026"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 85.812409,211.0672 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title7028">twist - A14</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path7030"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 105.1709,210.04502 a 6,6 0 0 1 -6.000001,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6.000001,6 z"
-     class="node">
-    <title
-       id="title7032">twist - A15</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path7034"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 86.147779,227.59322 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title7036">twist - A16</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path7038"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 105.50323,226.70872 a 6,6 0 0 1 -6.000001,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6.000001,6 z"
-     class="node">
-    <title
-       id="title7040">twist - A17</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path7042"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 96.064519,236.50916 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title7044">cross - A18</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path7046"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 83.624159,243.51199 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title7048">twist - A19</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path7050"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 108.66526,242.4695 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6.000001,-6 6,6 0 0 1 6.000001,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title7052">twist - A1a</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path7054"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 96.453339,252.52644 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title7056">cross - A1b</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path7106"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 67.593469,252.42267 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title7108">cross - A10</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path7114"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 80.810839,260.43167 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title7116">twist - A12</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path7154"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 125.04048,249.79045 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title7156">cross - A10</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path7158"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 112.6404,258.99842 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title7160">twist - A11</title>
-  </path>
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -2476,24 +2296,6 @@
      class="link thread8" />
   <path
      inkscape:connector-curvature="0"
-     id="path886"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 225.10322,418.09445 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title888">cross - A20</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     id="path938"
-     style="opacity:0;fill:#000000;stroke:#000000;stroke-opacity:0.53725493"
-     d="m 505.86593,164.36769 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title940">cross - A23</title>
-  </path>
-  <path
-     inkscape:connector-curvature="0"
      id="path954"
      style="opacity:0;fill:#000000;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.53725493"
      d="m 488.85639,164.3305 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
@@ -2512,182 +2314,170 @@
   </path>
   <path
      inkscape:connector-curvature="0"
-     id="path962"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 483.45279,178.39658 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title964">twist - A24</title>
-  </path>
+     id="path342-3"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 527.7198,147.40015 9.50526,-2.0111"
+     class="link thread10" />
   <path
      inkscape:connector-curvature="0"
-     id="path1010"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 463.61985,195.14497 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1012">twist - A12</title>
-  </path>
+     id="path344-8"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 535.57347,137.67323 7.52165,6.47386"
+     class="link thread9" />
   <path
      inkscape:connector-curvature="0"
-     id="path1014"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 462.81489,208.75935 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1016">cross - A13</title>
-  </path>
+     id="path346-8"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 514.88599,143.8658 2.01359,9.67753"
+     class="link thread2" />
   <path
      inkscape:connector-curvature="0"
-     id="path1018"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 478.23658,192.49253 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1020">cross - A10</title>
-  </path>
+     id="path348-5"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 523.97541,152.08839 -5.85359,7.32914"
+     class="link thread1" />
   <path
      inkscape:connector-curvature="0"
-     id="path1022"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 477.75847,207.46944 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1024">twist - A11</title>
-  </path>
+     id="path350"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 520.67064,145.45886 7.04916,1.94129"
+     class="link thread10" />
   <path
      inkscape:connector-curvature="0"
-     id="path1026"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 492.2646,191.58938 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1028">twist - A12</title>
-  </path>
+     id="path352"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 531.02594,133.75916 -1.89286,7.80982"
+     class="link thread1" />
   <path
      inkscape:connector-curvature="0"
-     id="path1030"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 493.06266,207.10101 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1032">cross - A13</title>
-  </path>
+     id="path354"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 519.10917,130.47993 6.13179,1.68734"
+     class="link thread9" />
   <path
      inkscape:connector-curvature="0"
-     id="path1034"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 508.41947,192.16114 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1036">cross - A10</title>
-  </path>
+     id="path356"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 528.01247,123.40914 3.01347,10.35002"
+     class="link thread1" />
   <path
      inkscape:connector-curvature="0"
-     id="path1038"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 508.61476,207.67592 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1040">twist - A11</title>
-  </path>
+     id="path358"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 506.92877,131.14362 4.77554,7.63525"
+     class="link thread10" />
   <path
      inkscape:connector-curvature="0"
-     id="path1110"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 508.41008,223.50415 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1112">twist - A21</title>
-  </path>
+     id="path360"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 517.30392,136.20191 -2.41793,7.66389"
+     class="link thread2" />
   <path
      inkscape:connector-curvature="0"
-     id="path1118"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 508.33804,239.43064 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1120">cross - A23</title>
-  </path>
+     id="path362"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 512.91989,130.81718 6.18928,-0.33725"
+     class="link thread9" />
   <path
      inkscape:connector-curvature="0"
-     id="path1126"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 492.78722,222.78775 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1128">cross - A20</title>
-  </path>
+     id="path364"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 526.33518,117.64836 -4.28189,7.60355"
+     class="link thread2" />
   <path
      inkscape:connector-curvature="0"
-     id="path1130"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 477.29284,222.63279 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1132">twist - A21</title>
-  </path>
+     id="path366"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 504.2233,118.00835 c 0,0 -4.66622,7.08707 -0.83804,10.80216"
+     class="link thread9" />
   <path
      inkscape:connector-curvature="0"
-     id="path1134"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 491.86411,238.48472 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1136">twist - A22</title>
-  </path>
+     id="path368"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 507.76683,120.34147 c 0,0 3.82817,3.71509 -0.83806,10.80215"
+     class="link thread10" />
   <path
      inkscape:connector-curvature="0"
-     id="path1138"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 477.30331,237.86744 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1140">cross - A23</title>
-  </path>
+     id="path370"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 507.6169,104.95987 c 0,0 -7.31705,4.29661 -5.54192,9.38996"
+     class="link thread10" />
   <path
      inkscape:connector-curvature="0"
-     id="path1142"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 483.2776,252.1508 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1144">twist - A24</title>
-  </path>
+     id="path372"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 509.76521,108.6184 c 0,0 1.77513,5.09335 -5.54191,9.38995"
+     class="link thread9" />
   <path
      inkscape:connector-curvature="0"
-     id="path1146"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 461.9966,222.74291 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1148">cross - A20</title>
-  </path>
+     id="path374"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 519.82399,105.1356 3.74155,7.19025"
+     class="link thread1" />
   <path
      inkscape:connector-curvature="0"
-     id="path1154"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 461.75483,236.72634 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1156">twist - A22</title>
-  </path>
+     id="path376"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 530.12028,106.97993 -3.7851,10.66843"
+     class="link thread2" />
   <path
      inkscape:connector-curvature="0"
-     id="path1198"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 474.28903,264.91408 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1200">cross - A10</title>
-  </path>
+     id="path378"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 515.70867,91.916074 -4.92883,7.94519"
+     class="link thread9" />
   <path
      inkscape:connector-curvature="0"
-     id="path1206"
-     style="opacity:0;fill:#000000;stroke:none"
-     d="m 152.65891,532.57222 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6 z"
-     class="node">
-    <title
-       id="title1208">twist - A12</title>
-  </path>
+     id="path380"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 513.82462,105.04924 -6.20772,-0.0894"
+     class="link thread10" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path382"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 517.49209,97.644904 2.3319,7.490696"
+     class="link thread1" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path384"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 532.12653,101.32529 -6.57113,2.0352"
+     class="link thread10" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path386"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 528.68661,88.061054 1.93372,7.45637"
+     class="link thread2" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path388"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.53725493"
+     d="m 540.23605,93.708784 -8.10952,7.616506"
+     class="link thread10" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path390"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.53725493"
+     d="m 519.13382,76.205334 -2.14709,9.84844"
+     class="link thread1" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path392"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2px"
+     d="m 522.93499,89.769544 -7.22632,2.14653"
+     class="link thread9" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path394"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.53725493"
+     d="m 522.89836,80.877394 5.78825,7.18366"
+     class="link thread2" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path396"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.53725493"
+     d="m 544.60956,89.601154 -9.95082,-0.96246"
+     class="link thread9" />
 </svg>
