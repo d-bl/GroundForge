@@ -85,6 +85,7 @@ function showProto() {
   d3.select('#clones').node().innerHTML = dibl.InteractiveSVG().create(config)
   d3.select('#link').node().href = '?'+ query
   d3.select("#threadDiagram").node().innerHTML = ""
+  d3.select("#fringes").node().innerHTML = dibl.Fringes().createSVG(config)
   var pairNode = d3.select("#pairDiagram").node()
   pairNode.innerHTML = ""
   pairNode.scrollTop = 400
