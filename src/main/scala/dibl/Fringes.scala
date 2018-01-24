@@ -245,6 +245,12 @@ object Fringes {
   def createSVG(config: Config):String = {
     val m = config.itemMatrix.map(_.map(i => charToRelativeTuples(i.vectorCode.toUpper)))
     val shifted = m.slice(m.length - 2, m.length) ++ m.slice(0,m.length - 2)
+    val trimmed =
+      if (config.leftMatrix.isEmpty) {
+        if (config.rightMatrix.isEmpty)shifted
+        else  shifted.map(line => line.slice(0, line.length - 2))
+      } else if (config.rightMatrix.isEmpty) shifted.map(line => line.slice(2, line.length))
+    else shifted.map(line => line.slice(2, line.length - 2))
     new Fringes(Matrix.toAbsolute(shifted)).svgDoc
   }
 }
