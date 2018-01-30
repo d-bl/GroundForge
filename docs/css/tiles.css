@@ -2,7 +2,7 @@ li li { padding-bottom:0; }
 
 figure { display: inline-block; margin-left: 0; margin-top: 0; margin-right: 0.5em; margin-bottom: 0; }
 figure image, figcaption { display: block; }
-figcaption { text-align: center; background-color: #ddd; border-radius: 3px; margin-top: 0.3em; }
+figcaption { text-align: center; background-color: #ddd; border-radius: 3px; margin-top: 0.3em; padding-left: 0.5em; padding-right: 0.5em; }
 figure div { resize:both;overflow:auto;display:inline-block;width:250px;height:250px;max-width:784px;max-height:1082px }
 
 input[type="number"] { width:3em; }
