@@ -139,7 +139,8 @@ object Stitches {
     ))
   }
 
-  private def makeValid(s: String, default: String): String = {
+  @JSExport
+  def makeValid(s: String, default: String): String = {
     val strippedPins = s.replaceAll("p", "")
     if (strippedPins.length == 0) default // need more than a pin
     else if (s.length - strippedPins.length > 1) default // at most one pin

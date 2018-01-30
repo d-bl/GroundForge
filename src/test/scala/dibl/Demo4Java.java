@@ -27,9 +27,9 @@ public class Demo4Java {
         // No named arguments in java, so you have to specify all default values
         // .apply is a scala-pattern for factory methods and fetching an indexed element
 
-        PatternSheet patternSheet = PatternSheet.apply(2, "", "GF");
-        patternSheet.add("5-", "bricks");
-        String svgPatternSheet = patternSheet.toSvgDoc();
+        SheetSVG sheetSVG = SheetSVG.apply(2, "", "GF");
+        sheetSVG.add("5-", "bricks");
+        String svgPatternSheet = sheetSVG.toSvgDoc();
 
         Try<Diagram> triedPairDiagram = PairDiagram.create(
                 "5-", "bricks",
@@ -48,8 +48,8 @@ public class Demo4Java {
         Diagram threadDiagram = nudgeNodes(
                 ThreadDiagram.apply(nudgedPairDiagram), center, 20, SECONDS
         ).get();
-        String s = SVG.render(threadDiagram, "2px", true, 744, 1052, 0);
-        SVG.threadsCSS("".split(","));
+        String s = D3jsSVG.render(threadDiagram, "2px", true, 744, 1052, 0);
+        D3jsSVG.threadsCSS("".split(","));
 
         System.exit(0); /// required because of Force.simulate to nudge nodes
     }

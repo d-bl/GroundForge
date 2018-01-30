@@ -24,7 +24,7 @@ object PatternDemos {
     File("target/test/pattern/").createDirectory()
 
     {
-      val patterns = new PatternSheet
+      val patterns = new SheetSVG
       patterns.add("5831 -4-7", "bricks")
       patterns.add("-437 34-7", "bricks")
       patterns.add("5831 -4-7 3158 -7-4", "checker")
@@ -33,7 +33,7 @@ object PatternDemos {
     }
 
     {
-      val patterns = new PatternSheet
+      val patterns = new SheetSVG
       patterns.add("B-5-C- -5-5-- B---C-", "bricks") // double length vertical rows
       patterns.add("-5---5-5 5-O-E-5-", "bricks") // double length horizontal lines
 
@@ -51,7 +51,7 @@ object PatternDemos {
     }
 
     {
-      val patterns = PatternSheet(1, "width='340' height='330'")
+      val patterns = SheetSVG(1, "width='340' height='330'")
       patterns.add("586- -4-5 5-21 -5-7", "bricks")
       File("target/test/pattern/minimal.svg").writeAll(patterns.toSvgDoc())
     }

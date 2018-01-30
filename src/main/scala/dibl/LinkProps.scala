@@ -18,6 +18,7 @@ package dibl
 import java.lang.Math.sqrt
 
 import dibl.Force.Point
+import dibl.LinkProps.Path
 
 import scala.scalajs.js
 
@@ -65,22 +66,22 @@ sealed abstract class LinkProps extends Props {
   def renderedPath(p: Path): Path = p // assignment for non-thread subclasses
 }
 
-sealed case class Path(source: Point, target: Point, curveTo: Option[Point] = None) {
-  private val twistWidth = 6
-  private val straightDistance = twistWidth / 5
-  private val curvedDistance = straightDistance * 2
-  private lazy val dX: Double = target.x - source.x
-  private lazy val dY: Double = target.y - source.y
-  private lazy val linkLength: Double = sqrt(dX*dX + dY*dY)
-  lazy val dXCurveTo: Double = dX * (twistWidth / linkLength)
-  lazy val dYCurveTo: Double = dY * (twistWidth / linkLength)
-  lazy val dXGap: Double = dXCurveTo / curvedDistance
-  lazy val dYGap: Double = dYCurveTo / curvedDistance
-  lazy val straightDX: Double = dXCurveTo / straightDistance
-  lazy val straightDY: Double = dYCurveTo / straightDistance
-}
-
 object LinkProps {
+
+  sealed case class Path(source: Point, target: Point, curveTo: Option[Point] = None) {
+    private val twistWidth = 6
+    private val straightDistance = twistWidth / 5
+    private val curvedDistance = straightDistance * 2
+    private lazy val dX: Double = target.x - source.x
+    private lazy val dY: Double = target.y - source.y
+    private lazy val linkLength: Double = sqrt(dX*dX + dY*dY)
+    lazy val dXCurveTo: Double = dX * (twistWidth / linkLength)
+    lazy val dYCurveTo: Double = dY * (twistWidth / linkLength)
+    lazy val dXGap: Double = dXCurveTo / curvedDistance
+    lazy val dYGap: Double = dYCurveTo / curvedDistance
+    lazy val straightDX: Double = dXCurveTo / straightDistance
+    lazy val straightDY: Double = dYCurveTo / straightDistance
+  }
 
   private val threadStartMarker = "start" -> "thread"
 

@@ -1,7 +1,7 @@
 package dibl
 
 import dibl.Force.{ Point, nudgeNodes }
-import dibl.SVG.{ prolog, render }
+import dibl.D3jsSVG.{ prolog, render }
 
 import scala.reflect.io.File
 import scala.util.Try

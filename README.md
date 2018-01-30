@@ -117,7 +117,7 @@ The applied Scala coding techniques are explained by this [course] up and includ
 Tests
 -----
 
-Both `sbt test` and `mvn clean test` do execute the unit tests.
+Use `mvn clean test` to run unit tests. As some tests read files the test fail with SBT.
 Maven is much faster but uses JVM while the JS used by SBT is the actual target environment.
 Some classes under `src/test` are suffixed with `Demos` rather than `Spec` these runnable objects create SVG documents in a `target/test` directory for a visual check.
 
@@ -125,8 +125,10 @@ Some classes under `src/test` are suffixed with `Demos` rather than `Spec` these
 Publish
 -------
 
-- Compile with `sbt '~fullOptJS'` (drop the quotes on windows)
-- Copy the content of `target/scala-2.11/groundforge-opt.js` into `docs/js/`
-- Check the results with `index.html`
+- Compile and copy the result
+  - windows: `sbt fullOptJS && copy /Y target\scala-2.11\groundforge-opt.js docs\js\GroundForge-opt.js`
+  - *nix: `sbt fullOptJS && copy -f target/scala-2.11/groundforge-opt.js docs/js/GroundForge-opt.js`
+- Check the results with the `docs/*.html` pages
 - If ok: commit, push and create a pull request 
+- travis will report some of the internal link problems on the help pages in `docs/help`
 - Optional (if you know what you are doing): after merging with your master branch you can check the online demo in your own github fork: `http://YOURID.github.io/GroundForge/` 

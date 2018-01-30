@@ -1,7 +1,9 @@
-#sidebar ul { padding-left:0; margin-bottom:0px; font-weight: bold; font-size: 14px; }
-#sidebar ul ul { padding-left:15px; font-weight: normal; font-size: 12px;}
-#sidebar li { list-style-type:none; padding-bottom: 8px; }
-#sidebar li li { list-style-type:disc; padding-bottom:0;}
+color: #333;
+
+#sidebar ul { padding-left: 0; margin-bottom: 0px; font-weight: bold; font-size: 14px; }
+#sidebar ul ul { padding-left: 15px; font-weight: normal; font-size: 12px;}
+#sidebar li { list-style-type: none; padding-bottom: 8px; }
+#sidebar li li { list-style-type: disc; padding-bottom:     0;}
 
 li li { padding-bottom:0; }
 td, th { text-align: left }
@@ -17,8 +19,9 @@ table { margin-bottom: 1em; }
 #main-content h5::before { content: ",,,,,"; }
 #main-content h6::before { content: ",,,,,,"; }
 
-figure { display: inline-block; margin-left:0; margin-top:0; margin-right:1em; }
+figure { display: inline-block; margin-left: 0; margin-top: 0; margin-right: 0.5em; }
 figure image, figcaption { display: block; }
+figcaption { text-align: center; background-color: #ddd; border-radius: 3px; margin-top: 0.3em; }
 
 #stitch-form { padding-bottom: 1em; margin-bottom: 1em; }
 #stitch-form input { width: 90%; }

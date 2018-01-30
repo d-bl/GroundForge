@@ -18,7 +18,7 @@ API
     + [Methods, all returning arrays of maps](#methods-all-returning-arrays-of-maps)
     + [Constructor](#constructor)
     + [Factory methods `get`](#factory-methods-get)
-  * [Class `dibl.PatternSheet`](#class-diblpatternsheet)
+  * [Class `dibl.SheetSVG`](#class-diblSheetSVG)
     + [Method **`add`**](#method-add)
     + [Constructor](#constructor-1)
     + [JavaScript example](#javascript-example-1)
@@ -63,7 +63,7 @@ you can create a scala worksheet between the source code.
 The extension of worksheets is `.sc` which is git-ignored.
 An IDE can compile and run the worksheet as you type.
 
-The `PatternSheet` is ready to create an SVG in a JVM environment.
+The `SheetSVG` is ready to create an SVG in a JVM environment.
 A [PatternDemos class] shows batch generation of pair/thread diagrams.
 Though written in scala both can as easily be used in java.
 
@@ -133,7 +133,7 @@ The countdown process until the diagram gets saved runs in the back ground. The 
 Functions and Classes
 =====================
 
-The code under `src/main/scala/dibl` has two classes with `@JSExport` annotations: D3Data and PatternSheet.
+The code under `src/main/scala/dibl` has two classes with `@JSExport` annotations: D3Data and SheetSVG.
 This allows to access them in a JavaScript environment such as browsers and node.js.
 
 
@@ -228,7 +228,7 @@ Another signature used by `createThreadSVG`:
 * **`data`** - the result of `dibl.D3Data().get` or the result of `createSVG`
 
 
-Class `dibl.PatternSheet`
+Class `dibl.SheetSVG`
 --------------------------
 This [demo](/GroundForge/sheet.html?img=376&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks)
 shows a set of diagrams arranged depending on the available width.
@@ -263,7 +263,7 @@ or possibly a later version:
 <body>
     <div id="diagram"></div>
     <script>
-        var sheet = new dibl.PatternSheet(2, "height='100mm' width='100mm'", "1")
+        var sheet = new dibl.SheetSVG(2, "height='100mm' width='100mm'", "1")
         sheet.add("B-C-,---5,C-B-,-5--","checker")
         document.getElementById("diagram").innerHTML += sheet.toSvgDoc().trim()
     </script>
@@ -275,7 +275,7 @@ or possibly a later version:
 ### Java example
 
 ```java
-PatternSheet patterns = new dibl.PatternSheet(2, "height='100mm' width='110mm'");
+SheetSVG patterns = new dibl.SheetSVG(2, "height='100mm' width='110mm'");
 patterns.add("586- -789 2111 -4-4", "checker");
 new java.io.FileOutputStream("sheet.svg").write(patterns.toSvgDoc().getBytes());
 ```
@@ -286,7 +286,7 @@ Of course you should close the stream.
 ### Scala example
 
 ```scala
-val patterns = dibl.PatternSheet(2, "height='100mm' width='110mm'")
+val patterns = dibl.SheetSVG(2, "height='100mm' width='110mm'")
 patterns.add("586- -789 2111 -4-4", "checker")
 scala.reflect.io.File("PATH/TO/GroundForge/target/sheet.svg").writeAll(patterns.toSvgDoc())
 ```

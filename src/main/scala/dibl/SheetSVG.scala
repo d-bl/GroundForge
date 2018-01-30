@@ -25,7 +25,7 @@ import scala.scalajs.js.annotation.JSExport
   * @param pageSize Attributes for the SVG root element.
   *                 Defaults to landscape A4.
   */
-@JSExport case class PatternSheet(patchRows: Int = 2, pageSize: String = "height='210mm' width='297mm'", idBase: String = "GFP") {
+@JSExport case class SheetSVG(patchRows: Int = 2, pageSize: String = "height='210mm' width='297mm'", idBase: String = "GFP") {
   private val patterns = new ListBuffer[String]
 
   /**
@@ -37,7 +37,7 @@ import scala.scalajs.js.annotation.JSExport
     * @return this, to allow chaining
     */
   @JSExport
-  def add(m: String, tileType: String): PatternSheet = {
+  def add(m: String, tileType: String): SheetSVG = {
     val n = patterns.size
     val x = 25 + (n / patchRows) * 360
     val y = 95 + (n % patchRows) * 335

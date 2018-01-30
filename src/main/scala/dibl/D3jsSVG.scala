@@ -16,14 +16,13 @@
 
 package dibl
 
-import java.lang.Math.sqrt
-
 import dibl.Force.Point
+import dibl.LinkProps.Path
 
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
-object SVG {
+object D3jsSVG {
 
   @JSExport
   def circle(r: Int): String = s"M $r,0 A $r,$r 0 0 1 0,$r $r,$r 0 0 1 -$r,0 $r,$r 0 0 1 0,-$r $r,$r 0 0 1 $r,0 Z"
