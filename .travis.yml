@@ -54,7 +54,6 @@ matrix:
       - sed -i -e '/="help/ s!" target!.html" target!'                       _site/*.html
       - sed -i -e 's!\(href="[^#][^"#?.:]*\)\([#"?]\)!\1.html\2!'            _site/*.html
       - sed -i -e 's!./.html!index.html/!g'                                  _site/*.html
-      - sed -i -e 's!#download!#!g'                                          _site/tiles.html
       - grep 'GroundForge/'    _site/*.html _site/*.html _site/help/*.html _site/*/*.js || test $? -eq 1
       - grep 'io/GroundForge/' _site/*.html _site/*.html _site/help/*.html _site/*/*.js || test $? -eq 1
       - htmlproofer ./_site --disable-external --empty_alt_ignore  --url-ignore "#"
