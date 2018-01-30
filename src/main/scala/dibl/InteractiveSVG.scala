@@ -33,7 +33,7 @@ object InteractiveSVG {
       val opacity = if (vectorCode == "-") "0.05" else if (itemMatrix(r)(c).isOpaque) "1" else "0.3"
       val translate = s"transform='translate(${c * 10 + 38},${r * 10 + 1})'"
       val nrOfPairsOut = pairsOut(r)(c)
-      (if (nrOfPairsOut == 0 || nrOfPairsOut == 2) ""
+      (if (nrOfPairsOut == 2 || vectorCode == "-") ""
       else s"""<use xlink:href='#oops' $translate style='opacity:0.${1 + nrOfPairsOut};'/>"""
         ) +
         s"""<use xlink:href='#g$vectorCode'

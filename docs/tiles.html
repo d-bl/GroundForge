@@ -15,19 +15,20 @@
 <body onload="load()">
 <article>
 <a id="logo" href="/GroundForge/" title="Main page"><img src="images/logo-medium.png" alt="DiBL logo"/></a>
-<h1>Under construction</h1>
+<h1>GroundForge - minimal tiles</h1>
 <p>
     Bobbin lace patterns on the
     <a href="/GroundForge/help/examples" target="_blank"
-    >example</a> pages may refer to this page.
+    >example pages</a> may refer to this page.
     Use the prototype diagram to vary stitches in a pattern
     (<a href="javascript:clearStitches()">clear</a> all,
     set <a href="javascript:defaultStitches()">defaults</a>,
     set <a href="javascript:allStitches()">all</a>).
     With the forms below the diagrams you can
-    adjust the patch size,
-    work around the bug for stitches (in the demo's legend)
-    or design a pattern from scratch.
+    adjust the patch size
+    (<em>currently the first row below the patch should equal the first row</em>),
+    design a pattern from scratch
+    or work around the current bug for stitches in the demo's legend.
 </p>
 </article>
 <form onsubmit="return false">
@@ -384,33 +385,36 @@
                 >download</a>
             </figcaption>
         </figure>
-        <figure >
-            <div id="pairDiagram"></div>
-            <figcaption>
-                Pair diagram -
-                <a href="javascript:animateDiagram(d3.select('#pairDiagram'))">animate</a> -
-                <a download="pair-diagram.svg"
-                   onfocus="setDownloadContent(this,'#pairDiagram')"
-                   onblur="this.href='?#download'"
-                   target="_blank"
-                   href="?#download"
-                   title="download"
-                >download</a>
-            </figcaption>
-        </figure>
-        <figure >
-            <div id="threadDiagram"></div>
-            <figcaption>
-                Thread diagram -
-                (alt) click squares -
-                <a download="thread-diagram.svg"
-                   onfocus="setDownloadContent(this,'#threadDiagram')"
-                   onblur="this.href='?#download'"
-                   target="_blank"
-                   href="?#download"
-                   title="download"
-                >download</a>
-            </figcaption>
+        <figure>
+            <figure >
+                <div id="pairDiagram"></div>
+                <figcaption>
+                    Pair diagram -
+                    <a href="javascript:animateDiagram(d3.select('#pairDiagram'))">animate</a> -
+                    <a download="pair-diagram.svg"
+                       onfocus="setDownloadContent(this,'#pairDiagram')"
+                       onblur="this.href='?#download'"
+                       target="_blank"
+                       href="?#download"
+                       title="download"
+                    >download</a>
+                </figcaption>
+            </figure>
+            <figure >
+                <div id="threadDiagram"></div>
+                <figcaption>
+                    Thread diagram -
+                    (alt) click squares -
+                    <a download="thread-diagram.svg"
+                       onfocus="setDownloadContent(this,'#threadDiagram')"
+                       onblur="this.href='?#download'"
+                       target="_blank"
+                       href="?#download"
+                       title="download"
+                    >download</a>
+                </figcaption>
+            </figure>
+            <figcaption><strong>Under construction</strong></figcaption>
         </figure>
         <a id="link" href=""><button type="button"><img src="images/link.png"></button></a>
     </fieldset>
