@@ -17,6 +17,7 @@
 package dibl
 
 import dibl.Force.Point
+import dibl.LinkProps.Path
 
 import scala.scalajs.js.annotation.JSExport
 
