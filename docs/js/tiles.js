@@ -80,15 +80,22 @@ function submitQuery() {
 }
 function showProto() {
 
+  if (window && window.scrollTo){ window.scrollTo(0,0) }
+
   var query = submitQuery()
   var config = dibl.Config().create(query + collectStitches())
   d3.select('#clones').node().innerHTML = dibl.InteractiveSVG().create(config)
+  var proto = d3.select("#prototype").node()
+  proto.setAttribute("style","height:" + (config.totalRows * 20 + 30) + "px;width:" + (config.totalCols * 20 + 50) + "px")
+
   d3.select('#link').node().href = '?'+ query
   d3.select("#threadDiagram").node().innerHTML = ""
   var pairNode = d3.select("#pairDiagram").node()
   pairNode.innerHTML = ""
   pairNode.scrollTop = 400
   pairNode.scrollLeft = 220
+  d3.selectAll('textarea').style('height',(config.maxTileRows+2)+"em")
+  d3.selectAll('#pairDiagram, #threadDiagram').style('height',"20px")
 }
 function showDiagrams() {
 
@@ -104,6 +111,8 @@ function showDiagrams() {
   var threadDiagram = threadContainerNode.data = dibl.ThreadDiagram().create(pairDiagram)
   threadContainerNode.innerHTML = dibl.D3jsSVG().render(threadDiagram, "2px", markers, 744, 1052)
   if (threadDiagram.jsNodes().length == 1 || threadContainer.node().innerHTML.indexOf("Need a new pair from") >= 0)  return
+
+  d3.selectAll('#pairDiagram, #threadDiagram').style('height',"250px")
 
   animateDiagram(threadContainer)
   threadContainer.selectAll(".threadStart").on("click", paintThread)
@@ -164,8 +173,10 @@ function load() {
   var kvs = {}
   for (var i in kvpairs) {
     var kv = kvpairs[i].split("=")
-    var k = kv[0].trim().replace(/[^a-zA-Z]/g,"")
-    kvs[k] = kv[1].trim().replace(valueFilter,"").replace(/,/g,"\n")
+    if (kv.length > 1) {
+      var k = kv[0].trim().replace(/[^a-zA-Z]/g,"")
+      kvs[k] = kv[1].trim().replace(valueFilter,"").replace(/,/g,"\n")
+    }
   }
   sample(kvs["tile"],kvs["shiftColsSE"],kvs["shiftRowsSE"],kvs["shiftColsSW"],kvs["shiftRowsSW"],kvs["footside"],kvs["headside"],kvs["repeatWidth"],kvs["repeatHeight"])
 }

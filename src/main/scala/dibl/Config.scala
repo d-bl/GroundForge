@@ -23,7 +23,11 @@ class Config(urlQuery: String) {
   val centerMatrix: Array[String] = getMatrix("tile")
   val rightMatrix: Array[String] = getMatrix("headside")
 
+  @JSExport
+  val maxTileRows: Int = Math.max(centerMatrix.length, Math.max(leftMatrix.length, rightMatrix.length))
+
   // TODO defaults based on the dimensions of the above matrices
+  @JSExport
   val totalRows: Int = fields.getOrElse("repeatHeight", "12").replaceAll("[^0-9-]", "").toInt
   val centerCols: Int = fields.getOrElse("repeatWidth", "12").replaceAll("[^0-9-]", "").toInt
   val shiftRowsSE: Int = fields.getOrElse("shiftRowsSE", "12").replaceAll("[^0-9-]", "").toInt
@@ -44,6 +48,7 @@ class Config(urlQuery: String) {
       leftMarginWidth + centerCols
     else 0
 
+  @JSExport
   val totalCols: Int = centerCols +
     leftMarginWidth +
     (if (offsetRightMargin == 0) 0
