@@ -559,18 +559,6 @@
          id="tspan9854"
          x="262.40091"
          y="480.44315">one</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="19.48735"
-       y="32.346634"
-       id="text11900"
-       sodipodi:linespacing="0%"
-       transform="scale(1.0472855,0.95484947)"><tspan
-         sodipodi:role="line"
-         id="tspan11902"
-         x="19.48735"
-         y="32.346634">Sitemap of https://d-bl.github.io/GroundForge</tspan></text>
     <path
        sodipodi:nodetypes="cc"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:8, 8;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker8339)"
@@ -645,42 +633,6 @@
        x="18"
        y="696.32153"
        ry="0.053478792" />
-    <text
-       transform="scale(1.0472855,0.95484947)"
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="15.804285"
-       y="637.76935"
-       id="text6680"
-       sodipodi:linespacing="0%"><tspan
-         sodipodi:role="line"
-         id="tspan6682"
-         x="15.804285"
-         y="637.76935">pair diagrams with</tspan></text>
-    <text
-       sodipodi:linespacing="0%"
-       id="text6684"
-       y="658.71509"
-       x="34.901272"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"
-       transform="scale(1.0472855,0.95484947)"><tspan
-         y="658.71509"
-         x="34.901272"
-         id="tspan6686"
-         sodipodi:role="line">a square grid: sheet/tiles</tspan></text>
-    <text
-       transform="scale(1.0472855,0.95484947)"
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="34.901272"
-       y="679.66083"
-       id="text6688"
-       sodipodi:linespacing="0%"><tspan
-         sodipodi:role="line"
-         id="tspan6690"
-         x="34.901272"
-         y="679.66083">rounded holes: index/tiles</tspan></text>
     <path
        sodipodi:nodetypes="cc"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:8, 8;stroke-dashoffset:0;stroke-opacity:1"

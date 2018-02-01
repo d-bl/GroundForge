@@ -66,7 +66,7 @@ function defaultStitches() {
 function submitQuery() {
 
   var kvpairs = []
-  var nodes = d3.selectAll('input,textarea').nodes()
+  var nodes = d3.selectAll('input, textarea').nodes()
   for (i in nodes) {
     var node = nodes[i]
     var n = node.name
@@ -80,39 +80,36 @@ function submitQuery() {
 }
 function showProto() {
 
-  if (window && window.scrollTo){ window.scrollTo(0,0) }
+  window.scrollTo(0,0)
 
   var query = submitQuery()
   var config = dibl.Config().create(query + collectStitches())
-  d3.select('#clones').node().innerHTML = dibl.InteractiveSVG().create(config)
-  var proto = d3.select("#prototype").node()
-  proto.setAttribute("style","height:" + (config.totalRows * 20 + 30) + "px;width:" + (config.totalCols * 20 + 50) + "px")
-
-  d3.select('#link').node().href = '?'+ query
-  d3.select("#threadDiagram").node().innerHTML = ""
-  var pairNode = d3.select("#pairDiagram").node()
-  pairNode.innerHTML = ""
-  pairNode.scrollTop = 400
-  pairNode.scrollLeft = 220
-  d3.selectAll('textarea').style('height',(config.maxTileRows+2)+"em")
-  d3.selectAll('#pairDiagram, #threadDiagram').style('height',"20px")
+  d3.select("#link").node().href = "?" + query
+  d3.select("#clones").html(dibl.InteractiveSVG().create(config))
+  d3.select("#animations").style("display", "none")
+  d3.selectAll("#threadDiagram, #pairDiagram").html("")
+  d3.selectAll("textarea").style("height", (config.maxTileRows+2)+"em")
+  d3.select("#prototype").style("height", (config.totalRows * 20 + 30) + "px"
+                        ).style("width", (config.totalCols * 20 + 30) + "px")
 }
 function showDiagrams() {
 
+  d3.select('#animations').style('display',"inline-block")
+
   var markers = true // use false for slow devices and IE-11, set them at onEnd
 
-  var pairContainerNode = d3.select("#pairDiagram").node()
+  var pairContainer = d3.select("#pairDiagram")
+  var pairContainerNode = pairContainer.node()
   var pairDiagram = pairContainerNode.data = dibl.Config().create(submitQuery() + collectStitches()).pairDiagram
-  pairContainerNode.innerHTML = dibl.D3jsSVG().render(pairDiagram, "1px", markers, 744, 1052)
+  pairContainer.html(dibl.D3jsSVG().render(pairDiagram, "1px", markers, 744, 1052))
+  pairContainerNode.scrollTo(0,0)
   if (pairDiagram.jsNodes().length == 1) return
 
   var threadContainer = d3.select("#threadDiagram")
   var threadContainerNode = threadContainer.node()
   var threadDiagram = threadContainerNode.data = dibl.ThreadDiagram().create(pairDiagram)
-  threadContainerNode.innerHTML = dibl.D3jsSVG().render(threadDiagram, "2px", markers, 744, 1052)
-  if (threadDiagram.jsNodes().length == 1 || threadContainer.node().innerHTML.indexOf("Need a new pair from") >= 0)  return
-
-  d3.selectAll('#pairDiagram, #threadDiagram').style('height',"250px")
+  threadContainer.html(dibl.D3jsSVG().render(threadDiagram, "2px", markers, 744, 1052))
+  if (threadDiagram.jsNodes().length == 1 || threadContainerNode.innerHTML.indexOf("Need a new pair from") >= 0)  return
 
   animateDiagram(threadContainer)
   threadContainer.selectAll(".threadStart").on("click", paintThread)

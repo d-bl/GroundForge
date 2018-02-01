@@ -28,21 +28,10 @@
     adjust the patch size or design a pattern from scratch.
 </p>
 </article>
-<form onsubmit="return false">
+<form onsubmit="return false" id="download">
     <fieldset id="diagrams">
         <legend>Diagrams</legend>
         <figure >
-            <figcaption title="choosing a stitch shows/refreshes the thread diagram">
-                Prototype -
-                click bold symbols -
-                <a download="prototype.svg"
-                   onfocus="setDownloadContent(this,'#prototype')"
-                   onblur="this.href='?#download'"
-                   target="_blank"
-                   href="#"
-                   title="download"
-                >download</a>
-            </figcaption>
             <div id="prototype">
                 <svg  xmlns:dc="http://purl.org/dc/elements/1.1/"
                       xmlns:cc="http://creativecommons.org/ns#"
@@ -381,12 +370,28 @@
                     </g>
                 </svg>
             </div>
+            <figcaption title="choosing a stitch shows/refreshes the thread diagram">
+                Prototype -
+                click bold symbols -
+                <a download="prototype.svg"
+                   onfocus="setDownloadContent(this,'#prototype')"
+                   onblur="this.href='?#download'"
+                   target="_blank"
+                   href="?#download"
+                   title="download"
+                >download</a>
+            </figcaption>
         </figure>
-        <fieldset>
+        <fieldset id="animations">
             <legend>
                 <strong>Under construction</strong>
             </legend>
-            <figure >
+            <p>
+                The two rows beyond the prototype patch should equal the first two rows.
+                <br>A possible work around for stitch problems lives in the demo's legend.
+            </p>
+            <figure>
+                <div id="pairDiagram"></div>
                 <figcaption>
                     Pair diagram -
                     <a href="javascript:animateDiagram(d3.select('#pairDiagram'))">animate</a> -
@@ -394,13 +399,13 @@
                        onfocus="setDownloadContent(this,'#pairDiagram')"
                        onblur="this.href='?#download'"
                        target="_blank"
-                       href="#"
+                       href="?#download"
                        title="download"
                     >download</a>
                 </figcaption>
-                <div id="pairDiagram"></div>
             </figure>
             <figure >
+                <div id="threadDiagram"></div>
                 <figcaption>
                     Thread diagram -
                     (alt) click squares -
@@ -408,16 +413,11 @@
                        onfocus="setDownloadContent(this,'#threadDiagram')"
                        onblur="this.href='?#download'"
                        target="_blank"
-                       href="#"
+                       href="?#download"
                        title="download"
                     >download</a>
                 </figcaption>
-                <div id="threadDiagram"></div>
             </figure>
-            <p>
-                The two rows beyond the prototype patch should equal the first two rows.
-                <br>Another possible work around for stitches lives in the demo's legend.
-            </p>
         </fieldset>
         <a id="link" href=""><button type="button"><img src="images/link.png"></button></a>
     </fieldset>
