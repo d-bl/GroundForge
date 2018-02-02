@@ -24,6 +24,13 @@ class Config(urlQuery: String) {
   val rightMatrix: Array[String] = getMatrix("headside")
 
   @JSExport
+  val leftMatrixCols: Int = Option(leftMatrix.head).map(_.length).getOrElse(2)
+  @JSExport
+  val centerMatrixCols: Int = Option(centerMatrix.head).map(_.length).getOrElse(5)
+  @JSExport
+  val rightMatrixCols: Int = Option(rightMatrix.head).map(_.length).getOrElse(2)
+
+  @JSExport
   val maxTileRows: Int = Math.max(centerMatrix.length, Math.max(leftMatrix.length, rightMatrix.length))
 
   // TODO defaults based on the dimensions of the above matrices

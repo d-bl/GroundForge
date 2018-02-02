@@ -88,7 +88,10 @@ function showProto() {
   d3.select("#clones").html(dibl.InteractiveSVG().create(config))
   d3.select("#animations").style("display", "none")
   d3.selectAll("#threadDiagram, #pairDiagram").html("")
-  d3.selectAll("textarea").style("height", (config.maxTileRows+2)+"em")
+  d3.selectAll("textarea").attr("rows", config.maxTileRows + 1)
+  d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
+  d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
+  d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
   d3.select("#prototype").style("height", (config.totalRows * 20 + 30) + "px"
                         ).style("width", (config.totalCols * 20 + 30) + "px")
 }
