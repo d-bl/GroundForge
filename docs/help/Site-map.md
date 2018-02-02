@@ -19,4 +19,4 @@ Pair diagrams come in roughly two styles:
 
 Many squared diagrams can result in the same rounded diagram.
 
-{% include site-map.html %}
+{% include site-map.svg %}
