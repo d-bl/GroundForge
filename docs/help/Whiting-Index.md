@@ -6,43 +6,11 @@ title: Whiting index
 Whiting index
 =============
 
-*Jo Edkins* went through a lot of work to create an annotated online [index] on the grounds in
-'_A Lace Guide for Makers and Collectors_' by Gertrude Whiting which dates from 1920.
-The book is available with a higher resolution in four PDF's at the [Digital Archive] of the late professor Griswold,
-including a [scan] of the original index.
+*Jo Edkins* went through the trouble to create an annotated online [index] on the grounds in
+'_A Lace Guide for Makers and Collectors_' by Gertrude Whiting which dates from 1920. A higher resolution is available with four PDF's in the [Digital Archive] of the late professor Griswold,
+including a [scan] of the original index. A variation of the index is republished below with kind permission. The links to GroundForge are starting points to create your own variations.
 
-Below the index is republished (with kind permission) once more with a couple of links:
-* **W**:
-  Each capital W links to a scanned page of the Whiting book with annotations by Jo Edkins.
-  The other links go to GroundForge.
-
-* **XN**: Alphanumeric links
-  go directly to a page where you can show the pair/thread diagrams.
-
-* **XN<sup>2</sup>**:
-  A superscript of two means you have to show two levels of diagrams to get the pattern.
-
-* **x**: Lower case links
-  go to sets of [TesseLace](/GroundForge/help/TesseLace-Index) patterns,
-  in turn linking to a diagram page where you can choose stitches.
-  Each pattern in such a set can be morphed into the others by nudging pins.
-  Only four of the lower-case links ([c],[t],[k],[v]) cover more than a third of the grounds below, a ratio that illustrates
-  how many variations can be made by changing stitches or nudging pin positions.
-  
-* **&sim;**:
-  The pattern does not exactly match, may need different dimensions for the matrix or a stitch or twist more or less.
-
-* **-**:
-  The ground uses sewings, three-pair stitches or odd number of threads.
-  None of these are supported by GroundForge.
-  Picots and tallies are also not supported but they are too obvious to require such an annotation.
-
-
-[reversed engineering]: /GroundForge/help/Reversed-engineering-of-patterns
-[Marian Tempels]: https://github.com/MAETempels
-[index]: http://gwydir.demon.co.uk/jo/lace/whiting/index.htm#picindex
-[scan]: https://www2.cs.arizona.edu/patterns/weaving/books/whiting.jpg
-[Digital Archive]: https://www2.cs.arizona.edu/patterns/weaving/lace.html#books
+[Legend](#Legend)
 
 
 Under Construction
@@ -119,3 +87,40 @@ For that purpose, the maintainer needs to fill in the _edit note_ to list the ch
 |  16 | [ts],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page90.htm)![](w/page90a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page110.htm)![](w/page110a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page131.htm)![](w/page131a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page150.htm)![](w/page150a.gif) | [E16],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page174.htm)![](w/page174a.gif) | [F16],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page195.htm)![](w/page195a.gif) | [G16],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page214.htm)![](w/page214a.gif) | [c],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page238.htm)![](w/page238a.gif) |
 |  17 | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page91.htm)![](w/page91a.gif) | [c],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page111.htm)![](w/page111a.gif) | [k],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page132.htm)![](w/page132a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page151.htm)![](w/page151a.gif) | [c],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page175.htm)![](w/page175a.gif) | -,[W](http://gwydir.demon.co.uk/jo/lace/whiting/page196.htm)![](w/page196a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page215.htm)![](w/page215a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page239.htm)![](w/page239a.gif) |
 |  18 | [t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page93.htm)![](w/page93a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page112.htm)![](w/page112a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page133.htm)![](w/page133a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page153.htm)![](w/page153a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page176.htm)![](w/page176a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page197.htm)![](w/page197a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page217.htm)![](w/page217a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page241.htm)![](w/page241a.gif) |
+
+
+Legend
+------
+
+* **W**:
+  Each capital W links to a scanned page of the Whiting book with annotations by Jo Edkins.
+  The other links go to GroundForge.
+
+* **XN**: Alphanumeric links
+  go directly to a page where you can show the pair/thread diagrams.
+
+* **XN<sup>2</sup>**:
+  A superscript of two means you have to show two levels of diagrams to get the pattern.
+
+* **x**: Lower case links
+  go to sets of [TesseLace](/GroundForge/help/TesseLace-Index) patterns,
+  in turn linking to a diagram page where you can choose stitches.
+  Each pattern in such a set can be morphed into the others by nudging pins.
+  Only four of the lower-case links ([c],[t],[k],[v]) cover more than a third of the grounds below, a ratio that illustrates
+  how many variations can be made by changing stitches or nudging pin positions.
+  
+* **&sim;**:
+  The pattern does not exactly match, may need different dimensions for the matrix or a stitch or twist more or less.
+
+* **-**:
+  The ground uses sewings, three-pair stitches or odd number of threads.
+  None of these are supported by GroundForge.
+  Picots and tallies are also not supported but they are too obvious to require such an annotation.
+
+
+[reversed engineering]: /GroundForge/help/Reversed-engineering-of-patterns
+[Marian Tempels]: https://github.com/MAETempels
+[index]: http://gwydir.demon.co.uk/jo/lace/whiting/index.htm#picindex
+[scan]: https://www2.cs.arizona.edu/patterns/weaving/books/whiting.jpg
+[Digital Archive]: https://www2.cs.arizona.edu/patterns/weaving/lace.html#books
+
