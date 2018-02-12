@@ -112,11 +112,6 @@ class Config(urlQuery: String) {
     }
   }
 
-  val encodedMatrix: String = itemMatrix
-    .map(_.map(_.vectorCode).mkString)
-    .mkString(",")
-    .toUpperCase
-
   @JSExport
   lazy val pairDiagram: Diagram = {
     val stitches: String = {
@@ -130,6 +125,10 @@ class Config(urlQuery: String) {
           s"${vs.map{case (k2,_) => k2}.mkString("=")}=${fields.getOrElse(k,"ctc")}"
         }.mkString(" ")
     }
+    val encodedMatrix: String = itemMatrix
+      .map(_.map(_.vectorCode).mkString)
+      .mkString(",")
+      .toUpperCase
     println(encodedMatrix)
     println(stitches)
     PairDiagram.get(encodedMatrix,"checker",totalRows,totalCols,patchCols,patchRows,stitches)

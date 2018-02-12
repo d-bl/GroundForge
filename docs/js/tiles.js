@@ -178,9 +178,9 @@ function load() {
       kvs[k] = kv[1].trim().replace(valueFilter,"").replace(/,/g,"\n")
     }
   }
-  sample(kvs["tile"],kvs["shiftColsSE"],kvs["shiftRowsSE"],kvs["shiftColsSW"],kvs["shiftRowsSW"],kvs["footside"],kvs["headside"],kvs["repeatWidth"],kvs["repeatHeight"])
+  sample(kvs["tile"],kvs["shiftColsSE"],kvs["shiftRowsSE"],kvs["shiftColsSW"],kvs["shiftRowsSW"],kvs["footside"],kvs["headside"],kvs["repeatWidth"],kvs["repeatHeight"],kvs["patchCols"],kvs["patchRows"])
 }
-function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, repeatWidth, repeatHeight) {
+function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, repeatWidth, repeatHeight, patchCols, patchRows) {
 
   d3.select('#repeatWidth').property("value", repeatWidth ? repeatWidth : (footside?3:12))
   d3.select('#repeatHeight').property("value", repeatHeight ? repeatHeight : 12)
@@ -191,6 +191,8 @@ function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footsi
   d3.select('#shiftRowsSE').property("value", shiftRowsSE)
   d3.select('#shiftColsSW').property("value", shiftColsSW)
   d3.select('#shiftRowsSW').property("value", shiftRowsSW)
+  d3.select('#patchCols').property("value", patchCols)
+  d3.select('#patchRows').property("value", patchRows)
   showProto()
   showDiagrams()
 }
