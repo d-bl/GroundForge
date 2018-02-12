@@ -178,7 +178,8 @@ function load() {
       kvs[k] = kv[1].trim().replace(valueFilter,"").replace(/,/g,"\n")
     }
   }
-  sample(kvs["tile"],kvs["shiftColsSE"],kvs["shiftRowsSE"],kvs["shiftColsSW"],kvs["shiftRowsSW"],kvs["footside"],kvs["headside"],kvs["repeatWidth"],kvs["repeatHeight"],kvs["patchCols"],kvs["patchRows"])
+  if (kvs.length > 0)
+    sample(kvs["tile"],kvs["shiftColsSE"],kvs["shiftRowsSE"],kvs["shiftColsSW"],kvs["shiftRowsSW"],kvs["footside"],kvs["headside"],kvs["repeatWidth"],kvs["repeatHeight"],kvs["patchCols"],kvs["patchRows"])
 }
 function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, repeatWidth, repeatHeight, patchCols, patchRows) {
 
