@@ -20,6 +20,7 @@ index.html
 The main page can reuse thread diagrams as pair diagrams up to two times.
 It has a workaround for a bug in IE-11, the Edge browser doesn't have this bug.
 Currently you might have to assign stitches for multiple repeats of a pattern.
+No custom foot sides.
 
 
 tiles.html
