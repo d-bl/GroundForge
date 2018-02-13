@@ -178,7 +178,9 @@ function load() {
       kvs[k] = kv[1].trim().replace(valueFilter,"").replace(/,/g,"\n")
     }
   }
-  if (kvs.length > 0)
+  if (kvpairs.length < 2)
+    showProto()
+  else
     sample(kvs["tile"],kvs["shiftColsSE"],kvs["shiftRowsSE"],kvs["shiftColsSW"],kvs["shiftRowsSW"],kvs["footside"],kvs["headside"],kvs["repeatWidth"],kvs["repeatHeight"],kvs["patchCols"],kvs["patchRows"])
 }
 function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, repeatWidth, repeatHeight, patchCols, patchRows) {

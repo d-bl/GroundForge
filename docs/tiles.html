@@ -430,7 +430,7 @@
             <textarea id="footside" name="footside" rows="12" cols="3" spellcheck="false"
                       onchange="showProto();showDiagrams()"></textarea>
             <textarea id="tile" name="tile" rows="12" cols="10" spellcheck="false"
-                      onchange="showProto();showDiagrams()"></textarea>
+                      onchange="showProto();showDiagrams()">5</textarea>
             <textarea id="headside" name="headside" rows="12" cols="3" spellcheck="false"
                       onchange="showProto();showDiagrams()"></textarea>
             <figcaption>Definition</figcaption>
@@ -446,7 +446,7 @@
             <label for="repeatWidth">Patch size</label>
             <input type="number" name="repeatWidth" id="repeatWidth" min="0" max="30" value="3" onchange="showProto()">
             <label for="repeatWidth">col(s)</label>
-            <input type="number" name="repeatHeight" id="repeatHeight" min="0" max="30" value="12" onchange="showProto()">
+            <input type="number" name="repeatHeight" id="repeatHeight" min="0" max="30" value="3" onchange="showProto()">
             <label for="repeatHeight">rows(s)</label>
         </p>
         <div>
@@ -454,17 +454,17 @@
                 Shift tiles
             </div>
             <div style="border:3px solid #5500d4;border-radius: 3px;">
-                <input type="number" name="shiftColsSE" id="shiftColsSE" min="0" max="12" value="0" onchange="showProto()"><label for="shiftColsSE">col(s)</label>
+                <input type="number" name="shiftColsSE" id="shiftColsSE" min="0" max="12" value="1" onchange="showProto()"><label for="shiftColsSE">col(s)</label>
                 <br>
-                <input type="number" name="shiftRowsSE" id="shiftRowsSE" min="0" max="12" value="0" onchange="showProto()"><label for="shiftRowsSE">row(s)</label>
+                <input type="number" name="shiftRowsSE" id="shiftRowsSE" min="0" max="12" value="1" onchange="showProto()"><label for="shiftRowsSE">row(s)</label>
             </div>
             <div>
                 &#8664; &nbsp; &nbsp;
             </div>
             <div style="border:3px solid #71c837;border-radius: 3px;">
-                <input type="number" name="shiftColsSW" id="shiftColsSW" min="-12" max="0" value="0" onchange="showProto()"><label for="shiftColsSW">col(s)</label>
+                <input type="number" name="shiftColsSW" id="shiftColsSW" min="-12" max="0" value="-1" onchange="showProto()"><label for="shiftColsSW">col(s)</label>
                 <br>
-                <input type="number" name="shiftRowsSW" id="shiftRowsSW" min="0" max="12" value="0" onchange="showProto()"><label for="shiftRowsSW">row(s)</label>
+                <input type="number" name="shiftRowsSW" id="shiftRowsSW" min="0" max="12" value="1" onchange="showProto()"><label for="shiftRowsSW">row(s)</label>
             </div>
             <div>
                 &#8665;
