@@ -228,7 +228,7 @@
          id="text4156"><tspan
            id="tspan4158"
            x="54.820518"
-           y="336.62494">/tiles.html</tspan></text>
+           y="336.62494">/tiles</tspan></text>
     </a>
     <path
        id="path4930"
@@ -277,7 +277,7 @@
          id="text4144"><tspan
            id="tspan4146"
            x="200.554"
-           y="398.75635">/sheet.html</tspan></text>
+           y="398.75635">/sheet</tspan></text>
     </a>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
@@ -539,7 +539,7 @@
          xml:space="preserve"><tspan
            y="274.32782"
            x="199.78873"
-           id="tspan4140">/index.html</tspan></text>
+           id="tspan4140">/index</tspan></text>
     </a>
     <a
        id="a5604"
