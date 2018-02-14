@@ -201,9 +201,9 @@
     <path
        id="path4984"
        d="m 550,20.371604 c 5.29442,6.57776 22.25673,-13.7548706 40.60325,-6.101198 19.39675,8.091802 46.67543,-2.267909 54.46328,-2.30917 9.43367,-0.04998 23.46584,9.969309 32.20487,12.273969 10.76049,2.837762 22.6306,-7.24433 26.60977,2.753385 3.82681,9.614903 35.20597,48.101974 19.0674,68.781591 C 710,112.36221 731.17001,146.84635 720.42898,154.71863 710,162.36221 702.28869,144.25278 673.63209,158.03391 661.58596,163.82697 615.14688,140.79529 596.92186,151.97857 580,162.36221 555.01486,157.37707 550,152.36221 535.53268,137.8949 553.41106,116.85296 544.81557,104.77729 531.81735,86.51629 528.6566,-6.1453451 550,20.371604 Z"
-       style="opacity:1;fill:#2e7bcf;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:6.25;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+       style="opacity:1;fill:#2e7bcf;fill-opacity:1;fill-rule:nonzero;stroke:none;" />
     <path
-       style="opacity:1;fill:#ae2746;fill-opacity:0.85882354;fill-rule:nonzero;stroke:none;stroke-width:6.25;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:#ae2746;fill-opacity:0.85882354;fill-rule:nonzero;stroke:none;"
        d="m 219.45284,63.307496 c 0.54716,-10.945288 20.58022,1.121588 35.51365,1.042468 9.43367,-0.04998 17.79414,-15.553351 26.53317,-13.248691 10.76049,2.837762 19.84306,4.870348 28.50034,11.260939 14.15638,10.449887 20,29.999999 8.98554,38.873368 -11.02201,8.87946 9.73186,21.92766 -8.98554,41.12663 -9.33089,9.57096 -31.72511,0.74116 -53.07814,-0.38364 -21.48032,-1.1315 -37.18058,2.56265 -42.19544,-2.45221 -14.46732,-14.46731 5.30163,-31.72812 -3.29386,-43.803782 -12.99822,-18.261001 7.4345,-20.697315 8.02028,-32.415082 z"
        id="rect6316" />
     <rect
@@ -222,7 +222,7 @@
       <text
          transform="scale(1.0472855,0.95484947)"
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
          x="54.820518"
          y="336.62494"
          id="text4156"><tspan
@@ -271,7 +271,7 @@
       <text
          transform="scale(1.0472855,0.95484947)"
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
          x="200.554"
          y="398.75635"
          id="text4144"><tspan
@@ -285,7 +285,7 @@
        id="path4160" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
        x="352.37897"
        y="480.44315"
        id="text4442"
@@ -301,7 +301,7 @@
        id="text4448"
        y="481.83777"
        x="421.96518"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
        xml:space="preserve"
        transform="scale(1.0472855,0.95484947)"><tspan
          y="481.83777"
@@ -325,7 +325,7 @@
          id="text5308"
          y="397.52057"
          x="371.25287"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
          xml:space="preserve"><tspan
            y="397.52057"
            x="371.25287"
@@ -339,7 +339,7 @@
        id="text5326"
        y="570.99707"
        x="485.3912"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
        xml:space="preserve"
        transform="scale(1.0472855,0.95484947)"><tspan
          y="570.99707"
@@ -361,7 +361,7 @@
       <text
          transform="scale(1.0472855,0.95484947)"
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
          x="379.31683"
          y="273.00916"
          id="text5672"><tspan
@@ -379,7 +379,7 @@
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker7868)" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
        x="459.51974"
        y="479.03815"
        id="text8382"
@@ -396,7 +396,7 @@
          id="text8472"
          y="156.54181"
          x="300.35922"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
          xml:space="preserve"
          transform="scale(1.0472855,0.95484947)"><tspan
            y="156.54181"
@@ -414,7 +414,7 @@
     <text
        transform="scale(1.0472855,0.95484947)"
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
        x="15.804285"
        y="700.60663"
        id="text9220"><tspan
@@ -428,7 +428,7 @@
     <text
        transform="scale(1.0472855,0.95484947)"
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
        x="262.40091"
        y="480.44315"
        id="text9852"><tspan
@@ -454,7 +454,7 @@
        transform="translate(-366.43053,-336.68054)">
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
          x="381.89899"
          y="492.59418"
          id="text4678"
@@ -466,7 +466,7 @@
     <text
        transform="scale(1.0472855,0.95484947)"
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
        x="92.192245"
        y="784.38959"
        id="text4686"><tspan
@@ -478,7 +478,7 @@
     <text
        transform="scale(1.0472855,0.95484947)"
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
        x="101.67146"
        y="139.82471"
        id="text4694"><tspan
@@ -509,7 +509,7 @@
        id="text6932"
        y="763.44385"
        x="92.192245"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
        xml:space="preserve"
        transform="scale(1.0472855,0.95484947)"><tspan
          y="763.44385"
@@ -519,7 +519,7 @@
        id="text4682"
        y="721.55237"
        x="92.192245"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
        xml:space="preserve"
        transform="scale(1.0472855,0.95484947)"><tspan
          y="721.55237"
@@ -535,7 +535,7 @@
          id="text4138"
          y="274.32782"
          x="199.78873"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
          xml:space="preserve"><tspan
            y="274.32782"
            x="199.78873"
@@ -548,7 +548,7 @@
        transform="translate(172.95938,-9.2008749)">
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
          x="55.614479"
          y="148.16351"
          id="text8988"
@@ -567,7 +567,7 @@
          id="text7418"
          y="148.24634"
          x="196.81544"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
          xml:space="preserve"><tspan
            y="148.24634"
            x="196.81544"
@@ -585,7 +585,7 @@
     <text
        transform="scale(1.0472855,0.95484947)"
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
        x="22.411228"
        y="-23.201422"
        id="text5339"><tspan
@@ -604,7 +604,7 @@
     <text
        transform="scale(1.0472855,0.95484947)"
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.13960934px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
        x="91.639915"
        y="742.49817"
        id="text5786"><tspan
@@ -639,7 +639,7 @@
        height="174"
        width="239" />
     <rect
-       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;"
        id="rect6296"
        width="140"
        height="150"
