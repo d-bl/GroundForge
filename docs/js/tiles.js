@@ -1,4 +1,5 @@
 var valueFilter = /[^a-zA-Z0-9,-]/g
+var isMobile = /iPad|iPhone|iPod|Mobi/.test(navigator.userAgent)
 
 // number of cloned elements in the built-in SVG FIXME not maintained
 var maxRows = 12
@@ -136,7 +137,9 @@ function animateDiagram(container) {
       var l = diagram.link(jsLink.index)
       return  dibl.D3jsSVG().pathDescription(l, s.x, s.y, t.x, t.y)
   }
+  var tickCounter = 0
   function onTick() {
+      if ( isMobile && (tickCounter++ % 5) != 0) return // skip rendering
       links.attr("d", drawPath)
       nodes.attr("transform", moveNode)
       //terminateAnimation()
