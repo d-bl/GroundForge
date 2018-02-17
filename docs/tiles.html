@@ -410,8 +410,8 @@
                        href="?#download"
                        title="download"
                     >download</a>
-                    <img src="images/size-inc.jpg" onclick="incSize('#pairDiagram',1.1)">
-                    <img src="images/size-dec.jpg" onclick="incSize('#pairDiagram', 0.91)">
+                    <img src="images/size-inc.jpg" onclick="resizeBoth('#pairDiagram', 1.1)">
+                    <img src="images/size-dec.jpg" onclick="resizeBoth('#pairDiagram', 0.91)">
                 </figcaption>
             </figure>
             <figure >
@@ -426,27 +426,11 @@
                        href="?#download"
                        title="download"
                     >download</a>
-                    <img src="images/size-inc.jpg" onclick="incSize('#threadDiagram',1.1)">
-                    <img src="images/size-dec.jpg" onclick="incSize('#threadDiagram', 0.91)">
+                    <img src="images/size-inc.jpg" onclick="resizeBoth('#threadDiagram', 1.1)">
+                    <img src="images/size-dec.jpg" onclick="resizeBoth('#threadDiagram', 0.91)">
                 </figcaption>
             </figure>
         </fieldset>
-    </fieldset>
-    <fieldset>
-        <legend>Pattern</legend>
-        <figure>
-            <textarea id="footside" name="footside" rows="12" cols="3" spellcheck="false"
-                      onchange="showProto();showDiagrams()"></textarea>
-            <textarea id="tile" name="tile" rows="12" cols="10" spellcheck="false"
-                      onchange="showProto();showDiagrams()">5</textarea>
-            <textarea id="headside" name="headside" rows="12" cols="3" spellcheck="false"
-                      onchange="showProto();showDiagrams()"></textarea>
-            <figcaption>Definition</figcaption>
-        </figure>
-        <figure>
-            <img src="help/images/matrix-template.png" alt="cheat sheet">
-            <figcaption>Cheat sheet</figcaption>
-        </figure>
     </fieldset>
     <fieldset>
         <legend>Repeats</legend>
@@ -497,6 +481,24 @@
             </tr>
         </table>
         <img src="help/images/shift-directions.png">
+    </fieldset>
+    <fieldset id="pattern">
+        <legend>Pattern</legend>
+        <figure>
+          <div>
+            <textarea id="footside" name="footside" rows="12" cols="3" spellcheck="false"
+                      onchange="showProto();showDiagrams()"></textarea>
+            <textarea id="tile" name="tile" rows="12" cols="10" spellcheck="false"
+                      onchange="showProto();showDiagrams()">5</textarea>
+            <textarea id="headside" name="headside" rows="12" cols="3" spellcheck="false"
+                      onchange="showProto();showDiagrams()"></textarea>
+          </div>
+          <figcaption>Definition</figcaption>
+        </figure>
+        <figure>
+            <img src="help/images/matrix-template.png" alt="cheat sheet">
+            <figcaption>Cheat sheet</figcaption>
+        </figure>
     </fieldset>
     <fieldset>
         <legend>Demo's</legend>

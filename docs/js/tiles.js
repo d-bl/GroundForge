@@ -268,15 +268,14 @@ function brickToNW() {
   d3.select('#shiftRowsSE').node().value--
   showProto()
 }
-function incSize(selector, incValue) {
+function resizeBoth(selector, scaleValue) {
 
-  var container = d3.select(selector)
-  var width = container.style('width')
-  var height = container.style('height')
-  var widthUnits = width.replace(/[0-9]/g,'')
-  var heightUnits = height.replace(/[0-9]/g,'')
-  width = Math.round(width.replace(/[^0-9]/g,'') * incValue)
-  height = Math.round(height.replace(/[^0-9]/g,'') * incValue)
-  container.style('width', width + widthUnits)
-  container.style('height', height + heightUnits)
+  resize(d3.select(selector), 'width', scaleValue)
+  resize(d3.select(selector), 'height', scaleValue)
+}
+function resize(container, orientation, scaleValue) {
+  var oldValue = container.style(orientation)
+  var units = oldValue.replace(/[0-9]/g,'')
+  var newValue = Math.round(oldValue.replace(/[^0-9]/g,'') * scaleValue)
+  container.style(orientation, newValue + units)
 }

@@ -5,6 +5,8 @@ figure image, figcaption { display: block; }
 figcaption { text-align: center; background-color: #ddd; border-radius: 3px; margin-top: 0.3em; padding-left: 0.5em; padding-right: 0.5em; }
 figcaption img { padding-left: 1em; vertical-align: middle; }
 fieldset fieldset figure div { height: 222px; }
+#pattern figure { display: block; text-align: center; }
+#pattern img { padding-top: 0.5em; }
 
 #threadDiagram, #pairDiagram { resize:both;overflow:auto;display:inline-block;width:250px;height:250px;max-width:784px;max-height:1082px }
 #prototype { width:0; height:0; overflow:hidden}
