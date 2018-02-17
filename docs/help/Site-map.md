@@ -30,7 +30,7 @@ Choosing stitches or thread colors is more intuitive.
 Zooming and [untangling] is not supported.
 A bug may assign the chosen stitches incorrectly in the animated diagrams,
 until fixed, stitches are not saved with pattern links.
-Currently the animated diagrams work hardly on iOS.
+Minimum version for iOS is 11, for other systems unknown.
 
 [untangling]: https://github.com/d-bl/GroundForge/releases/download/2017-06-05/untangle.mp4
 
