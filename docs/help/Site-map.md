@@ -26,7 +26,7 @@ No custom foot sides.
 tiles
 -----
 
-Choosing stitches or thread colors is more intuitive.
+Choosing stitches or thread colors is more intuitive and fully supports touch-devices.
 Zooming and [untangling] is not supported.
 A bug may assign the chosen stitches incorrectly in the animated diagrams,
 until fixed, stitches are not saved with pattern links.

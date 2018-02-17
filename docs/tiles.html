@@ -30,8 +30,10 @@
 </article>
 <form onsubmit="return false" id="download">
     <fieldset id="diagrams">
-        <a id="link" href=""><button type="button"><img src="images/link.png"></button></a>
-        <legend>Diagrams</legend>
+        <legend>
+            Diagrams
+            <a id="link" href=""><button type="button"><img src="images/link.png"></button></a>
+        </legend>
         <figure >
             <div id="prototype">
                 <svg  xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -408,6 +410,8 @@
                        href="?#download"
                        title="download"
                     >download</a>
+                    <img src="images/size-inc.jpg" onclick="incSize('#pairDiagram',1.1)">
+                    <img src="images/size-dec.jpg" onclick="incSize('#pairDiagram', 0.91)">
                 </figcaption>
             </figure>
             <figure >
@@ -422,6 +426,8 @@
                        href="?#download"
                        title="download"
                     >download</a>
+                    <img src="images/size-inc.jpg" onclick="incSize('#threadDiagram',1.1)">
+                    <img src="images/size-dec.jpg" onclick="incSize('#threadDiagram', 0.91)">
                 </figcaption>
             </figure>
         </fieldset>
