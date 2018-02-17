@@ -158,8 +158,9 @@ function paintThread() {
 
   // firstChild == <title>
   var className = "."+d3.event.target.firstChild.innerHTML.replace(" ", "")
-  var newColor = d3.event.altKey ? "#000" : "#F00"
   var segments = d3.selectAll(className)
+  console.log(segments.style("stroke"))
+  var newColor = segments.style("stroke")+"" == "rgb(255, 0, 0)" ? "#000" : "#F00"
   segments.style("stroke", newColor)
   segments.filter(".node").style("fill", newColor)
 }
