@@ -63,7 +63,7 @@ For that purpose, the maintainer needs to fill in the _edit note_ to list the ch
 
 [G14]: /GroundForge/?m=5-%0A12%0A88%0A4-%3Bbricks%3B16%3B11%3B0%3B0&s1=ctc%20A2%3Dctctt%20B4%3Dctcll%20B1%3Dctcrr&s2=&s3=
 
-[D16]: /GroundForge/?m=-5- E-2 8-M F-1 8-M%3Bchecker%3B16%3B16%3B0%3B0&s1=ctc A5%3Dctcll C1%3Dctcrr A2%3Dctcll%0AC3%3Dctcrr&s2=&s3=
+[D16]: /GroundForge/?m=-5-%0AE-2%0A8-M%0AF-1%0A8-M%3Bchecker%3B16%3B16%3B0%3B0&s1=ctc%20A5%3Dctcll%20C1%3Dctcrr%20A2%3Dctcll%0AC3%3Dctcrr&s2=&s3=
 [E16]: /GroundForge/?m=-5-L-H%0AH-E-21%0A-O8-M8%0A-1F-1F%0A-M86-M%0A5-4-K-%3Bchecker%3B16%3B16%3B0%3B0&s1=C6%3Dctcll%20F6%3Dctcll%20E1%3Dctcrr%20B1%3Dctcrr%20C2%3Dctcll%20F2%3Dctcll%20D3%3Dctcrr%20B3%3Dctcrr%20E4%3Dtctct%20B5%3Dtctct&s2=&s3=
 [F16]: /GroundForge/?m=5-%0A-5%0A5-%0A12%0A99%0A11%0A66%0A4-%3Bbricks%3B19%3B9%3B0%3B0&s1=ctc%20B7%3Dtctct%20A8%3Dctct%20B2%3Dctcll%20B3%3Dctcrr%20A4%3Dctcll%20B5%3Dctcrr&s2=&s3=
 [G16]: /GroundForge/?m=5-%0A-5%0A5-%0A12%0A88%0A4-%3Bbricks%3B16%3B9%3B0%3B0&s1=ctc%20A6%3Dctctt%20B5%3Dctctt%20B2%3Dctcll%20B3%3Dctcrr%20A4%3Dctctt%20&s2=&s3=
