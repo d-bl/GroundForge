@@ -70,43 +70,217 @@ For that purpose, the maintainer needs to fill in the _edit note_ to list the ch
 
 |   | A | B | C | D | E | F | G | H |
 |---|---|---|---|---|---|---|---|---|
-|  1 | [A1],[c],[W][PA01]![](w/page70a.gif) | [B1],[t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page94.htm)![](w/page94a.gif) | [C1],[t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page114.htm)![](w/page114a.gif) | [D1],[t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page134.htm)![](w/page134a.gif) | [E1],[t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page155.htm)![](w/page155a.gif) | [F1],[t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page177.htm)![](w/page177a.gif) | [G1],[t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page198.htm)![](w/page198a.gif) | [t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page219.htm)![](w/page219a.gif) |
-|  2 | [A2]<sup>2</sup>,[v],[W][PA02]![](w/page71a.gif) | [B2]<sup>2</sup>,[v],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page95.htm)![](w/page95a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page115.htm)![](w/page115a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page135.htm)![](w/page135a.gif) | [E2],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page156.htm)![](w/page156a.gif) | [F2],[ts],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page178.htm)![](w/page178a.gif) | [G2],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page199.htm)![](w/page199a.gif) | [H2],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page220.htm)![](w/page220a.gif) |
-|  3 | [t],[W][PA03]![](w/page73a.gif) | [t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page96.htm)![](w/page96a.gif) | [C3],[t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page117.htm)![](w/page117a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page136.htm)![](w/page136a.gif) | [E3],[t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page157.htm)![](w/page157a.gif) | [t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page179.htm)![](w/page179a.gif) | [t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page200.htm)![](w/page200a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page221.htm)![](w/page221a.gif) |
-|  4 | -,[W][PA04]![](w/page74a.gif) | -,[W](http://gwydir.demon.co.uk/jo/lace/whiting/page97.htm)![](w/page97a.gif) | [k],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page118.htm)![](w/page118a.gif) | [k],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page137.htm)![](w/page137a.gif) | [E4],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page158.htm)![](w/page158a.gif) | [F4], [z],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page180.htm)![](w/page180a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page201.htm)![](w/page201a.gif) | [H4],[v],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page222.htm)![](w/page222a.gif) |
-|  5 | [k],[W][PA05]![](w/page75a.gif) | [k],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page98.htm)![](w/page98a.gif) | [k],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page119.htm)![](w/page119a.gif) | &sim;[c],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page138.htm)![](w/page138a.gif) | -,[W](http://gwydir.demon.co.uk/jo/lace/whiting/page159.htm)![](w/page159a.gif) | &sim;[c],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page181.htm)![](w/page181a.gif) | &sim;[c],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page203.htm)![](w/page203a.gif) | &sim;[c],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page224.htm)![](w/page224a.gif) |
-|  6 | [k],[W][PA06]![](w/page76a.gif) | [B6]<sup>2</sup>,[v],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page99.htm)![](w/page99a.gif) | [C6]<sup>2</sup>,[v],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page120.htm)![](w/page120a.gif) | [D6]<sup>2</sup>,[z],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page139.htm)![](w/page139a.gif) | [E6],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page160.htm)![](w/page160a.gif) | [t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page182.htm)![](w/page182a.gif) | -,[W](http://gwydir.demon.co.uk/jo/lace/whiting/page204.htm)![](w/page204a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page225.htm)![](w/page225a.gif) |
-|  7 | [W][PA07]![](w/page77a.gif) | [k],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page100.htm)![](w/page100a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page121.htm)![](w/page121a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page140.htm)![](w/page140a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page161.htm)![](w/page161a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page183.htm)![](w/page183a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page205.htm)![](w/page205a.gif) | [k],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page226.htm)![](w/page226a.gif) |
-|  8 | [W][PA08]![](w/page79a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page101.htm)![](w/page101a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page122.htm)![](w/page122a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page141.htm)![](w/page141a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page162.htm)![](w/page162a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page184.htm)![](w/page184a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page206.htm)![](w/page206a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page227.htm)![](w/page227a.gif) |
-|  9 | [W][PA09]![](w/page80a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page102.htm)![](w/page102a.gif) | [C9]<sup>2</sup>,[v],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page123.htm)![](w/page123a.gif) | [D9],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page142.htm)![](w/page142a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page163.htm)![](w/page163a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page185.htm)![](w/page185a.gif) | [t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page207.htm)![](w/page207a.gif) | [H9],[t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page229.htm)![](w/page229a.gif) |
-|  10 | [W][PA10]![](w/page82a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page103.htm)![](w/page103a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page124.htm)![](w/page124a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page143.htm)![](w/page143a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page164.htm)![](w/page164a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page187.htm)![](w/page187a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page208.htm)![](w/page208a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page230.htm)![](w/page230a.gif) |
-|  11 | [t],[W][PA11]![](w/page83a.gif) | [t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page104.htm)![](w/page104a.gif) | -,[W](http://gwydir.demon.co.uk/jo/lace/whiting/page125.htm)![](w/page125a.gif) | [wk],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page144.htm)![](w/page144a.gif) | [wk],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page166.htm)![](w/page166a.gif) | [t],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page189.htm)![](w/page189a.gif) | [k],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page209.htm)![](w/page209a.gif) | -,[W](http://gwydir.demon.co.uk/jo/lace/whiting/page231.htm)![](w/page231a.gif) |
-|  12 | [t],[W][PA12]![](w/page84a.gif) | [c],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page105.htm)![](w/page105a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page126.htm)![](w/page126a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page145.htm)![](w/page145a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page167.htm)![](w/page167a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page190.htm)![](w/page190a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page210.htm)![](w/page210a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page232.htm)![](w/page232a.gif) |
-|  13 | -,[W][PA13]![](w/page85a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page106.htm)![](w/page106a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page128.htm)![](w/page128a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page147.htm)![](w/page147a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page169.htm)![](w/page169a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page192.htm)![](w/page192a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page211.htm)![](w/page211a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page234.htm)![](w/page234a.gif) |
-|  14 | [W][PA14]![](w/page87a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page107.htm)![](w/page107a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page129.htm)![](w/page129a.gif) | [c],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page148.htm)![](w/page148a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page171.htm)![](w/page171a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page193.htm)![](w/page193a.gif) | [G14],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page212.htm)![](w/page212a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page235.htm)![](w/page235a.gif) |
-|  15 | [W][PA15]![](w/page89a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page109.htm)![](w/page109a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page130.htm)![](w/page130a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page149.htm)![](w/page149a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page173.htm)![](w/page173a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page194.htm)![](w/page194a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page213.htm)![](w/page213a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page237.htm)![](w/page237a.gif) |
-|  16 | [ts],[W][PA16]![](w/page90a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page110.htm)![](w/page110a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page131.htm)![](w/page131a.gif) | [D16],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page150.htm)![](w/page150a.gif) | [E16],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page174.htm)![](w/page174a.gif) | [F16],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page195.htm)![](w/page195a.gif) | [G16],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page214.htm)![](w/page214a.gif) | [c],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page238.htm)![](w/page238a.gif) |
-|  17 | [W][PA17]![](w/page91a.gif) | [c],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page111.htm)![](w/page111a.gif) | [k],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page132.htm)![](w/page132a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page151.htm)![](w/page151a.gif) | [c],[W](http://gwydir.demon.co.uk/jo/lace/whiting/page175.htm)![](w/page175a.gif) | -,[W](http://gwydir.demon.co.uk/jo/lace/whiting/page196.htm)![](w/page196a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page215.htm)![](w/page215a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page239.htm)![](w/page239a.gif) |
-|  18 | [t],[W][PA18]![](w/page93a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page112.htm)![](w/page112a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page133.htm)![](w/page133a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page153.htm)![](w/page153a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page176.htm)![](w/page176a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page197.htm)![](w/page197a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page217.htm)![](w/page217a.gif) | [W](http://gwydir.demon.co.uk/jo/lace/whiting/page241.htm)![](w/page241a.gif) |
+|  1 | [A1],[c],[W][P70]![](w/page70a.gif) | [B1],[t],[W][P94]![](w/page94a.gif) | [C1],[t],[W][P114]![](w/page114a.gif) | [D1],[t],[W][P134]![](w/page134a.gif) | [E1],[t],[W][P155]![](w/page155a.gif) | [F1],[t],[W][P177]![](w/page177a.gif) | [G1],[t],[W][P198]![](w/page198a.gif) | [t],[W][P219]![](w/page219a.gif) |
+|  2 | [A2]<sup>2</sup>,[v],[W][P71]![](w/page71a.gif) | [B2]<sup>2</sup>,[v],[W][P95]![](w/page95a.gif) | [W][P115]![](w/page115a.gif) | [W][P135]![](w/page135a.gif) | [E2],[W][P156]![](w/page156a.gif) | [F2],[ts],[W][P178]![](w/page178a.gif) | [G2],[W][P199]![](w/page199a.gif) | [H2],[W][P220]![](w/page220a.gif) |
+|  3 | [t],[W][P73]![](w/page73a.gif) | [t],[W][P96]![](w/page96a.gif) | [C3],[t],[W][P117]![](w/page117a.gif) | [W][P136]![](w/page136a.gif) | [E3],[t],[W][P157]![](w/page157a.gif) | [t],[W][P179]![](w/page179a.gif) | [t],[W][P200]![](w/page200a.gif) | [W][P221]![](w/page221a.gif) |
+|  4 | -,[W][P74]![](w/page74a.gif) | -,[W][P97]![](w/page97a.gif) | [k],[W][P118]![](w/page118a.gif) | [k],[W][P137]![](w/page137a.gif) | [E4],[W][P158]![](w/page158a.gif) | [F4], [z],[W][P180]![](w/page180a.gif) | [W][P201]![](w/page201a.gif) | [H4],[v],[W][P222]![](w/page222a.gif) |
+|  5 | [k],[W][P75]![](w/page75a.gif) | [k],[W][P98]![](w/page98a.gif) | [k],[W][P119]![](w/page119a.gif) | &sim;[c],[W][P138]![](w/page138a.gif) | -,[W][P159]![](w/page159a.gif) | &sim;[c],[W][P181]![](w/page181a.gif) | &sim;[c],[W][P203]![](w/page203a.gif) | &sim;[c],[W][P224]![](w/page224a.gif) |
+|  6 | [k],[W][P76]![](w/page76a.gif) | [B6]<sup>2</sup>,[v],[W][P99]![](w/page99a.gif) | [C6]<sup>2</sup>,[v],[W][P120]![](w/page120a.gif) | [D6]<sup>2</sup>,[z],[W][P139]![](w/page139a.gif) | [E6],[W][P160]![](w/page160a.gif) | [t],[W][P182]![](w/page182a.gif) | -,[W][P204]![](w/page204a.gif) | [W][P225]![](w/page225a.gif) |
+|  7 | [W][P77]![](w/page77a.gif) | [k],[W][P100]![](w/page100a.gif) | [W][P121]![](w/page121a.gif) | [W][P140]![](w/page140a.gif) | [W][P161]![](w/page161a.gif) | [W][P183]![](w/page183a.gif) | [W][P205]![](w/page205a.gif) | [k],[W][P226]![](w/page226a.gif) |
+|  8 | [W][P79]![](w/page79a.gif) | [W][P101]![](w/page101a.gif) | [W][P122]![](w/page122a.gif) | [W][P141]![](w/page141a.gif) | [W][P162]![](w/page162a.gif) | [W][P184]![](w/page184a.gif) | [W][P206]![](w/page206a.gif) | [W][P227]![](w/page227a.gif) |
+|  9 | [W][P80]![](w/page80a.gif) | [W][P102]![](w/page102a.gif) | [C9]<sup>2</sup>,[v],[W][P123]![](w/page123a.gif) | [D9],[W][P142]![](w/page142a.gif) | [W][P163]![](w/page163a.gif) | [W][P185]![](w/page185a.gif) | [t],[W][P207]![](w/page207a.gif) | [H9],[t],[W][P229]![](w/page229a.gif) |
+|  10 | [W][P82]![](w/page82a.gif) | [W][P103]![](w/page103a.gif) | [W][P124]![](w/page124a.gif) | [W][P143]![](w/page143a.gif) | [W][P164]![](w/page164a.gif) | [W][P187]![](w/page187a.gif) | [W][P208]![](w/page208a.gif) | [W][P230]![](w/page230a.gif) |
+|  11 | [t],[W][P83]![](w/page83a.gif) | [t],[W][P104]![](w/page104a.gif) | -,[W][P125]![](w/page125a.gif) | [wk],[W][P144]![](w/page144a.gif) | [wk],[W][P166]![](w/page166a.gif) | [t],[W][P189]![](w/page189a.gif) | [k],[W][P209]![](w/page209a.gif) | -,[W][P231]![](w/page231a.gif) |
+|  12 | [t],[W][P84]![](w/page84a.gif) | [c],[W][P105]![](w/page105a.gif) | [W][P126]![](w/page126a.gif) | [W][P145]![](w/page145a.gif) | [W][P167]![](w/page167a.gif) | [W][P190]![](w/page190a.gif) | [W][P210]![](w/page210a.gif) | [W][P232]![](w/page232a.gif) |
+|  13 | -,[W][P85]![](w/page85a.gif) | [W][P106]![](w/page106a.gif) | [W][P128]![](w/page128a.gif) | [W][P147]![](w/page147a.gif) | [W][P169]![](w/page169a.gif) | [W][P192]![](w/page192a.gif) | [W][P211]![](w/page211a.gif) | [W][P234]![](w/page234a.gif) |
+|  14 | [W][P87]![](w/page87a.gif) | [W][P107]![](w/page107a.gif) | [W][P129]![](w/page129a.gif) | [c],[W][P148]![](w/page148a.gif) | [W][P171]![](w/page171a.gif) | [W][P193]![](w/page193a.gif) | [G14],[W][P212]![](w/page212a.gif) | [W][P235]![](w/page235a.gif) |
+|  15 | [W][P89]![](w/page89a.gif) | [W][P109]![](w/page109a.gif) | [W][P130]![](w/page130a.gif) | [W][P149]![](w/page149a.gif) | [W][P173]![](w/page173a.gif) | [W][P194]![](w/page194a.gif) | [W][P213]![](w/page213a.gif) | [W][P237]![](w/page237a.gif) |
+|  16 | [ts],[W][P90]![](w/page90a.gif) | [W][P110]![](w/page110a.gif) | [W][P131]![](w/page131a.gif) | [D16],[W][P150]![](w/page150a.gif) | [E16],[W][P174]![](w/page174a.gif) | [F16],[W][P195]![](w/page195a.gif) | [G16],[W][P214]![](w/page214a.gif) | [c],[W][P238]![](w/page238a.gif) |
+|  17 | [W][P91]![](w/page91a.gif) | [c],[W][P111]![](w/page111a.gif) | [k],[W][P132]![](w/page132a.gif) | [W][P151]![](w/page151a.gif) | [c],[W][P175]![](w/page175a.gif) | -,[W][P196]![](w/page196a.gif) | [W][P215]![](w/page215a.gif) | [W][P239]![](w/page239a.gif) |
+|  18 | [t],[W][P93]![](w/page93a.gif) | [W][P112]![](w/page112a.gif) | [W][P133]![](w/page133a.gif) | [W][P153]![](w/page153a.gif) | [W][P176]![](w/page176a.gif) | [W][P197]![](w/page197a.gif) | [W][P217]![](w/page217a.gif) | [W][P241]![](w/page241a.gif) |
 
-[PA01]: http://gwydir.demon.co.uk/jo/lace/whiting/page70.htm
-[PA02]: http://gwydir.demon.co.uk/jo/lace/whiting/page71.htm
-[PA03]: http://gwydir.demon.co.uk/jo/lace/whiting/page73.htm
-[PA04]: http://gwydir.demon.co.uk/jo/lace/whiting/page74.htm
-[PA05]: http://gwydir.demon.co.uk/jo/lace/whiting/page75.htm
-[PA06]: http://gwydir.demon.co.uk/jo/lace/whiting/page76.htm
-[PA07]: http://gwydir.demon.co.uk/jo/lace/whiting/page77.htm
-[PA08]: http://gwydir.demon.co.uk/jo/lace/whiting/page79.htm
-[PA09]: http://gwydir.demon.co.uk/jo/lace/whiting/page80.htm
-[PA10]: http://gwydir.demon.co.uk/jo/lace/whiting/page82.htm
-[PA11]: http://gwydir.demon.co.uk/jo/lace/whiting/page83.htm
-[PA12]: http://gwydir.demon.co.uk/jo/lace/whiting/page84.htm
-[PA13]: http://gwydir.demon.co.uk/jo/lace/whiting/page85.htm
-[PA14]: http://gwydir.demon.co.uk/jo/lace/whiting/page87.htm
-[PA15]: http://gwydir.demon.co.uk/jo/lace/whiting/page89.htm
-[PA16]: http://gwydir.demon.co.uk/jo/lace/whiting/page90.htm
-[PA17]: http://gwydir.demon.co.uk/jo/lace/whiting/page91.htm
-[PA18]: http://gwydir.demon.co.uk/jo/lace/whiting/page93.htm
+[P70]: http://gwydir.demon.co.uk/jo/lace/whiting/page70.htm
+[P71]: http://gwydir.demon.co.uk/jo/lace/whiting/page71.htm
+[P73]: http://gwydir.demon.co.uk/jo/lace/whiting/page73.htm
+[P74]: http://gwydir.demon.co.uk/jo/lace/whiting/page74.htm
+[P75]: http://gwydir.demon.co.uk/jo/lace/whiting/page75.htm
+[P76]: http://gwydir.demon.co.uk/jo/lace/whiting/page76.htm
+[P77]: http://gwydir.demon.co.uk/jo/lace/whiting/page77.htm
+[P79]: http://gwydir.demon.co.uk/jo/lace/whiting/page79.htm
+
+[P80]: http://gwydir.demon.co.uk/jo/lace/whiting/page80.htm
+[P82]: http://gwydir.demon.co.uk/jo/lace/whiting/page82.htm
+[P83]: http://gwydir.demon.co.uk/jo/lace/whiting/page83.htm
+[P84]: http://gwydir.demon.co.uk/jo/lace/whiting/page84.htm
+[P85]: http://gwydir.demon.co.uk/jo/lace/whiting/page85.htm
+[P87]: http://gwydir.demon.co.uk/jo/lace/whiting/page87.htm
+[P89]: http://gwydir.demon.co.uk/jo/lace/whiting/page89.htm
+
+[P90]: http://gwydir.demon.co.uk/jo/lace/whiting/page90.htm
+[P91]: http://gwydir.demon.co.uk/jo/lace/whiting/page91.htm
+[P92]: http://gwydir.demon.co.uk/jo/lace/whiting/page92.htm
+[P93]: http://gwydir.demon.co.uk/jo/lace/whiting/page93.htm
+[P94]: http://gwydir.demon.co.uk/jo/lace/whiting/page94.htm
+[P95]: http://gwydir.demon.co.uk/jo/lace/whiting/page95.htm
+[P96]: http://gwydir.demon.co.uk/jo/lace/whiting/page96.htm
+[P97]: http://gwydir.demon.co.uk/jo/lace/whiting/page97.htm
+[P98]: http://gwydir.demon.co.uk/jo/lace/whiting/page98.htm
+[P99]: http://gwydir.demon.co.uk/jo/lace/whiting/page99.htm
+
+[P100]: http://gwydir.demon.co.uk/jo/lace/whiting/page100.htm
+[P101]: http://gwydir.demon.co.uk/jo/lace/whiting/page101.htm
+[P102]: http://gwydir.demon.co.uk/jo/lace/whiting/page102.htm
+[P103]: http://gwydir.demon.co.uk/jo/lace/whiting/page103.htm
+[P104]: http://gwydir.demon.co.uk/jo/lace/whiting/page104.htm
+[P105]: http://gwydir.demon.co.uk/jo/lace/whiting/page105.htm
+[P106]: http://gwydir.demon.co.uk/jo/lace/whiting/page106.htm
+[P107]: http://gwydir.demon.co.uk/jo/lace/whiting/page107.htm
+[P108]: http://gwydir.demon.co.uk/jo/lace/whiting/page108.htm
+[P109]: http://gwydir.demon.co.uk/jo/lace/whiting/page109.htm
+
+[P110]: http://gwydir.demon.co.uk/jo/lace/whiting/page110.htm
+[P111]: http://gwydir.demon.co.uk/jo/lace/whiting/page111.htm
+[P112]: http://gwydir.demon.co.uk/jo/lace/whiting/page112.htm
+[P113]: http://gwydir.demon.co.uk/jo/lace/whiting/page113.htm
+[P114]: http://gwydir.demon.co.uk/jo/lace/whiting/page114.htm
+[P115]: http://gwydir.demon.co.uk/jo/lace/whiting/page115.htm
+[P116]: http://gwydir.demon.co.uk/jo/lace/whiting/page116.htm
+[P117]: http://gwydir.demon.co.uk/jo/lace/whiting/page117.htm
+[P118]: http://gwydir.demon.co.uk/jo/lace/whiting/page118.htm
+[P119]: http://gwydir.demon.co.uk/jo/lace/whiting/page119.htm
+
+[P120]: http://gwydir.demon.co.uk/jo/lace/whiting/page120.htm
+[P121]: http://gwydir.demon.co.uk/jo/lace/whiting/page121.htm
+[P122]: http://gwydir.demon.co.uk/jo/lace/whiting/page122.htm
+[P123]: http://gwydir.demon.co.uk/jo/lace/whiting/page123.htm
+[P124]: http://gwydir.demon.co.uk/jo/lace/whiting/page124.htm
+[P125]: http://gwydir.demon.co.uk/jo/lace/whiting/page125.htm
+[P126]: http://gwydir.demon.co.uk/jo/lace/whiting/page126.htm
+[P127]: http://gwydir.demon.co.uk/jo/lace/whiting/page127.htm
+[P128]: http://gwydir.demon.co.uk/jo/lace/whiting/page128.htm
+[P129]: http://gwydir.demon.co.uk/jo/lace/whiting/page129.htm
+
+[P130]: http://gwydir.demon.co.uk/jo/lace/whiting/page130.htm
+[P131]: http://gwydir.demon.co.uk/jo/lace/whiting/page131.htm
+[P132]: http://gwydir.demon.co.uk/jo/lace/whiting/page132.htm
+[P133]: http://gwydir.demon.co.uk/jo/lace/whiting/page133.htm
+[P134]: http://gwydir.demon.co.uk/jo/lace/whiting/page134.htm
+[P135]: http://gwydir.demon.co.uk/jo/lace/whiting/page135.htm
+[P136]: http://gwydir.demon.co.uk/jo/lace/whiting/page136.htm
+[P137]: http://gwydir.demon.co.uk/jo/lace/whiting/page137.htm
+[P138]: http://gwydir.demon.co.uk/jo/lace/whiting/page138.htm
+[P139]: http://gwydir.demon.co.uk/jo/lace/whiting/page139.htm
+
+[P140]: http://gwydir.demon.co.uk/jo/lace/whiting/page140.htm
+[P141]: http://gwydir.demon.co.uk/jo/lace/whiting/page141.htm
+[P142]: http://gwydir.demon.co.uk/jo/lace/whiting/page142.htm
+[P143]: http://gwydir.demon.co.uk/jo/lace/whiting/page143.htm
+[P144]: http://gwydir.demon.co.uk/jo/lace/whiting/page144.htm
+[P145]: http://gwydir.demon.co.uk/jo/lace/whiting/page145.htm
+[P146]: http://gwydir.demon.co.uk/jo/lace/whiting/page146.htm
+[P147]: http://gwydir.demon.co.uk/jo/lace/whiting/page147.htm
+[P148]: http://gwydir.demon.co.uk/jo/lace/whiting/page148.htm
+[P149]: http://gwydir.demon.co.uk/jo/lace/whiting/page149.htm
+
+[P150]: http://gwydir.demon.co.uk/jo/lace/whiting/page150.htm
+[P151]: http://gwydir.demon.co.uk/jo/lace/whiting/page151.htm
+[P152]: http://gwydir.demon.co.uk/jo/lace/whiting/page152.htm
+[P153]: http://gwydir.demon.co.uk/jo/lace/whiting/page153.htm
+[P154]: http://gwydir.demon.co.uk/jo/lace/whiting/page154.htm
+[P155]: http://gwydir.demon.co.uk/jo/lace/whiting/page155.htm
+[P156]: http://gwydir.demon.co.uk/jo/lace/whiting/page156.htm
+[P157]: http://gwydir.demon.co.uk/jo/lace/whiting/page157.htm
+[P158]: http://gwydir.demon.co.uk/jo/lace/whiting/page158.htm
+[P159]: http://gwydir.demon.co.uk/jo/lace/whiting/page159.htm
+
+[P160]: http://gwydir.demon.co.uk/jo/lace/whiting/page160.htm
+[P161]: http://gwydir.demon.co.uk/jo/lace/whiting/page161.htm
+[P162]: http://gwydir.demon.co.uk/jo/lace/whiting/page162.htm
+[P163]: http://gwydir.demon.co.uk/jo/lace/whiting/page163.htm
+[P164]: http://gwydir.demon.co.uk/jo/lace/whiting/page164.htm
+[P165]: http://gwydir.demon.co.uk/jo/lace/whiting/page165.htm
+[P166]: http://gwydir.demon.co.uk/jo/lace/whiting/page166.htm
+[P167]: http://gwydir.demon.co.uk/jo/lace/whiting/page167.htm
+[P168]: http://gwydir.demon.co.uk/jo/lace/whiting/page168.htm
+[P169]: http://gwydir.demon.co.uk/jo/lace/whiting/page169.htm
+
+[P170]: http://gwydir.demon.co.uk/jo/lace/whiting/page170.htm
+[P171]: http://gwydir.demon.co.uk/jo/lace/whiting/page171.htm
+[P172]: http://gwydir.demon.co.uk/jo/lace/whiting/page172.htm
+[P173]: http://gwydir.demon.co.uk/jo/lace/whiting/page173.htm
+[P174]: http://gwydir.demon.co.uk/jo/lace/whiting/page174.htm
+[P175]: http://gwydir.demon.co.uk/jo/lace/whiting/page175.htm
+[P176]: http://gwydir.demon.co.uk/jo/lace/whiting/page176.htm
+[P177]: http://gwydir.demon.co.uk/jo/lace/whiting/page177.htm
+[P178]: http://gwydir.demon.co.uk/jo/lace/whiting/page178.htm
+[P179]: http://gwydir.demon.co.uk/jo/lace/whiting/page179.htm
+
+[P180]: http://gwydir.demon.co.uk/jo/lace/whiting/page180.htm
+[P181]: http://gwydir.demon.co.uk/jo/lace/whiting/page181.htm
+[P182]: http://gwydir.demon.co.uk/jo/lace/whiting/page182.htm
+[P183]: http://gwydir.demon.co.uk/jo/lace/whiting/page183.htm
+[P184]: http://gwydir.demon.co.uk/jo/lace/whiting/page184.htm
+[P185]: http://gwydir.demon.co.uk/jo/lace/whiting/page185.htm
+[P186]: http://gwydir.demon.co.uk/jo/lace/whiting/page186.htm
+[P187]: http://gwydir.demon.co.uk/jo/lace/whiting/page187.htm
+[P188]: http://gwydir.demon.co.uk/jo/lace/whiting/page188.htm
+[P189]: http://gwydir.demon.co.uk/jo/lace/whiting/page189.htm
+
+[P190]: http://gwydir.demon.co.uk/jo/lace/whiting/page190.htm
+[P191]: http://gwydir.demon.co.uk/jo/lace/whiting/page191.htm
+[P192]: http://gwydir.demon.co.uk/jo/lace/whiting/page192.htm
+[P193]: http://gwydir.demon.co.uk/jo/lace/whiting/page193.htm
+[P194]: http://gwydir.demon.co.uk/jo/lace/whiting/page194.htm
+[P195]: http://gwydir.demon.co.uk/jo/lace/whiting/page195.htm
+[P196]: http://gwydir.demon.co.uk/jo/lace/whiting/page196.htm
+[P197]: http://gwydir.demon.co.uk/jo/lace/whiting/page197.htm
+[P198]: http://gwydir.demon.co.uk/jo/lace/whiting/page198.htm
+[P199]: http://gwydir.demon.co.uk/jo/lace/whiting/page199.htm
+
+[P200]: http://gwydir.demon.co.uk/jo/lace/whiting/page200.htm
+[P201]: http://gwydir.demon.co.uk/jo/lace/whiting/page201.htm
+[P202]: http://gwydir.demon.co.uk/jo/lace/whiting/page202.htm
+[P203]: http://gwydir.demon.co.uk/jo/lace/whiting/page203.htm
+[P204]: http://gwydir.demon.co.uk/jo/lace/whiting/page204.htm
+[P205]: http://gwydir.demon.co.uk/jo/lace/whiting/page205.htm
+[P206]: http://gwydir.demon.co.uk/jo/lace/whiting/page206.htm
+[P207]: http://gwydir.demon.co.uk/jo/lace/whiting/page207.htm
+[P208]: http://gwydir.demon.co.uk/jo/lace/whiting/page208.htm
+[P209]: http://gwydir.demon.co.uk/jo/lace/whiting/page209.htm
+
+[P210]: http://gwydir.demon.co.uk/jo/lace/whiting/page210.htm
+[P211]: http://gwydir.demon.co.uk/jo/lace/whiting/page211.htm
+[P212]: http://gwydir.demon.co.uk/jo/lace/whiting/page212.htm
+[P213]: http://gwydir.demon.co.uk/jo/lace/whiting/page213.htm
+[P214]: http://gwydir.demon.co.uk/jo/lace/whiting/page214.htm
+[P215]: http://gwydir.demon.co.uk/jo/lace/whiting/page215.htm
+[P216]: http://gwydir.demon.co.uk/jo/lace/whiting/page216.htm
+[P217]: http://gwydir.demon.co.uk/jo/lace/whiting/page217.htm
+[P218]: http://gwydir.demon.co.uk/jo/lace/whiting/page218.htm
+[P219]: http://gwydir.demon.co.uk/jo/lace/whiting/page219.htm
+
+[P220]: http://gwydir.demon.co.uk/jo/lace/whiting/page220.htm
+[P221]: http://gwydir.demon.co.uk/jo/lace/whiting/page221.htm
+[P222]: http://gwydir.demon.co.uk/jo/lace/whiting/page222.htm
+[P223]: http://gwydir.demon.co.uk/jo/lace/whiting/page223.htm
+[P224]: http://gwydir.demon.co.uk/jo/lace/whiting/page224.htm
+[P225]: http://gwydir.demon.co.uk/jo/lace/whiting/page225.htm
+[P226]: http://gwydir.demon.co.uk/jo/lace/whiting/page226.htm
+[P227]: http://gwydir.demon.co.uk/jo/lace/whiting/page227.htm
+[P228]: http://gwydir.demon.co.uk/jo/lace/whiting/page228.htm
+[P229]: http://gwydir.demon.co.uk/jo/lace/whiting/page229.htm
+
+[P230]: http://gwydir.demon.co.uk/jo/lace/whiting/page230.htm
+[P231]: http://gwydir.demon.co.uk/jo/lace/whiting/page231.htm
+[P232]: http://gwydir.demon.co.uk/jo/lace/whiting/page232.htm
+[P233]: http://gwydir.demon.co.uk/jo/lace/whiting/page233.htm
+[P234]: http://gwydir.demon.co.uk/jo/lace/whiting/page234.htm
+[P235]: http://gwydir.demon.co.uk/jo/lace/whiting/page235.htm
+[P236]: http://gwydir.demon.co.uk/jo/lace/whiting/page236.htm
+[P237]: http://gwydir.demon.co.uk/jo/lace/whiting/page237.htm
+[P238]: http://gwydir.demon.co.uk/jo/lace/whiting/page238.htm
+[P239]: http://gwydir.demon.co.uk/jo/lace/whiting/page239.htm
+
+[P240]: http://gwydir.demon.co.uk/jo/lace/whiting/page240.htm
+[P241]: http://gwydir.demon.co.uk/jo/lace/whiting/page241.htm
+[P242]: http://gwydir.demon.co.uk/jo/lace/whiting/page242.htm
+[P243]: http://gwydir.demon.co.uk/jo/lace/whiting/page243.htm
+[P244]: http://gwydir.demon.co.uk/jo/lace/whiting/page244.htm
+[P245]: http://gwydir.demon.co.uk/jo/lace/whiting/page245.htm
+[P246]: http://gwydir.demon.co.uk/jo/lace/whiting/page246.htm
+[P247]: http://gwydir.demon.co.uk/jo/lace/whiting/page247.htm
+[P248]: http://gwydir.demon.co.uk/jo/lace/whiting/page248.htm
+[P249]: http://gwydir.demon.co.uk/jo/lace/whiting/page249.htm
 
 
 Legend
