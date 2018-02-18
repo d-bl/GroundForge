@@ -300,7 +300,7 @@ Legend
   go to sets of [TesseLace](/GroundForge/help/TesseLace-Index) patterns,
   in turn linking to a diagram page where you can choose stitches.
   Each pattern in such a set can be morphed into the others by nudging pins.
-  Only four of the lower-case links ([c],[t],[k],[v]) cover more than a third of the grounds below, a ratio that illustrates
+  Only four of the lower-case links ([c],[t],[k],[v]) cover more than a third of the grounds above, a ratio that illustrates
   how many variations can be made by changing stitches or nudging pin positions.
   
 * **&sim;**:
