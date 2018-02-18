@@ -116,6 +116,8 @@ function showDiagrams() {
   if (threadDiagram.jsNodes().length == 1 || threadContainerNode.innerHTML.indexOf("Need a new pair from") >= 0)  return
 
   animateDiagram(threadContainer)
+  threadContainer.node().scrollTop = 175
+  threadContainer.node().scrollLeft = 75
   threadContainer.selectAll(".threadStart").on("click", paintThread)
 }
 function animateDiagram(container) {
