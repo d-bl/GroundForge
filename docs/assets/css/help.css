@@ -29,8 +29,8 @@ figcaption { text-align: center; background-color: #ddd; border-radius: 3px; mar
 .hide { display: none; }
 .show { display: block; }
 
-@only screen and (min-width: 768px) and(max-width: 959px) {
-  #main-content svg {
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  svg {
     -ms-transform: translate(-88px, -80px) scale(0.75, 0.75) /* IE 9 */
     -webkit-transform: translate(-88px, -80px) scale(0.75, 0.75) /* Safari */
     transform: translate(-88px, -80px) scale(0.75, 0.75)
