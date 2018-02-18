@@ -28,3 +28,9 @@ figcaption { text-align: center; background-color: #ddd; border-radius: 3px; mar
 #stitch-form table, #stitch-form td { border: 0; }
 .hide { display: none; }
 .show { display: block; }
+
+@only screen and (min-width: 768px) and(max-width: 959px) {
+    -ms-transform: scale(0.71, 0.71); /* IE 9 */
+    -webkit-transform: scale(0.71, 0.71); /* Safari */
+    transform: scale(0.71, 0.71);
+}
