@@ -17,7 +17,7 @@ fieldset, fieldset div { display: inline-block; vertical-align: top; }
 form { margin-bottom: 1em; }
 #diagrams { display: block; }
 p { margin-top: 0; margin-bottom: 0.2em; }
-p, dt, dd, ul { max-width: 47em; }
+p, dt, dd, ul { max-width: 46.5em; }
 td { text-align: center; vertical-align: top; padding-right: 0.5em}
 #footer {max-width:100%}
 

@@ -64,20 +64,14 @@ function defaultStitches() {
     showProto()
   }
 }
+function toKeyValueString (formField) {
+    var n = formField.name
+    var v = formField.value
+    return !n || !v ? '' : n + '=' +  v.replace(/\n/g,",").replace(valueFilter,"")
+}
 function submitQuery() {
 
-  var kvpairs = []
-  var nodes = d3.selectAll('input, textarea').nodes()
-  for (i in nodes) {
-    var node = nodes[i]
-    var n = node.name
-    var v = node.value
-    if (n && v) {
-      var trimmed = v.replace(/\n/g,",").replace(valueFilter,"")
-      kvpairs.push(n + "=" + trimmed)
-    }
-  }
-  return kvpairs.join("&")
+  return d3.selectAll('input, textarea').nodes().map(toKeyValueString).join("&")
 }
 function showProto() {
 
@@ -173,21 +167,23 @@ function setDownloadContent (linkNode, id) {
       replace(/<path [^>]+opacity: 0;.+?path>/g, '')
   linkNode.href = 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
 }
-function load() {
+function setField (keyValueString) {
 
-  var kvpairs = (window.location.href + '').replace(/.*\?/,"").split("&")
-  var kvs = {}
-  for (var i in kvpairs) {
-    var kv = kvpairs[i].split("=")
+    var kv = keyValueString.split("=")
     if (kv.length > 1) {
       var k = kv[0].trim().replace(/[^a-zA-Z]/g,"")
-      kvs[k] = kv[1].trim().replace(valueFilter,"").replace(/,/g,"\n")
+      var v = kv[1].trim().replace(valueFilter,"").replace(/,/g,"\n")
+      console.log("==="+k+'==='+v+'===')
+      d3.select('#'+k).property("value", v)
     }
-  }
-  if (kvpairs.length < 2)
-    showProto()
-  else
-    sample(kvs["tile"],kvs["shiftColsSE"],kvs["shiftRowsSE"],kvs["shiftColsSW"],kvs["shiftRowsSW"],kvs["footside"],kvs["headside"],kvs["repeatWidth"],kvs["repeatHeight"],kvs["patchCols"],kvs["patchRows"])
+}
+function load() {
+
+  var keyValueStrings = window.location.search.substr(1).split("&")
+  keyValueStrings.forEach(setField)
+  showProto()
+  if (keyValueStrings.length >= 7 ) // TODO this is not a good safeguard against invalid/incomplete search arguments
+    showDiagrams()
 }
 function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, repeatWidth, repeatHeight, patchCols, patchRows) {
 
