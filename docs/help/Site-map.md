@@ -6,7 +6,7 @@ title: Site Map
 Site Map
 ========
 
-The  diagram gives an overview of the available pages
+The  diagram gives an overview of the available sets of pages
 and how to navigate between them.
 The page names are linked to examples.
 A legend and some notes follow the overview.
@@ -26,8 +26,10 @@ No custom foot sides.
 tiles
 -----
 
-Choosing stitches or thread colors is more intuitive and fully supports touch-devices.
-Zooming and [untangling] is not supported.
+Choosing stitches or thread colors is more intuitive
+but as a consequence only black and red for thread colors.
+Zooming and [untangling] is not supported,
+instead you can adjust the space occupied on the page.
 A bug may assign the chosen stitches incorrectly in the animated diagrams,
 until fixed, stitches are not saved with pattern links.
 Minimum version for iOS is 11, for other systems unknown.
@@ -45,5 +47,5 @@ sheet           | -               | black&white / squared
 tesselace-index | -               | black&white / rounded
 
 Squared : stitches are placed on square grid positions<br>
-Rounded : an animation creates round holes from a squared pattern<br>
+Rounded : an animated proces makes the holes of a squared pattern as round as possible<br>
 Many squared diagrams can result in the same rounded diagram.
