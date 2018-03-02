@@ -75,7 +75,7 @@ function submitQuery() {
 }
 function showProto() {
 
-  if (window.scrollTo) window.scrollTo(0,0)
+  d3.select("#prototype").node().scrollIntoView({ behavior: 'smooth'})
 
   var query = submitQuery()
   var config = dibl.Config().create(query + collectStitches())
@@ -100,7 +100,7 @@ function showDiagrams() {
   var pairContainerNode = pairContainer.node()
   var pairDiagram = pairContainerNode.data = dibl.Config().create(submitQuery() + collectStitches()).pairDiagram
   pairContainer.html(dibl.D3jsSVG().render(pairDiagram, "1px", markers, 744, 1052))
-  if (pairContainerNode.scrollTo) pairContainerNode.scrollTo(0,0)
+  pairContainer.select("g").node().scrollIntoView({ behavior: 'smooth'})
   if (pairDiagram.jsNodes().length == 1) return
 
   var threadContainer = d3.select("#threadDiagram")
@@ -118,7 +118,7 @@ function animateDiagram(container) {
   var diagram = container.node().data
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()//can't inline
-  if (container.node().scrollTo) container.node().scrollTo(220, 400)
+  container.select("g").node().scrollIntoView({ behavior: 'smooth'})
   var links = container.selectAll(".link").data(linkDefs)
   var nodes = container.selectAll(".node").data(nodeDefs)
 
