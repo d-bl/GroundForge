@@ -75,7 +75,7 @@ function submitQuery() {
 }
 function showProto() {
 
-  window.scrollTo(0,0)
+  if (window.scrollTo) window.scrollTo(0,0)
 
   var query = submitQuery()
   var config = dibl.Config().create(query + collectStitches())
@@ -100,7 +100,7 @@ function showDiagrams() {
   var pairContainerNode = pairContainer.node()
   var pairDiagram = pairContainerNode.data = dibl.Config().create(submitQuery() + collectStitches()).pairDiagram
   pairContainer.html(dibl.D3jsSVG().render(pairDiagram, "1px", markers, 744, 1052))
-  pairContainerNode.scrollTo(0,0)
+  if (pairContainerNode.scrollTo) pairContainerNode.scrollTo(0,0)
   if (pairDiagram.jsNodes().length == 1) return
 
   var threadContainer = d3.select("#threadDiagram")
@@ -110,8 +110,7 @@ function showDiagrams() {
   if (threadDiagram.jsNodes().length == 1 || threadContainerNode.innerHTML.indexOf("Need a new pair from") >= 0)  return
 
   animateDiagram(threadContainer)
-  threadContainer.node().scrollTop = 175
-  threadContainer.node().scrollLeft = 75
+  if (threadContainer.node().scrollTo) threadContainer.node().scrollTo(75, 175)
   threadContainer.selectAll(".threadStart").on("click", paintThread)
 }
 function animateDiagram(container) {
@@ -119,8 +118,7 @@ function animateDiagram(container) {
   var diagram = container.node().data
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()//can't inline
-  container.node().scrollTop = 400
-  container.node().scrollLeft = 220
+  if (container.node().scrollTo) container.node().scrollTo(220, 400)
   var links = container.selectAll(".link").data(linkDefs)
   var nodes = container.selectAll(".node").data(nodeDefs)
 
