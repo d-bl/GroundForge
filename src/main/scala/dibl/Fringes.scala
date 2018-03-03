@@ -226,7 +226,7 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
           |  cx='${sourceCol * drawingScale}'
           |  cy='${sourceRow * drawingScale}'
           |  r='3'
-          |/>
+          |></circle>
           |""".stripMargin
   }.mkString
 
@@ -236,7 +236,7 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
       val sourceY = sourceRow * drawingScale
       val targetX = targetCol * drawingScale
       val targetY = targetRow * drawingScale
-      s"""<path style='stroke:$color;stroke-opacity:0.4;fill:none' d='M $sourceX,$sourceY $targetX,$targetY'/>"""
+      s"""<path style='stroke:$color;stroke-opacity:0.4;fill:none' d='M $sourceX,$sourceY $targetX,$targetY'></path>"""
   }.mkString
 }
 @JSExport

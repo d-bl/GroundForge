@@ -34,7 +34,7 @@ object InteractiveSVG {
       val translate = s"transform='translate(${c * 10 + 38},${r * 10 + 1})'"
       val nrOfPairsOut = pairsOut(r)(c)
       (if (nrOfPairsOut == 2 || vectorCode == "-") ""
-      else s"""<use xlink:href='#oops' $translate style='opacity:0.${1 + nrOfPairsOut};'/>"""
+      else s"""<use xlink:href='#oops' $translate style='opacity:0.${1 + nrOfPairsOut};'></use>"""
         ) +
         s"""<use xlink:href='#g$vectorCode'
            |  id='svg-r${r + 1}-c${c + 1}'

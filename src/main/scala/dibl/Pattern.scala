@@ -109,7 +109,7 @@ private class Pattern (tileMatrix: String,
     s"""    <path
         |      d='m ${toX(col) + 2},${toY(row)} a 2,2 0 0 1 -2,2 2,2 0 0 1 -2,-2 2,2 0 0 1 2,-2 2,2 0 0 1 2,2 z'
         |      style='fill:#$color;stroke:none'
-        |    />
+        |    ></path>
         |""".stripMargin
   }
 
@@ -122,7 +122,7 @@ private class Pattern (tileMatrix: String,
     } yield s"""    <path
                 |      style='stroke:#000;fill:none'
                 |      d='M ${toX(sourceCol)},${toY(sourceRow)} ${toX(targetCol)},${toY(targetRow)}'
-                |    />
+                |    ></path>
                 |""".stripMargin +
       (if (needSourceNode) createNode(sourceRow, sourceCol) else "")
     ).mkString
@@ -144,7 +144,7 @@ private class Pattern (tileMatrix: String,
                 |      transform='translate($dX,$dY)'
                 |      xlink:href='#$groupId'
                 |      style='fill-opacity:0.1'
-                |    />
+                |    ></use>
                 |""".stripMargin).tail.mkString
   }
 
