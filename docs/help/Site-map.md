@@ -32,7 +32,7 @@ Zooming and [untangling] is not supported,
 instead you can adjust the space occupied on the page.
 A bug may assign the chosen stitches incorrectly in the animated diagrams,
 until fixed, stitches are not saved with pattern links.
-Minimum version for iOS is 11, for other systems unknown.
+Minimum version for iOS is 11, for FireFox 27, for other systems/browsers unknown.
 
 [untangling]: https://github.com/d-bl/GroundForge/releases/download/2017-06-05/untangle.mp4
 
