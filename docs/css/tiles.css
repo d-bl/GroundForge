@@ -1,9 +1,9 @@
 li li { padding-bottom:0; }
 
 figure { display: inline-block; margin-left: 0; margin-top: 0; margin-right: 0.5em; margin-bottom: 0; }
-figure image, figcaption { display: block; }
+figure img, figcaption { display: block; }
 figcaption { text-align: center; background-color: #ddd; border-radius: 3px; margin-top: 0.3em; padding-left: 0.5em; padding-right: 0.5em; }
-figcaption img { padding-left: 1em; vertical-align: middle; }
+figcaption img { padding-left: 1em; vertical-align: middle; display: inline-block; }
 fieldset fieldset figure div { height: 222px; }
 #pattern figure { display: block; text-align: center; }
 #pattern img { padding-top: 0.5em; }
