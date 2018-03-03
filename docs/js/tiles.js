@@ -75,7 +75,7 @@ function submitQuery() {
 }
 function showProto() {
 
-  window.scrollTo(0,0)
+  scrollIntoViewIfPossible(d3.select("#diagrams").node())
 
   var query = submitQuery()
   var config = dibl.Config().create(query + collectStitches())
@@ -90,6 +90,19 @@ function showProto() {
   d3.select("#prototype").style("height", (config.totalRows * 20 + 30) + "px"
                         ).style("width", (config.totalCols * 20 + 30) + "px")
 }
+function scrollIntoViewIfPossible(container) {
+  // despite w3Schools documentation not available for IE / Edge(?)
+  // see also https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/15534521/
+  if (container.scrollIntoView) {
+    container.scrollIntoView({ block: "start", behavior: 'smooth' })
+  }
+}
+function scrollToIfPossible(container, x, y) {
+  if (container.scrollTop !== undefined && container.scrollLeft !== undefined) {
+    container.scrollTop = y
+    container.scrollLeft = x
+  }
+}
 function showDiagrams() {
 
   d3.select('#animations').style('display',"inline-block")
@@ -100,7 +113,7 @@ function showDiagrams() {
   var pairContainerNode = pairContainer.node()
   var pairDiagram = pairContainerNode.data = dibl.Config().create(submitQuery() + collectStitches()).pairDiagram
   pairContainer.html(dibl.D3jsSVG().render(pairDiagram, "1px", markers, 744, 1052))
-  pairContainerNode.scrollTo(0,0)
+  scrollToIfPossible(pairContainerNode,0,0)
   if (pairDiagram.jsNodes().length == 1) return
 
   var threadContainer = d3.select("#threadDiagram")
@@ -110,8 +123,7 @@ function showDiagrams() {
   if (threadDiagram.jsNodes().length == 1 || threadContainerNode.innerHTML.indexOf("Need a new pair from") >= 0)  return
 
   animateDiagram(threadContainer)
-  threadContainer.node().scrollTop = 175
-  threadContainer.node().scrollLeft = 75
+  scrollToIfPossible(threadContainerNode, 75, 175)
   threadContainer.selectAll(".threadStart").on("click", paintThread)
 }
 function animateDiagram(container) {
@@ -119,8 +131,7 @@ function animateDiagram(container) {
   var diagram = container.node().data
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()//can't inline
-  container.node().scrollTop = 400
-  container.node().scrollLeft = 220
+  scrollToIfPossible(container.node(), 220, 400)
   var links = container.selectAll(".link").data(linkDefs)
   var nodes = container.selectAll(".node").data(nodeDefs)
 
