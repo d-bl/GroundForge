@@ -380,15 +380,14 @@
                 </svg>
             </div>
             <figcaption title="choosing a stitch shows/refreshes the thread diagram">
-                Prototype -
-                click bold symbols -
+                Prototype - click bold symbols
                 <a download="prototype.svg"
                    onfocus="setDownloadContent(this,'#prototype')"
                    onblur="this.href='?#download'"
                    target="_blank"
                    href="?#download"
                    title="download"
-                >download</a>
+                ><img src="images/download.jpg"></a>
             </figcaption>
         </figure>
         <fieldset id="animations">
@@ -408,32 +407,32 @@
                 <div id="pairDiagram"></div>
                 <figcaption>
                     Pairs -
-                    <a href="javascript:animateDiagram(d3.select('#pairDiagram'))">animate</a> -
+                    <a href="javascript:animateDiagram(d3.select('#pairDiagram'))"
+                    >animate</a>
                     <a download="pair-diagram.svg"
                        onfocus="setDownloadContent(this,'#pairDiagram')"
                        onblur="this.href='?#download'"
                        target="_blank"
                        href="?#download"
                        title="download"
-                    >download</a>
-                    <img src="images/size-inc.jpg" onclick="resizeBoth('#pairDiagram', 1.1)"
-                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#pairDiagram', 0.91)">
+                    ><img src="images/download.jpg"></a>
+                    <img src="images/size-inc.jpg" onclick="resizeBoth('#pairDiagram', 1.1)" title="increase dimensions"
+                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#pairDiagram', 0.91)" title="decrease dimensions">
                 </figcaption>
             </figure>
             <figure >
                 <div id="threadDiagram"></div>
                 <figcaption>
-                    Threads -
-                    click squares -
+                    Threads - click squares
                     <a download="thread-diagram.svg"
                        onfocus="setDownloadContent(this,'#threadDiagram')"
                        onblur="this.href='?#download'"
                        target="_blank"
                        href="?#download"
                        title="download"
-                    >download</a>
-                    <img src="images/size-inc.jpg" onclick="resizeBoth('#threadDiagram', 1.1)"
-                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#threadDiagram', 0.91)">
+                    ><img src="images/download.jpg"></a>
+                    <img src="images/size-inc.jpg" onclick="resizeBoth('#threadDiagram', 1.1)" title="increase dimensions"
+                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#threadDiagram', 0.91)" title="decrease dimensions">
                 </figcaption>
             </figure>
         </fieldset>
