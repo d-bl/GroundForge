@@ -9,7 +9,6 @@ fieldset fieldset figure div { height: 222px; }
 #pattern img { padding-top: 0.5em; }
 
 #threadDiagram, #pairDiagram { resize:both;overflow:auto;display:inline-block;width:250px;height:250px;max-width:784px;max-height:1082px }
-#threadDiagram g { transform: scale(0.5,0.5); }
 #prototype { width:0; height:0; overflow:hidden}
 
 input[type="number"] { width:3em; }

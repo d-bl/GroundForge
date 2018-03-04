@@ -119,7 +119,7 @@ function showDiagrams() {
   var threadContainer = d3.select("#threadDiagram")
   var threadContainerNode = threadContainer.node()
   var threadDiagram = threadContainerNode.data = dibl.ThreadDiagram().create(pairDiagram)
-  threadContainer.html(dibl.D3jsSVG().render(threadDiagram, "2px", markers, 744, 1052))
+  threadContainer.html(dibl.D3jsSVG().render(threadDiagram, "2px", markers, 744, 1052).replace("<g>","<g transform='scale(0.5,0.5)'>"))
   if (threadDiagram.jsNodes().length == 1 || threadContainerNode.innerHTML.indexOf("Need a new pair from") >= 0)  return
 
   animateDiagram(threadContainer)
