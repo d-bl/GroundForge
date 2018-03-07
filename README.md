@@ -117,10 +117,12 @@ The applied Scala coding techniques are explained by this [course] up and includ
 Tests
 -----
 
-Use `mvn clean test` to run unit tests. As some tests read files the test fail with SBT.
+Use `mvn clean test` to run unit tests. As some tests read pattern links from help files the test fail with SBT.
 Maven is much faster but uses JVM while the JS used by SBT is the actual target environment.
 Some classes under `src/test` are suffixed with `Demos` rather than `Spec` these runnable objects create SVG documents in a `target/test` directory for a visual check.
 
+For manual tests of the html pages in the docs directory (and help pages after publishing) on other browsers and devices than your own you could signup at
+<br><a href="http://browserstack.com/"><img src="https://p14.zdusercontent.com/attachment/1015988/2pBNLzsRzHKyVmXhbPYFfcqi2?token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..u4MOjDBdY7uyB7AqmHgHyw.OG_ZUr4mjWRjpV4IE5UH_bEtx-L-4NHCjNVSBjFvNP9X9ugBGhbEmHXVTJlpI-UBmAFBTl2SVYLgE4G474L0Hu37sYTtC5G3ehtEdiUYPn2R-MfM9cxUCJVP_T1PYk9_kZowoF2wSPFvaWphfvO9bk-hykkhDfPeFQ2BHsJlTlHbpNq8Icd4sveUMnJl0zFiy-h3kGo0ImQLRZnNsmEa3qx7JTINhL-bAUpGQKmdpvWAFVhtUIz8ZkntxRnuNi5EtXD1P4tucKH8kSt5gJXnSU_O0M0Ka_pTJgVXpEQMvTs.it94EtvuwAOOEjIRwQ7z1w" width="120" height="63"></a>
 
 Publish
 -------
