@@ -79,7 +79,7 @@ For that purpose, the maintainer needs to fill in the _edit note_ to list the ch
 |  7 | [W][P77]![](w/page77a.gif) | [k],[W][P100]![](w/page100a.gif) | [W][P121]![](w/page121a.gif) | [W][P140]![](w/page140a.gif) | [W][P161]![](w/page161a.gif) | [W][P183]![](w/page183a.gif) | [W][P205]![](w/page205a.gif) | [k],[W][P226]![](w/page226a.gif) |
 |  8 | [W][P79]![](w/page79a.gif) | [W][P101]![](w/page101a.gif) | [W][P122]![](w/page122a.gif) | [W][P141]![](w/page141a.gif) | [W][P162]![](w/page162a.gif) | [W][P184]![](w/page184a.gif) | [W][P206]![](w/page206a.gif) | [W][P227]![](w/page227a.gif) |
 |  9 | [W][P80]![](w/page80a.gif) | [W][P102]![](w/page102a.gif) | [C9]<sup>2</sup>,[v],[W][P123]![](w/page123a.gif) | [D9],[W][P142]![](w/page142a.gif) | [W][P163]![](w/page163a.gif) | [W][P185]![](w/page185a.gif) | [t],[W][P207]![](w/page207a.gif) | [H9],[t],[W][P229]![](w/page229a.gif) |
-|  10 | [W][P82]![](w/page82a.gif) | [W][P103]![](w/page103a.gif) | [W][P124]![](w/page124a.gif) | [W][P143]![](w/page143a.gif) | [W][P164]![](w/page164a.gif) | [W][P187]![](w/page187a.gif) | [W][P208]![](w/page208a.gif) | [W][P230]![](w/page230a.gif) |
+|  10 | [W][P82]![](w/page82a.gif) | [W][P103]![](w/page103a.gif) | [W][P124]![](w/page124a.gif) | [W][P143]![](w/page143a.gif) | [W][P164]![](w/page164a.gif) | [W][P187]![](w/page187a.gif) | [W][P208]![](w/page208a.gif) | [H10],[W][P230]![](w/page230a.gif) |
 |  11 | [t],[W][P83]![](w/page83a.gif) | [t],[W][P104]![](w/page104a.gif) | -,[W][P125]![](w/page125a.gif) | [wk],[W][P144]![](w/page144a.gif) | [wk],[W][P166]![](w/page166a.gif) | [t],[W][P189]![](w/page189a.gif) | [k],[W][P209]![](w/page209a.gif) | -,[W][P231]![](w/page231a.gif) |
 |  12 | [t],[W][P84]![](w/page84a.gif) | [c],[W][P105]![](w/page105a.gif) | [W][P126]![](w/page126a.gif) | [W][P145]![](w/page145a.gif) | [W][P167]![](w/page167a.gif) | [W][P190]![](w/page190a.gif) | [W][P210]![](w/page210a.gif) | [W][P232]![](w/page232a.gif) |
 |  13 | -,[W][P85]![](w/page85a.gif) | [W][P106]![](w/page106a.gif) | [W][P128]![](w/page128a.gif) | [W][P147]![](w/page147a.gif) | [W][P169]![](w/page169a.gif) | [W][P192]![](w/page192a.gif) | [W][P211]![](w/page211a.gif) | [W][P234]![](w/page234a.gif) |
@@ -108,7 +108,6 @@ For that purpose, the maintainer needs to fill in the _edit note_ to list the ch
 
 [P90]: http://gwydir.demon.co.uk/jo/lace/whiting/page90.htm
 [P91]: http://gwydir.demon.co.uk/jo/lace/whiting/page91.htm
-[P92]: http://gwydir.demon.co.uk/jo/lace/whiting/page92.htm
 [P93]: http://gwydir.demon.co.uk/jo/lace/whiting/page93.htm
 [P94]: http://gwydir.demon.co.uk/jo/lace/whiting/page94.htm
 [P95]: http://gwydir.demon.co.uk/jo/lace/whiting/page95.htm
@@ -125,7 +124,6 @@ For that purpose, the maintainer needs to fill in the _edit note_ to list the ch
 [P105]: http://gwydir.demon.co.uk/jo/lace/whiting/page105.htm
 [P106]: http://gwydir.demon.co.uk/jo/lace/whiting/page106.htm
 [P107]: http://gwydir.demon.co.uk/jo/lace/whiting/page107.htm
-[P108]: http://gwydir.demon.co.uk/jo/lace/whiting/page108.htm
 [P109]: http://gwydir.demon.co.uk/jo/lace/whiting/page109.htm
 
 [P110]: http://gwydir.demon.co.uk/jo/lace/whiting/page110.htm
@@ -146,7 +144,6 @@ For that purpose, the maintainer needs to fill in the _edit note_ to list the ch
 [P124]: http://gwydir.demon.co.uk/jo/lace/whiting/page124.htm
 [P125]: http://gwydir.demon.co.uk/jo/lace/whiting/page125.htm
 [P126]: http://gwydir.demon.co.uk/jo/lace/whiting/page126.htm
-[P127]: http://gwydir.demon.co.uk/jo/lace/whiting/page127.htm
 [P128]: http://gwydir.demon.co.uk/jo/lace/whiting/page128.htm
 [P129]: http://gwydir.demon.co.uk/jo/lace/whiting/page129.htm
 
@@ -167,16 +164,13 @@ For that purpose, the maintainer needs to fill in the _edit note_ to list the ch
 [P143]: http://gwydir.demon.co.uk/jo/lace/whiting/page143.htm
 [P144]: http://gwydir.demon.co.uk/jo/lace/whiting/page144.htm
 [P145]: http://gwydir.demon.co.uk/jo/lace/whiting/page145.htm
-[P146]: http://gwydir.demon.co.uk/jo/lace/whiting/page146.htm
 [P147]: http://gwydir.demon.co.uk/jo/lace/whiting/page147.htm
 [P148]: http://gwydir.demon.co.uk/jo/lace/whiting/page148.htm
 [P149]: http://gwydir.demon.co.uk/jo/lace/whiting/page149.htm
 
 [P150]: http://gwydir.demon.co.uk/jo/lace/whiting/page150.htm
 [P151]: http://gwydir.demon.co.uk/jo/lace/whiting/page151.htm
-[P152]: http://gwydir.demon.co.uk/jo/lace/whiting/page152.htm
 [P153]: http://gwydir.demon.co.uk/jo/lace/whiting/page153.htm
-[P154]: http://gwydir.demon.co.uk/jo/lace/whiting/page154.htm
 [P155]: http://gwydir.demon.co.uk/jo/lace/whiting/page155.htm
 [P156]: http://gwydir.demon.co.uk/jo/lace/whiting/page156.htm
 [P157]: http://gwydir.demon.co.uk/jo/lace/whiting/page157.htm
@@ -188,15 +182,11 @@ For that purpose, the maintainer needs to fill in the _edit note_ to list the ch
 [P162]: http://gwydir.demon.co.uk/jo/lace/whiting/page162.htm
 [P163]: http://gwydir.demon.co.uk/jo/lace/whiting/page163.htm
 [P164]: http://gwydir.demon.co.uk/jo/lace/whiting/page164.htm
-[P165]: http://gwydir.demon.co.uk/jo/lace/whiting/page165.htm
 [P166]: http://gwydir.demon.co.uk/jo/lace/whiting/page166.htm
 [P167]: http://gwydir.demon.co.uk/jo/lace/whiting/page167.htm
-[P168]: http://gwydir.demon.co.uk/jo/lace/whiting/page168.htm
 [P169]: http://gwydir.demon.co.uk/jo/lace/whiting/page169.htm
 
-[P170]: http://gwydir.demon.co.uk/jo/lace/whiting/page170.htm
 [P171]: http://gwydir.demon.co.uk/jo/lace/whiting/page171.htm
-[P172]: http://gwydir.demon.co.uk/jo/lace/whiting/page172.htm
 [P173]: http://gwydir.demon.co.uk/jo/lace/whiting/page173.htm
 [P174]: http://gwydir.demon.co.uk/jo/lace/whiting/page174.htm
 [P175]: http://gwydir.demon.co.uk/jo/lace/whiting/page175.htm
@@ -211,13 +201,10 @@ For that purpose, the maintainer needs to fill in the _edit note_ to list the ch
 [P183]: http://gwydir.demon.co.uk/jo/lace/whiting/page183.htm
 [P184]: http://gwydir.demon.co.uk/jo/lace/whiting/page184.htm
 [P185]: http://gwydir.demon.co.uk/jo/lace/whiting/page185.htm
-[P186]: http://gwydir.demon.co.uk/jo/lace/whiting/page186.htm
 [P187]: http://gwydir.demon.co.uk/jo/lace/whiting/page187.htm
-[P188]: http://gwydir.demon.co.uk/jo/lace/whiting/page188.htm
 [P189]: http://gwydir.demon.co.uk/jo/lace/whiting/page189.htm
 
 [P190]: http://gwydir.demon.co.uk/jo/lace/whiting/page190.htm
-[P191]: http://gwydir.demon.co.uk/jo/lace/whiting/page191.htm
 [P192]: http://gwydir.demon.co.uk/jo/lace/whiting/page192.htm
 [P193]: http://gwydir.demon.co.uk/jo/lace/whiting/page193.htm
 [P194]: http://gwydir.demon.co.uk/jo/lace/whiting/page194.htm
@@ -229,7 +216,6 @@ For that purpose, the maintainer needs to fill in the _edit note_ to list the ch
 
 [P200]: http://gwydir.demon.co.uk/jo/lace/whiting/page200.htm
 [P201]: http://gwydir.demon.co.uk/jo/lace/whiting/page201.htm
-[P202]: http://gwydir.demon.co.uk/jo/lace/whiting/page202.htm
 [P203]: http://gwydir.demon.co.uk/jo/lace/whiting/page203.htm
 [P204]: http://gwydir.demon.co.uk/jo/lace/whiting/page204.htm
 [P205]: http://gwydir.demon.co.uk/jo/lace/whiting/page205.htm
@@ -244,43 +230,28 @@ For that purpose, the maintainer needs to fill in the _edit note_ to list the ch
 [P213]: http://gwydir.demon.co.uk/jo/lace/whiting/page213.htm
 [P214]: http://gwydir.demon.co.uk/jo/lace/whiting/page214.htm
 [P215]: http://gwydir.demon.co.uk/jo/lace/whiting/page215.htm
-[P216]: http://gwydir.demon.co.uk/jo/lace/whiting/page216.htm
 [P217]: http://gwydir.demon.co.uk/jo/lace/whiting/page217.htm
-[P218]: http://gwydir.demon.co.uk/jo/lace/whiting/page218.htm
 [P219]: http://gwydir.demon.co.uk/jo/lace/whiting/page219.htm
 
 [P220]: http://gwydir.demon.co.uk/jo/lace/whiting/page220.htm
 [P221]: http://gwydir.demon.co.uk/jo/lace/whiting/page221.htm
 [P222]: http://gwydir.demon.co.uk/jo/lace/whiting/page222.htm
-[P223]: http://gwydir.demon.co.uk/jo/lace/whiting/page223.htm
 [P224]: http://gwydir.demon.co.uk/jo/lace/whiting/page224.htm
 [P225]: http://gwydir.demon.co.uk/jo/lace/whiting/page225.htm
 [P226]: http://gwydir.demon.co.uk/jo/lace/whiting/page226.htm
 [P227]: http://gwydir.demon.co.uk/jo/lace/whiting/page227.htm
-[P228]: http://gwydir.demon.co.uk/jo/lace/whiting/page228.htm
 [P229]: http://gwydir.demon.co.uk/jo/lace/whiting/page229.htm
 
 [P230]: http://gwydir.demon.co.uk/jo/lace/whiting/page230.htm
 [P231]: http://gwydir.demon.co.uk/jo/lace/whiting/page231.htm
 [P232]: http://gwydir.demon.co.uk/jo/lace/whiting/page232.htm
-[P233]: http://gwydir.demon.co.uk/jo/lace/whiting/page233.htm
 [P234]: http://gwydir.demon.co.uk/jo/lace/whiting/page234.htm
 [P235]: http://gwydir.demon.co.uk/jo/lace/whiting/page235.htm
-[P236]: http://gwydir.demon.co.uk/jo/lace/whiting/page236.htm
 [P237]: http://gwydir.demon.co.uk/jo/lace/whiting/page237.htm
 [P238]: http://gwydir.demon.co.uk/jo/lace/whiting/page238.htm
 [P239]: http://gwydir.demon.co.uk/jo/lace/whiting/page239.htm
 
-[P240]: http://gwydir.demon.co.uk/jo/lace/whiting/page240.htm
 [P241]: http://gwydir.demon.co.uk/jo/lace/whiting/page241.htm
-[P242]: http://gwydir.demon.co.uk/jo/lace/whiting/page242.htm
-[P243]: http://gwydir.demon.co.uk/jo/lace/whiting/page243.htm
-[P244]: http://gwydir.demon.co.uk/jo/lace/whiting/page244.htm
-[P245]: http://gwydir.demon.co.uk/jo/lace/whiting/page245.htm
-[P246]: http://gwydir.demon.co.uk/jo/lace/whiting/page246.htm
-[P247]: http://gwydir.demon.co.uk/jo/lace/whiting/page247.htm
-[P248]: http://gwydir.demon.co.uk/jo/lace/whiting/page248.htm
-[P249]: http://gwydir.demon.co.uk/jo/lace/whiting/page249.htm
 
 
 Legend
