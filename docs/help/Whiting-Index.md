@@ -61,6 +61,8 @@ For that purpose, the maintainer needs to fill in the _edit note_ to list the ch
 [D9]: /GroundForge/?m=5-%0A-5%3Bchecker%3B8%3B8%3B0%3B0&s1=A1%3Dctctt%20B2%3Dctt&s2=&s3=
 [H9]: /GroundForge/?m=5-;bricks;7;7;0;0&s1=ctcttptctcttt
 
+[H10]: /GroundForge/?m=54---7%2C%20-79-04%2C%205-158-%2C%20-5-5-5%2C%205-535-%2C%20-24-76%3Bchecker%3B18%3B18%3B0%3B0&s1=ctct%20A1%3Dctcttt%20F2%3Dctctrr%20B2%3Dctctll%20D2%3DA5%3Dctctctct%20C4%3DE4%3Dctctt%20E6%3DC6%3Dtctct&s2=cross%3Dctc%20twist%3Dctc&s3=
+
 [G14]: /GroundForge/?m=5-%0A12%0A88%0A4-%3Bbricks%3B16%3B11%3B0%3B0&s1=ctc%20A2%3Dctctt%20B4%3Dctcll%20B1%3Dctcrr&s2=&s3=
 
 [D16]: /GroundForge/?m=-5-%0AE-2%0A8-M%0AF-1%0A8-M%3Bchecker%3B16%3B16%3B0%3B0&s1=ctc%20A5%3Dctcll%20C1%3Dctcrr%20A2%3Dctcll%0AC3%3Dctcrr&s2=&s3=
