@@ -1,8 +1,8 @@
-#sidebar strong { font-size: 18px; font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; color: #474747; }
-#sidebar ul { padding-left: 0px; margin-bottom: 0px; font-weight: bold; font-size: 14px; }
-#sidebar ul ul { padding-left: 15px; font-weight: normal; font-size: 12px;}
+#sidebar strong { font-size: 18px; font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; }
+#sidebar ul { padding-left: 0; margin-bottom: 0px; font-weight: bold; font-size: 12px; color: #474747; }
+#sidebar ul ul { padding-left: 15px; font-weight: normal; }
 #sidebar li { list-style-type: none; padding-bottom: 8px; }
-#sidebar li li { list-style-type: disc; padding-bottom:     0;}
+#sidebar li li { list-style-type: disc; padding-bottom: 0;}
 
 li li { padding-bottom:0; }
 td, th { text-align: left }
