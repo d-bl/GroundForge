@@ -7,64 +7,75 @@ import scala.scalajs.js.annotation.JSExport
 @JSExport
 object InteractiveSVG {
 
-  /**
-   *
-   * @param config form values plus values collected by setStitch calls
-   * @return SVG elements using (cloning in InkScape terminology) SVG elements
-   *         as in docs/help/images/matrix-template.png but stacked at a single position.
-   *         With valid input, the cloned elements are supposed to build a directed
-   *         two-in-two-out graph without cycles. Interactive elements are opaque
-   *         and call setStitch on click events.
-   *         The more transparent elements repeat the interactive elements.
-   */
+  /** Completes a document supposed to have groups of SVG elements as in
+    * docs/help/images/matrix-template.png
+    *
+    * The groups are positioned outside the visible area of the document
+    * with their circles on the same position.
+    * The id of a group is the character in the circle prefixed with a "g".
+    * A element (with id "oops") on the same pile indicates a stitch that has
+    * another number of outgoing pairs than 2. The transparency when referencing
+    * this element indicates the number of outgoing pairs
+    * Very bright: just one; darker: more than two.
+    *
+    * @param config values of form fields on tiles.html plus values collected by setStitch calls
+    * @return SVG elements at some grid position referencing something in the pile.
+    *         Some elements reference in an opaque way and call setStitch on click events.
+    *         Other elements reference semi transparent and repeat the opaque elements.
+    */
   @JSExport
   def create(config: Config): String = {
     val itemMatrix = config.itemMatrix
-    val pairsOut: Array[Array[Int]] = computePairsOut(config)
 
-    pairsOut.head
+    val pairsOut: Array[Array[Int]] = {
+      val rows: Int = itemMatrix.length
+      val cols: Int = itemMatrix.head.length
+      val pairsOut = Array.fill[Array[Int]](rows)(
+        Array.fill[Int](cols)(0)
+      )
+      for {r <- 0 until rows
+           c <- 0 until cols
+      } {
+        Matrix.charToRelativeTuples(itemMatrix(r)(c).vectorCode.toUpper)
+          .foreach { case (relativeSourceRow, relativeSourceCol) =>
+            val row: Int = r + relativeSourceRow
+            val col: Int = c + relativeSourceCol
+            if (row >= 0 && col >= 0 && col < cols && row < rows) {
+              pairsOut(row)(col) += 1
+            }
+          }
+      }
+      pairsOut
+    }
+
     (for {
       r <- itemMatrix.indices
       c <- itemMatrix.head.indices
     } yield {
       val stitch = itemMatrix(r)(c).stitch
-      val color = defaultColorValue(stitch)
       val vectorCode = itemMatrix(r)(c).vectorCode.toString.toUpperCase
-      val opacity = if (vectorCode == "-") "0.05" else if (itemMatrix(r)(c).isOpaque) "1" else "0.3"
       val translate = s"transform='translate(${c * 10 + 38},${r * 10 + 1})'"
       val nrOfPairsOut = pairsOut(r)(c)
-      (if (nrOfPairsOut == 2 || vectorCode == "-") ""
-      else s"""<use xlink:href='#oops' $translate style='opacity:0.${1 + nrOfPairsOut};'></use>"""
-        ) +
-        s"""<use xlink:href='#g$vectorCode'
+      val color = Option(defaultColorValue(stitch))
+        .filter(_.nonEmpty)
+        .getOrElse("#000")
+      val opacity = vectorCode match {
+        case "-" => "0.05"
+        case _ if itemMatrix(r)(c).isOpaque => "1"
+        case _ => "0.3"
+      }
+      val interaction = if (opacity != "1") "" else s"onclick='setStitch(this)'"
+      ((nrOfPairsOut, vectorCode) match {
+        case (2, _) | (_, "-") => "" // a two-in/two-out stitch or no stitch
+        case _ => s"""<use xlink:href='#oops' $translate style='opacity:0.${1 + nrOfPairsOut};'></use>"""
+      }) +
+        s"""<use $interaction
+           |  xlink:href='#g$vectorCode'
            |  id='svg-r${r + 1}-c${c + 1}'
            |  $translate
-           |  style='stroke:${if (color.nonEmpty) color else "#000"};opacity:$opacity;'
-           |  onclick='${if (opacity == "1") "setStitch(this)" else ""}'
+           |  style='stroke:$color;opacity:$opacity;'
            |><title>$stitch</title>
            |</use>""".stripMargin
     }).mkString("\n")
-  }
-
-  private def computePairsOut(config: Config) = {
-    val itemMatrix = config.itemMatrix
-    val rows: Int = itemMatrix.length
-    val cols: Int = itemMatrix.head.length
-    val pairsOut = Array.fill[Array[Int]](rows)(
-      Array.fill[Int](cols)(0)
-    )
-    for {r <- 0 until rows
-         c <- 0 until cols
-    } {
-      Matrix.charToRelativeTuples(itemMatrix(r)(c).vectorCode.toUpper)
-        .foreach { case (relativeSourceRow, relativeSourceCol) =>
-          val row: Int = r + relativeSourceRow
-          val col: Int = c + relativeSourceCol
-          if (row >= 0 && col >= 0 && col < cols && row < rows) {
-            pairsOut(row)(col) += 1
-          }
-        }
-    }
-    pairsOut
   }
 }
