@@ -15,6 +15,8 @@
 */
 package dibl
 
+import dibl.Force.Point
+
 import scala.collection.immutable.HashMap
 import scala.reflect.ClassTag
 import scala.util.{Failure, Success, Try}
@@ -122,6 +124,10 @@ object Matrix {
     'O' -> SrcNodes(Cell( 0,-2),Cell(-1,-1)), // _\...
     '-' -> SrcNodes()                 // not used node
   )
+  val charToRelativePoints: HashMap[Char,(Point,Point)] = charToRelativeTuples.map{
+    case (c, ((leftRow, leftCol),(rightRow, rightCol))) =>
+      c -> (Point(leftCol, leftRow),Point(rightCol,rightRow))
+  }
 
   /** Matches any sequence of characters that are not a key of [[charToRelativeTuples]] */
   val separator: String = "[^-0-9A-O]+"

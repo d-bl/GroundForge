@@ -1,5 +1,7 @@
 package dibl
 
+import dibl.Stitches.defaultColorValue
+
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
@@ -61,7 +63,13 @@ class Config(urlQuery: String) {
     (if (offsetRightMargin == 0) 0
      else 2 + rightMatrix.head.length)
 
-  case class Item(id: String, vectorCode: Char = '-', stitch: String = "", isOpaque: Boolean = false)
+  case class Item(id: String,
+                  vectorCode: Char = '-',
+                  stitch: String = "",
+                  isOpaque: Boolean = false) {
+    val color: Option[String] = Option(defaultColorValue(stitch))
+      .filter(_.nonEmpty)
+  }
 
   val itemMatrix: Array[Array[Item]] = Array.fill[Array[Item]](totalRows)(
     Array.fill[Item](totalCols)(Item(""))
