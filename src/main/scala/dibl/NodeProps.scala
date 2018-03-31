@@ -114,6 +114,6 @@ object NodeProps {
       case None =>
         NodeProps(Seq("title" -> title, "x" -> x, "y" -> y))
       case Some(_) =>
-        NodeProps(Seq("title" -> title, "color" -> color, "x" -> x, "y" -> y))
+        NodeProps(Seq("title" -> title, "color" -> color.getOrElse(""), "x" -> x, "y" -> y))
     }
 }

@@ -124,9 +124,10 @@ object Matrix {
     'O' -> SrcNodes(Cell( 0,-2),Cell(-1,-1)), // _\...
     '-' -> SrcNodes()                 // not used node
   )
-  val charToRelativePoints: HashMap[Char,(Point,Point)] = charToRelativeTuples.map{
-    case (c, ((leftRow, leftCol),(rightRow, rightCol))) =>
+  val toRelativeSources: HashMap[Char,(Point,Point)] = charToRelativeTuples.map{
+    case (c, Array((leftRow, leftCol),(rightRow, rightCol))) =>
       c -> (Point(leftCol, leftRow),Point(rightCol,rightRow))
+    case _ => '-' -> (Point(0,0),Point(0,0)) // TODO make smarter
   }
 
   /** Matches any sequence of characters that are not a key of [[charToRelativeTuples]] */

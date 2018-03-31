@@ -1,7 +1,5 @@
 package dibl
 
-import dibl.Stitches.defaultColorValue
-
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
