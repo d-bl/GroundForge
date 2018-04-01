@@ -34,7 +34,7 @@ object InteractiveSVG {
       for {r <- 0 until rows
            c <- 0 until cols
       } {
-        Matrix.charToRelativeTuples(itemMatrix(r)(c).vectorCode.toUpper)
+        Matrix.toRelativeSources(itemMatrix(r)(c).vectorCode.toUpper)
           .foreach { case (relativeSourceRow, relativeSourceCol) =>
             val row: Int = r + relativeSourceRow
             val col: Int = c + relativeSourceCol

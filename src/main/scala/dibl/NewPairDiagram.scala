@@ -21,19 +21,25 @@ object NewPairDiagram {
       SimpleNode(seqNr, point)
     }
 
-    def isFringe(p: Point): Boolean = {
-      p.x < 0 || p.x >= cols || p.y < 0 || p.x >= rows
+    val northEastNode = toPoint(0, 0)
+    val southWestNode = toPoint(rows - 1, cols - 1)
+
+    def isFringe(startPoint: Point): Boolean = {
+      startPoint.x < northEastNode.x || startPoint.x > southWestNode.x || startPoint.y < northEastNode.y
     }
 
     def toNodeSeq(row: Int, col: Int): Seq[AnyRef] = {
       val item = itemMatrix(row)(col)
-      if(item.vectorCode == '-') return Seq()
-      val (left, right) = toRelativeSources(item.vectorCode.toUpper)
-      val sourceLeft = Point(x = col + left.x, y = row + left.y)
-      val sourceRight = Point(x = col + right.x, y = row + right.y)
-      val target = Point(x = col, y = row)
+      val relativeSources = toRelativeSources(item.vectorCode)
+      if (relativeSources.isEmpty) return Seq.empty // vectorCode == '-' or invalid
+      val Array((leftRow, leftCol), (rightRow, rightCol)) = relativeSources
+
+      val sourceLeft = toPoint(row + leftRow, col + leftCol)
+      val sourceRight = toPoint(row + rightRow, col + rightCol)
+      val target = toPoint(row, col)
+      val colorName = Stitches.defaultColorName(item.stitch)
       seqNr += 1
-      val node = Node(seqNr, target, sourceLeft, sourceRight, item.stitch, item.id, item.color)
+      val node = Node(seqNr, target, sourceLeft, sourceRight, item.stitch, item.id, colorName)
       (isFringe(sourceLeft), isFringe(sourceRight)) match {
         case (false, false) => Seq(node)
         case (true, false) => Seq(node, toSimpleNode(sourceLeft))
@@ -58,15 +64,14 @@ object NewPairDiagram {
 
     def findColor(nodeNr: Int) = {
       nodes(nodeNr) match {
-        case _: SimpleNode => ""
-        case Node(_, _, _, _, _, _, c) => c.getOrElse("")
+        case Node(_, _, _, _, _, _, color) => color
+        case _ => ""
       }
     }
 
     val links: Seq[LinkProps] = nodes.flatMap {
       case _: SimpleNode => Seq.empty
-      case Node(targetNr, _, leftSource, rightSource, _, _, color) =>
-        val targetColor = color.getOrElse("")
+      case Node(targetNr, _, leftSource, rightSource, _, _, targetColor) =>
         val leftNr = find(leftSource)
         val rightNr = find(rightSource)
         Seq( // TODO nr of twists for mid
@@ -88,6 +93,9 @@ object NewPairDiagram {
                           srcRight: Point,
                           stitch: String,
                           id: String,
-                          color: Option[String])
+                          color: String)
 
+  private def toPoint(row: Double, col: Double) = {
+    Point(x = 30 + 15 * col, y = 30 + 15 * row)
+  }
 }

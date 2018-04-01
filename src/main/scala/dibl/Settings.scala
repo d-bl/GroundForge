@@ -60,7 +60,7 @@ object Settings {
 
   /** Creates a [[dibl.Settings]] instance.
     *
-    * @param str A string with matrix lines. Any character in [[dibl.Matrix.charToRelativeTuples.keySet]]
+    * @param str A string with matrix lines. Any character in [[dibl.Matrix.toRelativeSources.keySet]]
     *            is converted to a matrix cell. Any sequence of other characters separates matrix lines.
     * @param bricks A key of [[dibl.TileType.stringToType]] for the matrix.
     * @param absRows The desired number of rows for the patch of lace.
@@ -87,7 +87,7 @@ object Settings {
       checker      = tileType.toChecker(lines)
       // shift +2 mimics previous margin of extended matrix to prevent changing link results
       shifted      = shift(checker, shiftUp + 2).map(shiftChars(_, shiftLeft + 2))
-      relative     = extend(shifted, absRows, absCols).map(_.map(charToRelativeTuples).toArray)
+      relative     = extend(shifted, absRows, absCols).map(_.map(toRelativeSources).toArray)
       absolute     = toAbsolute(relative)
       stitchesObject  = new Stitches(stitches)
       stitchMatrix = stitchesObject.instructions(lines.length, lines(0).length)

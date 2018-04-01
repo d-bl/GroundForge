@@ -2,9 +2,12 @@ package dibl
 
 import org.scalatest.{FlatSpec, Matchers}
 
-class NewPairDiagramSpec  extends FlatSpec with Matchers {
+import scala.reflect.io.File
 
-  val urlQuery = "repeatWidth=9&repeatHeight=9&patchCols=0&patchRows=2&shiftColsSE=3&shiftRowsSE=3&shiftColsSW=-3&shiftRowsSW=3&&tile=5-O-E-,-E-5-O,5-O-E-&"
+
+class NewPairDiagramSpec extends FlatSpec with Matchers {
+
+  val urlQuery = "repeatWidth=9&repeatHeight=9&patchCols=0&patchRows=2&shiftColsSE=3&shiftRowsSE=3&shiftColsSW=-3&shiftRowsSW=3&&tile=5-O-E-,-E-5-O,5-O-E-&a1=ctctt"
   val config = new Config(urlQuery)
 
   "create" should "not throw" in {
@@ -12,10 +15,15 @@ class NewPairDiagramSpec  extends FlatSpec with Matchers {
   }
 
   it should "return something that can be rendered" in {
-    D3jsSVG.render(NewPairDiagram.create(config)) shouldBe a[String] // TODO should be valid HTML(alias embedded SVG)
+    val svgString = D3jsSVG.render(NewPairDiagram.create(config))
+    svgString should include ("marker-end: url('#end-purple')")
+    svgString should include ("marker-start: url('#start-purple')")
+    svgString should include ("marker-end: url('#end-red')")
+    svgString should include ("marker-start: url('#start-red')")
   }
 
-  it should "result in valid SVG" ignore {
-    D3jsSVG.render(NewPairDiagram.create(config)) shouldBe ""
+  it should "result in valid SVG" in {
+    val content = D3jsSVG.render(NewPairDiagram.create(config))
+    File("target/new-diagram.html").writeAll(s"<html><body>$content</body></html>")
   }
 }

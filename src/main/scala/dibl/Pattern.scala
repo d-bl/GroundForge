@@ -38,7 +38,7 @@ object Pattern {
              tileType,
              groupId,
              lines,
-             lines.map(_.map(Matrix.charToRelativeTuples).toArray)
+             lines.map(_.map(Matrix.toRelativeSources).toArray)
            ).createPatch
 }
 
