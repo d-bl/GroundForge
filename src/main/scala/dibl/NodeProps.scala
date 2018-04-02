@@ -108,12 +108,4 @@ object NodeProps {
   def node(title: String, x: Double, y: Double) = NodeProps(Seq("title" -> title, "x" -> x, "y" -> y))
 
   def node(title: String, color: String, x: Double, y: Double) = NodeProps(Seq("title" -> title, "color" -> color, "x" -> x, "y" -> y))
-
-  def node(title: String, color: Option[String], x: Double, y: Double): NodeProps =
-    color match{
-      case None =>
-        NodeProps(Seq("title" -> title, "x" -> x, "y" -> y))
-      case Some(_) =>
-        NodeProps(Seq("title" -> title, "color" -> color.getOrElse(""), "x" -> x, "y" -> y))
-    }
 }
