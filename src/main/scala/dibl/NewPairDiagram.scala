@@ -16,9 +16,8 @@ object NewPairDiagram {
     val cols: Int = itemMatrix.head.length
     var seqNr = 0
 
-    def toSimpleNode(point: Point) = {
-      seqNr += 1
-      SimpleNode(seqNr, point)
+    def toPoint(row: Double, col: Double) = {
+      Point(x = 30 + 15 * col, y = 30 + 15 * row)
     }
 
     val northEastNode = toPoint(0, 0)
@@ -26,6 +25,12 @@ object NewPairDiagram {
 
     def isFringe(startPoint: Point): Boolean = {
       startPoint.x < northEastNode.x || startPoint.x > southWestNode.x || startPoint.y < northEastNode.y
+    }
+
+    def toSimpleNode(point: Point, isLeft: Boolean) = {
+      // TODO make thread start points (fringe) unique by moving the left ones two rows up or two columns out
+      seqNr += 1
+      SimpleNode(seqNr, point)
     }
 
     def toNodeSeq(row: Int, col: Int): Seq[ConnectedNode] = {
@@ -42,9 +47,9 @@ object NewPairDiagram {
       val node = Node(seqNr, target, sourceLeft, sourceRight, item.stitch, item.id, colorName)
       (isFringe(sourceLeft), isFringe(sourceRight)) match {
         case (false, false) => Seq(node)
-        case (true, false) => Seq(node, toSimpleNode(sourceLeft))
-        case (false, true) => Seq(node, toSimpleNode(sourceRight))
-        case (true, true) => Seq(node, toSimpleNode(sourceRight), toSimpleNode(sourceLeft))
+        case (true, false) => Seq(node, toSimpleNode(sourceLeft, isLeft = true))
+        case (false, true) => Seq(node, toSimpleNode(sourceRight, isLeft = false))
+        case (true, true) => Seq(node, toSimpleNode(sourceLeft, isLeft = true), toSimpleNode(sourceRight, isLeft = false))
       }
     }
 
@@ -56,6 +61,7 @@ object NewPairDiagram {
       ).flatten
 
     val nodeMap: Map[Point, Int] = nodes.map(n => n.target -> n.seqNr).toMap
+    println(s"nr of nodes = ${nodes.size}; nr of keys = ${nodeMap.keys.size}")
 
     def findNode(point: Point): ConnectedNode = nodes(nodeMap.getOrElse(point, 0))
 
@@ -78,9 +84,14 @@ object NewPairDiagram {
       )
     }
 
+    // TODO close sides
+
+    var pairNr = 0
     Diagram(
       nodes.map {
-        case SimpleNode(_, Point(x, y)) => NodeProps.node("Pair 0", x, y) // TODO pair numbers, close sides
+        case SimpleNode(_, Point(x, y)) =>
+          pairNr += 1 // TODO why does it start with 3?
+          NodeProps.node(s"Pair $pairNr", x, y)
         case Node(_, Point(x, y), _, _, stitch, id, color) => NodeProps.node(s"$stitch - $id", color, x, y)
       },
       nodes.withFilter(_.isInstanceOf[Node])
@@ -88,19 +99,21 @@ object NewPairDiagram {
     )
   }
 
-  private def toPoint(row: Double, col: Double) = Point(x = 30 + 15 * col, y = 30 + 15 * row)
-
   private trait ConnectedNode {
     val seqNr: Int
     val target: Point
-    val color = ""
+    val color: String
 
     def twistsToLeftOf(target: Node) = 0
 
     def twistsToRightOf(target: Node) = 0
   }
 
-  private case class SimpleNode(override val seqNr: Int, override val target: Point) extends ConnectedNode
+  private case class SimpleNode(override val seqNr: Int,
+                                override val target: Point
+                               ) extends ConnectedNode {
+    override val color = "pair" // the "color" is a named marker alias customized "arrow head"
+  }
 
   private case class Node(override val seqNr: Int,
                           override val target: Point,
@@ -125,5 +138,4 @@ object NewPairDiagram {
 
     override def twistsToRightOf(target: Node): Int = closingTwistsLeft + target.openingTwistsRight
   }
-
 }

@@ -119,29 +119,6 @@ class Config(urlQuery: String) {
       itemMatrix(rt)(ct + leftMarginWidth) = Item(id, vectorCode, stitch, r == rt && c == ct)
     }
   }
-
-  val encodedMatrix: String = itemMatrix
-    .map(_.map(_.vectorCode).mkString)
-    .mkString(",")
-    .toUpperCase
-
-  @JSExport
-  lazy val pairDiagram: Diagram = {
-    val stitches: String = {
-      (for {
-        r <- itemMatrix.indices
-        c <- itemMatrix.head.indices
-      } yield {
-        Stitches.toID(r, c) -> itemMatrix(r)(c).id
-      }).groupBy { case (_, v) => v }
-        .map { case (k: String, vs: Seq[(String, String)]) =>
-          s"${vs.map{case (k2,_) => k2}.mkString("=")}=${fields.getOrElse(k,"ctc")}"
-        }.mkString(" ")
-    }
-    println(encodedMatrix)
-    println(stitches)
-    PairDiagram.get(encodedMatrix,"checker",totalRows,totalCols,patchCols,patchRows,stitches)
-  }
 }
 
 @JSExport
