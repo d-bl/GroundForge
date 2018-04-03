@@ -27,14 +27,21 @@ object NewPairDiagram {
       startPoint.x < northEastNode.x || startPoint.x > southWestNode.x || startPoint.y < northEastNode.y
     }
 
-    def toSimpleNode(point: Point, isLeft: Boolean) = {
-      // TODO make thread start points (fringe) unique by moving the left ones two rows up or two columns out
+    /** @param point  one of the tips of a V
+      * @param target the bottom of the V, never a SimpleNode but a Node
+      * @param isLeft indicates which tip. The other tip might be either type of node.
+      *               As far as the tips are SimpleNode's, their seqNr follows the seqNr of the target.
+      * @return
+      */
+    def toSimpleNode(point: Point, target: Node, isLeft: Boolean) = {
+      // TODO The point of a SimpleNode is not always unique. Add the target for the findNode method?
       seqNr += 1
       SimpleNode(seqNr, point)
     }
 
     def toNodeSeq(row: Int, col: Int): Seq[ConnectedNode] = {
       val item = itemMatrix(row)(col)
+
       val relativeSources = toRelativeSources(item.vectorCode)
       if (relativeSources.isEmpty) return Seq.empty // vectorCode == '-' or invalid
       val Array((leftRow, leftCol), (rightRow, rightCol)) = relativeSources
@@ -42,14 +49,15 @@ object NewPairDiagram {
       val sourceLeft = toPoint(row + leftRow, col + leftCol)
       val sourceRight = toPoint(row + rightRow, col + rightCol)
       val target = toPoint(row, col)
+
       val colorName = Stitches.defaultColorName(item.stitch)
       seqNr += 1
       val node = Node(seqNr, target, sourceLeft, sourceRight, item.stitch, item.id, colorName)
       (isFringe(sourceLeft), isFringe(sourceRight)) match {
         case (false, false) => Seq(node)
-        case (true, false) => Seq(node, toSimpleNode(sourceLeft, isLeft = true))
-        case (false, true) => Seq(node, toSimpleNode(sourceRight, isLeft = false))
-        case (true, true) => Seq(node, toSimpleNode(sourceLeft, isLeft = true), toSimpleNode(sourceRight, isLeft = false))
+        case (true, false) => Seq(node, toSimpleNode(sourceLeft, node, isLeft = true))
+        case (false, true) => Seq(node, toSimpleNode(sourceRight, node, isLeft = false))
+        case (true, true) => Seq(node, toSimpleNode(sourceLeft, node, isLeft = true), toSimpleNode(sourceRight, node, isLeft = false))
       }
     }
 
@@ -60,8 +68,8 @@ object NewPairDiagram {
         )
       ).flatten
 
+    // lookup table
     val nodeMap: Map[Point, Int] = nodes.map(n => n.target -> n.seqNr).toMap
-    println(s"nr of nodes = ${nodes.size}; nr of keys = ${nodeMap.keys.size}")
 
     def findNode(point: Point): ConnectedNode = nodes(nodeMap.getOrElse(point, 0))
 
@@ -83,8 +91,6 @@ object NewPairDiagram {
           end = target.color)
       )
     }
-
-    // TODO close sides
 
     var pairNr = 0
     Diagram(

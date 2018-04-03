@@ -111,7 +111,8 @@ function showDiagrams() {
 
   var pairContainer = d3.select("#pairDiagram")
   var pairContainerNode = pairContainer.node()
-  var pairDiagram = pairContainerNode.data = dibl.Config().create(submitQuery() + collectStitches()).pairDiagram
+  var config = dibl.Config().create(submitQuery() + collectStitches())
+  var pairDiagram = pairContainerNode.data = dibl.NewPairDiagram().create(config)
   pairContainer.html(dibl.D3jsSVG().render(pairDiagram, "1px", markers, 744, 1052))
   scrollToIfPossible(pairContainerNode,0,0)
   if (pairDiagram.jsNodes().length == 1) return
