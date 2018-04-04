@@ -44,24 +44,14 @@ class Config(urlQuery: String) {
   val shiftColsSE: Int = fields.getOrElse("shiftColsSE", "12").replaceAll("[^0-9-]", "").toInt
   val shiftColsSW: Int = fields.getOrElse("shiftColsSW", "12").replaceAll("[^0-9-]", "").toInt
 
-  // Hack to fix the stitches for patterns that don't work with the provisional transformation to a pair diagram
-  val patchCols: Int = fields.getOrElse("patchCols", "0").replaceAll("[^0-9-]", "").toInt
-  val patchRows: Int = fields.getOrElse("patchRows", "2").replaceAll("[^0-9-]", "").toInt
-
-  private val leftMarginWidth =
-    if (leftMatrix.length > 0 && leftMatrix.head.trim.length > 0)
-      2 + leftMatrix.head.length
-    else 0
-  private val offsetRightMargin =
-    if (rightMatrix.length > 0 && rightMatrix.head.trim.length > 0)
-      leftMarginWidth + centerCols
-    else 0
+  private val leftMarginWidth = leftMatrix.head.trim.length
+  private val offsetRightMargin =leftMarginWidth + centerCols
 
   @JSExport
   val totalCols: Int = centerCols +
     leftMarginWidth +
     (if (offsetRightMargin == 0) 0
-     else 2 + rightMatrix.head.length)
+     else rightMatrix.head.length)
 
   case class Item(id: String,
                   vectorCode: Char = '-',
@@ -79,11 +69,11 @@ class Config(urlQuery: String) {
     for {r <- 0 until totalRows} {
       for {c <- 0 until leftMatrix.head.length} {
         val rSource = r % leftMatrix.length
-        val id = Stitches.toID(rSource, c + 2)
+        val id = Stitches.toID(rSource, c)
         val vectorCode = leftMatrix(rSource)(c)
         val stitch = if (vectorCode == '-') ""
                      else fields.getOrElse(id, "")
-        itemMatrix(r)(c + 2) = Item(id, vectorCode, stitch, r < leftMatrix.length)
+        itemMatrix(r)(c) = Item(id, vectorCode, stitch, r < leftMatrix.length)
       }
     }
   if (offsetRightMargin > 0)

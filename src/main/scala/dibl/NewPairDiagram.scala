@@ -32,7 +32,6 @@ object NewPairDiagram {
       * @return
       */
     def toSimpleNode(point: Point, target: Node) = {
-      // TODO The point of a SimpleNode is not always unique. Add the target for the findNode method?
       seqNr += 1
       SimpleNode(seqNr, point, target.target)
     }
@@ -59,8 +58,8 @@ object NewPairDiagram {
     }
 
     val nodes: Seq[ConnectedNode] = Seq(SimpleNode(0, Point(0, 0), Point(0, 0))) ++
-      (0 until cols).flatMap(row =>
-        (0 until rows).map(col =>
+      (0 until rows).flatMap(row =>
+        (0 until cols).map(col =>
           toNodeSeq(row, col)
         )
       ).flatten
@@ -72,7 +71,7 @@ object NewPairDiagram {
     }.toMap
 
     def findNode(source: Point, target: Point): ConnectedNode = {
-      // first try to find a SimpleNode, if not, try a Node, fall back to first dummy node
+      // try to find a SimpleNode, if not found, try a Node, fall back to first dummy node
       nodes(nodeMap.getOrElse((source, target), nodeMap.getOrElse((source, source), 0)))
     }
 
