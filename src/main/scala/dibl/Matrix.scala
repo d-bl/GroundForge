@@ -15,8 +15,6 @@
 */
 package dibl
 
-import dibl.Force.Point
-
 import scala.collection.immutable.HashMap
 import scala.reflect.ClassTag
 import scala.util.{Failure, Success, Try}
@@ -89,41 +87,41 @@ object Matrix {
     links
   }
 
+  val relativeSourceMap: Map[Char, SrcNodes] = HashMap (
+    // ascii art of incoming links for a node
+    '0' -> SrcNodes(Cell(-1, 1),Cell( 0, 1)), // .../_
+    '1' -> SrcNodes(Cell(-1, 0),Cell( 0, 1)), // ..|._
+    '2' -> SrcNodes(Cell(-1,-1),Cell( 0, 1)), // .\.._
+    '3' -> SrcNodes(Cell( 0,-1),Cell( 0, 1)), // _..._
+    '4' -> SrcNodes(Cell(-1, 0),Cell(-1, 1)), // ..|/.
+    '5' -> SrcNodes(Cell(-1,-1),Cell(-1, 1)), // .\./.
+    '6' -> SrcNodes(Cell( 0,-1),Cell(-1, 1)), // _../.
+    '7' -> SrcNodes(Cell(-1,-1),Cell(-1, 0)), // .\|..
+    '8' -> SrcNodes(Cell( 0,-1),Cell(-1, 0)), // _.|..
+    '9' -> SrcNodes(Cell( 0,-1),Cell(-1,-1)), // _\...
+    // double length for vertical link only
+    'A' -> SrcNodes(Cell(-2, 0),Cell( 0, 1)), // ..|._
+    'B' -> SrcNodes(Cell(-2, 0),Cell(-1, 1)), // ..|/.
+    'C' -> SrcNodes(Cell(-1,-1),Cell(-2, 0)), // .\|..
+    'D' -> SrcNodes(Cell( 0,-1),Cell(-2, 0)), // _.|..
+    // double length for horizontal links too
+    'E' -> SrcNodes(Cell(-1, 1),Cell( 0, 2)), // .../_
+    'F' -> SrcNodes(Cell(-1, 0),Cell( 0, 2)), // ..|._
+    'G' -> SrcNodes(Cell(-2, 0),Cell( 0, 2)), // ..|._
+    'H' -> SrcNodes(Cell(-1,-1),Cell( 0, 2)), // .\.._
+    'I' -> SrcNodes(Cell( 0,-1),Cell( 0, 2)), // _..._
+    'J' -> SrcNodes(Cell( 0,-2),Cell( 0, 1)), // _..._
+    'K' -> SrcNodes(Cell( 0,-2),Cell( 0, 2)), // _..._
+    'L' -> SrcNodes(Cell( 0,-2),Cell(-1, 1)), // _../.
+    'M' -> SrcNodes(Cell( 0,-2),Cell(-1, 0)), // _.|..
+    'N' -> SrcNodes(Cell( 0,-2),Cell(-2, 0)), // _.|..
+    'O' -> SrcNodes(Cell( 0,-2),Cell(-1,-1)) // _\...
+  )
   /** Translates a character in a matrix string into relative links with two source nodes.
     * The source nodes are defined with relative (row,column) numbers.
     * A node can be connected in eight directions, but source nodes are not found downwards.
     */
-  def toRelativeSources(c: Char): SrcNodes = c.toUpper match {
-    // ascii art of incoming links for a node
-    case '0' => SrcNodes(Cell(-1, 1), Cell(0, 1)) // .../_
-    case '1' => SrcNodes(Cell(-1, 0), Cell(0, 1)) // ..|._
-    case '2' => SrcNodes(Cell(-1, -1), Cell(0, 1)) // .\.._
-    case '3' => SrcNodes(Cell(0, -1), Cell(0, 1)) // _..._
-    case '4' => SrcNodes(Cell(-1, 0), Cell(-1, 1)) // ..|/.
-    case '5' => SrcNodes(Cell(-1, -1), Cell(-1, 1)) // .\./.
-    case '6' => SrcNodes(Cell(0, -1), Cell(-1, 1)) // _../.
-    case '7' => SrcNodes(Cell(-1, -1), Cell(-1, 0)) // .\|..
-    case '8' => SrcNodes(Cell(0, -1), Cell(-1, 0)) // _.|..
-    case '9' => SrcNodes(Cell(0, -1), Cell(-1, -1)) // _\...
-    // double length for vertical link only
-    case 'A' => SrcNodes(Cell(-2, 0), Cell(0, 1)) // ..|._
-    case 'B' => SrcNodes(Cell(-2, 0), Cell(-1, 1)) // ..|/.
-    case 'C' => SrcNodes(Cell(-1, -1), Cell(-2, 0)) // .\|..
-    case 'D' => SrcNodes(Cell(0, -1), Cell(-2, 0)) // _.|..
-    // double length for horizontal links to
-    case 'E' => SrcNodes(Cell(-1, 1), Cell(0, 2)) // .../_
-    case 'F' => SrcNodes(Cell(-1, 0), Cell(0, 2)) // ..|._
-    case 'G' => SrcNodes(Cell(-2, 0), Cell(0, 2)) // ..|._
-    case 'H' => SrcNodes(Cell(-1, -1), Cell(0, 2)) // .\.._
-    case 'I' => SrcNodes(Cell(0, -1), Cell(0, 2)) // _..._
-    case 'J' => SrcNodes(Cell(0, -2), Cell(0, 1)) // _..._
-    case 'K' => SrcNodes(Cell(0, -2), Cell(0, 2)) // _..._
-    case 'L' => SrcNodes(Cell(0, -2), Cell(-1, 1)) // _../.
-    case 'M' => SrcNodes(Cell(0, -2), Cell(-1, 0)) // _.|..
-    case 'N' => SrcNodes(Cell(0, -2), Cell(-2, 0)) // _.|..
-    case 'O' => SrcNodes(Cell(0, -2), Cell(-1, -1)) // _\...
-    case _ => SrcNodes() // not used/valid node
-  }
+  def toRelativeSources(c: Char): SrcNodes = relativeSourceMap.getOrElse(c.toUpper, Array.empty)
 
   /** Matches any sequence of characters that are not a key of [[toRelativeSources]] */
   val separator: String = "[^-0-9A-O]+"

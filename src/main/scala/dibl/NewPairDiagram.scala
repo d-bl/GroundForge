@@ -1,7 +1,7 @@
 package dibl
 
 import dibl.Force.Point
-import dibl.Matrix.toRelativeSources
+import dibl.Matrix.relativeSourceMap
 
 import scala.scalajs.js.annotation.JSExport
 
@@ -39,24 +39,23 @@ object NewPairDiagram {
 
     def toNodeSeq(row: Int, col: Int): Seq[ConnectedNode] = {
       val item = itemMatrix(row)(col)
+      relativeSourceMap
+        .get(item.vectorCode.toUpper)
+        .map { case Array((leftRow, leftCol), (rightRow, rightCol)) =>
+          val sourceLeft = toPoint(row + leftRow, col + leftCol)
+          val sourceRight = toPoint(row + rightRow, col + rightCol)
+          val target = toPoint(row, col)
 
-      val relativeSources = toRelativeSources(item.vectorCode)
-      if (relativeSources.isEmpty) return Seq.empty // vectorCode == '-' or invalid
-      val Array((leftRow, leftCol), (rightRow, rightCol)) = relativeSources
-
-      val sourceLeft = toPoint(row + leftRow, col + leftCol)
-      val sourceRight = toPoint(row + rightRow, col + rightCol)
-      val target = toPoint(row, col)
-
-      val colorName = Stitches.defaultColorName(item.stitch)
-      seqNr += 1
-      val node = Node(seqNr, target, sourceLeft, sourceRight, item.stitch, item.id, colorName)
-      (isFringe(sourceLeft), isFringe(sourceRight)) match {
-        case (false, false) => Seq(node)
-        case (true, false) => Seq(node, toSimpleNode(sourceLeft, node))
-        case (false, true) => Seq(node, toSimpleNode(sourceRight, node))
-        case (true, true) => Seq(node, toSimpleNode(sourceLeft, node), toSimpleNode(sourceRight, node))
-      }
+          val colorName = Stitches.defaultColorName(item.stitch)
+          seqNr += 1
+          val node = Node(seqNr, target, sourceLeft, sourceRight, item.stitch, item.id, colorName)
+          (isFringe(sourceLeft), isFringe(sourceRight)) match {
+            case (false, false) => Seq(node)
+            case (true, false) => Seq(node, toSimpleNode(sourceLeft, node))
+            case (false, true) => Seq(node, toSimpleNode(sourceRight, node))
+            case (true, true) => Seq(node, toSimpleNode(sourceLeft, node), toSimpleNode(sourceRight, node))
+          }
+        }.getOrElse(Seq.empty)
     }
 
     val nodes: Seq[ConnectedNode] = Seq(SimpleNode(0, Point(0, 0), Point(0, 0))) ++
@@ -67,14 +66,14 @@ object NewPairDiagram {
       ).flatten
 
     // lookup table
-    val nodeMap: Map[(Point, Point), Int] = nodes.map{
-      case n: Node => (n.target, n.target ) -> n.seqNr
-      case n: SimpleNode => (n.source, n.target ) -> n.seqNr
+    val nodeMap: Map[(Point, Point), Int] = nodes.map {
+      case n: Node => (n.target, n.target) -> n.seqNr
+      case n: SimpleNode => (n.source, n.target) -> n.seqNr
     }.toMap
 
     def findNode(source: Point, target: Point): ConnectedNode = {
       // first try to find a SimpleNode, if not, try a Node, fall back to first dummy node
-      nodes(nodeMap.getOrElse((source,target), nodeMap.getOrElse((source,source), 0)))
+      nodes(nodeMap.getOrElse((source, target), nodeMap.getOrElse((source, source), 0)))
     }
 
     def toPairLinks(target: Node) = {
@@ -149,4 +148,5 @@ object NewPairDiagram {
 
     override def twistsToRightOf(target: Node): Int = closingTwistsLeft + target.openingTwistsRight
   }
+
 }
