@@ -34,7 +34,7 @@ object NewPairDiagram {
     def toSimpleNode(point: Point, target: Node) = {
       // TODO The point of a SimpleNode is not always unique. Add the target for the findNode method?
       seqNr += 1
-      SimpleNode(seqNr, point)
+      SimpleNode(seqNr, point, target.target)
     }
 
     def toNodeSeq(row: Int, col: Int): Seq[ConnectedNode] = {
@@ -59,7 +59,7 @@ object NewPairDiagram {
       }
     }
 
-    val nodes: Seq[ConnectedNode] = Seq(SimpleNode(0, Point(0, 0))) ++
+    val nodes: Seq[ConnectedNode] = Seq(SimpleNode(0, Point(0, 0), Point(0, 0))) ++
       (0 until cols).flatMap(row =>
         (0 until rows).map(col =>
           toNodeSeq(row, col)
@@ -67,13 +67,19 @@ object NewPairDiagram {
       ).flatten
 
     // lookup table
-    val nodeMap: Map[Point, Int] = nodes.map(n => n.target -> n.seqNr).toMap
+    val nodeMap: Map[(Point, Point), Int] = nodes.map{
+      case n: Node => (n.target, n.target ) -> n.seqNr
+      case n: SimpleNode => (n.source, n.target ) -> n.seqNr
+    }.toMap
 
-    def findNode(point: Point): ConnectedNode = nodes(nodeMap.getOrElse(point, 0))
+    def findNode(source: Point, target: Point): ConnectedNode = {
+      // first try to find a SimpleNode, if not, try a Node, fall back to first dummy node
+      nodes(nodeMap.getOrElse((source,target), nodeMap.getOrElse((source,source), 0)))
+    }
 
     def toPairLinks(target: Node) = {
-      val leftNode = findNode(target.srcLeft)
-      val rightNode = findNode(target.srcRight)
+      val leftNode = findNode(target.srcLeft, target.target)
+      val rightNode = findNode(target.srcRight, target.target)
       Seq(
         LinkProps.pairLink(
           source = leftNode.seqNr,
@@ -93,7 +99,7 @@ object NewPairDiagram {
     var pairNr = 0
     Diagram(
       nodes.map {
-        case SimpleNode(_, Point(x, y)) =>
+        case SimpleNode(_, Point(x, y), _) =>
           pairNr += 1 // TODO why does it start with 3?
           NodeProps.node(s"Pair $pairNr", x, y)
         case Node(_, Point(x, y), _, _, stitch, id, color) => NodeProps.node(s"$stitch - $id", color, x, y)
@@ -114,6 +120,7 @@ object NewPairDiagram {
   }
 
   private case class SimpleNode(override val seqNr: Int,
+                                source: Point,
                                 override val target: Point
                                ) extends ConnectedNode {
     override val color = "pair" // the "color" is a named marker alias customized "arrow head"
