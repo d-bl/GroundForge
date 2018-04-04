@@ -27,13 +27,11 @@ object NewPairDiagram {
       startPoint.x < northEastNode.x || startPoint.x > southWestNode.x || startPoint.y < northEastNode.y
     }
 
-    /** @param point  one of the tips of a V
-      * @param target the bottom of the V, never a SimpleNode but a Node
-      * @param isLeft indicates which tip. The other tip might be either type of node.
-      *               As far as the tips are SimpleNode's, their seqNr follows the seqNr of the target.
+    /** @param point  one of the tips of a V, the legs may lie flat but never collapse
+      * @param target the bottom of the V, makes the point unique when we have to search for it
       * @return
       */
-    def toSimpleNode(point: Point, target: Node, isLeft: Boolean) = {
+    def toSimpleNode(point: Point, target: Node) = {
       // TODO The point of a SimpleNode is not always unique. Add the target for the findNode method?
       seqNr += 1
       SimpleNode(seqNr, point)
@@ -55,9 +53,9 @@ object NewPairDiagram {
       val node = Node(seqNr, target, sourceLeft, sourceRight, item.stitch, item.id, colorName)
       (isFringe(sourceLeft), isFringe(sourceRight)) match {
         case (false, false) => Seq(node)
-        case (true, false) => Seq(node, toSimpleNode(sourceLeft, node, isLeft = true))
-        case (false, true) => Seq(node, toSimpleNode(sourceRight, node, isLeft = false))
-        case (true, true) => Seq(node, toSimpleNode(sourceLeft, node, isLeft = true), toSimpleNode(sourceRight, node, isLeft = false))
+        case (true, false) => Seq(node, toSimpleNode(sourceLeft, node))
+        case (false, true) => Seq(node, toSimpleNode(sourceRight, node))
+        case (true, true) => Seq(node, toSimpleNode(sourceLeft, node), toSimpleNode(sourceRight, node))
       }
     }
 
