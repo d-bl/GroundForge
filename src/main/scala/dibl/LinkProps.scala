@@ -222,7 +222,7 @@ object LinkProps {
                start: String,
                mid: Int,
                end: String,
-               weak: Boolean
+               weak: Boolean = false
               ): LinkProps = PlainLink(
     Map(
       "source" -> source,

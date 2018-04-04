@@ -111,7 +111,8 @@ function showDiagrams() {
 
   var pairContainer = d3.select("#pairDiagram")
   var pairContainerNode = pairContainer.node()
-  var pairDiagram = pairContainerNode.data = dibl.Config().create(submitQuery() + collectStitches()).pairDiagram
+  var config = dibl.Config().create(submitQuery() + collectStitches())
+  var pairDiagram = pairContainerNode.data = dibl.NewPairDiagram().create(config)
   pairContainer.html(dibl.D3jsSVG().render(pairDiagram, "1px", markers, 744, 1052))
   scrollToIfPossible(pairContainerNode,0,0)
   if (pairDiagram.jsNodes().length == 1) return
@@ -196,7 +197,7 @@ function load() {
   if (keyValueStrings.length >= 7 ) // TODO this is not a good safeguard against invalid/incomplete search arguments
     showDiagrams()
 }
-function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, repeatWidth, repeatHeight, patchCols, patchRows) {
+function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, repeatWidth, repeatHeight) {
 
   d3.select('#repeatWidth').property("value", repeatWidth ? repeatWidth : (footside?3:12))
   d3.select('#repeatHeight').property("value", repeatHeight ? repeatHeight : 12)
@@ -207,8 +208,6 @@ function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footsi
   d3.select('#shiftRowsSE').property("value", shiftRowsSE)
   d3.select('#shiftColsSW').property("value", shiftColsSW)
   d3.select('#shiftRowsSW').property("value", shiftRowsSW)
-  d3.select('#patchCols').property("value", patchCols)
-  d3.select('#patchRows').property("value", patchRows)
   showProto()
   showDiagrams()
 }

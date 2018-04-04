@@ -1,7 +1,5 @@
 package dibl
 
-import dibl.Stitches.defaultColorValue
-
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
@@ -36,7 +34,7 @@ object InteractiveSVG {
       for {r <- 0 until rows
            c <- 0 until cols
       } {
-        Matrix.charToRelativeTuples(itemMatrix(r)(c).vectorCode.toUpper)
+        Matrix.toRelativeSources(itemMatrix(r)(c).vectorCode.toUpper)
           .foreach { case (relativeSourceRow, relativeSourceCol) =>
             val row: Int = r + relativeSourceRow
             val col: Int = c + relativeSourceCol
@@ -52,16 +50,14 @@ object InteractiveSVG {
       r <- itemMatrix.indices
       c <- itemMatrix.head.indices
     } yield {
-      val stitch = itemMatrix(r)(c).stitch
-      val vectorCode = itemMatrix(r)(c).vectorCode.toString.toUpperCase
+      val item = itemMatrix(r)(c)
+      val stitch = item.stitch
+      val vectorCode = item.vectorCode.toString.toUpperCase
       val translate = s"transform='translate(${c * 10 + 38},${r * 10 + 1})'"
       val nrOfPairsOut = pairsOut(r)(c)
-      val color = Option(defaultColorValue(stitch))
-        .filter(_.nonEmpty)
-        .getOrElse("#000")
       val opacity = vectorCode match {
         case "-" => "0.05"
-        case _ if itemMatrix(r)(c).isOpaque => "1"
+        case _ if item.isOpaque => "1"
         case _ => "0.3"
       }
       val interaction = if (opacity != "1") "" else s"onclick='setStitch(this)'"
@@ -73,7 +69,7 @@ object InteractiveSVG {
            |  xlink:href='#g$vectorCode'
            |  id='svg-r${r + 1}-c${c + 1}'
            |  $translate
-           |  style='stroke:$color;opacity:$opacity;'
+           |  style='stroke:${item.color.getOrElse("#000")};opacity:$opacity;'
            |><title>$stitch</title>
            |</use>""".stripMargin
     }).mkString("\n")

@@ -15,7 +15,7 @@
 */
 package dibl
 
-import dibl.Matrix.charToRelativeTuples
+import dibl.Matrix.toRelativeSources
 
 import scala.collection.immutable.IndexedSeq
 import scala.collection.immutable.Range.Inclusive
@@ -243,7 +243,7 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
 object Fringes {
   @JSExport
   def createSVG(config: Config):String = {
-    val m = config.itemMatrix.map(_.map(i => charToRelativeTuples(i.vectorCode.toUpper)))
+    val m = config.itemMatrix.map(_.map(i => toRelativeSources(i.vectorCode.toUpper)))
     val shifted = m.slice(m.length - 2, m.length) ++ m.slice(0,m.length - 2)
     val trimmed =
       if (config.leftMatrix.isEmpty) {

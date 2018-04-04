@@ -149,8 +149,10 @@ object D3jsSVG {
     val opacity = if (link.border) opacityOfHiddenObjects else 1
     val pd = pathDescription(diagram, link)
     val markers = link.markers.map{
-      case ("mid",_) => s"; marker-mid: url('#twist-1')"
+      case ("mid",_) if link.nrOfTwists > 0 => s"; marker-mid: url('#twist-1')"
+      case ("mid",_) => ""
       case (key,value) => s"; marker-$key: url('#$key-$value')"
+      case _ => ""
     }.mkString("")
     // TODO no stroke color/width would allow styling threads with CSS
     // what in turn allows changes without repeating the simulation

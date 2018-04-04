@@ -87,12 +87,8 @@ object Matrix {
     links
   }
 
-  /** Translates a character in a matrix string into relative links with two source nodes.
-    * The source nodes are defined with relative (row,column) numbers.
-    * A node can be connected in eight directions, but source nodes are not found downwards.
-    */
-  val charToRelativeTuples: HashMap[Char,SrcNodes] = HashMap (
-                                      // ascii art of incoming links for a node
+  val relativeSourceMap: Map[Char, SrcNodes] = HashMap (
+    // ascii art of incoming links for a node
     '0' -> SrcNodes(Cell(-1, 1),Cell( 0, 1)), // .../_
     '1' -> SrcNodes(Cell(-1, 0),Cell( 0, 1)), // ..|._
     '2' -> SrcNodes(Cell(-1,-1),Cell( 0, 1)), // .\.._
@@ -119,14 +115,18 @@ object Matrix {
     'L' -> SrcNodes(Cell( 0,-2),Cell(-1, 1)), // _../.
     'M' -> SrcNodes(Cell( 0,-2),Cell(-1, 0)), // _.|..
     'N' -> SrcNodes(Cell( 0,-2),Cell(-2, 0)), // _.|..
-    'O' -> SrcNodes(Cell( 0,-2),Cell(-1,-1)), // _\...
-    '-' -> SrcNodes()                 // not used node
+    'O' -> SrcNodes(Cell( 0,-2),Cell(-1,-1)) // _\...
   )
+  /** Translates a character in a matrix string into relative links with two source nodes.
+    * The source nodes are defined with relative (row,column) numbers.
+    * A node can be connected in eight directions, but source nodes are not found downwards.
+    */
+  def toRelativeSources(c: Char): SrcNodes = relativeSourceMap.getOrElse(c.toUpper, Array.empty)
 
-  /** Matches any sequence of characters that are not a key of [[charToRelativeTuples]] */
+  /** Matches any sequence of characters that are not a key of [[toRelativeSources]] */
   val separator: String = "[^-0-9A-O]+"
 
-  /** Split on sequences of characters that are not a key of [[charToRelativeTuples]].
+  /** Split on sequences of characters that are not a key of [[toRelativeSources]].
     *
     * @param str compact matrix specifying a 2-in-2out-directed graph
     * @return Failure if resulting lines do not have equal length,

@@ -18,7 +18,7 @@ package dibl
 import java.io._
 import java.net.{URL, URLDecoder}
 
-import dibl.Matrix.{charToRelativeTuples, extend}
+import dibl.Matrix.{toRelativeSources, extend}
 
 import scala.collection.JavaConverters._
 
@@ -44,7 +44,7 @@ object Matrices {
     val checker = tileType.toChecker(matrixLines)
     val shifted = Matrix.shift(checker, shiftUp).map(Matrix.shiftChars(_, shiftLeft))
     val extended = extend(shifted, rows, cols)
-    val relative = extended.map(_.map(charToRelativeTuples).toArray)
+    val relative = extended.map(_.map(toRelativeSources).toArray)
     Matrix.toAbsolute(relative)
   }
 }
