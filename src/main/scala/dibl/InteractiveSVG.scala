@@ -6,21 +6,21 @@ import scala.scalajs.js.annotation.JSExport
 object InteractiveSVG {
 
   /** Completes a document supposed to have groups of SVG elements as in
-    * docs/help/images/matrix-template.png
-    *
-    * The groups are positioned outside the visible area of the document
-    * with their circles on the same position.
-    * The id of a group is the character in the circle prefixed with a "g".
-    * A element (with id "oops") on the same pile indicates a stitch that has
-    * another number of outgoing pairs than 2. The transparency when referencing
-    * this element indicates the number of outgoing pairs
-    * Very bright: just one; darker: more than two.
-    *
-    * @param config values of form fields on tiles.html plus values collected by setStitch calls
-    * @return SVG elements at some grid position referencing something in the pile.
-    *         Some elements reference in an opaque way and call setStitch on click events.
-    *         Other elements reference semi transparent and repeat the opaque elements.
-    */
+   * docs/help/images/matrix-template.png
+   *
+   * The groups are positioned outside the visible area of the document
+   * with their circles on the same position.
+   * The id of a group is the character in the circle prefixed with a "g".
+   * A element (with id "oops") on the same pile indicates a stitch that has
+   * another number of outgoing pairs than 2. The transparency when referencing
+   * this element indicates the number of outgoing pairs
+   * Very bright: just one; darker: more than two.
+   *
+   * @param config values of form fields on tiles.html plus values collected by setStitch calls
+   * @return SVG elements at some grid position referencing something in the pile.
+   *         Some elements reference in an opaque way and call setStitch on click events.
+   *         Other elements reference semi transparent and repeat the opaque elements.
+   */
   @JSExport
   def create(config: Config): String = {
     val itemMatrix = config.itemMatrix
@@ -52,26 +52,44 @@ object InteractiveSVG {
     } yield {
       val item = itemMatrix(r)(c)
       val stitch = item.stitch
-      val vectorCode = item.vectorCode.toString.toUpperCase
-      val translate = s"transform='translate(${c * 10 + 38},${r * 10 + 1})'"
+      val vectorCode: String = item.vectorCode.toString.toUpperCase
+      val translate = s"transform='translate(${ c * 10 + 38 },${ r * 10 + 1 })'"
       val nrOfPairsOut = pairsOut(r)(c)
-      val opacity = vectorCode match {
-        case "-" => "0.05"
-        case _ if item.isOpaque => "1"
-        case _ => "0.3"
-      }
-      val interaction = if (opacity != "1") "" else s"onclick='setStitch(this)'"
-      ((nrOfPairsOut, vectorCode) match {
-        case (2, _) | (_, "-") => "" // a two-in/two-out stitch or no stitch
-        case _ => s"""<use xlink:href='#oops' $translate style='opacity:0.${1 + nrOfPairsOut};'></use>"""
-      }) +
-        s"""<use $interaction
-           |  xlink:href='#g$vectorCode'
-           |  id='svg-r${r + 1}-c${c + 1}'
-           |  $translate
-           |  style='stroke:${item.color.getOrElse("#000")};opacity:$opacity;'
-           |><title>$stitch</title>
-           |</use>""".stripMargin
+      val opacity = getOpacity(vectorCode, item.isOpaque)
+      s"""${ warning(vectorCode, translate, nrOfPairsOut) }
+         |<use ${if (opacity=="1") "onclick='setStitch(this)'" else ""}
+         |  xlink:href='#g$vectorCode'
+         |  id='svg-r${ r + 1 }-c${ c + 1 }'
+         |  $translate
+         |  style='stroke:${ item.color.getOrElse("#000") };opacity:$opacity;'
+         |><title>$stitch</title>
+         |</use>
+         |${ textInput(r, c, config) }""".stripMargin
     }).mkString("\n")
+  }
+
+  private def textInput(r: Int, c: Int, config: Config ) = {
+    val item = config.itemMatrix(r)(c)
+    if (item.vectorCode == '-' || !item.isOpaque) ""
+    else
+      s"""<foreignObject x='${ 19 + c * 10 }' y='${ 970 + r * 10 }' width='14' height='8'>
+         |<input name='${item.id}' type='text' value='${item.stitch}'>
+         |</foreignObject>
+         |""".stripMargin
+  }
+
+  private def getOpacity(vectorCode: String, isOpaque: Boolean): String = {
+    vectorCode match {
+      case "-" => "0.05"
+      case _ if isOpaque => "1"
+      case _ => "0.3"
+    }
+  }
+
+  private def warning(vectorCode: String, translate: String, nrOfPairsOut: Int) = {
+    (nrOfPairsOut, vectorCode) match {
+      case (2, _) | (_, "-") => "" // a two-in/two-out stitch or no stitch
+      case _ => s"""<use xlink:href='#oops' $translate style='opacity:0.${ 1 + nrOfPairsOut };'></use>"""
+    }
   }
 }

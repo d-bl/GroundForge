@@ -87,8 +87,8 @@ function showProto() {
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
-  d3.select("#prototype").style("height", (config.totalRows * 20 + 30) + "px"
-                        ).style("width", (config.totalCols * 20 + 30) + "px")
+  d3.select("#prototype").style("height", (config.totalRows * 27 + 30) + "px"
+                        ).style("width", (config.totalCols * 27 + 60) + "px")
 }
 function scrollIntoViewIfPossible(container) {
   // despite w3Schools documentation not available for IE / Edge(?)
