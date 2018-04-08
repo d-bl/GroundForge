@@ -16,7 +16,7 @@ foreignObject input {
   vertical-align: top; width: 6px;
   font-size: 5px;
   border: 0;padding: 0;padding-left: 1px;margin: 0;
-  opacity: 0.05; background-color: #f33;
+  opacity: 0.05; background-color: #ff0;
 }
 foreignObject input:focus { opacity: 1; width:30px; }
 
