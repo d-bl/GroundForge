@@ -52,30 +52,37 @@ object InteractiveSVG {
     } yield {
       val item = itemMatrix(r)(c)
       val stitch = item.stitch
-      val vectorCode: String = item.vectorCode.toString.toUpperCase
+      val vectorCode = item.vectorCode.toString.toUpperCase
       val translate = s"transform='translate(${ c * 10 + 38 },${ r * 10 + 1 })'"
       val nrOfPairsOut = pairsOut(r)(c)
       val opacity = getOpacity(vectorCode, item.isOpaque)
+      val isActiveNode = opacity == "1" && vectorCode != "-"
       s"""${ warning(vectorCode, translate, nrOfPairsOut) }
-         |<use ${if (opacity=="1") "onclick='setStitch(this)'" else ""}
+         |<use ${ events(isActiveNode, item.id) }
          |  xlink:href='#g$vectorCode'
          |  id='svg-r${ r + 1 }-c${ c + 1 }'
          |  $translate
          |  style='stroke:${ item.color.getOrElse("#000") };opacity:$opacity;'
          |><title>$stitch</title>
          |</use>
-         |${ textInput(r, c, config) }""".stripMargin
+         |${ textInput(isActiveNode, r, c, config) }""".stripMargin
     }).mkString("\n")
   }
 
-  private def textInput(r: Int, c: Int, config: Config ) = {
+  private def events(isActive: Boolean, id: String) = {
+    if (isActive)
+      s"data-formid='${ id }' onclick='setStitch(this)'"
+    else ""
+  }
+
+  private def textInput(isActive: Boolean, r: Int, c: Int, config: Config) = {
     val item = config.itemMatrix(r)(c)
-    if (item.vectorCode == '-' || !item.isOpaque) ""
-    else
+    if (isActive)
       s"""<foreignObject x='${ 19 + c * 10 }' y='${ 970 + r * 10 }' width='14' height='8'>
-         |<input name='${item.id}' type='text' value='${item.stitch}'>
+         |  <input name='${ item.id }' id='${ item.id }' type='text' value='${ item.stitch }' onchange='showProto();showDiagrams()'>
          |</foreignObject>
          |""".stripMargin
+    else ""
   }
 
   private def getOpacity(vectorCode: String, isOpaque: Boolean): String = {

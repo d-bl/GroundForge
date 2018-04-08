@@ -1,68 +1,16 @@
 var valueFilter = /[^a-zA-Z0-9,-]/g
 var isMobile = /iPad|iPhone|iPod|Mobi/.test(navigator.userAgent)
 
-// number of cloned elements in the built-in SVG FIXME not maintained
-var maxRows = 12
-var maxCols = 12
-
-var stitches = {}
-
-function askForStitch(s, defaultStitch){
-
-  // TODO custom modal should show stitch cheat cheat
-  // making the input valid as early as possible protects against injection when displaying the value
-  return dibl.Stitches().makeValid(prompt(s, defaultStitch? defaultStitch : "ctc"), defaultStitch)
-}
-function collectStitches() {
-
-  var kvs = []
-  var keys = Object.keys(stitches)
-  for (var i=0 ; i<keys.length ; i++) {
-    var rc = keys[i].split("-")
-    var r = rc[0].substr(1) * 1 - 1
-    var c = rc[1].substr(1) * 1 - 1
-    var id = dibl.Stitches().toID(r, c).toUpperCase()
-    kvs.push(id + "=" + stitches[keys[i]])
-  }
-  return "&" + kvs.join("&").toLowerCase()
-}
 function setStitch(sourceNode) {
 
-  var id = sourceNode.attributes["id"].value.substr(4)
-  selected = askForStitch("Stitch for " + id, stitches[id] ? stitches[id] : "ctc")
-  if (selected && selected != "") {
-    stitches[id] = selected
-    showProto()
-    showDiagrams()
-  }
+  var id = sourceNode.dataset.formid
+  var el = document.getElementById(id)
+  el.focus()
 }
 function clearStitches() {
 
-  stitches = {}
+  d3.selectAll("svg input").attr("value","")
   showProto()
-}
-function allStitches() {
-
-  selected = askForStitch("reset all stitches to: ", "")
-  if (selected && selected.trim() != "") {
-    for (var r=1; r <= maxRows; r++)
-      for (var c=1 ; c <= maxCols; c++)
-        stitches["r"+r+"-c"+c] = selected
-    showProto()
-  }
-}
-function defaultStitches() {
-
-  selected = askForStitch("set remaining stitches to: ", "ctc")
-  if (selected && selected.trim() != "") {
-    for (var r=1; r <= maxRows; r++)
-      for (var c=1 ; c <= maxCols; c++) {
-        var id = "r"+r+"-c"+c
-        if (!stitches[id] || stitches[id] == "")
-          stitches[id] = selected
-      }
-    showProto()
-  }
 }
 function toKeyValueString (formField) {
     var n = formField.name
@@ -77,10 +25,12 @@ function showProto() {
 
   scrollIntoViewIfPossible(d3.select("#diagrams").node())
 
-  var query = submitQuery()
-  var config = dibl.Config().create(query + collectStitches())
-  d3.select("#link").node().href = "?" + query
+  var config = dibl.Config().create(submitQuery())
   d3.select("#clones").html(dibl.InteractiveSVG().create(config))
+
+  // we might now have a new set of stitches in the form
+  d3.select("#link").node().href = "?" + submitQuery()
+
   d3.select("#animations").style("display", "none")
   d3.selectAll("#threadDiagram, #pairDiagram").html("")
   d3.selectAll("textarea").attr("rows", config.maxTileRows + 1)
@@ -111,7 +61,7 @@ function showDiagrams() {
 
   var pairContainer = d3.select("#pairDiagram")
   var pairContainerNode = pairContainer.node()
-  var config = dibl.Config().create(submitQuery() + collectStitches())
+  var config = dibl.Config().create(submitQuery())
   var pairDiagram = pairContainerNode.data = dibl.NewPairDiagram().create(config)
   pairContainer.html(dibl.D3jsSVG().render(pairDiagram, "1px", markers, 744, 1052))
   scrollToIfPossible(pairContainerNode,0,0)
@@ -185,7 +135,6 @@ function setField (keyValueString) {
     if (kv.length > 1) {
       var k = kv[0].trim().replace(/[^a-zA-Z]/g,"")
       var v = kv[1].trim().replace(valueFilter,"").replace(/,/g,"\n")
-      console.log("==="+k+'==='+v+'===')
       d3.select('#'+k).property("value", v)
     }
 }

@@ -55,7 +55,7 @@ class Config(urlQuery: String) {
 
   case class Item(id: String,
                   vectorCode: Char = '-',
-                  stitch: String = "ctc",
+                  stitch: String = "",
                   isOpaque: Boolean = false) {
     val color: Option[String] = Option(defaultColorValue(stitch))
       .filter(_.nonEmpty)
@@ -72,7 +72,7 @@ class Config(urlQuery: String) {
         val id = Stitches.toID(rSource, c)
         val vectorCode = leftMatrix(rSource)(c)
         val stitch = if (vectorCode == '-') ""
-                     else fields.getOrElse(id, "ctc")
+                     else fields.getOrElse(id, "")
         itemMatrix(r)(c) = Item(id, vectorCode, stitch, r < leftMatrix.length)
       }
     }

@@ -31,11 +31,11 @@
     Bobbin lace patterns on the
     <a href="/GroundForge/help/examples" target="_blank"
     >example pages</a> may refer to this page.
-    Use the prototype diagram to vary stitches in such a pattern
-    (<a href="javascript:clearStitches()">clear</a> all,
-    set <a href="javascript:defaultStitches()">defaults</a>,
-    set <a href="javascript:allStitches()">all</a>).
+    Use the prototype diagram to vary stitches (<a href="javascript:clearStitches()">reset</a>) in such a pattern.
     With the forms below the diagrams you can design a pattern from scratch.
+</p>
+<p>
+    As the page is still under construction there are no help pages yet, only the demo section on this page.
 </p>
 </article>
 <form onsubmit="return false" id="download">
@@ -52,6 +52,16 @@
             <label for="repeatHeight">rows(s)</label>
         </legend>
         <figure >
+            <figcaption title="choosing a stitch shows/refreshes the thread diagram">
+                Prototype - click bold symbols
+                <a download="prototype.svg"
+                   onfocus="setDownloadContent(this,'#prototype')"
+                   onblur="this.href='?#download'"
+                   target="_blank"
+                   href="?#download"
+                   title="download"
+                ><img src="images/download.jpg"></a>
+            </figcaption>
             <div id="prototype">
                 <svg  xmlns:dc="http://purl.org/dc/elements/1.1/"
                       xmlns:cc="http://creativecommons.org/ns#"
@@ -390,52 +400,37 @@
                     </g>
                 </svg>
             </div>
-            <figcaption title="choosing a stitch shows/refreshes the thread diagram">
-                Prototype - click bold symbols
-                <a download="prototype.svg"
-                   onfocus="setDownloadContent(this,'#prototype')"
+        </figure>
+        <figure>
+            <figcaption>
+                Pairs -
+                <a href="javascript:animateDiagram(d3.select('#pairDiagram'))"
+                >animate</a>
+                <a download="pair-diagram.svg"
+                   onfocus="setDownloadContent(this,'#pairDiagram')"
                    onblur="this.href='?#download'"
-                   target="_blank"
                    href="?#download"
                    title="download"
                 ><img src="images/download.jpg"></a>
+                <img src="images/size-inc.jpg" onclick="resizeBoth('#pairDiagram', 1.1)" title="increase dimensions"
+                ><img src="images/size-dec.jpg" onclick="resizeBoth('#pairDiagram', 0.91)" title="decrease dimensions">
             </figcaption>
+            <div id="pairDiagram"></div>
         </figure>
-        <fieldset id="animations">
-            <legend>
-                <em>Under construction</em>
-            </legend>
-            <figure>
-                <div id="pairDiagram"></div>
-                <figcaption>
-                    Pairs -
-                    <a href="javascript:animateDiagram(d3.select('#pairDiagram'))"
-                    >animate</a>
-                    <a download="pair-diagram.svg"
-                       onfocus="setDownloadContent(this,'#pairDiagram')"
-                       onblur="this.href='?#download'"
-                       href="?#download"
-                       title="download"
-                    ><img src="images/download.jpg"></a>
-                    <img src="images/size-inc.jpg" onclick="resizeBoth('#pairDiagram', 1.1)" title="increase dimensions"
-                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#pairDiagram', 0.91)" title="decrease dimensions">
-                </figcaption>
-            </figure>
-            <figure >
-                <div id="threadDiagram"></div>
-                <figcaption>
-                    Threads - click squares
-                    <a download="thread-diagram.svg"
-                       onfocus="setDownloadContent(this,'#threadDiagram')"
-                       onblur="this.href='?#download'"
-                       href="?#download"
-                       title="download"
-                    ><img src="images/download.jpg"></a>
-                    <img src="images/size-inc.jpg" onclick="resizeBoth('#threadDiagram', 1.1)" title="increase dimensions"
-                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#threadDiagram', 0.91)" title="decrease dimensions">
-                </figcaption>
-            </figure>
-        </fieldset>
+        <figure >
+            <figcaption>
+                Threads - click squares
+                <a download="thread-diagram.svg"
+                   onfocus="setDownloadContent(this,'#threadDiagram')"
+                   onblur="this.href='?#download'"
+                   href="?#download"
+                   title="download"
+                ><img src="images/download.jpg"></a>
+                <img src="images/size-inc.jpg" onclick="resizeBoth('#threadDiagram', 1.1)" title="increase dimensions"
+                ><img src="images/size-dec.jpg" onclick="resizeBoth('#threadDiagram', 0.91)" title="decrease dimensions">
+            </figcaption>
+            <div id="threadDiagram"></div>
+        </figure>
     </fieldset>
     <fieldset>
         <legend>Repeats</legend>
@@ -498,7 +493,7 @@
         </figure>
     </fieldset>
     <fieldset>
-        <legend>Demo's</legend>
+        <legend>Demo's for testing purposes</legend>
         <dl>
             <dt>Some special examples that fill the forms to catch the spirit:</dt>
             <dd>
@@ -506,7 +501,7 @@
                 <a href="javascript:sample('886\n4-1', 2,2,-1,2,'','',12,12,0,2)">horizontal</a> and
                 <a href="javascript:sample('8\n4\n8\n-\n6\n1', 1,4,1,-2,'','',12,12,0,2)">vertical</a> bricks.
             </dd>
-            <dt>To understand shifting repeat tiles try the scenarios's:</dt>
+            <dt>To get the gist of shiftingrepeat tiles try the scenarios's:</dt>
             <dd>
                 <a href="javascript:sample('831\n4-7\n-5-',0,0,0,0,'','',12,12,0,2)">rose</a> + stacked + 2 x  &#8600; &#8601;
                 <em>or</em>
@@ -628,24 +623,6 @@
     >D3.js</a>,&nbsp;<a href="http://jscolor.com/" title="Color Picker" target="_blank"
     >jsColor</a>
     </p>
-    <!-- Start of StatCounter Code for Default Guide -->
-    <script type="text/javascript">
-        var sc_project=10865294;
-        var sc_invisible=0;
-        var sc_security="2e4f5d96";
-        var scJsHost = (("https:" == document.location.protocol) ?
-        "https://secure." : "http://www.");
-        document.write("<sc"+"ript type='text/javascript' src='" +
-        scJsHost+
-        "statcounter.com/counter/counter.js'></"+"script>");
-        </script>
-    <noscript><div class="statcounter"><a title="web analytics"
-                                          href="http://statcounter.com/"
-                                          target="_blank"><img
-            class="statcounter"
-            src="http://c.statcounter.com/10865294/0/2e4f5d96/0/"
-            alt="web analytics"></a></div></noscript>
-    <!-- End of StatCounter Code for Default Guide -->
 </article>
 </body>
 </html>
