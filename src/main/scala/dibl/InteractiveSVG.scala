@@ -79,7 +79,12 @@ object InteractiveSVG {
     val item = config.itemMatrix(r)(c)
     if (isActive)
       s"""<foreignObject x='${ 19 + c * 10 }' y='${ 970 + r * 10 }' width='14' height='8'>
-         |  <input name='${ item.id }' id='${ item.id }' type='text' value='${ item.stitch }' onchange='showProto();showDiagrams()'>
+         |  <input name='${ item.id }'
+         |    id='${ item.id }'
+         |    type='text'
+         |    value='${ item.stitch }'
+         |    onchange='showProto();showDiagrams()'
+         |  ></input>
          |</foreignObject>
          |""".stripMargin
     else ""

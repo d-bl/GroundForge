@@ -131,7 +131,8 @@ function setDownloadContent (linkNode, id) {
 
   svg = d3.select(id).node().innerHTML.
       replace('pointer-events="all"', '').
-      replace(/<path [^>]+opacity: 0;.+?path>/g, '')
+      replace(/<path [^>]+opacity: 0;.+?path>/g, '').
+      replace(/<\/foreignObject>/g, '</input></foreignObject>') // even if provided, closing tag gets swallowed
   linkNode.href = 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
 }
 function setField (keyValueString) {
