@@ -17,13 +17,18 @@ function toKeyValueString (formField) {
     var v = formField.value
     return !n || !v ? '' : n + '=' +  v.replace(/\n/g,",").replace(valueFilter,"")
 }
+function isKeyValue (formField) {
+    return formField.name && formField.value
+}
 function submitQuery() {
 
-  return d3.selectAll('input, textarea').nodes().map(toKeyValueString).join("&")
+  return d3.selectAll('input, textarea')
+    .nodes()
+    .filter(isKeyValue)
+    .map(toKeyValueString)
+    .join("&")
 }
 function showProto() {
-
-  scrollIntoViewIfPossible(d3.select("#diagrams").node())
 
   var config = dibl.Config().create(submitQuery())
   d3.select("#clones").html(dibl.InteractiveSVG().create(config))
@@ -157,6 +162,8 @@ function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footsi
   d3.select('#shiftRowsSE').property("value", shiftRowsSE)
   d3.select('#shiftColsSW').property("value", shiftColsSW)
   d3.select('#shiftRowsSW').property("value", shiftRowsSW)
+
+  scrollIntoViewIfPossible(d3.select("#diagrams").node())
   showProto()
   showDiagrams()
 }
