@@ -36,8 +36,8 @@
 </p>
 <p>
     As the page is still under construction there are no help pages yet, only the demo section on this page.
-    Internet Explorer (and some other browsers) won't show the prototype diagram, to change stitches with Edge,
-    you have to tab through the fields and links until a yellow input field pops up in the prototype diagram.
+    Clicking the prototype doesn't work with MS's Edge, you can
+    tab through the forms until the yellow input fields for your choice of stitches pop up in the prototype diagram.
 </p>
 </article>
 <form onsubmit="return false" id="download">
@@ -48,7 +48,7 @@
             <a id="link" href=""><button type="button"><img src="images/link.png"></button></a>
             -
             <label for="repeatWidth">Patch size</label>
-            <input type="number" name="repeatWidth" id="repeatWidth" min="0" max="30" value="3" onchange="showProto()">
+            <input type="number" name="repeatWidth" id="repeatWidth" min="0" max="30" value="3" onchange="showProto()" autofocus>
             <label for="repeatWidth">col(s)</label>
             <input type="number" name="repeatHeight" id="repeatHeight" min="0" max="30" value="3" onchange="showProto()">
             <label for="repeatHeight">rows(s)</label>
@@ -372,11 +372,11 @@
                             <text   x="10"
                                     y="980"
                                     style="font-size:6px;font-family:Arial;fill:#000000;stroke:none"
-                            >We are aware of a bug with some browsers.</text>
+                            >Please have some patience,</text>
                             <text   x="10"
                                     y="988"
                                     style="font-size:6px;font-family:Arial;fill:#000000;stroke:none"
-                            >Please try one of:</text>
+                            >enable JavaScript or try one of:</text>
                             <text   x="10"
                                     y="1002"
                                     style="font-size:6px;font-family:Arial;fill:#000000;stroke:none"

@@ -5,6 +5,13 @@ import dibl.Stitches.defaultColorValue
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
+object Config {
+
+  @JSExport
+  def create(urlQuery: String): Config = new Config(urlQuery)
+}
+
+@JSExport
 class Config(urlQuery: String) {
   println(urlQuery)
 
@@ -22,8 +29,8 @@ class Config(urlQuery: String) {
 
   // TODO defend against unequal rows lengths
   val leftMatrix: Array[String] = getMatrix("footside")
-  val centerMatrix: Array[String] = getMatrix("tile")
   val rightMatrix: Array[String] = getMatrix("headside")
+  private val centerMatrix: Array[String] = getMatrix("tile")
 
   @JSExport
   val leftMatrixCols: Int = Option(leftMatrix.head).map(_.length).getOrElse(2)
@@ -38,14 +45,14 @@ class Config(urlQuery: String) {
   // TODO defaults based on the dimensions of the above matrices
   @JSExport
   val totalRows: Int = fields.getOrElse("repeatHeight", "12").replaceAll("[^0-9-]", "").toInt
-  val centerCols: Int = fields.getOrElse("repeatWidth", "12").replaceAll("[^0-9-]", "").toInt
-  val shiftRowsSE: Int = fields.getOrElse("shiftRowsSE", "12").replaceAll("[^0-9-]", "").toInt
-  val shiftRowsSW: Int = fields.getOrElse("shiftRowsSW", "12").replaceAll("[^0-9-]", "").toInt
-  val shiftColsSE: Int = fields.getOrElse("shiftColsSE", "12").replaceAll("[^0-9-]", "").toInt
-  val shiftColsSW: Int = fields.getOrElse("shiftColsSW", "12").replaceAll("[^0-9-]", "").toInt
+  private val centerCols: Int = fields.getOrElse("repeatWidth", "12").replaceAll("[^0-9-]", "").toInt
+  private val shiftRowsSE: Int = fields.getOrElse("shiftRowsSE", "12").replaceAll("[^0-9-]", "").toInt
+  private val shiftRowsSW: Int = fields.getOrElse("shiftRowsSW", "12").replaceAll("[^0-9-]", "").toInt
+  private val shiftColsSE: Int = fields.getOrElse("shiftColsSE", "12").replaceAll("[^0-9-]", "").toInt
+  private val shiftColsSW: Int = fields.getOrElse("shiftColsSW", "12").replaceAll("[^0-9-]", "").toInt
 
   private val leftMarginWidth = leftMatrix.head.trim.length
-  private val offsetRightMargin =leftMarginWidth + centerCols
+  private val offsetRightMargin = leftMarginWidth + centerCols
 
   @JSExport
   val totalCols: Int = centerCols +
@@ -65,30 +72,26 @@ class Config(urlQuery: String) {
     Array.fill[Item](totalCols)(Item(""))
   )
 
-  if (leftMarginWidth > 0)
-    for {r <- 0 until totalRows} {
-      for {c <- 0 until leftMatrix.head.length} {
-        val rSource = r % leftMatrix.length
-        val id = Stitches.toID(rSource, c)
-        val vectorCode = leftMatrix(rSource)(c)
-        val stitch = if (vectorCode == '-') ""
-                     else fields.getOrElse(id, "")
-        itemMatrix(r)(c) = Item(id, vectorCode, stitch, r < leftMatrix.length)
-      }
-    }
-  if (offsetRightMargin > 0)
-    for {r <- 0 until totalRows} {
-      for {c <- 0 until rightMatrix.head.length} {
-        val rSource = r % rightMatrix.length
-        val id = Stitches.toID(rSource, c + offsetRightMargin)
-        val vectorCode = rightMatrix(rSource)(c)
-        val stitch = if (vectorCode == '-') ""
-                     else fields.getOrElse(id, "")
-        itemMatrix(r)(c + offsetRightMargin) = Item(id, vectorCode, stitch, r < rightMatrix.length)
-      }
-    }
+  // repeat foot-side / head-side
 
-  // See https://github.com/d-bl/GroundForge/blob/7b1effb/docs/help/images/shift-directions.png
+  if (leftMarginWidth > 0) replaceItems(leftMatrix, 0)
+  if (offsetRightMargin > 0) replaceItems(rightMatrix, offsetRightMargin)
+
+  private def replaceItems(inputMatrix: Array[String], offset: Int): Unit = {
+    for {r <- 0 until totalRows} {
+      for {c <- 0 until inputMatrix.head.length} {
+        val rSource = r % inputMatrix.length
+        val id = Stitches.toID(rSource, c + offset)
+        val vectorCode = inputMatrix(rSource)(c)
+        val stitch = if (vectorCode == '-') ""
+                     else fields.getOrElse(id, "")
+        itemMatrix(r)(c + offset) = Item(id, vectorCode, stitch, r < inputMatrix.length)
+      }
+    }
+  }
+
+  // repeat tiles, see: docs/help/images/shift-directions.png
+
   //noinspection RangeToIndices
   for { // TODO reduce ranges to avoid if
     i <- 0 until totalRows
@@ -109,11 +112,4 @@ class Config(urlQuery: String) {
       itemMatrix(rt)(ct + leftMarginWidth) = Item(id, vectorCode, stitch, r == rt && c == ct)
     }
   }
-}
-
-@JSExport
-object Config {
-
-  @JSExport
-  def create(urlQuery: String): Config = new Config(urlQuery)
 }

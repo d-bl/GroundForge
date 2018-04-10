@@ -103,6 +103,9 @@ object PairDiagram {
     Settings(compactMatrix.trim, tiling, absRows, absCols, shiftLeft, shiftUp, stitches)
       .map(PairDiagram(_))
 
+  @deprecated(
+    """use: NewPairDiagram.create(Config.create(<SubmitQueryString>))
+      | with SubmitQueryString as on tiles.html by tiles.js""".stripMargin)
   def apply(triedSettings: Try[Settings]): Diagram = if (triedSettings.isFailure)
     Diagram(Seq(errorNode(triedSettings)), Seq[LinkProps]())
   else apply(triedSettings.get)

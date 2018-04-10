@@ -50,6 +50,7 @@ import scala.scalajs.js.annotation.JSExport
   *                    A source is one or two horizontal/vertical cells or one diagonal cell above/aside a target.
   *                    The outer two rows and columns are placeholders for sources and targets of the fringes.
   */
+@deprecated
 class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
 
   private val drawingScale = 10
