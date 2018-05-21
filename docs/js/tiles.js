@@ -31,11 +31,6 @@ function submitQuery() {
 function showProto() {
 
   var config = dibl.Config().create(submitQuery())
-  d3.select("#clones").html(dibl.InteractiveSVG().create(config))
-
-  // we might now have a new set of stitches in the form
-  d3.select("#link").node().href = "?" + submitQuery()
-
   d3.select("#animations").style("display", "none")
   d3.selectAll("#threadDiagram, #pairDiagram").html("")
   d3.selectAll("textarea").attr("rows", config.maxTileRows + 1)
@@ -44,6 +39,7 @@ function showProto() {
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
   d3.select("#prototype").style("height", (config.totalRows * 27 + 30) + "px"
                         ).style("width", (config.totalCols * 27 + 60) + "px")
+  d3.select("#clones").html(dibl.InteractiveSVG().create(config))
 }
 function scrollIntoViewIfPossible(container) {
   // despite w3Schools documentation not available for IE / Edge(?)
@@ -122,7 +118,6 @@ function paintThread() {
   // firstChild == <title>
   var className = "."+d3.event.target.firstChild.innerHTML.replace(" ", "")
   var segments = d3.selectAll(className)
-  console.log(segments.style("stroke"))
   var newColor = segments.style("stroke")+"" == "rgb(255, 0, 0)" ? "#000" : "#F00"
   segments.style("stroke", newColor)
   segments.filter(".node").style("fill", newColor)
@@ -139,7 +134,7 @@ function setField (keyValueString) {
 
     var kv = keyValueString.split("=")
     if (kv.length > 1) {
-      var k = kv[0].trim().replace(/[^a-zA-Z]/g,"")
+      var k = kv[0].trim().replace(/[^a-zA-Z0-9]/g,"")
       var v = kv[1].trim().replace(valueFilter,"").replace(/,/g,"\n")
       d3.select('#'+k).property("value", v)
     }
@@ -148,6 +143,8 @@ function load() {
 
   var keyValueStrings = window.location.search.substr(1).split("&")
   keyValueStrings.forEach(setField)
+  showProto() // this creates a dynamic part of the form
+  keyValueStrings.forEach(setField) // fill the form fields again
   showProto()
   if (keyValueStrings.length >= 7 ) // TODO this is not a good safeguard against invalid/incomplete search arguments
     showDiagrams()

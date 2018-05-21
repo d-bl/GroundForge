@@ -129,7 +129,7 @@ Publish
 
 - Compile and copy the result
   - windows: `sbt fullOptJS && copy /Y target\scala-2.11\groundforge-opt.js docs\js\GroundForge-opt.js`
-  - *nix: `sbt fullOptJS && copy -f target/scala-2.11/groundforge-opt.js docs/js/GroundForge-opt.js`
+  - *nix: `sbt fullOptJS && cp -f target/scala-2.11/groundforge-opt.js docs/js/GroundForge-opt.js`
 - Check the results with the `docs/*.html` pages
 - If ok: commit, push and create a pull request 
 - travis will report some of the internal link problems on the help pages in `docs/help`
