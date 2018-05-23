@@ -30,7 +30,10 @@ function submitQuery() {
 }
 function showProto() {
 
+
   var config = dibl.Config().create(submitQuery())
+  d3.select("#clones").html(dibl.InteractiveSVG().create(config))
+  d3.select("#link").node().href = "?" + submitQuery() // don't extract var, we might now have other form fields
   d3.select("#animations").style("display", "none")
   d3.selectAll("#threadDiagram, #pairDiagram").html("")
   d3.selectAll("textarea").attr("rows", config.maxTileRows + 1)
@@ -39,7 +42,6 @@ function showProto() {
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
   d3.select("#prototype").style("height", (config.totalRows * 27 + 30) + "px"
                         ).style("width", (config.totalCols * 27 + 60) + "px")
-  d3.select("#clones").html(dibl.InteractiveSVG().create(config))
 }
 function scrollIntoViewIfPossible(container) {
   // despite w3Schools documentation not available for IE / Edge(?)
