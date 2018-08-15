@@ -59,7 +59,7 @@ Download
 You can download the diagrams to edit them with an [SVG editor] such as:
 - CorelDraw 💰
 - Adobe Illustrator 💰
-- [InkScape](http://www.inkscape.org/) ~-💰-~
+- [InkScape](http://www.inkscape.org/) (free)
 
 Note the [plug-ins] for bobbin lace available for the latter,
 one wraps prickings for Tesselace grounds around a circle.
