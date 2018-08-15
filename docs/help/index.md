@@ -28,7 +28,7 @@ Approach
 Each type of diagram plays its own role while designing bobbin lace grounds. The creative process involves several decisions, each playing a role in an iterative process.
 The diagram generator can relief much tedious work that would go into these steps in ink and paper times and reduce (but not eliminate) the trial and error of experimental patches. In short:
 
-* Start with selecting a pattern from the [example pages](/GroundForge/help/examples) such as the thumbnails in figure `a`.
+* Start with selecting a pattern from the [catalogue pages](/GroundForge/help/Catalogues) such as the thumbnails in figure `a`.
 * Specify stitches for figure `b` and get `c` as a bonus.
 * Apply colors to individual threads in figure `c` to plan contrasting threads (thickness or color) in your work.
 * Download figure `d` and customize it with a third party editor into `e-h` or whatever your fancy.

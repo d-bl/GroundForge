@@ -1,18 +1,18 @@
 ---
 layout: default
-title: Examples
+title: Catalogues
 ---
 
-Examples
-========
+Catalogues
+==========
 
-Various pages scattered around the web provide examples of patterns
+Various pages scattered around the web provide catalogues of patterns
 collected with different lines of approach.
 Each resource has individual examples, sections or pages on families of stitches such as
 spiders, bias and Milanese fish or lotus.
 
-The examples are just starting points to create your own variations
-and even the examples are just the tip of an iceberg.
+The catalogues provide just starting points to create your own variations
+and even these collections are just the tip of an iceberg.
 In one or two steps the examples link to the main [GroundForge] page
 Where you can choose other stitches.
 

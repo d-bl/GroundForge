@@ -29,11 +29,27 @@
 <h1>GroundForge - Diagrams of bobbin lace patterns</h1>
 <p>
     You can select predefined patterns from the
-    <a href="/GroundForge/help/examples" target="_blank"
-    >catalogues</a>.
+    <span class="tooltip">
+        <a href="/GroundForge/help/Catalogues"
+           target="_blank"
+           class="tooltip"
+        >catalogues</a>
+    <span class="tooltiptext">
+        Tesselace index
+        <br>
+        Whiting index
+        <br>
+        Droste
+        <br>
+        MAE-gf:
+        <a href="https://maetempels.github.io/MAE-gf/docs/flanders"
+        >flanders</a>,
+        bias, spiders, snow, fish, lotus and more
+    </span>
+    </span>.
 </p>
 <p>
-    As far as the examples refer to this page, the link fills the forms below the diagrams, these forms define a pattern.
+    As far as the catalogue patterns refer to this page, the link fills the forms below the diagrams, these forms define a pattern.
     Advanced users can play with these forms to design a pattern from scratch.
 </p>
 <p>
@@ -43,24 +59,21 @@
     and/or choose contrasting threads in the thread diagram.
     Start the animation of the pair diagram to make the holes as round as in the thread diagram.
 </p>
-<p>
-    As the page is still under construction there are no help pages yet, only the demo section on this page.
-    Clicking the prototype doesn't work with MS's Edge, you can
-    tab through the forms until the yellow input fields for your choice of stitches pop up in the prototype diagram.
-</p>
 </article>
 <form onsubmit="return false" id="download">
     <fieldset id="diagrams">
         <legend>
             Diagrams
             -
-            <a id="link" href=""><button type="button"><img src="images/link.png"></button></a>
+            <a href="help/Tiles"><img src="help/images/information-icon.png" title="help"></a>
+            -
+            <a id="link" href=""><button type="button" title="link to current set of diagrams"><img src="images/link.png"></button></a>
             -
             <label for="repeatWidth">Patch size</label>
-            <input type="number" name="repeatWidth" id="repeatWidth" min="0" max="30" value="3" onchange="showProto()" autofocus>
-            <label for="repeatWidth">col(s)</label>
-            <input type="number" name="repeatHeight" id="repeatHeight" min="0" max="30" value="3" onchange="showProto()">
-            <label for="repeatHeight">rows(s)</label>
+            <input type="number" name="repeatWidth" id="repeatWidth" min="3" max="30" value="3" onchange="showProto()" autofocus>
+            <label for="repeatWidth">cols</label>
+            <input type="number" name="repeatHeight" id="repeatHeight" min="3" max="30" value="3" onchange="showProto()">
+            <label for="repeatHeight">rows</label>
         </legend>
         <figure >
             <figcaption title="choosing a stitch shows/refreshes the thread diagram">
@@ -74,15 +87,12 @@
                 ><img src="images/download.jpg"></a>
             </figcaption>
             <div id="prototype">
-                <svg  xmlns:dc="http://purl.org/dc/elements/1.1/"
-                      xmlns:cc="http://creativecommons.org/ns#"
-                      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="297mm"
-                      height="210mm"
-                      id="svg2"
-                      version="1.1">
+                <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="297mm"
+                        height="210mm"
+                        id="svg2"
+                        version="1.1">
                     <defs id="defs4">
                         <marker orient="auto" refY="0" refX="0" id="Arrow1Mend" style="overflow:visible">
                             <path d="M 0,0 2,-5 -12.5,0 5,5 0,0 Z" style="fill-rule:evenodd;stroke-width:1pt" transform="matrix(-0.22,0,0,-0.22,-2,0)"></path>
@@ -418,8 +428,8 @@
                    href="?#download"
                    title="download"
                 ><img src="images/download.jpg"></a>
-                <img src="images/size-inc.jpg" onclick="resizeBoth('#pairDiagram', 1.1)" title="increase dimensions"
-                ><img src="images/size-dec.jpg" onclick="resizeBoth('#pairDiagram', 0.91)" title="decrease dimensions">
+                <img src="images/size-inc.jpg" onclick="resizeBoth('#pairDiagram', 1.1)" title="increase diagram dimensions"
+                ><img src="images/size-dec.jpg" onclick="resizeBoth('#pairDiagram', 0.91)" title="decrease diagram dimensions">
             </figcaption>
             <div id="pairDiagram"></div>
         </figure>
@@ -432,14 +442,14 @@
                    href="?#download"
                    title="download"
                 ><img src="images/download.jpg"></a>
-                <img src="images/size-inc.jpg" onclick="resizeBoth('#threadDiagram', 1.1)" title="increase dimensions"
-                ><img src="images/size-dec.jpg" onclick="resizeBoth('#threadDiagram', 0.91)" title="decrease dimensions">
+                <img src="images/size-inc.jpg" onclick="resizeBoth('#threadDiagram', 1.1)" title="increase diagram dimensions"
+                ><img src="images/size-dec.jpg" onclick="resizeBoth('#threadDiagram', 0.91)" title="decrease diagram dimensions">
             </figcaption>
             <div id="threadDiagram"></div>
         </figure>
     </fieldset>
     <fieldset>
-        <legend>Repeats</legend>
+        <legend>Repeats - <img src="images/graduation-cap.png" title="advanced/custom designs"></legend>
         <div>
           <div>Shift tiles</div>
           <div>
@@ -481,7 +491,7 @@
         <img src="help/images/shift-directions.png">
     </fieldset>
     <fieldset id="pattern">
-        <legend>Pattern</legend>
+        <legend>Pattern - <img src="images/graduation-cap.png" title="advanced/custom designs"></legend>
         <figure>
           <div>
             <textarea id="footside" name="footside" rows="12" cols="3" spellcheck="false"
@@ -499,7 +509,7 @@
         </figure>
     </fieldset>
     <fieldset>
-        <legend>Demo's for testing purposes</legend>
+        <legend>Demo's for testing purposes - <img src="images/under-construction.png" title="available only while the page is still under construction"></legend>
         <dl>
             <dt>Some special examples that fill the forms to catch the spirit:</dt>
             <dd>

@@ -38,7 +38,7 @@ within one brick or checkerboard field of the pattern.
 
 Only less trivial stitches are listed, drop or add twists at will.
 A second string is the mirrored version of the stitch.
-The last one is an edge stitch without a pin.
+The last one is an edge stitch with the pin left out.
 
 
 Stitch definitions
@@ -74,7 +74,7 @@ The image below shows screen shot snippets of a pattern and its stitches.
 
 ![](/GroundForge/help/images/stitch-ids.png)
 
-* _Top left:_ the definition of a pattern created by one of the example page.
+* _Top left:_ the definition of a pattern created by one of the catalogue pages.
   The digits inside the circles determine the configuration of arrows arriving at that position. 
 * _Top right:_ how the pattern definition looks like when repeated. The colored dots are explained on the "reshape" pages.
 * _Bottom:_ the diagrams generated with the chosen stitches.

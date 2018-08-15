@@ -20,7 +20,7 @@ Push the show buttons again after both actions.
 [main]: /GroundForge/
 
 When recalling the bookmark you will have to generate the diagrams again with the show button.
-Your browser will automatically remember the choices you made on an example page.
+Your browser will automatically remember the choices you made on an catalogue page.
 The browser history gets lost when you close the browser, your bookmarks or favorites will stay.
 
 Undo individual fields

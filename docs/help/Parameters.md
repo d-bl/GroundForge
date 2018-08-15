@@ -44,7 +44,7 @@ a self designed pattern however might get fixed.
 Pattern: Matrix and tiling
 --------------------------
 
-The [example pages](/GroundForge/help/examples) initialize the parameters with a valid set of values
+The [catalogue pages](/GroundForge/help/Catalogues) initialize the parameters with a valid set of values
 and may recommend experiments.
 
 The letters and digits in the text field define the connections between the dots within
