@@ -62,7 +62,7 @@ You can download the diagrams to edit them with an [SVG editor] such as:
 - [InkScape](http://www.inkscape.org/) ~-💰-~
 
 Note the [plug-ins] for bobbin lace available for the latter,
-one wraps not-animated variants of the second diagram around a circle.
+one wraps prickings for Tesselace grounds around a circle.
 
 [plug-ins]: https://d-bl.github.io/inkscape-bobbinlace/
 [SVG editor]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
