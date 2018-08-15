@@ -57,7 +57,10 @@ on a mac use command for control.
 Download
 --------
 You can download the diagrams to edit them with an [SVG editor] such as:
-CorelDraw 💰, Adobe Illustrator 💰 or [InkScape](http://www.inkscape.org/) ~-💰-~
+- CorelDraw 💰
+- Adobe Illustrator 💰
+- [InkScape](http://www.inkscape.org/) ~-💰-~
+
 Note the [plug-ins] for bobbin lace available for the latter,
 one wraps not-animated variants of the second diagram around a circle.
 
