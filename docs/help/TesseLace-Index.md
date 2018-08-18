@@ -9,14 +9,18 @@ Tesselace Index
 The diagrams are collected from [TesseLace.com],
 resulting from Ph.D research on _Algorithmically designed lace tessellations_
 by Veronika Irvine.
-The images link to patterns like the TesseLace [slide show].
-In turn these patterns link to the main [GroundForge] page
-where you can choose stitches for a color coded pair diagram and thread diagram.
+* The `vari` links in the captions lead to patterns like the TesseLace [slide show].
+  In turn these patterns link to the main [GroundForge] page
+  where you can choose a pattern of colors to use in the thread diagram
+  and assign the stitches of your choice to id's representing a color coded pair diagram.
+* The `diagr` links lead directly to a page where you can choose stitches an toggle threads colors
+  in an easier way than on the home page.
 
 [TesseLace.com]: https://tesselace.com
 [slide show]: https://tesselace.com/tools/inkscape-extension/
 [GroundForge]: /GroundForge/
 
+Groups of images
 - [Common Grounds](#common-grounds)
 - [Fish and Lotus variations](#fish-and-lotus-variations)
 - [Virgin or Rose and bias variations](#virgin-or-rose-and-bias-variations)
@@ -24,7 +28,7 @@ where you can choose stitches for a color coded pair diagram and thread diagram.
 
 Note that the choice to put a pattern in a group may be arbitrary, duplicating too many in multiple groups would make the page too slow.
 
-_Edit hint_: copy the link location of the image you want to move, start editing, use the browser search to find the link location.
+_Hint to edit this page_: copy the link location of the image you want to move, start editing, use the browser search to find the link location.
 
 Common Grounds
 --------------
@@ -33,14 +37,14 @@ You might need to change some angles and distances to recognize a ground. See th
 
 [animation]: animation/GIFCreator-me.gif
 
-[![181](tl/181.png)](/GroundForge/sheet.html?img=181&patch=88%2011;bricks&patch=66%2022;bricks&patch=88%2099%2011%2000;bricks&patch=66%2011%2088%2022;bricks&patch=66%2099%2022%2000;bricks)
-[![214](tl/214.png)](/GroundForge/sheet.html?img=214&patch=5-%20-5;checker&patch=5353%205353%205-5-%20-5-5;checker&patch=5632%2056-2%205-5-%20-535;checker&patch=53%205-%20-5%205-;bricks&patch=44%2077%2044%2077;bricks&patch=44%2044%2077%2077;bricks&patch=66%2088%2066%2011;bricks&patch=66%2066%2088%2011;checker&patch=66%2066%2099%2000;checker&patch=6;checker&patch=566-%2066-5%206-56%20-566;checker&patch=53%2053%2053%205-;bricks&patch=5663%205663;checker&patch=53%205-;bricks&patch=563%20563%20563;checker&patch=53%2053;checker&patch=5632%205632;checker&patch=5353%205353;bricks)
-[![376](tl/376.png)](/GroundForge/sheet.html?img=376&patch=B-C-%20---5%20C-B-%20-5--;checker&patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks)
-[![257](tl/257.png)](/GroundForge/sheet.html?img=257&patch=68%20-4%2021%20-7;checker&patch=L-O-%20---5%20H-E-%20-5--;checker)
-[![135](tl/135.png)](/GroundForge/sheet.html?img=135&patch=5632%2034-7;bricks&patch=5-5-%20-5--%20B-C-%20-5-5;bricks&patch=256-%20---5%20C3B-;bricks&patch=4373%205-53;bricks)
-[![130](tl/130.png)](/GroundForge/sheet.html?img=130&patch=5831%20-4-7;bricks&patch=-437%2034-7;bricks&patch=4830%20--77;bricks)
-[![129](tl/129.png)](/GroundForge/sheet.html?img=129&patch=1483%208-48;bricks&patch=4831%20-488%203148%2088-4;checker)
-[![128](tl/128.png)](/GroundForge/sheet.html?img=128&patch=4312%206-78;bricks)
+{% include tesselaceSample.html nr="181" pattern="88%2011&shiftColsSE=1&shiftRowsSE=2&shiftColsSW=-1&shiftRowsSW=2" patches="patch=88%2011;bricks&patch=66%2022;bricks&patch=88%2099%2011%2000;bricks&patch=66%2011%2088%2022;bricks&patch=66%2099%2022%2000;bricks" %}
+{% include tesselaceSample.html nr="214" pattern="5-%20-5&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=0&shiftRowsSW=2" patches="patch=5-%20-5;checker&patch=5353%205353%205-5-%20-5-5;checker&patch=5632%2056-2%205-5-%20-535;checker&patch=53%205-%20-5%205-;bricks&patch=44%2077%2044%2077;bricks&patch=44%2044%2077%2077;bricks&patch=66%2088%2066%2011;bricks&patch=66%2066%2088%2011;checker&patch=66%2066%2099%2000;checker&patch=6;checker&patch=566-%2066-5%206-56%20-566;checker&patch=53%2053%2053%205-;bricks&patch=5663%205663;checker&patch=53%205-;bricks&patch=563%20563%20563;checker&patch=53%2053;checker&patch=5632%205632;checker&patch=5353%205353;bricks" %}
+{% include tesselaceSample.html nr="376" pattern="B-C-%20---5%20C-B-%20-5--&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=B-C-%20---5%20C-B-%20-5--;checker&patch=5831%20-4-7;checker&patch=68%20-4;checker&patch=-4-7%205---%20-C-B%203158;bricks&patch=5-O-E-%20-E-5-O%205-O-E-;bricks" %}
+{% include tesselaceSample.html nr="257" pattern="68%20-4%2021%20-7&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=68%20-4%2021%20-7;checker&patch=L-O-%20---5%20H-E-%20-5--;checker" %}
+{% include tesselaceSample.html nr="135" pattern="5632%2034-7&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=5632%2034-7;bricks&patch=5-5-%20-5--%20B-C-%20-5-5;bricks&patch=256-%20---5%20C3B-;bricks&patch=4373%205-53;bricks" %}
+{% include tesselaceSample.html nr="130" pattern="5831%20-4-7&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=5831%20-4-7;bricks&patch=-437%2034-7;bricks&patch=4830%20--77;bricks" %}
+{% include tesselaceSample.html nr="129" pattern="1483%208-48&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=1483%208-48;bricks&patch=4831%20-488%203148%2088-4;checker" %}
+{% include tesselaceSample.html nr="128" pattern="4312%206-78&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4312%206-78;bricks" %}
 
 
 Fish and Lotus variations
@@ -48,388 +52,388 @@ Fish and Lotus variations
 
 see also [MEA-gf](https://maetempels.github.io/MAE-gf/docs/fish)
 
-[![150](tl/150.png)](/GroundForge/sheet.html?img=150&patch=43%205-%2035%2086;bricks)
-[![148](tl/148.png)](/GroundForge/sheet.html?img=148&patch=68%204-%20-5%205-;bricks)
-[![147](tl/147.png)](/GroundForge/sheet.html?img=147&patch=4343%206868;bricks&patch=5-K-5-K-%20-L-O-L-O%20K-5-K-5-%20-H-E-H-E;bricks)
-[![030](tl/030.png)](/GroundForge/sheet.html?img=030&patch=486-%20-486%206-48%2086-4;checker&patch=68%204-;bricks&patch=6868%20-7-7%200101%20-7-7;checker&patch=6868%20-7-7%202121%20-4-4;checker&patch=L-O-L-O-%20-5---5--%20E-H-E-H-%20-5---5--;bricks)
-[![451](tl/451.png)](/GroundForge/sheet.html?img=451&patch=6868%20----%20AAAA%20-7-7;bricks&patch=586-%20-4-5;bricks)
-[![175](tl/175.png)](/GroundForge/sheet.html?img=175&patch=66%20-4%205-%2086;bricks)
-[![174](tl/174.png)](/GroundForge/sheet.html?img=174&patch=43%2053%2068%2066;bricks)
-[![169](tl/169.png)](/GroundForge/sheet.html?img=169&patch=66%20-4%2021%2088;bricks&patch=66%2066%20-4%2068;bricks&patch=5-K-5-K-%20-L-O-L-O%20E-E-E-E-%20-L-L-L-L;bricks)
+{% include tesselaceSample.html nr="150" pattern="43%205-%2035%2086&shiftColsSE=1&shiftRowsSE=4&shiftColsSW=-1&shiftRowsSW=4" patches="patch=43%205-%2035%2086;bricks" %}
+{% include tesselaceSample.html nr="148" pattern="68%204-%20-5%205-&shiftColsSE=1&shiftRowsSE=4&shiftColsSW=-1&shiftRowsSW=4" patches="patch=68%204-%20-5%205-;bricks" %}
+{% include tesselaceSample.html nr="147" pattern="4343%206868&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4343%206868;bricks&patch=5-K-5-K-%20-L-O-L-O%20K-5-K-5-%20-H-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="030" pattern="486-%20-486%206-48%2086-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=486-%20-486%206-48%2086-4;checker&patch=68%204-;bricks&patch=6868%20-7-7%200101%20-7-7;checker&patch=6868%20-7-7%202121%20-4-4;checker&patch=L-O-L-O-%20-5---5--%20E-H-E-H-%20-5---5--;bricks" %}
+{% include tesselaceSample.html nr="451" pattern="6868%20----%20AAAA%20-7-7&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=6868%20----%20AAAA%20-7-7;bricks&patch=586-%20-4-5;bricks" %}
+{% include tesselaceSample.html nr="175" pattern="66%20-4%205-%2086&shiftColsSE=1&shiftRowsSE=4&shiftColsSW=-1&shiftRowsSW=4" patches="patch=66%20-4%205-%2086;bricks" %}
+{% include tesselaceSample.html nr="174" pattern="43%2053%2068%2066&shiftColsSE=1&shiftRowsSE=4&shiftColsSW=-1&shiftRowsSW=4" patches="patch=43%2053%2068%2066;bricks" %}
+{% include tesselaceSample.html nr="169" pattern="66%20-4%2021%2088&shiftColsSE=1&shiftRowsSE=4&shiftColsSW=-1&shiftRowsSW=4" patches="patch=66%20-4%2021%2088;bricks&patch=66%2066%20-4%2068;bricks&patch=5-K-5-K-%20-L-O-L-O%20E-E-E-E-%20-L-L-L-L;bricks" %}
 
-[![163](tl/163.png)](/GroundForge/sheet.html?img=163&patch=43%2053%2053%2068;bricks)
-[![435](tl/435.png)](/GroundForge/sheet.html?img=435&patch=434-%206325%206-25%208686;checker&patch=4343%205353%205-5-%208686;checker)
-[![164](tl/164.png)](/GroundForge/sheet.html?img=164&patch=43%205-%20-5%2068;bricks)
-[![446](tl/446.png)](/GroundForge/sheet.html?img=446&patch=6868%20-4-4%205-5-%20-5-5;checker&patch=586-%20-4-5;checker)
-[![021](tl/021.png)](/GroundForge/sheet.html?img=021&patch=588-%20-115;checker&patch=6868%201111%207-7-%20-5-5;checker)
-[![173](tl/173.png)](/GroundForge/sheet.html?img=173&patch=43%205-%2086%2066;bricks)
-[![022](tl/022.png)](/GroundForge/sheet.html?img=022&patch=4343%205353%202121%208888;checker)
-[![431](tl/431.png)](/GroundForge/sheet.html?img=431&patch=6868%201111%208888%20-4-4;checker&patch=43%2068%2066%2066;bricks&patch=466-%206686%206-46%208666;checker&patch=6888%20-114;checker&patch=L-L-L-L-%20-L-L-L-L%205---5---%20-H-E-H-E;bricks&patch=5-L-L---%20-L-L-O-L%20L-L---5-%20-E-H-E-E;bricks)
+{% include tesselaceSample.html nr="163" pattern="43%2053%2053%2068&shiftColsSE=1&shiftRowsSE=4&shiftColsSW=-1&shiftRowsSW=4" patches="patch=43%2053%2053%2068;bricks" %}
+{% include tesselaceSample.html nr="435" pattern="434-%206325%206-25%208686&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=434-%206325%206-25%208686;checker&patch=4343%205353%205-5-%208686;checker" %}
+{% include tesselaceSample.html nr="164" pattern="43%205-%20-5%2068&shiftColsSE=1&shiftRowsSE=4&shiftColsSW=-1&shiftRowsSW=4" patches="patch=43%205-%20-5%2068;bricks" %}
+{% include tesselaceSample.html nr="446" pattern="6868%20-4-4%205-5-%20-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=6868%20-4-4%205-5-%20-5-5;checker&patch=586-%20-4-5;checker" %}
+{% include tesselaceSample.html nr="021" pattern="588-%20-115&shiftColsSE=4&shiftRowsSE=2&shiftColsSW=0&shiftRowsSW=2" patches="patch=588-%20-115;checker&patch=6868%201111%207-7-%20-5-5;checker" %}
+{% include tesselaceSample.html nr="173" pattern="43%205-%2086%2066&shiftColsSE=1&shiftRowsSE=4&shiftColsSW=-1&shiftRowsSW=4" patches="patch=43%205-%2086%2066;bricks" %}
+{% include tesselaceSample.html nr="022" pattern="4343%205353%202121%208888&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4343%205353%202121%208888;checker" %}
+{% include tesselaceSample.html nr="431" pattern="6868%201111%208888%20-4-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=6868%201111%208888%20-4-4;checker&patch=43%2068%2066%2066;bricks&patch=466-%206686%206-46%208666;checker&patch=6888%20-114;checker&patch=L-L-L-L-%20-L-L-L-L%205---5---%20-H-E-H-E;bricks&patch=5-L-L---%20-L-L-O-L%20L-L---5-%20-E-H-E-E;bricks" %}
 
 Mixed, shifted under and angle and/or with swim lanes. More under [others](#Others), even mixed with spiders.
 
-[![452](tl/452.png)](/GroundForge/sheet.html?img=452&patch=486-%20-486%205-4-%2086-5;checker&patch=6868%20---7%20AA01%20-7-7;bricks)
-[![152](tl/152.png)](/GroundForge/sheet.html?img=152&patch=43%2021%20-4%2098;bricks)
-[![067](tl/067.png)](/GroundForge/sheet.html?img=067&patch=5631%2066-7;bricks&patch=4322%205-73;bricks)
-[![167](tl/167.png)](/GroundForge/sheet.html?img=167&patch=6464%207272;bricks&patch=43%2068;bricks&patch=B-B-%20-B-B%20C-C-%20-C-C;bricks&patch=4848%207171;bricks&patch=5-O-5-O-%20-E-5-E-5%205-O-5-O-%20-E-5-E-5;bricks&patch=5-K-5-K-%20-L-O-L-O%205-K-5-K-%20-E-H-E-H;bricks)
-[![685](tl/685.png)](/GroundForge/sheet.html?img=685&patch=4663%206668;bricks&patch=5-L-L-K-%20-L-L-L-O%20L-L-K-5-%20-E-E-H-E;bricks)
-[![539](tl/539.png)](/GroundForge/sheet.html?img=539&patch=5-L-5-E-%20-E-5-5-O%205-O-H-5-%20-5-5-5-K;bricks&patch=5-L-5-E-%20-E-5-5-O%205-O-5-L-%20-5-H-5-H;bricks)
-[![544](tl/544.png)](/GroundForge/sheet.html?img=544&patch=5-O-5-O-%20-E-5-E-5%205-H-5-H-%20-L-5-L-5;bricks&patch=5-L-5-L-%20-E-5-E-5%205-O-5-O-%20-5-H-5-H;bricks)
-[![071](tl/071.png)](/GroundForge/sheet.html?img=071&patch=4832%202483;bricks)
-[![073](tl/073.png)](/GroundForge/sheet.html?img=073&patch=486-%20-4-5%205-5-%2086-5;checker)
-[![074](tl/074.png)](/GroundForge/sheet.html?img=074&patch=586-%20-4-5%205-5-%20-5-5;checker)
-[![076](tl/076.png)](/GroundForge/sheet.html?img=076&patch=4832%2024-2%20225-%208325;checker)
-[![072](tl/072.png)](/GroundForge/sheet.html?img=072&patch=4832%202483%20224-%208325;checker)
-[![097](tl/097.png)](/GroundForge/sheet.html?img=097&patch=5631%2066-7%206-56%20-566;checker)
-[![149](tl/149.png)](/GroundForge/sheet.html?img=149&patch=43%2068%2034%2086;bricks)
-[![151](tl/151.png)](/GroundForge/sheet.html?img=151&patch=68%20-4%2021%207-;bricks)
-[![165](tl/165.png)](/GroundForge/sheet.html?img=165&patch=43%2021%20-7%2068;bricks)
+{% include tesselaceSample.html nr="452" pattern="486-%20-486%205-4-%2086-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=486-%20-486%205-4-%2086-5;checker&patch=6868%20---7%20AA01%20-7-7;bricks" %}
+{% include tesselaceSample.html nr="152" pattern="43%2021%20-4%2098&shiftColsSE=1&shiftRowsSE=4&shiftColsSW=-1&shiftRowsSW=4" patches="patch=43%2021%20-4%2098;bricks" %}
+{% include tesselaceSample.html nr="067" pattern="5631%2066-7&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=5631%2066-7;bricks&patch=4322%205-73;bricks" %}
+{% include tesselaceSample.html nr="167" pattern="6464%207272&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=6464%207272;bricks&patch=43%2068;bricks&patch=B-B-%20-B-B%20C-C-%20-C-C;bricks&patch=4848%207171;bricks&patch=5-O-5-O-%20-E-5-E-5%205-O-5-O-%20-E-5-E-5;bricks&patch=5-K-5-K-%20-L-O-L-O%205-K-5-K-%20-E-H-E-H;bricks" %}
+{% include tesselaceSample.html nr="685" pattern="4663%206668&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4663%206668;bricks&patch=5-L-L-K-%20-L-L-L-O%20L-L-K-5-%20-E-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="539" pattern="5-L-5-E-%20-E-5-5-O%205-O-H-5-%20-5-5-5-K&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-E-5-5-O%205-O-H-5-%20-5-5-5-K;bricks&patch=5-L-5-E-%20-E-5-5-O%205-O-5-L-%20-5-H-5-H;bricks" %}
+{% include tesselaceSample.html nr="544" pattern="5-O-5-O-%20-E-5-E-5%205-H-5-H-%20-L-5-L-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-5-O-%20-E-5-E-5%205-H-5-H-%20-L-5-L-5;bricks&patch=5-L-5-L-%20-E-5-E-5%205-O-5-O-%20-5-H-5-H;bricks" %}
+{% include tesselaceSample.html nr="071" pattern="4832%202483&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4832%202483;bricks" %}
+{% include tesselaceSample.html nr="073" pattern="486-%20-4-5%205-5-%2086-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=486-%20-4-5%205-5-%2086-5;checker" %}
+{% include tesselaceSample.html nr="074" pattern="586-%20-4-5%205-5-%20-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-%20-4-5%205-5-%20-5-5;checker" %}
+{% include tesselaceSample.html nr="076" pattern="4832%2024-2%20225-%208325&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4832%2024-2%20225-%208325;checker" %}
+{% include tesselaceSample.html nr="072" pattern="4832%202483%20224-%208325&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4832%202483%20224-%208325;checker" %}
+{% include tesselaceSample.html nr="097" pattern="5631%2066-7%206-56%20-566&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=5631%2066-7%206-56%20-566;checker" %}
+{% include tesselaceSample.html nr="149" pattern="43%2068%2034%2086&shiftColsSE=1&shiftRowsSE=4&shiftColsSW=-1&shiftRowsSW=4" patches="patch=43%2068%2034%2086;bricks" %}
+{% include tesselaceSample.html nr="151" pattern="68%20-4%2021%207-&shiftColsSE=1&shiftRowsSE=4&shiftColsSW=-1&shiftRowsSW=4" patches="patch=68%20-4%2021%207-;bricks" %}
+{% include tesselaceSample.html nr="165" pattern="43%2021%20-7%2068&shiftColsSE=1&shiftRowsSE=4&shiftColsSW=-1&shiftRowsSW=4" patches="patch=43%2021%20-7%2068;bricks" %}
 
 Virgin or Rose and bias variations
 ----------------------------------
 
 See also the [Droste](Droste-effect) page, a twist more or less at the first step or alternating stitches in one or two directions and you have another variation. The ID's for the stitches also will have more logic, though they won't stick to the underlying grid position.
 
-[![130](tl/130.png)](/GroundForge/sheet.html?img=130&patch=5831%20-4-7;bricks&patch=-437%2034-7;bricks&patch=4830%20--77;bricks)
-[![129](tl/129.png)](/GroundForge/sheet.html?img=129&patch=1483%208-48;bricks&patch=4831%20-488%203148%2088-4;checker)
-[![133](tl/133.png)](/GroundForge/sheet.html?img=133&patch=588-%2014-2;bricks)
-[![115](tl/115.png)](/GroundForge/sheet.html?img=115&patch=4831%20-488%20214-%2088-5;checker)
-[![118](tl/118.png)](/GroundForge/sheet.html?img=118&patch=4831%20-117%203178%2088-4;checker)
-[![117](tl/117.png)](/GroundForge/sheet.html?img=117&patch=4831%20-4-7%203158%2088-4;checker)
-[![123](tl/123.png)](/GroundForge/sheet.html?img=123&patch=4831%20-117%205-7-%2086-5;checker)
-[![080](tl/080.png)](/GroundForge/sheet.html?img=080&patch=4831%20-488%206-48%2086-4;checker)
-[![081](tl/081.png)](/GroundForge/sheet.html?img=081&patch=4831%20-488%205-4-%2086-5;checker)
-[![111](tl/111.png)](/GroundForge/sheet.html?img=111&patch=588-%20-4-5%206-58%20-214;checker)
-[![113](tl/113.png)](/GroundForge/sheet.html?img=113&patch=586-%20-115%206-78%20-5-4;checker)
-[![079](tl/079.png)](/GroundForge/sheet.html?img=079&patch=486-%20-115%20217-%2088-5;checker)
-[![121](tl/121.png)](/GroundForge/sheet.html?img=121&patch=5831%20-4-7%206-58%20-5-4;checker)
-[![122](tl/122.png)](/GroundForge/sheet.html?img=122&patch=4831%20-4-7%20215-%2088-5;checker)
-[![124](tl/124.png)](/GroundForge/sheet.html?img=124&patch=4831%20-4-7%206-58%2086-4;checker)
-[![112](tl/112.png)](/GroundForge/sheet.html?img=112&patch=4831%20-117%206-78%2086-4;checker)
+{% include tesselaceSample.html nr="130" pattern="5831%20-4-7&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=5831%20-4-7;bricks&patch=-437%2034-7;bricks&patch=4830%20--77;bricks" %}
+{% include tesselaceSample.html nr="129" pattern="1483%208-48&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=1483%208-48;bricks&patch=4831%20-488%203148%2088-4;checker" %}
+{% include tesselaceSample.html nr="133" pattern="588-%2014-2&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=588-%2014-2;bricks" %}
+{% include tesselaceSample.html nr="115" pattern="4831%20-488%20214-%2088-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831%20-488%20214-%2088-5;checker" %}
+{% include tesselaceSample.html nr="118" pattern="4831%20-117%203178%2088-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831%20-117%203178%2088-4;checker" %}
+{% include tesselaceSample.html nr="117" pattern="4831%20-4-7%203158%2088-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831%20-4-7%203158%2088-4;checker" %}
+{% include tesselaceSample.html nr="123" pattern="4831%20-117%205-7-%2086-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831%20-117%205-7-%2086-5;checker" %}
+{% include tesselaceSample.html nr="080" pattern="4831%20-488%206-48%2086-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831%20-488%206-48%2086-4;checker" %}
+{% include tesselaceSample.html nr="081" pattern="4831%20-488%205-4-%2086-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831%20-488%205-4-%2086-5;checker" %}
+{% include tesselaceSample.html nr="111" pattern="588-%20-4-5%206-58%20-214&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-%20-4-5%206-58%20-214;checker" %}
+{% include tesselaceSample.html nr="113" pattern="586-%20-115%206-78%20-5-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-%20-115%206-78%20-5-4;checker" %}
+{% include tesselaceSample.html nr="079" pattern="486-%20-115%20217-%2088-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=486-%20-115%20217-%2088-5;checker" %}
+{% include tesselaceSample.html nr="121" pattern="5831%20-4-7%206-58%20-5-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=5831%20-4-7%206-58%20-5-4;checker" %}
+{% include tesselaceSample.html nr="122" pattern="4831%20-4-7%20215-%2088-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831%20-4-7%20215-%2088-5;checker" %}
+{% include tesselaceSample.html nr="124" pattern="4831%20-4-7%206-58%2086-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831%20-4-7%206-58%2086-4;checker" %}
+{% include tesselaceSample.html nr="112" pattern="4831%20-117%206-78%2086-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831%20-117%206-78%2086-4;checker" %}
 
 
 Others
 ------
 
-[![015](tl/015.png)](/GroundForge/sheet.html?img=015&patch=5-O-H-%20-L-5-O%20E-5-E-;bricks&patch=586-%20---5%202AB-%20-7-5;bricks)
-[![138](tl/138.png)](/GroundForge/sheet.html?img=138&patch=4641%209177;bricks&patch=4841%205377;bricks)
-[![410](tl/410.png)](/GroundForge/sheet.html?img=410&patch=5831%20-4-7%203158%20-7-4;bricks)
-[![552](tl/552.png)](/GroundForge/sheet.html?img=552&patch=5-L-K-H-%20-L-L-O-O%205-L---H-%20-E-H-E-H;bricks)
-[![551](tl/551.png)](/GroundForge/sheet.html?img=551&patch=5-L-K-H-%20-L-L-O-O%205-L-K-H-%20-E-E-H-H;bricks)
-[![558](tl/558.png)](/GroundForge/sheet.html?img=558&patch=5-L-K-H-%20-L-L-O-O%205---5---%20-H-E-H-E;bricks)
-[![127](tl/127.png)](/GroundForge/sheet.html?img=127&patch=4815%204-77;bricks&patch=-5---5-5%205-O-E-5-;bricks&patch=4804%20-777;bricks)
-[![002](tl/002.png)](/GroundForge/sheet.html?img=002&patch=6868%20---4%202AA1%20-7-7;bricks&patch=586-%20-4-5%202121%20-7-7;bricks&patch=586-%20-4-5%206868%20-4-4;checker)
-[![425](tl/425.png)](/GroundForge/sheet.html?img=425&patch=5831%20-4-7%206868%20-4-4;checker&patch=5831%20-4-7%206868%20-4-4;bricks)
-[![004](tl/004.png)](/GroundForge/sheet.html?img=004&patch=586-%20-4-5%202121%20-7-7;checker&patch=586-%20-4-5%206868%20-4-4;bricks&patch=5831%20-4-7%20586-%20-4-5;checker)
-[![083](tl/083.png)](/GroundForge/sheet.html?img=083&patch=486-%20-486%202111%2088-7;checker&patch=4831%20-488%202111%2088-7;checker&patch=4831%20-488%205-11%2086-7;checker)
-[![103](tl/103.png)](/GroundForge/sheet.html?img=103&patch=586-%20-4-5%20215-%20-7-5;checker&patch=5831%20-4-7%205-5-%20-5-5;checker)
-[![106](tl/106.png)](/GroundForge/sheet.html?img=106&patch=4373%205353%205-5-%208315;checker&patch=437-%206325%206-25%208315;checker&patch=5632%2056-2%203158%20-734;checker)
-[![061](tl/061.png)](/GroundForge/sheet.html?img=061&patch=4632%2056-2%206-58%208634;checker)
-[![001](tl/001.png)](/GroundForge/sheet.html?img=001&patch=586-%20-4-5%205-21%20-5-7;checker)
-[![577](tl/577.png)](/GroundForge/sheet.html?img=577&patch=5-L---H-%20-L-O-L-O%20--5---5-%20-E-H-E-H;bricks)
-[![576](tl/576.png)](/GroundForge/sheet.html?img=576&patch=5-L---H-%20-L-O-L-O%20--5-K-5-%20-E-E-H-H;bricks)
-[![401](tl/401.png)](/GroundForge/sheet.html?img=401&patch=466-%206315%206-76%208666;bricks)
-[![448](tl/448.png)](/GroundForge/sheet.html?img=448&patch=4631%2066-7%206-56%208666;bricks)
-[![404](tl/404.png)](/GroundForge/sheet.html?img=404&patch=4631%206688%206-46%208666;bricks)
-[![405](tl/405.png)](/GroundForge/sheet.html?img=405&patch=4631%206688%203146%208866;bricks)
-[![423](tl/423.png)](/GroundForge/sheet.html?img=423&patch=586-%201112%208-78%20-5-4;bricks)
-[![051](tl/051.png)](/GroundForge/sheet.html?img=051&patch=588-%20-4-5%206868%20-114;checker)
-[![455](tl/455.png)](/GroundForge/sheet.html?img=455&patch=586-%20---5%202AA1%20-7-7;bricks)
-[![415](tl/415.png)](/GroundForge/sheet.html?img=415&patch=586-%20-4-5%20215-%20-7-5;bricks)
-[![006](tl/006.png)](/GroundForge/sheet.html?img=006&patch=466-%206315%206-76%208666;checker)
-[![056](tl/056.png)](/GroundForge/sheet.html?img=056&patch=588-%201112%208-78%20-214;checker)
-[![037](tl/037.png)](/GroundForge/sheet.html?img=037&patch=586-%201112%208-78%20-5-4;checker)
-[![041](tl/041.png)](/GroundForge/sheet.html?img=041&patch=6888%2014-1%208868%20-114;checker)
-[![054](tl/054.png)](/GroundForge/sheet.html?img=054&patch=588-%2014-2%208868%20-114;checker)
-[![052](tl/052.png)](/GroundForge/sheet.html?img=052&patch=588-%20-115%206-78%20-214;checker)
-[![088](tl/088.png)](/GroundForge/sheet.html?img=088&patch=4631%206688%203146%208866;checker)
-[![140](tl/140.png)](/GroundForge/sheet.html?img=140&patch=4631%206688;bricks)
-[![402](tl/402.png)](/GroundForge/sheet.html?img=402&patch=4631%2066-7%203156%208866;bricks)
-[![403](tl/403.png)](/GroundForge/sheet.html?img=403&patch=466-%2066-5%206-56%208666;bricks)
-[![428](tl/428.png)](/GroundForge/sheet.html?img=428&patch=466-%206686%206-46%208666;bricks)
-[![406](tl/406.png)](/GroundForge/sheet.html?img=406&patch=4631%206317%206-76%208666;bricks)
-[![407](tl/407.png)](/GroundForge/sheet.html?img=407&patch=4631%206317%203176%208866;bricks)
-[![007](tl/007.png)](/GroundForge/sheet.html?img=007&patch=6868%20-114%206888%20-4-4;checker)
-[![010](tl/010.png)](/GroundForge/sheet.html?img=010&patch=4631%206688%206-46%208666;checker)
-[![011](tl/011.png)](/GroundForge/sheet.html?img=011&patch=4631%206317%206-76%208666;checker)
-[![012](tl/012.png)](/GroundForge/sheet.html?img=012&patch=4631%206317%203176%208866;checker)
-[![025](tl/025.png)](/GroundForge/sheet.html?img=025&patch=586-%201112%208888%20-4-4;checker)
-[![026](tl/026.png)](/GroundForge/sheet.html?img=026&patch=4343%205353%205-21%208688;checker)
-[![027](tl/027.png)](/GroundForge/sheet.html?img=027&patch=6868%2088-7%201121%20-4-4;checker)
-[![032](tl/032.png)](/GroundForge/sheet.html?img=032&patch=586-%208889%201111%20-4-4;checker)
-[![033](tl/033.png)](/GroundForge/sheet.html?img=033&patch=586-%20-115%206888%20-4-4;checker)
-[![034](tl/034.png)](/GroundForge/sheet.html?img=034&patch=586-%20-115%20588-%20-4-5;checker)
-[![035](tl/035.png)](/GroundForge/sheet.html?img=035&patch=586-%20-115%205-7-%20-5-5;checker)
-[![036](tl/036.png)](/GroundForge/sheet.html?img=036&patch=586-%201112%20788-%20-4-5;checker)
-[![038](tl/038.png)](/GroundForge/sheet.html?img=038&patch=586-%201112%207-7-%20-5-5;checker)
-[![039](tl/039.png)](/GroundForge/sheet.html?img=039&patch=586-%20-789%202111%20-4-4;checker)
-[![040](tl/040.png)](/GroundForge/sheet.html?img=040&patch=4632%205683%206-48%208634;checker)
-[![042](tl/042.png)](/GroundForge/sheet.html?img=042&patch=6888%208888%204-11%20-014;checker)
-[![043](tl/043.png)](/GroundForge/sheet.html?img=043&patch=588-%201112%208888%20-114;checker)
-[![045](tl/045.png)](/GroundForge/sheet.html?img=045&patch=588-%20-115%206888%20-114;checker)
-[![047](tl/047.png)](/GroundForge/sheet.html?img=047&patch=6888%201111%208888%20-114;checker)
-[![048](tl/048.png)](/GroundForge/sheet.html?img=048&patch=6888%2088-7%201121%20-114;checker)
-[![049](tl/049.png)](/GroundForge/sheet.html?img=049&patch=6888%20-788%202111%20-114;checker)
-[![050](tl/050.png)](/GroundForge/sheet.html?img=050&patch=4632%205683%205-11%208637;checker)
-[![053](tl/053.png)](/GroundForge/sheet.html?img=053&patch=588-%208889%204-11%20-014;checker)
-[![055](tl/055.png)](/GroundForge/sheet.html?img=055&patch=4632%205683%203148%208834;checker)
-[![057](tl/057.png)](/GroundForge/sheet.html?img=057&patch=588-%20-789%205-11%20-014;checker)
-[![058](tl/058.png)](/GroundForge/sheet.html?img=058&patch=588-%20-789%202111%20-114;checker)
-[![059](tl/059.png)](/GroundForge/sheet.html?img=059&patch=4632%205683%20214-%208835;checker)
-[![060](tl/060.png)](/GroundForge/sheet.html?img=060&patch=4632%205683%202111%208837;checker)
-[![062](tl/062.png)](/GroundForge/sheet.html?img=062&patch=4632%2056-2%205-21%208637;checker)
-[![063](tl/063.png)](/GroundForge/sheet.html?img=063&patch=4632%2056-2%202121%208837;checker)
-[![064](tl/064.png)](/GroundForge/sheet.html?img=064&patch=4632%205312%206-78%208634;checker)
-[![065](tl/065.png)](/GroundForge/sheet.html?img=065&patch=4632%205312%205-7-%208635;checker)
-[![066](tl/066.png)](/GroundForge/sheet.html?img=066&patch=4632%205312%203178%208834;checker)
-[![013](tl/013.png)](/GroundForge/sheet.html?img=013&patch=5-H-H-%20-5-H-H%205-L-O-;bricks)
-[![014](tl/014.png)](/GroundForge/sheet.html?img=014&patch=5-E-H-%20-5-5--%20L-5-O-;bricks)
-[![016](tl/016.png)](/GroundForge/sheet.html?img=016&patch=5-O-H-%20-E-5-H%205-L-L-;bricks)
-[![017](tl/017.png)](/GroundForge/sheet.html?img=017&patch=5-L-H-%20-L-5-O%20E-H-5-;bricks)
-[![018](tl/018.png)](/GroundForge/sheet.html?img=018&patch=5-E-H-%20-5-O-O%20H-H-5-;bricks)
-[![068](tl/068.png)](/GroundForge/sheet.html?img=068&patch=486-%20-486%205-11%2086-7;checker)
-[![069](tl/069.png)](/GroundForge/sheet.html?img=069&patch=486-%20-486%20214-%2088-5;checker)
-[![084](tl/084.png)](/GroundForge/sheet.html?img=084&patch=4831%20-4-7%205-5-%2086-5;checker)
-[![077](tl/077.png)](/GroundForge/sheet.html?img=077&patch=486-%20-4-5%20215-%2088-5;checker)
-[![085](tl/085.png)](/GroundForge/sheet.html?img=085&patch=4831%20-4-7%205-21%2086-7;checker)
-[![075](tl/075.png)](/GroundForge/sheet.html?img=075&patch=486-%20-4-5%205-21%2086-7;checker)
-[![078](tl/078.png)](/GroundForge/sheet.html?img=078&patch=486-%20-4-5%202121%2088-7;checker)
-[![086](tl/086.png)](/GroundForge/sheet.html?img=086&patch=4831%20-4-7%202121%2088-7;checker)
-[![087](tl/087.png)](/GroundForge/sheet.html?img=087&patch=4831%203437%203535%2086-5;checker)
-[![089](tl/089.png)](/GroundForge/sheet.html?img=089&patch=4353%205353%206-58%2086-4;checker)
-[![090](tl/090.png)](/GroundForge/sheet.html?img=090&patch=4353%205353%205-21%2086-7;checker)
-[![091](tl/091.png)](/GroundForge/sheet.html?img=091&patch=4632%205683%205-4-%208635;checker)
-[![096](tl/096.png)](/GroundForge/sheet.html?img=096&patch=466-%2066-5%206-56%208666;checker)
-[![098](tl/098.png)](/GroundForge/sheet.html?img=098&patch=4631%2066-7%206-56%208666;checker)
-[![099](tl/099.png)](/GroundForge/sheet.html?img=099&patch=4631%2066-7%203156%208866;checker)
-[![100](tl/100.png)](/GroundForge/sheet.html?img=100&patch=4632%2056-2%203158%208834;checker)
-[![101](tl/101.png)](/GroundForge/sheet.html?img=101&patch=4632%2056-2%20215-%208835;checker)
-[![141](tl/141.png)](/GroundForge/sheet.html?img=141&patch=4321%205883;bricks)
-[![142](tl/142.png)](/GroundForge/sheet.html?img=142&patch=4353%205863;bricks)
-[![143](tl/143.png)](/GroundForge/sheet.html?img=143&patch=4311%206888;bricks)
-[![153](tl/153.png)](/GroundForge/sheet.html?img=153&patch=46-1%206868;bricks)
-[![154](tl/154.png)](/GroundForge/sheet.html?img=154&patch=4863%205663;bricks)
-[![156](tl/156.png)](/GroundForge/sheet.html?img=156&patch=46-2%206-58;bricks)
-[![157](tl/157.png)](/GroundForge/sheet.html?img=157&patch=48-2%205-53;bricks)
-[![158](tl/158.png)](/GroundForge/sheet.html?img=158&patch=8464%207712;bricks)
-[![159](tl/159.png)](/GroundForge/sheet.html?img=159&patch=4466%207781;bricks)
-[![160](tl/160.png)](/GroundForge/sheet.html?img=160&patch=4683%203468;bricks)
-[![176](tl/176.png)](/GroundForge/sheet.html?img=176&patch=4683%206-48;bricks)
-[![177](tl/177.png)](/GroundForge/sheet.html?img=177&patch=4632%203488;bricks)
-[![178](tl/178.png)](/GroundForge/sheet.html?img=178&patch=4840%205887;bricks)
-[![179](tl/179.png)](/GroundForge/sheet.html?img=179&patch=4883%205-43;bricks)
-[![180](tl/180.png)](/GroundForge/sheet.html?img=180&patch=4488%201748;bricks)
-[![408](tl/408.png)](/GroundForge/sheet.html?img=408&patch=4343%205353%205-21%208688;bricks)
-[![409](tl/409.png)](/GroundForge/sheet.html?img=409&patch=586-%20-4-5%205-21%20-5-7;bricks)
-[![411](tl/411.png)](/GroundForge/sheet.html?img=411&patch=6868%20-114%206888%20-4-4;bricks)
-[![413](tl/413.png)](/GroundForge/sheet.html?img=413&patch=586-%20-4-5%205-5-%20-5-5;bricks)
-[![414](tl/414.png)](/GroundForge/sheet.html?img=414&patch=586-%20-789%202111%20-4-4;bricks)
-[![417](tl/417.png)](/GroundForge/sheet.html?img=417&patch=586-%208889%201111%20-4-4;bricks)
-[![418](tl/418.png)](/GroundForge/sheet.html?img=418&patch=586-%20-115%206888%20-4-4;bricks)
-[![419](tl/419.png)](/GroundForge/sheet.html?img=419&patch=586-%20-115%20588-%20-4-5;bricks)
-[![420](tl/420.png)](/GroundForge/sheet.html?img=420&patch=586-%20-115%206-78%20-5-4;bricks)
-[![421](tl/421.png)](/GroundForge/sheet.html?img=421&patch=586-%20-115%205-7-%20-5-5;bricks)
-[![422](tl/422.png)](/GroundForge/sheet.html?img=422&patch=586-%201112%20788-%20-4-5;bricks)
-[![424](tl/424.png)](/GroundForge/sheet.html?img=424&patch=586-%201112%207-7-%20-5-5;bricks)
-[![427](tl/427.png)](/GroundForge/sheet.html?img=427&patch=5831%20-4-7%206-58%20-5-4;bricks)
-[![429](tl/429.png)](/GroundForge/sheet.html?img=429&patch=586-%20-4-5%206-58%20-5-4;bricks)
-[![430](tl/430.png)](/GroundForge/sheet.html?img=430&patch=6868%2088-7%201121%20-4-4;bricks)
-[![433](tl/433.png)](/GroundForge/sheet.html?img=433&patch=586-%20-4-5%20586-%20-4-5;bricks)
-[![434](tl/434.png)](/GroundForge/sheet.html?img=434&patch=586-%201112%208888%20-4-4;bricks)
-[![436](tl/436.png)](/GroundForge/sheet.html?img=436&patch=5831%20-4-7%20586-%20-4-5;bricks)
-[![449](tl/449.png)](/GroundForge/sheet.html?img=449&patch=-4-4%205---%20-C-B%206868;bricks)
-[![453](tl/453.png)](/GroundForge/sheet.html?img=453&patch=-4-5%205---%20-C-B%206-58;bricks)
-[![426](tl/426.png)](/GroundForge/sheet.html?img=426&patch=5831%20-4-7%205-5-%20-5-5;bricks)
-[![502](tl/502.png)](/GroundForge/sheet.html?img=502&patch=5-L-K-E-%20-L-L-O-O%20K-H-5-L-%20-5-K-E-E;bricks)
-[![503](tl/503.png)](/GroundForge/sheet.html?img=503&patch=5-L-L-K-%20-L-K-5-O%20H-5-O-K-%20-H-E-E-H;bricks)
-[![504](tl/504.png)](/GroundForge/sheet.html?img=504&patch=5-L-L-K-%20-L-K-5-O%20H-5-O---%20-H-E-H-E;bricks)
-[![506](tl/506.png)](/GroundForge/sheet.html?img=506&patch=5-L-L-K-%20-L---5-O%205-O-L-K-%20-E-E-E-H;bricks)
-[![507](tl/507.png)](/GroundForge/sheet.html?img=507&patch=5-L-L-K-%20-L---5-O%205-O-L---%20-E-E-H-E;bricks)
-[![508](tl/508.png)](/GroundForge/sheet.html?img=508&patch=5-L-L-K-%20-L---5-O%20L-O-K-5-%20-E-E-H-E;bricks)
-[![509](tl/509.png)](/GroundForge/sheet.html?img=509&patch=5-L-L-K-%20-L---5-O%20L-O---5-%20-E-H-E-E;bricks)
-[![510](tl/510.png)](/GroundForge/sheet.html?img=510&patch=5-L-L-K-%20-L---5-O%205-O-K-H-%20-E-E-H-H;bricks)
-[![511](tl/511.png)](/GroundForge/sheet.html?img=511&patch=5-L-L-K-%20-L---5-O%205-O---H-%20-E-H-E-H;bricks)
-[![512](tl/512.png)](/GroundForge/sheet.html?img=512&patch=5-L-L-K-%20---H-5-O%20O-L-O-L-%20-E-E-E-E;bricks)
-[![513](tl/513.png)](/GroundForge/sheet.html?img=513&patch=5-L-K-E-%20-L-L-O-O%20H-H-5---%20-5-K-H-E;bricks)
-[![515](tl/515.png)](/GroundForge/sheet.html?img=515&patch=5-L-L---%20-L-L-O-L%205-L-L---%20-E-E-H-E;bricks)
-[![518](tl/518.png)](/GroundForge/sheet.html?img=518&patch=5-L-L---%20-L-L-O-L%205---5---%20-H-E-H-E;bricks)
-[![519](tl/519.png)](/GroundForge/sheet.html?img=519&patch=5-L-L---%20-L-L-O-L%205---H-H-%20-H-E-H-H;bricks)
-[![520](tl/520.png)](/GroundForge/sheet.html?img=520&patch=5-L-L---%20-L-L-O-L%20--5-L-L-%20-E-E-E-H;bricks)
-[![521](tl/521.png)](/GroundForge/sheet.html?img=521&patch=5-L-L---%20-L-L-O-L%20--5---5-%20-E-H-E-H;bricks)
-[![501](tl/501.png)](/GroundForge/sheet.html?img=501&patch=5-L-O-K-%20-L-L-L-O%20E-E-E-E-%20-5-L-L-K;bricks)
-[![505](tl/505.png)](/GroundForge/sheet.html?img=505&patch=5-L-L-K-%20-L---5-O%20L-O-L-L-%20-E-E-E-E;bricks)
-[![522](tl/522.png)](/GroundForge/sheet.html?img=522&patch=5-L-L---%20-L-L-O-L%20H-5---H-%20-H-H-E-H;bricks)
-[![523](tl/523.png)](/GroundForge/sheet.html?img=523&patch=5-L-L---%20-L-L-O-L%20H-H-H-H-%20-H-H-H-H;bricks)
-[![524](tl/524.png)](/GroundForge/sheet.html?img=524&patch=5-L-K-E-%20-L-L-O-O%20H-H-H-H-%20-5-K-H-H;bricks)
-[![526](tl/526.png)](/GroundForge/sheet.html?img=526&patch=5-L-L---%20---5-O-L%20O-L-L-L-%20-E-E-E-E;bricks)
-[![527](tl/527.png)](/GroundForge/sheet.html?img=527&patch=5-L-L---%20---5-O-L%20O-L---5-%20-E-H-E-E;bricks)
-[![529](tl/529.png)](/GroundForge/sheet.html?img=529&patch=5-K-5-K-%20-L-O-L-O%205-L-L---%20-E-E-H-E;bricks)
-[![530](tl/530.png)](/GroundForge/sheet.html?img=530&patch=5-K-5-K-%20-L-O-L-O%20L-L---5-%20-E-H-E-E;bricks)
-[![531](tl/531.png)](/GroundForge/sheet.html?img=531&patch=5-K-5-K-%20-L-O-L-O%205-L---H-%20-E-H-E-H;bricks)
-[![533](tl/533.png)](/GroundForge/sheet.html?img=533&patch=5-K-5-K-%20-L-O-L-O%205---5---%20-H-E-H-E;bricks)
-[![534](tl/534.png)](/GroundForge/sheet.html?img=534&patch=5-K-5-K-%20-L-O-L-O%20L---H-5-%20-H-E-H-E;bricks)
-[![535](tl/535.png)](/GroundForge/sheet.html?img=535&patch=5-L-K-E-%20-E-E-H-H%20O-O-O-O-%20-5-K-H-H;bricks)
-[![537](tl/537.png)](/GroundForge/sheet.html?img=537&patch=5-L-5-E-%20-E-5-5-H%20O-O-5-5-%20-5-5-5-K;bricks)
-[![540](tl/540.png)](/GroundForge/sheet.html?img=540&patch=5-L-5-E-%20-E-5-5-O%205-O-O-5-%20-5-E-5-H;bricks)
-[![541](tl/541.png)](/GroundForge/sheet.html?img=541&patch=5-L-5-E-%20-L-5-5-O%20L-5-5-L-%20-5-H-5-E;bricks)
-[![542](tl/542.png)](/GroundForge/sheet.html?img=542&patch=5-L-5-E-%20-L-5-5-O%20L-5-O-5-%20-5-E-5-E;bricks)
-[![543](tl/543.png)](/GroundForge/sheet.html?img=543&patch=5-L-5-E-%20-L-5-5-O%205-5-O-H-%20-5-E-5-H;bricks)
-[![545](tl/545.png)](/GroundForge/sheet.html?img=545&patch=5-O-5-E-%20-E-5-5-H%20O-O-5-5-%20-5-5-H-H;bricks)
-[![546](tl/546.png)](/GroundForge/sheet.html?img=546&patch=5-L-L-K-%20-L-L-L-O%20E-E-E-E-%20-L-L-L-L;bricks)
-[![547](tl/547.png)](/GroundForge/sheet.html?img=547&patch=5-O-5-E-%20-E-5-5-O%205-O-5-L-%20-5-5-E-H;bricks)
-[![548](tl/548.png)](/GroundForge/sheet.html?img=548&patch=5-L-K-H-%20-L-L-O-O%20L-L-L-L-%20-E-E-E-E;bricks)
-[![549](tl/549.png)](/GroundForge/sheet.html?img=549&patch=5-L-K-H-%20-L-L-O-O%205-L-L---%20-E-E-H-E;bricks)
-[![550](tl/550.png)](/GroundForge/sheet.html?img=550&patch=5-L-K-H-%20-L-L-O-O%20L-L---5-%20-E-H-E-E;bricks)
-[![553](tl/553.png)](/GroundForge/sheet.html?img=553&patch=5-L-K-H-%20-L-L-O-O%20L---5-L-%20-H-E-E-E;bricks)
-[![554](tl/554.png)](/GroundForge/sheet.html?img=554&patch=5-L-K-H-%20-L-L-O-O%205-K-5-K-%20-E-H-E-H;bricks)
-[![555](tl/555.png)](/GroundForge/sheet.html?img=555&patch=5-L-K-H-%20-L-L-O-O%205-K-5---%20-E-H-H-E;bricks)
-[![556](tl/556.png)](/GroundForge/sheet.html?img=556&patch=5-L-K-H-%20-L-L-O-O%205---5-K-%20-H-E-E-H;bricks)
-[![557](tl/557.png)](/GroundForge/sheet.html?img=557&patch=5-L-L-K-%20-L---5-O%20E-H-E-E-%20-L-L-L-L;bricks)
-[![559](tl/559.png)](/GroundForge/sheet.html?img=559&patch=5-L-K-H-%20-L-L-O-O%20L-K-H-5-%20-E-H-H-E;bricks)
-[![560](tl/560.png)](/GroundForge/sheet.html?img=560&patch=5-L-K-H-%20-L-L-O-O%20--5-L-L-%20-E-E-E-H;bricks)
-[![561](tl/561.png)](/GroundForge/sheet.html?img=561&patch=5-L-K-H-%20-L-L-O-O%20--5-K-5-%20-E-E-H-H;bricks)
-[![562](tl/562.png)](/GroundForge/sheet.html?img=562&patch=5-L-K-H-%20-L-L-O-O%20--5---5-%20-E-H-E-H;bricks)
-[![563](tl/563.png)](/GroundForge/sheet.html?img=563&patch=5-L---H-%20-L-O-L-O%20L-L-L-L-%20-E-E-E-E;bricks)
-[![564](tl/564.png)](/GroundForge/sheet.html?img=564&patch=5-L---H-%20-L-O-L-O%205-L-L---%20-E-E-H-E;bricks)
-[![565](tl/565.png)](/GroundForge/sheet.html?img=565&patch=5-L---H-%20-L-O-L-O%20L-L---5-%20-E-H-E-E;bricks)
-[![566](tl/566.png)](/GroundForge/sheet.html?img=566&patch=5-L---H-%20-L-O-L-O%205-L---H-%20-E-H-E-H;bricks)
-[![567](tl/567.png)](/GroundForge/sheet.html?img=567&patch=5-L---H-%20-L-O-L-O%20L---5-L-%20-H-E-E-E;bricks)
-[![568](tl/568.png)](/GroundForge/sheet.html?img=568&patch=5-L-L-K-%20---H-5-O%20H-E-H-E-%20-L-L-L-L;bricks)
-[![569](tl/569.png)](/GroundForge/sheet.html?img=569&patch=5-L---H-%20-L-O-L-O%205-K-5---%20-E-H-H-E;bricks)
-[![570](tl/570.png)](/GroundForge/sheet.html?img=570&patch=5-L---H-%20-L-O-L-O%205---5-K-%20-H-E-E-H;bricks)
-[![571](tl/571.png)](/GroundForge/sheet.html?img=571&patch=5-L---H-%20-L-O-L-O%205---5---%20-H-E-H-E;bricks)
-[![572](tl/572.png)](/GroundForge/sheet.html?img=572&patch=5-L---H-%20-L-O-L-O%20L---H-5-%20-H-E-H-E;bricks)
-[![573](tl/573.png)](/GroundForge/sheet.html?img=573&patch=5-L---H-%20-L-O-L-O%205---H-H-%20-H-E-H-H;bricks)
-[![574](tl/574.png)](/GroundForge/sheet.html?img=574&patch=5-L---H-%20-L-O-L-O%20--5-L-L-%20-E-E-E-H;bricks)
-[![575](tl/575.png)](/GroundForge/sheet.html?img=575&patch=5-L---H-%20-L-O-L-O%20K-5---5-%20-H-H-E-E;bricks)
-[![578](tl/578.png)](/GroundForge/sheet.html?img=578&patch=5-L---H-%20-L-O-L-O%20H-5---H-%20-H-H-E-H;bricks)
-[![579](tl/579.png)](/GroundForge/sheet.html?img=579&patch=5-L-L---%20-L-L-O-L%20E-E-E-E-%20-L-L-L-L;bricks)
-[![580](tl/580.png)](/GroundForge/sheet.html?img=580&patch=5-L---H-%20-L-O-L-O%20H-H-5---%20-H-H-H-E;bricks)
-[![581](tl/581.png)](/GroundForge/sheet.html?img=581&patch=5-L---H-%20-L-O-L-O%20--H-H-5-%20-E-H-H-H;bricks)
-[![582](tl/582.png)](/GroundForge/sheet.html?img=582&patch=5-L---H-%20-L-O-L-O%20H-H-H-H-%20-H-H-H-H;bricks)
-[![583](tl/583.png)](/GroundForge/sheet.html?img=583&patch=5-L-O-5-%20-L-L-5-5%205-E-5-H-%20-5-H-5-H;bricks)
-[![584](tl/584.png)](/GroundForge/sheet.html?img=584&patch=5-L-O-5-%20-L-L-5-5%20H-5-5-H-%20-5-E-5-H;bricks)
-[![585](tl/585.png)](/GroundForge/sheet.html?img=585&patch=5-L-O-5-%20-E-E-5-5%205-O-5-L-%20-5-H-5-H;bricks)
-[![586](tl/586.png)](/GroundForge/sheet.html?img=586&patch=5-L-O-5-%20-E-E-5-5%205-O-O-5-%20-5-E-5-H;bricks)
-[![587](tl/587.png)](/GroundForge/sheet.html?img=587&patch=5-L-O-5-%20-L-E-5-5%20L-5-5-L-%20-5-H-5-E;bricks)
-[![588](tl/588.png)](/GroundForge/sheet.html?img=588&patch=5-L-O-5-%20-L-E-5-5%20L-5-O-5-%20-5-E-5-E;bricks)
-[![589](tl/589.png)](/GroundForge/sheet.html?img=589&patch=5-L-O-5-%20-L-E-5-5%205-5-O-H-%20-5-E-5-H;bricks)
-[![591](tl/591.png)](/GroundForge/sheet.html?img=591&patch=5-L-O-5-%20---5-5-5%20O-E-5-5-%20-5-H-5-E;bricks)
-[![592](tl/592.png)](/GroundForge/sheet.html?img=592&patch=5-L-5-H-%20-E-5-5-H%205-L-E-5-%20-5-5-O-O;bricks)
-[![593](tl/593.png)](/GroundForge/sheet.html?img=593&patch=5-L-5-H-%20-E-5-5-H%205-K-5-5-%20-5-5-L-O;bricks)
-[![594](tl/594.png)](/GroundForge/sheet.html?img=594&patch=5-L-5-H-%20-E-5-5-H%20O-5-E-5-%20-5-5-O-L;bricks)
-[![595](tl/595.png)](/GroundForge/sheet.html?img=595&patch=5-L-5-H-%20-E-5-5-H%20O-H-5-5-%20-5-5-L-L;bricks)
-[![596](tl/596.png)](/GroundForge/sheet.html?img=596&patch=5-L-5-H-%20-E-5-5-O%205-5-E-E-%20-5-5-O-O;bricks)
-[![597](tl/597.png)](/GroundForge/sheet.html?img=597&patch=5-L-5-O-%20-E-5-E-5%205-H-5-H-%20-5-5-L-O;bricks)
-[![598](tl/598.png)](/GroundForge/sheet.html?img=598&patch=5-O-5-O-%20-E-5-E-5%20E-5-E-5-%20-O-5-O-5;bricks)
-[![599](tl/599.png)](/GroundForge/sheet.html?img=599&patch=5-O-5-O-%20-E-5-E-5%205-5-E-H-%20-L-5-O-5;bricks)
-[![601](tl/601.png)](/GroundForge/sheet.html?img=601&patch=5-O-L-K-%20-L---5-O%20E-H-E-E-%20-5-L-L--;bricks)
-[![602](tl/602.png)](/GroundForge/sheet.html?img=602&patch=5-O-5-O-%20-E-H-5-5%205-5-E-E-%20-L-5-O-5;bricks)
-[![603](tl/603.png)](/GroundForge/sheet.html?img=603&patch=5-L-5-H-%20-E-5-5-H%205-L-L-5-%20-H-5-5-O;bricks)
-[![604](tl/604.png)](/GroundForge/sheet.html?img=604&patch=5-L-5-H-%20-E-5-5-H%20O-5-L-5-%20-H-5-5-L;bricks)
-[![605](tl/605.png)](/GroundForge/sheet.html?img=605&patch=5-L-5-H-%20-E-5-5-H%20O-O-5-5-%20-E-5-5-L;bricks)
-[![606](tl/606.png)](/GroundForge/sheet.html?img=606&patch=5-L-5-H-%20-E-5-5-O%205-5-L-E-%20-H-5-5-O;bricks)
-[![607](tl/607.png)](/GroundForge/sheet.html?img=607&patch=5-L-5-H-%20-E-5-5-O%205-5-K-5-%20-H-5-5-L;bricks)
-[![608](tl/608.png)](/GroundForge/sheet.html?img=608&patch=5-L-5-H-%20-E-5-5-O%205-O-5-E-%20-E-5-5-O;bricks)
-[![609](tl/609.png)](/GroundForge/sheet.html?img=609&patch=5-L-5-O-%20-E-5-E-5%20L-5-L-5-%20-H-5-5-L;bricks)
-[![610](tl/610.png)](/GroundForge/sheet.html?img=610&patch=5-L-5-O-%20-E-5-E-5%205-5-L-H-%20-H-5-5-O;bricks)
-[![611](tl/611.png)](/GroundForge/sheet.html?img=611&patch=5-L-5-O-%20-E-H-5-5%205-5-L-E-%20-H-5-5-O;bricks)
-[![612](tl/612.png)](/GroundForge/sheet.html?img=612&patch=5-L-O-K-%20-E-E-E-H%205-L-L---%20-5-L-O-K;bricks)
-[![613](tl/613.png)](/GroundForge/sheet.html?img=613&patch=5-L-5-E-%20-E-5-5-H%205-L-L-5-%20-5-L-5-O;bricks)
-[![614](tl/614.png)](/GroundForge/sheet.html?img=614&patch=5-L-5-O-%20-L-H-5-5%20E-5-H-5-%20-H-5-5-L;bricks)
-[![615](tl/615.png)](/GroundForge/sheet.html?img=615&patch=5-L-5-H-%20-E-5-5-O%205-5-L-L-%20-H-H-5-5;bricks)
-[![616](tl/616.png)](/GroundForge/sheet.html?img=616&patch=5-L-5-H-%20-E-5-5-O%205-O-5-L-%20-E-H-5-5;bricks)
-[![617](tl/617.png)](/GroundForge/sheet.html?img=617&patch=5-L-5-O-%20-L-5-L-5%205-5-L-H-%20-E-E-5-5;bricks)
-[![618](tl/618.png)](/GroundForge/sheet.html?img=618&patch=5-L-5-O-%20-E-5-E-5%205-O-5-O-%20-E-H-5-5;bricks)
-[![619](tl/619.png)](/GroundForge/sheet.html?img=619&patch=5-L-5-O-%20-L-O-5-5%205-E-5-H-%20-E-H-5-5;bricks)
-[![620](tl/620.png)](/GroundForge/sheet.html?img=620&patch=5-L-5-O-%20-E-H-5-5%205-O-5-L-%20-E-H-5-5;bricks)
-[![622](tl/622.png)](/GroundForge/sheet.html?img=622&patch=5-L-L-5-%20-L-L-5-5%20E-E-5-5-%20-O-H-5-5;bricks)
-[![623](tl/623.png)](/GroundForge/sheet.html?img=623&patch=5-L-L-5-%20-L-L-5-5%205-E-5-H-%20-L-H-5-5;bricks)
-[![624](tl/624.png)](/GroundForge/sheet.html?img=624&patch=5-L-5-E-%20-E-5-5-H%205-K-5-5-%20-5-O-5-O;bricks)
-[![625](tl/625.png)](/GroundForge/sheet.html?img=625&patch=5-L-L-5-%20-L-L-5-5%20H-5-5-H-%20-L-E-5-5;bricks)
-[![626](tl/626.png)](/GroundForge/sheet.html?img=626&patch=5-L-L-5-%20-E-E-5-5%205-5-L-L-%20-O-H-5-5;bricks)
-[![627](tl/627.png)](/GroundForge/sheet.html?img=627&patch=5-L-L-5-%20-E-E-5-5%205-O-5-L-%20-L-H-5-5;bricks)
-[![628](tl/628.png)](/GroundForge/sheet.html?img=628&patch=5-L-L-5-%20-E-E-5-5%205-O-O-5-%20-L-E-5-5;bricks)
-[![629](tl/629.png)](/GroundForge/sheet.html?img=629&patch=5-L-L-5-%20-L-E-5-5%20E-5-5-L-%20-O-H-5-5;bricks)
-[![630](tl/630.png)](/GroundForge/sheet.html?img=630&patch=5-L-L-5-%20---5-5-5%20H-E-5-5-%20-O-H-5-5;bricks)
-[![631](tl/631.png)](/GroundForge/sheet.html?img=631&patch=5-L-E-5-%20-E-5-5-L%205-O-5-L-%20-L-H-5-5;bricks)
-[![632](tl/632.png)](/GroundForge/sheet.html?img=632&patch=5-L-L-5-%20-L-L-5-5%20H-5-5-O-%20-5-E-E-5;bricks)
-[![633](tl/633.png)](/GroundForge/sheet.html?img=633&patch=5-L-L-5-%20---5-5-5%20O-E-5-5-%20-5-H-H-5;bricks)
-[![635](tl/635.png)](/GroundForge/sheet.html?img=635&patch=5-L-5-E-%20-E-5-5-H%20O-5-L-5-%20-5-L-5-L;bricks)
-[![636](tl/636.png)](/GroundForge/sheet.html?img=636&patch=5-O-E-5-%20-E-5-5-L%205-O-H-5-%20-5-5-5--;bricks)
-[![639](tl/639.png)](/GroundForge/sheet.html?img=639&patch=5-L-5-E-%20-E-5-5-H%20O-H-5-5-%20-5-O-5-L;bricks)
-[![640](tl/640.png)](/GroundForge/sheet.html?img=640&patch=5-L-5-E-%20-E-5-5-O%205-5-L-E-%20-5-L-5-O;bricks)
-[![641](tl/641.png)](/GroundForge/sheet.html?img=641&patch=5-L-5-E-%20-E-5-5-O%205-5-K-5-%20-5-L-5-L;bricks)
-[![642](tl/642.png)](/GroundForge/sheet.html?img=642&patch=5-L-5-E-%20-E-5-5-O%205-H-5-E-%20-5-O-5-O;bricks)
-[![643](tl/643.png)](/GroundForge/sheet.html?img=643&patch=5-L-5-E-%20-E-5-5-O%205-H-H-5-%20-5-O-5-L;bricks)
-[![644](tl/644.png)](/GroundForge/sheet.html?img=644&patch=5-L-5-E-%20-L-5-5-O%20E-5-5-E-%20-5-L-5-O;bricks)
-[![645](tl/645.png)](/GroundForge/sheet.html?img=645&patch=5-L-5-E-%20-L-5-5-O%20E-5-H-5-%20-5-L-5-L;bricks)
-[![646](tl/646.png)](/GroundForge/sheet.html?img=646&patch=5-L-O-K-%20-E-E-E-H%20L-L-K-5-%20-5-L-O-K;bricks)
-[![647](tl/647.png)](/GroundForge/sheet.html?img=647&patch=5-L-5-L-%20-E-5-E-5%20L-5-L-5-%20-5-L-5-L;bricks)
-[![648](tl/648.png)](/GroundForge/sheet.html?img=648&patch=5-L-5-L-%20-E-5-E-5%205-5-L-H-%20-5-L-5-O;bricks)
-[![649](tl/649.png)](/GroundForge/sheet.html?img=649&patch=5-L-5-L-%20-E-5-E-5%205-H-5-H-%20-5-O-5-O;bricks)
-[![650](tl/650.png)](/GroundForge/sheet.html?img=650&patch=5-L-5-E-%20-E-5-5-O%205-5-L-L-%20-5-K-5-5;bricks)
-[![651](tl/651.png)](/GroundForge/sheet.html?img=651&patch=5-O-5-E-%20-E-5-5-H%205-L-L-5-%20-L-L-5-5;bricks)
-[![652](tl/652.png)](/GroundForge/sheet.html?img=652&patch=5-O-5-E-%20-E-5-5-H%205---5-5-%20-O-L-5-5;bricks)
-[![653](tl/653.png)](/GroundForge/sheet.html?img=653&patch=5-O-5-E-%20-E-5-5-H%20H-H-5-5-%20-O-O-5-5;bricks)
-[![654](tl/654.png)](/GroundForge/sheet.html?img=654&patch=5-O-5-E-%20-E-5-5-O%205-5-L-E-%20-L-L-5-5;bricks)
-[![655](tl/655.png)](/GroundForge/sheet.html?img=655&patch=5-O-5-E-%20-E-5-5-H%20O-5-L-5-%20-5-L-H-5;bricks)
-[![656](tl/656.png)](/GroundForge/sheet.html?img=656&patch=5-O-5-E-%20-E-5-5-H%20O-H-5-5-%20-5-O-H-5;bricks)
-[![657](tl/657.png)](/GroundForge/sheet.html?img=657&patch=5-L-O-K-%20-E-E-E-H%20L-L---5-%20-5-O-L-K;bricks)
-[![658](tl/658.png)](/GroundForge/sheet.html?img=658&patch=5-O-5-E-%20-E-5-5-O%205-5-L-L-%20-5-L-E-5;bricks)
-[![659](tl/659.png)](/GroundForge/sheet.html?img=659&patch=5-O-5-E-%20-E-5-5-O%205-5---5-%20-5-O-E-5;bricks)
-[![660](tl/660.png)](/GroundForge/sheet.html?img=660&patch=5-L-K-H-%20-L-L-O-O%20E-E-E-E-%20-L-L-L-L;bricks)
-[![661](tl/661.png)](/GroundForge/sheet.html?img=661&patch=5-L---H-%20-L-O-L-O%20E-E-E-E-%20-L-L-L-L;bricks)
-[![662](tl/662.png)](/GroundForge/sheet.html?img=662&patch=5-L-O-5-%20-E-E-5-5%205-5-L-E-%20-5-L-5-O;bricks)
-[![663](tl/663.png)](/GroundForge/sheet.html?img=663&patch=5-L-O-5-%20-E-E-5-5%205-H-5-E-%20-5-O-5-O;bricks)
-[![664](tl/664.png)](/GroundForge/sheet.html?img=664&patch=5-L-O-5-%20-L-E-5-5%20E-5-5-E-%20-5-L-5-O;bricks)
-[![665](tl/665.png)](/GroundForge/sheet.html?img=665&patch=5-L-O-5-%20-L-E-5-5%20E-5-H-5-%20-5-L-5-L;bricks)
-[![666](tl/666.png)](/GroundForge/sheet.html?img=666&patch=5-O-O-5-%20-E-E-5-5%205-5-L-E-%20-L-L-5-5;bricks)
-[![667](tl/667.png)](/GroundForge/sheet.html?img=667&patch=5-O-O-5-%20-E-E-5-5%205-H-5-E-%20-L-O-5-5;bricks)
-[![668](tl/668.png)](/GroundForge/sheet.html?img=668&patch=5-L-O-K-%20-E-E-E-H%205-K-5---%20-5-O-O-K;bricks)
-[![669](tl/669.png)](/GroundForge/sheet.html?img=669&patch=5-O-O-5-%20-E-E-5-5%205-5---5-%20-5-O-E-5;bricks)
-[![670](tl/670.png)](/GroundForge/sheet.html?img=670&patch=5-O-O-5-%20-L-E-5-5%20E-5-5-L-%20-5-L-E-5;bricks)
-[![671](tl/671.png)](/GroundForge/sheet.html?img=671&patch=5-O-O-5-%20-L-E-5-5%20E-5-H-5-%20-5-L-H-5;bricks)
-[![672](tl/672.png)](/GroundForge/sheet.html?img=672&patch=5-O-O-5-%20---5-5-5%20H-E-5-5-%20-5-L-E-5;bricks)
-[![679](tl/679.png)](/GroundForge/sheet.html?img=679&patch=5-L-O-K-%20-E-E-E-H%20L-K-H-5-%20-5-O-O-K;bricks)
-[![682](tl/682.png)](/GroundForge/sheet.html?img=682&patch=5-L-L-K-%20-L-L-L-O%20L-L-L-L-%20-E-E-E-E;bricks)
-[![683](tl/683.png)](/GroundForge/sheet.html?img=683&patch=5-L-L-K-%20-L-L-L-O%205-L-L-K-%20-E-E-E-H;bricks)
-[![684](tl/684.png)](/GroundForge/sheet.html?img=684&patch=5-L-L-K-%20-L-L-L-O%205-L-L---%20-E-E-H-E;bricks)
-[![687](tl/687.png)](/GroundForge/sheet.html?img=687&patch=5-L-L-K-%20-L-L-L-O%205-L-K-H-%20-E-E-H-H;bricks)
-[![688](tl/688.png)](/GroundForge/sheet.html?img=688&patch=5-L-L-K-%20-L-L-L-O%205-L---H-%20-E-H-E-H;bricks)
-[![689](tl/689.png)](/GroundForge/sheet.html?img=689&patch=5-L-L-K-%20-L-L-L-O%20L-K-5-L-%20-E-H-E-E;bricks)
-[![690](tl/690.png)](/GroundForge/sheet.html?img=690&patch=5-L-K-E-%20-E-E-5-K%20O-O-O-L-%20-5-K-H-H;bricks)
-[![691](tl/691.png)](/GroundForge/sheet.html?img=691&patch=5-L-L-K-%20-L-L-L-O%20L---5-L-%20-H-E-E-E;bricks)
-[![692](tl/692.png)](/GroundForge/sheet.html?img=692&patch=5-L-L-K-%20-L-L-L-O%205-K-5-K-%20-E-H-E-H;bricks)
-[![693](tl/693.png)](/GroundForge/sheet.html?img=693&patch=5-L-L-K-%20-L-L-L-O%205-K-5---%20-E-H-H-E;bricks)
-[![694](tl/694.png)](/GroundForge/sheet.html?img=694&patch=5-L-L-K-%20-L-L-L-O%205---5-K-%20-H-E-E-H;bricks)
-[![695](tl/695.png)](/GroundForge/sheet.html?img=695&patch=5-L-L-K-%20-L-L-L-O%205---5---%20-H-E-H-E;bricks)
-[![696](tl/696.png)](/GroundForge/sheet.html?img=696&patch=5-L-L-K-%20-L-L-L-O%20L-K-H-5-%20-E-H-H-E;bricks)
-[![697](tl/697.png)](/GroundForge/sheet.html?img=697&patch=5-L-L-K-%20-L-L-L-O%20L---H-5-%20-H-E-H-E;bricks)
-[![698](tl/698.png)](/GroundForge/sheet.html?img=698&patch=5-L-L-K-%20-L-L-L-O%205-K-H-H-%20-E-H-H-H;bricks)
-[![699](tl/699.png)](/GroundForge/sheet.html?img=699&patch=5-L-L-K-%20-L-L-L-O%205---H-H-%20-H-E-H-H;bricks)
-[![700](tl/700.png)](/GroundForge/sheet.html?img=700&patch=5-L-L-K-%20-L-L-L-O%20K-5-L-L-%20-H-E-E-E;bricks)
-[![701](tl/701.png)](/GroundForge/sheet.html?img=701&patch=5-L-K-E-%20-L-L-O-O%20K-5---5-%20-5-K-E-E;bricks)
-[![702](tl/702.png)](/GroundForge/sheet.html?img=702&patch=5-L-L-K-%20-L-L-L-O%20--5-L-L-%20-E-E-E-H;bricks)
-[![703](tl/703.png)](/GroundForge/sheet.html?img=703&patch=5-L-L-K-%20-L-L-L-O%20H-5-L-K-%20-H-E-E-H;bricks&patch=5-L-L-K-%20-L-L-L-O%20K-H-5-L-%20-H-H-E-E;bricks)
-[![710](tl/710.png)](/GroundForge/sheet.html?img=710&patch=5-L-L-K-%20-L-L-L-O%20H-5---H-%20-H-H-E-H;bricks)
-[![704](tl/704.png)](/GroundForge/sheet.html?img=704&patch=5-L-L-K-%20-L-L-L-O%20H-5-L---%20-H-E-H-E;bricks)
-[![705](tl/705.png)](/GroundForge/sheet.html?img=705&patch=5-L-L-K-%20-L-L-L-O%20K-5-K-5-%20-H-E-H-E;bricks)
-[![706](tl/706.png)](/GroundForge/sheet.html?img=706&patch=5-L-L-K-%20-L-L-L-O%20K-5---5-%20-H-H-E-E;bricks)
-[![707](tl/707.png)](/GroundForge/sheet.html?img=707&patch=5-L-L-K-%20-L-L-L-O%20--5-K-5-%20-E-E-H-H;bricks)
-[![708](tl/708.png)](/GroundForge/sheet.html?img=708&patch=5-L-L-K-%20-L-L-L-O%20--5---5-%20-E-H-E-H;bricks)
-[![709](tl/709.png)](/GroundForge/sheet.html?img=709&patch=5-L-L-K-%20-L-L-L-O%20H-5-K-H-%20-H-E-H-H;bricks)
-[![712](tl/712.png)](/GroundForge/sheet.html?img=712&patch=5-L-K-E-%20-L-L-O-O%20H-5---H-%20-5-K-E-H;bricks)
-[![713](tl/713.png)](/GroundForge/sheet.html?img=713&patch=5-L-L-K-%20-L-L-L-O%20--H-5-L-%20-E-H-E-H;bricks)
-[![714](tl/714.png)](/GroundForge/sheet.html?img=714&patch=5-L-L-K-%20-L-L-L-O%20H-H-5---%20-H-H-H-E;bricks)
-[![715](tl/715.png)](/GroundForge/sheet.html?img=715&patch=5-L-L-K-%20-L-L-L-O%20--H-H-5-%20-E-H-H-H;bricks)
-[![716](tl/716.png)](/GroundForge/sheet.html?img=716&patch=5-L-L-K-%20-L-L-L-O%20H-H-H-H-%20-H-H-H-H;bricks)
-[![718](tl/718.png)](/GroundForge/sheet.html?img=718&patch=5-L-L-K-%20-L-K-5-O%20L-L-O-L-%20-E-E-E-E;bricks)
-[![719](tl/719.png)](/GroundForge/sheet.html?img=719&patch=5-L-L-K-%20-L-K-5-O%205-L-O-K-%20-E-E-E-H;bricks)
-[![720](tl/720.png)](/GroundForge/sheet.html?img=720&patch=5-L-L-K-%20-L-K-5-O%205-L-O---%20-E-E-H-E;bricks)
-[![721](tl/721.png)](/GroundForge/sheet.html?img=721&patch=5-L-L-K-%20-L-K-5-O%20K-5-O-L-%20-H-E-E-E;bricks)
-[![722](tl/722.png)](/GroundForge/sheet.html?img=722&patch=5-L-L-K-%20-L-K-5-O%20--5-O-L-%20-E-E-E-H;bricks)
-[![095](tl/095.png)](/GroundForge/sheet.html?img=095&patch=5632%2056-2%206-58%20-534;checker&patch=4632%2056-2%205-5-%208635;checker&patch=4353%205353%205-5-%2086-5;checker&patch=435-%206325%206-25%2086-5;checker)
+{% include tesselaceSample.html nr="015" pattern="5-O-H-%20-L-5-O%20E-5-E-&shiftColsSE=3&shiftRowsSE=3&shiftColsSW=-3&shiftRowsSW=3" patches="patch=5-O-H-%20-L-5-O%20E-5-E-;bricks&patch=586-%20---5%202AB-%20-7-5;bricks" %}
+{% include tesselaceSample.html nr="138" pattern="4641%209177&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4641%209177;bricks&patch=4841%205377;bricks" %}
+{% include tesselaceSample.html nr="410" pattern="5831%20-4-7%203158%20-7-4&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=5831%20-4-7%203158%20-7-4;bricks" %}
+{% include tesselaceSample.html nr="552" pattern="5-L-K-H-%20-L-L-O-O%205-L---H-%20-E-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-H-%20-L-L-O-O%205-L---H-%20-E-H-E-H;bricks" %}
+{% include tesselaceSample.html nr="551" pattern="5-L-K-H-%20-L-L-O-O%205-L-K-H-%20-E-E-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-H-%20-L-L-O-O%205-L-K-H-%20-E-E-H-H;bricks" %}
+{% include tesselaceSample.html nr="558" pattern="5-L-K-H-%20-L-L-O-O%205---5---%20-H-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-H-%20-L-L-O-O%205---5---%20-H-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="127" pattern="4815%204-77&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4815%204-77;bricks&patch=-5---5-5%205-O-E-5-;bricks&patch=4804%20-777;bricks" %}
+{% include tesselaceSample.html nr="002" pattern="6868%20---4%202AA1%20-7-7&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=6868%20---4%202AA1%20-7-7;bricks&patch=586-%20-4-5%202121%20-7-7;bricks&patch=586-%20-4-5%206868%20-4-4;checker" %}
+{% include tesselaceSample.html nr="425" pattern="5831%20-4-7%206868%20-4-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=5831%20-4-7%206868%20-4-4;checker&patch=5831%20-4-7%206868%20-4-4;bricks" %}
+{% include tesselaceSample.html nr="004" pattern="586-%20-4-5%202121%20-7-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-%20-4-5%202121%20-7-7;checker&patch=586-%20-4-5%206868%20-4-4;bricks&patch=5831%20-4-7%20586-%20-4-5;checker" %}
+{% include tesselaceSample.html nr="083" pattern="486-%20-486%202111%2088-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=486-%20-486%202111%2088-7;checker&patch=4831%20-488%202111%2088-7;checker&patch=4831%20-488%205-11%2086-7;checker" %}
+{% include tesselaceSample.html nr="103" pattern="586-%20-4-5%20215-%20-7-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-%20-4-5%20215-%20-7-5;checker&patch=5831%20-4-7%205-5-%20-5-5;checker" %}
+{% include tesselaceSample.html nr="106" pattern="4373%205353%205-5-%208315&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4373%205353%205-5-%208315;checker&patch=437-%206325%206-25%208315;checker&patch=5632%2056-2%203158%20-734;checker" %}
+{% include tesselaceSample.html nr="061" pattern="4632%2056-2%206-58%208634&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632%2056-2%206-58%208634;checker" %}
+{% include tesselaceSample.html nr="001" pattern="586-%20-4-5%205-21%20-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-%20-4-5%205-21%20-5-7;checker" %}
+{% include tesselaceSample.html nr="577" pattern="5-L---H-%20-L-O-L-O%20--5---5-%20-E-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%20--5---5-%20-E-H-E-H;bricks" %}
+{% include tesselaceSample.html nr="576" pattern="5-L---H-%20-L-O-L-O%20--5-K-5-%20-E-E-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%20--5-K-5-%20-E-E-H-H;bricks" %}
+{% include tesselaceSample.html nr="401" pattern="466-%206315%206-76%208666&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=466-%206315%206-76%208666;bricks" %}
+{% include tesselaceSample.html nr="448" pattern="4631%2066-7%206-56%208666&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=4631%2066-7%206-56%208666;bricks" %}
+{% include tesselaceSample.html nr="404" pattern="4631%206688%206-46%208666&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=4631%206688%206-46%208666;bricks" %}
+{% include tesselaceSample.html nr="405" pattern="4631%206688%203146%208866&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=4631%206688%203146%208866;bricks" %}
+{% include tesselaceSample.html nr="423" pattern="586-%201112%208-78%20-5-4&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=586-%201112%208-78%20-5-4;bricks" %}
+{% include tesselaceSample.html nr="051" pattern="588-%20-4-5%206868%20-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-%20-4-5%206868%20-114;checker" %}
+{% include tesselaceSample.html nr="455" pattern="586-%20---5%202AA1%20-7-7&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=586-%20---5%202AA1%20-7-7;bricks" %}
+{% include tesselaceSample.html nr="415" pattern="586-%20-4-5%20215-%20-7-5&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=586-%20-4-5%20215-%20-7-5;bricks" %}
+{% include tesselaceSample.html nr="006" pattern="466-%206315%206-76%208666&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=466-%206315%206-76%208666;checker" %}
+{% include tesselaceSample.html nr="056" pattern="588-%201112%208-78%20-214&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-%201112%208-78%20-214;checker" %}
+{% include tesselaceSample.html nr="037" pattern="586-%201112%208-78%20-5-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-%201112%208-78%20-5-4;checker" %}
+{% include tesselaceSample.html nr="041" pattern="6888%2014-1%208868%20-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=6888%2014-1%208868%20-114;checker" %}
+{% include tesselaceSample.html nr="054" pattern="588-%2014-2%208868%20-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-%2014-2%208868%20-114;checker" %}
+{% include tesselaceSample.html nr="052" pattern="588-%20-115%206-78%20-214&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-%20-115%206-78%20-214;checker" %}
+{% include tesselaceSample.html nr="088" pattern="4631%206688%203146%208866&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4631%206688%203146%208866;checker" %}
+{% include tesselaceSample.html nr="140" pattern="4631%206688&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4631%206688;bricks" %}
+{% include tesselaceSample.html nr="402" pattern="4631%2066-7%203156%208866&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=4631%2066-7%203156%208866;bricks" %}
+{% include tesselaceSample.html nr="403" pattern="466-%2066-5%206-56%208666&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=466-%2066-5%206-56%208666;bricks" %}
+{% include tesselaceSample.html nr="428" pattern="466-%206686%206-46%208666&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=466-%206686%206-46%208666;bricks" %}
+{% include tesselaceSample.html nr="406" pattern="4631%206317%206-76%208666&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=4631%206317%206-76%208666;bricks" %}
+{% include tesselaceSample.html nr="407" pattern="4631%206317%203176%208866&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=4631%206317%203176%208866;bricks" %}
+{% include tesselaceSample.html nr="007" pattern="6868%20-114%206888%20-4-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=6868%20-114%206888%20-4-4;checker" %}
+{% include tesselaceSample.html nr="010" pattern="4631%206688%206-46%208666&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4631%206688%206-46%208666;checker" %}
+{% include tesselaceSample.html nr="011" pattern="4631%206317%206-76%208666&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4631%206317%206-76%208666;checker" %}
+{% include tesselaceSample.html nr="012" pattern="4631%206317%203176%208866&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4631%206317%203176%208866;checker" %}
+{% include tesselaceSample.html nr="025" pattern="586-%201112%208888%20-4-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-%201112%208888%20-4-4;checker" %}
+{% include tesselaceSample.html nr="026" pattern="4343%205353%205-21%208688&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4343%205353%205-21%208688;checker" %}
+{% include tesselaceSample.html nr="027" pattern="6868%2088-7%201121%20-4-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=6868%2088-7%201121%20-4-4;checker" %}
+{% include tesselaceSample.html nr="032" pattern="586-%208889%201111%20-4-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-%208889%201111%20-4-4;checker" %}
+{% include tesselaceSample.html nr="033" pattern="586-%20-115%206888%20-4-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-%20-115%206888%20-4-4;checker" %}
+{% include tesselaceSample.html nr="034" pattern="586-%20-115%20588-%20-4-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-%20-115%20588-%20-4-5;checker" %}
+{% include tesselaceSample.html nr="035" pattern="586-%20-115%205-7-%20-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-%20-115%205-7-%20-5-5;checker" %}
+{% include tesselaceSample.html nr="036" pattern="586-%201112%20788-%20-4-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-%201112%20788-%20-4-5;checker" %}
+{% include tesselaceSample.html nr="038" pattern="586-%201112%207-7-%20-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-%201112%207-7-%20-5-5;checker" %}
+{% include tesselaceSample.html nr="039" pattern="586-%20-789%202111%20-4-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-%20-789%202111%20-4-4;checker" %}
+{% include tesselaceSample.html nr="040" pattern="4632%205683%206-48%208634&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632%205683%206-48%208634;checker" %}
+{% include tesselaceSample.html nr="042" pattern="6888%208888%204-11%20-014&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=6888%208888%204-11%20-014;checker" %}
+{% include tesselaceSample.html nr="043" pattern="588-%201112%208888%20-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-%201112%208888%20-114;checker" %}
+{% include tesselaceSample.html nr="045" pattern="588-%20-115%206888%20-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-%20-115%206888%20-114;checker" %}
+{% include tesselaceSample.html nr="047" pattern="6888%201111%208888%20-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=6888%201111%208888%20-114;checker" %}
+{% include tesselaceSample.html nr="048" pattern="6888%2088-7%201121%20-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=6888%2088-7%201121%20-114;checker" %}
+{% include tesselaceSample.html nr="049" pattern="6888%20-788%202111%20-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=6888%20-788%202111%20-114;checker" %}
+{% include tesselaceSample.html nr="050" pattern="4632%205683%205-11%208637&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632%205683%205-11%208637;checker" %}
+{% include tesselaceSample.html nr="053" pattern="588-%208889%204-11%20-014&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-%208889%204-11%20-014;checker" %}
+{% include tesselaceSample.html nr="055" pattern="4632%205683%203148%208834&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632%205683%203148%208834;checker" %}
+{% include tesselaceSample.html nr="057" pattern="588-%20-789%205-11%20-014&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-%20-789%205-11%20-014;checker" %}
+{% include tesselaceSample.html nr="058" pattern="588-%20-789%202111%20-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-%20-789%202111%20-114;checker" %}
+{% include tesselaceSample.html nr="059" pattern="4632%205683%20214-%208835&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632%205683%20214-%208835;checker" %}
+{% include tesselaceSample.html nr="060" pattern="4632%205683%202111%208837&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632%205683%202111%208837;checker" %}
+{% include tesselaceSample.html nr="062" pattern="4632%2056-2%205-21%208637&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632%2056-2%205-21%208637;checker" %}
+{% include tesselaceSample.html nr="063" pattern="4632%2056-2%202121%208837&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632%2056-2%202121%208837;checker" %}
+{% include tesselaceSample.html nr="064" pattern="4632%205312%206-78%208634&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632%205312%206-78%208634;checker" %}
+{% include tesselaceSample.html nr="065" pattern="4632%205312%205-7-%208635&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632%205312%205-7-%208635;checker" %}
+{% include tesselaceSample.html nr="066" pattern="4632%205312%203178%208834&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632%205312%203178%208834;checker" %}
+{% include tesselaceSample.html nr="013" pattern="5-H-H-%20-5-H-H%205-L-O-&shiftColsSE=3&shiftRowsSE=3&shiftColsSW=-3&shiftRowsSW=3" patches="patch=5-H-H-%20-5-H-H%205-L-O-;bricks" %}
+{% include tesselaceSample.html nr="014" pattern="5-E-H-%20-5-5--%20L-5-O-&shiftColsSE=3&shiftRowsSE=3&shiftColsSW=-3&shiftRowsSW=3" patches="patch=5-E-H-%20-5-5--%20L-5-O-;bricks" %}
+{% include tesselaceSample.html nr="016" pattern="5-O-H-%20-E-5-H%205-L-L-&shiftColsSE=3&shiftRowsSE=3&shiftColsSW=-3&shiftRowsSW=3" patches="patch=5-O-H-%20-E-5-H%205-L-L-;bricks" %}
+{% include tesselaceSample.html nr="017" pattern="5-L-H-%20-L-5-O%20E-H-5-&shiftColsSE=3&shiftRowsSE=3&shiftColsSW=-3&shiftRowsSW=3" patches="patch=5-L-H-%20-L-5-O%20E-H-5-;bricks" %}
+{% include tesselaceSample.html nr="018" pattern="5-E-H-%20-5-O-O%20H-H-5-&shiftColsSE=3&shiftRowsSE=3&shiftColsSW=-3&shiftRowsSW=3" patches="patch=5-E-H-%20-5-O-O%20H-H-5-;bricks" %}
+{% include tesselaceSample.html nr="068" pattern="486-%20-486%205-11%2086-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=486-%20-486%205-11%2086-7;checker" %}
+{% include tesselaceSample.html nr="069" pattern="486-%20-486%20214-%2088-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=486-%20-486%20214-%2088-5;checker" %}
+{% include tesselaceSample.html nr="084" pattern="4831%20-4-7%205-5-%2086-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831%20-4-7%205-5-%2086-5;checker" %}
+{% include tesselaceSample.html nr="077" pattern="486-%20-4-5%20215-%2088-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=486-%20-4-5%20215-%2088-5;checker" %}
+{% include tesselaceSample.html nr="085" pattern="4831%20-4-7%205-21%2086-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831%20-4-7%205-21%2086-7;checker" %}
+{% include tesselaceSample.html nr="075" pattern="486-%20-4-5%205-21%2086-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=486-%20-4-5%205-21%2086-7;checker" %}
+{% include tesselaceSample.html nr="078" pattern="486-%20-4-5%202121%2088-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=486-%20-4-5%202121%2088-7;checker" %}
+{% include tesselaceSample.html nr="086" pattern="4831%20-4-7%202121%2088-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831%20-4-7%202121%2088-7;checker" %}
+{% include tesselaceSample.html nr="087" pattern="4831%203437%203535%2086-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831%203437%203535%2086-5;checker" %}
+{% include tesselaceSample.html nr="089" pattern="4353%205353%206-58%2086-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4353%205353%206-58%2086-4;checker" %}
+{% include tesselaceSample.html nr="090" pattern="4353%205353%205-21%2086-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4353%205353%205-21%2086-7;checker" %}
+{% include tesselaceSample.html nr="091" pattern="4632%205683%205-4-%208635&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632%205683%205-4-%208635;checker" %}
+{% include tesselaceSample.html nr="096" pattern="466-%2066-5%206-56%208666&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=466-%2066-5%206-56%208666;checker" %}
+{% include tesselaceSample.html nr="098" pattern="4631%2066-7%206-56%208666&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4631%2066-7%206-56%208666;checker" %}
+{% include tesselaceSample.html nr="099" pattern="4631%2066-7%203156%208866&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4631%2066-7%203156%208866;checker" %}
+{% include tesselaceSample.html nr="100" pattern="4632%2056-2%203158%208834&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632%2056-2%203158%208834;checker" %}
+{% include tesselaceSample.html nr="101" pattern="4632%2056-2%20215-%208835&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632%2056-2%20215-%208835;checker" %}
+{% include tesselaceSample.html nr="141" pattern="4321%205883&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4321%205883;bricks" %}
+{% include tesselaceSample.html nr="142" pattern="4353%205863&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4353%205863;bricks" %}
+{% include tesselaceSample.html nr="143" pattern="4311%206888&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4311%206888;bricks" %}
+{% include tesselaceSample.html nr="153" pattern="46-1%206868&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=46-1%206868;bricks" %}
+{% include tesselaceSample.html nr="154" pattern="4863%205663&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4863%205663;bricks" %}
+{% include tesselaceSample.html nr="156" pattern="46-2%206-58&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=46-2%206-58;bricks" %}
+{% include tesselaceSample.html nr="157" pattern="48-2%205-53&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=48-2%205-53;bricks" %}
+{% include tesselaceSample.html nr="158" pattern="8464%207712&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=8464%207712;bricks" %}
+{% include tesselaceSample.html nr="159" pattern="4466%207781&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4466%207781;bricks" %}
+{% include tesselaceSample.html nr="160" pattern="4683%203468&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4683%203468;bricks" %}
+{% include tesselaceSample.html nr="176" pattern="4683%206-48&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4683%206-48;bricks" %}
+{% include tesselaceSample.html nr="177" pattern="4632%203488&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4632%203488;bricks" %}
+{% include tesselaceSample.html nr="178" pattern="4840%205887&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4840%205887;bricks" %}
+{% include tesselaceSample.html nr="179" pattern="4883%205-43&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4883%205-43;bricks" %}
+{% include tesselaceSample.html nr="180" pattern="4488%201748&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4488%201748;bricks" %}
+{% include tesselaceSample.html nr="408" pattern="4343%205353%205-21%208688&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=4343%205353%205-21%208688;bricks" %}
+{% include tesselaceSample.html nr="409" pattern="586-%20-4-5%205-21%20-5-7&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=586-%20-4-5%205-21%20-5-7;bricks" %}
+{% include tesselaceSample.html nr="411" pattern="6868%20-114%206888%20-4-4&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=6868%20-114%206888%20-4-4;bricks" %}
+{% include tesselaceSample.html nr="413" pattern="586-%20-4-5%205-5-%20-5-5&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=586-%20-4-5%205-5-%20-5-5;bricks" %}
+{% include tesselaceSample.html nr="414" pattern="586-%20-789%202111%20-4-4&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=586-%20-789%202111%20-4-4;bricks" %}
+{% include tesselaceSample.html nr="417" pattern="586-%208889%201111%20-4-4&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=586-%208889%201111%20-4-4;bricks" %}
+{% include tesselaceSample.html nr="418" pattern="586-%20-115%206888%20-4-4&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=586-%20-115%206888%20-4-4;bricks" %}
+{% include tesselaceSample.html nr="419" pattern="586-%20-115%20588-%20-4-5&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=586-%20-115%20588-%20-4-5;bricks" %}
+{% include tesselaceSample.html nr="420" pattern="586-%20-115%206-78%20-5-4&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=586-%20-115%206-78%20-5-4;bricks" %}
+{% include tesselaceSample.html nr="421" pattern="586-%20-115%205-7-%20-5-5&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=586-%20-115%205-7-%20-5-5;bricks" %}
+{% include tesselaceSample.html nr="422" pattern="586-%201112%20788-%20-4-5&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=586-%201112%20788-%20-4-5;bricks" %}
+{% include tesselaceSample.html nr="424" pattern="586-%201112%207-7-%20-5-5&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=586-%201112%207-7-%20-5-5;bricks" %}
+{% include tesselaceSample.html nr="427" pattern="5831%20-4-7%206-58%20-5-4&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=5831%20-4-7%206-58%20-5-4;bricks" %}
+{% include tesselaceSample.html nr="429" pattern="586-%20-4-5%206-58%20-5-4&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=586-%20-4-5%206-58%20-5-4;bricks" %}
+{% include tesselaceSample.html nr="430" pattern="6868%2088-7%201121%20-4-4&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=6868%2088-7%201121%20-4-4;bricks" %}
+{% include tesselaceSample.html nr="433" pattern="586-%20-4-5%20586-%20-4-5&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=586-%20-4-5%20586-%20-4-5;bricks" %}
+{% include tesselaceSample.html nr="434" pattern="586-%201112%208888%20-4-4&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=586-%201112%208888%20-4-4;bricks" %}
+{% include tesselaceSample.html nr="436" pattern="5831%20-4-7%20586-%20-4-5&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=5831%20-4-7%20586-%20-4-5;bricks" %}
+{% include tesselaceSample.html nr="449" pattern="-4-4%205---%20-C-B%206868&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=-4-4%205---%20-C-B%206868;bricks" %}
+{% include tesselaceSample.html nr="453" pattern="-4-5%205---%20-C-B%206-58&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=-4-5%205---%20-C-B%206-58;bricks" %}
+{% include tesselaceSample.html nr="426" pattern="5831%20-4-7%205-5-%20-5-5&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=5831%20-4-7%205-5-%20-5-5;bricks" %}
+{% include tesselaceSample.html nr="502" pattern="5-L-K-E-%20-L-L-O-O%20K-H-5-L-%20-5-K-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-E-%20-L-L-O-O%20K-H-5-L-%20-5-K-E-E;bricks" %}
+{% include tesselaceSample.html nr="503" pattern="5-L-L-K-%20-L-K-5-O%20H-5-O-K-%20-H-E-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-K-5-O%20H-5-O-K-%20-H-E-E-H;bricks" %}
+{% include tesselaceSample.html nr="504" pattern="5-L-L-K-%20-L-K-5-O%20H-5-O---%20-H-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-K-5-O%20H-5-O---%20-H-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="506" pattern="5-L-L-K-%20-L---5-O%205-O-L-K-%20-E-E-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L---5-O%205-O-L-K-%20-E-E-E-H;bricks" %}
+{% include tesselaceSample.html nr="507" pattern="5-L-L-K-%20-L---5-O%205-O-L---%20-E-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L---5-O%205-O-L---%20-E-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="508" pattern="5-L-L-K-%20-L---5-O%20L-O-K-5-%20-E-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L---5-O%20L-O-K-5-%20-E-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="509" pattern="5-L-L-K-%20-L---5-O%20L-O---5-%20-E-H-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L---5-O%20L-O---5-%20-E-H-E-E;bricks" %}
+{% include tesselaceSample.html nr="510" pattern="5-L-L-K-%20-L---5-O%205-O-K-H-%20-E-E-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L---5-O%205-O-K-H-%20-E-E-H-H;bricks" %}
+{% include tesselaceSample.html nr="511" pattern="5-L-L-K-%20-L---5-O%205-O---H-%20-E-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L---5-O%205-O---H-%20-E-H-E-H;bricks" %}
+{% include tesselaceSample.html nr="512" pattern="5-L-L-K-%20---H-5-O%20O-L-O-L-%20-E-E-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20---H-5-O%20O-L-O-L-%20-E-E-E-E;bricks" %}
+{% include tesselaceSample.html nr="513" pattern="5-L-K-E-%20-L-L-O-O%20H-H-5---%20-5-K-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-E-%20-L-L-O-O%20H-H-5---%20-5-K-H-E;bricks" %}
+{% include tesselaceSample.html nr="515" pattern="5-L-L---%20-L-L-O-L%205-L-L---%20-E-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L---%20-L-L-O-L%205-L-L---%20-E-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="518" pattern="5-L-L---%20-L-L-O-L%205---5---%20-H-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L---%20-L-L-O-L%205---5---%20-H-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="519" pattern="5-L-L---%20-L-L-O-L%205---H-H-%20-H-E-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L---%20-L-L-O-L%205---H-H-%20-H-E-H-H;bricks" %}
+{% include tesselaceSample.html nr="520" pattern="5-L-L---%20-L-L-O-L%20--5-L-L-%20-E-E-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L---%20-L-L-O-L%20--5-L-L-%20-E-E-E-H;bricks" %}
+{% include tesselaceSample.html nr="521" pattern="5-L-L---%20-L-L-O-L%20--5---5-%20-E-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L---%20-L-L-O-L%20--5---5-%20-E-H-E-H;bricks" %}
+{% include tesselaceSample.html nr="501" pattern="5-L-O-K-%20-L-L-L-O%20E-E-E-E-%20-5-L-L-K&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-K-%20-L-L-L-O%20E-E-E-E-%20-5-L-L-K;bricks" %}
+{% include tesselaceSample.html nr="505" pattern="5-L-L-K-%20-L---5-O%20L-O-L-L-%20-E-E-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L---5-O%20L-O-L-L-%20-E-E-E-E;bricks" %}
+{% include tesselaceSample.html nr="522" pattern="5-L-L---%20-L-L-O-L%20H-5---H-%20-H-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L---%20-L-L-O-L%20H-5---H-%20-H-H-E-H;bricks" %}
+{% include tesselaceSample.html nr="523" pattern="5-L-L---%20-L-L-O-L%20H-H-H-H-%20-H-H-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L---%20-L-L-O-L%20H-H-H-H-%20-H-H-H-H;bricks" %}
+{% include tesselaceSample.html nr="524" pattern="5-L-K-E-%20-L-L-O-O%20H-H-H-H-%20-5-K-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-E-%20-L-L-O-O%20H-H-H-H-%20-5-K-H-H;bricks" %}
+{% include tesselaceSample.html nr="526" pattern="5-L-L---%20---5-O-L%20O-L-L-L-%20-E-E-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L---%20---5-O-L%20O-L-L-L-%20-E-E-E-E;bricks" %}
+{% include tesselaceSample.html nr="527" pattern="5-L-L---%20---5-O-L%20O-L---5-%20-E-H-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L---%20---5-O-L%20O-L---5-%20-E-H-E-E;bricks" %}
+{% include tesselaceSample.html nr="529" pattern="5-K-5-K-%20-L-O-L-O%205-L-L---%20-E-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-K-5-K-%20-L-O-L-O%205-L-L---%20-E-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="530" pattern="5-K-5-K-%20-L-O-L-O%20L-L---5-%20-E-H-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-K-5-K-%20-L-O-L-O%20L-L---5-%20-E-H-E-E;bricks" %}
+{% include tesselaceSample.html nr="531" pattern="5-K-5-K-%20-L-O-L-O%205-L---H-%20-E-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-K-5-K-%20-L-O-L-O%205-L---H-%20-E-H-E-H;bricks" %}
+{% include tesselaceSample.html nr="533" pattern="5-K-5-K-%20-L-O-L-O%205---5---%20-H-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-K-5-K-%20-L-O-L-O%205---5---%20-H-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="534" pattern="5-K-5-K-%20-L-O-L-O%20L---H-5-%20-H-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-K-5-K-%20-L-O-L-O%20L---H-5-%20-H-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="535" pattern="5-L-K-E-%20-E-E-H-H%20O-O-O-O-%20-5-K-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-E-%20-E-E-H-H%20O-O-O-O-%20-5-K-H-H;bricks" %}
+{% include tesselaceSample.html nr="537" pattern="5-L-5-E-%20-E-5-5-H%20O-O-5-5-%20-5-5-5-K&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-E-5-5-H%20O-O-5-5-%20-5-5-5-K;bricks" %}
+{% include tesselaceSample.html nr="540" pattern="5-L-5-E-%20-E-5-5-O%205-O-O-5-%20-5-E-5-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-E-5-5-O%205-O-O-5-%20-5-E-5-H;bricks" %}
+{% include tesselaceSample.html nr="541" pattern="5-L-5-E-%20-L-5-5-O%20L-5-5-L-%20-5-H-5-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-L-5-5-O%20L-5-5-L-%20-5-H-5-E;bricks" %}
+{% include tesselaceSample.html nr="542" pattern="5-L-5-E-%20-L-5-5-O%20L-5-O-5-%20-5-E-5-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-L-5-5-O%20L-5-O-5-%20-5-E-5-E;bricks" %}
+{% include tesselaceSample.html nr="543" pattern="5-L-5-E-%20-L-5-5-O%205-5-O-H-%20-5-E-5-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-L-5-5-O%205-5-O-H-%20-5-E-5-H;bricks" %}
+{% include tesselaceSample.html nr="545" pattern="5-O-5-E-%20-E-5-5-H%20O-O-5-5-%20-5-5-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-5-E-%20-E-5-5-H%20O-O-5-5-%20-5-5-H-H;bricks" %}
+{% include tesselaceSample.html nr="546" pattern="5-L-L-K-%20-L-L-L-O%20E-E-E-E-%20-L-L-L-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20E-E-E-E-%20-L-L-L-L;bricks" %}
+{% include tesselaceSample.html nr="547" pattern="5-O-5-E-%20-E-5-5-O%205-O-5-L-%20-5-5-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-5-E-%20-E-5-5-O%205-O-5-L-%20-5-5-E-H;bricks" %}
+{% include tesselaceSample.html nr="548" pattern="5-L-K-H-%20-L-L-O-O%20L-L-L-L-%20-E-E-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-H-%20-L-L-O-O%20L-L-L-L-%20-E-E-E-E;bricks" %}
+{% include tesselaceSample.html nr="549" pattern="5-L-K-H-%20-L-L-O-O%205-L-L---%20-E-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-H-%20-L-L-O-O%205-L-L---%20-E-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="550" pattern="5-L-K-H-%20-L-L-O-O%20L-L---5-%20-E-H-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-H-%20-L-L-O-O%20L-L---5-%20-E-H-E-E;bricks" %}
+{% include tesselaceSample.html nr="553" pattern="5-L-K-H-%20-L-L-O-O%20L---5-L-%20-H-E-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-H-%20-L-L-O-O%20L---5-L-%20-H-E-E-E;bricks" %}
+{% include tesselaceSample.html nr="554" pattern="5-L-K-H-%20-L-L-O-O%205-K-5-K-%20-E-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-H-%20-L-L-O-O%205-K-5-K-%20-E-H-E-H;bricks" %}
+{% include tesselaceSample.html nr="555" pattern="5-L-K-H-%20-L-L-O-O%205-K-5---%20-E-H-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-H-%20-L-L-O-O%205-K-5---%20-E-H-H-E;bricks" %}
+{% include tesselaceSample.html nr="556" pattern="5-L-K-H-%20-L-L-O-O%205---5-K-%20-H-E-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-H-%20-L-L-O-O%205---5-K-%20-H-E-E-H;bricks" %}
+{% include tesselaceSample.html nr="557" pattern="5-L-L-K-%20-L---5-O%20E-H-E-E-%20-L-L-L-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L---5-O%20E-H-E-E-%20-L-L-L-L;bricks" %}
+{% include tesselaceSample.html nr="559" pattern="5-L-K-H-%20-L-L-O-O%20L-K-H-5-%20-E-H-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-H-%20-L-L-O-O%20L-K-H-5-%20-E-H-H-E;bricks" %}
+{% include tesselaceSample.html nr="560" pattern="5-L-K-H-%20-L-L-O-O%20--5-L-L-%20-E-E-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-H-%20-L-L-O-O%20--5-L-L-%20-E-E-E-H;bricks" %}
+{% include tesselaceSample.html nr="561" pattern="5-L-K-H-%20-L-L-O-O%20--5-K-5-%20-E-E-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-H-%20-L-L-O-O%20--5-K-5-%20-E-E-H-H;bricks" %}
+{% include tesselaceSample.html nr="562" pattern="5-L-K-H-%20-L-L-O-O%20--5---5-%20-E-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-H-%20-L-L-O-O%20--5---5-%20-E-H-E-H;bricks" %}
+{% include tesselaceSample.html nr="563" pattern="5-L---H-%20-L-O-L-O%20L-L-L-L-%20-E-E-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%20L-L-L-L-%20-E-E-E-E;bricks" %}
+{% include tesselaceSample.html nr="564" pattern="5-L---H-%20-L-O-L-O%205-L-L---%20-E-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%205-L-L---%20-E-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="565" pattern="5-L---H-%20-L-O-L-O%20L-L---5-%20-E-H-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%20L-L---5-%20-E-H-E-E;bricks" %}
+{% include tesselaceSample.html nr="566" pattern="5-L---H-%20-L-O-L-O%205-L---H-%20-E-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%205-L---H-%20-E-H-E-H;bricks" %}
+{% include tesselaceSample.html nr="567" pattern="5-L---H-%20-L-O-L-O%20L---5-L-%20-H-E-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%20L---5-L-%20-H-E-E-E;bricks" %}
+{% include tesselaceSample.html nr="568" pattern="5-L-L-K-%20---H-5-O%20H-E-H-E-%20-L-L-L-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20---H-5-O%20H-E-H-E-%20-L-L-L-L;bricks" %}
+{% include tesselaceSample.html nr="569" pattern="5-L---H-%20-L-O-L-O%205-K-5---%20-E-H-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%205-K-5---%20-E-H-H-E;bricks" %}
+{% include tesselaceSample.html nr="570" pattern="5-L---H-%20-L-O-L-O%205---5-K-%20-H-E-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%205---5-K-%20-H-E-E-H;bricks" %}
+{% include tesselaceSample.html nr="571" pattern="5-L---H-%20-L-O-L-O%205---5---%20-H-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%205---5---%20-H-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="572" pattern="5-L---H-%20-L-O-L-O%20L---H-5-%20-H-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%20L---H-5-%20-H-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="573" pattern="5-L---H-%20-L-O-L-O%205---H-H-%20-H-E-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%205---H-H-%20-H-E-H-H;bricks" %}
+{% include tesselaceSample.html nr="574" pattern="5-L---H-%20-L-O-L-O%20--5-L-L-%20-E-E-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%20--5-L-L-%20-E-E-E-H;bricks" %}
+{% include tesselaceSample.html nr="575" pattern="5-L---H-%20-L-O-L-O%20K-5---5-%20-H-H-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%20K-5---5-%20-H-H-E-E;bricks" %}
+{% include tesselaceSample.html nr="578" pattern="5-L---H-%20-L-O-L-O%20H-5---H-%20-H-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%20H-5---H-%20-H-H-E-H;bricks" %}
+{% include tesselaceSample.html nr="579" pattern="5-L-L---%20-L-L-O-L%20E-E-E-E-%20-L-L-L-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L---%20-L-L-O-L%20E-E-E-E-%20-L-L-L-L;bricks" %}
+{% include tesselaceSample.html nr="580" pattern="5-L---H-%20-L-O-L-O%20H-H-5---%20-H-H-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%20H-H-5---%20-H-H-H-E;bricks" %}
+{% include tesselaceSample.html nr="581" pattern="5-L---H-%20-L-O-L-O%20--H-H-5-%20-E-H-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%20--H-H-5-%20-E-H-H-H;bricks" %}
+{% include tesselaceSample.html nr="582" pattern="5-L---H-%20-L-O-L-O%20H-H-H-H-%20-H-H-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%20H-H-H-H-%20-H-H-H-H;bricks" %}
+{% include tesselaceSample.html nr="583" pattern="5-L-O-5-%20-L-L-5-5%205-E-5-H-%20-5-H-5-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-5-%20-L-L-5-5%205-E-5-H-%20-5-H-5-H;bricks" %}
+{% include tesselaceSample.html nr="584" pattern="5-L-O-5-%20-L-L-5-5%20H-5-5-H-%20-5-E-5-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-5-%20-L-L-5-5%20H-5-5-H-%20-5-E-5-H;bricks" %}
+{% include tesselaceSample.html nr="585" pattern="5-L-O-5-%20-E-E-5-5%205-O-5-L-%20-5-H-5-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-5-%20-E-E-5-5%205-O-5-L-%20-5-H-5-H;bricks" %}
+{% include tesselaceSample.html nr="586" pattern="5-L-O-5-%20-E-E-5-5%205-O-O-5-%20-5-E-5-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-5-%20-E-E-5-5%205-O-O-5-%20-5-E-5-H;bricks" %}
+{% include tesselaceSample.html nr="587" pattern="5-L-O-5-%20-L-E-5-5%20L-5-5-L-%20-5-H-5-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-5-%20-L-E-5-5%20L-5-5-L-%20-5-H-5-E;bricks" %}
+{% include tesselaceSample.html nr="588" pattern="5-L-O-5-%20-L-E-5-5%20L-5-O-5-%20-5-E-5-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-5-%20-L-E-5-5%20L-5-O-5-%20-5-E-5-E;bricks" %}
+{% include tesselaceSample.html nr="589" pattern="5-L-O-5-%20-L-E-5-5%205-5-O-H-%20-5-E-5-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-5-%20-L-E-5-5%205-5-O-H-%20-5-E-5-H;bricks" %}
+{% include tesselaceSample.html nr="591" pattern="5-L-O-5-%20---5-5-5%20O-E-5-5-%20-5-H-5-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-5-%20---5-5-5%20O-E-5-5-%20-5-H-5-E;bricks" %}
+{% include tesselaceSample.html nr="592" pattern="5-L-5-H-%20-E-5-5-H%205-L-E-5-%20-5-5-O-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-H-%20-E-5-5-H%205-L-E-5-%20-5-5-O-O;bricks" %}
+{% include tesselaceSample.html nr="593" pattern="5-L-5-H-%20-E-5-5-H%205-K-5-5-%20-5-5-L-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-H-%20-E-5-5-H%205-K-5-5-%20-5-5-L-O;bricks" %}
+{% include tesselaceSample.html nr="594" pattern="5-L-5-H-%20-E-5-5-H%20O-5-E-5-%20-5-5-O-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-H-%20-E-5-5-H%20O-5-E-5-%20-5-5-O-L;bricks" %}
+{% include tesselaceSample.html nr="595" pattern="5-L-5-H-%20-E-5-5-H%20O-H-5-5-%20-5-5-L-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-H-%20-E-5-5-H%20O-H-5-5-%20-5-5-L-L;bricks" %}
+{% include tesselaceSample.html nr="596" pattern="5-L-5-H-%20-E-5-5-O%205-5-E-E-%20-5-5-O-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-H-%20-E-5-5-O%205-5-E-E-%20-5-5-O-O;bricks" %}
+{% include tesselaceSample.html nr="597" pattern="5-L-5-O-%20-E-5-E-5%205-H-5-H-%20-5-5-L-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-O-%20-E-5-E-5%205-H-5-H-%20-5-5-L-O;bricks" %}
+{% include tesselaceSample.html nr="598" pattern="5-O-5-O-%20-E-5-E-5%20E-5-E-5-%20-O-5-O-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-5-O-%20-E-5-E-5%20E-5-E-5-%20-O-5-O-5;bricks" %}
+{% include tesselaceSample.html nr="599" pattern="5-O-5-O-%20-E-5-E-5%205-5-E-H-%20-L-5-O-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-5-O-%20-E-5-E-5%205-5-E-H-%20-L-5-O-5;bricks" %}
+{% include tesselaceSample.html nr="601" pattern="5-O-L-K-%20-L---5-O%20E-H-E-E-%20-5-L-L--&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-L-K-%20-L---5-O%20E-H-E-E-%20-5-L-L--;bricks" %}
+{% include tesselaceSample.html nr="602" pattern="5-O-5-O-%20-E-H-5-5%205-5-E-E-%20-L-5-O-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-5-O-%20-E-H-5-5%205-5-E-E-%20-L-5-O-5;bricks" %}
+{% include tesselaceSample.html nr="603" pattern="5-L-5-H-%20-E-5-5-H%205-L-L-5-%20-H-5-5-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-H-%20-E-5-5-H%205-L-L-5-%20-H-5-5-O;bricks" %}
+{% include tesselaceSample.html nr="604" pattern="5-L-5-H-%20-E-5-5-H%20O-5-L-5-%20-H-5-5-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-H-%20-E-5-5-H%20O-5-L-5-%20-H-5-5-L;bricks" %}
+{% include tesselaceSample.html nr="605" pattern="5-L-5-H-%20-E-5-5-H%20O-O-5-5-%20-E-5-5-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-H-%20-E-5-5-H%20O-O-5-5-%20-E-5-5-L;bricks" %}
+{% include tesselaceSample.html nr="606" pattern="5-L-5-H-%20-E-5-5-O%205-5-L-E-%20-H-5-5-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-H-%20-E-5-5-O%205-5-L-E-%20-H-5-5-O;bricks" %}
+{% include tesselaceSample.html nr="607" pattern="5-L-5-H-%20-E-5-5-O%205-5-K-5-%20-H-5-5-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-H-%20-E-5-5-O%205-5-K-5-%20-H-5-5-L;bricks" %}
+{% include tesselaceSample.html nr="608" pattern="5-L-5-H-%20-E-5-5-O%205-O-5-E-%20-E-5-5-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-H-%20-E-5-5-O%205-O-5-E-%20-E-5-5-O;bricks" %}
+{% include tesselaceSample.html nr="609" pattern="5-L-5-O-%20-E-5-E-5%20L-5-L-5-%20-H-5-5-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-O-%20-E-5-E-5%20L-5-L-5-%20-H-5-5-L;bricks" %}
+{% include tesselaceSample.html nr="610" pattern="5-L-5-O-%20-E-5-E-5%205-5-L-H-%20-H-5-5-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-O-%20-E-5-E-5%205-5-L-H-%20-H-5-5-O;bricks" %}
+{% include tesselaceSample.html nr="611" pattern="5-L-5-O-%20-E-H-5-5%205-5-L-E-%20-H-5-5-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-O-%20-E-H-5-5%205-5-L-E-%20-H-5-5-O;bricks" %}
+{% include tesselaceSample.html nr="612" pattern="5-L-O-K-%20-E-E-E-H%205-L-L---%20-5-L-O-K&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-K-%20-E-E-E-H%205-L-L---%20-5-L-O-K;bricks" %}
+{% include tesselaceSample.html nr="613" pattern="5-L-5-E-%20-E-5-5-H%205-L-L-5-%20-5-L-5-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-E-5-5-H%205-L-L-5-%20-5-L-5-O;bricks" %}
+{% include tesselaceSample.html nr="614" pattern="5-L-5-O-%20-L-H-5-5%20E-5-H-5-%20-H-5-5-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-O-%20-L-H-5-5%20E-5-H-5-%20-H-5-5-L;bricks" %}
+{% include tesselaceSample.html nr="615" pattern="5-L-5-H-%20-E-5-5-O%205-5-L-L-%20-H-H-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-H-%20-E-5-5-O%205-5-L-L-%20-H-H-5-5;bricks" %}
+{% include tesselaceSample.html nr="616" pattern="5-L-5-H-%20-E-5-5-O%205-O-5-L-%20-E-H-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-H-%20-E-5-5-O%205-O-5-L-%20-E-H-5-5;bricks" %}
+{% include tesselaceSample.html nr="617" pattern="5-L-5-O-%20-L-5-L-5%205-5-L-H-%20-E-E-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-O-%20-L-5-L-5%205-5-L-H-%20-E-E-5-5;bricks" %}
+{% include tesselaceSample.html nr="618" pattern="5-L-5-O-%20-E-5-E-5%205-O-5-O-%20-E-H-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-O-%20-E-5-E-5%205-O-5-O-%20-E-H-5-5;bricks" %}
+{% include tesselaceSample.html nr="619" pattern="5-L-5-O-%20-L-O-5-5%205-E-5-H-%20-E-H-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-O-%20-L-O-5-5%205-E-5-H-%20-E-H-5-5;bricks" %}
+{% include tesselaceSample.html nr="620" pattern="5-L-5-O-%20-E-H-5-5%205-O-5-L-%20-E-H-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-O-%20-E-H-5-5%205-O-5-L-%20-E-H-5-5;bricks" %}
+{% include tesselaceSample.html nr="622" pattern="5-L-L-5-%20-L-L-5-5%20E-E-5-5-%20-O-H-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-5-%20-L-L-5-5%20E-E-5-5-%20-O-H-5-5;bricks" %}
+{% include tesselaceSample.html nr="623" pattern="5-L-L-5-%20-L-L-5-5%205-E-5-H-%20-L-H-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-5-%20-L-L-5-5%205-E-5-H-%20-L-H-5-5;bricks" %}
+{% include tesselaceSample.html nr="624" pattern="5-L-5-E-%20-E-5-5-H%205-K-5-5-%20-5-O-5-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-E-5-5-H%205-K-5-5-%20-5-O-5-O;bricks" %}
+{% include tesselaceSample.html nr="625" pattern="5-L-L-5-%20-L-L-5-5%20H-5-5-H-%20-L-E-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-5-%20-L-L-5-5%20H-5-5-H-%20-L-E-5-5;bricks" %}
+{% include tesselaceSample.html nr="626" pattern="5-L-L-5-%20-E-E-5-5%205-5-L-L-%20-O-H-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-5-%20-E-E-5-5%205-5-L-L-%20-O-H-5-5;bricks" %}
+{% include tesselaceSample.html nr="627" pattern="5-L-L-5-%20-E-E-5-5%205-O-5-L-%20-L-H-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-5-%20-E-E-5-5%205-O-5-L-%20-L-H-5-5;bricks" %}
+{% include tesselaceSample.html nr="628" pattern="5-L-L-5-%20-E-E-5-5%205-O-O-5-%20-L-E-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-5-%20-E-E-5-5%205-O-O-5-%20-L-E-5-5;bricks" %}
+{% include tesselaceSample.html nr="629" pattern="5-L-L-5-%20-L-E-5-5%20E-5-5-L-%20-O-H-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-5-%20-L-E-5-5%20E-5-5-L-%20-O-H-5-5;bricks" %}
+{% include tesselaceSample.html nr="630" pattern="5-L-L-5-%20---5-5-5%20H-E-5-5-%20-O-H-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-5-%20---5-5-5%20H-E-5-5-%20-O-H-5-5;bricks" %}
+{% include tesselaceSample.html nr="631" pattern="5-L-E-5-%20-E-5-5-L%205-O-5-L-%20-L-H-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-E-5-%20-E-5-5-L%205-O-5-L-%20-L-H-5-5;bricks" %}
+{% include tesselaceSample.html nr="632" pattern="5-L-L-5-%20-L-L-5-5%20H-5-5-O-%20-5-E-E-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-5-%20-L-L-5-5%20H-5-5-O-%20-5-E-E-5;bricks" %}
+{% include tesselaceSample.html nr="633" pattern="5-L-L-5-%20---5-5-5%20O-E-5-5-%20-5-H-H-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-5-%20---5-5-5%20O-E-5-5-%20-5-H-H-5;bricks" %}
+{% include tesselaceSample.html nr="635" pattern="5-L-5-E-%20-E-5-5-H%20O-5-L-5-%20-5-L-5-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-E-5-5-H%20O-5-L-5-%20-5-L-5-L;bricks" %}
+{% include tesselaceSample.html nr="636" pattern="5-O-E-5-%20-E-5-5-L%205-O-H-5-%20-5-5-5--&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-E-5-%20-E-5-5-L%205-O-H-5-%20-5-5-5--;bricks" %}
+{% include tesselaceSample.html nr="639" pattern="5-L-5-E-%20-E-5-5-H%20O-H-5-5-%20-5-O-5-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-E-5-5-H%20O-H-5-5-%20-5-O-5-L;bricks" %}
+{% include tesselaceSample.html nr="640" pattern="5-L-5-E-%20-E-5-5-O%205-5-L-E-%20-5-L-5-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-E-5-5-O%205-5-L-E-%20-5-L-5-O;bricks" %}
+{% include tesselaceSample.html nr="641" pattern="5-L-5-E-%20-E-5-5-O%205-5-K-5-%20-5-L-5-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-E-5-5-O%205-5-K-5-%20-5-L-5-L;bricks" %}
+{% include tesselaceSample.html nr="642" pattern="5-L-5-E-%20-E-5-5-O%205-H-5-E-%20-5-O-5-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-E-5-5-O%205-H-5-E-%20-5-O-5-O;bricks" %}
+{% include tesselaceSample.html nr="643" pattern="5-L-5-E-%20-E-5-5-O%205-H-H-5-%20-5-O-5-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-E-5-5-O%205-H-H-5-%20-5-O-5-L;bricks" %}
+{% include tesselaceSample.html nr="644" pattern="5-L-5-E-%20-L-5-5-O%20E-5-5-E-%20-5-L-5-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-L-5-5-O%20E-5-5-E-%20-5-L-5-O;bricks" %}
+{% include tesselaceSample.html nr="645" pattern="5-L-5-E-%20-L-5-5-O%20E-5-H-5-%20-5-L-5-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-L-5-5-O%20E-5-H-5-%20-5-L-5-L;bricks" %}
+{% include tesselaceSample.html nr="646" pattern="5-L-O-K-%20-E-E-E-H%20L-L-K-5-%20-5-L-O-K&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-K-%20-E-E-E-H%20L-L-K-5-%20-5-L-O-K;bricks" %}
+{% include tesselaceSample.html nr="647" pattern="5-L-5-L-%20-E-5-E-5%20L-5-L-5-%20-5-L-5-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-L-%20-E-5-E-5%20L-5-L-5-%20-5-L-5-L;bricks" %}
+{% include tesselaceSample.html nr="648" pattern="5-L-5-L-%20-E-5-E-5%205-5-L-H-%20-5-L-5-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-L-%20-E-5-E-5%205-5-L-H-%20-5-L-5-O;bricks" %}
+{% include tesselaceSample.html nr="649" pattern="5-L-5-L-%20-E-5-E-5%205-H-5-H-%20-5-O-5-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-L-%20-E-5-E-5%205-H-5-H-%20-5-O-5-O;bricks" %}
+{% include tesselaceSample.html nr="650" pattern="5-L-5-E-%20-E-5-5-O%205-5-L-L-%20-5-K-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-5-E-%20-E-5-5-O%205-5-L-L-%20-5-K-5-5;bricks" %}
+{% include tesselaceSample.html nr="651" pattern="5-O-5-E-%20-E-5-5-H%205-L-L-5-%20-L-L-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-5-E-%20-E-5-5-H%205-L-L-5-%20-L-L-5-5;bricks" %}
+{% include tesselaceSample.html nr="652" pattern="5-O-5-E-%20-E-5-5-H%205---5-5-%20-O-L-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-5-E-%20-E-5-5-H%205---5-5-%20-O-L-5-5;bricks" %}
+{% include tesselaceSample.html nr="653" pattern="5-O-5-E-%20-E-5-5-H%20H-H-5-5-%20-O-O-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-5-E-%20-E-5-5-H%20H-H-5-5-%20-O-O-5-5;bricks" %}
+{% include tesselaceSample.html nr="654" pattern="5-O-5-E-%20-E-5-5-O%205-5-L-E-%20-L-L-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-5-E-%20-E-5-5-O%205-5-L-E-%20-L-L-5-5;bricks" %}
+{% include tesselaceSample.html nr="655" pattern="5-O-5-E-%20-E-5-5-H%20O-5-L-5-%20-5-L-H-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-5-E-%20-E-5-5-H%20O-5-L-5-%20-5-L-H-5;bricks" %}
+{% include tesselaceSample.html nr="656" pattern="5-O-5-E-%20-E-5-5-H%20O-H-5-5-%20-5-O-H-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-5-E-%20-E-5-5-H%20O-H-5-5-%20-5-O-H-5;bricks" %}
+{% include tesselaceSample.html nr="657" pattern="5-L-O-K-%20-E-E-E-H%20L-L---5-%20-5-O-L-K&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-K-%20-E-E-E-H%20L-L---5-%20-5-O-L-K;bricks" %}
+{% include tesselaceSample.html nr="658" pattern="5-O-5-E-%20-E-5-5-O%205-5-L-L-%20-5-L-E-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-5-E-%20-E-5-5-O%205-5-L-L-%20-5-L-E-5;bricks" %}
+{% include tesselaceSample.html nr="659" pattern="5-O-5-E-%20-E-5-5-O%205-5---5-%20-5-O-E-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-5-E-%20-E-5-5-O%205-5---5-%20-5-O-E-5;bricks" %}
+{% include tesselaceSample.html nr="660" pattern="5-L-K-H-%20-L-L-O-O%20E-E-E-E-%20-L-L-L-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-H-%20-L-L-O-O%20E-E-E-E-%20-L-L-L-L;bricks" %}
+{% include tesselaceSample.html nr="661" pattern="5-L---H-%20-L-O-L-O%20E-E-E-E-%20-L-L-L-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-%20-L-O-L-O%20E-E-E-E-%20-L-L-L-L;bricks" %}
+{% include tesselaceSample.html nr="662" pattern="5-L-O-5-%20-E-E-5-5%205-5-L-E-%20-5-L-5-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-5-%20-E-E-5-5%205-5-L-E-%20-5-L-5-O;bricks" %}
+{% include tesselaceSample.html nr="663" pattern="5-L-O-5-%20-E-E-5-5%205-H-5-E-%20-5-O-5-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-5-%20-E-E-5-5%205-H-5-E-%20-5-O-5-O;bricks" %}
+{% include tesselaceSample.html nr="664" pattern="5-L-O-5-%20-L-E-5-5%20E-5-5-E-%20-5-L-5-O&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-5-%20-L-E-5-5%20E-5-5-E-%20-5-L-5-O;bricks" %}
+{% include tesselaceSample.html nr="665" pattern="5-L-O-5-%20-L-E-5-5%20E-5-H-5-%20-5-L-5-L&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-5-%20-L-E-5-5%20E-5-H-5-%20-5-L-5-L;bricks" %}
+{% include tesselaceSample.html nr="666" pattern="5-O-O-5-%20-E-E-5-5%205-5-L-E-%20-L-L-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-O-5-%20-E-E-5-5%205-5-L-E-%20-L-L-5-5;bricks" %}
+{% include tesselaceSample.html nr="667" pattern="5-O-O-5-%20-E-E-5-5%205-H-5-E-%20-L-O-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-O-5-%20-E-E-5-5%205-H-5-E-%20-L-O-5-5;bricks" %}
+{% include tesselaceSample.html nr="668" pattern="5-L-O-K-%20-E-E-E-H%205-K-5---%20-5-O-O-K&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-K-%20-E-E-E-H%205-K-5---%20-5-O-O-K;bricks" %}
+{% include tesselaceSample.html nr="669" pattern="5-O-O-5-%20-E-E-5-5%205-5---5-%20-5-O-E-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-O-5-%20-E-E-5-5%205-5---5-%20-5-O-E-5;bricks" %}
+{% include tesselaceSample.html nr="670" pattern="5-O-O-5-%20-L-E-5-5%20E-5-5-L-%20-5-L-E-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-O-5-%20-L-E-5-5%20E-5-5-L-%20-5-L-E-5;bricks" %}
+{% include tesselaceSample.html nr="671" pattern="5-O-O-5-%20-L-E-5-5%20E-5-H-5-%20-5-L-H-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-O-5-%20-L-E-5-5%20E-5-H-5-%20-5-L-H-5;bricks" %}
+{% include tesselaceSample.html nr="672" pattern="5-O-O-5-%20---5-5-5%20H-E-5-5-%20-5-L-E-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-O-O-5-%20---5-5-5%20H-E-5-5-%20-5-L-E-5;bricks" %}
+{% include tesselaceSample.html nr="679" pattern="5-L-O-K-%20-E-E-E-H%20L-K-H-5-%20-5-O-O-K&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-O-K-%20-E-E-E-H%20L-K-H-5-%20-5-O-O-K;bricks" %}
+{% include tesselaceSample.html nr="682" pattern="5-L-L-K-%20-L-L-L-O%20L-L-L-L-%20-E-E-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20L-L-L-L-%20-E-E-E-E;bricks" %}
+{% include tesselaceSample.html nr="683" pattern="5-L-L-K-%20-L-L-L-O%205-L-L-K-%20-E-E-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%205-L-L-K-%20-E-E-E-H;bricks" %}
+{% include tesselaceSample.html nr="684" pattern="5-L-L-K-%20-L-L-L-O%205-L-L---%20-E-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%205-L-L---%20-E-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="687" pattern="5-L-L-K-%20-L-L-L-O%205-L-K-H-%20-E-E-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%205-L-K-H-%20-E-E-H-H;bricks" %}
+{% include tesselaceSample.html nr="688" pattern="5-L-L-K-%20-L-L-L-O%205-L---H-%20-E-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%205-L---H-%20-E-H-E-H;bricks" %}
+{% include tesselaceSample.html nr="689" pattern="5-L-L-K-%20-L-L-L-O%20L-K-5-L-%20-E-H-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20L-K-5-L-%20-E-H-E-E;bricks" %}
+{% include tesselaceSample.html nr="690" pattern="5-L-K-E-%20-E-E-5-K%20O-O-O-L-%20-5-K-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-E-%20-E-E-5-K%20O-O-O-L-%20-5-K-H-H;bricks" %}
+{% include tesselaceSample.html nr="691" pattern="5-L-L-K-%20-L-L-L-O%20L---5-L-%20-H-E-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20L---5-L-%20-H-E-E-E;bricks" %}
+{% include tesselaceSample.html nr="692" pattern="5-L-L-K-%20-L-L-L-O%205-K-5-K-%20-E-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%205-K-5-K-%20-E-H-E-H;bricks" %}
+{% include tesselaceSample.html nr="693" pattern="5-L-L-K-%20-L-L-L-O%205-K-5---%20-E-H-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%205-K-5---%20-E-H-H-E;bricks" %}
+{% include tesselaceSample.html nr="694" pattern="5-L-L-K-%20-L-L-L-O%205---5-K-%20-H-E-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%205---5-K-%20-H-E-E-H;bricks" %}
+{% include tesselaceSample.html nr="695" pattern="5-L-L-K-%20-L-L-L-O%205---5---%20-H-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%205---5---%20-H-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="696" pattern="5-L-L-K-%20-L-L-L-O%20L-K-H-5-%20-E-H-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20L-K-H-5-%20-E-H-H-E;bricks" %}
+{% include tesselaceSample.html nr="697" pattern="5-L-L-K-%20-L-L-L-O%20L---H-5-%20-H-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20L---H-5-%20-H-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="698" pattern="5-L-L-K-%20-L-L-L-O%205-K-H-H-%20-E-H-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%205-K-H-H-%20-E-H-H-H;bricks" %}
+{% include tesselaceSample.html nr="699" pattern="5-L-L-K-%20-L-L-L-O%205---H-H-%20-H-E-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%205---H-H-%20-H-E-H-H;bricks" %}
+{% include tesselaceSample.html nr="700" pattern="5-L-L-K-%20-L-L-L-O%20K-5-L-L-%20-H-E-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20K-5-L-L-%20-H-E-E-E;bricks" %}
+{% include tesselaceSample.html nr="701" pattern="5-L-K-E-%20-L-L-O-O%20K-5---5-%20-5-K-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-E-%20-L-L-O-O%20K-5---5-%20-5-K-E-E;bricks" %}
+{% include tesselaceSample.html nr="702" pattern="5-L-L-K-%20-L-L-L-O%20--5-L-L-%20-E-E-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20--5-L-L-%20-E-E-E-H;bricks" %}
+{% include tesselaceSample.html nr="703" pattern="5-L-L-K-%20-L-L-L-O%20H-5-L-K-%20-H-E-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20H-5-L-K-%20-H-E-E-H;bricks&patch=5-L-L-K-%20-L-L-L-O%20K-H-5-L-%20-H-H-E-E;bricks" %}
+{% include tesselaceSample.html nr="710" pattern="5-L-L-K-%20-L-L-L-O%20H-5---H-%20-H-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20H-5---H-%20-H-H-E-H;bricks" %}
+{% include tesselaceSample.html nr="704" pattern="5-L-L-K-%20-L-L-L-O%20H-5-L---%20-H-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20H-5-L---%20-H-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="705" pattern="5-L-L-K-%20-L-L-L-O%20K-5-K-5-%20-H-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20K-5-K-5-%20-H-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="706" pattern="5-L-L-K-%20-L-L-L-O%20K-5---5-%20-H-H-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20K-5---5-%20-H-H-E-E;bricks" %}
+{% include tesselaceSample.html nr="707" pattern="5-L-L-K-%20-L-L-L-O%20--5-K-5-%20-E-E-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20--5-K-5-%20-E-E-H-H;bricks" %}
+{% include tesselaceSample.html nr="708" pattern="5-L-L-K-%20-L-L-L-O%20--5---5-%20-E-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20--5---5-%20-E-H-E-H;bricks" %}
+{% include tesselaceSample.html nr="709" pattern="5-L-L-K-%20-L-L-L-O%20H-5-K-H-%20-H-E-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20H-5-K-H-%20-H-E-H-H;bricks" %}
+{% include tesselaceSample.html nr="712" pattern="5-L-K-E-%20-L-L-O-O%20H-5---H-%20-5-K-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-K-E-%20-L-L-O-O%20H-5---H-%20-5-K-E-H;bricks" %}
+{% include tesselaceSample.html nr="713" pattern="5-L-L-K-%20-L-L-L-O%20--H-5-L-%20-E-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20--H-5-L-%20-E-H-E-H;bricks" %}
+{% include tesselaceSample.html nr="714" pattern="5-L-L-K-%20-L-L-L-O%20H-H-5---%20-H-H-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20H-H-5---%20-H-H-H-E;bricks" %}
+{% include tesselaceSample.html nr="715" pattern="5-L-L-K-%20-L-L-L-O%20--H-H-5-%20-E-H-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20--H-H-5-%20-E-H-H-H;bricks" %}
+{% include tesselaceSample.html nr="716" pattern="5-L-L-K-%20-L-L-L-O%20H-H-H-H-%20-H-H-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-L-L-O%20H-H-H-H-%20-H-H-H-H;bricks" %}
+{% include tesselaceSample.html nr="718" pattern="5-L-L-K-%20-L-K-5-O%20L-L-O-L-%20-E-E-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-K-5-O%20L-L-O-L-%20-E-E-E-E;bricks" %}
+{% include tesselaceSample.html nr="719" pattern="5-L-L-K-%20-L-K-5-O%205-L-O-K-%20-E-E-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-K-5-O%205-L-O-K-%20-E-E-E-H;bricks" %}
+{% include tesselaceSample.html nr="720" pattern="5-L-L-K-%20-L-K-5-O%205-L-O---%20-E-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-K-5-O%205-L-O---%20-E-E-H-E;bricks" %}
+{% include tesselaceSample.html nr="721" pattern="5-L-L-K-%20-L-K-5-O%20K-5-O-L-%20-H-E-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-K-5-O%20K-5-O-L-%20-H-E-E-E;bricks" %}
+{% include tesselaceSample.html nr="722" pattern="5-L-L-K-%20-L-K-5-O%20--5-O-L-%20-E-E-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-%20-L-K-5-O%20--5-O-L-%20-E-E-E-H;bricks" %}
+{% include tesselaceSample.html nr="095" pattern="5632%2056-2%206-58%20-534&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=5632%2056-2%206-58%20-534;checker&patch=4632%2056-2%205-5-%208635;checker&patch=4353%205353%205-5-%2086-5;checker&patch=435-%206325%206-25%2086-5;checker" %}
 
 
  
