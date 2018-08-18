@@ -29,7 +29,10 @@ Groups of images
 
 Note that the choice to put a pattern in a group may be arbitrary, duplicating too many in multiple groups would make the page too slow.
 
-_Hint to edit this page_: copy the link location of the image you want to move, start editing, use the browser search to find the link location.
+_Hint to edit this page_: <br>
+The links and image tooltip show image numbers.
+Use these numbers to locate the line to edit.
+Note that a few image numbers may occur twice.
 
 Common Grounds
 --------------
