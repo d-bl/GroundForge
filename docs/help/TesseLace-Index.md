@@ -12,9 +12,10 @@ by Veronika Irvine.
 * The `vari` links in the captions lead to patterns like the TesseLace [slide show].
   In turn these patterns link to the main [GroundForge] page
   where you can choose a pattern of colors to use in the thread diagram
-  and assign the stitches of your choice to id's representing a color coded pair diagram.
+  and assign the stitches of your choice to id's popping up from a color coded pair diagram.
 * The `diagr` links lead directly to a page where you can choose stitches an toggle threads colors
   in an easier way than on the home page.
+  On slow devices like tablets and phones it might take quite a while for the page to appear.
 
 [TesseLace.com]: https://tesselace.com
 [slide show]: https://tesselace.com/tools/inkscape-extension/
