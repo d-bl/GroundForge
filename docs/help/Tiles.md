@@ -31,6 +31,21 @@ new base patterns with these forms.
 You can vary stitches for the base patterns and check how
 contrasting threads would travel through the ground.
 
+Paths size
+----------
+Note that a large patch size make a diagram slower to render.
+On slow devices like tables and phones that might give
+the impression that links to pages with large patch size don't work at all.
+So create links with small patch sizes, visitors can easily increment.
+
+Not all diagrams work with all values for the patch size.
+Try other values if the thread diagram freezes at its initial state. 
+
+Generating the diagrams at each increment or decrement would slow down
+the process of changing values if not block the the computer altogether.
+To prevent confusion about the state of the diagrams, they are cleared.
+when you are done wih the planned changes you can use the link button
+to show diagrams again. 
 
 Choose stitches
 ---------------

@@ -40,8 +40,8 @@ Page            | Thread diagrams | Pair diagrams
 ----------------|-----------------|-----------------------
 index           | any color       | color coded / rounded
 tiles           | black/red       | color coded / squared + rounded
-sheet           | -               | black&white / squared
-tesselace-index | -               | black&white / rounded
+sheet           | -               | black &amp; white / squared
+tesselace-index | -               | black &amp; white / rounded
 
 Squared : stitches are placed on square grid positions<br>
 Rounded : an animated proces makes the holes of a squared pattern as round as possible<br>
