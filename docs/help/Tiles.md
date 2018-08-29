@@ -99,6 +99,6 @@ You can download the diagrams to edit them with an [SVG editor] such as:
 Advanced usages
 ---------------
 The sections below the diagram are for advanced users.
-As the page is still under construction (for example no automated footsides yet),
+As the page is still under construction and thus subject to change,
 the demo section is the only help yet to fill in the repeats and pattern sections
 for new patterns. 
