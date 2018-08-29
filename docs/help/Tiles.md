@@ -8,7 +8,7 @@ It has only two colors in the thread diagram,
 but you don't need to [calculate] thread counts
 to give the desired ones a color.
 
-[tiles]: /GroundForge/tiles
+[tiles]: /GroundForge/tiles.html?tile=5831,-4-7&repeatWidth=9&repeatHeight=9&shiftColsSE=4&shiftRowsSE=2&shiftColsSW=0&shiftRowsSW=2&
 [home]: /GroundForge
 [assigning]: /GroundForge/help/Choose-Stitches#assign-stitches
 [calculate]: /GroundForge/help/Thread-Colors
