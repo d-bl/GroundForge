@@ -3,25 +3,24 @@ Tiles
 
 The [tiles] page is a variant of the [home] page.
 On the tiles page you can't use thread diagrams as pair diagrams,
-but you don't have to [assign] stitches to id's.
+but you don't need to wrap your brains around [assigning] stitches to id's.
 It has only two colors in the thread diagram,
 but you don't need to [calculate] thread counts
 to give the desired ones a color.
 
 [tiles]: /GroundForge/tiles
 [home]: /GroundForge
-[assign]: /GroundForge/help/Choose-Stitches#assign-stitches
+[assigning]: /GroundForge/help/Choose-Stitches#assign-stitches
 [calculate]: /GroundForge/help/Thread-Colors
 
 
 Catalogues
 ----------
-The tooltip for the catalogues lists most of the individual pages.
-Those that link back to the tiles pages are listed as links.
-Other catalogue pages link to the diagrams on the main page.
-Follow the main catalogues links for short introductions.
+An overview of most catalogue pages is given, but when writing writing this, only some are linked:
+only those that link back to the tiles page.
+The main catalogues link leads to short introductions and links to all catalogue pages.
 _For as long as the page is still under construction,
-you may choose a link from the image captions of the demo section
+you may also choose a link from the image captions of the demo section
 on the tiles page itself._
 
 The links from a catalogue page fill out the forms below the diagrams.
@@ -31,7 +30,25 @@ new base patterns with these forms.
 You can vary stitches for the base patterns and check how
 contrasting threads would travel through the ground.
 
-Paths size
+Invisible diagrams
+------------------
+Under circumstances only one of the three diagrams is shown.
+Use the link button (&infin;) to show all diagrams.
+
+Reason:
+Updating the other diagrams could use too much resources and block your system.
+Outdated diagrams are cleared to avoid confusion about the state of the page.
+
+Benefits:
+Using the link button allows you to step back to that set of diagrams
+with the back button of your browser.
+The link button also allows you to create links to a diagram to share
+on your web-site, blog or where ever you like.
+The long links may be a problem in emails. You may consider to tuse a
+[shortening service](https://en.wikipedia.org/wiki/URL_shortening)
+for those occasions.
+
+Patch size
 ----------
 Note that a large patch size make a diagram slower to render.
 On slow devices like tables and phones that might give
