@@ -5,7 +5,7 @@ import org.scalatest.{FlatSpec, Matchers}
 import scala.util.Success
 
 class GallerySpec extends FlatSpec with Matchers {
-  "each gallery pattern" should "succeed (one fails because of bug #93)" in pendingUntilFixed {
+  "each gallery pattern" should "succeed (one fails because of bug #93)" ignore {
     // since tesselace links to the tiles page this makes no sense
     val result = Matrices.values.filter { l =>
       val f = l.split(";")
