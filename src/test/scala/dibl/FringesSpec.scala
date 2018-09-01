@@ -19,7 +19,7 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class FringesSpec extends FlatSpec with Matchers {
 
-  "links" should "add up" in {
+  "links" should "add up" ignore {
 
     for (specs <- Matrices.values.filter(_ != "B-B- -B-B C-C- -C-C;bricks")) {
       val absolute = Matrices.toAbsolute(specs)
