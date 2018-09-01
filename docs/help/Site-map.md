@@ -6,10 +6,12 @@ title: Site Map
 Site Map
 ========
 
-The  diagram gives an overview of the available sets of pages
-and how to navigate between them.
-The page names are linked to examples.
-A legend and some notes follow the overview.
+The arrows in the diagram represent links between pages.
+The page names (or address fragments) link to examples.
+A legend and more notes follow the overview.
+
+Note that many of the help pages listed in the side bar are about the `index` page.
+The new `tiles` page links to its own help page, which is not yet in the side bar.
 
 {% include site-map.svg %}
 
