@@ -36,7 +36,7 @@ matrix:
     my_validation:
     script:
       - jekyll build --source docs
-      - htmlproofer _site --url-swap "\/GroundForge\/:/" --url-ignore "#" --disable-external --empty_alt_ignore --assume_extension
+      - # htmlproofer _site --url-swap "\/GroundForge\/:/" --url-ignore "#" --disable-external --empty_alt_ignore --assume_extension
       - sed -i -e 's!href="/GroundForge/help/*\([#"]\)!href="index.html\1!g' _site/help/*.html
       - sed -i -e 's!/GroundForge/help/!!g'                                  _site/help/*.html
       - sed -i -e 's!/GroundForge/images/!../images/!g'                      _site/help/*.html
@@ -56,7 +56,8 @@ matrix:
       - sed -i -e 's!./.html!index.html/!g'                                  _site/*.html
       - grep 'GroundForge/'    _site/*.html _site/*.html _site/help/*.html _site/*/*.js || test $? -eq 1
       - grep 'io/GroundForge/' _site/*.html _site/*.html _site/help/*.html _site/*/*.js || test $? -eq 1
-      - htmlproofer ./_site --disable-external --empty_alt_ignore  --url-ignore "#"
+      - # htmlproofer --help
+      - # htmlproofer ./_site --disable-external --allow-hash-href --empty_alt_ignore --assume_extension
     before_deploy:
       - cd _site && zip -r -q GroundForge-pages.zip *
     deploy:
