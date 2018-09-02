@@ -28,17 +28,7 @@ The position of a field in the form reflects the position of a stitch
 within one brick or checkerboard field of the pattern.
 
 **Stitches to copy-paste:**
-{% include gallery.html src="help/stitches/crclct.png" caption="crclct<br>&nbsp;" %}
-{% include gallery.html src="help/stitches/clcrclc.png" caption="clcrclc<br>crclcrc" %}
-{% include gallery.html src="help/stitches/ctctc.png" caption="ctctc<br>&nbsp;" %}
-{% include gallery.html src="help/stitches/ctclctc.png" caption="ctclctc<br>ctcrctc" %}
-{% include gallery.html src="help/stitches/ctclcrctc.png" caption="ctclcrctc<br>ctcrclctc" %}
-{% include gallery.html src="help/stitches/ctcttctc.png" caption="ctcttctc<br>&nbsp;" %}
-{% include gallery.html src="help/stitches/tctctllctctr.png" caption="tctctllctctr<br>tctctrrctctl" %}
-
-Only less trivial stitches are listed, drop or add twists at will.
-A second string is the mirrored version of the stitch.
-The last one is an edge stitch with the pin left out.
+{% include stitches.html %}
 
 
 Stitch definitions

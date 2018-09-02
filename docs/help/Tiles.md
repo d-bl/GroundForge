@@ -68,9 +68,11 @@ Choose stitches
 ---------------
 The faint nodes in the prototype diagram are repeats of the bright ones.
 Click on a bright nodes and a yellow form field should emerge with a code
-for a stitch, for example `ctc` for a cloth stitch: cross-twist-cross.
+for a stitch.
 Type as many `c`'s and `t`'s as you need for the stitch of your choice,
 or use `l`'s and `r`'s for a left twist or right twist.
+
+{% include stitches.html %}
 
 Microsofts Edge browser won't show the yellow form field when clicking a node.
 Use the tab key or shift-tab to browse through all fields and links on the page.
