@@ -16,19 +16,18 @@ to give the desired ones a color.
 
 Catalogues
 ----------
-An overview of most catalogue pages is given, but when writing writing this, only some are linked:
-only those that link back to the tiles page.
-The main catalogues link leads to short introductions and links to all catalogue pages.
-_For as long as the page is still under construction,
-you may also choose a link from the image captions of the demo section
-on the tiles page itself._
-
 The links from a catalogue page fill out the forms below the diagrams.
 These forms define a base pattern, advanced users may design
 new base patterns with these forms.
 
 You can vary stitches for the base patterns and check how
 contrasting threads would travel through the ground.
+
+There are more catalogue pages than linked on the tiles page,
+but the other pages link to the [home] page.
+_For as long as the page is still under construction,
+you may also choose a link from the image captions of the demo section
+on the tiles page itself._
 
 Invisible diagrams
 ------------------
