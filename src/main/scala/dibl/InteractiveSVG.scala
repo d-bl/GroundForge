@@ -78,7 +78,7 @@ object InteractiveSVG {
   private def textInput(isActive: Boolean, r: Int, c: Int, config: Config) = {
     val item = config.itemMatrix(r)(c)
     if (isActive)
-      s"""<foreignObject x='${ 19 + c * 10 }' y='${ 970 + r * 10 }' width='14' height='8'>
+      s"""<foreignObject x='${ 19 + c * 10 }' y='${ 970 + r * 10 }' width='4em' height='8'>
          |  <input name='${ item.id }'
          |    id='${ item.id }'
          |    name='${ item.id }'
