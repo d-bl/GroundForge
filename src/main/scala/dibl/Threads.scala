@@ -15,7 +15,7 @@
 */
 package dibl
 
-import dibl.LinkProps.{crossedLinks, threadLink, transparentLinks, twistedLinks}
+import dibl.LinkProps.{crossedLinks, threadLink, transparentLinks, twistedLinks, pinLinks}
 import dibl.NodeProps.{bobbinNode, crossNode, pinNode, twistNode}
 
 import scala.annotation.tailrec
@@ -30,7 +30,7 @@ case class Threads private
   /** @return (self', new threadNode, new threadLinks )
     */
   def putPin(newNode: Int): (Threads, NodeProps, Seq[LinkProps]) =
-    (this, pinNode, transparentLinks(Seq(n1, newNode, n4)))
+    (this, pinNode, pinLinks(Seq(n1, newNode, n4)))
 
   /** moves the second thread over the third
     *

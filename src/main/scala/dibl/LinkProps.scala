@@ -38,6 +38,7 @@ sealed abstract class LinkProps extends Props {
     jsItem("source") = source
     jsItem("target") = target
     jsItem("weak") = weak
+    jsItem("withPin") = withPin
     jsItem("start") = start
     jsItem("end") = end
     jsItem("mid") = nrOfTwists
@@ -54,6 +55,7 @@ sealed abstract class LinkProps extends Props {
 
   val weak: Boolean = false
   val border: Boolean = false
+  val withPin: Boolean = false
   val cssClass: String = props.get("thread").map(nr => s"link thread$nr").getOrElse("link")
 
   /**
@@ -87,7 +89,8 @@ object LinkProps {
 
   private case class PlainLink(override val props: Map[String, Any],
                                override val weak: Boolean = false,
-                               override val border: Boolean = false
+                               override val border: Boolean = false,
+                               override val withPin: Boolean = false
                               ) extends LinkProps
 
   private case class WhiteEnd(override val props: Map[String, Any]) extends LinkProps {
@@ -248,5 +251,16 @@ object LinkProps {
           "source" -> source,
           "target" -> target
         ), weak = true, border = true
+      )}
+
+  def pinLinks(nodes: Seq[Int]): Seq[LinkProps] =
+    if (2 > nodes.length) Seq.empty
+    else nodes
+      .zip(nodes.tail)
+      .map { case (source, target) => PlainLink(
+        Map(
+          "source" -> source,
+          "target" -> target
+        ), weak = true, border = true, withPin = true
       )}
 }

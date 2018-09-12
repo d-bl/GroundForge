@@ -106,8 +106,8 @@ function animateDiagram(container) {
       //terminateAnimation()
   }
 
-  // duplication of src/main/resources/force.js.applyForce(...)
-  function strength(link){ return link.weak ? 1 : 50 }
+  // read 'weak' as 'invisible'
+  function strength(link){ return link.weak ? link.withPin ? 30 : 2 : 50 }
   d3.forceSimulation(nodeDefs)
     .force("charge", d3.forceManyBody().strength(-1000))
     .force("link", d3.forceLink(linkDefs).strength(strength).distance(12).iterations(30))
