@@ -72,6 +72,27 @@ class Config(urlQuery: String) {
     Array.fill[Item](totalCols)(Item(""))
   )
 
+  val pairsOut: Array[Array[Int]] = {
+    val rows: Int = itemMatrix.length
+    val cols: Int = itemMatrix.head.length
+    val pairsOut = Array.fill[Array[Int]](rows)(
+      Array.fill[Int](cols)(0)
+    )
+    for {r <- 0 until rows
+         c <- 0 until cols
+    } {
+      Matrix.toRelativeSources(itemMatrix(r)(c).vectorCode.toUpper)
+        .foreach { case (relativeSourceRow, relativeSourceCol) =>
+          val row: Int = r + relativeSourceRow
+          val col: Int = c + relativeSourceCol
+          if (row >= 0 && col >= 0 && col < cols && row < rows) {
+            pairsOut(row)(col) += 1
+          }
+        }
+    }
+    pairsOut
+  }
+
   // repeat foot-side / head-side
 
   if (leftMarginWidth > 0) replaceItems(leftMatrix, 0)

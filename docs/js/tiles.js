@@ -73,7 +73,7 @@ function showDiagrams() {
   var threadContainer = d3.select("#threadDiagram")
   var threadContainerNode = threadContainer.node()
   var threadDiagram = threadContainerNode.data = dibl.ThreadDiagram().create(pairDiagram)
-  threadContainer.html(dibl.D3jsSVG().render(threadDiagram, "2px", markers, 744, 1052).replace("<g>","<g transform='scale(0.5,0.5)'>"))
+  threadContainer.html(dibl.D3jsSVG().render(threadDiagram, "2px", markers, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
   if (threadDiagram.jsNodes().length == 1 || threadContainerNode.innerHTML.indexOf("Need a new pair from") >= 0)  return
 
   animateDiagram(threadContainer)
@@ -101,13 +101,13 @@ function animateDiagram(container) {
   var tickCounter = 0
   function onTick() {
       if ( isMobile && (tickCounter++ % 5) != 0) return // skip rendering
+      //if (tickCounter++ >=0) terminateAnimation()
       links.attr("d", drawPath)
       nodes.attr("transform", moveNode)
-      //terminateAnimation()
   }
 
   // read 'weak' as 'invisible'
-  function strength(link){ return link.weak ? link.withPin ? 30 : 2 : 50 }
+  function strength(link){ return link.weak ? link.withPin ? 40 : 10 : 50 }
   d3.forceSimulation(nodeDefs)
     .force("charge", d3.forceManyBody().strength(-1000))
     .force("link", d3.forceLink(linkDefs).strength(strength).distance(12).iterations(30))

@@ -16,7 +16,7 @@
 package dibl
 
 import dibl.LinkProps.transparentLinks
-import dibl.NodeProps.{errorNode, node, threadStartNode}
+import dibl.NodeProps.{ errorNode, node, threadStartNode }
 
 import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
@@ -98,9 +98,12 @@ object ThreadDiagram {
     else {
       val startPins = pairNodeNrToPairNr(pairDiagram.nodes)
       val startPairNodeNrs = startPins.keys.toArray
-      val threadStartNodes = startPins.flatMap { case (_, t) =>
-        Seq(threadStartNode(t * 2 + 1), threadStartNode(t * 2 + 2))
-      }.toArray
+      val threadStartNodes = startPins
+        .flatMap { case (s, t) =>
+          val y = pairDiagram.nodes(s).y * 2
+          val x = pairDiagram.nodes(s).x * 2
+          Seq(threadStartNode(t * 2 + 1, x, y), threadStartNode(t * 2 + 2, x, y))
+        }.toArray
       val nodesByThreadNr = threadStartNodes.indices.sortBy(threadStartNodes(_).startOf)
       val (availablePairs, nodes, links) = createRows(
         nextPossibleStitches(startPairNodeNrs),
@@ -111,6 +114,11 @@ object ThreadDiagram {
       Diagram(
         allNodes,
         markStartLinks(allLinks, allNodes) ++ transparentLinks(nodesByThreadNr)
+         .filter{ l=>
+           // work arround: don't connect starting pins
+           // from one incomplete foot side with the other
+           Math.abs(threadStartNodes(l.source).x - threadStartNodes(l.target).x) <= 60
+         }
       )
     }
   }

@@ -25,27 +25,6 @@ object InteractiveSVG {
   def create(config: Config): String = {
     val itemMatrix = config.itemMatrix
 
-    val pairsOut: Array[Array[Int]] = {
-      val rows: Int = itemMatrix.length
-      val cols: Int = itemMatrix.head.length
-      val pairsOut = Array.fill[Array[Int]](rows)(
-        Array.fill[Int](cols)(0)
-      )
-      for {r <- 0 until rows
-           c <- 0 until cols
-      } {
-        Matrix.toRelativeSources(itemMatrix(r)(c).vectorCode.toUpper)
-          .foreach { case (relativeSourceRow, relativeSourceCol) =>
-            val row: Int = r + relativeSourceRow
-            val col: Int = c + relativeSourceCol
-            if (row >= 0 && col >= 0 && col < cols && row < rows) {
-              pairsOut(row)(col) += 1
-            }
-          }
-      }
-      pairsOut
-    }
-
     (for {
       r <- itemMatrix.indices
       c <- itemMatrix.head.indices
@@ -54,7 +33,7 @@ object InteractiveSVG {
       val stitch = item.stitch
       val vectorCode = item.vectorCode.toString.toUpperCase
       val translate = s"transform='translate(${ c * 10 + 38 },${ r * 10 + 1 })'"
-      val nrOfPairsOut = pairsOut(r)(c)
+      val nrOfPairsOut = config.pairsOut(r)(c)
       val opacity = getOpacity(vectorCode, item.isOpaque)
       val isActiveNode = opacity == "1" && vectorCode != "-"
       s"""${ warning(vectorCode, translate, nrOfPairsOut) }

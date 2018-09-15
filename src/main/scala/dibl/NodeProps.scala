@@ -103,7 +103,7 @@ object NodeProps {
 
   def bobbinNode(thread: Int, x: Double, y: Double) = NodeProps(Seq("bobbin" -> "true", "x" -> x, "y" -> y, "thread" -> thread))
 
-  def threadStartNode(n: Int) = NodeProps(Seq("title" -> s"thread $n", "startOf" -> s"thread$n"))
+  def threadStartNode(n: Int, x: Double = 0, y: Double = 0) = NodeProps(Seq("title" -> s"thread $n", "startOf" -> s"thread$n", "x" -> x, "y" -> y))
 
   def node(title: String, x: Double, y: Double) = NodeProps(Seq("title" -> title, "x" -> x, "y" -> y))
 
