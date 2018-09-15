@@ -15,6 +15,8 @@
 */
 package dibl
 
+import java.lang.Math.abs
+
 import dibl.LinkProps.transparentLinks
 import dibl.NodeProps.{ errorNode, node, threadStartNode }
 
@@ -117,7 +119,9 @@ object ThreadDiagram {
          .filter{ l=>
            // work arround: don't connect starting pins
            // from one incomplete foot side with the other
-           Math.abs(threadStartNodes(l.source).x - threadStartNodes(l.target).x) <= 60
+           val source = threadStartNodes(l.source)
+           val target = threadStartNodes(l.target)
+           abs(source.x - target.x) <= 60 && abs(source.y - target.y) <= 60
          }
       )
     }
