@@ -128,7 +128,7 @@ diagram.showGraph = function(args) {
                             .style('marker-mid', markMid)
                         if (args.onAnimationEnd) args.onAnimationEnd()
                     }
-    function strength(link){ return link.weak ? 5 : 50 }
+    function strength(link){ return link.weak ? link.withPin ? 40 : 0.5 : 50 }
     var sim = d3.forceSimulation(args.nodes)
         .force("charge", d3.forceManyBody().strength(-1000))
         .force("link", d3.forceLink(args.links).strength(strength).distance(12).iterations(30))
