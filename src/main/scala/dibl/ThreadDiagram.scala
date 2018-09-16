@@ -116,9 +116,9 @@ object ThreadDiagram {
       Diagram(
         allNodes,
         markStartLinks(allLinks, allNodes) ++ transparentLinks(nodesByThreadNr)
-         .filter{ l=>
-           // work arround: don't connect starting pins
-           // from one incomplete foot side with the other
+         .filter{ l =>
+           // workaround: don't connect bobbins over too long distances
+           // it might mean meddling with fringes that should have been foot sides
            val source = threadStartNodes(l.source)
            val target = threadStartNodes(l.target)
            abs(source.x - target.x) <= 60 && abs(source.y - target.y) <= 60

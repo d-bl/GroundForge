@@ -15,8 +15,10 @@
 */
 package dibl
 
-import dibl.LinkProps.{crossedLinks, threadLink, transparentLinks, twistedLinks, pinLinks}
-import dibl.NodeProps.{bobbinNode, crossNode, pinNode, twistNode}
+import java.lang.Math.abs
+
+import dibl.LinkProps.{ crossedLinks, pinLinks, threadLink, transparentLinks, twistedLinks }
+import dibl.NodeProps.{ bobbinNode, crossNode, pinNode, twistNode }
 
 import scala.annotation.tailrec
 
@@ -95,7 +97,15 @@ object Threads {
             ): (Seq[NodeProps], Seq[LinkProps]) = {
       if (available.isEmpty) {
         val sortedBobbins = connect.sortBy(i => nodes(i).x)
-        (nodes, links ++ transparentLinks(sortedBobbins))
+        (nodes, links ++ transparentLinks(sortedBobbins)
+          .filter{ l =>
+            // workaround: don't connect bobbins over too long distances
+            // it might mean meddling with fringes that should have been foot sides
+            val source = nodes(l.source)
+            val target = nodes(l.target)
+            abs(source.x - target.x) <= 60 && abs(source.y - target.y) <= 60
+          }
+        )
       } else {
         val h = available.head
         val threadNodes = if (h.hasSinglePair) Seq(h.n1, h.n2) else Seq(h.n1, h.n2, h.n3, h.n4)
