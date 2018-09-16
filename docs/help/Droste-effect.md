@@ -52,6 +52,15 @@ draw a plait or something-pin-something like a simple stitch.
         <td><a href="http://gwydir.demon.co.uk/jo/lace/whiting/page150.htm">D16</a></td>
     </tr>
     <tr>
+        <td></td>
+        <td></td>
+        <td><img src="/GroundForge/help/stitches/2x-ct-ctct.png"></td>
+        <td><a href="/GroundForge/?m=88%0A11;bricks;8;6;0;0&s1=ctct b1%3Da2%3Dct&s2=ctct b10%3Db11%3Db11%3Da20%3Da21%3Da22%3Dct&s3=ctct b100%3Db110%3Db110%3Da200%3Da210%3Da220%3Db101%3Db111%3Db111%3Da201%3Da211%3Da221%3Db102%3Db112%3Db112%3Da202%3Da212%3Da222%3Dct"
+        >ct-ctct<br>ctct-ct</a></td>
+        <td>weaving 2x2 checker</td>
+        <td></td>
+    </tr>
+    <tr>
         <td><img src="/GroundForge/help/stitches/ctct-color2a.png"> <img src="stitches/ctct-color2b.png"></td>
         <td><img src="/GroundForge/help/stitches/ctct.png"></td>
         <td><img src="/GroundForge/help/stitches/ctct-color1a.png"> <img src="stitches/ctct-color1b.png"></td>
