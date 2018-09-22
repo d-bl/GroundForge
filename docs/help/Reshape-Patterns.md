@@ -31,16 +31,16 @@ Features and exact procedures may vary between SVG editors. The least elaborate 
 2. If the diagrams are rendered as on the web page, you most likely won't need this step. <br> Provided the isolated dotted repeat is rendered properly, you can reconstruct the rest of the patch by making clones (=/= copies!) of this group of objects.<br> The colored dots are guides to seam the copied repeats together. The following image shows four repeats almost in place. Of course the dots should snap exactly on top of one another. <br>  There may be multiple dots on a single spot, you may want to delete these duplicates in advance. The original repeat must be a group before cloning. <br> ![](images/recover-patch.png)
 3. You are free to rearrange and ungroup the patterns, but don't ungroup individual repeats: it would break the links between clones and originals. <br> Nevertheless the editor should provide some means to manipulate objects within the group, or rather control points of multiple objects in a group. <br> The close up below is made with InkScape. It shows control points of multiple selected objects: a dot and four line ends at the center of the dot. When moving these control points for all dots of the same color together, the diagram should remain valid and the corresponding points in the patch should move along. The grey dots can move individually. <br> ![](images/select-node-close-up.png)
 
-Some tried [SVG editor]s (they might have been improved):
+Some tried [SVG editor]s (they might have been improved, check for a free trial period):
 * Lace8 and Knipling (💰, not on Mac) don't support SVG and fail at step 1.
 * InkScape (free, needs crutches on a Mac) can skip step 2.
   More lace related tutorials on a [blog] by Veronika Irvine.
 * Affinity Designer (💰) doesn't need step 2, step 3 not yet tried.
 * InkPad (free, for iPads) doesn't need step 2, version 1.6 fails at step 3.
-* CorelDraw (💰💰) version x8 requires step 2.
+* CorelDRAW (Home and Student Suite 💰) version x8 requires step 2.
 * Adobe Illustrator  (💰💰, subscription) v2015-3.1 fails at step 3.
 
-Details for InkScape and CorelDraw on [Using-Clones](Reshape-Using-Clones). A more elaborate method, but also more flexible and supported by more editors, is on [Using-Copies](Reshape-Using-Copies).
+Details for InkScape and CorelDRAW on [Using-Clones](Reshape-Using-Clones). A more elaborate method, but also more flexible and supported by more editors, is on [Using-Copies](Reshape-Using-Copies).
 
 [SVG editor]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
 
