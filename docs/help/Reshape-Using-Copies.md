@@ -52,7 +52,7 @@ _At the bottom_: One dot per tile/repeat selected and nudged to another position
 Screenshots with Adobe Illustrator v2015-3.1
 --------------------------------------------
 
-_Left_ Moving the fouth repeat into position
+_Left_ Moving the fourth repeat into position
 
 _Right_ Moving corresponding dots after selecting them "select direct"
 
