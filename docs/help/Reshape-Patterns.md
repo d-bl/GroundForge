@@ -28,7 +28,7 @@ Your own variations in practice
 Features and exact procedures may vary between SVG editors. The least elaborate method in a nutshell:
 
 1. Follow the download link on the page with the [sources][patterns] of the animation. Open the file with the editor of your choice.  
-  More patterns are available through the `vari` links on the [Tesselace-index] and some other catalogues of patterns.
+  More patterns are available through the `vari` links on the [Tesselace-Index] and some other catalogues of patterns.
 2. If the diagrams are rendered as on the web page, you most likely won't need this step.  
   Provided the isolated dotted repeat is rendered properly, you can reconstruct the rest of the patch by making clones (=/= copies!) of this group of objects. The colored dots are guides to seam the copied repeats together. The following image shows four repeats almost in place. Of course the dots should snap exactly on top of one another.  There may be multiple dots on a single spot, you may want to delete these duplicates in advance. The original repeat must be a group before cloning.  
   ![](images/recover-patch.png)
