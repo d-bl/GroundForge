@@ -36,8 +36,8 @@ Some tried [SVG editor]s (they might have been improved, check for a free trial 
 * InkScape (free, needs crutches on a Mac) can skip step 2.
   More lace related tutorials on a [blog] by Veronika Irvine.
 * Affinity Designer (💰) doesn't need step 2, step 3 not yet tried.
-* InkPad (free, for iPads) doesn't need step 2, version 1.6 fails at step 3.
-* CorelDRAW (Home and Student Suite 💰) version x8 requires step 2.
+* InkPad (free, iPad) doesn't need step 2, version 1.6 fails at step 3.
+* CorelDRAW (Home and Student Suite 💰, Windows) version x8 requires step 2.
 * Adobe Illustrator  (💰💰, subscription) v2015-3.1 fails at step 3.
 
 Details for InkScape and CorelDRAW on [Using-Clones](Reshape-Using-Clones). A more elaborate method, but also more flexible and supported by more editors, is on [Using-Copies](Reshape-Using-Copies).
