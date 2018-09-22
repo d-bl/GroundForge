@@ -43,7 +43,8 @@ All tiles (or repeats) in a patch change along with changes made to the slightly
 ### Step by step for [InkScape] v0.91.
 
 * Start with object mode.
-* Right-click the repeat that sits next to the cloned patch to enter the group of objects. You may need this step twice.
+* Double-click the pattern of your choice to enter the group of objects.
+* Double-click the isolated repeat with coloured dots to enter the group of objects.
 * Select all the objects in the group of the repeat.
 * Switch to node mode.
 * Select a dot by dragging a square around it. This way the end of the adjacent lines are also selected and will move along with the dot.
