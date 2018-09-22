@@ -43,7 +43,7 @@ Some tried [SVG editor]s (they might have been improved):
 * CorelDraw (💰💰) version x8 requires step 2.
 * Adobe Illustrator  (💰💰, subscription) v2015-3.1 fails at step 3.
 
-Details for InkScape and CorelDraw on [Reshape-Using-Clones]. A more elaborate method, but also more flexible and supported by more editors, is on [Reshape-Using-Copies].
+Details for InkScape and CorelDraw on [Using-Clones](Reshape-Using-Clones). A more elaborate method, but also more flexible and supported by more editors, is on [Using-Copies](Reshape-Using-Copies).
 
 [SVG editor]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
 
