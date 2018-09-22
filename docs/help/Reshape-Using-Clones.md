@@ -43,12 +43,12 @@ All tiles (or repeats) in a patch change along with changes made to the slightly
 ### Step by step for [InkScape] v0.91.
 
 * Start with object mode.
-* Right-click the tile that sits next to the cloned patch to enter the group of objects.
-* Select all the objects in the group of the tile.
+* Right-click the repeat that sits next to the cloned patch to enter the group of objects. You may need this step twice.
+* Select all the objects in the group of the repeat.
 * Switch to node mode.
 * Select a dot by dragging a square around it. This way the end of the adjacent lines are also selected and will move along with the dot.
 * Less than four adjacent lines on the selected dot? Hold down the shift key when selecting the second or even third dot of the same colour.
-* Drag the dots with the mouse or nudge them with arrow keys. Five time an arrow key in InkScape is a full grid position. One time shift+arrow is two grid positions.
+* Dragging with the mouse is dangurous as you loose your selection easily. Nudge the selection around them with arrow keys. Five time an arrow key in InkScape is a full grid position. One time shift+arrow is two grid positions.
 
 ### [CorelDRAW] X8 preparations.
 
@@ -59,9 +59,9 @@ The patch witch very faint dots should be reconstructed manually from the single
 * rebuild the removed patch:
   * make a clone of the bright repeat
   * duplicate the clone
-  * attach it to the first clone as described for "reshaping using copies"
+  * move next to the first clone and snap it into place
   * duplicate both clones
-  * attach ... and so on
+  * move/snap ... and so on
 * select all the objects in the original repeat one by one with ctrl-shift-click
 * switch to node mode, check you did not miss anything and continue as for InkScape at "switch to node mode"
 
