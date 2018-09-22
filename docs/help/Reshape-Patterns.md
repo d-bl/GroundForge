@@ -38,7 +38,6 @@ Features and exact procedures may vary between SVG editors. The least elaborate 
 Some tried [SVG editor]s (they might have been improved, check for a free trial period):
 * Lace8 and Knipling (💰, not on Mac) don't support SVG and fail at step 1.
 * InkScape (free, needs crutches on a Mac) can skip step 2.
-  More lace related tutorials on a [blog] by Veronika Irvine.
 * Affinity Designer (💰) doesn't need step 2, step 3 not yet tried.
 * InkPad (free, iPad) doesn't need step 2, version 1.6 fails at step 3.
 * CorelDRAW (Home and Student Suite 💰, Windows) version x8 requires step 2.
@@ -55,5 +54,7 @@ Finish up
 ---------
 
 When done with adjusting the pattern you might do all kind of other things with it. Such as scaling to match your thread width, fill a shape in your design, [bend] it to make a fan, add columns or rows to the patch or whatever. The editor of your choice will have its own tutorials and manuals for these tasks. 
+
+Veronika Irvine wrote some lace related tutorials for InkScape on a [blog].
 
 [bend]: http://tavmjong.free.fr/INKSCAPE/MANUAL/html/Paths-LivePathEffects-BendTool.html
