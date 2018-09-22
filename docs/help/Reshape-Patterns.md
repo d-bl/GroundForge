@@ -25,9 +25,7 @@ In some cases it may be relatively easy to see how one pattern is reshaped in an
 Your own variations in practice
 -------------------------------
 
-Features and exact procedures may vary between [SVG editor]s. The least elaborate method in a nutshell:
-
-[SVG editor]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
+Features and exact procedures may vary between SVG editors. The least elaborate method in a nutshell:
 
 1) Follow the download link on the page with the [sources][patterns] of the animation. Open the file with the editor of your choice.  
   More patterns are available through the `vari` links on the [Tesselace-index] and some other catalogues of patterns.
@@ -36,7 +34,7 @@ Features and exact procedures may vary between [SVG editor]s. The least elaborat
   Provided the isolated dotted repeat is rendered properly, you can reconstruct the rest of the patch by making clones (=/= copies!) of this group of objects.<br> The colored dots are guides to seam the copied repeats together. The following image shows four repeats almost in place. Of course the dots should snap exactly on top of one another. <br>  There may be multiple dots on a single spot, you may want to delete these duplicates in advance. The original repeat must be a group before cloning. <br> ![](images/recover-patch.png)
 3) You are free to rearrange and ungroup the patterns, but don't ungroup individual repeats: it would break the links between clones and originals. <br> Nevertheless the editor should provide some means to manipulate objects within the group, or rather control points of multiple objects in a group. <br> The close up below is made with InkScape. It shows control points of multiple selected objects: a dot and four line ends at the center of the dot. When moving these control points for all dots of the same color together, the diagram should remain valid and the corresponding points in the patch should move along. The grey dots can move individually. <br> ![](images/select-node-close-up.png)
 
-Some tried editors (they might have been improved):
+Some tried [SVG editor]s (they might have been improved):
 * Lace8 and Knipling (💰, not on Mac) don't support SVG and fail at step 1.
 * InkScape (free, needs crutches on a Mac) can skip step 2.
   More lace related tutorials on a [blog] by Veronika Irvine.
@@ -45,9 +43,12 @@ Some tried editors (they might have been improved):
 * CorelDraw (💰💰) version x8 requires step 2.
 * Adobe Illustrator  (💰💰, subscription) v2015-3.1 fails at step 3.
 
-Details for InkScape and CorelDraw on [Reshape-using-clones]. A more elaborate method, but also more flexible and supported by more editors, is on [Reshape-using-copies].
+Details for InkScape and CorelDraw on [Reshape-Using-Clones]. A more elaborate method, but also more flexible and supported by more editors, is on [Reshape-Using-Copies].
+
+[SVG editor]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
 
 [blog]: https://tesselace.com/blog/
+
 
 Finish up
 ---------
