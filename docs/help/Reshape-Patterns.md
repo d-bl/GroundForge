@@ -70,7 +70,7 @@ As tried for InkScape v0.91, works probably very similar for Affinity Designer.
 * Switch to node mode.
   * Select a dot by dragging a square around it. This way the end of the adjacent lines are also selected and will move along with the dot.
   * Less than four adjacent lines on the selected dot? Hold down the shift key when selecting the second or even third dot of the same colour.
-  * Dragging with the mouse is dangurous as you loose your selection easily. Nudge the selection around them with arrow keys. Five time an arrow key in InkScape is a full grid position. One time shift+arrow is two grid positions.
+  * Dragging the nodes with the mouse is dangurous as you easily loose your selection. Nudge the selection around with arrow keys. Five times an arrow key in InkScape is a full grid position. One time shift+arrow is two grid positions.
 
 
 Finish up
