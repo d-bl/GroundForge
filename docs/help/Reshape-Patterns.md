@@ -16,9 +16,10 @@ Reshape Patterns
 Introduction
 ------------
 
-The animation below moves all intersections in the diagram that correspond with a dot in the top right repeat next to the diagram.
-Dots with the same color should move together.
-Occasionally more dots are moved together to preserve symmetry.
+The animation below moves corresponding intersections together.
+On the right two isolated repeats, one moving along, one static.
+At least dots with the same color move together,
+occasionally more dots are moved together to preserve symmetry.
 
 ![](animation/GIFCreator-me.gif)
 
