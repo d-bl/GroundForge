@@ -54,7 +54,7 @@ Some tried [SVG editor]s (they might have been improved, check for a free trial 
 * InkScape (free, needs crutches on a Mac) can skip step 2.
 * Affinity Designer (💰, Mac and Windows) doesn't need step 2, step 3 not yet tried.
 * InkPad (free, iPad) doesn't need step 2, version 1.6 fails at step 3.
-* CorelDRAW (Home and Student Suite 💰, Windows) version x8 requires step 2.
+* CorelDRAW (Home and Student Suite 💰, Windows) former version x8 requires step 2.
 * Adobe Illustrator  (💰💰, subscription) v2015-3.1 fails at step 3.
 
 
