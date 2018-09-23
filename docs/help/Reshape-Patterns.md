@@ -17,13 +17,13 @@ Introduction
 ------------
 
 The animation below moves corresponding intersections together.
-On the right two isolated repeats, one moving along, one static.
-At least dots with the same color move together,
+On the right two isolated repeats, one leads the dance, the other is static.
+Dots with the same color always move together,
 occasionally more dots are moved together to preserve symmetry.
 
 ![](animation/GIFCreator-me.gif)
 
-The animation shows some of these [patterns]. For other variants, the figure with colored dots would need to span multiple repeats to allow a transformation. 
+The animation shows some of these [patterns]. For the other variants, corresponding intersections of every other repeat should be moved together. In other words: the isolated repeat that leads the dance should span multiple repeats.
 
 [patterns]: /GroundForge/sheet.html?patch=B-C-,---5,C-B-,-5--;checker&patch=-4-7,5---,-C-B,3158;bricks&patch=5-O-E-,-E-5-O,5-O-E-;bricks&patch=158-,---5,C-B-;checker&patch=8-76,124-;checker&patch=5831,-4-7;checker&patch=68,-4;checker&patch=6868,-4-4,6868,-4-4;checker
 
