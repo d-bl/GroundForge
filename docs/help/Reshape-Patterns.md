@@ -61,7 +61,7 @@ Some tried [SVG editor]s (they might have been improved, check for a free trial 
 Step 3 in small steps
 ---------------------
 
-As tried for InkScape v0.91, works probably very similar for affinity designer.
+As tried for InkScape v0.91, works probably very similar for Affinity Designer.
 
 * Start with object mode.
 * Double-click the pattern of your choice to enter the group of objects.
