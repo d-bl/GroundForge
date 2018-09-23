@@ -59,7 +59,7 @@ Evaluated Editors
 The procedure above is tried for just some of the available [SVG editor]s. They might have been improved since then, check for a free trial period to convince yourself you can work with it:
 * Lace8 and Knipling (💰, not on Mac) don't support SVG and fail at step 1.
 * InkScape (free, needs crutches on a Mac) can skip step 2.
-* Affinity Designer (💰, Mac and Windows) probably won't need step 2, step 3 not yet tried.
+* Affinity Designer (💰, Mac, iPad and Windows) probably won't need step 2, step 3 not yet tried.
 * InkPad (free, iPad) doesn't need step 2, version 1.6 requires the workaround for  step 3.
 * CorelDRAW (Home and Student Suite 💰, Windows) former version x8 requires step 2.
 * Adobe Illustrator  (💰💰, subscription) v2015-3.1 requires the workaround for step 3.
@@ -75,9 +75,9 @@ As tried for InkScape v0.91, works probably very similar for Affinity Designer.
   * Double-click the isolated repeat with coloured dots to enter the group of objects.
   * Select all the objects in the group of the repeat.
 * Switch to node mode.
-  * Select a dot by dragging a square around it. This way the end of the adjacent lines are also selected and will move along with the dot.
+  * Select a dot by dragging a square around it. Because all object were selected in advance, the ends of the adjacent lines are also selected and will move along with the dot.
   * Less than four adjacent lines on the selected dot? Hold down the shift key when selecting the second or even third dot of the same colour.
-  * Dragging the nodes with the mouse is dangurous as you easily loose your selection. Nudge the selection around with arrow keys. Five times an arrow key in InkScape is a full grid position. One time shift+arrow is two grid positions.
+  * Dragging the nodes with the mouse is dangerous as you easily loose your selection. Nudge the selection around with arrow keys. Five times an arrow key in InkScape is a full grid position. One time shift+arrow is two grid positions.
 
 
 Finish up
