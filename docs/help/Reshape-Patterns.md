@@ -43,7 +43,13 @@ Features and exact procedures may vary between SVG editors. The least elaborate 
   Provided the isolated dotted repeat is rendered properly, you can reconstruct the rest of the patch by making clones (=/= copies!) of this group of objects. The colored dots are guides to seam the copied repeats together. The following image shows four repeats almost in place. Of course the dots should snap exactly on top of one another.  There may be multiple dots on a single spot, you may want to delete these duplicates in advance. The original repeat must be a group before cloning.  
   ![](images/recover-patch.png)
 3. You are free to rearrange and ungroup the patterns, but don't ungroup individual repeats: it would break the links between clones and originals.   
-  The close up below shows control points of multiple selected objects: a dot and four line ends at the center of the dot. When moving these control points for all dots of the same color together, the corresponding points in the patch should move along and the diagram should remain valid. The grey dots can move individually. <br> ![](images/select-node-close-up.png)
+  The close up below shows control points of multiple selected objects: a dot and four line ends at the center of the dot. When moving these control points for all dots of the same color together, the corresponding points in the patch should move along and the diagram should remain valid. The grey dots can move individually.  
+  ![](images/select-node-close-up.png)
+
+Workaround for step 3:
+* Assign new unique colors to the grey dots on the original repeat to make corresponding dot easier to recognize.
+* Create a new patch with 2x2 or 3x3 copies of the original repeat, as in step 2. A smaller number makes it harder to get an impression of the manipulated pattern, a larger number makes the next task more elaborate.
+* Select corresponding dots one by one through the whole patch.
 
 
 Tried Editors
@@ -52,10 +58,10 @@ Tried Editors
 Some tried [SVG editor]s (they might have been improved, check for a free trial period):
 * Lace8 and Knipling (💰, not on Mac) don't support SVG and fail at step 1.
 * InkScape (free, needs crutches on a Mac) can skip step 2.
-* Affinity Designer (💰, Mac and Windows) doesn't need step 2, step 3 not yet tried.
-* InkPad (free, iPad) doesn't need step 2, version 1.6 fails at step 3.
+* Affinity Designer (💰, Mac and Windows) probably won't need step 2, step 3 not yet tried.
+* InkPad (free, iPad) doesn't need step 2, version 1.6 requires the workaround for  step 3.
 * CorelDRAW (Home and Student Suite 💰, Windows) former version x8 requires step 2.
-* Adobe Illustrator  (💰💰, subscription) v2015-3.1 fails at step 3.
+* Adobe Illustrator  (💰💰, subscription) v2015-3.1 requires the workaround for step 3.
 
 
 Step 3 in small steps
