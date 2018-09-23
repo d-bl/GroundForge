@@ -8,7 +8,7 @@ Reshape Patterns
 
   * [Introduction](#introduction)
   * [Make variations in general terms](#make-variations-in-general-terms)
-  * [Tried Editors](#tried-editors)
+  * [Evaluated Editors](#avaluated-editors)
   * [Step 3 in small steps](#step-3-in-small-steps)
   * [Finish up](#finish-up)
 
