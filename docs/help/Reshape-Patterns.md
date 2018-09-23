@@ -10,7 +10,7 @@ Reshape Patterns
   * [Make variations in general terms](#make-variations-in-general-terms)
   * [Evaluated Editors](#evaluated-editors)
   * [Step 3 in small steps](#step-3-in-small-steps)
-  * [Finish up](#finish-up)
+  * [Insert or transform into a design](#insert-or-transform-into-a-design)
 
 
 Introduction
@@ -80,8 +80,8 @@ As tried for InkScape v0.91, works probably very similar for Affinity Designer.
   * Dragging the nodes with the mouse is dangerous as you easily loose your selection. Nudge the selection around with arrow keys. Five times an arrow key in InkScape is a full grid position. One time shift+arrow is two grid positions.
 
 
-Finish up
----------
+Insert or transform into a design
+---------------------------------
 
 When done with adjusting the pattern you might do all kind of other things with it. Such as scaling to match your thread width, [fill] a shape in your design, [bend] it to make a fan, add columns or rows to the patch or whatever. The editor of your choice will have its own tutorials and manuals for these tasks. 
 
