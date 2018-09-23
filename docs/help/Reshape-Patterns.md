@@ -47,7 +47,7 @@ Features and exact procedures may vary between SVG editors. The least elaborate 
   ![](images/select-node-close-up.png)
 
 Workaround for step 3:
-* Assign new unique colors to the grey dots on the original repeat to make corresponding dot easier to recognize.
+* Assign new unique colors to the grey dots on the original repeat to make corresponding dots easier to recognize.
 * Create a new patch with 2x2 or 3x3 copies of the original repeat, as in step 2. A smaller number makes it harder to get an impression of the manipulated pattern, a larger number makes the next task more elaborate.
 * Select corresponding dots one by one through the whole patch to move them together.
 
