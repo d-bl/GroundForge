@@ -83,12 +83,10 @@ As tried for InkScape v0.91, works probably very similar for Affinity Designer.
 Finish up
 ---------
 
-When done with adjusting the pattern you might do all kind of other things with it. Such as scaling to match your thread width, fill a shape in your design, [bend] it to make a fan, add columns or rows to the patch or whatever. The editor of your choice will have its own tutorials and manuals for these tasks. 
-
-Veronika Irvine wrote some lace related tutorials for InkScape on a [blog].
+When done with adjusting the pattern you might do all kind of other things with it. Such as scaling to match your thread width, [fill] a shape in your design, [bend] it to make a fan, add columns or rows to the patch or whatever. The editor of your choice will have its own tutorials and manuals for these tasks. 
 
 [SVG editor]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
 
-[blog]: https://tesselace.com/blog/
+[fill]: https://tesselace.com/2017/11/08/filling-a-shape-with-a-lace-ground/
 
 [bend]: http://tavmjong.free.fr/INKSCAPE/MANUAL/html/Paths-LivePathEffects-BendTool.html
