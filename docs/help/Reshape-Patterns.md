@@ -51,7 +51,7 @@ Evaluated Editors
 -----------------
 
 The procedure above is tried for just some of the available [SVG editor]s. They might have been improved since then, check for a free trial period to convince yourself you can work with it:
-* Lace8 and Knipling (💰, not on Mac) don't support SVG and fail at step 1.
+* Lace8 and Knipling (💰, not on Mac) don't support SVG, the downloads are of no use.
 * InkScape (free, needs crutches on a Mac) can skip step 2.
 * Affinity Designer (💰, Mac, iPad and Windows) probably won't need step 2, step 3 not yet tried.
 * InkPad (free, iPad) doesn't need step 2, version 1.6 requires the workaround below.
