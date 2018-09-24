@@ -47,12 +47,6 @@ Features and exact procedures may vary between SVG editors. The least elaborate 
   The close up below shows control points of multiple selected objects: a dot and four line ends at the center of the dot. When moving these control points for all dots of the same color together, the corresponding points in the patch should move along and the diagram should remain valid. The grey dots can move individually.  
   ![](images/select-node-close-up.png)
 
-Workaround for step 3:
-* Assign new unique colors to the grey dots on the original repeat to make corresponding dots easier to recognize.
-* Create a new patch with 2x2 or 3x3 copies of the original repeat, as in step 2. A smaller number makes it harder to get an impression of the manipulated pattern, a larger number makes the next task more elaborate.
-* Select corresponding dots one by one through the whole patch to move them together.
-
-
 Evaluated Editors
 -----------------
 
@@ -60,9 +54,14 @@ The procedure above is tried for just some of the available [SVG editor]s. They 
 * Lace8 and Knipling (💰, not on Mac) don't support SVG and fail at step 1.
 * InkScape (free, needs crutches on a Mac) can skip step 2.
 * Affinity Designer (💰, Mac, iPad and Windows) probably won't need step 2, step 3 not yet tried.
-* InkPad (free, iPad) doesn't need step 2, version 1.6 requires the workaround for  step 3.
+* InkPad (free, iPad) doesn't need step 2, version 1.6 requires the workaround below.
 * CorelDRAW (Home and Student Suite 💰, Windows) former version x8 requires step 2.
-* Adobe Illustrator  (💰💰, subscription) v2015-3.1 requires the workaround for step 3.
+* Adobe Illustrator  (💰💰, subscription) v2015-3.1 requires the workaround below.
+
+Workaround:
+* Optionally assign new unique colors to the grey dots on the original repeat to make corresponding dots easier to recognize.
+* Create a new patch with 2x2 or 3x3 copies of the original repeat, as in step 2. A smaller number makes it harder to get an impression of the manipulated pattern, a larger number makes the next task more elaborate.
+* Select corresponding dots one by one through the whole patch to move them together.
 
 
 Step 3 in small steps
