@@ -58,7 +58,7 @@ The procedure above is tried for just some of the available [SVG editor]s. They 
 * CorelDRAW (Home and Student Suite 💰, Windows) former version x8 requires step 2.
 * Adobe Illustrator  (💰💰, subscription) v2015-3.1 requires the workaround below.
 
-Workaround:
+Workaround for step 3:
 * Optionally assign new unique colors to the grey dots on the original repeat to make corresponding dots easier to recognize.
 * Create a new patch with 2x2 or 3x3 copies of the original repeat, as in step 2. A smaller number makes it harder to get an impression of the manipulated pattern, a larger number makes the next task more elaborate.
 * Select corresponding dots one by one through the whole patch to move them together.
