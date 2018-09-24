@@ -21,7 +21,7 @@ On the right two isolated repeats, one leads the dance, the other is static.
 Dots with the same color always move together,
 occasionally more dots are moved together to preserve symmetry.
 
-![](animation/GIFCreator-me.gif)
+![](animation/cropped.gif)
 
 The animation shows some of these [patterns]. For the other variants, corresponding intersections of every other repeat should be moved together. In other words: the isolated repeat that leads the dance should span multiple repeats.
 
