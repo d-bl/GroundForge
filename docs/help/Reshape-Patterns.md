@@ -6,7 +6,6 @@ title: Reshape Patterns
 Reshape Patterns
 ================
 
-- [Reshape Patterns](#reshape-patterns)
   * [Introduction](#introduction)
   * [Make variations in general terms](#make-variations-in-general-terms)
   * [Evaluated Editors](#evaluated-editors)
