@@ -6,10 +6,11 @@ title: Reshape Patterns
 Reshape Patterns
 ================
 
+- [Reshape Patterns](#reshape-patterns)
   * [Introduction](#introduction)
   * [Make variations in general terms](#make-variations-in-general-terms)
   * [Evaluated Editors](#evaluated-editors)
-  * [Step 3 in small steps](#step-3-in-small-steps)
+  * [Step 3 in small steps (InkScape)](#step-3-in-small-steps--inkscape-)
   * [Insert or transform into a design](#insert-or-transform-into-a-design)
 
 
@@ -72,10 +73,8 @@ Workaround for step 3:
 * Select corresponding dots one by one through the whole patch to move them together.
 
 
-Step 3 in small steps
----------------------
-
-As tried for InkScape v0.91, works probably very similar for Affinity Designer.
+Step 3 in small steps (InkScape)
+--------------------------------
 
 * Start with object mode.
   * Double-click the pattern of your choice to enter the group of objects.
