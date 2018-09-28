@@ -81,7 +81,7 @@ Step 3 in small steps (InkScape)
   * Double-click the isolated repeat with coloured dots to enter the group of objects.
   * Select all the objects in the group of the repeat.
 * Switch to node mode.
-  * Select a dot by dragging a square around it. Because all object were selected in advance, the ends of the adjacent lines are also selected and will move along with the dot.
+  * Select a dot by dragging a square around it. Because all objects were selected in advance, the ends of the adjacent lines are also selected and will move along with the dot.
   * Less than four adjacent lines on the selected dot? Hold down the shift key when selecting the second or even third dot of the same colour.
   * Dragging the nodes with the mouse is dangerous as you easily loose your selection. Nudge the selection around with arrow keys. Five times an arrow key in InkScape is a full grid position. One time shift+arrow is two grid positions.
 
