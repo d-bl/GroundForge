@@ -51,12 +51,20 @@ Evaluated Editors
 -----------------
 
 The procedure above is tried for just some of the available [SVG editor]s. They might have been improved since then, check for a free trial period to convince yourself you can work with it:
-* Lace8 and Knipling (💰, not on Mac) don't support SVG, the downloads are of no use.
-* InkScape (free, needs crutches on a Mac) can skip step 2.
-* Affinity Designer (💰, Mac, iPad and Windows) not yet tried, in the worst case it requires step 2.
-* CorelDRAW (💰💰, Home and Student Suite 💰, Windows) former version x8 requires step 2.
-* InkPad (free, iPad) doesn't need step 2, version 1.6 requires the workaround below.
-* Adobe Illustrator  (💰💰, subscription) v2015-3.1 requires the workaround below.
+* Lace8 and Knipling (💰, not on Mac)  
+  these don't support SVG, the downloads are of no use.
+* InkScape (free, needs crutches on a Mac)  
+  won't need step 2.
+* Affinity Designer (💰, Mac, iPad and Windows)  
+  use symbols for step 2 as shown by [graphicheck] and many others. Step 3: Use the layer panel to select all objects in the group of one repeat (click the first, shift-click the last); continue with the node tool as for InkScape.
+* CorelDRAW (💰💰, Home and Student Suite 💰, Windows)  
+  use `clone` from the edit menu for step 2.
+* InkPad (free, iPad)  
+  version 1.6 requires the workaround below.
+* Adobe Illustrator  (💰💰, subscription)  
+  no clone or symbol functionaly found during the trial period of v2015-3.1, try the workaround below.
+
+[graphicheck]: https://graphicheck.com/blog/Affinity-Designer-Background-Patterns-Mock-up-Template
 
 Workaround for step 3:
 * Optionally assign new unique colors to the grey dots on the original repeat to make corresponding dots easier to recognize.
