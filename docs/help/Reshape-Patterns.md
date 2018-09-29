@@ -62,7 +62,7 @@ The procedure above is tried for just some of the available [SVG editor]s. They 
 * InkPad (free, iPad)  
   version 1.6 requires the workaround below.
 * Adobe Illustrator  (💰💰, subscription)  
-  not tried. Perhaps these [instructions] can be of use for step 2. Start at about 5:50. From another: "Any changes made while in `pattern editing mode` will be applied to the swatch upon exit".
+  not tried. Perhaps these [instructions] can be of use for step 2. Start at about 5:50. From another: "Any changes made while in `pattern editing mode` will be applied to the `swatch` upon exit".
 
 [graphicheck]: https://graphicheck.com/blog/Affinity-Designer-Background-Patterns-Mock-up-Template
 [instructions]: https://www.youtube.com/watch?v=aQM3RLWN0vQ
