@@ -16,12 +16,9 @@ Reshape Patterns
 Introduction
 ------------
 
-The animation below moves corresponding intersections together.
-On the right two isolated repeats, one leads the dance, the other is static.
-Dots with the same color always move together,
-occasionally more dots are moved together to preserve symmetry.
+![](animation/cropped.gif) ![](animation/almost-snapped.png)
 
-![](animation/cropped.gif)
+In the middle a single repeat that leads the dance of the pattern. On the right four static repeats that almost snapped together: dots with the same color help to sew the repeats together. These dots should sit on top of one another. The dance leader should move dots with the same colors together. It can move more at once, for example to preserve symmetry.
 
 The animation shows some of these [patterns]. For the other variants, corresponding intersections of every other repeat should be moved together. In other words: the isolated repeat that leads the dance should span multiple repeats.
 
@@ -40,9 +37,7 @@ Features and exact procedures may vary between SVG editors. The least elaborate 
 
 1. Follow the download link on the page with the [sources][patterns] of the animation. Open the file with the editor of your choice.  
   More patterns are available through the `vari` links on the [Tesselace-Index](TesseLace-Index) and some other catalogues of patterns.
-2. If the diagrams are rendered as on the web page, you most likely won't need this step.  
-  Provided the isolated dotted repeat is rendered properly, you can reconstruct the rest of the patch by making clones (=/= copies!) of this group of objects. The colored dots are guides to seam the copied repeats together. The following image shows four repeats almost in place. Of course the dots should snap exactly on top of one another. The original repeat must be a group before cloning.  
-  ![](images/recover-patch.png)
+2. You may need to rebuild the pattern from the isolated repeat. Otherwise the pattern won't follow the dance of the leader as in the animation at the start of this page.
 3. You are free to rearrange and ungroup the patterns, but don't ungroup individual repeats: it would break the links between clones and originals.   
   The close up below shows control points of multiple selected objects: a dot and four line ends at the center of the dot. When moving these control points for all dots of the same color together, the corresponding points in the patch should move along and the diagram should remain valid. The grey dots can move individually.  
   ![](images/select-node-close-up.png)
