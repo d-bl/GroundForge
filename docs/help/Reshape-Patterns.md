@@ -56,7 +56,7 @@ The procedure above is tried for just some of the available [SVG editor]s. They 
 * InkScape (free, needs crutches on a Mac)  
   won't need step 2.
 * Affinity Designer (💰, Mac, iPad and Windows)  
-  use symbols for step 2 as shown by [graphicheck] and many others. Step 3: Use the layer panel to select all objects in the group of one repeat (click the first, shift-click the last); continue with the node tool as for InkScape.
+  use `symbols` for step 2 as shown by [graphicheck] and many others. Step 3: Use the `layer` panel to select all objects in the group of one repeat (click the first, shift-click the last); continue with the node tool as for InkScape.
 * CorelDRAW (💰💰, Home and Student Suite 💰, Windows)  
   use `clone` from the edit menu for step 2.
 * InkPad (free, iPad)  
