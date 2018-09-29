@@ -52,7 +52,7 @@ Evaluated Editors
 
 The procedure above is tried for just some of the available [SVG editor]s. They might have been improved since then, check for a free trial period to convince yourself you can work with it:
 * Lace8 and Knipling (💰, not on Mac)  
-  these don't support SVG, the downloads are of no use.
+  these don't understand the downloads at all.
 * InkScape (free, needs crutches on a Mac)  
   won't need step 2.
 * Affinity Designer (💰, Mac, iPad and Windows)  
@@ -62,9 +62,10 @@ The procedure above is tried for just some of the available [SVG editor]s. They 
 * InkPad (free, iPad)  
   version 1.6 requires the workaround below.
 * Adobe Illustrator  (💰💰, subscription)  
-  no clone or symbol functionaly found during the trial period of v2015-3.1, try the workaround below.
+  not tried. Perhaps these [instructions] can be of use for step 2. Start at about 5:50. From another: "Any changes made while in `pattern editing mode` will be applied to the swatch upon exit".
 
 [graphicheck]: https://graphicheck.com/blog/Affinity-Designer-Background-Patterns-Mock-up-Template
+[instructions]: https://www.youtube.com/watch?v=aQM3RLWN0vQ
 
 Workaround for step 3:
 * Optionally assign new unique colors to the grey dots on the original repeat to make corresponding dots easier to recognize.
