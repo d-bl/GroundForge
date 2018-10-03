@@ -9,7 +9,7 @@ Reshape Patterns
   * [Introduction](#introduction)
   * [Make variations in general terms](#make-variations-in-general-terms)
   * [Evaluated Editors](#evaluated-editors)
-  * [Step 3 in small steps (InkScape)](#step-3-in-small-steps--inkscape-)
+  * [Step 3 for InkScape](#step-3-for-inkscape)
   * [Insert or transform into a design](#insert-or-transform-into-a-design)
 
 
@@ -37,10 +37,21 @@ Features and exact procedures may vary between SVG editors. The least elaborate 
 
 1. Follow the download link on the page with the [sources][patterns] of the animation. Open the file with the editor of your choice.  
   More patterns are available through the `vari` links on the [Tesselace-Index](TesseLace-Index) and some other catalogues of patterns.
-2. You may need to rebuild the pattern from the isolated repeat. Otherwise the pattern won't follow the dance of the leader as in the animation at the start of this page.
-3. You are free to rearrange and ungroup the patterns, but don't ungroup individual repeats: it would break the links between clones and originals.   
-  The close up below shows control points of multiple selected objects: a dot and four line ends at the center of the dot. When moving these control points for all dots of the same color together, the corresponding points in the patch should move along and the diagram should remain valid. The grey dots can move individually.  
+2. Depending on the editor you may need to rebuild the pattern from the isolated repeat. Otherwise the pattern won't follow the dance of the leader as in the animation at the start of this page.
+3. The close up below shows control points of multiple selected objects: a dot and four line ends at the center of the dot. When moving these control points for all dots of the same color together, the corresponding points in the patch should move along and the diagram should remain valid. The grey dots can move individually.  
   ![](images/select-node-close-up.png)
+  
+Variations for step 3:
+
+Your editor might not have facilities that link the pattern with the repeat that leads the dance,
+or you want more flexibillity for an erratic pattern or metamorphose.
+In those cases you should rebuild the pattern from the isolated repeatas in step 2.
+First assign your own unique colors (or shapes such as squares or open circles) to the grey dots,
+and probably limit the dimesions to 2x2 or 3x3 repeats.
+A larger number is more elaborate, with a smaller number it is harder to see the pattern.
+Then you can select dots with the same color through the whole pattern,
+as far as aplicable for your purpose.
+
 
 Evaluated Editors
 -----------------
@@ -56,21 +67,17 @@ The procedure above is tried for just some of the available [SVG editor]s. They 
 * CorelDRAW (💰💰, Home and Student Suite 💰, Windows)  
   use `clone` from the edit menu for step 2.
 * InkPad (free, iPad)  
-  version 1.6 requires the workaround below.
+  version 1.6 has no facilities to make the pattern follow the leader of the dance.
 * Adobe Illustrator  (💰💰, subscription)  
   not tried. Perhaps these [instructions] can be of use for step 2. Start at about 5:50. From another: "Any changes made while in `pattern editing mode` will be applied to the `swatch` upon exit".
 
 [graphicheck]: https://graphicheck.com/blog/Affinity-Designer-Background-Patterns-Mock-up-Template
 [instructions]: https://www.youtube.com/watch?v=aQM3RLWN0vQ
 
-Workaround for step 3:
-* Optionally assign new unique colors to the grey dots on the original repeat to make corresponding dots easier to recognize.
-* Create a new patch with 2x2 or 3x3 copies of the original repeat, as in step 2. A smaller number makes it harder to get an impression of the manipulated pattern, a larger number makes the next task more elaborate.
-* Select corresponding dots one by one through the whole patch to move them together.
 
 
-Step 3 in small steps (InkScape)
---------------------------------
+Step 3 for InkScape
+-------------------
 
 * Start with object mode.
   * Double-click the pattern of your choice to enter the group of objects.
