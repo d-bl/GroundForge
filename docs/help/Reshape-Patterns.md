@@ -98,7 +98,7 @@ select everything and move the patterns around to find the repeat you want to us
 
 Three half minute video's show a possible approach.
 * [join](images/join-lines.mp4) lines to work around a [bug](https://forum.affinity.serif.com/index.php?/topic/69189-not-all-nodes-in-an-area-are-selected/)
-* [duplicate](dup-symbols.mp4) the repeat using symbols, moving them with arrow keys while holding down shift
+* [duplicate](images/dup-symbols.mp4) the repeat using symbols, moving them with arrow keys while holding down shift
 * [move](images/move-dots.mp4) dots with the same color. Sorry, dark blue is hard to tell from black.
 
 Insert or transform into a design
