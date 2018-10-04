@@ -16,6 +16,8 @@ Reshape Patterns
 Introduction
 ------------
 
+The animation shows in short how to manipulate a pattern with an editor.
+
 ![](animation/cropped.gif) ![](animation/almost-snapped.png)
 
 In the middle a single repeat that leads the dance of the pattern. On the right four static repeats that almost snapped together: dots with the same color help to sew the repeats together. These dots should sit on top of one another. The dance leader should move dots with the same colors together. It can move more at once, for example to preserve symmetry.
@@ -60,11 +62,10 @@ The procedure above is tried for just some of the available [SVG editor]s. They 
 * Lace8 and Knipling (💰, not on Mac)  
   these don't understand the downloads at all.
 * InkScape (free, needs crutches on a Mac)  
-  won't need step 2.
-* Affinity Designer (💰, Mac, iPad and Windows)  
-  use `symbols` for step 2 as shown by [graphicheck] and many others. Some patterns may have more variants than fit into the visible area, select everything and move the patterns around to find the one you want to use. See this [feature request](https://forum.affinity.serif.com/index.php?/topic/69166-import-svgs-use-elements-and-symbols/).  
-  Step 3: Use the `layer` panel to select all objects in the group of one repeat (click the first, shift-click the last); continue with the node tool as for InkScape. See this [bug and workaround](https://forum.affinity.serif.com/index.php?/topic/69189-not-all-nodes-in-an-area-are-selected/).  
-* CorelDRAW (💰💰, Home and Student Suite 💰, Windows)  
+  won't need step 2, see below for details.
+* Affinity Designer (💰, Mac, iPad and Windows)   
+  does need step 2, see below below for details.
+* CorelDRAW (💰💰, Home and Student Suite 💰, Windows)    
   use `clone` from the edit menu for step 2.
 * InkPad (free, iPad)  
   version 1.6 has no facilities to make the pattern follow the leader of the dance.
@@ -88,6 +89,17 @@ Step 3 for InkScape
   * Less than four adjacent lines on the selected dot? Hold down the shift key when selecting the second or even third dot of the same colour.
   * Dragging the nodes with the mouse is dangerous as you easily loose your selection. Nudge the selection around with arrow keys. Five times an arrow key in InkScape is a full grid position. One time shift+arrow is two grid positions.
 
+
+Step 2 and 3 with affinity designer
+-----------------------------------
+
+Some patterns may have more variants than fit into the visible area,
+select everything and move the patterns around to find the repeat you want to use.
+
+Three half minute video's show a possible approach.
+* [join](images/join-lines.mp4) lines to work around a [bug](https://forum.affinity.serif.com/index.php?/topic/69189-not-all-nodes-in-an-area-are-selected/)
+* [duplicate](dup-symbols.mp4) the repeat using symbols, moving them with arrow keys while holding down shift
+* [move](images/move-dots.mp4) dots with the same color. Sorry, dark blue is hard to tell from black.
 
 Insert or transform into a design
 ---------------------------------
