@@ -10,6 +10,7 @@ Reshape Patterns
   * [Make variations in general terms](#make-variations-in-general-terms)
   * [Evaluated Editors](#evaluated-editors)
   * [Step 3 for InkScape](#step-3-for-inkscape)
+  * [Step 2 and 3 with Affinity Designer](#step-2-and-3-with-affinity-designer)
   * [Insert or transform into a design](#insert-or-transform-into-a-design)
 
 
@@ -62,11 +63,11 @@ The procedure above is tried for just some of the available [SVG editor]s. They 
 * Lace8 and Knipling (💰, not on Mac)  
   these don't understand the downloads at all.
 * InkScape (free, needs crutches on a Mac)  
-  won't need step 2, see below for details.
+  won't need step 2, details [below](#step-3-for-inkscape).
 * Affinity Designer (💰, Mac, iPad and Windows)   
-  does need step 2, see below below for details.
+  does need step 2, details [below](#step-2-and-3-with-affinity-designer).
 * CorelDRAW (💰💰, Home and Student Suite 💰, Windows)    
-  use `clone` from the edit menu for step 2.
+  use `clone` from the edit menu for step 2. No plans (2018) to implement an import option that implorts SVG clones as clones.
 * InkPad (free, iPad)  
   version 1.6 has no facilities to make the pattern follow the leader of the dance.
 * Adobe Illustrator  (💰💰, subscription)  
@@ -74,7 +75,6 @@ The procedure above is tried for just some of the available [SVG editor]s. They 
 
 [graphicheck]: https://graphicheck.com/blog/Affinity-Designer-Background-Patterns-Mock-up-Template
 [instructions]: https://www.youtube.com/watch?v=aQM3RLWN0vQ
-
 
 
 Step 3 for InkScape
@@ -90,7 +90,7 @@ Step 3 for InkScape
   * Dragging the nodes with the mouse is dangerous as you easily loose your selection. Nudge the selection around with arrow keys. Five times an arrow key in InkScape is a full grid position. One time shift+arrow is two grid positions.
 
 
-Step 2 and 3 with affinity designer
+Step 2 and 3 with Affinity Designer
 -----------------------------------
 
 Some patterns may have more variants than fit into the visible area,
@@ -100,6 +100,10 @@ Three half minute video's show a possible approach.
 * [join](images/join-lines.mp4) lines to work around a [bug](https://forum.affinity.serif.com/index.php?/topic/69189-not-all-nodes-in-an-area-are-selected/)
 * [duplicate](images/dup-symbols.mp4) the repeat using symbols, moving them with arrow keys while holding down shift
 * [move](images/move-dots.mp4) dots with the same color. Sorry, dark blue is hard to tell from black.
+
+Once the bug is fixed, joining lines is still a good option.
+Then you can drop the dots after the duplicate phase and select all duplicates to move control points anywhere in the pattern.
+That approach currently (version 1.6.5) still suffers from the same bug.
 
 Insert or transform into a design
 ---------------------------------
