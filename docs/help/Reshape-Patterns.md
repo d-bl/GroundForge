@@ -67,7 +67,7 @@ The procedure above is tried for just some of the available [SVG editor]s. They 
 * Affinity Designer (💰, Mac, iPad and Windows)   
   does need step 2, details [below](#step-2-and-3-with-affinity-designer).
 * CorelDRAW (💰💰, Home and Student Suite 💰, Windows)    
-  use `clone` from the edit menu for step 2. No plans (2018) to implement an import option that implorts SVG clones as clones.
+  use `clone` from the edit menu for step 2. No plans (2018) to implement an import option that imports SVG clones as clones.
 * InkPad (free, iPad)  
   version 1.6 has no facilities to make the pattern follow the leader of the dance.
 * Adobe Illustrator  (💰💰, subscription)  
