@@ -10,7 +10,7 @@ object InteractiveSVG {
    *
    * The groups are positioned outside the visible area of the document
    * with their circles on the same position.
-   * The id of a group is the character in the circle prefixed with a "g".
+   * The id of a group is the character in the circle prefixed with a "vc".
    * A element (with id "oops") on the same pile indicates a stitch that has
    * another number of outgoing pairs than 2. The transparency when referencing
    * this element indicates the number of outgoing pairs
@@ -38,7 +38,7 @@ object InteractiveSVG {
       val isActiveNode = opacity == "1" && vectorCode != "-"
       s"""${ warning(vectorCode, translate, nrOfPairsOut) }
          |<use ${ events(isActiveNode, item.id) }
-         |  xlink:href='#g$vectorCode'
+         |  xlink:href='#vc$vectorCode'
          |  id='svg-r${ r + 1 }-c${ c + 1 }'
          |  $translate
          |  style='stroke:${ item.color.getOrElse("#000") };opacity:$opacity;'
