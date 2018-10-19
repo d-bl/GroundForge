@@ -178,6 +178,39 @@ function asChecker() {
   d3.select('#shiftColsSW').property("value", 0)
   showProto()
 }
+function asHorBricks() {
+
+  var matrixLines = d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+  var rows = matrixLines.length
+  var cols = matrixLines[0].length
+  d3.select('#shiftRowsSE').property("value", rows)
+  d3.select('#shiftColsSE').property("value", cols - Math.round(cols/2))
+  d3.select('#shiftRowsSW').property("value", rows)
+  d3.select('#shiftColsSW').property("value", - Math.round(cols/2))
+  showProto()
+}
+function asVerBricks() {
+
+  var matrixLines = d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+  var rows = matrixLines.length
+  var cols = matrixLines[0].length
+  d3.select('#shiftRowsSE').property("value", Math.round(rows/2))
+  d3.select('#shiftColsSE').property("value", cols)
+  d3.select('#shiftRowsSW').property("value", rows)
+  d3.select('#shiftColsSW').property("value", 0)
+  showProto()
+}
+function withOverlap() {
+
+  var matrixLines = d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+  var rows = matrixLines.length
+  var cols = matrixLines[0].length
+  d3.select('#shiftRowsSE').property("value", rows)
+  d3.select('#shiftColsSE').property("value", cols)
+  d3.select('#shiftRowsSW').property("value", rows)
+  d3.select('#shiftColsSW').property("value", - cols)
+  showProto()
+}
 function brickToLeft() {
 
   d3.select('#shiftColsSE').node().value--
@@ -200,36 +233,24 @@ function brickDown() {
   d3.select('#shiftRowsSE').node().value++
   showProto()
 }
-function asStack() {
-
-  d3.select('#shiftRowsSE').property("value", 0)
-  d3.select('#shiftColsSE').property("value", 0)
-  d3.select('#shiftRowsSW').property("value", 0)
-  d3.select('#shiftColsSW').property("value", 0)
-  showProto()
-}
-function brickToSW() {
-
-  d3.select('#shiftColsSW').node().value--
-  d3.select('#shiftRowsSW').node().value++
-  showProto()
-}
-function brickToNE() {
-
-  d3.select('#shiftColsSW').node().value++
-  d3.select('#shiftRowsSW').node().value--
-  showProto()
-}
-function brickToSE() {
-
-  d3.select('#shiftColsSE').node().value++
-  d3.select('#shiftRowsSE').node().value++
-  showProto()
-}
-function brickToNW() {
+function overlapLeft() {
 
   d3.select('#shiftColsSE').node().value--
+  showProto()
+}
+function overlapUp1() {
+
   d3.select('#shiftRowsSE').node().value--
+  showProto()
+}
+function overlapRight() {
+
+  d3.select('#shiftColsSW').node().value++
+  showProto()
+}
+function overlapUp2() {
+
+  d3.select('#shiftRowsSW').node().value--
   showProto()
 }
 function resizeBoth(selector, scaleValue) {
