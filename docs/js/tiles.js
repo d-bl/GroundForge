@@ -233,24 +233,44 @@ function brickDown() {
   d3.select('#shiftRowsSE').node().value++
   showProto()
 }
-function overlapLeft() {
+function seToLeft() {
 
   d3.select('#shiftColsSE').node().value--
   showProto()
 }
-function overlapUp1() {
+function seUp() {
 
   d3.select('#shiftRowsSE').node().value--
   showProto()
 }
-function overlapRight() {
+function seToRight() {
+
+  d3.select('#shiftColsSE').node().value++
+  showProto()
+}
+function seDown() {
+
+  d3.select('#shiftRowsSE').node().value++
+  showProto()
+}
+function swToRight() {
 
   d3.select('#shiftColsSW').node().value++
   showProto()
 }
-function overlapUp2() {
+function swUp() {
 
   d3.select('#shiftRowsSW').node().value--
+  showProto()
+}
+function swToLeft() {
+
+  d3.select('#shiftColsSW').node().value--
+  showProto()
+}
+function swDown() {
+
+  d3.select('#shiftRowsSW').node().value++
   showProto()
 }
 function resizeBoth(selector, scaleValue) {
