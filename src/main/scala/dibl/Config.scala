@@ -72,7 +72,7 @@ class Config(urlQuery: String) {
     Array.fill[Item](totalCols)(Item(""))
   )
 
-  val pairsOut: Array[Array[Int]] = {
+  lazy val pairsOut: Array[Array[Int]] = {
     val rows: Int = itemMatrix.length
     val cols: Int = itemMatrix.head.length
     val pairsOut = Array.fill[Array[Int]](rows)(
