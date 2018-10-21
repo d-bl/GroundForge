@@ -44,8 +44,8 @@ class Config(urlQuery: String) {
 
   // TODO defaults based on the dimensions of the above matrices
   @JSExport
-  val totalRows: Int = fields.getOrElse("repeatHeight", "12").replaceAll("[^0-9-]", "").toInt
-  private val centerCols: Int = fields.getOrElse("repeatWidth", "12").replaceAll("[^0-9-]", "").toInt
+  val totalRows: Int = fields.getOrElse("patchHeight", "12").replaceAll("[^0-9-]", "").toInt
+  private val centerCols: Int = fields.getOrElse("patchWidth", "12").replaceAll("[^0-9-]", "").toInt
   private val shiftRowsSE: Int = fields.getOrElse("shiftRowsSE", "12").replaceAll("[^0-9-]", "").toInt
   private val shiftRowsSW: Int = fields.getOrElse("shiftRowsSW", "12").replaceAll("[^0-9-]", "").toInt
   private val shiftColsSE: Int = fields.getOrElse("shiftColsSE", "12").replaceAll("[^0-9-]", "").toInt

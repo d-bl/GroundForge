@@ -151,10 +151,10 @@ function load() {
   if (keyValueStrings.length >= 7 ) // TODO this is not a good safeguard against invalid/incomplete search arguments
     showDiagrams()
 }
-function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, repeatWidth, repeatHeight) {
+function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, patchWidth, patchHeight) {
 
-  d3.select('#repeatWidth').property("value", repeatWidth ? repeatWidth : (footside?3:12))
-  d3.select('#repeatHeight').property("value", repeatHeight ? repeatHeight : 12)
+  d3.select('#patchWidth').property("value", patchWidth ? patchWidth : (footside?3:12))
+  d3.select('#patchHeight').property("value", patchHeight ? patchHeight : 12)
   d3.select('#tile').property("value", tile)
   d3.select('#footside').property("value", footside ? footside : "")
   d3.select('#headside').property("value", headside ? headside : "")

@@ -8,7 +8,7 @@ import scala.reflect.io.File
 class NewPairDiagramSpec extends FlatSpec with Matchers {
 
   def paris4(width: Int, height: Int) = new Config(
-    s"repeatWidth=$width&repeatHeight=$height" +
+    s"patchWidth=$width&patchHeight=$height" +
       s"&shiftColsSE=3&shiftRowsSE=3&shiftColsSW=-3&shiftRowsSW=3" +
       s"&tile=5-O-E-,-E-5-O,5-O-E-&d2=tctct&c1=ctcr&e1=ctcl&b2=rctc&f2=lctc"
   )

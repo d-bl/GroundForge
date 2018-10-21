@@ -8,7 +8,7 @@ It has only two colors in the thread diagram,
 but you don't need to [calculate] thread counts
 to give the desired ones a color.
 
-[tiles]: /GroundForge/tiles.html?tile=5831,-4-7&repeatWidth=9&repeatHeight=9&shiftColsSE=4&shiftRowsSE=2&shiftColsSW=0&shiftRowsSW=2&
+[tiles]: /GroundForge/tiles.html?tile=5831,-4-7&patchWidth=9&patchHeight=9&shiftColsSE=4&shiftRowsSE=2&shiftColsSW=0&shiftRowsSW=2&
 [home]: /GroundForge
 [assigning]: /GroundForge/help/Choose-Stitches#assign-stitches
 [calculate]: /GroundForge/help/Thread-Colors
@@ -89,17 +89,51 @@ on a mac use command for control.
 
 Download
 --------
-You can download the diagrams to edit them with an [SVG editor] such as:
-- CorelDraw 💰
-- Adobe Illustrator 💰
-- [InkScape](http://www.inkscape.org/) (free, has [plug-ins] for bobbin lace)
+You can download the diagrams to edit them with an [SVG editor].
+Details for just one type of diagrams on the [reshape patterns](Reshape-Patterns) page.
 
-[plug-ins]: https://d-bl.github.io/inkscape-bobbinlace/
 [SVG editor]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
 
-Advanced usages
----------------
-The sections below the diagram are for advanced users.
-As the page is still under construction and thus subject to change,
-the demo section is the only help yet to fill in the repeats and pattern sections
-for new patterns. 
+Advanced usage
+--------------
+The sections below the diagram are the engine under the hood of the car.
+The form fields define the prototype diagram. 
+Advanced users can play with the values to define new patterns from scratch.
+
+### Define a repeat
+
+You have three fields to fill with  digits and letters of the cheat sheet.
+
+The outer fields are optional for a custom foot side. 
+Note that a column more or less for the patch size may invalidate the right foot side. 
+It may not always be possible to define a custom foot sides,
+some attempts between the demo patterns did not yet succeed. 
+
+The position of a digit correlates with a position in the prototype diagram.
+Half circles in the prototype indicate you added a new pair for a next stitch,
+or are not using a pair for a next stitch.
+
+More details on the [advanced design](Reversed-engineering-of-patterns) page.
+
+### Arrange the repeats
+
+The configuration at the bottom of the section is like 
+the crank for the first car models with ignition keys:
+you should not need it.
+The image with linked components at the top of the section is the ignition key.
+
+Those wo nevertheless want to understand the numbers
+should not interpret them as mathematical (x,y) coordinates.
+Point (0,0) lies in the north west of a computer canvas, 
+where western scripts start to write on a sheet of paper
+or how you count rows and columns in a spread sheet
+as the labels for the numbers tell.
+
+The purple numbers define the absolute position of the solid tile.
+The green numbers define the position of the arrowed green tile
+relative to the solid tile.
+
+### Demo section
+
+The demo section is introduced for quick testing during development and bug fixing.
+The introduction at the very top of the page links to catalogues with many more patterns.

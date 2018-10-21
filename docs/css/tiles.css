@@ -7,7 +7,7 @@ figcaption { text-align: center; background-color: #ddd; border-radius: 3px; mar
 figcaption img { padding-left: 1em; vertical-align: middle; display: inline-block; }
 fieldset fieldset figure div { height: 222px; }
 #pattern figure { display: block; text-align: center; }
-#pattern img { padding-top: 0.5em; }
+#pattern figure img { padding-top: 0.5em; }
 
 #threadDiagram, #pairDiagram { resize:both;overflow:auto;display:inline-block;width:250px;height:250px;max-width:784px;max-height:1082px }
 #prototype { width:350px; height:250px; overflow:hidden}

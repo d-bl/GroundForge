@@ -59,11 +59,11 @@
             -
             <a id="link" href=""><button type="button" title="link to current set of diagrams"><img src="images/link.png"></button></a>
             -
-            <label for="repeatWidth">Patch size</label>
-            <input type="number" name="repeatWidth" id="repeatWidth" min="3" max="30" value="3" onchange="showProto()" autofocus>
-            <label for="repeatWidth">cols</label>
-            <input type="number" name="repeatHeight" id="repeatHeight" min="3" max="30" value="3" onchange="showProto()">
-            <label for="repeatHeight">rows</label>
+            <label for="patchWidth">Patch size</label>
+            <input type="number" name="patchWidth" id="patchWidth" min="3" max="30" value="3" onchange="showProto()" autofocus>
+            <label for="patchWidth">cols</label>
+            <input type="number" name="patchHeight" id="patchHeight" min="3" max="30" value="3" onchange="showProto()">
+            <label for="patchHeight">rows</label>
         </legend>
         <figure >
             <figcaption title="choosing a stitch shows/refreshes the thread diagram">
@@ -445,8 +445,32 @@
         Play with these forms to design patterns from scratch.
     </p>
 
+    <fieldset id="pattern">
+        <legend>
+            Define a repeat
+            <a href="help/Reversed-engineering-of-patterns"><img src="help/images/information-icon.png" title="help"></a>
+        </legend>
+        <figure>
+            <div>
+            <textarea id="footside" name="footside" rows="12" cols="3" spellcheck="false"
+                      onchange="showProto();showDiagrams()"></textarea>
+                <textarea id="tile" name="tile" rows="12" cols="10" spellcheck="false"
+                          onchange="showProto();showDiagrams()">5</textarea>
+                <textarea id="headside" name="headside" rows="12" cols="3" spellcheck="false"
+                          onchange="showProto();showDiagrams()"></textarea>
+            </div>
+            <figcaption>Definition</figcaption>
+        </figure>
+        <figure>
+            <img src="help/images/matrix-template.png" alt="cheat sheet">
+            <figcaption>Cheat sheet</figcaption>
+        </figure>
+    </fieldset>
     <fieldset>
-        <legend>Repeats</legend>
+        <legend>
+            Arrange the repeats
+            <a href="help/Tiles#arrange-the-repeats"><img src="help/images/information-icon.png" title="help"></a>
+        </legend>
         <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -993,7 +1017,7 @@
             </a>
         </svg>
 		<p style="max-width: 22em">
-			Click a solid tile to initialize,
+			Click a solid tile to initialize the prototype via the form below,
             subsequently nudge the tiles with the arrows
 			to shift bricks or to adjust overlap.
 		</p>
@@ -1012,24 +1036,6 @@
                 </div>
             </div>
         </div>
-    </fieldset>
-    <fieldset id="pattern">
-        <legend>Pattern</legend>
-        <figure>
-          <div>
-            <textarea id="footside" name="footside" rows="12" cols="3" spellcheck="false"
-                      onchange="showProto();showDiagrams()"></textarea>
-            <textarea id="tile" name="tile" rows="12" cols="10" spellcheck="false"
-                      onchange="showProto();showDiagrams()">5</textarea>
-            <textarea id="headside" name="headside" rows="12" cols="3" spellcheck="false"
-                      onchange="showProto();showDiagrams()"></textarea>
-          </div>
-          <figcaption>Definition</figcaption>
-        </figure>
-        <figure>
-            <img src="help/images/matrix-template.png" alt="cheat sheet">
-            <figcaption>Cheat sheet</figcaption>
-        </figure>
     </fieldset>
     <fieldset>
         <legend>Demo's for testing purposes - <img src="images/under-construction.png" title="available only while the page is still under construction"></legend>
