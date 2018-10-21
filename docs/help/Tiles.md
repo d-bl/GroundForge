@@ -117,10 +117,16 @@ More details on the [advanced design](Reversed-engineering-of-patterns) page.
 
 ### Arrange the repeats
 
+The foot sides are simply repeated, but the centre section has more options. 
+
 The configuration at the bottom of the section is like 
 the crank for the first car models with ignition keys:
-you should not need it.
-The image with linked components at the top of the section is the ignition key.
+the hard way to start your car but usually not needed.
+The image with linked components at the top of the section is the like ignition key:
+the simple way to arrange the tiles.
+
+The prototype highlights a single tile alias repeat in the top left corner,
+this repeat may span just a single column or row of stitches. 
 
 Those wo nevertheless want to understand the numbers
 should not interpret them as mathematical (x,y) coordinates.
