@@ -31,3 +31,5 @@ td { text-align: center; vertical-align: top; padding-right: 0.5em}
 #footer {max-width:100%}
 
 img { max-width: 100% }
+
+fieldset ul { margin: 0 }
