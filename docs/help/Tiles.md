@@ -13,6 +13,17 @@ to give the desired ones a color.
 [assigning]: /GroundForge/help/Choose-Stitches#assign-stitches
 [calculate]: /GroundForge/help/Thread-Colors
 
+* [Catalogues](#catalogues)
+* [Invisible diagrams](#invisible-diagrams)
+* [Patch size](#patch-size)
+* [Choose stitches](#choose-stitches)
+* [Toggle thread colors](#toggle-thread-colors)
+* [Download](#download)
+* [Advanced usage](#advanced-usage)
+  + [Define a repeat](#define-a-repeat)
+  + [Arrange the repeats](#arrange-the-repeats)
+  + [Demo section](#demo-section)
+
 
 Catalogues
 ----------
@@ -49,10 +60,16 @@ for those occasions.
 
 Patch size
 ----------
-Note that a large patch size make a diagram slower to render.
+Note that a large patch size makes a diagram slower to render.
 On slow devices like tables and phones that might give
-the impression that links to pages with large patch size don't work at all.
+the impression that links to pages with a large patch size
+don't work at all or block the device.
 So create links with small patch sizes, visitors can easily increment.
+
+When the prototype diagram has a foot side on the right,
+it will usually match only for every so many columns.
+If you want another number, go the "define a repeat" section
+and rotate the rows in the right field.
 
 Not all diagrams work with all values for the patch size.
 Try other values if the thread diagram freezes at its initial state. 
@@ -112,6 +129,10 @@ some attempts between the demo patterns did not yet succeed.
 The position of a digit correlates with a position in the prototype diagram.
 Half circles in the prototype indicate you added a new pair for a next stitch,
 or are not using a pair for a next stitch.
+
+The right foot side may be a mirrored version of the left foot side for some patterns.
+In that case the flip button can set the right field.
+You may still have to rotate the rows or adjust the patch width.  
 
 More details on the [advanced design](Reversed-engineering-of-patterns) page.
 

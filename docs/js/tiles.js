@@ -43,6 +43,12 @@ function showProto() {
   d3.select("#prototype").style("height", (config.totalRows * 27 + 30) + "px"
                         ).style("width", (config.totalCols * 27 + 60) + "px")
 }
+function flip(){
+  var left = d3.select("#footside").node().value
+  console.log(dibl.Matrix().flip)
+  d3.select("#headside").node().value = dibl.Matrix().flip(left)
+  showProto()
+}
 function scrollIntoViewIfPossible(container) {
   // despite w3Schools documentation not available for IE / Edge(?)
   // see also https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/15534521/

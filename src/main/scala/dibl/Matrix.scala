@@ -17,8 +17,10 @@ package dibl
 
 import scala.collection.immutable.HashMap
 import scala.reflect.ClassTag
-import scala.util.{Failure, Success, Try}
+import scala.scalajs.js.annotation.JSExport
+import scala.util.{ Failure, Success, Try }
 
+@JSExport
 object Matrix {
 
   /** @param lines for example: <pre>
@@ -122,6 +124,16 @@ object Matrix {
     * A node can be connected in eight directions, but source nodes are not found downwards.
     */
   def toRelativeSources(c: Char): SrcNodes = relativeSourceMap.getOrElse(c.toUpper, Array.empty)
+
+  @JSExport
+  def flip(lines: String): String = {
+    val flip = "0123456789ABCDEFGHIJKLMNO"
+          .zip("9863752410DCBAOMNLJIKHFGE").toMap
+    lines.toUpperCase
+      .split("[\r\n]+")
+      .map(_.reverse.map(flip.getOrElse(_, "-")).mkString(""))
+      .mkString("\n")
+  }
 
   /** Matches any sequence of characters that are not a key of [[toRelativeSources]] */
   val separator: String = "[^-0-9A-O]+"
