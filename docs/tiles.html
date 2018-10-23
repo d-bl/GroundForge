@@ -38,12 +38,10 @@
         >flanders</a> return to this page.
     </li>
     <li>
-        Make variations on the selected pattern by choosing stitches in the prototype diagram
-        (<a href="javascript:clearStitches()"
-         >clear</a> the stitches)
+        Choose stitches with the bold symbols in the prototype diagram.
     </li>
     <li>
-        Choose contrasting threads in the thread diagram.
+        Choose contrasting threads with the squares in the thread diagram.
     </li>
     <li>
         Start the animation of the pair diagram to make the holes as round as in the thread diagram.
@@ -57,7 +55,9 @@
             -
             <a href="help/Tiles"><img src="help/images/information-icon.png" title="help"></a>
             -
-            <a id="link" href=""><button type="button" title="link to current set of diagrams"><img src="images/link.png"></button></a>
+            <a id="link" href=""><button type="button" title="create link to current set of diagrams"><img alt="link" src="images/link.png"></button></a>
+            -
+            <a><button type="button" onclick="showDiagrams()" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
             -
             <label for="patchWidth">Patch size</label>
             <input type="number" name="patchWidth" id="patchWidth" min="3" max="30" value="3" onchange="showProto()" autofocus>
@@ -452,13 +452,25 @@
         </legend>
         <figure>
             <div>
-            <textarea id="footside" name="footside" rows="12" cols="3" spellcheck="false"
-                      onchange="showProto();showDiagrams()"></textarea>
-                <textarea id="tile" name="tile" rows="12" cols="10" spellcheck="false"
-                          onchange="showProto();showDiagrams()">5</textarea>
-                <textarea id="headside" name="headside" rows="12" cols="3" spellcheck="false"
-                          onchange="showProto();showDiagrams()"></textarea>
-                <button onclick="flip()">flip</button>
+                <table>
+                    <tr>
+                        <td><textarea id="footside" name="footside" rows="12" cols="3"
+                                      spellcheck="false"
+                                      onchange="showProto()"></textarea></td>
+                        <td><textarea id="tile" name="tile" rows="12" cols="10" spellcheck="false"
+                                      onchange="showProto()">5</textarea></td>
+                        <td><textarea id="headside" name="headside" rows="12" cols="3"
+                                      spellcheck="false"
+                                      onchange="showProto()"></textarea></td>
+                        <td><button onclick="flip();return false" title="flip left foot side into right foot side">flip</button></td>
+                    </tr>
+                    <tr>
+                        <td><input id="footsideStitch" name="footsideStitch" type="text" value="ctctt" onchange="showProto()"/></td>
+                        <td><input id="tileStitch" name="tileStitch" type="text" value="ctc" onchange="showProto()"/></td>
+                        <td><input id="headsideStitch" name="headsideStitch" type="text" value="ctctt" onchange="showProto()"/></td>
+                        <td><button onclick="clearStitches();return false">initialize<br>stitches</button></td>
+                    </tr>
+                </table>
             </div>
             <figcaption>Definition</figcaption>
         </figure>
@@ -1131,7 +1143,7 @@
             <li>N = natural repeat (with overlapping tiles)</li>
             <li>h/v = tile with a single row/column (or two)</li>
             <li>" = custom head/foot-side</li>
-            <li>...&#8599; = refers to a sheet with variants that are the same when the holes are made round by the animation</li>
+            <li>...&#8599; = refers to templates with variants that are the same when the holes are made round by the animation</li>
             <li>subscript = same matrix, different tiling hence another pattern</li>
         </ul>
     </fieldset>

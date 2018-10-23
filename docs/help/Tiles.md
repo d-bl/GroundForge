@@ -14,7 +14,7 @@ to give the desired ones a color.
 [calculate]: /GroundForge/help/Thread-Colors
 
 * [Catalogues](#catalogues)
-* [Invisible diagrams](#invisible-diagrams)
+* [Link or wand](#link-or-wand)
 * [Patch size](#patch-size)
 * [Choose stitches](#choose-stitches)
 * [Toggle thread colors](#toggle-thread-colors)
@@ -40,19 +40,20 @@ _For as long as the page is still under construction,
 you may also choose a link from the image captions of the demo section
 on the tiles page itself._
 
-Invisible diagrams
-------------------
-Under circumstances only one of the three diagrams is shown.
-Use the link button (&infin;) to show all diagrams.
+Link or wand
+------------
+Generating the pair diagram and thread diagrams can take a while
+and may block the browser while busy.
+Therefore only the prototype is updated when you change some value on the page.
+To avoid confusion about outdated diagrams the pair diagram and thread diagrams ar hidden.
 
-Reason:
-Updating the other diagrams could use too much resources and block your system.
-Outdated diagrams are cleared to avoid confusion about the state of the page.
+Both the link button and wand button will show the diagrams again.
 
-Benefits:
-Using the link button allows you to step back to that set of diagrams
-with the back button of your browser.
-The link button also allows you to create links to a diagram to share
+The wand button will be faster as it doesn't reload the page.
+
+The link button reloads the page with configured diagrams.
+The back button of your browser can step back to these actions.
+These actions also allow you to create links to a diagram to share
 on your web-site, blog or where ever you like.
 The long links may be a problem in emails. You may consider to tuse a
 [shortening service](https://en.wikipedia.org/wiki/URL_shortening)

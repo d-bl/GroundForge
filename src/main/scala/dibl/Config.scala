@@ -32,6 +32,10 @@ class Config(urlQuery: String) {
   val rightMatrix: Array[String] = getMatrix("headside")
   private val centerMatrix: Array[String] = getMatrix("tile")
 
+  private val leftMatrixStitch: String = fields.getOrElse("footsideStitch", "ctctt")
+  private val rightMatrixStich: String = fields.getOrElse("headsideStitch", "ctctt")
+  private val centerMatrixStitch: String = fields.getOrElse("tileStitch", "ctc")
+
   @JSExport
   val leftMatrixCols: Int = Option(leftMatrix.head).map(_.length).getOrElse(2)
   @JSExport
@@ -95,17 +99,17 @@ class Config(urlQuery: String) {
 
   // repeat foot-side / head-side
 
-  if (leftMarginWidth > 0) replaceItems(leftMatrix, 0)
-  if (offsetRightMargin > 0) replaceItems(rightMatrix, offsetRightMargin)
+  if (leftMarginWidth > 0) replaceItems(leftMatrix, 0, leftMatrixStitch)
+  if (offsetRightMargin > 0) replaceItems(rightMatrix, offsetRightMargin, rightMatrixStich)
 
-  private def replaceItems(inputMatrix: Array[String], offset: Int): Unit = {
+  private def replaceItems(inputMatrix: Array[String], offset: Int, defaultStitch: String): Unit = {
     for {r <- 0 until totalRows} {
       for {c <- 0 until inputMatrix.head.length} {
         val rSource = r % inputMatrix.length
         val id = Stitches.toID(rSource, c + offset)
         val vectorCode = inputMatrix(rSource)(c)
         val stitch = if (vectorCode == '-') ""
-                     else fields.getOrElse(id, "")
+                     else fields.getOrElse(id, defaultStitch)
         itemMatrix(r)(c + offset) = Item(id, vectorCode, stitch, r < inputMatrix.length)
       }
     }
@@ -129,7 +133,7 @@ class Config(urlQuery: String) {
       val id = Stitches.toID(r, c + leftMarginWidth)
       val vectorCode = centerMatrix(r)(c)
       val stitch = if (vectorCode == '-') ""
-                   else fields.getOrElse(id, "ctc")
+                   else fields.getOrElse(id, centerMatrixStitch)
       itemMatrix(rt)(ct + leftMarginWidth) = Item(id, vectorCode, stitch, r == rt && c == ct)
     }
   }

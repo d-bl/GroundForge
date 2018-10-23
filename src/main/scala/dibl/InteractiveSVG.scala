@@ -63,7 +63,7 @@ object InteractiveSVG {
          |    name='${ item.id }'
          |    type='text'
          |    value='${ item.stitch }'
-         |    onchange='showProto();showDiagrams()'
+         |    onchange='showProto()'
          |  ></input>
          |</foreignObject>
          |""".stripMargin

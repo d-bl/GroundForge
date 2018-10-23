@@ -8,6 +8,8 @@ figcaption img { padding-left: 1em; vertical-align: middle; display: inline-bloc
 fieldset fieldset figure div { height: 222px; }
 #pattern figure { display: block; text-align: center; }
 #pattern figure img { padding-top: 0.5em; }
+#pattern input {width: 5em}
+#pattern textarea {min-width: 4.5em}
 
 #threadDiagram, #pairDiagram { resize:both;overflow:auto;display:inline-block;width:250px;height:250px;max-width:784px;max-height:1082px }
 #prototype { width:350px; height:250px; overflow:hidden}

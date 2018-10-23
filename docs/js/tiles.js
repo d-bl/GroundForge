@@ -30,7 +30,6 @@ function submitQuery() {
 }
 function showProto() {
 
-
   var config = dibl.Config().create(submitQuery())
   d3.select("#clones").html(dibl.InteractiveSVG().create(config))
   d3.select("#link").node().href = "?" + submitQuery() // don't extract var, we might now have other form fields
