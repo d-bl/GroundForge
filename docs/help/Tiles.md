@@ -51,35 +51,31 @@ Both the link button and wand button will show the diagrams again.
 
 The wand button will be faster as it doesn't reload the page.
 
-The link button reloads the page with configured diagrams.
+The link button reloads the page with the configured diagrams.
 The back button of your browser can step back to these actions.
 These actions also allow you to create links to a diagram to share
 on your web-site, blog or where ever you like.
-The long links may be a problem in emails. You may consider to tuse a
+The long links may be a problem in emails. You may consider to use a
 [shortening service](https://en.wikipedia.org/wiki/URL_shortening)
-for those occasions.
+for those occasions or cut the stitch arguments (sections like `xxx=ctc&`)
+out of the link.
 
 Patch size
 ----------
 Note that a large patch size makes a diagram slower to render.
-On slow devices like tables and phones that might give
+On slow devices like tablets and phones that might give
 the impression that links to pages with a large patch size
 don't work at all or block the device.
-So create links with small patch sizes, visitors can easily increment.
+So create links with patch sizes just large enough to recognize the pattern,
+visitors can easily increment the size.
 
 When the prototype diagram has a foot side on the right,
 it will usually match only for every so many columns.
 If you want another number, go the "define a repeat" section
 and rotate the rows in the right field.
 
-Not all diagrams work with all values for the patch size.
-Try other values if the thread diagram freezes at its initial state. 
-
-Generating the diagrams at each increment or decrement would slow down
-the process of changing values if not block the the computer altogether.
-To prevent confusion about the state of the diagrams, they are cleared.
-when you are done wih the planned changes you can use the link button
-to show diagrams again. 
+Some diagrams may not work with all values for the patch size.
+Try other values if the thread diagram stays frozen at its initial state. 
 
 Choose stitches
 ---------------
@@ -120,32 +116,31 @@ Advanced users can play with the values to define new patterns from scratch.
 
 ### Define a repeat
 
-You have three fields to fill with  digits and letters of the cheat sheet.
+You have one row with three fields to fill with  digits and letters of the cheat sheet.
+The other row defines the default stitches for the sections above.
 
 The outer fields are optional for a custom foot side. 
 Note that a column more or less for the patch size may invalidate the right foot side. 
-It may not always be possible to define a custom foot sides,
-some attempts between the demo patterns did not yet succeed. 
 
 The position of a digit correlates with a position in the prototype diagram.
 Half circles in the prototype indicate you added a new pair for a next stitch,
 or are not using a pair for a next stitch.
 
 The right foot side may be a mirrored version of the left foot side for some patterns.
-In that case the flip button can set the right field.
+For your convenience the flip button can set the right field from the left.
 You may still have to rotate the rows or adjust the patch width.  
 
 More details on the [advanced design](Reversed-engineering-of-patterns) page.
 
 ### Arrange the repeats
 
-The foot sides are simply repeated, but the centre section has more options. 
+The foot sides are simply repeated vertically, but the centre section has more options. 
 
-The configuration at the bottom of the section is like 
+The configuration at the bottom of the section is more or less like 
 the crank for the first car models with ignition keys:
 the hard way to start your car but usually not needed.
-The image with linked components at the top of the section is the like ignition key:
-the simple way to arrange the tiles.
+The image with linked components at the top of the section is
+like the ignition key: the simple way to arrange the tiles.
 
 The prototype highlights a single tile alias repeat in the top left corner,
 this repeat may span just a single column or row of stitches. 

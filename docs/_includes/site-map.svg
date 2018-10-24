@@ -253,12 +253,12 @@
          transform="scale(1.0472855,0.95484947)"
          xml:space="preserve"
          style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
-         x="54.820518"
+         x="54"
          y="336.62494"
          id="text4156"><tspan
            id="tspan4158"
-           x="54.820518"
-           y="336.62494">/tiles</tspan></text>
+           x="40"
+           y="336.62494">/tiles.html</tspan></text>
     </a>
     <rect
        style="opacity:1;fill:#d35f8d;fill-opacity:0.8;fill-rule:nonzero;stroke:#0a1929;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.6"
@@ -304,8 +304,8 @@
          y="398.75635"
          id="text4144"><tspan
            id="tspan4146"
-           x="200.554"
-           y="398.75635">/sheet</tspan></text>
+           x="187"
+           y="398.75635">/sheet.html</tspan></text>
     </a>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
@@ -544,8 +544,8 @@
          style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
          xml:space="preserve"><tspan
            y="274.32782"
-           x="199.78873"
-           id="tspan4140">/index</tspan></text>
+           x="187"
+           id="tspan4140">/index.html</tspan></text>
     </a>
     <a
        id="a5600"
