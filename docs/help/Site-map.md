@@ -51,7 +51,7 @@ Many squared diagrams can result in the same rounded diagram.
 A tile is a rectangular grid section with stitches.
 
 Withe simple tiling these are repeated in both directions as on a checker board, 
-optionally horizontally shifted by half rectangles as in a brick wall. 
+or horizontally shifted by a half rectangle as in a brick wall. 
 
 With complex tiling the rectangles can be shifted either horizontally
 or vertically by any number of stitches,
