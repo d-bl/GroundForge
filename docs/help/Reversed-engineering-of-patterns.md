@@ -17,15 +17,17 @@ Different methods allow to reproduce a pattern with GroundForge.
 Recognize patterns
 ------------------
 
-The [example pages](examples) are the easiest way to start experimenting with grounds.
+The [catalogue pages](Catalogues) are the easiest way to start experimenting with grounds.
+
 The generated pair diagrams don't care about plaits and something-pin-something
 and draw them as plain cloth stitches.
-Furthermore are the distances between stitches optimized to some average.
+Furthermore, the distances between stitches are optimized to some average.
 So when trying to start with some familiar pattern to make variations,
 you may have to simplify, mirror and distort it
-to recognize it in the [TesseLace Index](TesseLace-Index). 
+to recognize it in the [TesseLace Index](TesseLace-Index)
+or match up with the encoding system of GroundForge.
 
-Let us the process with an example:
+Let us illustrate the process with an example:
 
 ![](/GroundForge/help/images/recognize.png)
 

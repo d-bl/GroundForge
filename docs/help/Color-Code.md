@@ -29,7 +29,7 @@ Twist marks by GroundForge
 --------------------------
 
 The _intention_ is a twist mark wherever there are multiple twists in a pair.
-Open stitches abide this rule. Closed stitches lack twist marks if just one of the pairs need one.
+Closed stitches on the home page lack twist marks if just one of the pairs need one.
 Follow the progress of issue [#104](https://github.com/d-bl/GroundForge/issues/104).
 
 

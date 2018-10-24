@@ -1,17 +1,11 @@
 Tiles
 =====
 
-The [tiles] page is a variant of the [home] page.
-On the tiles page you can't use thread diagrams as pair diagrams,
-but you don't need to wrap your brains around [assigning] stitches to id's.
-It has only two colors in the thread diagram,
-but you don't need to [calculate] thread counts
-to give the desired ones a color.
+The [tiles] page is a variant of the older home page.
+The [site map] provides the context for both and lists their differences.
 
 [tiles]: /GroundForge/tiles.html?tile=5831,-4-7&patchWidth=9&patchHeight=9&shiftColsSE=4&shiftRowsSE=2&shiftColsSW=0&shiftRowsSW=2&
-[home]: /GroundForge
-[assigning]: /GroundForge/help/Choose-Stitches#assign-stitches
-[calculate]: /GroundForge/help/Thread-Colors
+[site map]: /GroundForge/help/Site-map
 
 * [Catalogues](#catalogues)
 * [Link or wand](#link-or-wand)
@@ -27,15 +21,13 @@ to give the desired ones a color.
 
 Catalogues
 ----------
-The links from a catalogue page fill out the forms below the diagrams.
-These forms define a base pattern, advanced users may design
-new base patterns with these forms.
-
+The links from a catalogue page fill out the forms in the advanced section of the page.
+These forms define a base pattern.
 You can vary stitches for the base patterns and check how
 contrasting threads would travel through the ground.
 
 There are more catalogue pages than linked on the tiles page,
-but the other pages link to the [home] page.
+but most links still refer to the older home page.
 _For as long as the page is still under construction,
 you may also choose a link from the image captions of the demo section
 on the tiles page itself._
@@ -45,10 +37,9 @@ Link or wand
 Generating the pair diagram and thread diagrams can take a while
 and may block the browser while busy.
 Therefore only the prototype is updated when you change some value on the page.
-To avoid confusion about outdated diagrams the pair diagram and thread diagrams ar hidden.
+To avoid confusion about outdated diagrams the pair diagram and thread diagrams ar hidden on these occasions.
 
 Both the link button and wand button will show the diagrams again.
-
 The wand button will be faster as it doesn't reload the page.
 
 The link button reloads the page with the configured diagrams.
@@ -79,7 +70,7 @@ Try other values if the thread diagram stays frozen at its initial state.
 
 Choose stitches
 ---------------
-The faint nodes in the prototype diagram are repeats of the bright ones.
+The faint nodes in the prototype diagram repeat the bright ones.
 Click on a bright nodes and a yellow form field should emerge with a code
 for a stitch.
 Type as many `c`'s and `t`'s as you need for the stitch of your choice,
