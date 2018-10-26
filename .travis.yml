@@ -55,7 +55,7 @@ matrix:
       - sed -i -e 's!./.html!index.html/!g'                                  _site/*.html
       - grep 'GroundForge/'    _site/*.html _site/*.html _site/help/*.html _site/*/*.js || test $? -eq 1
       - grep 'io/GroundForge/' _site/*.html _site/*.html _site/help/*.html _site/*/*.js || test $? -eq 1
-      - htmlproofer --help
+      - tree ./_stite
       - htmlproofer ./_site --disable-external --allow-hash-href --assume-extension --empty-alt-ignore
     before_deploy:
       - cd _site && zip -r -q GroundForge-pages.zip *
