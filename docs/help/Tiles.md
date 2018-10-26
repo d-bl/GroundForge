@@ -1,6 +1,7 @@
-Tiles
-=====
-
+---
+layout: default
+title: Tiles
+---
 The [tiles] page is a variant of the older home page.
 The [site map] provides the context for both and lists their differences.
 
@@ -20,7 +21,7 @@ The [site map] provides the context for both and lists their differences.
 
 
 Catalogues
-----------
+==========
 The links from a catalogue page fill out the forms in the advanced section of the page.
 These forms define a base pattern.
 You can vary stitches for the base patterns and check how
@@ -33,7 +34,7 @@ you may also choose a link from the image captions of the demo section
 on the tiles page itself._
 
 Link or wand
-------------
+============
 Generating the pair diagram and thread diagrams can take a while
 and may block the browser while busy.
 Therefore only the prototype is updated when you change some value on the page.
@@ -52,7 +53,7 @@ for those occasions or cut the stitch arguments (sections like `xxx=ctc&`)
 out of the link.
 
 Patch size
-----------
+==========
 Note that a large patch size makes a diagram slower to render.
 On slow devices like tablets and phones that might give
 the impression that links to pages with a large patch size
@@ -69,7 +70,7 @@ Some diagrams may not work with all values for the patch size.
 Try other values if the thread diagram stays frozen at its initial state. 
 
 Choose stitches
----------------
+===============
 The faint nodes in the prototype diagram repeat the bright ones.
 Click on a bright nodes and a yellow form field should emerge with a code
 for a stitch.
@@ -82,7 +83,7 @@ Microsofts Edge browser won't show the yellow form field when clicking a node.
 Use the tab key or shift-tab to browse through all fields and links on the page.
 
 Toggle thread colors
---------------------
+====================
 You may have to scroll/drag the pair diagram to make
 the squares at the start of the threads visible.
 Click these squares to toggle between a black or red color.
@@ -93,20 +94,20 @@ Usually control-shift-plus to zoom in, control-zero to reset,
 on a mac use command for control.
 
 Download
---------
+========
 You can download the diagrams to edit them with an [SVG editor].
 Details for just one type of diagrams on the [reshape patterns](Reshape-Patterns) page.
 
 [SVG editor]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
 
 Advanced usage
---------------
+==============
 The sections below the diagram are the engine under the hood of the car.
 The form fields define the prototype diagram. 
 Advanced users can play with the values to define new patterns from scratch.
 
-### Define a repeat
-
+Define a repeat
+---------------
 You have one row with three fields to fill with  digits and letters of the cheat sheet.
 The other row defines the default stitches for the sections above.
 
@@ -123,8 +124,8 @@ You may still have to rotate the rows or adjust the patch width.
 
 More details on the [advanced design](Reversed-engineering-of-patterns) page.
 
-### Arrange the repeats
-
+Arrange the repeats
+-------------------
 The foot sides are simply repeated vertically, but the centre section has more options. 
 
 The configuration at the bottom of the section is more or less like 
@@ -147,7 +148,7 @@ The purple numbers define the absolute position of the solid tile.
 The green numbers define the position of the arrowed green tile
 relative to the solid tile.
 
-### Demo section
-
+Demo section
+------------
 The demo section is introduced for quick testing during development and bug fixing.
 The introduction at the very top of the page links to catalogues with many more patterns.
