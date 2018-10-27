@@ -113,9 +113,14 @@ function animateDiagram(container) {
 
   // read 'weak' as 'invisible'
   function strength(link){ return link.weak ? link.withPin ? 40 : 10 : 50 }
+  var forceLink = d3
+    .forceLink(linkDefs)
+    .strength(strength)
+    .distance(12)
+    .iterations(30)
   d3.forceSimulation(nodeDefs)
     .force("charge", d3.forceManyBody().strength(-1000))
-    .force("link", d3.forceLink(linkDefs).strength(strength).distance(12).iterations(30))
+    .force("link", forceLink)
     .force("center", d3.forceCenter(372, 526))
     .alpha(0.0035)
     .on("tick", onTick)

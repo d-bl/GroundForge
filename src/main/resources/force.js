@@ -45,9 +45,10 @@ function linksToJS(sLinks) {
 
 // nudges the x/y values in the converted Diagram.nodes
 function applyForce(barrier, center, nodes, links) {
+  function strength(link){ return link.weak ? link.withPin ? 40 : 10 : 50 }
   var forceLink = d3
     .forceLink(links)
-    .strength(function(link){ return link.weak? 5 : 50 })
+    .strength(strength)
     .distance(12)
     .iterations(30)
   d3.forceSimulation(nodes)
