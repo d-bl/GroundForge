@@ -6,10 +6,10 @@ Create mash-ups
 ===============
 
 * [Convenience Forms](#convenience-forms)
-* [Pair and thread diagrams](#pair-and-thread-diagrams)
 * [Diagrams with a square grid](#diagrams-with-a-square-grid)
     + [Fixed layout on a landscape A4](#fixed-layout-on-a-landscape-a4)
     + [Dynamic layout](#dynamic-layout)
+* [Pair and thread diagrams](#pair-and-thread-diagrams)
 
 You can mix and match components of the pages
 or create SVG documents in a JVM or node.js environment.
@@ -35,16 +35,6 @@ The script requires the following CSS:
 
 Some [optional CCS](https://github.com/d-bl/GroundForge/blob/master/docs/assets/css/style.scss)
 on `#stitch-form` elements (ignore the rest) that suites the [architect theme](https://github.com/pages-themes/architect#readme).
-
-Pair and thread diagrams
-------------------------
-
-The javascript for pair and thread diagrams is quite complex,
-even without all the bells and whistles like panning, zooming dragging and downloads.
-Because of the complexity a link to a [demo](../API/)
-(which also includes three JavaScript lines for a diagram on a square grid) 
-and a link to actual the [source code](https://github.com/d-bl/GroundForge/tree/master/docs/API)
-of the demo.
 
 
 Diagrams with a square grid
@@ -116,11 +106,35 @@ The dynamic layout will fit as many diagrams on a row as allowed by your monitor
 </html>
 ```
 
+
 Pair and thread diagrams
 ------------------------
 
-The javascript for pair and thread diagrams is more complex,
+_Deprecated demo_:  
+~~The javascript for pair and thread diagrams on the home page is more complex,
 even without all the bells and whistles like panning, zooming dragging and downloads.
-Because of the complexity just links to the
-[source code](https://github.com/d-bl/GroundForge/tree/master/docs/API)
-for a simple [example page](/GroundForge/API/) with all three types of diagrams.
+Because of the complexity a link to a [demo](../API/)
+(which also includes three JavaScript lines for a diagram on a square grid) 
+and a link to actual the [source code](https://github.com/d-bl/GroundForge/tree/master/docs/API)
+of the demo.
+So far the diagrams as on the home page with generated foot sides but only checker and brick tiling.~~
+
+The tiles page has no bells and whistles. Thus the
+[javascript](https://github.com/d-bl/GroundForge/blob/master/docs/js/tiles.js)
+functions `showDiagrams` and `animateDiagram` are the demo.
+
+In the function `showDiagrams` we find something like
+
+    dibl.NewPairDiagram().create(dibl.Config().create(queryString))
+
+And example of the `queryString` for a pattern (a braid):
+
+    patchWidth=3&patchHeight=5&a1=ctctt&b1=ctctt&c1=ctctt&tile=158&shiftColsSW=0&shiftRowsSW=0&shiftColsSE=0&shiftRowsSE=1
+
+In the deprecated demo that would be the call:
+
+    dibl.D3Data().get("158", 5, 4, 0, 0, "a1=ctctt b1=ctctt c1=ctctt", "checker")
+    
+Somehow we need one column more.
+Possibly because of the attempt to generate a foot side
+which is already embedded in the pattern definition.
