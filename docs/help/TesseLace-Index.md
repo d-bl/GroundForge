@@ -46,9 +46,29 @@ You might need to change some angles and distances to recognize a ground. See th
 {% include tesselaceSample.html nr="376" pattern="B-C-,---5,C-B-,-5--&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=B-C-,---5,C-B-,-5--;checker&patch=5831,-4-7;checker&patch=68,-4;checker&patch=-4-7,5---,-C-B,3158;bricks&patch=5-O-E-,-E-5-O,5-O-E-;bricks" %}
 {% include tesselaceSample.html nr="257" pattern="68,-4,21,-7&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=68,-4,21,-7;checker&patch=L-O-,---5,H-E-,-5--;checker" %}
 {% include tesselaceSample.html nr="135" pattern="5632,34-7&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=5632,34-7;bricks&patch=5-5-,-5--,B-C-,-5-5;bricks&patch=256-,---5,C3B-;bricks&patch=4373,5-53;bricks" %}
+{% include tesselaceSample.html nr="128" pattern="4312,6-78&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4312,6-78;bricks" %}
+
+Virgin alias Rose and bias variations
+-------------------------------------
+
+See also the [Droste](Droste-effect) page, a twist more or less at the first step or alternating stitches in one or two directions and you have another variation. The ID's for the stitches also will have more logic, though they won't stick to the underlying grid position.
+
 {% include tesselaceSample.html nr="130" pattern="5831,-4-7&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=5831,-4-7;bricks&patch=-437,34-7;bricks&patch=4830,--77;bricks" %}
 {% include tesselaceSample.html nr="129" pattern="1483,8-48&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=1483,8-48;bricks&patch=4831,-488,3148,88-4;checker" %}
-{% include tesselaceSample.html nr="128" pattern="4312,6-78&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4312,6-78;bricks" %}
+{% include tesselaceSample.html nr="133" pattern="588-,14-2&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=588-,14-2;bricks" %}
+{% include tesselaceSample.html nr="115" pattern="4831,-488,214-,88-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-488,214-,88-5;checker" %}
+{% include tesselaceSample.html nr="118" pattern="4831,-117,3178,88-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-117,3178,88-4;checker" %}
+{% include tesselaceSample.html nr="117" pattern="4831,-4-7,3158,88-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-4-7,3158,88-4;checker" %}
+{% include tesselaceSample.html nr="123" pattern="4831,-117,5-7-,86-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-117,5-7-,86-5;checker" %}
+{% include tesselaceSample.html nr="080" pattern="4831,-488,6-48,86-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-488,6-48,86-4;checker" %}
+{% include tesselaceSample.html nr="081" pattern="4831,-488,5-4-,86-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-488,5-4-,86-5;checker" %}
+{% include tesselaceSample.html nr="111" pattern="588-,-4-5,6-58,-214&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-,-4-5,6-58,-214;checker" %}
+{% include tesselaceSample.html nr="113" pattern="586-,-115,6-78,-5-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-,-115,6-78,-5-4;checker" %}
+{% include tesselaceSample.html nr="079" pattern="486-,-115,217-,88-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=486-,-115,217-,88-5;checker" %}
+{% include tesselaceSample.html nr="121" pattern="5831,-4-7,6-58,-5-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=5831,-4-7,6-58,-5-4;checker" %}
+{% include tesselaceSample.html nr="122" pattern="4831,-4-7,215-,88-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-4-7,215-,88-5;checker" %}
+{% include tesselaceSample.html nr="124" pattern="4831,-4-7,6-58,86-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-4-7,6-58,86-4;checker" %}
+{% include tesselaceSample.html nr="112" pattern="4831,-117,6-78,86-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-117,6-78,86-4;checker" %}
 
 
 Fish and Lotus variations
@@ -93,32 +113,13 @@ Mixed, shifted under and angle and/or with swim lanes. More under [others](#Othe
 {% include tesselaceSample.html nr="151" pattern="68,-4,21,7-&shiftColsSE=1&shiftRowsSE=4&shiftColsSW=-1&shiftRowsSW=4" patches="patch=68,-4,21,7-;bricks" %}
 {% include tesselaceSample.html nr="165" pattern="43,21,-7,68&shiftColsSE=1&shiftRowsSE=4&shiftColsSW=-1&shiftRowsSW=4" patches="patch=43,21,-7,68;bricks" %}
 
-Virgin or Rose and bias variations
-----------------------------------
-
-See also the [Droste](Droste-effect) page, a twist more or less at the first step or alternating stitches in one or two directions and you have another variation. The ID's for the stitches also will have more logic, though they won't stick to the underlying grid position.
-
-{% include tesselaceSample.html nr="130" pattern="5831,-4-7&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=5831,-4-7;bricks&patch=-437,34-7;bricks&patch=4830,--77;bricks" %}
-{% include tesselaceSample.html nr="129" pattern="1483,8-48&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=1483,8-48;bricks&patch=4831,-488,3148,88-4;checker" %}
-{% include tesselaceSample.html nr="133" pattern="588-,14-2&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=588-,14-2;bricks" %}
-{% include tesselaceSample.html nr="115" pattern="4831,-488,214-,88-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-488,214-,88-5;checker" %}
-{% include tesselaceSample.html nr="118" pattern="4831,-117,3178,88-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-117,3178,88-4;checker" %}
-{% include tesselaceSample.html nr="117" pattern="4831,-4-7,3158,88-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-4-7,3158,88-4;checker" %}
-{% include tesselaceSample.html nr="123" pattern="4831,-117,5-7-,86-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-117,5-7-,86-5;checker" %}
-{% include tesselaceSample.html nr="080" pattern="4831,-488,6-48,86-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-488,6-48,86-4;checker" %}
-{% include tesselaceSample.html nr="081" pattern="4831,-488,5-4-,86-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-488,5-4-,86-5;checker" %}
-{% include tesselaceSample.html nr="111" pattern="588-,-4-5,6-58,-214&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-,-4-5,6-58,-214;checker" %}
-{% include tesselaceSample.html nr="113" pattern="586-,-115,6-78,-5-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-,-115,6-78,-5-4;checker" %}
-{% include tesselaceSample.html nr="079" pattern="486-,-115,217-,88-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=486-,-115,217-,88-5;checker" %}
-{% include tesselaceSample.html nr="121" pattern="5831,-4-7,6-58,-5-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=5831,-4-7,6-58,-5-4;checker" %}
-{% include tesselaceSample.html nr="122" pattern="4831,-4-7,215-,88-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-4-7,215-,88-5;checker" %}
-{% include tesselaceSample.html nr="124" pattern="4831,-4-7,6-58,86-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-4-7,6-58,86-4;checker" %}
-{% include tesselaceSample.html nr="112" pattern="4831,-117,6-78,86-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4831,-117,6-78,86-4;checker" %}
-
 
 Others
 ------
 
+{% include tesselaceSample.html nr="001" pattern="586-,-4-5,5-21,-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-,-4-5,5-21,-5-7;checker" %}
+{% include tesselaceSample.html nr="036" pattern="586-,1112,788-,-4-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-,1112,788-,-4-5;checker&patch=B831,-4-F,21A1,-F-7;checker" %}
+{% include tesselaceSample.html nr="048" pattern="6888,88-7,1121,-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=6888,88-7,1121,-114;checker" %}
 {% include tesselaceSample.html nr="015" pattern="5-O-H-,-L-5-O,E-5-E-&shiftColsSE=3&shiftRowsSE=3&shiftColsSW=-3&shiftRowsSW=3" patches="patch=5-O-H-,-L-5-O,E-5-E-;bricks&patch=586-,---5,2AB-,-7-5;bricks" %}
 {% include tesselaceSample.html nr="138" pattern="4641,9177&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4641,9177;bricks&patch=4841,5377;bricks" %}
 {% include tesselaceSample.html nr="410" pattern="5831,-4-7,3158,-7-4&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=5831,-4-7,3158,-7-4;bricks" %}
@@ -130,10 +131,9 @@ Others
 {% include tesselaceSample.html nr="425" pattern="5831,-4-7,6868,-4-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=5831,-4-7,6868,-4-4;checker&patch=5831,-4-7,6868,-4-4;bricks" %}
 {% include tesselaceSample.html nr="004" pattern="586-,-4-5,2121,-7-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-,-4-5,2121,-7-7;checker&patch=586-,-4-5,6868,-4-4;bricks&patch=5831,-4-7,586-,-4-5;checker" %}
 {% include tesselaceSample.html nr="083" pattern="486-,-486,2111,88-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=486-,-486,2111,88-7;checker&patch=4831,-488,2111,88-7;checker&patch=4831,-488,5-11,86-7;checker" %}
-{% include tesselaceSample.html nr="103" pattern="586-,-4-5,215-,-7-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-,-4-5,215-,-7-5;checker&patch=5831,-4-7,5-5-,-5-5;checker" %}
+{% include tesselaceSample.html nr="103" pattern="586-,-4-5,215-,-7-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-,-4-5,215-,-7-5;checker&patch=5831,-4-7,5-5-,-5-5;checker&patch=74-,885,4-7,151;checker" %}
 {% include tesselaceSample.html nr="106" pattern="4373,5353,5-5-,8315&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4373,5353,5-5-,8315;checker&patch=437-,6325,6-25,8315;checker&patch=5632,56-2,3158,-734;checker" %}
 {% include tesselaceSample.html nr="061" pattern="4632,56-2,6-58,8634&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632,56-2,6-58,8634;checker" %}
-{% include tesselaceSample.html nr="001" pattern="586-,-4-5,5-21,-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-,-4-5,5-21,-5-7;checker" %}
 {% include tesselaceSample.html nr="577" pattern="5-L---H-,-L-O-L-O,--5---5-,-E-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-,-L-O-L-O,--5---5-,-E-H-E-H;bricks" %}
 {% include tesselaceSample.html nr="576" pattern="5-L---H-,-L-O-L-O,--5-K-5-,-E-E-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L---H-,-L-O-L-O,--5-K-5-,-E-E-H-H;bricks" %}
 {% include tesselaceSample.html nr="401" pattern="466-,6315,6-76,8666&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=466-,6315,6-76,8666;bricks" %}
@@ -150,8 +150,7 @@ Others
 {% include tesselaceSample.html nr="041" pattern="6888,14-1,8868,-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=6888,14-1,8868,-114;checker" %}
 {% include tesselaceSample.html nr="054" pattern="588-,14-2,8868,-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-,14-2,8868,-114;checker" %}
 {% include tesselaceSample.html nr="052" pattern="588-,-115,6-78,-214&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-,-115,6-78,-214;checker" %}
-{% include tesselaceSample.html nr="088" pattern="4631,6688,3146,8866&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4631,6688,3146,8866;checker" %}
-{% include tesselaceSample.html nr="140" pattern="4631,6688&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=4631,6688;bricks" %}
+{% include tesselaceSample.html nr="140" pattern="4631,6688,3146,8866&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4631,6688;bricks" %}
 {% include tesselaceSample.html nr="402" pattern="4631,66-7,3156,8866&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=4631,66-7,3156,8866;bricks" %}
 {% include tesselaceSample.html nr="403" pattern="466-,66-5,6-56,8666&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=466-,66-5,6-56,8666;bricks" %}
 {% include tesselaceSample.html nr="428" pattern="466-,6686,6-46,8666&shiftColsSE=2&shiftRowsSE=4&shiftColsSW=-2&shiftRowsSW=4" patches="patch=466-,6686,6-46,8666;bricks" %}
@@ -168,7 +167,6 @@ Others
 {% include tesselaceSample.html nr="033" pattern="586-,-115,6888,-4-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-,-115,6888,-4-4;checker" %}
 {% include tesselaceSample.html nr="034" pattern="586-,-115,588-,-4-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-,-115,588-,-4-5;checker" %}
 {% include tesselaceSample.html nr="035" pattern="586-,-115,5-7-,-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-,-115,5-7-,-5-5;checker" %}
-{% include tesselaceSample.html nr="036" pattern="586-,1112,788-,-4-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-,1112,788-,-4-5;checker" %}
 {% include tesselaceSample.html nr="038" pattern="586-,1112,7-7-,-5-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-,1112,7-7-,-5-5;checker" %}
 {% include tesselaceSample.html nr="039" pattern="586-,-789,2111,-4-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=586-,-789,2111,-4-4;checker" %}
 {% include tesselaceSample.html nr="040" pattern="4632,5683,6-48,8634&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632,5683,6-48,8634;checker" %}
@@ -176,7 +174,6 @@ Others
 {% include tesselaceSample.html nr="043" pattern="588-,1112,8888,-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-,1112,8888,-114;checker" %}
 {% include tesselaceSample.html nr="045" pattern="588-,-115,6888,-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-,-115,6888,-114;checker" %}
 {% include tesselaceSample.html nr="047" pattern="6888,1111,8888,-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=6888,1111,8888,-114;checker" %}
-{% include tesselaceSample.html nr="048" pattern="6888,88-7,1121,-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=6888,88-7,1121,-114;checker" %}
 {% include tesselaceSample.html nr="049" pattern="6888,-788,2111,-114&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=6888,-788,2111,-114;checker" %}
 {% include tesselaceSample.html nr="050" pattern="4632,5683,5-11,8637&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4632,5683,5-11,8637;checker" %}
 {% include tesselaceSample.html nr="053" pattern="588-,8889,4-11,-014&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=588-,8889,4-11,-014;checker" %}
@@ -431,7 +428,7 @@ Others
 {% include tesselaceSample.html nr="713" pattern="5-L-L-K-,-L-L-L-O,--H-5-L-,-E-H-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-,-L-L-L-O,--H-5-L-,-E-H-E-H;bricks" %}
 {% include tesselaceSample.html nr="714" pattern="5-L-L-K-,-L-L-L-O,H-H-5---,-H-H-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-,-L-L-L-O,H-H-5---,-H-H-H-E;bricks" %}
 {% include tesselaceSample.html nr="715" pattern="5-L-L-K-,-L-L-L-O,--H-H-5-,-E-H-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-,-L-L-L-O,--H-H-5-,-E-H-H-H;bricks" %}
-{% include tesselaceSample.html nr="716" pattern="5-L-L-K-,-L-L-L-O,H-H-H-H-,-H-H-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-,-L-L-L-O,H-H-H-H-,-H-H-H-H;bricks" %}
+{% include tesselaceSample.html nr="716" pattern="5-L-L-K-,-L-L-L-O,H-H-H-H-,-H-H-H-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-,-L-L-L-O,H-H-H-H-,-H-H-H-H;bricks&patch=E-22,86-M,-25-;checker&patch=122,888,14-;checker" %}
 {% include tesselaceSample.html nr="718" pattern="5-L-L-K-,-L-K-5-O,L-L-O-L-,-E-E-E-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-,-L-K-5-O,L-L-O-L-,-E-E-E-E;bricks" %}
 {% include tesselaceSample.html nr="719" pattern="5-L-L-K-,-L-K-5-O,5-L-O-K-,-E-E-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-,-L-K-5-O,5-L-O-K-,-E-E-E-H;bricks" %}
 {% include tesselaceSample.html nr="720" pattern="5-L-L-K-,-L-K-5-O,5-L-O---,-E-E-H-E&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-,-L-K-5-O,5-L-O---,-E-E-H-E;bricks" %}
@@ -439,5 +436,5 @@ Others
 {% include tesselaceSample.html nr="722" pattern="5-L-L-K-,-L-K-5-O,--5-O-L-,-E-E-E-H&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=-4&shiftRowsSW=4" patches="patch=5-L-L-K-,-L-K-5-O,--5-O-L-,-E-E-E-H;bricks" %}
 {% include tesselaceSample.html nr="095" pattern="5632,56-2,6-58,-534&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=5632,56-2,6-58,-534;checker&patch=4632,56-2,5-5-,8635;checker&patch=4353,5353,5-5-,86-5;checker&patch=435-,6325,6-25,86-5;checker" %}
 
-
+<div style="height:5000" comment="place holder to make anchors work for last lines"/>
  

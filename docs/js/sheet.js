@@ -6,12 +6,17 @@ function load() {
 
   // for each key-value pair in the URL query
   location.replace(/[?&]+([^=&]+)(=([^&]*))?/gi, function(m,key,m2,value) {
-    var values = decodeURIComponent(value).replace(/[+]/g, " ").split(";")
-    if (values.length == 2) {
-      var singleSheet = new dibl.SheetSVG(2, "height='100mm' width='100mm'", "PATTERN" + nr++)
-      multiSheet.add(values[0], values[1])
-      singleSheet.add(values[0], values[1])
-      container.innerHTML += (singleSheet.toSvgDoc().trim())
+    if (key == "img") {
+      container.innerHTML += "<p>When the holes are made as round as possible,<br>the pattern(s) become:<br>"
+                          +"<img src='help/tl/"+value+".png'/><p>"
+    } else {
+      var values = decodeURIComponent(value).replace(/[+]/g, " ").split(";")
+      if (values.length == 2) {
+        var singleSheet = new dibl.SheetSVG(2, "height='100mm' width='100mm'", "PATTERN" + nr++)
+        multiSheet.add(values[0], values[1])
+        singleSheet.add(values[0], values[1])
+        container.innerHTML += (singleSheet.toSvgDoc().trim())
+      }
     }
   })
   document.getElementById("download").href = 'data:image/svg+xml,' +
