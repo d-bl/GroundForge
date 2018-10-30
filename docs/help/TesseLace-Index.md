@@ -23,8 +23,8 @@ by Veronika Irvine.
 
 Groups of images
 - [Common Grounds](#common-grounds)
+- [Virgin alias Rose and bias variations](#virgin-alias-rose-and-bias-variations)
 - [Fish and Lotus variations](#fish-and-lotus-variations)
-- [Virgin or Rose and bias variations](#virgin-or-rose-and-bias-variations)
 - [Others](#others)
 
 Note that the choice to put a pattern in a group may be arbitrary, duplicating too many in multiple groups would make the page too slow.
@@ -437,4 +437,3 @@ Others
 {% include tesselaceSample.html nr="095" pattern="5632,56-2,6-58,-534&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=5632,56-2,6-58,-534;checker&patch=4632,56-2,5-5-,8635;checker&patch=4353,5353,5-5-,86-5;checker&patch=435-,6325,6-25,86-5;checker" %}
 
 <div style="height:5000" comment="place holder to make anchors work for last lines"/>
- 
