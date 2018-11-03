@@ -163,7 +163,7 @@ A trick allows to create foot sides in the thread diagram. For that purpose
   For the path taken by contrasting pairs it is only important
   whether the number of twists are odd or even.
   
-![](/GroundForge/blob/master/docs/help/images/foot-sides.png)
+![](/GroundForge/help/images/foot-sides.png)
 
 Demo section
 ------------
