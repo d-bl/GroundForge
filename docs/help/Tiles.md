@@ -162,6 +162,8 @@ A trick allows to create foot sides in the thread diagram. For that purpose
 * Additional twist in the foot side pair can prevent distortion of the diagram.
   For the path taken by contrasting pairs it is only important
   whether the number of twists are odd or even.
+  
+  ![images/foot-sides.png]
 
 Demo section
 ------------
