@@ -155,10 +155,12 @@ A trick allows to create foot sides in the thread diagram. For that purpose
 * extend the pattern in the foot side fields under "define a repeat".
   The screenshots annotate these sections with dark green borders.
 * Initialize the stitches with `-`, `cttct`, `-`.
-* The `cttct` keeps all pairs parallel in a zig-zagging way.
-  Toggling the color of some of the pairs might give a clue where to trim the lace.
-* A dash means "do nothing" at this spot, allowing to trim the lace while a footside emerges.
-  Don't worry about the dangling bobbins next to the pattern.
+  * The `cttct` keeps all pairs parallel in a zig-zagging way.
+    Toggling the color of some of the pairs might give a clue where to trim the lace.
+  * A dash means "do nothing" at this spot, allowing to trim the lace while a footside emerges.
+    Don't worry about the dangling bobbins next to the pattern.
+* Try wich stitches you need for the desired footside.
+  On the left what Mary Niven calls the old edging, on the right the modern edging.
 * Additional twist in the foot side pair can prevent distortion of the diagram.
   For the path taken by contrasting pairs in the final design it is only important
   whether the number of twists are odd or even.
