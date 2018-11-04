@@ -153,15 +153,16 @@ Foot side tricks
 ----------------
 A trick allows to create foot sides in the thread diagram. For that purpose
 * extend the pattern in the foot side fields under "define a repeat".
-  The first diagram in the screenshots shows the section to use for the example.
+  The screenshots annotate these sections with dark green borders.
 * Initialize the stitches with `-`, `cttct`, `-`.
-* The `cttct` keeps all pair parallel in a zig-zagging way.
-  Toggling the color of pairs might give a clue where to trim the lace.
-* A dash means "do nothing" at this spot.
+* The `cttct` keeps all pairs parallel in a zig-zagging way.
+  Toggling the color of some of the pairs might give a clue where to trim the lace.
+* A dash means "do nothing" at this spot, allowing to trim the lace while a footside emerges.
   Don't worry about the dangling bobbins next to the pattern.
 * Additional twist in the foot side pair can prevent distortion of the diagram.
-  For the path taken by contrasting pairs it is only important
+  For the path taken by contrasting pairs in the final design it is only important
   whether the number of twists are odd or even.
+* The traditional cloth stitch pairs of traditional footsides won't influence the paths of contrasting pairs.
   
 ![](/GroundForge/help/images/foot-sides.png)
 
