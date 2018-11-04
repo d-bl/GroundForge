@@ -160,7 +160,7 @@ A trick allows to create foot sides in the thread diagram. For that purpose
   * A dash means "do nothing" at this spot, allowing to trim the lace while a footside emerges.
     Don't worry about the dangling bobbins next to the pattern.
 * Try wich stitches you need for the desired footside.
-  On the left what Mary Niven calls the old edging, on the right the modern edging.
+  On the left what Mary Niven calls the old edging of flanders lace, on the right the modern edging.
 * Additional twist in the foot side pair can prevent distortion of the diagram.
   For the path taken by contrasting pairs in the final design it is only important
   whether the number of twists are odd or even.
