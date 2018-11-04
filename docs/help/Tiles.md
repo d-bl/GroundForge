@@ -17,7 +17,7 @@ The [site map] provides the context for both and lists their differences.
 * [Advanced usage](#advanced-usage)
   + [Define a repeat](#define-a-repeat)
   + [Arrange the repeats](#arrange-the-repeats)
-  + [Foot side tricks](#foot-side-tricks)
+  + [Foot side trick](#foot-side-trick)
   + [Demo section](#demo-section)
 
 
@@ -149,10 +149,11 @@ The purple numbers define the absolute position of the solid tile.
 The green numbers define the position of the arrowed green tile
 relative to the solid tile.
 
-Foot side tricks
-----------------
-A trick allows to create foot sides in the thread diagram. For that purpose
-* extend the pattern in the foot side fields under "define a repeat".
+Foot side trick
+---------------
+A trick allows to create foot sides in the thread diagram.
+It is a trick because the pair diagram won't reflect the the thread diagram along the edges.
+* Extend the pattern in the foot side fields under "define a repeat".
   The screenshots annotate these sections with dark green borders.
 * Initialize the stitches with `-`, `cttct`, `-`.
   * The `cttct` keeps all pairs parallel in a zig-zagging way.
