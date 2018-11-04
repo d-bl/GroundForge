@@ -158,14 +158,17 @@ It is a trick because the pair diagram won't reflect the the thread diagram alon
 * Initialize the stitches with `-`, `cttct`, `-`.
   * The `cttct` keeps all pairs parallel in a zig-zagging way.
     Toggling the color of some of the pairs might give a clue where to trim the lace.
-  * A dash means "do nothing" at this spot, allowing to trim the lace while a footside emerges.
+  * A dash means "do nothing" at this spot, allowing to trim the lace while a foot side emerges.
     Don't worry about the dangling bobbins next to the pattern.
-* Try wich stitches you need for the desired footside.
-  On the left what Mary Niven calls the old edging of flanders lace, on the right the modern edging.
+* Try which stitches you need for the desired foot side.
+  On the left what Mary Niven calls the old edging of Flanders lace, on the right the modern edging.
+  Note that on the right one column uses only 1 in every four stitches.
+  Dropping not used columns in the repeat definition may invalidate a solution.
+  After all it is just a trick, like a lace maker forgetting so many stitches that the hole becomes a foot side.
 * Additional twists in the foot side pair can prevent distortion of the diagram.
   For the path taken by contrasting pairs in the final design it is only important
   whether the number of twists are odd or even.
-* The traditional cloth stitch pairs of traditional footsides won't influence the paths of contrasting pairs.
+* The traditional cloth stitch pairs of traditional foot sides won't influence the paths of contrasting pairs.
   
 ![](/GroundForge/help/images/foot-sides.png)
 
