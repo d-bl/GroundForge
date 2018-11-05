@@ -155,6 +155,8 @@ A trick allows to create foot sides in the thread diagram.
 Because it is a trick the pair diagram won't reflect the the thread diagram along the edges.
 * Extend the pattern in the foot side fields under "define a repeat".
   The screenshots annotate these sections with dark green borders.
+  Orange arcs indicate rows and columns that should be identical.
+  Orange arrows indicate what to copy.
 * Initialize the stitches with `-`, `cttct`, `-`.
   * The `cttct` keeps all pairs parallel in a zig-zagging way.
     Toggling the color of some of the pairs might give a clue where to trim the lace.
