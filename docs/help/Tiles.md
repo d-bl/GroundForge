@@ -157,6 +157,9 @@ Because it is a trick the pair diagram won't reflect the the thread diagram alon
   The screenshots annotate these sections with dark green borders.
   Orange arcs indicate rows and columns that should be identical.
   Orange arrows indicate what to copy.
+  The first column of the left tile should equal the first column beyond the tile.
+  The first column before the left tile should equal the last column of the right tile.
+  The first row of the tiles should equal the first row beyond the tiles.
 * Initialize the stitches with `-`, `cttct`, `-`.
   * The `cttct` keeps all pairs parallel in a zig-zagging way.
     Toggling the color of some of the pairs might give a clue where to trim the lace.
