@@ -158,7 +158,7 @@ Because it is a trick the pair diagram won't reflect the the thread diagram alon
   Orange arcs indicate rows and columns that should be identical.
   Orange arrows indicate what to copy.
   The first column of the left tile should equal the first column beyond the tile.
-  The first column before the left tile should equal the last column of the right tile.
+  The first column before the right tile should equal the last column of the right tile.
   The first row of the tiles should equal the first row beyond the tiles.
 * Initialize the stitches with `-`, `cttct`, `-`.
   * The `cttct` keeps all pairs parallel in a zig-zagging way.
