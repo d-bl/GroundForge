@@ -152,11 +152,9 @@ relative to the solid tile.
 Foot side trick
 ---------------
 A trick allows to create foot sides in the thread diagram.
-Because it is a trick the pair diagram won't reflect the the thread diagram along the edges.
 * Extend the pattern in the foot side fields under "define a repeat".
-  The screenshots annotate these sections with dark green borders.
+  The screenshots annotate these sections with purple borders.
   Orange arcs indicate rows and columns that should be identical.
-  Orange arrows indicate what to copy.
   The first column of the left tile should equal the first column beyond the tile.
   The first column before the right tile should equal the last column of the right tile.
   The first row of the tiles should equal the first row beyond the tiles.
@@ -165,16 +163,22 @@ Because it is a trick the pair diagram won't reflect the the thread diagram alon
     Toggling the color of some of the pairs might give a clue where to trim the lace.
   * A dash means skip this stitch, allowing to trim the lace while a foot side emerges.
     Don't worry about the dangling bobbins next to the pattern.
-* Try which stitches you need for the desired foot side.
-  On the left what Mary Niven calls the old edging of Flanders lace, on the right the modern edging.
-  Note that on the right one column uses only 1 in every four stitches.
-  Dropping not used columns in the repeat definition may invalidate a solution.
-  After all it is just a trick, like a lace maker forgetting so many stitches that the hole becomes a foot side.
+
+Try which of the skipped stitches improve the foot side.
+On the left what Mary Niven calls the old edging of Flanders lace, on the right the modern edging.
+Note that some columns use only some stitches.
+Dropping not used columns on the outsides may invalidate a solution,
+after all it is just a trick, like a lace maker forgetting so many stitches that the hole becomes a foot side.
+
+Notes:
 * Additional twists in the foot side pair can prevent distortion of the diagram.
   For the path taken by contrasting pairs in the final design it is only important
   whether the number of twists are odd or even.
 * The traditional cloth stitch pairs of traditional foot sides won't influence the paths of contrasting pairs.
-  
+
+Note that the bottom screenshots have less columns therefore another matrix on the right.
+Note also that the pair diagram doesn't match the thread diagram.
+After all it is just a trick to see how the foot sides influence the flow of contrasting threads.
 ![](/GroundForge/help/images/foot-sides.png)
 
 Demo section
