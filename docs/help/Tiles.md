@@ -112,7 +112,7 @@ Define a repeat
 You have one row with three fields to fill with  digits and letters of the cheat sheet.
 The other row defines the default stitches for the sections above.
 
-The outer fields are optional for a custom foot side. 
+The outer panels are optional for a custom foot side. 
 Note that a column more or less for the patch size may invalidate the right foot side. 
 
 The position of a digit correlates with a position in the prototype diagram.
@@ -151,8 +151,12 @@ relative to the solid tile.
 
 Foot side trick
 ---------------
-A trick allows to create foot sides in the thread diagram.
-* Extend the pattern in the foot side fields under "define a repeat".
+Skipping stitches in the outer columns of the prototype pattern
+may cause *a* foot side in the thread diagram.
+Strategically un-skipping some of these stitches may cause a *nice* foot side.
+
+The steps to follow
+* Extend the pattern in side panels under "define a repeat".
   The screenshots annotate these sections with purple borders.
   Orange arcs indicate rows and columns that should be identical.
   The first column of the left tile should equal the first column beyond the tile.
