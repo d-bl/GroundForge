@@ -157,7 +157,7 @@ Strategically un-skipping some of these stitches may cause a *nice* foot side.
 
 The steps to follow
 * Extend the pattern in side panels under "define a repeat".
-  The screenshots annotate these sections with purple borders.
+  The screenshots annotate these sections with blue borders.
   Orange arcs indicate rows and columns that should be identical.
   The first column of the left tile should equal the first column beyond the tile.
   The first column before the right tile should equal the last column of the right tile.
