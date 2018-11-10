@@ -62,7 +62,7 @@ don't work at all or block the device.
 So create links with patch sizes just large enough to recognize the pattern,
 visitors can easily increment the size.
 
-When the prototype diagram has a foot side on the right,
+When a diagram has a foot side on the right,
 it will usually match only for every so many columns.
 If you want another number, go the "define a repeat" section
 and rotate the rows in the right field.
@@ -79,6 +79,9 @@ Type as many `c`'s and `t`'s as you need for the stitch of your choice,
 or use `l`'s and `r`'s for a left twist or right twist.
 
 {% include stitches.html %}
+
+Stitches in the outer columns may show up black hand have a `-` in the input field.
+Unless you know what you are doing, don't change these input fields.
 
 Microsofts Edge browser won't show the yellow form field when clicking a node.
 Use the tab key or shift-tab to browse through all fields and links on the page.
@@ -154,9 +157,11 @@ Foot side trick
 Skipping stitches in the outer columns of the prototype pattern
 may cause *a* foot side in the thread diagram.
 Strategically un-skipping some of these stitches may cause a *nice* foot side.
+It is just a trick to study the influence of foot sides on the paths of contrasting threads,
+the pair diagram won't match the thread digram any more.
 
 The steps to follow
-* Extend the pattern in side panels under "define a repeat".
+* Extend the pattern in the side panels under "define a repeat".
   The screenshots annotate these sections with blue borders.
   Orange arcs indicate rows and columns that should be identical.
   The first column of the left tile should equal the first column beyond the tile.
@@ -166,24 +171,23 @@ The steps to follow
   * The `cttct` keeps all pairs parallel in a zig-zagging way.
     Toggling the color of some of the pairs might give a clue where to trim the lace.
   * A dash means skip this stitch, allowing to trim the lace while a foot side emerges.
-    Don't worry about the dangling bobbins next to the pattern.
+    Don't worry about the floating bobbins next to the pattern.
+    When skipping stitches  in the middle of the pattern,
+    the floating bobbins may stay somewhere around the skipped stitch.
 
-Try which of the skipped stitches improve the foot side.
-On the left what Mary Niven calls the old edging of Flanders lace, on the right the modern edging.
+Try which of the skipped stitches improve the foot side when not skipped.
+The screen shots show on the left what Mary Niven calls the old edging of Flanders lace, on the right the modern edging.
 Note that some columns use only some stitches.
-Dropping not used columns on the outsides may invalidate a solution,
-after all it is just a trick, like a lace maker forgetting so many stitches that the hole becomes a foot side.
+Dropping not used columns on the outsides may re-introduce fringes.
 
 Notes:
 * Additional twists in the foot side pair can prevent distortion of the diagram.
   For the path taken by contrasting pairs in the final design it is only important
   whether the number of twists are odd or even.
-* The traditional cloth stitch pairs of traditional foot sides won't influence the paths of contrasting pairs.
+* The cloth stitch pairs of traditional foot sides won't influence the paths of contrasting pairs.
 
-Note that the bottom screenshots have less columns therefore another matrix on the right.
-Note also that the pair diagram doesn't match the thread diagram.
-After all it is just a trick to see how the foot sides influence the flow of contrasting threads.
-![](/GroundForge/help/images/foot-sides.png)
+Note that the bottom screenshots have less columns and therefore another matrix on the right.
+![](images/foot-sides.png)
 
 Demo section
 ------------
