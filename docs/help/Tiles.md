@@ -169,8 +169,10 @@ The steps to follow
   The first row of the tiles should equal the first row beyond the tiles.
 * Initialize the stitches with `-`, `cttct`, `-`.
   * The `cttct` keeps all pairs parallel in a zig-zagging way.
-    Toggling the color of some of the pairs might give a clue where to trim the lace.
-  * A dash means skip this stitch, allowing to trim the lace while a foot side emerges.
+    Toggling the color of some of the pairs might give a clue where to trim the lace.  
+    For math wizzards: see figure 12-c and it's context in "Developing a Mathematical Model for Bobbin Lace"
+    and "Drawing bobbin lace graphs", pdf-links on [tesselace.com](https://tesselace.com/research/)
+  * A dash means skip this stitch, it trims the lace while a foot side emerges.
     Don't worry about the floating bobbins next to the pattern.
     When skipping stitches  in the middle of the pattern,
     the floating bobbins may stay somewhere around the skipped stitch.
