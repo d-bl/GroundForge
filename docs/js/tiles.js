@@ -81,11 +81,10 @@ function showDiagrams() {
   threadContainer.html(dibl.D3jsSVG().render(threadDiagram, "2px", markers, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
   if (threadDiagram.jsNodes().length == 1 || threadContainerNode.innerHTML.indexOf("Need a new pair from") >= 0)  return
 
-  animateDiagram(threadContainer)
-  scrollToIfPossible(threadContainerNode, 75, 175)
+  animateDiagram(threadContainer, 744, 1052)
   threadContainer.selectAll(".threadStart").on("click", paintThread)
 }
-function animateDiagram(container) {
+function animateDiagram(container, forceCenterX, forceCenterY) {
 
   var diagram = container.node().data
   var nodeDefs = diagram.jsNodes()
@@ -121,7 +120,7 @@ function animateDiagram(container) {
   d3.forceSimulation(nodeDefs)
     .force("charge", d3.forceManyBody().strength(-1000))
     .force("link", forceLink)
-    .force("center", d3.forceCenter(372, 526))
+    .force("center", d3.forceCenter(forceCenterX, forceCenterY))
     .alpha(0.0035)
     .on("tick", onTick)
 }
