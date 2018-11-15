@@ -41,6 +41,7 @@ function showProto() {
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
   d3.select("#prototype").style("height", (config.totalRows * 27 + 30) + "px"
                         ).style("width", (config.totalCols * 27 + 60) + "px")
+  return config
 }
 function flip(){
   var left = d3.select("#footside").node().value
@@ -61,7 +62,7 @@ function scrollToIfPossible(container, x, y) {
     container.scrollLeft = x
   }
 }
-function showDiagrams() {
+function showDiagrams(config) {
 
   d3.select('#animations').style('display',"inline-block")
 
@@ -69,7 +70,8 @@ function showDiagrams() {
 
   var pairContainer = d3.select("#pairDiagram")
   var pairContainerNode = pairContainer.node()
-  var config = dibl.Config().create(submitQuery())
+  if (!config)
+      var config = dibl.Config().create(submitQuery())
   var pairDiagram = pairContainerNode.data = dibl.NewPairDiagram().create(config)
   pairContainer.html(dibl.D3jsSVG().render(pairDiagram, "1px", markers, 744, 1052))
   scrollToIfPossible(pairContainerNode,0,0)
@@ -156,9 +158,7 @@ function load() {
   keyValueStrings.forEach(setField)
   showProto() // this creates a dynamic part of the form
   keyValueStrings.forEach(setField) // fill the form fields again
-  showProto()
-  if (keyValueStrings.length >= 7 ) // TODO this is not a good safeguard against invalid/incomplete search arguments
-    showDiagrams()
+  showDiagrams(showProto())
 }
 function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, patchWidth, patchHeight) {
 
@@ -173,8 +173,7 @@ function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footsi
   d3.select('#shiftRowsSW').property("value", shiftRowsSW)
 
   scrollIntoViewIfPossible(d3.select("#diagrams").node())
-  showProto()
-  showDiagrams()
+  showDiagrams(showProto())
 }
 function asChecker() {
 
