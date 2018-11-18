@@ -16,9 +16,9 @@ _A toolbox to design bobbin lace grounds with matching sets of pair/thread diagr
 DEMO's
 ======
 
-A [dressed up](https://d-bl.github.io/GroundForge/) version and a dressed down [API](/GroundForge/API/index.html) version.
-The latter shows a starting point to configure your own web interface or embed just some of the diagrams on your own web page,
-though you may want to start by injecting the `show-graph.js` of the dressed up version into the dressed down version. 
+A [dressed up](https://d-bl.github.io/GroundForge/tiles?patchWidth=12&patchHeight=12&a1=ct&b1=ct&c1=ctc&d1=ctc&b2=ctc&d2=ctc&a3=ct&c3=ct&footside=b,-,a,-&tile=831,4-7,-5-&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2) version and a dressed down [API](https://d-bl.github.io/GroundForge/API/) version.
+The latter is somewhat outdated.
+It intends to show a starting point to configure your own web interface or embed just some of the diagrams on your own web page. 
 See also the [API](https://d-bl.github.io/GroundForge/docs/API.md) for other environments than a web-browser.
 
 
