@@ -51,21 +51,30 @@ Using data from TesseLace
 
 Scientific research presented at [TesseLace] resulted in patterns defined by matrices.
 These patterns are alternatives for the `js/sample.js` used for the proof of concept.
-GroundForge uses a [compact] matrix format using a character to tag a node. The character defines the composition of incoming pairs of the node.
-The `src/maini/scala` code compiled into `docs/js/GroundForge-opt.js` transforms these matrices into data for D3js.
-
-The geometric information within the matrices is used to initialise the thread diagrams, speeding up the animation as explained for the proof of concept.
-These [pages] were used to create the [TesseLace index] images for a selection of patterns.
+GroundForge uses a [compact] matrix format using a character to tag a node.
+The character defines the composition of incoming pairs of the node.
+The class [TesselaceThumbs] generated the SVG versions of the images for the [TesseLace index].
+A batch script with InkScape exports converted these images into PNG. 
 The diagrams lack the original geometric information after completion of the animation,
-so topological duplicates were removed from the generated index.
-Downloadable pricking prototypes provide geometric variations that can be customised into intermediate and other variations.
+so topological duplicates were merged into single images.
+The geometric variations are provided via a link, they can be downloaded as SVG documents
+and customised into intermediate and other variations that are not bound to a square grid.
 
-The thread diagrams are not generated from the matrices,
-but from the generated JSon data for pair diagrams by replacing nodes with stitches.
+The matrices are converted to node and link objects to define pair diagrams.
+The [D3jsSVG] object turns these nodes and links to the initial SVG documents.
+The geometric information within the matrices is used for the initial coordinates of the nodes.
+JSon data generated from these [node] and [link] objects provides a hook
+for the D3js library to adjust the coordinates of the nodes. 
+
+The thread diagrams are generated from the nodes and links of the pair diagram.
+Each node is replaced with a set of linked nodes as defined by the sequence of twist and cross actions.
 To keep track of the threads while constructing the diagram, 
-the algorithm has to figure out a working order to create the lace just like a real lace maker does.
+the algorithm figures out a working order to create the lace just like a real lace maker does.
 
-[pages]: https://github.com/d-bl/GroundForge/blob/master/src/test/resources/
+[D3jsSVG]: https://github.com/d-bl/GroundForge/blob/master/src/main/scala/dibl/D3jsSVG.scala
+[link]: https://github.com/d-bl/GroundForge/blob/918ab7aa3601e709475aa4b80baa388f2bd1161e/src/main/scala/dibl/LinkProps.scala#L36-L44
+[node]: https://github.com/d-bl/GroundForge/blob/918ab7aa3601e709475aa4b80baa388f2bd1161e/src/main/scala/dibl/NodeProps.scala#L27-L32
+[TesselaceThumbs]: https://github.com/d-bl/GroundForge/blob/918ab7aa3601e709475aa4b80baa388f2bd1161e/src/test/scala/dibl/TesselaceThumbs.scala#L66
 [compact]: https://d-bl.github.io/GroundForge/docs/images/legend.png
 [TesseLace]: http://TesseLace.com
 [TesseLace index]: https://d-bl.github.io/GroundForge/help/TesseLace-Index
