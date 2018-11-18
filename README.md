@@ -76,7 +76,7 @@ the algorithm figures out a working order to create the lace just like a real la
 [link]: https://github.com/d-bl/GroundForge/blob/918ab7aa3601e709475aa4b80baa388f2bd1161e/src/main/scala/dibl/LinkProps.scala#L36-L44
 [node]: https://github.com/d-bl/GroundForge/blob/918ab7aa3601e709475aa4b80baa388f2bd1161e/src/main/scala/dibl/NodeProps.scala#L27-L32
 [TesselaceThumbs]: https://github.com/d-bl/GroundForge/blob/918ab7aa3601e709475aa4b80baa388f2bd1161e/src/test/scala/dibl/TesselaceThumbs.scala#L66
-[compact]: https://d-bl.github.io/GroundForge/docs/images/legend.png
+[compact]: https://d-bl.github.io/GroundForge/help/images/matrix-template.png
 [TesseLace]: http://TesseLace.com
 [TesseLace index]: https://d-bl.github.io/GroundForge/help/TesseLace-Index
 
