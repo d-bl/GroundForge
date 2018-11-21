@@ -24,7 +24,7 @@ function load() {
           "&footside=" + matrix +
           "&tile=" + matrix +
           "&footsideStitch=-&tileStitch=ctc" +
-          "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4" +
+          "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
   var config = dibl.Config().create(q)
   var pairDiagram = dibl.NewPairDiagram().create(config)
   var threadDiagram = dibl.ThreadDiagram().create(pairDiagram)
