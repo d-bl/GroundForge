@@ -15,66 +15,54 @@
 */
 function load() {
 
-  var matrix = "586- -789 2111 -4-4"
-  var nrOfRows = 12
-  var nrOfCols = 9
-  var shiftLeft = 1
-  var shiftUp = 1
-  var stitches = ''
-
+  var matrix = "586-,-789,2111,-4-4"
   var patterns = new dibl.SheetSVG(2, "height='90mm' width='100mm'")
   patterns.add(matrix, "checker")
   document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
 
-  var data = dibl.D3Data().get(matrix, nrOfRows, nrOfCols, shiftLeft, shiftUp, stitches, "checker")
-  showGraph({
-    container: d3.select('#pairs'),
-    nodes: data.pairNodes(),
-    links: data.pairLinks(),
-    diagram: data.pairDiagram,
-    stroke: "1px"
-  })
-  showGraph({
-    container: d3.select('#threads'),
-    nodes: data.threadNodes(),
-    links: data.threadLinks(),
-    diagram: data.threadDiagram,
-    stroke: "2px"
-  })
+  var q = "patchWidth=9&patchHeight=12" +
+          "&footside=" + matrix +
+          "&tile=" + matrix +
+          "&footsideStitch=-&tileStitch=ctc" +
+          "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4" +
+  var config = dibl.Config().create(q)
+  var pairDiagram = dibl.NewPairDiagram().create(config)
+  var threadDiagram = dibl.ThreadDiagram().create(pairDiagram)
+  showGraph(d3.select('#pairs'), pairDiagram, "1px")
+  showGraph(d3.select('#threads'), threadDiagram, "2px")
 }
-function showGraph(args) {
+function showGraph(container, diagram, stroke) {
     var svg = dibl.D3jsSVG()
     var markers = true // use false for slow devices and IE-11, set them at onEnd
-    args.container.node().innerHTML = svg.render(args.diagram, args.stroke, markers, 400, 400)
-    var links = args.container.selectAll(".link").data(args.links)
-    var nodes = args.container.selectAll(".node").data(args.nodes)
+    container.node().innerHTML = svg.render(diagram, stroke, markers, 400, 400)
+    var nodeDefs = diagram.jsNodes()
+    var linkDefs = diagram.jsLinks()//can't inline
+    var links = container.selectAll(".link").data(linkDefs)
+    var nodes = container.selectAll(".node").data(nodeDefs)
     function moveNode(jsNode) {
         return 'translate('+jsNode.x+','+jsNode.y+')'
     }
     function drawPath(jsLink) {
         var s = jsLink.source
         var t = jsLink.target
-        var l = args.diagram.link(jsLink.index)
-        return  svg.pathDescription(l, s.x, s.y, t.x, t.y)
+        var l = diagram.link(jsLink.index)
+        return svg.pathDescription(l, s.x, s.y, t.x, t.y)
     }
     function onTick() {
         links.attr("d", drawPath);
         nodes.attr("transform", moveNode);
-        count++
     }
-    function onEnd() {
-        console.log("time for " + count + " ticks " + (new Date().getTime() - tickStart))
-    }
-    var count = 0
-    var tickStart = new Date().getTime()
-
-    // duplication of src/main/resources/force.js.applyForce(...)
-    function strength(link){ return link.weak ? 1 : 50 }
-    d3.forceSimulation(args.nodes)
+    // read 'weak' as 'invisible'
+    function strength(link){ return link.weak ? link.withPin ? 40 : 10 : 50 }
+    var forceLink = d3
+      .forceLink(linkDefs)
+      .strength(strength)
+      .distance(12)
+      .iterations(30)
+    d3.forceSimulation(nodeDefs)
       .force("charge", d3.forceManyBody().strength(-1000))
-      .force("link", d3.forceLink(args.links).strength(strength).distance(12).iterations(30))
+      .force("link", forceLink)
       .force("center", d3.forceCenter(200, 200))
       .alpha(0.0035)
       .on("tick", onTick)
-      .on("end", onEnd)
 }
