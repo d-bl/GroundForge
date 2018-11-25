@@ -35,30 +35,28 @@ public class Demo4Java {
         + "&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt"
         + "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4";
 
-    generateDiagrams(urlQuery);
+    generateSetOfDiagrams(urlQuery);
   }
 
-  private static void generateDiagrams(String urlQuery) throws IOException {
+  private static void generateSetOfDiagrams(String urlQuery) throws IOException {
     Diagram pairDiagram = NewPairDiagram.create(Config.create(urlQuery));
-
-    // TODO make a copy of the node sequence using diagram.node(i).withLocation(x,y)
-    Seq<NodeProps> nudgedPairNodes = pairDiagram.nodes();
-
-    Diagram nudgedPairDiagram = new Diagram(nudgedPairNodes, pairDiagram.links());
-    write("pairs", "1px", nudgedPairDiagram);
+    Diagram nudgedPairDiagram = generateSingleDiagram("pairs", "1px", pairDiagram);
     Diagram threadDiagram = ThreadDiagram.create(nudgedPairDiagram);
-
-    // TODO nudge the nodes (as above)
-    write("threads", "2px", threadDiagram);
-
-    // TODO apply nudging and create a thread diagram for this Droste diagram
-    write("droste-pairs", "1px", PairDiagram.create("ctct", threadDiagram));
+    Diagram nudgedThreadDiagram = generateSingleDiagram("threads", "2px", threadDiagram);
+    generateSingleDiagram("droste-pairs", "1px", nudgedThreadDiagram);
   }
 
-  private static void write(String fileName, String strokeWidth, Diagram diagram)
+  private static Diagram generateSingleDiagram(String fileName, String strokeWidth, Diagram diagram)
       throws IOException {
+    // TODO make a copy of the node sequence using diagram.node(i).withLocation(x,y)
+    Seq<NodeProps> nudgedPairNodes = diagram.nodes();
+
+    Diagram nudgedDiagram = new Diagram(nudgedPairNodes, diagram.links());
+
     File file = new File(dir + "/" + fileName + ".svg");
-    String svg = D3jsSVG.render(diagram, strokeWidth, true, 744, 1052, 0d);
+    String svg = D3jsSVG.render(nudgedDiagram, strokeWidth, true, 744, 1052, 0d);
     new FileOutputStream(file).write((D3jsSVG.prolog() + svg).getBytes());
+
+    return nudgedDiagram;
   }
 }

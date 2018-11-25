@@ -37,7 +37,7 @@ sealed abstract class LinkProps extends Props {
     val jsItem = js.Object().asInstanceOf[js.Dictionary[Any]]
     jsItem("source") = source
     jsItem("target") = target
-    jsItem("weak") = weak
+    jsItem("weak") = weak // TODO rename to invisible
     jsItem("withPin") = withPin
     jsItem("start") = start
     jsItem("end") = end
