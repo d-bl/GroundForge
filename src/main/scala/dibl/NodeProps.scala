@@ -41,7 +41,10 @@ case class NodeProps private(elems: Seq[(String, Any)]) extends Props {
 
   val color: String = m.getOrElse("color", Stitches.defaultColorName(instructions)).asInstanceOf[String]
 
-  /** The stitch id within a tile */
+  /**
+   *  The stitch id, unique within a tile. Semantics reflect row and columns as in spreadsheets.
+   *  In thread diagrams an alphanumeric sequence number is added for each stitch and cross.
+   */
   val id: String = title.replaceAll(".* ", "")
 
   /** If none-zero the node is the first one of the thread with that number */
@@ -75,7 +78,7 @@ case class NodeProps private(elems: Seq[(String, Any)]) extends Props {
     NodeProps(map.toSeq)
   }
 
-  // TODO next properties apply to subclass PairNode
+  // TODO next properties should apply to subclass PairNode
 
   private val openingTwists: String = instructions.replaceAll("c.*","").replaceAll("t","lr")
   private val closingTwists = instructions.replaceAll(".*c","").replaceAll("t","lr")
