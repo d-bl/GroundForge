@@ -39,11 +39,14 @@ public class Demo4Java {
   }
 
   private static void generateSetOfDiagrams(String urlQuery) throws IOException {
-    Diagram pairDiagram = NewPairDiagram.create(Config.create(urlQuery));
-    Diagram nudgedPairDiagram = generateSingleDiagram("pairs", "1px", pairDiagram);
-    Diagram threadDiagram = ThreadDiagram.create(nudgedPairDiagram);
-    Diagram nudgedThreadDiagram = generateSingleDiagram("threads", "2px", threadDiagram);
-    generateSingleDiagram("droste-pairs", "1px", nudgedThreadDiagram);
+    Diagram pairs = NewPairDiagram.create(Config.create(urlQuery));
+    Diagram nudgedPairs = generateSingleDiagram("pairs", "1px", pairs);
+    Diagram threads = ThreadDiagram.create(nudgedPairs);
+    Diagram nudgedThreads = generateSingleDiagram("threads", "2px", threads);
+    Diagram drostePairs = PairDiagram.create("ctct", nudgedThreads);
+    Diagram nudgedDroste = generateSingleDiagram("droste-pairs", "1px", drostePairs);
+    Diagram drosteThreads = ThreadDiagram.create(nudgedDroste);
+    generateSingleDiagram("droste-threads", "2px", drosteThreads);
   }
 
   private static Diagram generateSingleDiagram(String fileName, String strokeWidth, Diagram diagram)
@@ -53,9 +56,9 @@ public class Demo4Java {
 
     Diagram nudgedDiagram = new Diagram(nudgedPairNodes, diagram.links());
 
-    File file = new File(dir + "/" + fileName + ".svg");
     String svg = D3jsSVG.render(nudgedDiagram, strokeWidth, true, 744, 1052, 0d);
-    new FileOutputStream(file).write((D3jsSVG.prolog() + svg).getBytes());
+    new FileOutputStream(dir + "/" + fileName + ".svg")
+        .write((D3jsSVG.prolog() + svg).getBytes());
 
     return nudgedDiagram;
   }
