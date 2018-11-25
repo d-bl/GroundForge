@@ -29,24 +29,31 @@ public class Demo4Java {
     //noinspection ResultOfMethodCallIgnored
     dir.mkdirs();
 
-    // TODO loop over a few more examples, see the demo section of the tiles page
-    String urlQuery = "patchWidth=11&patchHeight=12"
-        + "&footside=-7,B4,17,17&tile=B-C-,---5,C-B-,-5--&headside=4-,7C,48,48"
-        + "&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt"
-        + "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4";
-
-    generateSetOfDiagrams(urlQuery);
+    String urlQuerys[] = { //
+        "patchWidth=11&patchHeight=12"//
+            + "&tile=B-C-,---5,C-B-,-5--&tileStitch=ctct"
+            + "&footside=-7,B4,17,17&footsideStitch=ctctt"
+            + "&headside=4-,7C,48,48&headsideStitch=ctctt"
+            + "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4",
+        "patchWidth=11&patchHeight=12" //
+            + "&tile=B-C-,---5,C-B-,-5--&tileStitch=ctct"
+            + "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
+        // TODO for more examples: see the demo section of the tiles page
+    };
+    for (int i = 0; i <= urlQuerys.length - 1; i++) {
+      generateSetOfDiagrams(urlQuerys[i], i);
+    }
   }
 
-  private static void generateSetOfDiagrams(String urlQuery) throws IOException {
+  private static void generateSetOfDiagrams(String urlQuery, int i) throws IOException {
     Diagram pairs = NewPairDiagram.create(Config.create(urlQuery));
-    Diagram nudgedPairs = generateSingleDiagram("pairs", "1px", pairs);
+    Diagram nudgedPairs = generateSingleDiagram(i + "-pairs", "1px", pairs);
     Diagram threads = ThreadDiagram.create(nudgedPairs);
-    Diagram nudgedThreads = generateSingleDiagram("threads", "2px", threads);
+    Diagram nudgedThreads = generateSingleDiagram(i + "-threads", "2px", threads);
     Diagram drostePairs = PairDiagram.create("ctct", nudgedThreads);
-    Diagram nudgedDroste = generateSingleDiagram("droste-pairs", "1px", drostePairs);
+    Diagram nudgedDroste = generateSingleDiagram(i + "-droste-pairs", "1px", drostePairs);
     Diagram drosteThreads = ThreadDiagram.create(nudgedDroste);
-    generateSingleDiagram("droste-threads", "2px", drosteThreads);
+    generateSingleDiagram(i + "-droste-threads", "2px", drosteThreads);
   }
 
   private static Diagram generateSingleDiagram(String fileName, String strokeWidth, Diagram diagram)
@@ -57,7 +64,7 @@ public class Demo4Java {
     Diagram nudgedDiagram = new Diagram(nudgedPairNodes, diagram.links());
 
     String svg = D3jsSVG.render(nudgedDiagram, strokeWidth, true, 744, 1052, 0d);
-    new FileOutputStream(dir + "/" + fileName + ".svg")
+    new FileOutputStream(dir + "/" + fileName + ".svg") //
         .write((D3jsSVG.prolog() + svg).getBytes());
 
     return nudgedDiagram;
