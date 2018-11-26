@@ -32,6 +32,10 @@ class Config(urlQuery: String) {
   val rightMatrix: Array[String] = getMatrix("headside")
   private val centerMatrix: Array[String] = getMatrix("tile")
 
+  lazy val leftTile: Seq[Seq[SrcNodes]] = leftMatrix.map(_.map(Matrix.relativeSourceMap).toSeq).toSeq
+  lazy val centerTile: Seq[Seq[SrcNodes]] = centerMatrix.map(_.map(Matrix.relativeSourceMap).toSeq).toSeq
+  lazy val rightTile: Seq[Seq[SrcNodes]] = rightMatrix.map(_.map(Matrix.relativeSourceMap).toSeq).toSeq
+
   private val leftMatrixStitch: String = fields.getOrElse("footsideStitch", "ctctt")
   private val rightMatrixStich: String = fields.getOrElse("headsideStitch", "ctctt")
   private val centerMatrixStitch: String = fields.getOrElse("tileStitch", "ctc")
