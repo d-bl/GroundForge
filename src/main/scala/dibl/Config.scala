@@ -54,10 +54,10 @@ class Config(urlQuery: String) {
   @JSExport
   val totalRows: Int = fields.getOrElse("patchHeight", "12").replaceAll("[^0-9-]", "").toInt
   private val centerCols: Int = fields.getOrElse("patchWidth", "12").replaceAll("[^0-9-]", "").toInt
-  private val shiftRowsSE: Int = fields.getOrElse("shiftRowsSE", "12").replaceAll("[^0-9-]", "").toInt
-  private val shiftRowsSW: Int = fields.getOrElse("shiftRowsSW", "12").replaceAll("[^0-9-]", "").toInt
-  private val shiftColsSE: Int = fields.getOrElse("shiftColsSE", "12").replaceAll("[^0-9-]", "").toInt
-  private val shiftColsSW: Int = fields.getOrElse("shiftColsSW", "12").replaceAll("[^0-9-]", "").toInt
+  val shiftRowsSE: Int = fields.getOrElse("shiftRowsSE", "12").replaceAll("[^0-9-]", "").toInt
+  val shiftRowsSW: Int = fields.getOrElse("shiftRowsSW", "12").replaceAll("[^0-9-]", "").toInt
+  val shiftColsSE: Int = fields.getOrElse("shiftColsSE", "12").replaceAll("[^0-9-]", "").toInt
+  val shiftColsSW: Int = fields.getOrElse("shiftColsSW", "12").replaceAll("[^0-9-]", "").toInt
 
   private val leftMarginWidth = leftMatrix.head.trim.length
   private val offsetRightMargin = leftMarginWidth + centerCols
