@@ -14,7 +14,7 @@
    height="720px"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="site-map.svg">
   <sodipodi:namedview
      pagecolor="#ffffff"
@@ -26,14 +26,14 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1680"
-     inkscape:window-height="998"
+     inkscape:window-height="987"
      id="namedview128"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:zoom="1.1513889"
-     inkscape:cx="277.25573"
-     inkscape:cy="360"
+     inkscape:zoom="1.0840054"
+     inkscape:cx="342.21562"
+     inkscape:cy="382.90622"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -237,22 +237,22 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccccccccc" />
     <rect
-       y="183.99037"
-       x="243.31613"
-       height="133.61743"
-       width="259.51019"
+       y="168.6153"
+       x="240.4333"
+       height="148.99249"
+       width="262.39297"
        id="rect4154"
        style="opacity:1;fill:#ffe880;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        ry="7.5687742" />
     <a
        id="a5588"
-       xlink:href="https://d-bl.github.io/GroundForge/tiles"
+       xlink:href="https://d-bl.github.io/GroundForge/tiles.html?tile=5831,-4-7&amp;patchWidth=9&amp;patchHeight=9&amp;shiftColsSE=4&amp;shiftRowsSE=2&amp;shiftColsSW=0&amp;shiftRowsSW=2&amp;"
        target="_blank"
        transform="translate(300.86405,-14.282156)">
       <text
          transform="scale(1.0472855,0.95484947)"
          xml:space="preserve"
-         style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+         style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
          x="54"
          y="336.62494"
          id="text4156"><tspan
@@ -299,7 +299,7 @@
       <text
          transform="scale(1.0472855,0.95484947)"
          xml:space="preserve"
-         style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+         style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
          x="200.554"
          y="398.75635"
          id="text4144"><tspan
@@ -315,7 +315,7 @@
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
-       style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
        x="565.23077"
        y="471.72949"
        id="text4442"
@@ -333,7 +333,7 @@
        id="text4448"
        y="473.11035"
        x="634.81696"
-       style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
        xml:space="preserve"
        transform="scale(1.0472855,0.95484947)"><tspan
          y="473.11035"
@@ -343,7 +343,7 @@
        id="text5326"
        y="540.45135"
        x="470.94226"
-       style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
        xml:space="preserve"
        transform="scale(1.0472855,0.95484947)"><tspan
          y="540.45135"
@@ -365,7 +365,7 @@
       <text
          transform="scale(1.0472855,0.95484947)"
          xml:space="preserve"
-         style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+         style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
          x="379.31683"
          y="273.00916"
          id="text5672"><tspan
@@ -387,7 +387,7 @@
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
-       style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
        x="470.94226"
        y="606.38367"
        id="text8382"
@@ -404,7 +404,7 @@
          id="text8472"
          y="156.54181"
          x="300.35922"
-         style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+         style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
          xml:space="preserve"
          transform="scale(1.0472855,0.95484947)"><tspan
            y="156.54181"
@@ -420,7 +420,7 @@
     <text
        transform="scale(1.0472855,0.95484947)"
        xml:space="preserve"
-       style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
        x="48.303677"
        y="744.24347"
        id="text9220"><tspan
@@ -436,7 +436,7 @@
     <text
        transform="scale(1.0472855,0.95484947)"
        xml:space="preserve"
-       style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
        x="482.31726"
        y="471.72949"
        id="text9852"><tspan
@@ -458,7 +458,7 @@
        transform="translate(-351.84722,-384.59719)">
       <text
          xml:space="preserve"
-         style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+         style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
          x="381.89899"
          y="492.59418"
          id="text4678"
@@ -470,7 +470,7 @@
     <text
        transform="scale(1.0472855,0.95484947)"
        xml:space="preserve"
-       style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
        x="94.181519"
        y="782.20776"
        id="text4686"><tspan
@@ -482,7 +482,7 @@
     <text
        transform="scale(1.0472855,0.95484947)"
        xml:space="preserve"
-       style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
        x="109.62842"
        y="89.642296"
        id="text4694"><tspan
@@ -515,7 +515,7 @@
        id="text6932"
        y="762.8717"
        x="93.253212"
-       style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
        xml:space="preserve"
        transform="scale(1.0472855,0.95484947)"><tspan
          y="762.8717"
@@ -525,7 +525,7 @@
        id="text4682"
        y="705.10968"
        x="93.663368"
-       style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
        xml:space="preserve"
        transform="scale(1.0472855,0.95484947)"><tspan
          y="705.10968"
@@ -541,7 +541,7 @@
          id="text4138"
          y="274.32782"
          x="199.78873"
-         style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+         style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
          xml:space="preserve"><tspan
            y="274.32782"
            x="187"
@@ -557,7 +557,7 @@
          id="text7418"
          y="148.24634"
          x="196.81544"
-         style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+         style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
          xml:space="preserve"><tspan
            y="148.24634"
            x="196.81544"
@@ -575,7 +575,7 @@
     <text
        transform="scale(1.0472855,0.95484947)"
        xml:space="preserve"
-       style="font-size:14;font-family:Arial;fill:#000000;stroke:none;"
+       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
        x="22.411228"
        y="-23.201422"
        id="text5339"><tspan
@@ -594,7 +594,7 @@
     <text
        transform="scale(1.0472855,0.95484947)"
        xml:space="preserve"
-       style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
        x="93.629189"
        y="724.36371"
        id="text5786"><tspan
@@ -655,7 +655,7 @@
        id="text4332"
        y="743.61768"
        x="93.745399"
-       style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
        xml:space="preserve"
        transform="scale(1.0472855,0.95484947)"><tspan
          y="743.61768"
@@ -683,7 +683,7 @@
        id="text4443"
        y="685.7702"
        x="93.629189"
-       style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
        xml:space="preserve"
        transform="scale(1.0472855,0.95484947)"><tspan
          y="685.7702"
@@ -713,7 +713,7 @@
          id="text5308"
          y="397.52057"
          x="371.25287"
-         style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+         style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
          xml:space="preserve"><tspan
            y="397.52057"
            x="371.25287"
@@ -762,7 +762,7 @@
        transform="translate(289.62604,-48.784205)">
       <text
          xml:space="preserve"
-         style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+         style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
          x="55.614479"
          y="148.16351"
          id="text8988"
@@ -802,7 +802,7 @@
          id="text4344"
          y="148.16351"
          x="55.614479"
-         style="font-size:14px;font-family:Arial;fill:#000000;stroke:none"
+         style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
          xml:space="preserve"><tspan
            y="148.16351"
            x="55.614479"
@@ -818,7 +818,30 @@
        sodipodi:nodetypes="cc"
        inkscape:connector-curvature="0"
        id="path4352"
-       d="M 338.56826,88.355196 C 321.2774,98.170205 308.83031,122.51651 308.35579,182.78053"
+       d="M 338.56826,88.355196 C 321.2774,98.170205 308.83031,107.79551 308.35579,168.05953"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker9000)" />
+    <a
+       transform="translate(293.69215,-135.36089)"
+       target="_blank"
+       xlink:href="https://d-bl.github.io/GroundForge/tiles.html?tile=5831,-4-7&amp;patchWidth=9&amp;patchHeight=9&amp;shiftColsSE=4&amp;shiftRowsSE=2&amp;shiftColsSW=0&amp;shiftRowsSW=2&amp;"
+       id="a1028">
+      <text
+         id="text1026"
+         y="336.62494"
+         x="5.4475198"
+         style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
+         xml:space="preserve"
+         transform="scale(1.0472855,0.95484947)"><tspan
+           y="336.62494"
+           x="-8.5524797"
+           id="tspan1024"
+           style="font-weight:bold;font-size:16.66666603px">Recommended  start</tspan></text>
+    </a>
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path1030"
+       d="m 407.3258,115.49633 -1.31098,52.5632"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:8, 8;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker8349)" />
   </g>
 </svg>
