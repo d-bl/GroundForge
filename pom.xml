@@ -19,6 +19,9 @@
             <artifactId>scalajs-library_2.11</artifactId>
             <version>0.6.9</version>
         </dependency>
+        <!-- TODO move demo4Java (what about demo's that run on jvm-only?) to src/test/java/dibl -->
+        <!--  see also https://github.com/scallop/scallop -->
+        <!--  https://stackoverflow.com/questions/26512750/how-to-use-scala-js-from-maven -->
         <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_2.11</artifactId>
