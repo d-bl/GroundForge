@@ -59,7 +59,7 @@ public class Demo4Java {
   private static void generateSingleDiagram(String fileName,
                                             String strokeWidth,
                                             Seq<NodeProps> nudgedNodes,
-                                            Seq<NodeProps> links)
+                                            Seq<LinkProps> links)
       throws IOException {
 
     Diagram nudgedDiagram = new Diagram(nudgedNodes, links);
