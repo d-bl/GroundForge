@@ -53,7 +53,7 @@ public class Demo4Java {
     Diagram drostePairs = PairDiagram.create("ctct", threads);
     generateSingleDiagram(i + "-droste-pairs", "1px", drostePairs.nodes(), drostePairs.links());
     Diagram drosteThreads = ThreadDiagram.create(drostePairs);
-    generateSingleDiagram(i + "-droste-threads", "2px", drosteThreads);
+    generateSingleDiagram(i + "-droste-threads", "2px", drosteThreads.nodes(), drosteThreads.links());
   }
 
   private static void generateSingleDiagram(String fileName,
