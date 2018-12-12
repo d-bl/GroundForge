@@ -47,26 +47,24 @@ public class Demo4Java {
 
   private static void generateSetOfDiagrams(String urlQuery, int i) throws IOException {
     Diagram pairs = NewPairDiagram.create(Config.create(urlQuery));
-    Diagram nudgedPairs = generateSingleDiagram(i + "-pairs", "1px", pairs);
-    Diagram threads = ThreadDiagram.create(nudgedPairs);
-    Diagram nudgedThreads = generateSingleDiagram(i + "-threads", "2px", threads);
-    Diagram drostePairs = PairDiagram.create("ctct", nudgedThreads);
-    Diagram nudgedDroste = generateSingleDiagram(i + "-droste-pairs", "1px", drostePairs);
-    Diagram drosteThreads = ThreadDiagram.create(nudgedDroste);
+    generateSingleDiagram(i + "-pairs", "1px", pairs.nodes(), pairs.links());
+    Diagram threads = ThreadDiagram.create(pairs);
+    generateSingleDiagram(i + "-threads", "2px", threads.nodes(), threads.links());
+    Diagram drostePairs = PairDiagram.create("ctct", threads);
+    generateSingleDiagram(i + "-droste-pairs", "1px", drostePairs.nodes(), drostePairs.links());
+    Diagram drosteThreads = ThreadDiagram.create(drostePairs);
     generateSingleDiagram(i + "-droste-threads", "2px", drosteThreads);
   }
 
-  private static Diagram generateSingleDiagram(String fileName, String strokeWidth, Diagram diagram)
+  private static void generateSingleDiagram(String fileName,
+                                            String strokeWidth,
+                                            Seq<NodeProps> nudgedNodes,
+                                            Seq<NodeProps> links)
       throws IOException {
-    // TODO make a copy of the node sequence using diagram.node(i).withLocation(x,y)
-    Seq<NodeProps> nudgedPairNodes = diagram.nodes();
 
-    Diagram nudgedDiagram = new Diagram(nudgedPairNodes, diagram.links());
-
+    Diagram nudgedDiagram = new Diagram(nudgedNodes, links);
     String svg = D3jsSVG.render(nudgedDiagram, strokeWidth, true, 744, 1052, 0d);
     new FileOutputStream(dir + "/" + fileName + ".svg") //
         .write((D3jsSVG.prolog() + svg).getBytes());
-
-    return nudgedDiagram;
   }
 }
