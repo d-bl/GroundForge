@@ -196,7 +196,7 @@ object D3jsSVG {
     * @param markers     if true color coding of pair diagrams is rendered
     *                    which can slow down animation significantly
     *                    and breaks animation on IE, see issue #52
-    * @return and SVG document as String
+    * @return an SVG document as String
     */
   @JSExport
   def render(diagram: Diagram,

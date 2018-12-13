@@ -75,4 +75,27 @@ case class Diagram(nodes: Seq[NodeProps],
       .withFilter { case (_, t) => !targetsOfDuplicates.contains(t) }
       .map { case (s, t) => (FindSource(s), t) }
   }
+
+  /**
+   * Get links for one tile.
+   *
+   * Tile boundaries (N/E/S/W) are inclusive. The values for these boundaries must be
+   * row/column numbers multiplied with the scale for the initial layout of a diagram.
+   *
+   * @return tuples with (source,target) for all links witin a tile and to adjecent tiles.
+   *         Node objects inside the tile are different from those outside the tile.
+   *         Nodes outside the tile may have an id property shared
+   *         by a node inside the tile on the oposite side
+   *         provided that the boundaries match all nodes in one tile.
+   */
+  def tileLinks(north: Double, east: Double, south: Double, west: Double): Seq[(NodeProps, NodeProps)] = {
+    val nodeNrs = nodes.zipWithIndex.filter { case (node, _) =>
+      node.x >= east && node.x <= west &&
+        node.y >= north && node.y <= south &&
+        !node.pin
+    }.map(_._2)
+    links
+      .filter(link => nodeNrs.contains(link.source) || nodeNrs.contains(link.target))
+      .map(link => nodes(link.source) -> nodes(link.target))
+  }
 }
