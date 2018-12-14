@@ -15,11 +15,14 @@
 */
 package dibl;
 
+import scala.Tuple2;
 import scala.collection.Seq;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import static sun.misc.Version.println;
 
 public class Demo4Java {
 
@@ -30,15 +33,15 @@ public class Demo4Java {
     dir.mkdirs();
 
     String[] urlQueries = { //
+        "patchWidth=5&patchHeight=5"
+            + "&tile=5-&tileStitch=ct&"
+            + "&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1",
         "patchWidth=11&patchHeight=12" //
-            + "&tile=B-C-,---5,C-B-,-5--&tileStitch=ctct"
-            + "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4",
-        "patchWidth=11&patchHeight=12"//
-            + "&tile=B-C-,---5,C-B-,-5--&tileStitch=ctct"
-            + "&footside=-7,B4,17,17&footsideStitch=ctctt"
-            + "&headside=4-,7C,48,48&headsideStitch=ctctt"
+            + "&tile=B-C-,---5,C-B-,-5--&tileStitch=ct"
             + "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4",
         // TODO for more examples: see the demo section of the tiles page
+        //  patch size must be at least 4 rows/columns larger than the tile
+        //  tiling with gaps might not work
     };
     for (int i = 0; i <= urlQueries.length - 1; i++) {
       generateSetOfDiagrams(urlQueries[i], i);
@@ -46,23 +49,33 @@ public class Demo4Java {
   }
 
   private static void generateSetOfDiagrams(String urlQuery, int i) throws IOException {
-    Diagram pairs = NewPairDiagram.create(Config.create(urlQuery));
-    // TODO add method to Config that calls Diagram.tileLinks, call it here to calculate deltas and nudge nodes
-    generateDiagram(i + "-pairs", "1px", pairs.nodes(), pairs.links());
+    Config config = Config.create(urlQuery);
+    Diagram pairs = NewPairDiagram.create(config);
+    generateDiagram(i + "-pairs", "1px", pairs, config, 1);
     Diagram threads = ThreadDiagram.create(pairs);
-    generateDiagram(i + "-threads", "2px", threads.nodes(), threads.links());
+    generateDiagram(i + "-threads", "2px", threads, config, 2);
     Diagram drostePairs = PairDiagram.create("ctct", threads);
-    generateDiagram(i + "-droste-pairs", "1px", drostePairs.nodes(), drostePairs.links());
+    generateDiagram(i + "-droste-pairs", "1px", drostePairs, config, 2);
     Diagram drosteThreads = ThreadDiagram.create(drostePairs);
-    generateDiagram(i + "-droste-threads", "2px", drosteThreads.nodes(), drosteThreads.links());
+    generateDiagram(i + "-droste-threads", "2px", drosteThreads, config, 4);
   }
 
-  private static void generateDiagram(String fileName,
-                                      String strokeWidth,
-                                      Seq<NodeProps> nudgedNodes,
-                                      Seq<LinkProps> links
-                                     ) throws IOException {
-    Diagram nudgedDiagram = new Diagram(nudgedNodes, links);
+  private static void generateDiagram(
+      String fileName,
+      String strokeWidth,
+      Diagram diagram,
+      Config config,
+      Integer scale
+  ) throws IOException {
+    System.out.println("-------------- "+fileName);
+
+    NodeProps[][] links = config.centerTile(diagram, scale);
+    // TODO calculate deltas from links and Config.shiftXxxx
+
+    // TODO create copy of diagram.nodes(): node.withLocation(deltas.fx, deltas.fy)
+    Seq<NodeProps> nudgedNodes = diagram.nodes();
+
+    Diagram nudgedDiagram = new Diagram(nudgedNodes, diagram.links());
     String svg = D3jsSVG.render(nudgedDiagram, strokeWidth, true, 744, 1052, 0d);
     new FileOutputStream(dir + "/" + fileName + ".svg") //
         .write((D3jsSVG.prolog() + svg).getBytes());

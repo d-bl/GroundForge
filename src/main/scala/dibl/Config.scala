@@ -32,12 +32,17 @@ class Config(urlQuery: String) {
   val rightMatrix: Array[String] = getMatrix("headside")
   private val centerMatrix: Array[String] = getMatrix("tile")
 
-  lazy val leftTile: Seq[Seq[SrcNodes]] = leftMatrix.map(_.map(Matrix.relativeSourceMap).toSeq).toSeq
-  lazy val centerTile: Seq[Seq[SrcNodes]] = centerMatrix.map(_.map(Matrix.relativeSourceMap).toSeq).toSeq
-  lazy val rightTile: Seq[Seq[SrcNodes]] = rightMatrix.map(_.map(Matrix.relativeSourceMap).toSeq).toSeq
+  // https://github.com/d-bl/GroundForge/blob/94342eb/src/main/scala/dibl/NewPairDiagram.scala#L20
+  // https://github.com/d-bl/GroundForge/blob/268b2e2/src/main/scala/dibl/ThreadDiagram.scala#L105-L107
+  def centerTile(diagram: Diagram, scale: Int): Array[Array[NodeProps]] = diagram.tileLinks(
+    scale *  52.5,
+    scale *  52.5,
+    scale * (52.5 + 15 * centerMatrixCols),
+    scale * (52.5 + 15 * centerMatrix.length)
+  )
 
   private val leftMatrixStitch: String = fields.getOrElse("footsideStitch", "ctctt")
-  private val rightMatrixStich: String = fields.getOrElse("headsideStitch", "ctctt")
+  private val rightMatrixStitch: String = fields.getOrElse("headsideStitch", "ctctt")
   private val centerMatrixStitch: String = fields.getOrElse("tileStitch", "ctc")
 
   @JSExport
@@ -104,7 +109,7 @@ class Config(urlQuery: String) {
   // repeat foot-side / head-side
 
   if (leftMarginWidth > 0) replaceItems(leftMatrix, 0, leftMatrixStitch)
-  if (offsetRightMargin > 0) replaceItems(rightMatrix, offsetRightMargin, rightMatrixStich)
+  if (offsetRightMargin > 0) replaceItems(rightMatrix, offsetRightMargin, rightMatrixStitch)
 
   private def replaceItems(inputMatrix: Array[String], offset: Int, defaultStitch: String): Unit = {
     for {r <- 0 until totalRows} {

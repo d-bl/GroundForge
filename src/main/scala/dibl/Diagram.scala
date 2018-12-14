@@ -85,10 +85,10 @@ case class Diagram(nodes: Seq[NodeProps],
    * @return tuples with (source,target) for all links witin a tile and to adjecent tiles.
    *         Node objects inside the tile are different from those outside the tile.
    *         Nodes outside the tile may have an id property shared
-   *         by a node inside the tile on the oposite side
+   *         by a node inside the tile on the opposite side (unless the oposite is a foot side)
    *         provided that the boundaries match all nodes in one tile.
    */
-  def tileLinks(north: Double, east: Double, south: Double, west: Double): Seq[(NodeProps, NodeProps)] = {
+  def tileLinks(north: Double, east: Double, south: Double, west: Double): Array[Array[NodeProps]] = {
     val nodeNrs = nodes.zipWithIndex.filter { case (node, _) =>
       node.x >= east && node.x <= west &&
         node.y >= north && node.y <= south &&
@@ -96,6 +96,9 @@ case class Diagram(nodes: Seq[NodeProps],
     }.map(_._2)
     links
       .filter(link => nodeNrs.contains(link.source) || nodeNrs.contains(link.target))
-      .map(link => nodes(link.source) -> nodes(link.target))
+      .map{link =>
+        println(s"ids(${nodes(link.source).id} -> ${nodes(link.target).id}); objects(${nodes(link.source).##} -> ${nodes(link.target).##}); ")
+        Array(nodes(link.source), nodes(link.target))// TODO not immutable but convenient for Java
+      }.toArray
   }
 }
