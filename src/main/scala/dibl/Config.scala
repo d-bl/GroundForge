@@ -43,17 +43,19 @@ class Config(urlQuery: String) {
    * @param scale   Use value one for the initial pair diagram,
    *                multiply by 2 for each transition from pair to thread diagram.
    *
-   * Requirements (not enforced, results are not defined): 
+   * Requirements:
    * - The values for totalRows alias patchHeight respective totalCols alias patchWidth
    *   must add at least 4 rows/cols to the dimensions of the centerMatrix alias tile.
    * - No gaps between tiles.
    * - As for now: the leftMatrix and rightMatrix must be empty.
    *
-   * @return Tuples with (source,target) for all links witin a tile and to adjecent tiles.
+   * @return An empty array on some types of invalid arguments, the type of error is logged to standard-out.
+   *         Otherwise tuples with (source,target) for all links within a tile and to adjacent tiles.
+   *
    *         Node objects inside the tile are different from those outside the tile.
-   *         Nodes outside the tile will have an id property shared
-   *         by a node inside the tile on the opposite side.
-   *         Where along the opposite side is defined by the four shift properties.
+   *         Nodes outside the tile will have an id property shared by a node inside the tile on the
+   *         opposite side. Where along the opposite side is defined by the four shift properties.
+   *
    *         Each transformation from pairs to threads puts more nodes at the same x/y positions.
    *         The start of their id-s will be identical, the tail of their id-s will be different.
    *         The start of the id-s matches the position of the stitch in the matrix in spread-sheet notation.
@@ -61,17 +63,27 @@ class Config(urlQuery: String) {
    *         (from left to right) within the stitch. Matrices with more than 9 rows or 26 columns
    *         will cause id-s with variable length.
    */
-  def centerTile(diagram: Diagram, scale: Int): Array[Array[NodeProps]] = diagram.tileLinks(
-    // Offsets and distances between the nodes on the original squared grid:
-    // https://github.com/d-bl/GroundForge/blob/94342eb/src/main/scala/dibl/NewPairDiagram.scala#L20
-    // https://github.com/d-bl/GroundForge/blob/268b2e2/src/main/scala/dibl/ThreadDiagram.scala#L105-L107
-    // In other words: 15 between rows/cols, offset of 2 rows/cols to allow for the fringe.
-    //                 Another offset of 2 rows/cols so all nodes will have four links.
-    scale *  52.5,
-    scale *  52.5,
-    scale * (52.5 + 15 * centerMatrixCols),
-    scale * (52.5 + 15 * centerMatrix.length)
-  )
+  def centerTile(diagram: Diagram, scale: Int): Array[Array[NodeProps]] = {
+    if (!leftMatrix.mkString.trim.isEmpty || !rightMatrix.mkString.trim.isEmpty) {
+      println("foot sides not supported")
+      Array.empty
+    }
+    else if (totalCols - 4 < centerMatrixCols || totalRows - 4 < centerMatrix.length) {
+      println("patch size too small")
+      Array.empty
+    }// TODO check for gaps between tiles and/or overlapping tiles
+    else diagram.tileLinks(
+      // Offsets and distances between the nodes on the original squared grid:
+      // https://github.com/d-bl/GroundForge/blob/94342eb/src/main/scala/dibl/NewPairDiagram.scala#L20
+      // https://github.com/d-bl/GroundForge/blob/268b2e2/src/main/scala/dibl/ThreadDiagram.scala#L105-L107
+      // In other words: 15 between rows/cols, offset of 2 rows/cols to allow for the fringe.
+      //                 Another offset of 2 rows/cols so all nodes will have four links.
+      scale *  52.5,
+      scale *  52.5,
+      scale * (52.5 + 15 * centerMatrixCols),
+      scale * (52.5 + 15 * centerMatrix.length)
+    )
+  }
 
   private val leftMatrixStitch: String = fields.getOrElse("footsideStitch", "ctctt")
   private val rightMatrixStitch: String = fields.getOrElse("headsideStitch", "ctctt")

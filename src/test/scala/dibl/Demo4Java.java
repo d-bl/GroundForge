@@ -33,7 +33,7 @@ public class Demo4Java {
     dir.mkdirs();
 
     String[] urlQueries = { //
-        "patchWidth=5&patchHeight=5"
+        "patchWidth=6&patchHeight=5"
             + "&tile=5-&tileStitch=ct&"
             + "&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1",
         "patchWidth=11&patchHeight=12" //
