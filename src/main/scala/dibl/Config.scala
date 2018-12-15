@@ -35,21 +35,31 @@ class Config(urlQuery: String) {
   /**
    * Get links for one tile.
    *
-   * @param diagram a diagram created from this object
-   * @param scale   one for the initial pair diagram
-   *                multiply by 2 for each transition from pair to thread diagram
+   * @param diagram A diagram created from this object.
+   *                Use diagrams with the original nodes for transformation from pairs to threads to pairs etc.
+   *                The result is not defined when using nodes with changed values for the x/y properties
+   *                for any of the transformation steps. Plaits with more than 12 half stitches (ct)
+   *                might cause a problem with duplicate ids in transformed diagrams.
+   * @param scale   Use value one for the initial pair diagram,
+   *                multiply by 2 for each transition from pair to thread diagram.
    *
-   * Not enforced requirements: 
-   * - totalRows alias patchHeight respective totalCols alias patchWidth
-   *   must add at least 4 rows/cols to the dimensions of the centerMatrix alias tile
-   * - no gaps between tiles
-   * - as for now: the leftMatrix and rightMatrix should be empty
+   * Requirements (not enforced, results are not defined): 
+   * - The values for totalRows alias patchHeight respective totalCols alias patchWidth
+   *   must add at least 4 rows/cols to the dimensions of the centerMatrix alias tile.
+   * - No gaps between tiles.
+   * - As for now: the leftMatrix and rightMatrix must be empty.
    *
    * @return Tuples with (source,target) for all links witin a tile and to adjecent tiles.
    *         Node objects inside the tile are different from those outside the tile.
    *         Nodes outside the tile will have an id property shared
    *         by a node inside the tile on the opposite side.
    *         Where along the opposite side is defined by the four shift properties.
+   *         Each transformation from pairs to threads puts more nodes at the same x/y positions.
+   *         The start of their id-s will be identical, the tail of their id-s will be different.
+   *         The start of the id-s matches the position of the stitch in the matrix in spread-sheet notation.
+   *         The tail will be a single-digit alphanumeric sequence number for each cross and twist
+   *         (from left to right) within the stitch. Matrices with more than 9 rows or 26 columns
+   *         will cause id-s with variable length.
    */
   def centerTile(diagram: Diagram, scale: Int): Array[Array[NodeProps]] = diagram.tileLinks(
     // Offsets and distances between the nodes on the original squared grid:
