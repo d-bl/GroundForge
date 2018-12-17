@@ -69,7 +69,7 @@ class Config(urlQuery: String) {
       Array.empty
     }
     else if (totalCols - 4 < centerMatrixCols || totalRows - 4 < centerMatrix.length) {
-      println("patch size too small")
+      println(s"patch size too small: tile=$centerMatrix.length*$centerMatrixCols patch=$totalCols*$totalRows")
       Array.empty
     }// TODO check for gaps between tiles and/or overlapping tiles
     else diagram.tileLinks(

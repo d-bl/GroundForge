@@ -40,8 +40,7 @@ public class Demo4Java {
             + "&tile=B-C-,---5,C-B-,-5--&tileStitch=ct"
             + "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4",
         // TODO for more examples: see the demo section of the tiles page
-        //  patch size must be at least 4 rows/columns larger than the tile
-        //  tiling with gaps might not work
+        //  tiling with gaps (the N links) don't meet the requirements of the centerTile method
     };
     for (int i = 0; i <= urlQueries.length - 1; i++) {
       generateSetOfDiagrams(urlQueries[i], i);
@@ -50,10 +49,14 @@ public class Demo4Java {
 
   private static void generateSetOfDiagrams(String urlQuery, int i) throws IOException {
     Config config = Config.create(urlQuery);
+
     Diagram pairs = NewPairDiagram.create(config);
     generateDiagram(i + "-pairs", "1px", pairs, config, 1);
     Diagram threads = ThreadDiagram.create(pairs);
     generateDiagram(i + "-threads", "2px", threads, config, 2);
+
+    // for "ctct" alternatives see:
+    // https://d-bl.github.io/GroundForge/help/Choose-Stitches#assign-stitches
     Diagram drostePairs = PairDiagram.create("ctct", threads);
     generateDiagram(i + "-droste-pairs", "1px", drostePairs, config, 2);
     Diagram drosteThreads = ThreadDiagram.create(drostePairs);
