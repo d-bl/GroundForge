@@ -17,12 +17,11 @@ package dibl;
 
 import scala.Tuple2;
 import scala.collection.Seq;
+import scala.collection.mutable.ArraySeq;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import static sun.misc.Version.println;
 
 public class Demo4Java {
 
@@ -33,9 +32,11 @@ public class Demo4Java {
     dir.mkdirs();
 
     String[] urlQueries = { //
-        "patchWidth=6&patchHeight=5"
-            + "&tile=5-&tileStitch=ct&"
+        "patchWidth=6&patchHeight=5" + "&tile=5-&tileStitch=ct&"
             + "&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1",
+        "patchWidth=12&patchHeight=12"
+            + "&tile=831,4-7,-5-&tileStitch=ct&"
+            + "shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
         "patchWidth=11&patchHeight=12" //
             + "&tile=B-C-,---5,C-B-,-5--&tileStitch=ct"
             + "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4",
@@ -72,11 +73,16 @@ public class Demo4Java {
   ) throws IOException {
     System.out.println("-------------- "+fileName);
 
-    NodeProps[][] links = config.centerTile(diagram, scale);
-    // TODO calculate deltas from links and Config.shiftXxxx
+    Seq<LinkedNodes> links = config.centerTile(diagram, scale);
+    links.apply(0).source();//showing how to access TODO compute deltas
 
-    // TODO create copy of diagram.nodes(): node.withLocation(deltas.fx, deltas.fy)
-    Seq<NodeProps> nudgedNodes = diagram.nodes();
+    int nrOfNodes = diagram.nodes().size();
+    ArraySeq<NodeProps> nudgedNodes = new ArraySeq<NodeProps>(nrOfNodes);
+    for (int i = 0; i < nrOfNodes; i++) {
+      NodeProps node = diagram.node(i);
+      NodeProps newNode = node.withLocation(node.x(), node.y()); // TODO apply deltas
+      nudgedNodes.update(i, newNode);
+    }
 
     Diagram nudgedDiagram = new Diagram(nudgedNodes, diagram.links());
     String svg = D3jsSVG.render(nudgedDiagram, strokeWidth, true, 744, 1052, 0d);

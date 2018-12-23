@@ -88,17 +88,30 @@ case class Diagram(nodes: Seq[NodeProps],
    *         by a node inside the tile on the opposite side (unless the oposite is a foot side)
    *         provided that the boundaries match all nodes in one tile.
    */
-  def tileLinks(north: Double, east: Double, south: Double, west: Double): Array[Array[NodeProps]] = {
+  def tileLinks(north: Double, east: Double, south: Double, west: Double): Seq[LinkedNodes] = {
     val nodeNrs = nodes.zipWithIndex.filter { case (node, _) =>
       node.x >= east && node.x <= west &&
         node.y >= north && node.y <= south &&
         !node.pin
     }.map(_._2)
-    links
+    val filteredLinks = links
       .filter(link => nodeNrs.contains(link.source) || nodeNrs.contains(link.target))
+    val uniqueNodes = filteredLinks.flatMap(l => Array(l.source, l.target)).distinct
+    println(
+      s"""nr of links = ${filteredLinks.size};
+         |nr of nodes = ${uniqueNodes.size};
+         |nr of ids = ${filteredLinks.flatMap(l => Array(nodes(l.source).id, nodes(l.target).id)).distinct.size}
+         |""".stripMargin
+    )
+    uniqueNodes.sortBy(nodes(_).id).foreach{nr =>
+      val n = nodes(nr)
+      println(s"${n.id} x=${n.x.toInt/15-2} y=${n.y.toInt/15-2}")
+    }
+    filteredLinks
       .map{link =>
-        println(s"ids(${nodes(link.source).id} -> ${nodes(link.target).id}); objects(${nodes(link.source).##} -> ${nodes(link.target).##}); ")
-        Array(nodes(link.source), nodes(link.target))// TODO not immutable but convenient for Java
-      }.toArray
+        //println(s"ids(${nodes(link.source).id} -> ${nodes(link.target).id}); objects(${nodes(link.source).##} -> ${nodes(link.target).##}); ")
+        LinkedNodes(nodes(link.source), nodes(link.target))
+      }
   }
 }
+case class LinkedNodes(source: NodeProps, target: NodeProps)

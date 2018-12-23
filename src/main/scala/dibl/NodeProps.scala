@@ -42,8 +42,12 @@ case class NodeProps private(elems: Seq[(String, Any)]) extends Props {
   val color: String = m.getOrElse("color", Stitches.defaultColorName(instructions)).asInstanceOf[String]
 
   /**
-   *  The stitch id, unique within a tile. Semantics reflect row and columns as in spreadsheets.
-   *  In thread diagrams an alphanumeric sequence number is added for each stitch and cross.
+   * The stitch id, unique within a tile unless plaits are applied with more than 12 times ct.
+   *
+   * Semantics reflect rows and columns of the matrix for the initial diagram as in spreadsheets.
+   * For each transformation from thread to pair diagram an alphanumeric sequence number
+   * is added for each stitch and cross and twist (from left to right) within a stitch.
+   * Matrices with more than 9 rows or 26 columns will cause id-s with variable length.
    */
   val id: String = title.replaceAll(".* ", "")
 
