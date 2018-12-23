@@ -15,7 +15,6 @@
 */
 package dibl;
 
-import scala.Tuple2;
 import scala.collection.Seq;
 import scala.collection.mutable.ArraySeq;
 
@@ -73,8 +72,13 @@ public class Demo4Java {
   ) throws IOException {
     System.out.println("-------------- "+fileName);
 
-    Seq<LinkedNodes> links = config.centerTile(diagram, scale);
-    links.apply(0).source();//showing how to access TODO compute deltas
+    // scala-doc of centerTile in short:
+    // tuples with (source,target) for all links within a tile and to adjacent tiles
+    Seq<LinkedNodes> links = config.linksOfcenterTile(diagram, scale);
+    diagram.logTileLinks(links);
+
+    //showing how to access TODO compute deltas
+    diagram.node(links.apply(0).source()).id();
 
     int nrOfNodes = diagram.nodes().size();
     ArraySeq<NodeProps> nudgedNodes = new ArraySeq<NodeProps>(nrOfNodes);

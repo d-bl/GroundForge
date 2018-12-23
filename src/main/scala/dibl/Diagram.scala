@@ -94,24 +94,25 @@ case class Diagram(nodes: Seq[NodeProps],
         node.y >= north && node.y <= south &&
         !node.pin
     }.map(_._2)
-    val filteredLinks = links
+    links
       .filter(link => nodeNrs.contains(link.source) || nodeNrs.contains(link.target))
-    val uniqueNodes = filteredLinks.flatMap(l => Array(l.source, l.target)).distinct
+      .map{link =>LinkedNodes(link.source, link.target)}
+  }
+
+  def logTileLinks(links: Seq[LinkedNodes]): Unit = {
+    val uniqueNodes = links.flatMap(l => Array(l.source, l.target)).distinct
     println(
-      s"""nr of links = ${filteredLinks.size};
+      s"""nr of links = ${links.size};
          |nr of nodes = ${uniqueNodes.size};
-         |nr of ids = ${filteredLinks.flatMap(l => Array(nodes(l.source).id, nodes(l.target).id)).distinct.size}
+         |nr of ids = ${links.flatMap(l => Array(nodes(l.source).id, nodes(l.target).id)).distinct.size}
          |""".stripMargin
     )
-    uniqueNodes.sortBy(nodes(_).id).foreach{nr =>
+    uniqueNodes.sortBy(nr => nodes(nr).x * 100000 + nodes(nr).y).foreach{nr =>
       val n = nodes(nr)
       println(s"${n.id} x=${n.x.toInt/15-2} y=${n.y.toInt/15-2}")
     }
-    filteredLinks
-      .map{link =>
-        //println(s"ids(${nodes(link.source).id} -> ${nodes(link.target).id}); objects(${nodes(link.source).##} -> ${nodes(link.target).##}); ")
-        LinkedNodes(nodes(link.source), nodes(link.target))
-      }
+    //links.foreach(link => println(s"ids(${nodes(link.source).id} -> ${nodes(link.target).id}); objects(${nodes(link.source).##} -> ${nodes(link.target).##}); "))
+    println("nodes without id: "+nodes.count(_.id.trim.isEmpty))
   }
 }
-case class LinkedNodes(source: NodeProps, target: NodeProps)
+case class LinkedNodes(source: Int, target: Int)

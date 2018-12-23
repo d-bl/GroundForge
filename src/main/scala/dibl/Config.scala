@@ -169,7 +169,7 @@ class Config(urlQuery: String) {
    *         Each transformation from pairs to threads puts more nodes at the same x/y positions.
    *         The start of their id-s will be identical, the tail of their id-s will be different.
    */
-  def centerTile(diagram: Diagram, scale: Int): Seq[LinkedNodes] = {
+  def linksOfcenterTile(diagram: Diagram, scale: Int): Seq[LinkedNodes] = {
 
     lazy val minWidthForBricks = centerMatrixCols + 4
     lazy val minHeightForBricks = centerMatrixRows + 4
