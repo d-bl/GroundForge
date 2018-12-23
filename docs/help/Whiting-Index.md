@@ -10,7 +10,7 @@ Whiting index
 '_A Lace Guide for Makers and Collectors_' by Gertrude Whiting which dates from 1920. A higher resolution is available with four PDF's in the [Digital Archive] of the late professor Griswold,
 including a [scan] of the original index. A variation of the index is republished below with kind permission. The links to GroundForge are starting points to create your own variations.
 
-[Legend](#Legend)
+[Legend](#legend)
 
 
 Under Construction

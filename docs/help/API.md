@@ -18,7 +18,7 @@ API
     + [Methods, all returning arrays of maps](#methods-all-returning-arrays-of-maps)
     + [Constructor](#constructor)
     + [Factory methods `get`](#factory-methods-get)
-  * [Class `dibl.SheetSVG`](#class-diblSheetSVG)
+  * [Class `dibl.SheetSVG`](#class-diblsheetsvg)
     + [Method **`add`**](#method-add)
     + [Constructor](#constructor-1)
     + [JavaScript example](#javascript-example-1)
