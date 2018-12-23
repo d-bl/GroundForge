@@ -12,7 +12,7 @@ Different methods allow to reproduce a pattern with GroundForge.
 - [Matrix from pair diagram](#matrix-from-pair-diagram)
   * [Tiling](#tiling)
   * [With an SVG editor](#with-an-svg-editor)
-- [Droste method](#Droste-method)
+- [Droste method](#droste-method)
 
 Recognize patterns
 ------------------

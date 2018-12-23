@@ -94,7 +94,7 @@ see also [MEA-gf](https://maetempels.github.io/MAE-gf/docs/fish)
 {% include tesselaceSample.html nr="022" pattern="4343,5353,2121,8888&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=4343,5353,2121,8888;checker" %}
 {% include tesselaceSample.html nr="431" pattern="6868,1111,8888,-4-4&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=6868,1111,8888,-4-4;checker&patch=43,68,66,66;bricks&patch=466-,6686,6-46,8666;checker&patch=6888,-114;checker&patch=L-L-L-L-,-L-L-L-L,5---5---,-H-E-H-E;bricks&patch=5-L-L---,-L-L-O-L,L-L---5-,-E-H-E-E;bricks" %}
 
-Mixed, shifted under and angle and/or with swim lanes. More under [others](#Others), even mixed with spiders.
+Mixed, shifted under and angle and/or with swim lanes. More under [others](#others), even mixed with spiders.
 
 {% include tesselaceSample.html nr="452" pattern="486-,-486,5-4-,86-5&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4" patches="patch=486-,-486,5-4-,86-5;checker&patch=6868,---7,AA01,-7-7;bricks" %}
 {% include tesselaceSample.html nr="152" pattern="43,21,-4,98&shiftColsSE=1&shiftRowsSE=4&shiftColsSW=-1&shiftRowsSW=4" patches="patch=43,21,-4,98;bricks" %}
