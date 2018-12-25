@@ -48,7 +48,7 @@ public class Demo4Java {
   }
 
   private static void generateSetOfDiagrams(String urlQuery, int i) throws IOException {
-    Config config = Config.create(urlQuery);
+    Config config = new Config(urlQuery);
 
     Diagram pairs = NewPairDiagram.create(config);
     generateDiagram(i + "-pairs", "1px", pairs, config, 1);

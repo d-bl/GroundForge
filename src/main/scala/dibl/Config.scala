@@ -5,14 +5,7 @@ import dibl.Stitches.defaultColorValue
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
-object Config {
-
-  @JSExport
-  def create(urlQuery: String): Config = new Config(urlQuery)
-}
-
-@JSExport
-class Config(urlQuery: String) {
+case class Config(urlQuery: String) {
   println(urlQuery)
 
   private val keyValueStrings: Seq[String] = urlQuery
