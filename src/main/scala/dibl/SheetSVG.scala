@@ -16,7 +16,7 @@
 package dibl
 
 import scala.collection.mutable.ListBuffer
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 /** SVG document builder.
   *
@@ -25,7 +25,10 @@ import scala.scalajs.js.annotation.JSExport
   * @param pageSize Attributes for the SVG root element.
   *                 Defaults to landscape A4.
   */
-@JSExport case class SheetSVG(patchRows: Int = 2, pageSize: String = "height='210mm' width='297mm'", idBase: String = "GFP") {
+@JSExportTopLevel("SheetSVG") case class SheetSVG(patchRows: Int = 2,
+                                                  pageSize: String = "height='210mm' width='297mm'",
+                                                  idBase: String = "GFP"
+                                                 ) {
   private val patterns = new ListBuffer[String]
 
   /**

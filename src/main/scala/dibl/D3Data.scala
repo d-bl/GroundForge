@@ -17,7 +17,7 @@ package dibl
 
 import scala.annotation.meta.field
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 /** An object with links and nodes for a pair diagram and thread diagram.
   * Evaluation of the thread diagram only takes place when accessed.
@@ -45,8 +45,7 @@ case class D3Data (@(JSExport @field) pairDiagram: Diagram) {
   def threadLinks(): js.Array[js.Dictionary[Any]] = threadDiagram.jsLinks()
 }
 
-@JSExport
-object D3Data {
+@JSExportTopLevel("D3Data") object D3Data {
 
   /** Creates a pair and thread diagrams from values in form fields of docs/index.html
     *

@@ -48,7 +48,7 @@ public class Demo4Java {
   }
 
   private static void generateSetOfDiagrams(String urlQuery, int i) throws IOException {
-    Config config = new Config(urlQuery);
+    TilesConfig config = new TilesConfig(urlQuery);
 
     Diagram pairs = NewPairDiagram.create(config);
     generateDiagram(i + "-pairs", "1px", pairs, config, 1);
@@ -67,7 +67,7 @@ public class Demo4Java {
       String fileName,
       String strokeWidth,
       Diagram diagram,
-      Config config,
+      TilesConfig config,
       Integer scale
   ) throws IOException {
     System.out.println("-------------- "+fileName);

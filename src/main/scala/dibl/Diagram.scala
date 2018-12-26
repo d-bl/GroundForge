@@ -17,12 +17,11 @@ package dibl
 
 import scala.annotation.tailrec
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
-@JSExport
-case class Diagram(nodes: Seq[NodeProps],
-                   links: Seq[LinkProps]
-                  ) {
+@JSExportTopLevel("Diagram") case class Diagram(nodes: Seq[NodeProps],
+                                                links: Seq[LinkProps]
+                                               ) {
 
   @JSExport
   def node(i: Int): NodeProps = nodes(i)

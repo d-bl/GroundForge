@@ -1,9 +1,8 @@
 package dibl
 
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
-@JSExport
-object InteractiveSVG {
+@JSExportTopLevel("InteractiveSVG") object InteractiveSVG {
 
   /** Completes a document supposed to have groups of SVG elements as in
    * docs/help/images/matrix-template.png
@@ -22,7 +21,7 @@ object InteractiveSVG {
    *         Other elements reference semi transparent and repeat the opaque elements.
    */
   @JSExport
-  def create(config: Config): String = {
+  def create(config: TilesConfig): String = {
     val itemMatrix = config.itemMatrix
 
     (for {
@@ -54,7 +53,7 @@ object InteractiveSVG {
     else ""
   }
 
-  private def textInput(isActive: Boolean, r: Int, c: Int, config: Config) = {
+  private def textInput(isActive: Boolean, r: Int, c: Int, config: TilesConfig) = {
     val item = config.itemMatrix(r)(c)
     if (isActive)
       s"""<foreignObject x='${ 19 + c * 10 }' y='${ 970 + r * 10 }' width='4em' height='8'>

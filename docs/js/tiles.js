@@ -30,8 +30,8 @@ function submitQuery() {
 }
 function showProto() {
 
-  var config = dibl.Config(submitQuery())
-  d3.select("#clones").html(dibl.InteractiveSVG().create(config))
+  var config = TilesConfig(submitQuery())
+  d3.select("#clones").html(InteractiveSVG.create(config))
   d3.select("#link").node().href = "?" + submitQuery() // don't extract var, we might now have other form fields
   d3.select("#animations").style("display", "none")
   d3.selectAll("#threadDiagram, #pairDiagram").html("")
@@ -45,8 +45,8 @@ function showProto() {
 }
 function flip(){
   var left = d3.select("#footside").node().value
-  console.log(dibl.Matrix().flip)
-  d3.select("#headside").node().value = dibl.Matrix().flip(left)
+  console.log(Matrix.flip)
+  d3.select("#headside").node().value = Matrix.flip(left)
   showProto()
 }
 function scrollIntoViewIfPossible(container) {
@@ -71,16 +71,16 @@ function showDiagrams(config) {
   var pairContainer = d3.select("#pairDiagram")
   var pairContainerNode = pairContainer.node()
   if (!config)
-      var config = dibl.Config().create(submitQuery())
-  var pairDiagram = pairContainerNode.data = dibl.NewPairDiagram().create(config)
-  pairContainer.html(dibl.D3jsSVG().render(pairDiagram, "1px", markers, 744, 1052))
+      var config = TilesConfig().create(submitQuery())
+  var pairDiagram = pairContainerNode.data = NewPairDiagram.create(config)
+  pairContainer.html(D3jsSVG.render(pairDiagram, "1px", markers, 744, 1052))
   scrollToIfPossible(pairContainerNode,0,0)
   if (pairDiagram.jsNodes().length == 1) return
 
   var threadContainer = d3.select("#threadDiagram")
   var threadContainerNode = threadContainer.node()
-  var threadDiagram = threadContainerNode.data = dibl.ThreadDiagram().create(pairDiagram)
-  threadContainer.html(dibl.D3jsSVG().render(threadDiagram, "2px", markers, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
+  var threadDiagram = threadContainerNode.data = ThreadDiagram.create(pairDiagram)
+  threadContainer.html(D3jsSVG.render(threadDiagram, "2px", markers, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
   if (threadDiagram.jsNodes().length == 1 || threadContainerNode.innerHTML.indexOf("Need a new pair from") >= 0)  return
 
   animateDiagram(threadContainer, 744, 1052)
@@ -102,7 +102,7 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
       var s = jsLink.source
       var t = jsLink.target
       var l = diagram.link(jsLink.index)
-      return  dibl.D3jsSVG().pathDescription(l, s.x, s.y, t.x, t.y)
+      return  D3jsSVG.pathDescription(l, s.x, s.y, t.x, t.y)
   }
   var tickCounter = 0
   function onTick() {

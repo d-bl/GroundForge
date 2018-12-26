@@ -2,10 +2,9 @@ package dibl
 
 import dibl.Stitches.defaultColorValue
 
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
-@JSExport
-case class Config(urlQuery: String) {
+@JSExportTopLevel("TilesConfig") case class TilesConfig(urlQuery: String) {
   println(urlQuery)
 
   private val keyValueStrings: Seq[String] = urlQuery

@@ -3,13 +3,12 @@ package dibl
 import dibl.Force.Point
 import dibl.Matrix.relativeSourceMap
 
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
-@JSExport
-object NewPairDiagram {
+@JSExportTopLevel("NewPairDiagram") object NewPairDiagram {
 
   @JSExport
-  def create(config: Config): Diagram = {
+  def create(config: TilesConfig): Diagram = {
 
     val itemMatrix = config.itemMatrix
     val rows: Int = itemMatrix.length

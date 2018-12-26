@@ -15,15 +15,14 @@
 */
 package dibl
 
-import dibl.LinkProps.{pairLink, transparentLinks}
-import dibl.NodeProps.{errorNode, node}
+import dibl.LinkProps.{ pairLink, transparentLinks }
+import dibl.NodeProps.{ errorNode, node }
 
 import scala.annotation.tailrec
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 import scala.util.Try
 
-@JSExport
-object PairDiagram {
+@JSExportTopLevel("PairDiagram") object PairDiagram {
 
   @JSExport
   def create(stitches: String, threadDiagram: Diagram): Diagram = apply(stitches, threadDiagram)

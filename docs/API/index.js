@@ -25,14 +25,14 @@ function load() {
           "&tile=" + matrix +
           "&footsideStitch=-&tileStitch=ctc" +
           "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
-  var config = dibl.Config().create(q)
-  var pairDiagram = dibl.NewPairDiagram().create(config)
-  var threadDiagram = dibl.ThreadDiagram().create(pairDiagram)
+  var config = TilesConfig.create(q)
+  var pairDiagram = NewPairDiagram.create(config)
+  var threadDiagram = dibl.ThreadDiagram.create(pairDiagram)
   showGraph(d3.select('#pairs'), pairDiagram, "1px")
   showGraph(d3.select('#threads'), threadDiagram, "2px")
 }
 function showGraph(container, diagram, stroke) {
-    var svg = dibl.D3jsSVG()
+    var svg = dibl.D3jsSVG
     var markers = true // use false for slow devices and IE-11, set them at onEnd
     container.node().innerHTML = svg.render(diagram, stroke, markers, 400, 400)
     var nodeDefs = diagram.jsNodes()

@@ -20,7 +20,7 @@ import dibl.Matrix.toRelativeSources
 import scala.collection.immutable.IndexedSeq
 import scala.collection.immutable.Range.Inclusive
 import scala.collection.mutable
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 /**
   * Below a schematic ascii visualisation of a definition of a
@@ -240,10 +240,9 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
       s"""<path style='stroke:$color;stroke-opacity:0.4;fill:none' d='M $sourceX,$sourceY $targetX,$targetY'></path>"""
   }.mkString
 }
-@JSExport
-object Fringes {
+@JSExportTopLevel("Fringes") object Fringes {
   @JSExport
-  def createSVG(config: Config):String = {
+  def createSVG(config: TilesConfig):String = {
     val m = config.itemMatrix.map(_.map(i => toRelativeSources(i.vectorCode.toUpper)))
     val shifted = m.slice(m.length - 2, m.length) ++ m.slice(0,m.length - 2)
     val trimmed =

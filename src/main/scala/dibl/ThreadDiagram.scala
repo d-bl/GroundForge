@@ -22,10 +22,9 @@ import dibl.NodeProps.{ errorNode, node, threadStartNode }
 
 import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
-@JSExport
-object ThreadDiagram {
+@JSExportTopLevel("ThreadDiagram") object ThreadDiagram {
 
   @JSExport
   def create(pairDiagram: Diagram): Diagram = apply(pairDiagram)

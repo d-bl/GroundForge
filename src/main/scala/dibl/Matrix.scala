@@ -17,11 +17,10 @@ package dibl
 
 import scala.collection.immutable.HashMap
 import scala.reflect.ClassTag
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 import scala.util.{ Failure, Success, Try }
 
-@JSExport
-object Matrix {
+@JSExportTopLevel("Matrix") object Matrix {
 
   /** @param lines for example: <pre>
     *              ab
