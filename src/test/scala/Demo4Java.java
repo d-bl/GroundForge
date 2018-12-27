@@ -13,8 +13,17 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html
 */
-package dibl;
 
+import dibl.D3jsSVG;
+import dibl.Diagram;
+import dibl.LinkedNodes;
+import dibl.NewPairDiagram;
+import dibl.NodeProps;
+import dibl.PairDiagram;
+import dibl.PrototypeDiagram;
+import dibl.SheetSVG;
+import dibl.ThreadDiagram;
+import dibl.TilesConfig;
 import scala.collection.Seq;
 import scala.collection.mutable.ArraySeq;
 
@@ -26,30 +35,34 @@ public class Demo4Java {
 
   private static final File dir = new File("target/test/pattern/");
 
-  public static void main(String[] args) throws Throwable {
-    //noinspection ResultOfMethodCallIgnored
+  public static void main(String[] args) throws IOException {
     dir.mkdirs();
 
     String[] urlQueries = { //
-        "patchWidth=6&patchHeight=5" + "&tile=5-&tileStitch=ct&"
+        "patchWidth=6&patchHeight=5" //
+            + "&tile=5-&tileStitch=ct&"
             + "&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1",
-        "patchWidth=12&patchHeight=12"
-            + "&tile=831,4-7,-5-&tileStitch=ct&"
+        "patchWidth=12&patchHeight=12" + "&tile=831,4-7,-5-&tileStitch=ct&"
             + "shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
         "patchWidth=11&patchHeight=12" //
             + "&tile=B-C-,---5,C-B-,-5--&tileStitch=ct"
             + "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4",
-        // TODO for more examples: see the demo section of the tiles page
-        //  tiling with gaps (the N links) don't meet the requirements of the centerTile method
+        // more examples for testing: see the demo section of the tiles page
     };
     for (int i = 0; i <= urlQueries.length - 1; i++) {
-      generateSetOfDiagrams(urlQueries[i], i);
+      TilesConfig config = new TilesConfig(urlQueries[i]);
+      drosteSteps(config, i);
+      new FileOutputStream(dir + "/" + i + "-prototype.svg")
+          .write((D3jsSVG.prolog() + PrototypeDiagram.create(config)).getBytes());
     }
+
+    // squared diagram
+    SheetSVG patterns = new dibl.SheetSVG(2, "height='100mm' width='110mm'", "GFP");
+    patterns.add("586- -789 2111 -4-4", "checker");
+    new java.io.FileOutputStream("sheet.svg").write(patterns.toSvgDoc().getBytes());
   }
 
-  private static void generateSetOfDiagrams(String urlQuery, int i) throws IOException {
-    TilesConfig config = new TilesConfig(urlQuery);
-
+  private static void drosteSteps(TilesConfig config, int i) throws IOException {
     Diagram pairs = NewPairDiagram.create(config);
     generateDiagram(i + "-pairs", "1px", pairs, config, 1);
     Diagram threads = ThreadDiagram.create(pairs);
@@ -70,14 +83,14 @@ public class Demo4Java {
       TilesConfig config,
       Integer scale
   ) throws IOException {
-    System.out.println("-------------- "+fileName);
+    System.out.println("-------------- " + fileName);
 
-    // scala-doc of centerTile in short:
+    // scala-doc for linksOfCenterTile in short:
     // tuples with (source,target) for all links within a tile and to adjacent tiles
-    Seq<LinkedNodes> links = config.linksOfcenterTile(diagram, scale);
-    diagram.logTileLinks(links);
+    Seq<LinkedNodes> links = config.linksOfCenterTile(diagram, scale);
 
-    //showing how to access TODO compute deltas
+    diagram.logTileLinks(links);
+    //showing how to access TODO compute deltas from logged data
     diagram.node(links.apply(0).source()).id();
 
     int nrOfNodes = diagram.nodes().size();

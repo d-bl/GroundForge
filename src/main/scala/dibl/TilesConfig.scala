@@ -97,6 +97,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   if (offsetRightMargin > 0) replaceItems(rightMatrix, offsetRightMargin, rightMatrixStitch)
 
   private def replaceItems(inputMatrix: Array[String], offset: Int, defaultStitch: String): Unit = {
+    // TODO rejoin links for ignored stitches
     for {r <- 0 until totalRows} {
       for {c <- 0 until inputMatrix.head.length} {
         val rSource = r % inputMatrix.length
@@ -161,7 +162,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
    *         Each transformation from pairs to threads puts more nodes at the same x/y positions.
    *         The start of their id-s will be identical, the tail of their id-s will be different.
    */
-  def linksOfcenterTile(diagram: Diagram, scale: Int): Seq[LinkedNodes] = {
+  def linksOfCenterTile(diagram: Diagram, scale: Int): Seq[LinkedNodes] = {
 
     lazy val minWidthForBricks = centerMatrixCols + 4
     lazy val minHeightForBricks = centerMatrixRows + 4

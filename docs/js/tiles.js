@@ -31,7 +31,7 @@ function submitQuery() {
 function showProto() {
 
   var config = TilesConfig(submitQuery())
-  d3.select("#clones").html(InteractiveSVG.create(config))
+  d3.select("#prototype").html(PrototypeDiagram.create(config))
   d3.select("#link").node().href = "?" + submitQuery() // don't extract var, we might now have other form fields
   d3.select("#animations").style("display", "none")
   d3.selectAll("#threadDiagram, #pairDiagram").html("")
@@ -71,7 +71,7 @@ function showDiagrams(config) {
   var pairContainer = d3.select("#pairDiagram")
   var pairContainerNode = pairContainer.node()
   if (!config)
-      var config = TilesConfig().create(submitQuery())
+      var config = TilesConfig(submitQuery())
   var pairDiagram = pairContainerNode.data = NewPairDiagram.create(config)
   pairContainer.html(D3jsSVG.render(pairDiagram, "1px", markers, 744, 1052))
   scrollToIfPossible(pairContainerNode,0,0)
