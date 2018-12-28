@@ -84,15 +84,11 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }
   }
 
-  private def embed(clones: String): String = {
-    def symbol(value: String) = {
-      s"""<text y="979.27722" x="-21.02791" style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none">$value</text>
-         |        <path d="m -18.06,978.06 c 0,0.55 -0.22,1.05 -0.59,1.41 -0.36,0.36 -0.86,0.59 -1.41,0.59 -0.55,0 -1.05,-0.22 -1.41,-0.56 -0.36,-0.36 -0.58,-0.86 -0.59,-1.41 0,-0.55 0.22,-1.05 0.59,-1.41 0.36,-0.36 0.86,-0.59 1.41,-0.59 0.55,0 1.05,0.22 1.41,0.58 0.36,0.36 0.59,0.86 0.58,1.41 z"
-         |              style="fill:none;stroke-width:1"></path>
-       """.stripMargin
-    }
-
-    val style = """style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)""""
+  def embed(clones: String): String = {
+    val textProps = """y="979.27722" x="-21.02791" style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none""""
+    val circleProps = """style="fill:none;stroke-width:1" d="m -18.064645,978.05982 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41422 -0.361929,0.36192 -0.861929,0.58578 -1.414213,0.58578 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58578 -0.361929,-0.36193 -0.585787,-0.86193 -0.585787,-1.41422 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z""""
+    // TODO fix compiler stack overflow for:
+    //  val arrowStyle = """style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)""""
     s"""<svg
        |    xmlns="http://www.w3.org/2000/svg"
        |    xmlns:xlink='http://www.w3.org/1999/xlink'
@@ -111,107 +107,133 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
        |          d="m -15.737308,978.07528 a 4.4367617,4.4367617 0 0 1 -2.222417,3.84823 4.4428755,4.4428755 0 0 1 -4.443852,-0.002 4.4428755,4.4428755 0 0 1 -2.219481,-3.84991 l 4.442876,0.002"
        |          style="fill:#000000;stroke:none;"
        |          ></path>
-       |      <g id="vc2">${symbol("2")}
-       |        <path $style d="m -12.051706,978.09704 -6.012939,-0.0372"></path>
-       |        <path $style d="m -28.650432,969.47404 7.171574,7.17157"></path>
+       |      <g id="vc2">
+       |        <text $textProps>2</text><path $circleProps></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -12.051706,978.09704 -6.012939,-0.0372"></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -28.650432,969.47404 7.171574,7.17157"></path>
        |      </g>
-       |      <g id="vc0">${symbol("0") }
-       |        <path d="m -12.051698,978.09705 -6.012939,-0.0372" $style ></path>
-       |        <path d="m -11.47885,969.47404 -7.171574,7.17157" $style ></path>
+       |      <g id="vc0">
+       |        <text $textProps>0</text><path $circleProps></path>
+       |        <path d="m -12.051698,978.09705 -6.012939,-0.0372" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
+       |        <path d="m -11.47885,969.47404 -7.171574,7.17157" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
        |      </g>
-       |      <g id="vc1">${symbol("1") }
-       |        <path $style d="m -12.051706,978.09702 -6.012939,-0.0372"></path>
-       |        <path $style d="m -20.064645,970.0598 0,6"></path>
+       |      <g id="vc1">
+       |        <text $textProps>1</text><path $circleProps></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -12.051706,978.09702 -6.012939,-0.0372"></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -20.064645,970.0598 0,6"></path>
        |      </g>
-       |      <g id="vcI">${symbol("I") }
-       |        <path d="m -2.064637,978.0598 -16,0" $style ></path>
-       |        <path d="m -28.051698,978.09702 5.987061,-0.0372" $style ></path>
+       |      <g id="vcI">
+       |        <text $textProps>I</text><path $circleProps></path>
+       |        <path d="m -2.064637,978.0598 -16,0" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
+       |        <path d="m -28.051698,978.09702 5.987061,-0.0372" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
        |      </g>
-       |      <g id="vc4">${symbol("4") }
-       |        <path d="m -11.478848,969.47403 -7.171574,7.17158" $style ></path>
-       |        <path d="m -20.064635,970.05982 0,6" $style ></path>
+       |      <g id="vc4">
+       |        <text $textProps>4</text><path $circleProps></path>
+       |        <path d="m -11.478848,969.47403 -7.171574,7.17158" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
+       |        <path d="m -20.064635,970.05982 0,6" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
        |      </g>
-       |      <g id="vc5">${symbol("5") }
-       |        <path d="m -11.491798,969.43678 -7.171574,7.17158" $style ></path>
-       |        <path d="m -28.663372,969.43678 7.171574,7.17158" $style ></path>
+       |      <g id="vc5">
+       |        <text $textProps>5</text><path $circleProps></path>
+       |        <path d="m -11.491798,969.43678 -7.171574,7.17158" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
+       |        <path d="m -28.663372,969.43678 7.171574,7.17158" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
        |      </g>
-       |      <g id="vc7">${symbol("7") }
-       |        <path d="m -20.064645,970.05982 0,6" $style ></path>
-       |        <path d="m -28.650432,969.47403 7.171574,7.17158" $style ></path>
+       |      <g id="vc7">
+       |        <text $textProps>7</text><path $circleProps></path>
+       |        <path d="m -20.064645,970.05982 0,6" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
+       |        <path d="m -28.650432,969.47403 7.171574,7.17158" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
        |      </g>
-       |      <g id="vc8">${symbol("8") }
-       |        <path d="m -20.064645,970.0598 0,6" $style ></path>
-       |        <path d="m -28.064645,978.0598 6,0" $style ></path>
+       |      <g id="vc8">
+       |        <text $textProps>8</text><path $circleProps></path>
+       |        <path d="m -20.064645,970.0598 0,6" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
+       |        <path d="m -28.064645,978.0598 6,0" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
        |      </g>
-       |      <g id="vc9">${symbol("9") }
-       |        <path d="m -28.663372,969.4368 7.171574,7.17157" $style ></path>
-       |        <path d="m -28.077585,978.02258 6,0" $style ></path>
+       |      <g id="vc9">
+       |        <text $textProps>9</text><path $circleProps></path>
+       |        <path d="m -28.663372,969.4368 7.171574,7.17157" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
+       |        <path d="m -28.077585,978.02258 6,0" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
        |      </g>
-       |      <g id="vcA">${symbol("A") }
-       |        <path d="m -12.051706,978.09704 -6.012939,-0.0372" $style ></path>
-       |        <path d="m -20.064645,960.05982 0,16" $style ></path>
+       |      <g id="vcA">
+       |        <text $textProps>A</text><path $circleProps></path>
+       |        <path d="m -12.051706,978.09704 -6.012939,-0.0372" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
+       |        <path d="m -20.064645,960.05982 0,16" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
        |      </g>
-       |      <g id="vcB">${symbol("B") }
-       |        <path $style d="m -11.47885,969.47404 -7.171574,7.17157"></path>
-       |        <path $style d="m -20.064637,960.05982 0,16"></path>
+       |      <g id="vcB">
+       |        <text $textProps>B</text><path $circleProps></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -11.47885,969.47404 -7.171574,7.17157"></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -20.064637,960.05982 0,16"></path>
        |      </g>
-       |      <g id="vcC">${symbol("C") }
-       |        <path d="m -20.064645,960.05982 0,16" $style ></path>
-       |        <path d="m -28.650432,969.47404 7.171574,7.17157" $style ></path>
+       |      <g id="vcC">
+       |        <text $textProps>C</text><path $circleProps></path>
+       |        <path d="m -20.064645,960.05982 0,16" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
+       |        <path d="m -28.650432,969.47404 7.171574,7.17157" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
        |      </g>
-       |      <g id="vcD">${symbol("D") }
-       |        <path $style d="m -20.064645,960.05982 0,16"></path>
-       |        <path d="m -28.051706,978.09702 5.987061,-0.0372" $style ></path>
+       |      <g id="vcD">
+       |        <text $textProps>D</text><path $circleProps></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -20.064645,960.05982 0,16"></path>
+       |        <path d="m -28.051706,978.09702 5.987061,-0.0372" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
        |      </g>
-       |      <g id="vcE">${symbol("E") }
-       |        <path $style d="m -2.090516,977.98535 -15.987061,0.0372"></path>
-       |        <path $style d="m -11.49179,969.43678 -7.171574,7.17158"></path>
+       |      <g id="vcE">
+       |        <text $textProps>E</text><path $circleProps></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -2.090516,977.98535 -15.987061,0.0372"></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -11.49179,969.43678 -7.171574,7.17158"></path>
        |      </g>
-       |      <g id="vcF">${symbol("F") }
-       |        <path d="m -2.077585,978.0226 -16,0" $style ></path>
-       |        <path d="m -20.077585,970.0226 0,6" $style ></path>
+       |      <g id="vcF">
+       |        <text $textProps>F</text><path $circleProps></path>
+       |        <path d="m -2.077585,978.0226 -16,0" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
+       |        <path d="m -20.077585,970.0226 0,6" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
        |      </g>
-       |      <g id="vcG">${symbol("G") }
-       |        <path $style d="m -2.077585,978.0226 -16,0"></path>
-       |        <path $style d="m -20.077585,960.0226 0,16"></path>
+       |      <g id="vcG">
+       |        <text $textProps>G</text><path $circleProps></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -2.077585,978.0226 -16,0"></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -20.077585,960.0226 0,16"></path>
        |      </g>
-       |      <g id="vcH">${symbol("H") }
-       |        <path d="m -2.077585,978.0226 -15.98706,0.0372" $style ></path>
-       |        <path $style d="m -28.650425,969.47403 7.17157,7.17158"></path>
+       |      <g id="vcH">
+       |        <text $textProps>H</text><path $circleProps></path>
+       |        <path d="m -2.077585,978.0226 -15.98706,0.0372" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -28.650425,969.47403 7.17157,7.17158"></path>
        |      </g>
-       |      <g id="vcK">${symbol("K") }
-       |        <path $style d="m -2.064645,978.0598 -16,0"></path>
-       |        <path $style d="m -38.064645,978.0598 16,0"></path>
+       |      <g id="vcK">
+       |        <text $textProps>K</text><path $circleProps></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -2.064645,978.0598 -16,0"></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -38.064645,978.0598 16,0"></path>
        |      </g>
-       |      <g id="vcJ">${symbol("J") }
-       |        <path d="m -38.077585,978.02257 16,0" $style ></path>
-       |        <path d="m -12.090524,978.05979 -5.987061,-0.0372" $style ></path>
+       |      <g id="vcJ">
+       |        <text $textProps>J</text><path $circleProps></path>
+       |        <path d="m -38.077585,978.02257 16,0" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
+       |        <path d="m -12.090524,978.05979 -5.987061,-0.0372" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
        |      </g>
-       |      <g id="vcL">${symbol("L") }
-       |        <path $style d="m -11.49179,969.43678 -7.171574,7.17158"></path>
-       |        <path $style d="m -38.077577,978.02257 16,0"></path>
+       |      <g id="vcL">
+       |        <text $textProps>L</text><path $circleProps></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -11.49179,969.43678 -7.171574,7.17158"></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -38.077577,978.02257 16,0"></path>
        |      </g>
-       |      <g id="vc6">${symbol("6") }
-       |        <path d="m -11.49179,969.43678 -7.171574,7.17158" $style ></path>
-       |        <path d="m -28.077577,978.02257 6,0" $style ></path>
+       |      <g id="vc6">
+       |        <text $textProps>6</text><path $circleProps></path>
+       |        <path d="m -11.49179,969.43678 -7.171574,7.17158" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
+       |        <path d="m -28.077577,978.02257 6,0" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
        |      </g>
-       |      <g id="vcN">${symbol("N") }
-       |        <path $style d="m -20.077585,960.02257 0,16"></path>
-       |        <path $style d="m -38.077585,978.02257 16,0"></path>
+       |      <g id="vcN">
+       |        <text $textProps>N</text><path $circleProps></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -20.077585,960.02257 0,16"></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -38.077585,978.02257 16,0"></path>
        |      </g>
-       |      <g id="vcM">${symbol("M") }
-       |        <path d="m -20.077585,970.02257 0,6" $style ></path>
-       |        <path d="m -38.077585,978.02257 16,0" $style ></path>
+       |      <g id="vcM">
+       |        <text $textProps>M</text><path $circleProps></path>
+       |        <path d="m -20.077585,970.02257 0,6" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
+       |        <path d="m -38.077585,978.02257 16,0" style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"></path>
        |      </g>
-       |      <g id="vcO">${symbol("O") }
-       |        <path $style d="m -28.663372,969.43678 7.171574,7.17158"></path>
-       |        <path $style d="m -38.064646,978.05979 15.987061,-0.0372"></path>
+       |      <g id="vcO">
+       |        <text $textProps>O</text><path $circleProps></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -28.663372,969.43678 7.171574,7.17158"></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -38.064646,978.05979 15.987061,-0.0372"></path>
        |      </g>
-       |      <g id="vc3">${symbol("3") }
-       |        <path $style d="m -28.064646,978.05979 5.987061,-0.0372"></path>
-       |        <path $style d="m -12.090524,978.05979 -5.987061,-0.0372"></path>
+       |      <g id="vc3">
+       |        <text $textProps>3</text><path $circleProps></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -28.064646,978.05979 5.987061,-0.0372"></path>
+       |        <path style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)" d="m -12.090524,978.05979 -5.987061,-0.0372"></path>
        |      </g>
-       |      <g id="vc-">${symbol("-") }
+       |      <g id="vc-">
+       |        <text $textProps>-</text><path $circleProps></path>
        |      </g>
        |    </g>
        |$clones
