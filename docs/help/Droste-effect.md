@@ -9,7 +9,6 @@ Droste effect
 - [Stitches](#stitches)
 - [Families of patterns to play with](#families-of-patterns-to-play-with)
 - [Tiling](#tiling)
-- [Offline-execution](#offline-execution)
 - [Numbers of patterns](#numbers-of-patterns)
 
 The [GroundForge] main page can show three pairs of thread and pair diagrams.
