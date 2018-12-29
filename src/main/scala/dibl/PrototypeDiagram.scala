@@ -32,10 +32,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       val stitch = item.stitch
       val vectorCode = item.vectorCode.toString.toUpperCase
       val translate = s"transform='translate(${ c * 10 + 38 },${ r * 10 + 1 })'"
-      val nrOfPairsOut = config.pairsOut(r)(c)
+      val nrOfPairsOut = config.nrOfPairsOut(r)(c)
       val opacity = getOpacity(vectorCode, item.isOpaque)
       val isActiveNode = opacity == "1" && vectorCode != "-"
-      s"""${ warning(vectorCode, translate, nrOfPairsOut) }
+      s"""${ warning(vectorCode, translate, nrOfPairsOut, item.noStitch) }
          |<use ${ events(isActiveNode, item.id) }
          |  xlink:href='#vc$vectorCode'
          |  id='svg-r${ r + 1 }-c${ c + 1 }'
@@ -77,9 +77,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }
   }
 
-  private def warning(vectorCode: String, translate: String, nrOfPairsOut: Int) = {
-    (nrOfPairsOut, vectorCode) match {
-      case (2, _) | (_, "-") => "" // a two-in/two-out stitch or no stitch
+  private def warning(vectorCode: String, translate: String, nrOfPairsOut: Int, noStitch: Boolean) = {
+    (nrOfPairsOut, vectorCode, noStitch) match {
+      case (_, _, true) | (2, _, _) | (_, "-", _) => "" // a two-in/two-out stitch or no stitch
       case _ => s"""<use xlink:href='#oops' $translate style='opacity:0.${ 1 + nrOfPairsOut };'></use>"""
     }
   }

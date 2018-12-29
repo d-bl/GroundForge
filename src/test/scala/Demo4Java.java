@@ -47,6 +47,15 @@ public class Demo4Java {
         "patchWidth=11&patchHeight=12" //
             + "&tile=B-C-,---5,C-B-,-5--&tileStitch=ct"
             + "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4",
+        "patchWidth=7&patchHeight=16"
+            + "&footside=-5,5-&footsideStitch=-"
+            + "&tile=-5-,5-5,-5-,B-C,-5-&tileStitch=ct"
+            + "&headside=5-,-5&headsideStitch=-"
+            + "&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4",
+        "patchWidth=8&patchHeight=14"
+            + "&footside=b,-,a,-&footsideStitch=-"
+            + "&tile=831,4-7,-5-&tileStitch=ctct&headsideStitch=-"
+            + "&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
         // more examples for testing: see the demo section of the tiles page
     };
     for (int i = 0; i <= urlQueries.length - 1; i++) {
@@ -91,7 +100,8 @@ public class Demo4Java {
 
     diagram.logTileLinks(links);
     //showing how to access TODO compute deltas from logged data
-    diagram.node(links.apply(0).source()).id();
+    if(links.nonEmpty())
+      diagram.node(links.apply(0).source()).id();
 
     int nrOfNodes = diagram.nodes().size();
     ArraySeq<NodeProps> nudgedNodes = new ArraySeq<NodeProps>(nrOfNodes);

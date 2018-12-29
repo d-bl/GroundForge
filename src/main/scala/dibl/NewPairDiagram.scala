@@ -1,7 +1,6 @@
 package dibl
 
 import dibl.Force.Point
-import dibl.Matrix.relativeSourceMap
 
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
@@ -37,9 +36,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
     def toNodeSeq(row: Int, col: Int): Seq[ConnectedNode] = {
       val item = itemMatrix(row)(col)
-      relativeSourceMap
-        .get(item.vectorCode.toUpper)
-        .map { case Array((leftRow, leftCol), (rightRow, rightCol)) =>
+      if(item.relativeSources.isEmpty) return Seq.empty
+      val Array((leftRow, leftCol), (rightRow, rightCol)) = item.relativeSources
           val sourceLeft = toPoint(row + leftRow, col + leftCol)
           val sourceRight = toPoint(row + rightRow, col + rightCol)
           val target = toPoint(row, col)
@@ -53,7 +51,6 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
             case (false, true) => Seq(node, toSimpleNode(sourceRight, node))
             case (true, true) => Seq(node, toSimpleNode(sourceLeft, node), toSimpleNode(sourceRight, node))
           }
-        }.getOrElse(Seq.empty)
     }
 
     val nodes: Seq[ConnectedNode] = Seq(SimpleNode(0, Point(0, 0), Point(0, 0))) ++

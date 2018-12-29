@@ -61,25 +61,27 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   case class Item(id: String,
                   vectorCode: Char = '-',
                   stitch: String = "",
-                  isOpaque: Boolean = false) {
-    val color: Option[String] = Option(defaultColorValue(stitch))
+                  isOpaque: Boolean = false,
+                  relativeSources: SrcNodes
+                 ) {
+    lazy val noStitch: Boolean = stitch.isEmpty || stitch == "-"
+    lazy val color: Option[String] = Option(defaultColorValue(stitch))
       .filter(_.nonEmpty)
   }
 
   val itemMatrix: Array[Array[Item]] = Array.fill[Array[Item]](totalRows)(
-    Array.fill[Item](totalCols)(Item(""))
+    Array.fill[Item](totalCols)(Item("", relativeSources = Array.empty))
   )
 
-  lazy val pairsOut: Array[Array[Int]] = {
+  lazy val nrOfPairsOut: Array[Array[Int]] = {
     val rows: Int = itemMatrix.length
     val cols: Int = itemMatrix.head.length
-    val pairsOut = Array.fill[Array[Int]](rows)(
-      Array.fill[Int](cols)(0)
-    )
-    for {r <- 0 until rows
-         c <- 0 until cols
+    val pairsOut = Array.fill[Array[Int]](rows)(Array.fill[Int](cols)(0))
+    for {
+      r <- itemMatrix.indices
+      c <- itemMatrix(r).indices
     } {
-      Matrix.toRelativeSources(itemMatrix(r)(c).vectorCode.toUpper)
+      itemMatrix(r)(c).relativeSources
         .foreach { case (relativeSourceRow, relativeSourceCol) =>
           val row: Int = r + relativeSourceRow
           val col: Int = c + relativeSourceCol
@@ -97,29 +99,34 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   if (offsetRightMargin > 0) replaceItems(rightMatrix, offsetRightMargin, rightMatrixStitch)
 
   private def replaceItems(inputMatrix: Array[String], offset: Int, defaultStitch: String): Unit = {
-    // TODO rejoin links for ignored stitches
-    for {r <- 0 until totalRows} {
-      for {c <- 0 until inputMatrix.head.length} {
-        val rSource = r % inputMatrix.length
+    for {
+      r <- itemMatrix.indices
+      rSource = r % inputMatrix.length
+      c <- inputMatrix(rSource).indices
+    } {
         val id = Stitches.toID(rSource, c + offset)
         val vectorCode = inputMatrix(rSource)(c)
         val stitch = if (vectorCode == '-') ""
                      else fields.getOrElse(id, defaultStitch)
-        itemMatrix(r)(c + offset) = Item(id, vectorCode, stitch, r < inputMatrix.length)
-      }
+        itemMatrix(r)(c + offset) = Item(
+          id,
+          vectorCode,
+          stitch,
+          r < inputMatrix.length,
+          relativeSources = Matrix.toRelativeSources(vectorCode)
+        )
     }
   }
 
   // repeat tiles, see: docs/help/images/shift-directions.png
 
-  //noinspection RangeToIndices
   for { // TODO reduce ranges to avoid if
-    i <- 0 until totalRows
+    i <- itemMatrix.indices
     j <- -centerCols until centerCols
     translateRow = (i * shiftRowsSE) + (j * shiftRowsSW)
     translateCol = (i * shiftColsSE) + (j * shiftColsSW)
-    r <- 0 until centerMatrixRows
-    c <- 0 until centerMatrix.head.length
+    r <- centerMatrix.indices
+    c <- centerMatrix(r).indices
   } {
     // t in rt/ct stands for target cell, r and c for row and col
     val rt = r + translateRow
@@ -129,7 +136,77 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       val vectorCode = centerMatrix(r)(c)
       val stitch = if (vectorCode == '-') ""
                    else fields.getOrElse(id, centerMatrixStitch)
-      itemMatrix(rt)(ct + leftMarginWidth) = Item(id, vectorCode, stitch, r == rt && c == ct)
+      itemMatrix(rt)(ct + leftMarginWidth) = Item(id, vectorCode, stitch, r == rt && c == ct,
+        relativeSources = Matrix.toRelativeSources(vectorCode))
+    }
+  }
+
+  // rejoin links to ignored stitches
+
+  private def isFringe(row: Int, col: Int) = {
+    row < 0 || col < 0 || col >= itemMatrix(row).length
+  }
+
+  private def realLeftSource(row: Int, col: Int, relativeSource: (Int, Int)) = {
+    val (relativeSourceRow, relativeSourceCol) = relativeSource
+    lazy val srcItem = itemMatrix(row + relativeSourceRow)(col + relativeSourceCol)
+    if (isFringe(row + relativeSourceRow, col + relativeSourceCol) || !srcItem.noStitch) relativeSource
+    else {
+      // relativeSource is the bottom part of "<"; change "<" into "|"
+      val (srcRow, srcCol) = srcItem.relativeSources.lastOption.getOrElse((0,0))
+      (relativeSourceRow + srcRow, relativeSourceCol + srcCol)
+    }
+  }
+
+  private def realRightSource(row: Int, col: Int, relativeSource: (Int, Int)) = {
+    val (relativeSourceRow, relativeSourceCol) = relativeSource
+    lazy val srcItem = itemMatrix(row + relativeSourceRow)(col + relativeSourceCol)
+    if (isFringe(row + relativeSourceRow, col + relativeSourceCol) || !srcItem.noStitch) relativeSource
+    else {
+      // relativeSource is the bottom part of ">"; change ">" into "|"
+      val (srcRow, srcCol) = srcItem.relativeSources.headOption.getOrElse((0,0))
+      (relativeSourceRow + srcRow, relativeSourceCol + srcCol)
+    }
+  }
+
+  for {
+    r <- itemMatrix.indices
+    c <- itemMatrix(r).indices
+  } {
+    // reconnect nodes when connected to an ignored stitch
+    val item = itemMatrix(r)(c)
+    if (item.relativeSources.nonEmpty) {
+      val Array(directLeft, directRight) = item.relativeSources
+      itemMatrix(r)(c) = item.copy(relativeSources = Array(
+        realLeftSource(r, c, directLeft), // possibly change "<" into "|"
+        realRightSource(r, c, directRight) // possibly change ">" into "|"
+      ))
+    }
+  }
+  for {
+    r <- itemMatrix.indices
+    c <- itemMatrix(r).indices
+  } {
+    val item = itemMatrix(r)(c)
+    if(item.noStitch) {
+      // now that everything is reconnected, we can remove ignored stitches
+      itemMatrix(r)(c) = item.copy(relativeSources = SrcNodes())
+    }
+    else if (item.relativeSources.nonEmpty) {
+      val Array(left,right) = item.relativeSources
+      if (left == right) {
+        // replace Y with V (the center of the Y is a shared source for the bottom of the Y)
+        val (sharedRow, sharedCol) = left
+        val srcRow = r + sharedRow
+        val srcCol = c + sharedCol
+        if (!isFringe(srcRow, srcCol)) {
+          val srcItem = itemMatrix(srcRow)(srcCol)
+          val Array((leftRow, leftCol), (rightRow, rightCol)) = srcItem.relativeSources
+          val newSrcNodes = SrcNodes((sharedRow + leftRow, sharedCol + leftCol), (sharedRow + rightRow, sharedCol + rightCol))
+          itemMatrix(r)(c) = itemMatrix(r)(c).copy(relativeSources = newSrcNodes)
+          itemMatrix(srcRow)(srcCol) = srcItem.copy(relativeSources = SrcNodes())
+        }
+      }
     }
   }
 
@@ -151,7 +228,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
    * - As for now: the leftMatrix and rightMatrix must be empty.
    *
    * @return An empty array on some types of invalid arguments, the type of error is logged to standard-out.
-   *         Otherwise tuples with (source,target) for all links within a tile and to adjacent tiles.
+   *         Otherwise tuples with (relativeSource,target) for all links within a tile and to adjacent tiles.
    *
    *         Changes to the diagram won't affect previously returned results, nor the other way around.
    *
