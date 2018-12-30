@@ -42,12 +42,12 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   // TODO defaults based on the dimensions of the above matrices
   @JSExport
-  val totalRows: Int = fields.getOrElse("patchHeight", "12").replaceAll("[^0-9-]", "").toInt
-  private val centerCols: Int = fields.getOrElse("patchWidth", "12").replaceAll("[^0-9-]", "").toInt
-  val shiftRowsSE: Int = fields.getOrElse("shiftRowsSE", "12").replaceAll("[^0-9-]", "").toInt
-  val shiftRowsSW: Int = fields.getOrElse("shiftRowsSW", "12").replaceAll("[^0-9-]", "").toInt
-  val shiftColsSE: Int = fields.getOrElse("shiftColsSE", "12").replaceAll("[^0-9-]", "").toInt
-  val shiftColsSW: Int = fields.getOrElse("shiftColsSW", "12").replaceAll("[^0-9-]", "").toInt
+  val totalRows: Int = fields.getOrElse("patchHeight", "12").safeToInt
+  private val centerCols: Int = fields.getOrElse("patchWidth", "12").safeToInt
+  val shiftRowsSE: Int = fields.getOrElse("shiftRowsSE", "12").safeToInt
+  val shiftRowsSW: Int = fields.getOrElse("shiftRowsSW", "12").safeToInt
+  val shiftColsSE: Int = fields.getOrElse("shiftColsSE", "12").safeToInt
+  val shiftColsSW: Int = fields.getOrElse("shiftColsSW", "12").safeToInt
 
   private val leftMarginWidth = leftMatrix.head.trim.length
   private val offsetRightMargin = leftMarginWidth + centerCols
@@ -118,7 +118,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }
   }
 
-  // repeat tiles, see: docs/help/images/shift-directions.png
+  // repeat tiles, see: https://github.com/d-bl/GroundForge/blob/2e96d8b5/docs/help/images/shift-directions.png
 
   for { // TODO reduce ranges to avoid if
     i <- itemMatrix.indices
