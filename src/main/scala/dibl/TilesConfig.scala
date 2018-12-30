@@ -147,55 +147,58 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     row < 0 || col < 0 || col >= itemMatrix(row).length
   }
 
-  private def realLeftSource(row: Int, col: Int, relativeSource: (Int, Int)) = {
+  private def indirectSource(row: Int,
+                             col: Int,
+                             relativeSource: (Int, Int),
+                             firstOrLast: Array[(Int, Int)] => Option[(Int, Int)]
+                            ) = {
     val (relativeSourceRow, relativeSourceCol) = relativeSource
-    lazy val srcItem = itemMatrix(row + relativeSourceRow)(col + relativeSourceCol)
-    if (isFringe(row + relativeSourceRow, col + relativeSourceCol) || !srcItem.noStitch) relativeSource
+    val absSrcRow = row + relativeSourceRow
+    val absSrcCol = col + relativeSourceCol
+    if (isFringe(absSrcRow, absSrcCol)) relativeSource
     else {
-      // relativeSource is the bottom part of "<"; change "<" into "|"
-      val (srcRow, srcCol) = srcItem.relativeSources.lastOption.getOrElse((0,0))
-      (relativeSourceRow + srcRow, relativeSourceCol + srcCol)
-    }
-  }
-
-  private def realRightSource(row: Int, col: Int, relativeSource: (Int, Int)) = {
-    val (relativeSourceRow, relativeSourceCol) = relativeSource
-    lazy val srcItem = itemMatrix(row + relativeSourceRow)(col + relativeSourceCol)
-    if (isFringe(row + relativeSourceRow, col + relativeSourceCol) || !srcItem.noStitch) relativeSource
-    else {
-      // relativeSource is the bottom part of ">"; change ">" into "|"
-      val (srcRow, srcCol) = srcItem.relativeSources.headOption.getOrElse((0,0))
-      (relativeSourceRow + srcRow, relativeSourceCol + srcCol)
+      lazy val srcItem = itemMatrix(absSrcRow)(absSrcCol)
+      if (!srcItem.noStitch) relativeSource
+      else {
+        // srcItem is the point of "<" or ">"; change it into "|" (into the top)
+        val (srcRow, srcCol) = firstOrLast(srcItem.relativeSources).getOrElse((0,0))
+        (relativeSourceRow + srcRow, relativeSourceCol + srcCol)
+      }
     }
   }
 
   for {
-    r <- itemMatrix.indices
-    c <- itemMatrix(r).indices
+    row <- itemMatrix.indices
+    col <- itemMatrix(row).indices
   } {
     // reconnect nodes when connected to an ignored stitch
-    val item = itemMatrix(r)(c)
+    val item = itemMatrix(row)(col)
     if (item.relativeSources.nonEmpty) {
       val Array(directLeft, directRight) = item.relativeSources
-      itemMatrix(r)(c) = item.copy(relativeSources = Array(
-        realLeftSource(r, c, directLeft), // possibly change "<" into "|"
-        realRightSource(r, c, directRight) // possibly change ">" into "|"
-      ))
+      val realLeft = indirectSource(row, col, directLeft, _.lastOption)
+      val realRight = indirectSource(row, col, directRight, _.headOption)
+      if (directLeft != realLeft || directRight != realRight) {
+        itemMatrix(row)(col) = item.copy(relativeSources = Array(
+          realLeft, // change "<" into "|" when along a node without stitch
+          realRight //change ">" into "|"
+        ))
+      }
     }
   }
   for {
     r <- itemMatrix.indices
     c <- itemMatrix(r).indices
   } {
+    // now everything is reconnected around ignored stitches
     val item = itemMatrix(r)(c)
     if(item.noStitch) {
-      // now that everything is reconnected, we can remove ignored stitches
+      // drop links into ignored stitches
       itemMatrix(r)(c) = item.copy(relativeSources = SrcNodes())
     }
     else if (item.relativeSources.nonEmpty) {
       val Array(left,right) = item.relativeSources
       if (left == right) {
-        // replace Y with V (the center of the Y is a shared source for the bottom of the Y)
+        // replace Y with V; the tail of the Y are two links connecting the same two nodes
         val (sharedRow, sharedCol) = left
         val srcRow = r + sharedRow
         val srcCol = c + sharedCol
