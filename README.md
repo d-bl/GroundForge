@@ -148,7 +148,9 @@ Use as JavaScript Library
 =========================
 
 The html pages in the `docs` directory and `docs\API` use the code in `src/main` as a JavaScript library.
-The latter is a dressed down version showing the minimal code for a hard-coded pattern.
+The latter is a dressed down page showing the minimal code for the diagrams of one hard-coded pattern,
+the JavaScript more or less mimics the `Demo4Java` discussed below.
+The pages direct under `docs` are the dressed up pages allowing to experiment with bobbin lace grounds. 
 
 These pages have no automated tests
 other than an internal link checker in the Ruby task by the [travis](https://travis-ci.org/d-bl/GroundForge) job.

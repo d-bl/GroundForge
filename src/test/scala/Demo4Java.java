@@ -52,26 +52,34 @@ public class Demo4Java {
             + "&tile=-5-,5-5,-5-,B-C,-5-&tileStitch=ct"
             + "&headside=5-,-5&headsideStitch=-"
             + "&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4",
-        "patchWidth=8&patchHeight=14"
-            + "&footside=b,-,a,-&footsideStitch=-"
-            + "&tile=831,4-7,-5-&tileStitch=ctct&headsideStitch=-"
-            + "&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
         // more examples for testing: see the demo section of the tiles page
+        // TODO fix the next patterns
+        "patchWidth=8&patchHeight=14" // shared start node in top left corner: trouble for droste
+            + "&footside=b,-,a,-&footsideStitch=-"
+            + "&tile=831,4-7,-5-&tileStitch=ctct"
+            + "&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
+        "patchWidth=7&patchHeight=13"
+            + "&footside=-c14,b4--,-7c3,b-48&footsideStitch=-"
+            + "&tile=831,488,-4-&tileStitch=ctc"
+            + "&headside=44-,11C,87-,88C&headsideStitch=-"
+            + "&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
+
     };
-    for (int i = 0; i <= urlQueries.length - 1; i++) {
-      TilesConfig config = new TilesConfig(urlQueries[i]);
-      drosteSteps(config, i);
-      new FileOutputStream(dir + "/" + i + "-prototype.svg")
-          .write((D3jsSVG.prolog() + PrototypeDiagram.create(config)).getBytes());
-    }
+    for (int i = 0; i <= urlQueries.length - 1; i++)
+      drosteSteps(urlQueries[i], i);
 
     // squared diagram
-    SheetSVG patterns = new dibl.SheetSVG(2, "height='100mm' width='110mm'", "GFP");
+    SheetSVG patterns = new SheetSVG(2, "height='100mm' width='110mm'", "GFP");
     patterns.add("586- -789 2111 -4-4", "checker");
     new java.io.FileOutputStream("sheet.svg").write(patterns.toSvgDoc().getBytes());
   }
 
-  private static void drosteSteps(TilesConfig config, int i) throws IOException {
+  private static void drosteSteps(String urlQuery, int i) throws IOException {
+    System.out.println("-------------- " + i);
+    TilesConfig config = new TilesConfig(urlQuery);
+    new FileOutputStream(dir + "/" + i + "prototype.svg")
+        .write((D3jsSVG.prolog() + PrototypeDiagram.create(config)).getBytes());
+
     Diagram pairs = NewPairDiagram.create(config);
     generateDiagram(i + "-pairs", "1px", pairs, config, 1);
     Diagram threads = ThreadDiagram.create(pairs);

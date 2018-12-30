@@ -15,26 +15,32 @@
 */
 function load() {
 
-  var matrix = "586-,-789,2111,-4-4"
-  var patterns = new dibl.SheetSVG(2, "height='90mm' width='100mm'")
-  patterns.add(matrix, "checker")
-  document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
+  var patterns = new SheetSVG(2, "height='90mm' width='100mm'")
+  patterns.add("586-,-789,2111,-4-4", "bricks")
+  document.getElementById("sheet").innerHTML = patterns.toSvgDoc().trim()
 
-  var q = "patchWidth=9&patchHeight=12" +
-          "&footside=" + matrix +
-          "&tile=" + matrix +
-          "&footsideStitch=-&tileStitch=ctc" +
-          "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
-  var config = TilesConfig.create(q)
+  var q = "patchWidth=8&patchHeight=14"
+                      + "&footside=b,-,a,-&footsideStitch=-"
+                      + "&tile=831,4-7,-5-&tileStitch=ctct"
+                      + "&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
+  var config = TilesConfig(q)
+  d3.select('#proto').html(PrototypeDiagram.create(config))
+
   var pairDiagram = NewPairDiagram.create(config)
-  var threadDiagram = dibl.ThreadDiagram.create(pairDiagram)
-  showGraph(d3.select('#pairs'), pairDiagram, "1px")
-  showGraph(d3.select('#threads'), threadDiagram, "2px")
+  showGraph(d3.select('#pairs'), pairDiagram, "1px", 200,300)
+
+  var threadDiagram = ThreadDiagram.create(pairDiagram)
+  showGraph(d3.select('#threads'), threadDiagram, "2px",450,800)
+
+  var drostePairs = PairDiagram.create("ctct", threadDiagram)
+  showGraph(d3.select('#drostePairs'), drostePairs, "1px",600,900)
+
+  var drosteThreads = ThreadDiagram.create("ctct", threadDiagram)
+  showGraph(d3.select('#drosteThreads'), drosteThreads, "2px",600,1400)
 }
-function showGraph(container, diagram, stroke) {
-    var svg = dibl.D3jsSVG
+function showGraph(container, diagram, stroke, width, height) {
     var markers = true // use false for slow devices and IE-11, set them at onEnd
-    container.node().innerHTML = svg.render(diagram, stroke, markers, 400, 400)
+    container.html(D3jsSVG.render(diagram, stroke, markers, width, height))
     var nodeDefs = diagram.jsNodes()
     var linkDefs = diagram.jsLinks()//can't inline
     var links = container.selectAll(".link").data(linkDefs)
@@ -46,7 +52,7 @@ function showGraph(container, diagram, stroke) {
         var s = jsLink.source
         var t = jsLink.target
         var l = diagram.link(jsLink.index)
-        return svg.pathDescription(l, s.x, s.y, t.x, t.y)
+        return D3jsSVG.pathDescription(l, s.x, s.y, t.x, t.y)
     }
     function onTick() {
         links.attr("d", drawPath);
@@ -62,7 +68,7 @@ function showGraph(container, diagram, stroke) {
     d3.forceSimulation(nodeDefs)
       .force("charge", d3.forceManyBody().strength(-1000))
       .force("link", forceLink)
-      .force("center", d3.forceCenter(200, 200))
+      .force("center", d3.forceCenter(width/2, height/2))
       .alpha(0.0035)
       .on("tick", onTick)
 }

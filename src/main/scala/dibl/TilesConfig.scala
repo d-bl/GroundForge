@@ -196,6 +196,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       itemMatrix(r)(c) = item.copy(relativeSources = SrcNodes())
     }
     else if (item.relativeSources.nonEmpty) {
+      // TODO a fringe like "vv" with an ignored stitch
+      //  caused two pairs starting with a single node, causing trouble for droste steps
       val Array(left,right) = item.relativeSources
       if (left == right) {
         // replace Y with V; the tail of the Y are two links connecting the same two nodes
@@ -243,54 +245,61 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
    *         The start of their id-s will be identical, the tail of their id-s will be different.
    */
   def linksOfCenterTile(diagram: Diagram, scale: Int): Seq[LinkedNodes] = {
+    val links: Seq[LinkedNodes] = {
 
-    lazy val minWidthForBricks = centerMatrixCols + 4
-    lazy val minHeightForBricks = centerMatrixRows + 4
-    lazy val minWidth = shiftColsSE + centerMatrixCols + 2
-    lazy val minHeight = shiftRowsSE + centerMatrixRows + 2
-    lazy val isHBrick =
-    shiftRowsSE == shiftRowsSW &&
-      shiftRowsSE == centerMatrixRows &&
-      shiftColsSE - shiftColsSW == centerMatrixCols
-    lazy val isVBrick =
-    shiftColsSE == shiftColsSW &&
-      shiftColsSE == centerMatrixCols &&
-      shiftRowsSE - shiftRowsSW == centerMatrixRows
+      lazy val minWidthForBricks = centerMatrixCols + 4
+      lazy val minHeightForBricks = centerMatrixRows + 4
+      lazy val minWidth = shiftColsSE + centerMatrixCols + 2
+      lazy val minHeight = shiftRowsSE + centerMatrixRows + 2
+      lazy val isHBrick =
+        shiftRowsSE == shiftRowsSW &&
+          shiftRowsSE == centerMatrixRows &&
+          shiftColsSE - shiftColsSW == centerMatrixCols
+      lazy val isVBrick =
+        shiftColsSE == shiftColsSW &&
+          shiftColsSE == centerMatrixCols &&
+          shiftRowsSE - shiftRowsSW == centerMatrixRows
 
-    def invalidMin(dimension: String, value: Int): Seq[LinkedNodes] = {
-      invalid(s"patch $dimension should be at least $value")
+      def invalidMin(dimension: String, value: Int): Seq[LinkedNodes] = {
+        invalid(s"patch $dimension should be at least $value")
+      }
+      def invalid(msg: String): Seq[LinkedNodes] = {
+        println(msg)
+        Seq.empty
+      }
+      // Offsets and distances between the nodes on the initial square grid:
+      // https://github.com/d-bl/GroundForge/blob/94342eb/src/main/scala/dibl/NewPairDiagram.scala#L20
+      // https://github.com/d-bl/GroundForge/blob/268b2e2/src/main/scala/dibl/ThreadDiagram.scala#L105-L107
+      // In other words: 15 between rows/cols, 2 rows/cols allowance for the fringe.
+      //                 Another 2 rows/cols allowance to have four links on all nodes.
+      if (!leftMatrix.mkString.isEmpty || !rightMatrix.mkString.isEmpty)
+        invalid("foot sides not supported")
+      else if (totalCols < minWidthForBricks) invalidMin("width", minWidthForBricks)
+      else if (totalRows < minHeightForBricks) invalidMin("height", minHeightForBricks)
+      else if (isHBrick || isVBrick) diagram.tileLinks(
+        scale * 52.5,
+        scale * 52.5,
+        scale * (52.5 + 15 * centerMatrixCols),
+        scale * (52.5 + 15 * centerMatrixRows)
+      ) // TODO find the first tile closest to NE but at least 2 rows/cols to the SW
+      else if (shiftColsSE < 2 && shiftRowsSE < 2) invalid("type of tiling is not suported")
+      else if (minWidth > totalCols) invalidMin("patch width", minWidth)
+      else if (minHeight > totalRows) invalidMin("height", minHeight)
+      else {
+        val offsetCols = (1.5 + shiftColsSE) * 15
+        val offsetRows = (1.5 + shiftRowsSE) * 15
+        diagram.tileLinks(
+          scale * offsetCols,
+          scale * offsetRows,
+          scale * (offsetCols + 15 * centerMatrixCols),
+          scale * (offsetRows + 15 * centerMatrixRows)
+        )
+      }
     }
-    def invalid(msg: String): Seq[LinkedNodes] = {
-      println(msg)
-      Seq.empty
-    }
-    // Offsets and distances between the nodes on the initial square grid:
-    // https://github.com/d-bl/GroundForge/blob/94342eb/src/main/scala/dibl/NewPairDiagram.scala#L20
-    // https://github.com/d-bl/GroundForge/blob/268b2e2/src/main/scala/dibl/ThreadDiagram.scala#L105-L107
-    // In other words: 15 between rows/cols, 2 rows/cols allowance for the fringe.
-    //                 Another 2 rows/cols allowance to have four links on all nodes.
-    if (!leftMatrix.mkString.isEmpty || !rightMatrix.mkString.isEmpty)
-      invalid("foot sides not supported")
-    else if (totalCols < minWidthForBricks) invalidMin("width", minWidthForBricks)
-    else if (totalRows < minHeightForBricks) invalidMin("height", minHeightForBricks)
-    else if (isHBrick || isVBrick) diagram.tileLinks(
-      scale * 52.5,
-      scale * 52.5,
-      scale * (52.5 + 15 * centerMatrixCols),
-      scale * (52.5 + 15 * centerMatrixRows)
-    ) // TODO find the first tile closest to NE but at least 2 rows/cols to the SW
-    else if (shiftColsSE < 2 && shiftRowsSE < 2) invalid("type of tiling is not suported")
-    else if (minWidth > totalCols) invalidMin("patch width", minWidth)
-    else if (minHeight > totalRows) invalidMin("height", minHeight)
+    if (links.exists(l => diagram.nodes(l.source).id.isEmpty || diagram.nodes(l.target).id.isEmpty))
+      Seq.empty // workaround for problematic patterns
     else {
-      val offsetCols = (1.5 + shiftColsSE) * 15
-      val offsetRows = (1.5 + shiftRowsSE) * 15
-      diagram.tileLinks(
-        scale * offsetCols,
-        scale * offsetRows,
-        scale * (offsetCols + 15 * centerMatrixCols),
-        scale * (offsetRows + 15 * centerMatrixRows)
-      )
+      links
     }
   }
 }

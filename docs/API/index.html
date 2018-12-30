@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title lang="en">GroundForge : dressed down with v4 of D3.js</title>
-    <style>div { display: inline-block }</style>
+    <style>div { display: inline-block } input{display: none}</style>
     <script src="https://d3js.org/d3.v4.js" type="text/javascript"></script>
     <script src="../js/GroundForge-opt.js" type="text/javascript"></script>
     <script src="index.js" type="text/javascript"></script>
 </head>
 <body onload="load()">
 <div id="diagrams">
-    <p>Corresponding <a href="../tiles?patchWidth=12&patchHeight=12&a1=ct&b1=ct&c1=ctc&d1=ctc&b2=ctc&d2=ctc&a3=ct&c3=ct&footside=b,-,a,-&tile=831,4-7,-5-&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
-    >dressed up</a> example.</p>
+    <p>Note that the first diagram is not related with the others.</p>
+    <div id="sheet"></div>
     <div id="pairs"></div>
     <div id="threads"></div>
-    <div id="sheet"></div>
+    <div id="drostePairs"></div>
+    <div id="drosteThreads"></div>
+    <div id="proto"></div>
 </div>
 </body>
 </html>
