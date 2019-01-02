@@ -22,6 +22,7 @@ import dibl.NodeProps.{ errorNode, node, threadStartNode }
 
 import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
+import scala.collection.mutable
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
@@ -34,7 +35,9 @@ object ThreadDiagram {
 
     val pairLinks = pairDiagram.links.map(l => (l.source, l.target))
     def scale(n: NodeProps) = node(n.title, n.x*2, n.y*2)
+    val nodesDone = mutable.Buffer[Int]()
 
+//    var loggedStitchNr = 0
     @tailrec
     def createRows(possibleStitches: Seq[TargetToSrcs],
                    availablePairs: Map[Int, Threads],
@@ -69,6 +72,8 @@ object ThreadDiagram {
               nodes,
               links
             )
+//            loggedStitchNr += 1
+//            println(s"nrOfThreadNodes=${nodes.length} $loggedStitchNr created (${pairNode.id} at ${(pairNode.x/15-2).toInt},${(pairNode.y/15-2).toInt}) $pairTarget with $leftPairSource and $rightPairSource of ${availablePairs.toSeq.sortBy(_._1).mkString("\t","\t","")}")
             val replaced = availablePairs - leftPairSource - rightPairSource ++
               ((left.hasSinglePair, right.hasSinglePair) match {
                 case (true, true) => HashMap(pairTarget -> newPairs)
@@ -77,6 +82,7 @@ object ThreadDiagram {
                 case (false, false) => HashMap(pairTarget -> newPairs, leftPairSource -> left.leftPair,
                   rightPairSource -> right.rightPair)
               })
+            nodesDone += pairTarget
             createRows(possibleStitches.tail, replaced, accNodes, accLinks)
           }
         }
@@ -92,7 +98,7 @@ object ThreadDiagram {
       linksByTarget.map { case (target: Int, pairLinks: Seq[(Int, Int)]) =>
         val ints = pairLinks.map(_._1)
         TargetToSrcs(target, (ints.head, ints.last))
-      }.filter(node => !pairNodes.contains(node._1))//don't make the same stitch twice
+      }.filter(node => !pairNodes.contains(node._1) && !nodesDone.contains(node._1))//don't make the same stitch twice
     }
 
     if (pairDiagram.links.isEmpty)
