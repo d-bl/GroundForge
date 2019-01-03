@@ -100,21 +100,21 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   private def replaceItems(inputMatrix: Array[String], offset: Int, defaultStitch: String): Unit = {
     for {
-      r <- itemMatrix.indices
-      rSource = r % inputMatrix.length
-      c <- inputMatrix(rSource).indices
+      row <- itemMatrix.indices
+      rSource = row % inputMatrix.length
+      col <- inputMatrix(rSource).indices
     } {
-        val id = Stitches.toID(rSource, c + offset)
-        val vectorCode = inputMatrix(rSource)(c)
-        val stitch = if (vectorCode == '-') ""
-                     else fields.getOrElse(id, defaultStitch)
-        itemMatrix(r)(c + offset) = Item(
-          id,
-          vectorCode,
-          stitch,
-          r < inputMatrix.length,
-          relativeSources = Matrix.toRelativeSources(vectorCode)
-        )
+      val id = Stitches.toID(rSource, col + offset)
+      val vectorCode = inputMatrix(rSource)(col)
+      val stitch = if (vectorCode == '-') ""
+                   else fields.getOrElse(id, defaultStitch)
+      itemMatrix(row)(col + offset) = Item(
+        id,
+        vectorCode,
+        stitch,
+        row < inputMatrix.length,
+        relativeSources = Matrix.toRelativeSources(vectorCode)
+      )
     }
   }
 
@@ -147,53 +147,63 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     row < 0 || col < 0 || col >= itemMatrix(row).length
   }
 
-  private def indirectSource(row: Int,
-                             col: Int,
-                             relativeSource: (Int, Int),
-                             firstOrLast: Array[(Int, Int)] => Option[(Int, Int)]
-                            ) = {
-    val (relativeSourceRow, relativeSourceCol) = relativeSource
-    val absSrcRow = row + relativeSourceRow
-    val absSrcCol = col + relativeSourceCol
-    if (isFringe(absSrcRow, absSrcCol)) relativeSource
-    else {
-      lazy val srcItem = itemMatrix(absSrcRow)(absSrcCol)
-      if (!srcItem.noStitch) relativeSource
+  for {
+    row <- itemMatrix.indices
+//    _ = if (row > 1 )println("-2 "+logRow(row-2))
+//    _ = if (row > 0 )println("-1 "+logRow(row-1))
+//    _ = println(".. "+logRow(row))
+    col <- itemMatrix(row).indices
+  } {
+    def indirectSource(relativeSource: (Int, Int),
+                       firstOrLast: Array[(Int, Int)] => Option[(Int, Int)]
+                      ): (Int, Int) = {
+      val (relativeSourceRow, relativeSourceCol) = relativeSource
+      val absSrcRow = row + relativeSourceRow
+      val absSrcCol = col + relativeSourceCol
+      if (isFringe(absSrcRow, absSrcCol)) relativeSource
       else {
-        // srcItem is the point of "<" or ">"; change it into "|" (into the top)
-        val (srcRow, srcCol) = firstOrLast(srcItem.relativeSources).getOrElse((0,0))
-        (relativeSourceRow + srcRow, relativeSourceCol + srcCol)
+        lazy val srcItem = itemMatrix(absSrcRow)(absSrcCol)
+        if (!srcItem.noStitch) relativeSource
+        else {
+          // srcItem is the point of "<" or ">"; change it into "|" (into the top)
+          val (srcRow, srcCol) = firstOrLast(srcItem.relativeSources).getOrElse((0,0))
+//          println(s"${srcItem.relativeSources.mkString} fol=${firstOrLast(srcItem.relativeSources)} $relativeSourceRow + $srcRow, $relativeSourceCol + $srcCol")
+          (relativeSourceRow + srcRow, relativeSourceCol + srcCol)
+        }
       }
     }
+    def replace(item: Item): Boolean = {
+      if (item.relativeSources.isEmpty) false
+      else {
+        val Array(directLeft, directRight) = item.relativeSources
+        val indirectLeft = indirectSource(directLeft, _.lastOption)
+        val indirectRight = indirectSource(directRight, _.headOption)
+        val replacement = SrcNodes(indirectLeft,indirectRight)
+        if (item.relativeSources sameElements replacement) false
+        else {
+        //  println(s"replacing  ${item.id} ${item.relativeSources.mkString} ${replacement.mkString}")
+          itemMatrix(row)(col) = item.copy(relativeSources = replacement)
+          true
+        }
+      }
+    }
+//    replace(itemMatrix(row)(col))
+    while (replace(itemMatrix(row)(col))){}
+  }
+
+  private def logRow(row: Int) = {
+    itemMatrix(row).map(item => s"${ item.id }${ item.relativeSources.mkString } ").mkString
   }
 
   for {
     row <- itemMatrix.indices
     col <- itemMatrix(row).indices
   } {
-    // reconnect nodes when connected to an ignored stitch
-    val item = itemMatrix(row)(col)
-    if (item.relativeSources.nonEmpty) {
-      val Array(directLeft, directRight) = item.relativeSources
-      val realLeft = indirectSource(row, col, directLeft, _.lastOption)
-      val realRight = indirectSource(row, col, directRight, _.headOption)
-      if (directLeft != realLeft || directRight != realRight) {
-        itemMatrix(row)(col) = item.copy(relativeSources = Array(
-          realLeft, // change "<" into "|" when along a node without stitch
-          realRight //change ">" into "|"
-        ))
-      }
-    }
-  }
-  for {
-    r <- itemMatrix.indices
-    c <- itemMatrix(r).indices
-  } {
     // now everything is reconnected around ignored stitches
-    val item = itemMatrix(r)(c)
+    val item = itemMatrix(row)(col)
     if(item.noStitch) {
       // drop links into ignored stitches
-      itemMatrix(r)(c) = item.copy(relativeSources = SrcNodes())
+      itemMatrix(row)(col) = item.copy(relativeSources = SrcNodes())
     }
     else if (item.relativeSources.nonEmpty) {
       // TODO a fringe like "vv" with an ignored stitch
@@ -202,14 +212,14 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       if (left == right) {
         // replace Y with V; the tail of the Y are two links connecting the same two nodes
         val (sharedRow, sharedCol) = left
-        val srcRow = r + sharedRow
-        val srcCol = c + sharedCol
+        val srcRow = row + sharedRow
+        val srcCol = col + sharedCol
         if (!isFringe(srcRow, srcCol)) {
           val srcItem = itemMatrix(srcRow)(srcCol)
           val Array((leftRow, leftCol), (rightRow, rightCol)) = srcItem.relativeSources
           val newSrcNodes = SrcNodes((sharedRow + leftRow, sharedCol + leftCol), (sharedRow + rightRow, sharedCol + rightCol))
-          itemMatrix(r)(c) = itemMatrix(r)(c).copy(relativeSources = newSrcNodes)
-          itemMatrix(srcRow)(srcCol) = srcItem.copy(relativeSources = SrcNodes())
+//          itemMatrix(row)(col) = itemMatrix(row)(col).copy(relativeSources = newSrcNodes)
+//          itemMatrix(srcRow)(srcCol) = srcItem.copy(relativeSources = SrcNodes())
         }
       }
     }
