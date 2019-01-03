@@ -19,13 +19,16 @@
             <artifactId>scalajs-library_2.12</artifactId>
             <version>0.6.26</version>
         </dependency>
-        <!-- TODO move demo4Java (what about demo's that run on jvm-only?) to src/test/java/dibl -->
-        <!--  see also https://github.com/scallop/scallop -->
-        <!--  https://stackoverflow.com/questions/26512750/how-to-use-scala-js-from-maven -->
         <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_2.12</artifactId>
             <version>3.0.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>gov.nist.math</groupId>
+            <artifactId>jama</artifactId>
+            <version>1.0.3</version>
             <scope>test</scope>
         </dependency>
         <dependency>

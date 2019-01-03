@@ -77,7 +77,7 @@ public class Demo4Java {
   private static void drosteSteps(String urlQuery, int i) throws IOException {
     System.out.println("-------------- " + i);
     TilesConfig config = new TilesConfig(urlQuery);
-    new FileOutputStream(dir + "/" + i + "prototype.svg")
+    new FileOutputStream(dir + "/" + i + "-prototype.svg")
         .write((D3jsSVG.prolog() + PrototypeDiagram.create(config)).getBytes());
 
     Diagram pairs = NewPairDiagram.create(config);
