@@ -15,14 +15,14 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     .map { kv: String => (kv.replaceAll("=.*", ""), kv.replaceAll(".*=", "")) }
     .toMap
 
-  private def getMatrix(key: String): Array[String] = {
+  private def getMatrix(key: String): Seq[String] = {
     fields.getOrElse(key, "").toLowerCase.split("[^-a-z0-9]+").map(_.trim)
   }
 
   // TODO defend against unequal rows lengths
-  val leftMatrix: Array[String] = getMatrix("footside")
-  val rightMatrix: Array[String] = getMatrix("headside")
-  private val centerMatrix: Array[String] = getMatrix("tile")
+  val leftMatrix: Seq[String] = getMatrix("footside")
+  val rightMatrix: Seq[String] = getMatrix("headside")
+  private val centerMatrix: Seq[String] = getMatrix("tile")
 
   private val leftMatrixStitch: String = fields.getOrElse("footsideStitch", "ctctt")
   private val rightMatrixStitch: String = fields.getOrElse("headsideStitch", "ctctt")
@@ -69,11 +69,12 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       .filter(_.nonEmpty)
   }
 
-  val itemMatrix: Array[Array[Item]] = Array.fill[Array[Item]](totalRows)(
+  private val itemMatrix: Array[Array[Item]] = Array.fill[Array[Item]](totalRows)(
     Array.fill[Item](totalCols)(Item("", relativeSources = Array.empty))
   )
+  def getItemMatrix: Seq[Seq[Item]] = itemMatrix.map(_.toSeq)
 
-  lazy val nrOfPairsOut: Array[Array[Int]] = {
+  lazy val nrOfPairsOut: Seq[Seq[Int]] = {
     val rows: Int = itemMatrix.length
     val cols: Int = itemMatrix.head.length
     val pairsOut = Array.fill[Array[Int]](rows)(Array.fill[Int](cols)(0))
@@ -90,7 +91,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
           }
         }
     }
-    pairsOut
+    pairsOut.toSeq.map(_.toSeq)
   }
 
   // repeat foot-side / head-side
@@ -98,7 +99,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   if (leftMarginWidth > 0) replaceItems(leftMatrix, 0, leftMatrixStitch)
   if (offsetRightMargin > 0) replaceItems(rightMatrix, offsetRightMargin, rightMatrixStitch)
 
-  private def replaceItems(inputMatrix: Array[String], offset: Int, defaultStitch: String): Unit = {
+  private def replaceItems(inputMatrix: Seq[String], offset: Int, defaultStitch: String): Unit = {
     for {
       row <- itemMatrix.indices
       rSource = row % inputMatrix.length
@@ -254,6 +255,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
    *         Each transformation from pairs to threads puts more nodes at the same x/y positions.
    *         The start of their id-s will be identical, the tail of their id-s will be different.
    */
+  @JSExport
   def linksOfCenterTile(diagram: Diagram, scale: Int): Seq[LinkedNodes] = {
     val links: Seq[LinkedNodes] = {
 

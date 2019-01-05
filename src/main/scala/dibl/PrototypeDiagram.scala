@@ -22,7 +22,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
    */
   @JSExport
   def create(config: TilesConfig): String = {
-    val itemMatrix = config.itemMatrix
+    val itemMatrix = config.getItemMatrix
 
     val clones = (for {
       r <- itemMatrix.indices
@@ -55,7 +55,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   }
 
   private def textInput(isActive: Boolean, r: Int, c: Int, config: TilesConfig) = {
-    val item = config.itemMatrix(r)(c)
+    val item = config.getItemMatrix(r)(c)
     if (isActive)
       s"""<foreignObject x='${ 19 + c * 10 }' y='${ 970 + r * 10 }' width='4em' height='8'>
          |  <input name='${ item.id }'

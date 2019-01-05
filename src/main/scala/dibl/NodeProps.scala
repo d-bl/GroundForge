@@ -16,6 +16,7 @@
 package dibl
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSExport
 import scala.util.Try
 
 case class NodeProps private(elems: Seq[(String, Any)]) extends Props {

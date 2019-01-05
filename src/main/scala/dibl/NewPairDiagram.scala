@@ -9,7 +9,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   @JSExport
   def create(config: TilesConfig): Diagram = {
 
-    val itemMatrix = config.itemMatrix
+    val itemMatrix = config.getItemMatrix
     val rows: Int = itemMatrix.length
     val cols: Int = itemMatrix.head.length
     var seqNr = 0

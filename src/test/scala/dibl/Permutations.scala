@@ -8,7 +8,7 @@ import scala.util.Try
 
 object Permutations {
   def main(args: Array[String]): Unit = {
-    new java.io.File("target/perm").mkdirs()
+    new java.io.File("target/test/permutations").mkdirs()
     val stitches = Seq("ct", "ctct", "crclct", "clcrclc", "ctctc", "ctclctc")
     for {
       d2 <- stitches
@@ -18,7 +18,7 @@ object Permutations {
     } {
       val stitches = s"D2=$d2 B2=$b2 A1=$a1 C1=$c1"
       val pairs = PairDiagram.create("5-5-,-5-5", "checker", absRows = 7, absCols = 11, stitches = stitches)
-      File(s"target/permutations/D2_$d2-B2_$b2-A1_$a1-C1_$c1.svg")
+      File(s"target/test/permutations/D2_$d2-B2_$b2-A1_$a1-C1_$c1.svg")
         .writeAll(prolog + render(nudge(ThreadDiagram(pairs.get))))
     }
     System.exit(0)

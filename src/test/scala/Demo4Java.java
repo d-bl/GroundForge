@@ -18,14 +18,12 @@ import dibl.D3jsSVG;
 import dibl.Diagram;
 import dibl.LinkedNodes;
 import dibl.NewPairDiagram;
-import dibl.NodeProps;
 import dibl.PairDiagram;
 import dibl.PrototypeDiagram;
 import dibl.SheetSVG;
 import dibl.ThreadDiagram;
 import dibl.TilesConfig;
 import scala.collection.Seq;
-import scala.collection.mutable.ArraySeq;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -47,21 +45,16 @@ public class Demo4Java {
         "patchWidth=11&patchHeight=12" //
             + "&tile=B-C-,---5,C-B-,-5--&tileStitch=ct"
             + "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4",
-        "patchWidth=7&patchHeight=16"
-            + "&footside=-5,5-&footsideStitch=-"
-            + "&tile=-5-,5-5,-5-,B-C,-5-&tileStitch=ct"
-            + "&headside=5-,-5&headsideStitch=-"
+        "patchWidth=7&patchHeight=16" + "&footside=-5,5-&footsideStitch=-"
+            + "&tile=-5-,5-5,-5-,B-C,-5-&tileStitch=ct" + "&headside=5-,-5&headsideStitch=-"
             + "&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4",
         // more examples for testing: see the demo section of the tiles page
         // TODO fix the next patterns
         "patchWidth=8&patchHeight=14" // shared start node in top left corner: trouble for droste
-            + "&footside=b,-,a,-&footsideStitch=-"
-            + "&tile=831,4-7,-5-&tileStitch=ctct"
+            + "&footside=b,-,a,-&footsideStitch=-" + "&tile=831,4-7,-5-&tileStitch=ctct"
             + "&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
-        "patchWidth=7&patchHeight=13"
-            + "&footside=-c14,b4--,-7c3,b-48&footsideStitch=-"
-            + "&tile=831,488,-4-&tileStitch=ctc"
-            + "&headside=44-,11C,87-,88C&headsideStitch=-"
+        "patchWidth=7&patchHeight=13" + "&footside=-c14,b4--,-7c3,b-48&footsideStitch=-"
+            + "&tile=831,488,-4-&tileStitch=ctc" + "&headside=44-,11C,87-,88C&headsideStitch=-"
             + "&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
 
     };
@@ -93,13 +86,8 @@ public class Demo4Java {
     generateDiagram(i + "-droste-threads", "2px", drosteThreads, config, 4);
   }
 
-  private static void generateDiagram(
-      String fileName,
-      String strokeWidth,
-      Diagram diagram,
-      TilesConfig config,
-      Integer scale
-  ) throws IOException {
+  private static void generateDiagram(String fileName, String strokeWidth, Diagram diagram,
+      TilesConfig config, Integer scale) throws IOException {
     System.out.println("-------------- " + fileName);
 
     // scala-doc for linksOfCenterTile in short:
@@ -108,18 +96,17 @@ public class Demo4Java {
 
     diagram.logTileLinks(links);
     //showing how to access TODO compute deltas from logged data
-    if(links.nonEmpty())
-      diagram.node(links.apply(0).source()).id();
+    if (links.nonEmpty())
+      diagram.node(diagram.link(0).source()).id();
 
     int nrOfNodes = diagram.nodes().size();
-    ArraySeq<NodeProps> nudgedNodes = new ArraySeq<NodeProps>(nrOfNodes);
+    double[][] locations = new double[nrOfNodes][2];
     for (int i = 0; i < nrOfNodes; i++) {
-      NodeProps node = diagram.node(i);
-      NodeProps newNode = node.withLocation(node.x(), node.y()); // TODO apply deltas
-      nudgedNodes.update(i, newNode);
+      locations[i][0] = diagram.node(i).x();
+      locations[i][1] = diagram.node(i).y();
     }
 
-    Diagram nudgedDiagram = new Diagram(nudgedNodes, diagram.links());
+    Diagram nudgedDiagram = diagram.withLocations(locations);
     String svg = D3jsSVG.render(nudgedDiagram, strokeWidth, true, 744, 1052, 0d);
     new FileOutputStream(dir + "/" + fileName + ".svg") //
         .write((D3jsSVG.prolog() + svg).getBytes());

@@ -37,6 +37,25 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   @JSExport
   def jsLinks(): js.Array[js.Dictionary[Any]] = toJS(links)
 
+  @JSExport
+  def withLocationsOf(jsNodes: js.Array[js.Dictionary[Any]]): Diagram = {
+    val nudgedNodes = nodes.zipWithIndex.map{ case (nodeProps, i) =>
+      val newX = jsNodes(i)("x").toString.toInt
+      val newY = jsNodes(i)("y").toString.toInt
+      nodes(i).withLocation(newX, newY)
+    }
+    Diagram(nudgedNodes,links)
+  }
+
+  def withLocations(javaNodes: Array[Array[Double]]): Diagram = {
+    val nudgedNodes = nodes.zipWithIndex.map{ case (nodeProps, i) =>
+      val newX = javaNodes(i)(0)
+      val newY = javaNodes(i)(1)
+      nodes(i).withLocation(newX, newY)
+    }
+    Diagram(nudgedNodes,links)
+  }
+
   private def toJS(items: Seq[Props]): js.Array[js.Dictionary[Any]] = {
 
     val jsItems = new js.Array[js.Any](items.length).asInstanceOf[js.Array[js.Dictionary[Any]]]
