@@ -95,42 +95,37 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   }
 
   /**
-   * Get links for one tile.
+   * Finds nodes within the boundaries.
    *
    * Tile boundaries (N/E/S/W) are inclusive. The values for these boundaries must be
-   * row/column numbers multiplied with the scale for the initial layout of a diagram.
+   * row/column numbers multiplied with the x/y scale for the initial layout of a diagram.
    *
-   * @return tuples with (source,target) for all links witin a tile and to adjecent tiles.
-   *         Node objects inside the tile are different from those outside the tile.
-   *         Nodes outside the tile may have an id property shared
-   *         by a node inside the tile on the opposite side (unless the oposite is a foot side)
-   *         provided that the boundaries match all nodes in one tile.
+   * @return nodes with sources and targets, all in random order.
    */
   def tileLinks(north: Double, east: Double, south: Double, west: Double): Seq[LinkedNodes] = {
-    val nodeNrs = nodes.zipWithIndex.filter { case (node, _) =>
+    nodes.zipWithIndex.filter { case (node, _) =>
       node.x >= east && node.x <= west &&
         node.y >= north && node.y <= south &&
         !node.pin
-    }.map(_._2)
-    links
-      .filter(link => nodeNrs.contains(link.source) || nodeNrs.contains(link.target))
-      .map{link =>LinkedNodes(link.source, link.target)}
+    }.map{case (node, nr)=>
+      val sources = links.filter(_.target == nr).map(l => nodes(l.source)) // TODO sort by angle and reversed ID
+      val targets = links.filter(_.source == nr).map(l => nodes(l.target)) //  idem
+      LinkedNodes(node, sources.toArray, targets.toArray)
+    }
   }
 
-  def logTileLinks(links: Seq[LinkedNodes]): Unit = {
-    val uniqueNodes = links.flatMap(l => Array(l.source, l.target)).distinct
-    println(
-      s"""nr of links = ${links.size};
-         |nr of nodes = ${uniqueNodes.size};
-         |nr of ids = ${links.flatMap(l => Array(nodes(l.source).id, nodes(l.target).id)).distinct.size}
-         |""".stripMargin
+  /**
+   * Logs id,x,y values of the core, sources and targets.
+   * The x/y are calculated back to col/row scale for readability.
+   * For example: core=(id=a1,x=2,y=2) sources=(id=a1,x=2,y=2; id=a1,x=2,y=2) targets=(id=a1,x=2,y=2; id=a1,x=2,y=2)
+   */
+  def logTileLinks(links: Array[LinkedNodes]): Unit = {
+    def log(n: NodeProps) = s"id=${n.id},x=${n.x.toInt/15-2},y=${n.y.toInt/15-2}"
+    links.foreach(l =>
+      println(s"core(${log(l.core)}) sources(${l.sources.map(log).mkString("; ")}) targets(${l.targets.map(log).mkString("; ")})")
     )
-    uniqueNodes.sortBy(nr => nodes(nr).x * 100000 + nodes(nr).y).foreach{nr =>
-      val n = nodes(nr)
-      println(s"${n.id} x=${n.x.toInt/15-2} y=${n.y.toInt/15-2}")
-    }
-    //links.foreach(link => println(s"ids(${nodes(link.source).id} -> ${nodes(link.target).id}); objects(${nodes(link.source).##} -> ${nodes(link.target).##}); "))
-    println("nodes without id: "+nodes.count(_.id.trim.isEmpty))
   }
 }
-case class LinkedNodes(source: Int, target: Int)
+
+// TODO change Array to Seq when no longer needed in Java
+case class LinkedNodes(core: NodeProps, sources: Array[NodeProps], targets: Array[NodeProps])

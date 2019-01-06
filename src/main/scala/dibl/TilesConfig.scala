@@ -259,7 +259,6 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
    * - As for now: the leftMatrix and rightMatrix must be empty.
    *
    * @return An empty array on some types of invalid arguments, the type of error is logged to standard-out.
-   *         Otherwise tuples with (relativeSource,target) for all links within a tile and to adjacent tiles.
    *
    *         Changes to the diagram won't affect previously returned results, nor the other way around.
    *
@@ -271,7 +270,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
    *         The start of their id-s will be identical, the tail of their id-s will be different.
    */
   @JSExport
-  def linksOfCenterTile(diagram: Diagram, scale: Int): Seq[LinkedNodes] = {
+  def linksOfCenterTile(diagram: Diagram, scale: Int): Array[LinkedNodes] = {
     val links: Seq[LinkedNodes] = {
 
       lazy val minWidthForBricks = centerMatrixCols + 4
@@ -323,10 +322,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         )
       }
     }
-    if (links.exists(l => diagram.nodes(l.source).id.isEmpty || diagram.nodes(l.target).id.isEmpty))
-      Seq.empty // workaround for problematic patterns
+    if (links.exists(l => l.core.id.isEmpty || l.sources.exists(_.id.isEmpty) || l.targets.exists(_.id.isEmpty)))
+      Seq.empty
     else {
       links
     }
-  }
+  }.toArray
 }

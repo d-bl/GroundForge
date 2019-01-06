@@ -90,18 +90,19 @@ public class Demo4Java {
       TilesConfig config, Integer scale) throws IOException {
     System.out.println("-------------- " + fileName);
 
-    // scala-doc for linksOfCenterTile in short:
-    // tuples with (source,target) for all links within a tile and to adjacent tiles
-    Seq<LinkedNodes> links = config.linksOfCenterTile(diagram, scale);
-
-    diagram.logTileLinks(links);
-    //showing how to access TODO compute deltas from logged data
-    if (links.nonEmpty())
-      diagram.node(diagram.link(0).source()).id();
+    LinkedNodes[] linkedNodes = config.linksOfCenterTile(diagram, scale);
+    diagram.logTileLinks(linkedNodes);
+    if (linkedNodes.length > 0) {
+      // TODO compute deltas from logged data
+      // showing how to access
+      linkedNodes[0].sources()[0].id();
+      linkedNodes[0].core().id();
+    }
 
     int nrOfNodes = diagram.nodes().size();
     double[][] locations = new double[nrOfNodes][2];
     for (int i = 0; i < nrOfNodes; i++) {
+      // TODO apply deltas
       locations[i][0] = diagram.node(i).x();
       locations[i][1] = diagram.node(i).y();
     }
