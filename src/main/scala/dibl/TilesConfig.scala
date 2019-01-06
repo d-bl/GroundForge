@@ -165,11 +165,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   for {
     row <- itemMatrix.indices
-//    _ = if (row > 1 )println("-2 "+logRow(row-2))
-//    _ = if (row > 0 )println("-1 "+logRow(row-1))
-//    _ = println(".. "+logRow(row))
     col <- itemMatrix(row).indices
   } {
+    // println(s"============== $row, $col")
     def indirectSource(relativeSource: (Int, Int),
                        firstOrLast: Array[(Int, Int)] => Option[(Int, Int)]
                       ): (Int, Int) = {
@@ -182,14 +180,13 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         if (!srcItem.noStitch) relativeSource
         else {
           // srcItem is the point of "<" or ">"; change it into "|" (into the top)
-          val (srcRow, srcCol) = firstOrLast(srcItem.relativeSources).getOrElse((0,0))
-//          println(s"${srcItem.relativeSources.mkString} fol=${firstOrLast(srcItem.relativeSources)} $relativeSourceRow + $srcRow, $relativeSourceCol + $srcCol")
+          val (srcRow, srcCol) = firstOrLast(srcItem.relativeSources).getOrElse((0, 0))
           (relativeSourceRow + srcRow, relativeSourceCol + srcCol)
         }
       }
     }
     def replace(item: Item): Boolean = {
-      if (item.relativeSources.isEmpty) false
+      if (item.relativeSources.isEmpty || item.noStitch) false
       else {
         val Array(directLeft, directRight) = item.relativeSources
         val indirectLeft = indirectSource(directLeft, _.lastOption)
@@ -197,13 +194,12 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         val replacement = SrcNodes(indirectLeft,indirectRight)
         if (item.relativeSources sameElements replacement) false
         else {
-        //  println(s"replacing  ${item.id} ${item.relativeSources.mkString} ${replacement.mkString}")
+          //println(s"replacing ${item.id} ${item.relativeSources.mkString} ${replacement.mkString}")
           itemMatrix(row)(col) = item.copy(relativeSources = replacement)
           true
         }
       }
     }
-//    replace(itemMatrix(row)(col))
     while (replace(itemMatrix(row)(col))){}
   }
 
@@ -234,8 +230,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
           val srcItem = itemMatrix(srcRow)(srcCol)
           val Array((leftRow, leftCol), (rightRow, rightCol)) = srcItem.relativeSources
           val newSrcNodes = SrcNodes((sharedRow + leftRow, sharedCol + leftCol), (sharedRow + rightRow, sharedCol + rightCol))
-//          itemMatrix(row)(col) = itemMatrix(row)(col).copy(relativeSources = newSrcNodes)
-//          itemMatrix(srcRow)(srcCol) = srcItem.copy(relativeSources = SrcNodes())
+          itemMatrix(row)(col) = itemMatrix(row)(col).copy(relativeSources = newSrcNodes)
+          itemMatrix(srcRow)(srcCol) = srcItem.copy(relativeSources = SrcNodes())
         }
       }
     }
