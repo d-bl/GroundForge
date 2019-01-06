@@ -38,7 +38,7 @@ function load() {
   showGraph(d3.select('#drostePairs'), drostePairs, "1px",460,850, 2, config)
 
   var drosteThreads = ThreadDiagram.create(drostePairs)
-  showGraph(d3.select('#drosteThreads'), drosteThreads, "2px",800,850, 4, config)
+  showGraph(d3.select('#drosteThreads'), drosteThreads, "2px",1600,2200, 4, config)
 }
 function showGraph(container, diagram, stroke, width, height, scale, config) {
   var nodeDefs = diagram.jsNodes()

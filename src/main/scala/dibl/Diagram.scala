@@ -108,8 +108,16 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         node.y >= north && node.y <= south &&
         !node.pin
     }.map{case (node, nr)=>
-      val sources = links.filter(_.target == nr).map(l => nodes(l.source)) // TODO sort by angle and reversed ID
-      val targets = links.filter(_.source == nr).map(l => nodes(l.target)) //  idem
+      val sources = links
+        .filter(_.target == nr)
+        .map(l => nodes(l.source))
+        //.sortBy(_.id.reverse) // TODO sort by angle if different x and/or y
+
+      val targets = links
+        .filter(_.source == nr)
+        .map(l => nodes(l.target))
+        //.sortBy(_.id.reverse) // TODO sort by angle if different x and/or y
+
       LinkedNodes(node, sources.toArray, targets.toArray)
     }
   }
