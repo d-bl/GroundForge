@@ -16,14 +16,13 @@
 
 import dibl.D3jsSVG;
 import dibl.Diagram;
-import dibl.LinkedNodes;
+import dibl.LinkedNode;
 import dibl.NewPairDiagram;
 import dibl.PairDiagram;
 import dibl.PrototypeDiagram;
 import dibl.SheetSVG;
 import dibl.ThreadDiagram;
 import dibl.TilesConfig;
-import scala.collection.Seq;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -74,29 +73,30 @@ public class Demo4Java {
         .write((D3jsSVG.prolog() + PrototypeDiagram.create(config)).getBytes());
 
     Diagram pairs = NewPairDiagram.create(config);
-    generateDiagram(i + "-pairs", "1px", pairs, config, 1);
+    writeNudgedDiagram(i + "-pairs", "1px", pairs, config, 1);
     Diagram threads = ThreadDiagram.create(pairs);
-    generateDiagram(i + "-threads", "2px", threads, config, 2);
+    Diagram nudgedThreads = writeNudgedDiagram(i + "-threads", "2px", threads, config, 2);
 
-    // for "ctct" alternatives see:
+    // Note 1: for "ctct" alternatives see:
     // https://d-bl.github.io/GroundForge/help/Choose-Stitches#assign-stitches
-    Diagram drostePairs = PairDiagram.create("ctct", threads);
-    generateDiagram(i + "-droste-pairs", "1px", drostePairs, config, 2);
-    Diagram drosteThreads = ThreadDiagram.create(drostePairs);
-    generateDiagram(i + "-droste-threads", "2px", drosteThreads, config, 4);
+    // Note 2: the pair diagram reuses the positions calculated for the thread diagram
+    // the thread diagram needs original positions without the nudging for the previous thread diagram
+    writeDiagram(i + "-droste-pairs", "1px", PairDiagram.create("ctct", nudgedThreads));
+    writeNudgedDiagram(i + "-droste-threads", "2px", PairDiagram.create("ctct", threads), config, 4);
   }
 
-  private static void generateDiagram(String fileName, String strokeWidth, Diagram diagram,
+  private static Diagram writeNudgedDiagram(String fileName, String strokeWidth, Diagram diagram,
       TilesConfig config, Integer scale) throws IOException {
     System.out.println("-------------- " + fileName);
 
-    LinkedNodes[] linkedNodes = config.linksOfCenterTile(diagram, scale);
+    // needs original positions without any nudging applied to previous diagrams
+    LinkedNode[] linkedNodes = config.linksOfCenterTile(diagram, scale);
     diagram.logTileLinks(linkedNodes);
     if (linkedNodes.length > 0) {
       // TODO compute deltas from logged data
       // showing how to access
-      linkedNodes[0].sources()[0].id();
-      linkedNodes[0].core().id();
+      String stitch = linkedNodes[0].core().id();
+      // String first = linkedNodes[0].clockwise()[0].id();
     }
 
     int nrOfNodes = diagram.nodes().size();
@@ -107,9 +107,14 @@ public class Demo4Java {
       locations[i][1] = diagram.node(i).y();
     }
 
-    Diagram nudgedDiagram = diagram.withLocations(locations);
-    String svg = D3jsSVG.render(nudgedDiagram, strokeWidth, true, 744, 1052, 0d);
+    return writeDiagram(fileName, strokeWidth, diagram.withLocations(locations));
+  }
+
+  private static Diagram writeDiagram(String fileName, String strokeWidth, Diagram diagram)
+      throws IOException {
+    String svg = D3jsSVG.render(diagram, strokeWidth, true, 744, 1052, 0d);
     new FileOutputStream(dir + "/" + fileName + ".svg") //
         .write((D3jsSVG.prolog() + svg).getBytes());
+    return diagram;
   }
 }

@@ -15,6 +15,8 @@
 */
 package dibl
 
+import dibl.LinkProps.WhiteStart
+
 import scala.annotation.tailrec
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
@@ -39,7 +41,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   @JSExport
   def withLocationsOf(jsNodes: js.Array[js.Dictionary[Any]]): Diagram = {
-    val nudgedNodes = nodes.zipWithIndex.map{ case (nodeProps, i) =>
+    val nudgedNodes = nodes.indices.map{ i =>
       val newX = jsNodes(i)("x").toString.toInt
       val newY = jsNodes(i)("y").toString.toInt
       nodes(i).withLocation(newX, newY)
@@ -48,7 +50,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   }
 
   def withLocations(javaNodes: Array[Array[Double]]): Diagram = {
-    val nudgedNodes = nodes.zipWithIndex.map{ case (nodeProps, i) =>
+    val nudgedNodes = nodes.indices.map{ i =>
       val newX = javaNodes(i)(0)
       val newY = javaNodes(i)(1)
       nodes(i).withLocation(newX, newY)
@@ -102,7 +104,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
    *
    * @return nodes with sources and targets, all in random order.
    */
-  def tileLinks(north: Double, east: Double, south: Double, west: Double): Seq[LinkedNodes] = {
+  def tileLinks(north: Double, east: Double, south: Double, west: Double): Seq[LinkedNode] = {
     nodes.zipWithIndex.filter { case (node, _) =>
       node.x >= east && node.x <= west &&
         node.y >= north && node.y <= south &&
@@ -110,15 +112,17 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }.map{case (node, nr)=>
       val sources = links
         .filter(_.target == nr)
-        .map(l => nodes(l.source))
+        .map(l => nodes(l.source) -> links(l.target).isInstanceOf[WhiteStart])
+        .toMap
         //.sortBy(_.id.reverse) // TODO sort by angle if different x and/or y
 
       val targets = links
         .filter(_.source == nr)
-        .map(l => nodes(l.target))
+        .map(l => nodes(l.target) -> links(l.target).isInstanceOf[WhiteStart])
+        .toMap
         //.sortBy(_.id.reverse) // TODO sort by angle if different x and/or y
 
-      LinkedNodes(node, sources.toArray, targets.toArray)
+      LinkedNode(node, sources, targets)
     }
   }
 
@@ -127,13 +131,11 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
    * The x/y are calculated back to col/row scale for readability.
    * For example: core=(id=a1,x=2,y=2) sources=(id=a1,x=2,y=2; id=a1,x=2,y=2) targets=(id=a1,x=2,y=2; id=a1,x=2,y=2)
    */
-  def logTileLinks(links: Array[LinkedNodes]): Unit = {
-    def log(n: NodeProps) = s"id=${n.id},x=${n.x.toInt/15-2},y=${n.y.toInt/15-2}"
+  def logTileLinks(links: Array[LinkedNode]): Unit = {
+    def log1(n: NodeProps) = s"(id=${n.id},x=${n.x.toInt/15-2},y=${n.y.toInt/15-2})"
+    def log(nodes: Map[NodeProps, Boolean]) = s"${nodes.map{case (k,v) => s"${log1(k)} -> $v)"}.mkString("; ")}"
     links.foreach(l =>
-      println(s"core(${log(l.core)}) sources(${l.sources.map(log).mkString("; ")}) targets(${l.targets.map(log).mkString("; ")})")
+      println(s"core${log1(l.core)} sources(${log(l.sources)}) targets(${log(l.targets)}) clockwise(${l.clockwise.map(_.id).mkString(",")})")
     )
   }
 }
-
-// TODO change Array to Seq when no longer needed in Java
-case class LinkedNodes(core: NodeProps, sources: Array[NodeProps], targets: Array[NodeProps])

@@ -181,7 +181,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         else {
           // srcItem is the point of "<" or ">"; change it into "|" (into the top)
           val (srcRow, srcCol) = firstOrLast(srcItem.relativeSources).getOrElse((0, 0))
-          (relativeSourceRow + srcRow, relativeSourceCol + srcCol)
+          if (row + srcRow < 0) relativeSource
+          else (relativeSourceRow + srcRow, relativeSourceCol + srcCol)
         }
       }
     }
@@ -266,8 +267,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
    *         The start of their id-s will be identical, the tail of their id-s will be different.
    */
   @JSExport
-  def linksOfCenterTile(diagram: Diagram, scale: Int): Array[LinkedNodes] = {
-    val links: Seq[LinkedNodes] = {
+  def linksOfCenterTile(diagram: Diagram, scale: Int): Array[LinkedNode] = {
+    val links: Seq[LinkedNode] = {
 
       lazy val minWidthForBricks = centerMatrixCols + 4
       lazy val minHeightForBricks = centerMatrixRows + 4
@@ -282,10 +283,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
           shiftColsSE == centerMatrixCols &&
           shiftRowsSE - shiftRowsSW == centerMatrixRows
 
-      def invalidMin(dimension: String, value: Int): Seq[LinkedNodes] = {
+      def invalidMin(dimension: String, value: Int): Seq[LinkedNode] = {
         invalid(s"patch $dimension should be at least $value")
       }
-      def invalid(msg: String): Seq[LinkedNodes] = {
+      def invalid(msg: String): Seq[LinkedNode] = {
         println(msg)
         Seq.empty
       }
@@ -318,7 +319,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         )
       }
     }
-    if (links.exists(l => l.core.id.isEmpty || l.sources.exists(_.id.isEmpty) || l.targets.exists(_.id.isEmpty)))
+    if (links.exists(l => l.core.id.isEmpty || l.sources.keys.exists(_.id.isEmpty) || l.targets.keys.exists(_.id.isEmpty)))
       Seq.empty
     else {
       links

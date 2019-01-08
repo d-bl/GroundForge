@@ -102,7 +102,7 @@ object LinkProps {
     }
   }
 
-  private case class WhiteStart(override val props: Map[String, Any]) extends LinkProps {
+  case class WhiteStart(override val props: Map[String, Any]) extends LinkProps {
 
     override def markedAsStart: LinkProps = WhiteStart(props + ("start" -> "thread"))
 
