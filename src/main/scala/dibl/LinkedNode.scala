@@ -25,10 +25,13 @@ import dibl.NodeProps.errorNode
  *                The order of the list is not defined.
  *                The node with id=a1 may not sit in the top left corner of the tile returned by tileLinks.
  *                The third row/column might be quite common for node-a1.
+ *                The node with id=a1 may not sit in the top left corner of the tile returned by tileLinks.
+ *                The third row/column might be quite common for node-a1.
  * @param sources Stitches that supply pairs/threads to create the core stitch.
  * @param targets Stitches that that need pairs/threads leaving the core stitch.
  *
- *                The booleans indicate a shortened start of the link alias thread
+ *                A node mapped to the value true means that the link (alias thread)
+ *                with the core node has a shortened end
  *                for the over/under effect. All will be false for a pair diagram.
  *                The order of the two elements in each map is not defined.
  */
