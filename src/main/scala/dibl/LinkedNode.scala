@@ -51,6 +51,8 @@ case class LinkedNode(core: NodeProps,
     val s2 = sources.keys.lastOption.getOrElse(errorNode("just one pair/thread in"))
     val t1 = targets.keys.headOption.getOrElse(errorNode("no pairs/threads out"))
     val t2 = targets.keys.lastOption.getOrElse(errorNode("just one pair/thread out"))
+    // the errorNode-s for s1 and t1 won't surface because of the 'no links case'
+    // the errorNode-s for s2 and t2 could surface in the other cases
     (
       core.instructions,
       sources.keys.headOption.map(sources(_)),
