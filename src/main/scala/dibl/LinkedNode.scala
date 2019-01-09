@@ -28,9 +28,13 @@ import dibl.NodeProps.errorNode
  * @param sources Stitches that supply pairs/threads to create the core stitch.
  * @param targets Stitches that that need pairs/threads leaving the core stitch.
  *
- *                A node mapped to the value true means that the link (alias thread)
- *                with the core node has a shortened end
- *                for the over/under effect. All will be false for a pair diagram.
+ *                A thread lying on top at a node is drawn with a continued line,
+ *                the thread going under is interrupted: white against a white background.
+ *                A link is either white at the start or white at the end.
+ *                https://github.com/d-bl/GroundForge/blob/c122017a/src/main/scala/dibl/Diagram.scala#L115
+ *                sources[i] == true means that the link from the source to the core has a white start.
+ *                targets[i] == true means that the link from the core to the target has a white start.
+ *                All starts will be false for a pair diagram.
  *                The order of the two elements in each map is not defined.
  */
 case class LinkedNode(core: NodeProps,
@@ -64,18 +68,18 @@ case class LinkedNode(core: NodeProps,
     //   t     t          t     t
     (
       core.instructions,
-      sources.keys.headOption.map(sources(_)),
-      targets.keys.headOption.map(targets(_)),
+      sources.keys.headOption.map(sources(_)), // white start for the first link to the core
+      targets.keys.headOption.map(targets(_)), // white start for the first link leaving the core
     ) match {
       case ("cross", Some(true), Some(true)) => Array(s1, s2, t1, t2)
       case ("cross", Some(true), Some(false)) => Array(s1, s2, t2, t1)
       case ("cross", Some(false), Some(true)) => Array(s2, s1, t1, t2)
       case ("cross", Some(false), Some(false)) => Array(s2, s1, t2, t1)
-      case (_, None, _) | (_, _, None)=> Array[NodeProps]() // no links in and/or out
       case ("twist", Some(true), Some(true)) => Array(s2, s1, t1, t2)
       case ("twist", Some(true), Some(false)) => Array(s2, s1, t2, t1)
       case ("twist", Some(false), Some(true)) => Array(s1, s2, t1, t2)
       case ("twist", Some(false), Some(false)) => Array(s1, s2, t2, t1)
+      case (_, None, _) | (_, _, None)=> Array[NodeProps]() // no links in and/or out
       case _ => Array[NodeProps]() // TODO calculate from s1.x ... t2.y
     }
   }
