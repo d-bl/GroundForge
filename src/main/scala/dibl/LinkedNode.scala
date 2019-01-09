@@ -25,8 +25,6 @@ import dibl.NodeProps.errorNode
  *                The order of the list is not defined.
  *                The node with id=a1 may not sit in the top left corner of the tile returned by tileLinks.
  *                The third row/column might be quite common for node-a1.
- *                The node with id=a1 may not sit in the top left corner of the tile returned by tileLinks.
- *                The third row/column might be quite common for node-a1.
  * @param sources Stitches that supply pairs/threads to create the core stitch.
  * @param targets Stitches that that need pairs/threads leaving the core stitch.
  *
