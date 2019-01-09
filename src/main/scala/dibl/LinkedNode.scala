@@ -53,6 +53,15 @@ case class LinkedNode(core: NodeProps,
     val t2 = targets.keys.lastOption.getOrElse(errorNode("just one pair/thread out"))
     // the errorNode-s for s1 and t1 won't surface because of the 'no links case'
     // the errorNode-s for s2 and t2 could surface in the other cases
+
+    // cross              twist
+    //    s    s          s     s
+    // |      /  |         \      |  |
+    // |   \     |            /   |  |
+    // |    c    |           c    |  |
+    // |     \   |          /     |  |
+    // |  /      |             \  |  |
+    //   t     t          t     t
     (
       core.instructions,
       sources.keys.headOption.map(sources(_)),
@@ -63,10 +72,10 @@ case class LinkedNode(core: NodeProps,
       case ("cross", Some(false), Some(true)) => Array(s2, s1, t1, t2)
       case ("cross", Some(false), Some(false)) => Array(s2, s1, t2, t1)
       case (_, None, _) | (_, _, None)=> Array[NodeProps]() // no links in and/or out
-      case ("twist", Some(true), Some(true)) => Array(t2, t1, s2, s1)
-      case ("twist", Some(true), Some(false)) => Array(t1, t2, s2, s1)
-      case ("twist", Some(false), Some(true)) => Array(t2, t1, s1, s2)
-      case ("twist", Some(false), Some(false)) => Array(t2, t1, s2, s1)
+      case ("twist", Some(true), Some(true)) => Array(s2, s1, t1, t2)
+      case ("twist", Some(true), Some(false)) => Array(s2, s1, t2, t1)
+      case ("twist", Some(false), Some(true)) => Array(s1, s2, t1, t2)
+      case ("twist", Some(false), Some(false)) => Array(s1, s2, t2, t1)
       case _ => Array[NodeProps]() // TODO calculate from s1.x ... t2.y
     }
   }
