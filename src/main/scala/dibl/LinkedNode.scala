@@ -57,7 +57,7 @@ case class LinkedNode(core: NodeProps,
       case ("cross", Some(true), Some(false)) => Array(s1, s2, t2, t1)
       case ("cross", Some(false), Some(true)) => Array(s2, s1, t1, t2)
       case ("cross", Some(false), Some(false)) => Array(s2, s1, t2, t1)
-      case ("cross", _, _) | ("twist", _, _) => Array[NodeProps]() // no links in and/or out
+      case (_, None, _) | (_, _, None)=> Array[NodeProps]() // no links in and/or out
       case ("twist", Some(true), Some(true)) => Array(t2, t1, s2, s1)
       case ("twist", Some(true), Some(false)) => Array(t1, t2, s2, s1)
       case ("twist", Some(false), Some(true)) => Array(t2, t1, s1, s2)
