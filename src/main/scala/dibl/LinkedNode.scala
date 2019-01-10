@@ -28,13 +28,13 @@ import dibl.NodeProps.errorNode
  * @param sources Stitches that supply pairs/threads to create the core stitch.
  * @param targets Stitches that that need pairs/threads leaving the core stitch.
  *
+ *                Links in pair diagrams are always drawn with uninterupted lines.
  *                A thread lying on top at a node is drawn with a continued line,
  *                the thread going under is interrupted: white against a white background.
- *                A link is either white at the start or white at the end.
+ *                A thread link is either white at the start or white at the end.
  *                https://github.com/d-bl/GroundForge/blob/c122017a/src/main/scala/dibl/Diagram.scala#L115
  *                sources[i] == true means that the link from the source to the core has a white start.
  *                targets[i] == true means that the link from the core to the target has a white start.
- *                All starts will be false for a pair diagram.
  *                The order of the two elements in each map is not defined.
  */
 case class LinkedNode(core: NodeProps,
@@ -50,13 +50,16 @@ case class LinkedNode(core: NodeProps,
    * the title may contain an error message. A properly formatted id only has letters
    * followed by digits.
    */
-  lazy val clockwise: Array[NodeProps] = {
-    val s1 = sources.keys.headOption.getOrElse(errorNode("no pairs/threads in"))
-    val s2 = sources.keys.lastOption.getOrElse(errorNode("just one pair/thread in"))
-    val t1 = targets.keys.headOption.getOrElse(errorNode("no pairs/threads out"))
-    val t2 = targets.keys.lastOption.getOrElse(errorNode("just one pair/thread out"))
+  val clockwise: Array[NodeProps] = {
+    val sourceNodes = sources.keySet
+    val targetNodes = targets.keySet
+    val s1 = sourceNodes.headOption.getOrElse(errorNode("no pairs/threads in"))
+    val s2 = sourceNodes.lastOption.getOrElse(errorNode("just one pair/thread in"))
+    val t1 = targetNodes.headOption.getOrElse(errorNode("no pairs/threads out"))
+    val t2 = targetNodes.lastOption.getOrElse(errorNode("just one pair/thread out"))
     // the errorNode-s for s1 and t1 won't surface because of the 'no links case'
     // the errorNode-s for s2 and t2 could surface in the other cases
+    // in case of the latter errorNode the head element equals the last element
 
     // cross              twist
     //    s    s          s     s
@@ -68,8 +71,8 @@ case class LinkedNode(core: NodeProps,
     //   t     t          t     t
     (
       core.instructions,
-      sources.keys.headOption.map(sources(_)), // white start for the first link to the core
-      targets.keys.headOption.map(targets(_)), // white start for the first link leaving the core
+      sourceNodes.headOption.map(sources(_)), // white start for the first link to the core
+      targetNodes.headOption.map(targets(_)), // white start for the first link leaving the core
     ) match {
       case ("cross", Some(true), Some(true)) => Array(s1, s2, t1, t2)
       case ("cross", Some(true), Some(false)) => Array(s1, s2, t2, t1)
@@ -79,8 +82,11 @@ case class LinkedNode(core: NodeProps,
       case ("twist", Some(true), Some(false)) => Array(s2, s1, t2, t1)
       case ("twist", Some(false), Some(true)) => Array(s1, s2, t1, t2)
       case ("twist", Some(false), Some(false)) => Array(s1, s2, t2, t1)
-      case (_, None, _) | (_, _, None)=> Array[NodeProps]() // no links in and/or out
-      case _ => Array[NodeProps]() // TODO calculate from s1.x ... t2.y
+      case (_, None, _) | (_, _, None) => Array[NodeProps]() // no links in and/or out
+      case _ =>
+        (sourceNodes.toSeq.sortBy(n => n.x - core.x) ++
+          targetNodes.toSeq.sortBy(n => core.x - n.x)
+          ).toArray
     }
   }
 }
