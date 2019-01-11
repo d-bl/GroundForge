@@ -112,15 +112,13 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }.map{case (node, nr)=>
       val sources = links
         .filter(_.target == nr)
-        .map(l => nodes(l.source) -> links(l.target).isInstanceOf[WhiteStart])
+        .map(l => nodes(l.source) -> l.isInstanceOf[WhiteStart])
         .toMap
-        //.sortBy(_.id.reverse) // TODO sort by angle if different x and/or y
 
       val targets = links
         .filter(_.source == nr)
-        .map(l => nodes(l.target) -> links(l.target).isInstanceOf[WhiteStart])
+        .map(l => nodes(l.target) -> l.isInstanceOf[WhiteStart])
         .toMap
-        //.sortBy(_.id.reverse) // TODO sort by angle if different x and/or y
 
       LinkedNode(node, sources, targets)
     }
