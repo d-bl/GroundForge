@@ -94,8 +94,8 @@ Requirements
 ------------
 
 - The pages in the docs directory don't require any compilation
-- To compile `src/main/scala` to JavaScript: [sbt] 1.2.7 or higher
-- To execute the tests: maven
+- To compile `src/main/scala/` into `docs/js/`: [sbt] 1.2.7 or higher
+- To execute the tests and create a jar: maven
 
 The community edition of IntelliJ seems a better IDE for Scala development than Eclipse.
 
