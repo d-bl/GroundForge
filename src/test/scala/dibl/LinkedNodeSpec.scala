@@ -33,11 +33,8 @@ class LinkedNodeSpec extends FlatSpec with Matchers {
     )
     val tileLinks = diagram.tileLinks(6, 6, 6, 6)
     tileLinks.map(_.core) shouldBe Seq(2,3,4).map(diagram.nodes)
-    tileLinks.map(_.clockwise).toArray shouldBe Array(
-      Array(0,1,4,3).map(diagram.nodes),
-      Array(0,2,6,5).map(diagram.nodes),
-      Array(2,1,7,8).map(diagram.nodes),
-    )
+    tileLinks.map(_.clockwise.map(diagram.nodes.indexOf)).toArray shouldBe
+      Array(Array(0,1,4,3), Array(0,2,6,5), Array(2,1,7,8)) // node numbers
   }
 
   it should "determine clockwise by coordinates" in {
@@ -67,11 +64,8 @@ class LinkedNodeSpec extends FlatSpec with Matchers {
     )
     val tileLinks = diagram.tileLinks(1, 2, 2, 0)
     tileLinks.map(_.core) shouldBe Seq(2,3,4).map(diagram.nodes)
-    tileLinks.map(_.clockwise).toArray shouldBe Array(
-      Array(0,1,4,3).map(diagram.nodes),
-      Array(0,2,6,5).map(diagram.nodes),
-      Array(2,1,7,8).map(diagram.nodes),
-    )
+    tileLinks.map(_.clockwise.map(diagram.nodes.indexOf)).toArray shouldBe
+      Array(Array(0,1,4,3), Array(0,2,6,5), Array(2,1,7,8)) // node numbers
   }
 
   "LinkedNode.clockwise" should "be calculated by coordinates" in {
