@@ -133,7 +133,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     def log1(n: NodeProps) = s"(id=${n.id},x=${n.x.toInt/15-2},y=${n.y.toInt/15-2})"
     def log(nodes: Map[NodeProps, Boolean]) = s"${nodes.map{case (k,v) => s"${log1(k)} -> $v)"}.mkString("; ")}"
     links.foreach(l =>
-      println(s"core${log1(l.core)} sources(${log(l.sources)}) targets(${log(l.targets)}) clockwise(${l.clockwise.map(_.id).mkString(",")})")
+      println(s"core${log1(l.core)} clockwise(${l.clockwise.map(_.id).mkString(",")}) sources(${log(l.sources)}) targets(${log(l.targets)})")
     )
   }
 }

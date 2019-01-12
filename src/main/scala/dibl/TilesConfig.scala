@@ -301,9 +301,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       else if (totalRows < minHeightForBricks) invalidMin("height", minHeightForBricks)
       else if (isHBrick || isVBrick) diagram.tileLinks(
         scale * 52.5,
-        scale * 52.5,
+        scale * (52.5 + 15 * centerMatrixRows),
         scale * (52.5 + 15 * centerMatrixCols),
-        scale * (52.5 + 15 * centerMatrixRows)
+        scale * 52.5,
       ) // TODO find the first tile closest to NE but at least 2 rows/cols to the SW
       else if (shiftColsSE < 2 && shiftRowsSE < 2) invalid("type of tiling is not suported")
       else if (minWidth > totalCols) invalidMin("patch width", minWidth)
@@ -313,9 +313,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         val offsetRows = (1.5 + shiftRowsSE) * 15
         diagram.tileLinks(
           scale * offsetCols,
-          scale * offsetRows,
-          scale * (offsetCols + 15 * centerMatrixCols),
-          scale * (offsetRows + 15 * centerMatrixRows)
+          scale * (offsetRows + 15 * centerMatrixRows),
+            scale * (offsetCols + 15 * centerMatrixCols),
+            scale * offsetRows,
         )
       }
     }
