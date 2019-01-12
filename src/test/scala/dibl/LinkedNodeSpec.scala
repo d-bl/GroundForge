@@ -30,6 +30,30 @@ class LinkedNodeSpec extends FlatSpec with Matchers {
       simpleLink(4, 8),
     )
   )
+  val pairs = Diagram(
+    Seq(
+      stitch("a12", 0, 0), // 0
+      stitch("a11", 2, 0), // 1
+      stitch("a10", 1, 1), // 2
+      stitch("a11", 0, 2), // 3
+      stitch("a12", 2, 2), // 4
+      stitch("a10", -1, 3), // 5
+      stitch("a12", 0, 4), // 6
+      stitch("a10", 3, 5), // 7
+      stitch("a11", 2, 6), // 8
+    ), Seq(
+      simpleLink(0, 2),
+      simpleLink(1, 2),
+      simpleLink(0, 3),
+      simpleLink(2, 3),
+      simpleLink(2, 4),
+      simpleLink(1, 4),
+      simpleLink(3, 5),
+      simpleLink(3, 6),
+      simpleLink(4, 7),
+      simpleLink(4, 8),
+    )
+  )
 
   "Diagram.tileLinks" should "determine Seq[LinkedNode]" in {
 
@@ -44,6 +68,27 @@ class LinkedNodeSpec extends FlatSpec with Matchers {
     )
   }
 
+  it should "determine Sclockwise by coordinates" in {
+
+    val tileLinks = pairs.tileLinks(1, 2, 2, 1)
+    tileLinks.map(_.core) shouldBe Seq(
+      threads.nodes(2), threads.nodes(3), threads.nodes(4),
+    )
+    tileLinks.map(_.clockwise) shouldBe Seq(
+      Array(threads.nodes(0), threads.nodes(1), threads.nodes(4), threads.nodes(3)),
+      Array(threads.nodes(0), threads.nodes(2), threads.nodes(6), threads.nodes(5)),
+      Array(threads.nodes(2), threads.nodes(1), threads.nodes(7), threads.nodes(8)),
+    )
+  }
+
+  "LinkedNode.clockwise" should "calculate clockwise by coordinates" in {
+    LinkedNode(
+      core = stitch("c", 1, 1),
+      sources = Map(stitch("s", 0, 0) -> false, stitch("S", 2, 0) -> false),
+      targets = Map(stitch("t", 2, 2) -> false, stitch("T", 0, 2) -> false),
+    ).clockwise.map(_.id) shouldBe Array("s", "S", "t", "T" )
+  }
+
   // cross
   //    s    S
   // |      /  |
@@ -52,7 +97,7 @@ class LinkedNodeSpec extends FlatSpec with Matchers {
   // |     \   |
   // |  /      |
   //   T     t
-  "LinkedNode.clockwise" should "determine a proper order for cross true true" in {
+  it should "determine a proper order for cross true true" in {
     LinkedNode(
       core = cross("c", 1, 1),
       sources = Map(twist("s", 1, 1) -> true, twist("S", 1, 1) -> false),
@@ -137,4 +182,5 @@ class LinkedNodeSpec extends FlatSpec with Matchers {
   private def cross(id: String, x: Int, y: Int) = NodeProps.node(s"twist - $id", x, y)
 
   private def twist(id: String, x: Int, y: Int) = NodeProps.node(s"cross - $id", x, y)
+  private def stitch(id: String, x: Int, y: Int) = NodeProps.node(s"ctct - $id", x, y)
 }
