@@ -106,7 +106,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
    */
   def tileLinks(north: Double, east: Double, south: Double, west: Double): Seq[LinkedNode] = {
     nodes.zipWithIndex.filter { case (node, _) =>
-      node.x >= east && node.x <= west &&
+      node.x >= west && node.x <= east &&
         node.y >= north && node.y <= south &&
         !node.pin
     }.map{case (node, nr)=>
