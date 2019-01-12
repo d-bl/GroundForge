@@ -77,97 +77,101 @@ class LinkedNodeSpec extends FlatSpec with Matchers {
   }
 
   // cross
-  //    s    S
+  //    S    s
   // |      /  |
   // |   \     |
   // |    c    |
   // |     \   |
   // |  /      |
   //   T     t
+  // links with a capital S/T have a white start
+  // sources[i] -> true means the link from source to core has a white start.
+  // targets[i] -> true means the link from core to target has a white start.
   it should "determine a proper order for cross true true" in {
     LinkedNode(
-      core = cross("c", 1, 1),
-      sources = Map(twist("s", 1, 1) -> true, twist("S", 1, 1) -> false),
-      targets = Map(twist("t", 1, 1) -> true, twist("T", 1, 1) -> false),
-    ).clockwise.map(_.id) shouldBe Array("s", "S", "t", "T" )
+      core = cross("c"),
+      sources = Map(twist("S") -> true, twist("s") -> false),
+      targets = Map(twist("T") -> true, twist("t") -> false),
+    ).clockwise.map(_.id) shouldBe Array("S", "s", "t", "T" )
   }
 
   it should "determine a proper order for cross false true" in {
     LinkedNode(
-      core = cross("c", 1, 1),
-      sources = Map( twist("S", 1, 1) -> false, twist("s", 1, 1) -> true),
-      targets = Map(twist("t", 1, 1) -> true, twist("T", 1, 1) -> false),
-    ).clockwise.map(_.id) shouldBe Array("s", "S", "t", "T" )
+      core = cross("c"),
+      sources = Map(twist("S") -> true, twist("s") -> false),
+      targets = Map(twist("t") -> false, twist("T") -> true),
+    ).clockwise.map(_.id) shouldBe Array("S", "s", "t", "T" )
   }
 
   it should "determine a proper order for cross true false" in {
     LinkedNode(
-      core = cross("c", 1, 1),
-      sources = Map(twist("s", 1, 1) -> true, twist("S", 1, 1) -> false),
-      targets = Map(twist("T", 1, 1) -> false, twist("t", 1, 1) -> true),
-    ).clockwise.map(_.id) shouldBe Array("s", "S", "t", "T" )
+      core = cross("c"),
+      sources = Map(twist("s") -> false, twist("S") -> true),
+      targets = Map(twist("T") -> true, twist("t") -> false),
+    ).clockwise.map(_.id) shouldBe Array("S", "s", "t", "T" )
   }
 
   it should "determine a proper order for cross false false" in {
     LinkedNode(
-      core = cross("c", 1, 1),
-      sources = Map( twist("S", 1, 1) -> false, twist("s", 1, 1) -> true),
-      targets = Map(twist("T", 1, 1) -> false, twist("t", 1, 1) -> true),
-    ).clockwise.map(_.id) shouldBe Array("s", "S", "t", "T" )
+      core = cross("c"),
+      sources = Map(twist("s") -> false, twist("S") -> true),
+      targets = Map(twist("t") -> false, twist("T") -> true),
+    ).clockwise.map(_.id) shouldBe Array("S", "s", "t", "T" )
   }
 
-  //  twist
-  //  S     s
-  //   \      |  |
-  //      /   |  |
-  //     c    |  |
-  //    /     |  |
-  //       \  |  |
-  //  t     T
+  // twist
+  // s     S
+  //  \      |  |
+  //     /   |  |
+  //    c    |  |
+  //   /     |  |
+  //      \  |  |
+  // t     T
+  // links with a capital S/T have a white start
   it should "determine a proper order for twist true true" in {
     LinkedNode(
-      core = twist("c", 1, 1),
-      sources = Map(twist("s", 1, 1) -> true, twist("S", 1, 1) -> false),
-      targets = Map(twist("t", 1, 1) -> true, twist("T", 1, 1) -> false),
-    ).clockwise.map(_.id) shouldBe Array("S", "s", "T", "t" )
+      core = twist("c"),
+      sources = Map(twist("S") -> true, twist("s") -> false),
+      targets = Map(twist("T") -> true, twist("t") -> false),
+    ).clockwise.map(_.id) shouldBe Array("s", "S", "T", "t" )
   }
 
   it should "determine a proper order for twist false true" in {
     LinkedNode(
-      core = twist("c", 1, 1),
-      sources = Map( twist("S", 1, 1) -> false, twist("s", 1, 1) -> true),
-      targets = Map(twist("t", 1, 1) -> true, twist("T", 1, 1) -> false),
-    ).clockwise.map(_.id) shouldBe Array("S", "s", "T", "t" )
+      core = twist("c"),
+      sources = Map(twist("S") -> true, twist("s") -> false),
+      targets = Map(twist("t") -> false, twist("T") -> true),
+    ).clockwise.map(_.id) shouldBe Array("s", "S", "T", "t" )
   }
 
   it should "determine a proper order for twist true false" in {
     LinkedNode(
-      core = twist("c", 1, 1),
-      sources = Map(twist("s", 1, 1) -> true, twist("S", 1, 1) -> false),
-      targets = Map(twist("T", 1, 1) -> false, twist("t", 1, 1) -> true),
-    ).clockwise.map(_.id) shouldBe Array("S", "s", "T", "t" )
+      core = twist("c"),
+      sources = Map(twist("s") -> false, twist("S") -> true),
+      targets = Map(twist("T") -> true, twist("t") -> false),
+    ).clockwise.map(_.id) shouldBe Array("s", "S", "T", "t" )
   }
 
   it should "determine a proper order for twist false false" in {
     LinkedNode(
-      core = twist("c", 1, 1),
-      sources = Map( twist("S", 1, 1) -> false, twist("s", 1, 1) -> true),
-      targets = Map(twist("T", 1, 1) -> false, twist("t", 1, 1) -> true),
-    ).clockwise.map(_.id) shouldBe Array("S", "s", "T", "t" )
+      core = twist("c"),
+      sources = Map(twist("s") -> false, twist("S") -> true),
+      targets = Map(twist("t") -> false, twist("T") -> true),
+    ).clockwise.map(_.id) shouldBe Array("s", "S", "T", "t" )
   }
 
   it should "be empty if sources is empty" in {
     LinkedNode(
-      core = cross("a11", 1, 1),
+      core = cross("a11"),
       sources = Map.empty,
-      targets = Map(twist("a11", 1, 1) -> false, twist("a12", 1, 1) -> true),
+      targets = Map(twist("a11") -> false, twist("a12") -> true),
     ).clockwise shouldBe Array.empty
   }
 
   private def whiteStart(source: Int, target: Int) = LinkProps.threadLink(source, target, threadNr = 0, whiteStart = true)
 
-  private def cross(id: String, x: Int, y: Int) = NodeProps.node(s"twist - $id", x, y)
+  private def cross(id: String, x: Int = 1, y: Int = 1) = NodeProps.node(s"twist - $id", x, y)
 
-  private def twist(id: String, x: Int, y: Int) = NodeProps.node(s"cross - $id", x, y)
+  private def twist(id: String, x: Int = 1, y: Int = 1) = NodeProps.node(s"cross - $id", x, y)
   private def stitch(id: String, x: Int, y: Int) = NodeProps.node(s"ctct - $id", x, y)
 }

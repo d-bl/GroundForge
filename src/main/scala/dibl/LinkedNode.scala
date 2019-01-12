@@ -62,17 +62,19 @@ case class LinkedNode(core: NodeProps,
     // in case of the latter errorNode the head element equals the last element
 
     // cross              twist
-    //    s    s          s     s
+    //    S    s          s     S
     // |      /  |         \      |  |
     // |   \     |            /   |  |
     // |    c    |           c    |  |
     // |     \   |          /     |  |
     // |  /      |             \  |  |
-    //   t     t          t     t
+    //   T     t          t     T
+    // links from a node with a capital S(ource) have a white start
+    // links to a node with a capital T(arget) have a white start
     (
       core.instructions,
       sourceNodes.headOption.map(sources(_)), // white start for the first link to the core
-      targetNodes.headOption.map(targets(_)), // white start for the first link leaving the core
+      targetNodes.headOption.map(!targets(_)), // white start for the first link leaving the core
     ) match {
       case ("cross", Some(true), Some(true)) => Array(s2, s1, t2, t1)
       case ("cross", Some(true), Some(false)) => Array(s2, s1, t1, t2)
