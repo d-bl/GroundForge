@@ -74,14 +74,14 @@ case class LinkedNode(core: NodeProps,
       sourceNodes.headOption.map(sources(_)), // white start for the first link to the core
       targetNodes.headOption.map(targets(_)), // white start for the first link leaving the core
     ) match {
-      case ("cross", Some(true), Some(true)) => Array(s1, s2, t1, t2)
-      case ("cross", Some(true), Some(false)) => Array(s1, s2, t2, t1)
-      case ("cross", Some(false), Some(true)) => Array(s2, s1, t1, t2)
-      case ("cross", Some(false), Some(false)) => Array(s2, s1, t2, t1)
-      case ("twist", Some(true), Some(true)) => Array(s2, s1, t1, t2)
-      case ("twist", Some(true), Some(false)) => Array(s2, s1, t2, t1)
-      case ("twist", Some(false), Some(true)) => Array(s1, s2, t1, t2)
-      case ("twist", Some(false), Some(false)) => Array(s1, s2, t2, t1)
+      case ("cross", Some(true), Some(true)) => Array(s2, s1, t2, t1)
+      case ("cross", Some(true), Some(false)) => Array(s2, s1, t1, t2)
+      case ("cross", Some(false), Some(true)) => Array(s1, s2, t2, t1)
+      case ("cross", Some(false), Some(false)) => Array(s1, s2, t1, t2)
+      case ("twist", Some(true), Some(true)) => Array(s1, s2, t1, t2)
+      case ("twist", Some(true), Some(false)) => Array(s1, s2, t2, t1)
+      case ("twist", Some(false), Some(true)) => Array(s2, s1, t1, t2)
+      case ("twist", Some(false), Some(false)) => Array(s2, s1, t2, t1)
       case (_, None, _) | (_, _, None) => Array[NodeProps]() // no links in and/or out
       case _ =>
         (sourceNodes.toSeq.sortBy(n => n.x - core.x) ++
