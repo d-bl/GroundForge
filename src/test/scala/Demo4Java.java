@@ -16,13 +16,14 @@
 
 import dibl.D3jsSVG;
 import dibl.Diagram;
-import dibl.LinkedNode;
 import dibl.NewPairDiagram;
+import dibl.NodeProps;
 import dibl.PairDiagram;
 import dibl.PrototypeDiagram;
 import dibl.SheetSVG;
 import dibl.ThreadDiagram;
 import dibl.TilesConfig;
+import scala.Tuple2;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -90,13 +91,13 @@ public class Demo4Java {
     System.out.println("-------------- " + fileName);
 
     // needs original positions without any nudging applied to previous diagrams
-    LinkedNode[] linkedNodes = config.linksOfCenterTile(diagram, scale);
+    Tuple2<NodeProps, NodeProps[]>[] linkedNodes = config.linksOfCenterTile(diagram, scale);
     diagram.logTileLinks(linkedNodes);
     if (linkedNodes.length > 0) {
       // TODO compute deltas from logged data
       // showing how to access
-      String stitch = linkedNodes[0].core().id();
-      // String first = linkedNodes[0].clockwise()[0].id();
+      String coreId = linkedNodes[0]._1().id();
+      String firstLinkId = linkedNodes[0]._2()[0].id();
     }
 
     int nrOfNodes = diagram.nodes().size();

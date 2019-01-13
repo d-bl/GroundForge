@@ -50,7 +50,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   @JSExport
   val rightMatrixCols: Int = Option(rightMatrix.head).map(_.length).getOrElse(2)
 
-  private val centerMatrixRows: Int = centerMatrix.length
+  val centerMatrixRows: Int = centerMatrix.length
 
   @JSExport
   val maxTileRows: Int = Math.max(centerMatrixRows, Math.max(leftMatrix.length, rightMatrix.length))
@@ -204,10 +204,6 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     while (replace(itemMatrix(row)(col))){}
   }
 
-  private def logRow(row: Int) = {
-    itemMatrix(row).map(item => s"${ item.id }${ item.relativeSources.mkString } ").mkString
-  }
-
   for {
     row <- itemMatrix.indices
     col <- itemMatrix(row).indices
@@ -267,8 +263,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
    *         The start of their id-s will be identical, the tail of their id-s will be different.
    */
   @JSExport
-  def linksOfCenterTile(diagram: Diagram, scale: Int): Array[LinkedNode] = {
-    val links: Seq[LinkedNode] = {
+  def linksOfCenterTile(diagram: Diagram, scale: Int): Array[(NodeProps, Array[NodeProps])] = {
+    val links: Seq[(NodeProps, Array[NodeProps])] = {
 
       lazy val minWidthForBricks = centerMatrixCols + 4
       lazy val minHeightForBricks = centerMatrixRows + 4
@@ -283,10 +279,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
           shiftColsSE == centerMatrixCols &&
           shiftRowsSE - shiftRowsSW == centerMatrixRows
 
-      def invalidMin(dimension: String, value: Int): Seq[LinkedNode] = {
+      def invalidMin(dimension: String, value: Int): Seq[(NodeProps, Array[NodeProps])] = {
         invalid(s"patch $dimension should be at least $value")
       }
-      def invalid(msg: String): Seq[LinkedNode] = {
+      def invalid(msg: String): Seq[(NodeProps, Array[NodeProps])] = {
         println(msg)
         Seq.empty
       }
@@ -319,10 +315,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         )
       }
     }
-    if (links.exists(l => l.core.id.isEmpty || l.sources.keys.exists(_.id.isEmpty) || l.targets.keys.exists(_.id.isEmpty)))
-      Seq.empty
-    else {
-      links
-    }
+    if (links.exists{link =>
+      val (core, clockWise) = link
+      core.id.isEmpty || clockWise.length != 4
+    }) Seq.empty
+    else links
   }.toArray
 }

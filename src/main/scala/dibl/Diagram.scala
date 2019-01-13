@@ -97,43 +97,78 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   }
 
   /**
-   * Finds nodes within the boundaries.
-   *
-   * Tile boundaries (N/E/S/W) are inclusive. The values for these boundaries must be
-   * row/column numbers multiplied with the x/y scale for the initial layout of a diagram.
-   *
-   * @return nodes with sources and targets, all in random order.
+   * Logs id,x,y values of the core node, and clockWise arranged sources and targets.
+   * The x/y are calculated back to col/row scale for readability.
    */
-  def tileLinks(north: Double, east: Double, south: Double, west: Double): Seq[LinkedNode] = {
-    nodes.zipWithIndex.filter { case (node, _) =>
-      node.x >= west && node.x <= east &&
-        node.y >= north && node.y <= south &&
-        !node.pin
-    }.map{case (node, nr)=>
-      val sources = links
-        .filter(_.target == nr)
-        .map(l => nodes(l.source) -> l.isInstanceOf[WhiteStart])
-        .toMap
+  def logTileLinks(linkedNodes: Array[(NodeProps, Array[NodeProps])]): Unit = {
+    def log(n: NodeProps) = s"(id=${ n.id },x=${ n.x.toInt / 15 - 2 },y=${ n.y.toInt / 15 - 2 })"
 
-      val targets = links
-        .filter(_.source == nr)
-        .map(l => nodes(l.target) -> l.isInstanceOf[WhiteStart])
-        .toMap
-
-      LinkedNode(node, sources, targets)
+    linkedNodes.foreach { case (core, clockWise: Array[NodeProps]) =>
+      println(s"core${ log(core) } clockwise(${ clockWise.map(_.id).mkString(",") }) = ${ clockWise.map(log).mkString }")
     }
   }
 
   /**
-   * Logs id,x,y values of the core, sources and targets.
-   * The x/y are calculated back to col/row scale for readability.
-   * For example: core=(id=a1,x=2,y=2) sources=(id=a1,x=2,y=2; id=a1,x=2,y=2) targets=(id=a1,x=2,y=2; id=a1,x=2,y=2)
+   * Finds nodes within the boundaries.
+   *
+   * A node is a stitch, cross or twist.
+   * Tile boundaries (N/E/S/W) are inclusive. The values for these boundaries must be
+   * row/column numbers multiplied with the x/y scale for the initial layout of a diagram.
+   *
+   * @return nodes in random order, each mapped to their sources and targets in a clockwise order.
    */
-  def logTileLinks(links: Array[LinkedNode]): Unit = {
-    def log1(n: NodeProps) = s"(id=${n.id},x=${n.x.toInt/15-2},y=${n.y.toInt/15-2})"
-    def log(nodes: Map[NodeProps, Boolean]) = s"${nodes.map{case (k,v) => s"${log1(k)} -> $v)"}.mkString("; ")}"
-    links.foreach(l =>
-      println(s"core${log1(l.core)} clockwise(${l.clockwise.map(_.id).mkString(",")}) sources(${log(l.sources)}) targets(${log(l.targets)})")
-    )
+  def tileLinks(north: Double, east: Double, south: Double, west: Double): Seq[(NodeProps, Array[NodeProps])] = {
+    def inTile(node: NodeProps) = {
+      !node.pin &&
+        node.x >= west && node.x <= east &&
+        node.y >= north && node.y <= south
+    }
+
+    val sourceLinksForTileNodes = links.filter(link => inTile(nodes(link.target)))
+    val targetLinksForTileNodes = links.filter(link => inTile(nodes(link.source)))
+
+    def getSources(core: Int) = {
+      sourceLinksForTileNodes
+        .filter(_.target == core)
+        .sortBy(_.isInstanceOf[WhiteStart])
+        .map(_.source)
+        .map(nodes(_))
+    }
+
+    def getTargets(core: Int) = {
+      targetLinksForTileNodes
+        .filter(_.source == core)
+        .sortBy(_.isInstanceOf[WhiteStart])
+        .map(_.target)
+        .map(nodes(_))
+    }
+
+    // In thread diagrams each link has a short start or tail, as shown in ASCII art:
+    //
+    //      cross           twist
+    //    S      s         s      S     source nodes
+    //          /           \
+    //     \   /             \  /
+    //      \                  /
+    //       \                /         core node
+    //        \              /
+    //      /  \            /   \
+    //     /                     \
+    //    T     t         t       T     target nodes
+    sourceLinksForTileNodes.map(_.target).distinct.map { core =>
+      val coreNode = nodes(core)
+      val clockWise = coreNode.instructions match {
+        // would expect the sources and targets to be ordered for a twist
+        // the unit tests show otherwise
+        case "twist" => getSources(core) ++ getTargets(core).reverse
+        case "cross" => getSources(core).reverse ++ getTargets(core)
+        case _ => getSources(core)
+          // pairs never go up and are never on top of one another
+          // therefore delta-x can determine the order
+          .sortBy(n => n.x - coreNode.x) ++ getTargets(core)
+          .sortBy(n => coreNode.x - n.x)
+      }
+      coreNode -> clockWise.toArray // TODO drop toArray when no longer needed in a java context
+    }
   }
 }
