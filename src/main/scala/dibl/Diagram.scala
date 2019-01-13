@@ -143,23 +143,25 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         .map(nodes(_))
     }
 
-    // In thread diagrams each link has a short start or tail, as shown in ASCII art:
+    // In thread diagrams each link has a short start or tail, as shown in ASCII art.
+    // Capitals visualize how the getSource/getTargets methods above order their nodes.
     //
-    //      cross           twist
-    //    S      s         s      S     source nodes
-    //          /           \
-    //     \   /             \  /
-    //      \                  /
-    //       \                /         core node
-    //        \              /
-    //      /  \            /   \
-    //     /                     \
-    //    T     t         t       T     target nodes
+    //                  cross          twist
+    // source nodes:  s2     s1       S1     S2
+    //                      /          \
+    //                 \   /            \  /
+    //                  \                 /
+    // core node:        \               /
+    //                    \             /
+    //                  /  \           /   \
+    //                 /                    \
+    // target nodes:  t2    t1       T1      T2
+    //
+    // clockwise:     s2,s1,t1,t2    s1,s2,t1,t2
+
     sourceLinksForTileNodes.map(_.target).distinct.map { core =>
       val coreNode = nodes(core)
       val clockWise = coreNode.instructions match {
-        // would expect the sources and targets to be ordered for a twist
-        // the unit tests show otherwise
         case "twist" => getSources(core) ++ getTargets(core).reverse
         case "cross" => getSources(core).reverse ++ getTargets(core)
         case _ => getSources(core)
