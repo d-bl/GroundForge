@@ -6,20 +6,7 @@ class TileLinksSpec extends FlatSpec with Matchers {
   // Config.linksOfCenterTile calls Diagram.tileLinks
   // confusion about the sortBy in the tested method makes lower level tests hard to understand
 
-  "Diagram.tileLinks" should "work for a thread diagram" in {
-    val config = TilesConfig("patchWidth=6&patchHeight=5&tile=5-&tileStitch=ct&&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1")
-    val diagram = ThreadDiagram.create(NewPairDiagram.create(config))
-    config.linksOfCenterTile(diagram, 2)
-      .map { case (core, clockWise: Array[NodeProps]) =>
-        core.id -> clockWise.map(_.id).mkString(",")
-      } shouldBe Array(
-      "a12" -> "a10,a11,a10,a11",
-      "a11" -> "a12,a10,a12,a10",
-      "a10" -> "a12,a11,a12,a11",
-    )
-  }
-
-  it should "work for a paris ground" in {
+  "Diagram.tileLinks" should "find links in clockwise order around nodes in an area of a pair diagram" in {
     // TODO Make an N link from this example in the demo section for paris ground.
     val config = TilesConfig("patchWidth=11&patchHeight=12&tile=-5-,B-C&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2")
     val diagram = NewPairDiagram.create(config)
@@ -32,11 +19,24 @@ class TileLinksSpec extends FlatSpec with Matchers {
       offsetCols + 15 * config.centerMatrixCols,
       offsetRows,
     ).map { case (core, clockWise: Array[NodeProps]) =>
-        core.id -> clockWise.map(_.id).mkString(",")
-      } shouldBe Array(
+      core.id -> clockWise.map(_.id).mkString(",")
+    } shouldBe Array(
       "a2" -> "c2,b1,c2,b1",
       "b1" -> "c2,a2,c2,a2",
       "c2" -> "b1,a2,b1,a2",
+    )
+  }
+
+  "Config.linksOfCenterTile" should "call Diagram.tileLinks for a thread diagram" in {
+    val config = TilesConfig("patchWidth=6&patchHeight=5&tile=5-&tileStitch=ct&&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1")
+    val diagram = ThreadDiagram.create(NewPairDiagram.create(config))
+    config.linksOfCenterTile(diagram, 2)
+      .map { case (core, clockWise: Array[NodeProps]) =>
+        core.id -> clockWise.map(_.id).mkString(",")
+      } shouldBe Array(
+      "a12" -> "a10,a11,a10,a11",
+      "a11" -> "a12,a10,a12,a10",
+      "a10" -> "a12,a11,a12,a11",
     )
   }
 
