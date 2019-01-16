@@ -157,6 +157,83 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
     }
   }
 
+  // rejoin links to ignored stitches
+
+  private def isFringe(row: Int, col: Int) = {
+    row < 0 || col < 0 || col >= itemMatrix(row).length
+  }
+
+  for {
+    row <- itemMatrix.indices
+    col <- itemMatrix(row).indices
+  } {
+    // println(s"============== $row, $col")
+    def indirectSource(relativeSource: (Int, Int),
+                       firstOrLast: Array[(Int, Int)] => Option[(Int, Int)]
+                      ): (Int, Int) = {
+      val (relativeSourceRow, relativeSourceCol) = relativeSource
+      val absSrcRow = row + relativeSourceRow
+      val absSrcCol = col + relativeSourceCol
+      if (isFringe(absSrcRow, absSrcCol)) relativeSource
+      else {
+        lazy val srcItem = itemMatrix(absSrcRow)(absSrcCol)
+        if (!srcItem.noStitch) relativeSource
+        else {
+          // srcItem is the point of "<" or ">"; change it into "|" (into the top)
+          val (srcRow, srcCol) = firstOrLast(srcItem.relativeSources).getOrElse((0, 0))
+          if (row + srcRow < 0) relativeSource
+          else (relativeSourceRow + srcRow, relativeSourceCol + srcCol)
+        }
+      }
+    }
+    def replace(item: Item): Boolean = {
+      if (item.relativeSources.isEmpty || item.noStitch) false
+      else {
+        val Array(directLeft, directRight) = item.relativeSources
+        val indirectLeft = indirectSource(directLeft, _.lastOption)
+        val indirectRight = indirectSource(directRight, _.headOption)
+        val replacement = SrcNodes(indirectLeft,indirectRight)
+        if (item.relativeSources sameElements replacement) false
+        else {
+          //println(s"replacing ${item.id} ${item.relativeSources.mkString} ${replacement.mkString}")
+          itemMatrix(row)(col) = item.copy(relativeSources = replacement)
+          true
+        }
+      }
+    }
+    while (replace(itemMatrix(row)(col))){}
+  }
+
+  for {
+    row <- itemMatrix.indices
+    col <- itemMatrix(row).indices
+  } {
+    // now everything is reconnected around ignored stitches
+    val item = itemMatrix(row)(col)
+    if(item.noStitch) {
+      // drop links into ignored stitches
+      itemMatrix(row)(col) = item.copy(relativeSources = SrcNodes())
+    }
+    else if (item.relativeSources.nonEmpty) {
+      // TODO a fringe like "vv" with an ignored stitch
+      //  caused two pairs starting with a single node, causing trouble for droste steps
+      val Array(left,right) = item.relativeSources
+      if (left == right) {
+        // replace Y with V; the tail of the Y are two links connecting the same two nodes
+        val (sharedRow, sharedCol) = left
+        val srcRow = row + sharedRow
+        val srcCol = col + sharedCol
+        if (!isFringe(srcRow, srcCol)) {
+          val srcItem = itemMatrix(srcRow)(srcCol)
+          val Array((leftRow, leftCol), (rightRow, rightCol)) = srcItem.relativeSources
+          val newSrcNodes = SrcNodes((sharedRow + leftRow, sharedCol + leftCol), (sharedRow + rightRow, sharedCol + rightCol))
+          itemMatrix(row)(col) = itemMatrix(row)(col).copy(relativeSources = newSrcNodes)
+          itemMatrix(srcRow)(srcCol) = srcItem.copy(relativeSources = SrcNodes())
+        }
+      }
+    }
+  }
+
   /**
    * Get links for one tile.
    *
