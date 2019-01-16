@@ -109,11 +109,11 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   }
 
   /**
-   * Finds nodes within the boundaries.
+   * Finds nodes within the boundaries and their connections in clockwise order.
    *
-   * A node is a stitch, cross or twist.
+   * A node is a stitch, cross or twist. Links should never go up and have different directions.
    * Tile boundaries (N/E/S/W) are inclusive. The values for these boundaries must be
-   * row/column numbers multiplied with the x/y scale for the initial layout of a diagram.
+   * row/column numbers multiplied with the x/y scale for the diagram.
    *
    * @return nodes in random order, each mapped to their sources and targets in a clockwise order.
    */
