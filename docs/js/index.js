@@ -106,7 +106,7 @@ function firstStep() {
   replaceClass("step2", "show", "hide")
   replaceClass("step3", "show", "hide")
 
-  var p = dibl.PairDiagram().get(
+  var p = PairDiagram.get(
     document.getElementById("matrix").value,
     document.getElementById("tiles").value,
     document.getElementById("rows").value,
@@ -123,10 +123,10 @@ function nextStep(n) {
     replaceClass("step3", "show","hide")
 
   var stitches = document.getElementById("s" + n).value
-  showDiagrams(n, dibl.PairDiagram().create(stitches, data[n-1].threadDiagram))
+  showDiagrams(n, PairDiagram.create(stitches, data[n-1].threadDiagram))
 }
 function showDiagrams(stepNr, pairDiagram){
-  var threadDiagram = dibl.ThreadDiagram().create(pairDiagram)
+  var threadDiagram = ThreadDiagram.create(pairDiagram)
   data[stepNr] = { "pairDiagram": pairDiagram, "threadDiagram": threadDiagram }
   showDiagram("#p" + stepNr, "1px", pairDiagram, "")
   showDiagram("#t" + stepNr, "2px", threadDiagram, getColors("s" + stepNr + "c"))

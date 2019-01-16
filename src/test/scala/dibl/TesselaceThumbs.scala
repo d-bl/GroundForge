@@ -15,7 +15,7 @@
 */
 package dibl
 
-import java.io.{ BufferedReader, FileInputStream, InputStreamReader }
+import java.io.{BufferedReader, FileInputStream, InputStreamReader}
 
 import dibl.Force.Point
 
@@ -56,7 +56,7 @@ object TesselaceThumbs {
                   else if (nr == "129") 15
                   else if (nr == "451") 23
                   else 20
-          val config = Config.create(q + s"&patchWidth=$w&patchHeight=$h&tileStitch=c")
+          val config = TilesConfig(q + s"&patchWidth=$w&patchHeight=$h&tileStitch=c")
           val nudgedDiagram = Force
             .nudgeNodes(NewPairDiagram.create(config), Point(100, 100))
             .getOrElse(throw new Exception("whoops"))

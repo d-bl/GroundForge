@@ -15,12 +15,9 @@
 */
 package dibl
 
-import dibl.Matrix.toRelativeSources
-
 import scala.collection.immutable.IndexedSeq
 import scala.collection.immutable.Range.Inclusive
 import scala.collection.mutable
-import scala.scalajs.js.annotation.JSExport
 
 /**
   * Below a schematic ascii visualisation of a definition of a
@@ -239,19 +236,4 @@ class Fringes(absSrcNodes: Array[Array[SrcNodes]]) {
       val targetY = targetRow * drawingScale
       s"""<path style='stroke:$color;stroke-opacity:0.4;fill:none' d='M $sourceX,$sourceY $targetX,$targetY'></path>"""
   }.mkString
-}
-@JSExport
-object Fringes {
-  @JSExport
-  def createSVG(config: Config):String = {
-    val m = config.itemMatrix.map(_.map(i => toRelativeSources(i.vectorCode.toUpper)))
-    val shifted = m.slice(m.length - 2, m.length) ++ m.slice(0,m.length - 2)
-    val trimmed =
-      if (config.leftMatrix.isEmpty) {
-        if (config.rightMatrix.isEmpty)shifted
-        else  shifted.map(line => line.slice(0, line.length - 2))
-      } else if (config.rightMatrix.isEmpty) shifted.map(line => line.slice(2, line.length))
-    else shifted.map(line => line.slice(2, line.length - 2))
-    new Fringes(Matrix.toAbsolute(shifted)).svgDoc
-  }
 }

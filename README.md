@@ -11,6 +11,8 @@ _A toolbox to design bobbin lace grounds with matching sets of pair/thread diagr
   * [Work flow](#work-flow)
   * [Important code conventions](#important-code-conventions)
   * [Tests](#tests)
+  [Use as JavaScript library](#use-as-javascript-library)
+  [Use as JVM library](#use-as-jvm-library)
 
 
 DEMO's
@@ -92,8 +94,8 @@ Requirements
 ------------
 
 - The pages in the docs directory don't require any compilation
-- To compile `src/main/scala` to JavaScript: [sbt] 0.13.9 or higher
-- To execute the tests: maven
+- To compile `src/main/scala/` into `docs/js/`: [sbt] 1.2.7 or higher
+- To execute the tests and create a jar: maven
 
 The community edition of IntelliJ seems a better IDE for Scala development than Eclipse.
 
@@ -106,11 +108,14 @@ Work flow
 - Don't push to your own master branch, but use the following work flow
   - add the parent of your fork as remote to your local repository, by convention this remote is called blessed
   - fetch the master branch of the blessed repository
-  - create topic a branch from the tip of the master branch
+  - create a topic branch from the tip of the master branch
   - push your changes to your own fork and create a pull request
-- Compile your changes and copy the result from  the root of the local project:
-  - windows: `sbt fullOptJS && copy /Y target\scala-2.11\groundforge-opt.js docs\js\GroundForge-opt.js`
-  - *nix: `sbt fullOptJS && cp -f target/scala-2.11/groundforge-opt.js docs/js/GroundForge-opt.js`
+- Compile your changes and copy the result from the root of the local project.
+  One of the last compilation lines should show something like:
+  ` Full optimizing /path/to/target/scala-2.12/groundforge-opt.js`
+  You'll need a command chain like:
+  - windows: `sbt fullOptJS && copy /Y target\scala-2.12\groundforge-opt.js docs\js\GroundForge-opt.js`
+  - *nix: `sbt fullOptJS && cp -f target/scala-2.12/groundforge-opt.js docs/js/GroundForge-opt.js`
 - Check the results with the `docs/*.html` pages
 - If ok (or need advise from a reviewer): commit, push and create a pull request 
 - travis may report some of the internal link problems on the help pages in `docs/help`
@@ -139,5 +144,42 @@ Use `mvn clean test` to run unit tests. As some tests read pattern links from he
 Maven is much faster but uses JVM while the JS used by SBT is the actual target environment.
 Some classes under `src/test` are suffixed with `Demos` rather than `Spec` these runnable objects create SVG documents in a `target/test` directory for a visual check.
 
-For manual tests of the html pages in the docs directory (and help pages after publishing) on other browsers and devices than your own you could signup at
+Use as JavaScript Library
+=========================
+
+The html pages in the `docs` directory and `docs\API` use the code in `src/main` as a JavaScript library.
+The latter is a dressed down page showing the minimal code for the diagrams of one hard-coded pattern,
+the JavaScript more or less mimics the `Demo4Java` discussed below.
+The pages direct under `docs` are the dressed up pages allowing to experiment with bobbin lace grounds. 
+
+These pages have no automated tests
+other than an internal link checker in the Ruby task by the [travis](https://travis-ci.org/d-bl/GroundForge) job.
+
+For manual tests with other browsers and devices than your own, you could sign-up at
 <br><a href="http://browserstack.com/"><img src="https://p14.zdusercontent.com/attachment/1015988/2pBNLzsRzHKyVmXhbPYFfcqi2?token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..u4MOjDBdY7uyB7AqmHgHyw.OG_ZUr4mjWRjpV4IE5UH_bEtx-L-4NHCjNVSBjFvNP9X9ugBGhbEmHXVTJlpI-UBmAFBTl2SVYLgE4G474L0Hu37sYTtC5G3ehtEdiUYPn2R-MfM9cxUCJVP_T1PYk9_kZowoF2wSPFvaWphfvO9bk-hykkhDfPeFQ2BHsJlTlHbpNq8Icd4sveUMnJl0zFiy-h3kGo0ImQLRZnNsmEa3qx7JTINhL-bAUpGQKmdpvWAFVhtUIz8ZkntxRnuNi5EtXD1P4tucKH8kSt5gJXnSU_O0M0Ka_pTJgVXpEQMvTs.it94EtvuwAOOEjIRwQ7z1w" width="120" height="63"></a>
+
+Use as JVM library
+==================
+
+The [Demo4Java.java](https://github.com/d-bl/GroundForge/blob/119-layout/src/test/scala/dibl/Demo4Java.java)
+between the test classes is a simple example that generates diagrams with a plain java main class.
+This example uses the code in `src/main` as a Java library. 
+
+In a plain [JVM](https://www.w3schools.com/java/java_getstarted.asp)
+environment, you'll need at least on your `classpath`: 
+* The `.jar` from the [last release](https://github.com/d-bl/GroundForge/releases)
+* The jar at the repository URL on [scalajs-library](https://maven-repository.com/artifact/org.scala-js/scalajs-library_2.12/0.6.26)
+  in the central maven repository. For the actual version, follow the tag of the release
+  and find the dependency in the `pom.xml`
+
+For a maven/scala-sdk-2.12 environment:
+* [download](https://github.com/d-bl/GroundForge/) or checkout the tip of the master branch, or any other branch or commit you prefer 
+* execute `maven clean install` in the unzipped directory
+* add to the `pom.xml` of your own project
+```
+        <dependency>
+            <groupId>io.github.d-bl</groupId>
+            <artifactId>GroundForge</artifactId>
+            <version>0.x-SNAPSHOT</version>
+        </dependency>
+```

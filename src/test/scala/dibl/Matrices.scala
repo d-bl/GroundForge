@@ -16,9 +16,9 @@
 package dibl
 
 import java.io._
-import java.net.{URL, URLDecoder}
+import java.net.URLDecoder
 
-import dibl.Matrix.{toRelativeSources, extend}
+import dibl.Matrix.{extend, toRelativeSources}
 
 import scala.collection.JavaConverters._
 

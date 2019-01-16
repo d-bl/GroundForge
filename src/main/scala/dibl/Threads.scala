@@ -17,8 +17,8 @@ package dibl
 
 import java.lang.Math.abs
 
-import dibl.LinkProps.{ crossedLinks, pinLinks, threadLink, transparentLinks, twistedLinks }
-import dibl.NodeProps.{ bobbinNode, crossNode, pinNode, twistNode }
+import dibl.LinkProps._
+import dibl.NodeProps._
 
 import scala.annotation.tailrec
 

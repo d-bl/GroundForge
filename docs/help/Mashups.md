@@ -11,10 +11,11 @@ Create mash-ups
     + [Dynamic layout](#dynamic-layout)
 * [Pair and thread diagrams](#pair-and-thread-diagrams)
 
-You can mix and match components of the pages
-or create SVG documents in a JVM or node.js environment.
-The [API] describes the technical details,
-the subsequent paragraphs introduce some examples.
+This page gives some hints to mix and match components of the web pages
+to customize them to your own taste and needs.
+A dressed down [page](../API/index.html) reduces the required html and JavaScript to a minimum. 
+
+The readme in the project root describes how to use the library in a JVM environment.
 
 
 Convenience Forms
@@ -45,9 +46,6 @@ wrap diagrams in page with additional information.
 Download `groundforge-opt.js` from a [release](https://github.com/d-bl/GroundForge/releases)
 to create pages with personalised annotations and decoration.
 The following paragraphs show some examples.
-More details in the [API].
-
-[API]: /GroundForge/help/API
 
 
 ### Fixed layout on a landscape A4

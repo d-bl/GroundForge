@@ -19,10 +19,9 @@ package dibl
 import dibl.Force.Point
 import dibl.LinkProps.Path
 
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
-@JSExport
-object D3jsSVG {
+@JSExportTopLevel("D3jsSVG") object D3jsSVG {
 
   @JSExport
   def circle(r: Int): String = s"M $r,0 A $r,$r 0 0 1 0,$r $r,$r 0 0 1 -$r,0 $r,$r 0 0 1 0,-$r $r,$r 0 0 1 $r,0 Z"
@@ -196,7 +195,7 @@ object D3jsSVG {
     * @param markers     if true color coding of pair diagrams is rendered
     *                    which can slow down animation significantly
     *                    and breaks animation on IE, see issue #52
-    * @return and SVG document as String
+    * @return an SVG document as String
     */
   @JSExport
   def render(diagram: Diagram,

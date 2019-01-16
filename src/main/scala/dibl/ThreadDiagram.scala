@@ -18,15 +18,14 @@ package dibl
 import java.lang.Math.abs
 
 import dibl.LinkProps.transparentLinks
-import dibl.NodeProps.{ errorNode, node, threadStartNode }
+import dibl.NodeProps.{errorNode, node, threadStartNode}
 
 import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
 import scala.collection.mutable
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
-@JSExport
-object ThreadDiagram {
+@JSExportTopLevel("ThreadDiagram") object ThreadDiagram {
 
   @JSExport
   def create(pairDiagram: Diagram): Diagram = apply(pairDiagram)
@@ -37,7 +36,6 @@ object ThreadDiagram {
     def scale(n: NodeProps) = node(n.title, n.x*2, n.y*2)
     val nodesDone = mutable.Buffer[Int]()
 
-//    var loggedStitchNr = 0
     @tailrec
     def createRows(possibleStitches: Seq[TargetToSrcs],
                    availablePairs: Map[Int, Threads],
@@ -72,8 +70,6 @@ object ThreadDiagram {
               nodes,
               links
             )
-//            loggedStitchNr += 1
-//            println(s"nrOfThreadNodes=${nodes.length} $loggedStitchNr created (${pairNode.id} at ${(pairNode.x/15-2).toInt},${(pairNode.y/15-2).toInt}) $pairTarget with $leftPairSource and $rightPairSource of ${availablePairs.toSeq.sortBy(_._1).mkString("\t","\t","")}")
             val replaced = availablePairs - leftPairSource - rightPairSource ++
               ((left.hasSinglePair, right.hasSinglePair) match {
                 case (true, true) => HashMap(pairTarget -> newPairs)

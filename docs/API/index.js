@@ -15,54 +15,70 @@
 */
 function load() {
 
-  var matrix = "586-,-789,2111,-4-4"
-  var patterns = new dibl.SheetSVG(2, "height='90mm' width='100mm'")
-  patterns.add(matrix, "checker")
-  document.getElementById("sheet").innerHTML = (patterns.toSvgDoc().trim())
+  var patterns = new SheetSVG(2, "height='90mm' width='100mm'")
+  patterns.add("5831,-4-7", "bricks")
+  document.getElementById("sheet").innerHTML = patterns.toSvgDoc().trim()
 
-  var q = "patchWidth=9&patchHeight=12" +
-          "&footside=" + matrix +
-          "&tile=" + matrix +
-          "&footsideStitch=-&tileStitch=ctc" +
-          "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
-  var config = dibl.Config().create(q)
-  var pairDiagram = dibl.NewPairDiagram().create(config)
-  var threadDiagram = dibl.ThreadDiagram().create(pairDiagram)
-  showGraph(d3.select('#pairs'), pairDiagram, "1px")
-  showGraph(d3.select('#threads'), threadDiagram, "2px")
+  var q = "patchWidth=8&patchHeight=14"
+                      + "&footside=b,-,a,-&footsideStitch=-"
+                      + "&tile=831,4-7,-5-&tileStitch=ctct"
+                      + "&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
+  var config = TilesConfig(q)
+  d3.select('#proto').html(PrototypeDiagram.create(config))
+
+  var pairDiagram = NewPairDiagram.create(config)
+  showGraph(d3.select('#pairs'), pairDiagram, "1px", 200,300, 1, config)
+
+  var threadDiagram = ThreadDiagram.create(pairDiagram)
+  showGraph(d3.select('#threads'), threadDiagram, "2px",520,800, 2, config)
+
+  // for "ctct" alternatives see:
+  // https://d-bl.github.io/GroundForge/help/Choose-Stitches#assign-stitches
+  var drostePairs = PairDiagram.create("ctct", threadDiagram)
+  showGraph(d3.select('#drostePairs'), drostePairs, "1px",460,850, 2, config)
+
+  var drosteThreads = ThreadDiagram.create(drostePairs)
+  showGraph(d3.select('#drosteThreads'), drosteThreads, "2px",1600,2200, 4, config)
 }
-function showGraph(container, diagram, stroke) {
-    var svg = dibl.D3jsSVG()
-    var markers = true // use false for slow devices and IE-11, set them at onEnd
-    container.node().innerHTML = svg.render(diagram, stroke, markers, 400, 400)
-    var nodeDefs = diagram.jsNodes()
-    var linkDefs = diagram.jsLinks()//can't inline
-    var links = container.selectAll(".link").data(linkDefs)
-    var nodes = container.selectAll(".node").data(nodeDefs)
-    function moveNode(jsNode) {
-        return 'translate('+jsNode.x+','+jsNode.y+')'
-    }
-    function drawPath(jsLink) {
-        var s = jsLink.source
-        var t = jsLink.target
-        var l = diagram.link(jsLink.index)
-        return svg.pathDescription(l, s.x, s.y, t.x, t.y)
-    }
-    function onTick() {
-        links.attr("d", drawPath);
-        nodes.attr("transform", moveNode);
-    }
-    // read 'weak' as 'invisible'
-    function strength(link){ return link.weak ? link.withPin ? 40 : 10 : 50 }
-    var forceLink = d3
-      .forceLink(linkDefs)
-      .strength(strength)
-      .distance(12)
-      .iterations(30)
-    d3.forceSimulation(nodeDefs)
-      .force("charge", d3.forceManyBody().strength(-1000))
-      .force("link", forceLink)
-      .force("center", d3.forceCenter(200, 200))
-      .alpha(0.0035)
-      .on("tick", onTick)
+function showGraph(container, diagram, stroke, width, height, scale, config) {
+  var nodeDefs = diagram.jsNodes()
+  var linkDefs = diagram.jsLinks()//can't inline
+
+  // var tileLinks = config.linksOfCenterTile(diagram, scale)
+  // // TODO nudge x/y values of the nodeDefs
+  // var nudgedDiagram = diagram.withLocationsOf(nodeDefs)
+
+  var markers = true // use false for slow devices and IE-11, set them at onEnd
+  container.html(D3jsSVG.render(diagram, stroke, markers, width, height))
+
+  // nudge nodes with force graph of the  D3js library
+
+  var links = container.selectAll(".link").data(linkDefs)
+  var nodes = container.selectAll(".node").data(nodeDefs)
+  function moveNode(jsNode) {
+      return 'translate('+jsNode.x+','+jsNode.y+')'
+  }
+  function drawPath(jsLink) {
+      var s = jsLink.source
+      var t = jsLink.target
+      var l = diagram.link(jsLink.index)
+      return D3jsSVG.pathDescription(l, s.x, s.y, t.x, t.y)
+  }
+  function onTick() {
+      links.attr("d", drawPath);
+      nodes.attr("transform", moveNode);
+  }
+  // read 'weak' as 'invisible'
+  function strength(link){ return link.weak ? link.withPin ? 40 : 10 : 50 }
+  var forceLink = d3
+    .forceLink(linkDefs)
+    .strength(strength)
+    .distance(12)
+    .iterations(30)
+  d3.forceSimulation(nodeDefs)
+    .force("charge", d3.forceManyBody().strength(-1000))
+    .force("link", forceLink)
+    .force("center", d3.forceCenter(width/2, height/2))
+    .alpha(0.0035)
+    .on("tick", onTick)
 }

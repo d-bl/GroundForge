@@ -1,17 +1,29 @@
-package dibl
+/*
+ Copyright 2018 Jo Pol
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
+*/package dibl
 
 import dibl.Force.Point
-import dibl.Matrix.relativeSourceMap
 
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
-@JSExport
-object NewPairDiagram {
+@JSExportTopLevel("NewPairDiagram") object NewPairDiagram {
 
   @JSExport
-  def create(config: Config): Diagram = {
+  def create(config: TilesConfig): Diagram = {
 
-    val itemMatrix = config.itemMatrix
+    val itemMatrix = config.getItemMatrix
     val rows: Int = itemMatrix.length
     val cols: Int = itemMatrix.head.length
     var seqNr = 0
@@ -38,9 +50,8 @@ object NewPairDiagram {
 
     def toNodeSeq(row: Int, col: Int): Seq[ConnectedNode] = {
       val item = itemMatrix(row)(col)
-      relativeSourceMap
-        .get(item.vectorCode.toUpper)
-        .map { case Array((leftRow, leftCol), (rightRow, rightCol)) =>
+      if(item.relativeSources.isEmpty) return Seq.empty
+      val Array((leftRow, leftCol), (rightRow, rightCol)) = item.relativeSources
           val sourceLeft = toPoint(row + leftRow, col + leftCol)
           val sourceRight = toPoint(row + rightRow, col + rightCol)
           val target = toPoint(row, col)
@@ -54,7 +65,6 @@ object NewPairDiagram {
             case (false, true) => Seq(node, toSimpleNode(sourceRight, node))
             case (true, true) => Seq(node, toSimpleNode(sourceLeft, node), toSimpleNode(sourceRight, node))
           }
-        }.getOrElse(Seq.empty)
     }
 
     val nodes: Seq[ConnectedNode] = Seq(SimpleNode(0, Point(0, 0), Point(0, 0))) ++

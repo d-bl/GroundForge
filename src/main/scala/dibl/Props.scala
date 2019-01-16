@@ -25,7 +25,6 @@ trait Props {
 
   /** Conversion for a JavaScript environment such as
     * a browser (e.g. docs/js/draw-graph.js)
-    * or node.js (e.g. src/main/resources/create-svg.js)
     *
     * @return values required by the D3js scripts
     */

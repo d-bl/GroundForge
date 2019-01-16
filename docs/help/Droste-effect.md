@@ -9,7 +9,6 @@ Droste effect
 - [Stitches](#stitches)
 - [Families of patterns to play with](#families-of-patterns-to-play-with)
 - [Tiling](#tiling)
-- [Offline-execution](#offline-execution)
 - [Numbers of patterns](#numbers-of-patterns)
 
 The [GroundForge] main page can show three pairs of thread and pair diagrams.
@@ -181,15 +180,6 @@ and brick tiling in case of an odd number of rows.
 An odd number of rows won't work with a number of columns divisible by four.
 
 
-Offline-execution
------------------
-
-Off-line execution is faster, doesn't make a fuss if it takes a while,
-allows you to abort at your own discretion and allows as many levels as your system can handle.
-Downside: it requires a few [hoops] to jump through:
-install an environment to execute JavaScript without a browser and get familiar with two or three function calls.
-Another option is downloading the code and adjust one of the demo classes to your needs.
-
 Numbers of patterns
 -------------------
 
@@ -207,4 +197,3 @@ So you need to develop an intuition to take your picks.
 [GroundForge]: /GroundForge/
 [special]: /GroundForge/help/Choose-Stitches.html
 [this page]:/GroundForge/help/Choose-Stitches.html
-[hoops]: /GroundForge/help/API

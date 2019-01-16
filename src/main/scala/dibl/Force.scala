@@ -17,8 +17,8 @@ package dibl
 
 import java.io.FileReader
 import java.util.concurrent.{CyclicBarrier, TimeUnit}
-import javax.script.{Invocable, ScriptEngine, ScriptEngineManager}
 
+import javax.script.{Invocable, ScriptEngine, ScriptEngineManager}
 import jdk.nashorn.api.scripting.ScriptObjectMirror
 
 import scala.util.Try

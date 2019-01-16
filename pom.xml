@@ -10,19 +10,25 @@
     <description>Toolbox to design bobbin lace grounds</description>
     <inceptionYear>2016</inceptionYear>
     <properties>
-        <scala.version>2.11.8</scala.version>
+        <scala.version>2.12.6</scala.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.scala-js</groupId>
-            <artifactId>scalajs-library_2.11</artifactId>
-            <version>0.6.9</version>
+            <artifactId>scalajs-library_2.12</artifactId>
+            <version>0.6.26</version>
         </dependency>
         <dependency>
             <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_2.11</artifactId>
-            <version>3.0.0</version>
+            <artifactId>scalatest_2.12</artifactId>
+            <version>3.0.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.ejml</groupId>
+            <artifactId>ejml-all</artifactId>
+            <version>0.37.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
