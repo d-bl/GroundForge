@@ -7,10 +7,8 @@ class TileLinksSpec extends FlatSpec with Matchers {
   // hover over the stitches in the pair diagram to visualize the clockwise listings of nodes
 
   "Diagram.tileLinks" should "find links in clockwise order around nodes in an area of a pair diagram" in {
-    // TODO Make an N link from this example in the demo section for paris ground.
     val config = TilesConfig("patchWidth=11&patchHeight=12&tile=-5-,B-C&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2")
     val diagram = NewPairDiagram.create(config)
-    // TODO replace hard coded boundaries when implemented by Config
     val offsetCols = (1.5 + 3) * 15
     val offsetRows = (1.5 + 5) * 15
     diagram.tileLinks(
