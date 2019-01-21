@@ -17,7 +17,7 @@ package dibl
 
 import dibl.Stitches.defaultColorValue
 
-import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 @JSExportTopLevel("TilesConfig") case class TilesConfig(urlQuery: String) {
   println(urlQuery)
@@ -168,6 +168,33 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
     col <- itemMatrix(row).indices
   } {
     // println(s"============== $row, $col")
+
+    // replace Y with V; the tail of the Y are two links connecting the same two nodes
+    def y2v(sharedSource: (Int, Int)) = {
+      val (sharedRow, sharedCol) = sharedSource
+      val srcRow = row + sharedRow
+      val srcCol = col + sharedCol
+      if (isFringe(srcRow, srcCol)) false
+      else {
+        val srcItem = itemMatrix(srcRow)(srcCol)
+        val Array((leftRow, leftCol), (rightRow, rightCol)) = srcItem.relativeSources
+        val newSrcNodes = SrcNodes((sharedRow + leftRow, sharedCol + leftCol), (sharedRow + rightRow, sharedCol + rightCol))
+        // relink the bottom of the Y to the tops
+        itemMatrix(row)(col) = itemMatrix(row)(col).copy(relativeSources = newSrcNodes)
+        // drop the core of the Y
+        itemMatrix(srcRow)(srcCol) = srcItem.copy(relativeSources = SrcNodes())
+        true
+      }
+    }
+
+    /**
+     * The current (row,col) is the absolute position of the bottom of the ascii-art graph:
+     * .    VV
+     * .    V
+     * @param relativeSource the tip of one leg of the bottom V relative to (row,col)
+     * @param firstOrLast    returns the tip of the inner leg of the V on top of relativeSource
+     * @return the original or new value for relativeSource
+     */
     def indirectSource(relativeSource: (Int, Int),
                        firstOrLast: Array[(Int, Int)] => Option[(Int, Int)]
                       ): (Int, Int) = {
@@ -179,59 +206,44 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
         val srcItem = itemMatrix(absSrcRow)(absSrcCol)
         if (!srcItem.noStitch) relativeSource
         else {
-          // srcItem is the point of "<" or ">"; change it into "|" (into the top)
+          // srcItem is the point of "<" or ">"; change it into "|"
           val (srcRow, srcCol) = firstOrLast(srcItem.relativeSources).getOrElse((0, 0))
-          val dCol = if (row + srcRow < 0) 0 else srcCol
+          val dCol = if (row + srcRow < 0) 0 else srcCol // don't reconnect with something in the fringe
           (relativeSourceRow + srcRow, relativeSourceCol + dCol)
         }
       }
     }
+
     def replace(item: Item): Boolean = {
       if (item.relativeSources.isEmpty || item.noStitch) false
       else {
         val Array(directLeft, directRight) = item.relativeSources
-        val indirectLeft = indirectSource(directLeft, _.lastOption)
-        val indirectRight = indirectSource(directRight, _.headOption)
-        val replacement = SrcNodes(indirectLeft,indirectRight)
-        if (item.relativeSources sameElements replacement) false
+        if (directLeft == directRight)
+          y2v(directLeft)
         else {
-          //println(s"replacing ${item.id} ${item.relativeSources.mkString} ${replacement.mkString}")
-          itemMatrix(row)(col) = item.copy(relativeSources = replacement)
-          true
+          val indirectLeft = indirectSource(directLeft, _.lastOption) // < to |
+          val indirectRight = indirectSource(directRight, _.headOption) // > to |
+          val replacement = SrcNodes(indirectLeft, indirectRight)
+          if (item.relativeSources sameElements replacement) false
+          else {
+            //println(s"replacing ${item.id} ${item.relativeSources.mkString} ${replacement.mkString}")
+            itemMatrix(row)(col) = item.copy(relativeSources = replacement)
+            true
+          }
         }
       }
     }
     while (replace(itemMatrix(row)(col))){}
   }
 
+  // drop ignored stitches
   for {
     row <- itemMatrix.indices
     col <- itemMatrix(row).indices
   } {
-    // now everything is reconnected around ignored stitches
     val item = itemMatrix(row)(col)
-    if(item.noStitch) {
-      // drop links into ignored stitches
+    if (item.noStitch)
       itemMatrix(row)(col) = item.copy(relativeSources = SrcNodes())
-    }
-    else if (item.relativeSources.nonEmpty) {
-      // TODO a fringe like "vv" with an ignored stitch
-      //  caused two pairs starting with a single node, causing trouble for droste steps
-      val Array(left,right) = item.relativeSources
-      if (left == right) {
-        // replace Y with V; the tail of the Y are two links connecting the same two nodes
-        val (sharedRow, sharedCol) = left
-        val srcRow = row + sharedRow
-        val srcCol = col + sharedCol
-        if (!isFringe(srcRow, srcCol)) {
-          val srcItem = itemMatrix(srcRow)(srcCol)
-          val Array((leftRow, leftCol), (rightRow, rightCol)) = srcItem.relativeSources
-          val newSrcNodes = SrcNodes((sharedRow + leftRow, sharedCol + leftCol), (sharedRow + rightRow, sharedCol + rightCol))
-          itemMatrix(row)(col) = itemMatrix(row)(col).copy(relativeSources = newSrcNodes)
-          itemMatrix(srcRow)(srcCol) = srcItem.copy(relativeSources = SrcNodes())
-        }
-      }
-    }
   }
 
   /**
