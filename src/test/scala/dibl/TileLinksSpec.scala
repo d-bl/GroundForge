@@ -3,8 +3,8 @@ package dibl
 import org.scalatest.{FlatSpec, Matchers}
 
 class TileLinksSpec extends FlatSpec with Matchers {
-  // Config.linksOfCenterTile calls Diagram.tileLinks
-  // confusion about the sortBy in the tested method makes lower level tests hard to understand
+  // try the config argument as URL-query on the tiles page
+  // hover over the stitches in the pair diagram to visualize the clockwise listings of nodes
 
   "Diagram.tileLinks" should "find links in clockwise order around nodes in an area of a pair diagram" in {
     // TODO Make an N link from this example in the demo section for paris ground.
@@ -47,8 +47,6 @@ class TileLinksSpec extends FlatSpec with Matchers {
       .map { case (core, clockWise: Array[NodeProps]) =>
         core.id -> clockWise.map(_.id).mkString(",")
       } shouldBe Array(
-      // try the config argument as URL-query on the tiles page
-      // hover over the stitches in the pair diagram to visualize the clockwise listings of nodes
       "a1" -> "b3,c2,b1,a2",
       "b1" -> "a1,c1,c2,a2",
       "c1" -> "a2,b3,c2,b1",
