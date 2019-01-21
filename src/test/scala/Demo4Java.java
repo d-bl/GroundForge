@@ -48,6 +48,13 @@ public class Demo4Java {
         "patchWidth=7&patchHeight=13" + "&footside=-c14,b4--,-7c3,b-48&footsideStitch=-"
             + "&tile=831,488,-4-&tileStitch=ctc" + "&headside=44-,11C,87-,88C&headsideStitch=-"
             + "&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
+        "patchWidth=8&patchHeight=12"
+            + "&p1=-&o1=-&n1=-&m1=-&g1=cttct&f1=cttct&e1=cttct&d1=cttct&c1=tctct&b1=-&a1=-&o2=-&m2=-"
+            + "&g2=cttct&e2=cttct&c2=tctct&a2=-&p3=-&o3=-&n3=-&m3=-&f3=cttct&d3=cttct&c3=-&b3=-&a3=-&o4=-&m4=tctct&c4=-&a4=-"
+            + "&footside=8315,4-7-,1583,7-4-&footsideStitch=-"
+            + "&tile=831,4-7,-5-&tileStitch=cttct"
+            + "&headside=8315,4-7-,1583,7-4-&headsideStitch=-"
+            + "&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
 
     };
     for (int i = 0; i <= urlQueries.length - 1; i++)

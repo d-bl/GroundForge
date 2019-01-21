@@ -176,13 +176,13 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
       val absSrcCol = col + relativeSourceCol
       if (isFringe(absSrcRow, absSrcCol)) relativeSource
       else {
-        lazy val srcItem = itemMatrix(absSrcRow)(absSrcCol)
+        val srcItem = itemMatrix(absSrcRow)(absSrcCol)
         if (!srcItem.noStitch) relativeSource
         else {
           // srcItem is the point of "<" or ">"; change it into "|" (into the top)
           val (srcRow, srcCol) = firstOrLast(srcItem.relativeSources).getOrElse((0, 0))
-          if (row + srcRow < 0) relativeSource
-          else (relativeSourceRow + srcRow, relativeSourceCol + srcCol)
+          val dCol = if (row + srcRow < 0) 0 else srcCol
+          (relativeSourceRow + srcRow, relativeSourceCol + dCol)
         }
       }
     }
