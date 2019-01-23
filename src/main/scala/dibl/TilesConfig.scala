@@ -165,10 +165,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   for {
     row <- itemMatrix.indices
-    col <- itemMatrix(row).indices
+    (a,b) = itemMatrix(row).indices.splitAt(itemMatrix(row).length/2)
+    col <- a.reverse ++ b
   } {
-    // println(s"============== $row, $col")
-
     // replace Y with V; the tail of the Y are two links connecting the same two nodes
     def y2v(sharedSource: (Int, Int)) = {
       val (sharedRow, sharedCol) = sharedSource
@@ -191,12 +190,15 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
      * The current (row,col) is the absolute position of the bottom of the ascii-art graph:
      * .    VV
      * .    V
-     * @param relativeSource the tip of one leg of the bottom V relative to (row,col)
-     * @param firstOrLast    returns the tip of the inner leg of the V on top of relativeSource
-     * @return the original or new value for relativeSource
+     * The length of the legs in the top row are reduced to zero when used for replacement.
+     * @param relativeSource the tip of one leg of the bottom V
+     * @param innerLeg       returns the tip of a leg of one of the top V's
+     * @param outerLeg       returns the other leg
+     * @return the replacement for relativeSource.
      */
     def indirectSource(relativeSource: (Int, Int),
-                       firstOrLast: Array[(Int, Int)] => Option[(Int, Int)]
+                       innerLeg: Array[(Int, Int)] => Option[(Int, Int)],
+                       outerLeg: Array[(Int, Int)] => Option[(Int, Int)],
                       ): (Int, Int) = {
       val (relativeSourceRow, relativeSourceCol) = relativeSource
       val absSrcRow = row + relativeSourceRow
@@ -204,13 +206,24 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       if (isFringe(absSrcRow, absSrcCol)) relativeSource
       else {
         val srcItem = itemMatrix(absSrcRow)(absSrcCol)
-        if (!srcItem.noStitch) relativeSource
-        else {
-          // srcItem is the point of "<" or ">"; change it into "|"
-          val (srcRow, srcCol) = firstOrLast(srcItem.relativeSources).getOrElse((0, 0))
-          val dCol = if (row + srcRow < 0) 0 else srcCol // don't reconnect with something in the fringe
-          (relativeSourceRow + srcRow, relativeSourceCol + dCol)
+        val innerSrc = innerLeg(srcItem.relativeSources).getOrElse((0, 0))
+        val outerSrc = outerLeg(srcItem.relativeSources).getOrElse((0, 0))
+        val (srcRow, srcCol) = (srcItem.noStitch, innerSrc, outerSrc) match {
+          case (false, _, _) |
+               (_, (0,0), (0,0)) => return relativeSource
+          case (_, (0,0), _) => outerSrc
+          case (_, _, _) => innerSrc
         }
+        // reduce used leg to length zero, next time the other leg will be used
+        itemMatrix(absSrcRow)(absSrcCol) = srcItem.copy(
+          relativeSources = srcItem.relativeSources.map(src =>
+            if (src == (srcRow, srcCol)) (0, 0) // don't follow this path again
+            else src // don't change the other path
+          ))
+        // reconnect bottom leg
+        val dCol = if (row + srcRow < 0) 0
+                   else srcCol // don't reconnect with something in the fringe
+        (relativeSourceRow + srcRow, relativeSourceCol + dCol)
       }
     }
 
@@ -221,12 +234,12 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         if (directLeft == directRight)
           y2v(directLeft)
         else {
-          val indirectLeft = indirectSource(directLeft, _.lastOption) // < to |
-          val indirectRight = indirectSource(directRight, _.headOption) // > to |
+          val indirectLeft = indirectSource(directLeft, _.lastOption, _.headOption)
+          val indirectRight = indirectSource(directRight, _.headOption, _.lastOption)
           val replacement = SrcNodes(indirectLeft, indirectRight)
           if (item.relativeSources sameElements replacement) false
           else {
-            //println(s"replacing ${item.id} ${item.relativeSources.mkString} ${replacement.mkString}")
+            // println(s"replacing ${item.id} at $row,$col : ${item.relativeSources.mkString} -> ${replacement.mkString}")
             itemMatrix(row)(col) = item.copy(relativeSources = replacement)
             true
           }
@@ -302,21 +315,23 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       // https://github.com/d-bl/GroundForge/blob/94342eb/src/main/scala/dibl/NewPairDiagram.scala#L20
       // https://github.com/d-bl/GroundForge/blob/268b2e2/src/main/scala/dibl/ThreadDiagram.scala#L105-L107
       // In other words: 15 between rows/cols, 2 rows/cols allowance for the fringe.
-      //                 Another 2 rows/cols allowance to have four links on all nodes.
       if (!leftMatrix.mkString.isEmpty || !rightMatrix.mkString.isEmpty)
         invalid("foot sides not supported")
       else if (totalCols < minWidthForBricks) invalidMin("width", minWidthForBricks)
       else if (totalRows < minHeightForBricks) invalidMin("height", minHeightForBricks)
       else if (isHBrick || isVBrick) diagram.tileLinks(
+        // bounding box starts at the third row/col, thus we have four links on all nodes
         scale * 52.5,
         scale * (52.5 + 15 * centerMatrixRows),
         scale * (52.5 + 15 * centerMatrixCols),
         scale * 52.5,
-      ) // TODO find the first tile closest to NW but at least 2 rows/cols to the SE
+      )
       else if (shiftColsSE < 2 && shiftRowsSE < 2) invalid("type of tiling is not suported")
       else if (minWidth > totalCols) invalidMin("patch width", minWidth)
       else if (minHeight > totalRows) invalidMin("height", minHeight)
       else {
+        // TODO extend dimensions of overlapping tiles to avoid gaps,
+        //  then the tile type no longer matters
         val offsetCols = (1.5 + shiftColsSE) * 15
         val offsetRows = (1.5 + shiftRowsSE) * 15
         diagram.tileLinks(
