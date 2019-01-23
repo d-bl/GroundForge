@@ -144,7 +144,7 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
     }
 
     // In thread diagrams each link has a short start or tail, as shown in ASCII art.
-    // Capitals visualize how the getSource/getTargets methods above order their nodes.
+    // Capitals visualize how the getSources/getTargets methods above order their nodes.
     //
     //                  cross          twist
     // source nodes:  s2     s1       S1     S2
@@ -157,7 +157,7 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
     //                 /                    \
     // target nodes:  t2    t1       T1      T2
     //
-    // clockwise:     s2,s1,t1,t2    s1,s2,t1,t2
+    // clockwise:     s2,s1,t1,t2    s1,s2,t2,t1
 
     sourceLinksForTileNodes.map(_.target).distinct.map { core =>
       val coreNode = nodes(core)

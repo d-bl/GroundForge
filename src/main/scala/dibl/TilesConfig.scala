@@ -223,7 +223,7 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
         scale * (52.5 + 15 * centerMatrixRows),
         scale * (52.5 + 15 * centerMatrixCols),
         scale * 52.5,
-      ) // TODO find the first tile closest to NE but at least 2 rows/cols to the SW
+      ) // TODO find the first tile closest to NW but at least 2 rows/cols to the SE
       else if (shiftColsSE < 2 && shiftRowsSE < 2) invalid("type of tiling is not suported")
       else if (minWidth > totalCols) invalidMin("patch width", minWidth)
       else if (minHeight > totalRows) invalidMin("height", minHeight)
@@ -239,6 +239,7 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
       }
     }
     if (links.exists{link =>
+      // safeguard against invalid results
       val (core, clockWise) = link
       core.id.isEmpty || clockWise.length != 4
     }) Seq.empty
