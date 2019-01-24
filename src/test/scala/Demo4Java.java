@@ -15,6 +15,7 @@
 */
 
 import dibl.*;
+import dibl.proto.TilesConfig;
 import scala.Tuple2;
 
 import java.io.File;
@@ -70,7 +71,7 @@ public class Demo4Java {
     System.out.println("-------------- " + i);
     TilesConfig config = new TilesConfig(urlQuery);
     new FileOutputStream(dir + "/" + i + "-prototype.svg")
-        .write((D3jsSVG.prolog() + PrototypeDiagram.create(config)).getBytes());
+        .write((D3jsSVG.prolog() + dibl.proto.PrototypeDiagram.create(config)).getBytes());
 
     Diagram pairs = NewPairDiagram.create(config);
     writeNudgedDiagram(i + "-pairs", "1px", pairs, config, 1);

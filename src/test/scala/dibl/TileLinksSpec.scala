@@ -1,6 +1,7 @@
 package dibl
 
-import org.scalatest.{FlatSpec, Matchers}
+import dibl.proto.TilesConfig
+import org.scalatest.{ FlatSpec, Matchers }
 
 class TileLinksSpec extends FlatSpec with Matchers {
   // try the config argument as URL-query on the tiles page

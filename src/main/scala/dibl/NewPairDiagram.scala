@@ -15,8 +15,9 @@
 */package dibl
 
 import dibl.Force.Point
+import dibl.proto.TilesConfig
 
-import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 @JSExportTopLevel("NewPairDiagram") object NewPairDiagram {
 

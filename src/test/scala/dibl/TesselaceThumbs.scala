@@ -15,9 +15,10 @@
 */
 package dibl
 
-import java.io.{BufferedReader, FileInputStream, InputStreamReader}
+import java.io.{ BufferedReader, FileInputStream, InputStreamReader }
 
 import dibl.Force.Point
+import dibl.proto.TilesConfig
 
 import scala.collection.JavaConverters._
 import scala.reflect.io.File

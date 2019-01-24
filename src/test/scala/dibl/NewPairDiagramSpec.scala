@@ -15,7 +15,8 @@
 */
 package dibl
 
-import org.scalatest.{FlatSpec, Matchers}
+import dibl.proto.TilesConfig
+import org.scalatest.{ FlatSpec, Matchers }
 
 import scala.reflect.io.File
 
