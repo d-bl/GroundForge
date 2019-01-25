@@ -24,7 +24,7 @@ object Item {
       row <- itemMatrix.indices
       midRow = itemMatrix(row).length / 2
       (a, b) = itemMatrix(row).indices.splitAt(midRow)
-      col <- a.reverse ++ b
+      col <- a.reverse ++ b // evaluation loop inside out
     } {
       // replace Y with V; the tail of the Y are two links connecting the same two nodes
       def y2v(sharedSource: (Int, Int)) = {
@@ -38,7 +38,7 @@ object Item {
           val newSrcNodes = SrcNodes((sharedRow + leftRow, sharedCol + leftCol), (sharedRow + rightRow, sharedCol + rightCol))
           // relink the bottom of the Y to the tops
           val currentItem = itemMatrix(row)(col)
-          println(s"replacing ${currentItem.id} at $row,$col : ${currentItem.relativeSources.mkString} -> ${newSrcNodes.mkString}")
+          //println(s"replacing ${currentItem.id} at $row,$col : ${currentItem.relativeSources.mkString} -> ${newSrcNodes.mkString}")
           itemMatrix(row)(col) = currentItem.copy(relativeSources = newSrcNodes)
           // drop the core of the Y
           itemMatrix(srcRow)(srcCol) = srcItem.copy(relativeSources = SrcNodes())
@@ -99,11 +99,11 @@ object Item {
           else {
             lazy val indirectLeft = indirectSource(directLeft, _.lastOption, _.headOption)
             lazy val indirectRight = indirectSource(directRight, _.headOption, _.lastOption)
-            if (col < midRow) indirectLeft._1 else indirectRight._1 // dynamic evaluation order
+            if (col < midRow) indirectLeft._1 else indirectRight._1 // evaluation order inside out
             val replacement = SrcNodes(indirectLeft, indirectRight)
             if (item.relativeSources sameElements replacement) false
             else {
-              println(s"replacing ${item.id} at $row,$col : ${item.relativeSources.mkString} -> ${replacement.mkString}")
+              //println(s"replacing ${item.id} at $row,$col : ${item.relativeSources.mkString} -> ${replacement.mkString}")
               itemMatrix(row)(col) = item.copy(relativeSources = replacement)
               true
             }
