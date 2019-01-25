@@ -22,7 +22,8 @@ object Item {
 
     for {
       row <- itemMatrix.indices
-      (a,b) = itemMatrix(row).indices.splitAt(itemMatrix(row).length/2)
+      midRow = itemMatrix(row).length / 2
+      (a, b) = itemMatrix(row).indices.splitAt(midRow)
       col <- a.reverse ++ b
     } {
       // replace Y with V; the tail of the Y are two links connecting the same two nodes
@@ -36,7 +37,9 @@ object Item {
           val Array((leftRow, leftCol), (rightRow, rightCol)) = srcItem.relativeSources
           val newSrcNodes = SrcNodes((sharedRow + leftRow, sharedCol + leftCol), (sharedRow + rightRow, sharedCol + rightCol))
           // relink the bottom of the Y to the tops
-          itemMatrix(row)(col) = itemMatrix(row)(col).copy(relativeSources = newSrcNodes)
+          val currentItem = itemMatrix(row)(col)
+          println(s"replacing ${currentItem.id} at $row,$col : ${currentItem.relativeSources.mkString} -> ${newSrcNodes.mkString}")
+          itemMatrix(row)(col) = currentItem.copy(relativeSources = newSrcNodes)
           // drop the core of the Y
           itemMatrix(srcRow)(srcCol) = srcItem.copy(relativeSources = SrcNodes())
           true
@@ -48,6 +51,7 @@ object Item {
        * .    VV
        * .    V
        * The length of the legs in the top row are reduced to zero when used for replacement.
+       *
        * @param relativeSource the tip of one leg of the bottom V
        * @param innerLeg       returns the tip of a leg of one of the top V's
        * @param outerLeg       returns the other leg
@@ -93,12 +97,13 @@ object Item {
           if (directLeft == directRight)
             y2v(directLeft)
           else {
-            val indirectLeft = indirectSource(directLeft, _.lastOption, _.headOption)
-            val indirectRight = indirectSource(directRight, _.headOption, _.lastOption)
+            lazy val indirectLeft = indirectSource(directLeft, _.lastOption, _.headOption)
+            lazy val indirectRight = indirectSource(directRight, _.headOption, _.lastOption)
+            if (col < midRow) indirectLeft._1 else indirectRight._1 // dynamic evaluation order
             val replacement = SrcNodes(indirectLeft, indirectRight)
             if (item.relativeSources sameElements replacement) false
             else {
-              // println(s"replacing ${item.id} at $row,$col : ${item.relativeSources.mkString} -> ${replacement.mkString}")
+              println(s"replacing ${item.id} at $row,$col : ${item.relativeSources.mkString} -> ${replacement.mkString}")
               itemMatrix(row)(col) = item.copy(relativeSources = replacement)
               true
             }
