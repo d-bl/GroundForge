@@ -17,7 +17,7 @@ The [site map] provides the context for both and lists their differences.
 * [Advanced usage](#advanced-usage)
   + [Define a repeat](#define-a-repeat)
   + [Arrange the repeats](#arrange-the-repeats)
-  + [Foot side trick](#foot-side-trick)
+  + [Foot sides](#foot-sides)
   + [Demo section](#demo-section)
 
 
@@ -152,44 +152,46 @@ The purple numbers define the absolute position of the solid tile.
 The green numbers define the position of the arrowed green tile
 relative to the solid tile.
 
-Foot side trick
----------------
-Skipping stitches in the outer columns of the prototype pattern
-may cause *a* foot side in the thread diagram.
-Strategically un-skipping some of these stitches may cause a *nice* foot side.
-It is just a trick to study the influence of foot sides on the paths of contrasting threads,
-the pair diagram won't match the thread digram any more.
+Foot sides
+----------
 
-The steps to follow
-* Extend the pattern in the side panels under "define a repeat".
-  The screenshots annotate these sections with blue borders.
-  Orange arcs indicate rows and columns that should be identical.
-  The first column of the left tile should equal the first column beyond the tile.
-  The first column before the right tile should equal the last column of the right tile.
-  The first row of the tiles should equal the first row beyond the tiles.
-* Initialize the stitches with `-`, `cttct`, `-`.
-  * The `cttct` keeps all pairs parallel in a zig-zagging way.
-    Toggling the color of some of the pairs might give a clue where to trim the lace.  
-    For math wizzards: see figure 12-c and it's context in "Developing a Mathematical Model for Bobbin Lace"
-    and "Drawing bobbin lace graphs", pdf-links on [tesselace.com](https://tesselace.com/research/)
-  * A dash means skip this stitch, it trims the lace while a foot side emerges.
-    Don't worry about the floating bobbins next to the pattern.
-    When skipping stitches  in the middle of the pattern,
-    the floating bobbins may stay somewhere around the skipped stitch.
+Foot sides may require longer lines than possible to configure in the prototype diagram.
+The orange curves in the  [example] below show how an outer pair can be extended
+with the inner pair of an ignored stitch.
+The blue an purple rectangles illustrate corresponding sections in the form and diagrams.
 
-Try which of the skipped stitches improve the foot side when not skipped.
-The screen shots show on the left what Mary Niven calls the old edging of Flanders lace, on the right the modern edging.
-Note that some columns use only some stitches.
-Dropping not used columns on the outsides may re-introduce fringes.
-
-Notes:
-* Additional twists in the foot side pair can prevent distortion of the diagram.
-  For the path taken by contrasting pairs in the final design it is only important
-  whether the number of twists are odd or even.
-* The cloth stitch pairs of traditional foot sides won't influence the paths of contrasting pairs.
-
-Note that the bottom screenshots have less columns and therefore another matrix on the right.
 ![](images/foot-sides.png)
+
+[example]: /GroundForge/tiles.html?patchWidth=7&patchHeight=18&a3=-&footside=B,-,C,-,B,-,B,-,&tile=-5-,5-5,-5-,B-C,-5-&headside=5,-,&footsideStitch=tctctr&tileStitch=ct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4
+
+The foot side stitch `tctctr` on the left, is replaced once
+with a dash by selecting the black stitch in the prototype.
+This stretches the outer pair of the next stitch.
+
+On the right side all stitches are ignored that are added to construct a foot side.
+In practice you would need at least one column to define other stitches
+for the foot side than for the pattern.
+The thick orange curve causes two stitches directly connected with two pairs.
+In those cases the stitches are merged into a single stitch in the pair diagram.
+Thus both pairs for the bottom stich are stretched.
+
+Not shown in this example, but the software may follow the inner pair of multiple
+ignored stitches to reconnect the outer pair at the bottom of the sequence.  
+
+Note that in the example below the two foot side stitches on the right of the 
+thread diagram, are drawn as a single stitch in the pair diagram.
+The two stitches are defined with [tctcttrrctct]
+at the top-right stitch in the prototype diagram.
+
+![](images/foot-side-stitches.png)
+
+[tctcttrrctct]: /GroundForge/tiles.html?patchWidth=3&patchHeight=8&g1=tctcttrrctct&f1=tctct&c1=ctc&b1=tctct&f2=tctct&c2=ctc&b2=tctct&a2=tctct&footside=-7,A1&tile=8,1&headside=8D,4-&footsideStitch=tctct&tileStitch=ctc&headsideStitch=tctct&shiftColsSW=-1&shiftRowsSW=2&shiftColsSE=0&shiftRowsSE=2
+
+More or less twists along the foot sides can influence distortion of the thread diagram.
+For the path taken by contrasting pairs in the final design it is only important
+whether the number of twists are odd or even.
+The passive pairs along the foot sides won't influence the paths of contrasting pairs.
+
 
 Demo section
 ------------
