@@ -80,11 +80,25 @@ or use `l`'s and `r`'s for a left twist or right twist.
 
 {% include stitches.html %}
 
-Stitches in the outer columns may show up black hand have a `-` in the input field.
-Unless you know what you are doing, don't change these input fields.
+Some stitches in foot sides of predefined patterns that show up black,
+may have a `-` in the input field.
+Unless you know what you are doing, don't change these input fields,
+see foot sides under the advance subjects.
 
-Microsofts Edge browser won't show the yellow form field when clicking a node.
-Use the tab key or shift-tab to browse through all fields and links on the page.
+Note that in the example below the two foot side stitches on the right of the 
+thread diagram, are drawn as a single stitch in the pair diagram.
+The two stitches are defined with [tctcttrrctct]
+at the top-right stitch in the prototype diagram.
+
+![](images/foot-side-stitches.png)
+
+[tctcttrrctct]: /GroundForge/tiles.html?patchWidth=3&patchHeight=8&g1=tctcttrrctct&f1=tctct&c1=ctc&b1=tctct&f2=tctct&c2=ctc&b2=tctct&a2=tctct&footside=-7,A1&tile=8,1&headside=8D,4-&footsideStitch=tctct&tileStitch=ctc&headsideStitch=tctct&shiftColsSW=-1&shiftRowsSW=2&shiftColsSE=0&shiftRowsSE=2
+
+More or less twists along the foot sides can influence distortion of the thread diagram.
+For the path taken by contrasting pairs in the final design it is only important
+whether the number of twists are odd or even.
+The passive pairs along the foot sides won't influence the paths of contrasting pairs.
+
 
 Toggle thread colors
 ====================
@@ -92,7 +106,7 @@ You may have to scroll/drag the pair diagram to make
 the squares at the start of the threads visible.
 Click these squares to toggle between a black or red color.
 
-A tooltip shows when your mouse hovers over a square. 
+A tooltip shows a thread number when your mouse hovers over a square. 
 Too tiny squares or too close together? Use the zoom function of your browser.
 Usually control-shift-plus to zoom in, control-zero to reset,
 on a mac use command for control.
@@ -164,33 +178,21 @@ The blue an purple rectangles illustrate corresponding sections in the form and 
 
 [example]: /GroundForge/tiles.html?patchWidth=7&patchHeight=18&a3=-&footside=B,-,C,-,B,-,B,-,&tile=-5-,5-5,-5-,B-C,-5-&headside=5,-,&footsideStitch=tctctr&tileStitch=ct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4
 
-The foot side stitch `tctctr` on the left, is replaced once
-with a dash by selecting the black stitch in the prototype.
+One of the foot side stitches `tctctr` on the left, is replaced
+with a dash (`-`) by selecting the stitch in the prototype.
 This stretches the outer pair of the next stitch.
 
-On the right side all stitches are ignored that are added to construct a foot side.
-In practice you would need at least one column to define other stitches
+
+All stitches that are added to the right side of the pattern for a foot side are ignored.
+In practice you would need at least one column of real stitches to define other stitches
 for the foot side than for the pattern.
-The thick orange curve causes two stitches directly connected with two pairs.
+The reconnection illustrated with the thick orange curve
+causes two stitches directly connected with two pairs.
 In those cases the stitches are merged into a single stitch in the pair diagram.
-Thus both pairs for the bottom stich are stretched.
+Thus both pairs for the bottom stitch are stretched.
 
 Not shown in this example, but the software may follow the inner pair of multiple
 ignored stitches to reconnect the outer pair at the bottom of the sequence.  
-
-Note that in the example below the two foot side stitches on the right of the 
-thread diagram, are drawn as a single stitch in the pair diagram.
-The two stitches are defined with [tctcttrrctct]
-at the top-right stitch in the prototype diagram.
-
-![](images/foot-side-stitches.png)
-
-[tctcttrrctct]: /GroundForge/tiles.html?patchWidth=3&patchHeight=8&g1=tctcttrrctct&f1=tctct&c1=ctc&b1=tctct&f2=tctct&c2=ctc&b2=tctct&a2=tctct&footside=-7,A1&tile=8,1&headside=8D,4-&footsideStitch=tctct&tileStitch=ctc&headsideStitch=tctct&shiftColsSW=-1&shiftRowsSW=2&shiftColsSE=0&shiftRowsSE=2
-
-More or less twists along the foot sides can influence distortion of the thread diagram.
-For the path taken by contrasting pairs in the final design it is only important
-whether the number of twists are odd or even.
-The passive pairs along the foot sides won't influence the paths of contrasting pairs.
 
 
 Demo section
