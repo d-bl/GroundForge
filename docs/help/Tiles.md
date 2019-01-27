@@ -80,19 +80,19 @@ or use `l`'s and `r`'s for a left twist or right twist.
 
 {% include stitches.html %}
 
-Some stitches in foot sides of predefined patterns that show up black,
-may have a `-` in the input field.
+Some predefined patterns may have foot sides.
+Some stitches in these foot sides may show up black and have a `-` in the input field.
 Unless you know what you are doing, don't change these input fields,
 see foot sides under the advance subjects.
 
-Note that in the example below the two foot side stitches on the right of the 
-thread diagram, are drawn as a single stitch in the pair diagram.
-The two stitches are defined with [tctcttrrctct]
+Note that in the example below, two foot side stitches on the right of the 
+thread diagram are drawn as a single stitch in the pair diagram.
+The two stitches are defined with `tctcttrrctct`
 at the top-right stitch in the prototype diagram.
 
 ![](images/foot-side-stitches.png)
 
-[tctcttrrctct]: /GroundForge/tiles.html?patchWidth=3&patchHeight=8&g1=tctcttrrctct&f1=tctct&c1=ctc&b1=tctct&f2=tctct&c2=ctc&b2=tctct&a2=tctct&footside=-7,A1&tile=8,1&headside=8D,4-&footsideStitch=tctct&tileStitch=ctc&headsideStitch=tctct&shiftColsSW=-1&shiftRowsSW=2&shiftColsSE=0&shiftRowsSE=2
+[Life version](/GroundForge/tiles.html?patchWidth=3&patchHeight=8&g1=tctcttrrctct&f1=tctct&c1=ctc&b1=tctct&f2=tctct&c2=ctc&b2=tctct&a2=tctct&footside=-7,A1&tile=8,1&headside=8D,4-&footsideStitch=tctct&tileStitch=ctc&headsideStitch=tctct&shiftColsSW=-1&shiftRowsSW=2&shiftColsSE=0&shiftRowsSE=2)
 
 More or less twists along the foot sides can influence distortion of the thread diagram.
 For the path taken by contrasting pairs in the final design it is only important
@@ -155,7 +155,7 @@ like the ignition key: the simple way to arrange the tiles.
 The prototype highlights a single tile alias repeat in the top left corner,
 this repeat may span just a single column or row of stitches. 
 
-Those wo nevertheless want to understand the numbers
+Those who nevertheless want to understand the numbers
 should not interpret them as mathematical (x,y) coordinates.
 Point (0,0) lies in the north west of a computer canvas, 
 where western scripts start to write on a sheet of paper
@@ -169,30 +169,54 @@ relative to the solid tile.
 Foot sides
 ----------
 
+Foot sides are defined in the side panels of the "define a repeat" panel in the advanced section.
+Note that the right foot sides depends on chosen patch width alias number of columns.
+
 Foot sides may require longer lines than possible to configure in the prototype diagram.
-The orange curves in the  [example] below show how an outer pair can be extended
-with the inner pair of an ignored stitch.
-The blue an purple rectangles illustrate corresponding sections in the form and diagrams.
+The example below shows a workaround.
+
+The blue and purple rectangles in this example illustrate corresponding sections
+in the form, prototype diagram and thread diagram.
+The yellow curves in the prototype show how an outer pair of a foot side stitch
+can be extended with the inner pair of an ignored stitch.
+An ignored stitch has a dash (`-`) in stead of something like `ctct`.
 
 ![](images/foot-sides.png)
 
-[example]: /GroundForge/tiles.html?patchWidth=7&patchHeight=18&a3=-&footside=B,-,C,-,B,-,B,-,&tile=-5-,5-5,-5-,B-C,-5-&headside=5,-,&footsideStitch=tctctr&tileStitch=ct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4
+[Life version](/GroundForge/tiles.html?patchWidth=7&patchHeight=18&a3=-&footside=B,-,C,-,B,-,B,-,&tile=-5-,5-5,-5-,B-C,-5-&headside=5,-,&footsideStitch=tctctr&tileStitch=ct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4)
 
-One of the foot side stitches `tctctr` on the left, is replaced
-with a dash (`-`) by selecting the stitch in the prototype.
+Just one of the `tctctr` stitches on the left, is ignored. 
 This stretches the outer pair of the next stitch.
 
-
-All stitches that are added to the right side of the pattern for a foot side are ignored.
-In practice you would need at least one column of real stitches to define other stitches
-for the foot side than for the pattern.
-The reconnection illustrated with the thick orange curve
+On the right side a complete column of stitches is ignored. 
+In practice you would need at least one column with real stitches.
+Otherwise you can't define other stitches for the foot side
+than for the pattern for a proper thread diagram.
+The reconnection illustrated with the bold yellow curve
 causes two stitches directly connected with two pairs.
 In those cases the stitches are merged into a single stitch in the pair diagram.
 Thus both pairs for the bottom stitch are stretched.
 
-Not shown in this example, but the software may follow the inner pair of multiple
-ignored stitches to reconnect the outer pair at the bottom of the sequence.  
+**Warning**
+
+It will usually be better to make sure all real stitches have at least one direct connection.
+Below an example that ignores this advise and fails to create a foot side.
+
+![](images/failing-foot-side.png)
+
+[Life version](patchWidth=8&patchHeight=12&p1=-&o1=-&n1=-&m1=-&g1=cttct&f1=cttct&e1=cttct&d1=-&c1=tctct&b1=-&a1=-&o2=-&m2=-&g2=cttct&e2=cttct&c2=tctct&a2=-&p3=-&o3=-&n3=-&m3=-&f3=cttct&d3=cttct&c3=-&b3=-&a3=-&o4=-&m4=tctct&c4=-&a4=-&footside=8315,4-7-,1583,7-4-&tile=831,4-7,-5-&headside=8315,4-7-,1583,7-4-&footsideStitch=-&tileStitch=cttct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
+
+The three individual yellow curves shows how the outer pair of a foot side stitch
+finds a connection with a real stitch by following an inner pair along an ignored stitch.
+Same for the blue curves, but these reconnects cause parallel pairs and these stitches are merged.
+The sequence of orange curves show how the inner pair of the foot side stitch doesn't find any connection 
+by following outer pairs along ignored stitches.
+
+With the life version you can try to define a stitch at the third row and second column.
+It seems to fix the example for the pair diagram. However, the inner and outer pair are mixed up.
+Even with many twists for this additional stitch, the thread diagram won't look good. 
+
+![](images/foot-side-pairs-mixed-up.png)
 
 
 Demo section
