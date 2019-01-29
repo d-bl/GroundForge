@@ -9,7 +9,7 @@ The [site map] provides the context for both and lists their differences.
 [site map]: /GroundForge/help/Site-map
 
 * [Catalogues](#catalogues)
-* [Link or wand](#link-or-wand)
+* [Link or wand / Reload diagrams](#reload-diagrams)
 * [Patch size](#patch-size)
 * [Choose stitches](#choose-stitches)
 * [Toggle thread colors](#toggle-thread-colors)
@@ -34,24 +34,15 @@ _For as long as the page is still under construction,
 you may also choose a link from the image captions of the demo section
 on the tiles page itself._
 
-Link or wand
-============
+Reload diagrams
+===============
 Generating the pair diagram and thread diagrams can take a while
 and may block the browser while busy.
 Therefore only the prototype is updated when you change some value on the page.
-To avoid confusion about outdated diagrams the pair diagram and thread diagrams ar hidden on these occasions.
+To avoid confusion about outdated diagrams the pair diagram and thread diagrams
+are hidden on these occasions. Use the link or wand button to [reload] the diagrams.
 
-Both the link button and wand button will show the diagrams again.
-The wand button will be faster as it doesn't reload the page.
-
-The link button reloads the page with the configured diagrams.
-The back button of your browser can step back to these actions.
-These actions also allow you to create links to a diagram to share
-on your web-site, blog or where ever you like.
-The long links may be a problem in emails. You may consider to use a
-[shortening service](https://en.wikipedia.org/wiki/URL_shortening)
-for those occasions or cut the stitch arguments (sections like `xxx=ctc&`)
-out of the link.
+[reload]: undo
 
 Patch size
 ==========
@@ -92,7 +83,7 @@ at the top-right stitch in the prototype diagram.
 
 ![](images/foot-side-stitches.png)
 
-[Life version](/GroundForge/tiles.html?patchWidth=3&patchHeight=8&g1=tctcttrrctct&f1=tctct&c1=ctc&b1=tctct&f2=tctct&c2=ctc&b2=tctct&a2=tctct&footside=-7,A1&tile=8,1&headside=8D,4-&footsideStitch=tctct&tileStitch=ctc&headsideStitch=tctct&shiftColsSW=-1&shiftRowsSW=2&shiftColsSE=0&shiftRowsSE=2)
+[Live version](/GroundForge/tiles.html?patchWidth=3&patchHeight=8&g1=tctcttrrctct&f1=tctct&c1=ctc&b1=tctct&f2=tctct&c2=ctc&b2=tctct&a2=tctct&footside=-7,A1&tile=8,1&headside=8D,4-&footsideStitch=tctct&tileStitch=ctc&headsideStitch=tctct&shiftColsSW=-1&shiftRowsSW=2&shiftColsSE=0&shiftRowsSE=2)
 
 More or less twists along the foot sides can influence distortion of the thread diagram.
 For the path taken by contrasting pairs in the final design it is only important
@@ -183,7 +174,7 @@ An ignored stitch has a dash (`-`) in stead of something like `ctct`.
 
 ![](images/foot-sides.png)
 
-[Life version](/GroundForge/tiles.html?patchWidth=7&patchHeight=18&a3=-&footside=B,-,C,-,B,-,B,-,&tile=-5-,5-5,-5-,B-C,-5-&headside=5,-,&footsideStitch=tctctr&tileStitch=ct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4)
+[Live version](/GroundForge/tiles.html?patchWidth=7&patchHeight=18&a3=-&footside=B,-,C,-,B,-,B,-,&tile=-5-,5-5,-5-,B-C,-5-&headside=5,-,&footsideStitch=tctctr&tileStitch=ct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4)
 
 Just one of the `tctctr` stitches on the left, is ignored. 
 This stretches the outer pair of the next stitch.
@@ -204,7 +195,7 @@ Below an example that ignores this advise and fails to create a foot side.
 
 ![](images/failing-foot-side.png)
 
-[Life version](patchWidth=8&patchHeight=12&p1=-&o1=-&n1=-&m1=-&g1=cttct&f1=cttct&e1=cttct&d1=-&c1=tctct&b1=-&a1=-&o2=-&m2=-&g2=cttct&e2=cttct&c2=tctct&a2=-&p3=-&o3=-&n3=-&m3=-&f3=cttct&d3=cttct&c3=-&b3=-&a3=-&o4=-&m4=tctct&c4=-&a4=-&footside=8315,4-7-,1583,7-4-&tile=831,4-7,-5-&headside=8315,4-7-,1583,7-4-&footsideStitch=-&tileStitch=cttct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
+[Live version](patchWidth=8&patchHeight=12&p1=-&o1=-&n1=-&m1=-&g1=cttct&f1=cttct&e1=cttct&d1=-&c1=tctct&b1=-&a1=-&o2=-&m2=-&g2=cttct&e2=cttct&c2=tctct&a2=-&p3=-&o3=-&n3=-&m3=-&f3=cttct&d3=cttct&c3=-&b3=-&a3=-&o4=-&m4=tctct&c4=-&a4=-&footside=8315,4-7-,1583,7-4-&tile=831,4-7,-5-&headside=8315,4-7-,1583,7-4-&footsideStitch=-&tileStitch=cttct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
 
 The three individual yellow curves shows how the outer pair of a foot side stitch
 finds a connection with a real stitch by following an inner pair along an ignored stitch.
@@ -212,7 +203,7 @@ Same for the blue curves, but these reconnects cause parallel pairs and these st
 The sequence of orange curves show how the inner pair of the foot side stitch doesn't find any connection 
 by following outer pairs along ignored stitches.
 
-With the life version you can try to define a stitch at the third row and second column.
+With the live version you can try to define a stitch at the third row and second column.
 It seems to fix the example for the pair diagram. However, the inner and outer pair are mixed up.
 Even with many twists for this additional stitch, the thread diagram won't look good. 
 

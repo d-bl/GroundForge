@@ -3,45 +3,42 @@ layout: default
 title: Undo
 ---
 
-Undo
-====
+Links, wand and undo   
+====================
 
-Undo a pattern configuration
-----------------------------
+Some pages may have the following buttons:
+![link](../images/link.png) and ![link](../images/wand.png)
 
-Right click the ![link](/GroundForge/images/link.png)
-button on the [main] page for a link or bookmark
-to the current configuration of the diagrams.
+The latter button (re)loads diagrams without reloading the page.
 
-Left click the button for an undo point for your changes to the parameters or stitches.
-Use the back button of the browser to return to a previously saved configuration.
-Push the show buttons again after both actions.
+The first button reloads the page with the actual pattern configuration.
 
-[main]: /GroundForge/
+Undo complete pattern configurations
+------------------------------------
+When having second thoughts on changes made to a pattern
+you can use the back button of your browser to return
+to the pattern as it was when you used the first button.
+When you used the latter button to inspect the result of your changes,
+you'll have to undo changes made to individual form fields as explained below.
 
-When recalling the bookmark you will have to generate the diagrams again with the show button.
-Your browser will automatically remember the choices you made on an catalogue page.
-The browser history gets lost when you close the browser, your bookmarks or favorites will stay.
+Create links
+------------
+The first button allows you to create links to a diagram to share
+on your web-site, blog or where ever you like.
+Known bug: When you right-click the button to create a link,
+the link might be out of sync with the actual pattern configuration.
+When you hover over it a second time it will be up to date.
+
+The long links may be a problem in emails. At least two remedies are available:
+* Use a [shortening service](https://en.wikipedia.org/wiki/URL_shortening)
+* When you know how to make a mental map of address components (like stitches: `xxx=ctc`)
+  you can try to leave the less essential out of the link, please test the result.
+
 
 Undo individual fields
 ----------------------
-
-When the cursor is in a stitch field you can return to a previous choice
+When the cursor is in some free text field you can return to a previous choice
 for that field with CTRL-Z (Windows, *nix systems) or COMMAND-Z (Mac),
-FireFox and Chrome also let you choose from a list of previous values with the same start,
+For some fields, some browsers may let you choose from a list of previous values with the same start,
 erase the field and the down or up arrow of your keyboard shows all your previous choices.
 Depending on your browser settings, these values may stay for a next session.
-
-
-Future safe link
-----------------
-
-Bugs fixed in the future might change the result of a pattern:
-the stitches might nog longer match the pattern.
-
-To make a link that doesn't change, use the button with a clock icon next to the link symbol.
-It will lead you to the way back machine which will probably suggest to archive the page, confirm.
-When it has been archive before, you will have to pick a marked date from a calender.
-
-It may challenge your patience, but at least at a next visit
-the page will render the same diagrams when applying the show buttons.
