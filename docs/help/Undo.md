@@ -31,9 +31,19 @@ When you hover over it a second time it will be up to date.
 
 The long links may be a problem in emails. At least two remedies are available:
 * Use a [shortening service](https://en.wikipedia.org/wiki/URL_shortening)
-* When you know how to make a mental map of address components (like stitches: `xxx=ctc`)
-  you can try to leave the less essential out of the link, please test the result.
+* When you know how to make a mental map of form fields and address components (like stitches: `xxx=ctc`)
+  you can try to leave the less essential out of the link
+  and take the default value for granted, please test the result.
+  
+  
+Future proof links
+------------------
+To make sure you can recover a page
+(not just GroundForge but any web page that allows crawlers)
+without changes made by future updates of the web site:
+copy the link into the `save page now` [form] of the Wayback Machine.
 
+[form]: https://archive.org/web/
 
 Undo individual fields
 ----------------------
