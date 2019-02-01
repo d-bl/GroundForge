@@ -111,104 +111,82 @@ Details for just one type of diagrams on the [reshape patterns](Reshape-Patterns
 
 Advanced usage
 ==============
-The sections below the diagram are the engine under the hood of the car.
+The sections  below the diagram are the engine under the hood of the car.
 The form fields define the prototype diagram. 
 Advanced users can play with the values to define new patterns from scratch.
 
 Define a repeat
 ---------------
-You have one row with three fields to fill with  digits and letters of the cheat sheet.
-The other row defines the default stitches for the sections above.
+The form has three fields to fill with  digits and letters of the cheat sheet.
+These fields are paired with other fields to define the default stitches.
 
 The outer panels are optional for a custom foot side. 
 Note that a column more or less for the patch size may invalidate the right foot side. 
 
 The position of a digit correlates with a position in the prototype diagram.
 Half circles in the prototype indicate you added a new pair for a next stitch,
-or are not using a pair for a next stitch.
+or are not using a pair for a next stitch. The symbols with a single arrow
+are intended to extend an arrow of another symbol.
+
+More details on the [advanced design](Reversed-engineering-of-patterns) page.
 
 The right foot side may be a mirrored version of the left foot side for some patterns.
 For your convenience the flip button can set the right field from the left.
 You may still have to rotate the rows or adjust the patch width.  
 
-More details on the [advanced design](Reversed-engineering-of-patterns) page.
-
 Arrange the repeats
 -------------------
-The foot sides are simply repeated vertically, but the centre section has more options. 
-
-The configuration at the bottom of the section is more or less like 
-the crank for the first car models with ignition keys:
-the hard way to start your car but usually not needed.
-The image with linked components at the top of the section is
-like the ignition key: the simple way to arrange the tiles.
+The foot sides are simply repeated vertically.
+The form at the bottom defines how the center is repeated.
+As this form can be hard to wrap your brains around,
+you can move the tiles with arrows in an image.
+These actions set the values in the form.
 
 The prototype highlights a single tile alias repeat in the top left corner,
 this repeat may span just a single column or row of stitches. 
 
-Those who nevertheless want to understand the numbers
+Those who really want to understand the numbers
 should not interpret them as mathematical (x,y) coordinates.
 Point (0,0) lies in the north west of a computer canvas, 
-where western scripts start to write on a sheet of paper
-or how you count rows and columns in a spread sheet
-as the labels for the numbers tell.
+where western scripts start to write on a sheet of paper.
+You can also memorise by counting rows and columns as in a spread sheet, 
+like used for the labels for the stitches in the pair diagram.
 
-The purple numbers define the absolute position of the solid tile.
+The purple numbers in the form define the absolute position of the solid tile.
 The green numbers define the position of the arrowed green tile
 relative to the solid tile.
 
 Foot sides
 ----------
+You may want to study how threads disappearing in foot sides return back into the ground.
+Foot sides are defined in the side panels of the "define a repeat" form in the advanced section.
+Note that the right foot sides depends on the chosen patch width alias number of columns.
 
-Foot sides are defined in the side panels of the "define a repeat" panel in the advanced section.
-Note that the right foot sides depends on chosen patch width alias number of columns.
+Foot sides may require one or two columns of additional stitches.
+It is a matter of piecing a puzzle together with symbols from the cheat sheet.
+The symbols with a single arrow can extend an arrow of any symbol to make it fit.
 
-Foot sides may require longer lines than possible to configure in the prototype diagram.
-The example below shows a workaround.
-
-The blue and purple rectangles in this example illustrate corresponding sections
-in the form, prototype diagram and thread diagram.
-The yellow curves in the prototype show how an outer pair of a foot side stitch
-can be extended with the inner pair of an ignored stitch.
-An ignored stitch has a dash (`-`) in stead of something like `ctct`.
+Annotated screen shot snippets of an example:
 
 ![](images/foot-sides.png)
 
 [Live version](/GroundForge/tiles.html?patchWidth=7&patchHeight=18&a3=-&footside=B,-,C,-,B,-,B,-,&tile=-5-,5-5,-5-,B-C,-5-&headside=5,-,&footsideStitch=tctctr&tileStitch=ct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4)
 
-Just one of the `tctctr` stitches on the left, is ignored. 
-This stretches the outer pair of the next stitch.
+The blue and purple rectangles in this example illustrate corresponding
+sections in the form, prototype diagram and pair diagram.
+The yellow curves in the prototype show how extended arrows are reduced
+to a single connection between stitches in the pair diagram.
+Note that the twist marks only indicate multiple twists, not how many.
 
-On the right side a complete column of stitches is ignored. 
-In practice you would need at least one column with real stitches.
-Otherwise you can't define other stitches for the foot side
-than for the pattern for a proper thread diagram.
-The reconnection illustrated with the bold yellow curve
-causes two stitches directly connected with two pairs.
+On the right side we only added extensions.
+In practice you would need at least one column with real stitches
+to choose other stitches for the foot side than for the pattern.
+This example shows that extensions don't need to be a straight line. 
+The bold yellow curve causes two stitches connected with two pairs.
 In those cases the stitches are merged into a single stitch in the pair diagram.
 Thus both pairs for the bottom stitch are stretched.
-
-**Warning**
-
-It will usually be better to make sure all real stitches have at least one direct connection.
-Below an example that ignores this advise and fails to create a foot side.
-
-![](images/failing-foot-side.png)
-
-[Live version](patchWidth=8&patchHeight=12&p1=-&o1=-&n1=-&m1=-&g1=cttct&f1=cttct&e1=cttct&d1=-&c1=tctct&b1=-&a1=-&o2=-&m2=-&g2=cttct&e2=cttct&c2=tctct&a2=-&p3=-&o3=-&n3=-&m3=-&f3=cttct&d3=cttct&c3=-&b3=-&a3=-&o4=-&m4=tctct&c4=-&a4=-&footside=8315,4-7-,1583,7-4-&tile=831,4-7,-5-&headside=8315,4-7-,1583,7-4-&footsideStitch=-&tileStitch=cttct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
-
-The three individual yellow curves shows how the outer pair of a foot side stitch
-finds a connection with a real stitch by following an inner pair along an ignored stitch.
-Same for the blue curves, but these reconnects cause parallel pairs and these stitches are merged.
-The sequence of orange curves show how the inner pair of the foot side stitch doesn't find any connection 
-by following outer pairs along ignored stitches.
-
-With the live version you can try to define a stitch at the third row and second column.
-It seems to fix the example for the pair diagram. However, the inner and outer pair are mixed up.
-Even with many twists for this additional stitch, the thread diagram won't look good. 
-
-![](images/foot-side-pairs-mixed-up.png)
-
+You can still choose to apply a plait for the thread diagram in those cases,
+well, if it happens in an added column and is not part of the ground.
 
 Demo section
 ------------

@@ -96,7 +96,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     } {
       val id = Stitches.toID(rSource, col + offset)
       val vectorCode = inputMatrix(rSource)(col)
-      val stitch = if (vectorCode == '-') ""
+      val stitch = if ("-VWXYZ".contains(vectorCode.toUpper)) "-"
                    else fields.getOrElse(id, defaultStitch)
       itemMatrix(row)(col + offset) = Item(
         id,
@@ -124,7 +124,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     if (rt >= 0 && ct >= 0 && rt < totalRows && ct < centerCols) {
       val id = Stitches.toID(r, c + leftMarginWidth)
       val vectorCode = centerMatrix(r)(c)
-      val stitch = if (vectorCode == '-') ""
+      val stitch = if ("-VWXYZ".contains(vectorCode.toUpper)) "-"
                    else fields.getOrElse(id, centerMatrixStitch)
       itemMatrix(rt)(ct + leftMarginWidth) = Item(id, vectorCode, stitch, r == rt && c == ct,
         relativeSources = Matrix.toRelativeSources(vectorCode))

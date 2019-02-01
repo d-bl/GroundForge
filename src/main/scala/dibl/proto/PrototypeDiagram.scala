@@ -43,7 +43,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         case (_, Some(color)) => color
         case _ => "#000"
       }
-      val isActiveNode = item.isOpaque && vectorCode != "-"
+      val isActiveNode = item.isOpaque && !"-VWXYZ".contains(vectorCode)
       s"""${ warning(vectorCode, translate, nrOfPairsOut, item.noStitch) }
          |<use ${ events(isActiveNode, item.id) }
          |  xlink:href='#vc$vectorCode'
@@ -223,6 +223,29 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
          |      </g>
          |"""
 
+    val part4 =
+      s"""      <g id="vcV">
+         |        <path $circleProps></path><text $textProps>V</text>
+         |        <path d="m -28.064646,978.05979 5.987061,-0.0372" $arrowStyle></path>
+         |      </g>
+         |      <g id="vcW">
+         |        <path $circleProps></path><text $textProps>W</text>
+         |        <path d="m -28.650432,969.47403 7.171574,7.17158" $arrowStyle></path>
+         |      </g>
+         |      <g id="vcX">
+         |        <path $circleProps></path><text $textProps>X</text>
+         |        <path d="m -20.064635,970.05982 0,6" $arrowStyle></path>
+         |      </g>
+         |      <g id="vcY">
+         |        <path $circleProps></path><text $textProps>Y</text>
+         |        <path d="m -11.478848,969.47403 -7.171574,7.17158" $arrowStyle></path>
+         |      </g>
+         |      <g id="vcZ">
+         |        <path $circleProps></path><text $textProps>Z</text>
+         |        <path d="m -12.090524,978.05979 -5.987061,-0.0372" $arrowStyle></path>
+         |      </g>
+         |"""
+
     s"""<svg
        |    xmlns="http://www.w3.org/2000/svg"
        |    xmlns:xlink='http://www.w3.org/1999/xlink'
@@ -241,7 +264,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
        |          d="m -15.737308,978.07528 a 4.4367617,4.4367617 0 0 1 -2.222417,3.84823 4.4428755,4.4428755 0 0 1 -4.443852,-0.002 4.4428755,4.4428755 0 0 1 -2.219481,-3.84991 l 4.442876,0.002"
        |          style="fill:#000000;stroke:none;"
        |          ></path>
-       |$part1$part2$part3
+       |$part1$part2$part3$part4
        |      <g id="vc-">
        |        <text $textProps>-</text><path $circleProps></path>
        |      </g>
