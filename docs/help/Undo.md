@@ -40,8 +40,8 @@ Future proof links
 ------------------
 To make sure you can recover a page
 (not just GroundForge but any web page that allows crawlers)
-without changes made by future updates of the web site:
-copy the link into the `save page now` [form] of the Wayback Machine.
+without changes made by future updates of the web site: save it in the
+[Wayback Machine](https://help.archive.org/hc/en-us/articles/360001513491-Save-Pages-in-the-Wayback-Machine).
 
 [form]: https://archive.org/web/
 
