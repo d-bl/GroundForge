@@ -33,14 +33,23 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       val vectorCode = item.vectorCode.toString.toUpperCase
       val translate = s"transform='translate(${ c * 10 + 38 },${ r * 10 + 1 })'"
       val nrOfPairsOut = config.nrOfPairsOut(r)(c)
-      val opacity = getOpacity(vectorCode, item.isOpaque)
-      val isActiveNode = opacity == "1" && vectorCode != "-"
+      val opacity = (vectorCode, item.isOpaque )match {
+        case ("-", _) => "0.05"
+        case (_, true) => "1"
+        case _ => "0.3"
+      }
+      val ringColor = (item.stitch, item.color) match {
+        case ("-", _) => "#CCC"
+        case (_, Some(color)) => color
+        case _ => "#000"
+      }
+      val isActiveNode = item.isOpaque && vectorCode != "-"
       s"""${ warning(vectorCode, translate, nrOfPairsOut, item.noStitch) }
          |<use ${ events(isActiveNode, item.id) }
          |  xlink:href='#vc$vectorCode'
          |  id='svg-r${ r + 1 }-c${ c + 1 }'
          |  $translate
-         |  style='stroke:${ item.color.getOrElse("#000") };opacity:$opacity;'
+         |  style='stroke:$ringColor;opacity:$opacity;'
          |><title>$stitch</title>
          |</use>
          |${ textInput(isActiveNode, r, c, config) }""".stripMargin
@@ -67,14 +76,6 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
          |</foreignObject>
          |""".stripMargin
     else ""
-  }
-
-  private def getOpacity(vectorCode: String, isOpaque: Boolean): String = {
-    vectorCode match {
-      case "-" => "0.05"
-      case _ if isOpaque => "1"
-      case _ => "0.3"
-    }
   }
 
   private def warning(vectorCode: String, translate: String, nrOfPairsOut: Int, noStitch: Boolean) = {
