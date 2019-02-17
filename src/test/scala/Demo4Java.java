@@ -87,8 +87,8 @@ public class Demo4Java {
     // https://d-bl.github.io/GroundForge/help/Choose-Stitches#assign-stitches
     // Note 2: the pair diagram reuses the positions calculated for the thread diagram
     // the thread diagram needs original positions without the nudging for the previous thread diagram
-    writeDiagram(i + "-droste-pairs", "1px", PairDiagram.create("ctct", nudgedThreads));
-    writeNudgedDiagram(i + "-droste-threads", "2px", PairDiagram.create("ctct", threads), config, 4);
+    writeDiagram(i + "-droste-pairs", "1px", PairDiagram.create("ctct", nudgedThreads), config.svgBoundsOfCenterTile(2 * 15));
+    writeNudgedDiagram(i + "-droste-threads", "2px", ThreadDiagram.create(PairDiagram.create("ctct", threads)), config, 4);
   }
 
   private static Diagram writeNudgedDiagram(String fileName, String strokeWidth, Diagram diagram,
@@ -113,12 +113,13 @@ public class Demo4Java {
       locations[i][1] = diagram.node(i).y();
     }
 
-    return writeDiagram(fileName, strokeWidth, diagram.withLocations(locations));
+    return writeDiagram(fileName, strokeWidth, diagram.withLocations(locations), config.svgBoundsOfCenterTile(scale * 15));
   }
 
-  private static Diagram writeDiagram(String fileName, String strokeWidth, Diagram diagram)
+  private static Diagram writeDiagram(String fileName, String strokeWidth, Diagram diagram, String bounds)
       throws IOException {
-    String svg = D3jsSVG.render(diagram, strokeWidth, true, 744, 1052, 0d);
+    String svg = D3jsSVG.render(diagram, strokeWidth, true, 744, 1052, 0d)
+            .replace("</svg>",bounds + "</svg>");
     new FileOutputStream(dir + "/" + fileName + ".svg") //
         .write((D3jsSVG.prolog() + svg).getBytes());
     return diagram;

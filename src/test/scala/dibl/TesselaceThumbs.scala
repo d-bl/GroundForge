@@ -26,8 +26,10 @@ import scala.reflect.io.File
 object TesselaceThumbs {
 
   def main(args: Array[String]): Unit = {
-    val w2 = Seq(13,14,15,16,17,18) ++ (501 to 684) ++ (687 to 722)
+    val w2 = Seq(13 to 18) ++ (501 to 684) ++ (687 to 722)
     val h2 = Seq(376,449,453,455)
+    val dir = new java.io.File(s"target/test/${getClass.getSimpleName}")
+    dir.mkdirs()
     new BufferedReader(new InputStreamReader(new FileInputStream(
       "docs/help/TesseLace-Index.md"
     )))
@@ -62,7 +64,7 @@ object TesselaceThumbs {
             .nudgeNodes(NewPairDiagram.create(config), Point(100, 100))
             .getOrElse(throw new Exception("whoops"))
           val svg = D3jsSVG.render(nudgedDiagram, width = 200, height = 200)
-          File(s"target/test/pattern/$nr.svg").createFile().writeAll(svg)
+          File(s"$dir/$nr.svg").writeAll(svg)
         }
         // '/C/Program Files/Inkscape/inkscape.exe' 001.svg --export-png=001.png -w78 -h78
         // the next attempt failed

@@ -164,58 +164,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
    */
   @JSExport
   def linksOfCenterTile(diagram: Diagram, scale: Int): Array[(NodeProps, Array[NodeProps])] = {
-    val links: Seq[(NodeProps, Array[NodeProps])] = {
-
-      lazy val minWidthForBricks = centerMatrixCols + 4
-      lazy val minHeightForBricks = centerMatrixRows + 4
-      lazy val minWidth = shiftColsSE + centerMatrixCols + 2
-      lazy val minHeight = shiftRowsSE + centerMatrixRows + 2
-      lazy val isHBrick =
-        shiftRowsSE == shiftRowsSW &&
-          shiftRowsSE == centerMatrixRows &&
-          shiftColsSE - shiftColsSW == centerMatrixCols
-      lazy val isVBrick =
-        shiftColsSE == shiftColsSW &&
-          shiftColsSE == centerMatrixCols &&
-          shiftRowsSE - shiftRowsSW == centerMatrixRows
-
-      def invalidMin(dimension: String, value: Int): Seq[(NodeProps, Array[NodeProps])] = {
-        invalid(s"patch $dimension should be at least $value")
-      }
-      def invalid(msg: String): Seq[(NodeProps, Array[NodeProps])] = {
-        println(msg)
-        Seq.empty
-      }
-      // Offsets and distances between the nodes on the initial square grid:
-      // https://github.com/d-bl/GroundForge/blob/94342eb/src/main/scala/dibl/NewPairDiagram.scala#L20
-      // https://github.com/d-bl/GroundForge/blob/268b2e2/src/main/scala/dibl/ThreadDiagram.scala#L105-L107
-      // In other words: 15 between rows/cols, 2 rows/cols allowance for the fringe.
-      if (!leftMatrix.mkString.isEmpty || !rightMatrix.mkString.isEmpty)
-        invalid("foot sides not supported")
-      else if (totalCols < minWidthForBricks) invalidMin("width", minWidthForBricks)
-      else if (totalRows < minHeightForBricks) invalidMin("height", minHeightForBricks)
-      else if (isHBrick || isVBrick) diagram.tileLinks(
-        // bounding box starts at the third row/col, thus we have four links on all nodes
-        scale * 52.5,
-        scale * (52.5 + 15 * centerMatrixRows),
-        scale * (52.5 + 15 * centerMatrixCols),
-        scale * 52.5,
-      )
-      else if (shiftColsSE < 2 && shiftRowsSE < 2) invalid("type of tiling is not suported")
-      else if (minWidth > totalCols) invalidMin("patch width", minWidth)
-      else if (minHeight > totalRows) invalidMin("height", minHeight)
-      else {
-        // TODO extend dimensions of overlapping tiles to avoid gaps,
-        //  then the tile type no longer matters
-        val offsetCols = (1.5 + shiftColsSE) * 15
-        val offsetRows = (1.5 + shiftRowsSE) * 15
-        diagram.tileLinks(
-          scale * offsetCols,
-          scale * (offsetRows + 15 * centerMatrixRows),
-            scale * (offsetCols + 15 * centerMatrixCols),
-            scale * offsetRows,
-        )
-      }
+    val links: Seq[(NodeProps, Array[NodeProps])] = boundsForTileLinks match {
+      case (0,0,0,0) => Seq.empty
+      case (n, e, s, w) => diagram.tileLinks(n * 15 * scale, e * 15 * scale, s * 15 * scale, w * 15 * scale)
     }
     if (links.exists{link =>
       // safeguard against invalid results
@@ -224,4 +175,73 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }) Seq.empty
     else links
   }.toArray
+
+  /**
+    * @param scale Use value 15 for the initial pair diagram,
+    *              multiply by 2 for each transition from pair to thread diagram.
+    * @return SVG element <rect> bounding box for nodes of linksOfCenterTile
+    */
+  def svgBoundsOfCenterTile (scale: Int): String = {
+    val style = "fill:none;stroke:#ddd;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+    val (n, e, s, w) = boundsForTileLinks
+    s"<rect ry='0.25' y='${n * scale}' x='${w * scale}' height='${(s - n) * scale}' width='${(e - w) * scale}' style='$style'></rect>"
+  }
+
+  /**
+    *
+    * @return A bounding box in terms of rows/cols for one tile.
+    *         At least two rows and cols of the same tile surround the returned tile.
+    *         (0,0,0,0) if the prototype diagram is too small to find the required tile
+    *         or for not implemented types of tiling.
+    */
+  def boundsForTileLinks: (Double, Double, Double, Double) = {
+    lazy val minWidthForBricks = centerMatrixCols + 4 + leftMarginWidth
+    lazy val minHeightForBricks = centerMatrixRows + 4
+    lazy val minWidth = shiftColsSE + centerMatrixCols + 2 + leftMarginWidth
+    lazy val minHeight = shiftRowsSE + centerMatrixRows + 2
+    lazy val isHBrick =
+      shiftRowsSE == shiftRowsSW &&
+        shiftRowsSE == centerMatrixRows &&
+        shiftColsSE - shiftColsSW == centerMatrixCols
+    lazy val isVBrick =
+      shiftColsSE == shiftColsSW &&
+        shiftColsSE == centerMatrixCols &&
+        shiftRowsSE - shiftRowsSW == centerMatrixRows
+
+    def invalidMin(dimension: String, value: Int): (Double, Double, Double, Double) = {
+      invalid(s"patch $dimension should be at least $value")
+    }
+    def invalid(msg: String): (Double, Double, Double, Double) = {
+      println(msg)
+      (0,0,0,0)
+    }
+    // Offsets and distances between the nodes on the initial square grid:
+    // https://github.com/d-bl/GroundForge/blob/94342eb/src/main/scala/dibl/NewPairDiagram.scala#L20
+    // https://github.com/d-bl/GroundForge/blob/268b2e2/src/main/scala/dibl/ThreadDiagram.scala#L105-L107
+    // In other words: 15 between rows/cols, 2 rows/cols allowance for the fringe.
+    if (totalCols < minWidthForBricks) invalidMin("width", minWidthForBricks)
+    else if (totalRows < minHeightForBricks) invalidMin("height", minHeightForBricks)
+    else if (isHBrick || isVBrick) (
+      // bounding box starts at the third row/col, thus we have four links on all nodes
+      3.5,// north
+      3.5 + leftMarginWidth + centerMatrixCols, // east
+      3.5 + centerMatrixRows,// south
+      3.5 + leftMarginWidth,// west
+    )
+    else if (shiftColsSE < 2 && shiftRowsSE < 2) invalid("type of tiling is not supported")
+    else if (minWidth > totalCols) invalidMin("patch width", minWidth)
+    else if (minHeight > totalRows) invalidMin("height", minHeight)
+    else {
+      // TODO extend dimensions of overlapping tiles to avoid gaps,
+      //  then the tile type no longer matters
+      val offsetCols = 1.5 + shiftColsSE + leftMarginWidth
+      val offsetRows = 1.5 + shiftRowsSE
+      (
+        offsetRows,// north
+        offsetCols + centerMatrixCols, // east
+        offsetRows + centerMatrixRows, // south
+        offsetCols,// west
+      )
+    }
+  }
 }
