@@ -397,7 +397,7 @@
          y="606.38367">many</tspan></text>
     <a
        id="a5608"
-       xlink:href="http://gwydir.demon.co.uk/jo/lace/whiting/index.htm"
+       xlink:href="http://www.gwydir.demon.co.uk/jo/lace/whiting/index.htm"
        target="_blank"
        transform="translate(-255.34082,157.73992)">
       <text
@@ -427,22 +427,6 @@
          id="tspan9222"
          x="48.303677"
          y="744.24347">#</tspan></text>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:8, 8;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker8349)"
-       d="m 500.52746,316.25706 55.39436,160.35675"
-       id="path9850"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cc" />
-    <text
-       transform="scale(1.0472855,0.95484947)"
-       xml:space="preserve"
-       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
-       x="482.31726"
-       y="471.72949"
-       id="text9852"><tspan
-         id="tspan9854"
-         x="482.31726"
-         y="471.72949">one</tspan></text>
     <rect
        ry="7.5415325"
        y="14.445554"
@@ -750,27 +734,11 @@
        id="path4342"
        sodipodi:nodetypes="cccccc" />
     <path
-       style="opacity:1;fill:#d35f8d;fill-opacity:0.8;fill-rule:nonzero;stroke:none"
-       d="m 343.31051,33.605562 c -7.39327,-22.254755 26.11881,-17.790048 38.48088,-5.884323 3.38779,-15.670849 25.04078,-19.6819129 33.34089,-4.759644 10.75252,-13.2171546 32.13054,-9.444444 27.67035,8.247177 22.92949,-11.988521 25.41488,31.960429 12.05221,43.189191 3.89335,13.637655 6.05157,42.155297 -16.65626,41.238257 7.09602,21.71621 -39.6397,15.34493 -57.48798,4.31686 -15.70068,11.7746 -49.71129,8.04524 -43.13415,-11.50724 -18.70267,-6.30174 -16.58832,-28.144352 -2.84507,-37.422524 -15.76936,-23.108295 -8.24569,-50.203012 8.57913,-37.417754 z"
+       style="opacity:1;fill:#d35f8d;fill-opacity:0.8;fill-rule:nonzero;stroke:none;stroke-width:1.06039393"
+       d="m 330.1086,49.231471 c -8.31325,-22.254755 14.03211,-35.203591 27.93245,-23.297866 3.80935,-15.670849 43.53182,-18.7209712 52.86475,-3.798702 12.09052,-13.217155 36.46846,-4.688022 31.45326,13.003599 16.94937,4.658955 18.04531,20.409119 3.01986,31.637881 13.98725,10.754828 17.54983,28.187485 -0.84902,37.462777 7.97902,21.71621 -29.19718,24.95436 -49.26641,13.92629 -17.65441,11.7746 -51.09243,13.81089 -54.26723,-5.74159 C 328.6148,123.41908 315.47231,87.142332 330.9257,77.86416 319.30947,77.518741 317.30557,52.074457 330.1086,49.231471 Z"
        id="rect6316"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccccccc" />
-    <a
-       id="a5604"
-       xlink:href="https://maetempels.github.io/MAE-gf/docs/flanders"
-       target="_blank"
-       transform="translate(289.62604,-48.784205)">
-      <text
-         xml:space="preserve"
-         style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
-         x="55.614479"
-         y="148.16351"
-         id="text8988"
-         transform="scale(1.0472855,0.95484947)"><tspan
-           id="tspan8990"
-           x="55.614479"
-           y="148.16351">MAE-gf/flanders</tspan></text>
-    </a>
     <image
        y="32.77887"
        x="346.00003"
@@ -793,7 +761,7 @@
        d="M 200.89892,412.9726 254.3969,320.1622"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:8, 8;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker8349)" />
     <a
-       transform="translate(289.62604,-27.950872)"
+       transform="translate(289.62604,-48.784202)"
        target="_blank"
        xlink:href="https://maetempels.github.io/MAE-gf/"
        id="a4342">
@@ -810,7 +778,7 @@
     </a>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker9000)"
-       d="m 407.3258,115.49633 167.0131,70.90302"
+       d="M 439.87681,118.60766 574.3389,186.39935"
        id="path8992"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
@@ -818,7 +786,7 @@
        sodipodi:nodetypes="cc"
        inkscape:connector-curvature="0"
        id="path4352"
-       d="M 338.56826,88.355196 C 321.2774,98.170205 308.83031,107.79551 308.35579,168.05953"
+       d="m 373.00453,125.85299 0,42.771"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker9000)" />
     <a
        transform="translate(293.69215,-135.36089)"
@@ -838,10 +806,36 @@
            style="font-weight:bold;font-size:16.66666603px">Recommended  start</tspan></text>
     </a>
     <path
-       sodipodi:nodetypes="cc"
+       sodipodi:nodetypes="ccc"
        inkscape:connector-curvature="0"
-       id="path1030"
-       d="m 407.3258,115.49633 -1.31098,52.5632"
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:8, 8;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker8349)" />
+       id="path1777"
+       d="m 444.5299,104.23916 c 7.97902,21.71621 -29.19718,24.95436 -49.26641,13.92629 -3.22252,-10.95683 43.71826,-22.8537 49.26641,-13.92629 z"
+       style="opacity:1;fill:#d35f8d;fill-opacity:0.8;fill-rule:nonzero;stroke:none;stroke-width:1.06039393" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       id="path1775"
+       d="m 395.26349,118.16545 c -17.65441,11.7746 -51.09243,13.81089 -54.26723,-5.74159 -2.04494,-12.06855 42.91354,-27.622588 54.26723,5.74159 z"
+       style="opacity:1;fill:#d35f8d;fill-opacity:0.8;fill-rule:nonzero;stroke:none;stroke-width:1.06039393" />
+    <text
+       xml:space="preserve"
+       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
+       x="337.52475"
+       y="125.18584"
+       id="text8988"
+       transform="scale(1.0472855,0.95484947)"><tspan
+         id="tspan8990"
+         x="337.52475"
+         y="125.18584">most</tspan></text>
+    <text
+       transform="scale(1.0472855,0.95484947)"
+       id="text1771"
+       y="122.49673"
+       x="385.13528"
+       style="font-size:14px;line-height:0%;font-family:Arial;fill:#000000;stroke:none"
+       xml:space="preserve"><tspan
+         y="122.49673"
+         x="385.13528"
+         id="tspan1769">some</tspan></text>
   </g>
 </svg>

@@ -42,7 +42,7 @@ Therefore only the prototype is updated when you change some value on the page.
 To avoid confusion about outdated diagrams the pair diagram and thread diagrams
 are hidden on these occasions. Use the link or wand button to [reload] the diagrams.
 
-[reload]: undo
+[reload]: Undo
 
 Patch size
 ==========
