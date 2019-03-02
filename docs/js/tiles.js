@@ -152,6 +152,18 @@ function setField (keyValueString) {
       d3.select('#'+k).property("value", v)
     }
 }
+function whiting (kv) {
+    var k = kv.trim().replace(/[^a-zA-Z0-9]/g,"")
+    if (!kv.startsWith("whiting")) return false
+    // side effect: add whiting link
+    var pageNr = kv.split("P")[1]
+    var cellNr = kv.split("_")[0].split("=")[1]
+    d3.select('#whiting').node().innerHTML =
+        "<img src='help/w/page" + pageNr + "a.gif' title='"+cellNr+"'>"+
+        " Page <a href='http://www.gwydir.demon.co.uk/jo/lace/whiting/page" + pageNr + ".htm'>" + pageNr + "</a> "+
+        "of '<em>A Lace Guide for Makers and Collectors</em>' by Gertrude Whiting; 1920."
+    return true
+}
 function load() {
 
   var keyValueStrings = window.location.search.substr(1).split("&")
@@ -159,6 +171,7 @@ function load() {
   showProto() // this creates a dynamic part of the form
   keyValueStrings.forEach(setField) // fill the form fields again
   showDiagrams(showProto())
+  keyValueStrings.find(whiting)
 }
 function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, patchWidth, patchHeight) {
 
