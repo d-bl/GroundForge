@@ -7,19 +7,27 @@ Whiting index
 =============
 
 *Jo Edkins* went through the trouble to create an annotated online [index] on the grounds in
-'_A Lace Guide for Makers and Collectors_' by Gertrude Whiting which dates from 1920. A higher resolution is available with four PDF's in the [Digital Archive] of the late professor Griswold,
-including a [scan] of the original index. A variation of the index is republished below with kind permission. The links to GroundForge are starting points to create your own variations.
+'_A Lace Guide for Makers and Collectors_' by Gertrude Whiting which dates from 1920.
+A higher resolution is available with four PDF's in the [Digital Archive] of the late professor Griswold,
+including a [scan] of the original index. The index is republished below with kind permission
+and additional customizable diagrams.
 
-[Legend](#legend)
-
-
-Under Construction
-------------------
-
-The page [history](https://github.com/d-bl/GroundForge/commits/master/docs/help/Whiting-Index.md)
-(and older [changes](https://github.com/d-bl/GroundForge/wiki/Whiting-Index/_history))
-may show when a pattern was last fixed, and who authored the fix.
+**Under Construction:**
+The page [history] (and older [changes] may show when a pattern was last fixed, and who authored the fix.
 For that purpose, the maintainer needs to fill in the _edit note_ to list the changed/added patterns.
+
+Table
+-----
+
+* The images link to the corresponding page in the book.
+* The `diagr` links go to customizable diagrams.
+* More [notes](#notes).
+
+[index]: http://www.gwydir.demon.co.uk/jo/lace/whiting/index.htm#picindex
+[scan]: https://www2.cs.arizona.edu/patterns/weaving/books/whiting.jpg
+[Digital Archive]: https://www2.cs.arizona.edu/patterns/weaving/lace.html#books
+[history]: https://github.com/d-bl/GroundForge/commits/master/docs/help/Whiting-Index.md
+[changes]: https://github.com/d-bl/GroundForge/wiki/Whiting-Index/_history)
 
 
 [c]: /GroundForge/sheet.html?patch=88%0A11;bricks&patch=66%0A22;bricks&patch=88%0A99%0A11%0A00;bricks&patch=66%0A11%0A88%0A22;bricks&patch=66%0A99%0A22%0A00;bricks
@@ -30,66 +38,67 @@ For that purpose, the maintainer needs to fill in the _edit note_ to list the ch
 [ts]: /GroundForge/sheet.html?patch=5-5-%0A-5--%0AB-C-%0A-5-5;bricks&patch=5632%0A34-7;bricks&patch=256-%0A---5%0AC3B-;bricks&patch=4373%0A5-53;bricks
 [z]: /GroundForge/sheet.html?patch=1483%0A8-48;bricks&patch=C-B-%0A-5--%0AB8D-%0A-4--;bricks&patch=-48-%0AB--2%0A8-B8;bricks&patch=-4--%0AB-C3%0A8-48;bricks
 
-[A1]: /GroundForge/?m=88%0A11;bricks;7;5;0;0&s1=ct
-[B1]: /GroundForge/?m=5-;bricks;7;5;0;0&s1=ctctpctct
-[C1]: /GroundForge/?m=5-;bricks;7;5;0;0&s1=ctpct
-[D1]: /GroundForge/?m=5-;bricks;7;5;0;0&s1=cttpctt
-[E1]: /GroundForge/?m=5-;bricks;7;5;0;0&s1=ctpcttt
-[F1]: /GroundForge/?m=5-;bricks;7;5;0;0&s1=cttpcttt
-[G1]: /GroundForge/?m=5-;bricks;7;5;0;0&s1=cttt
+[A1]: https://d-bl.github.io/GroundForge/tiles.html?whiting=A1_P70&tile=88,11&patchWidth=5&patchHeight=5&a1=ct&b1=ct&a2=ct&b2=ct&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=0&shiftRowsSW=2
+[B1]: https://d-bl.github.io/GroundForge/tiles.html?whiting=B1_P94&tile=5-&a1=ctctpctct&patchWidth=5&patchHeight=5&shiftColsSE=1&shiftRowsSE=1&shiftColsSW=-1&shiftRowsSW=1
+[C1]: https://d-bl.github.io/GroundForge/tiles.html?whiting=C1_P114&tile=5-&a1=ctpct&patchWidth=6&patchHeight=6&shiftColsSE=1&shiftRowsSE=1&shiftColsSW=-1&shiftRowsSW=1&footside=
+[D1]: https://d-bl.github.io/GroundForge/tiles.html?whiting=D1_P134&tile=5-&a1=cttpctt&patchWidth=5&patchHeight=5&shiftColsSE=1&shiftRowsSE=1&shiftColsSW=-1&shiftRowsSW=1
+[E1]: https://d-bl.github.io/GroundForge/tiles.html?whiting=E1_P155&tile=5-&a1=ctpcttt&patchWidth=5&patchHeight=5&shiftColsSE=1&shiftRowsSE=1&shiftColsSW=-1&shiftRowsSW=1
+[F1]: https://d-bl.github.io/GroundForge/tiles.html?whiting=F1_P177&tile=5-&a1=cttpcttt&patchWidth=5&patchHeight=5&shiftColsSE=1&shiftRowsSE=1&shiftColsSW=-1&shiftRowsSW=1
+[G1]: https://d-bl.github.io/GroundForge/tiles.html?whiting=G1_P198&patchWidth=5&patchHeight=5&a1=ctctptt&tile=5-&tileStitch=ctctptt&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1
 
-[A2]: /GroundForge/?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=A1%3Dctct&s2=ctct%20A14%3Dct%20A15%3Dct&s3=
-[B2]: /GroundForge/?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=ctct&s2=ctct&s3=
-[E2]: /GroundForge/?m=5---5---%0A-CD632AB%0A5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20C2%3Dctctttctc%20A3%3Dctclll%20B1%3Dctclll%20E3%3Dctcrrr%20D1%3Dctcrrr%20G2%3Dctctctc&s2=&s3=
-[F2]: /GroundForge/?m=-5--%0AB-C-%0A-5-5%0A5-5-%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20B3%3Dctcttctc%20A4%3Dctcll%20D1%3Dctctt%20%20C4%3Dctcrr&s2=&s3=
-[G2]: /GroundForge/?m=5----5----%0A-CDD632AAB%0A5666632222%0A5666632222%0A56666-2222%3Bbricks%3B24%3B24%3B0%3B0&s1=ctct%20C1%3Dctc%20G2%3Dctc%20I2%3Dctc%20F3%3Dctc%20J3%3Dctc%20H2%3Dctc%20G3%3Dctc%20I3%3Dctc%20G5%3Dctc%20I5%3Dctc%20H1%3Dctc%20H4%3Dcttc%20F5%3Dctcl%20G1%3Dctcl%20J5%3Dctcr%20I1%3Dctcr&s2=&s3=
-[H2]: /GroundForge/?m=5---5---%0A-CD632AB%0A56663222%0A5666-222%3Bbricks%3B24%3B24%3B0%3B0&s1=cttctt%20C2%3Dctctt%20C4%3Dctc%20F1%3Dctc%20E2%3Dctc%20H1%3Dctc%20G1%3Dctc%20F2%3Dctc%20A2%3Dctc%20H2%3Dctc%20G3%3Dctcctc%20F4%3Dctc%20H4%3Dctc%20C1%3Dctc%20E4%3Dctcll%20%20B1%3Dctcll%20A4%3Dctcrr%20D1%3Dctcrr&s2=cross%3Dctc%20twist%3Dctc&s3=
+[A2]: https://d-bl.github.io/GroundForge/tiles.html?whiting=A2_P71&tile=831,4-7,-5-&headside=d,-,c,-&footside=b,-,a,-&footsideStitch=ctctt&patchWidth=9&patchHeight=10&k1=lctctt&d1=ct&c1=ctct&b1=ct&a1=rctctt&d2=ctct&b2=ctct&k3=lctctt&c3=ctct&a3=rctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[B2]: https://d-bl.github.io/GroundForge/tiles.html?whiting=B2_P95&patchWidth=9&patchHeight=10&k1=lctctt&d1=ctct&c1=ctct&b1=ctct&a1=rctctt&d2=ctct&b2=ctct&k3=lctctt&c3=ctct&a3=rctctt&footside=b,-,a,-&tile=831,4-7,-5-&headside=d,-,c,-&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[E2]: https://d-bl.github.io/GroundForge/tiles.html?whiting=E2_P156&patchWidth=13&patchHeight=12&e1=ctctttctc&a1=ctcctc&h2=ctc&g2=ctclll&f2=ctc&e2=ctc&d2=ctc&c2=ctcrrr&b2=ctc&h3=ctclll&g3=ctc&f3=ctc&d3=ctc&c3=ctc&b3=ctcrrr&a3=ctc&tile=5---5---,-CD632AB,5666-222&tileStitch=ctc&shiftColsSW=-4&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=3
+[F2]: https://d-bl.github.io/GroundForge/tiles.html?whiting=F2_P178&patchWidth=11&patchHeight=13&b1=ctcctc&c2=ctcrrr&a2=ctclll&d3=ctc&b3=ctcttt&c4=ctc&a4=ctc&tile=-5--,B-C-,-5-5,5-5-&tileStitch=ctc&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4
+[G2]: https://d-bl.github.io/GroundForge/tiles.html?whiting=G2_P199&patchWidth=14&patchHeight=13&f1=ctctt&a1=ctcctc&j2=ctc&i2=ctcll&h2=ctctt&g2=ctctt&f2=ctctt&e2=ctctt&d2=ctctt&c2=ctcrrr&b2=ctc&j3=ctcll&i3=ctctt&h3=ctctt&g3=ctcttl&f3=ctc&e3=ctcttr&d3=ctctt&c3=ctctt&b3=ctcrrr&a3=ctc&j4=ctctt&i4=ctctt&h4=ctcttl&g4=ctc&f4=ctc&e4=ctc&d4=ctcttr&c4=ctctt&b4=ctctt&a4=ctcttt&j5=ctctt&i5=ctcttl&h5=ctc&g5=ctc&e5=ctc&d5=ctc&c5=ctcttr&b5=ctctt&a5=ctctt&tile=5----5----,-CDD632AAB,5666632222,5666632222,56666-2222&tileStitch=ctct&shiftColsSW=-5&shiftRowsSW=5&shiftColsSE=5&shiftRowsSE=5
+[H2]: https://d-bl.github.io/GroundForge/tiles.html?whiting=H2_P220&patchWidth=15&patchHeight=15&e1=cttctt&a1=ctcctc&h2=ctc&g2=ctc&f2=rrrcttcttl&e2=ctc&d2=lllcttcttr&c2=ctc&b2=ctc&h3=ctc&g3=rrrcttcttl&f3=ctc&e3=ctc&d3=ctc&c3=lllcttcttr&b3=ctc&a3=ctc&h4=rrrcttcttl&g4=ctc&f4=ctc&d4=ctc&c4=ctc&b4=lllcttcttr&a4=ctc&tile=5---5---,-CD632AB,56663222,5666-222&tileStitch=ctc&shiftColsSW=-4&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4
 
-[C3]: /GroundForge/?m=5-;bricks;7;5;0;0&s1=ctctpctctt
-[E3]: /GroundForge/?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=A1%3Dctt&s2=&s3=
+[C3]: https://d-bl.github.io/GroundForge/tiles.html?whiting=C3_P117&patchWidth=7&patchHeight=6&a1=ctctpctctt&tile=5-&tileStitch=ctctpctctt&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1
+[E3]: https://d-bl.github.io/GroundForge/tiles.html?whiting=E3_P157&patchWidth=5&patchHeight=6&b1=ctt&tile=-5&tileStitch=ctt&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1
 
-[E4]: /GroundForge/?m=-5----%0AB-CD-A%0A256-5-%0A-5-535%0A5-56-2%3Bbricks%3B24%3B24%3B0%3B0&s1=ctc%20A4%3Dctctctc%20C5%3Dctcrr%20B1%3Dctcrr%20E5%3Dctcll%20F1%3Dctcll%20D2%3Dctctt&s2=&s3=
-[F4]: /GroundForge/?m=1483%0A8-48%3Bbricks%3B16%3B16%3B0%3B0&s1=ctc%20A2%3Dctcllctc%20C2%3Dctcrrctc
-[H4]: /GroundForge/?m=5-25-56-%0A-5--5--5%0A5-C6-2B-%3Bbricks%3B16%3B16%3B0%3B0&s1=ctc%20G3%3Dctcttctc%20A1%3Dctcll%20B2%3Dctcll%20E1%3Dctcrr%20D2%3Dctcrr&s2=&s3=
+[C4]: https://d-bl.github.io/GroundForge/tiles.html?whiting=C4_P118&patchWidth=11&patchHeight=10&b1=cttctt&c2=cttctt&a2=cttctt&tile=-5-,B-C&tileStitch=cttctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[D4]: https://d-bl.github.io/GroundForge/tiles.html?whiting=D4_P137&patchWidth=11&patchHeight=10&b1=cttcttt&c2=cttcttt&a2=cttcttt&tile=-5-,B-C&tileStitch=cttcttt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[E4]: https://d-bl.github.io/GroundForge/tiles.html?whiting=E4_P158&patchWidth=12&patchHeight=14&e1=ctctttctc&a1=ctcctc&h2=ctc&g2=ctclll&f2=ctc&e2=ctc&d2=ctc&c2=ctcrrr&b2=ctc&h3=ctclll&g3=ctc&f3=ctc&d3=ctc&c3=ctc&b3=ctcrrr&a3=ctc&tile=5---5---,-CD632AB,5666-222&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-4&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=3
+[F4]: https://d-bl.github.io/GroundForge/tiles.html?whiting=F4_P180&patchWidth=9&patchHeight=9&d1=ctc&c1=ctc&b1=ctc&a1=ctc&d2=ctc&c2=ctcllctc&a2=ctcrrctc&tile=1483,8-48&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[H4]: https://d-bl.github.io/GroundForge/tiles.html?whiting=H4_P222&patchWidth=16&patchHeight=16&g1=ctc&f1=ctcrr&d1=ctcll&c1=ctc&a1=ctc&h2=ctc&e2=ctcttctc&b2=ctc&g3=ctcll&f3=ctc&d3=ctc&c3=ctcrr&a3=ctc&tile=5-25-56-,-5--5--5,5-C6-2B-&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-4&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=3
 
-[C6]: /GroundForge/?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=A1%3Dctct&s2=ct%20A10%3Dctct%20A13%3Dctct&s3=
-[B6]: /GroundForge/?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=ctct&s2=cttctt&s3=
-[D6]: /GroundForge/?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=crclct&s2=ct%20A10%3Dctct%20A11%3Dctct%20A13%3Dctct%20A14%3Dctct&s3=
-[E6]: /GroundForge/?m=1488-483%208-483148%20831488-4%20488-4831%3Bbricks%3B12%3B10%3B0%3B0&s1=ct%20F3%3Dctct%20E4%3Dctct%20G4%3Dctct%20B1%3Dctct%20H1%3Dctct%20C4%3Dctct%20A2%3Dctct%20H3%3Dctct%20B3%3Dctct%20A4%3Dctct%20D1%3Dctct%20C2%3Dctct%20E2%3Dctct%20D3%3Dctct%20F1%3Dctct%20G4%3Dctct%20G2%3Dctct&s2=&s3=
+[B6]: https://d-bl.github.io/GroundForge/tiles.html?whiting=B6_P99&patchWidth=9&patchHeight=10&k1=ctctt&d1=cttctt&c1=cttctt&b1=cttctt&a1=ctctt&d2=cttctt&b2=cttctt&k3=ctctt&c3=cttctt&a3=ctctt&footside=b,-,a,-&tile=831,4-7,-5-&headside=d,-,c,-&footsideStitch=ctctt&tileStitch=cttctt&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[C6]: https://d-bl.github.io/GroundForge/tiles.html?whiting=C6_P120&patchWidth=9&patchHeight=10&k1=ctctr&d1=ct&c1=ctct&b1=ct&a1=ctctl&d2=ct&b2=ct&k3=ctctr&c3=ctct&a3=ctctl&footside=b,-,a,-&tile=831,4-7,-5-&headside=d,-,c,-&footsideStitch=ctctl&tileStitch=ct&headsideStitch=ctctr&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[D6]: https://d-bl.github.io/GroundForge/tiles.html?whiting=D6_P139&patchWidth=9&patchHeight=9&c1=ct&b1=ctct&a1=ct&c2=ctct&b2=ct&a2=ctct&b3=ctct&tile=831,117,178&tileStitch=ctct&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[E6]: https://d-bl.github.io/GroundForge/tiles.html?whiting=E6_P160&patchWidth=10&patchHeight=10&d1=ctct&c1=ct&b1=ctct&a1=ct&c2=ctct&b2=ct&a2=ctct&tile=8317,1178&tileStitch=ctct&shiftColsSW=-5&shiftRowsSW=1&shiftColsSE=3&shiftRowsSE=1
 
-[C9]: /GroundForge/?m=-5%3Bbricks%3B7%3B5%3B0%3B0&s1=ctct&s2=ctcttt&s3=
-[D9]: /GroundForge/?m=5-%0A-5%3Bchecker%3B8%3B8%3B0%3B0&s1=A1%3Dctctt%20B2%3Dctt&s2=&s3=
-[H9]: /GroundForge/?m=5-;bricks;7;7;0;0&s1=ctcttptctcttt
+[C9]: https://d-bl.github.io/GroundForge/tiles.html?whiting=C9_P123&patchWidth=9&patchHeight=10&k1=ctctt&d1=ctcttt&c1=ctcttt&b1=ctcttt&a1=ctctt&d2=ctcttt&b2=ctcttt&k3=ctctt&c3=ctcttt&a3=ctctt&footside=b,-,a,-&tile=831,4-7,-5-&headside=d,-,c,-&footsideStitch=ctctt&tileStitch=ctcttt&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[D9]: https://d-bl.github.io/GroundForge/tiles.html?whiting=D9_P142&patchWidth=7&patchHeight=7&a1=ctctt&b2=ctt&tile=5-,-5&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[H9]: https://d-bl.github.io/GroundForge/tiles.html?whiting=H9_P229&patchWidth=7&patchHeight=7&a1=ctcttptctcttt&tile=5-&tileStitch=ctcttptctcttt&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1
 
-[H10]: /GroundForge/?m=54---7%2C%20-79-04%2C%205-158-%2C%20-5-5-5%2C%205-535-%2C%20-24-76%3Bchecker%3B18%3B18%3B0%3B0&s1=ctct%20A1%3Dctcttt%20F2%3Dctctrr%20B2%3Dctctll%20D2%3DA5%3Dctctctct%20C4%3DE4%3Dctctt%20E6%3DC6%3Dtctct&s2=cross%3Dctc%20twist%3Dctc&s3=
+[H10]: https://d-bl.github.io/GroundForge/tiles.html?whiting=H10_P230&patchWidth=14&patchHeight=11&f1=ctctll&b1=ctctrr&a1=ctctctct&f2=ctctl&e2=ctct&c2=ctct&b2=ctctr&e3=ctct&d3=ctct&c3=ctct&a3=ctctt&f4=ctctt&d4=ctctctct&b4=ctctt&e5=ctct&d5=ctct&c5=ctct&a5=ctctt&f6=ctct&e6=ctcttl&c6=ctcttr&b6=ctct&tile=54---7,-79-04,5-158-,-5-5-5,5-535-,-24-76&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=6&shiftRowsSE=6
+[G14]: https://d-bl.github.io/GroundForge/tiles.html?whiting=G14_P212&patchWidth=7&patchHeight=12&a1=ctc&b2=ctc&a2=ctcll&b3=ctcrr&a3=ctc&a4=ctctt&tile=5-,12,88,4-&tileStitch=ctc&shiftColsSW=-1&shiftRowsSW=4&shiftColsSE=1&shiftRowsSE=4
 
-[G14]: /GroundForge/?m=5-%0A12%0A88%0A4-%3Bbricks%3B16%3B11%3B0%3B0&s1=ctc%20A2%3Dctctt%20B4%3Dctcll%20B1%3Dctcrr&s2=&s3=
-
-[D16]: /GroundForge/?m=-5-%0AE-2%0A8-M%0AF-1%0A8-M%3Bchecker%3B16%3B16%3B0%3B0&s1=ctc%20A5%3Dctcll%20C1%3Dctcrr%20A2%3Dctcll%0AC3%3Dctcrr&s2=&s3=
-[E16]: /GroundForge/?m=-5-L-H%0AH-E-21%0A-O8-M8%0A-1F-1F%0A-M86-M%0A5-4-K-%3Bchecker%3B16%3B16%3B0%3B0&s1=C6%3Dctcll%20F6%3Dctcll%20E1%3Dctcrr%20B1%3Dctcrr%20C2%3Dctcll%20F2%3Dctcll%20D3%3Dctcrr%20B3%3Dctcrr%20E4%3Dtctct%20B5%3Dtctct&s2=&s3=
-[F16]: /GroundForge/?m=5-%0A-5%0A5-%0A12%0A99%0A11%0A66%0A4-%3Bbricks%3B19%3B9%3B0%3B0&s1=ctc%20B7%3Dtctct%20A8%3Dctct%20B2%3Dctcll%20B3%3Dctcrr%20A4%3Dctcll%20B5%3Dctcrr&s2=&s3=
-[G16]: /GroundForge/?m=5-%0A-5%0A5-%0A12%0A88%0A4-%3Bbricks%3B16%3B9%3B0%3B0&s1=ctc%20A6%3Dctctt%20B5%3Dctctt%20B2%3Dctcll%20B3%3Dctcrr%20A4%3Dctctt%20&s2=&s3=
+[D16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=D16_P150&patchWidth=9&patchHeight=12&b1=ctc&c2=ctc&a2=ctcll&c3=ctcrr&a3=ctc&c4=ctc&a4=ctcll&c5=ctcrr&a5=ctc&tile=-5-,E-2,8-M,F-1,8-M&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=5&shiftColsSE=3&shiftRowsSE=5
+[E16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=E16_P174&patchWidth=11&patchHeight=12&f1=ctc&d1=ctc&b1=ctct&f2=ctcll&e2=ctc&c2=ctcll&a2=ctc&f3=ctc&e3=ctcrr&c3=ctc&b3=ctcrr&f4=ctcll&e4=ctc&c4=ctcll&b4=ctc&f5=ctc&d5=ctcrr&c5=ctc&b5=ctcrr&e6=ctct&c6=ctct&a6=ctct&tile=-5-L-H,H-E-21,-O8-M8,-1F-1F,-M86-M,5-4-K-&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=6&shiftRowsSE=6
+[F16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=F16_P195&patchWidth=8&patchHeight=14&a1=ctct&b2=ctct&a3=ctc&b4=ctc&a4=ctcll&b5=ctc&a5=ctcrr&b6=ctcll&a6=ctc&b7=ctcrr&a7=ctc&a8=ctct&tile=5-,-5,5-,12,99,11,66,4-&tileStitch=ctc&shiftColsSW=-1&shiftRowsSW=8&shiftColsSE=1&shiftRowsSE=8
+[G16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=G16_P214&patchWidth=6&patchHeight=12&a1=ctct&b2=ctct&a3=ctc&b4=ctc&a4=ctcll&b5=ctcrr&a5=ctc&a6=ctct&tile=5-,-5,5-,12,88,4-&tileStitch=ctc&shiftColsSW=-1&shiftRowsSW=6&shiftColsSE=1&shiftRowsSE=6
 
 |   | A | B | C | D | E | F | G | H |
 |---|---|---|---|---|---|---|---|---|
-|  1 | [A1],[c],[W][P70]![](w/page70a.gif) | [B1],[t],[W][P94]![](w/page94a.gif) | [C1],[t],[W][P114]![](w/page114a.gif) | [D1],[t],[W][P134]![](w/page134a.gif) | [E1],[t],[W][P155]![](w/page155a.gif) | [F1],[t],[W][P177]![](w/page177a.gif) | [G1],[t],[W][P198]![](w/page198a.gif) | [t],[W][P219]![](w/page219a.gif) |
-|  2 | [A2]<sup>2</sup>,[v],[W][P71]![](w/page71a.gif) | [B2]<sup>2</sup>,[v],[W][P95]![](w/page95a.gif) | [W][P115]![](w/page115a.gif) | [W][P135]![](w/page135a.gif) | [E2],[W][P156]![](w/page156a.gif) | [F2],[ts],[W][P178]![](w/page178a.gif) | [G2],[W][P199]![](w/page199a.gif) | [H2],[W][P220]![](w/page220a.gif) |
-|  3 | [t],[W][P73]![](w/page73a.gif) | [t],[W][P96]![](w/page96a.gif) | [C3],[t],[W][P117]![](w/page117a.gif) | [W][P136]![](w/page136a.gif) | [E3],[t],[W][P157]![](w/page157a.gif) | [t],[W][P179]![](w/page179a.gif) | [t],[W][P200]![](w/page200a.gif) | [W][P221]![](w/page221a.gif) |
-|  4 | -,[W][P74]![](w/page74a.gif) | -,[W][P97]![](w/page97a.gif) | [k],[W][P118]![](w/page118a.gif) | [k],[W][P137]![](w/page137a.gif) | [E4],[W][P158]![](w/page158a.gif) | [F4], [z],[W][P180]![](w/page180a.gif) | [W][P201]![](w/page201a.gif) | [H4],[v],[W][P222]![](w/page222a.gif) |
-|  5 | [k],[W][P75]![](w/page75a.gif) | [k],[W][P98]![](w/page98a.gif) | [k],[W][P119]![](w/page119a.gif) | &sim;[c],[W][P138]![](w/page138a.gif) | -,[W][P159]![](w/page159a.gif) | &sim;[c],[W][P181]![](w/page181a.gif) | &sim;[c],[W][P203]![](w/page203a.gif) | &sim;[c],[W][P224]![](w/page224a.gif) |
-|  6 | [k],[W][P76]![](w/page76a.gif) | [B6]<sup>2</sup>,[v],[W][P99]![](w/page99a.gif) | [C6]<sup>2</sup>,[v],[W][P120]![](w/page120a.gif) | [D6]<sup>2</sup>,[z],[W][P139]![](w/page139a.gif) | [E6],[W][P160]![](w/page160a.gif) | [t],[W][P182]![](w/page182a.gif) | -,[W][P204]![](w/page204a.gif) | [W][P225]![](w/page225a.gif) |
-|  7 | [W][P77]![](w/page77a.gif) | [k],[W][P100]![](w/page100a.gif) | [W][P121]![](w/page121a.gif) | [W][P140]![](w/page140a.gif) | [W][P161]![](w/page161a.gif) | [W][P183]![](w/page183a.gif) | [W][P205]![](w/page205a.gif) | [k],[W][P226]![](w/page226a.gif) |
-|  8 | [W][P79]![](w/page79a.gif) | [W][P101]![](w/page101a.gif) | [W][P122]![](w/page122a.gif) | [W][P141]![](w/page141a.gif) | [W][P162]![](w/page162a.gif) | [W][P184]![](w/page184a.gif) | [W][P206]![](w/page206a.gif) | [W][P227]![](w/page227a.gif) |
-|  9 | [W][P80]![](w/page80a.gif) | [W][P102]![](w/page102a.gif) | [C9]<sup>2</sup>,[v],[W][P123]![](w/page123a.gif) | [D9],[W][P142]![](w/page142a.gif) | [W][P163]![](w/page163a.gif) | [W][P185]![](w/page185a.gif) | [t],[W][P207]![](w/page207a.gif) | [H9],[t],[W][P229]![](w/page229a.gif) |
-|  10 | [W][P82]![](w/page82a.gif) | [W][P103]![](w/page103a.gif) | [W][P124]![](w/page124a.gif) | [W][P143]![](w/page143a.gif) | [W][P164]![](w/page164a.gif) | [W][P187]![](w/page187a.gif) | [W][P208]![](w/page208a.gif) | [H10],[W][P230]![](w/page230a.gif) |
-|  11 | [t],[W][P83]![](w/page83a.gif) | [t],[W][P104]![](w/page104a.gif) | -,[W][P125]![](w/page125a.gif) | [wk],[W][P144]![](w/page144a.gif) | [wk],[W][P166]![](w/page166a.gif) | [t],[W][P189]![](w/page189a.gif) | [k],[W][P209]![](w/page209a.gif) | -,[W][P231]![](w/page231a.gif) |
-|  12 | [t],[W][P84]![](w/page84a.gif) | [c],[W][P105]![](w/page105a.gif) | [W][P126]![](w/page126a.gif) | [W][P145]![](w/page145a.gif) | [W][P167]![](w/page167a.gif) | [W][P190]![](w/page190a.gif) | [W][P210]![](w/page210a.gif) | [W][P232]![](w/page232a.gif) |
-|  13 | -,[W][P85]![](w/page85a.gif) | [W][P106]![](w/page106a.gif) | [W][P128]![](w/page128a.gif) | [W][P147]![](w/page147a.gif) | [W][P169]![](w/page169a.gif) | [W][P192]![](w/page192a.gif) | [W][P211]![](w/page211a.gif) | [W][P234]![](w/page234a.gif) |
-|  14 | [W][P87]![](w/page87a.gif) | [W][P107]![](w/page107a.gif) | [W][P129]![](w/page129a.gif) | [c],[W][P148]![](w/page148a.gif) | [W][P171]![](w/page171a.gif) | [W][P193]![](w/page193a.gif) | [G14],[W][P212]![](w/page212a.gif) | [W][P235]![](w/page235a.gif) |
-|  15 | [W][P89]![](w/page89a.gif) | [W][P109]![](w/page109a.gif) | [W][P130]![](w/page130a.gif) | [W][P149]![](w/page149a.gif) | [W][P173]![](w/page173a.gif) | [W][P194]![](w/page194a.gif) | [W][P213]![](w/page213a.gif) | [W][P237]![](w/page237a.gif) |
-|  16 | [ts],[W][P90]![](w/page90a.gif) | [W][P110]![](w/page110a.gif) | [W][P131]![](w/page131a.gif) | [D16],[W][P150]![](w/page150a.gif) | [E16],[W][P174]![](w/page174a.gif) | [F16],[W][P195]![](w/page195a.gif) | [G16],[W][P214]![](w/page214a.gif) | [c],[W][P238]![](w/page238a.gif) |
-|  17 | [W][P91]![](w/page91a.gif) | [c],[W][P111]![](w/page111a.gif) | [k],[W][P132]![](w/page132a.gif) | [W][P151]![](w/page151a.gif) | [c],[W][P175]![](w/page175a.gif) | -,[W][P196]![](w/page196a.gif) | [W][P215]![](w/page215a.gif) | [W][P239]![](w/page239a.gif) |
-|  18 | [t],[W][P93]![](w/page93a.gif) | [W][P112]![](w/page112a.gif) | [W][P133]![](w/page133a.gif) | [W][P153]![](w/page153a.gif) | [W][P176]![](w/page176a.gif) | [W][P197]![](w/page197a.gif) | [W][P217]![](w/page217a.gif) | [W][P241]![](w/page241a.gif) |
+|  1 | [diagr][A1], [c][c] [![](w/page70a.gif)][P70] | [diagr][B1], [t][t] [![](w/page94a.gif)][P94] | [diagr][C1], [t][t] [![](w/page114a.gif)][P114] | [diagr][D1], [t][t] [![](w/page134a.gif)][P134] | [diagr][E1], [t][t] [![](w/page155a.gif)][P155] | [diagr][F1], [t][t] [![](w/page177a.gif)][P177] | [diagr][G1], [t][t] [![](w/page198a.gif)][P198] | ? [t][t] [![](w/page219a.gif)][P219] |
+|  2 | [diagr][A2], [v][v] [![](w/page71a.gif)][P71] | [diagr][B2], [v][v] [![](w/page95a.gif)][P95] | &nbsp; [![](w/page115a.gif)][P115] | &nbsp; [![](w/page135a.gif)][P135] | [diagr][E2] [![](w/page156a.gif)][P156] | [diagr][F2], [ts][ts] [![](w/page178a.gif)][P178] | [diagr][G2] [![](w/page199a.gif)][P199] | [diagr][H2] [![](w/page220a.gif)][P220] |
+|  3 | [t][t] [![](w/page73a.gif)][P73] | [t][t] [![](w/page96a.gif)][P96] | [diagr][C3], [t][t] [![](w/page117a.gif)][P117] | &nbsp; [![](w/page136a.gif)][P136] | [diagr][E3], [t][t] [![](w/page157a.gif)][P157] | [t][t] [![](w/page179a.gif)][P179] | [t][t] [![](w/page200a.gif)][P200] | &nbsp; [![](w/page221a.gif)][P221] |
+|  4 | - [![](w/page74a.gif)][P74] | - [![](w/page97a.gif)][P97] | [k][k] [![](w/page118a.gif)][P118] | [k][k] [![](w/page137a.gif)][P137] | [diagr][E4] [![](w/page158a.gif)][P158] | [diagr][F4],  [z][z] [![](w/page180a.gif)][P180] | &nbsp; [![](w/page201a.gif)][P201] | [diagr][H4], [v][v] [![](w/page222a.gif)][P222] |
+|  5 | [k][k] [![](w/page75a.gif)][P75] | [k][k] [![](w/page98a.gif)][P98] | [k][k] [![](w/page119a.gif)][P119] | [c][c] [![](w/page138a.gif)][P138] | - [![](w/page159a.gif)][P159] | [c][c] [![](w/page181a.gif)][P181] | [c][c] [![](w/page203a.gif)][P203] | [c][c] [![](w/page224a.gif)][P224] |
+|  6 | [k][k] [![](w/page76a.gif)][P76] | [diagr][B6], [v][v] [![](w/page99a.gif)][P99] | [diagr][C6], [v][v] [![](w/page120a.gif)][P120] | [diagr][D6], [z][z] [![](w/page139a.gif)][P139] | [diagr][E6] [![](w/page160a.gif)][P160] | [t][t] [![](w/page182a.gif)][P182] | - [![](w/page204a.gif)][P204] | &nbsp; [![](w/page225a.gif)][P225] |
+|  7 | &nbsp; [![](w/page77a.gif)][P77] | [k][k] [![](w/page100a.gif)][P100] | &nbsp; [![](w/page121a.gif)][P121] | &nbsp; [![](w/page140a.gif)][P140] | &nbsp; [![](w/page161a.gif)][P161] | &nbsp; [![](w/page183a.gif)][P183] | &nbsp; [![](w/page205a.gif)][P205] | [k][k] [![](w/page226a.gif)][P226] |
+|  8 | &nbsp; [![](w/page79a.gif)][P79] | &nbsp; [![](w/page101a.gif)][P101] | &nbsp; [![](w/page122a.gif)][P122] | &nbsp; [![](w/page141a.gif)][P141] | &nbsp; [![](w/page162a.gif)][P162] | &nbsp; [![](w/page184a.gif)][P184] | &nbsp; [![](w/page206a.gif)][P206] | &nbsp; [![](w/page227a.gif)][P227] |
+|  9 | &nbsp; [![](w/page80a.gif)][P80] | &nbsp; [![](w/page102a.gif)][P102] | [diagr][C9], [v][v] [![](w/page123a.gif)][P123] | [diagr][D9] [![](w/page142a.gif)][P142] | &nbsp; [![](w/page163a.gif)][P163] | &nbsp; [![](w/page185a.gif)][P185] | [t][t] [![](w/page207a.gif)][P207] | [diagr][H9], [t][t] [![](w/page229a.gif)][P229] |
+|  10 | &nbsp; [![](w/page82a.gif)][P82] | &nbsp; [![](w/page103a.gif)][P103] | &nbsp; [![](w/page124a.gif)][P124] | &nbsp; [![](w/page143a.gif)][P143] | &nbsp; [![](w/page164a.gif)][P164] | &nbsp; [![](w/page187a.gif)][P187] | &nbsp; [![](w/page208a.gif)][P208] | [diagr][H10] [![](w/page230a.gif)][P230] |
+|  11 | [t][t] [![](w/page83a.gif)][P83] | [t][t] [![](w/page104a.gif)][P104] | - [![](w/page125a.gif)][P125] | [wk][wk] [![](w/page144a.gif)][P144] | [wk][wk] [![](w/page166a.gif)][P166] | [t][t] [![](w/page189a.gif)][P189] | [k][k] [![](w/page209a.gif)][P209] | - [![](w/page231a.gif)][P231] |
+|  12 | [t][t] [![](w/page84a.gif)][P84] | [c][c] [![](w/page105a.gif)][P105] | &nbsp; [![](w/page126a.gif)][P126] | &nbsp; [![](w/page145a.gif)][P145] | &nbsp; [![](w/page167a.gif)][P167] | &nbsp; [![](w/page190a.gif)][P190] | &nbsp; [![](w/page210a.gif)][P210] | &nbsp; [![](w/page232a.gif)][P232] |
+|  13 | - [![](w/page85a.gif)][P85] | &nbsp; [![](w/page106a.gif)][P106] | &nbsp; [![](w/page128a.gif)][P128] | &nbsp; [![](w/page147a.gif)][P147] | &nbsp; [![](w/page169a.gif)][P169] | &nbsp; [![](w/page192a.gif)][P192] | &nbsp; [![](w/page211a.gif)][P211] | &nbsp; [![](w/page234a.gif)][P234] |
+|  14 | &nbsp; [![](w/page87a.gif)][P87] | &nbsp; [![](w/page107a.gif)][P107] | &nbsp; [![](w/page129a.gif)][P129] | [c][c] [![](w/page148a.gif)][P148] | &nbsp; [![](w/page171a.gif)][P171] | &nbsp; [![](w/page193a.gif)][P193] | [diagr][G14] [![](w/page212a.gif)][P212] | &nbsp; [![](w/page235a.gif)][P235] |
+|  15 | &nbsp; [![](w/page89a.gif)][P89] | &nbsp; [![](w/page109a.gif)][P109] | &nbsp; [![](w/page130a.gif)][P130] | &nbsp; [![](w/page149a.gif)][P149] | &nbsp; [![](w/page173a.gif)][P173] | &nbsp; [![](w/page194a.gif)][P194] | &nbsp; [![](w/page213a.gif)][P213] | &nbsp; [![](w/page237a.gif)][P237] |
+|  16 | [ts][ts] [![](w/page90a.gif)][P90] | &nbsp; [![](w/page110a.gif)][P110] | &nbsp; [![](w/page131a.gif)][P131] | [diagr][D16] [![](w/page150a.gif)][P150] | [diagr][E16] [![](w/page174a.gif)][P174] | [diagr][F16] [![](w/page195a.gif)][P195] | [diagr][G16] [![](w/page214a.gif)][P214] | [c][c] [![](w/page238a.gif)][P238] |
+|  17 | &nbsp; [![](w/page91a.gif)][P91] | [c][c] [![](w/page111a.gif)][P111] | [k][k] [![](w/page132a.gif)][P132] | &nbsp; [![](w/page151a.gif)][P151] | [c][c] [![](w/page175a.gif)][P175] | - [![](w/page196a.gif)][P196] | &nbsp; [![](w/page215a.gif)][P215] | &nbsp; [![](w/page239a.gif)][P239] |
+|  18 | [t][t] [![](w/page93a.gif)][P93] | &nbsp; [![](w/page112a.gif)][P112] | &nbsp; [![](w/page133a.gif)][P133] | &nbsp; [![](w/page153a.gif)][P153] | &nbsp; [![](w/page176a.gif)][P176] | &nbsp; [![](w/page197a.gif)][P197] | &nbsp; [![](w/page217a.gif)][P217] | &nbsp; [![](w/page241a.gif)][P241] |
 
 [P70]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page70.htm
 [P71]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page71.htm
@@ -256,38 +265,18 @@ For that purpose, the maintainer needs to fill in the _edit note_ to list the ch
 [P241]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page241.htm
 
 
-Legend
-------
-
-* **W**:
-  Each capital W links to a scanned page of the Whiting book with annotations by Jo Edkins.
-  The other links go to GroundForge.
-
-* **XN**: Alphanumeric links
-  go directly to a page where you can show the pair/thread diagrams.
-
-* **XN<sup>2</sup>**:
-  A superscript of two means you have to show two levels of diagrams to get the pattern.
-
-* **x**: Lower case links
-  go to sets of [TesseLace](/GroundForge/help/TesseLace-Index) patterns,
-  in turn linking to a diagram page where you can choose stitches.
-  Each pattern in such a set can be morphed into the others by nudging pins.
-  Only four of the lower-case links ([c],[t],[k],[v]) cover more than a third of the grounds above, a ratio that illustrates
-  how many variations can be made by changing stitches or nudging pin positions.
+### Notes
   
-* **&sim;**:
-  The pattern does not exactly match, may need different dimensions for the matrix or a stitch or twist more or less.
+* **x** links with one or two letters:
+
+  go to sets of pair diagrams. Each pattern in such a set can be morphed into the others by nudging pins.
+  Only four of these links ([c],[t],[k],[v]) cover more than a third of the grounds in the table,
+  a ratio that illustrates how many variations can be made by changing stitches or nudging pin positions.
+
+* **?**
+  The scanned image doesn't match the description by Whiting.
 
 * **-**:
   The ground uses sewings, three-pair stitches or odd number of threads.
   None of these are supported by GroundForge.
   Picots and tallies are also not supported but they are too obvious to require such an annotation.
-
-
-[reversed engineering]: /GroundForge/help/Reversed-engineering-of-patterns
-[Marian Tempels]: https://github.com/MAETempels
-[index]: http://www.gwydir.demon.co.uk/jo/lace/whiting/index.htm#picindex
-[scan]: https://www2.cs.arizona.edu/patterns/weaving/books/whiting.jpg
-[Digital Archive]: https://www2.cs.arizona.edu/patterns/weaving/lace.html#books
-
