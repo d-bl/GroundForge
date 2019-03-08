@@ -8,15 +8,10 @@ Whiting index
 
 Multiple online archives published a digitised version of
 '_A Lace Guide for Makers and Collectors_' by Gertrude Whiting, which dates from 1920. 
-The best resolution known so far is on [archive.org].
 
-*Jo Edkins* went through the trouble to cut out thumbnails and pages.
-She republish the [index] of the grounds in a web-friendly way with her own annotations.
-The index is republished another time below with kind permission and additional customizable diagrams.
-
-**The diagrams are still under construction:**
-The page [history] (and older [changes] may show when a pattern was last fixed, and who authored the fix.
-For that purpose, the maintainer needs to fill in the _edit note_ to list the changed/added patterns.
+*Jo Edkins* went through the trouble to cut-and-paste thumbnails and pages.
+She republish an [index] of the grounds in a web-friendly way with her own annotations.
+The thumbnails are reused below with kind permission.
 
 [index]: http://www.gwydir.demon.co.uk/jo/lace/whiting/index.htm#picindex
 [history]: https://github.com/d-bl/GroundForge/commits/master/docs/help/Whiting-Index.md
@@ -27,9 +22,14 @@ For that purpose, the maintainer needs to fill in the _edit note_ to list the ch
 Table
 -----
 
-* The images link to the corresponding page in the book.
-* The `diagr` links go to customizable diagrams.
+* The images link to the corresponding page of the book.
+  Though not all pages benefit because of poor originals,
+  these links go to scans with the best known resolution.
+* The `diagr` links (**53 done, 41 to go**) lead to customizable diagrams.
 * More [notes](#notes).
+
+The page [history] (and older [changes]) may show when a pattern was last fixed, and who authored the fix.
+For that purpose, the maintainer needs to list the changed/added patterns in the _edit note_.
 
 [c]: /GroundForge/sheet.html?patch=88%0A11;bricks&patch=66%0A22;bricks&patch=88%0A99%0A11%0A00;bricks&patch=66%0A11%0A88%0A22;bricks&patch=66%0A99%0A22%0A00;bricks
 [t]: /GroundForge/sheet.html?patch=53%0A53%0A53%0A5-;bricks&patch=5663%0A5663;checker&patch=53%0A5-;bricks&patch=563%0A563%0A563;checker&patch=53%0A53;checker&patch=5632%0A5632;checker&patch5353%0A5353;bricks&patch=5-%0A-5;checker&patch=5353%0A5353%0A5-5-%0A-5-5;checker&patch=5632%0A56-2%0A5-5-%0A-535;checker&patch=53%0A5-%0A-5%0A5-;bricks&patch=44%0A77%0A44%0A77;bricks&patch=44%0A44%0A77%0A77;bricks&patch=66%0A88%0A66%0A11;bricks&patch=66%0A66%0A88%0A11;checker&patch=66%0A66%0A99%0A00;checker&patch=6;checker&patch=566-%0A66-5%0A6-56%0A-566;checker
@@ -108,201 +108,191 @@ Table
 |  1  | [diagr][A1], [c][c] [![](w/page70a.gif)][P70] | [diagr][B1], [t][t] [![](w/page94a.gif)][P94] | [diagr][C1], [t][t] [![](w/page114a.gif)][P114] | [diagr][D1], [t][t] [![](w/page134a.gif)][P134] | [diagr][E1], [t][t] [![](w/page155a.gif)][P155] | [diagr][F1], [t][t] [![](w/page177a.gif)][P177] | [diagr][G1], [t][t] [![](w/page198a.gif)][P198] | ? [t][t] [![](w/page219a.gif)][P219] |
 |  2  | [diagr][A2], [v][v] [![](w/page71a.gif)][P71] | [diagr][B2], [v][v] [![](w/page95a.gif)][P95] | &nbsp; [![](w/page115a.gif)][P115] | &nbsp; [![](w/page135a.gif)][P135] | [diagr][E2] [![](w/page156a.gif)][P156] | [diagr][F2], [ts][ts] [![](w/page178a.gif)][P178] | [diagr][G2] [![](w/page199a.gif)][P199] | [diagr][H2] [![](w/page220a.gif)][P220] |
 |  3  | [diagr][A3], [t][t] [![](w/page73a.gif)][P73] | [diagr][B3], [t][t] [![](w/page96a.gif)][P96] | [diagr][C3], [t][t] [![](w/page117a.gif)][P117] | [diagr][D3], [t][t]  [![](w/page136a.gif)][P136] | [diagr][E3], [t][t] [![](w/page157a.gif)][P157] | [diagr][F3], [t][t] [![](w/page179a.gif)][P179] | [diagr][G3], [t][t] [![](w/page200a.gif)][P200] | chaotic [![](w/page221a.gif)][P221] |
-|  4  | - [![](w/page74a.gif)][P74] | - [![](w/page97a.gif)][P97] | [diagr][C4], [k][k] [![](w/page118a.gif)][P118] | [diagr][D4], [k][k] [![](w/page137a.gif)][P137] | [diagr][E4] [![](w/page158a.gif)][P158] | [diagr][F4],  [z][z] [![](w/page180a.gif)][P180] | &nbsp; [![](w/page201a.gif)][P201] | [diagr][H4], [v][v] [![](w/page222a.gif)][P222] |
-|  5  | [diagr][A5], [k][k] [![](w/page75a.gif)][P75] | [diagr][B5], [k][k] [![](w/page98a.gif)][P98] | [diagr][C5], [k][k] [![](w/page119a.gif)][P119] | [diagr][D5], [c][c] [![](w/page138a.gif)][P138] | - [![](w/page159a.gif)][P159] | [diagr][F5], [c][c] [![](w/page181a.gif)][P181] | [diagr][G5], [c][c] [![](w/page203a.gif)][P203] | [diagr][H5], [c][c] [![](w/page224a.gif)][P224] |
-|  6  | [diagr][A6], [k][k] [![](w/page76a.gif)][P76] | [diagr][B6], [v][v] [![](w/page99a.gif)][P99] | [diagr][C6], [v][v] [![](w/page120a.gif)][P120] | [diagr][D6], [z][z] [![](w/page139a.gif)][P139] | [diagr][E6] [![](w/page160a.gif)][P160] | [diagr][F6], [t][t] [![](w/page182a.gif)][P182] | - [![](w/page204a.gif)][P204] | [diagr][H6] [![](w/page225a.gif)][P225] |
+|  4  | &mdash; [![](w/page74a.gif)][P74] | &mdash; [![](w/page97a.gif)][P97] | [diagr][C4], [k][k] [![](w/page118a.gif)][P118] | [diagr][D4], [k][k] [![](w/page137a.gif)][P137] | [diagr][E4] [![](w/page158a.gif)][P158] | [diagr][F4],  [z][z] [![](w/page180a.gif)][P180] | &nbsp; [![](w/page201a.gif)][P201] | [diagr][H4], [v][v] [![](w/page222a.gif)][P222] |
+|  5  | [diagr][A5], [k][k] [![](w/page75a.gif)][P75] | [diagr][B5], [k][k] [![](w/page98a.gif)][P98] | [diagr][C5], [k][k] [![](w/page119a.gif)][P119] | [diagr][D5], [c][c] [![](w/page138a.gif)][P138] | &mdash; [![](w/page159a.gif)][P159] | [diagr][F5], [c][c] [![](w/page181a.gif)][P181] | [diagr][G5], [c][c] [![](w/page203a.gif)][P203] | [diagr][H5], [c][c] [![](w/page224a.gif)][P224] |
+|  6  | [diagr][A6], [k][k] [![](w/page76a.gif)][P76] | [diagr][B6], [v][v] [![](w/page99a.gif)][P99] | [diagr][C6], [v][v] [![](w/page120a.gif)][P120] | [diagr][D6], [z][z] [![](w/page139a.gif)][P139] | [diagr][E6] [![](w/page160a.gif)][P160] | [diagr][F6], [t][t] [![](w/page182a.gif)][P182] | &mdash; [![](w/page204a.gif)][P204] | [diagr][H6] [![](w/page225a.gif)][P225] |
 |     | **A** | **B** | **C** | **D** | **E** | **F** | **G** | **H** |
-|  7  | &nbsp; [![](w/page77a.gif)][P77] | [k][k] [![](w/page100a.gif)][P100] | &nbsp; [![](w/page121a.gif)][P121] | &nbsp; [![](w/page140a.gif)][P140] | &nbsp; [![](w/page161a.gif)][P161] | &nbsp; [![](w/page183a.gif)][P183] | &nbsp; [![](w/page205a.gif)][P205] | [k][k] [![](w/page226a.gif)][P226] |
-|  8  | - [![](w/page79a.gif)][P79] | - [![](w/page101a.gif)][P101] | - [![](w/page122a.gif)][P122] | - [![](w/page141a.gif)][P141] | - [![](w/page162a.gif)][P162] | - [![](w/page184a.gif)][P184] | - [![](w/page206a.gif)][P206] | - [![](w/page227a.gif)][P227] |
-|  9  | - [![](w/page80a.gif)][P80] | - [![](w/page102a.gif)][P102] | [diagr][C9], [v][v] [![](w/page123a.gif)][P123] | [diagr][D9] [![](w/page142a.gif)][P142] | [diagr][E9] [![](w/page163a.gif)][P163] | &nbsp; [![](w/page185a.gif)][P185] | [t][t] [![](w/page207a.gif)][P207] | [diagr][H9], [t][t] [![](w/page229a.gif)][P229] |
-|  10 | - [![](w/page82a.gif)][P82] | - [![](w/page103a.gif)][P103] | - [![](w/page124a.gif)][P124] | - [![](w/page143a.gif)][P143] | [diagr][E10] [![](w/page164a.gif)][P164] | &nbsp; [![](w/page187a.gif)][P187] | [diagr][G10] [![](w/page208a.gif)][P208] | [diagr][H10] [![](w/page230a.gif)][P230] |
-|  11 | [t][t] [![](w/page83a.gif)][P83] | [t][t] [![](w/page104a.gif)][P104] | - [![](w/page125a.gif)][P125] | [wk][wk] [![](w/page144a.gif)][P144] | [wk][wk] [![](w/page166a.gif)][P166] | [t][t] [![](w/page189a.gif)][P189] | [k][k] [![](w/page209a.gif)][P209] | - [![](w/page231a.gif)][P231] |
+|  7  | [k][k]/[t][t]  [![](w/page77a.gif)][P77] | [k][k]/[t][t] [![](w/page100a.gif)][P100] | [k][k]/[t][t] [![](w/page121a.gif)][P121] | [k][k]/[t][t] [![](w/page140a.gif)][P140] | [k][k]/[t][t] [![](w/page161a.gif)][P161] | [k][k]/[t][t] [![](w/page183a.gif)][P183] | [k][k]/[t][t] [![](w/page205a.gif)][P205] | [k][k]/[t][t] [![](w/page226a.gif)][P226] |
+|  8  | &mdash; [![](w/page79a.gif)][P79] | &mdash; [![](w/page101a.gif)][P101] | &mdash; [![](w/page122a.gif)][P122] | &mdash; [![](w/page141a.gif)][P141] | &mdash; [![](w/page162a.gif)][P162] | &mdash; [![](w/page184a.gif)][P184] | &mdash; [![](w/page206a.gif)][P206] | &mdash; [![](w/page227a.gif)][P227] |
+|  9  | &mdash; [![](w/page80a.gif)][P80] | &mdash; [![](w/page102a.gif)][P102] | [diagr][C9], [v][v] [![](w/page123a.gif)][P123] | [diagr][D9] [![](w/page142a.gif)][P142] | [diagr][E9] [![](w/page163a.gif)][P163] | &nbsp; [![](w/page185a.gif)][P185] | [t][t] [![](w/page207a.gif)][P207] | [diagr][H9], [t][t] [![](w/page229a.gif)][P229] |
+|  10 | &mdash; [![](w/page82a.gif)][P82] | &mdash; [![](w/page103a.gif)][P103] | &mdash; [![](w/page124a.gif)][P124] | &mdash; [![](w/page143a.gif)][P143] | [diagr][E10] [![](w/page164a.gif)][P164] | &nbsp; [![](w/page187a.gif)][P187] | [diagr][G10] [![](w/page208a.gif)][P208] | [diagr][H10] [![](w/page230a.gif)][P230] |
+|  11 | [t][t] [![](w/page83a.gif)][P83] | [t][t] [![](w/page104a.gif)][P104] | &mdash; [![](w/page125a.gif)][P125] | [wk][wk] [![](w/page144a.gif)][P144] | [wk][wk] [![](w/page166a.gif)][P166] | [t][t] [![](w/page189a.gif)][P189] | [k][k] [![](w/page209a.gif)][P209] | &mdash; [![](w/page231a.gif)][P231] |
 |  12 | [t][t] [![](w/page84a.gif)][P84] | [c][c] [![](w/page105a.gif)][P105] | [diagr][C12] [![](w/page126a.gif)][P126] | [diagr][D12] [![](w/page145a.gif)][P145] | &nbsp; [![](w/page167a.gif)][P167] | &nbsp; [![](w/page190a.gif)][P190] | &nbsp; [![](w/page210a.gif)][P210] | &nbsp; [![](w/page232a.gif)][P232] |
 |     | **A** | **B** | **C** | **D** | **E** | **F** | **G** | **H** |
-|  13 | - [![](w/page85a.gif)][P85] | - [![](w/page106a.gif)][P106] | - [![](w/page128a.gif)][P128] | - [![](w/page147a.gif)][P147] | - [![](w/page169a.gif)][P169] | - [![](w/page192a.gif)][P192] | &nbsp; [![](w/page211a.gif)][P211] | - [![](w/page234a.gif)][P234] |
+|  13 | &mdash; [![](w/page85a.gif)][P85] | &mdash; [![](w/page106a.gif)][P106] | &mdash; [![](w/page128a.gif)][P128] | &mdash; [![](w/page147a.gif)][P147] | &mdash; [![](w/page169a.gif)][P169] | &mdash; [![](w/page192a.gif)][P192] | &nbsp; [![](w/page211a.gif)][P211] | &mdash; [![](w/page234a.gif)][P234] |
 |  14 | &nbsp; [![](w/page87a.gif)][P87] | &nbsp; [![](w/page107a.gif)][P107] | &nbsp; [![](w/page129a.gif)][P129] | [c][c] [![](w/page148a.gif)][P148] | &nbsp; [![](w/page171a.gif)][P171] | &nbsp; [![](w/page193a.gif)][P193] | [diagr][G14] [![](w/page212a.gif)][P212] | &nbsp; [![](w/page235a.gif)][P235] |
 |  15 | &nbsp; [![](w/page89a.gif)][P89] | &nbsp; [![](w/page109a.gif)][P109] | &nbsp; [![](w/page130a.gif)][P130] | &nbsp; [![](w/page149a.gif)][P149] | &nbsp; [![](w/page173a.gif)][P173] | &nbsp; [![](w/page194a.gif)][P194] | &nbsp; [![](w/page213a.gif)][P213] | &nbsp; [![](w/page237a.gif)][P237] |
 |  16 | [ts][ts] [![](w/page90a.gif)][P90] | &nbsp; [![](w/page110a.gif)][P110] | &nbsp; [![](w/page131a.gif)][P131] | [diagr][D16] [![](w/page150a.gif)][P150] | [diagr][E16] [![](w/page174a.gif)][P174] | [diagr][F16] [![](w/page195a.gif)][P195] | [diagr][G16] [![](w/page214a.gif)][P214] | [c][c] [![](w/page238a.gif)][P238] |
-|  17 | - [![](w/page91a.gif)][P91] | [c][c] [![](w/page111a.gif)][P111] | [k][k] [![](w/page132a.gif)][P132] | - [![](w/page151a.gif)][P151] | [c][c] [![](w/page175a.gif)][P175] | - [![](w/page196a.gif)][P196] | &nbsp; [![](w/page215a.gif)][P215] | &nbsp; [![](w/page239a.gif)][P239] |
-|  18 | [t][t] [![](w/page93a.gif)][P93] | &nbsp; [![](w/page112a.gif)][P112] | &nbsp; [![](w/page133a.gif)][P133] | - [![](w/page153a.gif)][P153] | - [![](w/page176a.gif)][P176] | &nbsp; [![](w/page197a.gif)][P197] | - [![](w/page217a.gif)][P217] | &nbsp; [![](w/page241a.gif)][P241] |
+|  17 | &mdash; [![](w/page91a.gif)][P91] | [c][c] [![](w/page111a.gif)][P111] | [k][k] [![](w/page132a.gif)][P132] | &mdash; [![](w/page151a.gif)][P151] | [c][c] [![](w/page175a.gif)][P175] | &mdash; [![](w/page196a.gif)][P196] | &nbsp; [![](w/page215a.gif)][P215] | &nbsp; [![](w/page239a.gif)][P239] |
+|  18 | [t][t] [![](w/page93a.gif)][P93] | &nbsp; [![](w/page112a.gif)][P112] | &nbsp; [![](w/page133a.gif)][P133] | &mdash; [![](w/page153a.gif)][P153] | &mdash; [![](w/page176a.gif)][P176] | &nbsp; [![](w/page197a.gif)][P197] | &mdash; [![](w/page217a.gif)][P217] | &nbsp; [![](w/page241a.gif)][P241] |
 |     | **A** | **B** | **C** | **D** | **E** | **F** | **G** | **H** |
 
-[P70]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page70.htm
-[P71]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page71.htm
-[P73]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page73.htm
-[P74]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page74.htm
-[P75]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page75.htm
-[P76]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page76.htm
-[P77]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page77.htm
-[P79]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page79.htm
-
-[P80]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page80.htm
-[P82]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page82.htm
-[P83]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page83.htm
-[P84]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page84.htm
-[P85]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page85.htm
-[P87]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page87.htm
-[P89]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page89.htm
-
-[P90]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page90.htm
-[P91]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page91.htm
-[P93]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page93.htm
-[P94]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page94.htm
-[P95]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page95.htm
-[P96]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page96.htm
-[P97]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page97.htm
-[P98]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page98.htm
-[P99]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page99.htm
-
-[P100]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page100.htm
-[P101]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page101.htm
-[P102]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page102.htm
-[P103]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page103.htm
-[P104]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page104.htm
-[P105]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page105.htm
-[P106]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page106.htm
-[P107]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page107.htm
-[P109]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page109.htm
-
-[P110]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page110.htm
-[P111]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page111.htm
-[P112]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page112.htm
-[P113]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page113.htm
-[P114]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page114.htm
-[P115]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page115.htm
-[P116]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page116.htm
-[P117]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page117.htm
-[P118]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page118.htm
-[P119]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page119.htm
-
-[P120]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page120.htm
-[P121]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page121.htm
-[P122]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page122.htm
-[P123]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page123.htm
-[P124]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page124.htm
-[P125]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page125.htm
-[P126]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page126.htm
-[P128]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page128.htm
-[P129]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page129.htm
-
-[P130]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page130.htm
-[P131]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page131.htm
-[P132]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page132.htm
-[P133]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page133.htm
-[P134]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page134.htm
-[P135]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page135.htm
-[P136]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page136.htm
-[P137]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page137.htm
-[P138]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page138.htm
-[P139]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page139.htm
-
-[P140]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page140.htm
-[P141]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page141.htm
-[P142]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page142.htm
-[P143]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page143.htm
-[P144]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page144.htm
-[P145]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page145.htm
-[P147]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page147.htm
-[P148]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page148.htm
-[P149]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page149.htm
-
-[P150]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page150.htm
-[P151]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page151.htm
-[P153]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page153.htm
-[P155]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page155.htm
-[P156]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page156.htm
-[P157]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page157.htm
-[P158]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page158.htm
-[P159]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page159.htm
-
-[P160]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page160.htm
-[P161]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page161.htm
-[P162]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page162.htm
-[P163]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page163.htm
-[P164]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page164.htm
-[P166]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page166.htm
-[P167]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page167.htm
-[P169]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page169.htm
-
-[P171]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page171.htm
-[P173]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page173.htm
-[P174]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page174.htm
-[P175]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page175.htm
-[P176]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page176.htm
-[P177]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page177.htm
-[P178]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page178.htm
-[P179]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page179.htm
-
-[P180]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page180.htm
-[P181]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page181.htm
-[P182]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page182.htm
-[P183]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page183.htm
-[P184]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page184.htm
-[P185]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page185.htm
-[P187]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page187.htm
-[P189]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page189.htm
-
-[P190]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page190.htm
-[P192]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page192.htm
-[P193]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page193.htm
-[P194]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page194.htm
-[P195]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page195.htm
-[P196]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page196.htm
-[P197]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page197.htm
-[P198]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page198.htm
-[P199]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page199.htm
-
-[P200]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page200.htm
-[P201]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page201.htm
-[P203]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page203.htm
-[P204]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page204.htm
-[P205]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page205.htm
-[P206]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page206.htm
-[P207]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page207.htm
-[P208]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page208.htm
-[P209]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page209.htm
-
-[P210]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page210.htm
-[P211]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page211.htm
-[P212]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page212.htm
-[P213]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page213.htm
-[P214]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page214.htm
-[P215]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page215.htm
-[P217]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page217.htm
-[P219]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page219.htm
-
-[P220]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page220.htm
-[P221]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page221.htm
-[P222]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page222.htm
-[P224]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page224.htm
-[P225]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page225.htm
-[P226]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page226.htm
-[P227]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page227.htm
-[P229]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page229.htm
-
-[P230]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page230.htm
-[P231]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page231.htm
-[P232]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page232.htm
-[P234]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page234.htm
-[P235]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page235.htm
-[P237]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page237.htm
-[P238]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page238.htm
-[P239]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page239.htm
-
-[P241]: http://www.gwydir.demon.co.uk/jo/lace/whiting/page241.htm
+[P70]: https://archive.org/details/laceguideformak00whit/page/70
+[P71]: https://archive.org/details/laceguideformak00whit/page/71
+[P73]: https://archive.org/details/laceguideformak00whit/page/73
+[P74]: https://archive.org/details/laceguideformak00whit/page/74
+[P75]: https://archive.org/details/laceguideformak00whit/page/75
+[P76]: https://archive.org/details/laceguideformak00whit/page/76
+[P77]: https://archive.org/details/laceguideformak00whit/page/77
+[P79]: https://archive.org/details/laceguideformak00whit/page/79
+[P80]: https://archive.org/details/laceguideformak00whit/page/80
+[P82]: https://archive.org/details/laceguideformak00whit/page/82
+[P83]: https://archive.org/details/laceguideformak00whit/page/83
+[P84]: https://archive.org/details/laceguideformak00whit/page/84
+[P85]: https://archive.org/details/laceguideformak00whit/page/85
+[P87]: https://archive.org/details/laceguideformak00whit/page/87
+[P89]: https://archive.org/details/laceguideformak00whit/page/89
+[P90]: https://archive.org/details/laceguideformak00whit/page/90
+[P91]: https://archive.org/details/laceguideformak00whit/page/91
+[P93]: https://archive.org/details/laceguideformak00whit/page/93
+[P94]: https://archive.org/details/laceguideformak00whit/page/94
+[P95]: https://archive.org/details/laceguideformak00whit/page/95
+[P96]: https://archive.org/details/laceguideformak00whit/page/96
+[P97]: https://archive.org/details/laceguideformak00whit/page/97
+[P98]: https://archive.org/details/laceguideformak00whit/page/98
+[P99]: https://archive.org/details/laceguideformak00whit/page/99
+[P100]: https://archive.org/details/laceguideformak00whit/page/100
+[P101]: https://archive.org/details/laceguideformak00whit/page/101
+[P102]: https://archive.org/details/laceguideformak00whit/page/102
+[P103]: https://archive.org/details/laceguideformak00whit/page/103
+[P104]: https://archive.org/details/laceguideformak00whit/page/104
+[P105]: https://archive.org/details/laceguideformak00whit/page/105
+[P106]: https://archive.org/details/laceguideformak00whit/page/106
+[P107]: https://archive.org/details/laceguideformak00whit/page/107
+[P109]: https://archive.org/details/laceguideformak00whit/page/109
+[P110]: https://archive.org/details/laceguideformak00whit/page/110
+[P111]: https://archive.org/details/laceguideformak00whit/page/111
+[P112]: https://archive.org/details/laceguideformak00whit/page/112
+[P113]: https://archive.org/details/laceguideformak00whit/page/113
+[P114]: https://archive.org/details/laceguideformak00whit/page/114
+[P115]: https://archive.org/details/laceguideformak00whit/page/115
+[P116]: https://archive.org/details/laceguideformak00whit/page/116
+[P117]: https://archive.org/details/laceguideformak00whit/page/117
+[P118]: https://archive.org/details/laceguideformak00whit/page/118
+[P119]: https://archive.org/details/laceguideformak00whit/page/119
+[P120]: https://archive.org/details/laceguideformak00whit/page/120
+[P121]: https://archive.org/details/laceguideformak00whit/page/121
+[P122]: https://archive.org/details/laceguideformak00whit/page/122
+[P123]: https://archive.org/details/laceguideformak00whit/page/123
+[P124]: https://archive.org/details/laceguideformak00whit/page/124
+[P125]: https://archive.org/details/laceguideformak00whit/page/125
+[P126]: https://archive.org/details/laceguideformak00whit/page/126
+[P128]: https://archive.org/details/laceguideformak00whit/page/128
+[P129]: https://archive.org/details/laceguideformak00whit/page/129
+[P130]: https://archive.org/details/laceguideformak00whit/page/130
+[P131]: https://archive.org/details/laceguideformak00whit/page/131
+[P132]: https://archive.org/details/laceguideformak00whit/page/132
+[P133]: https://archive.org/details/laceguideformak00whit/page/133
+[P134]: https://archive.org/details/laceguideformak00whit/page/134
+[P135]: https://archive.org/details/laceguideformak00whit/page/135
+[P136]: https://archive.org/details/laceguideformak00whit/page/136
+[P137]: https://archive.org/details/laceguideformak00whit/page/137
+[P138]: https://archive.org/details/laceguideformak00whit/page/138
+[P139]: https://archive.org/details/laceguideformak00whit/page/139
+[P140]: https://archive.org/details/laceguideformak00whit/page/140
+[P141]: https://archive.org/details/laceguideformak00whit/page/141
+[P142]: https://archive.org/details/laceguideformak00whit/page/142
+[P143]: https://archive.org/details/laceguideformak00whit/page/143
+[P144]: https://archive.org/details/laceguideformak00whit/page/144
+[P145]: https://archive.org/details/laceguideformak00whit/page/145
+[P147]: https://archive.org/details/laceguideformak00whit/page/147
+[P148]: https://archive.org/details/laceguideformak00whit/page/148
+[P149]: https://archive.org/details/laceguideformak00whit/page/149
+[P150]: https://archive.org/details/laceguideformak00whit/page/150
+[P151]: https://archive.org/details/laceguideformak00whit/page/151
+[P153]: https://archive.org/details/laceguideformak00whit/page/153
+[P155]: https://archive.org/details/laceguideformak00whit/page/155
+[P156]: https://archive.org/details/laceguideformak00whit/page/156
+[P157]: https://archive.org/details/laceguideformak00whit/page/157
+[P158]: https://archive.org/details/laceguideformak00whit/page/158
+[P159]: https://archive.org/details/laceguideformak00whit/page/159
+[P160]: https://archive.org/details/laceguideformak00whit/page/160
+[P161]: https://archive.org/details/laceguideformak00whit/page/161
+[P162]: https://archive.org/details/laceguideformak00whit/page/162
+[P163]: https://archive.org/details/laceguideformak00whit/page/163
+[P164]: https://archive.org/details/laceguideformak00whit/page/164
+[P166]: https://archive.org/details/laceguideformak00whit/page/166
+[P167]: https://archive.org/details/laceguideformak00whit/page/167
+[P169]: https://archive.org/details/laceguideformak00whit/page/169
+[P171]: https://archive.org/details/laceguideformak00whit/page/171
+[P173]: https://archive.org/details/laceguideformak00whit/page/173
+[P174]: https://archive.org/details/laceguideformak00whit/page/174
+[P175]: https://archive.org/details/laceguideformak00whit/page/175
+[P176]: https://archive.org/details/laceguideformak00whit/page/176
+[P177]: https://archive.org/details/laceguideformak00whit/page/177
+[P178]: https://archive.org/details/laceguideformak00whit/page/178
+[P179]: https://archive.org/details/laceguideformak00whit/page/179
+[P180]: https://archive.org/details/laceguideformak00whit/page/180
+[P181]: https://archive.org/details/laceguideformak00whit/page/181
+[P182]: https://archive.org/details/laceguideformak00whit/page/182
+[P183]: https://archive.org/details/laceguideformak00whit/page/183
+[P184]: https://archive.org/details/laceguideformak00whit/page/184
+[P185]: https://archive.org/details/laceguideformak00whit/page/185
+[P187]: https://archive.org/details/laceguideformak00whit/page/187
+[P189]: https://archive.org/details/laceguideformak00whit/page/189
+[P190]: https://archive.org/details/laceguideformak00whit/page/190
+[P192]: https://archive.org/details/laceguideformak00whit/page/192
+[P193]: https://archive.org/details/laceguideformak00whit/page/193
+[P194]: https://archive.org/details/laceguideformak00whit/page/194
+[P195]: https://archive.org/details/laceguideformak00whit/page/195
+[P196]: https://archive.org/details/laceguideformak00whit/page/196
+[P197]: https://archive.org/details/laceguideformak00whit/page/197
+[P198]: https://archive.org/details/laceguideformak00whit/page/198
+[P199]: https://archive.org/details/laceguideformak00whit/page/199
+[P200]: https://archive.org/details/laceguideformak00whit/page/200
+[P201]: https://archive.org/details/laceguideformak00whit/page/201
+[P203]: https://archive.org/details/laceguideformak00whit/page/203
+[P204]: https://archive.org/details/laceguideformak00whit/page/204
+[P205]: https://archive.org/details/laceguideformak00whit/page/205
+[P206]: https://archive.org/details/laceguideformak00whit/page/206
+[P207]: https://archive.org/details/laceguideformak00whit/page/207
+[P208]: https://archive.org/details/laceguideformak00whit/page/208
+[P209]: https://archive.org/details/laceguideformak00whit/page/209
+[P210]: https://archive.org/details/laceguideformak00whit/page/210
+[P211]: https://archive.org/details/laceguideformak00whit/page/211
+[P212]: https://archive.org/details/laceguideformak00whit/page/212
+[P213]: https://archive.org/details/laceguideformak00whit/page/213
+[P214]: https://archive.org/details/laceguideformak00whit/page/214
+[P215]: https://archive.org/details/laceguideformak00whit/page/215
+[P217]: https://archive.org/details/laceguideformak00whit/page/217
+[P219]: https://archive.org/details/laceguideformak00whit/page/219
+[P220]: https://archive.org/details/laceguideformak00whit/page/220
+[P221]: https://archive.org/details/laceguideformak00whit/page/221
+[P222]: https://archive.org/details/laceguideformak00whit/page/222
+[P224]: https://archive.org/details/laceguideformak00whit/page/224
+[P225]: https://archive.org/details/laceguideformak00whit/page/225
+[P226]: https://archive.org/details/laceguideformak00whit/page/226
+[P227]: https://archive.org/details/laceguideformak00whit/page/227
+[P229]: https://archive.org/details/laceguideformak00whit/page/229
+[P230]: https://archive.org/details/laceguideformak00whit/page/230
+[P231]: https://archive.org/details/laceguideformak00whit/page/231
+[P232]: https://archive.org/details/laceguideformak00whit/page/232
+[P234]: https://archive.org/details/laceguideformak00whit/page/234
+[P235]: https://archive.org/details/laceguideformak00whit/page/235
+[P237]: https://archive.org/details/laceguideformak00whit/page/237
+[P238]: https://archive.org/details/laceguideformak00whit/page/238
+[P239]: https://archive.org/details/laceguideformak00whit/page/239
+[P241]: https://archive.org/details/laceguideformak00whit/page/241
 
 
-### Notes
+### <a name="notes">Notes on the image captions</a>
   
-* **x** links with one or two letters:
+* **`x`** short links
 
-  go to sets of pair diagrams. Each pattern in such a set can be morphed into the others by nudging pins.
+  lead to sets of pair diagrams. Each pattern in such a set can be morphed into the others by nudging pins.
   Only four of these links ([c],[t],[k],[v]) cover more than a third of the grounds in the table,
   a ratio that illustrates how many variations can be made by changing stitches or nudging pin positions.
 
-* **?**
+* [k]/[t] as previous point
+
+  `k` (kat stitch) is the pair diagram for the generator. As the patterns are more about plaits than pairs,
+  you might want `t` (torchon) variations for a pricking.
+
+* **`?`**
+
   The scanned image doesn't match the description by Whiting.
 
-* **-**:
+* **&mdash;**
+
   The ground uses sewings, three-pair stitches, odd number of threads, tallies and/or picots.
   None of these are supported by GroundForge.
