@@ -25,7 +25,7 @@ Table
 * The images link to the corresponding page of the book.
   Though not all pages benefit because of poor originals,
   these links go to scans with the best known resolution.
-* The `diagr` links (**53 done, 41 to go**) lead to customizable diagrams.
+* The `diagr` links (**62 done, 30 to go**) lead to customizable diagrams.
 * More [notes](#notes).
 
 The page [history] (and older [changes]) may show when a pattern was last fixed, and who authored the fix.
@@ -112,19 +112,19 @@ For that purpose, the maintainer needs to list the changed/added patterns in the
 |  5  | [diagr][A5], [k][k] [![](w/page75a.gif)][P75] | [diagr][B5], [k][k] [![](w/page98a.gif)][P98] | [diagr][C5], [k][k] [![](w/page119a.gif)][P119] | [diagr][D5], [c][c] [![](w/page138a.gif)][P138] | &mdash; [![](w/page159a.gif)][P159] | [diagr][F5], [c][c] [![](w/page181a.gif)][P181] | [diagr][G5], [c][c] [![](w/page203a.gif)][P203] | [diagr][H5], [c][c] [![](w/page224a.gif)][P224] |
 |  6  | [diagr][A6], [k][k] [![](w/page76a.gif)][P76] | [diagr][B6], [v][v] [![](w/page99a.gif)][P99] | [diagr][C6], [v][v] [![](w/page120a.gif)][P120] | [diagr][D6], [z][z] [![](w/page139a.gif)][P139] | [diagr][E6] [![](w/page160a.gif)][P160] | [diagr][F6], [t][t] [![](w/page182a.gif)][P182] | &mdash; [![](w/page204a.gif)][P204] | [diagr][H6] [![](w/page225a.gif)][P225] |
 |     | **A** | **B** | **C** | **D** | **E** | **F** | **G** | **H** |
-|  7  | [k][k]/[t][t]  [![](w/page77a.gif)][P77] | [k][k]/[t][t] [![](w/page100a.gif)][P100] | [k][k]/[t][t] [![](w/page121a.gif)][P121] | [k][k]/[t][t] [![](w/page140a.gif)][P140] | [k][k]/[t][t] [![](w/page161a.gif)][P161] | [k][k]/[t][t] [![](w/page183a.gif)][P183] | [k][k]/[t][t] [![](w/page205a.gif)][P205] | [k][k]/[t][t] [![](w/page226a.gif)][P226] |
+|  7  | [valenc](#val), [k][k]/[t][t]  [![](w/page77a.gif)][P77] | [valenc](#val), [k][k]/[t][t] [![](w/page100a.gif)][P100] | [valenc](#val), [k][k]/[t][t] [![](w/page121a.gif)][P121] | [valenc](#val), [k][k]/[t][t] [![](w/page140a.gif)][P140] | [valenc](#val), [k][k]/[t][t] [![](w/page161a.gif)][P161] | [valenc](#val), [k][k]/[t][t] [![](w/page183a.gif)][P183] | [valenc](#val), [k][k]/[t][t] [![](w/page205a.gif)][P205] | [valenc](#val), [k][k]/[t][t] [![](w/page226a.gif)][P226] |
 |  8  | &mdash; [![](w/page79a.gif)][P79] | &mdash; [![](w/page101a.gif)][P101] | &mdash; [![](w/page122a.gif)][P122] | &mdash; [![](w/page141a.gif)][P141] | &mdash; [![](w/page162a.gif)][P162] | &mdash; [![](w/page184a.gif)][P184] | &mdash; [![](w/page206a.gif)][P206] | &mdash; [![](w/page227a.gif)][P227] |
 |  9  | &mdash; [![](w/page80a.gif)][P80] | &mdash; [![](w/page102a.gif)][P102] | [diagr][C9], [v][v] [![](w/page123a.gif)][P123] | [diagr][D9] [![](w/page142a.gif)][P142] | [diagr][E9] [![](w/page163a.gif)][P163] | &nbsp; [![](w/page185a.gif)][P185] | [t][t] [![](w/page207a.gif)][P207] | [diagr][H9], [t][t] [![](w/page229a.gif)][P229] |
-|  10 | &mdash; [![](w/page82a.gif)][P82] | &mdash; [![](w/page103a.gif)][P103] | &mdash; [![](w/page124a.gif)][P124] | &mdash; [![](w/page143a.gif)][P143] | [diagr][E10] [![](w/page164a.gif)][P164] | &nbsp; [![](w/page187a.gif)][P187] | [diagr][G10] [![](w/page208a.gif)][P208] | [diagr][H10] [![](w/page230a.gif)][P230] |
-|  11 | [t][t] [![](w/page83a.gif)][P83] | [t][t] [![](w/page104a.gif)][P104] | &mdash; [![](w/page125a.gif)][P125] | [wk][wk] [![](w/page144a.gif)][P144] | [wk][wk] [![](w/page166a.gif)][P166] | [t][t] [![](w/page189a.gif)][P189] | [k][k] [![](w/page209a.gif)][P209] | &mdash; [![](w/page231a.gif)][P231] |
+|  10 | &mdash; [![](w/page82a.gif)][P82] | &mdash; [![](w/page103a.gif)][P103] | &mdash; [![](w/page124a.gif)][P124] | &mdash; [![](w/page143a.gif)][P143] | [diagr][E10] [![](w/page164a.gif)][P164] | &nbsp; [![](w/page187a.gif)][P187] | [diagr][G10], [![](w/page208a.gif)][P208] | [diagr][H10] [![](w/page230a.gif)][P230] |
+|  11 | [t][t] [![](w/page83a.gif)][P83] | [t][t] [![](w/page104a.gif)][P104] | &mdash; [![](w/page125a.gif)][P125] | [wk][wk] [![](w/page144a.gif)][P144] | [wk][wk] [![](w/page166a.gif)][P166] | [t][t] [![](w/page189a.gif)][P189] | [valenc](#val), [k][k]/[t][t] [![](w/page209a.gif)][P209] | &mdash; [![](w/page231a.gif)][P231] |
 |  12 | [t][t] [![](w/page84a.gif)][P84] | [c][c] [![](w/page105a.gif)][P105] | [diagr][C12] [![](w/page126a.gif)][P126] | [diagr][D12] [![](w/page145a.gif)][P145] | &nbsp; [![](w/page167a.gif)][P167] | &nbsp; [![](w/page190a.gif)][P190] | &nbsp; [![](w/page210a.gif)][P210] | &nbsp; [![](w/page232a.gif)][P232] |
 |     | **A** | **B** | **C** | **D** | **E** | **F** | **G** | **H** |
 |  13 | &mdash; [![](w/page85a.gif)][P85] | &mdash; [![](w/page106a.gif)][P106] | &mdash; [![](w/page128a.gif)][P128] | &mdash; [![](w/page147a.gif)][P147] | &mdash; [![](w/page169a.gif)][P169] | &mdash; [![](w/page192a.gif)][P192] | &nbsp; [![](w/page211a.gif)][P211] | &mdash; [![](w/page234a.gif)][P234] |
 |  14 | &nbsp; [![](w/page87a.gif)][P87] | &nbsp; [![](w/page107a.gif)][P107] | &nbsp; [![](w/page129a.gif)][P129] | [c][c] [![](w/page148a.gif)][P148] | &nbsp; [![](w/page171a.gif)][P171] | &nbsp; [![](w/page193a.gif)][P193] | [diagr][G14] [![](w/page212a.gif)][P212] | &nbsp; [![](w/page235a.gif)][P235] |
 |  15 | &nbsp; [![](w/page89a.gif)][P89] | &nbsp; [![](w/page109a.gif)][P109] | &nbsp; [![](w/page130a.gif)][P130] | &nbsp; [![](w/page149a.gif)][P149] | &nbsp; [![](w/page173a.gif)][P173] | &nbsp; [![](w/page194a.gif)][P194] | &nbsp; [![](w/page213a.gif)][P213] | &nbsp; [![](w/page237a.gif)][P237] |
 |  16 | [ts][ts] [![](w/page90a.gif)][P90] | &nbsp; [![](w/page110a.gif)][P110] | &nbsp; [![](w/page131a.gif)][P131] | [diagr][D16] [![](w/page150a.gif)][P150] | [diagr][E16] [![](w/page174a.gif)][P174] | [diagr][F16] [![](w/page195a.gif)][P195] | [diagr][G16] [![](w/page214a.gif)][P214] | [c][c] [![](w/page238a.gif)][P238] |
-|  17 | &mdash; [![](w/page91a.gif)][P91] | [c][c] [![](w/page111a.gif)][P111] | [k][k] [![](w/page132a.gif)][P132] | &mdash; [![](w/page151a.gif)][P151] | [c][c] [![](w/page175a.gif)][P175] | &mdash; [![](w/page196a.gif)][P196] | &nbsp; [![](w/page215a.gif)][P215] | &nbsp; [![](w/page239a.gif)][P239] |
-|  18 | [t][t] [![](w/page93a.gif)][P93] | &nbsp; [![](w/page112a.gif)][P112] | &nbsp; [![](w/page133a.gif)][P133] | &mdash; [![](w/page153a.gif)][P153] | &mdash; [![](w/page176a.gif)][P176] | &nbsp; [![](w/page197a.gif)][P197] | &mdash; [![](w/page217a.gif)][P217] | &nbsp; [![](w/page241a.gif)][P241] |
+|  17 | &mdash; [![](w/page91a.gif)][P91] | [c][c] [![](w/page111a.gif)][P111] | [k][k] [![](w/page132a.gif)][P132] | &mdash; [![](w/page151a.gif)][P151] | [c][c] [![](w/page175a.gif)][P175] | &mdash; [![](w/page196a.gif)][P196] | &mdash; [![](w/page215a.gif)][P215] | &nbsp; [![](w/page239a.gif)][P239] |
+|  18 | [t][t] [![](w/page93a.gif)][P93] | &mdash; [![](w/page112a.gif)][P112] | &nbsp; [![](w/page133a.gif)][P133] | &mdash; [![](w/page153a.gif)][P153] | &mdash; [![](w/page176a.gif)][P176] | &nbsp; [![](w/page197a.gif)][P197] | &mdash; [![](w/page217a.gif)][P217] | &nbsp; [![](w/page241a.gif)][P241] |
 |     | **A** | **B** | **C** | **D** | **E** | **F** | **G** | **H** |
 
 [P70]: https://archive.org/details/laceguideformak00whit/page/70
@@ -276,17 +276,6 @@ For that purpose, the maintainer needs to list the changed/added patterns in the
 
 
 ### <a name="notes">Notes on the image captions</a>
-  
-* **`x`** short links
-
-  lead to sets of pair diagrams. Each pattern in such a set can be morphed into the others by nudging pins.
-  Only four of these links ([c],[t],[k],[v]) cover more than a third of the grounds in the table,
-  a ratio that illustrates how many variations can be made by changing stitches or nudging pin positions.
-
-* [k]/[t] as previous point
-
-  `k` (kat stitch) is the pair diagram for the generator. As the patterns are more about plaits than pairs,
-  you might want `t` (torchon) variations for a pricking.
 
 * **`?`**
 
@@ -296,3 +285,28 @@ For that purpose, the maintainer needs to list the changed/added patterns in the
 
   The ground uses sewings, three-pair stitches, odd number of threads, tallies and/or picots.
   None of these are supported by GroundForge.
+  
+* **`x`** short links
+
+  lead to sets of pair diagrams. Each pattern in such a set can be morphed into the others by nudging pins.
+  Only four of these links ([c],[t],[k],[v]) cover more than a third of the grounds in the table,
+  a ratio that illustrates how many variations can be made by changing stitches or nudging pin positions.
+
+* <a name="val">[k]/[t] as previous point</a>
+
+  **A7-H7,G11** are variations of **Valenciennes** grounds.
+  `k` (kat stitch) is the pair diagram for the generator. As the patterns are more about plaits than pairs,
+  you might want `t` (torchon) variations for a pricking.
+  
+  <img style="float: right" src="images/valenciennes-flipped.png" title="flipped twists for Valenciennes" width="108"/>
+  The diagram generator is about making variations on grounds.
+  The variations in these Valenciennes grounds are small and sometimes hard to tell apart from the images.
+  So only one [base diagram] is provided with three stitches: two plaits and a cloth stitch at the join.
+  The variations are in the length of the plaits and number of twists around the joins.
+  
+  Define the twists at the plaits.
+  For symmetrical results the number of additional left/right twists 
+  should be flipped between plaits and between top and bottom of each plait. 
+  <!-- TODO form with number of inner twists, outer twists and plait length -->
+  
+[base diagram]: https://d-bl.github.io/GroundForge/tiles.html?patchWidth=11&patchHeight=12&b1=ctc&tile=-5-,B-C&tileStitch=ctctc&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
