@@ -43,7 +43,7 @@ Table
 * The images link to the corresponding page of the book.
   Though not all pages benefit because of poor originals,
   these links go to scans with the best known resolution.
-* The `diagr` links (**75 done, 24 to go**) lead to customizable diagrams.
+* The `diagr` links (**77 done, 22 to go**) lead to customizable diagrams.
 * More [notes](#notes).
 
 The page [history] (and older [changes]) may show when a pattern was last fixed, and who authored the fix.
@@ -82,7 +82,7 @@ For that purpose, the maintainer needs to list the changed/added patterns in the
 
 [C4]: https://d-bl.github.io/GroundForge/tiles.html?whiting=C4_P118&patchWidth=11&patchHeight=10&b1=cttctt&c2=cttctt&a2=cttctt&tile=-5-,B-C&tileStitch=cttctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
 [D4]: https://d-bl.github.io/GroundForge/tiles.html?whiting=D4_P137&patchWidth=11&patchHeight=10&b1=cttcttt&c2=cttcttt&a2=cttcttt&tile=-5-,B-C&tileStitch=cttcttt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
-[E4]: https://d-bl.github.io/GroundForge/tiles.html?whiting=E4_P158&patchWidth=12&patchHeight=14&e1=ctctttctc&a1=ctcctc&h2=ctc&g2=ctclll&f2=ctc&e2=ctc&d2=ctc&c2=ctcrrr&b2=ctc&h3=ctclll&g3=ctc&f3=ctc&d3=ctc&c3=ctc&b3=ctcrrr&a3=ctc&tile=5---5---,-CD632AB,5666-222&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-4&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=3
+[E4]: https://d-bl.github.io/GroundForge/tiles.html?whiting=E4_P158&patchWidth=12&patchHeight=15&b1=ctcctc&a2=ctc&c2=ctc&d2=ctcrr&f2=ctcll&a3=ctcll&b3=ctc&c3=ctcrr&e3=ctc&b4=ctctt&d4=ctc&e4=ctc&f4=ctc&a5=ctc&c5=ctc&d5=ctc&f5=ctc&tile=-5----,B-CD-A,256-5-,-5-535,5-56-2&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-3&shiftRowsSW=5&shiftColsSE=3&shiftRowsSE=5
 [F4]: https://d-bl.github.io/GroundForge/tiles.html?whiting=F4_P180&patchWidth=9&patchHeight=9&d1=ctc&c1=ctc&b1=ctc&a1=ctc&d2=ctc&c2=ctcllctc&a2=ctcrrctc&tile=1483,8-48&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
 [H4]: https://d-bl.github.io/GroundForge/tiles.html?whiting=H4_P222&patchWidth=16&patchHeight=16&g1=ctc&f1=ctcrr&d1=ctcll&c1=ctc&a1=ctc&h2=ctc&e2=ctcttctc&b2=ctc&g3=ctcll&f3=ctc&d3=ctc&c3=ctcrr&a3=ctc&tile=5-25-56-,-5--5--5,5-C6-2B-&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-4&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=3
 
@@ -125,6 +125,8 @@ For that purpose, the maintainer needs to list the changed/added patterns in the
 [G12]: https://d-bl.github.io/GroundForge/tiles.html?whiting=G12_P210&patchWidth=10&patchHeight=9&e1=ctcll&c1=ctcctc&a1=ctcrr&f2=ctcctctt&d2=ctc&b2=ctc&e3=ctcrr&c3=ctc&a3=ctcll&tile=5-5-5-,-5-5-5,5-5-5-&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-3&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=3
 [G14]: https://d-bl.github.io/GroundForge/tiles.html?whiting=G14_P212&patchWidth=7&patchHeight=12&a1=ctc&b2=ctc&a2=ctcll&b3=ctcrr&a3=ctc&a4=ctctt&tile=5-,12,88,4-&tileStitch=ctc&shiftColsSW=-1&shiftRowsSW=4&shiftColsSE=1&shiftRowsSE=4
 
+[A16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=A16_P90&patchWidth=11&patchHeight=13&b1=ctcctc&c2=ctcr&a2=ctcl&d3=ctc&b3=ctct&c4=ctc&a4=ctc&tile=-5--,B-C-,-5-5,5-5-&tileStitch=ctc&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4
+[B16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=B16_P110&patchWidth=11&patchHeight=17&b1=ctcctc&c2=ctcr&a2=ctcl&d3=ctct&b3=ctct&c4=ctct&a4=ctct&d5=ctct&b5=ctc&c6=ctc&a6=ctc&tile=-5--,B-C-,-5-5,5-5-,-5-5,5-5-,&tileStitch=ctct&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=4&shiftRowsSE=6
 [D16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=D16_P150&patchWidth=9&patchHeight=12&b1=ctc&c2=ctc&a2=ctcll&c3=ctcrr&a3=ctc&c4=ctc&a4=ctcll&c5=ctcrr&a5=ctc&tile=-5-,E-2,8-M,F-1,8-M&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=5&shiftColsSE=3&shiftRowsSE=5
 [E16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=E16_P174&patchWidth=11&patchHeight=12&f1=ctc&d1=ctc&b1=ctct&f2=ctcll&e2=ctc&c2=ctcll&a2=ctc&f3=ctc&e3=ctcrr&c3=ctc&b3=ctcrr&f4=ctcll&e4=ctc&c4=ctcll&b4=ctc&f5=ctc&d5=ctcrr&c5=ctc&b5=ctcrr&e6=ctct&c6=ctct&a6=ctct&tile=-5-L-H,H-E-21,-O8-M8,-1F-1F,-M86-M,5-4-K-&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=6&shiftRowsSE=6
 [F16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=F16_P195&patchWidth=8&patchHeight=14&a1=ctct&b2=ctct&a3=ctc&b4=ctc&a4=ctcll&b5=ctc&a5=ctcrr&b6=ctcll&a6=ctc&b7=ctcrr&a7=ctc&a8=ctct&tile=5-,-5,5-,12,99,11,66,4-&tileStitch=ctc&shiftColsSW=-1&shiftRowsSW=8&shiftColsSE=1&shiftRowsSE=8
@@ -155,7 +157,7 @@ For that purpose, the maintainer needs to list the changed/added patterns in the
 |  13 | &mdash; [![](w/page85a.gif)][P85] | &mdash; [![](w/page106a.gif)][P106] | &mdash; [![](w/page128a.gif)][P128] | &mdash; [![](w/page147a.gif)][P147] | &mdash; [![](w/page169a.gif)][P169] | &mdash; [![](w/page192a.gif)][P192] | &mdash; [![](w/page211a.gif)][P211] | &mdash; [![](w/page234a.gif)][P234] |
 |  14 | &nbsp; [![](w/page87a.gif)][P87] | &nbsp; [![](w/page107a.gif)][P107] | &nbsp; [![](w/page129a.gif)][P129] | [c][c] [![](w/page148a.gif)][P148] | &nbsp; [![](w/page171a.gif)][P171] | &nbsp; [![](w/page193a.gif)][P193] | [diagr][G14] [![](w/page212a.gif)][P212] | &nbsp; [![](w/page235a.gif)][P235] |
 |  15 | &mdash; [![](w/page89a.gif)][P89] | &mdash; [![](w/page109a.gif)][P109] | &mdash; [![](w/page130a.gif)][P130] | &mdash; [![](w/page149a.gif)][P149] | &mdash; [![](w/page173a.gif)][P173] | &mdash; [![](w/page194a.gif)][P194] | &mdash; [![](w/page213a.gif)][P213] | &mdash; [![](w/page237a.gif)][P237] |
-|  16 | [ts][ts] [![](w/page90a.gif)][P90] | &nbsp; [![](w/page110a.gif)][P110] | &nbsp; [![](w/page131a.gif)][P131] | [diagr][D16] [![](w/page150a.gif)][P150] | [diagr][E16] [![](w/page174a.gif)][P174] | [diagr][F16] [![](w/page195a.gif)][P195] | [diagr][G16] [![](w/page214a.gif)][P214] | [c][c] [![](w/page238a.gif)][P238] |
+|  16 | [diagr][A16], [ts][ts] [![](w/page90a.gif)][P90] | [diagr][B16] [![](w/page110a.gif)][P110] | &nbsp; [![](w/page131a.gif)][P131] | [diagr][D16] [![](w/page150a.gif)][P150] | [diagr][E16] [![](w/page174a.gif)][P174] | [diagr][F16] [![](w/page195a.gif)][P195] | [diagr][G16] [![](w/page214a.gif)][P214] | [c][c] [![](w/page238a.gif)][P238] |
 |  17 | &mdash; [![](w/page91a.gif)][P91] | [c][c] [![](w/page111a.gif)][P111] | [diagr][C17], [k][k] [![](w/page132a.gif)][P132] | &mdash; [![](w/page151a.gif)][P151] | [diagr][E17],[c][c] [![](w/page175a.gif)][P175] | &mdash; [![](w/page196a.gif)][P196] | &mdash; [![](w/page215a.gif)][P215] | &mdash; [![](w/page239a.gif)][P239] |
 |  18 | [diagr][A18], [t][t] [![](w/page93a.gif)][P93] | &mdash; [![](w/page112a.gif)][P112] | &mdash; [![](w/page133a.gif)][P133] | &mdash; [![](w/page153a.gif)][P153] | &mdash; [![](w/page176a.gif)][P176] | [diagr][F18], [c][c] [![](w/page197a.gif)][P197] | &mdash; [![](w/page217a.gif)][P217] | &nbsp; [![](w/page241a.gif)][P241] |
 |     | **A** | **B** | **C** | **D** | **E** | **F** | **G** | **H** |
