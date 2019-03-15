@@ -7,7 +7,8 @@ Whiting index
 =============
 
 Multiple online archives published a digitised version of
-'_A Lace Guide for Makers and Collectors_' by Gertrude Whiting, which dates from 1920. 
+'_A Lace Guide for Makers and Collectors_' by Gertrude Whiting, which dates from 1920.
+The MET in new York has the [original sampler].
 
 *Jo Edkins* went through the trouble to cut-and-paste thumbnails and pages.
 She republished an [index] of the grounds in a web-friendly way with her own annotations.
@@ -17,6 +18,7 @@ The thumbnails are reused below with kind permission.
 [history]: https://github.com/d-bl/GroundForge/commits/master/docs/help/Whiting-Index.md
 [changes]: https://github.com/d-bl/GroundForge/wiki/Whiting-Index/_history
 [archive.org]: https://archive.org/details/laceguideformak00whit/page/234
+[original sampler]: https://www.metmuseum.org/blogs/collection-insights/2018/gertrude-whiting-bobbin-lace-sampler
 
 Objective / disclaimer
 ----------------------
