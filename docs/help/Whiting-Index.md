@@ -45,7 +45,7 @@ Table
 * The images link to the corresponding page of the book.
   Though not all pages benefit because of poor originals,
   these links go to scans with the best known resolution.
-* The `diagr` links (**77 done, 22 to go**) lead to customizable diagrams.
+* The `diagr` links (**79 done, 18 to go**) lead to customizable diagrams.
 * More [notes](#notes).
 
 The page [history] (and older [changes]) may show when a pattern was last fixed, and who authored the fix.
@@ -129,6 +129,7 @@ For that purpose, the maintainer needs to list the changed/added patterns in the
 
 [A16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=A16_P90&patchWidth=11&patchHeight=13&b1=ctcctc&c2=ctcr&a2=ctcl&d3=ctc&b3=ctct&c4=ctc&a4=ctc&tile=-5--,B-C-,-5-5,5-5-&tileStitch=ctc&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4
 [B16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=B16_P110&patchWidth=11&patchHeight=17&b1=ctcctc&c2=ctcr&a2=ctcl&d3=ctct&b3=ctct&c4=ctct&a4=ctct&d5=ctct&b5=ctc&c6=ctc&a6=ctc&tile=-5--,B-C-,-5-5,5-5-,-5-5,5-5-,&tileStitch=ctct&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=4&shiftRowsSE=6
+[C16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=C16_P131&patchWidth=13&patchHeight=16&e1=ctct&c1=ctc&a1=ctct&f2=ctct&d2=ctc&c2=ctc&b2=ctc&e3=ctc&d3=ctc&b3=ctc&a3=ctc&c4=ctcctc&e5=ctcr&d5=ctc&b5=ctc&a5=ctcl&f6=ctct&d6=ctcr&c6=ctc&b6=ctcl&e7=ctct&c7=ctct&a7=ctct&f8=ctct&d8=ctct&b8=ctct&tile=5-5-5-,-535-5,56-25-,--5---,AB-CD-,-256-5,5-5-5-,-5-5-5&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=6&shiftRowsSE=8
 [D16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=D16_P150&patchWidth=9&patchHeight=12&b1=ctc&c2=ctc&a2=ctcll&c3=ctcrr&a3=ctc&c4=ctc&a4=ctcll&c5=ctcrr&a5=ctc&tile=-5-,E-2,8-M,F-1,8-M&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=5&shiftColsSE=3&shiftRowsSE=5
 [E16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=E16_P174&patchWidth=11&patchHeight=12&f1=ctc&d1=ctc&b1=ctct&f2=ctcll&e2=ctc&c2=ctcll&a2=ctc&f3=ctc&e3=ctcrr&c3=ctc&b3=ctcrr&f4=ctcll&e4=ctc&c4=ctcll&b4=ctc&f5=ctc&d5=ctcrr&c5=ctc&b5=ctcrr&e6=ctct&c6=ctct&a6=ctct&tile=-5-L-H,H-E-21,-O8-M8,-1F-1F,-M86-M,5-4-K-&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=6&shiftRowsSE=6
 [F16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=F16_P195&patchWidth=8&patchHeight=14&a1=ctct&b2=ctct&a3=ctc&b4=ctc&a4=ctcll&b5=ctc&a5=ctcrr&b6=ctcll&a6=ctc&b7=ctcrr&a7=ctc&a8=ctct&tile=5-,-5,5-,12,99,11,66,4-&tileStitch=ctc&shiftColsSW=-1&shiftRowsSW=8&shiftColsSE=1&shiftRowsSE=8
@@ -139,6 +140,8 @@ For that purpose, the maintainer needs to list the changed/added patterns in the
 
 [A18]: https://d-bl.github.io/GroundForge/tiles.html?whiting=A18_P93&patchWidth=8&patchHeight=9&c1=ctcrr&a1=ctcll&d2=ctc&b2=ctctt&tile=5-5-,-5-5&tileStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
 [F18]: https://d-bl.github.io/GroundForge/tiles.html?whiting=FF18_P197&patchWidth=6&patchHeight=6&b1=cttctt&a1=cttctt&b2=cttctt&a2=cttctt&tile=88,11&tileStitch=cttctt&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[H18a]: https://d-bl.github.io/GroundForge/tiles.html?whiting=H18_P241&patchWidth=7&patchHeight=6&b1=ctcrrrr&a1=ctc&b2=ctc&a2=ctcllll&tile=88,11&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[H18b]: https://d-bl.github.io/GroundForge/tiles.html?whiting=H18_P241&patchWidth=9&patchHeight=14&b1=ctcttt&c2=ctcttt&a2=ctcttt&b3=ctcttt&c4=ctctll&a4=ctctrr&b5=ctcttt&tile=-5-,5-5,-5-,B-C,-5-,Y-W,&tileStitch=ctcttt&shiftColsSW=-3&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=3
 
 |     | A | B | C | D | E | F | G | H |
 |-----|---|---|---|---|---|---|---|---|
@@ -159,9 +162,9 @@ For that purpose, the maintainer needs to list the changed/added patterns in the
 |  13 | &mdash; [![](w/page85a.gif)][P85] | &mdash; [![](w/page106a.gif)][P106] | &mdash; [![](w/page128a.gif)][P128] | &mdash; [![](w/page147a.gif)][P147] | &mdash; [![](w/page169a.gif)][P169] | &mdash; [![](w/page192a.gif)][P192] | &mdash; [![](w/page211a.gif)][P211] | &mdash; [![](w/page234a.gif)][P234] |
 |  14 | &nbsp; [![](w/page87a.gif)][P87] | &nbsp; [![](w/page107a.gif)][P107] | &nbsp; [![](w/page129a.gif)][P129] | [c][c] [![](w/page148a.gif)][P148] | &nbsp; [![](w/page171a.gif)][P171] | &nbsp; [![](w/page193a.gif)][P193] | [diagr][G14] [![](w/page212a.gif)][P212] | &nbsp; [![](w/page235a.gif)][P235] |
 |  15 | &mdash; [![](w/page89a.gif)][P89] | &mdash; [![](w/page109a.gif)][P109] | &mdash; [![](w/page130a.gif)][P130] | &mdash; [![](w/page149a.gif)][P149] | &mdash; [![](w/page173a.gif)][P173] | &mdash; [![](w/page194a.gif)][P194] | &mdash; [![](w/page213a.gif)][P213] | &mdash; [![](w/page237a.gif)][P237] |
-|  16 | [diagr][A16], [ts][ts] [![](w/page90a.gif)][P90] | [diagr][B16] [![](w/page110a.gif)][P110] | &nbsp; [![](w/page131a.gif)][P131] | [diagr][D16] [![](w/page150a.gif)][P150] | [diagr][E16] [![](w/page174a.gif)][P174] | [diagr][F16] [![](w/page195a.gif)][P195] | [diagr][G16] [![](w/page214a.gif)][P214] | [c][c] [![](w/page238a.gif)][P238] |
+|  16 | [diagr][A16], [ts][ts] [![](w/page90a.gif)][P90] | [diagr][B16] [![](w/page110a.gif)][P110] | [diagr][C16] [![](w/page131a.gif)][P131] | [diagr][D16] [![](w/page150a.gif)][P150] | [diagr][E16] [![](w/page174a.gif)][P174] | [diagr][F16] [![](w/page195a.gif)][P195] | [diagr][G16] [![](w/page214a.gif)][P214] | [c][c] [![](w/page238a.gif)][P238] |
 |  17 | &mdash; [![](w/page91a.gif)][P91] | [c][c] [![](w/page111a.gif)][P111] | [diagr][C17], [k][k] [![](w/page132a.gif)][P132] | &mdash; [![](w/page151a.gif)][P151] | [diagr][E17],[c][c] [![](w/page175a.gif)][P175] | &mdash; [![](w/page196a.gif)][P196] | &mdash; [![](w/page215a.gif)][P215] | &mdash; [![](w/page239a.gif)][P239] |
-|  18 | [diagr][A18], [t][t] [![](w/page93a.gif)][P93] | &mdash; [![](w/page112a.gif)][P112] | &mdash; [![](w/page133a.gif)][P133] | &mdash; [![](w/page153a.gif)][P153] | &mdash; [![](w/page176a.gif)][P176] | [diagr][F18], [c][c] [![](w/page197a.gif)][P197] | &mdash; [![](w/page217a.gif)][P217] | &nbsp; [![](w/page241a.gif)][P241] |
+|  18 | [diagr][A18], [t][t] [![](w/page93a.gif)][P93] | &mdash; [![](w/page112a.gif)][P112] | &mdash; [![](w/page133a.gif)][P133] | &mdash; [![](w/page153a.gif)][P153] | &mdash; [![](w/page176a.gif)][P176] | [diagr][F18], [c][c] [![](w/page197a.gif)][P197] | &mdash; [![](w/page217a.gif)][P217] | [diagr][H18b], [top][H18a] [![](w/page241a.gif)][P241] |
 |     | **A** | **B** | **C** | **D** | **E** | **F** | **G** | **H** |
 
 [P70]: https://archive.org/details/laceguideformak00whit/page/70
