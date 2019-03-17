@@ -20,7 +20,7 @@ Feeds can alert you about changes in the [project files] and [release notes].
 The sources of the [help pages] (or any other file) have a `history` button and a `blame` button.
 The latter shows who was the last to touch a line, might be just a space or typo.
 
-[project files]: https://github.com/d-bl/GroundForge/commits/gh-pages.atom
+[project files]: https://github.com/d-bl/GroundForge/commits/master.atom
 [release notes]: https://github.com/d-bl/GroundForge/releases.atom
 [help pages]: https://github.com/d-bl/GroundForge/tree/master/docs/help
 
