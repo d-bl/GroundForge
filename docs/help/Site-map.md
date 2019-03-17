@@ -3,8 +3,8 @@ layout: default
 title: Site Map
 ---
 
-Site Map
-========
+Site Map - A visual TOC
+=======================
 
 The arrows in the diagram represent links between pages.
 The page names (or address fragments) link to examples.
