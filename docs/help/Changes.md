@@ -28,8 +28,7 @@ Desired changes
 ---------------
 
 * [Browser issues](https://github.com/d-bl/GroundForge/issues?q=is%3Aissue+is%3Aopen+label%3A%22Browser+support%22)
-* [Other issues](https://github.com/d-bl/GroundForge/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+-label%3A%22Browser+support%22+-label%3A%22nice+to+have%22+)
-* [Nice to have](https://github.com/d-bl/GroundForge/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22nice%20to%20have%22%20)
+* [Other issues](https://github.com/d-bl/GroundForge/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+-label%3A%22Browser+support%22)
 
 To receive email alerts about discussions: use the "watch" button almost on top of the [project page].
 
