@@ -118,11 +118,11 @@ import scala.util.{Failure, Success, Try}
     'N' -> SrcNodes(Cell( 0,-2),Cell(-2, 0)), // _.|..
     'O' -> SrcNodes(Cell( 0,-2),Cell(-1,-1)), // _\...
     // single short
-    'V' -> SrcNodes(Cell( 0,-2),Cell( 0,-2)), // _....
+    'V' -> SrcNodes(Cell( 0,-1),Cell( 0,-1)), // _....
     'W' -> SrcNodes(Cell(-1,-1),Cell(-1,-1)), // .\...
     'X' -> SrcNodes(Cell(-1, 0),Cell(-1, 0)), // ..|..
     'Y' -> SrcNodes(Cell(-1, 1),Cell(-1, 1)), // .../.
-    'Z' -> SrcNodes(Cell( 0,-2),Cell( 0,-2)), // ...._
+    'Z' -> SrcNodes(Cell( 0, 1),Cell( 0, 1)), // ...._
   )
   /** Translates a character in a matrix string into relative links with two source nodes.
     * The source nodes are defined with relative (row,column) numbers.
