@@ -31,6 +31,8 @@ As unavoidable side effect this exercise provides diagrams for patterns in the b
 
 Creating the diagrams sparked ideas to extend functionality of the diagram generator
 but a third of the patterns in the table are not expected to be supported.
+The page [history] (and older [changes]) may show when a pattern was created or fixed and who authored it.
+For an easy overview the maintainer needs to list the changed/added patterns in the _edit note_.
 
 Table
 -----
@@ -39,10 +41,7 @@ Table
   Though not all pages benefit because of poor originals,
   these links go to scans with the best known resolution.
 * The `diagr` links (**86 done, 4 to go**) lead to customizable diagrams.
-* More [notes](#notes).
-
-The page [history] (and older [changes]) may show when a pattern was last fixed, and who authored the fix.
-For that purpose, the maintainer needs to list the changed/added patterns in the _edit note_.
+* [Notes](#notes) on the other components of the image captions.
 
 [c]: /GroundForge/sheet.html?patch=88%0A11;bricks&patch=66%0A22;bricks&patch=88%0A99%0A11%0A00;bricks&patch=66%0A11%0A88%0A22;bricks&patch=66%0A99%0A22%0A00;bricks
 [t]: /GroundForge/sheet.html?patch=53%0A53%0A53%0A5-;bricks&patch=5663%0A5663;checker&patch=53%0A5-;bricks&patch=563%0A563%0A563;checker&patch=53%0A53;checker&patch=5632%0A5632;checker&patch5353%0A5353;bricks&patch=5-%0A-5;checker&patch=5353%0A5353%0A5-5-%0A-5-5;checker&patch=5632%0A56-2%0A5-5-%0A-535;checker&patch=53%0A5-%0A-5%0A5-;bricks&patch=44%0A77%0A44%0A77;bricks&patch=44%0A44%0A77%0A77;bricks&patch=66%0A88%0A66%0A11;bricks&patch=66%0A66%0A88%0A11;checker&patch=66%0A66%0A99%0A00;checker&patch=6;checker&patch=566-%0A66-5%0A6-56%0A-566;checker
@@ -125,7 +124,7 @@ For that purpose, the maintainer needs to list the changed/added patterns in the
 [E14]: https://d-bl.github.io/GroundForge/tiles.html?whiting=E14_P171&patchWidth=17&patchHeight=19&d1=ctcr&c1=ctc&b1=ctcl&c2=ctct&f3=ctct&e4=ctct&a4=ctcT&f5=ctct&c6=ctc&d7=ctc&c7=ctc&b7=ctc&e8=ctcr&d8=ctc&b8=ctcr&a8=ctc&e9=ctc&d9=ctcl&b9=ctc&a9=ctcl&e10=ctcr&d10=ctc&b10=ctcr&a10=ctc&e11=ctc&d11=ctcl&b11=ctc&a11=ctcl&tile=-256--,Y-5-W-,-Y-W-5,5---5-,-W-Y-5,W-5-Y-,-535--,L6-O9-,1F-1F-,M8-M8-,1F-1F-,&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=11&shiftColsSE=6&shiftRowsSE=11
 [F14]: https://d-bl.github.io/GroundForge/tiles.html?whiting=F14_P193&patchWidth=16&patchHeight=24&d10=tctct&d12=tctct&d14=tctct&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14
 [G14]: https://d-bl.github.io/GroundForge/tiles.html?whiting=G14_P212&patchWidth=7&patchHeight=12&a1=ctc&b2=ctc&a2=ctcll&b3=ctcrr&a3=ctc&a4=ctctt&tile=5-,12,88,4-&tileStitch=ctc&shiftColsSW=-1&shiftRowsSW=4&shiftColsSE=1&shiftRowsSE=4
-[H14]: https://d-bl.github.io/GroundForge/tiles.html?whiting=H14_P235&patchWidth=26&patchHeight=25&f1=ctc&e1=ctcl&c1=ctc&b1=ctc&a1=ctclllctc&f2=ctcr&e2=ctc&c2=ctcr&b2=ctc&f3=ctcl&e3=ctcl&c3=ctc&b3=ctc&a3=ctclllctc&f4=ctcr&e4=ctc&c4=ctcr&b4=ctc&e5=tctctpctct&c5=ctc&b5=ctc&a5=ctc&f6=rctctpctct&c6=ctcrrrctc&b6=ctc&a6=ctc&e7=rctctpctct&b7=ctc&a7=ctcl&c8=ctcrrrctc&b8=ctc&a8=ctc&f9=ctctpctct&b9=ctc&a9=ctcl&d10=ctc&c10=ctc&b10=ctc&a10=ctc&c11=ctc&b11=ctc&a11=ctc&g12=ctcr&f12=ctc&d12=ctcr&c12=ctc&b12=ctc&tile=11f-1F--,-78-M8--,a1F-1F--,-78-M8--,d88-4---,m88w-2y-,14--cxw-,M8Dyxxx-,14-x-7x-,M8d8-xww,114--xxx,-78d-m8-&tileStitch=ctc&shiftColsSW=1&shiftRowsSW=12&shiftColsSE=8&shiftRowsSE=6
+[H14]: https://d-bl.github.io/GroundForge/tiles.html?whiting=H14_P235&patchWidth=26&patchHeight=25&f1=ctc&e1=ctcl&c1=ctc&b1=ctc&a1=ctclllctc&f2=ctcr&e2=ctc&c2=ctcr&b2=ctc&f3=ctc&e3=ctcl&c3=ctc&b3=ctc&a3=ctclllctc&f4=ctcr&e4=ctc&c4=ctcr&b4=ctc&e5=tctctpctct&c5=ctc&b5=ctc&a5=ctc&f6=rctctpctct&c6=ctcrrrctc&b6=ctc&a6=ctc&e7=rctctpctct&b7=ctc&a7=ctcl&c8=ctcrrrctc&b8=ctc&a8=ctc&f9=ctctpctct&b9=ctc&a9=ctcl&d10=ctc&c10=ctc&b10=ctc&a10=ctc&c11=ctc&b11=ctc&a11=ctc&g12=ctcr&f12=ctc&d12=ctcr&c12=ctc&b12=ctc&tile=11f-1F--,-78-M8--,a1F-1F--,-78-M8--,d88-4---,m88w-2y-,14--cxw-,M8Dyxxx-,14-x-7x-,M8d8-xww,114--xxx,-78d-m8-&tileStitch=ctc&shiftColsSW=1&shiftRowsSW=12&shiftColsSE=8&shiftRowsSE=6
 
 [A16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=A16_P90&patchWidth=11&patchHeight=13&b1=ctcctc&c2=ctcr&a2=ctcl&d3=ctc&b3=ctct&c4=ctc&a4=ctc&tile=-5--,B-C-,-5-5,5-5-&tileStitch=ctc&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4
 [B16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=B16_P110&patchWidth=11&patchHeight=17&b1=ctcctc&c2=ctcr&a2=ctcl&d3=ctct&b3=ctct&c4=ctct&a4=ctct&d5=ctct&b5=ctc&c6=ctc&a6=ctc&tile=-5--,B-C-,-5-5,5-5-,-5-5,5-5-,&tileStitch=ctct&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=4&shiftRowsSE=6
@@ -160,7 +159,7 @@ For that purpose, the maintainer needs to list the changed/added patterns in the
 |  12 | [diagr][A12] [![](w/page84a.gif)][P84] | # [![](w/page105a.gif)][P105] | [diagr][C12] [![](w/page126a.gif)][P126] | [diagr][D12] [![](w/page145a.gif)][P145] | &nbsp; [![](w/page167a.gif)][P167] | &nbsp; [![](w/page190a.gif)][P190] | [diagr][G12] [![](w/page210a.gif)][P210] | [diagr][H12] [![](w/page232a.gif)][P232] |
 |     | **A** | **B** | **C** | **D** | **E** | **F** | **G** | **H** |
 |  13 | &mdash; [![](w/page85a.gif)][P85] | &mdash; [![](w/page106a.gif)][P106] | &mdash; [![](w/page128a.gif)][P128] | &mdash; [![](w/page147a.gif)][P147] | &mdash; [![](w/page169a.gif)][P169] | &mdash; [![](w/page192a.gif)][P192] | &mdash; [![](w/page211a.gif)][P211] | &mdash;<br> [![](w/page234a.gif)][P234] |
-|  14 | &iquest;? [![](w/page87a.gif)][P87] | &iquest;? [![](w/page107a.gif)][P107] | [diagr][E14] [![](w/page129a.gif)][P129] | # [![](w/page148a.gif)][P148] | [diagr][E14] [![](w/page171a.gif)][P171] | [diagr][F14]  [![](w/page193a.gif)][P193] | [diagr][G14] [![](w/page212a.gif)][P212] | [diagr][H14] 6&rarr;5  [![](w/page235a.gif)][P235] |
+|  14 | &iquest;? [![](w/page87a.gif)][P87] | &iquest;? [![](w/page107a.gif)][P107] | [diagr][E14] [![](w/page129a.gif)][P129] | # [![](w/page148a.gif)][P148] | [diagr][E14] [![](w/page171a.gif)][P171] | [diagr][F14]  [![](w/page193a.gif)][P193] | [diagr][G14] [![](w/page212a.gif)][P212] | 6&rarr;5  [![](w/page235a.gif)][P235] |
 |  15 | &mdash; [![](w/page89a.gif)][P89] | &mdash; [![](w/page109a.gif)][P109] | &mdash; [![](w/page130a.gif)][P130] | &mdash; [![](w/page149a.gif)][P149] | &mdash; [![](w/page173a.gif)][P173] | &mdash; [![](w/page194a.gif)][P194] | &mdash; [![](w/page213a.gif)][P213] | &mdash;<br> [![](w/page237a.gif)][P237] |
 |  16 | [diagr][A16], [ts][ts] [![](w/page90a.gif)][P90] | [diagr][B16] [![](w/page110a.gif)][P110] | [diagr][C16] [![](w/page131a.gif)][P131] | [diagr][D16] [![](w/page150a.gif)][P150] | [diagr][E16] [![](w/page174a.gif)][P174] | [diagr][F16] [![](w/page195a.gif)][P195] | [diagr][G16] [![](w/page214a.gif)][P214] | #<br> [![](w/page238a.gif)][P238] |
 |  17 | &mdash; [![](w/page91a.gif)][P91] | # [![](w/page111a.gif)][P111] | [diagr][C17], [k][k] [![](w/page132a.gif)][P132] | &mdash; [![](w/page151a.gif)][P151] | [diagr][E17],[c][c] [![](w/page175a.gif)][P175] | &mdash; [![](w/page196a.gif)][P196] | &mdash; [![](w/page215a.gif)][P215] | &mdash;<br> [![](w/page239a.gif)][P239] |
@@ -342,9 +341,12 @@ For that purpose, the maintainer needs to list the changed/added patterns in the
 
 * **6&rarr;5**
 
-  The lace sample weaves 6 times and has at least 4 times of weaving the diagonal pair through the ribbons.
+  The lace sample weaves 6 times and has at least 4 times of weaving the diagonal pairs
+  through the wavy ribbons, not counting mirrored versions.
+  So far a [diagram][H14] that weaves 5 times.
+  This causes a new pair per repeat on the left and drop another at the right.
   The diagram applies the two most common methods of weaving through the ribbons.
-  Weaving only five times cuts the dimensions of the diagram definition in half.
+  Weaving 6 times means multiplying the dimensions of the diagram definition by two.
 
 * <a name="val">[k]/[t] as previous point</a>
 
