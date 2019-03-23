@@ -125,7 +125,8 @@ Table
 [E14]: https://d-bl.github.io/GroundForge/tiles.html?whiting=E14_P171&patchWidth=17&patchHeight=19&d1=ctcr&c1=ctc&b1=ctcl&c2=ctct&f3=ctct&e4=ctct&a4=ctcT&f5=ctct&c6=ctc&d7=ctc&c7=ctc&b7=ctc&e8=ctcr&d8=ctc&b8=ctcr&a8=ctc&e9=ctc&d9=ctcl&b9=ctc&a9=ctcl&e10=ctcr&d10=ctc&b10=ctcr&a10=ctc&e11=ctc&d11=ctcl&b11=ctc&a11=ctcl&tile=-256--,Y-5-W-,-Y-W-5,5---5-,-W-Y-5,W-5-Y-,-535--,L6-O9-,1F-1F-,M8-M8-,1F-1F-,&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=11&shiftColsSE=6&shiftRowsSE=11
 [F14]: https://d-bl.github.io/GroundForge/tiles.html?whiting=F14_P193&patchWidth=16&patchHeight=24&d10=tctct&d12=tctct&d14=tctct&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14
 [G14]: https://d-bl.github.io/GroundForge/tiles.html?whiting=G14_P212&patchWidth=7&patchHeight=12&a1=ctc&b2=ctc&a2=ctcll&b3=ctcrr&a3=ctc&a4=ctctt&tile=5-,12,88,4-&tileStitch=ctc&shiftColsSW=-1&shiftRowsSW=4&shiftColsSE=1&shiftRowsSE=4
-[H14]: https://d-bl.github.io/GroundForge/tiles.html?whiting=H14_P235&patchWidth=26&patchHeight=25&f1=ctc&e1=ctcl&c1=ctc&b1=ctc&a1=ctclllctc&f2=ctcr&e2=ctc&c2=ctcr&b2=ctc&f3=ctc&e3=ctcl&c3=ctc&b3=ctc&a3=ctclllctc&f4=ctcr&e4=ctc&c4=ctcr&b4=ctc&e5=tctctpctct&c5=ctc&b5=ctc&a5=ctc&f6=rctctpctct&c6=ctcrrrctc&b6=ctc&a6=ctc&e7=rctctpctct&b7=ctc&a7=ctcl&c8=ctcrrrctc&b8=ctc&a8=ctc&f9=ctctpctct&b9=ctc&a9=ctcl&d10=ctc&c10=ctc&b10=ctc&a10=ctc&c11=ctc&b11=ctc&a11=ctc&g12=ctcr&f12=ctc&d12=ctcr&c12=ctc&b12=ctc&tile=11f-1F--,-78-M8--,a1F-1F--,-78-M8--,d88-4---,m88w-2y-,14--cxw-,M8Dyxxx-,14-x-7x-,M8d8-xww,114--xxx,-78d-m8-&tileStitch=ctc&shiftColsSW=1&shiftRowsSW=12&shiftColsSE=8&shiftRowsSE=6
+[H14a]: https://d-bl.github.io/GroundForge/tiles.html?whiting=H14_P235&patchWidth=25&patchHeight=22&m1=rctctpctct&l1=lctctpctct&i1=ctc&h1=ctcl&f1=ctc&e1=ctcl&c1=ctc&b1=ctc&a1=ctclllctc&j2=ctcrrrctc&i2=ctc&h2=ctc&f2=ctcr&e2=ctc&c2=ctcr&b2=ctc&l3=ctctpctc&i3=ctc&h3=ctcl&f3=ctc&e3=ctcl&c3=ctc&b3=ctc&a3=ctclllctc&j4=ctcrrrctc&i4=ctc&h4=ctc&f4=ctcr&e4=ctc&c4=ctcr&b4=ctc&i5=ctc&h5=ctcl&f5=ctc&e5=ctcl&c5=ctc&b5=ctc&a5=ctc&j6=ctc&i6=ctc&h6=ctc&e6=ctctpctct&d6=ctc&c6=ctc&b6=ctc&a6=ctc&m7=ctc&l7=ctcl&j7=ctc&i7=ctc&h7=ctclllctc&c7=ctc&b7=ctc&a7=ctcl&m8=ctcr&l8=ctc&j8=ctcr&i8=ctc&f8=rctctpctct&e8=lctctpctct&c8=ctcrrrctc&b8=ctc&a8=ctc&m9=ctc&l9=ctcl&j9=ctc&i9=ctc&h9=ctclllctc&b9=ctc&a9=ctcl&m10=ctcr&l10=ctc&j10=ctcr&i10=ctc&e10=ctctpctc&c10=ctcrrrctc&b10=ctc&a10=ctc&m11=ctc&l11=ctcl&j11=ctc&i11=ctc&h11=ctclllctc&b11=ctc&a11=ctcl&m12=ctcr&l12=ctc&j12=ctcr&i12=ctc&c12=ctc&b12=ctc&a12=ctc&n13=ctc&l13=ctctpctct&j13=ctc&i13=ctc&h13=ctc&c13=ctc&b13=ctc&a13=ctc&j14=ctcrrrctc&i14=ctc&h14=ctc&f14=ctcr&e14=ctc&c14=ctcr&b14=ctc&a14=ctc&tile=11f-1F-14--c4-,-78-M8-M8dyxxw,a1F-1F-14-x4-x,-78-M8-M8dxxwx,a1F-1F-14-xxxx,79994--11b-xx-,114x-wy11f-1F-,m88-c4--78-M8-,14-yxxwa1f-1f-,m8dx4-x-78-m8-,14-xxwxa1f-1f-,m8dxxxx-78-m8-,004-xx-c88-4-0,788-m8-m88w-wx&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=14&shiftRowsSE=14
+[H14b]: https://d-bl.github.io/GroundForge/tiles.html?whiting=H14_P235&patchWidth=26&patchHeight=25&f1=ctc&e1=ctcl&c1=ctc&b1=ctc&a1=ctclllctc&f2=ctcr&e2=ctc&c2=ctcr&b2=ctc&f3=ctc&e3=ctcl&c3=ctc&b3=ctc&a3=ctclllctc&f4=ctcr&e4=ctc&c4=ctcr&b4=ctc&e5=tctctpctct&c5=ctc&b5=ctc&a5=ctc&f6=rctctpctct&c6=ctcrrrctc&b6=ctc&a6=ctc&e7=rctctpctct&b7=ctc&a7=ctcl&c8=ctcrrrctc&b8=ctc&a8=ctc&f9=ctctpctct&b9=ctc&a9=ctcl&d10=ctc&c10=ctc&b10=ctc&a10=ctc&c11=ctc&b11=ctc&a11=ctc&g12=ctcr&f12=ctc&d12=ctcr&c12=ctc&b12=ctc&tile=11f-1F--,-78-M8--,a1F-1F--,-78-M8--,d88-4---,m88w-2y-,14--cxw-,M8Dyxxx-,14-x-7x-,M8d8-xww,114--xxx,-78d-m8-&tileStitch=ctc&shiftColsSW=1&shiftRowsSW=12&shiftColsSE=8&shiftRowsSE=6
 
 [A16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=A16_P90&patchWidth=11&patchHeight=13&b1=ctcctc&c2=ctcr&a2=ctcl&d3=ctc&b3=ctct&c4=ctc&a4=ctc&tile=-5--,B-C-,-5-5,5-5-&tileStitch=ctc&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4
 [B16]: https://d-bl.github.io/GroundForge/tiles.html?whiting=B16_P110&patchWidth=11&patchHeight=17&b1=ctcctc&c2=ctcr&a2=ctcl&d3=ctct&b3=ctct&c4=ctct&a4=ctct&d5=ctct&b5=ctc&c6=ctc&a6=ctc&tile=-5--,B-C-,-5-5,5-5-,-5-5,5-5-,&tileStitch=ctct&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=4&shiftRowsSE=6
@@ -145,7 +146,7 @@ Table
 
 |     | A | B | C | D | E | F | G | H |
 |-----|---|---|---|---|---|---|---|---|
-|  1  | [diagr][A1], [c][c] [![](w/page70a.gif)][P70] | [diagr][B1], [t][t] [![](w/page94a.gif)][P94] | [diagr][C1], [t][t] [![](w/page114a.gif)][P114] | [diagr][D1], [t][t] [![](w/page134a.gif)][P134] | [diagr][E1], [t][t] [![](w/page155a.gif)][P155] | [diagr][F1], [t][t] [![](w/page177a.gif)][P177] | [diagr][G1], [t][t] [![](w/page198a.gif)][P198] | ? [t][t] [![](w/page219a.gif)][P219] |
+|  1  | [diagr][A1], [c][c] [![](w/page70a.gif)][P70] | [diagr][B1], [t][t] [![](w/page94a.gif)][P94] | [diagr][C1], [t][t] [![](w/page114a.gif)][P114] | [diagr][D1], [t][t] [![](w/page134a.gif)][P134] | [diagr][E1], [t][t] [![](w/page155a.gif)][P155] | [diagr][F1], [t][t] [![](w/page177a.gif)][P177] | [diagr][G1], [t][t] [![](w/page198a.gif)][P198] | ? [t][t]<br>[![](w/page219a.gif)][P219] |
 |  2  | [diagr][A2], [v][v] [![](w/page71a.gif)][P71] | [diagr][B2], [v][v] [![](w/page95a.gif)][P95] | &nbsp; [![](w/page115a.gif)][P115] |  [diagr][D2] [![](w/page135a.gif)][P135] | [diagr][E2] [![](w/page156a.gif)][P156] | [diagr][F2], [ts][ts] [![](w/page178a.gif)][P178] | [diagr][G2] [![](w/page199a.gif)][P199] | [diagr][H2] [![](w/page220a.gif)][P220] |
 |  3  | [diagr][A3], [t][t] [![](w/page73a.gif)][P73] | [diagr][B3], [t][t] [![](w/page96a.gif)][P96] | [diagr][C3], [t][t] [![](w/page117a.gif)][P117] | [diagr][D3], [t][t]  [![](w/page136a.gif)][P136] | [diagr][E3], [t][t] [![](w/page157a.gif)][P157] | [diagr][F3], [t][t] [![](w/page179a.gif)][P179] | [diagr][G3], [t][t] [![](w/page200a.gif)][P200] | chaotic [![](w/page221a.gif)][P221] |
 |  4  | &mdash; [![](w/page74a.gif)][P74] | &mdash; [![](w/page97a.gif)][P97] | [diagr][C4], [k][k] [![](w/page118a.gif)][P118] | [diagr][D4], [k][k] [![](w/page137a.gif)][P137] | [diagr][E4] [![](w/page158a.gif)][P158] | [diagr][F4],  [z][z] [![](w/page180a.gif)][P180] | [diagr][G4] [![](w/page201a.gif)][P201] | [diagr][H4], [v][v] [![](w/page222a.gif)][P222] |
@@ -160,7 +161,7 @@ Table
 |  12 | [diagr][A12] [![](w/page84a.gif)][P84] | # [![](w/page105a.gif)][P105] | [diagr][C12] [![](w/page126a.gif)][P126] | [diagr][D12] [![](w/page145a.gif)][P145] | &nbsp; [![](w/page167a.gif)][P167] | [diagr][F12] [![](w/page190a.gif)][P190] | [diagr][G12] [![](w/page210a.gif)][P210] | [diagr][H12] [![](w/page232a.gif)][P232] |
 |     | **A** | **B** | **C** | **D** | **E** | **F** | **G** | **H** |
 |  13 | &mdash; [![](w/page85a.gif)][P85] | &mdash; [![](w/page106a.gif)][P106] | &mdash; [![](w/page128a.gif)][P128] | &mdash; [![](w/page147a.gif)][P147] | &mdash; [![](w/page169a.gif)][P169] | &mdash; [![](w/page192a.gif)][P192] | &mdash; [![](w/page211a.gif)][P211] | &mdash;<br> [![](w/page234a.gif)][P234] |
-|  14 | &iquest;? [![](w/page87a.gif)][P87] | &iquest;? [![](w/page107a.gif)][P107] | [diagr][E14] [![](w/page129a.gif)][P129] | # [![](w/page148a.gif)][P148] | [diagr][E14] [![](w/page171a.gif)][P171] | [diagr][F14]  [![](w/page193a.gif)][P193] | [diagr][G14] [![](w/page212a.gif)][P212] | 6&rarr;5  [![](w/page235a.gif)][P235] |
+|  14 | &iquest;? [![](w/page87a.gif)][P87] | &iquest;? [![](w/page107a.gif)][P107] | [diagr][E14] [![](w/page129a.gif)][P129] | # [![](w/page148a.gif)][P148] | [diagr][E14] [![](w/page171a.gif)][P171] | [diagr][F14]  [![](w/page193a.gif)][P193] | [diagr][G14] [![](w/page212a.gif)][P212] | [more](#moreH14)<br>[![](w/page235a.gif)][P235] |
 |  15 | &mdash; [![](w/page89a.gif)][P89] | &mdash; [![](w/page109a.gif)][P109] | &mdash; [![](w/page130a.gif)][P130] | &mdash; [![](w/page149a.gif)][P149] | &mdash; [![](w/page173a.gif)][P173] | &mdash; [![](w/page194a.gif)][P194] | &mdash; [![](w/page213a.gif)][P213] | &mdash;<br> [![](w/page237a.gif)][P237] |
 |  16 | [diagr][A16], [ts][ts] [![](w/page90a.gif)][P90] | [diagr][B16] [![](w/page110a.gif)][P110] | [diagr][C16] [![](w/page131a.gif)][P131] | [diagr][D16] [![](w/page150a.gif)][P150] | [diagr][E16] [![](w/page174a.gif)][P174] | [diagr][F16] [![](w/page195a.gif)][P195] | [diagr][G16] [![](w/page214a.gif)][P214] | #<br> [![](w/page238a.gif)][P238] |
 |  17 | &mdash; [![](w/page91a.gif)][P91] | # [![](w/page111a.gif)][P111] | [diagr][C17], [k][k] [![](w/page132a.gif)][P132] | &mdash; [![](w/page151a.gif)][P151] | [diagr][E17],[c][c] [![](w/page175a.gif)][P175] | &mdash; [![](w/page196a.gif)][P196] | &mdash; [![](w/page215a.gif)][P215] | &mdash;<br> [![](w/page239a.gif)][P239] |
@@ -340,15 +341,6 @@ Table
   Only four of these links ([c],[t],[k],[v]) cover more than a third of the grounds in the table,
   a ratio that illustrates how many variations can be made by changing stitches or nudging pin positions.
 
-* **6&rarr;5**
-
-  The lace sample weaves 6 times and has at least 4 times of weaving the diagonal pairs
-  through the wavy ribbons, not counting mirrored versions.
-  So far a [diagram][H14] that weaves 5 times.
-  This causes a new pair per repeat on the left and drop another at the right.
-  The diagram applies the two most common methods of weaving through the ribbons.
-  Weaving 6 times means multiplying the dimensions of the diagram definition by two.
-
 * <a name="val">[k]/[t] as previous point</a>
 
   **A7-H7,G11** are variations of **Valenciennes** grounds.
@@ -370,3 +362,24 @@ Table
 
 [Andries & Vroom]: w/andries-vroom.png
 [base diagram]: https://d-bl.github.io/GroundForge/tiles.html?patchWidth=11&patchHeight=12&b1=ctc&tile=-5-,B-C&tileStitch=ctctc&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+
+Samples with multiple diagrams
+------------------------------
+
+### **<a name="moreH14"/>H14**
+
+* **The sample**  &mdash;
+  Weaves 6 times. Weaving direction alternates.
+  At least 4 methods for the diagonal pairs to traverse through the wavy ribbons,
+  not counting mirrored versions.
+
+* **[diagram a][H14a]** &mdash;
+  Weaving 6 times in alternating direction per column.
+  The two most common methods of traversing the ribbons.
+  
+* **[diagram b][H14b]** &mdash;
+  idem, but weaving 5 times. This cuts the diagram definition by half but
+  requires a new pair per repeat on the left and drop another at the right.
+  
+* **Also seen** &mdash; always weaving in the same direction.
+  This will also cut the diagram definition by half.
