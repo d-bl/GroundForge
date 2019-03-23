@@ -24,10 +24,11 @@ Objective / disclaimer
 ----------------------
 
 The images are used to illustrate possibilities and limitations of the diagram generator.
+Having samples of _an_ interpretation in lace might help to develop an intuition on reading the diagrams.
+This intuition doesn't come from experience with conventional diagrams.  
 The generator make holes as round as possible so the threads don't obey the physical laws of tension.
 Pins are so poorly supported that they are usually omitted.
-Having samples of _an_ interpretation in lace might help to develop an intuition on reading the diagrams.
-As unavoidable side effect this exercise provides diagrams for patterns in the book, as far as accurate.
+As unavoidable side effect this exercise provides diagrams for patterns in the book, as far as accurate and supported.
 
 Creating the diagrams sparked ideas to extend functionality of the diagram generator
 but a third of the patterns in the table are not expected to be supported.
@@ -118,9 +119,9 @@ Table
 [C12]: https://d-bl.github.io/GroundForge/tiles.html?whiting=C12_P126&patchWidth=28&patchHeight=20&m1=cttct&k1=ct&i1=ctlct&c1=ctrct&a1=ct&j2=ctrct&h2=ct&f2=cttct&d2=ct&b2=ctlct&g3=ct&e3=ct&h4=cttct&d4=cttct&g5=ct&e5=ct&tile=o-o-----e-e-5-,-5-o-k-e-5----,--w-5-5-y-----,---5---5------,--y-c-b-w-----&footsideStitch=ctctt&tileStitch=ct&headsideStitch=ctctt&shiftColsSW=-7&shiftRowsSW=5&shiftColsSE=7&shiftRowsSE=5
 [D12]: https://d-bl.github.io/GroundForge/tiles.html?whiting=D12_P145&patchWidth=20&patchHeight=20&e1=ctrct&c1=ct&j2=ct&d2=ct&b2=ct&i3=ctlct&a3=ct&j4=ct&i4=ctlct&e4=ctrct&d4=ct&b4=cttct&j5=ctrct&i5=ct&g5=cttct&e5=ct&d5=ctlct&tile=--5-m---x-,-g-5x----g,o-------b-,-c-nd---1e,---48-k-17,&footsideStitch=ctctt&tileStitch=ct&headsideStitch=ctctt&shiftColsSW=-5&shiftRowsSW=5&shiftColsSE=5&shiftRowsSE=5
 [E12]: https://d-bl.github.io/GroundForge/tiles.html?whiting=E12_?P167&patchWidth=20&patchHeight=20&h1=ct&c1=ctctt&a1=ctctt&i2=ctrct&h2=ct&g2=ct&f2=ct&e2=ctlct&h3=ct&g3=ct&f3=ct&b3=ctctt&i4=ctrct&h4=ct&g4=ct&f4=ct&e4=ctlct&f5=ct&c5=ctct&a5=ctct&j6=ctrct&i6=ct&h6=ct&g6=ctct&f6=ct&e6=ct&d6=ctlct&i7=ct&e7=ct&j8=ct&i8=ct&h8=ctlct&f8=ctrct&e8=ct&d8=ct&c8=ctlct&a8=ctrct&j9=ct&d9=ct&j10=ct&i10=ctlct&e10=ctrct&d10=ct&c10=ct&b10=ctct&a10=ct&tile=7-4----7--,x-xwaaa1cy,-5-x-788-x,y-wxa111cx,7-4--7----,x-x2a1cdd6,x-x-7---4-,8-1a1c-b8d,---7-x-x-4,d3a1cx-xb8&footsideStitch=ctctt&tileStitch=ct&headsideStitch=ctctt&shiftColsSW=-5&shiftRowsSW=10&shiftColsSE=5&shiftRowsSE=10
+[F12]: https://d-bl.github.io/GroundForge/tiles.html?whiting=F12_P190&patchWidth=16&patchHeight=16&f1=ctc&d1=tctct&b1=ctc&g2=ctctctc&e2=tctct&c2=tctct&a2=ctctctc&f3=ctc&d3=tctct&b3=ctc&g4=ctcrrctc&f4=ctc&e4=ctcllctc&c4=ctcrrctc&b4=ctc&a4=ctcllctc&tile=-4-5-7--,b-5-5-c-,-5-5-5--,a15-58d-&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-4&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4
 [G12]: https://d-bl.github.io/GroundForge/tiles.html?whiting=G12_P210&patchWidth=10&patchHeight=9&e1=ctcll&c1=ctcctc&a1=ctcrr&f2=ctcctctt&d2=ctc&b2=ctc&e3=ctcrr&c3=ctc&a3=ctcll&tile=5-5-5-,-5-5-5,5-5-5-&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-3&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=3
-[F12]: https://d-bl.github.io/GroundForge/tiles.html?whiting=D12_P190&patchWidth=16&patchHeight=16&f1=ctc&d1=tctct&b1=ctc&g2=ctctctc&e2=tctct&c2=tctct&a2=ctctctc&f3=ctc&d3=tctct&b3=ctc&g4=ctcrrctc&f4=ctc&e4=ctcllctc&c4=ctcrrctc&b4=ctc&a4=ctcllctc&tile=-4-5-7--,b-5-5-c-,-5-5-5--,a15-58d-&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-4&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4
-[H12]: https://d-bl.github.io/GroundForge/tiles.html?whiting=G12_P232&patchWidth=18&patchHeight=18&k1=ctct&j1=ct&i1=ct&g1=ctctctctct&e1=ctct&d1=ct&c1=ctct&a1=ctctctctct&l2=ctct&k2=ct&j2=ct&i2=ct&h2=ctct&k3=ct&j3=ct&i3=ct&d3=ctctctctct&l4=ct&k4=ct&j4=ct&i4=ct&h4=ctct&tile=e-114-o-jaf-,--x----58886,---c----114-,----w--b888d&footsideStitch=ctctt&tileStitch=ct&headsideStitch=ctctt&shiftColsSW=-6&shiftRowsSW=4&shiftColsSE=6&shiftRowsSE=4
+[H12]: https://d-bl.github.io/GroundForge/tiles.html?whiting=H12_P232&patchWidth=18&patchHeight=18&k1=ctct&j1=ct&i1=ct&g1=ctctctctct&e1=ctct&d1=ct&c1=ctct&a1=ctctctctct&l2=ctct&k2=ct&j2=ct&i2=ct&h2=ctct&k3=ct&j3=ct&i3=ct&d3=ctctctctct&l4=ct&k4=ct&j4=ct&i4=ct&h4=ctct&tile=e-114-o-jaf-,--x----58886,---c----114-,----w--b888d&footsideStitch=ctctt&tileStitch=ct&headsideStitch=ctctt&shiftColsSW=-6&shiftRowsSW=4&shiftColsSE=6&shiftRowsSE=4
 
 [C14]: https://d-bl.github.io/GroundForge/tiles.html?whiting=C14_P129&patchWidth=12&patchHeight=21&d1=ctctt&b1=ctctt&c2=ctctt&a2=ctctt&d3=ctctt&b3=ctc&c4=ctc&a4=ctc&b5=ctc&c6=ctcrr&a6=ctcll&d7=ctctt&c8=ctc&a8=ctc&b9=ctc&c10=ctcrr&a10=ctcll&tile=-5-5,5-5-,-5-5,5-5-,-5--,B-C-,---5,C-B-,-5--,B-C-&footsideStitch=ctctt&tileStitch=ctctt&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=10&shiftColsSE=2&shiftRowsSE=10
 [E14]: https://d-bl.github.io/GroundForge/tiles.html?whiting=E14_P171&patchWidth=17&patchHeight=19&d1=ctcr&c1=ctc&b1=ctcl&c2=ctct&f3=ctct&e4=ctct&a4=ctcT&f5=ctct&c6=ctc&d7=ctc&c7=ctc&b7=ctc&e8=ctcr&d8=ctc&b8=ctcr&a8=ctc&e9=ctc&d9=ctcl&b9=ctc&a9=ctcl&e10=ctcr&d10=ctc&b10=ctcr&a10=ctc&e11=ctc&d11=ctcl&b11=ctc&a11=ctcl&tile=-256--,Y-5-W-,-Y-W-5,5---5-,-W-Y-5,W-5-Y-,-535--,L6-O9-,1F-1F-,M8-M8-,1F-1F-,&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=11&shiftColsSE=6&shiftRowsSE=11
@@ -317,7 +318,7 @@ Table
 [P241]: https://archive.org/details/laceguideformak00whit/page/241
 
 
-### <a name="notes">Notes on the image captions</a>
+### <a name="notes"/>Notes on the image captions
 
 * **`?`**
 
@@ -342,24 +343,28 @@ Table
   Only four of these links ([c],[t],[k],[v]) cover more than a third of the grounds in the table,
   a ratio that illustrates how many variations can be made by changing stitches or nudging pin positions.
 
-* <a name="val">[k]/[t] as previous point</a>
+Multiple samples with a single base diagram
+-------------------------------------------
 
-  **A7-H7,G11** are variations of **Valenciennes** grounds.
-  `k` (kat stitch) is the pair diagram for the generator. As the patterns are more about plaits than pairs,
-  you might want `t` (torchon) variations for a pricking.
-  
-  <img style="float: right" src="w/valenciennes-flipped.png" title="flipped twists for Valenciennes" width="108"/>
+The variations on the base diagrams are just different stitches or even just a different number of twists.
 
-  These Valenciennes grounds are variations on a [base diagram].
-  This diagram is defined with two plaits and a cloth stitch at the joins of the plaits.
-  The variations are defined with the length of the plaits and the number of twists between the stitches.
-  Define the twists at the plaits.
-  For symmetrical results the number of additional left/right twists should be flipped between
-  plaits and between top and bottom of each plait. An example of this symmetry is shown in the screen shot. 
-  <!-- TODO form with number of inner twists, outer twists and plait length -->
-  
-  A more recent overview of Valencienes grounds is published in
-  '_25 Valiencieneskantjes_' by [Andries & Vroom], 2011
+### A7-H7,G11 &mdash; <a name="val"/>Valenciennes
+
+[`k`][k] (kat stitch) is the pair diagram for the generator. As the patterns are more about plaits than pairs,
+you might want [`t`][t] (torchon) variations for a pricking.
+
+<img style="float: right" src="w/valenciennes-flipped.png" title="flipped twists for Valenciennes" width="108"/>
+
+The [base diagram] for the Valenciennes grounds is defined with
+two plaits and a cloth stitch at the joins of the plaits.
+The variations are defined with the length of the plaits and the number of twists between the stitches.
+Define the twists at the plaits.
+For symmetrical results the number of additional left/right twists should be flipped between
+plaits and between top and bottom of each plait. An example of this symmetry is shown in the screen shot. 
+<!-- TODO form with number of inner twists, outer twists and plait length -->
+
+A more recent overview of Valencienes grounds is published in
+'_25 Valiencieneskantjes_' by [Andries & Vroom], 2011
 
 [Andries & Vroom]: w/andries-vroom.png
 [base diagram]: https://d-bl.github.io/GroundForge/tiles.html?patchWidth=11&patchHeight=12&b1=ctc&tile=-5-,B-C&tileStitch=ctctc&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
@@ -367,16 +372,21 @@ Table
 Samples with multiple diagrams
 ------------------------------
 
-### **<a name="moreH14"/>H14**
+These diagrams give a more or less similar impression.
+The difference in the diagrams are not as much about nudging pins
+as the diagrams presented by for example [t]:
+a different working order is required.
 
-* **The sample**  &mdash;
-  Weaves 6 times. Weaving direction alternates.
+### <a name="moreH14"/>H14 &mdash; Italian spiders with ribbons
+
+* **[The sample](http://www.gwydir.demon.co.uk/jo/lace/whiting/page235.htm)**  &mdash;
+  Weaves 6 times. Weaving direction alternates per repeat.
   At least 4 methods for the diagonal pairs to traverse through the wavy ribbons,
   not counting mirrored versions.
 
 * **[diagram a][H14a]** &mdash;
-  Weaving 6 times in alternating direction per column.
-  The two most common methods of traversing the ribbons.
+  Weaves 6 times in alternating directions.
+  Applies the two most common methods of traversing the ribbons.
   
 * **[diagram b][H14b]** &mdash;
   idem, but weaving 5 times. This cuts the diagram definition by half but
