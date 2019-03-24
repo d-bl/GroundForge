@@ -11,10 +11,11 @@ Multiple online archives published a digitised version of
 The MET in new York has the [original sampler].
 
 *Jo Edkins* went through the trouble to cut-and-paste thumbnails and pages.
-She republished an [index] of the grounds in a web-friendly way with her own annotations.
+She republished [indexes] (by name, page and thumbnails)
+of the grounds in a web-friendly way with her own annotations.
 The thumbnails are reused below with kind permission.
 
-[index]: http://www.gwydir.demon.co.uk/jo/lace/whiting/index.htm#picindex
+[indexes]: http://www.gwydir.demon.co.uk/jo/lace/whiting/index.htm
 [history]: https://github.com/d-bl/GroundForge/commits/master/docs/help/Whiting-Index.md
 [changes]: https://github.com/d-bl/GroundForge/wiki/Whiting-Index/_history
 [archive.org]: https://archive.org/details/laceguideformak00whit/page/234
@@ -24,16 +25,24 @@ Objective / disclaimer
 ----------------------
 
 The images are used to illustrate possibilities and limitations of the diagram generator.
-Having samples of _an_ interpretation in lace might help to develop an intuition on reading the diagrams.
-This intuition doesn't come from experience with conventional diagrams.  
-The generator make holes as round as possible so the threads don't obey the physical laws of tension.
-Pins are so poorly supported that they are usually omitted.
-As unavoidable side effect this exercise provides diagrams for patterns in the book, as far as accurate and supported.
+The samples are _an_ interpretation in lace of the diagrams.
+Comparing them might help to develop an intuition on reading the diagrams
+and triage a selection of patterns and stitches for your experiments.
+
+This intuition doesn't come from experience with conventional diagrams.
+The generated pair diagrams present plaits and something-pin-something like ordinary stitches. 
+In fact, pins are so poorly supported that they are usually omitted.
+Holes become as round as possible so the threads don't obey the physical laws of tension.
+Pattern [F9][F9] is a quite extreme example how the round holes changes a pattern beyond recognition.
 
 Creating the diagrams sparked ideas to extend functionality of the diagram generator
 but a third of the patterns in the table are not expected to be supported.
-The page [history] (and older [changes]) may show when a pattern was created or fixed and who authored it.
+The page [history] (and older [changes]) may show when a diagram definition
+was created or fixed and who authored it.
 For an easy overview the maintainer needs to list the changed/added patterns in the _edit note_.
+
+As unavoidable side effect of this comparing exercise provides diagrams for patterns in the book,
+as far as accurate and supported.
 
 Table
 -----
@@ -41,7 +50,7 @@ Table
 * The images link to the corresponding page of the book.
   Though not all pages benefit because of poor originals,
   these links go to scans with the best known resolution.
-* The `diagr` links (**89 done, 2 to go**) lead to customizable diagrams.
+* The `diagr` links (**90 done, to do: C2, A14**) lead to customizable diagrams.
 * [Notes](#notes) on the other components of the image captions.
 
 [c]: /GroundForge/sheet.html?patch=88%0A11;bricks&patch=66%0A22;bricks&patch=88%0A99%0A11%0A00;bricks&patch=66%0A11%0A88%0A22;bricks&patch=66%0A99%0A22%0A00;bricks
@@ -102,6 +111,7 @@ Table
 [C9]: https://d-bl.github.io/GroundForge/tiles.html?whiting=C9_P123&patchWidth=9&patchHeight=10&k1=ctctt&d1=ctcttt&c1=ctcttt&b1=ctcttt&a1=ctctt&d2=ctcttt&b2=ctcttt&k3=ctctt&c3=ctcttt&a3=ctctt&footside=b,-,a,-&tile=831,4-7,-5-&headside=d,-,c,-&footsideStitch=ctctt&tileStitch=ctcttt&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
 [D9]: https://d-bl.github.io/GroundForge/tiles.html?whiting=D9_P142&patchWidth=7&patchHeight=7&a1=ctctt&b2=ctt&tile=5-,-5&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
 [E9]: https://d-bl.github.io/GroundForge/tiles.html?whiting=E9_P163&patchWidth=12&patchHeight=20&a1=cttt&b1=cttt&a2=cttt&tile=12,7-&footsideStitch=ctctt&tileStitch=cttt&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[F9]: https://d-bl.github.io/GroundForge/tiles.html?whiting=F9_P185&patchWidth=26&patchHeight=26&m1=ctc&e1=ctc&o3=llcttctt&k3=cttctt&g3=ctcrrrctc&e3=ctc&c3=ctcllctc&g4=ctc&e4=ctc&i5=llctctt&g5=ctc&e5=ctc&c5=ctc&a5=rrctctt&e6=ctc&c6=ctc&o7=cttctt&k7=cttctt&g7=ctcrrctcrr&e7=ctc&c7=ctcllctcll&tile=--x-5-x---x-c-x-,-----w-----y-w--,--g-g-c---b---c-,---w8-mv-yx---xw,h-g-f-f-5-x---x-,-w8-mv---w-----y,--f-f-c---c---b-,--xw--x---xw-yx-&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-8&shiftRowsSW=8&shiftColsSE=8&shiftRowsSE=8
 [G9]: https://d-bl.github.io/GroundForge/tiles.html?whiting=G9_P229&patchWidth=5&patchHeight=5&a1=ctctttt&tile=5-&tileStitch=ctctttt&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1
 [H9]: https://d-bl.github.io/GroundForge/tiles.html?whiting=H9_P229&patchWidth=7&patchHeight=7&a1=ctcttptctcttt&tile=5-&tileStitch=ctcttptctcttt&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1
 
@@ -158,7 +168,7 @@ Table
 |     | **A** | **B** | **C** | **D** | **E** | **F** | **G** | **H** |
 |  7  | [val](#val), [k][k]/[t][t]  [![](w/page77a.gif)][P77] | [val](#val), [k][k]/[t][t] [![](w/page100a.gif)][P100] | [val](#val), [k][k]/[t][t] [![](w/page121a.gif)][P121] | [val](#val), [k][k]/[t][t] [![](w/page140a.gif)][P140] | [val](#val), [k][k]/[t][t] [![](w/page161a.gif)][P161] | [val](#val), [k][k]/[t][t] [![](w/page183a.gif)][P183] | [val](#val), [k][k]/[t][t] [![](w/page205a.gif)][P205] | [val](#val), [k][k]/[t][t] [![](w/page226a.gif)][P226] |
 |  8  | &mdash; [![](w/page79a.gif)][P79] | &mdash; [![](w/page101a.gif)][P101] | &mdash; [![](w/page122a.gif)][P122] | &mdash; [![](w/page141a.gif)][P141] | &mdash; [![](w/page162a.gif)][P162] | &mdash; [![](w/page184a.gif)][P184] | &mdash; [![](w/page206a.gif)][P206] | &mdash;<br> [![](w/page227a.gif)][P227] |
-|  9  | &mdash; [![](w/page80a.gif)][P80] | &mdash; [![](w/page102a.gif)][P102] | [diagr][C9], [v][v] [![](w/page123a.gif)][P123] | [diagr][D9] [![](w/page142a.gif)][P142] | [diagr][E9] [![](w/page163a.gif)][P163] | &nbsp; [![](w/page185a.gif)][P185] | [diagr][G9], [t][t] [![](w/page207a.gif)][P207] | [diagr][H9], [t][t] [![](w/page229a.gif)][P229] |
+|  9  | &mdash; [![](w/page80a.gif)][P80] | &mdash; [![](w/page102a.gif)][P102] | [diagr][C9], [v][v] [![](w/page123a.gif)][P123] | [diagr][D9] [![](w/page142a.gif)][P142] | [diagr][E9] [![](w/page163a.gif)][P163] | [diagr][H9], [k][k] [![](w/page185a.gif)][P185] | [diagr][G9], [t][t] [![](w/page207a.gif)][P207] | [diagr][H9], [t][t] [![](w/page229a.gif)][P229] |
 |  10 | &mdash; [![](w/page82a.gif)][P82] | &mdash; [![](w/page103a.gif)][P103] | &mdash; [![](w/page124a.gif)][P124] | &mdash; [![](w/page143a.gif)][P143] | [diagr][E10] [![](w/page164a.gif)][P164] | &mdash; [![](w/page187a.gif)][P187] | [diagr][G10], [![](w/page208a.gif)][P208] | [diagr][H10] [![](w/page230a.gif)][P230] |
 |  11 | [diagr][A11], [t][t] [![](w/page83a.gif)][P83] | [diagr][B11], [t][t] [![](w/page104a.gif)][P104] | &mdash; [![](w/page125a.gif)][P125] | [diagr][D11], [wk][wk] [![](w/page144a.gif)][P144] | [diagr][E11], [wk][wk] [![](w/page166a.gif)][P166] | [diagr][F11], [t][t] [![](w/page189a.gif)][P189] | [val](#val), [k][k]/[t][t] [![](w/page209a.gif)][P209] | &mdash;<br> [![](w/page231a.gif)][P231] |
 |  12 | [diagr][A12] [![](w/page84a.gif)][P84] | # [![](w/page105a.gif)][P105] | [diagr][C12] [![](w/page126a.gif)][P126] | [diagr][D12] [![](w/page145a.gif)][P145] | [diagr][E12] [![](w/page167a.gif)][P167] | [diagr][F12] [![](w/page190a.gif)][P190] | [diagr][G12] [![](w/page210a.gif)][P210] | [diagr][H12] [![](w/page232a.gif)][P232] |
@@ -393,5 +403,7 @@ a different working order is required.
   idem, but weaving 5 times. This cuts the diagram definition by half but
   requires a new pair per repeat on the left and drop another at the right.
   
-* **Also seen** &mdash; always weaving in the same direction.
+* **Also seen** &mdash;
+  Always weaving in the same direction.
   This will also cut the diagram definition by half.
+  See for example "`The book of bobbin lace stitches`" by Bridget M. Cook and Geraldine Stott. 
