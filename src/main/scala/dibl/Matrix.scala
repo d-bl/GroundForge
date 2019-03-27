@@ -132,11 +132,11 @@ import scala.util.{Failure, Success, Try}
 
   @JSExport
   def flip(lines: String): String = {
-    val flip = "0123456789ABCDEFGHIJKLMNO"
-          .zip("9863752410DCBAOMNLJIKHFGE").toMap
+    val flip = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-"
+          .zip("9863752410DCBAOMNLJIKHFGE??????ZYXWV-").toMap
     lines.toUpperCase
-      .split("[\r\n]+")
-      .map(_.reverse.map(flip.getOrElse(_, "-")).mkString(""))
+      .split("[\r\n, \t]+")
+      .map(_.reverse.map(flip.getOrElse(_, "?")).mkString(""))
       .mkString("\n")
   }
 
