@@ -132,11 +132,11 @@ it is not the primary objective.
 |  5  | [diagr][A5], [k][k] [![](w/page75a.gif)][P75] | [diagr][B5], [k][k] [![](w/page98a.gif)][P98] | [diagr][C5], [k][k] [![](w/page119a.gif)][P119] | [diagr][D5], [c][c] [![](w/page138a.gif)][P138] | &mdash; [![](w/page159a.gif)][P159] | [diagr][F5], [c][c] [![](w/page181a.gif)][P181] | [diagr][G5], [c][c] [![](w/page203a.gif)][P203] | [diagr][H5], [c][c] [![](w/page224a.gif)][P224] |
 |  6  | [diagr][A6], [k][k] [![](w/page76a.gif)][P76] | [diagr][B6], [v][v] [![](w/page99a.gif)][P99] | [diagr][C6], [v][v] [![](w/page120a.gif)][P120] | [diagr][D6], [z][z] [![](w/page139a.gif)][P139] | [diagr][E6] [![](w/page160a.gif)][P160] | [diagr][F6], [t][t] [![](w/page182a.gif)][P182] | &mdash; [![](w/page204a.gif)][P204] | [diagr][H6] [![](w/page225a.gif)][P225] |
 |     | **A** | **B** | **C** | **D** | **E** | **F** | **G** | **H** |
-|  7  | [val](#val), [k][k]/[t][t]  [![](w/page77a.gif)][P77] | [val](#val), [k][k]/[t][t] [![](w/page100a.gif)][P100] | [val](#val), [k][k]/[t][t] [![](w/page121a.gif)][P121] | [val](#val), [k][k]/[t][t] [![](w/page140a.gif)][P140] | [val](#val), [k][k]/[t][t] [![](w/page161a.gif)][P161] | [val](#val), [k][k]/[t][t] [![](w/page183a.gif)][P183] | [val](#val), [k][k]/[t][t] [![](w/page205a.gif)][P205] | [val](#val), [k][k]/[t][t] [![](w/page226a.gif)][P226] |
+|  7  | [val](#val)  [![](w/page77a.gif)][P77] | [val](#val) [![](w/page100a.gif)][P100] | [val](#val) [![](w/page121a.gif)][P121] | [val](#val) [![](w/page140a.gif)][P140] | [val](#val) [![](w/page161a.gif)][P161] | [val](#val) [![](w/page183a.gif)][P183] | [val](#val) [![](w/page205a.gif)][P205] | [val](#val) [![](w/page226a.gif)][P226] |
 |  8  | &mdash; [![](w/page79a.gif)][P79] | &mdash; [![](w/page101a.gif)][P101] | &mdash; [![](w/page122a.gif)][P122] | &mdash; [![](w/page141a.gif)][P141] | &mdash; [![](w/page162a.gif)][P162] | &mdash; [![](w/page184a.gif)][P184] | &mdash; [![](w/page206a.gif)][P206] | &mdash;<br> [![](w/page227a.gif)][P227] |
 |  9  | &mdash; [![](w/page80a.gif)][P80] | &mdash; [![](w/page102a.gif)][P102] | [diagr][C9], [v][v] [![](w/page123a.gif)][P123] | [diagr][D9] [![](w/page142a.gif)][P142] | [diagr][E9] [![](w/page163a.gif)][P163] | [diagr][H9], [k][k] [![](w/page185a.gif)][P185] | [diagr][G9], [t][t] [![](w/page207a.gif)][P207] | [diagr][H9], [t][t] [![](w/page229a.gif)][P229] |
 |  10 | &mdash; [![](w/page82a.gif)][P82] | &mdash; [![](w/page103a.gif)][P103] | &mdash; [![](w/page124a.gif)][P124] | &mdash; [![](w/page143a.gif)][P143] | [diagr][E10] [![](w/page164a.gif)][P164] | &mdash; [![](w/page187a.gif)][P187] | [diagr][G10], [![](w/page208a.gif)][P208] | [diagr][H10] [![](w/page230a.gif)][P230] |
-|  11 | [diagr][A11], [t][t] [![](w/page83a.gif)][P83] | [diagr][B11], [t][t] [![](w/page104a.gif)][P104] | &mdash; [![](w/page125a.gif)][P125] | [diagr][D11], [wk][wk] [![](w/page144a.gif)][P144] | [diagr][E11], [wk][wk] [![](w/page166a.gif)][P166] | [diagr][F11], [t][t] [![](w/page189a.gif)][P189] | [val](#val), [k][k]/[t][t] [![](w/page209a.gif)][P209] | &mdash;<br> [![](w/page231a.gif)][P231] |
+|  11 | [diagr][A11], [t][t] [![](w/page83a.gif)][P83] | [diagr][B11], [t][t] [![](w/page104a.gif)][P104] | &mdash; [![](w/page125a.gif)][P125] | [diagr][D11], [wk][wk] [![](w/page144a.gif)][P144] | [diagr][E11], [wk][wk] [![](w/page166a.gif)][P166] | [diagr][F11], [t][t] [![](w/page189a.gif)][P189] | [val](#val) [![](w/page209a.gif)][P209] | &mdash;<br> [![](w/page231a.gif)][P231] |
 |  12 | [diagr][A12] [![](w/page84a.gif)][P84] | # [![](w/page105a.gif)][P105] | [diagr][C12] [![](w/page126a.gif)][P126] | [diagr][D12] [![](w/page145a.gif)][P145] | [diagr][E12] [![](w/page167a.gif)][P167] | [diagr][F12] [![](w/page190a.gif)][P190] | [diagr][G12] [![](w/page210a.gif)][P210] | [diagr][H12] [![](w/page232a.gif)][P232] |
 |     | **A** | **B** | **C** | **D** | **E** | **F** | **G** | **H** |
 |  13 | &mdash; [![](w/page85a.gif)][P85] | &mdash; [![](w/page106a.gif)][P106] | &mdash; [![](w/page128a.gif)][P128] | &mdash; [![](w/page147a.gif)][P147] | &mdash; [![](w/page169a.gif)][P169] | &mdash; [![](w/page192a.gif)][P192] | &mdash; [![](w/page211a.gif)][P211] | &mdash;<br> [![](w/page234a.gif)][P234] |
@@ -330,18 +330,38 @@ The variations on the base diagrams are just different stitches or even just a d
 
 ### A7-H7,G11 &mdash; <a name="val"/>Valenciennes
 
-[`k`][k] (kat stitch) is the pair diagram for the generator. As the patterns are more about plaits than pairs,
-you might want [`t`][t] (torchon) variations for a pricking.
+<img style="float: right" src="w/valenciennes-flipped.png"/>
 
-<img style="float: right" src="w/valenciennes-flipped.png" title="flipped twists for Valenciennes" width="108"/>
+[![](w/page77a.gif)][P77] [![](w/page100a.gif)][P100] [![](w/page121a.gif)][P121]  [![](w/page140a.gif)][P140] [![](w/page161a.gif)][P161] [![](w/page183a.gif)][P183] [![](w/page205a.gif)][P205] [![](w/page226a.gif)][P226] [![](w/page209a.gif)][P209]
 
-The [base diagram] for the Valenciennes grounds is defined with
-two plaits and a cloth stitch at the joins of the plaits.
+The patterns are more about plaits than pairs so you can use these [torchon][t] diagrams for pricking variations.
+
+The [base diagram] for the Valenciennes grounds is defined with two plaits and a cloth stitch at the joins of the plaits.
 The variations are defined with the length of the plaits and the number of twists between the stitches.
-Define the twists at the plaits.
-For symmetrical results the number of additional left/right twists should be flipped between
-plaits and between top and bottom of each plait. An example of this symmetry is shown in the screen shot. 
-<!-- TODO form with number of inner twists, outer twists and plait length -->
+The form generates symmetrical diagrams, sorry, not for IE-11 and older.
+
+<form>
+    <script>
+    function go(){
+        var plait = "c" + "tc".repeat(document.getElementById("plaitLength").value * 1)
+        var innerTwists = document.getElementById("innerTwist").value * 1
+        var outerTwists = document.getElementById("outerTwist").value * 1
+        var tile = "tile=-5-,B-C&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
+        var leftPlait = `${"r".repeat(innerTwists)}${plait}${"r".repeat(innerTwists)}${"l".repeat(outerTwists)}`
+        var rightPlait = `${"l".repeat(innerTwists)}${plait}${"l".repeat(innerTwists)}${"r".repeat(outerTwists)}`
+        var stitches = `b1=ctc&a2=${leftPlait}&c2=${rightPlait}`
+        var href = `https://d-bl.github.io/GroundForge/tiles.html?patchWidth=11&patchHeight=12&${stitches}&${tile}`
+        window.location.assign(href)
+    }
+    </script>
+    Inner twists
+    <input name="innerTwist" id="innerTwist" type="number" value="1" min="0" style="width:3em">
+    Outer twists
+    <input name="outerTwist" id="outerTwist" type="number" value="1" min="0" style="width:3em">
+    Plait length
+    <input name="plaitLength" id="plaitLength" type="number" value="2" min="0" style="width:3em">
+    <button type="button" onclick="go();return false">Go</button>
+</form>
 
 A more recent overview of Valencienes grounds is published in
 '_25 Valiencieneskantjes_' by [Andries & Vroom], 2011
@@ -354,6 +374,8 @@ Samples with multiple diagrams
 ------------------------------
 
 ### <a name="DIY"/> A14 &mdash; Trentino (wheels)
+
+[![](w/page87a.gif)][P87]
 
 The diagram definition for this pattern is quite huge. 
 Hence so far only one wheel is provided with stitches,
@@ -387,6 +409,8 @@ a Valenciennes type of join is used instead.
   
 
 ### <a name="moreH14"/>H14 &mdash; Italian spiders with ribbons
+
+[![](w/page235a.gif)][P235]
 
 These diagrams give a more or less similar impression.
 The difference in the diagrams are not as much about nudging pins
