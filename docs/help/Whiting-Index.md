@@ -330,9 +330,16 @@ The variations on the base diagrams are just different stitches or even just a d
 
 ### A7-H7,G11 &mdash; <a name="val"/>Valenciennes
 
-<img style="float: right" src="w/valenciennes-flipped.png"/>
-
-[![](w/page77a.gif)][P77] [![](w/page100a.gif)][P100] [![](w/page121a.gif)][P121]  [![](w/page140a.gif)][P140] [![](w/page161a.gif)][P161] [![](w/page183a.gif)][P183] [![](w/page205a.gif)][P205] [![](w/page226a.gif)][P226] [![](w/page209a.gif)][P209]
+[![](w/page77a.gif)][P77]
+[![](w/page100a.gif)][P100]
+[![](w/page121a.gif)][P121]
+[![](w/page140a.gif)][P140]
+[![](w/page161a.gif)][P161]
+[![](w/page183a.gif)][P183]
+[![](w/page205a.gif)][P205]
+[![](w/page226a.gif)][P226]
+[![](w/page209a.gif)][P209]
+![](w/valenciennes-flipped.png)
 
 The patterns are more about plaits than pairs so you can use these [torchon][t] diagrams for pricking variations.
 
@@ -341,26 +348,28 @@ The variations are defined with the length of the plaits and the number of twist
 The form generates symmetrical diagrams, sorry, not for IE-11 and older.
 
 <form>
-    <script>
-    function go(){
-        var plait = "c" + "tc".repeat(document.getElementById("plaitLength").value * 1)
-        var innerTwists = document.getElementById("innerTwist").value * 1
-        var outerTwists = document.getElementById("outerTwist").value * 1
-        var tile = "tile=-5-,B-C&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
-        var leftPlait = `${"r".repeat(innerTwists)}${plait}${"r".repeat(innerTwists)}${"l".repeat(outerTwists)}`
-        var rightPlait = `${"l".repeat(innerTwists)}${plait}${"l".repeat(innerTwists)}${"r".repeat(outerTwists)}`
-        var stitches = `b1=ctc&a2=${leftPlait}&c2=${rightPlait}`
-        var href = `https://d-bl.github.io/GroundForge/tiles.html?patchWidth=11&patchHeight=12&${stitches}&${tile}`
-        window.location.assign(href)
-    }
-    </script>
     Inner twists
-    <input name="innerTwist" id="innerTwist" type="number" value="1" min="0" style="width:3em">
+    <input name="innerTwists" id="innerTwists" type="number" value="1" min="0" style="width:3em" onchange="update()">
     Outer twists
-    <input name="outerTwist" id="outerTwist" type="number" value="1" min="0" style="width:3em">
+    <input name="outerTwists" id="outerTwists" type="number" value="1" min="0" style="width:3em" onchange="update()">
     Plait length
-    <input name="plaitLength" id="plaitLength" type="number" value="2" min="0" style="width:3em">
-    <button type="button" onclick="go();return false">Go</button>
+    <input name="plaitLength" id="plaitLength" type="number" value="2" min="0" style="width:3em" onchange="update()">
+    <a id="link" href="#val"><button type="button">Go</button></a>
+    <script>
+    function update(){
+        var plait = "c" + "tc".repeat(document.getElementById("plaitLength").value * 1)
+        var innerTwists = document.getElementById("innerTwists").value * 1
+        var outerTwists = document.getElementById("outerTwists").value * 1
+        var tile = "tile=-5-,B-C&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
+        var leftPlait = `${plait}${"l".repeat(innerTwists)}${"r".repeat(outerTwists)}`
+        var rightPlait = `${plait}${"r".repeat(innerTwists)}${"l".repeat(outerTwists)}`
+        var join = `ctc${"t".repeat(innerTwists)}`
+        var stitches = `b1=${join}&a2=${leftPlait}&c2=${rightPlait}`
+        var href = `https://d-bl.github.io/GroundForge/tiles.html?patchWidth=11&patchHeight=12&${stitches}&${tile}`
+        document.getElementById("link").href = href
+    }
+    update()
+    </script>
 </form>
 
 A more recent overview of Valencienes grounds is published in
