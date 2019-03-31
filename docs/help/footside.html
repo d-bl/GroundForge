@@ -1,0 +1,20 @@
+<h1>Under construction</h1>
+<form>
+    <input name="oldLink" id="oldLink" type="text" style="width:100%" onchange="update()"
+           value="https://d-bl.github.io/GroundForge/tiles.html?patchWidth=5&patchHeight=5&a1=ct&footside=&tile=5&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1"
+    >
+    New left foot side width
+    <input name="width" id="width" type="number" style="width:3em" onchange="update()" min="0" value="1">
+    <a id="link" href="#"><button type="button">Go</button></a>
+    <script>
+    function update(){
+        var width = document.getElementById("width").value * 1
+        var oldLink = document.getElementById("oldLink").value
+        var newLink = oldLink.replace(/footside=[^&]*/,"footside=" + "-".repeat(width))
+        // TODO adjust stitch ID's
+        // TODO there may be no footside argument in the oldLink
+        document.getElementById("link").href = newLink
+    }
+    update()
+    </script>
+</form>
