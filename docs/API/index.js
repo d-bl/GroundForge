@@ -39,6 +39,10 @@ function load() {
 
   var drosteThreads = ThreadDiagram.create(drostePairs)
   showGraph(d3.select('#drosteThreads'), drosteThreads, "2px",1600,2200, 4, config)
+
+  var threadSegments = d3.selectAll(".thread8")
+  threadSegments.style("stroke", "#F00")
+  threadSegments.filter(".node").style("fill", "#F00")
 }
 function showGraph(container, diagram, stroke, width, height, scale, config) {
   var nodeDefs = diagram.jsNodes()
