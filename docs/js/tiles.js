@@ -173,25 +173,6 @@ function load() {
   showDiagrams(showProto())
   keyValueStrings.find(whiting)
 }
-function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, patchWidth, patchHeight) {
-
-  d3.select('#patchWidth').property("value", patchWidth ? patchWidth : (footside?3:12))
-  d3.select('#patchHeight').property("value", patchHeight ? patchHeight : 12)
-  d3.select('#tile').property("value", tile)
-  d3.select('#footside').property("value", footside ? footside : "")
-  d3.select('#headside').property("value", headside ? headside : "")
-  d3.select('#footsideStitch').property("value", "tctct")
-  d3.select('#tileStitch').property("value", "ctc")
-  d3.select('#headsideStitch').property("value", "tctct")
-  clearStitches()
-  d3.select('#shiftColsSE').property("value", shiftColsSE)
-  d3.select('#shiftRowsSE').property("value", shiftRowsSE)
-  d3.select('#shiftColsSW').property("value", shiftColsSW)
-  d3.select('#shiftRowsSW').property("value", shiftRowsSW)
-
-  scrollIntoViewIfPossible(d3.select("#diagrams").node())
-  showDiagrams(showProto())
-}
 function asChecker() {
 
   var matrixLines = d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
