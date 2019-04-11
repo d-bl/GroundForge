@@ -40,18 +40,13 @@ function load() {
   var drosteThreads = ThreadDiagram.create(drostePairs)
   showGraph(d3.select('#drosteThreads'), drosteThreads, "2px",1600,2200, 4, config)
 
-  var threadSegments = d3.selectAll(".thread8")
+  var threadSegments = d3.selectAll("#threads .thread8")
   threadSegments.style("stroke", "#F00")
   threadSegments.filter(".node").style("fill", "#F00")
 }
 function showGraph(container, diagram, stroke, width, height, scale, config) {
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()//can't inline
-
-  // var tileLinks = config.linksOfCenterTile(diagram, scale)
-  // // TODO nudge x/y values of the nodeDefs
-  // var nudgedDiagram = diagram.withLocationsOf(nodeDefs)
-
   var markers = true // use false for slow devices and IE-11, set them at onEnd
   container.html(D3jsSVG.render(diagram, stroke, markers, width, height))
 
