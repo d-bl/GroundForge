@@ -43,7 +43,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         case (_, Some(color)) => color
         case _ => "#000"
       }
-      val isActiveNode = item.isOpaque
+      val isActiveNode = item.isOpaque && !"-VWXYZ".contains(vectorCode)
       s"""${ warning(vectorCode, translate, nrOfPairsOut, item.noStitch) }
          |<use ${ events(isActiveNode, item.id) }
          |  xlink:href='#vc$vectorCode'
