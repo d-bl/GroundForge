@@ -27,23 +27,22 @@ object Item {
       col <- a.reverse ++ b // evaluation loop inside out
     } {
       // replace Y with V; the tail of the Y are two links connecting the same two nodes
-      def y2v(sharedSource: (Int, Int)) = {
+      def y2v(sharedSource: (Int, Int)): Boolean = {
         val (sharedRow, sharedCol) = sharedSource
         val srcRow = row + sharedRow
         val srcCol = col + sharedCol
-        if (isFringe(srcRow, srcCol)) false
-        else {
-          val srcItem = itemMatrix(srcRow)(srcCol)
-          val Array((leftRow, leftCol), (rightRow, rightCol)) = srcItem.relativeSources
-          val newSrcNodes = SrcNodes((sharedRow + leftRow, sharedCol + leftCol), (sharedRow + rightRow, sharedCol + rightCol))
-          // relink the bottom of the Y to the tops
-          val currentItem = itemMatrix(row)(col)
-          //println(s"replacing ${currentItem.id} at $row,$col : ${currentItem.relativeSources.mkString} -> ${newSrcNodes.mkString}")
-          itemMatrix(row)(col) = currentItem.copy(relativeSources = newSrcNodes)
-          // drop the core of the Y
-          itemMatrix(srcRow)(srcCol) = srcItem.copy(relativeSources = SrcNodes())
-          true
-        }
+        if (isFringe(srcRow, srcCol)) return false
+        val srcItem = itemMatrix(srcRow)(srcCol)
+        if (srcItem.relativeSources.length < 2) return false
+        val Array((leftRow, leftCol), (rightRow, rightCol)) = srcItem.relativeSources
+        val newSrcNodes = SrcNodes((sharedRow + leftRow, sharedCol + leftCol), (sharedRow + rightRow, sharedCol + rightCol))
+        // relink the bottom of the Y to the tops
+        val currentItem = itemMatrix(row)(col)
+        //println(s"replacing ${currentItem.id} at $row,$col : ${currentItem.relativeSources.mkString} -> ${newSrcNodes.mkString}")
+        itemMatrix(row)(col) = currentItem.copy(relativeSources = newSrcNodes)
+        // drop the core of the Y
+        itemMatrix(srcRow)(srcCol) = srcItem.copy(relativeSources = SrcNodes())
+        true
       }
 
       /**

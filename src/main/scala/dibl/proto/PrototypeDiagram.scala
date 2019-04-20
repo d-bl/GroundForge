@@ -224,7 +224,33 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
          |"""
 
     val part4 =
-      s"""      <g id="vcV">
+      s"""      <g id="vcP">
+         |        <path $circleProps></path><text $textProps>P</text>
+         |        <path d="m -28.064646,978.05979 c 2.695104,-1.72224 4.352555,-1.11629 5.987061,-0.0372" $arrowStyle></path>
+         |        <path d="m -28.064646,978.05979 c 2.225492,1.55137 4.178556,1.24684 5.987061,-0.0372" $arrowStyle></path>
+         |      </g>
+         |      <g id="vcQ">
+         |        <path $circleProps></path><text $textProps>Q</text>
+         |        <path d="m -28.650432,969.47403 c 1.186417,3.54854 3.731819,5.793 7.171574,7.17158" $arrowStyle></path>
+         |        <path d="m -28.650432,969.47403 c 4.170483,0.95665 5.985806,3.81058 7.171574,7.17158" $arrowStyle></path>
+         |      </g>
+         |      <g id="vcR">
+         |        <path $circleProps></path><text $textProps>R</text>
+         |        <path d="m -20.064635,970.05982 c 2.229953,2.58242 0.789017,4.2147 0,6" $arrowStyle></path>
+         |        <path d="m -20.064635,970.05982 c -2.263016,2.52293 -1.06713,4.19704 0,6" $arrowStyle></path>
+         |      </g>
+         |      <g id="vcS">
+         |        <path $circleProps></path><text $textProps>S</text>
+         |        <path d="m -11.478848,969.47403 c -4.271302,0.77178 -5.861627,3.84953 -7.171574,7.17158" $arrowStyle></path>
+         |        <path d="m -11.478848,969.47403 c -0.540678,3.86673 -3.75869,5.83827 -7.171574,7.17158" $arrowStyle></path>
+         |      </g>
+         |      <g id="vcT">
+         |        <path $circleProps></path><text $textProps>T</text>
+         |        <path d="m -12.090524,978.05979 c -2.596115,-1.9428 -4.382871,-1.03176 -5.987061,-0.0372" $arrowStyle></path>
+         |        <path d="m -12.090524,978.05979 c -2.596115,-1.9428 -4.382871,-1.03176 -5.987061,-0.0372" $arrowStyle></path>
+         |      </g>
+         |
+         |      <g id="vcV">
          |        <path $circleProps></path><text $textProps>V</text>
          |        <path d="m -28.064646,978.05979 5.987061,-0.0372" $arrowStyle></path>
          |      </g>
