@@ -34,7 +34,7 @@ function showProto() {
   d3.select("#prototype").html(PrototypeDiagram.create(config))
   d3.select("#link").node().href = "?" + submitQuery() // don't extract var, we might now have other form fields
   d3.select("#animations").style("display", "none")
-  d3.selectAll("#threadDiagram, #pairDiagram").html("")
+  d3.selectAll("#threadDiagram, #pairDiagram, #drostePairDiagram, #drosteThreadDiagram").html("")
   d3.selectAll("textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
@@ -289,4 +289,30 @@ function resize(container, orientation, scaleValue) {
   var units = oldValue.replace(/[0-9]/g,'')
   var newValue = Math.round(oldValue.replace(/[^0-9]/g,'') * scaleValue)
   container.style(orientation, newValue + units)
+}
+function showDroste() {
+  var q = submitQuery()
+  d3.select("#link").node().href = "?" + q
+  d3.select("#drosteFields").style("display", "block")
+  var stitches = d3.select("#drosteStitches").node().value
+  var config = TilesConfig(q)
+  var pairDiagram = NewPairDiagram.create(config)
+  var threadDiagram = ThreadDiagram.create(pairDiagram)
+  // TODO the diagrams above have been calculated before
+  var drostePairs = PairDiagram.create(stitches, threadDiagram)
+  var drosteThreads = ThreadDiagram.create(drostePairs)
+
+  var markers = true // use false for slow devices and IE-11, set them at onEnd
+
+  var pairContainer = d3.select("#drostePairDiagram")
+  pairContainer.node().data = drostePairs
+  pairContainer.html(D3jsSVG.render(drostePairs, "1px", markers, 744, 1052))
+
+  var threadContainer = d3.select("#drosteThreadDiagram")
+  threadContainer.node().data = drosteThreads
+  threadContainer.html(D3jsSVG.render(drosteThreads, "2px", markers, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
+
+  animateDiagram(pairContainer, 350, 526)
+  animateDiagram(threadContainer, 744, 1052)
+  threadContainer.selectAll(".threadStart").on("click", paintThread)
 }

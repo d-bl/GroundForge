@@ -39,7 +39,7 @@
                 <a href="/GroundForge/help/Whiting-Index" target="_blank"
                 >Whiting index</a> and
                 <a href="https://maetempels.github.io/MAE-gf/docs/flanders" target="_blank"
-                >flanders</a> return to this page.
+                >flanders</a> return here.
             </li>
             <li>
                 Most patterns of the
@@ -56,7 +56,7 @@
                 >triangular</a>,
                 <a href="https://maetempels.github.io/MAE-gf/docs/lotus"
                 >lotus</a> and more)
-                also link back to this page, but some use thread diagrams as pair diagrams.
+                also link back to this page, but some use thread diagrams as pair diagrams and link to a variant of this page.
 
             </li>
         </ul>
@@ -135,7 +135,48 @@
         </figure>
         <div id="whiting"></div>
     </fieldset>
-    <h2>Design patterns from scratch (for advanced users)</h2>
+    <h2>For advanced users</h2>
+    <fieldset>
+        <legend>
+            Thread diagram as pair diagram
+            -
+            <img src="images/under-construction.png" title="under construction"></a>
+            -
+            <a><button type="button" onclick="showDroste()" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
+        </legend>
+        <div id="drosteFields">
+            <textarea id="drosteStitches" name="drosteStitches" rows="1" cols="30" spellcheck="false"></textarea>
+            <figure>
+                <figcaption>
+                    Pairs
+                    <a download="pair-diagram.svg"
+                       onfocus="setDownloadContent(this,'#drostePairDiagram')"
+                       onblur="this.href='?#download'"
+                       href="?#download"
+                       title="download"
+                    ><img src="images/download.jpg"></a>
+                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drostePairDiagram', 1.1)" title="increase diagram dimensions"
+                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drostePairDiagram', 0.91)" title="decrease diagram dimensions">
+                </figcaption>
+                <div id="drostePairDiagram"></div>
+            </figure>
+            <figure >
+                <figcaption>
+                    Threads - click squares
+                    <a download="thread-diagram.svg"
+                       onfocus="setDownloadContent(this,'#drosteThreadDiagram')"
+                       onblur="this.href='?#download'"
+                       href="?#download"
+                       title="download"
+                    ><img src="images/download.jpg"></a>
+                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drosteThreadDiagram', 1.1)" title="increase diagram dimensions"
+                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drosteThreadDiagram', 0.91)" title="decrease diagram dimensions">
+                </figcaption>
+                <div id="drosteThreadDiagram"></div>
+            </figure>
+        </div>
+    </fieldset>
+    <h3>Design patterns from scratch</h3>
     <p>
         Those patterns that link back to this page, fill the forms below.
         These forms define the prototype diagram.
