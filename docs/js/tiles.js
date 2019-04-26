@@ -34,14 +34,20 @@ function showProto() {
   d3.select("#prototype").html(PrototypeDiagram.create(config))
   d3.select("#link").node().href = "?" + submitQuery() // don't extract var, we might now have other form fields
   d3.select("#animations").style("display", "none")
-  d3.selectAll("#threadDiagram, #pairDiagram, #drostePairDiagram, #drosteThreadDiagram").html("")
-  d3.selectAll("textarea").attr("rows", config.maxTileRows + 1)
+  d3.selectAll("#threadDiagram, #pairDiagram, #drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
+  d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
   d3.select("#prototype").style("height", (config.totalRows * 27 + 30) + "px"
                         ).style("width", (config.totalCols * 27 + 60) + "px")
   return config
+}
+function clear2() {
+  d3.selectAll("#drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
+}
+function clear3() {
+  d3.selectAll("#drostePair3, #drosteThread3").html("")
 }
 function flip(){
   var left = d3.select("#footside").node().value
@@ -129,7 +135,7 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
 function paintThread() {
 
   // firstChild == <title>
-  var className = "."+d3.event.target.firstChild.innerHTML.replace(" ", "")
+  var className = " ."+d3.event.target.firstChild.innerHTML.replace(" ", "")
   var segments = d3.selectAll(className)
   var newColor = segments.style("stroke")+"" == "rgb(255, 0, 0)" ? "#000" : "#F00"
   segments.style("stroke", newColor)
@@ -294,25 +300,37 @@ function showDroste() {
   var q = submitQuery()
   d3.select("#link").node().href = "?" + q
   d3.select("#drosteFields").style("display", "block")
-  var stitches = d3.select("#drosteStitches").node().value
   var config = TilesConfig(q)
   var pairDiagram = NewPairDiagram.create(config)
   var threadDiagram = ThreadDiagram.create(pairDiagram)
   // TODO the diagrams above have been calculated before
-  var drostePairs = PairDiagram.create(stitches, threadDiagram)
-  var drosteThreads = ThreadDiagram.create(drostePairs)
+  var drostePairs2 = PairDiagram.create(d3.select("#droste2").node().value, threadDiagram)
+  var drosteThreads2 = ThreadDiagram.create(drostePairs2)
+  var drostePairs3 = PairDiagram.create(d3.select("#droste3").node().value, drosteThreads2)
+  var drosteThreads3 = ThreadDiagram.create(drostePairs3)
 
   var markers = true // use false for slow devices and IE-11, set them at onEnd
 
-  var pairContainer = d3.select("#drostePairDiagram")
-  pairContainer.node().data = drostePairs
-  pairContainer.html(D3jsSVG.render(drostePairs, "1px", markers, 744, 1052))
+  var pairContainer2 = d3.select("#drostePair2")
+  pairContainer2.node().data = drostePairs2
+  pairContainer2.html(D3jsSVG.render(drostePairs2, "1px", markers, 744, 1052))
 
-  var threadContainer = d3.select("#drosteThreadDiagram")
-  threadContainer.node().data = drosteThreads
-  threadContainer.html(D3jsSVG.render(drosteThreads, "2px", markers, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
+  var threadContainer2 = d3.select("#drosteThread2")
+  threadContainer2.node().data = drosteThreads2
+  threadContainer2.html(D3jsSVG.render(drosteThreads2, "2px", markers, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
 
-  animateDiagram(pairContainer, 350, 526)
-  animateDiagram(threadContainer, 744, 1052)
-  threadContainer.selectAll(".threadStart").on("click", paintThread)
+  var pairContainer3 = d3.select("#drostePair3")
+  pairContainer3.node().data = drostePairs3
+  pairContainer3.html(D3jsSVG.render(drostePairs3, "1px", markers, 744, 1052))
+
+  var threadContainer3 = d3.select("#drosteThread3")
+  threadContainer3.node().data = drosteThreads3
+  threadContainer3.html(D3jsSVG.render(drosteThreads3, "2px", markers, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
+
+  animateDiagram(pairContainer2, 350, 526)
+  animateDiagram(threadContainer2, 744, 1052)
+  animateDiagram(pairContainer3, 350, 526)
+  animateDiagram(threadContainer3, 744, 1052)
+  threadContainer2.selectAll(".threadStart").on("click", paintThread)
+  threadContainer3.selectAll(".threadStart").on("click", paintThread)
 }

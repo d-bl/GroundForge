@@ -1,8 +1,8 @@
 li li { padding-bottom:0; }
 ul ul { padding-left: 1em; }
 h1 { font-size: 25px; line-height: 1; }
-h2 { font-size: 20px; line-height: 1; }
-h3, legend { font-size: 16px; line-height: 1; }
+h2 { font-size: 18px; line-height: 1; }
+#drosteFieldSet { margin-bottom: 0.5em; }
 
 figure { display: inline-block; margin-left: 0; margin-top: 0; margin-right: 0.5em; margin-bottom: 0; }
 figure img, figcaption { display: block; }
@@ -14,10 +14,11 @@ fieldset fieldset figure div { height: 222px; }
 #pattern input {width: 5em}
 #pattern textarea {min-width: 4.5em}
 
-#threadDiagram, #pairDiagram, #drostePairDiagram, #drosteThreadDiagram
+#threadDiagram, #pairDiagram, #drostePair2, #drosteThread2, #drostePair3, #drosteThread3
  { resize:both;overflow:auto;display:inline-block;width:250px;height:250px;max-width:784px;max-height:1082px }
 #prototype { width:350px; height:250px; overflow:hidden}
-#drosteFields { display: none }
+#drosteFields { display: none; text-align: right; }
+#drosteFields textarea { vertical-align: text-top; }
 
 foreignObject{margin:0; padding:0}
 foreignObject input {

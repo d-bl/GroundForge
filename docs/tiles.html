@@ -136,53 +136,85 @@
         <div id="whiting"></div>
     </fieldset>
     <h2>For advanced users</h2>
-    <fieldset>
+    <p>
+        Links to this page fill the forms below to define patterns.
+    </p>
+    <fieldset id="drosteFieldSet">
         <legend>
             Thread diagram as pair diagram
             -
-            <img src="images/under-construction.png" title="under construction"></a>
+            <img src="images/under-construction.png" title="under construction: needs documentation, teething problems with downloads and thread colors"></a>
             -
             <a><button type="button" onclick="showDroste()" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
         </legend>
         <div id="drosteFields">
-            <textarea id="drosteStitches" name="drosteStitches" rows="1" cols="30" spellcheck="false"></textarea>
+            <a><button type="button" onclick="d3.select('#drosteFields').style('display', 'none'); return false">close</button></a>
+            <br>
+            <textarea id="droste2" name="droste2" rows="7" cols="30" spellcheck="false" onchange="clear2()"></textarea>
             <figure>
                 <figcaption>
                     Pairs
                     <a download="pair-diagram.svg"
-                       onfocus="setDownloadContent(this,'#drostePairDiagram')"
+                       onfocus="setDownloadContent(this,'#drostePair2')"
                        onblur="this.href='?#download'"
                        href="?#download"
                        title="download"
                     ><img src="images/download.jpg"></a>
-                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drostePairDiagram', 1.1)" title="increase diagram dimensions"
-                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drostePairDiagram', 0.91)" title="decrease diagram dimensions">
+                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drostePair2', 1.1)" title="increase diagram dimensions"
+                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drostePair2', 0.91)" title="decrease diagram dimensions">
                 </figcaption>
-                <div id="drostePairDiagram"></div>
+                <div id="drostePair2"></div>
             </figure>
             <figure >
                 <figcaption>
                     Threads - click squares
                     <a download="thread-diagram.svg"
-                       onfocus="setDownloadContent(this,'#drosteThreadDiagram')"
+                       onfocus="setDownloadContent(this,'#drosteThread2')"
                        onblur="this.href='?#download'"
                        href="?#download"
                        title="download"
                     ><img src="images/download.jpg"></a>
-                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drosteThreadDiagram', 1.1)" title="increase diagram dimensions"
-                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drosteThreadDiagram', 0.91)" title="decrease diagram dimensions">
+                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drosteThread2', 1.1)" title="increase diagram dimensions"
+                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drosteThread2', 0.91)" title="decrease diagram dimensions">
                 </figcaption>
-                <div id="drosteThreadDiagram"></div>
+                <div id="drosteThread2"></div>
+            </figure>
+            <br>
+            <textarea id="droste3" name="droste3" rows="7" cols="30" spellcheck="false" onchange="clear3()"></textarea>
+            <figure>
+                <figcaption>
+                    Pairs
+                    <a download="pair-diagram.svg"
+                       onfocus="setDownloadContent(this,'#drostePair3')"
+                       onblur="this.href='?#download'"
+                       href="?#download"
+                       title="download"
+                    ><img src="images/download.jpg"></a>
+                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drostePair3', 1.1)" title="increase diagram dimensions"
+                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drostePair3', 0.91)" title="decrease diagram dimensions">
+                </figcaption>
+                <div id="drostePair3"></div>
+            </figure>
+            <figure >
+                <figcaption>
+                    Threads - click squares
+                    <a download="thread-diagram.svg"
+                       onfocus="setDownloadContent(this,'#drosteThread3')"
+                       onblur="this.href='?#download'"
+                       href="?#download"
+                       title="download"
+                    ><img src="images/download.jpg"></a>
+                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drosteThread3', 1.1)" title="increase diagram dimensions"
+                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drosteThread3', 0.91)" title="decrease diagram dimensions">
+                </figcaption>
+                <div id="drosteThread3"></div>
             </figure>
         </div>
     </fieldset>
-    <h3>Design patterns from scratch</h3>
     <p>
-        Those patterns that link back to this page, fill the forms below.
-        These forms define the prototype diagram.
+        The forms below define the prototype diagram.
         Play with these forms to design patterns from scratch.
     </p>
-
     <fieldset id="pattern">
         <legend>
             Define a repeat
