@@ -15,6 +15,7 @@ The [site map] provides the context for both and lists their differences.
 * [Toggle thread colors](#toggle-thread-colors)
 * [Download](#download)
 * [Advanced usage](#advanced-usage)
+  + [Thread diagram as pair diagram](#thread-diagram-as-pair-diagram)
   + [Define a repeat](#define-a-repeat)
   + [Arrange the repeats](#arrange-the-repeats)
   + [Foot sides](#foot-sides)
@@ -107,16 +108,33 @@ on a mac use command for control.
 
 Download
 ========
-You can download the diagrams to edit them with an [SVG editor].
-Details for just one type of diagrams on the [reshape patterns](Reshape-Patterns) page.
+You can download the diagrams to edit them with an [SVG editor], manipulating vectors not pixels.
 
 [SVG editor]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
 
 Advanced usage
 ==============
-The sections  below the diagram are the engine under the hood of the car.
+
+The sections  below the diagrams are the engine under the hood of the car.
 The form fields define the prototype diagram. 
 Advanced users can play with the values to define new patterns from scratch.
+
+Thread diagram as pair diagram
+------------------------------
+
+The help pages on the [Droste effect](Droste-effect) are still biased to the old-style page.
+
+Known bug: changing a thread color changes the thread with the same number
+in other thread diagrams.
+
+An example to assign stitches:
+
+![](images/assign-stitches.png)
+
+Hover over a stitch in a pair diagram to discover its id for the stitch assignments.
+The overall default in this example is a `ctct`.
+A more selective default is `ctc` for stitches that were twists in the threads diagram.
+Two specific stitches are set to `ct`. 
 
 Define a repeat
 ---------------
@@ -190,8 +208,3 @@ In those cases the stitches are merged into a single stitch in the pair diagram.
 Thus both pairs for the bottom stitch are stretched.
 You can still choose to apply a plait for the thread diagram in those cases,
 well, if it happens in an added column and is not part of the ground.
-
-Demo section
-------------
-The demo section is introduced for quick testing during development and bug fixing.
-The introduction at the very top of the page links to catalogues with many more patterns.
