@@ -131,7 +131,7 @@ function setField (keyValueString) {
 
     var k = keyValueString.replace(/=.*/,"").trim().replace(/[^a-zA-Z0-9]/g,"")
     var v = keyValueString.replace(/[^=]+=/,"").trim().replace(valueFilter,"").replace(/,/g,"\n")
-    d3.select('#'+k).property("value", v)
+    if (k) d3.select('#'+k).property("value", v)
 }
 function whiting (kv) {
     var k = kv.trim().replace(/[^a-zA-Z0-9]/g,"")
