@@ -43,12 +43,6 @@ function showProto() {
                         ).style("width", (config.totalCols * 27 + 60) + "px")
   return config
 }
-function clear2() {
-  d3.selectAll("#drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
-}
-function clear3() {
-  d3.selectAll("#drostePair3, #drosteThread3").html("")
-}
 function flip(){
   var left = d3.select("#footside").node().value
   console.log(Matrix.flip)
@@ -77,20 +71,13 @@ function showDiagrams(config) {
   var pairContainer = d3.select("#pairDiagram")
   var pairContainerNode = pairContainer.node()
   if (!config)
-      var config = TilesConfig(submitQuery())
+      config = TilesConfig(submitQuery())
   var pairDiagram = pairContainerNode.data = NewPairDiagram.create(config)
   pairContainer.html(D3jsSVG.render(pairDiagram, "1px", markers, 744, 1052))
   scrollToIfPossible(pairContainerNode,0,0)
   if (pairDiagram.jsNodes().length == 1) return
 
-  var threadContainer = d3.select("#threadDiagram")
-  var threadContainerNode = threadContainer.node()
-  var threadDiagram = threadContainerNode.data = ThreadDiagram.create(pairDiagram)
-  threadContainer.html(D3jsSVG.render(threadDiagram, "2px", markers, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
-  if (threadDiagram.jsNodes().length == 1 || threadContainerNode.innerHTML.indexOf("Need a new pair from") >= 0)  return
-
-  animateDiagram(threadContainer, 744, 1052)
-  threadContainer.selectAll(".threadStart").on("click", paintThread)
+  setThreadDiagram("#threadDiagram", ThreadDiagram.create(pairDiagram))
 }
 function animateDiagram(container, forceCenterX, forceCenterY) {
 
@@ -131,15 +118,6 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
     .force("center", d3.forceCenter(forceCenterX, forceCenterY))
     .alpha(0.0035)
     .on("tick", onTick)
-}
-function paintThread() {
-
-  // firstChild == <title>
-  var className = " ."+d3.event.target.firstChild.innerHTML.replace(" ", "")
-  var segments = d3.selectAll(className)
-  var newColor = segments.style("stroke")+"" == "rgb(255, 0, 0)" ? "#000" : "#F00"
-  segments.style("stroke", newColor)
-  segments.filter(".node").style("fill", newColor)
 }
 function setDownloadContent (linkNode, id) {
 
@@ -296,41 +274,49 @@ function resize(container, orientation, scaleValue) {
   var newValue = Math.round(oldValue.replace(/[^0-9]/g,'') * scaleValue)
   container.style(orientation, newValue + units)
 }
+function clear2() {
+  d3.selectAll("#drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
+}
+function clear3() {
+  d3.selectAll("#drostePair3, #drosteThread3").html("")
+}
 function showDroste() {
   var q = submitQuery()
   d3.select("#link").node().href = "?" + q
   d3.select("#drosteFields").style("display", "block")
-  var config = TilesConfig(q)
-  var pairDiagram = NewPairDiagram.create(config)
-  var threadDiagram = ThreadDiagram.create(pairDiagram)
-  // TODO the diagrams above have been calculated before
-  var drostePairs2 = PairDiagram.create(d3.select("#droste2").node().value, threadDiagram)
+  var drosteThreads1 = ThreadDiagram.create(NewPairDiagram.create( TilesConfig(q)))
+  // TODO the diagrams above have been calculated before (on a fresh page or  if the wand was clicked)
+  var drostePairs2 = PairDiagram.create(stitches = d3.select("#droste2").node().value, drosteThreads1)
   var drosteThreads2 = ThreadDiagram.create(drostePairs2)
-  var drostePairs3 = PairDiagram.create(d3.select("#droste3").node().value, drosteThreads2)
-  var drosteThreads3 = ThreadDiagram.create(drostePairs3)
+  var drostePairs3 = PairDiagram.create(stitches = d3.select("#droste3").node().value, drosteThreads2)
 
-  var markers = true // use false for slow devices and IE-11, set them at onEnd
+  setPairDiagram("#drostePair2", drostePairs2)
+  setPairDiagram("#drostePair3", drostePairs3)
+  setThreadDiagram("#drosteThread2", drosteThreads2)
+  setThreadDiagram("#drosteThread3", ThreadDiagram.create(drostePairs3))
+}
+function setPairDiagram(containerID, diagram) {
+  var container = d3.select(containerID)
+  container.node().data = diagram
+  container.html(D3jsSVG.render(diagram, "1px", markers = true, 744, 1052, 0.0))
+  animateDiagram(container, 350, 526)
+}
+function setThreadDiagram(containerID, diagram) {
+  var container = d3.select(containerID)
+  container.node().data = diagram
+  container.html(D3jsSVG.render(diagram, "2px", markers = true, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
+  animateDiagram(container, 744, 1052)
+  container.selectAll(".threadStart").on("click", paintThread)
+}
+function paintThread() {
 
-  var pairContainer2 = d3.select("#drostePair2")
-  pairContainer2.node().data = drostePairs2
-  pairContainer2.html(D3jsSVG.render(drostePairs2, "1px", markers, 744, 1052))
-
-  var threadContainer2 = d3.select("#drosteThread2")
-  threadContainer2.node().data = drosteThreads2
-  threadContainer2.html(D3jsSVG.render(drosteThreads2, "2px", markers, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
-
-  var pairContainer3 = d3.select("#drostePair3")
-  pairContainer3.node().data = drostePairs3
-  pairContainer3.html(D3jsSVG.render(drostePairs3, "1px", markers, 744, 1052))
-
-  var threadContainer3 = d3.select("#drosteThread3")
-  threadContainer3.node().data = drosteThreads3
-  threadContainer3.html(D3jsSVG.render(drosteThreads3, "2px", markers, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
-
-  animateDiagram(pairContainer2, 350, 526)
-  animateDiagram(threadContainer2, 744, 1052)
-  animateDiagram(pairContainer3, 350, 526)
-  animateDiagram(threadContainer3, 744, 1052)
-  threadContainer2.selectAll(".threadStart").on("click", paintThread)
-  threadContainer3.selectAll(".threadStart").on("click", paintThread)
+  // firstChild == <title>
+  var eventTarget = d3.event.target
+  var containerID = eventTarget.parentNode.parentNode.parentNode.id
+  // TODO it would be more efficient to select siblings of eventTarget
+  var className = eventTarget.firstChild.innerHTML.replace(" ", "")
+  var segments = d3.selectAll("#" + containerID + " ." + className)
+  var newColor = segments.style("stroke")+"" == "rgb(255, 0, 0)" ? "#000" : "#F00"
+  segments.style("stroke", newColor)
+  segments.filter(".node").style("fill", newColor)
 }

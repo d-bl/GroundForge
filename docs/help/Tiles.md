@@ -124,9 +124,6 @@ Thread diagram as pair diagram
 
 The help pages on the [Droste effect](Droste-effect) are still biased to the old-style page.
 
-Known bug: changing a thread color changes the thread with the same number
-in other thread diagrams.
-
 An example to assign stitches:
 
 ![](images/assign-stitches.png)
