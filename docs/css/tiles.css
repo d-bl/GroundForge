@@ -17,7 +17,8 @@ fieldset fieldset figure div { height: 222px; }
 #threadDiagram, #pairDiagram, #drostePair2, #drosteThread2, #drostePair3, #drosteThread3
  { resize:both;overflow:auto;display:inline-block;width:250px;height:250px;max-width:784px;max-height:1082px }
 #prototype { width:350px; height:250px; overflow:hidden}
-#drosteFields { display: none; text-align: right; }
+#drosteFieldSet { text-align: right; }
+#drosteFields { display: none; }
 #drosteFields textarea { vertical-align: text-top; }
 
 foreignObject{margin:0; padding:0}
