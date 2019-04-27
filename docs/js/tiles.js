@@ -1,4 +1,4 @@
-var valueFilter = /[^a-zA-Z0-9,-]/g
+var valueFilter = /[^a-zA-Z0-9,-=]/g
 var isMobile = /iPad|iPhone|iPod|Mobi/.test(navigator.userAgent)
 
 function setStitch(sourceNode) {
@@ -129,12 +129,9 @@ function setDownloadContent (linkNode, id) {
 }
 function setField (keyValueString) {
 
-    var kv = keyValueString.split("=")
-    if (kv.length > 1) {
-      var k = kv[0].trim().replace(/[^a-zA-Z0-9]/g,"")
-      var v = kv[1].trim().replace(valueFilter,"").replace(/,/g,"\n")
-      d3.select('#'+k).property("value", v)
-    }
+    var k = keyValueString.replace(/=.*/,"").trim().replace(/[^a-zA-Z0-9]/g,"")
+    var v = keyValueString.replace(/[^=]+=/,"").trim().replace(valueFilter,"").replace(/,/g,"\n")
+    d3.select('#'+k).property("value", v)
 }
 function whiting (kv) {
     var k = kv.trim().replace(/[^a-zA-Z0-9]/g,"")
