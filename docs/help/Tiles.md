@@ -124,7 +124,7 @@ Thread diagram as pair diagram
 
 ![](../images/under-construction.png) The help pages need rewriting as those on the [Droste effect](Droste-effect) are still biased to the old-style page.
 
-No prototype diagram to choose stitches for these diagrams.
+Sorry, nothing like the prototype diagram to choose stitches for these sets of diagrams.
 The team of needs a seasoned front end engineer for a more convenient user interface.
 
 You can choose to use one stitch everywhere. Or two different stitches:
@@ -138,7 +138,9 @@ An example mixing all the options mentioned above:
 
 The overall default in this example is a `ctct`.
 A more selective default is `ctc` for stitches that were twists in the preceding thread diagram.
-Two specific stitches are set to `ct`. 
+Two specific stitches are set to `ct`.
+
+![](../images/under-construction.png) Note that spaces may have unexpected results.
 
 Define a repeat
 ---------------

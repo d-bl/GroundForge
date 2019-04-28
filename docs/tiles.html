@@ -145,10 +145,10 @@
             -
             <a href="help/Tiles#thread-diagram-as-pair-diagram" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
         </legend>
-        Requires a small patch size and still the power of a desk-top
+        Requires a small patch size, the power of a desk-top and your patience
         <a><button type="button" onclick="showDroste(2)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
         <div id="drosteFields2">
-            <a><button type="button" onclick="d3.select('#drosteFields2').style('display', 'none'); return false">close</button></a>
+            <a><button type="button" onclick="closeDiv(2)">close</button></a>
             <br>
             <textarea id="droste2" name="droste2" rows="7" cols="30" spellcheck="false" onchange="clear2()"></textarea>
             <figure>
@@ -180,10 +180,10 @@
                 <div id="drosteThread2"></div>
             </figure>
             <br>
-            Another level of reuse
+            Another level of reuse, requiring even more patience
             <a><button type="button" onclick="showDroste(3)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
             <div id="drosteFields3">
-                <a><button type="button" onclick="d3.select('#drosteFields3').style('display', 'none'); return false">close</button></a>
+                <a><button type="button" onclick="closeDiv(3)">close</button></a>
                 <br>
                 <textarea id="droste3" name="droste3" rows="7" cols="30" spellcheck="false" onchange="clear3()"></textarea>
                 <figure>

@@ -273,9 +273,15 @@ function resize(container, orientation, scaleValue) {
 }
 function clear2() {
   d3.selectAll("#drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
+  return false
 }
 function clear3() {
   d3.selectAll("#drostePair3, #drosteThread3").html("")
+  return false
+}
+function closeDiv(level) {
+  d3.select('#drosteFields' + level).style('display', 'none')
+  return false
 }
 function showDroste(level) {
   d3.select("#drosteFields" + level).style("display", "block")
@@ -297,6 +303,7 @@ function showDroste(level) {
     setPairDiagram("#drostePair3", drostePairs3)
     setThreadDiagram("#drosteThread3", ThreadDiagram.create(drostePairs3))
   }
+  return false
 }
 function setPairDiagram(containerID, diagram) {
   var container = d3.select(containerID)
