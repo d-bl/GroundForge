@@ -140,7 +140,8 @@ The overall default in this example is a `ctct`.
 A more selective default is `ctc` for stitches that were twists in the preceding thread diagram.
 Two specific stitches are set to `ct`.
 
-![](../images/under-construction.png) Note that spaces may have unexpected results.
+![](../images/under-construction.png) Note that spaces may have unexpected results, 
+recommended delimiters between assignments: new lines or `,`.
 
 Define a repeat
 ---------------
