@@ -125,7 +125,7 @@ Thread diagram as pair diagram
 ![](../images/under-construction.png) The help pages need rewriting as those on the [Droste effect](Droste-effect) are still biased to the old-style page.
 
 Sorry, nothing like the prototype diagram to choose stitches for these sets of diagrams.
-The team of needs a seasoned front end engineer for a more convenient user interface.
+The team of GroundForge needs a seasoned front end engineer for a more convenient user interface.
 
 You can choose to use one stitch everywhere. Or two different stitches:
 one for each cross in the preceding thread diagram, the other for each twist.
