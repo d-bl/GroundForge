@@ -122,15 +122,22 @@ Advanced users can play with the values to define new patterns from scratch.
 Thread diagram as pair diagram
 ------------------------------
 
-The help pages on the [Droste effect](Droste-effect) are still biased to the old-style page.
+![](../images/under-construction.png) The help pages need rewriting as those on the [Droste effect](Droste-effect) are still biased to the old-style page.
 
-An example to assign stitches:
+No prototype diagram to choose stitches for these diagrams.
+The team of needs a seasoned front end engineer for a more convenient user interface.
+
+You can choose to use one stitch everywhere. Or two different stitches:
+one for each cross in the preceding thread diagram, the other for each twist.
+To make exceptions to these rules you need to hover over a stitch
+in the pair diagram to discover its id for stitch assignments.
+
+An example mixing all the options mentioned above:
 
 ![](images/assign-stitches.png)
 
-Hover over a stitch in a pair diagram to discover its id for the stitch assignments.
 The overall default in this example is a `ctct`.
-A more selective default is `ctc` for stitches that were twists in the threads diagram.
+A more selective default is `ctc` for stitches that were twists in the preceding thread diagram.
 Two specific stitches are set to `ct`. 
 
 Define a repeat

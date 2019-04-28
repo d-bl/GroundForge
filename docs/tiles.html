@@ -141,14 +141,14 @@
     </p>
     <fieldset id="drosteFieldSet">
         <legend>
-            Thread diagram as pair diagram
+            Reuse thread diagram as pair diagram
             -
             <a href="help/Tiles#thread-diagram-as-pair-diagram" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
         </legend>
         Requires a small patch size and still the power of a desk-top
-        <a><button type="button" onclick="showDroste()" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
-        <div id="drosteFields">
-            <a><button type="button" onclick="d3.select('#drosteFields').style('display', 'none'); return false">close</button></a>
+        <a><button type="button" onclick="showDroste(2)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
+        <div id="drosteFields2">
+            <a><button type="button" onclick="d3.select('#drosteFields2').style('display', 'none'); return false">close</button></a>
             <br>
             <textarea id="droste2" name="droste2" rows="7" cols="30" spellcheck="false" onchange="clear2()"></textarea>
             <figure>
@@ -180,35 +180,41 @@
                 <div id="drosteThread2"></div>
             </figure>
             <br>
-            <textarea id="droste3" name="droste3" rows="7" cols="30" spellcheck="false" onchange="clear3()"></textarea>
-            <figure>
-                <figcaption>
-                    Pairs
-                    <a download="pair-diagram.svg"
-                       onfocus="setDownloadContent(this,'#drostePair3')"
-                       onblur="this.href='?#download'"
-                       href="?#download"
-                       title="download"
-                    ><img src="images/download.jpg"></a>
-                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drostePair3', 1.1)" title="increase diagram dimensions"
-                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drostePair3', 0.91)" title="decrease diagram dimensions">
-                </figcaption>
-                <div id="drostePair3"></div>
-            </figure>
-            <figure >
-                <figcaption>
-                    Threads - click squares
-                    <a download="thread-diagram.svg"
-                       onfocus="setDownloadContent(this,'#drosteThread3')"
-                       onblur="this.href='?#download'"
-                       href="?#download"
-                       title="download"
-                    ><img src="images/download.jpg"></a>
-                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drosteThread3', 1.1)" title="increase diagram dimensions"
-                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drosteThread3', 0.91)" title="decrease diagram dimensions">
-                </figcaption>
-                <div id="drosteThread3"></div>
-            </figure>
+            Another level of reuse
+            <a><button type="button" onclick="showDroste(3)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
+            <div id="drosteFields3">
+                <a><button type="button" onclick="d3.select('#drosteFields3').style('display', 'none'); return false">close</button></a>
+                <br>
+                <textarea id="droste3" name="droste3" rows="7" cols="30" spellcheck="false" onchange="clear3()"></textarea>
+                <figure>
+                    <figcaption>
+                        Pairs
+                        <a download="pair-diagram.svg"
+                           onfocus="setDownloadContent(this,'#drostePair3')"
+                           onblur="this.href='?#download'"
+                           href="?#download"
+                           title="download"
+                        ><img src="images/download.jpg"></a>
+                        <img src="images/size-inc.jpg" onclick="resizeBoth('#drostePair3', 1.1)" title="increase diagram dimensions"
+                        ><img src="images/size-dec.jpg" onclick="resizeBoth('#drostePair3', 0.91)" title="decrease diagram dimensions">
+                    </figcaption>
+                    <div id="drostePair3"></div>
+                </figure>
+                <figure >
+                    <figcaption>
+                        Threads - click squares
+                        <a download="thread-diagram.svg"
+                           onfocus="setDownloadContent(this,'#drosteThread3')"
+                           onblur="this.href='?#download'"
+                           href="?#download"
+                           title="download"
+                        ><img src="images/download.jpg"></a>
+                        <img src="images/size-inc.jpg" onclick="resizeBoth('#drosteThread3', 1.1)" title="increase diagram dimensions"
+                        ><img src="images/size-dec.jpg" onclick="resizeBoth('#drosteThread3', 0.91)" title="decrease diagram dimensions">
+                    </figcaption>
+                    <div id="drosteThread3"></div>
+                </figure>
+            </div>
         </div>
     </fieldset>
     <p>

@@ -18,8 +18,8 @@ fieldset fieldset figure div { height: 222px; }
  { resize:both;overflow:auto;display:inline-block;width:250px;height:250px;max-width:784px;max-height:1082px }
 #prototype { width:350px; height:250px; overflow:hidden}
 #drosteFieldSet { text-align: right; }
-#drosteFields { display: none; }
-#drosteFields textarea { vertical-align: text-top; }
+#drosteFields2, #drosteFields3 { display: none; }
+#drosteFields2 textarea { vertical-align: text-top; }
 
 foreignObject{margin:0; padding:0}
 foreignObject input {

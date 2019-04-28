@@ -277,23 +277,26 @@ function clear2() {
 function clear3() {
   d3.selectAll("#drostePair3, #drosteThread3").html("")
 }
-function showDroste() {
-  d3.select("#drosteFields").style("display", "block")
-  var el = d3.select("#drosteThread3").node().firstElementChild
+function showDroste(level) {
+  d3.select("#drosteFields" + level).style("display", "block")
+  var el = d3.select("#drosteThread" + level).node().firstElementChild
   if (el && el.id.startsWith("svg")) return
 
   var q = submitQuery()
   d3.select("#link").node().href = "?" + q
   var drosteThreads1 = ThreadDiagram.create(NewPairDiagram.create( TilesConfig(q)))
-  // TODO the diagrams above have been calculated before (on a fresh page or  if the wand was clicked)
   var drostePairs2 = PairDiagram.create(stitches = d3.select("#droste2").node().value, drosteThreads1)
   var drosteThreads2 = ThreadDiagram.create(drostePairs2)
-  var drostePairs3 = PairDiagram.create(stitches = d3.select("#droste3").node().value, drosteThreads2)
+  // TODO the diagrams above may have been calculated before
 
-  setPairDiagram("#drostePair2", drostePairs2)
-  setPairDiagram("#drostePair3", drostePairs3)
-  setThreadDiagram("#drosteThread2", drosteThreads2)
-  setThreadDiagram("#drosteThread3", ThreadDiagram.create(drostePairs3))
+  if (level == 2) {
+    setPairDiagram("#drostePair2", drostePairs2)
+    setThreadDiagram("#drosteThread2", drosteThreads2)
+  } else if (level == 3) {
+    var drostePairs3 = PairDiagram.create(stitches = d3.select("#droste3").node().value, drosteThreads2)
+    setPairDiagram("#drostePair3", drostePairs3)
+    setThreadDiagram("#drosteThread3", ThreadDiagram.create(drostePairs3))
+  }
 }
 function setPairDiagram(containerID, diagram) {
   var container = d3.select(containerID)
