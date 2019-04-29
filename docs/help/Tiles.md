@@ -19,7 +19,6 @@ The [site map] provides the context for both and lists their differences.
   + [Define a repeat](#define-a-repeat)
   + [Arrange the repeats](#arrange-the-repeats)
   + [Foot sides](#foot-sides)
-  + [Demo section](#demo-section)
 
 
 Catalogues
