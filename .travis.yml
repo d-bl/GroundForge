@@ -50,7 +50,7 @@ matrix:
       - sed -i -e 's!/GroundForge/help/!help/!g'                             _site/*.html _site/js/show-graph.js
       - sed -i -e 's!/GroundForge/images/!images/!g'                         _site/*.html _site/js/show-graph.js
       - sed -i -e 's!/GroundForge/!./!g'                                     _site/*.html _site/js/show-graph.js
-      - sed -i -e '/="help/ s!" target!.html" target!'                       _site/*.html
+      - sed -i -e '/="help/ s!(#|" target)!.html$1!'                         _site/*.html
       - sed -i -e 's!\(href="[^#][^"#?.:]*\)\([#"?]\)!\1.html\2!'            _site/*.html
       - sed -i -e 's!./.html!index.html/!g'                                  _site/*.html
       - grep 'GroundForge/'    _site/*.html _site/*.html _site/help/*.html _site/*/*.js || test $? -eq 1
