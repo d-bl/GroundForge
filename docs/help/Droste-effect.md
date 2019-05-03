@@ -6,194 +6,82 @@ title: Droste effect
 Droste effect
 =============
 
-- [Stitches](#stitches)
-- [Families of patterns to play with](#families-of-patterns-to-play-with)
-- [Tiling](#tiling)
-- [Numbers of patterns](#numbers-of-patterns)
+Pair diagrams of several traditional grounds are very similar to thread diagrams of more basic grounds.
+The differences in the basic grounds are the stitches.
 
-The [GroundForge] main page can show three pairs of thread and pair diagrams.
-Each next pair diagram is a color coded version of the previous thread diagram.
-When choosing one and the same stitch for each pair of diagrams you get a Droste effect.
-In theory more levels are possible but a browser might easily choke.
+The principle of using a thread diagram as pair diagram can be used over and over again, in theory.
+In practice the holes will grow very large. The diagram generator supports up to lever 3.
+At level 4 browser would choke even with a very small number of repeats.
 
-Stitches
---------
+At each level you can mix stitches resulting in a myriad of patterns.
+The following table shows just a few options in the level-2 column.
+The last column mentions patterns of the Whiting index,
+some times they are mirrored or have other small variations.
 
-The table shows the most interesting stitches and demonstrates some traditional patterns.
-The left column shows the official color coded diagrams for level 2.
-The generated diagrams however don't have pins and the pair diagrams
-draw a plait or something-pin-something like a simple stitch.
+level 1                                                                  | interactive<br>diagrams    | level 2     | [Whiting index](Whiting-Index)
+-------------------------------------------------------------------------------------|----------------|-------------|---------
+single stitch | <span>click 2nd ![](../images/wand.png) too!</span>
+![](stitches/ct.png) ![](stitches/ct-color1.png)                                     | [ct-ctct]      | ![](w/page76a.gif) | A5, A6, B5, C6, [A7-H7,G11]
+![](stitches/ctct.png) ![](stitches/ctct-color1a.png) ![](stitches/ctct-color1b.png) | [ctct-ct/ctct] | ![](w/page120a.gif) ![](stitches/ctct-color2a.png) ![](stitches/ctct-color2b.png) | A2, B2, B6, C6
+![](stitches/crclct.png) | [crclct-ct/ctct] | ![](w/page139a.gif) ![](stitches/crclct-color2.png) | C6
+![](stitches/clcrclc.png) | [clcrclc-ctc] | ![](stitches/clcrclc-color2.png)
+![](stitches/ctctc.png) | [ctctc-ctc] | ![](w/page178a.gif) | F2
+stitch mix |
+![](stitches/ctc-ctcr.png) ![](stitches/ctc-ctcr-color.png)  | 2 x [ctc+t]* | ![](w/page150a.gif) | D16
+![](stitches/2x-ct-ctct.png) | 2 x [ct/ctct] | surprise!
 
-<table>
-    <tr>
-        <th>level 2</th>
-        <th colspan="3">level 1</th>
-        <th><a href="#tiling">tiling</a></th>
-        <th><a href="/GroundForge/help/Whiting-Index">Whiting index</a></th>
-    </tr>
-    <tr>
-        <td></td>
-        <td><img src="/GroundForge/help/stitches/ct.png"></td>
-        <td><img src="/GroundForge/help/stitches/ct-color1.png"></td>
-        <td><a href="/GroundForge/?m=5-;bricks;7;5;0;0&s1=ct&s2=ctct&s3=&#diagrams"
-        >ct</a></td>
-        <td>diagonal 1x2 bricks</td>
-        <td><a href="http://www.gwydir.demon.co.uk/jo/lace/whiting/page75.htm">A5</a></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td><img src="/GroundForge/help/stitches/ctc-ctcr.png"></td>
-        <td><img src="/GroundForge/help/stitches/ctc-ctcr-color.png"></td>
-        <td>
-            <a href="/GroundForge/?m=8%0A1;checker;8;6;0;0&s1=A1%3Dctc,A2%3Dctcr&s2=ctc,A24%3Dtctct,A12%3Dctcr,A13%3Dctcr,A20%3Dctc,A21%3Dctcl,A23%3Dctcl&s3=ct"
-            >ctc-ctcr</a></td>
-        <td>weaving 2x1 checker</td>
-        <td><a href="http://www.gwydir.demon.co.uk/jo/lace/whiting/page150.htm">D16</a></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td><img src="/GroundForge/help/stitches/2x-ct-ctct.png"></td>
-        <td><a href="/GroundForge/?m=88%0A11;bricks;8;6;0;0&s1=ctct b1%3Da2%3Dct&s2=ctct b10%3Db11%3Db11%3Da20%3Da21%3Da22%3Dct&s3=ctct b100%3Db110%3Db110%3Da200%3Da210%3Da220%3Db101%3Db111%3Db111%3Da201%3Da211%3Da221%3Db102%3Db112%3Db112%3Da202%3Da212%3Da222%3Dct"
-        >ct-ctct<br>ctct-ct</a></td>
-        <td>weaving 2x2 checker</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td><img src="/GroundForge/help/stitches/ctct-color2a.png"> <img src="stitches/ctct-color2b.png"></td>
-        <td><img src="/GroundForge/help/stitches/ctct.png"></td>
-        <td><img src="/GroundForge/help/stitches/ctct-color1a.png"> <img src="stitches/ctct-color1b.png"></td>
-        <td><a href="/GroundForge/?m=5-;bricks;7;5;0;0&s1=ctct&s2=cross=ctct,twist=ct&s3=&#diagrams"
-        >ctct</a></td>
-        <td>diagonal 1x2 bricks</td>
-        <td>variant of <a href="http://www.gwydir.demon.co.uk/jo/lace/whiting/page71.htm">A2</a> and <a href="http://www.gwydir.demon.co.uk/jo/lace/whiting/page95.htm">B2</a></td>
-    </tr>
-    <tr>
-        <td><img src="/GroundForge/help/stitches/crclct-color2.png"></td>
-        <td><img src="/GroundForge/help/stitches/crclct.png"></td>
-        <td></td>
-        <td><a href="/GroundForge/?m=5-;bricks;7;5;0;0&s1=crclct&s2=ctct,B12=ct,B15=ct,B16=ct&s3=&#diagrams"
-        >crclct</a></td>
-        <td>diagonal 1x2 bricks</td>
-        <td>mirrored version of <a href="http://www.gwydir.demon.co.uk/jo/lace/whiting/page139.htm">D6</a></td>
-    </tr>
-    <tr>
-        <td><img src="/GroundForge/help/stitches/clcrclc-color2.png"></td>
-        <td><img src="/GroundForge/help/stitches/clcrclc.png"></td>
-        <td></td>
-        <td>
-            <a href="/GroundForge/?m=5-;bricks;7;5;0;0&s1=clcrclc&s2=ctc,B13=ctcrrctcrr,B15=ctcll,B16=ctctt&s3=&#diagrams"
-            >clcrclc</a></td>
-        <td>diagonal 1x2 bricks</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td><img src="/GroundForge/help/stitches/ctctc.png"></td>
-        <td></td>
-        <td>
-            <a href="/GroundForge/?m=5-;bricks;7;5;0;0&s1=ctctc&s2=ctc,B14=ctcll,B15=ctcrr,B16=ctctt&s3=&#diagrams"
-            >ctctc</a></td>
-        <td>diagonal 1x2 bricks</td>
-        <td>variant of <a href="http://www.gwydir.demon.co.uk/jo/lace/whiting/page178.htm">F2</a></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td><img src="/GroundForge/help/stitches/ctclctc.png"></td>
-        <td></td>
-        <td>ctclctc</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td><img src="/GroundForge/help/stitches/ctclcrctc.png"></td>
-        <td></td>
-        <td>ctclcrctc</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td><img src="/GroundForge/help/stitches/ctcttctc.png"></td>
-        <td><img src="/GroundForge/help/stitches/ctcttctc-color1.png"></td>
-        <td>ctcttctc</td>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
+*: the second level pair diagram looks a bit weird because "stitches" don't cross.
 
-Families of patterns to play with
----------------------------------
-
-Following the linked stitches in the level 1 column above, you get some traditional grounds
-but you can play with stitches at the level 2 diagrams for variations.
-You can create even more variations by mixing and mirroring stitches at the first step with [this page].
-Add or drop twists and/or switch diagonal with weaving too.
-
-You can find more examples of the following families in the [Tesselace Index](/GroundForge/help/TesseLace-Index)
-and fully completed examples in the [MAE-gf](https://maetempels.github.io/MAE-gf/) pages.
-
-Mix
-![](stitches/crclct.png) with ![](/GroundForge/help/stitches/ctct.png)
-and/or drop the last left and/or right twist of these two stitches.
-Just some examples:
-
-![](/GroundForge/help/tl/130.png)
-![](/GroundForge/help/tl/129.png)
-![](/GroundForge/help/tl/133.png)
-![](/GroundForge/help/tl/115.png)
-![](/GroundForge/help/tl/118.png)
-
-Milanese fish or lotus patterns have mainly ctc stitches at the first step
-and now and then a row of stitches starting and/or ending with a left and/or right twist.
-The fish become two pair wide when adding the horizontal twists at the level 2 diagrams
-or four pairs wide when adding the twists at level 3 diagrams.
-As the weaving pattern requires an even number of rows 
-you may need to specify two rows of fishes for the desired height.
-Just two examples to illustrate the difference between a fish and lotus, each with something different between their rows:
-
-![](/GroundForge/help/tl/169.png)
-![](/GroundForge/help/tl/173.png)
+[ct-ctct]: https://d-bl.github.io/GroundForge/tiles?tile=-5&tileStitch=ct&droste2=ctct&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
+[ctct-ct/ctct]: https://d-bl.github.io/GroundForge/tiles?tile=-5&tileStitch=ctct&droste2=ct,b10=b13=ctct&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
+[crclct-ct/ctct]: https://d-bl.github.io/GroundForge/tiles?tile=-5&tileStitch=crclct&droste2=ctct,b16=b15=b12=ct&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
+[clcrclc-ctc]: https://d-bl.github.io/GroundForge/tiles?tile=-5&tileStitch=clcrclc&droste2=ctc,b16=ctct,b13=ctcr,b15=ctcl&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
+[clcrclc-ctc]: https://d-bl.github.io/GroundForge/tiles?tile=-5&tileStitch=ctctc&droste2=ctc,b16=ctct,b13=ctcr,b15=ctcl&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
+[ctctc-ctc]: https://d-bl.github.io/GroundForge/tiles?tile=-5&tileStitch=ctctc&droste2=ctc,B16=ctcttt,B15=ctcrrr,B14=ctclll,b13=ctcctc&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
+[ctc+t]: https://d-bl.github.io/GroundForge/tiles?tile=8,1&a1=ctct&a2=ctcl&droste2=ctc,a24=a15=tt,a14=tctct&patchWidth=4&patchHeight=4&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2
+[ct/ctct]: https://d-bl.github.io/GroundForge/tiles?tile=88,11&tileStitch=ctct&b1=ct&a2=ct&droste2=cross=ctct,twist=ct&patchWidth=6&patchHeight=6&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[A7-H7,G11]: https://d-bl.github.io/GroundForge/help/Whiting-Index#val
 
 
+Seed your own experiments
+-------------------------
 
-Tiling
-------
+To mix stitches at the first level, you can use patterns of the [Tesselace index](TesseLace-Index)
+or get your feet wet with designing patterns from scratch.
+Enter alternating `-`'s and `5`'s or an even number of alternating rows of `8`'s and `1`'s,
+as shown below. Just try which ones of the purple tiles produce a valid pattern.
 
-A matrix and its tiling arrangement defines the flow of pairs in a pattern.
-The red rectangles illustrate the tiling.
-The numbers in circles ([more](/GroundForge/help/images/matrix-template.png))
-define from which location the pairs arrive at a stitch.
+![](images/init-droste.png)
 
-A [special] page lets you simply select a valid tile configuration
-that doesn't suffer from the known bugs [#93] and [#96].
-You can create larger tiles on the main page.
-![](/GroundForge/help/images/base-patterns.png)
+Choose Stitches
+---------------
 
+At the first level you can choose your stitches in the prototype diagram,
+click the ![](../images/wand.png) to show the result.
 
-A weaving pattern requires an even number of rows and
-will always work with a checker board tiling.
+Some stitches to copy paste:
 
-A diagonal pattern requires an even number of columns
-and brick tiling in case of an odd number of rows.
-An odd number of rows won't work with a number of columns divisible by four.
+{% include stitches.html %}
 
+Stitches at the 2nd/3rd level
+-----------------------------
 
-Numbers of patterns
--------------------
+The second and third level have a less convenient method to select stitches.
+The team of GroundForge can use a seasoned front end engineer for a more convenient user interface.
 
-When limiting the choices to the three most common stitches
-we get 3+9+27 thread diagrams for one start pattern.
-The main page show about eight stitches resulting in 8+64+4096 patterns,
-even more stitches are possible by adding and dropping only a few twist.
-And it doesn't even count multiple stitches at each level.
-The resulting collection will contain mirrored stitches and perhaps other duplicates.
-Nevertheless selecting the real pleasing patterns would take a lot of time.
-So you need to develop an intuition to take your picks.
+You can choose to use one stitch everywhere. Or two different stitches:
+one for each cross in the preceding thread diagram, the other for each twist.
+To make exceptions to these rules you need to hover over a stitch
+in the pair diagram to discover its id for stitch assignments.
 
-[#96]: https://github.com/d-bl/GroundForge/issues/96
-[#93]: https://github.com/d-bl/GroundForge/issues/93
-[GroundForge]: /GroundForge/
-[special]: /GroundForge/help/Choose-Stitches.html
-[this page]:/GroundForge/help/Choose-Stitches.html
+An example mixing all the options mentioned above:
+
+![](images/assign-stitches.png)
+
+The overall default in this example is a `ctct`.
+A more selective default is `ctc` for stitches that were twists in the preceding thread diagram.
+Two specific stitches are set to `ct`.
+
+_Note_<br>
+Spaces may have unexpected results, 
+recommended delimiters between assignments: new lines or `,`.

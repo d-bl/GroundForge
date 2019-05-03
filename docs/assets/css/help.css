@@ -22,9 +22,6 @@ figure { display: inline-block; margin-left: 0; margin-top: 0; margin-right: 0.5
 figure image, figcaption { display: block; }
 figcaption { text-align: center; background-color: #ddd; border-radius: 3px; margin-top: 0.3em; }
 
-#stitch-form { padding-bottom: 1em; margin-bottom: 1em; }
-#stitch-form input { width: 90%; }
-#stitch-form table, #stitch-form td { border: 0; }
 .hide { display: none; }
 .show { display: block; }
 

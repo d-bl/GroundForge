@@ -1,0 +1,24 @@
+<form>
+    Inner twists
+    <input name="innerTwists" id="innerTwists" type="number" value="1" min="0" style="width:3em" onchange="update()">
+    Outer twists
+    <input name="outerTwists" id="outerTwists" type="number" value="1" min="0" style="width:3em" onchange="update()">
+    Plait length
+    <input name="plaitLength" id="plaitLength" type="number" value="2" min="0" style="width:3em" onchange="update()">
+    <a id="link" href="#val"><button type="button">Go</button></a>
+    <script>
+    function update(){
+        var plait = "c" + "tc".repeat(document.getElementById("plaitLength").value * 1)
+        var innerTwists = document.getElementById("innerTwists").value * 1
+        var outerTwists = document.getElementById("outerTwists").value * 1
+        var tile = "tile=-5-,B-C&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
+        var leftPlait = `${plait}${"l".repeat(innerTwists)}${"r".repeat(outerTwists)}`
+        var rightPlait = `${plait}${"r".repeat(innerTwists)}${"l".repeat(outerTwists)}`
+        var join = `ctc${"t".repeat(innerTwists)}`
+        var stitches = `b1=${join}&a2=${leftPlait}&c2=${rightPlait}`
+        var href = `https://d-bl.github.io/GroundForge/tiles.html?patchWidth=11&patchHeight=12&${stitches}&${tile}`
+        document.getElementById("link").href = href
+    }
+    update()
+    </script>
+</form>

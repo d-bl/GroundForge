@@ -32,15 +32,18 @@
         <p><em>Deprecated page.</em></p>
         <p>
             Please update your links with the <a href="tiles.html">new version</a> of this page.
+        </p>
+        <p>
             This version will be removed once the last known links are updated.
-            An archived version may remain available at the
-            <a href="https://web.archive.org/web/*/https://d-bl.github.io/GroundForge" target="_blank">way back machine</a>.
+            The last fully dressed up version is preserved in release
+            <a href="https://github.com/d-bl/GroundForge/releases/tag/2019-Q1"
+            >2019-Q1</a>. An online functional version is archived by the
+            <a href="https://web.archive.org/web/20190130123645/https://d-bl.github.io/GroundForge/" target="_blank"
+            >way back machine</a>.
         </p>
 
         <fieldset id="matrixOpts">
-            <legend>Parameters <a href="/GroundForge/help/Parameters"
-                                  target="_blank"><img
-                    src="help/images/information-icon.png"></a></legend>
+            <legend>Parameters</legend>
             <fieldset>
                 <legend>patch size</legend>
                 <p>
@@ -53,8 +56,7 @@
                 </p>
             </fieldset>
             <fieldset>
-                <legend>footside <img src="images/under-construction.png" title="under construction: displaces chosen stitches, might break or fix the pair/thread-diagrams"></legend>
-                <!-- footside move oposite to matrix content -->
+                <legend>footside</legend>
                 <p>
                     <label for="shiftLeft">shift&nbsp;right:</label>
                     <input id="shiftLeft" name="rows" min="0" value="0" type="number"/>
@@ -92,8 +94,7 @@
             ><button id="permalink" type="button"
                      title="link to current pattern and stitches"
             ><img src="images/link.png"></button></a>
-            <label for="permalink"><a href="/GroundForge/help/Undo"
-                                    target="_blank"><img src="help/images/information-icon.png"></a></label>
+            <label for="permalink"></label>
             <a onmouseenter="this.href='http://web.archive.org/*/https://d-bl.github.io/GroundForge/'+createUrlArgs()"
                href="#" target="_blank"
             >
@@ -108,8 +109,7 @@
             Generate the diagrams of the selected pattern.
             The pair diagram will be a color coded version of the chosen pattern or stitch.
         </p>
-        <label for="s1">Stitches <a href="/GroundForge/help/Choose-Stitches"
-                                    target="_blank"><img src="help/images/information-icon.png"></a></label>
+        <label for="s1">Stitches</label>
         <textarea id="s1" name="s" spellcheck="false">ct A1=ct</textarea>
         <table class="step1 hide">
             <tr>
@@ -133,8 +133,6 @@
             </tr>
             <tr>
                 <!-- @formatter:off -->
-                <td><a href="/GroundForge/help/Thread-Colors"
-                       target="_blank"><img src="help/images/information-icon.png"></a></td>
                 <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c1"  class="jscolor" value="000000"/></td>
                 <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c2"  class="jscolor" value="000000"/></td>
                 <td><input onchange="onChangeColor(this)" pattern="[a-fA-F0-9]{6}" id="s1c3"  class="jscolor" value="00CC00"/></td>

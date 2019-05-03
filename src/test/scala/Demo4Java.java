@@ -84,7 +84,7 @@ public class Demo4Java {
     Diagram nudgedThreads = writeNudgedDiagram(i + "-threads", "2px", threads, config, 2);
 
     // Note 1: for "ctct" alternatives see:
-    // https://d-bl.github.io/GroundForge/help/Choose-Stitches#assign-stitches
+    // https://d-bl.github.io/GroundForge/help/Tiles#choose-stitches
     // Note 2: the pair diagram reuses the positions calculated for the thread diagram
     // the thread diagram needs original positions without the nudging for the previous thread diagram
     writeDiagram(i + "-droste-pairs", "1px", PairDiagram.create("ctct", nudgedThreads), config.svgBoundsOfCenterTile(2 * 15));

@@ -24,8 +24,7 @@ Explore, experiment, play and discover!
   When following an image link you will discover one or more patterns from the tesselace [slide show].
 * The [Droste effect] page (thread diagrams used as pair diagrams)
   starts with some ready-to-show traditional grounds
-  and explains with a few families of patterns
-  how to mix and match you own variations with a [simple form].
+  and explains how to mix and match you own variations.
 * The [Whiting index] shows 144 patches of worked lace from
   _A Lace Guide for Makers and Collectors_ by Gertrude Whiting which dates from 1920.
   Though each peace is just one interpretation of a pattern,
@@ -39,7 +38,6 @@ Explore, experiment, play and discover!
 
 [GroundForge]: /GroundForge/
 [Droste effect]: /GroundForge/help/Droste-effect
-[simple form]: /GroundForge/help/Choose-Stitches.html
 [Tesselace index]: /GroundForge/help/TesseLace-Index
 [tesseLace.com]: https://tesselace.com
 [slide show]: https://tesselace.com/tools/inkscape-extension/
