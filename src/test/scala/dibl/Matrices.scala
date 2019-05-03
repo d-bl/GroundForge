@@ -16,7 +16,6 @@
 package dibl
 
 import java.io._
-import java.net.URLDecoder
 
 import dibl.Matrix.{extend, toRelativeSources}
 
@@ -28,11 +27,11 @@ object Matrices {
   )).lines()
     .iterator()
     .asScala
-    .filter(_.contains("&patch="))
+    .filter(_.contains("""patches="patch"""))
     .toSeq
-    .flatMap(s => URLDecoder.decode(s,"UTF8")
-      .replaceAll(".*img=...&patch=", "")
-      .replace(")", "")
+    .flatMap(_
+      .replaceAll(""".*"patch=""","")
+      .replaceAll("""" *%}""","")
       .split("&patch=")
     ).distinct
 

@@ -149,13 +149,18 @@ private class Pattern (tileMatrix: String,
   }
 
   private val options = Array(s"matrix=${lines.mkString("%0D")}", s"tiles=$tileType")
-  private val url = "https://d-bl.github.io/GroundForge/index.html"
+  private val dims = s"patchHeight=${3*tileRows}&patchWidth=${3*tileCols}"
+  private val shifts = if (tileType == "checker")
+                         s"shiftColsSW=0&shiftRowsSW=$tileRows&shiftColsSE=$tileCols&shiftRowsSE=$tileRows"
+                       else
+                         s"shiftColsSW=-${tileCols/2}&shiftRowsSW=$tileRows&shiftColsSE=${tileCols/2}&shiftRowsSE=$tileRows"
+  private val url = "https://d-bl.github.io/GroundForge/tiles.html"
   private def createPatch: String =
     s"""
        |  <text style='font-family:Arial;font-size:11pt'>
        |   <tspan x='15' y='-20'>$tileType; ${tileRows}x$tileCols; ${lines.mkString(",")}</tspan>
        |   <tspan x='15' y='-40' style='fill:#008;'>
-       |    <a xlink:href='$url?${options.mkString("&amp;")}'>pair/thread diagrams</a>
+       |    <a xlink:href='$url?tile=${lines.mkString(",")}&$dims&$shifts'>pair/thread diagrams</a>
        |   </tspan>
        |  </text>
        |  <g id ='$groupId'>
