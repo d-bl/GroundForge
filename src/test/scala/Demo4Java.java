@@ -16,6 +16,7 @@
 
 import dibl.*;
 import dibl.proto.TilesConfig;
+import dibl.sheet.SheetSVG;
 import scala.Tuple2;
 
 import java.io.File;

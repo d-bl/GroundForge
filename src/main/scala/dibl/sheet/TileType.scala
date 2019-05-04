@@ -13,7 +13,9 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
-package dibl
+package dibl.sheet
+
+import dibl.{ Cell, M }
 
 abstract class TileType {
   def toSettings(m: M, stitchMatrix: Seq[Seq[String]], colorMatrix: Seq[Seq[String]]): Settings

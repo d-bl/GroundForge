@@ -17,7 +17,8 @@ package dibl
 
 import java.io._
 
-import dibl.Matrix.{extend, toRelativeSources}
+import dibl.Matrix.{ extend, toRelativeSources }
+import dibl.sheet.TileType
 
 import scala.collection.JavaConverters._
 

@@ -15,12 +15,10 @@
 */
 package dibl
 
-import dibl.LinkProps.{pairLink, transparentLinks}
-import dibl.NodeProps.{errorNode, node}
+import dibl.LinkProps.pairLink
+import dibl.NodeProps.node
 
-import scala.annotation.tailrec
 import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
-import scala.util.Try
 
 @JSExportTopLevel("PairDiagram") object PairDiagram {
 
@@ -79,143 +77,5 @@ import scala.util.Try
       mid = nrOfTwists - 1,
       end = targetPairNode.color
     )
-  }
-
-  /** Creates a pair diagram. Parameters are explained on the tabs of https://d-bl.github.io/GroundForge/
-    *
-    * @param compactMatrix see matrix tab
-    * @param tiling values 'bricks' or 'checker', see also matrix tab
-    * @param absRows see patch size tab
-    * @param absCols see patch size tab
-    * @param shiftLeft see footsides tab
-    * @param shiftUp see footsides tab
-    * @param stitches see stitches tab
-    * @return In case of an error, the getOrRecover method returns
-    *         a diagram with just a node that has an error message as title
-    */
-  @JSExport
-  def get(compactMatrix: String, tiling: String, absRows: Int, absCols: Int, shiftLeft: Int = 0, shiftUp: Int = 0, stitches: String = ""): Diagram =
-    create(compactMatrix.trim, tiling, absRows, absCols, shiftLeft, shiftUp, stitches).getOrRecover
-
-  def create(compactMatrix: String, tiling: String, absRows: Int, absCols: Int, shiftLeft: Int = 0, shiftUp: Int = 0, stitches: String = ""): Try[Diagram] =
-    Settings(compactMatrix.trim, tiling, absRows, absCols, shiftLeft, shiftUp, stitches)
-      .map(PairDiagram(_))
-
-  @deprecated(
-    """use: NewPairDiagram.create(Config.create(<SubmitQueryString>))
-      | with SubmitQueryString as on tiles.html by tiles.js""".stripMargin)
-  def apply(triedSettings: Try[Settings]): Diagram = if (triedSettings.isFailure)
-    Diagram(Seq(errorNode(triedSettings)), Seq[LinkProps]())
-  else apply(triedSettings.get)
-
-  private def apply(settings: Settings) = {
-
-    val fringes = new Fringes(settings.absM)
-    val sources: Seq[Cell] = fringes.newPairs.map { case (source, _) => source }
-    val sourcesIndices = sources.indices
-    val plainLinks: Seq[Link] =
-      sourcesIndices.filter(i => fringes.isLeftPair(i)).map(i => fringes.newPairs(i)) ++
-        fringes.leftFootSides ++
-        fringes.coreLinks ++
-        sourcesIndices.filter(i => !fringes.isLeftPair(i)).map(i => fringes.newPairs(i)) ++
-        fringes.rightFootSides
-    val linksByTarget: Map[Cell, Seq[Link]] = replaceYsWithVs(plainLinks.groupBy { case (_, target) => target })
-    val targets: Seq[Cell] = linksByTarget.keys.toSeq
-
-    def footsideTwists(row: Int, col: Int) = {
-      val lengths = linksByTarget(Cell(row, col))
-        .map { case ((sRow, _), (tRow, _)) =>
-          if (sRow < 2) 0 else tRow - sRow - 2
-        }
-      //noinspection ZeroIndexToHead
-      val twists =
-        "l" * Math.max(0, lengths(0)) +
-          "r" * Math.max(0, lengths(1))
-      twists
-    }
-
-    val nodeMap: Map[Cell, Int] = {
-      val nodes = sources ++ targets
-      nodes.indices.map(n => (nodes(n), n))
-    }.toMap
-
-    val nodes = sourcesIndices.map(col =>
-      node(s"Pair ${1 + nodeMap((0, col))}", x = 15.0 * col, y = 0.0)) ++
-      targets.map { case (row, col) =>
-        val title = footsideTwists(row, col) + settings.getTitle(row, col)
-        node(title, settings.getColor(row, col),  x = 15.0 * col, y = 15.0 * row)
-      }
-
-    val cols = Set(2, settings.absM(0).length - 2)
-    val links =
-      linksByTarget.values.flatten.map { case ((sourceRow, sourceCol), (targetRow, targetCol)) =>
-        val sourceNode = nodeMap((sourceRow, sourceCol))
-        val targetNode = nodeMap((targetRow, targetCol))
-        val sourceStitch = nodes(sourceNode).instructions
-        val targetStitch = nodes(targetNode).instructions
-        val sourceCells = settings.absM(targetRow)(targetCol)
-        val countedTargetChar = if (sourceCells(0) == (sourceRow, sourceCol)) 'l' else 'r'
-        val countedSourceChar = 't' // TODO figure out which leg of the source stitch
-        val nrOfTwists = sourceStitch.replaceAll(".*c","").count(_ == countedSourceChar) +
-          targetStitch.replaceAll("t", "lr").replaceAll("c.*","").count(_ == countedTargetChar)
-        pairLink(sourceNode, targetNode,
-          start = if (sourceRow < 2) "pair" else Stitches.defaultColorName(sourceStitch),
-          mid = if (sourceRow < 2) 0 else nrOfTwists - 1,
-          end = Stitches.defaultColorName(targetStitch),
-          weak = cols.contains(sourceCol) || targetRow - sourceRow > 1
-        )
-      }.toSeq ++ transparentLinks(sourcesIndices.toArray)
-    Diagram(nodes, links)
-  }
-
-  /** Y and V are ascii art representations of sections in the two-in-two out graph
-    * with the leg of the Y representing parallel links alias plaits
-    *
-    * @param linksByTarget a map of nodes to their two links coming into the node
-    * @return idem, with the parallel legs of the Y's replaced by a single node
-    */
-  //noinspection ZeroIndexToHead
-  def replaceYsWithVs(linksByTarget: Map[Cell, Seq[Link]]): Map[Cell, Seq[Link]] = {
-
-    val plaitSources: Set[Cell] = linksByTarget.values
-      .filter (twoIn => twoIn(0) == twoIn(1) )
-      .map (twoIn => twoIn(0)._1 )
-      .toSeq
-      .toSet
-
-    @tailrec
-    def sourceOfParallelLinks (node: Cell):Cell = {
-      val leftSource = linksByTarget(node)(1)._1
-      if (!plaitSources.contains(leftSource))
-        node
-      else sourceOfParallelLinks(leftSource)
-    }
-
-    linksByTarget
-      .filter { case (target, _) => !plaitSources.contains(target)}
-      .map { case (target, twoIn) =>
-        if (twoIn(0) != twoIn(1))
-          (target, twoIn)
-        else {
-          val leftSource: Cell = twoIn(1)._1
-          val replacedTwoIn = linksByTarget(sourceOfParallelLinks(leftSource))
-          val newTwoIn = replacedTwoIn.map { case (source, _) => (source, target)}
-          (target, newTwoIn)
-        }
-      }
-  }
-
-  /** Property of a link, a cross mark indicates additional twist(s).
-    *
-    * @param sourceStitch stitch instructions in terms of ctrlp
-    * @param targetStitch idem
-    * @param toLeftOfTarget which pair of the two-in
-    * @return the number of additional twists, assuming the first twist is part of the Belgian color code
-    */
-  def midMarker(sourceStitch: String, targetStitch: String, toLeftOfTarget: Boolean): Int = {
-    val twists = (targetStitch.replaceAll("c.*", "") + sourceStitch.replaceAll(".*c", ""))
-      .replaceAll("p", "")
-    val c = if (toLeftOfTarget) 'l' else 'r'
-    Math.max(0, twists.count(_ == c) - 1)
   }
 }

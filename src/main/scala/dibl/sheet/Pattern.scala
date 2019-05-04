@@ -13,9 +13,10 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
-package dibl
+package dibl.sheet
 
 import dibl.Matrix.toValidMatrixLines
+import dibl.{ M, Matrix, hslToRgb }
 
 import scala.util.Try
 

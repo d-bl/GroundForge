@@ -15,8 +15,9 @@
 */
 package dibl
 
-import dibl.D3jsSVG.{prolog, render}
-import dibl.Force.{Point, nudgeNodes}
+import dibl.D3jsSVG.{ prolog, render }
+import dibl.Force.{ Point, nudgeNodes }
+import dibl.proto.TilesConfig
 
 import scala.reflect.io.File
 
@@ -30,10 +31,12 @@ object Permutations {
       a1 <- stitches
       c1 <- stitches.filter(_!=a1)
     } {
-      val stitches = s"D2=$d2 B2=$b2 A1=$a1 C1=$c1"
-      val pairs = PairDiagram.create("5-5-,-5-5", "checker", absRows = 7, absCols = 11, stitches = stitches)
+      val stitches = s"D2=$d2&B2=$b2&A1=$a1&C1=$c1"
+      val pairs = NewPairDiagram.create(TilesConfig(
+        s"a1=$a1&b2=$b2&c1=$c1&d2=$d2&patchWidth=7&patchHeight=7&tile=5-5-,-5-5&tileStitch=ctct&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=4&shiftRowsSE=2"
+      ))
       File(s"target/test/permutations/D2_$d2-B2_$b2-A1_$a1-C1_$c1.svg")
-        .writeAll(prolog + render(nudge(ThreadDiagram(pairs.get))))
+        .writeAll(prolog + render(nudge(ThreadDiagram(pairs))))
     }
     System.exit(0)
   }

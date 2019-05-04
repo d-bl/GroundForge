@@ -1,5 +1,7 @@
 package dibl
 
+import dibl.sheet.SheetSVG
+
 import scala.reflect.io.File
 
 object SheetDemos {

@@ -13,11 +13,12 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
-package dibl
+package dibl.sheet
 
-import dibl.Matrix._
+import dibl.Matrix.{ toAbsolute, _ }
+import dibl.{ Cell, M, Stitches }
 
-import scala.util.{Failure, Success, Try}
+import scala.util.{ Failure, Success, Try }
 
 /** Parameters for the constructor of a [[dibl.PairDiagram]]
   *
@@ -58,17 +59,17 @@ abstract class Settings(val absM: M,
 
 object Settings {
 
-  /** Creates a [[dibl.Settings]] instance.
+  /** Creates a [[Settings]] instance.
     *
-    * @param str A string with matrix lines. Any character in [[dibl.Matrix.toRelativeSources.keySet]]
-    *            is converted to a matrix cell. Any sequence of other characters separates matrix lines.
-    * @param bricks A key of [[dibl.TileType.stringToType]] for the matrix.
-    * @param absRows The desired number of rows for the patch of lace.
-    * @param absCols The desired number of columns for the patch of lace.
+    * @param str       A string with matrix lines. Any character in [[dibl.Matrix.toRelativeSources.keySet]]
+    *                  is converted to a matrix cell. Any sequence of other characters separates matrix lines.
+    * @param bricks    A key of [[TileType.stringToType]] for the matrix.
+    * @param absRows   The desired number of rows for the patch of lace.
+    * @param absCols   The desired number of columns for the patch of lace.
     * @param shiftLeft The number or columns to the tile to the left foot side.
-    * @param shiftUp The number of rows to shift the tile up to the top (read to the false foot side).
-    * @param stitches Stitch instructions per tile-cell.
-    * @return a [[dibl.Settings]] instance
+    * @param shiftUp   The number of rows to shift the tile up to the top (read to the false foot side).
+    * @param stitches  Stitch instructions per tile-cell.
+    * @return a [[Settings]] instance
     */
   def apply(str: String,
             bricks: String,

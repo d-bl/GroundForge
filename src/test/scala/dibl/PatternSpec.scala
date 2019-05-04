@@ -15,7 +15,8 @@
 */
 package dibl
 
-import org.scalatest.{FlatSpec, Matchers}
+import dibl.sheet.SheetSVG
+import org.scalatest.{ FlatSpec, Matchers }
 
 class PatternSpec extends FlatSpec with Matchers {
 
