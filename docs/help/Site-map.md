@@ -13,28 +13,11 @@ A legend and more notes follow the overview.
 {% include site-map.svg %}
 
 
-index.html
-----------
-
-The main page can reuse thread diagrams as pair diagrams up to two times.
-It has a workaround for a bug in IE-11, the Edge browser doesn't have this bug.
-
-
-tiles.html
-----------
-
-Choosing stitches or thread colors is more intuitive.
-Zooming and [untangling] is not supported,
-instead you can adjust the space occupied on the page.
-
-[untangling]: https://github.com/d-bl/GroundForge/releases/download/2017-06-05/untangle.mp4
-
 Diagram properties
 ------------------
 
 Page            | Thread diagrams | Pair diagrams                   | Tiling    | Foot sides         
 ----------------|-----------------|---------------------------------|-----------|--------------------
-index.html      | any color       | color coded / rounded           | simple    | generated          
 tiles.html      | black/red       | color coded / squared + rounded | complex   | fringes or custom defined 
 sheet.html      | -               | black &amp; white / squared     | simple    | -                  
 tesselace-index | -               | black &amp; white / rounded     | n.a.      | -                  
@@ -47,7 +30,7 @@ Many squared diagrams can result in the same rounded diagram.
 
 A tile is a rectangular grid section with stitches.
 
-Withe simple tiling these are repeated in both directions as on a checker board, 
+Withe simple tiling the tiles are repeated in both directions as on a checker board, 
 or horizontally shifted by a half rectangle as in a brick wall. 
 
 With complex tiling the rectangles can be shifted either horizontally
