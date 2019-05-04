@@ -25,8 +25,8 @@ class PatternSpec extends FlatSpec with Matchers {
     patterns.add("66,99+22\n00", "bricks")
     val svgString = patterns.toSvgDoc()
     val links = svgString.split("\n").filter(_.contains("href='http")).mkString("\n")
-    links should include ("?matrix=88%0D11&amp;tiles=bricks'")
-    links should include ("?matrix=66%0D99%0D22%0D00&amp;tiles=bricks'")
+    links should include ("?tile=88,11&patchHeight=6&patchWidth=6&shiftColsSW=-1&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2'")
+    links should include ("?tile=66,99,22,00&patchHeight=12&patchWidth=6&shiftColsSW=-1&shiftRowsSW=4&shiftColsSE=1&shiftRowsSE=4'")
   }
 
   it should "produce a single patch" in {
