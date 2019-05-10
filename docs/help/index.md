@@ -9,10 +9,8 @@ Help Intro
 Experiment with Bobbin Lace Grounds
 -----------------------------------
 
-Varying stitches and reshaping downloadable diagrams renders
-a myriad of variations for a single pattern.
-Experiment and play around. 
-Even when reinventing wheels, your own discoveries can bring great joy. 
+Varying stitches and reshaping a downloadable diagram may render a myriad of variations.
+Experiment and play around. Even when reinventing wheels, your own discoveries can bring great joy. 
 
 
 Approach
@@ -21,10 +19,13 @@ Approach
 Each type of diagram plays its own role while designing bobbin lace grounds. The creative process involves several decisions, each playing a role in an iterative process.
 The diagram generator can relief much tedious work that would go into these steps in ink and paper times and reduce (but not eliminate) the trial and error of experimental patches. In short:
 
-* Start with selecting a pattern from the [catalogue pages](/GroundForge/help/Catalogues) such as the thumbnails in figure `a`.
-* Specify stitches for figure `b` and get `c` as a bonus.
+Follow the steps on the [tile page](../tiles):
+* Select a pattern such as the thumbnails in figure `a`.
+* Set stitches in the prototype diagram (not shown below) for figure `b` and get `c` as a bonus.
 * Apply colors to individual threads in figure `c` to plan contrasting threads (thickness or color) in your work.
-* Download figure `d` and customize it with a third party editor into `e-h` or whatever your fancy.
+
+Follow the `vari` links on the [Tesselace-index](Tesselace-index) to download something like figure `d` 
+and customize it with a third party editor into `e-h` or whatever your fancy.
 
 ![](images/intro.png)
 
