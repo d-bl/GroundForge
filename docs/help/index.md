@@ -9,17 +9,10 @@ Help Intro
 Experiment with Bobbin Lace Grounds
 -----------------------------------
 
-Varying stitches and playing with downloadable diagrams renders
+Varying stitches and reshaping downloadable diagrams renders
 a myriad of variations for a single pattern.
-No affiliation, but Jane Atkinson's[➚](http://www.contemporarylace.com/)
-philosophy as written down in
-"_Pattern Design for Torchon Lace_" applies also to using GroundForge as a tool,
-a short version of her [citation] of the Bauhaus school of art:
-_experiment, play, think. Some experiments may result in innovations,
-but even when reinventing wheels it is your own discovery._
-
-[Jane Atkinson]: http://www.contemporarylace.com/
-[citation]: /GroundForge/help/images/bauhaus.png
+Experiment and play around. 
+Even when reinventing wheels, your own discoveries can bring great joy. 
 
 
 Approach
@@ -33,7 +26,7 @@ The diagram generator can relief much tedious work that would go into these step
 * Apply colors to individual threads in figure `c` to plan contrasting threads (thickness or color) in your work.
 * Download figure `d` and customize it with a third party editor into `e-h` or whatever your fancy.
 
-![](/GroundForge/help/images/intro.png)
+![](images/intro.png)
 
 The diagrams in figure `b` and `c` just provide instructions to create a patch of lace
 but don't inform you about the positions of the pins,
