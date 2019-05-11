@@ -44,12 +44,12 @@ from the downloaded figure `d`.
 Figure `f` and `g` rounded a few corners and added pins.
 
 
+
 <a name="BK-31"/>
+<img src="https://raw.githubusercontent.com/d-bl/GroundForge/master/docs/help/images/kompakt-31-challenge.png" style="float:right"/>
 
 "Binche Kompakt" feature 31
 ---------------------------
-
-<img src="https://raw.githubusercontent.com/d-bl/GroundForge/master/docs/help/images/kompakt-31-challenge.png" style="float:right"/>
 
 Feature 31 in the DKV [pattern] "Binche Kompakt" was previously published in "Kant" issue 2002/2.
 Anne-Marie Verbeke-Billiet puts four variations of sometimes lost Binche grounds in historical context.
