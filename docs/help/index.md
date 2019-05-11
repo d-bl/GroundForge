@@ -46,7 +46,7 @@ Figure `f` and `g` rounded a few corners and added pins.
 
 
 <a name="BK-31"/>
-<img src="https://raw.githubusercontent.com/d-bl/GroundForge/master/docs/help/images/kompakt-31-challenge.png" style="float:right"/>
+<img src="/GroundForge/help/images/kompakt-31-challenge.png" style="float:right"/>
 
 "Binche Kompakt" feature 31
 ---------------------------
@@ -54,11 +54,13 @@ Figure `f` and `g` rounded a few corners and added pins.
 Feature 31 in the DKV [pattern] "Binche Kompakt" was previously published in "Kant" issue 2002/2.
 Anne-Marie Verbeke-Billiet puts four variations of sometimes lost Binche grounds in historical context.
 
-Nowhere a strong close up for the challenging ground asked for a thread diagram generated out of a doable pair diagram.
+Nowhere a strong close up for the challenging ground.
+That asked for a thread diagram generated out of a doable pair diagram.
 
-
-The [interactive] pattern (slow on tablet an phones) allows for the variations below by dropping stitches and/or using turning stitches.
-Note the one or two grey symbols in the upper diagrams, they represent the dropped stitches.
+Dropping stitches in the [interactive] pattern (slow on tablet an phones)
+and/or using turning stitches can render the variations below.
+Note the one (center) or two (top and bottom) grey symbols in the upper diagrams,
+they represent the dropped stitches. [Many](nrs) more are possible.
 
 ![](images/kompakt-31.png)
 
@@ -78,6 +80,8 @@ Apply the red changes for the third variant.
 
 ![](images/drop-stitches.png)
 
+
+<a name="nrs"/>
 
 ### Number of variations
 
