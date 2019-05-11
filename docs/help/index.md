@@ -58,9 +58,10 @@ Nowhere a strong close up for the challenging ground.
 That asked for a thread diagram generated out of a doable pair diagram.
 
 Dropping stitches in the [interactive] pattern (slow on tablet an phones)
-and/or using turning stitches can render the variations below.
+and using turning stitches can render the variations below.
 Note the one (center) or two (top and bottom) grey symbols in the upper diagrams,
-they represent the dropped stitches. [Many](nrs) more are possible.
+they represent the dropped stitches.
+[Below](nrs) an educated guess on the numbers of possible variations.
 
 ![](images/kompakt-31.png)
 
