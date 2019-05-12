@@ -49,7 +49,7 @@ This can have unexpected results such as more stitches disappearing
 and/or the algorithm switching pairs before making the stitch.
 The latter effect causes weird thread diagrams.
 It might be better to go to the advanced section.
-Apply the blue changes for the second and last variant.
+Apply the blue changes below for the second and last variant above.
 Apply the red changes for the third variant.
 
 ![](images/drop-stitches.png)
