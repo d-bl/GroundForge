@@ -10,7 +10,7 @@ Experiment with Bobbin Lace Grounds
 -----------------------------------
 
 Varying stitches and reshaping a downloadable diagram may render a myriad of variations for a single pattern.
-Experiment and play around with the provided base patterns or add your own.
+Experiment and play around with the hundredths of provided patterns or add your own.
 Even when reinventing wheels, your own discoveries can bring great joy. 
 
 The [tiles](../tiles) page generates diagrams and guides you through most important first steps.
