@@ -19,7 +19,7 @@ by Veronika Irvine.
 
 [TesseLace.com]: https://tesselace.com
 [slide show]: https://tesselace.com/tools/inkscape-extension/
-[GroundForge]: /GroundForge/tiles
+[GroundForge]: /GroundForge/tiles.html
 
 Groups of images
 - [Common Grounds](#common-grounds)

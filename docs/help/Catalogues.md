@@ -36,7 +36,7 @@ Explore, experiment, play and discover!
   Fixing our non-native grammar would be much appreciated.
 
 
-[GroundForge]: /GroundForge/tiles
+[GroundForge]: /GroundForge/tiles.html
 [Droste effect]: /GroundForge/help/Droste-effect
 [Tesselace index]: /GroundForge/help/TesseLace-Index
 [tesseLace.com]: https://tesselace.com
