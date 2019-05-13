@@ -13,7 +13,7 @@ Varying stitches and reshaping a downloadable diagram may render a myriad of var
 Experiment and play around with the hundredths of provided patterns or add your own.
 Even when reinventing wheels, your own discoveries can bring great joy. 
 
-The [tiles](../tiles) page generates diagrams and guides you through most important first steps.
+The [tiles](../tiles.html) page generates diagrams and guides you through most important first steps.
 Help pages in the side bar explain more in-depth subjects.
 The following section discusses a versatile traditional pattern.
 A small strip with foot sides turns the pattern in a Milanese braid with a twist. 
@@ -35,7 +35,7 @@ Dropping stitches in the interactive pattern ([with] and [without] foot sides, s
 and using turning stitches can render the variations below.
 Note the one (center) or two (top and bottom) grey symbols in the upper diagrams,
 they represent the dropped stitches.
-[Below](nrs) an educated guess on the numbers of possible variations.
+[Below](#nrs) an educated guess on the numbers of possible variations.
 
 ![](images/kompakt-31.png)
 
