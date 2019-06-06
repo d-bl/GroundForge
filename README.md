@@ -15,6 +15,17 @@ _A toolbox to design bobbin lace grounds with matching sets of pair/thread diagr
   [Use as JVM library](#use-as-jvm-library)
 
 
+Short intro's
+=============
+For users (bobbin lace makers and designers) with screen-casts:<br>
+https://d-bl.github.io/GroundForge/help/index
+
+For developers:
+* `src/scala/main/*` is translated to : `docs/js/GroundForge-opt.js`
+* This is connected client side to HTML with : `docs/js/tiles.js`
+* Translated to JVM for server-side or batch processing, for example something like : `src/test/Demo4Java.java`
+
+
 DEMO's
 ======
 
