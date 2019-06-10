@@ -9,11 +9,20 @@ Help Intro
 Experiment with Bobbin Lace Grounds
 -----------------------------------
 
-Varying stitches and reshaping a downloadable diagram may render a myriad of variations on a single pattern.
+This site is both for authors and users of books like
+"_The Book of Bobbin Lace Stitches_" by  Bridget Cook,
+"_Viele gute Gründe_" by Ulrike Voelcker Löhr and 
+"_Gründe mit System_" by Uta Ulrich.
+Nothing to install, free of charge, free to contribute,
+alter and redistribute provided some limitations by the GPL-v3 license
+and possible copyrights on specific modern patterns.
+
+Vary stitches and reshape downloadable diagrams to get a myriad of variations on a single pattern.
 Experiment and play around with the hundredths of provided patterns or add your own.
 Even when reinventing wheels, your own discoveries can bring great joy. 
 
-The [tiles](../tiles.html) page generates diagrams and guides you through most important first steps.
+The [tiles](../tiles.html) page generates thread diagrams from pair diagrams. 
+The first lines of text guide you through most important first steps.
 Help pages in the side bar explain more in-depth subjects.
 The following section discusses a versatile traditional pattern.
 

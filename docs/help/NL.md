@@ -9,6 +9,7 @@ Help Intro
 Experimenteer met gekloste gronden
 ----------------------------------
 
+
 Door slagen te variëren en de downloads daarvan te vervormen kun je een wereld van verschillende gronden uit een enkele grond toveren. Experimenteer en speel met de honderden voorgebakken gronden of voeg je eigen patronen toe. Zelfs als je wielen opniew uitvindt kun je aan eigen ontdekkingen veel plezier beleven. 
 
 De [tiles](../tiles.html) pagina genereert de diagrammen en somt de belangrijkste stappen op. 
