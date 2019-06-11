@@ -9,13 +9,15 @@ Help Intro
 Experiment with Bobbin Lace Grounds
 -----------------------------------
 
-This site is both for authors and users of books like
+This site is bobbin lace makers and designer who tend to use or write books like
 "_The Book of Bobbin Lace Stitches_" by  Bridget Cook,
 "_Viele gute Gründe_" by Ulrike Voelcker Löhr and 
 "_Gründe mit System_" by Uta Ulrich.
 Nothing to install, free of charge, free to contribute,
 alter and redistribute provided some limitations by the GPL-v3 license
 and possible copyrights on specific modern patterns.
+It doesn't make these books redundant but can help to avoid 
+tedious fruitless experiments making real patches of lace.
 
 Vary stitches and reshape downloadable diagrams to get a myriad of variations on a single pattern.
 Experiment and play around with the hundredths of provided patterns or add your own.
@@ -33,7 +35,7 @@ Add foot sides to a small strip of a (symmetrical or not?) pattern to get a brai
 Tutorial
 --------
 One [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4)
-(129 MB, 2:28 min) goes through various catalogues to variations of the same base pattern.
+(123 MB, 2:32 min) goes through various catalogues to variations of the same base pattern.
 Use the pause button and slider to repeat, try for yourself get side tracked and have fun.
 
 Another screencast (with script) walks through some important functions to make variation on these patterns,
@@ -74,7 +76,7 @@ Apply the red changes for the third variant.
 
 ### 2nd Screen cast
 
-A [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK-31.mp4) (37 MB) follows the script below,
+A [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK-31.mp4) (35 MB) follows the script below,
 applying what is explained above.
 
 A lot happens in a short time, use the pause button and slider to repeat. 
@@ -92,7 +94,9 @@ Newbies may skip the bold steps when trying to understand/repeat the scenario.
 * 0:44 follow "_stitches_"
 * 0:45 copy edge stitch
 * 0:49 previous browser tab
-* 0:52 paste the copied stitch and edit into turning stitch
+* 0:52 paste the copied stitch and edit into turning stitch.
+       Note that ctc, twist one pair, ctc is a single stitch for GroundForge.
+       It makes the runner changing direction, therefore: turning stitch. 
 * 1:19 ![link](../images/link.png)
 * 1:23 reload web page
 * 1:26 current pattern is reloaded
@@ -101,7 +105,7 @@ Newbies may skip the bold steps when trying to understand/repeat the scenario.
 * 1:36 increase thread diagram container (alternative: ![](../images/size-inc.jpg) ![](../images/size-dec.jpg))
 * 1:38 scroll down to get thread container back into view
 * 1:42 toggle thread color when tooltip displays thread number
-* 1:45
+* 1:47
 
 <a name="nrs"/>
 
