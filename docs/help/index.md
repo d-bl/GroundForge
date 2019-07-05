@@ -9,7 +9,7 @@ Help Intro
 Experiment with Bobbin Lace Grounds
 -----------------------------------
 
-This site is bobbin lace makers and designer who tend to use or write books like
+This site is for bobbin lace makers and designer who tend to use or write books like
 "_The Book of Bobbin Lace Stitches_" by  Bridget Cook,
 "_Viele gute Gründe_" by Ulrike Voelcker Löhr and 
 "_Gründe mit System_" by Uta Ulrich.
