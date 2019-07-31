@@ -86,7 +86,7 @@ Newbies may skip the bold steps when trying to understand/repeat the scenario.
 * 0:00 follow "_with_"
 * 0:05 drop center stitch: `ctc` -> `-`
 * 0:10 ![wand](../images/wand.png) generate new diagrams
-* **0:18** reload web page : restores original diagrams
+* 0:18 reload web page : restores original diagrams
 * **0:19** scroll down to advanced section
 * **0:22** drop center stitch: `353,153` -> `-5-,5-5-`
 * **0:35** ![wand](../images/wand.png) : different prototype, same pair/thread diagram

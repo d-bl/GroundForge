@@ -69,7 +69,7 @@ Gebruik de pauzeknop en schuifregelaar om stappen te herhalen.
 Negeer eventueel de dik-gedrukt gedrukte stappen voor gevorderden.
 
 * 0:00 start met deze help pagina (de opname toont een oudere Engelse versie)
-* 0:00 volg de link "_met_"
+* 0:00 volg de link "_with_" (met)
 * 0:05 [slag] vervangen/weglaten: `ctc` -> `-`
 * 0:10 ![wand](../images/wand.png) genereer nieuwe diagrammen
 * 0:18 ververs de complete pagina : de oorspronkele  diagrammen worden opnieuw getoond
@@ -100,6 +100,6 @@ Een slag word gedefinieerd met een reeks letters:
 
 C = cross = kruisen<br>
 T = twist = draaien<br>
-L = left twist = linkerpaar draaien<br>
-R = right twist = rechterpaar draaien<br>
+L = linkerpaar draaien<br>
+R = rechterpaar draaien<br>
 P = pin = speld (amper geïmplementeerd)<br>
