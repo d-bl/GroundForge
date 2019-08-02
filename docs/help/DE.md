@@ -12,9 +12,10 @@ Indem Sie die Schläge variieren und/oder die Downloads verzerren,
 können Sie aus einem einzigen Grund eine Welt unterschiedlicher Gründe zaubern.
 Experimentieren und spielen Sie mit Hunderten von vorgefertigte Gründe oder geben Sie Ihre eigenen Muster ein. Auch wenn Sie Räder neu erfinden, können Sie viel spaß haben an eigenen Entdeckungen.
 
-Den [Tiles](../tiles.html) (Kacheln) -Seite generiert die Diagramme und listet die wichtigsten Schritte auf. Hilfeseiten am rechten Rand erläutern weitere Details. Leider nur auf Englisch, verwenden bitte Sie algemeine Online-Übersetzungsseiten und den [OIDFA-Übersetzer] für Klöppelbegriffe.
+Den [Tiles](../tiles.html) (Kacheln) -Seite generiert die Diagramme und listet die wichtigsten Schritte auf. Hilfeseiten am rechten Rand erläutern weitere Details. Leider nur auf Englisch, verwenden bitte Sie allgemeine Online-Übersetzungsseiten und den [OIDFA-Übersetzer] für Klöppelbegriffe.
 
-Nachfolgend finden Sie eine Erklärung für die Verwendung eines vielseitigen Gründ. Nebenbei bemerkt: Auch Bänder entwerfen mit Randschläge hehört zu den mögligkeiten.
+Nachfolgend finden Sie eine Erklärung für die Verwendung eines vielseitigen Grund.
+Nebenbei bemerkt: Auch Bänder entwerfen mit Randschläge gehört zu den Möglichkeiten.
 
 [OIDFA-Übersetzer]: https://www.oidfa.com/translate.html.en
 
@@ -24,7 +25,7 @@ Nachfolgend finden Sie eine Erklärung für die Verwendung eines vielseitigen Gr
 Tutorenkurs 
 -----------
 Ein [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4) (129 MB, 2:28 min)
-durchläuft die herstellung verschiedene Variationen aus einen Grundmusters.
+durchläuft die Herstellung verschiedene Variationen aus einen Grundmusters.
 Verwenden Sie die Pause-Taste und den Schieberegler,
 um die Schritte zu wiederholen. Probieren Sie es aus,
 lassen Sie sich ablenken und haben Sie Spaß damit.
@@ -38,15 +39,15 @@ Aber zuerst eine kurze Erklärung, was die Aktionen erreichen müssen.
 
 Die folgenden statischen Diagramme zeigen vier Variationen
 von Tausenden von Möglichkeiten eines vielseitigen Musters.
-Für den Grund sind Definitionen von interaktiven Diagrammen [with] (mit) und [without] (ohne) Randschläge.
-Siehe auch die Kommentare zu [Patch-Dimensionen] für die version mit Randschläge.
+Für den Grund sind Definitionen von interaktiven Diagrammen "[with]" (mit) und "[without]" (ohne) Randschläge.
+Siehe auch die Kommentare zu [Patch-Dimensionen] für die Version mit Randschläge.
 
-Die Auswahl anderer Schläge entspricht dem einfachen methode von Schläge weglassen.
+Die Auswahl anderer Schläge entspricht dem einfachen Methode von Schläge weglassen.
 Um zwei Fliegen mit einer Klappe zu schlagen, teilen wir letztere.
 
 Beachten Sie die grauen Punkte in drei der oberen Diagramme der vier Varianten: einen in der Mitte oder einen oben und unten. Diese grauen Punkte stellen Schläge dar, die leicht weggelassen werden können:
 Ersetzen Sie `ctc` durch `-` in den gelben Popups.
-Diese Methode kann unerwartete Nebenwirkungen haben, zum beispiel,
+Diese Methode kann unerwartete Nebenwirkungen haben, zum Beispiel,
 dass mehr [Schläge] verschwinden, oder sie tauscht den Algorithmus aus, um die Paare für den Schlag zu erstellen.
 Der letzte Effekt spielt für das Paardiagramm keine Rolle, verursacht aber komische Drahtdiagramme.
 ![](images/kompakt-31.png)
@@ -59,7 +60,7 @@ Der letzte Effekt spielt für das Paardiagramm keine Rolle, verursacht aber komi
 
 ### Auslassen von Schläge (im Abschnitt "Advanced")
 
-Eine andere Methode zum Auslassen von Schläge verwendet den Seitenabschnitt fur Benutzter mit einige Ehrfarung.
+Eine andere Methode zum Auslassen von Schläge verwendet den Seitenabschnitt fur Benutzter mit einige Erfarung.
 Wenden Sie die blauen Änderungen für die zweite und letzte Variante an.
 Die roten Änderungen gelten für die dritte Variante.
 
@@ -70,7 +71,7 @@ Die roten Änderungen gelten für die dritte Variante.
 
 Der [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK-31.mp4)
 (37 MB, weniger als zwei Minuten) folgt dem folgenden Skript.
-Verwenden Sie die Pausetaste und den Schieberegler, um die Schritte zu wiederholen.
+Verwenden Sie die Pause Taste und den Schieberegler, um die Schritte zu wiederholen.
 Ignorieren Sie gegebenenfalls die fett gedruckten fortgeschrittene Schritte.
 
 * 0:00 Beginnt mit dieser Hilfeseite (die Aufnahme zeigt eine ältere Englische Version)
@@ -79,7 +80,7 @@ Ignorieren Sie gegebenenfalls die fett gedruckten fortgeschrittene Schritte.
 * 0:10 ![wand](../images/wand.png) neue Diagramme generieren
 * 0:18 Aktualisieren von die gesamte Seite: Die ursprünglichen Diagramme werden wieder angezeigt
 * **0:19** Benutzerbereich rollen nach den teil für Fortgeschrittene Benutzer
-* **0:22** entferne den Schlag in der Mitte: `353,153` -> `-5-,5-5-` (erklärun oben)
+* **0:22** entferne den Schlag in der Mitte: `353,153` -> `-5-,5-5-` (Erklärung oben)
 * **0:35** ![wand](../images/wand.png) : Unterschiedlicher Prototyp, gleiches Paardiagramm und Fadendiagramm
 * 0:41 Folge (i)
 * 0:44 Folge "_stitches_" (Schläge)
@@ -88,7 +89,7 @@ Ignorieren Sie gegebenenfalls die fett gedruckten fortgeschrittene Schritte.
 * 0:52 Uberschreibe den Slhlag mit den kopierten variant ein und bearbeite ihn zu einem Umkehrschlag
 * 1:19 ![link](../images/link.png)
 * 1:23 Aktualisieren der ganze Seite
-* 1:26 Jetzt wird das aktuelle muster neu geladen
+* 1:26 Jetzt wird das aktuelle Muster neu geladen
 * 1:27 Einen Link machen
 * 1:33 "_animate_" Paardiagramm (animieren)
 * 1:36 Erweitern von den Platz für das Schaltbild (alternativ: ![](../images/size-inc.jpg) ![](../images/size-dec.jpg))
@@ -98,7 +99,7 @@ Ignorieren Sie gegebenenfalls die fett gedruckten fortgeschrittene Schritte.
 
 <a name="ctc"/>
 
-Släge eigeben
+Schläge eingeben
 ---------------
 
 Ein Schlag wird mit einer Reihe von Buchstaben definiert:
@@ -106,5 +107,5 @@ Ein Schlag wird mit einer Reihe von Buchstaben definiert:
 C = cross = Kreuzen<br>
 T = twist = Drehen<br>
 L = Linkspaar drehen<br>
-R = Rechspaar drehen<br>
+R = Rechtspaar drehen<br>
 P = pin = Nadel (sehr schwach implementiert)<br>
