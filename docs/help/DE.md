@@ -60,7 +60,7 @@ Der letzte Effekt spielt für das Paardiagramm keine Rolle, verursacht aber komi
 
 ### Auslassen von Schläge (im Abschnitt "Advanced")
 
-Eine andere Methode zum Auslassen von Schläge verwendet den Seitenabschnitt fur Benutzter mit einige Erfahrung.
+Eine andere Methode zum Auslassen von Schläge verwendet den Seitenabschnitt für Benutzter mit einige Erfahrung.
 Wenden Sie die blauen Änderungen für die zweite und letzte Variante an.
 Die roten Änderungen gelten für die dritte Variante.
 
