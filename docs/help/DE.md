@@ -60,7 +60,7 @@ Der letzte Effekt spielt für das Paardiagramm keine Rolle, verursacht aber komi
 
 ### Auslassen von Schläge (im Abschnitt "Advanced")
 
-Eine andere Methode zum Auslassen von Schläge verwendet den Seitenabschnitt fur Benutzter mit einige Erfarung.
+Eine andere Methode zum Auslassen von Schläge verwendet den Seitenabschnitt fur Benutzter mit einige Erfahrung.
 Wenden Sie die blauen Änderungen für die zweite und letzte Variante an.
 Die roten Änderungen gelten für die dritte Variante.
 
@@ -86,7 +86,7 @@ Ignorieren Sie gegebenenfalls die fett gedruckten fortgeschrittene Schritte.
 * 0:44 Folge "_stitches_" (Schläge)
 * 0:45 Kopieren von den Randschlag
 * 0:49 Zurück zur vorherigen Browserregisterkarte
-* 0:52 Uberschreibe den Slhlag mit den kopierten variant ein und bearbeite ihn zu einem Umkehrschlag
+* 0:52 Überschreibe den Schlag mit den kopierten variant ein und bearbeite ihn zu einem Umkehrschlag
 * 1:19 ![link](../images/link.png)
 * 1:23 Aktualisieren der ganze Seite
 * 1:26 Jetzt wird das aktuelle Muster neu geladen
