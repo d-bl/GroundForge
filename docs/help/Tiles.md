@@ -180,14 +180,35 @@ You may still have to rotate the rows or adjust the patch width.
 
 Arrange the repeats
 -------------------
-The foot sides are simply repeated vertically.
-The form at the bottom defines how the center is repeated.
-As this form can be hard to wrap your brains around,
-you can move the tiles with arrows in an image.
-These actions set the values in the form.
+The matrices for head sides and foot sides are simply repeated vertically,
+more details in another section.
+This section ignores the presence of a head side or foot side to keep descriptions simple.
 
-The prototype highlights a single tile alias repeat in the top left corner,
-this repeat may span just a single column or row of stitches. 
+The parameters to arrange the tiles can be hard to understand.
+An image with four diagrams should simplify the task.
+The filled tiles and arrows act as buttons that change the configuration values
+and move the faint stitches in the prototype diagram.
+
+![](images/arrange-tiles.png)
+
+The top left tile in each diagram of the image represents the bold set of stitches in the prototype diagram.
+Each solid tile in the linked image represents a copy made of the top left tile
+alias the bold stitches in the prototype.
+The tiles with a slightly fainter purple edge represent copies of the chosen solid tile.
+The tiles with a green stroke are copies of the tiles with a purple fill or stroke.
+
+The purple numbers in the form define the absolute position of the filled purple tile,
+and the relative position of subsequent purple tiles.
+The green numbers define the position of one row of green tiles relative to the purple tiles.
+
+The recommended procedure:
+- Select a filled purple tile that closely matches the pattern.
+- Use the arrows around the purple to nudge the purple row in place.
+- Use the arrows around the green tile to nudge the rest in place.
+
+Try the procedure with [rose ground](https://d-bl.github.io/GroundForge/tiles.html?patchWidth=9&patchHeight=10&c1=ctct&b1=ct&a1=rctctt&c2=ctct&a2=ctct&b3=ctct&tile=831,4-7,-5-&tileStitch=ctct&shiftColsSW=-3&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=3)
+and stitch the tiles together with the links in the overlapping diagram.
+Note that another pattern than traditional rose ground is possible.
 
 Those who really want to understand the numbers
 should not interpret them as mathematical (x,y) coordinates.
@@ -196,9 +217,6 @@ where western scripts start to write on a sheet of paper.
 You can also memorise by counting rows and columns as in a spread sheet, 
 like used for the labels for the stitches in the pair diagram.
 
-The purple numbers in the form define the absolute position of the solid tile.
-The green numbers define the position of the arrowed green tile
-relative to the solid tile.
 
 Foot sides
 ----------
