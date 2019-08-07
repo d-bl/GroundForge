@@ -154,9 +154,12 @@ function load() {
   showDiagrams(showProto())
   keyValueStrings.find(whiting)
 }
+function getMatrixLines() {
+  return d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+}
 function asChecker() {
 
-  var matrixLines = d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+  var matrixLines = getMatrixLines()
   var rows = matrixLines.length
   var cols = matrixLines[0].length
   d3.select('#shiftRowsSE').property("value", rows)
@@ -167,7 +170,7 @@ function asChecker() {
 }
 function asHorBricks() {
 
-  var matrixLines = d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+  var matrixLines = getMatrixLines()
   var rows = matrixLines.length
   var cols = matrixLines[0].length
   d3.select('#shiftRowsSE').property("value", rows)
@@ -178,7 +181,7 @@ function asHorBricks() {
 }
 function asVerBricks() {
 
-  var matrixLines = d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+  var matrixLines = getMatrixLines()
   var rows = matrixLines.length
   var cols = matrixLines[0].length
   d3.select('#shiftRowsSE').property("value", Math.round(rows/2))
@@ -189,7 +192,7 @@ function asVerBricks() {
 }
 function withOverlap() {
 
-  var matrixLines = d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+  var matrixLines = getMatrixLines()
   var rows = matrixLines.length
   var cols = matrixLines[0].length
   d3.select('#shiftRowsSE').property("value", rows)
