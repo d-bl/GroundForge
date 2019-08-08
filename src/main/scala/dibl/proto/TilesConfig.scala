@@ -58,20 +58,25 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     (if (offsetRightMargin == 0) 0
      else rightMatrix.head.length)
 
-  private val itemMatrix: Array[Array[Item]] = Array.fill[Array[Item]](totalRows)(
+  private val targetMatrix: Array[Array[Item]] = Array.fill[Array[Item]](totalRows)(
     Array.fill[Item](totalCols)(Item("", relativeSources = Array.empty))
   )
-  def getItemMatrix: Seq[Seq[Item]] = itemMatrix.map(_.toSeq)
+
+  def getItemMatrix: Seq[Seq[Item]] = {
+    // items represent the callers vision: elements for the prototype/pair-diagram
+    // target has internal meaning: the matrix to fill with the left/center/right-matrix
+    targetMatrix.map(_.toSeq)
+  }
 
   lazy val nrOfPairsOut: Seq[Seq[Int]] = {
-    val rows: Int = itemMatrix.length
-    val cols: Int = itemMatrix.head.length
+    val rows: Int = targetMatrix.length
+    val cols: Int = targetMatrix.head.length
     val pairsOut = Array.fill[Array[Int]](rows)(Array.fill[Int](cols)(0))
     for {
-      r <- itemMatrix.indices
-      c <- itemMatrix(r).indices
+      r <- targetMatrix.indices
+      c <- targetMatrix(r).indices
     } {
-      itemMatrix(r)(c).relativeSources
+      targetMatrix(r)(c).relativeSources
         .foreach { case (relativeSourceRow, relativeSourceCol) =>
           val row: Int = r + relativeSourceRow
           val col: Int = c + relativeSourceCol
@@ -90,7 +95,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   private def replaceItems(inputMatrix: Seq[String], offset: Int, defaultStitch: String): Unit = {
     for {
-      row <- itemMatrix.indices
+      row <- targetMatrix.indices
       rSource = row % inputMatrix.length
       col <- inputMatrix(rSource).indices
     } {
@@ -98,7 +103,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       val vectorCode = inputMatrix(rSource)(col)
       val stitch = if ("-VWXYZ".contains(vectorCode.toUpper)) "-"
                    else fields.getOrElse(id, defaultStitch)
-      itemMatrix(row)(col + offset) = Item(
+      targetMatrix(row)(col + offset) = Item(
         id,
         vectorCode,
         stitch,
@@ -108,11 +113,11 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }
   }
 
-  // repeat tiles, see: https://github.com/d-bl/GroundForge/blob/2e96d8b5/docs/help/images/shift-directions.png
-
-  for { // TODO reduce ranges to avoid if
-    i <- itemMatrix.indices
-    j <- -centerCols until centerCols
+  // repeat tiles, see: docs/help/Tiles.md#arrange-the-repeats
+  private val targetSquareSize = Math.max(totalRows, centerCols)
+  for {
+    i <- 0 until targetSquareSize
+    j <- -targetSquareSize until targetSquareSize
     translateRow = (i * shiftRowsSE) + (j * shiftRowsSW)
     translateCol = (i * shiftColsSE) + (j * shiftColsSW)
     r <- centerMatrix.indices
@@ -123,16 +128,16 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     val ct = c + translateCol
     if (rt >= 0 && ct >= 0 && rt < totalRows && ct < centerCols) {
       val id = Stitches.toID(r, c + leftMarginWidth)
-      val vectorCode = centerMatrix(r)(c)
+      val vectorCode = centerMatrix(r)(c) // symbol on cheat sheet
       val stitch = if ("-VWXYZ".contains(vectorCode.toUpper)) "-"
                    else fields.getOrElse(id, centerMatrixStitch)
-      itemMatrix(rt)(ct + leftMarginWidth) = Item(id, vectorCode, stitch, r == rt && c == ct,
+      targetMatrix(rt)(ct + leftMarginWidth) = Item(id, vectorCode, stitch, r == rt && c == ct,
         relativeSources = Matrix.toRelativeSources(vectorCode))
     }
   }
 
   // rejoin links to ignored stitches
-  Item.cleanupIgnoredStitches(itemMatrix)
+  Item.cleanupIgnoredStitches(targetMatrix)
 
   /**
    * Get links for one tile.
