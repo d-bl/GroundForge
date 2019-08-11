@@ -116,8 +116,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   // repeat tiles, see: docs/help/Tiles.md#arrange-the-repeats
   private val targetSquareSize = Math.max(totalRows, centerCols)
   for {
-    i <- 0 until targetSquareSize
-    j <- -targetSquareSize until targetSquareSize
+    i <- centerMatrix.indices
+    j <- -centerCols until centerCols
     translateRow = (i * shiftRowsSE) + (j * shiftRowsSW)
     translateCol = (i * shiftColsSE) + (j * shiftColsSW)
     r <- centerMatrix.indices
