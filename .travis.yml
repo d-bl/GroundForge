@@ -15,7 +15,7 @@ matrix:
 
   - language: java
     sudo: false
-    jdk: oraclejdk11
+    jdk: oraclejdk9
     deploy:
       provider: releases
       api_key:
