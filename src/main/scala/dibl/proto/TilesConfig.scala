@@ -136,6 +136,63 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }
   }
 
+  private def setFirstTile(inputMatrix: Seq[String], offsetOfFirstTile: Int, defaultStitch: String): Unit = {
+    for {
+      row <- inputMatrix.indices
+      col <- inputMatrix(row).indices
+    } {
+      val targetCol = col + offsetOfFirstTile
+      val id = Stitches.toID(row, targetCol)
+      val vectorCode = inputMatrix(row)(col)
+      val stitch = if ("-VWXYZ".contains(vectorCode.toUpper)) "-"
+      else fields.getOrElse(id, defaultStitch)
+      if (row < totalRows && targetCol < totalCols)
+        targetMatrix(row)(targetCol) = Item(
+          id,
+          vectorCode,
+          stitch,
+          row < inputMatrix.length,
+          relativeSources = Matrix.toRelativeSources(vectorCode)
+        )
+    }
+  }
+
+  private def copyTile(offsetOfFirstTileSource: Int, startRow: Int, startCol: Int, rows: Int, cols: Int): Unit = {
+    for {
+      row <- 0 until rows
+      col <- 0 until cols
+    } {
+      val targetRow = startRow + row
+      val targetCol = startCol + col
+      val sourceRow = offsetOfFirstTileSource + row
+      if (targetCol >= 0 && targetCol < totalCols &&
+        targetRow >= 0 && targetRow < targetMatrix.length &&
+        sourceRow >= 0 && sourceRow < targetMatrix.length) {
+        targetMatrix(targetRow)(targetCol) = targetMatrix(sourceRow)(col)
+      }
+    }
+  }
+
+  def repeatSide(offsetOfFirstTile: Int, rows: Int, cols: Int): Unit = {
+    if (rows > 0 && cols > 0)
+      for {
+        row <- rows until totalRows by rows
+        col <- cols until totalCols by cols
+      } copyTile(offsetOfFirstTile, row, col, rows, cols)
+  }
+
+  setFirstTile(leftMatrix, 0, leftMatrixStitch)
+  setFirstTile(rightMatrix, offsetRightMargin, rightMatrixStitch)
+  repeatSide(0, leftMatrix.length, leftMatrixCols)
+  repeatSide(offsetRightMargin, rightMatrix.length, rightMatrixCols)
+//  setFirstTile(centerMatrix, leftMarginWidth, centerMatrixStitch)
+//  if (centerMatrixRows > 0 && centerMatrixCols > 0)
+//  for { // the first diagonal of tiles
+//    row <- centerMatrixRows until totalRows by centerMatrixRows
+//    col <- centerMatrixCols until offsetRightMargin - leftMarginWidth by centerMatrixCols
+//        } copyTile(leftMatrixCols, row, col, centerMatrixCols, centerMatrixRows)
+  // TODO the other diagonals
+
   // rejoin links to ignored stitches
   Item.cleanupIgnoredStitches(targetMatrix)
 
