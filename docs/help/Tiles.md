@@ -5,7 +5,7 @@ title: Tiles
 The [tiles] page is a variant of the older home page.
 The [site map] provides the context for both and lists their differences.
 
-[tiles]: /GroundForge/tiles.html?tile=5831,-4-7&patchWidth=9&patchHeight=9&shiftColsSE=4&shiftRowsSE=2&shiftColsSW=0&shiftRowsSW=2&
+[tiles]: /GroundForge/tiles?tile=5831,-4-7&patchWidth=9&patchHeight=9&shiftColsSE=4&shiftRowsSE=2&shiftColsSW=0&shiftRowsSW=2&
 [site map]: /GroundForge/help/Site-map
 
 * [Catalogues](#catalogues)
@@ -62,7 +62,7 @@ Anyway you will have to reassign the stitches.
 
 If you want another number, go to the "define a repeat" section:
 rotating the rows in the right field might help but you might need more changes.
-For example for this [pattern](https://d-bl.github.io/GroundForge/tiles?patchWidth=13&patchHeight=20&g1=ctct&a1=ctcttl&s2=ctcttr&r2=ctcrr&q2=ctc&h2=ct&f2=ct&d2=ct&c2=ctc&b2=ctc&r3=ctc&q3=ctcl&i3=ctct&g3=ctc&e3=ctct&d3=ct&c3=ctc&b3=ctcll&h4=ctc&f4=ctc&c4=ctc&b4=ctc&a4=ctcttl&r5=ctcrr&q5=ctc&i5=ctc&h5=ctc&g5=ctc&f5=ctc&e5=ctc&d5=ct&s6=ctcttr&h6=ctc&g6=ctc&f6=ctc&r7=ctc&q7=ctcl&i7=ctcr&g7=ctc&e7=ctcl&d7=ct&c7=ctc&b7=ctcll&a7=ctcttl&r8=ctcrr&q8=ctc&h8=ctcr&f8=ctcl&d8=ct&c8=ctc&b8=ctc&s9=ctcttr&r9=ctc&q9=ctcl&i9=ctct&g9=ctct&e9=ctct&h10=ct&f10=ct&d10=ct&c10=ctc&b10=ctcll&footside=b--,xcd,-11,b88,xxx,---,aaa,x78,x--,-aa&tile=---5--,d-b-c-,15-5-5,--5-5-,c63532,--158-,ab-5-c,8-5-5-,-5-5-5,b-5-5-&headside=---,DDD,14X,--X,DD-,--C,ABX,88-,11C,XXX&footsideStitch=ctct&tileStitch=ctc&headsideStitch=ctct&shiftColsSW=0&shiftRowsSW=10&shiftColsSE=6&shiftRowsSE=5)
+For example for this [pattern](/GroundForge/tiles?patchWidth=13&patchHeight=20&g1=ctct&a1=ctcttl&s2=ctcttr&r2=ctcrr&q2=ctc&h2=ct&f2=ct&d2=ct&c2=ctc&b2=ctc&r3=ctc&q3=ctcl&i3=ctct&g3=ctc&e3=ctct&d3=ct&c3=ctc&b3=ctcll&h4=ctc&f4=ctc&c4=ctc&b4=ctc&a4=ctcttl&r5=ctcrr&q5=ctc&i5=ctc&h5=ctc&g5=ctc&f5=ctc&e5=ctc&d5=ct&s6=ctcttr&h6=ctc&g6=ctc&f6=ctc&r7=ctc&q7=ctcl&i7=ctcr&g7=ctc&e7=ctcl&d7=ct&c7=ctc&b7=ctcll&a7=ctcttl&r8=ctcrr&q8=ctc&h8=ctcr&f8=ctcl&d8=ct&c8=ctc&b8=ctc&s9=ctcttr&r9=ctc&q9=ctcl&i9=ctct&g9=ctct&e9=ctct&h10=ct&f10=ct&d10=ct&c10=ctc&b10=ctcll&footside=b--,xcd,-11,b88,xxx,---,aaa,x78,x--,-aa&tile=---5--,d-b-c-,15-5-5,--5-5-,c63532,--158-,ab-5-c,8-5-5-,-5-5-5,b-5-5-&headside=---,DDD,14X,--X,DD-,--C,ABX,88-,11C,XXX&footsideStitch=ctct&tileStitch=ctc&headsideStitch=ctct&shiftColsSW=0&shiftRowsSW=10&shiftColsSE=6&shiftRowsSE=5)
 you would have to change as shown below when switching
 between an odd and even number of spider columns. 
 Other widths will match with neither of the variations.
@@ -91,7 +91,7 @@ The example below applies the last stitch above with a few more twists.
 
 ![](images/foot-side-stitches.png)
 
-[Live version](/GroundForge/tiles.html?patchWidth=3&patchHeight=8&g1=tctcttrrctct&f1=tctct&c1=ctc&b1=tctct&f2=tctct&c2=ctc&b2=tctct&a2=tctct&footside=-7,A1&tile=8,1&headside=8D,4-&footsideStitch=tctct&tileStitch=ctc&headsideStitch=tctct&shiftColsSW=-1&shiftRowsSW=2&shiftColsSE=0&shiftRowsSE=2)
+[Live version](/GroundForge/tiles?patchWidth=3&patchHeight=8&g1=tctcttrrctct&f1=tctct&c1=ctc&b1=tctct&f2=tctct&c2=ctc&b2=tctct&a2=tctct&footside=-7,A1&tile=8,1&headside=8D,4-&footsideStitch=tctct&tileStitch=ctc&headsideStitch=tctct&shiftColsSW=-1&shiftRowsSW=2&shiftColsSE=0&shiftRowsSE=2)
 
 When erasing the content of a stitch field, the value from "define a repeat"
 in the advanced section will be filled in, if that is empty `ctc` will be filled in.
@@ -104,7 +104,7 @@ with pairs swapped before a stitch is made.
 
 ![](images/ignore-stitches.png)
 
-[Live version](/GroundForge/tiles.html?patchWidth=12&patchHeight=13&g1=ctct&e1=ctct&c1=ctct&a1=ctct&f2=ctct&b2=-&g3=ctct&e3=ctct&c3=ctct&a3=ctct&h4=ctct&f4=-&d4=ctct&b4=ctct&g5=ctct&e5=ctct&c5=ctct&a5=ctct&f6=ctct&b6=ctct&g7=ctct&e7=ctct&c7=ctct&a7=ctct&h8=ctct&f8=ctct&d8=ctct&b8=ctct&tile=5-5-5-5-,-5---5--,B-C-B-C-,-5-5-5-5,5-5-5-5-,-5---5--,B-C-B-C-,-5-5-5-5,&footsideStitch=tctct&tileStitch=ctct&headsideStitch=tctct&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=8&shiftRowsSE=8)
+[Live version](/GroundForge/tiles?patchWidth=12&patchHeight=13&g1=ctct&e1=ctct&c1=ctct&a1=ctct&f2=ctct&b2=-&g3=ctct&e3=ctct&c3=ctct&a3=ctct&h4=ctct&f4=-&d4=ctct&b4=ctct&g5=ctct&e5=ctct&c5=ctct&a5=ctct&f6=ctct&b6=ctct&g7=ctct&e7=ctct&c7=ctct&a7=ctct&h8=ctct&f8=ctct&d8=ctct&b8=ctct&tile=5-5-5-5-,-5---5--,B-C-B-C-,-5-5-5-5,5-5-5-5-,-5---5--,B-C-B-C-,-5-5-5-5,&footsideStitch=tctct&tileStitch=ctct&headsideStitch=tctct&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=8&shiftRowsSE=8)
 
 Toggle thread colors
 ====================
@@ -206,7 +206,7 @@ The recommended procedure:
 - Use the arrows around the purple to nudge the purple row in place.
 - Use the arrows around the green tile to nudge the rest in place.
 
-Try the procedure with [rose ground](https://d-bl.github.io/GroundForge/tiles.html?patchWidth=9&patchHeight=10&c1=ctct&b1=ct&a1=rctctt&c2=ctct&a2=ctct&b3=ctct&tile=831,4-7,-5-&tileStitch=ctct&shiftColsSW=-3&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=3)
+Try the procedure with [rose ground](https://d-bl.github.io/GroundForge/tiles?patchWidth=9&patchHeight=10&c1=ctct&b1=ct&a1=rctctt&c2=ctct&a2=ctct&b3=ctct&tile=831,4-7,-5-&tileStitch=ctct&shiftColsSW=-3&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=3)
 and stitch the tiles together with the links in the overlapping diagram.
 Note that another pattern than traditional rose ground is possible.
 
@@ -232,7 +232,7 @@ Annotated screen shot snippets of an example:
 
 ![](images/foot-sides.png)
 
-[Live version](/GroundForge/tiles.html?patchWidth=7&patchHeight=18&a3=-&footside=B,-,C,-,B,-,B,-,&tile=-5-,5-5,-5-,B-C,-5-&headside=5,-,&footsideStitch=tctctr&tileStitch=ct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4)
+[Live version](/GroundForge/tiles?patchWidth=7&patchHeight=18&a3=-&footside=B,-,C,-,B,-,B,-,&tile=-5-,5-5,-5-,B-C,-5-&headside=5,-,&footsideStitch=tctctr&tileStitch=ct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4)
 
 The blue and purple rectangles in this example illustrate corresponding
 sections in the form, prototype diagram and pair diagram.

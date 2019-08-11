@@ -11,9 +11,9 @@ Stay posted about past changes
 
 Now and then visit the [release notes] which may be a little behind on the actual [changes]
 
-[release notes]: https://github.com/d-bl/GroundForge/releases
-[changes]: https://github.com/d-bl/GroundForge/commits/gh-pages
-[project page]: https://github.com/d-bl/GroundForge
+[release notes]: https://github.com/d-bl/GroundForge/releases/
+[changes]: https://github.com/d-bl/GroundForge/commits/
+[project page]: https://github.com/d-bl/GroundForge/
 
 Feeds can alert you about changes in the [project files] and [release notes].
 
