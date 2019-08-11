@@ -8,62 +8,19 @@ matrix:
       provider: releases
       api_key:
         secure: n/h/ofXxOmF4P6M/zBhsfi6ixOVMMdas620fXUufgXGmG5qBtpzPsYql/gNuyESpOl3WQmLanvpKVBDxsky7nu2q6o3WZg7Rc6EOAQybIgdxkByCZxXWTiHgJCJKela6Iza6Bs7pGa8AvC/l62wcT25lKBjv1FqeVKPi5rAudiXg5jqnPqW5g8EailFQ1dNHMRvOigJl4W0ThhGew2Kb989TxAKKwg1MXIYkE91F8Mqi7czG8SAOI+3ygkOm2mbmyKrvEhk2TaDYvQI9H5xu6023C82KsnS8y4xexN8cZ+7Jdt+60Er8stW7lu2MFjiGw8gmbI/TSgRpeflfCPJT3pTPH6lW/xh3Ln9xI5CmHlOdsVKuoeeq32Z1I3iU2fzasyWPXVsY0ZFCfXgF18mZNrOOjO7VYmUua5q+rS86usQwQiIyZBMVeDK4Cs1szdZqhUVDF/fWIsBsgBt3QcH1cE1WTPuielZifryOMzgVvbyURQ6S0XQcuDv61scVXN9di2gAKx6LJWb7bq1vZmkzBJvpI3QCm/jsrMzQQrUVk/SdLmKu2rMoNv5esP93Cq0wLbWT7xyM36VnuLZYTiY0tOqmqAKA5ouBMfdS1u/OgGAnhr5Y9Q+Lvof2INhBssnOGBGOVji1aQ6IXPj1fui7eKRcyOufM53XtkGgwucFa1U=
-      file: target/scala-2.11/groundforge-opt.js
+      file: target/scala-2.12/groundforge-opt.js
       skip_cleanup: true
       on:
         tags: true
 
   - language: java
     sudo: false
-    jdk: oraclejdk8
+    jdk: oraclejdk11
     deploy:
       provider: releases
       api_key:
         secure: n/h/ofXxOmF4P6M/zBhsfi6ixOVMMdas620fXUufgXGmG5qBtpzPsYql/gNuyESpOl3WQmLanvpKVBDxsky7nu2q6o3WZg7Rc6EOAQybIgdxkByCZxXWTiHgJCJKela6Iza6Bs7pGa8AvC/l62wcT25lKBjv1FqeVKPi5rAudiXg5jqnPqW5g8EailFQ1dNHMRvOigJl4W0ThhGew2Kb989TxAKKwg1MXIYkE91F8Mqi7czG8SAOI+3ygkOm2mbmyKrvEhk2TaDYvQI9H5xu6023C82KsnS8y4xexN8cZ+7Jdt+60Er8stW7lu2MFjiGw8gmbI/TSgRpeflfCPJT3pTPH6lW/xh3Ln9xI5CmHlOdsVKuoeeq32Z1I3iU2fzasyWPXVsY0ZFCfXgF18mZNrOOjO7VYmUua5q+rS86usQwQiIyZBMVeDK4Cs1szdZqhUVDF/fWIsBsgBt3QcH1cE1WTPuielZifryOMzgVvbyURQ6S0XQcuDv61scVXN9di2gAKx6LJWb7bq1vZmkzBJvpI3QCm/jsrMzQQrUVk/SdLmKu2rMoNv5esP93Cq0wLbWT7xyM36VnuLZYTiY0tOqmqAKA5ouBMfdS1u/OgGAnhr5Y9Q+Lvof2INhBssnOGBGOVji1aQ6IXPj1fui7eKRcyOufM53XtkGgwucFa1U=
       file: target/GroundForge-0.x-SNAPSHOT.jar
-      skip_cleanup: true
-      on:
-        tags: true
-
-  - language: ruby
-    rvm:
-    - 2.3.3
-    sudo: false
-    env:
-      global:
-      - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-    install: gem install jekyll html-proofer jekyll-theme-architect jekyll-relative-links
-    my_validation:
-    script:
-      - jekyll build --source docs
-      - sed -i -e 's!href="/GroundForge/help/*\([#"]\)!href="index.html\1!g' _site/help/*.html
-      - sed -i -e 's!/GroundForge/help/!!g'                                  _site/help/*.html
-      - sed -i -e 's!/GroundForge/images/!../images/!g'                      _site/help/*.html
-      - sed -i -e 's!/assets/!../assets/!g'                                  _site/help/*.html
-      - sed -i -e 's!href="/GroundForge/*\([#"]\)!href="../index.html\1!g'   _site/help/*.html
-      - sed -i -e 's!/GroundForge/!../!g'                                    _site/help/*.html
-      - sed -i -e 's!\(href="[^#][^"#?.:]*\)\([#"?]\)!\1.html\2!'            _site/help/*.html
-      - sed -i -e 's!/.html!../index.html/!g'                                _site/help/*.html
-      - sed -i -e 's!/GroundForge../assets/!../assets/!g'                    _site/help/*.html
-      - sed -i -e 's!https://d-bl.github.io/GroundForge/!!g'                 _site/js/GroundForge-opt.js
-      - sed -i -e 's!/GroundForge/!../!g'                                    _site/js/stitches.js
-      - sed -i -e 's!/GroundForge/help/!help/!g'                             _site/*.html _site/js/show-graph.js
-      - sed -i -e 's!/GroundForge/images/!images/!g'                         _site/*.html _site/js/show-graph.js
-      - sed -i -e 's!/GroundForge/!./!g'                                     _site/*.html _site/js/show-graph.js
-      - sed -i -e '/="help/ s!(#|" target)!.html$1!'                         _site/*.html
-      - sed -i -e 's!\(href="[^#][^"#?.:]*\)\([#"?]\)!\1.html\2!'            _site/*.html
-      - sed -i -e 's!./.html!index.html/!g'                                  _site/*.html
-      - grep 'GroundForge/'    _site/*.html _site/*.html _site/help/*.html _site/*/*.js || test $? -eq 1
-      - grep 'io/GroundForge/' _site/*.html _site/*.html _site/help/*.html _site/*/*.js || test $? -eq 1
-      - ls ./_site ./_site/help
-      - htmlproofer ./_site --disable-external --allow-hash-href --empty-alt-ignore
-    before_deploy:
-      - cd _site && zip -r -q GroundForge-pages.zip *
-    deploy:
-      provider: releases
-      api_key:
-        secure: n/h/ofXxOmF4P6M/zBhsfi6ixOVMMdas620fXUufgXGmG5qBtpzPsYql/gNuyESpOl3WQmLanvpKVBDxsky7nu2q6o3WZg7Rc6EOAQybIgdxkByCZxXWTiHgJCJKela6Iza6Bs7pGa8AvC/l62wcT25lKBjv1FqeVKPi5rAudiXg5jqnPqW5g8EailFQ1dNHMRvOigJl4W0ThhGew2Kb989TxAKKwg1MXIYkE91F8Mqi7czG8SAOI+3ygkOm2mbmyKrvEhk2TaDYvQI9H5xu6023C82KsnS8y4xexN8cZ+7Jdt+60Er8stW7lu2MFjiGw8gmbI/TSgRpeflfCPJT3pTPH6lW/xh3Ln9xI5CmHlOdsVKuoeeq32Z1I3iU2fzasyWPXVsY0ZFCfXgF18mZNrOOjO7VYmUua5q+rS86usQwQiIyZBMVeDK4Cs1szdZqhUVDF/fWIsBsgBt3QcH1cE1WTPuielZifryOMzgVvbyURQ6S0XQcuDv61scVXN9di2gAKx6LJWb7bq1vZmkzBJvpI3QCm/jsrMzQQrUVk/SdLmKu2rMoNv5esP93Cq0wLbWT7xyM36VnuLZYTiY0tOqmqAKA5ouBMfdS1u/OgGAnhr5Y9Q+Lvof2INhBssnOGBGOVji1aQ6IXPj1fui7eKRcyOufM53XtkGgwucFa1U=
-      file: GroundForge-pages.zip
       skip_cleanup: true
       on:
         tags: true
