@@ -177,24 +177,25 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   def repeatSide(offsetOfFirstTile: Int, rows: Int, cols: Int): Unit = {
     if (rows > 0 && cols > 0)
-      for {row <- rows until patchHeight by rows
-      } copyTile(offsetOfFirstTile, row, offsetOfFirstTile, rows, cols)
+      for {row <- rows until patchHeight by rows} {
+        copyTile(offsetOfFirstTile, row, offsetOfFirstTile, rows, cols)
+      }
   }
 
   setFirstTile(leftMatrix, 0, leftMatrixStitch)
   repeatSide(0, leftMatrix.length, leftMatrixCols)
 
-  setFirstTile(rightMatrix, offsetRightMargin, rightMatrixStitch)
-  repeatSide(offsetRightMargin, rightMatrix.length, rightMatrixCols)
-
   setFirstTile(centerMatrix, leftMarginWidth, centerMatrixStitch)
   if (centerMatrixRows > 0 && centerMatrixCols > 0 && patchWidth > 0 && patchHeight > 0) {
-    // the first diagonal // TODO reduce until value
+    // the first diagonal // TODO reduce the until value
     for {i <- 1 until Math.max(patchWidth, patchHeight)} {
       copyTile(leftMatrixCols, i * shiftRowsSE, i * shiftColsSE, centerMatrixCols, centerMatrixRows)
       // TODO the other diagonals
     }
   }
+
+  setFirstTile(rightMatrix, offsetRightMargin, rightMatrixStitch)
+  repeatSide(offsetRightMargin, rightMatrix.length, rightMatrixCols) // TODO not yet effective?
 
   // rejoin links to ignored stitches
   Item.cleanupIgnoredStitches(targetMatrix)
