@@ -41,24 +41,26 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   val maxTileRows: Int = Math.max(centerMatrixRows, Math.max(leftMatrix.length, rightMatrix.length))
 
   // TODO defaults based on the dimensions of the above matrices
-  @JSExport
-  val totalRows: Int = fields.getOrElse("patchHeight", "12").safeToInt
-  private val centerCols: Int = fields.getOrElse("patchWidth", "12").safeToInt
+  private val patchHeight: Int = fields.getOrElse("patchHeight", "12").safeToInt
+  private val patchWidth: Int = fields.getOrElse("patchWidth", "12").safeToInt
   val shiftRowsSE: Int = fields.getOrElse("shiftRowsSE", "12").safeToInt
   val shiftRowsSW: Int = fields.getOrElse("shiftRowsSW", "12").safeToInt
   val shiftColsSE: Int = fields.getOrElse("shiftColsSE", "12").safeToInt
   val shiftColsSW: Int = fields.getOrElse("shiftColsSW", "12").safeToInt
 
   private val leftMarginWidth = leftMatrix.head.trim.length
-  private val offsetRightMargin = leftMarginWidth + centerCols
+  private val offsetRightMargin = leftMarginWidth + patchWidth
 
   @JSExport
-  val totalCols: Int = centerCols +
+  val totalRows: Int = patchHeight
+
+  @JSExport
+  val totalCols: Int = patchWidth +
     leftMarginWidth +
     (if (offsetRightMargin == 0) 0
      else rightMatrix.head.length)
 
-  private val targetMatrix: Array[Array[Item]] = Array.fill[Array[Item]](totalRows)(
+  private val targetMatrix: Array[Array[Item]] = Array.fill[Array[Item]](patchHeight)(
     Array.fill[Item](totalCols)(Item("", relativeSources = Array.empty))
   )
 
@@ -114,7 +116,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   }
 
   // repeat tiles, see: docs/help/Tiles.md#arrange-the-repeats
-  private val targetSquareSize = Math.max(totalRows, centerCols)
+  private val targetSquareSize = Math.max(patchHeight, patchWidth)
   for {
     i <- 0 until targetSquareSize
     j <- -targetSquareSize until targetSquareSize
@@ -126,7 +128,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     // t in rt/ct stands for target cell, r and c for row and col
     val rt = r + translateRow
     val ct = c + translateCol
-    if (rt >= 0 && ct >= 0 && rt < totalRows && ct < centerCols) {
+    if (rt >= 0 && ct >= 0 && rt < patchHeight && ct < patchWidth) {
       val id = Stitches.toID(r, c + leftMarginWidth)
       val vectorCode = centerMatrix(r)(c) // symbol on cheat sheet
       val stitch = if ("-VWXYZ".contains(vectorCode.toUpper)) "-"
@@ -145,8 +147,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       val id = Stitches.toID(row, targetCol)
       val vectorCode = inputMatrix(row)(col)
       val stitch = if ("-VWXYZ".contains(vectorCode.toUpper)) "-"
-      else fields.getOrElse(id, defaultStitch)
-      if (row < totalRows && targetCol < totalCols)
+                   else fields.getOrElse(id, defaultStitch)
+      if (row < patchHeight && targetCol < totalCols)
         targetMatrix(row)(targetCol) = Item(
           id,
           vectorCode,
@@ -157,41 +159,42 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }
   }
 
-  private def copyTile(offsetOfFirstTileSource: Int, startRow: Int, startCol: Int, rows: Int, cols: Int): Unit = {
+  private def copyTile(offsetOfFirstTile: Int, startRow: Int, startCol: Int, rows: Int, cols: Int): Unit = {
     for {
       row <- 0 until rows
       col <- 0 until cols
     } {
       val targetRow = startRow + row
-      val targetCol = startCol + col
-      val sourceRow = offsetOfFirstTileSource + row
+      val targetCol = startCol + col + offsetOfFirstTile
+      val sourceCol =  col + offsetOfFirstTile
       if (targetCol >= 0 && targetCol < totalCols &&
-        targetRow >= 0 && targetRow < targetMatrix.length &&
-        sourceRow >= 0 && sourceRow < targetMatrix.length) {
-        targetMatrix(targetRow)(targetCol) = targetMatrix(sourceRow)(col)
+        targetRow >= 0 && targetRow < totalRows &&
+        sourceCol >= 0 && sourceCol < totalRows) {
+        targetMatrix(targetRow)(targetCol) = targetMatrix(row)(sourceCol).copy(isOpaque = false)
       }
     }
   }
 
   def repeatSide(offsetOfFirstTile: Int, rows: Int, cols: Int): Unit = {
     if (rows > 0 && cols > 0)
-      for {
-        row <- rows until totalRows by rows
-        col <- cols until totalCols by cols
-      } copyTile(offsetOfFirstTile, row, col, rows, cols)
+      for {row <- rows until patchHeight by rows
+      } copyTile(offsetOfFirstTile, row, offsetOfFirstTile, rows, cols)
   }
 
   setFirstTile(leftMatrix, 0, leftMatrixStitch)
-  setFirstTile(rightMatrix, offsetRightMargin, rightMatrixStitch)
   repeatSide(0, leftMatrix.length, leftMatrixCols)
+
+  setFirstTile(rightMatrix, offsetRightMargin, rightMatrixStitch)
   repeatSide(offsetRightMargin, rightMatrix.length, rightMatrixCols)
-//  setFirstTile(centerMatrix, leftMarginWidth, centerMatrixStitch)
-//  if (centerMatrixRows > 0 && centerMatrixCols > 0)
-//  for { // the first diagonal of tiles
-//    row <- centerMatrixRows until totalRows by centerMatrixRows
-//    col <- centerMatrixCols until offsetRightMargin - leftMarginWidth by centerMatrixCols
-//        } copyTile(leftMatrixCols, row, col, centerMatrixCols, centerMatrixRows)
-  // TODO the other diagonals
+
+  setFirstTile(centerMatrix, leftMarginWidth, centerMatrixStitch)
+  if (centerMatrixRows > 0 && centerMatrixCols > 0 && patchWidth > 0 && patchHeight > 0) {
+    // the first diagonal // TODO reduce until value
+    for {i <- 1 until Math.max(patchWidth, patchHeight)} {
+      copyTile(leftMatrixCols, i * shiftRowsSE, i * shiftColsSE, centerMatrixCols, centerMatrixRows)
+      // TODO the other diagonals
+    }
+  }
 
   // rejoin links to ignored stitches
   Item.cleanupIgnoredStitches(targetMatrix)
@@ -282,7 +285,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     // https://github.com/d-bl/GroundForge/blob/268b2e2/src/main/scala/dibl/ThreadDiagram.scala#L105-L107
     // In other words: 15 between rows/cols, 2 rows/cols allowance for the fringe.
     if (totalCols < minWidthForBricks) invalidMin("width", minWidthForBricks)
-    else if (totalRows < minHeightForBricks) invalidMin("height", minHeightForBricks)
+    else if (patchHeight < minHeightForBricks) invalidMin("height", minHeightForBricks)
     else if (isHBrick || isVBrick) (
       // bounding box starts at the third row/col, thus we have four links on all nodes
       3.5,// north
@@ -292,7 +295,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     )
     else if (shiftColsSE < 2 && shiftRowsSE < 2) invalid("type of tiling is not supported")
     else if (minWidth > totalCols) invalidMin("patch width", minWidth)
-    else if (minHeight > totalRows) invalidMin("height", minHeight)
+    else if (minHeight > patchHeight) invalidMin("height", minHeight)
     else {
       // TODO extend dimensions of overlapping tiles to avoid gaps,
       //  then the tile type no longer matters
