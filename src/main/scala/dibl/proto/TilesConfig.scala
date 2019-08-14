@@ -11,12 +11,12 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     .split("&")
     .filter(_.matches(".+=.*"))
 
-  private val fields: Map[String, String] = keyValueStrings
+  private val queryFields: Map[String, String] = keyValueStrings
     .map { kv: String => (kv.replaceAll("=.*", ""), kv.replaceAll(".*=", "")) }
     .toMap
 
   private def getMatrix(key: String): Seq[String] = {
-    fields.getOrElse(key, "").toLowerCase.split("[^-a-z0-9]+").map(_.trim)
+    queryFields.getOrElse(key, "").toLowerCase.split("[^-a-z0-9]+").map(_.trim)
   }
 
   // TODO defend against unequal rows lengths
@@ -24,9 +24,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   val rightMatrix: Seq[String] = getMatrix("headside")
   private val centerMatrix: Seq[String] = getMatrix("tile")
 
-  private val leftMatrixStitch: String = fields.getOrElse("footsideStitch", "ctctt")
-  private val rightMatrixStitch: String = fields.getOrElse("headsideStitch", "ctctt")
-  private val centerMatrixStitch: String = fields.getOrElse("tileStitch", "ctc")
+  private val leftMatrixStitch: String = queryFields.getOrElse("footsideStitch", "ctctt")
+  private val rightMatrixStitch: String = queryFields.getOrElse("headsideStitch", "ctctt")
+  private val centerMatrixStitch: String = queryFields.getOrElse("tileStitch", "ctc")
 
   @JSExport
   val leftMatrixCols: Int = Option(leftMatrix.head).map(_.length).getOrElse(2)
@@ -41,12 +41,12 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   val maxTileRows: Int = Math.max(centerMatrixRows, Math.max(leftMatrix.length, rightMatrix.length))
 
   // TODO defaults based on the dimensions of the above matrices
-  private val patchHeight: Int = fields.getOrElse("patchHeight", "12").safeToInt
-  private val patchWidth: Int = fields.getOrElse("patchWidth", "12").safeToInt
-  val shiftRowsSE: Int = fields.getOrElse("shiftRowsSE", "12").safeToInt
-  val shiftRowsSW: Int = fields.getOrElse("shiftRowsSW", "12").safeToInt
-  val shiftColsSE: Int = fields.getOrElse("shiftColsSE", "12").safeToInt
-  val shiftColsSW: Int = fields.getOrElse("shiftColsSW", "12").safeToInt
+  private val patchHeight: Int = queryFields.getOrElse("patchHeight", "12").safeToInt
+  private val patchWidth: Int = queryFields.getOrElse("patchWidth", "12").safeToInt
+  val shiftRowsSE: Int = queryFields.getOrElse("shiftRowsSE", "12").safeToInt
+  val shiftRowsSW: Int = queryFields.getOrElse("shiftRowsSW", "12").safeToInt
+  val shiftColsSE: Int = queryFields.getOrElse("shiftColsSE", "12").safeToInt
+  val shiftColsSW: Int = queryFields.getOrElse("shiftColsSW", "12").safeToInt
 
   private val leftMarginWidth = leftMatrix.head.trim.length
   private val offsetRightMargin = leftMarginWidth + patchWidth
@@ -90,6 +90,15 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     pairsOut.toSeq.map(_.toSeq)
   }
 
+  /**
+    * Sets the opaque items in the targetMatrix.
+    * See docs/help/Tiles.md#arrange-the-repeats
+    *
+    * @param inputMatrix       tiles.html#footside, #tile or #headside
+    *                          valid characters visualized on help/images/matrix-template.png
+    * @param offsetOfFirstTile horizontal position of the original tile within the targetMatrix
+    * @param defaultStitch     tiles.html#footsideStitch, #tileStitch or #headsideStitch
+    */
   private def setFirstTile(inputMatrix: Seq[String], offsetOfFirstTile: Int, defaultStitch: String): Unit = {
     for {
       row <- inputMatrix.indices
@@ -99,7 +108,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       val id = Stitches.toID(row, targetCol)
       val vectorCode = inputMatrix(row)(col)
       val stitch = if ("-VWXYZ".contains(vectorCode.toUpper)) "-"
-                   else fields.getOrElse(id, defaultStitch)
+                   else queryFields.getOrElse(id, defaultStitch)
       if (row < patchHeight && targetCol < totalCols)
         targetMatrix(row)(targetCol) = Item(
           id,
@@ -113,12 +122,12 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   /**
     * @param offsetOfFirstTile horizontal position of the original tile within the targetMatrix
-    * @param startRow          top position for the new tile within the targetMatrix
-    * @param startCol          left position for the new tile within the targetMatrix
     * @param rows              height of the tile
     * @param cols              width of the tile
+    * @param startRow          top position for the new tile within the targetMatrix
+    * @param startCol          left position for the new tile within the targetMatrix
     */
-  private def copyTile(offsetOfFirstTile: Int, startRow: Int, startCol: Int, rows: Int, cols: Int): Unit = {
+  private def copyTile(offsetOfFirstTile: Int, rows: Int, cols: Int, startRow: Int, startCol: Int): Unit = {
     for {
       row <- 0 until rows // row within the tile
       col <- 0 until cols // col withing the tile
@@ -134,29 +143,39 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }
   }
 
-  def repeatSide(offsetOfFirstTile: Int, rows: Int, cols: Int): Unit = {
+  private def repeatSide(offsetOfFirstTile: Int, rows: Int, cols: Int): Unit = {
     if (rows > 0 && cols > 0)
       for {row <- rows until patchHeight by rows} {
-        copyTile(offsetOfFirstTile, startRow = row, startCol = 0, rows, cols)
+        copyTile(offsetOfFirstTile, rows, cols, startRow = row, startCol = 0)
       }
   }
+
+  private def copyCenterTile(startRow: Int, startCol: Int): Unit =
+    copyTile(leftMatrixCols, centerMatrixRows, centerMatrixCols, startRow, startCol)
 
   setFirstTile(centerMatrix, leftMarginWidth, centerMatrixStitch)
   if (centerMatrixRows > 0 && centerMatrixCols > 0 && patchWidth > 0 && patchHeight > 0) {
     // complete the overlapping bottom corners of the first tile
-    // this is not [i==j==0] as [0*shift + 0*shift]  would be zero
-    copyTile(leftMatrixCols, shiftRowsSW, shiftColsSW, centerMatrixRows, centerMatrixCols)
-    copyTile(leftMatrixCols, -shiftRowsSW, -shiftColsSW, centerMatrixRows, centerMatrixCols)
+    // this is not [i==j==0] as [0*shift + 0*shift] would be zero and overwrite the opaque tile
+    copyCenterTile(startRow = shiftRowsSW, startCol = shiftColsSW)
+    copyCenterTile(startRow = -shiftRowsSW, startCol = -shiftColsSW)
     // now we can make all other tile copies in any order
-    for {i <- 1 until Math.max(patchWidth, patchHeight)} { // TODO reduce the until value
-      for {j <- 0 until Math.max(patchWidth, patchHeight)} { // TODO reduce the until value
-        copyTile(leftMatrixCols, j * shiftRowsSW + i * shiftRowsSE, j * shiftColsSW + i * shiftColsSE, centerMatrixRows, centerMatrixCols)
-        copyTile(leftMatrixCols, -j * shiftRowsSW + i * shiftRowsSE, -j * shiftColsSW + i * shiftColsSE, centerMatrixRows, centerMatrixCols)
+    // TODO reduce the until values, though copyTile has a safeguard against copying outside the targetMatrix
+    for {i <- 1 until Math.max(patchWidth, patchHeight)} {
+      for {j <- 0 until Math.max(patchWidth, patchHeight)} {
+        copyCenterTile(
+          startRow = j * shiftRowsSW + i * shiftRowsSE,
+          startCol = j * shiftColsSW + i * shiftColsSE
+        )
+        copyCenterTile(
+          startRow = -j * shiftRowsSW + i * shiftRowsSE,
+          startCol = -j * shiftColsSW + i * shiftColsSE
+        )
       }
     }
   }
 
-  // the sides overwrite the diagonals as far as they exceeded their area
+  // the foot/head-sides now can overwrite the center tiles as far as they exceeded their area
   setFirstTile(leftMatrix, 0, leftMatrixStitch)
   repeatSide(0, leftMatrix.length, leftMatrixCols)
   setFirstTile(rightMatrix, offsetRightMargin, rightMatrixStitch)
