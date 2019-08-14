@@ -155,14 +155,15 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   setFirstTile(centerMatrix, leftMarginWidth, centerMatrixStitch)
   if (centerMatrixRows > 0 && centerMatrixCols > 0 && patchWidth > 0 && patchHeight > 0) {
-    // complete the overlapping bottom corners of the first tile
+    // first complete the overlapping bottom corners of the first tile
     // this is not [i==j==0] as [0*shift + 0*shift] would be zero and overwrite the opaque tile
     copyCenterTile(startRow = shiftRowsSW, startCol = shiftColsSW)
     copyCenterTile(startRow = -shiftRowsSW, startCol = -shiftColsSW)
     // now we can make all other tile copies in any order
-    // TODO reduce the until values, though copyTile has a safeguard against copying outside the targetMatrix
-    for {i <- 1 until Math.max(patchWidth, patchHeight)} {
-      for {j <- 0 until Math.max(patchWidth, patchHeight)} {
+    // TODO concise loop boundaries
+    val maxDimension = Math.max(patchWidth, patchHeight)
+    for {i <- -maxDimension until maxDimension} {
+      for {j <- -maxDimension until maxDimension} if (!(i == 0 && j == 0)) {
         copyCenterTile(
           startRow = j * shiftRowsSW + i * shiftRowsSE,
           startCol = j * shiftColsSW + i * shiftColsSE
