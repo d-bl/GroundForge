@@ -28,7 +28,7 @@ class TilesConfigSpec extends FlatSpec with Matchers {
   }
 
   private def horBricks(rows: Int, cols: Int): String = {
-    s"tile=${ matrix(rows, cols) }&shiftColsSW=${ Math.round(cols / 2) }&shiftRowsSW=$rows&shiftColsSE=${ cols - Math.round(cols / 2) }&shiftRowsSE=$rows"
+    s"tile=${ matrix(rows, cols) }&shiftColsSW=${ - Math.round(cols / 2) }&shiftRowsSW=$rows&shiftColsSE=${ cols - Math.round(cols / 2) }&shiftRowsSE=$rows"
   }
 
   private def verBricks(rows: Int, cols: Int): String = {
