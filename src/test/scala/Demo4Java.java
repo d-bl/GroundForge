@@ -40,7 +40,7 @@ public class Demo4Java {
             + "&tile=B-C-,---5,C-B-,-5--&tileStitch=ct"
             + "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4",
         "patchWidth=7&patchHeight=16" + "&footside=-5,5-&footsideStitch=-"
-            + "&tile=-5-,5-5,-5-,B-C,-5-&tileStitch=ct" + "&headside=5-,-5&headsideStitch=-"
+            + "&tile=-5-,5-5,-5-,B-C,-5-&tileStitch=ct&d3=ctct&headside=5-,-5&headsideStitch=-"
             + "&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4",
         // more examples for testing: see the demo section of the tiles page
         // TODO fix the next patterns
@@ -74,7 +74,7 @@ public class Demo4Java {
   }
 
   private static void drosteSteps(String urlQuery, int i) throws IOException {
-    System.out.println("-------------- " + i);
+//    System.out.println("-------------- " + i);
     TilesConfig config = new TilesConfig(urlQuery);
     new FileOutputStream(dir + "/" + i + "-prototype.svg")
         .write((D3jsSVG.prolog() + dibl.proto.PrototypeDiagram.create(config)).getBytes());
@@ -94,7 +94,7 @@ public class Demo4Java {
 
   private static Diagram writeNudgedDiagram(String fileName, String strokeWidth, Diagram diagram,
       TilesConfig config, Integer scale) throws IOException {
-    System.out.println("-------------- " + fileName);
+//    System.out.println("-------------- " + fileName);
 
     // needs original positions without any nudging applied to previous diagrams
     Tuple2<NodeProps, NodeProps[]>[] linkedNodes = config.linksOfCenterTile(diagram, scale);

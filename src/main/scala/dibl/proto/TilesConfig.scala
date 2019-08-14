@@ -90,54 +90,6 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     pairsOut.toSeq.map(_.toSeq)
   }
 
-  // repeat foot-side / head-side
-
-  if (leftMarginWidth > 0) replaceItems(leftMatrix, 0, leftMatrixStitch)
-  if (offsetRightMargin > 0) replaceItems(rightMatrix, offsetRightMargin, rightMatrixStitch)
-
-  private def replaceItems(inputMatrix: Seq[String], offset: Int, defaultStitch: String): Unit = {
-    for {
-      row <- targetMatrix.indices
-      rSource = row % inputMatrix.length
-      col <- inputMatrix(rSource).indices
-    } {
-      val id = Stitches.toID(rSource, col + offset)
-      val vectorCode = inputMatrix(rSource)(col)
-      val stitch = if ("-VWXYZ".contains(vectorCode.toUpper)) "-"
-                   else fields.getOrElse(id, defaultStitch)
-      targetMatrix(row)(col + offset) = Item(
-        id,
-        vectorCode,
-        stitch,
-        row < inputMatrix.length,
-        relativeSources = Matrix.toRelativeSources(vectorCode)
-      )
-    }
-  }
-
-  // repeat tiles, see: docs/help/Tiles.md#arrange-the-repeats
-  private val targetSquareSize = Math.max(patchHeight, patchWidth)
-  for {
-    i <- 0 until targetSquareSize
-    j <- -targetSquareSize until targetSquareSize
-    translateRow = (i * shiftRowsSE) + (j * shiftRowsSW)
-    translateCol = (i * shiftColsSE) + (j * shiftColsSW)
-    r <- centerMatrix.indices
-    c <- centerMatrix(r).indices
-  } {
-    // t in rt/ct stands for target cell, r and c for row and col
-    val rt = r + translateRow
-    val ct = c + translateCol
-    if (rt >= 0 && ct >= 0 && rt < patchHeight && ct < patchWidth) {
-      val id = Stitches.toID(r, c + leftMarginWidth)
-      val vectorCode = centerMatrix(r)(c) // symbol on cheat sheet
-      val stitch = if ("-VWXYZ".contains(vectorCode.toUpper)) "-"
-                   else fields.getOrElse(id, centerMatrixStitch)
-      targetMatrix(rt)(ct + leftMarginWidth) = Item(id, vectorCode, stitch, r == rt && c == ct,
-        relativeSources = Matrix.toRelativeSources(vectorCode))
-    }
-  }
-
   private def setFirstTile(inputMatrix: Seq[String], offsetOfFirstTile: Int, defaultStitch: String): Unit = {
     for {
       row <- inputMatrix.indices
@@ -159,18 +111,25 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }
   }
 
+  /**
+    * @param offsetOfFirstTile horizontal position of the original tile within the targetMatrix
+    * @param startRow          top position for the new tile within the targetMatrix
+    * @param startCol          left position for the new tile within the targetMatrix
+    * @param rows              height of the tile
+    * @param cols              width of the tile
+    */
   private def copyTile(offsetOfFirstTile: Int, startRow: Int, startCol: Int, rows: Int, cols: Int): Unit = {
     for {
-      row <- 0 until rows
-      col <- 0 until cols
+      row <- 0 until rows // row within the tile
+      col <- 0 until cols // col withing the tile
     } {
       val targetRow = startRow + row
       val targetCol = startCol + col + offsetOfFirstTile
       val sourceCol =  col + offsetOfFirstTile
+      val sourceRow =  row
       if (targetCol >= 0 && targetCol < totalCols &&
-        targetRow >= 0 && targetRow < totalRows &&
-        sourceCol >= 0 && sourceCol < totalRows) {
-        targetMatrix(targetRow)(targetCol) = targetMatrix(row)(sourceCol).copy(isOpaque = false)
+        targetRow >= 0 && targetRow < totalRows) {
+        targetMatrix(targetRow)(targetCol) = targetMatrix(sourceRow)(sourceCol).copy(isOpaque = false)
       }
     }
   }
@@ -178,22 +137,22 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   def repeatSide(offsetOfFirstTile: Int, rows: Int, cols: Int): Unit = {
     if (rows > 0 && cols > 0)
       for {row <- rows until patchHeight by rows} {
-        copyTile(offsetOfFirstTile, row, offsetOfFirstTile, rows, cols)
+        copyTile(offsetOfFirstTile, row, 0, rows, cols)
       }
   }
-
-  setFirstTile(leftMatrix, 0, leftMatrixStitch)
-  repeatSide(0, leftMatrix.length, leftMatrixCols)
 
   setFirstTile(centerMatrix, leftMarginWidth, centerMatrixStitch)
   if (centerMatrixRows > 0 && centerMatrixCols > 0 && patchWidth > 0 && patchHeight > 0) {
     // the first diagonal // TODO reduce the until value
     for {i <- 1 until Math.max(patchWidth, patchHeight)} {
-      copyTile(leftMatrixCols, i * shiftRowsSE, i * shiftColsSE, centerMatrixCols, centerMatrixRows)
+      copyTile(leftMatrixCols, i * shiftRowsSE, i * shiftColsSE, centerMatrixRows, centerMatrixCols)
       // TODO the other diagonals
     }
   }
 
+  // the sides overwrite the diagonals as far as they exceeded their area
+  setFirstTile(leftMatrix, 0, leftMatrixStitch)
+  repeatSide(0, leftMatrix.length, leftMatrixCols)
   setFirstTile(rightMatrix, offsetRightMargin, rightMatrixStitch)
   repeatSide(offsetRightMargin, rightMatrix.length, rightMatrixCols) // TODO not yet effective?
 
