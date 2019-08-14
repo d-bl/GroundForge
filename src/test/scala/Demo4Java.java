@@ -63,6 +63,7 @@ public class Demo4Java {
                 + "&shiftColsSW=0&shiftRowsSW=1&shiftColsSE=6&shiftRowsSE=1",
         "patchWidth=17&patchHeight=16&j1=ctcl&f1=ctcr&d1=c&c1=ctct&b1=c&i2=-&g2=-&d2=cr&b2=cl&h3=ctct&c3=ctc&i4=-&g4=-&d4=c&b4=c&j5=ctcr&f5=ctcl&d5=c&c5=tctc&b5=c&tile=-O3E-5---5,-4-7--W-Y-,--5----5--,-B-C--Y-W-,-158-L---H&footsideStitch=tctct&tileStitch=ctc&headsideStitch=tctct&shiftColsSW=-5&shiftRowsSW=5&shiftColsSE=5&shiftRowsSE=5",
         "patchWidth=7&patchHeight=18&i1=-&c1=ct&a1=tctctr&d2=ct&b2=ct&a2=tctctr&c3=ct&a3=-&d4=ct&b4=ct&c5=ct&a5=tctctr&a7=tctctr&footside=B,X,X,-,B,-,B,-,&tile=-5-,5-5,-5-,B-C,-5-&headside=W,-,&footsideStitch=tctctr&tileStitch=ct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4",
+        "patchWidth=7&patchHeight=7&tile=g&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=0",
     };
     for (int i = 0; i <= urlQueries.length - 1; i++)
       drosteSteps(urlQueries[i], i);

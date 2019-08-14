@@ -143,10 +143,13 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   setFirstTile(centerMatrix, leftMarginWidth, centerMatrixStitch)
   if (centerMatrixRows > 0 && centerMatrixCols > 0 && patchWidth > 0 && patchHeight > 0) {
-    // the first diagonal // TODO reduce the until value
-    for {i <- 1 until Math.max(patchWidth, patchHeight)} {
+    // TODO add the overlapping parts to the copies
+    for {i <- 1 until Math.max(patchWidth, patchHeight)} { // the first diagonal // TODO reduce the until value
       copyTile(leftMatrixCols, i * shiftRowsSE, i * shiftColsSE, centerMatrixRows, centerMatrixCols)
-      // TODO the other diagonals
+      for {j <- 1 until Math.max(patchWidth, patchHeight)} { // the other diagonals // TODO reduce the until value
+        copyTile(leftMatrixCols, j * shiftRowsSW + i * shiftRowsSE, j * shiftColsSW + i * shiftColsSE, centerMatrixRows, centerMatrixCols)
+        copyTile(leftMatrixCols, -j * shiftRowsSW + i * shiftRowsSE, -j * shiftColsSW + i * shiftColsSE, centerMatrixRows, centerMatrixCols)
+      }
     }
   }
 
@@ -154,7 +157,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   setFirstTile(leftMatrix, 0, leftMatrixStitch)
   repeatSide(0, leftMatrix.length, leftMatrixCols)
   setFirstTile(rightMatrix, offsetRightMargin, rightMatrixStitch)
-  repeatSide(offsetRightMargin, rightMatrix.length, rightMatrixCols) // TODO not yet effective?
+  repeatSide(offsetRightMargin, rightMatrix.length, rightMatrixCols)
 
   // rejoin links to ignored stitches
   Item.cleanupIgnoredStitches(targetMatrix)
