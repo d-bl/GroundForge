@@ -137,16 +137,19 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   def repeatSide(offsetOfFirstTile: Int, rows: Int, cols: Int): Unit = {
     if (rows > 0 && cols > 0)
       for {row <- rows until patchHeight by rows} {
-        copyTile(offsetOfFirstTile, row, 0, rows, cols)
+        copyTile(offsetOfFirstTile, startRow = row, startCol = 0, rows, cols)
       }
   }
 
   setFirstTile(centerMatrix, leftMarginWidth, centerMatrixStitch)
   if (centerMatrixRows > 0 && centerMatrixCols > 0 && patchWidth > 0 && patchHeight > 0) {
-    // TODO add the overlapping parts to the copies
-    for {i <- 1 until Math.max(patchWidth, patchHeight)} { // the first diagonal // TODO reduce the until value
-      copyTile(leftMatrixCols, i * shiftRowsSE, i * shiftColsSE, centerMatrixRows, centerMatrixCols)
-      for {j <- 1 until Math.max(patchWidth, patchHeight)} { // the other diagonals // TODO reduce the until value
+    // complete the overlapping bottom corners of the first tile
+    // this is not [i==j==0] as [0*shift + 0*shift]  would be zero
+    copyTile(leftMatrixCols, shiftRowsSW, shiftColsSW, centerMatrixRows, centerMatrixCols)
+    copyTile(leftMatrixCols, -shiftRowsSW, -shiftColsSW, centerMatrixRows, centerMatrixCols)
+    // now we can make all other tile copies in any order
+    for {i <- 1 until Math.max(patchWidth, patchHeight)} { // TODO reduce the until value
+      for {j <- 0 until Math.max(patchWidth, patchHeight)} { // TODO reduce the until value
         copyTile(leftMatrixCols, j * shiftRowsSW + i * shiftRowsSE, j * shiftColsSW + i * shiftColsSE, centerMatrixRows, centerMatrixCols)
         copyTile(leftMatrixCols, -j * shiftRowsSW + i * shiftRowsSE, -j * shiftColsSW + i * shiftColsSE, centerMatrixRows, centerMatrixCols)
       }
