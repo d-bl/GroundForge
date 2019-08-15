@@ -9,10 +9,14 @@ class TilesConfigSpec extends FlatSpec with Matchers {
     rows <- 1 until 3
     height <- 3 until 7
     width <- 3 until 7
+    headHeight <- 0 until 3
+    headWidth <- 0 until 3
+    footHeight <- 0 until 3
+    footWidth <- 0 until 3
   } yield Seq(
-    (s"patchWidth=$width&patchHeight=$height&${ checker(rows, cols) }&checker"),
-    (s"patchWidth=$width&patchHeight=$height&${ horBricks(rows, cols) }&horBricks"),
-    (s"patchWidth=$width&patchHeight=$height&${ verBricks(rows, cols) }&verBricks"),
+    (s"patchWidth=$width&patchHeight=$height&${ checker(rows, cols) }&headside=${ matrix(headHeight, headWidth) }&footside=${ matrix(footHeight, footWidth) }&checker"),
+    (s"patchWidth=$width&patchHeight=$height&${ horBricks(rows, cols) }&headside=${ matrix(headHeight, headWidth) }&footside=${ matrix(footHeight, footWidth) }&horBricks"),
+    (s"patchWidth=$width&patchHeight=$height&${ verBricks(rows, cols) }&headside=${ matrix(headHeight, headWidth) }&footside=${ matrix(footHeight, footWidth) }&verBricks"),
   )).flatten
 
   "getItemMatrix" should "fill the prototype completely" in {
@@ -36,6 +40,7 @@ class TilesConfigSpec extends FlatSpec with Matchers {
   }
 
   private def matrix(rows: Int, cols: Int): String = {
+    if (rows==0 || cols == 0) return ""
     Array.fill(rows)("1" * cols).mkString(",")
   }
 }

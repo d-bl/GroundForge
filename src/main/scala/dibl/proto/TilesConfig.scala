@@ -120,38 +120,38 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }
   }
 
-  /**
-    * @param offsetOfFirstTile horizontal position of the original tile within the targetMatrix
-    * @param rows              height of the tile
-    * @param cols              width of the tile
-    * @param startRow          top position for the new tile within the targetMatrix
-    * @param startCol          left position for the new tile within the targetMatrix
-    */
-  private def copyTile(offsetOfFirstTile: Int, rows: Int, cols: Int, startRow: Int, startCol: Int): Unit = {
-    for {
-      row <- 0 until rows // row within the tile
-      col <- 0 until cols // col withing the tile
-    } {
-      val targetRow = startRow + row
-      val targetCol = startCol + col + offsetOfFirstTile
-      val sourceCol =  col + offsetOfFirstTile
-      val sourceRow =  row
-      if (targetCol >= 0 && targetCol < totalCols &&
-        targetRow >= 0 && targetRow < totalRows) {
-        targetMatrix(targetRow)(targetCol) = targetMatrix(sourceRow)(sourceCol).copy(isOpaque = false)
+  private def copyStitch(targetRow: Int, targetCol: Int, sourceCol: Int, sourceRow: Int): Unit = {
+    targetMatrix(targetRow)(targetCol) = targetMatrix(sourceRow)(sourceCol).copy(isOpaque = false)
+  }
+
+  private def repeatSide(offsetOfFirstTile: Int, rows: Int, cols: Int): Unit = {
+    for {col <- offsetOfFirstTile until offsetOfFirstTile + cols} {
+      for {row <- rows until totalRows} {
+        copyStitch(row, col, col, row % rows)
       }
     }
   }
 
-  private def repeatSide(offsetOfFirstTile: Int, rows: Int, cols: Int): Unit = {
-    if (rows > 0 && cols > 0)
-      for {row <- rows until patchHeight by rows} {
-        copyTile(offsetOfFirstTile, rows, cols, startRow = row, startCol = 0)
+  /**
+    * @param startRow          top position for the new tile within the targetMatrix
+    * @param startCol          left position for the new tile within the targetMatrix
+    */
+  private def copyCenterTile(startRow: Int, startCol: Int): Unit = {
+    if (startCol < offsetRightMargin || startRow < totalRows)
+      for {
+        row <- 0 until centerMatrixRows // row within the tile
+        col <- 0 until centerMatrixCols // col withing the tile
+      } {
+        val targetRow = startRow + row
+        val targetCol = startCol + col + leftMatrixCols
+        val sourceCol = col + leftMatrixCols
+        val sourceRow = row
+        if (targetCol >= 0 && targetCol < offsetRightMargin &&
+          targetRow >= 0 && targetRow < totalRows) {
+          copyStitch(targetRow, targetCol, sourceCol, sourceRow)
+        }
       }
   }
-
-  private def copyCenterTile(startRow: Int, startCol: Int): Unit =
-    copyTile(leftMatrixCols, centerMatrixRows, centerMatrixCols, startRow, startCol)
 
   setFirstTile(centerMatrix, leftMarginWidth, centerMatrixStitch)
   if (centerMatrixRows > 0 && centerMatrixCols > 0 && patchWidth > 0 && patchHeight > 0) {
