@@ -155,11 +155,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   setFirstTile(centerMatrix, leftMarginWidth, centerMatrixStitch)
   if (centerMatrixRows > 0 && centerMatrixCols > 0 && patchWidth > 0 && patchHeight > 0) {
-    // now we can make all other tile copies in any order
     // TODO concise loop boundaries
     val squaredPatchSize = Math.max(patchWidth, patchHeight)
     for {i <- 0 until squaredPatchSize} {
-      for {j <- -squaredPatchSize until squaredPatchSize} {
+      for {j <- squaredPatchSize until -squaredPatchSize by -1} if (!(i==0 & j==0)) {
         copyCenterTile(
           startRow = j * shiftRowsSW + i * shiftRowsSE,
           startCol = j * shiftColsSW + i * shiftColsSE
