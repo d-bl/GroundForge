@@ -133,23 +133,24 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   }
 
   /**
-    * @param startRow top position for the new tile within the targetMatrix
-    * @param startCol left position for the new tile within the targetMatrix
+    * @param startRow Top position for the new tile within the targetMatrix.
+    * @param startCol Left position for the new tile within the patch.
+    *                 The patch is a subsection of the targetMatrix:
+    *                 from leftMatrixCols until offsetRightMargin.
     */
   private def copyCenterTile(startRow: Int, startCol: Int): Unit = {
-    if (tileIsInsidePatch(startRow, startCol))
-      for {
-        row <- 0 until centerMatrixRows // row within the tile
-        col <- 0 until centerMatrixCols // col withing the tile
-      } {
-        val targetRow = startRow + row
-        val targetCol = startCol + col + leftMatrixCols
-        val sourceCol = col + leftMatrixCols
-        val sourceRow = row
-        if (stitchIsInsidePatch(targetRow, targetCol)) {
-          copyStitch(targetRow, targetCol, sourceCol, sourceRow)
-        }
+    for {
+      row <- 0 until centerMatrixRows // row within the tile
+      col <- 0 until centerMatrixCols // col withing the tile
+    } {
+      val targetRow = startRow + row
+      val targetCol = startCol + col + leftMatrixCols
+      val sourceCol = col + leftMatrixCols
+      val sourceRow = row
+      if (stitchIsInsidePatch(targetRow, targetCol)) {
+        copyStitch(targetRow, targetCol, sourceCol, sourceRow)
       }
+    }
   }
 
   private def stitchIsInsidePatch(targetRow: Int, targetCol: Int): Boolean = {
@@ -158,13 +159,13 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   }
 
   /**
-    * @return may be false if the tile is completely outside the patch area
+    * @return may(!) be false if the tile is completely outside the patch area
     *         the performance toll of this check should outweigh
     *         the toll of having to call stitchIsInsidePatch
     */
   private def tileIsInsidePatch(startRow: Int, startCol: Int): Boolean = {
-    // TODO so far it just excludes tiles completely below or to the right of the targeted area
-    //  thorough analysis might limit the brute force loops that call copyCenterTile
+    // TODO so far we just exclude tiles that are completely below or to the right of the targeted area
+    //  thorough analysis might limit the brute force loops that calls this method
     startCol < offsetRightMargin && startRow < totalRows
   }
 
@@ -173,10 +174,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     val squaredPatchSize = Math.max(patchWidth, patchHeight)
     for {i <- 0 until squaredPatchSize} {
       for {j <- squaredPatchSize until -squaredPatchSize by -1} if (!(i == 0 & j == 0)) {
-        copyCenterTile(
-          startRow = j * shiftRowsSW + i * shiftRowsSE,
-          startCol = j * shiftColsSW + i * shiftColsSE
-        )
+        val startRow = j * shiftRowsSW + i * shiftRowsSE
+        val startCol = j * shiftColsSW + i * shiftColsSE
+        if (tileIsInsidePatch(startRow, startCol))
+          copyCenterTile(startRow, startCol)
       }
     }
   }
