@@ -40,13 +40,14 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   @JSExport
   val maxTileRows: Int = Math.max(centerMatrixRows, Math.max(leftMatrix.length, rightMatrix.length))
 
-  // TODO defaults based on the dimensions of the above matrices
-  private val patchHeight: Int = queryFields.getOrElse("patchHeight", "12").safeToInt
-  private val patchWidth: Int = queryFields.getOrElse("patchWidth", "12").safeToInt
-  val shiftRowsSE: Int = queryFields.getOrElse("shiftRowsSE", "12").safeToInt
-  val shiftRowsSW: Int = queryFields.getOrElse("shiftRowsSW", "12").safeToInt
-  val shiftColsSE: Int = queryFields.getOrElse("shiftColsSE", "12").safeToInt
-  val shiftColsSW: Int = queryFields.getOrElse("shiftColsSW", "12").safeToInt
+  // patch size is at least tile-size; default 2x2 tiles
+  val patchHeight: Int = Math.max(queryFields.getOrElse("patchHeight", (2*centerMatrixRows).toString).safeToInt, centerMatrixRows)
+  val patchWidth: Int = Math.max(queryFields.getOrElse("patchWidth", (2*centerMatrixCols).toString).safeToInt, centerMatrixCols)
+  // defaults for a checker matrix
+  val shiftRowsSE: Int = queryFields.getOrElse("shiftRowsSE", centerMatrixRows.toString).safeToInt
+  val shiftRowsSW: Int = queryFields.getOrElse("shiftRowsSW", centerMatrixRows.toString).safeToInt
+  val shiftColsSE: Int = queryFields.getOrElse("shiftColsSE", centerMatrixCols.toString).safeToInt
+  val shiftColsSW: Int = queryFields.getOrElse("shiftColsSW", "0").safeToInt
 
   private val leftMarginWidth = leftMatrix.head.trim.length
   private val offsetRightMargin = leftMarginWidth + patchWidth
