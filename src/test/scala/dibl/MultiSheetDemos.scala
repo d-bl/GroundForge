@@ -19,19 +19,16 @@ import dibl.sheet.SheetSVG
 
 import scala.reflect.io.File
 
-object PatternDemos {
+object MultiSheetDemos extends DemoFixture {
 
   def main(args: Array[String]): Unit = {
-
-    File("target/test/pattern/").createDirectory()
-
     {
       val patterns = new SheetSVG
       patterns.add("5831 -4-7", "bricks")
       patterns.add("-437 34-7", "bricks")
       patterns.add("5831 -4-7 3158 -7-4", "checker")
       patterns.add("4830 --77", "bricks")
-      File("target/test/pattern/rose.svg").writeAll(patterns.toSvgDoc())
+      File(s"$testDir/rose.svg").writeAll(patterns.toSvgDoc())
     }
 
     {
@@ -49,13 +46,13 @@ object PatternDemos {
       patterns.add("5---5-5- -O-E-5-5", "bricks") // double length horizontal lines
 
       patterns.add("586- -4-5 5-21 -5-777", "checker") // reports an error
-      File("target/test/pattern/pattern-sheet.svg").writeAll(patterns.toSvgDoc())
+      File(s"$testDir/pattern-sheet.svg").writeAll(patterns.toSvgDoc())
     }
 
     {
       val patterns = SheetSVG(1, "width='340' height='330'")
       patterns.add("586- -4-5 5-21 -5-7", "bricks")
-      File("target/test/pattern/minimal.svg").writeAll(patterns.toSvgDoc())
+      File(s"$testDir/minimal.svg").writeAll(patterns.toSvgDoc())
     }
   }
 }

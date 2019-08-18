@@ -4,19 +4,17 @@ import dibl.sheet.SheetSVG
 
 import scala.reflect.io.File
 
-object SheetDemos {
+object SheetDemos extends DemoFixture {
   def main(args: Array[String]): Unit = {
-    new java.io.File("target/test/sheets").mkdirs()
-    val str = Matrices.values.flatMap {str =>
-      println(str)
-      val Array(m,t) = str.split(";")
-      val patterns = new SheetSVG
-      patterns.add(m, t)
-      patterns.toSvgDoc()
+    File(s"$testDir/sheetToTiles.html")
+      .writeAll(Patterns.tesselaceSheets.flatMap(_._3
         .split("\n")
         .filter(_.contains("tiles.html"))
-        .map(_.replace("xlink:",""))
+        .map(_.replace("xlink:", ""))
+      ).mkString("<br>\n"))
+    Patterns.tesselaceSheets.foreach(x => println(x._4))
+    Patterns.tesselaceSheets.foreach { case (nr: String, _, svg: String, _) =>
+      File(s"$testDir/$nr.svg").writeAll(svg)
     }
-    File("target/test/sheetToTiles.html").writeAll(str.mkString("<br>\n"))
   }
 }

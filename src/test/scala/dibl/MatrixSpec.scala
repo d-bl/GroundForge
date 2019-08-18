@@ -24,7 +24,7 @@ import scala.reflect.ClassTag
 class MatrixSpec extends FlatSpec with Matchers {
 
   "test values" should  "find matrices in docs/help/Tesselace-Index.md" ignore {
-    Matrices.values.size shouldBe 449
+    Patterns.tesselace.size shouldBe 449
   }
 
   "separator" should "match anything but Matrix.relSourcesMap.keySet" ignore {
