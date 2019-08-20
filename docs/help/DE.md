@@ -10,9 +10,13 @@ Experimentieren mit geklöppelte Gründe
 --------------------------------------
 Indem Sie die Schläge variieren und/oder die Downloads verzerren,
 können Sie aus einem einzigen Grund eine Welt unterschiedlicher Gründe zaubern.
-Experimentieren und spielen Sie mit Hunderten von vorgefertigte Gründe oder geben Sie Ihre eigenen Muster ein. Auch wenn Sie Räder neu erfinden, können Sie viel spaß haben an eigenen Entdeckungen.
+Experimentieren und spielen Sie mit Hunderten von vorgefertigten Gründe oder geben Sie Ihre eigenen Muster ein. Auch wenn Sie alte Schläge neu erfinden, können Sie viel Spaß haben an eigenen Entdeckungen.
 
-Den [Tiles](https://d-bl.github.io/GroundForge/tiles) (Kacheln) -Seite generiert die Diagramme und listet die wichtigsten Schritte auf. Hilfeseiten am rechten Rand erläutern weitere Details. Leider nur auf Englisch, verwenden bitte Sie allgemeine Online-Übersetzungsseiten und den [OIDFA-Übersetzer] für Klöppelbegriffe.
+Den [Tiles](https://d-bl.github.io/GroundForge/tiles) (Ziegel)-Seite 
+generiert die Diagramme der Grunde. Die Seite führt Sie mit einer kurzen Liste der wichtigsten Schritte. 
+Links am rechten Rand erläutern weitere Details. 
+Leider nur auf Englisch, verwenden Sie bitte allgemeine Online-Übersetzungsseiten 
+und den [OIDFA-Übersetzer] OIDFA-Übersetzer für Klöppelbegriffe.
 
 Nachfolgend finden Sie eine Erklärung für die Verwendung eines vielseitigen Grund.
 Nebenbei bemerkt: Auch Bänder entwerfen mit Randschläge gehört zu den Möglichkeiten.
@@ -25,10 +29,10 @@ Nebenbei bemerkt: Auch Bänder entwerfen mit Randschläge gehört zu den Möglic
 Tutorenkurs 
 -----------
 Ein [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4) (129 MB, 2:28 min)
-durchläuft die Herstellung verschiedene Variationen aus einen Grundmusters.
+durchläuft die Herstellung verschiedener Variationen aus einem Grundmuster.
 Verwenden Sie die Pause-Taste und den Schieberegler,
 um die Schritte zu wiederholen. Probieren Sie es aus,
-lassen Sie sich ablenken und haben Sie Spaß damit.
+lassen Sie sich verführen und haben Sie Spaß damit.
 
 Ein weiterer Videoclip (mit Skript) zeigt einige der wichtigsten Funktionen zum Bearbeiten all dieser Muster. 
 Aber zuerst eine kurze Erklärung, was die Aktionen erreichen müssen.
@@ -42,13 +46,15 @@ von Tausenden von Möglichkeiten eines vielseitigen Musters.
 Für den Grund sind Definitionen von interaktiven Diagrammen "[with]" (mit) und "[without]" (ohne) Randschläge.
 Siehe auch die Kommentare zu [Patch-Dimensionen] für die Version mit Randschläge.
 
-Die Auswahl anderer Schläge entspricht dem einfachen Methode von Schläge weglassen.
-Um zwei Fliegen mit einer Klappe zu schlagen, teilen wir letztere.
+Die Auswahl anderer Schläge entspricht der einfachen Methode von Schläge weglassen.
+Um zwei Fliegen mit einer Klappe zu schlagen, teilen wir Letztere.
 
-Beachten Sie die grauen Punkte in drei der oberen Diagramme der vier Varianten: einen in der Mitte oder einen oben und unten. Diese grauen Punkte stellen Schläge dar, die leicht weggelassen werden können:
+Beachten Sie die grauen Punkte in drei der oberen Diagramme der vier Varianten: 
+einen in der Mitte oder einen oben und unten. 
+Diese grauen Punkte stellen Schläge dar, die leicht weggelassen werden können:
 Ersetzen Sie `ctc` durch `-` in den gelben Popups.
 Diese Methode kann unerwartete Nebenwirkungen haben, zum Beispiel,
-dass mehr [Schläge] verschwinden, oder sie tauscht den Algorithmus aus, um die Paare für den Schlag zu erstellen.
+dass mehr [Schläge] verschwinden, oder den Algorithmus tauscht die Paare bevor es ein Schlag erstellt.
 Der letzte Effekt spielt für das Paardiagramm keine Rolle, verursacht aber komische Drahtdiagramme.
 ![](images/kompakt-31.png)
 
@@ -60,7 +66,8 @@ Der letzte Effekt spielt für das Paardiagramm keine Rolle, verursacht aber komi
 
 ### Auslassen von Schläge (im Abschnitt "Advanced")
 
-Eine andere Methode zum Auslassen von Schläge verwendet den Seitenabschnitt für Benutzter mit einige Erfahrung.
+Eine andere Methode zum Auslassen von Schlägen verwendet den Seitenabschnitt
+"Forms for advanced users" (Benutzter mit einige Erfahrung).
 Wenden Sie die blauen Änderungen für die zweite und letzte Variante an.
 Die roten Änderungen gelten für die dritte Variante.
 
@@ -72,28 +79,28 @@ Die roten Änderungen gelten für die dritte Variante.
 Der [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK-31.mp4)
 (37 MB, weniger als zwei Minuten) folgt dem folgenden Skript.
 Verwenden Sie die Pause Taste und den Schieberegler, um die Schritte zu wiederholen.
-Ignorieren Sie gegebenenfalls die fett gedruckten fortgeschrittene Schritte.
+Ignorieren Sie gegebenenfalls die fett gedruckten fortgeschrittenen Schritte.
 
 * 0:00 Beginnt mit dieser Hilfeseite (die Aufnahme zeigt eine ältere Englische Version)
 * 0:00 Dem "with"-Link folgen (with = mit)
 * 0:05 [Schlag] ersetzten / weggelassen: `ctc` -> `-`
 * 0:10 ![wand](../images/wand.png) neue Diagramme generieren
-* 0:18 Aktualisieren von die gesamte Seite: Die ursprünglichen Diagramme werden wieder angezeigt
-* **0:19** Benutzerbereich rollen nach den teil für Fortgeschrittene Benutzer
+* 0:18 Aktualisieren der gesamten Seite: Die ursprünglichen Diagramme werden wieder angezeigt
+* **0:19** Benutzerbereich scrollen zum Teil für fortgeschrittene Benutzer
 * **0:22** entferne den Schlag in der Mitte: `353,153` -> `-5-,5-5-` (Erklärung oben)
 * **0:35** ![wand](../images/wand.png) : Unterschiedlicher Prototyp, gleiches Paardiagramm und Fadendiagramm
 * 0:41 Folge (i)
 * 0:44 Folge "_stitches_" (Schläge)
-* 0:45 Kopieren von den Randschlag
-* 0:49 Zurück zur vorherigen Browserregisterkarte
-* 0:52 Überschreibe den Schlag mit den kopierten variant ein und bearbeite ihn zu einem Umkehrschlag
+* 0:45 Kopieren vom Randschlag
+* 0:49 Zurück zur vorherigen Browser-Registerkarte
+* 0:52 Überschreibe den Schlag mit der kopierten Variante ein und bearbeite ihn zu einem Umkehrschlag
 * 1:19 ![link](../images/link.png)
 * 1:23 Aktualisieren der ganze Seite
 * 1:26 Jetzt wird das aktuelle Muster neu geladen
 * 1:27 Einen Link machen
 * 1:33 "_animate_" Paardiagramm (animieren)
 * 1:36 Erweitern von den Platz für das Schaltbild (alternativ: ![](../images/size-inc.jpg) ![](../images/size-dec.jpg))
-* 1:38 Benutzerbereich weiter nach unten rollen, um das Drahtdiagramm wieder auf dem Bildschirm anzuzeigen
+* 1:38 Benutzerbereich weiter nach unten scrollen, um das Drahtdiagramm wieder auf dem Bildschirm anzuzeigen
 * 1:42 Ändern von die Farbe eines Draht, wenn im Popup die Thread-Nummer angezeigt wird
 * 1:45
 
