@@ -35,7 +35,8 @@ Add foot sides to a small strip of a (symmetrical or not?) pattern to get a brai
 Tutorial
 --------
 One [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4)
-(123 MB, 2:32 min) goes through various catalogues to variations of the same base pattern.
+(123 MB, 2:32 min) looks for the same base pattern in various catalogues.
+The grounds are presented in various ways or use different stitches.
 Use the pause button and slider to repeat, try for yourself get side tracked and have fun.
 
 Another screencast (with script) walks through some important functions to make variation on these patterns,

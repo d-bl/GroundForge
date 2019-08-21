@@ -8,9 +8,9 @@ Hilfe Intro
 
 Experimentieren mit geklöppelte Gründe
 --------------------------------------
-Indem Sie die Schläge variieren und/oder die Downloads verzerren,
+Indem Sie die Schläge variieren und/oder die Zeichnungen verzerren,
 können Sie aus einem einzigen Grund eine Welt unterschiedlicher Gründe zaubern.
-Experimentieren und spielen Sie mit Hunderten von vorgefertigten Gründe oder geben Sie Ihre eigenen Muster ein. Auch wenn Sie alte Schläge neu erfinden, können Sie viel Spaß haben an eigenen Entdeckungen.
+Experimentieren und spielen Sie mit Hunderten von vorgefertigten Gründe oder geben Sie Ihre eigenen Muster ein. Auch wenn Sie alte Gründe neu erfinden, können Sie viel Spaß haben an eigenen Entdeckungen.
 
 Den [Tiles](https://d-bl.github.io/GroundForge/tiles) (Ziegel)-Seite 
 generiert die Diagramme der Grunde. Die Seite führt Sie mit einer kurzen Liste der wichtigsten Schritte. 
@@ -29,7 +29,8 @@ Nebenbei bemerkt: Auch Bänder entwerfen mit Randschläge gehört zu den Möglic
 Tutorenkurs 
 -----------
 Ein [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4) (129 MB, 2:28 min)
-durchläuft die Herstellung verschiedener Variationen aus einem Grundmuster.
+sucht ein Grundmuster in verschiedene Samlungen.
+Dieses Gründe werden auf verschiedene Weisen presentiert oder benutzten varationen in den Schläge.
 Verwenden Sie die Pause-Taste und den Schieberegler,
 um die Schritte zu wiederholen. Probieren Sie es aus,
 lassen Sie sich verführen und haben Sie Spaß damit.
