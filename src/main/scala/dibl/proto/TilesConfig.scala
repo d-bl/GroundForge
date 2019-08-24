@@ -155,7 +155,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   /**
     * Called outside copyCenterTile to prevent the loops inside
-    * which have to check stitchIsInsidePatch.
+    * which have to check stitchIsInsidePatch for each potential stitch ojn the tile.
     *
     * @return false if the tile is completely outside the patch area
     */
