@@ -141,37 +141,27 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     */
   private def copyCenterTile(startRow: Int, startCol: Int): Unit = {
     for {
-      row <- 0 until centerMatrixRows // row within the tile
-      col <- 0 until centerMatrixCols // col withing the tile
-    } {
-      val targetRow = startRow + row
-      val targetCol = startCol + col + leftMatrixCols
-      val sourceCol = col + leftMatrixCols
-      val sourceRow = row
-      if (stitchIsInsidePatch(targetRow, targetCol)) {
+      sourceRow <- 0 until centerMatrixRows // row within the specified tile as well as the copy in the target matrix
+      targetRow = startRow + sourceRow
+      col <- 0 until centerMatrixCols // col within the specified tile
+    } if (0 <= targetRow && targetRow < totalRows) { // row is inside patch
+      val sourceCol = col + leftMatrixCols // col of the tile copied previously into the target mat rix
+      val targetCol = startCol + col + leftMatrixCols // col of the tile to be copied into the target matrix
+      if (leftMarginWidth <= targetCol && targetCol < offsetRightMargin) { // col is inside patch
         copyStitch(targetRow, targetCol, sourceCol, sourceRow)
       }
     }
   }
 
-  /** @return false if the arguments are outside the patch area */
-  private def stitchIsInsidePatch(targetRow: Int, targetCol: Int): Boolean = {
-    targetCol >= leftMarginWidth && targetCol < offsetRightMargin &&
-      targetRow >= 0 && targetRow < totalRows
-  }
-
   /**
-    * Throttles the loops around copyCenterTile to prevent the loops inside copyCenterTile.
+    * Called outside copyCenterTile to prevent the loops inside
+    * which have to check stitchIsInsidePatch.
     *
     * @return false if the tile is completely outside the patch area
-    *         the performance toll of this check should outweigh
-    *         the toll of having to call stitchIsInsidePatch
     */
   private def tileIsInsidePatch(startRow: Int, startCol: Int): Boolean = {
-    startCol < offsetRightMargin &&
-      startRow < totalRows &&
-      startCol + centerMatrixCols >= 0 &&
-      startRow + centerMatrixRows >= 0
+    -centerMatrixCols < startCol && startCol < offsetRightMargin &&
+      -centerMatrixRows < startRow && startRow < totalRows
   }
 
   setFirstTile(centerMatrix, leftMarginWidth, centerMatrixStitch)
