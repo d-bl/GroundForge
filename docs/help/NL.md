@@ -10,9 +10,9 @@ Experimenteer met gekloste gronden
 ----------------------------------
 
 
-Door slagen te variëren en de downloads daarvan te vervormen kun je een wereld van verschillende gronden uit een enkele grond toveren. Experimenteer en speel met de honderden voorgebakken gronden of voeg je eigen patronen toe. Zelfs als je wielen opniew uitvindt kun je aan eigen ontdekkingen veel plezier beleven. 
+Door slagen te variëren en tekeningen te vervormen kun je een wereld van variaties toveren uit een enkele grond. Experimenteer en speel met de honderden voorgebakken gronden of voeg je eigen patronen toe. Zelfs als je wielen opniew uitvindt kun je aan eigen ontdekkingen veel plezier beleven. 
 
-De [tiles](../tiles.html) pagina genereert de diagrammen en somt de belangrijkste stappen op. 
+De [tiles](../tiles.html) pagina maakt draaddiagrammen van paardiagrammen. Het neemt je bij de hand door de belangrijkste stappen kort op te sommen. 
 Help pagina’s in de rechtermarge leggen meer details uit. Alleen in het Engels, maak gebruik van online vertaal pagina’s en de [OIDFA vertaler] voor kantklostermen.
 
 Hieronder volgt een uitleg met behulp van een veelzijdige grond. Terzijde: met zelfkanten langs een smal strookje grond kun je bandjes ontwerpen.
@@ -25,9 +25,10 @@ Hieronder volgt een uitleg met behulp van een veelzijdige grond. Terzijde: met z
 Snelcursus 
 ----------
 Een [schermfilmpje](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4) (129 MB, 2:28 min)
-gaat langs diverse verzamelingen van slagen naar variaties van hetzelfde basis patroon.
+zoekt hetzelfde basispatroon in verschillende verzamelingen. 
+De gronden worden op verschillende manieren gepresenteerd of gebruiken variaties in de slagen.
 Gebruik de pauzeknop en schuifregelaar om stappen te herhalen.
-Probeer het zelf maak zijstapjes, veel plezier ermee.
+Probeer het na te spelen en maak zijstapjes, veel plezier ermee.
 
 Een ander filmpje (met script) toont enkele van de belangrijkste functies
 om al deze patronen te bewerken.
