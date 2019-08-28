@@ -114,6 +114,6 @@ Ein Schlag wird mit einer Reihe von Buchstaben definiert:
 
 C = cross = Kreuzen<br>
 T = twist = Drehen<br>
-L = Linkes Paar drehen<br>
-R = Rechtes Paar drehen<br>
+L = linkes Paar drehen<br>
+R = rechtes Paar drehen<br>
 P = pin = Nadel (sehr schwach implementiert)<br>
