@@ -14,12 +14,12 @@ Experimentieren und spielen Sie mit Hunderten von vorgefertigten Gründen oder g
 
 Den [Tiles](https://d-bl.github.io/GroundForge/tiles) (Ziegel)-Seite 
 generiert die Diagramme der Gründe. Die Seite führt Sie mit einer kurzen Liste der wichtigsten Schritte. 
-Links am rechten Rand erläutern weitere Details. 
-Leider nur auf Englisch, verwenden Sie bitte allgemeine Online-Übersetzungsseiten 
+Links am rechten Rand erläutern weitere Details,
+leider nur auf Englisch, verwenden Sie bitte allgemeine Online-Übersetzungsseiten 
 und den [OIDFA-Übersetzer] OIDFA-Übersetzer für Klöppelbegriffe.
 
 Nachfolgend finden Sie eine Erklärung für die Verwendung eines vielseitigen Grundes.
-Nebenbei bemerkt: Auch Bänder entwerfen mit Randschlägen gehört zu den Möglichkeiten.
+Nebenbei bemerkt: auch Bänder entwerfen mit Randschlägen gehört zu den Möglichkeiten.
 
 [OIDFA-Übersetzer]: https://www.oidfa.com/translate.html.en
 
@@ -45,7 +45,7 @@ Aber zuerst eine kurze Erklärung, was die Aktionen erreichen müssen.
 Die folgenden statischen Diagramme zeigen vier Variationen
 von Tausenden von Möglichkeiten eines vielseitigen Musters.
 Für den Grund sind Definitionen von interaktiven Diagrammen "[with]" (mit) und "[without]" (ohne) Randschlägen.
-Siehe auch die Kommentare zu [Patch-Dimensionen] für die Version mit Randschläge.
+Siehe auch die Kommentare zu [Patch-Dimensionen] für die Version mit Randschlägen.
 
 Die Auswahl anderer Schläge entspricht der einfachen Methode von Schläge weglassen.
 Um zwei Fliegen mit einer Klappe zu schlagen, teilen wir Letztere.
@@ -56,7 +56,7 @@ Diese grauen Punkte stellen Schläge dar, die leicht weggelassen werden können:
 Ersetzen Sie `ctc` durch `-` in den gelben popups.
 Diese Methode kann unerwartete Nebenwirkungen haben, zum Beispiel,
 dass mehr [Schläge] verschwinden, oder der Algorithmus tauscht die Paare bevor er einen Schlag erstellt.
-Der letzte Effekt spielt für das Paardiagramm keine Rolle, verursacht aber komische Drahtdiagramme.
+Der letzte Effekt spielt für das Paar-Diagramm keine Rolle, verursacht aber komische Draht-Diagramme.
 ![](images/kompakt-31.png)
 
 [Schlag]: #ctc
@@ -68,7 +68,7 @@ Der letzte Effekt spielt für das Paardiagramm keine Rolle, verursacht aber komi
 ### Auslassen von Schlägen (im Abschnitt "Advanced")
 
 Eine andere Methode zum Auslassen von Schlägen verwendet den Seitenabschnitt
-"Forms for advanced users" (Benutzter mit einige Erfahrung).
+"Forms for advanced users" (Benutzter mit einiger Erfahrung).
 Wenden Sie die blauen Änderungen für die zweite und letzte Variante an.
 Die roten Änderungen gelten für die dritte Variante.
 
@@ -89,7 +89,7 @@ Ignorieren Sie gegebenenfalls die fett gedruckten fortgeschrittenen Schritte.
 * 0:18 Aktualisieren der gesamten Seite: Die ursprünglichen Diagramme werden wieder angezeigt
 * **0:19** Benutzerbereich scrollen zum Teil für fortgeschrittene Benutzer
 * **0:22** entferne den Schlag in der Mitte: `353,153` -> `-5-,5-5-` (Erklärung oben)
-* **0:35** ![wand](../images/wand.png) : Unterschiedlicher Prototyp, gleiches Paardiagramm und Fadendiagramm
+* **0:35** ![wand](../images/wand.png) : Unterschiedlicher Prototyp, gleiches Paardiagramm und Faden-Diagramm
 * 0:41 Folge (i)
 * 0:44 Folge "_stitches_" (Schläge)
 * 0:45 Kopieren vom Randschlag
@@ -101,7 +101,7 @@ Ignorieren Sie gegebenenfalls die fett gedruckten fortgeschrittenen Schritte.
 * 1:27 Einen Link machen
 * 1:33 "_animate_" Paardiagramm (animieren)
 * 1:36 Erweiterung des Platzes für das Schaltbild (alternativ: ![](../images/size-inc.jpg) ![](../images/size-dec.jpg))
-* 1:38 Benutzerbereich weiter nach unten scrollen, um das Drahtdiagramm wieder auf dem Bildschirm anzuzeigen
+* 1:38 Benutzerbereich weiter nach unten scrollen, um das Draht-Diagramm wieder auf dem Bildschirm anzuzeigen
 * 1:42 Ändern der Farbe eines Drahtes, wenn im popup die Thread-Nummer angezeigt wird
 * 1:45
 
@@ -114,6 +114,6 @@ Ein Schlag wird mit einer Reihe von Buchstaben definiert:
 
 C = cross = Kreuzen<br>
 T = twist = Drehen<br>
-L = Linkspaar drehen<br>
-R = Rechtspaar drehen<br>
+L = Linkes Paar drehen<br>
+R = Rechtes Paar drehen<br>
 P = pin = Nadel (sehr schwach implementiert)<br>
