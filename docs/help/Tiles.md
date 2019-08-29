@@ -55,6 +55,9 @@ don't work at all or block the device.
 So create links with patch sizes just large enough to recognize the pattern,
 visitors can easily increment the size.
 
+When you specify a too small patch, its size will be automatically increased to contain at least one tile.
+When a link specifies no patch size at all, it will get a size that can contain 2x2 tiles.
+
 ### Right foot sides
 When a diagram has a foot side on the right,
 it will usually match only for every so many columns.
@@ -217,6 +220,7 @@ where western scripts start to write on a sheet of paper.
 You can also memorise by counting rows and columns as in a spread sheet, 
 like used for the labels for the stitches in the pair diagram.
 
+When a link specifies no shift values at all, you'll get a checkerboard arrangement.
 
 Foot sides
 ----------

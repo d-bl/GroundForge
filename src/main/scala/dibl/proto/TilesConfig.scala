@@ -11,12 +11,12 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     .split("&")
     .filter(_.matches(".+=.*"))
 
-  private val fields: Map[String, String] = keyValueStrings
+  private val queryFields: Map[String, String] = keyValueStrings
     .map { kv: String => (kv.replaceAll("=.*", ""), kv.replaceAll(".*=", "")) }
     .toMap
 
   private def getMatrix(key: String): Seq[String] = {
-    fields.getOrElse(key, "").toLowerCase.split("[^-a-z0-9]+").map(_.trim)
+    queryFields.getOrElse(key, "").toLowerCase.split("[^-a-z0-9]+").map(_.trim)
   }
 
   // TODO defend against unequal rows lengths
@@ -24,9 +24,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   val rightMatrix: Seq[String] = getMatrix("headside")
   private val centerMatrix: Seq[String] = getMatrix("tile")
 
-  private val leftMatrixStitch: String = fields.getOrElse("footsideStitch", "ctctt")
-  private val rightMatrixStitch: String = fields.getOrElse("headsideStitch", "ctctt")
-  private val centerMatrixStitch: String = fields.getOrElse("tileStitch", "ctc")
+  private val leftMatrixStitch: String = queryFields.getOrElse("footsideStitch", "ctctt")
+  private val rightMatrixStitch: String = queryFields.getOrElse("headsideStitch", "ctctt")
+  private val centerMatrixStitch: String = queryFields.getOrElse("tileStitch", "ctc")
 
   @JSExport
   val leftMatrixCols: Int = Option(leftMatrix.head).map(_.length).getOrElse(2)
@@ -40,38 +40,46 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   @JSExport
   val maxTileRows: Int = Math.max(centerMatrixRows, Math.max(leftMatrix.length, rightMatrix.length))
 
-  // TODO defaults based on the dimensions of the above matrices
-  @JSExport
-  val totalRows: Int = fields.getOrElse("patchHeight", "12").safeToInt
-  private val centerCols: Int = fields.getOrElse("patchWidth", "12").safeToInt
-  val shiftRowsSE: Int = fields.getOrElse("shiftRowsSE", "12").safeToInt
-  val shiftRowsSW: Int = fields.getOrElse("shiftRowsSW", "12").safeToInt
-  val shiftColsSE: Int = fields.getOrElse("shiftColsSE", "12").safeToInt
-  val shiftColsSW: Int = fields.getOrElse("shiftColsSW", "12").safeToInt
+  // patch size is at least tile-size; default 2x2 tiles
+  val patchHeight: Int = Math.max(queryFields.getOrElse("patchHeight", (2*centerMatrixRows).toString).safeToInt, centerMatrixRows)
+  val patchWidth: Int = Math.max(queryFields.getOrElse("patchWidth", (2*centerMatrixCols).toString).safeToInt, centerMatrixCols)
+  // defaults for a checker matrix
+  val shiftRowsSE: Int = queryFields.getOrElse("shiftRowsSE", centerMatrixRows.toString).safeToInt
+  val shiftRowsSW: Int = queryFields.getOrElse("shiftRowsSW", centerMatrixRows.toString).safeToInt
+  val shiftColsSE: Int = queryFields.getOrElse("shiftColsSE", centerMatrixCols.toString).safeToInt
+  val shiftColsSW: Int = queryFields.getOrElse("shiftColsSW", "0").safeToInt
 
   private val leftMarginWidth = leftMatrix.head.trim.length
-  private val offsetRightMargin = leftMarginWidth + centerCols
+  private val offsetRightMargin = leftMarginWidth + patchWidth
 
   @JSExport
-  val totalCols: Int = centerCols +
+  val totalRows: Int = patchHeight
+
+  @JSExport
+  val totalCols: Int = patchWidth +
     leftMarginWidth +
     (if (offsetRightMargin == 0) 0
      else rightMatrix.head.length)
 
-  private val itemMatrix: Array[Array[Item]] = Array.fill[Array[Item]](totalRows)(
+  private val targetMatrix: Array[Array[Item]] = Array.fill[Array[Item]](patchHeight)(
     Array.fill[Item](totalCols)(Item("", relativeSources = Array.empty))
   )
-  def getItemMatrix: Seq[Seq[Item]] = itemMatrix.map(_.toSeq)
+
+  def getItemMatrix: Seq[Seq[Item]] = {
+    // items represent the callers vision: elements for the prototype/pair-diagram
+    // target has internal meaning: the matrix to fill with the left/center/right-matrix
+    targetMatrix.map(_.toSeq)
+  }
 
   lazy val nrOfPairsOut: Seq[Seq[Int]] = {
-    val rows: Int = itemMatrix.length
-    val cols: Int = itemMatrix.head.length
+    val rows: Int = targetMatrix.length
+    val cols: Int = targetMatrix.head.length
     val pairsOut = Array.fill[Array[Int]](rows)(Array.fill[Int](cols)(0))
     for {
-      r <- itemMatrix.indices
-      c <- itemMatrix(r).indices
+      r <- targetMatrix.indices
+      c <- targetMatrix(r).indices
     } {
-      itemMatrix(r)(c).relativeSources
+      targetMatrix(r)(c).relativeSources
         .foreach { case (relativeSourceRow, relativeSourceCol) =>
           val row: Int = r + relativeSourceRow
           val col: Int = c + relativeSourceCol
@@ -83,56 +91,101 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     pairsOut.toSeq.map(_.toSeq)
   }
 
-  // repeat foot-side / head-side
-
-  if (leftMarginWidth > 0) replaceItems(leftMatrix, 0, leftMatrixStitch)
-  if (offsetRightMargin > 0) replaceItems(rightMatrix, offsetRightMargin, rightMatrixStitch)
-
-  private def replaceItems(inputMatrix: Seq[String], offset: Int, defaultStitch: String): Unit = {
+  /**
+    * Sets the opaque items in the targetMatrix.
+    * See docs/help/Tiles.md#arrange-the-repeats
+    *
+    * @param inputMatrix       tiles.html#footside, #tile or #headside
+    *                          valid characters visualized on help/images/matrix-template.png
+    * @param offsetOfFirstTile horizontal position of the original tile within the targetMatrix
+    * @param defaultStitch     tiles.html#footsideStitch, #tileStitch or #headsideStitch
+    */
+  private def setFirstTile(inputMatrix: Seq[String], offsetOfFirstTile: Int, defaultStitch: String): Unit = {
     for {
-      row <- itemMatrix.indices
-      rSource = row % inputMatrix.length
-      col <- inputMatrix(rSource).indices
+      row <- inputMatrix.indices
+      col <- inputMatrix(row).indices
     } {
-      val id = Stitches.toID(rSource, col + offset)
-      val vectorCode = inputMatrix(rSource)(col)
+      val targetCol = col + offsetOfFirstTile
+      val id = Stitches.toID(row, targetCol)
+      val vectorCode = inputMatrix(row)(col)
       val stitch = if ("-VWXYZ".contains(vectorCode.toUpper)) "-"
-                   else fields.getOrElse(id, defaultStitch)
-      itemMatrix(row)(col + offset) = Item(
-        id,
-        vectorCode,
-        stitch,
-        row < inputMatrix.length,
-        relativeSources = Matrix.toRelativeSources(vectorCode)
-      )
+                   else queryFields.getOrElse(id, defaultStitch)
+      if (row < patchHeight && targetCol < totalCols)
+        targetMatrix(row)(targetCol) = Item(
+          id,
+          vectorCode,
+          stitch,
+          row < inputMatrix.length,
+          relativeSources = Matrix.toRelativeSources(vectorCode)
+        )
     }
   }
 
-  // repeat tiles, see: https://github.com/d-bl/GroundForge/blob/2e96d8b5/docs/help/images/shift-directions.png
+  private def copyStitch(targetRow: Int, targetCol: Int, sourceCol: Int, sourceRow: Int): Unit = {
+    targetMatrix(targetRow)(targetCol) = targetMatrix(sourceRow)(sourceCol).copy(isOpaque = false)
+  }
 
-  for { // TODO reduce ranges to avoid if
-    i <- itemMatrix.indices
-    j <- -centerCols until centerCols
-    translateRow = (i * shiftRowsSE) + (j * shiftRowsSW)
-    translateCol = (i * shiftColsSE) + (j * shiftColsSW)
-    r <- centerMatrix.indices
-    c <- centerMatrix(r).indices
-  } {
-    // t in rt/ct stands for target cell, r and c for row and col
-    val rt = r + translateRow
-    val ct = c + translateCol
-    if (rt >= 0 && ct >= 0 && rt < totalRows && ct < centerCols) {
-      val id = Stitches.toID(r, c + leftMarginWidth)
-      val vectorCode = centerMatrix(r)(c)
-      val stitch = if ("-VWXYZ".contains(vectorCode.toUpper)) "-"
-                   else fields.getOrElse(id, centerMatrixStitch)
-      itemMatrix(rt)(ct + leftMarginWidth) = Item(id, vectorCode, stitch, r == rt && c == ct,
-        relativeSources = Matrix.toRelativeSources(vectorCode))
+  private def repeatSide(offsetOfFirstTile: Int, rows: Int, cols: Int): Unit = {
+    for {col <- offsetOfFirstTile until offsetOfFirstTile + cols} {
+      for {row <- rows until totalRows} {
+        copyStitch(row, col, col, row % rows)
+      }
     }
   }
+
+  /**
+    * @param startRow Top position for the new tile within the targetMatrix.
+    * @param startCol Left position for the new tile within the patch.
+    *                 The patch is a subsection of the targetMatrix:
+    *                 from leftMatrixCols until offsetRightMargin.
+    */
+  private def copyCenterTile(startRow: Int, startCol: Int): Unit = {
+    for {
+      sourceRow <- 0 until centerMatrixRows // row within the specified tile as well as the copy in the target matrix
+      targetRow = startRow + sourceRow
+      col <- 0 until centerMatrixCols // col within the specified tile
+    } if (0 <= targetRow && targetRow < totalRows) { // row is inside patch
+      val sourceCol = col + leftMatrixCols // col of the tile copied previously into the target mat rix
+      val targetCol = startCol + col + leftMatrixCols // col of the tile to be copied into the target matrix
+      if (leftMarginWidth <= targetCol && targetCol < offsetRightMargin) { // col is inside patch
+        copyStitch(targetRow, targetCol, sourceCol, sourceRow)
+      }
+    }
+  }
+
+  /**
+    * Called outside copyCenterTile to prevent the loops inside
+    * which have to check stitchIsInsidePatch for each potential stitch ojn the tile.
+    *
+    * @return false if the tile is completely outside the patch area
+    */
+  private def tileIsInsidePatch(startRow: Int, startCol: Int): Boolean = {
+    -centerMatrixCols < startCol && startCol < offsetRightMargin &&
+      -centerMatrixRows < startRow && startRow < totalRows
+  }
+
+  setFirstTile(centerMatrix, leftMarginWidth, centerMatrixStitch)
+  if (centerMatrixRows > 0 && centerMatrixCols > 0 && patchWidth > 0 && patchHeight > 0) {
+    val squaredPatchSize = Math.max(patchWidth, patchHeight)
+    for {
+      i <- 0 until squaredPatchSize
+      j <- squaredPatchSize until -squaredPatchSize by -1
+    } if (!(i == 0 & j == 0)) {
+      val startRow = j * shiftRowsSW + i * shiftRowsSE
+      val startCol = j * shiftColsSW + i * shiftColsSE
+      if (tileIsInsidePatch(startRow, startCol))
+        copyCenterTile(startRow, startCol)
+    }
+  }
+
+  // the foot/head-sides now can overwrite the center tiles as far as they exceeded their area
+  setFirstTile(leftMatrix, 0, leftMatrixStitch)
+  repeatSide(0, leftMatrix.length, leftMatrixCols)
+  setFirstTile(rightMatrix, offsetRightMargin, rightMatrixStitch)
+  repeatSide(offsetRightMargin, rightMatrix.length, rightMatrixCols)
 
   // rejoin links to ignored stitches
-  Item.cleanupIgnoredStitches(itemMatrix)
+  Item.cleanupIgnoredStitches(targetMatrix)
 
   /**
    * Get links for one tile.
@@ -220,7 +273,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     // https://github.com/d-bl/GroundForge/blob/268b2e2/src/main/scala/dibl/ThreadDiagram.scala#L105-L107
     // In other words: 15 between rows/cols, 2 rows/cols allowance for the fringe.
     if (totalCols < minWidthForBricks) invalidMin("width", minWidthForBricks)
-    else if (totalRows < minHeightForBricks) invalidMin("height", minHeightForBricks)
+    else if (patchHeight < minHeightForBricks) invalidMin("height", minHeightForBricks)
     else if (isHBrick || isVBrick) (
       // bounding box starts at the third row/col, thus we have four links on all nodes
       3.5,// north
@@ -230,7 +283,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     )
     else if (shiftColsSE < 2 && shiftRowsSE < 2) invalid("type of tiling is not supported")
     else if (minWidth > totalCols) invalidMin("patch width", minWidth)
-    else if (minHeight > totalRows) invalidMin("height", minHeight)
+    else if (minHeight > patchHeight) invalidMin("height", minHeight)
     else {
       // TODO extend dimensions of overlapping tiles to avoid gaps,
       //  then the tile type no longer matters

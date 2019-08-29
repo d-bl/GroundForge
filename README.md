@@ -117,16 +117,12 @@ Work flow
 
 - Fork the project and make a local clone.
 - Don't push to your own master branch, but use the following work flow
-  - add the parent of your fork as remote to your local repository, by convention this remote is called blessed
+  - add the parent of your fork as remote to your local repository, by our conventionsk this remote is called blessed
   - fetch the master branch of the blessed repository
   - create a topic branch from the tip of the master branch
   - push your changes to your own fork and create a pull request
-- Compile your changes and copy the result from the root of the local project.
-  One of the last compilation lines should show something like:
-  ` Full optimizing /path/to/target/scala-2.12/groundforge-opt.js`
-  You'll need a command chain like:
-  - windows: `sbt fullOptJS && copy /Y target\scala-2.12\groundforge-opt.js docs\js\GroundForge-opt.js`
-  - *nix: `sbt fullOptJS && cp -f target/scala-2.12/groundforge-opt.js docs/js/GroundForge-opt.js`
+- Compile your changes and copy the result from the root of the local project to `/docs/js`.
+  Depending in your OS use the one liner in `toJS.sh` or `toJS.bat` the latter is not battle proven.
 - Check the results with the `docs/*.html` pages
 - If ok (or need advise from a reviewer): commit, push and create a pull request 
 - travis may report some of the internal link problems on the help pages in `docs/help`

@@ -31,6 +31,7 @@ public class Demo4Java {
     dir.mkdirs();
 
     String[] urlQueries = { //
+        "patchWidth=12&patchHeight=12&tile=831,4-7,-5-&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
         "patchWidth=6&patchHeight=5" //
             + "&tile=5-&tileStitch=ct&"
             + "&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1",
@@ -40,7 +41,7 @@ public class Demo4Java {
             + "&tile=B-C-,---5,C-B-,-5--&tileStitch=ct"
             + "&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4",
         "patchWidth=7&patchHeight=16" + "&footside=-5,5-&footsideStitch=-"
-            + "&tile=-5-,5-5,-5-,B-C,-5-&tileStitch=ct" + "&headside=5-,-5&headsideStitch=-"
+            + "&tile=-5-,5-5,-5-,B-C,-5-&tileStitch=ct&d3=ctct&headside=5-,-5&headsideStitch=-"
             + "&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4",
         // more examples for testing: see the demo section of the tiles page
         // TODO fix the next patterns
@@ -61,8 +62,9 @@ public class Demo4Java {
         "patchWidth=5&patchHeight=1" //
                 + "&tile=VWXYZ&tileStitch=ct&"
                 + "&shiftColsSW=0&shiftRowsSW=1&shiftColsSE=6&shiftRowsSE=1",
-        "patchWidth=17&patchHeight=16&j1=ctcl&f1=ctcr&d1=c&c1=ctct&b1=c&i2=-&g2=-&d2=cr&b2=cl&h3=ctct&c3=ctc&i4=-&g4=-&d4=c&b4=c&j5=ctcr&f5=ctcl&d5=c&c5=tctc&b5=c&tile=-O3E-5---5,-4-7--W-Y-,--5----5--,-B-C--Y-W-,-158-L---H&footsideStitch=tctct&tileStitch=ctc&headsideStitch=tctct&shiftColsSW=-5&shiftRowsSW=5&shiftColsSE=5&shiftRowsSE=5",
+        "patchWidth=30&patchHeight=30&j1=ctcl&f1=ctcr&d1=c&c1=ctct&b1=c&i2=-&g2=-&d2=cr&b2=cl&h3=ctct&c3=ctc&i4=-&g4=-&d4=c&b4=c&j5=ctcr&f5=ctcl&d5=c&c5=tctc&b5=c&tile=-O3E-5---5,-4-7--W-Y-,--5----5--,-B-C--Y-W-,-158-L---H&footsideStitch=tctct&tileStitch=ctc&headsideStitch=tctct&shiftColsSW=-5&shiftRowsSW=5&shiftColsSE=5&shiftRowsSE=5",
         "patchWidth=7&patchHeight=18&i1=-&c1=ct&a1=tctctr&d2=ct&b2=ct&a2=tctctr&c3=ct&a3=-&d4=ct&b4=ct&c5=ct&a5=tctctr&a7=tctctr&footside=B,X,X,-,B,-,B,-,&tile=-5-,5-5,-5-,B-C,-5-&headside=W,-,&footsideStitch=tctctr&tileStitch=ct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4",
+        "patchWidth=7&patchHeight=7&tile=g&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=0",
     };
     for (int i = 0; i <= urlQueries.length - 1; i++)
       drosteSteps(urlQueries[i], i);
@@ -74,7 +76,7 @@ public class Demo4Java {
   }
 
   private static void drosteSteps(String urlQuery, int i) throws IOException {
-    System.out.println("-------------- " + i);
+//    System.out.println("-------------- " + i);
     TilesConfig config = new TilesConfig(urlQuery);
     new FileOutputStream(dir + "/" + i + "-prototype.svg")
         .write((D3jsSVG.prolog() + dibl.proto.PrototypeDiagram.create(config)).getBytes());
@@ -94,7 +96,7 @@ public class Demo4Java {
 
   private static Diagram writeNudgedDiagram(String fileName, String strokeWidth, Diagram diagram,
       TilesConfig config, Integer scale) throws IOException {
-    System.out.println("-------------- " + fileName);
+//    System.out.println("-------------- " + fileName);
 
     // needs original positions without any nudging applied to previous diagrams
     Tuple2<NodeProps, NodeProps[]>[] linkedNodes = config.linksOfCenterTile(diagram, scale);
