@@ -6,14 +6,14 @@ title: Hilfe Intro
 Hilfe Intro
 ===========
 
-Experimentieren mit geklöppelte Gründe
---------------------------------------
+Spielen mit geklöppelten Gründen
+------------------------------
 Indem Sie die Schläge variieren und/oder die Zeichnungen verzerren,
-können Sie aus einem einzigen Grund eine Welt unterschiedlicher Gründe zaubern.
+können Sie aus einem einzigen Grund unzählige unterschiedliche Gründe zaubern.
 Experimentieren und spielen Sie mit Hunderten von vorgefertigten Gründen oder geben Sie Ihre eigenen Muster ein. Auch wenn Sie alte Gründe neu erfinden, können Sie viel Spaß haben an eigenen Entdeckungen.
 
-Den [Tiles](https://d-bl.github.io/GroundForge/tiles) (Ziegel)-Seite 
-generiert die Diagramme der Gründe. Die Seite führt Sie mit einer kurzen Liste der wichtigsten Schritte. 
+Die [Tiles](https://d-bl.github.io/GroundForge/tiles) (Ziegel)-Seite 
+generiert die Diagramme der Gründe. Die Seite führt Sie mit einer kurzen Liste durch die wichtigsten Schritte. 
 Links am rechten Rand erläutern weitere Details,
 leider nur auf Englisch, verwenden Sie bitte allgemeine Online-Übersetzungsseiten 
 und den [OIDFA-Übersetzer] OIDFA-Übersetzer für Klöppelbegriffe.
@@ -30,33 +30,33 @@ Tutorenkurs
 -----------
 Ein [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4) (129 MB, 2:28 min)
 sucht ein Grundmuster in verschiedenen Sammlungen.
-Dieses Gründe werden auf verschiedene Weisen präsentiert oder benutzten Varationen in den Schlägen.
+Dieses Gründe werden auf verschiedene Arten präsentiert oder benutzten Variationen in den Schlägen.
 Verwenden Sie die Pause-Taste und den Schieberegler,
 um die Schritte zu wiederholen. Probieren Sie es aus,
 lassen Sie sich verführen und haben Sie Spaß damit.
 
 Ein weiterer Videoclip (mit Skript) zeigt einige der wichtigsten Funktionen zum Bearbeiten all dieser Muster. 
-Aber zuerst eine kurze Erklärung, was die Aktionen erreichen müssen.
+Aber zuerst eine kurze Erklärung, worum es bei den Aktionen geht.
 
 <img src="/GroundForge/help/images/kompakt-31-challenge.png" style="float:right"/>
 
-### Ein vielseitiges Muster - Striche ersetzen / weglassen
+### Ein Muster mit viele Möglichkeiten - Schläge ersetzen / weglassen
 
 Die folgenden statischen Diagramme zeigen vier Variationen
 von Tausenden von Möglichkeiten eines vielseitigen Musters.
-Für den Grund sind Definitionen von interaktiven Diagrammen "[with]" (mit) und "[without]" (ohne) Randschlägen.
+Für den Grund gibt es interaktive Diagramme "[with]" (mit) und "[without]" (ohne) Randschläge.
 Siehe auch die Kommentare zu [Patch-Dimensionen] für die Version mit Randschlägen.
 
-Die Auswahl anderer Schläge entspricht der einfachen Methode von Schläge weglassen.
-Um zwei Fliegen mit einer Klappe zu schlagen, teilen wir Letztere.
+Schläge verändern erfordert dasselbe Vorgehen wie das Weglassen von Schlägen mit der einfachen Methode.
+Um zwei Fliegen mit einer Klappe zu schlagen, zeigen wir Letzteres.
 
-Beachten Sie die grauen Punkte in drei der oberen Diagramme der vier Varianten: 
+Beachten Sie die grauen Punkte in drei oberen Diagrammen der vier Varianten: 
 einen in der Mitte oder einen oben und unten. 
 Diese grauen Punkte stellen Schläge dar, die leicht weggelassen werden können:
 Ersetzen Sie `ctc` durch `-` in den gelben popups.
 Diese Methode kann unerwartete Nebenwirkungen haben, zum Beispiel,
 dass mehr [Schläge] verschwinden, oder der Algorithmus tauscht die Paare bevor er einen Schlag erstellt.
-Der letzte Effekt spielt für das Paar-Diagramm keine Rolle, verursacht aber komische Draht-Diagramme.
+Der letzte Effekt spielt für das Paar-Diagramm keine Rolle, verursacht aber merkwürdige Faden-Diagramme.
 ![](images/kompakt-31.png)
 
 [Schlag]: #ctc
@@ -67,8 +67,8 @@ Der letzte Effekt spielt für das Paar-Diagramm keine Rolle, verursacht aber kom
 
 ### Auslassen von Schlägen (im Abschnitt "Advanced")
 
-Eine andere Methode zum Auslassen von Schlägen verwendet den Seitenabschnitt
-"Forms for advanced users" (Benutzter mit einiger Erfahrung).
+Eine andere Methode zum Auslassen von Schlägen findet sich im Kapitel
+"Forms for advanced users" (Benutzer mit einiger Erfahrung).
 Wenden Sie die blauen Änderungen für die zweite und letzte Variante an.
 Die roten Änderungen gelten für die dritte Variante.
 
@@ -78,8 +78,8 @@ Die roten Änderungen gelten für die dritte Variante.
 ### Videoclip
 
 Der [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK-31.mp4)
-(37 MB, weniger als zwei Minuten) folgt dem folgenden Skript.
-Verwenden Sie die Pause Taste und den Schieberegler, um die Schritte zu wiederholen.
+(37 MB, weniger als zwei Minuten) folgt dem Skript unten.
+Verwenden Sie die Pausen-Taste und den Schieberegler, um die Schritte zu wiederholen.
 Ignorieren Sie gegebenenfalls die fett gedruckten fortgeschrittenen Schritte.
 
 * 0:00 Beginnt mit dieser Hilfeseite (die Aufnahme zeigt eine ältere Englische Version)
@@ -101,8 +101,8 @@ Ignorieren Sie gegebenenfalls die fett gedruckten fortgeschrittenen Schritte.
 * 1:27 Einen Link machen
 * 1:33 "_animate_" Paardiagramm (animieren)
 * 1:36 Erweiterung des Platzes für das Schaltbild (alternativ: ![](../images/size-inc.jpg) ![](../images/size-dec.jpg))
-* 1:38 Benutzerbereich weiter nach unten scrollen, um das Draht-Diagramm wieder auf dem Bildschirm anzuzeigen
-* 1:42 Ändern der Farbe eines Drahtes, wenn im popup die Thread-Nummer angezeigt wird
+* 1:38 Benutzerbereich weiter nach unten scrollen, um das Faden-Diagramm wieder auf dem Bildschirm anzuzeigen
+* 1:42 Ändern der Farbe eines Fades, wenn im popup die Faden-Nummer angezeigt wird
 * 1:45
 
 <a name="ctc"/>

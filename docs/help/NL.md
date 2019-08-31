@@ -6,8 +6,8 @@ title: Help Intro
 Help Intro
 ==========
 
-Experimenteer met gekloste gronden
-----------------------------------
+Spelen met gekloste gronden
+---------------------------
 
 
 Door slagen te variëren en tekeningen te vervormen kun je een wereld van variaties toveren uit een enkele grond. Experimenteer en speel met de honderden voorgebakken gronden of voeg je eigen patronen toe. Zelfs als je wielen opniew uitvindt kun je aan eigen ontdekkingen veel plezier beleven. 
