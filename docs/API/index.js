@@ -15,10 +15,17 @@
 */
 function load() {
 
-  var patterns = new SheetSVG(2, "height='90mm' width='100mm'")
-  patterns.add("5831,-4-7", "bricks")
-  document.getElementById("sheet").innerHTML = patterns.toSvgDoc().trim()
+  document.getElementById("sheet").innerHTML = new SheetSVG(
+       2, // The number of generated rows. A landscape A4 can contain 3 columns and 2 rows.
+       "height='90mm' width='100mm'"// Attributes for the SVG root element. Defaults to landscape A4.
+       // an optional third argument: id-prefix in case of multiple free floating patterns on an html page
+  ).add("5831,-4-7", "bricks")
+   .toSvgDoc()
+   .trim()
 
+  // compare with the form fields on https://d-bl.github.io/GroundForge/tiles
+  // and the address created by the link button
+  // note that the bold elements in the prototype diagrams are (hidden) form fields
   var q = "patchWidth=8&patchHeight=14"
                       + "&footside=b,-,a,-&footsideStitch=-"
                       + "&tile=831,4-7,-5-&tileStitch=ctct"
