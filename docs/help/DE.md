@@ -12,7 +12,7 @@ Indem Sie die Schläge variieren und/oder die Zeichnungen verzerren,
 können Sie aus einem einzigen Grund unzählige unterschiedliche Gründe zaubern.
 Experimentieren und spielen Sie mit Hunderten von vorgefertigten Gründen oder geben Sie Ihre eigenen Muster ein. Auch wenn Sie alte Gründe neu erfinden, können Sie viel Spaß haben an eigenen Entdeckungen.
 
-Die [Tiles](https://d-bl.github.io/GroundForge/tiles) (Ziegel)-Seite 
+Die [Tiles](https://d-bl.github.io/GroundForge/tiles) (Kacheln)-Seite 
 generiert die Diagramme der Gründe. Die Seite führt Sie mit einer kurzen Liste durch die wichtigsten Schritte. 
 Links am rechten Rand erläutern weitere Details,
 leider nur auf Englisch, verwenden Sie bitte allgemeine Online-Übersetzungsseiten 
