@@ -10,7 +10,7 @@ Spelen met gekloste gronden
 ---------------------------
 
 
-Door slagen te variëren en tekeningen te vervormen kun je een wereld van variaties toveren uit een enkele grond. Experimenteer en speel met de honderden voorgebakken gronden of voeg je eigen patronen toe. Zelfs als je wielen opniew uitvindt kun je aan eigen ontdekkingen veel plezier beleven. 
+Door slagen te variëren en tekeningen te vervormen kun je een wereld van variaties toveren uit een enkele grond. Experimenteer en speel met de honderden voorgebakken gronden of voeg je eigen patronen toe. Zelfs als je wielen opnieuw uitvindt kun je aan eigen ontdekkingen veel plezier beleven. 
 
 De [tiles](../tiles.html) pagina maakt draaddiagrammen van paardiagrammen. Het neemt je bij de hand door de belangrijkste stappen kort op te sommen. 
 Help pagina’s in de rechtermarge leggen meer details uit. Alleen in het Engels, maak gebruik van online vertaal pagina’s en de [OIDFA vertaler] voor kantklostermen.
@@ -38,13 +38,21 @@ Maar eerst een korte uitleg wat de acties moeten bereiken.
 
 ### Een veelzijdig patroon &mdash; Slagen vervangen / weglaten
 
-De statische diagrammen hieronder tonen vier variaties van [duizenden](index#nrs) mogelijkheden van een veelzijdig patroon. Voor de grond zijn definities van interactieve diagrammen [met] en [zonder] zelfkanten. Zie ook de opmerkingen over [patch afmetingen] voor de laatste.
+Rechts een werktekening voor en klassieke Binche grond.
+Kleine veranderingen maken [duizenden](index#nrs) variaties mogelijk, hieronder slechts vier.
+Iedere variatie wordt getoond met een prototype- en een draden-diagram.
+Het prototype verwringt het patroon tot het op een vierkant raster past,
+de cijfers en letters vertellen hoe de punten van dit raster verbonden moeten worden.
+De software vertaalt deze nummers via werktekeningen 
+(als hiernaast) naar draaddiagrammen.
 
+We beschikken over twee interactieve definities voor het basispatroon:
+[met] en [zonder] zelfkanten. Zie ook de opmerkingen over [patch afmetingen] voor de laatste.
 Andere slagen kiezen gaat op dezelfde manier als slagen weglaten op de simpele manier.
-Om twee vliegen in een klap te slaan behalndelen we het laatste.
+Om twee vliegen in een klap te slaan behandelen we het laatste.
 
 Let op de grijze bolletjes in drie van de bovenste diagrammen van de vier variaties: eentje in het midden of een boven- en onderin.
-Deze grijze bolletjes vertegenwoordigen [slag]en die op een makkelijke manier zijn weggelaten: vervang `ctc` door `-` in de gele pop-ups. Deze methode kan onverwachte bijeffecten hebben, zoals meer slagen die verdwijnen of het het algoritme verwisselt de paren voor de slag te maken. Het laatste effect maakt niet uit voor het paardiagram maar veroorzaakt vreemde draaddiagrammen.
+Deze grijze bolletjes vertegenwoordigen [slag]en die op een makkelijke manier zijn weggelaten: vervang `ctc` door `-` in de gele pop-ups. Deze methode kan onverwachte bijeffecten hebben, zoals meer slagen die verdwijnen of het algoritme verwisselt de paren voor de slag te maken. Het laatste effect maakt niet uit voor het paardiagram maar veroorzaakt vreemde draaddiagrammen.
 
 ![](images/kompakt-31.png)
 
@@ -54,7 +62,7 @@ Deze grijze bolletjes vertegenwoordigen [slag]en die op een makkelijke manier zi
 [DKV pattern]: http://www.deutscher-kloeppelverband.de/index.php/component/jshopping/product/view/4/47?Itemid=242
 [patch afmetingen]: Tiles#patch-size
 
-### Slagen weglaten (in "gevorderd" gegedeelte)
+### Slagen weglaten (in "gevorderd" gedeelte)
 
 Een andere methode om slagen weg te laten maakt gebruik van het paginadeel voor gevorderden.
 Pas de blauwe wijzigingen toe voor de tweede en laatste variant.
@@ -73,21 +81,21 @@ Negeer eventueel de dik-gedrukt gedrukte stappen voor gevorderden.
 * 0:00 volg de link "_with_" (met)
 * 0:05 [slag] vervangen/weglaten: `ctc` -> `-`
 * 0:10 ![wand](../images/wand.png) genereer nieuwe diagrammen
-* 0:18 ververs de complete pagina : de oorspronkele  diagrammen worden opnieuw getoond
+* 0:18 ververs de complete pagina : de oorspronkelijke  diagrammen worden opnieuw getoond
 * **0:19** rol naar het deel voor gevorderde gebruikers
 * **0:22** haal de slag in het midden weg: `353,153` -> `-5-,5-5-` (uitleg hierboven)
 * **0:35** ![wand](../images/wand.png) : ander prototype, zelfde paar/draden diagram
 * 0:41 volg (i)
 * 0:44 volg "_stitches_"
-* 0:45 copieer de randslag
+* 0:45 kopieer de randslag
 * 0:49 terug naar de vorige browser tab
-* 0:52 plak de gecopieede slag en bewerk deze tot een omkeerslag
+* 0:52 plak de gekopieerde slag en bewerk deze tot een omkeerslag
 * 1:19 ![link](../images/link.png)
 * 1:23 ververs de complete pagina
-* 1:26 nu wordt het huidige patroon opniew geladen
+* 1:26 nu wordt het huidige patroon opnieuw geladen
 * 1:27 maak een link
 * 1:33 "_animate_" paar diagram
-* 1:36 vegroot de ruimte voor het draaddiagram (alternatief: ![](../images/size-inc.jpg) ![](../images/size-dec.jpg))
+* 1:36 vergroot de ruimte voor het draaddiagram (alternatief: ![](../images/size-inc.jpg) ![](../images/size-dec.jpg))
 * 1:38 rol naar beneden om het draaddiagram weer in beeld te krijgen
 * 1:42 verander de kleur van een draad als de pop-up en draadnummer toont
 * 1:45

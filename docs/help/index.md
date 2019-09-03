@@ -46,9 +46,16 @@ but first an explanation of the objective of some of the shown actions.
 
 ### A versatile pattern &mdash; Change/drop stitches
 
-The still diagrams show four variations out of [thousands](#nrs) of possibilities for a versatile pattern.
-We have interactive diagrams definitions [with] or [without] foot sides, see also the notes on [patch sizes] for the latter.
+On the right a color coded diagram for an old Binche ground.
+Small changes allow [thousands](#nrs) of variations of this pattern, below only four.
+Each variation is shown with a prototype diagram and a thread diagram.
+The prototype diagram squeezes the pattern onto a square grid,
+the numbers and letters define how to connect the dots of this grid.
+The software turns these numbers via pair diagrams 
+(as on the right) into the thread diagrams.
 
+We have two interactive definitions for the base pattern:
+[with] or [without] foot sides, see also the notes on [patch sizes] for the latter.
 Changing stitches requires the same procedure as dropping stitches the simple way.
 To hit two birds with one stone we show the last.
 
