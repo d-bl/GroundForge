@@ -42,14 +42,14 @@ Aber zuerst eine kurze Erklärung, worum es bei den Aktionen geht.
 
 ### Ein Muster mit viele Möglichkeiten - Schläge ersetzen / weglassen
 
-Rechts eine Arbeitszeichnung einer traditioneller Binche Grund.
-Kleine Änderungen erlauben Tausende Variationen. 
-Unten werden nur vier Variationen gezeigt, je mit einem Prototyp und ein Faden-Diagramm. 
-Für den Prototyp wird der Arbeitszeichnung verzerrt bis die Schläge zugreifen auf Karopapier. 
-Die Ziffern und Buchstaben bestimmen wie den Rasterpunkten verbunden werden müssen. 
-Der Software wandelt diese Ziffern über Arbeitszeichnungen um nach Faden-Diagramme.
+Rechts eine Arbeitszeichnung für einen traditionellen Binche-Grund. 
+Kleine Änderungen erlauben tausende Variationen. 
+Unten werden nur vier Variationen gezeigt, jeweils mit einem Prototyp und einem Faden-Diagramm. 
+Für den Prototyp wird die Arbeitszeichnung verzerrt bis die Schläge auf die Rasterpunkte zugreifen. 
+Die Ziffern und Buchstaben bestimmen, welche Rasterpunkte verbunden werden müssen. 
+Die Software wandelt diese Ziffern über Arbeitszeichnungen in Faden-Diagramme um.
 Zum Start gibt es zwei interaktive Diagramme:  "[with]" (mit) und "[without]" (ohne) Randschläge.
-Siehe auch die Kommentare zu [Patch-Dimensionen] für die Version mit Randschlägen.
+Siehe auch die Kommentare zu [Patch-Dimensionen] für die Version mit Randschläge.
 
 Schläge verändern erfordert dasselbe Vorgehen wie das Weglassen von Schlägen mit der einfachen Methode.
 Um zwei Fliegen mit einer Klappe zu schlagen, zeigen wir Letzteres.
