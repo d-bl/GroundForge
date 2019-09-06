@@ -74,8 +74,9 @@ A Java library is also available for batch processing or server side processing.
 This library provides the same classes as called form the `load` function in the JavaScript. 
 The `jar` file is available between the assets of the [latest release],
 it might be behind on the API web page.
-Sadly no known java equivalent for the D3js library called in the `showGraph` function. 
-Without it, the thread diagrams are of no use.
+Sadly no known java equivalent for the force graphs of the D3js library called in the `showGraph` function. 
+Without applying force graphs, the thread diagrams are of no use
+and after all generating thread diagrams from pair diagram is the core of GroundForge.
 
 [latest release]: https://github.com/d-bl/GroundForge/releases/latest
 [number]: https://github.com/d-bl/GroundForge/commits/master/docs/js/GroundForge-opt.js
