@@ -42,9 +42,13 @@ Aber zuerst eine kurze Erklärung, worum es bei den Aktionen geht.
 
 ### Ein Muster mit viele Möglichkeiten - Schläge ersetzen / weglassen
 
-Die folgenden statischen Diagramme zeigen vier Variationen
-von Tausenden von Möglichkeiten eines vielseitigen Musters.
-Für den Grund gibt es interaktive Diagramme "[with]" (mit) und "[without]" (ohne) Randschläge.
+Rechts eine Arbeitszeichnung einer traditioneller Binche Grund.
+Kleine Änderungen erlauben Tausende Variationen. 
+Unten werden nur vier Variationen gezeigt, je mit einem Prototyp und ein Faden-Diagramm. 
+Für den Prototyp wird der Arbeitszeichnung verzerrt bis die Schläge zugreifen auf Karopapier. 
+Die Ziffern und Buchstaben bestimmen wie den Rasterpunkten verbunden werden müssen. 
+Der Software wandelt diese Ziffern über Arbeitszeichnungen um nach Faden-Diagramme.
+Zum Start gibt es zwei interaktive Diagramme:  "[with]" (mit) und "[without]" (ohne) Randschläge.
 Siehe auch die Kommentare zu [Patch-Dimensionen] für die Version mit Randschlägen.
 
 Schläge verändern erfordert dasselbe Vorgehen wie das Weglassen von Schlägen mit der einfachen Methode.
