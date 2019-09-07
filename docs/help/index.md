@@ -30,7 +30,7 @@ The following section discusses a versatile traditional pattern.
 
 Add foot sides to a small strip of a (symmetrical or not?) pattern to get a braid.
 
-<a name="BK-31"/>
+<a name="BK-31"></a>
 
 Tutorial
 --------
@@ -42,10 +42,9 @@ Use the pause button and slider to repeat, try for yourself get side tracked and
 Another screencast (with script) walks through some important functions to make variation on these patterns,
 but first an explanation of the objective of some of the shown actions.
 
-<img src="/GroundForge/help/images/kompakt-31-challenge.png" style="float:right"/>
-
 ### A versatile pattern &mdash; Change/drop stitches
 
+<img src="/GroundForge/help/images/kompakt-31-challenge.png" style="float:right"/>
 On the right a color coded diagram for an old Binche ground.
 Small changes allow [thousands](#nrs) of variations of this pattern, below only four.
 Each variation is shown with a prototype diagram and a thread diagram.

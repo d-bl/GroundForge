@@ -28,7 +28,7 @@ Nebenbei bemerkt: auch Bänder entwerfen mit Randschlägen gehört zu den Mögli
 
 Tutorenkurs 
 -----------
-Ein [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4) (129 MB, 2:28 min)
+Den ersten [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4) (129 MB, 2:28 min)
 sucht ein Grundmuster in verschiedenen Sammlungen.
 Dieses Gründe werden auf verschiedene Arten präsentiert oder benutzten Variationen in den Schlägen.
 Verwenden Sie die Pause-Taste und den Schieberegler,
@@ -38,10 +38,9 @@ lassen Sie sich verführen und haben Sie Spaß damit.
 Ein weiterer Videoclip (mit Skript) zeigt einige der wichtigsten Funktionen zum Bearbeiten all dieser Muster. 
 Aber zuerst eine kurze Erklärung, worum es bei den Aktionen geht.
 
-<img src="/GroundForge/help/images/kompakt-31-challenge.png" style="float:right"/>
-
 ### Ein Muster mit viele Möglichkeiten - Schläge ersetzen / weglassen
 
+<img src="/GroundForge/help/images/kompakt-31-challenge.png" style="float:right"/>
 Rechts eine Arbeitszeichnung für einen traditionellen Binche-Grund. 
 Kleine Änderungen erlauben tausende Variationen. 
 Unten werden nur vier Variationen gezeigt, jeweils mit einem Prototyp und einem Faden-Diagramm. 

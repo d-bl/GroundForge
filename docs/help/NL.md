@@ -24,7 +24,7 @@ Hieronder volgt een uitleg met behulp van een veelzijdige grond. Terzijde: met z
 
 Snelcursus 
 ----------
-Een [schermfilmpje](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4) (129 MB, 2:28 min)
+Het eerste [schermfilmpje](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4) (129 MB, 2:28 min)
 zoekt hetzelfde basispatroon in verschillende verzamelingen. 
 De gronden worden op verschillende manieren gepresenteerd of gebruiken variaties in de slagen.
 Gebruik de pauzeknop en schuifregelaar om stappen te herhalen.
@@ -34,10 +34,9 @@ Een ander filmpje (met script) toont enkele van de belangrijkste functies
 om al deze patronen te bewerken.
 Maar eerst een korte uitleg wat de acties moeten bereiken.
 
-<img src="/GroundForge/help/images/kompakt-31-challenge.png" style="float:right"/>
-
 ### Een veelzijdig patroon &mdash; Slagen vervangen / weglaten
 
+<img src="/GroundForge/help/images/kompakt-31-challenge.png" style="float:right"/>
 Rechts een werktekening voor en klassieke Binche grond.
 Kleine veranderingen maken [duizenden](index#nrs) variaties mogelijk, hieronder slechts vier.
 Iedere variatie wordt getoond met een prototype- en een draden-diagram.
@@ -71,7 +70,7 @@ De rode wijzigingen zijn voor de derde variant.
 ![](images/drop-stitches.png)
 
 
-### Scherm verfilming
+### Tweede schermfilmpje
 
 De [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK-31.mp4) (37 MB, nog geen twee minuten) volgt onderstaand script.
 Gebruik de pauzeknop en schuifregelaar om stappen te herhalen.
