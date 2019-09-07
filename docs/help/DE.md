@@ -16,7 +16,7 @@ Die [Tiles](https://d-bl.github.io/GroundForge/tiles) (Kacheln)-Seite
 generiert die Diagramme der Gründe. Die Seite führt Sie mit einer kurzen Liste durch die wichtigsten Schritte. 
 Links am rechten Rand erläutern weitere Details,
 leider nur auf Englisch, verwenden Sie bitte allgemeine Online-Übersetzungsseiten 
-und den [OIDFA-Übersetzer] OIDFA-Übersetzer für Klöppelbegriffe.
+und den [OIDFA-Übersetzer] für Klöppelbegriffe.
 
 Nachfolgend finden Sie eine Erklärung für die Verwendung eines vielseitigen Grundes.
 Nebenbei bemerkt: auch Bänder entwerfen mit Randschlägen gehört zu den Möglichkeiten.
