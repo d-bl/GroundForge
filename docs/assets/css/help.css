@@ -1,3 +1,5 @@
+Header { background: #2e7bcf url(../images/header-bg.png) 0 0 repeat;
+
 #sidebar strong { font-size: 18px; font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; }
 #sidebar ul { padding-left: 0; margin-bottom: 0px; font-weight: bold; font-size: 12px; color: #474747; }
 #sidebar ul ul { padding-left: 15px; font-weight: normal; }
@@ -10,13 +12,6 @@ th { font-weight: bold; }
 table { margin-bottom: 1em; }
 
 #sidebar hr { height: 12px; border: 0; box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.2); }
-
-#main-content h1::before { content: ","; }
-#main-content h2::before { content: ",,"; }
-#main-content h3::before { content: ",,,"; }
-#main-content h4::before { content: ",,,,"; }
-#main-content h5::before { content: ",,,,,"; }
-#main-content h6::before { content: ",,,,,,"; }
 
 figure { display: inline-block; margin-left: 0; margin-top: 0; margin-right: 0.5em; }
 figure image, figcaption { display: block; }
