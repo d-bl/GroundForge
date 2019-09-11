@@ -33,7 +33,8 @@
 
 <body>
 <header>
-    <div class="inner">
+    <div class="outer">
+      <div class="inner">
         <a href="{{ '/' | absolute_url }}/tiles">
             <h1>{{ site.title | default: site.github.repository_name }}</h1>
         </a>
@@ -44,6 +45,7 @@
         {% if site.github.is_user_page %}
         <a href="{{ site.github.repository_url }}" class="button"><small>Follow me on</small> GitHub</a>
         {% endif %}
+      </div>
     </div>
 </header>
 

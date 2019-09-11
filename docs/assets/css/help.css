@@ -1,4 +1,5 @@
-Header { background: #2e7bcf url(../images/header-bg.png) top right repeat; }
+Header { background: #2e7bcf url(../images/header-bg-left.png) top right repeat; padding: 0; }
+.outer { background: url(../images/header-bg-right.png) top right repeat-y; padding-top: 40px; padding-bottom: 40px; }
 
 #sidebar strong { font-size: 18px; font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; }
 #sidebar ul { padding-left: 0; margin-bottom: 0px; font-weight: bold; font-size: 12px; color: #474747; }
