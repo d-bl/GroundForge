@@ -29,15 +29,16 @@ Twist marks by GroundForge
 --------------------------
 
 The _intention_ is a twist mark wherever there are multiple twists in a pair.
-Please notify us of any glitches.
+Please [notify] us of any glitches.
 
-The reason is the ability to apply and even mix open stitches (start with twist)
-with closed stitches (end with twists).
+The reason of this approach is the ability to apply and even mix 
+open stitches (start with twist) and closed stitches (end with twists).
 It can make the diagrams ambiguous.
 Hover over stitches to figure out the exact definition as shown below.
 
 ![](images/dialect.png)
 
+[notify]: https://groundforge.wordpress.com/
 
 Colors by GroundForge
 ---------------------
