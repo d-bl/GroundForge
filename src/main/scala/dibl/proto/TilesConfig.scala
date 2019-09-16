@@ -123,7 +123,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   private def copyStitch(targetRow: Int, targetCol: Int, sourceCol: Int, sourceRow: Int): Unit = {
     val item = targetMatrix(targetRow)(targetCol)
-    if (!item.isOpaque || item.vectorCode == '-')
+    if (!item.isOpaque || item.vectorCode == '-') // the condition keeps enough overlapping corners opaque
       targetMatrix(targetRow)(targetCol) = targetMatrix(sourceRow)(sourceCol).copy(isOpaque = false)
   }
 
