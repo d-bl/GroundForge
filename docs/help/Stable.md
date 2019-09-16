@@ -50,10 +50,10 @@ A convenience form can create a dynamic link to a base pattern.
 Thus visitors can make variations on a family of patterns by choosing stitches or other properties.
 Known examples:
 * [valenciennes] used on the [Whiting-Index]
-* [woble.html] based on [MAE-gf/droste]
+* [wobble.html] used on [MAE-gf/droste]
 
-[MAE-gf/droste]: https://maetempels.github.io/MAE-gf/docs/droste
-[woble.html]: https://github.com/MAETempels/MAE-gf/blob/master/_includes/wobble.html
+[MAE-gf/droste]: https://maetempels.github.io/MAE-gf/docs/droste#wobble
+[wobble.html]: https://github.com/MAETempels/MAE-gf/blob/master/_includes/wobble.html
 [valenciennes]: https://github.com/d-bl/GroundForge/blob/master/docs/_includes/val-variants.html
 [Whiting-Index]: https://d-bl.github.io/GroundForge/help/Whiting-Index#val
 [woble.html]: https://github.com/MAETempels/MAE-gf/blob/master/_includes/wobble.html
