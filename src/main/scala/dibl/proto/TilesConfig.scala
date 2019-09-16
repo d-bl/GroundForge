@@ -122,7 +122,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   }
 
   private def copyStitch(targetRow: Int, targetCol: Int, sourceCol: Int, sourceRow: Int): Unit = {
-    targetMatrix(targetRow)(targetCol) = targetMatrix(sourceRow)(sourceCol).copy(isOpaque = false)
+    val item = targetMatrix(targetRow)(targetCol)
+    if (!item.isOpaque || item.vectorCode == '-')
+      targetMatrix(targetRow)(targetCol) = targetMatrix(sourceRow)(sourceCol).copy(isOpaque = false)
   }
 
   private def repeatSide(offsetOfFirstTile: Int, rows: Int, cols: Int): Unit = {
