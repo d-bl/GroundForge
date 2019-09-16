@@ -35,13 +35,17 @@ Reuse on 3rd part pages
 =======================
 
 Third party webmasters can reuse smaller or larger portions of the GroundForge website.
-The most simple option is a screen shot snippet of a specific pattern 
+The following suggestions assume a proficient knowledge of html.
+Option 2 and 3 even require the possibility to deploy your own custom JavaScripts,
+and knowledge how to write them.
+
+### 1 Just a link
+The most simple option is a screen shot snippet, description or name of a specific pattern 
 (or your own diagram) and the corresponding link.
 Remember to use the ![link](../images/link.png) button before you 
 copy-paste the address of a specific pattern.
-Other options require the possibility to deploy your own custom JavaScripts.
-The following suggestions assume a proficient knowledge of html and javascript.
 
+### 2 Convenience forms
 A convenience form can create a dynamic link to a base pattern.
 Thus visitors can make variations on a family of patterns by choosing stitches or other properties.
 Known examples:
@@ -54,6 +58,7 @@ Known examples:
 [Whiting-Index]: https://d-bl.github.io/GroundForge/help/Whiting-Index#val
 [woble.html]: https://github.com/MAETempels/MAE-gf/blob/master/_includes/wobble.html
 
+### 3 Embedded diagrams
 You can even embed one or more of the dynamic diagrams on your pages.
 To get started download both files on [docs/API]: save the raw versions together in one directory. 
 Change one JavaScript reference in the html file to the following address
