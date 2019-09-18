@@ -9,16 +9,13 @@ Tesselace Index
 The diagrams are collected from [TesseLace.com],
 resulting from Ph.D research on _Algorithmically designed lace tessellations_
 by Veronika Irvine.
-* The `vari` links in the captions lead to patterns like the TesseLace [slide show].
-  In turn these patterns link to the main [GroundForge] page
-  where you can choose a pattern of colors to use in the thread diagram
-  and assign the stitches of your choice to id's popping up from a color coded pair diagram.
-* The `diagr` links lead directly to a page where you can choose stitches an toggle threads colors
-  in an easier way than on the home page.
+* The `vari` links in the captions lead to distorted variations
+  of the pattern that are still bound to a grid.
+  In turn these patterns link to the same page as the `diagr` links.
+* The `diagr` links lead to a page where you can choose stitches an toggle threads colors.
   On slow devices like tablets and phones it might take quite a while for the page to appear.
 
 [TesseLace.com]: https://tesselace.com
-[slide show]: https://tesselace.com/tools/inkscape-extension/
 [GroundForge]: /GroundForge/tiles.html
 
 Groups of images
@@ -51,7 +48,7 @@ You might need to change some angles and distances to recognize a ground. See th
 Virgin alias Rose and bias variations
 -------------------------------------
 
-See also the [Droste](Droste-effect) page, a twist more or less at the first step or alternating stitches in one or two directions and you have another variation. The ID's for the stitches also will have more logic, though they won't stick to the underlying grid position.
+See also the [Droste](Droste-effect) page, a twist more or less at the first step or alternating stitches in one or two directions and you have another variation.
 
 {% include tesselaceSample.html nr="130" pattern="5831,-4-7&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=5831,-4-7;bricks&patch=-437,34-7;bricks&patch=4830,--77;bricks" %}
 {% include tesselaceSample.html nr="129" pattern="1483,8-48&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2" patches="patch=1483,8-48;bricks&patch=4831,-488,3148,88-4;checker" %}
