@@ -105,12 +105,13 @@ Requirements
 ------------
 
 - The pages in the docs directory don't require any compilation
-- To compile `src/main/scala/` into `docs/js/`: [sbt] 1.2.7 or higher
-- To execute the tests and create a jar: maven
+- To execute the tests: maven or an IDE (like IntelliJ community edition)
+- To compile `src/main/scala/` into `docs/js/GroundForge-opt.js`:  
+  [JDK] 8 and [sbt] 1.2.7 or higher
+- To create a jar: [JDK] and maven
 
-The community edition of IntelliJ seems a better IDE for Scala development than Eclipse.
-
-[sbt]: http://www.scala-sbt.org/download.html
+[JDK]: https://adoptopenjdk.net/releases.html#x64_win
+[sbt]: https://www.scala-sbt.org/1.x/docs/Setup.html
 
 Work flow
 ---------
