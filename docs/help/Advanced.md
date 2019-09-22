@@ -1,135 +1,17 @@
 ---
 layout: default
-title: Tiles
+title: Advance forms
 ---
-The [tiles] page is a variant of the older home page.
-The [site map] provides the context for both and lists their differences.
 
 [tiles]: /GroundForge/tiles?tile=5831,-4-7&patchWidth=9&patchHeight=9&shiftColsSE=4&shiftRowsSE=2&shiftColsSW=0&shiftRowsSW=2&
-[site map]: /GroundForge/help/Site-map
 
-* [Catalogues](#catalogues)
-* [Link or wand / Reload diagrams](#reload-diagrams)
-* [Patch size](#patch-size)
-* [Choose stitches](#choose-stitches)
-* [Toggle thread colors](#toggle-thread-colors)
-* [Download](#download)
-* [Advanced usage](#advanced-usage)
-  + [Thread diagram as pair diagram](#thread-diagram-as-pair-diagram)
-  + [Define a repeat](#define-a-repeat)
-  + [Arrange the repeats](#arrange-the-repeats)
-  + [Foot sides](#foot-sides)
++ [Thread diagram as pair diagram](#thread-diagram-as-pair-diagram)
++ [Define a repeat](#define-a-repeat)
++ [Arrange the repeats](#arrange-the-repeats)
++ [Foot sides](#foot-sides)
 
-
-Catalogues
-==========
-The links from a catalogue page fill out the forms in the advanced section of the page.
-These forms define a base pattern.
-You can vary stitches for the base patterns and check how
-contrasting threads would travel through the ground.
-
-There are more catalogue pages than linked on the tiles page,
-but most links still refer to the older home page.
-_For as long as the page is still under construction,
-you may also choose a link from the image captions of the demo section
-on the tiles page itself._
-
-Reload diagrams
-===============
-Generating the pair diagram and thread diagrams can take a while
-and may block the browser while busy.
-Therefore only the prototype is updated when you change some value on the page.
-To avoid confusion about outdated diagrams the pair diagram and thread diagrams
-are hidden on these occasions. Use the link or wand button to [reload] the diagrams.
-
-[reload]: Undo
-
-Patch size
-==========
-
-### Large sizes
-Note that a large patch size makes a diagram slower to render.
-On slow devices like tablets and phones that might give
-the impression that links to pages with a large patch size
-don't work at all or block the device.
-So create links with patch sizes just large enough to recognize the pattern,
-visitors can easily increment the size.
-
-When you specify a too small patch, its size will be automatically increased to contain at least one tile.
-When a link specifies no patch size at all, it will get a size that can contain 2x2 tiles.
-
-### Right foot sides
-When a diagram has a foot side on the right,
-it will usually match only for every so many columns.
-Anyway you will have to reassign the stitches.
-
-If you want another number, go to the "define a repeat" section:
-rotating the rows in the right field might help but you might need more changes.
-For example for this [pattern](/GroundForge/tiles?patchWidth=13&patchHeight=20&g1=ctct&a1=ctcttl&s2=ctcttr&r2=ctcrr&q2=ctc&h2=ct&f2=ct&d2=ct&c2=ctc&b2=ctc&r3=ctc&q3=ctcl&i3=ctct&g3=ctc&e3=ctct&d3=ct&c3=ctc&b3=ctcll&h4=ctc&f4=ctc&c4=ctc&b4=ctc&a4=ctcttl&r5=ctcrr&q5=ctc&i5=ctc&h5=ctc&g5=ctc&f5=ctc&e5=ctc&d5=ct&s6=ctcttr&h6=ctc&g6=ctc&f6=ctc&r7=ctc&q7=ctcl&i7=ctcr&g7=ctc&e7=ctcl&d7=ct&c7=ctc&b7=ctcll&a7=ctcttl&r8=ctcrr&q8=ctc&h8=ctcr&f8=ctcl&d8=ct&c8=ctc&b8=ctc&s9=ctcttr&r9=ctc&q9=ctcl&i9=ctct&g9=ctct&e9=ctct&h10=ct&f10=ct&d10=ct&c10=ctc&b10=ctcll&footside=b--,xcd,-11,b88,xxx,---,aaa,x78,x--,-aa&tile=---5--,d-b-c-,15-5-5,--5-5-,c63532,--158-,ab-5-c,8-5-5-,-5-5-5,b-5-5-&headside=---,DDD,14X,--X,DD-,--C,ABX,88-,11C,XXX&footsideStitch=ctct&tileStitch=ctc&headsideStitch=ctct&shiftColsSW=0&shiftRowsSW=10&shiftColsSE=6&shiftRowsSE=5)
-you would have to change as shown below when switching
-between an odd and even number of spider columns. 
-Other widths will match with neither of the variations.
-
-![](images/right-footside.png)
-
-### Possible bug
-Some diagrams may not work with all values for the patch size.
-Try other values if the thread diagram stays frozen at its initial state. 
-
-Choose stitches
-===============
-The faint nodes in the prototype diagram repeat the bright ones.
-Click on a bright node and a yellow form field should emerge with a stitch definition.
-
-![](images/stitch-input.png)
-
-Type as many `c`'s and `t`'s for cross and twist as you need for the stitch of your choice,
-or use `l`'s and `r`'s for a left twist or right twist.
-
-Some stitches to copy paste:
-
-{% include stitches.html %}
-
-The example below applies the last stitch above with a few more twists.
-
-![](images/foot-side-stitches.png)
-
-[Live version](/GroundForge/tiles?patchWidth=3&patchHeight=8&g1=tctcttrrctct&f1=tctct&c1=ctc&b1=tctct&f2=tctct&c2=ctc&b2=tctct&a2=tctct&footside=-7,A1&tile=8,1&headside=8D,4-&footsideStitch=tctct&tileStitch=ctc&headsideStitch=tctct&shiftColsSW=-1&shiftRowsSW=2&shiftColsSE=0&shiftRowsSE=2)
-
-When erasing the content of a stitch field, the value from "define a repeat"
-in the advanced section will be filled in, if that is empty `ctc` will be filled in.
-To deliberately ignore a stitch from the prototype, you'll have to fill in a dash: `-`.
-The green arcs in the diagrams below show how stitches will be reconnected in the pair diagram.
-One case is straight forward. In the other case two stitches are merged
-because they were were connected with parallel pairs.
-Too many adjacent ignored stitches may cause weird thread diagrams
-with pairs swapped before a stitch is made.
-
-![](images/ignore-stitches.png)
-
-[Live version](/GroundForge/tiles?patchWidth=12&patchHeight=13&g1=ctct&e1=ctct&c1=ctct&a1=ctct&f2=ctct&b2=-&g3=ctct&e3=ctct&c3=ctct&a3=ctct&h4=ctct&f4=-&d4=ctct&b4=ctct&g5=ctct&e5=ctct&c5=ctct&a5=ctct&f6=ctct&b6=ctct&g7=ctct&e7=ctct&c7=ctct&a7=ctct&h8=ctct&f8=ctct&d8=ctct&b8=ctct&tile=5-5-5-5-,-5---5--,B-C-B-C-,-5-5-5-5,5-5-5-5-,-5---5--,B-C-B-C-,-5-5-5-5,&footsideStitch=tctct&tileStitch=ctct&headsideStitch=tctct&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=8&shiftRowsSE=8)
-
-Toggle thread colors
-====================
-You may have to scroll/drag the thread diagram to make
-the squares at the start of the threads visible.
-Click these squares to toggle between a black or red color.
-
-A tooltip shows a thread number when your mouse hovers over a square. 
-Too tiny squares or too close together? Use the zoom function of your browser.
-Usually control-shift-plus to zoom in, control-zero to reset,
-on a mac use command for control.
-
-Download
-========
-You can download the diagrams to edit them with an [SVG editor], manipulating vectors not pixels.
-
-[SVG editor]: https://en.wikipedia.org/wiki/Comparison_of_vector_graphics_editors#File_format_support
-
-Advanced usage
-==============
-
-The sections  below the diagrams are the engine under the hood of the car.
+The sections below the diagrams on the [tiles] page 
+control the engine under the hood of the car.
 The form fields define the prototype diagram. 
 Advanced users can play with the values to define new patterns from scratch.
 

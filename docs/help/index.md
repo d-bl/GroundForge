@@ -9,17 +9,12 @@ Help Intro
 Experiment with Bobbin Lace Grounds
 -----------------------------------
 
-This site is for bobbin lace makers and designer who tend to use or write books like
-"_The Book of Bobbin Lace Stitches_" by  Bridget Cook,
+This site complements publications like
+"_The Book of Bobbin Lace Stitches_" by Bridget Cook,
 "_Viele gute Gründe_" by Ulrike Voelcker Löhr and 
 "_Gründe mit System_" by Uta Ulrich.
-Nothing to install, free of charge, free to contribute,
-alter and redistribute provided some limitations by the GPL-v3 license
-and possible copyrights on specific modern patterns.
-It doesn't make these books redundant but can help to avoid 
-tedious fruitless experiments making real patches of lace.
-
-Vary stitches and reshape downloadable diagrams to get a myriad of variations on a single pattern.
+Toggle thread colours, vary stitches, reshape downloadable diagrams and avoid 
+tedious fruitless experiments making real patches of lace. 
 Experiment and play around with the hundredths of provided patterns or add your own.
 Even when reinventing wheels, your own discoveries can bring great joy. 
 

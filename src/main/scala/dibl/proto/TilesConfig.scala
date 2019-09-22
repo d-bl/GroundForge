@@ -93,7 +93,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   /**
     * Sets the opaque items in the targetMatrix.
-    * See docs/help/Tiles.md#arrange-the-repeats
+    * See docs/help/Replace.md#arrange-the-repeats
     *
     * @param inputMatrix       tiles.html#footside, #tile or #headside
     *                          valid characters visualized on help/images/matrix-template.png
