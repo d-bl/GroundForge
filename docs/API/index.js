@@ -40,7 +40,7 @@ function load() {
   showGraph(d3.select('#threads'), threadDiagram, "2px",520,800, 2, config)
 
   // for "ctct" alternatives see:
-  // https://d-bl.github.io/GroundForge/help/Tiles#choose-stitches
+  // https://d-bl.github.io/GroundForge/help/Replace
   var drostePairs = PairDiagram.create("ctct", threadDiagram)
   showGraph(d3.select('#drostePairs'), drostePairs, "1px",460,850, 2, config)
 
