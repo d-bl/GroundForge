@@ -110,7 +110,7 @@ Requirements
   [JDK] 8 and [sbt] 1.2.7 or higher
 - To create a jar: [JDK] and maven
 
-[JDK]: https://adoptopenjdk.net/releases.html#x64_win
+[JDK]: https://adoptopenjdk.net/releases.html
 [sbt]: https://www.scala-sbt.org/1.x/docs/Setup.html
 
 Work flow
