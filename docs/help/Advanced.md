@@ -1,7 +1,10 @@
 ---
 layout: default
-title: Advance forms
+title: Advanced forms
 ---
+
+Advanced forms
+==============
 
 [tiles]: /GroundForge/tiles?tile=5831,-4-7&patchWidth=9&patchHeight=9&shiftColsSE=4&shiftRowsSE=2&shiftColsSW=0&shiftRowsSW=2&
 
