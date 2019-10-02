@@ -22,7 +22,7 @@ poor or no support for tallies, pins and gimps in GroundForge and other limitati
 
 [Belgian]: https://www.mail-archive.com/lace@arachne.com/msg51345.html
 [Danish]: https://www.mail-archive.com/lace@arachne.com/msg51355.html
-[red-blue]: http://susanroberts.info/Working%20diagrams%20-%20part%202.pdf
+[red-blue]: https://susanroberts.info/wp-content/uploads/2019/08/Working-diagrams-part-2.pdf
 
 
 Twist marks by GroundForge
