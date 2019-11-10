@@ -9,21 +9,20 @@ Help Intro
 Experiment with Bobbin Lace Grounds
 -----------------------------------
 
-This site complements publications like
-"_The Book of Bobbin Lace Stitches_" by Bridget Cook,
-"_Viele gute Gründe_" by Ulrike Voelcker Löhr and 
-"_Gründe mit System_" by Uta Ulrich.
-Toggle thread colours, vary stitches, reshape downloadable diagrams and avoid 
-tedious fruitless experiments making real patches of lace. 
-Experiment and play around with the hundredths of provided patterns or add your own.
+GroundForge complements publications with bobbin lace [grounds].
+The tool makes varying stitches and following the paths of contrasting threads a breeze 
+compared to tedious but fruitless experimental patches of real lace. 
+Experiment and play around with the hundredths of provided patterns or add others.
 Even when reinventing wheels, your own discoveries can bring great joy. 
 
+[grounds]: https://maetempels.github.io/MAE-gf/docs/license#literature
+
 The [tiles](../tiles.html) page generates thread diagrams from pair diagrams. 
-The first lines of text guide you through most important first steps.
+A few lines of text guide you through most important first steps.
 Help pages in the side bar explain more in-depth subjects.
 The following section discusses a versatile traditional pattern.
 
-Add foot sides to a small strip of a (symmetrical or not?) pattern to get a braid.
+Add foot sides to a small strip of a pattern to get a braid.
 
 <a name="BK-31"></a>
 
