@@ -26,8 +26,8 @@ object FlandersThumbs extends DemoFixture {
     val stitches = Seq("ct", "cl", "cr", "ctc", "clc", "crc", "ctct", "clct", "crct", "ctcl", "clcl", "crcl", "ctcr", "clcr", "crcr")
     val symmetricStitches = Seq("ct", "ctc", "ctct")
     val patterns = for {
-      a1 <- symmetricStitches
-      b1 <- stitches
+      a1 <- stitches
+      b1 <- symmetricStitches
       c1 = flip(a1)
       a2 <- stitches
       c2 = flip(a2)
@@ -38,7 +38,7 @@ object FlandersThumbs extends DemoFixture {
         "shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2")
     val filtered = patterns // 50625/2025 with all/symmetric stitches for B1/B3
       .filter{case (_,q)=> q.contains("=ct&")} // 1241
-      .filter{case (_,q)=> q.contains("b1=ctc") || q.contains("b3=ctc") } // 746
+      .filter{case (_,q)=> q.contains("b1=ctc") || q.contains("b3=ctc") } // 1016
     println(filtered.size)
     filtered.foreach { case (fileName, q) =>
       Force.nudgeNodes(
