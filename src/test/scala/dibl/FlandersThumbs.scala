@@ -33,25 +33,28 @@ object FlandersThumbs extends DemoFixture {
       c2 = flip(a2)
       b3 <- symmetricStitches
     } yield (s"$testDir/$a1-$b1-$c1-$a2-$c2-$b3.svg",
-      s"a1=$a1&b1=$b1&c1=$c1&a2=$a2&c2=$c2&b3=$b3&" +
-        "tile=831,4-7,-5-&patchWidth=9&patchHeight=10&" +
-        "shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2")
+      s"a1=$a1&b1=$b1&c1=$c1&a2=$a2&c2=$c2&b3=$b3&")
     val filtered = patterns // 50625/2025 with all/symmetric stitches for B1/B3
       .filter{case (_,q)=> q.contains("=ct&")} // 1241
       .filter{case (_,q)=> q.contains("b1=ctc") || q.contains("b3=ctc") } // 1016
     println(filtered.size)
-    filtered.foreach { case (fileName, q) =>
-      Force.nudgeNodes(
-        ThreadDiagram(NewPairDiagram.create(TilesConfig(q))),
-        Point(100, 100)
-      ).map(diagram => File(fileName).writeAll(prolog + render(diagram, width = 400, height = 400)))
-    }
+    // nudging results stabilize after some 150-200 patterns, repeat these
+    (filtered.slice(0,200) ++ filtered)
+      .foreach { case (fileName, q) => create(fileName, q)}
     System.exit(0)
   }
 
+  private def create(fileName: String, q: String): Unit = {
+    Force.nudgeNodes(
+      ThreadDiagram(NewPairDiagram.create(TilesConfig(q +
+        "tile=831,4-7,-5-&patchWidth=9&patchHeight=10&" +
+        "shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"))),
+      Point(200, 200), timeout = 40
+    ).map(diagram => File(fileName).writeAll(prolog + render(diagram, width = 400, height = 400)))
+  }
+
   private def flip(a: String) = {
-    a.mkString("")
-      .replaceAll("l", "R")
+    a.replaceAll("l", "R")
       .replaceAll("r", "L")
       .toLowerCase()
   }
