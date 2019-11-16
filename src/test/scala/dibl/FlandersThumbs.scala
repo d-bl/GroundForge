@@ -47,10 +47,10 @@ object FlandersThumbs extends DemoFixture {
   private def create(fileName: String, q: String): Unit = {
     Force.nudgeNodes(
       ThreadDiagram(NewPairDiagram.create(TilesConfig(q +
-        "tile=831,4-7,-5-&patchWidth=9&patchHeight=10&" +
+        "tile=831,4-7,-5-&patchWidth=12&patchHeight=14&" +
         "shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"))),
-      Point(200, 200), timeout = 40
-    ).map(diagram => File(fileName).writeAll(prolog + render(diagram, width = 400, height = 400)))
+      Point(150, 150), timeout = 40
+    ).map(diagram => File(fileName).writeAll(prolog + render(diagram, width = 300, height = 300)))
   }
 
   private def flip(a: String) = {
