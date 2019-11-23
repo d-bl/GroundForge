@@ -1,6 +1,5 @@
 package vmi.graph.data;
 
-import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.ByteArrayInputStream;
