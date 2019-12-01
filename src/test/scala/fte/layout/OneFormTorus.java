@@ -1,20 +1,11 @@
 package fte.layout;
 
+import fte.data.*;
+import org.ejml.simple.SimpleMatrix;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-
-import fte.data.Face;
-import fte.data.Vector;
-import fte.data.Vertex;
-import org.ejml.simple.SimpleMatrix;
-import org.ejml.simple.SimpleSVD;
-
-import fte.data.Edge;
-import fte.data.Face;
-import fte.data.Graph;
-import fte.data.Vector;
-import fte.data.Vertex;
 
 public class OneFormTorus {
 
@@ -55,11 +46,7 @@ public class OneFormTorus {
 			index++;
 		}
 
-		SimpleMatrix sm = new SimpleMatrix(data);
-
-		SimpleSVD<SimpleMatrix> svd = sm.svd();
-
-		SimpleMatrix nullSpace = svd.nullSpace();
+		SimpleMatrix nullSpace = new SimpleMatrix(data).svd().nullSpace();
 
 		if (nullSpace.numCols() != 2) {
 			System.out.println("WRONG column number " + nullSpace.numCols());
@@ -72,8 +59,8 @@ public class OneFormTorus {
 		}
 
 		// traverse graph to fill in x and y values
-		boolean visited[] = new boolean[edges.size()];
-		ArrayList<Vector>vectors = new ArrayList<Vector>();
+		boolean[] visited = new boolean[edges.size()];
+		ArrayList<Vector>vectors = new ArrayList<>();
 		setLocationsDFS(vertices.get(0), 0.0, 0.0, visited, vectors);
 
 		// Find an osculating path
@@ -93,7 +80,7 @@ public class OneFormTorus {
 		return true;
 	}
 	
-	private void setLocationsDFS(Vertex v, double valueX, double valueY, boolean visited[], ArrayList<Vector> vectors) {
+	private void setLocationsDFS(Vertex v, double valueX, double valueY, boolean[] visited, ArrayList<Vector> vectors) {
 		List<Vertex> vertices = graph.getVertices();
 		int vIndex = vertices.indexOf(v);
 		if (visited[vIndex]) {
@@ -126,14 +113,13 @@ public class OneFormTorus {
         		next = e.getEnd();
         		nextValueX += e.getDeltaX();
         		nextValueY += e.getDeltaY();
-	        	setLocationsDFS(next, nextValueX, nextValueY, visited, vectors);
-        	} else {
+			} else {
         		next = e.getStart();
         		nextValueX -= e.getDeltaX();
         		nextValueY -= e.getDeltaY();
-	        	setLocationsDFS(next, nextValueX, nextValueY, visited, vectors);
-        	}
-        }
+			}
+			setLocationsDFS(next, nextValueX, nextValueY, visited, vectors);
+		}
     }
 	
 	private boolean findTranslationVectors(ArrayList<Vector> vectors, Vector OP) {

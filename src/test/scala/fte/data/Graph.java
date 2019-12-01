@@ -124,7 +124,7 @@ public class Graph implements Cloneable {
 		return faces;
 	}
 
-	public void createPairsIn(int destCol, int destRow, int src1col, int src1row, int src2col, int src2row) {
+	public void addPairsIn(int destCol, int destRow, int src1col, int src1row, int src2col, int src2row) {
 		Vertex dest = createVertex(mod(destCol, colCount), mod(destRow, rowCount));
 		Vertex src1 = createVertex(mod(src1col, colCount), mod(src1row, rowCount));
 		Vertex src2 = createVertex(mod(src2col, colCount), mod(src2row, rowCount));
