@@ -1,9 +1,9 @@
-package vmi.graph
+package fte
 
 import dibl.proto.TilesConfig
-import vmi.graph.data.Graph
-import vmi.graph.layout.OneFormTorus
-import vmi.graph.ui.SVGRender
+import fte.data.Graph
+import fte.layout.OneFormTorus
+import fte.ui.SVGRender
 
 object Demo {
   def main(args: Array[String]): Unit = {

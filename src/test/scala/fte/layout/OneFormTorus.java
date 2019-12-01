@@ -1,17 +1,20 @@
-package vmi.graph.layout;
+package fte.layout;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import fte.data.Face;
+import fte.data.Vector;
+import fte.data.Vertex;
 import org.ejml.simple.SimpleMatrix;
 import org.ejml.simple.SimpleSVD;
 
-import vmi.graph.data.Edge;
-import vmi.graph.data.Face;
-import vmi.graph.data.Graph;
-import vmi.graph.data.Vector;
-import vmi.graph.data.Vertex;
+import fte.data.Edge;
+import fte.data.Face;
+import fte.data.Graph;
+import fte.data.Vector;
+import fte.data.Vertex;
 
 public class OneFormTorus {
 

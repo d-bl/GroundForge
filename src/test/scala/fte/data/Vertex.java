@@ -1,4 +1,4 @@
-package vmi.graph.data;
+package fte.data;
 
 import java.util.ArrayList;
 import java.util.List;

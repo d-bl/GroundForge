@@ -1,4 +1,4 @@
-package vmi.graph.ui;
+package fte.ui;
 
 import java.awt.Color;
 import java.awt.geom.Ellipse2D;
@@ -8,12 +8,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import fte.data.Vector;
 import org.jfree.graphics2d.svg.SVGGraphics2D;
 
-import vmi.graph.data.Edge;
-import vmi.graph.data.Graph;
-import vmi.graph.data.Vector;
-import vmi.graph.data.Vertex;
+import fte.data.Edge;
+import fte.data.Graph;
+import fte.data.Vector;
+import fte.data.Vertex;
 
 public class SVGRender {
 
