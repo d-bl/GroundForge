@@ -1,14 +1,8 @@
 package vmi.graph.data;
 
-import org.jetbrains.annotations.Nullable;
-
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Graph implements Cloneable {
 
@@ -16,13 +10,17 @@ public class Graph implements Cloneable {
 	List<Edge> edges;
 	List<Face> faces;
 	List<Vector> vectors;
+	private int rowCount;
+	private int colCount;
 
 	/**
 	 * Initializes a graph embedding by creating empty lists of edges, vertices and a rotation system
 	 */
-	public Graph(){
-		vertices = new ArrayList<Vertex>();
-		edges = new ArrayList<Edge>();
+	public Graph(int rows, int cols){
+		vertices = new ArrayList<>();
+		edges = new ArrayList<>();
+		rowCount = rows;
+		colCount = cols;
 	}
 	
 	public List<Vertex> getVertices() {
@@ -42,7 +40,7 @@ public class Graph implements Cloneable {
 	}
 	
 	public void setTranslationVectors(Vector v1, Vector v2) {
-		vectors = new ArrayList<Vector>();
+		vectors = new ArrayList<>();
 		vectors.add(v1);
 		vectors.add(v2);
 	}
@@ -56,23 +54,22 @@ public class Graph implements Cloneable {
 		return v;
 	}
 	
-	private Edge createEdge(Vertex start, Vertex end, double dx, double dy) {
+	private void createEdge(Vertex start, Vertex end, double dx, double dy) {
 		Edge	e = new Edge(start, end, dx, dy);
 		edges.add(e);
 		start.addEdge(e);
 		end.addEdge(e);
-		return e;
 	}
 
 	private List<Face> createFaceData() {
 
 		if (faces != null) return faces;
 
-		faces = new ArrayList<Face>();
+		faces = new ArrayList<>();
 
 		// keep track of how many times an edge is visited
-		ArrayList<Edge> forward = new ArrayList<Edge>();
-		ArrayList<Edge> reverse = new ArrayList<Edge>();
+		ArrayList<Edge> forward = new ArrayList<>();
+		ArrayList<Edge> reverse = new ArrayList<>();
 
 		Edge faceStart = null;
 
@@ -87,7 +84,7 @@ public class Graph implements Cloneable {
 				}
 
 				Face face = new Face();
-				LinkedList<Edge> edges = new LinkedList<Edge>();
+				LinkedList<Edge> edges = new LinkedList<>();
 				while (e != null) {
 					edges.add(e);
 					if (e.start.equals(prev)) {
@@ -127,81 +124,12 @@ public class Graph implements Cloneable {
 		return faces;
 	}
 
-	public static Graph readFromFile(File file) {
-		Scanner input;
-		try {
-			input = new Scanner(file);
-		} catch (FileNotFoundException ex) {
-			System.out.println("Error reading file "+file.getAbsolutePath());
-			return null;
-		}
-		
-		try {
-			return getGraph(input);
-
-		} finally {
-			input.close();
-		}
-	}
-
-	public static Graph readFromString(String content) {
-		Scanner input = new Scanner(new ByteArrayInputStream(content.getBytes()));
-
-		try {
-			return getGraph(input);
-
-		} finally {
-			input.close();
-		}
-	}
-
-	@Nullable private static Graph getGraph(Scanner input) {
-		// First line of file gives row count and column count
-		int rowCount = 0;
-		int colCount = 0;
-		if (input.hasNextLine()) {
-			String line = input.nextLine();
-			String[] values = line.split("\\s+");
-			// Only look at the last two values, may be some style information at front
-			rowCount = Integer.parseInt(values[values.length-2]);
-			colCount = Integer.parseInt(values[values.length-1]);
-		}
-
-		if (rowCount < 1 || colCount < 1) return null;
-
-		Graph g = new Graph();
-
-		while (input.hasNextLine()) {
-			String line = input.nextLine()+"\n";
-			String[] blocks = line.split("\\s+");
-			for (int i = 0; i < blocks.length; i++) {
-				// remove [] brackets
-				String block = blocks[i].substring(1, blocks[i].length()-1);
-				String[] values = block.split(",");
-
-				// source
-				int col = Integer.parseInt(values[0]);
-				int row = Integer.parseInt(values[1]);
-				Vertex source = g.createVertex(mod(col, colCount), mod(row, rowCount));
-
-				// dest 1
-				int out1col = Integer.parseInt(values[2]);
-				int out1row = Integer.parseInt(values[3]);
-				Vertex dest1 = g.createVertex(mod(out1col, colCount), mod(out1row, rowCount));
-				g.createEdge(source, dest1, out1col-col, out1row-row);
-
-				// dest 2
-				int out2col = Integer.parseInt(values[4]);
-				int out2row = Integer.parseInt(values[5]);
-				Vertex dest2 = g.createVertex(mod(out2col, colCount), mod(out2row, rowCount));
-				g.createEdge(source, dest2, out2col-col, out2row-row);
-			}
-
-		}
-
-		g.createFaceData();
-
-		return g;
+	public void createPairsIn(int destCol, int destRow, int src1col, int src1row, int src2col, int src2row) {
+		Vertex dest = createVertex(mod(destCol, colCount), mod(destRow, rowCount));
+		Vertex src1 = createVertex(mod(src1col, colCount), mod(src1row, rowCount));
+		Vertex src2 = createVertex(mod(src2col, colCount), mod(src2row, rowCount));
+		createEdge(src1, dest, destCol-src1col, destRow - src1row);
+		createEdge(src2, dest, destCol-src2col, destRow - src2row);
 	}
 
 	/**

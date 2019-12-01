@@ -21,7 +21,7 @@ public class SVGRender {
 	
 	static final double R = 3.0;
 	
-	public void draw(Graph g) {
+	public void draw(Graph g, String fname) {
 
 		SVGGraphics2D g2 = new SVGGraphics2D(500, 500);
 		
@@ -31,8 +31,7 @@ public class SVGRender {
 		List<Vector> vectors = graph.getTranslationVectors();
 		Vector v0 = vectors.get(0);
 		Vector v1 = vectors.get(1);
-		
-		
+
 		for (double r = 0; r < 4; r++) {
 			for (double c = 0; c < 4; c++) {
 				double shiftX = r*v0.getX() + c*v1.getX();
@@ -40,18 +39,15 @@ public class SVGRender {
 				drawRepeat(g2, vertices, shiftX, shiftY);
 			}
 		}
-		
-		
-		
+
 		g2.setPaint(Color.GREEN);
 		g2.draw(new Line2D.Double(0,0, 100.0*v0.getX(), 100.0*v0.getY()));
 		g2.draw(new Line2D.Double(0,0, 100.0*v1.getX(), 100.0*v1.getY()));
 		
 		String svgElement = g2.getSVGElement();
-		String fname = "target/vmi.svg";
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fname));
-			writer.write(svgElement.toString());
+			writer.write(svgElement);
 			writer.close();
 		} catch (IOException e) {
 			System.out.println("file io error");
@@ -73,7 +69,6 @@ public class SVGRender {
 					g2.setPaint(Color.BLACK);
 					g2.draw(new Line2D.Double(100.0*vx, 100.0*vy, 100.0*(vx+e.getDeltaX()), 100.0*(vy+e.getDeltaY())));
 				}
-				
 			}
 		}
 	}
