@@ -18,6 +18,8 @@ package fte
 import fte.data.GraphCreator
 import fte.ui.SVGRender
 
+import scala.util.{Failure, Success, Try}
+
 object Demo {
   def main(args: Array[String]): Unit = {
     Seq( // see links to https://d-bl.github.io/GroundForge/tiles
@@ -27,11 +29,12 @@ object Demo {
       // TODO for the next pattern: use edges of pair diagram, not those of prototype
       "tile=-B-C-y,B---cx,xC-B-x,m-5-b-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=6&shiftRowsSE=4&patchWidth=6&patchHeight=4&",
     ).zipWithIndex
-      .map { case (query, i) => (i, GraphCreator.from(query)) }
+      .map { case (query, i) => (i, Try(GraphCreator.from(query))) }
       .foreach {
-        case (_, None) =>
-        case (i, Some(graph)) =>
+        case (i, Success(Some(graph))) =>
           new SVGRender().draw(graph, s"target/test/flat-torus-embedding-$i.svg")
+        case (i, Success(None)) => println(s"$i has no solution")
+        case (i, Failure(e)) => println(s"$i failed: ${e.getMessage}")
       }
   }
 }

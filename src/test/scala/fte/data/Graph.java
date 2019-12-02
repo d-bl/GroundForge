@@ -132,6 +132,12 @@ public class Graph implements Cloneable {
 		createEdge(src2, dest, destCol-src2col, destRow - src2row);
 	}
 
+	public void addEdge(int destCol, int destRow, int srcCol, int srcRow) {
+		Vertex dest = createVertex(mod(destCol, colCount), mod(destRow, rowCount));
+		Vertex src = createVertex(mod(srcCol, colCount), mod(srcRow, rowCount));
+		createEdge(src, dest, destCol-srcCol, destRow - srcRow);
+	}
+
 	/**
 	 * Handle modulo of negative numbers in a different way from Java
 	 */
