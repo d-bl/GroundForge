@@ -125,7 +125,8 @@ public class Graph implements Cloneable {
 	}
 
 	public void addPairsIn(int destCol, int destRow, int src1col, int src1row, int src2col, int src2row) {
-		System.out.println(String.format("destCol=%d destRow=%d src1col=%d src1row=%d src2col=%d src2row=%d",destCol, destRow, src1col, src1row, src2col, src2row));
+		System.out.println(String.format("destCol=%d destRow=%d src1col=%d src1row=%d",destCol, destRow, src1col, src1row));
+		System.out.println(String.format("destCol=%d destRow=%d src2col=%d src2row=%d",destCol, destRow, src2col, src2row));
 		Vertex dest = createVertex(mod(destCol, colCount), mod(destRow, rowCount));
 		Vertex src1 = createVertex(mod(src1col, colCount), mod(src1row, rowCount));
 		Vertex src2 = createVertex(mod(src2col, colCount), mod(src2row, rowCount));

@@ -58,11 +58,16 @@ object GraphCreator {
   def from2(urlQuery: String): Option[Graph] = {
     val config = TilesConfig(urlQuery)
     val graph = new Graph(config.patchHeight, config.patchWidth)
+    val cols = config.centerMatrixCols
+    val rows = config.centerMatrixRows
     val diagram = NewPairDiagram.create(config)
     diagram.links.foreach { link =>
       val src = diagram.node(link.source)
       val dest = diagram.node(link.target)
-      graph.addEdge(src.y.toInt/15, src.x.toInt/15, dest.y.toInt/15, dest.x.toInt/15)
+      graph.addEdge(
+        dest.x.toInt/15 -2 + cols, dest.y.toInt/15 +2 - rows,
+        src.x.toInt/15 -2 + cols, src.y.toInt/15 +2,
+      )
     }
     println("edges" + graph.getEdges)
     println("vertices" + graph.getVertices)
