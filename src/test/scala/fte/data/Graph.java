@@ -22,29 +22,29 @@ public class Graph implements Cloneable {
 		rowCount = rows;
 		colCount = cols;
 	}
-	
+
 	public List<Vertex> getVertices() {
 		return vertices;
 	}
-	
+
 	public List<Edge> getEdges() {
 		return edges;
 	}
-	
+
 	public List<Face> getFaces() {
 		return createFaceData();
 	}
-	
+
 	public List<Vector> getTranslationVectors() {
 		return vectors;
 	}
-	
+
 	public void setTranslationVectors(Vector v1, Vector v2) {
 		vectors = new ArrayList<>();
 		vectors.add(v1);
 		vectors.add(v2);
 	}
-	
+
 	private Vertex createVertex(float x, float y) {
 		Vertex v = new Vertex(x, y);
 		int index = vertices.indexOf(v);
@@ -53,7 +53,7 @@ public class Graph implements Cloneable {
 		vertices.add(v);
 		return v;
 	}
-	
+
 	private void createEdge(Vertex start, Vertex end, double dx, double dy) {
 		Edge	e = new Edge(start, end, dx, dy);
 		edges.add(e);
@@ -125,6 +125,7 @@ public class Graph implements Cloneable {
 	}
 
 	public void addPairsIn(int destCol, int destRow, int src1col, int src1row, int src2col, int src2row) {
+		System.out.println(String.format("destCol=%d destRow=%d src1col=%d src1row=%d src2col=%d src2row=%d",destCol, destRow, src1col, src1row, src2col, src2row));
 		Vertex dest = createVertex(mod(destCol, colCount), mod(destRow, rowCount));
 		Vertex src1 = createVertex(mod(src1col, colCount), mod(src1row, rowCount));
 		Vertex src2 = createVertex(mod(src2col, colCount), mod(src2row, rowCount));
@@ -133,6 +134,7 @@ public class Graph implements Cloneable {
 	}
 
 	public void addEdge(int destCol, int destRow, int srcCol, int srcRow) {
+		System.out.println(String.format("destCol=%d destRow=%d srcCol=%d srcRow=%d",destCol, destRow, srcCol, srcRow));
 		Vertex dest = createVertex(mod(destCol, colCount), mod(destRow, rowCount));
 		Vertex src = createVertex(mod(srcCol, colCount), mod(srcRow, rowCount));
 		createEdge(src, dest, destCol-srcCol, destRow - srcRow);

@@ -15,6 +15,7 @@
 */
 package fte.data
 
+import dibl.NewPairDiagram
 import dibl.proto.TilesConfig
 import fte.layout.OneFormTorus
 
@@ -43,7 +44,6 @@ object GraphCreator {
       )
     }
 
-    println("relative matrix\n"+matrix.map(_.map(_.mkString("[", ",", "]")).mkString(",")).mkString("\n"))
     for {
       row <- matrix.indices
       col <- matrix(row).indices
@@ -55,4 +55,19 @@ object GraphCreator {
     else None
   }
 
+  def from2(urlQuery: String): Option[Graph] = {
+    val config = TilesConfig(urlQuery)
+    val graph = new Graph(config.patchHeight, config.patchWidth)
+    val diagram = NewPairDiagram.create(config)
+    diagram.links.foreach { link =>
+      val src = diagram.node(link.source)
+      val dest = diagram.node(link.target)
+      graph.addEdge(src.y.toInt/15, src.x.toInt/15, dest.y.toInt/15, dest.x.toInt/15)
+    }
+    println("edges" + graph.getEdges)
+    println("vertices" + graph.getVertices)
+    if (new OneFormTorus(graph).layout())
+      Some(graph)
+    else None
+  }
 }
