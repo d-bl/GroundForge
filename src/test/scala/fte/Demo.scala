@@ -18,24 +18,23 @@ package fte
 import fte.data.GraphCreator
 import fte.ui.SVGRender
 
-import scala.util.{ Success, Try }
+import scala.util.{ Failure, Success, Try }
 
 object Demo {
   def main(args: Array[String]): Unit = {
-    val tests = Seq( // see links to https://d-bl.github.io/GroundForge/tiles
-      // patch sizes must match one checker tile
-      // for now foot sides must be provided together with an osculating pair (that connects multiple braids) in center tile
-      "tile=586-,-4-5,5-21,-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4&patchWidth=4&patchHeight=4&",
-      // TODO for the next pattern: use edges of pair diagram, not those of prototype
-      "tile=-B-C-y,B---cx,xC-B-x,m-5-b-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=6&shiftRowsSE=4&patchWidth=6&patchHeight=4&",
-    ).zipWithIndex
-    tests
-      .map { case (query, i) => (i, Try(GraphCreator.from(query)), Try(GraphCreator.from2(query))) }
-      .foreach {
-        case (i, Success(Some(graphA)), Success(Some(graphB))) =>
-          new SVGRender().draw(graphA, s"target/test/flat-torus-embedding-$i-A.svg")
-          new SVGRender().draw(graphB, s"target/test/flat-torus-embedding-$i-B.svg")
-        case _ => // exception or null for A or B
+    Seq(
+      "pinwheel&patchWidth=12&patchHeight=8&tile=586-,-4-5,5-21,-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4&",
+      "whiting=F14_P193&patchWidth=24&patchHeight=28&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14",
+      "braid&patchWidth=18&patchHeight=8&tile=-B-C-y,B---cx,xC-B-x,m-5-b-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=6&shiftRowsSE=4&a4=llcttct&e4=rrcttctrr",
+    ).zipWithIndex.foreach { case (query, i) =>
+      Try(GraphCreator.fromPairs(query)) match {
+        case Success(None) => println(s"$i has no solution")
+        case Failure(e) => e.printStackTrace()
+        case Success(Some(graph)) =>
+          //         println("edges" + graph.getEdges)
+          //         println("vertices" + graph.getVertices)
+          new SVGRender().draw(graph, s"target/test/from-pairs-$i.svg")
       }
+    }
   }
 }

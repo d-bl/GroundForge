@@ -15,62 +15,49 @@
 */
 package fte.data
 
-import dibl.NewPairDiagram
 import dibl.proto.TilesConfig
+import dibl.{ LinkProps, NewPairDiagram }
 import fte.layout.OneFormTorus
 
 object GraphCreator {
 
   /**
-   * @param urlQuery see links to https://d-bl.github.io/GroundForge/tiles
-   *                 patch size must match one checker matrix
-   * @return
-   */
-  def from(urlQuery: String): Option[Graph] = {
+    * @param urlQuery parameters for: https://d-bl.github.io/GroundForge/tiles?
+    *                 The patch size must span 3 columns and 2 rows of checker tiles.
+    *                 In ascii-art:
+    *                 +----+----+----+
+    *                 |....|....|....|
+    *                 |....|....|....|
+    *                 +----+----+----+
+    *                 |....|....|....|
+    *                 |....|....|....|
+    *                 +----+----+----+
+    * @return
+    */
+  def fromPairs(urlQuery: String): Option[Graph] = {
     val config = TilesConfig(urlQuery)
-    val matrix = config.getItemMatrix.map(_.map(_.relativeSources))
-    val cols = config.centerMatrixCols // also offset to get generated graph within the viewport
-    val graph = new Graph(config.centerMatrixRows, cols)
-
-    def addNode(destRow: Int, destCol: Int): Unit = {
-      val srcNodes = matrix(destRow)(destCol)
-      if (srcNodes.isEmpty) return
-      val (srcRow1, srcCol1) = srcNodes(0)
-      val (srcRow2, srcCol2) = srcNodes(1)
-      graph.addPairsIn(
-        cols + destCol, destRow,
-        cols + destCol + srcCol1, cols + destRow + srcRow1,
-        cols + destCol + srcCol2, cols + destRow + srcRow2,
-      )
-    }
-
-    for {
-      row <- matrix.indices
-      col <- matrix(row).indices
-    } yield addNode(row, col)
-    println("edges" + graph.getEdges)
-    println("vertices" + graph.getVertices)
-    if (new OneFormTorus(graph).layout())
-      Some(graph)
-    else None
-  }
-
-  def from2(urlQuery: String): Option[Graph] = {
-    val config = TilesConfig(urlQuery)
-    val graph = new Graph(config.patchHeight, config.patchWidth)
-    val cols = config.centerMatrixCols
-    val rows = config.centerMatrixRows
+    val cols = config.patchWidth / 3
+    val rows = config.patchHeight / 2
+    val graph = new Graph(rows, cols)
     val diagram = NewPairDiagram.create(config)
-    diagram.links.foreach { link =>
-      val src = diagram.node(link.source)
-      val dest = diagram.node(link.target)
-      graph.addEdge(
-        dest.x.toInt/15 -2 + cols, dest.y.toInt/15 +2 - rows,
-        src.x.toInt/15 -2 + cols, src.y.toInt/15 +2,
-      )
+
+    def inCenterBottomTile(link: LinkProps): Boolean = {
+      // The top and side margins of the pair diagram may have irregularities.
+      val target = diagram.nodes(link.target)
+      val y = target.y / 15 - 2
+      val x = target.x / 15 - 2
+      y >= rows && x >= cols && x < cols * 2
     }
-    println("edges" + graph.getEdges)
-    println("vertices" + graph.getVertices)
+
+    diagram.links.filter(inCenterBottomTile)
+      .foreach { link =>
+        val src = diagram.node(link.source)
+        val dest = diagram.node(link.target)
+        graph.addEdge(
+          dest.x.toInt / 15 - 2 , dest.y.toInt / 15 - 2,
+          src.x.toInt / 15 - 2, src.y.toInt / 15 + 2,
+        )
+      }
     if (new OneFormTorus(graph).layout())
       Some(graph)
     else None
