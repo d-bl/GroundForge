@@ -16,7 +16,7 @@
 package fte.data
 
 import dibl.proto.TilesConfig
-import dibl.{LinkProps, NewPairDiagram}
+import dibl.{ LinkProps, NewPairDiagram, ThreadDiagram }
 import fte.layout.OneFormTorus
 
 object GraphCreator {
@@ -44,8 +44,8 @@ object GraphCreator {
     def inCenterBottomTile(link: LinkProps): Boolean = {
       // The top and side margins of the pair diagram may have irregularities.
       val target = diagram.nodes(link.target)
-      val y = target.y / 15 - 2
-      val x = target.x / 15 - 2
+      val y = unScale(target.y)
+      val x = unScale(target.x)
       y >= rows && x >= cols && x < cols * 2
     }
 
@@ -54,12 +54,19 @@ object GraphCreator {
         val src = diagram.node(link.source)
         val dest = diagram.node(link.target)
         graph.addEdge(
-          dest.x.toInt / 15 - 2 - cols, dest.y.toInt / 15 - 2 - rows,
-          src.x.toInt / 15 - 2 - cols, src.y.toInt / 15 - 2 - rows,
+          unScale(dest.x) - cols, unScale(dest.y) - rows,
+          unScale(src.x) - cols, unScale(src.y) - rows,
         )
       }
     if (new OneFormTorus(graph).layout())
       Some(graph)
     else None
   }
+
+  /** Revert [[NewPairDiagram]].toPoint
+    * TODO see also [[ThreadDiagram]].scale
+    */
+  private def unScale(i: Double): Int = {
+    i / 15 - 2
+  }.toInt
 }
