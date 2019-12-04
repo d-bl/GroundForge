@@ -16,24 +16,24 @@
 package fte.data
 
 import dibl.proto.TilesConfig
-import dibl.{ LinkProps, NewPairDiagram }
+import dibl.{LinkProps, NewPairDiagram}
 import fte.layout.OneFormTorus
 
 object GraphCreator {
 
   /**
-    * @param urlQuery parameters for: https://d-bl.github.io/GroundForge/tiles?
-    *                 The patch size must span 3 columns and 2 rows of checker tiles.
-    *                 In ascii-art:
-    *                 +----+----+----+
-    *                 |....|....|....|
-    *                 |....|....|....|
-    *                 +----+----+----+
-    *                 |....|....|....|
-    *                 |....|....|....|
-    *                 +----+----+----+
-    * @return
-    */
+   * @param urlQuery parameters for: https://d-bl.github.io/GroundForge/tiles?
+   *                 The patch size must span 3 columns and 2 rows of checker tiles.
+   *                 A simplified ascii-art view of a pattern definition:
+   *                 +----+----+----+
+   *                 |....|....|....|
+   *                 |....|....|....|
+   *                 +----+----+----+
+   *                 |....|XXXX|....|
+   *                 |....|XXXX|....|
+   *                 +----+----+----+
+   * @return The X's in the pattern definition are added to the returned graph.
+   */
   def fromPairs(urlQuery: String): Option[Graph] = {
     val config = TilesConfig(urlQuery)
     val cols = config.patchWidth / 3
@@ -54,7 +54,7 @@ object GraphCreator {
         val src = diagram.node(link.source)
         val dest = diagram.node(link.target)
         graph.addEdge(
-          dest.x.toInt / 15 - 2 , dest.y.toInt / 15 - 2,
+          dest.x.toInt / 15 - 2, dest.y.toInt / 15 - 2,
           src.x.toInt / 15 - 2, src.y.toInt / 15 + 2,
         )
       }
