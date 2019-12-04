@@ -55,7 +55,7 @@ object GraphCreator {
         val dest = diagram.node(link.target)
         graph.addEdge(
           dest.x.toInt / 15 - 2, dest.y.toInt / 15 - 2,
-          src.x.toInt / 15 - 2, src.y.toInt / 15 + 2,
+          src.x.toInt / 15 - 2, src.y.toInt / 15 - 2,
         )
       }
     if (new OneFormTorus(graph).layout())
