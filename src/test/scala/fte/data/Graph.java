@@ -124,16 +124,6 @@ public class Graph implements Cloneable {
 		return faces;
 	}
 
-	public void addPairsIn(int destCol, int destRow, int src1col, int src1row, int src2col, int src2row) {
-		System.out.println(String.format("destCol=%d destRow=%d src1col=%d src1row=%d",destCol, destRow, src1col, src1row));
-		System.out.println(String.format("destCol=%d destRow=%d src2col=%d src2row=%d",destCol, destRow, src2col, src2row));
-		Vertex dest = createVertex(mod(destCol, colCount), mod(destRow, rowCount));
-		Vertex src1 = createVertex(mod(src1col, colCount), mod(src1row, rowCount));
-		Vertex src2 = createVertex(mod(src2col, colCount), mod(src2row, rowCount));
-		createEdge(src1, dest, destCol-src1col, destRow - src1row);
-		createEdge(src2, dest, destCol-src2col, destRow - src2row);
-	}
-
 	public void addEdge(int destCol, int destRow, int srcCol, int srcRow) {
 		System.out.println(String.format("destCol=%d destRow=%d srcCol=%d srcRow=%d",destCol, destRow, srcCol, srcRow));
 		Vertex dest = createVertex(mod(destCol, colCount), mod(destRow, rowCount));
