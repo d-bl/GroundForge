@@ -16,7 +16,7 @@
 package fte.data
 
 import dibl.proto.TilesConfig
-import dibl.{ LinkProps, NewPairDiagram, ThreadDiagram }
+import dibl.{LinkProps, NewPairDiagram, NodeProps, ThreadDiagram}
 import fte.layout.OneFormTorus
 
 object GraphCreator {
@@ -49,8 +49,11 @@ object GraphCreator {
       y >= rows && x >= cols && x < cols * 2
     }
 
-    diagram.links.filter(inCenterBottomTile)
-      .foreach { link =>
+    val links = diagram.links.filter(inCenterBottomTile)
+
+    def addToGraphOld(): Unit = {
+      // adds each vertex on the torus 4 times
+      links.foreach { link =>
         val src = diagram.node(link.source)
         val dest = diagram.node(link.target)
         graph.addEdge(
@@ -58,15 +61,34 @@ object GraphCreator {
           unScale(src.x) - cols, unScale(src.y) - rows,
         )
       }
+    }
+
+    def addToGraphNew(): Unit = {
+      // adds each vertex on the torus once
+      val vertexMap = links.map(_.target).sortBy(identity).distinct.map { i =>
+        val t = diagram.node(i)
+        (t.id, graph.createVertex(unScale(t.x) - cols, unScale(t.y) - rows))
+      }.toMap
+
+      links.foreach { link =>
+        val start = vertexMap(diagram.node(link.source).id)
+        val end = vertexMap(diagram.node(link.target).id)
+        graph.createEdge(start, end, end.getX - start.getX, end.getY - start.getY)
+      }
+    }
+
+    addToGraphOld()
+    println("edges " + graph.getEdges.toArray.sortBy(_.toString).mkString(", "))
+    println("vertices " + graph.getVertices.toArray.sortBy(_.toString).mkString(", "))
     if (new OneFormTorus(graph).layout())
       Some(graph)
     else None
   }
 
   /** Revert [[NewPairDiagram]].toPoint
-    * TODO see also [[ThreadDiagram]].scale
-    */
+   * TODO see also [[ThreadDiagram]].scale
+   */
   private def unScale(i: Double): Int = {
     i / 15 - 2
-  }.toInt
+    }.toInt
 }

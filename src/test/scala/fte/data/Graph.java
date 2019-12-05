@@ -45,7 +45,7 @@ public class Graph implements Cloneable {
 		vectors.add(v2);
 	}
 
-	private Vertex createVertex(float x, float y) {
+	public Vertex createVertex(float x, float y) {
 		Vertex v = new Vertex(x, y);
 		int index = vertices.indexOf(v);
 		if (index != -1)
@@ -54,7 +54,7 @@ public class Graph implements Cloneable {
 		return v;
 	}
 
-	private void createEdge(Vertex start, Vertex end, double dx, double dy) {
+	public void createEdge(Vertex start, Vertex end, double dx, double dy) {
 		Edge	e = new Edge(start, end, dx, dy);
 		edges.add(e);
 		start.addEdge(e);
@@ -125,7 +125,7 @@ public class Graph implements Cloneable {
 	}
 
 	public void addEdge(int destCol, int destRow, int srcCol, int srcRow) {
-		System.out.println(String.format("destCol=%d destRow=%d srcCol=%d srcRow=%d",destCol, destRow, srcCol, srcRow));
+		//System.out.println(String.format("destCol=%d destRow=%d srcCol=%d srcRow=%d",destCol, destRow, srcCol, srcRow));
 		Vertex dest = createVertex(mod(destCol, colCount), mod(destRow, rowCount));
 		Vertex src = createVertex(mod(srcCol, colCount), mod(srcRow, rowCount));
 		createEdge(src, dest, destCol-srcCol, destRow - srcRow);

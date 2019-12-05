@@ -31,8 +31,6 @@ object Demo {
         case Success(None) => println(s"$i has no solution")
         case Failure(e) => e.printStackTrace()
         case Success(Some(graph)) =>
-          //         println("edges" + graph.getEdges)
-          //         println("vertices" + graph.getVertices)
           new SVGRender().draw(graph, s"target/test/from-pairs-$i.svg")
       }
     }
