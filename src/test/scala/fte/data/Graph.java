@@ -47,9 +47,6 @@ public class Graph implements Cloneable {
 
 	public Vertex createVertex(float x, float y) {
 		Vertex v = new Vertex(x, y);
-		int index = vertices.indexOf(v);
-		if (index != -1)
-			return vertices.get(index);
 		vertices.add(v);
 		return v;
 	}

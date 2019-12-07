@@ -16,14 +16,15 @@
 package fte.data
 
 import dibl.proto.TilesConfig
-import dibl.{LinkProps, NewPairDiagram, ThreadDiagram}
+import dibl.{LinkProps, NewPairDiagram, NodeProps, ThreadDiagram}
 import fte.layout.OneFormTorus
 
-object  GraphCreator {
+object GraphCreator {
 
   /**
    * @param urlQuery parameters for: https://d-bl.github.io/GroundForge/tiles?
-   *                 The patch size must span 3 columns and 2 rows of checker tiles.
+   *                 For now the tile must be a checker tile and
+   *                 the patch size must span 3 columns and 2 rows of checker tiles.
    *                 A simplified ascii-art view of a pattern definition:
    *                 +----+----+----+
    *                 |....|....|....|
@@ -36,49 +37,67 @@ object  GraphCreator {
    */
   def fromPairs(urlQuery: String): Option[Graph] = {
     val config = TilesConfig(urlQuery)
+
+    //val diagram = ThreadDiagram(NewPairDiagram.create(config))
+    //implicit val scale: Int = 2
+    val diagram = NewPairDiagram.create(config)
+    implicit val scale: Int = 1
+
     val cols = config.patchWidth / 3
     val rows = config.patchHeight / 2
-    val graph = new Graph(rows, cols)
-    val diagram = NewPairDiagram.create(config)
 
     def inCenterBottomTile(link: LinkProps): Boolean = {
-      // The top and side margins of the pair diagram may have irregularities.
+      // The top and side tiles of a pair diagram may have irregularities in the margins.
       val target = diagram.nodes(link.target)
       val y = unScale(target.y)
       val x = unScale(target.x)
       y >= rows && x >= cols && x < cols * 2
+      // TODO discard invisible links to pins in thread diagrams
     }
 
     val links = diagram.links.filter(inCenterBottomTile)
+    val graph = new Graph(rows, cols)
 
-    def addToGraph(): Unit = {
-      // adds each vertex on the torus once
-      val vertexMap = links.map(_.target).sortBy(identity).distinct.map { i =>
-        val t = diagram.node(i)
-        (t.id, graph.createVertex(unScale(t.x) - cols, unScale(t.y) - rows))
-      }.toMap
-      println(vertexMap.toArray.sortBy(_._2.toString).mkString("\n"))
-      println("vertices " + graph.getVertices.toArray.sortBy(_.toString).mkString("; "))
-      links.foreach { link =>
-        val source = diagram.node(link.source)
-        val target = diagram.node(link.target)
-        val dx = source.x - target.x
-        val dy = source.y - target.y
-        graph.createEdge(vertexMap(source.id), vertexMap(target.id), dx, dy)
-      }
+    // adds each vertex on the torus once
+    val vertexMap = links.map(_.target).sortBy(identity).distinct.map { i =>
+      val t = diagram.node(i)
+      t.id -> graph.createVertex(unScale(t.x) - cols, unScale(t.y) - rows)
+    }.toMap
+
+    links.foreach { link =>
+      val source = diagram.node(link.source)
+      val target = diagram.node(link.target)
+      val (dx, dy) = deltas(link, source, target)
+      graph.createEdge(vertexMap(source.id), vertexMap(target.id), dx, dy)
     }
-
-    addToGraph()
+    println(vertexMap.toArray.sortBy(_._2.toString).mkString("\n"))
     println("edges " + graph.getEdges.toArray.sortBy(_.toString).mkString("; "))
+
     if (new OneFormTorus(graph).layout())
       Some(graph)
     else None
   }
 
+  private def deltas(link: LinkProps, source: NodeProps, target: NodeProps)(implicit scale: Int): (Int, Int) = {
+    (scale, source.instructions, link.start) match {
+      // initial pair diagram
+      case (1, _, _) => ((source.x - target.x).toInt, (source.y - target.y).toInt)
+      // the left thread leaving a cross has a white start
+      case (_, "cross", "white") => (-1, 1)
+      case (_, "cross", _) => (1, 1)
+      // the left thread leaving a twist has a white start
+      case (_, _, "white") => (1, 1)
+      case _ => (-1, 1)
+    }
+  }
+
   /** Revert [[NewPairDiagram]].toPoint
-   * TODO see also [[ThreadDiagram]].scale
+   *
+   * @param i     value for x or y
+   * @param scale value 1 or factor to also undo [[ThreadDiagram]].scale
+   * @return x/y on canvas reduced to row/col number in the input
    */
-  private def unScale(i: Double): Int = {
-    i / 15 - 2
+  private def unScale(i: Double)(implicit scale: Int): Int = {
+    i / scale / 15 - 2
     }.toInt
 }
