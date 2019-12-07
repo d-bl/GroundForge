@@ -57,21 +57,19 @@ object  GraphCreator {
         val t = diagram.node(i)
         (t.id, graph.createVertex(unScale(t.x) - cols, unScale(t.y) - rows))
       }.toMap
+      println(vertexMap.toArray.sortBy(_._2.toString).mkString("\n"))
+      println("vertices " + graph.getVertices.toArray.sortBy(_.toString).mkString("; "))
       links.foreach { link =>
         val source = diagram.node(link.source)
         val target = diagram.node(link.target)
-        graph.createEdge(
-          vertexMap(source.id),
-          vertexMap(target.id),
-          source.x - target.x,
-          source.y - target.y
-        )
+        val dx = source.x - target.x
+        val dy = source.y - target.y
+        graph.createEdge(vertexMap(source.id), vertexMap(target.id), dx, dy)
       }
     }
 
     addToGraph()
     println("edges " + graph.getEdges.toArray.sortBy(_.toString).mkString("; "))
-    println("vertices " + graph.getVertices.toArray.sortBy(_.toString).mkString("; "))
     if (new OneFormTorus(graph).layout())
       Some(graph)
     else None
