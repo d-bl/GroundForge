@@ -16,10 +16,10 @@
 package fte.data
 
 import dibl.proto.TilesConfig
-import dibl.{LinkProps, NewPairDiagram, NodeProps, ThreadDiagram}
+import dibl.{LinkProps, NewPairDiagram, ThreadDiagram}
 import fte.layout.OneFormTorus
 
-object GraphCreator {
+object  GraphCreator {
 
   /**
    * @param urlQuery parameters for: https://d-bl.github.io/GroundForge/tiles?
@@ -51,35 +51,27 @@ object GraphCreator {
 
     val links = diagram.links.filter(inCenterBottomTile)
 
-    def addToGraphOld(): Unit = {
-      // adds each vertex on the torus 4 times
-      links.foreach { link =>
-        val src = diagram.node(link.source)
-        val dest = diagram.node(link.target)
-        graph.addEdge(
-          unScale(dest.x) - cols, unScale(dest.y) - rows,
-          unScale(src.x) - cols, unScale(src.y) - rows,
-        )
-      }
-    }
-
-    def addToGraphNew(): Unit = {
+    def addToGraph(): Unit = {
       // adds each vertex on the torus once
       val vertexMap = links.map(_.target).sortBy(identity).distinct.map { i =>
         val t = diagram.node(i)
         (t.id, graph.createVertex(unScale(t.x) - cols, unScale(t.y) - rows))
       }.toMap
-
       links.foreach { link =>
-        val start = vertexMap(diagram.node(link.source).id)
-        val end = vertexMap(diagram.node(link.target).id)
-        graph.createEdge(start, end, end.getX - start.getX, end.getY - start.getY)
+        val source = diagram.node(link.source)
+        val target = diagram.node(link.target)
+        graph.createEdge(
+          vertexMap(source.id),
+          vertexMap(target.id),
+          source.x - target.x,
+          source.y - target.y
+        )
       }
     }
 
-    addToGraphOld()
-    println("edges " + graph.getEdges.toArray.sortBy(_.toString).mkString(", "))
-    println("vertices " + graph.getVertices.toArray.sortBy(_.toString).mkString(", "))
+    addToGraph()
+    println("edges " + graph.getEdges.toArray.sortBy(_.toString).mkString("; "))
+    println("vertices " + graph.getVertices.toArray.sortBy(_.toString).mkString("; "))
     if (new OneFormTorus(graph).layout())
       Some(graph)
     else None
