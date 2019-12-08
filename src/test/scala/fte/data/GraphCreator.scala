@@ -15,8 +15,9 @@
 */
 package fte.data
 
+import dibl.LinkProps.WhiteStart
 import dibl.proto.TilesConfig
-import dibl.{LinkProps, NewPairDiagram, NodeProps, ThreadDiagram}
+import dibl.{NewPairDiagram, NodeProps, ThreadDiagram}
 import fte.layout.OneFormTorus
 
 object GraphCreator {
@@ -35,7 +36,7 @@ object GraphCreator {
    *                 +----+----+----+
    * @return The X's in the pattern definition are added to the returned graph.
    */
-  def fromPairs(urlQuery: String): Option[Graph] = {
+  def fromDiagram(urlQuery: String): Option[Graph] = {
     val config = TilesConfig(urlQuery)
 
     //val diagram = ThreadDiagram(NewPairDiagram.create(config))
@@ -45,29 +46,30 @@ object GraphCreator {
 
     val cols = config.patchWidth / 3
     val rows = config.patchHeight / 2
-
-    def inCenterBottomTile(link: LinkProps): Boolean = {
-      // The top and side tiles of a pair diagram may have irregularities in the margins.
+    val links = diagram.links.filter { link =>
+      // The top and side tiles of a diagram may have irregularities along the outer edges.
+      // So select links arriving in the center bottom checker tile.
       val target = diagram.nodes(link.target)
       val y = unScale(target.y)
       val x = unScale(target.x)
-      y >= rows && x >= cols && x < cols * 2
-      // TODO discard invisible links to pins in thread diagrams
+      y >= rows && x >= cols && x < cols * 2 && !link.withPin
+      // TODO An example of potential problems in thread diagrams:
+      //  the 8 links in ascii-art graph ">==<" should be reduced to 4 links as "><".
+      //  This means recursively reconnect the sources of "<" links with the sources of "=" links.
     }
-
-    val links = diagram.links.filter(inCenterBottomTile)
     val graph = new Graph(rows, cols)
 
-    // adds each vertex on the torus once
-    val vertexMap = links.map(_.target).sortBy(identity).distinct.map { i =>
+    // create each vertex on the torus once
+    val vertexMap = links.map(_.target).distinct.map { i =>
       val t = diagram.node(i)
       t.id -> graph.createVertex(unScale(t.x) - cols, unScale(t.y) - rows)
     }.toMap
 
+    // create edges of one tile
     links.foreach { link =>
       val source = diagram.node(link.source)
       val target = diagram.node(link.target)
-      val (dx, dy) = deltas(link, source, target)
+      val (dx, dy) = deltas(link.isInstanceOf[WhiteStart], source, target)
       graph.createEdge(vertexMap(source.id), vertexMap(target.id), dx, dy)
     }
     println(vertexMap.toArray.sortBy(_._2.toString).mkString("\n"))
@@ -78,15 +80,16 @@ object GraphCreator {
     else None
   }
 
-  private def deltas(link: LinkProps, source: NodeProps, target: NodeProps)(implicit scale: Int): (Int, Int) = {
-    (scale, source.instructions, link.start) match {
+  private def deltas(whiteStart: Boolean, source: NodeProps, target: NodeProps)
+                    (implicit scale: Int): (Int, Int) = {
+    (scale, source.instructions, whiteStart) match {
       // initial pair diagram
       case (1, _, _) => ((source.x - target.x).toInt, (source.y - target.y).toInt)
       // the left thread leaving a cross has a white start
-      case (_, "cross", "white") => (-1, 1)
+      case (_, "cross", true) => (-1, 1)
       case (_, "cross", _) => (1, 1)
-      // the left thread leaving a twist has a white start
-      case (_, _, "white") => (1, 1)
+      // the right thread leaving a twist has a white start
+      case (_, _, true) => (1, 1)
       case _ => (-1, 1)
     }
   }
