@@ -10,17 +10,13 @@ public class Graph implements Cloneable {
 	List<Edge> edges;
 	List<Face> faces;
 	List<Vector> vectors;
-	private int rowCount;
-	private int colCount;
 
 	/**
 	 * Initializes a graph embedding by creating empty lists of edges, vertices and a rotation system
 	 */
-	public Graph(int rows, int cols){
+	public Graph(){
 		vertices = new ArrayList<>();
 		edges = new ArrayList<>();
-		rowCount = rows;
-		colCount = cols;
 	}
 
 	public List<Vertex> getVertices() {
@@ -45,8 +41,8 @@ public class Graph implements Cloneable {
 		vectors.add(v2);
 	}
 
-	public Vertex createVertex(float x, float y) {
-		Vertex v = new Vertex(x, y);
+	public Vertex createVertex(float x) {
+		Vertex v = new Vertex(x, 0);
 		vertices.add(v);
 		return v;
 	}
@@ -119,21 +115,5 @@ public class Graph implements Cloneable {
 		} while (faceStart != null);
 
 		return faces;
-	}
-
-	public void addEdge(int destCol, int destRow, int srcCol, int srcRow) {
-		//System.out.println(String.format("destCol=%d destRow=%d srcCol=%d srcRow=%d",destCol, destRow, srcCol, srcRow));
-		Vertex dest = createVertex(mod(destCol, colCount), mod(destRow, rowCount));
-		Vertex src = createVertex(mod(srcCol, colCount), mod(srcRow, rowCount));
-		createEdge(src, dest, destCol-srcCol, destRow - srcRow);
-	}
-
-	/**
-	 * Handle modulo of negative numbers in a different way from Java
-	 */
-	static int mod(int a, int b) {
-		int result = a % b;
-		if (result < 0) result += b;
-		return result;
 	}
 }

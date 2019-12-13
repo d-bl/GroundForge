@@ -18,7 +18,7 @@ public class Vertex implements Cloneable {
 		this.x = x;
 	    this.y = y;
 	    this.id = String.format("%.2f-%.2f", this.x, this.y);
-	    rotation= new ArrayList<Edge>();
+	    rotation= new ArrayList<>();
 	}
 	
 	public double getX() {
@@ -34,7 +34,7 @@ public class Vertex implements Cloneable {
 	public double getY() {
 		return y;
 	}
-	
+
 	public void setY(double y) {
 		this.y = y;
 		// TODO should the id be updated?
@@ -47,8 +47,7 @@ public class Vertex implements Cloneable {
 	
 	@Override
 	public String toString() {
-		String s = id+":("+x+","+y+")";
-		return s;
+		return id+":("+x+","+y+")";
 	}
 	
 	void addEdge(Edge e) {

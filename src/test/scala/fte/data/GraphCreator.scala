@@ -39,8 +39,8 @@ object GraphCreator {
   def fromDiagram(urlQuery: String): Option[Graph] = {
     val config = TilesConfig(urlQuery)
 
-    //val diagram = ThreadDiagram(NewPairDiagram.create(config))
-    //implicit val scale: Int = 2
+//    implicit val diagram: Diagram = ThreadDiagram(NewPairDiagram.create(config))
+//    implicit val scale: Int = 2
     implicit val diagram: Diagram = NewPairDiagram.create(config)
     implicit val scale: Int = 1
 
@@ -54,12 +54,13 @@ object GraphCreator {
       val x = unScale(target.x)
       y >= rows && x >= cols && x < cols * 2 && !link.withPin
     })
-    val graph = new Graph(rows, cols)
+    val targets = links.map(_.target).distinct.zipWithIndex
+    val graph = new Graph()
 
-    // create each vertex on the torus once
-    val vertexMap = links.map(_.target).distinct.map { i =>
-      val t = diagram.node(i)
-      t.id -> graph.createVertex(unScale(t.x) - cols, unScale(t.y) - rows)
+    // create each vertex on the torus once, all in a single column
+    val vertexMap = targets.map { case (nodeNr, i) =>
+      val t = diagram.node(nodeNr)
+      t.id -> graph.createVertex(i)
     }.toMap
 
     // create edges of one tile
