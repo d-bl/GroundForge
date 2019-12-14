@@ -63,7 +63,7 @@ object GraphCreator {
       val source = diagram.node(link.source)
       val target = diagram.node(link.target)
       val (dx, dy) = deltas(link.isInstanceOf[WhiteStart], source, target)
-      println(s"(${source.id},${target.id}) deltas($dx,$dy)")
+      println(s"(${source.id},${target.id}) deltas($dx,$dy) ${link.cssClass}")
       graph.createEdge(vertexMap(source.id), vertexMap(target.id), dx, dy)
     }
     println("edges " + graph.getEdges.toArray.sortBy(_.toString).mkString("; "))
@@ -80,14 +80,14 @@ object GraphCreator {
      *  |               |           \        /
      *  y/rows          o--- x     / \     /  \
      */
-    (scale, source.instructions, whiteStart) match {
+    (scale, source.instructions, target.instructions, whiteStart) match {
       // initial pair diagram
-      case (1, _, _) => ((source.x - target.x).toInt, (source.y - target.y).toInt)
+      case (1, _, _, _) => ((source.x - target.x).toInt, (source.y - target.y).toInt)
       // the left thread leaving a cross has a white start
-      case (_, "cross", true) => (-1, -1)
-      case (_, "cross", _) => (1, -1)
+      case (_, "cross", _, true) => (-1, -1)
+      case (_, "cross", _, _) => (1, -1)
       // the right thread leaving a twist has a white start
-      case (_, _, true) => (1, -1)
+      case (_, _, _, true) => (1, -1)
       case _ => (-1, -1)
     }
   }
