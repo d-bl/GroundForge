@@ -32,7 +32,7 @@ object Demo {
       "sheered&tileStitch=ct&patchWidth=6&patchHeight=4&tile=l-,-h&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
       // the patterns above even fail as pair diagrams, increasing the patch size doesn't help
       "torchon&tileStitch=ctc&patchWidth=6&patchHeight=4&tile=5-,-5&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
-      "rose&tileStitch=ctc&patchWidth=12&patchHeight=4&tile=5831,-4-7&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
+      "rose&tileStitch=ct&patchWidth=12&patchHeight=4&tile=5831,-4-7&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
       "pinwheel&tileStitch=ct&patchWidth=12&patchHeight=8&tile=586-,-4-5,5-21,-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4&",
       "whiting=F14_P193&tileStitch=ct&patchWidth=24&patchHeight=28&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14",
       // for now prefixed id's with X in the next pattern to just apply the tileStitch everywhere
