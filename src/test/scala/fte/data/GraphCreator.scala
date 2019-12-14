@@ -63,7 +63,7 @@ object GraphCreator {
       val source = diagram.node(link.source)
       val target = diagram.node(link.target)
       val (dx, dy) = deltas(link.isInstanceOf[WhiteStart], source, target)
-      println(s"(${source.id},${target.id}) deltas($dx,$dy) ${link.cssClass}")
+      println(s"(${source.id},${target.id}) deltas($dx,$dy)")
       graph.createEdge(vertexMap(source.id), vertexMap(target.id), dx, dy)
     }
     println("edges " + graph.getEdges.toArray.sortBy(_.toString).mkString("; "))
@@ -80,14 +80,20 @@ object GraphCreator {
      *  |               |           \        /
      *  y/rows          o--- x     / \     /  \
      */
-    (scale, source.instructions, target.instructions, whiteStart) match {
+    (scale, source.isLeftTwist, source.isRightTwist, target.isLeftTwist, target.isRightTwist, whiteStart) match {
       // initial pair diagram
-      case (1, _, _, _) => ((source.x - target.x).toInt, (source.y - target.y).toInt)
+      case (1, _, _, _, _, _) => ((source.x - target.x).toInt, (source.y - target.y).toInt)
       // the left thread leaving a cross has a white start
-      case (_, "cross", _, true) => (-1, -1)
-      case (_, "cross", _, _) => (1, -1)
-      // the right thread leaving a twist has a white start
-      case (_, _, _, true) => (1, -1)
+      case (_, false, false, _, _, true) => (-1, -1)
+      case (_, false, false, _, _, _) => (1, -1)
+      // same for threads arriving at a cross
+      case (_,  _, _, false, false, true) => (-1, -1)
+      case (_,  _, _, false, false, _) => (1, -1)
+      // threads arriving at twists not treated above
+      case (_, _, _, _, true, true) => (0, -1)
+      case (_, _, _, _, true, false) => (1, -1)
+      case (_, _, _, true, _ , false) => (0, -1)
+      case (_, _, _, true, _ , true) => (1, -1)
       case _ => (-1, -1)
     }
   }
