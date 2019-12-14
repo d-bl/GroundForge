@@ -15,62 +15,57 @@
 */
 package fte.data
 
-import dibl.LinkProps.{ WhiteStart, threadLink }
+import dibl.LinkProps.{WhiteStart, threadLink}
 import dibl.proto.TilesConfig
-import dibl.{ Diagram, LinkProps, NewPairDiagram, NodeProps, ThreadDiagram }
+import dibl.{Diagram, LinkProps, NewPairDiagram, NodeProps, ThreadDiagram}
 import fte.layout.OneFormTorus
 
 object GraphCreator {
 
   /**
-    * @param urlQuery parameters for: https://d-bl.github.io/GroundForge/tiles?
-    *                 For now the tile must be a checker tile and
-    *                 the patch size must span 3 columns and 2 rows of checker tiles.
-    *                 A simplified ascii-art view of a pattern definition:
-    *                 +----+----+----+
-    *                 |....|....|....|
-    *                 |....|....|....|
-    *                 +----+----+----+
-    *                 |....|XXXX|....|
-    *                 |....|XXXX|....|
-    *                 +----+----+----+
-    * @return The X's in the pattern definition are added to the returned graph.
-    */
+   * @param urlQuery parameters for: https://d-bl.github.io/GroundForge/tiles?
+   *                 For now the tile must be a checker tile and
+   *                 the patch size must span 3 columns and 2 rows of checker tiles.
+   *                 A simplified ascii-art view of a pattern definition:
+   *                 +----+----+----+
+   *                 |....|....|....|
+   *                 |....|....|....|
+   *                 +----+----+----+
+   *                 |....|XXXX|....|
+   *                 |....|XXXX|....|
+   *                 +----+----+----+
+   * @return The X's in the pattern definition are added to the returned graph.
+   */
   def fromDiagram(urlQuery: String): Option[Graph] = {
-    val config = TilesConfig(urlQuery)
+    implicit val config: TilesConfig = TilesConfig(urlQuery)
 
-//    implicit val diagram: Diagram = ThreadDiagram(NewPairDiagram.create(config))
-//    implicit val scale: Int = 2
-    implicit val diagram: Diagram = NewPairDiagram.create(config)
-    implicit val scale: Int = 1
+    implicit val diagram: Diagram = ThreadDiagram(NewPairDiagram.create(config))
+    implicit val scale: Int = 2
+    //    implicit val diagram: Diagram = NewPairDiagram.create(config)
+    //    implicit val scale: Int = 1
 
-    val cols = config.patchWidth / 3
-    val rows = config.patchHeight / 2
-    val links = dropDuplicates(diagram.links.filter { link =>
-      // The top and side tiles of a diagram may have irregularities along the outer edges.
-      // So select links arriving in the center bottom checker tile.
-      val target = diagram.node(link.target)
-      val y = unScale(target.y)
-      val x = unScale(target.x)
-      y >= rows && x >= cols && x < cols * 2 && !link.withPin
-    })
-    val targets = links.map(_.target).distinct.zipWithIndex
+    val links = dropDuplicates(diagram.links.filter(inCenterBottomTile))
+    printLink(links)
     val graph = new Graph()
 
-    // create each vertex on the torus once, all in a single column
-    val vertexMap = targets.map { case (nodeNr, i) =>
-      val t = diagram.node(nodeNr)
-      t.id -> graph.createVertex(i)
-    }.toMap
+    // create each vertex on the torus once
+    val vertexMap = links.map(_.target).distinct.zipWithIndex
+      .map { case (nodeNr, i) =>
+        // The initial coordinates don't matter as long as they are unique.
+        val t = diagram.node(nodeNr)
+        t.id -> graph.createVertex(i, 0)
+      }.toMap
+    println(vertexMap.keys.toArray.sortBy(identity).mkString(","))
+    println(vertexMap.toArray.sortBy(_._2.toString).map(_._1).mkString(","))
 
     // create edges of one tile
     links.foreach { link =>
       val source = diagram.node(link.source)
       val target = diagram.node(link.target)
       val (dx, dy) = deltas(link.isInstanceOf[WhiteStart], source, target)
+      println(s"(${source.id},${target.id}) deltas($dx,$dy)")
       graph.createEdge(vertexMap(source.id), vertexMap(target.id), dx, dy)
     }
-    println(vertexMap.toArray.sortBy(_._2.toString).mkString("\n"))
     println("edges " + graph.getEdges.toArray.sortBy(_.toString).mkString("; "))
 
     if (new OneFormTorus(graph).layout())
@@ -80,22 +75,43 @@ object GraphCreator {
 
   private def deltas(whiteStart: Boolean, source: NodeProps, target: NodeProps)
                     (implicit scale: Int): (Int, Int) = {
+    /* NodeProps        deltas     cross   twist
+     *  o--- x/cols     y          \  /    \   /
+     *  |               |           \        /
+     *  y/rows          o--- x     / \     /  \
+     */
     (scale, source.instructions, whiteStart) match {
       // initial pair diagram
       case (1, _, _) => ((source.x - target.x).toInt, (source.y - target.y).toInt)
       // the left thread leaving a cross has a white start
-      case (_, "cross", true) => (-1, 1)
-      case (_, "cross", _) => (1, 1)
+      case (_, "cross", true) => (-1, -1)
+      case (_, "cross", _) => (1, -1)
       // the right thread leaving a twist has a white start
-      case (_, _, true) => (1, 1)
-      case _ => (-1, 1)
+      case (_, _, true) => (1, -1)
+      case _ => (-1, -1)
     }
   }
 
-  private def dropDuplicates(links: Seq[LinkProps])(implicit diagram: Diagram): Seq[LinkProps] = {
+  private def inCenterBottomTile(link: LinkProps)
+                                (implicit diagram: Diagram, scale: Int, config: TilesConfig) = {
+    // The top and side tiles of a diagram may have irregularities along the outer edges.
+    // So select links arriving in the center bottom checker tile.
+    val cols = config.patchWidth / 3
+    val rows = config.patchHeight / 2
+
+    val target = diagram.node(link.target)
+    val source = diagram.node(link.source)
+    val y = unScale(target.y)
+    val x = unScale(target.x)
+    y >= rows && x >= cols && x < cols * 2 && !link.withPin && target.id != "" && source.id != ""
+  }
+
+  private def dropDuplicates(links: Seq[LinkProps])
+                            (implicit diagram: Diagram): Seq[LinkProps] = {
     // An example of potential problems in thread diagrams:
     // the 8 links in ascii-art graph ">==<" should be reduced to 4 links as "><".
     // This means recursively reconnect the sources of "<" links with the sources of "=" links.
+    printLink(links)
     val duplicates: Set[(Int, Int)] = links
       .map(l => l.target -> l.source)
       .groupBy(identity)
@@ -106,7 +122,13 @@ object GraphCreator {
       .map(reconnect(_)(duplicates.toMap))
   }
 
-  private def reconnect(link: LinkProps)(implicit duplicateSourcesByTarget: Map[Int, Int]): LinkProps = {
+  private def printLink(links: Seq[LinkProps])
+                       (implicit diagram: Diagram): Unit = {
+    println(links.map(l => s"(${diagram.node(l.source).id},${diagram.node(l.target).id})").mkString)
+  }
+
+  private def reconnect(link: LinkProps)
+                       (implicit duplicateSourcesByTarget: Map[Int, Int]): LinkProps = {
     duplicateSourcesByTarget.keySet.find(_ == link.source).map(target =>
       reconnect(threadLink(
         source = duplicateSourcesByTarget(target),
@@ -118,11 +140,11 @@ object GraphCreator {
   }
 
   /** Revert [[NewPairDiagram]].toPoint
-    *
-    * @param i     value for x or y
-    * @param scale value 1 or factor to also undo [[ThreadDiagram]].scale
-    * @return x/y on canvas reduced to row/col number in the input
-    */
+   *
+   * @param i     value for x or y
+   * @param scale value 1 or factor to also undo [[ThreadDiagram]].scale
+   * @return x/y on canvas reduced to row/col number in the input
+   */
   private def unScale(i: Double)(implicit scale: Int): Int = {
     i / scale / 15 - 2
     }.toInt

@@ -41,8 +41,8 @@ public class Graph implements Cloneable {
 		vectors.add(v2);
 	}
 
-	public Vertex createVertex(float x) {
-		Vertex v = new Vertex(x, 0);
+	public Vertex createVertex(float x, float y) {
+		Vertex v = new Vertex(x, y);
 		vertices.add(v);
 		return v;
 	}

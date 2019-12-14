@@ -17,8 +17,10 @@ package fte
 
 import fte.data.GraphCreator
 import fte.ui.SVGRender
-
 import java.io.File
+
+import dibl.proto.TilesConfig
+
 import scala.util.{Failure, Success, Try}
 
 object Demo {
@@ -27,13 +29,15 @@ object Demo {
     dir.mkdirs()
     dir.listFiles().foreach(_.delete())
     Seq(
-      "bandage&patchWidth=3&patchHeight=4&tile=1,8&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2",
-      "sheered&patchWidth=6&patchHeight=4&tile=l-,-h&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
-      // the pair diagrams above fail
-      "torchon&patchWidth=6&patchHeight=4&tile=5-,-5&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
-      "pinwheel&patchWidth=12&patchHeight=8&tile=586-,-4-5,5-21,-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4&",
-      "whiting=F14_P193&patchWidth=24&patchHeight=28&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14",
-      "braid&patchWidth=18&patchHeight=8&tile=-B-C-y,B---cx,xC-B-x,m-5-b-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=6&shiftRowsSE=4&a4=llcttct&e4=rrcttctrr",
+//      "bandage&tileStitch=ctc&patchWidth=3&patchHeight=4&tile=1,8&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2",
+//      "sheered&tileStitch=ctc&patchWidth=6&patchHeight=4&tile=l-,-h&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
+//      // the patterns above even fail as pair diagrams, increasing the patch size doesn't help
+      "torchon&tileStitch=ctc&patchWidth=6&patchHeight=4&tile=5-,-5&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
+//      "rose&tileStitch=ctct&patchWidth=12&patchHeight=4&tile=5831,-4-7&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
+//      "pinwheel&tileStitch=ctc&patchWidth=12&patchHeight=8&tile=586-,-4-5,5-21,-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4&",
+//      "whiting=F14_P193&tileStitch=ctc&patchWidth=24&patchHeight=28&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14",
+//      // for now prefixed id's with X in the next pattern to just apply the tileStitch everywhere
+//      "braid&patchWidth=18&tileStitch=ctc&patchHeight=8&tile=-B-C-y,B---cx,xC-B-x,m-5-b-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=6&shiftRowsSE=4&Xa4=llcttct&Xe4=rrcttctrr",
     ).zipWithIndex.foreach { case (query, i) =>
       Try(GraphCreator.fromDiagram(query)) match {
         case Success(None) => println(s"$i has no solution")
