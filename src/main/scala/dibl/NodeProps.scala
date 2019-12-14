@@ -60,8 +60,8 @@ case class NodeProps private(elems: Seq[(String, Any)]) extends Props {
   val bobbin: Boolean = m.getOrElse("bobbin", false).toString.toBoolean
   val stitch: Boolean = m.getOrElse("stitch", false).asInstanceOf[Boolean]
 
-  val isLeftTwist: Boolean = stitch && m.getOrElse("left", true).asInstanceOf[Boolean]
-  val isRightTwist: Boolean = stitch && m.getOrElse("right", true).asInstanceOf[Boolean]
+  val isLeftTwist: Boolean = m.getOrElse("left", false).asInstanceOf[Boolean]
+  val isRightTwist: Boolean = m.getOrElse("right", false  ).asInstanceOf[Boolean]
 
   val cssClasses: String = (m.get("startOf"), m.get("thread")) match {
     case (Some(_), _) =>

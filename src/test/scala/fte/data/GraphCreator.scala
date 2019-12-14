@@ -45,6 +45,7 @@ object GraphCreator {
     //    implicit val scale: Int = 1
 
     val links = dropDuplicates(diagram.links.filter(inCenterBottomTile))
+        .sortBy(l => s"${diagram.node(l.target).id}${diagram.node(l.source).id}")
     printLink(links)
     val graph = new Graph()
 
@@ -56,17 +57,18 @@ object GraphCreator {
         t.id -> graph.createVertex(i, 0)
       }.toMap
     println(vertexMap.keys.toArray.sortBy(identity).mkString(","))
-    println(vertexMap.toArray.sortBy(_._2.toString).map(_._1).mkString(","))
+//    println(vertexMap.toArray.sortBy(_._2.toString).map(_._1).mkString(","))
 
     // create edges of one tile
     links.foreach { link =>
       val source = diagram.node(link.source)
       val target = diagram.node(link.target)
-      val (dx, dy) = deltas(link.isInstanceOf[WhiteStart], source, target)
-      println(s"(${source.id},${target.id}) deltas($dx,$dy)")
+      val whiteStart = link.isInstanceOf[WhiteStart]
+      val (dx, dy) = deltas(whiteStart, source, target)
+      println(s"(${source.id},${target.id}) deltas($dx,$dy) ${source.isLeftTwist}, ${source.isRightTwist}, ${target.isLeftTwist}, ${target.isRightTwist}, $whiteStart")
       graph.createEdge(vertexMap(source.id), vertexMap(target.id), dx, dy)
     }
-    println("edges " + graph.getEdges.toArray.sortBy(_.toString).mkString("; "))
+//    println("edges " + graph.getEdges.toArray.sortBy(_.toString).mkString("; "))
 
     if (new OneFormTorus(graph).layout())
       Some(graph)
@@ -85,16 +87,21 @@ object GraphCreator {
       case (1, _, _, _, _, _) => ((source.x - target.x).toInt, (source.y - target.y).toInt)
       // the left thread leaving a cross has a white start
       case (_, false, false, _, _, true) => (-1, -1)
-      case (_, false, false, _, _, _) => (1, -1)
-      // same for threads arriving at a cross
-      case (_,  _, _, false, false, true) => (-1, -1)
-      case (_,  _, _, false, false, _) => (1, -1)
+      case (_, false, false, _, _, false) => (1, -1)
+      // the right thread arriving at a cross has a white start
+      case (_, _, _, false, false, true) => (1, -1)
+      case (_, _, _, false, false, false) => (-1, -1)
       // threads arriving at twists not treated above
       case (_, _, _, _, true, true) => (0, -1)
       case (_, _, _, _, true, false) => (1, -1)
-      case (_, _, _, true, _ , false) => (0, -1)
-      case (_, _, _, true, _ , true) => (1, -1)
-      case _ => (-1, -1)
+      case (_, _, _, true, _, false) => (0, -1)
+      case (_, _, _, true, _, true) => (1, -1)
+      // threads leaving twists not treated above
+      case (_, _, true, _, _, true) => (0, -1)
+      case (_, _, true, _, _, false) => (1, -1)
+      case (_, true, _, _, _, false) => (0, -1)
+      case (_, true, _, _, _, true) => (1, -1)
+      case _ => (0,0)
     }
   }
 
@@ -130,7 +137,7 @@ object GraphCreator {
 
   private def printLink(links: Seq[LinkProps])
                        (implicit diagram: Diagram): Unit = {
-    println(links.map(l => s"(${diagram.node(l.source).id},${diagram.node(l.target).id})").mkString)
+//    println(links.map(l => s"(${diagram.node(l.source).id},${diagram.node(l.target).id})").mkString)
   }
 
   private def reconnect(link: LinkProps)
