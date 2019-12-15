@@ -32,7 +32,7 @@ object Demo {
       query <- Seq(
         s"bandage&tileStitch=$stitch&patchWidth=3&patchHeight=4&tile=1,8&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2",
         s"sheered&tileStitch=$stitch&patchWidth=6&patchHeight=4&tile=l-,-h&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
-        // the patterns above even fail as pair diagrams, increasing the patch size doesn't help
+        // the patterns above fail as pair diagrams, increasing the patch size doesn't help
         s"torchon&tileStitch=$stitch&patchWidth=6&patchHeight=4&tile=5-,-5&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
         s"rose&tileStitch=$stitch&patchWidth=12&patchHeight=4&tile=5831,-4-7&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
         s"pinwheel&tileStitch=$stitch&patchWidth=12&patchHeight=8&tile=586-,-4-5,5-21,-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4&",
