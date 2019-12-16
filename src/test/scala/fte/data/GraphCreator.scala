@@ -101,7 +101,6 @@ object GraphCreator {
       case (_, _, true, _, _, false) => (1, -1)
       case (_, true, _, _, _, false) => (0, -1)
       case (_, true, _, _, _, true) => (1, -1)
-      case _ => (0,0)
     }
   }
 
