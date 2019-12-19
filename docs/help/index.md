@@ -22,7 +22,7 @@ A few lines of text guide you through most important first steps.
 Help pages in the side bar explain more in-depth subjects.
 The following section discusses a versatile traditional pattern.
 
-Add foot sides to a small strip of a pattern to get a braid.
+Playing with stitches in a braid is also possible. Just add foot sides to a small strip of a pattern.
 
 <a name="BK-31"></a>
 
