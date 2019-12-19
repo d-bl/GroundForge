@@ -9,13 +9,13 @@ Help Intro
 Experiment with Bobbin Lace Grounds
 -----------------------------------
 
-GroundForge is a supplement to publications with bobbin lace [grounds].
+GroundForge is a supplement to [publications] with bobbin lace grounds.
 The tool makes varying stitches and following the paths of contrasting threads a breeze 
 compared to tedious but fruitless experimental patches of real lace. 
 Experiment and play around with the hundredths of provided patterns or add others.
 Even when reinventing wheels, your own discoveries can bring great joy. 
 
-[grounds]: https://maetempels.github.io/MAE-gf/docs/license#literature
+[publications]: https://maetempels.github.io/MAE-gf/docs/license#literature
 
 The [tiles](../tiles.html) page generates thread diagrams from pair diagrams. 
 A few lines of text guide you through most important first steps.
