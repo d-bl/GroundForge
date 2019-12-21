@@ -17,7 +17,8 @@ package fte.data
 
 import dibl.LinkProps.WhiteStart
 import dibl.proto.TilesConfig
-import dibl.{ Diagram, LinkProps, NewPairDiagram, NodeProps, ThreadDiagram }
+import dibl.{Diagram, LinkProps, NewPairDiagram, NodeProps, ThreadDiagram}
+import fte.data.ArcedFace.facesFrom
 import fte.layout.OneFormTorus
 
 object GraphCreator {
@@ -65,6 +66,7 @@ object GraphCreator {
       println(s"(${ source.id },${ target.id }) deltas($dx,$dy) ${ source.isLeftTwist }, ${ source.isRightTwist }, ${ target.isLeftTwist }, ${ target.isRightTwist }, $whiteStart")
       graph.createEdge(vertexMap(source.id), vertexMap(target.id), dx, dy)
     }
+    println(facesFrom(links).mkString("\n"))
 
     if (new OneFormTorus(graph).layout())
       Some(graph)
