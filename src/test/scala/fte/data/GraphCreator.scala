@@ -18,7 +18,6 @@ package fte.data
 import dibl.LinkProps.WhiteStart
 import dibl.proto.TilesConfig
 import dibl.{Diagram, LinkProps, NewPairDiagram, NodeProps, ThreadDiagram}
-import fte.data.ArcedFace.facesFrom
 import fte.layout.OneFormTorus
 
 object GraphCreator {

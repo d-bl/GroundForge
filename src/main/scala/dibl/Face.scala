@@ -4,10 +4,10 @@ import dibl.LinkProps.WhiteStart
 
 case class Face(leftArc: Seq[LinkProps], rightArc: Seq[LinkProps])
                (implicit diagram: Diagram) {
-  override def toString: String = toS(leftArc.reverse) + " ; " + toS(rightArc)
+  override def toString: String = toS(leftArc) + " ; " + toS(rightArc)
 
   private def toS(rightArc: Seq[LinkProps]) = {
-    rightArc.map(link => s"${Face.sourceIdOf(link)}->${Face.targetIdOf(link)}").mkString(",")
+    rightArc.reverse.map(link => s"${Face.sourceIdOf(link)}->${Face.targetIdOf(link)}").mkString(",")
   }
 }
 
