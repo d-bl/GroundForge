@@ -2,75 +2,78 @@ package dibl
 
 import dibl.LinkProps.WhiteStart
 
-case class Face(leftArc: Seq[LinkProps], rightArc: Seq[LinkProps])
+case class Face(leftArc: Seq[SimpleLink], rightArc: Seq[SimpleLink])
                (implicit diagram: Diagram) {
   override def toString: String = toS(leftArc) + " ; " + toS(rightArc)
 
-  private def toS(rightArc: Seq[LinkProps]) = {
-    rightArc.reverse.map(link => s"${Face.sourceIdOf(link)}->${Face.targetIdOf(link)}").mkString(",")
+  private def toS(rightArc: Seq[SimpleLink]) = {
+    rightArc.reverse.map(link => s"${link.sourceId}->${link.targetId}").mkString(",")
   }
+}
+
+case class SimpleLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean) {
+  val isRightOfTarget: Boolean = !isLeftOfTarget
+  val isRightOfSource: Boolean = !isLeftOfTarget
+  val isLeftOfSource: Boolean = isLeftOfTarget
 }
 
 object Face {
   def facesFrom(linksInTile: Seq[LinkProps])
-               (implicit diagram: Diagram
-               ): Seq[Face] = {
-    implicit val linksByTarget: Map[String, Seq[LinkProps]] = linksInTile
-      .groupBy(targetIdOf(_))
+               (implicit diagram: Diagram): Seq[Face] = {
+    implicit val linksByTarget: Map[String, Seq[SimpleLink]] = linksInTile
+      .map(link => SimpleLink(sourceIdOf(link), targetIdOf(link), isLeft(link)))
+      .groupBy(_.targetId)
     linksByTarget
       .values.toArray
       .map { links =>
-        val min = links.minBy(leftFirst(_))
-        val max = links.maxBy(leftFirst(_))
-        val (left, right) = closeFace(Seq(min), Seq(max))
+        val (left, right) = closeFace(
+          links.filter(_.isLeftOfTarget),
+          links.filterNot(_.isLeftOfTarget)
+        )
         Face(left, right)
       }
   }
-
-  private def leftFirst(link: LinkProps)
-                       (implicit diagram: Diagram) = {
-    /*        cross   twist
-     *        \  /    \   /
-     *         \        /
-     *        / \     /  \
-     */
-    val isCross = diagram.node(link.target).instructions == "cross"
-    val sourceX = diagram.node(link.source).x // might be the same in thread diagrams
-    val whiteStart = link.isInstanceOf[WhiteStart]
-    (sourceX, (isCross, whiteStart) match {
-      case (true, true) => 0
-      case (true, false) => 1
-      case (false, false) => 0
-      case (false, true) => 1
-    })
+  private def isLeft(linkProps: LinkProps)(implicit diagram: Diagram): Boolean = {
+    (
+      diagram.node(linkProps.target).instructions,
+      linkProps.isInstanceOf[WhiteStart]
+    ) match {
+      /*        cross   twist
+       *        \  /    \   /
+       *         \        /
+       *        / \     /  \
+       */
+      case ("cross", true) => true
+      case ("cross", false) => false
+      case ("twist", false) => true
+      case ("twist", true) => false
+      case _ => ??? // TODO need other link for pair diagram,
+    }
   }
 
   @scala.annotation.tailrec
-  private def closeFace(leftArc: Seq[LinkProps], rightArc: Seq[LinkProps])
-                       (implicit diagram: Diagram, linksByTarget: Map[String, Seq[LinkProps]]
-                       ): (Seq[LinkProps], Seq[LinkProps]) = {
+  private def closeFace(leftArc: Seq[SimpleLink], rightArc: Seq[SimpleLink])
+                       (implicit diagram: Diagram, linksByTarget: Map[String, Seq[SimpleLink]]
+                       ): (Seq[SimpleLink], Seq[SimpleLink]) = {
     val sharedSources = sources(leftArc).intersect(sources(rightArc))
-    // TODO no clue why check for size still prevents eternal loops
-    if (sharedSources.nonEmpty || leftArc.size > 17 || rightArc.size > 17)
+    if (sharedSources.nonEmpty)
       (trim(leftArc, sharedSources), trim(rightArc, sharedSources))
     else {
-      val leftSourceId = sourceIdOf(leftArc.last)
-      val rightSourceId = sourceIdOf(rightArc.last)
-      val toLeftSource: LinkProps = linksByTarget(leftSourceId).minBy(leftFirst(_))
-      val toRightSource: LinkProps = linksByTarget(rightSourceId).maxBy(leftFirst(_))
+      val leftSourceId = leftArc.last.sourceId
+      val rightSourceId = rightArc.last.sourceId
+      val toLeftSource = linksByTarget(leftSourceId).find(_.isRightOfSource).head
+      val toRightSource = linksByTarget(rightSourceId).find(_.isLeftOfSource).head
       closeFace(leftArc :+ toLeftSource, rightArc :+ toRightSource)
     }
   }
 
-  private def trim(arc: Seq[LinkProps], sharedSources: Set[String])
-                  (implicit diagram: Diagram): Seq[LinkProps] = {
-    if(sharedSources.isEmpty) arc
-    else arc.slice(0, arc.map(sourceIdOf).indexOf(sharedSources.head))
+  private def trim(arc: Seq[SimpleLink], sharedSources: Set[String]): Seq[SimpleLink] = {
+    if (sharedSources.isEmpty) arc
+    else arc.slice(0, arc.map(_.sourceId).indexOf(sharedSources.head))
   }
 
-  private def sources(arc: Seq[LinkProps])
-                     (implicit diagram: Diagram) = {
-    arc.map(sourceIdOf(_)).toSet
+  private def sources(arc: Seq[SimpleLink]) = {
+    arc.map(_.sourceId).toSet
   }
 
   private def sourceIdOf(l: LinkProps)
