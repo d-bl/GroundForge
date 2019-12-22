@@ -7,7 +7,7 @@ case class Face(leftArc: Seq[SimpleLink], rightArc: Seq[SimpleLink])
   override def toString: String = toS(leftArc) + " ; " + toS(rightArc)
 
   private def toS(rightArc: Seq[SimpleLink]) = {
-    rightArc.reverse.map(link => s"${link.sourceId}->${link.targetId}").mkString(",")
+    rightArc.map(link => s"${link.sourceId}->${link.targetId}").mkString(",")
   }
 }
 
@@ -69,7 +69,11 @@ object Face {
 
   private def trim(arc: Seq[SimpleLink], sharedSources: Set[String]): Seq[SimpleLink] = {
     if (sharedSources.isEmpty) arc
-    else arc.slice(0, arc.map(_.sourceId).indexOf(sharedSources.head))
+    else {
+      val reversed = arc.reverse
+      val i = reversed.map(_.sourceId).indexOf(sharedSources.head)
+      reversed.slice(i, arc.size)
+    }
   }
 
   private def sources(arc: Seq[SimpleLink]) = {

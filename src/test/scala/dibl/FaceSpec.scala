@@ -14,10 +14,10 @@ class FaceSpec extends FlatSpec with Matchers {
     val links = diagram.links.filter(inCenterBottomTile)
     facesFrom(links).mkString("\n") shouldBe
       """b20->b21,b21->a12,a12->b20 ; b20->b22,b22->a11,a11->b20
-        |a12->b21 ; a11->b20,b20->b21
-        |a12->b20,b20->b22 ; a11->b22
-        |b22->a11 ; b21->a10,a10->a11
-        |a10->a11,a11->b22,b22->a10 ; a10->12a12,a12->b21,b21->a10
+        |a12->b21 ; a12->b20,b20->b21
+        |a11->b20,b20->b22 ; a11->b22
+        |b22->a11 ; b22->a10,a10->a11
+        |a10->a11,a11->b22,b22->a10 ; a10->a12,a12->b21,b21->a10
         |b21->a10,a10->a12 ; b21->a12""".stripMargin
   }
 }
