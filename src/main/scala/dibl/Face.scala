@@ -2,12 +2,11 @@ package dibl
 
 import dibl.LinkProps.WhiteStart
 
-case class Face(leftArc: Seq[SimpleLink], rightArc: Seq[SimpleLink])
-               (implicit diagram: Diagram) {
+case class Face(leftArc: Seq[SimpleLink], rightArc: Seq[SimpleLink]) {
   override def toString: String = toS(leftArc) + " ; " + toS(rightArc)
 
   private def toS(rightArc: Seq[SimpleLink]) = {
-    rightArc.map(link => s"${link.sourceId}->${link.targetId}").mkString(",")
+    rightArc.map(link => s"${ link.sourceId }->${ link.targetId }").mkString(",")
   }
 }
 
@@ -20,6 +19,7 @@ case class SimpleLink(sourceId: String, targetId: String, isLeftOfTarget: Boolea
 object Face {
   def facesFrom(linksInTile: Seq[LinkProps])
                (implicit diagram: Diagram): Seq[Face] = {
+    implicit val inTile: Seq[LinkProps] = linksInTile
     implicit val linksByTarget: Map[String, Seq[SimpleLink]] = linksInTile
       .map(link => SimpleLink(sourceIdOf(link), targetIdOf(link), isLeft(link)))
       .groupBy(_.targetId)
@@ -33,10 +33,12 @@ object Face {
         Face(left, right)
       }
   }
-  private def isLeft(linkProps: LinkProps)(implicit diagram: Diagram): Boolean = {
+
+  private def isLeft(link: LinkProps)
+                    (implicit diagram: Diagram, linksInTile: Seq[LinkProps]): Boolean = {
     (
-      diagram.node(linkProps.target).instructions,
-      linkProps.isInstanceOf[WhiteStart]
+      diagram.node(link.target).instructions,
+      link.isInstanceOf[WhiteStart]
     ) match {
       /*        cross   twist
        *        \  /    \   /
@@ -47,7 +49,12 @@ object Face {
       case ("cross", false) => false
       case ("twist", false) => true
       case ("twist", true) => false
-      case _ => ??? // TODO need other link for pair diagram,
+      case _ => // TODO relatively expensive lookup for large matrices
+        val otherX: Double = linksInTile.find(other =>
+          sourceIdOf(other) != sourceIdOf(link) &&
+            targetIdOf(other) == targetIdOf(link)
+        ).map(other => diagram.node(other.source).x).getOrElse(0)
+        diagram.node(link.source).x < otherX
     }
   }
 

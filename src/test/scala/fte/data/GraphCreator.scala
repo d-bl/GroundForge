@@ -15,9 +15,10 @@
 */
 package fte.data
 
+import dibl.Face.facesFrom
 import dibl.LinkProps.WhiteStart
 import dibl.proto.TilesConfig
-import dibl.{Diagram, LinkProps, NewPairDiagram, NodeProps, ThreadDiagram}
+import dibl.{ Diagram, LinkProps, NewPairDiagram, NodeProps, ThreadDiagram }
 import fte.layout.OneFormTorus
 
 object GraphCreator {
@@ -55,6 +56,7 @@ object GraphCreator {
         diagram.node(nodeNr).id -> graph.createVertex(i, 0)
       }.toMap
     println(vertexMap.keys.toArray.sortBy(identity).mkString(","))
+    println(facesFrom(links).mkString("\n"))
 
     // create edges of one tile
     links.foreach { link =>
