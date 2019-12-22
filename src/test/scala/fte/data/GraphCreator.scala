@@ -66,7 +66,6 @@ object GraphCreator {
       println(s"(${ source.id },${ target.id }) deltas($dx,$dy) ${ source.isLeftTwist }, ${ source.isRightTwist }, ${ target.isLeftTwist }, ${ target.isRightTwist }, $whiteStart")
       graph.createEdge(vertexMap(source.id), vertexMap(target.id), dx, dy)
     }
-    println(facesFrom(links).mkString("\n"))
 
     if (new OneFormTorus(graph).layout())
       Some(graph)
@@ -102,8 +101,8 @@ object GraphCreator {
     }
   }
 
-  private def inCenterBottomTile(link: LinkProps)
-                                (implicit diagram: Diagram, scale: Int, config: TilesConfig) = {
+  def inCenterBottomTile(link: LinkProps)
+                        (implicit diagram: Diagram, scale: Int, config: TilesConfig): Boolean = {
     // The top and side tiles of a diagram may have irregularities along the outer edges.
     // So select links arriving in the center bottom checker tile.
     val cols = config.patchWidth / 3
