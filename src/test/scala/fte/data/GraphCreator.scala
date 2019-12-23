@@ -111,11 +111,6 @@ object GraphCreator {
       case (_, _, _, _, true, false) => (1, -1)
       case (_, _, _, true, _, false) => (0, -1)
       case (_, _, _, true, _, true) => (1, -1)
-      // threads leaving twists not treated above
-      //case (_, _, true, _, _, true) => (0, -1)
-      //case (_, _, true, _, _, false) => (1, -1)
-      //case (_, true, _, _, _, false) => (0, -1)
-      //case (_, true, _, _, _, true) => (1, -1)
     }
   }
 
