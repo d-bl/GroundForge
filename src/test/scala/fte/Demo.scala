@@ -20,7 +20,7 @@ import java.io.File
 import fte.data.GraphCreator
 import fte.ui.SVGRender
 
-import scala.util.{Failure, Success, Try}
+import scala.util.{ Failure, Success, Try }
 
 object Demo {
   def main(args: Array[String]): Unit = {
@@ -41,12 +41,15 @@ object Demo {
         s"braid&patchWidth=18&tileStitch=$stitch&patchHeight=8&tile=-B-C-y,B---cx,xC-B-x,m-5-b-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=6&shiftRowsSE=4&Xa4=llcttct&Xe4=rrcttctrr",
       )
     } {
+      val t0 = System.nanoTime()
       Try(GraphCreator.fromDiagram(query)) match {
         case Success(None) =>
         case Failure(e) => e.printStackTrace()
         case Success(Some(graph)) =>
           new SVGRender().draw(graph, s"$dir/${qName(query)}-$stitch.svg")
       }
+      val t1 = System.nanoTime()
+      println("Elapsed time: " + (t1 - t0)*0.000000001 + "s")
     }
   }
 

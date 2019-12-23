@@ -18,8 +18,10 @@ package fte.data
 import dibl.Face.facesFrom
 import dibl.LinkProps.WhiteStart
 import dibl.proto.TilesConfig
-import dibl.{ Diagram, LinkProps, NewPairDiagram, NodeProps, ThreadDiagram }
+import dibl.{ Diagram, LinkProps, NewPairDiagram, NodeProps, SimpleLink, ThreadDiagram }
 import fte.layout.OneFormTorus
+
+import scala.collection.JavaConverters._
 
 object GraphCreator {
 
@@ -56,7 +58,6 @@ object GraphCreator {
         diagram.node(nodeNr).id -> graph.createVertex(i, 0)
       }.toMap
     println(vertexMap.keys.toArray.sortBy(identity).mkString(","))
-    println(facesFrom(links).mkString("\n"))
 
     // create edges of one tile
     links.foreach { link =>
@@ -68,7 +69,23 @@ object GraphCreator {
       graph.createEdge(vertexMap(source.id), vertexMap(target.id), dx, dy)
     }
 
-    if (new OneFormTorus(graph).layout())
+    def faces = {
+      val edges = graph.getEdges.asScala.toArray
+      def findEdge(link: SimpleLink): Option[Edge] = edges.find(edge =>
+        edge.getStart == vertexMap(link.sourceId) &&
+          edge.getEnd == vertexMap(link.targetId)
+      )
+      facesFrom(links)
+        .map(scalaFace => new Face() {
+          println(scalaFace)
+          setEdges(new java.util.LinkedList[Edge]() {
+            (scalaFace.leftArc ++ scalaFace.rightArc)// TODO what order should the edges get?
+              .foreach(findEdge(_).foreach(add))
+          })
+        })
+    }
+
+    if (new OneFormTorus(graph).layout(faces.asJava))
       Some(graph)
     else None
   }
@@ -95,10 +112,10 @@ object GraphCreator {
       case (_, _, _, true, _, false) => (0, -1)
       case (_, _, _, true, _, true) => (1, -1)
       // threads leaving twists not treated above
-      case (_, _, true, _, _, true) => (0, -1)
-      case (_, _, true, _, _, false) => (1, -1)
-      case (_, true, _, _, _, false) => (0, -1)
-      case (_, true, _, _, _, true) => (1, -1)
+      //case (_, _, true, _, _, true) => (0, -1)
+      //case (_, _, true, _, _, false) => (1, -1)
+      //case (_, true, _, _, _, false) => (0, -1)
+      //case (_, true, _, _, _, true) => (1, -1)
     }
   }
 

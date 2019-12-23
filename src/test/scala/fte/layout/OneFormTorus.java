@@ -15,15 +15,17 @@ public class OneFormTorus {
 		this.graph = g;
 	}
 
-	public boolean layout() {
-		
+	public boolean layout(List<Face> newFaces) {
+		//TODO use newFaces once we know the order of faces and edges on faces,
+		// we also need to add edges to vertices in proper order some new way
+		List<Face> faces = graph.getFaces();
+
 		List<Edge> edges = graph.getEdges();
 
 		int m = edges.size();
 		double[][] data = new double[m][m];
 		int index = 0;
 		// edge orientation around each face
-		List<Face> faces = graph.getFaces();
 		for (Face face : faces) {
 			LinkedList<Edge> elist = face.getEdges();
 			for (Edge e : elist) {
@@ -46,7 +48,10 @@ public class OneFormTorus {
 			index++;
 		}
 
+		long t0 = System.nanoTime();
 		SimpleMatrix nullSpace = new SimpleMatrix(data).svd().nullSpace();
+		long t1 = System.nanoTime();
+		System.out.println("Elapsed time nullspace: " + (t1 - t0)*0.000000001 + "s");
 
 		if (nullSpace.numCols() != 2) {
 			System.out.println("WRONG column number " + nullSpace.numCols());
