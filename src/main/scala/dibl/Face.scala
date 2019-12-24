@@ -1,7 +1,5 @@
 package dibl
 
-import dibl.LinkProps.WhiteStart
-
 case class Face(leftArc: Seq[SimpleLink], rightArc: Seq[SimpleLink]) {
   override def toString: String = toS(leftArc) + " ; " + toS(rightArc)
 
@@ -10,57 +8,22 @@ case class Face(leftArc: Seq[SimpleLink], rightArc: Seq[SimpleLink]) {
   }
 }
 
-case class SimpleLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean) {
-  val isRightOfTarget: Boolean = !isLeftOfTarget
-  val isRightOfSource: Boolean = !isLeftOfTarget
-  val isLeftOfSource: Boolean = isLeftOfTarget
-}
-
 object Face {
-  def facesFrom(linksInTile: Seq[LinkProps])
-               (implicit diagram: Diagram): Seq[Face] = {
-    implicit val inTile: Seq[LinkProps] = linksInTile
-    implicit val linksByTarget: Map[String, Seq[SimpleLink]] = linksInTile
-      .map(link => SimpleLink(sourceIdOf(link), targetIdOf(link), isLeft(link)))
-      .groupBy(_.targetId)
+  def facesFrom(linksInTile: Seq[SimpleLink]): Seq[Face] = {
+    implicit val linksByTarget: Map[String, Seq[SimpleLink]] = linksInTile.groupBy(_.targetId)
     linksByTarget
       .values.toArray
       .map { links =>
         val (left, right) = closeFace(
           links.filter(_.isLeftOfTarget),
-          links.filterNot(_.isLeftOfTarget)
-        )
+          links.filterNot(_.isLeftOfTarget))
         Face(left, right)
       }
   }
 
-  private def isLeft(link: LinkProps)
-                    (implicit diagram: Diagram, linksInTile: Seq[LinkProps]): Boolean = {
-    (
-      diagram.node(link.target).instructions,
-      link.isInstanceOf[WhiteStart]
-    ) match {
-      /*        cross   twist
-       *        \  /    \   /
-       *         \        /
-       *        / \     /  \
-       */
-      case ("cross", true) => true
-      case ("cross", false) => false
-      case ("twist", false) => true
-      case ("twist", true) => false
-      case _ => // TODO relatively expensive lookup for large matrices
-        val otherX: Double = linksInTile.find(other =>
-          sourceIdOf(other) != sourceIdOf(link) &&
-            targetIdOf(other) == targetIdOf(link)
-        ).map(other => diagram.node(other.source).x).getOrElse(0)
-        diagram.node(link.source).x < otherX
-    }
-  }
-
   @scala.annotation.tailrec
   private def closeFace(leftArc: Seq[SimpleLink], rightArc: Seq[SimpleLink])
-                       (implicit diagram: Diagram, linksByTarget: Map[String, Seq[SimpleLink]]
+                       (implicit linksByTarget: Map[String, Seq[SimpleLink]]
                        ): (Seq[SimpleLink], Seq[SimpleLink]) = {
     val sharedSources = sources(leftArc).intersect(sources(rightArc))
     if (sharedSources.nonEmpty)
@@ -85,15 +48,5 @@ object Face {
 
   private def sources(arc: Seq[SimpleLink]) = {
     arc.map(_.sourceId).toSet
-  }
-
-  private def sourceIdOf(l: LinkProps)
-                        (implicit diagram: Diagram) = {
-    diagram.node(l.source).id
-  }
-
-  private def targetIdOf(l: LinkProps)
-                        (implicit diagram: Diagram) = {
-    diagram.node(l.target).id
   }
 }

@@ -66,7 +66,7 @@ public class Vertex implements Cloneable {
 		rotation.add(index, e);
 	}
 
-	double getAngle(Edge e) {
+	private double getAngle(Edge e) {
 		boolean forward = e.start.equals(this);
 		double dx = forward ? e.deltaX : -e.deltaX;
 		double dy = forward ? e.deltaY : -e.deltaY;

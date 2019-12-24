@@ -50,13 +50,12 @@ object GraphCreator {
     val links = diagram.links.filter(inCenterBottomTile)
       .sortBy(l => s"${ diagram.node(l.target).id }${ diagram.node(l.source).id }")
     val graph = new Graph()
+    val simpleLinks = SimpleLink.simplify(links)
 
     // create each vertex on the torus once
-    val vertexMap = links.map(_.target).distinct.zipWithIndex
-      .map { case (nodeNr, i) =>
-        // The initial coordinates don't matter as long as they are unique.
-        diagram.node(nodeNr).id -> graph.createVertex(i, 0)
-      }.toMap
+    // The initial coordinates don't matter as long as they are unique.
+    val vertexMap = simpleLinks.map(_.targetId).distinct.zipWithIndex
+      .map { case (nodeId, i) => nodeId -> graph.createVertex(i, 0) }.toMap
     println(vertexMap.keys.toArray.sortBy(identity).mkString(","))
 
     // create edges of one tile
@@ -70,12 +69,11 @@ object GraphCreator {
     }
 
     def faces = {
-      val edges = graph.getEdges.asScala.toArray
-      def findEdge(link: SimpleLink): Option[Edge] = edges.find(edge =>
+      def findEdge(link: SimpleLink): Option[Edge] = graph.getEdges.asScala.toArray.find(edge =>
         edge.getStart == vertexMap(link.sourceId) &&
           edge.getEnd == vertexMap(link.targetId)
       )
-      facesFrom(links)
+      facesFrom(simpleLinks)
         .map(scalaFace => new Face() {
           println(scalaFace)
           setEdges(new java.util.LinkedList[Edge]() {

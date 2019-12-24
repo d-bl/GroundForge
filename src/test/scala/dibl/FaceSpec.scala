@@ -11,7 +11,7 @@ class FaceSpec extends FlatSpec with Matchers {
     implicit val config: TilesConfig = TilesConfig(s)
     implicit val diagram: Diagram = ThreadDiagram(NewPairDiagram.create(config))
     implicit val scale: Int = 2
-    val links = diagram.links.filter(inCenterBottomTile)
+    val links = SimpleLink.simplify(diagram.links.filter(inCenterBottomTile))
     facesFrom(links).mkString("\n") shouldBe
       """b20->b21,b21->a12,a12->b20 ; b20->b22,b22->a11,a11->b20
         |a12->b21 ; a12->b20,b20->b21
@@ -25,7 +25,7 @@ class FaceSpec extends FlatSpec with Matchers {
     implicit val config: TilesConfig = TilesConfig(s)
     implicit val diagram: Diagram = NewPairDiagram.create(config)
     implicit val scale: Int = 1
-    val links = diagram.links.filter(inCenterBottomTile)
+    val links = SimpleLink.simplify(diagram.links.filter(inCenterBottomTile))
     facesFrom(links).mkString("\n") shouldBe
       """b1->b2 ; b1->c1,c1->b2
         |d2->a1,a1->b1 ; d2->b1
