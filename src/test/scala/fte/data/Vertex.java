@@ -51,6 +51,9 @@ public class Vertex implements Cloneable {
 	}
 	
 	void addEdge(Edge e) {
+		// TODO the caller should add the edges in proper order,
+		//  What does setLocationsDFS require as the initial values of the delta-x/y of the edges?
+		//
 		if (rotation.contains(e)) return;
 
 		// find the position of this edge in a clockwise rotation system starting at the

@@ -5,6 +5,9 @@ import dibl.LinkProps.WhiteStart
 case class TopoLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean, isLeftOfSource: Boolean) {
   val isRightOfTarget: Boolean = !isLeftOfTarget
   val isRightOfSource: Boolean = !isLeftOfTarget
+
+  override def toString: String = s"$sourceId,$targetId,$isRightOfTarget,$isLeftOfSource"
+    .replaceAll("(rue|alse)", "")
 }
 
 object TopoLink {
@@ -17,7 +20,7 @@ object TopoLink {
       isLeftOfSource(link)
       val bool = isLeftOfTarget(link)
       // TODO so far attempts to fix isLeftOfSource caused eternal loops,
-      //  it should simplify Vertex.addEdge and eliminate GraphCreator.deltas
+      //  it should simplify Vertex.addEdge and GraphCreator.deltas
       TopoLink(sourceIdOf(link), targetIdOf(link), bool, isLeftOfSource = bool)
     })
   }

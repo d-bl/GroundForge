@@ -92,7 +92,7 @@ object GraphCreator {
                    (implicit edges: Array[Edge],
                     vertexMap: Map[String, Vertex]
                    ): Unit = {
-    // TODO Vertex.addEdge should add at the end (once booleans of TopologicalLink are fixed)
+    // TODO Vertex.addEdge should add at the end (once TopologicalLink.isLeftOfSource is fixed)
     findEdge(simpleLink).foreach(vertex.addEdge)
   }
 
