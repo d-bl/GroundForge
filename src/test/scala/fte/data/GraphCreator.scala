@@ -18,7 +18,7 @@ package fte.data
 import dibl.Face.facesFrom
 import dibl.LinkProps.WhiteStart
 import dibl.proto.TilesConfig
-import dibl.{ Diagram, LinkProps, NewPairDiagram, NodeProps, SimpleLink, ThreadDiagram }
+import dibl.{ Diagram, LinkProps, NewPairDiagram, NodeProps, ThreadDiagram, TopoLink }
 import fte.layout.OneFormTorus
 
 import scala.collection.JavaConverters._
@@ -47,45 +47,91 @@ object GraphCreator {
     //    implicit val diagram: Diagram = NewPairDiagram.create(config)
     //    implicit val scale: Int = 1
 
-    val links = diagram.links.filter(inCenterBottomTile)
-      .sortBy(l => s"${ diagram.node(l.target).id }${ diagram.node(l.source).id }")
+    val linksInTile = diagram.links.filter(inCenterBottomTile)
+      .sortBy(l => diagram.node(l.target).id -> diagram.node(l.source).id)
     val graph = new Graph()
-    val simpleLinks = SimpleLink.simplify(links)
+    val topoLinks = TopoLink.simplify(linksInTile)
 
-    // create each vertex on the torus once
-    // The initial coordinates don't matter as long as they are unique.
-    val vertexMap = simpleLinks.map(_.targetId).distinct.zipWithIndex
-      .map { case (nodeId, i) => nodeId -> graph.createVertex(i, 0) }.toMap
+    // create vertices
+    implicit val vertexMap: Map[String, Vertex] = topoLinks
+      .map(_.targetId).distinct.zipWithIndex
+      .map { case (nodeId, i) =>
+        // The initial coordinates don't matter as long as they are unique.
+        nodeId -> graph.createVertex(i, 0)
+      }.toMap
     println(vertexMap.keys.toArray.sortBy(identity).mkString(","))
 
-    // create edges of one tile
-    links.foreach { link =>
-      val source = diagram.node(link.source)
-      val target = diagram.node(link.target)
-      val whiteStart = link.isInstanceOf[WhiteStart]
-      val (dx, dy) = deltas(whiteStart, source, target)
-      println(s"(${ source.id },${ target.id }) deltas($dx,$dy) ${ source.isLeftTwist }, ${ source.isRightTwist }, ${ target.isLeftTwist }, ${ target.isRightTwist }, $whiteStart")
-      graph.createEdge(vertexMap(source.id), vertexMap(target.id), dx, dy)
+    // create edges
+    implicit val edges: Array[Edge] = linksInTile.map { link =>
+      graph.addNewEdge(createEdge(link))
+    }.toArray
+
+    // add the edges to vertices in clock wise order
+    topoLinks.groupBy(_.sourceId).foreach { case (id, topoLinks) =>
+      val vertex = vertexMap(id)
+      topoLinks.filter(_.isRightOfSource).foreach(addTo(vertex, _))
+      topoLinks.filter(_.isLeftOfSource).foreach(addTo(vertex, _))
+    }
+    topoLinks.groupBy(_.targetId).foreach { case (id, topolinks) =>
+      val vertex = vertexMap(id)
+      topolinks.filter(_.isLeftOfTarget).foreach(addTo(vertex, _))
+      topolinks.filter(_.isRightOfTarget).foreach(addTo(vertex, _))
     }
 
-    def faces = {
-      def findEdge(link: SimpleLink): Option[Edge] = graph.getEdges.asScala.toArray.find(edge =>
-        edge.getStart == vertexMap(link.sourceId) &&
-          edge.getEnd == vertexMap(link.targetId)
-      )
-      facesFrom(simpleLinks)
-        .map(scalaFace => new Face() {
-          println(scalaFace)
-          setEdges(new java.util.LinkedList[Edge]() {
-            (scalaFace.leftArc ++ scalaFace.rightArc)// TODO what order should the edges get?
-              .foreach(findEdge(_).foreach(add))
-          })
-        })
-    }
+    val faces = facesFrom(topoLinks)
+      .map(toJava).asJava
 
-    if (new OneFormTorus(graph).layout(faces.asJava))
+    // TODO faces not yet used in layout method
+    if (new OneFormTorus(graph).layout(faces))
       Some(graph)
     else None
+  }
+
+  private def addTo(vertex: Vertex,
+                    simpleLink: TopoLink)
+                   (implicit edges: Array[Edge],
+                    vertexMap: Map[String, Vertex]
+                   ): Unit = {
+    // TODO Vertex.addEdge should add at the end (once booleans of TopologicalLink are fixed)
+    findEdge(simpleLink).foreach(vertex.addEdge)
+  }
+
+  private def toJava(scalaFace: dibl.Face)
+                    (implicit edges: Array[Edge],
+                     vertexMap: Map[String, Vertex]
+                    ) = {
+    println(scalaFace)
+    val faceEdges = new java.util.LinkedList[Edge]() {
+      // TODO what order should the edges get?
+      (scalaFace.leftArc ++ scalaFace.rightArc)
+        .foreach(findEdge(_).foreach(add))
+    }
+    new Face() {
+      setEdges(faceEdges)
+    }
+  }
+
+  private def findEdge(link: TopoLink)
+                      (implicit edges: Array[Edge],
+                       vertexMap: Map[String, Vertex]
+                      ): Option[Edge] = {
+    edges.find(edge =>
+      edge.getStart == vertexMap(link.sourceId) &&
+        edge.getEnd == vertexMap(link.targetId)
+    )
+  }
+
+  private def createEdge(link: LinkProps)
+                        (implicit scale: Int, // TODO obsolete when deltas is
+                         diagram: Diagram,
+                         vertexMap: Map[String, Vertex]) = {
+    val source = diagram.node(link.source)
+    val target = diagram.node(link.target)
+    val whiteStart = link.isInstanceOf[WhiteStart]
+    val (dx, dy) = deltas(whiteStart, source, target) // TODO obsolete when booleans of TopologicalLink are fixed
+    println(s"(${ source.id },${ target.id }) deltas($dx,$dy) ${ source.isLeftTwist }, ${ source.isRightTwist }, ${ target.isLeftTwist }, ${ target.isRightTwist }, $whiteStart")
+    val edge = new Edge(vertexMap(source.id), vertexMap(target.id), dx, dy)
+    edge
   }
 
   private def deltas(whiteStart: Boolean, source: NodeProps, target: NodeProps)

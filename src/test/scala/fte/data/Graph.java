@@ -47,11 +47,9 @@ public class Graph implements Cloneable {
 		return v;
 	}
 
-	public void createEdge(Vertex start, Vertex end, double dx, double dy) {
-		Edge	e = new Edge(start, end, dx, dy);
+	public Edge addNewEdge(Edge e) {
 		edges.add(e);
-		start.addEdge(e);
-		end.addEdge(e);
+		return e;
 	}
 
 	private List<Face> createFaceData() {

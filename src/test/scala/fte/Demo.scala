@@ -49,7 +49,7 @@ object Demo {
           new SVGRender().draw(graph, s"$dir/${qName(query)}-$stitch.svg")
       }
       val t1 = System.nanoTime()
-      println("Elapsed time: " + (t1 - t0)*0.000000001 + "s")
+      println(s"Elapsed time: ${ (t1 - t0)*0.000000001 }sec for $query")
     }
   }
 
