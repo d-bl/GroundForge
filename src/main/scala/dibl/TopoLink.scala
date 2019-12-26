@@ -6,7 +6,7 @@ case class TopoLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean,
   val isRightOfTarget: Boolean = !isLeftOfTarget
   val isRightOfSource: Boolean = !isLeftOfTarget
 
-  override def toString: String = s"$sourceId,$targetId,$isRightOfTarget,$isLeftOfSource"
+  override def toString: String = s"$sourceId,$targetId,$isLeftOfTarget,$isLeftOfSource"
     .replaceAll("(rue|alse)", "")
 }
 
