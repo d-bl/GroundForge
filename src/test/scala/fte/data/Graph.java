@@ -90,7 +90,7 @@ public class Graph implements Cloneable {
 
 					prev = e.start.equals(prev) ? e.end : e.start;
 					e = prev.getNextEdge(e);
-					if (e.equals(faceStart)) {
+					if (e!=null && e.equals(faceStart)) {
 						e = null;
 					}
 				}

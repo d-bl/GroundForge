@@ -31,8 +31,8 @@ object Face {
     else {
       val leftSourceId = leftArc.last.sourceId
       val rightSourceId = rightArc.last.sourceId
-      val toLeftSource = linksByTarget(leftSourceId).filter(_.isRightOfSource)
-      val toRightSource = linksByTarget(rightSourceId).filter(_.isLeftOfSource)
+      val toLeftSource = linksByTarget(leftSourceId).filter(_.isRightOfTarget)
+      val toRightSource = linksByTarget(rightSourceId).filter(_.isLeftOfTarget)
       closeFace(leftArc ++ toLeftSource, rightArc ++ toRightSource)
     }
   }

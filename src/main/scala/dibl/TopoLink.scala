@@ -20,7 +20,7 @@ object TopoLink {
       isLeftOfSource(link)
       // TODO so far attempts to fix isLeftOfSource caused eternal loops,
       //  it should simplify Vertex.addEdge and GraphCreator.deltas
-      TopoLink(sourceIdOf(link), targetIdOf(link), isLeftOfTarget(link), isLeftOfSource = isLeftOfSource(link))
+      TopoLink(sourceIdOf(link), targetIdOf(link), isLeftOfTarget(link), isLeftOfSource = isLeftOfTarget(link))
     })
   }
 
