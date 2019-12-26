@@ -39,15 +39,23 @@ object GraphCreator {
     *                 +----+----+----+
     * @return The X's in the pattern definition are added to the returned graph.
     */
-  def fromDiagram(urlQuery: String): Option[Graph] = {
+  def fromThreadDiagram(urlQuery: String): Option[Graph] = {
     implicit val config: TilesConfig = TilesConfig(urlQuery)
-
     implicit val diagram: Diagram = ThreadDiagram(NewPairDiagram.create(config))
     implicit val scale: Int = 2
-    //    implicit val diagram: Diagram = NewPairDiagram.create(config)
-    //    implicit val scale: Int = 1
+    graphFrom(diagram.links.filter(inCenterBottomTile))
+  }
 
-    val linksInTile = diagram.links.filter(inCenterBottomTile)
+  def fromPairDiagram(urlQuery: String): Option[Graph] = {
+    implicit val config: TilesConfig = TilesConfig(urlQuery)
+    implicit val diagram: Diagram = NewPairDiagram.create(config)
+    implicit val scale: Int = 1
+    graphFrom(diagram.links.filter(inCenterBottomTile))
+  }
+
+  private def graphFrom(unsortedLinks: Seq[LinkProps])
+                       (implicit diagram: Diagram, scale: Int)= {
+    val linksInTile = unsortedLinks
       .sortBy(l => diagram.node(l.target).id -> diagram.node(l.source).id)
     val graph = new Graph()
     val topoLinks = TopoLink.simplify(linksInTile)

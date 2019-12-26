@@ -28,8 +28,8 @@ object Demo {
     dir.mkdirs()
     dir.listFiles().foreach(_.delete())
     for {
-      stitch <- Seq("ct", "ctc", "ctct", "crcrctclclcr")
-      query <- Seq(
+      stitch <- Seq("ct", "ctc", "ctct", "crcrctclclcr", "-")
+      queries = Seq(
         s"bandage&tileStitch=$stitch&patchWidth=3&patchHeight=4&tile=1,8&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2",
         s"sheered&tileStitch=$stitch&patchWidth=6&patchHeight=4&tile=l-,-h&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
         // the patterns above fail as pair diagrams, increasing the patch size doesn't help
@@ -40,16 +40,20 @@ object Demo {
         // for now prefixed id's with X in the next pattern to just apply the tileStitch everywhere
         s"braid&patchWidth=18&tileStitch=$stitch&patchHeight=8&tile=-B-C-y,B---cx,xC-B-x,m-5-b-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=6&shiftRowsSE=4&Xa4=llcttct&Xe4=rrcttctrr",
       )
+      query <- queries
     } {
       val t0 = System.nanoTime()
-      Try(GraphCreator.fromDiagram(query)) match {
+      Try(if (stitch=="-")
+            GraphCreator.fromThreadDiagram(query)
+          else GraphCreator.fromPairDiagram(query)
+      ) match {
         case Success(None) =>
         case Failure(e) => e.printStackTrace()
         case Success(Some(graph)) =>
-          new SVGRender().draw(graph, s"$dir/${qName(query)}-$stitch.svg")
+          new SVGRender().draw(graph, s"$dir/${ qName(query) }-$stitch.svg")
       }
       val t1 = System.nanoTime()
-      println(s"Elapsed time: ${ (t1 - t0)*0.000000001 }sec for $query")
+      println(s"Elapsed time: ${ (t1 - t0) * 0.000000001 }sec for $query")
     }
   }
 
