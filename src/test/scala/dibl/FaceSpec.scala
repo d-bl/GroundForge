@@ -12,6 +12,8 @@ class FaceSpec extends FlatSpec with Matchers {
     implicit val diagram: Diagram = ThreadDiagram(NewPairDiagram.create(config))
     implicit val scale: Int = 2
     val topoLinks = TopoLink.simplify(diagram.links.filter(inCenterBottomTile))
+    topoLinks.mkString(";") shouldBe
+      "b20,b22,t,f;a11,b22,f,f;a12,b21,t,t;b20,b21,f,t;a12,b20,t,f;a11,b20,f,t;a10,a12,t,f;b21,a12,f,f;b22,a11,t,t;a10,a11,f,t;b22,a10,t,f;b21,a10,f,t"
     facesFrom(topoLinks).mkString("\n") shouldBe
       """b20->b21,b21->a12,a12->b20 ; b20->b22,b22->a11,a11->b20
         |a12->b21 ; a12->b20,b20->b21
@@ -19,9 +21,6 @@ class FaceSpec extends FlatSpec with Matchers {
         |b22->a11 ; b22->a10,a10->a11
         |a10->a11,a11->b22,b22->a10 ; a10->a12,a12->b21,b21->a10
         |b21->a10,a10->a12 ; b21->a12""".stripMargin
-    // TODO move this check up once TopoLink.isLeftOfSource is implemented correctly
-    topoLinks.mkString(";") shouldBe
-      "? b20,b22,t,t;a11,b22,f,f;a12,b21,t,t;b20,b21,f,f;a12,b20,t,t;a11,b20,f,f;a10,a12,t,t;b21,a12,f,f;b22,a11,t,t;a10,a11,f,f;b22,a10,t,t;b21,a10,f,f"
   }
   it should "create proper pair link sequences for brick pattern" in {
     val s = "rose&tileStitch=ctc&patchWidth=12&patchHeight=4&tile=5831,-4-7,&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"

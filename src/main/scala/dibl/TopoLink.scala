@@ -18,10 +18,9 @@ object TopoLink {
     implicit val complexLinks: Seq[LinkProps] = linksInOneTile
     linksInOneTile.map(link => {
       isLeftOfSource(link)
-      val bool = isLeftOfTarget(link)
       // TODO so far attempts to fix isLeftOfSource caused eternal loops,
       //  it should simplify Vertex.addEdge and GraphCreator.deltas
-      TopoLink(sourceIdOf(link), targetIdOf(link), bool, isLeftOfSource = bool)
+      TopoLink(sourceIdOf(link), targetIdOf(link), isLeftOfTarget(link), isLeftOfSource = isLeftOfSource(link))
     })
   }
 
@@ -64,10 +63,10 @@ object TopoLink {
        *     \        /
        *    / \     /  \
        */
-      case ("cross", true) => false
-      case ("cross", false) => true
-      case ("twist", false) => false
-      case ("twist", true) => true
+      case ("cross", true) => true
+      case ("cross", false) => false
+      case ("twist", false) => true
+      case ("twist", true) => false
       case _ => // TODO relatively expensive lookup for large matrices
         val otherX: Double = linksInTile.find(other =>
           sourceIdOf(other) == sourceIdOf(link) &&
