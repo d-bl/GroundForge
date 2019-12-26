@@ -28,7 +28,7 @@ object Demo {
     dir.mkdirs()
     dir.listFiles().foreach(_.delete())
     for {
-      stitch <- Seq("ct", "ctc", "ctct", "crcrctclclcr", "-")
+      stitch <- Seq("tc", "ct", "ctc", "ctct", "crcrctclclcr")
       queries = Seq(
         s"bandage&tileStitch=$stitch&patchWidth=3&patchHeight=4&tile=1,8&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2",
         s"sheered&tileStitch=$stitch&patchWidth=6&patchHeight=4&tile=l-,-h&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
@@ -43,14 +43,16 @@ object Demo {
       query <- queries
     } {
       val t0 = System.nanoTime()
-      Try(if (stitch=="-")
-            GraphCreator.fromThreadDiagram(query)
-          else GraphCreator.fromPairDiagram(query)
+      Try(if (stitch == "tc")
+            GraphCreator.fromPairDiagram(query)
+          else GraphCreator.fromThreadDiagram(query)
       ) match {
         case Success(None) =>
         case Failure(e) => e.printStackTrace()
         case Success(Some(graph)) =>
-          new SVGRender().draw(graph, s"$dir/${ qName(query) }-$stitch.svg")
+          val tail = if (stitch == "tc") "pairs"
+                     else stitch
+          new SVGRender().draw(graph, s"$dir/${ qName(query) }-$tail.svg")
       }
       val t1 = System.nanoTime()
       println(s"Elapsed time: ${ (t1 - t0) * 0.000000001 }sec for $query")
