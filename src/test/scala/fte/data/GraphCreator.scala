@@ -54,7 +54,7 @@ object GraphCreator {
   }
 
   private def graphFrom(unsortedLinks: Seq[LinkProps])
-                       (implicit diagram: Diagram, scale: Int)= {
+                       (implicit diagram: Diagram, scale: Int) = {
     val linksInTile = unsortedLinks
       .sortBy(l => diagram.node(l.target).id -> diagram.node(l.source).id)
     val graph = new Graph()
@@ -76,8 +76,8 @@ object GraphCreator {
 
     // TODO for now relying on vertex to add the edges in proper order
     topoLinks.foreach { link =>
-        addTo(vertexMap(link.sourceId),link)
-        addTo(vertexMap(link.targetId),link)
+      addTo(vertexMap(link.sourceId), link)
+      addTo(vertexMap(link.targetId), link)
     }
     // w.i.p. figuring out to replace the loop above
     val xs = topoLinks.groupBy(_.sourceId).map { case (id, tl) =>
@@ -88,7 +88,7 @@ object GraphCreator {
     topoLinks.groupBy(_.targetId).foreach { case (id, tl) =>
       val l1 = tl.filter(_.isRightOfTarget).mkString(";")
       val l2 = tl.filter(_.isLeftOfTarget).mkString(";")
-      println(s"$id :: ${xs(id)} ;;; $l1 ;; $l2")
+      println(s"$id :: ${ xs(id) } ;;; $l1 ;; $l2")
     }
 
     val faces = facesFrom(topoLinks)
@@ -142,9 +142,7 @@ object GraphCreator {
     val target = diagram.node(link.target)
     val whiteStart = link.isInstanceOf[WhiteStart]
     val (dx, dy) = deltas(whiteStart, source, target) // TODO obsolete when booleans of TopologicalLink are fixed
-    println(s"(${ source.id },${ target.id }) deltas($dx,$dy) ${ source.isLeftTwist }, ${ source.isRightTwist }, ${ target.isLeftTwist }, ${ target.isRightTwist }, $whiteStart")
-    val edge = new Edge(vertexMap(source.id), vertexMap(target.id), dx, dy)
-    edge
+    new Edge(vertexMap(source.id), vertexMap(target.id), dx, dy)
   }
 
   private def deltas(whiteStart: Boolean, source: NodeProps, target: NodeProps)
