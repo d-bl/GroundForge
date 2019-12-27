@@ -15,13 +15,10 @@ object TopoLink {
   /** reduces diagram info of a tile to topological info embedded on a flat torus */
   def simplify(linksInOneTile: Seq[LinkProps])
               (implicit diagram: Diagram): Seq[TopoLink] = {
-    implicit val complexLinks: Seq[LinkProps] = linksInOneTile
-    linksInOneTile.map(link => {
-      isLeftOfSource(link)
-      // TODO so far fixing isLeftOfSource causes exceptions,
-      //  it should simplify Vertex.addEdge and GraphCreator.deltas
-      TopoLink(sourceOf(link).id, targetOf(link).id, isLeftOfTarget(link), isLeftOfSource = isLeftOfTarget(link))
-    })
+    implicit val topoLinks: Seq[LinkProps] = linksInOneTile
+    linksInOneTile.map { link =>
+      TopoLink(sourceOf(link).id, targetOf(link).id, isLeftOfTarget(link), isLeftOfSource(link))
+    }
   }
 
   private def isLeftOfTarget(link: LinkProps)

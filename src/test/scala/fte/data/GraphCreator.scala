@@ -74,16 +74,21 @@ object GraphCreator {
       graph.addNewEdge(createEdge(link))
     }.toArray
 
-    // add the edges to vertices in clock wise order
-    topoLinks.groupBy(_.sourceId).foreach { case (id, topoLinks) =>
-      val vertex = vertexMap(id)
-      topoLinks.filter(_.isRightOfSource).foreach(addTo(vertex, _))
-      topoLinks.filter(_.isLeftOfSource).foreach(addTo(vertex, _))
+    // TODO for now relying on vertex to add the edges in proper order
+    topoLinks.foreach { link =>
+        addTo(vertexMap(link.sourceId),link)
+        addTo(vertexMap(link.targetId),link)
     }
-    topoLinks.groupBy(_.targetId).foreach { case (id, topolinks) =>
-      val vertex = vertexMap(id)
-      topolinks.filter(_.isLeftOfTarget).foreach(addTo(vertex, _))
-      topolinks.filter(_.isRightOfTarget).foreach(addTo(vertex, _))
+    // w.i.p. figuring out to replace the loop above
+    val xs = topoLinks.groupBy(_.sourceId).map { case (id, tl) =>
+      val l1 = tl.filter(_.isRightOfSource).mkString(";")
+      val l2 = tl.filter(_.isLeftOfSource).mkString(";")
+      id -> s"$l1 ;; $l2"
+    }
+    topoLinks.groupBy(_.targetId).foreach { case (id, tl) =>
+      val l1 = tl.filter(_.isRightOfTarget).mkString(";")
+      val l2 = tl.filter(_.isLeftOfTarget).mkString(";")
+      println(s"$id :: ${xs(id)} ;;; $l1 ;; $l2")
     }
 
     val faces = facesFrom(topoLinks)
@@ -96,12 +101,12 @@ object GraphCreator {
   }
 
   private def addTo(vertex: Vertex,
-                    simpleLink: TopoLink)
+                    topoLink: TopoLink)
                    (implicit edges: Array[Edge],
                     vertexMap: Map[String, Vertex]
                    ): Unit = {
     // TODO Vertex.addEdge should add at the end (once TopologicalLink.isLeftOfSource is fixed)
-    findEdge(simpleLink).foreach(vertex.addEdge)
+    findEdge(topoLink).foreach(vertex.addEdge)
   }
 
   private def toJava(scalaFace: dibl.Face)

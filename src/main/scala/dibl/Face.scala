@@ -29,7 +29,7 @@ object Face {
     if (sharedSources.nonEmpty)
       (trim(leftArc, sharedSources), trim(rightArc, sharedSources))
     else {
-      val leftSourceId = leftArc.last.sourceId
+      val leftSourceId = leftArc.last.sourceId // TODO no such element exception for torchon pair diagram
       val rightSourceId = rightArc.last.sourceId
       val toLeftSource = linksByTarget(leftSourceId).filter(_.isRightOfTarget)
       val toRightSource = linksByTarget(rightSourceId).filter(_.isLeftOfTarget)
