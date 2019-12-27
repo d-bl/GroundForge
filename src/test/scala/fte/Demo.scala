@@ -46,8 +46,8 @@ object Demo {
       tail = if (stitch == pairDiagram) "pairs"
              else stitch
       fileName = s"$dir/$qName-$tail.svg"
-      t0 = System.nanoTime()
     } {
+      val t0 = System.nanoTime()
       Try(if (stitch == pairDiagram)
             GraphCreator.fromPairDiagram(query)
           else GraphCreator.fromThreadDiagram(query)
