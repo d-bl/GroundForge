@@ -74,7 +74,7 @@ object GraphCreator {
       graph.addNewEdge(createEdge(link))
     }.toArray
 
-    // TODO for now relying on vertex to add the edges in proper order
+    // TODO for now relying on vertex to add the edges in proper order to vertices
     topoLinks.foreach { link =>
       addTo(vertexMap(link.sourceId), link)
       addTo(vertexMap(link.targetId), link)
