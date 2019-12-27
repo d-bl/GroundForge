@@ -24,44 +24,39 @@ import scala.util.{ Failure, Success, Try }
 
 object Demo {
   def main(args: Array[String]): Unit = {
-    val dir = new File("target/test/fte-demo")
-    dir.mkdirs()
-    dir.listFiles().foreach(_.delete())
+    val dir = new File("target/test/fte-demo") {
+      mkdirs()
+      listFiles().foreach(_.delete())
+    }
+    val pairDiagram = "tc"
     for {
-      stitch <- Seq("tc", "ct", "ctc", "ctct", "crcrctclclcr")
-      queries = Seq(
-        s"bandage&tileStitch=$stitch&patchWidth=3&patchHeight=4&tile=1,8&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2",
+      stitch <- Seq(pairDiagram, "ct", "ctc", "ctct", "crcrctclclcr")
+      query <- Seq(
+        s"bandage&tileStitch=$stitch&patchWidth=3&patchHeight=4&tile=1,8&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2",
         s"sheered&tileStitch=$stitch&patchWidth=6&patchHeight=4&tile=l-,-h&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
-        // the patterns above fail as pair diagrams, increasing the patch size doesn't help
+        // sheered fails as pair diagrams (as bandage would without foot sides), increasing the patch size doesn't help
         s"torchon&tileStitch=$stitch&patchWidth=6&patchHeight=4&tile=5-,-5&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
         s"rose&tileStitch=$stitch&patchWidth=12&patchHeight=8&tile=5831,-4-7,3158,-7-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4",
         s"pinwheel&tileStitch=$stitch&patchWidth=12&patchHeight=8&tile=586-,-4-5,5-21,-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4&",
         s"whiting=F14_P193&tileStitch=$stitch&patchWidth=24&patchHeight=28&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14",
-        // for now prefixed id's with X in the next pattern to just apply the tileStitch everywhere
+        // for now prefixed id's of foot side stitches with X in the next pattern to just apply the tileStitch everywhere
         s"braid&patchWidth=18&tileStitch=$stitch&patchHeight=8&tile=-B-C-y,B---cx,xC-B-x,m-5-b-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=6&shiftRowsSE=4&Xa4=llcttct&Xe4=rrcttctrr",
       )
-      query <- queries
+      qName = query.replaceAll("&.*", "").replaceAll("[^a-zA-Z0-9]+", "-")
+      tail = if (stitch == pairDiagram) "pairs"
+             else stitch
+      fileName = s"$dir/$qName-$tail.svg"
+      t0 = System.nanoTime()
     } {
-      val t0 = System.nanoTime()
-      Try(if (stitch == "tc")
+      Try(if (stitch == pairDiagram)
             GraphCreator.fromPairDiagram(query)
           else GraphCreator.fromThreadDiagram(query)
       ) match {
         case Success(None) =>
         case Failure(e) => e.printStackTrace()
-        case Success(Some(graph)) =>
-          val tail = if (stitch == "tc") "pairs"
-                     else stitch
-          new SVGRender().draw(graph, s"$dir/${ qName(query) }-$tail.svg")
+        case Success(Some(graph)) => new SVGRender().draw(graph, fileName)
       }
-      val t1 = System.nanoTime()
-      println(s"Elapsed time: ${ (t1 - t0) * 0.000000001 }sec for $query")
+      println(s"Elapsed time: ${ (System.nanoTime() - t0) * 0.000000001 }sec for $qName")
     }
-  }
-
-  private def qName(query: String) = {
-    query
-      .replaceAll("&.*", "")
-      .replaceAll("[^a-zA-Z0-9]+", "-")
   }
 }
