@@ -54,11 +54,12 @@ object GraphCreator {
   }
 
   private def graphFrom(unsortedLinks: Seq[LinkProps])
-                       (implicit diagram: Diagram, scale: Int) = {
+                       (implicit diagram: Diagram, scale: Int): Option[Graph] = {
     val linksInTile = unsortedLinks
       .sortBy(l => diagram.node(l.target).id -> diagram.node(l.source).id)
     val graph = new Graph()
     val topoLinks = TopoLink.simplify(linksInTile)
+    if(topoLinks.exists(l => l.sourceId == l.targetId)) return None
 
     // create vertices
     implicit val vertexMap: Map[String, Vertex] = topoLinks
