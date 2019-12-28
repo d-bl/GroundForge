@@ -4,7 +4,7 @@ import dibl.LinkProps.WhiteStart
 
 case class TopoLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean, isLeftOfSource: Boolean) {
   val isRightOfTarget: Boolean = !isLeftOfTarget
-  val isRightOfSource: Boolean = !isLeftOfTarget
+  val isRightOfSource: Boolean = !isLeftOfSource
 
   override def toString: String = s"$sourceId,$targetId,$isLeftOfTarget,$isLeftOfSource"
     .replaceAll("(rue|alse)", "")

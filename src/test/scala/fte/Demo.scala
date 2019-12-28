@@ -46,7 +46,7 @@ object Demo {
       tail = if (stitch == pairDiagram) "pairs"
              else stitch
       fileName = s"$dir/$qName-$tail.svg"
-    } {
+    } if(stitch!=pairDiagram && !Seq("bandage","sheered").contains(qName)) { // TODO fix stack overflow
       val t0 = System.nanoTime()
       Try(if (stitch == pairDiagram)
             GraphCreator.fromPairDiagram(query)

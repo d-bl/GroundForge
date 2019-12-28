@@ -74,39 +74,22 @@ object GraphCreator {
       graph.addNewEdge(createEdge(link))
     }.toArray
 
-    // TODO for now relying on vertex to add the edges in proper order to vertices
-    topoLinks.foreach { link =>
-      addTo(vertexMap(link.sourceId), link)
-      addTo(vertexMap(link.targetId), link)
+    // add links to vertices in clockwise order
+    val linksBySource = topoLinks.groupBy(_.sourceId).map { case (id, links) =>
+      id -> (links.filter(_.isRightOfSource) ++ links.filter(_.isLeftOfSource))
     }
-    // w.i.p. figuring out to replace the loop above
-    val xs = topoLinks.groupBy(_.sourceId).map { case (id, tl) =>
-      val l1 = tl.filter(_.isRightOfSource).mkString(";")
-      val l2 = tl.filter(_.isLeftOfSource).mkString(";")
-      id -> s"$l1 ;; $l2"
-    }
-    topoLinks.groupBy(_.targetId).foreach { case (id, tl) =>
-      val l1 = tl.filter(_.isRightOfTarget).mkString(";")
-      val l2 = tl.filter(_.isLeftOfTarget).mkString(";")
-      println(s"$id :: ${ xs(id) } ;;; $l1 ;; $l2")
+    topoLinks.groupBy(_.targetId).foreach { case (id, links) =>
+      val allFour = linksBySource(id) ++ links.filter(_.isLeftOfTarget) ++ links.filter(_.isRightOfTarget)
+      println(s"$id: " +allFour.mkString(";"))
+      allFour.map(topoLink => findEdge(topoLink).foreach(vertexMap(id).addEdge))
     }
 
-    val faces = facesFrom(topoLinks)
-      .map(toJava).asJava
+    // TODO faces not yet used in layout method, divide in forward/backward faces?
+    val faces = facesFrom(topoLinks).map(toJava).asJava
 
-    // TODO faces not yet used in layout method
     if (new OneFormTorus(graph).layout(faces))
       Some(graph)
     else None
-  }
-
-  private def addTo(vertex: Vertex,
-                    topoLink: TopoLink)
-                   (implicit edges: Array[Edge],
-                    vertexMap: Map[String, Vertex]
-                   ): Unit = {
-    // TODO Vertex.addEdge should add at the end (once TopologicalLink.isLeftOfSource is fixed)
-    findEdge(topoLink).foreach(vertex.addEdge)
   }
 
   private def toJava(scalaFace: dibl.Face)
