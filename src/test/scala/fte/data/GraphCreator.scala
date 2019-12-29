@@ -100,9 +100,18 @@ object GraphCreator {
       .map(faceEdges => new Face(){setEdges(faceEdges)})
       .asJava
 
+    println(facesNew.toArray().map(toStr).mkString("new:\n","\n",""))
+    println(facesOld.toArray().map(toStr).mkString("old:\n","\n",""))
+
     if (new OneFormTorus(graph).layout(facesOld))
       Some(graph)
     else None
+  }
+
+  private def toStr(a: Any) = {
+    a.asInstanceOf[Face].getEdges.toArray().map(
+      _.toString.replaceAll(".00", "").replaceAll(".0,0.", "").replaceAll("-0", "")
+    ).mkString(",")
   }
 
   private def toJavaEdgeList(topoLinks: Seq[TopoLink])
