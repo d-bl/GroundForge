@@ -23,8 +23,6 @@ import dibl.proto.TilesConfig
 import dibl.{ Diagram, LinkProps, NewPairDiagram, ThreadDiagram, TopoLink }
 import fte.layout.OneFormTorus
 
-import scala.collection.JavaConverters._
-
 object GraphCreator {
 
   /**
@@ -88,30 +86,39 @@ object GraphCreator {
     }
     topoLinks.groupBy(_.targetId).foreach { case (id, links) =>
       val allFour = linksBySource(id) ++ links.filter(_.isLeftOfTarget) ++ links.filter(_.isRightOfTarget)
-      println(s"$id: " + allFour.mkString(";"))
+      //println(s"$id: " + allFour.mkString(";"))
       allFour.map(topoLink => findEdge(topoLink).foreach(vertexMap(id).addEdge))
     }
 
-    val facesOld = graph.getFaces
-    // TODO doesn't work yet
-    val facesNew = facesFrom(topoLinks)
-      .map(_.clockWise)
+   val edgesPerFace = facesFrom(topoLinks).map(_.counterClockWise)
+    val facesNew = edgesPerFace
       .map(toJavaEdgeList)
       .map(faceEdges => new Face(){setEdges(faceEdges)})
-      .asJava
 
-    println(facesNew.toArray().map(toStr).mkString("new:\n","\n",""))
-    println(facesOld.toArray().map(toStr).mkString("old:\n","\n",""))
+    // TODO add new faces to edges (as forFace/revFace) to eliminate old faces
+    edges.foreach{ e =>
+      val fs = facesNew.filter(_.getEdges.contains(e))
+      if (fs.size != 2) print(s"whoops:${toS(e)}x${fs.size} ")
+//      e.forFace = fs.head
+//      e.revFace = fs.last
+    }
 
-    if (new OneFormTorus(graph).layout(facesOld))
+    println(edgesPerFace.mkString("\ncounterClockWise:\n","\n",""))
+    println(facesNew.map(toStr).mkString("new:\n","\n",""))
+    println(graph.getFaces.toArray().map(toStr).mkString("old:\n","\n",""))
+
+    if (new OneFormTorus(graph).layout(graph.getFaces))
+    //if (new OneFormTorus(graph).layout(facesNew.asJava))
       Some(graph)
     else None
   }
 
   private def toStr(a: Any) = {
-    a.asInstanceOf[Face].getEdges.toArray().map(
-      _.toString.replaceAll(".00", "").replaceAll(".0,0.", "").replaceAll("-0", "")
-    ).mkString(",")
+    a.asInstanceOf[Face].getEdges.toArray().map(toS).mkString(",")
+  }
+
+  private def toS(edge: Any) = {
+    edge.toString.replaceAll(".00", "").replaceAll(".0,0.", "").replaceAll("-0", "")
   }
 
   private def toJavaEdgeList(topoLinks: Seq[TopoLink])

@@ -30,7 +30,7 @@ object Demo {
     }
     val pairDiagram = "tc"
     for {
-      stitch <- Seq(pairDiagram, "ct", "ctc", "ctct", "crcrctclclcr")
+      stitch <- Seq("ct", "ctc", "ctct", "crcrctclclcr")
       query <- Seq(
         s"bandage&tileStitch=$stitch&patchWidth=3&patchHeight=4&tile=1,8&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2",
         s"sheered&tileStitch=$stitch&patchWidth=6&patchHeight=4&tile=l-,-h&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",

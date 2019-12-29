@@ -16,7 +16,7 @@
 package dibl
 
 case class Face(leftArc: Seq[TopoLink], rightArc: Seq[TopoLink]) {
-  val clockWise: Seq[TopoLink] = rightArc ++ leftArc.reverse
+  val set: Set[TopoLink] = (rightArc ++ leftArc.reverse).toSet
   val counterClockWise: Seq[TopoLink] = leftArc ++ rightArc.reverse
 
   override def toString: String = toS(leftArc) + " ; " + toS(rightArc)
@@ -27,6 +27,22 @@ case class Face(leftArc: Seq[TopoLink], rightArc: Seq[TopoLink]) {
 }
 
 object Face {
+  @scala.annotation.tailrec
+  def directions(unknown: Seq[Face],
+                 forward: Seq[Face] = Seq.empty,
+                 backward: Seq[Face] = Seq.empty
+                ): (Seq[Face], Seq[Face]) = {
+    if (unknown.isEmpty) (forward, backward)
+    else if (forward.isEmpty && backward.isEmpty) {
+      // TODO by GraphCreator: walk along the links of the faces to add them to findEdge(_).forFace/revFace
+      directions(unknown.tail, forward = Seq(unknown.head), backward = Seq.empty)
+    } else if (backward.isEmpty) {
+      val gr = unknown.groupBy(_.set.intersect(forward.head.set).nonEmpty)
+      directions(unknown = gr(false), forward, backward = gr(true))
+    }
+    else ???
+  }
+
   def facesFrom(linksInTile: Seq[TopoLink]): Seq[Face] = {
     implicit val linksByTarget: Map[String, Seq[TopoLink]] = linksInTile.groupBy(_.targetId)
     linksByTarget
@@ -47,7 +63,7 @@ object Face {
     if (sharedSources.nonEmpty)
       (trim(leftArc, sharedSources), trim(rightArc, sharedSources))
     else {
-      val leftSourceId = leftArc.last.sourceId // TODO no such element exception for rose pair diagram
+      val leftSourceId = leftArc.last.sourceId
       val rightSourceId = rightArc.last.sourceId
       val toLeftSource = linksByTarget(leftSourceId).filter(_.isRightOfTarget)
       val toRightSource = linksByTarget(rightSourceId).filter(_.isLeftOfTarget)
