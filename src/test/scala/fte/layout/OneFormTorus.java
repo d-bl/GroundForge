@@ -15,11 +15,7 @@ public class OneFormTorus {
 		this.graph = g;
 	}
 
-	public boolean layout(List<Face> newFaces) {
-		//TODO use newFaces once we know the order of faces and edges on faces,
-		// we also need to add edges to vertices in proper order some new way
-		List<Face> faces = graph.getFaces();
-
+	public boolean layout(List<Face> faces) {
 		List<Edge> edges = graph.getEdges();
 
 		int m = edges.size();

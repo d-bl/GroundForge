@@ -36,6 +36,6 @@ class FaceSpec extends FlatSpec with Matchers {
         |c1->b2,b2->a1 ; c1->d2,d2->a1
         |b2->d1 ; b2->a1,a1->d1""".stripMargin
     topoLinks.mkString(";") shouldBe
-      "? b1,c1,t,t;d1,c1,f,t;b2,d1,t,t;a1,d1,f,t;b2,a1,t,f;d2,a1,f,t;a1,b1,t,f;d2,b1,f,f;c1,d2,t,t;d1,d2,f,f;b1,b2,t,f;c1,b2,f,f"
+      "b1,c1,t,t;d1,c1,f,t;b2,d1,t,t;a1,d1,f,t;b2,a1,t,f;d2,a1,f,t;a1,b1,t,f;d2,b1,f,f;c1,d2,t,t;d1,d2,f,f;b1,b2,t,f;c1,b2,f,f"
   }
 }

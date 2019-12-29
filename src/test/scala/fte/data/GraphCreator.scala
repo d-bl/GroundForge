@@ -15,10 +15,12 @@
 */
 package fte.data
 
+import java.util
+
 import dibl.Face.facesFrom
-import dibl.LinkProps.WhiteStart
+import dibl.TopoLink.{ sourceOf, targetOf }
 import dibl.proto.TilesConfig
-import dibl.{ Diagram, LinkProps, NewPairDiagram, NodeProps, ThreadDiagram, TopoLink }
+import dibl.{ Diagram, LinkProps, NewPairDiagram, ThreadDiagram, TopoLink }
 import fte.layout.OneFormTorus
 
 import scala.collection.JavaConverters._
@@ -59,7 +61,9 @@ object GraphCreator {
       .sortBy(l => diagram.node(l.target).id -> diagram.node(l.source).id)
     val graph = new Graph()
     val topoLinks = TopoLink.simplify(linksInTile)
-    if(topoLinks.exists(l => l.sourceId == l.targetId)) return None
+
+    // TODO for now this check prevents eternal loops for bandage/sheered pair diagrams
+    if (topoLinks.exists(l => l.sourceId == l.targetId)) return None
 
     // create vertices
     implicit val vertexMap: Map[String, Vertex] = topoLinks
@@ -72,39 +76,41 @@ object GraphCreator {
 
     // create edges
     implicit val edges: Array[Edge] = linksInTile.map { link =>
-      graph.addNewEdge(createEdge(link))
+      graph.addNewEdge(new Edge(
+        vertexMap(sourceOf(link).id),
+        vertexMap(targetOf(link).id)
+      ))
     }.toArray
 
-    // add links to vertices in clockwise order
+    // add edges to vertices in clockwise order
     val linksBySource = topoLinks.groupBy(_.sourceId).map { case (id, links) =>
       id -> (links.filter(_.isRightOfSource) ++ links.filter(_.isLeftOfSource))
     }
     topoLinks.groupBy(_.targetId).foreach { case (id, links) =>
       val allFour = linksBySource(id) ++ links.filter(_.isLeftOfTarget) ++ links.filter(_.isRightOfTarget)
-      println(s"$id: " +allFour.mkString(";"))
+      println(s"$id: " + allFour.mkString(";"))
       allFour.map(topoLink => findEdge(topoLink).foreach(vertexMap(id).addEdge))
     }
 
-    // TODO faces not yet used in layout method, divide in forward/backward faces?
-    val faces = facesFrom(topoLinks).map(toJava).asJava
+    val facesOld = graph.getFaces
+    // TODO doesn't work yet
+    val facesNew = facesFrom(topoLinks)
+      .map(_.clockWise)
+      .map(toJavaEdgeList)
+      .map(faceEdges => new Face(){setEdges(faceEdges)})
+      .asJava
 
-    if (new OneFormTorus(graph).layout(faces))
+    if (new OneFormTorus(graph).layout(facesOld))
       Some(graph)
     else None
   }
 
-  private def toJava(scalaFace: dibl.Face)
-                    (implicit edges: Array[Edge],
-                     vertexMap: Map[String, Vertex]
-                    ) = {
-    println(scalaFace)
-    val faceEdges = new java.util.LinkedList[Edge]() {
-      // TODO what order should the edges get?
-      (scalaFace.leftArc ++ scalaFace.rightArc)
-        .foreach(findEdge(_).foreach(add))
-    }
-    new Face() {
-      setEdges(faceEdges)
+  private def toJavaEdgeList(topoLinks: Seq[TopoLink])
+                            (implicit edges: Array[Edge],
+                             vertexMap: Map[String, Vertex]
+                            ): util.LinkedList[Edge] = {
+    new java.util.LinkedList[Edge]() {
+      topoLinks.foreach(findEdge(_).foreach(add))
     }
   }
 
@@ -116,41 +122,6 @@ object GraphCreator {
       edge.getStart == vertexMap(link.sourceId) &&
         edge.getEnd == vertexMap(link.targetId)
     )
-  }
-
-  private def createEdge(link: LinkProps)
-                        (implicit scale: Int, // TODO obsolete when deltas is
-                         diagram: Diagram,
-                         vertexMap: Map[String, Vertex]) = {
-    val source = diagram.node(link.source)
-    val target = diagram.node(link.target)
-    val whiteStart = link.isInstanceOf[WhiteStart]
-    val (dx, dy) = deltas(whiteStart, source, target) // TODO obsolete when booleans of TopologicalLink are fixed
-    new Edge(vertexMap(source.id), vertexMap(target.id), dx, dy)
-  }
-
-  private def deltas(whiteStart: Boolean, source: NodeProps, target: NodeProps)
-                    (implicit scale: Int): (Int, Int) = {
-    /* NodeProps        deltas     cross   twist
-     *  o--- x/cols     y          \  /    \   /
-     *  |               |           \        /
-     *  y/rows          o--- x     / \     /  \
-     */
-    (scale, source.isLeftTwist, source.isRightTwist, target.isLeftTwist, target.isRightTwist, whiteStart) match {
-      // initial pair diagram
-      case (1, _, _, _, _, _) => ((source.x - target.x).toInt, (source.y - target.y).toInt)
-      // the left thread leaving a cross has a white start
-      case (_, false, false, _, _, true) => (-1, -1)
-      case (_, false, false, _, _, false) => (1, -1)
-      // the right thread arriving at a cross has a white start
-      case (_, _, _, false, false, true) => (1, -1)
-      case (_, _, _, false, false, false) => (-1, -1)
-      // threads arriving at twists not treated above
-      case (_, _, _, _, true, true) => (0, -1)
-      case (_, _, _, _, true, false) => (1, -1)
-      case (_, _, _, true, _, false) => (0, -1)
-      case (_, _, _, true, _, true) => (1, -1)
-    }
   }
 
   def inCenterBottomTile(link: LinkProps)

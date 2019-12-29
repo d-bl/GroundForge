@@ -27,10 +27,6 @@ public class Graph implements Cloneable {
 		return edges;
 	}
 
-	public List<Face> getFaces() {
-		return createFaceData();
-	}
-
 	public List<Vector> getTranslationVectors() {
 		return vectors;
 	}
@@ -52,7 +48,7 @@ public class Graph implements Cloneable {
 		return e;
 	}
 
-	private List<Face> createFaceData() {
+	public List<Face> getFaces() {
 
 		if (faces != null) return faces;
 
