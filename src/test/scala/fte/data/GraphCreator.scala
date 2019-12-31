@@ -17,7 +17,6 @@ package fte.data
 
 import java.util
 
-import dibl.Face.facesFrom
 import dibl.TopoLink.{ sourceOf, targetOf }
 import dibl.proto.TilesConfig
 import dibl.{ Diagram, LinkProps, NewPairDiagram, ThreadDiagram, TopoLink }
@@ -90,25 +89,7 @@ object GraphCreator {
       allFour.map(topoLink => findEdge(topoLink).foreach(vertexMap(id).addEdge))
     }
 
-   val edgesPerFace = facesFrom(topoLinks).map(_.counterClockWise)
-    val facesNew = edgesPerFace
-      .map(toJavaEdgeList)
-      .map(faceEdges => new Face(){setEdges(faceEdges)})
-
-    // TODO add new faces to edges (as forFace/revFace) to eliminate old faces
-    edges.foreach{ e =>
-      val fs = facesNew.filter(_.getEdges.contains(e))
-      if (fs.size != 2) print(s"whoops:${toS(e)}x${fs.size} ")
-//      e.forFace = fs.head
-//      e.revFace = fs.last
-    }
-
-    println(edgesPerFace.mkString("\ncounterClockWise:\n","\n",""))
-    println(facesNew.map(toStr).mkString("new:\n","\n",""))
-    println(graph.getFaces.toArray().map(toStr).mkString("old:\n","\n",""))
-
     if (new OneFormTorus(graph).layout(graph.getFaces))
-    //if (new OneFormTorus(graph).layout(facesNew.asJava))
       Some(graph)
     else None
   }
