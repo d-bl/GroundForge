@@ -16,37 +16,31 @@ import fte.data.Graph;
 import fte.data.Vertex;
 
 public class SVGRender {
-
-	Graph graph;
-	
-	static final double R = 3.0;
-	
-	public void draw(Graph g, String fname) {
+	public void draw(Graph graph, String fname) {
 
 		SVGGraphics2D g2 = new SVGGraphics2D(500, 500);
-		
-		this.graph = g;
-		
+
 		List<Vertex> vertices = graph.getVertices();
 		List<Vector> vectors = graph.getTranslationVectors();
 		Vector v0 = vectors.get(0);
 		Vector v1 = vectors.get(1);
 
-		g2.setPaint(Color.GREEN);
-		g2.draw(new Line2D.Double(0,0, 100.0*v0.getX(), 100.0*v0.getY()));
-		g2.draw(new Line2D.Double(0,0, 100.0*v1.getX(), 100.0*v1.getY()));
-		g2.setPaint(Color.red);
-		g2.fill(new Ellipse2D.Double(100.0*v0.getX()-R, 100.0*v0.getY()-R, 2.0*R, 2.0*R));
-		g2.setPaint(Color.blue);
-		g2.fill(new Ellipse2D.Double(100.0*Math.abs(v1.getX())-R, 100.0*v1.getY()-R, 2.0*R, 2.0*R));
-
 		double offset = 0d;
 		if (v1.getX()<0) offset = 4*v1.getX();
-		for (double r = 0; r < 4; r++) {
-			for (double c = 0; c < 4; c++) {
-				double shiftX = r*v0.getX() + c*v1.getX() - offset;
-				double shiftY = r*v0.getY() + c*v1.getY();
-				drawRepeat(g2, vertices, shiftX, shiftY);
+
+		g2.setPaint(Color.GREEN);
+		g2.draw(new Line2D.Double(-100.0*offset,0, 100.0*(v0.getX()-offset), 100.0*v0.getY()));
+		g2.draw(new Line2D.Double(-100.0*offset,0, 100.0*(v1.getX()-offset), 100.0*v1.getY()));
+
+		// TODO rather use the smallest length to scale the dots/strokes
+		double dotR = 10d/Math.sqrt(vertices.size());
+		g2.setStroke(new BasicStroke((float) (dotR / 2)));
+
+		for (double row = 0; row < 4; row++) {
+			for (double col = 0; col < 4; col++) {
+				double shiftCol = row*v0.getX() + col*v1.getX() - offset;
+				double shiftRow = row*v0.getY() + col*v1.getY();
+				drawRepeat(g2, vertices, shiftCol, shiftRow, dotR, row==0 && col == 0);
 			}
 		}
 
@@ -60,23 +54,18 @@ public class SVGRender {
 		}
 	}
 	
-	void drawRepeat(SVGGraphics2D g2, List<Vertex> vertices, double shiftX, double shiftY) {
+	void drawRepeat(SVGGraphics2D g2, List<Vertex> vertices, double shiftX, double shiftY, double r, boolean first) {
 
-		// TODO rather use the smallest length to scale the dots
-		double r = 10d/Math.sqrt(vertices.size());
-		g2.setStroke(new BasicStroke((float) (r / 2)));
-
+		if (first) g2.setPaint(Color.BLUE);
+		else g2.setPaint(Color.BLACK);
 		for (Vertex v : vertices) {
 			double vx = v.getX()+shiftX;
 			double vy = v.getY()+shiftY;
-			
-			g2.setPaint(Color.red);
+
 			g2.fill(new Ellipse2D.Double(100.0*vx-r, 100.0*vy-r, 2.0*r, 2.0*r));
-			
 			List<Edge> edges = v.getRotation();
 			for (Edge e : edges) {
 				if (e.getStart().equals(v)) {
-					g2.setPaint(Color.BLACK);
 					g2.draw(new Line2D.Double(100.0*vx, 100.0*vy, 100.0*(vx+e.getDeltaX()), 100.0*(vy+e.getDeltaY())));
 				}
 			}
