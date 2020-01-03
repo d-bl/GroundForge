@@ -202,4 +202,4 @@ See [scala-doc] of `GraphCreator.fromThreadDiagram` for the requirements of the 
 java -jar target/GroundForge-0.x-SNAPSHOT-jar-with-dependencies.jar rose.svg 'tileStitch=ct&patchWidth=12&patchHeight=8&tile=5831,-4-7,3158,-7-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4'
 ```
 
-[scala-doc]: https://github.com/d-bl/GroundForge/blob/367a183794cc365c3ac3fdcfa6548749e4c9e9b7/src/test/scala/fte/data/GraphCreator.scala#L28-L38
+[scala-doc]: https://github.com/d-bl/GroundForge/blob/421c854e7c106a7ba78e44131ad9d0d18fe55050/src/main/scala/dibl/fte/GraphCreator.scala#L29-L39
