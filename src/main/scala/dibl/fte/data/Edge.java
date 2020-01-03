@@ -1,4 +1,4 @@
-package fte.data;
+package dibl.fte.data;
 
 
 public class Edge implements Cloneable {

@@ -1,4 +1,4 @@
-package fte.data;
+package dibl.fte.data;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

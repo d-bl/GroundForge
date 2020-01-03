@@ -1,6 +1,6 @@
-package fte.layout;
+package dibl.fte.layout;
 
-import fte.data.*;
+import dibl.fte.data.*;
 import org.ejml.simple.SimpleMatrix;
 
 import java.util.ArrayList;

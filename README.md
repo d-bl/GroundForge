@@ -193,3 +193,13 @@ For a maven/scala-sdk-2.12 environment:
             <version>0.x-SNAPSHOT</version>
         </dependency>
 ```
+
+Use as executable
+=================
+Under development. Yet only thread diagrams without an over/under effect (but also without distortion) and the tile repeated 4x4 times.
+See [scala-doc] of `GraphCreator.fromThreadDiagram` for the requirements of the last argument.
+```
+java -jar target/GroundForge-0.x-SNAPSHOT-jar-with-dependencies.jar rose.svg 'tileStitch=ct&patchWidth=12&patchHeight=8&tile=5831,-4-7,3158,-7-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4'
+```
+
+[scala-doc]: https://github.com/d-bl/GroundForge/blob/367a183794cc365c3ac3fdcfa6548749e4c9e9b7/src/test/scala/fte/data/GraphCreator.scala#L28-L38

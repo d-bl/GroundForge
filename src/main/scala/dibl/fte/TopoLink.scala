@@ -13,9 +13,10 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
-package dibl
+package dibl.fte
 
 import dibl.LinkProps.WhiteStart
+import dibl.{ Diagram, LinkProps, NodeProps }
 
 case class TopoLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean, isLeftOfSource: Boolean) {
   val isRightOfTarget: Boolean = !isLeftOfTarget

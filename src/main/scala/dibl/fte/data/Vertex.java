@@ -1,4 +1,4 @@
-package fte.data;
+package dibl.fte.data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +50,7 @@ public class Vertex implements Cloneable {
 		return id+":("+x+","+y+")";
 	}
 	
-	void addEdge(Edge e) {
+	public void addEdge(Edge e) {
 		rotation.add(e);
 	}
 

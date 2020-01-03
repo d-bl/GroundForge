@@ -13,14 +13,15 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
-package fte.data
+package dibl.fte
 
 import java.util
 
-import dibl.TopoLink.{ sourceOf, targetOf }
+import dibl.fte.TopoLink.{ sourceOf, targetOf }
+import dibl.fte.data.{ Edge, Face, Graph, Vertex }
+import dibl.fte.layout.OneFormTorus
 import dibl.proto.TilesConfig
-import dibl.{ Diagram, LinkProps, NewPairDiagram, ThreadDiagram, TopoLink }
-import fte.layout.OneFormTorus
+import dibl.{ Diagram, LinkProps, NewPairDiagram, ThreadDiagram }
 
 object GraphCreator {
 
