@@ -1,4 +1,4 @@
-package vmi.graph.data;
+package dibl.fte.data;
 
 
 public class Edge implements Cloneable {
@@ -8,7 +8,7 @@ public class Edge implements Cloneable {
 	Vertex end;
 	Face forFace;
 	Face revFace;
-	  
+
 	double deltaX;
 	double deltaY;
 	double weight = 1.0;
@@ -18,12 +18,12 @@ public class Edge implements Cloneable {
 	 * @param origin Origin vertex
 	 * @param destination Destination vertex
 	 */
-	public Edge(Vertex origin, Vertex destination, double dx, double dy) {
+	public Edge(Vertex origin, Vertex destination) {
 		super();
 		this.start = origin;
 		this.end = destination;
-		this.deltaX = dx;
-		this.deltaY = dy;
+		this.deltaX = 0;
+		this.deltaY = 0;
 		this.id = String.format("%s:%s(%.2f,%.2f)", this.start.id, this.end.id, this.deltaX, this.deltaY);
 	}
 	

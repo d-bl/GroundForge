@@ -3,13 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>io.github.d-bl</groupId>
+    <groupId>dibl</groupId>
     <artifactId>GroundForge</artifactId>
     <name>GroundForge</name>
     <version>0.x-SNAPSHOT</version>
     <description>Toolbox to design bobbin lace grounds</description>
     <inceptionYear>2016</inceptionYear>
     <properties>
+        <main-class>dibl.fte.SvgCreator</main-class>
         <scala.version>2.12.8</scala.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -31,13 +32,6 @@
             <groupId>org.ejml</groupId>
             <artifactId>ejml-all</artifactId>
             <version>0.38</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jfree</groupId>
-            <artifactId>jfreesvg</artifactId>
-            <version>3.3</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
@@ -65,6 +59,28 @@
                 <configuration>
                     <scalaVersion>${scala.version}</scalaVersion>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>dibl.fte.SvgCreator</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
+                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <!-- disable surefire -->
             <plugin>

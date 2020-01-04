@@ -1,4 +1,4 @@
-package vmi.graph.data;
+package dibl.fte.data;
 
 public class Vector {
 	

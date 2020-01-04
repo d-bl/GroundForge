@@ -1,4 +1,4 @@
-package vmi.graph.data;
+package dibl.fte.data;
 
 import java.util.LinkedList;
 

@@ -1,4 +1,4 @@
-package vmi.graph.data;
+package dibl.fte.data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class Vertex implements Cloneable {
 		this.x = x;
 	    this.y = y;
 	    this.id = String.format("%.2f-%.2f", this.x, this.y);
-	    rotation= new ArrayList<Edge>();
+	    rotation= new ArrayList<>();
 	}
 	
 	public double getX() {
@@ -34,7 +34,7 @@ public class Vertex implements Cloneable {
 	public double getY() {
 		return y;
 	}
-	
+
 	public void setY(double y) {
 		this.y = y;
 		// TODO should the id be updated?
@@ -47,37 +47,11 @@ public class Vertex implements Cloneable {
 	
 	@Override
 	public String toString() {
-		String s = id+":("+x+","+y+")";
-		return s;
+		return id+":("+x+","+y+")";
 	}
 	
-	void addEdge(Edge e) {
-		if (rotation.contains(e)) return;
-
-		// find the position of this edge in a clockwise rotation system starting at the
-		// positive x-axis
-		double angle = getAngle(e);
-		int index = 0;
-		for (Edge f : rotation) {
-			double fangle = getAngle(f);
-			if (fangle < angle)
-				index++;
-		}
-
-		rotation.add(index, e);
-	}
-
-	double getAngle(Edge e) {
-		boolean forward = e.start.equals(this);
-		double dx = forward ? e.deltaX : -e.deltaX;
-		double dy = forward ? e.deltaY : -e.deltaY;
-		double angle = dx == 0 ? Math.PI / 2.0 : Math.atan(Math.abs(dy) / Math.abs(dx));
-		if (dx < 0) {
-			angle = dy > 0 ? Math.PI + angle : Math.PI - angle;
-		} else {
-			angle = dy > 0 ? 2.0 * Math.PI - angle : angle;
-		}
-		return angle;
+	public void addEdge(Edge e) {
+		rotation.add(e);
 	}
 
 	public Edge getNextEdge(Edge e) {
