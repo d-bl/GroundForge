@@ -57,10 +57,11 @@ case class NodeProps private(elems: Seq[(String, Any)]) extends Props {
   val startOf: Int = m.getOrElse("startOf", "thread0").toString.replaceAll("thread", "").toInt
 
   val pin: Boolean = m.getOrElse("pin", false).toString.toBoolean
-
   val bobbin: Boolean = m.getOrElse("bobbin", false).toString.toBoolean
-
   val stitch: Boolean = m.getOrElse("stitch", false).asInstanceOf[Boolean]
+
+  val isLeftTwist: Boolean = m.getOrElse("left", false).asInstanceOf[Boolean]
+  val isRightTwist: Boolean = m.getOrElse("right", false  ).asInstanceOf[Boolean]
 
   val cssClasses: String = (m.get("startOf"), m.get("thread")) match {
     case (Some(_), _) =>
@@ -104,7 +105,9 @@ object NodeProps {
 
   def crossNode(id: String, suffix: Int) = NodeProps(Seq("title" -> title(id, suffix, "cross")))
 
-  def twistNode(id: String, suffix: Int) = NodeProps(Seq("title" -> title(id, suffix, "twist")))
+  def leftTwistNode(id: String, suffix: Int) = NodeProps(Seq("left"->true, "title" -> title(id, suffix, "twist")))
+
+  def rightTwistNode(id: String, suffix: Int) = NodeProps(Seq("right"->true, "title" -> title(id, suffix, "twist")))
 
   def errorNode(tried: Try[_]) = NodeProps(Seq("title" -> tried.failed.get.getMessage, "bobbin" -> true))
 

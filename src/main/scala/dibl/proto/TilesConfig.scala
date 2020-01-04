@@ -190,48 +190,6 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   Item.cleanupIgnoredStitches(targetMatrix)
 
   /**
-   * Get links for one tile.
-   *
-   * @param diagram A diagram created from this object.
-   *                Use diagrams with the original nodes for transformation from pairs to threads to pairs etc.
-   *                The result is not defined when using nodes with changed values for the x/y properties
-   *                for any of the transformation steps. Plaits with more than 12 half stitches (ct)
-   *                might cause a problem with duplicate ids in transformed diagrams.
-   * @param scale   Use value one for the initial pair diagram,
-   *                multiply by 2 for each transition from pair to thread diagram.
-   *
-   * Requirements:
-   * - The values for totalRows alias patchHeight respective totalCols alias patchWidth
-   *   must add at least 4 rows/cols to the dimensions of the centerMatrix alias tile.
-   * - No gaps between tiles.
-   * - As for now: the leftMatrix and rightMatrix must be empty.
-   *
-   * @return An empty array on some types of invalid arguments, the type of error is logged to standard-out.
-   *
-   *         Changes to the diagram won't affect previously returned results, nor the other way around.
-   *
-   *         Node objects inside the tile are different from those outside the tile.
-   *         Nodes outside the tile will have an id property shared by a node inside the tile on the
-   *         opposite side. Where along the opposite side is defined by the four shift properties.
-   *
-   *         Each transformation from pairs to threads puts more nodes at the same x/y positions.
-   *         The start of their id-s will be identical, the tail of their id-s will be different.
-   */
-  @JSExport
-  def linksOfCenterTile(diagram: Diagram, scale: Int): Array[(NodeProps, Array[NodeProps])] = {
-    val links: Seq[(NodeProps, Array[NodeProps])] = boundsForTileLinks match {
-      case (0,0,0,0) => Seq.empty
-      case (n, e, s, w) => diagram.tileLinks(n * 15 * scale, e * 15 * scale, s * 15 * scale, w * 15 * scale)
-    }
-    if (links.exists{link =>
-      // safeguard against invalid results
-      val (core, clockWise) = link
-      core.id.isEmpty || clockWise.length != 4
-    }) Seq.empty
-    else links
-  }.toArray
-
-  /**
     * @param scale Use value 15 for the initial pair diagram,
     *              multiply by 2 for each transition from pair to thread diagram.
     * @return SVG element <rect> bounding box for nodes of linksOfCenterTile

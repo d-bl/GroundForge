@@ -98,16 +98,6 @@ public class Demo4Java {
       TilesConfig config, Integer scale) throws IOException {
 //    System.out.println("-------------- " + fileName);
 
-    // needs original positions without any nudging applied to previous diagrams
-    Tuple2<NodeProps, NodeProps[]>[] linkedNodes = config.linksOfCenterTile(diagram, scale);
-    diagram.logTileLinks(linkedNodes);
-    if (linkedNodes.length > 0) {
-      // TODO compute deltas from logged data
-      // showing how to access
-      String coreId = linkedNodes[0]._1().id();
-      String firstLinkId = linkedNodes[0]._2()[0].id();
-    }
-
     int nrOfNodes = diagram.nodes().size();
     double[][] locations = new double[nrOfNodes][2];
     for (int i = 0; i < nrOfNodes; i++) {
