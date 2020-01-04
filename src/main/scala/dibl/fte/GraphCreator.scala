@@ -18,7 +18,7 @@ package dibl.fte
 import java.util
 
 import dibl.fte.TopoLink.{ sourceOf, targetOf }
-import dibl.fte.data.{ Edge, Face, Graph, Vertex }
+import dibl.fte.data.{ Edge, Graph, Vertex }
 import dibl.fte.layout.OneFormTorus
 import dibl.proto.TilesConfig
 import dibl.{ Diagram, LinkProps, NewPairDiagram, ThreadDiagram }
@@ -86,17 +86,26 @@ object GraphCreator {
     }
     topoLinks.groupBy(_.targetId).foreach { case (id, links) =>
       val allFour = linksBySource(id) ++ links.filter(_.isLeftOfTarget) ++ links.filter(_.isRightOfTarget)
-      //println(s"$id: " + allFour.mkString(";"))
+      println(s"$id: " + allFour.mkString(";"))
       allFour.map(topoLink => findEdge(topoLink).foreach(vertexMap(id).addEdge))
     }
 
-    if (new OneFormTorus(graph).layout(graph.getFaces))
+    val oldFaces = graph.getFaces
+
+    lazy val edgesPerNewFace = Face.facesFrom(topoLinks).map(_.counterClockWise)
+    lazy val oldFacesAsString = graph.getFaces.toArray().map(toStr).mkString("old faces with vertex number:\n", "\n", "")
+    lazy val newFacesAsString1 = edgesPerNewFace.map(toJavaEdgeList).toArray.map(toS).mkString("new faces with vertex number:\n", "\n", "")
+    lazy val newFacesAsString2 = edgesPerNewFace.mkString("new faces with IDs showed online when hovering over a stitch:\n", "\n", "")
+    lazy val logging = s"$oldFacesAsString\n$newFacesAsString1\n$newFacesAsString2"
+    //println(logging)
+
+    if (new OneFormTorus(graph).layout(oldFaces))
       Some(graph)
     else None
   }
 
   private def toStr(a: Any) = {
-    a.asInstanceOf[Face].getEdges.toArray().map(toS).mkString(",")
+    a.asInstanceOf[dibl.fte.data.Face].getEdges.toArray().map(toS).mkString(",")
   }
 
   private def toS(edge: Any) = {
