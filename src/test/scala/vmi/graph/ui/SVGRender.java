@@ -48,7 +48,7 @@ public class SVGRender {
 		g2.draw(new Line2D.Double(0,0, 100.0*v1.getX(), 100.0*v1.getY()));
 		
 		String svgElement = g2.getSVGElement();
-		String fname = "E:\\AAA\\Lace_Out\\TutteTests\\test.svg";
+		String fname = "target/vmi.svg";
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fname));
 			writer.write(svgElement.toString());

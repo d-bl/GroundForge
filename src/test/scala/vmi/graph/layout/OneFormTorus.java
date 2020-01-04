@@ -7,11 +7,11 @@ import java.util.List;
 import org.ejml.simple.SimpleMatrix;
 import org.ejml.simple.SimpleSVD;
 
-import graph.data.Edge;
-import graph.data.Face;
-import graph.data.Graph;
-import graph.data.Vector;
-import graph.data.Vertex;
+import vmi.graph.data.Edge;
+import vmi.graph.data.Face;
+import vmi.graph.data.Graph;
+import vmi.graph.data.Vector;
+import vmi.graph.data.Vertex;
 
 public class OneFormTorus {
 

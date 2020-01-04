@@ -1,5 +1,8 @@
 package vmi.graph.data;
 
+import org.jetbrains.annotations.Nullable;
+
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -134,58 +137,73 @@ public class Graph implements Cloneable {
 		}
 		
 		try {
-			// First line of file gives row count and column count
-			int rowCount = 0;
-			int colCount = 0;
-			if (input.hasNextLine()) {
-				String line = input.nextLine();
-				String[] values = line.split("\\s+");
-				// Only look at the last two values, may be some style information at front
-				rowCount = Integer.parseInt(values[values.length-2]);
-				colCount = Integer.parseInt(values[values.length-1]); 
-			}
-			
-			if (rowCount < 1 || colCount < 1) return null;
-			
-			Graph g = new Graph();
-			
-			while (input.hasNextLine()) {
-				String line = input.nextLine()+"\n";
-				String[] blocks = line.split("\\s+");
-				for (int i = 0; i < blocks.length; i++) {
-					// remove [] brackets
-					String block = blocks[i].substring(1, blocks[i].length()-1);
-					String[] values = block.split(",");
-					
-					// source
-					int col = Integer.parseInt(values[0]);
-					int row = Integer.parseInt(values[1]);
-					Vertex source = g.createVertex(mod(col, colCount), mod(row, rowCount));
-					
-					// dest 1
-					int out1col = Integer.parseInt(values[2]);
-					int out1row = Integer.parseInt(values[3]);
-					Vertex dest1 = g.createVertex(mod(out1col, colCount), mod(out1row, rowCount));
-					g.createEdge(source, dest1, out1col-col, out1row-row);
-						
-					// dest 2
-					int out2col = Integer.parseInt(values[4]);
-					int out2row = Integer.parseInt(values[5]);
-					Vertex dest2 = g.createVertex(mod(out2col, colCount), mod(out2row, rowCount));
-					g.createEdge(source, dest2, out2col-col, out2row-row);
-				}
-				
-			}
-			
-			g.createFaceData();
-			
-			return g;
-			
+			return getGraph(input);
+
 		} finally {
 			input.close();
 		}
 	}
-	
+
+	public static Graph readFromString(String content) {
+		Scanner input = new Scanner(new ByteArrayInputStream(content.getBytes()));
+
+		try {
+			return getGraph(input);
+
+		} finally {
+			input.close();
+		}
+	}
+
+	@Nullable private static Graph getGraph(Scanner input) {
+		// First line of file gives row count and column count
+		int rowCount = 0;
+		int colCount = 0;
+		if (input.hasNextLine()) {
+			String line = input.nextLine();
+			String[] values = line.split("\\s+");
+			// Only look at the last two values, may be some style information at front
+			rowCount = Integer.parseInt(values[values.length-2]);
+			colCount = Integer.parseInt(values[values.length-1]);
+		}
+
+		if (rowCount < 1 || colCount < 1) return null;
+
+		Graph g = new Graph();
+
+		while (input.hasNextLine()) {
+			String line = input.nextLine()+"\n";
+			String[] blocks = line.split("\\s+");
+			for (int i = 0; i < blocks.length; i++) {
+				// remove [] brackets
+				String block = blocks[i].substring(1, blocks[i].length()-1);
+				String[] values = block.split(",");
+
+				// source
+				int col = Integer.parseInt(values[0]);
+				int row = Integer.parseInt(values[1]);
+				Vertex source = g.createVertex(mod(col, colCount), mod(row, rowCount));
+
+				// dest 1
+				int out1col = Integer.parseInt(values[2]);
+				int out1row = Integer.parseInt(values[3]);
+				Vertex dest1 = g.createVertex(mod(out1col, colCount), mod(out1row, rowCount));
+				g.createEdge(source, dest1, out1col-col, out1row-row);
+
+				// dest 2
+				int out2col = Integer.parseInt(values[4]);
+				int out2row = Integer.parseInt(values[5]);
+				Vertex dest2 = g.createVertex(mod(out2col, colCount), mod(out2row, rowCount));
+				g.createEdge(source, dest2, out2col-col, out2row-row);
+			}
+
+		}
+
+		g.createFaceData();
+
+		return g;
+	}
+
 	/**
 	 * Handle modulo of negative numbers in a different way from Java
 	 */
