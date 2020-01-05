@@ -17,11 +17,10 @@ package dibl.fte
 
 import java.util
 
-import dibl.fte.TopoLink.{ sourceOf, targetOf }
 import dibl.fte.data.{ Edge, Graph, Vertex }
 import dibl.fte.layout.OneFormTorus
 import dibl.proto.TilesConfig
-import dibl.{ Diagram, LinkProps, NewPairDiagram, ThreadDiagram }
+import dibl.{ Diagram, LinkProps, NewPairDiagram, PairDiagram, ThreadDiagram }
 
 object GraphCreator {
 
@@ -40,25 +39,27 @@ object GraphCreator {
     * @return The X's in the pattern definition are added to the returned graph.
     */
   def fromThreadDiagram(urlQuery: String): Option[Graph] = {
-    implicit val config: TilesConfig = TilesConfig(urlQuery)
-    implicit val diagram: Diagram = ThreadDiagram(NewPairDiagram.create(config))
-    implicit val scale: Int = 2
-    graphFrom(diagram.links.filter(inCenterBottomTile))
+    val patternConfig = TilesConfig(urlQuery)
+    val stitchConfigs = urlQuery.split("&")
+      .filter(_.startsWith("droste"))
+      .sortBy(identity)
+      .map(_.replace("=.*", ""))
+    val initialThreadDiagram = ThreadDiagram(NewPairDiagram.create(patternConfig))
+    val diagram = stitchConfigs.foldLeft(initialThreadDiagram)(droste)
+    val scale = Math.pow(2, stitchConfigs.length + 1).toInt
+    graphFrom(getTopoLinks(diagram, scale, patternConfig))
   }
+
+  private def droste(diagram: Diagram, stitchConfig: String): Diagram = ThreadDiagram(PairDiagram(stitchConfig, diagram))
 
   def fromPairDiagram(urlQuery: String): Option[Graph] = {
-    implicit val config: TilesConfig = TilesConfig(urlQuery)
-    implicit val diagram: Diagram = NewPairDiagram.create(config)
-    implicit val scale: Int = 1
-    graphFrom(diagram.links.filter(inCenterBottomTile))
+    val config = TilesConfig(urlQuery)
+    val diagram = NewPairDiagram.create(config)
+    graphFrom(getTopoLinks(diagram, scale = 1, config))
   }
 
-  private def graphFrom(unsortedLinks: Seq[LinkProps])
-                       (implicit diagram: Diagram, scale: Int): Option[Graph] = {
-    val linksInTile = unsortedLinks
-      .sortBy(l => diagram.node(l.target).id -> diagram.node(l.source).id)
+  def graphFrom(topoLinks: Seq[TopoLink]): Option[Graph] = {
     val graph = new Graph()
-    val topoLinks = TopoLink.simplify(linksInTile)
 
     // TODO for now this check prevents eternal loops for bandage/sheered pair diagrams
     if (topoLinks.exists(l => l.sourceId == l.targetId)) return None
@@ -71,12 +72,15 @@ object GraphCreator {
         nodeId -> graph.createVertex(i, 0)
       }.toMap
     println(vertexMap.keys.toArray.sortBy(identity).mkString(","))
+    if (vertexMap.keys.head.length == 5) { // droste pattern
+      println(topoLinks.mkString(";"))
+    }
 
     // create edges
-    implicit val edges: Array[Edge] = linksInTile.map { link =>
+    implicit val edges: Array[Edge] = topoLinks.map { link =>
       graph.addNewEdge(new Edge(
-        vertexMap(sourceOf(link).id),
-        vertexMap(targetOf(link).id)
+        vertexMap(link.sourceId),
+        vertexMap(link.targetId)
       ))
     }.toArray
 
@@ -131,8 +135,14 @@ object GraphCreator {
     )
   }
 
-  def inCenterBottomTile(link: LinkProps)
-                        (implicit diagram: Diagram, scale: Int, config: TilesConfig): Boolean = {
+  private def getTopoLinks(implicit diagram: Diagram, scale: Int, config: TilesConfig) = {
+    TopoLink
+      .simplify(diagram.links.filter(inCenterBottomTile))
+      .sortBy(l => l.targetId -> l.sourceId)
+  }
+
+  private def inCenterBottomTile(link: LinkProps)
+                                (implicit diagram: Diagram, scale: Int, config: TilesConfig): Boolean = {
     // The top and side tiles of a diagram may have irregularities along the outer edges.
     // So select links arriving in the center bottom checker tile.
     val cols = config.patchWidth / 3
@@ -151,7 +161,5 @@ object GraphCreator {
     * @param scale value 1 or factor to also undo [[ThreadDiagram]].scale
     * @return x/y on canvas reduced to row/col number in the input
     */
-  private def unScale(i: Double)(implicit scale: Int): Int = {
-    i / scale / 15 - 2
-    }.toInt
+  private def unScale(i: Double)(implicit scale: Int): Int = (i / scale / 15 - 2).toInt
 }

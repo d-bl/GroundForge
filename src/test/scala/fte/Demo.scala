@@ -27,8 +27,9 @@ object Demo {
       listFiles().foreach(_.delete())
     }
     val pairDiagram = "tc"
+    val drosteDiagram = "tctc"
     for {
-      stitch <- Seq(pairDiagram, "ct", "ctc", "ctct", "crcrctclclcr")
+      stitch <- Seq(pairDiagram, "ct", "ctc", "ctct", "crcrctclclcr", drosteDiagram)
       query <- Seq(
         s"bandage&tileStitch=$stitch&patchWidth=3&patchHeight=4&tile=1,8&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2",
         s"sheered&tileStitch=$stitch&patchWidth=6&patchHeight=4&tile=l-,-h&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2",
@@ -41,19 +42,22 @@ object Demo {
       )
       qName = query.replaceAll("&.*", "").replaceAll("[^a-zA-Z0-9]+", "-")
       tail = if (stitch == pairDiagram) "pairs"
+             else if (stitch == drosteDiagram) "droste"
              else stitch
       fileName = s"$dir/$qName-$tail.svg"
-    } {
-      val t0 = System.nanoTime()
-      Try(if (stitch == pairDiagram)
-            GraphCreator.fromPairDiagram(query)
-          else GraphCreator.fromThreadDiagram(query)
-      ) match {
-        case Success(None) =>
-        case Failure(e) => e.printStackTrace()
-        case Success(Some(graph)) => File(fileName).writeAll(SvgCreator.draw(graph))
+    } { if (stitch!=drosteDiagram || !query.contains("whiting")) { // skip too large pattern
+        val t0 = System.nanoTime()
+        Try(if (stitch == pairDiagram) GraphCreator.fromPairDiagram(query)
+            else if (stitch.startsWith("t"))
+                   GraphCreator.fromThreadDiagram(query + "&droste2=" + stitch)
+            else GraphCreator.fromThreadDiagram(query)
+        ) match {
+          case Success(None) =>
+          case Failure(e) => e.printStackTrace()
+          case Success(Some(graph)) => File(fileName).writeAll(SvgCreator.draw(graph))
+        }
+        println(s"Elapsed time: ${ (System.nanoTime() - t0) * 0.000000001 }sec for $query")
       }
-      println(s"Elapsed time: ${ (System.nanoTime() - t0) * 0.000000001 }sec for $query")
     }
   }
 }
