@@ -50,7 +50,16 @@ object GraphCreator {
     graphFrom(getTopoLinks(diagram, scale, patternConfig))
   }
 
-  private def droste(diagram: Diagram, stitchConfig: String): Diagram = ThreadDiagram(PairDiagram(stitchConfig, diagram))
+  /**
+   * fold transformation
+   *
+   * @param threadDiagram accumulator
+   * @param stitchConfig  listItem
+   * @return
+   */
+  private def droste(threadDiagram: Diagram, stitchConfig: String): Diagram = {
+    ThreadDiagram(PairDiagram(stitchConfig, threadDiagram))
+  }
 
   def fromPairDiagram(urlQuery: String): Option[Graph] = {
     val config = TilesConfig(urlQuery)
