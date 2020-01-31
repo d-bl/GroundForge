@@ -10,6 +10,13 @@
         <a href="https://groundforge.wordpress.com/contact-de/" target="_blank">de</a>,
         <a href="https://groundforge.wordpress.com/contact-fr/" target="_blank">fr</a>
     </li>
+    <li>
+        <a href="https://help.github.com/articles/editing-files-in-another-user-s-repository/"
+           title="Please fix typos, grammar or whatever might help other users">Propose changes</a>
+        to
+        {% assign page_path = page.path | strip_html %}
+        <a href="{{ site.github.repository_url }}/edit/master/docs/{{ page_path }}">this page</a>
+    </li>
     <li>Forms and buttons
         <ul>
             <li><a href="/GroundForge/help/Patch-Size">Patch Size</a></li>
@@ -53,12 +60,6 @@
         <ul>
             <li>Issues: <a href="https://github.com/d-bl/GroundForge/issues?q=is%3Aissue+is%3Aopen+label%3A%22Browser+support%22">browsers</a> /
                 <a href="https://github.com/d-bl/GroundForge/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+-label%3A%22Browser+support%22">others</a></li>
-            <li>
-                <a href="https://help.github.com/articles/editing-files-in-another-user-s-repository/">Propose changes</a>
-                to
-                <a href="https://github.com/d-bl/GroundForge/tree/master/docs/help">help pages</a>
-                <br>
-            </li>
             <li><a href="/GroundForge/help/Changes">Stay posted</a></li>
             <li><a href="/GroundForge/help/Stable">Stable version</a></li>
             <li><a href="/GroundForge/help/Fix-Old-Links">Fix old pattern links</a></li>
