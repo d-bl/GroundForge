@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Rplace stitches
+title: Replace stitches
 ---
 [intro]: /GroundForge/help/intro
 
