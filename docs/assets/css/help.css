@@ -17,11 +17,14 @@ Header { background: #3679cd url(../images/header-bg-left.png) top right repeat;
 .badge img {
     float: left;
 }
-.badge p {
-    font-size: 16px;
-    line-height: 0.9;
+.badge {
+    font-size: 18px;
+    line-height: 0.8;
     color: #fff;
     padding: 3px 0px 0px 2px;
+}
+.badge small {
+    font-size: 60%;
 }
 .badge a {
     color: #c9eafc;
