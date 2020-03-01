@@ -247,7 +247,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
          |      <g id="vcT">
          |        <path $circleProps></path><text $textProps>T</text>
          |        <path d="m -12.090524,978.05979 c -2.596115,-1.9428 -4.382871,-1.03176 -5.987061,-0.0372" $arrowStyle></path>
-         |        <path d="m -12.090524,978.05979 c -2.596115,-1.9428 -4.382871,-1.03176 -5.987061,-0.0372" $arrowStyle></path>
+         |        <path d="m -11.992394,977.40391 c -2.596115,1.9428 -4.382871,1.03176 -5.987061,0.0372" $arrowStyle></path>
          |      </g>
          |
          |      <g id="vcV">
