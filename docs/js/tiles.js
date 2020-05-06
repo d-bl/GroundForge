@@ -141,7 +141,7 @@ function whiting (kv) {
     var cellNr = kv.split("_")[0].split("=")[1]
     d3.select('#whiting').node().innerHTML =
         "<img src='help/w/page" + pageNr + "a.gif' title='"+cellNr+"'>"+
-        " Page <a href='http://www.gwydir.demon.co.uk/jo/lace/whiting/page" + pageNr + ".htm'>" + pageNr + "</a> "+
+        " Page <a href='http://www.theedkins.co.uk/jo/lace/whiting/page" + pageNr + ".htm'>" + pageNr + "</a> "+
         "of '<em>A Lace Guide for Makers and Collectors</em>' by Gertrude Whiting; 1920."
     return true
 }
