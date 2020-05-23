@@ -56,7 +56,8 @@ sealed abstract class LinkProps extends Props {
   val weak: Boolean = false
   val border: Boolean = false
   val withPin: Boolean = false
-  val cssClass: String = props.get("thread").map(nr => s"link thread$nr").getOrElse("link")
+  val threadNr: Int = props.get("thread").map(_.toString.toInt).getOrElse(0)
+  val cssClass: String =  s"link thread$threadNr"
 
   /**
    * @param p The path for the link calculated by the simulation of D3.js

@@ -142,26 +142,38 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
   private def renderLinks(diagram: Diagram,
                           strokeWidth: String,
-                          markers: Boolean,
+                          doMarkers: Boolean,
                           opacityOfHiddenObjects: Double = 0
-                         ): String = diagram.links.map { link =>
-    val opacity = if (link.border) opacityOfHiddenObjects else 1
-    val pd = pathDescription(diagram, link)
-    val markers = link.markers.map{
-      case ("mid",_) if link.nrOfTwists > 0 => s"; marker-mid: url('#twist-1')"
-      case ("mid",_) => ""
-      case (key,value) => s"; marker-$key: url('#$key-$value')"
-      case _ => ""
-    }.mkString("")
-    // TODO no stroke color/width would allow styling threads with CSS
-    // what in turn allows changes without repeating the simulation
-    // stand-alone SVG does require stroke details
-    s"""<path
-       | class="${link.cssClass}"
-       | d="$pd"
-       | style="stroke: rgb(0, 0, 0); stroke-width: $strokeWidth; fill: none; opacity: $opacity$markers"
-       |></path>""".stripMargin
-  }.mkString
+                         ): String = {
+
+    def renderSingle(link: LinkProps) = {
+      val opacity = if (link.border) opacityOfHiddenObjects else 1
+      val pd = pathDescription(diagram, link)
+      val markers = link.markers.map {
+        case ("mid", _) if link.nrOfTwists > 0 => s"; marker-mid: url('#twist-1')"
+        case ("mid", _) => ""
+        case (key, value) => s"; marker-$key: url('#$key-$value')"
+        case _ => ""
+      }.mkString("")
+      // TODO no stroke color/width would allow styling threads with CSS
+      // what in turn allows changes without repeating the simulation
+      // stand-alone SVG does require stroke details
+      s"""<path
+         | class="${link.cssClass}"
+         | d="$pd"
+         | style="stroke: rgb(0, 0, 0); stroke-width: $strokeWidth; fill: none; opacity: $opacity$markers"
+         |></path>""".stripMargin.replaceAll("\n","")
+    }
+
+    diagram.links.zipWithIndex
+      .groupBy(_._1.threadNr)
+      .toSeq // now we have nested tuples: Seq(threadNr,Seq(link,index))
+      .sortBy(_._1)
+      .flatMap(_._2
+        .sortBy(_._2)
+        .map(t => renderSingle(t._1)).mkString("<g>","\n","</g>")
+      ).mkString
+  }
 
   private def renderNodes(nodes: Seq[NodeProps],
                           opacityOfHiddenObjects: Double = 0
