@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Help Intro
+lang: en
+ref: intro
 ---
 
 Help Intro
