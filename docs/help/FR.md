@@ -5,7 +5,7 @@ lang: fr
 ref: intro
 ---
 
-Tuto
+Tutos
 =====
 
-Voir le blog de [Gibritte](http://www.gibritte.com/2020/05/jouer-groundforge.html).
+Voir le blog de [Gibritte](http://www.gibritte.com/tag/groundforge/).
