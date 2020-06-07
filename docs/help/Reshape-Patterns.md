@@ -62,18 +62,17 @@ Evaluated Editors
 The procedure above is tried for just some of the available [SVG editor]s. They might have been improved since then, check for a free trial period to convince yourself you can work with it:
 * Lace8 and Knipling (💰, not on Mac)  
   these don't understand the downloads at all.
-* InkScape (free, needs crutches on a Mac)  
+* InkScape (free)  
   won't need step 2, details [below](#step-3-for-inkscape).
 * Affinity Designer (💰, Mac, iPad and Windows)   
   does need step 2, details [below](#step-2-and-3-with-affinity-designer).
 * CorelDRAW (💰💰, Home and Student Suite 💰, Windows)    
-  use `clone` from the edit menu for step 2. No plans (2018) to implement an import option that imports SVG clones as clones.
+  use `clone` from the edit menu for step 2. No plans (2018) to implement an import option that treats SVG clones as such.
 * InkPad (free, iPad)  
   version 1.6 has no facilities to make the pattern follow the leader of the dance.
 * Adobe Illustrator  (💰💰, subscription)  
   not tried. Perhaps these [instructions] can be of use for step 2. Start at about 5:50. From another: "Any changes made while in `pattern editing mode` will be applied to the `swatch` upon exit".
 
-[graphicheck]: https://graphicheck.com/blog/Affinity-Designer-Background-Patterns-Mock-up-Template
 [instructions]: https://www.youtube.com/watch?v=aQM3RLWN0vQ
 
 
