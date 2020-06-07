@@ -19,17 +19,6 @@ import scala.annotation.tailrec
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
-object Diagram {
-  def apply(nodes: Seq[NodeProps],
-            links: Seq[LinkProps]
-           ): Diagram = {
-    new Diagram(
-      nodes,
-      links.sortBy(_.threadNr)
-    )
-  }
-}
-
 @JSExportTopLevel("Diagram") case class Diagram(nodes: Seq[NodeProps],
                                                 links: Seq[LinkProps]
                                                ) {
