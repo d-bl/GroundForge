@@ -6,28 +6,21 @@ title: Undo
 Links, wand and undo   
 ====================
 
-Some pages may have the following buttons:
-![link](../images/link.png) and ![link](../images/wand.png)
+The buttons ![link](../images/link.png) and ![link](../images/wand.png)
+both (re)render the actual definition of pair/thread-diagrams.
 
-The latter button (re)loads diagrams without reloading the page.
+![link](../images/wand.png) is faster and leaves resized diagram panels unchanged.
 
-The first button reloads the page with the actual pattern configuration.
-
-Undo complete pattern configurations
-------------------------------------
-When having second thoughts on changes made to a pattern
-you can use the back button of your browser to return
-to the pattern as it was when you used the first button.
-When you used the latter button to inspect the result of your changes,
-you'll have to undo changes made to individual form fields as explained below.
+![link](../images/link.png) updates the parameters in the page address.
 
 Create links
 ------------
-The first button allows you to create links to a diagram to share
+You need an up to date page address to create links to a diagram to share
 on your web-site, blog or where ever you like.
-Known bug: When you right-click the button to create a link,
-the link might be out of sync with the actual pattern configuration.
-When you hover over it a second time it will be up to date.
+
+_Known bug_: When you (right-) click ![link](../images/link.png),
+the value might be out of sync with the actual pattern configuration.
+A second time it will be up to date.
 
 The long links may be a problem in emails. At least two remedies are available:
 * Use a [shortening service](https://en.wikipedia.org/wiki/URL_shortening)
@@ -35,15 +28,14 @@ The long links may be a problem in emails. At least two remedies are available:
   you can try to leave the less essential out of the link
   and take the default value for granted, please test the result.
   
-  
-Future proof links
-------------------
-To make sure you can recover a page
-(not just GroundForge but any web page that allows crawlers)
-without changes made by future updates of the web site: save it in the
-[Wayback Machine](https://help.archive.org/hc/en-us/articles/360001513491-Save-Pages-in-the-Wayback-Machine).
+Undo complete pattern configurations
+------------------------------------
+When having second thoughts on changes made to a pattern
+you can use the back button of your browser to return
+to the pattern as it was last time when you used ![link](../images/link.png)
+When you used the latter button to inspect the result of your changes,
+you'll have to undo changes made to individual form fields as explained below.
 
-[form]: https://archive.org/web/
 
 Undo individual fields
 ----------------------
