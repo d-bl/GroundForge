@@ -6,33 +6,34 @@ title: Undo
 Links, wand and undo   
 ====================
 
-The buttons ![link](../images/link.png) and ![link](../images/wand.png)
-both (re)render the actual definition of pair/thread-diagrams.
+The two buttons ![](../images/link.png) and ![](../images/wand.png)
+(re)render the current definition of pair/thread-diagrams.
 
-![link](../images/wand.png) is faster and leaves resized diagram panels unchanged.
+![](../images/wand.png) is faster and does not change the size of the diagram panels.
 
-![link](../images/link.png) updates the parameters in the page address.
+![](../images/link.png) updates the parameters in the page address.
+The browser will remember this version of the pattern. 
 
 Create links
 ------------
 You need an up to date page address to create links to a diagram to share
 on your web-site, blog or where ever you like.
 
-_Known bug_: When you (right-) click ![link](../images/link.png),
+_Known bug_: When you (right-) click ![](../images/link.png),
 the value might be out of sync with the actual pattern configuration.
 A second time it will be up to date.
 
 The long links may be a problem in emails. At least two remedies are available:
 * Use a [shortening service](https://en.wikipedia.org/wiki/URL_shortening)
 * When you know how to make a mental map of form fields and address components (like stitches: `xxx=ctc`)
-  you can try to leave the less essential out of the link
+  you can try to leave out the less essential parts out of the link
   and take the default value for granted, please test the result.
   
 Undo complete pattern configurations
 ------------------------------------
 When having second thoughts on changes made to a pattern
 you can use the back button of your browser to return
-to the pattern as it was last time when you used ![link](../images/link.png)
+to the pattern as it was last time when you used ![](../images/link.png)
 When you used the latter button to inspect the result of your changes,
 you'll have to undo changes made to individual form fields as explained below.
 
