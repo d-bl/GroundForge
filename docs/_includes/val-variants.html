@@ -16,7 +16,7 @@
         var rightPlait = `${plait}${"r".repeat(innerTwists)}${"l".repeat(outerTwists)}`
         var join = `ctc${"t".repeat(innerTwists)}`
         var stitches = `b1=${join}&a2=${leftPlait}&c2=${rightPlait}`
-        var href = `https://d-bl.github.io/GroundForge/tiles.html?patchWidth=11&patchHeight=12&${stitches}&${tile}`
+        var href = `https://d-bl.github.io/{{ site.github.repository_name }}/tiles.html?patchWidth=11&patchHeight=12&${stitches}&${tile}`
         document.getElementById("link").href = href
     }
     update()

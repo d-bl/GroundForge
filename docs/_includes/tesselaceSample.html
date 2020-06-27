@@ -1,11 +1,11 @@
 <figure>
     <a name="{{ include.nr }}"></a>
-    <img src="/GroundForge/help/tl/{{ include.nr }}.png" alt="{{ include.nr }}" title="{{ include.nr }}">
+    <img src="/{{ site.github.repository_name }}/help/tl/{{ include.nr }}.png" alt="{{ include.nr }}" title="{{ include.nr }}">
     <figcaption>
-        <a href="/GroundForge/tiles.html?img={{ include.nr }}&tile={{ include.pattern }}&patchWidth=10&patchHeight=10&"
+        <a href="/{{ site.github.repository_name }}/tiles.html?img={{ include.nr }}&tile={{ include.pattern }}&patchWidth=10&patchHeight=10&"
         >diagr</a>
         -
-        <a href="/GroundForge/sheet.html?img={{ include.nr }}&{{ include.patches }}"
+        <a href="/{{ site.github.repository_name }}/sheet.html?img={{ include.nr }}&{{ include.patches }}"
         >vari</a>
     </figcaption>
 </figure>
