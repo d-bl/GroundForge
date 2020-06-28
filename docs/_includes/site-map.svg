@@ -309,7 +309,7 @@
        style="opacity:1;fill:#d35f8d;fill-opacity:0.8;fill-rule:nonzero;stroke:#0a1929;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.6" />
     <a
        id="a5592"
-       xlink:href="https://d-bl.github.io/GroundForge/help/Whiting-Index"
+       xlink:href="https://d-bl.github.io/gw-lace-to-gf"
        target="_blank"
        transform="translate(-294.019,334.40645)">
       <text
@@ -321,7 +321,7 @@
          id="text5672"><tspan
            id="tspan5674"
            x="379.31683"
-           y="273.00916">/help/Whiting-Index</tspan></text>
+           y="273.00916">/gw-lace-to-gf</tspan></text>
     </a>
     <path
        id="path7866"
@@ -598,7 +598,7 @@
        ry="9.3020267" />
     <a
        id="a5596"
-       xlink:href="https://d-bl.github.io/GroundForge/help/TesseLace-Index"
+       xlink:href="https://d-bl.github.io/tesselace-to-gf"
        target="_blank"
        transform="translate(-44.992251,150.35262)">
       <text
@@ -610,7 +610,7 @@
          xml:space="preserve"><tspan
            y="397.52057"
            x="371.25287"
-           id="tspan5310">/help/Tesselace-Index</tspan></text>
+           id="tspan5310">/tesselace-to-gf</tspan></text>
     </a>
     <image
        y="380.69547"

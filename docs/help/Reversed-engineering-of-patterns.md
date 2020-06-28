@@ -24,18 +24,18 @@ and draw them as plain cloth stitches.
 Furthermore, the distances between stitches are optimized to some average.
 So when trying to start with some familiar pattern to make variations,
 you may have to simplify, mirror and distort it
-to recognize it in the [TesseLace Index](TesseLace-Index)
+to recognize it in the [TesseLace Index](/tesselace-to-gf)
 or match up with the encoding system of GroundForge.
 
 Let us illustrate the process with an example:
 
 ![](images/recognize.png)
 
-* left: the desired pattern (pattern 3086 of "Gründe mit System" by Uta Ulrich, 4F in mrs [Whiting index](Whiting-Index))
+* left: the desired pattern (pattern 3086 of "Gründe mit System" by Uta Ulrich, 4F in mrs [Whiting index](/gw-lace-gf))
 * 2nd: simplified something-pin-something to plain stitches
 * 3rd: snapping stitches to grid positions
 * 4th: a partially squeezed version also snapping to grid positions
-* top right: the matching pattern from the [TesseLace Index](TesseLace-Index)
+* top right: the matching pattern from the [TesseLace Index](/tesselace-to-gf)
 * bottom right: a flipped version of the stitches on the [droste](Droste-effect) page also matches
 
 Snapping to a rectangular grid might not help to recognize the corresponding pattern in the index.

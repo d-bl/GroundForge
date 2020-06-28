@@ -30,7 +30,7 @@ Known examples:
 [MAE-gf/droste]: https://maetempels.github.io/MAE-gf/docs/droste#wobble
 [wobble.html]: https://github.com/MAETempels/MAE-gf/blob/master/_includes/wobble.html
 [valenciennes]: https://github.com/d-bl/GroundForge/blob/master/docs/_includes/val-variants.html
-[Whiting-Index]: https://d-bl.github.io/GroundForge/help/Whiting-Index#val
+[Whiting-Index]: https://d-bl.github.io/gw-lace-to-gf#val
 [woble.html]: https://github.com/MAETempels/MAE-gf/blob/master/_includes/wobble.html
 
 ### 3. Embedded diagrams

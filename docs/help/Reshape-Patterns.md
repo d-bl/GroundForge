@@ -39,7 +39,7 @@ Make variations in general terms
 Features and exact procedures may vary between SVG editors. The least elaborate method in a nutshell:
 
 1. Follow the download link on the page with the [sources][patterns] of the animation. Open the file with the editor of your choice.  
-  More patterns are available through the `vari` links on the [Tesselace-Index](TesseLace-Index) and some other catalogues of patterns.
+  More patterns are available through the `vari` links on the [Tesselace-Index](/tesselace-to-gf) and some other catalogues of patterns.
 2. Depending on the editor you may need to rebuild the pattern from the isolated repeat. Otherwise the pattern won't follow the dance of the leader as in the animation at the start of this page.
 3. The close up below shows control points of multiple selected objects: a dot and four line ends at the center of the dot. When moving these control points for all dots of the same color together, the corresponding points in the patch should move along and the diagram should remain valid. The grey dots can move individually.  
   ![](images/select-node-close-up.png)
