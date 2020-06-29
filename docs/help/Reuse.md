@@ -29,8 +29,8 @@ Known examples:
 
 [MAE-gf/droste]: https://maetempels.github.io/MAE-gf/docs/droste#wobble
 [wobble.html]: https://github.com/MAETempels/MAE-gf/blob/master/_includes/wobble.html
-[valenciennes]: https://github.com/d-bl/GroundForge/blob/master/docs/_includes/val-variants.html
-[Whiting-Index]: https://d-bl.github.io/gw-lace-to-gf#val
+[valenciennes]: /GroundForge/blob/master/docs/_includes/val-variants.html
+[Whiting-Index]: /gw-lace-to-gf#val
 [woble.html]: https://github.com/MAETempels/MAE-gf/blob/master/_includes/wobble.html
 
 ### 3. Embedded diagrams
@@ -61,4 +61,4 @@ and after all generating thread diagrams from pair diagram is the core of Ground
 [latest release]: https://github.com/d-bl/GroundForge/releases/latest
 [number]: https://github.com/d-bl/GroundForge/commits/master/docs/js/GroundForge-opt.js
 [docs/API]: https://github.com/d-bl/GroundForge/tree/master/docs/API
-[API page]: https://d-bl.github.io/GroundForge/API
+[API page]: /GroundForge/API

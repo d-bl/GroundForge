@@ -14,7 +14,7 @@ Indem Sie die Schläge variieren und/oder die Zeichnungen verzerren,
 können Sie aus einem einzigen Grund unzählige unterschiedliche Gründe zaubern.
 Experimentieren und spielen Sie mit Hunderten von vorgefertigten Gründen oder geben Sie Ihre eigenen Muster ein. Auch wenn Sie alte Gründe neu erfinden, können Sie viel Spaß haben an eigenen Entdeckungen.
 
-Die [Tiles](https://d-bl.github.io/GroundForge/tiles) (Kacheln)-Seite 
+Die [Tiles](/GroundForge/tiles) (Kacheln)-Seite 
 generiert die Diagramme der Gründe. Die Seite führt Sie mit einer kurzen Liste durch die wichtigsten Schritte. 
 Links am rechten Rand erläutern weitere Details,
 leider nur auf Englisch, verwenden Sie bitte allgemeine Online-Übersetzungsseiten 
@@ -66,9 +66,9 @@ Der letzte Effekt spielt für das Paar-Diagramm keine Rolle, verursacht aber mer
 
 [Schlag]: #ctc
 [Schläge]: #ctc
-[without]: https://d-bl.github.io/GroundForge/tiles?patchWidth=19&patchHeight=22&d1=ctct&e2=ct&c2=ct&a2=lct&f3=ctct&d3=ctc&b3=ctct&a3=ct&e4=ctc&c4=ctc&f5=ctc&e5=ctc&d5=ctc&c5=ctc&b5=ctc&a5=ct&e6=ctc&d6=ctc&c6=ctc&f7=ctc&d7=ctc&b7=ctc&a7=rct&e8=ctc&c8=ctc&a8=ct&f9=lctct&d9=ctc&b9=rctct&e10=lct&c10=rct&a10=ct&tile=---5--,d-b-c-,15-5-5,--5-5-,c63532,--158-,ab-5-c,8-5-5-,-5-5-5,b-5-5-&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=10&shiftColsSE=6&shiftRowsSE=5
-[with]: https://d-bl.github.io/GroundForge/tiles?patchWidth=7&patchHeight=21&m1=ctcttr&g1=ctct&a1=ctcttl&l2=ctc&k2=ctc&h2=ct&f2=ct&d2=ct&c2=ctc&b2=ctc&l3=ctcrr&k3=ctc&i3=ctct&g3=ctc&e3=ctct&d3=ct&c3=ctc&b3=ctcll&m4=ctcttr&l4=ctc&k4=ctc&h4=ctc&f4=ctc&c4=ctc&b4=ctc&a4=ctcttl&i5=ctc&h5=ctc&g5=ctc&f5=ctc&e5=ctc&d5=ct&h6=ctc&g6=ctc&f6=ctc&m7=ctcttr&l7=ctcrr&k7=ctc&i7=ctcr&g7=ctc&e7=ctcl&d7=ct&c7=ctc&b7=ctcll&a7=ctcttl&l8=ctc&k8=ctc&h8=ctcr&f8=ctcl&d8=ct&c8=ctc&b8=ctc&i9=ctct&g9=ctct&e9=ctct&l10=ctcrr&k10=ctc&h10=ct&f10=ct&d10=ct&c10=ctc&b10=ctcll&footside=b--,xcd,-11,b88,xxx,---,aaa,x78,x--,-aa&tile=---5--,d-b-c-,15-5-5,--5-5-,c63532,--158-,ab-5-c,8-5-5-,-5-5-5,b-5-5-&headside=--C,ABX,88-,11C,XXX,---,DDD,14X,--X,DD-&footsideStitch=ctct&tileStitch=ctc&headsideStitch=ctct&shiftColsSW=0&shiftRowsSW=10&shiftColsSE=6&shiftRowsSE=5
-[Patch-Dimensionen]: https://d-bl.github.io/GroundForge/help/Patch-Size
+[without]: /GroundForge/tiles?patchWidth=19&patchHeight=22&d1=ctct&e2=ct&c2=ct&a2=lct&f3=ctct&d3=ctc&b3=ctct&a3=ct&e4=ctc&c4=ctc&f5=ctc&e5=ctc&d5=ctc&c5=ctc&b5=ctc&a5=ct&e6=ctc&d6=ctc&c6=ctc&f7=ctc&d7=ctc&b7=ctc&a7=rct&e8=ctc&c8=ctc&a8=ct&f9=lctct&d9=ctc&b9=rctct&e10=lct&c10=rct&a10=ct&tile=---5--,d-b-c-,15-5-5,--5-5-,c63532,--158-,ab-5-c,8-5-5-,-5-5-5,b-5-5-&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=10&shiftColsSE=6&shiftRowsSE=5
+[with]: /GroundForge/tiles?patchWidth=7&patchHeight=21&m1=ctcttr&g1=ctct&a1=ctcttl&l2=ctc&k2=ctc&h2=ct&f2=ct&d2=ct&c2=ctc&b2=ctc&l3=ctcrr&k3=ctc&i3=ctct&g3=ctc&e3=ctct&d3=ct&c3=ctc&b3=ctcll&m4=ctcttr&l4=ctc&k4=ctc&h4=ctc&f4=ctc&c4=ctc&b4=ctc&a4=ctcttl&i5=ctc&h5=ctc&g5=ctc&f5=ctc&e5=ctc&d5=ct&h6=ctc&g6=ctc&f6=ctc&m7=ctcttr&l7=ctcrr&k7=ctc&i7=ctcr&g7=ctc&e7=ctcl&d7=ct&c7=ctc&b7=ctcll&a7=ctcttl&l8=ctc&k8=ctc&h8=ctcr&f8=ctcl&d8=ct&c8=ctc&b8=ctc&i9=ctct&g9=ctct&e9=ctct&l10=ctcrr&k10=ctc&h10=ct&f10=ct&d10=ct&c10=ctc&b10=ctcll&footside=b--,xcd,-11,b88,xxx,---,aaa,x78,x--,-aa&tile=---5--,d-b-c-,15-5-5,--5-5-,c63532,--158-,ab-5-c,8-5-5-,-5-5-5,b-5-5-&headside=--C,ABX,88-,11C,XXX,---,DDD,14X,--X,DD-&footsideStitch=ctct&tileStitch=ctc&headsideStitch=ctct&shiftColsSW=0&shiftRowsSW=10&shiftColsSE=6&shiftRowsSE=5
+[Patch-Dimensionen]: /GroundForge/help/Patch-Size
 
 ### Auslassen von Schlägen (im Abschnitt "Advanced")
 

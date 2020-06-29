@@ -21,7 +21,7 @@ More thread colors and/or widths
 Grouping thread segments in downloaded diagrams simplifies the procedure to apply more thread colors and widths.
 The feature did not mary well with the Droste patterns and is only available for laptops and desktops:
 * [download](https://github.com/d-bl/GroundForge/archive/thread-props.zip) and unzip
-* select/tweak your pattern on the [web site](https://d-bl.github.io/GroundForge/tiles)
+* select/tweak your pattern on the [web site](/GroundForge/tiles)
 * click ![](../images/link.png)
 * in the address bar of your browser
   * replace `https://github.com/d-bl/tiles.html` (as far as there is a `.html`)
