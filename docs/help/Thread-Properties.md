@@ -31,11 +31,10 @@ The feature did not mary well with the Droste patterns and is only available for
 
 The next procedure may vary between the tools.
 * Select the diagram.
-* Ungroup it.
+* Ungroup it (this main group serves a proper scale on the web page but is annoying when editing)
 * Select a thread.
 * Change the properties of the paths in the group.
 
-The main group serves a proper scale on the web page but is annoying when editing.
 
 Simplify editing
 ================

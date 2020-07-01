@@ -14,7 +14,6 @@ Click on a bold node to make a yellow form field appear with a stitch definition
 
 Type as many `c`'s and `t`'s for cross and twist as you need for the stitch of your choice,
 or use `l`'s and `r`'s for a left twist or right twist.
-
 Some stitches to copy paste:
 
 {% include stitches.html %}
