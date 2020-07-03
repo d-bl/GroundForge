@@ -1,18 +1,21 @@
 package dibl.fte.data;
 
-import java.util.LinkedList;
+import java.util.List;
 
 public class Face {
-	LinkedList<Edge> edges;
+	List<Edge> edges;
 
 	Face() {
 	}
 
-	void setEdges(LinkedList<Edge> edges) {
+	public Face(List<Edge> edges) {
 		this.edges = edges;
 	}
 
-	public LinkedList<Edge> getEdges() {
+	public List<Edge> getEdges() {
 		return edges;
+	}
+	public void setEdges(List<Edge> edges) {
+		this.edges = edges;
 	}
 }

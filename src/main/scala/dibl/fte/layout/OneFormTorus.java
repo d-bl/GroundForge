@@ -23,7 +23,7 @@ public class OneFormTorus {
 		int index = 0;
 		// edge orientation around each face
 		for (Face face : faces) {
-			LinkedList<Edge> elist = face.getEdges();
+			List<Edge> elist = face.getEdges();
 			for (Edge e : elist) {
 				int col = edges.indexOf(e);
 				int value = 1;

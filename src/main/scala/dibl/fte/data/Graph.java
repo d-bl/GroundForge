@@ -71,7 +71,7 @@ public class Graph implements Cloneable {
 				}
 
 				Face face = new Face();
-				LinkedList<Edge> edges = new LinkedList<>();
+				List<Edge> edges = new LinkedList<>();
 				while (e != null) {
 					edges.add(e);
 					if (e.start.equals(prev)) {
