@@ -4,7 +4,6 @@ import dibl.fte.data.*;
 import org.ejml.simple.SimpleMatrix;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class OneFormTorus {
@@ -15,34 +14,8 @@ public class OneFormTorus {
 		this.graph = g;
 	}
 
-	public boolean layout(List<Face> faces) {
+	public boolean layout(double[][] data) {
 		List<Edge> edges = graph.getEdges();
-
-		int m = edges.size();
-		double[][] data = new double[m][m];
-		int index = 0;
-		// edge orientation around each face
-		for (Face face : faces) {
-			List<Edge> elist = face.getEdges();
-			for (Edge e : elist) {
-				int col = edges.indexOf(e);
-				int value = 1;
-				data[index][col] = e.forward(face) ? value : -value;
-			}
-			index++;
-		}
-
-		// edge orientation around each vertex
-		List<Vertex> vertices = graph.getVertices();
-		for (Vertex v : vertices) {
-			List<Edge> es = v.getRotation();
-			for (Edge e : es) {
-				int col = edges.indexOf(e);
-				int value = e.getStart().equals(v) ? 1 : -1;
-				data[index][col] = value * e.getWeight();
-			}
-			index++;
-		}
 
 		long t0 = System.nanoTime();
 		SimpleMatrix nullSpace = new SimpleMatrix(data).svd().nullSpace();
@@ -54,15 +27,16 @@ public class OneFormTorus {
 			return false;
 		}
 
+		int m = edges.size();
 		for (int r = 0; r < m; r++) {
 			edges.get(r).setDeltaX(nullSpace.get(r, 0));
 			edges.get(r).setDeltaY(nullSpace.get(r, 1));
 		}
 
 		// traverse graph to fill in x and y values
-		boolean[] visited = new boolean[edges.size()];
+		boolean[] visited = new boolean[m];
 		ArrayList<Vector>vectors = new ArrayList<>();
-		setLocationsDFS(vertices.get(0), 0.0, 0.0, visited, vectors);
+		setLocationsDFS(graph.getVertices().get(0), 0.0, 0.0, visited, vectors);
 
 		// Find an osculating path
 		Vector OP = getOsculatingPath();
@@ -80,7 +54,7 @@ public class OneFormTorus {
 
 		return true;
 	}
-	
+
 	private void setLocationsDFS(Vertex v, double valueX, double valueY, boolean[] visited, ArrayList<Vector> vectors) {
 		List<Vertex> vertices = graph.getVertices();
 		int vIndex = vertices.indexOf(v);

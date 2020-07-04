@@ -21,8 +21,8 @@ case class Face(leftArc: Seq[TopoLink], rightArc: Seq[TopoLink]) {
 
   override def toString: String = toS(leftArc) + " ; " + toS(rightArc)
 
-  private def toS(rightArc: Seq[TopoLink]) = {
-    rightArc.map(link => s"${ link.sourceId }->${ link.targetId }").mkString(",")
+  private def toS(links: Seq[TopoLink]) = {
+    links.map(link => s"${ link.sourceId }->${ link.targetId }").mkString(",")
   }
 }
 
@@ -45,15 +45,14 @@ object Face {
 
   def facesFrom(linksInTile: Seq[TopoLink]): Seq[Face] = {
     implicit val linksByTarget: Map[String, Seq[TopoLink]] = linksInTile.groupBy(_.targetId)
-    linksByTarget
-      .values.toArray
+    linksByTarget.values
       .map { links =>
         val (left, right) = closeFace(
           links.filter(_.isLeftOfTarget),
           links.filterNot(_.isLeftOfTarget))
         Face(left, right)
       }
-  }
+  }.toSeq
 
   @scala.annotation.tailrec
   private def closeFace(leftArc: Seq[TopoLink], rightArc: Seq[TopoLink])
