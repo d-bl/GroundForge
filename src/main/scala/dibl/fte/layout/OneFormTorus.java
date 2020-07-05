@@ -14,18 +14,8 @@ public class OneFormTorus {
 		this.graph = g;
 	}
 
-	public boolean layout(double[][] data) {
+	public boolean layout(SimpleMatrix nullSpace) {
 		List<Edge> edges = graph.getEdges();
-
-		long t0 = System.nanoTime();
-		SimpleMatrix nullSpace = new SimpleMatrix(data).svd().nullSpace();
-		long t1 = System.nanoTime();
-		System.out.println("Elapsed time nullspace: " + (t1 - t0)*0.000000001 + "s");
-
-		if (nullSpace.numCols() != 2) {
-			System.out.println("WRONG column number " + nullSpace.numCols());
-			return false;
-		}
 
 		int m = edges.size();
 		for (int r = 0; r < m; r++) {

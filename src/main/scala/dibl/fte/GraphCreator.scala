@@ -21,6 +21,7 @@ import dibl.fte.data.{ Edge, Faces, Graph, Vertex }
 import dibl.fte.layout.{ Data, OneFormTorus }
 import dibl.proto.TilesConfig
 import dibl.{ Diagram, LinkProps, NewPairDiagram, PairDiagram, ThreadDiagram }
+import org.ejml.simple.SimpleMatrix
 
 import scala.collection.JavaConverters._
 object GraphCreator {
@@ -104,51 +105,29 @@ object GraphCreator {
       allFour.map(topoLink => findEdge(topoLink).foreach(vertexMap(id).addEdge))
     }
 
-    lazy val edgesPerNewFace = Face.facesFrom(topoLinks).map(_.counterClockWise)
+    val data = Data.create(
+      Faces.create(graph.getVertices),
+      graph.getEdges,
+      graph.getVertices
+    )
 
-    lazy val oldFaces = Faces.create(graph.getVertices)
-    lazy val newFaces = edgesPerNewFace.map(topoLinks =>
-      new dibl.fte.data.Face(toJavaEdgeList(topoLinks)) // TODO none of the edges has forFace=true
-    ).asJava
-
-    lazy val oldFacesAsString = oldFaces.asScala.map(toStr).mkString("old faces with vertex number:\n", "\n", "")
-    lazy val newFacesAsString1 = newFaces.asScala.map(toStr).mkString("new faces with vertex number:\n", "\n", "")
-    lazy val newFacesAsString2 = edgesPerNewFace.mkString("new faces with IDs showed online when hovering over a stitch:\n", "\n", "")
-    lazy val logging = s"$oldFacesAsString\n$newFacesAsString1\n$newFacesAsString2"
-    println(logging)
-
-    val newData = Data.create(newFaces, graph.getEdges, graph.getVertices)
-    val oldData = Data.create(oldFaces, graph.getEdges, graph.getVertices)
-    println("sums new "+newData.map(_.sum).mkString(";"))
-    println("sums old "+oldData.map(_.sum).mkString(";"))
-
-    if (new OneFormTorus(graph).layout(oldData))
-      Some(graph)
-    else None
-  }
-
-  private def toStr(face: dibl.fte.data.Face) = face.getEdges.asScala.map(toS(face)).mkString(",")
-
-  private def toS(face:dibl.fte.data.Face)(edge: Edge) = {
-    val id = edge.toString.replaceAll(".00", "").replaceAll(".0,0.", "").replaceAll("-0", "")
-    s"$id-${ edge.forward(face) }"
-  }
-
-  private def toJavaEdgeList(topoLinks: Seq[TopoLink])
-                            (implicit edges: Array[Edge],
-                             vertexMap: Map[String, Vertex]
-                            ): util.LinkedList[Edge] = {
-    new java.util.LinkedList[Edge]() {
-      val maybeEdges: Seq[Option[Edge]] = topoLinks.map(findEdge)
-      val flippedEdges: Seq[Edge] = maybeEdges.zip(maybeEdges.tail :+ maybeEdges.head)
-        .map {
-          case (Some(previous), Some(edge)) if previous.getEnd == edge.getStart => edge
-          case (_, Some(edge)) => new Edge(edge.getEnd, edge.getStart)
-        }
-      //println(s"=== ${flippedEdges.map(toS)} === ${flippedEdges.map(edges.contains)}")
-      //flippedEdges.foreach(add)
-      topoLinks.foreach(findEdge(_).foreach(add))
+    nullSpace(data).map { nullSpace =>
+      new OneFormTorus(graph).layout(nullSpace)
+      graph
     }
+  }
+
+  private def nullSpace(data: Array[Array[Double]]): Option[SimpleMatrix] = {
+
+    val t0 = System.nanoTime
+    val nullSpace = new SimpleMatrix(data).svd.nullSpace
+    val t1 = System.nanoTime
+    System.out.println("Elapsed time nullspace: " + (t1 - t0) * 0.000000001 + "s")
+
+    if (nullSpace.numCols != 2) {
+      System.out.println("WRONG column number " + nullSpace.numCols)
+      None
+    } else Some(nullSpace)
   }
 
   private def findEdge(link: TopoLink)
