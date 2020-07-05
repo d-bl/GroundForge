@@ -15,15 +15,11 @@
 */
 package dibl.fte
 
-import java.util
-
 import dibl.fte.data.{ Edge, Faces, Graph, Vertex }
-import dibl.fte.layout.{ Data, OneFormTorus }
+import dibl.fte.layout.{ JData, OneFormTorus }
 import dibl.proto.TilesConfig
 import dibl.{ Diagram, LinkProps, NewPairDiagram, PairDiagram, ThreadDiagram }
 import org.ejml.simple.SimpleMatrix
-
-import scala.collection.JavaConverters._
 object GraphCreator {
 
   /**
@@ -99,22 +95,27 @@ object GraphCreator {
     val linksBySource = topoLinks.groupBy(_.sourceId).map { case (id, links) =>
       id -> (links.filter(_.isRightOfSource) ++ links.filter(_.isLeftOfSource))
     }
-    topoLinks.groupBy(_.targetId).foreach { case (id, links) =>
-      val allFour = linksBySource(id) ++ links.filter(_.isLeftOfTarget) ++ links.filter(_.isRightOfTarget)
-      println(s"$id: " + allFour.mkString(";"))
-      allFour.map(topoLink => findEdge(topoLink).foreach(vertexMap(id).addEdge))
-    }
+    val clockWise: Map[String, Seq[TopoLink]] = topoLinks
+      .groupBy(_.targetId)
+      .map { case (id, links) =>
+        val allFour = linksBySource(id) ++ links.filter(_.isLeftOfTarget) ++ links.filter(_.isRightOfTarget)
+        println(s"$id: " + allFour.mkString(";"))
+        allFour.foreach(topoLink => findEdge(topoLink).foreach(vertexMap(id).addEdge))
+        (id, allFour)
+      }
 
-    val data = Data.create(
-      Faces.create(graph.getVertices),
-      graph.getEdges,
-      graph.getVertices
+    val oldData = JData.create(Faces.create(graph.getVertices), graph.getVertices, graph.getEdges)
+    val newData = Data(Face(topoLinks), clockWise, topoLinks)
+        .map(_.toArray).toArray
+    // The rows and columns of oldData and newData do not have to be in the same order
+    println("old "+oldData.map(_.map(_.toInt).mkString(",")).mkString("; "))
+    println("new "+newData.map(_.map(_.toInt).mkString(",")).mkString("; "))
+    println("summed old "+oldData.map(_.map(_.toInt).sum).mkString(","))
+    println("summed new "+newData.map(_.map(_.toInt).sum).mkString(","))
+
+    nullSpace(oldData).flatMap(nullSpace =>
+      Option(new OneFormTorus(graph).layout(nullSpace))
     )
-
-    nullSpace(data).map { nullSpace =>
-      new OneFormTorus(graph).layout(nullSpace)
-      graph
-    }
   }
 
   private def nullSpace(data: Array[Array[Double]]): Option[SimpleMatrix] = {

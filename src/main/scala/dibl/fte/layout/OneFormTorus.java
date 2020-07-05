@@ -14,7 +14,7 @@ public class OneFormTorus {
 		this.graph = g;
 	}
 
-	public boolean layout(SimpleMatrix nullSpace) {
+	public Graph layout(SimpleMatrix nullSpace) {
 		List<Edge> edges = graph.getEdges();
 
 		int m = edges.size();
@@ -37,12 +37,12 @@ public class OneFormTorus {
 		theta = OP.getY() < 0 ? theta + Math.PI : theta;
 		rotateGraph(theta, vectors);
 		
-		if (!findTranslationVectors(vectors, OP)) return false;
+		if (!findTranslationVectors(vectors, OP)) return null;
 
 		// Move vertices into parallelogram
 		moveToParallelogram();
 
-		return true;
+		return graph;
 	}
 
 	private void setLocationsDFS(Vertex v, double valueX, double valueY, boolean[] visited, ArrayList<Vector> vectors) {

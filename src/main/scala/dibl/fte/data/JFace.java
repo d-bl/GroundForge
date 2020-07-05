@@ -2,13 +2,13 @@ package dibl.fte.data;
 
 import java.util.List;
 
-public class Face {
+public class JFace {
 	List<Edge> edges;
 
-	Face() {
+	JFace() {
 	}
 
-	public Face(List<Edge> edges) {
+	public JFace(List<Edge> edges) {
 		this.edges = edges;
 	}
 

@@ -16,7 +16,6 @@
 package dibl.fte
 
 case class Face(leftArc: Seq[TopoLink], rightArc: Seq[TopoLink]) {
-  val set: Set[TopoLink] = (rightArc ++ leftArc.reverse).toSet
   val counterClockWise: Seq[TopoLink] = leftArc ++ rightArc.reverse
 
   override def toString: String = toS(leftArc) + " ; " + toS(rightArc)
@@ -27,24 +26,9 @@ case class Face(leftArc: Seq[TopoLink], rightArc: Seq[TopoLink]) {
 }
 
 object Face {
-  @scala.annotation.tailrec
-  def directions(unknown: Seq[Face],
-                 forward: Seq[Face] = Seq.empty,
-                 backward: Seq[Face] = Seq.empty
-                ): (Seq[Face], Seq[Face]) = {
-    if (unknown.isEmpty) (forward, backward)
-    else if (forward.isEmpty && backward.isEmpty) {
-      // TODO by GraphCreator: walk along the links of the faces to add them to findEdge(_).forFace/revFace
-      directions(unknown.tail, forward = Seq(unknown.head), backward = Seq.empty)
-    } else if (backward.isEmpty) {
-      val gr = unknown.groupBy(_.set.intersect(forward.head.set).nonEmpty)
-      directions(unknown = gr(false), forward, backward = gr(true))
-    }
-    else ???
-  }
 
-  def facesFrom(linksInTile: Seq[TopoLink]): Seq[Face] = {
-    implicit val linksByTarget: Map[String, Seq[TopoLink]] = linksInTile.groupBy(_.targetId)
+  def apply(links: Seq[TopoLink]): Seq[Face] = {
+    implicit val linksByTarget: Map[String, Seq[TopoLink]] = links.groupBy(_.targetId)
     linksByTarget.values
       .map { links =>
         val (left, right) = closeFace(

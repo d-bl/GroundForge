@@ -1,25 +1,23 @@
 package dibl.fte.layout;
 
 import dibl.fte.data.Edge;
-import dibl.fte.data.Face;
+import dibl.fte.data.JFace;
 import dibl.fte.data.Vertex;
 
-import java.util.Arrays;
 import java.util.List;
 
-public class Data {
+public class JData {
 
-  static public double[][] create(List<Face> faces, List<Edge> edges, List<Vertex> vertices) {
+  static public double[][] create(List<JFace> faces, List<Vertex> vertices, List<Edge> edges) {
     int m = edges.size();
     double[][] data = new double[m][m];
     int index = 0;
     // edge orientation around each face
-    for (Face face : faces) {
+    for (JFace face : faces) {
       List<Edge> elist = face.getEdges();
       for (Edge e : elist) {
         int col = edges.indexOf(e);
-        int value = 1;
-        data[index][col] = e.forward(face) ? value : -value;
+        data[index][col] = e.forward(face) ? 1 : -1;
       }
       index++;
     }
@@ -34,7 +32,6 @@ public class Data {
       }
       index++;
     }
-    System.out.println("data: " + Arrays.deepToString(data));
     return data;
   }
 }

@@ -5,8 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Faces {
-  public static List<Face> create(List<Vertex> vertices) {
-    List<Face> faces;
+  public static List<JFace> create(List<Vertex> vertices) {
+    List<JFace> faces;
 
     faces = new ArrayList<>();
 
@@ -26,7 +26,7 @@ public class Faces {
           prev = faceStart.end;
         }
 
-        Face face = new Face();
+        JFace face = new JFace();
         List<Edge> edges = new LinkedList<>();
         while (e != null) {
           edges.add(e);
