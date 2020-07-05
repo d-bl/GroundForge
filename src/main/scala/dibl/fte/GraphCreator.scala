@@ -113,7 +113,7 @@ object GraphCreator {
     println("summed old "+oldData.map(_.map(_.toInt).sum).mkString(","))
     println("summed new "+newData.map(_.map(_.toInt).sum).mkString(","))
 
-    nullSpace(oldData).flatMap(nullSpace =>
+    nullSpace(newData).flatMap(nullSpace =>
       Option(new OneFormTorus(graph).layout(nullSpace))
     )
   }
