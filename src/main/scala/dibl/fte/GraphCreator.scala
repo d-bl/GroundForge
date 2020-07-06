@@ -15,11 +15,12 @@
 */
 package dibl.fte
 
-import dibl.fte.data.{ Edge, Faces, Graph, Vertex }
-import dibl.fte.layout.{ JData, OneFormTorus }
+import dibl.fte.data.{ Edge, Graph, Vertex }
+import dibl.fte.layout.OneFormTorus
 import dibl.proto.TilesConfig
 import dibl.{ Diagram, LinkProps, NewPairDiagram, PairDiagram, ThreadDiagram }
 import org.ejml.simple.SimpleMatrix
+
 object GraphCreator {
 
   /**
@@ -49,12 +50,12 @@ object GraphCreator {
   }
 
   /**
-   * fold transformation
-   *
-   * @param threadDiagram accumulator
-   * @param stitchConfig  listItem
-   * @return
-   */
+    * fold transformation
+    *
+    * @param threadDiagram accumulator
+    * @param stitchConfig  listItem
+    * @return
+    */
   private def droste(threadDiagram: Diagram, stitchConfig: String): Diagram = {
     ThreadDiagram(PairDiagram(stitchConfig, threadDiagram))
   }
@@ -67,9 +68,6 @@ object GraphCreator {
 
   def graphFrom(topoLinks: Seq[TopoLink]): Option[Graph] = {
     val graph = new Graph()
-
-    // TODO for now this check prevents eternal loops for bandage/sheered pair diagrams
-    if (topoLinks.exists(l => l.sourceId == l.targetId)) return None
 
     // create vertices
     implicit val vertexMap: Map[String, Vertex] = topoLinks
@@ -104,18 +102,18 @@ object GraphCreator {
         (id, allFour)
       }
 
-    val oldData = JData.create(Faces.create(graph.getVertices), graph.getVertices, graph.getEdges)
-    val newData = Data(Face(topoLinks), clockWise, topoLinks)
-        .map(_.toArray).toArray
-    // The rows and columns of oldData and newData do not have to be in the same order
-    println("old "+oldData.map(_.map(_.toInt).mkString(",")).mkString("; "))
-    println("new "+newData.map(_.map(_.toInt).mkString(",")).mkString("; "))
-    println("summed old "+oldData.map(_.map(_.toInt).sum).mkString(","))
-    println("summed new "+newData.map(_.map(_.toInt).sum).mkString(","))
+    val data = Data(
+      Face(topoLinks),
+      clockWise,
+      topoLinks,
+    ).map(_.toArray).toArray
+    println("data " + data.map(_.map(_.toInt).mkString(",")).mkString("; "))
+    println("summed data " + data.map(_.map(_.toInt).sum).mkString(","))
 
-    nullSpace(newData).flatMap(nullSpace =>
+    nullSpace(data).flatMap { nullSpace =>
+      println(nullSpace)
       Option(new OneFormTorus(graph).layout(nullSpace))
-    )
+    }
   }
 
   private def nullSpace(data: Array[Array[Double]]): Option[SimpleMatrix] = {
@@ -128,7 +126,8 @@ object GraphCreator {
     if (nullSpace.numCols != 2) {
       System.out.println("WRONG column number " + nullSpace.numCols)
       None
-    } else Some(nullSpace)
+    }
+    else Some(nullSpace)
   }
 
   private def findEdge(link: TopoLink)

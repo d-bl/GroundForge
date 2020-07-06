@@ -6,8 +6,6 @@ public class Edge implements Cloneable {
 	String id;
 	Vertex start;
 	Vertex end;
-	JFace forFace;
-	JFace revFace;
 
 	double deltaX;
 	double deltaY;
@@ -27,10 +25,6 @@ public class Edge implements Cloneable {
 		this.id = String.format("%s:%s(%.2f,%.2f)", this.start.id, this.end.id, this.deltaX, this.deltaY);
 	}
 	
-	public boolean forward(JFace f) {
-		// TODO could check whether f is either one of forFace or revFace and throw exception otherwise
-		return f.equals(forFace);
-	}
 	public Vertex getStart() {
 		return start;
 	}
