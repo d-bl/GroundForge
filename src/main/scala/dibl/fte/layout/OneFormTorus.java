@@ -14,19 +14,7 @@ public class OneFormTorus {
 		this.graph = g;
 	}
 
-	public Graph layout(SimpleMatrix nullSpace) {
-		List<Edge> edges = graph.getEdges();
-
-		int m = edges.size();
-		for (int r = 0; r < m; r++) {
-			edges.get(r).setDeltaX(nullSpace.get(r, 0));
-			edges.get(r).setDeltaY(nullSpace.get(r, 1));
-		}
-
-		// traverse graph to fill in x and y values
-		boolean[] visited = new boolean[m];
-		ArrayList<Vector>vectors = new ArrayList<>();
-		setLocationsDFS(graph.getVertices().get(0), 0.0, 0.0, visited, vectors);
+	public Graph layout(ArrayList<Vector> vectors) {
 
 		// Find an osculating path
 		Vector OP = getOsculatingPath();
@@ -45,48 +33,6 @@ public class OneFormTorus {
 		return graph;
 	}
 
-	private void setLocationsDFS(Vertex v, double valueX, double valueY, boolean[] visited, ArrayList<Vector> vectors) {
-		List<Vertex> vertices = graph.getVertices();
-		int vIndex = vertices.indexOf(v);
-		if (visited[vIndex]) {
-			double dx = valueX - v.getX();
-			double dy = valueY - v.getY();
-			if ((int)(dx*Vector.ACC) != 0 && (int)(dy*Vector.ACC) != 0) {
-				Vector vect = new Vector(dx, dy);
-				Vector negvect = new Vector(-dx, -dy);
-				if (!vectors.contains(vect) && !vectors.contains(negvect)) {
-					vectors.add(vect);
-				}
-			}
-			return;
-		}
-		
-		visited[vIndex] = true;
-		
-		v.setX(valueX);
-		v.setY(valueY);
-
-        
-        // Recurse for all adjacent vertices 
-        List<Edge> incident = v.getRotation();
-        for (Edge e : incident) {
-        	Vertex next = e.getStart();
-        	double nextValueX = valueX;
-        	double nextValueY = valueY;
-        	
-        	if (next.equals(v)) {
-        		next = e.getEnd();
-        		nextValueX += e.getDeltaX();
-        		nextValueY += e.getDeltaY();
-			} else {
-        		next = e.getStart();
-        		nextValueX -= e.getDeltaX();
-        		nextValueY -= e.getDeltaY();
-			}
-			setLocationsDFS(next, nextValueX, nextValueY, visited, vectors);
-		}
-    }
-	
 	private boolean findTranslationVectors(ArrayList<Vector> vectors, Vector OP) {
 	
 		// Find shortest vector that is not parallel to OP
@@ -106,7 +52,7 @@ public class OneFormTorus {
 		
 		return true;
 	}
-	
+
 	private Vector getOsculatingPath() {
 		Edge e0 = graph.getVertices().get(0).getRotation().get(0);
 		double dx = e0.getDeltaX();

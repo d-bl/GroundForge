@@ -16,7 +16,7 @@
 package dibl.fte
 
 import dibl.fte.data.{ Edge, Graph, Vertex }
-import dibl.fte.layout.OneFormTorus
+import dibl.fte.layout.{ LocationsDFS, OneFormTorus }
 import dibl.proto.TilesConfig
 import dibl.{ Diagram, LinkProps, NewPairDiagram, PairDiagram, ThreadDiagram }
 import org.ejml.simple.SimpleMatrix
@@ -112,7 +112,8 @@ object GraphCreator {
 
     nullSpace(data).flatMap { nullSpace =>
       println(nullSpace)
-      Option(new OneFormTorus(graph).layout(nullSpace))
+      val vectors = new LocationsDFS(graph.getVertices, graph.getEdges, nullSpace).getVectors
+      Option(new OneFormTorus(graph).layout(vectors))
     }
   }
 
