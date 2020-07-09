@@ -16,32 +16,40 @@
 package dibl.fte
 
 import java.io.FileOutputStream
+import java.util
 
 import dibl.fte.GraphCreator.fromThreadDiagram
 import dibl.fte.data.{ Graph, Vertex }
 
 import scala.collection.JavaConverters._
+import scala.collection.mutable
 import scala.util.{ Failure, Try }
 
 object SvgCreator {
   def main(args: Array[String]): Unit = {
-    Try(fromThreadDiagram(args.last).foreach(graph =>
+    Try(fromThreadDiagram(args.last).foreach { graph =>
       new FileOutputStream(args.head)
         .write(draw(graph).getBytes)
-    )) match {
+    }) match {
       case Failure(e) => e.printStackTrace()
       case _ =>
     }
   }
 
   def draw(graph: Graph): String = {
+    draw(
+      graph.getVertices.asScala,
+      graph.getTranslationVectors.asScala.map(v => v.getX -> v.getY),
+    )
+  }
+
+  private def draw(vertices: Seq[Vertex], vectors: Seq[(Double, Double)]) = {
     val ((v0x, v0y), (v1x, v1y)) = {
-      val vectors = graph.getTranslationVectors.asScala.map(v => v.getX -> v.getY)
       (vectors.head, vectors.last)
     }
     val offset = if (v1x < 0) 4 * v1x
                  else 0
-    val width: Double = 10d / Math.sqrt(graph.getVertices.size)
+    val width: Double = 10d / Math.sqrt(vertices.size)
     val repeats: Seq[Seq[String]] =
       for {
         row <- 0 until 4
@@ -49,7 +57,7 @@ object SvgCreator {
       } yield {
         val color = if (row == 0 && col == 0) "rgb(0,0,255)"
                     else "rgb(0,0,0)"
-        graph.getVertices.asScala.map(
+        vertices.map(
           dotWithEdges(_, row * v0x + col * v1x - offset, row * v0y + col * v1y)(width, color)
         )
       }

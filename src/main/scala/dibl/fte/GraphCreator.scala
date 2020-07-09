@@ -67,6 +67,38 @@ object GraphCreator {
   }
 
   def graphFrom(topoLinks: Seq[TopoLink]): Option[Graph] = {
+    val clockWise: Map[String, Seq[TopoLink]] = {
+      val linksBySource = topoLinks.groupBy(_.sourceId)
+      topoLinks.groupBy(_.targetId)
+        .map { case (id, linksIn) =>
+          val linksOut = linksBySource(id)
+          (id, linksOut.filter(_.isRightOfSource)
+            ++ linksOut.filter(_.isLeftOfSource)
+            ++ linksIn.filter(_.isLeftOfTarget)
+            ++ linksIn.filter(_.isRightOfTarget)
+          )
+        }
+    }
+    val data = Data(
+      Face(topoLinks),
+      clockWise,
+      topoLinks,
+    ).map(_.toArray).toArray
+
+    nullSpace(data).flatMap { nullSpace =>
+      println(nullSpace)
+      val graph: Graph = initGraph(topoLinks, clockWise)
+      val deltas = topoLinks.zipWithIndex.map{
+        case (TopoLink(sourceId, targetId, _, _), i) =>
+        // TODO javascript equivalence
+          (sourceId, targetId, nullSpace.get(i,0), nullSpace.get(i,1))
+      }
+      val vectors = new LocationsDFS(graph.getVertices, graph.getEdges, nullSpace).getVectors
+      Option(new OneFormTorus(graph).layout(vectors))
+    }
+  }
+
+  private def initGraph(topoLinks: Seq[TopoLink], clockWise: Map[String, Seq[TopoLink]]) = {
     val graph = new Graph()
 
     // create vertices
@@ -90,42 +122,23 @@ object GraphCreator {
     }.toArray
 
     // add edges to vertices in clockwise order
-    val linksBySource = topoLinks.groupBy(_.sourceId).map { case (id, links) =>
-      id -> (links.filter(_.isRightOfSource) ++ links.filter(_.isLeftOfSource))
+    clockWise.foreach { case (id, topoLinks) =>
+      topoLinks.foreach(findEdge(_).foreach(vertexMap(id).addEdge))
     }
-    val clockWise: Map[String, Seq[TopoLink]] = topoLinks
-      .groupBy(_.targetId)
-      .map { case (id, links) =>
-        val allFour = linksBySource(id) ++ links.filter(_.isLeftOfTarget) ++ links.filter(_.isRightOfTarget)
-        println(s"$id: " + allFour.mkString(";"))
-        allFour.foreach(topoLink => findEdge(topoLink).foreach(vertexMap(id).addEdge))
-        (id, allFour)
-      }
-
-    val data = Data(
-      Face(topoLinks),
-      clockWise,
-      topoLinks,
-    ).map(_.toArray).toArray
-    println("data " + data.map(_.map(_.toInt).mkString(",")).mkString("; "))
-    println("summed data " + data.map(_.map(_.toInt).sum).mkString(","))
-
-    nullSpace(data).flatMap { nullSpace =>
-      println(nullSpace)
-      val vectors = new LocationsDFS(graph.getVertices, graph.getEdges, nullSpace).getVectors
-      Option(new OneFormTorus(graph).layout(vectors))
-    }
+    graph
   }
 
   private def nullSpace(data: Array[Array[Double]]): Option[SimpleMatrix] = {
+    println("data " + data.map(_.map(_.toInt).mkString(",")).mkString("; "))
+    println("summed data " + data.map(_.map(_.toInt).sum).mkString(","))
 
     val t0 = System.nanoTime
-    val nullSpace = new SimpleMatrix(data).svd.nullSpace
+    val nullSpace = new SimpleMatrix(data).svd.nullSpace // TODO javascript equivalence
     val t1 = System.nanoTime
-    System.out.println("Elapsed time nullspace: " + (t1 - t0) * 0.000000001 + "s")
+    println("Elapsed time nullspace: " + (t1 - t0) * 0.000000001 + "s")
 
     if (nullSpace.numCols != 2) {
-      System.out.println("WRONG column number " + nullSpace.numCols)
+      println("WRONG column number " + nullSpace.numCols)
       None
     }
     else Some(nullSpace)
