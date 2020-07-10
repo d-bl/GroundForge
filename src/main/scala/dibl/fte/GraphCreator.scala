@@ -19,7 +19,8 @@ import dibl.fte.data.{ Edge, Graph, Vertex }
 import dibl.fte.layout.{ LocationsDFS, OneFormTorus }
 import dibl.proto.TilesConfig
 import dibl.{ Diagram, LinkProps, NewPairDiagram, PairDiagram, ThreadDiagram }
-import org.ejml.simple.SimpleMatrix
+
+import scala.util.Try
 
 object GraphCreator {
 
@@ -37,7 +38,7 @@ object GraphCreator {
     *                 +----+----+----+
     * @return The X's in the pattern definition are added to the returned graph.
     */
-  def fromThreadDiagram(urlQuery: String): Option[Graph] = {
+  def fromThreadDiagram(urlQuery: String): Try[Graph] = {
     val patternConfig = TilesConfig(urlQuery)
     val stitchConfigs = urlQuery.split("&")
       .filter(_.startsWith("droste"))
@@ -60,13 +61,13 @@ object GraphCreator {
     ThreadDiagram(PairDiagram(stitchConfig, threadDiagram))
   }
 
-  def fromPairDiagram(urlQuery: String): Option[Graph] = {
+  def fromPairDiagram(urlQuery: String): Try[Graph] = {
     val config = TilesConfig(urlQuery)
     val diagram = NewPairDiagram.create(config)
     graphFrom(getTopoLinks(diagram, scale = 1, config))
   }
 
-  def graphFrom(topoLinks: Seq[TopoLink]): Option[Graph] = {
+  def graphFrom(topoLinks: Seq[TopoLink]): Try[Graph] = {
     val clockWise: Map[String, Seq[TopoLink]] = {
       val linksBySource = topoLinks.groupBy(_.sourceId)
       topoLinks.groupBy(_.targetId)
@@ -79,26 +80,18 @@ object GraphCreator {
           )
         }
     }
-    val data = Data(
-      Face(topoLinks),
-      clockWise,
-      topoLinks,
-    ).map(_.toArray).toArray
-
-    nullSpace(data).flatMap { nullSpace =>
-      println(nullSpace)
-      val graph: Graph = initGraph(topoLinks, clockWise)
-      val deltas = topoLinks.zipWithIndex.map{
-        case (TopoLink(sourceId, targetId, _, _), i) =>
-        // TODO javascript equivalence
-          (sourceId, targetId, nullSpace.get(i,0), nullSpace.get(i,1))
-      }
-      val vectors = new LocationsDFS(graph.getVertices, graph.getEdges, nullSpace).getVectors
-      Option(new OneFormTorus(graph).layout(vectors))
-    }
+    val data = Data(Face(topoLinks), clockWise, topoLinks)
+    for {
+      deltas <- Delta(data, topoLinks)
+      graph = initGraph(deltas, clockWise)
+      vectors = new LocationsDFS(graph.getVertices, graph.getEdges).getVectors
+      _ <- Try(Option(new OneFormTorus(graph).layout(vectors))
+      .getOrElse(throw new Exception("no translation vectors found")))
+    } yield graph
   }
 
-  private def initGraph(topoLinks: Seq[TopoLink], clockWise: Map[String, Seq[TopoLink]]) = {
+  private def initGraph(deltas: Seq[(TopoLink, Delta)], clockWise: Map[String, Seq[TopoLink]]) = {
+    val topoLinks: Seq[TopoLink] = deltas.toMap.keys.toSeq
     val graph = new Graph()
 
     // create vertices
@@ -108,17 +101,13 @@ object GraphCreator {
         // The initial coordinates don't matter as long as they are unique.
         nodeId -> graph.createVertex(i, 0)
       }.toMap
-    println(vertexMap.keys.toArray.sortBy(identity).mkString(","))
-    if (vertexMap.keys.head.length == 5) { // droste pattern
-      println(topoLinks.mkString(";"))
-    }
 
     // create edges
-    implicit val edges: Array[Edge] = topoLinks.map { link =>
+    implicit val edges: Array[Edge] = deltas.map { case (link, Delta(dx,dy)) =>
       graph.addNewEdge(new Edge(
         vertexMap(link.sourceId),
         vertexMap(link.targetId)
-      ))
+      )).setDeltaX(dx).setDeltaY(dy)
     }.toArray
 
     // add edges to vertices in clockwise order
@@ -126,22 +115,6 @@ object GraphCreator {
       topoLinks.foreach(findEdge(_).foreach(vertexMap(id).addEdge))
     }
     graph
-  }
-
-  private def nullSpace(data: Array[Array[Double]]): Option[SimpleMatrix] = {
-    println("data " + data.map(_.map(_.toInt).mkString(",")).mkString("; "))
-    println("summed data " + data.map(_.map(_.toInt).sum).mkString(","))
-
-    val t0 = System.nanoTime
-    val nullSpace = new SimpleMatrix(data).svd.nullSpace // TODO javascript equivalence
-    val t1 = System.nanoTime
-    println("Elapsed time nullspace: " + (t1 - t0) * 0.000000001 + "s")
-
-    if (nullSpace.numCols != 2) {
-      println("WRONG column number " + nullSpace.numCols)
-      None
-    }
-    else Some(nullSpace)
   }
 
   private def findEdge(link: TopoLink)

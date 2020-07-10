@@ -41,16 +41,18 @@ public class Edge implements Cloneable {
 		return deltaX;
 	}
 	
-	public void setDeltaX(double dx) {
+	public Edge setDeltaX(double dx) {
 		this.deltaX = dx;
+		return this;
 	}
 	
 	public double getDeltaY() {
 		return deltaY;
 	}
 	
-	public void setDeltaY(double dy) {
+	public Edge setDeltaY(double dy) {
 		this.deltaY = dy;
+		return this;
 	}
 
 	@Override

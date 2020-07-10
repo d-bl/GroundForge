@@ -1,7 +1,6 @@
 package dibl.fte.layout;
 
 import dibl.fte.data.*;
-import org.ejml.simple.SimpleMatrix;
 
 import java.util.ArrayList;
 import java.util.List;

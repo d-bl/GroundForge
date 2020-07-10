@@ -47,10 +47,10 @@ object Demo {
       fileName = s"$dir/$qName-$tail.svg"
     } { if (stitch!=drosteDiagram || !query.contains("whiting")) { // skip too large pattern
         val t0 = System.nanoTime()
-        Try(if (stitch == pairDiagram) GraphCreator.fromPairDiagram(query)
+        Try(if (stitch == pairDiagram) GraphCreator.fromPairDiagram(query).toOption
             else if (stitch.startsWith("t"))
-                   GraphCreator.fromThreadDiagram(query + "&droste2=" + stitch)
-            else GraphCreator.fromThreadDiagram(query)
+                   GraphCreator.fromThreadDiagram(query + "&droste2=" + stitch).toOption
+            else GraphCreator.fromThreadDiagram(query).toOption
         ) match {
           case Success(None) =>
           case Failure(e) => e.printStackTrace()

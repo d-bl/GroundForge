@@ -3,7 +3,6 @@ package dibl.fte.layout;
 import dibl.fte.data.Edge;
 import dibl.fte.data.Vector;
 import dibl.fte.data.Vertex;
-import org.ejml.simple.SimpleMatrix;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +11,10 @@ public class LocationsDFS {
   private List<Vertex> vertices;
   private ArrayList<Vector>vectors = new ArrayList<>();
 
-  public LocationsDFS(List<Vertex> vertices, List<Edge> edges, SimpleMatrix nullSpace) {
+  public LocationsDFS(List<Vertex> vertices, List<Edge> edges) {
     this.vertices = vertices;
 
     int m = edges.size();
-    for (int r = 0; r < m; r++) {
-      edges.get(r).setDeltaX(nullSpace.get(r, 0));
-      edges.get(r).setDeltaY(nullSpace.get(r, 1));
-    }
 
     // traverse graph to fill in x and y values
     boolean[] visited = new boolean[m];
