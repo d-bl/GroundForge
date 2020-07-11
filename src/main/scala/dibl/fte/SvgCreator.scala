@@ -16,13 +16,11 @@
 package dibl.fte
 
 import java.io.FileOutputStream
-import java.util
 
 import dibl.fte.GraphCreator.fromThreadDiagram
 import dibl.fte.data.{ Graph, Vertex }
 
 import scala.collection.JavaConverters._
-import scala.collection.mutable
 import scala.util.{ Failure, Try }
 
 object SvgCreator {

@@ -20,7 +20,9 @@ import dibl.fte.layout.{ LocationsDFS, OneFormTorus }
 import dibl.proto.TilesConfig
 import dibl.{ Diagram, LinkProps, NewPairDiagram, PairDiagram, ThreadDiagram }
 
+import scala.annotation.tailrec
 import scala.util.Try
+import scala.collection.JavaConverters._
 
 object GraphCreator {
 
@@ -83,15 +85,50 @@ object GraphCreator {
     val data = Data(Face(topoLinks), clockWise, topoLinks)
     for {
       deltas <- Delta(data, topoLinks)
+      nodes = geoNodes(Map(topoLinks.head.sourceId -> (0,0)), deltas)
       graph = initGraph(deltas, clockWise)
+      _ = println(s" ===== ${graph.getVertices.size()} =?= ${nodes.size}")
       vectors = new LocationsDFS(graph.getVertices, graph.getEdges).getVectors
+      _ = println(graph.getVertices.asScala.map(v => v.getX -> v.getY ))
+      _ = println(nodes.values.toList)
       _ <- Try(Option(new OneFormTorus(graph).layout(vectors))
-      .getOrElse(throw new Exception("no translation vectors found")))
+        .getOrElse(throw new Exception("no translation vectors found")))
     } yield graph
   }
 
-  private def initGraph(deltas: Seq[(TopoLink, Delta)], clockWise: Map[String, Seq[TopoLink]]) = {
-    val topoLinks: Seq[TopoLink] = deltas.toMap.keys.toSeq
+  private type GeoNodes = Map[String, (Double, Double)]
+  private type Deltas = Map[TopoLink, Delta]
+
+  @tailrec
+  private def geoNodes(nodes: GeoNodes, deltas: Deltas): GeoNodes = {
+    // 45 calls for 663 nodes of whiting=F14_P193&tileStitch=crcrctclclcr
+    val nodeIds = nodes.keys.toSeq
+    print(s" ${nodes.size}-${deltas.size} ")
+
+    val candidates = deltas.filter {
+      case (TopoLink(source, target, _, _), _) =>
+        nodeIds.contains(source) && !nodeIds.contains(target)
+    }
+    if (candidates.isEmpty) nodes
+    else {
+      val newNodes = candidates.map {
+        case (TopoLink(source, target, isLeftOfTarget, isLeftOfSource), Delta(dx, dy)) =>
+          val (x, y) = nodes(source)
+          target -> (x + dx, y + dy)
+      } ++ nodes
+      val newNodeIds = newNodes.keys.toSeq
+      geoNodes(
+        newNodes,
+        deltas.filterNot(d => newNodeIds.contains(d._1.sourceId) && newNodeIds.contains(d._1.targetId) )
+        // less complex to calculate but depleting deltas less
+        // (doesn't influence number of calls but reduces the filter to find candidates):
+        // deltas.filterNot(delta => candidates.contains(delta._1))
+      )
+    }
+  }
+
+  private def initGraph(deltas: Deltas, clockWise: Map[String, Seq[TopoLink]]) = {
+    val topoLinks: Seq[TopoLink] = deltas.keys.toSeq
     val graph = new Graph()
 
     // create vertices
@@ -103,7 +140,7 @@ object GraphCreator {
       }.toMap
 
     // create edges
-    implicit val edges: Array[Edge] = deltas.map { case (link, Delta(dx,dy)) =>
+    implicit val edges: Array[Edge] = deltas.map { case (link, Delta(dx, dy)) =>
       graph.addNewEdge(new Edge(
         vertexMap(link.sourceId),
         vertexMap(link.targetId)

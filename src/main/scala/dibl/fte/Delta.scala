@@ -2,7 +2,7 @@ package dibl.fte
 
 import org.ejml.simple.SimpleMatrix
 
-import scala.util.{ Failure, Success, Try }
+import scala.util.{ Failure, Try }
 
 case class Delta(dx: Double, dy: Double)
 
@@ -12,7 +12,7 @@ object Delta {
   /** version for a java environment */
   def apply(data: Seq[Seq[Double]],
             topoLinks: Seq[TopoLink],
-           ): Try[Seq[(TopoLink, Delta)]] = {
+           ): Try[Map[TopoLink, Delta]] = {
     //    println("data " + data.map(_.map(_.toInt).mkString(",")).mkString("; "))
     //    println("summed data " + data.map(_.map(_.toInt).sum).mkString(","))
 
@@ -29,6 +29,7 @@ object Delta {
     }
     else Try((0 until rows)
       .map(i => topoLinks(i) -> Delta(nullSpace.get(i, 0), nullSpace.get(i, 1)))
+      .toMap
     )
   }
 }
