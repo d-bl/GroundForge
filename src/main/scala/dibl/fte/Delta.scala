@@ -1,12 +1,20 @@
 package dibl.fte
 
+import dibl.fte.Delta.acc
 import org.ejml.simple.SimpleMatrix
 
 import scala.util.{ Failure, Try }
 
-case class Delta(dx: Double, dy: Double)
+case class Delta(dx: Double, dy: Double) {
+  private val rX: Int = (dx * acc).toInt
+  private val rY: Int = (dy * acc).toInt
+  val nonZero: Boolean = rX != 0 && rY != 0
+  val rounded: (Int, Int) = (rX , rY)
+}
 
 object Delta {
+  private val acc = 100000
+
   // TODO javascript interface to nanolib
 
   /** version for a java environment */
