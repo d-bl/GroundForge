@@ -17,57 +17,12 @@ package dibl.fte
 
 import dibl.fte.data.{ Edge, Graph, Vertex }
 import dibl.fte.layout.{ LocationsDFS, OneFormTorus }
-import dibl.proto.TilesConfig
-import dibl.{ Diagram, LinkProps, NewPairDiagram, PairDiagram, ThreadDiagram }
 
 import scala.annotation.tailrec
 import scala.collection.JavaConverters._
 import scala.util.Try
 
 object GraphCreator {
-
-  /**
-    * @param urlQuery parameters for: https://d-bl.github.io/GroundForge/tiles?
-    *                 For now the tile must be a checker tile and
-    *                 the patch size must span 3 columns and 2 rows of checker tiles.
-    *                 A simplified ascii-art view of a pattern definition:
-    *                 +----+----+----+
-    *                 |....|....|....|
-    *                 |....|....|....|
-    *                 +----+----+----+
-    *                 |....|XXXX|....|
-    *                 |....|XXXX|....|
-    *                 +----+----+----+
-    * @return The X's in the pattern definition are added to the returned graph.
-    */
-  def fromThreadDiagram(urlQuery: String): Try[Graph] = {
-    val patternConfig = TilesConfig(urlQuery)
-    val stitchConfigs = urlQuery.split("&")
-      .filter(_.startsWith("droste"))
-      .sortBy(identity)
-      .map(_.replace("=.*", ""))
-    val initialThreadDiagram = ThreadDiagram(NewPairDiagram.create(patternConfig))
-    val diagram = stitchConfigs.foldLeft(initialThreadDiagram)(droste)
-    val scale = Math.pow(2, stitchConfigs.length + 1).toInt
-    graphFrom(getTopoLinks(diagram, scale, patternConfig))
-  }
-
-  /**
-    * fold transformation
-    *
-    * @param threadDiagram accumulator
-    * @param stitchConfig  listItem
-    * @return
-    */
-  private def droste(threadDiagram: Diagram, stitchConfig: String): Diagram = {
-    ThreadDiagram(PairDiagram(stitchConfig, threadDiagram))
-  }
-
-  def fromPairDiagram(urlQuery: String): Try[Graph] = {
-    val config = TilesConfig(urlQuery)
-    val diagram = NewPairDiagram.create(config)
-    graphFrom(getTopoLinks(diagram, scale = 1, config))
-  }
 
   def graphFrom(topoLinks: Seq[TopoLink]): Try[Graph] = {
     val clockWise: Map[String, Seq[TopoLink]] = {
@@ -82,10 +37,10 @@ object GraphCreator {
           )
         }
     }
-    val data = Data(Face(topoLinks), clockWise, topoLinks)
     for {
+      data <- Try(Data(Face(topoLinks), clockWise, topoLinks))
       deltas <- Delta(data, topoLinks)
-      nodes = geoNodes(Map(topoLinks.head.sourceId -> (0,0)), deltas)
+      nodes = locations(Map(topoLinks.head.sourceId -> (0,0)), deltas)
       graph = initGraph(deltas, clockWise)
       //_ = println(s" ===== ${graph.getVertices.size()} =?= ${nodes.size}")
       vectors = new LocationsDFS(graph.getVertices, graph.getEdges).getVectors
@@ -97,7 +52,7 @@ object GraphCreator {
     } yield graph
   }
 
-  private type GeoNodes = Map[String, (Double, Double)]
+  private type Locations = Map[String, (Double, Double)]
   private type Deltas = Map[TopoLink, Delta]
 
   private def distinct(deltas: Deltas) = deltas.values.toSeq
@@ -106,7 +61,7 @@ object GraphCreator {
     .map(_._2.head) // takes the first element of each group
 
   @tailrec
-  private def geoNodes(nodes: GeoNodes, deltas: Deltas): GeoNodes = {
+  private def locations(nodes: Locations, deltas: Deltas): Locations = {
     // 45 calls for 663 nodes of whiting=F14_P193&tileStitch=crcrctclclcr
     // print(s" ${nodes.size}-${deltas.size} ")
 
@@ -123,7 +78,7 @@ object GraphCreator {
           target -> (x + dx, y + dy)
       } ++ nodes
       val newNodeIds = newNodes.keys.toSeq
-      geoNodes(
+      locations(
         newNodes,
         deltas.filterNot(d => newNodeIds.contains(d._1.sourceId) && newNodeIds.contains(d._1.targetId))
         // less complex to calculate but depleting deltas less
@@ -169,32 +124,4 @@ object GraphCreator {
         edge.getEnd == vertexMap(link.targetId)
     )
   }
-
-  private def getTopoLinks(implicit diagram: Diagram, scale: Int, config: TilesConfig) = {
-    TopoLink
-      .simplify(diagram.links.filter(inCenterBottomTile))
-      .sortBy(l => l.targetId -> l.sourceId)
-  }
-
-  private def inCenterBottomTile(link: LinkProps)
-                                (implicit diagram: Diagram, scale: Int, config: TilesConfig): Boolean = {
-    // The top and side tiles of a diagram may have irregularities along the outer edges.
-    // So select links arriving in the center bottom checker tile.
-    val cols = config.patchWidth / 3
-    val rows = config.patchHeight / 2
-
-    val target = diagram.node(link.target)
-    val source = diagram.node(link.source)
-    val y = unScale(target.y)
-    val x = unScale(target.x)
-    y >= rows && x >= cols && x < cols * 2 && !link.withPin && target.id != "" && source.id != ""
-  }
-
-  /** Revert [[NewPairDiagram]].toPoint
-    *
-    * @param i     value for x or y
-    * @param scale value 1 or factor to also undo [[ThreadDiagram]].scale
-    * @return x/y on canvas reduced to row/col number in the input
-    */
-  private def unScale(i: Double)(implicit scale: Int): Int = (i / scale / 15 - 2).toInt
 }

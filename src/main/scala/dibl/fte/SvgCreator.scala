@@ -15,25 +15,11 @@
 */
 package dibl.fte
 
-import java.io.FileOutputStream
-
-import dibl.fte.GraphCreator.fromThreadDiagram
 import dibl.fte.data.{ Graph, Vertex }
 
 import scala.collection.JavaConverters._
-import scala.util.{ Failure, Try }
 
 object SvgCreator {
-  def main(args: Array[String]): Unit = {
-    Try(fromThreadDiagram(args.last).foreach { graph =>
-      new FileOutputStream(args.head)
-        .write(draw(graph).getBytes)
-    }) match {
-      case Failure(e) => e.printStackTrace()
-      case _ =>
-    }
-  }
-
   def draw(graph: Graph): String = {
     draw(
       graph.getVertices.asScala,

@@ -16,7 +16,11 @@
 package dibl.fte
 
 import dibl.LinkProps.WhiteStart
-import dibl.{ Diagram, LinkProps, NodeProps }
+import dibl.proto.TilesConfig
+import dibl.{ Diagram, LinkProps, NewPairDiagram, NodeProps, PairDiagram, ThreadDiagram }
+
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
+import scala.util.Try
 
 case class TopoLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean, isLeftOfSource: Boolean) {
   val isRightOfTarget: Boolean = !isLeftOfTarget
@@ -26,7 +30,100 @@ case class TopoLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean,
     .replaceAll("(rue|alse)", "")
 }
 
-object TopoLink {
+@JSExportTopLevel("TopoLink") object TopoLink {
+
+  @JSExport
+  def asString(links: Seq[TopoLink]): String = {
+    links.mkString(";")
+  }
+
+  @JSExport
+  def fromUrlQuery(urlQuery: String): Seq[TopoLink] = {
+    urlQuery.split("&")
+      .find(_.matches("topo=.*"))
+      .map(s => fromString(s.replace("topo=", "")))
+      .getOrElse(getTopoLinks(
+        NewPairDiagram.create(TilesConfig(urlQuery)),
+        TilesConfig(urlQuery)
+      ))
+  }
+
+  @JSExport
+  def fromString(links: String): Seq[TopoLink] = Try {
+    links
+      .replaceAll("""\s+""","")
+      .split(";")
+      .toSeq
+      .map { link =>
+        val s = link.split(",")
+        TopoLink(s(0), s(1), s(2) == "t", s(3) == "t")
+      }
+  }.getOrElse(Seq.empty)
+
+  /**
+    * @param urlQuery parameters for: https://d-bl.github.io/GroundForge/tiles?
+    *                 For now the tile must be a checker tile and
+    *                 the patch size must span 3 columns and 2 rows of checker tiles.
+    *                 A simplified ascii-art view of a pattern definition:
+    *                 +----+----+----+
+    *                 |....|....|....|
+    *                 |....|....|....|
+    *                 +----+----+----+
+    *                 |....|XXXX|....|
+    *                 |....|XXXX|....|
+    *                 +----+----+----+
+    * @return The X's in the pattern definition are added to the returned graph.
+    */
+  def fromThreadDiagram(urlQuery: String): Seq[TopoLink] = Try {
+    val patternConfig = TilesConfig(urlQuery)
+    val stitchConfigs = urlQuery.split("&")
+      .filter(_.startsWith("droste"))
+      .sortBy(identity)
+      .map(_.replace("=.*", ""))
+    val initialThreadDiagram = ThreadDiagram(NewPairDiagram.create(patternConfig))
+    val diagram = stitchConfigs.foldLeft(initialThreadDiagram)(droste)
+    val scale = Math.pow(2, stitchConfigs.length + 1).toInt
+    getTopoLinks(diagram, patternConfig, scale)
+  }.getOrElse(Seq.empty)
+
+  private def getTopoLinks(implicit diagram: Diagram, config: TilesConfig, scale: Int = 1) = {
+    TopoLink
+      .simplify(diagram.links.filter(inCenterBottomTile))
+      .sortBy(l => l.targetId -> l.sourceId)
+  }
+
+  private def inCenterBottomTile(link: LinkProps)
+                                (implicit diagram: Diagram, scale: Int, config: TilesConfig): Boolean = {
+    // The top and side tiles of a diagram may have irregularities along the outer edges.
+    // So select links arriving in the center bottom checker tile.
+    val cols = config.patchWidth / 3
+    val rows = config.patchHeight / 2
+
+    val target = diagram.node(link.target)
+    val source = diagram.node(link.source)
+    val y = unScale(target.y)
+    val x = unScale(target.x)
+    y >= rows && x >= cols && x < cols * 2 && !link.withPin && target.id != "" && source.id != ""
+  }
+
+  /** Revert [[NewPairDiagram]].toPoint
+    *
+    * @param i     value for x or y
+    * @param scale value 1 or factor to also undo [[ThreadDiagram]].scale
+    * @return x/y on canvas reduced to row/col number in the input
+    */
+  private def unScale(i: Double)(implicit scale: Int): Int = (i / scale / 15 - 2).toInt
+
+  /**
+    * fold transformation
+    *
+    * @param threadDiagram accumulator
+    * @param stitchConfig  listItem
+    * @return
+    */
+  private def droste(threadDiagram: Diagram, stitchConfig: String): Diagram = {
+    ThreadDiagram(PairDiagram(stitchConfig, threadDiagram))
+  }
 
   /** reduces diagram info of a tile to topological info embedded on a flat torus */
   def simplify(linksInOneTile: Seq[LinkProps])
