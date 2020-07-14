@@ -24,7 +24,7 @@ import scala.util.Try
 
 object GraphCreator {
 
-  def graphFrom(topoLinks: Seq[TopoLink]): Try[Graph] = {
+  def graphFrom(topoLinks: Seq[TopoLink]): Try[(Graph, String)] = {
     val clockWise: Map[String, Seq[TopoLink]] = {
       val linksBySource = topoLinks.groupBy(_.sourceId)
       topoLinks.groupBy(_.targetId)
@@ -40,25 +40,39 @@ object GraphCreator {
     for {
       data <- Try(Data(Face(topoLinks), clockWise, topoLinks))
       deltas <- Delta(data, topoLinks)
-      nodes = locations(Map(topoLinks.head.sourceId -> (0,0)), deltas)
+      recursionStartId = topoLinks.head.sourceId
+      nodes = locations(Map(recursionStartId -> (0, 0)), deltas)
       graph = initGraph(deltas, clockWise)
       //_ = println(s" ===== ${graph.getVertices.size()} =?= ${nodes.size}")
-      vectors = new LocationsDFS(graph.getVertices, graph.getEdges).getVectors
+      tileVectors = new LocationsDFS(graph.getVertices, graph.getEdges).getVectors
+      svg = SvgPricking(nodes,topoLinks,getTileVector(recursionStartId, deltas, nodes).toSeq)
       //_ = println(graph.getVertices.asScala.map(v => v.getX -> v.getY ))
       //_ = println(nodes.values.toList)
-      _ <- Try(Option(new OneFormTorus(graph).layout(vectors))
+      _ <- Try(Option(new OneFormTorus(graph).layout(tileVectors))
         .getOrElse(throw new Exception("no translation vectors found")))
-      _ = println(s"${distinct(deltas)} === ${vectors.asScala.mkString("; ")}")
-    } yield graph
+      _ = println(s"tileVectors === ${ tileVectors.asScala.mkString("; ") } === ${ getTileVector(recursionStartId, deltas, nodes) }")
+    } yield (graph, svg)
   }
 
-  private type Locations = Map[String, (Double, Double)]
+  type Locations = Map[String, (Double, Double)]
   private type Deltas = Map[TopoLink, Delta]
 
-  private def distinct(deltas: Deltas) = deltas.values.toSeq
-    .filter(_.nonZero)
-    .groupBy(_.rounded) // TODO ignore direction
-    .map(_._2.head) // takes the first element of each group
+  def getTileVector(recursionStartId: String, deltas: Map[TopoLink, Delta], nodes: Locations): Seq[(Double, Double)] = {
+    deltas.keys
+      .filter { // find links arriving at the start
+        case TopoLink(_, `recursionStartId`, _, _) => true
+        case _ => false
+      }.tail
+      .map { link =>
+        val (x, y) = nodes(recursionStartId)
+        val Delta(dX, dY) = deltas(link)
+        // link start before the tile:
+        val (x1, y1) = (x - dX, y - dY)
+        // link start beyond the tile:
+        val (x2, y2) = nodes(link.sourceId)
+        (x2 - x1, y2 - y1)
+      }
+  }.toSeq
 
   @tailrec
   private def locations(nodes: Locations, deltas: Deltas): Locations = {
@@ -73,7 +87,7 @@ object GraphCreator {
     if (candidates.isEmpty) nodes
     else {
       val newNodes = candidates.map {
-        case (TopoLink(source, target, isLeftOfTarget, isLeftOfSource), Delta(dx, dy)) =>
+        case (TopoLink(source, target, _, _), Delta(dx, dy)) =>
           val (x, y) = nodes(source)
           target -> (x + dx, y + dy)
       } ++ nodes

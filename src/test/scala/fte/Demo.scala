@@ -33,7 +33,8 @@ object Demo {
 
     // API intended for a direkt bookmark-able link
     writeSvg(s"$dir/topo-torchon-ct.svg", TopoLink.fromUrlQuery(
-      "topo=b21,a10,f,t;b22,a10,t,f;a10,a11,f,t;b23,a11,t,f;a10,a12,t,f;b23,a12,f,t;a11,a13,t,f;a12,a13,f,t;a11,b20,f,t;a12,b20,t,f;a13,b21,t,f;b20,b21,f,t;a13,b22,f,t;b20,b22,t,f;b21,b23,t,f;b22,b23,f,t"
+    "topo=b21,a10,f,t;b22,a10,t,f;a10,a11,f,t;b23,a11,t,f;a10,a12,t,f;b23,a12,f,t;a11,a13,t,f;a12,a13,f,t;a11,b20,f,t;a12,b20,t,f;a13,b21,t,f;b20,b21,f,t;a13,b22,f,t;b20,b22,t,f;b21,b23,t,f;b22,b23,f,t"
+      //"topo=b21,a10,f,t;b22,a10,t,f;a10,a11,f,t;a10,a12,t,f;a11,a13,t,f;a12,a13,f,t;a13,b22,f,t;"
     ))
 
     // permutations over the API intended for links from the tiles page (benchmark)
@@ -73,6 +74,9 @@ object Demo {
   // rest of the API TODO isolate delta calculation/extraction for javascript
   private def writeSvg(fileName: String, links: Seq[TopoLink]) = GraphCreator
     .graphFrom(links)
-    .map(graph => File(fileName).writeAll(SvgCreator.draw(graph)))
+    .map { case (graph, svg) =>
+      File(fileName).writeAll(SvgCreator.draw(graph))
+      File(fileName.replace(".svg","-.svg")).writeAll(svg)
+    }
     .recover { case t: Throwable => Success(println(t)) }
 }
