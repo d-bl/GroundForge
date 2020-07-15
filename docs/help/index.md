@@ -28,7 +28,8 @@ Overview Tutorial
 -----------------
 
 In the following tutorial, we will explore a versatile ground from the [Whiting catalogue](/gw-lace-to-gf/) to illustrate how to use some basic features of GroundForge.
-Clicking on a photo in the catalogue will take you to the associated page in Mrs. Whiting's book "A lace guide for makers and collectors".  Clicking on the [diagram link] above the image to launch the GroundForge tool initialized with the details of the selected Whiting ground.
+Clicking on a photo in the catalogue will take you to the associated page in Mrs. Whiting's book "A lace guide for makers and collectors".  
+Click on the [diagram] link above the image to launch the GroundForge tool, initialized with the details of the selected Whiting ground.
 
 For each lace ground there is a [dedicated page](../tiles.html).
 The page contains a prototype diagram where the ground and its stitches are defined.
@@ -43,7 +44,7 @@ Open the [diagram] for ground G-2 (column G, row 2) in the [Whiting catalogue].
 
 In the thread diagram on the far right, click on the gray square at the start of a thread.  You may need to scroll to the top of the diagram in order to see it.  The thread colour will change from black to red.  Click on the square again and the thread colour returns to black.  You can highlight more than one thread at a time.  For more colours and options, visit [thread properties](Thread-Properties).
 
-![](images/toggle-thread.png)
+![](images/G2-toggle-thread.png)
 
 ### Resizing pattern
 
@@ -56,7 +57,7 @@ The prototype contains a vector drawing showing the order in which pairs of thre
 There are multiple copies of the ground pattern in the prototype, showing how the pattern repeats.
 One copy is brightly coloured, the others appear faded.  We will always work with the brightly coloured copy.
 
-![](images/stitch-editor.png)
+![](images/G2-stitch-editor.png)
 
 Where two pairs come together, there is a cicle with a number or letter in its center.  Click on any of these circles and a yellow box appears with the stitch definition.  To change the stitch, type the new instructions while the yellow box is visible.
 
@@ -69,7 +70,7 @@ You can also "drop" a stitch.  That is, when two pairs meet, do not braid them t
 
 Exercise: Can you create the following variation? [solution](/GroundForge/tiles?patchWidth=20&patchHeight=20&f1=-&a1=t&j2=ctc&i2=ctcll&h2=ctctt&g2=ctctt&f2=ctctt&e2=ctctt&d2=ctctt&c2=ctcrrr&b2=ctc&j3=ctcll&i3=ctctt&h3=ctctt&g3=ctcttl&f3=ctc&e3=ctcttr&d3=ctctt&c3=ctctt&b3=ctcrrr&a3=ctc&j4=ctctt&i4=ctctt&h4=ctcttl&g4=ctc&f4=ctc&e4=ctc&d4=ctcttr&c4=ctctt&b4=ctctt&a4=ctcttt&j5=ctctt&i5=ctcttl&h5=ctc&g5=ctc&e5=ctc&d5=ctc&c5=ctcttr&b5=ctctt&a5=ctctt&tile=5----5----,-CDD632AAB,5666632222,5666632222,56666-2222&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-5&shiftRowsSW=5&shiftColsSE=5&shiftRowsSE=5)
 
-![](images/modified-G2.png)
+![](images/G2-modified.png)
 
 ### Create a new ground pattern
 
