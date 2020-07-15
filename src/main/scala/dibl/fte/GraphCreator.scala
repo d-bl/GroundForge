@@ -45,7 +45,7 @@ object GraphCreator {
       graph = initGraph(deltas, clockWise)
       //_ = println(s" ===== ${graph.getVertices.size()} =?= ${nodes.size}")
       tileVectors = new LocationsDFS(graph.getVertices, graph.getEdges).getVectors
-      svg = SvgPricking(nodes,topoLinks,getTileVector(recursionStartId, deltas, nodes).toSeq)
+      svg = SvgPricking(nodes, deltas, getTileVector(recursionStartId, deltas, nodes))
       //_ = println(graph.getVertices.asScala.map(v => v.getX -> v.getY ))
       //_ = println(nodes.values.toList)
       _ <- Try(Option(new OneFormTorus(graph).layout(tileVectors))
