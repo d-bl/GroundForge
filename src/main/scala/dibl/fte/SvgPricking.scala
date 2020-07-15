@@ -17,7 +17,7 @@ object SvgPricking {
     val clones = tileVectors.flatMap { case (dx, dy) =>
       line(s"$dx $dy", 0, 0, dx, dy)(3, "rgb(0,255,0)") +:
       (100 to 300 by 100).map { i =>
-        s"""<use x="0" y="0" xlink:href="#tile" transform="translate(${ i * dx } },${ i * dy })"/>"""
+        s"""<use xlink:href="#tile" transform="translate(${ i * dx },${ i * dy })"/>"""
       }
     }
     s"""<svg
