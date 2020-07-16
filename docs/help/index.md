@@ -22,16 +22,17 @@ Even when reinventing the wheel, your own discoveries can bring great joy.
 Virtual tour
 ------------
 
-Take a walk through the various catalogues on the GroundForge website in this [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4) (MP4 format, 123 MB, 2:32 min). You will notice that Rose ground, and many variations related to it, appears in each of the catalogues.  Different stitches can be used with the same pair diagram to give very different results.  Pause, rewind and slow down the video to get the most out of it.
+Take a walk through the various catalogues on the GroundForge website in this [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4) (MP4 format, 123 MB, 2:32 min). You will notice that Rose ground, and many variations related to it, appears in each of the catalogues.  
+Different stitches for the same pair diagram yield very different results.  Pause, rewind, and slow down the video to get the most out of it.
 
 Overview Tutorial
 -----------------
 
-In the following tutorial, we will explore a versatile ground from the [Whiting catalogue] to illustrate some basic features of GroundForge.
-Clicking on a photo in the catalogue will take you to the associated page in Mrs. Whiting's book "A lace guide for makers and collectors".  
-Click on the [diagram] link above the image to launch the GroundForge tool, initialized with the details of the selected Whiting ground.
+In the following tutorial, we will explore a versatile ground from the [Whiting catalogue] and illustrate some basic features of GroundForge.
+By clicking on a photo in the catalogue, you will launch the associated page in Mrs Whiting's book *A lace guide for makers and collectors*.  
+Click on the [diagram] link above the photo in the catalogue to launch the GroundForge tool, initialized with the details of the selected Whiting ground.
 
-For each lace ground there is a [dedicated page](../tiles.html).
+For each lace ground, there is a [dedicated page](../tiles.html).
 The page contains a prototype diagram where the ground and its stitches are defined.
 There are also two generated drawings: a working diagram (based on the International Colour Code) and a thread diagram.
 Help pages, accessible by clicking on the ![info](images/information-icon.png) image above each diagram, provide more information.
@@ -44,31 +45,31 @@ Open the [diagram] for ground G-2 (column G, row 2) in the [Whiting catalogue].
 
 ### Highlight a thread
 
-In the thread diagram on the far right, click on the gray square at the start of a thread.  You may need to scroll to the top of the diagram in order to see it.  The thread colour will change from black to red.  Click on the square again and the thread colour returns to black.  You can highlight more than one thread at a time.  For more colours and options, visit [thread properties](Thread-Properties).
+In the thread diagram on the far right, click on the gray square at the start of a thread.  You may need to scroll to the top of the diagram to see it.  The colour of the thread will change from black to red.  Click on the square again and the thread colour returns to black.  You can highlight more than one thread at a time.  For more colours and options, visit [thread properties](Thread-Properties).
 
 ![](images/G2-toggle-thread.png)
 
 ### Resizing pattern
 
-You can increase or decrease the size of the pattern generated in the working and thread diagrams. Above the Prototype diagram, edit the number of columns and rows. There are some [restrictions to patch sizes](Patch-Size). If you make the patch size very large, performance may slow down considerably.
+You can increase or decrease the size of the pattern generated in the working and thread diagrams. Above the prototype diagram, edit the number of columns and rows. There are some [restrictions to patch sizes](Patch-Size). If you make the patch size very large, performance may slow down considerably.
 
 ### Experiment with stitches
 
-To play with the stitches, take a look at the prototype diagram on the far left.
+To play with the stitches, look at the prototype diagram on the far left.
 The prototype contains a vector drawing showing the order in which pairs of threads come together.
 There are multiple copies of the ground pattern in the prototype, showing how the pattern repeats.
 One copy is brightly coloured, the others appear faded.  We will always work with the brightly coloured copy.
 
 ![](images/G2-stitch-editor.png)
 
-Where two pairs come together, there is a circle with a number or letter in its center.  Click on any of these circles and a yellow box appears with the stitch definition.  To change the stitch, type the new instructions while the yellow box is visible.
+Where two pairs come together, there is a circle with a number or letter in its centre.  Click on any of these circles and a yellow box appears with the stitch definition.  To change the stitch, type the new instructions while the yellow box is visible.
 
-Exercise: Try to change the center of the spider from 'ctcctc' to 't'.  (Spoiler alert: The center of the spider is the black circle around the number 5 located in the top left corner of the prototype).
+Exercise: Try to change the center of the spider from 'ctcctc' to 't'.  (Spoiler alert: The center of the spider is the black circle around the symbol '5', located in the top left corner of the prototype).
 
-Every time you modify the prototype, you must regenerate the working and thread diagrams by clicking on the ![wand](../images/wand.png) image found just above the prototype diagram.
+Every time you change the stitch definitions, you must regenerate the working and thread diagrams by clicking on the ![wand](../images/wand.png) image found just above the prototype diagram.
 
 In addition to the usual 'c' for cross and 't' for twist, you can twist only the right pair by typing 'r' or type 'l' to twist only the left pair.
-You can also "drop" a stitch.  That is, when two pairs meet, do not braid them together at all.  To drop a stictch, replace the stitch instructions with '-'.  Be careful when dropping stitches, it can have unusual consequences.
+You can also "drop" a stitch.  That is, when two pairs meet, do not braid them together at all.  To drop a stictch, replace the stitch instructions with '-'.  Be careful when dropping stitches.  It can have unusual consequences.
 
 Exercise: Can you create the following variation? [solution](/GroundForge/tiles?patchWidth=20&patchHeight=20&f1=-&a1=t&j2=ctc&i2=ctcll&h2=ctctt&g2=ctctt&f2=ctctt&e2=ctctt&d2=ctctt&c2=ctcrrr&b2=ctc&j3=ctcll&i3=ctctt&h3=ctctt&g3=ctcttl&f3=ctc&e3=ctcttr&d3=ctctt&c3=ctctt&b3=ctcrrr&a3=ctc&j4=ctctt&i4=ctctt&h4=ctcttl&g4=ctc&f4=ctc&e4=ctc&d4=ctcttr&c4=ctctt&b4=ctctt&a4=ctcttt&j5=ctctt&i5=ctcttl&h5=ctc&g5=ctc&e5=ctc&d5=ctc&c5=ctcttr&b5=ctctt&a5=ctctt&tile=5----5----,-CDD632AAB,5666632222,5666632222,56666-2222&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-5&shiftRowsSW=5&shiftColsSE=5&shiftRowsSE=5)
 
@@ -76,14 +77,11 @@ Exercise: Can you create the following variation? [solution](/GroundForge/tiles?
 
 ### Create a new ground pattern
 
-The prototype for the pattern is created in the area labelled "Forms for advanced users". 
-First, the pattern is mapped onto a grid.  Symbols, consisting of the numbers or letters are used to draw lines on the grid.  This creates a vector diagram showing the order in which pairs of threads come together.
-From this description, the software generates a working diagram and a thread diagram.
-A more [detailed tutorial](Advanced) is required to fully explain the many construction options available.
+We create the prototype for the pattern in the area labelled “Forms for advanced users”. First, we map the pattern onto a grid. Symbols, comprising numbers or letters, are used to draw lines on the grid. This creates a vector diagram showing the order in which pairs of threads come together. From this description, the software generates a working diagram and a thread diagram. It requires a more [detailed tutorial](Advanced) to fully explain the many construction options available.
 
 ### Footsides
 
-In addition to modeling a lace ground, GroundForge can also model a footside for it.  Left and right footsides are defined separately and depend on the number of columns in the patch.
+In addition to modelling a lace ground, GroundForge can also model a footside for it.  Left and right footsides are defined separately and depend on the number of columns in the patch.
 For example, take a look at [Whiting G-2 with footsides].
 
 [Whiting G-2 with footsides]:
