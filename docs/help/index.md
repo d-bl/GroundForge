@@ -14,7 +14,7 @@ Experimenting with bobbin lace grounds
 GroundForge is a tool that complements existing [lace ground catalogues](https://maetempels.github.io/MAE-gf/docs/license#literature) by making it possible to play with their designs.
 GroundForge generates an interactive thread diagram for each ground in the catalogue which allows you to highlight the path of a thread; a useful feature when working with multiple thread colours or thicknesses in a design.
 The tool also allows you to specify the combinations of stitches that are made when two pairs meet.  You can make changes and quickly observe how this affects the thread diagram.
-This greatly speeds up the process of experimenting with lace grounds; no need to wind bobbins or prepare prickings. The final test is always to make a hand-worked sample.  Only in a physical sample can the interactions between pins and threads under tension be pefectly observed.  However, GroundForge can help you narrow the number of samples you need to test by hand.
+This greatly speeds up the process of experimenting with lace grounds; no need to wind bobbins or prepare prickings. The final test is always to make a hand-worked sample&mdash;only in a physical sample can the interactions between pins and threads under tension be completely observed&mdash;however, GroundForge can help you narrow the number of samples you need to test by hand.
 You can experiment and play around with the hundreds of patterns provided here, or you can create your own.
 Even when reinventing the wheel, your own discoveries can bring great joy.
 
