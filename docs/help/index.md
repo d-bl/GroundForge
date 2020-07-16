@@ -27,7 +27,7 @@ Take a walk through the various catalogues on the GroundForge website in this [s
 Overview Tutorial
 -----------------
 
-In the following tutorial, we will explore a versatile ground from the [Whiting catalogue] to illustrate how to use some basic features of GroundForge.
+In the following tutorial, we will explore a versatile ground from the [Whiting catalogue] to illustrate some basic features of GroundForge.
 Clicking on a photo in the catalogue will take you to the associated page in Mrs. Whiting's book "A lace guide for makers and collectors".  
 Click on the [diagram] link above the image to launch the GroundForge tool, initialized with the details of the selected Whiting ground.
 
@@ -91,7 +91,7 @@ For example, take a look at [Whiting G-2 with footsides].
 
 ### Screencast
 
-Using a Binche ground, we have recorded the actions described in this tutorial.
+To see these features, and others, in action, we have recorded the editing of a Binche lace ground.
 The [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK-31.mp4) (MP4, 35 MB, 1:47 min) follows the script below.
 Steps marked in bold are more advanced and can be skipped by novice users. 
 
