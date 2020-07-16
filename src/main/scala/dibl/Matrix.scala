@@ -17,11 +17,10 @@ package dibl
 
 import scala.collection.immutable.HashMap
 import scala.reflect.ClassTag
-import scala.scalajs.js.annotation.JSExport
-import scala.util.{ Failure, Success, Try }
+import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
+import scala.util.{Failure, Success, Try}
 
-@JSExport
-object Matrix {
+@JSExportTopLevel("Matrix") object Matrix {
 
   /** @param lines for example: <pre>
     *              ab
@@ -117,7 +116,19 @@ object Matrix {
     'L' -> SrcNodes(Cell( 0,-2),Cell(-1, 1)), // _../.
     'M' -> SrcNodes(Cell( 0,-2),Cell(-1, 0)), // _.|..
     'N' -> SrcNodes(Cell( 0,-2),Cell(-2, 0)), // _.|..
-    'O' -> SrcNodes(Cell( 0,-2),Cell(-1,-1)) // _\...
+    'O' -> SrcNodes(Cell( 0,-2),Cell(-1,-1)), // _\...
+    // parallel short
+    'P' -> SrcNodes(Cell( 0,-1),Cell( 0,-1)), // _....
+    'Q' -> SrcNodes(Cell(-1,-1),Cell(-1,-1)), // .\...
+    'R' -> SrcNodes(Cell(-1, 0),Cell(-1, 0)), // ..|..
+    'S' -> SrcNodes(Cell(-1, 1),Cell(-1, 1)), // .../.
+    'T' -> SrcNodes(Cell( 0, 1),Cell( 0, 1)), // ...._
+    // single short
+    'V' -> SrcNodes(Cell( 0,-1),Cell( 0,-1)), // _....
+    'W' -> SrcNodes(Cell(-1,-1),Cell(-1,-1)), // .\...
+    'X' -> SrcNodes(Cell(-1, 0),Cell(-1, 0)), // ..|..
+    'Y' -> SrcNodes(Cell(-1, 1),Cell(-1, 1)), // .../.
+    'Z' -> SrcNodes(Cell( 0, 1),Cell( 0, 1)), // ...._
   )
   /** Translates a character in a matrix string into relative links with two source nodes.
     * The source nodes are defined with relative (row,column) numbers.
@@ -127,11 +138,11 @@ object Matrix {
 
   @JSExport
   def flip(lines: String): String = {
-    val flip = "0123456789ABCDEFGHIJKLMNO"
-          .zip("9863752410DCBAOMNLJIKHFGE").toMap
+    val flip = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-"
+          .zip("9863752410DCBAOMNLJIKHFGE??????ZYXWV-").toMap
     lines.toUpperCase
-      .split("[\r\n]+")
-      .map(_.reverse.map(flip.getOrElse(_, "-")).mkString(""))
+      .split("[\r\n, \t]+")
+      .map(_.reverse.map(flip.getOrElse(_, "?")).mkString(""))
       .mkString("\n")
   }
 

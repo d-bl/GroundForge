@@ -27,10 +27,10 @@ sealed abstract class LinkProps extends Props {
   @deprecated
   val props: Map[String, Any]
 
-  /** The id of the source node. */
+  /** The sequence number of the source node. */
   val source: Int = props.getOrElse("source", 0).asInstanceOf[Int]
 
-  /** The id of the target node. */
+  /** The sequence number of the target node. */
   val target: Int = props.getOrElse("target", 0).asInstanceOf[Int]
 
   override def toJS(): js.Dictionary[Any] = {
@@ -102,7 +102,7 @@ object LinkProps {
     }
   }
 
-  private case class WhiteStart(override val props: Map[String, Any]) extends LinkProps {
+  case class WhiteStart(override val props: Map[String, Any]) extends LinkProps {
 
     override def markedAsStart: LinkProps = WhiteStart(props + ("start" -> "thread"))
 

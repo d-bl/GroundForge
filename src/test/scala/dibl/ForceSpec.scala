@@ -15,13 +15,16 @@
 */
 package dibl
 
-import dibl.Force.{Point, nudgeNodes}
-import org.scalatest.{FlatSpec, Matchers}
+import dibl.Force.{ Point, nudgeNodes }
+import dibl.proto.TilesConfig
+import org.scalatest.{ FlatSpec, Matchers }
 
 class ForceSpec extends FlatSpec with Matchers {
 
   // smaller row/col values cause less accurate average positions, larger values slow down recursion exponentially
-  private val pairDiagram1 = PairDiagram.create("5-", "bricks", absRows = 7, absCols = 7, stitches = "ct").get
+  private val pairDiagram1 = NewPairDiagram.create(TilesConfig(
+    "tile=5-&patchHeight=7&patchWidth=7&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
+  ))
 
   "points" should "should be spread around the default origin" in {
     accumulate(nudgeNodes(pairDiagram1).get.nodes) shouldBe Point(0, 0)

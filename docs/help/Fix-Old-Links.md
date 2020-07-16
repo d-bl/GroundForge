@@ -3,11 +3,11 @@ layout: default
 title: Fix Old Links
 ---
 
-Fix Old Links
-=============
+Fix Old Links to patterns
+=========================
 
 Occasionally changes to the web pages affect the result of a link
-you may have saved as bookmark, favorite, on a blog or wherever.
+you may have saved as bookmark or favorite.
 To recover the old content you can download an old version and
 cut-and-paste the page address.
 
@@ -35,17 +35,3 @@ it lives in the root, for later versions in `docs`) and open it in a browser.
 From an online address starting with `d-bl.github.io/GroundForge/?`
 or `d-bl.github.io/GroundForge/index.html?`
 copy the question mark and the rest at the end of the page address `index.html`.
-
-
-Precautions
------------
-
-To prevent having to track down the proper version you can archive a page.
-Before linking to or archive the home page, make sure to click the
-![link](/GroundForge/images/link.png) button.
-
-To be able to share any archived page you can use a general online service
-like the [web archive] (alias way back machine) which preserves
-a live snapshot of a web page, including images and scripts.
-
-[web archive]: https://web.archive.org/

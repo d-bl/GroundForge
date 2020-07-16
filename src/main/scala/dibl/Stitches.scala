@@ -20,7 +20,7 @@ import java.lang.Math.max
 import dibl.Stitches._
 
 import scala.annotation.tailrec
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 import scala.util.matching.Regex
 
 /**
@@ -105,8 +105,7 @@ class Stitches(src: String) {
   }
 }
 
-@JSExport
-object Stitches {
+@JSExportTopLevel("Stitches") object Stitches {
 
   type StitchId = String
 

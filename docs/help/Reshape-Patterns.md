@@ -39,7 +39,7 @@ Make variations in general terms
 Features and exact procedures may vary between SVG editors. The least elaborate method in a nutshell:
 
 1. Follow the download link on the page with the [sources][patterns] of the animation. Open the file with the editor of your choice.  
-  More patterns are available through the `vari` links on the [Tesselace-Index](TesseLace-Index) and some other catalogues of patterns.
+  More patterns are available through the `vari` links on the [Tesselace-Index](/tesselace-to-gf) and some other catalogues of patterns.
 2. Depending on the editor you may need to rebuild the pattern from the isolated repeat. Otherwise the pattern won't follow the dance of the leader as in the animation at the start of this page.
 3. The close up below shows control points of multiple selected objects: a dot and four line ends at the center of the dot. When moving these control points for all dots of the same color together, the corresponding points in the patch should move along and the diagram should remain valid. The grey dots can move individually.  
   ![](images/select-node-close-up.png)
@@ -62,18 +62,17 @@ Evaluated Editors
 The procedure above is tried for just some of the available [SVG editor]s. They might have been improved since then, check for a free trial period to convince yourself you can work with it:
 * Lace8 and Knipling (💰, not on Mac)  
   these don't understand the downloads at all.
-* InkScape (free, needs crutches on a Mac)  
+* InkScape (free)  
   won't need step 2, details [below](#step-3-for-inkscape).
 * Affinity Designer (💰, Mac, iPad and Windows)   
   does need step 2, details [below](#step-2-and-3-with-affinity-designer).
 * CorelDRAW (💰💰, Home and Student Suite 💰, Windows)    
-  use `clone` from the edit menu for step 2. No plans (2018) to implement an import option that imports SVG clones as clones.
+  use `clone` from the edit menu for step 2. No plans (2018) to implement an import option that treats SVG clones as such.
 * InkPad (free, iPad)  
   version 1.6 has no facilities to make the pattern follow the leader of the dance.
 * Adobe Illustrator  (💰💰, subscription)  
   not tried. Perhaps these [instructions] can be of use for step 2. Start at about 5:50. From another: "Any changes made while in `pattern editing mode` will be applied to the `swatch` upon exit".
 
-[graphicheck]: https://graphicheck.com/blog/Affinity-Designer-Background-Patterns-Mock-up-Template
 [instructions]: https://www.youtube.com/watch?v=aQM3RLWN0vQ
 
 

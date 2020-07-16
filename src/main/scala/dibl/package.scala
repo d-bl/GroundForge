@@ -96,4 +96,13 @@ package object dibl {
     }
     f"$r%02X$g%02X$b%02X"
   }
+
+  /** Ignores anything but digits and an optional leading dash */
+  implicit class StringExtensions(s: String) {
+    def safeToInt: Int = s
+      .replaceAll("[^0-9-]","")
+      .replaceAll("([0-9])-","$1")
+      .replaceAll("^-$","0")
+      .toInt
+  }
 }

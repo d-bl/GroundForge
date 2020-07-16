@@ -17,8 +17,8 @@ package dibl
 
 import java.lang.Math.abs
 
-import dibl.LinkProps.{ crossedLinks, pinLinks, threadLink, transparentLinks, twistedLinks }
-import dibl.NodeProps.{ bobbinNode, crossNode, pinNode, twistNode }
+import dibl.LinkProps._
+import dibl.NodeProps._
 
 import scala.annotation.tailrec
 
@@ -49,7 +49,7 @@ case class Threads private
     */
   def twistLeft(newNode: Int, stitchID: String, idSuffix: Int): (Threads, NodeProps, Seq[LinkProps]) =
     (new Threads((newNode, newNode, n3, n4), (t2, t1, t3, t4)),
-      twistNode(stitchID, idSuffix),
+      leftTwistNode(stitchID, idSuffix),
       twistedLinks(newNode, n1, n2, t1, t2))
 
   /** moves the fourth thread over the third
@@ -58,7 +58,7 @@ case class Threads private
     */
   def twistRight(newNode: Int, stitchID: String, idSuffix: Int): (Threads, NodeProps, Seq[LinkProps]) =
     (new Threads((n1, n2, newNode, newNode), (t1, t2, t4, t3)),
-      twistNode(stitchID, idSuffix),
+      rightTwistNode(stitchID, idSuffix),
       twistedLinks(newNode, n3, n4, t3, t4))
 
   def leftPair: Threads = new Threads((n1, n2, n1, n2), (t1, t2, t1, t2))

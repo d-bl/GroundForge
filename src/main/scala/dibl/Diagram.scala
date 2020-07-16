@@ -17,12 +17,11 @@ package dibl
 
 import scala.annotation.tailrec
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
-@JSExport
-case class Diagram(nodes: Seq[NodeProps],
-                   links: Seq[LinkProps]
-                  ) {
+@JSExportTopLevel("Diagram") case class Diagram(nodes: Seq[NodeProps],
+                                                links: Seq[LinkProps]
+                                               ) {
 
   @JSExport
   def node(i: Int): NodeProps = nodes(i)
@@ -37,6 +36,25 @@ case class Diagram(nodes: Seq[NodeProps],
   //noinspection AccessorLikeMethodIsEmptyParen
   @JSExport
   def jsLinks(): js.Array[js.Dictionary[Any]] = toJS(links)
+
+  @JSExport
+  def withLocationsOf(jsNodes: js.Array[js.Dictionary[Any]]): Diagram = {
+    val nudgedNodes = nodes.indices.map{ i =>
+      val newX = jsNodes(i)("x").toString.toInt
+      val newY = jsNodes(i)("y").toString.toInt
+      nodes(i).withLocation(newX, newY)
+    }
+    Diagram(nudgedNodes,links)
+  }
+
+  def withLocations(javaNodes: Array[Array[Double]]): Diagram = {
+    val nudgedNodes = nodes.indices.map{ i =>
+      val newX = javaNodes(i)(0)
+      val newY = javaNodes(i)(1)
+      nodes(i).withLocation(newX, newY)
+    }
+    Diagram(nudgedNodes,links)
+  }
 
   private def toJS(items: Seq[Props]): js.Array[js.Dictionary[Any]] = {
 

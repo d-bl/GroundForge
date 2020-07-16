@@ -22,16 +22,23 @@ poor or no support for tallies, pins and gimps in GroundForge and other limitati
 
 [Belgian]: https://www.mail-archive.com/lace@arachne.com/msg51345.html
 [Danish]: https://www.mail-archive.com/lace@arachne.com/msg51355.html
-[red-blue]: http://susanroberts.info/Working%20diagrams%20-%20part%202.pdf
+[red-blue]: https://susanroberts.info/wp-content/uploads/2019/08/Working-diagrams-part-2.pdf
 
 
 Twist marks by GroundForge
 --------------------------
 
 The _intention_ is a twist mark wherever there are multiple twists in a pair.
-Closed stitches on the home page lack twist marks if just one of the pairs need one.
-Follow the progress of issue [#104](https://github.com/d-bl/GroundForge/issues/104).
+Please [notify] us of any glitches.
 
+The reason of this approach is the ability to apply and even mix 
+open stitches (start with twist) and closed stitches (end with twists).
+It can make the diagrams ambiguous.
+Hover over stitches to figure out the exact definition as shown below.
+
+![](images/dialect.png)
+
+[notify]: https://groundforge.wordpress.com/
 
 Colors by GroundForge
 ---------------------

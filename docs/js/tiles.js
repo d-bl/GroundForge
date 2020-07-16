@@ -1,4 +1,4 @@
-var valueFilter = /[^a-zA-Z0-9,-]/g
+var valueFilter = /[^a-zA-Z0-9,-=]/g
 var isMobile = /iPad|iPhone|iPod|Mobi/.test(navigator.userAgent)
 
 function setStitch(sourceNode) {
@@ -30,12 +30,12 @@ function submitQuery() {
 }
 function showProto() {
 
-  var config = dibl.Config().create(submitQuery())
-  d3.select("#clones").html(dibl.InteractiveSVG().create(config))
+  var config = TilesConfig(submitQuery())
+  d3.select("#prototype").html(PrototypeDiagram.create(config))
   d3.select("#link").node().href = "?" + submitQuery() // don't extract var, we might now have other form fields
   d3.select("#animations").style("display", "none")
-  d3.selectAll("#threadDiagram, #pairDiagram").html("")
-  d3.selectAll("textarea").attr("rows", config.maxTileRows + 1)
+  d3.selectAll("#threadDiagram, #pairDiagram, #drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
+  d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
@@ -45,8 +45,8 @@ function showProto() {
 }
 function flip(){
   var left = d3.select("#footside").node().value
-  console.log(dibl.Matrix().flip)
-  d3.select("#headside").node().value = dibl.Matrix().flip(left)
+  console.log(Matrix.flip)
+  d3.select("#headside").node().value = Matrix.flip(left)
   showProto()
 }
 function scrollIntoViewIfPossible(container) {
@@ -71,20 +71,13 @@ function showDiagrams(config) {
   var pairContainer = d3.select("#pairDiagram")
   var pairContainerNode = pairContainer.node()
   if (!config)
-      var config = dibl.Config().create(submitQuery())
-  var pairDiagram = pairContainerNode.data = dibl.NewPairDiagram().create(config)
-  pairContainer.html(dibl.D3jsSVG().render(pairDiagram, "1px", markers, 744, 1052))
+      config = TilesConfig(submitQuery())
+  var pairDiagram = pairContainerNode.data = NewPairDiagram.create(config)
+  pairContainer.html(D3jsSVG.render(pairDiagram, "1px", markers, 744, 1052))
   scrollToIfPossible(pairContainerNode,0,0)
   if (pairDiagram.jsNodes().length == 1) return
 
-  var threadContainer = d3.select("#threadDiagram")
-  var threadContainerNode = threadContainer.node()
-  var threadDiagram = threadContainerNode.data = dibl.ThreadDiagram().create(pairDiagram)
-  threadContainer.html(dibl.D3jsSVG().render(threadDiagram, "2px", markers, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
-  if (threadDiagram.jsNodes().length == 1 || threadContainerNode.innerHTML.indexOf("Need a new pair from") >= 0)  return
-
-  animateDiagram(threadContainer, 744, 1052)
-  threadContainer.selectAll(".threadStart").on("click", paintThread)
+  setThreadDiagram("#threadDiagram", ThreadDiagram.create(pairDiagram))
 }
 function animateDiagram(container, forceCenterX, forceCenterY) {
 
@@ -102,7 +95,7 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
       var s = jsLink.source
       var t = jsLink.target
       var l = diagram.link(jsLink.index)
-      return  dibl.D3jsSVG().pathDescription(l, s.x, s.y, t.x, t.y)
+      return  D3jsSVG.pathDescription(l, s.x, s.y, t.x, t.y)
   }
   var tickCounter = 0
   function onTick() {
@@ -126,15 +119,6 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
     .alpha(0.0035)
     .on("tick", onTick)
 }
-function paintThread() {
-
-  // firstChild == <title>
-  var className = "."+d3.event.target.firstChild.innerHTML.replace(" ", "")
-  var segments = d3.selectAll(className)
-  var newColor = segments.style("stroke")+"" == "rgb(255, 0, 0)" ? "#000" : "#F00"
-  segments.style("stroke", newColor)
-  segments.filter(".node").style("fill", newColor)
-}
 function setDownloadContent (linkNode, id) {
 
   svg = d3.select(id).node().innerHTML.
@@ -145,39 +129,39 @@ function setDownloadContent (linkNode, id) {
 }
 function setField (keyValueString) {
 
-    var kv = keyValueString.split("=")
-    if (kv.length > 1) {
-      var k = kv[0].trim().replace(/[^a-zA-Z0-9]/g,"")
-      var v = kv[1].trim().replace(valueFilter,"").replace(/,/g,"\n")
-      d3.select('#'+k).property("value", v)
-    }
+    var k = keyValueString.replace(/=.*/,"").trim().replace(/[^a-zA-Z0-9]/g,"")
+    var v = keyValueString.replace(/[^=]+=/,"").trim().replace(valueFilter,"").replace(/,/g,"\n")
+    if (k) d3.select('#'+k).property("value", v)
+}
+function whiting (kv) {
+    var k = kv.trim().replace(/[^a-zA-Z0-9]/g,"")
+    if (!kv.startsWith("whiting")) return false
+    // side effect: add whiting link
+    var pageNr = kv.split("P")[1]
+    var cellNr = kv.split("_")[0].split("=")[1]
+    d3.select('#whiting').node().innerHTML =
+        "<img src='help/w/page" + pageNr + "a.gif' title='"+cellNr+"'>"+
+        " Page <a href='http://www.theedkins.co.uk/jo/lace/whiting/page" + pageNr + ".htm'>" + pageNr + "</a> "+
+        "of '<em>A Lace Guide for Makers and Collectors</em>' by Gertrude Whiting; 1920."
+    return true
 }
 function load() {
 
   var keyValueStrings = window.location.search.substr(1).split("&")
   keyValueStrings.forEach(setField)
+  if (window.location.search.substr(1).includes("droste2=")) showDroste(2)
+  if (window.location.search.substr(1).includes("droste3=")) showDroste(3)
   showProto() // this creates a dynamic part of the form
   keyValueStrings.forEach(setField) // fill the form fields again
   showDiagrams(showProto())
+  keyValueStrings.find(whiting)
 }
-function sample(tile, shiftColsSE, shiftRowsSE, shiftColsSW, shiftRowsSW, footside, headside, patchWidth, patchHeight) {
-
-  d3.select('#patchWidth').property("value", patchWidth ? patchWidth : (footside?3:12))
-  d3.select('#patchHeight').property("value", patchHeight ? patchHeight : 12)
-  d3.select('#tile').property("value", tile)
-  d3.select('#footside').property("value", footside ? footside : "")
-  d3.select('#headside').property("value", headside ? headside : "")
-  d3.select('#shiftColsSE').property("value", shiftColsSE)
-  d3.select('#shiftRowsSE').property("value", shiftRowsSE)
-  d3.select('#shiftColsSW').property("value", shiftColsSW)
-  d3.select('#shiftRowsSW').property("value", shiftRowsSW)
-
-  scrollIntoViewIfPossible(d3.select("#diagrams").node())
-  showDiagrams(showProto())
+function getMatrixLines() {
+  return d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
 }
 function asChecker() {
 
-  var matrixLines = d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+  var matrixLines = getMatrixLines()
   var rows = matrixLines.length
   var cols = matrixLines[0].length
   d3.select('#shiftRowsSE').property("value", rows)
@@ -188,7 +172,7 @@ function asChecker() {
 }
 function asHorBricks() {
 
-  var matrixLines = d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+  var matrixLines = getMatrixLines()
   var rows = matrixLines.length
   var cols = matrixLines[0].length
   d3.select('#shiftRowsSE').property("value", rows)
@@ -199,7 +183,7 @@ function asHorBricks() {
 }
 function asVerBricks() {
 
-  var matrixLines = d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+  var matrixLines = getMatrixLines()
   var rows = matrixLines.length
   var cols = matrixLines[0].length
   d3.select('#shiftRowsSE').property("value", Math.round(rows/2))
@@ -210,7 +194,7 @@ function asVerBricks() {
 }
 function withOverlap() {
 
-  var matrixLines = d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
+  var matrixLines = getMatrixLines()
   var rows = matrixLines.length
   var cols = matrixLines[0].length
   d3.select('#shiftRowsSE').property("value", rows)
@@ -291,4 +275,63 @@ function resize(container, orientation, scaleValue) {
   var units = oldValue.replace(/[0-9]/g,'')
   var newValue = Math.round(oldValue.replace(/[^0-9]/g,'') * scaleValue)
   container.style(orientation, newValue + units)
+}
+function clear2() {
+  d3.selectAll("#drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
+  return false
+}
+function clear3() {
+  d3.selectAll("#drostePair3, #drosteThread3").html("")
+  return false
+}
+function closeDiv(level) {
+  d3.select('#drosteFields' + level).style('display', 'none')
+  return false
+}
+function showDroste(level) {
+  d3.select("#drosteFields" + level).style("display", "block")
+  var el = d3.select("#drosteThread" + level).node().firstElementChild
+  if (el && el.id.startsWith("svg")) return
+
+  var q = submitQuery()
+  d3.select("#link").node().href = "?" + q
+  var drosteThreads1 = ThreadDiagram.create(NewPairDiagram.create( TilesConfig(q)))
+  var drostePairs2 = PairDiagram.create(stitches = d3.select("#droste2").node().value, drosteThreads1)
+  var drosteThreads2 = ThreadDiagram.create(drostePairs2)
+  // TODO the diagrams above may have been calculated before
+
+  if (level == 2) {
+    setPairDiagram("#drostePair2", drostePairs2)
+    setThreadDiagram("#drosteThread2", drosteThreads2)
+  } else if (level == 3) {
+    var drostePairs3 = PairDiagram.create(stitches = d3.select("#droste3").node().value, drosteThreads2)
+    setPairDiagram("#drostePair3", drostePairs3)
+    setThreadDiagram("#drosteThread3", ThreadDiagram.create(drostePairs3))
+  }
+  return false
+}
+function setPairDiagram(containerID, diagram) {
+  var container = d3.select(containerID)
+  container.node().data = diagram
+  container.html(D3jsSVG.render(diagram, "1px", markers = true, 744, 1052, 0.0))
+  animateDiagram(container, 350, 526)
+}
+function setThreadDiagram(containerID, diagram) {
+  var container = d3.select(containerID)
+  container.node().data = diagram
+  container.html(D3jsSVG.render(diagram, "2px", markers = true, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
+  animateDiagram(container, 744, 1052)
+  container.selectAll(".threadStart").on("click", paintThread)
+}
+function paintThread() {
+
+  // firstChild == <title>
+  var eventTarget = d3.event.target
+  var containerID = eventTarget.parentNode.parentNode.parentNode.id
+  // TODO it would be more efficient to select siblings of eventTarget
+  var className = eventTarget.firstChild.innerHTML.replace(" ", "")
+  var segments = d3.selectAll("#" + containerID + " ." + className)
+  var newColor = segments.style("stroke")+"" == "rgb(255, 0, 0)" ? "#000" : "#F00"
+  segments.style("stroke", newColor)
+  segments.filter(".node").style("fill", newColor)
 }
