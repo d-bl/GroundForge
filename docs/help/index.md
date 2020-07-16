@@ -7,6 +7,16 @@ ref: intro
 
 Help Intro
 ==========
++ [Experimenting with bobbin lace grounds](#experimenting-with-bobbin-lace-grounds)
++ [Virtual tour](#virtual-tour)
++ [Overview Tutorial](#overview-tutorial)
+   + [Highlight a thread](#highlight-a-thread)
+   + [Resize pattern](#resize-pattern)
+   + [Modify stitches](#modify-stitches)
+   + [Add footsides](#add-footsides)
+   + [Create a new ground pattern](#create-a-new-ground-pattern)
+   + [Video](#video)
+   
 
 Experimenting with bobbin lace grounds
 --------------------------------------
@@ -49,11 +59,11 @@ In the thread diagram on the far right, click on the gray square at the start of
 
 ![](images/G2-toggle-thread.png)
 
-### Resizing pattern
+### Resize pattern
 
 You can increase or decrease the size of the pattern generated in the working and thread diagrams. Above the prototype diagram, edit the number of columns and rows. There are some [restrictions to patch sizes](Patch-Size). If you make the patch size very large, performance may slow down considerably.
 
-### Experiment with stitches
+### Modify stitches
 
 To play with the stitches, look at the prototype diagram on the far left.
 The prototype contains a vector drawing showing the order in which pairs of threads come together.
@@ -79,12 +89,13 @@ Exercise: Can you create the following variation? [solution](/GroundForge/tiles?
 
 We create the prototype for the pattern in the area labelled “Forms for advanced users”. First, we map the pattern onto a grid. Symbols, comprising numbers or letters, are used to draw lines on the grid. This creates a vector diagram showing the order in which pairs of threads come together. From this description, the software generates a working diagram and a thread diagram. It requires a more [detailed tutorial](Advanced) to fully explain the many construction options available.
 
-### Footsides
+### Add footsides
 
 In addition to modelling a lace ground, GroundForge can also model a footside for it.  Left and right footsides are defined separately and depend on the number of columns in the patch.
-For example, take a look at [Whiting G-2 with footsides](/GroundForge/tiles?patchWidth=12&patchHeight=20&j1=ctctt&e1=ctcctc&c1=ctc&b1=ctc&q2=ctctt&n2=ctc&m2=ctc&l2=ctctt&k2=ctctt&j2=ctctt&i2=ctctt&h2=ctctt&g2=ctc&f2=ctc&d2=ctc&c2=ctcrr&b2=ctc&a2=ctctt&r3=ctctt&q3=ctctt&n3=ctc&m3=ctctt&l3=ctctt&k3=ctctt&j3=ctc&i3=ctctt&h3=ctctt&g3=ctctt&f3=ctc&e3=ctc&d3=ctcll&c3=ctc&b3=ctcll&r4=ctctt&q4=ctctt&n4=ctctt&m4=ctctt&l4=ctctt&k4=ctc&j4=ctc&i4=ctc&h4=ctctt&g4=ctctt&f4=ctctt&e4=ctc&d4=ctctt&c4=ctcrr&b4=ctc&a4=ctctt&r5=ctctt&n5=ctctt&m5=ctctt&l5=ctc&k5=ctc&i5=ctc&h5=ctc&g5=ctctt&f5=ctctt&e5=ctctt&d5=ctctt&c5=ctc&b5=ctcll&q6=ctctt&c6=ctcrr&b6=ctc&a6=ctctt&r7=ctctt&q7=ctctt&d7=ctctt&c7=ctc&b7=ctcll&a7=ctctt&q8=ctctt&d8=ctctt&c8=ctcrr&b8=ctc&r9=ctctt&q9=ctctt&d9=ctcll&c9=ctc&b9=ctcll&a9=ctctt&q10=ctctt&d10=ctcll&c10=ctcrr&b10=ctc&footside=X14-,4886,-111,B883,X111,488-,1115,X786,1114,X786&tile=5----5----,-CDD632AAB,5666632222,5666632222,56666-2222&headside=XX,8X,37,37,-7,5X,17,7X,27,7X,&footsideStitch=ctc&tileStitch=ctctt&headsideStitch=ctctt&shiftColsSW=-5&shiftRowsSW=5&shiftColsSE=5&shiftRowsSE=5)
+For example, take a look at [Whiting G-2 with footsides](/GroundForge/tiles?patchWidth=12&patchHeight=20&j1=ctctt&e1=ctcctc&c1=ctc&b1=ctc&q2=ctctt&n2=ctc&m2=ctc&l2=ctctt&k2=ctctt&j2=ctctt&i2=ctctt&h2=ctctt&g2=ctc&f2=ctc&d2=ctc&c2=ctcrr&b2=ctc&a2=ctctt&r3=ctctt&q3=ctctt&n3=ctc&m3=ctctt&l3=ctctt&k3=ctctt&j3=ctc&i3=ctctt&h3=ctctt&g3=ctctt&f3=ctc&e3=ctc&d3=ctcll&c3=ctc&b3=ctcll&r4=ctctt&q4=ctctt&n4=ctctt&m4=ctctt&l4=ctctt&k4=ctc&j4=ctc&i4=ctc&h4=ctctt&g4=ctctt&f4=ctctt&e4=ctc&d4=ctctt&c4=ctcrr&b4=ctc&a4=ctctt&r5=ctctt&n5=ctctt&m5=ctctt&l5=ctc&k5=ctc&i5=ctc&h5=ctc&g5=ctctt&f5=ctctt&e5=ctctt&d5=ctctt&c5=ctc&b5=ctcll&q6=ctctt&c6=ctcrr&b6=ctc&a6=ctctt&r7=ctctt&q7=ctctt&d7=ctctt&c7=ctc&b7=ctcll&a7=ctctt&q8=ctctt&d8=ctctt&c8=ctcrr&b8=ctc&r9=ctctt&q9=ctctt&d9=ctcll&c9=ctc&b9=ctcll&a9=ctctt&q10=ctctt&d10=ctcll&c10=ctcrr&b10=ctc&footside=X14-,4886,-111,B883,X111,488-,1115,X786,1114,X786&tile=5----5----,-CDD632AAB,5666632222,5666632222,56666-2222&headside=XX,8X,37,37,-7,5X,17,7X,27,7X,&footsideStitch=ctc&tileStitch=ctctt&headsideStitch=ctctt&shiftColsSW=-5&shiftRowsSW=5&shiftColsSE=5&shiftRowsSE=5).
+There is an advanced tutorial on how to [create footsides](Advanced#foot-sides).
 
-### Screencast
+### Video
 
 To see these features, and others, in action, we have recorded the editing of a Binche lace ground.
 The [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK-31.mp4) (MP4, 35 MB, 1:47 min) follows the script below.
