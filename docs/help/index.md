@@ -11,7 +11,7 @@ Help Intro
 Experimenting with bobbin lace grounds
 --------------------------------------
 
-GroundForge is a tool that compliments existing [lace ground catalogues](https://maetempels.github.io/MAE-gf/docs/license#literature) by making it possible to play with their designs.
+GroundForge is a tool that complements existing [lace ground catalogues](https://maetempels.github.io/MAE-gf/docs/license#literature) by making it possible to play with their designs.
 GroundForge generates an interactive thread diagram for each ground in the catalogue which allows you to highlight the path of a thread; a useful feature when working with multiple thread colours or thicknesses in a design.
 The tool also allows you to specify the combinations of stitches that are made when two pairs meet.  You can make changes and quickly observe how this affects the thread diagram.
 This greatly speeds up the process of experimenting with lace grounds; no need to wind bobbins or prepare prickings. The final test is always to make a hand-worked sample.  Only in a physical sample can the interactions between pins and threads under tension be pefectly observed.  However, GroundForge can help you narrow the number of samples you need to test by hand.
@@ -27,7 +27,7 @@ Take a walk through the various catalogues on the GroundForge website in this [s
 Overview Tutorial
 -----------------
 
-In the following tutorial, we will explore a versatile ground from the [Whiting catalogue](/gw-lace-to-gf/) to illustrate how to use some basic features of GroundForge.
+In the following tutorial, we will explore a versatile ground from the [Whiting catalogue] to illustrate how to use some basic features of GroundForge.
 Clicking on a photo in the catalogue will take you to the associated page in Mrs. Whiting's book "A lace guide for makers and collectors".  
 Click on the [diagram] link above the image to launch the GroundForge tool, initialized with the details of the selected Whiting ground.
 
@@ -37,6 +37,8 @@ There are also two generated drawings: a working diagram (based on the Internati
 Help pages, accessible by clicking on the ![info](images/information-icon.png) image above each diagram, provide more information.
 
 Open the [diagram] for ground G-2 (column G, row 2) in the [Whiting catalogue].
+
+[Whiting catalogue]: /gw-lace-to-gf/
 
 [diagram]: /GroundForge/tiles?whiting=G2_P199&patchWidth=14&patchHeight=13&f1=ctctt&a1=ctcctc&j2=ctc&i2=ctcll&h2=ctctt&g2=ctctt&f2=ctctt&e2=ctctt&d2=ctctt&c2=ctcrrr&b2=ctc&j3=ctcll&i3=ctctt&h3=ctctt&g3=ctcttl&f3=ctc&e3=ctcttr&d3=ctctt&c3=ctctt&b3=ctcrrr&a3=ctc&j4=ctctt&i4=ctctt&h4=ctcttl&g4=ctc&f4=ctc&e4=ctc&d4=ctcttr&c4=ctctt&b4=ctctt&a4=ctcttt&j5=ctctt&i5=ctcttl&h5=ctc&g5=ctc&e5=ctc&d5=ctc&c5=ctcttr&b5=ctctt&a5=ctctt&tile=5----5----,-CDD632AAB,5666632222,5666632222,56666-2222&tileStitch=ctct&shiftColsSW=-5&shiftRowsSW=5&shiftColsSE=5&shiftRowsSE=5
 
@@ -59,7 +61,7 @@ One copy is brightly coloured, the others appear faded.  We will always work wit
 
 ![](images/G2-stitch-editor.png)
 
-Where two pairs come together, there is a cicle with a number or letter in its center.  Click on any of these circles and a yellow box appears with the stitch definition.  To change the stitch, type the new instructions while the yellow box is visible.
+Where two pairs come together, there is a circle with a number or letter in its center.  Click on any of these circles and a yellow box appears with the stitch definition.  To change the stitch, type the new instructions while the yellow box is visible.
 
 Exercise: Try to change the center of the spider from 'ctcctc' to 't'.  (Spoiler alert: The center of the spider is the black circle around the number 5 located in the top left corner of the prototype).
 
@@ -75,7 +77,7 @@ Exercise: Can you create the following variation? [solution](/GroundForge/tiles?
 ### Create a new ground pattern
 
 The prototype for the pattern is created in the area labelled "Forms for advanced users". 
-First, the pattern is mapped onto a grid.  Symbols, consisting of the numbers 0 through 9 and the letters P,Q,R,S,T,V,W,X,Y,Z, are used to draw lines on the grid.  This creates a vector diagram showing the order in which pairs of threads come together.
+First, the pattern is mapped onto a grid.  Symbols, consisting of the numbers or letters are used to draw lines on the grid.  This creates a vector diagram showing the order in which pairs of threads come together.
 From this description, the software generates a working diagram and a thread diagram.
 A more [detailed tutorial](Advanced) is required to fully explain the many construction options available.
 
