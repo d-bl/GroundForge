@@ -46,6 +46,8 @@ We can now fill in the middle section of the "Define a repeat" area.
 
 ![](images/rose_vertical_brick_definition.png)
 
+In the prototype diagram, the vector diagram will be updated to reflect the symbols you have used.
+
 ### Glue copies together
 
 Now that the base pattern is defined, we need to specify how to connect copies of this pattern together.  This is done in the area labelled _Arrange the repeats_.
@@ -59,16 +61,15 @@ Consider the image below. Red dashed lines show the grid overlaid on the pattern
 To position the blue rectangle on top of the yellow rectangle, we must slide the blue rectangle down 4 rows.
 To position the blue rectangle on top of the red rectangle, we must slide it over 2 columns and down 2 rows.  These translations are entered in the configuration information below.
 
-![](images/rose_vertical_brick_arrange.png)
+![](images/rose_vertical_brick_arrange.png) ![](images/vertical-bricks.png)
 
 If you are more comfortable with visual tools, we have also provided images that you can click on.
-For a vertical brick pattern like our Rose ground example, first click on the picture that looks like vertical bricks.  If the prototype pattern does not align correctly, click on the black arrows above and below the solid purple brick to adjust how the two columns of bricks align.  Each click will move the second column up or down by one row relative to the first column.
+For a vertical brick pattern like our Rose ground example, first click on the picture that looks like vertical bricks.  If the prototype pattern does not align correctly, click on the black arrows above and below the solid purple brick to adjust how the two columns of bricks align.  Each click will move the second column up or down by one row relative to the first column.  Look at the prototype diagram to see how the copies move around.
 
-![](images/vertical-bricks.png)
-
-There is more than one way to choose the base repeat for a pattern.  
-Starting from scratch again, this time we will think about Rose ground as a pattern of repeated squares.
-In the figure below, the blue and yellow sqaures contain one copy of the pattern.  
+### Another Rose ground example
+There is more than one way to choose the base pattern.  
+Starting from scratch again, we will think about Rose ground as a pattern of repeated squares.
+In the figure below, the blue and yellow sqaures each contain one copy of the pattern.  
 
 ![](images/rose-checker-arrange.png)
 
@@ -78,14 +79,14 @@ Notice that the squares overlap a little bit.
 As before, we apply a grid to the base pattern and assign symbols to each line intersection.  This time we have five rows and five columns in the base pattern.
 Finally, we arrange the copies.  To slide the blue square over the yellow square, we must move it down 4 rows.  Note: the base pattern is five rows high but the last row is common between the blue and yellow squares.  Similarly, to slide the blue square over the green square, we must move it over 4 columns and down 4 rows.
 
-![](images/rose-checker-define-repeat.png)
+![](images/rose-checker-define-repeat.png) ![](images/overlapping-checkers.png)
 
 You can enter these slide moves directly into the Configuration area.
 If you are more comfortable with visual tools, click on the image of a checkerboard with black arrows.  Initially, the copies will be spaced side by side.  Click on the black arrows to nudge the copies so that the copies overlap.
 
-![](images/overlapping-checkers.png)
-
 ### Initialize stitches
+
+For convenience, you can set all stitches in the pattern to the same value.  Just below the box where you typed symbols for the prototype, there is a small text box.  Enter a stitch as a sequence of 'c', 't', 'r' or 'l' (for example, 'cttct') and click on the 'initialize stitches button' and then on the ![wand](../images/wand.png) image above the prototype diagram to regenerate the thread and pair diagrams.  This is a quick way to see how a ground looks in cloth-stitch, half-stitch or whole-stitch.  Once the stitches are initialized, you can change the stitches used for individual intersections by editing the prototype diagram.
 
 Footside Tutorial
 -----------------
