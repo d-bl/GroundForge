@@ -59,38 +59,13 @@ To position the blue rectangle on top of the red rectangle, we must slide it ove
 
 ![](images/rose_vertical_brick_arrange.png)
 
-For people how are more comfortable with visual tools, we have also provided images that you can click on.
-For a vertical brick pattern like ours, first click on the picture that looks like vertical bricks.  If the protype pattern is not quite right, click on the black arrows above and below the solid purple brick to adjust how the two columns of bricks align.  Each click will move the second column up or down by one row relative to the first column.
+If you are more comfortable with visual tools, we have also provided images that you can click on.
+For a vertical brick pattern like ours, first click on the picture that looks like vertical bricks.  If the prototype pattern does not align correctly, click on the black arrows above and below the solid purple brick to adjust how the two columns of bricks align.  Each click will move the second column up or down by one row relative to the first column.
 
-![](images/arrange-tiles.png)
+initializing stitches
 
-The top left tile in each diagram of the image represents the bold set of stitches in the prototype diagram.
-Each solid tile in the linked image represents a copy made of the top left tile
-alias the bold stitches in the prototype.
-The tiles with a slightly fainter purple edge represent copies of the chosen solid tile.
-The tiles with a green stroke are copies of the tiles with a purple fill or stroke.
+alternative way to define prototype - checkerboard with overlap
 
-The purple numbers in the form define the absolute position of the filled purple tile,
-and the relative position of subsequent purple tiles.
-The green numbers define the position of one row of green tiles relative to the purple tiles.
-
-The recommended procedure:
-- Select a filled purple tile that closely matches the pattern.
-- Use the arrows around the purple to nudge the purple row in place.
-- Use the arrows around the green tile to nudge the rest in place.
-
-Try the procedure with [rose ground](https://d-bl.github.io/GroundForge/tiles?patchWidth=9&patchHeight=10&c1=ctct&b1=ct&a1=rctctt&c2=ctct&a2=ctct&b3=ctct&tile=831,4-7,-5-&tileStitch=ctct&shiftColsSW=-3&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=3)
-and stitch the tiles together with the links in the overlapping diagram.
-Note that another pattern than traditional rose ground is possible.
-
-Those who really want to understand the numbers
-should not interpret them as mathematical (x,y) coordinates.
-Point (0,0) lies in the north west of a computer canvas, 
-where western scripts start to write on a sheet of paper.
-You can also memorise by counting rows and columns as in a spread sheet, 
-like used for the labels for the stitches in the pair diagram.
-
-When a link specifies no shift values at all, you'll get a checkerboard arrangement.
 
 Foot sides
 ----------
