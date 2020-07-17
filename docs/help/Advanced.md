@@ -62,13 +62,31 @@ To position the blue rectangle on top of the red rectangle, we must slide it ove
 If you are more comfortable with visual tools, we have also provided images that you can click on.
 For a vertical brick pattern like our Rose ground example, first click on the picture that looks like vertical bricks.  If the prototype pattern does not align correctly, click on the black arrows above and below the solid purple brick to adjust how the two columns of bricks align.  Each click will move the second column up or down by one row relative to the first column.
 
-initializing stitches
+![](images/vertical-bricks.png)
 
-alternative way to define prototype - checkerboard with overlap
+There is more than one way to choose the base repeat for a pattern.  
+Starting from scratch again, this time we will think about Rose ground as a pattern of repeated squares.
+In the figure below, the blue and yellow sqaures contain one copy of the pattern.  
 
+![](images/rose-checker-arrange.png)
 
-Foot sides
-----------
+Again we want to make sure that none of the line intersections are on the edge of the base pattern.  This time we make the base pattern a little bit larger, as shown in the second drawing from the left, to encompass any intersections along its border.  
+Notice that the squares overlap a little bit.
+
+As before, we apply a grid to the base pattern and assign symbols to each line intersection.  This time we have five rows and five columns in the base pattern.
+Finally, we arrange the copies.  To slide the blue square over the yellow square, we must move it down 4 rows.  Note: the base pattern is five rows high but the last row is common between the blue and yellow squares.  Similarly, to slide the blue square over the green square, we must move it over 4 columns and down 4 rows.
+
+![](images/rose-checker-define-repeat.png)
+
+You can enter these slide moves directly into the Configuration area.
+If you are more comfortable with visual tools, click on the image of a checkerboard with black arrows.  Initially, the copies will be spaced side by side.  Click on the black arrows to nudge the copies so that the copies overlap.
+
+![](images/overlapping-checkers.png)
+
+### Initialize stitches
+
+Footside Tutorial
+-----------------
 You may want to study how threads disappearing in foot sides return back into the ground.
 Foot sides are defined in the side panels of the "define a repeat" form in the advanced section.
 Note that the right foot sides depends on the chosen patch width alias number of columns.
@@ -81,7 +99,7 @@ Annotated screen shot snippets of an example:
 
 ![](images/foot-sides.png)
 
-[Life version](/GroundForge/tiles?patchWidth=7&patchHeight=18&a3=-&footside=B,-,C,-,B,-,B,-,&tile=-5-,5-5,-5-,B-C,-5-&headside=5,-,&footsideStitch=tctctr&tileStitch=ct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4)
+[Live version](/GroundForge/tiles?patchWidth=7&patchHeight=18&a3=-&footside=B,-,C,-,B,-,B,-,&tile=-5-,5-5,-5-,B-C,-5-&headside=5,-,&footsideStitch=tctctr&tileStitch=ct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4)
 
 The blue and purple rectangles in this example illustrate corresponding
 sections in the form, prototype diagram and pair diagram.
