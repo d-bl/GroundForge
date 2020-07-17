@@ -64,7 +64,10 @@ To position the blue rectangle on top of the red rectangle, we must slide it ove
 ![](images/rose_vertical_brick_arrange.png) 
 
 If you are more comfortable with visual tools, we have also provided images that you can click on.
-For a vertical brick pattern like our Rose ground example, first click on the picture of vertical bricks ![](images/vertical-bricks.png).  
+For a vertical brick pattern like our Rose ground example, first click on the picture of vertical bricks:
+
+![](images/vertical-bricks.png)
+
 If the prototype pattern does not immediately align correctly, click on the black arrows above and below the solid purple brick to adjust how the two columns of bricks align.  
 Each click will move the second column up or down by one row relative to the first column.  Look at the prototype diagram to see how the copies move around.
 
@@ -84,7 +87,10 @@ Finally, we arrange the copies.  To slide the blue square over the yellow square
 ![](images/rose-checker-define-repeat.png) 
 
 You can enter these slide moves directly into the Configuration area.
-If you are more comfortable with visual tools, click on the image of a checkerboard with black arrows ![](images/overlapping-checkers.png).  
+If you are more comfortable with visual tools, click on the image of a checkerboard with black arrows:
+
+![](images/overlapping-checkers.png)
+
 Initially, the copies will be placed side by side.  Click on the black arrows to nudge the copies so that the copies overlap.
 
 ### Initialize stitches
