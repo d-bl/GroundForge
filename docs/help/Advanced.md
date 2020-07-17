@@ -8,9 +8,11 @@ Advanced forms
 
 [lace ground page]: /GroundForge/tiles?tile=5831,-4-7&patchWidth=9&patchHeight=9&shiftColsSE=4&shiftRowsSE=2&shiftColsSW=0&shiftRowsSW=2&
 
-+ [Define the base pattern](#define-the-base-pattern)
-+ [Arrange the repeats](#arrange-the-repeats)
-+ [Foot sides](#foot-sides)
++ [Prototype Tutorial](#prototype-tutorial)
+   + [Define the base pattern](#define-the-base-pattern)
+   + [Glue copies together](#glue-copies-together)
+   + [Initialize stitches](#initialize-stitches)
++ [Footside Tutorial](#footside-tutorial)
 + [Thread diagram as pair diagram](#thread-diagram-as-pair-diagram)
 
 On each [lace ground page], below the prototype, pair and thread diagrams, you will find an area labelled _Forms for advanced users_.  These forms are the controls for creating and editing the prototype.
