@@ -93,7 +93,7 @@ If you are more comfortable with visual tools, click on the image of a checkerbo
 
 ![](images/overlapping-checkers.png)
 
-Initially, the copies will be placed side by side.  Click on the black arrows to nudge the copies so that they overlap.
+Initially, the copies will be placed corner to corner.  Click on the black arrows to nudge the copies so that they overlap.
 
 [Final result](/GroundForge/tiles?patchWidth=13&patchHeight=10&d1=ctct&b1=ctct&e2=ctct&d2=ct&c2=ctct&b2=ct&a2=ctct&d3=ctct&b3=ctct&e4=ctct&d4=ct&c4=ctct&b4=ct&a4=ctct&d5=ctct&b5=ctct&tile=-4-7-,31583,-7-4-,58315,-4-7-,&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=2)
 
