@@ -91,7 +91,7 @@ If you are more comfortable with visual tools, click on the image of a checkerbo
 
 ![](images/overlapping-checkers.png)
 
-Initially, the copies will be placed side by side.  Click on the black arrows to nudge the copies so that the copies overlap.
+Initially, the copies will be placed side by side.  Click on the black arrows to nudge the copies so that they overlap.
 
 ### Initialize stitches
 
