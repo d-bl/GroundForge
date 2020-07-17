@@ -6,51 +6,47 @@ title: Advanced forms
 Advanced forms
 ==============
 
-[tiles]: /GroundForge/tiles?tile=5831,-4-7&patchWidth=9&patchHeight=9&shiftColsSE=4&shiftRowsSE=2&shiftColsSW=0&shiftRowsSW=2&
+[lace ground page]: /GroundForge/tiles?tile=5831,-4-7&patchWidth=9&patchHeight=9&shiftColsSE=4&shiftRowsSE=2&shiftColsSW=0&shiftRowsSW=2&
 
-+ [Thread diagram as pair diagram](#thread-diagram-as-pair-diagram)
 + [Define a repeat](#define-a-repeat)
 + [Arrange the repeats](#arrange-the-repeats)
 + [Foot sides](#foot-sides)
++ [Thread diagram as pair diagram](#thread-diagram-as-pair-diagram)
 
-The sections below the diagrams on the [tiles] page 
-control the engine under the hood of the car.
-The form fields define the prototype diagram. 
-Advanced users can play with the values to define new patterns from scratch.
+On each [lace ground page], below the prototype, pair and thread diagrams, you will find an area labelled _Forms for advanced users_.  These forms are the controls for creating and editing the prototype.
+You can use these controls to modify an existing pattern (add a headside or a footside, for example) or to create a new pattern.
 
-Thread diagram as pair diagram
-------------------------------
+Prototype Tutorial
+------------------
+We will use Rose ground as an example and define a prototype for it from scratch.
+There are many ways to draw the pair diagram for Rose ground.
+One way to think of it is as a checkerboard with a diamond inside each of the black squares.
 
-Sorry, nothing like the prototype diagram to choose stitches for these sets of diagrams.
-The team of GroundForge could use the help of a seasoned front end engineer for a more convenient user interface.
+### Define the base pattern
+A lace ground consists of a small pattern that is repeated, like a wallpaper or printed fabric pattern, to cover the area you need to fill.
+This small base pattern is called a __repeat__.  The form labelled _Define a repeat_ contains three text boxes.  
+The left and right boxes control the headside and footside.  We will discuss them later.  The middle box controls the repeated pattern.
 
-You can choose to use one stitch everywhere. Or two different stitches:
-one for each cross in the preceding thread diagram, the other for each twist.
-To make exceptions to these rules you need to hover over a stitch
-in the pair diagram to discover its id for stitch assignments.
+From the large pattern, we need to identify the base pattern.  There are many ways to do this and over the course of this tutorial, we will show a few of them.
+In the image below, each rectangle highlights one repeat of the Rose pattern.  The repeating rectangles are arranged like vertical bricks.
+For convenience, on the far right of the image we have moved the rectangles slightly so that it is easy to see all the intersections of pairs within a rectangle (no intersection lies on the edge of a rectangle).
 
-An example mixing all the options mentioned above:
+![](images/repeat.png)
 
-![](images/assign-stitches.png)
+Next we will map the pairs in the lace ground to a grid.  Within one repeat rectangle, the intersections lie on two columns and four rows as shown by the red dashed lines in the figure below.  The red dashed lines form a grid
 
-The overall default in this example is a `ctct`.
-A more selective default is `ctc` for stitches that were twists in the preceding thread diagram.
-Two specific stitches are set to `ct`.
+![](images/rose-grid-symbols.png)
 
-The page on the [Droste effect](Droste-effect) has some example patterns.
+For each position in the grid, we assign a symbol.  The symbol specifies the angle and direction of the two pairs that are pointing at that row/column position.
+The meaning of each symbol is shown in the "Cheat sheet" on the right of the "Define a repeat" area.  For example, in row 1/column 1 the green arrows correspond to the symbol '4'.  Similarly, in row 3/column 2, there is no intersection of pairs we represent by the symbol '-'.
 
-![](../images/under-construction.png) Note that spaces may have unexpected results, 
-recommended delimiters between assignments: new lines or `,`.
+We can now fill in the middle section of the "Define a repeat" area.
 
-Foot sides can get complicated to define when a pattern has a worker.
-At the second and third level two respective four pairs
-work from left to right before returning from right to left.
-In practice it might be very well possible to alternate the direction every other row.
+![](images/rose_vertical_brick_definition.png)
 
-Define a repeat
----------------
-The form has three fields to fill with  digits and letters of the cheat sheet.
-These fields are paired with other fields to define the default stitches.
+
+
+
 
 The outer panels are optional for a custom foot side. 
 Note that a column more or less for the patch size may invalidate the right foot side. 
@@ -138,3 +134,32 @@ In those cases the stitches are merged into a single stitch in the pair diagram.
 Thus both pairs for the bottom stitch are stretched.
 You can still choose to apply a plait for the thread diagram in those cases,
 well, if it happens in an added column and is not part of the ground.
+
+Thread diagram as pair diagram
+------------------------------
+
+Sorry, nothing like the prototype diagram to choose stitches for these sets of diagrams.
+The team of GroundForge could use the help of a seasoned front end engineer for a more convenient user interface.
+
+You can choose to use one stitch everywhere. Or two different stitches:
+one for each cross in the preceding thread diagram, the other for each twist.
+To make exceptions to these rules you need to hover over a stitch
+in the pair diagram to discover its id for stitch assignments.
+
+An example mixing all the options mentioned above:
+
+![](images/assign-stitches.png)
+
+The overall default in this example is a `ctct`.
+A more selective default is `ctc` for stitches that were twists in the preceding thread diagram.
+Two specific stitches are set to `ct`.
+
+The page on the [Droste effect](Droste-effect) has some example patterns.
+
+![](../images/under-construction.png) Note that spaces may have unexpected results, 
+recommended delimiters between assignments: new lines or `,`.
+
+Foot sides can get complicated to define when a pattern has a worker.
+At the second and third level two respective four pairs
+work from left to right before returning from right to left.
+In practice it might be very well possible to alternate the direction every other row.
