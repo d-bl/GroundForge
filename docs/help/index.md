@@ -13,6 +13,8 @@ Help Intro
    + [Highlight a thread](#highlight-a-thread)
    + [Resize pattern](#resize-pattern)
    + [Modify stitches](#modify-stitches)
+   + [Undo changes](#undo-changes)
+   + [Save and share changes](#save-and-share-changes)
    + [Add footsides](#add-footsides)
    + [Create a new ground pattern](#create-a-new-ground-pattern)
    + [Video](#video)
@@ -84,6 +86,18 @@ You can also "drop" a stitch.  That is, when two pairs meet, do not braid them t
 Exercise: Can you create the following variation? [solution](/GroundForge/tiles?patchWidth=20&patchHeight=20&f1=-&a1=t&j2=ctc&i2=ctcll&h2=ctctt&g2=ctctt&f2=ctctt&e2=ctctt&d2=ctctt&c2=ctcrrr&b2=ctc&j3=ctcll&i3=ctctt&h3=ctctt&g3=ctcttl&f3=ctc&e3=ctcttr&d3=ctctt&c3=ctctt&b3=ctcrrr&a3=ctc&j4=ctctt&i4=ctctt&h4=ctcttl&g4=ctc&f4=ctc&e4=ctc&d4=ctcttr&c4=ctctt&b4=ctctt&a4=ctcttt&j5=ctctt&i5=ctcttl&h5=ctc&g5=ctc&e5=ctc&d5=ctc&c5=ctcttr&b5=ctctt&a5=ctctt&tile=5----5----,-CDD632AAB,5666632222,5666632222,56666-2222&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-5&shiftRowsSW=5&shiftColsSE=5&shiftRowsSE=5)
 
 ![](images/G2-modified.png)
+
+### Undo changes
+
+To return the pattern to its original values, click on the 'Reload' button (also called 'Refresh') at the top of your browser.
+
+### Save and share changes
+
+Once you have invested some time working on a lace ground, you will want to save your work.  Click on the ![link](../images/link.png) image just above the prototype diagram.  This will change the text in the address bar at the top of your browser.  The text is a link to this website and contains the lace pattern as well as the stitch choices you have made.
+
+![](images/save-link.png)
+
+Save the link text into a file for later use.  Copy and paste the link text into the address bar of your browser to return to your current state or share it with other lacemakers.
 
 ### Create a new ground pattern
 
