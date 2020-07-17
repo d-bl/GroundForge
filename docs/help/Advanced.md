@@ -60,7 +60,7 @@ To position the blue rectangle on top of the red rectangle, we must slide it ove
 ![](images/rose_vertical_brick_arrange.png)
 
 If you are more comfortable with visual tools, we have also provided images that you can click on.
-For a vertical brick pattern like ours, first click on the picture that looks like vertical bricks.  If the prototype pattern does not align correctly, click on the black arrows above and below the solid purple brick to adjust how the two columns of bricks align.  Each click will move the second column up or down by one row relative to the first column.
+For a vertical brick pattern like our Rose ground example, first click on the picture that looks like vertical bricks.  If the prototype pattern does not align correctly, click on the black arrows above and below the solid purple brick to adjust how the two columns of bricks align.  Each click will move the second column up or down by one row relative to the first column.
 
 initializing stitches
 
