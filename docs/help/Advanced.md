@@ -71,7 +71,7 @@ For a vertical brick pattern like our Rose ground example, first click on the pi
 If the prototype pattern does not immediately align correctly, click on the black arrows above and below the solid purple brick to adjust how the two columns of bricks align.  
 Each click will move the second column up or down by one row relative to the first column.  Look at the prototype diagram to see how the copies move around.
 
-[Final result](/GroundForge/tiles?patchWidth=13&patchHeight=10&d1=ctct&b1=ctct&e2=ctct&d2=ct&c2=ctct&b2=ct&a2=ctct&d3=ctct&b3=ctct&e4=ctct&d4=ct&c4=ctct&b4=ct&a4=ctct&d5=ctct&b5=ctct&tile=-4-7-,31583,-7-4-,58315,-4-7-,&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=2)
+[Final result](/GroundForge/tiles?patchWidth=13&patchHeight=10&a1=ctct&b2=ctct&a2=ct&a3=ctct&b4=ctct&a4=ct&tile=4-,15,7-,83,,&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=2)
 
 ### Another Rose ground example
 There is more than one way to choose the base pattern.  
