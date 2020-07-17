@@ -48,21 +48,19 @@ We can now fill in the middle section of the "Define a repeat" area.
 
 Now that the base pattern is defined, we need to specify how to connect copies of this pattern together.  This is done in the area labelled _Arrange the repeats_.
 
-Consider several meters of a lace edging.  The pattern for the edging is not several meters long.  It is a smaller pattern that you repeat over and over again by sliding the pattern along.  This gives a long strip.  To make a rectangle from a small pattern, we need to slide the pattern in two directions.
+Consider several meters of a lace edging.  The pattern for the edging is not several meters long.  It is a smaller pattern that you repeat over and over again by sliding the pattern along in one direction.  This gives a long strip.  To make a large rectangular patch from a small pattern, we need to slide the pattern in two directions.
 
-Cosndier the image below. Red dashed lines show the grid overlaid on the pattern.
+Consider the image below. Red dashed lines show the grid overlaid on the pattern.
 
 ![](images/rose-translation-vectors.png)
 
-To position the blue rectangle on top of the yellow rectangle, we must slide it down 4 rows.
+To position the blue rectangle on top of the yellow rectangle, we must slide the blue rectangle down 4 rows.
 To position the blue rectangle on top of the red rectangle, we must slide it over 2 columns and down 2 rows.  These translations are entered in the configuration information below.
 
 ![](images/rose_vertical_brick_arrange.png)
 
-The parameters to arrange the tiles can be hard to understand.
-An image with four diagrams should simplify the task.
-The filled tiles and arrows act as buttons that change the configuration values
-and move the faint stitches in the prototype diagram.
+For people how are more comfortable with visual tools, we have also provided images that you can click on.
+For a vertical brick pattern like ours, first click on the picture that looks like vertical bricks.  If the protype pattern is not quite right, click on the black arrows above and below the solid purple brick to adjust how the two columns of bricks align.  Each click will move the second column up or down by one row relative to the first column.
 
 ![](images/arrange-tiles.png)
 
