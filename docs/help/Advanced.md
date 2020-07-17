@@ -8,7 +8,7 @@ Advanced forms
 
 [lace ground page]: /GroundForge/tiles?tile=5831,-4-7&patchWidth=9&patchHeight=9&shiftColsSE=4&shiftRowsSE=2&shiftColsSW=0&shiftRowsSW=2&
 
-+ [Define a repeat](#define-a-repeat)
++ [Define the base pattern](#define-the-base-pattern)
 + [Arrange the repeats](#arrange-the-repeats)
 + [Foot sides](#foot-sides)
 + [Thread diagram as pair diagram](#thread-diagram-as-pair-diagram)
@@ -44,29 +44,20 @@ We can now fill in the middle section of the "Define a repeat" area.
 
 ![](images/rose_vertical_brick_definition.png)
 
+### Glue copies together
 
+Now that the base pattern is defined, we need to specify how to connect copies of this pattern together.  This is done in the area labelled _Arrange the repeats_.
 
+Consider several meters of a lace edging.  The pattern for the edging is not several meters long.  It is a smaller pattern that you repeat over and over again by sliding the pattern along.  This gives a long strip.  To make a rectangle from a small pattern, we need to slide the pattern in two directions.
 
+Cosndier the image below. Red dashed lines show the grid overlaid on the pattern.
 
-The outer panels are optional for a custom foot side. 
-Note that a column more or less for the patch size may invalidate the right foot side. 
+![](images/rose-translation-vectors.png)
 
-The position of a digit correlates with a position in the prototype diagram.
-Half circles in the prototype indicate you added a new pair for a next stitch,
-or are not using a pair for a next stitch. The symbols with a single arrow
-are intended to extend an arrow of another symbol.
+To position the blue rectangle on top of the yellow rectangle, we must slide it down 4 rows.
+To position the blue rectangle on top of the red rectangle, we must slide it over 2 columns and down 2 rows.  These translations are entered in the configuration information below.
 
-More details on the [advanced design](Reversed-engineering-of-patterns) page.
-
-The right foot side may be a mirrored version of the left foot side for some patterns.
-For your convenience the flip button can set the right field from the left.
-You may still have to rotate the rows or adjust the patch width.  
-
-Arrange the repeats
--------------------
-The matrices for head sides and foot sides are simply repeated vertically,
-more details in another section.
-This section ignores the presence of a head side or foot side to keep descriptions simple.
+![](images/rose_vertical_brick_arrange.png)
 
 The parameters to arrange the tiles can be hard to understand.
 An image with four diagrams should simplify the task.
