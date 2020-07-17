@@ -86,7 +86,7 @@ If you are more comfortable with visual tools, click on the image of a checkerbo
 
 ### Initialize stitches
 
-For convenience, you can set all stitches in the pattern to the same value.  In the "Define a srepeat" area, just below the middle box where you typed symbols for the prototype, there is a small text box.  Enter a stitch as a sequence of 'c', 't', 'r' or 'l' (for example, 'cttct').  Click on the 'initialize stitches button' and then on the ![wand](../images/wand.png) image above the prototype diagram to regenerate the thread and pair diagrams.  This is a quick way to see how a ground looks in cloth-stitch, half-stitch or whole-stitch.  Once the stitches are initialized, you can change the stitches used for individual intersections by editing the prototype diagram.
+For convenience, you can set all stitches in the pattern to the same value.  In the "Define a srepeat" area, just below the middle box where you typed symbols for the prototype, there is a small text box.  Enter a stitch as a sequence of 'c', 't', 'r' or 'l' (for example, 'cttct').  Click on the "initialize stitches button" and then on the ![wand](../images/wand.png) image above the prototype diagram to regenerate the thread and pair diagrams.  This is a quick way to see how a ground looks in cloth-stitch, half-stitch or whole-stitch.  Once initialized, you can change the stitches used for individual intersections by editing the prototype diagram.  Each time you click on "initialize stitches button", the values in the prototype are reset.
 
 Footside Tutorial
 -----------------
