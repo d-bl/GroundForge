@@ -84,7 +84,7 @@ Again we want to make sure that none of the line intersections are on the edge o
 Notice that the squares overlap a little bit.
 
 As before, we apply a grid to the base pattern and assign symbols to each line intersection.  This time we have three rows and three columns in the base pattern.
-Finally, we arrange the copies.  To slide the blue square over the yellow square, we must move it down 4 rows.  Note: the base pattern is only three rows high but there is a hole with no intersections.  To slide the blue square over the red square, we must move it over 2 columns and down 2 rows.  Again the pattern is three by three but the squares overlap in the corner.
+Finally, we arrange the copies.  To slide the blue square over the yellow square, we must move it down 2 rows and left 2 columns.  To slide the blue square over the green square, we must move it right 2 columns and down 2 rows.  Note: The pattern has three rows and three columns but the squares overlap in the corner, hence the slides are only a distance of two.
 
 ![](images/rose-checker-define-repeat.png) 
 
@@ -95,7 +95,7 @@ If you are more comfortable with visual tools, click on the image of a checkerbo
 
 Initially, the copies will be placed corner to corner.  Click on the black arrows to nudge the copies so that they overlap.
 
-[Final result](/GroundForge/tiles?patchWidth=12&patchHeight=12&c1=ctct&b1=ctct&a1=ctct&c2=ctct&a2=ctct&c3=ctct&b3=ctct&a3=ctct&tile=831,4-7,158&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=2)
+[Final result](GroundForge/tiles?patchWidth=12&patchHeight=12&c1=ctct&b1=ctct&a1=ctct&c2=ctct&a2=ctct&c3=ctct&b3=ctct&a3=ctct&tile=831,4-7,158&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
 
 ### Initialize stitches
 
