@@ -46,7 +46,7 @@ We can now fill in the middle section of the "Define a repeat" area.
 
 ![](images/rose_vertical_brick_definition.png)
 
-Notice that the prototype diagram is updated to match the symbols as you type.
+Notice that the prototype diagram is updated to match the symbols as soon as you click outside of the box.
 
 ### Glue copies together
 
@@ -75,16 +75,16 @@ Each click will move the second column up or down by one row relative to the fir
 
 ### Another Rose ground example
 There is more than one way to choose the base pattern.  
-Starting from scratch again, we will think about Rose ground as a pattern of repeated squares.
-In the figure below, the blue and yellow sqaures each contain one copy of the pattern.  
+Starting from scratch again, we will think about Rose ground as a checkerboard pattern of repeated squares.
+In the figure below, the coloured squares each contain one copy of the pattern.  
 
 ![](images/rose-checker-arrange.png)
 
 Again we want to make sure that none of the line intersections are on the edge of the base pattern.  This time we make the base pattern a little bit larger, as shown in the second drawing from the left, to encompass any intersections along its border.  
 Notice that the squares overlap a little bit.
 
-As before, we apply a grid to the base pattern and assign symbols to each line intersection.  This time we have five rows and five columns in the base pattern.
-Finally, we arrange the copies.  To slide the blue square over the yellow square, we must move it down 4 rows.  Note: the base pattern is five rows high but the last row is common between the blue and yellow squares.  Similarly, to slide the blue square over the green square, we must move it over 4 columns and down 4 rows.
+As before, we apply a grid to the base pattern and assign symbols to each line intersection.  This time we have three rows and three columns in the base pattern.
+Finally, we arrange the copies.  To slide the blue square over the yellow square, we must move it down 4 rows.  Note: the base pattern is only three rows high but there is a hole with no intersections.  To slide the blue square over the red square, we must move it over 2 columns and down 2 rows.  Again the pattern is three by three but the squares overlap in the corner.
 
 ![](images/rose-checker-define-repeat.png) 
 
@@ -95,7 +95,7 @@ If you are more comfortable with visual tools, click on the image of a checkerbo
 
 Initially, the copies will be placed corner to corner.  Click on the black arrows to nudge the copies so that they overlap.
 
-[Final result](/GroundForge/tiles?patchWidth=13&patchHeight=10&d1=ctct&b1=ctct&e2=ctct&d2=ct&c2=ctct&b2=ct&a2=ctct&d3=ctct&b3=ctct&e4=ctct&d4=ct&c4=ctct&b4=ct&a4=ctct&d5=ctct&b5=ctct&tile=-4-7-,31583,-7-4-,58315,-4-7-,&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=2)
+[Final result](GroundForge/tiles?patchWidth=12&patchHeight=12&c1=ctct&b1=ctct&a1=ctct&c2=ctct&a2=ctct&c3=ctct&b3=ctct&a3=ctct&tile=831,4-7,158&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=2)
 
 ### Initialize stitches
 
