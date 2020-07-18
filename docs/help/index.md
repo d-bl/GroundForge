@@ -104,7 +104,7 @@ Save the link text into a file for later use.  Copy and paste the link text into
 We create the prototype for the pattern in the area labelled “Forms for advanced users”. First, we map the pattern onto a grid. Symbols, comprising numbers or letters, are used to draw lines on the grid. This creates a vector diagram showing the order in which pairs of threads come together. From this description, the software generates a working diagram and a thread diagram. It requires a more [detailed tutorial](Advanced) to fully explain the many construction options available.
 
 <a name="BK-31"></a>
-Feature 31 in the [DKV pattern] "Binche Kompakt" was published in "Kant" issue 2000/2.  [Variations](https://github.com/d-bl/GroundForge/blob/b6a765f/docs/help/index.md#tutorial) on this once lost ground can be explored in GroundForge.
+Feature 31 in the [DKV pattern](http://www.deutscher-kloeppelverband.de/index.php/component/jshopping/product/view/4/47?Itemid=242) "Binche Kompakt" was published in "Kant" issue 2000/2.  [Variations](https://github.com/d-bl/GroundForge/blob/b6a765f/docs/help/index.md#tutorial) on this once lost ground can be explored in GroundForge.
 
 ### Add footsides
 
