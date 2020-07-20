@@ -14,11 +14,16 @@ object SvgPricking {
       val (x1, y1) = nodes(s)
       line(s"$s-$t", x1, y1, x1 + dx, y1 + dy)
     }
-    val clones = tileVectors.flatMap { case (dx, dy) =>
-      line(s"$dx $dy", 0, 0, dx, dy)(3, "rgb(0,255,0)") +:
-      (100 to 300 by 100).map { i =>
-        s"""<use xlink:href="#tile" transform="translate(${ i * dx },${ i * dy })"/>"""
-      }
+    val vectors = tileVectors.map { case (dx, dy) =>
+      line(s"$dx $dy", 0, 0, dx, dy)(3, "rgb(0,255,0)")
+    }
+    val (dx1, dy1) = tileVectors.head
+    val (dx2, dy2) = tileVectors.tail.headOption.getOrElse((-dy1 * 4, dx1 * 4))
+    val clones = for {
+      i <- -200 to 400 by 100
+      j <- -200 to 400 by 100
+    } yield {
+      s"""<use transform="translate(${ i * dx1 + j * dx2 },${ i * dy1 + j * dy2 })" xlink:href="#tile" style="opacity:0.5"/>"""
     }
     s"""<svg
        |  xmlns="http://www.w3.org/2000/svg"
@@ -30,6 +35,7 @@ object SvgPricking {
        |<svg:g id="tile">
        |${ tile.mkString("\n") }
        |</svg:g>
+       |${ vectors.mkString("\n") }
        |${ clones.mkString("\n") }
        |</svg>
        |""".stripMargin

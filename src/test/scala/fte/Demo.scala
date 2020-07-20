@@ -15,7 +15,7 @@
 */
 package fte
 
-import dibl.fte.{ GraphCreator, SvgCreator, TopoLink }
+import dibl.fte.{ GraphCreator, TopoLink }
 
 import scala.reflect.io.File
 import scala.util.Success
@@ -33,7 +33,7 @@ object Demo {
 
     // API intended for a direkt bookmark-able link
     writeSvg(s"$dir/topo-torchon-ct.svg", TopoLink.fromUrlQuery(
-    "topo=b21,a10,f,t;b22,a10,t,f;a10,a11,f,t;b23,a11,t,f;a10,a12,t,f;b23,a12,f,t;a11,a13,t,f;a12,a13,f,t;a11,b20,f,t;a12,b20,t,f;a13,b21,t,f;b20,b21,f,t;a13,b22,f,t;b20,b22,t,f;b21,b23,t,f;b22,b23,f,t"
+      "topo=b21,a10,f,t;b22,a10,t,f;a10,a11,f,t;b23,a11,t,f;a10,a12,t,f;b23,a12,f,t;a11,a13,t,f;a12,a13,f,t;a11,b20,f,t;a12,b20,t,f;a13,b21,t,f;b20,b21,f,t;a13,b22,f,t;b20,b22,t,f;b21,b23,t,f;b22,b23,f,t"
       //"topo=b21,a10,f,t;b22,a10,t,f;a10,a11,f,t;a10,a12,t,f;a11,a13,t,f;a12,a13,f,t;a13,b22,f,t;"
     ))
 
@@ -53,20 +53,22 @@ object Demo {
         s"whiting=F14_P193&tileStitch=$stitch&patchWidth=24&patchHeight=28&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14",
       )
     } {
-      if (stitch != drosteDiagram || !query.contains("whiting")) { // skip too large pattern
-        val qName = query.replaceAll("&.*", "").replaceAll("[^a-zA-Z0-9]+", "-")
-        val tail = if (stitch == pairDiagram) "pairs"
-                   else if (stitch == drosteDiagram) "droste"
-                        else stitch
-        val fileName = s"$dir/$qName-$tail.svg"
-        val t0 = System.nanoTime()
-        val links = if (stitch == pairDiagram) TopoLink.fromUrlQuery(query)
-                    else if (stitch.startsWith("t"))
-                           TopoLink.fromThreadDiagram(query + "&droste2=" + stitch)
-                         else TopoLink.fromThreadDiagram(query)
-        println(TopoLink.asString(links)) // to be placed in text area of HTML page
-        writeSvg(fileName, links)
-        println(s"Elapsed time: ${ (System.nanoTime() - t0) * 0.000000001 }sec for $query")
+      (stitch, query.replaceAll("[&=].*", "")) match {
+        case (`drosteDiagram`, "whiting") => // skip: too large
+        case _ =>
+          val qName = query.replaceAll("&.*", "").replaceAll("[^a-zA-Z0-9]+", "-")
+          val tail = if (stitch == pairDiagram) "pairs"
+                     else if (stitch == drosteDiagram) "droste"
+                          else stitch
+          val fileName = s"$dir/$qName-$tail.svg"
+          val t0 = System.nanoTime()
+          val links = if (stitch == pairDiagram) TopoLink.fromUrlQuery(query)
+                      else if (stitch.startsWith("t"))
+                             TopoLink.fromThreadDiagram(query + "&droste2=" + stitch)
+                           else TopoLink.fromThreadDiagram(query)
+          println(TopoLink.asString(links)) // to be placed in text area of HTML page
+          writeSvg(fileName, links)
+          println(s"Elapsed time: ${ (System.nanoTime() - t0) * 0.000000001 }sec for $query")
       }
     }
   }
@@ -74,9 +76,6 @@ object Demo {
   // rest of the API TODO isolate delta calculation/extraction for javascript
   private def writeSvg(fileName: String, links: Seq[TopoLink]) = GraphCreator
     .graphFrom(links)
-    .map { case (graph, svg) =>
-      File(fileName).writeAll(SvgCreator.draw(graph))
-      File(fileName.replace(".svg","-.svg")).writeAll(svg)
-    }
+    .map { svg => File(fileName).writeAll(svg) }
     .recover { case t: Throwable => Success(println(t)) }
 }

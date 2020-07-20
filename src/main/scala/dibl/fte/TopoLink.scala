@@ -51,7 +51,7 @@ case class TopoLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean,
   @JSExport
   def fromString(links: String): Seq[TopoLink] = Try {
     links
-      .replaceAll("""\s+""","")
+      .replaceAll("""\s+""", "")
       .split(";")
       .toSeq
       .map { link =>

@@ -15,16 +15,12 @@
 */
 package dibl.fte
 
-import dibl.fte.data.{ Edge, Graph, Vertex }
-import dibl.fte.layout.{ LocationsDFS, OneFormTorus }
-
 import scala.annotation.tailrec
-import scala.collection.JavaConverters._
 import scala.util.Try
 
 object GraphCreator {
 
-  def graphFrom(topoLinks: Seq[TopoLink]): Try[(Graph, String)] = {
+  def graphFrom(topoLinks: Seq[TopoLink]): Try[String] = {
     val clockWise: Map[String, Seq[TopoLink]] = {
       val linksBySource = topoLinks.groupBy(_.sourceId)
       topoLinks.groupBy(_.targetId)
@@ -40,39 +36,76 @@ object GraphCreator {
     for {
       data <- Try(Data(Face(topoLinks), clockWise, topoLinks))
       deltas <- Delta(data, topoLinks)
-      recursionStartId = topoLinks.head.sourceId
-      nodes = locations(Map(recursionStartId -> (0, 0)), deltas)
-      graph = initGraph(deltas, clockWise)
-      //_ = println(s" ===== ${graph.getVertices.size()} =?= ${nodes.size}")
-      tileVectors = new LocationsDFS(graph.getVertices, graph.getEdges).getVectors
-      svg = SvgPricking(nodes, deltas, getTileVector(recursionStartId, deltas, nodes))
-      //_ = println(graph.getVertices.asScala.map(v => v.getX -> v.getY ))
-      //_ = println(nodes.values.toList)
-      _ <- Try(Option(new OneFormTorus(graph).layout(tileVectors))
-        .getOrElse(throw new Exception("no translation vectors found")))
-      _ = println(s"tileVectors === ${ tileVectors.asScala.mkString("; ") } === ${ getTileVector(recursionStartId, deltas, nodes) }")
-    } yield (graph, svg)
+      startId = topoLinks.head.sourceId
+      nodes = locations(Map(startId -> (0, 0)), deltas)
+      svg = SvgPricking(nodes, deltas, meetHalfway(startId, deltas).toSeq)
+    } yield svg
   }
 
   type Locations = Map[String, (Double, Double)]
   private type Deltas = Map[TopoLink, Delta]
 
-  def getTileVector(recursionStartId: String, deltas: Map[TopoLink, Delta], nodes: Locations): Seq[(Double, Double)] = {
-    deltas.keys
-      .filter { // find links arriving at the start
-        case TopoLink(_, `recursionStartId`, _, _) => true
-        case _ => false
-      }.tail
-      .map { link =>
-        val (x, y) = nodes(recursionStartId)
-        val Delta(dX, dY) = deltas(link)
-        // link start before the tile:
-        val (x1, y1) = (x - dX, y - dY)
-        // link start beyond the tile:
-        val (x2, y2) = nodes(link.sourceId)
-        (x2 - x1, y2 - y1)
+  private def meetHalfway(startId: String, deltas: Deltas): Set[(Double, Double)] = {
+    @tailrec
+    def next(ins: Map[String, Delta],
+             outs: Map[String, Delta],
+            ): Set[(Double, Double)] = {
+      val inIds = ins.keySet
+      val outIds = outs.keySet
+      //print(s"{$ins;$outs}")
+      //print(s"${ inIds.size },${ outIds.size }; ")
+
+      def inIns(location: (String, Delta)) = inIds.toSeq.contains(location._1)
+
+      def inOuts(location: (String, Delta)) = outIds.toSeq.contains(location._1)
+
+      /** sum of two followed paths (once they met each other) */
+      def sum(id: String) = {
+        //println()
+        val Delta(dx1, dy1) = ins(id)
+        val Delta(dx2, dy2) = outs(id)
+        Delta(dx1 + dx2, dy1 + dy2).rounded
       }
-  }.toSeq
+
+      if (inIds.subsetOf(outIds)) inIds.map(sum)
+      else if (outIds.subsetOf(inIds)) outIds.map(sum)
+           else {
+             val newIns = ins
+               .withFilter(!inOuts(_))
+               .flatMap { t =>
+                 val (id, Delta(dx, dy)) = t
+                 nextIn(id).map(follow(dx, dy))
+               }
+             val newOuts = outs
+               .withFilter(!inIns(_))
+               .flatMap { t =>
+                 val (id, Delta(dx, dy)) = t
+                 nextOut(id).map(follow(dx, dy))
+               }
+             if (ins.map(t => Math.abs(t._2.dx)).max > 5)
+               return Set.empty // TODO emergency break for a never ending loop
+             next(ins.filter(inOuts) ++ newIns, outs.filter(inIns) ++ newOuts)
+           }
+    }
+
+    /** calculate the new length of the followed path */
+    def follow(dx1: Double, dy1: Double)(t2: (String, Delta)) = {
+      val (id, Delta(dx2, dy2)) = t2
+      (id, Delta(dx1 + dx2, dy1 + dy2))
+    }
+
+    def nextIn(id: String) = deltas.withFilter {
+      case (TopoLink(_, `id`, _, _), _) => true
+      case _ => false
+    }.map { case (TopoLink(id, _, _, _), delta) => (id, delta) }
+
+    def nextOut(id: String) = deltas.withFilter {
+      case (TopoLink(`id`, _, _, _), _) => true
+      case _ => false
+    }.map { case (TopoLink(_, id, _, _), delta) => (id, delta) }
+
+    next(nextIn(startId), nextOut(startId))
+  }
 
   @tailrec
   private def locations(nodes: Locations, deltas: Deltas): Locations = {
@@ -100,42 +133,5 @@ object GraphCreator {
         // deltas.filterNot(delta => candidates.contains(delta._1))
       )
     }
-  }
-
-  private def initGraph(deltas: Deltas, clockWise: Map[String, Seq[TopoLink]]) = {
-    val topoLinks: Seq[TopoLink] = deltas.keys.toSeq
-    val graph = new Graph()
-
-    // create vertices
-    implicit val vertexMap: Map[String, Vertex] = topoLinks
-      .map(_.targetId).distinct.zipWithIndex
-      .map { case (nodeId, i) =>
-        // The initial coordinates don't matter as long as they are unique.
-        nodeId -> graph.createVertex(i, 0)
-      }.toMap
-
-    // create edges
-    implicit val edges: Array[Edge] = deltas.map { case (link, Delta(dx, dy)) =>
-      graph.addNewEdge(new Edge(
-        vertexMap(link.sourceId),
-        vertexMap(link.targetId)
-      )).setDeltaX(dx).setDeltaY(dy)
-    }.toArray
-
-    // add edges to vertices in clockwise order
-    clockWise.foreach { case (id, topoLinks) =>
-      topoLinks.foreach(findEdge(_).foreach(vertexMap(id).addEdge))
-    }
-    graph
-  }
-
-  private def findEdge(link: TopoLink)
-                      (implicit edges: Array[Edge],
-                       vertexMap: Map[String, Vertex]
-                      ): Option[Edge] = {
-    edges.find(edge =>
-      edge.getStart == vertexMap(link.sourceId) &&
-        edge.getEnd == vertexMap(link.targetId)
-    )
   }
 }
