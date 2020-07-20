@@ -1,5 +1,5 @@
 /*
- Copyright 2016 Jo Pol
+ Copyright 2015 Jo Pol
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -15,17 +15,17 @@
 */
 package dibl.fte
 
-import scala.util.Try
-
-object GraphCreator {
-
-  def graphFrom(topoLinks: Seq[TopoLink]): Try[String] = {
-    for {
-      data <- Try(Data(Face(topoLinks), ClockWise(topoLinks), topoLinks))
-      deltas <- Delta(data, topoLinks)
-      startId = topoLinks.head.sourceId
-      nodes = Locations.create(Map(startId -> (0, 0)), deltas)
-      svg = SvgPricking(nodes, deltas, TileVector(startId, deltas).toSeq)
-    } yield svg
+object ClockWise {
+  def apply(links: Seq[TopoLink]): Map[String, Seq[TopoLink]] = {
+    val linksBySource = links.groupBy(_.sourceId)
+    links.groupBy(_.targetId)
+      .map { case (id, linksIn) =>
+        val linksOut = linksBySource(id)
+        (id, linksOut.filter(_.isRightOfSource)
+          ++ linksOut.filter(_.isLeftOfSource)
+          ++ linksIn.filter(_.isLeftOfTarget)
+          ++ linksIn.filter(_.isRightOfTarget)
+        )
+      }
   }
 }
