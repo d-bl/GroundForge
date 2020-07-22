@@ -18,65 +18,70 @@ package dibl.fte
 import scala.annotation.tailrec
 
 object TileVector {
- def apply(startId: String, deltas: Deltas): Set[(Double, Double)] = {
-   @tailrec
-   def next(ins: Map[String, Delta],
-            outs: Map[String, Delta],
-           ): Set[(Double, Double)] = {
-     val inIds = ins.keySet
-     val outIds = outs.keySet
-     //print(s"{$ins;$outs}")
-     //print(s"${ inIds.size },${ outIds.size }; ")
+  def apply(startId: String, deltas: Deltas): Set[(Double, Double)] = {
+    @tailrec
+    def next(ins: Map[String, Delta],
+             outs: Map[String, Delta],
+            ): Set[(Double, Double)] = {
+      val inIds = ins.keySet
+      val outIds = outs.keySet
+      //print(s"{$ins;$outs}")
+      //print(s"${ inIds.size },${ outIds.size }; ")
 
-     def inIns(location: (String, Delta)) = inIds.toSeq.contains(location._1)
+      /** sum of two followed paths (once they met each other) */
+      def sum(id: String) = {
+        //println()
+        val Delta(dx1, dy1) = ins(id)
+        val Delta(dx2, dy2) = outs(id)
+        Delta(dx1 + dx2, dy1 + dy2).rounded
+      }
 
-     def inOuts(location: (String, Delta)) = outIds.toSeq.contains(location._1)
+      if (inIds.subsetOf(outIds)) inIds.map(sum)
+      else if (outIds.subsetOf(inIds)) outIds.map(sum)
+           else {
 
-     /** sum of two followed paths (once they met each other) */
-     def sum(id: String) = {
-       //println()
-       val Delta(dx1, dy1) = ins(id)
-       val Delta(dx2, dy2) = outs(id)
-       Delta(dx1 + dx2, dy1 + dy2).rounded
-     }
+             def inOuts(location: (String, Delta)) = outIds.toSeq.contains(location._1)
 
-     if (inIds.subsetOf(outIds)) inIds.map(sum)
-     else if (outIds.subsetOf(inIds)) outIds.map(sum)
-          else {
-            val newIns = ins
-              .withFilter(!inOuts(_))
-              .flatMap { t =>
-                val (id, Delta(dx, dy)) = t
-                nextIn(id).map(follow(dx, dy))
-              }
-            val newOuts = outs
-              .withFilter(!inIns(_))
-              .flatMap { t =>
-                val (id, Delta(dx, dy)) = t
-                nextOut(id).map(follow(dx, dy))
-              }
-            if (ins.map(t => Math.abs(t._2.dx)).max > 5)
-              return Set.empty // TODO emergency break for a never ending loop
-            next(ins.filter(inOuts) ++ newIns, outs.filter(inIns) ++ newOuts)
-          }
-   }
+             val newIns = ins
+               .withFilter(!inOuts(_))
+               .flatMap { t =>
+                 val (id, Delta(dx, dy)) = t
+                 nextIn(id).map(follow(dx, dy))
+               }
 
-   /** calculate the new length of the followed path */
-   def follow(dx1: Double, dy1: Double)(t2: (String, Delta)) = {
-     val (id, Delta(dx2, dy2)) = t2
-     (id, Delta(dx1 + dx2, dy1 + dy2))
-   }
+             def inIns(location: (String, Delta)) = inIds.toSeq.contains(location._1) ||
+               newIns.keys.toSeq.contains(location._1)
 
-   def nextIn(id: String) = deltas.withFilter {
-     case (TopoLink(_, `id`, _, _), _) => true
-     case _ => false
-   }.map { case (TopoLink(id, _, _, _), delta) => (id, delta) }
+             val newOuts = outs
+               .withFilter(!inIns(_))
+               .flatMap { t =>
+                 val (id, Delta(dx, dy)) = t
+                 nextOut(id).map(follow(dx, dy))
+               }
+             if (ins.map(t => Math.abs(t._2.dx)).max > 5) {
+               println("escaping from likely never ending loop")
+               return Set.empty
+             }
+             next(ins.filter(inOuts) ++ newIns, outs.filter(inIns) ++ newOuts)
+           }
+    }
 
-   def nextOut(id: String) = deltas.withFilter {
-     case (TopoLink(`id`, _, _, _), _) => true
-     case _ => false
-   }.map { case (TopoLink(_, id, _, _), delta) => (id, delta) }
+    /** calculate the new length of the followed path */
+    def follow(dx1: Double, dy1: Double)(t2: (String, Delta)) = {
+      val (id, Delta(dx2, dy2)) = t2
+      (id, Delta(dx1 + dx2, dy1 + dy2))
+    }
 
-   next(nextIn(startId), nextOut(startId))
- }
+    def nextIn(id: String) = deltas.withFilter {
+      case (TopoLink(_, `id`, _, _), _) => true
+      case _ => false
+    }.map { case (TopoLink(id, _, _, _), delta) => (id, delta) }
+
+    def nextOut(id: String) = deltas.withFilter {
+      case (TopoLink(`id`, _, _, _), _) => true
+      case _ => false
+    }.map { case (TopoLink(_, id, _, _), delta) => (id, delta) }
+
+    next(nextIn(startId), nextOut(startId))
+  }
 }
