@@ -25,7 +25,7 @@ object TileVector {
             ): Set[(Double, Double)] = {
       val inIds = ins.keySet
       val outIds = outs.keySet
-      //print(s"{$ins;$outs}")
+      //print(s"{$inIds;$outIds}")
       //print(s"${ inIds.size },${ outIds.size }; ")
 
       /** sum of two followed paths (once they met each other) */
@@ -49,8 +49,10 @@ object TileVector {
                  nextIn(id).map(follow(dx, dy))
                }
 
-             def inIns(location: (String, Delta)) = inIds.toSeq.contains(location._1) ||
-               newIns.keys.toSeq.contains(location._1)
+             def inIns(location: (String, Delta)) = {
+               val id = location._1
+               inIds.toSeq.contains(id) || newIns.keys.toSeq.contains(id)
+             }
 
              val newOuts = outs
                .withFilter(!inIns(_))
@@ -58,11 +60,11 @@ object TileVector {
                  val (id, Delta(dx, dy)) = t
                  nextOut(id).map(follow(dx, dy))
                }
-             if (ins.map(t => Math.abs(t._2.dx)).max > 5) {
-               println("escaping from likely never ending loop")
-               return Set.empty
+             if (ins.map(t => Math.abs(t._2.dx)).max > 3) {
+               println(s"escaping from possible infinite loop: in($inIds${ newIns.keys }) out($outIds${ newOuts.keys })")
+               inIds.withFilter(outIds.contains).map(sum)
              }
-             next(ins.filter(inOuts) ++ newIns, outs.filter(inIns) ++ newOuts)
+             else next(ins.filter(inOuts) ++ newIns, outs.filter(inIns) ++ newOuts)
            }
     }
 
