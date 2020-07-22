@@ -18,7 +18,7 @@ package dibl.fte
 import dibl.fte.Delta.acc
 import org.ejml.simple.SimpleMatrix
 
-import scala.util.{ Failure, Try }
+import scala.util.{ Failure, Success, Try }
 
 case class Delta(dx: Double, dy: Double) {
   private val rX: Int = (dx * acc).toInt
@@ -44,12 +44,9 @@ object Delta {
 
     val cols = nullSpace.numCols()
     val rows = nullSpace.numRows()
-    if (cols != 2 && rows != topoLinks.size) {
-      val msg = s"nullSpace dimensions ($rows,$cols) expected (${ topoLinks.size },2)"
-      println(msg)
-      Failure(new Exception(msg))
-    }
-    else Try((0 until rows)
+    if (cols != 2 || rows != topoLinks.size)
+      Failure(new Exception(s"nullSpace dimensions are ($rows,$cols) expected (${ topoLinks.size },2)"))
+    else Success((0 until rows)
       .map(i => topoLinks(i) -> Delta(nullSpace.get(i, 0), nullSpace.get(i, 1)))
       .toMap
     )

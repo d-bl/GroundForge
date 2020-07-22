@@ -48,6 +48,12 @@ case class TopoLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean,
       ))
   }
 
+  /**
+    * Deserializes a sequence of TopoLinks
+    *
+    * @param links
+    * @return applying mkString(";") returns links
+    */
   @JSExport
   def fromString(links: String): Seq[TopoLink] = Try {
     links
