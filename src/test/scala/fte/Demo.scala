@@ -56,6 +56,7 @@ object Demo {
       (stitch, query.replaceAll("[&=].*", "")) match {
         case (`drosteDiagram`, "whiting") => // skip: too large
         case _ =>
+          println
           val qName = query.replaceAll("&.*", "").replaceAll("[^a-zA-Z0-9]+", "-")
           val tail = if (stitch == pairDiagram) "pairs"
                      else if (stitch == drosteDiagram) "droste"
@@ -68,7 +69,7 @@ object Demo {
                            else TopoLink.fromThreadDiagram(query)
           println(TopoLink.asString(links)) // to be placed in text area of HTML page
           writeSvg(fileName, links)
-          println(s"Elapsed time: ${ (System.nanoTime() - t0) * 0.000000001 }sec for $query")
+          println(s"${fileName.replaceAll(".*/","")} Elapsed time: ${ (System.nanoTime() - t0) * 0.000000001 }sec for $query")
       }
     }
   }

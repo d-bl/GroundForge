@@ -22,15 +22,26 @@ import dibl.{ Diagram, LinkProps, NewPairDiagram, NodeProps, PairDiagram, Thread
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 import scala.util.Try
 
-case class TopoLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean, isLeftOfSource: Boolean) {
+case class TopoLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean, isLeftOfSource: Boolean, weight: Double = 1) {
   val isRightOfTarget: Boolean = !isLeftOfTarget
   val isRightOfSource: Boolean = !isLeftOfSource
 
-  override def toString: String = s"$sourceId,$targetId,$isLeftOfTarget,$isLeftOfSource"
+  override def toString: String = s"$sourceId,$targetId,$isLeftOfTarget,$isLeftOfSource,$weight"
     .replaceAll("(rue|alse)", "")
 }
 
 @JSExportTopLevel("TopoLink") object TopoLink {
+
+  @JSExport
+  def changeWeight(id: String, change: Double, links: String): String = {
+    val Array(startId, endId) = id.split("-")
+    asString(fromString(links).map {
+      case link @ (TopoLink(`startId`, `endId`, _, _, _)) =>
+        link.copy(weight = if (change == 1) 1
+                           else link.weight * change
+        )
+    })
+  }
 
   @JSExport
   def asString(links: Seq[TopoLink]): String = {
@@ -52,7 +63,7 @@ case class TopoLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean,
     * Deserializes a sequence of TopoLinks
     *
     * @param links
-    * @return applying mkString(";") returns links
+    * @return TopoLink.asString(return-value) returns links
     */
   @JSExport
   def fromString(links: String): Seq[TopoLink] = Try {

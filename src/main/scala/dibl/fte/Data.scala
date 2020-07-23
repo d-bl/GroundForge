@@ -28,7 +28,7 @@ object Data {
       left ++ right
     }
     val cells2 = nodes.map { case (id, links) =>
-      links.map(link => cell(link, value(id, link))) // TODO value * weight
+      links.map(link => cell(link, value(id, link) * link.weight))
     }.toSeq
     (cells1 ++ cells2)
       .map { cells => // TODO functional approach?
