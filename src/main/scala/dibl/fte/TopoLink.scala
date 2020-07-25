@@ -22,12 +22,17 @@ import dibl.{ Diagram, LinkProps, NewPairDiagram, NodeProps, PairDiagram, Thread
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 import scala.util.Try
 
-case class TopoLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean, isLeftOfSource: Boolean, weight: Double = 1) {
+case class TopoLink(sourceId: String, targetId: String, isLeftOfSource: Boolean, isLeftOfTarget: Boolean, weight: Double = 1) {
   val isRightOfTarget: Boolean = !isLeftOfTarget
   val isRightOfSource: Boolean = !isLeftOfSource
 
-  override def toString: String = s"$sourceId,$targetId,$isLeftOfTarget,$isLeftOfSource,$weight"
-    .replaceAll("(rue|alse)", "")
+  override def toString: String = {
+    val out = if (isLeftOfSource) "lo"
+              else "ro"
+    val in = if (isLeftOfTarget) "li"
+             else "ri"
+    s"$sourceId,$targetId,$out,$in,$weight"
+  }
 }
 
 @JSExportTopLevel("TopoLink") object TopoLink {
@@ -36,17 +41,15 @@ case class TopoLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean,
   def changeWeight(id: String, change: Double, links: String): String = {
     val Array(startId, endId) = id.split("-")
     asString(fromString(links).map {
-      case link @ (TopoLink(`startId`, `endId`, _, _, _)) =>
+      case link @ TopoLink(`startId`, `endId`, _, _, _) =>
         link.copy(weight = if (change == 1) 1
-                           else link.weight * change
-        )
+                           else link.weight * change)
+      case link => link
     })
   }
 
   @JSExport
-  def asString(links: Seq[TopoLink]): String = {
-    links.mkString(";")
-  }
+  def asString(links: Seq[TopoLink]): String = links.mkString(";")
 
   @JSExport
   def fromUrlQuery(urlQuery: String): Seq[TopoLink] = {
@@ -62,20 +65,32 @@ case class TopoLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean,
   /**
     * Deserializes a sequence of TopoLinks
     *
-    * @param links
-    * @return TopoLink.asString(return-value) returns links
+    * @return TopoLink.asString(return-value) returns links,
+    *         omitted weight values however will show up as 1.0
     */
-  @JSExport
-  def fromString(links: String): Seq[TopoLink] = Try {
+  def fromString(links: String): Seq[TopoLink] = {
+    def valid(out: String, in: String) = {
+      out.matches("[lr]o") || in.matches("[lr]i")
+    }
+
     links
       .replaceAll("""\s+""", "")
       .split(";")
       .toSeq
       .map { link =>
-        val s = link.split(",")
-        TopoLink(s(0), s(1), s(2) == "t", s(3) == "t")
+        link.split(",") match {
+          case Array(src, target, out, in)
+            if valid(out, in) =>
+            TopoLink(src, target, out == "lo", in == "li")
+          case Array(src, target, out, in, weight)
+            if valid(out, in) &&
+              weight.matches("[0-9]+(.[0-9]+)?") =>
+            TopoLink(src, target, out == "lo", in == "li", weight.toDouble)
+          case _ =>
+            return Seq.empty
+        }
       }
-  }.getOrElse(Seq.empty)
+  }
 
   /**
     * @param urlQuery parameters for: https://d-bl.github.io/GroundForge/tiles?
@@ -147,7 +162,7 @@ case class TopoLink(sourceId: String, targetId: String, isLeftOfTarget: Boolean,
               (implicit diagram: Diagram): Seq[TopoLink] = {
     implicit val topoLinks: Seq[LinkProps] = linksInOneTile
     linksInOneTile.map { link =>
-      TopoLink(sourceOf(link).id, targetOf(link).id, isLeftOfTarget(link), isLeftOfSource(link))
+      TopoLink(sourceOf(link).id, targetOf(link).id, isLeftOfSource(link), isLeftOfTarget(link))
     }
   }
 

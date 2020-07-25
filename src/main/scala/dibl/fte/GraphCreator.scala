@@ -15,26 +15,16 @@
 */
 package dibl.fte
 
-import scala.util.{ Failure, Try }
+import scala.util.Try
 
 object GraphCreator {
 
   def graphFrom(topoLinks: Seq[TopoLink]): Try[String] = {
-
-    val duplicates = topoLinks.diff(topoLinks.distinct)
-    if (duplicates.nonEmpty)
-      return Failure(new IllegalArgumentException(s"Duplicated links: $duplicates"))
-    if (topoLinks.exists(l => l.sourceId == l.targetId))
-      return Failure(new IllegalArgumentException(s"Links with same start as end: ${topoLinks.mkString(";")}"))
-
-    val data = Data(Face(topoLinks), ClockWise(topoLinks), topoLinks)
-    if (topoLinks.size < 19) println("DATA " + data.map(_.map(_.toInt).mkString("[",",","]")).mkString("[",",","]"))
-
-    Delta(data, topoLinks).map { deltas =>
-      val startId = topoLinks.head.sourceId
-      val nodes = Locations.create(Map(startId -> (0, 0)), deltas)
-      val vectors = TileVector(startId, deltas).toSeq
-      SvgPricking(nodes, deltas, vectors)
-    }
+    for {
+      data <- Data(topoLinks)
+      _ = if (topoLinks.size < 19) println("DATA " + data.map(_.map(_.toInt).mkString("[", ",", "]")).mkString("[", ",", "]"))
+      deltas <- Delta(data, topoLinks)
+      svg = SvgPricking(topoLinks, deltas)
+    } yield svg
   }
 }

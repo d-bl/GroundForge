@@ -13,9 +13,14 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
-package dibl
+package dibl.fte
 
-package object fte {
-  type Locations = Map[String, (Double, Double)]
-  type Deltas = Map[TopoLink, Delta]
+import org.scalatest.{ FlatSpec, Matchers }
+
+class TopoLinkSpec extends FlatSpec with Matchers {
+
+  "changeWeight" should "multiply the value" in {
+    TopoLink.changeWeight("d4-a1", 0.9, "b4,a1,lo,ri,1.0;d4,a1,lo,li,0.9") shouldBe
+      "b4,a1,lo,ri,1.0;d4,a1,lo,li,0.81"
+  }
 }

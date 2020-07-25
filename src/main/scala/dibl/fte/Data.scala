@@ -15,10 +15,30 @@
 */
 package dibl.fte
 
-object Data {
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
+import scala.util.{ Failure, Success, Try }
+
+@JSExportTopLevel("TopoLink") object Data {
   case class Cell(col: Int, value: Double)
 
-  def apply(faces: Seq[Face], nodes: Map[String, Seq[TopoLink]], links: Seq[TopoLink]): Seq[Seq[Double]] = {
+  @JSExport
+  def create(links: Seq[TopoLink]): Seq[Seq[Double]] = {
+    apply(links).recoverWith {case t =>
+      t.printStackTrace()
+      Failure(t)
+    }.getOrElse(Seq[Seq[Double]]())
+  }
+
+  def apply(links: Seq[TopoLink]): Try[Seq[Seq[Double]]] = {
+
+    val duplicates = links.diff(links.distinct)
+    if (duplicates.nonEmpty)
+      return Failure(new IllegalArgumentException(s"Duplicated links: $duplicates"))
+    if (links.exists(l => l.sourceId == l.targetId))
+      return Failure(new IllegalArgumentException(s"Links with same start as end: ${ links.mkString(";") }"))
+
+    val faces: Seq[Face] = Face(links)
+    val nodes: Map[String, Seq[TopoLink]] = ClockWise(links)
 
     def cell(link: TopoLink, value: Double) = Cell(links.indexOf(link), value)
 
@@ -30,14 +50,14 @@ object Data {
     val cells2 = nodes.map { case (id, links) =>
       links.map(link => cell(link, value(id, link) * link.weight))
     }.toSeq
-    (cells1 ++ cells2)
+    Success((cells1 ++ cells2)
       .map { cells => // TODO functional approach?
         val row = new Array[Double](links.size)
         cells.foreach(cell =>
           row(cell.col) = cell.value
         )
         row.toSeq
-      }
+      })
   }
 
   private def value(nodeId: String, link: TopoLink) = {

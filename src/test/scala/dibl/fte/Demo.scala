@@ -13,7 +13,7 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
-package fte
+package dibl.fte
 
 import dibl.fte.{ GraphCreator, TopoLink }
 
@@ -69,7 +69,7 @@ object Demo {
                            else TopoLink.fromThreadDiagram(query)
           println(TopoLink.asString(links)) // to be placed in text area of HTML page
           writeSvg(fileName, links)
-          println(s"${fileName.replaceAll(".*/","")} Elapsed time: ${ (System.nanoTime() - t0) * 0.000000001 }sec for $query")
+          println(s"${fileName.replaceAll(".*/","")} Elapsed time: ${ (System.nanoTime() - t0) * 0.000000001 } sec")
       }
     }
   }
