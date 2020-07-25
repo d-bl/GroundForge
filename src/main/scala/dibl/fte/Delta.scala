@@ -29,8 +29,6 @@ case class Delta(dx: Double, dy: Double) {
 object Delta {
   private val acc = 100000d
 
-  // TODO javascript interface to nanolib
-
   /** version for a java environment */
   def apply(data: Seq[Seq[Double]],
             topoLinks: Seq[TopoLink],
