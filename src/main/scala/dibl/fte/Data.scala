@@ -18,7 +18,7 @@ package dibl.fte
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 import scala.util.{ Failure, Success, Try }
 
-@JSExportTopLevel("TopoLink") object Data {
+@JSExportTopLevel("Data") object Data {
   case class Cell(col: Int, value: Double)
 
   @JSExport
