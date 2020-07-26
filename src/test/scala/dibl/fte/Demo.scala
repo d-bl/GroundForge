@@ -27,8 +27,8 @@ object Demo {
       listFiles().foreach(_.delete())
     }
     // API intended for the content of a text area in an HTML page
-    writeSvg(s"$dir/topo-pinwheel-ct.svg", TopoLink.fromString(
-      "b41,a10,f,t;d42,a10,t,f;a10,a11,f,t;d42,a11,t,t;a10,a12,t,f;b41,a12,f,f;b21,a30,f,t;d22,a30,t,f;a30,a31,f,t;d22,a31,t,t;a30,a32,t,f;b21,a32,f,f;a12,b10,t,f;b42,b10,f,t;a12,b11,t,t;b10,b11,f,t;b10,b12,t,f;b42,b12,f,f;b11,b20,t,f;c11,b20,f,t;b11,b21,t,t;b20,b21,f,t;b20,b22,t,f;c11,b22,f,f;a32,b40,t,f;c31,b40,f,t;a32,b41,t,t;b40,b41,f,t;b40,b42,t,f;c31,b42,f,f;b12,c10,t,f;d41,c10,f,t;b12,c11,t,t;c10,c11,f,t;c10,c12,t,f;d41,c12,f,f;b22,c30,t,f;d31,c30,f,t;b22,c31,t,t;c30,c31,f,t;c30,c32,t,f;d31,c32,f,f;a11,d20,f,t;c12,d20,t,f;c12,d21,t,t;d20,d21,f,t;a11,d22,f,f;d20,d22,t,f;a31,d30,f,t;d21,d30,t,f;d21,d31,t,t;d30,d31,f,t;a31,d32,f,f;d30,d32,t,f;c32,d40,t,f;d32,d40,f,t;c32,d41,t,t;d40,d41,f,t;d32,d42,f,f;d40,d42,t,f"
+    writeSvg(s"$dir/topo-pinwheel-pairs.svg", TopoLink.fromString(
+      "b4,a1,lo,ri,1;d4,a1,lo,li,1;b2,a3,lo,ri,0.8;d2,a3,lo,li,1;a1,b1,lo,li,1;b4,b1,ro,ri,1;b1,b2,lo,li,1;c1,b2,lo,ri,1;a3,b4,lo,li,1;c3,b4,lo,ri,0.8;b1,c1,ro,li,1;d4,c1,ro,ri,1;b2,c3,ro,li,1;d3,c3,lo,ri,1;a1,d2,ro,ri,1;c1,d2,ro,li,1;a3,d3,ro,ri,1;d2,d3,ro,li,1;c3,d4,ro,li,1;d3,d4,ro,ri,1"
     ))
 
     // API intended for a direkt bookmark-able link

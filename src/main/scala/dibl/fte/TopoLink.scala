@@ -68,6 +68,7 @@ case class TopoLink(sourceId: String, targetId: String, isLeftOfSource: Boolean,
     * @return TopoLink.asString(return-value) returns links,
     *         omitted weight values however will show up as 1.0
     */
+  @JSExport
   def fromString(links: String): Seq[TopoLink] = {
     def valid(out: String, in: String) = {
       out.matches("[lr]o") || in.matches("[lr]i")

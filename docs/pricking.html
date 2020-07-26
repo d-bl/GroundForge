@@ -9,6 +9,8 @@
     <style>
         #weight { width:4em; }
         #linkdefs { max-width: 100%; width: 60em; }
+        #diagram { float: left; margin-right: 2em; }
+        ul { padding-left: 2em; }
     </style>
 
     <link rel="apple-touch-icon" sizes="120x120" href="/GroundForge/favicon/apple-touch-icon.png">
@@ -23,34 +25,8 @@
 </head>
 <body onload="load()">
 <h1>Under construction: diagrams without distortion.</h1>
-<ul>
-    <li>Select diagram type:
-        <a href="?type=pair&">pair</a>,<strike>
-        <a href="?type=thread&">thread</a>,
-        <a href="?type=droste&">droste</a></strike>
-    </li>
-    <li>Select/create/customize a <a href="#tiles" target="_blank">pattern</a>.
-        For now: no head side, no foot side, only checker tiles
-        (in other words: no brick-layout or overlapping tiles),
-        patch size must contain at least 3x3 tiles,
-        more than two non-dashes in the matrix.
-    </li>
-    <li>Click (on that other page!) the button <img src="images/link.png">
-    </li>
-    <li>Copy the address bar part after the question mark.</li>
-    <li>Paste on the address bar of this page
-        after <code>?type=...&</code></li>
-    <li>Instead you can also type/paste your own definition in the text area.</li>
-    <li>Currently
-        <strike>the selected pattern may or may not render here, large patterns may take a while</strike>
-        the pattern is hard wired.
-    </li>
-    <li>
-        <label for="weight">Click a black line to decrease (<1), increase (>1) or reset (1) its length</label>
-        <input id="weight" type="number" min="0.1" max="1.9" step="0.1" value="1">
-    </li>
-</ul>
 <textarea id="linkdefs" ></textarea>
+<br>
 <div id="diagram">
     <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -205,6 +181,36 @@
         <use transform="translate(-133.745,-1754.5710000000001)" xlink:href="#tile" style="opacity:0.65"/>
         <use transform="translate(-189.25599999999997,-1841.9360000000001)" xlink:href="#tile" style="opacity:0.65"/>
     </svg>
+</div>
+<div>
+<ul>
+    <li>Select diagram type:
+        <a href="?type=pair&">pair</a>,<strike>
+        <a href="?type=thread&">thread</a>,
+        <a href="?type=droste&">droste</a></strike>
+    </li>
+    <li>Select/create/customize a <a href="tilesde" target="_blank">pattern</a>.
+        For now: no head side, no foot side, only checker tiles
+        (in other words: no brick-layout or overlapping tiles),
+        patch size must contain at least 3x3 tiles,
+        more than two non-dashes in the matrix.
+    </li>
+    <li>Click (on that other page!) the button <img src="images/link.png">
+    </li>
+    <li>Copy the address bar part after the question mark.</li>
+    <li>Paste on the address bar of this page
+        after <code>?type=...&</code></li>
+    <li>Instead you can also type/paste your own definition in the text area.</li>
+    <li>
+        <label for="weight">Click a black line to decrease (<1), increase (>1) or reset (1) its length</label>
+        <input id="weight" type="number" min="0.1" max="1.9" step="0.1" value="1">
+    </li>
+    <li>
+        If the pattern doesn't repeat properly, then
+        <a download="pricking.svg" onfocus="setDownloadContent(this)" onblur="this.href='?#download'" href="?#download" title="download"
+        >download</a> to repeat manually with an editor of your choice.
+    </li>
+</ul>
 </div>
 </body>
 </html>

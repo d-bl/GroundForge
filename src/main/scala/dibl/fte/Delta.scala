@@ -18,7 +18,7 @@ package dibl.fte
 import dibl.fte.Delta.acc
 import org.ejml.simple.SimpleMatrix
 
-import scala.util.{ Failure, Success, Try }
+import scala.util.{Failure, Success, Try}
 
 case class Delta(dx: Double, dy: Double) {
   private val rX: Int = (dx * acc).toInt
@@ -29,7 +29,7 @@ case class Delta(dx: Double, dy: Double) {
 object Delta {
   private val acc = 100000d
 
-  /** version for a java environment */
+  /** for a java environment */
   def apply(data: Seq[Seq[Double]],
             topoLinks: Seq[TopoLink],
            ): Try[Map[TopoLink, Delta]] = {

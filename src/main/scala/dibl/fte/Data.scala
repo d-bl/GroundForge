@@ -15,18 +15,22 @@
 */
 package dibl.fte
 
-import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
-import scala.util.{ Failure, Success, Try }
+import scala.scalajs.js
+import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
+import scala.util.{Failure, Success, Try}
+import js.JSConverters._
 
 @JSExportTopLevel("Data") object Data {
   case class Cell(col: Int, value: Double)
 
   @JSExport
-  def create(links: Seq[TopoLink]): Seq[Seq[Double]] = {
-    apply(links).recoverWith {case t =>
-      t.printStackTrace()
-      Failure(t)
-    }.getOrElse(Seq[Seq[Double]]())
+  def create(links: Seq[TopoLink]): js.Array[js.Array[Double]] = {
+    apply(links)
+      .map(_.map(_.toJSArray).toJSArray)
+      .recoverWith { case t =>
+        t.printStackTrace()
+        Failure(t)
+      }.getOrElse(js.Array[js.Array[Double]]())
   }
 
   def apply(links: Seq[TopoLink]): Try[Seq[Seq[Double]]] = {
