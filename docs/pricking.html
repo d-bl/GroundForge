@@ -196,25 +196,28 @@
     </ul>
     <p>Examples of links:
         <a href="?pinwheel-pairs&patchWidth=12&patchHeight=8&tile=586-,-4-5,5-21,-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4&">pinwheel</a>,
-        <a href="?F14_P193-threads&tileStitch=tc&patchWidth=24&patchHeight=28&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14">G.W. F14</a>.
+        <a href="?Gertrude-Whiting-F14_P193-threads&tileStitch=tc&patchWidth=24&patchHeight=28&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14">G.W. F14</a>.
     </p>
     <ul>
         <li>Have patience with large patterns,
             you may have to tell your browser to continue the script.
         </li>
         <li>
-            If the pattern doesn't repeat properly, then
             <a download="pricking.svg" onfocus="setDownloadContent(this)" onblur="this.href='?#download'" href="?#download" title="download"
-            >download</a> to repeat manually with an editor of your choice.
+            >Download</a> the diagram and import into an editor of your choice.
+            For example to fix manually how failing patterns repeat
+            or add arrows heads to the line segments to identify a working order.
         </li>
         <li>
             <label for="weight">Click one of the black lines to make the connection:</label>
             <input id="weight" type="number" min="0.1" max="1.9" step="0.1" value="1">
             <label for="weight">tighter (>1), looser (<1) or reset (1)</label>
         </li>
-        <li>To save these changes: copy the content of the text area and save it in some document.
-            Replace the address bar part after the question mark with the saved value.
-            <textarea id="linkdefs" ></textarea>
+        <li>Save the link to the <a id="customlink" href="#">customized pattern</a>.
+            Note that elements of this link pop up when you hover over a black line.
+            Advanced users may use this information to add/drop stitches.
+            Used mnemonics: <em>left/right-out</em> and <em>left/right-in</em>,
+            "out" meaning leaving the preceding stitch, "in" meaning entering the next stitch.
         </li>
     </ul>
 </div>
