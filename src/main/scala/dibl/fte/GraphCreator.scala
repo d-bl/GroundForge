@@ -24,7 +24,6 @@ object GraphCreator {
       data <- Data(topoLinks)
       _ = if (topoLinks.size < 19) println("DATA " + data.map(_.map(_.toInt).mkString("[", ",", "]")).mkString("[", ",", "]"))
       deltas <- Delta(data, topoLinks)
-      svg = SvgPricking(topoLinks, deltas)
-    } yield svg
+    } yield SvgPricking(deltas)
   }
 }

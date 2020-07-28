@@ -56,10 +56,12 @@ case class TopoLink(sourceId: String, targetId: String, isLeftOfSource: Boolean,
     urlQuery.split("&")
       .find(_.matches("topo=.*"))
       .map(s => fromString(s.replace("topo=", "")))
-      .getOrElse(getTopoLinks(
-        NewPairDiagram.create(TilesConfig(urlQuery)),
-        TilesConfig(urlQuery)
-      ))
+      .getOrElse {
+        val pairDiagram = NewPairDiagram.create(TilesConfig(urlQuery))
+        if (!urlQuery.matches(".*=[ctlr]+(&.*)?"))
+          getTopoLinks(pairDiagram, TilesConfig(urlQuery))
+        else fromThreadDiagram(urlQuery)
+      }
   }
 
   /**
@@ -68,7 +70,6 @@ case class TopoLink(sourceId: String, targetId: String, isLeftOfSource: Boolean,
     * @return TopoLink.asString(return-value) returns links,
     *         omitted weight values however will show up as 1.0
     */
-  @JSExport
   def fromString(links: String): Seq[TopoLink] = {
     def valid(out: String, in: String) = {
       out.matches("[lr]o") || in.matches("[lr]i")

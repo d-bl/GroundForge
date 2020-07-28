@@ -5,12 +5,11 @@
     <title lang="en">GroundForge: Diagrams for Bobbin Lace</title>
     <script src="js/pricking.js"></script>
     <script src="js/GroundForge-opt.js"></script>
-    <script type="application/x-javascript" src="http://mlweb.loria.fr/lalolib.js "></script>
+    <script type="application/x-javascript" src="js/lalolib.js "></script>
     <style>
         #weight { width:4em; }
-        #linkdefs { max-width: 100%; width: 60em; }
+        #linkdefs { max-width: 100%; width: 50em; height: 5em; }
         #diagram { float: left; margin-right: 2em; }
-        ul { padding-left: 2em; }
     </style>
 
     <link rel="apple-touch-icon" sizes="120x120" href="/GroundForge/favicon/apple-touch-icon.png">
@@ -25,8 +24,6 @@
 </head>
 <body onload="load()">
 <h1>Under construction: diagrams without distortion.</h1>
-<textarea id="linkdefs" ></textarea>
-<br>
 <div id="diagram">
     <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -183,34 +180,43 @@
     </svg>
 </div>
 <div>
-<ul>
-    <li>Select diagram type:
-        <a href="?type=pair&">pair</a>,<strike>
-        <a href="?type=thread&">thread</a>,
-        <a href="?type=droste&">droste</a></strike>
-    </li>
-    <li>Select/create/customize a <a href="tilesde" target="_blank">pattern</a>.
-        For now: no head side, no foot side, only checker tiles
-        (in other words: no brick-layout or overlapping tiles),
-        patch size must contain at least 3x3 tiles,
-        more than two non-dashes in the matrix.
-    </li>
-    <li>Click (on that other page!) the button <img src="images/link.png">
-    </li>
-    <li>Copy the address bar part after the question mark.</li>
-    <li>Paste on the address bar of this page
-        after <code>?type=...&</code></li>
-    <li>Instead you can also type/paste your own definition in the text area.</li>
-    <li>
-        <label for="weight">Click a black line to decrease (<1), increase (>1) or reset (1) its length</label>
-        <input id="weight" type="number" min="0.1" max="1.9" step="0.1" value="1">
-    </li>
-    <li>
-        If the pattern doesn't repeat properly, then
-        <a download="pricking.svg" onfocus="setDownloadContent(this)" onblur="this.href='?#download'" href="?#download" title="download"
-        >download</a> to repeat manually with an editor of your choice.
-    </li>
-</ul>
+    <p>As far as other pages don't have links to this page:</p>
+    <ul>
+        <li>Select/create/customize a <a href="tilesde" target="_blank">pattern</a>.
+            For now: no head side, no foot side, only checker tiles
+            (in other words: no brick-layout or overlapping tiles),
+            patch size must be 3 tiles wide and 2 tiles high.
+            Still some combinations of patterns and stitches don't yet work.
+        </li>
+        <li>Click (on that other page!) the button <img src="images/link.png">
+        </li>
+        <li>Copy the address bar part after the question mark.</li>
+        <li>Paste on the address bar of this page after the question mark.</li>
+        <li>Drop stitch/droste definitions to get the pair diagram.</li>
+    </ul>
+    <p>Examples of links:
+        <a href="?pinwheel-pairs&patchWidth=12&patchHeight=8&tile=586-,-4-5,5-21,-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4&">pinwheel</a>,
+        <a href="?F14_P193-threads&tileStitch=tc&patchWidth=24&patchHeight=28&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14">G.W. F14</a>.
+    </p>
+    <ul>
+        <li>Have patience with large patterns,
+            you may have to tell your browser to continue the script.
+        </li>
+        <li>
+            If the pattern doesn't repeat properly, then
+            <a download="pricking.svg" onfocus="setDownloadContent(this)" onblur="this.href='?#download'" href="?#download" title="download"
+            >download</a> to repeat manually with an editor of your choice.
+        </li>
+        <li>
+            <label for="weight">Click one of the black lines to make the connection:</label>
+            <input id="weight" type="number" min="0.1" max="1.9" step="0.1" value="1">
+            <label for="weight">tighter (>1), looser (<1) or reset (1)</label>
+        </li>
+        <li>To save these changes: copy the content of the text area and save it in some document.
+            Replace the address bar part after the question mark with the saved value.
+            <textarea id="linkdefs" ></textarea>
+        </li>
+    </ul>
 </div>
 </body>
 </html>

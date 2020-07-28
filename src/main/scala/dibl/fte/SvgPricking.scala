@@ -32,12 +32,12 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
       val deltas = (0 until rows)
         .map(i => topoLinks(i) -> Delta(nullspace(i).head, nullspace(i)(1)))
         .toMap
-      apply(topoLinks, deltas)
+      apply(deltas)
     }
   }
 
-  def apply(topoLinks: Seq[TopoLink], deltas: Map[TopoLink, Delta]): String = {
-    // TODO first argument is deltas.keys
+  def apply(deltas: Map[TopoLink, Delta]): String = {
+    val topoLinks = deltas.keys
     val startId = topoLinks.head.sourceId
     val nodes = Locations.create(Map(startId -> (0, 0)), deltas)
     val tileVectors = TileVector(startId, deltas).toSeq
