@@ -9,7 +9,9 @@
     <style>
         #weight { width:4em; }
         #linkdefs { max-width: 100%; width: 50em; height: 5em; }
-        #diagram { float: left; margin-right: 2em; }
+        div {display: inline-block; vertical-align: top; }
+        li div { color: #777 }
+        #text { max-width: 43em; margin-left: 1em; }
     </style>
 
     <link rel="apple-touch-icon" sizes="120x120" href="/GroundForge/favicon/apple-touch-icon.png">
@@ -179,10 +181,11 @@
         <use transform="translate(-189.25599999999997,-1841.9360000000001)" xlink:href="#tile" style="opacity:0.65"/>
     </svg>
 </div>
-<div>
+<div id="text">
     <p>As far as other pages don't have links to this page:</p>
     <ul>
         <li>Select/create/customize a <a href="tilesde" target="_blank">pattern</a>.
+            <br>
             For now: no head side, no foot side, only checker tiles
             (in other words: no brick-layout or overlapping tiles),
             patch size must be 3 tiles wide and 2 tiles high.
@@ -192,11 +195,14 @@
         </li>
         <li>Copy the address bar part after the question mark.</li>
         <li>Paste on the address bar of this page after the question mark.</li>
-        <li>Drop stitch/droste definitions to get the pair diagram.</li>
+        <li>Drop stitch/droste parameters to get the pair diagram.</li>
     </ul>
     <p>Examples of links:
         <a href="?pinwheel-pairs&patchWidth=12&patchHeight=8&tile=586-,-4-5,5-21,-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4&">pinwheel</a>,
         <a href="?Gertrude-Whiting-F14_P193-threads&tileStitch=tc&patchWidth=24&patchHeight=28&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14">G.W. F14</a>.
+        <br><em>Note: currently only a hard coded diagram with fixed lengths until the Lorraine university fixes this
+        <a href="https://github.com/lauerfab/MLweb/issues/12"
+        >bug</a>.</em>
     </p>
     <ul>
         <li>Have patience with large patterns,
@@ -205,20 +211,53 @@
         <li>
             <a download="pricking.svg" onfocus="setDownloadContent(this)" onblur="this.href='?#download'" href="?#download" title="download"
             >Download</a> the diagram and import into an editor of your choice.
-            For example to fix manually how failing patterns repeat
-            or add arrows heads to the line segments to identify a working order.
+            <br>
+            For example to
+            add arrows heads to the line segments to identify a working order
+            <em>or fix manually how currently failing patterns repeat</em>.
         </li>
-        <li>
-            <label for="weight">Click one of the black lines to make the connection:</label>
-            <input id="weight" type="number" min="0.1" max="1.9" step="0.1" value="1">
-            <label for="weight">tighter (>1), looser (<1) or reset (1)</label>
+        <li>Edit modes
+            (note: <a href="https://caniuse.com/#feat=input-color">browser support</a> for color code):
+            <br>
+            <input type="radio" name="edit-mode" id="em-strength" checked>
+            <label for="em-strength">
+                <a title="inverse of the legth">
+                <label for="weight">Strength</label>
+                <input id="weight" type="number" min="0.1" max="1.9" step="0.1" value="1">
+                </a>
+                <label for="weight">tighter (>1), looser (<1) or reset (1).
+                Click black line segments to apply.</label>
+            </label>
+            <br>
+            <div>
+            <input type="radio" name="edit-mode" id="em-stitch" disabled>
+            <label for="em-stitch">
+                <label for="color">Color code: </label><input type="color" id="color" name="color">
+                <label for="stitch">Stitch definition: </label><input type="text" id="stitch" name="stitch" value="ctct" list="stitches">
+                <datalist id="stitches">
+                    <option value="ct">
+                    <option value="tc">
+                    <option value="ctc">
+                    <option value="tctc">
+                    <option value="ctct">
+                    <option value="ctctc">
+                </datalist>
+                Click intersection to apply.
+            </label>
+            <br>
+            <input type="radio" name="edit-mode" id="em-drop" disabled>
+            <label for="em-drop">Remove stitches: click intersection.</label>
+            <br>
+            <input type="radio" name="edit-mode" id="em-add" disabled>
+            <label for="em-add">Add stitches: (possible implementation) drag the center of a black line segment to another.</label>
+            <br>
+                Note that elements of the "customized pattern" link pop up when you hover over a black line.
+                For now, advanced users may use this information to add/drop stitches.
+                Used mnemonics: <em>left/right-out</em> and <em>left/right-in</em>,
+                "out" meaning leaving the preceding stitch, "in" meaning entering the next stitch.
+            </div>
         </li>
-        <li>Save the link to the <a id="customlink" href="#">customized pattern</a>.
-            Note that elements of this link pop up when you hover over a black line.
-            Advanced users may use this information to add/drop stitches.
-            Used mnemonics: <em>left/right-out</em> and <em>left/right-in</em>,
-            "out" meaning leaving the preceding stitch, "in" meaning entering the next stitch.
-        </li>
+        <li>Save the link to a <a id="customlink" href="#">customized pattern</a>.</li>
     </ul>
 </div>
 </body>
