@@ -1,4 +1,10 @@
-function changeWeight(linkElement) {
+function clickedDot(linkElement) {
+    var dotId = linkElement.getElementsByTagName("circle")[0].attributes["id"].value
+    var dot = document.getElementById(dotId)
+    dot.getElementsByTagName("title")[0].innerHTML = `${dotId} : stitch definition not yet implemented`
+    dot.style = "fill:rgb(0,0,225);opacity:0.65"
+}
+function clickedLink(linkElement) {
     var lineId = linkElement.getElementsByTagName("line")[0].attributes["id"].value
     var link = document.getElementById("customlink")
     var weight = 1.0 * document.getElementById("weight").value
