@@ -12,6 +12,8 @@
         div {display: inline-block; vertical-align: top; }
         li div { color: #777 }
         #text { max-width: 43em; margin-left: 1em; }
+        strong { font-size: large; }
+        ul { padding-left: 1.5em; }
     </style>
 
     <link rel="apple-touch-icon" sizes="120x120" href="/GroundForge/favicon/apple-touch-icon.png">
@@ -182,33 +184,8 @@
     </svg>
 </div>
 <div id="text">
-    <p>As far as other pages don't have links to this page:</p>
     <ul>
-        <li>Select/create/customize a <a href="tilesde" target="_blank">pattern</a>.
-            <br>
-            For now: no head side, no foot side, only checker tiles
-            (in other words: no brick-layout or overlapping tiles),
-            patch size must be 3 tiles wide and 2 tiles high.
-            Still some combinations of patterns and stitches don't yet work.
-        </li>
-        <li>Click (on that other page!) the button <img src="images/link.png">
-        </li>
-        <li>Copy the address bar part after the question mark.</li>
-        <li>Paste on the address bar of this page after the question mark.</li>
-        <li>Drop stitch/droste parameters to get the pair diagram.</li>
-    </ul>
-    <p>Examples of links:
-        <a href="?pinwheel-pairs&patchWidth=12&patchHeight=8&tile=586-,-4-5,5-21,-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4&">pinwheel</a>,
-        <a href="?Gertrude-Whiting-F14_P193-threads&tileStitch=tc&patchWidth=24&patchHeight=28&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14">G.W. F14</a>.
-        <br><em>Note: currently only a hard coded diagram with fixed lengths until the Lorraine university fixes this
-        <a href="https://github.com/lauerfab/MLweb/issues/12"
-        >bug</a>.</em>
-    </p>
-    <ul>
-        <li>Have patience with large patterns,
-            you may have to tell your browser to continue the script.
-        </li>
-        <li>Edit modes
+        <li><strong>Edit modes</strong>
             (note: <a href="https://caniuse.com/#feat=input-color">browser support</a> for color code):
             <br>
             <input type="radio" name="edit-mode" id="em-strength" checked>
@@ -249,15 +226,43 @@
                 "out" meaning leaving the preceding stitch, "in" meaning entering the next stitch.
             </div>
         </li>
-        <li>Save the link to the <a id="customlink" href="#">customized pattern</a>.</li>
+        <li><strong>Save</strong> the link to the <a id="customlink" href="#">customized pattern</a>.</li>
         <li>
             <a download="pricking.svg" onfocus="setDownloadContent(this)" onblur="this.href='?#download'" href="?#download" title="download"
-            >Download</a> the diagram and import into an editor of your choice.
+            ><strong>Download</strong></a> the diagram and import into an editor of your choice.
             <br>
             For example to
             add arrows heads to the line segments to identify a working order
             <em>or fix manually how currently failing patterns repeat</em>.
         </li>
+    </ul>
+    <p><strong>Patterns</strong></p>
+    <p>Just some examples to get started:
+        <a href="?pinwheel-pairs&patchWidth=12&patchHeight=8&tile=586-,-4-5,5-21,-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4&">pinwheel</a>,
+        <a href="?Gertrude-Whiting-F14_P193-threads&tileStitch=tc&patchWidth=24&patchHeight=28&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14">G.W. F14</a>.
+        <br>
+        <em>Note: currently only a hard coded diagram with fixed lengths until the Lorraine university fixes this
+            <a href="https://github.com/lauerfab/MLweb/issues/12"
+            >bug</a>.
+        </em>
+        <br>
+        Please have patience with large patterns,
+        you may have to tell your browser to continue the script.
+    </p>
+    <p>As far as other pages don't have links to this page:</p>
+    <ul>
+        <li>Select/create/customize a <a href="tilesde" target="_blank">pattern</a>.
+            <br>
+            For now: no head side, no foot side, only checker tiles
+            (in other words: no brick-layout or overlapping tiles),
+            patch size must be 3 tiles wide and 2 tiles high.
+            Still some combinations of patterns and stitches don't yet work.
+        </li>
+        <li>Click (on that other page!) the button <img src="images/link.png">
+        </li>
+        <li>Copy the address bar part after the question mark.</li>
+        <li>Paste on the address bar of this page after the question mark.</li>
+        <li>Drop stitch/droste parameters to get the pair diagram.</li>
     </ul>
 </div>
 </body>
