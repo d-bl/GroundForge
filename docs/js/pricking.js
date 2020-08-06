@@ -1,13 +1,15 @@
 function clickedDot(linkElement) {
     var dotId = linkElement.getElementsByTagName("circle")[0].attributes["id"].value
     var dot = document.getElementById(dotId)
-    dot.getElementsByTagName("title")[0].innerHTML = `${dotId} : stitch definition not yet implemented`
-    dot.style = "fill:rgb(0,0,225);opacity:0.65"
+    var color = document.getElementById("color").value
+    var stitch = document.getElementById("stitch").value
+    dot.getElementsByTagName("title")[0].innerHTML = `${dotId} : ${stitch} (not yet part of custom link)`
+    dot.style = `fill:${color};opacity:0.65`
 }
 function clickedLink(linkElement) {
     var lineId = linkElement.getElementsByTagName("line")[0].attributes["id"].value
     var link = document.getElementById("customlink")
-    var weight = 1.0 * document.getElementById("weight").value
+    var weight = document.querySelector('input[name = "weight"]:checked').value
     var topolinks = TopoLink.changeWeight(lineId, weight, link.href.replace(/.*=/,""))
     link.href = "?topo=" + topolinks
     showDiagram(topolinks)
