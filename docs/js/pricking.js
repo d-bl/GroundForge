@@ -17,7 +17,7 @@ function clickedLink(linkElement) {
 function load() {
     var urlQuery = location.search.substr(1)
     var topolinks = typeof urlQuery === "undefined" || urlQuery.trim() == ""
-        ? "b4,a1,lo,ri;d4,a1,lo,li;b2,a3,lo,ri;d2,a3,lo,li;a1,b1,lo,li;b4,b1,ro,ri;b1,b2,lo,li;c1,b2,lo,ri;a3,b4,lo,li;c3,b4,lo,ri;b1,c1,ro,li;d4,c1,ro,ri;b2,c3,ro,li;d3,c3,lo,ri;a1,d2,ro,ri;c1,d2,ro,li;a3,d3,ro,ri;d2,d3,ro,li;c3,d4,ro,li;d3,d4,ro,ri"
+        ? "lo,b4,ri,a1;lo,d4,li,a1;lo,b2,ri,a3;lo,d2,li,a3;lo,a1,li,b1;ro,b4,ri,b1;lo,b1,li,b2;lo,c1,ri,b2;lo,a3,li,b4;lo,c3,ri,b4;ro,b1,li,c1;ro,d4,ri,c1;ro,b2,li,c3;lo,d3,ri,c3;ro,a1,ri,d2;ro,c1,li,d2;ro,a3,ri,d3;ro,d2,li,d3;ro,c3,li,d4;ro,d3,ri,d4"
         : TopoLink.asString(TopoLink.fromUrlQuery(urlQuery))
     document.getElementById("customlink").href = "?topo=" + topolinks
     showDiagram(topolinks)
@@ -28,7 +28,7 @@ function showDiagram(linkdefs) {
     var data = Data.create(links)
     console.log(data.toString())
     if (data.length == 0) {
-        elem.outerHTML = "<p><strong>whoops</strong></p>"
+//        elem.outerHTML = "<p><strong>whoops</strong></p>"
     } else {
 //        var deltas = array2mat(rand(data.length,2)) // TODO infinite nullspace(array2mat(data))
 //        elem.innerHTML = SvgPricking.create(links, deltas)

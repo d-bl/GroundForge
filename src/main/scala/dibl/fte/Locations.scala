@@ -26,13 +26,13 @@ object Locations {
 
     val nodeIds = nodes.keys.toSeq
     val candidates = deltas.filter {
-      case (TopoLink(source, target, _, _, _), _) =>
+      case (TopoLink(_, source, _, target,  _), _) =>
         nodeIds.contains(source) && !nodeIds.contains(target)
     }
     if (candidates.isEmpty) nodes
     else {
       val newNodes = candidates.map {
-        case (TopoLink(source, target, _, _, _), Delta(dx, dy)) =>
+        case (TopoLink(_, source, _, target, _), Delta(dx, dy)) =>
           val (x, y) = nodes(source)
           target -> (x - dx, y - dy)
       } ++ nodes

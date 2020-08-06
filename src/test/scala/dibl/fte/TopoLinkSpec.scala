@@ -21,6 +21,6 @@ class TopoLinkSpec extends FlatSpec with Matchers {
 
   "changeWeight" should "multiply the value" in {
     TopoLink.changeWeight("d4-a1", 0.9, "b4,a1,lo,ri,1.0;d4,a1,lo,li,0.9") shouldBe
-      "b4,a1,lo,ri,1.0;d4,a1,lo,li,0.81"
+      "lo,b4,ri,a1,1.0;lo,d4,li,a1,0.81"
   }
 }

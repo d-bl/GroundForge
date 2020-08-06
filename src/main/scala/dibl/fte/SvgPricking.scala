@@ -47,7 +47,7 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
     val tileVectors = TileVector(startId, deltas).toSeq
 
     implicit val scale: Int = 100
-    val tile = deltas.map { case (tl @ TopoLink(s, t, _, _, _), Delta(dx, dy)) =>
+    val tile = deltas.map { case (tl @ TopoLink(_, s, _, t, _), Delta(dx, dy)) =>
       val (x1, y1) = nodes(s)
       val l = line(x1, y1, x1 - dx, y1 - dy, s"""id="$s-$t" style="stroke:rgb(0,0,0);stroke-width:4" """)
         .replace("/>", s"><title>$tl</title></line>")

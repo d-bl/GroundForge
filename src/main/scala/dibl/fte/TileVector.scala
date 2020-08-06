@@ -104,15 +104,15 @@ object TileVector {
 
     /** @param id end point of returned vectors */
     def nextIn(id: String) = deltas.withFilter {
-      case (TopoLink(_, `id`, _, _, _), _) => true
+      case (TopoLink(_, _, _, `id`, _), _) => true
       case _ => false
-    }.map { case (TopoLink(id, _, _, _, _), delta) => (id, delta) }
+    }.map { case (TopoLink(_, id, _, _, _), delta) => (id, delta) }
 
     /** @param id start point of returned vectors */
     def nextOut(id: String) = deltas.withFilter {
-      case (TopoLink(`id`, _, _, _, _), _) => true
+      case (TopoLink( _, `id`, _, _, _), _) => true
       case _ => false
-    }.map { case (TopoLink(_, id, _, _, _), delta) => (id, delta) }
+    }.map { case (TopoLink(_, _, _, id, _), delta) => (id, delta) }
 
     // recursion start
     next(nextIn(startId), nextOut(startId))

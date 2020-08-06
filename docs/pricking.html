@@ -184,9 +184,15 @@
                     <label for="stronger">longer</label>
                     <input type="radio" name="weight" id="reset-strength" checked value="1">
                     <label for="stronger">reset</label>
+                    <br>
+                    <span class="disabled">
+                        Perhaps more intuitive to drag stitches and change four pairs at once.
+                        Event handling and calculations are more complex to implement.
+                    </span>
                 </li>
                 <li class="disabled">
-                    Drag a pair between stitches to another one to add a stitch.
+                    Draw a line from one pair between stitches to another to add a stitch.
+                    Default visual clue is currently dragging the line segment.
                 </li>
                 <li>
                     Click a stitch to
@@ -209,13 +215,15 @@
                     </label>
                     <br>
                     <em>Note: <a href="https://caniuse.com/#feat=input-color">browser support</a> for color code.</em>
+                    <br>
+                    <span class="disabled">A pop-up might be more intuitive but is more complex to implement.</span>
                 </li>
             </ul>
             <div class="disabled">
                 Note that elements of the "customized pattern" link pop up when you hover over a pair between stitches.
+                Read these elements as: "<em>left/right out of [id], left/right-into [id]</em>".
+                The optional number at the end is the strength.
                 For now, advanced users may use this information to add/drop stitches.
-                Used mnemonics: <em>left/right-out</em> and <em>left/right-in</em>,
-                "out" meaning leaving the preceding stitch, "in" meaning entering the next stitch.
             </div>
         </li>
         <li><strong>Save</strong> the link to the <a id="customlink" href="#">customized pattern</a>.</li>
@@ -223,7 +231,7 @@
             <a download="pricking.svg" onfocus="setDownloadContent(this)" onblur="this.href='?#download'" href="?#download" title="download"
             ><strong>Download</strong></a> the diagram and import into an editor of your choice.
             <br>
-            For example to see waht is beyond the visible area,
+            For example to see what is beyond the visible area,
             add arrows heads to the pairs between stitches to identify a working order
             <em>or fix manually how currently failing patterns repeat</em>.
         </li>

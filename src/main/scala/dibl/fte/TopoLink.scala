@@ -22,7 +22,7 @@ import dibl.{ Diagram, LinkProps, NewPairDiagram, NodeProps, PairDiagram, Thread
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 import scala.util.Try
 
-case class TopoLink(sourceId: String, targetId: String, isLeftOfSource: Boolean, isLeftOfTarget: Boolean, weight: Double = 1) {
+case class TopoLink(isLeftOfSource: Boolean, sourceId: String, isLeftOfTarget: Boolean, targetId: String, weight: Double = 1) {
   val isRightOfTarget: Boolean = !isLeftOfTarget
   val isRightOfSource: Boolean = !isLeftOfSource
 
@@ -31,7 +31,7 @@ case class TopoLink(sourceId: String, targetId: String, isLeftOfSource: Boolean,
               else "ro"
     val in = if (isLeftOfTarget) "li"
              else "ri"
-    s"$sourceId,$targetId,$out,$in,$weight"
+    s"$out,$sourceId,$in,$targetId,$weight"
   }
 }
 
@@ -41,7 +41,7 @@ case class TopoLink(sourceId: String, targetId: String, isLeftOfSource: Boolean,
   def changeWeight(id: String, change: Double, links: String): String = {
     val Array(startId, endId) = id.split("-")
     asString(fromString(links).map {
-      case link @ TopoLink(`startId`, `endId`, _, _, _) =>
+      case link @ TopoLink(_, `startId`, _, `endId`, _) =>
         link.copy(weight = if (change == 1) 1
                            else link.weight * change)
       case link => link
@@ -81,13 +81,13 @@ case class TopoLink(sourceId: String, targetId: String, isLeftOfSource: Boolean,
       .toSeq
       .map { link =>
         link.split(",") match {
-          case Array(src, target, out, in)
+          case Array(out, src, in, target)
             if valid(out, in) =>
-            TopoLink(src, target, out == "lo", in == "li")
-          case Array(src, target, out, in, weight)
+            TopoLink(out == "lo", src, in == "li", target)
+          case Array(out, src, in, target, weight)
             if valid(out, in) &&
               weight.matches("[0-9]+(.[0-9]+)?") =>
-            TopoLink(src, target, out == "lo", in == "li", weight.toDouble)
+            TopoLink(out == "lo", src, in == "li", target, weight.toDouble)
           case _ =>
             return Seq.empty
         }
@@ -164,7 +164,7 @@ case class TopoLink(sourceId: String, targetId: String, isLeftOfSource: Boolean,
               (implicit diagram: Diagram): Seq[TopoLink] = {
     implicit val topoLinks: Seq[LinkProps] = linksInOneTile
     linksInOneTile.map { link =>
-      TopoLink(sourceOf(link).id, targetOf(link).id, isLeftOfSource(link), isLeftOfTarget(link))
+      TopoLink(isLeftOfSource(link), sourceOf(link).id, isLeftOfTarget(link), targetOf(link).id)
     }
   }
 
