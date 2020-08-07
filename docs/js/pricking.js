@@ -1,4 +1,10 @@
-function clickedDot(linkElement) {
+function clickedDot(event) {
+    if (event.altKey) {
+        event.preventDefault()
+        alert ("removing stitches not yet implemented")
+        return
+    }
+    var linkElement = event.currentTarget
     var dotId = linkElement.getElementsByTagName("circle")[0].attributes["id"].value
     var dot = document.getElementById(dotId)
     var color = document.getElementById("color").value
@@ -6,10 +12,12 @@ function clickedDot(linkElement) {
     dot.getElementsByTagName("title")[0].innerHTML = `${dotId} : ${stitch} (not yet part of custom link)`
     dot.style = `fill:${color};opacity:0.65`
 }
-function clickedLink(linkElement) {
+function clickedLink(event) {
+    var weight = event.altKey ? 0.8 : event.shiftKey ? 1.2 : 1
+    if (weight != 1) event.preventDefault()
+    var linkElement = event.currentTarget
     var lineId = linkElement.getElementsByTagName("line")[0].attributes["id"].value
     var link = document.getElementById("customlink")
-    var weight = document.querySelector('input[name = "weight"]:checked').value
     var topolinks = TopoLink.changeWeight(lineId, weight, link.href.replace(/.*=/,""))
     link.href = "?topo=" + topolinks
     showDiagram(topolinks)
