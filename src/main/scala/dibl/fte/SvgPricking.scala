@@ -45,17 +45,20 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
     val startId = topoLinks.head.sourceId
     val nodes = Locations.create(Map(startId -> (0, 0)), deltas)
     val tileVectors = TileVector(startId, deltas).toSeq
+    val minLength = deltas.values.map {case Delta(dx,dy) =>
+      Math.sqrt(dx*dx + dy*dy)
+    }.min
 
-    implicit val scale: Int = 100
+    implicit val scale: Double = 30 / minLength
     val tile = deltas.map { case (tl @ TopoLink(_, s, _, t, _), Delta(dx, dy)) =>
       val (x1, y1) = nodes(s)
       val l = line(x1, y1, x1 - dx, y1 - dy, s"""id="$s-$t" style="stroke:rgb(0,0,0);stroke-width:4" """)
         .replace("/>", s"><title>$tl</title></line>")
-      s"""<a href="#" onclick="clickedLink(this); return false;">$l</a>"""
+      s"""<a href="#" onclick="clickedLink(event); return false;">$l</a>"""
     }
     val dots = nodes.map{ case (id,(x,y)) =>
       val c = s"""<circle id="$id" cx="${ scale * x + offsetX}" cy="${ scale * y + offsetY}" r="5" style="fill:rgb(225,0,0);opacity:0.65"><title>$id</title></circle>"""
-      s"""<a href="#" onclick="clickedDot(this); return false;">$c</a>"""
+      s"""<a href="#" onclick="clickedDot(event); return false;">$c</a>"""
     }
     val clones = if (tileVectors.isEmpty) Seq("")
                  else {
@@ -88,7 +91,7 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
        |""".stripMargin
   }
 
-  private def line(x1: Double, y1: Double, x2: Double, y2: Double, attrs: String)(implicit scale: Int): String = {
+  private def line(x1: Double, y1: Double, x2: Double, y2: Double, attrs: String)(implicit scale: Double): String = {
     s"""  <line x1="${ scale * x1 + offsetX }" y1="${ scale * y1 + offsetY }" x2="${ scale * x2 + offsetX }" y2="${ scale * y2 + offsetY }" $attrs/>"""
   }
 }
