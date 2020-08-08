@@ -26,6 +26,7 @@ case class TopoLink(isLeftOfSource: Boolean, sourceId: String, isLeftOfTarget: B
   val isRightOfTarget: Boolean = !isLeftOfTarget
   val isRightOfSource: Boolean = !isLeftOfSource
 
+  /** @return read as: "left/right out of source, left/right-into target" */
   override def toString: String = {
     val out = if (isLeftOfSource) "lo"
               else "ro"
@@ -46,6 +47,34 @@ case class TopoLink(isLeftOfSource: Boolean, sourceId: String, isLeftOfTarget: B
                            else link.weight * change)
       case link => link
     })
+  }
+
+  @JSExport
+  def removeStitch(id: String, links: String): String = {
+    val topoLinks = fromString(links)
+    val oldLinks = ClockWise(topoLinks)
+      .withFilter(_._1 == id)
+      .flatMap(_._2)
+      .toSeq
+    val Seq(
+    TopoLink(_,_,toLeft,targetLeft,_),
+    TopoLink(_,_,toRight,targetRight,_),
+    TopoLink(fromLeft,sourceLeft,_,_,_),
+    TopoLink(fromRight,sourceRight,_,_,_),
+    ) = oldLinks
+    Seq(
+      TopoLink(fromRight, sourceRight, toRight, targetRight),
+      TopoLink(fromLeft, sourceLeft, toLeft, targetLeft),
+    ) ++ topoLinks.filterNot(oldLinks.contains)
+  }.mkString(";")
+
+  @JSExport
+  def addStitch(old: String, links: String): String = {
+    val topoLinks = fromString(links)
+    val oldLinks = fromString(old)
+    // todo generate new id, perhaps a 3-letter combination not yet used
+    // todo add new links, reject parallel new links
+    topoLinks.filterNot(oldLinks.contains).mkString(";")
   }
 
   @JSExport

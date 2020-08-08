@@ -1,11 +1,16 @@
 function clickedDot(event) {
+    event.preventDefault()
+    var linkElement = event.currentTarget
+    var link = document.getElementById("customlink")
+    var dotId = linkElement.getElementsByTagName("circle")[0].attributes["id"].value
     if (event.altKey) {
-        event.preventDefault()
         alert ("removing stitches not yet implemented")
+        var currentLinks = link.innerHTML.replace(/.*?/,"")
+        var newlinks = TopoLink.removeStitch(dotId,currentLinks)
+        link.href = "?topo=" + newlinks
+        showDiagram(newlinks)
         return
     }
-    var linkElement = event.currentTarget
-    var dotId = linkElement.getElementsByTagName("circle")[0].attributes["id"].value
     var dot = document.getElementById(dotId)
     var color = document.getElementById("color").value
     var stitch = document.getElementById("stitch").value
@@ -13,13 +18,17 @@ function clickedDot(event) {
     dot.style = `fill:${color};opacity:0.65`
 }
 function clickedLink(event) {
-    var weight = event.altKey ? 0.8 : event.shiftKey ? 1.2 : 1
-    if (weight != 1) event.preventDefault()
+    event.preventDefault()
+    var weight = event.altKey ? 0.8 : event.shiftKey ? 1.25 : 1
     var linkElement = event.currentTarget
     var lineId = linkElement.getElementsByTagName("line")[0].attributes["id"].value
     var link = document.getElementById("customlink")
     var topolinks = TopoLink.changeWeight(lineId, weight, link.href.replace(/.*=/,""))
     link.href = "?topo=" + topolinks
+
+    // for now show the event is applied, custom link shows the calculated value
+    var titleElem = linkElement.getElementsByTagName("title")[0]
+    titleElem.innerHTML = titleElem.innerHTML + `; ${weight}`
     showDiagram(topolinks)
 }
 function load() {
@@ -30,15 +39,18 @@ function load() {
     document.getElementById("customlink").href = "?topo=" + topolinks
     showDiagram(topolinks)
 }
-function showDiagram(linkdefs) {
+function showDiagram(topolinks) {
     var elem =  document.getElementById("diagram")
-    var links = TopoLink.fromString(linkdefs)
+    var links = TopoLink.fromUrlQuery("topo="+topolinks)
     var data = Data.create(links)
-    console.log(data.toString())
     if (data.length == 0) {
-//        elem.outerHTML = "<p><strong>whoops</strong></p>"
+        console.log(links.toString())
+        elem.innerHTML = elem.innerHTML + "<p>whoops</p>"
     } else {
-//        var deltas = array2mat(rand(data.length,2)) // TODO infinite nullspace(array2mat(data))
+        console.log(links.toString())
+        console.log(data.toString())
+//        var deltas = array2mat(rand(data.length,2))
+//        TODO infinite library call: https://github.com/lauerfab/MLweb/issues/12
 //        elem.innerHTML = SvgPricking.create(links, deltas)
     }
 }

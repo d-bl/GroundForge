@@ -54,11 +54,11 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
       val (x1, y1) = nodes(s)
       val l = line(x1, y1, x1 - dx, y1 - dy, s"""id="$s-$t" style="stroke:rgb(0,0,0);stroke-width:4" """)
         .replace("/>", s"><title>$tl</title></line>")
-      s"""<a href="#" onclick="clickedLink(event); return false;">$l</a>"""
+      s"""<a href="#" onclick="clickedLink(event)">$l</a>"""
     }
     val dots = nodes.map{ case (id,(x,y)) =>
       val c = s"""<circle id="$id" cx="${ scale * x + offsetX}" cy="${ scale * y + offsetY}" r="5" style="fill:rgb(225,0,0);opacity:0.65"><title>$id</title></circle>"""
-      s"""<a href="#" onclick="clickedDot(event); return false;">$c</a>"""
+      s"""<a href="#" onclick="clickedDot(event)">$c</a>"""
     }
     val clones = if (tileVectors.isEmpty) Seq("")
                  else {
@@ -68,11 +68,11 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
                    val (dx1, dy1) = tileVectors.head
                    val (dx2, dy2) = tileVectors.tail.headOption.getOrElse((-dy1 * 4, dx1 * 4))
                    val clones = for {
-                     i <- -3 * scale to 6 * scale by scale
-                     j <- -3 * scale to 6 * scale by scale
+                     i <- -3 to 6
+                     j <- -3 to 6
                    } yield {
                      if (i == 0 && j == 0) ""
-                     else s"""<use transform="translate(${ i * dx1 + j * dx2 },${ i * dy1 + j * dy2 })" xlink:href="#tile" style="opacity:0.65"/>"""
+                     else s"""<use transform="translate(${ i * dx1 * scale + j * dx2 * scale },${ i * dy1 * scale + j * dy2 * scale })" xlink:href="#tile" style="opacity:0.65"/>"""
                    }
                    vectorLines ++ clones
                  }
@@ -92,6 +92,6 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
   }
 
   private def line(x1: Double, y1: Double, x2: Double, y2: Double, attrs: String)(implicit scale: Double): String = {
-    s"""  <line x1="${ scale * x1 + offsetX }" y1="${ scale * y1 + offsetY }" x2="${ scale * x2 + offsetX }" y2="${ scale * y2 + offsetY }" $attrs/>"""
+    s"""<line x1="${ scale * x1 + offsetX }" y1="${ scale * y1 + offsetY }" x2="${ scale * x2 + offsetX }" y2="${ scale * y2 + offsetY }" $attrs/>"""
   }
 }

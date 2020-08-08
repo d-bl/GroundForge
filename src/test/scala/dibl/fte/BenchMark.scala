@@ -26,7 +26,13 @@ object BenchMark {
     }
     // API intended for the content of a text area in an HTML page
     writeSvg(s"$dir/pinwheel-topo-weighted.svg", TopoLink.fromString(
-      "b4,a1,lo,ri;d4,a1,lo,li;b2,a3,lo,ri,0.8;d2,a3,lo,li;a1,b1,lo,li;b4,b1,ro,ri;b1,b2,lo,li;c1,b2,lo,ri;a3,b4,lo,li;c3,b4,lo,ri,0.8;b1,c1,ro,li;d4,c1,ro,ri;b2,c3,ro,li;d3,c3,lo,ri;a1,d2,ro,ri;c1,d2,ro,li;a3,d3,ro,ri;d2,d3,ro,li;c3,d4,ro,li;d3,d4,ro,ri"
+      "lo,b4,ri,a1;lo,d4,li,a1;lo,b2,ri,a3,0.8;lo,d2,li,a3;lo,a1,li,b1;ro,b4,ri,b1;lo,b1,li,b2;lo,c1,ri,b2;lo,a3,li,b4;lo,c3,ri,b4;ro,b1,li,c1;ro,d4,ri,c1;ro,b2,li,c3;lo,d3,ri,c3;ro,a1,ri,d2;ro,c1,li,d2;ro,a3,ri,d3;ro,d2,li,d3;ro,c3,li,d4;ro,d3,ri,d4,1.0"
+    ))
+    writeSvg(s"$dir/pinwheel-without-d4.svg", TopoLink.fromString(
+      "ro,d3,li,a1,1.0;ro,c3,ri,c1,1.0;lo,b4,ri,a1,1.0;lo,b2,ri,a3,1.0;lo,d2,li,a3,1.0;lo,a1,li,b1,1.0;ro,b4,ri,b1,1.0;lo,b1,li,b2,1.0;lo,c1,ri,b2,1.0;lo,a3,li,b4,1.0;lo,c3,ri,b4,1.0;ro,b1,li,c1,1.0;ro,b2,li,c3,1.0;lo,d3,ri,c3,1.0;ro,a1,ri,d2,1.0;ro,c1,li,d2,1.0;ro,a3,ri,d3,1.0;ro,d2,li,d3,1.0"
+    ))
+    writeSvg(s"$dir/pinwheel-without-d4-matrix.svg", TopoLink.fromString(
+      "patchWidth=12&patchHeight=8&tile=588-,-4-5,5-21,-5xx&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
     ))
 
     // API intended for a direkt bookmark-able link
@@ -59,7 +65,6 @@ object BenchMark {
           val fileName = s"$dir/$qName-$tail.svg"
           val t0 = System.nanoTime()
           val links = TopoLink.fromUrlQuery(query)
-          println(TopoLink.asString(links)) // to be placed in text area of HTML page
           writeSvg(fileName, links)
           println(s"${fileName.replaceAll(".*/","")} Elapsed time: ${ (System.nanoTime() - t0) * 0.000000001 } sec")
       }
@@ -67,8 +72,11 @@ object BenchMark {
   }
 
   // rest of the API TODO isolate delta calculation/extraction for javascript
-  private def writeSvg(fileName: String, links: Seq[TopoLink]) = GraphCreator
-    .graphFrom(links)
-    .map { svg => File(fileName).writeAll(svg) }
-    .recover { case t: Throwable => Success(println(t)) }
+  private def writeSvg(fileName: String, links: Seq[TopoLink]) = {
+    println(links.mkString(";"))
+    GraphCreator
+      .graphFrom(links)
+      .map { svg => File(fileName).writeAll(svg) }
+      .recover { case t: Throwable => Success(println(t)) }
+  }
 }
