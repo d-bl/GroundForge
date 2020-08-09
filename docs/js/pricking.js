@@ -4,8 +4,7 @@ function clickedDot(event) {
     var link = document.getElementById("customlink")
     var dotId = linkElement.getElementsByTagName("circle")[0].attributes["id"].value
     if (event.altKey) {
-        alert ("removing stitches not yet implemented")
-        var currentLinks = link.innerHTML.replace(/.*?/,"")
+        var currentLinks = link.href.replace(/.*=/,"")
         var newlinks = TopoLink.removeStitch(dotId,currentLinks)
         link.href = "?topo=" + newlinks
         showDiagram(newlinks)
