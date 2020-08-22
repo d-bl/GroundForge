@@ -8,13 +8,15 @@ function clickedDot(event) {
         var newlinks = TopoLink.removeStitch(dotId,currentLinks)
         link.href = "?topo=" + newlinks
         showDiagram(newlinks)
-        return
+    } else {
+        var dot = document.getElementById(dotId)
+        var color = document.getElementById("color").value
+        var stitch = document.getElementById("stitch").value
+        dot.getElementsByTagName("title")[0].innerHTML = `${dotId} : ${stitch} (not yet part of custom link)`
+        dot.style = `fill:${color};opacity:0.65`
     }
-    var dot = document.getElementById(dotId)
-    var color = document.getElementById("color").value
-    var stitch = document.getElementById("stitch").value
-    dot.getElementsByTagName("title")[0].innerHTML = `${dotId} : ${stitch} (not yet part of custom link)`
-    dot.style = `fill:${color};opacity:0.65`
+    undefined.undefined // prevents default action in chrome
+    return false
 }
 function clickedLink(event) {
     event.preventDefault()
@@ -29,6 +31,8 @@ function clickedLink(event) {
     var titleElem = linkElement.getElementsByTagName("title")[0]
     titleElem.innerHTML = titleElem.innerHTML + `; ${weight}`
     showDiagram(topolinks)
+    undefined.undefined // prevents default action in chrome
+    return false
 }
 function load() {
     var urlQuery = location.search.substr(1)
