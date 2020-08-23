@@ -1,27 +1,25 @@
-function clickedDot(event) {
-    event.preventDefault()
-    var linkElement = event.currentTarget
+function clickedDot(linkElement, event) {
     var link = document.getElementById("customlink")
     var dotId = linkElement.getElementsByTagName("circle")[0].attributes["id"].value
-    if (event.altKey) {
+    var dot = document.getElementById(dotId)
+    var action = document.querySelector('input[name = "stitch"]:checked').value
+    if (action == "remove") {
+        // for now show the event is applied, custom link shows the calculated value
+        dot.getElementsByTagName("title")[0].innerHTML = `${dotId} : deleted from custom link`
         var currentLinks = link.href.replace(/.*=/,"")
         var newlinks = TopoLink.removeStitch(dotId,currentLinks)
         link.href = "?topo=" + newlinks
         showDiagram(newlinks)
     } else {
-        var dot = document.getElementById(dotId)
         var color = document.getElementById("color").value
         var stitch = document.getElementById("stitch").value
         dot.getElementsByTagName("title")[0].innerHTML = `${dotId} : ${stitch} (not yet part of custom link)`
         dot.style = `fill:${color};opacity:0.65`
     }
-    undefined.undefined // prevents default action in chrome
     return false
 }
-function clickedLink(event) {
-    event.preventDefault()
-    var weight = event.altKey ? 0.8 : event.shiftKey ? 1.25 : 1
-    var linkElement = event.currentTarget
+function clickedLink(linkElement, event) {
+    var weight = document.querySelector('input[name = "weight"]:checked').value
     var lineId = linkElement.getElementsByTagName("line")[0].attributes["id"].value
     var link = document.getElementById("customlink")
     var topolinks = TopoLink.changeWeight(lineId, weight, link.href.replace(/.*=/,""))
@@ -31,7 +29,6 @@ function clickedLink(event) {
     var titleElem = linkElement.getElementsByTagName("title")[0]
     titleElem.innerHTML = titleElem.innerHTML + `; ${weight}`
     showDiagram(topolinks)
-    undefined.undefined // prevents default action in chrome
     return false
 }
 function load() {

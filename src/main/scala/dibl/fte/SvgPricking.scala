@@ -54,11 +54,11 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
       val (x1, y1) = nodes(s)
       val l = line(x1, y1, x1 - dx, y1 - dy, s"""id="$s-$t" style="stroke:rgb(0,0,0);stroke-width:4" """)
         .replace("/>", s"><title>$tl</title></line>")
-      s"""<a href="#" onclick="clickedLink(event)">$l</a>"""
+      s"""<a href="#" onclick="clickedLink(this)">$l</a>"""
     }
     val dots = nodes.map{ case (id,(x,y)) =>
       val c = s"""<circle id="$id" cx="${ scale * x + offsetX}" cy="${ scale * y + offsetY}" r="5" style="fill:rgb(225,0,0);opacity:0.65"><title>$id</title></circle>"""
-      s"""<a href="#" onclick="clickedDot(event)">$c</a>"""
+      s"""<a href="#" onclick="clickedDot(this)">$c</a>"""
     }
     val clones = if (tileVectors.isEmpty) Seq("")
                  else {
