@@ -103,9 +103,6 @@ Save the link text into a file for later use.  Copy and paste the link text into
 
 We create the prototype for the pattern in the area labelled “Forms for advanced users”. First, we map the pattern onto a grid. Symbols, comprising numbers or letters, are used to draw lines on the grid. This creates a vector diagram showing the order in which pairs of threads come together. From this description, the software generates a working diagram and a thread diagram. It requires a more [detailed tutorial](Advanced) to fully explain the many construction options available.
 
-<a name="BK-31"></a>
-Feature 31 in the [DKV pattern](http://www.deutscher-kloeppelverband.de/index.php/component/jshopping/product/view/4/47?Itemid=242) "Binche Kompakt" was published in "Kant" issue 2000/2.  [Variations](https://github.com/d-bl/GroundForge/blob/b6a765f/docs/help/index.md#tutorial) on this once lost ground can be explored in GroundForge.
-
 ### Add footsides
 
 In addition to modelling a lace ground, GroundForge can also model a footside for it.  Left and right footsides are defined separately and depend on the number of columns in the patch.
@@ -118,7 +115,9 @@ To see these features, and others, in action, we have recorded the editing of a 
 The [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK-31.mp4) (MP4, 35 MB, 1:47 min) follows the script below.
 Steps marked in bold are more advanced and can be skipped by novice users. 
 
-* 0:00 start with this help page (an older version is recorded)
+<a name="BK-31"></a>
+
+* 0:00 the video starts with an old version of this [help page](https://github.com/d-bl/GroundForge/blob/oidfa-article/docs/help/index.md), and even slightly older version was recorded
 * 0:00 follow "_with_"
 * 0:05 drop center stitch: `ctc` -> `-`
 * 0:10 ![wand](../images/wand.png) generate new diagrams

@@ -87,7 +87,7 @@ Der [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK
 Verwenden Sie die Pausen-Taste und den Schieberegler, um die Schritte zu wiederholen.
 Ignorieren Sie gegebenenfalls die fett gedruckten fortgeschrittenen Schritte.
 
-* 0:00 Beginnt mit dieser Hilfeseite (die Aufnahme zeigt eine ältere Englische Version)
+* 0:00 Der Clip beginnt mit eine alte Englische Version dieser [Hilfeseite](https://github.com/d-bl/GroundForge/blob/oidfa-article/docs/help/index.md))
 * 0:00 Dem "with"-Link folgen (with = mit)
 * 0:05 [Schlag] ersetzten / weggelassen: `ctc` -> `-`
 * 0:10 ![wand](../images/wand.png) neue Diagramme generieren

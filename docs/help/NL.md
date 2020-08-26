@@ -83,7 +83,7 @@ De [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK
 Gebruik de pauzeknop en schuifregelaar om stappen te herhalen.
 Negeer eventueel de dik-gedrukt gedrukte stappen voor gevorderden.
 
-* 0:00 start met deze help pagina (de opname toont een oudere Engelse versie)
+* 0:00 De video start met een oude Engelse versie van deze [help pagina](https://github.com/d-bl/GroundForge/blob/oidfa-article/docs/help/index.md)
 * 0:00 volg de link "_with_" (met)
 * 0:05 [slag] vervangen/weglaten: `ctc` -> `-`
 * 0:10 ![wand](../images/wand.png) genereer nieuwe diagrammen
