@@ -15,8 +15,8 @@ _Figure 1: Working diagram of whole (CTCT) and half (CT) stitch variation labell
    
 In 2004, Hildegund Jene published a sampler called [_Binche Kompakt_](https://www.deutscher-kloeppelverband.de/katalog/) which featured 32 different grounds drawn from Flemish, Parisian,and Valenciennes laces.  Ground number 31 is the challenging TT4 ground described by Verbeke-Billiet.  When Jo Pol started to work on Binche Kompakt, she could find neither a thread diagram, nor a high resolution photo of a sample of TT4.  She decided to create a thread diagram using GroundForge.  This exercise motivated Pol to include several of the features you find in GroundForge today.  
 
-Once this lace ground has been captured in GroundForge, it is relatively straight forward to play with the snowflake variations. 
-We invite you to experiment with using the GroundForge base pattern [with] or [without] foot sides.  Click on a circle in the prototype diagram to make a yellow popup appear and edit the stitch description to change (_using any combination of 'c', 't', 'r' or 'l'_) or drop (_'-'_) a stitch.  For more detailed instructions on editing the stitches, please refer to the [Help introduction](index). 
+Once this lace ground has been captured in GroundForge, it is relatively straight forward to play with different snowflake variations. 
+We invite you to experiment using the GroundForge base pattern [with] or [without] foot sides.  Click on a circle in the prototype diagram.  When a yellow popup appears, edit the stitch description to change (_using any combination of 'c', 't', 'r' or 'l'_) or drop (_'-'_) a stitch.  For more detailed instructions on editing the stitches, please refer to the [Help introduction](index). 
 
 Below are four main variations showing the prototype diagram (top row) and corresponding thread diagram (bottom row).
 
