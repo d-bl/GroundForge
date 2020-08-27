@@ -42,7 +42,7 @@ The extensive catalogue _Viele gute Gründe_ by Ulricke Voelcker-Löhr contains 
 A [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK-31.mp4) (35 MB) demonstrates how to play with the stitches.  It follows the script below.  A lot happens in a short time, so use the pause button and slider to review sections. 
 Newbies may skip the bold steps when first trying to understand the scenario.
 
-* 0:00 the video starts with an old version of this [help page](https://github.com/d-bl/GroundForge/blob/oidfa-article/docs/help/index.md)
+* 0:00 the video starts with an older version of the [help page](https://github.com/d-bl/GroundForge/blob/oidfa-article/docs/help/index.md)
 * 0:00 click on "_with_" link
 * 0:05 drop center stitch: `ctc` -> `-`
 * 0:10 ![wand](../images/wand.png) generate new diagrams
