@@ -15,15 +15,15 @@ Help Intro
    + [Modify stitches](#modify-stitches)
    + [Undo changes](#undo-changes)
    + [Save and share changes](#save-and-share-changes)
-   + [Add footsides](#add-footsides)
    + [Create a new ground pattern](#create-a-new-ground-pattern)
-   + [Video](#video)
+   + [Add footsides](#add-footsides)
+   + [Binche snowflakes](#next-step)
    
 
 Experimenting with bobbin lace grounds
 --------------------------------------
 
-GroundForge is a tool that complements existing [lace ground catalogues](https://maetempels.github.io/MAE-gf/docs/license#literature) by making it possible to play with their designs.
+GroundForge is a tool that complements existing lace ground catalogues ([TesseLace](/tesselace-to-gf/), [Whiting](/gw-lace-to-gf/), [Flanders](https://maetempels.github.io/MAE-gf/docs/flanders), [MAE](https://maetempels.github.io/MAE-gf/)) by making it possible to play with their designs.
 GroundForge generates an interactive thread diagram for each ground in the catalogue which allows you to highlight the path of a thread; a useful feature when working with multiple thread colours or thicknesses in a design.
 The tool also allows you to specify the combinations of stitches that are made when two pairs meet.  You can make changes and quickly observe how this affects the thread diagram.
 This greatly speeds up the process of experimenting with lace grounds; no need to wind bobbins or prepare prickings. The final test is always to make a hand-worked sample&mdash;only in a physical sample can the interactions between pins and threads under tension be completely observed&mdash;however, GroundForge can help you narrow the number of samples you need to test by hand.
@@ -41,7 +41,7 @@ Overview Tutorial
 -----------------
 
 In the following tutorial, we will explore a versatile ground from the [Whiting catalogue] and illustrate some basic features of GroundForge.
-By clicking on a photo in the catalogue, you will launch the associated page in Mrs Whiting's book *A lace guide for makers and collectors*.  
+By clicking on a photo in the catalogue, you will launch the associated page in Gertrude Whiting's book *A lace guide for makers and collectors*.  
 Click on the [diagram] link above the photo in the catalogue to launch the GroundForge tool, initialized with the details of the selected Whiting ground.
 
 For each lace ground, there is a [dedicated page](../tiles.html).
@@ -109,34 +109,12 @@ In addition to modelling a lace ground, GroundForge can also model a footside fo
 For example, here is [footside for Whiting G-2](/GroundForge/tiles?whiting=G2_P199&patchWidth=11&patchHeight=22&r1=ctcrr&q1=ctc&j1=ctctt&e1=ctcctc&c1=ctc&b1=ctcll&s2=ctctt&r2=ctc&q2=ctcll&p2=ctc&n2=ctc&m2=ctclll&l2=ctctt&k2=ctctt&j2=ctctt&i2=ctctt&h2=ctctt&g2=ctcrrr&f2=ctc&d2=ctc&c2=ctcrr&b2=ctc&a2=ctctt&r3=ctcrr&q3=ctc&p3=ctcrr&n3=ctclll&m3=ctctt&l3=ctctt&k3=ctcttl&j3=ctc&i3=ctcttr&h3=ctctt&g3=ctctt&f3=ctcrrr&e3=ctc&d3=ctcll&c3=ctc&b3=ctcll&s4=ctctt&r4=ctc&q4=ctcll&p4=ctctt&n4=ctctt&m4=ctctt&l4=ctcttl&k4=ctc&j4=ctc&i4=ctc&h4=ctcttr&g4=ctctt&f4=ctctt&e4=ctcttt&d4=ctctt&c4=ctcrr&b4=ctc&a4=ctctt&r5=ctcrr&q5=ctc&p5=ctctt&n5=ctctt&m5=ctcttl&l5=ctc&k5=ctc&i5=ctc&h5=ctc&g5=ctcttr&f5=ctctt&e5=ctctt&d5=ctctt&c5=ctc&b5=ctcll&s6=ctctt&r6=ctc&q6=ctcll&c6=ctcrr&b6=ctc&a6=ctctt&s7=ctctt&r7=ctcrr&q7=ctc&p7=ctctt&d7=ctctt&c7=ctc&b7=ctcll&a7=ctctt&r8=ctc&q8=ctcll&p8=ctcll&d8=ctcrr&c8=ctcrr&b8=ctc&s9=ctctt&r9=ctcrr&q9=ctc&p9=rr&d9=ll&c9=ctc&b9=ctcll&a9=ctctt&r10=ctc&q10=ctcll&p10=ctcrr&d10=ctcll&c10=ctcrr&b10=ctc&footside=X14-,4886,-111,B883,X111,488-,1115,X786,1114,X786&tile=5----5----,-CDD632AAB,5666632222,5666632222,56666-2222&headside=-78X,2117,888-,311C,888X,-117,5888,214X,7888,214X&footsideStitch=ctc&tileStitch=ctctt&headsideStitch=ctctt&shiftColsSW=-5&shiftRowsSW=5&shiftColsSE=5&shiftRowsSE=5).
 There is an advanced tutorial on how to [create footsides](Advanced#foot-sides).
 
-### Video
-
-To see these features, and others, in action, we have recorded the editing of a Binche lace ground.
-The [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK-31.mp4) (MP4, 35 MB, 1:47 min) follows the script below.
-Steps marked in bold are more advanced and can be skipped by novice users. 
-
 <a name="BK-31"></a>
+### Next step
 
-* 0:00 the video starts with an old version of this [help page](https://github.com/d-bl/GroundForge/blob/oidfa-article/docs/help/index.md), and even slightly older version was recorded
-* 0:00 follow "_with_"
-* 0:05 drop center stitch: `ctc` -> `-`
-* 0:10 ![wand](../images/wand.png) generate new diagrams
-* 0:18 reload web page : restores original diagrams
-* **0:19** scroll down to advanced section
-* **0:22** drop center stitch: `353,153` -> `-5-,5-5-`
-* **0:35** ![wand](../images/wand.png) : different prototype, same pair/thread diagram
-* 0:41 follow (i)
-* 0:44 follow "_stitches_"
-* 0:45 copy edge stitch
-* 0:49 previous browser tab
-* 0:52 paste the copied stitch and edit into turning stitch.
-       Note that ctc, twist one pair, ctc is a single stitch for GroundForge.
-       It makes the runner changing direction, therefore: turning stitch. 
-* 1:19 ![link](../images/link.png)
-* 1:23 reload web page
-* 1:26 current pattern is reloaded
-* 1:27 create favourite
-* 1:33 "_animate_" pair diagram
-* 1:36 increase thread diagram container (alternative: ![](../images/size-inc.jpg) ![](../images/size-dec.jpg))
-* 1:38 scroll down to get thread container back into view
-* 1:42 toggle thread color when tooltip displays thread number
+For a more advanced example, try experimenting with four snowflake variations in [Binche Kompakt ground number 31](Binche).
+
+
+
+
+
