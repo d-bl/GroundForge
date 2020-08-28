@@ -11,7 +11,7 @@ In issue 2000/2 of the Belgian lace magazine [_Kant_](https://www.kantcentrum.eu
 
 ![](images/kompakt-31-challenge.png)
 
-_Figure 1: Working diagram of whole (CTCT) and half (CT) stitch variation labelled TT4_
+_Figure 1: Paris ground and snowflake rings worked with whole (CTCT, red) and half (CT, green) stitch_
    
 In 2004, Hildegund Jene published a sampler called [_Binche Kompakt_](https://www.deutscher-kloeppelverband.de/katalog/) which featured 32 different grounds drawn from Flemish, Parisian,and Valenciennes laces.  Ground number 31 is the challenging TT4 ground described by Verbeke-Billiet.  When Jo Pol started to work on Binche Kompakt, she could find neither a thread diagram, nor a high resolution photo of a sample of TT4.  She decided to create a thread diagram using GroundForge.  This exercise motivated Pol to include several of the features you find in GroundForge today.  
 
