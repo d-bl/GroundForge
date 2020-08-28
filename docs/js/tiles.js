@@ -321,15 +321,21 @@ function setThreadDiagram(containerID, diagram) {
   container.node().data = diagram
   container.html(D3jsSVG.render(diagram, "2px", markers = true, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
   animateDiagram(container, 744, 1052)
-  container.selectAll(".threadStart").on("click", paintThread)
+  container.selectAll(".threadStart").on("click", paintThreadByStart)
+  container.selectAll(".bobbin").on("click", paintThreadByBobbin)
 }
-function paintThread() {
-
+function paintThreadByStart() {
   // firstChild == <title>
   var eventTarget = d3.event.target
+  paintThread(eventTarget, eventTarget.firstChild.innerHTML.replace(" ", ""))
+}
+function paintThreadByBobbin() {
+  var eventTarget = d3.event.target
+  paintThread(eventTarget, eventTarget.attributes["class"].value.replace(/.* /,""))
+}
+function paintThread(eventTarget, className) {
+
   var containerID = eventTarget.parentNode.parentNode.parentNode.id
-  // TODO it would be more efficient to select siblings of eventTarget
-  var className = eventTarget.firstChild.innerHTML.replace(" ", "")
   var segments = d3.selectAll("#" + containerID + " ." + className)
   var newColor = segments.style("stroke")+"" == "rgb(255, 0, 0)" ? "#000" : "#F00"
   segments.style("stroke", newColor)

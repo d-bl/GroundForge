@@ -168,12 +168,14 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
                          ): String = nodes.map { node =>
     val opacity = if (node.bobbin || node.pin) 1 else opacityOfHiddenObjects
     val stroke = if (node.bobbin) "rgb(0, 0, 0); stroke-width: 2px" else "none"
+    val title = if (node.bobbin) node.cssClasses.replaceAll(".*d", "thread ")
+                else node.title
     s"""<path
        | class="${node.cssClasses}"
        | d="${shape(node)}"
        | style="fill: rgb(0, 0, 0); stroke: $stroke; opacity: $opacity"
        | transform="translate(${node.x},${node.y})"
-       |><title>${node.title}</title></path>""".stripMargin
+       |><title>$title</title></path>""".stripMargin
   }.mkString
 
   /** Prefix required when writing to an SVG file */
