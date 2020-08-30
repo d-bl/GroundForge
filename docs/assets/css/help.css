@@ -13,6 +13,8 @@ Header { background: #3679cd url(../images/header-bg-left.png) top right repeat;
 #sidebar li { list-style-type: none; padding-bottom: 8px; }
 #sidebar li li { list-style-type: disc; padding-bottom: 0;}
 
+#fallBack { border: 10px solid orange; padding: 5px; }
+
 li li { padding-bottom:0; }
 td, th { text-align: left }
 th { font-weight: bold; }
