@@ -3,22 +3,7 @@ layout: default
 title: GroundForge - Home
 ---
 
-<p id="fallBack" style="display: none;">
-You seem to have followed an old link to a pattern definition, you can try to recover the pattern:
-download release 
-<a href="https://github.com/d-bl/GroundForge/releases/download/2019-Q1/GroundForge-pages.zip"
->2019&ndash;Q1</a>, unzip, open the <code>index.html</code> file in your browser
-and copy-paste the following text at the end of the address:
-<br>
-<input type="text" value="" id="toWayBack" style="width: 100%"/>
-</p>
-<script>
-  var args = window.location.href.replace(/[^?]+/,"")
-  document.getElementById("toWayBack").value = args
-  if (args && args.trim() != "") {
-    document.getElementById("fallBack").style = "display:block"
-  }
-</script>
+{% include fallback.html %}
 
 Select a pair diagram from one of the [catalogue](#pattern-catalogues) pages or create your own.
 Choose stitches for thread diagram variations and toggle the thread colors
