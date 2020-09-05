@@ -11,9 +11,9 @@ The lists of steps below will give you your own stable version.
 
 * Register or login at github.
 * [Fork] the projects
-  [GroundForge](https://d-bl.github.io/GroundForge),
-  [tesselace-to-gf](https://d-bl.github.io/tesselace-to-gf) and
-  [gw-lacelace-to-gf](https://d-bl.github.io/gw-lacelace-to-gf);
+  [GroundForge](https://github.com/d-bl/GroundForge),
+  [tesselace-to-gf](https://github.com/d-bl/tesselace-to-gf) and
+  [gw-lace-to-gf](https://github.com/d-bl/gw-lace-to-gf);
   in this context to _not_ stay synced.
 * For each fork: [Configure] the `/docs` folder as publishing source for GitHub Pages,
   it will tell you where you can access the pages.

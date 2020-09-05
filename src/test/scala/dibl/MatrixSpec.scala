@@ -23,7 +23,7 @@ import scala.reflect.ClassTag
 /** checks for typos in HashMap-s and more */
 class MatrixSpec extends FlatSpec with Matchers {
 
-  "test values" should  "find matrices in docs/help/Tesselace-Index.md" ignore {
+  "test values" should  "find matrices in ../gw-lace-to-gf/index.md" ignore {
     Patterns.tesselace.size shouldBe 449
   }
 

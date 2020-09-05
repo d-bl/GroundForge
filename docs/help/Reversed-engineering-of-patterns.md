@@ -17,7 +17,7 @@ Different methods allow to reproduce a pattern with GroundForge.
 Recognize patterns
 ------------------
 
-The [catalogue pages](Catalogues) are the easiest way to start experimenting with grounds.
+The [catalogue pages](/GroundForge) are the easiest way to start experimenting with grounds.
 
 The generated pair diagrams don't care about plaits and something-pin-something
 and draw them as plain cloth stitches.
@@ -31,7 +31,7 @@ Let us illustrate the process with an example:
 
 ![](images/recognize.png)
 
-* left: the desired pattern (pattern 3086 of "Gründe mit System" by Uta Ulrich, 4F in mrs [Whiting index](/gw-lace-gf))
+* left: the desired pattern (pattern 3086 of "Gründe mit System" by Uta Ulrich, 4F in mrs [Whiting index](/gw-lace-to-gf))
 * 2nd: simplified something-pin-something to plain stitches
 * 3rd: snapping stitches to grid positions
 * 4th: a partially squeezed version also snapping to grid positions

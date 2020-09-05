@@ -29,7 +29,7 @@ Known examples:
 
 [MAE-gf/droste]: https://maetempels.github.io/MAE-gf/docs/droste#wobble
 [wobble.html]: https://github.com/MAETempels/MAE-gf/blob/master/_includes/wobble.html
-[valenciennes]: /GroundForge/blob/master/docs/_includes/val-variants.html
+[valenciennes]: https://github.com/d-bl/gw-lace-to-gf/blob/master/docs/_includes/val-variants.html
 [Whiting-Index]: /gw-lace-to-gf#val
 [woble.html]: https://github.com/MAETempels/MAE-gf/blob/master/_includes/wobble.html
 
