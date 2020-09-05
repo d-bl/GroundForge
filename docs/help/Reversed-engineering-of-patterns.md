@@ -69,7 +69,7 @@ GroundForge uses only rectangular tiles, that might not match the natural repeat
 The tiles in the example are surrounded with a red-dotted line and stacked as bricks in a wall. 
 An alternative stacking method looks like a checker board though the tiles can be rectangles.
 Finally read the matrix from the symbols within one tile.
-Note that empty spots require a dash as shown on [choose stitches](Tiles#choose-stitches),
+Note that empty spots require a dash as shown on [choose stitches](Replace),
 it would get confusing with this example.
 
 To see if it is possible to reduce a rectangular tile to bricks,

@@ -6,7 +6,7 @@ title: Replace stitches
 
 Replace / skip stitches
 =======================
-The second screen-cast video on the [intro] page shows how to change or replace stitches. 
+The screen-cast video on the [Binche] page shows how to change or replace stitches. 
 The faint nodes in the prototype diagram repeat the bold ones.
 Click on a bold node to make a yellow form field appear with a stitch definition.
 

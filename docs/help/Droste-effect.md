@@ -21,13 +21,13 @@ some times they are mirrored or have other small variations.
 level 1                                                                  | interactive<br>diagrams    | level 2     | [Whiting index](/gw-lace-to-gf)
 -------------------------------------------------------------------------------------|----------------|-------------|---------
 single stitch | <span>click 2nd ![](../images/wand.png) too!</span>
-![](stitches/ct.png) ![](stitches/ct-color1.png)                                     | [ct-ctct]      | ![](/gw-lace-to-gf/docs/w/page76a.gif) | A5, A6, B5, C6, [A7-H7,G11]
-![](stitches/ctct.png) ![](stitches/ctct-color1a.png) ![](stitches/ctct-color1b.png) | [ctct-ct/ctct] | ![](/gw-lace-to-gf/docs/w/page120a.gif) ![](stitches/ctct-color2a.png) ![](stitches/ctct-color2b.png) | A2, B2, B6, C6
-![](stitches/crclct.png) | [crclct-ct/ctct] | ![](/gw-lace-to-gf/docs/w/page139a.gif) ![](stitches/crclct-color2.png) | C6
+![](stitches/ct.png) ![](stitches/ct-color1.png)                                     | [ct-ctct]      | ![](/gw-lace-to-gf/w/page76a.gif) | A5, A6, B5, C6, [A7-H7,G11]
+![](stitches/ctct.png) ![](stitches/ctct-color1a.png) ![](stitches/ctct-color1b.png) | [ctct-ct/ctct] | ![](/gw-lace-to-gf/w/page120a.gif) ![](stitches/ctct-color2a.png) ![](stitches/ctct-color2b.png) | A2, B2, B6, C6
+![](stitches/crclct.png) | [crclct-ct/ctct] | ![](/gw-lace-to-gf/w/page139a.gif) ![](stitches/crclct-color2.png) | C6
 ![](stitches/clcrclc.png) | [clcrclc-ctc] | ![](stitches/clcrclc-color2.png)
-![](stitches/ctctc.png) | [ctctc-ctc] | ![](/gw-lace-to-gf/docs/w/page178a.gif) | F2
+![](stitches/ctctc.png) | [ctctc-ctc] | ![](/gw-lace-to-gf/w/page178a.gif) | F2
 stitch mix |
-![](stitches/ctc-ctcr.png) ![](stitches/ctc-ctcr-color.png)  | 2 x [ctc+t]* | ![](/gw-lace-to-gf/docs/w/page150a.gif) | D16
+![](stitches/ctc-ctcr.png) ![](stitches/ctc-ctcr-color.png)  | 2 x [ctc+t]* | ![](/gw-lace-to-gf/w/page150a.gif) | D16
 ![](stitches/2x-ct-ctct.png) | 2 x [ct/ctct] | surprise!
 
 *: the second level pair diagram looks a bit weird because "stitches" don't cross.
