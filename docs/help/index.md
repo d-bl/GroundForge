@@ -1,15 +1,14 @@
 ---
 layout: default
-title: Help Intro
+title: Getting Started
 lang: en
 ref: intro
 ---
 
-Help Intro
+Getting Started
 ==========
-+ [Experimenting with bobbin lace grounds](#experimenting-with-bobbin-lace-grounds)
 + [Virtual tour](#virtual-tour)
-+ [Overview Tutorial](#overview-tutorial)
++ [GroundForge 101](#groundforge-101)
    + [Highlight a thread](#highlight-a-thread)
    + [Resize pattern](#resize-pattern)
    + [Modify stitches](#modify-stitches)
@@ -17,19 +16,8 @@ Help Intro
    + [Save and share changes](#save-and-share-changes)
    + [Create a new ground pattern](#create-a-new-ground-pattern)
    + [Add footsides](#add-footsides)
-   + [Binche snowflakes](#next-step)
+   + [Next steps](#next-steps)
    
-
-Experimenting with bobbin lace grounds
---------------------------------------
-
-GroundForge is a tool that complements existing lace ground catalogues ([TesseLace](/tesselace-to-gf/), [Whiting](/gw-lace-to-gf/), [Flanders](https://maetempels.github.io/MAE-gf/docs/flanders), [MAE](https://maetempels.github.io/MAE-gf/)) by making it possible to play with their designs.
-GroundForge generates an interactive thread diagram for each ground in the catalogue which allows you to highlight the path of a thread; a useful feature when working with multiple thread colours or thicknesses in a design.
-The tool also allows you to specify the combinations of stitches that are made when two pairs meet.  You can make changes and quickly observe how this affects the thread diagram.
-This greatly speeds up the process of experimenting with lace grounds; no need to wind bobbins or prepare prickings. The final test is always to make a hand-worked sample&mdash;only in a physical sample can the interactions between pins and threads under tension be completely observed&mdash;however, GroundForge can help you narrow the number of samples you need to test by hand.
-You can experiment and play around with the hundreds of patterns provided here, or you can create your own.
-Even when reinventing the wheel, your own discoveries can bring great joy.
-
 
 Virtual tour
 ------------
@@ -37,7 +25,7 @@ Virtual tour
 Take a walk through the various catalogues on the GroundForge website in this [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4) (MP4 format, 123 MB, 2:32 min). You will notice that Rose ground, and many variations related to it, appears in each of the catalogues.  
 Different stitches for the same pair diagram yield very different results.  Pause, rewind, and slow down the video to get the most out of it.
 
-Overview Tutorial
+GroundForge 101
 -----------------
 
 In the following tutorial, we will explore a versatile ground from the [Whiting catalogue] and illustrate some basic features of GroundForge.
@@ -109,10 +97,14 @@ In addition to modelling a lace ground, GroundForge can also model a footside fo
 For example, here is [footside for Whiting G-2](/GroundForge/tiles?whiting=G2_P199&patchWidth=11&patchHeight=22&r1=ctcrr&q1=ctc&j1=ctctt&e1=ctcctc&c1=ctc&b1=ctcll&s2=ctctt&r2=ctc&q2=ctcll&p2=ctc&n2=ctc&m2=ctclll&l2=ctctt&k2=ctctt&j2=ctctt&i2=ctctt&h2=ctctt&g2=ctcrrr&f2=ctc&d2=ctc&c2=ctcrr&b2=ctc&a2=ctctt&r3=ctcrr&q3=ctc&p3=ctcrr&n3=ctclll&m3=ctctt&l3=ctctt&k3=ctcttl&j3=ctc&i3=ctcttr&h3=ctctt&g3=ctctt&f3=ctcrrr&e3=ctc&d3=ctcll&c3=ctc&b3=ctcll&s4=ctctt&r4=ctc&q4=ctcll&p4=ctctt&n4=ctctt&m4=ctctt&l4=ctcttl&k4=ctc&j4=ctc&i4=ctc&h4=ctcttr&g4=ctctt&f4=ctctt&e4=ctcttt&d4=ctctt&c4=ctcrr&b4=ctc&a4=ctctt&r5=ctcrr&q5=ctc&p5=ctctt&n5=ctctt&m5=ctcttl&l5=ctc&k5=ctc&i5=ctc&h5=ctc&g5=ctcttr&f5=ctctt&e5=ctctt&d5=ctctt&c5=ctc&b5=ctcll&s6=ctctt&r6=ctc&q6=ctcll&c6=ctcrr&b6=ctc&a6=ctctt&s7=ctctt&r7=ctcrr&q7=ctc&p7=ctctt&d7=ctctt&c7=ctc&b7=ctcll&a7=ctctt&r8=ctc&q8=ctcll&p8=ctcll&d8=ctcrr&c8=ctcrr&b8=ctc&s9=ctctt&r9=ctcrr&q9=ctc&p9=rr&d9=ll&c9=ctc&b9=ctcll&a9=ctctt&r10=ctc&q10=ctcll&p10=ctcrr&d10=ctcll&c10=ctcrr&b10=ctc&footside=X14-,4886,-111,B883,X111,488-,1115,X786,1114,X786&tile=5----5----,-CDD632AAB,5666632222,5666632222,56666-2222&headside=-78X,2117,888-,311C,888X,-117,5888,214X,7888,214X&footsideStitch=ctc&tileStitch=ctctt&headsideStitch=ctctt&shiftColsSW=-5&shiftRowsSW=5&shiftColsSE=5&shiftRowsSE=5).
 There is an advanced tutorial on how to [create footsides](Advanced#foot-sides).
 
-<a name="BK-31"></a>
-### Next step
+### Next steps
 
-For a more advanced example, try experimenting with four snowflake variations in [Binche Kompakt ground number 31](Binche).
+<a name="BK-31"></a>
+* Experiment with four snowflake variations in [Binche Kompakt: ground number 31](Binche).
+* [Create a prototype](Advanced)
+* Learn about [the Droste effect](Droste-effect)
+
+
 
 
 
