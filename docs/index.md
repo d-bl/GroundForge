@@ -37,4 +37,4 @@ Pattern Catalogues
 
 Community Contributions
 -----------------------
-* [3x4 TesseLace patterns](/tesselace-to-gf/fouche_3x4.md) interpreted by Pierre Fouch&#233;
+* [3x4 TesseLace patterns](/tesselace-to-gf/fouche_3x4) interpreted by Pierre Fouch&#233;
