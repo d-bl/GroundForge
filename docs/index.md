@@ -28,8 +28,8 @@ Tutorials
 
 Pattern Catalogues
 -----------------
-* [TesseLace algorithmically generated grounds](https://d-bl.github.io/tesselace-to-gf)
-* [Gertrude Whiting's sampler](https://d-bl.github.io/gw-lace-to-gf)
+* [TesseLace algorithmically generated grounds](/tesselace-to-gf)
+* [Gertrude Whiting's sampler](/gw-lace-to-gf)
 * [Flanders variations](https://maetempels.github.io/MAE-gf/docs/flanders)
 * [MAE-gf](https://maetempels.github.io/MAE-gf/) (More Attractive Examples - *g*round*f*orge)
   * includes variations on [Paris](https://maetempels.github.io/MAE-gf/docs/paris), [bias](https://maetempels.github.io/MAE-gf/docs/bias), [spiders](https://maetempels.github.io/MAE-gf/docs/spiders), [snowflakes](https://maetempels.github.io/MAE-gf/docs/snowflakes), [triangular](https://maetempels.github.io/MAE-gf/docs/tria), [lotus](https://maetempels.github.io/MAE-gf/docs/lotus) and [3-pair joins](https://maetempels.github.io/MAE-gf/docs/misca#3-paired-join).
@@ -37,4 +37,4 @@ Pattern Catalogues
 
 Community Contributions
 -----------------------
-* [3x4 TesseLace patterns](https://github.com/veronika/tesselace-to-gf/blob/e21c823/docs/fouche_3x4.md) interpreted by Pierre Fouch&#233;
+* [3x4 TesseLace patterns](/tesselace-to-gf/docs/fouche_3x4.md) interpreted by Pierre Fouch&#233;
