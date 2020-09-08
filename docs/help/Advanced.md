@@ -102,35 +102,35 @@ For convenience, you can set all stitches in the pattern to the same value.  In 
 
 Footside Tutorial
 -----------------
-You may want to study how threads disappearing in foot sides return back into the ground.
-Foot sides are defined in the side panels of the "define a repeat" form in the advanced section.
-Note that the right foot sides depends on the chosen patch width alias number of columns.
+In the "Define a repeat" section, the central panel defines the ground, and the left and right side panels define the left and right footsides.
 
-Foot sides may require one or two columns of additional stitches.
-It is a matter of piecing a puzzle together with symbols from the cheat sheet.
-The symbols with a single arrow can extend an arrow of any symbol to make it fit.
+![](images/definition_labels.png)
 
-Annotated screen shot snippets of an example:
+The leftmost edge of the central patch is determined by the leftmost column in the ground definition.  If you want to change where the patch starts on the left, you must choose a different starting point for the base pattern and modify the ground definition accordingly.
 
-![](images/foot-sides.png)
+The rightmost edge of the patch depends on the number of columns specified in the "Patch size".  If you change the number of columns in the patch size, the right footside may no longer match correctly.
 
-[Live version](/GroundForge/tiles?patchWidth=7&patchHeight=18&a3=-&footside=B,-,C,-,B,-,B,-,&tile=-5-,5-5,-5-,B-C,-5-&headside=5,-,&footsideStitch=tctctr&tileStitch=ct&headsideStitch=-&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4)
+First, we will consider the simple example of Torchon Ground.  Lay a square grid over the pair diagram. A "kissing path" is a path that follows one set of pairs in the pair diagram.  When two pairs intersect, the kissing path does not cross to the other side, it just "kisses" and continues.  You can think of it as the path that a pair of threads would follow if a turning stitch (cttct) is used at each intersection.  Trace the kissing paths for the pairs at the edge of the pair diagram, shown in yellow and blue below.  Add a kissing path for the last pair (shown in red below).  Finally, label the incoming pair intersections using the symbols in the Cheat Sheet.
 
-The blue and purple rectangles in this example illustrate corresponding
-sections in the form, prototype diagram and pair diagram.
-The yellow curves in the prototype show how extended arrows are reduced
-to a single connection between stitches in the pair diagram.
-Note that the twist marks only indicate multiple twists, not how many.
+![](images/simple-footside.png)
 
-On the right side we only added extensions.
-In practice you would need at least one column with real stitches
-to choose other stitches for the foot side than for the pattern.
-This example shows that extensions don't need to be a straight line. 
-The bold yellow curve causes two stitches connected with two pairs.
-In those cases the stitches are merged into a single stitch in the pair diagram.
-Thus both pairs for the bottom stitch are stretched.
-You can still choose to apply a plait for the thread diagram in those cases,
-well, if it happens in an added column and is not part of the ground.
+Below is the completed footside definition. Footside definitions are repeated in one direction, like a frieze pattern.  In this example, the definition for the left footside of the Torchon ground is "X,4" so the left footside will be "X,4,X,4,X,4,..." for as many rows as are in the patch. Note that in this example, the footside definition has two rows while the ground definition only has one row.  The ground and footside definitions may not always have the same number of rows.
+
+![](images/simple-footside-definition.png)
+
+Now consider the more complicated example of [G-4] in the Whiting sampler.  We follow the same steps: lay a grid over the pair diagram and trace out the kissing paths on the left edge of the pattern.  Note that this time the blue and green kissing paths are not complete.  There are missing sections meaning that pairs are left hanging.  For the left footside, we need to complete the blue and green kissing paths.  We also added a red kissing path to make a clean straight edge. In total, three columns were required to define this footside.
+
+![](images/complex-footside.png)
+
+Below is the completed footside definition.  Notice the red box around "V,6" in the ground area of the prototype.  In the original definition, this was "-,L" which draws a long horizontal edge.  The long edge stuck out on the left side of the patch.  We can get a better looking footside by shortening this edge.  In order to get a short edge on the left side of the patch, we changed the ground definition to use two short horizontal edges in a row ("V,6") instead of one long edge ("-,L").  The symbols "V,6" and "-,L" look the same in the thread diagram.  On the footside, we can cut the ground pattern off at "6" which gives a nicer looking result (see red box around "C,6", the "C" intersection is part of the footside.  The "6" intersection is part of the ground).
+
+![](images/complex-footside-definition.png)
+
+In these examples, the footside has ended in a simple straight line.  Othe roptions are possible.  You can define a wavy footside or you can make the footside more elaborate to include several passives.
+
+[G-4]: /GroundForge/tiles?whiting=G4_P201&patchWidth=40&patchHeight=19&i1=ctctt&f1=ctc&e1=ctc&d1=ctc&c1=ctc&a1=ctctt&g2=ctc&i3=ctc&f3=ctc&e3=ctc&d3=ctc&c3=ctcll&a3=ctctt&n4=ctctt&l4=ctctt&j4=ctctt&h4=ctctt&f4=ctt&d4=ctcll&c4=ctcll&b4=ctctt&g5=ctctt&c5=ctctt&n6=ctctt&j6=ctctt&m7=c&k7=ctc&j7=ctc&i7=ctctt&g7=ctctt&e7=ctctt&c7=ctctt&a7=ctctt&tile=5-m998-z5-----,------5-------,g-aaab-wd-----,-246-m-l-o-k-e,--5---5---y-w-,---w-y---b---c,h-g-5-n-l3h-e-,&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-7&shiftRowsSW=7&shiftColsSE=7&shiftRowsSE=7
+
+[passives]: /GroundForge/tiles?patchWidth=19&patchHeight=21&y1=ctcttr&g1=ctct&a1=ctcttl&x2=ctc&w2=ctc&h2=ct&f2=ct&d2=ct&c2=ctc&b2=ctc&x3=ctcrr&w3=ctc&i3=ctct&g3=ctc&e3=ctct&d3=ct&c3=ctc&b3=ctcll&y4=ctcttr&x4=ctc&w4=ctc&h4=ctc&f4=ctc&c4=ctc&b4=ctc&a4=ctcttl&i5=ctc&h5=ctc&g5=ctc&f5=ctc&e5=ctc&d5=ct&g6=ctc&y7=ctcttr&x7=ctcrr&w7=ctc&i7=ctcr&h7=ctc&g7=ctc&f7=ctc&e7=ctcl&d7=ct&c7=ctc&b7=ctcll&a7=ctcttl&x8=ctc&w8=ctc&h8=ctcr&f8=ctcl&d8=ct&c8=ctc&b8=ctc&i9=ctct&g9=ctct&e9=ctct&x10=ctcrr&w10=ctc&h10=ct&f10=ct&d10=ct&c10=ctc&b10=ctcll&footside=B--,XCD,-11,B88,XXX,---,AAA,X78,X--,-AA&tile=---5--,D-B-C-,15-5-5,--5-5-,C63532,---5--,AAB3CD,8-5-5-,-5-5-5,B-5-5-&headside=--C,ABX,88-,11C,XXX,---,DDD,14X,--X,DD-&footsideStitch=ctct&tileStitch=ctc&headsideStitch=ctct&shiftColsSW=0&shiftRowsSW=10&shiftColsSE=6&shiftRowsSE=5
 
 Thread diagram as pair diagram
 ------------------------------
