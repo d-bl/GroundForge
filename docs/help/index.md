@@ -45,7 +45,7 @@ Open the [diagram] for ground G-2 (column G, row 2) in the [Whiting catalogue].
 
 ### Highlight a thread
 
-In the thread diagram on the far right, click on the gray square at the start of a thread.  You may need to scroll to the top of the diagram to see it.  The colour of the thread will change from black to red.  Click on the square again and the thread colour returns to black.  You can highlight more than one thread at a time.  For more colours and options, visit [thread properties](Thread-Properties).
+In the thread diagram on the far right, click on the gray square at the start of a thread or the black bobbin at the end of a thread.  You may need to scroll the diagram to see the ends of a thread.  The colour of the thread will change from black to red.  Click on the square or bobbin again and the thread colour returns to black.  You can highlight more than one thread at a time.  For more colours and options, visit [thread properties](Thread-Properties).
 
 ![](images/G2-toggle-thread.png)
 
