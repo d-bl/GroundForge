@@ -22,6 +22,8 @@ Below are four main variations showing the prototype diagram (top row) and corre
 
 _Figure 2: Four variations of TT4_
 
+<a name="nrs"/>
+
 The extensive catalogue _Viele gute Gründe_ by Ulricke Voelcker-Löhr contains many snowflake variations.  Several of these are similar to the four variations presented here:
 * In 7 snowflakes (B3.25, B3.71-B3.76), two diagonal pairs cross twice, as in the first variation above.
 * In 28 snowflakes (B3.5, B3.6, B3.17-B3.23, B3.26-B3.36, B3.93, B3.103, B3.132, B3.139, B3.140), diagonal pairs cross just once as in the second variation above.
