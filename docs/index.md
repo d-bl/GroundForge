@@ -28,13 +28,12 @@ Tutorials
 
 Pattern Catalogues
 -----------------
-* [TesseLace algorithmically generated grounds](/tesselace-to-gf)
+* [TesseLace](/tesselace-to-gf) algorithmically generated grounds
 * [Gertrude Whiting's sampler](/gw-lace-to-gf)
-* [Flanders variations](https://maetempels.github.io/MAE-gf/docs/flanders)
-* [MAE-gf](https://maetempels.github.io/MAE-gf/) (More Attractive Examples - *g*round*f*orge)
-  * includes variations on [Paris](https://maetempels.github.io/MAE-gf/docs/paris), [bias](https://maetempels.github.io/MAE-gf/docs/bias), [spiders](https://maetempels.github.io/MAE-gf/docs/spiders), [snowflakes](https://maetempels.github.io/MAE-gf/docs/snowflakes), [triangular](https://maetempels.github.io/MAE-gf/docs/tria), [lotus](https://maetempels.github.io/MAE-gf/docs/lotus) and [3-pair joins](https://maetempels.github.io/MAE-gf/docs/misca#3-paired-join).
-
-
+  
 Community Contributions
 -----------------------
-* [3x4 TesseLace patterns](/tesselace-to-gf/fouche_3x4) interpreted by Pierre Fouch&#233;
+* [Flanders samples](https://maetempels.github.io/MAE-gf/docs/flanders)
+* [MAE-gf](https://maetempels.github.io/MAE-gf/) (More Attractive Examples - *g*round*f*orge)
+  * includes variations on [Paris](https://maetempels.github.io/MAE-gf/docs/paris), [bias](https://maetempels.github.io/MAE-gf/docs/bias), [spiders](https://maetempels.github.io/MAE-gf/docs/spiders), [snowflakes](https://maetempels.github.io/MAE-gf/docs/snowflakes), [triangular](https://maetempels.github.io/MAE-gf/docs/tria), [lotus](https://maetempels.github.io/MAE-gf/docs/lotus) and [3-pair joins](https://maetempels.github.io/MAE-gf/docs/misca#3-paired-join).
+* [3x4 TesseLace samples](/tesselace-to-gf/fouche_3x4) interpreted by Pierre Fouch&#233;
