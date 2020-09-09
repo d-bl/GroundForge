@@ -141,29 +141,25 @@ You can also create a traditional footside that has several [passives].
 
 Thread diagram as pair diagram
 ------------------------------
+**This feature is still under construction.  We welcome any suggestions on how to improve it.**
 
-Sorry, nothing like the prototype diagram to choose stitches for these sets of diagrams.
-The team of GroundForge could use the help of a seasoned front end engineer for a more convenient user interface.
+In a typical pair diagram, two pairs intersect at each crossing and then continue.  In a thread diagram, two threads meet at each crossing and then continue.  So why not take a thread diagram, flatten all the over/under information, and use it as a pair diagram?  In this way, you can create a new, usually more complex pattern.  You can repeat this process over and over again.    In mathematics, this is called ["recursion"](https://en.wikipedia.org/wiki/Recursion).  In art, it is sometimes called the ["Droste effect"](https://en.wikipedia.org/wiki/Droste_effect).
 
-You can choose to use one stitch everywhere. Or two different stitches:
-one for each cross in the preceding thread diagram, the other for each twist.
-To make exceptions to these rules you need to hover over a stitch
-in the pair diagram to discover its id for stitch assignments.
+![](images/simple-droste.png)
 
-An example mixing all the options mentioned above:
+In GroundForge, click on the ![wand](../images/wand.png) image under the "Reuse thread diagram as pair diagram" heading. 
+ 
+![](images/reuse.png)
 
-![](images/assign-stitches.png)
+There are several options for specifying which stitches appear in the new thread diagram.
 
-The overall default in this example is a `ctct`.
-A more selective default is `ctc` for stitches that were twists in the preceding thread diagram.
-Two specific stitches are set to `ct`.
+By default, every stitch is `ctc`.  You can assign a new default stitch by typing the stitch in the input box that appears to the left of the new pair diagram. You can also assign one stitch to every "cross" in the original thread diagram by typing `cross=ctcll` in the input box.  Similarly, you assign a stitch to every "twist" in the original thread diagram using `twist=cttct`.  You can also specify a stitch for a specific intersection by first finding the identity of the intersection in the new pair diagram (hover over the intersection and the id will appear) and then giving it a new value in the input box such as `b10=clcl`.  You can combine any of these options in the input box.  Use a new line or a comma to separate each instruction. After editing the stitches in the input box, click on the ![wand](../images/wand.png) image **above** the pair diagram.
 
-The page on the [Droste effect](Droste-effect) has some example patterns.
+![](images/droste-assign-stitches.png)
 
-![](../images/under-construction.png) Note that spaces may have unexpected results, 
-recommended delimiters between assignments: new lines or `,`.
+To repeat this process a second time, click on the ![wand](../images/wand.png) image **below** the new pair diagram.  This will create a second new thread diagram by using the thread diagram above the wand as a pair diagram.
 
-Foot sides can get complicated to define when a pattern has a worker.
-At the second and third level two respective four pairs
-work from left to right before returning from right to left.
-In practice it might be very well possible to alternate the direction every other row.
+![](images/droste-repeat-assign-stitches.png)
+
+See the [Droste effect](Droste-effect) page more examples.
+
