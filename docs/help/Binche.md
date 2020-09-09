@@ -7,13 +7,13 @@ ref: binche
 
 Example from Binche Kompakt
 ===========================
- [_Binche Kompakt_](https://www.deutscher-kloeppelverband.de/katalog/) is sampler designed by Hildegund Jene which featured 32 different grounds drawn from Flemish, Parisian,and Valenciennes laces.  Ground number 31 in the sampler is particularly challenging to work because it uses a combination of half-stitch (CT) and whole-stitch (CTCT). To better understand this ground, Jo Pol created a model of it using GroundForge.
+ [_Binche Kompakt_](https://www.deutscher-kloeppelverband.de/katalog/) is sampler designed by Hildegund Jene which features 32 different grounds drawn from Flemish, Parisian,and Valenciennes laces.  Ground number 31 in the sampler is particularly challenging to work because it uses a combination of half-stitch (CT) and whole-stitch (CTCT) in the ring pairs. To better understand this ground, a GroundForge model was made.
 
 ![](images/kompakt-31-challenge.png)
 
 _Figure 1: Paris ground and snowflake rings worked with whole (CTCT, red) and half (CT, green) stitch_
 
-Now that this lace ground has been captured in GroundForge, it is relatively straight forward to play with different snowflake variations. 
+Since this lace ground has been captured in GroundForge, it is relatively straight forward to play with different snowflake variations. 
 We invite you to experiment using the GroundForge base pattern [with] or [without] foot sides.  Click on a circle in the prototype diagram.  When a yellow popup appears, edit the stitch description to change (_using any combination of 'c', 't', 'r' or 'l'_) or drop (_'-'_) a stitch.  For more detailed instructions on editing the stitches, please refer to the [Help introduction](index). 
 
 Below are four main variations showing the prototype diagram (top row) and corresponding thread diagram (bottom row).
