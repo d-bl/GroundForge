@@ -23,8 +23,9 @@ Tutorials
 ---------
 * [Getting started](help)
 * [Variations on a Binche ground](help/Binche)
-* [Create a prototype](help/Advanced)
-* [The Droste effect](help/Droste-effect)
+* [Create a prototype](help/Advanced#prototype-tutorial)
+* [Add a footside](help/Advanced#footside-tutorial)
+* [Create new pattern from thread diagram](help/Advanced#thread-diagram-as-pair-diagram)
 
 Pattern Catalogues
 -----------------
