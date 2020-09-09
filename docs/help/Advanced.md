@@ -110,23 +110,28 @@ The leftmost edge of the central patch is determined by the leftmost column in t
 
 The rightmost edge of the patch depends on the number of columns specified in the "Patch size".  If you change the number of columns in the patch size, the right footside may no longer match correctly.  Note that the number of columns required for the footsides are not included in the "Patch size".  They are added on top of the width that you specify.
 
-First, we will consider the simple example of Torchon Ground.  Lay a square grid over the pair diagram. A "kissing path" is a path that follows one set of pairs in the pair diagram.  When two pairs intersect, the kissing path does not cross to the other side, it just "kisses" and continues.  You can think of it as the path that a pair of threads would follow if a turning stitch (cttct) is used at each intersection.  Trace the kissing paths for the pairs at the edge of the pair diagram, shown in yellow and blue below.  Add a kissing path for the last pair (shown in red below).  Finally, label the incoming pair intersections using the symbols in the Cheat Sheet.
+First, we will consider the simple example of Torchon Ground.  Lay a square grid over the pair diagram. We must identify the loose ends of pairs along the edge and match them up where possible. To do this, we can use a "kissing path". A kissing path follows one set of pairs through the pair diagram.  When two pairs intersect, the kissing path does not cross over to the other side, it just touches the other pair ("kisses") and continues.  You can think of it as the path that a pair of threads would follow if a turning stitch (cttct) is used at each intersection.  The kissing paths for the pairs at the edge of the pair diagram are shown in yellow and blue below. Note that several incoming edges are missing on the yellow path (dashed red lines).  We can add them by labelling the incoming pair intersections using the symbols 'W', 'Y' and '-' in the Cheat Sheet:
+
+![](images/simple-wavy-footside.png)
+
+Below is the [completed footside definition](/GroundForge/tiles?patchWidth=6&patchHeight=5&b1=ctct&footside=-,Y&tile=5-&headside=W,-&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1). Footside definitions are repeated in one direction, like a frieze pattern.  In this example, the definition for the left footside of the Torchon ground is "-,Y" so the left footside will be "-,Y,-,Y,-,Y,..." for as many rows as are in the patch. Note that in this example, the footside definition has two rows while the ground definition only has one row.  The ground and footside definitions may not always have the same number of rows.
+
+![](images/simple-wavy-footside-prototype.png)
+  
+Alternatively, we can make the edge straight by adding another pair of threads, shown in red below. 
 
 ![](images/simple-footside.png)
 
-Below is the completed footside definition. Footside definitions are repeated in one direction, like a frieze pattern.  In this example, the definition for the left footside of the Torchon ground is "X,4" so the left footside will be "X,4,X,4,X,4,..." for as many rows as are in the patch. Note that in this example, the footside definition has two rows while the ground definition only has one row.  The ground and footside definitions may not always have the same number of rows.
 
-![](images/simple-footside-definition.png)
-
-Now consider the more complicated example of [G-4] in the Whiting sampler.  We follow the same steps: lay a grid over the pair diagram and trace out the kissing paths on the left edge of the pattern.  Note that this time the blue and green kissing paths are not complete.  There are missing sections meaning that pairs are left hanging.  For the left footside, we need to complete the blue and green kissing paths.  We also added a red kissing path to make a clean straight edge. In total, three columns were required to define this footside.
+Now consider the more complicated example of [G-4] in the Whiting sampler.  We follow the same steps: lay a grid over the pair diagram and trace out the kissing paths on the left edge of the pattern.  Note that this time the blue and green kissing paths are not complete; large sections are missing.  We need to add intersections to complete the blue and green kissing paths.  We can also add another kissing path, shown in red, to make a clean straight edge. In total, this footside requires three columns.
 
 ![](images/complex-footside.png)
 
-Below is the completed footside definition.  Notice the red box around "V,6" in the ground area of the prototype.  In the original definition, this was "-,L" which draws a long horizontal edge.  The long edge stuck out on the left side of the patch.  We can get a better looking footside by shortening this edge.  In order to get a short edge on the left side of the patch, we changed the ground definition to use two short horizontal edges in a row ("V,6") instead of one long edge ("-,L").  The symbols "V,6" and "-,L" look the same in the thread diagram.  On the footside, we can cut the ground pattern off at "6" which gives a nicer looking result (see red box around "C,6", the "C" intersection is part of the footside.  The "6" intersection is part of the ground).  We invite you to experiment with [G-4 with left footside] and develop a right footside.
+Below is [G-4 with left footside].  Notice the red box around "V,6" in the ground area of the prototype.  In the original definition, this was "-,L" which draws a long horizontal edge.  The long edge stuck out on the left side of the patch.  We can get a better looking footside by shortening this edge.  In order to get a short edge on the left side of the patch, we changed the ground definition to use two short horizontal edges in a row ("V,6") instead of one long edge ("-,L").  The symbols "V,6" and "-,L" look the same in the thread diagram.  On the footside, we can cut the ground pattern off at "6" which gives a nicer looking result (see red box around "C,6", the "C" intersection is part of the footside.  The "6" intersection is part of the ground).  As an exercise, create the right footside ([solution]()).
 
 ![](images/complex-footside-definition.png)
 
-In these examples, the footside has ended in a simple straight line.  Othe roptions are possible.  You can define a wavy footside or you can make the footside more elaborate to include several passives.
+You can also create a traditional footside that has several [passives].
 
 [G-4]: /GroundForge/tiles?whiting=G4_P201&patchWidth=40&patchHeight=19&i1=ctctt&f1=ctc&e1=ctc&d1=ctc&c1=ctc&a1=ctctt&g2=ctc&i3=ctc&f3=ctc&e3=ctc&d3=ctc&c3=ctcll&a3=ctctt&n4=ctctt&l4=ctctt&j4=ctctt&h4=ctctt&f4=ctt&d4=ctcll&c4=ctcll&b4=ctctt&g5=ctctt&c5=ctctt&n6=ctctt&j6=ctctt&m7=c&k7=ctc&j7=ctc&i7=ctctt&g7=ctctt&e7=ctctt&c7=ctctt&a7=ctctt&tile=5-m998-z5-----,------5-------,g-aaab-wd-----,-246-m-l-o-k-e,--5---5---y-w-,---w-y---b---c,h-g-5-n-l3h-e-,&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-7&shiftRowsSW=7&shiftColsSE=7&shiftRowsSE=7
 
