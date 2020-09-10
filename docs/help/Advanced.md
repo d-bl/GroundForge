@@ -161,5 +161,5 @@ To repeat this process a second time, click on the ![wand](../images/wand.png) i
 
 ![](images/droste-repeat-assign-stitches.png)
 
-See the [Droste effect](Droste-effect) page more examples.
+See the [Droste effect](Droste-effect) page for more examples.
 
