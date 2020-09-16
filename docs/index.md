@@ -5,38 +5,37 @@ title: GroundForge - Home
 
 {% include fallback.html %}
 
-Select a pair diagram from one of the [catalogue](#pattern-catalogues) pages or create your own.
-Choose stitches for thread diagram variations and toggle the thread colors
-to investigate the paths for contrasting threads. 
-A [tutorial](help) explains how. 
+What is GroundForge?
+--------------------
 
-Below two pair diagrams, each with four examples of thread diagrams.
+GroundForge is a tool that complements existing lace ground [catalogues](#pattern-catalogues) by making it possible to play with their designs. 
+* It generates an interactive thread diagram in which you can highlight the path of a thread; a useful feature when working with multiple thread colours or thicknesses in a design.
+* You can specify the combinations of stitches to make when two pairs meet. This is very useful for communicating and documenting a new lace ground.
+* Experiment with lace grounds without the need to wind bobbins or prepare a pricking. The final test is always to make a hand-worked sample&mdash;only in a physical sample can the interactions between pins and threads under tension be completely observed&mdash;however, GroundForge can help you narrow the number of samples you need to test by hand.
+
+You can experiment and play around with the hundreds of patterns provided here, or you can create your own. Even when reinventing the wheel, your own discoveries can bring great joy.
 
 ![](help/images/weaving.png)
 
 ![](help/images/paris.png)
 
+Tutorials
+---------
+* [Getting started](help)
+* [Variations on a Binche ground](help/Binche)
+* [Create a prototype](help/Advanced#prototype-tutorial)
+* [Add a footside](help/Advanced#footside-tutorial)
+* [Create new pattern from thread diagram](help/Advanced#thread-diagram-as-pair-diagram)
+
 Pattern Catalogues
 -----------------
+* [TesseLace](/tesselace-to-gf) algorithmically generated grounds
+* [Gertrude Whiting's sampler](/gw-lace-to-gf)
+* Grounds from printed catalogues (such as _Viele gute Gründe_ by Ulricke Voelcker-Löhr, _The book of bobbin lace stitches_ by Bridget Cook and Geraldine Stott, or _Gründe mit System_ by Uta Ulrich) can be explored by [creating a prototype](help/Advanced#prototype-tutorial) in GroundForge.
 
-Some pages have images with "diagram" links in their captions:
-[Tesselace index](https://d-bl.github.io/tesselace-to-gf),
-index on [Gertrude Whiting]'s sampler
-and [Flanders](https://maetempels.github.io/MAE-gf/docs/flanders) (red/blue patches).
-
-[Gertrude Whiting]: https://d-bl.github.io/gw-lace-to-gf
-
-Other pages have their own conventions, such as linked images. 
-[Paris](https://maetempels.github.io/MAE-gf/docs/paris), 
-[bias](https://maetempels.github.io/MAE-gf/docs/bias), 
-[spiders](https://maetempels.github.io/MAE-gf/docs/spiders), 
-[snow](https://maetempels.github.io/MAE-gf/docs/snowflakes), 
-[triangular](https://maetempels.github.io/MAE-gf/docs/tria), 
-[lotus](https://maetempels.github.io/MAE-gf/docs/lotus), 
-[3-pair joins](https://maetempels.github.io/MAE-gf/docs/misca#3-paired-join), 
-and more from [MAE-gf](https://maetempels.github.io/MAE-gf/) (More Attractive Examples - *g*round*f*orge).
-
-Pierre Fouché made 23 white patches of Tesselace 
-[interpretations](https://github.com/veronika/tesselace-to-gf/blob/e21c823/docs/fouche_3x4.md).
-
-A versatile [Binche](help/Binche) ground explained.
+Community Contributions
+-----------------------
+* [Flanders samples](https://maetempels.github.io/MAE-gf/docs/flanders)
+* [MAE-gf](https://maetempels.github.io/MAE-gf/) (More Attractive Examples - *g*round*f*orge)
+  * includes variations on [Paris](https://maetempels.github.io/MAE-gf/docs/paris), [bias](https://maetempels.github.io/MAE-gf/docs/bias), [spiders](https://maetempels.github.io/MAE-gf/docs/spiders), [snowflakes](https://maetempels.github.io/MAE-gf/docs/snowflakes), [triangular](https://maetempels.github.io/MAE-gf/docs/tria), [lotus](https://maetempels.github.io/MAE-gf/docs/lotus) and [3-pair joins](https://maetempels.github.io/MAE-gf/docs/misca#3-paired-join).
+* [3x4 TesseLace samples](/tesselace-to-gf/fouche_3x4) interpreted by Pierre Fouch&#233;

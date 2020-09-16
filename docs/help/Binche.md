@@ -7,15 +7,13 @@ ref: binche
 
 Example from Binche Kompakt
 ===========================
-In issue 2000/2 of the Belgian lace magazine [_Kant_](https://www.kantcentrum.eu/en/magazine), Anne-Marie Verbeke-Billiet published a handkerchief pattern called _Anneke_ based on an old Valenciennes example.  She included four variations of stitches traditionally used in Paris ground and in the ring pairs around snowflakes.  The variation that is most unusual uses a combination of whole (CTCT) and half (CT) stitches.  This stitch combination, which she labels TT4 in the article (see also B4.2 in _Viele gute Gründe_ by Ulricke Voelcker-Löhr), has the effect of blurring the ring pairs around the snowflakes until they almost disappear.  According to Verbeke-Billiet, this stitch combination was once as popular as the whole stitch variation (TT1 in Kant and B4.1 in VGG) that is so familiar today. TT4 fell out of the lacemaker's repertoire about one hundred years ago perhaps because, like many half-stitch grounds, it is very difficult to work. The threads don't travel in tidy vertical and diagonal lines making it hard, especially when worked without pins, to keep track of where you are in the pattern.
+ [_Binche Kompakt_](https://www.deutscher-kloeppelverband.de/katalog/) is sampler designed by Hildegund Jene which features 32 different grounds drawn from Flemish, Parisian,and Valenciennes laces.  Ground number 31 in the sampler is particularly challenging to work because it uses a combination of half-stitch (CT) and whole-stitch (CTCT) in the ring pairs. To better understand this ground, a GroundForge model was made.
 
 ![](images/kompakt-31-challenge.png)
 
 _Figure 1: Paris ground and snowflake rings worked with whole (CTCT, red) and half (CT, green) stitch_
-   
-In 2004, Hildegund Jene published a sampler called [_Binche Kompakt_](https://www.deutscher-kloeppelverband.de/katalog/) which featured 32 different grounds drawn from Flemish, Parisian,and Valenciennes laces.  Ground number 31 is the challenging TT4 ground described by Verbeke-Billiet.  When Jo Pol started to work on Binche Kompakt, she could find neither a thread diagram, nor a high resolution photo of a sample of TT4.  She decided to create a thread diagram using GroundForge.  This exercise motivated Pol to include several of the features you find in GroundForge today.  
 
-Once this lace ground has been captured in GroundForge, it is relatively straight forward to play with different snowflake variations. 
+Since this lace ground has been captured in GroundForge, it is relatively straight forward to play with different snowflake variations. 
 We invite you to experiment using the GroundForge base pattern [with] or [without] foot sides.  Click on a circle in the prototype diagram.  When a yellow popup appears, edit the stitch description to change (_using any combination of 'c', 't', 'r' or 'l'_) or drop (_'-'_) a stitch.  For more detailed instructions on editing the stitches, please refer to the [Help introduction](index). 
 
 Below are four main variations showing the prototype diagram (top row) and corresponding thread diagram (bottom row).
@@ -23,6 +21,8 @@ Below are four main variations showing the prototype diagram (top row) and corre
 ![](images/kompakt-31.png)
 
 _Figure 2: Four variations of TT4_
+
+<a name="nrs"/>
 
 The extensive catalogue _Viele gute Gründe_ by Ulricke Voelcker-Löhr contains many snowflake variations.  Several of these are similar to the four variations presented here:
 * In 7 snowflakes (B3.25, B3.71-B3.76), two diagonal pairs cross twice, as in the first variation above.
@@ -68,3 +68,9 @@ Newbies may skip the bold steps when first trying to understand the scenario.
 * 1:36 increase thread diagram container (alternative: ![](../images/size-inc.jpg) ![](../images/size-dec.jpg))
 * 1:38 scroll down to get thread container back into view
 * 1:42 toggle thread color when tooltip displays thread number
+
+### History of Ground 31
+
+In issue 2000/2 of the Belgian lace magazine [_Kant_](https://www.kantcentrum.eu/en/magazine), Anne-Marie Verbeke-Billiet published a handkerchief pattern called _Anneke_ based on an old Valenciennes example.  She included four variations of stitches traditionally used in Paris ground and in the ring pairs around snowflakes.  The variation that is most unusual uses a combination of whole (CTCT) and half (CT) stitches.  This stitch combination, which she labels TT4 in the article (see also B4.2 in _Viele gute Gründe_ by Ulricke Voelcker-Löhr), has the effect of blurring the ring pairs around the snowflakes until they almost disappear.  According to Verbeke-Billiet, this stitch combination was once as popular as the whole stitch variation (TT1 in Kant and B4.1 in VGG) that is so familiar today. TT4 fell out of the lacemaker's repertoire about one hundred years ago perhaps because, like many half-stitch grounds, it is very difficult to work. The threads don't travel in tidy vertical and diagonal lines making it hard, especially when worked without pins, to keep track of where you are in the pattern.
+ 
+In 2004, Hildegund Jene published a sampler called [_Binche Kompakt_](https://www.deutscher-kloeppelverband.de/katalog/) which featured 32 different grounds drawn from Flemish, Parisian,and Valenciennes laces.  Ground number 31 is the challenging TT4 ground described by Verbeke-Billiet.  When Jo Pol started to work on Binche Kompakt, she could find neither a thread diagram, nor a high resolution photo of a sample of TT4.  She decided to create a thread diagram using GroundForge.  This exercise motivated Pol to include several of the features you find in GroundForge today.  
