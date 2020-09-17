@@ -21,11 +21,14 @@ You can experiment and play around with the hundreds of patterns provided here, 
 
 Tutorials
 ---------
-* [Getting started](help)
+* [Getting started](help/index)
 * [Variations on a Binche ground](help/Binche)
 * [Create a prototype](help/Advanced#prototype-tutorial)
 * [Add a footside](help/Advanced#footside-tutorial)
 * [Create new pattern from thread diagram](help/Advanced#thread-diagram-as-pair-diagram)
+* [Replace/skip stitches](help/Replace)
+* [Reshape Pair Diagrams](help/Reshape-Patterns)
+* [From printed patterns to GF](help/Reversed-engineering-of-patterns)
 
 Pattern Catalogues
 -----------------
