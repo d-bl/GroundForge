@@ -3,8 +3,8 @@ layout: default
 title: Advanced Design
 ---
 
-Reversed engineering of patterns
-================================
+Working with printed catalogues
+=============================
 
 Different methods allow to reproduce a pattern with GroundForge.
 
