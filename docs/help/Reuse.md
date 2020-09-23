@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Stable version / 3rd party pages
+title: 3rd party pages
 ---
 
 * [Reuse on 3rd part pages](#reuse-on-3rd-part-pages)
 * [Batch or server side](#Batch-or-server-side)
 
-Reuse on 3rd part pages
-=======================
+Reuse on 3rd party pages
+========================
 
 Third party webmasters can reuse smaller or larger portions of the GroundForge website.
 The following suggestions assume a proficient knowledge of html.
