@@ -119,7 +119,7 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
     .alpha(0.0035)
     .on("tick", onTick)
 
-    // dragging nodes
+  if (d3.select("#dragable").node().checked) {
     nodes.call(d3.drag()
                    .on("start", dragstarted)
                    .on("drag", dragged)
@@ -139,6 +139,7 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
       d.fx = null;
       d.fy = null;
     }
+  }
 }
 function setDownloadContent (linkNode, id) {
 
