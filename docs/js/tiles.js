@@ -112,12 +112,33 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
     .strength(strength)
     .distance(12)
     .iterations(30)
-  d3.forceSimulation(nodeDefs)
+  var sim = d3.forceSimulation(nodeDefs)
     .force("charge", d3.forceManyBody().strength(-1000))
     .force("link", forceLink)
     .force("center", d3.forceCenter(forceCenterX, forceCenterY))
     .alpha(0.0035)
     .on("tick", onTick)
+
+    // dragging nodes
+    nodes.call(d3.drag()
+                   .on("start", dragstarted)
+                   .on("drag", dragged)
+                   .on("end", dragended))
+    function dragstarted(d) {
+      if (!d3.event.active) sim.alpha(0.005).restart()
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+    function dragged(d) {
+      d.fx = d3.event.x;
+      d.fy = d3.event.y;
+    }
+    function dragended(d) {
+      step = 0
+      if (!d3.event.active) sim.alpha(0.005).restart()
+      d.fx = null;
+      d.fy = null;
+    }
 }
 function setDownloadContent (linkNode, id) {
 
