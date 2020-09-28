@@ -119,7 +119,7 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
     .alpha(0.0035)
     .on("tick", onTick)
 
-  if (d3.select("#dragable").node().checked) {
+  if (d3.select("#draggable").node().checked) {
     nodes.call(d3.drag()
                    .on("start", dragstarted)
                    .on("drag", dragged)
