@@ -26,19 +26,19 @@ object Permutations {
     new java.io.File("target/test/permutations").mkdirs()
     val stitches = Seq("ct", "ctct", "crclct", "clcrclc", "ctctc", "ctclctc")
     for {
-      d2 <- stitches
-      b2 <- stitches.filter(_!=d2)
-      a1 <- stitches
-      c1 <- stitches.filter(_!=a1)
+      a <- stitches
+      b <- stitches.filterNot(_==a)
     } {
-      val stitches = s"D2=$d2&B2=$b2&A1=$a1&C1=$c1"
-      val pairs = NewPairDiagram.create(TilesConfig(
-        s"a1=$a1&b2=$b2&c1=$c1&d2=$d2&patchWidth=7&patchHeight=7&tile=5-5-,-5-5&tileStitch=ctct&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=4&shiftRowsSE=2"
-      ))
-      File(s"target/test/permutations/D2_$d2-B2_$b2-A1_$a1-C1_$c1.svg")
-        .writeAll(prolog + render(nudge(ThreadDiagram(pairs))))
+      create(s"net-$a-$b", s"a1=$a&b2=$b&patchWidth=9&patchHeight=9&tile=5-,-5&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2")
+      create(s"weaving-$a-$b", s"a1=$a&a2=$b&patchWidth=9&patchHeight=9&tile=1,8&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2")
     }
     System.exit(0)
   }
+
+  private def create(name: String, q: String): Unit = {
+    File(s"target/test/permutations/$name.svg")
+      .writeAll(prolog + render(nudge(ThreadDiagram(NewPairDiagram.create(TilesConfig(q))))))
+  }
+
   def nudge(d: Diagram): Diagram = nudgeNodes(d, Point(200, 100)).get
 }
