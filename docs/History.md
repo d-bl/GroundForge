@@ -1,3 +1,9 @@
+---
+layout: default
+title: History of GroundForge
+---
+
+
 How it's Made / third party data and scripts
 ============================================
 
