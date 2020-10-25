@@ -1,30 +1,66 @@
 [![Build Status](https://travis-ci.org/d-bl/GroundForge.svg?branch=master)](https://travis-ci.org/d-bl/GroundForge) 
+
 _A toolbox to design bobbin lace grounds with matching sets of pair/thread diagrams._
 
-- [Demo's](#demo-s)
+- [Short intros](#short-intros)
+- [Demos](#demos)
 - [Contribute to documentation](#contribute-to-documentation)
+  * [Most common tasks](#most-common-tasks)
+  * [Preview complex changes online](#preview-complex-changes-online)
+  * [Conventions](#Conventions)
+    - [licenses](#licenses)
+    - [metadata](#metadata)
+    - [links](#links)
+    - [scalable prickings](#scalable-prickings)
 - [Functional contribution](#functional-contribution)
   * [Requirements](#requirements)
   * [Work flow](#work-flow)
-  * [Important code conventions](#important-code-conventions)
+  * [Code conventions](#code-conventions)
   * [Tests](#tests)
 -  [Use as JavaScript library](#use-as-javascript-library)
 -  [Use as JVM library](#use-as-jvm-library)
 
 
-Short intro's
+Short intros
 =============
-For end users (bobbin lace makers and designers):  
-https://d-bl.github.io/GroundForge/
 
-For developers:
+### for developers:
 * `src/scala/main/*` is translated to : `docs/js/GroundForge-opt.js`
 * This is connected client side to HTML with : `docs/js/tiles.js`
 * The source run also in a JVM environment for server-side or batch processing,
   for example something like : `src/test/Demo4Java.java`
 
+### for end users (bobbin lace makers and designers):  
+See https://d-bl.github.io/GroundForge/
 
-Demo's
+### licenses
+ 
+The [GPL-v3](https://github.com/d-bl/GroundForge/blob/master/LICENSE)
+license applies to the code, mainly in `src` and `docs/js`.
+The tutorials, mainly under `docs/help`,
+will be moved to a separate repository
+with a more appropriate license.
+The `*-gf` repositories (with examples) in the table below 
+are migrating from a [CC-BY-NC](http://creativecommons.org/licenses/by-nc/4.0/)
+to a [CC-BY](http://creativecommons.org/licenses/by/4.0/) license. 
+
+**diagrams made with GroundForge**  
+
+Diagrams created by you and saved as link and/or images
+are owned by you and/or the original authors in cases
+you adapted or embedded a definition by someone else.
+
+You are responsible for publishing your work under a license of your choosing
+and tracking your use of derivative works. 
+Downloaded diagrams don't come with properties expressing origin, author or license,
+you will have to add that information yourself with your favourite editor.
+
+Note that individual diagram definitions may or may not meet the [threshold of originality](https://en.wikipedia.org/wiki/Threshold_of_originality).
+A stitch may be traditional yet take creativity to define with GroundForge,
+as shown by the discussion that started with [this message](https://groups.io/g/GroundForge/message/1).
+Others may be new but not take much "sweat of the brow".
+
+Demos
 ======
 
 A [dressed up](https://d-bl.github.io/GroundForge/tiles?patchWidth=12&patchHeight=12&a1=ct&b1=ct&c1=ctc&d1=ctc&b2=ctc&d2=ctc&a3=ct&c3=ct&footside=b,-,a,-&tile=831,4-7,-5-&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2) version and a dressed down [API](https://d-bl.github.io/GroundForge/API/) version.
@@ -41,7 +77,7 @@ GroundForge has various types of documentation.
 
 In this repository
 * Tutorials
-* Pages referred to by info buttons for form fields.
+* Pages referred to by info buttons on form fields.
   Originally intended as tooltips but evolved into too large explanations. 
   
 Examples of patterns
@@ -50,31 +86,73 @@ Examples of patterns
 
 Most common tasks
 -----------------
-* Edit the `.md` files in the `docs` folder.
+* Edit the `.md` files in the `docs` folder, these are the editable versions of the published pages.
 * Keep the TOC in the sidebar up to date.
 
-There is a simple [procedure] to propose simple changes to the docs that build the sites.
+| repository        | published pages | editable pages | editable sidebar |
+|-------------------|-----------------|----------------|------------------|
+| [GroundForge]     | [X][gf-site]    | [X][gf-docs]   | [X][gf-sb]       |
+| [gw-lace-to-gf]   | [X][w-site]     | [X][w-docs]    | [X][w-sb]        |
+| [tesselace-to-gf] | [X][t-site]     | [X][t-docs]    | [X][t-sb]        |
+| [MAE-gf]          | [X][mae-site]   | [X][mae-docs]  | [X][mae-sb]      |
+
+There is a simple [procedure] to propose simple changes to the pages.
+
 Simple changes could be things like typo's, grammar or
 simplified phrasing hoping that automated translators do a better job.
 
-| repository | docs | site | sidebar |
-|------------|------|------|----------|
-| [GroundForge] | [xxx] | [yyy] | [zzz] |
-| [gw-lace-to-gf] | ... | ... | ... |
-| [tesselace-to-gf] | ... | ... | ... |
-| [MAE-gf] | ... | ... | ... |
+When you have write rights for a repository,
+the green button to save your changes will show `commit changes`
+and the change will be effective immediately.
+To first discuss you changes through a pull request, 
+check the radio button to ` Create a new branch`,
+the big green button then changes to `propose changes`. 
 
 [procedure]: https://help.github.com/articles/editing-files-in-another-user-s-repository/
-[xxx]: https://d-bl.github.io/GroundForge/tree/master/docs/help
-[yyy]: https://d-bl.github.io/GroundForge/
-[zzz]: https://github.com/d-bl/GroundForge/tree/master/docs/_includes/Sidebar.html
+
 [GroundForge]: https://d-bl.github.io/GroundForge/
+[gf-docs]: https://d-bl.github.io/GroundForge/tree/master/docs/help/
+[gf-site]: https://d-bl.github.io/GroundForge/
+[gf-sb]: https://github.com/d-bl/GroundForge/tree/master/docs/_includes/Sidebar.html
+
 [gw-lace-to-gf]: https://d-bl.github.io/gw-lace-to-gf/
+[w-docs]: https://d-bl.github.io/gw-lace-to-gf/tree/master/docs/
+[w-site]: https://d-bl.github.io/gw-lace-to-gf/
+[w-sb]: https://github.com/d-bl/gw-lace-to-gf/tree/master/docs/_includes/Sidebar.html
+
 [tesselace-to-gf]: https://d-bl.github.io/tesselace-to-gf/
+[t-docs]: https://d-bl.github.io/tesselace-to-gf/tree/master/docs/
+[t-site]: https://d-bl.github.io/tesselace-to-gf/
+[t-sb]: https://github.com/d-bl/tesselace-to-gf/tree/master/docs/_includes/Sidebar.html
+
 [MAE-gf]: https://maetempels.github.io/MAE-gf/
+[mae-docs]: https://maetempels.github.io/MAE-gf/tree/master/docs/
+[mae-site]: https://maetempels.github.io/MAE-gf/
+[mae-sb]: https://github.com/maetempels/MAE-gf/tree/master/docs/_includes/Sidebar.html
+
+
+Preview complex changes online
+------------------------------
+
+To preview more complex changes
+* create a [private version] of the repositories, also called a stable version.
+* change the files of your own master branch
+* create a pull request comparing your own master with the master of `d-bl`
+* for work in progress: make sure the pull request is a draft
+
+[private version]: https://d-bl.github.io/GroundForge/help/Stable   
+
 
 Conventions
 -----------
+
+### licenses
+
+The license in the sidebar should apply to all content on all pages that use the sidebar.
+In case of exceptions use "[Some rights reserved](https://github.com/MAETempels/MAE-gf/blob/bfc3d8ef49fdc7291fcce1484c6c651a4e24c382/assets/images/CC_some_rights_reserved.png)",
+linking to an explanation of the general rule.
+Exceptions should be placed as close to the relevant artifacts as possible,
+preferably with Creative Commons [icons](https://en.wikipedia.org/wiki/Creative_Commons_license#Types_of_licenses).
 
 ### metadata
 
@@ -93,19 +171,12 @@ If available, use a sample, otherwise the thread diagram.
 
 Use root relative links for references between the repositories.
 
-### Scalable prickings
+### scalable prickings
 
 Both PDF and SVG are scalable and can be imported by vector capable editors
-such as InkScape, Adobe Illustrator and CorelDraw.
+such as Inkscape, Adobe Illustrator and CorelDraw.
 Knipling can export PDF. When you just want a section of some file
 save a (temporary) copy of the pattern, delete the rest, then export the PDF.  
-
-
-Preview your changes online
----------------------------
-...  
- https://d-bl.github.io/GroundForge/help/Stable   
-...  
 
 
 Functional contribution
@@ -126,10 +197,9 @@ Requirements
 Work flow
 ---------
 
-### When contributing to the code (Scala, JavaScript, html pages)
 - Fork the project and make a local clone.
 - Don't push to your own master branch, but use the following work flow
-  - add the parent of your fork as remote to your local repository, by our conventionsk this remote is called blessed
+  - add the parent of your fork as remote to your local repository, by our conventions this remote is called blessed
   - fetch the master branch of the blessed repository
   - create a topic branch from the tip of the master branch
   - push your changes to your own fork and create a pull request
@@ -137,14 +207,6 @@ Work flow
   Depending in your OS use the one liner in `toJS.sh` or `toJS.bat` the latter is not battle proven.
 - Check the results with the `docs/*.html` pages
 - If ok (or need advise from a reviewer): commit, push and create a pull request
-
-### When contributing to documentation
-- Optional (if you know how to meddle with branches as your own master branch
-  will get another history than the parent repository):
-  - [configure] your local fork to deploy `docs` at `http://YOURID.github.io/GroundForge/` 
-  - after merging with your own master branch you can check your own version of the site.
-
-[configure]: https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch
 
 
 Code conventions
