@@ -41,8 +41,7 @@ The tutorials, mainly under `docs/help`,
 will be moved to a separate repository
 with a more appropriate license.
 The `*-gf` repositories (with examples) in the table below 
-are migrating from a [CC-BY-NC](http://creativecommons.org/licenses/by-nc/4.0/)
-to a [CC-BY](http://creativecommons.org/licenses/by/4.0/) license. 
+have a [CC-BY](http://creativecommons.org/licenses/by/4.0/) license. 
 
 **diagrams made with GroundForge**  
 
@@ -125,10 +124,10 @@ the big green button then changes to `propose changes`.
 [t-site]: https://d-bl.github.io/tesselace-to-gf/
 [t-sb]: https://github.com/d-bl/tesselace-to-gf/tree/master/docs/_includes/Sidebar.html
 
-[MAE-gf]: https://maetempels.github.io/MAE-gf/
-[mae-docs]: https://maetempels.github.io/MAE-gf/tree/master/docs/
-[mae-site]: https://maetempels.github.io/MAE-gf/
-[mae-sb]: https://github.com/maetempels/MAE-gf/tree/master/docs/_includes/Sidebar.html
+[MAE-gf]: https://d-bl.github.io/MAE-gf/
+[mae-docs]: https://d-bl.github.io/MAE-gf/tree/master/docs/
+[mae-site]: https://d-bl.github.io/MAE-gf/
+[mae-sb]: https://github.com/d-bl/MAE-gf/tree/master/docs/_includes/Sidebar.html
 
 
 Preview complex changes online
@@ -149,7 +148,7 @@ Conventions
 ### licenses
 
 The license in the sidebar should apply to all content on all pages that use the sidebar.
-In case of exceptions use "[Some rights reserved](https://github.com/MAETempels/MAE-gf/blob/bfc3d8ef49fdc7291fcce1484c6c651a4e24c382/assets/images/CC_some_rights_reserved.png)",
+In case of exceptions use "[Some rights reserved](https://github.com/d-bl/MAE-gf/blob/bfc3d8ef49fdc7291fcce1484c6c651a4e24c382/assets/images/CC_some_rights_reserved.png)",
 linking to an explanation of the general rule.
 Exceptions should be placed as close to the relevant artifacts as possible,
 preferably with Creative Commons [icons](https://en.wikipedia.org/wiki/Creative_Commons_license#Types_of_licenses).
