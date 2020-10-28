@@ -125,9 +125,9 @@ the big green button then changes to `propose changes`.
 [t-site]: https://d-bl.github.io/tesselace-to-gf/
 [t-sb]: https://github.com/d-bl/tesselace-to-gf/tree/master/docs/_includes/Sidebar.html
 
-[MAE-gf]: https://maetempels.github.io/MAE-gf/
-[mae-docs]: https://maetempels.github.io/MAE-gf/tree/master/docs/
-[mae-site]: https://maetempels.github.io/MAE-gf/
+[MAE-gf]: /MAE-gf/
+[mae-docs]: /MAE-gf/tree/master/docs/
+[mae-site]: /MAE-gf/
 [mae-sb]: https://github.com/maetempels/MAE-gf/tree/master/docs/_includes/Sidebar.html
 
 

@@ -38,7 +38,7 @@ Pattern Catalogues
 
 Community Contributions
 -----------------------
-* [Flanders samples](https://maetempels.github.io/MAE-gf/docs/flanders)
-* [MAE-gf](https://maetempels.github.io/MAE-gf/) (Many Attractive Examples - *g*round*f*orge)
-  * includes variations on [Paris](https://maetempels.github.io/MAE-gf/docs/paris), [bias](https://maetempels.github.io/MAE-gf/docs/bias), [spiders](https://maetempels.github.io/MAE-gf/docs/spiders), [snowflakes](https://maetempels.github.io/MAE-gf/docs/snowflakes), [triangular](https://maetempels.github.io/MAE-gf/docs/tria), [lotus](https://maetempels.github.io/MAE-gf/docs/lotus) and [3-pair joins](https://maetempels.github.io/MAE-gf/docs/misca#3-paired-join).
+* [Flanders samples](/MAE-gf/docs/flanders)
+* [MAE-gf](/MAE-gf/) (Many Attractive Examples - *g*round*f*orge)
+  * includes variations on [Paris](/MAE-gf/docs/paris), [bias](/MAE-gf/docs/bias), [spiders](/MAE-gf/docs/spiders), [snowflakes](/MAE-gf/docs/snowflakes), [triangular](/MAE-gf/docs/tria), [lotus](/MAE-gf/docs/lotus) and [3-pair joins](/MAE-gf/docs/misca#3-paired-join).
 * [3x4 TesseLace samples](/tesselace-to-gf/fouche_3x4) interpreted by Pierre Fouch&#233;

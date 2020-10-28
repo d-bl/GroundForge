@@ -27,7 +27,7 @@ Known examples:
 * [valenciennes] used on the [Whiting-Index]
 * [wobble.html] used on [MAE-gf/droste]
 
-[MAE-gf/droste]: https://maetempels.github.io/MAE-gf/docs/droste#wobble
+[MAE-gf/droste]: /MAE-gf/docs/droste#wobble
 [wobble.html]: https://github.com/MAETempels/MAE-gf/blob/master/_includes/wobble.html
 [valenciennes]: https://github.com/d-bl/gw-lace-to-gf/blob/master/docs/_includes/val-variants.html
 [Whiting-Index]: /gw-lace-to-gf#val

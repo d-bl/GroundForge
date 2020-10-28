@@ -17,7 +17,7 @@ een fluitje van een cent vergeleken met bewerkelijke maar nutteloze proeflapjes.
 Experimenteer en speel met de honderden voorgebakken gronden of voeg andere patronen toe. 
 Zelfs als je het wiel opnieuw uitvindt kun je aan eigen ontdekkingen veel plezier beleven. 
 
-[gronden]: https://maetempels.github.io/MAE-gf/docs/license#literature
+[gronden]: /MAE-gf/docs/license#literature
 
 De [tiles](../tiles.html) pagina maakt draaddiagrammen van paardiagrammen. Het neemt je bij de hand door de belangrijkste stappen kort op te sommen. 
 Help pagina’s in de rechtermarge leggen meer details uit. Alleen in het Engels, maak gebruik van online vertaal pagina’s en de [OIDFA vertaler] voor kantklostermen.
