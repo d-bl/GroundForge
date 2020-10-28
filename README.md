@@ -148,7 +148,7 @@ Conventions
 ### licenses
 
 The license in the sidebar should apply to all content on all pages that use the sidebar.
-In case of exceptions use "[Some rights reserved](https://github.com/d-bl/MAE-gf/blob/bfc3d8ef49fdc7291fcce1484c6c651a4e24c382/assets/images/CC_some_rights_reserved.png)",
+In case of exceptions use "[Some rights reserved](https://github.com/d-bl/GroundForge/blob/848938f6f241ec3212323727e24951c0c48263d1/docs/assets/images/CC_some_rights_reserved.png)",
 linking to an explanation of the general rule.
 Exceptions should be placed as close to the relevant artifacts as possible,
 preferably with Creative Commons [icons](https://en.wikipedia.org/wiki/Creative_Commons_license#Types_of_licenses).
