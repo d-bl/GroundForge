@@ -35,7 +35,12 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   @JSExport
   val rightMatrixCols: Int = Option(rightMatrix.head).map(_.length).getOrElse(2)
 
+  @JSExport
   val centerMatrixRows: Int = centerMatrix.length
+  @JSExport
+  val rightMatrixRows: Int = rightMatrix.length
+  @JSExport
+  val leftMatrixRows: Int = leftMatrix.length
 
   @JSExport
   val maxTileRows: Int = Math.max(centerMatrixRows, Math.max(leftMatrix.length, rightMatrix.length))
