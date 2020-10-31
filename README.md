@@ -66,7 +66,7 @@ A [dressed up](https://d-bl.github.io/GroundForge/tiles?patchWidth=12&patchHeigh
 The latter shows all possible diagrams with minimal code.
 The first demonstrates interaction with these diagrams
 implemented with limited styling and event handling skills. 
-It evolved into from a proof of concept into the *de facto* user interface.
+The latter evolved from a proof of concept into the *de facto* user interface.
 
 
 Contribute to documentation
