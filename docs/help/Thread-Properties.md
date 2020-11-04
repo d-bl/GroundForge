@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Toggle Threads
+title: Thread properties
 ---
 
 Toggle thread colors
 ====================
 You may have to scroll/drag the thread diagram (or increase the panel size)
-to make the squares at the start of the threads visible.  
+to make the squares at the start or bobbins ate the end of the threads visible.  
 ![](images/toggle-thread.png)
-Click these squares to toggle between a black or red color.
+Click these squares or bobbins to browse through a few colors.
 A tooltip shows a thread number when your mouse hovers over a square.  
 ![](images/toggle-hover.png)  
 Too tiny squares or too close together? Use the zoom function of your browser.
@@ -18,7 +18,12 @@ on a mac use command for control.
 More thread colors and/or widths
 ================================
 
-Grouping thread segments in downloaded diagrams simplifies the procedure to apply more thread colors and widths.
+Downloaded diagrams and a vector capable editor (SVG) allow more/other thread properties. 
+
+When 4 variants is enough: your SVG editor might allow to select all threads
+with one of the predefined colors and subsequently change them.
+
+Grouping thread segments simplifies the procedure to apply more thread colors and widths.
 The feature did not mary well with the Droste patterns and is only available for laptops and desktops:
 * [download](https://github.com/d-bl/GroundForge/archive/thread-props.zip) and unzip
 * select/tweak your pattern on the [web site](/GroundForge/tiles)

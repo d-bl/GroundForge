@@ -361,7 +361,13 @@ function paintThread(eventTarget, className) {
 
   var containerID = eventTarget.parentNode.parentNode.parentNode.id
   var segments = d3.selectAll("#" + containerID + " ." + className)
-  var newColor = segments.style("stroke")+"" == "rgb(255, 0, 0)" ? "#000" : "#F00"
+  var old = segments.style("stroke")+""
+  //       prototype              logo                issue #166
+  var c1 = "rgb(255, 0, 0)"    // "rgb(202, 47, 42)"  "rgb(155, 2, 25)" //dark magenta
+  var c3 = "rgb(204, 51, 255)" // "rgb(38, 138, 36)"  "rgb(2, 152, 7)" //deep green
+  var c2 = "rgb(0, 136, 0)"    // "rgb(135, 17, 187)" "rgb(131, 75, 206)" //blue violet
+  var c4 = "rgb(0, 0, 0)"
+  var newColor = old == c1 ? c2 : (old == c2 ? c3 : (old == c3 ? c4 : c1))
   segments.style("stroke", newColor)
   segments.filter(".node").style("fill", newColor)
 }
