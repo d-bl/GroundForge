@@ -175,8 +175,22 @@ Use root relative links for references between the repositories.
 Both PDF and SVG are scalable and can be imported by vector capable editors
 such as Inkscape, Adobe Illustrator and CorelDraw.
 Knipling can export PDF. When you just want a section of some file
-save a (temporary) copy of the pattern, delete the rest, then export the PDF.  
+save a (temporary) copy of the pattern, delete the rest, then export the PDF.
+Import into Inkscape (for example) to save as SVG.
 
+### colors
+
+Note that the names don't match with the values [supported by browsers](https://www.w3schools.com/colors/colors_names.asp).
+
+ decimal          | hex     | name 
+------------------|---------|-------------
+ rgb(155,2,25)    | #9b0219 | dark magenta 
+ rgb(181,114,209) | #b472d1 | 
+ rgb(131,75,206)  | #834bce | blue violet 
+ rgb(2,152,7)     | #029807 | deep green 
+ rgb(206,197,17)  | #cec511 | dark yellow 
+ 
+![](docs/images/colors-white.jpg) ![](docs/images/colors-black.jpg)
 
 Functional contribution
 =======================
