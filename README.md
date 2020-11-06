@@ -181,16 +181,23 @@ Import into Inkscape (for example) to save as SVG.
 ### colors
 
 Note that the names don't match with the values [supported by browsers](https://www.w3schools.com/colors/colors_names.asp).
+The set is not yet complete for the full range of the belgian color code.
+For now the choice are:
 
- decimal          | hex     | name 
-------------------|---------|-------------
- rgb(155,2,25)    | #9b0219 | dark magenta 
- rgb(181,114,209) | #b472d1 | 
- rgb(131,75,206)  | #834bce | blue violet 
- rgb(2,152,7)     | #029807 | deep green 
- rgb(206,197,17)  | #cec511 | dark yellow 
+ decimal           | hex     | name 
+-------------------|---------|-------------
+rgb(155, 2, 25)    | #9b0219 | dark magenta 
+rgb(181, 114, 209) | #b472d1 | 
+rgb(131, 75, 206)  | #834bce | blue violet 
+rgb(2,1 52, 7)     | #029807 | deep green 
+rgb(206, 197, 17)  | #cec511 | dark yellow 
+rgb(13, 110, 253)  | #0d6efd | blue
  
 ![](docs/images/colors-white.jpg) ![](docs/images/colors-black.jpg)
+
+### language
+
+Currently, we have a mix of UK and US spelling.
 
 Functional contribution
 =======================
