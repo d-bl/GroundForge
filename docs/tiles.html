@@ -48,7 +48,8 @@
         <a href="help/Thread-Properties" target="_blank">more</a> colors.
     </li>
     <li>
-        Start the animation of the pair diagram to make the holes as round as in the thread diagram.
+        Start the <a href="javascript:animateDiagram(d3.select('#pairDiagram'), 372, 526)"
+        >animation</a> of the pair diagram to make the holes as round as in the thread diagram.
     </li>
 </ul>
 </article>
@@ -75,7 +76,7 @@
         </legend>
         <figure >
             <figcaption title="choosing a stitch shows/refreshes the thread diagram">
-                Prototype - click bold symbols
+                Prototype
                 <a download="prototype.svg"
                    onfocus="setDownloadContent(this,'#prototype')"
                    onblur="this.href='?#download'"
@@ -91,9 +92,7 @@
         </figure>
         <figure>
             <figcaption>
-                Pairs -
-                <a href="javascript:animateDiagram(d3.select('#pairDiagram'), 372, 526)"
-                >animate</a>
+                Pairs
                 <a download="pair-diagram.svg"
                    onfocus="setDownloadContent(this,'#pairDiagram')"
                    onblur="this.href='?#download'"
@@ -107,7 +106,7 @@
         </figure>
         <figure >
             <figcaption>
-                Threads - click squares
+                Threads
                 <a download="thread-diagram.svg"
                    onfocus="setDownloadContent(this,'#threadDiagram')"
                    onblur="this.href='?#download'"
