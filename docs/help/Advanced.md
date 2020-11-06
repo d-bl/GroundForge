@@ -64,7 +64,7 @@ To position the blue rectangle on top of the red rectangle, we must slide it ove
 ![](images/rose_vertical_brick_arrange.png) 
 
 If you are more comfortable with visual tools, we have also provided images that you can click on.
-For a vertical brick pattern like our Rose ground example, first click on the yellow brick in the picture of vertical bricks:
+For a vertical brick pattern like our Rose ground example, first click on the filled blue brick in the picture of vertical bricks:
 
 ![](images/vertical-bricks.png)
 
@@ -88,7 +88,7 @@ Finally, we arrange the copies.  To slide the blue square over the yellow square
 ![](images/rose-checker-define-repeat.png) 
 
 You can enter these slide moves directly into the Configuration area.
-If you are more comfortable with visual tools, click on the yellow block in the image of a checkerboard:
+If you are more comfortable with visual tools, click on the filled blue block in the image of a checkerboard:
 
 ![](images/overlapping-checkers.png)
 
