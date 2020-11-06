@@ -39,10 +39,6 @@ function showProto() {
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
-  var h = 2.5 * Math.max(Math.max(config.centerMatrixCols, config.leftMatrixCols), config.rightMatrixCols)
-  var w = config.rightMatrixCols > 0 ? config.totalCols : 2.5 * config.centerMatrixCols + config.leftMatrixCols
-  d3.select("#prototype").style("height", (Math.min(h, config.totalRows) * 27 + 30) + "px"
-                        ).style("width", (Math.min(w, config.totalCols) * 27 + 60) + "px")
   return config
 }
 function flip(){
