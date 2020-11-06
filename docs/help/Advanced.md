@@ -64,11 +64,11 @@ To position the blue rectangle on top of the red rectangle, we must slide it ove
 ![](images/rose_vertical_brick_arrange.png) 
 
 If you are more comfortable with visual tools, we have also provided images that you can click on.
-For a vertical brick pattern like our Rose ground example, first click on the picture of vertical bricks:
+For a vertical brick pattern like our Rose ground example, first click on the filled blue brick in the picture of vertical bricks:
 
 ![](images/vertical-bricks.png)
 
-If the prototype pattern does not immediately align correctly, click on the black arrows above and below the solid purple brick to adjust how the two columns of bricks align.  
+If the prototype pattern does not immediately align correctly, click on the black arrows above and below the second column of bricks to adjust how the two columns of bricks align.  
 Each click will move the second column up or down by one row relative to the first column.  Look at the prototype diagram to see how the copies move around.
 
 [Final result](/GroundForge/tiles?patchWidth=13&patchHeight=10&a1=ctct&b2=ctct&a2=ct&a3=ctct&b4=ctct&a4=ct&tile=4-,15,7-,83,,&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=2)
@@ -88,11 +88,11 @@ Finally, we arrange the copies.  To slide the blue square over the yellow square
 ![](images/rose-checker-define-repeat.png) 
 
 You can enter these slide moves directly into the Configuration area.
-If you are more comfortable with visual tools, click on the image of a checkerboard with black arrows:
+If you are more comfortable with visual tools, click on the filled blue block in the image of a checkerboard:
 
 ![](images/overlapping-checkers.png)
 
-Initially, the copies will be placed corner to corner.  Click on the black arrows to nudge the copies so that they overlap.
+Initially, the copies will be placed corner to corner.  Click on the black arrows around the green and purple blocks to nudge the copies so that they overlap as desired.
 
 [Final result](/GroundForge/tiles?patchWidth=12&patchHeight=12&c1=ctct&b1=ctct&a1=ctct&c2=ctct&a2=ctct&c3=ctct&b3=ctct&a3=ctct&tile=831,4-7,158&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
 
