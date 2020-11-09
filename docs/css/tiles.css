@@ -14,8 +14,14 @@ fieldset fieldset figure div { height: 222px; }
 #pattern input {width: 5em}
 #pattern textarea {min-width: 4.5em}
 
-#prototype, #threadDiagram, #pairDiagram, #drostePair2, #drosteThread2, #drostePair3, #drosteThread3
- { resize:both;overflow:auto;display:inline-block;width:250px;height:250px;max-width:784px;max-height:1082px }
+#prototype, #threadDiagram, #pairDiagram, #drostePair2, #drosteThread2, #drostePair3, #drosteThread3 {
+  resize:both;
+  overflow:auto;
+  display:inline-block;
+  width:250px; height:250px;
+  max-width:784px; max-height:1082px;
+  border: solid 1px  #ddd
+}
 #prototype {max-width:1150px;max-height:815px}
 #drosteFieldSet { text-align: right; }
 #drosteFields2, #drosteFields3 { display: none; }
