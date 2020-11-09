@@ -113,10 +113,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
     val textProps = """y="979.27722" x="-21.02791" style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none""""
     val circlePath = "m -18.064645,978.05982 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41422 -0.361929,0.36192 -0.861929,0.58578 -1.414213,0.58578 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58578 -0.361929,-0.36193 -0.585787,-0.86193 -0.585787,-1.41422 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"
-    val circle = s"""<path style="fill:none;stroke-width:1" d="$circlePath"></path>"""
+    val circle = s"""<path style="fill:white;stroke-width:1" d="$circlePath"></path>"""
 
     def symbol(tag: Char, arrows: String) = {
-      s"""<g id="vc$tag"><text $textProps>$tag</text>$circle$arrows</g>"""
+      s"""<g id="vc$tag">$circle<text $textProps>$tag</text>$arrows</g>"""
     }
     Seq(
       symbol('0', shortE + shortNE) ,
