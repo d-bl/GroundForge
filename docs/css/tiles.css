@@ -27,11 +27,12 @@ fieldset fieldset figure div { height: 222px; }
 #drosteFields2, #drosteFields3 { display: none; }
 #drosteFields2 textarea { vertical-align: text-top; }
 
-foreignObject{margin:0; padding:0}
+foreignObject{ margin:0; padding:0; width: 1px; height: 1px; overflow: visible }
 foreignObject input {
-  vertical-align: top; width: 6px;
+  vertical-align: top; width: 5px;
   font-size: 5px;
-  border: 0;padding: 0;padding-left: 1px;margin: 0;
+  border: 0; padding: 0; padding-left: 1px;
+  margin: 0; margin-top: 2px; margin-left: -1px;
   opacity: 0.05; background-color: #ff0;
 }
 foreignObject input:focus { opacity: 1; width:30px; }
