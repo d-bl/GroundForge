@@ -14,6 +14,8 @@ fieldset fieldset figure div { height: 222px; }
 #pattern input {width: 5em}
 #pattern textarea {min-width: 4.5em}
 
+#whiting div { padding-top: 50px; padding-right: 30px; padding-bottom: 50px; padding-left: 80px; }
+
 #prototype, #threadDiagram, #pairDiagram, #drostePair2, #drosteThread2, #drostePair3, #drosteThread3 {
   resize:both;
   overflow:auto;
