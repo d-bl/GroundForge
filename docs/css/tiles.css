@@ -23,9 +23,10 @@ fieldset fieldset figure div { height: 222px; }
   border: solid 1px  #ddd
 }
 #prototype {max-width:1150px;max-height:815px}
-#drosteFieldSet { text-align: right; }
+#drosteFieldSet { text-align: left; }
 #drosteFields2, #drosteFields3 { display: none; }
 #drosteFields2 textarea { vertical-align: text-top; }
+#drosteFields2 button { float: right; }
 
 foreignObject{ margin:0; padding:0; width: 1px; height: 1px; overflow: visible }
 foreignObject input {
@@ -40,7 +41,7 @@ foreignObject input:focus { opacity: 1; width:30px; }
 input[type="number"] { width:3em; }
 fieldset, fieldset div { display: inline-block; vertical-align: top; }
 form { margin-bottom: 1em; }
-#diagrams { display: block; }
+
 p { margin-top: 0; margin-bottom: 0.5em; }
 p, dt, dd, ul { max-width: 46.5em; }
 td { text-align: center; vertical-align: top; padding-right: 0.5em}
