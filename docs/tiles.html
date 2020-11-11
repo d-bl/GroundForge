@@ -30,9 +30,6 @@
     <li>
         <strong>Hover over stitches</strong>
         in the pair diagram for exact definitions.
-        <br>
-        An <a href="javascript:animateDiagram(d3.select('#pairDiagram'), 372, 526)"
-        >animation</a> makes the holes as round as in the thread diagram.
     </li>
     <li>
         <strong>Change stitches</strong>:
@@ -45,7 +42,7 @@
         <a href="help/Undo" target="_blank">details</a>.
     </li>
     <li>
-        <strong>Choose contrasting threads</strong> with the square starts or bobbins in the thread diagram,
+        <strong>Highlight threads</strong> with the square starts or bobbins in the thread diagram,
         <a href="help/Thread-Properties" target="_blank">more</a> colors.
     </li>
     <li>
@@ -76,7 +73,7 @@
             <label for="patchHeight">rows</label>
             -
             <label for="patchHeight">Draggable:</label>
-            <input type="checkbox" id="draggable" onchange="showProto()">
+            <input type="checkbox" id="draggable" onchange="showProto()" title="allows to (temporarily) untangle cluttered stitches">
         </legend>
         <figure >
             <figcaption title="choosing a stitch shows/refreshes the thread diagram">
@@ -102,6 +99,7 @@
                    onblur="this.href='?#download'"
                    href="?#download"
                    title="download"
+                ><img src="images/animate.png" onclick="javascript:animateDiagram(d3.select('#pairDiagram'), 372, 526)" title="animate/reshape"
                 ><img src="images/download.jpg"></a>
                 <img src="images/size-inc.jpg" onclick="resizeBoth('#pairDiagram', 1.1)" title="increase diagram dimensions"
                 ><img src="images/size-dec.jpg" onclick="resizeBoth('#pairDiagram', 0.91)" title="decrease diagram dimensions">
