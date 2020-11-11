@@ -16,7 +16,7 @@ fieldset fieldset figure div { height: 222px; }
 
 #whiting { padding-bottom: 0.5em; padding-left: 4em; }
 
-#prototype, #threadDiagram, #pairDiagram  #drostePair3, #drosteThread3 {
+#prototype, #threadDiagram, #pairDiagram,  #drostePair3, #drosteThread3 {
   resize:both;
   overflow:auto;
   display:inline-block;
