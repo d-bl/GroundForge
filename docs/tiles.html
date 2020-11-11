@@ -50,12 +50,14 @@
             <label for="patchHeight">rows</label>
             -
             <label for="draggable">Draggable:</label>
-            <input type="checkbox" id="draggable" onchange="showProto()">
+            <input type="checkbox" id="draggable" onchange="showProto()" title="make threads draggable">
         </legend>
 
         <figure>
             <figcaption>
                 Pairs
+                <img src="images/animate.png" onclick="javascript:animateDiagram(d3.select('#pairDiagram'), 372, 526)" title="animate/reshape"
+                >
                 <a download="pair-diagram.svg"
                    onfocus="setDownloadContent(this,'#pairDiagram')"
                    onblur="this.href='?#download'"
@@ -254,7 +256,12 @@
         </legend>
 
         <div id="drosteFields2">
-            <textarea id="droste2" name="droste2" rows="7" cols="30" spellcheck="false" onchange="clear2()"></textarea>
+            <figure>
+                <figcaption>
+                    Stitches
+                </figcaption>
+                    <textarea id="droste2" name="droste2" rows="7" cols="30" spellcheck="false" onchange="clear2()"></textarea>
+            </figure>
             <figure>
                 <figcaption>
                     Pairs
@@ -293,7 +300,12 @@
                     <a><button type="button" onclick="showDroste(3)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
                 </legend>
                 <div id="drosteFields3">
-                    <textarea id="droste3" name="droste3" rows="7" cols="30" spellcheck="false" onchange="clear3()"></textarea>
+                    <figure>
+                        <figcaption>
+                            Stitches
+                        </figcaption>
+                        <textarea id="droste3" name="droste3" rows="7" cols="30" spellcheck="false" onchange="clear3()"></textarea>
+                    </figure>
                     <figure>
                         <figcaption>
                             Pairs

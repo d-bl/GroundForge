@@ -26,7 +26,7 @@ fieldset fieldset figure div { height: 222px; }
 }
 #prototype {max-width:1150px;max-height:815px}
 #drosteFieldSet { text-align: left; }
-#drosteFields2, #drosteFields3 { display: none; }
+#drosteFields3 { display: none; }
 #drosteFields2 textarea { vertical-align: text-top; }
 #drosteFields2 button { float: right; }
 
