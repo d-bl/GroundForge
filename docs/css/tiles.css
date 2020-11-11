@@ -36,7 +36,7 @@ fieldset fieldset figure div { height: 222px; }
 #drosteFieldSet { text-align: left; }
 #drosteFields3 { display: none; }
 #drosteFields2 textarea { vertical-align: text-top; }
-#drosteFields2 button { float: right; }
+#drosteFields2 button { float: right; margin-top: 5px;}
 
 foreignObject{ margin:0; padding:0; width: 1px; height: 1px; overflow: visible }
 foreignObject input {
