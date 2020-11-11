@@ -16,11 +16,19 @@ fieldset fieldset figure div { height: 222px; }
 
 #whiting { padding-bottom: 0.5em; padding-left: 4em; }
 
-#prototype, #threadDiagram, #pairDiagram, #drostePair2, #drosteThread2, #drostePair3, #drosteThread3 {
+#prototype, #threadDiagram, #pairDiagram  #drostePair3, #drosteThread3 {
   resize:both;
   overflow:auto;
   display:inline-block;
   width:250px; height:250px;
+  max-width:784px; max-height:1082px;
+  border: solid 1px  #ddd
+}
+#drostePair2, #drosteThread2 {
+  resize:both;
+  overflow:auto;
+  display:inline-block;
+  width:250px; height:110px;
   max-width:784px; max-height:1082px;
   border: solid 1px  #ddd
 }
