@@ -6,9 +6,12 @@ title: Replace stitches
 
 Replace / skip stitches
 =======================
-The screen-cast video on the [Binche](Binche) page shows how to change or replace stitches. 
-The faint nodes in the prototype diagram repeat the bold ones.
-Click on a bold node to make a yellow form field appear with a stitch definition.
+One of the diagrams shows faint and bright stitches.
+The faint stitches repeat the bright ones.
+Click slightly north-east of a bright stitch to open a yellow input field. 
+Don't use your mouse to position the cursor inside the input field,
+you would most likely select another input field.
+User the arrows on your keyboard instead. 
 
 ![](images/stitch-input.png)
 
@@ -18,19 +21,18 @@ Some stitches to copy paste:
 
 {% include stitches.html %}
 
-The example below applies the last stitch above with a few more twists.
+The example below applies the bottom (mirrored) version of the last stitch above with a few more twists.
 
 ![](images/foot-side-stitches.png)
 
 [Live version](/GroundForge/tiles?patchWidth=3&patchHeight=8&g1=tctcttrrctct&f1=tctct&c1=ctc&b1=tctct&f2=tctct&c2=ctc&b2=tctct&a2=tctct&footside=-7,A1&tile=8,1&headside=8D,4-&footsideStitch=tctct&tileStitch=ctc&headsideStitch=tctct&shiftColsSW=-1&shiftRowsSW=2&shiftColsSE=0&shiftRowsSE=2)
 
-When erasing the content of a stitch field, the value from "define a repeat"
-in the advanced section will be filled in, if that is empty `ctc` will be filled in.
 To deliberately ignore a stitch from the prototype, you'll have to fill in a dash: `-`.
-The green arcs in the diagrams below show how stitches will be reconnected in the pair diagram.
+When erasing the content of a stitch field, the value of the pattern definition will be filled in, if that field is empty `ctc` will be filled in.
+The green annotations in the screen shot below show how stitches will be reconnected in the pair diagram.
 One case is straight forward. In the other case two stitches are merged
 because they were were connected with parallel pairs.
-Too many adjacent ignored stitches may cause weird thread diagrams
+_Warning_: too many adjacent ignored stitches may cause weird thread diagrams
 with pairs swapped before a stitch is made.
 
 ![](images/ignore-stitches.png)
