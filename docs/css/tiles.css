@@ -2,7 +2,6 @@ li li { padding-bottom:0; }
 ul ul { padding-left: 1em; }
 h1 { font-size: 25px; line-height: 1; }
 h2 { font-size: 18px; line-height: 1; }
-#drosteFieldSet { margin-bottom: 0.5em; }
 
 figure { display: inline-block; margin-left: 0; margin-top: 0; margin-right: 0.5em; margin-bottom: 0; }
 figure img, figcaption { display: block; }
@@ -15,8 +14,7 @@ fieldset fieldset figure div { height: 222px; }
 .pattern textarea {min-width: 4.5em}
 
 #whiting { padding-bottom: 0.5em; padding-left: 4em; }
-
-#prototype, #threadDiagram, #pairDiagram,  #drostePair3, #drosteThread3 {
+#prototype, #threadDiagram, #pairDiagram {
   resize:both;
   overflow:auto;
   display:inline-block;
@@ -24,19 +22,17 @@ fieldset fieldset figure div { height: 222px; }
   max-width:784px; max-height:1082px;
   border: solid 1px  #ddd
 }
-#drostePair2, #drosteThread2 {
+#drosteFieldSet2, #drosteFieldSet3 { text-align: left;  margin-bottom: 0.5em; }
+#drosteFields2 textarea { vertical-align: text-top; }
+#drosteFields3 textarea { vertical-align: text-top; }
+#drostePair2, #drosteThread2, #drostePair3, #drosteThread3 {
   resize:both;
   overflow:auto;
   display:inline-block;
-  width:250px; height:110px;
+  width:250px; height:130px;
   max-width:784px; max-height:1082px;
   border: solid 1px  #ddd
 }
-#prototype {max-width:1150px;max-height:815px}
-#drosteFieldSet { text-align: left; }
-#drosteFields3 { display: none; }
-#drosteFields2 textarea { vertical-align: text-top; }
-#drosteFields2 button { float: right; margin-top: 5px;}
 
 foreignObject{ margin:0; padding:0; width: 1px; height: 1px; overflow: visible }
 foreignObject input {

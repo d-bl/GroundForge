@@ -29,7 +29,7 @@
 
     <ul>
         <li>Catalogues: <a href="/MAE-gf/" target="_blank">MAE</a>, <a href="/tesselace-to-gf/" target="_blank">TesseLace</a>, <a href="/gw-lace-to-gf/" target="_blank">Whiting</a></li>
-        <li>Tutorials: <a href="help/index" target="_blank">Getting started</a>, <a href="help/Advanced" target="_blank">Create a pattern</a>, <a href="index" target="_blank">More...</a></li>
+        <li>Tutorials: <a href="help/index" target="_blank">Getting started</a>, <a href="help/Advanced" target="_blank">Create a pattern</a>, <a href="help/Reshape-Patterns" target="_blank">Reshape patterns</a>, <a href="index" target="_blank">More...</a></li>
     </ul>
     <div id="whiting"></div>
 </article>
@@ -37,17 +37,16 @@
     <fieldset id="diagrams">
         <legend>
             Diagrams
-            <a href="help/index" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
             <a><button type="button" onclick="showDiagrams()" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
             -
             <label for="patchWidth">
                 Swatch size
                 <a href="help/Patch-Size" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
             </label>
+            <label for="patchWidth">cols:</label>
             <input type="number" name="patchWidth" id="patchWidth" min="3" max="30" value="7" onchange="showProto()" autofocus>
-            <label for="patchWidth">cols</label>
+            <label for="patchHeight">, rows:</label>
             <input type="number" name="patchHeight" id="patchHeight" min="3" max="30" value="7" onchange="showProto()">
-            <label for="patchHeight">rows</label>
             -
             <label for="draggable">Draggable:</label>
             <input type="checkbox" id="draggable" onchange="showProto()" title="make threads draggable">
@@ -56,6 +55,7 @@
         <figure>
             <figcaption>
                 Pairs
+                <a href="help/Color-Code" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
                 <img src="images/animate.png" onclick="javascript:animateDiagram(d3.select('#pairDiagram'), 372, 526)" title="animate/reshape"
                 >
                 <a download="pair-diagram.svg"
@@ -73,6 +73,7 @@
         <figure >
             <figcaption>
                 Threads
+                <a href="help/index#highlight-a-thread" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
                 <a download="thread-diagram.svg"
                    onfocus="setDownloadContent(this,'#threadDiagram')"
                    onblur="this.href='?#download'"
@@ -90,13 +91,13 @@
     <fieldset>
         <legend>
             Edit pattern
-            <a href="help/Advanced#define-a-repeat" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
             <a id="link" href="#"><button type="button" title="create link to current set of diagrams"><img alt="link" src="images/link.png"></button></a>
             <a><button type="button" onclick="showDiagrams()" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
         </legend>
         <figure >
             <figcaption title="choosing a stitch shows/refreshes the thread diagram">
                 Pattern
+                <a href="help/index#modify-stitches" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
                 <a download="prototype.svg"
                    onfocus="setDownloadContent(this,'#prototype')"
                    onblur="this.href='?#download'"
@@ -112,7 +113,9 @@
         </figure>
 
         <figure class="pattern">
-            <figcaption>Pattern definition</figcaption>
+            <figcaption>Pattern definition
+                <a href="help/Advanced" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
+            </figcaption>
             <div>
                 <table>
                     <tr>
@@ -140,7 +143,10 @@
         </figure>
 
         <figure class="pattern">
-            <figcaption>Tile layout</figcaption>
+            <figcaption>
+                Tile layout
+                <a href="help/Advanced#glue-copies-together" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
+            </figcaption>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 287.55 145.2" version="1.1"  id="svg2" height="154.88" width="306.72"  >
                     <path d="m98.89 30.589 14.712 16.075" style="fill:none;stroke-linecap:round;stroke-linejoin:bevel;stroke-width:1.1279;stroke:#834bce"/>
@@ -245,26 +251,26 @@
     </fieldset>
 
     <h2>Reuse thread diagram as pair diagram</h2>
-    <fieldset id="drosteFieldSet">
+    <fieldset id="drosteFieldSet2">
         <legend>
             First level
-            <a href="help/Advanced#thread-diagram-as-pair-diagram" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
             -
             <a><button type="button" onclick="showDroste(2)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
             -
             <small>Reminder: use a small swatch size</small>
         </legend>
-
         <div id="drosteFields2">
             <figure>
                 <figcaption>
                     Stitches
+                    <a href="help/Advanced#thread-diagram-as-pair-diagram" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
                 </figcaption>
                     <textarea id="droste2" name="droste2" rows="7" cols="30" spellcheck="false" onchange="clear2()"></textarea>
             </figure>
             <figure>
                 <figcaption>
                     Pairs
+                    <a href="help/Color-Code" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
                     <a download="pair-diagram.svg"
                        onfocus="setDownloadContent(this,'#drostePair2')"
                        onblur="this.href='?#download'"
@@ -279,6 +285,7 @@
             <figure >
                 <figcaption>
                     Threads
+                    <a href="help/index#highlight-a-thread" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
                     <a download="thread-diagram.svg"
                        onfocus="setDownloadContent(this,'#drosteThread2')"
                        onblur="this.href='?#download'"
@@ -290,54 +297,53 @@
                 </figcaption>
                 <div id="drosteThread2"></div>
             </figure>
-            <br>
-            <a><button type="button" onclick="closeDiv(2)">close</button></a>
-            <br>
-            <fieldset id="drosteFields2b">
-                <legend>
-                    Second level
-                    -
-                    <a><button type="button" onclick="showDroste(3)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
-                </legend>
-                <div id="drosteFields3">
-                    <figure>
-                        <figcaption>
-                            Stitches
-                        </figcaption>
-                        <textarea id="droste3" name="droste3" rows="7" cols="30" spellcheck="false" onchange="clear3()"></textarea>
-                    </figure>
-                    <figure>
-                        <figcaption>
-                            Pairs
-                            <a download="pair-diagram.svg"
-                               onfocus="setDownloadContent(this,'#drostePair3')"
-                               onblur="this.href='?#download'"
-                               href="?#download"
-                               title="download"
-                            ><img src="images/download.jpg"></a>
-                            <img src="images/size-inc.jpg" onclick="resizeBoth('#drostePair3', 1.1)" title="increase diagram dimensions"
-                            ><img src="images/size-dec.jpg" onclick="resizeBoth('#drostePair3', 0.91)" title="decrease diagram dimensions">
-                        </figcaption>
-                        <div id="drostePair3"></div>
-                    </figure>
-                    <figure >
-                        <figcaption>
-                            Threads
-                            <a download="thread-diagram.svg"
-                               onfocus="setDownloadContent(this,'#drosteThread3')"
-                               onblur="this.href='?#download'"
-                               href="?#download"
-                               title="download"
-                            ><img src="images/download.jpg"></a>
-                            <img src="images/size-inc.jpg" onclick="resizeBoth('#drosteThread3', 1.1)" title="increase diagram dimensions"
-                            ><img src="images/size-dec.jpg" onclick="resizeBoth('#drosteThread3', 0.91)" title="decrease diagram dimensions">
-                        </figcaption>
-                        <div id="drosteThread3"></div>
-                    </figure>
-                    <br>
-                    <a><button type="button" onclick="closeDiv(3)">close</button></a>
-                </div>
-            </fieldset>
+        </div>
+    </fieldset>
+    <br>
+    <fieldset id="drosteFieldSet3">
+        <legend>
+            Second level
+            -
+            <a><button type="button" onclick="showDroste(3)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
+        </legend>
+        <div id="drosteFields3">
+            <figure>
+                <figcaption>
+                    Stitches
+                    <a href="help/Advanced#thread-diagram-as-pair-diagram" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
+                </figcaption>
+                <textarea id="droste3" name="droste3" rows="7" cols="30" spellcheck="false" onchange="clear3()"></textarea>
+            </figure>
+            <figure>
+                <figcaption>
+                    Pairs
+                    <a href="help/Color-Code" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
+                    <a download="pair-diagram.svg"
+                       onfocus="setDownloadContent(this,'#drostePair3')"
+                       onblur="this.href='?#download'"
+                       href="?#download"
+                       title="download"
+                    ><img src="images/download.jpg"></a>
+                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drostePair3', 1.1)" title="increase diagram dimensions"
+                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drostePair3', 0.91)" title="decrease diagram dimensions">
+                </figcaption>
+                <div id="drostePair3"></div>
+            </figure>
+            <figure >
+                <figcaption>
+                    Threads
+                    <a href="help/index#highlight-a-thread" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
+                    <a download="thread-diagram.svg"
+                       onfocus="setDownloadContent(this,'#drosteThread3')"
+                       onblur="this.href='?#download'"
+                       href="?#download"
+                       title="download"
+                    ><img src="images/download.jpg"></a>
+                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drosteThread3', 1.1)" title="increase diagram dimensions"
+                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drosteThread3', 0.91)" title="decrease diagram dimensions">
+                </figcaption>
+                <div id="drosteThread3"></div>
+            </figure>
         </div>
     </fieldset>
 </form>
