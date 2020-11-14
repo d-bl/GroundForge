@@ -14,6 +14,13 @@ User the arrows on your keyboard to move around.
 
 ![](images/stitch-input.png)
 
+You can also use the TAB key of your keyboard to travel from one field to the next,
+even from/to form fields outside the diagram. 
+Touch devices may also have keys to traverse through the fields.
+Below a screenshot of an iPad with the up/down arrows on the right.
+ 
+![](images/iPad-tab-thru.PNG)
+
 Stitch definitions
 ------------------
 
