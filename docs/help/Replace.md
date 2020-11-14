@@ -23,7 +23,6 @@ For example, here are some interesting stitch combinations that you can copy and
 
 {% include stitches.html %}
 
-The stitches in the second row of the figure above are mirror reflections of the first row. 
 The right footside in the following example applies the last stitch in the second row of the figure above (with a few more twists).
 You can [try](/GroundForge/tiles?patchWidth=3&patchHeight=8&g1=tctcttrrctct&f1=tctct&c1=ctc&b1=tctct&f2=tctct&c2=ctc&b2=tctct&a2=tctct&footside=-7,A1&tile=8,1&headside=8D,4-&footsideStitch=tctct&tileStitch=ctc&headsideStitch=tctct&shiftColsSW=-1&shiftRowsSW=2&shiftColsSE=0&shiftRowsSE=2)
 variations.
