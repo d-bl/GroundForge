@@ -39,17 +39,14 @@
             Diagrams
             <a><button type="button" onclick="showDiagrams()" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
             -
-            <label for="patchWidth">Swatch size</label>
-            <div>
-                <input type="number" name="patchWidth" id="patchWidth" min="3" max="30" value="7" onchange="showProto()" autofocus>
-                <label for="patchWidth">col(s)</label>
-                <br>
-                <input type="number" name="patchHeight" id="patchHeight" min="3" max="30" value="7" onchange="showDiagrams()">
-                <label for="patchHeight">rows(s)</label>
-            </div>
             <label for="patchWidth">
+                Swatch size
                 <a href="help/Patch-Size" target="_blank"><img src="help/images/information-icon.png" title="swatch size"></a>
             </label>
+            <input type="number" name="patchWidth" id="patchWidth" min="3" max="30" value="7" onchange="showProto()" autofocus>
+            <label for="patchWidth">cols</label>
+            <input type="number" name="patchHeight" id="patchHeight" min="3" max="30" value="7" onchange="showDiagrams()">
+            <label for="patchHeight">rows</label>
             -
             <label for="draggable">Draggable:</label>
             <input type="checkbox" id="draggable" onchange="showProto()" title="make threads draggable">
