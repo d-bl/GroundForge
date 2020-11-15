@@ -43,13 +43,14 @@
                 Swatch size
                 <a href="help/Patch-Size" target="_blank"><img src="help/images/information-icon.png" title="swatch size"></a>
             </label>
-            <label for="patchWidth">cols:</label>
             <input type="number" name="patchWidth" id="patchWidth" min="3" max="30" value="7" onchange="showProto()" autofocus>
-            <label for="patchHeight">, rows:</label>
-            <input type="number" name="patchHeight" id="patchHeight" min="3" max="30" value="7" onchange="showProto()">
+            <label for="patchWidth">cols</label>
+            <input type="number" name="patchHeight" id="patchHeight" min="3" max="30" value="7" onchange="showDiagrams()">
+            <label for="patchHeight">rows</label>
             -
             <label for="draggable">Draggable:</label>
             <input type="checkbox" id="draggable" onchange="showProto()" title="make threads draggable">
+            <label for="draggable"><a href="help/drag" target="_blank"><img src="help/images/information-icon.png" title="untangle clutter"></a></label>
         </legend>
 
         <figure>
@@ -93,6 +94,7 @@
             Edit pattern
             <a id="link" href="#"><button type="button" title="create link to current set of diagrams"><img alt="link" src="images/link.png"></button></a>
             <a><button type="button" onclick="showDiagrams()" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
+            <a href="help/undo" target="_blank"><img src="help/images/information-icon.png" title="save / reload"></a>
         </legend>
         <figure >
             <figcaption>
