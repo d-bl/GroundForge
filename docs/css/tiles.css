@@ -47,7 +47,7 @@ foreignObject input:focus { opacity: 1; width:30px; padding: 1px; padding-left: 
 input[type="number"] { width:3em; }
 fieldset, fieldset div { display: inline-block; vertical-align: top; }
 form { margin-bottom: 1em; }
-legend input[type="number"] { margin-left: 1em; text-align: right; }
+legend input[type="number"] {text-align: right; }
 
 p { margin-top: 0; margin-bottom: 0.5em; }
 p, dt, dd, ul { max-width: 46.5em; }
