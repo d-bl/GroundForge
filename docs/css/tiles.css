@@ -44,7 +44,7 @@ foreignObject input {
 }
 foreignObject input:focus { opacity: 1; width:30px; padding: 1px; padding-left: 2px; }
 
-input[type="number"] { width:3em; text-align: right; }
+input[type="number"] { width:3em; margin-right: 2px; text-align: right; }
 fieldset, fieldset div { display: inline-block; vertical-align: top; }
 form { margin-bottom: 1em; }
 
