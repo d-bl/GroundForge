@@ -52,9 +52,11 @@
             </div>
 
             -
-            <label for="draggable">Draggable:</label>
+            <span style="white-space: nowrap;">
+            <label for="draggable">Draggable:</label>&nbsp;
             <input type="checkbox" id="draggable" onchange="showProto()" title="make threads draggable">
             <label for="draggable"><a href="help/drag" target="_blank"><img src="help/images/information-icon.png" title="untangle clutter"></a></label>
+            </span>
         </legend>
 
         <figure>
@@ -243,12 +245,12 @@
                 </svg>
                 <p style="max-width: 22em"></p>
                 <div style="border:3px solid #029807;border-radius: 3px;">
-                    <input type="number" name="shiftColsSW" id="shiftColsSW" min="-12" max="0" value="0" onchange="showProto()"><label for="shiftColsSW">col(s)</label>
+                    <input type="number" name="shiftColsSW" id="shiftColsSW" min="-12" max="0" value="0" onchange="showProto()"><label for="shiftColsSW">column(s)</label>
                     <br>
                     <input type="number" name="shiftRowsSW" id="shiftRowsSW" min="0" max="12" value="2" onchange="showProto()"><label for="shiftRowsSW">row(s)</label>
                 </div>
                 <div style="border:3px solid #834bce;border-radius: 3px;">
-                    <input type="number" name="shiftColsSE" id="shiftColsSE" min="0" max="12" value="2" onchange="showProto()"><label for="shiftColsSE">col(s)</label>
+                    <input type="number" name="shiftColsSE" id="shiftColsSE" min="0" max="12" value="2" onchange="showProto()"><label for="shiftColsSE">column(s)</label>
                     <br>
                     <input type="number" name="shiftRowsSE" id="shiftRowsSE" min="0" max="12" value="2" onchange="showProto()"><label for="shiftRowsSE">row(s)</label>
                 </div>
@@ -318,7 +320,7 @@
                     Stitches
                     <a href="help/Advanced#thread-diagram-as-pair-diagram" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
                 </figcaption>
-                <textarea id="droste3" name="droste3" rows="7" cols="30" spellcheck="false" onchange="clear3()"placeHolder="Type stitch definition here.&#13;&#10;For example:&#13;&#10;&#13;&#10;ct&#13;&#10;a140=a150=b240=b250=ctcctct"></textarea>
+                <textarea id="droste3" name="droste3" rows="7" cols="30" spellcheck="false" onchange="clear3()" placeHolder="Type stitch definition here.&#13;&#10;For example:&#13;&#10;&#13;&#10;ct&#13;&#10;a140=a150=b240=b250=ctcctct"></textarea>
             </figure>
             <figure>
                 <figcaption>
