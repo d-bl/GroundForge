@@ -41,6 +41,19 @@ function showProto() {
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
   return config
 }
+function toggleCheatSheet() {
+  var imgElement = document.getElementById('cheatsheet');
+  var value = imgElement.dataset.img;
+  if (value === "1") {
+    imgElement.src = "help/images/matrix-template-extended.png";
+    imgElement.title="click to only show basic symbols";
+    imgElement.dataset.img = "2";
+  } else {
+    imgElement.src = "help/images/matrix-template.png";
+    imgElement.title="click to show additional symbols";
+    imgElement.dataset.img = "1";
+  }
+}
 function flip(){
   var left = d3.select("#footside").node().value
   console.log(Matrix.flip)
