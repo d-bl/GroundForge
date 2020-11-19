@@ -41,6 +41,16 @@ function showProto() {
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
   return config
 }
+function toggleCheatSheet(imgElement) {
+  var value = imgElement.dataset.img;
+  if (imgElement.src && imgElement.src.includes("extended")) {
+    imgElement.src = "help/images/matrix-template.png";
+    imgElement.title="click to show additional symbols";
+  } else {
+    imgElement.src = "help/images/matrix-template-extended.png";
+    imgElement.title="click to only show basic symbols";
+  }
+}
 function flip(){
   var left = d3.select("#footside").node().value
   console.log(Matrix.flip)
