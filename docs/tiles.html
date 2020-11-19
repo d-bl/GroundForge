@@ -47,14 +47,14 @@
                 <label for="patchWidth">columns</label>
                 <a href="help/Patch-Size" target="_blank"><img src="help/images/information-icon.png" title="swatch size"></a>
                 <br>
-                <input type="number" name="patchHeight" id="patchHeight" min="3" max="30" value="7" onchange="showDiagrams()">
+                <input type="number" name="patchHeight" id="patchHeight" min="3" max="30" value="7" onchange="showProto()">
                 <label for="patchHeight">rows</label>
             </div>
 
             -
             <span style="white-space: nowrap;">
             <label for="draggable">Draggable:</label>&nbsp;
-            <input type="checkbox" id="draggable" onchange="showProto()" title="make threads draggable">
+            <input type="checkbox" id="draggable" onchange="showDiagram()" title="make threads draggable">
             <label for="draggable"><a href="help/drag" target="_blank"><img src="help/images/information-icon.png" title="untangle clutter"></a></label>
             </span>
         </legend>
