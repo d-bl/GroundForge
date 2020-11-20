@@ -7,19 +7,13 @@ Changing the dimensions of the diagrams may have some unexpected consequences.
 
 Large sizes
 -----------
-Note that a large patch size makes a diagram slower to render.
-On slow devices like tablets and phones that might give
-the impression that links to pages with a large patch size
-don't work at all or block the device.
-So create links with patch sizes just large enough to recognize the pattern,
-visitors can easily increment the size.
+Note that a large swatch size makes a diagram slower to render.  On slow devices like tablets and phones that might give the impression that links to pages with a large swatch size don't work at all or block the device. So create links with patch sizes just large enough to recognize the pattern, visitors can easily increment the size.
 
-When you specify a too small patch, (or a link with no dimensions)
-the size will be automatically increased to contain at least one tile.
+When you specify a swatch that is too small, (or a link with no dimensions) the size will be automatically increased to contain at least one tile.
 
 Right foot sides
 ---------------
-When a diagram has a foot side on the right, it will usually match only for every so many columns. Anyway you will have to reassign the stitches.
+When a diagram has a foot side on the right, it will usually match only for every so many columns. You may have to reassign the stitches.
 
 If you want another number, go to the "Pattern definition" section:
 rotating the rows in the right field might help but you might need more changes.

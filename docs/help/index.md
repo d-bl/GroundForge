@@ -46,19 +46,19 @@ You can increase or decrease the size of the sample (also known as a "swatch") g
 
 ![](images/patch-size.png)
 
-Every time you change the swatch size, you must regenerate the pair and thread diagrams by clicking on the ![wand](../images/wand.png) image found near the top left of the "Diagrams" area.
+Every time you change the swatch size, you must regenerate the pair and thread diagrams by clicking on the ![wand](../images/wand.png) image found near the top left of the _Diagrams_ area.
 
 ### Modify stitches
 
-To change the stitches, go to the pattern diagram in the "Edit pattern" section. The pattern contains a vector drawing showing the order in which pairs of threads come together. There are multiple copies of the ground pattern in the prototype, showing how the pattern repeats. One copy is brightly coloured, the others appear faded. We will always work with the brightly coloured copy.
+To change the stitches, go to the pattern diagram in the _Edit pattern_ section. The pattern contains a vector drawing showing the order in which pairs of threads come together. There are multiple copies of the ground pattern in the prototype, showing how the pattern repeats. One copy is brightly coloured, the others appear faded. We will always work with the brightly coloured copy.
 
 ![](images/G2-stitch-editor.png)
 
 Where two pairs come together, there is a circle with a number or letter in its centre. Click once on any of these circles and a yellow box appears with the stitch definition. To change the stitch, type the new instructions while the yellow box is visible. Note: Do not try to click inside the yellow box to change the caret position.  Use the arrows on the keyboard instead.  
 
-Every time you change the stitch definitions, you must regenerate the pair and thread diagrams by clicking on the ![wand](../images/wand.png) image found near the top left of the "Edit pattern" area.
+Every time you change the stitch definitions, you must regenerate the pair and thread diagrams by clicking on the ![wand](../images/wand.png) image found near the top left of the _Edit pattern_ area.
 
-Exercise: Try to change the center of the spider from `ctcctc` to `t`. (Spoiler alert: The center of the spider is the black circle around the symbol '5', located in the top left corner of the prototype).
+Exercise: Try to change the center of the spider from `ctcctc` to `t`. (Spoiler alert: The center of the spider is the black circle around the symbol `5`, located in the top left corner of the prototype).
 
 In addition to the usual `c` for cross and `t` for twist, you can twist only the right pair by typing `r` or type `l` to twist only the left pair. You can also "drop" a stitch. That is, when two pairs meet, do not braid them together at all. To drop a stitch, replace the stitch instructions with `-`. Be careful when dropping stitches. It can have unexpected consequences.
 
@@ -72,7 +72,7 @@ To return the pattern to its original values, click on the 'Reload' button (also
 
 ### Save and share changes
 
-Once you have invested some time working on a lace ground, you will want to save your work. Click on the ![link](../images/link.png) image near the top left of the "Edit pattern" area. This will change the text in the address bar at the top of your browser. The text is a link to this website and contains the lace pattern as well as the stitch choices you have made.
+Once you have invested some time working on a lace ground, you will want to save your work. Click on the ![link](../images/link.png) image near the top left of the _Edit pattern_ area. This will change the text in the address bar at the top of your browser. The text is a link to this website and contains the lace pattern as well as the stitch choices you have made.
 
 ![](images/save-link.png)
 

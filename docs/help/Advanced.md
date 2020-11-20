@@ -34,9 +34,9 @@ The easiest approach is to start with a printed copy of the pattern. Pick a spot
 
 Each rectangle highlights one repeat of the Rose pattern.  For convenience, on the right of the image above we have moved the rectangles slightly so that it is easy to see all the intersections of pairs within a rectangle (no intersection lies on the edge of a rectangle).
 
-Next we will map the pairs in the lace ground to a grid.  Draw a grid on top of the base tile on you paper copy as shown by the red dashed lines in the middle image above.  Within one repeat rectangle, the intersections lie on four columns and four rows.
+Next we will map the pairs in the lace ground to a grid.  Draw a grid on top of the base tile on your paper copy as shown by the red dashed lines in the middle image above.  Within one repeat rectangle, the intersections lie on four columns and four rows.
 
-For each position in the grid, we assign a symbol.  The symbol specifies the angle and direction of the two pairs that are coming __in__ to meet at  that row/column position.  The meaning of each symbol is shown in the _Cheat sheet_ just below the _Pattern definition_ area.  For example, in row 1/column 1 the yellow arrows correspond to the symbol '4' which is a pair coming straight down and a pair coming diagonally down pointing south-west.  Similarly, in row 3/column 2, there is no intersection of pairs which we represent by the symbol '-'.
+For each position in the grid, we assign a symbol.  The symbol specifies the angle and direction of the two pairs that are coming __in__ to meet at  that row/column position.  The meaning of each symbol is shown in the _Cheat sheet_ just below the _Pattern definition_ area.  For example, in row 1/column 1 the yellow arrows correspond to the symbol `4` which is a pair coming straight down and a pair coming diagonally down pointing south-west.  Similarly, in row 3/column 2, there is no intersection of pairs which we represent by the symbol `-`.
 
 We can now fill in the middle section of the _Pattern definition_ area.  Notice that the pattern diagram updates to match the symbols as soon as you click outside of the text box.
 
@@ -91,7 +91,7 @@ Initially, the copies will be placed corner to corner.  Click on the black arrow
 
 ### Initialize stitches
 
-For convenience, you can set all stitches in the pattern to the same value.  In the _Edit pattern_ area, just below the middle box where you typed symbols for the pattern, there is a small text box.  Enter a stitch as a sequence of 'c', 't', 'r' or 'l' (for example, 'cttct').  Click on the "initialize stitches button" and then on the ![wand](../images/wand.png) image above the pattern diagram to regenerate the thread and pair diagrams.  This is a quick way to see how a ground looks in cloth-stitch, half-stitch or whole-stitch.  Once initialized, you can change the stitches used for individual intersections by clicking on the symbols in the pattern diagram.  Each time you click on the "initialize stitches button", the stitch values in the pattern are reset.
+For convenience, you can set all stitches in the pattern to the same value.  In the _Edit pattern_ area, just below the middle box where you typed symbols for the pattern, there is a small text box.  Enter a stitch as a sequence of `c`, `t`, `r` or `l` (for example, `cttct`).  Click on the _initialize stitches_ button and then on the ![wand](../images/wand.png) image above the pattern diagram to regenerate the thread and pair diagrams.  This is a quick way to see how a ground looks in cloth-stitch, half-stitch or whole-stitch.  Once initialized, you can change the stitches used for individual intersections by clicking on the symbols in the pattern diagram.  Each time you click on the _initialize stitches_ button, the stitch values in the pattern are reset.
 
 Footside Tutorial
 -----------------
@@ -101,9 +101,9 @@ In the _Edit pattern_ section, the central panel defines the ground, and the lef
 
 The leftmost edge of the central patch is determined by the leftmost column in the ground definition.  If you want to change where the patch starts on the left, you must choose a different starting point for the base pattern and modify the ground definition accordingly.
 
-The rightmost edge of the patch depends on the number of columns specified in the "Swatch size".  If you change the number of columns in the patch size, the right footside may no longer match correctly.  Note that the number of columns required for the footsides are not included in the "Swatch size".  They are added on top of the width that you specify.
+The rightmost edge of the patch depends on the number of columns specified in the _Swatch size_.  If you change the number of columns in the patch size, the right footside may no longer match correctly.  Note that the number of columns required for the footsides are not included in the _Swatch size_.  They are added on top of the width that you specify.
 
-First, we will consider the simple example of Torchon Ground.  Lay a square grid over the pair diagram. We must identify the loose ends of pairs along the edge and match them up where possible. To do this, we can use a "kissing path". A kissing path follows one set of pairs through the pair diagram.  When two pairs intersect, the kissing path does not cross over to the other side, it just touches the other pair ("kisses") and continues.  You can think of it as the path that a pair of threads follows if a turning stitch (cttct) is used at each intersection.  The yellow and blue thick lines in the figure below highlight the kissing paths for the pairs at the edge of the pair diagram. Note that several incoming edges are missing on the yellow kissing path (dashed red lines).  We can add them by labelling the incoming pair intersections using the symbols 'W', 'Y' and '-' in the Cheat Sheet:
+First, we will consider the simple example of Torchon Ground.  Lay a square grid over the pair diagram. We must identify the loose ends of pairs along the edge and match them up where possible. To do this, we can use a "kissing path". A kissing path follows one set of pairs through the pair diagram.  When two pairs intersect, the kissing path does not cross over to the other side, it just touches the other pair ("kisses") and continues.  You can think of it as the path that a pair of threads follows if a turning stitch (cttct) is used at each intersection.  The yellow and blue thick lines in the figure below highlight the kissing paths for the pairs at the edge of the pair diagram. Note that several incoming edges are missing on the yellow kissing path (dashed red lines).  We can add them by labelling the incoming pair intersections using the symbols `W`, `Y` and `-` in the Cheat Sheet:
 
 ![](images/simple-wavy-footside.png)
 
@@ -140,17 +140,17 @@ In a typical pair diagram, two pairs intersect at each crossing and then continu
 
 ![](images/simple-droste.png)
 
-To apply this technique in GroundForge, click on the ![wand](../images/wand.png) image beside "First level" under the _Thread diagram as pair diagram_ heading. 
+To apply this technique in GroundForge, click on the ![wand](../images/wand.png) image beside _First level_ under the _Thread diagram as pair diagram_ heading. 
  
 ![](images/reuse.png)
 
 There are several options for specifying which stitches appear in the new thread diagram.
 
-By default, every stitch is `ctc`.  You can assign a new default stitch by typing the actions (such as `ct`) in the input box that appears to the left of the new pair diagram. You can also assign a stitch to every "cross" in the original thread diagram by typing `cross=...` (for example, `cross=ctcll`) in the input box.  Similarly, you assign a stitch to every "twist" in the original thread diagram using `twist=...`.  For finer control, you can specify a stitch for a specific intersection.  First find the identity of the intersection in the new pair diagram (hover over the intersection until the id appears), then give it a new value in the input box such as `b10=clcl`.  You can combine any of these options in the input box.  Use a new line or a comma to separate each instruction. After editing the stitches in the input box, click on the ![wand](../images/wand.png) image beside "First level" under the _Thread diagram as pair diagram_ heading. 
+By default, every stitch is `ctc`.  You can assign a new default stitch by typing the actions (such as `ct`) in the input box that appears to the left of the new pair diagram. You can also assign a stitch to every "cross" in the original thread diagram by typing `cross=...` (for example, `cross=ctcll`) in the input box.  Similarly, you assign a stitch to every "twist" in the original thread diagram using `twist=...`.  For finer control, you can specify a stitch for a specific intersection.  First find the identity of the intersection in the new pair diagram (hover over the intersection until the id appears), then give it a new value in the input box such as `b10=clcl`.  You can combine any of these options in the input box.  Use a new line or a comma to separate each instruction. After editing the stitches in the input box, click on the ![wand](../images/wand.png) image beside _First level_ under the _Thread diagram as pair diagram_ heading. 
 
 ![](images/droste-assign-stitches.png)
 
-To repeat this process a second time, click on the ![wand](../images/wand.png) image beside "Second level" under the _Thread diagram as pair diagram_ heading.   This will create another new thread diagram by using the thread diagram from the first level as a pair diagram.
+To repeat this process a second time, click on the ![wand](../images/wand.png) image beside _Second level_ under the _Thread diagram as pair diagram_ heading.   This will create another new thread diagram by using the thread diagram from the first level as a pair diagram.
 
 ![](images/droste-repeat-assign-stitches.png)
 
