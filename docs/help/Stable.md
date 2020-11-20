@@ -12,7 +12,7 @@ The lists of steps below will give you your own stable version.
 * Register or login at github.
 * [Fork] the projects
   [GroundForge](https://github.com/d-bl/GroundForge),
-  [MAE-gf](https://github.com/d-bl/MAE-to-gf),
+  [MAE-gf](https://github.com/d-bl/MAE-gf),
   [tesselace-to-gf](https://github.com/d-bl/tesselace-to-gf) and
   [gw-lace-to-gf](https://github.com/d-bl/gw-lace-to-gf);
   in this context to _not_ stay synced.
