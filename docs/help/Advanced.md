@@ -55,7 +55,7 @@ Consider the image below. Red dashed lines show the grid overlaid on the pattern
 To position the blue rectangle on top of the green rectangle, we must slide the blue rectangle down 4 rows.
 To position the blue rectangle on top of the purple rectangle, we must slide it right 4 columns and down 4 rows.  These translations distances are the numbers that appear in the green and purple boxes.  You can also edit these slide moves directly in the number fields.
 
-[Final result](/GroundForge/docs/tiles.html?patchWidth=7&patchHeight=7&c1=ctct&a1=ctct&d2=ctct&c2=ctct&b2=ctct&a2=ctct&c3=ctct&a3=ctct&d4=ctct&c4=ctct&b4=ctct&a4=ctct&tile=4-7-,1583,7-4-,8315&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4)
+[Final result](/GroundForge/tiles.html?patchWidth=7&patchHeight=7&c1=ctct&a1=ctct&d2=ctct&c2=ctct&b2=ctct&a2=ctct&c3=ctct&a3=ctct&d4=ctct&c4=ctct&b4=ctct&a4=ctct&tile=4-7-,1583,7-4-,8315&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4)
 
 ### Creating a smaller base tile
 
