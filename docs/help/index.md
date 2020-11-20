@@ -7,20 +7,15 @@ ref: intro
 
 Getting Started
 ==========
-+ [GroundForge 101](#groundforge-101)
-   + [Highlight a thread](#highlight-a-thread)
-   + [Resize pattern](#resize-pattern)
-   + [Modify stitches](#modify-stitches)
-   + [Undo changes](#undo-changes)
-   + [Save and share changes](#save-and-share-changes)
-   + [Create a new ground pattern](#create-a-new-ground-pattern)
-   + [Add footsides](#add-footsides)
-   + [Next steps](#next-steps)
++ [Highlight a thread](#highlight-a-thread)
++ [Resize pattern](#resize-pattern)
++ [Modify stitches](#modify-stitches)
++ [Undo changes](#undo-changes)
++ [Save and share changes](#save-and-share-changes)
++ [Create a new ground pattern](#create-a-new-ground-pattern)
++ [Add footsides](#add-footsides)
++ [Next steps](#next-steps)
    
-
-GroundForge 101
------------------
-
 In the following tutorial, we will explore a versatile ground from the [Whiting catalogue] and illustrate some basic features of GroundForge. 
 
 First navigate to the [Whiting catalogue] (click on this link) and look at the grounds.  By clicking on a photo in the catalogue, you will launch the associated page in Gertrude Whiting's book *A lace guide for makers and collectors* which will give more information about the ground.  The grounds are arrange in columns labelled __A__ to __H__ and rows labelled __1__ to __18__.
