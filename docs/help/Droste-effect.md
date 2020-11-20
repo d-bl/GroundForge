@@ -63,13 +63,13 @@ Base  | Base &rarr; First Level    | First level     | [Whiting index](/gw-lace-
 [A7-H7,G11]: /gw-lace-to-gf#val
 
 
-Build your own experiments
+Experiment
 -------------------------
 
-For the base pattern, start with something small.  For example, enter alternating `-`'s and `5`'s or alternating rows of `8`'s and `1`'s in the _Pattern definition_ area of _Edit pattern_. Then click on the blue square of the simple layout. 
+For the base pattern, start with something small.  For example, enter an even number of alternating rows of `8`'s and `1`'s or `-`'s and `5`'s in the _Pattern definition_ area of _Edit pattern_. Then click on the blue square of the simple layout (see below).  Next click on the ![wand](../images/wand.png) image beside _First level_ under the _Thread diagram as pair diagram_ heading. Remember to keep the swatch size small.  A large swatch size may be very slow. 
 
 ![](images/init-droste.png)
 
-Try a variety of stitches.  Here are some to consider:
+Try a variety of stitches in the base pattern and the first and second level patterns.  Here are some to consider:
 
 {% include stitches.html %}
