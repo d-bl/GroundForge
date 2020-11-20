@@ -38,7 +38,7 @@ Pair diagrams of several traditional grounds are very similar to thread diagrams
 Base  | Base &rarr; First Level    | First level     | [Whiting catalogue](/gw-lace-to-gf)
 -------------------------------------------------------------------------------------|----------------|-------------|--------- 
 ![](stitches/ct.png) ![](stitches/ct-color1.png) | [ct &rarr; ctct]      | ![](/gw-lace-to-gf/w/page76a.gif) | A5, A6, B5, C6, [A7-H7,G11]
-![](stitches/ctct.png) ![](stitches/ctct-color1a.png) ![](stitches/ctct-color1b.png) | [ctct&rarr;ct/ctct] | ![](/gw-lace-to-gf/w/page120a.gif) ![](stitches/ctct-color2a.png) ![](stitches/ctct-color2b.png) | A2, B2, B6, C6
+![](stitches/ctct.png) ![](stitches/ctct-color1a.png) ![](stitches/ctct-color1b.png) | [ctct &rarr; ct/ctct] | ![](/gw-lace-to-gf/w/page120a.gif) ![](stitches/ctct-color2a.png) ![](stitches/ctct-color2b.png) | A2, B2, B6, C6
 ![](stitches/crclct.png) | [crclct &rarr; ct/ctct] | ![](/gw-lace-to-gf/w/page139a.gif) ![](stitches/crclct-color2.png) | C6
 ![](stitches/clcrclc.png) | [clcrclc &rarr; ctc and twists] | ![](stitches/clcrclc-color2.png)
 ![](stitches/ctctc.png) | [ctctc &rarr; ctc and twists] | ![](/gw-lace-to-gf/w/page178a.gif) | F2
