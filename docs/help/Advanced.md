@@ -1,116 +1,109 @@
 ---
 layout: default
-title: Designing prototypes
+title: New pattern tutorial
 ---
 
-Designing prototypes
+Creating a pattern definition
 ==============
 
 [lace ground page]: /GroundForge/tiles?tile=5831,-4-7&patchWidth=9&patchHeight=9&shiftColsSE=4&shiftRowsSE=2&shiftColsSW=0&shiftRowsSW=2&
 
-+ [Prototype Tutorial](#prototype-tutorial)
++ [New Pattern Tutorial](#new-pattern-tutorial)
    + [Define the base pattern](#define-the-base-pattern)
    + [Glue copies together](#glue-copies-together)
    + [Initialize stitches](#initialize-stitches)
 + [Footside Tutorial](#footside-tutorial)
 + [Thread diagram as pair diagram](#thread-diagram-as-pair-diagram)
 
-On each [lace ground page], below the prototype, pair and thread diagrams, you will find an area labelled _Forms for advanced users_.  These forms are the controls for creating and editing the prototype.
-You can use these controls to modify an existing pattern (add a headside or a footside, for example) or to create a new pattern.
+On each [lace ground page], below the pair and thread diagrams, you will find an area labelled __Edit pattern__.  You can use the controls in this area to modify an existing pattern (add a headside or a footside, for example) or to create a new pattern.
 
-Prototype Tutorial
+New Pattern Tutorial
 ------------------
-We will use Rose ground as an example and define a prototype for it from scratch.
-There are many ways to draw the pair diagram for Rose ground.
-One way to think of it is as a checkerboard with a diamond inside each of the black squares.
+We will use Rose ground as an example and define a pattern for it from scratch.  There are many ways to draw the pair diagram for Rose ground.  One way to think of it is as a checkerboard with a diamond inside each of the black squares.
 
 ### Define the base pattern
-A lace ground consists of a small pattern that is repeated, like a wallpaper or printed fabric pattern, to cover the area you need to fill.
-This small base pattern is called a __repeat__.  The form labelled _Define a repeat_ contains three text boxes.  
-The left and right boxes control the headside and footside.  We will discuss them later.  The middle box controls the repeated pattern.
+A lace ground consists of a small pattern that is repeated, like a wallpaper or printed fabric pattern, to cover the area you need to fill.  This small pattern is called a __base tile__.  The area labelled _Pattern definition_ contains three text boxes.  The left and right boxes define the headside and footside.  We will discuss them later.  The middle box defines the base tile.
 
-From the large pattern, we need to identify the base pattern.  There are many ways to do this and over the course of this tutorial, we will show a few of them.
-In the image below, each rectangle highlights one repeat of the Rose pattern.  The repeating rectangles are arranged like vertical bricks.
-For convenience, on the far right of the image we have moved the rectangles slightly so that it is easy to see all the intersections of pairs within a rectangle (no intersection lies on the edge of a rectangle).
+The first step is to look at a ground and identify the base tile.  There are many ways to do this and over the course of this tutorial, we will show a few of them.
 
-![](images/repeat.png)
+#### Simple arrangement
 
-Next we will map the pairs in the lace ground to a grid.  Within one repeat rectangle, the intersections lie on two columns and four rows as shown by the red dashed lines in the figure below.  The red dashed lines form a grid.
+The easiest approach is to start with a printed copy of the pattern. Pick a spot on the pattern and look in the horizontal direction until you find an exact copy of this spot.  Draw a line. Now return to the original spot and look straight down until you find another exact copy of this spot.  Draw a line and complete the rectangle created by these two lines.
 
-![](images/rose-grid-symbols.png)
+![](images/rose-simple.png)
 
-For each position in the grid, we assign a symbol.  The symbol specifies the angle and direction of the two pairs that are pointing at that row/column position.
-The meaning of each symbol is shown in the "Cheat sheet" on the right of the "Define a repeat" area.  For example, in row 1/column 1 the green arrows correspond to the symbol '4'.  Similarly, in row 3/column 2, there is no intersection of pairs which we represent by the symbol '-'.
+Each rectangle highlights one repeat of the Rose pattern.  For convenience, on the right of the image above we have moved the rectangles slightly so that it is easy to see all the intersections of pairs within a rectangle (no intersection lies on the edge of a rectangle).
 
-We can now fill in the middle section of the "Define a repeat" area.
+Next we will map the pairs in the lace ground to a grid.  Draw a grid on top of the base tile on your paper copy as shown by the red dashed lines in the middle image above.  Within one repeat rectangle, the intersections lie on four columns and four rows.
 
-![](images/rose_vertical_brick_definition.png)
+For each position in the grid, we assign a symbol.  The symbol specifies the angle and direction of the two pairs that are coming __in__ to meet at  that row/column position.  The meaning of each symbol is shown in the _Cheat sheet_ just below the _Pattern definition_ area.  For example, in row 1/column 1 the yellow arrows correspond to the symbol `4` which is a pair coming straight down and a pair coming diagonally down pointing south-west.  Similarly, in row 3/column 2, there is no intersection of pairs which we represent by the symbol `-`.
 
-Notice that the prototype diagram is updated to match the symbols as soon as you click outside of the box.
+We can now fill in the middle section of the _Pattern definition_ area.  Notice that the pattern diagram updates to match the symbols as soon as you click outside of the text box.
+
+![](images/rose-simple-arrange.png)
 
 ### Glue copies together
 
-Now that the base pattern is defined, we need to specify how to connect copies of this pattern together.  This is done in the area labelled _Arrange the repeats_.
+Now we need to specify how to connect the many copies of this pattern together.  This is done in the area labelled _Tile layout_.  For a simple arrangement, just click on the solid blue square in the drawing of a simple tiling as shown in the figure below.  
 
-Consider several meters of a lace edging.  The pattern for the edging is not several meters long.  It is a smaller pattern that you repeat over and over again by sliding the pattern along in one direction.  This gives a long strip.  To make a large rectangular patch from a small pattern, we need to slide the pattern in two directions.
+Notice that this changes the numbers in the green and purple boxes at the bottom of the _Tile layout_ area.  Let's discuss what these numbers mean.  Consider several meters of a lace edging.  The pattern for the edging is not several meters long.  It is a smaller pattern that you repeat over and over again by sliding the pattern along in one direction.  This gives a long strip.  To make a larger rectangular sample from a small pattern, we need to slide the pattern in two directions.
 
 Consider the image below. Red dashed lines show the grid overlaid on the pattern.
 
 ![](images/rose-translation-vectors.png)
 
-To position the blue rectangle on top of the yellow rectangle, we must slide the blue rectangle down 4 rows.
-To position the blue rectangle on top of the red rectangle, we must slide it over 2 columns and down 2 rows.  These translations are entered in the configuration information below.
+To position the blue rectangle on top of the green rectangle, we must slide the blue rectangle down 4 rows.
+To position the blue rectangle on top of the purple rectangle, we must slide it right 4 columns and down 4 rows.  These translations distances are the numbers that appear in the green and purple boxes.  You can also edit these slide moves directly in the number fields.
 
-![](images/rose_vertical_brick_arrange.png) 
+[Final result](/GroundForge/tiles.html?patchWidth=7&patchHeight=7&c1=ctct&a1=ctct&d2=ctct&c2=ctct&b2=ctct&a2=ctct&c3=ctct&a3=ctct&d4=ctct&c4=ctct&b4=ctct&a4=ctct&tile=4-7-,1583,7-4-,8315&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4)
 
-If you are more comfortable with visual tools, we have also provided images that you can click on.
-For a vertical brick pattern like our Rose ground example, first click on the filled blue brick in the picture of vertical bricks:
+### Creating a smaller base tile
 
-![](images/vertical-bricks.png)
+You might have noticed that in the simple tile arrangement, we actually have two "roses" in the base tile.  We will now look at two ways to reduce the number of intersections in the base tile. 
 
-If the prototype pattern does not immediately align correctly, click on the black arrows above and below the second column of bricks to adjust how the two columns of bricks align.  
-Each click will move the second column up or down by one row relative to the first column.  Look at the prototype diagram to see how the copies move around.
+#### Brick arrangement
+
+For some patterns, as shown for rose ground in the image below, the repeating rectangles can be arranged like vertical bricks.  Notice that each brick contains only one "rose".
+
+![](images/rose_vertical_brick.png) 
+
+For a vertical brick pattern first identify one brick and label each intersection with a symbol from the cheat sheet as we did for the simple tile.  To glue the copies together to make a larger pattern, first click on the filled blue brick in the picture of vertical bricks.
+
+If the pattern does not immediately align correctly, click on the black arrows above and below the second column of bricks to adjust how the two columns of bricks align.  Each click will move the second column up or down by one row relative to the first column.  Look at the pattern diagram to see how the copies move around.
 
 [Final result](/GroundForge/tiles?patchWidth=13&patchHeight=10&a1=ctct&b2=ctct&a2=ct&a3=ctct&b4=ctct&a4=ct&tile=4-,15,7-,83,,&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=2)
 
-### Another Rose ground example
-There is more than one way to choose the base pattern.  
-Starting from scratch again, we will think about Rose ground as a checkerboard pattern of repeated squares.
-In the figure below, the coloured squares each contain one copy of the pattern.  
+### Overlap arrangement
+When a large part of the pattern is a hole, we can further decrease the size of the base tile using overlap.  In this case, the base tile does not include the hole.  In the figure below, the coloured squares each contain one copy of the pattern.  
 
 ![](images/rose-checker-arrange.png)
 
-Again we want to make sure that none of the line intersections are on the edge of the base pattern.  This time we make the base pattern a little bit larger, as shown in the second drawing from the left, to encompass any intersections along its border.  Notice that the squares overlap a little bit.
+For the overlap layout, make the base pattern a little bit larger, as shown in the second drawing from the left, to encompass any intersections along its border.  Notice that the squares overlap a little bit.
 
-As before, we apply a grid to the base pattern and assign symbols to each line intersection.  This time we have three rows and three columns in the base pattern.
-Finally, we arrange the copies.  To slide the blue square over the yellow square, we must move it down 2 rows and left 2 columns.  To slide the blue square over the green square, we must move it right 2 columns and down 2 rows.  Note: The pattern has three rows and three columns but the squares overlap in the corner, hence the slides are only a distance of two.
+Apply a grid to the base pattern and assign symbols to each line intersection.  This time we have three rows and three columns in the base pattern. 
 
 ![](images/rose-checker-define-repeat.png) 
 
-You can enter these slide moves directly into the Configuration area.
-If you are more comfortable with visual tools, click on the filled blue block in the image of a checkerboard:
-
-![](images/overlapping-checkers.png)
-
+Finally, we arrange the copies.  Click on the filled blue block in the image of a checkerboard.
 Initially, the copies will be placed corner to corner.  Click on the black arrows around the green and purple blocks to nudge the copies so that they overlap as desired.
 
 [Final result](/GroundForge/tiles?patchWidth=12&patchHeight=12&c1=ctct&b1=ctct&a1=ctct&c2=ctct&a2=ctct&c3=ctct&b3=ctct&a3=ctct&tile=831,4-7,158&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
 
 ### Initialize stitches
 
-For convenience, you can set all stitches in the pattern to the same value.  In the "Define a repeat" area, just below the middle box where you typed symbols for the prototype, there is a small text box.  Enter a stitch as a sequence of 'c', 't', 'r' or 'l' (for example, 'cttct').  Click on the "initialize stitches button" and then on the ![wand](../images/wand.png) image above the prototype diagram to regenerate the thread and pair diagrams.  This is a quick way to see how a ground looks in cloth-stitch, half-stitch or whole-stitch.  Once initialized, you can change the stitches used for individual intersections by editing the prototype diagram.  Each time you click on "initialize stitches button", the values in the prototype are reset.
+For convenience, you can set all stitches in the pattern to the same value.  In the _Edit pattern_ area, just below the middle box where you typed symbols for the pattern, there is a small text box.  Enter a stitch as a sequence of `c`, `t`, `r` or `l` (for example, `cttct`).  Click on the _initialize stitches_ button and then on the ![wand](../images/wand.png) image above the pattern diagram to regenerate the thread and pair diagrams.  This is a quick way to see how a ground looks in cloth-stitch, half-stitch or whole-stitch.  Once initialized, you can change the stitches used for individual intersections by clicking on the symbols in the pattern diagram.  Each time you click on the _initialize stitches_ button, the stitch values in the pattern are reset.
 
 Footside Tutorial
 -----------------
-In the "Define a repeat" section, the central panel defines the ground, and the left and right side panels define the left and right footsides.
+In the _Edit pattern_ section, the central panel defines the ground, and the left and right side panels define the left and right footsides.
 
 ![](images/definition_labels.png)
 
 The leftmost edge of the central patch is determined by the leftmost column in the ground definition.  If you want to change where the patch starts on the left, you must choose a different starting point for the base pattern and modify the ground definition accordingly.
 
-The rightmost edge of the patch depends on the number of columns specified in the "Patch size".  If you change the number of columns in the patch size, the right footside may no longer match correctly.  Note that the number of columns required for the footsides are not included in the "Patch size".  They are added on top of the width that you specify.
+The rightmost edge of the patch depends on the number of columns specified in the _Swatch size_.  If you change the number of columns in the patch size, the right footside may no longer match correctly.  Note that the number of columns required for the footsides are not included in the _Swatch size_.  They are added on top of the width that you specify.
 
-First, we will consider the simple example of Torchon Ground.  Lay a square grid over the pair diagram. We must identify the loose ends of pairs along the edge and match them up where possible. To do this, we can use a "kissing path". A kissing path follows one set of pairs through the pair diagram.  When two pairs intersect, the kissing path does not cross over to the other side, it just touches the other pair ("kisses") and continues.  You can think of it as the path that a pair of threads follows if a turning stitch (cttct) is used at each intersection.  The yellow and blue thick lines in the figure below highlight the kissing paths for the pairs at the edge of the pair diagram. Note that several incoming edges are missing on the yellow kissing path (dashed red lines).  We can add them by labelling the incoming pair intersections using the symbols 'W', 'Y' and '-' in the Cheat Sheet:
+First, we will consider the simple example of Torchon Ground.  Lay a square grid over the pair diagram. We must identify the loose ends of pairs along the edge and match them up where possible. To do this, we can use a "kissing path". A kissing path follows one set of pairs through the pair diagram.  When two pairs intersect, the kissing path does not cross over to the other side, it just touches the other pair ("kisses") and continues.  You can think of it as the path that a pair of threads follows if a turning stitch (cttct) is used at each intersection.  The yellow and blue thick lines in the figure below highlight the kissing paths for the pairs at the edge of the pair diagram. Note that several incoming edges are missing on the yellow kissing path (dashed red lines).  We can add them by labelling the incoming pair intersections using the symbols `W`, `Y` and `-` in the Cheat Sheet:
 
 ![](images/simple-wavy-footside.png)
 
@@ -127,7 +120,7 @@ Now consider the more complicated example of [G-4] in the Whiting sampler.  We f
 
 ![](images/complex-footside.png)
 
-Below is [G-4 with left footside].  Notice the red box around "V,6" in the ground area of the prototype.  In the original definition, this was "-,L" which draws a long horizontal edge.  The long horizontal edge sticks out on the left side of the patch.  We can get a better looking footside by shortening this edge.  In order to get a short edge on the left side of the patch, we changed the ground definition to use two short horizontal edges in a row ("V,6") instead of one long edge ("-,L").  The symbols "V,6" and "-,L" give the same result in the thread diagram.  On the footside, we can cut the ground pattern off at "6" which gives a nicer looking result (see red box around "C,6", the "C" intersection is part of the footside.  The "6" intersection is part of the ground).  As an exercise, create the right footside.
+Below is [G-4 with left footside].  Notice the red box around "V,6" in the ground area of the pattern diagram.  In the original definition, this was "-,L" which draws a long horizontal edge.  The long horizontal edge sticks out on the left side of the patch.  We can get a better looking footside by shortening this edge.  In order to get a short edge on the left side of the patch, we changed the ground definition to use two short horizontal edges in a row ("V,6") instead of one long edge ("-,L").  The symbols "V,6" and "-,L" give the same result in the thread diagram.  On the footside, we can cut the ground pattern off at "6" which gives a nicer looking result (see red box around "C,6", the "C" intersection is part of the footside.  The "6" intersection is part of the ground).  As an exercise, create the right footside.
 
 ![](images/complex-footside-definition.png)
 
@@ -147,17 +140,17 @@ In a typical pair diagram, two pairs intersect at each crossing and then continu
 
 ![](images/simple-droste.png)
 
-To apply this technique in GroundForge, click on the ![wand](../images/wand.png) image under the "Reuse thread diagram as pair diagram" heading. 
+To apply this technique in GroundForge, click on the ![wand](../images/wand.png) image beside _First level_ under the _Thread diagram as pair diagram_ heading. 
  
 ![](images/reuse.png)
 
 There are several options for specifying which stitches appear in the new thread diagram.
 
-By default, every stitch is `ctc`.  You can assign a new default stitch by typing the actions (such as `ct`) in the input box that appears to the left of the new pair diagram. You can also assign a stitch to every "cross" in the original thread diagram by typing `cross=...` (for example, `cross=ctcll`) in the input box.  Similarly, you assign a stitch to every "twist" in the original thread diagram using `twist=...`.  For finer control, you can specify a stitch for a specific intersection.  First find the identity of the intersection in the new pair diagram (hover over the intersection until the id appears), then give it a new value in the input box such as `b10=clcl`.  You can combine any of these options in the input box.  Use a new line or a comma to separate each instruction. After editing the stitches in the input box, click on the ![wand](../images/wand.png) image **above** the pair diagram.
+By default, every stitch is `ctc`.  You can assign a new default stitch by typing the actions (such as `ct`) in the input box that appears to the left of the new pair diagram. You can also assign a stitch to every "cross" in the original thread diagram by typing `cross=...` (for example, `cross=ctcll`) in the input box.  Similarly, you assign a stitch to every "twist" in the original thread diagram using `twist=...`.  For finer control, you can specify a stitch for a specific intersection.  First find the identity of the intersection in the new pair diagram (hover over the intersection until the id appears), then give it a new value in the input box such as `b10=clcl`.  You can combine any of these options in the input box.  Use a new line or a comma to separate each instruction. After editing the stitches in the input box, click on the ![wand](../images/wand.png) image beside _First level_ under the _Thread diagram as pair diagram_ heading. 
 
 ![](images/droste-assign-stitches.png)
 
-To repeat this process a second time, click on the ![wand](../images/wand.png) image **below** the new pair diagram.  This will create a second new thread diagram by using the thread diagram above the wand as a pair diagram.
+To repeat this process a second time, click on the ![wand](../images/wand.png) image beside _Second level_ under the _Thread diagram as pair diagram_ heading.   This will create another new thread diagram by using the thread diagram from the first level as a pair diagram.
 
 ![](images/droste-repeat-assign-stitches.png)
 

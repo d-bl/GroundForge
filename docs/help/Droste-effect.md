@@ -56,8 +56,7 @@ as shown below. Just try which ones of the purple tiles produce a valid pattern.
 Choose Stitches
 ---------------
 
-At the first level you can choose your stitches in the prototype diagram,
-click the ![](../images/wand.png) to show the result.
+At the first level you can choose your stitches in the pattern diagram, click the ![](../images/wand.png) to show the result.
 
 Some stitches to copy paste:
 

@@ -24,60 +24,88 @@
 </head>
 <body onload="load()">
 <article>
-<a id="logo" href="/GroundForge/tiles" title="Main page"><img src="images/logo-medium.png" alt="DiBL logo"></a>
-<h1>GroundForge - Diagrams of bobbin lace patterns</h1>
-<ul>
-    <li>
-        <strong>Hover over stitches</strong>
-        in the pair diagram for exact definitions.
-    </li>
-    <li>
-        <strong>Change stitches</strong>:
-        click the invisible text fields in the prototype.
-        <br><img src="images/stitch-target.png"/>
-        <a href="help/Replace" target="_blank">Examples</a>.
-    </li>
-    <li>
-        Apply the magic wand (faster) or link button (saves the pattern in the browser history),
-        <a href="help/Undo" target="_blank">details</a>.
-    </li>
-    <li>
-        <strong>Highlight threads</strong> with the square starts or bobbins in the thread diagram,
-        <a href="help/Thread-Properties" target="_blank">more</a> colors.
-    </li>
-    <li>
-        <strong>Select a pattern</strong> from a <a href="index#pattern-catalogues">catalogue</a> page,
-        their examples link back to this page.
-    </li>
-    <li>
-        <strong><a href="help/index" target="_blank">Tutorials</a></strong> for details and to define your own patterns.
-    </li>
-</ul>
+    <a id="logo" href="/GroundForge/tiles" title="Main page"><img src="images/logo-medium.png" alt="DiBL logo"></a>
+    <h1>GroundForge - Diagrams of bobbin lace patterns</h1>
+
+    <ul>
+        <li>Catalogues: <a href="/MAE-gf/" target="_blank">MAE</a>, <a href="/tesselace-to-gf/" target="_blank">TesseLace</a>, <a href="/gw-lace-to-gf/" target="_blank">Whiting</a></li>
+        <li>Tutorials: <a href="help/index" target="_blank">Getting started</a>, <a href="help/Icons" target="_blank">Icons</a>, <a href="help/Advanced" target="_blank">Create a pattern</a>, <a href="index" target="_blank">More...</a></li>
+    </ul>
+    <div id="whiting"></div>
 </article>
 <form onsubmit="return false" id="download">
     <fieldset id="diagrams">
         <legend>
             Diagrams
-            -
-            <a id="link" href="#"><button type="button" title="create link to current set of diagrams"><img alt="link" src="images/link.png"></button></a>
-            -
             <a><button type="button" onclick="showDiagrams()" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
             -
             <label for="patchWidth">
-                Patch size
-                <a href="help/Patch-Size" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
+                Swatch size:
             </label>
-            <input type="number" name="patchWidth" id="patchWidth" min="3" max="30" value="3" onchange="showProto()" autofocus>
-            <label for="patchWidth">cols</label>
-            <input type="number" name="patchHeight" id="patchHeight" min="3" max="30" value="3" onchange="showProto()">
-            <label for="patchHeight">rows</label>
+            <div>
+                <input type="number" name="patchWidth" id="patchWidth" min="3" max="30" value="7" onchange="showProto()" autofocus>
+                <label for="patchWidth">columns</label>
+                <a href="help/Patch-Size" target="_blank"><img src="help/images/information-icon.png" title="swatch size"></a>
+                <br>
+                <input type="number" name="patchHeight" id="patchHeight" min="3" max="30" value="7" onchange="showProto()">
+                <label for="patchHeight">rows</label>
+            </div>
+
             -
-            <label for="patchHeight">Draggable:</label>
-            <input type="checkbox" id="draggable" onchange="showProto()" title="allows to (temporarily) untangle cluttered stitches">
+            <span style="white-space: nowrap;">
+            <label for="draggable">Draggable:</label>&nbsp;
+            <input type="checkbox" id="draggable" onchange="showDiagrams()" title="make threads draggable">
+            <label for="draggable"><a href="help/untangle" target="_blank"><img src="help/images/information-icon.png" title="untangle clutter"></a></label>
+            </span>
+        </legend>
+
+        <figure>
+            <figcaption>
+                Pairs
+                <a href="help/Color-Code" target="_blank"><img src="help/images/information-icon.png" title="color legend"></a>
+                <img src="images/animate.png" onclick="javascript:animateDiagram(d3.select('#pairDiagram'), 372, 526)" title="animate/reshape"
+                >
+                <a download="pair-diagram.svg"
+                   onfocus="setDownloadContent(this,'#pairDiagram')"
+                   onblur="this.href='?#download'"
+                   href="?#download"
+                   title="download"
+                ><img src="images/download.jpg"></a>
+                <img src="images/size-inc.jpg" onclick="resizeBoth('#pairDiagram', 1.1)" title="increase diagram dimensions"
+                ><img src="images/size-dec.jpg" onclick="resizeBoth('#pairDiagram', 0.91)" title="decrease diagram dimensions">
+            </figcaption>
+            <div id="pairDiagram"></div>
+        </figure>
+
+        <figure >
+            <figcaption>
+                Threads
+                <a href="help/index#highlight-a-thread" target="_blank"><img src="help/images/information-icon.png" title="highlight threads"></a>
+                <a download="thread-diagram.svg"
+                   onfocus="setDownloadContent(this,'#threadDiagram')"
+                   onblur="this.href='?#download'"
+                   href="?#download"
+                   title="download"
+                ><img src="images/download.jpg"></a>
+                <img src="images/size-inc.jpg" onclick="resizeBoth('#threadDiagram', 1.1)" title="increase diagram dimensions"
+                ><img src="images/size-dec.jpg" onclick="resizeBoth('#threadDiagram', 0.91)" title="decrease diagram dimensions">
+            </figcaption>
+            <div id="threadDiagram"></div>
+        </figure>
+
+    </fieldset>
+    <p></p>
+    <fieldset>
+        <legend>
+            Edit pattern
+            <a id="link" href="#"><button type="button" title="create link to current set of diagrams"><img alt="link" src="images/link.png"></button></a>
+            <a><button type="button" onclick="showDiagrams()" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
+            <a href="help/undo" target="_blank"><img src="help/images/information-icon.png" title="save / reload"></a>
         </legend>
         <figure >
-            <figcaption title="choosing a stitch shows/refreshes the thread diagram">
-                Prototype
+            <figcaption>
+                Pattern
+                <a href="help/Replace" target="_blank"><img src="help/images/information-icon.png" title="how to modify stitches"></a>
                 <a download="prototype.svg"
                    onfocus="setDownloadContent(this,'#prototype')"
                    onblur="this.href='?#download'"
@@ -91,55 +119,170 @@
             <div id="prototype">
             </div>
         </figure>
-        <figure>
-            <figcaption>
-                Pairs
-                <a download="pair-diagram.svg"
-                   onfocus="setDownloadContent(this,'#pairDiagram')"
-                   onblur="this.href='?#download'"
-                   href="?#download"
-                   title="download"
-                ><img src="images/animate.png" onclick="javascript:animateDiagram(d3.select('#pairDiagram'), 372, 526)" title="animate/reshape"
-                ><img src="images/download.jpg"></a>
-                <img src="images/size-inc.jpg" onclick="resizeBoth('#pairDiagram', 1.1)" title="increase diagram dimensions"
-                ><img src="images/size-dec.jpg" onclick="resizeBoth('#pairDiagram', 0.91)" title="decrease diagram dimensions">
+
+        <figure class="pattern">
+            <figcaption>Pattern definition
+                <a href="help/Advanced" target="_blank"><img src="help/images/information-icon.png" title="how to define the pattern and foot sides"></a>
             </figcaption>
-            <div id="pairDiagram"></div>
+            <div>
+                <table>
+                    <tr>
+                        <td><textarea id="footside" name="footside" rows="5" cols="3"
+                                      spellcheck="false"
+                                      onchange="showProto()"></textarea></td>
+                        <td><textarea id="tile" name="tile" rows="5" cols="7" spellcheck="false"
+                                      onchange="showProto()">5-&#13;&#10;-5</textarea></td>
+                        <td><textarea id="headside" name="headside" rows="5" cols="3"
+                                      spellcheck="false"
+                                      onchange="showProto()"></textarea></td>
+                        <td><button onclick="flip();return false" title="flip left foot side into right foot side">flip</button></td>
+                    </tr>
+                    <tr>
+                        <td><input id="footsideStitch" name="footsideStitch" type="text" value="ctctt" onchange="showProto()"/></td>
+                        <td><input id="tileStitch" name="tileStitch" type="text" value="ctct" onchange="showProto()"/></td>
+                        <td><input id="headsideStitch" name="headsideStitch" type="text" value="ctctt" onchange="showProto()"/></td>
+                        <td><button onclick="clearStitches();return false" title="resets all stitches defined through the prototype diagram">initialize<br>stitches</button></td>
+                    </tr>
+                </table>
+                <div>
+                    <img src="help/images/matrix-template.png" alt="cheat sheet" onclick="toggleCheatSheet(this)" title="click to show all">
+                </div>
+            </div>
         </figure>
-        <figure >
+
+        <figure class="pattern">
             <figcaption>
-                Threads
-                <a download="thread-diagram.svg"
-                   onfocus="setDownloadContent(this,'#threadDiagram')"
-                   onblur="this.href='?#download'"
-                   href="?#download"
-                   title="download"
-                ><img src="images/download.jpg"></a>
-                <img src="images/size-inc.jpg" onclick="resizeBoth('#threadDiagram', 1.1)" title="increase diagram dimensions"
-                ><img src="images/size-dec.jpg" onclick="resizeBoth('#threadDiagram', 0.91)" title="decrease diagram dimensions">
+                Tile layout
+                <a href="help/Advanced#glue-copies-together" target="_blank"><img src="help/images/information-icon.png" title="arrange tiles"></a>
             </figcaption>
-            <div id="threadDiagram"></div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg2" width="297.11" height="130.39" viewBox="0 0 278.54 122.24">
+                    <path d="m99.088 17.821 14.712 16.075" fill="none" stroke="#834bce" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    <path d="m114.85 31.041 0.89586 5.2108-4.9606-1.8296z" fill="#834bce" stroke-width="1.2031"/>
+                    <g fill="none" stroke-linecap="round">
+                        <path d="m161.66 5.0235h29.959c0.18301 0 0.33031 0.14732 0.33031 0.33033v29.959c0 0.183-0.1473 0.33032-0.33031 0.33032h-29.959c-0.183 0-0.33031-0.14732-0.33031-0.33032v-29.959c0-0.18301 0.14731-0.33033 0.33031-0.33033z" stroke="#ccc" stroke-width="3.0447"/>
+                        <rect x="228.48" y="4.6766" width="30.62" height="30.62" ry=".33032" stroke="#ccc" stroke-width="3.0447"/>
+                        <path d="m210.05 53.736 33.403 33.403" stroke="#834bce" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    </g>
+                    <path d="m244.24 84.188-3.7387 3.7387 5.1072 1.3684z" fill="#834bce" stroke-width="1.2031"/>
+                    <path d="m210.05 53.736-33.403 33.403" fill="none" stroke="#029807" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    <path d="m175.86 84.188 3.7387 3.7387-5.1072 1.3684z" fill="#029807" stroke-width="1.2031"/>
+                    <path d="m99.088 17.821v30.141" fill="none" stroke="#029807" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    <path d="m101.73 46.435h-5.2874l2.6437 4.579z" fill="#029807"/>
+                    <path d="m45.238 89.602 18.359 14.712" fill="none" stroke="#834bce" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    <path d="m64.573 101.42 1.0171 5.1888-5.0022-1.7137z" fill="#834bce" stroke-width="1.2032"/>
+                    <path d="m45.238 89.602-12.056 14.712" fill="none" stroke="#029807" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    <path d="m31.855 101.57-0.38725 5.2732 4.7603-2.3013z" fill="#029807" stroke-width="1.2031"/>
+                    <path d="m30.573 18.397 30.141 30.141" fill="none" stroke="#834bce" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1279"/>
+                    <a transform="matrix(1.2031 0 0 1.2031 -185.51 -32.637)" xlink:href="javascript:asChecker()">
+                        <rect x="168.27" y="31.08" width="22.675" height="22.675" ry=".24461" fill="#0d6efd" fill-opacity=".5" stroke="#0d6efd" stroke-linecap="round" stroke-width="1.9481"/>
+                    </a>
+                    <g fill="none" stroke-linecap="round">
+                        <path d="m30.573 18.397 2e-5 30.141" stroke="#029807" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                        <g stroke-width="2.3437">
+                            <rect x="16.933" y="34.897" width="27.28" height="27.28" ry=".2943" stroke="#029807"/>
+                            <rect x="47.083" y="34.897" width="27.28" height="27.28" ry=".2943" stroke="#834bce"/>
+                            <rect x="47.083" y="4.7567" width="27.28" height="27.28" ry=".2943" stroke="#ccc"/>
+                            <rect x="49.828" y="98.252" width="27.529" height="12.134" ry=".1309" stroke="#834bce"/>
+                        </g>
+                    </g>
+                    <a transform="matrix(2.0094 0 0 2.0094 -525.01 -221.74)" xlink:href="javascript:asHorBricks()">
+                        <rect x="276.94" y="151.48" width="13.7" height="6.2044" ry=".066932" fill="#0d6efd" fill-opacity=".5" stroke="#0d6efd" stroke-linecap="round" stroke-width="1.1664"/>
+                    </a>
+                    <g fill="none" stroke-linecap="round">
+                        <g stroke-width="2.3438">
+                            <rect x="61.888" y="82.822" width="27.529" height="12.134" ry=".1309" stroke="#ccc"/>
+                            <rect transform="matrix(0,1,1,0,0,0)" x="50.547" y="108.29" width="27.529" height="12.467" ry=".13449" stroke="#ccc"/>
+                            <rect transform="matrix(0,1,1,0,0,0)" x="19.064" y="108.45" width="27.529" height="12.134" ry=".1309" stroke="#844bce"/>
+                        </g>
+                        <rect transform="matrix(0,1,1,0,0,0)" x="34.472" y="92.688" width="27.529" height="12.467" ry=".13449" stroke="#029807" stroke-width="2.3437"/>
+                    </g>
+                    <a transform="matrix(1.2031 0 0 1.2031 -204.64 -39.702)" xlink:href="javascript:asVerBricks()">
+                        <rect transform="matrix(0,1,1,0,0,0)" x="36.371" y="247.27" width="22.881" height="10.362" ry=".11179" fill="#0d6efd" fill-opacity=".5" stroke="#0d6efd" stroke-linecap="round" stroke-width="1.9481"/>
+                    </a>
+                    <a transform="matrix(.6752 0 0 .6752 158.49 8.4686)" xlink:href="javascript:withOverlap()">
+                        <rect x="53.668" y="44.369" width="45.35" height="45.35" ry=".48922" fill="#0d6efd" fill-opacity=".5" stroke="#0d6efd" stroke-linecap="round" stroke-width="4.5094"/>
+                    </a>
+                    <g>
+                        <a transform="rotate(90 118.37 117.97)" xlink:href="javascript:swToRight()">
+                            <path d="m95.085 41.366-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="translate(79.28 27.533)" xlink:href="javascript:swUp()">
+                            <path d="m104.91 41.366-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="rotate(-90 142.66 -7.3525)" xlink:href="javascript:seToLeft()">
+                            <path d="m55.71 75.116-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="matrix(.86616 0 0 .86616 37.798 -19.206)" xlink:href="javascript:brickUp()">
+                            <path d="m96.121 43.274-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width="1.0824"/>
+                        </a>
+                        <a transform="rotate(90 52.338 69.285)" xlink:href="javascript:brickToRight()">
+                            <path d="m94.916 41.366-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="rotate(-90 96.162 95.919)" xlink:href="javascript:brickToLeft()">
+                            <path d="m95.314 16.107-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="matrix(-.86616 0 0 -.86616 189.56 95.997)" xlink:href="javascript:brickDown()">
+                            <path d="m94.184 17.788-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width="1.0824"/>
+                        </a>
+                        <a transform="rotate(180 153.8 56.751)" xlink:href="javascript:seDown()">
+                            <path d="m71.692 7.6153-15.094 0.00403 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="translate(132.18 -6.0762)" xlink:href="javascript:seUp()">
+                            <path d="m118.81 75.116-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="rotate(90 154.78 115.02)" xlink:href="javascript:seToRight()">
+                            <path d="m134.45 7.6153-15.094 0.00403 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="rotate(180 127.17 73.474)" xlink:href="javascript:swDown()">
+                            <path d="m85.252 41.366-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="rotate(-90 145.72 28.956)" xlink:href="javascript:swToLeft()">
+                            <path d="m95.085 41.366-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                    </g>
+                    <rect x="161.33" y="71.83" width="30.62" height="30.62" ry=".33032" fill="none" opacity=".883" stroke="#029807" stroke-linecap="round" stroke-width="3.0447"/>
+                    <rect x="228.13" y="71.83" width="30.62" height="30.62" ry=".33032" fill="none" stroke="#834bce" stroke-linecap="round" stroke-width="3.0447"/>
+                    <path d="m33.223 47.011h-5.2874l2.6437 4.579z" fill="#029807"/>
+                    <path d="m61.507 45.593-3.7387 3.7387 5.1072 1.3684z" fill="#834bce" stroke-width="1.2031"/>
+                    <rect x="19.418" y="98.082" width="27.529" height="12.467" ry=".13449" fill="none" stroke="#029807" stroke-linecap="round" stroke-width="2.3438"/>
+                </svg>
+                <p style="max-width: 22em"></p>
+                <div style="border:3px solid #029807;border-radius: 3px; padding: 2px;">
+                    <input type="number" name="shiftColsSW" id="shiftColsSW" min="-12" max="0" value="0" onchange="showProto()"><label for="shiftColsSW">column(s)</label>
+                    <br>
+                    <input type="number" name="shiftRowsSW" id="shiftRowsSW" min="0" max="12" value="2" onchange="showProto()"><label for="shiftRowsSW">row(s)</label>
+                </div>
+                <div style="border:3px solid #834bce;border-radius: 3px; padding: 2px;">
+                    <input type="number" name="shiftColsSE" id="shiftColsSE" min="0" max="12" value="2" onchange="showProto()"><label for="shiftColsSE">column(s)</label>
+                    <br>
+                    <input type="number" name="shiftRowsSE" id="shiftRowsSE" min="0" max="12" value="2" onchange="showProto()"><label for="shiftRowsSE">row(s)</label>
+                </div>
+            </div>
         </figure>
-        <div id="whiting"></div>
     </fieldset>
-    <h2>Forms for advanced users</h2>
-    <p>
-        Links to this page fill the forms below to define patterns.
-    </p>
-    <fieldset id="drosteFieldSet">
+
+    <h2>Thread diagram as pair diagram</h2>
+    <fieldset id="drosteFieldSet2">
         <legend>
-            Reuse thread diagram as pair diagram
-            <a href="help/Advanced#thread-diagram-as-pair-diagram" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
+            First level
+            -
+            <a><button type="button" onclick="showDroste(2)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
+            -
+            <small>Reminder: use a small swatch size</small>
         </legend>
-        Requires a small patch size, the power of a desk-top and your patience
-        <a><button type="button" onclick="showDroste(2)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
         <div id="drosteFields2">
-            <a><button type="button" onclick="closeDiv(2)">close</button></a>
-            <br>
-            <textarea id="droste2" name="droste2" rows="7" cols="30" spellcheck="false" onchange="clear2()"></textarea>
+            <figure>
+                <figcaption>
+                    Stitches
+                    <a href="help/Advanced#thread-diagram-as-pair-diagram" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
+                </figcaption>
+                    <textarea id="droste2" name="droste2" rows="8" cols="30" spellcheck="false" onchange="clear2()" placeHolder="Type stitch definition here.&#13;&#10;If nothing is typed, the stitch 'ctc' will be used.&#13;&#10;&#13;&#10;Example:&#13;&#10;&#13;&#10;twist=ct&#13;&#10;cross=ctct"></textarea>
+            </figure>
             <figure>
                 <figcaption>
                     Pairs
+                    <a href="help/Color-Code" target="_blank"><img src="help/images/information-icon.png" title="color legend"></a>
                     <a download="pair-diagram.svg"
                        onfocus="setDownloadContent(this,'#drostePair2')"
                        onblur="this.href='?#download'"
@@ -153,7 +296,8 @@
             </figure>
             <figure >
                 <figcaption>
-                    Threads - click squares
+                    Threads
+                    <a href="help/index#highlight-a-thread" target="_blank"><img src="help/images/information-icon.png" title="highlight threads"></a>
                     <a download="thread-diagram.svg"
                        onfocus="setDownloadContent(this,'#drosteThread2')"
                        onblur="this.href='?#download'"
@@ -165,192 +309,53 @@
                 </figcaption>
                 <div id="drosteThread2"></div>
             </figure>
-            <br>
-            Another level of reuse, requiring even more patience
-            <a><button type="button" onclick="showDroste(3)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
-            <div id="drosteFields3">
-                <a><button type="button" onclick="closeDiv(3)">close</button></a>
-                <br>
-                <textarea id="droste3" name="droste3" rows="7" cols="30" spellcheck="false" onchange="clear3()"></textarea>
-                <figure>
-                    <figcaption>
-                        Pairs
-                        <a download="pair-diagram.svg"
-                           onfocus="setDownloadContent(this,'#drostePair3')"
-                           onblur="this.href='?#download'"
-                           href="?#download"
-                           title="download"
-                        ><img src="images/download.jpg"></a>
-                        <img src="images/size-inc.jpg" onclick="resizeBoth('#drostePair3', 1.1)" title="increase diagram dimensions"
-                        ><img src="images/size-dec.jpg" onclick="resizeBoth('#drostePair3', 0.91)" title="decrease diagram dimensions">
-                    </figcaption>
-                    <div id="drostePair3"></div>
-                </figure>
-                <figure >
-                    <figcaption>
-                        Threads - click squares
-                        <a download="thread-diagram.svg"
-                           onfocus="setDownloadContent(this,'#drosteThread3')"
-                           onblur="this.href='?#download'"
-                           href="?#download"
-                           title="download"
-                        ><img src="images/download.jpg"></a>
-                        <img src="images/size-inc.jpg" onclick="resizeBoth('#drosteThread3', 1.1)" title="increase diagram dimensions"
-                        ><img src="images/size-dec.jpg" onclick="resizeBoth('#drosteThread3', 0.91)" title="decrease diagram dimensions">
-                    </figcaption>
-                    <div id="drosteThread3"></div>
-                </figure>
-            </div>
         </div>
     </fieldset>
-    <p>
-        The forms below define the prototype diagram.
-        Play with these forms to design patterns from scratch.
-    </p>
-    <fieldset id="pattern">
+    <br>
+    <fieldset id="drosteFieldSet3">
         <legend>
-            Define a repeat
-            <a href="help/Advanced#define-a-repeat" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
+            Second level
+            -
+            <a><button type="button" onclick="showDroste(3)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
         </legend>
-        <figure>
-            <div>
-                <table>
-                    <tr>
-                        <td><textarea id="footside" name="footside" rows="12" cols="3"
-                                      spellcheck="false"
-                                      onchange="showProto()"></textarea></td>
-                        <td><textarea id="tile" name="tile" rows="12" cols="10" spellcheck="false"
-                                      onchange="showProto()">437</textarea></td>
-                        <td><textarea id="headside" name="headside" rows="12" cols="3"
-                                      spellcheck="false"
-                                      onchange="showProto()"></textarea></td>
-                        <td><button onclick="flip();return false" title="flip left foot side into right foot side">flip</button></td>
-                    </tr>
-                    <tr>
-                        <td><input id="footsideStitch" name="footsideStitch" type="text" value="ctctt" onchange="showProto()"/></td>
-                        <td><input id="tileStitch" name="tileStitch" type="text" value="ctct" onchange="showProto()"/></td>
-                        <td><input id="headsideStitch" name="headsideStitch" type="text" value="ctctt" onchange="showProto()"/></td>
-                        <td><button onclick="clearStitches();return false" title="resets all stitches defined through the prototype diagram">initialize<br>stitches</button></td>
-                    </tr>
-                </table>
-            </div>
-            <figcaption>Definition</figcaption>
-        </figure>
-        <figure>
-            <img src="help/images/matrix-template.png" alt="cheat sheet" onclick="this.src='help/images/matrix-template-extended.png'" title="click to show all">
-            <figcaption>Cheat sheet</figcaption>
-        </figure>
-    </fieldset>
-    <fieldset>
-        <legend>
-            Arrange the repeats
-            <a href="help/Advanced#arrange-the-repeats" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
-        </legend>
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 287.55 145.2" version="1.1"  id="svg2" height="154.88" width="306.72"  >
-                <path d="m98.89 30.589 14.712 16.075" style="fill:none;stroke-linecap:round;stroke-linejoin:bevel;stroke-width:1.1279;stroke:#834bce"/>
-                <path d="m114.65 43.809 0.89586 5.2108-4.9606-1.8296z" style="fill:#834bce;stroke-width:1.2031"/>
-                <path d="m154.26 10.427h44.371c0.27103 0 0.48922 0.21819 0.48922 0.48923v44.371c0 0.27103-0.21819 0.48922-0.48922 0.48922h-44.371c-0.27103 0-0.48922-0.21819-0.48922-0.48922v-44.371c0-0.27104 0.21819-0.48923 0.48922-0.48923z" style="fill:none;stroke-linecap:round;stroke-width:4.5094;stroke:#cccccc"/>
-                <rect x="220.92" y="10.08" width="45.35" height="45.35" ry=".48922" style="fill:none;stroke-linecap:round;stroke-width:4.5094;stroke:#cccccc"/>
-                <path d="m232.86 6.6532-0.34099 16.412c-6e-3 0.27097-0.21819 0.48922-0.48921 0.48922h-44.371c-0.27103 0-0.48922-0.21819-0.48922-0.48922v-16.412" style="fill:none;stroke-linecap:round;stroke-width:4.5094;stroke:#cccccc"/>
-                <path d="m187.17 126.34v-15.216c0-0.27104 0.21819-0.48922 0.48922-0.48922h44.371c0.27102 0 0.48921 0.21818 0.48921 0.48922v15.216" style="fill:none;stroke-linecap:round;stroke-width:4.5094;stroke:#cccccc"/>
-                <path d="m253.98 126.34v-15.216c0-0.27104 0.21818-0.48922 0.48922-0.48922h14.931" style="fill:none;stroke-linecap:round;stroke-width:4.5094;stroke:#cccccc"/>
-                <path d="m269.4 89.179h-14.237c-0.27103 0-0.48921-0.21819-0.48921-0.48922v-44.371c0-0.27103 0.21818-0.48922 0.48921-0.48922h14.237" style="fill:none;stroke-linecap:round;stroke-width:4.5094;stroke:#cccccc"/>
-                <path d="m149.71 43.83h15.516c0.27103 0 0.48922 0.21819 0.48922 0.48922v44.371c0 0.27103-0.21819 0.48922-0.48922 0.48922h-15.516" style="fill:none;stroke-linecap:round;stroke-width:4.5094;stroke:#cccccc"/>
-                <path d="m149.9 111.42h15.216c0.27104 0 0.48922 0.21818 0.48922 0.48923v14.931" style="fill:none;stroke-linecap:round;stroke-width:4.5094;stroke:#cccccc"/>
-                <path d="m209.85 66.504 33.403 33.403" style="fill:none;stroke-linecap:round;stroke-linejoin:bevel;stroke-width:1.1279;stroke:#834bce"/>
-                <path d="m244.04 96.956-3.7387 3.7387 5.1072 1.3684z" style="fill:#834bce;stroke-width:1.2031"/>
-                <path d="m209.85 66.504-33.403 33.403" style="fill:none;stroke-linecap:round;stroke-linejoin:bevel;stroke-width:1.1279;stroke:#029807"/>
-                <path d="m175.66 96.956 3.7387 3.7387-5.1072 1.3684z" style="fill:#029807;stroke-width:1.2031"/>
-                <path d="m98.89 30.589v30.141" style="fill:none;stroke-linecap:round;stroke-linejoin:bevel;stroke-width:1.1279;stroke:#029807"/>
-                <path d="m101.53 59.203h-5.2874l2.6437 4.579z" style="fill:#029807"/>
-                <path d="m45.04 102.37 18.359 14.712" style="fill:none;stroke-linecap:round;stroke-linejoin:bevel;stroke-width:1.1279;stroke:#834bce"/>
-                <path d="m64.375 114.19 1.0171 5.1888-5.0022-1.7137z" style="fill:#834bce;stroke-width:1.2032"/>
-                <path d="m45.04 102.37-12.056 14.712" style="fill:none;stroke-linecap:round;stroke-linejoin:bevel;stroke-width:1.1279;stroke:#029807"/>
-                <path d="m31.657 114.34-0.38725 5.2732 4.7603-2.3013z" style="fill:#029807;stroke-width:1.2031"/>
-                <path d="m30.375 31.165 30.141 30.141" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.1279;stroke:#834bce"/>
-                <a transform="matrix(1.2031,0,0,1.2031,-185.71,-19.869)" xlink:href="javascript:asChecker()">
-                    <rect x="168.27" y="31.08" width="22.675" height="22.675" ry=".24461" style="fill-opacity:.5;fill:#0d6efd;stroke-linecap:round;stroke-width:1.9481;stroke:#0d6efd"/>
-                </a>
-                <path d="m30.375 31.165 2e-5 30.141" style="fill:none;stroke-linecap:round;stroke-linejoin:bevel;stroke-width:1.1279;stroke:#029807"/>
-                <rect x="16.735" y="47.665" width="27.28" height="27.28" ry=".2943" style="fill:none;stroke-linecap:round;stroke-width:2.3437;stroke:#029807"/>
-                <rect x="46.885" y="47.665" width="27.28" height="27.28" ry=".2943" style="fill:none;stroke-linecap:round;stroke-width:2.3437;stroke:#834bce"/>
-                <rect x="46.885" y="17.525" width="27.28" height="27.28" ry=".2943" style="fill:none;stroke-linecap:round;stroke-width:2.3437;stroke:#cccccc"/>
-                <rect x="49.63" y="111.02" width="27.529" height="12.134" ry=".1309" style="fill:none;stroke-linecap:round;stroke-width:2.3437;stroke:#834bce"/>
-                <a transform="matrix(2.0094 0 0 2.0094 -525.21 -208.97)" xlink:href="javascript:asHorBricks()">
-                    <rect x="276.94" y="151.48" width="13.7" height="6.2044" ry=".066932" style="fill-opacity:.5;fill:#0d6efd;stroke-linecap:round;stroke-width:1.1664;stroke:#0d6efd"/>
-                </a>
-                <rect x="61.69" y="95.59" width="27.529" height="12.134" ry=".1309" style="fill:none;stroke-linecap:round;stroke-width:2.3438;stroke:#cccccc"/>
-                <rect transform="matrix(0,1,1,0,0,0)" x="63.315" y="108.09" width="27.529" height="12.467" ry=".13449" style="fill:none;stroke-linecap:round;stroke-width:2.3438;stroke:#cccccc"/>
-                <rect transform="matrix(0,1,1,0,0,0)" x="31.832" y="108.25" width="27.529" height="12.134" ry=".1309" style="fill:none;stroke-linecap:round;stroke-width:2.3438;stroke:#844bce"/>
-                <rect transform="matrix(0,1,1,0,0,0)" x="47.24" y="92.49" width="27.529" height="12.467" ry=".13449" style="fill:none;stroke-linecap:round;stroke-width:2.3437;stroke:#029807"/>
-                <a transform="matrix(1.2031 0 0 1.2031 -204.84 -26.934)" xlink:href="javascript:asVerBricks()">
-                    <rect transform="matrix(0,1,1,0,0,0)" x="36.371" y="247.27" width="22.881" height="10.362" ry=".11179" style="fill-opacity:.5;fill:#0d6efd;stroke-linecap:round;stroke-width:1.9481;stroke:#0d6efd"/>
-                </a>
-                <a transform="translate(133.5 -.53924)" xlink:href="javascript:withOverlap()">
-                    <rect x="53.668" y="44.369" width="45.35" height="45.35" ry=".48922" style="fill-opacity:.5;fill:#0d6efd;stroke-linecap:round;stroke-width:4.5094;stroke:#0d6efd"/>
-                </a>
-                <path d="m270.74 21.88h-15.216c-0.27104 0-0.48921-0.21818-0.48921-0.48922v-14.931" style="fill:none;stroke-linecap:round;stroke-width:4.5094;stroke:#cccccc"/>
-                <path d="m165.7 6.9387v15.216c0 0.27104-0.21818 0.48922-0.48922 0.48922h-14.931" style="fill:none;stroke-linecap:round;stroke-width:4.5094;stroke:#cccccc"/>
-                <a transform="rotate(90 111.48 134.03)" style="fill:#000000" xlink:href="javascript:swToRight()">
-                    <path d="m95.085 41.366-15.094 0.004029 7.5434-13.073z" style="fill:#000000;opacity:.883;stroke-linejoin:round;stroke-width:.9375;stroke:#ffffff"/>
-                </a>
-                <a transform="translate(79.073,30.926)" style="fill:#000000" xlink:href="javascript:swUp()">
-                    <path d="m104.91 41.366-15.094 0.004029 7.5434-13.073z" style="fill:#000000;opacity:.883;stroke-linejoin:round;stroke-width:.9375;stroke:#ffffff"/>
-                </a>
-                <a transform="rotate(-90 142.53 2.0955)" style="fill:#000000" xlink:href="javascript:seToLeft()">
-                    <path d="m55.71 75.116-15.094 0.004029 7.5434-13.073z" style="fill:#000000;opacity:.883;stroke-linejoin:round;stroke-width:.9375;stroke:#ffffff"/>
-                </a>
-                <a transform="matrix(.86616 0 0 .86616 37.6 -8.3129)" style="fill:#000000" xlink:href="javascript:brickUp()">
-                    <path d="m96.121 43.274-15.094 0.004029 7.5434-13.073z" style="fill:#000000;opacity:.883;stroke-linejoin:round;stroke-width:1.0824;stroke:#ffffff"/>
-                </a>
-                <a transform="rotate(90 46.792 76.508)" style="fill:#000000" xlink:href="javascript:brickToRight()">
-                    <path d="m94.916 41.366-15.094 0.004029 7.5434-13.073z" style="fill:#000000;opacity:.883;stroke-linejoin:round;stroke-width:.9375;stroke:#ffffff"/>
-                </a>
-                <a transform="rotate(-90,101.51,103.34)" style="fill:#000000" xlink:href="javascript:brickToLeft()">
-                    <path d="m95.314 16.107-15.094 0.004029 7.5434-13.073z" style="fill:#000000;opacity:.883;stroke-linejoin:round;stroke-width:.9375;stroke:#ffffff"/>
-                </a>
-                <a transform="matrix(-.86616 0 0 -.86616 189.36 110.64)" style="fill:#000000" xlink:href="javascript:brickDown()">
-                    <path d="m94.184 17.788-15.094 0.004029 7.5434-13.073z" style="fill:#000000;opacity:.883;stroke-linejoin:round;stroke-width:1.0824;stroke:#ffffff"/>
-                </a>
-                <a transform="rotate(180 153.7 67.823)" style="fill:#000000" xlink:href="javascript:seDown()">
-                    <path d="m71.692 7.6153-15.094 0.0040296 7.5434-13.073z" style="fill:#000000;opacity:.883;stroke-linejoin:round;stroke-width:.9375;stroke:#ffffff"/>
-                </a>
-                <a transform="translate(131.98 -2.6829)" style="fill:#000000" xlink:href="javascript:seUp()">
-                    <path d="m118.81 75.116-15.094 0.004029 7.5434-13.073z" style="fill:#000000;opacity:.883;stroke-linejoin:round;stroke-width:.9375;stroke:#ffffff"/>
-                </a>
-                <a transform="rotate(90 154.75 124.23)" style="fill:#000000" xlink:href="javascript:seToRight()">
-                    <path d="m134.45 7.6153-15.094 0.0040296 7.5434-13.073z" style="fill:#000000;opacity:.883;stroke-linejoin:round;stroke-width:.9375;stroke:#ffffff"/>
-                </a>
-                <a transform="rotate(180 127.07 84.546)" style="fill:#000000" xlink:href="javascript:swDown()">
-                    <path d="m85.252 41.366-15.094 0.004029 7.5434-13.073z" style="fill:#000000;opacity:.883;stroke-linejoin:round;stroke-width:.9375;stroke:#ffffff"/>
-                </a>
-                <a transform="rotate(-90 152.41 45.218)" style="fill:#000000" xlink:href="javascript:swToLeft()">
-                    <path d="m95.085 41.366-15.094 0.004029 7.5434-13.073z" style="fill:#000000;opacity:.883;stroke-linejoin:round;stroke-width:.9375;stroke:#ffffff"/>
-                </a>
-                <rect x="153.77" y="77.233" width="45.35" height="45.35" ry=".48922" style="fill:none;opacity:.883;stroke-linecap:round;stroke-width:4.5094;stroke:#029807"/>
-                <rect x="220.57" y="77.233" width="45.35" height="45.35" ry=".48922" style="fill:none;stroke-linecap:round;stroke-width:4.5094;stroke:#834bce"/>
-                <path d="m33.025 59.779h-5.2874l2.6437 4.579z" style="fill:#029807"/>
-                <path d="m61.309 58.361-3.7387 3.7387 5.1072 1.3684z" style="fill:#834bce;stroke-width:1.2031"/>
-                <rect x="19.22" y="110.85" width="27.529" height="12.467" ry=".13449" style="fill:none;stroke-linecap:round;stroke-width:2.3438;stroke:#029807"/>
-            </svg>
-            <p style="max-width: 22em">
-			Click a solid tile to initialize the prototype,
-            subsequently nudge the tiles with the arrows.
-		</p>
-        <div>
-            <div>Configuration:</div><br>
-            <div>
-                <div style="border:3px solid #029807;border-radius: 3px;">
-                    <input type="number" name="shiftColsSW" id="shiftColsSW" min="-12" max="0" value="0" onchange="showProto()"><label for="shiftColsSW">col(s)</label>
-                    <br>
-                    <input type="number" name="shiftRowsSW" id="shiftRowsSW" min="0" max="12" value="1" onchange="showProto()"><label for="shiftRowsSW">row(s)</label>
-                </div>
-                <div style="border:3px solid #834bce;border-radius: 3px;">
-                    <input type="number" name="shiftColsSE" id="shiftColsSE" min="0" max="12" value="3" onchange="showProto()"><label for="shiftColsSE">col(s)</label>
-                    <br>
-                    <input type="number" name="shiftRowsSE" id="shiftRowsSE" min="0" max="12" value="1" onchange="showProto()"><label for="shiftRowsSE">row(s)</label>
-                </div>
-            </div>
+        <div id="drosteFields3">
+            <figure>
+                <figcaption>
+                    Stitches
+                    <a href="help/Advanced#thread-diagram-as-pair-diagram" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
+                </figcaption>
+                <textarea id="droste3" name="droste3" rows="8" cols="30" spellcheck="false" onchange="clear3()" placeHolder="Type stitch definition here.&#13;&#10;If nothing is typed, the stitch 'ctc' will be used.&#13;&#10;&#13;&#10;Example:&#13;&#10;&#13;&#10;ct&#13;&#10;a140=a150=b240=b250=ctcctct"></textarea>
+            </figure>
+            <figure>
+                <figcaption>
+                    Pairs
+                    <a href="help/Color-Code" target="_blank"><img src="help/images/information-icon.png" title="color legend"></a>
+                    <a download="pair-diagram.svg"
+                       onfocus="setDownloadContent(this,'#drostePair3')"
+                       onblur="this.href='?#download'"
+                       href="?#download"
+                       title="download"
+                    ><img src="images/download.jpg"></a>
+                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drostePair3', 1.1)" title="increase diagram dimensions"
+                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drostePair3', 0.91)" title="decrease diagram dimensions">
+                </figcaption>
+                <div id="drostePair3"></div>
+            </figure>
+            <figure >
+                <figcaption>
+                    Threads
+                    <a href="help/index#highlight-a-thread" target="_blank"><img src="help/images/information-icon.png" title="highlight threads"></a>
+                    <a download="thread-diagram.svg"
+                       onfocus="setDownloadContent(this,'#drosteThread3')"
+                       onblur="this.href='?#download'"
+                       href="?#download"
+                       title="download"
+                    ><img src="images/download.jpg"></a>
+                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drosteThread3', 1.1)" title="increase diagram dimensions"
+                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drosteThread3', 0.91)" title="decrease diagram dimensions">
+                </figcaption>
+                <div id="drosteThread3"></div>
+            </figure>
         </div>
     </fieldset>
 </form>

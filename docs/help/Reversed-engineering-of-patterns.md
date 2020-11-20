@@ -76,7 +76,7 @@ To see if it is possible to reduce a rectangular tile to bricks,
 divide the rectangle in four quadrants.
 If the upper left equals the lower right and the upper right equals bottom left,
 you can use the top half or bottom half as brick tile.
-It saves id's of stitches to assign.
+It saves IDs of stitches to assign.
 
 ![](images/matrix-example.png)
 
