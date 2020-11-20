@@ -26,7 +26,7 @@ A lace ground consists of a small pattern that is repeated, like a wallpaper or 
 
 The first step is to look at a ground and identify the base tile.  There are many ways to do this and over the course of this tutorial, we will show a few of them.
 
-####Simple arrangement
+#### Simple arrangement
 
 The easiest approach is to start with a printed copy of the pattern. Pick a spot on the pattern and look in the horizontal direction until you find an exact copy of this spot.  Draw a line. Now return to the original spot and look straight down until you find another exact copy of this spot.  Draw a line and complete the rectangle created by these two lines.
 
