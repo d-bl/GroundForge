@@ -35,7 +35,7 @@ Pair diagrams of several traditional grounds are very similar to thread diagrams
  
  The first table uses a basic net with different stitches.   The first column shows a thread diagram of the base pattern.  The second column gives the stitches used in the _Edit Pattern_ and _First Level_ areas.  The last column lists patterns in the Whiting catalogue that either match exactly or have minor variations.  Click on the stitch definitions in the second column to open the pattern in GroundForge.
 
-Base  | Base &rarr; First Level    | First level     | [Whiting index](/gw-lace-to-gf)
+Base  | Base &rarr; First Level    | First level     | [Whiting catalogue](/gw-lace-to-gf)
 -------------------------------------------------------------------------------------|----------------|-------------|--------- 
 ![](stitches/ct.png) ![](stitches/ct-color1.png) | [ct &rarr; ctct]      | ![](/gw-lace-to-gf/w/page76a.gif) | A5, A6, B5, C6, [A7-H7,G11]
 ![](stitches/ctct.png) ![](stitches/ctct-color1a.png) ![](stitches/ctct-color1b.png) | [ctct&rarr;ct/ctct] | ![](/gw-lace-to-gf/w/page120a.gif) ![](stitches/ctct-color2a.png) ![](stitches/ctct-color2b.png) | A2, B2, B6, C6
@@ -45,7 +45,7 @@ Base  | Base &rarr; First Level    | First level     | [Whiting index](/gw-lace-
 
 In the following table, the "cloth motif" pattern is the base pattern.
 
-Base  | Base &rarr; First Level    | First level     | [Whiting index](/gw-lace-to-gf)
+Base  | Base &rarr; First Level    | First level     | [Whiting catalogue](/gw-lace-to-gf)
 -------------------------------------------------------------------------------------|----------------|-------------|--------- 
 ![](stitches/ctc-ctcr.png) ![](stitches/ctc-ctcr-color.png)  | [ctct/ctcl &rarr; ctc/tt/tctct] | ![](/gw-lace-to-gf/w/page150a.gif) | D16
 ![](stitches/2x-ct-ctct.png) | [ct/ctct &rarr; ct/ctct] | "tilted" rose ground
