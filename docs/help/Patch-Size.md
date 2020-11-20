@@ -3,7 +3,7 @@ layout: default
 title: Patch Size
 ---
 
-The dimensions of the diagrams have some unexpected consequences.
+Changing the dimensions of the diagrams may have some unexpected consequences.
 
 Large sizes
 -----------
