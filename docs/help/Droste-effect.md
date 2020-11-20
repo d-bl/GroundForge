@@ -37,7 +37,7 @@ Pair diagrams of several traditional grounds are very similar to thread diagrams
 
 Base pattern  | Base -> First Level    | Result     | [Whiting index](/gw-lace-to-gf)
 -------------------------------------------------------------------------------------|----------------|-------------|--------- 
-![](stitches/ct.png) ![](stitches/ct-color1.png) | [ct->ctct]      | ![](/gw-lace-to-gf/w/page76a.gif) | A5, A6, B5, C6, [A7-H7,G11]
+![](stitches/ct.png) ![](stitches/ct-color1.png) | [ct&#2192;ctct]      | ![](/gw-lace-to-gf/w/page76a.gif) | A5, A6, B5, C6, [A7-H7,G11]
 ![](stitches/ctct.png) ![](stitches/ctct-color1a.png) ![](stitches/ctct-color1b.png) | [ctct->ct/ctct] | ![](/gw-lace-to-gf/w/page120a.gif) ![](stitches/ctct-color2a.png) ![](stitches/ctct-color2b.png) | A2, B2, B6, C6
 ![](stitches/crclct.png) | [crclct->ct/ctct] | ![](/gw-lace-to-gf/w/page139a.gif) ![](stitches/crclct-color2.png) | C6
 ![](stitches/clcrclc.png) | [clcrclc->ctc and twists] | ![](stitches/clcrclc-color2.png)
@@ -51,7 +51,7 @@ Base pattern | Base -> First Level    | Result     | [Whiting index](/gw-lace-to
 ![](stitches/2x-ct-ctct.png) | [ct/ctct->ct/ctct] | "tilted" rose ground
 
 
-[ct->ctct]: /GroundForge/tiles?tile=-5&tileStitch=ct&droste2=ctct&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
+[ct&#2192;ctct]: /GroundForge/tiles?tile=-5&tileStitch=ct&droste2=ctct&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
 [ctct->ct/ctct]: /GroundForge/tiles?patchWidth=5&patchHeight=6&b1=ctct&tile=-5&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1&droste2=ct,cross=ctct
 [crclct->ct/ctct]: /GroundForge/tiles?tile=-5&tileStitch=crclct&droste2=ctct,b16=b15=b12=ct&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
 [clcrclc->ctc]: /GroundForge/tiles?tile=-5&tileStitch=clcrclc&droste2=ctc,b16=ctct,b13=ctcr,b15=ctcl&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
