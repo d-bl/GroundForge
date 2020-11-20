@@ -33,9 +33,9 @@ To repeat this process a second time, click on the ![wand](../images/wand.png) i
 
 Pair diagrams of several traditional grounds are very similar to thread diagrams of more basic grounds.  The following tables show a few examples.
  
- The first table uses a basic net with different stitches.   The first column gives the stitches used in base pattern.  The second column gives the stitches used in the _First Level_ thread diagram as pair diagram iterations.  The last column mentions patterns of the Whiting index which are either exactly the same or may be mirrored or have other small variations.  Click on the stitch definitions in the second column to open the pattern in GroundForge.
+ The first table uses a basic net with different stitches.   The first column shows a thread diagram of the base pattern.  The second column gives the stitches used in the _Edit Pattern_ and _First Level_ areas.  The last column lists patterns in the Whiting catalogue that either match exactly or have minor variations.  Click on the stitch definitions in the second column to open the pattern in GroundForge.
 
-Base pattern                                                                  | Base -> First Level    | Result     | [Whiting index](/gw-lace-to-gf)
+Base pattern  | Base -> First Level    | Result     | [Whiting index](/gw-lace-to-gf)
 -------------------------------------------------------------------------------------|----------------|-------------|--------- 
 ![](stitches/ct.png) ![](stitches/ct-color1.png) | [ct->ctct]      | ![](/gw-lace-to-gf/w/page76a.gif) | A5, A6, B5, C6, [A7-H7,G11]
 ![](stitches/ctct.png) ![](stitches/ctct-color1a.png) ![](stitches/ctct-color1b.png) | [ctct->ct/ctct] | ![](/gw-lace-to-gf/w/page120a.gif) ![](stitches/ctct-color2a.png) ![](stitches/ctct-color2b.png) | A2, B2, B6, C6
@@ -43,16 +43,16 @@ Base pattern                                                                  | 
 ![](stitches/clcrclc.png) | [clcrclc->ctc and twists] | ![](stitches/clcrclc-color2.png)
 ![](stitches/ctctc.png) | [ctctc->ctc and twists] | ![](/gw-lace-to-gf/w/page178a.gif) | F2
 
-In the following table, the "cloth" motif pattern is used as the base pattern.
+In the following table, the "cloth motif" pattern is the base pattern.
 
-Base pattern                                                                  | Base -> First Level    | Result     | [Whiting index](/gw-lace-to-gf)
+Base pattern | Base -> First Level    | Result     | [Whiting index](/gw-lace-to-gf)
 -------------------------------------------------------------------------------------|----------------|-------------|--------- 
 ![](stitches/ctc-ctcr.png) ![](stitches/ctc-ctcr-color.png)  | [ctct/ctcl -> ctc/tt/tctct] | ![](/gw-lace-to-gf/w/page150a.gif) | D16
 ![](stitches/2x-ct-ctct.png) | [ct/ctct->ct/ctct] | "tilted" rose ground
 
 
 [ct->ctct]: /GroundForge/tiles?tile=-5&tileStitch=ct&droste2=ctct&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
-[ctct->ct/ctct]: GroundForge/tiles?patchWidth=5&patchHeight=6&b1=ctct&tile=-5&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1&droste2=ct,cross=ctct
+[ctct->ct/ctct]: /GroundForge/tiles?patchWidth=5&patchHeight=6&b1=ctct&tile=-5&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1&droste2=ct,cross=ctct
 [crclct->ct/ctct]: /GroundForge/tiles?tile=-5&tileStitch=crclct&droste2=ctct,b16=b15=b12=ct&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
 [clcrclc->ctc]: /GroundForge/tiles?tile=-5&tileStitch=clcrclc&droste2=ctc,b16=ctct,b13=ctcr,b15=ctcl&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
 [clcrclc->ctc and twists]: /GroundForge/tiles?tile=-5&tileStitch=ctctc&droste2=ctc,B16=ctcttt,B15=ctcrrr,B14=ctclll,b13=ctcctc&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
@@ -66,7 +66,7 @@ Base pattern                                                                  | 
 Build your own experiments
 -------------------------
 
-For the base pattern, start with something small.  For example, enter alternating `-`'s and `5`'s or an even number of alternating rows of `8`'s and `1`'s in the _Pattern definition_ area of _Edit pattern_. Then click on the blue square of the simple layout. 
+For the base pattern, start with something small.  For example, enter alternating `-`'s and `5`'s or alternating rows of `8`'s and `1`'s in the _Pattern definition_ area of _Edit pattern_. Then click on the blue square of the simple layout. 
 
 ![](images/init-droste.png)
 
