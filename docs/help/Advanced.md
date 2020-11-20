@@ -67,7 +67,7 @@ For some patterns, as shown for rose ground in the image below, the repeating re
 
 ![](images/rose_vertical_brick.png) 
 
-For a vertical brick pattern first identify one brick and label each intersection with a symbol from the cheat sheet as we did for the simple tile.  To glue the copies together to make a larger pattern, first click on the filled blue brick in the picture of vertical bricks: ![](images/vertical-bricks.png)
+For a vertical brick pattern first identify one brick and label each intersection with a symbol from the cheat sheet as we did for the simple tile.  To glue the copies together to make a larger pattern, first click on the filled blue brick in the picture of vertical bricks.
 
 If the pattern does not immediately align correctly, click on the black arrows above and below the second column of bricks to adjust how the two columns of bricks align.  Each click will move the second column up or down by one row relative to the first column.  Look at the pattern diagram to see how the copies move around.
 
@@ -84,7 +84,7 @@ Apply a grid to the base pattern and assign symbols to each line intersection.  
 
 ![](images/rose-checker-define-repeat.png) 
 
-Finally, we arrange the copies.  Click on the filled blue block in the image of a checkerboard: ![](images/overlapping-checkers.png)
+Finally, we arrange the copies.  Click on the filled blue block in the image of a checkerboard.
 Initially, the copies will be placed corner to corner.  Click on the black arrows around the green and purple blocks to nudge the copies so that they overlap as desired.
 
 [Final result](/GroundForge/tiles?patchWidth=12&patchHeight=12&c1=ctct&b1=ctct&a1=ctct&c2=ctct&a2=ctct&c3=ctct&b3=ctct&a3=ctct&tile=831,4-7,158&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
