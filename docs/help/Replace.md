@@ -38,9 +38,9 @@ variations.
 
 Drop stitches
 -------------
-To remove a stitch from the prototype, you can use `-` (a single dash and no other symbols) for the stitch.
+To remove a stitch from the pattern, you can use `-` (a single dash and no other symbols) for the stitch.
 If you delete all the text from a stitch field, the default value is used.  
-The default stitch is the text that appears in the bottom row of boxes in "Define a repeat", as shown in the figure above. If there is no text in this box, the default is `ctc`.
+The default stitch is the text that appears in the bottom row of boxes in _Pattern definition_, as shown in the figure above. If there is no text in this box, the default is `ctc`.
 
 _Warning_: too many adjacent dropped stitches may cause weird thread diagrams
 in which the pairs swap before a stitch is made.
