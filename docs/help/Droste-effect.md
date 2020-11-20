@@ -35,31 +35,31 @@ Pair diagrams of several traditional grounds are very similar to thread diagrams
  
  The first table uses a basic net with different stitches.   The first column shows a thread diagram of the base pattern.  The second column gives the stitches used in the _Edit Pattern_ and _First Level_ areas.  The last column lists patterns in the Whiting catalogue that either match exactly or have minor variations.  Click on the stitch definitions in the second column to open the pattern in GroundForge.
 
-Base pattern  | Base -> First Level    | Result     | [Whiting index](/gw-lace-to-gf)
+Base  | Base -> First Level    | First level     | [Whiting index](/gw-lace-to-gf)
 -------------------------------------------------------------------------------------|----------------|-------------|--------- 
-![](stitches/ct.png) ![](stitches/ct-color1.png) | [ct&#2192;ctct]      | ![](/gw-lace-to-gf/w/page76a.gif) | A5, A6, B5, C6, [A7-H7,G11]
-![](stitches/ctct.png) ![](stitches/ctct-color1a.png) ![](stitches/ctct-color1b.png) | [ctct->ct/ctct] | ![](/gw-lace-to-gf/w/page120a.gif) ![](stitches/ctct-color2a.png) ![](stitches/ctct-color2b.png) | A2, B2, B6, C6
-![](stitches/crclct.png) | [crclct->ct/ctct] | ![](/gw-lace-to-gf/w/page139a.gif) ![](stitches/crclct-color2.png) | C6
-![](stitches/clcrclc.png) | [clcrclc->ctc and twists] | ![](stitches/clcrclc-color2.png)
-![](stitches/ctctc.png) | [ctctc->ctc and twists] | ![](/gw-lace-to-gf/w/page178a.gif) | F2
+![](stitches/ct.png) ![](stitches/ct-color1.png) | [ct&rarr;ctct]      | ![](/gw-lace-to-gf/w/page76a.gif) | A5, A6, B5, C6, [A7-H7,G11]
+![](stitches/ctct.png) ![](stitches/ctct-color1a.png) ![](stitches/ctct-color1b.png) | [ctct&rarr;ct/ctct] | ![](/gw-lace-to-gf/w/page120a.gif) ![](stitches/ctct-color2a.png) ![](stitches/ctct-color2b.png) | A2, B2, B6, C6
+![](stitches/crclct.png) | [crclct&rarr;ct/ctct] | ![](/gw-lace-to-gf/w/page139a.gif) ![](stitches/crclct-color2.png) | C6
+![](stitches/clcrclc.png) | [clcrclc&rarr;ctc and twists] | ![](stitches/clcrclc-color2.png)
+![](stitches/ctctc.png) | [ctctc&rarr;ctc and twists] | ![](/gw-lace-to-gf/w/page178a.gif) | F2
 
 In the following table, the "cloth motif" pattern is the base pattern.
 
-Base pattern | Base -> First Level    | Result     | [Whiting index](/gw-lace-to-gf)
+Base  | Base -> First Level    | First level     | [Whiting index](/gw-lace-to-gf)
 -------------------------------------------------------------------------------------|----------------|-------------|--------- 
-![](stitches/ctc-ctcr.png) ![](stitches/ctc-ctcr-color.png)  | [ctct/ctcl -> ctc/tt/tctct] | ![](/gw-lace-to-gf/w/page150a.gif) | D16
-![](stitches/2x-ct-ctct.png) | [ct/ctct->ct/ctct] | "tilted" rose ground
+![](stitches/ctc-ctcr.png) ![](stitches/ctc-ctcr-color.png)  | [ctct/ctcl&rarr;ctc/tt/tctct] | ![](/gw-lace-to-gf/w/page150a.gif) | D16
+![](stitches/2x-ct-ctct.png) | [ct/ctct&rarr;ct/ctct] | "tilted" rose ground
 
 
-[ct&#2192;ctct]: /GroundForge/tiles?tile=-5&tileStitch=ct&droste2=ctct&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
-[ctct->ct/ctct]: /GroundForge/tiles?patchWidth=5&patchHeight=6&b1=ctct&tile=-5&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1&droste2=ct,cross=ctct
-[crclct->ct/ctct]: /GroundForge/tiles?tile=-5&tileStitch=crclct&droste2=ctct,b16=b15=b12=ct&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
-[clcrclc->ctc]: /GroundForge/tiles?tile=-5&tileStitch=clcrclc&droste2=ctc,b16=ctct,b13=ctcr,b15=ctcl&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
-[clcrclc->ctc and twists]: /GroundForge/tiles?tile=-5&tileStitch=ctctc&droste2=ctc,B16=ctcttt,B15=ctcrrr,B14=ctclll,b13=ctcctc&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
-[ctctc->ctc and twists]: /GroundForge/tiles?tile=-5&tileStitch=ctctc&droste2=ctc,B16=ctcttt,B15=ctcrrr,B14=ctclll,b13=ctcctc&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
+[ct&rarr;ctct]: /GroundForge/tiles?tile=-5&tileStitch=ct&droste2=ctct&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
+[ctct&rarr;ct/ctct]: /GroundForge/tiles?patchWidth=5&patchHeight=6&b1=ctct&tile=-5&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1&droste2=ct,cross=ctct
+[crclct&rarr;ct/ctct]: /GroundForge/tiles?tile=-5&tileStitch=crclct&droste2=ctct,b16=b15=b12=ct&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
+[clcrclc&rarr;ctc]: /GroundForge/tiles?tile=-5&tileStitch=clcrclc&droste2=ctc,b16=ctct,b13=ctcr,b15=ctcl&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
+[clcrclc&rarr;ctc and twists]: /GroundForge/tiles?tile=-5&tileStitch=ctctc&droste2=ctc,B16=ctcttt,B15=ctcrrr,B14=ctclll,b13=ctcctc&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
+[ctctc&rarr;ctc and twists]: /GroundForge/tiles?tile=-5&tileStitch=ctctc&droste2=ctc,B16=ctcttt,B15=ctcrrr,B14=ctclll,b13=ctcctc&patchWidth=5&patchHeight=6&shiftColsSW=-2&shiftRowsSW=0&shiftColsSE=1&shiftRowsSE=1
 
-[ctct/ctcl -> ctc/tt/tctct]: /GroundForge/tiles?tile=8,1&a1=ctct&a2=ctcl&droste2=ctc,a24=a15=tt,a14=tctct&patchWidth=4&patchHeight=4&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2
-[ct/ctct->ct/ctct]: /GroundForge/tiles?tile=88,11&tileStitch=ctct&b1=ct&a2=ct&droste2=cross=ctct,twist=ct&patchWidth=6&patchHeight=6&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[ctct/ctcl&rarr;ctc/tt/tctct]: /GroundForge/tiles?tile=8,1&a1=ctct&a2=ctcl&droste2=ctc,a24=a15=tt,a14=tctct&patchWidth=4&patchHeight=4&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2
+[ct/ctct&rarr;ct/ctct]: /GroundForge/tiles?tile=88,11&tileStitch=ctct&b1=ct&a2=ct&droste2=cross=ctct,twist=ct&patchWidth=6&patchHeight=6&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
 [A7-H7,G11]: /gw-lace-to-gf#val
 
 
