@@ -8,6 +8,11 @@ ref: intro
 Help Intro
 ==========
 
+In inhoud en schermfilmpjes van deze verouderde pagina
+kunnen nog steeds een indruk geven van de mogelijkheden.
+Sinds [release](https://github.com/d-bl/GroundForge/releases) 2019-Q3
+is voornamelijk een en ander verplaatst en anders genoemd.
+
 Spelen met gekloste gronden
 ---------------------------
 
@@ -29,9 +34,9 @@ Hieronder volgt een uitleg met behulp van een veelzijdige grond. Terzijde: met z
 
 <a name="BK-31"/>
 
-Snelcursus 
+Overzicht 
 ----------
-Het eerste [schermfilmpje](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4) (129 MB, 2:28 min)
+Het eerste [schermfilmpje](https://github.com/d-bl/GroundForge/releases/download/2019-Q3/catalogues.mp4) (129 MB, 2:28 min)
 zoekt hetzelfde basispatroon in verschillende verzamelingen. 
 De gronden worden op verschillende manieren gepresenteerd of gebruiken variaties in de slagen.
 Gebruik de pauzeknop en schuifregelaar om stappen te herhalen.
@@ -43,8 +48,9 @@ Maar eerst een korte uitleg wat de acties moeten bereiken.
 
 ### Een veelzijdig patroon &mdash; Slagen vervangen / weglaten
 
-<img src="/GroundForge/help/images/kompakt-31-challenge.png" style="float:right"/>
-Rechts een werktekening voor en klassieke Binche grond.
+![](https://raw.githubusercontent.com/d-bl/GroundForge/b6a765f3708e13b6a787f1d58ea234bc7748f2bd/docs/help/images/kompakt-31-challenge.png)
+
+Hierboven een werktekening voor een klassieke Binche grond.
 Kleine veranderingen maken [duizenden](index#nrs) variaties mogelijk, hieronder slechts vier.
 Iedere variatie wordt getoond met een prototype- en een draden-diagram.
 Het prototype verwringt het patroon tot het op een vierkant raster past,
@@ -79,7 +85,7 @@ De rode wijzigingen zijn voor de derde variant.
 
 ### Tweede schermfilmpje
 
-De [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK-31.mp4) (37 MB, nog geen twee minuten) volgt onderstaand script.
+De [schermfilmpje](https://github.com/d-bl/GroundForge/releases/download/2019-Q3/BK-31.mp4) (37 MB, nog geen twee minuten) volgt onderstaand script.
 Gebruik de pauzeknop en schuifregelaar om stappen te herhalen.
 Negeer eventueel de dik-gedrukt gedrukte stappen voor gevorderden.
 

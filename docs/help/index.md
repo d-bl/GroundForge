@@ -8,6 +8,11 @@ ref: intro
 Help Intro
 ==========
 
+The content and screencasts on this outdated page
+can still give an impression of the possibilities.
+Even though many things have been moved and renamed since
+[release](https://github.com/d-bl/GroundForge/releases) 2019-Q3.
+
 Experiment with Bobbin Lace Grounds
 -----------------------------------
 
@@ -28,9 +33,9 @@ Playing with stitches in a braid is also possible. Just add foot sides to a smal
 
 <a name="BK-31"></a>
 
-Tutorial
+Overview
 --------
-One [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4)
+One [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q3/catalogues.mp4)
 (123 MB, 2:32 min) looks for the same base pattern in various catalogues.
 The grounds are presented in various ways or use different stitches.
 Use the pause button and slider to repeat, try for yourself get side tracked and have fun.
@@ -79,7 +84,7 @@ Apply the red changes for the third variant.
 
 ### 2nd Screen cast
 
-A [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK-31.mp4) (35 MB) follows the script below,
+A [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q3/BK-31.mp4) (35 MB) follows the script below,
 applying what is explained above.
 
 A lot happens in a short time, use the pause button and slider to repeat. 

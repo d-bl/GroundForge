@@ -8,6 +8,11 @@ ref: intro
 Hilfe Intro
 ===========
 
+Der Inhalt und die Videoclips auf dieser veralteten Seite 
+können immer noch einen Eindruck von den Möglichkeiten vermitteln. 
+Obwohl seit der [Veröffentlichung](https://github.com/d-bl/GroundForge/releases)
+von 2019-Q3 viele Dinge verschoben und umbenannt wurden.
+
 Spielen mit geklöppelten Gründen
 ------------------------------
 Indem Sie die Schläge variieren und/oder die Zeichnungen verzerren,
@@ -28,9 +33,9 @@ Nebenbei bemerkt: auch Bänder entwerfen mit Randschlägen gehört zu den Mögli
 
 <a name="BK-31"/>
 
-Tutorenkurs 
------------
-Den ersten [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4) (129 MB, 2:28 min)
+Übersicht 
+---------
+Den ersten [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q3/catalogues.mp4) (129 MB, 2:28 min)
 sucht ein Grundmuster in verschiedenen Sammlungen.
 Dieses Gründe werden auf verschiedene Arten präsentiert oder benutzten Variationen in den Schlägen.
 Verwenden Sie die Pause-Taste und den Schieberegler,
@@ -42,8 +47,9 @@ Aber zuerst eine kurze Erklärung, worum es bei den Aktionen geht.
 
 ### Ein Muster mit viele Möglichkeiten - Schläge ersetzen / weglassen
 
-<img src="/GroundForge/help/images/kompakt-31-challenge.png" style="float:right"/>
-Rechts eine Arbeitszeichnung für einen traditionellen Binche-Grund. 
+![](https://raw.githubusercontent.com/d-bl/GroundForge/b6a765f3708e13b6a787f1d58ea234bc7748f2bd/docs/help/images/kompakt-31-challenge.png)
+
+Oben eine Arbeitszeichnung für einen traditionellen Binche-Grund. 
 Kleine Änderungen erlauben tausende Variationen. 
 Unten werden nur vier Variationen gezeigt, jeweils mit einem Prototyp und einem Faden-Diagramm. 
 Für den Prototyp wird die Arbeitszeichnung verzerrt bis die Schläge auf die Rasterpunkte zugreifen. 
@@ -82,7 +88,7 @@ Die roten Änderungen gelten für die dritte Variante.
 
 ### Videoclip
 
-Der [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK-31.mp4)
+Der [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q3/BK-31.mp4)
 (37 MB, weniger als zwei Minuten) folgt dem Skript unten.
 Verwenden Sie die Pausen-Taste und den Schieberegler, um die Schritte zu wiederholen.
 Ignorieren Sie gegebenenfalls die fett gedruckten fortgeschrittenen Schritte.
