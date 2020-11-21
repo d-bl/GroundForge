@@ -19,7 +19,7 @@ even from/to form fields outside the diagram.
 Touch devices may also have keys to traverse through the fields.
 Below a screenshot of an iPad with the up/down arrows on the right.
  
-![](images/iPad-tab-thru.PNG)
+![](images/iPad-tab-thru.png)
 
 Stitch definitions
 ------------------
