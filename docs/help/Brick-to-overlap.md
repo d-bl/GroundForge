@@ -1,0 +1,39 @@
+---
+layout: default
+title: Tile change
+---
+Change the tiling of a pattern definition
+=========================================
+
+The image below shows the definition of ground 
+[F4](https://d-bl.github.io/GroundForge/tiles?whiting=F4_P180&patchWidth=9&patchHeight=9&d1=ctc&c1=ctc&b1=ctc&a1=ctc&d2=ctc&c2=ctcllctc&a2=ctcrrctc&tile=1483,8-48&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
+by Gertrude Whiting. 
+
+![](images/brick-to-overlap-prepare.png)
+
+The green rectangles around the stitches show that the pattern is defined with a brick style layout.
+The small purple tile looks more like the units presented in traditional text books.
+It would make it easier to pick the stitches you might want to change,
+The large green tile allows you to vary stitches in two units of work,
+for second unit it is again hard to find the stitches you want to change.
+
+An animation illustrates the steps below that change the brick into the small green tile.
+The <a href="images/brick-to-overlap-animate.gif" target="_blank">animation</a>
+appears in a new tab or window, reload that page to restart.
+
+* Type the corresponding characters in the second text field.
+* Select the alternating tiles.
+* Move the purple tile until you have proper diagonals.
+* Then move the green tile to get the diagonals together.
+* The corner stiches of the small purple tile overlap with the neighboring tiles.
+  Reduce the top(!) corners to a dash.
+
+In many patterns you will have to replace more stitches. That is not recorded.
+Use two browser windows, one with the old pattern, one with the new pattern.
+Then you can copy-paste the corresponding stitches.
+
+For new patterns you can prepare with pencil on squared paper.
+Draw something following lines and/or diagonals in a way that gets close to what you want.
+Use the cheat sheet to find the characters to type.
+
+See also the [tutorial](Advanced#glue-copies-together) pages for more aspects of the subject.
