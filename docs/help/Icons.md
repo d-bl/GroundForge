@@ -1,17 +1,18 @@
 ---
 layout: default
-title: Purpose/meaning of icons
+title: Icons, their purpose/meaning
 ---
 
 The purpose/meaning of buttons/icons in short
 =============================================
 
-![](images/information-icon.png) **Link** to a help page. Hover over the icon for the subject.
+![](images/information-icon.png) **Link**  
+To a help page. Hover over the icon for the subject.
 
 ![](../images/wand.png)
 ![](../images/link.png)
-**[Reload](Undo)**: diagrams (faster) / page (the browser remembers your pattern)
-
+**[Reload](Undo)**  
+diagrams only (faster) / page (the browser remembers your pattern)
 
 ![](../images/size-inc.jpg)
 ![](../images/size-dec.jpg)
@@ -28,7 +29,8 @@ An example of the latter is the TesseLace pattern [3x4_447](/GroundForge/tiles.h
 which becomes surprisingly regular.
 See also [reshape patterns](Reshape-Patterns).
 
-![](../images/download.jpg) **Download**:
+![](../images/download.jpg) **Download**  
 scalable images for 3rd party [editors](Reshape-Patterns#evaluated-editors).
-* pair diagram
-* [thread diagram](Thread-Properties#more-thread-colors-andor-widths)
+Or preview in your browser by [dragging](images/download.png) the file between other pages.
+* thread diagram: for other thread [colors/widths](Thread-Properties#more-thread-colors-andor-widths)
+* pair diagram: larger swatches distort less
