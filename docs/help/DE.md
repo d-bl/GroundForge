@@ -30,7 +30,7 @@ Nebenbei bemerkt: auch Bänder entwerfen mit Randschlägen gehört zu den Mögli
 
 Tutorenkurs 
 -----------
-Den ersten [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4) (129 MB, 2:28 min)
+Den ersten [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q3/catalogues.mp4) (129 MB, 2:28 min)
 sucht ein Grundmuster in verschiedenen Sammlungen.
 Dieses Gründe werden auf verschiedene Arten präsentiert oder benutzten Variationen in den Schlägen.
 Verwenden Sie die Pause-Taste und den Schieberegler,
@@ -82,7 +82,7 @@ Die roten Änderungen gelten für die dritte Variante.
 
 ### Videoclip
 
-Der [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK-31.mp4)
+Der [Videoclip](https://github.com/d-bl/GroundForge/releases/download/2019-Q3/BK-31.mp4)
 (37 MB, weniger als zwei Minuten) folgt dem Skript unten.
 Verwenden Sie die Pausen-Taste und den Schieberegler, um die Schritte zu wiederholen.
 Ignorieren Sie gegebenenfalls die fett gedruckten fortgeschrittenen Schritte.

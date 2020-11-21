@@ -31,7 +31,7 @@ Hieronder volgt een uitleg met behulp van een veelzijdige grond. Terzijde: met z
 
 Snelcursus 
 ----------
-Het eerste [schermfilmpje](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/catalogues.mp4) (129 MB, 2:28 min)
+Het eerste [schermfilmpje](https://github.com/d-bl/GroundForge/releases/download/2019-Q3/catalogues.mp4) (129 MB, 2:28 min)
 zoekt hetzelfde basispatroon in verschillende verzamelingen. 
 De gronden worden op verschillende manieren gepresenteerd of gebruiken variaties in de slagen.
 Gebruik de pauzeknop en schuifregelaar om stappen te herhalen.
@@ -79,7 +79,7 @@ De rode wijzigingen zijn voor de derde variant.
 
 ### Tweede schermfilmpje
 
-De [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/BK-31.mp4) (37 MB, nog geen twee minuten) volgt onderstaand script.
+De [screencast](https://github.com/d-bl/GroundForge/releases/download/2019-Q3/BK-31.mp4) (37 MB, nog geen twee minuten) volgt onderstaand script.
 Gebruik de pauzeknop en schuifregelaar om stappen te herhalen.
 Negeer eventueel de dik-gedrukt gedrukte stappen voor gevorderden.
 
