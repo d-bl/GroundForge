@@ -23,7 +23,7 @@ However, the second unit in this larger tile is sliced up in three parts.
 Again making it harder to find the stitches you want to change.
 
 An animation shows the procedure below to change the brick into the small green tile.
-The <a href="images/brick-to-overlap-animate.gif" target="_blank">animation</a>
+The <a href="images/brick-to-overlap-animation.gif" target="_blank">animation</a>
 appears in a new tab or window, reload that page to restart.
 
 * Type the characters in the rectangle of your choice in the second text field.
