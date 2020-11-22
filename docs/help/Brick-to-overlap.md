@@ -11,29 +11,39 @@ by Gertrude Whiting.
 
 ![](images/brick-to-overlap-prepare.png)
 
-The green rectangles around the stitches show that the pattern is defined with a brick style layout.
-The small purple tile looks more like the units presented in traditional text books.
-It would make it easier to pick the stitches you might want to change,
-The large green tile allows you to vary stitches in two units of work,
-for second unit it is again hard to find the stitches you want to change.
+The faint stitches repeat the bright ones. The green rectangles show that the repetition has a brick style.
+The small purple tile looks more like a unit presented in traditional text books.
+It would make it easier to pick the stitches you might want to change.
+The large green tile allows you to vary stitches in two units of work. 
+This tile is easy to repeat in the text field to cover more units.
+However, the second unit in this larger tile is sliced up in three parts.
+Again making it harder to find the stitches you want to change.
 
-An animation illustrates the steps below that change the brick into the small green tile.
+An animation shows the procedure below to change the brick into the small green tile.
 The <a href="images/brick-to-overlap-animate.gif" target="_blank">animation</a>
 appears in a new tab or window, reload that page to restart.
 
-* Type the corresponding characters in the second text field.
+* Type the characters in the rectangle of your choice in the second text field.
 * Select the alternating tiles.
 * Move the purple tile until you have proper diagonals.
 * Then move the green tile to get the diagonals together.
-* The corner stiches of the small purple tile overlap with the neighboring tiles.
-  Reduce the top(!) corners to a dash.
+* Any textbook will explain the bottom corners of a unit are the top corners for the next row. 
+  Make these stitches faint with a dash.
 
-In many patterns you will have to replace more stitches. That is not recorded.
+Subsequently, you will have to adjust stitches to get the original thread diagram.
 Use two browser windows, one with the old pattern, one with the new pattern.
 Then you can copy-paste the corresponding stitches.
 
-For new patterns you can prepare with pencil on squared paper.
-Draw something following lines and/or diagonals in a way that gets close to what you want.
-Use the cheat sheet to find the characters to type.
+The overlap was not implemented by design, the feature is just a "happy accident".
+For larger patterns the cons of the T-shape tile below (or the variant that didn't even get a border)
+might outweigh the pros of the brick. Though in a text book you might want the cross.
+
+![](images/brick-or-t.png)
+
+For new patterns you can prepare a sketch with pencil on squared paper.
+Draw the desired pattern following the lines and/or diagonals
+in a way that warps the least what you want.
+Sketch the brick or simple tile for the repeats and
+use the cheat sheet to find the characters to type.
 
 See also the [tutorial](Advanced#glue-copies-together) pages for more aspects of the subject.
