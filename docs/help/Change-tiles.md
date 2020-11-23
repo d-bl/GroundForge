@@ -43,11 +43,3 @@ Subsequently, you will have to adjust what stitches to make at each position to 
 Use two browser windows, one with the old pattern, one with the new pattern.
 Then you can copy-paste the corresponding stitches.
 
-New patterns from scratch
--------------------------
-For new patterns you can prepare a sketch with pencil on squared paper.
-Draw the desired pattern following the lines and/or diagonals
-in a way that warps the least what you want.
-Sketch the border of the desired tile and
-use the cheat sheet to find the characters to type.
-Then follow the procedure above. 
