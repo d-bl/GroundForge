@@ -43,13 +43,6 @@ Subsequently, you will have to adjust what stitches to make at each position to 
 Use two browser windows, one with the old pattern, one with the new pattern.
 Then you can copy-paste the corresponding stitches.
 
-Larger tiles
-------------
-For larger patterns the cons of the T-shape tile below (or the variant that didn't even get a border)
-might outweigh the pros of the brick. Though in a text book you might want the cross.
-
-![](images/brick-or-t.png)
-
 New patterns from scratch
 -------------------------
 For new patterns you can prepare a sketch with pencil on squared paper.
