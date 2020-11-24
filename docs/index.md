@@ -13,7 +13,7 @@ GroundForge is a tool that complements existing lace ground [catalogues](#patter
 * You can specify the combinations of stitches to make when two pairs meet. This is very useful for communicating and documenting a new lace ground.
 * Experiment with lace grounds without the need to wind bobbins or prepare a pricking. The final test is always to make a hand-worked sample: only in a physical sample can the interactions between pins and threads under tension be completely observed.
 
-You can experiment and play around with the hundreds of patterns provided here, or you can create your own. Even when reinventing the wheel, your own discoveries can bring great joy.
+You can experiment and play around with the hundreds of patterns provided here, or you can create your own. Below two pair diagrams, each with only four different (sets of) stitches.
 
 ![](images/weaving.png)
 

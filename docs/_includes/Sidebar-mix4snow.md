@@ -2,5 +2,11 @@
 * [Tweak recipe](/GroundForge-help/snow-mix#recipes-for-the-mixer)
 * [Tweak footside](/GroundForge-help/snow-mix/#footsides)
 
+
+* [With two droste steps](/GroundForge/mix4snow/droste)
+* [Experiments](/GroundForge/mix4snow/experiments)
+
+
 * [Color code for pair diagrams](/GroundForge-help/color-rules)
 * [Print as PDF](/GroundForge-help/clips/print-as-pdf)
+#recipes-for-the-mixer
