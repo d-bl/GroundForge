@@ -2,8 +2,8 @@
 layout: default
 title: Tile change
 ---
-Change the tiling of a pattern definition
-=========================================
+Change the tiling of a pattern
+==============================
 
 Patterns can have different types and sizes of tiles, each having their pros and cons.
 This page shows the proces of changing the tile definition.
