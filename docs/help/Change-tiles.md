@@ -8,7 +8,7 @@ Change the tiling of a pattern
 Patterns can have different types and sizes of tiles, each having their pros and cons.
 This page shows the proces of changing the tile definition.
 
-[![](images/brick-to-overlap-start.png)](images/brick-to-overlap-animation.gif)  
+<a href="images/brick-to-overlap-animation.gif" target="_blank"><img src="images/brick-to-overlap-start.png"></a><br> 
 The animation should appear in a new tab or window, reload that page to restart.
 Below a step by step explanation.
 
