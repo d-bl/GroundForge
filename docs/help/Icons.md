@@ -12,7 +12,15 @@ To a help page. Hover over the icon for the subject.
 ![](../images/wand.png)
 ![](../images/link.png)
 **[Reload](Undo)**  
-diagrams only (faster) / page (the browser remembers your pattern)
+the wand reloads only the diagrams (faster) / 
+the link reloads the entire page and makes your browser remembering your pattern
+
+![](images/cheat-sheet-symbol.png) **Stitch**  
+The character inside the circle determines the origins 
+of the pairs used to make the stitch.
+The default [cheat sheet](images/matrix-example.png) shows all you need to assemble a pattern.
+An [extended version](images/matrix-template-extended.png) 
+shows additional symbols used in legacy patterns.
 
 ![](../images/size-inc.jpg)
 ![](../images/size-dec.jpg)
