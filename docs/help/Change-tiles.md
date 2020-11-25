@@ -8,6 +8,10 @@ Change the tiling of a pattern
 Patterns can have different types and sizes of tiles, each having their pros and cons.
 This page shows the proces of changing the tile definition.
 
+[![](images/brick-to-overlap-start.png)](images/brick-to-overlap-animation.gif)  
+The animation should appear in a new tab or window, reload that page to restart.
+Below a step by step explanation.
+
 See also [tutorial](Advanced#glue-copies-together) pages for related subjects.
 
 An example pattern
@@ -26,8 +30,6 @@ The larger purple tiles allows you to vary stitches in more units.
 The procedure
 -------------
 An animation (for the 3x3 tile) disambiguates the steps below.
-The <a href="images/brick-to-overlap-animation.gif" target="_blank">animation</a>
-should appear in a new tab or window, reload that page to restart.
 
 * Type the characters in the tile of your choice in the second text field.
 * Select a tile layout:
