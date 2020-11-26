@@ -5,45 +5,51 @@ title: Tile change
 Change the tiling of a pattern
 ==============================
 
-Patterns can have different types and sizes of tiles, each having their pros and cons.
-This page shows the proces of changing the tile definition.
+The illustrations in this panel are buttons with which you can change the way a custom base pattern repeats in the larger pattern and visualisations
 
-<a href="images/brick-to-overlap-animation.gif" target="_blank"><img src="images/brick-to-overlap-start.png"></a><br> 
-The animation should appear in a new tab or window, reload that page to restart.
-Below a step by step explanation.
+Click on a button to activate that configuration: either "simple layout", "vertical bricks", "horizontal bricks" or "checkerboard".
+Use the black arrow buttons to nudge the repeating tiles in one grid-point steps until the pattern repeats in a valid way.
 
-See also [tutorial](Advanced#glue-copies-together) pages for related subjects.
+The following animation illustrates the process:
+
+<img src="images/brick-to-overlap-animation.gif"><br> 
+
+
+(If the animation above isn't playing, try <a href="images/brick-to-overlap-animation.gif" target="_blank"> this link </a> instead.<br> 
+The animation should appear in a new tab or window, reload that page to restart.)
+
+The steps illustrated here are:
+
+* Create a basic pattern by typing the characters of the pair intersections that you need in the second text field.
+* Select a tile layout (In this case the "checkeroard" configuration is used). If, like the example, your base pattern requires a "checkerboard" configuration:
+  * Use the arrow buttons on the purple icon until your base tiles connect in a diagonal line.
+  * Then use the arrow buttons on the green icon to get the diagonals together.
+* Look for any overlapping intersections in the base tile and "delete" them from the basic pattern definition with a "-" instead of the original character/number.
+  * (This step avoids defining different stitches to the same intersection of the pattern that may cause the visualisations to not render the way you wanted them.
+  * Luckily, this problem will reveal itself soon enough: When you try to define stitches and the colours of the repeat intersections show that you are not creating the pattern you had in mind, this is probably because there is an intersection defined with two different stitch definitions because of an overlap in the base pattern.
+  * If you need to be able to change that stitch at an overlap, it is better to define a larger base pattern instead of having the base pattern tile with an overlap. (For example if you want a pattern of two rosegrounds worked in different ways in the same ground.)
+ 
 
 An example pattern
 ------------------
 
-The image below shows an annotated definition of ground 
+The image below shows different base patterns with which the ground [F4] in Gertrude Whiting's catalogue can be defined 
 [F4](https://d-bl.github.io/GroundForge/tiles?whiting=F4_P180&patchWidth=9&patchHeight=9&d1=ctc&c1=ctc&b1=ctc&a1=ctc&d2=ctc&c2=ctcllctc&a2=ctcrrctc&tile=1483,8-48&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
-by Gertrude Whiting. 
 
-![](images/brick-to-overlap-prepare.png)
+<img src="images/brick-to-overlap-prepare.png"><br>
 
-The faint stitches repeat the bright ones. The green 2x4 rectangles around the stitches show that the repetition has a brick layout.
-The 3x3 purple tile looks more like a unit presented in traditional text books.
-The larger purple tiles allows you to vary stitches in more units. 
+* The "simple layout" button will suffice for the 4x4 or 4x8 purple base patterns.
+* The 4x8 base pattern can also be tiled with the "horizontal brick" layout.
+* The "checkerboard" button can be used for the 3x3 purple in the same way as per the above animation.  
+* The "horizontal brick" button can be used for the green 2x4 rectangles.
+* The 3x3 purple tile looks more like a unit presented in traditional pattern books.
+* The larger purple tiles allow you to vary more stitches in one repeat. 
 
-The procedure
--------------
-An animation (for the 3x3 tile) disambiguates the steps below.
 
-* Type the characters in the tile of your choice in the second text field.
-* Select a tile layout:
-  * The left blue square for the 4x4 or 4x8 purple tile, and you are done.
-    The 4x8 tile works also with the brick layout.
-  * The right blue square for the 3x3 purple tile and continue with the following steps.
-* Move the purple tile until you have proper diagonals.
-* Then move the green tile to get the diagonals together.
-* Any textbook will explain the bottom corners of the unit are the top corners for the next row.
-  We saw this happen when moving the tiles in place.
-  Make these stitches faint with a dash.
-  Having these stitches up to now might help to check the tiles arrived at their target: they blend. 
 
-Subsequently, you will have to adjust what stitches to make at each grid position to get the original thread diagram.
-Use two browser windows, one with the old tile layout, one with the new tile layout.
-Then you can copy-paste the corresponding stitches.
+See also <a href="https://d-bl.github.io/GroundForge/help/Advanced" target="_blank"> this tutorial </a> for a step-by-step introduction to creating and tiling base patterns.
+
+
+
+
 
