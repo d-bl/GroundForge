@@ -17,7 +17,7 @@ A step by step description follows after a short explanation of the pattern.
 
 <a href="images/brick-to-overlap-animation.gif" target="_blank"><img src="images/brick-to-overlap-start.png"></a><br> 
 
-See also the [tutorial](Advanced#glue-copies-together) pages for related subjects.
+See also the [tutorial](Advanced) for a step-by-step introduction to create patterns.
 
 An example pattern
 ------------------
@@ -37,15 +37,14 @@ The animation in words
 
 * Type the characters in the base tile of your choice in the second text field.
 * Select a tile layout with a blue square/rectangle and adjust with the black arrows.
-  * For the 4x4 tile you can apply the left blue square and you are done.
-  * For the 4x8 tile you can choose between the left blue square or a brick.
-  * Select the right blue square for the 3x3 tile and continue with the following steps.
+  * For the 4x4 tile you can select the "simple" layout at the left top and you are done.
+  * For the 4x8 tile you can choose between "simple" and "brick" layout.
+  * For the 3x3 tile you need the "offset" layout on the right, continue with the following steps.
 * Move the purple tile with the black arrows until you have proper diagonals.
 * Then move the green tile to get the diagonals together.
-* Any textbook will explain the bottom corners of the unit are the top corners for the next row.
-  We saw this happen when moving the tiles in place.
-  Make these stitches faint with a dash.
-  Having these stitches up to now might help to check the tiles arrived at their target: they blend. 
+* Moving the tiles together caused overlap, it confirmed the tiles arrived at their target
+  This overlap can cause unexpected behaviour. 
+  Fix this by changing the bottom corners to "-" in the input field.
 
 Subsequently, you will have to adjust what stitches to make at each grid position to get the original thread diagram.
 Use two browser windows, one with the old tile layout, one with the new tile layout.

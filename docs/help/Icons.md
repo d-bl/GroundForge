@@ -39,6 +39,6 @@ See also [reshape patterns](Reshape-Patterns).
 
 ![](../images/download.jpg) **Download**  
 scalable images for 3rd party [editors](Reshape-Patterns#evaluated-editors).
-Or preview in your browser by [dragging](images/download.png) the file between other pages.
+Or preview in your browser to print, [drag](images/download.png) the file between other pages.
 * thread diagram: for other thread [colors/widths](Thread-Properties#more-thread-colors-andor-widths)
 * pair diagram: larger swatches distort less
