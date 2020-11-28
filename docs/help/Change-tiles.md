@@ -6,16 +6,12 @@ Change the tile layout
 ======================
 
 The "Tile layout" panel has visual controls to 
-change the way a custom base pattern repeats.
-Select one of the blue tile buttons to activate that configuration.
+define the way a custom base pattern repeats.
+Select one of the blue tile buttons to activate the desired configuration.
 Subsequently, use the black arrow buttons to nudge the repeating tiles in one grid-point steps 
 until the pattern repeats in a valid way.
 
-A short animation shows the process. It appears in a new tab or window, 
-this allows restart with the reload button of your browser.
-A step by step description follows after a short explanation of the pattern.
-
-<a href="images/brick-to-overlap-animation.gif" target="_blank"><img src="images/brick-to-overlap-start.png"></a><br> 
+<a name="restart_animation"></a><a href="#restart_animation" onclick="javascript:window.location='Change-tiles?now='+Date.now()+'#restart_animation'" target="_blank"><img src="images/brick-to-overlap-animation.gif"></a><br> 
 
 See also the [tutorial](Advanced) for a step-by-step introduction to create patterns.
 
@@ -42,9 +38,10 @@ The animation in words
   * For the 3x3 tile you need the "offset" layout on the right, continue with the following steps.
 * Move the purple tile with the black arrows until you have proper diagonals.
 * Then move the green tile to get the diagonals together.
-* Moving the tiles together caused overlap, it confirmed the tiles arrived at their target
+* Moving the tiles together caused overlap, it confirmed the tiles arrived at their target.
   This overlap can cause unexpected behaviour. 
   Fix this by changing the bottom corners to "-" in the input field.
+  Note thate these stitches become faint.
 
 Subsequently, you will have to adjust what stitches to make at each grid position to get the original thread diagram.
 Use two browser windows, one with the old tile layout, one with the new tile layout.
