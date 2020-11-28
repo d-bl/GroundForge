@@ -12,10 +12,10 @@ To a help page. Hover over the icon for the subject.
 ![](../images/wand.png)
 ![](../images/link.png)
 **[Reload](Undo)**  
-the wand reloads only the diagrams (faster) / 
-the link reloads the entire page and makes your browser remembering your pattern
+The wand reloads only the diagrams (faster) / 
+the link reloads the entire page and your browser will remember the pattern
 
-![](images/cheat-sheet-symbol.png) **Stitch**  
+![](images/toggle-stitch.png) **Stitch**  
 The character inside the circle determines the origins 
 of the pairs used to make the stitch.
 The default [cheat sheet](images/matrix-example.png) shows all you need to assemble a pattern.
@@ -24,7 +24,7 @@ shows additional symbols used in legacy patterns.
 
 ![](../images/size-inc.jpg)
 ![](../images/size-dec.jpg)
-**Resize**  
+**Resize space** (not to be confused with zoom or  patch size)  
 Depending on the browser/device, the diagrams may have a hot corner
 in the south-east, where the sliders meet.
 Drag this corner to adjust the available space. 
