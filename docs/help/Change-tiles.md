@@ -11,8 +11,8 @@ Select one of the blue tile buttons to activate the desired configuration.
 Subsequently, use the black arrow buttons to nudge the repeating tiles in one grid-point steps 
 until the pattern repeats in a valid way.
 
-Hover over the image to start the animation.  
-<img src="images/brick-to-overlap-start.png" onmouseenter="this.src='images/brick-to-overlap-animation.gif';" onmouseout="this.src = 'images/brick-to-overlap-start.png';" style="border: 1px solid">
+Hover over the image to start the animation or tap to show in another tab of your browser.  
+<a href="images/brick-to-overlap-animation.gif" target="_blank"><img src="images/brick-to-overlap-start.png" onmouseenter="this.src='images/brick-to-overlap-animation.gif';" onmouseout="this.src = 'images/brick-to-overlap-start.png';" style="border: 1px solid"></a>
 
 See also the [tutorial](Advanced) for a step-by-step introduction to create patterns.
 
