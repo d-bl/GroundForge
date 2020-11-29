@@ -15,7 +15,8 @@ Header { background: #3679cd url(../images/header-bg-left.png) top right repeat;
 
 #fallBack { border: 10px solid orange; padding: 5px; }
 
-li li { padding-bottom:0; }
+
+li ul { padding-bottom:0; }
 td, th { text-align: left }
 th { font-weight: bold; }
 table { margin-bottom: 1em; }
