@@ -11,13 +11,12 @@ Select one of the blue tile buttons to activate the desired configuration.
 Subsequently, use the black arrow buttons to nudge the repeating tiles in one grid-point steps 
 until the pattern repeats in a valid way.
 
-The video in words below after introducing properties of the pattern.  
-<video width="414" height="414" controls>
+An explanation of the video follows after introducing properties of the pattern.  
+See also the [tutorial](Advanced) for a step-by-step introduction to create patterns.  
+<video width="414" height="414" controls style="border: 1px solid; border-top: 2px;">
     <source src="images/brick-to-overlap-animation.mp4" type="video/mp4">
     Your browser does not support an inline <a href="images/brick-to-overlap-animation.mp4">video</a>.
 </video>
-
-See also the [tutorial](Advanced) for a step-by-step introduction to create patterns.
 
 An example pattern
 ------------------
