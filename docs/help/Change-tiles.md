@@ -11,7 +11,7 @@ Select one of the blue tile buttons to activate the desired configuration.
 Subsequently, use the black arrow buttons to nudge the repeating tiles in one grid-point steps 
 until the pattern repeats in a valid way.
 
-Hover over the image to start the animation or tap to show in another tab of your browser.  
+Hover over/out the image to start/stop the animation or tap to show in another tab of your browser.  
 <a href="images/brick-to-overlap-animation.gif" target="_blank"><img src="images/brick-to-overlap-start.png" onmouseenter="this.src='images/brick-to-overlap-animation.gif';" onmouseout="this.src = 'images/brick-to-overlap-start.png';" style="border: 1px solid"></a>
 
 See also the [tutorial](Advanced) for a step-by-step introduction to create patterns.
@@ -36,7 +36,7 @@ The animation in words
 * Select a tile layout with a blue square/rectangle and adjust with the black arrows.
   * For the 4x4 tile you can select the "simple" layout at the left top and you are done.
   * For the 4x8 tile you can choose between "simple" and "brick" layout.
-  * For the 3x3 tile you need the "offset" layout on the right, continue with the following steps.
+  * For the 3x3 tile you need the "alternating" layout on the right, continue with the following steps.
 * Move the purple tile with the black arrows until you have proper diagonals.
 * Then move the green tile to get the diagonals together.
 * Moving the tiles together caused overlap, it confirmed the tiles arrived at their target.
