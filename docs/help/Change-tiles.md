@@ -39,7 +39,7 @@ The animation in words
 * Select a tile layout with a blue square/rectangle and adjust with the black arrows.
   * For the 4x4 tile you can select the "simple" layout at the left top and you are done.
   * For the 4x8 tile you can choose between "simple" and "brick" layout.
-  * For the 3x3 tile you need the "offset" layout on the right, continue with the following steps.
+  * For the 3x3 tile you need the "alternating" layout on the right, continue with the following steps.
 * Move the purple tile with the black arrows until you have proper diagonals.
 * Then move the green tile to get the diagonals together.
 * Moving the tiles together caused overlap, it confirmed the tiles arrived at their target.
