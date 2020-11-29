@@ -11,10 +11,11 @@ Select one of the blue tile buttons to activate the desired configuration.
 Subsequently, use the black arrow buttons to nudge the repeating tiles in one grid-point steps 
 until the pattern repeats in a valid way.
 
-Hover over/out the image to start/stop the animation or tap to show in another tab of your browser.  
-<a href="images/brick-to-overlap-animation.gif" target="_blank">
-<img src="images/brick-to-overlap-start.png" onmouseenter="this.src='images/brick-to-overlap-animation.gif';" onmouseout="this.src='images/brick-to-overlap-start.png';" style="border: 1px solid; padding-top:2px">
-</a>
+The video in words below after introducing properties of the pattern.  
+<video width="414" height="414" controls>
+    <source src="images/brick-to-overlap-animation.mp4" type="video/mp4">
+    Your browser does not support an inline <a href="images/brick-to-overlap-animation.mp4">video</a>.
+</video>
 
 See also the [tutorial](Advanced) for a step-by-step introduction to create patterns.
 
@@ -31,10 +32,10 @@ The faint stitches repeat the bright ones. The green 2x4 rectangles around the s
 The 3x3 purple tile looks more like a unit presented in traditional text books.
 The larger purple tiles allows you to vary stitches in more units. 
 
-The animation in words
-----------------------
+The video in words
+------------------
 
-* Type the characters in the base tile of your choice in the second text field.
+* Type the characters of the custom base tile of your choice in the second text field.
 * Select a tile layout with a blue square/rectangle and adjust with the black arrows.
   * For the 4x4 tile you can select the "simple" layout at the left top and you are done.
   * For the 4x8 tile you can choose between "simple" and "brick" layout.
