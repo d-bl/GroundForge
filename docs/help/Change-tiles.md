@@ -36,17 +36,16 @@ The video in words
 ------------------
 
 * Type the characters of the custom base tile of your choice (in this case the 3x3) in the second text field.
-* Select a tile layout with a blue square/rectangle and adjust with the black arrows.
-  * Not recorded:
-    * For the 4x4 tile you can select the "simple" layout at the left top and you are done.
-    * For the 4x8 tile you can choose between "simple" and "brick" layout.
-  * For the 3x3 tile (recorded): start with the "alternating" layout on the right, 
-    then move the tiles together until the corners _overlap_ with the following steps.
-    * Move the purple tile with the black arrows in north-west direction until you have proper diagonals.
-    * Then move the green tile to the north-east get the diagonals together.
-    * The overlap can cause unexpected behaviour. 
-      Fix this by changing the bottom corners to "-" in the input field.
-      Note thate these stitches become faint.
+* Start with the "alternating" layout on the right, 
+    then nudge the tiles until the corners _overlap_ with the following steps.
+  * Move the purple tile with the black arrows in north-west direction until you have proper diagonals.
+  * Then move the green tile to the north-east get the diagonals together.
+  * The overlap can cause unexpected behaviour. 
+    Fix this by changing the bottom corners to "-" in the input field.
+    Note thate these stitches become faint.
+* Not recorded alternative base tiles (no nudging required for this pattern):
+  * For the 4x4 tile you can select the "simple" layout at the left top, bricks don't produce a valid pattern.
+  * For the 4x8 tile you can choose between "simple" and "brick" layout.
 
 Subsequently, you will have to adjust what stitches to make at each grid position to get the original thread diagram.
 Use two browser windows, one with the old tile layout, one with the new tile layout.
