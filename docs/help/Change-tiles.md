@@ -23,7 +23,8 @@ Choose a base tile
 
 Patterns can have different types and sizes of tiles, each having their pros and cons.
 The image below shows ground [F4](https://d-bl.github.io/GroundForge/tiles?whiting=F4_P180&patchWidth=9&patchHeight=9&d1=ctc&c1=ctc&b1=ctc&a1=ctc&d2=ctc&c2=ctcllctc&a2=ctcrrctc&tile=1483,8-48&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
-by Gertrude Whiting, marked with some possible base tiles. 
+by Gertrude Whiting as defined in the [catalogue](/gw-lace-to-gf),
+marked with some possible base tiles. 
 
 ![](images/brick-to-overlap-prepare.png)
 
