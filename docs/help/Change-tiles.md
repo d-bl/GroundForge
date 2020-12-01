@@ -43,9 +43,10 @@ The video in words
   * The overlap can cause unexpected behaviour. 
     Fix this by changing the bottom corners to "-" in the input field.
     Note thate these stitches become faint.
-* Not recorded alternative base tiles (no nudging required for this pattern):
-  * For the 4x4 tile you can select the "simple" layout at the left top, bricks don't produce a valid pattern.
-  * For the 4x8 tile you can choose between "simple" and "brick" layout.
+* Without nudging you can create valid patterns with the following combinations:
+  * The 4x2 tile with "brick layout". 
+  * The 4x4 tile with the "simple" layout at the left top.
+  * The 8x4 tile with the "simple" as well as the "brick" layout.
 
 Subsequently, you will have to adjust what stitches to make at each grid position to get the original thread diagram.
 Use two browser windows, one with the old tile layout, one with the new tile layout.
