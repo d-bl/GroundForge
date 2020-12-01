@@ -18,7 +18,7 @@ See also the [tutorial](Advanced) for a step-by-step introduction to create patt
     Your browser does not support an inline <a href="images/brick-to-overlap-animation.mp4">video</a>.
 </video>
 
-Choose a base tile
+An example pattern
 ------------------
 
 Patterns can have different types and sizes of tiles, each having their pros and cons.
