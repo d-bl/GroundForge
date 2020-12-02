@@ -36,7 +36,7 @@ The video in words
 ------------------
 
 * Type the characters of the custom base tile of your choice (in this case the 3x3) in the second text field.
-* Start with the "alternating" layout on the right, 
+* Start with the blue tile in the "alternating" layout on the right, 
     then nudge the tiles until the corners _overlap_ with the following steps.
   * Move the purple tile with the black arrows in north-west direction until you have proper diagonals.
   * Then move the green tile to the north-east to get the diagonals together.
@@ -44,8 +44,9 @@ The video in words
     Fix this by changing the bottom corners to "-" in the input field.
     Note thate these stitches become faint.
 * Without nudging you can create valid patterns with the following combinations:
-  * The 4x2 tile with "brick layout". 
   * The 4x4 tile with the "simple" layout at the left top.
+    [How to](Advanced#simple-arrangement) to find a simple tile.
+  * The 4x2 tile with "brick layout". 
   * The 8x4 tile with the "simple" as well as the "brick" layout.
   
 Below the order of typing text and clicking buttons as shown in the video.
