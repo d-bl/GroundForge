@@ -12,7 +12,7 @@ Subsequently, use the black arrow buttons to nudge the repeating tiles in one gr
 until the pattern repeats in a valid way.
 
 An explanation of the video follows after introducing properties of the pattern.  
-See also the [tutorial](Advanced) for a step-by-step introduction to create patterns.  
+See also the [tutorial](Advanced) for a step-by-step introduction to create new patterns from scratch.  
 <video width="414" height="414" controls style="border: 1px solid; padding-top: 2px;">
     <source src="images/brick-to-overlap-animation.mp4" type="video/mp4">
     Your browser does not support an inline <a href="images/brick-to-overlap-animation.mp4">video</a>.
