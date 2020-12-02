@@ -28,7 +28,7 @@ marked with some possible base tiles.
 
 ![](images/brick-to-overlap-prepare.png)
 
-The faint stitches repeat the bright ones. The 2x4 rectangles around the stitches show that the repetition has a brick layout.
+The faint stitches repeat the bright ones. The 4x2 rectangles around the stitches show that the repetition has a brick layout.
 The 3x3 tile looks more like a unit presented in traditional text books.
 The larger tiles allows you to vary stitches in more units. 
 
@@ -39,7 +39,7 @@ The video in words
 * Start with the "alternating" layout on the right, 
     then nudge the tiles until the corners _overlap_ with the following steps.
   * Move the purple tile with the black arrows in north-west direction until you have proper diagonals.
-  * Then move the green tile to the north-east get the diagonals together.
+  * Then move the green tile to the north-east to get the diagonals together.
   * The overlap can cause unexpected behaviour. 
     Fix this by changing the bottom corners to "-" in the input field.
     Note thate these stitches become faint.
@@ -47,8 +47,19 @@ The video in words
   * The 4x2 tile with "brick layout". 
   * The 4x4 tile with the "simple" layout at the left top.
   * The 8x4 tile with the "simple" as well as the "brick" layout.
+  
+Below the order of typing text and clicking buttons as shown in the video.
+The video shows what happens in the diagram with each action.
+In the video the "tile layout" panel wrapped to the next line because of a smaller browser window.  
+![](images/brick-to-overlap-order.png)
 
-Subsequently, you will have to adjust what stitches to make at each grid position to get the original thread diagram.
+Changed stitches
+----------------
+Note below how the black and blue stitches swapped in the pattern as a consequence of the tile change.
+  
+![](images/brick-to-overlap-stitches.png)
+
+You will have to adjust to get the original thread diagram.
 Use two browser windows, one with the old tile layout, one with the new tile layout.
-Then you can copy-paste the corresponding stitches.
+Then you can copy-paste the corresponding [stitches](Replace).
 
