@@ -27,11 +27,9 @@ In the video the "tile layout" panel wrapped to the next line due to a smaller b
 An example pattern
 ------------------
 
-Patterns can have different types and sizes of tiles, each having their pros and cons.
-
 The image below shows ground [F4](https://d-bl.github.io/GroundForge/tiles?whiting=F4_P180&patchWidth=9&patchHeight=9&d1=ctc&c1=ctc&b1=ctc&a1=ctc&d2=ctc&c2=ctcllctc&a2=ctcrrctc&tile=1483,8-48&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
-by Gertrude Whiting as defined in the [catalogue](/gw-lace-to-gf),
-marked with some possible base tiles. 
+by Gertrude Whiting as defined in the [catalogue](/gw-lace-to-gf).
+The black rectangles and squares mark some possible base tiles, each has their pros and cons. 
 
 ![](images/brick-to-overlap-prepare.png)
 
@@ -70,4 +68,6 @@ Note below how the black and blue stitches swap in the pattern as a consequence 
 You will have to adjust to get the original thread diagram.
 Use two browser windows, one with the old tile layout, one with the new tile layout.
 Then you can copy-paste the corresponding [stitches](Replace).
+Another option is a dummy [foot side](Advanced#footside-tutorial), 
+in this case: enter one line with two dashes into the left text field.
 
