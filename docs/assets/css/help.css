@@ -12,15 +12,14 @@ Header { background: #3679cd url(../images/header-bg-left.png) top right repeat;
 #sidebar sub { font-weight: normal; }
 #sidebar li { list-style-type: none; padding-bottom: 8px; }
 #sidebar li li { list-style-type: disc; padding-bottom: 0;}
+#sidebar hr { height: 12px; border: 0; box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.2); }
 
 #fallBack { border: 10px solid orange; padding: 5px; }
 
-li li { padding-bottom:0; }
+li ul { margin-bottom:0; }
 td, th { text-align: left }
 th { font-weight: bold; }
 table { margin-bottom: 1em; }
-
-#sidebar hr { height: 12px; border: 0; box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.2); }
 
 figure { display: inline-block; margin-left: 0; margin-top: 0; margin-right: 0.5em; }
 figure image, figcaption { display: block; }
@@ -28,11 +27,3 @@ figcaption { text-align: center; background-color: #ddd; border-radius: 3px; mar
 
 .hide { display: none; }
 .show { display: block; }
-
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-  svg { /* prevent sitemap behind sidebar */
-    -ms-transform: translate(-88px, 0) scale(0.75, 0.75); /* IE 9 */
-    -webkit-transform: translate(-88px, 0) scale(0.75, 0.75); /* Safari */
-    transform: translate(-88px, 0) scale(0.75, 0.75);
-  }
-}
