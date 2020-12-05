@@ -16,11 +16,9 @@ until the pattern repeats in a valid way.
     Your browser does not support an inline <a href="images/brick-to-overlap-animation.mp4">video</a>.
 </video>  
 
-An explanation of the silent video follows after introducing properties of the pattern.  
-
-First the order of typing text and clicking buttons as shown in the video.
-The video shows what happens in the diagram with each action.
-In the video the "tile layout" panel wrapped to the next line due to a smaller browser window.  
+The video above shows what happens with the diagram 
+when following the steps numbered in the image below.
+Descriptions of the steps follow after introducing properties of the pattern.
 
 ![](images/brick-to-overlap-order.png)
 
@@ -30,6 +28,7 @@ An example pattern
 The image below shows ground [F4](https://d-bl.github.io/GroundForge/tiles?whiting=F4_P180&patchWidth=9&patchHeight=9&d1=ctc&c1=ctc&b1=ctc&a1=ctc&d2=ctc&c2=ctcllctc&a2=ctcrrctc&tile=1483,8-48&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
 by Gertrude Whiting as defined in the [catalogue](/gw-lace-to-gf).
 The black rectangles and squares mark some possible base tiles, each has their pros and cons. 
+Some options were not possible when publishing. We had to make a choice anyway, but you can change when desired. 
 
 ![](images/brick-to-overlap-prepare.png)
 
@@ -45,15 +44,15 @@ tile (in this case the 4x4) a [brick](Advanced#creating-a-smaller-base-tile)
 The video in words
 ------------------
 
-* Type the characters of the custom base tile of your choice (in this case the 3x3) in the second text field.
-* Start with the blue tile in the "corner-to-corner" layout on the right, 
-    then nudge the tiles until the corners _overlap_ with the following steps.
+* Type the characters of the custom base tile of your choice (in this case the 3x3) in the second text field (step 1).
+* Start with the blue tile in the "corner-to-corner" layout on the right (step 2), 
+    then nudge the tiles until the corners _overlap_ with the following steps (step 3-6).
   * Move the purple tile with the black arrows in north-west direction until you have proper diagonals.
   * Then move the green tile to the north-east to get the diagonals together.
-  * The overlap can cause unexpected behaviour. 
-    Fix this by changing the bottom corners to "-" in the input field.
-    Please note thate these stitches become faint in the diagram.
-* Without nudging you can create valid patterns with the following combinations (not recorded):
+* The overlap can cause unexpected behaviour. 
+  Fix this by changing the bottom corners in the input field to "-" (step 7).
+  Please note thate these stitches become faint in the diagram.
+* Not recorded: without nudging you can create valid patterns with the following combinations
   * The 4x4 tile with the "simple" layout at the left top.
   * The 4x2 tile with "brick" layout. 
   * The 8x4 tile with the "simple" as well as the "brick" layout.
@@ -61,13 +60,11 @@ The video in words
 
 Changed stitches
 ----------------
-Note below how the black and blue stitches swap in the pattern as a consequence of the tile change.
+The black and blue stitches in the images below show 
+that the tile change has consequences for the thread diagram.
   
 ![](images/brick-to-overlap-stitches.png)
 
 You will have to adjust to get the original thread diagram.
 Use two browser windows, one with the old tile layout, one with the new tile layout.
 Then you can copy-paste the corresponding [stitches](Replace).
-Another option is a dummy [foot side](Advanced#footside-tutorial), 
-in this case: enter one line with two dashes into the left text field.
-
