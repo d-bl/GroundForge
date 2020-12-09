@@ -7,10 +7,10 @@ Change the tile layout
 
 The "Tile layout" panel has visual controls to define the way a custom base pattern repeats.
 
-| Legend | |
+| | |
 |:---:|---|
-| ![](images/blue-tile.png) | Initializes the positions of the purple and green tiles relative to the blue tile. |
-| ![](images/nudge-tiles.png) | Nudge the position of the green/purple tile by one grid position. |
+| ![](images/blue-tile.png) | Buttons to choose the initial layout of the tiles. |
+| ![](images/nudge-tiles.png) | Buttons to fine tune the choice made with the blue buttons. Each arrow nudges the position of the green/purple tile by one grid position. |
 | ![](images/green-tile.png) <br> ![](images/purple-tile.png) | Positions of the green/purple purple tile relative to the blue tile. <br> The numbers update automatically when you click on a blue square or click on a black arrow to nudge. The numbers can also be edited directly. Some browsers might show a red border when the values are problematic. |
 
 
