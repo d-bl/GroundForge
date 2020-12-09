@@ -11,7 +11,7 @@ The "Tile layout" panel has visual controls to define the way a custom base patt
 |:---:|---|
 | ![](images/blue-tile.png) | Buttons to choose the initial layout of the tiles. |
 | ![](images/nudge-tiles.png) | Buttons to fine tune the choice made with the blue buttons. Each arrow nudges the position of the green/purple tile by one grid position. |
-| ![](images/green-tile.png) <br> ![](images/purple-tile.png) | Positions of the green/purple purple tile relative to the blue tile. <br> The numbers update automatically when you click on a blue square or click on a black arrow to nudge. The numbers can also be edited directly. Some browsers might show a red border when the values are problematic. |
+| ![](images/green-tile.png) <br> ![](images/purple-tile.png) | Values resulting from the actions above though you can override manually. <br> The values are the positions of the green/purple tiles relative to the blue tile. <br> Some browsers might show a red border when the values are problematic. These problems might only show up with larger swatches as empty corners. |
 
 
 <video width="414" height="414" controls style="border: 1px solid; padding-top: 2px;">
