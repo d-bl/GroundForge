@@ -11,7 +11,7 @@ The "Tile layout" panel has visual controls to define the way a custom base patt
 |---|---|
 | ![](images/blue-tile.png) | Initializes the positions of the purple and green tiles relative to the blue tile. |
 | ![](images/nudge-tiles.png) | Nudge the position of the green/purple tile by one grid position. |
-| ![](images/green-tile.png) <br> ![](images/purple-tile.png) | Positions of the green/purple purple tile relative to the blue tile. <br><br>  Numbers update automatically when you click on a blue square or click on a black arrow to nudge. Can also be edited directly. Some browsers might show a red border when the values are problematic. |
+| ![](images/green-tile.png) <br> ![](images/purple-tile.png) | Positions of the green/purple purple tile relative to the blue tile. <br>  Numbers update automatically when you click on a blue square or click on a black arrow to nudge. Can also be edited directly. Some browsers might show a red border when the values are problematic. |
 
 
 <video width="414" height="414" controls style="border: 1px solid; padding-top: 2px;">
@@ -29,5 +29,5 @@ The very last action (not numbered) would bring you back to this page.
 
 | | |
 |---|---|
-| ![](images/brick-to-overlap-start.png) | Step 1 starts with typing the characters in the 3x3 rectangle. <br><br> A myriad of choices can render the same pattern, each has pros and cons. |
+| ![](images/brick-to-overlap-start.png) | Step 1 starts with typing the characters in the 3x3 rectangle. <br> A myriad of choices can render the same pattern, each has pros and cons. |
 | ![](images/brick-to-overlap-choices.png) | Tutorial sections explain how to find a [simple](Advanced#simple-arrangement) tile (for example the 4x4) a [brick](Advanced#creating-a-smaller-base-tile) (the 2x4) or [overlap](Advanced#overlap-arrangement) (the 3x3, recorded in the video).
