@@ -189,7 +189,7 @@ function load() {
 function getMatrixLines() {
   return d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
 }
-function asChecker() {
+function asSimple() {
 
   var matrixLines = getMatrixLines()
   var rows = matrixLines.length
@@ -222,7 +222,7 @@ function asVerBricks() {
   d3.select('#shiftColsSW').property("value", 0)
   showProto()
 }
-function withOverlap() {
+function asCornerToCorner() {
 
   var matrixLines = getMatrixLines()
   var rows = matrixLines.length
