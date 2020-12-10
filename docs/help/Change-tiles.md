@@ -9,9 +9,9 @@ The "Tile layout" panel has visual controls to define the way a custom base patt
 
 | Buttons | | Steps (either 1+2 or 3) |
 |:---:|---|:---|
-| ![](images/blue-tile.png) | 1 | Choose the initial layout of the tiles. |
-| ![](images/nudge-tiles.png) | 2 | Fine tune the choice made above. <br> Each arrow nudges the green or purple tile one grid position. |
-| ![](images/green-tile.png) <br> ![](images/purple-tile.png) | 3 | Values resulting from the actions above though you can override manually. <br> The values are the positions of the green/purple tiles relative to the blue tile. <br> Some browsers might show a red border when the values are problematic. These problems might only show up with larger swatches as empty corners. |
+| ![](images/blue-tile.png) | &nbsp;**1**&nbsp;<br><br> | Choose the initial layout of the tiles. |
+| ![](images/nudge-tiles.png) | **2**<br><br><br> | Fine tune the choice made above. <br> Each arrow nudges the green or purple tile one grid position. |
+| ![](images/green-tile.png) <br> ![](images/purple-tile.png) | **3**<br><br><br><br><br> | Values resulting from the actions above though you can override manually. <br> The values are the positions of the green/purple tiles relative to the blue tile. <br> Some browsers might show a red border when the values are problematic. These problems might only show up with larger swatches as empty corners. |
 
 
 <video width="414" height="414" controls style="border: 1px solid; padding-top: 2px;">
@@ -28,6 +28,6 @@ The very last action (not numbered) would bring you back to this page.
 ![](images/brick-to-overlap-order.png)
 
 | | |
-|:---:|---|
+|:---:|:---|
 | ![](images/brick-to-overlap-start.png) | Step 1 of the video starts with typing the characters in the 3x3 rectangle. <br> A myriad of choices can render the same pattern, each has pros and cons. |
 | ![](images/brick-to-overlap-choices.png) | Tutorial sections explain how to find a [simple](Advanced#simple-arrangement) tile (for example the 4x4) a [brick](Advanced#creating-a-smaller-base-tile) (the 2x4) or [overlap](Advanced#overlap-arrangement) (the 3x3, recorded in the video).

@@ -48,7 +48,7 @@ Same for "&#41289;" (pins are hardly supported anyway)
 turquoise and brown represent this family of stitches.
 
 stitch name             | color     | examples and notes
-------------------------|-----------|--------------------------------------------
+:----------------------:|:---------:|:-------------------------------------------
 half stitch             | green     | `ct`, `tc`, `ttc`, `tct` (just one time `c` and both pairs twisted at least once)
 cloth stitch            | purple    | `ctc`, `ctcl`, `rctc` (just `ctc` and at most on pair twisted)
 double stitch           | red       | `ctct`, `tctc`, `tctct` (just `ctc` and both pairs twisted at least once)
