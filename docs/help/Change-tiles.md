@@ -1,19 +1,20 @@
 ---
 layout: default
-title: Tile change
+title: Tile layout
 ---
-Change the tile layout
-======================
+Tile layout
+===========
 
-The "Tile layout" panel has visual controls to define the way a custom base pattern repeats.
+The "Tile layout" panel controls the way a base pattern repeats.
 
 | Buttons | | Steps (either 1+2 or 3) |
-|:---:|---|:---|
+|:---:|:---:|:---|
 | ![](images/blue-tile.png) | &nbsp;**1**&nbsp;<br><br> | Choose the initial layout of the tiles. |
-| ![](images/nudge-tiles.png) | **2**<br><br><br> | Fine tune the choice made above. <br> Each arrow nudges the green or purple tile one grid position. |
-| ![](images/green-tile.png) <br> ![](images/purple-tile.png) | **3**<br><br><br><br><br> | Values resulting from the actions above though you can override manually. <br> The values are the positions of the green/purple tiles relative to the blue tile. <br> Some browsers might show a red border when the values are problematic. These problems might only show up with larger swatches as empty corners. |
+| ![](images/nudge-tiles.png) | **2**<br><br><br> | Fine tune the choice made above. <br> Each arrow nudges the green or purple tile (see the bottom of the video) one grid position. |
+| ![](images/green-tile.png) <br> ![](images/purple-tile.png) | **3**<br><br><br><br> | Values resulting from the actions above. You can also enter the values manually, see this [tutorial section](Advanced#glue-copies-together). <br> Some browsers might show a red border when the values are problematic. These problems might only show up with larger swatches as empty corners. |
 
-
+An example
+----------
 <video width="414" height="414" controls style="border: 1px solid; padding-top: 2px;">
     <source src="images/brick-to-overlap-animation.mp4#t=0.001" type="video/mp4">
     Your browser does not support an inline <a href="images/brick-to-overlap-animation.mp4">video</a>.
