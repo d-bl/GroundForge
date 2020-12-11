@@ -87,7 +87,7 @@ Apply a grid to the base pattern and assign symbols to each line intersection.  
 Finally, we arrange the copies.  Click on the filled blue block in the image of a checkerboard.
 Initially, the copies will be placed corner to corner.  Click on the black arrows around the green and purple blocks to nudge the copies so that they overlap as desired.
 
-It is important to have only one copy of each stitch in the pattern, otherwise unexpected things can happen.  Therefore, an important last step is to remove the duplicate stitches that appear in the overlapping corners.    For each pair of duplicates (top-left/bottom-right pair and top-right/bottom-left pair), replace the stitch(es) in one copy with as many `-`'s as required, as shown below. 
+It is important to have only one copy of each stitch in the pattern, otherwise unexpected things can happen.  Therefore, an important last step is to remove the duplicate stitches that appear in the overlapping corners.    Replace the overlapped stitches in the bottom corners with as many `-`'s as required, as shown below. 
 
 ![](images/rose-checker-define-repeat-2.png) 
 
