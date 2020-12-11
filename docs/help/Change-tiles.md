@@ -32,4 +32,4 @@ The very last action (not numbered) would bring you back to this page.
 
 | | |
 |:---:|:---|
-| ![](images/brick-to-overlap-start.png) | Step 1 of the video starts with typing the characters in the 3x3 rectangle. <br> A myriad of choices  |
+| ![](images/brick-to-overlap-start.png) | Step 1 of the video starts with typing the characters in the 3x3 rectangle.  |
