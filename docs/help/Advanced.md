@@ -53,7 +53,7 @@ Consider the image below. Red dashed lines show the grid overlaid on the pattern
 ![](images/rose-translation-vectors.png)
 
 To position the blue rectangle on top of the green rectangle, we must slide the blue rectangle down 4 rows.
-To position the blue rectangle on top of the purple rectangle, we must slide it right 4 columns and down 4 rows.  These translations distances are the numbers that appear in the green and purple boxes.  You can also edit these slide moves directly in the number fields.
+To position the blue rectangle on top of the purple rectangle, we must slide it right 4 columns and down 4 rows.  These translation distances are the numbers that appear in the green and purple boxes.  You can also edit these slide moves directly in the number fields.
 
 [Final result](/GroundForge/tiles.html?patchWidth=7&patchHeight=7&c1=ctct&a1=ctct&d2=ctct&c2=ctct&b2=ctct&a2=ctct&c3=ctct&a3=ctct&d4=ctct&c4=ctct&b4=ctct&a4=ctct&tile=4-7-,1583,7-4-,8315&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4)
 
@@ -78,7 +78,7 @@ When a large part of the pattern is a hole, we can further decrease the size of 
 
 ![](images/rose-checker-arrange.png)
 
-For the overlap layout, make the base pattern a little bit larger, as shown in the second drawing from the left, to encompass any intersections along its border.  Notice that the squares overlap a little bit.
+For the overlap layout, make the base pattern a little bit larger, as shown in the second drawing from the left, to encompass any intersections along its border.  Notice that the squares overlap at the corners.
 
 Apply a grid to the base pattern and assign symbols to each line intersection.  This time we have three rows and three columns in the base pattern. 
 
@@ -86,6 +86,10 @@ Apply a grid to the base pattern and assign symbols to each line intersection.  
 
 Finally, we arrange the copies.  Click on the filled blue block in the image of a checkerboard.
 Initially, the copies will be placed corner to corner.  Click on the black arrows around the green and purple blocks to nudge the copies so that they overlap as desired.
+
+It is important to have only one copy of each stitch in the pattern, otherwise unexpected things can happen.  Therefore, an important last step is to remove the duplicate stitches that appear in the overlapping corners.    Replace the overlapped stitches in the bottom corners with as many `-`'s as required, as shown below. 
+
+![](images/rose-checker-define-repeat-2.png) 
 
 [Final result](/GroundForge/tiles?patchWidth=12&patchHeight=12&c1=ctct&b1=ctct&a1=ctct&c2=ctct&a2=ctct&c3=ctct&b3=ctct&a3=ctct&tile=831,4-7,158&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
 
