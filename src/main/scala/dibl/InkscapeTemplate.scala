@@ -4,8 +4,7 @@ import dibl.proto.TilesConfig
 
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
-@JSExportTopLevel("InkscapeTemplate")
-object InkscapeTemplate {
+@JSExportTopLevel("InkscapeTemplate") object InkscapeTemplate {
 
   @JSExport
   def fromUrl(query: String): String = {
@@ -21,9 +20,9 @@ object InkscapeTemplate {
   def fromDiagram(cfg: TilesConfig, diagram: Diagram): String = {
     val width = cfg.centerMatrixCols
     val height = cfg.centerMatrixRows
-    if (width * 3 < cfg.patchWidth || height * 2 < cfg.patchHeight) return {
-      s"""Swatch (alias patch) should be at least 3 tiles wide and 2 high.
-         |${ cfg.urlQuery }""".stripMargin
+    if (width * 3 <= cfg.patchWidth || height * 2 <= cfg.patchHeight) return {
+      s"""Swatch (alias patch [${cfg.patchWidth},${cfg.patchHeight}]) should be at least 3 tiles [$width,$height] wide and 2 high.
+         |  ${ cfg.urlQuery }""".stripMargin
     }
     // TODO check for simple (alias checker) matrix
 
