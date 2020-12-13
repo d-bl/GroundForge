@@ -2,14 +2,31 @@ package dibl
 
 import dibl.proto.TilesConfig
 
-object InkscapeTemplateDemos extends DemoFixture {
-  def main(args: Array[String]): Unit = {
-    // patchWidth: 3 * tile-width;
-    // patchHeight: 2 * tile-height
-    val cfg = TilesConfig("patchWidth=12&patchHeight=8&d1=ctc&c1=ctc&b1=ctc&a1=ctc&d2=ctc&c2=ctcllctc&a2=ctcrrctc&d3=ctc&c3=ctc&b3=ctc&a3=ctc&c4=ctc&b4=ctc&a4=ctc&tile=1483,8-48,8314,488-&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4")
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
+
+@JSExportTopLevel("InkscapeTemplate")
+object InkscapeTemplate {
+
+  @JSExport
+  def fromUrl(query: String): String = {
+    fromConfig(TilesConfig(query))
+  }
+
+  @JSExport
+  def fromConfig(cfg: TilesConfig): String = {
+    fromDiagram(cfg, NewPairDiagram.create(cfg))
+  }
+
+  @JSExport
+  def fromDiagram(cfg: TilesConfig, diagram: Diagram): String = {
     val width = cfg.centerMatrixCols
     val height = cfg.centerMatrixRows
-    val diagram = NewPairDiagram.create(cfg)
+    if (width * 3 < cfg.patchWidth || height * 2 < cfg.patchHeight) return {
+      s"""Swatch (alias patch) should be at least 3 tiles wide and 2 high.
+         |${ cfg.urlQuery }""".stripMargin
+    }
+    // TODO check for simple (alias checker) matrix
+
     val scale = 15
     val scaledWidth = width * scale
     val scaledHeight = height * scale
@@ -29,6 +46,6 @@ object InkscapeTemplateDemos extends DemoFixture {
         val t2 = diagram.nodes(l2.target)
         s"[${ s.x / scale },${ s.y / scale },${ t1.x / scale },${ t1.y / scale },${ t2.x / scale },${ t2.y / scale }]"
       }
-    println(links.mkString(s"CHECKER\t$width\t$height\n", "\n", ""))
+    links.mkString(s"CHECKER\t$width\t$height\n", "\n", "")
   }
 }
