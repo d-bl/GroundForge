@@ -20,7 +20,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   def fromDiagram(cfg: TilesConfig, diagram: Diagram): String = {
     val width = cfg.centerMatrixCols
     val height = cfg.centerMatrixRows
-    if (width * 3 <= cfg.patchWidth || height * 2 <= cfg.patchHeight) return {
+    if (width * 3 > cfg.patchWidth || height * 2 > cfg.patchHeight) return {
       s"""Swatch (alias patch [${cfg.patchWidth},${cfg.patchHeight}]) should be at least 3 tiles [$width,$height] wide and 2 high.
          |  ${ cfg.urlQuery }""".stripMargin
     }
@@ -38,6 +38,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     val links = diagram.links
       .filter(inCenterBottomTile)
       .groupBy(_.source)
+      .withFilter { case (_, targets) => targets.size == 2}
       .map { case (src, targets) =>
         val Seq(l1, l2) = targets
         val s = diagram.nodes(src)

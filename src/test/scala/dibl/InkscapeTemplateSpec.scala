@@ -23,7 +23,7 @@ class InkscapeTemplateSpec extends FlatSpec with Matchers {
   }
   it should "render torchon" in {
     InkscapeTemplate.fromUrl("patchWidth=11&patchHeight=11&tile=5-,-5&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2") shouldBe
-      """Checker\t2\t
-        |???""".stripMargin
+      """CHECKER	2	2
+        |[3.0,3.0,2.0,4.0,4.0,4.0]""".stripMargin
   }
 }
