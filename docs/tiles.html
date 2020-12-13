@@ -123,6 +123,12 @@
         <figure class="pattern">
             <figcaption>Pattern definition
                 <a href="help/Advanced" target="_blank"><img src="help/images/information-icon.png" title="how to define the pattern and foot sides"></a>
+                <a download="inkscape-template.txt"
+                   onfocus="this.href = 'data:text/plain,' + InkscapeTemplate(submitQuery())"
+                   onblur="this.href='?#download'"
+                   href="?#download"
+                   title="download Inkscape template"
+                ><img src="images/download.jpg"></a>
             </figcaption>
             <div>
                 <table>
@@ -141,7 +147,7 @@
                         <td><input id="footsideStitch" name="footsideStitch" type="text" value="ctctt" onchange="showProto()"/></td>
                         <td><input id="tileStitch" name="tileStitch" type="text" value="ctct" onchange="showProto()"/></td>
                         <td><input id="headsideStitch" name="headsideStitch" type="text" value="ctctt" onchange="showProto()"/></td>
-                        <td><button onclick="clearStitches();return false" title="resets all stitches defined through the prototype diagram">initialize<br>stitches</button></td>
+                        <td><button onclick="clearStitches();return false" title="resets all stitches defined through the pattern diagram">initialize<br>stitches</button></td>
                     </tr>
                 </table>
                 <div>
