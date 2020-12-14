@@ -150,7 +150,8 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
   }
 }
 function setInkscapTemplate(linkNode) {
-  linkNode.href = 'data:text/plain,' + InkscapeTemplate.fromUrl(submitQuery())
+  var s = InkscapeTemplate.fromUrl(submitQuery())
+  linkNode.href = 'data:text/plain,' + encodeURIComponent(s)
 }
 function setDownloadContent (linkNode, id) {
 

@@ -46,6 +46,6 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         val t2 = diagram.nodes(l2.target)
         s"[${ s.x / scale },${ s.y / scale },${ t1.x / scale },${ t1.y / scale },${ t2.x / scale },${ t2.y / scale }]"
       }
-    links.mkString(s"CHECKER\t$width\t$height\n", "\n", "")
+    links.mkString("CHECKER\t"+width+"\t"+height+ "\n", "\n", "")
   }
 }
