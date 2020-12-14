@@ -149,6 +149,10 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
     }
   }
 }
+function setInkscapTemplate(linkNode) {
+  var s = InkscapeTemplate.fromUrl(submitQuery())
+  linkNode.href = 'data:text/plain,' + encodeURIComponent(s)
+}
 function setDownloadContent (linkNode, id) {
 
   svg = d3.select(id).node().innerHTML.
