@@ -1,8 +1,10 @@
 package dibl
 
+import java.lang.Math.{abs, floorMod}
+
 import dibl.proto.TilesConfig
 
-import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
+import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
 @JSExportTopLevel("InkscapeTemplate") object InkscapeTemplate {
 
@@ -20,11 +22,19 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   def fromDiagram(cfg: TilesConfig, diagram: Diagram): String = {
     val width = cfg.centerMatrixCols
     val height = cfg.centerMatrixRows
+
+    if (floorMod(abs(cfg.shiftRowsSE), cfg.centerMatrixRows) != 0 ||
+      floorMod(abs(cfg.shiftRowsSW), cfg.centerMatrixRows) != 0 ||
+      floorMod(abs(cfg.shiftColsSE), cfg.centerMatrixCols) != 0 ||
+      floorMod(abs(cfg.shiftColsSW), cfg.centerMatrixCols) != 0
+    ) return {
+      s"""Only simple tile [${cfg.centerMatrixCols},${cfg.centerMatrixRows}] layout is supported.
+         |${ cfg.urlQuery }""".stripMargin
+    }
     if (width * 3 > cfg.patchWidth || height * 2 > cfg.patchHeight) return {
       s"""Swatch (alias patch [${cfg.patchWidth},${cfg.patchHeight}]) should be at least 3 tiles [$width,$height] wide and 2 high.
-         |  ${ cfg.urlQuery }""".stripMargin
+         |${ cfg.urlQuery }""".stripMargin
     }
-    // TODO check for simple (alias checker) matrix
 
     val scale = 15
     val scaledWidth = width * scale
@@ -46,6 +56,6 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         val t2 = diagram.nodes(l2.target)
         s"[${ s.x / scale },${ s.y / scale },${ t1.x / scale },${ t1.y / scale },${ t2.x / scale },${ t2.y / scale }]"
       }
-    links.mkString("CHECKER\t"+width+"\t"+height+ "\n", "\n", "")
+    links.mkString(s"CHECKER\t$height\t$width\n", "\n", "")
   }
 }
