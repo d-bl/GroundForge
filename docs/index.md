@@ -15,9 +15,9 @@ GroundForge is a tool that complements existing lace ground [catalogues](#patter
 
 You can experiment and play around with the hundreds of patterns provided here, or you can create your own. Even when reinventing the wheel, your own discoveries can bring great joy.
 
-![](help/images/weaving.png)
+![](images/weaving.png)
 
-![](help/images/paris.png)
+![](images/paris.png)
 
 Tutorials
 ---------

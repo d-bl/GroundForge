@@ -44,10 +44,10 @@ function showProto() {
 function toggleCheatSheet(imgElement) {
   var value = imgElement.dataset.img;
   if (imgElement.src && imgElement.src.includes("extended")) {
-    imgElement.src = "help/images/matrix-template.png";
+    imgElement.src = "images/matrix-template.png";
     imgElement.title="click to show additional symbols";
   } else {
-    imgElement.src = "help/images/matrix-template-extended.png";
+    imgElement.src = "images/matrix-template-extended.png";
     imgElement.title="click to only show basic symbols";
   }
 }

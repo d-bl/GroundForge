@@ -59,7 +59,7 @@ diagonal connections span just one square, horizontal and vertical span one or t
 Lookup the digits or letters from the template and fill them in on the adjusted diagram.
 You might need more repeats than expected to figure out a tiling.
 
-![](images/matrix-template.png)
+![](../images/matrix-template.png)
 
 
 ### Tiling

@@ -6,7 +6,7 @@ title: Icons, their purpose/meaning
 The purpose/meaning of buttons/icons in short
 =============================================
 
-![](images/information-icon.png) **Link**  
+![](../images/information-icon.png) **Link**  
 To a help page. Hover over the icon for the subject.
 
 ![](../images/wand.png)
@@ -19,7 +19,7 @@ the link reloads the entire page and your browser will remember the pattern
 The character inside the circle determines the origins 
 of the pairs used to make the stitch.
 The default [cheat sheet](images/matrix-example.png) shows all you need to assemble a pattern.
-An [extended version](images/matrix-template-extended.png) 
+An [extended version](../images/matrix-template-extended.png) 
 shows additional symbols used in legacy patterns.
 
 ![](../images/size-inc.jpg)
