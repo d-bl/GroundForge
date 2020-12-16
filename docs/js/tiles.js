@@ -32,7 +32,26 @@ function showProto() {
 
   var config = TilesConfig(submitQuery())
   d3.select("#prototype").html(PrototypeDiagram.create(config))
-  d3.select("#link").node().href = "?" + submitQuery() // don't extract var, we might now have other form fields
+   // keep tesselace reference as long as tile definition is unchanged
+  var tesselace = ""
+  if (window.location.search.substr(1).includes("tesselace=")) {
+    // obtain tile definition from url
+    var startTileDef =  window.location.search.indexOf("tile=",1)
+    var endTileDef =  window.location.search.indexOf("&",startTileDef)
+    var tileDef = window.location.search.substr(startTileDef,endTileDef-startTileDef)
+    // obtain tile definition from user interface
+    var startConfigTile = config.cj.indexOf("tile=")
+    var endConfigTile = config.cj.indexOf("&",startConfigTile)
+    var configTile = config.cj.substr(startConfigTile,endConfigTile-startConfigTile)
+    // compare
+    if (tileDef == configTile) {
+        // formulate tesselace reference
+        var startTesseLace =  window.location.search.indexOf("tesselace=",1)
+        var endTesseLace = window.location.search.indexOf("&",startTesseLace)
+        tesselace = window.location.search.substr(startTesseLace,endTesseLace-startTesseLace+1)
+    }
+  }
+  d3.select("#link").node().href = "?" + tesselace + submitQuery() // don't extract var, we might now have other form fields
   d3.select("#animations").style("display", "none")
   d3.selectAll("#threadDiagram, #pairDiagram, #drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
