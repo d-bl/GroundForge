@@ -40,7 +40,7 @@ function showProto() {
     var endUrlTile =  window.location.search.indexOf("&",startUrlTile)
     var urlTile = window.location.search.substr(startUrlTile,endUrlTile-startUrlTile)
     // obtain tile definition from user interface
-    var configTile = config.tileDef
+    var configTile = "tile="+config.tileDef
     // compare
     if (urlTile == configTile) {
         // formulate tesselace reference
