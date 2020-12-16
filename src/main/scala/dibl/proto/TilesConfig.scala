@@ -54,6 +54,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   val shiftColsSE: Int = queryFields.getOrElse("shiftColsSE", centerMatrixCols.toString).safeToInt
   val shiftColsSW: Int = queryFields.getOrElse("shiftColsSW", "0").safeToInt
 
+  @JSExport
+  val tileDef: String = queryFields.getOrElse("tile", "-")
+
   private val leftMarginWidth = leftMatrix.head.trim.length
   private val offsetRightMargin = leftMarginWidth + patchWidth
 

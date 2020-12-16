@@ -36,15 +36,13 @@ function showProto() {
   var tesselace = ""
   if (window.location.search.substr(1).includes("tesselace=")) {
     // obtain tile definition from url
-    var startTileDef =  window.location.search.indexOf("tile=",1)
-    var endTileDef =  window.location.search.indexOf("&",startTileDef)
-    var tileDef = window.location.search.substr(startTileDef,endTileDef-startTileDef)
+    var startUrlTile =  window.location.search.indexOf("tile=",1)
+    var endUrlTile =  window.location.search.indexOf("&",startUrlTile)
+    var urlTile = window.location.search.substr(startUrlTile,endUrlTile-startUrlTile)
     // obtain tile definition from user interface
-    var startConfigTile = config.cj.indexOf("tile=")
-    var endConfigTile = config.cj.indexOf("&",startConfigTile)
-    var configTile = config.cj.substr(startConfigTile,endConfigTile-startConfigTile)
+    var configTile = config.tileDef
     // compare
-    if (tileDef == configTile) {
+    if (urlTile == configTile) {
         // formulate tesselace reference
         var startTesseLace =  window.location.search.indexOf("tesselace=",1)
         var endTesseLace = window.location.search.indexOf("&",startTesseLace)
