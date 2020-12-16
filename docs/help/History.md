@@ -34,7 +34,9 @@ Scientific research presented at [TesseLace] resulted in patterns defined by mat
 These patterns are alternatives for the `js/sample.js` used for the proof of concept.
 GroundForge uses a compact matrix format using a character to tag a node.
 The character defines the [composition] of incoming pairs of the node.
-The class [TesselaceThumbs] generated the SVG versions of the images for the [TesseLace index].
+
+The outdated class [TesselaceThumbs] generated the SVG versions of the images for the former TesseLace Index, 
+which can still be found under `help` in this [zip](https://github.com/d-bl/GroundForge/releases/download/2019-Q2/GroundForge-pages.zip).
 A batch script with InkScape exports converted these images into PNG. 
 The diagrams lack the original geometric information after completion of the animation,
 so topological duplicates were merged into single images.
@@ -58,6 +60,5 @@ the algorithm figures out a working order to create the lace just like a real la
 [link]: https://github.com/d-bl/GroundForge/blob/918ab7aa3601e709475aa4b80baa388f2bd1161e/src/main/scala/dibl/LinkProps.scala#L36-L44
 [node]: https://github.com/d-bl/GroundForge/blob/918ab7aa3601e709475aa4b80baa388f2bd1161e/src/main/scala/dibl/NodeProps.scala#L27-L32
 [TesselaceThumbs]: https://github.com/d-bl/GroundForge/blob/918ab7aa3601e709475aa4b80baa388f2bd1161e/src/test/scala/dibl/TesselaceThumbs.scala#L66
-[composition]: https://d-bl.github.io/GroundForge/help/images/matrix-template.png
+[composition]: ../images/matrix-template.png
 [TesseLace]: http://TesseLace.com
-[TesseLace index]: https://d-bl.github.io/gw-lace-to-gf

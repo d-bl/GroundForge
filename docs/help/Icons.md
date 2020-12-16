@@ -6,7 +6,7 @@ title: Icons, their purpose/meaning
 The purpose/meaning of buttons/icons in short
 =============================================
 
-![](images/information-icon.png) **Link**  
+![](../images/information-icon.png) **Link**  
 To a help page. Hover over the icon for the subject.
 
 ![](../images/wand.png)
@@ -19,7 +19,7 @@ the link reloads the entire page and your browser will remember the pattern
 The character inside the circle determines the origins 
 of the pairs used to make the stitch.
 The default [cheat sheet](images/matrix-example.png) shows all you need to assemble a pattern.
-An [extended version](images/matrix-template-extended.png) 
+An [extended version](../images/matrix-template-extended.png) 
 shows additional symbols used in legacy patterns.
 
 ![](../images/size-inc.jpg)
@@ -38,7 +38,9 @@ which becomes surprisingly regular.
 See also [reshape patterns](Reshape-Patterns).
 
 ![](../images/download.jpg) **Download**  
-scalable images for 3rd party [editors](Reshape-Patterns#evaluated-editors).
-Or preview in your browser to print, [drag](images/download.png) the file between other pages.
-* thread diagram: for other thread [colors/widths](Thread-Properties#more-thread-colors-andor-widths)
-* pair diagram: larger swatches distort less
+* scalable images for 3rd party [editors](Reshape-Patterns#evaluated-editors).
+  Or preview in your browser to print, [drag](images/download.png) the file between other pages.
+  * thread diagrams: for other thread [colors/widths](Thread-Properties#more-thread-colors-andor-widths)
+  * other diagrams: for whatever suites you.
+* Templates for an [Inkscape plugin](/inkscape-bobbinlace/).
+  Preview the text file before trying: it might contain an error message.

@@ -63,10 +63,10 @@ function showProto() {
 function toggleCheatSheet(imgElement) {
   var value = imgElement.dataset.img;
   if (imgElement.src && imgElement.src.includes("extended")) {
-    imgElement.src = "help/images/matrix-template.png";
+    imgElement.src = "images/matrix-template.png";
     imgElement.title="click to show additional symbols";
   } else {
-    imgElement.src = "help/images/matrix-template-extended.png";
+    imgElement.src = "images/matrix-template-extended.png";
     imgElement.title="click to only show basic symbols";
   }
 }
@@ -167,6 +167,10 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
       d.fy = null;
     }
   }
+}
+function setInkscapTemplate(linkNode) {
+  var s = InkscapeTemplate.fromUrl(submitQuery())
+  linkNode.href = 'data:text/plain,' + encodeURIComponent(s)
 }
 function setDownloadContent (linkNode, id) {
 

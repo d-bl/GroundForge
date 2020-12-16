@@ -45,7 +45,7 @@
             <div>
                 <input type="number" name="patchWidth" id="patchWidth" min="3" max="30" value="7" onchange="showProto()" autofocus>
                 <label for="patchWidth">columns</label>
-                <a href="help/Patch-Size" target="_blank"><img src="help/images/information-icon.png" title="swatch size"></a>
+                <a href="help/Patch-Size" target="_blank"><img src="images/information-icon.png" title="swatch size"></a>
                 <br>
                 <input type="number" name="patchHeight" id="patchHeight" min="3" max="30" value="7" onchange="showProto()">
                 <label for="patchHeight">rows</label>
@@ -55,14 +55,14 @@
             <span style="white-space: nowrap;">
             <label for="draggable">Draggable:</label>&nbsp;
             <input type="checkbox" id="draggable" onchange="showDiagrams()" title="make threads draggable">
-            <label for="draggable"><a href="help/untangle" target="_blank"><img src="help/images/information-icon.png" title="untangle clutter"></a></label>
+            <label for="draggable"><a href="help/untangle" target="_blank"><img src="images/information-icon.png" title="untangle clutter"></a></label>
             </span>
         </legend>
 
         <figure>
             <figcaption>
                 Pairs
-                <a href="help/Color-Code" target="_blank"><img src="help/images/information-icon.png" title="color legend"></a>
+                <a href="help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
                 <img src="images/animate.png" onclick="javascript:animateDiagram(d3.select('#pairDiagram'), 372, 526)" title="animate/reshape"
                 >
                 <a download="pair-diagram.svg"
@@ -80,7 +80,7 @@
         <figure >
             <figcaption>
                 Threads
-                <a href="help/index#highlight-a-thread" target="_blank"><img src="help/images/information-icon.png" title="highlight threads"></a>
+                <a href="help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
                 <a download="thread-diagram.svg"
                    onfocus="setDownloadContent(this,'#threadDiagram')"
                    onblur="this.href='?#download'"
@@ -100,12 +100,12 @@
             Edit pattern
             <a id="link" href="#"><button type="button" title="create link to current set of diagrams"><img alt="link" src="images/link.png"></button></a>
             <a><button type="button" onclick="showDiagrams()" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
-            <a href="help/Undo" target="_blank"><img src="help/images/information-icon.png" title="save / reload"></a>
+            <a href="help/Undo" target="_blank"><img src="images/information-icon.png" title="save / reload"></a>
         </legend>
         <figure >
             <figcaption>
                 Pattern
-                <a href="help/Replace" target="_blank"><img src="help/images/information-icon.png" title="how to modify stitches"></a>
+                <a href="help/Replace" target="_blank"><img src="images/information-icon.png" title="how to modify stitches"></a>
                 <a download="prototype.svg"
                    onfocus="setDownloadContent(this,'#prototype')"
                    onblur="this.href='?#download'"
@@ -122,7 +122,13 @@
 
         <figure class="pattern">
             <figcaption>Pattern definition
-                <a href="help/Advanced" target="_blank"><img src="help/images/information-icon.png" title="how to define the pattern and foot sides"></a>
+                <a href="help/Advanced" target="_blank"><img src="images/information-icon.png" title="how to define the pattern and foot sides"></a>
+                <a download="inkscape-template.txt"
+                   onfocus="setInkscapTemplate(this)"
+                   onblur="this.href='?#download'"
+                   href="?#download"
+                   title="download Inkscape template"
+                ><img src="images/download.jpg"></a>
             </figcaption>
             <div>
                 <table>
@@ -141,11 +147,11 @@
                         <td><input id="footsideStitch" name="footsideStitch" type="text" value="ctctt" onchange="showProto()"/></td>
                         <td><input id="tileStitch" name="tileStitch" type="text" value="ctct" onchange="showProto()"/></td>
                         <td><input id="headsideStitch" name="headsideStitch" type="text" value="ctctt" onchange="showProto()"/></td>
-                        <td><button onclick="clearStitches();return false" title="resets all stitches defined through the prototype diagram">initialize<br>stitches</button></td>
+                        <td><button onclick="clearStitches();return false" title="resets all stitches defined through the pattern diagram">initialize<br>stitches</button></td>
                     </tr>
                 </table>
                 <div>
-                    <img src="help/images/matrix-template.png" alt="cheat sheet" onclick="toggleCheatSheet(this)" title="click to show all">
+                    <img src="images/matrix-template.png" alt="cheat sheet" onclick="toggleCheatSheet(this)" title="click to show all">
                 </div>
             </div>
         </figure>
@@ -153,7 +159,7 @@
         <figure class="pattern">
             <figcaption>
                 Tile layout
-                <a href="help/Change-tiles" target="_blank"><img src="help/images/information-icon.png" title="how to change tiles"></a>
+                <a href="help/Change-tiles" target="_blank"><img src="images/information-icon.png" title="how to change tiles"></a>
             </figcaption>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg2" width="297.11" height="130.39" viewBox="0 0 278.54 122.24">
@@ -275,14 +281,14 @@
             <figure>
                 <figcaption>
                     Stitches
-                    <a href="help/Droste-effect" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
+                    <a href="help/Droste-effect" target="_blank"><img src="images/information-icon.png" title="help"></a>
                 </figcaption>
                     <textarea id="droste2" name="droste2" rows="8" cols="30" spellcheck="false" onchange="clear2()" placeHolder="Type stitch definition here.&#13;&#10;If nothing is typed, the stitch 'ctc' will be used.&#13;&#10;&#13;&#10;Example:&#13;&#10;&#13;&#10;twist=ct&#13;&#10;cross=ctct"></textarea>
             </figure>
             <figure>
                 <figcaption>
                     Pairs
-                    <a href="help/Color-Code" target="_blank"><img src="help/images/information-icon.png" title="color legend"></a>
+                    <a href="help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
                     <a download="pair-diagram.svg"
                        onfocus="setDownloadContent(this,'#drostePair2')"
                        onblur="this.href='?#download'"
@@ -297,7 +303,7 @@
             <figure >
                 <figcaption>
                     Threads
-                    <a href="help/index#highlight-a-thread" target="_blank"><img src="help/images/information-icon.png" title="highlight threads"></a>
+                    <a href="help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
                     <a download="thread-diagram.svg"
                        onfocus="setDownloadContent(this,'#drosteThread2')"
                        onblur="this.href='?#download'"
@@ -322,14 +328,14 @@
             <figure>
                 <figcaption>
                     Stitches
-                    <a href="help/Advanced#thread-diagram-as-pair-diagram" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
+                    <a href="help/Advanced#thread-diagram-as-pair-diagram" target="_blank"><img src="images/information-icon.png" title="help"></a>
                 </figcaption>
                 <textarea id="droste3" name="droste3" rows="8" cols="30" spellcheck="false" onchange="clear3()" placeHolder="Type stitch definition here.&#13;&#10;If nothing is typed, the stitch 'ctc' will be used.&#13;&#10;&#13;&#10;Example:&#13;&#10;&#13;&#10;ct&#13;&#10;a140=a150=b240=b250=ctcctct"></textarea>
             </figure>
             <figure>
                 <figcaption>
                     Pairs
-                    <a href="help/Color-Code" target="_blank"><img src="help/images/information-icon.png" title="color legend"></a>
+                    <a href="help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
                     <a download="pair-diagram.svg"
                        onfocus="setDownloadContent(this,'#drostePair3')"
                        onblur="this.href='?#download'"
@@ -344,7 +350,7 @@
             <figure >
                 <figcaption>
                     Threads
-                    <a href="help/index#highlight-a-thread" target="_blank"><img src="help/images/information-icon.png" title="highlight threads"></a>
+                    <a href="help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
                     <a download="thread-diagram.svg"
                        onfocus="setDownloadContent(this,'#drosteThread3')"
                        onblur="this.href='?#download'"
