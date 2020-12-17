@@ -19,6 +19,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     queryFields.getOrElse(key, "").toLowerCase.split("[^-a-z0-9]+").map(_.trim)
   }
 
+  @JSExport
+  val tileDef: String = queryFields.getOrElse("tile", "-")
+
   // TODO defend against unequal rows lengths
   val leftMatrix: Seq[String] = getMatrix("footside")
   val rightMatrix: Seq[String] = getMatrix("headside")
@@ -53,9 +56,6 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   val shiftRowsSW: Int = queryFields.getOrElse("shiftRowsSW", centerMatrixRows.toString).safeToInt
   val shiftColsSE: Int = queryFields.getOrElse("shiftColsSE", centerMatrixCols.toString).safeToInt
   val shiftColsSW: Int = queryFields.getOrElse("shiftColsSW", "0").safeToInt
-
-  @JSExport
-  val tileDef: String = queryFields.getOrElse("tile", "-")
 
   private val leftMarginWidth = leftMatrix.head.trim.length
   private val offsetRightMargin = leftMarginWidth + patchWidth
