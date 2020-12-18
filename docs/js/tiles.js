@@ -28,7 +28,7 @@ function submitQuery() {
     .map(toKeyValueString)
     .join("&")
 }
-function tesselace(config){
+function tesselace(query){
 
   // keep tesselace reference as long as tile definition is unchanged
   var tesselace = ""
@@ -36,7 +36,7 @@ function tesselace(config){
     // obtain tile definition from url
     var urlTile = window.location.search.replace(/(.*[?&])?tile=/, "").replace(/&.*/, "")
     // obtain tile definition from user interface
-    var configTile = config.tileDef
+    var configTile = query.tileDef
     // compare
     if (urlTile == configTile) {
         // formulate tesselace reference
@@ -49,8 +49,8 @@ function showProto() {
 
   var config = TilesConfig(submitQuery())
   d3.select("#prototype").html(PrototypeDiagram.create(config))
-  config = TilesConfig(submitQuery()) // form fields may have changed
-  d3.select("#link").node().href = "?" + tesselace(config) + config
+  var query = submitQuery() // form fields may have changed
+  d3.select("#link").node().href = "?" + tesselace(query) + query
   d3.select("#animations").style("display", "none")
   d3.selectAll("#threadDiagram, #pairDiagram, #drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
