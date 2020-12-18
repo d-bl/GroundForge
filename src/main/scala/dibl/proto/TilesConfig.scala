@@ -20,7 +20,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   }
 
   @JSExport
-  val tileDef: String = queryFields.getOrElse("tile", "-")
+  val tileDef: String = queryFields.getOrElse("tile", "")
 
   // TODO defend against unequal rows lengths
   val leftMatrix: Seq[String] = getMatrix("footside")
