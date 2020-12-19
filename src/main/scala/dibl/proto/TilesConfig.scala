@@ -19,9 +19,6 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     queryFields.getOrElse(key, "").toLowerCase.split("[^-a-z0-9]+").map(_.trim)
   }
 
-  @JSExport
-  val tileDef: String = queryFields.getOrElse("tile", "")
-
   // TODO defend against unequal rows lengths
   val leftMatrix: Seq[String] = getMatrix("footside")
   val rightMatrix: Seq[String] = getMatrix("headside")
