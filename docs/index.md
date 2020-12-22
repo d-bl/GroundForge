@@ -21,20 +21,20 @@ You can experiment and play around with the hundreds of patterns provided here, 
 
 Tutorials
 ---------
-* [Getting started](help/index)
-* [Variations on a Binche ground](help/Binche)
-* [Create a prototype](help/Advanced#prototype-tutorial)
-* [Add a footside](help/Advanced#footside-tutorial)
-* [Create new pattern from thread diagram](help/Droste-effect.md)
-* [Replace/skip stitches](help/Replace)
-* [Reshape Pair Diagrams](help/Reshape-Patterns)
-* [From printed patterns to GF](help/Reversed-engineering-of-patterns)
+* [Getting started](/GroundForge-helpindex)
+* [Variations on a Binche ground](/GroundForge-helpBinche)
+* [Create a prototype](/GroundForge-helpAdvanced#prototype-tutorial)
+* [Add a footside](/GroundForge-helpAdvanced#footside-tutorial)
+* [Create new pattern from thread diagram](/GroundForge-helpDroste-effect.md)
+* [Replace/skip stitches](/GroundForge-helpReplace)
+* [Reshape Pair Diagrams](/GroundForge-helpReshape-Patterns)
+* [From printed patterns to GF](/GroundForge-helpReversed-engineering-of-patterns)
 
 Pattern Catalogues
 -----------------
 * [TesseLace](/tesselace-to-gf) algorithmically generated grounds
 * [Gertrude Whiting's sampler](/gw-lace-to-gf)
-* Grounds from printed catalogues (such as _Viele gute Gründe_ by Ulricke Voelcker-Löhr, _The book of bobbin lace stitches_ by Bridget Cook and Geraldine Stott, or _Gründe mit System_ by Uta Ulrich) can be explored by [creating a prototype](help/Advanced#prototype-tutorial) in GroundForge.
+* Grounds from printed catalogues (such as _Viele gute Gründe_ by Ulricke Voelcker-Löhr, _The book of bobbin lace stitches_ by Bridget Cook and Geraldine Stott, or _Gründe mit System_ by Uta Ulrich) can be explored by [creating a prototype](/GroundForge-helpAdvanced#prototype-tutorial) in GroundForge.
 
 Community Contributions
 -----------------------

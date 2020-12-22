@@ -184,7 +184,7 @@ class Stitches(src: String) {
     * @return An empty string (rendered as black) or the color name for a stitch.
     */
   def defaultColorName(stitch: String): String = {
-    // keep this method at the bottom of this class or adjust help/color-code.md
+    // keep this method at the bottom of this class or adjust /GroundForge-helpcolor-code.md
     val hasPins = stitch.count('p' == _) > 0
     val crossCount = stitch.count('c' == _)
     val regex(openTwists, coreStitch, closeTwists) = stitch
