@@ -25,7 +25,7 @@ Tutorials
 * [Variations on a Binche ground](/GroundForge-help/Binche)
 * [Create a prototype](/GroundForge-help/Advanced#prototype-tutorial)
 * [Add a footside](/GroundForge-help/Advanced#footside-tutorial)
-* [Create new pattern from thread diagram](/GroundForge-help/Droste-effect.md)
+* [Create new pattern from thread diagram](/GroundForge-help/Droste-effect)
 * [Replace/skip stitches](/GroundForge-help/Replace)
 * [Reshape Pair Diagrams](/GroundForge-help/Reshape-Patterns)
 * [From printed patterns to GF](/GroundForge-help/Reversed-engineering-of-patterns)
