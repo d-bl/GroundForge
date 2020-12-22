@@ -115,10 +115,10 @@ the big green button then changes to `propose changes`.
 [gf-site]: https://d-bl.github.io/GroundForge/
 [gf-sb]: https://github.com/d-bl/GroundForge/tree/master/docs/_includes/Sidebar.html
 
-[GroundForge-help]: https://d-bl.github.io/GroundForge/
-[gfh-docs]: https://d-bl.github.io/GroundForge/tree/master/docs/
-[gfh-site]: https://d-bl.github.io/GroundForge/
-[gfh-sb]: https://github.com/d-bl/GroundForge/tree/master/docs/_includes/Sidebar.html
+[GroundForge-help]: https://d-bl.github.io/GroundForge-help/
+[gfh-docs]: https://d-bl.github.io/GroundForge-help/tree/master/docs/
+[gfh-site]: https://d-bl.github.io/GroundForge-help/
+[gfh-sb]: https://github.com/d-bl/GroundForge-help/tree/master/docs/_includes/Sidebar.html
 
 [gw-lace-to-gf]: https://d-bl.github.io/gw-lace-to-gf/
 [w-docs]: https://d-bl.github.io/gw-lace-to-gf/tree/master/docs/
