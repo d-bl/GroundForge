@@ -34,30 +34,25 @@ Short intros
 See https://d-bl.github.io/GroundForge/
 
 ### licenses
- 
-The [GPL-v3](https://github.com/d-bl/GroundForge/blob/master/LICENSE)
-license applies to the code, mainly in `src` and `docs/js`.
-The tutorials, mainly under `docs/help`,
-will be moved to a separate repository
-with a more appropriate license.
-The `*-gf` repositories (with examples) in the table below 
-have a [CC-BY](http://creativecommons.org/licenses/by/4.0/) license. 
 
-**diagrams made with GroundForge**  
+The help pages and examples have a [CC-BY](http://creativecommons.org/licenses/by/4.0/) 
+license.
+The code has a [GPL-v3](https://github.com/d-bl/GroundForge/blob/master/LICENSE)
+license.
 
 Diagrams created by you and saved as link and/or images
 are owned by you and/or the original authors in cases
 you adapted or embedded a definition by someone else.
 
-You are responsible for publishing your work under a license of your choosing
-and tracking your use of derivative works. 
-Downloaded diagrams don't come with properties expressing origin, author or license,
-you will have to add that information yourself with your favourite editor.
-
 Note that individual diagram definitions may or may not meet the [threshold of originality](https://en.wikipedia.org/wiki/Threshold_of_originality).
 A stitch may be traditional yet take creativity to define with GroundForge,
 as shown by the discussion that started with [this message](https://groups.io/g/GroundForge/message/1).
 Others may be new but not take much "sweat of the brow".
+
+You are responsible for publishing your work under a license of your choosing
+and tracking your use of derivative works. 
+Downloaded diagrams don't come with properties expressing origin, author or license,
+you will have to add that information yourself with your favourite editor.
 
 Demos
 ======
