@@ -18,7 +18,7 @@ package dibl.fte
 import dibl.fte.Delta.acc
 import org.ejml.simple.SimpleMatrix
 
-import scala.util.{Failure, Success, Try}
+import scala.util.{ Failure, Success, Try }
 
 case class Delta(dx: Double, dy: Double) {
   private val rX: Int = (dx * acc).toInt
@@ -37,15 +37,17 @@ object Delta {
     //    println("summed data " + data.map(_.map(_.toInt).sum).mkString(","))
 
     val t0 = System.nanoTime
-    val nullSpace = new SimpleMatrix(data.map(_.toArray).toArray).svd.nullSpace
+    val svd = new SimpleMatrix(data.map(_.toArray).toArray).svd
     //    println("Elapsed time nullspace: " + (System.nanoTime - t0) * 0.000000001 + "s")
 
-    val cols = nullSpace.numCols()
-    val rows = nullSpace.numRows()
-    if (cols != 2 || rows != topoLinks.size)
-      Failure(new Exception(s"nullSpace dimensions are ($rows,$cols) expected (${ topoLinks.size },2)"))
-    else Success((0 until rows)
-      .map(i => topoLinks(i) -> Delta(nullSpace.get(i, 0), nullSpace.get(i, 1)))
+    val v = svd.getV
+    val x = v.numCols() - 2
+    val y = x + 1
+    val secondLastOnDiagonalOfW = svd.getW.get(x, x)
+    if (secondLastOnDiagonalOfW > 0.001)
+        Failure(new Exception(s"no null space, second last diagonal element: $secondLastOnDiagonalOfW"))
+    else Success((0 to y)
+      .map(i => topoLinks(i) -> Delta(v.get(i, x), v.get(i, y)))
       .toMap
     )
   }
