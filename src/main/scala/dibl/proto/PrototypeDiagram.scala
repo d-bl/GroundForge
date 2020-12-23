@@ -5,7 +5,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 @JSExportTopLevel("PrototypeDiagram") object PrototypeDiagram {
 
   /** Completes a document supposed to have groups of SVG elements as in
-   * docs/help/images/matrix-template.png
+   * GroundForge-help/docs/images/matrix-template.png
    *
    * The groups are positioned outside the visible area of the document
    * with their circles on the same position.

@@ -98,10 +98,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   /**
     * Sets the opaque items in the targetMatrix.
-    * See docs/help/Replace.md#arrange-the-repeats
+    * See /GroungForge-help/docs/Replace.md#arrange-the-repeats
     *
     * @param inputMatrix       tiles.html#footside, #tile or #headside
-    *                          valid characters visualized on help/images/matrix-template.png
+    *                          valid characters visualized on GroundForge-help/docs/images/matrix-template.png
     * @param offsetOfFirstTile horizontal position of the original tile within the targetMatrix
     * @param defaultStitch     tiles.html#footsideStitch, #tileStitch or #headsideStitch
     */

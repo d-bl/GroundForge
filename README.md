@@ -34,30 +34,25 @@ Short intros
 See https://d-bl.github.io/GroundForge/
 
 ### licenses
- 
-The [GPL-v3](https://github.com/d-bl/GroundForge/blob/master/LICENSE)
-license applies to the code, mainly in `src` and `docs/js`.
-The tutorials, mainly under `docs/help`,
-will be moved to a separate repository
-with a more appropriate license.
-The `*-gf` repositories (with examples) in the table below 
-have a [CC-BY](http://creativecommons.org/licenses/by/4.0/) license. 
 
-**diagrams made with GroundForge**  
+The help pages and examples have a [CC-BY](http://creativecommons.org/licenses/by/4.0/) 
+license.
+The code has a [GPL-v3](https://github.com/d-bl/GroundForge/blob/master/LICENSE)
+license.
 
 Diagrams created by you and saved as link and/or images
 are owned by you and/or the original authors in cases
 you adapted or embedded a definition by someone else.
 
-You are responsible for publishing your work under a license of your choosing
-and tracking your use of derivative works. 
-Downloaded diagrams don't come with properties expressing origin, author or license,
-you will have to add that information yourself with your favourite editor.
-
 Note that individual diagram definitions may or may not meet the [threshold of originality](https://en.wikipedia.org/wiki/Threshold_of_originality).
 A stitch may be traditional yet take creativity to define with GroundForge,
 as shown by the discussion that started with [this message](https://groups.io/g/GroundForge/message/1).
 Others may be new but not take much "sweat of the brow".
+
+You are responsible for publishing your work under a license of your choosing
+and tracking your use of derivative works. 
+Downloaded diagrams don't come with properties expressing origin, author or license,
+you will have to add that information yourself with your favourite editor.
 
 Demos
 ======
@@ -85,15 +80,16 @@ Examples of patterns
 
 Most common tasks
 -----------------
-* Edit the `.md` files in the `docs` folder, these are the editable versions of the published pages.
+* Edit the `.md` files in the `docs` folder, these are the _editable_ versions of the _published_ pages.
 * Keep the TOC in the sidebar up to date.
 
-| repository        | published pages | editable pages | editable sidebar |
-|-------------------|-----------------|----------------|------------------|
-| [GroundForge]     | [X][gf-site]    | [X][gf-docs]   | [X][gf-sb]       |
-| [gw-lace-to-gf]   | [X][w-site]     | [X][w-docs]    | [X][w-sb]        |
-| [tesselace-to-gf] | [X][t-site]     | [X][t-docs]    | [X][t-sb]        |
-| [MAE-gf]          | [X][mae-site]   | [X][mae-docs]  | [X][mae-sb]      |
+| repository         | published pages | editable versions | editable sidebar |
+|--------------------|-----------------|-------------------|------------------|
+| [GroundForge]      | [X][gf-site]    | [X][gf-docs]      | [X][gf-sb]       |
+| [GroundForge-help] | [X][gfh-site]   | [X][gfh-docs]     | [X][gfh-sb]      |
+| [gw-lace-to-gf]    | [X][w-site]     | [X][w-docs]       | [X][w-sb]        |
+| [tesselace-to-gf]  | [X][t-site]     | [X][t-docs]       | [X][t-sb]        |
+| [MAE-gf]           | [X][mae-site]   | [X][mae-docs]     | [X][mae-sb]      |
 
 There is a simple [procedure] to propose simple changes to the pages.
 
@@ -110,9 +106,14 @@ the big green button then changes to `propose changes`.
 [procedure]: https://help.github.com/articles/editing-files-in-another-user-s-repository/
 
 [GroundForge]: https://d-bl.github.io/GroundForge/
-[gf-docs]: https://d-bl.github.io/GroundForge/tree/master/docs/help/
+[gf-docs]: https://d-bl.github.io/GroundForge/tree/master/docs/
 [gf-site]: https://d-bl.github.io/GroundForge/
 [gf-sb]: https://github.com/d-bl/GroundForge/tree/master/docs/_includes/Sidebar.html
+
+[GroundForge-help]: https://d-bl.github.io/GroundForge-help/
+[gfh-docs]: https://d-bl.github.io/GroundForge-help/tree/master/docs/
+[gfh-site]: https://d-bl.github.io/GroundForge-help/
+[gfh-sb]: https://github.com/d-bl/GroundForge-help/tree/master/docs/_includes/Sidebar.html
 
 [gw-lace-to-gf]: https://d-bl.github.io/gw-lace-to-gf/
 [w-docs]: https://d-bl.github.io/gw-lace-to-gf/tree/master/docs/
@@ -139,7 +140,7 @@ To preview more complex changes
 * create a pull request comparing your own master with the master of `d-bl`
 * for work in progress: make sure the pull request is a draft
 
-[private version]: https://d-bl.github.io/GroundForge/help/Stable   
+[private version]: https://d-bl.github.io/GroundForge-help/Stable   
 
 
 Conventions
