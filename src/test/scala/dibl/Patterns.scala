@@ -1,6 +1,6 @@
 package dibl
 
-import java.io.{BufferedReader, FileInputStream, InputStreamReader}
+import java.io.{ BufferedReader, File, FileInputStream, InputStreamReader }
 
 import dibl.sheet.SheetSVG
 
@@ -19,7 +19,7 @@ object Patterns {
     patterns.toSvgDoc()
   }
 
-  private lazy val tesselaceLines: Seq[String] = readLines("docs/help/TesseLace-Index.md", "pattern=")
+  private lazy val tesselaceLines: Seq[String] = readLines("../gw-lace-to-gf/docs/index.md", "pattern=")
 
   /** (nr, sheetArgs, svg, tileArgs)  */
   lazy val tesselaceSheets: Seq[(String, String, String, String)] = tesselaceLines.flatMap { line => line
@@ -42,7 +42,7 @@ object Patterns {
       .replaceAll("\".*", "")
     )
   }
-  lazy val whiting: Seq[(String, String)] = readLines("docs/help/Whiting-Index.md", "tiles?whiting").map { s =>
+  lazy val whiting: Seq[(String, String)] = readLines("../gw-lace-to-gf/docs/index.md", "tiles?whiting").map { s =>
     (s.replaceAll(".*whiting=", "")
       .replaceAll("&.*", "")
       , s.replaceAll(".*tiles[?]", "")

@@ -5,7 +5,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 @JSExportTopLevel("PrototypeDiagram") object PrototypeDiagram {
 
   /** Completes a document supposed to have groups of SVG elements as in
-   * docs/help/images/matrix-template.png
+   * GroundForge-help/docs/images/matrix-template.png
    *
    * The groups are positioned outside the visible area of the document
    * with their circles on the same position.
@@ -59,7 +59,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   private def events(isActive: Boolean, id: String) = {
     if (isActive)
-      s"data-formid='${ id }' onclick='setStitch(this)'"
+      s"data-formid='$id' onclick='setStitch(this)'"
     else ""
   }
 
@@ -85,192 +85,80 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }
   }
 
-  def embed(clones: String): String = {
+  private lazy val symbols = {
+
+    val arrowStyle = """fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)"""
+
+    def arrow(path: String) = s"""<path d="m $path" style="$arrowStyle"></path>"""
+
+    val shortE = arrow("-12,978 -6,0")
+    val shortNE = arrow("-12,969 -7,7")
+    val shortN = arrow("-20,970 0,6")
+    val shortNW = arrow("-29,969 7,7")
+    val shortW = arrow("-28,978 6,0")
+    val doubleW = arrow("-28,978 c 3,-2 4,-1 6,0") + arrow("-28,978 c 2,2 4,1 6,0")
+    val doubleNW = arrow("-29,969 c 1,4 4,6 7,7") + arrow("-29,969 c 4,1 6,4 7,7")
+    val doubleN = arrow("-20,970 c 2,3 1,4 0,6") + arrow("-20,970 c -2,3 -1,4 0,6")
+    val doubleNE = arrow("-12,969 c -4,1 -6,4 -7,7") + arrow("-12,969 c -1,4 -4,6 -7,7")
+    val doubleE = arrow("-12,978 c -3,-2 -4,-1 -6,0") + arrow("-12,977 c -3,2 -4,1 -6,0")
+    val doubleS = arrow("-20,986 c -2,-3 -1,-4 0,-6") + arrow("m -20,986 c 2,-3 1,-4 0,-6")
+    val doubleSE = arrow("-11,986 c -4,-1 -6,-4 -7,-7") + arrow("-11,986 c -1,-4 -4,-6 -7,-7")
+    val doubleSW = arrow("-28,986 c 1,-4 4,-6 7,-7") + arrow("m -28,986 c 4,-1 6,-4 7,-7")
+    val shortSW = arrow("-12,986 -7,-7")
+    val shortS = arrow("-20,986 0,-6")
+    val shortSE = arrow("-28,986 7,-7")
+    val longN = arrow("-20,960 0,16")
+    val longE = arrow("-2,978 -16,0")
+    val longW = arrow("-38,978 16,0")
+
     val textProps = """y="979.27722" x="-21.02791" style="font-size:3.3px;font-family:Arial;fill:#000000;stroke:none""""
-    val circleProps = """style="fill:none;stroke-width:1" d="m -18.064645,978.05982 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41422 -0.361929,0.36192 -0.861929,0.58578 -1.414213,0.58578 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58578 -0.361929,-0.36193 -0.585787,-0.86193 -0.585787,-1.41422 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z""""
-    val arrowStyle = """style="fill:none;stroke-width:1.1;stroke:#000;marker-end:url(#Arrow1Mend)""""
-    val part1 =
-      s"""      <g id="vc0">
-         |        <text $textProps>0</text><path $circleProps></path>
-         |        <path d="m -12.051698,978.09705 -6.012939,-0.0372" $arrowStyle></path>
-         |        <path d="m -11.47885,969.47404 -7.171574,7.17157" $arrowStyle></path>
-         |      </g>
-         |      <g id="vc1">
-         |        <text $textProps>1</text><path $circleProps></path>
-         |        <path d="m -12.051706,978.09702 -6.012939,-0.0372" $arrowStyle></path>
-         |        <path d="m -20.064645,970.0598 0,6" $arrowStyle></path>
-         |      </g>
-         |      <g id="vc2">
-         |        <text $textProps>2</text><path $circleProps></path>
-         |        <path d="m -12.051706,978.09704 -6.012939,-0.0372" $arrowStyle></path>
-         |        <path d="m -28.650432,969.47404 7.171574,7.17157" $arrowStyle></path>
-         |      </g>
-         |      <g id="vc3">
-         |        <text $textProps>3</text><path $circleProps></path>
-         |        <path d="m -28.064646,978.05979 5.987061,-0.0372" $arrowStyle></path>
-         |        <path d="m -12.090524,978.05979 -5.987061,-0.0372" $arrowStyle></path>
-         |      </g>
-         |      <g id="vc4">
-         |        <text $textProps>4</text><path $circleProps></path>
-         |        <path d="m -11.478848,969.47403 -7.171574,7.17158" $arrowStyle></path>
-         |        <path d="m -20.064635,970.05982 0,6" $arrowStyle></path>
-         |      </g>
-         |      <g id="vc5">
-         |        <text $textProps>5</text><path $circleProps></path>
-         |        <path d="m -11.491798,969.43678 -7.171574,7.17158" $arrowStyle></path>
-         |        <path d="m -28.663372,969.43678 7.171574,7.17158" $arrowStyle></path>
-         |      </g>
-         |      <g id="vc6">
-         |        <text $textProps>6</text><path $circleProps></path>
-         |        <path d="m -11.49179,969.43678 -7.171574,7.17158" $arrowStyle></path>
-         |        <path d="m -28.077577,978.02257 6,0" $arrowStyle></path>
-         |      </g>
-         |      <g id="vc7">
-         |        <text $textProps>7</text><path $circleProps></path>
-         |        <path d="m -20.064645,970.05982 0,6" $arrowStyle></path>
-         |        <path d="m -28.650432,969.47403 7.171574,7.17158" $arrowStyle></path>
-         |      </g>
-         |      <g id="vc8">
-         |        <text $textProps>8</text><path $circleProps></path>
-         |        <path d="m -20.064645,970.0598 0,6" $arrowStyle></path>
-         |        <path d="m -28.064645,978.0598 6,0" $arrowStyle></path>
-         |      </g>
-         |      <g id="vc9">
-         |        <text $textProps>9</text><path $circleProps></path>
-         |        <path d="m -28.663372,969.4368 7.171574,7.17157" $arrowStyle></path>
-         |        <path d="m -28.077585,978.02258 6,0" $arrowStyle></path>
-         |      </g>
-         |"""
+    val circlePath = "m -18.064645,978.05982 c 0,0.55229 -0.223858,1.05229 -0.585787,1.41422 -0.361929,0.36192 -0.861929,0.58578 -1.414213,0.58578 -0.552284,0 -1.052284,-0.22386 -1.414213,-0.58578 -0.361929,-0.36193 -0.585787,-0.86193 -0.585787,-1.41422 0,-0.55228 0.223858,-1.05228 0.585787,-1.41421 0.361929,-0.36193 0.861929,-0.58579 1.414213,-0.58579 0.552284,0 1.052284,0.22386 1.414213,0.58579 0.361929,0.36193 0.585787,0.86193 0.585787,1.41421 z"
+    val circle = s"""<path style="fill:white;stroke-width:1" d="$circlePath"></path>"""
 
-    val part2 =
-      s"""      <g id="vcA">
-         |        <text $textProps>A</text><path $circleProps></path>
-         |        <path d="m -12.051706,978.09704 -6.012939,-0.0372" $arrowStyle></path>
-         |        <path d="m -20.064645,960.05982 0,16" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcB">
-         |        <text $textProps>B</text><path $circleProps></path>
-         |        <path d="m -11.47885,969.47404 -7.171574,7.17157" $arrowStyle></path>
-         |        <path d="m -20.064637,960.05982 0,16" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcC">
-         |        <text $textProps>C</text><path $circleProps></path>
-         |        <path d="m -20.064645,960.05982 0,16" $arrowStyle></path>
-         |        <path d="m -28.650432,969.47404 7.171574,7.17157" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcD">
-         |        <text $textProps>D</text><path $circleProps></path>
-         |        <path d="m -20.064645,960.05982 0,16" $arrowStyle></path>
-         |        <path d="m -28.051706,978.09702 5.987061,-0.0372" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcE">
-         |        <text $textProps>E</text><path $circleProps></path>
-         |        <path d="m -2.090516,977.98535 -15.987061,0.0372" $arrowStyle></path>
-         |        <path d="m -11.49179,969.43678 -7.171574,7.17158" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcF">
-         |        <text $textProps>F</text><path $circleProps></path>
-         |        <path d="m -2.077585,978.0226 -16,0" $arrowStyle></path>
-         |        <path d="m -20.077585,970.0226 0,6" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcG">
-         |        <text $textProps>G</text><path $circleProps></path>
-         |        <path d="m -2.077585,978.0226 -16,0" $arrowStyle></path>
-         |        <path d="m -20.077585,960.0226 0,16" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcH">
-         |        <text $textProps>H</text><path $circleProps></path>
-         |        <path d="m -2.077585,978.0226 -15.98706,0.0372" $arrowStyle></path>
-         |        <path d="m -28.650425,969.47403 7.17157,7.17158" $arrowStyle></path>
-         |      </g>
-         |"""
+    def symbol(tag: Char, arrows: String) = {
+      s"""<g id="vc$tag">$circle<text $textProps>$tag</text>$arrows</g>"""
+    }
+    Seq(
+      symbol('0', shortE + shortNE) ,
+      symbol('1', shortE + shortN) ,
+      symbol('2', shortE + shortNW) ,
+      symbol('3', shortW + shortE) ,
+      symbol('4', shortNE + shortN) ,
+      symbol('5', shortNE + shortNW) ,
+      symbol('6', shortNE + shortW) ,
+      symbol('7', shortN + shortNW) ,
+      symbol('8', shortN + shortW) ,
+      symbol('9', shortNW + shortW) ,
+      symbol('A', shortE + longN) ,
+      symbol('B', shortNE + longN) ,
+      symbol('C', longN + shortNW) ,
+      symbol('D', longN + shortW) ,
+      symbol('E', longE + shortNE) ,
+      symbol('F', longE + shortN) ,
+      symbol('G', longE + longN) ,
+      symbol('H', longE + shortNW) ,
+      symbol('I', longE + shortW) ,
+      symbol('J', longW + shortE) ,
+      symbol('K', longE + longW) ,
+      symbol('L', shortNE + longW) ,
+      symbol('M', shortN + longW) ,
+      symbol('N', longN + longW) ,
+      symbol('O', shortNW + longW) ,
+      symbol('P', doubleW) ,
+      symbol('Q', doubleNW) ,
+      symbol('R', doubleN) ,
+      symbol('S', doubleNE) ,
+      symbol('T', doubleE) ,
+      symbol('V', shortW) ,
+      symbol('W', shortNW) ,
+      symbol('X', shortN) ,
+      symbol('Y', shortNE) ,
+      symbol('Z', shortE) ,
+      symbol('-', ""),
+    ).mkString("\n      ")
+  }
 
-    val part3 =
-      s"""      <g id="vcI">
-         |        <text $textProps>I</text><path $circleProps></path>
-         |        <path d="m -2.064637,978.0598 -16,0" $arrowStyle></path>
-         |        <path d="m -28.051698,978.09702 5.987061,-0.0372" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcJ">
-         |        <text $textProps>J</text><path $circleProps></path>
-         |        <path d="m -38.077585,978.02257 16,0" $arrowStyle></path>
-         |        <path d="m -12.090524,978.05979 -5.987061,-0.0372" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcK">
-         |        <text $textProps>K</text><path $circleProps></path>
-         |        <path d="m -2.064645,978.0598 -16,0" $arrowStyle></path>
-         |        <path d="m -38.064645,978.0598 16,0" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcL">
-         |        <text $textProps>L</text><path $circleProps></path>
-         |        <path d="m -11.49179,969.43678 -7.171574,7.17158" $arrowStyle></path>
-         |        <path d="m -38.077577,978.02257 16,0" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcM">
-         |        <text $textProps>M</text><path $circleProps></path>
-         |        <path d="m -20.077585,970.02257 0,6" $arrowStyle></path>
-         |        <path d="m -38.077585,978.02257 16,0" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcN">
-         |        <text $textProps>N</text><path $circleProps></path>
-         |        <path d="m -20.077585,960.02257 0,16" $arrowStyle></path>
-         |        <path d="m -38.077585,978.02257 16,0" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcO">
-         |        <text $textProps>O</text><path $circleProps></path>
-         |        <path d="m -28.663372,969.43678 7.171574,7.17158" $arrowStyle></path>
-         |        <path d="m -38.064646,978.05979 15.987061,-0.0372" $arrowStyle></path>
-         |      </g>
-         |"""
-
-    val part4 =
-      s"""      <g id="vcP">
-         |        <path $circleProps></path><text $textProps>P</text>
-         |        <path d="m -28.064646,978.05979 c 2.695104,-1.72224 4.352555,-1.11629 5.987061,-0.0372" $arrowStyle></path>
-         |        <path d="m -28.064646,978.05979 c 2.225492,1.55137 4.178556,1.24684 5.987061,-0.0372" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcQ">
-         |        <path $circleProps></path><text $textProps>Q</text>
-         |        <path d="m -28.650432,969.47403 c 1.186417,3.54854 3.731819,5.793 7.171574,7.17158" $arrowStyle></path>
-         |        <path d="m -28.650432,969.47403 c 4.170483,0.95665 5.985806,3.81058 7.171574,7.17158" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcR">
-         |        <path $circleProps></path><text $textProps>R</text>
-         |        <path d="m -20.064635,970.05982 c 2.229953,2.58242 0.789017,4.2147 0,6" $arrowStyle></path>
-         |        <path d="m -20.064635,970.05982 c -2.263016,2.52293 -1.06713,4.19704 0,6" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcS">
-         |        <path $circleProps></path><text $textProps>S</text>
-         |        <path d="m -11.478848,969.47403 c -4.271302,0.77178 -5.861627,3.84953 -7.171574,7.17158" $arrowStyle></path>
-         |        <path d="m -11.478848,969.47403 c -0.540678,3.86673 -3.75869,5.83827 -7.171574,7.17158" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcT">
-         |        <path $circleProps></path><text $textProps>T</text>
-         |        <path d="m -12.090524,978.05979 c -2.596115,-1.9428 -4.382871,-1.03176 -5.987061,-0.0372" $arrowStyle></path>
-         |        <path d="m -12.090524,978.05979 c -2.596115,-1.9428 -4.382871,-1.03176 -5.987061,-0.0372" $arrowStyle></path>
-         |      </g>
-         |
-         |      <g id="vcV">
-         |        <path $circleProps></path><text $textProps>V</text>
-         |        <path d="m -28.064646,978.05979 5.987061,-0.0372" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcW">
-         |        <path $circleProps></path><text $textProps>W</text>
-         |        <path d="m -28.650432,969.47403 7.171574,7.17158" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcX">
-         |        <path $circleProps></path><text $textProps>X</text>
-         |        <path d="m -20.064635,970.05982 0,6" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcY">
-         |        <path $circleProps></path><text $textProps>Y</text>
-         |        <path d="m -11.478848,969.47403 -7.171574,7.17158" $arrowStyle></path>
-         |      </g>
-         |      <g id="vcZ">
-         |        <path $circleProps></path><text $textProps>Z</text>
-         |        <path d="m -12.090524,978.05979 -5.987061,-0.0372" $arrowStyle></path>
-         |      </g>
-         |"""
+  def embed(clones: String): String = {
 
     s"""<svg
        |    xmlns="http://www.w3.org/2000/svg"
@@ -289,13 +177,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
        |      <path id="oops"
        |          d="m -15.737308,978.07528 a 4.4367617,4.4367617 0 0 1 -2.222417,3.84823 4.4428755,4.4428755 0 0 1 -4.443852,-0.002 4.4428755,4.4428755 0 0 1 -2.219481,-3.84991 l 4.442876,0.002"
        |          style="fill:#000000;stroke:none;"
-       |          ></path>
-       |$part1$part2$part3$part4
-       |      <g id="vc-">
-       |        <text $textProps>-</text><path $circleProps></path>
-       |      </g>
+       |      ></path>
+       |      $symbols
        |    </g>
-       |$clones
+       |    $clones
        |  </g>
        |</svg>
        |""".stripMargin

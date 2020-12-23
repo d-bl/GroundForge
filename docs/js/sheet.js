@@ -7,8 +7,8 @@ function load() {
   // for each key-value pair in the URL query
   location.replace(/[?&]+([^=&]+)(=([^&]*))?/gi, function(m,key,m2,value) {
     if (key == "img") {
-      container.innerHTML += "<p>When the holes are made as round as possible,<br>the pattern(s) become:<br>"
-                          +"<img src='help/tl/"+value+".png'/><p>"
+      container.innerHTML += "<p>The animated versions of the<br>pair diagrams will all look like<br>"
+                          +"<img src='images/dancing/"+value+".png'/><p>"
     } else {
       var values = decodeURIComponent(value).replace(/[+]/g, " ").split(";")
       if (values.length == 2) {

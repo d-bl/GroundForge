@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/GroundForge-opt.js" type="text/javascript"></script>
     <title lang="en">GroundForge Tiles : Diagrams for Bobbin Lace</title>
     <meta name="description" content="Choose patterns and stitches to generate diagrams for grounds of bobbin lace">
     <meta name="keywords" content="bobbin lace, pair diagram, thread diagram, patterns, stitches">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/tiles.css" type="text/css">
     <script src="js/tiles.js"></script>
     <script src="js/d3.v4.min.js" type="text/javascript"></script>
-    <script src="js/GroundForge-opt.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="css/logo.css">
+    <link rel="stylesheet" href="css/tiles.css" type="text/css">
 
-
+    <link rel="stylesheet" type="text/css" href="css/logo.css"/>
     <link rel="apple-touch-icon" sizes="120x120" href="/GroundForge/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/GroundForge/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/GroundForge/favicon/favicon-16x16.png">
@@ -25,91 +24,47 @@
 </head>
 <body onload="load()">
 <article>
-<a id="logo" href="/GroundForge/tiles" title="Main page"><img src="images/logo-medium.png" alt="DiBL logo"></a>
-<h1>GroundForge - Diagrams of bobbin lace patterns</h1>
-<h2>Make variations on predefined patterns</h2>
-<ul>
-    <li>
-        <strong>Select a pattern</strong> from a catalogue page:
-        <ul>
-            <li>
-                the '<em>diagram</em>' links in the image captions of
-                <a href="/GroundForge/help/TesseLace-Index" target="_blank"
-                >Tesselace index</a>,
-                <a href="/GroundForge/help/Whiting-Index" target="_blank"
-                >Whiting index</a> and
-                <a href="https://maetempels.github.io/MAE-gf/docs/flanders" target="_blank"
-                >flanders</a> return here
-            </li>
-            <li>
-                More Attractive Examples
-                (<a href="https://maetempels.github.io/MAE-gf/" target="_blank"
-                >MAE-gf</a>) e.g.:
-                <a href="https://maetempels.github.io/MAE-gf/docs/paris" target="_blank"
-                >paris</a>,
-                <a href="https://maetempels.github.io/MAE-gf/docs/bias" target="_blank"
-                >bias</a>,
-                <a href="https://maetempels.github.io/MAE-gf/docs/spiders" target="_blank"
-                >spiders</a>,
-                <a href="https://maetempels.github.io/MAE-gf/docs/snowflakes" target="_blank"
-                >snow</a>,
-                <a href="https://maetempels.github.io/MAE-gf/docs/tria" target="_blank"
-                >triangular</a>,
-                <a href="https://maetempels.github.io/MAE-gf/docs/lotus" target="_blank"
-                >lotus</a> and more
-            </li>
-        </ul>
-    </li>
-    <li>
-        <strong>Choose stitches</strong> with the bold symbols in the prototype diagram.
-    </li>
-    <li>
-        <strong>Choose contrasting threads</strong> with the square starts in the thread diagram.
-    </li>
-    <li>
-        Start the animation of the pair diagram to make the holes as round as in the thread diagram.
-    </li>
-</ul>
+    <a id="logo" href="/GroundForge/" title="Main page"><img src="images/logo-medium.png" alt="DiBL logo"></a>
+    <h1>GroundForge - Diagrams of bobbin lace patterns</h1>
+
+    <ul>
+        <li>Catalogues: <a href="/MAE-gf/" target="_blank">MAE</a>, <a href="/tesselace-to-gf/" target="_blank">TesseLace</a>, <a href="/gw-lace-to-gf/" target="_blank">Whiting</a></li>
+        <li>Tutorials: <a href="/GroundForge-help/index" target="_blank">Getting started</a>, <a href="/GroundForge-help/Icons" target="_blank">Icons</a>, <a href="/GroundForge-help/Advanced" target="_blank">Create a pattern</a>, <a href="index" target="_blank">More...</a></li>
+    </ul>
+    <div id="whiting"></div>
 </article>
 <form onsubmit="return false" id="download">
     <fieldset id="diagrams">
         <legend>
             Diagrams
-            -
-            <a href="help" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
-            -
-            <a id="link" href="#"><button type="button" title="create link to current set of diagrams"><img alt="link" src="images/link.png"></button></a>
-            -
             <a><button type="button" onclick="showDiagrams()" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
             -
             <label for="patchWidth">
-                Patch size
-                <a href="help/Patch-Size" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
+                Swatch size:
             </label>
-            <input type="number" name="patchWidth" id="patchWidth" min="3" max="30" value="3" onchange="showProto()" autofocus>
-            <label for="patchWidth">cols</label>
-            <input type="number" name="patchHeight" id="patchHeight" min="3" max="30" value="3" onchange="showProto()">
-            <label for="patchHeight">rows</label>
-        </legend>
-        <figure >
-            <figcaption title="choosing a stitch shows/refreshes the thread diagram">
-                Prototype - click bold symbols
-                <a download="prototype.svg"
-                   onfocus="setDownloadContent(this,'#prototype')"
-                   onblur="this.href='?#download'"
-                   target="_blank"
-                   href="?#download"
-                   title="download"
-                ><img src="images/download.jpg"></a>
-            </figcaption>
-            <div id="prototype">
+            <div>
+                <input type="number" name="patchWidth" id="patchWidth" min="3" max="30" value="7" onchange="showProto()" autofocus>
+                <label for="patchWidth">columns</label>
+                <a href="/GroundForge-help/Patch-Size" target="_blank"><img src="images/information-icon.png" title="swatch size"></a>
+                <br>
+                <input type="number" name="patchHeight" id="patchHeight" min="3" max="30" value="7" onchange="showProto()">
+                <label for="patchHeight">rows</label>
             </div>
-        </figure>
+
+            -
+            <span style="white-space: nowrap;">
+            <label for="draggable">Draggable:</label>&nbsp;
+            <input type="checkbox" id="draggable" onchange="showDiagrams()" title="make threads draggable">
+            <label for="draggable"><a href="/GroundForge-help/untangle" target="_blank"><img src="images/information-icon.png" title="untangle clutter"></a></label>
+            </span>
+        </legend>
+
         <figure>
             <figcaption>
-                Pairs -
-                <a href="javascript:animateDiagram(d3.select('#pairDiagram'), 372, 526)"
-                >animate</a>
+                Pairs
+                <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
+                <img src="images/animate.png" onclick="javascript:animateDiagram(d3.select('#pairDiagram'), 372, 526)" title="animate/reshape"
+                >
                 <a download="pair-diagram.svg"
                    onfocus="setDownloadContent(this,'#pairDiagram')"
                    onblur="this.href='?#download'"
@@ -121,9 +76,11 @@
             </figcaption>
             <div id="pairDiagram"></div>
         </figure>
+
         <figure >
             <figcaption>
-                Threads - click squares
+                Threads
+                <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
                 <a download="thread-diagram.svg"
                    onfocus="setDownloadContent(this,'#threadDiagram')"
                    onblur="this.href='?#download'"
@@ -135,27 +92,203 @@
             </figcaption>
             <div id="threadDiagram"></div>
         </figure>
-        <div id="whiting"></div>
+
     </fieldset>
-    <h2>Forms for advanced users</h2>
-    <p>
-        Links to this page fill the forms below to define patterns.
-    </p>
-    <fieldset id="drosteFieldSet">
+    <p></p>
+    <fieldset>
         <legend>
-            Reuse thread diagram as pair diagram
-            -
-            <a href="help/Advanced#thread-diagram-as-pair-diagram" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
+            Edit pattern
+            <a id="link" href="#"><button type="button" title="create link to current set of diagrams"><img alt="link" src="images/link.png"></button></a>
+            <a><button type="button" onclick="showDiagrams()" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
+            <a href="/GroundForge-help/Undo" target="_blank"><img src="images/information-icon.png" title="save / reload"></a>
         </legend>
-        Requires a small patch size, the power of a desk-top and your patience
-        <a><button type="button" onclick="showDroste(2)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
+        <figure >
+            <figcaption>
+                Pattern
+                <a href="/GroundForge-help/Replace" target="_blank"><img src="images/information-icon.png" title="how to modify stitches"></a>
+                <a download="prototype.svg"
+                   onfocus="setDownloadContent(this,'#prototype')"
+                   onblur="this.href='?#download'"
+                   target="_blank"
+                   href="?#download"
+                   title="download"
+                ><img src="images/download.jpg"></a>
+                <img src="images/size-inc.jpg" onclick="resizeBoth('#prototype', 1.1)" title="increase diagram dimensions"
+                ><img src="images/size-dec.jpg" onclick="resizeBoth('#prototype', 0.91)" title="decrease diagram dimensions">
+            </figcaption>
+            <div id="prototype">
+            </div>
+        </figure>
+
+        <figure class="pattern">
+            <figcaption>Pattern definition
+                <a href="/GroundForge-help/Advanced" target="_blank"><img src="images/information-icon.png" title="how to define the pattern and foot sides"></a>
+                <a download="inkscape-template.txt"
+                   onfocus="setInkscapTemplate(this)"
+                   onblur="this.href='?#download'"
+                   href="?#download"
+                   title="download Inkscape template"
+                ><img src="images/download.jpg"></a>
+            </figcaption>
+            <div>
+                <table>
+                    <tr>
+                        <td><textarea id="footside" name="footside" rows="5" cols="3"
+                                      spellcheck="false"
+                                      onchange="showProto()"></textarea></td>
+                        <td><textarea id="tile" name="tile" rows="5" cols="7" spellcheck="false"
+                                      onchange="showProto()">5-&#13;&#10;-5</textarea></td>
+                        <td><textarea id="headside" name="headside" rows="5" cols="3"
+                                      spellcheck="false"
+                                      onchange="showProto()"></textarea></td>
+                        <td><button onclick="flip();return false" title="flip left foot side into right foot side">flip</button></td>
+                    </tr>
+                    <tr>
+                        <td><input id="footsideStitch" name="footsideStitch" type="text" value="ctctt" onchange="showProto()"/></td>
+                        <td><input id="tileStitch" name="tileStitch" type="text" value="ctct" onchange="showProto()"/></td>
+                        <td><input id="headsideStitch" name="headsideStitch" type="text" value="ctctt" onchange="showProto()"/></td>
+                        <td><button onclick="clearStitches();return false" title="resets all stitches defined through the pattern diagram">initialize<br>stitches</button></td>
+                    </tr>
+                </table>
+                <div>
+                    <img src="images/matrix-template.png" alt="cheat sheet" onclick="toggleCheatSheet(this)" title="click to show all">
+                </div>
+            </div>
+        </figure>
+
+        <figure class="pattern">
+            <figcaption>
+                Tile layout
+                <a href="/GroundForge-help/Change-tiles" target="_blank"><img src="images/information-icon.png" title="how to change tiles"></a>
+            </figcaption>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg2" width="297.11" height="130.39" viewBox="0 0 278.54 122.24">
+                    <path d="m99.088 17.821 14.712 16.075" fill="none" stroke="#834bce" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    <path d="m114.85 31.041 0.89586 5.2108-4.9606-1.8296z" fill="#834bce" stroke-width="1.2031"/>
+                    <g fill="none" stroke-linecap="round">
+                        <path d="m161.66 5.0235h29.959c0.18301 0 0.33031 0.14732 0.33031 0.33033v29.959c0 0.183-0.1473 0.33032-0.33031 0.33032h-29.959c-0.183 0-0.33031-0.14732-0.33031-0.33032v-29.959c0-0.18301 0.14731-0.33033 0.33031-0.33033z" stroke="#ccc" stroke-width="3.0447"/>
+                        <rect x="228.48" y="4.6766" width="30.62" height="30.62" ry=".33032" stroke="#ccc" stroke-width="3.0447"/>
+                        <path d="m210.05 53.736 33.403 33.403" stroke="#834bce" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    </g>
+                    <path d="m244.24 84.188-3.7387 3.7387 5.1072 1.3684z" fill="#834bce" stroke-width="1.2031"/>
+                    <path d="m210.05 53.736-33.403 33.403" fill="none" stroke="#029807" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    <path d="m175.86 84.188 3.7387 3.7387-5.1072 1.3684z" fill="#029807" stroke-width="1.2031"/>
+                    <path d="m99.088 17.821v30.141" fill="none" stroke="#029807" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    <path d="m101.73 46.435h-5.2874l2.6437 4.579z" fill="#029807"/>
+                    <path d="m45.238 89.602 18.359 14.712" fill="none" stroke="#834bce" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    <path d="m64.573 101.42 1.0171 5.1888-5.0022-1.7137z" fill="#834bce" stroke-width="1.2032"/>
+                    <path d="m45.238 89.602-12.056 14.712" fill="none" stroke="#029807" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    <path d="m31.855 101.57-0.38725 5.2732 4.7603-2.3013z" fill="#029807" stroke-width="1.2031"/>
+                    <path d="m30.573 18.397 30.141 30.141" fill="none" stroke="#834bce" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1279"/>
+                    <a transform="matrix(1.2031 0 0 1.2031 -185.51 -32.637)" xlink:href="javascript:asSimple()" xlink:title="simple layout">
+                        <rect x="168.27" y="31.08" width="22.675" height="22.675" ry=".24461" fill="#0d6efd" fill-opacity=".5" stroke="#0d6efd" stroke-linecap="round" stroke-width="1.9481"/>
+                    </a>
+                    <g fill="none" stroke-linecap="round">
+                        <path d="m30.573 18.397 2e-5 30.141" stroke="#029807" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                        <g stroke-width="2.3437">
+                            <rect x="16.933" y="34.897" width="27.28" height="27.28" ry=".2943" stroke="#029807"/>
+                            <rect x="47.083" y="34.897" width="27.28" height="27.28" ry=".2943" stroke="#834bce"/>
+                            <rect x="47.083" y="4.7567" width="27.28" height="27.28" ry=".2943" stroke="#ccc"/>
+                            <rect x="49.828" y="98.252" width="27.529" height="12.134" ry=".1309" stroke="#834bce"/>
+                        </g>
+                    </g>
+                    <a transform="matrix(2.0094 0 0 2.0094 -525.01 -221.74)" xlink:href="javascript:asHorBricks()" xlink:title="brick layout">
+                        <rect x="276.94" y="151.48" width="13.7" height="6.2044" ry=".066932" fill="#0d6efd" fill-opacity=".5" stroke="#0d6efd" stroke-linecap="round" stroke-width="1.1664"/>
+                    </a>
+                    <g fill="none" stroke-linecap="round">
+                        <g stroke-width="2.3438">
+                            <rect x="61.888" y="82.822" width="27.529" height="12.134" ry=".1309" stroke="#ccc"/>
+                            <rect transform="matrix(0,1,1,0,0,0)" x="50.547" y="108.29" width="27.529" height="12.467" ry=".13449" stroke="#ccc"/>
+                            <rect transform="matrix(0,1,1,0,0,0)" x="19.064" y="108.45" width="27.529" height="12.134" ry=".1309" stroke="#844bce"/>
+                        </g>
+                        <rect transform="matrix(0,1,1,0,0,0)" x="34.472" y="92.688" width="27.529" height="12.467" ry=".13449" stroke="#029807" stroke-width="2.3437"/>
+                    </g>
+                    <a transform="matrix(1.2031 0 0 1.2031 -204.64 -39.702)" xlink:href="javascript:asVerBricks()" xlink:title="vertical brick layout">
+                        <rect transform="matrix(0,1,1,0,0,0)" x="36.371" y="247.27" width="22.881" height="10.362" ry=".11179" fill="#0d6efd" fill-opacity=".5" stroke="#0d6efd" stroke-linecap="round" stroke-width="1.9481"/>
+                    </a>
+                    <a transform="matrix(.6752 0 0 .6752 158.49 8.4686)" xlink:href="javascript:asCornerToCorner()" xlink:title="corner-to-corner layout">
+                        <rect x="53.668" y="44.369" width="45.35" height="45.35" ry=".48922" fill="#0d6efd" fill-opacity=".5" stroke="#0d6efd" stroke-linecap="round" stroke-width="4.5094"/>
+                    </a>
+                    <g>
+                        <a transform="rotate(90 118.37 117.97)" xlink:href="javascript:swToRight()">
+                            <path d="m95.085 41.366-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="translate(79.28 27.533)" xlink:href="javascript:swUp()">
+                            <path d="m104.91 41.366-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="rotate(-90 142.66 -7.3525)" xlink:href="javascript:seToLeft()">
+                            <path d="m55.71 75.116-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="matrix(.86616 0 0 .86616 37.798 -19.206)" xlink:href="javascript:brickUp()">
+                            <path d="m96.121 43.274-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width="1.0824"/>
+                        </a>
+                        <a transform="rotate(90 52.338 69.285)" xlink:href="javascript:brickToRight()">
+                            <path d="m94.916 41.366-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="rotate(-90 96.162 95.919)" xlink:href="javascript:brickToLeft()">
+                            <path d="m95.314 16.107-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="matrix(-.86616 0 0 -.86616 189.56 95.997)" xlink:href="javascript:brickDown()">
+                            <path d="m94.184 17.788-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width="1.0824"/>
+                        </a>
+                        <a transform="rotate(180 153.8 56.751)" xlink:href="javascript:seDown()">
+                            <path d="m71.692 7.6153-15.094 0.00403 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="translate(132.18 -6.0762)" xlink:href="javascript:seUp()">
+                            <path d="m118.81 75.116-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="rotate(90 154.78 115.02)" xlink:href="javascript:seToRight()">
+                            <path d="m134.45 7.6153-15.094 0.00403 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="rotate(180 127.17 73.474)" xlink:href="javascript:swDown()">
+                            <path d="m85.252 41.366-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="rotate(-90 145.72 28.956)" xlink:href="javascript:swToLeft()">
+                            <path d="m95.085 41.366-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                    </g>
+                    <rect x="161.33" y="71.83" width="30.62" height="30.62" ry=".33032" fill="none" opacity=".883" stroke="#029807" stroke-linecap="round" stroke-width="3.0447"/>
+                    <rect x="228.13" y="71.83" width="30.62" height="30.62" ry=".33032" fill="none" stroke="#834bce" stroke-linecap="round" stroke-width="3.0447"/>
+                    <path d="m33.223 47.011h-5.2874l2.6437 4.579z" fill="#029807"/>
+                    <path d="m61.507 45.593-3.7387 3.7387 5.1072 1.3684z" fill="#834bce" stroke-width="1.2031"/>
+                    <rect x="19.418" y="98.082" width="27.529" height="12.467" ry=".13449" fill="none" stroke="#029807" stroke-linecap="round" stroke-width="2.3438"/>
+                </svg>
+                <p style="max-width: 22em"></p>
+                <div style="border:3px solid #029807;border-radius: 3px; padding: 2px;">
+                    <input type="number" name="shiftColsSW" id="shiftColsSW" min="-12" max="0" value="0" onchange="showProto()"><label for="shiftColsSW">column(s)</label>
+                    <br>
+                    <input type="number" name="shiftRowsSW" id="shiftRowsSW" min="0" max="12" value="2" onchange="showProto()"><label for="shiftRowsSW">row(s)</label>
+                </div>
+                <div style="border:3px solid #834bce;border-radius: 3px; padding: 2px;">
+                    <input type="number" name="shiftColsSE" id="shiftColsSE" min="0" max="12" value="2" onchange="showProto()"><label for="shiftColsSE">column(s)</label>
+                    <br>
+                    <input type="number" name="shiftRowsSE" id="shiftRowsSE" min="0" max="12" value="2" onchange="showProto()"><label for="shiftRowsSE">row(s)</label>
+                </div>
+            </div>
+        </figure>
+    </fieldset>
+
+    <h2>Thread diagram as pair diagram</h2>
+    <fieldset id="drosteFieldSet2">
+        <legend>
+            First level
+            -
+            <a><button type="button" onclick="showDroste(2)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
+            -
+            <small>Reminder: use a small swatch size</small>
+        </legend>
         <div id="drosteFields2">
-            <a><button type="button" onclick="closeDiv(2)">close</button></a>
-            <br>
-            <textarea id="droste2" name="droste2" rows="7" cols="30" spellcheck="false" onchange="clear2()"></textarea>
+            <figure>
+                <figcaption>
+                    Stitches
+                    <a href="/GroundForge-help/Droste-effect" target="_blank"><img src="images/information-icon.png" title="help"></a>
+                </figcaption>
+                    <textarea id="droste2" name="droste2" rows="8" cols="30" spellcheck="false" onchange="clear2()" placeHolder="Type stitch definition here.&#13;&#10;If nothing is typed, the stitch 'ctc' will be used.&#13;&#10;&#13;&#10;Example:&#13;&#10;&#13;&#10;twist=ct&#13;&#10;cross=ctct"></textarea>
+            </figure>
             <figure>
                 <figcaption>
                     Pairs
+                    <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
                     <a download="pair-diagram.svg"
                        onfocus="setDownloadContent(this,'#drostePair2')"
                        onblur="this.href='?#download'"
@@ -169,7 +302,8 @@
             </figure>
             <figure >
                 <figcaption>
-                    Threads - click squares
+                    Threads
+                    <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
                     <a download="thread-diagram.svg"
                        onfocus="setDownloadContent(this,'#drosteThread2')"
                        onblur="this.href='?#download'"
@@ -181,650 +315,53 @@
                 </figcaption>
                 <div id="drosteThread2"></div>
             </figure>
-            <br>
-            Another level of reuse, requiring even more patience
-            <a><button type="button" onclick="showDroste(3)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
-            <div id="drosteFields3">
-                <a><button type="button" onclick="closeDiv(3)">close</button></a>
-                <br>
-                <textarea id="droste3" name="droste3" rows="7" cols="30" spellcheck="false" onchange="clear3()"></textarea>
-                <figure>
-                    <figcaption>
-                        Pairs
-                        <a download="pair-diagram.svg"
-                           onfocus="setDownloadContent(this,'#drostePair3')"
-                           onblur="this.href='?#download'"
-                           href="?#download"
-                           title="download"
-                        ><img src="images/download.jpg"></a>
-                        <img src="images/size-inc.jpg" onclick="resizeBoth('#drostePair3', 1.1)" title="increase diagram dimensions"
-                        ><img src="images/size-dec.jpg" onclick="resizeBoth('#drostePair3', 0.91)" title="decrease diagram dimensions">
-                    </figcaption>
-                    <div id="drostePair3"></div>
-                </figure>
-                <figure >
-                    <figcaption>
-                        Threads - click squares
-                        <a download="thread-diagram.svg"
-                           onfocus="setDownloadContent(this,'#drosteThread3')"
-                           onblur="this.href='?#download'"
-                           href="?#download"
-                           title="download"
-                        ><img src="images/download.jpg"></a>
-                        <img src="images/size-inc.jpg" onclick="resizeBoth('#drosteThread3', 1.1)" title="increase diagram dimensions"
-                        ><img src="images/size-dec.jpg" onclick="resizeBoth('#drosteThread3', 0.91)" title="decrease diagram dimensions">
-                    </figcaption>
-                    <div id="drosteThread3"></div>
-                </figure>
-            </div>
         </div>
     </fieldset>
-    <p>
-        The forms below define the prototype diagram.
-        Play with these forms to design patterns from scratch.
-    </p>
-    <fieldset id="pattern">
+    <br>
+    <fieldset id="drosteFieldSet3">
         <legend>
-            Define a repeat
-            <a href="help/Advanced#define-a-repeat" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
+            Second level
+            -
+            <a><button type="button" onclick="showDroste(3)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
         </legend>
-        <figure>
-            <div>
-                <table>
-                    <tr>
-                        <td><textarea id="footside" name="footside" rows="12" cols="3"
-                                      spellcheck="false"
-                                      onchange="showProto()"></textarea></td>
-                        <td><textarea id="tile" name="tile" rows="12" cols="10" spellcheck="false"
-                                      onchange="showProto()">437</textarea></td>
-                        <td><textarea id="headside" name="headside" rows="12" cols="3"
-                                      spellcheck="false"
-                                      onchange="showProto()"></textarea></td>
-                        <td><button onclick="flip();return false" title="flip left foot side into right foot side">flip</button></td>
-                    </tr>
-                    <tr>
-                        <td><input id="footsideStitch" name="footsideStitch" type="text" value="ctctt" onchange="showProto()"/></td>
-                        <td><input id="tileStitch" name="tileStitch" type="text" value="ctct" onchange="showProto()"/></td>
-                        <td><input id="headsideStitch" name="headsideStitch" type="text" value="ctctt" onchange="showProto()"/></td>
-                        <td><button onclick="clearStitches();return false" title="resets all stitches defined through the prototype diagram">initialize<br>stitches</button></td>
-                    </tr>
-                </table>
-            </div>
-            <figcaption>Definition</figcaption>
-        </figure>
-        <figure>
-            <img src="help/images/matrix-template.png" alt="cheat sheet">
-            <figcaption>Cheat sheet</figcaption>
-        </figure>
-    </fieldset>
-    <fieldset>
-        <legend>
-            Arrange the repeats
-            <a href="help/Advanced#arrange-the-repeats" target="_blank"><img src="help/images/information-icon.png" title="help"></a>
-        </legend>
-        <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                viewBox="0 0 287.5489 145.19932"
-                version="1.1"
-                id="svg2"
-                height="154.87927"
-                width="306.71884">
-            <defs
-                    id="defs4">
-                <marker
-                        style="overflow:visible"
-                        id="marker7430"
-                        refX="0"
-                        refY="0"
-                        orient="auto">
-                    <path
-                            transform="scale(0.4)"
-                            style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
-                            d="M 5.77,0 -2.88,5 V -5 Z"
-                            id="path7428" />
-                </marker>
-                <marker
-                        style="overflow:visible"
-                        id="marker6872"
-                        refX="0"
-                        refY="0"
-                        orient="auto">
-                    <path
-                            transform="scale(0.4)"
-                            style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
-                            d="M 5.77,0 -2.88,5 V -5 Z"
-                            id="path6870" />
-                </marker>
-                <marker
-                        style="overflow:visible"
-                        id="marker4602"
-                        refX="0"
-                        refY="0"
-                        orient="auto">
-                    <path
-                            transform="scale(0.4)"
-                            style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
-                            d="M 5.77,0 -2.88,5 V -5 Z"
-                            id="path4600" />
-                </marker>
-                <marker
-                        orient="auto"
-                        refY="0"
-                        refX="0"
-                        id="marker14433"
-                        style="overflow:visible">
-                    <path
-                            id="path14431"
-                            d="M 5.77,0 -2.88,5 V -5 Z"
-                            style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
-                            transform="scale(0.4)" />
-                </marker>
-                <marker
-                        orient="auto"
-                        refY="0"
-                        refX="0"
-                        id="marker12041"
-                        style="overflow:visible">
-                    <path
-                            id="path12039"
-                            d="M 5.77,0 -2.88,5 V -5 Z"
-                            style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
-                            transform="scale(0.4)" />
-                </marker>
-                <marker
-                        orient="auto"
-                        refY="0"
-                        refX="0"
-                        id="marker17654-2"
-                        style="overflow:visible">
-                    <path
-                            id="path17656-2"
-                            d="M 5.77,0 -2.88,5 V -5 Z"
-                            style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
-                            transform="scale(0.4)" />
-                </marker>
-                <marker
-                        style="overflow:visible"
-                        id="marker16396"
-                        refX="0"
-                        refY="0"
-                        orient="auto">
-                    <path
-                            transform="scale(0.4)"
-                            style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
-                            d="M 5.77,0 -2.88,5 V -5 Z"
-                            id="path16398" />
-                </marker>
-                <marker
-                        style="overflow:visible"
-                        id="marker8006-0"
-                        refX="0"
-                        refY="0"
-                        orient="auto">
-                    <path
-                            transform="scale(0.4)"
-                            style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
-                            d="M 5.77,0 -2.88,5 V -5 Z"
-                            id="path8008-1" />
-                </marker>
-            </defs>
-            <rect
-                    style="opacity:1;fill:none;fill-opacity:0.56078384;stroke:#5500d4;stroke-width:2.25469995;stroke-linecap:round;stroke-opacity:1"
-                    id="rect12415"
-                    width="22.674795"
-                    height="22.674795"
-                    x="156.20055"
-                    y="6.0279679"
-                    ry="0.24461238" />
-            <a
-                    transform="translate(12.982695)"
-                    xlink:href="javascript:asChecker()"
-                    id="a4627">
-                <rect
-                        style="opacity:0.5;fill:#5500d4;fill-opacity:1;stroke:#5500d4;stroke-width:2.25469995;stroke-linecap:round;stroke-opacity:1"
-                        id="rect12417"
-                        width="22.674795"
-                        height="22.674795"
-                        x="168.27007"
-                        y="31.080189"
-                        ry="0.24461238" />
-            </a>
-            <rect
-                    ry="0.24461238"
-                    y="56.132408"
-                    x="181.25276"
-                    height="22.674795"
-                    width="22.674795"
-                    id="rect12423"
-                    style="opacity:1;fill:none;fill-opacity:0.56078384;stroke:#71c837;stroke-width:2.25469995;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-            <rect
-                    ry="0.24461238"
-                    y="56.132408"
-                    x="206.30498"
-                    height="22.674795"
-                    width="22.674795"
-                    id="rect12427"
-                    style="opacity:0.5;fill:none;fill-opacity:0.56078384;stroke:#5500d4;stroke-width:2.25469995;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-            <rect
-                    style="opacity:0.5;fill:none;fill-opacity:0.56078384;stroke:#333333;stroke-width:2.25469995;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-                    id="rect12429"
-                    width="22.674795"
-                    height="22.674795"
-                    x="156.20055"
-                    y="56.132408"
-                    ry="0.24461238" />
-            <rect
-                    ry="0.24461238"
-                    y="6.0279679"
-                    x="181.25276"
-                    height="22.674795"
-                    width="22.674795"
-                    id="rect12431"
-                    style="opacity:0.5;fill:none;fill-opacity:0.56078384;stroke:#333333;stroke-width:2.25469995;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-            <rect
-                    style="opacity:0.5;fill:none;fill-opacity:0.56078384;stroke:#333333;stroke-width:2.25469995;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-                    id="rect12433"
-                    width="22.674795"
-                    height="22.674795"
-                    x="206.30498"
-                    y="6.0279679"
-                    ry="0.24461238" />
-            <rect
-                    ry="0.24461238"
-                    y="31.080189"
-                    x="206.30498"
-                    height="22.674795"
-                    width="22.674795"
-                    id="rect12435"
-                    style="opacity:0.5;fill:none;fill-opacity:0.56078384;stroke:#333333;stroke-width:2.25469995;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-            <rect
-                    style="opacity:1;fill:none;fill-opacity:0.56078384;stroke:#71c837;stroke-width:2.25469995;stroke-linecap:round;stroke-opacity:1"
-                    id="rect12421"
-                    width="22.674795"
-                    height="22.674795"
-                    x="156.20055"
-                    y="31.080189"
-                    ry="0.24461238" />
-            <rect
-                    ry="0.10879952"
-                    y="91.885361"
-                    x="165.52391"
-                    height="10.085373"
-                    width="22.881477"
-                    id="rect12437"
-                    style="opacity:1;fill:#ffffff;fill-opacity:0.56078384;stroke:#5500d4;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-            <a
-                    transform="matrix(1.670148,0,0,1.670148,-281.74558,-149.61611)"
-                    id="a4643"
-                    xlink:href="javascript:asHorBricks()">
-                <rect
-                        ry="0.066932008"
-                        y="151.83745"
-                        x="276.93903"
-                        height="6.2043848"
-                        width="13.700269"
-                        id="rect12439"
-                        style="opacity:0.5;fill:#5500d4;fill-opacity:1;stroke:#5500d4;stroke-width:0.89999998;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-            </a>
-            <rect
-                    ry="0.11178636"
-                    y="103.9749"
-                    x="155.50302"
-                    height="10.362241"
-                    width="22.881477"
-                    id="rect12441"
-                    style="opacity:1;fill:#ffffff;fill-opacity:0.56078384;stroke:#71c837;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-            <rect
-                    style="opacity:0.5;fill:#ffffff;fill-opacity:0.56078384;stroke:#5500d4;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-                    id="rect12445"
-                    width="22.881477"
-                    height="10.362241"
-                    x="190.69418"
-                    y="116.3413"
-                    ry="0.11178636" />
-            <rect
-                    ry="0.10879952"
-                    y="91.885361"
-                    x="216.08508"
-                    height="10.085373"
-                    width="22.881477"
-                    id="rect12451"
-                    style="opacity:0.5;fill:#ffffff;fill-opacity:0.56078384;stroke:#333333;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-            <rect
-                    style="opacity:0.5;fill:#ffffff;fill-opacity:0.56078384;stroke:#333333;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-                    id="rect12453"
-                    width="22.881477"
-                    height="10.362241"
-                    x="206.07167"
-                    y="103.70623"
-                    ry="0.11178636" />
-            <rect
-                    ry="0.11178636"
-                    y="116.3413"
-                    x="165.52391"
-                    height="10.362241"
-                    width="22.881477"
-                    id="rect19214"
-                    style="opacity:1;fill:#ffffff;fill-opacity:0.56078384;stroke:#71c837;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-            <rect
-                    ry="0.10879952"
-                    y="116.44841"
-                    x="215.90012"
-                    height="10.085373"
-                    width="22.881477"
-                    id="rect19216"
-                    style="opacity:0.5;fill:#ffffff;fill-opacity:0.56078384;stroke:#333333;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-            <rect
-                    ry="0.10879952"
-                    y="91.885361"
-                    x="190.80447"
-                    height="10.085373"
-                    width="22.881477"
-                    id="rect12449"
-                    style="opacity:0.5;fill:#ffffff;fill-opacity:0.56078384;stroke:#333333;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-            <rect
-                    ry="0.10879952"
-                    y="249.16666"
-                    x="76.383957"
-                    height="10.085373"
-                    width="22.881477"
-                    id="rect19190"
-                    style="opacity:0.5;fill:#ffffff;fill-opacity:0.56078384;stroke:#333333;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-                    transform="matrix(0,1,1,0,0,0)" />
-            <rect
-                    transform="matrix(0,1,1,0,0,0)"
-                    style="opacity:1;fill:#ffffff;fill-opacity:0.56078384;stroke:#71c837;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-                    id="rect19180"
-                    width="22.881477"
-                    height="10.362241"
-                    x="64.4645"
-                    y="261.25623"
-                    ry="0.11178636" />
-            <rect
-                    ry="0.10879952"
-                    y="249.16666"
-                    x="25.822786"
-                    height="10.085373"
-                    width="22.881477"
-                    id="rect19176"
-                    style="opacity:1;fill:#ffffff;fill-opacity:0.56078384;stroke:#5500d4;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-                    transform="matrix(0,1,1,0,0,0)" />
-            <rect
-                    style="opacity:1;fill:#ffffff;fill-opacity:0.56078384;stroke:#71c837;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-                    id="rect19182"
-                    width="22.881477"
-                    height="10.362241"
-                    x="51.103321"
-                    y="248.8898"
-                    ry="0.11178636"
-                    transform="matrix(0,1,1,0,0,0)" />
-            <rect
-                    transform="matrix(0,1,1,0,0,0)"
-                    ry="0.11178636"
-                    y="273.62259"
-                    x="51.103321"
-                    height="10.362241"
-                    width="22.881477"
-                    id="rect19178"
-                    style="opacity:0.5;fill:#ffffff;fill-opacity:0.56078384;stroke:#5500d4;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-            <rect
-                    transform="matrix(0,1,1,0,0,0)"
-                    ry="0.11178636"
-                    y="261.25623"
-                    x="89.745163"
-                    height="10.362241"
-                    width="22.881477"
-                    id="rect19192"
-                    style="opacity:0.5;fill:#ffffff;fill-opacity:0.56078384;stroke:#333333;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-            <a
-                    transform="translate(13.990124,2.8124959)"
-                    id="a4630"
-                    xlink:href="javascript:asVerBricks()">
-                <rect
-                        transform="matrix(0,1,1,0,0,0)"
-                        ry="0.11178636"
-                        y="247.2661"
-                        x="36.371475"
-                        height="10.362241"
-                        width="22.881477"
-                        id="rect19227"
-                        style="opacity:0.5;fill:#5500d4;fill-opacity:1;stroke:#5500d4;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-            </a>
-            <rect
-                    ry="0.11178636"
-                    y="273.62259"
-                    x="76.383957"
-                    height="10.362241"
-                    width="22.881477"
-                    id="rect19229"
-                    style="opacity:1;fill:#ffffff;fill-opacity:0.56078384;stroke:#71c837;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-                    transform="matrix(0,1,1,0,0,0)" />
-            <rect
-                    transform="matrix(0,1,1,0,0,0)"
-                    style="opacity:0.5;fill:#ffffff;fill-opacity:0.56078384;stroke:#333333;stroke-width:1.50313318;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-                    id="rect19186"
-                    width="22.881477"
-                    height="10.362241"
-                    x="25.822786"
-                    y="273.62259"
-                    ry="0.11178636" />
-            <path
-                    style="opacity:0.88300003;fill:none;fill-opacity:0.56078384;stroke:#71c837;stroke-width:4.50939989;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-                    d="m 55.54311,126.88001 v -15.21604 c 0,-0.27104 0.218188,-0.48922 0.48922,-0.48922 h 44.37114 c 0.27103,0 0.48922,0.21818 0.48922,0.48922 v 15.21604"
-                    id="rect7692" />
-            <a
-                    transform="translate(1.875002)"
-                    xlink:href="javascript:withOverlap()"
-                    id="a5444">
-                <rect
-                        ry="0.48922476"
-                        y="44.368801"
-                        x="53.668098"
-                        height="45.34959"
-                        width="45.34959"
-                        id="rect7680"
-                        style="opacity:0.5;fill:#5500d4;fill-opacity:1;stroke:#5500d4;stroke-width:4.50939989;stroke-linecap:round;stroke-opacity:1" />
-            </a>
-            <rect
-                    ry="0.48922476"
-                    y="77.771759"
-                    x="88.946068"
-                    height="45.34959"
-                    width="45.34959"
-                    id="rect7682"
-                    style="opacity:0.5;fill:none;fill-opacity:0.56078384;stroke:#5500d4;stroke-width:4.50939989;stroke-linecap:round;stroke-opacity:1" />
-            <path
-                    style="opacity:0.5;fill:none;fill-opacity:0.56078384;stroke:#5500d4;stroke-width:4.50939989;stroke-linecap:round;stroke-opacity:1"
-                    d="m 122.34903,126.88001 v -15.21604 c 0,-0.27104 0.21818,-0.48922 0.48922,-0.48922 h 14.93134"
-                    id="rect12413" />
-            <path
-                    id="rect6328"
-                    d="m 101.23368,7.1924156 -0.34099,16.4117524 c -0.006,0.270973 -0.21819,0.489225 -0.48922,0.489225 H 56.032327 c -0.27103,0 -0.489224,-0.218194 -0.489224,-0.489225 V 7.1924156"
-                    style="opacity:0.5;fill:none;fill-opacity:0.56078384;stroke:#666666;stroke-width:4.50939989;stroke-linecap:round;stroke-opacity:1" />
-            <path
-                    id="rect6330"
-                    d="m 137.76959,89.718391 h -14.23727 c -0.27103,0 -0.48922,-0.218194 -0.48922,-0.489225 v -44.37114 c 0,-0.271031 0.21819,-0.489225 0.48922,-0.489225 h 14.23727"
-                    style="opacity:0.5;fill:none;fill-opacity:0.56078384;stroke:#666666;stroke-width:4.50939989;stroke-linecap:round;stroke-opacity:1" />
-            <path
-                    style="opacity:0.88300003;fill:none;fill-opacity:0.56078384;stroke:#71c837;stroke-width:4.50939989;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-                    d="m 18.082007,44.368805 h 15.515542 c 0.271032,0 0.48922,0.218188 0.48922,0.48922 v 44.371139 c 0,0.271032 -0.218188,0.48922 -0.48922,0.48922 H 18.082007"
-                    id="rect7684" />
-            <path
-                    style="opacity:1;fill:none;fill-opacity:0.56078384;stroke:#5500d4;stroke-width:4.50939989;stroke-linecap:round;stroke-opacity:1"
-                    d="m 22.62937,10.965843 h 44.371139 c 0.271032,0 0.48922,0.218193 0.48922,0.489225 v 44.371136 c 0,0.271032 -0.218188,0.48922 -0.48922,0.48922 H 22.62937 c -0.271032,0 -0.48922,-0.218188 -0.48922,-0.48922 V 11.455068 c 0,-0.271032 0.218188,-0.489225 0.48922,-0.489225 z"
-                    id="rect5708" />
-            <path
-                    style="opacity:0.5;fill:none;fill-opacity:0.56078384;stroke:#666666;stroke-width:4.50939989;stroke-linecap:round;stroke-opacity:1"
-                    d="m 18.267892,111.96356 h 15.21604 c 0.27104,0 0.48922,0.21818 0.48922,0.48922 v 14.93134"
-                    id="path7882" />
-            <rect
-                    style="opacity:0.88300003;fill:none;fill-opacity:0.56078384;stroke:#71c837;stroke-width:4.50939989;stroke-linecap:round;stroke-opacity:1"
-                    id="rect7876"
-                    width="45.34959"
-                    height="45.34959"
-                    x="22.140118"
-                    y="77.771759"
-                    ry="0.48922476" />
-            <path
-                    id="path7878"
-                    d="m 139.11931,22.419282 h -15.21604 c -0.27104,0 -0.48922,-0.21818 -0.48922,-0.48922 V 6.9987218"
-                    style="opacity:0.5;fill:none;fill-opacity:0.56078384;stroke:#666666;stroke-width:4.50939989;stroke-linecap:round;stroke-opacity:1" />
-            <path
-                    style="opacity:0.5;fill:none;fill-opacity:0.56078384;stroke:#5500d4;stroke-width:4.50939989;stroke-linecap:round;stroke-opacity:1"
-                    d="M 34.072801,7.4779541 V 22.693994 c 0,0.27104 -0.21818,0.48922 -0.48922,0.48922 H 18.652242"
-                    id="path7880" />
-            <path
-                    d="M 63.961691,2.9603061 75.939275,14.937896 M 92.640755,2.9603061 80.663171,14.937896 m 0.978356,2.361945 c 0,0.922398 -0.373879,1.757472 -0.978356,2.361945 -0.604476,0.604475 -1.43955,0.978351 -2.36194,0.978351 -0.922406,0 -1.75748,-0.373876 -2.361956,-0.978351 -0.60446,-0.604473 -0.97834,-1.439547 -0.97834,-2.361945 0,-0.922398 0.37388,-1.757472 0.97834,-2.361945 0.604476,-0.604475 1.43955,-0.978351 2.361956,-0.978351 0.92239,0 1.757464,0.373876 2.36194,0.978351 0.604477,0.604473 0.978356,1.439547 0.978356,2.361945 z M 28.196791,104.14756 v 10.02089 m 13.382796,3.40246 -10.0425,-0.0621 m 0,0 c 0,0.92239 -0.373862,1.75747 -0.978339,2.36194 -0.604477,0.60448 -1.439551,0.97836 -2.361957,0.97836 -0.922389,0 -1.757463,-0.37388 -2.36194,-0.97836 -0.604476,-0.60447 -0.978356,-1.43955 -0.978356,-2.36194 0,-0.9224 0.37388,-1.75748 0.978356,-2.36194 0.604477,-0.60447 1.439551,-0.97835 2.36194,-0.97835 0.922406,0 1.75748,0.37388 2.361957,0.97835 0.604477,0.60446 0.978339,1.43954 0.978339,2.36194 z m 83.507393,1.7e-4 h 10.02089 m 3.3403,-13.36119 v 10.02089 m 3.34029,3.3403 c 0,0.92239 -0.37388,1.75746 -0.97834,2.36194 -0.60447,0.60448 -1.43955,0.97835 -2.36195,0.97835 -0.92239,0 -1.75747,-0.37387 -2.36194,-0.97835 -0.60448,-0.60448 -0.97836,-1.43955 -0.97836,-2.36194 0,-0.92241 0.37388,-1.75748 0.97836,-2.36196 0.60447,-0.60447 1.43955,-0.97834 2.36194,-0.97834 0.9224,0 1.75748,0.37387 2.36195,0.97834 0.60446,0.60448 0.97834,1.43955 0.97834,2.36196 z m -40.105156,0.0621 -9.999277,-0.0621 m -16.679868,0.0621 9.999276,-0.0621 m 6.680592,0 c 0,0.92239 -0.373862,1.75746 -0.978339,2.36194 -0.604477,0.60448 -1.439551,0.97835 -2.361957,0.97835 -0.922389,0 -1.757463,-0.37387 -2.36194,-0.97835 -0.604476,-0.60448 -0.978356,-1.43955 -0.978356,-2.36194 0,-0.92241 0.37388,-1.75748 0.978356,-2.36194 0.604477,-0.60448 1.439551,-0.97836 2.36194,-0.97836 0.922406,0 1.75748,0.37388 2.361957,0.97836 0.604477,0.60446 0.978339,1.43953 0.978339,2.36194 z m -33.40296,-5e-5 h 10.020888 m 3.340296,-13.36119 v 10.02089 m 3.340296,3.3403 c 0,0.92239 -0.373862,1.75746 -0.978339,2.36194 -0.604477,0.60448 -1.439551,0.97835 -2.361957,0.97835 -0.922389,0 -1.757463,-0.37387 -2.36194,-0.97835 -0.604476,-0.60448 -0.978356,-1.43955 -0.978356,-2.36194 0,-0.92241 0.37388,-1.75748 0.978356,-2.36196 0.604477,-0.60447 1.439551,-0.97834 2.36194,-0.97834 0.922406,0 1.75748,0.37387 2.361957,0.97834 0.604477,0.60448 0.978339,1.43955 0.978339,2.36196 z m 30.062664,-13.36119 v 10.02089 m 13.382789,3.40246 -10.042493,-0.0621 m 0,0 c 0,0.92239 -0.373862,1.75747 -0.978339,2.36194 -0.604477,0.60448 -1.439551,0.97836 -2.361957,0.97836 -0.922389,0 -1.757463,-0.37388 -2.36194,-0.97836 -0.604476,-0.60447 -0.978356,-1.43955 -0.978356,-2.36194 0,-0.9224 0.37388,-1.75748 0.978356,-2.36194 0.604477,-0.60447 1.439551,-0.97835 2.36194,-0.97835 0.922406,0 1.75748,0.37388 2.361957,0.97835 0.604477,0.60446 0.978339,1.43954 0.978339,2.36194 z M 28.196791,54.04297 v 10.020888 m 3.340296,3.340296 c 0,0.922406 -0.373862,1.75748 -0.978339,2.36194 -0.604477,0.604477 -1.439551,0.978356 -2.361957,0.978356 -0.922389,0 -1.757463,-0.373879 -2.36194,-0.978356 -0.604476,-0.60446 -0.978356,-1.439534 -0.978356,-2.36194 0,-0.922389 0.37388,-1.757463 0.978356,-2.36194 0.604477,-0.604476 1.439551,-0.978356 2.36194,-0.978356 0.922406,0 1.75748,0.37388 2.361957,0.978356 0.604477,0.604477 0.978339,1.439551 0.978339,2.36194 z m -3.340296,-30.06268 v 10.020888 m 13.382796,3.402458 -10.0425,-0.06213 m 0,0 c 0,0.922389 -0.373862,1.757463 -0.978339,2.36194 -0.604477,0.604477 -1.439551,0.978356 -2.361957,0.978356 -0.922389,0 -1.757463,-0.373879 -2.36194,-0.978356 -0.604476,-0.604477 -0.978356,-1.439551 -0.978356,-2.36194 0,-0.922406 0.37388,-1.75748 0.978356,-2.36194 0.604477,-0.604477 1.439551,-0.978356 2.36194,-0.978356 0.922406,0 1.75748,0.373879 2.361957,0.978356 0.604477,0.60446 0.978339,1.439534 0.978339,2.36194 z M 58.237844,84.16783 48.238567,84.1057 m -16.679868,0.06213 9.999276,-0.06213 m 6.680592,0 c 0,0.922389 -0.373862,1.757463 -0.978339,2.36194 -0.604477,0.604477 -1.439551,0.978356 -2.361957,0.978356 -0.922389,0 -1.757463,-0.373879 -2.36194,-0.978356 -0.604476,-0.604477 -0.978356,-1.439551 -0.978356,-2.36194 0,-0.922406 0.37388,-1.75748 0.978356,-2.361957 0.604477,-0.604476 1.439551,-0.978339 2.36194,-0.978339 0.922406,0 1.75748,0.373863 2.361957,0.978339 0.604477,0.604477 0.978339,1.439551 0.978339,2.361957 z m -0.978339,2.361957 11.977583,11.977583 m 2.36194,-10.999227 v 10.020888 m 3.340296,3.340299 c 0,0.92239 -0.373862,1.75746 -0.978339,2.36194 -0.604477,0.60448 -1.439551,0.97836 -2.361957,0.97836 -0.922389,0 -1.757463,-0.37388 -2.36194,-0.97836 -0.604476,-0.60448 -0.978356,-1.43955 -0.978356,-2.36194 0,-0.922409 0.37388,-1.757483 0.978356,-2.36196 0.604477,-0.604477 1.439551,-0.978339 2.36194,-0.978339 0.922406,0 1.75748,0.373862 2.361957,0.978339 0.604477,0.604477 0.978339,1.439551 0.978339,2.36196 z M 28.196791,87.446014 V 97.466902 M 42.536331,86.467658 30.558748,98.445241 m 0.978339,2.361959 c 0,0.92239 -0.373862,1.75746 -0.978339,2.36194 -0.604477,0.60448 -1.439551,0.97836 -2.361957,0.97836 -0.922389,0 -1.757463,-0.37388 -2.36194,-0.97836 -0.604476,-0.60448 -0.978356,-1.43955 -0.978356,-2.36194 0,-0.922408 0.37388,-1.757482 0.978356,-2.361959 0.604477,-0.604477 1.439551,-0.978339 2.36194,-0.978339 0.922406,0 1.75748,0.373862 2.361957,0.978339 0.604477,0.604477 0.978339,1.439551 0.978339,2.361959 z m -0.978339,2.36193 11.977583,11.97758 m 16.70148,-11.97758 -11.977583,11.97758 m 0.978339,2.36196 c 0,0.92238 -0.373862,1.75746 -0.978339,2.36194 -0.604477,0.60447 -1.439551,0.97835 -2.361957,0.97835 -0.922389,0 -1.757463,-0.37388 -2.36194,-0.97835 -0.604476,-0.60448 -0.978356,-1.43956 -0.978356,-2.36194 0,-0.92241 0.37388,-1.75749 0.978356,-2.36196 0.604477,-0.60446 1.439551,-0.97834 2.36194,-0.97834 0.922406,0 1.75748,0.37388 2.361957,0.97834 0.604477,0.60447 0.978339,1.43955 0.978339,2.36196 z M 28.196791,70.7445 v 10.020888 m 3.340296,3.340296 c 0,0.922406 -0.373862,1.75748 -0.978339,2.36194 -0.604477,0.604477 -1.439551,0.978356 -2.361957,0.978356 -0.922389,0 -1.757463,-0.373879 -2.36194,-0.978356 -0.604476,-0.60446 -0.978356,-1.439534 -0.978356,-2.36194 0,-0.922389 0.37388,-1.757463 0.978356,-2.36194 0.604477,-0.604476 1.439551,-0.978356 2.36194,-0.978356 0.922406,0 1.75748,0.37388 2.361957,0.978356 0.604477,0.604477 0.978339,1.439551 0.978339,2.36194 z M 61.599751,70.7445 v 10.020888 m 13.382796,3.402459 -10.0425,-0.06213 m 0,0 c 0,0.922406 -0.373862,1.75748 -0.978339,2.361956 -0.604477,0.604477 -1.439551,0.97834 -2.361957,0.97834 -0.922389,0 -1.757463,-0.373863 -2.36194,-0.97834 -0.604476,-0.604476 -0.978356,-1.43955 -0.978356,-2.361956 0,-0.92239 0.37388,-1.757464 0.978356,-2.36194 0.604477,-0.604477 1.439551,-0.978356 2.36194,-0.978356 0.922406,0 1.75748,0.373879 2.361957,0.978356 0.604477,0.604476 0.978339,1.43955 0.978339,2.36194 z m 60.103713,0.06213 -9.99928,-0.06213 m -16.679861,0.06213 9.999271,-0.06213 m 6.68059,0 c 0,0.922406 -0.37388,1.75748 -0.97834,2.361956 -0.60447,0.604477 -1.43955,0.97834 -2.36195,0.97834 -0.92239,0 -1.75747,-0.373863 -2.36194,-0.97834 -0.60448,-0.604476 -0.97836,-1.43955 -0.97836,-2.361956 0,-0.92239 0.37388,-1.757464 0.97836,-2.36194 0.60447,-0.604477 1.43955,-0.978356 2.36194,-0.978356 0.9224,0 1.75748,0.373879 2.36195,0.978356 0.60446,0.604476 0.97834,1.43955 0.97834,2.36194 z m -0.97834,2.361973 11.97759,11.977583 m 2.36194,-10.999244 v 10.020888 m 3.34029,3.340293 c 0,0.92241 -0.37388,1.75748 -0.97834,2.36197 -0.60447,0.60447 -1.43955,0.97833 -2.36195,0.97833 -0.92239,0 -1.75747,-0.37386 -2.36194,-0.97833 -0.60448,-0.60449 -0.97836,-1.43956 -0.97836,-2.36197 0,-0.922386 0.37388,-1.75746 0.97836,-2.361937 0.60447,-0.604476 1.43955,-0.978356 2.36194,-0.978356 0.9224,0 1.75748,0.37388 2.36195,0.978356 0.60446,0.604477 0.97834,1.439551 0.97834,2.361937 z M 95.002711,87.44603 V 97.466918 M 109.34225,86.467691 97.364668,98.445274 m 0.978339,2.361936 c 0,0.92241 -0.373879,1.75748 -0.978339,2.36197 -0.604477,0.60447 -1.439551,0.97833 -2.361957,0.97833 -0.922389,0 -1.757463,-0.37386 -2.36194,-0.97833 -0.604476,-0.60449 -0.978356,-1.43956 -0.978356,-2.36197 0,-0.922385 0.37388,-1.757459 0.978356,-2.361936 0.604477,-0.604476 1.439551,-0.978356 2.36194,-0.978356 0.922406,0 1.75748,0.37388 2.361957,0.978356 0.60446,0.604477 0.978339,1.439551 0.978339,2.361936 z m -0.978339,2.36195 11.977582,11.97758 m 16.70148,-11.97758 -11.97759,11.97758 m 0.97834,2.36196 c 0,0.92239 -0.37388,1.75746 -0.97834,2.36194 -0.60447,0.60448 -1.43955,0.97835 -2.36195,0.97835 -0.92239,0 -1.75747,-0.37387 -2.36194,-0.97835 -0.60448,-0.60448 -0.97836,-1.43955 -0.97836,-2.36194 0,-0.92241 0.37388,-1.75748 0.97836,-2.36196 0.60447,-0.60447 1.43955,-0.97834 2.36194,-0.97834 0.9224,0 1.75748,0.37387 2.36195,0.97834 0.60446,0.60448 0.97834,1.43955 0.97834,2.36196 z M 81.641527,84.105718 h 10.020888 m 3.340296,-13.361184 v 10.020888 m 3.340296,3.340296 c 0,0.922389 -0.373879,1.757463 -0.978339,2.36194 -0.604477,0.604476 -1.439551,0.978356 -2.361957,0.978356 -0.922389,0 -1.757463,-0.37388 -2.36194,-0.978356 -0.604476,-0.604477 -0.978356,-1.439551 -0.978356,-2.36194 0,-0.922406 0.37388,-1.75748 0.978356,-2.36194 0.604477,-0.604477 1.439551,-0.978356 2.36194,-0.978356 0.922406,0 1.75748,0.373879 2.361957,0.978356 0.60446,0.60446 0.978339,1.439534 0.978339,2.36194 z M 128.40567,70.744534 v 10.020888 m 3.34029,3.340329 c 0,0.922406 -0.37388,1.75748 -0.97834,2.361957 -0.60447,0.60446 -1.43955,0.978339 -2.36195,0.978339 -0.92239,0 -1.75747,-0.373879 -2.36194,-0.978339 -0.60448,-0.604477 -0.97836,-1.439551 -0.97836,-2.361957 0,-0.922389 0.37388,-1.757463 0.97836,-2.36194 0.60447,-0.604477 1.43955,-0.978356 2.36194,-0.978356 0.9224,0 1.75748,0.373879 2.36195,0.978356 0.60446,0.604477 0.97834,1.439551 0.97834,2.36194 z m -3.34029,-30.062597 v 10.020888 m 3.34029,3.340296 c 0,0.922406 -0.37388,1.75748 -0.97834,2.36194 -0.60447,0.604477 -1.43955,0.978356 -2.36195,0.978356 -0.92239,0 -1.75747,-0.373879 -2.36194,-0.978356 -0.60448,-0.60446 -0.97836,-1.439534 -0.97836,-2.36194 0,-0.922389 0.37388,-1.757463 0.97836,-2.36194 0.60447,-0.604477 1.43955,-0.978356 2.36194,-0.978356 0.9224,0 1.75748,0.373879 2.36195,0.978356 0.60446,0.604477 0.97834,1.439551 0.97834,2.36194 z M 115.04448,50.702841 h 10.02089 m 3.3403,-13.361184 v 10.020888 m 3.34029,3.340296 c 0,0.92239 -0.37388,1.757464 -0.97834,2.36194 -0.60447,0.604477 -1.43955,0.978356 -2.36195,0.978356 -0.92239,0 -1.75747,-0.373879 -2.36194,-0.978356 -0.60448,-0.604476 -0.97836,-1.43955 -0.97836,-2.36194 0,-0.922406 0.37388,-1.75748 0.97836,-2.361956 0.60447,-0.604477 1.43955,-0.97834 2.36194,-0.97834 0.9224,0 1.75748,0.373863 2.36195,0.97834 0.60446,0.604476 0.97834,1.43955 0.97834,2.361956 z m -6.7022,-33.340787 -9.99928,-0.06216 m -16.679861,0.06216 9.999271,-0.06216 m 6.68059,0 c 0,0.922398 -0.37388,1.757472 -0.97834,2.361945 -0.60447,0.604475 -1.43955,0.978351 -2.36195,0.978351 -0.92239,0 -1.75747,-0.373876 -2.36194,-0.978351 -0.60448,-0.604473 -0.97836,-1.439547 -0.97836,-2.361945 0,-0.922397 0.37388,-1.757471 0.97836,-2.361945 0.60447,-0.604475 1.43955,-0.978351 2.36194,-0.978351 0.9224,0 1.75748,0.373876 2.36195,0.978351 0.60446,0.604474 0.97834,1.439548 0.97834,2.361945 z m -0.97834,2.361962 11.97759,11.97759 m 2.36194,-10.999239 v 10.020888 m 3.34029,3.340303 c 0,0.922389 -0.37388,1.757463 -0.97834,2.36194 -0.60447,0.604476 -1.43955,0.978356 -2.36195,0.978356 -0.92239,0 -1.75747,-0.37388 -2.36194,-0.978356 -0.60448,-0.604477 -0.97836,-1.439551 -0.97836,-2.36194 0,-0.922405 0.37388,-1.757479 0.97836,-2.361952 0.60447,-0.604475 1.43955,-0.978351 2.36194,-0.978351 0.9224,0 1.75748,0.373876 2.36195,0.978351 0.60446,0.604473 0.97834,1.439547 0.97834,2.361952 z M 95.002711,20.640204 V 30.661092 M 109.34225,19.661853 97.364668,31.639443 m 0.978339,2.361952 c 0,0.922389 -0.373879,1.757463 -0.978339,2.36194 -0.604477,0.604476 -1.439551,0.978356 -2.361957,0.978356 -0.922389,0 -1.757463,-0.37388 -2.36194,-0.978356 -0.604476,-0.604477 -0.978356,-1.439551 -0.978356,-2.36194 0,-0.922405 0.37388,-1.757479 0.978356,-2.361952 0.604477,-0.604475 1.439551,-0.978351 2.36194,-0.978351 0.922406,0 1.75748,0.373876 2.361957,0.978351 0.60446,0.604473 0.978339,1.439547 0.978339,2.361952 z m -0.978339,2.361923 11.977582,11.977583 m 16.70148,-11.977583 -11.97759,11.977583 m 0.97834,2.361957 c 0,0.922389 -0.37388,1.757463 -0.97834,2.36194 -0.60447,0.604477 -1.43955,0.978356 -2.36195,0.978356 -0.92239,0 -1.75747,-0.373879 -2.36194,-0.978356 -0.60448,-0.604477 -0.97836,-1.439551 -0.97836,-2.36194 0,-0.922406 0.37388,-1.75748 0.97836,-2.361957 0.60447,-0.604476 1.43955,-0.978339 2.36194,-0.978339 0.9224,0 1.75748,0.373863 2.36195,0.978339 0.60446,0.604477 0.97834,1.439551 0.97834,2.361957 z M 81.641527,17.299883 H 91.662415 M 95.002711,3.9386987 V 13.959587 m 3.340296,3.340296 c 0,0.922398 -0.373879,1.757472 -0.978339,2.361945 -0.604477,0.604475 -1.439551,0.978351 -2.361957,0.978351 -0.922389,0 -1.757463,-0.373876 -2.36194,-0.978351 -0.604476,-0.604473 -0.978356,-1.439547 -0.978356,-2.361945 0,-0.922398 0.37388,-1.757472 0.978356,-2.361945 0.604477,-0.604475 1.439551,-0.978351 2.36194,-0.978351 0.922406,0 1.75748,0.373876 2.361957,0.978351 0.60446,0.604473 0.978339,1.439547 0.978339,2.361945 z M 128.40567,3.9386987 V 13.959587 m 3.34029,3.340301 c 0,0.922398 -0.37388,1.757472 -0.97834,2.361945 -0.60447,0.604475 -1.43955,0.978351 -2.36195,0.978351 -0.92239,0 -1.75747,-0.373876 -2.36194,-0.978351 -0.60448,-0.604473 -0.97836,-1.439547 -0.97836,-2.361945 0,-0.922398 0.37388,-1.757472 0.97836,-2.361945 0.60447,-0.604475 1.43955,-0.978351 2.36194,-0.978351 0.9224,0 1.75748,0.373876 2.36195,0.978351 0.60446,0.604473 0.97834,1.439547 0.97834,2.361945 z m -40.105156,33.465133 -9.999277,-0.06213 m -16.679868,0.06213 9.999276,-0.06213 m 6.680592,0 c 0,0.92239 -0.373862,1.757464 -0.978339,2.36194 -0.604477,0.604477 -1.439551,0.978356 -2.361957,0.978356 -0.922389,0 -1.757463,-0.373879 -2.36194,-0.978356 -0.604476,-0.604476 -0.978356,-1.43955 -0.978356,-2.36194 0,-0.922389 0.37388,-1.757463 0.978356,-2.36194 0.604477,-0.604476 1.439551,-0.978356 2.36194,-0.978356 0.922406,0 1.75748,0.37388 2.361957,0.978356 0.604477,0.604477 0.978339,1.439551 0.978339,2.36194 z m -0.978339,2.361957 11.977583,11.9776 m 2.36194,-10.999244 v 10.020888 m 3.340296,3.340296 c 0,0.922406 -0.373862,1.75748 -0.978339,2.36194 -0.604477,0.604477 -1.439551,0.978356 -2.361957,0.978356 -0.922389,0 -1.757463,-0.373879 -2.36194,-0.978356 -0.604476,-0.60446 -0.978356,-1.439534 -0.978356,-2.36194 0,-0.922389 0.37388,-1.757463 0.978356,-2.36194 0.604477,-0.604477 1.439551,-0.978356 2.36194,-0.978356 0.922406,0 1.75748,0.373879 2.361957,0.978356 0.604477,0.604477 0.978339,1.439551 0.978339,2.36194 z M 61.599751,54.043204 v 10.020888 m 14.33954,-10.999244 -11.977583,11.9776 m 0.978339,2.36194 c 0,0.922406 -0.373862,1.75748 -0.978339,2.36194 -0.604477,0.604477 -1.439551,0.978356 -2.361957,0.978356 -0.922389,0 -1.757463,-0.373879 -2.36194,-0.978356 -0.604476,-0.60446 -0.978356,-1.439534 -0.978356,-2.36194 0,-0.922389 0.37388,-1.757463 0.978356,-2.36194 0.604477,-0.604477 1.439551,-0.978356 2.36194,-0.978356 0.922406,0 1.75748,0.373879 2.361957,0.978356 0.604477,0.604477 0.978339,1.439551 0.978339,2.36194 z m -0.978339,2.361923 11.977583,11.9776 m 16.70148,-11.9776 -11.977583,11.9776 m 0.978339,2.36194 c 0,0.92239 -0.373862,1.757464 -0.978339,2.36194 -0.604477,0.604477 -1.439551,0.978356 -2.361957,0.978356 -0.922389,0 -1.757463,-0.373879 -2.36194,-0.978356 -0.604476,-0.604476 -0.978356,-1.43955 -0.978356,-2.36194 0,-0.922406 0.37388,-1.75748 0.978356,-2.36194 0.604477,-0.604476 1.439551,-0.978356 2.36194,-0.978356 0.922406,0 1.75748,0.37388 2.361957,0.978356 0.604477,0.60446 0.978339,1.439534 0.978339,2.36194 z M 48.238567,50.702875 h 10.020888 m 3.340296,-13.361184 v 10.020888 m 3.340296,3.340296 c 0,0.922406 -0.373862,1.75748 -0.978339,2.361956 -0.604477,0.60446 -1.439551,0.97834 -2.361957,0.97834 -0.922389,0 -1.757463,-0.37388 -2.36194,-0.97834 -0.604476,-0.604476 -0.978356,-1.43955 -0.978356,-2.361956 0,-0.92239 0.37388,-1.757464 0.978356,-2.36194 0.604477,-0.604477 1.439551,-0.978356 2.36194,-0.978356 0.922406,0 1.75748,0.373879 2.361957,0.978356 0.604477,0.604476 0.978339,1.43955 0.978339,2.36194 z M 95.002711,37.341691 v 10.020888 m 13.382789,3.402475 -10.042493,-0.06213 m 0,0 c 0,0.922406 -0.373862,1.75748 -0.978339,2.361956 -0.604477,0.604477 -1.439551,0.97834 -2.361957,0.97834 -0.922389,0 -1.757463,-0.373863 -2.36194,-0.97834 -0.604476,-0.604476 -0.978356,-1.43955 -0.978356,-2.361956 0,-0.92239 0.37388,-1.757464 0.978356,-2.36194 0.604477,-0.604477 1.439551,-0.978356 2.36194,-0.978356 0.922406,0 1.75748,0.373879 2.361957,0.978356 0.604477,0.604476 0.978339,1.43955 0.978339,2.36194 z M 58.237844,17.362148 48.238567,17.299985 m -16.679868,0.06216 9.999276,-0.06216 m 6.680592,0 c 0,0.922397 -0.373862,1.757471 -0.978339,2.361945 -0.604477,0.604475 -1.439551,0.978351 -2.361957,0.978351 -0.922389,0 -1.757463,-0.373876 -2.36194,-0.978351 -0.604476,-0.604474 -0.978356,-1.439548 -0.978356,-2.361945 0,-0.922398 0.37388,-1.757472 0.978356,-2.361945 0.604477,-0.604475 1.439551,-0.978351 2.36194,-0.978351 0.922406,0 1.75748,0.373876 2.361957,0.978351 0.604477,0.604473 0.978339,1.439547 0.978339,2.361945 z m -0.978339,2.361961 11.977583,11.97759 m 2.36194,-10.999239 v 10.020888 m 3.340296,3.340293 c 0,0.922406 -0.373862,1.75748 -0.978339,2.361957 -0.604477,0.60446 -1.439551,0.978339 -2.361957,0.978339 -0.922389,0 -1.757463,-0.373879 -2.36194,-0.978339 -0.604476,-0.604477 -0.978356,-1.439551 -0.978356,-2.361957 0,-0.922394 0.37388,-1.757468 0.978356,-2.361942 0.604477,-0.604475 1.439551,-0.978351 2.36194,-0.978351 0.922406,0 1.75748,0.373876 2.361957,0.978351 0.604477,0.604474 0.978339,1.439548 0.978339,2.361942 z M 28.196791,20.640297 v 10.020888 m 14.33954,-10.999239 -11.977583,11.97759 m 0.978339,2.361942 c 0,0.922406 -0.373862,1.75748 -0.978339,2.361957 -0.604477,0.60446 -1.439551,0.978339 -2.361957,0.978339 -0.922389,0 -1.757463,-0.373879 -2.36194,-0.978339 -0.604476,-0.604477 -0.978356,-1.439551 -0.978356,-2.361957 0,-0.922394 0.37388,-1.757468 0.978356,-2.361942 0.604477,-0.604475 1.439551,-0.978351 2.36194,-0.978351 0.922406,0 1.75748,0.373876 2.361957,0.978351 0.604477,0.604474 0.978339,1.439548 0.978339,2.361942 z m -0.978339,2.361923 11.977583,11.9776 m 16.70148,-11.9776 -11.977583,11.9776 m 0.978339,2.36194 c 0,0.922406 -0.373862,1.75748 -0.978339,2.36194 -0.604477,0.604477 -1.439551,0.978356 -2.361957,0.978356 -0.922389,0 -1.757463,-0.373879 -2.36194,-0.978356 -0.604476,-0.60446 -0.978356,-1.439534 -0.978356,-2.36194 0,-0.922389 0.37388,-1.757463 0.978356,-2.36194 0.604477,-0.604476 1.439551,-0.978356 2.36194,-0.978356 0.922406,0 1.75748,0.37388 2.361957,0.978356 0.604477,0.604477 0.978339,1.439551 0.978339,2.36194 z M 28.196791,3.9387922 V 13.95968 m 3.340296,3.340296 c 0,0.922398 -0.373862,1.757472 -0.978339,2.361945 -0.604477,0.604475 -1.439551,0.978351 -2.361957,0.978351 -0.922389,0 -1.757463,-0.373876 -2.36194,-0.978351 -0.604476,-0.604473 -0.978356,-1.439547 -0.978356,-2.361945 0,-0.922397 0.37388,-1.757471 0.978356,-2.361945 0.604477,-0.604475 1.439551,-0.978351 2.36194,-0.978351 0.922406,0 1.75748,0.373876 2.361957,0.978351 0.604477,0.604474 0.978339,1.439548 0.978339,2.361945 z M 61.599751,3.9387922 V 13.95968 m 13.382796,3.402464 -10.0425,-0.06216 m 0,0 c 0,0.922398 -0.373862,1.757472 -0.978339,2.361945 -0.604477,0.604475 -1.439551,0.978351 -2.361957,0.978351 -0.922389,0 -1.757463,-0.373876 -2.36194,-0.978351 -0.604476,-0.604473 -0.978356,-1.439547 -0.978356,-2.361945 0,-0.922397 0.37388,-1.757471 0.978356,-2.361945 0.604477,-0.604475 1.439551,-0.978351 2.36194,-0.978351 0.922406,0 1.75748,0.373876 2.361957,0.978351 0.604477,0.604474 0.978339,1.439548 0.978339,2.361945 z"
-                    style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.41805893;stroke-linecap:butt"
-                    id="path4592" />
-            <a
-                    id="a5387"
-                    xlink:href="javascript:swToRight()"
-                    transform="rotate(90,45.399146,68.489641)"
-                    style="fill:#000000;stroke:none">
-                <path
-                        d="m 96.33985,42.48761 -17.604647,0.0047 8.79828,-15.248406 z"
-                        id="path5385"
-                        style="opacity:0.88300003;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25031248;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-            </a>
-            <a
-                    id="a5395"
-                    xlink:href="javascript:swUp()"
-                    transform="translate(-52.55511,31.465059)"
-                    style="fill:#000000;stroke:none">
-                <path
-                        d="m 96.33985,42.48761 -17.604647,0.0047 8.79828,-15.248406 z"
-                        id="path5393"
-                        style="opacity:0.88300003;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25031248;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-            </a>
-            <a
-                    id="a5391"
-                    xlink:href="javascript:seToLeft()"
-                    transform="rotate(-90,76.988458,68.179268)"
-                    style="fill:#000000;stroke:none">
-                <path
-                        d="m 96.33985,42.48761 -17.604647,0.0047 8.79828,-15.248406 z"
-                        id="path5389"
-                        style="opacity:0.88300003;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25031248;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-            </a>
-            <a
-                    id="a5414"
-                    xlink:href="javascript:brickUp()"
-                    transform="translate(178.75364,-4.8361053)"
-                    style="fill:#000000;stroke:none">
-                <path
-                        d="m 96.33985,42.48761 -17.604647,0.0047 8.79828,-15.248406 z"
-                        id="path5412"
-                        style="opacity:0.88300003;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25031248;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-            </a>
-            <a
-                    style="fill:#000000;stroke:none"
-                    transform="rotate(90,113.0698,134.82817)"
-                    xlink:href="javascript:brickToRight()"
-                    id="a5418">
-                <path
-                        style="opacity:0.88300003;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25031248;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-                        id="path5416"
-                        d="m 96.33985,42.48761 -17.604647,0.0047 8.79828,-15.248406 z" />
-            </a>
-            <a
-                    style="fill:#000000;stroke:none"
-                    transform="rotate(-90,166.71936,30.162105)"
-                    xlink:href="javascript:brickToLeft()"
-                    id="a5422">
-                <path
-                        style="opacity:0.88300003;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25031248;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-                        id="path5420"
-                        d="m 96.33985,42.48761 -17.604647,0.0047 8.79828,-15.248406 z" />
-            </a>
-            <a
-                    id="a5426"
-                    xlink:href="javascript:brickDown()"
-                    transform="rotate(180,176.96255,53.106579)"
-                    style="fill:#000000;stroke:none">
-                <path
-                        d="m 96.33985,42.48761 -17.604647,0.0047 8.79828,-15.248406 z"
-                        id="path5424"
-                        style="opacity:0.88300003;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25031248;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-            </a>
-            <rect
-                    ry="0.48922476"
-                    y="10.618801"
-                    x="89.293106"
-                    height="45.34959"
-                    width="45.34959"
-                    id="rect6326"
-                    style="opacity:0.5;fill:none;fill-opacity:0.56078384;stroke:#666666;stroke-width:4.50939989;stroke-linecap:round;stroke-opacity:1" />
-            <a
-                    style="fill:#000000;stroke:none"
-                    transform="rotate(180,87.882935,68.09231)"
-                    xlink:href="javascript:seDown()"
-                    id="a5434">
-                <path
-                        style="opacity:0.88300003;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25031248;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-                        id="path5432"
-                        d="m 96.33985,42.48761 -17.604647,0.0047 8.79828,-15.248406 z" />
-            </a>
-            <a
-                    style="fill:#000000;stroke:none"
-                    transform="translate(0.34937785,-2.1436725)"
-                    xlink:href="javascript:seUp()"
-                    id="a5382">
-                <path
-                        style="opacity:0.88300003;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25031248;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-                        id="path5380"
-                        d="m 96.33985,42.48761 -17.604647,0.0047 8.79828,-15.248406 z" />
-            </a>
-            <a
-                    style="fill:#000000;stroke:none"
-                    transform="rotate(90,88.669898,58.688801)"
-                    xlink:href="javascript:seToRight()"
-                    id="a5430">
-                <path
-                        style="opacity:0.88300003;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25031248;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-                        id="path5428"
-                        d="m 96.33985,42.48761 -17.604647,0.0047 8.79828,-15.248406 z" />
-            </a>
-            <a
-                    id="a5438"
-                    xlink:href="javascript:swDown()"
-                    transform="rotate(180,61.259972,84.815347)"
-                    style="fill:#000000;stroke:none">
-                <path
-                        d="m 96.33985,42.48761 -17.604647,0.0047 8.79828,-15.248406 z"
-                        id="path5436"
-                        style="opacity:0.88300003;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25031248;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-            </a>
-            <a
-                    id="a5442"
-                    xlink:href="javascript:swToLeft()"
-                    transform="rotate(-90,86.867086,111.29846)"
-                    style="fill:#000000;stroke:none">
-                <path
-                        d="m 96.33985,42.48761 -17.604647,0.0047 8.79828,-15.248406 z"
-                        id="path5440"
-                        style="opacity:0.88300003;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25031248;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-            </a>
-        </svg>
-		<p style="max-width: 22em">
-			Click a solid tile to initialize the prototype,
-            subsequently nudge the tiles with the arrows.
-		</p>
-        <div>
-            <div>Configuration:</div><br>
-            <div>
-                <div style="border:3px solid #71c837;border-radius: 3px;">
-                    <input type="number" name="shiftColsSW" id="shiftColsSW" min="-12" max="0" value="0" onchange="showProto()"><label for="shiftColsSW">col(s)</label>
-                    <br>
-                    <input type="number" name="shiftRowsSW" id="shiftRowsSW" min="0" max="12" value="1" onchange="showProto()"><label for="shiftRowsSW">row(s)</label>
-                </div>
-                <div style="border:3px solid #5500d4;border-radius: 3px;">
-                    <input type="number" name="shiftColsSE" id="shiftColsSE" min="0" max="12" value="3" onchange="showProto()"><label for="shiftColsSE">col(s)</label>
-                    <br>
-                    <input type="number" name="shiftRowsSE" id="shiftRowsSE" min="0" max="12" value="1" onchange="showProto()"><label for="shiftRowsSE">row(s)</label>
-                </div>
-            </div>
+        <div id="drosteFields3">
+            <figure>
+                <figcaption>
+                    Stitches
+                    <a href="/GroundForge-help/Advanced#thread-diagram-as-pair-diagram" target="_blank"><img src="images/information-icon.png" title="help"></a>
+                </figcaption>
+                <textarea id="droste3" name="droste3" rows="8" cols="30" spellcheck="false" onchange="clear3()" placeHolder="Type stitch definition here.&#13;&#10;If nothing is typed, the stitch 'ctc' will be used.&#13;&#10;&#13;&#10;Example:&#13;&#10;&#13;&#10;ct&#13;&#10;a140=a150=b240=b250=ctcctct"></textarea>
+            </figure>
+            <figure>
+                <figcaption>
+                    Pairs
+                    <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
+                    <a download="pair-diagram.svg"
+                       onfocus="setDownloadContent(this,'#drostePair3')"
+                       onblur="this.href='?#download'"
+                       href="?#download"
+                       title="download"
+                    ><img src="images/download.jpg"></a>
+                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drostePair3', 1.1)" title="increase diagram dimensions"
+                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drostePair3', 0.91)" title="decrease diagram dimensions">
+                </figcaption>
+                <div id="drostePair3"></div>
+            </figure>
+            <figure >
+                <figcaption>
+                    Threads
+                    <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
+                    <a download="thread-diagram.svg"
+                       onfocus="setDownloadContent(this,'#drosteThread3')"
+                       onblur="this.href='?#download'"
+                       href="?#download"
+                       title="download"
+                    ><img src="images/download.jpg"></a>
+                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drosteThread3', 1.1)" title="increase diagram dimensions"
+                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drosteThread3', 0.91)" title="decrease diagram dimensions">
+                </figcaption>
+                <div id="drosteThread3"></div>
+            </figure>
         </div>
     </fieldset>
 </form>

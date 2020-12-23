@@ -28,20 +28,46 @@ function submitQuery() {
     .map(toKeyValueString)
     .join("&")
 }
+function tesselace(query){
+
+  // keep tesselace reference as long as tile definition is unchanged
+  var tesselace = ""
+  if (window.location.search.substr(1).includes("tesselace=")) {
+    // obtain tile definition from url
+    var urlTile = window.location.search.replace(/(.*[?&])?tile=/, "").replace(/&.*/, "")
+    // obtain new tile definition from user interface
+    var configTile = query.replace(/(.*[?&])?tile=/, "").replace(/&.*/, "")
+    // compare to tile definition from user interface
+    if (urlTile == configTile) {
+        // formulate tesselace reference
+        tesselace = window.location.search.replace(/(.*[?&])?tesselace=/, "tesselace=").replace(/&.*/, "&")
+    }
+  }
+  return tesselace
+}
 function showProto() {
 
   var config = TilesConfig(submitQuery())
   d3.select("#prototype").html(PrototypeDiagram.create(config))
-  d3.select("#link").node().href = "?" + submitQuery() // don't extract var, we might now have other form fields
+  var query = submitQuery() // new form fields may have been added
+  d3.select("#link").node().href = "?" + tesselace(query) + query
   d3.select("#animations").style("display", "none")
   d3.selectAll("#threadDiagram, #pairDiagram, #drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
-  d3.select("#prototype").style("height", (config.totalRows * 27 + 30) + "px"
-                        ).style("width", (config.totalCols * 27 + 60) + "px")
   return config
+}
+function toggleCheatSheet(imgElement) {
+  var value = imgElement.dataset.img;
+  if (imgElement.src && imgElement.src.includes("extended")) {
+    imgElement.src = "images/matrix-template.png";
+    imgElement.title="click to show additional symbols";
+  } else {
+    imgElement.src = "images/matrix-template-extended.png";
+    imgElement.title="click to only show basic symbols";
+  }
 }
 function flip(){
   var left = d3.select("#footside").node().value
@@ -112,12 +138,38 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
     .strength(strength)
     .distance(12)
     .iterations(30)
-  d3.forceSimulation(nodeDefs)
+  var sim = d3.forceSimulation(nodeDefs)
     .force("charge", d3.forceManyBody().strength(-1000))
     .force("link", forceLink)
     .force("center", d3.forceCenter(forceCenterX, forceCenterY))
     .alpha(0.0035)
     .on("tick", onTick)
+
+  if (d3.select("#draggable").node().checked) {
+    nodes.call(d3.drag()
+                   .on("start", dragstarted)
+                   .on("drag", dragged)
+                   .on("end", dragended))
+    function dragstarted(d) {
+      if (!d3.event.active) sim.alpha(0.005).restart()
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+    function dragged(d) {
+      d.fx = d3.event.x;
+      d.fy = d3.event.y;
+    }
+    function dragended(d) {
+      step = 0
+      if (!d3.event.active) sim.alpha(0.005).restart()
+      d.fx = null;
+      d.fy = null;
+    }
+  }
+}
+function setInkscapTemplate(linkNode) {
+  var s = InkscapeTemplate.fromUrl(submitQuery())
+  linkNode.href = 'data:text/plain,' + encodeURIComponent(s)
 }
 function setDownloadContent (linkNode, id) {
 
@@ -140,8 +192,8 @@ function whiting (kv) {
     var pageNr = kv.split("P")[1]
     var cellNr = kv.split("_")[0].split("=")[1]
     d3.select('#whiting').node().innerHTML =
-        "<img src='help/w/page" + pageNr + "a.gif' title='"+cellNr+"'>"+
-        " Page <a href='http://www.gwydir.demon.co.uk/jo/lace/whiting/page" + pageNr + ".htm'>" + pageNr + "</a> "+
+        "<img src='/gw-lace-to-gf/w/page" + pageNr + "a.gif' title='"+cellNr+"'>"+
+        " Page <a href='http://www.theedkins.co.uk/jo/lace/whiting/page" + pageNr + ".htm'>" + pageNr + "</a> "+
         "of '<em>A Lace Guide for Makers and Collectors</em>' by Gertrude Whiting; 1920."
     return true
 }
@@ -159,7 +211,7 @@ function load() {
 function getMatrixLines() {
   return d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
 }
-function asChecker() {
+function asSimple() {
 
   var matrixLines = getMatrixLines()
   var rows = matrixLines.length
@@ -192,7 +244,7 @@ function asVerBricks() {
   d3.select('#shiftColsSW').property("value", 0)
   showProto()
 }
-function withOverlap() {
+function asCornerToCorner() {
 
   var matrixLines = getMatrixLines()
   var rows = matrixLines.length
@@ -321,17 +373,29 @@ function setThreadDiagram(containerID, diagram) {
   container.node().data = diagram
   container.html(D3jsSVG.render(diagram, "2px", markers = true, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
   animateDiagram(container, 744, 1052)
-  container.selectAll(".threadStart").on("click", paintThread)
+  container.selectAll(".threadStart").on("click", paintThreadByStart)
+  container.selectAll(".bobbin").on("click", paintThreadByBobbin)
 }
-function paintThread() {
-
+function paintThreadByStart() {
   // firstChild == <title>
   var eventTarget = d3.event.target
+  paintThread(eventTarget, eventTarget.firstChild.innerHTML.replace(" ", ""))
+}
+function paintThreadByBobbin() {
+  var eventTarget = d3.event.target
+  paintThread(eventTarget, eventTarget.attributes["class"].value.replace(/.* /,""))
+}
+function paintThread(eventTarget, className) {
+
   var containerID = eventTarget.parentNode.parentNode.parentNode.id
-  // TODO it would be more efficient to select siblings of eventTarget
-  var className = eventTarget.firstChild.innerHTML.replace(" ", "")
   var segments = d3.selectAll("#" + containerID + " ." + className)
-  var newColor = segments.style("stroke")+"" == "rgb(255, 0, 0)" ? "#000" : "#F00"
+  var old = segments.style("stroke")+""
+  //       prototype              logo                issue #166
+  var c1 = "rgb(255, 0, 0)"    // "rgb(202, 47, 42)"  "rgb(155, 2, 25)" //dark magenta
+  var c3 = "rgb(204, 51, 255)" // "rgb(38, 138, 36)"  "rgb(2, 152, 7)" //deep green
+  var c2 = "rgb(0, 136, 0)"    // "rgb(135, 17, 187)" "rgb(131, 75, 206)" //blue violet
+  var c4 = "rgb(0, 0, 0)"
+  var newColor = old == c1 ? c2 : (old == c2 ? c3 : (old == c3 ? c4 : c1))
   segments.style("stroke", newColor)
   segments.filter(".node").style("fill", newColor)
 }

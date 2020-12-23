@@ -64,12 +64,10 @@ case class NodeProps private(elems: Seq[(String, Any)]) extends Props {
   val isRightTwist: Boolean = m.getOrElse("right", false  ).asInstanceOf[Boolean]
 
   val cssClasses: String = (m.get("startOf"), m.get("thread")) match {
-    case (Some(_), _) =>
-      s"node threadStart"
-    case (None, Some(t)) =>
-      s"node thread$t"
-    case _ =>
-      s"node"
+    case (Some(_), _) => s"node threadStart"
+    case (None, Some(t)) if bobbin => s"node bobbin thread$t"
+    case (None, Some(t)) => s"node thread$t"
+    case _ => s"node"
   }
 
   /** Sets the location of a cross, twist or pin of one stitch to a single location

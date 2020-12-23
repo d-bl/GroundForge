@@ -1,105 +1,207 @@
 [![Build Status](https://travis-ci.org/d-bl/GroundForge.svg?branch=master)](https://travis-ci.org/d-bl/GroundForge) 
+
 _A toolbox to design bobbin lace grounds with matching sets of pair/thread diagrams._
 
-- [DEMO's](#demo-s)
-- [How it's Made / third party data and scripts](#how-it-s-made---third-party-data-and-scripts)
-  * [Proof of concept with D3.js](#proof-of-concept-with-d3js)
-  * [Using data from TesseLace](#using-data-from-tesselace)
-  * [Color-picker: jscolor](#color-picker--jscolor)
-- [Compile and preview](#compile-and-preview)
+- [Short intros](#short-intros)
+- [Demos](#demos)
+- [Contribute to documentation](#contribute-to-documentation)
+  * [Most common tasks](#most-common-tasks)
+  * [Preview complex changes online](#preview-complex-changes-online)
+  * [Conventions](#Conventions)
+    - [licenses](#licenses)
+    - [metadata](#metadata)
+    - [links](#links)
+    - [scalable prickings](#scalable-prickings)
+- [Functional contribution](#functional-contribution)
   * [Requirements](#requirements)
   * [Work flow](#work-flow)
-  * [Important code conventions](#important-code-conventions)
+  * [Code conventions](#code-conventions)
   * [Tests](#tests)
-  [Use as JavaScript library](#use-as-javascript-library)
-  [Use as JVM library](#use-as-jvm-library)
+-  [Use as JavaScript library](#use-as-javascript-library)
+-  [Use as JVM library](#use-as-jvm-library)
 
 
-Short intro's
+Short intros
 =============
-For users (bobbin lace makers and designers) with screen-casts:<br>
-https://d-bl.github.io/GroundForge/help/index
 
-For developers:
+### for developers:
 * `src/scala/main/*` is translated to : `docs/js/GroundForge-opt.js`
 * This is connected client side to HTML with : `docs/js/tiles.js`
-* Translated to JVM for server-side or batch processing, for example something like : `src/test/Demo4Java.java`
+* The source run also in a JVM environment for server-side or batch processing,
+  for example something like : `src/test/Demo4Java.java`
 
+### for end users (bobbin lace makers and designers):  
+See https://d-bl.github.io/GroundForge/
 
-DEMO's
+### licenses
+
+The help pages and examples have a [CC-BY](http://creativecommons.org/licenses/by/4.0/) 
+license.
+The code has a [GPL-v3](https://github.com/d-bl/GroundForge/blob/master/LICENSE)
+license.
+
+Diagrams created by you and saved as link and/or images
+are owned by you and/or the original authors in cases
+you adapted or embedded a definition by someone else.
+
+Note that individual diagram definitions may or may not meet the [threshold of originality](https://en.wikipedia.org/wiki/Threshold_of_originality).
+A stitch may be traditional yet take creativity to define with GroundForge,
+as shown by the discussion that started with [this message](https://groups.io/g/GroundForge/message/1).
+Others may be new but not take much "sweat of the brow".
+
+You are responsible for publishing your work under a license of your choosing
+and tracking your use of derivative works. 
+Downloaded diagrams don't come with properties expressing origin, author or license,
+you will have to add that information yourself with your favourite editor.
+
+Demos
 ======
 
 A [dressed up](https://d-bl.github.io/GroundForge/tiles?patchWidth=12&patchHeight=12&a1=ct&b1=ct&c1=ctc&d1=ctc&b2=ctc&d2=ctc&a3=ct&c3=ct&footside=b,-,a,-&tile=831,4-7,-5-&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2) version and a dressed down [API](https://d-bl.github.io/GroundForge/API/) version.
-The latter shows some sample code to configure your own web interface or embed just some of the diagrams on your own web page. 
-See also the [API](https://d-bl.github.io/GroundForge/docs/API.md) for other environments than a web-browser.
+The latter shows all possible diagrams with minimal code.
+The first demonstrates interaction with these diagrams
+implemented with limited styling and event handling skills. 
+The latter evolved from a proof of concept into the *de facto* user interface.
 
 
-How it's Made / third party data and scripts
-============================================
+Contribute to documentation
+===========================
 
-Proof of concept with D3.js
----------------------------
+GroundForge has various types of documentation.
 
-To get a [proof of concept] a force graph [example] with originally v3 of [D3.js] was changed into tiny thread an pair diagrams diagrams with the following steps:
+In this repository
+* Tutorials
+* Pages referred to by info buttons on form fields.
+  Originally intended as tooltips but evolved into too large explanations. 
+  
+Examples of patterns
+* The other repositories listed below
+* Third party blogs and whatever we might not know about
 
-- Replaced the server side JSon with the hard-coded [js/sample.js] assembled from a manual sketch [js/sample.png].
-- Applied arrow heads and flattened them to line ends to emulate a [color coded pair diagrams] or to emulate the over/under effect in thread diagrams. Later versions create the over/under effect with shortened lines, for better browser support and performance, a too complicated approach for the multiple colors of a color coded diagram.
-- Made nodes transparent except for bobbins.
-- Assigned the thread number as a class to each section of a thread to assign colors.
-- Turned the links from lines to paths with a third node to add mid-markers for twist marks.
-- Initial coordinates replace the default random values, thus the animation stabalizes much quicker and it prevents rotated and flipped diagrams.
+Most common tasks
+-----------------
+* Edit the `.md` files in the `docs` folder, these are the _editable_ versions of the _published_ pages.
+* Keep the TOC in the sidebar up to date.
 
-[proof of concept]: https://cdn.rawgit.com/d-bl/GroundForge/84eee36/index.html
-[example]: http://bl.ocks.org/mbostock/4062045
-[D3.js]: http://d3js.org/
-[js/sample.js]: https://github.com/d-bl/GroundForge/blob/7a94b67/js/sample.js
-[js/sample.png]: https://github.com/d-bl/GroundForge/blob/50421a2/js/sample.png
-[color coded pair diagrams]: https://en.wikipedia.org/w/index.php?title=Mesh_grounded_bobbin_lace&oldid=639789191#Worker_pair_versus_two_pair_per_pin
+| repository         | published pages | editable versions | editable sidebar |
+|--------------------|-----------------|-------------------|------------------|
+| [GroundForge]      | [X][gf-site]    | [X][gf-docs]      | [X][gf-sb]       |
+| [GroundForge-help] | [X][gfh-site]   | [X][gfh-docs]     | [X][gfh-sb]      |
+| [gw-lace-to-gf]    | [X][w-site]     | [X][w-docs]       | [X][w-sb]        |
+| [tesselace-to-gf]  | [X][t-site]     | [X][t-docs]       | [X][t-sb]        |
+| [MAE-gf]           | [X][mae-site]   | [X][mae-docs]     | [X][mae-sb]      |
 
+There is a simple [procedure] to propose simple changes to the pages.
 
-Using data from TesseLace
--------------------------
+Simple changes could be things like typo's, grammar or
+simplified phrasing hoping that automated translators do a better job.
 
-Scientific research presented at [TesseLace] resulted in patterns defined by matrices.
-These patterns are alternatives for the `js/sample.js` used for the proof of concept.
-GroundForge uses a compact matrix format using a character to tag a node.
-The character defines the [composition] of incoming pairs of the node.
-The class [TesselaceThumbs] generated the SVG versions of the images for the [TesseLace index].
-A batch script with InkScape exports converted these images into PNG. 
-The diagrams lack the original geometric information after completion of the animation,
-so topological duplicates were merged into single images.
-The geometric variations are provided via a link, they can be downloaded as SVG documents
-and customised into intermediate and other variations that are not bound to a square grid.
+When you have write rights for a repository,
+the green button to save your changes will show `commit changes`
+and the change will be effective immediately.
+To first discuss you changes through a pull request, 
+check the radio button to ` Create a new branch`,
+the big green button then changes to `propose changes`. 
 
-The matrices are converted to node and link objects to define pair diagrams.
-The [D3jsSVG] object turns these nodes and links to the initial SVG documents.
-The geometric information within the matrices is used for the initial coordinates of the nodes.
-JSon data generated from these [node] and [link] objects provides a [hook]
-for the D3js library to [adjust] the coordinates of the nodes. 
+[procedure]: https://help.github.com/articles/editing-files-in-another-user-s-repository/
 
-The thread diagrams are generated from the nodes and links of the pair diagram.
-Each node is replaced with a set of linked nodes as defined by the sequence of twist and cross actions.
-To keep track of the threads while constructing the diagram, 
-the algorithm figures out a working order to create the lace just like a real lace maker does.
+[GroundForge]: https://d-bl.github.io/GroundForge/
+[gf-docs]: https://d-bl.github.io/GroundForge/tree/master/docs/
+[gf-site]: https://d-bl.github.io/GroundForge/
+[gf-sb]: https://github.com/d-bl/GroundForge/tree/master/docs/_includes/Sidebar.html
 
-[adjust]: https://github.com/d-bl/GroundForge/blob/master/docs/js/tiles.js#L105
-[hook]: https://github.com/d-bl/GroundForge/blob/master/docs/js/tiles.js#L91-L93
-[D3jsSVG]: https://github.com/d-bl/GroundForge/blob/master/src/main/scala/dibl/D3jsSVG.scala
-[link]: https://github.com/d-bl/GroundForge/blob/918ab7aa3601e709475aa4b80baa388f2bd1161e/src/main/scala/dibl/LinkProps.scala#L36-L44
-[node]: https://github.com/d-bl/GroundForge/blob/918ab7aa3601e709475aa4b80baa388f2bd1161e/src/main/scala/dibl/NodeProps.scala#L27-L32
-[TesselaceThumbs]: https://github.com/d-bl/GroundForge/blob/918ab7aa3601e709475aa4b80baa388f2bd1161e/src/test/scala/dibl/TesselaceThumbs.scala#L66
-[composition]: https://d-bl.github.io/GroundForge/help/images/matrix-template.png
-[TesseLace]: http://TesseLace.com
-[TesseLace index]: https://d-bl.github.io/GroundForge/help/TesseLace-Index
+[GroundForge-help]: https://d-bl.github.io/GroundForge-help/
+[gfh-docs]: https://d-bl.github.io/GroundForge-help/tree/master/docs/
+[gfh-site]: https://d-bl.github.io/GroundForge-help/
+[gfh-sb]: https://github.com/d-bl/GroundForge-help/tree/master/docs/_includes/Sidebar.html
 
-Color-picker: jscolor
----------------------
+[gw-lace-to-gf]: https://d-bl.github.io/gw-lace-to-gf/
+[w-docs]: https://d-bl.github.io/gw-lace-to-gf/tree/master/docs/
+[w-site]: https://d-bl.github.io/gw-lace-to-gf/
+[w-sb]: https://github.com/d-bl/gw-lace-to-gf/tree/master/docs/_includes/Sidebar.html
 
-Safari nor Internet Explorer support `<input type="color">`. The free [color-picker](http://jscolor.com/) works on both platforms and was easy to apply.
+[tesselace-to-gf]: https://d-bl.github.io/tesselace-to-gf/
+[t-docs]: https://d-bl.github.io/tesselace-to-gf/tree/master/docs/
+[t-site]: https://d-bl.github.io/tesselace-to-gf/
+[t-sb]: https://github.com/d-bl/tesselace-to-gf/tree/master/docs/_includes/Sidebar.html
+
+[MAE-gf]: https://d-bl.github.io/MAE-gf/
+[mae-docs]: https://d-bl.github.io/MAE-gf/tree/master/docs/
+[mae-site]: https://d-bl.github.io/MAE-gf/
+[mae-sb]: https://github.com/d-bl/MAE-gf/tree/master/docs/_includes/Sidebar.html
 
 
-Compile and preview
-===================
+Preview complex changes online
+------------------------------
+
+To preview more complex changes
+* create a [private version] of the repositories, also called a stable version.
+* change the files of your own master branch
+* create a pull request comparing your own master with the master of `d-bl`
+* for work in progress: make sure the pull request is a draft
+
+[private version]: https://d-bl.github.io/GroundForge-help/Stable   
+
+
+Conventions
+-----------
+
+### licenses
+
+The license in the sidebar should apply to all content on all pages that use the sidebar.
+In case of exceptions use "[Some rights reserved](https://github.com/d-bl/GroundForge/blob/848938f6f241ec3212323727e24951c0c48263d1/docs/assets/images/CC_some_rights_reserved.png)",
+linking to an explanation of the general rule.
+Exceptions should be placed as close to the relevant artifacts as possible,
+preferably with Creative Commons [icons](https://en.wikipedia.org/wiki/Creative_Commons_license#Types_of_licenses).
+
+### metadata
+
+The mark-down pages start with a metadata section, something like
+
+    ---
+    layout: default
+    title: XYZ
+    ---
+
+Browsers show `XYZ` as tab title. Keep it short and catchy.
+
+### links
+Thumbnails in catalogues are the biggest target and should point to the pattern definition.
+If available, use a sample, otherwise the thread diagram.
+
+Use root relative links for references between the repositories.
+
+### scalable prickings
+
+Both PDF and SVG are scalable and can be imported by vector capable editors
+such as Inkscape, Adobe Illustrator and CorelDraw.
+Knipling can export PDF. When you just want a section of some file
+save a (temporary) copy of the pattern, delete the rest, then export the PDF.
+Import into Inkscape (for example) to save as SVG.
+
+### colors
+
+Note that the names don't match with the values [supported by browsers](https://www.w3schools.com/colors/colors_names.asp).
+The set is not yet complete for the full range of the belgian color code.
+For now the choice are:
+
+ decimal           | hex     | name 
+-------------------|---------|-------------
+rgb(155, 2, 25)    | #9b0219 | dark magenta 
+rgb(181, 114, 209) | #b472d1 | 
+rgb(131, 75, 206)  | #834bce | blue violet 
+rgb(2,1 52, 7)     | #029807 | deep green 
+rgb(206, 197, 17)  | #cec511 | dark yellow 
+rgb(13, 110, 253)  | #0d6efd | blue
+ 
+![](docs/images/colors-white.jpg) ![](docs/images/colors-black.jpg)
+
+### language
+
+Currently, we have a mix of UK and US spelling.
+
+Functional contribution
+=======================
 
 Requirements
 ------------
@@ -118,29 +220,35 @@ Work flow
 
 - Fork the project and make a local clone.
 - Don't push to your own master branch, but use the following work flow
-  - add the parent of your fork as remote to your local repository, by our conventionsk this remote is called blessed
+  - add the parent of your fork as remote to your local repository, by our conventions this remote is called blessed
   - fetch the master branch of the blessed repository
   - create a topic branch from the tip of the master branch
   - push your changes to your own fork and create a pull request
 - Compile your changes and copy the result from the root of the local project to `/docs/js`.
   Depending in your OS use the one liner in `toJS.sh` or `toJS.bat` the latter is not battle proven.
 - Check the results with the `docs/*.html` pages
-- If ok (or need advise from a reviewer): commit, push and create a pull request 
-- travis may report some of the internal link problems on the help pages in `docs/help`
-- Optional (if you know how to meddle with branches as your own master branch
-  will get another history than the parent repository):
-  - [configure] your local fork to deploy `docs` at `http://YOURID.github.io/GroundForge/` 
-  - after merging with your own master branch you can check your own version of the site.
-
-[configure]: https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch
+- If ok (or need advise from a reviewer): commit, push and create a pull request
 
 
-Important code conventions
---------------------------
+Code conventions
+----------------
 
-Never catch exceptions in a `Try` as exceptions terminate the JavaScript. The tests might succeed with maven, but the JavaScript breaks. Prevent exceptions like illegal arguments and indexes and create a `Failure` for safe execution with JavaScript.
-
-The applied Scala coding techniques are explained by this [course] up and including workshop 3. The main code doesn't use any io, and the hand full of files written by test/demo classes don't justify using a library. So you can save the last task of the FileIO assignment for other purposes.
+* Never catch exceptions in a `Try` as exceptions terminate the JavaScript.
+  The tests might succeed with maven, but the JavaScript breaks.
+  Prevent exceptions like illegal arguments and indexes and return a `Failure`
+  for safe execution with JavaScript.
+* Exchange of data between Scala code and JavaScript can be complicated.  
+  It is no problem for JavaScript store complex scala types,
+  as long as it only needs to pass it on to other scala code and not has to process the data.
+  Otherwise, primitive types are the primary choice. Diagram definitions are serialized as a URL query.
+  More or less like forms submitted to a server, for human readability no escaping is applied.
+* It was a terrible mistake to implement the `LinkProps` and `NodeProps` as a map.
+  Caused by the initial proof of concept starting with plain JavaScript by modifying D3js examples.
+  So far no success in phasing out this heritage. 
+  However, these maps are hidden from the world outside these two classes as much as possible. 
+* The initially applied Scala coding techniques are explained by this [course] up and including workshop 3.
+  The main code doesn't use any io, and the hand full of files written by test/demo classes don't justify using a library.
+  So you can skip the last task of the FileIO assignment.
 
 [course]: https://github.com/DANS-KNAW/course-scala
 
@@ -155,29 +263,26 @@ Some classes under `src/test` are suffixed with `Demos` rather than `Spec` these
 Use as JavaScript Library
 =========================
 
-The html pages in the `docs` directory use the code in `src/main` as a JavaScript library.
-This code is compiled to `GroundForge-opt.js`
-The page `docs\API` is a dressed down page showing the minimal code for all diagrams of one hard-coded pattern,
-the JavaScript more or less mimics the `Demo4Java` discussed below.
-The pages direct under `docs` are the dressed up pages
-deployed on github pages allowing to experiment with bobbin lace grounds. 
-
-These pages have no automated tests
-other than an internal link checker in the Ruby task by the [travis](https://travis-ci.org/d-bl/GroundForge) job.
+The demo's mentioned above use the scala code as a JavaScript library
+as explained under short intro for developers.
+Other mash ups and more user-friendly applications could be wrapped around the library.
 
 For manual tests with other browsers and devices than your own, you could sign-up at
-<br><a href="http://browserstack.com/"><img src="https://p14.zdusercontent.com/attachment/1015988/2pBNLzsRzHKyVmXhbPYFfcqi2?token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..u4MOjDBdY7uyB7AqmHgHyw.OG_ZUr4mjWRjpV4IE5UH_bEtx-L-4NHCjNVSBjFvNP9X9ugBGhbEmHXVTJlpI-UBmAFBTl2SVYLgE4G474L0Hu37sYTtC5G3ehtEdiUYPn2R-MfM9cxUCJVP_T1PYk9_kZowoF2wSPFvaWphfvO9bk-hykkhDfPeFQ2BHsJlTlHbpNq8Icd4sveUMnJl0zFiy-h3kGo0ImQLRZnNsmEa3qx7JTINhL-bAUpGQKmdpvWAFVhtUIz8ZkntxRnuNi5EtXD1P4tucKH8kSt5gJXnSU_O0M0Ka_pTJgVXpEQMvTs.it94EtvuwAOOEjIRwQ7z1w" width="120" height="63"></a>
+http://browserstack.com/
 
 Use as JVM library
 ==================
 
+A JVM library allows server-side or batch processing.
+
 The [Demo4Java.java](https://github.com/d-bl/GroundForge/blob/119-layout/src/test/scala/dibl/Demo4Java.java)
-between the test classes is a simple example that generates diagrams with a plain java main class.
+between the test classes is a simple plain java main class example that generates diagrams.
 This example uses the code in `src/main` as a Java library. 
 
 In a plain [JVM](https://www.w3schools.com/java/java_getstarted.asp)
 environment, you'll need at least on your `classpath`: 
 * The `.jar` from the [last release](https://github.com/d-bl/GroundForge/releases)
+  or a self-built one.
 * The jar at the repository URL on [scalajs-library](https://maven-repository.com/artifact/org.scala-js/scalajs-library_2.12/0.6.26)
   in the central maven repository. For the actual version, follow the tag of the release
   and find the dependency in the `pom.xml`

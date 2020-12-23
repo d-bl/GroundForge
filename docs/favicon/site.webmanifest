@@ -3,7 +3,7 @@
     "short_name": "",
     "icons": [
         {
-            "src": "/GroundForge/images/android-chrome-96x96.png",
+            "src": "/GroundForge/favicon/android-chrome-96x96.png",
             "sizes": "96x96",
             "type": "image/png"
         }

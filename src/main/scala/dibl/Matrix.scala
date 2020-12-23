@@ -17,8 +17,8 @@ package dibl
 
 import scala.collection.immutable.HashMap
 import scala.reflect.ClassTag
-import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
-import scala.util.{Failure, Success, Try}
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
+import scala.util.{ Failure, Success, Try }
 
 @JSExportTopLevel("Matrix") object Matrix {
 
@@ -135,6 +135,25 @@ import scala.util.{Failure, Success, Try}
     * A node can be connected in eight directions, but source nodes are not found downwards.
     */
   def toRelativeSources(c: Char): SrcNodes = relativeSourceMap.getOrElse(c.toUpper, Array.empty)
+
+  @JSExport
+  def pluginTxt(matrix: String, tiling: String): String = {
+    val lines = matrix.toUpperCase
+      .split("[\r\n, \t]+")
+    s"$tiling\t${ lines.length }\t${ lines.head.length }\n" +
+      (
+        for {
+          i <- lines.indices
+          j <- lines.head.indices
+        } yield {
+          relativeSourceMap.get(lines(i)(j)).map{
+            case Array((x1,y1),(x2,y2)) =>
+              s"[$i,$j,${ i + x1 },${ j + y1 },${ i + x2 },${ j + y2 }]"
+            case _ => ""
+          }.getOrElse("")
+        }
+        ).mkString("\t").replaceAll("\t+","\t")
+  }
 
   @JSExport
   def flip(lines: String): String = {

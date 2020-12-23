@@ -1,19 +1,20 @@
-Header { background: #2e7bcf url(../images/header-bg-left.png) top right repeat; padding: 0; }
+Header { background: #3679cd url(../images/header-bg-left.png) top right repeat; padding: 0; }
 .outer { background: url(../images/header-bg-right.png) top right repeat-y; padding-top: 40px; padding-bottom: 40px; }
-header a.button { background-color: #2e7bcf; }
+@media only screen and (min-width: 768px) {
+    header a.button {
+        background-color: #3679cd
+    }
+}
 
 #sidebar strong { font-size: 18px; font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; }
 #sidebar ul { padding-left: 0; margin-bottom: 0px; font-weight: bold; font-size: 12px; color: #474747; }
 #sidebar ul ul { padding-left: 15px; font-weight: normal; }
+#sidebar sub { font-weight: normal; }
 #sidebar li { list-style-type: none; padding-bottom: 8px; }
 #sidebar li li { list-style-type: disc; padding-bottom: 0;}
-
-li li { padding-bottom:0; }
-td, th { text-align: left }
-th { font-weight: bold; }
-table { margin-bottom: 1em; }
-
 #sidebar hr { height: 12px; border: 0; box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.2); }
+
+#fallBack { border: 10px solid orange; padding: 5px; }
 
 figure { display: inline-block; margin-left: 0; margin-top: 0; margin-right: 0.5em; }
 figure image, figcaption { display: block; }
@@ -21,11 +22,3 @@ figcaption { text-align: center; background-color: #ddd; border-radius: 3px; mar
 
 .hide { display: none; }
 .show { display: block; }
-
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-  svg {
-    -ms-transform: translate(-88px, 0) scale(0.75, 0.75); /* IE 9 */
-    -webkit-transform: translate(-88px, 0) scale(0.75, 0.75); /* Safari */
-    transform: translate(-88px, 0) scale(0.75, 0.75);
-  }
-}
