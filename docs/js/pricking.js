@@ -6,6 +6,7 @@ function clickedDot(linkElement, event) {
     if (action == "remove") {
         // for now show the event is applied, custom link shows the calculated value
         dot.getElementsByTagName("title")[0].innerHTML = `${dotId} : deleted from custom link`
+        dot.style = `fill:${color};opacity:0.0`
         var currentLinks = link.href.replace(/.*=/,"")
         var newlinks = TopoLink.removeStitch(dotId,currentLinks)
         link.href = "?topo=" + newlinks
@@ -31,6 +32,11 @@ function clickedLink(linkElement, event) {
     showDiagram(topolinks)
     return false
 }
+function changeSpeed(scaleElement) {
+    var w = 1 - (scaleElement.value / 100)
+    document.getElementById("weaker").value = w
+    document.getElementById("stronger").value = 1 / w
+}
 function load() {
     var urlQuery = location.search.substr(1)
     var topolinks = typeof urlQuery === "undefined" || urlQuery.trim() == ""
@@ -45,7 +51,7 @@ function showDiagram(topolinks) {
     var data = Data.create(links)
     if (data.length == 0) {
         console.log(links.toString())
-        elem.innerHTML = elem.innerHTML + "<p>whoops</p>"
+        elem.innerHTML = elem.innerHTML + "<p>whoops, console logging may have details</p>"
     } else {
         const { u, v, q } = SVDJS.SVD(data)
         elem.innerHTML = SvgPricking.create(Delta.create(links,u,v,q))

@@ -42,7 +42,7 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
       s"""<a href="#" onclick="clickedLink(this)">$l</a>"""
     }
     val dots = nodes.map{ case (id,(x,y)) =>
-      val c = s"""<circle id="$id" cx="${ scale * x + offsetX}" cy="${ scale * y + offsetY}" r="5" style="fill:rgb(225,0,0);opacity:0.65"><title>$id</title></circle>"""
+      val c = s"""<circle id="$id" cx="${ scale * x + offsetX}" cy="${ scale * y + offsetY}" r="8" style="fill:rgb(225,0,0);opacity:0.65"><title>$id</title></circle>"""
       s"""<a href="#" onclick="clickedDot(this)">$c</a>"""
     }
     val clones = if (tileVectors.isEmpty) Seq("")

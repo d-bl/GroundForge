@@ -17,7 +17,7 @@ package dibl.fte
 
 import dibl.LinkProps.WhiteStart
 import dibl.proto.TilesConfig
-import dibl.{ Diagram, LinkProps, NewPairDiagram, NodeProps, PairDiagram, ThreadDiagram }
+import dibl.{ Diagram, LinkProps, LinksOfSimpleTile, NewPairDiagram, NodeProps, PairDiagram, ThreadDiagram }
 
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 import scala.util.Try
@@ -150,32 +150,12 @@ case class TopoLink(isLeftOfSource: Boolean, sourceId: String, isLeftOfTarget: B
   }.getOrElse(Seq.empty)
 
   private def getTopoLinks(implicit diagram: Diagram, config: TilesConfig, scale: Int = 1) = {
+    val links = LinksOfSimpleTile(config, diagram, _.target)
+      .getOrElse(Seq.empty)
     TopoLink
-      .simplify(diagram.links.filter(inCenterBottomTile))
+      .simplify(links)
       .sortBy(l => l.targetId -> l.sourceId)
   }
-
-  private def inCenterBottomTile(link: LinkProps)
-                                (implicit diagram: Diagram, scale: Int, config: TilesConfig): Boolean = {
-    // The top and side tiles of a diagram may have irregularities along the outer edges.
-    // So select links arriving in the center bottom checker tile.
-    val cols = config.patchWidth / 3
-    val rows = config.patchHeight / 2
-
-    val target = diagram.node(link.target)
-    val source = diagram.node(link.source)
-    val y = unScale(target.y)
-    val x = unScale(target.x)
-    y >= rows && x >= cols && x < cols * 2 && !link.withPin && target.id != "" && source.id != ""
-  }
-
-  /** Revert [[NewPairDiagram]].toPoint
-    *
-    * @param i     value for x or y
-    * @param scale value 1 or factor to also undo [[ThreadDiagram]].scale
-    * @return x/y on canvas reduced to row/col number in the input
-    */
-  private def unScale(i: Double)(implicit scale: Int): Int = (i / scale / 15 - 2).toInt
 
   /**
     * fold transformation
