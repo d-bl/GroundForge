@@ -21,7 +21,7 @@ object Deltas {
     val x = v.numCols() - 2
     val y = x + 1
     val secondLastOnDiagonalOfW = svd.getW.get(x, x)
-    if (secondLastOnDiagonalOfW > 0.001)
+    if (secondLastOnDiagonalOfW > 0.00001)
       Failure(new Exception(s"no null space, second last diagonal element: $secondLastOnDiagonalOfW"))
     else Success((0 to y)
       .map(i => topoLinks(i) -> Delta(v.get(i, x), v.get(i, y)))

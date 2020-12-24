@@ -19,30 +19,15 @@ import scala.scalajs.js.{Array, Dictionary}
 import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
 @JSExportTopLevel("SvgPricking") object SvgPricking {
-  @JSExport
-  def create(topoLinks: Seq[TopoLink], jsNullspace: Dictionary[Any]): String = {
-    println("SvgPrincking.apply")
-    val rows = jsNullspace("m").toString.toInt
-    val cols = jsNullspace("n").toString.toInt
-    val nullspace = jsNullspace("val").asInstanceOf[Array[Double]].sliding(cols).toSeq.map(_.toSeq)
-    if (cols != 2 || rows != topoLinks.size) {
-      println(s"nullSpace dimensions are ($rows,$cols) expected (${ topoLinks.size },2)")
-      "whoops"
-    } else {
-      val deltas = (0 until rows)
-        .map(i => topoLinks(i) -> Delta(nullspace(i).head, nullspace(i)(1)))
-        .toMap
-      apply(deltas)
-    }
-  }
 
   // TODO make implicit like scale
   private val offsetX = 300
   private val offsetY = 250
 
-  def apply(deltas: Map[TopoLink, Delta]): String = {
-    val topoLinks = deltas.keys
-    val startId = topoLinks.head.sourceId
+  @JSExport
+  def create(deltas: Map[TopoLink, Delta]): String = {
+    println(s"SvgPricking.create deltas=${deltas.mkString("; ")}")
+    val startId = deltas.keys.head.sourceId
     val nodes = Locations.create(Map(startId -> (0, 0)), deltas)
     val tileVectors = TileVector(startId, deltas).toSeq
     val minLength = deltas.values.map {case Delta(dx,dy) =>

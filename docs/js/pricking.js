@@ -47,16 +47,8 @@ function showDiagram(topolinks) {
         console.log(links.toString())
         elem.innerHTML = elem.innerHTML + "<p>whoops</p>"
     } else {
-        console.log(links.toString())
-        console.log(data.length)
-        console.log(data.toString())
         const { u, v, q } = SVDJS.SVD(data)
-        console.log(u)
-        console.log(v)
-        console.log(q)
-//        var deltas = array2mat(rand(data.length,2))
-//        TODO infinite library call: https://github.com/lauerfab/MLweb/issues/12
-//        elem.innerHTML = SvgPricking.create(links, deltas)
+        elem.innerHTML = SvgPricking.create(Delta.create(links,u,v,q))
     }
 }
 function setDownloadContent (linkNode) {

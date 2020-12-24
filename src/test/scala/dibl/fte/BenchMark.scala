@@ -76,8 +76,8 @@ object BenchMark {
       data <- Data(topoLinks)
       _ = if (topoLinks.size < 19) println("DATA " + data.map(_.map(_.toInt).mkString("[", ",", "]")).mkString("[", ",", "]"))
       deltas <- Deltas(data, topoLinks)
-      svg = SvgPricking(deltas)
+      svg = SvgPricking.create(deltas)
       _ = File(fileName).writeAll(svg)
-    } yield SvgPricking(deltas)
+    } yield SvgPricking.create(deltas)
   }.recover { case t: Throwable => Success(println(t)) }
 }

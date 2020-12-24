@@ -5,7 +5,7 @@
     <title lang="en">GroundForge: Diagrams for Bobbin Lace</title>
     <script src="js/pricking.js"></script>
     <script src="js/GroundForge-opt.js"></script>
-    <script type="application/x-javascript" src="js/svd-1.1.1.js "></script>
+    <script type="application/x-javascript" src="js/svd-1.1.1.js"></script>
     <style>
         #weight { width:4em; }
         #linkdefs { max-width: 100%; width: 50em; height: 5em; }
@@ -174,15 +174,11 @@
     </svg>
 </div>
 <div id="text">
-    <em>Note: currently only a hard coded diagram with fixed lengths until the Lorraine university fixes this
-        <a href="https://github.com/lauerfab/MLweb/issues/12"
-        >bug</a>.
-    </em>
     <ul>
         <li><strong>Edit</strong>
             <ul>
                 <li>
-                    Click a pair between stitches to make it (*):
+                    Click a pair between stitches to make it:
                     <input type="radio" name="weight" id="stronger" value="1.25">
                     <label for="stronger">shorter</label>
                     <input type="radio" name="weight" id="weaker" value="0.8">
@@ -213,7 +209,7 @@
                     </label>
                     <br>
                     <input type="radio" name="stitch" id="remove" value="remove">
-                    <label for="remove">remove (*)</label>
+                    <label for="remove">remove (not yet implemented, only the pop-up and custom link changes)</label>
                     <br>
                     <em>Note: <a href="https://caniuse.com/#feat=input-color">browser support</a> for color code.</em>
                 </li>
@@ -222,12 +218,10 @@
                     Default visual clue is currently dragging the line segment.
                 </li>
             </ul>
-            (*): currently only the pop-up and custom link changes.
             <div class="disabled">
                 Note that elements of the "customized pattern" link pop up when you hover over a pair between stitches.
                 Read these elements as: "<em>left/right out of [id], left/right-into [id]</em>".
                 The optional number at the end is the strength.
-                For now, advanced users may use this information to add stitches.
             </div>
         </li>
         <li><strong>Save</strong> the link to the <a id="customlink" href="#">customized pattern</a>.</li>
@@ -243,14 +237,13 @@
     <p><strong>Patterns</strong></p>
     <p>Just some examples to get started:
         <a href="?pinwheel-pairs&patchWidth=12&patchHeight=8&tile=586-,-4-5,5-21,-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4&">pinwheel</a>,
-        <a href="?Gertrude-Whiting-F14_P193-threads&tileStitch=tc&patchWidth=24&patchHeight=28&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14">G.W. F14</a>.
+        <a href="?Gertrude-Whiting-F14_P193-threads&tileStitch=tc&patchWidth=24&patchHeight=28&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14">GW-F14</a>.
         As far as other patterns don't have links to this page:</p>
     <ul>
         <li>Select/create/customize a <a href="tilesde" target="_blank">pattern</a>.
             <br>
-            For now: no head side, no foot side, only checker tiles
-            (in other words: no brick-layout or overlapping tiles),
-            patch size must be 3 tiles wide and 2 tiles high.
+            For now: no head side, no foot side,
+            swatch size must be 3 simple tiles wide and 2 high.
             Still some combinations of patterns and stitches don't yet work.
         </li>
         <li>Click (on that other page!) the button <img src="images/link.png">
