@@ -1,16 +1,15 @@
 package dibl
 
-import java.lang.Math.{abs, floorMod}
+import java.lang.Math.{ abs, floorMod }
+import dibl.proto.{ PairParams, TilesConfig }
 
-import dibl.proto.TilesConfig
-
-import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 @JSExportTopLevel("InkscapeTemplate") object InkscapeTemplate {
 
   @JSExport
   def fromUrl(query: String): String = {
-    fromConfig(TilesConfig(query))
+    fromConfig(TilesConfig(PairParams(query).toSimple3x2.toString))
   }
 
   @JSExport

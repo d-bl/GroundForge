@@ -15,14 +15,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     .map { kv: String => (kv.replaceAll("=.*", ""), kv.replaceAll(".*=", "")) }
     .toMap
 
-  private def getMatrix(key: String): Seq[String] = {
-    queryFields.getOrElse(key, "").toLowerCase.split("[^-a-z0-9]+").map(_.trim)
-  }
-
   // TODO defend against unequal rows lengths
-  private val leftMatrix: Seq[String] = getMatrix("footside")
-  private val rightMatrix: Seq[String] = getMatrix("headside")
-  private val centerMatrix: Seq[String] = getMatrix("tile")
+  private val leftMatrix: Seq[String] = queryFields.matrixLines("footside")
+  private val rightMatrix: Seq[String] = queryFields.matrixLines("headside")
+  private val centerMatrix: Seq[String] = queryFields.matrixLines("tile")
 
   private val leftMatrixStitch: String = queryFields.getOrElse("footsideStitch", "ctctt")
   private val rightMatrixStitch: String = queryFields.getOrElse("headsideStitch", "ctctt")

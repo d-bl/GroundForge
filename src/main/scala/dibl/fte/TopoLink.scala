@@ -16,6 +16,7 @@
 package dibl.fte
 
 import dibl.LinkProps.WhiteStart
+import dibl.proto.toThreadsSimple3x2
 import dibl.proto.TilesConfig
 import dibl.{ Diagram, LinkProps, LinksOfSimpleTile, NewPairDiagram, NodeProps, PairDiagram, ThreadDiagram }
 
@@ -86,7 +87,7 @@ case class TopoLink(isLeftOfSource: Boolean, sourceId: String, isLeftOfTarget: B
       .find(_.matches("topo=.*"))
       .map(s => fromString(s.replace("topo=", "")))
       .getOrElse {
-        val pairDiagram = NewPairDiagram.create(TilesConfig(urlQuery))
+        val pairDiagram = NewPairDiagram.create(TilesConfig(toThreadsSimple3x2(urlQuery)))
         if (!urlQuery.matches(".*=[ctlr]+(&.*)?"))
           getTopoLinks(pairDiagram, TilesConfig(urlQuery))
         else fromThreadDiagram(urlQuery)
