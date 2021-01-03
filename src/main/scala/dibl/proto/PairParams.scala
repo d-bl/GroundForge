@@ -2,12 +2,12 @@ package dibl.proto
 
 import java.lang.Math.{ abs, floorMod }
 
-case class PairParams(centerMatrix: Seq[String] = Seq("5-", "-5"),
+case class PairParams(centerMatrix: Seq[String] = Seq("-5-5", "5-5-"),
                       leftMatrix: Seq[String] = Seq.empty,
                       rightMatrix: Seq[String] = Seq.empty,
                       shiftRowsSE: Int = 2,
                       shiftRowsSW: Int = 2,
-                      shiftColsSE: Int = 2,
+                      shiftColsSE: Int = 4,
                       shiftColsSW: Int = 0,
                       swatchWidth: Int = 12,
                       swatchHeight: Int = 12,
@@ -45,6 +45,19 @@ case class PairParams(centerMatrix: Seq[String] = Seq("5-", "-5"),
           swatchHeight = Math.max(swatchHeight, centerMatrixRows * 4),
         )
       case _ => ???
+      // TODO support for (most of) the tile layouts produced by
+      //  InkscapeTemplateSpec."show used overlapping tile layouts"
+      // 3,3;2,-2,2,2
+      // 3,3;3,-2,1,2
+      // 4,2;3,-1,1,2
+      // 4,2;3,-5,1,1
+      // 4,2;4,-1,1,2
+      // 5,2;5,-2,1,2
+      // 5,4;2,-4,4,2
+      // 5,5;1,-5,5,1
+      // 6,4;2,-4,2,4
+      // 8,12;8,1,6,12
+      // TODO increase tile sizes to at least 2x2 stitches (can be more than 2x2 grid positions)
     }
   }
 
@@ -53,7 +66,7 @@ case class PairParams(centerMatrix: Seq[String] = Seq("5-", "-5"),
     s.substring(n) + s.substring(0, n)
   }
 
-  override def toString: String = s"tile=${ centerMatrix.mkString(",") }&footside=${ leftMatrix.mkString(",") }&headside=${ rightMatrix.mkString(",") }&swatchWidth=$swatchWidth&&swatchHeight=$swatchHeight&"
+  override def toString: String = s"tile=${ centerMatrix.mkString(",") }&footside=${ leftMatrix.mkString(",") }&headside=${ rightMatrix.mkString(",") }&swatchWidth=$swatchWidth&swatchHeight=$swatchHeight&shiftColsSE=$shiftColsSE&shiftColsSW=$shiftColsSW&shiftRowsSE=$shiftRowsSE&shiftRowsSW=$shiftRowsSW&"
 }
 
 object PairParams {
@@ -81,7 +94,6 @@ object PairParams {
       else default
     }
 
-    val regExp = "[^0-9A-Za-z-]+"
     val centerMatrix = queryFields.matrixLines("tile")
     new PairParams(
       centerMatrix = centerMatrix,

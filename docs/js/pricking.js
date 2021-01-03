@@ -32,12 +32,17 @@ function clickedLink(linkElement, event) {
     showDiagram(topolinks)
     return false
 }
+function setPattern(list) {
+  document.getElementById("diagram").innerHTML = "please wait"
+  window.location.replace(list.options[list.selectedIndex].value)
+}
 function changeSpeed(scaleElement) {
     var w = 1 - (scaleElement.value / 100)
     document.getElementById("weaker").value = w
     document.getElementById("stronger").value = 1 / w
 }
 function load() {
+    document.getElementById("diagram").innerHTML = "please wait"
     var urlQuery = location.search.substr(1)
     var topolinks = typeof urlQuery === "undefined" || urlQuery.trim() == ""
         ? "lo,b4,ri,a1;lo,d4,li,a1;lo,b2,ri,a3;lo,d2,li,a3;lo,a1,li,b1;ro,b4,ri,b1;lo,b1,li,b2;lo,c1,ri,b2;lo,a3,li,b4;lo,c3,ri,b4;ro,b1,li,c1;ro,d4,ri,c1;ro,b2,li,c3;lo,d3,ri,c3;ro,a1,ri,d2;ro,c1,li,d2;ro,a3,ri,d3;ro,d2,li,d3;ro,c3,li,d4;ro,d3,ri,d4"
@@ -46,6 +51,7 @@ function load() {
     showDiagram(topolinks)
 }
 function showDiagram(topolinks) {
+    document.getElementById("diagram").innerHTML = "please wait"
     var elem =  document.getElementById("diagram")
     var links = TopoLink.fromUrlQuery("topo="+topolinks)
     var data = Data.create(links)

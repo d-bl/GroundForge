@@ -1,12 +1,15 @@
 package dibl
 
 import dibl.PatternQueries.{ gwPatterns, maePatterns, tlPatterns }
+import dibl.proto.PairParams
 import org.scalatest.{ FlatSpec, Matchers }
 
 import scala.util.Try
 
 class InkscapeTemplateSpec extends FlatSpec with Matchers {
-  it should "render a vertical brick" in {
+  val gwOverlap = Seq("gw-B6", "gw-A2", "gw-E6", "gw-H14b", "gw-B2", "gw-C9", "gw-D6", "gw-C6")
+  val maeOverlap = Seq("MAE-G54", "MAE-grond-12**", "MAE-G64", "MAE-G-02-YQ4b", "MAE-grond-12***", "MAE-G-02-Y1", "MAE-G-12")
+  "fromUrl" should "render a vertical brick" in {
     val q = gwPatterns.toMap.getOrElse("gw-D2", fail("no gw-D2"))
     InkscapeTemplate.fromUrl(q).split("\n") should contain allElementsOf
       """CHECKER	6	10
@@ -54,23 +57,34 @@ class InkscapeTemplateSpec extends FlatSpec with Matchers {
         |[5.0,6.0,4.0,6.0,5.0,7.0]
         |[7.0,4.0,6.0,4.0,7.0,5.0]""".stripMargin.split("\n")
   }
-  it should "render an overlapping tile layout" in pendingUntilFixed {
+  it should "render overlapping tile layouts" in pendingUntilFixed {
     val q = "rose&patchWidth=9&patchHeight=10&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
     InkscapeTemplate.fromUrl(q).split("\n") should contain allElementsOf
       """CHECKER\t4\t4
         |""".stripMargin.split("\n")
+
+    val patterns = (gwPatterns ++ maePatterns)
+      .filter { case (n, _) => (gwOverlap ++ maeOverlap).contains(n) }
+    val idToTemplate = urlQueryToTemplate(patterns)
+    idToTemplate.filter(_._2.isFailure).keys should contain allElementsOf gwOverlap
+  }
+  it should "show used overlapping tile layouts" in {
+    val overlap = gwOverlap ++ maeOverlap
+    val params = (gwPatterns ++ maePatterns)
+      .withFilter { case (n, _) => overlap.contains(n) }
+      .map { case (_, q) =>
+        val pp = PairParams(q)
+        s"${pp.centerMatrixCols},${pp.centerMatrixRows};${pp.shiftColsSE},${pp.shiftColsSW},${pp.shiftRowsSE},${pp.shiftRowsSW}"
+      }.distinct.sortBy(identity)
+    println(params.mkString("", "\n", ""))
   }
   it should "render most of gw" in {
     val idToTemplate = urlQueryToTemplate(gwPatterns)
-    idToTemplate.filter(_._2.isFailure).keys should contain allOf(
-      "gw-B6", "gw-A2", "gw-E6", "gw-H14b", "gw-B2", "gw-C9", "gw-D6", "gw-C6"
-    )
+    idToTemplate.filter(_._2.isFailure).keys should contain allElementsOf gwOverlap
   }
   it should "render most of mae" in {
     val idToTemplate = urlQueryToTemplate(maePatterns)
-    idToTemplate.filter(_._2.isFailure).keys should contain allOf(
-      "MAE-G54", "MAE-grond-12**", "MAE-G64", "MAE-G-02-YQ4b", "MAE-grond-12***", "MAE-G-02-Y1", "MAE-G-12"
-    )
+    idToTemplate.filter(_._2.isFailure).keys should contain allElementsOf maeOverlap
   }
   it should "render all tl" in {
     val idToTemplate = urlQueryToTemplate(tlPatterns)
