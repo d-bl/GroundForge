@@ -194,7 +194,7 @@ rgb(2,1 52, 7)     | #029807 | deep green
 rgb(206, 197, 17)  | #cec511 | dark yellow 
 rgb(13, 110, 253)  | #0d6efd | blue
  
-![](docs/images/colors-white.jpg) ![](docs/images/colors-black.jpg)
+![](src/test/resources/colors-white.jpg) ![](src/test/resources/colors-black.jpg)
 
 ### language
 
