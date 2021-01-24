@@ -15,6 +15,8 @@
 */
 package dibl.fte
 
+import java.lang.Math.{log, max, min}
+
 import scala.scalajs.js.{Array, Dictionary}
 import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
@@ -35,9 +37,10 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
     }.min
 
     implicit val scale: Double = 30 / minLength
-    val tile = deltas.map { case (tl @ TopoLink(_, s, _, t, _), Delta(dx, dy)) =>
+    val tile = deltas.map { case (tl @ TopoLink(_, s, _, t, weight), Delta(dx, dy)) =>
       val (x1, y1) = nodes(s)
-      val l = line(x1, y1, x1 - dx, y1 - dy, s"""id="$s-$t" style="stroke:rgb(0,0,0);stroke-width:4" """)
+      val w = min(5,max(2, 2 + log(3*weight)))
+      val l = line(x1, y1, x1 - dx, y1 - dy, s"""id="$s-$t" style="stroke:rgb(0,0,0);stroke-width:$w" """)
         .replace("/>", s"><title>$tl</title></line>")
       s"""<a href="#" onclick="clickedLink(this)">$l</a>"""
     }

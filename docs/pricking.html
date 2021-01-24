@@ -33,6 +33,8 @@
 </head>
 <body onload="load()">
 <h1>Experimental, work in progress: diagrams without distortion.</h1>
+<p> Minimum browser/OS versions: iPad5, iPhone7, Edge (not IE), Android.
+</p>
 <div id="diagram">
     <p>please have patience and notice that not all patters do work</p>
 </div>
@@ -343,8 +345,7 @@
                 <li>Create a custom <a href="/GroundForge/tiles" target="_blank">pattern</a>,
                     requirements for now:
                     <br>
-                    no overlapping tile layout, head side and foot side are ignored,
-                    iPad5+, iPhone7+, Edge (not IE), Android.
+                    no overlapping tile layout, head side and foot side are ignored.
                     Still, many patterns won't work.
                 </li>
                 <li>
@@ -381,9 +382,9 @@
                     <input type="radio" name="weight" id="stronger" value="2">
                     <label for="stronger">shorter</label>
                     <input type="radio" name="weight" id="weaker" value="0.5">
-                    <label for="stronger">longer</label>
+                    <label for="weaker">longer</label>
                     <input type="radio" name="weight" id="reset-strength" checked value="1">
-                    <label for="stronger">reset</label>.
+                    <label for="reset-strength">reset</label>.
                     <br>
                     A changed length will have another value than 1 at the end of the label.
                 </li>
@@ -392,17 +393,52 @@
                     <br>
                     <input type="radio" name="stitch" id="set" value="set" checked>
                     <label for="remove">assign:
-                        <input type="color" id="color" name="color" value="#33cc33" title="color code">
-                        <input type="text" id="stitch" name="stitch" value="ct" list="stitches" title="stitch definition">
+                        <select id="color" name="color" style="background-color: lime" title="color code" onchange="this.style.backgroundColor=`${ this.value }`">
+                            <option value="blue" style="background-color: blue">blue</option>
+                            <option value="DodgerBlue" style="background-color: DodgerBlue">DodgerBlue</option>
+                            <option value="LightSeaGreen" style="background-color: LightSeaGreen">LightSeaGreen</option>
+                            <option value="OliveDrab" style="background-color: OliveDrab">OliveDrab</option>
+                            <option value="green" style="background-color: green">green</option>
+                            <option value="lime" style="background-color: lime" selected>lime</option>
+                            <option value="Yellow" style="background-color: Yellow">Yellow</option>
+                            <option value="DarkOrange" style="background-color: DarkOrange">DarkOrange</option>
+                            <option value="Sienna" style="background-color: Sienna">Sienna</option>
+                            <option value="Purple" style="background-color: Purple">Purple</option>
+                            <option value="Violet" style="background-color: Violet">Violet</option>
+                            <option value="red" style="background-color: red">red</option>
+                            <option value="Black" style="background-color: Black">Black</option>
+                            <option value="Gray" style="background-color: Gray">Gray</option>
+                        </select>
+                        <select id="shape" name="shape" title="no second thoughts possible &#013unless sticking to dots">
+                            <option value="dot">● dot</option>
+                            <option value="square">◾ square</option>
+                            <option value="diamond">⬥ diamond</option>
+                            <option value="star">★ star</option>
+                            <option disabled>arrows</option>
+                            <option value="north">▲ north</option>
+                            <option value="south">▼ south</option>
+                            <option value="east">▶ east</option>
+                            <option value="west">◀ west</option>
+                            <option disabled>crescents</option>
+                            <option value="left">◐ left</option>
+                            <option value="right">◑ right</option>
+                            <option value="bottom">◒ bottom</option>
+                            <option value="top">◓ top</option>
+                            <option disabled>corners</option>
+                            <option value="se">◢ se</option>
+                            <option value="ne">◥ ne</option>
+                            <option value="sw">◣ sw</option>
+                            <option value="nw">◤ nw</option>
+                        </select>
+                        <input type="text" id="stitch" name="stitch" value="ct" list="stitches" title="stitch definition: &#013&#013c(ross), t(wist), &#013l(eft twist), r(ight twist), &#013p(in)">
                         <datalist id="stitches">
                             <option value="ct">
                             <option value="tc">
                             <option value="ctc">
                             <option value="tctc">
                             <option value="ctct">
-                            <option value="ctctc">
+                            <option value="ctctc" style="background-image:url(https://jo-pol.github.io/GroundForge-help/stitches/ctctc.png)">
                         </datalist>
-                        <em>note: <a href="https://caniuse.com/#feat=input-color">browser support</a> for color code</em>
                     </label>
                     <br>
                     <input type="radio" name="stitch" id="remove" value="remove" title="">
@@ -419,7 +455,7 @@
         </li>
         <li>
             <strong>Save</strong> the link to the <a id="customlink" href="#">edited pattern</a>.
-            N.B: not future proof and stitch instructions and colors are not yet saved.
+            N.B: not future proof and stitch assignments are not yet saved.
         </li>
         <li>
             <a download="pricking.svg" onfocus="setDownloadContent(this)" onblur="this.href='?#download'" href="?#download" title="download"

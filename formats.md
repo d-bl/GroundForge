@@ -4,15 +4,15 @@ Current formats
 * **Tiles page**:
   [rose](https://d-bl.github.io/GroundForge/tiles?patchWidth=9&patchHeight=10&c1=ct&b1=ctct&a1=ct&c2=ct&a2=ct&b3=ctct&tile=831,4-7,-5-&tileStitch=ct&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
   ground.
-* **Sheet page** (with a [dance](https://d-bl.github.io/GroundForge-help/Reshape-Patterns) leader): 
-  [rose](https://d-bl.github.io/GroundForge/sheet.html?patch=5831%20-4-7;bricks&patch=-437%2034-7;bricks&patch=4830%20--77;bricks)
+* **Sheet page** (with [dance](https://d-bl.github.io/GroundForge-help/Reshape-Patterns)
+  leaders): [rose](https://d-bl.github.io/GroundForge/sheet.html?patch=5831%20-4-7;bricks&patch=-437%2034-7;bricks&patch=4830%20--77;bricks)
   ground.
 * **Inkscape plugin template**:  
   Documented at the bottom of https://tesselace.com/tools/inkscape-extension/  
   rose: https://d-bl.github.io/tesselace-to-gf/tl/3_4_8/rose.txt 
-* **Draft** with a proof of concept on the pricking page:  
-  An irregularly shaped and (more or less randomly) rotated [rose](https://jo-pol.github.io/GroundForge/pricking?topo=lo,b4,ri,a1,1;lo,d4,li,a1,1;lo,b3,ri,a3,2;lo,d3,li,a3,2;lo,a1,li,b1,4;ro,b4,ri,b1,2;lo,b1,li,b2,2;lo,c1,ri,b2,0.5;lo,b2,li,b3,2;lo,c3,ri,b3,2;lo,a3,li,b4,1;ro,b3,ri,b4,2;ro,b1,li,c1,2;lo,d1,ri,c1,2;ro,b2,li,c3,0.5;lo,d2,ri,c3,0.5;ro,a1,ri,d1,4;ro,d4,li,d1,2;ro,c1,li,d2,0.5;ro,d1,ri,d2,2;ro,c3,li,d3,2;ro,d2,ri,d3,2;ro,a3,ri,d4,1;ro,d3,li,d4,2)
-  ground.
+* **Experimental draft** with a proof of concept on the pricking page:  
+  An irregularly shaped and (for now more or less randomly) rotated [rose](https://jo-pol.github.io/GroundForge/pricking?topo=lo,b4,ri,a1,1;lo,d4,li,a1,1;lo,b3,ri,a3,2;lo,d3,li,a3,2;lo,a1,li,b1,4;ro,b4,ri,b1,2;lo,b1,li,b2,2;lo,c1,ri,b2,0.5;lo,b2,li,b3,2;lo,c3,ri,b3,2;lo,a3,li,b4,1;ro,b3,ri,b4,2;ro,b1,li,c1,2;lo,d1,ri,c1,2;ro,b2,li,c3,0.5;lo,d2,ri,c3,0.5;ro,a1,ri,d1,4;ro,d4,li,d1,2;ro,c1,li,d2,0.5;ro,d1,ri,d2,2;ro,c3,li,d3,2;ro,d2,ri,d3,2;ro,a3,ri,d4,1;ro,d3,li,d4,2)
+  ground.  
   Similarities between id-s and a chessboard or spreadsheet is a coincidence.
   
 Conversions
@@ -21,14 +21,17 @@ Conversions
 * **tiles -> inkscape template**:  
   Download button on the caption of the "patern definition" panel. 
   It does not yet support overlapping tile layouts.
-  The templates have too much freedom for the other way around.
+  The templates have more freedom than the tile page, 
+  so the other way around is not possible.
 * **sheet -> tiles**:  
   Built in links. The other way around would be possible but is not yet implemented.
 
 Thoughts on a new format
 ========================
 
-Let's start with an example
+A rough sketch
+--------------
+Let's start with an example that stitches current practices together 
 
 ![](src/test/resources/storage-format.svg)
 
@@ -44,7 +47,6 @@ Let's start with an example
     ...-source: id[strength, dx, dy]
     stitch:     id[x,y], instructions (ctlrp), color
 
-
 Any similarity between id-s and a wind rose is a coincidence.
 
 * Header line mandatory. Order of columns may vary.
@@ -53,51 +55,77 @@ Any similarity between id-s and a wind rose is a coincidence.
 * Coordinates or deltas allow a quick re-render.
 * Strengths help to limit modifications for starch/wire-free patterns. Default 1.
 
-Calculation of a spring layout requires either deltas or coordinates or additional columns
-for left/right-target. Coordinates for pins, default centroid?
-For thread/droste diagrams one c(ross) or t(wist) for one stitch should be sufficient when
-no threads as pairs are desired. But what to do with pins?
+###Conversions
+The Inkscape plugin template format does not use id-s,
+but coordinates for all three columns and a simple tile size.
 
-Stitches with more than two pairs require more columns.
-Perhaps numbered source/target columns in a clockwise order.
-Together with more flexible stitch symbols than a colored dot, we might need a json format.
-A possible library for that purpose: https://github.com/circe/circe#readme
+Map cheat sheet symbols to deltas: `dibl.Matrix.toRelativeSources`
+Expand to simple matrices: `dibl.proto.PairParams.toSimple3x2`
+(commit `a192295d`, branch jo-pol/without-distortion,
+so far only bricks, how to determine the simple size for an overlapping tile?)
+
+Requirements
+------------
+
+* Minimal graph definition: edges around nodes in clockwise order. 
+  We could start with the leftmost pair required to make a stitch 
+  and end with the leftmost pair when the stitch is done.
+  ID-s for the nodes connected by the edges are enough information.
+* Algorithms are the bottleneck. Redundancy in storage (dx-dy for edges and/or x-y for nodes) may speed up re-rendering.
+* From the new proof of concept we can identify three types of objects to render and click on:  
+  Faces, edges and nodes.  
+  Information for edges and location of nodes (the stitches) is by definition includes in the faces (the holes between the pairs/threads)
+  For nodes we only 
+* Users want a legend for stitches. A cross-reference with stitch instructions
+  on one side and representations on the other side could serve as a style sheet.
+  The new proof of concept provides a free choice of colors
+  and so far an enumeration of shapes.
+  Ultimately that might become a string-template with parameters like x,y,id.
+  Not sure whether to store these cross-references together with the pattern and/or separately.
+  Perhaps a user may want to override across-reference that comes with a pattern.
+* For thread diagrams one c(ross) or t(wist) for one stitch should be sufficient when
+  no threads as pairs are desired. 
+  The other nodes can be calculated recursively though that is a matter of performance versus storage. 
+
+Storage
+-------
+When avoiding file upload and sticking to pattern links, storage may be a bottleneck:  
+a safe [maximum URL length](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers?rq=1)
+is 2K.
+So we might be better off with a base64 encoding of binary data.
+Without redundancy for faces we could do with deltas of two edges per node.
+That makes one short integer for an id, 4 floats for deltas, and a variable length string for the instructions.
+When encoding a `t` as `lr` we need more characters per stitch, but each character fits in 2 bits.
+That makes at least `16+4*32+16=5*32=160` bits, 24 bits require 4 base64 characters,
+that makes about 27 characters per stitch, for turning stitches and plaits 1 or 2 characters more.
+With a 2K limit and some 20 characters up to the query, that means at most 65 stitches per pattern.
+A droste pattern may quickly exceed that limit, for example https://www.instagram.com/p/CKT2gCxpBNd/
+So we should not try.
+
+Notes
+-----
+A possible library for json: https://github.com/circe/circe#readme
 
 For color names, See https://www.w3schools.com/colors/colors_names.asp  
 Need research whether Inkscape and other editors support the same set of names
-for the same hex-values. Default depends on the instructions which in turn defaults to ctc.
-Alternatives for a plain color for a standard circle:
-
-    <circle r="8" style="fill:rgb(225,0,0);opacity:0.65" />
-    <rectangle rx="8" ry="0" style="fill:rgb(225,0,0);opacity:0.65" />
-    <ellipse rx="4" ry="8" style="fill:yellow;stroke:purple;stroke-width:2" />
-    <polygon points="200,10 250,190 160,210" style="fill:lime;stroke:purple;stroke-width:1" />
-    <path d="m 12.6,14.7 -2.1,-3.7 4.2,0 z" style="fill:rgb(0,225,0)" />
-
-In case of a polygon or closed path the (rotation?) center must be 
-at the top left corner of the page.
-These shapes require other delimiters above, for example tabs to separate columns.
-This freedom of representing stiches requires a separate table 
-mapping stitch instructions to representations. 
-Reversing this mapping provides a legend.
-This approach reduces the stitch field to two components.
-The path in the examples above is a triangel.
-Inkscape can create nice [shapes](https://inkscape.org/doc/tutorials/shapes/tutorial-shapes.html),
-Save a page with just one shape, open in a browser, 
-right click somewhere, view page source,
-copy-paste and omit the properties not shown above.
-Note that too many details of a shape can get lost,
-The shape should also be a big enough target to click, 
-yet leave enough space between stitches for other clicks.
+for the same hex-values. 
+The default value depends on the instructions which in turn defaults to ctc.
 
 Comment/metadata? Such as a link to the tiles page, copyright (default cc-0?), author.
 
-Conversions
------------
-The Inkscape plugin template format does not use id-s, 
-but coordinates for all three columns and a simple tile size.
+Currently, pins are connected with only two nodes of its surrounding face. 
+Connecting them with all nodes and applying special forces to their connections might cause better behaviour.
+An idea against the distortion: connect the outer nodes with a (sticky?) frame.
 
-Map cheat sheet symbols to deltas: dibl.Matrix.toRelativeSources
-Expand to simple matrices: dibl.proto.PairParams.toSimple3x2
-(commit a192295d, branch jo-pol/without-distortion,
-so far only bricks, how to determine the simple size for an overlapping tile?)
+Implementation with D3js
+========================
+currently used version/API | for later versions and release notes see | notes
+-----|-------|----
+https://github.com/d3/d3/blob/v4.4.0/API.md | https://github.com/d3/d3/releases 
+https://github.com/d3/d3-force/tree/v1.0.4 | https://github.com/d3/d3-force/releases | v2.0.0 doesn't support IE any more <br> [our configuration](https://github.com/d-bl/GroundForge/blob/3ecc7b2bc74432e522f3a503f867f4aa5fcba7b0/docs/js/tiles.js#L149-L159)
+
+Interesting examples (possibly still v3)
+* [sticky nodes](https://bl.ocks.org/mbostock/3750558), see also our latest use of [sticky-pins](https://github.com/d-bl/GroundForge/releases/tag/last-with-sticky-pins)
+* [collapsible](https://bl.ocks.org/mbostock/1093130) possibly an "_expand all_" to replace the current conversion of pair to thread diagrams
+* [editor](http://bl.ocks.org/rkirsling/5001347)
+* 3D structures [Hamilton Graph builder](http://bl.ocks.org/christophermanning/raw/1703449/#/[25,50,75,100]100/0/0)
