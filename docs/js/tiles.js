@@ -45,7 +45,7 @@ function tesselace(query){
   }
   return tesselace
 }
-function prickingRef (q) {
+function pocRef (q) {
 console.log(q)
   return "" +
     q.replace(       /.*(tile=[^&]+).*/,"\$1") + "&" +
@@ -64,7 +64,7 @@ function showProto() {
   var query = submitQuery() // new form fields may have been added
   var hrefQ = tesselace(query) + query
   d3.select("#link").node().href = "?" + hrefQ
-  d3.select("#pricking").node().href = "pricking.html?" + prickingRef(query)
+  d3.select("#poc").node().href = "poc.html?" + pocRef(query)
   d3.select("#animations").style("display", "none")
   d3.selectAll("#threadDiagram, #pairDiagram, #drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)

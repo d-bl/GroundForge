@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title lang="en">GroundForge: Diagrams for Bobbin Lace</title>
-    <script src="js/pricking.js"></script>
+    <title lang="en">GroundForge: Proof Of Concept</title>
+    <script src="js/poc.js"></script>
     <script src="js/GroundForge-opt.js"></script>
     <script type="application/x-javascript" src="js/svd-1.1.1.js"></script>
     <style>
@@ -32,7 +32,7 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body onload="load()">
-<h1>Experimental, work in progress: diagrams without distortion.</h1>
+<h1>Experimental, work in progress: distortion-free diagrams.</h1>
 <p> Minimum browser/OS versions: iPad5, iPhone7, Edge (not IE), Android.
 </p>
 <div id="diagram">
@@ -57,46 +57,28 @@
                 <option disabled>Gertrude Whiting sampler (threads)</option>
 
                 <option value="?whiting=B14_P107&patchWidth=40&patchHeight=40&d1=ctct&b1=ctct&e2=ctc&d2=ctc&b2=ctc&a2=ctc&e3=ctc&d3=ctc&b3=ctc&a3=ctc&e4=ctc&d4=ctc&b4=ctc&a4=ctc&e5=ctc&d5=ctc&b5=ctc&a5=ctc&e6=ctc&d6=ctc&b6=ctc&a6=ctc&d7=tctct&b7=tctct&c8=ctctctct&tile=-b-c--,l8-m9-,1f-1f-,m8-m8-,1f-1f-,m8-m8-,-7-4--,--5---&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=6&shiftRowsSE=8"
-                >B14 P107</option>
+                >B14 P107 (slow)</option>
                 <option value="?whiting=E14_P171&patchWidth=40&patchHeight=40&d1=ctcr&c1=ctc&b1=ctcl&c2=ctct&f3=ctct&e4=ctct&a4=ctcT&f5=ctct&c6=ctc&d7=ctc&c7=ctc&b7=ctc&e8=ctcr&d8=ctc&b8=ctcr&a8=ctc&e9=ctc&d9=ctcl&b9=ctc&a9=ctcl&e10=ctcr&d10=ctc&b10=ctcr&a10=ctc&e11=ctc&d11=ctcl&b11=ctc&a11=ctcl&tile=-256--,Y-5-W-,-Y-W-5,5---5-,-W-Y-5,W-5-Y-,-535--,L6-O9-,1F-1F-,M8-M8-,1F-1F-,&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=11&shiftColsSE=6&shiftRowsSE=11"
-                >E14 P171</option>
+                >E14 P171 (very slow)</option>
                 <option value="?whiting=F14_P193&patchWidth=24&patchHeight=28&d10=tctct&d12=tctct&d14=tctct&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14"
-                >F14 P193; tc</option>
+                >F14 P193; tc (slow)</option>
 
                 <option disabled>Gertrude Whiting sampler (pairs)</option>
 
                 <option value="?whiting=A14_P87&patchWidth=40&patchHeight=40&tile=5-----5-----,-cvv-b-c-zzb,-x--5-5-5--x,-x-y-5-5-w-x,--5-y-5-w-5-,-e-5-y-zz5-w,01e-y-b-zz21,-x-h-y-y-e-4,--5-w-b-y-5-,-y-w-5-5-y-w,----5-5-5---,-g-y-5-5-w-n&tileStitch=ctct&&shiftColsSW=0&shiftRowsSW=12&shiftColsSE=12&shiftRowsSE=12"
                 >A14 P87</option>
-                <option value="?whiting=A16_P90&patchWidth=40&patchHeight=40&tile=-5--,B-C-,-5-5,5-5-&tileStitch=ctc&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4"
-                >A16 P90</option>
-                <option value="?whiting=A18_P93&patchWidth=40&patchHeight=40&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
-                >A18 P93</option>
                 <option value="?whiting=B14_P107&patchWidth=40&patchHeight=40&tile=-b-c--,l8-m9-,1f-1f-,m8-m8-,1f-1f-,m8-m8-,-7-4--,--5---&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=6&shiftRowsSE=8"
                 >B14 P107</option>
                 <option value="?whiting=B16_P110&patchWidth=40&patchHeight=40&tile=-5--,B-C-,-5-5,5-5-,-5-5,5-5-,&tileStitch=ctct&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=4&shiftRowsSE=6"
                 >B16 P110</option>
-                <option value="?whiting=C14_P129&patchWidth=40&patchHeight=40&shiftColsSW=-2&shiftRowsSW=10&shiftColsSE=2&shiftRowsSE=10"
-                >C14 P129</option>
                 <option value="?whiting=C16_P131&patchWidth=40&patchHeight=40&tile=5-5-5-,-535-5,56-25-,--5---,AB-CD-,-256-5,5-5-5-,-5-5-5&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=6&shiftRowsSE=8"
                 >C16 P131 (slow)</option>
                 <option value="?whiting=D9_P142&patchWidth=40&patchHeight=40&tile=5-,-5&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
                 >D9 P142</option>
                 <option value="?whiting=D16_P150&patchWidth=40&patchHeight=40&tile=-5-,E-2,8-M,F-1,8-M&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=5&shiftColsSE=3&shiftRowsSE=5"
                 >D16 P150</option>
-                <option value="?whiting=E2_P156&patchWidth=40&patchHeight=40&shiftColsSW=-4&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=3"
-                >E2 P156</option>
-                <option value="?whiting=E4_P158&patchWidth=40&patchHeight=40&shiftColsSW=-3&shiftRowsSW=5&shiftColsSE=3&shiftRowsSE=5"
-                >E4 P158</option>
-                <option value="?whiting=E16_P174&patchWidth=40&patchHeight=40&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=6&shiftRowsSE=6"
-                >E16 P174</option>
-                <option value="?whiting=F2_P178&patchWidth=40&patchHeight=40&b1=ctcctc&c2=ctcrrr&a2=ctclll&d3=ctc&b3=ctcttt&c4=ctc&a4=ctc&tile=-5--,B-C-,-5-5,5-5-&tileStitch=ctc&shiftColsSW=-2&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=4"
-                >F2 P178/</option>
                 <option value="?whiting=F14_P193&patchWidth=40&patchHeight=40&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14"
                 >F14 P193</option>
-                <option value="?whiting=G2_P199&patchWidth=40&patchHeight=40&shiftColsSW=-5&shiftRowsSW=5&shiftColsSE=5&shiftRowsSE=5"
-                >G2 P199</option>
-                <option value="?whiting=H2_P220&patchWidth=40&patchHeight=40&shiftColsSW=-4&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
-                >H2 P220</option>
                 <option value="?whiting=H5_P224&patchWidth=40&patchHeight=40&tile=8,1&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2"
                 >H5 P224 (very slow and dull)</option>
                 <option value="?whiting=H10_P230&patchWidth=40&patchHeight=40&tile=54---7,-79-04,5-158-,-5-5-5,5-535-,-24-76&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=6&shiftRowsSE=6"
@@ -160,7 +142,7 @@
                 <option value="?MAE=net-2-(diamond)&patchWidth=32&patchHeight=32&tile=5-5-,-5-5,5-5-,-5-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
                 >MAE=net-2-(diamond)</option>
                 <option value="?MAE=net-1c&patchWidth=32&patchHeight=32&tile=888888,111111,888888,111111,888888,111111&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=6&shiftRowsSE=6"
-                >MAE=net-2-(diamond)</option>
+                >MAE=net-2-(diamond, very slow)</option>
                 <option value="?MAE=net-1c&patchWidth=32&patchHeight=32&tile=5-214-,-5-276,215-5-,-786-5,246-5-,-5-586,,,,&shiftColdSW=0&shiftRows=6shiftColsSE=6,&shiftRowsSE6"
                 >MAE=TR-QA</option>
 
@@ -352,7 +334,7 @@
                     Either follow the <em>W.I.P.</em> link to get the pair diagram,
                     <br>
                     or adjust the adress bar to get the thread diagram:
-                    replace <em>tile</em> with <em>pricking</em>.
+                    replace <em>tile</em> with <em>poc</em>.
                 </li>
             </ul>
         </li>
@@ -458,7 +440,7 @@
             N.B: not future proof and stitch assignments are not yet saved.
         </li>
         <li>
-            <a download="pricking.svg" onfocus="setDownloadContent(this)" onblur="this.href='?#download'" href="?#download" title="download"
+            <a download="gf-poc-distortion-free.svg" onfocus="setDownloadContent(this)" onblur="this.href='?#download'" href="?#download" title="download"
             ><strong>Download</strong></a> the diagram and import into an editor
             or show in another tab of your browser.
             <br>

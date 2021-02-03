@@ -81,8 +81,8 @@ object BenchMark {
                           else stitch.replaceAll(".*=", "")
           val fileName = s"$dir/$qName-$tail.svg"
           val t0 = System.nanoTime()
-        //          createSvgFile(fileName, TopoLink.fromUrlQuery(query))
-        //          println(s"${ fileName.replaceAll(".*/", "") } Elapsed time: ${ (System.nanoTime() - t0) * 0.000000001 } sec")
+                  createSvgFile(fileName, TopoLink.fromUrlQuery(query))
+                  println(s"${ fileName.replaceAll(".*/", "") } Elapsed time: ${ (System.nanoTime() - t0) * 0.000000001 } sec")
       }
     }
   }
