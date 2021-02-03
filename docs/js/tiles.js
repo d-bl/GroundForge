@@ -45,12 +45,26 @@ function tesselace(query){
   }
   return tesselace
 }
+function pocRef (q) {
+console.log(q)
+  return "" +
+    q.replace(       /.*(tile=[^&]+).*/,"\$1") + "&" +
+    q.replace( /.*(patchWidth=[^&]+).*/,"\$1") + "&" +
+    q.replace(/.*(patchHeight=[^&]+).*/,"\$1") + "&" +
+    q.replace(/.*(shiftColsSE=[^&]+).*/,"\$1") + "&" +
+    q.replace(/.*(shiftRowsSE=[^&]+).*/,"\$1") + "&" +
+    q.replace(/.*(shiftColsSW=[^&]+).*/,"\$1") + "&" +
+    q.replace(/.*(shiftRowsSW=[^&]+).*/,"\$1") + "&" +
+    ""
+}
 function showProto() {
 
   var config = TilesConfig(submitQuery())
   d3.select("#prototype").html(PrototypeDiagram.create(config))
   var query = submitQuery() // new form fields may have been added
-  d3.select("#link").node().href = "?" + tesselace(query) + query
+  var hrefQ = tesselace(query) + query
+  d3.select("#link").node().href = "?" + hrefQ
+  d3.select("#poc").node().href = "poc.html?" + pocRef(query)
   d3.select("#animations").style("display", "none")
   d3.selectAll("#threadDiagram, #pairDiagram, #drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)

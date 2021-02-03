@@ -15,14 +15,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     .map { kv: String => (kv.replaceAll("=.*", ""), kv.replaceAll(".*=", "")) }
     .toMap
 
-  private def getMatrix(key: String): Seq[String] = {
-    queryFields.getOrElse(key, "").toLowerCase.split("[^-a-z0-9]+").map(_.trim)
-  }
-
   // TODO defend against unequal rows lengths
-  val leftMatrix: Seq[String] = getMatrix("footside")
-  val rightMatrix: Seq[String] = getMatrix("headside")
-  private val centerMatrix: Seq[String] = getMatrix("tile")
+  private val leftMatrix: Seq[String] = queryFields.matrixLines("footside")
+  private val rightMatrix: Seq[String] = queryFields.matrixLines("headside")
+  private val centerMatrix: Seq[String] = queryFields.matrixLines("tile")
 
   private val leftMatrixStitch: String = queryFields.getOrElse("footsideStitch", "ctctt")
   private val rightMatrixStitch: String = queryFields.getOrElse("headsideStitch", "ctctt")
@@ -46,8 +42,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   val maxTileRows: Int = Math.max(centerMatrixRows, Math.max(leftMatrix.length, rightMatrix.length))
 
   // patch size is at least tile-size; default 2x2 tiles
-  val patchHeight: Int = Math.max(queryFields.getOrElse("patchHeight", (2*centerMatrixRows).toString).safeToInt, centerMatrixRows)
-  val patchWidth: Int = Math.max(queryFields.getOrElse("patchWidth", (2*centerMatrixCols).toString).safeToInt, centerMatrixCols)
+  val patchHeight: Int = Math.max(queryFields.getOrElse("patchHeight", (4*centerMatrixRows).toString).safeToInt, centerMatrixRows)
+  val patchWidth: Int = Math.max(queryFields.getOrElse("patchWidth", (6*centerMatrixCols).toString).safeToInt, centerMatrixCols)
   // defaults for a checker matrix
   val shiftRowsSE: Int = queryFields.getOrElse("shiftRowsSE", centerMatrixRows.toString).safeToInt
   val shiftRowsSW: Int = queryFields.getOrElse("shiftRowsSW", centerMatrixRows.toString).safeToInt

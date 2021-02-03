@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title lang="en">GroundForge: Proof Of Concept</title>
+    <script src="js/poc.js"></script>
+    <script src="js/GroundForge-opt.js"></script>
+    <script type="application/x-javascript" src="js/svd-1.1.1.js"></script>
+    <style>
+        #speed { width:3em; }
+        div {display: inline-block; vertical-align: top; }
+        .disabled { color: #777 }
+        #color { border: 1px; padding: 0; }
+        #color, #stitch {  vertical-align: text-bottom; }
+        body ul { max-width: 40em; }
+        strong { font-size: large; }
+        ul, ol { margin-left: -1.2em; }
+        #diagram { width: 100%; height: 75vh; overflow: auto; float: right; margin-left: 1em; }
+        @media only screen and (min-width: 41em) {
+            #diagram { max-width: calc(100% - 40em); min-width: 50%; }
+        }
+    </style>
+
+    <link rel="apple-touch-icon" sizes="120x120" href="/GroundForge/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/GroundForge/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/GroundForge/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/GroundForge/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/GroundForge/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/GroundForge/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/GroundForge/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body onload="load()">
+<h1>Experimental, work in progress: distortion-free diagrams.</h1>
+<p> Minimum browser/OS versions: iPad5, iPhone7, Edge (not IE), Android.
+</p>
+<div id="diagram">
+    <p>please have patience and notice that not all patters do work</p>
+</div>
+    <ul>
+        <li><strong>Patterns</strong>
+            Some patterns need elements moved together after download, like
+            <a href="?rose-ct&tileStitch=ct&patchWidth=12&patchHeight=8&tile=5831,-4-7,3158,-7-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
+            >rose ct</a>,
+            <a href="?tesselace=kat-ct&patchWidth=12&patchHeight=12&tileStitch=ct&tile=B-C-,---5,C-B-,-5--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&"
+            >kat ct</a>.
+            Changing the distance between stitches might fix/break/rotate/flip patterns.
+            <br>
+            <select onchange="setPattern(this)">
+                <option disabled selected>Select a pattern</option>
+                <option value="?rose&patchWidth=12&patchHeight=8&tile=5831,-4-7,3158,-7-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
+                >rose</option>
+                <option value="?kat&patchWidth=12&patchHeight=12&tile=B-C-,---5,C-B-,-5--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&"
+                >kat</option>
+
+                <option disabled>Gertrude Whiting sampler (threads)</option>
+
+                <option value="?whiting=B14_P107&patchWidth=40&patchHeight=40&d1=ctct&b1=ctct&e2=ctc&d2=ctc&b2=ctc&a2=ctc&e3=ctc&d3=ctc&b3=ctc&a3=ctc&e4=ctc&d4=ctc&b4=ctc&a4=ctc&e5=ctc&d5=ctc&b5=ctc&a5=ctc&e6=ctc&d6=ctc&b6=ctc&a6=ctc&d7=tctct&b7=tctct&c8=ctctctct&tile=-b-c--,l8-m9-,1f-1f-,m8-m8-,1f-1f-,m8-m8-,-7-4--,--5---&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=6&shiftRowsSE=8"
+                >B14 P107 (slow)</option>
+                <option value="?whiting=E14_P171&patchWidth=40&patchHeight=40&d1=ctcr&c1=ctc&b1=ctcl&c2=ctct&f3=ctct&e4=ctct&a4=ctcT&f5=ctct&c6=ctc&d7=ctc&c7=ctc&b7=ctc&e8=ctcr&d8=ctc&b8=ctcr&a8=ctc&e9=ctc&d9=ctcl&b9=ctc&a9=ctcl&e10=ctcr&d10=ctc&b10=ctcr&a10=ctc&e11=ctc&d11=ctcl&b11=ctc&a11=ctcl&tile=-256--,Y-5-W-,-Y-W-5,5---5-,-W-Y-5,W-5-Y-,-535--,L6-O9-,1F-1F-,M8-M8-,1F-1F-,&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=11&shiftColsSE=6&shiftRowsSE=11"
+                >E14 P171 (very slow)</option>
+                <option value="?whiting=F14_P193&patchWidth=24&patchHeight=28&d10=tctct&d12=tctct&d14=tctct&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14"
+                >F14 P193; tc (slow)</option>
+
+                <option disabled>Gertrude Whiting sampler (pairs)</option>
+
+                <option value="?whiting=A14_P87&patchWidth=40&patchHeight=40&tile=5-----5-----,-cvv-b-c-zzb,-x--5-5-5--x,-x-y-5-5-w-x,--5-y-5-w-5-,-e-5-y-zz5-w,01e-y-b-zz21,-x-h-y-y-e-4,--5-w-b-y-5-,-y-w-5-5-y-w,----5-5-5---,-g-y-5-5-w-n&tileStitch=ctct&&shiftColsSW=0&shiftRowsSW=12&shiftColsSE=12&shiftRowsSE=12"
+                >A14 P87</option>
+                <option value="?whiting=B14_P107&patchWidth=40&patchHeight=40&tile=-b-c--,l8-m9-,1f-1f-,m8-m8-,1f-1f-,m8-m8-,-7-4--,--5---&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=6&shiftRowsSE=8"
+                >B14 P107</option>
+                <option value="?whiting=B16_P110&patchWidth=40&patchHeight=40&tile=-5--,B-C-,-5-5,5-5-,-5-5,5-5-,&tileStitch=ctct&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=4&shiftRowsSE=6"
+                >B16 P110</option>
+                <option value="?whiting=C16_P131&patchWidth=40&patchHeight=40&tile=5-5-5-,-535-5,56-25-,--5---,AB-CD-,-256-5,5-5-5-,-5-5-5&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=6&shiftRowsSE=8"
+                >C16 P131 (slow)</option>
+                <option value="?whiting=D9_P142&patchWidth=40&patchHeight=40&tile=5-,-5&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
+                >D9 P142</option>
+                <option value="?whiting=D16_P150&patchWidth=40&patchHeight=40&tile=-5-,E-2,8-M,F-1,8-M&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=5&shiftColsSE=3&shiftRowsSE=5"
+                >D16 P150</option>
+                <option value="?whiting=F14_P193&patchWidth=40&patchHeight=40&tile=-XX-XX-5,C-X-X-B-,-C---B-5,5-C-B-5-,-5X-X5-5,5XX-XX5-,-XX-XX-5,C-----B-,-CD-AB--,A11588D-,-78-14--,A11588D-,-78-14--,A11588D-&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=14&shiftColsSE=8&shiftRowsSE=14"
+                >F14 P193</option>
+                <option value="?whiting=H5_P224&patchWidth=40&patchHeight=40&tile=8,1&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2"
+                >H5 P224 (very slow and dull)</option>
+                <option value="?whiting=H10_P230&patchWidth=40&patchHeight=40&tile=54---7,-79-04,5-158-,-5-5-5,5-535-,-24-76&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=6&shiftRowsSE=6"
+                >H10 P230</option>
+                <option value="?whiting=H18_P241&patchWidth=40&patchHeight=40&tile=88,11&tileStitch=ctc&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
+                >H18a P241 (very slow and dull)</option>
+
+                <option disabled>MAE (threads)</option>
+
+                <option value="?G-02-Y1&patchWidth=36&patchHeight=36&h1=ctct&f1=ctct&e1=ctct&d1=ctct&b1=ctct&a1=ctct&h2=ctct&g2=ctct&e2=ctct&d2=ctct&c2=ctct&a2=ctct&h3=ctct&g3=ctct&f3=ctct&d3=ctct&c3=ctct&b3=ctct&g4=ctct&f4=ctct&e4=ctct&c4=ctct&b4=ctct&a4=ctct&h5=ctct&f5=ctct&e5=ctct&d5=ctct&b5=ctct&a5=ctct&h6=ctct&g6=ctct&e6=ctct&d6=ctct&c6=ctct&a6=ctct&h7=ctct&g7=ctct&f7=ctct&d7=ctct&c7=ctct&b7=ctct&g8=ctct&f8=ctct&e8=ctct&c8=ctct&b8=ctct&a8=ctct&tile=14-588-2,8-214-58,-588-214,214-588-,88-214-5,4-588-21,-214-588,588-214-&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=8&shiftRowsSE=8"
+                >G-02-Y1 (slow)</option>
+                <option value="?MAE=G-12xx&patchWidth=36&patchHeight=36&g1=ctc&d1=rctcr&c1=ctc&b1=ctc&a1=lctcl&h2=ctc&g2=ctc&f2=ctc&e2=ctc&b2=ctc&i3=ctc&f3=ctc&c3=ctc&b3=ctc&a3=ctc&g4=ctc&f4=ctc&e4=ctc&d4=ctc&a4=ctc&i5=ctc&h5=ctc&e5=ctc&b5=ctc&a5=ctc&i6=ctc&f6=ctc&e6=ctc&d6=ctc&c6=ctc&i7=ctc&h7=ctc&g7=ctc&d7=ctc&a7=ctc&h8=ctc&e8=ctc&d8=ctc&c8=ctc&b8=ctc&i9=ctc&h9=ctc&g9=ctc&f9=ctc&c9=ctc&tile=2A1C--7--,-7--2A1C-,A1C--7--2,7--2A1C--,1C--7--2A,--2A1C--7,C--7--2A1,-2A1C--7-,--7--2A1C&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=9&shiftColsSE=9&shiftRowsSE=9"
+                >MAE=G-12**</option>
+                <option value="?MAE=G-12xxx&patchWidth=36&patchHeight=36&i1=ctct&e1=ctct&d1=ct&c1=ct&a1=ctct&j2=ctct&i2=ctct&h2=ctct&f2=ctct&b2=ct&k3=ctct&g3=ctct&c3=ctct&b3=ctct&a3=ctct&l4=ctct&h4=ctct&g4=ctct&f4=ctct&d4=ctct&l5=ctct&k5=ctct&i5=ctct&e5=ctct&a5=ctct&j6=ctct&f6=ctct&e6=ctct&d6=ctct&b6=ctct&k7=ctct&j7=ctct&i7=ctct&g7=ctct&c7=ctct&l8=ctct&h8=ctct&d8=ctct&c8=ctct&b8=ctct&i9=ctct&h9=ctct&g9=ctct&e9=ctct&a9=ctct&l10=ctct&j10=ctct&f10=ctct&b10=ctct&a10=ctct&k11=ctct&g11=ctct&f11=ctct&e11=ctct&c11=ctct&l12=ctct&k12=ctct&j12=ctct&h12=ctct&d12=ctct&tile=H-A15---5-X-,-5-X-H-A15--,A15---5-X-H-,-X-H-A15---5,5---5-X-H-A1,-H-A15---5-X,--5-X-H-A15-,-A15---5-X-H,5-X-H-A15---,15---5-X-H-A,X-H-A15---5-,---5-X-H-A15&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=12&shiftColsSE=12&shiftRowsSE=12"
+                >MAE=G-12*** (very slow)</option>
+
+                <option disabled>MAE (pairs)</option>
+
+                <option value="?MAE=G-12&patchWidth=32&patchHeight=32&tile=88-14-5,4-588-1,8-14-58,-588-14,-14-588,588-14-,14-588-&shiftColsSW=0&shiftRowsSW=7&shiftColsSE=7&shiftRowsSE=7"
+                >MAE=G-12</option>
+                <option value="?MAE=3-star-5&patchWidth=32&patchHeight=32&tile=76x-,yxxy,6-x4,x24-,xxww,x-27&shiftColdSW=0&shiftRows=6shiftColsSE=4,&shiftRowsSE6"
+                >MAE=3-star 5</option>
+                <option value="?MAE=G-02-YQ2&patchWidth=32&patchHeight=32&tile=88-4,4831,-117,3178&shiftColdSW=0&shiftRows=4shiftColsSE=4,&shiftRowsSE4"
+                >MAE=G-02-YQ2</option>
+                <option value="?MAE=G-03-Ov&patchWidth=32&patchHeight=32&tile=5--5--,-C632B,566-22&shiftColdSW=-3&shiftRows=3shiftColsSE=3,&shiftRowsSE3"
+                >MAE=G-03-Ov</option>
+                <option value="?MAE=G-03a&patchWidth=32&patchHeight=32&tile=-5-5,5-5-,---5,C-B-&shiftColdSW=-2&shiftRows=4shiftColsSE=2,&shiftRowsSE4"
+                >MAE=G-03a</option>
+                <option value="?MAE=G-04&patchWidth=32&patchHeight=32&tile=-5-5,5-5-&shiftColdSW=-2&shiftRows=2shiftColsSE=2,&shiftRowsSE2"
+                >MAE=G-04 (net 2)</option>
+                <option value="?MAE=G-11&patchWidth=32&patchHeight=32&tile=8325,6-76,1563,224-&shiftColdSW=0&shiftRows=4shiftColsSE=4,&shiftRowsSE4"
+                >MAE=G-11</option>
+                <option value="?MAE=G-21&patchWidth=32&patchHeight=32&tile=-7-4--,B831C-,66-225&shiftColdSW=-3&shiftRows=3shiftColsSE=3,&shiftRowsSE3"
+                >MAE=G-21</option>
+                <option value="?MAE=G-31&patchWidth=32&patchHeight=32&tile=-5--,B-C3,7-4-,8-15&shiftColdSW=0&shiftRows=4shiftColsSE=4,&shiftRowsSE4"
+                >MAE=G-31</option>
+                <option value="?MAE=G-32&patchWidth=32&patchHeight=32&tile=-C3B,-488,-148,5---&shiftColdSW=0&shiftRows=4shiftColsSE=4,&shiftRowsSE4"
+                >MAE=G-32</option>
+                <option value="?MAE=SN-2&patchWidth=32&patchHeight=32&tile=-5--,B-C-,-5-5,5-5-&shiftColdSW=-2&shiftRows=4shiftColsSE=2,&shiftRowsSE4"
+                >MAE=SN-2</option>
+                <option value="?MAE=SP-BS&patchWidth=32&patchHeight=32&tile=5---5---,-CD632AB,5666-222&shiftColdSW=-4&shiftRows=3shiftColsSE=4,&shiftRowsSE3"
+                >MAE=SP-BS</option>
+                <option value="?MAE=SP-NQ3&patchWidth=32&patchHeight=32&tile=--5--7-4,C632B831,66-224-7,31583256&shiftColdSW=-4&shiftRows=4shiftColsSE=4,&shiftRowsSE4"
+                >MAE=SP-NQ3</option>
+                <option value="?MAE=SP-Q2&patchWidth=32&patchHeight=32&tile=5--5--,-C632B,566-22&shiftColdSW=-3&shiftRows=3shiftColsSE=3,&shiftRowsSE3"
+                >MAE=SP-Q2</option>
+                <option value="?MAE=SP-Q3&patchWidth=32&patchHeight=32&tile=5---5---,-CD632AB,56663222,5666-222&shiftColdSW=-4&shiftRows=4shiftColsSE=4,&shiftRowsSE4"
+                >MAE=SP-Q3</option>
+                <option value="?MAE=SP-Q4&patchWidth=32&patchHeight=32&tile=5----5----,-CDD632AAB,5666632222,5666632222,56666-2222&shiftColdSW=-5&shiftRows=5shiftColsSE=5,&shiftRowsSE5"
+                >MAE=SP-Q4</option>
+                <option value="?MAE=SP-T2&patchWidth=32&patchHeight=32&tile=-5--,B-C-,-5-5,5-5-&shiftColdSW=-2&shiftRows=4shiftColsSE=2,&shiftRowsSE4"
+                >MAE=SP-T2</option>
+                <option value="?MAE=SP-T3&patchWidth=32&patchHeight=32&tile=-5----,B-CD-A,256-5-,-5-535,5-56-2&shiftColdSW=-3&shiftRows=5shiftColsSE=3,&shiftRowsSE5"
+                >MAE=SP-T3</option>
+                <option value="?MAE=SP-T4&patchWidth=32&patchHeight=32&tile=-5------,B-CDD-AA,2566-5-2,256-535-,-5-56325,5-566-22&shiftColdSW=-4&shiftRows=6shiftColsSE=4,&shiftRowsSE6"
+                >MAE=SP-T4</option>
+                <option value="?MAE=SP-T5&patchWidth=32&patchHeight=32&tile=-5--------,B-CDDD-AAA,25666-5-22,2566-535-2,256-56325-,-5-5663225,5-5666-222&shiftColdSW=-5&shiftRows=7shiftColsSE=5,&shiftRowsSE7"
+                >MAE=SP-T5</option>
+                <option value="?MAE=TR-K&patchWidth=32&patchHeight=32&tile=5---5---,-CD6-2AB,-468-127&shiftColdSW=-4&shiftRows=3shiftColsSE=4,&shiftRowsSE3"
+                >MAE=TR-K</option>
+                <option value="?MAE=net-2-(diamond)&patchWidth=32&patchHeight=32&tile=5-5-,-5-5,5-5-,-5-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
+                >MAE=net-2-(diamond)</option>
+                <option value="?MAE=net-1c&patchWidth=32&patchHeight=32&tile=888888,111111,888888,111111,888888,111111&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=6&shiftRowsSE=6"
+                >MAE=net-2-(diamond, very slow)</option>
+                <option value="?MAE=net-1c&patchWidth=32&patchHeight=32&tile=5-214-,-5-276,215-5-,-786-5,246-5-,-5-586,,,,&shiftColdSW=0&shiftRows=6shiftColsSE=6,&shiftRowsSE6"
+                >MAE=TR-QA</option>
+
+                <option disabled>tesselace (pairs)</option>
+
+                <option value="?pinwheel&patchWidth=12&patchHeight=8&tile=586-,-4-5,5-21,-5-7&shiftColsSE=4&shiftRowsSE=4&shiftColsSW=0&shiftRowsSW=4&"
+                >pinwheel</option>
+                <option value="?tesselace=1x3_1&patchWidth=12&patchHeight=12&tile=563&shiftColsSW=0&shiftRowsSW=1&shiftColsSE=3&shiftRowsSE=0&">1x3_1</option>option>
+                <option value="?tesselace=1x4_2&patchWidth=12&patchHeight=12&tile=5632&shiftColsSW=0&shiftRowsSW=1&shiftColsSE=4&shiftRowsSE=0&">1x4_2</option>option>
+                <option value="?tesselace=2x3_23&patchWidth=12&patchHeight=12&tile=463,668&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=3&shiftRowsSE=0&">2x3_23</option>option>
+                <option value="?tesselace=2x3_25&patchWidth=12&patchHeight=12&tile=483,56-&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=3&shiftRowsSE=0&">2x3_25</option>option>
+                <option value="?tesselace=2x4_18&patchWidth=12&patchHeight=12&tile=4-J4,35-7&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=4&shiftRowsSE=0&">2x4_18</option>option>
+                <option value="?tesselace=2x4_28&patchWidth=12&patchHeight=12&tile=4-L8,25-1&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=4&shiftRowsSE=0&">2x4_28</option>option>
+                <option value="?tesselace=2x4_49&patchWidth=12&patchHeight=12&tile=68-7,-124&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=4&shiftRowsSE=0&">2x4_49</option>option>
+                <option value="?tesselace=2x4_50&patchWidth=12&patchHeight=12&tile=437-,6325&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=4&shiftRowsSE=0&">2x4_50</option>option>
+                <option value="?tesselace=2x4_67&patchWidth=12&patchHeight=12&tile=466-,6686&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=4&shiftRowsSE=0&">2x4_67</option>option>
+                <option value="?tesselace=2x4_86&patchWidth=12&patchHeight=12&tile=4-O0,O04-&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=4&shiftRowsSE=0&">2x4_86</option>option>
+                <option value="?tesselace=2x4_74&patchWidth=12&patchHeight=12&tile=4312,6837&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=4&shiftRowsSE=0&">2x4_74</option>option>
+                <option value="?tesselace=2x4_91&patchWidth=12&patchHeight=12&tile=46-1,6868&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=4&shiftRowsSE=0&">2x4_91</option>option>
+                <option value="?tesselace=2x4_93&patchWidth=12&patchHeight=12&tile=58-1,-158&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=4&shiftRowsSE=0&">2x4_93</option>option>
+                <option value="?tesselace=2x4_96&patchWidth=12&patchHeight=12&tile=5831,-4-7&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=4&shiftRowsSE=0&">2x4_96</option>option>
+                <option value="?tesselace=2x4_105&patchWidth=12&patchHeight=12&tile=4832,6317&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=4&shiftRowsSE=0&">2x4_105</option>option>
+                <option value="?tesselace=2x4_106&patchWidth=12&patchHeight=12&tile=4831,66-7&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=4&shiftRowsSE=0&">2x4_106</option>option>
+                <option value="?tesselace=2x4_111&patchWidth=12&patchHeight=12&tile=4863,6348&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=4&shiftRowsSE=0&">2x4_111</option>option>
+                <option value="?tesselace=3x3_3&patchWidth=12&patchHeight=12&tile=46-,4-2,868&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_3</option>option>
+                <option value="?tesselace=3x3_12&patchWidth=12&patchHeight=12&tile=58-,6-5,-24&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_12</option>option>
+                <option value="?tesselace=3x3_19&patchWidth=12&patchHeight=12&tile=56-,6-5,-56&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_19</option>option>
+                <option value="?tesselace=3x3_56&patchWidth=12&patchHeight=12&tile=4-L,-5-,31C&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_56</option>option>
+                <option value="?tesselace=3x3_60&patchWidth=12&patchHeight=12&tile=4-L,763,24-&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_60</option>option>
+                <option value="?tesselace=3x3_79&patchWidth=12&patchHeight=12&tile=4-O,221,46-&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_79</option>option>
+                <option value="?tesselace=3x3_93&patchWidth=12&patchHeight=12&tile=4-O,-5F,56-&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_93</option>option>
+                <option value="?tesselace=3x3_107&patchWidth=12&patchHeight=12&tile=4-L,-L4,L4-&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_107</option>option>
+                <option value="?tesselace=3x3_120&patchWidth=12&patchHeight=12&tile=48-,112,78-&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_120</option>option>
+                <option value="?tesselace=3x3_140&patchWidth=12&patchHeight=12&tile=4-O,221,634&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_140</option>option>
+                <option value="?tesselace=3x3_143&patchWidth=12&patchHeight=12&tile=48-,686,46-&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_143</option>option>
+                <option value="?tesselace=3x3_169&patchWidth=12&patchHeight=12&tile=B32,5--,-C-&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_169</option>option>
+                <option value="?tesselace=3x3_187&patchWidth=12&patchHeight=12&tile=463,-48,668&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_187</option>option>
+                <option value="?tesselace=3x3_209&patchWidth=12&patchHeight=12&tile=432,58-,48-&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_209</option>option>
+                <option value="?tesselace=3x3_225&patchWidth=12&patchHeight=12&tile=483,56-,48-&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_225</option>option>
+                <option value="?tesselace=3x3_228&patchWidth=12&patchHeight=12&tile=583,24-,-25&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_228</option>option>
+                <option value="?tesselace=3x3_248&patchWidth=12&patchHeight=12&tile=483,348,834&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_248</option>option>
+                <option value="?tesselace=3x3_268&patchWidth=12&patchHeight=12&tile=483,211,78-&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_268</option>option>
+                <option value="?tesselace=3x3_276&patchWidth=12&patchHeight=12&tile=483,5--,83B&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=3&shiftRowsSE=0&">3x3_276</option>option>
+                <option value="?tesselace=3x4_176&patchWidth=12&patchHeight=12&tile=4-O6,8-48,8E-4&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=0&">3x4_176</option>option>
+                <option value="?tesselace=3x4_178&patchWidth=12&patchHeight=12&tile=4-O6,7-4-,8E-5&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=0&">3x4_178</option>option>
+                <option value="?tesselace=3x4_229&patchWidth=12&patchHeight=12&tile=435-,6-25,86-5&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=0&">3x4_229</option>option>
+                <option value="?tesselace=3x4_261&patchWidth=12&patchHeight=12&tile=46--,4-C-,8635&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=0&">3x4_261</option>option>
+                <option value="?tesselace=3x4_262&patchWidth=12&patchHeight=12&tile=466-,14--,88D6&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=0&">3x4_262</option>option>
+                <option value="?tesselace=3x4_279&patchWidth=12&patchHeight=12&tile=437-,4-7-,8315&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=0&">3x4_279</option>option>
+                <option value="?tesselace=3x4_280&patchWidth=12&patchHeight=12&tile=4-M-,F-1C,8666&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=0&">3x4_280</option>option>
+                <option value="?tesselace=3x4_281&patchWidth=12&patchHeight=12&tile=4-J7,F-17,8666&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=0&">3x4_281</option>option>
+                <option value="?tesselace=3x4_283&patchWidth=12&patchHeight=12&tile=435-,4-7-,86-5&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=0&">3x4_283</option>option>
+                <option value="?tesselace=3x4_287&patchWidth=12&patchHeight=12&tile=434-,4-7-,8686&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=0&">3x4_287</option>option>
+                <option value="?tesselace=3x4_294&patchWidth=12&patchHeight=12&tile=4-J7,1E-7,8866&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=0&">3x4_294</option>option>
+                <option value="?tesselace=3x4_295&patchWidth=12&patchHeight=12&tile=4-M-,1E-C,8866&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=0&">3x4_295</option>option>
+                <option value="?tesselace=3x4_420&patchWidth=12&patchHeight=12&tile=468-,-4-5,586-&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=0&">3x4_420</option>option>
+                <option value="?tesselace=3x4_477&patchWidth=12&patchHeight=12&tile=B-O-,353C,-E-5&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=0&">3x4_477</option>option>
+                <option value="?tesselace=3x4_479&patchWidth=12&patchHeight=12&tile=B-O8,256-,-E-5&shiftColsSW=0&shiftRowsSW=3&shiftColsSE=4&shiftRowsSE=0&">3x4_479</option>option>
+                <option value="?tesselace=4x3_10&patchWidth=12&patchHeight=12&tile=48-,686,-14,58-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_10</option>option>
+                <option value="?tesselace=4x3_15&patchWidth=12&patchHeight=12&tile=48-,6-5,-24,58-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_15</option>option>
+                <option value="?tesselace=4x3_92&patchWidth=12&patchHeight=12&tile=4-M,-5-,63C,112&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_92</option>option>
+                <option value="?tesselace=4x3_93&patchWidth=12&patchHeight=12&tile=4-L,-5-,63C,315&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_93</option>option>
+                <option value="?tesselace=4x3_95&patchWidth=12&patchHeight=12&tile=4-L,-5-,68D,314&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_95</option>option>
+                <option value="?tesselace=4x3_102&patchWidth=12&patchHeight=12&tile=48-,6-5,-5-,B8-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_102</option>option>
+                <option value="?tesselace=4x3_115&patchWidth=12&patchHeight=12&tile=48-,315,-7-,B8-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_115</option>option>
+                <option value="?tesselace=4x3_166&patchWidth=12&patchHeight=12&tile=B-O,221,314,-7-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_166</option>option>
+                <option value="?tesselace=4x3_174&patchWidth=12&patchHeight=12&tile=B-O,221,6-4,-5-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_174</option>option>
+                <option value="?tesselace=4x3_193&patchWidth=12&patchHeight=12&tile=48-,686,666,46-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_193</option>option>
+                <option value="?tesselace=4x3_262&patchWidth=12&patchHeight=12&tile=4-O,358,-5E,56-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_262</option>option>
+                <option value="?tesselace=4x3_264&patchWidth=12&patchHeight=12&tile=4-O,25-,-7E,56-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_264</option>option>
+                <option value="?tesselace=4x3_282&patchWidth=12&patchHeight=12&tile=4-M,O5-,122,111&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_282</option>option>
+                <option value="?tesselace=4x3_284&patchWidth=12&patchHeight=12&tile=4-L,O5-,122,14-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_284</option>option>
+                <option value="?tesselace=4x3_292&patchWidth=12&patchHeight=12&tile=46-,6-5,-24,688&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_292</option>option>
+                <option value="?tesselace=4x3_297&patchWidth=12&patchHeight=12&tile=46-,6-5,--4,D68&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_297</option>option>
+                <option value="?tesselace=4x3_299&patchWidth=12&patchHeight=12&tile=46-,315,-76,668&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_299</option>option>
+                <option value="?tesselace=4x3_323&patchWidth=12&patchHeight=12&tile=4-O,7-1,731,5F-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_323</option>option>
+                <option value="?tesselace=4x3_368&patchWidth=12&patchHeight=12&tile=48-,686,46-,48-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_368</option>option>
+                <option value="?tesselace=4x3_373&patchWidth=12&patchHeight=12&tile=4-O,-58,-4F,56-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_373</option>option>
+                <option value="?tesselace=4x3_392&patchWidth=12&patchHeight=12&tile=B-O,76-,E-5,-5-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_392</option>option>
+                <option value="?tesselace=4x3_399&patchWidth=12&patchHeight=12&tile=4-O,76-,4F-,48-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_399</option>option>
+                <option value="?tesselace=4x3_487&patchWidth=12&patchHeight=12&tile=4-L,76-,4--,1C-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=3&shiftRowsSE=0&">4x3_487</option>option>
+                <option value="?tesselace=4x4_2&patchWidth=12&patchHeight=12&tile=466-,6686,6-46,8666&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_2</option>option>
+                <option value="?tesselace=4x4_5&patchWidth=12&patchHeight=12&tile=466-,66-5,6-56,8666&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_5</option>option>
+                <option value="?tesselace=4x4_7&patchWidth=12&patchHeight=12&tile=4631,6688,3146,8866&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_7</option>option>
+                <option value="?tesselace=4x4_8&patchWidth=12&patchHeight=12&tile=4631,66-7,6-56,8666&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_8</option>option>
+                <option value="?tesselace=4x4_9&patchWidth=12&patchHeight=12&tile=4631,66-7,3156,8866&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_9</option>option>
+                <option value="?tesselace=4x4_10&patchWidth=12&patchHeight=12&tile=4631,6317,6-76,8666&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_10</option>option>
+                <option value="?tesselace=4x4_11&patchWidth=12&patchHeight=12&tile=4631,6317,3176,8866&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_11</option>option>
+                <option value="?tesselace=4x4_12&patchWidth=12&patchHeight=12&tile=4343,5353,5-5-,8686&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_12</option>option>
+                <option value="?tesselace=4x4_13&patchWidth=12&patchHeight=12&tile=4343,5353,5-21,8688&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_13</option>option>
+                <option value="?tesselace=4x4_15&patchWidth=12&patchHeight=12&tile=434-,6325,6-25,8686&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_15</option>option>
+                <option value="?tesselace=4x4_18&patchWidth=12&patchHeight=12&tile=4632,5683,5-4-,8635&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_18</option>option>
+                <option value="?tesselace=4x4_20&patchWidth=12&patchHeight=12&tile=4632,5683,3148,8834&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_20</option>option>
+                <option value="?tesselace=4x4_21&patchWidth=12&patchHeight=12&tile=4632,5683,214-,8835&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_21</option>option>
+                <option value="?tesselace=4x4_22&patchWidth=12&patchHeight=12&tile=4632,5683,2111,8837&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_22</option>option>
+                <option value="?tesselace=4x4_23&patchWidth=12&patchHeight=12&tile=4632,56-2,6-58,8634&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_23</option>option>
+                <option value="?tesselace=4x4_24&patchWidth=12&patchHeight=12&tile=4632,56-2,5-5-,8635&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_24</option>option>
+                <option value="?tesselace=4x4_25&patchWidth=12&patchHeight=12&tile=4632,56-2,5-21,8637&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_25</option>option>
+                <option value="?tesselace=4x4_27&patchWidth=12&patchHeight=12&tile=4632,56-2,215-,8835&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_27</option>option>
+                <option value="?tesselace=4x4_28&patchWidth=12&patchHeight=12&tile=4632,56-2,2121,8837&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_28</option>option>
+                <option value="?tesselace=4x4_29&patchWidth=12&patchHeight=12&tile=4632,56-2,5---,8D3B&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_29</option>option>
+                <option value="?tesselace=4x4_30&patchWidth=12&patchHeight=12&tile=4632,5312,6-78,8634&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_30</option>option>
+                <option value="?tesselace=4x4_31&patchWidth=12&patchHeight=12&tile=4632,5312,5-7-,8635&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_31</option>option>
+                <option value="?tesselace=4x4_32&patchWidth=12&patchHeight=12&tile=4632,5312,3178,8834&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_32</option>option>
+                <option value="?tesselace=4x4_33&patchWidth=12&patchHeight=12&tile=566-,66-5,6-56,-566&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_33</option>option>
+                <option value="?tesselace=4x4_34&patchWidth=12&patchHeight=12&tile=5631,66-7,6-56,-566&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_34</option>option>
+                <option value="?tesselace=4x4_35&patchWidth=12&patchHeight=12&tile=5631,66-7,3156,-766&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_35</option>option>
+                <option value="?tesselace=4x4_38&patchWidth=12&patchHeight=12&tile=486-,-486,5-11,86-7&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_38</option>option>
+                <option value="?tesselace=4x4_39&patchWidth=12&patchHeight=12&tile=486-,-486,214-,88-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_39</option>option>
+                <option value="?tesselace=4x4_40&patchWidth=12&patchHeight=12&tile=486-,-486,2111,88-7&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_40</option>option>
+                <option value="?tesselace=4x4_41&patchWidth=12&patchHeight=12&tile=4832,2483,3248,8324&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_41</option>option>
+                <option value="?tesselace=4x4_42&patchWidth=12&patchHeight=12&tile=4832,2483,224-,8325&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_42</option>option>
+                <option value="?tesselace=4x4_43&patchWidth=12&patchHeight=12&tile=486-,-4-5,5-5-,86-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_43</option>option>
+                <option value="?tesselace=4x4_44a&patchWidth=12&patchHeight=12&tile=486-,-4-5,5-21,86-7&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_44 a</option>option>
+                <option value="?tesselace=4x4_44b&patchWidth=12&patchHeight=12&tile=4831,-488,5-11,86-7&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_44 b</option>option>
+                <option value="?tesselace=4x4_45&patchWidth=12&patchHeight=12&tile=4832,24-2,225-,8325&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_45</option>option>
+                <option value="?tesselace=4x4_52&patchWidth=12&patchHeight=12&tile=486-,-4--,A1C-,88-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_52</option>option>
+                <option value="?tesselace=4x4_53&patchWidth=12&patchHeight=12&tile=4831,-488,6-48,86-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_53</option>option>
+                <option value="?tesselace=4x4_54&patchWidth=12&patchHeight=12&tile=4831,-488,5-4-,86-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_54</option>option>
+                <option value="?tesselace=4x4_56&patchWidth=12&patchHeight=12&tile=4831,-488,3148,88-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_56</option>option>
+                <option value="?tesselace=4x4_57&patchWidth=12&patchHeight=12&tile=4831,-488,214-,88-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_57</option>option>
+                <option value="?tesselace=4x4_58&patchWidth=12&patchHeight=12&tile=4831,-488,2111,88-7&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_58</option>option>
+                <option value="?tesselace=4x4_59&patchWidth=12&patchHeight=12&tile=4831,-4-7,6-58,86-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_59</option>option>
+                <option value="?tesselace=4x4_60&patchWidth=12&patchHeight=12&tile=4831,-4-7,5-5-,86-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_60</option>option>
+                <option value="?tesselace=4x4_63&patchWidth=12&patchHeight=12&tile=4831,-4-7,215-,88-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_63</option>option>
+                <option value="?tesselace=4x4_64&patchWidth=12&patchHeight=12&tile=4831,-4-7,2121,88-7&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_64</option>option>
+                <option value="?tesselace=4x4_65&patchWidth=12&patchHeight=12&tile=4831,-4-7,5---,8D-B&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_65</option>option>
+                <option value="?tesselace=4x4_67&patchWidth=12&patchHeight=12&tile=4831,-117,6-78,86-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_67</option>option>
+                <option value="?tesselace=4x4_68&patchWidth=12&patchHeight=12&tile=4831,-117,5-7-,86-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_68</option>option>
+                <option value="?tesselace=4x4_70&patchWidth=12&patchHeight=12&tile=4831,-4--,6-CD,86-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_70</option>option>
+                <option value="?tesselace=4x4_71&patchWidth=12&patchHeight=12&tile=4831,---7,3AB8,88-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_71</option>option>
+                <option value="?tesselace=4x4_72&patchWidth=12&patchHeight=12&tile=4831,---7,2AB-,88-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_72</option>option>
+                <option value="?tesselace=4x4_73&patchWidth=12&patchHeight=12&tile=4831,---7,2AA1,88-7&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_73</option>option>
+                <option value="?tesselace=4x4_84&patchWidth=12&patchHeight=12&tile=4353,5353,6-58,86-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_84</option>option>
+                <option value="?tesselace=4x4_85&patchWidth=12&patchHeight=12&tile=4353,5353,5-5-,86-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_85</option>option>
+                <option value="?tesselace=4x4_88&patchWidth=12&patchHeight=12&tile=435-,6325,6-25,86-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_88</option>option>
+                <option value="?tesselace=4x4_90&patchWidth=12&patchHeight=12&tile=4373,5353,5-5-,8315&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_90</option>option>
+                <option value="?tesselace=4x4_91&patchWidth=12&patchHeight=12&tile=437-,6325,6-25,8315&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_91</option>option>
+                <option value="?tesselace=4x4_92&patchWidth=12&patchHeight=12&tile=5632,56-2,6-58,-534&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_92</option>option>
+                <option value="?tesselace=4x4_93&patchWidth=12&patchHeight=12&tile=5632,56-2,5-5-,-535&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_93</option>option>
+                <option value="?tesselace=4x4_94&patchWidth=12&patchHeight=12&tile=5632,56-2,3158,-734&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_94</option>option>
+                <option value="?tesselace=4x4_100&patchWidth=12&patchHeight=12&tile=B83A,-4-7,6868,-4--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_100</option>option>
+                <option value="?tesselace=4x4_101&patchWidth=12&patchHeight=12&tile=B83A,-4-7,6-58,-5--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_101</option>option>
+                <option value="?tesselace=4x4_102&patchWidth=12&patchHeight=12&tile=B83A,-4-7,3158,-7--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_102</option>option>
+                <option value="?tesselace=4x4_106&patchWidth=12&patchHeight=12&tile=B83A,---7,3AB8,-7--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_106</option>option>
+                <option value="?tesselace=4x4_107&patchWidth=12&patchHeight=12&tile=B8D-,-4-5,586-,-4--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_107</option>option>
+                <option value="?tesselace=4x4_115&patchWidth=12&patchHeight=12&tile=B8D-,1112,788-,-4--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_115</option>option>
+                <option value="?tesselace=4x4_124&patchWidth=12&patchHeight=12&tile=6868,-4-4,5-5-,-5-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_124</option>option>
+                <option value="?tesselace=4x4_126&patchWidth=12&patchHeight=12&tile=6868,-4-4,5---,-C-B&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_126</option>option>
+                <option value="?tesselace=4x4_128&patchWidth=12&patchHeight=12&tile=6868,-114,6888,-4-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_128</option>option>
+                <option value="?tesselace=4x4_137&patchWidth=12&patchHeight=12&tile=586-,-4-5,6868,-4-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_137</option>option>
+                <option value="?tesselace=4x4_139&patchWidth=12&patchHeight=12&tile=586-,-4-5,6-58,-5-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_139</option>option>
+                <option value="?tesselace=4x4_140&patchWidth=12&patchHeight=12&tile=586-,-4-5,5-5-,-5-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_140</option>option>
+                <option value="?tesselace=4x4_150&patchWidth=12&patchHeight=12&tile=586-,-115,588-,-4-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_150</option>option>
+                <option value="?tesselace=4x4_151&patchWidth=12&patchHeight=12&tile=586-,-115,6-78,-5-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_151</option>option>
+                <option value="?tesselace=4x4_152&patchWidth=12&patchHeight=12&tile=586-,-115,5-7-,-5-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_152</option>option>
+                <option value="?tesselace=4x4_153&patchWidth=12&patchHeight=12&tile=586-,1112,788-,-4-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_153</option>option>
+                <option value="?tesselace=4x4_155&patchWidth=12&patchHeight=12&tile=586-,1112,7-7-,-5-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_155</option>option>
+                <option value="?tesselace=4x4_157&patchWidth=12&patchHeight=12&tile=5831,-4-7,6868,-4-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_157</option>option>
+                <option value="?tesselace=4x4_158&patchWidth=12&patchHeight=12&tile=5831,-4-7,5-5-,-5-5&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_158</option>option>
+                <option value="?tesselace=4x4_159&patchWidth=12&patchHeight=12&tile=5831,-4-7,6-58,-5-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_159</option>option>
+                <option value="?tesselace=4x4_163&patchWidth=12&patchHeight=12&tile=5831,-4-7,5---,-C-B&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_163</option>option>
+                <option value="?tesselace=4x4_184&patchWidth=12&patchHeight=12&tile=6888,14-1,8868,-114&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_184</option>option>
+                <option value="?tesselace=4x4_193&patchWidth=12&patchHeight=12&tile=588-,-115,588-,-115&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_193</option>option>
+                <option value="?tesselace=4x4_196&patchWidth=12&patchHeight=12&tile=588-,14-2,8868,-114&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_196</option>option>
+                <option value="?tesselace=4x4_198&patchWidth=12&patchHeight=12&tile=588-,14-2,8-58,-214&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_198</option>option>
+                <option value="?tesselace=4x4_200&patchWidth=12&patchHeight=12&tile=588-,1112,8-78,-214&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_200</option>option>
+                <option value="?tesselace=4x4_213&patchWidth=12&patchHeight=12&tile=B3C3,5353,5-5-,-5--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_213</option>option>
+                <option value="?tesselace=4x4_214&patchWidth=12&patchHeight=12&tile=B3C-,6325,6-25,-5--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_214</option>option>
+                <option value="?tesselace=4x4_215&patchWidth=12&patchHeight=12&tile=B-C-,-5-5,5-5-,-5--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_215</option>option>
+                <option value="?tesselace=4x4_19737&patchWidth=12&patchHeight=12&tile=4831,-117,3178,88-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_19737</option>option>
+                <option value="?tesselace=4x4_22317&patchWidth=12&patchHeight=12&tile=4831,-4-7,3158,88-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_22317</option>option>
+                <option value="?tesselace=4x4_59939&patchWidth=12&patchHeight=12&tile=48-1,5-5-,35-5,88-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_59939</option>option>
+                <option value="?tesselace=4x4_59948&patchWidth=12&patchHeight=12&tile=58-1,5-5-,35-5,-7-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_59948</option>option>
+                <option value="?tesselace=4x4_117301&patchWidth=12&patchHeight=12&tile=437-,4-73,7-43,734-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_117301</option>option>
+                <option value="?tesselace=4x4_117397&patchWidth=12&patchHeight=12&tile=437-,4-7-,8-15,8315&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_117397</option>option>
+                <option value="?tesselace=4x4_117415&patchWidth=12&patchHeight=12&tile=437-,4-7-,-5-5,535-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=0&">4x4_117415</option>option>
+            </select>
+            that doesn't fail due to other bugs<br>
+            or try your luck:
+            <ul>
+                <li>Create a custom <a href="/GroundForge/tiles" target="_blank">pattern</a>,
+                    requirements for now:
+                    <br>
+                    no overlapping tile layout, head side and foot side are ignored.
+                    Still, many patterns won't work.
+                </li>
+                <li>
+                    Either follow the <em>W.I.P.</em> link to get the pair diagram,
+                    <br>
+                    or adjust the adress bar to get the thread diagram:
+                    replace <em>tile</em> with <em>poc</em>.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>Hover</strong> over diagram elements for pop up labels<br>
+            Some browsers show these labels only on the darker elements, clicking fainter objects might still work.
+            <ul>
+                <li>
+                    read pairs between stitches as:
+                    "<em>left/right out of [id], left/right-into [id]</em>".
+                    The optional number at the end is the strength.
+                    These pop ups are collected in the "customized pattern" link.
+                </li>
+                <li>
+                    a stitch shows the <em>[id]</em> that appears on the label of pairs between stitches
+                    and shows the chosen instructions.
+                </li>
+            </ul>
+        </li>
+        <li><strong>Edit</strong> (actions may be slow and have no busy indication)
+            <ul>
+                <li>
+                    Click a pair <span class="disabled">(or not yet implemented: a hole)</span> to make distances between stitches:
+                    <br>
+                    <input type="number" value="50" id="speed" name="speed" step="10" min="10" max="100" onchange="changeSpeed(this)">
+                    <label for="speed">%</label>
+                    <input type="radio" name="weight" id="stronger" value="2">
+                    <label for="stronger">shorter</label>
+                    <input type="radio" name="weight" id="weaker" value="0.5">
+                    <label for="weaker">longer</label>
+                    <input type="radio" name="weight" id="reset-strength" checked value="1">
+                    <label for="reset-strength">reset</label>.
+                    <br>
+                    A changed length will have another value than 1 at the end of the label.
+                </li>
+                <li>
+                    Click a stitch to
+                    <br>
+                    <input type="radio" name="stitch" id="set" value="set" checked>
+                    <label for="remove">assign:
+                        <select id="color" name="color" style="background-color: lime" title="color code" onchange="this.style.backgroundColor=`${ this.value }`">
+                            <option value="blue" style="background-color: blue">blue</option>
+                            <option value="DodgerBlue" style="background-color: DodgerBlue">DodgerBlue</option>
+                            <option value="LightSeaGreen" style="background-color: LightSeaGreen">LightSeaGreen</option>
+                            <option value="OliveDrab" style="background-color: OliveDrab">OliveDrab</option>
+                            <option value="green" style="background-color: green">green</option>
+                            <option value="lime" style="background-color: lime" selected>lime</option>
+                            <option value="Yellow" style="background-color: Yellow">Yellow</option>
+                            <option value="DarkOrange" style="background-color: DarkOrange">DarkOrange</option>
+                            <option value="Sienna" style="background-color: Sienna">Sienna</option>
+                            <option value="Purple" style="background-color: Purple">Purple</option>
+                            <option value="Violet" style="background-color: Violet">Violet</option>
+                            <option value="red" style="background-color: red">red</option>
+                            <option value="Black" style="background-color: Black">Black</option>
+                            <option value="Gray" style="background-color: Gray">Gray</option>
+                        </select>
+                        <select id="shape" name="shape" title="no second thoughts possible &#013unless sticking to dots">
+                            <option value="dot">● dot</option>
+                            <option value="square">◾ square</option>
+                            <option value="diamond">⬥ diamond</option>
+                            <option value="star">★ star</option>
+                            <option disabled>arrows</option>
+                            <option value="north">▲ north</option>
+                            <option value="south">▼ south</option>
+                            <option value="east">▶ east</option>
+                            <option value="west">◀ west</option>
+                            <option disabled>crescents</option>
+                            <option value="left">◐ left</option>
+                            <option value="right">◑ right</option>
+                            <option value="bottom">◒ bottom</option>
+                            <option value="top">◓ top</option>
+                            <option disabled>corners</option>
+                            <option value="se">◢ se</option>
+                            <option value="ne">◥ ne</option>
+                            <option value="sw">◣ sw</option>
+                            <option value="nw">◤ nw</option>
+                        </select>
+                        <input type="text" id="stitch" name="stitch" value="ct" list="stitches" title="stitch definition: &#013&#013c(ross), t(wist), &#013l(eft twist), r(ight twist), &#013p(in)">
+                        <datalist id="stitches">
+                            <option value="ct">
+                            <option value="tc">
+                            <option value="ctc">
+                            <option value="tctc">
+                            <option value="ctct">
+                            <option value="ctctc" style="background-image:url(https://jo-pol.github.io/GroundForge-help/stitches/ctctc.png)">
+                        </datalist>
+                    </label>
+                    <br>
+                    <input type="radio" name="stitch" id="remove" value="remove" title="">
+                    <label for="remove">remove (try a1, a3, d3 or d4 of this
+                        <a href="?rose&patchWidth=12&patchHeight=8&tile=5831,-4-7,3158,-7-4&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
+                        >rose</a> ground, other patterns/stitches may fail)</label>
+                </li>
+                <li class="disabled">
+                    Not yet implemented:
+                    Some gesture to add a stitch.
+                    The gesture should involve two non-adjacent lines on opposite sides of a hole.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>Save</strong> the link to the <a id="customlink" href="#">edited pattern</a>.
+            N.B: not future proof and stitch assignments are not yet saved.
+        </li>
+        <li>
+            <a download="gf-poc-distortion-free.svg" onfocus="setDownloadContent(this)" onblur="this.href='?#download'" href="?#download" title="download"
+            ><strong>Download</strong></a> the diagram and import into an editor
+            or show in another tab of your browser.
+            <br>
+            For example to see what is beyond the visible area,
+            add arrows heads to the pairs between stitches to identify a working order
+            <em>or fix manually how currently failing patterns repeat</em>.
+        </li>
+    </ul>
+    <p>
+        Patterns may take some time to render, pay attention to the
+        <a href="https://www.stevesouders.com/blog/2013/06/16/browser-busy-indicators/"
+        >busy indicator</a> of your browser.
+    </p>
+</body>
+</html>

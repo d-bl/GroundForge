@@ -1,16 +1,15 @@
 package dibl
 
-import java.lang.Math.{abs, floorMod}
+import java.lang.Math.{ abs, floorMod }
+import dibl.proto.{ PairParams, TilesConfig }
 
-import dibl.proto.TilesConfig
-
-import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 @JSExportTopLevel("InkscapeTemplate") object InkscapeTemplate {
 
   @JSExport
   def fromUrl(query: String): String = {
-    fromConfig(TilesConfig(query))
+    fromConfig(TilesConfig(PairParams(query).toSimple3x2.toString))
   }
 
   @JSExport
@@ -23,12 +22,12 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
     val width = cfg.centerMatrixCols
     val height = cfg.centerMatrixRows
 
-    if (floorMod(abs(cfg.shiftRowsSE), cfg.centerMatrixRows) != 0 ||
-      floorMod(abs(cfg.shiftRowsSW), cfg.centerMatrixRows) != 0 ||
-      floorMod(abs(cfg.shiftColsSE), cfg.centerMatrixCols) != 0 ||
-      floorMod(abs(cfg.shiftColsSW), cfg.centerMatrixCols) != 0
+    if (floorMod(abs(cfg.shiftRowsSE), height) != 0 ||
+      floorMod(abs(cfg.shiftRowsSW), height) != 0 ||
+      floorMod(abs(cfg.shiftColsSE), width) != 0 ||
+      floorMod(abs(cfg.shiftColsSW), width) != 0
     ) return {
-      s"""Only simple tile [${cfg.centerMatrixCols},${cfg.centerMatrixRows}] layout is supported.
+      s"""Only simple tile [$width,$height] layout is supported.
          |${ cfg.urlQuery }""".stripMargin
     }
     if (width * 3 > cfg.patchWidth || height * 2 > cfg.patchHeight) return {
@@ -40,13 +39,14 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
     val scaledWidth = width * scale
     val scaledHeight = height * scale
 
-    def inCenterBottomTile(link: LinkProps) = {
+    def inSecondTileFromNW(link: LinkProps) = {
       val n = diagram.nodes(link.source)
-      n.x >= scaledWidth && n.x < 2 * scaledWidth && n.y >= scaledHeight && n.y < 2 * scaledHeight
+      n.x >= scaledWidth && n.x < 2 * scaledWidth &&
+        n.y >= scaledHeight && n.y < 2 * scaledHeight
     }
 
     val links = diagram.links
-      .filter(inCenterBottomTile)
+      .filter(inSecondTileFromNW)
       .groupBy(_.source)
       .withFilter { case (_, targets) => targets.size == 2}
       .map { case (src, targets) =>

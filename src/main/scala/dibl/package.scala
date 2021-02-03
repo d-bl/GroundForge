@@ -27,7 +27,7 @@ package object dibl {
 
   type Link = (Cell, Cell)
   def Link(source: Cell, target: Cell): Link = (source, target)
-  implicit class RichLink(left: Link) {
+  implicit class RichLink(val left: Link) extends AnyVal {
     def target: Cell = left._2
   }
 
@@ -43,14 +43,14 @@ package object dibl {
   /** Matrix of tuples, each tuple points to another cell in the matrix. */
   type M = Array[R]
   def M(xs: R*) = Array(xs: _*)
-  implicit class RichMatrix(left: M) {
+  implicit class RichMatrix(val left: M) extends AnyVal {
     def toS: String = left.deep.mkString(",").replace("Array","").replace("(((","\n(((").replace("(()","\n(()")
   }
 
   type TargetToSrcs = (Int, Cell)
   def TargetToSrcs (target: Int, sources: Cell): TargetToSrcs = (target, sources)
 
-  implicit class TriedDiagram(left: Try[Diagram]) {
+  implicit class TriedDiagram(val left: Try[Diagram]) extends AnyVal {
     @JSExport
     def getOrRecover: Diagram = left
       .recoverWith { case e => Success(Diagram(
@@ -98,7 +98,7 @@ package object dibl {
   }
 
   /** Ignores anything but digits and an optional leading dash */
-  implicit class StringExtensions(s: String) {
+  implicit class StringExtensions(val s: String) extends AnyVal {
     def safeToInt: Int = s
       .replaceAll("[^0-9-]","")
       .replaceAll("([0-9])-","$1")
