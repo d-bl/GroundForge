@@ -65,7 +65,6 @@ function showProto() {
   var hrefQ = tesselace(query) + query
   d3.select("#link").node().href = "?" + hrefQ
   d3.select("#poc").node().href = "poc.html?" + pocRef(query)
-  d3.select("#animations").style("display", "none")
   d3.selectAll("#threadDiagram, #pairDiagram, #drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
@@ -103,8 +102,6 @@ function scrollToIfPossible(container, x, y) {
   }
 }
 function showDiagrams(config) {
-
-  d3.select('#animations').style('display',"inline-block")
 
   var markers = true // use false for slow devices and IE-11, set them at onEnd
 

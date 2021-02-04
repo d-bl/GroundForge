@@ -1,22 +1,26 @@
 Current formats
 ===============
 
-* **Tiles page**:
+* **Tiles page**: the storage format is a set of URL query parameters, for example a
   [rose](https://d-bl.github.io/GroundForge/tiles?patchWidth=9&patchHeight=10&c1=ct&b1=ctct&a1=ct&c2=ct&a2=ct&b3=ctct&tile=831,4-7,-5-&tileStitch=ct&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
-  ground.
+  ground. 
 * **Sheet page** (with [dance](https://d-bl.github.io/GroundForge-help/Reshape-Patterns)
-  leaders): [rose](https://d-bl.github.io/GroundForge/sheet.html?patch=5831%20-4-7;bricks&patch=-437%2034-7;bricks&patch=4830%20--77;bricks)
-  ground.
+  leaders): More compact query parameters, no stitches only simple and horizontal brick tile layout.
+  Again a [rose](https://d-bl.github.io/GroundForge/sheet.html?patch=5831%20-4-7;bricks&patch=-437%2034-7;bricks&patch=4830%20--77;bricks)
+  ground as example.
 * **Inkscape plugin template**:  
   Documented at the bottom of https://tesselace.com/tools/inkscape-extension/  
-  rose: https://d-bl.github.io/tesselace-to-gf/tl/3_4_8/rose.txt 
-* **Experimental draft** with a proof of concept on the pricking page:  
-  An irregularly shaped and (for now more or less randomly) rotated [rose](https://jo-pol.github.io/GroundForge/pricking?topo=lo,b4,ri,a1,1;lo,d4,li,a1,1;lo,b3,ri,a3,2;lo,d3,li,a3,2;lo,a1,li,b1,4;ro,b4,ri,b1,2;lo,b1,li,b2,2;lo,c1,ri,b2,0.5;lo,b2,li,b3,2;lo,c3,ri,b3,2;lo,a3,li,b4,1;ro,b3,ri,b4,2;ro,b1,li,c1,2;lo,d1,ri,c1,2;ro,b2,li,c3,0.5;lo,d2,ri,c3,0.5;ro,a1,ri,d1,4;ro,d4,li,d1,2;ro,c1,li,d2,0.5;ro,d1,ri,d2,2;ro,c3,li,d3,2;ro,d2,ri,d3,2;ro,a3,ri,d4,1;ro,d3,li,d4,2)
+  rose: https://d-bl.github.io/tesselace-to-gf/tl/3_4_8/rose.txt  
+  Three coordinates per stitch and dimensions of the simple tile layout. 
+* **Experimental draft** with a proof of concept on the pricking page:
+  Connections between stiches are defined by the id-s of the stitches and some additional info. 
+  Aa an example an irregularly shaped and (for now more or less randomly) rotated [rose](https://jo-pol.github.io/GroundForge/pricking?topo=lo,b4,ri,a1,1;lo,d4,li,a1,1;lo,b3,ri,a3,2;lo,d3,li,a3,2;lo,a1,li,b1,4;ro,b4,ri,b1,2;lo,b1,li,b2,2;lo,c1,ri,b2,0.5;lo,b2,li,b3,2;lo,c3,ri,b3,2;lo,a3,li,b4,1;ro,b3,ri,b4,2;ro,b1,li,c1,2;lo,d1,ri,c1,2;ro,b2,li,c3,0.5;lo,d2,ri,c3,0.5;ro,a1,ri,d1,4;ro,d4,li,d1,2;ro,c1,li,d2,0.5;ro,d1,ri,d2,2;ro,c3,li,d3,2;ro,d2,ri,d3,2;ro,a3,ri,d4,1;ro,d3,li,d4,2)
   ground.  
-  Similarities between id-s and a chessboard or spreadsheet is a coincidence.
+  Similarities between id-s and a chessboard or spreadsheet is a coincidence.  
+  The page supports also the same query parameters as the tiles page.
   
-Conversions
------------
+Implemented conversions
+-----------------------
 
 * **tiles -> inkscape template**:  
   Download button on the caption of the "patern definition" panel. 
@@ -53,7 +57,7 @@ Any similarity between id-s and a wind rose is a coincidence.
 * Strengths, deltas and coordinates are optional.
 * Decimals are allowed for deltas and coordinates.
 * Coordinates or deltas allow a quick re-render.
-* Strengths help to limit modifications for starch/wire-free patterns. Default 1.
+* Strengths (for a spring layout) may help to limit modifications for starch/wire-free patterns. Default 1.
 
 ###Conversions
 The Inkscape plugin template format does not use id-s,
