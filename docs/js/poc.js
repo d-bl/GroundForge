@@ -17,7 +17,8 @@ function clickedDot(linkElement, event) {
         var cx = shape.getAttribute("cx") * 1
         var cy = shape.getAttribute("cy") * 1
         var t = `<title>${shapeId} ${stitch}</title>`
-        var s = `style="fill:${color};opacity:0.65" id="${shapeId}"`
+        // except for dots cx/cy are redundant for SVG but allow second thoughts
+        var s = `cx="${cx}" cy="${cy}" style="fill:${color};opacity:0.65" id="${shapeId}" `
         switch(document.getElementById("shape").value) {
           case "square":
             shape.outerHTML = `<rect x="${cx - 8}" y="${cy - 8}" width="16" height="16" ${s}>${t}</rect>`
@@ -83,7 +84,7 @@ function clickedDot(linkElement, event) {
             // search: ([0-9.e-]+),([0-9.e-]+)
             // replace: \${cx + $1},\${cy + $2}
             // finally replace "+ -" with "-"
-            shape.outerHTML = `<circle cx="${cx}" cy="${cy}" r="8" ${s}>${t}</circle>`
+            shape.outerHTML = `<circle r="8" ${s}>${t}</circle>`
         }
     }
     return false
