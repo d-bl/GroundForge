@@ -23,6 +23,22 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 @JSExportTopLevel("PairDiagram") object PairDiagram {
 
   @JSExport
+  def legend (urlQuery:String): String = {
+    urlQuery
+      .split("&")
+      .filter(_.toLowerCase.matches(".*=[ctrlp]+"))
+      .map(_.replaceAll(".*=", ""))
+      .map(str => Stitches.defaultColorName(str) -> str)
+      .sortBy(identity)
+      .distinct
+      .groupBy(_._1)
+      .mapValues(_.map(_._2).sortBy(identity).distinct.mkString(", "))
+      .map {
+        case (color, stitches) => s"$color: $stitches"
+      }.mkString("; ")
+  }
+
+  @JSExport
   def create(stitches: String, threadDiagram: Diagram): Diagram = apply(stitches, threadDiagram)
 
   /** Restyles the nodes of a diagram into nodes for a pair diagram.
