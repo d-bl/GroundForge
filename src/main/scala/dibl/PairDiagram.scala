@@ -50,11 +50,11 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   def create(stitches: String, threadDiagram: Diagram): Diagram = apply(stitches, threadDiagram)
 
   /** Restyles the nodes of a diagram into nodes for a pair diagram.
-   *
-   * @param stitches      see step 2/3 on https://d-bl.github.io/GroundForge/index.html
-   * @param threadDiagram the nodes will be replaced with color codes
-   * @return
-   */
+    *
+    * @param stitches see step 2/3 on https://d-bl.github.io/GroundForge/index.html
+    * @param threadDiagram the nodes will be replaced with color codes
+    * @return
+    */
   def apply(stitches: String, threadDiagram: Diagram): Diagram = {
 
     val stitchMap = new Stitches(stitches)
@@ -63,7 +63,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       if (n.title.startsWith("thread "))
         n.title.replace("thread", "Pair")
       else {
-        s"${ stitchMap.stitch(n.id, n.title.replaceAll(" .*", "")) } - ${ n.id }"
+        s"${ stitchMap.stitch(n.id, n.title.replaceAll(" .*","")) } - ${ n.id }"
       }
     }
 
