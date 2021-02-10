@@ -18,35 +18,43 @@ package dibl
 import dibl.LinkProps.pairLink
 import dibl.NodeProps.node
 
-import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 @JSExportTopLevel("PairDiagram") object PairDiagram {
 
   @JSExport
-  def legend (urlQuery:String): String = {
-    urlQuery
+  def legend(urlQuery: String): String = {
+    val stitchIdTuples = urlQuery
       .split("&")
       .filter(_.toLowerCase.matches(".*=[ctrlp]+"))
-      .map(_.replaceAll(".*=", ""))
-      .map(str => Stitches.defaultColorName(str) -> str)
-      .sortBy(identity)
-      .distinct
+      .map(_.split("=", 2))
+      .map { case Array(id, stitch) =>
+        stitch -> id
+      }
+    val stitchToIdsMap = stitchIdTuples
       .groupBy(_._1)
-      .mapValues(_.map(_._2).sortBy(identity).distinct.mkString(", "))
-      .map {
-        case (color, stitches) => s"$color: $stitches"
-      }.mkString("; ")
+      .mapValues(_.map(_._2))
+      .toSeq
+    stitchToIdsMap
+      .map { case (stitch, ids) =>
+        Stitches.defaultColorName(stitch) -> ids.mkString(s"$stitch (", ", ", ")")
+      }.groupBy(_._1)
+      .mapValues(_.map(_._2))
+      .map { case (color, stitches) =>
+        stitches.mkString(f"$color%-10s ", "\n           ", "")
+      }
+      .mkString("\n")
   }
 
   @JSExport
   def create(stitches: String, threadDiagram: Diagram): Diagram = apply(stitches, threadDiagram)
 
   /** Restyles the nodes of a diagram into nodes for a pair diagram.
-    *
-    * @param stitches see step 2/3 on https://d-bl.github.io/GroundForge/index.html
-    * @param threadDiagram the nodes will be replaced with color codes
-    * @return
-    */
+   *
+   * @param stitches      see step 2/3 on https://d-bl.github.io/GroundForge/index.html
+   * @param threadDiagram the nodes will be replaced with color codes
+   * @return
+   */
   def apply(stitches: String, threadDiagram: Diagram): Diagram = {
 
     val stitchMap = new Stitches(stitches)
@@ -55,7 +63,7 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
       if (n.title.startsWith("thread "))
         n.title.replace("thread", "Pair")
       else {
-        s"${ stitchMap.stitch(n.id, n.title.replaceAll(" .*","")) } - ${ n.id }"
+        s"${ stitchMap.stitch(n.id, n.title.replaceAll(" .*", "")) } - ${ n.id }"
       }
     }
 

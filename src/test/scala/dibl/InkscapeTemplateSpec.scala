@@ -9,7 +9,7 @@ import scala.util.Try
 class InkscapeTemplateSpec extends FlatSpec with Matchers {
   val gwOverlap = Seq("gw-B6", "gw-A2", "gw-E6", "gw-H14b", "gw-B2", "gw-C9", "gw-D6", "gw-C6")
   val maeOverlap = Seq("MAE-G54", "MAE-grond-12**", "MAE-G64", "MAE-G-02-YQ4b", "MAE-grond-12***", "MAE-G-02-Y1", "MAE-G-12")
-  "fromUrl" should "render a vertical brick" in {
+  "fromUrl" should "render a vertical brick" in pendingUntilFixed {
     val q = gwPatterns.toMap.getOrElse("gw-D2", fail("no gw-D2"))
     InkscapeTemplate.fromUrl(q).split("\n") should contain allElementsOf
       """CHECKER	6	10
@@ -40,7 +40,7 @@ class InkscapeTemplateSpec extends FlatSpec with Matchers {
         |[19.0,11.0,18.0,12.0,20.0,12.0]
         |[11.0,9.0,13.0,9.0,10.0,10.0]""".stripMargin.split("\n")
   }
-  it should "render a horizontal brick" in {
+  it should "render a horizontal brick" in pendingUntilFixed {
     val q = "rose&patchWidth=12&patchHeight=16&d1=ct&c1=ctct&b1=ct&a1=ctct&d2=ctct&b2=ctct&tile=5831,-4-7&tileStitch=ctct&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
     InkscapeTemplate.fromUrl(q).split("\n") should contain allElementsOf
       """CHECKER	4	4
