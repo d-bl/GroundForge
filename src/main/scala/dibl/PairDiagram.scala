@@ -18,7 +18,7 @@ package dibl
 import dibl.LinkProps.pairLink
 import dibl.NodeProps.node
 
-import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
+import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
 @JSExportTopLevel("PairDiagram") object PairDiagram {
 
