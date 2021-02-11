@@ -11,7 +11,7 @@ class PairDiagramSpec extends FlatSpec with Matchers {
         |           tctct (j1, a2, footsideStitch, headsideStitch)
         |blue       ctctctctctt (b1)""".stripMargin
   }
-  "legend" should "explain A14b" in {
+  it should "explain A14b" in {
     legend(patterns("gw-A14b")) shouldBe
       """purple     ctc (g3, h4, f4, g5, j6, d6, k7, g7, c7, j8, d8, g9, h10, f10, g11)
         |red        ctct (tileStitch)
@@ -19,7 +19,7 @@ class PairDiagramSpec extends FlatSpec with Matchers {
         |           ttctctt (g1, b6, b7, k9, c9, i11, e11, h12, f12)
         |blue       ctctctctctctt (l2, b2, l12, b12)""".stripMargin
   }
-  "legend" should "explain H5" in {
+  it should "explain H5" in {
     legend(patterns("gw-H5")) shouldBe
       """purple     ctc (tileStitch)
         |           ctcr (a1)

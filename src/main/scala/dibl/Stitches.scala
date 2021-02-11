@@ -128,7 +128,7 @@ class Stitches(src: String) {
    * @param assignment example: A1=B3=ctct, the caller takes care of at least one '='
    * @return
    */
-  private def splitAssignment(assignment: String): Array[(StitchId, String, String)] = {
+  def splitAssignment(assignment: String): Array[(StitchId, String, String)] = {
     val (ids, values) = assignment.split("=").partition(_.matches("([a-z]+[0-9]+[0-9a-z]*|cross|twist)"))
     val (instructions, colors) = values.partition(_.matches("[ctlrp]+"))
     ids.map(id => (

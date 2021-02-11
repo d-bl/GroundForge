@@ -17,25 +17,42 @@ package dibl
 
 import dibl.LinkProps.pairLink
 import dibl.NodeProps.node
+import dibl.Stitches.{ StitchId, splitAssignment }
 
-import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 @JSExportTopLevel("PairDiagram") object PairDiagram {
 
+  /**
+   *
+   * @param stitches value of query/form field with id/name droste1 or droste2
+   * @return multiline legend for the color code
+   */
+  @JSExport
+  def drosteLegend(stitches: String): String = {
+    val keyValuePairs = splitAssignment(stitches)
+      .map{ case (id, stitch, _) => Array(id, stitch)
+    }
+    keyValuesToLegend(keyValuePairs)
+  }
+
   @JSExport
   def legend(urlQuery: String): String = {
-    val stitchIdTuples = urlQuery
+    val keyValuePairs = urlQuery
       .split("&")
       .filter(_.toLowerCase.matches(".*=[ctrlp]+"))
       .map(_.split("=", 2))
+    keyValuesToLegend(keyValuePairs)
+  }
+
+  private def keyValuesToLegend(keyValuePairs: Array[Array[String]]) = {
+    keyValuePairs
       .map { case Array(id, stitch) =>
         stitch -> id
       }
-    val stitchToIdsMap = stitchIdTuples
       .groupBy(_._1)
       .mapValues(_.map(_._2))
       .toSeq
-    stitchToIdsMap
       .map { case (stitch, ids) =>
         Stitches.defaultColorName(stitch) -> ids.mkString(s"$stitch (", ", ", ")")
       }.groupBy(_._1)
