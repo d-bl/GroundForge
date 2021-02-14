@@ -17,7 +17,6 @@ package dibl
 
 import dibl.LinkProps.pairLink
 import dibl.NodeProps.node
-import dibl.Stitches.{ StitchId, splitAssignment }
 
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
@@ -25,15 +24,17 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   /**
    *
-   * @param stitches value of query/form field with id/name droste1 or droste2
+   * @param input value of query/form field with id/name droste1 or droste2
    * @return multiline legend for the color code
    */
   @JSExport
-  def drosteLegend(stitches: String): String = {
-    val keyValuePairs = splitAssignment(stitches)
+  def drosteLegend(input: String): String = {
+    val stitches = new Stitches(input)
+    val default = Array[String]("default", stitches.defaultStitch)
+    val keyValuePairs: Seq[Array[String]] = stitches.tuples
       .map{ case (id, stitch, _) => Array(id, stitch)
-    }
-    keyValuesToLegend(keyValuePairs)
+      }.toSeq
+    keyValuesToLegend(keyValuePairs :+ default)
   }
 
   @JSExport
@@ -45,7 +46,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     keyValuesToLegend(keyValuePairs)
   }
 
-  private def keyValuesToLegend(keyValuePairs: Array[Array[String]]) = {
+  private def keyValuesToLegend(keyValuePairs: Seq[Array[String]]) = {
     keyValuePairs
       .map { case Array(id, stitch) =>
         stitch -> id

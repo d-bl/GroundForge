@@ -45,9 +45,9 @@ class Stitches(src: String) {
     .split("[^a-z0-9=]+")
     .partition(_.contains("="))
 
-  private val tuples = assignments.flatMap(splitAssignment)
+  val tuples: Array[(StitchId, String, String)] = assignments.flatMap(splitAssignment)
 
-  private val defaultStitch = defaults.headOption.getOrElse("") match {
+  val defaultStitch: String = defaults.headOption.getOrElse("") match {
     case "" => "ctc"
     case s => makeValid(s, "ctc")
   }
@@ -128,7 +128,7 @@ class Stitches(src: String) {
    * @param assignment example: A1=B3=ctct, the caller takes care of at least one '='
    * @return
    */
-  def splitAssignment(assignment: String): Array[(StitchId, String, String)] = {
+  private def splitAssignment(assignment: String): Array[(StitchId, String, String)] = {
     val (ids, values) = assignment.split("=").partition(_.matches("([a-z]+[0-9]+[0-9a-z]*|cross|twist)"))
     val (instructions, colors) = values.partition(_.matches("[ctlrp]+"))
     ids.map(id => (

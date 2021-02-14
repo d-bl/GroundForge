@@ -1,6 +1,6 @@
 package dibl
 
-import dibl.PairDiagram.legend
+import dibl.PairDiagram.{ drosteLegend, legend }
 import org.scalatest.{ FlatSpec, Matchers }
 
 class PairDiagramSpec extends FlatSpec with Matchers {
@@ -24,5 +24,17 @@ class PairDiagramSpec extends FlatSpec with Matchers {
       """purple     ctc (tileStitch)
         |           ctcr (a1)
         |           ctcl (a2)""".stripMargin
+  }
+  "drosteLegend" should "not skip the overall default" in {
+    drosteLegend(
+      """cttc
+        |twist=ct
+        |cross=ctc
+        |a1=b2=ctctc"""
+        .stripMargin) shouldBe
+      """purple     ctc (cross)
+        |turquoise  cttc (default)
+        |green      ct (twist)
+        |blue       ctctc (a1, b2)""".stripMargin
   }
 }
