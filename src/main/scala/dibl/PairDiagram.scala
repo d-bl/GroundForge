@@ -71,7 +71,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       }.groupBy(_._1)
       .mapValues(_.map(_._2))
       .map { case (color, stitches) =>
-        stitches.mkString(f"$color%-10s ", "\n           ", "")
+        stitches.mkString(f"$color%-14s\t", "\n\t\t\t", "")
       }
       .mkString("\n")
   }
