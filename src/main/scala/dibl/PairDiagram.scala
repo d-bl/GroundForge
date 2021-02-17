@@ -41,9 +41,21 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   def legend(urlQuery: String): String = {
     val keyValuePairs = urlQuery
       .split("&")
-      .filter(_.toLowerCase.matches(".*=[ctrlp]+"))
       .map(_.split("=", 2))
-    keyValuesToLegend(keyValuePairs)
+    val keys = keyValuePairs.map(_.head)
+    keyValuesToLegend(
+      keyValuePairs
+        .filter(isStitch(keys))
+        .toSeq
+    )
+  }
+
+  private def isStitch(keys: Seq[String])(kv: Array[String]) = {
+    kv.head match {
+      case "footsideStitch" => keys.contains("footside")
+      case "headsideStitch" => keys.contains("headside")
+      case _ => kv.last.toLowerCase.matches("[ctrlp]+")
+    }
   }
 
   private def keyValuesToLegend(keyValuePairs: Seq[Array[String]]) = {

@@ -70,6 +70,11 @@ function showProto() {
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
+
+  var l = PairDiagram.legend(query)
+  d3.select("#editPatternFieldSet .swatches").attr("title",l)
+  d3.select("#diagrams .swatches").attr("title",l)
+
   return config
 }
 function toggleCheatSheet(imgElement) {
@@ -355,6 +360,11 @@ function showDroste(level) {
   d3.select("#drosteFields" + level).style("display", "block")
   var el = d3.select("#drosteThread" + level).node().firstElementChild
   if (el && el.id.startsWith("svg")) return
+
+
+  var s = d3.select("#droste" + level).node().value
+  var l = PairDiagram.drosteLegend(s)
+  d3.select("#drosteFields" + level + " .swatches").attr("title",l)
 
   var q = submitQuery()
   d3.select("#link").node().href = "?" + q

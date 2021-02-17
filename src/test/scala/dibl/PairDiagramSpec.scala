@@ -25,6 +25,10 @@ class PairDiagramSpec extends FlatSpec with Matchers {
         |           ctcr (a1)
         |           ctcl (a2)""".stripMargin
   }
+  it should "do a custom pattern" in {
+    legend("patchWidth=7&patchHeight=7&a1=ct&b2=ct&tile=5-,-5&footsideStitch=ctctt&tileStitch=ct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2") shouldBe
+      """green      ct (a1, b2, tileStitch)""".stripMargin
+  }
   "drosteLegend" should "not skip the overall default" in {
     drosteLegend(
       """cttc
