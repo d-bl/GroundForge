@@ -45,9 +45,9 @@ class Stitches(src: String) {
     .split("[^a-z0-9=]+")
     .partition(_.contains("="))
 
-  private val tuples = assignments.flatMap(splitAssignment)
+  val tuples: Array[(StitchId, String, String)] = assignments.flatMap(splitAssignment)
 
-  private val defaultStitch = defaults.headOption.getOrElse("") match {
+  val defaultStitch: String = defaults.headOption.getOrElse("") match {
     case "" => "ctc"
     case s => makeValid(s, "ctc")
   }

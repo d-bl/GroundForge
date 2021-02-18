@@ -18,9 +18,63 @@ package dibl
 import dibl.LinkProps.pairLink
 import dibl.NodeProps.node
 
-import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 @JSExportTopLevel("PairDiagram") object PairDiagram {
+
+  /**
+   *
+   * @param input value of query/form field with id/name droste1 or droste2
+   * @return multiline legend for the color code
+   */
+  @JSExport
+  def drosteLegend(input: String): String = {
+    val stitches = new Stitches(input)
+    val default = Array[String]("default", stitches.defaultStitch)
+    val keyValuePairs: Seq[Array[String]] = stitches.tuples
+      .map{ case (id, stitch, _) => Array(id, stitch)
+      }.toSeq
+    keyValuesToLegend(keyValuePairs :+ default)
+  }
+
+  @JSExport
+  def legend(urlQuery: String): String = {
+    val keyValuePairs = urlQuery
+      .split("&")
+      .map(_.split("=", 2))
+    val keys = keyValuePairs.map(_.head)
+    keyValuesToLegend(
+      keyValuePairs
+        .filter(isStitch(keys))
+        .toSeq
+    )
+  }
+
+  private def isStitch(keys: Seq[String])(kv: Array[String]) = {
+    kv.head match {
+      case "footsideStitch" => keys.contains("footside")
+      case "headsideStitch" => keys.contains("headside")
+      case _ => kv.last.toLowerCase.matches("[ctrlp]+")
+    }
+  }
+
+  private def keyValuesToLegend(keyValuePairs: Seq[Array[String]]) = {
+    keyValuePairs
+      .map { case Array(id, stitch) =>
+        stitch -> id
+      }
+      .groupBy(_._1)
+      .mapValues(_.map(_._2))
+      .toSeq
+      .map { case (stitch, ids) =>
+        Stitches.defaultColorName(stitch) -> ids.mkString(s"$stitch (", ", ", ")")
+      }.groupBy(_._1)
+      .mapValues(_.map(_._2))
+      .map { case (color, stitches) =>
+        stitches.mkString(f"$color%-14s\t", "\n\t\t\t", "")
+      }
+      .mkString("\n")
+  }
 
   @JSExport
   def create(stitches: String, threadDiagram: Diagram): Diagram = apply(stitches, threadDiagram)
