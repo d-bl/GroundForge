@@ -224,8 +224,7 @@ function load() {
   showDiagrams(showProto())
   keyValueStrings.find(whiting)
   d3.selectAll(".swatches").each(function (d,i) {
-    this.addEventListener('touchstart', this.removeAttribute("href"), false);
-    this.addEventListener('touchend', "alert(this.title)", false);
+    this.addEventListener('touchend', "alert('hallo')", false);
   })
   d3.selectAll(".download").each(function (d,i) {
     this.addEventListener('touchstart', this.removeAttribute("href"), false);
