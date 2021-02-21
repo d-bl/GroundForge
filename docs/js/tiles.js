@@ -72,8 +72,8 @@ function showProto() {
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
 
   var l = PairDiagram.legend(query)
-  d3.select("#editPatternFieldSet .swatches").attr("title",l)
-  d3.select("#diagrams .swatches").attr("title",l)
+  d3.select("#editPatternFieldSet .swatches").on('click', function(){alert(l)})
+  d3.select("#diagrams .swatches").on('click', function(){alert(l)})
 
   return config
 }
@@ -223,14 +223,6 @@ function load() {
   keyValueStrings.forEach(setField) // fill the form fields again
   showDiagrams(showProto())
   keyValueStrings.find(whiting)
-  d3.selectAll(".swatches").each(function (d,i) {
-    alert(this);
-    this.addEventListener('touch', "alert('hallo');false", false);
-  })
-  d3.selectAll(".download").each(function (d,i) {
-    this.addEventListener('touchstart', this.removeAttribute("href"), false);
-    this.addEventListener('touchend', this.onfocus, false);
-  })
 }
 function getMatrixLines() {
   return d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
@@ -372,7 +364,7 @@ function showDroste(level) {
 
   var s = d3.select("#droste" + level).node().value
   var l = PairDiagram.drosteLegend(s)
-  d3.select("#drosteFields" + level + " .swatches").attr("title",l)
+  d3.select("#drosteFields" + level + " .swatches").on('click', function(){alert(l)})
 
   var q = submitQuery()
   d3.select("#link").node().href = "?" + q

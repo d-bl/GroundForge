@@ -12,6 +12,7 @@ fieldset fieldset figure div { height: 222px; }
 .pattern figure img { padding-top: 0.5em; }
 .pattern input {width: 5em}
 .pattern textarea {min-width: 4.5em}
+.swatches:hover, .animate, .resize, button { cursor: pointer; }
 
 #whiting { padding-bottom: 0.5em; padding-left: 4em; }
 #prototype, #threadDiagram, #pairDiagram {
