@@ -49,6 +49,8 @@ input[type="number"] { width:3em; margin-right: 2px; text-align: right; }
 fieldset, fieldset div { display: inline-block; vertical-align: top; }
 form { margin-bottom: 1em; }
 
+.colorCode {display: block; font-family: monospace, monospace; display: none; }
+
 p { margin-top: 0; margin-bottom: 0.5em; }
 p, dt, dd, ul { max-width: 46.5em; }
 td { text-align: center; vertical-align: top; padding-right: 0.5em}
