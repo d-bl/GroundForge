@@ -59,21 +59,22 @@
             </span>
         </legend>
 
+        <pre class="colorCode"></pre>
         <figure>
             <figcaption>
                 Pairs
                 <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
-                <img src="images/animate.png" onclick="javascript:animateDiagram(d3.select('#pairDiagram'), 372, 526)" title="animate/reshape"
+                <img class="animate" src="images/animate.png" onclick="javascript:animateDiagram(d3.select('#pairDiagram'), 372, 526)" title="animate/reshape"
                 >
-                <a class="swatches" href="/GroundForge-help/Color-Code"><img src="images/swatches.png"></a>
+                <img class="swatches" src="images/swatches.png" onclick='showColorCode("#diagrams")'>
                 <a download="pair-diagram.svg"
-                   onfocus="setDownloadContent(this,'#pairDiagram')"
+                   class="download" onfocus="setDownloadContent(this,'#pairDiagram')"
                    onblur="this.href='?#download'"
                    href="?#download"
                    title="download"
                 ><img src="images/download.jpg"></a>
-                <img src="images/size-inc.jpg" onclick="resizeBoth('#pairDiagram', 1.1)" title="increase diagram dimensions"
-                ><img src="images/size-dec.jpg" onclick="resizeBoth('#pairDiagram', 0.91)" title="decrease diagram dimensions">
+                <img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#pairDiagram', 1.1)" title="increase diagram dimensions"
+                ><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#pairDiagram', 0.91)" title="decrease diagram dimensions">
             </figcaption>
             <div id="pairDiagram"></div>
         </figure>
@@ -83,13 +84,13 @@
                 Threads
                 <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
                 <a download="thread-diagram.svg"
-                   onfocus="setDownloadContent(this,'#threadDiagram')"
+                   class="download" onfocus="setDownloadContent(this,'#threadDiagram')"
                    onblur="this.href='?#download'"
                    href="?#download"
                    title="download"
                 ><img src="images/download.jpg"></a>
-                <img src="images/size-inc.jpg" onclick="resizeBoth('#threadDiagram', 1.1)" title="increase diagram dimensions"
-                ><img src="images/size-dec.jpg" onclick="resizeBoth('#threadDiagram', 0.91)" title="decrease diagram dimensions">
+                <img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#threadDiagram', 1.1)" title="increase diagram dimensions"
+                ><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#threadDiagram', 0.91)" title="decrease diagram dimensions">
             </figcaption>
             <div id="threadDiagram"></div>
         </figure>
@@ -97,6 +98,7 @@
     </fieldset>
     <p></p>
     <fieldset id="editPatternFieldSet">
+        <pre class="colorCode"></pre>
         <legend>
             Edit pattern
             <a id="link" href="#"><button type="button" title="create link to current set of diagrams"><img alt="link" src="images/link.png"></button></a>
@@ -107,16 +109,16 @@
             <figcaption>
                 Pattern
                 <a href="/GroundForge-help/Replace" target="_blank"><img src="images/information-icon.png" title="how to modify stitches"></a>
-                <a class="swatches" href="/GroundForge-help/Color-Code"><img src="images/swatches.png"></a>
+                <img class="swatches" src="images/swatches.png" onclick='showColorCode("#editPatternFieldSet")'>
                 <a download="prototype.svg"
-                   onfocus="setDownloadContent(this,'#prototype')"
+                   class="download" onfocus="setDownloadContent(this,'#prototype')"
                    onblur="this.href='?#download'"
                    target="_blank"
                    href="?#download"
                    title="download"
                 ><img src="images/download.jpg"></a>
-                <img src="images/size-inc.jpg" onclick="resizeBoth('#prototype', 1.1)" title="increase diagram dimensions"
-                ><img src="images/size-dec.jpg" onclick="resizeBoth('#prototype', 0.91)" title="decrease diagram dimensions">
+                <img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#prototype', 1.1)" title="increase diagram dimensions"
+                ><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#prototype', 0.91)" title="decrease diagram dimensions">
             </figcaption>
             <div id="prototype">
             </div>
@@ -126,7 +128,7 @@
             <figcaption>Pattern definition
                 <a href="/GroundForge-help/Advanced" target="_blank"><img src="images/information-icon.png" title="how to define the pattern and foot sides"></a>
                 <a download="inkscape-template.txt"
-                   onfocus="setInkscapTemplate(this)"
+                   class="download" onfocus="setInkscapTemplate(this)"
                    onblur="this.href='?#download'"
                    href="?#download"
                    title="download Inkscape template (no overlapping tile layout)"
@@ -281,6 +283,7 @@
             <small>Reminder: use a small swatch size</small>
         </legend>
         <div id="drosteFields2">
+            <pre class="colorCode"></pre>
             <figure>
                 <figcaption>
                     Stitches
@@ -292,15 +295,15 @@
                 <figcaption>
                     Pairs
                     <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
-                    <a class="swatches" href="/GroundForge-help/Color-Code"><img src="images/swatches.png"></a>
+                    <img class="swatches" src="images/swatches.png" onclick='showColorCode("#drosteFields2")'>
                     <a download="pair-diagram.svg"
-                       onfocus="setDownloadContent(this,'#drostePair2')"
+                       class="download" onfocus="setDownloadContent(this,'#drostePair2')"
                        onblur="this.href='?#download'"
                        href="?#download"
                        title="download"
                     ><img src="images/download.jpg"></a>
-                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drostePair2', 1.1)" title="increase diagram dimensions"
-                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drostePair2', 0.91)" title="decrease diagram dimensions">
+                    <img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#drostePair2', 1.1)" title="increase diagram dimensions"
+                    ><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#drostePair2', 0.91)" title="decrease diagram dimensions">
                 </figcaption>
                 <div id="drostePair2"></div>
             </figure>
@@ -309,13 +312,13 @@
                     Threads
                     <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
                     <a download="thread-diagram.svg"
-                       onfocus="setDownloadContent(this,'#drosteThread2')"
+                       class="download" onfocus="setDownloadContent(this,'#drosteThread2')"
                        onblur="this.href='?#download'"
                        href="?#download"
                        title="download"
                     ><img src="images/download.jpg"></a>
-                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drosteThread2', 1.1)" title="increase diagram dimensions"
-                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drosteThread2', 0.91)" title="decrease diagram dimensions">
+                    <img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#drosteThread2', 1.1)" title="increase diagram dimensions"
+                    ><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#drosteThread2', 0.91)" title="decrease diagram dimensions">
                 </figcaption>
                 <div id="drosteThread2"></div>
             </figure>
@@ -329,6 +332,7 @@
             <a><button type="button" onclick="showDroste(3)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></button></a>
         </legend>
         <div id="drosteFields3">
+            <pre class="colorCode"></pre>
             <figure>
                 <figcaption>
                     Stitches
@@ -340,15 +344,15 @@
                 <figcaption>
                     Pairs
                     <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
-                    <a class="swatches" href="/GroundForge-help/Color-Code"><img src="images/swatches.png"></a>
+                    <img class="swatches" src="images/swatches.png" onclick='showColorCode("#drosteFields3")'>
                     <a download="pair-diagram.svg"
-                       onfocus="setDownloadContent(this,'#drostePair3')"
+                       class="download" onfocus="setDownloadContent(this,'#drostePair3')"
                        onblur="this.href='?#download'"
                        href="?#download"
                        title="download"
                     ><img src="images/download.jpg"></a>
-                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drostePair3', 1.1)" title="increase diagram dimensions"
-                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drostePair3', 0.91)" title="decrease diagram dimensions">
+                    <img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#drostePair3', 1.1)" title="increase diagram dimensions"
+                    ><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#drostePair3', 0.91)" title="decrease diagram dimensions">
                 </figcaption>
                 <div id="drostePair3"></div>
             </figure>
@@ -357,13 +361,13 @@
                     Threads
                     <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
                     <a download="thread-diagram.svg"
-                       onfocus="setDownloadContent(this,'#drosteThread3')"
+                       class="download" onfocus="setDownloadContent(this,'#drosteThread3')"
                        onblur="this.href='?#download'"
                        href="?#download"
                        title="download"
                     ><img src="images/download.jpg"></a>
-                    <img src="images/size-inc.jpg" onclick="resizeBoth('#drosteThread3', 1.1)" title="increase diagram dimensions"
-                    ><img src="images/size-dec.jpg" onclick="resizeBoth('#drosteThread3', 0.91)" title="decrease diagram dimensions">
+                    <img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#drosteThread3', 1.1)" title="increase diagram dimensions"
+                    ><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#drosteThread3', 0.91)" title="decrease diagram dimensions">
                 </figcaption>
                 <div id="drosteThread3"></div>
             </figure>

@@ -12,6 +12,7 @@ fieldset fieldset figure div { height: 222px; }
 .pattern figure img { padding-top: 0.5em; }
 .pattern input {width: 5em}
 .pattern textarea {min-width: 4.5em}
+.swatches:hover, .animate, .resize, button { cursor: pointer; }
 
 #whiting { padding-bottom: 0.5em; padding-left: 4em; }
 #prototype, #threadDiagram, #pairDiagram {
@@ -47,6 +48,8 @@ foreignObject input:focus { opacity: 1; width:30px; padding: 1px; padding-left: 
 input[type="number"] { width:3em; margin-right: 2px; text-align: right; }
 fieldset, fieldset div { display: inline-block; vertical-align: top; }
 form { margin-bottom: 1em; }
+
+.colorCode {display: block; display: none; }
 
 p { margin-top: 0; margin-bottom: 0.5em; }
 p, dt, dd, ul { max-width: 46.5em; }

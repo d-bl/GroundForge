@@ -71,11 +71,15 @@ function showProto() {
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
 
-  var l = PairDiagram.legend(query)
-  d3.select("#editPatternFieldSet .swatches").attr("title",l)
-  d3.select("#diagrams .swatches").attr("title",l)
+  var l = PairDiagram.legend(query).replace(/\n/g,"<br>")
+  d3.select("#editPatternFieldSet .colorCode").node().innerHTML = l
+  d3.select("#diagrams .colorCode").node().innerHTML = l
+  d3.selectAll(".colorCode").style("display", "none")
 
   return config
+}
+function showColorCode(id) {
+    d3.select(id + " .colorCode").style("display", "block")
 }
 function toggleCheatSheet(imgElement) {
   var value = imgElement.dataset.img;
@@ -364,7 +368,7 @@ function showDroste(level) {
 
   var s = d3.select("#droste" + level).node().value
   var l = PairDiagram.drosteLegend(s)
-  d3.select("#drosteFields" + level + " .swatches").attr("title",l)
+  d3.select("#drosteFields" + level + " .colorCode").node().innerHTML = l
 
   var q = submitQuery()
   d3.select("#link").node().href = "?" + q
