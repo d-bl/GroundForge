@@ -223,6 +223,12 @@ function load() {
   keyValueStrings.forEach(setField) // fill the form fields again
   showDiagrams(showProto())
   keyValueStrings.find(whiting)
+  d3.selectAll(".swatches").each(function (d,i) {
+    this.addEventListener('touchstart', "alert(this.title)", false);
+  })
+  d3.selectAll(".download").each(function (d,i) {
+    this.addEventListener('touchstart', this.onfocus, false);
+  })
 }
 function getMatrixLines() {
   return d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
