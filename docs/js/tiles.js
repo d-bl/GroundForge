@@ -189,9 +189,9 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
 }
 function getInkscapTemplate(linkNode) {
   var s = InkscapeTemplate.fromUrl(submitQuery())
-  return 'data:text/plain,' + encodeURIComponent(s)}
+  return 'data:text/plain,' + encodeURIComponent(s)
+}
 function getDownloadContent (id) {
-
   svg = d3.select(id).node().innerHTML.
       replace('pointer-events="all"', '').
       replace(/<path[^>]+opacity: 0[;"].+?path>/g, '').
