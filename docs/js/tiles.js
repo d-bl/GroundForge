@@ -188,15 +188,15 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
   }
 }
 function getInkscapTemplate(linkNode) {
-  return asData(InkscapeTemplate.fromUrl(submitQuery()))
-}
+  var s = InkscapeTemplate.fromUrl(submitQuery())
+  return 'data:text/plain,' + encodeURIComponent(s)}
 function getDownloadContent (id) {
 
   svg = d3.select(id).node().innerHTML.
       replace('pointer-events="all"', '').
       replace(/<path[^>]+opacity: 0[;"].+?path>/g, '').
       replace(/<foreignObject[\s\S]*?foreignObject>/g, '')
-  return asData('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
+  return 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
 }
 function asData(str) {
   return 'data:text/plain,' + encodeURIComponent(str)
