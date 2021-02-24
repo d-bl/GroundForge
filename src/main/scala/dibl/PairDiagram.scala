@@ -42,20 +42,13 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     val keyValuePairs = urlQuery
       .split("&")
       .map(_.split("=", 2))
-    val keys = keyValuePairs.map(_.head)
-    keyValuesToLegend(
-      keyValuePairs
-        .filter(isStitch(keys))
-        .toSeq
-    )
+      .filter(isStitch)
+      .toSeq
+    keyValuesToLegend(keyValuePairs)
   }
 
-  private def isStitch(keys: Seq[String])(kv: Array[String]) = {
-    kv.head match {
-      case "footsideStitch" => keys.contains("footside")
-      case "headsideStitch" => keys.contains("headside")
-      case _ => kv.last.toLowerCase.matches("[ctrlp]+")
-    }
+  private def isStitch(kv: Array[String]) = {
+    kv.last.toLowerCase.matches("[ctrlp]+") && ! kv.head.endsWith("Stitch")
   }
 
   private def keyValuesToLegend(keyValuePairs: Seq[Array[String]]) = {
@@ -71,7 +64,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       }.groupBy(_._1)
       .mapValues(_.map(_._2))
       .map { case (color, stitches) =>
-        stitches.mkString(f"$color%-10s", "\n          ", "")
+        stitches.sortBy(identity).mkString(f"$color%-10s", "\n          ", "")
       }
       .mkString("\n")
   }
