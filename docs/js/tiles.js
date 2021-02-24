@@ -352,14 +352,12 @@ function resize(container, orientation, scaleValue) {
 }
 function clear2() {
   d3.selectAll("#drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
+  d3.selectAll(".colorCode").style("display", "none")
   return false
 }
 function clear3() {
   d3.selectAll("#drostePair3, #drosteThread3").html("")
-  return false
-}
-function closeDiv(level) {
-  d3.select('#drosteFields' + level).style('display', 'none')
+  d3.selectAll(".colorCode").style("display", "none")
   return false
 }
 function showDroste(level) {
