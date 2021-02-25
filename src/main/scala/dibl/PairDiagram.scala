@@ -64,7 +64,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       }.groupBy(_._1)
       .mapValues(_.map(_._2))
       .map { case (color, stitches) =>
-        stitches.sortBy(identity).mkString(f"$color%-10s", "\n          ", "")
+        val col = if (color.trim.isEmpty) "black" else color
+        stitches.sortBy(identity).mkString(f"$col%-10s", "\n          ", "")
       }
       .mkString("\n")
   }
