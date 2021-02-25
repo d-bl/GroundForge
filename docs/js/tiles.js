@@ -153,6 +153,8 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
 
   // read 'weak' as 'invisible'
   function strength(link){ return link.weak ? link.withPin ? 40 : 10 : 50 }
+  // https://github.com/d3/d3/releases/tag/v4.4.0
+  // https://github.com/d3/d3-force/tree/v1.0.4#api-reference
   var forceLink = d3
     .forceLink(linkDefs)
     .strength(strength)
