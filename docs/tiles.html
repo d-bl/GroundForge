@@ -67,13 +67,19 @@
                 <img class="animate" src="images/animate.png" onclick="javascript:animateDiagram(d3.select('#pairDiagram'), 372, 526)" title="animate/reshape"
                 >
                 <img class="swatches" src="images/swatches.png" onclick='showColorCode("#diagrams")'>
-                <a href="?#download"
+                <a href="javascript:prepareDownload('#pairDiagram')"
                    onfocus="this.href=getDownloadContent('#pairDiagram')"
-                   onblur="this.href='?#download'"
+                   onblur="this.href='javascript:prepareDownload(`#pairDiagram`,this)'"
                    download="pair-diagram.svg"
                    title="download"
                    class="download"
                 ><img src="images/download.jpg"></a>
+                <a id="pairDiagramDownloadLink"
+                   download="pair-diagram.svg"
+                   href="#?pleasePrepareFirst"
+                   style="display:none"
+                   onclick="this.style.display = 'none'"
+                >download</a>
                 <img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#pairDiagram', 1.1)" title="increase diagram dimensions"
                 ><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#pairDiagram', 0.91)" title="decrease diagram dimensions">
             </figcaption>

@@ -203,6 +203,12 @@ function getDownloadContent (id) {
 function asData(str) {
   return 'data:text/plain,' + encodeURIComponent(str)
 }
+function prepareDownload(contentId) {
+    var linkId = contentId + "DownloadLink"
+    d3.select(linkId)
+      .attr("href",getDownloadContent(contentId))
+      .style("display","inline-block")
+}
 function setField (keyValueString) {
 
     var k = keyValueString.replace(/=.*/,"").trim().replace(/[^a-zA-Z0-9]/g,"")
