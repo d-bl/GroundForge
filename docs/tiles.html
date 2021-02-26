@@ -69,7 +69,7 @@
                 <img class="swatches" src="images/swatches.png" onclick='showColorCode("#diagrams")'>
                 <a href="javascript:prepareDownload('#pairDiagram')"
                    onfocus="this.href=getDownloadContent('#pairDiagram')"
-                   onblur="this.href='javascript:prepareDownload(`#pairDiagram`,this)'"
+                   onblur="this.href='javascript:prepareDownload(`#pairDiagram`)'"
                    download="pair-diagram.svg"
                    title="download"
                    class="download"
@@ -90,13 +90,20 @@
             <figcaption>
                 Threads
                 <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
-                <a href="?#download"
+                <a href="javascript:prepareDownload('#threadDiagram')"
                    onfocus="this.href=getDownloadContent('#threadDiagram')"
-                   onblur="this.href='?#download'"
+                   onblur="this.href='javascript:prepareDownload(`#threadDiagram`)'"
                    download="thread-diagram.svg"
                    title="download"
                    class="download"
-                ><img src="images/download.jpg"></a>
+                >
+                <a id="threadDiagramDownloadLink"
+                   download="thread-diagram.svg"
+                   href="#?pleasePrepareFirst"
+                   style="display:none"
+                   onclick="this.style.display = 'none'"
+                >download</a>
+                <img src="images/download.jpg"></a>
                 <img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#threadDiagram', 1.1)" title="increase diagram dimensions"
                 ><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#threadDiagram', 0.91)" title="decrease diagram dimensions">
             </figcaption>
@@ -118,13 +125,20 @@
                 Pattern
                 <a href="/GroundForge-help/Replace" target="_blank"><img src="images/information-icon.png" title="how to modify stitches"></a>
                 <img class="swatches" src="images/swatches.png" onclick='showColorCode("#editPatternFieldSet")'>
-                <a href="?#download"
+                <a href="javascript:prepareDownload('#prototype')"
                    onfocus="this.href=getDownloadContent('#prototype')"
-                   onblur="this.href='?#download'"
+                   onblur="this.href='javascript:prepareDownload(`#prototype`)'"
                    download="prototype.svg"
                    title="download"
                    class="download"
-                ><img src="images/download.jpg"></a>
+                >
+                <a id="prototypeDownloadLink"
+                   download="prototype.svg"
+                   href="#?pleasePrepareFirst"
+                   style="display:none"
+                   onclick="this.style.display = 'none'"
+                >download</a>
+                <img src="images/download.jpg"></a>
                 <img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#prototype', 1.1)" title="increase diagram dimensions"
                 ><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#prototype', 0.91)" title="decrease diagram dimensions">
             </figcaption>
@@ -135,13 +149,20 @@
         <figure class="pattern">
             <figcaption>Pattern definition
                 <a href="/GroundForge-help/Advanced" target="_blank"><img src="images/information-icon.png" title="how to define the pattern and foot sides"></a>
-                <a href="?#download"
-                   onfocus="this.href=getInkscapTemplate()"
-                   onblur="this.href='?#download'"
+                <a href="javascript:prepareTemplateDownload()"
+                   onfocus="this.href=getInkscapeTemplate()"
+                   onblur="this.href='javascript:prepareTemplateDownload()'"
                    download="inkscape-template.txt"
                    title="download Inkscape template (no overlapping tile layout)"
                    class="download" id="template"
-                ><img src="images/download.jpg"></a> &nbsp
+                >
+                <a id="templateDownloadLink"
+                   download="inkscape-template.txt"
+                   href="#?pleasePrepareFirst"
+                   style="display:none"
+                   onclick="this.style.display = 'none'"
+                >download</a>
+                <img src="images/download.jpg"></a> &nbsp
                 <a id="poc" href="poc.html" target="_blank" title="no overlapping tile layout">w.i.p.</a>
             </figcaption>
             <div>
@@ -305,13 +326,20 @@
                     Pairs
                     <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
                     <img class="swatches" src="images/swatches.png" onclick='showColorCode("#drosteFields2")'>
-                    <a href="?#download"
+                    <a href="javascript:prepareDownload('#drostePair2')"
                        onfocus="this.href=getDownloadContent('#drostePair2')"
-                       onblur="this.href='?#download'"
-                       download="pair-diagram.svg"
+                       onblur="this.href='javascript:prepareDownload(`#drostePair2`)'"
+                       download="droste-pair-diagram.svg"
                        title="download"
                        class="download"
-                    ><img src="images/download.jpg"></a>
+                    >
+                    <a id="drostePair2DownloadLink"
+                       download="droste-pair-diagram.svg"
+                       href="#?pleasePrepareFirst"
+                       style="display:none"
+                       onclick="this.style.display = 'none'"
+                    >download</a>
+                    <img src="images/download.jpg"></a>
                     <img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#drostePair2', 1.1)" title="increase diagram dimensions"
                     ><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#drostePair2', 0.91)" title="decrease diagram dimensions">
                 </figcaption>
@@ -321,13 +349,20 @@
                 <figcaption>
                     Threads
                     <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
-                    <a href="?#download"
+                    <a href="javascript:prepareDownload('#drosteThread2')"
                        onfocus="this.href=getDownloadContent('#drosteThread2')"
-                       onblur="this.href='?#download'"
-                       download="thread-diagram.svg"
+                       onblur="this.href='javascript:prepareDownload(`#drosteThread2`)'"
+                       download="droste-thread-diagram.svg"
                        title="download"
                        class="download"
-                    ><img src="images/download.jpg"></a>
+                    >
+                    <a id="drosteThread2DownloadLink"
+                       download="droste-thread-diagram.svg"
+                       href="#?pleasePrepareFirst"
+                       style="display:none"
+                       onclick="this.style.display = 'none'"
+                    >download</a>
+                    <img src="images/download.jpg"></a>
                     <img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#drosteThread2', 1.1)" title="increase diagram dimensions"
                     ><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#drosteThread2', 0.91)" title="decrease diagram dimensions">
                 </figcaption>
@@ -356,13 +391,20 @@
                     Pairs
                     <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
                     <img class="swatches" src="images/swatches.png" onclick='showColorCode("#drosteFields3")'>
-                    <a href="?#download"
+                    <a href="javascript:prepareDownload('#drostePair3')"
                        onfocus="this.href=getDownloadContent('#drostePair3')"
-                       onblur="this.href='?#download'"
-                       download="pair-diagram.svg"
+                       onblur="this.href='javascript:prepareDownload(`#drostePair3`)'"
+                       download="droste-next-pair-diagram.svg"
                        title="download"
                        class="download"
-                    ><img src="images/download.jpg"></a>
+                    >
+                    <a id="drostePair3DownloadLink"
+                       download="droste-next-pair-diagram.svg"
+                       href="#?pleasePrepareFirst"
+                       style="display:none"
+                       onclick="this.style.display = 'none'"
+                    >download</a>
+                        <img src="images/download.jpg"></a>
                     <img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#drostePair3', 1.1)" title="increase diagram dimensions"
                     ><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#drostePair3', 0.91)" title="decrease diagram dimensions">
                 </figcaption>
@@ -372,13 +414,20 @@
                 <figcaption>
                     Threads
                     <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
-                    <a href="?#download"
+                    <a href="javascript:prepareDownload('#drosteThread3')"
                        onfocus="this.href=getDownloadContent('#drosteThread3')"
-                       onblur="this.href='?#download'"
-                       download="thread-diagram.svg"
+                       onblur="this.href='javascript:prepareDownload(`#drosteThread3`)'"
+                       download="droste-next-thread-diagram.svg"
                        title="download"
                        class="download"
-                    ><img src="images/download.jpg"></a>
+                    >
+                    <a id="drosteThread3DownloadLink"
+                       download="droste-next-thread-diagram.svg"
+                       href="#?pleasePrepareFirst"
+                       style="display:none"
+                       onclick="this.style.display = 'none'"
+                    >download</a>
+                    <img src="images/download.jpg"></a>
                     <img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#drosteThread3', 1.1)" title="increase diagram dimensions"
                     ><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#drosteThread3', 0.91)" title="decrease diagram dimensions">
                 </figcaption>

@@ -189,7 +189,7 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
     }
   }
 }
-function getInkscapTemplate(linkNode) {
+function getInkscapeTemplate() {
   var s = InkscapeTemplate.fromUrl(submitQuery())
   return 'data:text/plain,' + encodeURIComponent(s)
 }
@@ -207,6 +207,11 @@ function prepareDownload(contentId) {
     var linkId = contentId + "DownloadLink"
     d3.select(linkId)
       .attr("href",getDownloadContent(contentId))
+      .style("display","inline-block")
+}
+function prepareTemplateDownload() {
+    d3.select("templateDownloadLink")
+      .attr("href",getInkscapeTemplate())
       .style("display","inline-block")
 }
 function setField (keyValueString) {
