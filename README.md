@@ -260,15 +260,16 @@ Use `mvn clean test` to run unit tests. As some tests read pattern links from he
 Maven is much faster but uses JVM while the JS used by SBT is the actual target environment.
 Some classes under `src/test` are suffixed with `Demos` rather than `Spec` these runnable objects create SVG documents in a `target/test` directory for a visual check.
 
+For manual tests with other browsers and devices than your own, 
+you can sign-up (for free, since this project is open source) at  
+![](src/test/resources/BrowserStack.png) [BrowserStack](http://browserstack.com/)
+
 Use as JavaScript Library
 =========================
 
 The demo's mentioned above use the scala code as a JavaScript library
 as explained under short intro for developers.
 Other mash ups and more user-friendly applications could be wrapped around the library.
-
-For manual tests with other browsers and devices than your own, you could sign-up at
-http://browserstack.com/
 
 Use as JVM library
 ==================
