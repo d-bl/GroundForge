@@ -211,9 +211,7 @@ function prepareDownload(contentId) {
       .style("display","inline-block")
 }
 function prepareTemplateDownload() {
-    d3.select("templateDownloadLink")
-      .attr("href",getInkscapeTemplate())
-      .style("display","inline-block")
+    alert('Sorry, Inkscape templates are not available for your device')
 }
 function setField (keyValueString) {
 
