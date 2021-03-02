@@ -65,7 +65,8 @@ function showProto() {
   var hrefQ = tesselace(query) + query
   d3.select("#link").node().href = "?" + hrefQ
   d3.select("#poc").node().href = "poc.html?" + pocRef(query)
-  d3.selectAll("#threadDiagram, #pairDiagram, #drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
+  d3.selectAll("#threadDiagram, #pairDiagram").html("")
+  clear2()
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
@@ -189,7 +190,7 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
     }
   }
 }
-function getInkscapTemplate(linkNode) {
+function getInkscapeTemplate() {
   var s = InkscapeTemplate.fromUrl(submitQuery())
   return 'data:text/plain,' + encodeURIComponent(s)
 }
@@ -202,6 +203,18 @@ function getDownloadContent (id) {
 }
 function asData(str) {
   return 'data:text/plain,' + encodeURIComponent(str)
+}
+function prepareDownload(contentId) {
+    // the href may have been followed before onfocus changed it
+    // in that case we temporarily need another link
+    // that link is hidden when followed
+    var linkId = contentId + "DownloadLink"
+    d3.select(linkId)
+      .attr("href",getDownloadContent(contentId))
+      .style("display","inline-block")
+}
+function prepareTemplateDownload() {
+    alert('Sorry, Inkscape templates are not available for your device')
 }
 function setField (keyValueString) {
 
@@ -355,11 +368,17 @@ function resize(container, orientation, scaleValue) {
 function clear2() {
   d3.selectAll("#drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
   d3.selectAll(".colorCode").style("display", "none")
+  d3.selectAll("#drostePair2DownloadLink, #drosteThread2DownloadLink, #drostePair3DownloadLink, #drosteThread3DownloadLink")
+    .attr("href", "#?pleasePrepareFirst")
+    .style("display", "none")
   return false
 }
 function clear3() {
   d3.selectAll("#drostePair3, #drosteThread3").html("")
   d3.selectAll(".colorCode").style("display", "none")
+  d3.selectAll("#drostePair3DownloadLink, #drosteThread3DownloadLink")
+    .attr("href", "#?pleasePrepareFirst")
+    .style("display", "none")
   return false
 }
 function showDroste(level) {

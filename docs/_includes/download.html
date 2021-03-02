@@ -1,0 +1,16 @@
+<a href="javascript:prepareDownload('#{{ include.id }}')"
+   onfocus="this.href=getDownloadContent('#{{ include.id }}')"
+   onblur="this.href='javascript:prepareDownload(`#{{ include.id }}`)'"
+   download="GF-{{ include.name }}.svg"
+   title="download"
+   class="download"
+><img src="images/download.jpg"></a>
+<a id="{{ include.id }}DownloadLink"
+   download="GF-{{ include.name }}.svg"
+   href="#?pleasePrepareFirst"
+   onblur="this.href='#?pleasePrepareFirst'"
+   style="display:none"
+   onclick="this.style.display = 'none'"
+>download</a>
+<img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#{{ include.id }}', 1.1)" title="increase diagram dimensions"
+><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#{{ include.id }}', 0.91)" title="decrease diagram dimensions">
