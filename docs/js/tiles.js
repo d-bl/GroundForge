@@ -205,6 +205,9 @@ function asData(str) {
   return 'data:text/plain,' + encodeURIComponent(str)
 }
 function prepareDownload(contentId) {
+    // the href may have been followed before onfocus changed it
+    // in that case we temporarily need another link
+    // that link is hidden when followed
     var linkId = contentId + "DownloadLink"
     d3.select(linkId)
       .attr("href",getDownloadContent(contentId))
