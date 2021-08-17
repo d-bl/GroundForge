@@ -87,7 +87,7 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
          | markerHeight="5"
          | orient="auto"
          | markerUnits="userSpaceOnUse">
-         | <path d="M 0,6 0,-6"
+         | <path d="M 0,2 0,-2"
          |  fill="#000"
          |  stroke="#000"
          |  stroke-width="1px"></path>
