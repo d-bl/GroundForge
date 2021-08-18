@@ -127,7 +127,11 @@ function showDiagrams(config) {
   setThreadDiagram("#threadDiagram", ThreadDiagram.create(pairDiagram))
 }
 function animateDiagram(container, forceCenterX, forceCenterY) {
-
+  if(!container) {
+    // workaround for chrome
+    container = d3.select("#pairDiagram")
+    d3.select("#draggable").node().focus()
+  }
   var diagram = container.node().data
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()//can't inline
