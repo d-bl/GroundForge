@@ -19,14 +19,16 @@ function load() {
   console.log(`t1=${t1} t2=${t2} `)
   var hor2x2 = "tile=88,11&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=8&patchHeight=8"
   var diagonal = "tile=5&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1&patchWidth=8&patchHeight=8"
-  showGraph ("#diagonal", `${diagonal}&a1=${t1}`)
+  showGraph ("#diagonal", `diagonal&${diagonal}&a1=${t1}`)
   showGraph ("#same", `${hor2x2}&a1=${t1}&a2=${t1}&b1=${t1}&b2=${t1}`)
-  showGraph ("#alternating", `${hor2x2}&a1=${t1}&a2=${t2}&b1=${t2}&b2=${t1}`)
-  showGraph ("#altRows", `${hor2x2}&a1=${t1}&a2=${t1}&b1=${t2}&b2=${t2}`)
-  showGraph ("#altCols", `${hor2x2}&a1=${t1}&a2=${t2}&b1=${t1}&b2=${t2}`)
+  if (t1.includes('l') || t1.includes('r')) {
+    showGraph ("#alternating", `alternating&${hor2x2}&a1=${t1}&a2=${t2}&b1=${t2}&b2=${t1}`)
+    showGraph ("#altRows", `alternating-rows&${hor2x2}&a1=${t1}&a2=${t1}&b1=${t2}&b2=${t2}`)
+    showGraph ("#altCols", `alternating-columns&${hor2x2}&a1=${t1}&a2=${t2}&b1=${t1}&b2=${t2}`)
+  }
 }
 function showGraph(id, q) {
-  d3.select(`${id}Link`).node().href = q
+  d3.select(`${id}Link`).node().href = 'tiles?' + q
   var container = d3.select(id)
   var config = TilesConfig(q)
   var diagram = ThreadDiagram.create(NewPairDiagram.create(config))
