@@ -21,10 +21,11 @@ function load() {
   var diagonal = "tile=5&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1&patchWidth=8&patchHeight=8"
   showGraph ("#diagonal", t1, `diagonal&${diagonal}&a1=${t1}`)
   showGraph ("#same", t1, `${hor2x2}&a1=${t1}&a2=${t1}&b1=${t1}&b2=${t1}`)
+  showGraph ("#reversed", t2, `${hor2x2}&a1=${t2}&a2=${t2}&b1=${t2}&b2=${t2}`)
   if (t1.includes('l') || t1.includes('r')) {
-    showGraph ("#alternating", `${t1},${t2};${t2},${t1}`, `alternating&${hor2x2}&a1=${t1}&a2=${t2}&b1=${t2}&b2=${t1}`)
-    showGraph ("#altRows", `${t1},${t1};${t2},${t2}`, `alternating-rows&${hor2x2}&a1=${t1}&a2=${t1}&b1=${t2}&b2=${t2}`)
-    showGraph ("#altCols", `${t1},${t2};${t1},${t2}`, `alternating-columns&${hor2x2}&a1=${t1}&a2=${t2}&b1=${t1}&b2=${t2}`)
+    showGraph ("#alternating", `${t1} -> ${t2}\n${t2} <- ${t1}`, `alternating&${hor2x2}&a1=${t1}&a2=${t2}&b1=${t2}&b2=${t1}`)
+    showGraph ("#altRows", `${t1} -> ${t1}\n${t2} <- ${t2}`, `alternating-rows&${hor2x2}&a1=${t1}&a2=${t1}&b1=${t2}&b2=${t2}`)
+    showGraph ("#altCols", `${t1} -> ${t2}\n${t1} <- ${t2}`, `alternating-columns&${hor2x2}&a1=${t1}&a2=${t2}&b1=${t1}&b2=${t2}`)
   }
 }
 function showGraph(id, caption, q) {
