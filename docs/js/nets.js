@@ -28,19 +28,27 @@ function load() {
   }
 }
 function showGraph(id, caption, q) {
-  d3.select(`${id}Link`).node().href = 'tiles?' + q
-  d3.select(`${id}Link`).node().text = caption
-  var container = d3.select(id)
+
+  // model
+
   var config = TilesConfig(q)
   var diagram = ThreadDiagram.create(NewPairDiagram.create(config))
+  var nodeDefs = diagram.jsNodes()
+  var linkDefs = diagram.jsLinks()//can't inline
+
+  // render
+
   var scale = 2
   var height = 200
   var width = 200
   var stroke = "2px"
-  var nodeDefs = diagram.jsNodes()
-  var linkDefs = diagram.jsLinks()//can't inline
-  var markers = true // use false for slow devices and IE-11, set them at onEnd
+  var markers = false // use true for pair diagrams on fast devices and not IE-11
+  var fig = d3.select(`#diagrams`).append("figure")
+  var container = fig.append("div")
   container.html(D3jsSVG.render(diagram, stroke, markers, width, height))
+  var a = fig.append("figcaption").append("pre").append("a")
+  a.text(caption)
+  a.attr("href",'tiles?' + q)
 
   // nudge nodes with force graph of the  D3js library
 
