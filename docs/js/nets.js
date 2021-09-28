@@ -14,20 +14,30 @@
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
 function load() {
-  var t1 = window.location.search.substr(1).toLowerCase()
-  var t2 = t1.replace("l","R").replace("r","L").toLowerCase()
-  console.log(`t1=${t1} t2=${t2} `)
-  var hor2x2 = "tile=88,11&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=8&patchHeight=8"
-  var diagonal = "tile=5&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1&patchWidth=8&patchHeight=8"
-  showGraph ("#diagonal", t1, `diagonal&${diagonal}&a1=${t1}`)
-  showGraph ("#same", t1, `${hor2x2}&a1=${t1}&a2=${t1}&b1=${t1}&b2=${t1}`)
-  if (t1.includes('l') || t1.includes('r')) {
-    showGraph ("#alternating", `${t1} -> ${t2}\n${t2} <- ${t1}`, `alternating&${hor2x2}&a1=${t1}&a2=${t2}&b1=${t2}&b2=${t1}`)
-    showGraph ("#altRows", `${t1} -> ${t1}\n${t2} <- ${t2}`, `alternating-rows&${hor2x2}&a1=${t1}&a2=${t1}&b1=${t2}&b2=${t2}`)
-    showGraph ("#altCols", `${t1} -> ${t2}\n${t1} <- ${t2}`, `alternating-columns&${hor2x2}&a1=${t1}&a2=${t2}&b1=${t1}&b2=${t2}`)
+  var b = window.location.search.substr(1).toLowerCase()
+  var d = b.replace("l","R").replace("r","L").toLowerCase()
+  var p = b.split("").reverse().join("")
+  var q = d.split("").reverse().join("")
+  var hor2x2 = "tile=88,11&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=10&patchHeight=12&headside=x,7&footside=4,x"
+  var diagonal = "tile=5&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1&patchWidth=10&patchHeight=12&headside=7,x&footside=x,4"
+  var paris = "tile=B-C-,---5&t&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=12&patchHeight=18"
+  var honeycomb = "tile=-5--,6v9v,---5,2z0z&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
+  showGraph ("diagonal\npair diagram", `diagonal&${diagonal}&b1=${b}`)
+  showGraph ("paris", `paris&${paris}&tileStitch=${b}`)
+  showGraph ("honeycomb", `honeycomb&${honeycomb}&tileStitch=${b}`)
+  showGraph ("bb ->\nbb <-", `${hor2x2}&b1=${b}&b2=${b}&c1=${b}&c2=${b}`)
+  if (b != d) {
+    showGraph ("bd ->\ndb <-", `alternating&${hor2x2}&b1=${b}&b2=${d}&c1=${d}&c2=${b}`)
+    showGraph ("bb ->\ndd <-", `alternating-rows&${hor2x2}&b1=${b}&b2=${b}&c1=${d}&c2=${d}`)
+    showGraph ("bd ->\nbd <-", `alternating-columns&${hor2x2}&b1=${b}&b2=${d}&c1=${b}&c2=${d}`)
+  }
+  if (b != d || b!= p) {
+    // TODO what if only b-p are different stitches?
+    showGraph ("bd ->\npq <-", `alternating-columns&${hor2x2}&b1=${b}&b2=${d}&c1=${p}&c2=${q}`)
+    d3.select(`#diagrams`).append("p").text(`Mirrored stitches: b=${b}, b=${d}, b=${p}, b=${q}.`)
   }
 }
-function showGraph(id, caption, q) {
+function showGraph(caption, q) {
 
   // model
 
@@ -39,18 +49,20 @@ function showGraph(id, caption, q) {
   // render
 
   var scale = 2
-  var height = 200
-  var width = 200
+  var height = 180
+  var width = 180
   var stroke = "2px"
-  var markers = false // use true for pair diagrams on fast devices and not IE-11
+  var markers = false // use true for pair diagrams on fast devices and other browsers than IE-11
+  var svg = D3jsSVG.render(diagram, stroke, markers, width, height)
   var fig = d3.select(`#diagrams`).append("figure")
   var container = fig.append("div")
-  container.html(D3jsSVG.render(diagram, stroke, markers, width, height))
-  var a = fig.append("figcaption").append("pre").append("a")
-  a.text(caption)
-  a.attr("href",'tiles?' + q)
+  container.html(svg.replace("<g>","<g transform='scale(0.5,0.5)'>"))
+  fig.append("figcaption").append("pre").append("a")
+     .text(caption).attr("href",'tiles?' + q).attr("target", '_blank')
 
   // nudge nodes with force graph of the  D3js library
+  // TODO the rest of this function is found in other scripts too,
+  //  extract into a single source for more functionality and stay in sync
 
   var links = container.selectAll(".link").data(linkDefs)
   var nodes = container.selectAll(".node").data(nodeDefs)
