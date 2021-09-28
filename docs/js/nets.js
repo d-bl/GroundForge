@@ -34,7 +34,7 @@ function load() {
   if (b != d || b!= p) {
     // TODO what if only b-p are different stitches?
     showGraph ("bd ->\npq <-", `alternating-columns&${hor2x2}&b1=${b}&b2=${d}&c1=${p}&c2=${q}`)
-    d3.select(`#diagrams`).append("p").text(`Mirrored stitches: b=${b}, b=${d}, b=${p}, b=${q}.`)
+    d3.select(`#diagrams`).append("p").text(`Mirrored stitches: b=${b}, d=${d}, p=${p}, q=${q}.`)
   }
 }
 function showGraph(caption, q) {
