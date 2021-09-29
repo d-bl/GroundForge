@@ -29,12 +29,16 @@ function load() {
   if (b != d) {
     showGraph ("bd ->\ndb <-", `alternating&${hor2x2}&b1=${b}&b2=${d}&c1=${d}&c2=${b}`)
     showGraph ("bb ->\ndd <-", `alternating-rows&${hor2x2}&b1=${b}&b2=${b}&c1=${d}&c2=${d}`)
-    showGraph ("bd ->\nbd <-", `alternating-columns&${hor2x2}&b1=${b}&b2=${d}&c1=${b}&c2=${d}`)
+    if (b != p) {
+       showGraph ("bd ->\nbd <-", `alternating-columns&${hor2x2}&b1=${b}&b2=${d}&c1=${b}&c2=${d}`)
+    }
   }
   if (b != d || b!= p) {
     // TODO what if only b-p are different stitches?
-    showGraph ("bd ->\npq <-", `alternating-columns&${hor2x2}&b1=${b}&b2=${d}&c1=${p}&c2=${q}`)
-    d3.select(`#diagrams`).append("p").text(`Mirrored stitches: b=${b}, d=${d}, p=${p}, q=${q}.`)
+    if (b != p) {
+      showGraph ("bd ->\npq <-", `alternating-columns&${hor2x2}&b1=${b}&b2=${d}&c1=${p}&c2=${q}`)
+    }
+    d3.select(`#diagrams`).append("p").text(`Mirrored stitches: b=${b}, d=${d}, p=${p}, q=${q}. ${ b == p ? "b=p , q=d" : ""} ${ b == d ? "b=d, q=p" : ""}`)
   }
 }
 function showGraph(caption, q) {
