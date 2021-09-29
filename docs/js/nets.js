@@ -15,7 +15,7 @@
 */
 function load() {
   var b = window.location.search.substr(1).toLowerCase()
-  var d = b.replace("l","R").replace("r","L").toLowerCase()
+  var d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
   var p = b.split("").reverse().join("")
   var q = d.split("").reverse().join("")
   var hor2x2 = "tile=88,11&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=10&patchHeight=12&headside=x,7&footside=4,x"
