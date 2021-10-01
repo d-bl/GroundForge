@@ -14,7 +14,9 @@
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
 function load() {
-  var b = window.location.search.substr(1).toLowerCase()
+  // TODO allow 4 stitches: ?b=..&d=..&p=..&q=..?
+  var b = window.location.search.substr(1).toLowerCase().replace(/[^ctlr]/g,"").trim()
+  if (b == "") b = "clctr"
   var d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
   var p = b.split("").reverse().join("")
   var q = d.split("").reverse().join("")
@@ -33,11 +35,17 @@ function load() {
        showGraph ("bd ->\nbd <-", `alternating-columns&${hor2x2}&b1=${b}&b2=${d}&c1=${b}&c2=${d}`)
     }
   }
-  if (b != d || b!= p) {
-    // TODO what if only b-p are different stitches?
-    if (b != p) {
-      showGraph ("bd ->\npq <-", `alternating-columns&${hor2x2}&b1=${b}&b2=${d}&c1=${p}&c2=${q}`)
+  if (b != p) {
+    showGraph ("bd ->\npq <-", `${hor2x2}&b1=${b}&b2=${d}&c1=${p}&c2=${q}`)
+    showGraph ("bp ->\ndq <-", `${hor2x2}&b1=${b}&b2=${p}&c1=${d}&c2=${q}`)
+    showGraph ("bp ->\nqd <-", `${hor2x2}&b1=${b}&b2=${p}&c1=${q}&c2=${d}`)
+    if (b != d) {
+      showGraph ("bd ->\nqp <-", `${hor2x2}&b1=${b}&b2=${d}&c1=${q}&c2=${p}`)
+      showGraph ("bq ->\ndp <-", `${hor2x2}&b1=${b}&b2=${q}&c1=${d}&c2=${p}`)
+      showGraph ("bq ->\npd <-", `${hor2x2}&b1=${b}&b2=${q}&c1=${p}&c2=${d}`)
     }
+  }
+  if (b != d || b!= p) {
     d3.select(`#diagrams`).append("p").text(`Mirrored stitches: b=${b}, d=${d}, p=${p}, q=${q}. ${ b == p ? "b=p , q=d" : ""} ${ b == d ? "b=d, q=p" : ""}`)
   }
 }
