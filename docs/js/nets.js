@@ -35,6 +35,9 @@ function load() {
        showGraph ("bd ->\nbd <-", `alternating-columns&${hor2x2}&b1=${b}&b2=${d}&c1=${b}&c2=${d}`)
     }
   }
+  if (b != q) {
+    showGraph ("bq ->\nbq <-", `${hor2x2}&b1=${b}&b2=${q}&c1=${b}&c2=${q}`)
+  }
   if (b != p) {
     showGraph ("bd ->\npq <-", `${hor2x2}&b1=${b}&b2=${d}&c1=${p}&c2=${q}`)
     showGraph ("bp ->\ndq <-", `${hor2x2}&b1=${b}&b2=${p}&c1=${d}&c2=${q}`)
