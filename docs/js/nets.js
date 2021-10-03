@@ -24,32 +24,25 @@ function load() {
   var diagonal = "tile=5&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1&patchWidth=10&patchHeight=12&headside=7,x&footside=x,4"
   var paris = "tile=B-C-,---5&t&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=12&patchHeight=18"
   var honeycomb = "tile=-5--,6v9v,---5,2z0z&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
-  showGraph ("diagonal\npair diagram", `diagonal&${diagonal}&b1=${b}`)
-  showGraph ("paris", `paris&${paris}&tileStitch=${b}`)
-  showGraph ("honeycomb", `honeycomb&${honeycomb}&tileStitch=${b}`)
-  showGraph ("bb ->\nbb <-", `${hor2x2}&b1=${b}&b2=${b}&c1=${b}&c2=${b}`)
-  if (b != d) {
-    showGraph ("bd ->\ndb <-", `alternating&${hor2x2}&b1=${b}&b2=${d}&c1=${d}&c2=${b}`)
-    showGraph ("bb ->\ndd <-", `alternating-rows&${hor2x2}&b1=${b}&b2=${b}&c1=${d}&c2=${d}`)
-    if (b != p) {
-       showGraph ("bd ->\nbd <-", `alternating-columns&${hor2x2}&b1=${b}&b2=${d}&c1=${b}&c2=${d}`)
-    }
-  }
-  if (b != q) {
-    showGraph ("bq ->\nbq <-", `${hor2x2}&b1=${b}&b2=${q}&c1=${b}&c2=${q}`)
-  }
-  if (b != p) {
-    showGraph ("bd ->\npq <-", `${hor2x2}&b1=${b}&b2=${d}&c1=${p}&c2=${q}`)
-    showGraph ("bp ->\ndq <-", `${hor2x2}&b1=${b}&b2=${p}&c1=${d}&c2=${q}`)
-    showGraph ("bp ->\nqd <-", `${hor2x2}&b1=${b}&b2=${p}&c1=${q}&c2=${d}`)
-    if (b != d) {
-      showGraph ("bd ->\nqp <-", `${hor2x2}&b1=${b}&b2=${d}&c1=${q}&c2=${p}`)
-      showGraph ("bq ->\ndp <-", `${hor2x2}&b1=${b}&b2=${q}&c1=${d}&c2=${p}`)
-      showGraph ("bq ->\npd <-", `${hor2x2}&b1=${b}&b2=${q}&c1=${p}&c2=${d}`)
-    }
-  }
   if (b != d || b!= p) {
     d3.select(`#diagrams`).append("p").text(`Mirrored stitches: b=${b}, d=${d}, p=${p}, q=${q}. ${ b == p ? "b=p , q=d" : ""} ${ b == d ? "b=d, q=p" : ""}`)
+  }
+
+  showGraph ("diagonal\npair diagram", `b1=${b}&${diagonal}`)
+  showGraph ("paris", `tileStitch=${b}&${paris}`)
+  showGraph ("honeycomb", `tileStitch=${b}&${honeycomb}`)
+  showGraph ("bb ->\nbb <-", `&b1=${b}&b2=${b}&c1=${b}&c2=${b}&${hor2x2}`)
+  if (b != d) {
+    showGraph ("bd ->\nbd <-", `b1=${b}&b2=${d}&c1=${b}&c2=${d}&${hor2x2}`)
+  }
+  if (b != p) {
+    showGraph ("bp ->\nbp <-", `b1=${b}&b2=${p}&c1=${b}&c2=${p}&${hor2x2}`)
+  }
+  if (b != q) {
+    showGraph ("bq ->\nbq <-", `b1=${b}&b2=${q}&c1=${b}&c2=${q}&${hor2x2}`)
+    if (b != d) {
+      showGraph ("bp ->\nqd <-", `b1=${b}&b2=${p}&c1=${q}&c2=${d}&${hor2x2}`)
+    }
   }
 }
 function showGraph(caption, q) {
