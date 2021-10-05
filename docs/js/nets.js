@@ -15,18 +15,16 @@
 */
 function load() {
   // TODO allow 4 stitches: ?b=..&d=..&p=..&q=..?
-  var b = window.location.search.substr(1).toLowerCase().replace(/[^ctlr]/g,"").trim()
-  if (b == "") b = "clctr"
-  var d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
-  var p = b.split("").reverse().join("")
-  var q = d.split("").reverse().join("")
-  var hor2x2 = "tile=88,11&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=10&patchHeight=12&headside=x,7&footside=4,x"
-  var diagonal = "tile=5&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1&patchWidth=10&patchHeight=12&headside=7,x&footside=x,4"
-  var paris = "tile=B-C-,---5&t&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=12&patchHeight=18"
-  var honeycomb = "tile=-5--,6v9v,---5,2z0z&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
-  if (b != d || b!= p) {
-    d3.select(`#diagrams`).append("p").text(`Mirrored stitches: b=${b}, d=${d}, p=${p}, q=${q}. ${ b == p ? "b=p , q=d" : ""} ${ b == d ? "b=d, q=p" : ""}`)
-  }
+  const urlParams = new URLSearchParams(window.location.search)
+  var b = urlParams.get("b").toLowerCase().replace(/[^ctlr]/g,"").trim()
+  if (!b || b == "") b = "clctr"
+  const d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
+  const p = b.split("").reverse().join("")
+  const q = d.split("").reverse().join("")
+  const hor2x2 = "tile=88,11&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=10&patchHeight=12&headside=x,7&footside=4,x"
+  const diagonal = "tile=5&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1&patchWidth=10&patchHeight=12&headside=7,x&footside=x,4"
+  const paris = "tile=B-C-,---5&t&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=12&patchHeight=18"
+  const honeycomb = "tile=-5--,6v9v,---5,2z0z&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
 
   showGraph ("diagonal\npair diagram", `b1=${b}&${diagonal}`)
   showGraph ("paris", `tileStitch=${b}&${paris}`)
@@ -44,26 +42,29 @@ function load() {
       showGraph ("bp ->\nqd <-", `b1=${b}&b2=${p}&c1=${q}&c2=${d}&${hor2x2}`)
     }
   }
+  if (b != d || b!= p) {
+    d3.select(`#legend`).text(`b = ${b}, d = ${d}, p = ${p}, q = ${q} ${ b == p ? "; b=p , q=d" : ""} ${ b == d ? "; b=d, q=p" : ""}`)
+  }
 }
 function showGraph(caption, q) {
 
   // model
 
-  var config = TilesConfig(q)
-  var diagram = ThreadDiagram.create(NewPairDiagram.create(config))
-  var nodeDefs = diagram.jsNodes()
-  var linkDefs = diagram.jsLinks()//can't inline
+  const config = TilesConfig(q)
+  const diagram = ThreadDiagram.create(NewPairDiagram.create(config))
+  const nodeDefs = diagram.jsNodes()
+  const linkDefs = diagram.jsLinks()//can't inline
 
   // render
 
-  var scale = 2
-  var height = 180
-  var width = 180
-  var stroke = "2px"
-  var markers = false // use true for pair diagrams on fast devices and other browsers than IE-11
-  var svg = D3jsSVG.render(diagram, stroke, markers, width, height)
-  var fig = d3.select(`#diagrams`).append("figure")
-  var container = fig.append("div")
+  const scale = 2
+  const height = 180
+  const width = 180
+  const stroke = "2px"
+  const markers = false // use true for pair diagrams on fast devices and other browsers than IE-11
+  const svg = D3jsSVG.render(diagram, stroke, markers, width, height)
+  const fig = d3.select(`#diagrams`).append("figure")
+  const container = fig.append("div")
   container.html(svg.replace("<g>","<g transform='scale(0.5,0.5)'>"))
   fig.append("figcaption").append("pre").append("a")
      .text(caption).attr("href",'tiles?' + q).attr("target", '_blank')
@@ -72,15 +73,15 @@ function showGraph(caption, q) {
   // TODO the rest of this function is found in other scripts too,
   //  extract into a single source for more functionality and stay in sync
 
-  var links = container.selectAll(".link").data(linkDefs)
-  var nodes = container.selectAll(".node").data(nodeDefs)
+  const links = container.selectAll(".link").data(linkDefs)
+  const nodes = container.selectAll(".node").data(nodeDefs)
   function moveNode(jsNode) {
       return 'translate('+jsNode.x+','+jsNode.y+')'
   }
   function drawPath(jsLink) {
-      var s = jsLink.source
-      var t = jsLink.target
-      var l = diagram.link(jsLink.index)
+      const s = jsLink.source
+      const t = jsLink.target
+      const l = diagram.link(jsLink.index)
       return D3jsSVG.pathDescription(l, s.x, s.y, t.x, t.y)
   }
   function onTick() {
@@ -89,7 +90,7 @@ function showGraph(caption, q) {
   }
   // read 'weak' as 'invisible'
   function strength(link){ return link.weak ? link.withPin ? 40 : 10 : 50 }
-  var forceLink = d3
+  const forceLink = d3
     .forceLink(linkDefs)
     .strength(strength)
     .distance(12)
