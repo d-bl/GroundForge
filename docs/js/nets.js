@@ -16,8 +16,9 @@
 function load() {
   // TODO allow 4 stitches: ?b=..&d=..&p=..&q=..?
   const urlParams = new URLSearchParams(window.location.search)
-  var b = urlParams.get("b").toLowerCase().replace(/[^ctlr]/g,"").trim()
-  if (!b || b == "") b = "clctr"
+  var b = urlParams.get("b")
+  if (b) b = b.toLowerCase().replace(/[^ctlr]/g,"").trim()
+  if (!b) b = "clctr"
   const d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
   const p = b.split("").reverse().join("")
   const q = d.split("").reverse().join("")
