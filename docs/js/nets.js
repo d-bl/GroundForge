@@ -14,7 +14,7 @@
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
 function load() {
-  // TODO allow 4 stitches: ?b=..&d=..&p=..&q=..?
+  // TODO allow 4 stitches: ?b=..&d=..&p=..&q=..? Provide also bdpq patterns with 3 out of 4 stitches?
   const urlParams = new URLSearchParams(window.location.search)
   var b = urlParams.get("b")
   if (b) b = b.toLowerCase().replace(/[^ctlr]/g,"").trim()
@@ -27,21 +27,43 @@ function load() {
   const paris = "tile=B-C-,---5&t&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=12&patchHeight=18"
   const honeycomb = "tile=-5--,6v9v,---5,2z0z&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
 
-  showGraph ("diagonal\npair diagram", `b1=${b}&${diagonal}`)
-  showGraph ("paris", `tileStitch=${b}&${paris}`)
-  showGraph ("honeycomb", `tileStitch=${b}&${honeycomb}`)
-  showGraph ("bb ->\nbb <-", `&b1=${b}&b2=${b}&c1=${b}&c2=${b}&${hor2x2}`)
-  if (b != d) {
-    showGraph ("bd ->\nbd <-", `b1=${b}&b2=${d}&c1=${b}&c2=${d}&${hor2x2}`)
+  const set = urlParams.get("set")
+  if (!set) {
+    showGraph ("diagonal\npair diagram", `b1=${b}&${diagonal}`)
+    showGraph ("paris", `tileStitch=${b}&${paris}`)
+    showGraph ("honeycomb", `tileStitch=${b}&${honeycomb}`)
+    showGraph ("bb ->\nbb <-", `&b1=${b}&c1=${b}&b2=${b}&c2=${b}&${hor2x2}`)
   }
-  if (b != p) {
-    showGraph ("bp ->\nbp <-", `b1=${b}&b2=${p}&c1=${b}&c2=${p}&${hor2x2}`)
-  }
-  if (b != q) {
-    showGraph ("bq ->\nbq <-", `b1=${b}&b2=${q}&c1=${b}&c2=${q}&${hor2x2}`)
-    if (b != d) {
-      showGraph ("bp ->\nqd <-", `b1=${b}&b2=${p}&c1=${q}&c2=${d}&${hor2x2}`)
+  if (b != d && set != "bdpq") {
+    showGraph ("bb ->\ndd <-", `b1=${b}&c1=${b}&b2=${d}&c2=${d}&${hor2x2}`)
+    if (set == "bbxx") {
+      showGraph ("bd ->\nbd <-", `b1=${b}&c1=${d}&b2=${b}&c2=${d}&${hor2x2}`)
+      showGraph ("bd ->\ndb <-", `b1=${b}&c1=${d}&b2=${d}&c2=${d}&${hor2x2}`)
     }
+  }
+  if (b != p && set != "bdpq") {
+    showGraph ("bb ->\npp <-", `b1=${b}&c1=${b}&b2=${p}&c2=${p}&${hor2x2}`)
+    if (set == "bbxx") {
+      showGraph ("bp ->\nbp <-", `b1=${b}&c1=${p}&b2=${b}&c2=${p}&${hor2x2}`)
+      showGraph ("bp ->\npb <-", `b1=${b}&c1=${p}&b2=${p}&c2=${p}&${hor2x2}`)
+    }
+  }
+  if (b != q && set != "bdpq") {
+    showGraph ("bb ->\nqq <-", `b1=${b}&c1=${b}&b2=${q}&c2=${q}&${hor2x2}`)
+    if (set == "bbxx") {
+      showGraph ("bq ->\nbq <-", `b1=${b}&c1=${q}&b2=${b}&c2=${q}&${hor2x2}`)
+      showGraph ("bq ->\nqb <-", `b1=${b}&c1=${q}&b2=${q}&c2=${b}&${hor2x2}`)
+    }
+  }
+  if (b != q && set != "bbxx") {
+    showGraph ("bd ->\npq <-", `b1=${p}&c1=${d}&b2=${p}&c2=${q}&${hor2x2}`)
+  }
+  if (set == "bdpq") {
+    showGraph ("bd ->\nqp <-", `b1=${p}&c1=${d}&b2=${q}&c2=${p}&${hor2x2}`)
+    showGraph ("bp ->\ndq <-", `b1=${b}&c1=${p}&b2=${d}&c2=${q}&${hor2x2}`)
+    showGraph ("bp ->\nqd <-", `b1=${b}&c1=${p}&b2=${q}&c2=${d}&${hor2x2}`)
+    showGraph ("bq ->\ndp <-", `b1=${p}&c1=${q}&b2=${d}&c2=${p}&${hor2x2}`)
+    showGraph ("bq ->\npd <-", `b1=${p}&c1=${q}&b2=${p}&c2=${d}&${hor2x2}`)
   }
   if (b != d || b!= p) {
     d3.select(`#legend`).text(`b = ${b}, d = ${d}, p = ${p}, q = ${q} ${ b == p ? "; b=p , q=d" : ""} ${ b == d ? "; b=d, q=p" : ""}`)
