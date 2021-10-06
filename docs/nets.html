@@ -25,34 +25,20 @@
         >words</a> (= stitches) you can put after "<code>?b=</code>" at the end of the current page adress.
     </p>
     <p>
-        Follow the links to:
+        Add "<code>&set=bbxx</code>" or "<code>&set=dbpq</code>" (not both and without the quotes)
+        to the page address for other sets with variations of the diagrams,
+        remove this part to return to the default set of diagrams.
+        Providing all variations at once would make this page too slow.
     </p>
-    <ul>
-        <li>
-            tweak the patterns such as apply colors to threads
-        </li>
-        <li>
-            try another "<code>dbpq</code>" configuration:
-            adjust the address of the followed link as suggested by the table.
-            Providing all "<code>dbpq</code>" combinations would make this page too slow.
-            <br/>
-            <code id="legend"></code>
-        </li>
-    </ul>
-<table>
-    <tr><td>stitch<br>arrangement<br>x = d, p or q</td><td>page address contains</td><td>remarks</td></tr>
-    <tr><td><pre>bx
-bx</pre></td><td><code>b1=b&c1=b&b2=x&c2=x</code></td><td>provided</td></tr>
-    <tr><td><pre>bb
-xx</pre></td><td><code>b1=b&<span>b2</span>=b&<span>c1</span>=x&c2=x</code></td><td rowspan="2">DIY, changed parts in red</td></tr>
-    <tr><td><pre>bx
-xb</pre></td><td><code>b1=b&<span>c2</span>=b&b2=x&<span>c1</span>=x</code></td></tr>
-    <tr><td><pre>bp
-qd</pre></td><td><code>b1=b&c2=q&c1=p&b2=d</code></td><td>provided</td></tr>
-    <tr><td colspan="3">stitch id-s:<br><pre>b1,c1
-b2,c2</pre></td></tr>
-</table>
+    <p>
+        Follow the diagram links to tweak the patterns such as apply colors to threads.
+    </p>
 </div>
 <div id="diagrams"></div>
+<p>
+    Any JavaScript wizard volunteering to dynamically add the additional diagrams to the primary page?
+    Current <a href="https://github.com/d-bl/GroundForge/blob/master/docs/js/nets.js"
+    >soucre</a>.
+</p>
 </body>
 </html>
