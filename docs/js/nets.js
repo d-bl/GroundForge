@@ -26,8 +26,8 @@ function load() {
   const diagonal = "tile=5&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1&patchWidth=10&patchHeight=12&headside=7,x&footside=x,4"
   const paris = "tile=B-C-,---5&t&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=12&patchHeight=18"
   const honeycomb = "tile=-5--,6v9v,---5,2z0z&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
-  d3.select(`#set2`).attr("href",`?b=${b}&set=&${2}`)
-  d3.select(`#set4`).attr("href",`?b=${b}&set=&${4}`)
+  d3.select(`#set2`).attr("href",`?b=${b}&set=${2}`)
+  d3.select(`#set4`).attr("href",`?b=${b}&set=${4}`)
   d3.select(`#set`).attr("href",`?b=${b}`)
 
   const set = urlParams.get("set")
