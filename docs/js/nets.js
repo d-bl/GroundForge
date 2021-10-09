@@ -18,7 +18,7 @@ function load() {
   const urlParams = new URLSearchParams(window.location.search)
   var b = urlParams.get("b")
   if (b) b = b.toLowerCase().replace(/[^ctlr]/g,"").trim()
-  if (!b) b = "clctr"
+  if (!b) b = "crctl"
   const d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
   const p = b.split("").reverse().join("")
   const q = d.split("").reverse().join("")
@@ -26,6 +26,9 @@ function load() {
   const diagonal = "tile=5&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1&patchWidth=10&patchHeight=12&headside=7,x&footside=x,4"
   const paris = "tile=B-C-,---5&t&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=12&patchHeight=18"
   const honeycomb = "tile=-5--,6v9v,---5,2z0z&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
+  d3.select(`#set2`).attr("href",`?b=${b}&set=&{2}`)
+  d3.select(`#set4`).attr("href",`?b=${b}&set=&{4}`)
+  d3.select(`#set`).attr("href",`?b=${b}`)
 
   const set = urlParams.get("set")
   if (!set) {
@@ -34,28 +37,28 @@ function load() {
     showGraph ("honeycomb", `tileStitch=${b}&${honeycomb}`)
     showGraph ("bb ->\nbb <-", `&b1=${b}&c1=${b}&b2=${b}&c2=${b}&${hor2x2}`)
   }
-  if (b != d && set != "bdpq") {
+  if (b != d && set != "4") {
     showGraph ("bb ->\ndd <-", `b1=${b}&c1=${b}&b2=${d}&c2=${d}&${hor2x2}`)
     if (set == "bbxx") {
       showGraph ("bd ->\nbd <-", `b1=${b}&c1=${d}&b2=${b}&c2=${d}&${hor2x2}`)
-      showGraph ("bd ->\ndb <-", `b1=${b}&c1=${d}&b2=${d}&c2=${d}&${hor2x2}`)
+      showGraph ("bd ->\ndb <-", `b1=${b}&c1=${d}&b2=${d}&c2=${b}&${hor2x2}`)
     }
   }
-  if (b != p && set != "bdpq") {
+  if (b != p && set != "4") {
     showGraph ("bb ->\npp <-", `b1=${b}&c1=${b}&b2=${p}&c2=${p}&${hor2x2}`)
     if (set == "bbxx") {
       showGraph ("bp ->\nbp <-", `b1=${b}&c1=${p}&b2=${b}&c2=${p}&${hor2x2}`)
-      showGraph ("bp ->\npb <-", `b1=${b}&c1=${p}&b2=${p}&c2=${p}&${hor2x2}`)
+      showGraph ("bp ->\npb <-", `b1=${b}&c1=${p}&b2=${p}&c2=${b}&${hor2x2}`)
     }
   }
-  if (b != q && set != "bdpq") {
+  if (b != q && set != "4") {
     showGraph ("bb ->\nqq <-", `b1=${b}&c1=${b}&b2=${q}&c2=${q}&${hor2x2}`)
     if (set == "bbxx") {
       showGraph ("bq ->\nbq <-", `b1=${b}&c1=${q}&b2=${b}&c2=${q}&${hor2x2}`)
       showGraph ("bq ->\nqb <-", `b1=${b}&c1=${q}&b2=${q}&c2=${b}&${hor2x2}`)
     }
   }
-  if (b != q && set != "bbxx") {
+  if (b != q && set != "2") {
     showGraph ("bd ->\npq <-", `b1=${p}&c1=${d}&b2=${p}&c2=${q}&${hor2x2}`)
   }
   if (set == "bdpq") {
@@ -65,7 +68,7 @@ function load() {
     showGraph ("bq ->\ndp <-", `b1=${p}&c1=${q}&b2=${d}&c2=${p}&${hor2x2}`)
     showGraph ("bq ->\npd <-", `b1=${p}&c1=${q}&b2=${p}&c2=${d}&${hor2x2}`)
   }
-  if (b != d || b!= p) {
+  if (b != d || b!= p || true) {
     d3.select(`#legend`).text(`b = ${b}, d = ${d}, p = ${p}, q = ${q} ${ b == p ? "; b=p , q=d" : ""} ${ b == d ? "; b=d, q=p" : ""}`)
   }
 }
