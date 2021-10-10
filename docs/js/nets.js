@@ -83,7 +83,6 @@ function showGraph(caption, q) {
 
   // render
 
-  const scale = 2
   const height = 180
   const width = 180
   const stroke = "2px"
@@ -96,8 +95,7 @@ function showGraph(caption, q) {
      .text(caption).attr("href",'tiles?' + q).attr("target", '_blank')
 
   // nudge nodes with force graph of the  D3js library
-  // TODO the rest of this function is found in other scripts too,
-  //  extract into a single source for more functionality and stay in sync
+  // TODO variations of the rest of this function are found in other scripts too
 
   const links = container.selectAll(".link").data(linkDefs)
   const nodes = container.selectAll(".node").data(nodeDefs)
@@ -114,11 +112,9 @@ function showGraph(caption, q) {
       links.attr("d", drawPath);
       nodes.attr("transform", moveNode);
   }
-  // read 'weak' as 'invisible'
-  function strength(link){ return link.weak ? link.withPin ? 40 : 10 : 50 }
   const forceLink = d3
     .forceLink(linkDefs)
-    .strength(strength)
+    .strength(50)
     .distance(12)
     .iterations(30)
   d3.forceSimulation(nodeDefs)
