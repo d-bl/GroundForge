@@ -86,7 +86,7 @@ function showGraph(caption, q) {
   const width = 180
   const stroke = "2px"
   const markers = false // use true for pair diagrams on fast devices and other browsers than IE-11
-  const svg = D3jsSVG.render(diagram, stroke, markers, width, height)
+  const svg = DiagramSvg.render(diagram, stroke, markers, width, height)
   const fig = d3.select(`#diagrams`).append("figure")
   const container = fig.append("div")
   container.html(svg.replace("<g>","<g transform='scale(0.5,0.5)'>"))
@@ -105,7 +105,7 @@ function showGraph(caption, q) {
       const s = jsLink.source
       const t = jsLink.target
       const l = diagram.link(jsLink.index)
-      return D3jsSVG.pathDescription(l, s.x, s.y, t.x, t.y)
+      return DiagramSvg.pathDescription(l, s.x, s.y, t.x, t.y)
   }
   function onTick() {
       links.attr("d", drawPath);

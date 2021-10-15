@@ -45,7 +45,7 @@ object TesselaceThumbs extends DemoFixture {
           val nudgedDiagram = Force
             .nudgeNodes(NewPairDiagram.create(config), Point(100, 100))
             .getOrElse(throw new Exception("whoops"))
-          val svg = D3jsSVG.render(nudgedDiagram, width = 200, height = 200)
+          val svg = DiagramSvg.render(nudgedDiagram, width = 200, height = 200)
           File(s"$testDir/$nr.svg").writeAll(svg)
         }
         // '/C/Program Files/Inkscape/inkscape.exe' 001.svg --export-png=001.png -w78 -h78

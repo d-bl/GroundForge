@@ -17,7 +17,6 @@
 import dibl.*;
 import dibl.proto.TilesConfig;
 import dibl.sheet.SheetSVG;
-import scala.Tuple2;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -79,7 +78,7 @@ public class Demo4Java {
 //    System.out.println("-------------- " + i);
     TilesConfig config = new TilesConfig(urlQuery);
     new FileOutputStream(dir + "/" + i + "-prototype.svg")
-        .write((D3jsSVG.prolog() + dibl.proto.PrototypeDiagram.create(config)).getBytes());
+        .write((DiagramSvg.prolog() + dibl.proto.PrototypeDiagram.create(config)).getBytes());
 
     Diagram pairs = NewPairDiagram.create(config);
     writeNudgedDiagram(i + "-pairs", "1px", pairs, config, 1);
@@ -111,10 +110,10 @@ public class Demo4Java {
 
   private static Diagram writeDiagram(String fileName, String strokeWidth, Diagram diagram, String bounds)
       throws IOException {
-    String svg = D3jsSVG.render(diagram, strokeWidth, true, 744, 1052, 0d)
+    String svg = DiagramSvg.render(diagram, strokeWidth, true, 744, 1052, 0d)
             .replace("</svg>",bounds + "</svg>");
     new FileOutputStream(dir + "/" + fileName + ".svg") //
-        .write((D3jsSVG.prolog() + svg).getBytes());
+        .write((DiagramSvg.prolog() + svg).getBytes());
     return diagram;
   }
 }

@@ -15,7 +15,7 @@
 */
 package dibl
 
-import dibl.D3jsSVG.{ prolog, render }
+import dibl.DiagramSvg.{ prolog, render }
 import dibl.Force.{ Point, nudgeNodes }
 import dibl.proto.TilesConfig
 

@@ -36,7 +36,7 @@ class NewPairDiagramSpec extends FlatSpec with Matchers {
   }
 
   it should "return something that can be rendered" in {
-    val svgString = D3jsSVG.render(NewPairDiagram.create(paris4(9,9)))
+    val svgString = DiagramSvg.render(NewPairDiagram.create(paris4(9,9)))
     svgString should include ("marker-end: url('#end-purple')")
     svgString should include ("marker-start: url('#start-purple')")
     svgString should include ("marker-end: url('#end-red')")
@@ -45,7 +45,7 @@ class NewPairDiagramSpec extends FlatSpec with Matchers {
   }
 
   it should "produce valid SVG" in {
-    val content = D3jsSVG.render(NewPairDiagram.create(paris4(9,9)))
+    val content = DiagramSvg.render(NewPairDiagram.create(paris4(9,9)))
     File("target/new-diagram.html").writeAll(s"<html><body>$content</body></html>")
   }
 }

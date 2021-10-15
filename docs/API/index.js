@@ -55,7 +55,7 @@ function showGraph(container, diagram, stroke, width, height, scale, config) {
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()//can't inline
   var markers = true // use false for slow devices and IE-11, set them at onEnd
-  container.html(D3jsSVG.render(diagram, stroke, markers, width, height))
+  container.html(DiagramSvg.render(diagram, stroke, markers, width, height))
 
   // nudge nodes with force graph of the  D3js library
 
@@ -68,7 +68,7 @@ function showGraph(container, diagram, stroke, width, height, scale, config) {
       var s = jsLink.source
       var t = jsLink.target
       var l = diagram.link(jsLink.index)
-      return D3jsSVG.pathDescription(l, s.x, s.y, t.x, t.y)
+      return DiagramSvg.pathDescription(l, s.x, s.y, t.x, t.y)
   }
   function onTick() {
       links.attr("d", drawPath);

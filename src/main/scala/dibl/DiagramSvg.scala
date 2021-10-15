@@ -21,7 +21,7 @@ import dibl.LinkProps.Path
 
 import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
-@JSExportTopLevel("D3jsSVG") object D3jsSVG {
+@JSExportTopLevel("DiagramSvg") object DiagramSvg {
 
   @JSExport
   def circle(r: Int): String = s"M $r,0 A $r,$r 0 0 1 0,$r $r,$r 0 0 1 -$r,0 $r,$r 0 0 1 0,-$r $r,$r 0 0 1 $r,0 Z"

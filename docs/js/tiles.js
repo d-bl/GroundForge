@@ -120,7 +120,7 @@ function showDiagrams(config) {
   if (!config)
       config = TilesConfig(submitQuery())
   var pairDiagram = pairContainerNode.data = NewPairDiagram.create(config)
-  pairContainer.html(D3jsSVG.render(pairDiagram, "1px", markers, 744, 1052))
+  pairContainer.html(DiagramSvg.render(pairDiagram, "1px", markers, 744, 1052))
   scrollToIfPossible(pairContainerNode,0,0)
   if (pairDiagram.jsNodes().length == 1) return
 
@@ -146,7 +146,7 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
       var s = jsLink.source
       var t = jsLink.target
       var l = diagram.link(jsLink.index)
-      return  D3jsSVG.pathDescription(l, s.x, s.y, t.x, t.y)
+      return  DiagramSvg.pathDescription(l, s.x, s.y, t.x, t.y)
   }
   var tickCounter = 0
   function onTick() {
@@ -415,13 +415,13 @@ function showDroste(level) {
 function setPairDiagram(containerID, diagram) {
   var container = d3.select(containerID)
   container.node().data = diagram
-  container.html(D3jsSVG.render(diagram, "1px", markers = true, 744, 1052, 0.0))
+  container.html(DiagramSvg.render(diagram, "1px", markers = true, 744, 1052, 0.0))
   animateDiagram(container, 350, 526)
 }
 function setThreadDiagram(containerID, diagram) {
   var container = d3.select(containerID)
   container.node().data = diagram
-  container.html(D3jsSVG.render(diagram, "2px", markers = true, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
+  container.html(DiagramSvg.render(diagram, "2px", markers = true, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
   animateDiagram(container, 744, 1052)
   container.selectAll(".threadStart").on("click", paintThreadByStart)
   container.selectAll(".bobbin").on("click", paintThreadByBobbin)
