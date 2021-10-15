@@ -14,7 +14,6 @@
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
 function load() {
-  // TODO allow 4 stitches: ?b=..&d=..&p=..&q=..? Provide also bdpq patterns with 3 out of 4 stitches?
   const urlParams = new URLSearchParams(window.location.search)
   var b = urlParams.get("b")
   if (b) b = b.toLowerCase().replace(/[^ctlr]/g,"").trim()
