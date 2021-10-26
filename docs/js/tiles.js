@@ -80,7 +80,9 @@ function showProto() {
   return config
 }
 function showColorCode(id) {
-    d3.select(id + " .colorCode").style("display", "block")
+    const n = d3.select(id + " .colorCode")
+    const d = n.style("display")
+    n.style("display", d == "block" ? "none" : "block")
 }
 function toggleCheatSheet(imgElement) {
   var value = imgElement.dataset.img;
