@@ -206,7 +206,7 @@ Functional contribution
 Requirements
 ------------
 
-- The pages in the docs directory don't require any compilation
+- The pages in the docs directory don't require any compilation. There is one exception: the `tiles.md` file.
 - To execute the tests: maven or an IDE (like IntelliJ community edition)
 - To compile `src/main/scala/` into `docs/js/GroundForge-opt.js`:  
   [JDK] 8 and [sbt] 1.2.7 or higher
@@ -228,6 +228,15 @@ Work flow
   Depending in your OS use the one liner in `toJS.sh` or `toJS.bat` the latter is not battle proven.
 - Check the results with the `docs/*.html` pages
 - If ok (or need advise from a reviewer): commit, push and create a pull request
+
+Should you want to test changes for the `tiles` page, you can try a local build with
+[Jekyll](https://jekyllrb.com/docs/github-pages/).
+Alternatively, despite the advice above and synchronisation challenges, you can push to your own master branch 
+and configure you online project to publish github pages.
+
+at `https://github.com/YOUR_ACCOUNT/GroundForge/settings/pages` as shown:
+
+![image](https://user-images.githubusercontent.com/10553630/142719294-74eb76cc-064c-45a8-bc4b-09774befadfe.png)
 
 
 Code conventions
