@@ -231,12 +231,12 @@ Work flow
 
 Should you want to test changes for the `tiles` page, you can try a local build with
 [Jekyll](https://jekyllrb.com/docs/github-pages/).
-Alternatively, despite the advice above and synchronisation challenges, you can push to your own master branch 
-and configure you online project to publish github pages.
+Alternatively, you can push to a branch of your choice
+and configure you online project to publish github pages from that branch
 
-at `https://github.com/YOUR_ACCOUNT/GroundForge/settings/pages` as shown:
+at `https://github.com/YOUR_ACCOUNT/GroundForge/settings/pages`.
 
-![image](https://user-images.githubusercontent.com/10553630/142719294-74eb76cc-064c-45a8-bc4b-09774befadfe.png)
+![screen snippet](https://user-images.githubusercontent.com/10553630/142723203-0bb1b5d0-d324-41df-9e8f-b3f6b5972e44.png)
 
 
 Code conventions
