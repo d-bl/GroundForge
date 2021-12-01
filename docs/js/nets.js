@@ -16,6 +16,8 @@
 function more(set, button) {
   load(`d=${d3.select('#b')}&set=${set}`)
   button.style='display:none'
+  if (d3.select('#more2').style('display')=="none" && d3.select('#more4').style('display')=="none")
+    d3.select('#more').style('display','none')
   return false
 }
 function load(search) {
