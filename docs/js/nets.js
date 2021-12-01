@@ -13,8 +13,13 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
-function load() {
-  const urlParams = new URLSearchParams(window.location.search)
+function more(set, button) {
+  load(`d=${d3.select('#b')}&set=${set}`)
+  button.style='display:none'
+  return false
+}
+function load(search) {
+  const urlParams = new URLSearchParams(search)
   var b = urlParams.get("b")
   if (b) b = b.toLowerCase().replace(/[^ctlr]/g,"").trim()
   if (!b) b = "crctl"
@@ -26,8 +31,7 @@ function load() {
   const paris = "tile=B-C-,---5&t&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=12&patchHeight=18"
   const honeycomb = "tile=-5--,6v9v,---5,2z0z&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
   const set = urlParams.get("set")
-  d3.select(`#b`).node().value = b
-  d3.select(`#set`).node().value = set
+  d3.select('#b').node().value = b
 
   if (!set) {
     showGraph ("diagonal\npair diagram", `b1=${b}&${diagonal}`)
