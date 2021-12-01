@@ -14,7 +14,7 @@
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
 function more(set, button) {
-  load(`d=${d3.select('#b')}&set=${set}`)
+  load(`d=${d3.select('#b').node().value}&set=${set}`)
   button.style='display:none'
   if (d3.select('#more2').style('display')=="none" && d3.select('#more4').style('display')=="none")
     d3.select('#more').style('display','none')
@@ -22,6 +22,7 @@ function more(set, button) {
 }
 function load(search) {
   const urlParams = new URLSearchParams(search)
+  const set = urlParams.get("set")
   var b = urlParams.get("b")
   if (b) b = b.toLowerCase().replace(/[^ctlr]/g,"").trim()
   if (!b) b = "crctl"
@@ -32,7 +33,6 @@ function load(search) {
   const diagonal = "tile=5&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1&patchWidth=10&patchHeight=12&headside=7,x&footside=x,4"
   const paris = "tile=B-C-,---5&t&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=12&patchHeight=18"
   const honeycomb = "tile=-5--,6v9v,---5,2z0z&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
-  const set = urlParams.get("set")
   d3.select('#b').node().value = b
 
   if (!set) {
