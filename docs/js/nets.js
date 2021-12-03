@@ -23,7 +23,7 @@ function more(set, button) {
 function load(search) {
   const urlParams = new URLSearchParams(search)
   const set = urlParams.get("set")
-  console.log("args: "+urlParams)
+  var b = urlParams.get("b")
   if (b) b = b.toLowerCase().replace(/[^ctlr]/g,"").trim()
   if (!b) b = "crctl"
   const d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
