@@ -14,7 +14,7 @@
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
 function more(set, button) {
-  load(`d=${d3.select('#b').node().value}&set=${set}`)
+  load(`b=${d3.select('#b').node().value}&set=${set}`)
   button.style='display:none'
   if (d3.select('#more2').style('display')=="none" && d3.select('#more4').style('display')=="none")
     d3.select('#more').style('display','none')
@@ -23,7 +23,6 @@ function more(set, button) {
 function load(search) {
   const urlParams = new URLSearchParams(search)
   const set = urlParams.get("set")
-  var b = urlParams.get("b")
   console.log("args: "+urlParams)
   if (b) b = b.toLowerCase().replace(/[^ctlr]/g,"").trim()
   if (!b) b = "crctl"
