@@ -24,6 +24,7 @@ function load(search) {
   const urlParams = new URLSearchParams(search)
   const set = urlParams.get("set")
   var b = urlParams.get("b")
+  console.log(urlParams)
   if (b) b = b.toLowerCase().replace(/[^ctlr]/g,"").trim()
   if (!b) b = "crctl"
   const d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
