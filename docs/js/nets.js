@@ -72,9 +72,11 @@ function load(search) {
     showGraph ("bq ->\ndp <-", `b1=${p}&c1=${q}&b2=${d}&c2=${p}&${hor2x2}`)
     showGraph ("bq ->\npd <-", `b1=${p}&c1=${q}&b2=${p}&c2=${d}&${hor2x2}`)
   }
-  if (b != d || b!= p || true) {
-    d3.select(`#legend`).text(`b = ${b}, d = ${d}, p = ${p}, q = ${q} ${ b == p ? "; b=p , q=d" : ""} ${ b == d ? "; b=d, q=p" : ""}`)
-  }
+  d3.select('#mb').text(b)
+  d3.select('#md').text(d)
+  d3.select('#mp').text(p)
+  d3.select('#mq').text(q)
+  d3.select('#legend').text(`${ b == p ? "b=p , q=d, " : ""} ${ b == d ? "b=d, q=p" : ""}`)
 }
 function showGraph(caption, q) {
 

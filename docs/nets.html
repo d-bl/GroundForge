@@ -7,6 +7,16 @@
         figure { display: inline-block; margin: 10px; vertical-align: top; }
         #diagrams { min-height: 17em; }
         #b { width: 7em; }
+        table { border-collapse: collapse; margin-top: 1em; }
+        td { padding: 0 5px 0 5px;  }
+        .sn { border-top: solid 1px; }
+        .se { border-right: solid 1px; }
+        .ss { border-bottom: solid 1px; }
+        .sw { border-left: solid 1px; }
+        .dn { border-top: dashed 1px; }
+        .de { border-right: dashed 1px; }
+        .ds { border-bottom: dashed 1px; }
+        .dw { border-leftt: dashed 1px; }
     </style>
     <script src="js/d3.v4.min.js" type="text/javascript"></script>
     <script src="js/GroundForge-opt.js" type="text/javascript"></script>
@@ -21,28 +31,59 @@
     <h1>GroundForge - thread diagrams</h1>
     <h2>Variations with one stitch and its reflections.</h2>
     <form action="nets.html" method="get">
-        <label for="b">Stitch
-            (<a href="https://d-bl.github.io/MAE-gf/docs/counting#results" target="_blank"
-            >examples</a>)
+        <label for="b">Stitch</label>
+        <input type="text" name="b" id="b" list="stitches" pattern="[ctrlCTRL]+" minlength="2">
+        <button type="submit"><img src="images/wand.png"></button>
+        <label for="b">
+            Any sequence of <code>ctlr</code>, leading and/or trailing (left/right) twists allowed;
+            <a href="/MAE-gf/docs/counting#results" target="_blank"
+            >examples</a>,
+            <a href="/MAE-gf/docs/stitches" target="_blank"
+            >samples</a>.
         </label>
-        <input type="text" name="b" id="b" list="stitches">
         <datalist id="stitches">
             <option>clcr</option>
         </datalist>
-        <button type="submit"><img src="images/wand.png"></button>
-        <br>
     </form>
-    <p> Mirrored stitches:
-        <code id="legend"></code>
-    </p>
+    <table>
+        <tr>
+            <td>Mirrored versions: </td>
+            <td class="sn sw"><code id="mb">crcl</code></td>
+            <td class="sn de"></td>
+            <td class="sn dw"></td>
+            <td class="sn se"><code id="md">clcr</code></td>
+        </tr>
+        <tr>
+            <td><a href="/MAE-gf/docs/counting#how-to-make-mirrored-words">explanation</a></td>
+            <td class="ds sw"></td>
+            <td class="ds de">b</td>
+            <td class="ds dw">d</td>
+            <td class="ds se"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="dn sw"></td>
+            <td class="dn de">p</td>
+            <td class="dn dw">q</td>
+            <td class="dn se"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="ss sw"><code id="mp">lcrc</code></td>
+            <td class="ss de"></td>
+            <td class="ss dw"></td>
+            <td class="ss se"><code id="mq">rclc</code></td>
+            <td id="legend"></td>
+        </tr>
+    </table>
     <p>
         Follow the diagram links to tweak the patterns such as apply colors to threads and any DIY variations.
     </p>
     <p id="more">
-        More diagrams (please wait for the animation to complete):
-        <button onclick="more(2,this)" id="more2">2</button>
-        <button onclick="more(4,this)" id="more4">4</button>
-        mirrored stitches.
+        More diagrams:
+        <button onclick="more(2,this)" id="more2"><img src="images/wand.png"><br>2</button>
+        <button onclick="more(4,this)" id="more4"><img src="images/wand.png"><br>4</button>
+        mirrored stitches, please wait for the animations to complete.
     </p>
 </div>
 <div id="diagrams"></div>
