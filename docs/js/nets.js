@@ -34,49 +34,47 @@ function load(search) {
   const paris = "tile=B-C-,---5&t&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=12&patchHeight=18"
   const honeycomb = "tile=-5--,6v9v,---5,2z0z&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
   d3.select('#b').node().value = b
+  d3.select('#mb').text(b)
+  d3.select('#md').text(d)
+  d3.select('#mp').text(p)
+  d3.select('#mq').text(q)
+  d3.select('#legend').text(`${ b == p ? "b=p , q=d, " : ""} ${ b == d ? "b=d, q=p" : ""}`)
+  if (b == d && b == p)
+    d3.select('#more').style('display', "none")
+  if (b == d || b == p)
+    d3.select('#more4').style('display', "none")
 
   if (!set) {
     showGraph ("diagonal\npair diagram", `b1=${b}&${diagonal}`)
     showGraph ("paris", `tileStitch=${b}&${paris}`)
     showGraph ("honeycomb", `tileStitch=${b}&${honeycomb}`)
-    showGraph ("bb ->\nbb <-", `&b1=${b}&c1=${b}&b2=${b}&c2=${b}&${hor2x2}`)
+    showGraph ("bb ->\nbb <-", `tileStitch=${b}&${hor2x2}`)
   }
-  if (b != d && set != "4") {
-    showGraph ("bb ->\ndd <-", `b1=${b}&c1=${b}&b2=${d}&c2=${d}&${hor2x2}`)
-    if (set == "2") {
+  if (set == "2") {
+    if (b != d) {
+      showGraph ("bb ->\ndd <-", `b1=${b}&c1=${b}&b2=${d}&c2=${d}&${hor2x2}`)
       showGraph ("bd ->\nbd <-", `b1=${b}&c1=${d}&b2=${b}&c2=${d}&${hor2x2}`)
       showGraph ("bd ->\ndb <-", `b1=${b}&c1=${d}&b2=${d}&c2=${b}&${hor2x2}`)
     }
-  }
-  if (b != p && set != "4") {
-    showGraph ("bb ->\npp <-", `b1=${b}&c1=${b}&b2=${p}&c2=${p}&${hor2x2}`)
-    if (set == "bbxx") {
+    if (b != p) {
+      showGraph ("bb ->\npp <-", `b1=${b}&c1=${b}&b2=${p}&c2=${p}&${hor2x2}`)
       showGraph ("bp ->\nbp <-", `b1=${b}&c1=${p}&b2=${b}&c2=${p}&${hor2x2}`)
       showGraph ("bp ->\npb <-", `b1=${b}&c1=${p}&b2=${p}&c2=${b}&${hor2x2}`)
     }
-  }
-  if (b != q && set != "4") {
-    showGraph ("bb ->\nqq <-", `b1=${b}&c1=${b}&b2=${q}&c2=${q}&${hor2x2}`)
-    if (set == "2") {
+    if (b != q) {
+      showGraph ("bb ->\nqq <-", `b1=${b}&c1=${b}&b2=${q}&c2=${q}&${hor2x2}`)
       showGraph ("bq ->\nbq <-", `b1=${b}&c1=${q}&b2=${b}&c2=${q}&${hor2x2}`)
       showGraph ("bq ->\nqb <-", `b1=${b}&c1=${q}&b2=${q}&c2=${b}&${hor2x2}`)
     }
   }
-  if (b != q && set != "2") {
-    showGraph ("bd ->\npq <-", `b1=${p}&c1=${d}&b2=${p}&c2=${q}&${hor2x2}`)
-  }
   if (set == "4") {
+    showGraph ("bd ->\npq <-", `b1=${p}&c1=${d}&b2=${p}&c2=${q}&${hor2x2}`)
     showGraph ("bd ->\nqp <-", `b1=${p}&c1=${d}&b2=${q}&c2=${p}&${hor2x2}`)
     showGraph ("bp ->\ndq <-", `b1=${b}&c1=${p}&b2=${d}&c2=${q}&${hor2x2}`)
     showGraph ("bp ->\nqd <-", `b1=${b}&c1=${p}&b2=${q}&c2=${d}&${hor2x2}`)
     showGraph ("bq ->\ndp <-", `b1=${p}&c1=${q}&b2=${d}&c2=${p}&${hor2x2}`)
     showGraph ("bq ->\npd <-", `b1=${p}&c1=${q}&b2=${p}&c2=${d}&${hor2x2}`)
   }
-  d3.select('#mb').text(b)
-  d3.select('#md').text(d)
-  d3.select('#mp').text(p)
-  d3.select('#mq').text(q)
-  d3.select('#legend').text(`${ b == p ? "b=p , q=d, " : ""} ${ b == d ? "b=d, q=p" : ""}`)
 }
 function showGraph(caption, q) {
 
