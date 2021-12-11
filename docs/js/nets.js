@@ -75,6 +75,14 @@ function load(search) {
     showGraph ("bq ->\ndp <-", `b1=${p}&c1=${q}&b2=${d}&c2=${p}&${hor2x2}`)
     showGraph ("bq ->\npd <-", `b1=${p}&c1=${q}&b2=${p}&c2=${d}&${hor2x2}`)
   }
+  d3.selectAll('.ct-b1, .ct-c4').style("fill","rgb(0, 0, 255)")
+  d3.selectAll('.ct-b1, .ct-c4').style("opacity","0.3")
+  d3.selectAll('.ct-c1, .ct-e2').style("fill","rgb(0, 255, 255)")
+  d3.selectAll('.ct-c1, .ct-e2').style("opacity","0.3")
+  d3.selectAll('.ct-b2, .ct-d1, .ct-f3').style("fill","rgb(255, 0, 0)")
+  d3.selectAll('.ct-b2, .ct-d1, .ct-f3').style("opacity","0.3")
+  d3.selectAll('.ct-c2, .ct-e4').style("fill","rgb(0, 255, 0)")
+  d3.selectAll('.ct-c2, .ct-e4').style("opacity","0.3")
 }
 function showGraph(caption, q) {
 
