@@ -41,7 +41,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   private def shape(node: NodeProps) = // See https://www.w3.org/TR/SVG/paths.html#PathDataMovetoCommands
     if (node.pin) circle(4)
     else if (node.bobbin) bobbin
-    else circle(6)
+    else circle(9)
 
   @JSExport
   val markerDefinitions: String = {
