@@ -94,7 +94,7 @@ function showGraph(caption, q) {
 
   const height = 180
   const width = 180
-  const stroke = "2px"
+  const stroke = "3px"
   const markers = false // use true for pair diagrams on fast devices and other browsers than IE-11
   const svg = DiagramSvg.render(diagram, stroke, markers, width, height)
   const fig = d3.select(`#diagrams`).append("figure")
