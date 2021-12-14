@@ -80,6 +80,8 @@ function load(search) {
   d3.selectAll('.ct-c2, .ct-e4').style("fill","#00FF00")
   d3.selectAll('.ct-b2, .ct-d1, .ct-f3').style("fill","#FF0000")
   d3.selectAll('.ct-b2, .ct-d1, .ct-f3, .ct-c1, .ct-e2, .ct-b1, .ct-c4, .ct-c2, .ct-e4').style("opacity","0.2")
+  d3.selectAll('.ct-c1, .ct-e2').style("opacity","0.25")
+  d3.selectAll('.ct-c2, .ct-e4').style("opacity","0.3")
 }
 function showGraph(caption, q) {
 
