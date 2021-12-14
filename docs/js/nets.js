@@ -30,7 +30,7 @@ function load(search) {
   const p = b.split("").reverse().join("")
   const q = d.split("").reverse().join("")
   const hor2x2 = "tile=88,11&a1=rctctctctt&l2=lctctctctt&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=10&patchHeight=12&headside=x,7&footside=4,x"
-  const diagonal = "tile=5&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1&patchWidth=10&patchHeight=12&headside=7,x&footside=x,4"
+  const diagonal = "tile=5-,-5&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=10&patchHeight=12&headside=7,x&footside=x,4"
   const paris = "tile=B-C-,---5&t&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=13&patchHeight=18&footside=x,4,x,x&headside=x,x,x,7&footsideStitch=ctctctctl&headsideStitch=ctctctctr"
   const honeycomb = "tile=-5--,6v9v,---5,2z0z&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4&patchWidth=11&patchHeight=16&footside=rx,r8,x4,11&tile=-5--,6v9v,---5,2z0z&footside=rx,r8,x4,11&headside=xx,88,7r,1r&footsideStitch=ctct&a2=ctctctctll&headsideStitch=ctct&o4=ctctctctrr"
   d3.select('#b').node().value = b
@@ -45,7 +45,7 @@ function load(search) {
     d3.select('#more4').style('display', "none")
 
   if (!set) {
-    showGraph ("diagonal\npair diagram", `b1=${b}&${diagonal}`)
+    showGraph ("diagonal\npair diagram", `tileStitch=${b}&${diagonal}`)
     showGraph ("paris", `tileStitch=${b}&${paris}`)
     showGraph ("honeycomb", `tileStitch=${b}&${honeycomb}`)
     showGraph ("bb ->\nbb <-", `tileStitch=${b}&${hor2x2}`)
@@ -75,10 +75,10 @@ function load(search) {
     showGraph ("bq ->\ndp <-", `b1=${p}&c1=${q}&b2=${d}&c2=${p}&${hor2x2}`)
     showGraph ("bq ->\npd <-", `b1=${p}&c1=${q}&b2=${p}&c2=${d}&${hor2x2}`)
   }
-  d3.selectAll('.ct-b1, .ct-c4').style("fill","rgb(0, 0, 255)")
-  d3.selectAll('.ct-c1, .ct-e2').style("fill","rgb(0, 255, 255)")
-  d3.selectAll('.ct-c2, .ct-e4').style("fill","rgb(0, 255, 0)")
-  d3.selectAll('.ct-b2, .ct-d1, .ct-f3').style("fill","rgb(255, 0, 0)")
+  d3.selectAll('.ct-b1, .ct-c4').style("fill","#0000FF")
+  d3.selectAll('.ct-c1, .ct-e2').style("fill","#00FFFF")
+  d3.selectAll('.ct-c2, .ct-e4').style("fill","#00FF00")
+  d3.selectAll('.ct-b2, .ct-d1, .ct-f3').style("fill","#FF0000")
   d3.selectAll('.ct-b2, .ct-d1, .ct-f3, .ct-c1, .ct-e2, .ct-b1, .ct-c4, .ct-c2, .ct-e4').style("opacity","0.2")
 }
 function showGraph(caption, q) {
