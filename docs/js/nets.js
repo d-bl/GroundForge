@@ -46,6 +46,7 @@ function load(search) {
     d3.select('#more4').style('display', "none")
 
   if (!set) {
+    d3.select('#colors').node().checked = urlParams.has("colors")
     showGraph ("diagonal", `tileStitch=${b}&${diagonal}`)
     showGraph ("paris", `tileStitch=${b}&${paris}`)
     showGraph ("honeycomb", `tileStitch=${b}&${honeycomb}`)
@@ -76,11 +77,8 @@ function load(search) {
     showGraph ("bq ->\ndp <-", `b1=${p}&c1=${q}&b2=${d}&c2=${p}&${hor2x2}`)
     showGraph ("bq ->\npd <-", `b1=${p}&c1=${q}&b2=${p}&c2=${d}&${hor2x2}`)
   }
-  if(!urlParams.has("colors"))
-      d3.select('#pairs').attr("src","images/dots-legend-without.png")
-  else {
+  if(d3.select('#colors').node().checked) {
     d3.select('#pairs').attr("src","images/dots-legend.png")
-    d3.select('#colors').node().checked = true
     d3.selectAll('.ct-b1, .ct-c4').style("fill","#0000FF")
     d3.selectAll('.ct-c1, .ct-e2').style("fill","#00FFFF")
     d3.selectAll('.ct-c2, .ct-e4').style("fill","#00FF00")

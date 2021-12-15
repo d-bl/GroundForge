@@ -36,7 +36,6 @@
     <form action="nets.html" method="get">
         <label for="b">Stitch </label>
         <input type="text" name="b" id="b" list="stitches" pattern="[ctrlCTRL]+" minlength="2">
-        <button type="submit"><img src="images/wand.png"></button>
         <label for="b">
             Any sequence of <code>ctlr</code>, leading and/or trailing (left/right) twists allowed;
             <a href="/MAE-gf/docs/counting#results" target="_blank"
@@ -49,8 +48,10 @@
             <option>cllcrr</option>
         </datalist>
         <br>
-        <input type="checkbox" id="colors" name="colors">
         <label for="colors">Use colors</label>
+        <input type="checkbox" id="colors" name="colors">
+        <br>
+        <button type="submit"><img src="images/wand.png"></button>
     </form>
     <table>
         <tr>
