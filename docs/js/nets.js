@@ -39,6 +39,7 @@ function load(search) {
   d3.select('#mp').text(p)
   d3.select('#mq').text(q)
   d3.select('#legend').text(`${ b == p ? "b=p , q=d, " : ""} ${ b == d ? "b=d, q=p" : ""}`)
+
   if (b == d && b == p)
     d3.select('#more').style('display', "none")
   if (b == d || b == p)
