@@ -139,7 +139,7 @@ function showGraph(caption, q) {
   }
   count = 0
   function onTick() {
-      if ((count++ % 3 ) != 0) return;
+      if ((count++ % 5) != 0) return;
       links.attr("d", drawPath);
       nodes.attr("transform", moveNode);
   }
