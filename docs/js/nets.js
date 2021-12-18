@@ -54,7 +54,7 @@ function generate (b, set, colors) {
   if (!set) {
     d3.select('#colors').node().checked = colors
     showGraph ("diagonal", `tileStitch=${b}&${diagonal}`)
-    showGraph ("Paris/cat", `tileStitch=${b}&${paris}`)
+    showGraph ("Paris/kat", `tileStitch=${b}&${paris}`)
     showGraph ("weaving Paris", `tileStitch=${b}&${weavingParis}`)
     showGraph ("bb ->\nbb <-", `tileStitch=${b}&${hor2x2}`)
   }
