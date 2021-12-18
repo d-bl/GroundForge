@@ -16,6 +16,8 @@
 function more(set, button) {
   generate(d3.select('#b').node().value, set, d3.select('#colors').node().checked)
   button.style='display:none'
+  // when we have more buttons, check if there is a single distinct value, then all must be none
+  // https://stackoverflow.com/questions/33118036/how-to-get-distinct-values-in-d3-js
   if (d3.select('#more2').style('display')=="none" && d3.select('#more4').style('display')=="none")
     d3.select('#more').style('display','none')
   return false
@@ -34,9 +36,9 @@ function generate (b, set, colors) {
   const p = b.split("").reverse().join("")
   const q = d.split("").reverse().join("")
   const hor2x2 = "tile=88,11&a1=rctctctctt&l2=lctctctctt&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=10&patchHeight=12&headside=x,7&footside=4,x"
-  const diagonal = "tile=5-5-,-5-5&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=4&shiftRowsSE=2&patchWidth=10&patchHeight=12&headside=7,x&footside=x,4"
+  const diagonal = "tile=5-5-,-5-5&shiftColsSW=0&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=10&patchHeight=12&headside=7,x&footside=x,4"
   const paris = "tile=B-C-,---5&t&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=13&patchHeight=18&footside=x,4,x,x&headside=x,x,x,7&footsideStitch=ctctctctl&headsideStitch=ctctctctr"
-  const honeycomb = "tile=-5--,6v9v,---5,2z0z&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4&patchWidth=11&patchHeight=16&footside=rx,r8,x4,11&tile=-5--,6v9v,---5,2z0z&footside=rx,r8,x4,11&headside=xx,88,7r,1r&footsideStitch=ctct&a2=ctctctctll&headsideStitch=ctct&o4=ctctctctrr"
+  const weavingParis = "tile=-5--,6v9v,---5,2z0z&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4&patchWidth=11&patchHeight=16&footside=rx,r8,x4,11&tile=-5--,6v9v,---5,2z0z&footside=rx,r8,x4,11&headside=xx,88,7r,1r&footsideStitch=ctct&a2=ctctctctll&headsideStitch=ctct&o4=ctctctctrr"
   d3.select('#b').node().value = b
   d3.select('#mb').text(b)
   d3.select('#md').text(d)
@@ -52,8 +54,8 @@ function generate (b, set, colors) {
   if (!set) {
     d3.select('#colors').node().checked = colors
     showGraph ("diagonal", `tileStitch=${b}&${diagonal}`)
-    showGraph ("paris", `tileStitch=${b}&${paris}`)
-    showGraph ("honeycomb", `tileStitch=${b}&${honeycomb}`)
+    showGraph ("Paris/cat", `tileStitch=${b}&${paris}`)
+    showGraph ("weaving Paris", `tileStitch=${b}&${weavingParis}`)
     showGraph ("bb ->\nbb <-", `tileStitch=${b}&${hor2x2}`)
   }
   if (set == "2") {
