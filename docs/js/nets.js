@@ -137,7 +137,9 @@ function showGraph(caption, q) {
       const l = diagram.link(jsLink.index)
       return DiagramSvg.pathDescription(l, s.x, s.y, t.x, t.y)
   }
+  count = 0
   function onTick() {
+      if ((count++ % 3 ) != 0) return;
       links.attr("d", drawPath);
       nodes.attr("transform", moveNode);
   }
