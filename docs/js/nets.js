@@ -14,18 +14,22 @@
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
 function more(set, button) {
-  load(`b=${d3.select('#b').node().value}&set=${set}`)
+  generate(d3.select('#b').node().value, set, d3.select('#colors').node().checked)
   button.style='display:none'
   if (d3.select('#more2').style('display')=="none" && d3.select('#more4').style('display')=="none")
     d3.select('#more').style('display','none')
   return false
 }
-function load(search) {
+function load() {
+  const search = window.location.search.replace(/set=./,'')
   const urlParams = new URLSearchParams(search)
-  const set = urlParams.get("set")
   var b = urlParams.get("b")
   if (b) b = b.toLowerCase().replace(/[^ctlr]/g,"").trim()
+  d3.select('#b').node().value = b
   if (!b) b = "crctl"
+  generate(b, "", urlParams.has("colors"))
+}
+function generate (b, set, colors) {
   const d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
   const p = b.split("").reverse().join("")
   const q = d.split("").reverse().join("")
@@ -46,7 +50,7 @@ function load(search) {
     d3.select('#more4').style('display', "none")
 
   if (!set) {
-    d3.select('#colors').node().checked = urlParams.has("colors")
+    d3.select('#colors').node().checked = colors
     showGraph ("diagonal", `tileStitch=${b}&${diagonal}`)
     showGraph ("paris", `tileStitch=${b}&${paris}`)
     showGraph ("honeycomb", `tileStitch=${b}&${honeycomb}`)
@@ -77,7 +81,10 @@ function load(search) {
     showGraph ("bq ->\ndp <-", `b1=${p}&c1=${q}&b2=${d}&c2=${p}&${hor2x2}`)
     showGraph ("bq ->\npd <-", `b1=${p}&c1=${q}&b2=${p}&c2=${d}&${hor2x2}`)
   }
-  if(d3.select('#colors').node().checked) {
+  setColors(colors)
+}
+function setColors(colors) {
+  if(colors) {
     d3.select('#pairs').attr("src","images/dots-legend.png")
     d3.selectAll('.ct-b1, .ct-c4').style("fill","#0000FF")
     d3.selectAll('.ct-c1, .ct-e2').style("fill","#00FFFF")
@@ -86,6 +93,10 @@ function load(search) {
     d3.selectAll('.ct-b2, .ct-d1, .ct-f3, .ct-c1, .ct-e2, .ct-b1, .ct-c4, .ct-c2, .ct-e4').style("opacity","0.2")
     d3.selectAll('.ct-c1, .ct-e2').style("opacity","0.25")
     d3.selectAll('.ct-c2, .ct-e4').style("opacity","0.3")
+  } else {
+    d3.select('#pairs').attr("src","images/dots-legend-without.png")
+    d3.selectAll('.node').style("opacity","0")
+    d3.selectAll('.bobbin').style("opacity","1")
   }
 }
 function showGraph(caption, q) {

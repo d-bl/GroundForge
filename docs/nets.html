@@ -25,7 +25,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/GroundForge/favicon/favicon-16x16.png">
     <link rel="stylesheet" href="css/logo.css" type="text/css">
 </head>
-<body onload="load(window.location.search.replace(/set=./,''))">
+<body onload="load()">
 <a id="logo" href="/GroundForge/"
    title="Main page"
    target="_blank"
@@ -36,6 +36,7 @@
     <form action="nets.html" method="get">
         <label for="b">Stitch </label>
         <input type="text" name="b" id="b" list="stitches" pattern="[ctrlCTRL]+" minlength="2">
+        <button type="submit"><img src="images/wand.png"></button>
         <label for="b">
             Any sequence of <code>ctlr</code>, leading and/or trailing (left/right) twists allowed;
             <a href="/MAE-gf/docs/counting#results" target="_blank"
@@ -48,10 +49,8 @@
             <option>cllcrr</option>
         </datalist>
         <br>
-        <label for="colors">Use colors</label>
-        <input type="checkbox" id="colors" name="colors">
-        <br>
-        <button type="submit"><img src="images/wand.png"></button>
+        <label for="colors" title="initially checked when address bar has 'color', ignoring its value">Use colors</label>
+        <input type="checkbox" id="colors" name="colors" onChange="setColors(this.checked)">
     </form>
     <table>
         <tr>
