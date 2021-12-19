@@ -153,5 +153,6 @@ function showGraph(caption, q) {
     .force("link", forceLink)
     .force("center", d3.forceCenter(width/2, height/2))
     .alpha(0.0035)
+    .alphaDecay(0.03)
     .on("tick", onTick)
 }
