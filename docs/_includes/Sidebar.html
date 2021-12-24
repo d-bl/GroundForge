@@ -1,38 +1,45 @@
 <ul>
-    <li>Introduction<br>
-        <a href="https://github.com/d-bl/GroundForge/blob/oidfa-article/docs/help/DE.md">de</a>,
-        <a href="/{{ site.github.repository_name }}">en</a>,
-        <a href="http://www.gibritte.com/2020/05/jouer-groundforge.html" target="_blank">fr</a>,
-        <a href="https://github.com/d-bl/GroundForge/blob/oidfa-article/docs/help/NL.md">nl</a>
-    </li>
-    <li>
-        <a href="https://github.com/d-bl/GroundForge/#licenses"><img src="/GroundForge/assets/images/CC_some_rights_reserved.png"></a>
-    </li>
-    <li>Contact:
+    <li><h2>Contact</h2>
        <ul>
-           <li><a href="https://groups.io/g/GroundForge" target="_blank">user group</a></li>
-           <li><a href="https://groundforge.wordpress.com">support</a></li>
+           <li><a href="https://groups.io/g/GroundForge" target="_blank">User group</a></li>
+           <li><a href="https://groundforge.wordpress.com" target="_blank">Support</a></li>
+           <li>
+               {% if page.name == 'about-us.md' %}
+               About us
+               {% else %}
+               <a href="/GroundForge-help/about-us">About us</a>
+               {% endif %}
+           </li>
        </ul>
     </li>
-    <li>Contribute
-        <ul>
-           <li>
-               <a href="https://groups.io/g/GroundForge" target="_blank">share your patterns</a>
-           </li>
-            <li>
-                <a href="https://help.github.com/articles/editing-files-in-another-user-s-repository/">propose changes</a> to
-                <a href="https://github.com/d-bl/{{ site.github.repository_name }}/tree/master/docs/help">help </a> pages
-            </li>
-        </ul>
-    </li>
-    <li>Catalogues
+    <li><h2>Catalogues</h2>
         <ul>
             <li><a href="/tesselace-to-gf">TesseLace</a>
             <li><a href="/gw-lace-to-gf">Whiting</a>
             <li><a href="/MAE-gf/">Many Attractive Examples</a></li>
+            <li><a href="/MAE-gf/docs/literature/">Literature</a></li>
         </ul>
     </li>
-    <li>Features
+    <li><h2>GroundForge</h2>
+      <ul>
+          <li><a href="/GroundForge/nets">Nets page</a></li>
+          <li><a href="/GroundForge/tiles">Main page</a></li>
+          <li>
+              {% if page.name == 'about-us.md' %}
+              <a href="/GroundForge/">User guide</a>
+              {% else %}
+              User guide
+              {% endif %}
+          </li>
+      </ul><hr/>
+    </li>
+    <li><h2>User guide</h2><h3>Introduction</h3>
+        <a href="https://github.com/d-bl/GroundForge/blob/oidfa-article/docs/help/DE.md">de</a>,
+        <a href="/GroundForge/">en</a>,
+        <a href="http://www.gibritte.com/2020/05/jouer-groundforge.html" target="_blank">fr</a>,
+        <a href="https://github.com/d-bl/GroundForge/blob/oidfa-article/docs/help/NL.md">nl</a>
+    </li>
+    <li><h3>Features</h3>
         <ul>
             <li><a href="/GroundForge-help/Patch-Size">Patch Size</a></li>
             <li>
@@ -49,57 +56,52 @@
             </li>
             <li>
                 <a href="/GroundForge-help/Undo">
-                    save, refresh, undo
+                    Save, refresh, undo
                 </a>
-                <img src="/{{ site.github.repository_name }}/images/link.png">
-                <img src="/{{ site.github.repository_name }}/images/wand.png">
+                <img src="/GroundForge/images/link.png">
+                <img src="/GroundForge/images/wand.png">
             </li>
             <li>
                 <a href="/GroundForge-help/Icons">Resize space</a>
-                <img src="/{{ site.github.repository_name }}/images/size-inc.jpg">
-                <img src="/{{ site.github.repository_name }}/images/size-dec.jpg">
+                <img src="/GroundForge/images/size-inc.jpg">
+                <img src="/GroundForge/images/size-dec.jpg">
             </li>
             <li>
                 <a href="/GroundForge-help/Icons">Animate</a>
-                <img src="/{{ site.github.repository_name }}/images/animate.png">
+                <img src="/GroundForge/images/animate.png">
             </li>
             <li>
-                <a href="/GroundForge-help/Icons">Downloads</a>
-                <img src="/{{ site.github.repository_name }}/images/download.jpg">
+                <a href="/GroundForge-help/Download">Download</a>
+                <img src="/GroundForge/images/download.jpg">
             </li>
-            <li><a href="/GroundForge-help/Color-Code">Color code, Twist marks</a></li>
+            <li><a href="/GroundForge-help/Color-Code">Color code, Twist marks</a> <img src="/GroundForge/images/swatches.png"></li>
         </ul>
     </li>
 
-    <li>Tutorials
+    <li><h3>Tutorials</h3>
         <ul>
             <li><a href="/GroundForge-help/index">Getting Started</a>
             <li><a href="/GroundForge-help/Advanced">Create a pattern</a></li>
             <li><a href="/GroundForge-help/Droste-effect">Droste effect</a></li>
-            <li><a href="/GroundForge-help/Reshape-Patterns">Reshape Pair Diagrams</a></li>
+            <li><a href="/GroundForge-help/Reshape-Patterns">Reshape pair diagrams</a></li>
             <li><a href="/GroundForge-help/Reversed-engineering-of-patterns">Printed patterns to GF</a></li>
             <li><a href="/GroundForge-help/Pin-distances-and-angles">Pin distances and angles</a></li>
         </ul>
     </li>
-
-    <li>Development information
+    <li><h3>Contribute</h3>
         <ul>
-            <li><a href="/GroundForge-help/Reuse">Use on 3rd party sites</a></li>
-            <li>Issues: <a href="https://github.com/d-bl/{{ site.github.repository_name }}/issues?q=is%3Aissue+is%3Aopen+label%3A%22Browser+support%22">browsers</a> /
-                <a href="https://github.com/d-bl/{{ site.github.repository_name }}/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+-label%3A%22Browser+support%22">others</a></li>
-            <li><a href="/GroundForge-help/Changes">Stay posted</a></li>
-            <li><a href="/GroundForge-help/Stable">Stable version</a></li>
-            <li><a href="/GroundForge-help/Fix-Old-Links">Fix old pattern links</a></li>
+            <li>
+            <li><a href="/GroundForge-help/Reuse">Share</a></li>
+            <li>
+                <a href="https://help.github.com/articles/editing-files-in-another-user-s-repository/">Propose changes</a> to
+                <a href="https://github.com/d-bl/GroundForge-help/tree/master/docs">help </a> pages
+            </li>
         </ul>
     </li>
+    <li>
+        <a href="https://github.com/d-bl/GroundForge/#licenses"><img src="/GroundForge/assets/images/CC_some_rights_reserved.png"></a>
+    </li>
 </ul>
-<p>
-    Powered by<br>
-    <a href="https://tesselace.com" title="Algorithmically designed lace tessellations">TesseLace</a> -
-    <a href="https://d3js.org" title="Data Driven Documents">D3.js</a> (force graphs) -
-    <a href="http://ecotrust-canada.github.io/markdown-toc/">markdown-toc</a> -
-    <a href="http://browserstack.com/">browserstack</a>
-</p>
 <!-- Start of StatCounter Code for Default Guide -->
 <script type="text/javascript">
         var sc_project=10865294;
