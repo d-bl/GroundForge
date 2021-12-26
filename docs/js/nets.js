@@ -38,13 +38,15 @@ function generate (b, set, colors) {
   const hor2x2 = "tile=88,11&a1=rctctctctt&l2=lctctctctt&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=10&patchHeight=12&headside=x,7&footside=4,x"
   const diagonal = "tile=5-5-,-5-5&shiftColsSW=0&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=10&patchHeight=12&headside=7,x&footside=x,4"
   const paris = "tile=B-C-,---5,C-B-,-5--,B-C-,---5,C-B-,-5--&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=4&shiftRowsSE=8&patchWidth=13&patchHeight=18&footside=x,4,x,x&headside=x,x,x,7&footsideStitch=ctctctctl&headsideStitch=ctctctctr"
-  const weavingParis = "tile=B-C-,---5,C-B-,-5--,B-C-,---5,C-B-,-5--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4&patchWidth=11&patchHeight=16&footside=rx,r8,x4,11&tile=-5--,6v9v,---5,2z0z&footside=rx,r8,x4,11&headside=xx,88,7r,1r&footsideStitch=ctct&a2=ctctctctll&headsideStitch=ctct&o4=ctctctctrr"
+  const weavingParis = "tile=-5---5--,6v9v6v9v,---5---5,2z0z2z0z&headsideStitch=ctct&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=8&shiftRowsSE=4&patchWidth=11&patchHeight=16&footside=rx,r8,x4,11&footside=rx,r8,x4,11&headside=xx,88,7r,1r&footsideStitch=ctct&a2=ctctctctll&headsideStitch=ctct&o4=ctctctctrr"
   d3.select('#b').node().value = b
   d3.select('#mb').text(b)
   d3.select('#md').text(d)
   d3.select('#mp').text(p)
   d3.select('#mq').text(q)
   d3.select('#legend').text(`${ b == p ? "b=p , q=d, " : ""} ${ b == d ? "b=d, q=p" : ""}`)
+
+// https://jo-pol.github.io/GroundForge/tiles?patchWidth=11&patchHeight=16&h1=ctc&d1=ctc&a1=ctct&o2=ctct&n2=ctct&i2=ctc&g2=ctc&e2=ctc&c2=ctc&b2=ctct&a2=ctctctctll&o3=ctct&n3=ctct&j3=ctc&f3=ctc&b3=ctct&o4=ctctctctrr&n4=ctct&i4=ctc&g4=ctc&e4=ctc&c4=ctc&b4=ctct&a4=ctct&footside=rx,r8,x4,11&tile=-5---5--,6v9v6v9v,---5---5,2z0z2z0z&headside=xx,88,7r,1r&footsideStitch=ctct&tileStitch=ctc&headsideStitch=ctct&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=8&shiftRowsSE=4
 
   if (b == d && b == p)
     d3.select('#more').style('display', "none")
@@ -93,14 +95,14 @@ function setColors(colors) {
     d3.selectAll('.node').style("opacity","0.2")
     d3.select('#pairs').attr("src","images/dots-legend.png")
 
-    d3.selectAll('.ct-b1, .ct-c4, .ct-d7').style("fill","#0000FF")
-    d3.selectAll('.ct-b2, .ct-d1, .ct-f3, .ct-b3, .ct-d5, .ct-b7').style("fill","#FF0000")
+    d3.selectAll('.ct-b1, .ct-c4, .ct-d7, .ct-g2').style("fill","#0000FF")
+    d3.selectAll('.ct-b2, .ct-d1, .ct-b3, .ct-d5, .ct-b7, .ct-f3, .ct-i4, .ct-i2').style("fill","#FF0000")
 
-    d3.selectAll('.ct-c1, .ct-e2, .ct-b5').style("fill","#00FFFF")
-    d3.selectAll('.ct-c1, .ct-e2, .ct-b5').style("opacity","0.25")
+    d3.selectAll('.ct-c1, .ct-e2, .ct-b5, .ct-j3, .ct-g4').style("fill","#00FFFF")
+    d3.selectAll('.ct-c1, .ct-e2, .ct-b5, .ct-j3, .ct-g4').style("opacity","0.25")
 
-    d3.selectAll('.ct-c2, .ct-e4, .ct-d3, .ct-e6, .ct-c8').style("fill","#00FF00")
-    d3.selectAll('.ct-c2, .ct-e4, .ct-d3, .ct-e6, .ct-c8').style("opacity","0.3")
+    d3.selectAll('.ct-c2, .ct-e4, .ct-d3, .ct-e6, .ct-c8, .ct-h1').style("fill","#00FF00")
+    d3.selectAll('.ct-c2, .ct-e4, .ct-d3, .ct-e6, .ct-c8, .ct-h1').style("opacity","0.3")
   }
   d3.selectAll('.bobbin').style("opacity","1")
 }
