@@ -86,20 +86,23 @@ function generate (b, set, colors) {
   setColors(colors)
 }
 function setColors(colors) {
-  if(colors) {
-    d3.select('#pairs').attr("src","images/dots-legend.png")
-    d3.selectAll('.ct-b1, .ct-c4, .ct-d7').style("fill","#0000FF")
-    d3.selectAll('.ct-c1, .ct-e2, .ct-b5').style("fill","#00FFFF")
-    d3.selectAll('.ct-c2, .ct-e4, .ct-d3, .ct-e6, .ct-c8').style("fill","#00FF00")
-    d3.selectAll('.ct-b2, .ct-d1, .ct-f3, .ct-b3, .ct-d5, .ct-b7').style("fill","#FF0000")
-    d3.selectAll('.ct-b2, .ct-d1, .ct-f3, .ct-b3, .ct-d5, .ct-b7, .ct-c1, .ct-e2, .ct-b1, .ct-c4, .ct-c2, .ct-e4, .ct-d7').style("opacity","0.2")
-    d3.selectAll('.ct-c1, .ct-e2, .ct-b5').style("opacity","0.25")
-    d3.selectAll('.ct-c2, .ct-e4, .ct-d3, .ct-e6, .ct-c8').style("opacity","0.3")
-  } else {
-    d3.select('#pairs').attr("src","images/dots-legend-without.png")
+  if(!colors) {
     d3.selectAll('.node').style("opacity","0")
-    d3.selectAll('.bobbin').style("opacity","1")
+    d3.select('#pairs').attr("src","images/dots-legend-without.png")
+  } else {
+    d3.selectAll('.node').style("opacity","0.2")
+    d3.select('#pairs').attr("src","images/dots-legend.png")
+
+    d3.selectAll('.ct-b1, .ct-c4, .ct-d7').style("fill","#0000FF")
+    d3.selectAll('.ct-b2, .ct-d1, .ct-f3, .ct-b3, .ct-d5, .ct-b7').style("fill","#FF0000")
+
+    d3.selectAll('.ct-c1, .ct-e2, .ct-b5').style("fill","#00FFFF")
+    d3.selectAll('.ct-c1, .ct-e2, .ct-b5').style("opacity","0.25")
+
+    d3.selectAll('.ct-c2, .ct-e4, .ct-d3, .ct-e6, .ct-c8').style("fill","#00FF00")
+    d3.selectAll('.ct-c2, .ct-e4, .ct-d3, .ct-e6, .ct-c8').style("opacity","0.3")
   }
+  d3.selectAll('.bobbin').style("opacity","1")
 }
 function showGraph(caption, q) {
 
