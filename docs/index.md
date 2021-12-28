@@ -23,7 +23,7 @@ Tutorials
 ---------
 * [Getting started](/GroundForge-help/index)
 * [Variations on a Binche ground](/GroundForge-help/Binche)
-* [Create a prototype](/GroundForge-help/Advanced#prototype-tutorial)
+* [Create a prototype](/GroundForge-help/Advanced#define-the-base-pattern)
 * [Add a footside](/GroundForge-help/Advanced#footside-tutorial)
 * [Create new pattern from thread diagram](/GroundForge-help/Droste-effect)
 * [Replace/skip stitches](/GroundForge-help/Replace)
