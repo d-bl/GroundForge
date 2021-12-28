@@ -34,7 +34,7 @@ Pattern Catalogues
 -----------------
 * [TesseLace](/tesselace-to-gf) algorithmically generated grounds
 * [Gertrude Whiting's sampler](/gw-lace-to-gf)
-* Grounds from printed catalogues (such as _Viele gute Gründe_ by Ulricke Voelcker-Löhr, _The book of bobbin lace stitches_ by Bridget Cook and Geraldine Stott, or _Gründe mit System_ by Uta Ulrich) can be explored by [creating a prototype](/GroundForge-help/Advanced#prototype-tutorial) in GroundForge.
+* Grounds from printed catalogues (such as _Viele gute Gründe_ by Ulricke Voelcker-Löhr, _The book of bobbin lace stitches_ by Bridget Cook and Geraldine Stott, or _Gründe mit System_ by Uta Ulrich) can be explored by [creating a base pattern](/GroundForge-help/Advanced#define-the-base-pattern) in GroundForge.
 
 Community Contributions
 -----------------------
