@@ -36,9 +36,9 @@ function generate (b, set, colors) {
   const p = b.split("").reverse().join("")
   const q = d.split("").reverse().join("")
   const hor2x2 = "tile=88,11&a1=rctctctctt&l2=lctctctctt&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=10&patchHeight=12&headside=x,7&footside=4,x"
-  const diagonal = "tile=5-5-,-5-5&shiftColsSW=0&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=10&patchHeight=12&headside=7,x&footside=x,4"
-  const paris = "tile=B-C-,---5,C-B-,-5--,B-C-,---5,C-B-,-5--&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=4&shiftRowsSE=8&patchWidth=13&patchHeight=18&footside=x,4,x,x&headside=x,x,x,7&footsideStitch=ctctctctl&headsideStitch=ctctctctr"
-  const weavingParis = "tile=-5---5--,6v9v6v9v,---5---5,2z0z2z0z&headsideStitch=ctct&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=8&shiftRowsSE=4&patchWidth=11&patchHeight=16&footside=rx,r8,x4,11&footside=rx,r8,x4,11&headside=xx,88,7r,1r&footsideStitch=ctct&a2=ctctctctll&headsideStitch=ctct&o4=ctctctctrr"
+  const diamond = "tile=5-5-,-5-5&shiftColsSW=0&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=12&patchHeight=12&headside=7,x&footside=x,4"
+  const kat = "tile=B-C-,---5,C-B-,-5--,B-C-,---5,C-B-,-5--&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=4&shiftRowsSE=8&patchWidth=17&patchHeight=18&footside=x,4,x,x&headside=x,x,x,7&footsideStitch=ctctctctl&headsideStitch=ctctctctr"
+  const weavingKat = "tile=-5---5--,6v9v6v9v,---5---5,2z0z2z0z&headsideStitch=ctct&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=8&shiftRowsSE=4&patchWidth=15&patchHeight=16&footside=rx,r8,x4,11&footside=rx,r8,x4,11&headside=xx,88,7r,1r&footsideStitch=ctct&a2=ctctctctll&headsideStitch=ctct&o4=ctctctctrr"
   d3.select('#b').node().value = b
   d3.select('#mb').text(b)
   d3.select('#md').text(d)
@@ -55,9 +55,9 @@ function generate (b, set, colors) {
 
   if (!set) {
     d3.select('#colors').node().checked = colors
-    showGraph ("diagonal", `tileStitch=${b}&${diagonal}`)
-    showGraph ("Paris/kat", `tileStitch=${b}&${paris}`)
-    showGraph ("weaving Paris", `tileStitch=${b}&${weavingParis}`)
+    showGraph ("diamond", `tileStitch=${b}&${diamond}`)
+    showGraph ("Paris / kat", `tileStitch=${b}&${kat}`)
+    showGraph ("weaving kat", `tileStitch=${b}&${weavingKat}`)
     showGraph ("bb ->\nbb <-", `tileStitch=${b}&${hor2x2}`)
   }
   if (set == "2") {
@@ -89,9 +89,11 @@ function generate (b, set, colors) {
 }
 function setColors(colors) {
   if(!colors) {
+    d3.select('#color-hint').style("display", "none")
     d3.selectAll('.node').style("opacity","0")
     d3.select('#pairs').attr("src","images/dots-legend-without.png")
   } else {
+    d3.select('#color-hint').style("display", "inline")
     d3.selectAll('.node').style("opacity","0.2")
     d3.select('#pairs').attr("src","images/dots-legend.png")
 
