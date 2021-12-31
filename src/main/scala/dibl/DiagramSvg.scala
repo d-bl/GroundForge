@@ -19,7 +19,7 @@ package dibl
 import dibl.Force.Point
 import dibl.LinkProps.Path
 
-import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
+import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 @JSExportTopLevel("DiagramSvg") object DiagramSvg {
 
@@ -41,7 +41,7 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
   private def shape(node: NodeProps) = // See https://www.w3.org/TR/SVG/paths.html#PathDataMovetoCommands
     if (node.pin) circle(4)
     else if (node.bobbin) bobbin
-    else circle(6)
+    else circle(9)
 
   @JSExport
   val markerDefinitions: String = {
@@ -169,9 +169,17 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
     val opacity = if (node.bobbin || node.pin) 1 else opacityOfHiddenObjects
     val stroke = if (node.bobbin) "rgb(0, 0, 0); stroke-width: 2px" else "none"
     val title = if (node.bobbin) node.cssClasses.replaceAll(".*d", "thread ")
-                else node.title
+                else {
+                  if (node.isLeftTwist) "left "
+                  else if (node.isRightTwist) "right "
+                       else ""
+
+                } + node.title
+    val extraClass = if (title.contains("cross") || title.contains("twist"))
+                       " ct-" + node.id.substring(0, node.id.length - 1)
+                     else ""
     s"""<path
-       | class="${node.cssClasses}"
+       | class="${node.cssClasses}$extraClass"
        | d="${shape(node)}"
        | style="fill: rgb(0, 0, 0); stroke: $stroke; opacity: $opacity"
        | transform="translate(${node.x},${node.y})"

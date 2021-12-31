@@ -25,7 +25,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/GroundForge/favicon/favicon-16x16.png">
     <link rel="stylesheet" href="css/logo.css" type="text/css">
 </head>
-<body onload="load(window.location.search.replace(/set=./,''))">
+<body onload="load()">
 <a id="logo" href="/GroundForge/"
    title="Main page"
    target="_blank"
@@ -34,7 +34,7 @@
     <h1>GroundForge - thread diagrams</h1>
     <h2>Variations with one stitch and its reflections.</h2>
     <form action="nets.html" method="get">
-        <label for="b">Stitch</label>
+        <label for="b">Stitch </label>
         <input type="text" name="b" id="b" list="stitches" pattern="[ctrlCTRL]+" minlength="2">
         <button type="submit"><img src="images/wand.png"></button>
         <label for="b">
@@ -46,7 +46,11 @@
         </label>
         <datalist id="stitches">
             <option>clcr</option>
+            <option>cllcrr</option>
         </datalist>
+        <br>
+        <label for="colors" title="initially checked when address bar has 'color', ignoring its value">Stitch highlights</label>
+        <input type="checkbox" id="colors" name="colors" onChange="setColors(this.checked)">
     </form>
     <table>
         <tr>
@@ -79,14 +83,16 @@
             <td id="legend"></td>
         </tr>
     </table>
+    <p>Pair diagrams: <img src="images/dots-legend-without.png" id="pairs"><br>
+        <span id="color-hint">The colors have no specific meaning, except that foot sides (when visible) are grey.</span></p>
     <p>
         Follow the diagram links to tweak the patterns such as apply colors to threads and any DIY variations.
     </p>
     <p id="more">
-        More diagrams:
+        More thread diagrams:
         <button onclick="more(2,this)" id="more2"><img src="images/wand.png"><br>2</button>
         <button onclick="more(4,this)" id="more4"><img src="images/wand.png"><br>4</button>
-        mirrored stitches, please wait for the animations to complete.
+        mirrored stitches applied to the square net. Please wait for the animations to complete.
     </p>
 </div>
 <div id="diagrams"></div>
