@@ -26,7 +26,9 @@ function load() {
   const search = window.location.search.replace(/set=./,'')
   const urlParams = new URLSearchParams(search)
   var img = urlParams.get("img")
-  if (img) d3.select('#diagrams').append("img").attr("src", '/MAE-gf/images/ctrl/'+img+'.jpg')
+  if (img) d3.select('#diagrams').append("img")
+    .attr("src", '/MAE-gf/images/ctrl/'+img+'.jpg')
+    .attr("onload", "this.width/=2;this.onload=null;")
   var b = urlParams.get("b")
   if (b) b = b.toLowerCase().replace(/[^ctlr]/g,"").trim()
   d3.select('#b').node().value = b
