@@ -118,7 +118,8 @@ function showDiagrams(config) {
   var markers = true // use false for slow devices and IE-11, set them at onEnd
 
   var pairContainer = d3.select("#pairDiagram")
-  d3.selectAll("#pairDiagram node").on("click", "console.log(this)");
+  console.log("hallo")
+  d3.selectAll("#pairDiagram node").on("click", "console.log('----')");
   var pairContainerNode = pairContainer.node()
   if (!config)
       config = TilesConfig(submitQuery())
