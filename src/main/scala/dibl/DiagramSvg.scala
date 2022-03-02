@@ -179,7 +179,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
                        " ct-" + node.id.substring(0, node.id.length - 1)
                      else ""
     val event = if (title.contains("cross") || title.contains("twist")) ""
-                else "onclick('paint(this)')"
+                else "onclick='paint(this)'"
     s"""<path $event
        | class="${node.cssClasses}$extraClass"
        | d="${shape(node)}"
