@@ -7,6 +7,9 @@ function setStitch(sourceNode) {
   var el = document.getElementById(id)
   el.focus()
 }
+function paint(clicked) {
+  console.log(clicked)
+}
 function clearStitches() {
 
   d3.selectAll("svg input").attr("value","")
@@ -118,8 +121,6 @@ function showDiagrams(config) {
   var markers = true // use false for slow devices and IE-11, set them at onEnd
 
   var pairContainer = d3.select("#pairDiagram")
-  console.log("hallo")
-  d3.selectAll("#pairDiagram node").on("click", "console.log('----')");
   var pairContainerNode = pairContainer.node()
   if (!config)
       config = TilesConfig(submitQuery())
