@@ -8,7 +8,13 @@ function setStitch(sourceNode) {
   el.focus()
 }
 function paint(clicked) {
-  console.log(clicked)
+  var id = clicked.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
+  console.log(id + " -- " d3.select('#'+id).attr("value"))
+  d3.select('#'+id).attr("value", "ct")
+  var query = submitQuery()
+  var l = PairDiagram.legend(query).replace(/\n/g,"<br>")+"<br>use wand or link button to show changes or apply to more stitches"
+  d3.select("#diagrams .colorCode").node().innerHTML = l
+  showColorCode("#diagrams")
 }
 function clearStitches() {
 
