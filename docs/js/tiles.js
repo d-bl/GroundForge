@@ -12,8 +12,9 @@ function paint(clicked) {
   console.log(id + " -- " + d3.select('#'+id).attr("value"))
   d3.select('#'+id).attr("value", "ct")
   var query = submitQuery()
-  var l = PairDiagram.legend(query).replace(/\n/g,"<br>")+"<br>use wand or link button to show changes or apply to more stitches"
+  var l = PairDiagram.legend(query).replace(/\n/g,"<br>")+"<br>changes are not yet applied to diagrams"
   d3.select("#diagrams .colorCode").node().innerHTML = l
+  clear2()
   showColorCode("#diagrams")
 }
 function clearStitches() {
