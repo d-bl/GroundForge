@@ -12,7 +12,7 @@ function paint(clicked) {
   console.log(id + " -- " + d3.select('#'+id).attr("value"))
   d3.select("#paintStitches").node().value
   d3.select('#'+id).attr("value", d3.select("#paintStitches").node().value)
-  var query = submitQuery().replace(/"paintStitches=[a-zA-Z]*&"/,"")
+  var query = submitQuery().replace(/paintStitches=[a-zA-Z]*&/,"")
   clear2()
   var l = PairDiagram.legend(query).replace(/\n/g,"<br>")+"<br>changes are not yet visible in diagrams"
   d3.select("#diagrams .colorCode").style("display", "block")
