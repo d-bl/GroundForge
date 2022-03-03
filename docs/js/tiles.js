@@ -17,7 +17,7 @@ function paint(clicked) {
   var l = PairDiagram.legend(query).replace(/\n/g,"<br>")+"<br>changes are not yet visible in diagrams"
   d3.select("#diagrams .colorCode").style("display", "block")
   d3.select("#diagrams .colorCode").node().innerHTML = l
-  d3.select("#threadDiagram").style("display", "none")
+  d3.select("#threadDiagram").node().innerHTML = ""
 }
 function clearStitches() {
 
