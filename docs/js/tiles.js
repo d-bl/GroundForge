@@ -10,10 +10,12 @@ function setStitch(sourceNode) {
 function paint(clicked) {
   var id = clicked.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
   console.log(id + " -- " + d3.select('#'+id).attr("value"))
-  d3.select('#'+id).attr("value", "ct")
+  d3.select("#paintStitches").node().value
+  d3.select('#'+id).attr("value", d3.select("#paintStitches").node().value)
   var query = submitQuery()
   var l = PairDiagram.legend(query).replace(/\n/g,"<br>")+"<br>changes are not yet applied to diagrams"
   d3.select("#diagrams .colorCode").node().innerHTML = l
+  d3.select("#threadDiagram").style("display", "none")
   clear2()
   showColorCode("#diagrams")
 }
