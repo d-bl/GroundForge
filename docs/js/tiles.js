@@ -1,12 +1,5 @@
 var valueFilter = /[^a-zA-Z0-9,-=]/g
 var isMobile = /iPad|iPhone|iPod|Mobi/.test(navigator.userAgent)
-
-function setStitch(sourceNode) {
-
-  var id = sourceNode.dataset.formid
-  var el = document.getElementById(id)
-  el.focus()
-}
 function buildLegend(query) {
 
    return PairDiagram.legend(query.replace(/paintStitches=[a-zA-Z]*&/,"")).replace(/\n/g,"<br>")
@@ -21,7 +14,6 @@ function paint(clicked) {
   var hrefQ = tesselace(query) + query
   d3.select("#link").node().href = "?" + hrefQ
   d3.select("#poc").node().href = "poc.html?" + pocRef(query)
-  d3.select("#diagrams .colorCode").style("display", "block")
   d3.select("#diagrams .colorCode").node().innerHTML = buildLegend(query)
   d3.select("#threadDiagram").node().innerHTML = ""
 
