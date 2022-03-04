@@ -7,14 +7,21 @@ function setStitch(sourceNode) {
   var el = document.getElementById(id)
   el.focus()
 }
+function buildLegend(query) {
+
+   return PairDiagram.legend(query.replace(/paintStitches=[a-zA-Z]*&/,"")).replace(/\n/g,"<br>")
+}
 function paint(clicked) {
   var id = clicked.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
   console.log(id + " -- " + d3.select('#'+id).attr("value"))
-  d3.select("#paintStitches").node().value
   d3.select('#'+id).attr("value", d3.select("#paintStitches").node().value)
-  var query = submitQuery().replace(/paintStitches=[a-zA-Z]*&/,"")
+
   clear2()
-  var l = PairDiagram.legend(query).replace(/\n/g,"<br>")+"<br>changes are not yet visible in diagrams"
+  var query = submitQuery()
+  var hrefQ = tesselace(query) + query
+  var l = buildLegend(query)+"<br>changes are not yet visible in diagrams"
+  d3.select("#link").node().href = "?" + hrefQ
+  d3.select("#poc").node().href = "poc.html?" + pocRef(query)
   d3.select("#diagrams .colorCode").style("display", "block")
   d3.select("#diagrams .colorCode").node().innerHTML = l
   d3.select("#threadDiagram").node().innerHTML = ""
@@ -30,6 +37,7 @@ function toKeyValueString (formField) {
     return !n || !v ? '' : n + '=' +  v.replace(/\n/g,",").replace(valueFilter,"")
 }
 function isKeyValue (formField) {
+
     return formField.name && formField.value
 }
 function submitQuery() {
@@ -74,17 +82,17 @@ function showProto() {
   var config = TilesConfig(submitQuery())
   d3.select("#prototype").html(PrototypeDiagram.create(config))
   var query = submitQuery() // new form fields may have been added
+  clear2()
   var hrefQ = tesselace(query) + query
   d3.select("#link").node().href = "?" + hrefQ
   d3.select("#poc").node().href = "poc.html?" + pocRef(query)
   d3.selectAll("#threadDiagram, #pairDiagram").html("")
-  clear2()
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
 
-  var l = PairDiagram.legend(query).replace(/\n/g,"<br>")
+  var l = buildLegend(query)
   d3.select("#editPatternFieldSet .colorCode").node().innerHTML = l
   d3.select("#diagrams .colorCode").node().innerHTML = l
   d3.selectAll(".colorCode").style("display", "none")
