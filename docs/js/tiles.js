@@ -19,11 +19,10 @@ function paint(clicked) {
   clear2()
   var query = submitQuery()
   var hrefQ = tesselace(query) + query
-  var l = buildLegend(query)+"<br>changes are not yet visible in diagrams"
   d3.select("#link").node().href = "?" + hrefQ
   d3.select("#poc").node().href = "poc.html?" + pocRef(query)
   d3.select("#diagrams .colorCode").style("display", "block")
-  d3.select("#diagrams .colorCode").node().innerHTML = l
+  d3.select("#diagrams .colorCode").node().innerHTML = buildLegend(query)
   d3.select("#threadDiagram").node().innerHTML = ""
 
   var pairContainer = d3.select("#pairDiagram")
@@ -97,9 +96,7 @@ function showProto() {
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
 
-  var l = buildLegend(query)
-  d3.select("#editPatternFieldSet .colorCode").node().innerHTML = l
-  d3.select("#diagrams .colorCode").node().innerHTML = l
+  d3.select("#diagrams .colorCode").node().innerHTML = buildLegend(query)
   d3.selectAll(".colorCode").style("display", "none")
 
   return config

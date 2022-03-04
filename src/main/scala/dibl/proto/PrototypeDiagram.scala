@@ -42,11 +42,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       s"""${ warning(vectorCode, translate, nrOfPairsOut, item.noStitch) }
          |<use
          |  xlink:href='#vc$vectorCode'
-         |  id='svg-r${ r + 1 }-c${ c + 1 }'
          |  $translate
          |  style='stroke:#000;opacity:$opacity;'
-         |><title>$stitch</title>
-         |</use>
+         |/>
          |${ textInput(hasHiddenInputField, r, c, config) }""".stripMargin
     }).mkString("\n")
     embed(clones)
