@@ -25,6 +25,11 @@ function paint(clicked) {
   d3.select("#diagrams .colorCode").style("display", "block")
   d3.select("#diagrams .colorCode").node().innerHTML = l
   d3.select("#threadDiagram").node().innerHTML = ""
+
+  var pairContainer = d3.select("#pairDiagram")
+  var pairContainerNode = pairContainer.node()
+  var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
+  pairContainer.html(DiagramSvg.render(pairDiagram, "1px", markers, 744, 1052))
 }
 function clearStitches() {
 
