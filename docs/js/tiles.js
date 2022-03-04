@@ -8,6 +8,11 @@ function setStitch(stitchValue) {
   d3.select('#paintStitches').node().value=stitchValue
   return false;
 }
+function flipStitch() {
+  var n = d3.select('#paintStitches').node()
+  n.value=n.value.toLowerCase().replace(/l/,"R").replace(/r/,"l").replace(/R/,"r")
+  return false;
+}
 function paint(clicked) {
   var id = clicked.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
   console.log(id + " -- " + d3.select('#'+id).attr("value"))
