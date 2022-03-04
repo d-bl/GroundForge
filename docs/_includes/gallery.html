@@ -3,8 +3,8 @@
     <img src="/GroundForge/{{ include.src }}" alt="{{ include.alt1 }} - {{ include.alt1 }}">
     <!-- make sure the captions have a fixed number of lines to avoid dancing images -->
     <figcaption>
-        <a href="javascript:setStitch('{{ include.alt1 }}')">{{ include.alt1 }}</a>
+        <a href="javascript:setStitch('{{ include.alt1 }}');return false">{{ include.alt1 }}</a>
         <br>
-        <a href="javascript:setStitch('{{ include.alt2 }}')">{{ include.alt2 }}</a>
+        <a href="javascript:setStitch('{{ include.alt2 }}');return false">{{ include.alt2 }}</a>
     </figcaption>
 </figure>
