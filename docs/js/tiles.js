@@ -4,6 +4,10 @@ function buildLegend(query) {
 
    return PairDiagram.legend(query.replace(/paintStitches=[a-zA-Z]*&/,"")).replace(/\n/g,"<br>")
 }
+function setStitch(stitchValue) {
+  d3.select('#paintStitches').node().value=stitchValue
+  return false;
+}
 function paint(clicked) {
   var id = clicked.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
   console.log(id + " -- " + d3.select('#'+id).attr("value"))
