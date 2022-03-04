@@ -2,6 +2,6 @@
     <!-- image paths are relative to docs -->
     <img src="/GroundForge/{{ include.src }}" alt="{{ include.alt1 }} - {{ include.alt1 }}">
     <!-- make sure the captions have a fixed number of lines to avoid dancing images -->
-    <figcaption><a href="javascript:d3.select('#paintStitches').node().value='{{ include.alt1 }}'">{{ include.alt1 }}</a>
-            <br><a href="javascript:d3.select('#paintStitches').node().value='{{ include.alt2 }}'">{{ include.alt2 }}</a></figcaption>
+    <figcaption><a href="javascript:d3.select('#paintStitches').node().value='{{ include.alt1 }}';return false;">{{ include.alt1 }}</a>
+            <br><a href="javascript:d3.select('#paintStitches').node().value='{{ include.alt2 }}';return false;">{{ include.alt2 }}</a></figcaption>
 </figure>
