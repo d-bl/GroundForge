@@ -1,10 +1,11 @@
 <figure>
     <!-- image paths are relative to docs -->
-    <img src="/GroundForge/{{ include.src }}" alt="{{ include.alt1 }} - {{ include.alt1 }}">
+    <img src="/GroundForge/{{ include.src }}" alt="{{ include.alt1 }} - {{ include.alt2 }}" title="{{ include.alt1 }}&#013{{ include.alt2 }}&#013{{ include.alt3 }}">
     <!-- make sure the captions have a fixed number of lines to avoid dancing images -->
     <figcaption>
         <a href="#" onclick="javascript:setStitch('{{ include.alt1 }}')">as-is</a>
         <br>
         <a href="#" onclick="javascript:setStitch('{{ include.alt2 }}')">flipped</a>
+        <br>{{ include.alt3 }}
     </figcaption>
 </figure>
