@@ -41,7 +41,8 @@ function showPrimaryPairDiagram(query) {
   var pairContainerNode = pairContainer.node()
   var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
   var markers = true
-  pairContainer.html(DiagramSvg.render(pairDiagram, "1px", markers, 744, 1052))
+  var svg = DiagramSvg.render(pairDiagram, "1px", markers, 744, 1052)
+  pairContainer.html(svg)
 }
 function toKeyValueString (formField) {
     var n = formField.name
