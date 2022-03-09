@@ -18,7 +18,7 @@
     <h1>GroundForge - Diagrams of bobbin lace patterns</h1>
 
     <ul>
-        <li>Catalogues: <a href="/MAE-gf/" target="_blank">MAE</a>, <a href="/tesselace-to-gf/" target="_blank">TesseLace</a>, <a href="/gw-lace-to-gf/" target="_blank">Whiting</a></li>
+        <li>Pattern catalogues: <a href="/MAE-gf/" target="_blank">MAE</a>, <a href="/tesselace-to-gf/" target="_blank">TesseLace</a>, <a href="/gw-lace-to-gf/" target="_blank">G. Whiting's sampler</a></li>
         <li>Tutorials: <a href="/GroundForge-help/index" target="_blank">Getting started</a>, <a href="/GroundForge-help/Icons" target="_blank">Icons</a>, <a href="/GroundForge-help/Advanced" target="_blank">Create a pattern</a>, <a href="index" target="_blank">More...</a></li>
     </ul>
     <div id="whiting"></div>
@@ -50,6 +50,25 @@
         </legend>
 
         <pre class="colorCode"></pre>
+        <div style="vertical-align: bottom">
+            Click a stitch to assign or
+            <button onclick="clearStitches();return false">assign to all</button>
+            <br>
+            <input type="text" id="paintStitches" name="paintStitches" value="ct">
+            <a href="#" onclick="flipStitch()">flip</a>
+            <a href="/GroundForge-help/Replace" target="_blank"><img src="images/information-icon.png" title="stitch definition: &#013&#013c(ross), t(wist), &#013l(eft twist), r(ight twist)&#013&#013click in pair diagram&#013to apply"></a>
+        </div>
+        examples:
+        {% include gallery.html alt1="ct" %}
+        {% include gallery.html alt1="ctct" %}
+        {% include gallery.html alt1="ctctc" %}
+        {% include gallery.html alt1="crclct" alt2="clcrct" %}
+        {% include gallery.html alt1="clcrclc" alt2="crclcrc" %}
+        {% include gallery.html alt1="ctclctc" alt2="ctcrctc" %}
+        {% include gallery.html alt1="ctclcrctc" alt2="ctcrclctc" %}
+        {% include gallery.html alt1="ctcttctc" %}
+        {% include gallery.html alt1="tctctllctctr" alt2="tctctrrctctl" alt3="winkie pin" %}
+        <br>
         <figure>
             <figcaption>
                 Pairs
@@ -84,7 +103,6 @@
             <figcaption>
                 Pattern
                 <a href="/GroundForge-help/Replace" target="_blank"><img src="images/information-icon.png" title="how to modify stitches"></a>
-                <img class="swatches" src="images/swatches.png" onclick='showColorCode("#editPatternFieldSet")'>
                 {% include download.html id="prototype" name="prototype" %}
             </figcaption>
             <div id="prototype">
@@ -112,10 +130,6 @@
                         <td><button onclick="flip();return false" title="flip left foot side into right foot side">flip</button></td>
                     </tr>
                     <tr>
-                        <td><input id="footsideStitch" name="footsideStitch" type="text" value="ctctt" onchange="showProto()"/></td>
-                        <td><input id="tileStitch" name="tileStitch" type="text" value="ctct" onchange="showProto()"/></td>
-                        <td><input id="headsideStitch" name="headsideStitch" type="text" value="ctctt" onchange="showProto()"/></td>
-                        <td><button onclick="clearStitches();return false" title="resets all stitches defined through the pattern diagram">initialize<br>stitches</button></td>
                     </tr>
                 </table>
                 <div>

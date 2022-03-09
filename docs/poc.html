@@ -374,46 +374,92 @@
                 <li>
                     Click a stitch to
                     <br>
-                    <input type="radio" name="stitch" id="set" value="set" checked>
-                    <label for="remove">assign:
-                        <select id="color" name="color" style="background-color: lime" title="color code" onchange="this.style.backgroundColor=`${ this.value }`">
-                            <option value="blue" style="background-color: blue">blue</option>
-                            <option value="DodgerBlue" style="background-color: DodgerBlue">DodgerBlue</option>
-                            <option value="LightSeaGreen" style="background-color: LightSeaGreen">LightSeaGreen</option>
-                            <option value="OliveDrab" style="background-color: OliveDrab">OliveDrab</option>
-                            <option value="green" style="background-color: green">green</option>
-                            <option value="lime" style="background-color: lime" selected>lime</option>
-                            <option value="Yellow" style="background-color: Yellow">Yellow</option>
-                            <option value="DarkOrange" style="background-color: DarkOrange">DarkOrange</option>
-                            <option value="Sienna" style="background-color: Sienna">Sienna</option>
-                            <option value="Purple" style="background-color: Purple">Purple</option>
-                            <option value="Violet" style="background-color: Violet">Violet</option>
-                            <option value="red" style="background-color: red">red</option>
-                            <option value="Black" style="background-color: Black">Black</option>
-                            <option value="Gray" style="background-color: Gray">Gray</option>
-                        </select>
-                        <select id="shape" name="shape">
-                            <option value="dot">● dot</option>
-                            <option value="square">◾ square</option>
-                            <option value="diamond">⬥ diamond</option>
-                            <option value="star">★ star</option>
-                            <option disabled>arrows</option>
-                            <option value="north">▲ north</option>
-                            <option value="south">▼ south</option>
-                            <option value="east">▶ east</option>
-                            <option value="west">◀ west</option>
-                            <option disabled>crescents</option>
-                            <option value="left">◐ left</option>
-                            <option value="right">◑ right</option>
-                            <option value="bottom">◒ bottom</option>
-                            <option value="top">◓ top</option>
-                            <option disabled>corners</option>
-                            <option value="se">◢ se</option>
-                            <option value="ne">◥ ne</option>
-                            <option value="sw">◣ sw</option>
-                            <option value="nw">◤ nw</option>
-                        </select>
-                        <input type="text" id="stitch" name="stitch" value="ct" list="stitches" title="stitch definition: &#013&#013c(ross), t(wist), &#013l(eft twist), r(ight twist), &#013p(in)">
+                    <div>assign:
+                        <div>
+                            <input type="radio" name="stitch" id="set1" value="set1" checked>
+                            <label for="set1">
+                                <select id="color1" name="color1" style="background-color: lime" title="color code" onchange="this.style.backgroundColor=`${ this.value }`">
+                                    <option value="blue" style="background-color: blue">blue</option>
+                                    <option value="DodgerBlue" style="background-color: DodgerBlue">DodgerBlue</option>
+                                    <option value="LightSeaGreen" style="background-color: LightSeaGreen">LightSeaGreen</option>
+                                    <option value="OliveDrab" style="background-color: OliveDrab">OliveDrab</option>
+                                    <option value="green" style="background-color: green">green</option>
+                                    <option value="lime" style="background-color: lime" selected>lime</option>
+                                    <option value="Yellow" style="background-color: Yellow">Yellow</option>
+                                    <option value="DarkOrange" style="background-color: DarkOrange">DarkOrange</option>
+                                    <option value="Sienna" style="background-color: Sienna">Sienna</option>
+                                    <option value="Purple" style="background-color: Purple">Purple</option>
+                                    <option value="Violet" style="background-color: Violet">Violet</option>
+                                    <option value="red" style="background-color: red">red</option>
+                                    <option value="Black" style="background-color: Black">Black</option>
+                                    <option value="Gray" style="background-color: Gray">Gray</option>
+                                </select>
+                                <select id="shape1" name="shape1">
+                                    <option value="dot">● dot</option>
+                                    <option value="square">◾ square</option>
+                                    <option value="diamond">⬥ diamond</option>
+                                    <option value="star">★ star</option>
+                                    <option disabled>arrows</option>
+                                    <option value="north">▲ north</option>
+                                    <option value="south">▼ south</option>
+                                    <option value="east">▶ east</option>
+                                    <option value="west">◀ west</option>
+                                    <option disabled>crescents</option>
+                                    <option value="left">◐ left</option>
+                                    <option value="right">◑ right</option>
+                                    <option value="bottom">◒ bottom</option>
+                                    <option value="top">◓ top</option>
+                                    <option disabled>corners</option>
+                                    <option value="se">◢ se</option>
+                                    <option value="ne">◥ ne</option>
+                                    <option value="sw">◣ sw</option>
+                                    <option value="nw">◤ nw</option>
+                                </select>
+                                <input type="text" id="stitch1" name="stitch1" value="ct" list="stitches" title="stitch definition: &#013&#013c(ross), t(wist), &#013l(eft twist), r(ight twist), &#013p(in)">
+                            </label>
+                            <br>
+                            <input type="radio" name="stitch" id="set2" value="set2">
+                            <label for="set2">
+                                <select id="color2" name="color2" style="background-color: red" title="color code" onchange="this.style.backgroundColor=`${ this.value }`">
+                                    <option value="blue" style="background-color: blue">blue</option>
+                                    <option value="DodgerBlue" style="background-color: DodgerBlue">DodgerBlue</option>
+                                    <option value="LightSeaGreen" style="background-color: LightSeaGreen">LightSeaGreen</option>
+                                    <option value="OliveDrab" style="background-color: OliveDrab">OliveDrab</option>
+                                    <option value="green" style="background-color: green">green</option>
+                                    <option value="lime" style="background-color: lime">lime</option>
+                                    <option value="Yellow" style="background-color: Yellow">Yellow</option>
+                                    <option value="DarkOrange" style="background-color: DarkOrange">DarkOrange</option>
+                                    <option value="Sienna" style="background-color: Sienna">Sienna</option>
+                                    <option value="Purple" style="background-color: Purple">Purple</option>
+                                    <option value="Violet" style="background-color: Violet">Violet</option>
+                                    <option value="red" style="background-color: red" selected>red</option>
+                                    <option value="Black" style="background-color: Black">Black</option>
+                                    <option value="Gray" style="background-color: Gray">Gray</option>
+                                </select>
+                                <select id="shape2" name="shape2">
+                                    <option value="dot">● dot</option>
+                                    <option value="square">◾ square</option>
+                                    <option value="diamond">⬥ diamond</option>
+                                    <option value="star">★ star</option>
+                                    <option disabled>arrows</option>
+                                    <option value="north">▲ north</option>
+                                    <option value="south">▼ south</option>
+                                    <option value="east">▶ east</option>
+                                    <option value="west">◀ west</option>
+                                    <option disabled>crescents</option>
+                                    <option value="left">◐ left</option>
+                                    <option value="right">◑ right</option>
+                                    <option value="bottom">◒ bottom</option>
+                                    <option value="top">◓ top</option>
+                                    <option disabled>corners</option>
+                                    <option value="se">◢ se</option>
+                                    <option value="ne">◥ ne</option>
+                                    <option value="sw">◣ sw</option>
+                                    <option value="nw">◤ nw</option>
+                                </select>
+                                <input type="text" id="stitch2" name="stitch2" value="ctct" list="stitches" title="stitch definition: &#013&#013c(ross), t(wist), &#013l(eft twist), r(ight twist), &#013p(in)">
+                            </label>
+                        </div>
                         <datalist id="stitches">
                             <option value="ct">
                             <option value="tc">
@@ -422,7 +468,7 @@
                             <option value="ctct">
                             <option value="ctctc" style="background-image:url(https://jo-pol.github.io/GroundForge-help/stitches/ctctc.png)">
                         </datalist>
-                    </label>
+                    </div>
                     <br>
                     <input type="radio" name="stitch" id="remove" value="remove" title="">
                     <label for="remove">remove (try a1, a3, d3 or d4 of this

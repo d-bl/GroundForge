@@ -38,29 +38,16 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         case (_, true) => "1"
         case _ => "0.3"
       }
-      val ringColor = (item.stitch, item.color) match {
-        case ("-", _) => "#CCC"
-        case (_, Some(color)) => color
-        case _ => "#000"
-      }
-      val isActiveNode = item.isOpaque && !"-VWXYZ".contains(vectorCode)
+      val hasHiddenInputField = item.isOpaque && !"-VWXYZ".contains(vectorCode)
       s"""${ warning(vectorCode, translate, nrOfPairsOut, item.noStitch) }
-         |<use ${ events(isActiveNode, item.id) }
+         |<use
          |  xlink:href='#vc$vectorCode'
-         |  id='svg-r${ r + 1 }-c${ c + 1 }'
          |  $translate
-         |  style='stroke:$ringColor;opacity:$opacity;'
-         |><title>$stitch</title>
-         |</use>
-         |${ textInput(isActiveNode, r, c, config) }""".stripMargin
+         |  style='stroke:#000;opacity:$opacity;'
+         |/>
+         |${ textInput(hasHiddenInputField, r, c, config) }""".stripMargin
     }).mkString("\n")
     embed(clones)
-  }
-
-  private def events(isActive: Boolean, id: String) = {
-    if (isActive)
-      s"data-formid='$id' onclick='setStitch(this)'"
-    else ""
   }
 
   private def textInput(isActive: Boolean, r: Int, c: Int, config: TilesConfig) = {

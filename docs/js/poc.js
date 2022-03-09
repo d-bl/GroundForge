@@ -1,4 +1,5 @@
 function clickedDot(linkElement, event) {
+    console.log(" -- ")
     var link = document.getElementById("customlink")
     var shape = linkElement.getElementsByTagName("title")[0].parentElement
     var shapeId = shape.attributes["id"].value
@@ -12,14 +13,16 @@ function clickedDot(linkElement, event) {
         link.href = "?topo=" + newlinks
         showDiagram(newlinks)
     } else {
-        var color = document.getElementById("color").value
-        var stitch = document.getElementById("stitch").value
+        var n = action.substring(3)
+        console.log(action+" -- "+n)
+        var color = document.getElementById("color"+n).value
+        var stitch = document.getElementById("stitch"+n).value
         var cx = shape.getAttribute("cx") * 1
         var cy = shape.getAttribute("cy") * 1
         var t = `<title>${shapeId} ${stitch}</title>`
         // except for dots cx/cy are redundant for SVG but allow second thoughts
         var s = `cx="${cx}" cy="${cy}" style="fill:${color};opacity:0.65" id="${shapeId}" `
-        switch(document.getElementById("shape").value) {
+        switch(document.getElementById("shape"+n).value) {
           case "square":
             shape.outerHTML = `<rect x="${cx - 8}" y="${cy - 8}" width="16" height="16" ${s}>${t}</rect>`
             break;
