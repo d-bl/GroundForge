@@ -59,10 +59,10 @@ function generate (b, set, colors) {
 
   if (!set) {
     d3.select('#colors').node().checked = colors
-    showGraph ("diamond", `tileStitch=${b}&${diamond}`)
-    showGraph ("Paris / kat", `tileStitch=${b}&${kat}`)
-    showGraph ("weaving kat", `tileStitch=${b}&${weavingKat}`)
-    showGraph ("bb ->\nbb <-", `tileStitch=${b}&${hor2x2}`)
+    showGraph ("diamond", `a1=${b}&n2=${b}&d2=${b}&b2=${b}&c3=${b}&&${diamond}`)
+    showGraph ("Paris / kat", `d1=${b}&b1=${b}&e2=${b}&a2=${b}&d3=${b}&b3=${b}&s4=${b}&c4=${b}&d5=${b}&b5=${b}&e6=${b}&d7=${b}&b7=${b}&c8=${b}&${kat}`)
+    showGraph ("weaving kat", `h1=${b}&d1=${b}&a1=${b}&s2=${b}&r2=${b}&i2=${b}&g2=${b}&e2=${b}&c2=${b}&b2=${b}&a2=${b}&s3=${b}&r3=${b}&j3=${b}&f3=${b}&b3=${b}&s4=${b}&r4=${b}&i4=${b}&g4=${b}&e4=${b}&c4=${b}&b4=${b}&a4=${b}&${weavingKat}`)
+    showGraph ("bb ->\nbb <-", `b1=${b}&c1=${b}&b2=${b}&c2=${b}&&${hor2x2}`)
   }
   if (set == "2") {
     if (b != d) {
