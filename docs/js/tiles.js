@@ -85,7 +85,9 @@ function showProto() {
 
   var config = TilesConfig(submitQuery())
   d3.select("#prototype").html(PrototypeDiagram.create(config))
+
   // new form fields may have been added what changes the query
+  var query = submitQuery()
 
   clear2()
   var hrefQ = tesselace(query) + query
