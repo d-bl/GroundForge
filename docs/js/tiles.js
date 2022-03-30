@@ -28,12 +28,12 @@ function paint(clicked) {
 
   var id = clicked.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
   d3.select('#'+id).attr("value", painStitchValue())
-  showPrimaryPairDiagram(submitQuery())
+  showProto()
 }
 function clearStitches() {
 
   d3.selectAll("svg input").attr("value",painStitchValue())
-  showPrimaryPairDiagram(submitQuery())
+  showProto()
 }
 function showPrimaryPairDiagram(query) {
 
