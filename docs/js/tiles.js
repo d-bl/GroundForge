@@ -1,10 +1,17 @@
 var valueFilter = /[^a-zA-Z0-9,-=]/g
 var isMobile = /iPad|iPhone|iPod|Mobi/.test(navigator.userAgent)
+function resetStitch(sourceNode) {
+  // called by events on pattern diagram
+  var id = sourceNode.dataset.formid
+  var el = document.getElementById(id)
+  el.focus()
+}
 function buildLegend(query) {
 
    return PairDiagram.legend(query.replace(/paintStitches=[a-zA-Z]*&/,"")).replace(/\n/g,"<br>")
 }
 function setStitch(stitchValue) {
+  // called by events on pair diagram
   d3.select('#paintStitches').node().value=stitchValue
   return false;
 }
@@ -21,28 +28,12 @@ function paint(clicked) {
 
   var id = clicked.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
   d3.select('#'+id).attr("value", painStitchValue())
-  showPrimaryPairDiagram(submitQuery())
+  showProto()
 }
 function clearStitches() {
 
   d3.selectAll("svg input").attr("value",painStitchValue())
-  showPrimaryPairDiagram(submitQuery())
-}
-function showPrimaryPairDiagram(query) {
-
-  clear2()
-  var hrefQ = tesselace(query) + query
-  d3.select("#link").node().href = "?" + hrefQ
-  d3.select("#poc").node().href = "poc.html?" + pocRef(query)
-  d3.select("#diagrams .colorCode").html(buildLegend(query))
-  d3.select("#threadDiagram").html("")
-
-  var pairContainer = d3.select("#pairDiagram")
-  var pairContainerNode = pairContainer.node()
-  var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
-  var markers = true
-  var svg = DiagramSvg.render(pairDiagram, "1px", markers, 744, 1052)
-  pairContainer.html(svg)
+  showProto()
 }
 function toKeyValueString (formField) {
     var n = formField.name
@@ -94,9 +85,24 @@ function showProto() {
 
   var config = TilesConfig(submitQuery())
   d3.select("#prototype").html(PrototypeDiagram.create(config))
-  // new form fields may have been added what changes the query
 
-  showPrimaryPairDiagram(submitQuery())
+  // new form fields may have been added what changes the query
+  var query = submitQuery()
+
+  clear2()
+  var hrefQ = tesselace(query) + query
+  d3.select("#link").node().href = "?" + hrefQ
+  d3.select("#poc").node().href = "poc.html?" + pocRef(query)
+  d3.select("#diagrams .colorCode").html(buildLegend(query))
+  d3.select("#threadDiagram").html("")
+
+  var pairContainer = d3.select("#pairDiagram")
+  var pairContainerNode = pairContainer.node()
+  var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
+  var markers = true
+  var svg = DiagramSvg.render(pairDiagram, "1px", markers, 744, 1052)
+  pairContainer.html(svg)
+
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
