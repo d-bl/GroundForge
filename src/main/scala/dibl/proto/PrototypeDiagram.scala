@@ -40,7 +40,6 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       }
       val ringColor = (item.stitch, item.color) match {
         case ("-", _) => "#CCC"
-        case (_, Some(color)) => color
         case _ => "#000"
       }
       val isActiveNode = item.isOpaque && !"-VWXYZ".contains(vectorCode)
