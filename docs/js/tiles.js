@@ -1,7 +1,7 @@
 var valueFilter = /[^a-zA-Z0-9,-=]/g
 var isMobile = /iPad|iPhone|iPod|Mobi/.test(navigator.userAgent)
-function setStitch(sourceNode) {
-
+function resetStitch(sourceNode) {
+  // called by events on pattern diagram
   var id = sourceNode.dataset.formid
   var el = document.getElementById(id)
   el.focus()
@@ -11,6 +11,7 @@ function buildLegend(query) {
    return PairDiagram.legend(query.replace(/paintStitches=[a-zA-Z]*&/,"")).replace(/\n/g,"<br>")
 }
 function setStitch(stitchValue) {
+  // called by events on pair diagram
   d3.select('#paintStitches').node().value=stitchValue
   return false;
 }
