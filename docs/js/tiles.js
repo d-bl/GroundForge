@@ -35,22 +35,6 @@ function clearStitches() {
   d3.selectAll("svg input").attr("value",painStitchValue())
   showProto()
 }
-function showPrimaryPairDiagram(query) {
-
-  clear2()
-  var hrefQ = tesselace(query) + query
-  d3.select("#link").node().href = "?" + hrefQ
-  d3.select("#poc").node().href = "poc.html?" + pocRef(query)
-  d3.select("#diagrams .colorCode").html(buildLegend(query))
-  d3.select("#threadDiagram").html("")
-
-  var pairContainer = d3.select("#pairDiagram")
-  var pairContainerNode = pairContainer.node()
-  var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
-  var markers = true
-  var svg = DiagramSvg.render(pairDiagram, "1px", markers, 744, 1052)
-  pairContainer.html(svg)
-}
 function toKeyValueString (formField) {
     var n = formField.name
     var v = formField.value
@@ -103,7 +87,20 @@ function showProto() {
   d3.select("#prototype").html(PrototypeDiagram.create(config))
   // new form fields may have been added what changes the query
 
-  showPrimaryPairDiagram(submitQuery())
+  clear2()
+  var hrefQ = tesselace(query) + query
+  d3.select("#link").node().href = "?" + hrefQ
+  d3.select("#poc").node().href = "poc.html?" + pocRef(query)
+  d3.select("#diagrams .colorCode").html(buildLegend(query))
+  d3.select("#threadDiagram").html("")
+
+  var pairContainer = d3.select("#pairDiagram")
+  var pairContainerNode = pairContainer.node()
+  var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
+  var markers = true
+  var svg = DiagramSvg.render(pairDiagram, "1px", markers, 744, 1052)
+  pairContainer.html(svg)
+
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
