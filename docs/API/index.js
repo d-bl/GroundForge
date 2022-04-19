@@ -27,6 +27,7 @@ function load() {
   // and the address created by the link button
   // note that the bold elements in the prototype diagrams are (hidden) form fields
   var q = "patchWidth=8&patchHeight=14"
+                      + "&b1=ct&c1=ctl&d1=ctr&b2=ctt&d2=cttl&c3=ctr"
                       + "&footside=b,-,a,-&footsideStitch=-"
                       + "&tile=831,4-7,-5-&tileStitch=ctct"
                       + "&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
@@ -34,28 +35,28 @@ function load() {
   d3.select('#proto').html(PrototypeDiagram.create(config))
 
   var pairDiagram = NewPairDiagram.create(config)
-  showGraph(d3.select('#pairs'), pairDiagram, "1px", 200,300, 1, config)
+  d3.select('#pairs').html(PairSvg.render(config, 200,300))
 
   var threadDiagram = ThreadDiagram.create(pairDiagram)
-  showGraph(d3.select('#threads'), threadDiagram, "2px",520,800, 2, config)
+  showGraph(d3.select('#threads'), threadDiagram, "2px",520,800, 2, config, 0.1)
 
   // for "ctct" alternatives see:
   // https://d-bl.github.io/GroundForge-help/Replace
-  var drostePairs = PairDiagram.create("ctct", threadDiagram)
-  showGraph(d3.select('#drostePairs'), drostePairs, "1px",460,850, 2, config)
+  var drostePairs = PairDiagram.create("twist=ct\nb24=c34=c35=d25=ctct", threadDiagram)
+  showGraph(d3.select('#drostePairs'), drostePairs, "2px",460,850, 2, config, 0.1)
 
   var drosteThreads = ThreadDiagram.create(drostePairs)
-  showGraph(d3.select('#drosteThreads'), drosteThreads, "2px",1600,2200, 4, config)
+  showGraph(d3.select('#drosteThreads'), drosteThreads, "2px",1600,2200, 4, config, 0.1)
 
   var threadSegments = d3.selectAll("#threads .thread8")
   threadSegments.style("stroke", "#F00")
   threadSegments.filter(".node").style("fill", "#F00")
 }
-function showGraph(container, diagram, stroke, width, height, scale, config) {
+function showGraph(container, diagram, stroke, width, height, scale, config, transparency) {
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()//can't inline
   var markers = true // use false for slow devices and IE-11, set them at onEnd
-  container.html(DiagramSvg.render(diagram, stroke, markers, width, height))
+  container.html(DiagramSvg.render(diagram, stroke, markers, width, height, transparency))
 
   // nudge nodes with force graph of the  D3js library
 

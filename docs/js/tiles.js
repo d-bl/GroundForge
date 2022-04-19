@@ -100,7 +100,7 @@ function showProto() {
   var pairContainerNode = pairContainer.node()
   var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
   var markers = true
-  var svg = DiagramSvg.render(pairDiagram, "1px", markers, 744, 1052)
+  var svg = PairSvg.render(config, 200,300)
   pairContainer.html(svg)
 
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
