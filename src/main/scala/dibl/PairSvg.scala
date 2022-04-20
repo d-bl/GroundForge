@@ -85,74 +85,70 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   private def renderLinks(items: Seq[Seq[Item]]): String = {
     val nrOfRows = items.size
     val nrOfCols = items.head.size
-    items.indices.map { targetRow =>
-      items(targetRow).indices.map { targetCol =>
-        val targetItem = items(targetRow)(targetCol)
-        if (targetItem.noStitch) ""
-        else {
-          if (targetItem.relativeSources.isEmpty) ""
-          else targetItem.relativeSources.zipWithIndex.map { case ((relSrcRow, relSrcCol), i) =>
-            val absSrcRow = relSrcRow + targetRow
-            val absSrcCol = relSrcCol + targetCol
-            val srcTwists = if (absSrcRow < 0 || absSrcRow >= nrOfRows || absSrcCol < 0 || absSrcCol >= nrOfCols) ""
-                            else items(absSrcRow)(absSrcCol).stitch.replaceAll(".*c", "")
-            val targetTwists = targetItem.stitch.replaceAll("c.*", "")
-            val twists = if (i == 0) (srcTwists.replaceAll("[^tr]", "") + targetTwists.replaceAll("[^tl]", ""))
-                         else (srcTwists.replaceAll("[^tl]", "") + targetTwists.replaceAll("[^tr]", ""))
-            println(s"${ targetItem.id } $i [$absSrcCol,$absSrcRow] [$targetCol,$targetRow] ($srcTwists,$targetTwists) $twists")
-            pathDescription(scale(absSrcCol), scale(absSrcRow), scale(targetCol), scale(targetRow), opacity = 1, twists.length)
-          }.mkString("")
-        }
-      }.mkString
+    for {
+      targetRow <- items.indices
+      targetCol <- items(targetRow).indices
+      targetItem = items(targetRow)(targetCol)
+      if !targetItem.noStitch && targetItem.relativeSources.nonEmpty
+      ((relSrcRow, relSrcCol), i) <- targetItem.relativeSources.zipWithIndex // i: left/right incoming pair
+    } yield {
+      val absSrcRow = relSrcRow + targetRow
+      val absSrcCol = relSrcCol + targetCol
+      val leadingTwistsOfTarget = targetItem.stitch.replaceAll("c.*", "")
+      val trailingTwistsOfSrc = if (absSrcRow < 0 || absSrcRow >= nrOfRows || absSrcCol < 0 || absSrcCol >= nrOfCols) ""
+                                else items(absSrcRow)(absSrcCol).stitch.replaceAll(".*c", "")
+      val twists = if (i == 0) (trailingTwistsOfSrc.replaceAll("[^tr]", "") + leadingTwistsOfTarget.replaceAll("[^tl]", ""))
+                   else (trailingTwistsOfSrc.replaceAll("[^tl]", "") + leadingTwistsOfTarget.replaceAll("[^tr]", ""))
+      println(s"${ targetItem.id } $i [x,y] [$absSrcCol,$absSrcRow] [$targetCol,$targetRow] ($trailingTwistsOfSrc,$leadingTwistsOfTarget) $twists")
+      pathDescription(scale(absSrcCol), scale(absSrcRow), scale(targetCol), scale(targetRow), opacity = 1, twists.length)
     }.mkString
-  }
+  }.mkString
 
   @JSExport
   def pathDescription(sX: Double, sY: Double, tX: Double, tY: Double, opacity: Double, twists: Int): String = {
     val t = if (twists <= 1) ""
             else if (twists == 2) """; marker-mid: url("#twist-1")"""
-            else """; marker-mid: url("#twist-2")"""
+                 else """; marker-mid: url("#twist-2")"""
     val d = if (twists > 1) s"M $sX,$sY ${ sX + (tX - sX) / 2 } ${ sY + (tY - sY) / 2 } $tX,$tY"
             else s"M $sX,$sY $tX,$tY"
     s"<path class='link' d='$d' style='stroke: #000; stroke-width: 2px; fill: none; opacity: $opacity$t'></path>"
   }
 
   private def renderNodes(items: Seq[Seq[Item]]): String = {
-    items.indices.map { row =>
-      items(row).indices.map { col =>
-        val targetItem = items(row)(col)
-        if (targetItem.noStitch) ""
-        else {
-          val (color, shape) = if (targetItem.noStitch) ("#000", circle(10))
-                               else targetItem.stitch match {
-                                 case "ct" | "ctt" | "ctl" |
-                                      "ctr" => ("green", square(7))
-                                 case "ctll" => ("green", squareSW(7))
-                                 case "ctrr" => ("green", squareSE(7))
-                                 case "cttt" => ("green", diamond(10.3))
-                                 case "ctc" => ("purple", square(7))
-                                 case "ctct" | "ctctt" | "ctctl" |
-                                      "ctctr" => ("red", square(7))
-                                 case "ctctll" => ("red", squareSW(7))
-                                 case "ctctrr" => ("red", squareSE(7))
-                                 case "ctcttt" => ("red", diamond(10.3))
-                                 case _ => (defaultColorName(targetItem.stitch), circle(8))
-                               }
-          val opacity = if (targetItem.noStitch) 0
-                        else 0.5
-          val event = if (targetItem.noStitch) ""
-                      else "onclick='paint(this)'"
-          s"""<path $event
-             | class="node"
-             | d="$shape"
-             | style="fill: $color; stroke: none; opacity: $opacity"
-             | transform="translate(${ scale(col) },${ scale(row) })"
-             |><title>${ targetItem.stitch } - ${ targetItem.id }</title></path>"""
-            .stripMargin.stripLineEnd.replaceAll("[\r\n]", "")
-        }
-      }.mkString
+    for {
+      row <- items.indices
+      col <- items(row).indices
+      targetItem = items(row)(col)
+      if !targetItem.noStitch
+    } yield {
+      val (color, shape) = if (targetItem.noStitch) ("#000", circle(10))
+                           else targetItem.stitch match {
+                             case "ct" | "ctt" | "ctl" |
+                                  "ctr" => ("green", square(7))
+                             case "ctll" => ("green", squareSW(7))
+                             case "ctrr" => ("green", squareSE(7))
+                             case "cttt" => ("green", diamond(10.3))
+                             case "ctc" => ("purple", square(7))
+                             case "ctct" | "ctctt" | "ctctl" |
+                                  "ctctr" => ("red", square(7))
+                             case "ctctll" => ("red", squareSW(7))
+                             case "ctctrr" => ("red", squareSE(7))
+                             case "ctcttt" => ("red", diamond(10.3))
+                             case _ => (defaultColorName(targetItem.stitch), circle(8))
+                           }
+      val opacity = if (targetItem.noStitch) 0
+                    else 0.5
+      val event = if (targetItem.noStitch) ""
+                  else "onclick='paint(this)'"
+      s"""<path $event
+         | class="node"
+         | d="$shape"
+         | style="fill: $color; stroke: none; opacity: $opacity"
+         | transform="translate(${ scale(col) },${ scale(row) })"
+         |><title>${ targetItem.stitch } - ${ targetItem.id }</title></path>"""
+        .stripMargin.stripLineEnd.replaceAll("[\r\n]", "")
     }.mkString
-  }
+  }.mkString
 
   private def scale(c: Int) = {
     (c + 2) * 15
