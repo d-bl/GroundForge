@@ -100,7 +100,7 @@ function showProto() {
   var pairContainerNode = pairContainer.node()
   var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
   var markers = true
-  var svg = PairSvg.render(config, 200,300)
+  var svg = PairSvg.render(config, 744, 1052)
   pairContainer.html(svg)
 
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
@@ -153,7 +153,7 @@ function showDiagrams(config) {
   if (!config)
       config = TilesConfig(submitQuery())
   var pairDiagram = pairContainerNode.data = NewPairDiagram.create(config)
-  pairContainer.html(DiagramSvg.render(pairDiagram, "1px", markers, 744, 1052))
+  pairContainer.html(PairSvg.render(config, 744, 1052))
   scrollToIfPossible(pairContainerNode,0,0)
   if (pairDiagram.jsNodes().length == 1) return
 
