@@ -124,17 +124,17 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       val (color, shape) = if (targetItem.noStitch) ("#000", circle(10))
                            else targetItem.stitch match {
                              case "ct" | "ctt" | "ctl" |
-                                  "ctr" => ("green", square(7))
-                             case "ctll" => ("green", squareSW(7))
-                             case "ctrr" => ("green", squareSE(7))
-                             case "cttt" => ("green", diamond(10.3))
-                             case "ctc" => ("purple", square(7))
+                                  "ctr" => ("green", square(4.5))
+                             case "ctll" => ("green", squareSW(4.5))
+                             case "ctrr" => ("green", squareSE(4.5))
+                             case "cttt" => ("green", diamond(7.6))
+                             case "ctc" => ("purple", square(4.5))
                              case "ctct" | "ctctt" | "ctctl" |
-                                  "ctctr" => ("red", square(7))
-                             case "ctctll" => ("red", squareSW(7))
-                             case "ctctrr" => ("red", squareSE(7))
-                             case "ctcttt" => ("red", diamond(10.3))
-                             case _ => (defaultColorName(targetItem.stitch), circle(8))
+                                  "ctctr" => ("red", square(4.5))
+                             case "ctctll" => ("red", squareSW(4.5))
+                             case "ctctrr" => ("red", squareSE(4.5))
+                             case "ctcttt" => ("red", diamond(7.6))
+                             case _ => (defaultColorName(targetItem.stitch), circle(5))
                            }
       val opacity = if (targetItem.noStitch) 0
                     else 0.5

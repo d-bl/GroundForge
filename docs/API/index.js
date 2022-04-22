@@ -35,7 +35,10 @@ function load() {
   d3.select('#proto').html(PrototypeDiagram.create(config))
 
   var pairDiagram = NewPairDiagram.create(config)
-  d3.select('#pairs').html(PairSvg.render(config, 200,300))
+  var primaryPairSvg = PairSvg.render(config, 200,300)
+  d3.select('#pairsStatic').html(primaryPairSvg)
+  d3.select('#pairs').html(primaryPairSvg)
+  nudge(d3.select('#pairs'), pairDiagram, 200, 300)
 
   var threadDiagram = ThreadDiagram.create(pairDiagram)
   showGraph(d3.select('#threads'), threadDiagram, "2px",520,800, 2, config, 0.1)
@@ -53,13 +56,13 @@ function load() {
   threadSegments.filter(".node").style("fill", "#F00")
 }
 function showGraph(container, diagram, stroke, width, height, scale, config, transparency) {
-  var nodeDefs = diagram.jsNodes()
-  var linkDefs = diagram.jsLinks()//can't inline
   var markers = true // use false for slow devices and IE-11, set them at onEnd
   container.html(DiagramSvg.render(diagram, stroke, markers, width, height, transparency))
-
-  // nudge nodes with force graph of the  D3js library
-
+  nudge(container, diagram, width, height)
+}
+function nudge(container, diagram, width, height) {
+  var nodeDefs = diagram.jsNodes()
+  var linkDefs = diagram.jsLinks()//can't inline
   var links = container.selectAll(".link").data(linkDefs)
   var nodes = container.selectAll(".node").data(nodeDefs)
   function moveNode(jsNode) {
