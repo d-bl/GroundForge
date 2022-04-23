@@ -85,22 +85,40 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   private def renderLinks(items: Seq[Seq[Item]]): String = {
     val nrOfRows = items.size
     val nrOfCols = items.head.size
-    for {
+    val links = for {
       targetRow <- items.indices
       targetCol <- items(targetRow).indices
       targetItem = items(targetRow)(targetCol)
       if !targetItem.noStitch && targetItem.relativeSources.nonEmpty
       ((relSrcRow, relSrcCol), i) <- targetItem.relativeSources.zipWithIndex // i: left/right incoming pair
-    } yield {
-      val absSrcRow = relSrcRow + targetRow
-      val absSrcCol = relSrcCol + targetCol
-      val leadingTwistsOfTarget = targetItem.stitch.replaceAll("c.*", "")
-      val trailingTwistsOfSrc = if (absSrcRow < 0 || absSrcRow >= nrOfRows || absSrcCol < 0 || absSrcCol >= nrOfCols) ""
-                                else items(absSrcRow)(absSrcCol).stitch.replaceAll(".*c", "")
+      sourceRow = relSrcRow + targetRow
+      sourceCol = relSrcCol + targetCol
+      if sourceRow >= 0 && sourceRow < nrOfRows && sourceCol > 0 && sourceCol < nrOfCols
+    } yield (targetRow, targetCol, i, sourceRow, sourceCol)
+
+    val targetsPerSource = links
+      .groupBy { case (_, _, _, sourceRow, sourceCol) => (sourceRow, sourceCol) }
+      .mapValues(_
+        .map { case (targetRow, targetCol, _, _, _) => (targetRow, targetCol) }
+        .sortBy { case (targetRow, targetCol) =>
+          targetCol * 1000 + targetRow // TODO is this left to right?
+        })
+
+    links.map { case (targetRow, targetCol, i, sourceRow, sourceCol) =>
+      val targetItem = items(targetRow)(targetCol)
+      val leadingTwistsOfTarget = targetItem.stitch
+        .replaceAll("c.*", "")
+        .replaceAll(if (i == 0) "[^tl]"
+                    else "[^tr]", "")
+      val targetsOfSource = targetsPerSource(sourceRow, sourceCol)// TODO find wich of the two matches the targetItem
+      val trailingTwistsOfSrc = items(sourceRow)(sourceCol).stitch
+        .replaceAll(".*c", "")
+        .replaceAll(if (i == 0) "[^tr]" // TODO false assumption
+                    else "[^tl]", "")
       val twists = if (i == 0) (trailingTwistsOfSrc.replaceAll("[^tr]", "") + leadingTwistsOfTarget.replaceAll("[^tl]", ""))
                    else (trailingTwistsOfSrc.replaceAll("[^tl]", "") + leadingTwistsOfTarget.replaceAll("[^tr]", ""))
-      println(s"${ targetItem.id } $i [x,y] [$absSrcCol,$absSrcRow] [$targetCol,$targetRow] ($trailingTwistsOfSrc,$leadingTwistsOfTarget) $twists")
-      pathDescription(scale(absSrcCol), scale(absSrcRow), scale(targetCol), scale(targetRow), opacity = 1, twists.length)
+      println(s"${ targetItem.id } $i [x,y] [$sourceCol,$sourceCol] [$targetCol,$targetRow] ($trailingTwistsOfSrc,$leadingTwistsOfTarget) $twists")
+      pathDescription(scale(sourceCol), scale(sourceRow), scale(targetCol), scale(targetRow), opacity = 1, twists.length)
     }.mkString
   }.mkString
 
