@@ -23,17 +23,17 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 @JSExportTopLevel("PairSvg") object PairSvg {
 
-  private def circle(r: Double): String = s"M $r,0 A $r,$r 0 0 1 0,$r $r,$r 0 0 1 -$r,0 $r,$r 0 0 1 0,-$r $r,$r 0 0 1 $r,0 Z"
+  private def circle(r: Double = 5): String = s"M $r,0 A $r,$r 0 0 1 0,$r $r,$r 0 0 1 -$r,0 $r,$r 0 0 1 0,-$r $r,$r 0 0 1 $r,0 Z"
 
-  private def square(d: Double) = s"M -$d,-$d $d,-$d $d,$d -$d,$d Z"
+  private def square(d: Double = 4.5) = s"M -$d,-$d $d,-$d $d,$d -$d,$d Z"
 
-  private def squareSE(d: Double) = s"M $d,-$d $d,$d -$d,$d Z"
+  private def squareSE(d: Double = 4.5) = s"M $d,-$d $d,$d -$d,$d Z"
 
-  private def squareSW(d: Double) = s"M -$d,-$d $d,$d -$d,$d Z"
+  private def squareSW(d: Double = 4.5) = s"M -$d,-$d $d,$d -$d,$d Z"
 
-  private def squareNW(d: Double) = s"M -$d,-$d $d,-$d -$d,$d Z"
+  private def squareNW(d: Double = 4.5) = s"M -$d,-$d $d,-$d -$d,$d Z"
 
-  private def squareNE(d: Double) = s"M -$d,-$d $d,-$d Z"
+  private def squareNE(d: Double = 4.5) = s"M -$d,-$d $d,-$d Z"
 
   private def diamond(d: Double) = s"M -$d,0 0,$d $d,0 0,-$d Z"
 
@@ -61,11 +61,33 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
        |  stroke-width="1px"></path>
        |</marker>""".stripMargin.stripLineEnd.replaceAll("[\r\n]", "")
 
-  implicit class TwistString(val s: String) extends AnyVal {
+  private val grey = "#CCCCCC"
+  private val aqua = "#66CDAA"
+  private val violet = "#9400D3"
+  private val red = "#FF0000"
+  private val green = "#008800"
+  private val blue = "#0000FF"
+
+  implicit class TwistString(val stitch: String) extends AnyVal {
+
+    def shapeDef(): Seq[String] = stitch match {
+      case "c" => Seq(grey)
+      case "cr" => Seq(grey, "/", green)
+      case "cl" => Seq(grey, "\\", green)
+      case _ if stitch.matches("ct[tlr]*") => Seq(green)
+      case "ctc" => Seq(violet)
+      case "ctcr" => Seq(violet, "/", red)
+      case "ctcl" => Seq(violet, "\\", red)
+      case _ if stitch.matches("ctct[tlr]*") => Seq(red)
+      case _ if stitch.matches("ctc(tc)+[tlr]*") => Seq(blue)
+      case _ if stitch.matches("cttc[tlr]*") => Seq(aqua)
+      case _ => Seq()
+    }
+
     def twistsOfPair(pairNr: Int): String = {
       val search = if (pairNr == 0) "[^tl]"
                    else "[^tr]"
-      s.replaceAll(search, "")
+      stitch.replaceAll(search, "")
     }
   }
 
@@ -87,9 +109,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     val targetsPerSource = links
       .groupBy { case (_, _, _, sourceRow, sourceCol) => (sourceRow, sourceCol) }
       .mapValues(_
-        .sortBy { case (targetRow, targetCol, _, _, _) =>
-          targetCol * 1000 + targetRow // TODO is this left to right?
-        }
+        .sortBy { case (targetRow, targetCol, _, _, _) => targetCol * 1000 + targetRow }
         .map { case (targetRow, targetCol, _, _, _) => (targetRow, targetCol) }
         .zipWithIndex
       )
@@ -134,7 +154,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       val transform = s"""transform="translate(${ scale(col) },${ scale(row) })""""
       val title = s"""<title>${ targetItem.stitch } - ${ targetItem.id }</title>"""
 
-      def style(color: String) = s"""style="fill: $color; stroke: none; opacity: 0.9""""
+      def style(color: String) = s"""style="fill: $color; stroke: none; opacity: 0.8""""
 
       def shape(color: String, shape: String) = s"""<path d="$shape" ${ style(color) }></path>"""
 
@@ -143,18 +163,11 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       def singleShape(color: String, shape: String) =
         s"""<path onclick='paint(this)' class="node" d="$shape"${ style(color) }$transform >$title</path>"""
 
-      targetItem.stitch match {
-        case "c" => singleShape("grey", square(4.5))
-        case "cr" => group(shape("grey", squareNW(4.5)) + shape("green", squareSE(4.5)))
-        case "cl" => group(shape("grey", squareNE(4.5)) + shape("green", squareSW(4.5)))
-        case "ct" | "ctt" | "ctl" | "ctr" | "cttt" | "cttl" |
-             "cttr" => singleShape("green", square(4.5))
-        case "ctc" => singleShape("purple", square(4.5))
-        case "ctcr" => group(shape("purple", squareNW(4.5)) + shape("red", squareSE(4.5)))
-        case "ctcl" => group(shape("purple", squareNE(4.5)) + shape("red", squareSW(4.5)))
-        case "ctct" | "ctctt" | "ctctl" | "ctctr" | "ctcttt" | "ctcttl" |
-             "ctcttr" => singleShape("red", square(4.5))
-        case _ => singleShape(defaultColorName(targetItem.stitch), circle(5))
+      targetItem.stitch.shapeDef() match {
+        case Seq(color) => singleShape(color, square())
+        case Seq(color1, "/", color2) => group(shape(color1, squareNW()) + shape(color2, squareSE()))
+        case Seq(color1, "\\", color2) => group(shape(color1, squareNE()) + shape(color2, squareSW()))
+        case _ => singleShape(defaultColorName(targetItem.stitch), circle())
       }
     }.mkString
   }.mkString
