@@ -20,6 +20,7 @@ import dibl.Stitches.defaultColorName
 import dibl.proto.{ Item, TilesConfig }
 
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
+import scala.util.matching.Regex
 
 @JSExportTopLevel("PairSvg") object PairSvg {
 
@@ -75,13 +76,16 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         .replaceAll("^[tlr]*", "") // we allow a mix of open/closed definitions, we render closed
         .replaceAll("p", "") // ignore pins
       str match {
+        //  TODO ? inline variant of
+        //   https://stackoverflow.com/questions/58740642/how-to-use-match-with-regular-expressions-in-scala
+        //   https://stackoverflow.com/questions/4636610/how-to-pattern-match-using-regular-expression-in-scala
         case "c" => Seq(grey)
-        case "cr" => Seq(grey, "/", green)
-        case "cl" => Seq(grey, "\\", green)
+        case _ if str.matches("cr+") => Seq(grey, "/", green)
+        case _ if str.matches("cl+") => Seq(grey, "\\", green)
         case _ if str.matches("ct[tlr]*") => Seq(green)
         case "ctc" => Seq(violet)
-        case "ctcr" => Seq(violet, "/", red)
-        case "ctcl" => Seq(violet, "\\", red)
+        case _ if str.matches("ctcr+") => Seq(violet, "/", red)
+        case _ if str.matches("ctcl+") => Seq(violet, "\\", red)
         case _ if str.matches("crc[lr]*") => Seq(grey, "/", violet)
         case _ if str.matches("clc[lr]*") => Seq(grey, "\\", violet)
         case _ if str.matches("crct[lr]*") => Seq(grey, "/", red)
