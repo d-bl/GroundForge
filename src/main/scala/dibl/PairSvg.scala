@@ -45,42 +45,21 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   private def diamondW(d: Double) = s"M -$d,0 0,$d 0,-$d Z"
 
-  val markerDefinitions: String = {
-    def pairMarker(idSuffix: String = "pair", shape: String = diamond(5)) =
-      s"""<marker id="start-$idSuffix"
-         | viewBox="-7 -7 14 14"
-         | markerWidth="12"
-         | markerHeight="12"
-         | orient="auto"
-         | markerUnits="userSpaceOnUse">
-         | <path d="$shape"
-         |  fill="#000"
-         |  style="opacity: 0.5;"></path>
-         |</marker>
-         |""".stripMargin.stripLineEnd.replaceAll("[\r\n]", "")
-
-    def twistMark(count: Int) =
-      s"""<marker id="twist-$count"
-         | viewBox="-2 -2 4 4"
-         | markerWidth="5"
-         | markerHeight="5"
-         | orient="auto"
-         | markerUnits="userSpaceOnUse">
-         | <path d="${
-        if (count == 1) "M 0,2 0,-2"
-        else "M -1,2 V -2 M 1,2 1,-2"
-      }"
-         |  fill="#000"
-         |  stroke="#000"
-         |  stroke-width="1px"></path>
-         |</marker>""".stripMargin.stripLineEnd.replaceAll("[\r\n]", "")
-
-    s"""<defs>
-       |  ${ pairMarker() }
-       |  ${ twistMark(1) }
-       |  ${ twistMark(2) }
-       |</defs>""".stripMargin.stripLineEnd.replaceAll("[\r\n]", "")
-  }
+  private def twistMark(count: Int) =
+    s"""<marker id="twist-$count"
+       | viewBox="-2 -2 4 4"
+       | markerWidth="5"
+       | markerHeight="5"
+       | orient="auto"
+       | markerUnits="userSpaceOnUse">
+       | <path d="${
+      if (count == 1) "M 0,2 0,-2"
+      else "M -1,2 V -2 M 1,2 1,-2"
+    }"
+       |  fill="#000"
+       |  stroke="#000"
+       |  stroke-width="1px"></path>
+       |</marker>""".stripMargin.stripLineEnd.replaceAll("[\r\n]", "")
 
   implicit class TwistString(val s: String) extends AnyVal {
     def twistsOfPair(pairNr: Int): String = {
@@ -150,45 +129,39 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       targetItem = items(row)(col)
       if !targetItem.noStitch
     } yield {
-      val (color, shape) = if (targetItem.noStitch) ("#000", circle(10))
-                           else targetItem.stitch match {
-                             case "ct" | "ctt" | "ctl" |
-                                  "ctr" => ("green", square(4.5))
-                             case "ctll" => ("green", squareSW(4.5))
-                             case "ctrr" => ("green", squareSE(4.5))
-                             case "cttt" => ("green", diamond(7.6))
-                             case "ctc" => ("purple", square(4.5))
-                             case "ctct" | "ctctt" | "ctctl" |
-                                  "ctctr" => ("red", square(4.5))
-                             case "ctctll" => ("red", squareSW(4.5))
-                             case "ctctrr" => ("red", squareSE(4.5))
-                             case "ctcttt" => ("red", diamond(7.6))
-                             case _ => (defaultColorName(targetItem.stitch), circle(5))
-                           }
-      val opacity = if (targetItem.noStitch) 0
-                    else 0.5
-      val event = if (targetItem.noStitch) ""
-                  else "onclick='paint(this)'"
-      s"""<path $event
-         | class="node"
-         | d="$shape"
-         | style="fill: $color; stroke: none; opacity: $opacity"
-         | transform="translate(${ scale(col) },${ scale(row) })"
-         |><title>${ targetItem.stitch } - ${ targetItem.id }</title></path>"""
-        .stripMargin.stripLineEnd.replaceAll("[\r\n]", "")
+      def singleShape(color: String, shape: String) =
+        s"""<path onclick='paint(this)'
+           | class="node"
+           | d="$shape"
+           | style="fill: $color; stroke: none; opacity: 0.5"
+           | transform="translate(${ scale(col) },${ scale(row) })"
+           |><title>${ targetItem.stitch } - ${ targetItem.id }</title></path>"""
+          .stripMargin.stripLineEnd.replaceAll("[\r\n]", "")
+
+      if (targetItem.noStitch) singleShape("#000", circle(10))
+      else targetItem.stitch match {
+        case "ct" | "ctt" | "ctl" |
+             "ctr" => singleShape("green", square(4.5))
+        case "ctll" => singleShape("green", squareSW(4.5))
+        case "ctrr" => singleShape("green", squareSE(4.5))
+        case "cttt" => singleShape("green", diamond(7.6))
+        case "ctc" => singleShape("purple", square(4.5))
+        case "ctct" | "ctctt" | "ctctl" |
+             "ctctr" => singleShape("red", square(4.5))
+        case "ctctll" => singleShape("red", squareSW(4.5))
+        case "ctctrr" => singleShape("red", squareSE(4.5))
+        case "ctcttt" => singleShape("red", diamond(7.6))
+        case _ => singleShape(defaultColorName(targetItem.stitch), circle(5))
+      }
     }.mkString
   }.mkString
 
-  private def scale(c: Int) = {
-    (c + 2) * 15
-  }
+  private def scale(c: Int) = (c + 2) * 15
 
   /** Prefix required when writing to an SVG file */
   val prolog = "<?xml version='1.0' encoding='UTF-8'?>"
 
-  /** @param diagram collections of nodes and links
-   * @return an SVG document as String
-   */
+  /** @return an SVG document as String */
   @JSExport
   def render(config: TilesConfig,
              width: Int = 744,
@@ -205,7 +178,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
        | xmlns:svg="http://www.w3.org/2000/svg"
        | xmlns:xlink="http://www.w3.org/1999/xlink"
        |>
-       |$markerDefinitions
+       |<defs>
+       |  ${ twistMark(1) }
+       |  ${ twistMark(2) }
+       |</defs>
        |${ renderLinks(config.getItemMatrix) }
        |${ renderNodes(config.getItemMatrix) }
        |</svg>""".stripMargin
