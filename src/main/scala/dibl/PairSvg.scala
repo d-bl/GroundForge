@@ -122,6 +122,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     s"<path class='link' d='$d' style='stroke: #000; stroke-width: 2px; fill: none; opacity: $opacity$t'></path>"
   }
 
+  private def scale(c: Int) = (c + 2) * 15
+
   private def renderNodes(items: Seq[Seq[Item]]): String = {
     for {
       row <- items.indices
@@ -129,34 +131,33 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       targetItem = items(row)(col)
       if !targetItem.noStitch
     } yield {
-      def singleShape(color: String, shape: String) =
-        s"""<path onclick='paint(this)'
-           | class="node"
-           | d="$shape"
-           | style="fill: $color; stroke: none; opacity: 0.5"
-           | transform="translate(${ scale(col) },${ scale(row) })"
-           |><title>${ targetItem.stitch } - ${ targetItem.id }</title></path>"""
-          .stripMargin.stripLineEnd.replaceAll("[\r\n]", "")
+      val transform = s"""transform="translate(${ scale(col) },${ scale(row) })""""
+      val title = s"""<title>${ targetItem.stitch } - ${ targetItem.id }</title>"""
 
-      if (targetItem.noStitch) singleShape("#000", circle(10))
-      else targetItem.stitch match {
-        case "ct" | "ctt" | "ctl" |
-             "ctr" => singleShape("green", square(4.5))
-        case "ctll" => singleShape("green", squareSW(4.5))
-        case "ctrr" => singleShape("green", squareSE(4.5))
-        case "cttt" => singleShape("green", diamond(7.6))
+      def style(color: String) = s"""style="fill: $color; stroke: none; opacity: 0.9""""
+
+      def shape(color: String, shape: String) = s"""<path d="$shape" ${ style(color) }></path>"""
+
+      def group(shapes: String) = s"""<g onclick='paint(this)' class="node" $transform>$title$shapes</g>"""
+
+      def singleShape(color: String, shape: String) =
+        s"""<path onclick='paint(this)' class="node" d="$shape"${ style(color) }$transform >$title</path>"""
+
+      targetItem.stitch match {
+        case "c" => singleShape("grey", square(4.5))
+        case "cr" => group(shape("grey", squareNW(4.5)) + shape("green", squareSE(4.5)))
+        case "cl" => group(shape("grey", squareNE(4.5)) + shape("green", squareSW(4.5)))
+        case "ct" | "ctt" | "ctl" | "ctr" | "cttt" | "cttl" |
+             "cttr" => singleShape("green", square(4.5))
         case "ctc" => singleShape("purple", square(4.5))
-        case "ctct" | "ctctt" | "ctctl" |
-             "ctctr" => singleShape("red", square(4.5))
-        case "ctctll" => singleShape("red", squareSW(4.5))
-        case "ctctrr" => singleShape("red", squareSE(4.5))
-        case "ctcttt" => singleShape("red", diamond(7.6))
+        case "ctcr" => group(shape("purple", squareNW(4.5)) + shape("red", squareSE(4.5)))
+        case "ctcl" => group(shape("purple", squareNE(4.5)) + shape("red", squareSW(4.5)))
+        case "ctct" | "ctctt" | "ctctl" | "ctctr" | "ctcttt" | "ctcttl" |
+             "ctcttr" => singleShape("red", square(4.5))
         case _ => singleShape(defaultColorName(targetItem.stitch), circle(5))
       }
     }.mkString
   }.mkString
-
-  private def scale(c: Int) = (c + 2) * 15
 
   /** Prefix required when writing to an SVG file */
   val prolog = "<?xml version='1.0' encoding='UTF-8'?>"
