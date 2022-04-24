@@ -82,6 +82,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         case "ctc" => Seq(violet)
         case "ctcr" => Seq(violet, "/", red)
         case "ctcl" => Seq(violet, "\\", red)
+        case _ if str.matches("crc[lr]*") => Seq(grey, "/", green)
+        case _ if str.matches("clc[lr]*") => Seq(grey, "\\", green)
+        case _ if str.matches("crct[lr]*") => Seq(grey, "/", red)
+        case _ if str.matches("clct[lr]*") => Seq(grey, "\\", red)
         case _ if str.matches("ctct[tlr]*") => Seq(red)
         case _ if str.matches("ctc(tc)+[tlr]*") => Seq(blue) // plaits, including fixing stitch
         case _ if str.matches("cttc[tlr]*") => Seq(aqua) // turning stitch
