@@ -33,7 +33,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   private def squareNW(d: Double = 4.5) = s"M -$d,-$d $d,-$d -$d,$d Z"
 
-  private def squareNE(d: Double = 4.5) = s"M -$d,-$d $d,-$d Z"
+  private def squareNE(d: Double = 4.5) = s"M -$d,-$d $d,-$d $d,$d Z"
 
   private def diamond(d: Double = 5.8) = s"M -$d,0 0,$d $d,0 0,-$d Z"
 
@@ -176,8 +176,6 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         case Seq(color) => singleShape(color, square())
         case Seq(color1, "/", color2) => group(shape(color1, squareNW()) + shape(color2, squareSE()))
         case Seq(color1, "\\", color2) => group(shape(color1, squareNE()) + shape(color2, squareSW()))
-        case Seq(color1, color2) => // alternative to avoid escapes for custom configurations
-          group(shape(color1, squareNE()) + shape(color2, squareSW()))
         case _ => singleShape(defaultColorName(targetItem.stitch), diamond())
       }
     }.mkString
