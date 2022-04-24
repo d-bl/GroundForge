@@ -35,7 +35,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   private def squareNE(d: Double = 4.5) = s"M -$d,-$d $d,-$d Z"
 
-  private def diamond(d: Double) = s"M -$d,0 0,$d $d,0 0,-$d Z"
+  private def diamond(d: Double = 5.8) = s"M -$d,0 0,$d $d,0 0,-$d Z"
 
   private def diamondS(d: Double) = s"M -$d,0 0,$d $d,0 Z"
 
@@ -62,26 +62,31 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
        |</marker>""".stripMargin.stripLineEnd.replaceAll("[\r\n]", "")
 
   private val grey = "#CCCCCC"
-  private val aqua = "#66CDAA"
-  private val violet = "#9400D3"
+  private val aqua = "#00F090"
+  private val violet = "#C030F0"
   private val red = "#FF0000"
-  private val green = "#008800"
-  private val blue = "#0000FF"
+  private val green = "#008000"
+  private val blue = "#1080C0"
 
   implicit class TwistString(val stitch: String) extends AnyVal {
 
-    def shapeDef(): Seq[String] = stitch match {
-      case "c" => Seq(grey)
-      case "cr" => Seq(grey, "/", green)
-      case "cl" => Seq(grey, "\\", green)
-      case _ if stitch.matches("ct[tlr]*") => Seq(green)
-      case "ctc" => Seq(violet)
-      case "ctcr" => Seq(violet, "/", red)
-      case "ctcl" => Seq(violet, "\\", red)
-      case _ if stitch.matches("ctct[tlr]*") => Seq(red)
-      case _ if stitch.matches("ctc(tc)+[tlr]*") => Seq(blue)
-      case _ if stitch.matches("cttc[tlr]*") => Seq(aqua)
-      case _ => Seq()
+    def shapeDef(): Seq[String] = {
+      val str = stitch
+        .replaceAll("^[tlr]*", "") // we allow a mix of open/closed definitions, we render closed
+        .replaceAll("p", "") // ignore pins
+      str match {
+        case "c" => Seq(grey)
+        case "cr" => Seq(grey, "/", green)
+        case "cl" => Seq(grey, "\\", green)
+        case _ if str.matches("ct[tlr]*") => Seq(green)
+        case "ctc" => Seq(violet)
+        case "ctcr" => Seq(violet, "/", red)
+        case "ctcl" => Seq(violet, "\\", red)
+        case _ if str.matches("ctct[tlr]*") => Seq(red)
+        case _ if str.matches("ctc(tc)+[tlr]*") => Seq(blue) // plaits, including fixing stitch
+        case _ if str.matches("cttc[tlr]*") => Seq(aqua) // turning stitch
+        case _ => Seq()
+      }
     }
 
     def twistsOfPair(pairNr: Int): String = {
@@ -167,7 +172,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         case Seq(color) => singleShape(color, square())
         case Seq(color1, "/", color2) => group(shape(color1, squareNW()) + shape(color2, squareSE()))
         case Seq(color1, "\\", color2) => group(shape(color1, squareNE()) + shape(color2, squareSW()))
-        case _ => singleShape(defaultColorName(targetItem.stitch), circle())
+        case Seq(color1, color2) => // alternative to avoid escapes for custom configurations
+          group(shape(color1, squareNE()) + shape(color2, squareSW()))
+        case _ => singleShape(defaultColorName(targetItem.stitch), diamond())
       }
     }.mkString
   }.mkString
