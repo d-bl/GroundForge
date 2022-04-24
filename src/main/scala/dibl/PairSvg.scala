@@ -82,6 +82,14 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
        |</defs>""".stripMargin.stripLineEnd.replaceAll("[\r\n]", "")
   }
 
+  implicit class TwistString(val s: String) extends AnyVal {
+    def twistsOfPair(pairNr: Int): String = {
+      val search = if (pairNr == 0) "[^tl]"
+                   else "[^tr]"
+      s.replaceAll(search, "")
+    }
+  }
+
   private def renderLinks(items: Seq[Seq[Item]]): String = {
     val nrOfRows = items.size
     val nrOfCols = items.head.size
@@ -90,34 +98,37 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       targetCol <- items(targetRow).indices
       targetItem = items(targetRow)(targetCol)
       if !targetItem.noStitch && targetItem.relativeSources.nonEmpty
-      ((relSrcRow, relSrcCol), i) <- targetItem.relativeSources.zipWithIndex // i: left/right incoming pair
+      ((relSrcRow, relSrcCol), pairNrIntoTarget) <- targetItem.relativeSources.zipWithIndex // i: left/right incoming pair
       sourceRow = relSrcRow + targetRow
       sourceCol = relSrcCol + targetCol
       if sourceRow >= 0 && sourceRow < nrOfRows && sourceCol > 0 && sourceCol < nrOfCols
-    } yield (targetRow, targetCol, i, sourceRow, sourceCol)
+    } yield (targetRow, targetCol, pairNrIntoTarget, sourceRow, sourceCol)
 
+    /* map: (srcRow,srcCol) -> Seq(((targetRow,targetCol),pairNr)) */
     val targetsPerSource = links
       .groupBy { case (_, _, _, sourceRow, sourceCol) => (sourceRow, sourceCol) }
       .mapValues(_
-        .map { case (targetRow, targetCol, _, _, _) => (targetRow, targetCol) }
-        .sortBy { case (targetRow, targetCol) =>
+        .sortBy { case (targetRow, targetCol, _, _, _) =>
           targetCol * 1000 + targetRow // TODO is this left to right?
-        })
+        }
+        .map { case (targetRow, targetCol, _, _, _) => (targetRow, targetCol) }
+        .zipWithIndex
+      )
 
-    links.map { case (targetRow, targetCol, i, sourceRow, sourceCol) =>
+    links.map { case (targetRow, targetCol, pairNrIntoTarget, sourceRow, sourceCol) =>
       val targetItem = items(targetRow)(targetCol)
-      val leadingTwistsOfTarget = targetItem.stitch
-        .replaceAll("c.*", "")
-        .replaceAll(if (i == 0) "[^tl]"
-                    else "[^tr]", "")
-      val targetsOfSource = targetsPerSource(sourceRow, sourceCol)// TODO find wich of the two matches the targetItem
-      val trailingTwistsOfSrc = items(sourceRow)(sourceCol).stitch
-        .replaceAll(".*c", "")
-        .replaceAll(if (i == 0) "[^tr]" // TODO false assumption
-                    else "[^tl]", "")
-      val twists = if (i == 0) (trailingTwistsOfSrc.replaceAll("[^tr]", "") + leadingTwistsOfTarget.replaceAll("[^tl]", ""))
-                   else (trailingTwistsOfSrc.replaceAll("[^tl]", "") + leadingTwistsOfTarget.replaceAll("[^tr]", ""))
-      println(s"${ targetItem.id } $i [x,y] [$sourceCol,$sourceCol] [$targetCol,$targetRow] ($trailingTwistsOfSrc,$leadingTwistsOfTarget) $twists")
+      val leadingTwistsOfTarget = targetItem
+        .stitch.replaceAll("c.*", "")
+        .twistsOfPair(pairNrIntoTarget)
+      val trailingTwistsOfSrc = targetsPerSource(sourceRow, sourceCol)
+        .find { case ((row, col), _) => targetRow == row && targetCol == col }
+        .map { case ((_, _), pairNrLeavingSrc) =>
+          items(sourceRow)(sourceCol)
+            .stitch.replaceAll(".*c", "")
+            .twistsOfPair(pairNrLeavingSrc)
+        }.getOrElse("")
+      val twists = trailingTwistsOfSrc + leadingTwistsOfTarget
+      //      println(s"${ targetItem.id } $pairNrIntoTarget [x,y] [$sourceCol,$sourceCol] [$targetCol,$targetRow] ($trailingTwistsOfSrc,$leadingTwistsOfTarget) $twists")
       pathDescription(scale(sourceCol), scale(sourceRow), scale(targetCol), scale(targetRow), opacity = 1, twists.length)
     }.mkString
   }.mkString
