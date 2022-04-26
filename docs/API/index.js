@@ -27,7 +27,7 @@ function load() {
   // and the address created by the link button
   // note that the bold elements in the prototype diagrams are (hidden) form fields
   var q = "patchWidth=8&patchHeight=14"
-                      + "&b1=cr&c1=cttc&d1=ctctc&b2=ctt&d2=cttl&c3=ctcll"
+                      + "&b1=cr&c1=cttlc&d1=ctctc&b2=ctt&d2=cttl&c3=ctctll"
                       + "&footside=b,-,a,-&footsideStitch=-"
                       + "&tile=831,4-7,-5-&tileStitch=ctct"
                       + "&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"

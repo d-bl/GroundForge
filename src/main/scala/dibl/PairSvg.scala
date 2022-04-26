@@ -20,7 +20,6 @@ import dibl.Stitches.defaultColorName
 import dibl.proto.{ Item, TilesConfig }
 
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
-import scala.util.matching.Regex
 
 @JSExportTopLevel("PairSvg") object PairSvg {
 
@@ -36,31 +35,33 @@ import scala.util.matching.Regex
 
   private def squareNE(d: Double = 4.5) = s"M -$d,-$d $d,-$d $d,$d Z"
 
-  private def diamond(d: Double = 5.8) = s"M -$d,0 0,$d $d,0 0,-$d Z"
+  private def diamond(d: Double = 5.9) = s"M -$d,0 0,$d $d,0 0,-$d Z"
 
-  private def diamondS(d: Double) = s"M -$d,0 0,$d $d,0 Z"
+  private def diamondS(d: Double = 5.9) = s"M -$d,0 0,$d $d,0 Z"
 
-  private def diamondE(d: Double) = s"M 0,$d $d,0 0,-$d Z"
+  private def diamondE(d: Double = 5.9) = s"M 0,$d $d,0 0,-$d Z"
 
-  private def diamondN(d: Double) = s"M -$d,0 $d,0 0,-$d Z"
+  private def diamondN(d: Double = 5.9) = s"M -$d,0 $d,0 0,-$d Z"
 
-  private def diamondW(d: Double) = s"M -$d,0 0,$d 0,-$d Z"
+  private def diamondW(d: Double = 5.9) = s"M -$d,0 0,$d 0,-$d Z"
 
   private def twistMark(count: Int) =
-    s"""<marker id="twist-$count"
-       | viewBox="-2 -2 4 4"
-       | markerWidth="5"
-       | markerHeight="5"
-       | orient="auto"
-       | markerUnits="userSpaceOnUse">
-       | <path d="${
-      if (count == 1) "M 0,2 0,-2"
-      else "M -1,2 V -2 M 1,2 1,-2"
-    }"
-       |  fill="#000"
-       |  stroke="#000"
-       |  stroke-width="1px"></path>
-       |</marker>""".stripMargin.stripLineEnd.replaceAll("[\r\n]", "")
+  {
+    val d = if (count == 1) "M 0,2 0,-2"
+            else if (count == 2) "M -1,2 V -2 M 1,2 1,-2"
+                 else "M 1,-2 H -1 V 2 H 1 Z"
+      s"""<marker id="twist-$count"
+         | viewBox="-2 -2 4 4"
+         | markerWidth="5"
+         | markerHeight="5"
+         | orient="auto"
+         | markerUnits="userSpaceOnUse">
+         | <path d="$d"
+         |  fill="#000"
+         |  stroke="#000"
+         |  stroke-width="1px"></path>
+         |</marker>""".stripMargin
+    }
 
   private val grey = "#CCCCCC"
   private val aqua = "#00F090"
@@ -73,27 +74,36 @@ import scala.util.matching.Regex
 
     def shapeDef(): Seq[String] = {
       val str = stitch
-        .replaceAll("^[tlr]*", "") // we allow a mix of open/closed definitions, we render closed
+        .replaceAll("^[tlr]*", "") // ignore leading twists
+        .replaceAll("[tlr]*$", "") // ignore trailing twists
         .replaceAll("p", "") // ignore pins
-      str match {
-        //  TODO ? inline variant of
-        //   https://stackoverflow.com/questions/58740642/how-to-use-match-with-regular-expressions-in-scala
-        //   https://stackoverflow.com/questions/4636610/how-to-pattern-match-using-regular-expression-in-scala
-        case "c" => Seq(grey)
-        case _ if str.matches("cr+") => Seq(grey, "/", green)
-        case _ if str.matches("cl+") => Seq(grey, "\\", green)
-        case _ if str.matches("ct[tlr]*") => Seq(green)
-        case "ctc" => Seq(violet)
-        case _ if str.matches("ctcr+") => Seq(violet, "/", red)
-        case _ if str.matches("ctcl+") => Seq(violet, "\\", red)
-        case _ if str.matches("crc[lr]*") => Seq(grey, "/", violet)
-        case _ if str.matches("clc[lr]*") => Seq(grey, "\\", violet)
-        case _ if str.matches("crct[lr]*") => Seq(grey, "/", red)
-        case _ if str.matches("clct[lr]*") => Seq(grey, "\\", red)
-        case _ if str.matches("ctct[tlr]*") => Seq(red)
-        case _ if str.matches("ctc(tc)+[tlr]*") => Seq(blue) // plaits, including fixing stitch
-        case _ if str.matches("cttc[tlr]*") => Seq(aqua) // turning stitch
+      val ls = str.replaceAll("[cr]", "").length
+      val rs = str.replaceAll("[cl]","").length
+      val cs = str.replaceAll("[lrt]","").length
+      (cs, ls, rs) match {
+        case (1, _, _) => Seq(grey, "|") // just cross
+        case (2, 0, 0) => Seq(green, "|") // just cross twice
+        case (2, 1, 1) => Seq(violet, "|") // cloth stitch
+        case (2, 2, 2) => Seq(aqua, "|") // turning stitch
+        case (2, 3, 3) => Seq(red, "|")
+        case _ if str.matches("ctc(tc)+") => Seq(blue) // plaits, including fixing stitch
+        case (2, _, _) =>
+          val leftColor = ls match {
+            case 0 => green
+            case 1 => violet
+            case 2 => aqua
+            case _ => red
+          }
+          val rigthColor = rs match {
+            case 0 => green
+            case 1 => violet
+            case 2 => aqua
+            case _ => red
+          }
+          Seq(leftColor, "|", rigthColor)
         case _ => Seq()
+        // TODO three or more times cross but not a plain plait,
+        //  we still have horizontally sliced diamonds and squares sliced in two directions
       }
     }
 
@@ -147,11 +157,13 @@ import scala.util.matching.Regex
 
   @JSExport
   def pathDescription(sX: Double, sY: Double, tX: Double, tY: Double, opacity: Double, twists: Int): String = {
-    val t = if (twists <= 1) ""
-            else if (twists == 2) """; marker-mid: url("#twist-1")"""
-                 else """; marker-mid: url("#twist-2")"""
-    val d = if (twists > 1) s"M $sX,$sY ${ sX + (tX - sX) / 2 } ${ sY + (tY - sY) / 2 } $tX,$tY"
-            else s"M $sX,$sY $tX,$tY"
+    val t = twists match {
+      case 0 => ""
+      case 1 | 2 | 3 => s"""; marker-mid: url("#twist-$twists")"""
+      case _ => """; marker-mid: url("#twist-3")"""
+    }
+    val d = if (twists <= 0) s"M $sX,$sY $tX,$tY"
+            else s"M $sX,$sY ${ sX + (tX - sX) / 2 } ${ sY + (tY - sY) / 2 } $tX,$tY"
     s"<path class='link' d='$d' style='stroke: #000; stroke-width: 2px; fill: none; opacity: $opacity$t'></path>"
   }
 
@@ -178,9 +190,13 @@ import scala.util.matching.Regex
 
       targetItem.stitch.shapeDef() match {
         case Seq(color) => singleShape(color, square())
+        case Seq(color1, "/") => group(shape(color1, square()))
+        case Seq(color1, "|") => group(shape(color1, diamond()))
         case Seq(color1, "/", color2) => group(shape(color1, squareNW()) + shape(color2, squareSE()))
         case Seq(color1, "\\", color2) => group(shape(color1, squareNE()) + shape(color2, squareSW()))
-        case _ => singleShape(defaultColorName(targetItem.stitch), diamond())
+        case Seq(color1, "-", color2) => group(shape(color1, diamondN()) + shape(color2, diamondS()))
+        case Seq(color1, "|", color2) => group(shape(color1, diamondW()) + shape(color2, diamondE()))
+        case _ => singleShape(defaultColorName(targetItem.stitch), circle()) // fall back
       }
     }.mkString
   }.mkString
@@ -208,6 +224,7 @@ import scala.util.matching.Regex
        |<defs>
        |  ${ twistMark(1) }
        |  ${ twistMark(2) }
+       |  ${ twistMark(3) }
        |</defs>
        |${ renderLinks(config.getItemMatrix) }
        |${ renderNodes(config.getItemMatrix) }
