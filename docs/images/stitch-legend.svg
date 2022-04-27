@@ -80,7 +80,9 @@
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg2" />
+     inkscape:current-layer="svg2"
+     showguides="true"
+     inkscape:guide-bbox="true" />
   <defs
      id="defs842">
     <marker
@@ -273,13 +275,13 @@
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
-     x="22.463188"
+     x="198.4632"
      y="197.96829"
      id="text2197"><tspan
        sodipodi:role="line"
        id="tspan2195"
-       x="22.463188"
-       y="197.96829">c.c.c  twist once          . = one of </tspan></text>
+       x="198.4632"
+       y="197.96829">. = one of </tspan></text>
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
@@ -466,4 +468,14 @@
        id="tspan2337"
        x="32.463192"
        y="77.968277">twists between stitches</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="22.463188"
+     y="197.96829"
+     id="text2391"><tspan
+       sodipodi:role="line"
+       id="tspan2389"
+       x="22.463188"
+       y="197.96829">c.c.c  twist once</tspan></text>
 </svg>
