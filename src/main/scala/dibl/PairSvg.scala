@@ -66,9 +66,18 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   private val grey = "#CCCCCC"
   private val aqua = "#00F090"
   private val violet = "#C030F0"
-  private val red = "#FF0000"
+  private val red = "#DC143C"
   private val green = "#008000"
-  private val blue = "#1080C0"
+  private val blue = "#14a1f2"
+
+  private def twsitsToColor(ls: Int) = {
+    ls match {
+      case 0 => green
+      case 1 => violet
+      case 2 => aqua
+      case _ => red
+    }
+  }
 
   implicit class TwistString(val stitch: String) extends AnyVal {
 
@@ -77,30 +86,34 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         .replaceAll("^[tlr]*", "") // ignore leading twists
         .replaceAll("[tlr]*$", "") // ignore trailing twists
         .replaceAll("p", "") // ignore pins
-      val ls = str.replaceAll("[cr]", "").length
-      val rs = str.replaceAll("[cl]","").length
-      val cs = str.replaceAll("[lrt]","").length
-      (cs, ls, rs) match {
-        case (1, _, _) => Seq(grey, "|") // just cross
-        case (2, 0, 0) => Seq(green, "|") // just cross twice
-        case (2, 1, 1) => Seq(violet, "|") // cloth stitch
-        case (2, 2, 2) => Seq(aqua, "|") // turning stitch
-        case (2, 3, 3) => Seq(red, "|")
-        case _ if str.matches("ctc(tc)+") => Seq(blue) // plaits, including fixing stitch
-        case (2, _, _) =>
-          val leftColor = ls match {
-            case 0 => green
-            case 1 => violet
-            case 2 => aqua
-            case _ => red
-          }
-          val rigthColor = rs match {
-            case 0 => green
-            case 1 => violet
-            case 2 => aqua
-            case _ => red
-          }
-          Seq(leftColor, "|", rigthColor)
+      val ls = str.replaceAll("[^tl]", "").length
+      val rs = str.replaceAll("[^tr]","").length
+      val cs = str.replaceAll("[^c]","").length
+      (cs,str) match {
+        case (1, _) =>
+          Seq(grey, "|") // just cross
+        case (2, _) if ls == rs =>
+          Seq(twsitsToColor(ls), "|")
+        case (2, _) if ls > 3 && rs > 3 =>
+          Seq(twsitsToColor(3), "|")
+        case (2, _) =>
+          Seq(twsitsToColor(ls), "|", twsitsToColor(rs))
+        case (3, "ctctc") => // fixing stitch
+          Seq(blue, "|")
+        case (3, "clclc") =>
+          Seq(blue, "|", twsitsToColor(rs / 2))
+        case (3, _) if str.matches("ctr+ctr+c") =>
+          Seq(blue, "|", twsitsToColor(rs / 2))
+        case (3, "crcrc") =>
+          Seq(twsitsToColor(ls / 2), "|", blue)
+        case (3, _) if str.matches("ctl+ctl+c") =>
+          Seq(twsitsToColor(ls / 2), "|", blue)
+        case (3, _) if str.matches("ctct*c") =>
+          Seq(blue, "-", twsitsToColor(ls - 1))
+        case (3, _) if str.matches("ct*ctc") =>
+          Seq(twsitsToColor(ls - 1), "-", blue)
+        case _ if str.matches("ctctc(tc)+") => // plaits
+          Seq(grey, "/")
         case _ => Seq()
         // TODO three or more times cross but not a plain plait,
         //  we still have horizontally sliced diamonds and squares sliced in two directions
@@ -179,7 +192,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       val transform = s"""transform="translate(${ scale(col) },${ scale(row) })""""
       val title = s"""<title>${ targetItem.stitch } - ${ targetItem.id }</title>"""
 
-      def style(color: String) = s"""style="fill: $color; stroke: none; opacity: 0.8""""
+      def style(color: String) = s"""style="fill: $color; stroke: none; opacity: 0.9""""
 
       def shape(color: String, shape: String) = s"""<path d="$shape" ${ style(color) }></path>"""
 

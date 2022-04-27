@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   width="744"
+   height="1052"
+   sodipodi:docname="stitch-legend.svg"
+   inkscape:version="1.0.2 (e86c8708, 2021-01-15)">
+  <path
+     d="m 308.1624,192.36393 5.9,5.9 v -11.8 z"
+     style="opacity:0.8;fill:#dc143c;fill-opacity:1;stroke:none"
+     id="path2147-9" />
+  <path
+     d="m 279.70448,198.26393 -5.9,-5.9 5.9,-5.9 z"
+     style="opacity:0.8;fill:#008000;stroke:none"
+     id="path2149-4" />
+  <path
+     d="m 290.64048,192.36393 5.9,5.9 v -11.8 z"
+     style="opacity:0.8;fill:#00f090;stroke:none"
+     id="path2153-6" />
+  <path
+     d="m 319.9624,192.36393 -5.9,5.9 v -11.8 z"
+     style="opacity:0.8;fill:#dc143c;fill-opacity:1;stroke:none"
+     id="path2155-8" />
+  <path
+     d="m 279.70448,198.26393 5.90001,-5.9 -5.9,-5.9 z"
+     style="opacity:0.8;fill:#008000;stroke:none"
+     id="path2157-1" />
+  <path
+     d="m 302.44048,192.36393 -5.9,5.9 v -11.8 z"
+     style="opacity:0.8;fill:#00f090;stroke:none"
+     id="path2161-8" />
+  <g
+     onclick="paint(this)"
+     class="node"
+     transform="translate(40.319718,27.212378)"
+     id="g1774-7">
+    <title
+       id="title1770-1">ct - n2</title>
+    <path
+       d="M -5.9,0 0,5.9 5.9,0 0,-5.9 Z"
+       style="opacity:0.8;fill:#cccccc;stroke:none"
+       id="path1772-3" />
+  </g>
+  <metadata
+     id="metadata1779">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1680"
+     inkscape:window-height="997"
+     id="namedview1777"
+     showgrid="false"
+     inkscape:zoom="1.6479181"
+     inkscape:cx="235.61517"
+     inkscape:cy="156.87193"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <defs
+     id="defs842">
+    <marker
+       id="twist-1"
+       viewBox="-2 -2 4 4"
+       markerWidth="5"
+       markerHeight="5"
+       orient="auto"
+       markerUnits="userSpaceOnUse">
+      <path
+         d="M 0,2 0,-2"
+         fill="#000"
+         stroke="#000"
+         stroke-width="1px"
+         id="path833" />
+    </marker>
+    <marker
+       id="twist-2"
+       viewBox="-2 -2 4 4"
+       markerWidth="5"
+       markerHeight="5"
+       orient="auto"
+       markerUnits="userSpaceOnUse">
+      <path
+         d="M -1,2 V -2 M 1,2 1,-2"
+         fill="#000"
+         stroke="#000"
+         stroke-width="1px"
+         id="path836" />
+    </marker>
+    <marker
+       id="twist-3"
+       viewBox="-2 -2 4 4"
+       markerWidth="5"
+       markerHeight="5"
+       orient="auto"
+       markerUnits="userSpaceOnUse">
+      <path
+         d="M 1,-2 H -1 V 2 H 1 Z"
+         fill="#000"
+         stroke="#000"
+         stroke-width="1px"
+         id="path839" />
+    </marker>
+  </defs>
+  <path
+     d="m 374.36793,133.50846 5.9,5.9 v -11.8 z"
+     style="opacity:0.8;fill:#dc143c;stroke:none;fill-opacity:1"
+     id="path2099" />
+  <path
+     d="m 235.91001,139.40846 -5.9,-5.9 5.9,-5.9 z"
+     style="opacity:0.8;fill:#008000;stroke:none"
+     id="path2101" />
+  <path
+     d="m 274.75577,133.50845 5.9,5.90001 v -11.80001 z"
+     style="opacity:0.8;fill:#c030f0;stroke:none"
+     id="path2103" />
+  <path
+     d="m 322.84601,133.50846 5.9,5.9 v -11.8 z"
+     style="opacity:0.8;fill:#00f090;stroke:none"
+     id="path2105" />
+  <path
+     d="m 386.16793,151.50846 -5.9,5.9 v -11.8 z"
+     style="opacity:0.8;fill:#dc143c;stroke:none;fill-opacity:1"
+     id="path2123" />
+  <path
+     d="m 235.91001,157.40846 5.90001,-5.9 -5.9,-5.9 z"
+     style="opacity:0.8;fill:#008000;stroke:none"
+     id="path2125" />
+  <path
+     d="m 286.55577,151.50845 -5.9,5.90001 v -11.80001 z"
+     style="opacity:0.8;fill:#c030f0;stroke:none"
+     id="path2127" />
+  <path
+     d="m 334.64601,151.50846 -5.9,5.9 v -11.8 z"
+     style="opacity:0.8;fill:#00f090;stroke:none"
+     id="path2129" />
+  <path
+     d="m 374.36793,115.50846 5.9,5.9 v -11.8 z"
+     style="opacity:0.8;fill:#dc143c;stroke:none;fill-opacity:1"
+     id="path2147" />
+  <path
+     d="m 235.91001,121.40846 -5.9,-5.9 5.9,-5.9 z"
+     style="opacity:0.8;fill:#008000;stroke:none"
+     id="path2149" />
+  <path
+     d="m 274.75577,115.50845 5.9,5.90001 v -11.80001 z"
+     style="opacity:0.8;fill:#c030f0;stroke:none"
+     id="path2151" />
+  <path
+     d="m 322.84601,115.50846 5.9,5.9 v -11.8 z"
+     style="opacity:0.8;fill:#00f090;stroke:none"
+     id="path2153" />
+  <path
+     d="m 386.16793,115.50846 -5.9,5.9 v -11.8 z"
+     style="opacity:0.8;fill:#dc143c;stroke:none;fill-opacity:1"
+     id="path2155" />
+  <path
+     d="m 235.91001,121.40846 5.90001,-5.9 -5.9,-5.9 z"
+     style="opacity:0.8;fill:#008000;stroke:none"
+     id="path2157" />
+  <path
+     d="m 286.55577,115.50845 -5.9,5.90001 v -11.80001 z"
+     style="opacity:0.8;fill:#c030f0;stroke:none"
+     id="path2159" />
+  <path
+     d="m 334.64601,115.50846 -5.9,5.9 v -11.8 z"
+     style="opacity:0.8;fill:#00f090;stroke:none"
+     id="path2161" />
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="22.463188"
+     y="103.96828"
+     id="text2165"><tspan
+       sodipodi:role="line"
+       id="tspan2163"
+       x="22.463188"
+       y="103.96828">c.c</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="32.463192"
+     y="119.96828"
+     id="text2169"><tspan
+       sodipodi:role="line"
+       id="tspan2167"
+       x="32.463192"
+       y="119.96828">twist both pairs</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="32.463192"
+     y="137.96829"
+     id="text2173"><tspan
+       sodipodi:role="line"
+       id="tspan2171"
+       x="32.463192"
+       y="137.96829">twist left pair</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="32.463192"
+     y="155.96829"
+     id="text2177"><tspan
+       sodipodi:role="line"
+       id="tspan2175"
+       x="32.463192"
+       y="155.96829">twist right pair</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="218.4632"
+     y="103.96828"
+     id="text2181"><tspan
+       sodipodi:role="line"
+       id="tspan2179"
+       x="218.4632"
+       y="103.96828">zero</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="260.4632"
+     y="103.96828"
+     id="text2185"><tspan
+       sodipodi:role="line"
+       id="tspan2183"
+       x="260.4632"
+       y="103.96828">once</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="306.4632"
+     y="103.96828"
+     id="text2189"><tspan
+       sodipodi:role="line"
+       id="tspan2187"
+       x="306.4632"
+       y="103.96828">twice</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="358.46317"
+     y="103.96828"
+     id="text2193"><tspan
+       sodipodi:role="line"
+       id="tspan2191"
+       x="358.46317"
+       y="103.96828">more</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="22.463188"
+     y="197.96829"
+     id="text2197"><tspan
+       sodipodi:role="line"
+       id="tspan2195"
+       x="22.463188"
+       y="197.96829">c.c.c  twist once          . = one of </tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="66.463188"
+     y="217.36002"
+     id="text2201"><tspan
+       sodipodi:role="line"
+       id="tspan2199"
+       x="66.463188"
+       y="217.36002">all pairs</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="66.463188"
+     y="236.39581"
+     id="text2205"><tspan
+       sodipodi:role="line"
+       id="tspan2203"
+       x="66.463188"
+       y="236.39581">left pairs</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="66.463188"
+     y="254.36002"
+     id="text2209"><tspan
+       sodipodi:role="line"
+       id="tspan2207"
+       x="66.463188"
+       y="254.36002">right pairs</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="66.463188"
+     y="273.96829"
+     id="text2213"><tspan
+       sodipodi:role="line"
+       id="tspan2211"
+       x="66.463188"
+       y="273.96829">top pairs</tspan></text>
+  <path
+     d="m 177.91001,238.16364 -5.9,-5.9 5.9,-5.9 z"
+     style="opacity:0.8;fill:#14a1f2;fill-opacity:1;stroke:none"
+     id="path2215" />
+  <path
+     d="m 177.91001,256.20303 5.90001,-5.9 -5.9,-5.9 z"
+     style="opacity:0.8;fill:#14a1f2;fill-opacity:1;stroke:none"
+     id="path2217" />
+  <path
+     d="m 177.91001,219.16364 -5.9,-5.9 5.9,-5.9 z"
+     style="opacity:0.8;fill:#14a1f2;fill-opacity:1;stroke:none"
+     id="path2219" />
+  <path
+     d="m 177.91001,219.16364 5.90001,-5.9 -5.9,-5.9 z"
+     style="opacity:0.8;fill:#14a1f2;fill-opacity:1;stroke:none"
+     id="path2221" />
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="66.463188"
+     y="291.96829"
+     id="text2225"><tspan
+       sodipodi:role="line"
+       id="tspan2223"
+       x="66.463188"
+       y="291.96829">bottom pairs</tspan></text>
+  <path
+     d="m 171.06001,273.02603 5.9,-5.9 5.9,5.9 z"
+     style="opacity:0.8;fill:#14a1f2;fill-opacity:1;stroke:none"
+     id="path2227" />
+  <path
+     d="m 170.96002,284.92193 5.89999,5.9 5.9,-5.89999 z"
+     style="opacity:0.8;fill:#14a1f2;fill-opacity:1;stroke:none"
+     id="path2229" />
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="60.463188"
+     y="29.968292"
+     id="text2246"><tspan
+       sodipodi:role="line"
+       id="tspan2244"
+       x="60.463188"
+       y="29.968292">cross only</tspan></text>
+  <g
+     onclick="paint(this)"
+     class="node"
+     transform="rotate(45,-34.416339,71.276296)"
+     id="g2267">
+    <title
+       id="title2263">ct - n2</title>
+    <path
+       d="M -5.9,0 0,5.9 5.9,0 0,-5.9 Z"
+       style="opacity:0.8;fill:#cccccc;stroke:none"
+       id="path2265" />
+  </g>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="60.463188"
+     y="47.968292"
+     id="text2271"><tspan
+       sodipodi:role="line"
+       id="tspan2269"
+       x="60.463188"
+       y="47.968292">plaits (at least ctctctc, 4 times c)</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="194.4632"
+     y="217.36002"
+     id="text2311"><tspan
+       sodipodi:role="line"
+       id="tspan2309"
+       x="194.4632"
+       y="217.36002">fixing stitch (ctctc)</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="194.4632"
+     y="273.36002"
+     id="text2315"><tspan
+       sodipodi:role="line"
+       id="tspan2313"
+       x="194.4632"
+       y="273.36002">ctc.c</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="194.4632"
+     y="291.36002"
+     id="text2319"><tspan
+       id="tspan2317"
+       x="194.4632"
+       y="291.36002"
+       sodipodi:role="line">c.ctc</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="194.4632"
+     y="237.36002"
+     id="text2323"><tspan
+       sodipodi:role="line"
+       id="tspan2321"
+       x="194.4632"
+       y="237.36002">cl.cl.c</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="194.4632"
+     y="255.36002"
+     id="text2327"><tspan
+       sodipodi:role="line"
+       id="tspan2325"
+       x="194.4632"
+       y="255.36002">c.rc.rc</tspan></text>
+  <path
+     style="fill:#1080c0;fill-opacity:1;stroke:#000000;stroke-width:0.95622;stroke-linejoin:bevel"
+     d="m 221.01267,72.54243 h 25.45305"
+     id="path2329"
+     sodipodi:nodetypes="cc" />
+  <path
+     style="fill:#1080c0;fill-opacity:1;stroke:#000000;stroke-width:0.95622;stroke-linejoin:bevel;marker-mid:url(#twist-1)"
+     d="m 269.53255,72.74129 11.93111,-0.19886 11.93112,-0.19885"
+     id="path2331"
+     sodipodi:nodetypes="ccc" />
+  <path
+     style="fill:#1080c0;fill-opacity:1;stroke:#000000;stroke-width:0.95622;stroke-linejoin:bevel;marker-mid:url(#twist-2)"
+     d="m 315.6662,72.74128 13.91963,-0.19885 13.91964,-0.19885"
+     id="path2333"
+     sodipodi:nodetypes="ccc" />
+  <path
+     style="fill:#1080c0;fill-opacity:1;stroke:#000000;stroke-width:0.95622;stroke-linejoin:bevel;marker-mid:url(#twist-3)"
+     d="m 365.36771,72.74128 13.32308,-0.19885 13.32308,-0.19885"
+     id="path2335"
+     sodipodi:nodetypes="ccc" />
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="32.463192"
+     y="77.968277"
+     id="text2339"><tspan
+       sodipodi:role="line"
+       id="tspan2337"
+       x="32.463192"
+       y="77.968277">twists between stitches</tspan></text>
+</svg>
