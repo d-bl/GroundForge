@@ -72,12 +72,20 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   private val gold = "#DAA520"
   private val lemon = "#D8dA35"
 
-  private def twitsToColor(ls: Int) = {
-    ls match {
+  private def color1(nrOfTwists: Int) = {
+    nrOfTwists match {
       case 0 => green
       case 1 => violet
       case 2 => aqua
       case _ => red
+    }
+  }
+  private def color2(nrOfTwists: Int) = {
+    nrOfTwists match {
+      case 0 => grey // should not happen
+      case 1 => blue
+      case 2 => gold
+      case _ => lemon
     }
   }
 
@@ -97,42 +105,31 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         case (1, _) =>
           Seq(grey, "|") // just cross
         case (2, _) if ls == rs =>
-          Seq(twitsToColor(ls), "|")
+          Seq(color1(ls), "|")
         case (2, _) if ls >= 3 && rs >= 3 =>
-          Seq(twitsToColor(3), "|")
+          Seq(color1(3), "|")
         case (2, _) =>
-          Seq(twitsToColor(ls), "|", twitsToColor(rs))
-        case (3, "clrclrc") => // fixing stitch
-          Seq(blue, "|")
-        case (3, "cllrrcllrrc") =>
-          Seq(gold, "|")
+          Seq(color1(ls), "|", color1(rs))
+        case (3, "clrclrc") | (3, "cllrrcllrrc") =>
+          Seq(color2(ls / 2), "|")
         case (3, _) if str.matches("clll+rrr+clll+rrr+c") =>
-          Seq(lemon, "|")
-        case (3, "clclc") =>
-          Seq(blue, "|", twitsToColor(0))
-        case (3, "cllcllc") =>
-          Seq(blue, "|", gold)
-        case (3, _) if str.matches("clll+clll+c") =>
-          Seq(blue, "|", lemon)
+          Seq(color2(2), "|")
         case (3, _) if str.matches("clrr+clrr+c") =>
-          Seq(blue, "|", twitsToColor(rs / 2))
-        case (3, "crcrc") =>
-          Seq(twitsToColor(0), "|", blue)
-        case (3, "crrcrrc") =>
-          Seq(twitsToColor(0), "|", gold)
+          Seq(color2(1), "|", color1(rs / 2))
+        case (3, "crcrc") | (3, "crrcrrc") =>
+          Seq(color1(0), "|", color2(rs / 2))
         case (3, _) if str.matches("crrr+crrr+c") =>
-          Seq(twitsToColor(0), "|", lemon)
+          Seq(color1(0), "|", color2(3))
         case (3, _) if str.matches("cllr+cllr+c") =>
-          Seq(twitsToColor(ls / 2), "|", blue)
+          Seq(color1(ls / 2), "|", color2(1))
         case (3, _) if str.matches("clrclr*c") =>
-          Seq(blue, "-", twitsToColor(ls - 1))
+          Seq(blue, "-", color1(ls - 1))
         case (3, _) if str.matches("c[lr]*clrc") =>
-          Seq(twitsToColor(ls - 1), "-", blue)
+          Seq(color1(ls - 1), "-", color2(1))
         case _ if str.matches("clrclrc(lrc)+") => // plaits
           Seq(grey, "/")
         case _ => Seq()
-        // TODO three or more times cross but not a plain plait,
-        //  we still have horizontally sliced diamonds and squares sliced in two directions
+        // TODO we still have squares sliced in two directions
       }
     }
 
