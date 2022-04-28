@@ -101,21 +101,18 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       val ls = str.replaceAll("[^l]", "").length
       val rs = str.replaceAll("[^r]","").length
       val cs = str.replaceAll("[^c]","").length
+      println(s"$stitch -> $str ls=$ls ${color1(ls)} rs=$rs ${color1(rs)} cs=$cs")
       (cs,str) match {
         case (1, _) =>
           Seq(grey, "|") // just cross
-        case (2, _) if ls == rs =>
-          Seq(color1(ls), "|")
-        case (2, _) if ls >= 3 && rs >= 3 =>
-          Seq(color1(3), "|")
         case (2, _) =>
           Seq(color1(ls), "|", color1(rs))
         case (3, "clrclrc") | (3, "cllrrcllrrc") =>
-          Seq(color2(ls / 2), "|")
+          Seq(color2(1), "|")
         case (3, _) if str.matches("clll+rrr+clll+rrr+c") =>
-          Seq(color2(2), "|")
+          Seq(color2(3), "|")
         case (3, _) if str.matches("clrr+clrr+c") =>
-          Seq(color2(1), "|", color1(rs / 2))
+          Seq(color2(1), "|", color1(2))
         case (3, "crcrc") | (3, "crrcrrc") =>
           Seq(color1(0), "|", color2(rs / 2))
         case (3, _) if str.matches("crrr+crrr+c") =>
