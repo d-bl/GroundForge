@@ -96,7 +96,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
           Seq(grey, "|") // just cross
         case (2, _) if ls == rs =>
           Seq(twsitsToColor(ls), "|")
-        case (2, _) if ls > 3 && rs > 3 =>
+        case (2, _) if ls >= 3 && rs >= 3 =>
           Seq(twsitsToColor(3), "|")
         case (2, _) =>
           Seq(twsitsToColor(ls), "|", twsitsToColor(rs))
