@@ -69,6 +69,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   private val red = "#DC143C"
   private val green = "#008000"
   private val blue = "#14a1f2"
+  private val gold = "#DAA520"
+  private val lemon = "#D8dA35"
 
   private def twsitsToColor(ls: Int) = {
     ls match {
@@ -100,12 +102,16 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
           Seq(twsitsToColor(ls), "|", twsitsToColor(rs))
         case (3, "ctctc") => // fixing stitch
           Seq(blue, "|")
+        case (3, "cttcttc") =>
+          Seq(gold, "|")
+        case (3, "ctttctttc") =>
+          Seq(lemon, "|")
         case (3, "clclc") =>
-          Seq(blue, "|", twsitsToColor(rs / 2))
+          Seq(blue, "|", twsitsToColor(0))
         case (3, _) if str.matches("ctr+ctr+c") =>
           Seq(blue, "|", twsitsToColor(rs / 2))
         case (3, "crcrc") =>
-          Seq(twsitsToColor(ls / 2), "|", blue)
+          Seq(twsitsToColor(0), "|", blue)
         case (3, _) if str.matches("ctl+ctl+c") =>
           Seq(twsitsToColor(ls / 2), "|", blue)
         case (3, _) if str.matches("ctct*c") =>
