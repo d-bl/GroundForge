@@ -108,7 +108,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         case (2, _) =>
           Seq(color1(ls), "|", color1(rs))
         case (3, "clrclrc") | (3, "cllrrcllrrc") =>
-          Seq(color2(1), "|")
+          Seq(color2(ls), "|")
         case (3, _) if str.matches("clll+rrr+clll+rrr+c") =>
           Seq(color2(3), "|")
         case (3, _) if str.matches("clrr+clrr+c") =>
