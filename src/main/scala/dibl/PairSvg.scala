@@ -97,7 +97,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         .replaceAll("[tlr]*$", "") // ignore trailing twists
         .replaceAll("p", "") // ignore pins
         .replaceAll("t","lr")
-        .sortBy(identity)
+        .split("c").map(_.sortBy(identity)).mkString("c","c","c").replaceAll("cc","c") // l's before all r's but keep c's in position
       val ls = str.replaceAll("[^l]", "").length
       val rs = str.replaceAll("[^r]","").length
       val cs = str.replaceAll("[^c]","").length
