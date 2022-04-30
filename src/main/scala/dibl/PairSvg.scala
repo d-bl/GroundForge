@@ -16,7 +16,6 @@
 
 package dibl
 
-import dibl.Stitches.defaultColorName
 import dibl.proto.{ Item, TilesConfig }
 
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
@@ -35,106 +34,43 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   private def squareNE(d: Double = 4.3) = s"M -$d,-$d $d,-$d $d,$d Z"
 
+  private def squareLeft(d: Double = 4.3) = s"M -$d,-$d H 0 v ${ 2 * d } h -$d z"
+
+  private def squareRight(d: Double = 4.3) = s"M 0,-$d H $d V $d H 0 Z"
+
   private def diamond(d: Double = 5.5) = s"M -$d,0 0,$d $d,0 0,-$d Z"
 
-  private def diamondS(d: Double = 5.5) = s"M -$d,0 0,$d $d,0 Z"
+  private def diamondTopLeft(d: Double = 5.5) = s"M -$d,0 0,-$d v $d z"
 
-  private def diamondE(d: Double = 5.5) = s"M 0,$d $d,0 0,-$d Z"
+  private def diamondTopRight(d: Double = 5.5) = s"M $d,0 0,-$d v $d z"
 
-  private def diamondN(d: Double = 5.5) = s"M -$d,0 $d,0 0,-$d Z"
+  private def diamondBottomLeft(d: Double = 5.5) = s"m -$d,0 $d,$d v -$d z"
 
-  private def diamondW(d: Double = 5.5) = s"M -$d,0 0,$d 0,-$d Z"
+  private def diamondBottomRight(d: Double = 5.5) = s"m $d,0 -$d,$d v -$d z"
 
-  private def twistMark(count: Int) =
-  {
+  private def diamondBottom(d: Double = 5.5) = s"M -$d,0 0,$d $d,0 Z"
+
+  private def diamondRight(d: Double = 5.5) = s"M 0,$d $d,0 0,-$d Z"
+
+  private def diamondTop(d: Double = 5.5) = s"M -$d,0 $d,0 0,-$d Z"
+
+  private def diamondLeft(d: Double = 5.5) = s"M -$d,0 0,$d 0,-$d Z"
+
+  private def twistMark(count: Int) = {
     val d = if (count == 1) "M 0,2 0,-2"
             else if (count == 2) "M -1,2 V -2 M 1,2 1,-2"
                  else "M -1.5,2 V -2 M 1.5,2 1.5,-2  M 0,2 0,-2"
-      s"""<marker id="twist-$count"
-         | viewBox="-2 -2 4 4"
-         | markerWidth="5"
-         | markerHeight="5"
-         | orient="auto"
-         | markerUnits="userSpaceOnUse">
-         | <path d="$d"
-         |  fill="#000"
-         |  stroke="#000"
-         |  stroke-width="0.7px"></path>
-         |</marker>""".stripMargin
-    }
-
-  private val grey = "#BBBBBB"
-  private val aqua = "#00F090"
-  private val violet = "#C030F0"
-  private val red = "#DC143C"
-  private val green = "#008000"
-  private val blue = "#14a1f2"
-  private val gold = "#DAA520"
-  private val lemon = "#D8dA35"
-
-  private def color1(nrOfTwists: Int) = {
-    nrOfTwists match {
-      case 0 => green
-      case 1 => violet
-      case 2 => aqua
-      case _ => red
-    }
-  }
-  private def color2(nrOfTwists: Int) = {
-    nrOfTwists match {
-      case 0 => grey // should not happen
-      case 1 => blue
-      case 2 => gold
-      case _ => lemon
-    }
-  }
-
-  implicit class TwistString(val stitch: String) extends AnyVal {
-
-    def shapeDef(): Seq[String] = {
-      val str = stitch
-        .replaceAll("^[tlr]*", "") // ignore leading twists
-        .replaceAll("[tlr]*$", "") // ignore trailing twists
-        .replaceAll("p", "") // ignore pins
-        .replaceAll("t","lr")
-        .split("c").map(_.sortBy(identity)).mkString("c","c","c").replaceAll("cc","c") // l's before all r's but keep c's in position
-      val ls = str.replaceAll("[^l]", "").length
-      val rs = str.replaceAll("[^r]","").length
-      val cs = str.replaceAll("[^c]","").length
-      println(s"$stitch -> $str ls=$ls ${color1(ls)} rs=$rs ${color1(rs)} cs=$cs")
-      (cs,str) match {
-        case (1, _) =>
-          Seq(grey, "|") // just cross
-        case (2, _) =>
-          Seq(color1(ls), "|", color1(rs))
-        case (3, "clrclrc") | (3, "cllrrcllrrc") =>
-          Seq(color2(ls), "|")
-        case (3, _) if str.matches("clll+rrr+clll+rrr+c") =>
-          Seq(color2(3), "|")
-        case (3, _) if str.matches("clrr+clrr+c") =>
-          Seq(color2(1), "|", color1(2))
-        case (3, "crcrc") | (3, "crrcrrc") =>
-          Seq(color1(0), "|", color2(rs / 2))
-        case (3, _) if str.matches("crrr+crrr+c") =>
-          Seq(color1(0), "|", color2(3))
-        case (3, _) if str.matches("cllr+cllr+c") =>
-          Seq(color1(ls / 2), "|", color2(1))
-        case (3, _) if str.matches("clrclr*c") =>
-          Seq(blue, "-", color1(ls - 1))
-        case (3, _) if str.matches("c[lr]*clrc") =>
-          Seq(color1(ls - 1), "-", color2(1))
-        case _ if str.matches("clrclrc(lrc)+") => // plaits
-          Seq(grey, "/")
-        case _ => Seq()
-        // TODO we still have squares sliced in two directions
-      }
-    }
-
-    def twistsOfPair(pairNr: Int): String = {
-      val search = if (pairNr == 0) "[^tl]"
-                   else "[^tr]"
-      stitch.replaceAll(search, "")
-    }
+    s"""<marker id="twist-$count"
+       | viewBox="-2 -2 4 4"
+       | markerWidth="5"
+       | markerHeight="5"
+       | orient="auto"
+       | markerUnits="userSpaceOnUse">
+       | <path d="$d"
+       |  fill="#000"
+       |  stroke="#000"
+       |  stroke-width="0.7px"></path>
+       |</marker>""".stripMargin
   }
 
   private def renderLinks(items: Seq[Seq[Item]]): String = {
@@ -192,6 +128,15 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   private def scale(c: Int) = (c + 2) * 15
 
+  implicit class StitchString(val stitch: String) extends AnyVal {
+
+    def twistsOfPair(pairNr: Int): String = {
+      val search = if (pairNr == 0) "[^tl]"
+                   else "[^tr]"
+      stitch.replaceAll(search, "")
+    }
+  }
+
   private def renderNodes(items: Seq[Seq[Item]]): String = {
     for {
       row <- items.indices
@@ -209,17 +154,62 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       def group(shapes: String) = s"""<g onclick='paint(this)' class="node" $transform>$title$shapes</g>"""
 
       def singleShape(color: String, shape: String) =
-        s"""<path onclick='paint(this)' class="node" d="$shape"${ style(color) }$transform >$title</path>"""
+        s"""<path onclick='paint(this)' class="node" d="$shape" ${ style(color) } $transform >$title</path>"""
 
-      targetItem.stitch.shapeDef() match {
+      val pale = "#f7f7f7" // center one of color brewer list
+      val black = "#000000"
+
+      def colour(nrOfTwists: Int) = {
+        // https://colorbrewer2.org/?type=diverging&scheme=RdBu&n=5
+        val colours = Seq("#ca0020", "#f4a582", /* pale */ "#92c5de", "#0571b0")
+        colours(Math.min(colours.length - 1, nrOfTwists))
+      }
+
+      def colourRight(s: String) = colour(s.replaceAll("l", "").length)
+
+      def colourLeft(s: String) = colour(s.replaceAll("r", "").length)
+
+      def shapeDef(stitch: String): Seq[String] = {
+        val str = stitch
+          .replaceAll("^[tlr]*", "") // ignore leading twists
+          .replaceAll("[tlr]*$", "") // ignore trailing twists
+          .replaceAll("p", "") // ignore pins
+          .replaceAll("t", "lr")
+        val cs = str.replaceAll("[^c]", "").length
+        val twists = str.split("c").filterNot(_.isEmpty).map(_.sortBy(identity))
+        println(s"$stitch ${ twists.mkString }")
+        (cs, twists) match {
+          case (_, Array()) => // just one or more c's
+            Seq(black, "|")
+          case (2, Array(lr)) => // c.c
+            Seq(colourLeft(lr), "|", colourRight(lr))
+          case (3, Array(lrBottom)) if str.startsWith("cc") => // cc.c
+            Seq(colour(0), colour(0), colourLeft(lrBottom), colourRight(lrBottom))
+          case (3, Array(lrTop)) => // c.cc
+            Seq(colourLeft(lrTop), colourRight(lrTop), colour(0), colour(0))
+          case (3, Array(lrTop, lrBottom)) => // c.c.c
+            Seq(colourLeft(lrTop), colourRight(lrTop), colourLeft(lrBottom), colourRight(lrBottom))
+          case (nrOfCs, lrs) if nrOfCs > 3 && lrs.distinct.sameElements(Array("lr")) => // plait
+            Seq(black, "/")
+          case _ => Seq() // anything else
+        }
+      }
+
+      shapeDef(targetItem.stitch) match {
         case Seq(color) => singleShape(color, square())
-        case Seq(color1, "/") => group(shape(color1, square()))
         case Seq(color1, "|") => group(shape(color1, diamond()))
-        case Seq(color1, "/", color2) => group(shape(color1, squareNW()) + shape(color2, squareSE()))
-        case Seq(color1, "\\", color2) => group(shape(color1, squareNE()) + shape(color2, squareSW()))
-        case Seq(color1, "-", color2) => group(shape(color1, diamondN()) + shape(color2, diamondS()))
-        case Seq(color1, "|", color2) => group(shape(color1, diamondW()) + shape(color2, diamondE()))
-        case _ => singleShape("#DDDDDD", circle()) // fall back
+        case Seq(color1, "|", color2) => group(shape(color1, squareLeft()) + shape(color2, squareRight()))
+        case Seq(color1, "/") => group(shape(color1, square()))
+        case Seq(topLeft, topRight, bottomLeft, bottomRight) =>
+          println(s"${ targetItem.stitch } $topLeft $topRight $bottomLeft $bottomRight")
+          group(shape(topLeft, diamondTopLeft()) +
+            shape(topRight, diamondTopRight()) +
+            shape(bottomLeft, diamondBottomLeft()) +
+            shape(bottomRight, diamondBottomRight())
+          )
+        case defs =>
+          println(s"${ targetItem.stitch } $defs")
+          singleShape(pale, circle()) // fall back
       }
     }.mkString
   }.mkString
