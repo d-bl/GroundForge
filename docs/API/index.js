@@ -35,10 +35,10 @@ function load() {
   d3.select('#proto').html(PrototypeDiagram.create(config))
 
   var pairDiagram = NewPairDiagram.create(config)
-  var primaryPairSvg = PairSvg.render(config, 200,300)
+  var primaryPairSvg = PairSvg.render(config, 350,500)
   d3.select('#pairsStatic').html(primaryPairSvg)
   d3.select('#pairs').html(primaryPairSvg)
-  nudge(d3.select('#pairs'), pairDiagram, 200, 300)
+  nudge(d3.select('#pairs'), pairDiagram, 230, 220)
 
   var threadDiagram = ThreadDiagram.create(pairDiagram)
   showGraph(d3.select('#threads'), threadDiagram, "2px",520,800, 2, config, 0.1)

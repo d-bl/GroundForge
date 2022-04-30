@@ -10,7 +10,7 @@ class PairSvgSpec  extends FlatSpec with Matchers {
   "render" should "show trailing twists" in {
     val q = "patchWidth=8&patchHeight=14&b1=ct&c1=ctl&d1=ctr&b2=ctt&d2=cttl&c3=ctr&footside=b,-,a,-&footsideStitch=-&tile=831,4-7,-5-&tileStitch=ctct&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
     val config = TilesConfig(q)
-    val str = PairSvg.render(config, 200, 300)
+    val str = PairSvg.render(config, 400, 500)
     new java.io.File("target/test/PairSvg").mkdirs()
     File(s"target/test/PairSvg/trailing.svg")
       .writeAll(prolog + str)
@@ -19,7 +19,7 @@ class PairSvgSpec  extends FlatSpec with Matchers {
   it should "show leading twists" in {
     val q = "patchWidth=8&patchHeight=14&b1=tc&c1=ltc&d1=rtc&b2=ttc&d2=lttc&c3=rtc&footside=b,-,a,-&footsideStitch=-&tile=831,4-7,-5-&tileStitch=ctct&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
     val config = TilesConfig(q)
-    val str = PairSvg.render(config, 200, 300)
+    val str = PairSvg.render(config, 400, 500)
     new java.io.File("target/test/PairSvg").mkdirs()
     File(s"target/test/PairSvg/leading.svg")
       .writeAll(prolog + str)

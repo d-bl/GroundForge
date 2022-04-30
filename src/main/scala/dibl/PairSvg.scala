@@ -23,33 +23,33 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 @JSExportTopLevel("PairSvg") object PairSvg {
 
-  private def circle(r: Double = 5): String = s"M $r,0 A $r,$r 0 0 1 0,$r $r,$r 0 0 1 -$r,0 $r,$r 0 0 1 0,-$r $r,$r 0 0 1 $r,0 Z"
+  private def circle(r: Double = 4.7): String = s"M $r,0 A $r,$r 0 0 1 0,$r $r,$r 0 0 1 -$r,0 $r,$r 0 0 1 0,-$r $r,$r 0 0 1 $r,0 Z"
 
-  private def square(d: Double = 4.5) = s"M -$d,-$d $d,-$d $d,$d -$d,$d Z"
+  private def square(d: Double = 4.3) = s"M -$d,-$d $d,-$d $d,$d -$d,$d Z"
 
-  private def squareSE(d: Double = 4.5) = s"M $d,-$d $d,$d -$d,$d Z"
+  private def squareSE(d: Double = 4.3) = s"M $d,-$d $d,$d -$d,$d Z"
 
-  private def squareSW(d: Double = 4.5) = s"M -$d,-$d $d,$d -$d,$d Z"
+  private def squareSW(d: Double = 4.3) = s"M -$d,-$d $d,$d -$d,$d Z"
 
-  private def squareNW(d: Double = 4.5) = s"M -$d,-$d $d,-$d -$d,$d Z"
+  private def squareNW(d: Double = 4.3) = s"M -$d,-$d $d,-$d -$d,$d Z"
 
-  private def squareNE(d: Double = 4.5) = s"M -$d,-$d $d,-$d $d,$d Z"
+  private def squareNE(d: Double = 4.3) = s"M -$d,-$d $d,-$d $d,$d Z"
 
-  private def diamond(d: Double = 5.9) = s"M -$d,0 0,$d $d,0 0,-$d Z"
+  private def diamond(d: Double = 5.5) = s"M -$d,0 0,$d $d,0 0,-$d Z"
 
-  private def diamondS(d: Double = 5.9) = s"M -$d,0 0,$d $d,0 Z"
+  private def diamondS(d: Double = 5.5) = s"M -$d,0 0,$d $d,0 Z"
 
-  private def diamondE(d: Double = 5.9) = s"M 0,$d $d,0 0,-$d Z"
+  private def diamondE(d: Double = 5.5) = s"M 0,$d $d,0 0,-$d Z"
 
-  private def diamondN(d: Double = 5.9) = s"M -$d,0 $d,0 0,-$d Z"
+  private def diamondN(d: Double = 5.5) = s"M -$d,0 $d,0 0,-$d Z"
 
-  private def diamondW(d: Double = 5.9) = s"M -$d,0 0,$d 0,-$d Z"
+  private def diamondW(d: Double = 5.5) = s"M -$d,0 0,$d 0,-$d Z"
 
   private def twistMark(count: Int) =
   {
     val d = if (count == 1) "M 0,2 0,-2"
             else if (count == 2) "M -1,2 V -2 M 1,2 1,-2"
-                 else "M 1,-2 H -1 V 2 H 1 Z"
+                 else "M -1.5,2 V -2 M 1.5,2 1.5,-2  M 0,2 0,-2"
       s"""<marker id="twist-$count"
          | viewBox="-2 -2 4 4"
          | markerWidth="5"
@@ -59,11 +59,11 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
          | <path d="$d"
          |  fill="#000"
          |  stroke="#000"
-         |  stroke-width="1px"></path>
+         |  stroke-width="0.7px"></path>
          |</marker>""".stripMargin
     }
 
-  private val grey = "#CCCCCC"
+  private val grey = "#BBBBBB"
   private val aqua = "#00F090"
   private val violet = "#C030F0"
   private val red = "#DC143C"
@@ -187,7 +187,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }
     val d = if (twists <= 0) s"M $sX,$sY $tX,$tY"
             else s"M $sX,$sY ${ sX + (tX - sX) / 2 } ${ sY + (tY - sY) / 2 } $tX,$tY"
-    s"<path class='link' d='$d' style='stroke: #000; stroke-width: 2px; fill: none; opacity: $opacity$t'></path>"
+    s"<path class='link' d='$d' style='stroke: #000; stroke-width: 1px; fill: none; opacity: $opacity$t'></path>"
   }
 
   private def scale(c: Int) = (c + 2) * 15
@@ -219,7 +219,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         case Seq(color1, "\\", color2) => group(shape(color1, squareNE()) + shape(color2, squareSW()))
         case Seq(color1, "-", color2) => group(shape(color1, diamondN()) + shape(color2, diamondS()))
         case Seq(color1, "|", color2) => group(shape(color1, diamondW()) + shape(color2, diamondE()))
-        case _ => singleShape(defaultColorName(targetItem.stitch), circle()) // fall back
+        case _ => singleShape("#DDDDDD", circle()) // fall back
       }
     }.mkString
   }.mkString
@@ -249,8 +249,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
        |  ${ twistMark(2) }
        |  ${ twistMark(3) }
        |</defs>
+       |<g transform="matrix(2,0,0,2,0,0)">
        |${ renderLinks(config.getItemMatrix) }
        |${ renderNodes(config.getItemMatrix) }
+       |</g>
        |</svg>""".stripMargin
   }
 }
