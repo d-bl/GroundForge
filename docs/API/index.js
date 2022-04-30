@@ -27,7 +27,7 @@ function load() {
   // and the address created by the link button
   // note that the bold elements in the prototype diagrams are (hidden) form fields
   var q = "patchWidth=8&patchHeight=14"
-                      + "&b1=cr&c1=ctllcrrc&d1=clclc&b2=ctctctctctctt&d2=ctctctctclcttl&c3=ctctll"
+                      + "&b1=cccr&c1=ctllcrrc&d1=clclc&b2=ctctctctctctt&d2=ctctctctclcttl&c3=ctctll"
                       + "&footside=b,-,a,-&footsideStitch=-"
                       + "&tile=831,4-7,-5-&tileStitch=ctct"
                       + "&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
@@ -38,10 +38,10 @@ function load() {
   var primaryPairSvg = PairSvg.render(config, 350,500)
   d3.select('#pairsStatic').html(primaryPairSvg)
   d3.select('#pairs').html(primaryPairSvg)
-  nudge(d3.select('#pairs'), pairDiagram, 230, 220)
+  nudge(d3.select('#pairs'), pairDiagram, 180, 220)
 
   var threadDiagram = ThreadDiagram.create(pairDiagram)
-  showGraph(d3.select('#threads'), threadDiagram, "2px",520,800, 2, config, 0.1)
+  showGraph(d3.select('#threads'), threadDiagram, "2px",620,800, 2, config, 0.1)
 
   // for "ctct" alternatives see:
   // https://d-bl.github.io/GroundForge-help/Replace

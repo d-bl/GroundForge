@@ -180,7 +180,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         println(s"$stitch ${ twists.mkString }")
         (cs, twists) match {
           case (_, Array()) => // just one or more c's
-            Seq(black, "|")
+            Seq(black, "-", colour(cs))
           case (2, Array(lr)) => // c.c
             Seq(colourLeft(lr), "|", colourRight(lr))
           case (3, Array(lrBottom)) if str.startsWith("cc") => // cc.c
@@ -200,6 +200,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         case Seq(color1, "|") => group(shape(color1, diamond()))
         case Seq(color1, "|", color2) => group(shape(color1, squareLeft()) + shape(color2, squareRight()))
         case Seq(color1, "/") => group(shape(color1, square()))
+        case Seq(color1, "-", color2) => group(shape(color1, diamondTop()) + shape(color2, diamondBottom()))
         case Seq(topLeft, topRight, bottomLeft, bottomRight) =>
           println(s"${ targetItem.stitch } $topLeft $topRight $bottomLeft $bottomRight")
           group(shape(topLeft, diamondTopLeft()) +
