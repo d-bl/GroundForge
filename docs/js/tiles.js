@@ -21,7 +21,7 @@ function painStitchValue () {
 }
 function flipStitch() {
   var n = d3.select('#paintStitches').node()
-  n.value=n.value.toLowerCase().replace(/l/,"R").replace(/r/,"l").replace(/R/,"r")
+  n.value=n.value.toLowerCase().replace(/l/g,"R").replace(/r/g,"l").replace(/R/g,"r")
   return false;
 }
 function paint(clicked) {
