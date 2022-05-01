@@ -50,9 +50,9 @@
      inkscape:window-height="997"
      id="namedview1777"
      showgrid="false"
-     inkscape:zoom="1.7585224"
-     inkscape:cx="189.65797"
-     inkscape:cy="213.90982"
+     inkscape:zoom="1.0301603"
+     inkscape:cx="327.02103"
+     inkscape:cy="247.95807"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="0"
@@ -166,7 +166,7 @@
        sodipodi:role="line"
        id="tspan6328"
        x="70.126694"
-       y="235.6785">c.c.c (at least one l or r for at least one of the dots)</tspan></text>
+       y="235.6785">c.c.c (at least one l or r for at least one of the dots, this eaxample: ctllcrrc)</tspan></text>
   <g
      onclick="paint(this)"
      class="node"
@@ -200,7 +200,7 @@
        sodipodi:role="line"
        id="tspan6344"
        x="70.126694"
-       y="195.67847">c.c (at least one l or r for the dot)</tspan></text>
+       y="195.67847">c.c (at least one l or r for the dot, this example: ctrc)</tspan></text>
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
@@ -234,7 +234,7 @@
   <g
      onclick="paint(this)"
      class="node"
-     transform="matrix(2,0,0,2,44.25125,192.27221)"
+     transform="matrix(-2,0,0,2,44.25125,192.27221)"
      id="g8519">
     <title
        id="title8513">cllclll - c3</title>
@@ -244,7 +244,7 @@
        id="path8515" />
     <path
        d="M 0,-4.3 H 4.3 V 4.3 H 0 Z"
-       style="opacity:0.9;fill:#ca0020;stroke:none"
+       style="opacity:0.9;fill:#f4a582;fill-opacity:1;stroke:none"
        id="path8517" />
   </g>
   <text
