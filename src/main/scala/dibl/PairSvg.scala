@@ -28,6 +28,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   private def squareSE(d: Double = 4.3) = s"M $d,-$d $d,$d -$d,$d Z"
 
+  private def squarePortrait(d: Double = 4.3) = s"m -${ d / 2 },-$d h $d v ${ 2 * d } h -$d z"
+
   private def squareSW(d: Double = 4.3) = s"M -$d,-$d $d,$d -$d,$d Z"
 
   private def squareNW(d: Double = 4.3) = s"M -$d,-$d $d,-$d -$d,$d Z"
@@ -184,9 +186,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         println(s"$stitch ${ twists.mkString }")
         (cs, twists) match {
           case (_, Array()) => // just one or more c's
-            Seq(black, "-", colour(cs))
+            Seq(black, "<->", colour(cs))
           case (2, Array(lr)) => // c.c
-            Seq(colourLeft(lr), "|", colourRight(lr))
+            Seq(colourLeft(lr), "<|>", colourRight(lr))
           case (3, Array(lrBottom)) if str.startsWith("cc") => // cc.c
             Seq(colour(0), colour(0), colourLeft(lrBottom), colourRight(lrBottom))
           case (3, Array(lrTop)) => // c.cc
@@ -194,20 +196,19 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
           case (3, Array(lrTop, lrBottom)) => // c.c.c
             Seq(colourLeft(lrTop), colourRight(lrTop), colourLeft(lrBottom), colourRight(lrBottom))
           case (nrOfCs, lrs) if nrOfCs > 3 && lrs.distinct.sameElements(Array("lr")) => // plait
-            Seq(black, "=", colour(1))
+            Seq(black, "|")
           case (nrOfCs, _) if nrOfCs > 3 && str.matches("c(rrc)?(llcrrc)+(llc)?") => // tallie
-            Seq(black, "=", colour(2))
+            Seq(black, "[]", black)
           case _ => Seq() // anything else
         }
       }
 
       shapeDef(targetItem.stitch) match {
         case Seq(color) => singleShape(color, square())
-        case Seq(color1, "|") => group(shape(color1, diamond()))
-        case Seq(color1, "|", color2) => group(shape(color1, squareLeft()) + shape(color2, squareRight()))
-        case Seq(color1, "/") => group(shape(color1, square()))
-        case Seq(color1, "-", color2) => group(shape(color1, diamondTop()) + shape(color2, diamondBottom()))
-        case Seq(color1, "=", color2) => group(shape(color1, squareTop()) + shape(color2, squareBottom()))
+        case Seq(color, "|") => group(shape(color, squarePortrait()))
+        case Seq(color1, "<|>", color2) => group(shape(color1, squareLeft()) + shape(color2, squareRight()))
+        case Seq(color1, "<->", color2) => group(shape(color1, diamondTop()) + shape(color2, diamondBottom()))
+        case Seq(color1, "[]", color2) => group(shape(color1, squareLeft()) + shape(color2, squareRight()))
         case Seq(topLeft, topRight, bottomLeft, bottomRight) =>
           println(s"${ targetItem.stitch } $topLeft $topRight $bottomLeft $bottomRight")
           group(shape(topLeft, diamondTopLeft()) +

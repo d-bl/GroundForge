@@ -13,6 +13,18 @@
    height="1052"
    sodipodi:docname="stitch-legend.svg"
    inkscape:version="1.0.2 (e86c8708, 2021-01-15)">
+  <g
+     onclick="paint(this)"
+     class="node"
+     transform="matrix(2,0,0,2,43.719168,312.8033)"
+     id="g7077-5">
+    <title
+       id="title7073-8">ctctctctctctt - b2</title>
+    <path
+       d="M -4.3,-4.3 H 4.3 V 4.3 H -4.3 Z"
+       style="opacity:0.9;fill:#000000;stroke:none"
+       id="path7075-6" />
+  </g>
   <metadata
      id="metadata1779">
     <rdf:RDF>
@@ -34,14 +46,14 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="1147"
+     inkscape:window-width="1680"
+     inkscape:window-height="997"
      id="namedview1777"
      showgrid="false"
-     inkscape:zoom="1.6112614"
-     inkscape:cx="40.372874"
-     inkscape:cy="207.13522"
-     inkscape:window-x="1440"
+     inkscape:zoom="1.7585224"
+     inkscape:cx="203.93308"
+     inkscape:cy="242.91144"
+     inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg2"
@@ -101,7 +113,7 @@
     </marker>
     <marker
        id="twist-1-5"
-       viewBox="-2 -2 4 4"
+       viewBox="-2 -2 3 3"
        markerWidth="5"
        markerHeight="5"
        orient="auto"
@@ -115,7 +127,7 @@
     </marker>
     <marker
        id="twist-2-3"
-       viewBox="-2 -2 4 4"
+       viewBox="-2 -2 3 3"
        markerWidth="5"
        markerHeight="5"
        orient="auto"
@@ -171,7 +183,7 @@
     </marker>
     <marker
        id="twist-3-0-8"
-       viewBox="-2 -2 4 4"
+       viewBox="-2 -2 3 3"
        markerWidth="5"
        markerHeight="5"
        orient="auto"
@@ -322,7 +334,7 @@
        sodipodi:role="line"
        id="tspan6328"
        x="70.126694"
-       y="235.6785">c.c.c</tspan></text>
+       y="235.6785">c.c.c (at least one l or r for at least one of the dots)</tspan></text>
   <g
      onclick="paint(this)"
      class="node"
@@ -356,7 +368,7 @@
        sodipodi:role="line"
        id="tspan6344"
        x="70.126694"
-       y="195.67847">c.c</tspan></text>
+       y="195.67847">c.c (at least one l or r for the dot)</tspan></text>
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
@@ -367,70 +379,6 @@
        id="tspan6370"
        x="70.126694"
        y="275.82648">ctctctc and longer plaits</tspan></text>
-  <path
-     d="m 116.44418,105.82928 11,-11 v 11 z"
-     style="opacity:0.9;fill:#f4a582;stroke:none;stroke-width:2"
-     id="path6406" />
-  <path
-     d="m 91.44418,105.82928 -11,-11 v 11 z"
-     style="opacity:0.9;fill:#ca0020;stroke:none;stroke-width:2"
-     id="path6408" />
-  <path
-     d="m 116.44418,105.82928 11,11 v -11 z"
-     style="opacity:0.9;fill:#f4a582;stroke:none;stroke-width:2"
-     id="path6410" />
-  <path
-     d="m 91.44418,105.82928 -11,11 v -11 z"
-     style="opacity:0.9;fill:#ca0020;stroke:none;stroke-width:2"
-     id="path6412" />
-  <path
-     d="m 69.444177,105.82928 11.000003,-11 v 11 z"
-     style="opacity:0.9;fill:#ca0020;stroke:none;stroke-width:2"
-     id="path6420" />
-  <path
-     d="m 69.444177,105.82928 11.000003,11 v -11 z"
-     style="opacity:0.9;fill:#ca0020;stroke:none;stroke-width:2"
-     id="path6422" />
-  <path
-     d="m 138.44418,105.82928 -11,-11 v 11 z"
-     style="opacity:0.9;fill:#f4a582;stroke:none;stroke-width:2"
-     id="path6424" />
-  <path
-     d="m 138.44418,105.82928 -11,11 v -11 z"
-     style="opacity:0.9;fill:#f4a582;stroke:none;stroke-width:2"
-     id="path6426" />
-  <path
-     d="m 183.44418,105.82928 -11,11 v -11 z"
-     style="opacity:0.9;fill:#92c5de;stroke:none;stroke-width:2"
-     id="path6340-0" />
-  <path
-     d="m 183.44418,105.82928 -11,-11 v 11 z"
-     style="opacity:0.9;fill:#92c5de;stroke:none;stroke-width:2"
-     id="path6448" />
-  <path
-     d="m 161.44418,105.82928 11,11 v -11 z"
-     style="opacity:0.9;fill:#92c5de;stroke:none;stroke-width:2"
-     id="path6450" />
-  <path
-     d="m 161.44418,105.82928 11,-11 v 11 z"
-     style="opacity:0.9;fill:#92c5de;stroke:none;stroke-width:2"
-     id="path6452" />
-  <path
-     d="m 237.44418,106.82928 -11,-11 v 11 z"
-     style="opacity:0.9;fill:#0571b0;stroke:none;stroke-width:2"
-     id="path6334-8" />
-  <path
-     d="m 237.44418,106.82928 -11,11 v -11 z"
-     style="opacity:0.9;fill:#0571b0;stroke:none;stroke-width:2"
-     id="path6476" />
-  <path
-     d="m 215.44418,106.82928 11,-11 v 11 z"
-     style="opacity:0.9;fill:#0571b0;stroke:none;stroke-width:2"
-     id="path6478" />
-  <path
-     d="m 215.44418,106.82928 11,11 v -11 z"
-     style="opacity:0.9;fill:#0571b0;stroke:none;stroke-width:2"
-     id="path6480" />
   <path
      class="link"
      d="m 249.14275,83.52307 h -21.2132 -21.2132"
@@ -712,7 +660,7 @@
        sodipodi:role="line"
        id="tspan8537"
        x="70.126694"
-       y="355.82648">none of the above</tspan></text>
+       y="355.82648">none of the above (read: irregular twisted plaits)</tspan></text>
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
@@ -781,36 +729,58 @@
        id="tspan1075"
        x="70.126694"
        y="315.82648">cllcrrcllc and longer or mirrored tallies</tspan></text>
-  <g
+  <path
+     d="m 39.95125,259.37221 h 8.6 v 17.2 h -8.6 z"
+     style="opacity:0.9;fill:#000000;stroke:none;stroke-width:2"
+     id="path1097" />
+  <path
      onclick="paint(this)"
      class="node"
-     transform="matrix(0,-2,2,0,44.25125,312.27221)"
-     id="g1091">
+     d="m 89.844179,105.82928 a 9.4,9.4 0 0 1 -9.399999,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.399999,9.4 z"
+     style="opacity:0.9;fill:#ca0020;fill-opacity:1;stroke:none;stroke-width:2"
+     id="path1135">
     <title
-       id="title1085">cllclll - c3</title>
-    <path
-       d="M -4.3,-4.3 H 0 v 8.6 h -4.3 z"
-       style="opacity:0.9;fill:#92c5de;stroke:none"
-       id="path1087" />
-    <path
-       d="M 0,-4.3 H 4.3 V 4.3 H 0 Z"
-       style="opacity:0.9;fill:#000000;stroke:none"
-       id="path1089" />
-  </g>
-  <g
+       id="title1133">ctctctctclcttl - d2</title>
+  </path>
+  <path
      onclick="paint(this)"
      class="node"
-     transform="matrix(0,-2,2,0,44.25125,272.27221)"
-     id="g1099">
+     d="m 137.84418,105.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
+     style="opacity:0.9;fill:#f4a582;fill-opacity:1;stroke:none;stroke-width:2"
+     id="path1139">
     <title
-       id="title1093">cllclll - c3</title>
-    <path
-       d="M -4.3,-4.3 H 0 v 8.6 h -4.3 z"
-       style="opacity:0.9;fill:#f4a582;fill-opacity:1;stroke:none"
-       id="path1095" />
-    <path
-       d="M 0,-4.3 H 4.3 V 4.3 H 0 Z"
-       style="opacity:0.9;fill:#000000;stroke:none"
-       id="path1097" />
-  </g>
+       id="title1137">ctctctctclcttl - d2</title>
+  </path>
+  <path
+     onclick="paint(this)"
+     class="node"
+     d="m 179.84418,105.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
+     style="opacity:0.9;fill:#92c5de;fill-opacity:1;stroke:none;stroke-width:2"
+     id="path1143">
+    <title
+       id="title1141">ctctctctclcttl - d2</title>
+  </path>
+  <path
+     onclick="paint(this)"
+     class="node"
+     d="m 237.84418,105.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
+     style="opacity:0.9;fill:#0571b0;fill-opacity:1;stroke:none;stroke-width:2"
+     id="path1147">
+    <title
+       id="title1145">ctctctctclcttl - d2</title>
+  </path>
+  <text
+     xml:space="preserve"
+     style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
+     x="30.126694"
+     y="435.82648"
+     id="text1151"><tspan
+       sodipodi:role="line"
+       id="tspan1149"
+       x="30.126694"
+       y="435.82648">color blind safe color scheme from</tspan><tspan
+       sodipodi:role="line"
+       x="30.126694"
+       y="454.15985"
+       id="tspan1153">https://colorbrewer2.org/?type=diverging&amp;scheme=RdBu&amp;n=5</tspan></text>
 </svg>
