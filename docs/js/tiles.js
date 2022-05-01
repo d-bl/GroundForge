@@ -96,10 +96,11 @@ function showProto() {
   d3.select("#diagrams .colorCode").html(buildLegend(query))
   d3.select("#threadDiagram").html("")
 
-  var svg = PairSvg.render(config, 744, 1052)
   var pairContainer = d3.select("#pairDiagram")
+  var pairContainerNode = pairContainer.node()
+  var svg = PairSvg.render(config, 744, 1052)
   pairContainer.html(svg)
-  pairContainer.node().data = NewPairDiagram.create(TilesConfig(query))
+  var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
 
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
