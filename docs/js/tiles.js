@@ -279,7 +279,7 @@ function load() {
   if (window.location.search.substr(1).includes("droste3=")) showDroste(3)
   showProto() // this creates a dynamic part of the form
   keyValueStrings.forEach(setField) // fill the form fields again
-  showDiagrams() // TODO showProto and showDiagrams both render the primary pair diagram
+  showDiagrams(showProto()) // TODO showProto and showDiagrams both render the primary pair diagram
   keyValueStrings.find(whiting)
 }
 function getMatrixLines() {
