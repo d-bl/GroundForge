@@ -96,11 +96,10 @@ function showProto() {
   d3.select("#diagrams .colorCode").html(buildLegend(query))
   d3.select("#threadDiagram").html("")
 
-  var pairContainer = d3.select("#pairDiagram")
-  var pairContainerNode = pairContainer.node()
   var svg = PairSvg.render(config, 744, 1052)
+  var pairContainer = d3.select("#pairDiagram")
   pairContainer.html(svg)
-  var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
+  pairContainer.node().data = NewPairDiagram.create(TilesConfig(query))
 
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
@@ -278,6 +277,10 @@ function load() {
   if (window.location.search.substr(1).includes("droste3=")) showDroste(3)
   showProto() // this creates a dynamic part of the form
   keyValueStrings.forEach(setField) // fill the form fields again
+
+  // done above by showProto too, but it fixes generating the legend
+  d3.select("#pairDiagram").data = NewPairDiagram.create(TilesConfig(query))
+
   showDiagrams() // TODO showProto and showDiagrams both render the primary pair diagram
   keyValueStrings.find(whiting)
 }
