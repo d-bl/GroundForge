@@ -279,8 +279,8 @@ function load() {
   showProto() // this creates a dynamic part of the form
   keyValueStrings.forEach(setField) // fill the form fields again
 
-  // done above by showProto too, but it fixes generating the legend
-  d3.select("#pairDiagram").data = NewPairDiagram.create(TilesConfig(query))
+  // done above too, but it fixes generating the legend
+  showProto()
 
   showDiagrams() // TODO showProto and showDiagrams both render the primary pair diagram
   keyValueStrings.find(whiting)
