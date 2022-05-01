@@ -51,8 +51,8 @@
      id="namedview1777"
      showgrid="false"
      inkscape:zoom="1.7585224"
-     inkscape:cx="203.93308"
-     inkscape:cy="242.91144"
+     inkscape:cx="237.14102"
+     inkscape:cy="213.90982"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="0"
@@ -70,50 +70,8 @@
        height="39.650037"
        id="rect1094" />
     <marker
-       id="twist-1"
-       viewBox="-2 -2 4 4"
-       markerWidth="5"
-       markerHeight="5"
-       orient="auto"
-       markerUnits="userSpaceOnUse">
-      <path
-         d="M 0,2 0,-2"
-         fill="#000"
-         stroke="#000"
-         stroke-width="1px"
-         id="path833" />
-    </marker>
-    <marker
-       id="twist-2"
-       viewBox="-2 -2 4 4"
-       markerWidth="5"
-       markerHeight="5"
-       orient="auto"
-       markerUnits="userSpaceOnUse">
-      <path
-         d="M -1,2 V -2 M 1,2 1,-2"
-         fill="#000"
-         stroke="#000"
-         stroke-width="1px"
-         id="path836" />
-    </marker>
-    <marker
-       id="twist-3"
-       viewBox="-2 -2 4 4"
-       markerWidth="5"
-       markerHeight="5"
-       orient="auto"
-       markerUnits="userSpaceOnUse">
-      <path
-         d="M 1,-2 H -1 V 2 H 1 Z"
-         fill="#000"
-         stroke="#000"
-         stroke-width="1px"
-         id="path839" />
-    </marker>
-    <marker
        id="twist-1-5"
-       viewBox="-2 -2 3 3"
+       viewBox="-2 -2 4 4"
        markerWidth="5"
        markerHeight="5"
        orient="auto"
@@ -127,7 +85,7 @@
     </marker>
     <marker
        id="twist-2-3"
-       viewBox="-2 -2 3 3"
+       viewBox="-2 -2 4 4"
        markerWidth="5"
        markerHeight="5"
        orient="auto"
@@ -140,50 +98,8 @@
          id="path4494" />
     </marker>
     <marker
-       id="twist-3-0"
-       viewBox="-2 -2 4 4"
-       markerWidth="5"
-       markerHeight="5"
-       orient="auto"
-       markerUnits="userSpaceOnUse">
-      <path
-         d="m -1.5,2 v -4 m 3,4 V -2 M 0,2 v -4"
-         fill="#000000"
-         stroke="#000000"
-         stroke-width="0.7px"
-         id="path4497" />
-    </marker>
-    <marker
-       id="marker6058"
-       viewBox="-2 -2 4 4"
-       markerWidth="5"
-       markerHeight="5"
-       orient="auto"
-       markerUnits="userSpaceOnUse">
-      <path
-         d="M 0,2 V -2"
-         fill="#000000"
-         stroke="#000000"
-         stroke-width="0.7px"
-         id="path6056" />
-    </marker>
-    <marker
-       id="marker6062"
-       viewBox="-2 -2 4 4"
-       markerWidth="5"
-       markerHeight="5"
-       orient="auto"
-       markerUnits="userSpaceOnUse">
-      <path
-         d="M -1,2 V -2 M 1,2 V -2"
-         fill="#000000"
-         stroke="#000000"
-         stroke-width="0.7px"
-         id="path6060" />
-    </marker>
-    <marker
        id="twist-3-0-8"
-       viewBox="-2 -2 3 3"
+       viewBox="-2 -2 4 4"
        markerWidth="5"
        markerHeight="5"
        orient="auto"
@@ -194,90 +110,6 @@
          stroke="#000000"
          stroke-width="0.7px"
          id="path4497-4" />
-    </marker>
-    <marker
-       id="twist-1-3"
-       viewBox="-2 -2 4 4"
-       markerWidth="5"
-       markerHeight="5"
-       orient="auto"
-       markerUnits="userSpaceOnUse">
-      <path
-         d="M 0,2 V -2"
-         fill="#000000"
-         stroke="#000000"
-         stroke-width="0.7px"
-         id="path6604" />
-    </marker>
-    <marker
-       id="twist-2-8"
-       viewBox="-2 -2 4 4"
-       markerWidth="5"
-       markerHeight="5"
-       orient="auto"
-       markerUnits="userSpaceOnUse">
-      <path
-         d="M -1,2 V -2 M 1,2 V -2"
-         fill="#000000"
-         stroke="#000000"
-         stroke-width="0.7px"
-         id="path6607" />
-    </marker>
-    <marker
-       id="twist-3-2"
-       viewBox="-2 -2 4 4"
-       markerWidth="5"
-       markerHeight="5"
-       orient="auto"
-       markerUnits="userSpaceOnUse">
-      <path
-         d="m -1.5,2 v -4 m 3,4 V -2 M 0,2 v -4"
-         fill="#000000"
-         stroke="#000000"
-         stroke-width="0.7px"
-         id="path6610" />
-    </marker>
-    <marker
-       id="marker8171"
-       viewBox="-2 -2 4 4"
-       markerWidth="5"
-       markerHeight="5"
-       orient="auto"
-       markerUnits="userSpaceOnUse">
-      <path
-         d="M -1,2 V -2 M 1,2 V -2"
-         fill="#000000"
-         stroke="#000000"
-         stroke-width="0.7px"
-         id="path8169" />
-    </marker>
-    <marker
-       id="marker8175"
-       viewBox="-2 -2 4 4"
-       markerWidth="5"
-       markerHeight="5"
-       orient="auto"
-       markerUnits="userSpaceOnUse">
-      <path
-         d="m -1.5,2 v -4 m 3,4 V -2 M 0,2 v -4"
-         fill="#000000"
-         stroke="#000000"
-         stroke-width="0.7px"
-         id="path8173" />
-    </marker>
-    <marker
-       id="marker8179"
-       viewBox="-2 -2 4 4"
-       markerWidth="5"
-       markerHeight="5"
-       orient="auto"
-       markerUnits="userSpaceOnUse">
-      <path
-         d="M -1,2 V -2 M 1,2 V -2"
-         fill="#000000"
-         stroke="#000000"
-         stroke-width="0.7px"
-         id="path8177" />
     </marker>
   </defs>
   <text
@@ -399,199 +231,6 @@
      d="m 92.71635,83.52307 h -30"
      style="fill:none;stroke:#000000;stroke-width:2px"
      id="path6584" />
-  <path
-     class="link"
-     d="m -80.201061,39.633729 h 15 15"
-     style="fill:none;stroke:#000000;stroke-width:2px;marker-mid:url(#twist-1-3)"
-     id="path6653" />
-  <path
-     class="link"
-     d="M -20.201065,39.633729 H -50.201061"
-     style="fill:none;stroke:#000000;stroke-width:2px"
-     id="path6655" />
-  <path
-     class="link"
-     d="m -80.201061,39.633729 v 30"
-     style="fill:none;stroke:#000000;stroke-width:2px"
-     id="path6671" />
-  <path
-     class="link"
-     d="m -50.201061,39.633729 -30,30"
-     style="fill:none;stroke:#000000;stroke-width:2px"
-     id="path6673" />
-  <path
-     class="link"
-     d="m -50.201061,39.633729 29.999996,30"
-     style="fill:none;stroke:#000000;stroke-width:2px"
-     id="path6675" />
-  <path
-     class="link"
-     d="m -20.201065,39.633729 v 30"
-     style="fill:none;stroke:#000000;stroke-width:2px"
-     id="path6677" />
-  <path
-     class="link"
-     d="m -80.201061,69.633729 v 15 15"
-     style="fill:none;stroke:#000000;stroke-width:2px;marker-mid:url(#twist-2-8)"
-     id="path6691" />
-  <path
-     class="link"
-     d="m -50.201061,99.633729 h -15 -15"
-     style="fill:none;stroke:#000000;stroke-width:2px;marker-mid:url(#twist-3-2)"
-     id="path6693" />
-  <path
-     class="link"
-     d="m -80.201061,69.633729 15,15 15,15"
-     style="fill:none;stroke:#000000;stroke-width:2px;marker-mid:url(#twist-2-8)"
-     id="path6695" />
-  <path
-     class="link"
-     d="m -20.201065,69.633729 -15,15 -14.999996,15"
-     style="fill:none;stroke:#000000;stroke-width:2px;marker-mid:url(#twist-3-2)"
-     id="path6697" />
-  <path
-     class="link"
-     d="m -50.201061,99.633729 h 29.999996"
-     style="fill:none;stroke:#000000;stroke-width:2px"
-     id="path6699" />
-  <path
-     class="link"
-     d="m -20.201065,69.633729 v 15 15"
-     style="fill:none;stroke:#000000;stroke-width:2px;marker-mid:url(#twist-2-8)"
-     id="path6701" />
-  <g
-     onclick="paint(this)"
-     class="node"
-     transform="matrix(2,0,0,2,-80.201061,39.633729)"
-     id="g7017">
-    <title
-       id="title7013">cr - b1</title>
-    <path
-       d="M -5.5,0 0,5.5 5.5,0 0,-5.5 Z"
-       style="opacity:0.9;fill:#000000;stroke:none"
-       id="path7015" />
-  </g>
-  <g
-     onclick="paint(this)"
-     class="node"
-     transform="matrix(2,0,0,2,-50.201061,39.633729)"
-     id="g7029">
-    <title
-       id="title7019">ctllcrrc - c1</title>
-    <path
-       d="M -5.5,0 0,-5.5 V 0 Z"
-       style="opacity:0.9;fill:#0571b0;stroke:none"
-       id="path7021" />
-    <path
-       d="M 5.5,0 0,-5.5 V 0 Z"
-       style="opacity:0.9;fill:#f4a582;stroke:none"
-       id="path7023" />
-    <path
-       d="M -5.5,0 0,5.5 V 0 Z"
-       style="opacity:0.9;fill:#ca0020;stroke:none"
-       id="path7025" />
-    <path
-       d="M 5.5,0 0,5.5 V 0 Z"
-       style="opacity:0.9;fill:#92c5de;stroke:none"
-       id="path7027" />
-  </g>
-  <g
-     onclick="paint(this)"
-     class="node"
-     transform="matrix(2,0,0,2,-20.201065,39.633729)"
-     id="g7041">
-    <title
-       id="title7031">clclc - d1</title>
-    <path
-       d="M -5.5,0 0,-5.5 V 0 Z"
-       style="opacity:0.9;fill:#f4a582;stroke:none"
-       id="path7033" />
-    <path
-       d="M 5.5,0 0,-5.5 V 0 Z"
-       style="opacity:0.9;fill:#ca0020;stroke:none"
-       id="path7035" />
-    <path
-       d="M -5.5,0 0,5.5 V 0 Z"
-       style="opacity:0.9;fill:#f4a582;stroke:none"
-       id="path7037" />
-    <path
-       d="M 5.5,0 0,5.5 V 0 Z"
-       style="opacity:0.9;fill:#ca0020;stroke:none"
-       id="path7039" />
-  </g>
-  <g
-     onclick="paint(this)"
-     class="node"
-     transform="matrix(2,0,0,2,-80.201061,69.633729)"
-     id="g7077">
-    <title
-       id="title7073">ctctctctctctt - b2</title>
-    <path
-       d="M -4.3,-4.3 H 4.3 V 4.3 H -4.3 Z"
-       style="opacity:0.9;fill:#000000;stroke:none"
-       id="path7075" />
-  </g>
-  <path
-     onclick="paint(this)"
-     class="node"
-     d="m -10.801066,69.633729 a 9.4,9.4 0 0 1 -9.399999,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.399999,9.4 z"
-     style="opacity:0.9;fill:#f7f7f7;stroke:none;stroke-width:2"
-     id="path7081">
-    <title
-       id="title7079">ctctctctclcttl - d2</title>
-  </path>
-  <g
-     onclick="paint(this)"
-     class="node"
-     transform="matrix(2,0,0,2,-80.201061,99.633729)"
-     id="g7117">
-    <title
-       id="title7107">clclc - d1</title>
-    <path
-       d="M -5.5,0 0,-5.5 V 0 Z"
-       style="opacity:0.9;fill:#f4a582;stroke:none"
-       id="path7109" />
-    <path
-       d="M 5.5,0 0,-5.5 V 0 Z"
-       style="opacity:0.9;fill:#ca0020;stroke:none"
-       id="path7111" />
-    <path
-       d="M -5.5,0 0,5.5 V 0 Z"
-       style="opacity:0.9;fill:#f4a582;stroke:none"
-       id="path7113" />
-    <path
-       d="M 5.5,0 0,5.5 V 0 Z"
-       style="opacity:0.9;fill:#ca0020;stroke:none"
-       id="path7115" />
-  </g>
-  <g
-     onclick="paint(this)"
-     class="node"
-     transform="matrix(2,0,0,2,-50.201061,99.633729)"
-     id="g7125">
-    <title
-       id="title7119">cllclll - c3</title>
-    <path
-       d="M -4.3,-4.3 H 0 v 8.6 h -4.3 z"
-       style="opacity:0.9;fill:#92c5de;stroke:none"
-       id="path7121" />
-    <path
-       d="M 0,-4.3 H 4.3 V 4.3 H 0 Z"
-       style="opacity:0.9;fill:#ca0020;stroke:none"
-       id="path7123" />
-  </g>
-  <g
-     onclick="paint(this)"
-     class="node"
-     transform="matrix(2,0,0,2,-20.201065,99.633729)"
-     id="g7131">
-    <title
-       id="title7127">cr - b1</title>
-    <path
-       d="M -5.5,0 0,5.5 5.5,0 0,-5.5 Z"
-       style="opacity:0.9;fill:#000000;stroke:none"
-       id="path7129" />
-  </g>
   <g
      onclick="paint(this)"
      class="node"
