@@ -98,9 +98,9 @@ function showProto() {
 
   var pairContainer = d3.select("#pairDiagram")
   var pairContainerNode = pairContainer.node()
-  var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
   var svg = PairSvg.render(config, 744, 1052)
   pairContainer.html(svg)
+  var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
 
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
@@ -278,10 +278,6 @@ function load() {
   if (window.location.search.substr(1).includes("droste3=")) showDroste(3)
   showProto() // this creates a dynamic part of the form
   keyValueStrings.forEach(setField) // fill the form fields again
-
-  // prepare for the rendered legend
-  d3.select("#pairDiagram").data = NewPairDiagram.create(TilesConfig(query))
-
   showDiagrams() // TODO showProto and showDiagrams both render the primary pair diagram
   keyValueStrings.find(whiting)
 }
