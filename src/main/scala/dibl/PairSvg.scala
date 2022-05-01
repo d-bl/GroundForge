@@ -38,6 +38,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   private def squareRight(d: Double = 4.3) = s"M 0,-$d H $d V $d H 0 Z"
 
+  private def squareTop(d: Double = 4.3) = s"M $d,0 V -$d h -${ 2 * d } v $d z"
+
+  private def squareBottom(d: Double = 4.3) = s"M $d,$d V 0 h -${ 2 * d } V $d Z"
+
   private def diamond(d: Double = 5.5) = s"M -$d,0 0,$d $d,0 0,-$d Z"
 
   private def diamondTopLeft(d: Double = 5.5) = s"M -$d,0 0,-$d v $d z"
@@ -190,7 +194,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
           case (3, Array(lrTop, lrBottom)) => // c.c.c
             Seq(colourLeft(lrTop), colourRight(lrTop), colourLeft(lrBottom), colourRight(lrBottom))
           case (nrOfCs, lrs) if nrOfCs > 3 && lrs.distinct.sameElements(Array("lr")) => // plait
-            Seq(black, "/")
+            Seq(black, "=", colour(1))
+          case (nrOfCs, _) if nrOfCs > 3
+            && str.matches("c(((llcrrc)+(llc)?)|((rrcllc)+(rrc)?))") => // tallie
+            Seq(black, "=", colour(2))
           case _ => Seq() // anything else
         }
       }
@@ -201,6 +208,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         case Seq(color1, "|", color2) => group(shape(color1, squareLeft()) + shape(color2, squareRight()))
         case Seq(color1, "/") => group(shape(color1, square()))
         case Seq(color1, "-", color2) => group(shape(color1, diamondTop()) + shape(color2, diamondBottom()))
+        case Seq(color1, "=", color2) => group(shape(color1, squareTop()) + shape(color2, squareBottom()))
         case Seq(topLeft, topRight, bottomLeft, bottomRight) =>
           println(s"${ targetItem.stitch } $topLeft $topRight $bottomLeft $bottomRight")
           group(shape(topLeft, diamondTopLeft()) +
