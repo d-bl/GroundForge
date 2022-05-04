@@ -108,7 +108,7 @@ function showProto() {
 
   return config
 }
-function animate () {
+function animatePairs() {
   var container=d3.select('#pairDiagram')
   nudgePairs(container, 744/1.6, 1052/1.6)
   scrollToIfPossible(container.node(), 744/6, 1052/6)
