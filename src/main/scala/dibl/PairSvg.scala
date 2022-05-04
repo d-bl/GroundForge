@@ -227,6 +227,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   def render(config: TilesConfig,
              width: Int = 744,
              height: Int = 1052,
+             zoom: Long = 2,
             ): String = {
     s"""
        |<svg
@@ -244,7 +245,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
        |  ${ twistMark(2) }
        |  ${ twistMark(3) }
        |</defs>
-       |<g transform="matrix(2,0,0,2,0,0)">
+       |<g transform="matrix($zoom,0,0,$zoom,0,0)">
        |${ renderLinks(config.getItemMatrix) }
        |${ renderNodes(config.getItemMatrix) }
        |</g>

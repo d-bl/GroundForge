@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title lang="en">GroundForge : dressed down with v4 of D3.js</title>
+    <style>div { display: inline-block } textarea{ width: 95% }</style>
+    <script src="../js/d3.v4.min.js" type="text/javascript"></script>
+    <script src="../js/GroundForge-opt.js" type="text/javascript"></script>
+    <script src="../js/nudgePairs.js" type="text/javascript"></script>
+    <script src="pair.js" type="text/javascript"></script>
+</head>
+<body onload="load()">
+    <p>
+        <textarea id="pattern" name="footside" spellcheck="false" onchange="load()">patchWidth=8&patchHeight=14&b1=ctc&c1=ctllcrrc&d1=clclc&b2=cllcrrcllcrrcr&d2=ctctctc&c3=ctctll&footside=b,-,a,-&footsideStitch=-&tile=831,4-7,-5-&tileStitch=ctct&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2</textarea>
+    </p>
+    <div id="initial"></div>
+    <div id="animated"></div>
+</body>
+</html>

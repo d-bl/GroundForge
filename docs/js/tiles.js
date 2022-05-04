@@ -99,8 +99,7 @@ function showProto() {
   var pairContainer = d3.select("#pairDiagram")
   var pairContainerNode = pairContainer.node()
   var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
-  var svg = PairSvg.render(config, 744, 1052)
-  pairContainer.html(svg)
+  pairContainer.html(PairSvg.render(config, 744, 1052, 2))
 
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
@@ -152,7 +151,7 @@ function showDiagrams(config) {
   if (!config)
       config = TilesConfig(submitQuery())
   var pairDiagram = pairContainerNode.data = NewPairDiagram.create(config)
-  pairContainer.html(PairSvg.render(config, 744, 1052))
+  pairContainer.html(PairSvg.render(config, 744, 1052, 2))
   scrollToIfPossible(pairContainerNode,0,0)
   if (pairDiagram.jsNodes().length == 1) return
 

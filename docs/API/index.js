@@ -35,13 +35,9 @@ function load() {
   d3.select('#proto').html(PrototypeDiagram.create(config))
 
   var pairDiagram = NewPairDiagram.create(config)
-  var primaryPairSvg = PairSvg.render(config, 350,500)
-  d3.select('#pairsStatic').html(primaryPairSvg)
-  d3.select('#pairs').html(primaryPairSvg)
-  nudgeNewPairs(d3.select('#pairs'), 180, 220)
-
+  showGraph(d3.select('#pairs'), pairDiagram, "1px", 200,300, 1, config)
   var threadDiagram = ThreadDiagram.create(pairDiagram)
-  showGraph(d3.select('#threads'), threadDiagram, "2px",620,800, 2, config, 0.1)
+  showGraph(d3.select('#threads'), threadDiagram, "2px",520,800, 2, config, 0.1)
 
   // for "ctct" alternatives see:
   // https://d-bl.github.io/GroundForge-help/Replace
