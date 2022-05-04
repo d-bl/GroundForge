@@ -38,7 +38,7 @@ function load() {
   var primaryPairSvg = PairSvg.render(config, 350,500)
   d3.select('#pairsStatic').html(primaryPairSvg)
   d3.select('#pairs').html(primaryPairSvg)
-  nudge(d3.select('#pairs'), pairDiagram, 180, 220)
+  nudgeNewPairs(d3.select('#pairs'), 180, 220)
 
   var threadDiagram = ThreadDiagram.create(pairDiagram)
   showGraph(d3.select('#threads'), threadDiagram, "2px",620,800, 2, config, 0.1)

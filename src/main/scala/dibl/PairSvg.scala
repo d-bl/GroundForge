@@ -116,12 +116,12 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         }.getOrElse("")
       val twists = trailingTwistsOfSrc + leadingTwistsOfTarget
       //      println(s"${ targetItem.id } $pairNrIntoTarget [x,y] [$sourceCol,$sourceCol] [$targetCol,$targetRow] ($trailingTwistsOfSrc,$leadingTwistsOfTarget) $twists")
-      pathDescription(scale(sourceCol), scale(sourceRow), scale(targetCol), scale(targetRow), opacity = 1, twists.length)
+      pathDescription(s"r${ sourceRow }c$sourceCol-r${ targetRow }c$targetCol",scale(sourceCol), scale(sourceRow), scale(targetCol), scale(targetRow), opacity = 1, twists.length)
     }.mkString
   }.mkString
 
   @JSExport
-  def pathDescription(sX: Double, sY: Double, tX: Double, tY: Double, opacity: Double, twists: Int): String = {
+  def pathDescription(id: String, sX: Double, sY: Double, tX: Double, tY: Double, opacity: Double, twists: Int): String = {
     val t = twists match {
       case 0 => ""
       case 1 | 2 | 3 => s"""; marker-mid: url("#twist-$twists")"""
@@ -129,7 +129,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }
     val d = if (twists <= 0) s"M $sX,$sY $tX,$tY"
             else s"M $sX,$sY ${ sX + (tX - sX) / 2 } ${ sY + (tY - sY) / 2 } $tX,$tY"
-    s"<path class='link' d='$d' style='stroke: #000; stroke-width: 1px; fill: none; opacity: $opacity$t'></path>"
+    s"<path id='$id' class='link' d='$d' style='stroke: #000; stroke-width: 1px; fill: none; opacity: $opacity$t'></path>"
   }
 
   private def scale(c: Int) = (c + 2) * 15
@@ -157,10 +157,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
       def shape(color: String, shape: String) = s"""<path d="$shape" ${ style(color) }></path>"""
 
-      def group(shapes: String) = s"""<g onclick='paint(this)' class="node" $transform>$title$shapes</g>"""
-
-      def singleShape(color: String, shape: String) =
-        s"""<path onclick='paint(this)' class="node" d="$shape" ${ style(color) } $transform >$title</path>"""
+      def group(shapes: String) = s"""<g id='r${ row }c$col' onclick='paint(this)' class="node" $transform>$title$shapes</g>"""
 
       val pale = "#f7f7f7" // center one of color brewer list
       val black = "#000000"
@@ -183,7 +180,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
           .replaceAll("t", "lr")
         val cs = str.replaceAll("[^c]", "").length
         val twists = str.split("c").filterNot(_.isEmpty).map(_.sortBy(identity))
-        println(s"$stitch ${ twists.mkString }")
+//        println(s"$stitch ${ twists.mkString }")
         (cs, twists) match {
           case (_, Array()) => // just one or more c's
             Seq(black, "<->", colour(cs))
@@ -204,21 +201,20 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       }
 
       shapeDef(targetItem.stitch) match {
-        case Seq(color) => singleShape(color, square())
         case Seq(color, "|") => group(shape(color, squarePortrait()))
         case Seq(color1, "<|>", color2) => group(shape(color1, squareLeft()) + shape(color2, squareRight()))
         case Seq(color1, "<->", color2) => group(shape(color1, diamondTop()) + shape(color2, diamondBottom()))
         case Seq(color1, "[]", color2) => group(shape(color1, squareLeft()) + shape(color2, squareRight()))
         case Seq(topLeft, topRight, bottomLeft, bottomRight) =>
-          println(s"${ targetItem.stitch } $topLeft $topRight $bottomLeft $bottomRight")
+//          println(s"${ targetItem.stitch } $topLeft $topRight $bottomLeft $bottomRight")
           group(shape(topLeft, diamondTopLeft()) +
             shape(topRight, diamondTopRight()) +
             shape(bottomLeft, diamondBottomLeft()) +
             shape(bottomRight, diamondBottomRight())
           )
         case defs =>
-          println(s"${ targetItem.stitch } $defs")
-          singleShape(pale, circle()) // fall back
+//          println(s"${ targetItem.stitch } $defs")
+          group(shape(pale, circle())) // fall back
       }
     }.mkString
   }.mkString
