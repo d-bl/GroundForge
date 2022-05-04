@@ -1,25 +1,43 @@
 function nudgePairs(container, width, height) {
-  function toXY(s) {
-    var xy = s.split(",")
-    return {x:xy[0]*1,y:xy[1]*1}
-  }
-  var nodeDefs = container.selectAll(".node").nodes().map(function(n){
-    var result = toXY(n.attributes["transform"].nodeValue.replace("translate(","").replace(")",""))
-    result.id = n.attributes["id"].nodeValue
-    return result
+
+  var nodeSelection = container.selectAll(".node")
+  var linkSelection = container.selectAll(".link")
+
+  // collect data of the SVG elements with class node
+
+  var nodeData = nodeSelection.nodes().map(function(n){
+    var xys = n.attributes["transform"].nodeValue
+               .replace("translate(","").replace(")","").split(",")
+    return {
+      x: xys[0]*1,
+      y: xys[1]*1,
+      id: n.attributes["id"].nodeValue
+    }
   })
   var nodeMap = new Map()
-  for (i=0; i< nodeDefs.length; i++)
-    nodeMap.set(nodeDefs[i].id, i)
+  for (i=0; i< nodeData.length; i++)
+    nodeMap.set(nodeData[i].id, i)
 
-  var linkDefs = container.selectAll(".link").nodes().map(function(n){
-    var hasMidPoint = n.attributes["d"].nodeValue.replace(/[^ ]/g,"").length > 2
+  // collect data of the SVG elements with class link
+  // each link-id is split into the IDs of their nodes
+
+  var linkData = linkSelection.nodes().map(function(n){
+    var hasMidPoint = n.attributes["d"].nodeValue
+                       .replace(/[^ ]/g,"").length > 2
     var ids = n.attributes["id"].nodeValue.split("-")
-    return { mid: hasMidPoint, source: nodeMap.get(ids[0]), target: nodeMap.get(ids[1]) }
+    return {
+      mid: hasMidPoint,
+      source: nodeMap.get(ids[0]),
+      target: nodeMap.get(ids[1])
+    }
   })
 
-  var links = container.selectAll(".link").data(linkDefs )
-  var nodes = container.selectAll(".node").data(nodeDefs)
+  // bind collected data
+
+  var links = linkSelection.data(linkData)
+  var nodes = nodeSelection.data(nodeData)
+
+  // redraw
 
   function moveNode(jsNode) {
       return 'translate('+jsNode.x+','+jsNode.y+')'
@@ -27,7 +45,7 @@ function nudgePairs(container, width, height) {
   function drawPath(jsLink) {
       var s = jsLink.source
       var t = jsLink.target
-      if (!jsLink.mid) // TODO the meaning seems reversed
+      if (!jsLink.mid)
           return `M ${s.x},${s.y} ${t.x},${t.y}`
       else {
           var mX = s.x + (t.x - s.x) / 2
@@ -39,12 +57,15 @@ function nudgePairs(container, width, height) {
       links.attr("d", drawPath);
       nodes.attr("transform", moveNode);
   }
+
+  // define forces with the collected data
+
   var forceLink = d3
-    .forceLink(linkDefs)
+    .forceLink(linkData)
     .strength(50)
     .distance(18)
     .iterations(30)
-  d3.forceSimulation(nodeDefs)
+  d3.forceSimulation(nodeData)
     .force("charge", d3.forceManyBody().strength(-1000))
     .force("link", forceLink)
     .force("center", d3.forceCenter(width/2, height/2))
