@@ -99,7 +99,7 @@ function showProto() {
   var pairContainer = d3.select("#pairDiagram")
   var pairContainerNode = pairContainer.node()
   var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
-  pairContainer.html(PairSvg.render(config, 744, 1052, 2))
+  pairContainer.html(PairSvg.render(config, 744, 1052, 1.6))
 
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
