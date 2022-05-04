@@ -151,7 +151,7 @@ function showDiagrams(config) {
   if (!config)
       config = TilesConfig(submitQuery())
   var pairDiagram = pairContainerNode.data = NewPairDiagram.create(config)
-  pairContainer.html(PairSvg.render(config, 744, 1052, 2))
+  pairContainer.html(PairSvg.render(config, 744, 1052, 1.6))
   scrollToIfPossible(pairContainerNode,0,0)
   if (pairDiagram.jsNodes().length == 1) return
 
