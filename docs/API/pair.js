@@ -14,7 +14,7 @@
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
 function load() {
-  var q = d3.select('#pattern').node().innerHTML.replace(/&amp;/g,"&")
+  var q = window.location.search.substr(1)
   var width = 350
   var height = 500
   var zoom = 1.6

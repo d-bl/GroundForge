@@ -63,7 +63,7 @@ function nudgePairs(container, width, height) {
   var forceLink = d3
     .forceLink(linkData)
     .strength(50)
-    .distance(18)
+    .distance(14)
     .iterations(30)
   d3.forceSimulation(nodeData)
     .force("charge", d3.forceManyBody().strength(-1000))
