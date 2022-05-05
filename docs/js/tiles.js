@@ -111,8 +111,8 @@ function showProto() {
 function animatePairs() {
   var container=d3.select('#pairDiagram')
   nudgePairs(container, 744/2, 1052/2)
-  container.scrollTop = container.clientHeigt / 2
-  container.scrollLeft = container.clientWidth / 2
+  container.node().scrollTop = container.clientHeigt / 2
+  container.node().scrollLeft = container.clientWidth / 2
 }
 function showColorCode(id) {
     const n = d3.select(id + " .colorCode")
