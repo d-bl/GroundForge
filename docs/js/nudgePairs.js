@@ -5,9 +5,9 @@
 function nudgePairs(container) {
 
   var svg = container.select("svg")
-  var width = svg.attr("width") / 1.9
-  var height = svg.attr("height") / 1.9
   var zoom = 1 * svg.select("g").attr("transform").replace("matrix(","").replace(/,.*/,"")
+  var width = svg.attr("width") / zoom
+  var height = svg.attr("height") / zoom
 
   var nodeSelection = svg.selectAll(".node")
   var linkSelection = svg.selectAll(".link")
@@ -16,8 +16,8 @@ function nudgePairs(container) {
 
   var containerNode = container.node()
   if (containerNode.scrollTop !== undefined && containerNode.scrollLeft !== undefined) {
-    containerNode.scrollTop = height / 2
-    containerNode.scrollLeft = width / 2
+    containerNode.scrollTop = height / (zoom)
+    containerNode.scrollLeft = width / (zoom)
   }
 
   // collect data of the SVG elements with class node
