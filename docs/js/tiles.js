@@ -111,8 +111,8 @@ function showProto() {
 function animatePairs() {
   var container=d3.select('#pairDiagram')
   nudgePairs(container, 744/2, 1052/2)
-  container.scrollTop = "50%"
-  container.scrollLeft = "50%"
+  container.scrollTop = container.clientHeigt / 2
+  container.scrollLeft = container.clientWidth / 2
 }
 function showColorCode(id) {
     const n = d3.select(id + " .colorCode")
@@ -135,19 +135,6 @@ function flip(){
   d3.select("#headside").node().value = Matrix.flip(left)
   showProto()
 }
-function scrollIntoViewIfPossible(container) {
-  // despite w3Schools documentation not available for IE / Edge(?)
-  // see also https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/15534521/
-  if (container.scrollIntoView) {
-    container.scrollIntoView({ block: "start", behavior: 'smooth' })
-  }
-}
-function scrollToIfPossible(container, x, y) {
-  if (container.scrollTop !== undefined && container.scrollLeft !== undefined) {
-    container.scrollTop = y
-    container.scrollLeft = x
-  }
-}
 function showDiagrams(config) {
 
   var markers = true // use false for slow devices and IE-11, set them at onEnd
@@ -158,7 +145,8 @@ function showDiagrams(config) {
       config = TilesConfig(submitQuery())
   var pairDiagram = pairContainerNode.data = NewPairDiagram.create(config)
   pairContainer.html(PairSvg.render(config, 744, 1052, 1.9))
-  scrollToIfPossible(pairContainerNode,0,0)
+  container.scrollTop = 0
+  container.scrollLeft = 0
   if (pairDiagram.jsNodes().length == 1) return
 
   setThreadDiagram("#threadDiagram", ThreadDiagram.create(pairDiagram))
@@ -172,8 +160,8 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
   var diagram = container.node().data
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()//can't inline
-    container.scrollTop = "50%"
-    container.scrollLeft = "50%"
+  container.scrollTop = container.clientHeigt / 2
+  container.scrollLeft = container.clientWidth / 2
   var links = container.selectAll(".link").data(linkDefs)
   var nodes = container.selectAll(".node").data(nodeDefs)
 
