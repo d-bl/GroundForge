@@ -110,8 +110,8 @@ function showProto() {
 }
 function animatePairs() {
   var container=d3.select('#pairDiagram')
-  nudgePairs(container, 744/1.6, 1052/1.6)
-  scrollToIfPossible(container.node(), 333, 555)
+  nudgePairs(container, 744/2, 1052/2)
+  scrollToIfPossible(container.node(), 744/2, 1052/2)
 }
 function showColorCode(id) {
     const n = d3.select(id + " .colorCode")
@@ -171,7 +171,7 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
   var diagram = container.node().data
   var nodeDefs = diagram.jsNodes()
   var linkDefs = diagram.jsLinks()//can't inline
-  scrollToIfPossible(container.node(), 333, 555)
+  scrollToIfPossible(container.node(), 744/2, 1052/2)
   var links = container.selectAll(".link").data(linkDefs)
   var nodes = container.selectAll(".node").data(nodeDefs)
 
