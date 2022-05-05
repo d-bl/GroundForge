@@ -70,7 +70,9 @@ function nudge(container, diagram, width, height) {
       var l = diagram.link(jsLink.index)
       return DiagramSvg.pathDescription(l, s.x, s.y, t.x, t.y)
   }
+  var tickCounter = 0
   function onTick() {
+      if (0 !=  (tickCounter++ % 5) ) return
       links.attr("d", drawPath);
       nodes.attr("transform", moveNode);
   }

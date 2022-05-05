@@ -99,7 +99,7 @@ function showProto() {
   var pairContainer = d3.select("#pairDiagram")
   var pairContainerNode = pairContainer.node()
   var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
-  pairContainer.html(PairSvg.render(config, 744, 1052, 1.6))
+  pairContainer.html(PairSvg.render(config, 744, 1052, 1.9))
 
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
@@ -156,7 +156,7 @@ function showDiagrams(config) {
   if (!config)
       config = TilesConfig(submitQuery())
   var pairDiagram = pairContainerNode.data = NewPairDiagram.create(config)
-  pairContainer.html(PairSvg.render(config, 744, 1052, 1.6))
+  pairContainer.html(PairSvg.render(config, 744, 1052, 1.9))
   scrollToIfPossible(pairContainerNode,0,0)
   if (pairDiagram.jsNodes().length == 1) return
 
@@ -186,7 +186,7 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
   }
   var tickCounter = 0
   function onTick() {
-      if ( isMobile && (tickCounter++ % 5) != 0) return // skip rendering
+      if ( 0 != (tickCounter++ % 5)) return // skip rendering
       //if (tickCounter++ >=0) terminateAnimation()
       links.attr("d", drawPath)
       nodes.attr("transform", moveNode)

@@ -45,15 +45,11 @@ function nudgePairs(container, width, height) {
   function drawPath(jsLink) {
       var s = jsLink.source
       var t = jsLink.target
-      if (!jsLink.mid)
-          return `M ${s.x},${s.y} ${t.x},${t.y}`
-      else {
-          var mX = s.x + (t.x - s.x) / 2
-          var mY = s.y + (t.y - s.y) / 2
-          return `M ${s.x},${s.y} ${mX},${mY} ${t.x},${t.y}`
-      }
+      return PairSvg.linkPath(jsLink.mid, s.x, s.y, t.x, t.y)
   }
+  var tickCounter = 0
   function onTick() {
+      if (0 !=  (tickCounter++ % 5) ) return
       links.attr("d", drawPath);
       nodes.attr("transform", moveNode);
   }
@@ -63,7 +59,7 @@ function nudgePairs(container, width, height) {
   var forceLink = d3
     .forceLink(linkData)
     .strength(50)
-    .distance(14)
+    .distance(11.5)
     .iterations(30)
   d3.forceSimulation(nodeData)
     .force("charge", d3.forceManyBody().strength(-1000))

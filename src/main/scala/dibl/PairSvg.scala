@@ -22,50 +22,17 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 @JSExportTopLevel("PairSvg") object PairSvg {
 
-  private def circle(r: Double = 4.7): String = s"M $r,0 A $r,$r 0 0 1 0,$r $r,$r 0 0 1 -$r,0 $r,$r 0 0 1 0,-$r $r,$r 0 0 1 $r,0 Z"
-
-  private def square(d: Double = 4.3) = s"M -$d,-$d $d,-$d $d,$d -$d,$d Z"
-
-  private def squareSE(d: Double = 4.3) = s"M $d,-$d $d,$d -$d,$d Z"
-
-  private def squarePortrait(d: Double = 4.3) = s"m -${ d / 2 },-$d h $d v ${ 2 * d } h -$d z"
-
-  private def squareSW(d: Double = 4.3) = s"M -$d,-$d $d,$d -$d,$d Z"
-
-  private def squareNW(d: Double = 4.3) = s"M -$d,-$d $d,-$d -$d,$d Z"
-
-  private def squareNE(d: Double = 4.3) = s"M -$d,-$d $d,-$d $d,$d Z"
-
-  private def squareLeft(d: Double = 4.3) = s"M -$d,-$d H 0 v ${ 2 * d } h -$d z"
-
-  private def squareRight(d: Double = 4.3) = s"M 0,-$d H $d V $d H 0 Z"
-
-  private def squareTop(d: Double = 4.3) = s"M $d,0 V -$d h -${ 2 * d } v $d z"
-
-  private def squareBottom(d: Double = 4.3) = s"M $d,$d V 0 h -${ 2 * d } V $d Z"
-
-  private def diamond(d: Double = 5.5) = s"M -$d,0 0,$d $d,0 0,-$d Z"
-
-  private def diamondTopLeft(d: Double = 5.5) = s"M -$d,0 0,-$d v $d z"
-
-  private def diamondTopRight(d: Double = 5.5) = s"M $d,0 0,-$d v $d z"
-
-  private def diamondBottomLeft(d: Double = 5.5) = s"m -$d,0 $d,$d v -$d z"
-
-  private def diamondBottomRight(d: Double = 5.5) = s"m $d,0 -$d,$d v -$d z"
-
-  private def diamondBottom(d: Double = 5.5) = s"M -$d,0 0,$d $d,0 Z"
-
-  private def diamondRight(d: Double = 5.5) = s"M 0,$d $d,0 0,-$d Z"
-
-  private def diamondTop(d: Double = 5.5) = s"M -$d,0 $d,0 0,-$d Z"
-
-  private def diamondLeft(d: Double = 5.5) = s"M -$d,0 0,$d 0,-$d Z"
+  private val diamondSize = 4.6  // half of the diagonal
+  private val squareSize = 3.2 // half of the rib length
+  private val circleSize = 3.8 // radius
 
   private def twistMark(count: Int) = {
-    val d = if (count == 1) "M 0,2 0,-2"
-            else if (count == 2) "M -1,2 V -2 M 1,2 1,-2"
-                 else "M -1.5,2 V -2 M 1.5,2 1.5,-2  M 0,2 0,-2"
+    val xl = 2 * 0.8
+    val xs = 1.5 * 0.8
+    // TODO different variables for length and distance
+    val d = if (count == 1) s"M 0,$xl 0,-$xl"
+            else if (count == 2) s"M -1,$xl V -$xl M 1,$xl 1,-$xl"
+                 else s"M -$xs,$xl V -$xl M $xs,$xl $xs,-$xl  M 0,$xl 0,-$xl"
     s"""<marker id="twist-$count"
        | viewBox="-2 -2 4 4"
        | markerWidth="5"
@@ -78,6 +45,46 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
        |  stroke-width="0.7px"></path>
        |</marker>""".stripMargin
   }
+
+  private def circle(r: Double = circleSize): String = s"M $r,0 A $r,$r 0 0 1 0,$r $r,$r 0 0 1 -$r,0 $r,$r 0 0 1 0,-$r $r,$r 0 0 1 $r,0 Z"
+
+  private def square(d: Double = squareSize) = s"M -$d,-$d $d,-$d $d,$d -$d,$d Z"
+
+  private def squareSE(d: Double = squareSize) = s"M $d,-$d $d,$d -$d,$d Z"
+
+  private def squarePortrait(d: Double = squareSize) = s"m -${ d / 2 },-$d h $d v ${ 2 * d } h -$d z"
+
+  private def squareSW(d: Double = squareSize) = s"M -$d,-$d $d,$d -$d,$d Z"
+
+  private def squareNW(d: Double = squareSize) = s"M -$d,-$d $d,-$d -$d,$d Z"
+
+  private def squareNE(d: Double = squareSize) = s"M -$d,-$d $d,-$d $d,$d Z"
+
+  private def squareLeft(d: Double = squareSize) = s"M -$d,-$d H 0 v ${ 2 * d } h -$d z"
+
+  private def squareRight(d: Double = squareSize) = s"M 0,-$d H $d V $d H 0 Z"
+
+  private def squareTop(d: Double = squareSize) = s"M $d,0 V -$d h -${ 2 * d } v $d z"
+
+  private def squareBottom(d: Double = squareSize) = s"M $d,$d V 0 h -${ 2 * d } V $d Z"
+
+  private def diamond(d: Double = diamondSize) = s"M -$d,0 0,$d $d,0 0,-$d Z"
+
+  private def diamondTopLeft(d: Double = diamondSize) = s"M -$d,0 0,-$d v $d z"
+
+  private def diamondTopRight(d: Double = diamondSize) = s"M $d,0 0,-$d v $d z"
+
+  private def diamondBottomLeft(d: Double = diamondSize) = s"m -$d,0 $d,$d v -$d z"
+
+  private def diamondBottomRight(d: Double = diamondSize) = s"m $d,0 -$d,$d v -$d z"
+
+  private def diamondBottom(d: Double = diamondSize) = s"M -$d,0 0,$d $d,0 Z"
+
+  private def diamondRight(d: Double = diamondSize) = s"M 0,$d $d,0 0,-$d Z"
+
+  private def diamondTop(d: Double = diamondSize) = s"M -$d,0 $d,0 0,-$d Z"
+
+  private def diamondLeft(d: Double = diamondSize) = s"M -$d,0 0,$d 0,-$d Z"
 
   private def renderLinks(items: Seq[Seq[Item]]): String = {
     val nrOfRows = items.size
@@ -116,20 +123,19 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         }.getOrElse("")
       val twists = trailingTwistsOfSrc + leadingTwistsOfTarget
       //      println(s"${ targetItem.id } $pairNrIntoTarget [x,y] [$sourceCol,$sourceCol] [$targetCol,$targetRow] ($trailingTwistsOfSrc,$leadingTwistsOfTarget) $twists")
-      pathDescription(s"r${ sourceRow }c$sourceCol-r${ targetRow }c$targetCol",scale(sourceCol), scale(sourceRow), scale(targetCol), scale(targetRow), opacity = 1, twists.length)
+      pathDescription(s"r${ sourceRow }c$sourceCol-r${ targetRow }c$targetCol", scale(sourceCol), scale(sourceRow), scale(targetCol), scale(targetRow), twists.length)
     }.mkString
   }.mkString
 
-  @JSExport
-  def pathDescription(id: String, sX: Double, sY: Double, tX: Double, tY: Double, opacity: Double, twists: Int): String = {
-    val t = twists match {
+  private def pathDescription(id: String, sX: Double, sY: Double, tX: Double, tY: Double, twists: Int): String = {
+    val marker = twists match {
       case 0 => ""
       case 1 | 2 | 3 => s"""; marker-mid: url("#twist-$twists")"""
       case _ => """; marker-mid: url("#twist-3")"""
     }
-    val d = if (twists <= 0) s"M $sX,$sY $tX,$tY"
-            else s"M $sX,$sY ${ sX + (tX - sX) / 2 } ${ sY + (tY - sY) / 2 } $tX,$tY"
-    s"<path id='$id' class='link' d='$d' style='stroke: #000; stroke-width: 1px; fill: none; opacity: $opacity$t'></path>"
+    val d = linkPath(twists > 0, sX, sY, tX, tY)
+    val style = s"stroke: #000; stroke-width: 1px; fill: none; opacity: 1$marker"
+    s"<path id='$id' class='link' d='$d' style='$style'></path>"
   }
 
   private def scale(c: Int) = (c + 2) * 15
@@ -153,7 +159,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       val transform = s"""transform="translate(${ scale(col) },${ scale(row) })""""
       val title = s"""<title>${ targetItem.stitch } - ${ targetItem.id }</title>"""
 
-      def style(color: String) = s"""style="fill: $color; stroke: none; opacity: 0.9""""
+      def style(color: String) = s"""style="fill: $color; stroke: none; opacity: 0.85""""
 
       def shape(color: String, shape: String) = s"""<path d="$shape" ${ style(color) }></path>"""
 
@@ -221,6 +227,12 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   /** Prefix required when writing to an SVG file */
   val prolog = "<?xml version='1.0' encoding='UTF-8'?>"
+
+  @JSExport
+  def linkPath(hasTwists: Boolean, sX: Double, sY: Double, tX: Double, tY: Double) = {
+    if (!hasTwists) s"M $sX,$sY $tX,$tY"
+    else s"M $sX,$sY ${ sX + (tX - sX) / 2 } ${ sY + (tY - sY) / 2 } $tX,$tY"
+  }
 
   /** @return an SVG document as String */
   @JSExport

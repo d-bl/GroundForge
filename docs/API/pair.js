@@ -15,11 +15,11 @@
 */
 function load() {
   var q = window.location.search.substr(1)
-  var width = 350
-  var height = 500
-  var zoom = 1.6
+  var width = 620
+  var height = 780
+  var zoom = 1.9
   var svg = PairSvg.render(TilesConfig(q), width,height, zoom)
   d3.select('#initial').html(svg)
   d3.select('#animated').html(svg)
-  nudgePairs(d3.select('#animated'), 350/zoom, height/zoom)
+  nudgePairs(d3.select('#animated'), width/2, height/2)
 }
