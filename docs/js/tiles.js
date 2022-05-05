@@ -145,8 +145,8 @@ function showDiagrams(config) {
       config = TilesConfig(submitQuery())
   var pairDiagram = pairContainerNode.data = NewPairDiagram.create(config)
   pairContainer.html(PairSvg.render(config, 744, 1052, 1.9))
-  container.scrollTop = 0
-  container.scrollLeft = 0
+  pairContainer.scrollTop = 0
+  pairContainer.scrollLeft = 0
   if (pairDiagram.jsNodes().length == 1) return
 
   setThreadDiagram("#threadDiagram", ThreadDiagram.create(pairDiagram))
