@@ -1,7 +1,24 @@
-function nudgePairs(container, width, height) {
 
-  var nodeSelection = container.selectAll(".node")
-  var linkSelection = container.selectAll(".link")
+/**
+ * container: DOM element obtained with d3.select containing an SVG generated with PairSvg.create
+ */
+function nudgePairs(container) {
+
+  var svg = container.select("svg")
+  var width = svg.attr("width") / 1.9
+  var height = svg.attr("height") / 1.9
+  var zoom = 1 * svg.select("g").attr("transform").replace("matrix(","").replace(/,.*/,"")
+
+  var nodeSelection = svg.selectAll(".node")
+  var linkSelection = svg.selectAll(".link")
+
+  // scroll to center of SVG
+
+  var containerNode = container.node()
+  if (containerNode.scrollTop !== undefined && containerNode.scrollLeft !== undefined) {
+    containerNode.scrollTop = height / 2
+    containerNode.scrollLeft = width / 2
+  }
 
   // collect data of the SVG elements with class node
 

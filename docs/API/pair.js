@@ -14,12 +14,15 @@
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
 function load() {
+
+  // dimensions of an A4
+  var width = 744
+  var height = 1052
+
   var q = window.location.search.substr(1)
-  var width = 620
-  var height = 780
   var zoom = 1.9
-  var svg = PairSvg.render(TilesConfig(q), width,height, zoom)
+  var svg = PairSvg.render(TilesConfig(q), width, height, zoom)
   d3.select('#initial').html(svg)
   d3.select('#animated').html(svg)
-  nudgePairs(d3.select('#animated'), width/2, height/2)
+  nudgePairs(d3.select('#animated'), zoom)
 }
