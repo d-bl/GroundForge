@@ -18,6 +18,7 @@ package dibl
 
 import dibl.proto.{ Item, TilesConfig }
 
+import scala.collection.immutable
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 @JSExportTopLevel("PairSvg") object PairSvg {
@@ -90,10 +91,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     val nrOfRows = items.size
     val nrOfCols = items.head.size
     val links = for {
-      targetRow <- items.indices
-      targetCol <- items(targetRow).indices
-      targetItem = items(targetRow)(targetCol)
-      if !targetItem.noStitch && targetItem.relativeSources.nonEmpty
+      (targetRow, targetCol, targetItem) <- itemLoop(items)
       ((relSrcRow, relSrcCol), pairNrIntoTarget) <- targetItem.relativeSources.zipWithIndex // i: left/right incoming pair
       sourceRow = relSrcRow + targetRow
       sourceCol = relSrcCol + targetCol
@@ -149,12 +147,18 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }
   }
 
-  private def renderNodes(items: Seq[Seq[Item]]): String = {
+  private def itemLoop(items: Seq[Seq[Item]]) = {
     for {
       row <- items.indices
       col <- items(row).indices
       targetItem = items(row)(col)
-      if !targetItem.noStitch
+      if !targetItem.noStitch && targetItem.relativeSources.nonEmpty
+    } yield (row, col, targetItem)
+  }
+
+  private def renderNodes(items: Seq[Seq[Item]]): String = {
+    for {
+      (row, col, targetItem) <- itemLoop(items)
     } yield {
       val transform = s"""transform="translate(${ scale(col) },${ scale(row) })""""
       val title = s"""<title>${ targetItem.stitch } - ${ targetItem.id }</title>"""
@@ -229,7 +233,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   val prolog = "<?xml version='1.0' encoding='UTF-8'?>"
 
   @JSExport
-  def linkPath(hasTwists: Boolean, sX: Double, sY: Double, tX: Double, tY: Double) = {
+  def linkPath(hasTwists: Boolean, sX: Double, sY: Double, tX: Double, tY: Double): String = {
     if (!hasTwists) s"M $sX,$sY $tX,$tY"
     else s"M $sX,$sY ${ sX + (tX - sX) / 2 } ${ sY + (tY - sY) / 2 } $tX,$tY"
   }
