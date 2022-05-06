@@ -93,7 +93,7 @@ function showProto() {
   var hrefQ = tesselace(query) + query
   d3.select("#link").node().href = "?" + hrefQ
   d3.select("#poc").node().href = "poc.html?" + pocRef(query)
-  d3.select("#diagrams .colorCode").html("Sorry, not yet implemented")
+  d3.select("#diagrams .colorCode").html("Sorry, a legend for the new color code is not (yet?) implemented.")
   d3.select("#threadDiagram").html("")
 
   var pairContainer = d3.select("#pairDiagram")
