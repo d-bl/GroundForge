@@ -95,7 +95,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       ((relSrcRow, relSrcCol), pairNrIntoTarget) <- targetItem.relativeSources.zipWithIndex // i: left/right incoming pair
       sourceRow = relSrcRow + targetRow
       sourceCol = relSrcCol + targetCol
-      if sourceRow >= 0 && sourceRow < nrOfRows && sourceCol > 0 && sourceCol < nrOfCols
+      if sourceRow >= 0 && sourceRow < nrOfRows && sourceCol >= 0 && sourceCol < nrOfCols
     } yield (targetRow, targetCol, pairNrIntoTarget, sourceRow, sourceCol)
 
     /* map: (srcRow,srcCol) -> Seq(((targetRow,targetCol),pairNr)) */
