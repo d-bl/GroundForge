@@ -1,13 +1,14 @@
 
 /**
- * container: DOM element obtained with d3.select containing an SVG generated with PairSvg.create
+ * container: d3.selection of element containing an SVG generated with PairSvg.create
+ * height and width of the container must be set in pixels
  */
 function nudgePairs(container) {
 
   var svg = container.select("svg")
   var zoom = 1 * svg.select("g").attr("transform").replace("matrix(","").replace(/,.*/,"")
-  var width = svg.attr("width") / zoom
-  var height = svg.attr("height") / zoom
+  var svgWidth = svg.attr("width")
+  var svgHeight = svg.attr("height")
 
   var nodeSelection = svg.selectAll(".node")
   var linkSelection = svg.selectAll(".link")
@@ -16,8 +17,8 @@ function nudgePairs(container) {
 
   var containerNode = container.node()
   if (containerNode.scrollTop !== undefined && containerNode.scrollLeft !== undefined) {
-    containerNode.scrollTop = height / (zoom)
-    containerNode.scrollLeft = width / (zoom)
+    containerNode.scrollTop = (svgHeight - (container.style("height").replace("px","")*1)) / 2
+    containerNode.scrollLeft = (svgWidth - (container.style("width").replace("px","")*1)) / 2
   }
 
   // collect data of the SVG elements with class node
@@ -81,7 +82,7 @@ function nudgePairs(container) {
   d3.forceSimulation(nodeData)
     .force("charge", d3.forceManyBody().strength(-1000))
     .force("link", forceLink)
-    .force("center", d3.forceCenter(width/2, height/2))
+    .force("center", d3.forceCenter(svgWidth/zoom/2, svgHeight/zoom/2))
     .alpha(0.0035)
     .on("tick", onTick)
 }
