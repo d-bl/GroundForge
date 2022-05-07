@@ -202,7 +202,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
             Seq(colourLeft(lrTop), colourRight(lrTop), colour(0), colour(0))
           case (3, Array(lrTop, lrBottom)) => // c.c.c
             Seq(colourLeft(lrTop), colourRight(lrTop), colourLeft(lrBottom), colourRight(lrBottom))
-          case (nrOfCs, lrs) if nrOfCs > 3 && lrs.distinct.sameElements(Array("lr")) => // plait
+          case (nrOfCs, lrs) if nrOfCs > 3 && str.matches("c(lrc)+") => // plait
             Seq(black, "|")
           case (nrOfCs, _) if nrOfCs > 3 && str.matches("c(rrc)?(llcrrc)+(llc)?") => // tallie
             Seq(black, "[]", black)
