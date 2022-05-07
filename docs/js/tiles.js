@@ -93,12 +93,12 @@ function showProto() {
   var hrefQ = tesselace(query) + query
   d3.select("#link").node().href = "?" + hrefQ
   d3.select("#poc").node().href = "poc.html?" + pocRef(query)
-  d3.select("#diagrams .colorCode").html("Sorry, a legend for the new color code is not (yet?) implemented.")
+  //d3.select("#diagrams .colorCode").html("Sorry, a legend is not (yet?) implemented.")
   d3.select("#threadDiagram").html("")
 
   var pairContainer = d3.select("#pairDiagram")
   var pairContainerNode = pairContainer.node()
-  var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
+  // pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
   pairContainer.html(PairSvg.render(config, 744, 1052, 1.9))
 
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)

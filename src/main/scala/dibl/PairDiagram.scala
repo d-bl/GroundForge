@@ -32,27 +32,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     val stitches = new Stitches(input)
     val default = Array[String]("default", stitches.defaultStitch)
     val keyValuePairs: Seq[Array[String]] = stitches.tuples
-      .map{ case (id, stitch, _) => Array(id, stitch)
+      .map{ case (id, stitch, _) =>
+        Array(id, stitch)
       }.toSeq
-    keyValuesToLegend(keyValuePairs :+ default)
-  }
-
-  @JSExport
-  def legend(urlQuery: String): String = {
-    val keyValuePairs = urlQuery
-      .split("&")
-      .map(_.split("=", 2))
-      .filter(isStitch)
-      .toSeq
-    keyValuesToLegend(keyValuePairs)
-  }
-
-  private def isStitch(kv: Array[String]) = {
-    kv.last.toLowerCase.matches("[ctrlp]+") && ! kv.head.endsWith("Stitch")
-  }
-
-  private def keyValuesToLegend(keyValuePairs: Seq[Array[String]]) = {
-    keyValuePairs
+    (keyValuePairs :+ default)
       .map { case Array(id, stitch) =>
         stitch -> id
       }
