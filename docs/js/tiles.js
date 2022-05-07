@@ -95,12 +95,7 @@ function showProto() {
   d3.select("#poc").node().href = "poc.html?" + pocRef(query)
   //d3.select("#diagrams .colorCode").html("Sorry, a legend is not (yet?) implemented.")
   d3.select("#threadDiagram").html("")
-
-  var pairContainer = d3.select("#pairDiagram")
-  var pairContainerNode = pairContainer.node()
-  // pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
-  pairContainer.html(PairSvg.render(config, 744, 1052, 1.9))
-
+  d3.select("#pairDiagram").html(PairSvg.render(config, 744, 1052, 1.9))
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
@@ -143,19 +138,14 @@ function scrollToIfPossible(container, x, y) {
   }
 }
 function showDiagrams(config) {
-
-  var markers = true // use false for slow devices and IE-11, set them at onEnd
-
   var pairContainer = d3.select("#pairDiagram")
-  var pairContainerNode = pairContainer.node()
   if (!config)
       config = TilesConfig(submitQuery())
-  var pairDiagram = pairContainerNode.data = NewPairDiagram.create(config)
   pairContainer.html(PairSvg.render(config, 744, 1052, 1.9))
-  scrollToIfPossible(pairContainerNode,0,0)
-  if (pairDiagram.jsNodes().length == 1) return
+  scrollToIfPossible(pairContainer.node(),0,0)
+  if (pairContainer.select(".node").length <= 1) return
 
-  setThreadDiagram("#threadDiagram", ThreadDiagram.create(pairDiagram))
+  setThreadDiagram("#threadDiagram", ThreadDiagram.create(NewPairDiagram.create(config)))
 }
 function animateDiagram(container, forceCenterX, forceCenterY) {
   if(!container) {
