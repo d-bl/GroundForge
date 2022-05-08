@@ -166,7 +166,7 @@
        sodipodi:role="line"
        id="tspan6328"
        x="70.126694"
-       y="235.6785">c.c.c (at least one l or r for at least one of the dots, this example: ctllcrrc)</tspan></text>
+       y="235.6785">c.c.c (at least one t, l or r for at least one of the dots, this example: ctllcrrc)</tspan></text>
   <g
      onclick="paint(this)"
      class="node"
@@ -200,7 +200,7 @@
        sodipodi:role="line"
        id="tspan6344"
        x="70.126694"
-       y="195.67847">c.c (at least one l or r for the dot, this example: ctrc)</tspan></text>
+       y="195.67847">c.c (at least one t, l or r for the dot, this example: ctrc)</tspan></text>
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
