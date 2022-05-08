@@ -115,42 +115,42 @@
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
-     x="62.288544"
+     x="42.288544"
      y="69.878052"
      id="text2181"><tspan
        sodipodi:role="line"
        id="tspan2179"
-       x="62.288544"
+       x="42.288544"
        y="69.878052">zero</tspan></text>
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
-     x="108.28854"
+     x="88.288544"
      y="69.878052"
      id="text2185"><tspan
        sodipodi:role="line"
        id="tspan2183"
-       x="108.28854"
+       x="88.288544"
        y="69.878052">once</tspan></text>
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
-     x="154.28854"
+     x="134.28854"
      y="69.878052"
      id="text2189"><tspan
        sodipodi:role="line"
        id="tspan2187"
-       x="154.28854"
+       x="134.28854"
        y="69.878052">twice</tspan></text>
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
-     x="206.28851"
+     x="186.28851"
      y="69.878052"
      id="text2193"><tspan
        sodipodi:role="line"
        id="tspan2191"
-       x="206.28851"
+       x="186.28851"
        y="69.878052">more</tspan></text>
   <text
      xml:space="preserve"
@@ -213,22 +213,22 @@
        y="275.82648">ctctctc and longer plaits</tspan></text>
   <path
      class="link"
-     d="m 249.14275,83.52307 h -21.2132 -21.2132"
-     style="fill:none;stroke:#000000;stroke-width:1;marker-mid:url(#twist-3-0-8);stroke-miterlimit:4;stroke-dasharray:none"
+     d="m 229.14275,83.52307 h -21.2132 -21.2132"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;marker-mid:url(#twist-3-0-8)"
      id="path4534-4" />
   <path
      class="link"
-     d="m 186.71635,83.52307 h -15 -15"
-     style="fill:none;stroke:#000000;stroke-width:1;marker-mid:url(#twist-2-3);stroke-miterlimit:4;stroke-dasharray:none"
+     d="m 166.71635,83.52307 h -15 -15"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;marker-mid:url(#twist-2-3)"
      id="path6580" />
   <path
      class="link"
-     d="m 112.71635,83.52307 h 15 15"
-     style="fill:none;stroke:#000000;stroke-width:1;marker-mid:url(#twist-1-5);stroke-miterlimit:4;stroke-dasharray:none"
+     d="m 92.71635,83.52307 h 15 15"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;marker-mid:url(#twist-1-5)"
      id="path6582" />
   <path
      class="link"
-     d="m 92.71635,83.52307 h -30"
+     d="m 72.71635,83.52307 h -30"
      style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
      id="path6584" />
   <g
@@ -250,13 +250,13 @@
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
-     x="30.598856"
-     y="49.462044"
+     x="249.59885"
+     y="110.46204"
      id="text8523"><tspan
        sodipodi:role="line"
        id="tspan8521"
-       x="30.598856"
-       y="49.462044">twists:</tspan></text>
+       x="249.59885"
+       y="110.46204">twists between c's</tspan></text>
   <path
      class="link"
      d="m 28.798937,336.63373 14.999998,15"
@@ -303,59 +303,59 @@
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
-     x="30.598856"
+     x="249.29089"
      y="149.46204"
      id="text13266"><tspan
        sodipodi:role="line"
        id="tspan13264"
-       x="30.598856"
-       y="149.46204">c's only:</tspan></text>
+       x="249.29089"
+       y="149.46204">c's only</tspan></text>
   <path
-     d="m 116.44418,145.82928 11,-11 v 11 z"
+     d="m 96.44418,145.82928 11,-11 v 11 z"
      style="opacity:0.9;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2"
      id="path13268" />
   <path
-     d="m 116.44418,145.82928 11,11 v -11 z"
+     d="m 96.44418,145.82928 11,11 v -11 z"
      style="opacity:0.9;fill:#f4a582;stroke:none;stroke-width:2"
      id="path13270" />
   <path
-     d="m 138.44418,145.82928 -11,-11 v 11 z"
+     d="m 118.44418,145.82928 -11,-11 v 11 z"
      style="opacity:0.9;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2"
      id="path13272" />
   <path
-     d="m 138.44418,145.82928 -11,11 v -11 z"
+     d="m 118.44418,145.82928 -11,11 v -11 z"
      style="opacity:0.9;fill:#f4a582;stroke:none;stroke-width:2"
      id="path13274" />
   <path
-     d="m 183.44418,145.82928 -11,11 v -11 z"
+     d="m 163.44418,145.82928 -11,11 v -11 z"
      style="opacity:0.9;fill:#92c5de;stroke:none;stroke-width:2"
      id="path13276" />
   <path
-     d="m 183.44418,145.82928 -11,-11 v 11 z"
+     d="m 163.44418,145.82928 -11,-11 v 11 z"
      style="opacity:0.9;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2"
      id="path13278" />
   <path
-     d="m 161.44418,145.82928 11,11 v -11 z"
+     d="m 141.44418,145.82928 11,11 v -11 z"
      style="opacity:0.9;fill:#92c5de;stroke:none;stroke-width:2"
      id="path13280" />
   <path
-     d="m 161.44418,145.82928 11,-11 v 11 z"
+     d="m 141.44418,145.82928 11,-11 v 11 z"
      style="opacity:0.9;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2"
      id="path13282" />
   <path
-     d="m 237.44418,146.82928 -11,-11 v 11 z"
+     d="m 217.44418,146.82928 -11,-11 v 11 z"
      style="opacity:0.9;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2"
      id="path13284" />
   <path
-     d="m 237.44418,146.82928 -11,11 v -11 z"
+     d="m 217.44418,146.82928 -11,11 v -11 z"
      style="opacity:0.9;fill:#0571b0;stroke:none;stroke-width:2"
      id="path13286" />
   <path
-     d="m 215.44418,146.82928 11,-11 v 11 z"
+     d="m 195.44418,146.82928 11,-11 v 11 z"
      style="opacity:0.9;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2"
      id="path13288" />
   <path
-     d="m 215.44418,146.82928 11,11 v -11 z"
+     d="m 195.44418,146.82928 11,11 v -11 z"
      style="opacity:0.9;fill:#0571b0;stroke:none;stroke-width:2"
      id="path13290" />
   <text
@@ -375,7 +375,7 @@
   <path
      onclick="paint(this)"
      class="node"
-     d="m 89.844179,105.82928 a 9.4,9.4 0 0 1 -9.399999,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.399999,9.4 z"
+     d="m 69.84418,105.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
      style="opacity:0.9;fill:#ca0020;fill-opacity:1;stroke:none;stroke-width:2"
      id="path1135">
     <title
@@ -384,7 +384,7 @@
   <path
      onclick="paint(this)"
      class="node"
-     d="m 137.84418,105.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
+     d="m 117.84418,105.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
      style="opacity:0.9;fill:#f4a582;fill-opacity:1;stroke:none;stroke-width:2"
      id="path1139">
     <title
@@ -393,7 +393,7 @@
   <path
      onclick="paint(this)"
      class="node"
-     d="m 179.84418,105.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
+     d="m 159.84418,105.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
      style="opacity:0.9;fill:#92c5de;fill-opacity:1;stroke:none;stroke-width:2"
      id="path1143">
     <title
@@ -402,7 +402,7 @@
   <path
      onclick="paint(this)"
      class="node"
-     d="m 237.84418,105.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
+     d="m 217.84418,105.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
      style="opacity:0.9;fill:#0571b0;fill-opacity:1;stroke:none;stroke-width:2"
      id="path1147">
     <title
