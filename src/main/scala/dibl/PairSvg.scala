@@ -87,11 +87,11 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   private def diamondLeft(d: Double = diamondSize) = s"M -$d,0 0,$d 0,-$d Z"
 
-  private def renderLinks(items: Seq[Seq[Item]]): String = {
-    val nrOfRows = items.size
-    val nrOfCols = items.head.size
+  private def renderLinks(itemMatrix: Seq[Seq[Item]], itemList: Seq[(Int,Int,Item)]): String = {
+    val nrOfRows = itemMatrix.size
+    val nrOfCols = itemMatrix.head.size
     val links = for {
-      (targetRow, targetCol, targetItem) <- itemLoop(items)
+      (targetRow, targetCol, targetItem) <- itemList
       ((relSrcRow, relSrcCol), pairNrIntoTarget) <- targetItem.relativeSources.zipWithIndex // i: left/right incoming pair
       sourceRow = relSrcRow + targetRow
       sourceCol = relSrcCol + targetCol
@@ -108,14 +108,14 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       )
 
     links.map { case (targetRow, targetCol, pairNrIntoTarget, sourceRow, sourceCol) =>
-      val targetItem = items(targetRow)(targetCol)
+      val targetItem = itemMatrix(targetRow)(targetCol)
       val leadingTwistsOfTarget = targetItem
         .stitch.replaceAll("c.*", "")
         .twistsOfPair(pairNrIntoTarget)
       val trailingTwistsOfSrc = targetsPerSource(sourceRow, sourceCol)
         .find { case ((row, col), _) => targetRow == row && targetCol == col }
         .map { case ((_, _), pairNrLeavingSrc) =>
-          items(sourceRow)(sourceCol)
+          itemMatrix(sourceRow)(sourceCol)
             .stitch.replaceAll(".*c", "")
             .twistsOfPair(pairNrLeavingSrc)
         }.getOrElse("")
@@ -147,18 +147,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }
   }
 
-  private def itemLoop(items: Seq[Seq[Item]]) = {
+  private def renderNodes(itemList: Seq[(Int,Int,Item)]): String = {
     for {
-      row <- items.indices
-      col <- items(row).indices
-      targetItem = items(row)(col)
-      if !targetItem.noStitch && targetItem.relativeSources.nonEmpty
-    } yield (row, col, targetItem)
-  }
-
-  private def renderNodes(items: Seq[Seq[Item]]): String = {
-    for {
-      (row, col, targetItem) <- itemLoop(items)
+      (row, col, targetItem) <- itemList
     } yield {
       val transform = s"""transform="translate(${ scale(col) },${ scale(row) })""""
       val title = s"""<title>${ targetItem.stitch } - ${ targetItem.id }</title>"""
@@ -245,6 +236,13 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
              height: Int = 1052,
              zoom: Long = 2,
             ): String = {
+    val itemMatrix = config.getItemMatrix
+    val itemList = for {
+      row <- itemMatrix.indices
+      col <- itemMatrix(row).indices
+      targetItem = itemMatrix(row)(col)
+      if !targetItem.noStitch && targetItem.relativeSources.nonEmpty
+    } yield (row, col, targetItem)
     s"""
        |<svg
        | id="svg2"
@@ -262,8 +260,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
        |  ${ twistMark(3) }
        |</defs>
        |<g transform="matrix($zoom,0,0,$zoom,0,0)">
-       |${ renderLinks(config.getItemMatrix) }
-       |${ renderNodes(config.getItemMatrix) }
+       |${ renderLinks(itemMatrix, itemList) }
+       |${ renderNodes(itemList) }
        |</g>
        |</svg>""".stripMargin
   }
