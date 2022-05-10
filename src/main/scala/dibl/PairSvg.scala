@@ -185,8 +185,12 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         (cs, twists) match {
           case (_, _) if str == "c" => // just one c
             Seq(black, "()")
+          case (2, Array()) => // cc
+            Seq(colour(0), "[]", colour(0))
+          case (3, Array()) => // ccc
+            Seq(colour(0), "<|>", colour(0))
           case (2, Array(lr)) => // c.c
-            Seq(colourLeft(lr), "<|>", colourRight(lr))
+            Seq(colourLeft(lr), "[]", colourRight(lr))
           case (3, Array(lrBottom)) if str.startsWith("cc") => // cc.c
             Seq(colour(0), colour(0), colourLeft(lrBottom), colourRight(lrBottom))
           case (3, Array(lrTop)) => // c.cc
@@ -204,7 +208,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       shapeDef(targetItem.stitch) match {
         case Seq(color, "()") => group(shape(color, circle(circleSize * 0.85)))
         case Seq(color, "|") => group(shape(color, squarePortrait()))
-        case Seq(color1, "<|>", color2) => group(shape(color1, squareLeft()) + shape(color2, squareRight()))
+        case Seq(color1, "<|>", color2) => group(shape(color1, diamondLeft()) + shape(color2, diamondRight()))
         case Seq(color1, "<->", color2) => group(shape(color1, diamondTop()) + shape(color2, diamondBottom()))
         case Seq(color1, "[]", color2) => group(shape(color1, squareLeft()) + shape(color2, squareRight()))
         case Seq(topLeft, topRight, bottomLeft, bottomRight) =>
