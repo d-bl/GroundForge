@@ -63,6 +63,7 @@ function nudgePairs(container) {
   function drawPath(jsLink) {
       var s = jsLink.source
       var t = jsLink.target
+      // priority for preventing code duplication over less independency
       return PairSvg.linkPath(jsLink.mid, s.x, s.y, t.x, t.y)
   }
   var tickCounter = 0

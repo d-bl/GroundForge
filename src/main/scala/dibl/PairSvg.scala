@@ -18,7 +18,6 @@ package dibl
 
 import dibl.proto.{ Item, TilesConfig }
 
-import scala.collection.immutable
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 @JSExportTopLevel("PairSvg") object PairSvg {
@@ -165,7 +164,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
       def colour(nrOfTwists: Int) = {
         // https://colorbrewer2.org/?type=diverging&scheme=RdBu&n=5
-        val colours = Seq("#ca0020", "#f4a582", /* pale */ "#92c5de", "#0571b0")
+        //                 red        blue       peach     light blue
+        val colours = Seq("#ca0020", "#0571b0", "#f4a582", "#92c5de")
         colours(Math.min(colours.length - 1, nrOfTwists))
       }
 
@@ -183,8 +183,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         val twists = str.split("c").filterNot(_.isEmpty).map(_.sortBy(identity))
 //        println(s"$stitch ${ twists.mkString }")
         (cs, twists) match {
-          case (_, Array()) => // just one or more c's
-            Seq(black, "<->", colour(cs))
+          case (_, _) if str == "c" => // just one c
+            Seq(black, "()")
           case (2, Array(lr)) => // c.c
             Seq(colourLeft(lr), "<|>", colourRight(lr))
           case (3, Array(lrBottom)) if str.startsWith("cc") => // cc.c
@@ -193,7 +193,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
             Seq(colourLeft(lrTop), colourRight(lrTop), colour(0), colour(0))
           case (3, Array(lrTop, lrBottom)) => // c.c.c
             Seq(colourLeft(lrTop), colourRight(lrTop), colourLeft(lrBottom), colourRight(lrBottom))
-          case (nrOfCs, lrs) if nrOfCs > 3 && str.matches("c(lrc)+") => // plait
+          case (nrOfCs, _) if nrOfCs > 3 && str.matches("c(lrc)+") => // plait
             Seq(black, "|")
           case (nrOfCs, _) if nrOfCs > 3 && str.matches("c(rrc)?(llcrrc)+(llc)?") => // tallie
             Seq(black, "[]", black)
@@ -202,6 +202,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       }
 
       shapeDef(targetItem.stitch) match {
+        case Seq(color, "()") => group(shape(color, circle(circleSize * 0.85)))
         case Seq(color, "|") => group(shape(color, squarePortrait()))
         case Seq(color1, "<|>", color2) => group(shape(color1, squareLeft()) + shape(color2, squareRight()))
         case Seq(color1, "<->", color2) => group(shape(color1, diamondTop()) + shape(color2, diamondBottom()))
