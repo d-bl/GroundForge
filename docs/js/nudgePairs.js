@@ -10,8 +10,6 @@ function nudgePairs(container) {
   var svgWidth = svg.attr("width")
   var svgHeight = svg.attr("height")
 
-  var nodeSelection = svg.selectAll(".node")
-  var linkSelection = svg.selectAll(".link")
 
   // scroll to center of SVG
 
@@ -23,7 +21,7 @@ function nudgePairs(container) {
 
   // collect data of the SVG elements with class node
 
-  var nodeData = nodeSelection.nodes().map(function(n){
+  function getNodeData(n){
     var xys = n.attributes["transform"].nodeValue
                .replace("translate(","").replace(")","").split(",")
     return {
@@ -31,7 +29,10 @@ function nudgePairs(container) {
       y: xys[1]*1,
       id: n.attributes["id"].nodeValue
     }
-  })
+  }
+
+  var nodeSelection = svg.selectAll(".node")
+  var nodeData = nodeSelection.nodes().map(getNodeData)
   var nodeMap = new Map()
   for (i=0; i< nodeData.length; i++)
     nodeMap.set(nodeData[i].id, i)
@@ -39,7 +40,7 @@ function nudgePairs(container) {
   // collect data of the SVG elements with class link
   // each link-id is split into the IDs of their nodes
 
-  var linkData = linkSelection.nodes().map(function(n){
+  function getLinkData(n){
     var hasMidPoint = n.attributes["d"].nodeValue
                        .replace(/[^ ]/g,"").length > 2
     var ids = n.attributes["id"].nodeValue.split("-")
@@ -48,7 +49,9 @@ function nudgePairs(container) {
       source: nodeMap.get(ids[0]),
       target: nodeMap.get(ids[1])
     }
-  })
+  }
+  var linkSelection = svg.selectAll(".link")
+  var linkData = linkSelection.nodes().map(getLinkData)
 
   // bind collected data
 
