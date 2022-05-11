@@ -2,6 +2,8 @@
 /**
  * container: d3.selection of element containing an SVG generated with PairSvg.create
  * height and width of the container must be set in pixels
+ * https://devdocs.io/d3~4/d3-force
+ * https://devdocs.io/d3~4/d3-selection
  */
 function nudgePairs(container) {
 
