@@ -4,11 +4,9 @@ title: GroundForge - API
 --- 
 
 GoundForge is a library partly written in scala. 
-The scala source run on a JVM platform and can be called from java programs,
-it also runs in a JavaScript environment. 
+The scala source can run on a JVM platform and can be called from java programs,
+it can also run in a JavaScript environment. 
 Additional functions create web page components.
-
-[x]({{ site.github.repository_url }}/blob/master/docs/API/thread.html)
 
 Current User Interfaces
 =======================
@@ -38,10 +36,12 @@ for old style pair diagrams or droste patterns)
 [rose](proto.html?patchWidth=8&patchHeight=14&b1=ctc&c1=ctllcrrc&d1=clclc&b2=cllcrrcllcrrcr&d2=ctctctc&c3=ctctll&footside=b,-,a,-&footsideStitch=-&tile=831,4-7,-5-&tileStitch=ctct&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
 ([code][protoCode])
 
-* [sheet](sheet.html) ([code][sheetCode],
+* [pricking](sheet.html) variations ([code][sheetCode],
 a simplified hardcoded variant of this
 [page](https://jo-pol.github.io/GroundForge/sheet.html?img=214&patch=5-,-5;checker&%20patch=6;checker&%20patch=53;checker&%20patch=563;checker&%20patch=5632;checker&%20patch=56663;checker&%20patch=56353;checker&%20patch=56632;checker&%20patch=53,5-,-5;checker&%20patch=56-,6-5,-56;checker&%20patch=4-L,-L4,L4-;checker&%20patch=53,5-,35,-5;checker&%20patch=53,53,5-,-5;checker&%20patch=566-,66-5,6-56,-566;checker&%20patch=5632,56-2,5-5-,-535;checker)
-that takes a family of Tesselace patterns as parameter)
+that takes a family of Tesselace patterns as parameter, you probably can make more and intermediate [variations][explanation])
+
+[explanation]: /GroundForge-help/Reshape-Patterns
 
 [threadCode]: {{ site.github.repository_url }}/blob/master/docs/API/thread.html
 
