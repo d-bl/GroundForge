@@ -19,14 +19,24 @@
             alert("an input field changed")
             d3.selectAll('input').style("display","none")
         }
-        function load() {
-            var q = window.location.search.substr(1)
+        function flip(node){
+          var a = window.location.search.substr(1).split("tile=")
+          var qHead = a[0]
+          var tile = a[1].replace(/&.*/,"")
+          var qTail = a[1].replace(/[^&]+/,"")
+          // TODO get and reassemble from TilesConfig. Flip stitches too, other wall papers?
+          load(qHead + "tile=" + Matrix.flip(tile).replace(/\n/g,",") + qTail)
+          // disable: just once in this context. TODO: use node not d3.select
+          d3.select("a").style("display","none")
+        }
+        function load(q) {
             var config = TilesConfig(q)
             d3.select('#proto').html(PrototypeDiagram.create(config))
         }
     </script>
 </head>
-<body onload="load()">
+<body onload="load(window.location.search.substr(1))">
+    <a href="javascript:flip(this)">flip tile</a><br>
     <div id="proto"></div>
 </body>
 </html>
