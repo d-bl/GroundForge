@@ -22,7 +22,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 @JSExportTopLevel("PairSvg") object PairSvg {
 
-  private val diamondSize = 4.6  // half of the diagonal
+  private val diamondSize = 4.6 // half of the diagonal
   private val squareSize = 3.2 // half of the rib length
   private val circleSize = 3.8 // radius
 
@@ -86,7 +86,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   private def diamondLeft(d: Double = diamondSize) = s"M -$d,0 0,$d 0,-$d Z"
 
-  private def renderLinks(itemMatrix: Seq[Seq[Item]], itemList: Seq[(Int,Int,Item)]): String = {
+  private def renderLinks(itemMatrix: Seq[Seq[Item]], itemList: Seq[(Int, Int, Item)]): String = {
     val nrOfRows = itemMatrix.size
     val nrOfCols = itemMatrix.head.size
     val links = for {
@@ -146,84 +146,91 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }
   }
 
-  private def renderNodes(itemList: Seq[(Int,Int,Item)]): String = {
+  private def renderNodes(itemList: Seq[(Int, Int, Item)]): String = {
     for {
       (row, col, targetItem) <- itemList
     } yield {
       val transform = s"""transform="translate(${ scale(col) },${ scale(row) })""""
       val title = s"""<title>${ targetItem.stitch } - ${ targetItem.id }</title>"""
 
-      def style(color: String) = s"""style="fill: $color; stroke: none; opacity: 0.85""""
-
-      def shape(color: String, shape: String) = s"""<path d="$shape" ${ style(color) }></path>"""
-
-      def group(shapes: String) = s"""<g id='r${ row }c$col' onclick='paint(this)' class="node" $transform>$title$shapes</g>"""
-
-      val pale = "#f7f7f7" // center one of color brewer list
-      val black = "#000000"
-
-      def colour(nrOfTwists: Int) = {
-        // https://colorbrewer2.org/?type=diverging&scheme=RdBu&n=5
-        //                 red        blue       peach     light blue
-        val colours = Seq("#ca0020", "#0571b0", "#f4a582", "#92c5de")
-        colours(Math.min(colours.length - 1, nrOfTwists))
-      }
-
-      def colourRight(s: String) = colour(s.replaceAll("l", "").length)
-
-      def colourLeft(s: String) = colour(s.replaceAll("r", "").length)
-
-      def shapeDef(stitch: String): Seq[String] = {
-        val str = stitch
-          .replaceAll("^[tlr]*", "") // ignore leading twists
-          .replaceAll("[tlr]*$", "") // ignore trailing twists
-          .replaceAll("p", "") // ignore pins
-          .replaceAll("t", "lr")
-        val cs = str.replaceAll("[^c]", "").length
-        val twists = str.split("c").filterNot(_.isEmpty).map(_.sortBy(identity))
-//        println(s"$stitch ${ twists.mkString }")
-        (cs, twists) match {
-          case (_, _) if str == "c" => // just one c
-            Seq(black, "()")
-          case (2, Array()) => // cc
-            Seq(colour(0), "[]", colour(0))
-          case (3, Array()) => // ccc
-            Seq(colour(0), "<|>", colour(0))
-          case (2, Array(lr)) => // c.c
-            Seq(colourLeft(lr), "[]", colourRight(lr))
-          case (3, Array(lrBottom)) if str.startsWith("cc") => // cc.c
-            Seq(colour(0), colour(0), colourLeft(lrBottom), colourRight(lrBottom))
-          case (3, Array(lrTop)) => // c.cc
-            Seq(colourLeft(lrTop), colourRight(lrTop), colour(0), colour(0))
-          case (3, Array(lrTop, lrBottom)) => // c.c.c
-            Seq(colourLeft(lrTop), colourRight(lrTop), colourLeft(lrBottom), colourRight(lrBottom))
-          case (nrOfCs, _) if nrOfCs > 3 && str.matches("c(lrc)+") => // plait
-            Seq(black, "|")
-          case (nrOfCs, _) if nrOfCs > 3 && str.matches("c(rrc)?(llcrrc)+(llc)?") => // tallie
-            Seq(black, "[]", black)
-          case _ => Seq() // anything else
-        }
-      }
-
-      shapeDef(targetItem.stitch) match {
-        case Seq(color, "()") => group(shape(color, circle(circleSize * 0.85)))
-        case Seq(color, "|") => group(shape(color, squarePortrait()))
-        case Seq(color1, "<|>", color2) => group(shape(color1, diamondLeft()) + shape(color2, diamondRight()))
-        case Seq(color1, "<->", color2) => group(shape(color1, diamondTop()) + shape(color2, diamondBottom()))
-        case Seq(color1, "[]", color2) => group(shape(color1, squareLeft()) + shape(color2, squareRight()))
-        case Seq(topLeft, topRight, bottomLeft, bottomRight) =>
-//          println(s"${ targetItem.stitch } $topLeft $topRight $bottomLeft $bottomRight")
-          group(shape(topLeft, diamondTopLeft()) +
-            shape(topRight, diamondTopRight()) +
-            shape(bottomLeft, diamondBottomLeft()) +
-            shape(bottomRight, diamondBottomRight())
-          )
-        case defs =>
-//          println(s"${ targetItem.stitch } $defs")
-          group(shape(pale, circle())) // fall back
-      }
+      s"""<g id='r${ row }c$col' onclick='paint(this)' class="node" $transform>$title${ shapes(targetItem) }</g>"""
     }.mkString
   }.mkString
+
+  private def shapes(targetItem: Item) = {
+    def colour(nrOfTwists: Int) = {
+      // https://colorbrewer2.org/?type=diverging&scheme=RdBu&n=5
+      //                 red        blue       peach     light blue
+      val colours = Seq("#ca0020", "#0571b0", "#f4a582", "#92c5de")
+      colours(Math.min(colours.length - 1, nrOfTwists))
+    }
+
+    def colourRight(s: String) = colour(s.replaceAll("l", "").length)
+
+    def colourLeft(s: String) = colour(s.replaceAll("r", "").length)
+
+    def style(color: String) = s"""style="fill: $color; stroke: none; opacity: 0.85""""
+
+    def shape(color: String, shape: String) = s"""<path d="$shape" ${ style(color) }></path>"""
+
+    def diamond(lrTop: String, lrBottom: String) = {
+      shape(colourLeft(lrTop), diamondTopLeft()) +
+        shape(colourRight(lrTop), diamondTopRight()) +
+        shape(colourLeft(lrBottom), diamondBottomLeft()) +
+        shape(colourRight(lrBottom), diamondBottomRight())
+    }
+
+    val pale = "#f7f7f7" // center one of color brewer list
+    val black = "#000000"
+
+    val str = targetItem.stitch
+      .replaceAll("^[tlr]*", "") // ignore leading twists
+      .replaceAll("[tlr]*$", "") // ignore trailing twists
+      .replaceAll("p", "") // ignore pins
+      .replaceAll("t", "lr")
+    val cs = str.replaceAll("[^c]", "").length
+    val twists = str.split("c").filterNot(_.isEmpty).map(_.sortBy(identity))
+    // println(s"$stitch ${ twists.mkString }")
+
+    (cs, twists) match {
+      case (_, _) if str == "c" => // just one c
+        shape(black, circle(circleSize * 0.85))
+      case (2, Array()) => // cc
+        shape(colour(0), squareLeft()) + shape(colour(0), squareRight())
+      case (3, Array()) => // ccc
+        shape(colour(0), diamondLeft()) + shape(colour(0), diamondRight())
+      case (2, Array(lr)) => // c.c
+        shape(colourLeft(lr), squareLeft()) + shape(colourRight(lr), squareRight())
+      case (3, Array(lrBottom)) if str.startsWith("cc") => // cc.c
+        diamond(colour(0), lrBottom)
+      case (3, Array(lrTop)) => // c.cc
+        diamond(lrTop, colour(0))
+      case (3, Array(lrTop, lrBottom)) => // c.c.c
+        diamond(lrTop, lrBottom)
+      case (nrOfCs, _) if nrOfCs > 3 && str.matches("c(lrc)+") => // plait
+        shape(black, squarePortrait())
+      case (nrOfCs, _) if nrOfCs > 3 && str.matches("c(rrc)?(llcrrc)+(llc)?") => // tallie
+        shape(black, squareLeft()) + shape(black, squareRight())
+      case _ =>
+        shape(pale, circle()) // fall back
+    }
+  }
+
+  @JSExport
+  def legend(config: TilesConfig) = {
+    listItems(config.getItemMatrix).zipWithIndex.map { case ((_, _, item),i) =>
+      shapes(item) -> item.stitch
+    }
+  }
+
+  private def listItems(itemMatrix: Seq[Seq[Item]]) = {
+    for {
+      row <- itemMatrix.indices
+      col <- itemMatrix(row).indices
+      targetItem = itemMatrix(row)(col)
+      if !targetItem.noStitch && targetItem.relativeSources.nonEmpty
+    } yield (row, col, targetItem)
+  }
 
   /** Prefix required when writing to an SVG file */
   val prolog = "<?xml version='1.0' encoding='UTF-8'?>"
@@ -242,12 +249,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
              zoom: Long = 2,
             ): String = {
     val itemMatrix = config.getItemMatrix
-    val itemList = for {
-      row <- itemMatrix.indices
-      col <- itemMatrix(row).indices
-      targetItem = itemMatrix(row)(col)
-      if !targetItem.noStitch && targetItem.relativeSources.nonEmpty
-    } yield (row, col, targetItem)
+    val itemList = listItems(itemMatrix)
+    println(legend(config))
     s"""
        |<svg
        | id="svg2"
