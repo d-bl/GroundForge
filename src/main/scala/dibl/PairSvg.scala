@@ -153,11 +153,11 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       val transform = s"""transform="translate(${ scale(col) },${ scale(row) })""""
       val title = s"""<title>${ targetItem.stitch } - ${ targetItem.id }</title>"""
 
-      s"""<g id='r${ row }c$col' onclick='paint(this)' class="node" $transform>$title${ shapes(targetItem) }</g>"""
+      s"""<g id='r${ row }c$col' onclick='paint(this)' class="node" $transform>$title${ shapes(targetItem.stitch) }</g>"""
     }.mkString
   }.mkString
 
-  private def shapes(targetItem: Item) = {
+  private def shapes(stitch: String) = {
     def colour(nrOfTwists: Int) = {
       // https://colorbrewer2.org/?type=diverging&scheme=RdBu&n=5
       //                 red        blue       peach     light blue
@@ -183,7 +183,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     val pale = "#f7f7f7" // center one of color brewer list
     val black = "#000000"
 
-    val str = targetItem.stitch
+    val str = stitch
       .replaceAll("^[tlr]*", "") // ignore leading twists
       .replaceAll("[tlr]*$", "") // ignore trailing twists
       .replaceAll("p", "") // ignore pins
@@ -217,11 +217,25 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   }
 
   @JSExport
-  def legend(config: TilesConfig) = {
-    listItems(config.getItemMatrix).zipWithIndex.map { case ((_, _, item),i) =>
-      shapes(item) -> item.stitch
+  def legend(config: TilesConfig): String = {
+    listItems(config.getItemMatrix)
+      .map { case (_, _, item) => (item.stitch.replaceAll("^[^c]*", "").replaceAll("[^c]*$", ""), item.stitch, item.id) }
+      .distinct
+      .groupBy { case (core, _, _) => core }.toSeq
+      .sortBy { case (core, _) => core }
+      .zipWithIndex.map { case ((core, seq), i) =>
+      val offset = i * 12 + 15
+      val transform = s"""transform="translate(10,${ offset - 4 })""""
+      val style = """style="font-size:8px;line-height:1.25;font-family:sans-serif"""
+      val line = seq.groupBy { case (_, stitch, _) => stitch }.toSeq
+        .sortBy {case (stitch, _) => stitch}
+        .map { case (stitch, seq) =>
+          seq.map { case (_, _, id) => id }.mkString(stitch + ": ", ", ", "")
+        }.mkString(" --- ")
+      val text = s"""<text $style" x="25" y='$offset'><tspan x="22" y="$offset">$line</tspan></text>"""
+      s"""<g $transform>${ shapes(core) }</g>$text"""
     }
-  }
+  }.mkString(svgTag() + """<g transform="matrix(2,0,0,2,0,0)">""", "", "</g></svg>")
 
   private def listItems(itemMatrix: Seq[Seq[Item]]) = {
     for {
@@ -241,27 +255,29 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     else s"M $sX,$sY ${ sX + (tX - sX) / 2 } ${ sY + (tY - sY) / 2 } $tX,$tY"
   }
 
+  private def svgTag (width: Int = 744, height: Int = 1052) =
+    s"""<svg
+      | id="svg2"
+      | version="1.1"
+      | width="$width"
+      | height="$height"
+      | pointer-events="all"
+      | xmlns="http://www.w3.org/2000/svg"
+      | xmlns:svg="http://www.w3.org/2000/svg"
+      | xmlns:xlink="http://www.w3.org/1999/xlink"
+      |>
+      |""".stripMargin
+
   /** @return an SVG document as String */
   @JSExport
   def render(config: TilesConfig,
-             width: Int = 744,
-             height: Int = 1052,
+             width: Int,
+             height: Int,
              zoom: Long = 2,
             ): String = {
     val itemMatrix = config.getItemMatrix
     val itemList = listItems(itemMatrix)
-    println(legend(config))
-    s"""
-       |<svg
-       | id="svg2"
-       | version="1.1"
-       | width="$width"
-       | height="$height"
-       | pointer-events="all"
-       | xmlns="http://www.w3.org/2000/svg"
-       | xmlns:svg="http://www.w3.org/2000/svg"
-       | xmlns:xlink="http://www.w3.org/1999/xlink"
-       |>
+    s"""${ svgTag(width, height) }
        |<defs>
        |  ${ twistMark(1) }
        |  ${ twistMark(2) }

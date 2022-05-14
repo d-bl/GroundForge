@@ -50,14 +50,13 @@
             </span>
         </legend>
 
-        <p class="colorCode">Sorry, for now we only have a <a href="images/stitch-legend.svg" target="_blank">generic legend</a>.</p>
+        <div class="colorCode"></div>
             Click a stitch to assign or
             <button onclick="clearStitches();return false">assign to all</button>
             <br>
             <input type="text" id="paintStitches" name="paintStitches" value="ct">
             <a href="#" onclick="flipStitch()">flip</a>
             <a href="/GroundForge-help/Replace" target="_blank"><img src="images/information-icon.png" title="stitch definition: &#013&#013c(ross), t(wist), &#013l(eft twist), r(ight twist)&#013&#013click in pair diagram&#013to apply"></a>
-        </div>
         examples:
         {% include gallery.html alt1="ct" %}
         {% include gallery.html alt1="ctct" %}
@@ -74,7 +73,7 @@
                 Pairs
                 <img class="animate" src="images/animate.png" onclick="javascript:nudgePairs(d3.select('#pairDiagram'))" title="animate/reshape">
                 <a href="images/stitch-legend.svg" target="_blank"><img src="images/information-icon.png"></a>
-                <img class="swatches" src="images/swatches.png" onclick='showColorCode("#diagrams")'>
+                <img class="swatches" src="images/swatches.png" onclick='newStylePairLegend()'>
                 {% include download.html id="pairDiagram" name="pair-diagram" %}
             </figcaption>
             <div id="pairDiagram"></div>
