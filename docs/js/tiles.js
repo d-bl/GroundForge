@@ -92,7 +92,8 @@ function showProto() {
   clear2()
   var hrefQ = tesselace(query) + query
   d3.select("#link").node().href = "?" + hrefQ
-  d3.select("#poc").node().href = "poc.html?" + pocRef(query)
+  d3.select("#pairLegend").node().href = "?" + hrefQ
+  d3.select("#poc").node().href = "poc?" + pocRef(query)
   //d3.select("#diagrams .colorCode").html("Sorry, a legend is not (yet?) implemented.")
   d3.select("#threadDiagram").html("")
   d3.select("#pairDiagram").html(PairSvg.render(config, 744, 1052, 1.9))
