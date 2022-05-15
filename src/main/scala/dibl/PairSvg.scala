@@ -184,6 +184,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     val black = "#000000"
 
     val str = stitch
+      .replaceAll("[^tlrc]", "") // ignore pins and rubbish
       .replaceAll("^[tlr]*", "") // ignore leading twists
       .replaceAll("[tlr]*$", "") // ignore trailing twists
       .replaceAll("p", "") // ignore pins
