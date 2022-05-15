@@ -219,10 +219,15 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   @JSExport
   def legend(config: TilesConfig): String = {
-    listItems(config.getItemMatrix)
+    val lines = listItems(config.getItemMatrix)
       .map { case (_, _, item) => (item.stitch.replaceAll("^[^c]*", "").replaceAll("[^c]*$", ""), item.stitch, item.id) }
       .distinct
       .groupBy { case (core, _, _) => core }.toSeq
+    val tag = svgTag(height = lines.size * 24 + 33)
+    // TODO the width might also be wider than a portrait A4
+    //   how to compute some safe but tight width (or even wrap long lines)
+    //   (a large width causes horizontal scrolling and printing issues)
+    lines
       .sortBy { case (core, _) => core }
       .zipWithIndex.map { case ((core, seq), i) =>
       val offset = i * 12 + 15
@@ -235,8 +240,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         }.mkString(" --- ")
       val text = s"""<text $style" x="25" y='$offset'><tspan x="22" y="$offset">$line</tspan></text>"""
       s"""<g $transform>${ shapes(core) }</g>$text"""
-    }
-  }.mkString(svgTag() + """<g transform="matrix(2,0,0,2,0,0)">""", "", "</g></svg>")
+    }.mkString(tag + """<g transform="matrix(2,0,0,2,0,0)">""", "", "</g></svg>")
+  }
 
   private def listItems(itemMatrix: Seq[Seq[Item]]) = {
     for {
