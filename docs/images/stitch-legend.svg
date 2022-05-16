@@ -16,7 +16,7 @@
   <path
      onclick="paint(this)"
      class="node"
-     d="m 117.84418,153.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
+     d="m 101.84418,151.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
      style="opacity:0.9;fill:#0571b0;fill-opacity:1;stroke:none;stroke-width:2"
      id="path1147">
     <title
@@ -84,11 +84,11 @@
      id="namedview1777"
      showgrid="false"
      inkscape:zoom="0.89258555"
-     inkscape:cx="356.32172"
-     inkscape:cy="796.00213"
+     inkscape:cx="286.86059"
+     inkscape:cy="561.8509"
      inkscape:window-x="0"
      inkscape:window-y="25"
-     inkscape:window-maximized="1"
+     inkscape:window-maximized="0"
      inkscape:current-layer="svg2"
      showguides="true"
      inkscape:guide-bbox="true"
@@ -148,43 +148,43 @@
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
-     x="42.288544"
-     y="99.878052"
+     x="26.288544"
+     y="97.878052"
      id="text2181"><tspan
        sodipodi:role="line"
        id="tspan2179"
-       x="42.288544"
-       y="99.878052">zero</tspan></text>
+       x="26.288544"
+       y="97.878052">none</tspan></text>
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
-     x="88.288544"
-     y="99.878052"
+     x="72.288544"
+     y="97.878052"
      id="text2185"><tspan
        sodipodi:role="line"
        id="tspan2183"
-       x="88.288544"
-       y="99.878052">once</tspan></text>
+       x="72.288544"
+       y="97.878052">once</tspan></text>
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
-     x="134.28854"
-     y="99.878052"
+     x="118.28854"
+     y="97.878052"
      id="text2189"><tspan
        sodipodi:role="line"
        id="tspan2187"
-       x="134.28854"
-       y="99.878052">twice</tspan></text>
+       x="118.28854"
+       y="97.878052">twice</tspan></text>
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
-     x="186.28851"
-     y="99.878052"
+     x="170.28851"
+     y="97.878052"
      id="text2193"><tspan
        sodipodi:role="line"
        id="tspan2191"
-       x="186.28851"
-       y="99.878052">more</tspan></text>
+       x="170.28851"
+       y="97.878052">more</tspan></text>
   <text
      xml:space="preserve"
      id="text1092"
@@ -237,22 +237,22 @@
        y="335.82648">ctctctc and longer plaits</tspan></text>
   <path
      class="link"
-     d="m 229.14275,123.52307 h -21.2132 -21.2132"
+     d="m 213.14275,121.52307 h -21.2132 -21.2132"
      style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;marker-mid:url(#twist-3-0-8)"
      id="path4534-4" />
   <path
      class="link"
-     d="m 166.71635,123.52307 h -15 -15"
+     d="m 150.71635,121.52307 h -15 -15"
      style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;marker-mid:url(#twist-2-3)"
      id="path6580" />
   <path
      class="link"
-     d="m 92.71635,123.52307 h 15 15"
+     d="m 76.71635,121.52307 h 15 15"
      style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;marker-mid:url(#twist-1-5)"
      id="path6582" />
   <path
      class="link"
-     d="m 72.71635,123.52307 h -30"
+     d="m 56.71635,121.52307 h -30"
      style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
      id="path6584" />
   <g
@@ -275,13 +275,13 @@
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
-     x="249.59885"
-     y="158.46204"
+     x="233.59885"
+     y="156.46204"
      id="text8523"><tspan
        sodipodi:role="line"
        id="tspan8521"
-       x="249.59885"
-       y="158.46204">twists between c's (poured into the square/diamond sections)</tspan></text>
+       x="233.59885"
+       y="156.46204">twists between crosses (poured into the square/diamond sections)</tspan></text>
   <path
      class="link"
      d="m 28.798937,396.63373 14.999998,15"
@@ -342,7 +342,7 @@
   <path
      onclick="paint(this)"
      class="node"
-     d="m 69.84418,153.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
+     d="m 53.84418,151.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
      style="opacity:0.9;fill:#ca0020;fill-opacity:1;stroke:none;stroke-width:2"
      id="path1135">
     <title
@@ -351,7 +351,7 @@
   <path
      onclick="paint(this)"
      class="node"
-     d="m 161.84418,153.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
+     d="m 145.84418,151.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
      style="opacity:0.9;fill:#f4a582;fill-opacity:1;stroke:none;stroke-width:2"
      id="path1139">
     <title
@@ -360,7 +360,7 @@
   <path
      onclick="paint(this)"
      class="node"
-     d="m 215.84418,153.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
+     d="m 199.84418,151.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
      style="opacity:0.9;fill:#92c5de;fill-opacity:1;stroke:none;stroke-width:2"
      id="path1143">
     <title
@@ -563,13 +563,13 @@
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
-     x="249.59885"
-     y="124.46204"
+     x="233.59885"
+     y="122.46204"
      id="text976"><tspan
        sodipodi:role="line"
        id="tspan974"
-       x="249.59885"
-       y="124.46204">twists between stitches</tspan></text>
+       x="233.59885"
+       y="122.46204">twists between stitches</tspan></text>
   <g
      onclick="paint(this)"
      class="node"
@@ -689,7 +689,7 @@
        sodipodi:role="line"
        x="34.23967"
        y="885.82648"
-       id="tspan1034">For to be implemented custom legends we have a few options left.</tspan><tspan
+       id="tspan1034">We have some options left for to be implemented custom legends.</tspan><tspan
        sodipodi:role="line"
        x="34.23967"
        y="904.15985"
@@ -769,5 +769,5 @@
        sodipodi:role="line"
        id="tspan1003"
        x="35.469982"
-       y="59.81134">General legend</tspan></text>
+       y="59.81134">Generic legend</tspan></text>
 </svg>
