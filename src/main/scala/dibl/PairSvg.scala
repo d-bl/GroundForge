@@ -16,7 +16,7 @@
 
 package dibl
 
-import dibl.proto.{ Item, TilesConfig }
+import dibl.proto.Item
 
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
@@ -218,12 +218,11 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   }
 
   @JSExport
-  def legend(config: TilesConfig): String = {
-    val lines = listItems(config.getItemMatrix)
+  def legend(itemMatrix: Seq[Seq[Item]]): String = {
+    val lines = listItems(itemMatrix)
       .map { case (_, _, item) => (item.stitch.replaceAll("^[^c]*", "").replaceAll("[^c]*$", ""), item.stitch, item.id) }
       .distinct
       .groupBy { case (core, _, _) => core }.toSeq
-    val tag = svgTag(height = lines.size * 24 + 33)
     // TODO the width might also be wider than a portrait A4
     //   how to compute some safe but tight width (or even wrap long lines)
     //   (a large width causes horizontal scrolling and printing issues)
@@ -240,16 +239,16 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         }.mkString(" --- ")
       val text = s"""<text $style" x="25" y='$offset'><tspan x="22" y="$offset">$line</tspan></text>"""
       s"""<g $transform>${ shapes(core) }</g>$text"""
-    }.mkString(tag + """<g transform="matrix(2,0,0,2,0,0)">""", "", "</g></svg>")
+    }.mkString(svgTag(height = lines.size * 24 + 33) + "<g transform='matrix(2,0,0,2,0,0)'>", "", "</g></svg>")
   }
 
   private def listItems(itemMatrix: Seq[Seq[Item]]) = {
     for {
       row <- itemMatrix.indices
       col <- itemMatrix(row).indices
-      targetItem = itemMatrix(row)(col)
-      if !targetItem.noStitch && targetItem.relativeSources.nonEmpty
-    } yield (row, col, targetItem)
+      item = itemMatrix(row)(col)
+      if !item.noStitch && item.relativeSources.nonEmpty
+    } yield (row, col, item)
   }
 
   /** Prefix required when writing to an SVG file */
@@ -276,12 +275,11 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   /** @return an SVG document as String */
   @JSExport
-  def render(config: TilesConfig,
+  def render(itemMatrix: Seq[Seq[Item]],
              width: Int,
              height: Int,
              zoom: Long = 2,
             ): String = {
-    val itemMatrix = config.getItemMatrix
     val itemList = listItems(itemMatrix)
     s"""${ svgTag(width, height) }
        |<defs>
