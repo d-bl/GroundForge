@@ -19,9 +19,9 @@
 
             var q = window.location.search.substr(1)
             var zoom = 1.9
-            var config = TilesConfig(q)
-            var svg = PairSvg.render(config, width, height, zoom)
-            d3.select('#legend').html(PairSvg.legend(config))
+            var itemMatrix = TilesConfig(q).getItemMatrix
+            var svg = PairSvg.render(itemMatrix, width, height, zoom)
+            d3.select('#legend').html(PairSvg.legend(itemMatrix))
             d3.select('#initial').html(svg)
             d3.select('#animated').html(svg)
             nudgePairs(d3.select('#animated'))

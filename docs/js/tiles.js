@@ -96,7 +96,7 @@ function showProto() {
   d3.select("#poc").node().href = "poc?" + pocRef(query)
   //d3.select("#diagrams .colorCode").html("Sorry, a legend is not (yet?) implemented.")
   d3.select("#threadDiagram").html("")
-  d3.select("#pairDiagram").html(PairSvg.render(config, 744, 1052, 1.9))
+  d3.select("#pairDiagram").html(PairSvg.render(config.getItemMatrix, 744, 1052, 1.9))
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
@@ -142,7 +142,7 @@ function showDiagrams(config) {
   var pairContainer = d3.select("#pairDiagram")
   if (!config)
       config = TilesConfig(submitQuery())
-  pairContainer.html(PairSvg.render(config, 744, 1052, 1.9))
+  pairContainer.html(PairSvg.render(config.getItemMatrix, 744, 1052, 1.9))
   scrollToIfPossible(pairContainer.node(),0,0)
   if (pairContainer.select(".node").length <= 1) return
 

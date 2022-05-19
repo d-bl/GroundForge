@@ -66,6 +66,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     Array.fill[Item](totalCols)(Item("", relativeSources = Array.empty))
   )
 
+  @JSExport
   def getItemMatrix: Seq[Seq[Item]] = {
     // items represent the callers vision: elements for the prototype/pair-diagram
     // target has internal meaning: the matrix to fill with the left/center/right-matrix
