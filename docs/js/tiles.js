@@ -227,9 +227,6 @@ function getDownloadContent (id) {
       replace(/<foreignObject[\s\S]*?foreignObject>/g, '')
   return 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
 }
-function asData(str) {
-  return 'data:text/plain,' + encodeURIComponent(str)
-}
 function prepareDownload(contentId) {
     // the href may have been followed before onfocus changed it
     // in that case we temporarily need another link
