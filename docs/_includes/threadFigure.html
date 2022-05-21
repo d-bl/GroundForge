@@ -2,7 +2,8 @@
     <figcaption>
         Threads
         <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
-        {% include resize.html id="{{ include.id }}" %}
+        <img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#{{ include.id }}', 1.1)" title="increase diagram dimensions"
+        ><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#{{ include.id }}', 0.91)" title="decrease diagram dimensions">
     </figcaption>
-    <div id="drosteThread2"></div>
+    <div id="{{ include.id }}"></div>
 </figure>

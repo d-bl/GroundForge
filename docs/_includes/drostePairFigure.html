@@ -3,8 +3,8 @@
         Pairs
         <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
         <img class="swatches" src="images/swatches.png" onclick='showColorCode("#{{ include.colorId }}")'>
-        {% include download.html id="{{ include.id }}" name="{{ include.name }}" %}
-        {% include resize.html id="{{ include.id }}" %}
+        <img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#{{ include.id }}', 1.1)" title="increase diagram dimensions"
+        ><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#{{ include.id }}', 0.91)" title="decrease diagram dimensions">
     </figcaption>
     <div id="{{ include.id }}"></div>
 </figure>
