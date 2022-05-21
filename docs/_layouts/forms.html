@@ -74,19 +74,11 @@
                 <a href="images/stitch-legend.svg" target="_blank"><img src="images/information-icon.png"></a>
                 <a id="pairLegend" target="_blank" href="legend"><img class="swatches" src="images/swatches.png"></a>
                 {% include download.html id="pairDiagram" name="pair-diagram" %}
+                {% include resize.html id="pairDiagram" %}
             </figcaption>
             <div id="pairDiagram"></div>
         </figure>
-
-        <figure >
-            <figcaption>
-                Threads
-                <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
-                {% include download.html id="threadDiagram" name="thread-diagram" %}
-            </figcaption>
-            <div id="threadDiagram"></div>
-        </figure>
-
+        {% threadFigure download.html id="threadDiagram" name="thread-diagram" %}
     </fieldset>
     <p></p>
     <fieldset id="editPatternFieldSet">
@@ -102,6 +94,7 @@
                 Pattern
                 <a href="/GroundForge-help/Replace" target="_blank"><img src="images/information-icon.png" title="how to modify stitches"></a>
                 {% include download.html id="prototype" name="prototype" %}
+                {% include resize.html id="prototype" %}
             </figcaption>
             <div id="prototype">
             </div>
@@ -176,23 +169,8 @@
                 </figcaption>
                     <textarea id="droste2" name="droste2" rows="8" cols="30" spellcheck="false" onchange="clear2()" placeHolder="Type stitch definition here.&#13;&#10;If nothing is typed, the stitch 'ctc' will be used.&#13;&#10;&#13;&#10;Example:&#13;&#10;&#13;&#10;twist=ct&#13;&#10;cross=ctct"></textarea>
             </figure>
-            <figure>
-                <figcaption>
-                    Pairs
-                    <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
-                    <img class="swatches" src="images/swatches.png" onclick='showColorCode("#drosteFields2")'>
-                    {% include download.html id="drostePair2" name="droste-pair-diagram" %}
-                </figcaption>
-                <div id="drostePair2"></div>
-            </figure>
-            <figure >
-                <figcaption>
-                    Threads
-                    <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
-                    {% include download.html id="drosteThread2" name="droste-thread-diagram" %}
-                </figcaption>
-                <div id="drosteThread2"></div>
-            </figure>
+            {% include drostePairFigure.html id="drostePair2" name="droste-pair-diagram" colorId="drosteFields2" %}
+            {% include threadFigure.html id="drosteThread2" name="droste-thread-diagram" %}
         </div>
     </fieldset>
     <br>
@@ -211,23 +189,8 @@
                 </figcaption>
                 <textarea id="droste3" name="droste3" rows="8" cols="30" spellcheck="false" onchange="clear3()" placeHolder="Type stitch definition here.&#13;&#10;If nothing is typed, the stitch 'ctc' will be used.&#13;&#10;&#13;&#10;Example:&#13;&#10;&#13;&#10;ct&#13;&#10;a140=a150=b240=b250=ctcctct"></textarea>
             </figure>
-            <figure>
-                <figcaption>
-                    Pairs
-                    <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
-                    <img class="swatches" src="images/swatches.png" onclick='showColorCode("#drosteFields3")'>
-                    {% include download.html id="drostePair3" name="droste-next-pair-diagram" %}
-                </figcaption>
-                <div id="drostePair3"></div>
-            </figure>
-            <figure >
-                <figcaption>
-                    Threads
-                    <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
-                    {% include download.html id="drosteThread3" name="droste-net-thread-diagram" %}
-                </figcaption>
-                <div id="drosteThread3"></div>
-            </figure>
+            {% include drostePairFigure.html id="drostePair3" name="droste-next-pair-diagram" colorId="drosteFields3" %}
+            {% include threadFigure.html id="drosteThread3" name="droste-next-thread-diagram" %}
         </div>
     </fieldset>
 </form>
