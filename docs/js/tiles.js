@@ -265,12 +265,13 @@ function whiting (kv) {
 }
 function load() {
 
-  var keyValueStrings = window.location.search.substr(1).split("&")
+  var keyValueStrings = q.split("&")
   keyValueStrings.forEach(setField)
-  showProto() // this creates a dynamic part of the form
+  var config = showProto() // this creates a dynamic part of the form
   keyValueStrings.forEach(setField) // fill the form fields again
   setThreadDiagram("#threadDiagram", ThreadDiagram.create(NewPairDiagram.create(config)))
   keyValueStrings.find(whiting)
+  // TODO restore droste diagrams when stitches are defined but dispatch in a background thread
 }
 function getMatrixLines() {
   return d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
