@@ -265,20 +265,22 @@ function whiting (kv) {
 }
 function load() {
 
-  var keyValueStrings = window.location.search.substr(1).split("&")
+  var q = window.location.search.substr(1)
+  var keyValueStrings = q.split("&")
   keyValueStrings.forEach(setField)
   var config = showProto() // this creates a dynamic part of the form
   keyValueStrings.forEach(setField) // fill the form fields again
   var threads1 = ThreadDiagram.create(NewPairDiagram.create(config))
   setThreadDiagram("#threadDiagram", threads1)
   keyValueStrings.find(whiting)
-  // TODO dispatch in a background thread
-  if (!window.location.search.substr(1).includes("droste2=")) return
+  // TODO dispatch the rest in a background thread, N.B. somehow share threads1
+  // TODO perhaps alternatively start all animations at the end
+  if (!q.includes("droste2=") && !q.includes("droste3=")) return
   var pairs2 = PairDiagram.create(stitches = d3.select("#droste2").node().value, threads1)
   var threads2 = ThreadDiagram.create(pairs2)
   setPairDiagram("#drostePair2", pairs2)
   setThreadDiagram("#drosteThread2", threads2)
-  if (!window.location.search.substr(1).includes("droste3=")) return
+  if (!q.includes("droste3=")) return
   var pairs3 = PairDiagram.create(stitches = d3.select("#droste3").node().value, threads1)
   var threads3 = ThreadDiagram.create(pairs3)
   setPairDiagram("#drostePair3", pairs3)
