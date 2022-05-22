@@ -269,11 +269,23 @@ function load() {
   keyValueStrings.forEach(setField)
   var config = showProto() // this creates a dynamic part of the form
   keyValueStrings.forEach(setField) // fill the form fields again
-  setThreadDiagram("#threadDiagram", ThreadDiagram.create(NewPairDiagram.create(config)))
+  var threads1 = ThreadDiagram.create(NewPairDiagram.create(config))
+  setThreadDiagram("#threadDiagram", threads1)
   keyValueStrings.find(whiting)
-  // TODO restore droste diagrams when stitches are defined but dispatch in a background thread
+  // TODO dispatch in a background thread
+  if (!window.location.search.substr(1).includes("droste2=")) return
+  var pairs2 = PairDiagram.create(stitches = d3.select("#droste2").node().value, threads1)
+  var threads2 = ThreadDiagram.create(pairs2)
+  setPairDiagram("#drostePair2", pairs2)
+  setThreadDiagram("#drosteThread2", threads2)
+  if (!window.location.search.substr(1).includes("droste3=")) return
+  var pairs3 = PairDiagram.create(stitches = d3.select("#droste3").node().value, threads1)
+  var threads3 = ThreadDiagram.create(pairs3)
+  setPairDiagram("#drostePair3", pairs3)
+  setThreadDiagram("#drosteThread3", threads3)
 }
 function getMatrixLines() {
+
   return d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
 }
 function asSimple() {
