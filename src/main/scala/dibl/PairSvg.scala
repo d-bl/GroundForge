@@ -252,7 +252,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   }
 
   /** Prefix required when writing to an SVG file */
-  val prolog = "<?xml version='1.0' encoding='UTF-8'?>"
+  val prolog = """<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->"""
 
   @JSExport
   def linkPath(hasTwists: Boolean, sX: Double, sY: Double, tX: Double, tY: Double): String = {

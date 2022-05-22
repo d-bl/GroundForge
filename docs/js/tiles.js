@@ -90,11 +90,12 @@ function showProto() {
   var query = submitQuery()
 
   clear2()
+  var svg = PairSvg.legend(TilesConfig(q).getItemMatrix)
+  var encoded = encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8"?-->' + svg)
+  document.getElementById("pairLegend").setAttribute('href', 'data:image/svg+xml,' + encoded)
   var hrefQ = tesselace(query) + query
   d3.select("#link").node().href = "?" + hrefQ
-  d3.select("#pairLegend").node().href = "legend?" + hrefQ
   d3.select("#poc").node().href = "poc?" + pocRef(query)
-  //d3.select("#diagrams .colorCode").html("Sorry, a legend is not (yet?) implemented.")
   d3.select("#threadDiagram").html("")
   d3.select("#pairDiagram").html(PairSvg.render(config.getItemMatrix, 744, 1052, 1.9))
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
@@ -227,11 +228,8 @@ function getDownloadContent (id) {
       replace(/<foreignObject[\s\S]*?foreignObject>/g, '')
   return 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
 }
-function asData(str) {
-  return 'data:text/plain,' + encodeURIComponent(str)
-}
 function prepareDownload(contentId) {
-    // the href may have been followed before onfocus changed it
+    // touch devices follow the href before onfocus changed it
     // in that case we temporarily need another link
     // that link is hidden when followed
     var linkId = contentId + "DownloadLink"
