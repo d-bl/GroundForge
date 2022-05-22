@@ -95,7 +95,7 @@ function showProto() {
   var encoded = encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8"?-->' + svg)
   var l = document.getElementById("pairLegend")
   l.setAttribute('href', 'data:image/svg+xml,' + encoded)
-  l.setAttribute('download', 'legend.svg' + encoded)
+  l.setAttribute('download', 'legend.svg')
   console.log("done legend")
   var hrefQ = tesselace(query) + query
   d3.select("#link").node().href = "?" + hrefQ
@@ -267,15 +267,9 @@ function load() {
 
   var keyValueStrings = window.location.search.substr(1).split("&")
   keyValueStrings.forEach(setField)
-  if (window.location.search.substr(1).includes("droste2=")) showDroste(2)
-  if (window.location.search.substr(1).includes("droste3=")) showDroste(3)
   showProto() // this creates a dynamic part of the form
   keyValueStrings.forEach(setField) // fill the form fields again
-
-  // done above too, but it fixes generating the legend
-  //showProto()
-
-  showDiagrams() // TODO showProto and showDiagrams both render the primary pair diagram
+  setThreadDiagram("#threadDiagram", ThreadDiagram.create(NewPairDiagram.create(config)))
   keyValueStrings.find(whiting)
 }
 function getMatrixLines() {
