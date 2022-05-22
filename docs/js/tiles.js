@@ -267,7 +267,7 @@ function load() {
   keyValueStrings.forEach(setField) // fill the form fields again
 
   // done above too, but it fixes generating the legend
-  showProto()
+  //showProto()
 
   showDiagrams() // TODO showProto and showDiagrams both render the primary pair diagram
   keyValueStrings.find(whiting)
