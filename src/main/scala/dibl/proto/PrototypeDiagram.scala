@@ -23,6 +23,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   @JSExport
   def create(config: TilesConfig): String = {
     val itemMatrix = config.getItemMatrix
+    println(s"create prototype [${itemMatrix.size},${itemMatrix.head.size}]")
 
     val clones = (for {
       r <- itemMatrix.indices
