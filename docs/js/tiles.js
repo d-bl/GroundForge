@@ -90,7 +90,7 @@ function showProto() {
   var query = submitQuery()
 
   clear2()
-  var svg = PairSvg.legend(TilesConfig(q).getItemMatrix)
+  var svg = PairSvg.legend(TilesConfig(query).getItemMatrix)
   var encoded = encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8"?-->' + svg)
   document.getElementById("pairLegend").setAttribute('href', 'data:image/svg+xml,' + encoded)
   var hrefQ = tesselace(query) + query
