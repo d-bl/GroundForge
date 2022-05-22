@@ -82,6 +82,7 @@ function pocRef (q) {
 }
 function showProto() {
 
+  console.log("start showProto")
   var config = TilesConfig(submitQuery())
   d3.select("#prototype").html(PrototypeDiagram.create(config))
 
