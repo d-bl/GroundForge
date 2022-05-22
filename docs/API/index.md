@@ -56,3 +56,21 @@ that takes a family of [Tesselace patterns](GroundForge/tesselace-to-gf/) as par
 [protoCode]: {{ site.github.repository_url }}/blob/master/docs/API/proto.html
 
 [sheetCode]: {{ site.github.repository_url }}/blob/master/docs/API/sheet.html
+
+Notes
+=====
+The demonstrators assign SVG content to the `innerHTML` of `<div>` elements:
+* The `js/d3.v4.min.js` library lets you do this with `d3.select('#someId').html(svg)`.
+  This fails silently if the id does not exist.
+* The plain Javascript equivalent is `document.getElementById("someId").innerHTML = svg`.
+  This terminates the script with an exception if the id does not exist.
+
+A download link can be created as follows:
+
+    var encoded = encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8"?-->' + svg)
+    var el = document.getElementById("someId")
+    el.setAttribute('href', 'data:image/svg+xml,' + encoded)
+    el.setAttribute('download', 'some-file-name.svg')
+
+The `tiles` user interface uses some detours for the download to avoid 
+overwhelming browsers with too many copies of too much data on the page.
