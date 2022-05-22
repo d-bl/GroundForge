@@ -91,7 +91,9 @@ function showProto() {
   clear2()
   var svg = PairSvg.legend(TilesConfig(query).getItemMatrix)
   var encoded = encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8"?-->' + svg)
-  document.getElementById("pairLegend").setAttribute('href', 'data:image/svg+xml,' + encoded)
+  var l = document.getElementById("pairLegend")
+  l.setAttribute('href', 'data:image/svg+xml,' + encoded)
+  l.setAttribute('download', 'legend.svg' + encoded)
   var hrefQ = tesselace(query) + query
   d3.select("#link").node().href = "?" + hrefQ
   d3.select("#poc").node().href = "poc?" + pocRef(query)
