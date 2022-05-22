@@ -265,7 +265,7 @@ function whiting (kv) {
 }
 function load() {
 
-  var keyValueStrings = q.split("&")
+  var keyValueStrings = window.location.search.substr(1).split("&")
   keyValueStrings.forEach(setField)
   var config = showProto() // this creates a dynamic part of the form
   keyValueStrings.forEach(setField) // fill the form fields again
