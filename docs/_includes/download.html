@@ -12,4 +12,5 @@
    style="display:none"
    onclick="this.style.display = 'none'"
 >download</a>
-{% include resize.html id="{{ include.id }}" %}
+<img class="resize" src="images/size-inc.jpg" onclick="resizeBoth('#{{ include.id }}', 1.1)" title="increase diagram dimensions"
+><img class="resize" src="images/size-dec.jpg" onclick="resizeBoth('#{{ include.id }}', 0.91)" title="decrease diagram dimensions">
