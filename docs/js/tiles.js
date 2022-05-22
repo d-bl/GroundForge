@@ -70,7 +70,6 @@ function tesselace(query){
   return tesselace
 }
 function pocRef (q) {
-console.log(q)
   return "" +
     q.replace(       /.*(tile=[^&]+).*/,"\$1") + "&" +
     q.replace( /.*(patchWidth=[^&]+).*/,"\$1") + "&" +

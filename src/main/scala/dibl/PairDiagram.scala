@@ -63,7 +63,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     * @return
     */
   def apply(stitches: String, threadDiagram: Diagram): Diagram = {
-
+    println(s"pair diagram from thread diagram")
     val stitchMap = new Stitches(stitches)
 
     def translateTitle(n: NodeProps) = {

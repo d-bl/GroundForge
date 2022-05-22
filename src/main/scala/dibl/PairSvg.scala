@@ -219,7 +219,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   @JSExport
   def legend(itemMatrix: Seq[Seq[Item]]): String = {
-    val lines = listItems(itemMatrix)
+    val itemList = listItems(itemMatrix)
+    println(s"render pair legend [${itemMatrix.size},${itemMatrix.head.size}] with ${itemList.size} stitches")
+    val lines = itemList
       .map { case (_, _, item) => (item.stitch.replaceAll("^[^c]*", "").replaceAll("[^c]*$", ""), item.stitch, item.id) }
       .distinct
       .groupBy { case (core, _, _) => core }.toSeq
@@ -281,6 +283,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
              zoom: Long = 2,
             ): String = {
     val itemList = listItems(itemMatrix)
+    println(s"render pair diagram [${itemMatrix.size},${itemMatrix.head.size}] with ${itemList.size} stitches")
     s"""${ svgTag(width, height) }
        |<defs>
        |  ${ twistMark(1) }

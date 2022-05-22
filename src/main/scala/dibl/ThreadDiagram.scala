@@ -31,7 +31,7 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
   def create(pairDiagram: Diagram): Diagram = apply(pairDiagram)
 
   def apply(pairDiagram: Diagram): Diagram = {
-
+    println("create pair diagram")
     val pairLinks = pairDiagram.links.map(l => (l.source, l.target))
     def scale(n: NodeProps) = node(n.title, n.x*2, n.y*2)
     val nodesDone = mutable.Buffer[Int]()

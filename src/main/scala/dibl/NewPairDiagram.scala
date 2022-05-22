@@ -23,10 +23,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   @JSExport
   def create(config: TilesConfig): Diagram = {
-
     val itemMatrix = config.getItemMatrix
     val rows: Int = itemMatrix.length
     val cols: Int = itemMatrix.head.length
+    println(s"create NewPairDiagram [$rows,$cols]")
     var seqNr = 0
 
     def toPoint(row: Double, col: Double) = {
