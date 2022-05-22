@@ -89,11 +89,13 @@ function showProto() {
   var query = submitQuery()
 
   clear2()
+  console.log("cleared")
   var svg = PairSvg.legend(TilesConfig(query).getItemMatrix)
   var encoded = encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8"?-->' + svg)
   var l = document.getElementById("pairLegend")
   l.setAttribute('href', 'data:image/svg+xml,' + encoded)
   l.setAttribute('download', 'legend.svg' + encoded)
+  console.log("done legend")
   var hrefQ = tesselace(query) + query
   d3.select("#link").node().href = "?" + hrefQ
   d3.select("#poc").node().href = "poc?" + pocRef(query)
@@ -103,6 +105,7 @@ function showProto() {
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
+  console.log("done showProto")
 
   return config
 }
