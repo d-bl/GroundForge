@@ -2,7 +2,7 @@
 
 _A toolbox to design bobbin lace grounds with matching sets of pair/thread diagrams._
 
-- [demonstrators][API]
+- [Demonstrators](https://d-bl.github.io/GroundForge/API)
 - [Short intros](#short-intros)
 - [Contribute to documentation](#contribute-to-documentation)
   * [Most common tasks](#most-common-tasks)
@@ -20,7 +20,6 @@ _A toolbox to design bobbin lace grounds with matching sets of pair/thread diagr
 - [Use as JavaScript library](#use-as-javascript-library)
 - [Use as JVM library](#use-as-jvm-library)
 
-[API]: {{ site.github.url }}/API
 
 Short intros
 =============

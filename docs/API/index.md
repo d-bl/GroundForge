@@ -92,13 +92,23 @@ For desktop browsers the href is set at `onHover` events, touch devices don't ha
 
 Animation alias nudging nodes
 =============================
-The script `js/nudgePairs` works only for pair diagrams generated with `PairSvg` deploying the new style of color coding.
-It relies on the fact that the identifiers of the link elements concatenate the identifiers
-of the source/target nodes separated with a dash. Note that these identifiers are unique
-The identifiers shown in pop-ups (titles) of the diagrams are only unique within the bold
-symbols of the prototype diagram. 
 
-`showGraph` in `thread.html` does both the rendering and the nudging 
-of old style pair diagrams as well as thread diagrams. 
+`PairSvg.create` generates pair diagrams with link identifiers that 
+concatenate the identifiers of the source/target nodes as shown below.
+The identifiers of the SVG elements are unique.
+The identifiers shown in pop-ups (titles) of the diagrams are only unique within
+the bold area of the prototype diagram.
+
+    <path id="r0c4-r1c3" class="link" d="..." style="..."></path>
+    <g id="r0c4" class="node" transform="translate(...,...)"><title>ctc - a1</title>ct - a1</g>
+    <g id="r1c3" class="node" transform="translate(...,...)"><title>ctc - a1</title>ctct - b2</g>
+
+The script `js/nudgePairs.js` uses the concatenated identifiers
+to find and bind the data required by the `d3` library.
+The nudge script rewrites the values for the `d` and `transform`
+attributes as calculated by the `d3` forces. 
+
+`showGraph` in `thread.html` does both the rendering and the nudging
+of old style pair diagrams as well as thread diagrams.
 Scala data structures are paired up with SVG elements to compute the forces.
-A scala method uses this data to compute links that may have a shortened start or end.
+A scala method uses this data to compute links with shortened starts or ends.
