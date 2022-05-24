@@ -57,14 +57,27 @@ that takes a family of [Tesselace patterns](GroundForge/tesselace-to-gf/) as par
 
 [sheetCode]: {{ site.github.repository_url }}/blob/master/docs/API/sheet.html
 
-Notes
-=====
-The demonstrators assign SVG content to the `innerHTML` of `<div>` elements:
-* The `js/d3.v4.min.js` library lets you do this with `d3.select('#someId').html(svg)`.
-  This fails silently if the id does not exist.
-* The plain Javascript equivalent is `document.getElementById("someId").innerHTML = svg`.
-  This terminates the script with an exception if the id does not exist.
+[GFCode]: {{ site.github.repository_url }}/blob/master/src/main/scala
 
+Notes on the HTML/JS code
+=========================
+
+Inline SVG
+----------
+The demonstrators assign SVG content to `<div>` elements. Two methods to assign the content:
+
+    d3.select('#someId').html(svg)`
+    document.getElementById("someId").innerHTML = svg
+
+The first method requires the library `js/d3.v4.min.js`, which is primarily 
+intended to take care of the animation alias nudging of nodes.
+The second is plain Javascript but terminates the script with an 
+exception if the id does not exist in the DOM of the page.
+The SVG content is generated with calls to the library `js/GroundForge-opt.js`.
+This library is compiled to Javascript from [scala code][GFCode], look for `@JSExport` annotations.
+
+SVG downloads
+-------------
 A download link can be created as follows:
 
     var encoded = encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8"?-->' + svg)
@@ -72,5 +85,20 @@ A download link can be created as follows:
     el.setAttribute('href', 'data:image/svg+xml,' + encoded)
     el.setAttribute('download', 'some-file-name.svg')
 
-The `tiles` user interface uses some detours for the download to avoid 
-overwhelming browsers with too many copies of too much data on the page.
+The `pattern editor` is a very crowded user interface.
+Too many copies of too much data on the page might overwhelm browsers.
+Some detours are implemented that set the download content only when needed.
+For desktop browsers the href is set at `onHover` events, touch devices don't have such an event.
+
+Animation alias nudging nodes
+=============================
+The script `js/nudgePairs` works only for pair diagrams generated with `PairSvg` deploying the new style of color coding.
+It relies on the fact that the identifiers of the link elements concatenate the identifiers
+of the source/target nodes separated with a dash. Note that these identifiers are unique
+The identifiers shown in pop-ups (titles) of the diagrams are only unique within the bold
+symbols of the prototype diagram. 
+
+`showGraph` in `thread.html` does both the rendering and the nudging 
+of old style pair diagrams as well as thread diagrams. 
+Scala data structures are paired up with SVG elements to compute the forces.
+A scala method uses this data to compute links that may have a shortened start or end.
