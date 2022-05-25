@@ -2,11 +2,19 @@
 layout: default
 title: GroundForge - API
 --- 
+- [Current User Interfaces](#current-user-interfaces)
+- [Demonstrators](#demonstrators)
+- [Notes on the HTML/JS code](#notes-on-the-html-js-code)
+    * [Inline SVG](#inline-svg)
+    * [Download SVG](#download-svg)
+- [Animation alias nudging nodes](#animation-alias-nudging-nodes)
+    * [pair.html](#pairhtml)
+    * [thread.html](#threadhtml)
 
-GoundForge is a library partly written in scala. 
-The scala source runs on a JVM platform as well as in a JavaScript environment
-though data structures are not very compatible.
-
+GroundForge is a library to generate diagrams for bobbin lace.
+It is partly written in scala. 
+The scala code runs on a JVM platform as well as in a JavaScript environment
+though out of the box the data structures are not very compatible.
 Additional JavaScript functions create interaction between the web page components.
 
 Current User Interfaces
@@ -76,8 +84,8 @@ exception if the id does not exist in the DOM of the page.
 The SVG content is generated with calls to the library `js/GroundForge-opt.js`.
 This library is compiled to Javascript from [scala code][GFCode], look for `@JSExport` annotations.
 
-SVG downloads
--------------
+Download SVG
+------------
 A download link can be created as follows:
 
     var encoded = encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8"?-->' + svg)
@@ -93,22 +101,27 @@ For desktop browsers the href is set at `onHover` events, touch devices don't ha
 Animation alias nudging nodes
 =============================
 
-`PairSvg.create` generates pair diagrams with link identifiers that 
-concatenate the identifiers of the source/target nodes as shown below.
-The identifiers of the SVG elements are unique.
+pair.html
+---------
+The function `PairSvg.create` generates the SVG content for a pair diagram
+with a new style of [color coding](../images/stitch-legend.svg).
+The link elements have identifiers that  concatenate the identifiers of
+the source/target elements. The identifiers of the SVG elements are unique.
 The identifiers shown in pop-ups (titles) of the diagrams are only unique within
-the bold area of the prototype diagram.
+the bold area of the prototype diagram. An example:
 
     <path id="r0c4-r1c3" class="link" d="..." style="..."></path>
-    <g id="r0c4" class="node" transform="translate(...,...)"><title>ctc - a1</title>ct - a1</g>
-    <g id="r1c3" class="node" transform="translate(...,...)"><title>ctc - a1</title>ctct - b2</g>
+    <g id="r0c4" class="node" transform="translate(..., ...)"><title>ctc - a1</title>ct - a1</g>
+    <g id="r1c3" class="node" transform="translate(..., ...)"><title>ctc - a1</title>ctct - b2</g>
 
 The script `js/nudgePairs.js` uses the concatenated identifiers
 to find and bind the data required by the `d3` library.
 The nudge script rewrites the values for the `d` and `transform`
 attributes as calculated by the `d3` forces. 
 
-`showGraph` in `thread.html` does both the rendering and the nudging
-of old style pair diagrams as well as thread diagrams.
-Scala data structures are paired up with SVG elements to compute the forces.
-A scala method uses this data to compute links with shortened starts or ends.
+thread.html
+-----------
+The function`showGraph` in `thread.html` does both the rendering and the nudging of thread
+diagrams as well as old style pair diagrams. The latter are stepping stones for the first.
+Scala data structures are paired up with generated SVG elements to compute the forces.
+A scala method uses this data to compute the `d` attribute of links with shortened starts or ends.
