@@ -83,7 +83,7 @@ function pocRef (q) {
 function showProto(q) {
 
   console.log("start showProto")
-  var config = q ? q : TilesConfig(submitQuery())
+  var config = TilesConfig(q ? q : submitQuery())
   d3.select("#prototype").html(PrototypeDiagram.create(config))
 
   // new form fields may have been added what changes the query
