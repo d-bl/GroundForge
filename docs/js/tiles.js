@@ -80,10 +80,10 @@ function pocRef (q) {
     q.replace(/.*(shiftRowsSW=[^&]+).*/,"\$1") + "&" +
     ""
 }
-function showProto() {
+function showProto(q) {
 
   console.log("start showProto")
-  var config = TilesConfig(submitQuery())
+  var config = q ? q : TilesConfig(submitQuery())
   d3.select("#prototype").html(PrototypeDiagram.create(config))
 
   // new form fields may have been added what changes the query
@@ -268,7 +268,7 @@ function load() {
   var q = window.location.search.substr(1)
   var keyValueStrings = q.split("&")
   keyValueStrings.forEach(setField)
-  var config = showProto() // this creates a dynamic part of the form
+  var config = showProto(q) // this creates a dynamic part of the form
   keyValueStrings.forEach(setField) // fill the form fields again
   var threads1 = ThreadDiagram.create(NewPairDiagram.create(config))
   setThreadDiagram("#threadDiagram", threads1)

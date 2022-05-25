@@ -1,7 +1,6 @@
 ---
 layout: default
 title: GroundForge - API
-name: API/index.md
 --- 
 - [Current User Interfaces](#current-user-interfaces)
 - [Demonstrators](#demonstrators)
