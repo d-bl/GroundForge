@@ -65,7 +65,7 @@ that takes a family of [Tesselace patterns](GroundForge/tesselace-to-gf/) as par
 
 [sheetCode]: {{ site.github.repository_url }}/blob/master/docs/API/sheet.html
 
-[GFCode]: {{ site.github.repository_url }}/blob/master/src/main/scala
+[GFCode]: {{ site.github.repository_url }}/blob/master/src/main/scala/dibl
 
 Notes on the HTML/JS code
 =========================
