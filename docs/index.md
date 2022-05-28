@@ -1,7 +1,6 @@
 ---
 layout: default
 title: GroundForge - Home
-name: index.md
 ---
 
 {% include fallback.html %}
