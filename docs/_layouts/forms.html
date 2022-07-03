@@ -19,6 +19,7 @@
     <h1>GroundForge - Diagrams of bobbin lace patterns</h1>
 
     <ul>
+        <li><a href="/GroundForge" target="_blank">Intro</a></li>
         <li>Pattern catalogues: <a href="/MAE-gf/" target="_blank">MAE</a>, <a href="/tesselace-to-gf/" target="_blank">TesseLace</a>, <a href="/gw-lace-to-gf/" target="_blank">G. Whiting's sampler</a></li>
         <li>Tutorials: <a href="/GroundForge-help/index" target="_blank">Getting started</a>, <a href="/GroundForge-help/Icons" target="_blank">Icons</a>, <a href="/GroundForge-help/Advanced" target="_blank">Create a pattern</a>, <a href="index" target="_blank">More...</a></li>
     </ul>
@@ -73,8 +74,8 @@
                 Pairs
                 <img class="animate" src="images/animate.png" onclick="javascript:nudgePairs(d3.select('#pairDiagram'))" title="animate/reshape">
                 <a href="/GroundForge-help/index#modify-stitches" target="_blank"><img src="images/information-icon.png"></a>
-                <a href="/GroundForge-help/color-rules" target="_blank"><img src="images/to-color-rules.png"></a>
-                <a id="pairLegend" target="_blank" href="legend"><img class="swatches" src="images/swatches.png"></a>
+                <a href="/GroundForge-help/color-rules" target="_blank" title="4 colors per stich rules"><img src="images/to-color-rules.png"></a>
+                <a id="pairLegend" target="_blank" href="legend" title="stitch enumeration"><img class="swatches" src="images/swatches.png"></a>
                 {% include download.html id="pairDiagram" name="pair-diagram" %}
             </figcaption>
             <div id="pairDiagram"></div>
@@ -182,7 +183,7 @@
                 <figcaption>
                     Pairs
                     <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
-                    <img class="swatches" src="images/swatches.png" onclick='showColorCode("#drosteFields2")'>
+                    <img class="swatches" src="images/swatches.png" onclick='showColorCode("#drosteFields2")' title="stitch enumeration">
                     {% include download.html id="drostePair2" name="droste-pair-diagram" %}
                 </figcaption>
                 <div id="drostePair2"></div>
@@ -217,7 +218,7 @@
                 <figcaption>
                     Pairs
                     <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
-                    <img class="swatches" src="images/swatches.png" onclick='showColorCode("#drosteFields3")'>
+                    <img class="swatches" src="images/swatches.png" onclick='showColorCode("#drosteFields3")' title="stitch enumeration">
                     {% include download.html id="drostePair3" name="droste-next-pair-diagram" %}
                 </figcaption>
                 <div id="drostePair3"></div>
