@@ -95,9 +95,9 @@
      inkscape:window-height="997"
      id="namedview1777"
      showgrid="false"
-     inkscape:zoom="1.1207224"
-     inkscape:cx="379.58439"
-     inkscape:cy="356.46649"
+     inkscape:zoom="0.75"
+     inkscape:cx="372"
+     inkscape:cy="526"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="1"
@@ -298,31 +298,46 @@
      d="m 28.798937,436.63373 14.999998,15"
      style="fill:none;stroke:#000000;stroke-width:2px"
      id="path8525"
-     sodipodi:nodetypes="cc" />
+     sodipodi:nodetypes="cc"
+     inkscape:export-filename="/Users/jokep/git/d-bl/GroundForge-help/docs/images/other-stitches.png"
+     inkscape:export-xdpi="73.339996"
+     inkscape:export-ydpi="73.339996" />
   <path
      class="link"
      d="m 58.798933,436.63373 -14.999998,15"
      style="fill:none;stroke:#000000;stroke-width:2px"
      id="path8531"
-     sodipodi:nodetypes="cc" />
+     sodipodi:nodetypes="cc"
+     inkscape:export-filename="/Users/jokep/git/d-bl/GroundForge-help/docs/images/other-stitches.png"
+     inkscape:export-xdpi="73.339996"
+     inkscape:export-ydpi="73.339996" />
   <path
      class="link"
      d="m 28.798937,466.63373 14.999998,-15"
      style="fill:none;stroke:#000000;stroke-width:2px"
      id="path8533"
-     sodipodi:nodetypes="cc" />
+     sodipodi:nodetypes="cc"
+     inkscape:export-filename="/Users/jokep/git/d-bl/GroundForge-help/docs/images/other-stitches.png"
+     inkscape:export-xdpi="73.339996"
+     inkscape:export-ydpi="73.339996" />
   <path
      class="link"
      d="m 58.798933,466.63373 -14.999998,-15"
      style="fill:none;stroke:#000000;stroke-width:2px"
      id="path8535"
-     sodipodi:nodetypes="cc" />
+     sodipodi:nodetypes="cc"
+     inkscape:export-filename="/Users/jokep/git/d-bl/GroundForge-help/docs/images/other-stitches.png"
+     inkscape:export-xdpi="73.339996"
+     inkscape:export-ydpi="73.339996" />
   <path
      onclick="paint(this)"
      class="node"
      d="m 53.198934,451.63373 a 9.4,9.4 0 0 1 -9.399999,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.399999,9.4 z"
      style="opacity:0.9;fill:#f7f7f7;stroke:none;stroke-width:2"
-     id="path8529">
+     id="path8529"
+     inkscape:export-filename="/Users/jokep/git/d-bl/GroundForge-help/docs/images/other-stitches.png"
+     inkscape:export-xdpi="73.339996"
+     inkscape:export-ydpi="73.339996">
     <title
        id="title8527">ctctctctclcttl - d2</title>
   </path>
@@ -381,15 +396,15 @@
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
      x="33.487717"
-     y="868.15021"
+     y="848.15021"
      id="text1151"><tspan
        sodipodi:role="line"
        id="tspan1149"
        x="33.487717"
-       y="868.15021">color blind friendly color scheme from</tspan><tspan
+       y="848.15021">color blind friendly color scheme from</tspan><tspan
        sodipodi:role="line"
        x="33.487717"
-       y="886.48358"
+       y="866.48358"
        id="tspan1153">https://colorbrewer2.org/?type=diverging&amp;scheme=RdBu&amp;n=5</tspan></text>
   <g
      onclick="paint(this)"
@@ -586,7 +601,7 @@
   <g
      onclick="paint(this)"
      class="node"
-     transform="matrix(1.4142136,1.4142136,-1.4142136,1.4142136,204.25125,992.27221)"
+     transform="matrix(1.4142136,1.4142136,-1.4142136,1.4142136,484.25125,914.27221)"
      id="g1009"
      style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none">
     <title
@@ -611,7 +626,7 @@
   <g
      onclick="paint(this)"
      class="node"
-     transform="matrix(0,-2,-2,0,44.25125,992.27221)"
+     transform="matrix(0,-2,-2,0,324.25125,914.27221)"
      id="g1017"
      style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none">
     <title
@@ -628,7 +643,7 @@
   <g
      onclick="paint(this)"
      class="node"
-     transform="matrix(1.4142136,-1.4142136,-1.4142136,-1.4142136,84.25125,992.27221)"
+     transform="matrix(1.4142136,-1.4142136,-1.4142136,-1.4142136,364.25125,914.27221)"
      id="g1025"
      style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none">
     <title
@@ -645,7 +660,7 @@
   <g
      onclick="paint(this)"
      class="node"
-     transform="matrix(-1.4142136,-1.4142136,-1.4142136,1.4142136,124.25125,992.27221)"
+     transform="matrix(-1.4142136,-1.4142136,-1.4142136,1.4142136,404.25125,914.27221)"
      id="g1033"
      style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none">
     <title
@@ -662,7 +677,7 @@
   <g
      onclick="paint(this)"
      class="node"
-     transform="matrix(1.4142136,-1.4142136,-1.4142136,-1.4142136,164.25125,992.27221)"
+     transform="matrix(1.4142136,-1.4142136,-1.4142136,-1.4142136,444.25125,914.27221)"
      id="g1041"
      style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none">
     <title
@@ -679,7 +694,7 @@
   <g
      onclick="paint(this)"
      class="node"
-     transform="matrix(-1.4142136,-1.4142136,-1.4142136,1.4142136,164.25125,992.27221)"
+     transform="matrix(-1.4142136,-1.4142136,-1.4142136,1.4142136,444.25125,914.27221)"
      id="g1049"
      style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none">
     <title
@@ -697,23 +712,15 @@
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
      x="34.23967"
-     y="925.82648"
+     y="918.36859"
      id="text1053"><tspan
        sodipodi:role="line"
        x="34.23967"
-       y="925.82648"
-       id="tspan1034">We have some options left for (to be implemented) custom legends.</tspan><tspan
+       y="918.36859"
+       id="tspan1042">Other options to represent stitches:</tspan><tspan
        sodipodi:role="line"
        x="34.23967"
-       y="944.15985"
-       id="tspan1011">Larger, more complex symbols would become illegible or could cause collisions.</tspan><tspan
-       sodipodi:role="line"
-       x="34.23967"
-       y="962.49323"
-       id="tspan1013">N.B: all sections the same colors would be duplicates of the sets above. </tspan><tspan
-       sodipodi:role="line"
-       x="34.23967"
-       y="980.8266"
+       y="936.70197"
        id="tspan1007" /></text>
   <text
      xml:space="preserve"
@@ -757,7 +764,7 @@
   <path
      onclick="paint(this)"
      class="node"
-     d="m 253.19893,991.63373 a 9.4,9.4 0 0 1 -9.39999,9.39997 9.4,9.4 0 0 1 -9.40001,-9.39997 9.4,9.4 0 0 1 9.40001,-9.4 9.4,9.4 0 0 1 9.39999,9.4 z"
+     d="m 533.19893,914.27223 a 9.4,9.4 0 0 1 -9.39999,9.39997 9.4,9.4 0 0 1 -9.40001,-9.39997 9.4,9.4 0 0 1 9.40001,-9.4 9.4,9.4 0 0 1 9.39999,9.4 z"
      style="opacity:0.9;fill:#f7f7f7;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
      id="path1038">
     <title
@@ -767,12 +774,12 @@
      xml:space="preserve"
      style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.3333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic'"
      x="33.625088"
-     y="839.81134"
+     y="819.81134"
      id="text1001"><tspan
        sodipodi:role="line"
        id="tspan999"
        x="33.625088"
-       y="839.81134">Notes</tspan></text>
+       y="819.81134">Notes</tspan></text>
   <text
      xml:space="preserve"
      style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.3333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic'"
@@ -793,17 +800,17 @@
     <title
        id="title1005">ctllcrrc - c1</title>
     <path
-       d="m -5.4999982,-5.5000003 c 0,0 1.8651309,3e-7 1.8651323,2.7500005 C -3.6348645,4e-7 -5.4999989,7e-7 -5.4999989,7e-7 L 1.7e-6,-2.9999998e-7 V -5.5000003 Z"
+       d="M -5.4999982,-5.5000003 -5.4999989,7e-7 1.7e-6,-2.9999998e-7 V -5.5000003 Z"
        style="opacity:0.9;fill:#0571b0;fill-opacity:1;stroke:none"
        id="path1014"
-       sodipodi:nodetypes="czcccc"
+       sodipodi:nodetypes="ccccc"
        inkscape:export-xdpi="18.6"
        inkscape:export-ydpi="18.6" />
     <path
-       d="m 5.5000002,-5.5000001 c 0,0 -1.5986852,0 -1.5986847,2.7500005 C 3.901316,9e-7 5.5000012,8.9999999e-7 5.5000012,8.9999999e-7 l -5.5000007,-7e-7 V -5.5000001 Z"
+       d="m 5.5000002,-5.5000001 c 0,0 1.4e-6,5.5000018 1e-6,5.50000099999999 l -5.5000007,-7e-7 V -5.5000001 Z"
        style="opacity:0.9;fill:#92c5de;stroke:none"
        id="path1016"
-       sodipodi:nodetypes="czcccc"
+       sodipodi:nodetypes="ccccc"
        inkscape:export-xdpi="18.6"
        inkscape:export-ydpi="18.6" />
     <path
@@ -928,15 +935,15 @@
        style="opacity:0.9;fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
        id="path1042" />
     <path
-       d="M 5.5,-3 H 0 v 5.5 h 5.5 c 0,0 -1.9916305,-0.743195 -2,-2.75 -0.00837,-2.006805 2,-2.75 2,-2.75 z"
+       d="M 5.5,-3 H 0 v 5.5 h 5.5 z"
        style="opacity:0.9;fill:none;stroke:#000000;stroke-width:0.45222;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8515-9"
-       sodipodi:nodetypes="cccczc" />
+       sodipodi:nodetypes="ccccc" />
     <path
-       d="m 0,-3 h -5.5 c 0,0 1.9947215,0.8282056 2,2.75 0.00528,1.9217944 -2,2.75 -2,2.75 H 0 Z"
+       d="M 0,-3 H -5.5 V 2.5 H 0 Z"
        style="opacity:0.9;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.45222;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8517-9"
-       sodipodi:nodetypes="cczccc" />
+       sodipodi:nodetypes="ccccc" />
   </g>
   <text
      xml:space="preserve"
