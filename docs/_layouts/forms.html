@@ -8,6 +8,7 @@
     <meta name="description" content="Choose patterns and stitches to generate diagrams for grounds of bobbin lace">
     <meta name="keywords" content="bobbin lace, pair diagram, thread diagram, patterns, stitches">
     <script src="js/tiles.js"></script>
+    <script src="js/nudgePairs.js"></script>
     <script src="js/d3.v4.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="css/tiles.css" type="text/css">
     {% include favicon.html %}
@@ -18,6 +19,7 @@
     <h1>GroundForge - Diagrams of bobbin lace patterns</h1>
 
     <ul>
+        <li><a href="/GroundForge" target="_blank">Intro</a></li>
         <li>Pattern catalogues: <a href="/MAE-gf/" target="_blank">MAE</a>, <a href="/tesselace-to-gf/" target="_blank">TesseLace</a>, <a href="/gw-lace-to-gf/" target="_blank">G. Whiting's sampler</a></li>
         <li>Tutorials: <a href="/GroundForge-help/index" target="_blank">Getting started</a>, <a href="/GroundForge-help/Icons" target="_blank">Icons</a>, <a href="/GroundForge-help/Advanced" target="_blank">Create a pattern</a>, <a href="index" target="_blank">More...</a></li>
     </ul>
@@ -48,16 +50,10 @@
             <label for="draggable"><a href="/GroundForge-help/untangle" target="_blank"><img src="images/information-icon.png" title="untangle clutter"></a></label>
             </span>
         </legend>
-
-        <pre class="colorCode"></pre>
-        <div style="vertical-align: bottom">
-            Click a stitch to assign or
-            <button onclick="clearStitches();return false">assign to all</button>
-            <br>
+        <div class="colorCode"></div>
             <input type="text" id="paintStitches" name="paintStitches" value="ct">
-            <a href="#" onclick="flipStitch()">flip</a>
+            <button onclick="flipStitch()">flip</button>
             <a href="/GroundForge-help/Replace" target="_blank"><img src="images/information-icon.png" title="stitch definition: &#013&#013c(ross), t(wist), &#013l(eft twist), r(ight twist)&#013&#013click in pair diagram&#013to apply"></a>
-        </div>
         examples:
         {% include gallery.html alt1="ct" %}
         {% include gallery.html alt1="ctct" %}
@@ -67,14 +63,19 @@
         {% include gallery.html alt1="ctclctc" alt2="ctcrctc" %}
         {% include gallery.html alt1="ctclcrctc" alt2="ctcrclctc" %}
         {% include gallery.html alt1="ctcttctc" %}
+        {% include gallery.html alt1="cllcrrcllcrrc" alt2="" %}
         {% include gallery.html alt1="tctctllctctr" alt2="tctctrrctctl" alt3="winkie pin" %}
+        <br>
+        Click a stitch to assign or
+        <button onclick="clearStitches();return false">assign to all</button>
         <br>
         <figure>
             <figcaption>
                 Pairs
-                <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
-                <img class="animate" src="images/animate.png" onclick="javascript:animateDiagram(d3.select('#pairDiagram'), 372, 526)" title="animate/reshape">
-                <img class="swatches" src="images/swatches.png" onclick='showColorCode("#diagrams")'>
+                <img class="animate" src="images/animate.png" onclick="javascript:nudgePairs(d3.select('#pairDiagram'))" title="animate/reshape">
+                <a href="/GroundForge-help/index#modify-stitches" target="_blank"><img src="images/information-icon.png"></a>
+                <a href="/GroundForge-help/color-rules" target="_blank" title="4 colors per stich rules"><img src="images/to-color-rules.png"></a>
+                <a id="pairLegend" target="_blank" href="legend" title="stitch enumeration"><img class="swatches" src="images/swatches.png"></a>
                 {% include download.html id="pairDiagram" name="pair-diagram" %}
             </figcaption>
             <div id="pairDiagram"></div>
@@ -182,7 +183,7 @@
                 <figcaption>
                     Pairs
                     <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
-                    <img class="swatches" src="images/swatches.png" onclick='showColorCode("#drosteFields2")'>
+                    <img class="swatches" src="images/swatches.png" onclick='showColorCode("#drosteFields2")' title="stitch enumeration">
                     {% include download.html id="drostePair2" name="droste-pair-diagram" %}
                 </figcaption>
                 <div id="drostePair2"></div>
@@ -217,7 +218,7 @@
                 <figcaption>
                     Pairs
                     <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
-                    <img class="swatches" src="images/swatches.png" onclick='showColorCode("#drosteFields3")'>
+                    <img class="swatches" src="images/swatches.png" onclick='showColorCode("#drosteFields3")' title="stitch enumeration">
                     {% include download.html id="drostePair3" name="droste-next-pair-diagram" %}
                 </figcaption>
                 <div id="drostePair3"></div>

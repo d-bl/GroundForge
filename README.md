@@ -2,8 +2,8 @@
 
 _A toolbox to design bobbin lace grounds with matching sets of pair/thread diagrams._
 
+- [Demonstrators](https://d-bl.github.io/GroundForge/API)
 - [Short intros](#short-intros)
-- [Demos](#demos)
 - [Contribute to documentation](#contribute-to-documentation)
   * [Most common tasks](#most-common-tasks)
   * [Preview complex changes online](#preview-complex-changes-online)
@@ -17,8 +17,8 @@ _A toolbox to design bobbin lace grounds with matching sets of pair/thread diagr
   * [Work flow](#work-flow)
   * [Code conventions](#code-conventions)
   * [Tests](#tests)
--  [Use as JavaScript library](#use-as-javascript-library)
--  [Use as JVM library](#use-as-jvm-library)
+- [Use as JavaScript library](#use-as-javascript-library)
+- [Use as JVM library](#use-as-jvm-library)
 
 
 Short intros
@@ -27,7 +27,7 @@ Short intros
 ### for developers:
 * `src/scala/main/*` is translated to : `docs/js/GroundForge-opt.js`
 * This is connected client side to HTML with : `docs/js/tiles.js`
-* The source run also in a JVM environment for server-side or batch processing,
+* The source runs also in a JVM environment for server-side or batch processing,
   for example something like : `src/test/Demo4Java.java`
 
 ### for end users (bobbin lace makers and designers):  
@@ -53,15 +53,6 @@ You are responsible for publishing your work under a license of your choosing
 and tracking your use of derivative works. 
 Downloaded diagrams don't come with properties expressing origin, author or license,
 you will have to add that information yourself with your favourite editor.
-
-Demos
-======
-
-A [dressed up](https://d-bl.github.io/GroundForge/tiles?patchWidth=12&patchHeight=12&a1=ct&b1=ct&c1=ctc&d1=ctc&b2=ctc&d2=ctc&a3=ct&c3=ct&footside=b,-,a,-&tile=831,4-7,-5-&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2) version and a dressed down [API](https://d-bl.github.io/GroundForge/API/) version.
-The latter shows all possible diagrams with minimal code.
-The first demonstrates interaction with these diagrams
-implemented with limited styling and event handling skills. 
-The latter evolved from a proof of concept into the *de facto* user interface.
 
 
 Contribute to documentation

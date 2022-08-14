@@ -21,7 +21,7 @@ function painStitchValue () {
 }
 function flipStitch() {
   var n = d3.select('#paintStitches').node()
-  n.value=n.value.toLowerCase().replace(/l/,"R").replace(/r/,"l").replace(/R/,"r")
+  n.value=n.value.toLowerCase().replace(/l/g,"R").replace(/r/g,"l").replace(/R/g,"r")
   return false;
 }
 function paint(clicked) {
@@ -70,7 +70,6 @@ function tesselace(query){
   return tesselace
 }
 function pocRef (q) {
-console.log(q)
   return "" +
     q.replace(       /.*(tile=[^&]+).*/,"\$1") + "&" +
     q.replace( /.*(patchWidth=[^&]+).*/,"\$1") + "&" +
@@ -81,32 +80,33 @@ console.log(q)
     q.replace(/.*(shiftRowsSW=[^&]+).*/,"\$1") + "&" +
     ""
 }
-function showProto() {
+function showProto(q) {
 
-  var config = TilesConfig(submitQuery())
+  console.log("start showProto")
+  var config = TilesConfig(q ? q : submitQuery())
   d3.select("#prototype").html(PrototypeDiagram.create(config))
 
   // new form fields may have been added what changes the query
   var query = submitQuery()
 
   clear2()
+  console.log("cleared")
+  var svg = PairSvg.legend(TilesConfig(query).getItemMatrix)
+  var encoded = encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8"?-->' + svg)
+  var l = document.getElementById("pairLegend")
+  l.setAttribute('href', 'data:image/svg+xml,' + encoded)
+  l.setAttribute('download', 'legend.svg')
+  console.log("done legend")
   var hrefQ = tesselace(query) + query
   d3.select("#link").node().href = "?" + hrefQ
-  d3.select("#poc").node().href = "poc.html?" + pocRef(query)
-  d3.select("#diagrams .colorCode").html(buildLegend(query))
+  d3.select("#poc").node().href = "poc?" + pocRef(query)
   d3.select("#threadDiagram").html("")
-
-  var pairContainer = d3.select("#pairDiagram")
-  var pairContainerNode = pairContainer.node()
-  var pairDiagram = pairContainerNode.data = NewPairDiagram.create(TilesConfig(query))
-  var markers = true
-  var svg = DiagramSvg.render(pairDiagram, "1px", markers, 744, 1052)
-  pairContainer.html(svg)
-
+  d3.select("#pairDiagram").html(PairSvg.render(config.getItemMatrix, 744, 1052, 1.9))
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
   d3.select("#headside").attr("cols", config.rightMatrixCols + 2)
+  console.log("done showProto")
 
   return config
 }
@@ -145,19 +145,14 @@ function scrollToIfPossible(container, x, y) {
   }
 }
 function showDiagrams(config) {
-
-  var markers = true // use false for slow devices and IE-11, set them at onEnd
-
   var pairContainer = d3.select("#pairDiagram")
-  var pairContainerNode = pairContainer.node()
   if (!config)
       config = TilesConfig(submitQuery())
-  var pairDiagram = pairContainerNode.data = NewPairDiagram.create(config)
-  pairContainer.html(DiagramSvg.render(pairDiagram, "1px", markers, 744, 1052))
-  scrollToIfPossible(pairContainerNode,0,0)
-  if (pairDiagram.jsNodes().length == 1) return
+  pairContainer.html(PairSvg.render(config.getItemMatrix, 744, 1052, 1.9))
+  scrollToIfPossible(pairContainer.node(),0,0)
+  if (pairContainer.select(".node").length <= 1) return
 
-  setThreadDiagram("#threadDiagram", ThreadDiagram.create(pairDiagram))
+  setThreadDiagram("#threadDiagram", ThreadDiagram.create(NewPairDiagram.create(config)))
 }
 function animateDiagram(container, forceCenterX, forceCenterY) {
   if(!container) {
@@ -183,7 +178,7 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
   }
   var tickCounter = 0
   function onTick() {
-      if ( isMobile && (tickCounter++ % 5) != 0) return // skip rendering
+      if ( 0 != (tickCounter++ % 5)) return // skip rendering
       //if (tickCounter++ >=0) terminateAnimation()
       links.attr("d", drawPath)
       nodes.attr("transform", moveNode)
@@ -238,11 +233,8 @@ function getDownloadContent (id) {
       replace(/<foreignObject[\s\S]*?foreignObject>/g, '')
   return 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
 }
-function asData(str) {
-  return 'data:text/plain,' + encodeURIComponent(str)
-}
 function prepareDownload(contentId) {
-    // the href may have been followed before onfocus changed it
+    // touch devices follow the href before onfocus changed it
     // in that case we temporarily need another link
     // that link is hidden when followed
     var linkId = contentId + "DownloadLink"
@@ -273,16 +265,29 @@ function whiting (kv) {
 }
 function load() {
 
-  var keyValueStrings = window.location.search.substr(1).split("&")
+  var q = window.location.search.substr(1)
+  var keyValueStrings = q.split("&")
   keyValueStrings.forEach(setField)
-  if (window.location.search.substr(1).includes("droste2=")) showDroste(2)
-  if (window.location.search.substr(1).includes("droste3=")) showDroste(3)
-  showProto() // this creates a dynamic part of the form
+  var config = showProto(q) // this creates a dynamic part of the form
   keyValueStrings.forEach(setField) // fill the form fields again
-  showDiagrams(showProto())
+  var threads1 = ThreadDiagram.create(NewPairDiagram.create(config))
+  setThreadDiagram("#threadDiagram", threads1)
   keyValueStrings.find(whiting)
+  // TODO dispatch the rest in a background thread, N.B. somehow share threads1
+  // TODO perhaps alternatively start all animations at the end
+  if (!q.includes("droste2=") && !q.includes("droste3=")) return
+  var pairs2 = PairDiagram.create(stitches = d3.select("#droste2").node().value, threads1)
+  var threads2 = ThreadDiagram.create(pairs2)
+  setPairDiagram("#drostePair2", pairs2)
+  setThreadDiagram("#drosteThread2", threads2)
+  if (!q.includes("droste3=")) return
+  var pairs3 = PairDiagram.create(stitches = d3.select("#droste3").node().value, threads1)
+  var threads3 = ThreadDiagram.create(pairs3)
+  setPairDiagram("#drostePair3", pairs3)
+  setThreadDiagram("#drosteThread3", threads3)
 }
 function getMatrixLines() {
+
   return d3.select('#tile').node().value.toUpperCase().trim().split(/[^-A-Z0-9]+/)
 }
 function asSimple() {

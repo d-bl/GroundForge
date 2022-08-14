@@ -31,7 +31,7 @@ import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
   def create(pairDiagram: Diagram): Diagram = apply(pairDiagram)
 
   def apply(pairDiagram: Diagram): Diagram = {
-
+    println(s"create thread diagram: ${pairDiagram.nodes.size} nodes ${pairDiagram.links.size}: links")
     val pairLinks = pairDiagram.links.map(l => (l.source, l.target))
     def scale(n: NodeProps) = node(n.title, n.x*2, n.y*2)
     val nodesDone = mutable.Buffer[Int]()

@@ -9,6 +9,7 @@ Header { background: #3679cd url(../images/header-bg-left.png) top right repeat;
 #sidebar strong { font-size: 18px; font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; }
 #sidebar ul { padding-left: 0; margin-bottom: 0px; font-weight: bold; font-size: 12px; color: #474747; }
 #sidebar ul ul { font-weight: normal; }
+#sidebar ul ul ul { padding-left: 16px; }
 #sidebar sub { font-weight: normal; }
 #sidebar li { list-style-type: none; padding-bottom: 8px; }
 #sidebar li li { padding-bottom: 0; }
