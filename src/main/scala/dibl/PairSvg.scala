@@ -84,7 +84,19 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   private def diamondTop(d: Double = diamondSize) = s"M -$d,0 $d,0 0,-$d Z"
 
-  private def diamondLeft(d: Double = diamondSize) = s"M -$d,0 0,$d 0,-$d Z"
+  private def diamondLeft(d: Double = diamondSize)= s"M -$d,0 0,$d 0,-$d Z"
+
+  private def c4NE(d: Double = diamondSize / 2.5) = s"M ${ d * 2 },-$d 0,-${ d * 3 } v ${ d * 2 } z"
+
+  private def c4E(d: Double = diamondSize / 2.5) = s"M ${ d * 2 },-$d H 0 V $d h ${ d * 2 } z"
+
+  private def c4W(d: Double = diamondSize / 2.5) = s"M 0,-$d H -${ d * 2 } V $d H 0 Z"
+
+  private def c4NW(d: Double = diamondSize / 2.5) = s"M -${ d * 2 },-$d 0,-${ d * 3 } v ${ d * 2 } z"
+
+  private def c4SE(d: Double = diamondSize / 2.5) = s"M ${ d * 2 },$d 0,${ d * 3 } V $d Z"
+
+  private def c4SW(d: Double = diamondSize / 2.5) = s"M -${ d * 2 },$d 0,${ d * 3 } V $d Z"
 
   private def renderLinks(itemMatrix: Seq[Seq[Item]], itemList: Seq[(Int, Int, Item)]): String = {
     val nrOfRows = itemMatrix.size
@@ -212,6 +224,13 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
         shape(black, squarePortrait())
       case (nrOfCs, _) if nrOfCs > 3 && str.matches("c(rrc)?(llcrrc)+(llc)?") => // tallie
         shape(black, squareLeft()) + shape(black, squareRight())
+      case (4, Array(lrTop, lrCenter, lrBottom)) => // c.c.c.c; e.g. winkie pin
+        shape(colourLeft(lrTop), c4NE()) +
+        shape(colourRight(lrTop), c4NW()) +
+        shape(colourLeft(lrCenter), c4W()) +
+        shape(colourRight(lrCenter), c4E()) +
+        shape(colourLeft(lrBottom), c4SE()) +
+        shape(colourRight(lrBottom), c4SW())
       case _ =>
         shape(pale, circle()) // fall back
     }

@@ -95,13 +95,13 @@
      inkscape:window-height="997"
      id="namedview1777"
      showgrid="false"
-     inkscape:zoom="0.75"
-     inkscape:cx="372"
-     inkscape:cy="526"
+     inkscape:zoom="0.89300011"
+     inkscape:cx="334.73587"
+     inkscape:cy="485.37229"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg2"
+     inkscape:current-layer="g2080"
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:document-rotation="0"
@@ -208,8 +208,6 @@
      transform="matrix(2,0,0,2,44.25125,252.27221)"
      id="g6342"
      style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none">
-    <title
-       id="title6332">ctllcrrc - c1</title>
     <path
        d="M -5.5,0 0,-5.5 V 0 Z"
        style="opacity:0.9;fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
@@ -273,8 +271,6 @@
      transform="matrix(-2,0,0,2,44.25125,212.27221)"
      id="g8519"
      style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none">
-    <title
-       id="title8513">cllclll - c3</title>
     <g
        id="g1864">
       <path
@@ -337,10 +333,7 @@
      id="path8529"
      inkscape:export-filename="/Users/jokep/git/d-bl/GroundForge-help/docs/images/other-stitches.png"
      inkscape:export-xdpi="73.339996"
-     inkscape:export-ydpi="73.339996">
-    <title
-       id="title8527">ctctctctclcttl - d2</title>
-  </path>
+     inkscape:export-ydpi="73.339996" />
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
@@ -413,8 +406,6 @@
      id="g942"
      inkscape:export-xdpi="18.6"
      inkscape:export-ydpi="18.6">
-    <title
-       id="title932">ctllcrrc - c1</title>
     <path
        d="M -5.5,0 0,-5.5 V 0 Z"
        style="opacity:0.9;fill:#0571b0;stroke:none"
@@ -527,8 +518,6 @@
      class="node"
      transform="matrix(-9.2161707,0,0,9.2161707,354.66945,649.75401)"
      id="g964">
-    <title
-       id="title958">cllclll - c3</title>
     <path
        d="M -4.3,-4.3 H 0 v 8.6 h -4.3 z"
        style="opacity:0.9;fill:#92c5de;stroke:none"
@@ -797,8 +786,6 @@
      id="g1018"
      inkscape:export-xdpi="18.6"
      inkscape:export-ydpi="18.6">
-    <title
-       id="title1005">ctllcrrc - c1</title>
     <path
        d="M -5.4999982,-5.5000003 -5.4999989,7e-7 1.7e-6,-2.9999998e-7 V -5.5000003 Z"
        style="opacity:0.9;fill:#0571b0;fill-opacity:1;stroke:none"
@@ -910,41 +897,6 @@
        id="tspan1113"
        x="560.31378"
        y="695.46204">t</tspan></text>
-  <g
-     onclick="paint(this)"
-     class="node"
-     transform="matrix(2,0,0,2,44.25125,292.27221)"
-     id="g1044"
-     style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none">
-    <title
-       id="title1031">ctllcrrc - c1</title>
-    <path
-       d="M -5.5,-3 0,-8.5 V -3 Z"
-       style="opacity:0.9;fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
-       id="path1033" />
-    <path
-       d="M 5.5,-3 0,-8.5 V -3 Z"
-       style="opacity:0.9;fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
-       id="path1035" />
-    <path
-       d="M -5.5,2.5 0,8 V 2.5 Z"
-       style="opacity:0.9;fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
-       id="path1040" />
-    <path
-       d="M 5.5,2.5 0,8 V 2.5 Z"
-       style="opacity:0.9;fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
-       id="path1042" />
-    <path
-       d="M 5.5,-3 H 0 v 5.5 h 5.5 z"
-       style="opacity:0.9;fill:none;stroke:#000000;stroke-width:0.45222;stroke-miterlimit:4;stroke-dasharray:none"
-       id="path8515-9"
-       sodipodi:nodetypes="ccccc" />
-    <path
-       d="M 0,-3 H -5.5 V 2.5 H 0 Z"
-       style="opacity:0.9;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.45222;stroke-miterlimit:4;stroke-dasharray:none"
-       id="path8517-9"
-       sodipodi:nodetypes="ccccc" />
-  </g>
   <text
      xml:space="preserve"
      style="font-size:14.6667px;line-height:1.25;font-family:sans-serif"
@@ -954,7 +906,15 @@
        sodipodi:role="line"
        id="tspan1046"
        x="70.126694"
-       y="295.67847">cross twist(s) cross twist(s) cross twist(s) cross <tspan
+       y="295.67847">cross twist(s) cross twist(s) cross twist(s) cross<tspan
    style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic'"
-   id="tspan1084">(not yet implemented!)</tspan></tspan></text>
+   id="tspan1084" /></tspan></text>
+  <g
+     id="g2080"
+     transform="translate(44.25125,291.27221)">
+    <path
+       id="path2072"
+       style="opacity:0.9;fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M -10,5 0,15 V 5 Z M 10,5 0,15 V 5 Z M -10,-5 0,-15 V -5 Z M 0,-5 H -10 V 5 H 0 Z m 11,0 H 0 V 5 H 11 Z M 10,-5 0,-15 v 10 z" />
+  </g>
 </svg>
