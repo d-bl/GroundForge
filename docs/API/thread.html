@@ -29,8 +29,8 @@
          var width = 744
          var height = 1052
 
-         showGraph(d3.select('#pair'), pairDiagram, strokeWidth, width, height, config, 0)
-         showGraph(d3.select('#thread'), threadDiagram, strokeWidth, width, height, config, nodeTransparency)
+         showGraph(d3.select('#pair'), pairDiagram, strokeWidth, width, height, 0)
+         showGraph(d3.select('#thread'), threadDiagram, strokeWidth, width, height, nodeTransparency)
        }
        function showGraph(container, diagram, stroke, width, height, transparency) {
          var markers = true // use false for slow devices and IE-11, set them at onEnd
