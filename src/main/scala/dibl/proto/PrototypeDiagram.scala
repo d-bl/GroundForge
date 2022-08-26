@@ -59,7 +59,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   private def events(isActive: Boolean, id: String) = {
     if (isActive)
-      s"data-formid='$id' onclick='resetStitch(this)'"
+      s"data-formid='$id' onclick='resetStitch(event)'"
     else ""
   }
 
@@ -71,7 +71,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
          |    id='${ item.id }'
          |    type='text'
          |    value='${ item.stitch }'
-         |    onchange='showProto()'
+         |    onchange='showProto(event)'
          |  ></input>
          |</foreignObject>
          |""".stripMargin

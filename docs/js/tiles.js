@@ -1,8 +1,8 @@
 var valueFilter = /[^a-zA-Z0-9,-=]/g
 var isMobile = /iPad|iPhone|iPod|Mobi/.test(navigator.userAgent)
-function resetStitch(sourceNode) {
+function resetStitch(event) {
   // called by events on pattern diagram
-  var id = sourceNode.dataset.formid
+  var id = event.currentTarget.dataset.formid
   var el = document.getElementById(id)
   el.focus()
 }
@@ -15,7 +15,7 @@ function setStitch(stitchValue) {
   d3.select('#paintStitches').node().value=stitchValue
   return false;
 }
-function painStitchValue () {
+function paintStitchValue () {
 
   return d3.select("#paintStitches").node().value
 }
@@ -24,15 +24,15 @@ function flipStitch() {
   n.value=n.value.toLowerCase().replace(/l/g,"R").replace(/r/g,"l").replace(/R/g,"r")
   return false;
 }
-function paint(clicked) {
+function clickedStitch(event) {
 
-  var id = clicked.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
-  d3.select('#'+id).attr("value", painStitchValue())
+  var id = event.currentTarget.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
+  d3.select('#'+id).attr("value", paintStitchValue())
   showProto()
 }
 function clearStitches() {
 
-  d3.selectAll("svg input").attr("value",painStitchValue())
+  d3.selectAll("svg input").attr("value",paintStitchValue())
   showProto()
 }
 function toKeyValueString (formField) {

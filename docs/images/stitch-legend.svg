@@ -26,7 +26,6 @@
      id="path1101"
      sodipodi:nodetypes="ccc" />
   <path
-     onclick="paint(this)"
      class="node"
      d="m 101.84418,151.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
      style="opacity:0.9;fill:#0571b0;fill-opacity:1;stroke:none;stroke-width:2"
@@ -59,7 +58,6 @@
      sodipodi:nodetypes="cc"
      style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;marker-mid:url(#twist-3-0-8)" />
   <g
-     onclick="paint(this)"
      class="node"
      transform="matrix(2,0,0,2,43.719168,412.8033)"
      id="g7077-5">
@@ -203,7 +201,6 @@
      style="font-size:14.66670000000000051px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect1094);"
      transform="translate(1.2445942,-192.28981)" />
   <g
-     onclick="paint(this)"
      class="node"
      transform="matrix(2,0,0,2,44.25125,252.27221)"
      id="g6342"
@@ -266,7 +263,6 @@
      style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
      id="path6584" />
   <g
-     onclick="paint(this)"
      class="node"
      transform="matrix(-2,0,0,2,44.25125,212.27221)"
      id="g8519"
@@ -326,7 +322,6 @@
      inkscape:export-xdpi="73.339996"
      inkscape:export-ydpi="73.339996" />
   <path
-     onclick="paint(this)"
      class="node"
      d="m 53.198934,451.63373 a 9.4,9.4 0 0 1 -9.399999,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.399999,9.4 z"
      style="opacity:0.9;fill:#f7f7f7;stroke:none;stroke-width:2"
@@ -359,7 +354,6 @@
      style="opacity:0.9;fill:#000000;stroke:none;stroke-width:2"
      id="path1097" />
   <path
-     onclick="paint(this)"
      class="node"
      d="m 53.84418,151.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
      style="opacity:0.9;fill:#ca0020;fill-opacity:1;stroke:none;stroke-width:2"
@@ -368,7 +362,6 @@
        id="title1133">ctctctctclcttl - d2</title>
   </path>
   <path
-     onclick="paint(this)"
      class="node"
      d="m 145.84418,151.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
      style="opacity:0.9;fill:#f4a582;fill-opacity:1;stroke:none;stroke-width:2"
@@ -377,7 +370,6 @@
        id="title1137">ctctctctclcttl - d2</title>
   </path>
   <path
-     onclick="paint(this)"
      class="node"
      d="m 199.84418,151.82928 a 9.4,9.4 0 0 1 -9.4,9.4 9.4,9.4 0 0 1 -9.4,-9.4 9.4,9.4 0 0 1 9.4,-9.4 9.4,9.4 0 0 1 9.4,9.4 z"
      style="opacity:0.9;fill:#92c5de;fill-opacity:1;stroke:none;stroke-width:2"
@@ -400,7 +392,6 @@
        y="866.48358"
        id="tspan1153">https://colorbrewer2.org/?type=diverging&amp;scheme=RdBu&amp;n=5</tspan></text>
   <g
-     onclick="paint(this)"
      class="node"
      transform="matrix(7.5061682,0,0,7.5061682,117.75125,648.77221)"
      id="g942"
@@ -514,7 +505,6 @@
        x="53.372696"
        y="720.27118">l</tspan></text>
   <g
-     onclick="paint(this)"
      class="node"
      transform="matrix(-9.2161707,0,0,9.2161707,354.66945,649.75401)"
      id="g964">
@@ -588,7 +578,6 @@
        x="233.59885"
        y="122.46204">twists between stitches</tspan></text>
   <g
-     onclick="paint(this)"
      class="node"
      transform="matrix(1.4142136,1.4142136,-1.4142136,1.4142136,484.25125,914.27221)"
      id="g1009"
@@ -613,7 +602,6 @@
        id="path1007" />
   </g>
   <g
-     onclick="paint(this)"
      class="node"
      transform="matrix(0,-2,-2,0,324.25125,914.27221)"
      id="g1017"
@@ -630,7 +618,6 @@
        id="path1015" />
   </g>
   <g
-     onclick="paint(this)"
      class="node"
      transform="matrix(1.4142136,-1.4142136,-1.4142136,-1.4142136,364.25125,914.27221)"
      id="g1025"
@@ -647,7 +634,6 @@
        id="path1023" />
   </g>
   <g
-     onclick="paint(this)"
      class="node"
      transform="matrix(-1.4142136,-1.4142136,-1.4142136,1.4142136,404.25125,914.27221)"
      id="g1033"
@@ -664,7 +650,6 @@
        id="path1031" />
   </g>
   <g
-     onclick="paint(this)"
      class="node"
      transform="matrix(1.4142136,-1.4142136,-1.4142136,-1.4142136,444.25125,914.27221)"
      id="g1041"
@@ -681,7 +666,6 @@
        id="path1039" />
   </g>
   <g
-     onclick="paint(this)"
      class="node"
      transform="matrix(-1.4142136,-1.4142136,-1.4142136,1.4142136,444.25125,914.27221)"
      id="g1049"
@@ -722,7 +706,6 @@
        x="35.469982"
        y="519.81134">Examples</tspan></text>
   <path
-     onclick="paint(this)"
      class="node"
      d="m 51.788934,331.63373 a 7.99,7.99 0 0 1 -7.989999,7.99 7.99,7.99 0 0 1 -7.99,-7.99 7.99,7.99 0 0 1 7.99,-7.99 7.99,7.99 0 0 1 7.989999,7.99 z"
      style="opacity:0.9;fill:#000000;stroke:none;stroke-width:1.7"
@@ -751,7 +734,6 @@
        x="70.126694"
        y="255.67847">cross twist(s) cross twist(s) cross</tspan></text>
   <path
-     onclick="paint(this)"
      class="node"
      d="m 533.19893,914.27223 a 9.4,9.4 0 0 1 -9.39999,9.39997 9.4,9.4 0 0 1 -9.40001,-9.39997 9.4,9.4 0 0 1 9.40001,-9.4 9.4,9.4 0 0 1 9.39999,9.4 z"
      style="opacity:0.9;fill:#f7f7f7;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
@@ -780,7 +762,6 @@
        x="35.469982"
        y="59.81134">Generic legend</tspan></text>
   <g
-     onclick="paint(this)"
      class="node"
      transform="matrix(7.5061682,0,0,7.5061682,563.31462,672.29937)"
      id="g1018"

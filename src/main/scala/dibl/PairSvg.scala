@@ -165,7 +165,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       val transform = s"""transform="translate(${ scale(col) },${ scale(row) })""""
       val title = s"""<title>${ targetItem.stitch } - ${ targetItem.id }</title>"""
 
-      s"""<g id='r${ row }c$col' onclick='paint(this)' class="node" $transform>$title${ shapes(targetItem.stitch) }</g>"""
+      s"""<g id='r${ row }c$col' onclick='clickedStitch(event)' class="node" $transform>$title${ shapes(targetItem.stitch) }</g>"""
     }.mkString
   }.mkString
 
