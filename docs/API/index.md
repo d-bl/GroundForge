@@ -28,10 +28,10 @@ Current User Interfaces
 Demonstrators
 =============
 
-A few simple pages show developers how to use the basic components
+A few pages are the "hello world"-s of the basic components
 that work together in the user interfaces.
-They are intended as stepping stones
-to create additional user interfaces for special use cases.
+These components can be tweaked, combined or inspire
+additional user interfaces for special use cases.
 
 [pairTest]: pair.html?patchWidth=11&patchHeight=7&j1=clrcccrrc&i1=clrcccc&h1=cccc&g1=cclllcc&f1=lclllcrrrcllcl&e1=lclllcrrcllcl&d1=cllcrrcllc&c1=ctctctctctctctc&b1=ctctctcr&a1=c&j2=crrrc&i2=ctrrc&h2=cttrc&g2=ctttc&f2=llcrrcll&e2=llctrcll&d2=cttc&c2=crc&b2=ctcr&a2=cc&j3=crrrctc&i3=ctrrctc&h3=cttrctc&g3=ctttctc&f3=lllcrrctclll&e3=lllctrctclll&d3=cttcrc&c3=crctc&b3=ctctcrr&a3=ccc&j4=crrrclc&i4=ctrrclc&h4=cttrclc&g4=ctttclc&f4=llllcrrclcllll&e4=llllctrclcllll&d4=cttclc&c4=crclc&b4=ctclcrr&a4=ctctc&j5=crrrcllc&i5=ctrrcllc&h5=cttrcllc&g5=ctttcllc&f5=crrcllc&e5=tttctrcllcttt&d5=cttcllc&c5=crcllc&b5=ctcllcrrr&a5=cttcttc&j6=crrrclllc&i6=ctrrclllc&h6=cttrclllc&g6=ctttclllc&f6=crrclllc&e6=ctrcllllc&d6=cttclllc&c6=crclllc&b6=ctclllcrrrr&a6=ctttctttc&tile=1111111111,8888888888,1111111111,8888888888,1111111111,8888888888&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=10&shiftRowsSE=6
 [protoSpiders]:  proto.html?patchWidth=20&patchHeight=20&tile=5-----5-----,-CDDD632AAAB,566666322222,566666322222,566666322222,566666-22222&shiftColsSW=-6&shiftRowsSW=6&shiftColsSE=6&shiftRowsSE=6
@@ -68,7 +68,7 @@ Note that plain Scala code only runs on a JVM environment
 while the GroundForge library is writtein in ScalJS with the purpose
 to run also in a JavaScipt environment.
 File access and plain Scala libraries are limited to the test classes.
-The `toJS.*` scripts only compile the code to JavaScript.
+The `toJS.*` scripts only compile the main code to JavaScript.
 The tests run with Maven (`pom.xml`), import the project into you favourite IDE
 as a maven project and ignore suggestions to import it as an SBT project.
 
@@ -87,14 +87,14 @@ The query of the diagram editor is assembled by JavaScript via the link button.
 The query mimics what would be sent to a server when submitting the form.
 Many fields of the form are hidden to the user.
 
-To void outdated documentation: look for the usage of `TilesConfig.queryFields`.
+To avoid outdated documentation: look for the usage of `TilesConfig.queryFields`.
 * Droste patterns use additional parameters in the load function of `tiles.js`.
 * `API/proto.html` uses only some of the `queryFields`.
 * `API/sheet.html` does not use a query at all.
 
 Inline SVG
 ----------
-The demonstrators assign SVG content to `<div>` elements. Two methods to assign the content:
+The demonstrators assign SVG content to `<div>` elements. Let us compare two methods to assign the content:
 
     d3.select('#someId').html(svg)`
     document.getElementById("someId").innerHTML = svg
