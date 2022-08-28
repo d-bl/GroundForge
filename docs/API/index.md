@@ -42,7 +42,7 @@ additional user interfaces for special use cases.
 [threadRose]: thread.html?patchWidth=8&patchHeight=14&b1=ctc&c1=ctllcrrc&d1=clclc&b2=cllcrrcllcrrcr&d2=ctctctc&c3=ctctll&footside=b,-,a,-&footsideStitch=-&tile=831,4-7,-5-&tileStitch=ctct&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
 
 | source | examples see&nbsp;also&nbsp;[query](#url-query) | notes |
-|---|---|---|
+|---|---|:---|
 | [proto.html][protoCode]  | [spiders][protoSpiders],&nbsp;[rose][protoRose],&nbsp;[test][pairRose] | Pattern definition. |
 | [pair.html][pairCode]  | [spiders][pairSpiders], [rose][pairRose]  | 4 colors per stitch.<br> The page happens to be reasonably convenient to print the diagram and enumerated stitches together: position the scrollbars top left and resize the viewport to get (enough of) the diagrams visible. |
 | [thread.html][threadCode]  | [spiders][threadSpiders], [rose][threadRose]  | 1 color per stitch pair diagram and thread diagram.<br> Comment in the source explains how to tweak the code for droste patterns. |
