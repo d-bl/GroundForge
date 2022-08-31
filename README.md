@@ -8,14 +8,14 @@ in the top left corner of this document gets you to a specific section quickly.
 Short intros
 =============
 
+### for end users (bobbin lace makers and designers):
+See https://d-bl.github.io/GroundForge/
+
 ### for developers:
 * `src/scala/main/*` is translated to : `docs/js/GroundForge-opt.js`
 * This is connected client side to HTML with : `docs/js/tiles.js`
 * The source runs also in a JVM environment for server-side or batch processing,
   for example something like : `src/test/Demo4Java.java`
-
-### for end users (bobbin lace makers and designers):  
-See https://d-bl.github.io/GroundForge/
 
 ### licenses
 
@@ -42,35 +42,28 @@ you will have to add that information yourself with your favourite editor.
 Contribute to documentation
 ===========================
 
-GroundForge has various types of documentation.
-
-In this repository
-* Tutorials
-* Pages referred to by info buttons on form fields.
-  Originally intended as tooltips but evolved into too large explanations. 
-  
-Examples of patterns
-* The other repositories listed below
-* Third party blogs and whatever we might not know about
-
 Most common tasks
 -----------------
-* Edit the `.md` files in the `docs` folder, these are the _editable_ versions of the _published_ pages.
-* Keep the TOC in the sidebar up to date.
-
-| repository         | published pages | editable versions | editable sidebar |
-|--------------------|-----------------|-------------------|------------------|
-| [GroundForge]      | [X][gf-site]    | [X][gf-docs]      | [X][gf-sb]       |
-| [GroundForge-help] | [X][gfh-site]   | [X][gfh-docs]     | [X][gfh-sb]      |
-| [gw-lace-to-gf]    | [X][w-site]     | [X][w-docs]       | [X][w-sb]        |
-| [tesselace-to-gf]  | [X][t-site]     | [X][t-docs]       | [X][t-sb]        |
-| [MAE-gf]           | [X][mae-site]   | [X][mae-docs]     | [X][mae-sb]      |
-
 There is a simple [procedure] to propose simple changes to the pages.
+In short:
+* follow the link `propose change` which sits at the bottom
+  of the sidebar of each [help](https://d-bl.github.io/GroundForge/) page.
+* You might be asked to sign in or up.
+* Make your changes, perhaps just a typo or grammar.
+* Follow three times the instructions for the green button at the bottom of the page
+  to save your changes and start the review procedure with a pull request.
 
-Simple changes could be things like typo's, grammar or
-simplified phrasing hoping that automated translators do a better job.
+| create forks for all projects: | keep sidebars up-to-date: |
+|--------------------|:---------------:|
+| [GroundForge]      | [X][gf-sb]       |
+| [GroundForge-help] | [X][gfh-sb]      |
+| [gw-lace-to-gf]    | [X][w-sb]        |
+| [tesselace-to-gf]  | [X][t-sb]        |
+| [MAE-gf]           | [X][mae-sb]      |
 
+Pages may have their own internal table of content. Keep them up-to-date too.
+
+Note for moderators:  
 When you have write rights for a repository,
 the green button to save your changes will show `commit changes`
 and the change will be effective immediately.
@@ -80,42 +73,35 @@ the big green button then changes to `propose changes`.
 
 [procedure]: https://help.github.com/articles/editing-files-in-another-user-s-repository/
 
-[GroundForge]: https://d-bl.github.io/GroundForge/
-[gf-docs]: https://d-bl.github.io/GroundForge/tree/master/docs/
-[gf-site]: https://d-bl.github.io/GroundForge/
+[GroundForge]: https://d-bl.github.io/GroundForge/fork
 [gf-sb]: https://github.com/d-bl/GroundForge/tree/master/docs/_includes/Sidebar.html
 
-[GroundForge-help]: https://d-bl.github.io/GroundForge-help/
-[gfh-docs]: https://d-bl.github.io/GroundForge-help/tree/master/docs/
-[gfh-site]: https://d-bl.github.io/GroundForge-help/
+[GroundForge-help]: https://d-bl.github.io/GroundForge-help/fork
 [gfh-sb]: https://github.com/d-bl/GroundForge-help/tree/master/docs/_includes/Sidebar.html
 
-[gw-lace-to-gf]: https://d-bl.github.io/gw-lace-to-gf/
-[w-docs]: https://d-bl.github.io/gw-lace-to-gf/tree/master/docs/
-[w-site]: https://d-bl.github.io/gw-lace-to-gf/
+[gw-lace-to-gf]: https://d-bl.github.io/gw-lace-to-gf/fork
 [w-sb]: https://github.com/d-bl/gw-lace-to-gf/tree/master/docs/_includes/Sidebar.html
 
-[tesselace-to-gf]: https://d-bl.github.io/tesselace-to-gf/
-[t-docs]: https://d-bl.github.io/tesselace-to-gf/tree/master/docs/
-[t-site]: https://d-bl.github.io/tesselace-to-gf/
+[tesselace-to-gf]: https://d-bl.github.io/tesselace-to-gf/fork
 [t-sb]: https://github.com/d-bl/tesselace-to-gf/tree/master/docs/_includes/Sidebar.html
 
-[MAE-gf]: https://d-bl.github.io/MAE-gf/
-[mae-docs]: https://d-bl.github.io/MAE-gf/tree/master/docs/
-[mae-site]: https://d-bl.github.io/MAE-gf/
+[MAE-gf]: https://d-bl.github.io/MAE-gf/fork
 [mae-sb]: https://github.com/d-bl/MAE-gf/tree/master/docs/_includes/Sidebar.html
 
 
-Preview complex changes online
-------------------------------
+Preview complex changes
+-----------------------
 
-To preview more complex changes
-* create a [personal version] of the repositories, also discussed as a stable version.
-* change the files of your own master branch
-* create a pull request comparing your own master with the master of `d-bl`
-* for work in progress: make sure the pull request is a draft
+The preview by the editor might have some broken images or links or illegible content.
+To preview a rendered version of the pages:
 
-[personal version]: https://d-bl.github.io/GroundForge-help/Stable   
+* The editing procedure above will have created a numbered `patch` branch mentioned by your pull request.
+* configure your online project to publish your patch branch  
+  at `https://github.com/YOUR_ACCOUNT/REPO_NAME/settings/pages`:  
+  ![screen snippet](https://user-images.githubusercontent.com/10553630/142723203-0bb1b5d0-d324-41df-9e8f-b3f6b5972e44.png)
+* When you made forks of all the repositories listed above,
+  their should no longer be broken images or inks  
+  at `https://YOUR_ACCOUNT.github.io/REPO_NAME`
 
 
 Conventions
@@ -131,7 +117,7 @@ preferably with Creative Commons [icons](https://en.wikipedia.org/wiki/Creative_
 
 ### metadata
 
-The mark-down pages start with a metadata section, something like
+A mark-down pages start with a metadata section, something like
 
     ---
     layout: default
@@ -142,34 +128,18 @@ Browsers show `XYZ` as tab title. Keep it short and catchy.
 
 ### links
 Thumbnails in catalogues are the biggest target and should point to the pattern definition.
-If available, use a sample, otherwise the thread diagram.
+If available, use a sample of rel lace, otherwise the thread diagram.
 
 Use root relative links for references between the repositories.
 
 ### scalable prickings
 
-Both PDF and SVG are scalable and can be imported by vector capable editors
+Both PDF and SVG are scalable and can be altered by vector capable editors
 such as Inkscape, Adobe Illustrator and CorelDraw.
 Knipling can export PDF. When you just want a section of some file
 save a (temporary) copy of the pattern, delete the rest, then export the PDF.
 Import into Inkscape (for example) to save as SVG.
 
-### colors
-
-Note that the names don't match with the values [supported by browsers](https://www.w3schools.com/colors/colors_names.asp).
-The set is not yet complete for the full range of the belgian color code.
-For now the choice are:
-
- decimal           | hex     | name 
--------------------|---------|-------------
-rgb(155, 2, 25)    | #9b0219 | dark magenta 
-rgb(181, 114, 209) | #b472d1 | 
-rgb(131, 75, 206)  | #834bce | blue violet 
-rgb(2,1 52, 7)     | #029807 | deep green 
-rgb(206, 197, 17)  | #cec511 | dark yellow 
-rgb(13, 110, 253)  | #0d6efd | blue
- 
-![](src/test/resources/colors-white.jpg) ![](src/test/resources/colors-black.jpg)
 
 ### language
 
