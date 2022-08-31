@@ -2,17 +2,9 @@
 layout: default
 title: GroundForge - API
 --- 
-- [Current User Interfaces](#current-user-interfaces)
-- [Demonstrators](#demonstrators)
-- [IDE and build](#ide-and-build)
-- [Notes on the HTML/JS code](#notes-on-the-html-js-code)
-    * [URL query](#url-query)
-    * [Inline SVG](#inline-svg)
-    * [Event handling](event-handling)
-    * [Animation alias nudging nodes](#animation-alias-nudging-nodes)
-      - [pair.html](#pairhtml)
-      - [thread.html](#threadhtml)
-  * [Download SVG](#download-svg)
+
+
+Use the table of contents icon <img src="./assets/images/table-of-contents.png" width="25" height="25" /> on the top left corner of this document to get to a specific section of this guide quickly.
 
 GroundForge is a library to generate tread diagrams from pair diagrams for bobbin lace.
 It is partly written in ScalaJS. 
@@ -61,20 +53,50 @@ additional user interfaces for special use cases.
 
 [GFCode]: {{ site.github.repository_url }}/blob/master/src/main/scala/dibl
 
+
+Create your own variant
+=======================
+
+Steps to create your own variations of the demonstrator pages.
+
+* create a new directory with sub-directories `api` and `js`
+* download raw versions of the [source(s)](https://github.com/jo-pol/GroundForge/tree/master/docs/API) of your choice into the `api` directory
+* download raw versions of the referenced [scripts](https://github.com/jo-pol/GroundForge/tree/master/docs/js) into the `js` directory
+* your local page(s) should now behave like the public versions,
+  you can grab other URL queries from the [pattern editor](/GroundForge/tiles). 
+
+Now you can fiddle around with your own knowledge of HTML, JavaScript, CSS, whatever framework you fancy to add or embed something on your own web pages.
+
+Note that the functions called from `GroundForge-opt.js` are also available for a JVM environment on the server side.
+For that purpose you can look around in the [releases](https://github.com/d-bl/GroundForge/releases)
+for a `jar` asset. The downloads above then should be taken
+from the source code zip or tar of the same release.
+
+
 IDE and build
 =============
+
+An alternative to wait for an irregular release:
+create a local clone from the github project and 
+run `mvn clean install -DskipTests` for an up to date `jar` in the `target` directory
+or one of the `toJS` scripts for `GroundForge-opt.js`.
+
+When importing the project into an IDE (for example the community edition of Intellij)
+ignore the suggestion to import as an SBT project, do _import as a maven project_.
 
 Note that plain Scala code only runs on a JVM environment
 while the GroundForge library is writtein in ScalJS with the purpose
 to run also in a JavaScipt environment.
 File access and plain Scala libraries are limited to the test classes.
-The `toJS.*` scripts only compile the main code to JavaScript.
-The tests run with Maven (`pom.xml`), import the project into you favourite IDE
-as a maven project and ignore suggestions to import it as an SBT project.
+The tests run with Maven or by your IDE.
 
 Exchanging complex data types between the library and Java or JavaScript can be complicated.
 So the methods are designed to exchange primitive data as much as possible,
 or the host language stores the data to be passed on to other library calls.
+
+Note that Github builds the pattern editor with jekyll, instructions to [test locally](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll),
+see also how to [publish](GroundForge-help/Stable) your own fork on `github.io`.
+
 
 Notes on the HTML/JS code
 =========================
