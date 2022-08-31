@@ -46,7 +46,7 @@ Most common tasks
 -----------------
 There is a simple [procedure] to propose simple changes to the pages.
 In short:
-* <img src="docs/assets/images/propose.png" style="float: right"/> Follow the link `propose change` which sits at the bottom
+* <img src="docs/assets/images/propose.png" style="float:right;width:153px;height:102px"/> Follow the link `propose change` which sits at the bottom
   of the sidebar of each [help](https://d-bl.github.io/GroundForge/) page.
 * You might be asked to sign in or up.
 * Make your changes, perhaps just a typo or grammar.
