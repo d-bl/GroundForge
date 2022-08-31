@@ -2,24 +2,8 @@
 
 _A toolbox to design bobbin lace grounds with matching sets of pair/thread diagrams._
 
-- [Demonstrators](https://d-bl.github.io/GroundForge/API)
-- [Short intros](#short-intros)
-- [Contribute to documentation](#contribute-to-documentation)
-  * [Most common tasks](#most-common-tasks)
-  * [Preview complex changes online](#preview-complex-changes-online)
-  * [Conventions](#Conventions)
-    - [licenses](#licenses)
-    - [metadata](#metadata)
-    - [links](#links)
-    - [scalable prickings](#scalable-prickings)
-- [Functional contribution](#functional-contribution)
-  * [Requirements](#requirements)
-  * [Work flow](#work-flow)
-  * [Code conventions](#code-conventions)
-  * [Tests](#tests)
-- [Use as JavaScript library](#use-as-javascript-library)
-- [Use as JVM library](#use-as-jvm-library)
-
+The table of contents icon <img src="docs/assets/images/toc.png" width="25" height="25" /> 
+in the top left corner of this document gets you to a specific section quickly.
 
 Short intros
 =============
@@ -126,12 +110,12 @@ Preview complex changes online
 ------------------------------
 
 To preview more complex changes
-* create a [private version] of the repositories, also called a stable version.
+* create a [personal version] of the repositories, also discussed as a stable version.
 * change the files of your own master branch
 * create a pull request comparing your own master with the master of `d-bl`
 * for work in progress: make sure the pull request is a draft
 
-[private version]: https://d-bl.github.io/GroundForge-help/Stable   
+[personal version]: https://d-bl.github.io/GroundForge-help/Stable   
 
 
 Conventions
