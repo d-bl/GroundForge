@@ -5,8 +5,8 @@ title: GroundForge - API
 
 - [Current User Interfaces](#current-user-interfaces)
 - [Demonstrators](#demonstrators)
-- [IDE and build](#ide-and-build)
 - [Create your own variant](#create-your-own-variant)
+- [IDE and build](#ide-and-build)
 - [Notes on the HTML/JS code](#notes-on-the-html-js-code)
   * [URL query](#url-query)
   * [Inline SVG](#inline-svg)
