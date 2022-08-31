@@ -2,8 +2,8 @@
 
 _A toolbox to design bobbin lace grounds with matching sets of pair/thread diagrams._
 
-Use the table of contents icon <img src="docs/assets/images/toc.png" width="25" height="25" /> 
-in the top left corner of this document to get to a specific section quickly.
+The table of contents icon <img src="docs/assets/images/toc.png" width="25" height="25" /> 
+in the top left corner of this document gets you to a specific section quickly.
 
 Short intros
 =============
