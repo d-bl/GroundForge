@@ -1,10 +1,20 @@
 ---
 layout: default
 title: GroundForge - API
---- 
+---
 
-
-Use the table of contents icon <img src="./assets/images/table-of-contents.png" width="25" height="25" /> on the top left corner of this document to get to a specific section of this guide quickly.
+- [Current User Interfaces](#current-user-interfaces)
+- [Demonstrators](#demonstrators)
+- [IDE and build](#ide-and-build)
+- [Create your own variant](#create-your-own-variant)
+- [Notes on the HTML/JS code](#notes-on-the-html-js-code)
+  * [URL query](#url-query)
+  * [Inline SVG](#inline-svg)
+  * [Event handling](event-handling)
+  * [Animation alias nudging nodes](#animation-alias-nudging-nodes)
+    - [pair.html](#pairhtml)
+    - [thread.html](#threadhtml)
+  * [Download SVG](#download-svg)
 
 GroundForge is a library to generate tread diagrams from pair diagrams for bobbin lace.
 It is partly written in ScalaJS. 
