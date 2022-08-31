@@ -4,17 +4,19 @@ title: GroundForge - API
 --- 
 - [Current User Interfaces](#current-user-interfaces)
 - [Demonstrators](#demonstrators)
+- [IDE and build](#ide-and-build)
 - [Notes on the HTML/JS code](#notes-on-the-html-js-code)
+    * [URL query](#url-query)
     * [Inline SVG](#inline-svg)
-    * [Download SVG](#download-svg)
-- [Animation alias nudging nodes](#animation-alias-nudging-nodes)
-    * [pair.html](#pairhtml)
-    * [thread.html](#threadhtml)
+    * [Event handling](event-handling)
+    * [Animation alias nudging nodes](#animation-alias-nudging-nodes)
+      - [pair.html](#pairhtml)
+      - [thread.html](#threadhtml)
+  * [Download SVG](#download-svg)
 
-GroundForge is a library to generate diagrams for bobbin lace.
-It is partly written in scala. 
-The scala code runs on a JVM platform as well as in a JavaScript environment
-though out of the box the data structures are not very compatible.
+GroundForge is a library to generate tread diagrams from pair diagrams for bobbin lace.
+It is partly written in ScalaJS. 
+The ScalaJS code runs on a JVM platform as well as in a JavaScript environment.
 Additional JavaScript functions create interaction between the web page components.
 
 Current User Interfaces
@@ -26,34 +28,26 @@ Current User Interfaces
 Demonstrators
 =============
 
-A few simple pages show developers how to use the basic components
+A few pages are the "hello world"-s of the basic components
 that work together in the user interfaces.
-They are intended as stepping stones
-to create additional user interfaces for special use cases.
+These components can be tweaked, combined or inspire
+additional user interfaces for special use cases.
 
-* **pair** diagram with a new style color coding:
-[spiders](pair.html?patchWidth=20&patchHeight=20&g1=tc&a1=ctctctcttt&l2=crcrcrclll&k2=ctctc&j2=cttcttc&i2=ctttctttc&h2=crcrc&g2=cttc&f2=clclc&e2=ctttctttc&d2=cttcttc&c2=ctctc&b2=clclclcrrr&l3=ctc&k3=ctc&j3=clllc&i3=crrcrrc&h3=clcrc&g3=cttcttc&f3=crclc&e3=cllcllc&d3=crrrc&c3=ctc&b3=ctc&a3=cc&l4=ctc&k4=cllc&j4=crrrcrrrc&i4=cllcrc&h4=cllcrrc&g4=ctttc&f4=crrcllc&e4=crrclc&d4=clllclllc&c4=crrc&b4=ctc&a4=ccc&l5=clc&k5=rctct&j5=clllcrc&i5=clllcrrc&h5=ctc&g5=ctttctttc&f5=ctc&e5=crrrcllc&d5=crrrclc&c5=lctct&b5=crc&a5=ctc&l6=rctct&k6=ctc&j6=ctc&i6=clcrclc&h6=c&f6=c&e6=clclcrc&d6=ctc&c6=ctc&b6=lctct&a6=cc&tile=5-----5-----,-CDDD632AAAB,566666322222,566666322222,566666322222,566666-22222&shiftColsSW=-6&shiftRowsSW=6&shiftColsSE=6&shiftRowsSE=6),
-[rose](pair.html?patchWidth=8&patchHeight=14&b1=ctc&c1=ctllcrrc&d1=clclc&b2=cllcrrcllcrrcr&d2=ctctctc&c3=ctctll&footside=b,-,a,-&footsideStitch=-&tile=831,4-7,-5-&tileStitch=ctct&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
-special [test](pair.html?patchWidth=11&patchHeight=7&j1=clrcccrrc&i1=clrcccc&h1=cccc&g1=cclllcc&f1=lclllcrrrcllcl&e1=lclllcrrcllcl&d1=cllcrrcllc&c1=ctctctctctctctc&b1=ctctctcr&a1=c&j2=crrrc&i2=ctrrc&h2=cttrc&g2=ctttc&f2=llcrrcll&e2=llctrcll&d2=cttc&c2=crc&b2=ctcr&a2=cc&j3=crrrctc&i3=ctrrctc&h3=cttrctc&g3=ctttctc&f3=lllcrrctclll&e3=lllctrctclll&d3=cttcrc&c3=crctc&b3=ctctcrr&a3=ccc&j4=crrrclc&i4=ctrrclc&h4=cttrclc&g4=ctttclc&f4=llllcrrclcllll&e4=llllctrclcllll&d4=cttclc&c4=crclc&b4=ctclcrr&a4=ctctc&j5=crrrcllc&i5=ctrrcllc&h5=cttrcllc&g5=ctttcllc&f5=crrcllc&e5=tttctrcllcttt&d5=cttcllc&c5=crcllc&b5=ctcllcrrr&a5=cttcttc&j6=crrrclllc&i6=ctrrclllc&h6=cttrclllc&g6=ctttclllc&f6=crrclllc&e6=ctrcllllc&d6=cttclllc&c6=crclllc&b6=ctclllcrrrr&a6=ctttctttc&tile=1111111111,8888888888,1111111111,8888888888,1111111111,8888888888&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=10&shiftRowsSE=6)
-([source code][threadCode]; 
-the page happens to be reasonably convenient to print the diagram and enumerated stitches together:
-position the scrollbars top left and resize the viewport to get (enough of) the diagrams visible)
+[pairTest]: pair.html?patchWidth=11&patchHeight=7&j1=clrcccrrc&i1=clrcccc&h1=cccc&g1=cclllcc&f1=lclllcrrrcllcl&e1=lclllcrrcllcl&d1=cllcrrcllc&c1=ctctctctctctctc&b1=ctctctcr&a1=c&j2=crrrc&i2=ctrrc&h2=cttrc&g2=ctttc&f2=llcrrcll&e2=llctrcll&d2=cttc&c2=crc&b2=ctcr&a2=cc&j3=crrrctc&i3=ctrrctc&h3=cttrctc&g3=ctttctc&f3=lllcrrctclll&e3=lllctrctclll&d3=cttcrc&c3=crctc&b3=ctctcrr&a3=ccc&j4=crrrclc&i4=ctrrclc&h4=cttrclc&g4=ctttclc&f4=llllcrrclcllll&e4=llllctrclcllll&d4=cttclc&c4=crclc&b4=ctclcrr&a4=ctctc&j5=crrrcllc&i5=ctrrcllc&h5=cttrcllc&g5=ctttcllc&f5=crrcllc&e5=tttctrcllcttt&d5=cttcllc&c5=crcllc&b5=ctcllcrrr&a5=cttcttc&j6=crrrclllc&i6=ctrrclllc&h6=cttrclllc&g6=ctttclllc&f6=crrclllc&e6=ctrcllllc&d6=cttclllc&c6=crclllc&b6=ctclllcrrrr&a6=ctttctttc&tile=1111111111,8888888888,1111111111,8888888888,1111111111,8888888888&shiftColsSW=0&shiftRowsSW=6&shiftColsSE=10&shiftRowsSE=6
+[protoSpiders]:  proto.html?patchWidth=20&patchHeight=20&tile=5-----5-----,-CDDD632AAAB,566666322222,566666322222,566666322222,566666-22222&shiftColsSW=-6&shiftRowsSW=6&shiftColsSE=6&shiftRowsSE=6
+[pairSpiders]:   pair.html?patchWidth=20&patchHeight=20&g1=tc&a1=ctctctcttt&l2=crcrcrclll&k2=ctctc&j2=cttcttc&i2=ctttctttc&h2=crcrc&g2=cttc&f2=clclc&e2=ctttctttc&d2=cttcttc&c2=ctctc&b2=clclclcrrr&l3=ctc&k3=ctc&j3=clllc&i3=crrcrrc&h3=clcrc&g3=cttcttc&f3=crclc&e3=cllcllc&d3=crrrc&c3=ctc&b3=ctc&a3=cc&l4=ctc&k4=cllc&j4=crrrcrrrc&i4=cllcrc&h4=cllcrrc&g4=ctttc&f4=crrcllc&e4=crrclc&d4=clllclllc&c4=crrc&b4=ctc&a4=ccc&l5=clc&k5=rctct&j5=clllcrc&i5=clllcrrc&h5=ctc&g5=ctttctttc&f5=ctc&e5=crrrcllc&d5=crrrclc&c5=lctct&b5=crc&a5=ctc&l6=rctct&k6=ctc&j6=ctc&i6=clcrclc&h6=c&f6=c&e6=clclcrc&d6=ctc&c6=ctc&b6=lctct&a6=cc&tile=5-----5-----,-CDDD632AAAB,566666322222,566666322222,566666322222,566666-22222&shiftColsSW=-6&shiftRowsSW=6&shiftColsSE=6&shiftRowsSE=6
+[threadSpiders]: thread.html?patchWidth=20&patchHeight=20&g1=tc&a1=ctctctcttt&l2=crcrcrclll&k2=ctctc&j2=cttcttc&i2=ctttctttc&h2=crcrc&g2=cttc&f2=clclc&e2=ctttctttc&d2=cttcttc&c2=ctctc&b2=clclclcrrr&l3=ctc&k3=ctc&j3=clllc&i3=crrcrrc&h3=clcrc&g3=cttcttc&f3=crclc&e3=cllcllc&d3=crrrc&c3=ctc&b3=ctc&a3=cc&l4=ctc&k4=cllc&j4=crrrcrrrc&i4=cllcrc&h4=cllcrrc&g4=ctttc&f4=crrcllc&e4=crrclc&d4=clllclllc&c4=crrc&b4=ctc&a4=ccc&l5=clc&k5=rctct&j5=clllcrc&i5=clllcrrc&h5=ctc&g5=ctttctttc&f5=ctc&e5=crrrcllc&d5=crrrclc&c5=lctct&b5=crc&a5=ctc&l6=rctct&k6=ctc&j6=ctc&i6=clcrclc&h6=c&f6=c&e6=clclcrc&d6=ctc&c6=ctc&b6=lctct&a6=cc&tile=5-----5-----,-CDDD632AAAB,566666322222,566666322222,566666322222,566666-22222&shiftColsSW=-6&shiftRowsSW=6&shiftColsSE=6&shiftRowsSE=6
+[protoRose]:  proto.html?patchWidth=8&patchHeight=14&footside=b,-,a,-&tile=831,4-7,-5-&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[pairRose]:   pair.html?patchWidth=8&patchHeight=14&b1=ctc&c1=ctllcrrc&d1=clclc&b2=cllcrrcllcrrcr&d2=ctctctc&c3=ctctll&footside=b,-,a,-&footsideStitch=-&tile=831,4-7,-5-&tileStitch=ctct&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
+[threadRose]: thread.html?patchWidth=8&patchHeight=14&b1=ctc&c1=ctllcrrc&d1=clclc&b2=cllcrrcllcrrcr&d2=ctctctc&c3=ctctll&footside=b,-,a,-&footsideStitch=-&tile=831,4-7,-5-&tileStitch=ctct&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2
 
-* **thread** diagram and old style pair diagram:
-[spiders](thread.html?patchWidth=20&patchHeight=20&g1=tc&a1=ctctctcttt&l2=crcrcrclll&k2=ctctc&j2=cttcttc&i2=ctttctttc&h2=crcrc&g2=cttc&f2=clclc&e2=ctttctttc&d2=cttcttc&c2=ctctc&b2=clclclcrrr&l3=ctc&k3=ctc&j3=clllc&i3=crrcrrc&h3=clcrc&g3=cttcttc&f3=crclc&e3=cllcllc&d3=crrrc&c3=ctc&b3=ctc&a3=cc&l4=ctc&k4=cllc&j4=crrrcrrrc&i4=cllcrc&h4=cllcrrc&g4=ctttc&f4=crrcllc&e4=crrclc&d4=clllclllc&c4=crrc&b4=ctc&a4=ccc&l5=clc&k5=rctct&j5=clllcrc&i5=clllcrrc&h5=ctc&g5=ctttctttc&f5=ctc&e5=crrrcllc&d5=crrrclc&c5=lctct&b5=crc&a5=ctc&l6=rctct&k6=ctc&j6=ctc&i6=clcrclc&h6=c&f6=c&e6=clclcrc&d6=ctc&c6=ctc&b6=lctct&a6=cc&tile=5-----5-----,-CDDD632AAAB,566666322222,566666322222,566666322222,566666-22222&shiftColsSW=-6&shiftRowsSW=6&shiftColsSE=6&shiftRowsSE=6),
-[rose](thread.html?patchWidth=8&patchHeight=14&b1=ctc&c1=ctllcrrc&d1=clclc&b2=cllcrrcllcrrcr&d2=ctctctc&c3=ctctll&footside=b,-,a,-&footsideStitch=-&tile=831,4-7,-5-&tileStitch=ctct&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
-(comment explains how to tweak the [source code][pairCode]
-for droste patterns)
+| source | examples see&nbsp;also&nbsp;[query](#url-query) | notes |
+|:---|---|:---|
+| [proto.html][protoCode]  | [spiders][protoSpiders],&nbsp;[rose][protoRose],&nbsp;[test][pairRose] | Pattern definition. |
+| [pair.html][pairCode]  | [spiders][pairSpiders], [rose][pairRose]  | 4 colors per stitch.<br> The page happens to be reasonably convenient to print the diagram and enumerated stitches together: position the scrollbars top left and resize the viewport to get (enough of) the diagrams visible. |
+| [thread.html][threadCode]  | [spiders][threadSpiders], [rose][threadRose]  | 1 color per stitch pair diagram and thread diagram.<br> Comment in the source explains how to tweak the code for droste patterns. |
+| [sheet.html][sheetCode]  | [sheet.html](sheet.html) | Pattern families.<br> A simplified hardcoded variant of the [page](https://jo-pol.github.io/GroundForge/sheet.html) that takes a family of [Tesselace patterns](GroundForge/tesselace-to-gf/) as parameter, you probably can make more and intermediate [variations][explanation]
 
-* **prototype** diagram:
-[spiders](proto.html?patchWidth=20&patchHeight=20&g1=tc&a1=ctctctcttt&l2=crcrcrclll&k2=ctctc&j2=cttcttc&i2=ctttctttc&h2=crcrc&g2=cttc&f2=clclc&e2=ctttctttc&d2=cttcttc&c2=ctctc&b2=clclclcrrr&l3=ctc&k3=ctc&j3=clllc&i3=crrcrrc&h3=clcrc&g3=cttcttc&f3=crclc&e3=cllcllc&d3=crrrc&c3=ctc&b3=ctc&a3=cc&l4=ctc&k4=cllc&j4=crrrcrrrc&i4=cllcrc&h4=cllcrrc&g4=ctttc&f4=crrcllc&e4=crrclc&d4=clllclllc&c4=crrc&b4=ctc&a4=ccc&l5=clc&k5=rctct&j5=clllcrc&i5=clllcrrc&h5=ctc&g5=ctttctttc&f5=ctc&e5=crrrcllc&d5=crrrclc&c5=lctct&b5=crc&a5=ctc&l6=rctct&k6=ctc&j6=ctc&i6=clcrclc&h6=c&f6=c&e6=clclcrc&d6=ctc&c6=ctc&b6=lctct&a6=cc&tile=5-----5-----,-CDDD632AAAB,566666322222,566666322222,566666322222,566666-22222&shiftColsSW=-6&shiftRowsSW=6&shiftColsSE=6&shiftRowsSE=6),
-[rose](proto.html?patchWidth=8&patchHeight=14&b1=ctc&c1=ctllcrrc&d1=clclc&b2=cllcrrcllcrrcr&d2=ctctctc&c3=ctctll&footside=b,-,a,-&footsideStitch=-&tile=831,4-7,-5-&tileStitch=ctct&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2)
-([source code][protoCode])
-
-* **pattern families** in a [single SVG](sheet.html) page ([source code][sheetCode],
-a simplified hardcoded variant of the
-[page](https://jo-pol.github.io/GroundForge/sheet.html?img=214&patch=5-,-5;checker&%20patch=6;checker&%20patch=53;checker&%20patch=563;checker&%20patch=5632;checker&%20patch=56663;checker&%20patch=56353;checker&%20patch=56632;checker&%20patch=53,5-,-5;checker&%20patch=56-,6-5,-56;checker&%20patch=4-L,-L4,L4-;checker&%20patch=53,5-,35,-5;checker&%20patch=53,53,5-,-5;checker&%20patch=566-,66-5,6-56,-566;checker&%20patch=5632,56-2,5-5-,-535;checker)
-that takes a family of [Tesselace patterns](GroundForge/tesselace-to-gf/) as parameter, you probably can make more and intermediate [variations][explanation])
 
 [explanation]: /GroundForge-help/Reshape-Patterns
 
@@ -67,22 +61,87 @@ that takes a family of [Tesselace patterns](GroundForge/tesselace-to-gf/) as par
 
 [GFCode]: {{ site.github.repository_url }}/blob/master/src/main/scala/dibl
 
+IDE and build
+=============
+
+Note that plain Scala code only runs on a JVM environment
+while the GroundForge library is writtein in ScalJS with the purpose
+to run also in a JavaScipt environment.
+File access and plain Scala libraries are limited to the test classes.
+The `toJS.*` scripts only compile the main code to JavaScript.
+The tests run with Maven (`pom.xml`), import the project into you favourite IDE
+as a maven project and ignore suggestions to import it as an SBT project.
+
+Exchanging complex data types between the library and Java or JavaScript can be complicated.
+So the methods are designed to exchange primitive data as much as possible,
+or the host language stores the data to be passed on to other library calls.
+
 Notes on the HTML/JS code
 =========================
 
+URL query
+---------
+
+The diagram editor and some API pages for pairs and threads need the same set of query parameters.
+The query of the diagram editor is assembled by JavaScript via the link button.
+The query mimics what would be sent to a server when submitting the form.
+Many fields of the form are hidden to the user.
+
+To avoid outdated documentation: look for the usage of `TilesConfig.queryFields`.
+* Droste patterns use additional parameters in the load function of `tiles.js`.
+* `API/proto.html` uses only some of the `queryFields`.
+* `API/sheet.html` does not use a query at all.
+
 Inline SVG
 ----------
-The demonstrators assign SVG content to `<div>` elements. Two methods to assign the content:
+The demonstrators assign SVG content to `<div>` elements. Let us compare two methods to assign the content:
 
     d3.select('#someId').html(svg)`
     document.getElementById("someId").innerHTML = svg
 
 The first method requires the library `js/d3.v4.min.js`, which is primarily 
 intended to take care of the animation alias nudging of nodes.
-The second is plain Javascript but terminates the script with an 
+The second is plain JavaScript but terminates the script with an 
 exception if the id does not exist in the DOM of the page.
 The SVG content is generated with calls to the library `js/GroundForge-opt.js`.
-This library is compiled to Javascript from [scala code][GFCode], look for `@JSExport` annotations.
+This library is compiled to JavaScript from [ScalaJS code][GFCode], look for `@JSExport` annotations.
+
+Event handling
+--------------
+Except for the _pattern families_, the diagrams have out of the box event handling.
+
+The SVG elements for stitches have an attribute `onclick="clickedStitch(event)"`,
+bobbins and the starts of threads have `onclick="clickedThread(event)"`.
+On `proto.html` we have `onclick="resetStitch(event)"` and hidden form fields with `onchange="showProto()"`.
+
+Animation alias nudging nodes
+-----------------------------
+
+### pair.html
+
+The function `PairSvg.render` generates the SVG content for a pair diagram
+with [4-colors-per-stitch](../images/color-rules).
+The generated elements with class `link` have identifiers that concatenate 
+the identifiers of the source/target elements with class `node`. 
+The identifiers of the SVG elements are unique.
+The identifiers shown in pop-ups (titles) of the diagrams are only unique within
+the bold area of the pattern diagram. An example:
+
+    <path id="r0c4-r1c3" class="link" d="..." style="..."></path>
+    <g id="r0c4" class="node" transform="..."><title>ctc - a1</title>ct - a1</g>
+    <g id="r1c3" class="node" transform="..."><title>ctc - a1</title>ctct - b2</g>
+
+The script `js/nudgePairs.js` uses the concatenated identifiers
+to find and bind the data required by the `d3` library.
+The nudge script rewrites the values for the `d` and `transform`
+attributes as calculated by the `d3` forces. 
+
+### thread.html
+
+The function`showGraph` in `thread.html` does both the rendering and the nudging of thread
+diagrams as well as old style pair diagrams. The latter are stepping stones for the first.
+ScalaJS data structures are paired up with generated SVG elements to compute the forces.
+A ScalaJS method uses this data to compute the `d` attribute of links with shortened starts or ends.
 
 Download SVG
 ------------
@@ -97,31 +156,3 @@ The `pattern editor` is a very crowded user interface.
 Too many copies of too much data on the page might overwhelm browsers.
 Some detours are implemented that set the download content only when needed.
 For desktop browsers the href is set at `onHover` events, touch devices don't have such an event.
-
-Animation alias nudging nodes
-=============================
-
-pair.html
----------
-The function `PairSvg.create` generates the SVG content for a pair diagram
-with a new style of [color coding](../images/stitch-legend.svg).
-The link elements have identifiers that  concatenate the identifiers of
-the source/target elements. The identifiers of the SVG elements are unique.
-The identifiers shown in pop-ups (titles) of the diagrams are only unique within
-the bold area of the prototype diagram. An example:
-
-    <path id="r0c4-r1c3" class="link" d="..." style="..."></path>
-    <g id="r0c4" class="node" transform="translate(..., ...)"><title>ctc - a1</title>ct - a1</g>
-    <g id="r1c3" class="node" transform="translate(..., ...)"><title>ctc - a1</title>ctct - b2</g>
-
-The script `js/nudgePairs.js` uses the concatenated identifiers
-to find and bind the data required by the `d3` library.
-The nudge script rewrites the values for the `d` and `transform`
-attributes as calculated by the `d3` forces. 
-
-thread.html
------------
-The function`showGraph` in `thread.html` does both the rendering and the nudging of thread
-diagrams as well as old style pair diagrams. The latter are stepping stones for the first.
-Scala data structures are paired up with generated SVG elements to compute the forces.
-A scala method uses this data to compute the `d` attribute of links with shortened starts or ends.

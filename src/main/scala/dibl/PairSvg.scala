@@ -165,7 +165,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       val transform = s"""transform="translate(${ scale(col) },${ scale(row) })""""
       val title = s"""<title>${ targetItem.stitch } - ${ targetItem.id }</title>"""
 
-      s"""<g id='r${ row }c$col' onclick='paint(this)' class="node" $transform>$title${ shapes(targetItem.stitch) }</g>"""
+      s"""<g id='r${ row }c$col' onclick='clickedStitch(event)' class="node" $transform>$title${ shapes(targetItem.stitch) }</g>"""
     }.mkString
   }.mkString
 
@@ -225,12 +225,12 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       case (nrOfCs, _) if nrOfCs > 3 && str.matches("c(rrc)?(llcrrc)+(llc)?") => // tallie
         shape(black, squareLeft()) + shape(black, squareRight())
       case (4, Array(lrTop, lrCenter, lrBottom)) => // c.c.c.c; e.g. winkie pin
-        shape(colourLeft(lrTop), c4NE()) +
-        shape(colourRight(lrTop), c4NW()) +
+        shape(colourLeft(lrTop), c4NW()) +
+        shape(colourRight(lrTop), c4NE()) +
         shape(colourLeft(lrCenter), c4W()) +
         shape(colourRight(lrCenter), c4E()) +
-        shape(colourLeft(lrBottom), c4SE()) +
-        shape(colourRight(lrBottom), c4SW())
+        shape(colourLeft(lrBottom), c4SW()) +
+        shape(colourRight(lrBottom), c4SE())
       case _ =>
         shape(pale, circle()) // fall back
     }
