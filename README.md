@@ -46,20 +46,22 @@ Most common tasks
 -----------------
 There is a simple [procedure] to propose simple changes to the pages.
 In short:
-* follow the link `propose change` which sits at the bottom
+* <img src="docs/assets/images/propose.png" style="float: right"> Follow the link `propose change` which sits at the bottom
   of the sidebar of each [help](https://d-bl.github.io/GroundForge/) page.
 * You might be asked to sign in or up.
 * Make your changes, perhaps just a typo or grammar.
-* Follow three times the instructions for the green button at the bottom of the page
-  to save your changes and start the review procedure with a pull request.
+* Apply three times the green button at the bottom of the page
+  to: _a)_ save the changes in your own fork, _b)_ create a pull request, _c)_ save the pull request.
+On the fly you are supposed to fill in some comments.
 
-| create forks for all projects: | keep sidebars up-to-date: |
-|--------------------|:---------------:|
-| [GroundForge]      | [X][gf-sb]       |
-| [GroundForge-help] | [X][gfh-sb]      |
-| [gw-lace-to-gf]    | [X][w-sb]        |
-| [tesselace-to-gf]  | [X][t-sb]        |
-| [MAE-gf]           | [X][mae-sb]      |
+| create forks for all projects: | links to sidebars: | identical sidebars |
+|--------------------|:---------------:|:---:|
+| | please keep these  up-to-date | | | |
+| [GroundForge]      | [X][gf-sb]       | X |
+| [GroundForge-help] | [X][gfh-sb]      | X |
+| [gw-lace-to-gf]    | [X][w-sb]        | |
+| [tesselace-to-gf]  | [X][t-sb]        | |
+| [MAE-gf]           | [X][mae-sb]      | |
 
 Pages may have their own internal table of content. Keep them up-to-date too.
 
