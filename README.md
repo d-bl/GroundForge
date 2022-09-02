@@ -44,18 +44,20 @@ Contribute to documentation
 
 Most common tasks
 -----------------
-There is a simple [procedure] to propose simple changes to the pages.
-In short:
+There is a simple [procedure] to propose simple changes to the help pages and catalogues.
+A shortcut into this procedure starts in the sidebar:
 
 <img src="docs/assets/images/propose.png" style="float:right;width:153px;height:102px"/>
 
-* Follow the link `propose change` which sits at the bottom
-  of the sidebar of each [help](https://d-bl.github.io/GroundForge/) page.
+* Follow the link `propose change`.
 * You might be asked to sign in or up.
-* Make your changes, perhaps just a typo or grammar.
+* Make your changes, perhaps just fixing a typo or grammar.
 * Apply three times the green button at the bottom of the page
   to: _a)_ save the changes in your own fork, _b)_ create a pull request, _c)_ save the pull request.
 On the fly you are supposed to fill in some comments.
+* Step (c) sends generates a notification to the moderator.
+
+The help pages and cataloges are spread among several repositories.
 
 | create forks for all projects: | links to sidebars: | identical sidebars |
 |--------------------|:---------------:|:---:|
@@ -104,8 +106,8 @@ To preview a rendered version of the pages:
 * configure your online project to publish your patch branch  
   at `https://github.com/YOUR_ACCOUNT/REPO_NAME/settings/pages`:  
   ![screen snippet](https://user-images.githubusercontent.com/10553630/142723203-0bb1b5d0-d324-41df-9e8f-b3f6b5972e44.png)
-* When you made forks of all the repositories listed above,
-  their should no longer be broken images or inks  
+* Publish all the repositories listed above, either your master branches or the patch branches you are working on.
+  There should no longer be broken images or links  
   at `https://YOUR_ACCOUNT.github.io/REPO_NAME`
 
 
