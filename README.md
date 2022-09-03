@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/d-bl/GroundForge.svg?branch=master)](https://travis-ci.org/d-bl/GroundForge) 
+[![Build Status](https://travis-ci.org/d-bl/GroundForge.svg?branch=master)](https://travis-ci.org/d-bl/GroundForge)
 
 _A toolbox to design bobbin lace grounds with matching sets of pair/thread diagrams._
 
-The table of contents icon <img src="docs/assets/images/toc.png" width="25" height="25" /> 
+The table of contents icon <img src="docs/assets/images/toc.png" width="25" height="25" />
 in the top left corner of this document gets you to a specific section quickly.
 
 Short intros
@@ -19,7 +19,7 @@ See https://d-bl.github.io/GroundForge/
 
 ### licenses
 
-The help pages and examples have a [CC-BY](http://creativecommons.org/licenses/by/4.0/) 
+The help pages and examples have a [CC-BY](http://creativecommons.org/licenses/by/4.0/)
 license.
 The code has a [GPL-v3](https://github.com/d-bl/GroundForge/blob/master/LICENSE)
 license.
@@ -34,7 +34,7 @@ as shown by the discussion that started with [this message](https://groups.io/g/
 Others may be new but not take much "sweat of the brow".
 
 You are responsible for publishing your work under a license of your choosing
-and tracking your use of derivative works. 
+and tracking your use of derivative works.
 Downloaded diagrams don't come with properties expressing origin, author or license,
 you will have to add that information yourself with your favourite editor.
 
@@ -42,43 +42,36 @@ you will have to add that information yourself with your favourite editor.
 Contribute to documentation
 ===========================
 
-Most common tasks
------------------
-There is a simple [procedure] to propose simple changes to the help pages and catalogues.
-A shortcut into this procedure starts in the sidebar:
+You are welcome to help us to make GroundForge a better place for bobbin lace makers and designers.
 
-<img src="docs/assets/images/propose.png" style="float:right;width:153px;height:102px"/>
+Get started
+-----------
+You can start humble with fixing typos and grammer or rewrite sections once you figured out what confused you at first.
+Note that you will work on a personal copy, once notified, a moderator can merge your proposal in the official version.
+
+Github [elaborates] the following procedure (and more) to propose changes to the [help](https://d-bl.github.io/GroundForge/) pages and catalogues.
+A shortcut into this procedure starts near the bottom of the sidebar on the published pages:
+
+<img src="docs/assets/images/propose.png" style="width:153px;height:102px"/>
 
 * Follow the link `propose change`.
-* You might be asked to sign in or up.
-* Make your changes, perhaps just fixing a typo or grammar.
-* Apply three times the green button at the bottom of the page
+* When not signed in to github, you will be asked to sign in or create an account.
+* Make your changes.
+* Apply three times a big green button at the bottom of the page
   to: _a)_ save the changes in your own fork, _b)_ create a pull request, _c)_ save the pull request.
-On the fly you are supposed to fill in some comments.
-* Step (c) sends generates a notification to the moderator.
-
-The help pages and cataloges are spread among several repositories.
-
-| create forks for all projects: | links to sidebars: | identical sidebars |
-|--------------------|:---------------:|:---:|
-| | please keep these  up-to-date | | | |
-| [GroundForge]      | [X][gf-sb]       | X |
-| [GroundForge-help] | [X][gfh-sb]      | X |
-| [gw-lace-to-gf]    | [X][w-sb]        | |
-| [tesselace-to-gf]  | [X][t-sb]        | |
-| [MAE-gf]           | [X][mae-sb]      | |
-
-Pages may have their own internal table of content. Keep them up-to-date too.
+  On the fly you are supposed to fill in some comments.
+* Step (c) generates a notification to the moderator.
 
 Note for moderators:  
 When you have write rights for a repository,
 the green button to save your changes will show `commit changes`
 and the change will be effective immediately.
-To first discuss you changes through a pull request, 
+To first discuss you changes through a pull request,
 check the radio button to ` Create a new branch`,
-the big green button then changes to `propose changes`. 
+the big green button then changes to `propose changes`.
 
-[procedure]: https://help.github.com/articles/editing-files-in-another-user-s-repository/
+[elaborates]: https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files#editing-files-in-another-users-repository
+[help]: https://d-bl.github.io/GroundForge/
 
 [GroundForge]: https://d-bl.github.io/GroundForge/fork
 [gf-sb]: https://github.com/d-bl/GroundForge/tree/master/docs/_includes/Sidebar.html
@@ -96,18 +89,35 @@ the big green button then changes to `propose changes`.
 [mae-sb]: https://github.com/d-bl/MAE-gf/tree/master/docs/_includes/Sidebar.html
 
 
-Preview complex changes
------------------------
+Preview more complex changes
+----------------------------
 
-The preview by the editor might have some broken images or links or illegible content.
+The preview by the editor is not always exactly what you see is what you get. 
+There might be some broken images, broken links or illegible content.
+Publishing your personal repositories helps to check whether everything
+renders and works together properly.
+
+The help pages and catalogues are spread among several repositories:
+
+| create forks for all projects: | links to sidebars: | identical sidebars |
+|--------------------------------|:------------------:|:------------------:|
+|                                | please keep these  up-to-date |
+| [GroundForge]                  | [X][gf-sb]         | X |
+| [GroundForge-help]             | [X][gfh-sb]        | X |
+| [gw-lace-to-gf]                | [X][w-sb]          |   |
+| [tesselace-to-gf]              | [X][t-sb]          |   |
+| [MAE-gf]                       | [X][mae-sb]        |   |
+
+Pages may have their own internal table of content. Please keep them up-to-date too.
+
 To preview a rendered version of the pages:
 
 * The editing procedure above will have created a numbered `patch` branch mentioned by your pull request.
-* configure your online project to publish your patch branch  
+* configure your online project(s) to publish your patch branch(es)  
   at `https://github.com/YOUR_ACCOUNT/REPO_NAME/settings/pages`:  
   ![screen snippet](https://user-images.githubusercontent.com/10553630/142723203-0bb1b5d0-d324-41df-9e8f-b3f6b5972e44.png)
 * Publish all the repositories listed above, either your master branches or the patch branches you are working on.
-  There should no longer be broken images or links  
+  There should no longer be broken images or links when surfing around  
   at `https://YOUR_ACCOUNT.github.io/REPO_NAME`
 
 
@@ -132,18 +142,23 @@ A mark-down pages start with a metadata section, something like
     ---
 
 Browsers show `XYZ` as tab title. Keep it short and catchy.
+Other lines might have a more technical purpose.
+Don't touch them, unless you know what you are doing.
 
 ### links
 Thumbnails in catalogues are the biggest target and should point to the pattern definition.
-If available, use a sample of rel lace, otherwise the thread diagram.
+If available, use a sample of real lace, otherwise the thread diagram.
 
 Use root relative links for references between the repositories.
+Thus following links keeps you in your personal set of repositories 
+when verifying your changes beyond the editor preview.
 
 ### scalable prickings
 
-Both PDF and SVG are scalable and can be altered by vector capable editors
-such as Inkscape, Adobe Illustrator and CorelDraw.
-Knipling can export PDF. When you just want a section of some file
+Images might be intended to download for further processing.
+Vector based images (such as SVG) are scalable and hence suit that purpose better than pixel based images.
+SVG images can be altered by 3rd party applications like Inkscape, Affinity Designer, Adobe Illustrator and CorelDraw.  
+Knipling can export PDF. When you just want a section of some design,
 save a (temporary) copy of the pattern, delete the rest, then export the PDF.
 Import into Inkscape (for example) to save as SVG.
 
@@ -204,8 +219,8 @@ Code conventions
   More or less like forms submitted to a server, for human readability no escaping is applied.
 * It was a terrible mistake to implement the `LinkProps` and `NodeProps` as a map.
   Caused by the initial proof of concept starting with plain JavaScript by modifying D3js examples.
-  So far no success in phasing out this heritage. 
-  However, these maps are hidden from the world outside these two classes as much as possible. 
+  So far no success in phasing out this heritage.
+  However, these maps are hidden from the world outside these two classes as much as possible.
 * The initially applied Scala coding techniques are explained by this [course] up and including workshop 3.
   The main code doesn't use any io, and the hand full of files written by test/demo classes don't justify using a library.
   So you can skip the last task of the FileIO assignment.
@@ -220,7 +235,7 @@ Use `mvn clean test` to run unit tests. As some tests read pattern links from he
 Maven is much faster but uses JVM while the JS used by SBT is the actual target environment.
 Some classes under `src/test` are suffixed with `Demos` rather than `Spec` these runnable objects create SVG documents in a `target/test` directory for a visual check.
 
-For manual tests with other browsers and devices than your own, 
+For manual tests with other browsers and devices than your own,
 you can sign-up (for free, since this project is open source) at  
 ![](src/test/resources/BrowserStack.png) [BrowserStack](http://browserstack.com/)
 
@@ -238,10 +253,10 @@ A JVM library allows server-side or batch processing.
 
 The [Demo4Java.java](https://github.com/d-bl/GroundForge/blob/119-layout/src/test/scala/dibl/Demo4Java.java)
 between the test classes is a simple plain java main class example that generates diagrams.
-This example uses the code in `src/main` as a Java library. 
+This example uses the code in `src/main` as a Java library.
 
 In a plain [JVM](https://www.w3schools.com/java/java_getstarted.asp)
-environment, you'll need at least on your `classpath`: 
+environment, you'll need at least on your `classpath`:
 * The `.jar` from the [last release](https://github.com/d-bl/GroundForge/releases)
   or a self-built one.
 * The jar at the repository URL on [scalajs-library](https://maven-repository.com/artifact/org.scala-js/scalajs-library_2.12/0.6.26)
@@ -249,7 +264,7 @@ environment, you'll need at least on your `classpath`:
   and find the dependency in the `pom.xml`
 
 For a maven/scala-sdk-2.12 environment:
-* [download](https://github.com/d-bl/GroundForge/) or checkout the tip of the master branch, or any other branch or commit you prefer 
+* [download](https://github.com/d-bl/GroundForge/) or checkout the tip of the master branch, or any other branch or commit you prefer
 * execute `maven clean install` in the unzipped directory
 * add to the `pom.xml` of your own project
 ```
