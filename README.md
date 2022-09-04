@@ -58,9 +58,15 @@ A shortcut into this procedure starts near the bottom of the sidebar on the publ
 * When not signed in to github, you will be asked to sign in or create an account.
 * Make your changes.
 * Apply three times a big green button at the bottom of the page
-  to: _a)_ save the changes in your own fork, _b)_ create a pull request, _c)_ save the pull request.
+  to: _a)_ save the changes, a patch branch in your personal fork will be created,
+  _b)_ create a pull request, _c)_ save the pull request.
   On the fly you are supposed to fill in some comments.
 * Step (c) generates a notification to the moderator.
+
+Please don't be shy, any little improvement is good enough and welcome.
+Forget perfection, even disputable suggestions may inspire something better.
+Also note that little quickly made changes hardly need coordination, 
+so go ahead, drops can build a river.
 
 Note for moderators:  
 When you have write rights for a repository,
@@ -92,10 +98,10 @@ the big green button then changes to `propose changes`.
 Preview more complex changes
 ----------------------------
 
-The preview by the editor is not always exactly what you see is what you get. 
+The preview by the editor is not always exactly what-you-see-is-what-you-get. 
 There might be some broken images, broken links or illegible content.
 Publishing your personal repositories helps to check whether everything
-renders and works together properly.
+renders and links properly.
 
 The help pages and catalogues are spread among several repositories:
 
@@ -120,6 +126,26 @@ To preview a rendered version of the pages:
   There should no longer be broken images or links when surfing around  
   at `https://YOUR_ACCOUNT.github.io/REPO_NAME`
 
+Multiple updates in a single pull request
+-----------------------------------------
+
+The github workflow works best an app but that might be a big learning curve.
+So here an introduction to a workaround.
+
+Each time you edit a page via its 'propose changes' link,
+a patch branch is created in your personal fork of the repository.
+Until a pull request is merged (you'll get notified of the fact),
+you can continue making updates to a patch branch.
+You can find your branches with `https://github.com/YOUR_ACCOUNT/REPO_NAME/branches`.
+Select the desired branch and with the `go to file` button, you will arrive at
+`https://github.com/YOUR_ACCOUNT/REPO_NAME/find/YOUR_PATCH`.
+Type fragments of the file name you have been changing or want to change too
+and continue editing.
+
+Accidentally created multiple patches intended for a single pull request?  
+Go to `https://github.com/YOUR_ACCOUNT/REPO_NAME/compare`
+select which branches you want to become one, create a pull request and merge it yourself.  
+[Read more...](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-comparing-branches-in-pull-requests)
 
 Conventions
 -----------
