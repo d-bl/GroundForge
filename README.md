@@ -62,6 +62,11 @@ A shortcut into this procedure starts near the bottom of the sidebar on the publ
   On the fly you are supposed to fill in some comments.
 * Step (c) generates a notification to the moderator.
 
+Please don't be shy, any little improvement is good enough and welcome.
+Forget perfection, even disputable suggestions may inspire something better.
+Also note that little changes hardly need coordination, 
+so go ahead, drops can build a river.
+
 Note for moderators:  
 When you have write rights for a repository,
 the green button to save your changes will show `commit changes`
