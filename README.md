@@ -103,7 +103,8 @@ There might be some broken images, broken links or illegible content.
 Publishing your personal repositories helps to check whether everything
 renders and links properly.
 
-The help pages and catalogues are spread among several repositories:
+The help pages and catalogues are spread among several repositories in the 
+pseudo-organisation [d-bl](https://d-bl.github.io/) (Diagrams for Bobbin Lace):
 
 | create forks for all projects: | links to sidebars: | identical sidebars |
 |--------------------------------|:------------------:|:------------------:|
