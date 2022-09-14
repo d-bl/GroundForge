@@ -262,6 +262,10 @@ Use `mvn clean test` to run unit tests. As some tests read pattern links from he
 Maven is much faster but uses JVM while the JS used by SBT is the actual target environment.
 Some classes under `src/test` are suffixed with `Demos` rather than `Spec` these runnable objects create SVG documents in a `target/test` directory for a visual check.
 
+The tiles page requires Jekyll compilation or deploy on github,
+For a quicker visual test cycle of the diagrams you can make use of
+`docs.html` or the pages located in `docs/API`.
+
 For manual tests with other browsers and devices than your own,
 you can sign-up (for free, since this project is open source) at  
 ![](src/test/resources/BrowserStack.png) [BrowserStack](http://browserstack.com/)

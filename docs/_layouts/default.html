@@ -42,7 +42,8 @@
         </section>
 
         <aside id="sidebar" lang="en">
-            {% include Sidebar.html %}
+            {% capture my_include %}{% include Sidebar.md %}{% endcapture %}
+            {{ my_include | markdownify }}
         </aside>
     </div>
 </div>
