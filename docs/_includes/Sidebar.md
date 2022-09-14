@@ -34,6 +34,7 @@
 * [Save, refresh, undo](/GroundForge-help/Undo) ![-](/GroundForge/images/link.png) ![-](/GroundForge/images/wand.png)
 * [Resize space](/GroundForge-help/Icons) ![-](/GroundForge/images/size-inc.jpg)![-](/GroundForge/images/size-dec.jpg)
 * [Animate](/GroundForge-help/Icons) ![-](/GroundForge/images/animate.png)
+* [Untangle](/GroundForge-help/untangle)
 * [Download](/GroundForge-help/Download) ![-](/GroundForge/images/download.jpg)
 * [Print](/GroundForge-help/Icons) ![-](/GroundForge/images/print.png)
 * Color codes, twist marks
