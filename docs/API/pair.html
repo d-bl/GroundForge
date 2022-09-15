@@ -12,14 +12,16 @@
             alert(`you clicked ${event.currentTarget.id}: ${event.currentTarget.textContent}`)
         }
         function load() {
+            var q = window.location.search.substr(1)
+            var cfg = TilesConfig(q)
 
             // dimensions for an A4
             var width = 744
             var height = 1052
+            console.log(`rows=${cfg.totalRows} cols=${cfg.totalCols} -> ${(cfg.totalRows+2)*15},${(cfg.totalCols+2)*15} ; A4=${width},${height}`)
 
-            var q = window.location.search.substr(1)
             var zoom = 1.9
-            var itemMatrix = TilesConfig(q).getItemMatrix
+            var itemMatrix = cfg.getItemMatrix
             var svg = PairSvg.render(itemMatrix, width, height, zoom)
             d3.select('#legend').html(PairSvg.legend(itemMatrix))
             d3.select('#initial').html(svg)
