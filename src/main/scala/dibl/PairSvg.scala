@@ -147,7 +147,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     s"<path id='$id' class='link' d='$d' style='$style'></path>"
   }
 
-  private def scale(c: Int) = (c + 2) * 15
+  private def scale(c: Int) = (c + 0.4) * 14
 
   implicit class StitchString(val stitch: String) extends AnyVal {
 

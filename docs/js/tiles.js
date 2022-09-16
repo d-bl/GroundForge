@@ -102,7 +102,7 @@ function showProto(q) {
   d3.select("#print").node().href = "API/pair?" + hrefQ
   d3.select("#poc").node().href = "poc?" + pocRef(query)
   d3.select("#threadDiagram").html("")
-  d3.select("#pairDiagram").html(PairSvg.render(config.getItemMatrix, 744, 1052, 1.9))
+  d3.select("#pairDiagram").html(pairRender(config))
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
@@ -110,6 +110,12 @@ function showProto(q) {
   console.log("done showProto")
 
   return config
+}
+function pairRender(config){
+    if(config.totalRows>35 || config.totalCols>28)
+        PairSvg.render(config.getItemMatrix, 1488, 1104, 1.9)
+    else
+        PairSvg.render(config.getItemMatrix, 744, 1052, 1.9)
 }
 function showColorCode(id) {
     const n = d3.select(id + " .colorCode")
@@ -149,7 +155,7 @@ function showDiagrams(config) {
   var pairContainer = d3.select("#pairDiagram")
   if (!config)
       config = TilesConfig(submitQuery())
-  pairContainer.html(PairSvg.render(config.getItemMatrix, 744, 1052, 1.9))
+  pairContainer.html(pairRender(config))
   scrollToIfPossible(pairContainer.node(),0,0)
   if (pairContainer.select(".node").length <= 1) return
 
