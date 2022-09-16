@@ -112,10 +112,14 @@ function showProto(q) {
   return config
 }
 function pairRender(config){
-    if(config.totalRows>35 || config.totalCols>28)
+
+    if(config.totalRows>35 || config.totalCols>28) {
+        console.log('A2')
         PairSvg.render(config.getItemMatrix, 1488, 1104, 1.9)
-    else
+    } else {
+        console.log('A4')
         PairSvg.render(config.getItemMatrix, 744, 1052, 1.9)
+    }
 }
 function showColorCode(id) {
     const n = d3.select(id + " .colorCode")
