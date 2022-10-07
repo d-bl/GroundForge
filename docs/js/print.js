@@ -14,7 +14,7 @@ function load() {
     d3.select('#pair4perStitch').html(svg)
     d3.select('#pair4perStitchAnimated').html(svg)
     d3.select('#proto').html(PrototypeDiagram.create(cfg))
-    nudgePairs(d3.select('#pair4perStitchAnimated'))
+    nudgePairs(d3.select('#pair4perStitchAnimated'), cfg.totalCols/2 * 12, cfg.totalRows/2 * 12)
     var pairDiagram = NewPairDiagram.create(cfg)
     var threadDiagram = ThreadDiagram.create(pairDiagram)
     d3.select('#pair1perStitch').html(DiagramSvg.render(pairDiagram, 2, true, width, height, 0))

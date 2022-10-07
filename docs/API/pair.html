@@ -26,7 +26,7 @@
             d3.select('#legend').html(PairSvg.legend(itemMatrix))
             d3.select('#initial').html(svg)
             d3.select('#animated').html(svg)
-            nudgePairs(d3.select('#animated'))
+            nudgePairs(d3.select('#animated'), cfg.totalCols/2 * 12, cfg.totalRows/2 * 12)
         }
     </script>
 </head>

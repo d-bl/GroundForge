@@ -5,21 +5,12 @@
  * https://devdocs.io/d3~4/d3-force
  * https://devdocs.io/d3~4/d3-selection
  */
-function nudgePairs(container) {
+function nudgePairs(container, cx, cy) {
 
   var svg = container.select("svg")
   var zoom = 1 * svg.select("g").attr("transform").replace("matrix(","").replace(/,.*/,"")
   var svgWidth = svg.attr("width")
   var svgHeight = svg.attr("height")
-
-
-  // scroll to center of SVG
-
-  var containerNode = container.node()
-  if (containerNode.scrollTop !== undefined && containerNode.scrollLeft !== undefined) {
-    containerNode.scrollTop = (svgHeight - (container.style("height").replace("px","")*1)) / 2
-    containerNode.scrollLeft = (svgWidth - (container.style("width").replace("px","")*1)) / 2
-  }
 
   // collect data of the SVG elements with class node
 
@@ -78,6 +69,27 @@ function nudgePairs(container) {
       nodes.attr("transform", moveNode);
   }
 
+  // final position of diagram
+
+  function moveToNW() {
+      console.log(new Date().getMilliseconds())
+      var x = nodeData.reduce(minX).x - 3
+      var y = nodeData.reduce(minY).y - 3
+      console.log(`minX = ${x}; minY = ${y}`)
+      function moveNode(jsNode) { return 'translate('+(jsNode.x-x)+','+(jsNode.y-y)+')' }
+      function drawPath(jsLink) {
+          var s = jsLink.source
+          var t = jsLink.target
+          // priority for preventing code duplication over less independency
+          return PairSvg.linkPath(jsLink.mid, s.x - x, s.y-y, t.x - x, t.y -y)
+      }
+      links.attr("d", drawPath);
+      nodes.attr("transform", moveNode);
+      console.log(new Date().getMilliseconds())
+  }
+  function minX (min, node) { return min.x < node.x ? min : node }
+  function minY (min, node) { return min.y < node.y ? min : node }
+
   // define forces with the collected data
 
   var forceLink = d3
@@ -88,7 +100,8 @@ function nudgePairs(container) {
   d3.forceSimulation(nodeData)
     .force("charge", d3.forceManyBody().strength(-1000))
     .force("link", forceLink)
-    .force("center", d3.forceCenter(svgWidth/zoom/2, svgHeight/zoom/2))
+    .force("center", d3.forceCenter(cx, cy))
     .alpha(0.0035)
     .on("tick", onTick)
+    .on("end", moveToNW)
 }
