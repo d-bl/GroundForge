@@ -99,7 +99,7 @@ function showProto(q) {
   console.log("done legend")
   var hrefQ = tesselace(query) + query
   d3.select("#link").node().href = "?" + hrefQ
-  d3.select("#print").node().href = "API/pair?" + hrefQ
+  d3.select("#print").node().href = "print?" + hrefQ
   d3.select("#poc").node().href = "poc?" + pocRef(query)
   d3.select("#threadDiagram").html("")
   d3.select("#pairDiagram").html(pairRender(config))
