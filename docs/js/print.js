@@ -24,9 +24,10 @@ function load() {
     // TODO centralize
     showGraph(d3.select('#pair1perStitchAnimated'), pairDiagram, strokeWidth, width, height, 0)
     showGraph(d3.select('#thread'), threadDiagram, strokeWidth, width, height, nodeTransparency)
+    d3.select('#thread g').attr("transform","scale(0.5,0.5)")
 }
 function showGraph(container, diagram, stroke, width, height, transparency) {
-// copied from API/thread.html
+// copied from API/thread.html, added moveToNW
     var markers = true // use false for slow devices and IE-11, set them at onEnd
     container.html(DiagramSvg.render(diagram, stroke, markers, width, height, transparency))
 
@@ -49,6 +50,27 @@ function showGraph(container, diagram, stroke, width, height, transparency) {
         links.attr("d", drawPath);
         nodes.attr("transform", moveNode);
     }
+
+  function moveToNW() {
+      console.log(new Date().getMilliseconds())
+      var x = nodeDefs.reduce(minX).x - 3
+      var y = nodeDefs.reduce(minY).y - 3
+      console.log(`minX = ${x}; minY = ${y}`)
+      function moveNode(jsNode) { return 'translate('+(jsNode.x-x)+','+(jsNode.y-y)+')' }
+      function drawPath(jsLink) {
+          var s = jsLink.source
+          var t = jsLink.target
+          var l = diagram.link(jsLink.index)
+          // priority for preventing code duplication over less independency
+          return DiagramSvg.pathDescription(l, s.x - x, s.y-y, t.x - x, t.y -y)
+      }
+      links.attr("d", drawPath);
+      nodes.attr("transform", moveNode);
+      console.log(new Date().getMilliseconds())
+  }
+  function minX (min, node) { return min.x < node.x ? min : node }
+  function minY (min, node) { return min.y < node.y ? min : node }
+
     // read 'weak' as 'invisible'
     function strength(link){ return link.weak ? link.withPin ? 40 : 10 : 50 }
     var forceLink = d3
@@ -62,5 +84,6 @@ function showGraph(container, diagram, stroke, width, height, transparency) {
       .force("center", d3.forceCenter(width/2, height/2))
       .alpha(0.0035)
       .on("tick", onTick)
+      .on("tick", moveToNW)
 }
 
