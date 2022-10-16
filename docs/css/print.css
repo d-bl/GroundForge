@@ -5,6 +5,7 @@ div {
     border: solid 1px #DDD;
     margin-top: 3px;
 }
+#whiting {display: none; }
 input { display: none }
 #threadColor, form { display: inline-block }
 form { vertical-align: text-top }

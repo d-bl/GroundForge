@@ -31,7 +31,9 @@ function whiting (kv) {
     // side effect: add whiting link
     var pageNr = kv.split("P")[1]
     var cellNr = kv.split("_")[0].split("=")[1]
-    d3.select('#whiting').node().innerHTML =
+    var w = d3.select('#whiting')
+    w.style("display","inline-block")
+    w.node().innerHTML =
         "<img src='/gw-lace-to-gf/w/page" + pageNr + "a.gif' title='"+cellNr+"'>"+
         " Page <a href='http://www.theedkins.co.uk/jo/lace/whiting/page" + pageNr + ".htm'>" + pageNr + "</a> "+
         "of '<em>A Lace Guide for Makers and Collectors</em>' by Gertrude Whiting; 1920."
