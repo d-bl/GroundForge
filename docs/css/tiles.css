@@ -14,7 +14,7 @@ fieldset fieldset figure div { height: 222px; }
 .pattern textarea {min-width: 4.5em}
 .swatches:hover, .animate, .resize, button { cursor: pointer; }
 
-#print { margin-top: 3px; padding-top: 3px; }
+#print button { margin-top: 5px; padding-top: 5px; }
 
 #whiting { padding-bottom: 0.5em; padding-left: 4em; }
 #prototype, #threadDiagram, #pairDiagram {
