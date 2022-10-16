@@ -23,11 +23,23 @@ function load() {
     showGraph(d3.select('#pair1perStitchAnimated'), pairDiagram, stroke, width, height, opacity)
     showGraph(d3.select('#thread'), threadDiagram, stroke, width, height, opacity)
     d3.select('#thread g').attr("transform","scale(0.5,0.5)")
-    q.split("&").find(whiting)
+    var keyValues = q.split("&")
+    keyValues.find(whiting)
+    keyValues.forEach(patch)
+}
+var seqNr = 1
+function patch (kv) {
+    if (!kv.trim().startsWith("patch=")) return false
+    var a = kv.replace("patch=","").split(";")
+    var matrix = a[0]
+    var shiftStyle = a[1]
+    var svg = new SheetSVG(1,"height='90mm' width='330mm'", seqNr++)
+          .add(a[0], a[1]).toSvgDoc().trim()
+    d3.select("body").append("div").node().innerHTML = svg
 }
 function whiting (kv) {
     var k = kv.trim().replace(/[^a-zA-Z0-9]/g,"")
-    if (!kv.startsWith("whiting")) return false
+    if (!kv.trim().startsWith("whiting")) return false
     // side effect: add whiting link
     var pageNr = kv.split("P")[1]
     var cellNr = kv.split("_")[0].split("=")[1]
@@ -73,10 +85,8 @@ function showGraph(container, diagram, stroke, width, height, opacity) {
     }
 
   function moveToNW() {
-      console.log(new Date().getMilliseconds())
       var x = nodeDefs.reduce(minX).x - 3
       var y = nodeDefs.reduce(minY).y - 3
-      console.log(`minX = ${x}; minY = ${y}`)
       function moveNode(jsNode) { return 'translate('+(jsNode.x-x)+','+(jsNode.y-y)+')' }
       function drawPath(jsLink) {
           var s = jsLink.source
@@ -87,7 +97,6 @@ function showGraph(container, diagram, stroke, width, height, opacity) {
       }
       links.attr("d", drawPath);
       nodes.attr("transform", moveNode);
-      console.log(new Date().getMilliseconds())
   }
   function minX (min, node) { return min.x < node.x ? min : node }
   function minY (min, node) { return min.y < node.y ? min : node }
