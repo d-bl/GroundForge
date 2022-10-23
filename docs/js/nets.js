@@ -82,12 +82,12 @@ function generate (b, set, colors) {
     }
   }
   if (set == "4") {
-    showGraph ("bd ->\npq <-", `b1=${p}&c1=${d}&b2=${p}&c2=${q}&${hor2x2}`)
-    showGraph ("bd ->\nqp <-", `b1=${p}&c1=${d}&b2=${q}&c2=${p}&${hor2x2}`)
+    showGraph ("bd ->\npq <-", `b1=${b}&c1=${d}&b2=${p}&c2=${q}&${hor2x2}`)
+    showGraph ("bd ->\nqp <-", `b1=${b}&c1=${d}&b2=${q}&c2=${p}&${hor2x2}`)
     showGraph ("bp ->\ndq <-", `b1=${b}&c1=${p}&b2=${d}&c2=${q}&${hor2x2}`)
     showGraph ("bp ->\nqd <-", `b1=${b}&c1=${p}&b2=${q}&c2=${d}&${hor2x2}`)
-    showGraph ("bq ->\ndp <-", `b1=${p}&c1=${q}&b2=${d}&c2=${p}&${hor2x2}`)
-    showGraph ("bq ->\npd <-", `b1=${p}&c1=${q}&b2=${p}&c2=${d}&${hor2x2}`)
+    showGraph ("bq ->\ndp <-", `b1=${b}&c1=${q}&b2=${d}&c2=${p}&${hor2x2}`)
+    showGraph ("bq ->\npd <-", `b1=${b}&c1=${q}&b2=${p}&c2=${d}&${hor2x2}`)
   }
   setColors(colors)
 }
