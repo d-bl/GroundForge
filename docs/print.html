@@ -20,31 +20,15 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body onload="load()">
-    <ul>
-        <strong>Hints:</strong>
-        <li>
-            Use the hot corners at the right bottom of the diagrams
-            to resize their available space.
-            Almost hide those you don't want in your print/PDF,
-            show more of a diagram or enforce a new line or new page.
-        </li>
-        <li>
-            Use print preview of your browser and choose destination PDF to save the page, or just print.
-            <a href="/GroundForge-help/Icons#print" target="_blank"><img src="images/information-icon.png"></a>
-        </li>
-        <li>
-            Your operating system allows you to browse visually through hte front pages of saved PDFs.
-            The link brings you back to the pattern definition for further tweaking.
-        </li>
-        <li>
-            <label for="threadColor">Click a bobbin or thread start to paint the thread with</label>
-            <form  onsubmit="return false">
-                <input type="color" id="threadColor" name="threadColor" value="#ff0000">
-            </form>
-            Click on the coloured block to change its value.
-        </li>
-    </ul>
-    <p><a id="def" href="#" target="_blank">Pattern definition</a></p>
+    <form  onsubmit="return false">
+        <a href="print-pdf"><img src="images/information-icon.png" title="swatch size"></a>
+        <label for="threadColor">Thread color</label>
+        <input type="color" id="threadColor" name="threadColor" value="#ff0000">
+    </form>
+
+    <p>
+        <a id="def" href="#" target="_blank">Pattern definition</a>
+    <br>
     <div id="whiting"></div>
     <div id="thread"></div>
     <div id="pair4perStitch"></div>

@@ -9,4 +9,4 @@ div {
 input { display: none }
 #threadColor, form { display: inline-block }
 form { vertical-align: text-top }
-@media print { ul {display: none} }
+@media print { form {display: none} }
