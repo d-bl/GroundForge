@@ -22,15 +22,14 @@
         <br>
         <input type="radio" id="change" name="action" value="change" disabled="disabled"><label for="change" style="color: grey">apply <input type="text" disabled="disabled" value="ctct"></label>
         <p>
-            <a href="javascript:var d=d3.select('#download2');d.attr('href',getWrappedSVG('#template'));d.style('display','inline')"
+            <a href="javascript:d3.select('#download2').attr('href',getWrappedSVG('#template')).style('display','inline')"
                onfocus="this.href=getWrappedSVG('#template')"
-               onblur="this.href='/#?'"
+               onblur="this.href='#?'"
                download="GF-template.svg"
                title="download"
             >download</a>
             <a href="#"
                style="display:none"
-               onfocus="d3.select(this).style('display','none')"
                id="download2"
             >get</a>
         </p>
