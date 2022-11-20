@@ -15,13 +15,15 @@
     <div id="template"></div>
     <form action="" onSubmit="return false;">
         Edit mode for stitches:
+        <br>
         <input type="radio" id="move" name="action" value="move" checked="checked"><label for="move">move</label>
+        <br>
         <input type="radio" id="delete" name="action" value="delete" disabled="disabled"><label for="delete" style="color: grey">delete</label>
+        <br>
         <input type="radio" id="change" name="action" value="change" disabled="disabled"><label for="change" style="color: grey">apply <input type="text" disabled="disabled" value="ctct"></label>
         <p>
             <a href="javascript:this.href=getWrappedSVG('#template');alert('please try again')"
                onfocus="this.href=getWrappedSVG('#template')"
-               ontouchend="this.href='/#?'"
                onblur="this.href='/#?'"
                download="GF-template.svg"
                title="download (sorry not implemented for touch devices)"
