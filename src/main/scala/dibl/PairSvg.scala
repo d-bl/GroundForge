@@ -142,7 +142,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       case 1 | 2 | 3 => s"""; marker-mid: url("#twist-$twists")"""
       case _ => """; marker-mid: url("#twist-3")"""
     }
-    val d = linkPath(twists > 0, sX, sY, tX, tY)
+    val d = linkPath(sX, sY, tX, tY)
     val style = s"stroke: #000; stroke-width: 1px; fill: none; opacity: 1$marker"
     s"<path id='$id' class='link' d='$d' style='$style'></path>"
   }
@@ -276,9 +276,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   val prolog = """<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->"""
 
   @JSExport
-  def linkPath(hasTwists: Boolean, sX: Double, sY: Double, tX: Double, tY: Double): String = {
-    if (!hasTwists) s"M $sX,$sY $tX,$tY"
-    else s"M $sX,$sY ${ sX + (tX - sX) / 2 } ${ sY + (tY - sY) / 2 } $tX,$tY"
+  def linkPath(sX: Double, sY: Double, tX: Double, tY: Double): String = {
+    s"M $sX,$sY ${ sX + (tX - sX) / 2 } ${ sY + (tY - sY) / 2 } $tX,$tY"
   }
 
   private def svgTag (width: Int = 744, height: Int = 1052) =
