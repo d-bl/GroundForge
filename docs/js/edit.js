@@ -12,7 +12,9 @@ function load() {
     var zoom = 1.9
     var svg = PairSvg.render(itemMatrix, width, height, zoom)
     d3.select('#template').html(svg)
-
+    activateEdit()
+}
+function activateEdit() {
     var red = "rgb(255, 0, 0)"
     var green = "rgb(0, 255, 0)"
     var grey = "rgb(150, 150, 150)"
@@ -102,4 +104,24 @@ function moveCenter() {
 function getWrappedSVG (q) {
     svg = d3.select(q).node().innerHTML
     return 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
+}
+function readSingleFile(evt) {
+    //Retrieve the first (and only!) File from the FileList object
+    var f = evt.target.files[0];
+    if (f) {
+        var r = new FileReader();
+        r.onload = function(e) {
+            var contents = e.target.result.replace(/.*?-->/,"");
+            console.log( "Got the file."
+                  +"  name: " + f.name
+                  +"  type: " + f.type
+                  +"  size: " + f.size + " bytes\n"
+            )
+            document.getElementById('template').innerHTML =  contents;
+            activateEdit()
+        }
+        r.readAsText(f);
+    } else {
+        alert("Failed to load file");
+    }
 }

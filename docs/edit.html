@@ -27,13 +27,15 @@
                onblur="this.href='#?'"
                download="GF-template.svg"
                title="download"
-            >download</a>
+            >Download</a>
             <a href="#"
                style="display:none"
                id="download2"
                download="GF-template.svg"
-               onclick="this.style.display = 'none'"
-            >get</a>
+               onclick="this.style.display='none'"
+            >get</a> -
+            <label for="fileinput">Reload a downloaded file:</label>
+            <input type="file" id="fileinput" accept="image/svg+xml" onchange="readSingleFile(event)"/>
         </p>
     </form>
 </body>
