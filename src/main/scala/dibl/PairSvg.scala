@@ -169,7 +169,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }.mkString
   }.mkString
 
-  private def shapes(stitch: String) = {
+  @JSExport
+  def shapes(stitch: String): String = {
     def colour(nrOfTwists: Int) = {
       // https://colorbrewer2.org/?type=diverging&scheme=RdBu&n=5
       //                 red        blue       peach     light blue

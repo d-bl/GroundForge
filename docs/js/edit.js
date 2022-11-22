@@ -1,14 +1,35 @@
 function clickedStitch(event) {
-    // edit mode delete/apply
+    var node = event.target.parentElement
+    switch (document.querySelector("input[name=editMode]:checked").value) {
+    case "delete":
+        node.innerHTML = ""
+        break
+    case "change":
+        var txt = d3.select("#stitchDef").node().value
+        node.innerHTML = "<title>"+txt+"</title>"+PairSvg.shapes(txt)
+        var links = d3.selectAll(".link").filter(function () {
+            return this.getAttribute("id").includes(node.id)
+        }).each(function(){
+            // TODO apply trailing/leading twists
+            console.log(node.id + " === " + this.id)
+        })
+        break
+    }
 }
-function load() {
+function initDiagram(){
+    var pattern = document.querySelector("input[name=variant]:checked").value
+    load(`patchWidth=${document.querySelector("#width").value}&patchHeight=${document.querySelector("#height").value}&${pattern}`)
+}
+function load(q) {
 
     // dimensions for an A4
     var width = 744
     var height = 1052
 
     // render the initial diagram
-    var itemMatrix = TilesConfig(window.location.search.substr(1)).getItemMatrix
+    if (q.length == 0)
+        q = "patchWidth=7&patchHeight=7&tile=-5-,5-5,-5-&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
+    var itemMatrix = TilesConfig(q).getItemMatrix
     var zoom = 1.9
     var svg = PairSvg.render(itemMatrix, width, height, zoom)
     d3.select('#template').html(svg)
@@ -17,7 +38,7 @@ function load() {
 function activateEdit() {
     var red = "rgb(255, 0, 0)"
     var green = "rgb(0, 255, 0)"
-    var grey = "rgb(150, 150, 150)"
+    var grey = "rgb(220, 220, 220)"
     var links = d3.selectAll(".link")
 
     function moveStitch() {
