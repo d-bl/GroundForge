@@ -1,20 +1,31 @@
+function clickedPair() {
+    var elem = d3.event.target
+    d3.select(event.target).style("marker-mid",function() {
+        var n = d3.select('#twists').attr("value")
+        if (n <= 0) return ""
+            return 'url("#twist-' + n + '")'
+    })
+}
 function clickedStitch(event) {
-    var node = event.target.parentElement
+    var elem = event.target.parentElement
     switch (document.querySelector("input[name=editMode]:checked").value) {
     case "delete":
-        node.innerHTML = ""
+        var links = d3.selectAll(".link").filter(function () {
+            return this.getAttribute("id").includes(elem.id)
+        })
+        if (4 == links.size()) {
+            // TODO reconnect pairs, first add (kissing) pair nrs as class
+            elem.parentNode.removeChild(elem)
+        }
         break
     case "change":
-        var txt = d3.select("#stitchDef").node().value
-        node.innerHTML = "<title>"+txt+"</title>"+PairSvg.shapes(txt)
-        var links = d3.selectAll(".link").filter(function () {
-            return this.getAttribute("id").includes(node.id)
-        }).each(function(){
-            // TODO apply trailing/leading twists
-            console.log(node.id + " === " + this.id)
-        })
+        var txt = dropTwists(d3.select("#stitchDef").node().value)
+        elem.innerHTML = "<title>"+txt+"</title>"+PairSvg.shapes(txt)
         break
     }
+}
+function dropTwists(s) {
+    return s.toLowerCase().replace(/[tlr]*([tlrc]*c)[tlr]*/,'$1')
 }
 function initDiagram(){
     var pattern = document.querySelector("input[name=variant]:checked").value
@@ -40,6 +51,10 @@ function activateEdit() {
     var green = "rgb(0, 255, 0)"
     var grey = "rgb(220, 220, 220)"
     var links = d3.selectAll(".link")
+
+    d3.selectAll('#template title').html(function() {
+        return dropTwists(this.innerHTML.replace(/ - .*/,''))
+    })
 
     function moveStitch() {
         var id = this.getAttribute("id")
@@ -68,6 +83,16 @@ function activateEdit() {
     }
 
     function finishPinch() {
+        function dist(a) {
+           var def = a.getAttribute("d").split(" ")
+           var powX = Math.pow(def[2]*1 - d3.event.x, 2)
+           var powY = Math.pow(def[3]*1 - d3.event.y, 2)
+           return powX + powY
+        }
+        // moveCenter moved the mid point to the mouse position
+        // that implies a drag, little chance a click exactly hits the mid point
+        if (dist(this) != 0 ) return
+
         // split the id of the manipulated link into the ids of its nodes
         var ids = new Set(this.getAttribute("id").split("-"))
 
@@ -78,12 +103,6 @@ function activateEdit() {
             return ids.has(ids2[0]) || ids.has(ids2[1])
         }).style("stroke",red)
 
-        function dist(a) {
-           var def = a.getAttribute("d").split(" ")
-           var powX = Math.pow(def[2]*1 - d3.event.x, 2)
-           var powY = Math.pow(def[3]*1 - d3.event.y, 2)
-           return powX + powY
-        }
         // find the edge with the centre closest to the mouse position
         var nearest = null
         links.each(function () {
@@ -98,7 +117,7 @@ function activateEdit() {
         nearest.style["stroke"] = green
     }
 
-    // initial stitch edit mode
+    links.on("click",clickedPair)
     d3.drag().on("drag",moveStitch)(d3.selectAll(".node"))
 
     links.style("stroke-width","5px") // wider lines are bigger targets
