@@ -5,6 +5,7 @@ function clickedPair() {
         if (n <= 0) return ""
             return 'url("#twist-' + n + '")'
     })
+    clones()
 }
 function clickedStitch(event) {
     var elem = event.target.parentElement
@@ -23,6 +24,7 @@ function clickedStitch(event) {
         elem.innerHTML = "<title>"+txt+"</title>"+PairSvg.shapes(txt)
         break
     }
+    clones()
 }
 function dropTwists(s) {
     return s.toLowerCase().replace(/[tlr]*([tlrc]*c)[tlr]*/,'$1')
@@ -80,6 +82,7 @@ function activateEdit() {
         links.filter(function () {
             return this.getAttribute("id").endsWith("-"+id)
         }).attr("d", moveEnd)
+        clones()
     }
 
     function finishPinch() {
@@ -114,7 +117,12 @@ function activateEdit() {
                 else if ( dist(nearest) > distThis) nearest = this
             }
         })
-        nearest.style["stroke"] = green
+        // TODO reuse moveCenter
+        var def = nearest.getAttribute("d").split(" ")
+        def[2] = d3.event.x
+        def[3] = d3.event.y
+        nearest.setAttribute("d", def.join(" "))
+        clones()
     }
 
     links.on("click",clickedPair)
@@ -164,4 +172,16 @@ function readSingleFile(evt) {
     } else {
         alert("Failed to load file");
     }
+}
+function clones() { // TODO so far just for 7x7
+    d3.select('#template #clones').html(`
+          <use x="0" y="0" xlink:href="#cloned" transform="matrix(1,0,0,-1,0,340.48)" style="opacity:0.3" />
+          <use x="0" y="0" xlink:href="#cloned" transform="matrix(-1,0,0,1,180.88,319.2)" style="opacity:0.3" />
+          <use x="0" y="0" xlink:href="#cloned" transform="matrix(-1,0,0,1,340.48,0)" style="opacity:0.3" />
+          <use x="0" y="0" xlink:href="#cloned" transform="rotate(180,170.24,170.24)" style="opacity:0.3" />
+          <use x="0" y="0" xlink:href="#cloned" transform="translate(159.6,319.2)"  style="opacity:0.3" />
+          <use x="0" y="0" xlink:href="#cloned" transform="translate(319.2)" style="opacity:0.3" />
+          <use x="0" y="0" xlink:href="#cloned" transform="matrix(1,0,0,-1,319.2,340.48)" style="opacity:0.3" />
+          <use x="0" y="0" xlink:href="#cloned" transform="matrix(-1,0,0,1,500.08,319.2)" style="opacity:0.3" />
+    `)
 }

@@ -309,10 +309,11 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
        |  ${ twistMark(2) }
        |  ${ twistMark(3) }
        |</defs>
-       |<g transform="matrix($zoom,0,0,$zoom,0,0)">
+       |<g transform="matrix($zoom,0,0,$zoom,0,0)"  id="cloned">
        |${ renderLinks(itemMatrix, itemList) }
        |${ renderNodes(itemList) }
        |</g>
+       |<g id="clones"></g>
        |</svg>""".stripMargin
   }
 }
