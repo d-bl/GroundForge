@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title lang="en">GF: pair diagram demonstrator</title>
     <style>
-        #template { display: inline-block; overflow: auto; resize: both; width: 500px; max-width: 50%; height: 500px; }
         #width, #height, #twists { width: 3em; }
         .inline { display: inline-block; margin-right: 2em; }
     </style>
@@ -16,6 +15,7 @@
 </head>
 <body onload="load(window.location.search.substr(1))">
     <h1>Work in progress</h1>
+    Drag stitches. Drag pairs to pinch for new stitches (like delete WIP)
     <form action="" onSubmit="return false;">
         <p class="inline">
             <a href="javascript:initDiagram()">Init</a>: variant
@@ -54,6 +54,7 @@
             ><label for="change">apply <input id="stitchDef" type="text" value="ctlcrrc"></label>
             <br>
             <label for="twists">Twists between stitches </label><input type="number" id="twists" value="1" min="0" max="3">
+            <label for="twists">Click on a pair to apply.</label>
         </p>
     </form>
     <div id="template"></div>
