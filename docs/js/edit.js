@@ -35,12 +35,22 @@ function initDiagram() {
     var rows = document.querySelector("#height").value
 
     // factor is related to scale of #cloned
-    var w = 25.2 * (document.querySelector("#width").value - 1)
-    var h = 25.2 * (document.querySelector("#height").value - 1)
-
+    var f = 25.2
+    var f8 = f * 0.8
+    var w = f * (document.querySelector("#width").value - 1)
+    var h = f * (document.querySelector("#height").value - 1)
+    var dx
+    var dy
+    if (document.querySelector("input[name=shift]:checked").value == 'vert') {
+        dx = 0
+        dy = f * document.querySelector("#shiftSteps").value
+    } else {
+        dx = f * document.querySelector("#shiftSteps").value
+        dy = 0
+    }
     var q = `patchWidth=${cols}&patchHeight=${rows}&${pattern}`
     var zoom = 1.9
-    var svg = PairSvg.render(TilesConfig(q).getItemMatrix, w * 4 + 24, h * 4 + 24, zoom)
+    var svg = PairSvg.render(TilesConfig(q).getItemMatrix, w * 4 + 24 +dx, h * 4 + 24 +dy, zoom)
 
     d3.select('#template').html(svg)
     d3.select('#cloned').attr("transform",`translate(${w},${h}),scale(1.8,1.8)`)
@@ -48,21 +58,24 @@ function initDiagram() {
         return dropTwists(this.innerHTML.replace(/ - .*/,''))
     })
     d3.select('#template #clones').style("opacity",0.3).html(`
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(${-w},${-h})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(0,${-h})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(${w},${-h})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(${2*w},${-h})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(${-w},0)" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(${w},0)" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(${2*w},0)" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(${-w},${h})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(0,${h})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(${w},${h})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(${2*w},${h})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(${-w},${2*h})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(0,${2*h})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(${w},${2*h})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(${2*w},${2*h})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,-1) translate(${-2*w-f8},${-2*h-f8})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="scale(1,-1) translate(0,${-2*h-f8})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,1) translate(${-4*w-f8},${-h+dy})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(${2*w},${-h+dy})" />
+
+        <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,1) translate(${-2*w-f8},0)" />
+        <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,-1) translate(${-4*w-f8},${-3*h-f8-dy})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="scale(1,-1) translate(${2*w},${-3*h-f8-dy})" />
+
+        <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,-1) translate(${-2*w-f8-dx},${-4*h-f8})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="scale(1,-1) translate(${dx},${-4*h-f8})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,1) translate(${-4*w-f8-dx},${h+dy})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(${2*w+dx},${h+dy})" />
+
+        <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,1) translate(${-2*w-f8-dx},${2*h})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(${dx},${2*h})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,-1) translate(${-4*w-f8-dx},${-5*h-f8-dy})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="scale(1,-1) translate(${2*w+dx},${-5*h-f8-dy})" />
     `)
 
     var red = "rgb(255, 0, 0)"
