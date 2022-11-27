@@ -29,60 +29,46 @@ function clickedStitch(event) {
 function dropTwists(s) {
     return s.toLowerCase().replace(/[tlr]*([tlrc]*c)[tlr]*/,'$1')
 }
-function initDiagram(){
+function initDiagram() {
     var pattern = document.querySelector("input[name=variant]:checked").value
-    load(`patchWidth=${document.querySelector("#width").value}&patchHeight=${document.querySelector("#height").value}&${pattern}`)
-}
-function load(q) {
+    var cols = document.querySelector("#width").value
+    var rows = document.querySelector("#height").value
 
-    // dimensions for an A4
-    var width = 744
-    var height = 1052
+    // factor is related to scale of #cloned
+    var w = 25.2 * (document.querySelector("#width").value - 1)
+    var h = 25.2 * (document.querySelector("#height").value - 1)
 
-    // render the initial diagram
-    if (q.length == 0)
-        q = "patchWidth=7&patchHeight=7&tile=-5-,5-5,-5-&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"
-    var itemMatrix = TilesConfig(q).getItemMatrix
+    var q = `patchWidth=${cols}&patchHeight=${rows}&${pattern}`
     var zoom = 1.9
-    var svg = PairSvg.render(itemMatrix, width, height, zoom)
+    var svg = PairSvg.render(TilesConfig(q).getItemMatrix, w * 4 + 24, h * 4 + 24, zoom)
+
     d3.select('#template').html(svg)
-    d3.select('#cloned').attr("transform","matrix(1.9 0 0 1.9 150 150)")// TODO some function of width an height
-    activateEdit()
-}
-function clones() { // TODO so far just for 7x7
-    var width = document.querySelector("#width").value
-    var height = document.querySelector("#height").value
-    var f = 26.6 // some function of the stitch distance
-    d3.select('#template #clones')
-        .attr("transform","translate(-545.87,-370.60159)")
-        .style("opacity",0.3)
-        .html(`
-    <use x="0" y="0" xlink:href="#cloned" transform="matrix(1,0,0,-1,386.07324,692.29158)" />
-    <use x="0" y="0" xlink:href="#cloned" transform="matrix(-1,0,0,1,867.15,370.60159)" />
-    <use x="0" y="0" xlink:href="#cloned" transform="rotate(180,433.47662,505.74579)" />
-    <use x="0" y="0" xlink:href="#cloned" transform="translate(386.07324,690.21158)" />
-    <use x="0" y="0" xlink:href="#cloned" transform="rotate(180,513.27662,346.14579)" />
-    <use x="0" y="0" xlink:href="#cloned" transform="matrix(1,0,0,-1,545.10324,1010.9216)" />
-    <use x="0" y="0" xlink:href="#cloned" transform="matrix(-1,0,0,1,1024.8711,691.53147)" />
-    <use x="0" y="0" xlink:href="#cloned" transform="matrix(1,0,0,-1,705.2732,692.2916)" />
-    <use x="0" y="0" xlink:href="#cloned" transform="matrix(-1,0,0,1,1186.35,370.60159)" />
-    <use x="0" y="0" xlink:href="#cloned" transform="rotate(180,593.0766,505.74579)" />
-    <use x="0" y="0" xlink:href="#cloned" transform="translate(703.5911,691.53147)" />
-    <use x="0" y="0" xlink:href="#cloned" transform="rotate(180,672.8766,346.1458)" />
-    <use x="0" y="0" xlink:href="#cloned" transform="translate(865.07,370.60159)" />
-    <use x="0" y="0" xlink:href="#cloned" transform="matrix(1,0,0,-1,866.37449,1012.3689)" />
-    <use x="0" y="0" xlink:href="#cloned" transform="matrix(-1,0,0,1,1344.0711,691.53147)" />
+    d3.select('#cloned').attr("transform",`translate(${w},${h}),scale(1.8,1.8)`)
+    d3.selectAll('#template title').html(function() {
+        return dropTwists(this.innerHTML.replace(/ - .*/,''))
+    })
+    d3.select('#template #clones').style("opacity",0.3).html(`
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(${-w},${-h})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(0,${-h})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(${w},${-h})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(${2*w},${-h})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(${-w},0)" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(${w},0)" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(${2*w},0)" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(${-w},${h})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(0,${h})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(${w},${h})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(${2*w},${h})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(${-w},${2*h})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(0,${2*h})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(${w},${2*h})" />
+        <use x="0" y="0" xlink:href="#cloned" transform="translate(${2*w},${2*h})" />
     `)
-}
-function activateEdit() {
+
     var red = "rgb(255, 0, 0)"
     var green = "rgb(0, 255, 0)"
     var grey = "rgb(220, 220, 220)"
     var links = d3.selectAll(".link")
-
-    d3.selectAll('#template title').html(function() {
-        return dropTwists(this.innerHTML.replace(/ - .*/,''))
-    })
 
     function moveStitch() {
         var id = this.getAttribute("id")
