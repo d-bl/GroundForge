@@ -5,9 +5,10 @@ function clickedPair() {
         if (n <= 0) return ""
             return 'url("#twist-' + n + '")'
     })
-    clones()
+    d3.select("#download2").style("display","none")
 }
 function clickedStitch(event) {
+    d3.select("#download2").style("display","none")
     var elem = event.target.parentElement
     switch (document.querySelector("input[name=editMode]:checked").value) {
     case "delete":
@@ -24,18 +25,12 @@ function clickedStitch(event) {
         elem.innerHTML = "<title>"+txt+"</title>"+PairSvg.shapes(txt)
         break
     }
-    clones()
 }
 function dropTwists(s) {
     return s.toLowerCase().replace(/[tlr]*([tlrc]*c)[tlr]*/,'$1')
 }
-function initDiagram() {
-    var pattern = document.querySelector("input[name=variant]:checked").value
-    var cols = document.querySelector("#width").value
-    var rows = document.querySelector("#height").value
-
-    // factor is related to scale of #cloned
-    var f = 25.2
+function clones (f) {
+    d3.select("#download2").style("display","none")
     var f8 = f * 0.8
     var w = f * (document.querySelector("#width").value - 1)
     var h = f * (document.querySelector("#height").value - 1)
@@ -48,15 +43,6 @@ function initDiagram() {
         dx = f * document.querySelector("#shiftSteps").value
         dy = 0
     }
-    var q = `patchWidth=${cols}&patchHeight=${rows}&${pattern}`
-    var zoom = 1.9
-    var svg = PairSvg.render(TilesConfig(q).getItemMatrix, w * 4 + 24 +dx, h * 4 + 24 +dy, zoom)
-
-    d3.select('#template').html(svg)
-    d3.select('#cloned').attr("transform",`translate(${w},${h}),scale(1.8,1.8)`)
-    d3.selectAll('#template title').html(function() {
-        return dropTwists(this.innerHTML.replace(/ - .*/,''))
-    })
     d3.select('#template #clones').style("opacity",0.3).html(`
         <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,-1) translate(${-2*w-f8},${-2*h-f8})" />
         <use x="0" y="0" xlink:href="#cloned" transform="scale(1,-1) translate(0,${-2*h-f8})" />
@@ -77,6 +63,29 @@ function initDiagram() {
         <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,-1) translate(${-4*w-f8-dx},${-5*h-f8-dy})" />
         <use x="0" y="0" xlink:href="#cloned" transform="scale(1,-1) translate(${2*w+dx},${-5*h-f8-dy})" />
     `)
+}
+function initDiagram() {
+    var pattern = document.querySelector("input[name=variant]:checked").value
+    var cols = document.querySelector("#width").value
+    var rows = document.querySelector("#height").value
+
+    // factor is related to scale of #cloned
+    var f = 25.2
+    var w = f * (document.querySelector("#width").value - 1)
+    var h = f * (document.querySelector("#height").value - 1)
+    var q = `patchWidth=${cols}&patchHeight=${rows}&${pattern}`
+    var zoom = 1.9
+    var svg = PairSvg.render(TilesConfig(q).getItemMatrix, w * 5, h * 5 , zoom)
+
+    d3.select('#template').html(svg)
+    d3.select('#cloned').attr("transform",`translate(${w},${h}),scale(1.8,1.8)`)
+    d3.selectAll('#template title').html(function() {
+        return dropTwists(this.innerHTML.replace(/ - .*/,''))
+    })
+    clones(f)
+
+    // only needed at onload but here we have the value of f available
+    d3.selectAll(".re_clone").attr("onchange",`clones(${f})`)
 
     var red = "rgb(255, 0, 0)"
     var green = "rgb(0, 255, 0)"
@@ -107,7 +116,6 @@ function initDiagram() {
         links.filter(function () {
             return this.getAttribute("id").endsWith("-"+id)
         }).attr("d", moveEnd)
-        clones()
     }
 
     function finishPinch() {
@@ -147,7 +155,6 @@ function initDiagram() {
         def[2] = d3.event.x
         def[3] = d3.event.y
         nearest.setAttribute("d", def.join(" "))
-        clones()
     }
 
     links.on("click",clickedPair)

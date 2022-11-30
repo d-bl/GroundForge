@@ -303,6 +303,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
             ): String = {
     val itemList = listItems(itemMatrix)
     println(s"render pair diagram [${itemMatrix.size},${itemMatrix.head.size}] with ${itemList.size} stitches")
+    // the group cloned (with a diagram on the foreground) and clones (empty on the background) are required by edit.js
     s"""${ svgTag(width, height) }
        |<defs>
        |  ${ twistMark(1) }
@@ -310,7 +311,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
        |  ${ twistMark(3) }
        |</defs>
        |<g id="clones"></g>
-       |<g transform="matrix($zoom,0,0,$zoom,0,0)" id="cloned">
+       |<g id="cloned" transform="scale($zoom,$zoom)">
        |${ renderLinks(itemMatrix, itemList) }
        |${ renderNodes(itemList) }
        |</g>
