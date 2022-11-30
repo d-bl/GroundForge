@@ -29,7 +29,7 @@ function clickedStitch(event) {
 function dropTwists(s) {
     return s.toLowerCase().replace(/[tlr]*([tlrc]*c)[tlr]*/,'$1')
 }
-function clones (f) {
+function clones (f) { // f is a
     d3.select("#download2").style("display","none")
     var f8 = f * 0.8
     var w = f * (document.querySelector("#width").value - 1)
@@ -43,25 +43,53 @@ function clones (f) {
         dx = f * document.querySelector("#shiftSteps").value
         dy = 0
     }
-    d3.select('#template #clones').style("opacity",0.3).html(`
-        <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,-1) translate(${-2*w-f8},${-2*h-f8})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="scale(1,-1) translate(0,${-2*h-f8})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,1) translate(${-4*w-f8},${-h+dy})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(${2*w},${-h+dy})" />
+    var b = ''
+    var d = `scale(-1,1) translate(${-w-f8},0)`
+    var p = `scale(1,-1) translate(0,${-h-f8})`
+    var q = `scale(-1,-1) translate(${-w-f8},${-h-f8})`
+    d3.select('#template #clones').html(`
+      <g transform="scale(0.5,0.5) translate(${4.5*w},0)">
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b}" />
+        <use x="0" y="0" xlink:href="#cloned" class="d" transform="${d} translate(${-w},0)" />
+        <use x="0" y="0" xlink:href="#cloned" class="p" transform="${p} translate(${2*w},${-dy})" />
+        <use x="0" y="0" xlink:href="#cloned" class="q" transform="${q} translate(${-3*w},${-dy})" />
 
-        <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,1) translate(${-2*w-f8},0)" />
-        <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,-1) translate(${-4*w-f8},${-3*h-f8-dy})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="scale(1,-1) translate(${2*w},${-3*h-f8-dy})" />
+        <use x="0" y="0" xlink:href="#cloned" class="p" transform="${p} translate(0,${-h})" />
+        <use x="0" y="0" xlink:href="#cloned" class="q" transform="${q} translate(${-w},${-h})" />
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${2*w},${h+dy})" />
+        <use x="0" y="0" xlink:href="#cloned" class="d" transform="${d} translate(${-3*w},${h+dy})" />
 
-        <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,-1) translate(${-2*w-f8-dx},${-4*h-f8})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="scale(1,-1) translate(${dx},${-4*h-f8})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,1) translate(${-4*w-f8-dx},${h+dy})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(${2*w+dx},${h+dy})" />
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${dx},${+2*h})" />
+        <use x="0" y="0" xlink:href="#cloned" class="d" transform="${d} translate(${-w-dx},${+2*h})" />
+        <use x="0" y="0" xlink:href="#cloned" class="p" transform="${p} translate(${2*w+dx},${-2*h-dy})" />
+        <use x="0" y="0" xlink:href="#cloned" class="q" transform="${q} translate(${-3*w-dx},${-2*h-dy})" />
 
-        <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,1) translate(${-2*w-f8-dx},${2*h})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="translate(${dx},${2*h})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="scale(-1,-1) translate(${-4*w-f8-dx},${-5*h-f8-dy})" />
-        <use x="0" y="0" xlink:href="#cloned" transform="scale(1,-1) translate(${2*w+dx},${-5*h-f8-dy})" />
+        <use x="0" y="0" xlink:href="#cloned" class="p" transform="${p} translate(${dx},${-3*h})" />
+        <use x="0" y="0" xlink:href="#cloned" class="q" transform="${q} translate(${-w-dx},${-3*h})" />
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${2*w+dx},${3*h+dy})" />
+        <use x="0" y="0" xlink:href="#cloned" class="d" transform="${d} translate(${-3*w-dx},${3*h+dy})" />
+      </g>
+      <g transform="scale(0.5,0.5) translate(${12*w},0)">
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b}" />
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${w},0)" />
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${2*w},${dy})" />
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${3*w},${dy})" />
+
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(0,${h})" />
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${w},${h})" />
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${2*w},${h+dy})" />
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${3*w},${h+dy})" />
+
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${dx},${2*h})" />
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${w+dx},${2*h})" />
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${2*w+dx},${2*h+dy})" />
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${3*w+dx},${2*h+dy})" />
+
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${dx},${3*h})" />
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${w+dx},${3*h})" />
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${2*w+dx},${3*h+dy})" />
+        <use x="0" y="0" xlink:href="#cloned" class="b" transform="${b} translate(${3*w+dx},${3*h+dy})" />
+      </g>
     `)
 }
 function initDiagram() {
@@ -71,14 +99,14 @@ function initDiagram() {
 
     // factor is related to scale of #cloned
     var f = 25.2
-    var w = f * (document.querySelector("#width").value - 1)
-    var h = f * (document.querySelector("#height").value - 1)
+    var w = 12 * f * (document.querySelector("#width").value - 1)
+    var h = 12 * f * (document.querySelector("#height").value - 1)
     var q = `patchWidth=${cols}&patchHeight=${rows}&${pattern}`
     var zoom = 1.9
     var svg = PairSvg.render(TilesConfig(q).getItemMatrix, w * 5, h * 5 , zoom)
 
     d3.select('#template').html(svg)
-    d3.select('#cloned').attr("transform",`translate(${w},${h}),scale(1.8,1.8)`)
+    d3.select('#cloned').attr("transform",`scale(1.8,1.8)`)
     d3.selectAll('#template title').html(function() {
         return dropTwists(this.innerHTML.replace(/ - .*/,''))
     })
