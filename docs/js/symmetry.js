@@ -100,13 +100,13 @@ function clones (f) { // f is a
       <g id="clq"><use x="0" y="0" xlink:href="#cloned" transform="scale(-1,-1)" /></g>
       ${pattern(5*w, h+f8, 'bbbb'+'bbbb'+'bbbb'+'bbbb')}
       ${pattern(12*w, h+f8, 'bbbb'+'dddd'+'bbbb'+'dddd')}
-      ${pattern(17*w, 6.5*h+f8, 'bdbd'+'bdbd'+'bdbd'+'bdbd')}
-
-      ${pattern(10*w, 6.5*h+f8, 'bqbq'+'bqbq'+'bqbq'+'bqbq')}
-      ${pattern(15*w, 12*h+f8, 'bdpq'+'pqbd'+'bdpq'+'pqdb')}
 
       ${pattern(1.5*w, 6.5*h+f8, 'bpbp'+'dqdq'+'bpbp'+'dqdq')}
+      ${pattern(10*w, 6.5*h+f8, 'bqbq'+'bqbq'+'bqbq'+'bqbq')}
+      ${pattern(17*w, 6.5*h+f8, 'bdbd'+'bdbd'+'bdbd'+'bdbd')}
+
       ${pattern(7*w, 12*h+f8, 'dbdb'+'qpqp'+'bdbd'+'pqpq')}
+      ${pattern(15*w, 12*h+f8, 'bdpq'+'pqbd'+'bdpq'+'pqbd')}
     `)
 }
 function initDiagram() {
