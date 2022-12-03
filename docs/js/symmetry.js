@@ -17,19 +17,34 @@ function clickedStitch(event) {
     d3.select("#download2").style("display","none")
     var elem = event.target.parentElement
     switch (document.querySelector("input[name=editMode]:checked").value) {
-    case "delete":
-        if (has4links(elem.id)) {
-            // TODO reconnect pairs, first add (kissing) pair nrs as class
-            elem.parentNode.removeChild(elem)
-        }
-        break
     case "change":
         var txt = dropTwists(d3.select("#stitchDef").node().value)
         elem.innerHTML = "<title>"+txt+"</title>"+PairSvg.shapes(txt)
         break
+    case "delete":
+        var deletedStitchId = elem.id
+        if (has4links(deletedStitchId)) {
+            d3.selectAll("#cloned .link").filter(function () {
+                return this.id.includes(deletedStitchId + '-')
+            }).each(function () {
+                var newXY = this.getAttribute("d").split(" ")[4]
+                var newEndId = this.id.replace(/.*-/,'')
+                d3.selectAll(`#cloned .${this.classList[1]}`).filter(function () {
+                    return this.id.endsWith(deletedStitchId)
+                }).each(function () {
+                    var def = this.getAttribute("d").split(" ")
+                    this.setAttribute("d", withMovedMid(def[1], def[4] = newXY, def))
+                    this.id = this.id.replace(/-(.*)/, '-'+newEndId)
+                })
+                this.parentNode.removeChild(this)
+            })
+            elem.parentNode.removeChild(elem)
+        }
+        break
     }
 }
 function dropTwists(s) {
+
     return s.toLowerCase().replace(/[tlr]*([tlrc]*c)[tlr]*/,'$1')
 }
 function clones (f) { // f is a
@@ -124,20 +139,16 @@ function initDiagram() {
 
     function moveStitch() {
         var id = this.getAttribute("id")
-        var newX = d3.event.x
-        var newY = d3.event.y
         // TODO for now it is the responsibility of the user to stay withing the
-        var newXY = `${newX},${newY}`
+        var newXY = `${d3.event.x},${d3.event.y}`
 
         function moveEnd(){
             var def = this.getAttribute("d").split(" ")
-            def[4] = newXY
-            return withMovedMid(def[1], newX, newY, def)
+            return withMovedMid(def[1], def[4] = newXY, def)
         }
         function moveStart(){
             var def = this.getAttribute("d").split(" ")
-            def[1] = newXY
-            return withMovedMid(def[4], newX, newY, def)
+            return withMovedMid(def[4], def[1] = newXY, def)
         }
         this.setAttribute("transform", `translate(${newXY})`)
         links.filter(function () {
@@ -187,9 +198,14 @@ function initDiagram() {
         nearest.setAttribute("d", def.join(" "))
     }
 
-    links.on("click",clickedPair)
-    d3.drag().on("drag",moveStitch)(d3.selectAll(".node").filter(function(){return has4links(this.id)}))
+    var regex = /r[0-9]c+([0-9]+)-r[0-9]c+([0-9]+)/
+    links.each(function () {
+        this.classList.add('kiss_' + this.id.replace(regex,'$1_$2'))
+        this.classList.add('kiss_' + this.id.replace(regex,'$2_$1'))
+    })
 
+    d3.drag().on("drag",moveStitch)(d3.selectAll(".node").filter(function(){ return has4links(this.id) }))
+    links.on("click",clickedPair)
     links.style("stroke-width","5px") // wider lines are bigger targets
     links.style("stroke",grey) // keep the twist marks visible
     d3.drag()
@@ -199,10 +215,11 @@ function initDiagram() {
             links.style("stroke",grey) // reset pinch highlights
         })(links)
 }
-function withMovedMid(end, newX, newY, def) {
-    xy = end.split(',')
-    def[2] = (xy[0]*1 + newX)/2
-    def[3] = (xy[1]*1 + newY)/2
+function withMovedMid(end, newEnd, def) {
+    var endXY = newEnd.split(',')
+    midXY = end.split(',')
+    def[2] = (midXY[0]*1 + endXY[0]*1)/2
+    def[3] = (midXY[1]*1 + endXY[1]*1)/2
     return def.join(" ")
 }
 function moveCenter() {

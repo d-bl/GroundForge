@@ -15,7 +15,7 @@
 </head>
 <body onload="initDiagram()">
     <h1>Work in progress</h1>
-    Drag stitches. Drag pairs to pinch for new stitches (WIP like delete)
+    Drag stitches. Drag pairs to pinch for new stitches (WIP).
     <form action="" onSubmit="return false;">
         <p class="inline">
             <a href="javascript:initDiagram()">Init</a>: variant
@@ -54,13 +54,13 @@
         <p>
             Click mode for stitches:
             <br>
-            <input type="radio" id="delete" name="editMode" value="delete"><label for="delete">delete</label>
+            <input type="radio" id="delete" name="editMode" value="delete"><label for="delete">delete (<em>prepare for undo with download</em>)</label>
             <br>
             <input type="radio" id="change" name="editMode" value="change" checked="checked"
             ><label for="change">apply <input id="stitchDef" type="text" value="ctlcrrc"></label>
             <br>
             <label for="twists">Twists between stitches </label><input type="number" id="twists" value="1" min="0" max="3">
-            <label for="twists">Click on a pair to apply.</label>
+            <label for="twists">Click on a pair to apply (<em>leading and trailing twists are ignored</em>)</label>
         </p>
     </form>
     <div id="template"></div>
