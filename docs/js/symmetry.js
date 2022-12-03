@@ -7,15 +7,18 @@ function clickedPair() {
     })
     d3.select("#download2").style("display","none")
 }
+function has4links(id){
+    var links = d3.selectAll(".link").filter(function () {
+        return this.getAttribute("id").includes(id)
+    })
+    return 4 == links.size()
+}
 function clickedStitch(event) {
     d3.select("#download2").style("display","none")
     var elem = event.target.parentElement
     switch (document.querySelector("input[name=editMode]:checked").value) {
     case "delete":
-        var links = d3.selectAll(".link").filter(function () {
-            return this.getAttribute("id").includes(elem.id)
-        })
-        if (4 == links.size()) {
+        if (has4links(elem.id)) {
             // TODO reconnect pairs, first add (kissing) pair nrs as class
             elem.parentNode.removeChild(elem)
         }
@@ -87,7 +90,7 @@ function clones (f) { // f is a
       ${pattern(10*w, 6.5*h+f8, 'bqbq'+'bqbq'+'bqbq'+'bqbq')}
       ${pattern(15*w, 12*h+f8, 'bdpq'+'pqbd'+'bdpq'+'pqdb')}
 
-      ${pattern(1.5*w, 6.5*h+f8, 'bpbp'+'dqdq'+'bpbp'+'qpqp')}
+      ${pattern(1.5*w, 6.5*h+f8, 'bpbp'+'dqdq'+'bpbp'+'dqdq')}
       ${pattern(7*w, 12*h+f8, 'dbdb'+'qpqp'+'bdbd'+'pqpq')}
     `)
 }
@@ -96,16 +99,16 @@ function initDiagram() {
     var cols = document.querySelector("#width").value
     var rows = document.querySelector("#height").value
 
-    // factor is related to scale of #cloned
-    var f = 25.2
-    var w = 12 * f * (document.querySelector("#width").value - 1)
-    var h = 9 * f * (document.querySelector("#height").value - 1)
+
+    var clonedScale = "scale(1.8,1.8)"
+    var f = 25.2 // related to clonedScale
+    var w = 10 * f * (document.querySelector("#width").value - 1)
+    var h = 7.5 * f * (document.querySelector("#height").value - 1)
     var q = `patchWidth=${cols}&patchHeight=${rows}&${pattern}`
-    var zoom = 1.9
-    var svg = PairSvg.render(TilesConfig(q).getItemMatrix, w, h , zoom)
+    var svg = PairSvg.render(TilesConfig(q).getItemMatrix, w, h , 1)
 
     d3.select('#template').html(svg)
-    d3.select('#cloned').attr("transform",`scale(1.8,1.8)`)
+    d3.select('#cloned').attr("transform", clonedScale)
     d3.selectAll('#template title').html(function() {
         return dropTwists(this.innerHTML.replace(/ - .*/,''))
     })
@@ -185,7 +188,7 @@ function initDiagram() {
     }
 
     links.on("click",clickedPair)
-    d3.drag().on("drag",moveStitch)(d3.selectAll(".node"))
+    d3.drag().on("drag",moveStitch)(d3.selectAll(".node").filter(function(){return has4links(this.id)}))
 
     links.style("stroke-width","5px") // wider lines are bigger targets
     links.style("stroke",grey) // keep the twist marks visible
