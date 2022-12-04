@@ -10,11 +10,10 @@ function clickedPair() {
     d3.select('#cloned .link').stye('stroke',grey) // revert drag().on("start", ...)
     d3.select("#download2").style("display","none")
 }
-function has4links(id){
-    var links = d3.selectAll(".link").filter(function () {
+function nrOfLinks(id){
+    return d3.selectAll(".link").filter(function () {
         return this.getAttribute("id").includes(id)
-    })
-    return 4 == links.size()
+    }).size()
 }
 function clickedStitch(event) {
     d3.select("#download2").style("display","none")
@@ -26,7 +25,7 @@ function clickedStitch(event) {
         break
     case "delete":
         var deletedStitchId = elem.id
-        if (has4links(deletedStitchId)) {
+        if (4 <= nrOfLinks(deletedStitchId) ) { // TODO for now: >0 for stitches without ID
             d3.selectAll("#cloned .link").filter(function () {
                 return this.id.startsWith(deletedStitchId + '-') // incoming pair
             }).each(function () {
@@ -188,6 +187,13 @@ function initDiagram() {
         def[2] = d3.event.x
         def[3] = d3.event.y
         nearest.setAttribute("d", def.join(" "))
+
+        var el = document.createElementNS("http://www.w3.org/2000/svg", "g")
+        el.innerHTML = PairSvg.shapes('ctc')
+        el.setAttribute('transform',`translate(${d3.event.x},${d3.event.y})`)
+        el.setAttribute('onclick', "clickedStitch(event)")
+        //TODO add pairs referring to: el.setAttribute('id', `${this.id}_${nearest.id}`)
+        document.querySelector('#cloned').appendChild(el)// appears in download, not online
     }
 
     var regex = /r[0-9]c+([0-9]+)-r[0-9]c+([0-9]+)/
@@ -196,7 +202,7 @@ function initDiagram() {
         this.classList.add('kiss_' + this.id.replace(regex,'$2_$1'))
     })
 
-    d3.drag().on("drag",moveStitch)(d3.selectAll(".node").filter(function(){ return has4links(this.id) }))
+    d3.drag().on("drag",moveStitch)(d3.selectAll(".node").filter(function(){ return 4 == nrOfLinks(this.id) }))
     links.on("click",clickedPair)
     links.style("stroke-width","5px") // wider lines are bigger targets
     links.style("stroke",grey) // keep the twist marks visible
