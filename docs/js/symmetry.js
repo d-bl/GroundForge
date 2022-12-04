@@ -1,3 +1,5 @@
+var green = "rgb(0, 255, 0)"
+var grey = "rgb(200, 200, 200)"
 function clickedPair() {
     var elem = d3.event.target
     d3.select(event.target).style("marker-mid",function() {
@@ -5,6 +7,7 @@ function clickedPair() {
         if (n <= 0) return ""
             return 'url("#twist-' + n + '")'
     })
+    d3.select('#cloned .link').stye('stroke',grey) // revert drag().on("start", ...)
     d3.select("#download2").style("display","none")
 }
 function has4links(id){
@@ -25,12 +28,13 @@ function clickedStitch(event) {
         var deletedStitchId = elem.id
         if (has4links(deletedStitchId)) {
             d3.selectAll("#cloned .link").filter(function () {
-                return this.id.includes(deletedStitchId + '-')
+                return this.id.startsWith(deletedStitchId + '-') // incoming pair
             }).each(function () {
                 var newXY = this.getAttribute("d").split(" ")[4]
                 var newEndId = this.id.replace(/.*-/,'')
                 d3.selectAll(`#cloned .${this.classList[1]}`).filter(function () {
-                    return this.id.endsWith(deletedStitchId)
+                    // outgoing pair, the same kissing pair as the incoming pair
+                    return this.id.endsWith('-' + deletedStitchId)
                 }).each(function () {
                     var def = this.getAttribute("d").split(" ")
                     this.setAttribute("d", withMovedMid(def[1], def[4] = newXY, def))
@@ -132,14 +136,11 @@ function initDiagram() {
     // only needed at onload but here we have the value of f available
     d3.selectAll(".re_clone").attr("onchange",`clones(${f})`)
 
-    var red = "rgb(255, 0, 0)"
-    var green = "rgb(0, 255, 0)"
-    var grey = "rgb(220, 220, 220)"
     var links = d3.selectAll(".link")
 
     function moveStitch() {
         var id = this.getAttribute("id")
-        // TODO for now it is the responsibility of the user to stay withing the
+        // TODO for now it is the responsibility of the user to stay withing the cycles
         var newXY = `${d3.event.x},${d3.event.y}`
 
         function moveEnd(){
@@ -169,22 +170,13 @@ function initDiagram() {
         // moveCenter moved the mid point to the mouse position
         // that implies a drag, little chance a click exactly hits the mid point
         if (dist(this) != 0 ) return
-
-        // split the id of the manipulated link into the ids of its nodes
-        var ids = new Set(this.getAttribute("id").split("-"))
-
-        // mark links with red that touch the manipulated link, on each side we get one that is not part of a cycle
-        // TODO we actually need the rest of both cycles as potential targets
-        links.filter(function () {
-            var ids2 = this.getAttribute("id").split("-")
-            return ids.has(ids2[0]) || ids.has(ids2[1])
-        }).style("stroke",red)
+        kissingPairs = findKissingPairs(this)
+        kissingPairs.style("stroke",grey)
 
         // find the edge with the centre closest to the mouse position
         var nearest = null
-        links.each(function () {
+        kissingPairs.each(function () {
             if (nearest == null) nearest = this
-            else if (this.style["stroke"] == red) return // avoid neighbour edges
             else {
                 distThis = dist(this)
                 if (distThis == 0 ) return
@@ -208,12 +200,28 @@ function initDiagram() {
     links.on("click",clickedPair)
     links.style("stroke-width","5px") // wider lines are bigger targets
     links.style("stroke",grey) // keep the twist marks visible
+    links.style("stroke-linejoin","bevel")
     d3.drag()
         .on("end", finishPinch)
         .on("drag", moveCenter)
         .on("start", function () {
-            links.style("stroke",grey) // reset pinch highlights
+            findKissingPairs(this).style("stroke",green)
         })(links)
+}
+function findKissingPairs(movedPair) {
+
+   // split the id of the manipulated link into the ids of its nodes
+   var involvedStitchIds = new Set(movedPair.getAttribute("id").split("-"))
+
+   var thisClassNrs = movedPair.classList[1].replace('kiss_','').split('_')
+   var kissMin = Math.min(...thisClassNrs)*1
+   var kissMax = Math.max(...thisClassNrs)*1
+   var kissClasses = `#cloned .kiss_${kissMin-1}_${kissMin}, #cloned .kiss_${kissMax}_${kissMax+1}`
+   return d3.selectAll(kissClasses).filter(function () {
+      var ids2 = this.getAttribute("id").split("-")
+      return !(involvedStitchIds.has(ids2[0]) || involvedStitchIds.has(ids2[1]))
+   })
+   // TODO reduce to cycle
 }
 function withMovedMid(end, newEnd, def) {
     var endXY = newEnd.split(',')
