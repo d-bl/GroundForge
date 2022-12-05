@@ -7,7 +7,7 @@ function clickedPair() {
         if (n <= 0) return ""
             return 'url("#twist-' + n + '")'
     })
-    d3.select('#cloned .link').stye('stroke',grey) // revert drag().on("start", ...)
+    d3.selectAll('#cloned .link').style('stroke',grey) // revert drag().on("start", ...)
     d3.select("#download2").style("display","none")
 }
 function nrOfLinks(id){
@@ -25,7 +25,7 @@ function clickedStitch(event) {
         break
     case "delete":
         var deletedStitchId = elem.id
-        if (4 <= nrOfLinks(deletedStitchId) ) { // TODO for now: >0 for stitches without ID
+        if (0 <= nrOfLinks(deletedStitchId) ) { // TODO for now: >0 for stitches without ID
             d3.selectAll("#cloned .link").filter(function () {
                 return this.id.startsWith(deletedStitchId + '-') // incoming pair
             }).each(function () {
@@ -151,10 +151,10 @@ function initDiagram() {
             return withMovedMid(def[4], def[1] = newXY, def)
         }
         this.setAttribute("transform", `translate(${newXY})`)
-        links.filter(function () {
+        d3.selectAll(".link").filter(function () {
             return this.getAttribute("id").startsWith(id+"-")
         }).attr("d", moveStart)
-        links.filter(function () {
+        d3.selectAll(".link").filter(function () {
             return this.getAttribute("id").endsWith("-"+id)
         }).attr("d", moveEnd)
     }
@@ -182,18 +182,42 @@ function initDiagram() {
                 else if ( dist(nearest) > distThis) nearest = this
             }
         })
-        // TODO reuse moveCenter
-        var def = nearest.getAttribute("d").split(" ")
-        def[2] = d3.event.x
-        def[3] = d3.event.y
-        nearest.setAttribute("d", def.join(" "))
+        var newID = Date.now()
+        var newXY = `${d3.event.x},${d3.event.y}`
+
+        var p1 = document.createElementNS("http://www.w3.org/2000/svg", "path")
+        var p2 = document.createElementNS("http://www.w3.org/2000/svg", "path")
+        p1.setAttribute("id",newID+this.id.replace(/.*-/,"-"))
+        p2.setAttribute("id",newID+nearest.id.replace(/.*-/,"-"))
+        p1.setAttribute("d", this.getAttribute("d"))
+        p2.setAttribute("d", nearest.getAttribute("d"))
+        p1.setAttribute("class", this.getAttribute("class"))
+        p2.setAttribute("class", nearest.getAttribute("class"))
+        p1.setAttribute("style", "stroke: rgb(200, 200, 200); stroke-width: 5px; fill: none; opacity: 1; stroke-linejoin: bevel;")
+        p2.setAttribute("style", "stroke: rgb(200, 200, 200); stroke-width: 5px; fill: none; opacity: 1; stroke-linejoin: bevel;")
+        var defA = p1.getAttribute("d").split(" ")
+        var defB = p2.getAttribute("d").split(" ")
+        p1.setAttribute("d", withMovedMid(defA[4], defA[1] = newXY, defA))
+        p2.setAttribute("d", withMovedMid(defB[4], defB[1] = newXY, defB))
+
+        var defA = this.getAttribute("d").split(" ")
+        var defB = nearest.getAttribute("d").split(" ")
+        this.setAttribute("d", withMovedMid(defA[1], defA[4] = newXY, defA))
+        nearest.setAttribute("d", withMovedMid(defB[1], defB[4] = newXY, defB))
+        this.setAttribute("id", this.id.replace(/-.*/,"-")+newID)
+        nearest.setAttribute("id", nearest.id.replace(/-.*/,"-")+newID)
 
         var el = document.createElementNS("http://www.w3.org/2000/svg", "g")
         el.innerHTML = PairSvg.shapes('ctc')
         el.setAttribute('transform',`translate(${d3.event.x},${d3.event.y})`)
         el.setAttribute('onclick', "clickedStitch(event)")
+        el.setAttribute('id', newID)
+        d3.drag().on("drag",moveStitch)(d3.select(el))
         //TODO add pairs referring to: el.setAttribute('id', `${this.id}_${nearest.id}`)
-        document.querySelector('#cloned').appendChild(el)// appears in download, not online
+        var container = document.querySelector('#cloned')
+        container.appendChild(el)
+        container.insertBefore(p1,container.firstChild)
+        container.insertBefore(p2,container.firstChild)
     }
 
     var regex = /r[0-9]c+([0-9]+)-r[0-9]c+([0-9]+)/
