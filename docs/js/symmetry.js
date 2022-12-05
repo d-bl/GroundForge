@@ -25,7 +25,7 @@ function clickedStitch(event) {
         break
     case "delete":
         var deletedStitchId = elem.id
-        if (0 <= nrOfLinks(deletedStitchId) ) { // TODO for now: >0 for stitches without ID
+        if (4 == nrOfLinks(deletedStitchId) ) {
             d3.selectAll("#cloned .link").filter(function () {
                 return this.id.startsWith(deletedStitchId + '-') // incoming pair
             }).each(function () {
