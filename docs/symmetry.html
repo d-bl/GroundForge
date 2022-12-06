@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title lang="en">GF: pair diagram demonstrator</title>
+    <title lang="en">GF: pair diagram symmetries</title>
     <style>
         input[type=number] { width: 3em; }
         input[type=text] { width: 7em; }
@@ -15,8 +15,8 @@
     </script>
 </head>
 <body onload="initDiagram()">
-    <h1>Work in progress</h1>
-    Drag stitches. Drag pairs to pinch for new stitches (WIP).
+    <h1>Bobbin lace pair diagrams - edit symmetries</h1>
+    Drag stitches. Drag pairs to pinch for new stitches.
     <form action="" onSubmit="return false;">
         <p class="inline">
             <a href="javascript:initDiagram()">Init</a>: variant
@@ -46,7 +46,8 @@
                onclick="this.style.display='none'"
             >get</a>
         </p>
-        <p>
+        <br>
+        <p class="inline">
             Click mode for stitches:
             <br>
             <input type="radio" id="delete" name="editMode" value="delete"><label for="delete">delete (<em>download/reload is your only undo</em>)</label>
@@ -58,12 +59,14 @@
             <br>
             <label for="twists">Twists between stitches </label><input type="number" id="twists" value="1" min="0" max="3">
             <label for="twists">Click on a pair to apply</label>
-            <br>
+        </p>
+        <p class="inline">
             <label for="shiftGroups">Indent every </label> <input type="number" id="shiftGroups" class="re_clone" value="2" min="0" max="2" step="1" disabled="disabled">
             <label for="shiftGroups"> template</label>
             <input type="radio" id="shiftHor" name="shift" value="hor" class="re_clone"><label for="shiftHor">rows</label>
             <input type="radio" id="shiftVert" name="shift" value="vert" class="re_clone" checked="checked"><label for="shiftVert">columns</label>
             <label for="shiftSteps">by</label> <input type="number" id="shiftSteps" class="re_clone" value="0" min="0" step="2">
+            <br>(<em>work in progress</em>)
         </p>
     </form>
     <div id="template"></div>

@@ -101,6 +101,7 @@ function clones (f) { // f is a
       <g id="cld"><use x="0" y="0" xlink:href="#cloned" transform="scale(-1,1) translate(0,${-h-f8})" /></g>
       <g id="clp"><use x="0" y="0" xlink:href="#cloned" transform="scale(1,-1) translate(${-w-f8},0)" /></g>
       <g id="clq"><use x="0" y="0" xlink:href="#cloned" transform="scale(-1,-1)" /></g>
+
       ${pattern(5*w, h+f8, 'bbbb'+'bbbb'+'bbbb'+'bbbb')}
       ${pattern(12*w, h+f8, 'bbbb'+'dddd'+'bbbb'+'dddd')}
 
@@ -139,7 +140,7 @@ function initDiagram() {
 
     function moveStitch() {
         var id = this.getAttribute("id")
-        // TODO for now it is the responsibility of the user to stay withing the cycles
+        // TODO for now it is the responsibility of the user to stay within the cycles
         var newXY = `${d3.event.x},${d3.event.y}`
 
         function moveEnd(){
@@ -185,28 +186,6 @@ function initDiagram() {
         var newID = Date.now()
         var newXY = `${d3.event.x},${d3.event.y}`
 
-        var p1 = document.createElementNS("http://www.w3.org/2000/svg", "path")
-        var p2 = document.createElementNS("http://www.w3.org/2000/svg", "path")
-        p1.setAttribute("id",newID+this.id.replace(/.*-/,"-"))
-        p2.setAttribute("id",newID+nearest.id.replace(/.*-/,"-"))
-        p1.setAttribute("d", this.getAttribute("d"))
-        p2.setAttribute("d", nearest.getAttribute("d"))
-        p1.setAttribute("class", this.getAttribute("class"))
-        p2.setAttribute("class", nearest.getAttribute("class"))
-        p1.setAttribute("style", "stroke: rgb(200, 200, 200); stroke-width: 5px; fill: none; opacity: 1; stroke-linejoin: bevel;")
-        p2.setAttribute("style", "stroke: rgb(200, 200, 200); stroke-width: 5px; fill: none; opacity: 1; stroke-linejoin: bevel;")
-        var defA = p1.getAttribute("d").split(" ")
-        var defB = p2.getAttribute("d").split(" ")
-        p1.setAttribute("d", withMovedMid(defA[4], defA[1] = newXY, defA))
-        p2.setAttribute("d", withMovedMid(defB[4], defB[1] = newXY, defB))
-
-        var defA = this.getAttribute("d").split(" ")
-        var defB = nearest.getAttribute("d").split(" ")
-        this.setAttribute("d", withMovedMid(defA[1], defA[4] = newXY, defA))
-        nearest.setAttribute("d", withMovedMid(defB[1], defB[4] = newXY, defB))
-        this.setAttribute("id", this.id.replace(/-.*/,"-")+newID)
-        nearest.setAttribute("id", nearest.id.replace(/-.*/,"-")+newID)
-
         var el = document.createElementNS("http://www.w3.org/2000/svg", "g")
         el.innerHTML = PairSvg.shapes('ctc')
         el.setAttribute('transform',`translate(${d3.event.x},${d3.event.y})`)
@@ -216,8 +195,8 @@ function initDiagram() {
         //TODO add pairs referring to: el.setAttribute('id', `${this.id}_${nearest.id}`)
         var container = document.querySelector('#cloned')
         container.appendChild(el)
-        container.insertBefore(p1,container.firstChild)
-        container.insertBefore(p2,container.firstChild)
+        container.insertBefore(splitLink(this, newID, newXY), container.firstChild)
+        container.insertBefore(splitLink(nearest, newID, newXY), container.firstChild)
     }
 
     var regex = /r[0-9]c+([0-9]+)-r[0-9]c+([0-9]+)/
@@ -237,6 +216,20 @@ function initDiagram() {
         .on("start", function () {
             findKissingPairs(this).style("stroke",green)
         })(links)
+}
+function splitLink(nearest, newID, newXY) {
+    var p2 = document.createElementNS("http://www.w3.org/2000/svg", "path")
+    p2.setAttribute("id",newID+nearest.id.replace(/.*-/,"-"))
+    p2.setAttribute("d", nearest.getAttribute("d"))
+    p2.setAttribute("class", nearest.getAttribute("class"))
+    p2.setAttribute("style", "stroke: rgb(200, 200, 200); stroke-width: 5px; fill: none; opacity: 1; stroke-linejoin: bevel;")
+    var defB = p2.getAttribute("d").split(" ")
+    p2.setAttribute("d", withMovedMid(defB[4], defB[1] = newXY, defB))
+    var defB = nearest.getAttribute("d").split(" ")
+    nearest.setAttribute("d", withMovedMid(defB[1], defB[4] = newXY, defB))
+    nearest.setAttribute("id", nearest.id.replace(/-.*/,"-")+newID)
+    d3.select(p2).on("click",clickedPair)
+    return p2
 }
 function findKissingPairs(movedPair) {
 
