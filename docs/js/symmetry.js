@@ -136,86 +136,85 @@ function initDiagram() {
     // only needed at onload but here we have the value of f available
     d3.selectAll(".re_clone").attr("onchange",`clones(${f})`)
 
-    var links = d3.selectAll(".link")
-
-    function moveStitch() {
-        var id = this.getAttribute("id")
-        // TODO for now it is the responsibility of the user to stay within the cycles
-        var newXY = `${d3.event.x},${d3.event.y}`
-
-        function moveEnd(){
-            var def = this.getAttribute("d").split(" ")
-            return withMovedMid(def[1], def[4] = newXY, def)
-        }
-        function moveStart(){
-            var def = this.getAttribute("d").split(" ")
-            return withMovedMid(def[4], def[1] = newXY, def)
-        }
-        this.setAttribute("transform", `translate(${newXY})`)
-        d3.selectAll(".link").filter(function () {
-            return this.getAttribute("id").startsWith(id+"-")
-        }).attr("d", moveStart)
-        d3.selectAll(".link").filter(function () {
-            return this.getAttribute("id").endsWith("-"+id)
-        }).attr("d", moveEnd)
-    }
-
-    function finishPinch() {
-        function dist(a) {
-           var def = a.getAttribute("d").split(" ")
-           var powX = Math.pow(def[2]*1 - d3.event.x, 2)
-           var powY = Math.pow(def[3]*1 - d3.event.y, 2)
-           return powX + powY
-        }
-        // moveCenter moved the mid point to the mouse position
-        // that implies a drag, little chance a click exactly hits the mid point
-        if (dist(this) != 0 ) return
-        kissingPairs = findKissingPairs(this)
-        kissingPairs.style("stroke",grey)
-
-        // find the edge with the centre closest to the mouse position
-        var nearest = null
-        kissingPairs.each(function () {
-            if (nearest == null) nearest = this
-            else {
-                distThis = dist(this)
-                if (distThis == 0 ) return
-                else if ( dist(nearest) > distThis) nearest = this
-            }
-        })
-        var newID = Date.now()
-        var newXY = `${d3.event.x},${d3.event.y}`
-
-        var el = document.createElementNS("http://www.w3.org/2000/svg", "g")
-        el.innerHTML = PairSvg.shapes('ctc')
-        el.setAttribute('transform',`translate(${d3.event.x},${d3.event.y})`)
-        el.setAttribute('onclick', "clickedStitch(event)")
-        el.setAttribute('id', newID)
-        d3.drag().on("drag",moveStitch)(d3.select(el))
-        //TODO add pairs referring to: el.setAttribute('id', `${this.id}_${nearest.id}`)
-        var container = document.querySelector('#cloned')
-        container.appendChild(el)
-        container.insertBefore(splitLink(this, newID, newXY), container.firstChild)
-        container.insertBefore(splitLink(nearest, newID, newXY), container.firstChild)
-    }
-
     var regex = /r[0-9]c+([0-9]+)-r[0-9]c+([0-9]+)/
+    var links = d3.selectAll(".link")
     links.each(function () {
         this.classList.add('kiss_' + this.id.replace(regex,'$1_$2'))
         this.classList.add('kiss_' + this.id.replace(regex,'$2_$1'))
     })
-
-    d3.drag().on("drag",moveStitch)(d3.selectAll(".node").filter(function(){ return 4 == nrOfLinks(this.id) }))
     links.on("click",clickedPair)
     links.style("stroke-width","5px") // wider lines are bigger targets
     links.style("stroke",grey) // keep the twist marks visible
     links.style("stroke-linejoin","bevel")
+    d3.drag().on("drag",moveStitch)(d3.selectAll(".node").filter(function(){ return 4 == nrOfLinks(this.id) }))
+    dragLinks(links)
+}
+function dragLinks(links){
     d3.drag()
         .on("end", finishPinch)
         .on("drag", moveCenter)
         .on("start", function () {
             findKissingPairs(this).style("stroke",green)
         })(links)
+}
+function finishPinch() {
+    function dist(a) {
+       var def = a.getAttribute("d").split(" ")
+       var powX = Math.pow(def[2]*1 - d3.event.x, 2)
+       var powY = Math.pow(def[3]*1 - d3.event.y, 2)
+       return powX + powY
+    }
+    // moveCenter moved the mid point to the mouse position
+    // that implies a drag, little chance a click exactly hits the mid point
+    if (dist(this) != 0 ) return
+    kissingPairs = findKissingPairs(this)
+    kissingPairs.style("stroke",grey)
+
+    // find the edge with the centre closest to the mouse position
+    var nearest = null
+    kissingPairs.each(function () {
+        if (nearest == null) nearest = this
+        else {
+            distThis = dist(this)
+            if (distThis == 0 ) return
+            else if ( dist(nearest) > distThis) nearest = this
+        }
+    })
+    var newID = Date.now()
+    var newXY = `${d3.event.x},${d3.event.y}`
+
+    var el = document.createElementNS("http://www.w3.org/2000/svg", "g")
+    el.innerHTML = PairSvg.shapes('ctc')
+    el.setAttribute('transform',`translate(${d3.event.x},${d3.event.y})`)
+    el.setAttribute('onclick', "clickedStitch(event)")
+    el.setAttribute('id', newID)
+    d3.drag().on("drag",moveStitch)(d3.select(el))
+    //TODO add pairs referring to: el.setAttribute('id', `${this.id}_${nearest.id}`)
+    var container = document.querySelector('#cloned')
+    container.appendChild(el)
+    container.insertBefore(splitLink(this, newID, newXY), container.firstChild)
+    container.insertBefore(splitLink(nearest, newID, newXY), container.firstChild)
+}
+function moveStitch() {
+    var id = this.getAttribute("id")
+    // TODO for now it is the responsibility of the user to stay within the cycles
+    var newXY = `${d3.event.x},${d3.event.y}`
+
+    function moveEnd(){
+        var def = this.getAttribute("d").split(" ")
+        return withMovedMid(def[1], def[4] = newXY, def)
+    }
+    function moveStart(){
+        var def = this.getAttribute("d").split(" ")
+        return withMovedMid(def[4], def[1] = newXY, def)
+    }
+    this.setAttribute("transform", `translate(${newXY})`)
+    d3.selectAll(".link").filter(function () {
+        return this.getAttribute("id").startsWith(id+"-")
+    }).attr("d", moveStart)
+    d3.selectAll(".link").filter(function () {
+        return this.getAttribute("id").endsWith("-"+id)
+    }).attr("d", moveEnd)
 }
 function splitLink(nearest, newID, newXY) {
     var p2 = document.createElementNS("http://www.w3.org/2000/svg", "path")
@@ -229,6 +228,7 @@ function splitLink(nearest, newID, newXY) {
     nearest.setAttribute("d", withMovedMid(defB[1], defB[4] = newXY, defB))
     nearest.setAttribute("id", nearest.id.replace(/-.*/,"-")+newID)
     d3.select(p2).on("click",clickedPair)
+    dragLinks(d3.select(p2))
     return p2
 }
 function findKissingPairs(movedPair) {
