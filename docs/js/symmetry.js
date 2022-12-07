@@ -3,7 +3,7 @@ var grey = "rgb(200, 200, 200)"
 function clickedPair() {
     var elem = d3.event.target
     d3.select(event.target).style("marker-mid",function() {
-        var n = d3.select('#twists').attr("value")
+        var n = d3.select('#twists').node().value
         if (n <= 0) return ""
             return 'url("#twist-' + n + '")'
     })
