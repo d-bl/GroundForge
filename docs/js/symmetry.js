@@ -136,7 +136,7 @@ function initDiagram() {
     // only needed at onload but here we have the value of f available
     d3.selectAll(".re_clone").attr("onchange",`clones(${f})`)
 
-    var regex = /r[0-9]c+([0-9]+)-r[0-9]c+([0-9]+)/
+    var regex = /r[0-9]+c([0-9]+)-r[0-9]+c([0-9]+)/
     var links = d3.selectAll(".link")
     links.each(function () {
         this.classList.add('kiss_' + this.id.replace(regex,'$1_$2'))
