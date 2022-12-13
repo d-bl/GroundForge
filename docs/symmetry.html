@@ -7,6 +7,7 @@
         input[type=number] { width: 3em; }
         input[type=text] { width: 7em; }
         .inline { display: inline-block; margin-right: 2em; }
+        option, select { font-weight: bold }
     </style>
     <script src="js/d3.v4.min.js" type="text/javascript"></script>
     <script src="js/GroundForge-opt.js" type="text/javascript"></script>
@@ -16,9 +17,8 @@
 </head>
 <body onload="initDiagram()">
     <h1>Bobbin lace pair diagrams - edit symmetries</h1>
-    Drag stitches. Drag pairs to pinch for new stitches.
-    <br>
     <a href="/GroundForge-help/symmetry" target="_blank"><img src="images/information-icon.png" title="help"></a>
+    Drag stitches. Drag pairs to pinch for new stitches.
     <form action="" onSubmit="return false;">
         <p class="inline">
             <button><a href="javascript:initDiagram()">Init</a>
@@ -67,13 +67,17 @@
             <label for="twists">twists between stitches </label>
         </p>
         <p class="inline">
-            Indent<br>
-            <label for="shiftGroups"> every </label> <input type="number" id="shiftGroups" class="re_clone" value="2" min="0" max="2" step="1" disabled="disabled">
-            <label for="shiftGroups"> template</label>
-            <input type="radio" id="shiftHor" name="shift" value="hor" class="re_clone"><label for="shiftHor">rows</label>
-            <input type="radio" id="shiftVert" name="shift" value="vert" class="re_clone" checked="checked"><label for="shiftVert">columns</label>
-            <br>
-            <label for="shiftSteps">by</label> <input type="number" id="shiftSteps" class="re_clone" value="0" min="0" step="2">
+            First row:
+            <strong>b</strong> +
+            <select id="secondTile" class="re_clone">
+                <option value="bbbbbbbbbbbbbbbb,bbbbbbbbbbbbbbbb,bbbbbbbbbbbbbbbb">b</option>
+                <option value="bbbbddddbbbbdddd,bdbdbdbdbdbdbdbd,bdbddbdbbdbddbdb" selected="selected">d</option>
+                <option value="bbbbppppbbbbpppp,bpbpbpbpbpbpbpbp,bpbppbpbbpbppbpb">p</option>
+                <option value="bbbbqqqqbbbbqqqq,bqbqbqbqbqbqbqbq,bqbqqbqbbqbqqbqb">q</option>
+            </select>
+            indent
+            <label for="indentSteps">by</label> <input type="number" id="indentSteps" class="re_clone" value="0" min="0" step="2">
+            <br>Second row: some <strong>b</strong> + <strong>d</strong> + <strong>p</strong> + <strong>q</strong> variations
             (<em>work in progress</em>)
         </p>
     </form>
