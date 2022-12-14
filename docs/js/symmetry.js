@@ -52,12 +52,14 @@ function dropTwists(s) {
 }
 function clones (f) { // f is a
     d3.select("#download2").style("display","none")
+    var stitchesW = document.querySelector("#width").value * 1
+    var stitchesH = document.querySelector("#height").value * 1
     var f8 = f * 0.8
-    var w = f * (document.querySelector("#width").value - 1)
-    var h = f * (document.querySelector("#height").value - 1)
-    var dxy = f * document.querySelector("#indentSteps").value
-    var patterns = document.querySelector("#secondTile").value.split(",")
-    console.log('####'+patterns)
+    var w = f * (stitchesW - 1)
+    var h = f * (stitchesH - 1)
+    var indentSteps = document.querySelector("#indentSteps").value * 1
+    var bAndOneOther = document.querySelector("#bAndOneOther").value.split(",")
+    var bdpqRowsCols = document.querySelector("#bdpqRowsCols").value.split(",")
     var b = ''
     var d = `scale(-1,1) translate(${-w-f8},0)`
     var p = `scale(1,-1) translate(0,${-h-f8})`
@@ -71,42 +73,65 @@ function clones (f) { // f is a
       <g id="clp"><use x="0" y="0" xlink:href="#cloned" transform="scale(1,-1) translate(${-w-f8},0)" /></g>
       <g id="clq"><use x="0" y="0" xlink:href="#cloned" transform="scale(-1,-1)" /></g>
 
-      ${pattern(6*w, h+f8, patterns[2], w,h, 0, 0)}
-      ${pattern(11*w, h+f8, patterns[1], w,h, 0, dxy)}
-      ${pattern(16*w, h+f8, patterns[0], w,h, dxy, 0)}
+      ${pattern(9*w, h+f8, bAndOneOther[2], w,h, 0, 0)}
+      ${pattern(16*w, h+f8, bAndOneOther[1], w,h, 0, f * (indentSteps % (stitchesH - 1)))}
+      ${pattern(23*w, h+f8, bAndOneOther[0], w,h,f *  (indentSteps % (stitchesW - 1)), 0)}
 
-      ${pattern(1.2*w,9*h+f8, 'dbpq'+'dbpq'+'dbpq'+'dbpq', w,h, 0, 0)}
-      ${pattern(6*w,  9*h+f8, 'dddd'+'bbbb'+'pppp'+'qqqq', w,h, 0, 0)}
-      ${pattern(11*w, 9*h+f8, 'dbdb'+'qpqp'+'bdbd'+'pqpq', w,h, 0, 0)}
-      ${pattern(16*w, 9*h+f8, 'bdpq'+'bdpq'+'bdpq'+'bdpq', w,h, 0, 0)}
-      ${pattern(21*w, 9*h+f8, 'bbbb'+'dddd'+'pppp'+'qqqq', w,h, 0, 0)}
-      ${pattern(26*w, 9*h+f8, 'bbbb'+'dddd'+'qqqq'+'pppp', w,h, 0, 0)}
-      ${pattern(31*w, 9*h+f8, 'bpbp'+'dqdq'+'bpbp'+'dqdq', w,h, 0, 0)}
+      ${pattern(w+f8, 10*h+f8, bdpqRowsCols[1], w,h, 0, f * indentSteps)}
+      ${pattern( 8*w, 10*h+f8, bdpqRowsCols[0], w,h, f * indentSteps, 0)}
+
+      ${pattern( 9*w, 18*h+f8, 'dbpq'+'dbpq'+'dbpq'+'dbpq', w,h, 0, 0)}
+      ${pattern(16*w, 18*h+f8, 'dddd'+'bbbb'+'pppp'+'qqqq', w,h, 0, 0)}
+      ${pattern(23*w, 18*h+f8, 'dbdb'+'qpqp'+'bdbd'+'pqpq', w,h, 0, 0)}
+      ${pattern(30*w, 18*h+f8, 'bdpq'+'bdpq'+'bdpq'+'bdpq', w,h, 0, 0)}
+      ${pattern(37*w, 18*h+f8, 'bbbb'+'dddd'+'qqqq'+'pppp', w,h, 0, 0)}
+      ${pattern(44*w, 18*h+f8, 'bpbp'+'dqdq'+'bpbp'+'dqdq', w,h, 0, 0)}
     `)
 }
 function pattern(x,y, s, w,h, dx, dy){
-  console.log('==='+s)
   return `
-    <g transform="scale(0.4,0.4) translate(${x},${y})">
+    <g transform="scale(0.3,0.3) translate(${x},${y})">
       <use xlink:href="#cl${s[0]}" x="0" y="0" />
       <use xlink:href="#cl${s[1]}" x="${w}" y="${1*dy}" />
       <use xlink:href="#cl${s[2]}" x="${2*w}" y="${2*dy}" />
       <use xlink:href="#cl${s[3]}" x="${3*w}" y="${3*dy}" />
+      <use xlink:href="#cl${s[0]}" x="${4*w}" y="${4*dy}" />
+      <use xlink:href="#cl${s[1]}" x="${5*w}" y="${5*dy}" />
 
       <use xlink:href="#cl${s[4]}" x="${dx}" y="${h}" />
       <use xlink:href="#cl${s[5]}" x="${w+dx}" y="${h+1*dy}" />
       <use xlink:href="#cl${s[6]}" x="${2*w+dx}" y="${h+2*dy}" />
       <use xlink:href="#cl${s[7]}" x="${3*w+dx}" y="${h+3*dy}" />
+      <use xlink:href="#cl${s[4]}" x="${4*w+dx}" y="${h+4*dy}" />
+      <use xlink:href="#cl${s[5]}" x="${5*w+dx}" y="${h+5*dy}" />
 
-      <use xlink:href="#cl${s[8]}" x="${2*dx}" y="${2*h}" />
-      <use xlink:href="#cl${s[9]}" x="${w+2*dx}" y="${2*h+1*dy}" />
+      <use xlink:href="#cl${s [8]}" x="${2*dx}" y="${2*h}" />
+      <use xlink:href="#cl${s[ 9]}" x="${w+2*dx}" y="${2*h+1*dy}" />
       <use xlink:href="#cl${s[10]}" x="${2*w+2*dx}" y="${2*h+2*dy}" />
       <use xlink:href="#cl${s[11]}" x="${3*w+2*dx}" y="${2*h+3*dy}" />
+      <use xlink:href="#cl${s[ 8]}" x="${4*w+2*dx}" y="${2*h+4*dy}" />
+      <use xlink:href="#cl${s[ 9]}" x="${5*w+2*dx}" y="${2*h+5*dy}" />
 
       <use xlink:href="#cl${s[12]}" x="${3*dx}" y="${3*h}" />
       <use xlink:href="#cl${s[13]}" x="${w+3*dx}" y="${3*h+1*dy}" />
       <use xlink:href="#cl${s[14]}" x="${2*w+3*dx}" y="${3*h+2*dy}" />
       <use xlink:href="#cl${s[15]}" x="${3*w+3*dx}" y="${3*h+3*dy}" />
+      <use xlink:href="#cl${s[12]}" x="${4*w+3*dx}" y="${3*h+4*dy}" />
+      <use xlink:href="#cl${s[13]}" x="${5*w+3*dx}" y="${3*h+5*dy}" />
+
+      <use xlink:href="#cl${s[0]}" x="${4*dx}" y="${4*h}" />
+      <use xlink:href="#cl${s[1]}" x="${w+4*dx}" y="${4*h+dy}" />
+      <use xlink:href="#cl${s[2]}" x="${2*w+4*dx}" y="${4*h+2*dy}" />
+      <use xlink:href="#cl${s[3]}" x="${3*w+4*dx}" y="${4*h+3*dy}" />
+      <use xlink:href="#cl${s[0]}" x="${4*w+4*dx}" y="${4*h+4*dy}" />
+      <use xlink:href="#cl${s[1]}" x="${5*w+4*dx}" y="${4*h+5*dy}" />
+
+      <use xlink:href="#cl${s[4]}" x="${5*dx}" y="${5*h}" />
+      <use xlink:href="#cl${s[5]}" x="${w+5*dx}" y="${5*h+1*dy}" />
+      <use xlink:href="#cl${s[6]}" x="${2*w+5*dx}" y="${5*h+2*dy}" />
+      <use xlink:href="#cl${s[7]}" x="${3*w+5*dx}" y="${5*h+3*dy}" />
+      <use xlink:href="#cl${s[4]}" x="${4*w+5*dx}" y="${5*h+4*dy}" />
+      <use xlink:href="#cl${s[5]}" x="${5*w+5*dx}" y="${5*h+5*dy}" />
     </g>
   `
 }
@@ -118,8 +143,8 @@ function initDiagram() {
 
     var clonedScale = "scale(1.8,1.8)"
     var f = 25.2 // related to clonedScale
-    var w = 19 * f * (document.querySelector("#width").value - 1)
-    var h = 10 * f * (document.querySelector("#height").value - 1)
+    var w = 14.7 * f * (document.querySelector("#width").value - 1)
+    var h = 9 * f * (document.querySelector("#height").value - 1)
     var q = `patchWidth=${cols}&patchHeight=${rows}&${pattern}`
     var svg = PairSvg.render(TilesConfig(q).getItemMatrix, w, h , 1)
 
