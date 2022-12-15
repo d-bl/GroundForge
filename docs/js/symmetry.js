@@ -81,57 +81,61 @@ function clones (f) { // f is a
       ${pattern( 8*w, 10*h+f8, bdpqRowsCols[0], w,h, f * indentSteps, 0)}
 
       ${pattern( 9*w, 18*h+f8, 'dbpq'+'dbpq'+'dbpq'+'dbpq', w,h, 0, 0)}
-      ${pattern(16*w, 18*h+f8, 'dddd'+'bbbb'+'pppp'+'qqqq', w,h, 0, 0)}
+      ${pattern(16*w, 18*h+f8, 'bbbb'+'dddd'+'qqqq'+'pppp', w,h, 0, 0)}
       ${pattern(23*w, 18*h+f8, 'dbdb'+'qpqp'+'bdbd'+'pqpq', w,h, 0, 0)}
-      ${pattern(30*w, 18*h+f8, 'bdpq'+'bdpq'+'bdpq'+'bdpq', w,h, 0, 0)}
-      ${pattern(37*w, 18*h+f8, 'bbbb'+'dddd'+'qqqq'+'pppp', w,h, 0, 0)}
-      ${pattern(44*w, 18*h+f8, 'bpbp'+'dqdq'+'bpbp'+'dqdq', w,h, 0, 0)}
+      ${pattern(30*w, 18*h+f8, 'bpbp'+'dqdq'+'bpbp'+'dqdq', w,h, 0, 0)}
     `)
 }
-function pattern(x,y, s, w,h, dx, dy){
+function pattern(patternX, patternY, s, width, height, dx, dy){
+  function x(column) {
+    return column * width + column * dx
+  }
+  function y(row, column) {
+    return row * height + column * dy
+  }
   return `
-    <g transform="scale(0.3,0.3) translate(${x},${y})">
-      <use xlink:href="#cl${s[0]}" x="0" y="0" />
-      <use xlink:href="#cl${s[1]}" x="${w}" y="${1*dy}" />
-      <use xlink:href="#cl${s[2]}" x="${2*w}" y="${2*dy}" />
-      <use xlink:href="#cl${s[3]}" x="${3*w}" y="${3*dy}" />
-      <use xlink:href="#cl${s[0]}" x="${4*w}" y="${4*dy}" />
-      <use xlink:href="#cl${s[1]}" x="${5*w}" y="${5*dy}" />
+    <g transform="scale(0.3,0.3) translate(${patternX},${patternY})">
+      <use xlink:href="#cl${s[ 0]}" x="${x(0)}" y="${y(0,0)}"/>
+      <use xlink:href="#cl${s[ 1]}" x="${x(1)}" y="${y(0,1)}"/>
+      <use xlink:href="#cl${s[ 2]}" x="${x(2)}" y="${y(0,2)}"/>
+      <use xlink:href="#cl${s[ 3]}" x="${x(3)}" y="${y(0,3)}"/>
+      <use xlink:href="#cl${s[ 0]}" x="${x(4)}" y="${y(0,4)}"/>
+      <use xlink:href="#cl${s[ 1]}" x="${x(5)}" y="${y(0,5)}"/>
 
-      <use xlink:href="#cl${s[4]}" x="${dx}" y="${h}" />
-      <use xlink:href="#cl${s[5]}" x="${w+dx}" y="${h+1*dy}" />
-      <use xlink:href="#cl${s[6]}" x="${2*w+dx}" y="${h+2*dy}" />
-      <use xlink:href="#cl${s[7]}" x="${3*w+dx}" y="${h+3*dy}" />
-      <use xlink:href="#cl${s[4]}" x="${4*w+dx}" y="${h+4*dy}" />
-      <use xlink:href="#cl${s[5]}" x="${5*w+dx}" y="${h+5*dy}" />
+      <use xlink:href="#cl${s[ 4]}" x="${x(0)}" y="${y(1,0)}"/>
+      <use xlink:href="#cl${s[ 5]}" x="${x(1)}" y="${y(1,1)}"/>
+      <use xlink:href="#cl${s[ 6]}" x="${x(2)}" y="${y(1,2)}"/>
+      <use xlink:href="#cl${s[ 7]}" x="${x(3)}" y="${y(1,3)}"/>
+      <use xlink:href="#cl${s[ 4]}" x="${x(4)}" y="${y(1,4)}"/>
+      <use xlink:href="#cl${s[ 5]}" x="${x(5)}" y="${y(1,5)}"/>
 
-      <use xlink:href="#cl${s [8]}" x="${2*dx}" y="${2*h}" />
-      <use xlink:href="#cl${s[ 9]}" x="${w+2*dx}" y="${2*h+1*dy}" />
-      <use xlink:href="#cl${s[10]}" x="${2*w+2*dx}" y="${2*h+2*dy}" />
-      <use xlink:href="#cl${s[11]}" x="${3*w+2*dx}" y="${2*h+3*dy}" />
-      <use xlink:href="#cl${s[ 8]}" x="${4*w+2*dx}" y="${2*h+4*dy}" />
-      <use xlink:href="#cl${s[ 9]}" x="${5*w+2*dx}" y="${2*h+5*dy}" />
+      <use xlink:href="#cl${s[ 8]}" x="${x(0)}" y="${y(2,0)}"/>
+      <use xlink:href="#cl${s[ 9]}" x="${x(1)}" y="${y(2,1)}"/>
+      <use xlink:href="#cl${s[10]}" x="${x(2)}" y="${y(2,2)}"/>
+      <use xlink:href="#cl${s[11]}" x="${x(3)}" y="${y(2,3)}"/>
+      <use xlink:href="#cl${s[ 8]}" x="${x(4)}" y="${y(2,4)}"/>
+      <use xlink:href="#cl${s[ 9]}" x="${x(5)}" y="${y(2,5)}"/>
 
-      <use xlink:href="#cl${s[12]}" x="${3*dx}" y="${3*h}" />
-      <use xlink:href="#cl${s[13]}" x="${w+3*dx}" y="${3*h+1*dy}" />
-      <use xlink:href="#cl${s[14]}" x="${2*w+3*dx}" y="${3*h+2*dy}" />
-      <use xlink:href="#cl${s[15]}" x="${3*w+3*dx}" y="${3*h+3*dy}" />
-      <use xlink:href="#cl${s[12]}" x="${4*w+3*dx}" y="${3*h+4*dy}" />
-      <use xlink:href="#cl${s[13]}" x="${5*w+3*dx}" y="${3*h+5*dy}" />
+      <use xlink:href="#cl${s[12]}" x="${x(0)}" y="${y(3,0)}"/>
+      <use xlink:href="#cl${s[13]}" x="${x(1)}" y="${y(3,1)}"/>
+      <use xlink:href="#cl${s[14]}" x="${x(2)}" y="${y(3,2)}"/>
+      <use xlink:href="#cl${s[15]}" x="${x(3)}" y="${y(3,3)}"/>
+      <use xlink:href="#cl${s[12]}" x="${x(4)}" y="${y(3,4)}"/>
+      <use xlink:href="#cl${s[13]}" x="${x(5)}" y="${y(3,5)}"/>
 
-      <use xlink:href="#cl${s[0]}" x="${4*dx}" y="${4*h}" />
-      <use xlink:href="#cl${s[1]}" x="${w+4*dx}" y="${4*h+dy}" />
-      <use xlink:href="#cl${s[2]}" x="${2*w+4*dx}" y="${4*h+2*dy}" />
-      <use xlink:href="#cl${s[3]}" x="${3*w+4*dx}" y="${4*h+3*dy}" />
-      <use xlink:href="#cl${s[0]}" x="${4*w+4*dx}" y="${4*h+4*dy}" />
-      <use xlink:href="#cl${s[1]}" x="${5*w+4*dx}" y="${4*h+5*dy}" />
+      <use xlink:href="#cl${s[ 0]}" x="${x(0)}" y="${y(4,0)}"/>
+      <use xlink:href="#cl${s[ 1]}" x="${x(1)}" y="${y(4,1)}"/>
+      <use xlink:href="#cl${s[ 2]}" x="${x(2)}" y="${y(4,2)}"/>
+      <use xlink:href="#cl${s[ 3]}" x="${x(3)}" y="${y(4,3)}"/>
+      <use xlink:href="#cl${s[ 0]}" x="${x(4)}" y="${y(4,4)}"/>
+      <use xlink:href="#cl${s[ 1]}" x="${x(5)}" y="${y(4,5)}"/>
 
-      <use xlink:href="#cl${s[4]}" x="${5*dx}" y="${5*h}" />
-      <use xlink:href="#cl${s[5]}" x="${w+5*dx}" y="${5*h+1*dy}" />
-      <use xlink:href="#cl${s[6]}" x="${2*w+5*dx}" y="${5*h+2*dy}" />
-      <use xlink:href="#cl${s[7]}" x="${3*w+5*dx}" y="${5*h+3*dy}" />
-      <use xlink:href="#cl${s[4]}" x="${4*w+5*dx}" y="${5*h+4*dy}" />
-      <use xlink:href="#cl${s[5]}" x="${5*w+5*dx}" y="${5*h+5*dy}" />
+      <use xlink:href="#cl${s[ 4]}" x="${x(0)}" y="${y(5,0)}"/>
+      <use xlink:href="#cl${s[ 5]}" x="${x(1)}" y="${y(5,1)}"/>
+      <use xlink:href="#cl${s[ 6]}" x="${x(2)}" y="${y(5,2)}"/>
+      <use xlink:href="#cl${s[ 7]}" x="${x(3)}" y="${y(5,3)}"/>
+      <use xlink:href="#cl${s[ 4]}" x="${x(4)}" y="${y(5,4)}"/>
+      <use xlink:href="#cl${s[ 5]}" x="${x(5)}" y="${y(5,5)}"/>
     </g>
   `
 }
