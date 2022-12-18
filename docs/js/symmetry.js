@@ -70,14 +70,12 @@ function clones (f) { // f is a
       var m = s.split(' ')
       var result = ''
       for (let row = 0; row < 6; row++) {
-        //console.log("== row " + row)
         for (let column = 0; column < 6; column++) {
-          x = column * w + f* ((row * indentX) % (stitchesW - 1))
+          x = column * w + f * ((row * indentX) % (stitchesW - 1))
           y = row * h + f * ((column * indentY) % (stitchesH - 1))
-          //var cx = (column + 4*w - row * Math.floor(indentX/w)) % 4
-          //console.log(cx + " -- " + column + width + " -- " + Math.floor(indentX/width))
-          c = m[row%4][column%4] //
-          result += `<use xlink:href="#cl${c}" x="${x}" y="${y}"/>`
+          var c = column + Math.floor((row * indentX)/(stitchesW - 1))
+          var r = row + Math.floor((column * indentY)/(stitchesH - 1))
+          result += `<use xlink:href="#cl${m[r%4][c%4]}" x="${x}" y="${y}"/>`
         }
       }
       return `
