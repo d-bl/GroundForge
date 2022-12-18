@@ -65,6 +65,28 @@ function clones (f) { // f is a
     var p = `scale(1,-1) translate(0,${-h-f8})`
     var q = `scale(-1,-1) translate(${-w-f8},${-h-f8})`
 
+    function pattern(patternX, patternY, s, indentX, indentY){
+      console.log (`w=${w} h=${h} indentX=${indentX} indentY=${indentY}`)
+      var m = s.split(' ')
+      var result = ''
+      for (let row = 0; row < 6; row++) {
+        //console.log("== row " + row)
+        for (let column = 0; column < 6; column++) {
+          x = column * w + f* ((row * indentX) % (stitchesW - 1))
+          y = row * h + f * ((column * indentY) % (stitchesH - 1))
+          //var cx = (column + 4*w - row * Math.floor(indentX/w)) % 4
+          //console.log(cx + " -- " + column + width + " -- " + Math.floor(indentX/width))
+          c = m[row%4][column%4] //
+          result += `<use xlink:href="#cl${c}" x="${x}" y="${y}"/>`
+        }
+      }
+      return `
+        <g transform="scale(0.3,0.3) translate(${patternX},${patternY})">
+          ${result}
+        </g>
+      `
+    }
+
     // 4 base clones out of sight and on top of one another allow translates independent of b/d/p/q
     // TODO position the patterns depending on the width of the viewport
     d3.select('#template #clones').html(`
@@ -73,35 +95,18 @@ function clones (f) { // f is a
       <g id="clp"><use x="0" y="0" xlink:href="#cloned" transform="scale(1,-1) translate(${-w-f8},0)" /></g>
       <g id="clq"><use x="0" y="0" xlink:href="#cloned" transform="scale(-1,-1)" /></g>
 
-      ${pattern( 9*w, h+f8, bAndOneOther[2], w,h, 0, 0)}
-      ${pattern(16*w, h+f8, bAndOneOther[1], w,h, 0, f * indentSteps)}
-      ${pattern(23*w, h+f8, bAndOneOther[0], w,h, f * indentSteps, 0)}
+      ${pattern( 9*w, h+f8, bAndOneOther[2], 0, 0)}
+      ${pattern(20*w, h+f8, bAndOneOther[1], 0, indentSteps)}
+      ${pattern(27*w, h+f8, bAndOneOther[0], indentSteps, 0)}
 
-      ${pattern(w+f8, 10*h+f8, bdpqRowsCols[1], w,h, 0, f * indentSteps)}
-      ${pattern( 8*w, 10*h+f8, bdpqRowsCols[0], w,h, f * indentSteps, 0)}
+      ${pattern(w+f8, 10*h+f8, bdpqRowsCols[1], 0, indentSteps)}
+      ${pattern( 8*w, 10*h+f8, bdpqRowsCols[0], indentSteps, 0)}
 
-      ${pattern( 9*w, 18*h+f8, 'dbpq dbpq dbpq dbpq', w,h, 0, 0)}
-      ${pattern(16*w, 18*h+f8, 'bbbb dddd qqqq pppp', w,h, 0, 0)}
-      ${pattern(23*w, 18*h+f8, 'dbdb qpqp bdbd pqpq', w,h, 0, 0)}
-      ${pattern(30*w, 18*h+f8, 'bpbp dqdq bpbp dqdq', w,h, 0, 0)}
+      ${pattern( 9*w, 18*h+f8, 'dbpq dbpq dbpq dbpq', 0, 0)}
+      ${pattern(16*w, 18*h+f8, 'bbbb dddd qqqq pppp', 0, 0)}
+      ${pattern(23*w, 18*h+f8, 'dbdb qpqp bdbd pqpq', 0, 0)}
+      ${pattern(30*w, 18*h+f8, 'bpbp dqdq bpbp dqdq', 0, 0)}
     `)
-}
-function pattern(patternX, patternY, s, width, height, dx, dy){
-  var m = s.split(' ')
-  var result = ''
-  for (let row = 0; row < 6; row++) {
-    for (let column = 0; column < 6; column++) {
-      x = column * width + (row * dx) // % width
-      y = row * height + (column * dy) // % height
-      c = m[row % 4][column % 4]
-      result += `<use xlink:href="#cl${c}" x="${x}" y="${y}"/>`
-    }
-  }
-  return `
-    <g transform="scale(0.3,0.3) translate(${patternX},${patternY})">
-      ${result}
-    </g>
-  `
 }
 function initDiagram() {
     var pattern = document.querySelector("input[name=variant]:checked").value
