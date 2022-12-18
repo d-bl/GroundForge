@@ -66,7 +66,6 @@ function clones (f) { // f is a
     var q = `scale(-1,-1) translate(${-w-f8},${-h-f8})`
 
     function pattern(patternX, patternY, s, indentX, indentY){
-      console.log (`w=${w} h=${h} indentX=${indentX} indentY=${indentY}`)
       var m = s.split(' ')
       var result = ''
       for (let row = 0; row < 6; row++) {
@@ -84,6 +83,9 @@ function clones (f) { // f is a
         </g>
       `
     }
+    var customPattern = document.querySelector("#customPattern").value.replace(/\n/g,' ')
+
+    console.log('======='+customPattern)
 
     // 4 base clones out of sight and on top of one another allow translates independent of b/d/p/q
     // TODO position the patterns depending on the width of the viewport
@@ -94,16 +96,17 @@ function clones (f) { // f is a
       <g id="clq"><use x="0" y="0" xlink:href="#cloned" transform="scale(-1,-1)" /></g>
 
       ${pattern( 9*w, h+f8, bAndOneOther[2], 0, 0)}
-      ${pattern(20*w, h+f8, bAndOneOther[1], 0, indentSteps)}
-      ${pattern(27*w, h+f8, bAndOneOther[0], indentSteps, 0)}
+      ${pattern(16*w, h+f8, bAndOneOther[1], 0, indentSteps)}
+      ${pattern(23*w, h+f8, bAndOneOther[0], indentSteps, 0)}
 
       ${pattern(w+f8, 10*h+f8, bdpqRowsCols[1], 0, indentSteps)}
       ${pattern( 8*w, 10*h+f8, bdpqRowsCols[0], indentSteps, 0)}
 
-      ${pattern( 9*w, 18*h+f8, 'dbpq dbpq dbpq dbpq', 0, 0)}
-      ${pattern(16*w, 18*h+f8, 'bbbb dddd qqqq pppp', 0, 0)}
-      ${pattern(23*w, 18*h+f8, 'dbdb qpqp bdbd pqpq', 0, 0)}
-      ${pattern(30*w, 18*h+f8, 'bpbp dqdq bpbp dqdq', 0, 0)}
+      ${pattern( 9*w, 18*h+f8, 'dbdb qpqp bdbd pqpq', 0, 0)}
+      ${pattern(16*w, 18*h+f8, 'bdbd pqpq bdbd pqpq', 0, 0)}
+      ${pattern(23*w, 18*h+f8, 'bpbp dqdq bpbp dqdq', 0, 0)}
+      if ( /^([bdpq] ){3,3}[bdpq]$/g)
+        ${pattern(30*w, 18*h+f8, customPattern, 0, 0)}
     `)
 }
 function initDiagram() {
@@ -114,8 +117,8 @@ function initDiagram() {
 
     var clonedScale = "scale(1.8,1.8)"
     var f = 25.2 // related to clonedScale
-    var w = 14.7 * f * (document.querySelector("#width").value - 1)
-    var h = 9 * f * (document.querySelector("#height").value - 1)
+    var w = 11 * f * (document.querySelector("#width").value - 1)
+    var h = 7 * f * (document.querySelector("#height").value - 1)
     var q = `patchWidth=${cols}&patchHeight=${rows}&${pattern}`
     var svg = PairSvg.render(TilesConfig(q).getItemMatrix, w, h , 1)
 
