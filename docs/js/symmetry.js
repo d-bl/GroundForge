@@ -21,7 +21,20 @@ function clickedStitch(event) {
     switch (document.querySelector("input[name=editMode]:checked").value) {
     case "change":
         var txt = dropTwists(d3.select("#stitchDef").node().value)
-        elem.innerHTML = "<title>"+txt+"</title>"+PairSvg.shapes(txt)
+        var w = document.querySelector("#width").value * 1 - 1
+        var h = document.querySelector("#height").value * 1 - 1
+        console.log('h='+h)
+        function isTopBottom(elem) { return elem.id.startsWith("r0c") || elem.id.startsWith(`r${h}c`) }
+        function isLeftRight(elem) { return elem.id.endsWith("c0") || elem.id.endsWith(`c${w}`) }
+        if (isTopBottom(elem)) {
+            d3.selectAll("#cloned .node")
+              .filter(function() { return isTopBottom(this) })
+              .html(function() { return "<title>"+txt+"</title>"+PairSvg.shapes(txt) })
+        } else if (isLeftRight(elem)) {
+            d3.selectAll("#cloned .node")
+              .filter(function() { return isLeftRight(this) })
+              .html(function() { return "<title>"+txt+"</title>"+PairSvg.shapes(txt) })
+        } else elem.innerHTML = "<title>"+txt+"</title>"+PairSvg.shapes(txt)
         break
     case "delete":
         var deletedStitchId = elem.id
