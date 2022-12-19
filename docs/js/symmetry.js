@@ -66,8 +66,8 @@ function clones (f) { // f is a
     var q = `scale(-1,-1) translate(${-w-f8},${-h-f8})`
 
     function pattern(patternX, patternY, s, indentX, indentY){
+      if (!s.match(/([bdpq]{4} ){3}[bdpq]/)) return
       var m = s.split(' ')
-      if (s.length != 19 || m.length != 4) return
       var result = ''
       for (let row = 0; row < 6; row++) {
         for (let column = 0; column < 6; column++) {
