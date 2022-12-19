@@ -20,7 +20,7 @@
     <a href="/GroundForge-help/symmetry" target="_blank">Explanations</a>
     <form action="" onSubmit="return false;">
         <p class="inline">
-            <button><a href="javascript:initDiagram()">Start</a>
+            <button><a href="javascript:initDiagram()">New pattern</a>
             </button>
             <br>
             variant
@@ -67,6 +67,11 @@
             <input type="number" id="twists" value="1" min="0" max="3">
             <label for="twists">twist(s) between stitches </label>
         </p>
+        <textarea class="inline re_clone" id="customPattern" rows="4" cols="4"
+        >bbdd
+ppqq
+bbdd
+ppqq</textarea>
         <p class="inline">
             Indent
             <label for="indentSteps">by</label> <input type="number" id="indentSteps" class="re_clone" value="0" min="0" step="2">
@@ -92,11 +97,6 @@
             Third row: some <strong>b</strong>+<strong>d</strong>+<strong>p</strong>+<strong>q</strong> variations
             (<em>work in progress</em>)
         </p>
-        <textarea class="inline re_clone" id="customPattern" rows="4" cols="4"
-        >bbdd
-ppqq
-bbdd
-ppqq</textarea>
     </form>
     <div id="template"></div>
 </body>

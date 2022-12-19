@@ -67,6 +67,7 @@ function clones (f) { // f is a
 
     function pattern(patternX, patternY, s, indentX, indentY){
       var m = s.split(' ')
+      if (s.length != 19 || m.length != 4) return
       var result = ''
       for (let row = 0; row < 6; row++) {
         for (let column = 0; column < 6; column++) {
@@ -105,8 +106,7 @@ function clones (f) { // f is a
       ${pattern( 9*w, 18*h+f8, 'dbdb qpqp bdbd pqpq', 0, 0)}
       ${pattern(16*w, 18*h+f8, 'bdbd pqpq bdbd pqpq', 0, 0)}
       ${pattern(23*w, 18*h+f8, 'bpbp dqdq bpbp dqdq', 0, 0)}
-      if ( /^([bdpq] ){3,3}[bdpq]$/g)
-        ${pattern(30*w, 18*h+f8, customPattern, 0, 0)}
+      ${pattern(30*w, 18*h+f8, customPattern, 0, 0)}
     `)
 }
 function initDiagram() {
