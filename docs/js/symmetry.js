@@ -68,8 +68,10 @@ function clones (f) { // f is a
     var stitchesW = document.querySelector("#width").value * 1
     var stitchesH = document.querySelector("#height").value * 1
     var f8 = f * 0.8
-    var w = f * (stitchesW - 1)
-    var h = f * (stitchesH - 1)
+    var dimX = stitchesW - 1
+    var dimY = stitchesH - 1
+    var w = f * dimX
+    var h = f * dimY
     var indentSteps = document.querySelector("#indentSteps").value * 1
     var bAndOneOther = document.querySelector("#bAndOneOther").value.split(",")
     var bdpqRowsCols = document.querySelector("#bdpqRowsCols").value.split(",")
@@ -84,11 +86,13 @@ function clones (f) { // f is a
       var result = ''
       for (let row = 0; row < 6; row++) {
         for (let column = 0; column < 6; column++) {
-          x = column * w + f * ((row * indentX) % (stitchesW - 1))
-          y = row * h + f * ((column * indentY) % (stitchesH - 1))
-          var c = column + Math.floor((row * indentX)/(stitchesW - 1))
-          var r = row + Math.floor((column * indentY)/(stitchesH - 1))
-          result += `<use xlink:href="#cl${m[r%4][c%4]}" x="${x}" y="${y}"/>`
+          var indentRow = row * indentX
+          var indentColumn = column * indentY
+          var x = column * dimX + (indentRow % dimX)
+          var y = row * dimY + (indentColumn % dimY)
+          var c = column + Math.floor(indentRow / dimX)
+          var r = row + Math.floor(indentColumn / dimY)
+          result += `<use xlink:href="#cl${m[r%4][c%4]}" x="${f*x}" y="${f*y}"/>`
         }
       }
       return `
