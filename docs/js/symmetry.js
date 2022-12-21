@@ -1,5 +1,3 @@
-var green = "rgb(0, 255, 0)"
-var grey = "rgb(200, 200, 200)"
 function clickedPair() {
     var elem = d3.event.target
     d3.select(event.target).style("marker-mid",function() {
@@ -7,7 +5,7 @@ function clickedPair() {
         if (n <= 0) return ""
             return 'url("#twist-' + n + '")'
     })
-    d3.selectAll('#cloned .link').style('stroke',grey) // revert drag().on("start", ...)
+    d3.selectAll('#cloned .link').style('stroke',"rgb(0,0,0)")
     d3.select("#download2").style("display","none")
 }
 function nrOfLinks(id){
@@ -21,16 +19,16 @@ function clickedStitch(event) {
     switch (document.querySelector("input[name=editMode]:checked").value) {
     case "change":
         var txt = dropTwists(d3.select("#stitchDef").node().value)
-        var w = document.querySelector("#width").value * 1 - 1
-        var h = document.querySelector("#height").value * 1 - 1
-        console.log('h='+h)
+        var w = document.querySelector("#width").value - 1
+        var h = document.querySelector("#height").value - 1
         function isTopBottom(elem) { return elem.id.startsWith("r0c") || elem.id.startsWith(`r${h}c`) }
         function isLeftRight(elem) { return elem.id.endsWith("c0") || elem.id.endsWith(`c${w}`) }
         if (isTopBottom(elem)) {
             d3.selectAll("#cloned .node")
               .filter(function() { return isTopBottom(this) })
               .html(function() { return "<title>"+txt+"</title>"+PairSvg.shapes(txt) })
-        } else if (isLeftRight(elem)) {
+        }
+        if (isLeftRight(elem)) {
             d3.selectAll("#cloned .node")
               .filter(function() { return isLeftRight(this) })
               .html(function() { return "<title>"+txt+"</title>"+PairSvg.shapes(txt) })
@@ -63,35 +61,26 @@ function dropTwists(s) {
 
     return s.toLowerCase().replace(/[tlr]*([tlrc]*c)[tlr]*/,'$1')
 }
-function clones (f) { // f is a
+function clones (f) {
     d3.select("#download2").style("display","none")
-    var stitchesW = document.querySelector("#width").value * 1
-    var stitchesH = document.querySelector("#height").value * 1
-    var f8 = f * 0.8
-    var dimX = stitchesW - 1
-    var dimY = stitchesH - 1
+    var dimX =  document.querySelector("#width").value - 1
+    var dimY = document.querySelector("#height").value - 1
     var w = f * dimX
     var h = f * dimY
-    var indentSteps = document.querySelector("#indentSteps").value * 1
-    var bAndOneOther = document.querySelector("#bAndOneOther").value.split(",")
-    var bdpqRowsCols = document.querySelector("#bdpqRowsCols").value.split(",")
-    var b = ''
-    var d = `scale(-1,1) translate(${-w-f8},0)`
-    var p = `scale(1,-1) translate(0,${-h-f8})`
-    var q = `scale(-1,-1) translate(${-w-f8},${-h-f8})`
 
-    function pattern(patternX, patternY, s, indentX, indentY){
+    // just one of the indent arguments is non-zero
+    function pattern(patternX, patternY, s, indentX, indentY, indentX2, indentY2){
       if (!s.match(/([bdpq]{4} ){3}[bdpq]/)) return
       var m = s.split(' ')
       var result = ''
       for (let row = 0; row < 6; row++) {
         for (let column = 0; column < 6; column++) {
-          var indentRow = row * indentX
-          var indentColumn = column * indentY
-          var x = column * dimX + (indentRow % dimX)
-          var y = row * dimY + (indentColumn % dimY)
-          var c = column + Math.floor(indentRow / dimX)
-          var r = row + Math.floor(indentColumn / dimY)
+          var indentRow = row * indentX + (Math.floor(row / 2)) * indentX2
+          var indentColumn = column * indentY + (Math.floor(column / 2)) * indentY2
+          var x = column * dimX + ((indentRow+1) % dimX)
+          var y = row * dimY + ((indentColumn+1) % dimY)
+          var c = column + Math.floor((indentRow+1) / dimX)
+          var r = row + Math.floor((indentColumn+1) / dimY)
           result += `<use xlink:href="#cl${m[r%4][c%4]}" x="${f*x}" y="${f*y}"/>`
         }
       }
@@ -101,9 +90,11 @@ function clones (f) { // f is a
         </g>
       `
     }
+    var indentSteps = document.querySelector("#indentSteps").value * 1
+    var bAndOneOther = document.querySelector("#bAndOneOther").value.split(",")
+    var bdpqRowsCols = document.querySelector("#bdpqRowsCols").value.split(",")
     var customPattern = document.querySelector("#customPattern").value.replace(/\n/g,' ')
-
-    console.log('======='+customPattern)
+    var f8 = f * 0.8 // some margin for the template
 
     // 4 base clones out of sight and on top of one another allow translates independent of b/d/p/q
     // TODO position the patterns depending on the width of the viewport
@@ -113,17 +104,19 @@ function clones (f) { // f is a
       <g id="clp"><use x="0" y="0" xlink:href="#cloned" transform="scale(1,-1) translate(${-w-f8},0)" /></g>
       <g id="clq"><use x="0" y="0" xlink:href="#cloned" transform="scale(-1,-1)" /></g>
 
-      ${pattern( 9*w, h+f8, bAndOneOther[2], 0, 0)}
-      ${pattern(16*w, h+f8, bAndOneOther[1], 0, indentSteps)}
-      ${pattern(23*w, h+f8, bAndOneOther[0], indentSteps, 0)}
+      ${pattern( 9*w, h, bAndOneOther[2], 0, 0, 0, 0)}
+      ${pattern(16*w, h, bAndOneOther[1], 0, indentSteps, 0, 0)}
+      ${pattern(23*w, h, bAndOneOther[0], indentSteps, 0, 0, 0)}
 
-      ${pattern(w+f8, 10*h+f8, bdpqRowsCols[1], 0, indentSteps)}
-      ${pattern( 8*w, 10*h+f8, bdpqRowsCols[0], indentSteps, 0)}
+      ${pattern(f8+w, 10*h, bdpqRowsCols[1], 0, indentSteps, 0, 0)}
+      ${pattern( 8*w, 10*h, bdpqRowsCols[0], indentSteps, 0, 0, 0)}
+      ${pattern(16*w, 10*h, bdpqRowsCols[1], 0, 0, 0, indentSteps)}
+      ${pattern(23*w, 10*h, bdpqRowsCols[0], 0, 0, indentSteps, 0)}
 
-      ${pattern( 9*w, 18*h+f8, 'dbdb qpqp bdbd pqpq', 0, 0)}
-      ${pattern(16*w, 18*h+f8, 'bdbd pqpq bdbd pqpq', 0, 0)}
-      ${pattern(23*w, 18*h+f8, 'bpbp dqdq bpbp dqdq', 0, 0)}
-      ${pattern(30*w, 18*h+f8, customPattern, 0, 0)}
+      ${pattern(f8+w, 18*h, 'dbdb qpqp bdbd pqpq', 0, 0, 0, 0)}
+      ${pattern( 8*w, 18*h, 'bdbd pqpq bdbd pqpq', 0, 0, 0, 0)}
+      ${pattern(16*w, 18*h, 'bpbp dqdq bpbp dqdq', 0, 0, 0, 0)}
+      ${pattern(23*w, 18*h, customPattern, 0, 0, 0, 0)}
     `)
 }
 function initDiagram() {
@@ -146,7 +139,7 @@ function initDiagram() {
     })
     clones(f)
 
-    // only needed at onload but here we have the value of f available
+    // only needed at on-load but here we have the value of f available
     d3.selectAll(".re_clone").attr("onchange",`clones(${f})`)
 
     var regex = /r[0-9]+c([0-9]+)-r[0-9]+c([0-9]+)/
@@ -157,7 +150,7 @@ function initDiagram() {
     })
     links.on("click",clickedPair)
     links.style("stroke-width","5px") // wider lines are bigger targets
-    links.style("stroke",grey) // keep the twist marks visible
+    links.style("opacity",0.25) // keep the twist marks visible
     links.style("stroke-linejoin","bevel")
     d3.drag().on("drag",moveStitch)(d3.selectAll(".node").filter(function(){ return 4 == nrOfLinks(this.id) }))
     dragLinks(links)
@@ -167,7 +160,7 @@ function dragLinks(links){
         .on("end", finishPinch)
         .on("drag", moveCenter)
         .on("start", function () {
-            findKissingPairs(this).style("stroke",green)
+            findKissingPairs(this).style("stroke","rgb(0, 255, 0)")
         })(links)
 }
 function finishPinch() {
@@ -181,7 +174,7 @@ function finishPinch() {
     // that implies a drag, little chance a click exactly hits the mid point
     if (dist(this) != 0 ) return
     kissingPairs = findKissingPairs(this)
-    kissingPairs.style("stroke",grey)
+    kissingPairs.style("stroke","rgb(0,0,0)")
 
     // find the edge with the centre closest to the mouse position
     var nearest = null
@@ -234,7 +227,7 @@ function splitLink(nearest, newID, newXY) {
     p2.setAttribute("id",newID+nearest.id.replace(/.*-/,"-"))
     p2.setAttribute("d", nearest.getAttribute("d"))
     p2.setAttribute("class", nearest.getAttribute("class"))
-    p2.setAttribute("style", "stroke: rgb(200, 200, 200); stroke-width: 5px; fill: none; opacity: 1; stroke-linejoin: bevel;")
+    p2.setAttribute("style", "stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 0.25; stroke-linejoin: bevel;")
     var defB = p2.getAttribute("d").split(" ")
     p2.setAttribute("d", withMovedMid(defB[4], defB[1] = newXY, defB))
     var defB = nearest.getAttribute("d").split(" ")
