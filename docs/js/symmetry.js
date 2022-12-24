@@ -79,8 +79,8 @@ function clones (f) {
           var indentColumn = column * indentY + (Math.floor(column / 2)) * indentY2
           var x = column * dimX + ((indentRow+1) % dimX)
           var y = row * dimY + ((indentColumn+1) % dimY)
-          var c = column + 4 - Math.floor((indentRow+1) / dimX)
-          var r = row + 4 - Math.floor((indentColumn+1) / dimY)
+          var c = column + 4*dimX - Math.floor((indentRow+1) / dimX)
+          var r = row + 4*dimY - Math.floor((indentColumn+1) / dimY)
           result += `<use xlink:href="#cl${m[r%4][c%4]}" x="${f*x}" y="${f*y}"/>`
         }
       }
