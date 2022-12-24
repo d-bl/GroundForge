@@ -3,9 +3,9 @@ function clickedPair() {
     d3.select(event.target).style("marker-mid",function() {
         var n = d3.select('#twists').node().value
         if (n <= 0) return ""
-            return 'url("#twist-' + n + '")'
+        return 'url("#twist-' + n + '")'
     })
-    d3.selectAll('#cloned .link').style('stroke',"rgb(0,0,0)")
+    d3.selectAll('#cloned .link').style('stroke',"rgb(0,0,0)").style('opacity',"0.25")
     d3.select("#download2").style("display","none")
 }
 function nrOfLinks(id){
@@ -148,10 +148,13 @@ function initDiagram() {
         this.classList.add('kiss_' + this.id.replace(regex,'$1_$2'))
         this.classList.add('kiss_' + this.id.replace(regex,'$2_$1'))
     })
-    links.on("click",clickedPair)
     links.style("stroke-width","5px") // wider lines are bigger targets
     links.style("opacity",0.25) // keep the twist marks visible
     links.style("stroke-linejoin","bevel")
+    activate(links)
+}
+function activate(links) {
+    links.on("click",clickedPair)
     d3.drag().on("drag",moveStitch)(d3.selectAll(".node").filter(function(){ return 4 == nrOfLinks(this.id) }))
     dragLinks(links)
 }
@@ -160,7 +163,7 @@ function dragLinks(links){
         .on("end", finishPinch)
         .on("drag", moveCenter)
         .on("start", function () {
-            findKissingPairs(this).style("stroke","rgb(0, 255, 0)")
+            findKissingPairs(this).style("stroke","rgb(0, 255, 0)").style('opacity',"0.25")
         })(links)
 }
 function finishPinch() {
@@ -174,7 +177,7 @@ function finishPinch() {
     // that implies a drag, little chance a click exactly hits the mid point
     if (dist(this) != 0 ) return
     kissingPairs = findKissingPairs(this)
-    kissingPairs.style("stroke","rgb(0,0,0)")
+    kissingPairs.style("stroke","rgb(0,0,0)").style('opacity',"0.25")
 
     // find the edge with the centre closest to the mouse position
     var nearest = null
@@ -282,7 +285,10 @@ function readSingleFile(evt) {
                   +"  size: " + f.size + " bytes\n"
             )
             document.getElementById('template').innerHTML =  contents;
-            activateEdit()
+            activate(d3.selectAll(".link"))
+            var ids = []
+            d3.selectAll(".node").each(function(){ids[ids.length] = this.id })
+            // TODO set width/height fields by finding largest rYcX id value of nodes
         }
         r.readAsText(f);
     } else {
