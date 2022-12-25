@@ -5,7 +5,7 @@ function clickedPair() {
         if (n <= 0) return ""
         return 'url("#twist-' + n + '")'
     })
-    d3.selectAll('#cloned .link').style('stroke',"rgb(0,0,0)").style('opacity',"0.25")
+    d3.selectAll('#cloned .link').style('stroke',"rgb(0,0,0)").style('stroke-opacity',"0.25")
     d3.select("#download2").style("display","none")
 }
 function nrOfLinks(id){
@@ -149,7 +149,7 @@ function initDiagram() {
         this.classList.add('kiss_' + this.id.replace(regex,'$2_$1'))
     })
     links.style("stroke-width","5px") // wider lines are bigger targets
-    links.style("opacity",0.25) // keep the twist marks visible
+    links.style("stroke-opacity",0.25) // keep the twist marks visible
     links.style("stroke-linejoin","bevel")
     activate(links)
 }
@@ -163,7 +163,7 @@ function dragLinks(links){
         .on("end", finishPinch)
         .on("drag", moveCenter)
         .on("start", function () {
-            findKissingPairs(this).style("stroke","rgb(0, 255, 0)").style('opacity',"0.25")
+            findKissingPairs(this).style("stroke","rgb(0, 255, 0)").style('stroke-opacity',"0.25")
         })(links)
 }
 function finishPinch() {
@@ -177,7 +177,7 @@ function finishPinch() {
     // that implies a drag, little chance a click exactly hits the mid point
     if (dist(this) != 0 ) return
     kissingPairs = findKissingPairs(this)
-    kissingPairs.style("stroke","rgb(0,0,0)").style('opacity',"0.25")
+    kissingPairs.style("stroke","rgb(0,0,0)").style('stroke-opacity',"0.25")
 
     // find the edge with the centre closest to the mouse position
     var nearest = null
@@ -230,7 +230,7 @@ function splitLink(nearest, newID, newXY) {
     p2.setAttribute("id",newID+nearest.id.replace(/.*-/,"-"))
     p2.setAttribute("d", nearest.getAttribute("d"))
     p2.setAttribute("class", nearest.getAttribute("class"))
-    p2.setAttribute("style", "stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 0.25; stroke-linejoin: bevel;")
+    p2.setAttribute("style", "stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; stroke-opacity: 0.25; stroke-linejoin: bevel;")
     var defB = p2.getAttribute("d").split(" ")
     p2.setAttribute("d", withMovedMid(defB[4], defB[1] = newXY, defB))
     var defB = nearest.getAttribute("d").split(" ")
