@@ -208,7 +208,6 @@ function finishPinch() {
     el.setAttribute('onclick', "clickedStitch(event)")
     el.setAttribute('id', newID)
     d3.drag().on("drag",moveStitch)(d3.select(el))
-    //TODO add pairs referring to: el.setAttribute('id', `${this.id}_${nearest.id}`)
     var container = document.querySelector('#cloned')
     container.appendChild(el)
     container.insertBefore(splitLink(this, newID, newXY), container.firstChild)
