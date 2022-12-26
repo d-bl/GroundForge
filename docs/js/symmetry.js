@@ -1,3 +1,6 @@
+var scaledWidth = 25.2 // compensates for clonedScale
+var clonedScale = "scale(1.8)"
+
 function clickedPair() {
     var elem = d3.event.target
     d3.select(event.target).style("marker-mid",function() {
@@ -33,6 +36,7 @@ function clickedStitch(event) {
               .filter(function() { return isLeftRight(this) })
               .html(function() { return "<title>"+txt+"</title>"+PairSvg.shapes(txt) })
         } else elem.innerHTML = "<title>"+txt+"</title>"+PairSvg.shapes(txt)
+        createLegend()
         break
     case "delete":
         var deletedStitchId = elem.id
@@ -57,16 +61,26 @@ function clickedStitch(event) {
         break
     }
 }
+function createLegend() {
+    var w = (document.querySelector("#width").value - 1) * scaledWidth
+    var stitches = []
+    d3.selectAll(".node title")
+      .each(function(){ stitches[stitches.length] = this.innerHTML })
+
+    d3.select("#bdpqLegend")
+        .html(PairSvg.bdpqLegend(stitches.join(',')))
+        .attr("transform", `translate(${w+scaledWidth},0) ${clonedScale}`)
+}
 function dropTwists(s) {
 
     return s.toLowerCase().replace(/[tlr]*([tlrc]*c)[tlr]*/,'$1')
 }
-function clones (f) {
+function clones () {
     d3.select("#download2").style("display","none")
     var dimX =  document.querySelector("#width").value - 1
     var dimY = document.querySelector("#height").value - 1
-    var w = f * dimX
-    var h = f * dimY
+    var w = scaledWidth * dimX
+    var h = scaledWidth * dimY
 
     // just one of the indent arguments is non-zero
     function pattern(patternX, patternY, s, indentX, indentY, indentX2, indentY2){
@@ -81,7 +95,7 @@ function clones (f) {
           var y = row * dimY + ((indentColumn+1) % dimY)
           var c = column + 400*dimX - Math.floor((indentRow+1) / dimX)
           var r = row + 400*dimY - Math.floor((indentColumn+1) / dimY)
-          result += `<use xlink:href="#cl${m[r%4][c%4]}" x="${f*x}" y="${f*y}"/>`
+          result += `<use xlink:href="#cl${m[r%4][c%4]}" x="${scaledWidth*x}" y="${scaledWidth*y}"/>`
         }
       }
       return `
@@ -94,7 +108,7 @@ function clones (f) {
     var bAndOneOther = document.querySelector("#bAndOneOther").value.split(",")
     var bdpqRowsCols = document.querySelector("#bdpqRowsCols").value.split(",")
     var customPattern = document.querySelector("#customPattern").value.replace(/\n/g,' ')
-    var f8 = f * 0.8 // some margin for the template
+    var f8 = scaledWidth * 0.8 // some margin for the template
 
     // 4 base clones out of sight and on top of one another allow translates independent of b/d/p/q
     // TODO position the patterns depending on the width of the viewport
@@ -124,11 +138,8 @@ function initDiagram() {
     var cols = document.querySelector("#width").value
     var rows = document.querySelector("#height").value
 
-
-    var clonedScale = "scale(1.8,1.8)"
-    var f = 25.2 // related to clonedScale
-    var w = 11 * f * (document.querySelector("#width").value - 1)
-    var h = 8 * f * (document.querySelector("#height").value - 1)
+    var w = 11 * scaledWidth * (document.querySelector("#width").value - 1)
+    var h = 8 * scaledWidth * (document.querySelector("#height").value - 1)
     var q = `patchWidth=${cols}&patchHeight=${rows}&${pattern}`
     var svg = PairSvg.render(TilesConfig(q).getItemMatrix, w, h , 1)
 
@@ -137,10 +148,8 @@ function initDiagram() {
     d3.selectAll('#template title').html(function() {
         return dropTwists(this.innerHTML.replace(/ - .*/,''))
     })
-    clones(f)
-
-    // only needed at on-load but here we have the value of f available
-    d3.selectAll(".re_clone").attr("onchange",`clones(${f})`)
+    clones()
+    d3.selectAll(".re_clone").attr("onchange",`clones(${scaledWidth})`)
 
     var regex = /r[0-9]+c([0-9]+)-r[0-9]+c([0-9]+)/
     var links = d3.selectAll(".link")
@@ -157,6 +166,7 @@ function activate(links) {
     links.on("click",clickedPair)
     d3.drag().on("drag",moveStitch)(d3.selectAll(".node").filter(function(){ return 4 == nrOfLinks(this.id) }))
     dragLinks(links)
+    createLegend()
 }
 function dragLinks(links){
     d3.drag()

@@ -238,6 +238,24 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   }
 
   @JSExport
+  def bdpqLegend(s: String): String = {
+    val stitches = s.split(",")
+      .map(_.replaceAll("^[lrt]+", "").replaceAll("[lrt]+$", "").toLowerCase())
+    val withFlipped = stitches ++
+      stitches.map(flipAlongY) ++
+      stitches.map(_.reverse) ++
+      stitches.map(_.reverse).map(flipAlongY)
+    withFlipped.distinct.zipWithIndex
+      .map { case (stitch, i) =>
+        legendLine(stitch, i, stitch)
+      }.mkString("")
+  }
+
+  private def flipAlongY(str: String) = {
+    str.replaceAll("l", "R").replace("r", "l").replace("R", "r")
+  }
+
+  @JSExport
   def legend(itemMatrix: Seq[Seq[Item]]): String = {
     val itemList = listItems(itemMatrix)
     println(s"render pair legend [${itemMatrix.size},${itemMatrix.head.size}] with ${itemList.size} stitches")
@@ -251,17 +269,21 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     lines
       .sortBy { case (core, _) => core }
       .zipWithIndex.map { case ((core, seq), i) =>
-      val offset = i * 12 + 15
-      val transform = s"""transform="translate(10,${ offset - 4 })""""
-      val style = """style="font-size:8px;line-height:1.25;font-family:sans-serif"""
       val line = seq.groupBy { case (_, stitch, _) => stitch }.toSeq
         .sortBy {case (stitch, _) => stitch}
         .map { case (stitch, seq) =>
           seq.map { case (_, _, id) => id }.mkString(stitch + ": ", ", ", "")
         }.mkString(" --- ")
-      val text = s"""<text $style" x="25" y='$offset'><tspan x="22" y="$offset">$line</tspan></text>"""
-      s"""<g $transform>${ shapes(core) }</g>$text"""
+      legendLine(core, i, line)
     }.mkString(svgTag(height = lines.size * 24 + 33) + "<g transform='matrix(2,0,0,2,0,0)'>", "", "</g></svg>")
+  }
+
+  private def legendLine(core: String, i: Int, line: String) = {
+    val offset = i * 12 + 15
+    val transform = s"""transform="translate(10,${ offset - 4 })""""
+    val style = """style="font-size:8px;line-height:1.25;font-family:sans-serif"""
+    val text = s"""<text $style" x="25" y='$offset'><tspan x="22" y="$offset">$line</tspan></text>"""
+    s"""<g $transform>${ shapes(core) }</g>$text"""
   }
 
   private def listItems(itemMatrix: Seq[Seq[Item]]) = {
@@ -311,6 +333,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
        |  ${ twistMark(3) }
        |</defs>
        |<g id="clones"></g>
+       |<g id="bdpqLegend"></g>
        |<g id="cloned" transform="scale($zoom,$zoom)">
        |${ renderLinks(itemMatrix, itemList) }
        |${ renderNodes(itemList) }
