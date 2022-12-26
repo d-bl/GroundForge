@@ -79,8 +79,8 @@ function clones (f) {
           var indentColumn = column * indentY + (Math.floor(column / 2)) * indentY2
           var x = column * dimX + ((indentRow+1) % dimX)
           var y = row * dimY + ((indentColumn+1) % dimY)
-          var c = column + 4*dimX - Math.floor((indentRow+1) / dimX)
-          var r = row + 4*dimY - Math.floor((indentColumn+1) / dimY)
+          var c = column + 400*dimX - Math.floor((indentRow+1) / dimX)
+          var r = row + 400*dimY - Math.floor((indentColumn+1) / dimY)
           result += `<use xlink:href="#cl${m[r%4][c%4]}" x="${f*x}" y="${f*y}"/>`
         }
       }
@@ -128,7 +128,7 @@ function initDiagram() {
     var clonedScale = "scale(1.8,1.8)"
     var f = 25.2 // related to clonedScale
     var w = 11 * f * (document.querySelector("#width").value - 1)
-    var h = 7 * f * (document.querySelector("#height").value - 1)
+    var h = 8 * f * (document.querySelector("#height").value - 1)
     var q = `patchWidth=${cols}&patchHeight=${rows}&${pattern}`
     var svg = PairSvg.render(TilesConfig(q).getItemMatrix, w, h , 1)
 
@@ -286,9 +286,15 @@ function readSingleFile(evt) {
             )
             document.getElementById('template').innerHTML =  contents;
             activate(d3.selectAll(".link"))
+            // find largest rYcX id value of nodes
             var ids = []
-            d3.selectAll(".node").each(function(){ids[ids.length] = this.id })
-            // TODO set width/height fields by finding largest rYcX id value of nodes
+            d3.selectAll(".node")
+              .filter(function(){ return this.id.startsWith("r") })
+              .each(function(){ ids[ids.length] = this.id.replace("r","").split("c") })
+            var rows = Math.max(...ids.map(function(a){return a[0]})) + 1
+            var cols = Math.max(...ids.map(function(a){return a[1]})) + 1
+            document.querySelector("#width").value = cols
+            document.querySelector("#height").value = rows
         }
         r.readAsText(f);
     } else {
