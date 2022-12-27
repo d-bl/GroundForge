@@ -313,7 +313,7 @@ function readSingleFile(evt) {
 function loadStitchExamples() {
     var stitches = [
                        ["ctctc", "", ""],
-                       ["crclc", "clcrc", ""],
+                       ["crclct", "clcrct", ""],
                        ["clcrclc", "crclcrc", ""],
                        ["ctclctc", "ctcrctc", ""],
                        ["ctclcrctc", "ctcrclctc", ""],
