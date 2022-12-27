@@ -8,7 +8,7 @@
         input[type=text] { width: 7em; }
         .inline { display: inline-block; margin-right: 2em; }
         figure { display: inline-block; margin: 2px; }
-        input, select { font-weight: bold }
+        input, select, textarea { font-weight: bold }
         #fileinput { font-weight: normal }
         #gallery { display: none; }
     </style>
@@ -24,15 +24,15 @@
     <em>To be developed: tutorials</em>
     <form action="" onSubmit="return false;">
         <p class="inline">
-            <button><a href="javascript:initDiagram()">New template</a>
-            </button>
-            <br>
             variant
             <input type="radio" id="variant1" name="variant" value="tile=-5-,5-5,-5-&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"><label for="variant1"><img src="images/variant-1.png" alt="1"/></label>
             <input type="radio" id="variant2" name="variant" value="tile=5-,-5&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2" checked="checked"><label for="variant2"><img src="images/variant-2.png" alt="2"/></label>
             <br>
             <label for="width">width: </label><input type="number" id="width" value="9" min="3" step="2">
             <label for="height">height: </label><input type="number" id="height" value="7" min="3" step="2">
+            <br>
+            <button><a href="javascript:initDiagram()">New template</a>
+            </button>
         </p>
         <p class="inline">
             <button>

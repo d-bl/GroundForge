@@ -312,16 +312,12 @@ function readSingleFile(evt) {
 }
 function loadStitchExamples() {
     var stitches = [
-                       ["ct", "", ""],
-                       ["ctct", "", ""],
                        ["ctctc", "", ""],
-                       ["crclct", "clcrct", ""],
+                       ["crclc", "clcrc", ""],
                        ["clcrclc", "crclcrc", ""],
                        ["ctclctc", "ctcrctc", ""],
                        ["ctclcrctc", "ctcrclctc", ""],
                        ["ctcttctc", "", ""],
-                       ["cllcrrcllcrrc", "", ""],
-                       ["tctctllctctr", "tctctrrctctl", "winkie pin"]
                    ]
     for (let alts of stitches) {
         document.querySelector("#gallery").innerHTML += `
