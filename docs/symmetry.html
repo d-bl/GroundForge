@@ -28,8 +28,8 @@
             </button>
             <br>
             variant
-            <input type="radio" id="variant1" name="variant" value="tile=-5-,5-5,-5-&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"><label for="variant1">1</label>
-            <input type="radio" id="variant2" name="variant" value="tile=5-,-5&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2" checked="checked"><label for="variant2">2</label>
+            <input type="radio" id="variant1" name="variant" value="tile=-5-,5-5,-5-&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"><label for="variant1"><img src="images/variant-1.png" alt="1"/></label>
+            <input type="radio" id="variant2" name="variant" value="tile=5-,-5&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2" checked="checked"><label for="variant2"><img src="images/variant-2.png" alt="2"/></label>
             <br>
             <label for="width">width: </label><input type="number" id="width" value="9" min="3" step="2">
             <label for="height">height: </label><input type="number" id="height" value="7" min="3" step="2">
@@ -41,7 +41,7 @@
                    onblur="this.href='#?'"
                    download="GF-template.svg"
                    title="download"
-                >Download</a></button> current set of diagram
+                >Download</a></button> current set of diagrams
             <a href="#"
                style="display:none"
                id="download2"
@@ -72,9 +72,9 @@
             > (<em>leading and trailing twists are ignored</em>)
             </label>
             <br>
-            <label for="twists">Click on a pair for</label>
+            <label for="twists">Click on a line between stitches for</label>
             <input type="number" id="twists" value="1" min="0" max="3">
-            <label for="twists">twist(s) between stitches </label>
+            <label for="twists">twist mark(s)</label>
         </p>
         <textarea class="inline re_clone" id="customPattern" rows="4" cols="4"
         >bbdd
