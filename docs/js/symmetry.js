@@ -312,15 +312,15 @@ function readSingleFile(evt) {
 }
 function loadStitchExamples() {
     var stitches = [
-                       ["ct", ".", ""],
-                       ["ctct", ".", ""],
-                       ["ctctc", ".", ""],
+                       ["ct", "", ""],
+                       ["ctct", "", ""],
+                       ["ctctc", "", ""],
                        ["crclct", "clcrct", ""],
                        ["clcrclc", "crclcrc", ""],
                        ["ctclctc", "ctcrctc", ""],
                        ["ctclcrctc", "ctcrclctc", ""],
-                       ["ctcttctc", ".", ""],
-                       ["cllcrrcllcrrc", ".", ""],
+                       ["ctcttctc", "", ""],
+                       ["cllcrrcllcrrc", "", ""],
                        ["tctctllctctr", "tctctrrctctl", "winkie pin"]
                    ]
     for (let alts of stitches) {
@@ -330,9 +330,8 @@ function loadStitchExamples() {
                      alt="${alts[0]}"
                      title="${alts[0]}&#013${alts[1]}&#013${alts[2]}">
                 <figcaption>
-                    <a href="#" onclick="javascript:setStitch('${alts[0]}')">${alts[0]}</a>
-                    <br>
-                    <a href="#" onclick="javascript:setStitch('${alts[1]}')">${alts[1]}</a>
+                    <a href="javaScript:setStitch('${alts[0]}')">${alts[0]}</a><br>
+                    <a href="javaScript:setStitch('${alts[1]}')">${alts[1]}</a>&nbsp;
                 </figcaption>
             </figure>`
     }
@@ -341,9 +340,11 @@ function showStitches(){
     d3.select('#gallery').style('display','block')
 }
 function hideStitches(){
-    d3.select('#gallery').style('display','none')
+    //d3.select('#gallery').style('display','none')
 }
 function setStitch(stitch){
-    document.querySelector("#stitchDef").value = stitch
+    n = document.querySelector("#stitchDef")
+    n.value = stitch
+    n.focus()
     hideStitches()
 }
