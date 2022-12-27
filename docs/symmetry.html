@@ -7,7 +7,10 @@
         input[type=number] { width: 3em; }
         input[type=text] { width: 7em; }
         .inline { display: inline-block; margin-right: 2em; }
+        figure { display: inline-block; margin: 2px; }
         input, select { font-weight: bold }
+        #fileinput { font-weight: normal }
+        #gallery { display: none; }
     </style>
     <script src="js/d3.v4.min.js" type="text/javascript"></script>
     <script src="js/GroundForge-opt.js" type="text/javascript"></script>
@@ -15,7 +18,7 @@
     <script type="text/javascript">
     </script>
 </head>
-<body onload="initDiagram()">
+<body onload="initDiagram();loadStitchExamples()">
     <h1>Bobbin lace pair diagrams - edit symmetries</h1>
     <a href="/GroundForge-help/symmetry" target="_blank">Reference guide.</a>
     <em>To be developed: tutorials</em>
@@ -60,7 +63,12 @@
             <input type="radio" id="delete" name="editMode" value="delete"><label for="delete">delete (<em>download/reload is your only undo</em>)</label>
             <br>
             <input type="radio" id="change" name="editMode" value="change"  checked="checked"
-            ><label for="change">apply <input id="stitchDef" type="text" value="clcrrrclttc"
+            ><label for="change">apply <input
+                id="stitchDef"
+                type="text"
+                value="clcrrrclttc"
+                onfocus="showStitches()"
+                onblur="hideStitches()"
             > (<em>leading and trailing twists are ignored</em>)
             </label>
             <br>
@@ -98,6 +106,7 @@ ppqq</textarea>
             Third row: some <strong>b</strong>+<strong>d</strong>+<strong>p</strong>+<strong>q</strong> variations
         </p>
     </form>
+    <div id="gallery"></div><br>
     <div id="template"></div>
 </body>
 </html>

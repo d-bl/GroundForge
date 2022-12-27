@@ -310,3 +310,38 @@ function readSingleFile(evt) {
         alert("Failed to load file");
     }
 }
+function loadStitchExamples() {
+    var stitches = [
+                       ["ct", "", ""],
+                       ["ctct", "", ""],
+                       ["ctctc", "", ""],
+                       ["crclct", "clcrct", ""],
+                       ["clcrclc", "crclcrc", ""],
+                       ["ctclctc", "ctcrctc", ""],
+                       ["ctclcrctc", "ctcrclctc", ""],
+                       ["ctcttctc", "", ""],
+                       ["cllcrrcllcrrc", "", ""],
+                       ["tctctllctctr", "tctctrrctctl", "winkie pin"]
+                   ]
+    for (let alts of stitches) {
+        document.querySelector("#gallery").innerHTML += `
+            <figure>
+                <img src="/GroundForge/images/stitches/${alts[0]}.png"
+                     alt="${alts[0]}"
+                     title="${alts[0]}&#013${alts[1]}&#013${alts[2]}">
+                <figcaption>
+                    <a href="#" onclick="javascript:setStitch('${alts[0]}')">use</a>
+                </figcaption>
+            </figure>`
+    }
+}
+function showStitches(){
+    d3.select('#gallery').style('display','block')
+}
+function hideStitches(){
+    d3.select('#gallery').style('display','none')
+}
+function setStitch(stitch){
+    document.querySelector("#stitchDef").value = stitch
+    hideStitches()
+}
