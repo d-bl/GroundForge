@@ -1,4 +1,4 @@
-var scaledWidth = 25.2 // compensates for clonedScale
+var stitchDistance = 25.2 // related to clonedScale
 var clonedScale = "scale(1.8)"
 
 function clickedPair() {
@@ -62,14 +62,14 @@ function clickedStitch(event) {
     }
 }
 function createLegend() {
-    var w = (document.querySelector("#width").value - 1) * scaledWidth
+    var w = (document.querySelector("#width").value - 1) * stitchDistance
     var stitches = []
     d3.selectAll(".node title")
       .each(function(){ stitches[stitches.length] = this.innerHTML })
 
     d3.select("#bdpqLegend")
         .html(PairSvg.bdpqLegend(stitches.join(',')))
-        .attr("transform", `translate(${w+scaledWidth},0) ${clonedScale}`)
+        .attr("transform", `translate(${w+stitchDistance},0) ${clonedScale}`)
 }
 function dropTwists(s) {
 
@@ -79,27 +79,30 @@ function clones () {
     d3.select("#download2").style("display","none")
     var dimX =  document.querySelector("#width").value - 1
     var dimY = document.querySelector("#height").value - 1
-    var w = scaledWidth * dimX
-    var h = scaledWidth * dimY
+    var w = stitchDistance * dimX
+    var h = stitchDistance * dimY
 
     // just one of the indent arguments is non-zero
-    function pattern(patternX, patternY, s, indentX, indentY, indentX2, indentY2){
-      if (!s.match(/([bdpq]{4} ){3}[bdpq]/)) return
-      var m = s.split(' ')
+    function pattern(patternX, patternY, templateArrangement, indentX, indentY, indentX2, indentY2){
+
+      // 4x4 letters separated with 3 spaces, split into a 2D array
+      if (!templateArrangement.match(/([bdpq]{4} ){3}[bdpq]{4}/)) return
+      var ta = templateArrangement.split(' ')
+
       var result = ''
-      for (let row = 0; row < 6; row++) {
-        for (let column = 0; column < 6; column++) {
-          var indentRow = row * indentX + (Math.floor(row / 2)) * indentX2
-          var indentColumn = column * indentY + (Math.floor(column / 2)) * indentY2
-          var x = column * dimX + ((indentRow+1) % dimX)
-          var y = row * dimY + ((indentColumn+1) % dimY)
-          var c = column + 400*dimX - Math.floor((indentRow+1) / dimX)
-          var r = row + 400*dimY - Math.floor((indentColumn+1) / dimY)
-          result += `<use xlink:href="#cl${m[r%4][c%4]}" x="${scaledWidth*x}" y="${scaledWidth*y}"/>`
+      for (let swatchRow = 0; swatchRow < 6; swatchRow++) {
+        for (let swatchColumn = 0; swatchColumn < 6; swatchColumn++) {
+          var indentRow = swatchRow * indentX + (Math.floor(swatchRow / 2)) * indentX2
+          var indentColumn = swatchColumn * indentY + (Math.floor(swatchColumn / 2)) * indentY2
+          var swatchX = stitchDistance*(swatchColumn * dimX + ((indentRow+1) % dimX))
+          var swatchY = stitchDistance*(swatchRow * dimY + ((indentColumn+1) % dimY))
+          var taC = swatchColumn + 400*dimX - Math.floor((indentRow+1) / dimX)
+          var taR = swatchRow + 400*dimY - Math.floor((indentColumn+1) / dimY)
+          result += `<use xlink:href="#cl${ta[taR%4][taC%4]}" x="${swatchX}" y="${swatchY}"/>`
         }
       }
       return `
-        <g transform="scale(0.3,0.3) translate(${patternX},${patternY})">
+        <g transform="scale(${document.querySelector("#swatch_scale").value}) translate(${patternX},${patternY})">
           ${result}
         </g>
       `
@@ -108,7 +111,7 @@ function clones () {
     var bAndOneOther = document.querySelector("#bAndOneOther").value.split(",")
     var bdpqRowsCols = document.querySelector("#bdpqRowsCols").value.split(",")
     var customPattern = document.querySelector("#customPattern").value.replace(/\n/g,' ')
-    var f8 = scaledWidth * 0.8 // some margin for the template
+    var f8 = stitchDistance * 0.8 // some margin for the template
 
     // 4 base clones out of sight and on top of one another allow translates independent of b/d/p/q
     // TODO position the patterns depending on the width of the viewport
@@ -127,10 +130,10 @@ function clones () {
       ${pattern(16*w, 10*h, bdpqRowsCols[1], 0, 0, 0, indentSteps)}
       ${pattern(23*w, 10*h, bdpqRowsCols[0], 0, 0, indentSteps, 0)}
 
-      ${pattern(f8+w, 18*h, 'dbdb qpqp bdbd pqpq', 0, 0, 0, 0)}
-      ${pattern( 8*w, 18*h, 'bdbd pqpq bdbd pqpq', 0, 0, 0, 0)}
-      ${pattern(16*w, 18*h, 'bpbp dqdq bpbp dqdq', 0, 0, 0, 0)}
-      ${pattern(23*w, 18*h, customPattern, 0, 0, 0, 0)}
+      ${pattern(f8+w, 18*h, customPattern, 0, indentSteps, 0, 0)}
+      ${pattern( 8*w, 18*h, customPattern, indentSteps, 0, 0, 0)}
+      ${pattern(16*w, 18*h, customPattern, 0, 0, 0, indentSteps)}
+      ${pattern(23*w, 18*h, customPattern, 0, 0, indentSteps, 0)}
     `)
 }
 function initDiagram() {
@@ -138,8 +141,8 @@ function initDiagram() {
     var cols = document.querySelector("#width").value
     var rows = document.querySelector("#height").value
 
-    var w = 11 * scaledWidth * (document.querySelector("#width").value - 1)
-    var h = 8 * scaledWidth * (document.querySelector("#height").value - 1)
+    var w = 11 * stitchDistance * (document.querySelector("#width").value - 1)
+    var h = 8 * stitchDistance * (document.querySelector("#height").value - 1)
     var q = `patchWidth=${cols}&patchHeight=${rows}&${pattern}`
     var svg = PairSvg.render(TilesConfig(q).getItemMatrix, w, h , 1)
 
@@ -149,7 +152,7 @@ function initDiagram() {
         return dropTwists(this.innerHTML.replace(/ - .*/,''))
     })
     clones()
-    d3.selectAll(".re_clone").attr("onchange",`clones(${scaledWidth})`)
+    d3.selectAll(".re_clone").attr("onchange",`clones(${stitchDistance})`)
 
     var regex = /r[0-9]+c([0-9]+)-r[0-9]+c([0-9]+)/
     var links = d3.selectAll(".link")
