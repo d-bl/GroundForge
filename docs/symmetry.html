@@ -10,7 +10,7 @@
         .inline { display: inline-block; padding-right: 2em; }
         figure { display: inline-block; margin: 2px; }
         input, select, textarea { font-weight: bold }
-        fieldset { display: inline-block; padding 0px; margin: 2px; margin-top: 1em; margin-bottom: 0.5em; }
+        fieldset { display: inline-block; padding 0px; margin: 2px; margin-top: 1em; margin-bottom: 0.5em; vertical-align: top; }
         #fileinput { font-weight: normal }
         #gallery { display: block; }
         p { padding: 0; margin: 2px; line-height: 1.5; }
@@ -40,7 +40,9 @@
             </button>
         </p>
     </fieldset>
-    <p class="inline">
+    <fieldset>
+        <legend>Export/import</legend>
+        <p>
         <button>
             <a href="javascript:d3.select('#download2').attr('href',getWrappedSVG('#template')).style('display','inline')"
                onfocus="this.href=getWrappedSVG('#template')"
@@ -61,6 +63,7 @@
         <br>
         <label for="fileinput"><em>Warning:</em> No security check for third party files.</label>
     </p>
+    </fieldset>
     <br>
     <div id="gallery"></div>
     <fieldset>
@@ -108,7 +111,6 @@
                 <option value="bqdp bqdp bqdp bqdp,bbbb qqqq dddd pppp">bqdp</option>
                 <option value="bqpd bqpd bqpd bqpd,bbbb qqqq pppp dddd">bqpd</option>
             </select> &nbsp;
-            <button><a href="javascript:setCustom()">set 4x4</a></button>
             <br>
             3rd row: see 4x4 field
             <br>
@@ -122,6 +124,7 @@
 qpqp
 bdbd
 pqpq</textarea>
+            <button><a href="javascript:setCustom()">from 2nd</a></button>
         </div>
     </fieldset>
 </form>
