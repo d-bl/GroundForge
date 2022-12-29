@@ -136,6 +136,19 @@ function clones () {
       ${pattern(23*w, 18*h, customPattern, 0, 0, indentSteps, 0)}
     `)
 }
+function setCustom(){
+    var seq = document.querySelector("#bdpqRowsCols").value.split(",")[0].split(" ")[0]
+    var sq = [ // arranged in z-order in a square
+        seq[0]+seq[1],
+        seq[2]+seq[3]
+    ]
+    document.querySelector("#customPattern").value = [
+        sq[0][1]+sq[0]+sq[0][0]+"\n"+
+        sq[1][1]+sq[1]+sq[1][0]+"\n"+
+        sq[0]+sq[0]+"\n"+
+        sq[1]+sq[1]
+   ]
+}
 function initDiagram() {
     var pattern = document.querySelector("input[name=variant]:checked").value
     var cols = document.querySelector("#width").value
@@ -336,9 +349,11 @@ function loadStitchExamples() {
     }
 }
 function showStitches(){
+
     d3.select('#gallery').style('display','block')
 }
 function hideStitches(){
+
     //d3.select('#gallery').style('display','none')
 }
 function setStitch(stitch){
