@@ -76,6 +76,7 @@ function dropTwists(s) {
     return s.toLowerCase().replace(/[tlr]*([tlrc]*c)[tlr]*/,'$1')
 }
 function clones () {
+console.log('======clones()========')
     d3.select("#download2").style("display","none")
     var dimX =  document.querySelector("#width").value - 1
     var dimY = document.querySelector("#height").value - 1
@@ -148,6 +149,7 @@ function setCustom(){
         sq[0]+sq[0]+"\n"+
         sq[1]+sq[1]
    ]
+   clones()
 }
 function initDiagram() {
     var pattern = document.querySelector("input[name=variant]:checked").value
@@ -165,7 +167,7 @@ function initDiagram() {
         return dropTwists(this.innerHTML.replace(/ - .*/,''))
     })
     clones()
-    d3.selectAll(".re_clone").attr("onchange",`clones(${stitchDistance})`)
+    d3.selectAll(".re_clone").attr("onchange",'clones()')
 
     var regex = /r[0-9]+c([0-9]+)-r[0-9]+c([0-9]+)/
     var links = d3.selectAll(".link")

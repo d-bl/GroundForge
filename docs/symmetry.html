@@ -7,13 +7,14 @@
         input[type=number] { width: 3em; }
         #swatch_scale { width: 4em; }
         input[type=text] { width: 7em; }
-        .inline { display: inline-block; padding-right: 2em; }
+        .inline { display: inline-block; }
         figure { display: inline-block; margin: 2px; }
         input, select, textarea { font-weight: bold }
         fieldset { display: inline-block; padding 0px; margin: 2px; margin-top: 1em; margin-bottom: 0.5em; vertical-align: top; }
         #fileinput { font-weight: normal }
         #gallery { display: block; }
         p { padding: 0; margin: 2px; line-height: 1.5; }
+        button a { color: black; text-decoration: none; }
     </style>
     <script src="js/d3.v4.min.js" type="text/javascript"></script>
     <script src="js/GroundForge-opt.js" type="text/javascript"></script>
@@ -116,7 +117,9 @@
             <br>
             Scale for the swatches: <input id="swatch_scale" type="number" value="0.2" min="0.2" max="0.5" step="0.05" class="re_clone">
         </p>
+        &nbsp; &nbsp;
         <div class="inline">
+          <div class="inline">
             <label for="customPattern">4x4</label><br>
             <textarea class="re_clone" id="customPattern" rows="4" cols="4"
                       autocapitalize="off" spellcheck="false"
@@ -124,7 +127,11 @@
 qpqp
 bdbd
 pqpq</textarea>
+          </div>
+            <p class="inline">
+            <button>show</button><br>
             <button><a href="javascript:setCustom()">from 2nd</a></button>
+            </p>
         </div>
     </fieldset>
 </form>
