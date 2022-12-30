@@ -103,6 +103,7 @@ function clones () {
       }
       return `
         <g transform="scale(${document.querySelector("#swatch_scale").value}) translate(${patternX},${patternY})">
+          <title>${templateArrangement.replace(/ /g,'\n')}\n\nindent ${indentX + indentY + indentX2 + indentY2}</title>
           ${result}
         </g>
       `
