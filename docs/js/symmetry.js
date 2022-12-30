@@ -76,7 +76,6 @@ function dropTwists(s) {
     return s.toLowerCase().replace(/[tlr]*([tlrc]*c)[tlr]*/,'$1')
 }
 function clones () {
-console.log('======clones()========')
     d3.select("#download2").style("display","none")
     var dimX =  document.querySelector("#width").value - 1
     var dimY = document.querySelector("#height").value - 1
@@ -168,6 +167,8 @@ function initDiagram() {
     })
     clones()
     d3.selectAll(".re_clone").attr("onchange",'clones()')
+    d3.select("#width, #height").attr("onchange",'setMaxIndent()')
+    setMaxIndent()
 
     var regex = /r[0-9]+c([0-9]+)-r[0-9]+c([0-9]+)/
     var links = d3.selectAll(".link")
@@ -179,6 +180,12 @@ function initDiagram() {
     links.style("stroke-opacity",0.25) // keep the twist marks visible
     links.style("stroke-linejoin","bevel")
     activate(links)
+}
+function setMaxIndent(){
+    var cols = document.querySelector("#width").value
+    var rows = document.querySelector("#height").value
+    var max = Math.max(cols,rows)
+    document.querySelector("#indentSteps").max = (max - 1) * 4
 }
 function activate(links) {
     links.on("click",clickedPair)
