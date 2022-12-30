@@ -103,14 +103,17 @@ function clones () {
       }
       return `
         <g transform="scale(${document.querySelector("#swatch_scale").value}) translate(${patternX},${patternY})">
-          <title>${templateArrangement.replace(/ /g,'\n')}
+            <g>
+                <title>${templateArrangement.replace(/ /g,'\n')}
 
-indent:
-  rows=${indentX}
-  columns=${indentY}
-  2-rows=${indentX2}
-  2-columns=${indentY2}</title>
-          ${result}
+                  indent:
+                    rows=${indentX}
+                    columns=${indentY}
+                    2-rows=${indentX2}
+                    2-columns=${indentY2}</title>
+                <circle cx="${-w-1.5*stitchDistance}" cy="${-h+2*stitchDistance}" r="30" fill="#ddd" />
+            </g>
+            ${result}
         </g>
       `
     }
