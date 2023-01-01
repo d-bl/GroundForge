@@ -77,7 +77,7 @@ function dropTwists(s) {
 }
 function clones () {
     d3.select("#download2").style("display","none")
-    var dimX =  document.querySelector("#width").value - 1
+    var dimX = document.querySelector("#width").value - 1
     var dimY = document.querySelector("#height").value - 1
     var w = stitchDistance * dimX
     var h = stitchDistance * dimY
@@ -111,7 +111,7 @@ function clones () {
                     columns=${indentY}
                     2-rows=${indentX2}
                     2-columns=${indentY2}</title>
-                <circle cx="${-w-1.5*stitchDistance}" cy="${-h+2*stitchDistance}" r="30" fill="#ddd" />
+                <circle cx="${-w-0.3*stitchDistance}" cy="${-h+1.5*stitchDistance}" r="30" fill="#eee" />
             </g>
             ${result}
         </g>
