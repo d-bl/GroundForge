@@ -123,7 +123,7 @@ function clones () {
     var customPattern = document.querySelector("#customPattern").value.replace(/\n/g,' ')
 
     // margin between legend ans swatches
-    var margin = ((dimX < 3 ? 3 : dimX) * stitchDistance) / swatchScale
+    var margin = (5 * stitchDistance) / swatchScale
 
     // 4 base clones out of sight and on top of one another allow translates independent of b/d/p/q
     var f8 = stitchDistance * 0.8 // some margin for the template
@@ -293,7 +293,7 @@ function findKissingPairs(movedPair) {
    var involvedStitchIds = new Set(movedPair.getAttribute("id").split("-"))
 
    var thisClassNrs = movedPair.classList[1].replace('kiss_','').split('_')
-   var kissMin = Math.margin(...thisClassNrs)*1
+   var kissMin = Math.min(...thisClassNrs)*1
    var kissMax = Math.max(...thisClassNrs)*1
    var kissClasses = `#cloned .kiss_${kissMin-1}_${kissMin}, #cloned .kiss_${kissMax}_${kissMax+1}`
    return d3.selectAll(kissClasses).filter(function () {
