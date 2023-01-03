@@ -184,10 +184,10 @@ function initDiagram() {
     setMaxIndent()
 
     var regex = /r[0-9]+c([0-9]+)-r[0-9]+c([0-9]+)/
-    var links = d3.selectAll(".link")
+    var links = d3.selectAll("#cloned .link")
     links.each(function () {
-        this.classList.add('kiss_' + this.id.replace(regex,'$1_$2'))
-        this.classList.add('kiss_' + this.id.replace(regex,'$2_$1'))
+        var classes = [this.id.replace(regex,'$1_$2'), this.id.replace(regex,'$2_$1')]
+        this.classList.add('kiss_'+classes.sort()[0])
     })
     links.style("stroke-width","5px") // wider lines are bigger targets
     links.style("stroke-opacity",0.25) // keep the twist marks visible
