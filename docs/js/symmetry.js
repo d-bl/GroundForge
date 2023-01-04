@@ -192,6 +192,7 @@ function initDiagram() {
     links.style("stroke-width","5px") // wider lines are bigger targets
     links.style("stroke-opacity",0.25) // keep the twist marks visible
     links.style("stroke-linejoin","bevel")
+    createLegend()
     activate(links)
 }
 function setMaxIndent(){
@@ -204,7 +205,6 @@ function activate(links) {
     links.on("click",clickedPair)
     d3.drag().on("drag",moveStitch)(d3.selectAll(".node").filter(function(){ return 4 == nrOfLinks(this.id) }))
     dragLinks(links)
-    createLegend()
 }
 function dragLinks(links){
     d3.drag()
@@ -237,6 +237,7 @@ function finishPinch() {
             else if ( dist(nearest) > distThis) nearest = this
         }
     })
+    if(nearest==null)return
     var newID = Date.now()
     var newXY = `${d3.event.x},${d3.event.y}`
 
