@@ -142,9 +142,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       case 1 | 2 | 3 => s"""; marker-mid: url("#twist-$twists")"""
       case _ => """; marker-mid: url("#twist-3")"""
     }
+    val Array(start,end) = id.split("-")
     val d = linkPath(sX, sY, tX, tY)
     val style = s"stroke: #000; stroke-width: 1px; fill: none; opacity: 1$marker"
-    s"<path id='$id' class='link' d='$d' style='$style'></path>"
+    s"<path id='$id' class='link starts_at_$start ends_at_$end' d='$d' style='$style'></path>"
   }
 
   private def scale(c: Int) = (c + 0.4) * 14

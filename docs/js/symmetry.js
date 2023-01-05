@@ -277,7 +277,7 @@ function splitLink(nearest, newID, newXY) {
     var p2 = document.createElementNS("http://www.w3.org/2000/svg", "path")
     p2.setAttribute("id",newID+nearest.id.replace(/.*-/,"-"))
     p2.setAttribute("d", nearest.getAttribute("d"))
-    p2.setAttribute("class", nearest.getAttribute("class"))
+    p2.setAttribute("class", nearest.classList.value.replace(/starts_at_[^ ]+/, "starts_at_"+newID))
     p2.setAttribute("style", "stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; stroke-opacity: 0.25; stroke-linejoin: bevel;")
     var defB = p2.getAttribute("d").split(" ")
     p2.setAttribute("d", withMovedMid(defB[4], defB[1] = newXY, defB))
@@ -293,7 +293,9 @@ function findKissingPairs(movedPair) {
    // split the id of the manipulated link into the ids of its nodes
    var involvedStitchIds = new Set(movedPair.getAttribute("id").split("-"))
 
-   var thisClassNrs = movedPair.classList[1].replace('kiss_','').split('_')
+    var thisClassNrs = movedPair.classList.value.split(" ")
+        .filter(function(s){ return s.startsWith("kiss_") })[0]
+        .replace('kiss_','').split('_')
    var kissMin = Math.min(...thisClassNrs)*1
    var kissMax = Math.max(...thisClassNrs)*1
    var kissClasses = `#cloned .kiss_${kissMin-1}_${kissMin}, #cloned .kiss_${kissMax}_${kissMax+1}`
