@@ -42,12 +42,12 @@ function clickedStitch(event) {
         var deletedStitchId = elem.id
         if (4 == nrOfLinks(deletedStitchId) ) {
             d3.selectAll("#cloned .link").filter(function () {
-                return this.id.startsWith(deletedStitchId + '-') // incoming pair
+                return this.id.startsWith(deletedStitchId + '-') // outgoing pair
             }).each(function () {
                 var newXY = this.getAttribute("d").split(" ")[4]
                 var newEndId = this.id.replace(/.*-/,'')
-                d3.selectAll(`#cloned .${this.classList[1]}`).filter(function () {
-                    // outgoing pair, the same kissing pair as the incoming pair
+                d3.selectAll(`#cloned .${findClass(this,"kiss_")}`).filter(function () {
+                    // incoming pair, the same kissing pair as the outgoing pair
                     return this.id.endsWith('-' + deletedStitchId)
                 }).each(function () {
                     var def = this.getAttribute("d").split(" ")
@@ -60,6 +60,10 @@ function clickedStitch(event) {
         }
         break
     }
+}
+function findClass(elem, prefix) {
+
+    return elem.classList.value.split(" ").filter(function(s){ return s.startsWith(prefix) })[0]
 }
 function createLegend() {
     var w = (document.querySelector("#width").value - 1) * stitchDistance
@@ -277,7 +281,7 @@ function splitLink(nearest, newID, newXY) {
     var p2 = document.createElementNS("http://www.w3.org/2000/svg", "path")
     p2.setAttribute("id",newID+nearest.id.replace(/.*-/,"-"))
     p2.setAttribute("d", nearest.getAttribute("d"))
-    p2.setAttribute("class", nearest.getAttribute("class"))
+    p2.setAttribute("class", `link starts_at${newID} ${findClass(nearest,"ends_at_")} ${findClass(nearest,"kiss_")}`)
     p2.setAttribute("style", "stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; stroke-opacity: 0.25; stroke-linejoin: bevel;")
     var defB = p2.getAttribute("d").split(" ")
     p2.setAttribute("d", withMovedMid(defB[4], defB[1] = newXY, defB))
@@ -293,7 +297,8 @@ function findKissingPairs(movedPair) {
    // split the id of the manipulated link into the ids of its nodes
    var involvedStitchIds = new Set(movedPair.getAttribute("id").split("-"))
 
-   var thisClassNrs = movedPair.classList[1].replace('kiss_','').split('_')
+   var thisClassNrs = findClass(movedPair,'kiss_').split('_').slice(1)
+   console.log('findKissingPairs '+thisClassNrs)
    var kissMin = Math.min(...thisClassNrs)*1
    var kissMax = Math.max(...thisClassNrs)*1
    var kissClasses = `#cloned .kiss_${kissMin-1}_${kissMin}, #cloned .kiss_${kissMax}_${kissMax+1}`
