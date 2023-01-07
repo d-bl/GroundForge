@@ -65,6 +65,11 @@ function findClass(elem, prefix) {
 
     return elem.classList.value.split(" ").filter(function(s){ return s.startsWith(prefix) })[0]
 }
+function replaceStartAt(elem, id) {
+    return elem.classList.value.split(' ')
+        .filter(function(s) {return !s.startsWith('starts_at_')})
+        .join(' ') + ' starts_at_'  + id
+}
 function createLegend() {
     var w = (document.querySelector("#width").value - 1) * stitchDistance
     var stitches = []
@@ -236,7 +241,7 @@ function finishPinch() {
     kissingPairs.each(function () {
         if (nearest == null) nearest = this
         else {
-            distThis = dist(this)
+            var distThis = dist(this)
             if (distThis == 0 ) return
             else if ( dist(nearest) > distThis) nearest = this
         }
@@ -281,8 +286,8 @@ function splitLink(nearest, newID, newXY) {
     var p2 = document.createElementNS("http://www.w3.org/2000/svg", "path")
     p2.setAttribute("id",newID+nearest.id.replace(/.*-/,"-"))
     p2.setAttribute("d", nearest.getAttribute("d"))
-    p2.setAttribute("class", `link starts_at${newID} ${findClass(nearest,"ends_at_")} ${findClass(nearest,"kiss_")}`)
-    p2.setAttribute("style", "stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; stroke-opacity: 0.25; stroke-linejoin: bevel;")
+    p2.setAttribute("class", replaceStartAt(nearest,newID))
+    p2.setAttribute("style", nearest.getAttribute("style"))
     var defB = p2.getAttribute("d").split(" ")
     p2.setAttribute("d", withMovedMid(defB[4], defB[1] = newXY, defB))
     var defB = nearest.getAttribute("d").split(" ")
@@ -298,7 +303,6 @@ function findKissingPairs(movedPair) {
    var involvedStitchIds = new Set(movedPair.getAttribute("id").split("-"))
 
    var thisClassNrs = findClass(movedPair,'kiss_').split('_').slice(1)
-   console.log('findKissingPairs '+thisClassNrs)
    var kissMin = Math.min(...thisClassNrs)*1
    var kissMax = Math.max(...thisClassNrs)*1
    var kissClasses = `#cloned .kiss_${kissMin-1}_${kissMin}, #cloned .kiss_${kissMax}_${kissMax+1}`
