@@ -13,7 +13,7 @@ function clickedPair() {
 }
 function nrOfLinks(id){
     return d3.selectAll(".link").filter(function () {
-        return this.id.includes(id)
+        return this.classList.value.includes(id)
     }).size()
 }
 function clickedStitch(event) {
@@ -284,7 +284,7 @@ function finishPinch() {
     container.insertBefore(splitLink(nearest, newID, newXY), container.firstChild)
 }
 function moveStitch() {
-    var id = this.id
+    var stitchId = this.id
     // TODO for now it is the responsibility of the user to stay within the cycles
     var newXY = `${d3.event.x},${d3.event.y}`
 
@@ -298,15 +298,15 @@ function moveStitch() {
     }
     this.setAttribute("transform", `translate(${newXY})`)
     d3.selectAll(".link").filter(function () {
-        return startsAt(this, id)
+        return startsAt(this, stitchId)
     }).attr("d", moveStart)
     d3.selectAll(".link").filter(function () {
-        return endsAt(this, id)
+        return endsAt(this, stitchId)
     }).attr("d", moveEnd)
 }
 function splitLink(nearest, newID, newXY) {
     var p2 = document.createElementNS("http://www.w3.org/2000/svg", "path")
-    p2.id = newID+nearest.id.replace(/.*-/,"-")//TODO uses classes
+    p2.id = Date.now()
     p2.setAttribute("d", nearest.getAttribute("d"))
     p2.setAttribute("class", replaceStartsAt(nearest,newID))
     p2.setAttribute("style", nearest.getAttribute("style"))
@@ -314,7 +314,7 @@ function splitLink(nearest, newID, newXY) {
     p2.setAttribute("d", withMovedMid(defB[4], defB[1] = newXY, defB))
     var defB = nearest.getAttribute("d").split(" ")
     nearest.setAttribute("d", withMovedMid(defB[1], defB[4] = newXY, defB))
-    nearest.id = nearest.id.replace(/-.*/,"-")+newID //TODO uses classes
+    nearest.id = Date.now()
     nearest.setAttribute("class", replaceEndsAt(nearest,newID))
     d3.select(p2).on("click",clickedPair)
     dragLinks(d3.select(p2))
