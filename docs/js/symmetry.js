@@ -41,18 +41,17 @@ function clickedStitch(event) {
     case "delete":
         var deletedStitchId = elem.id
         if (4 == nrOfLinks(deletedStitchId) ) {
-            d3.selectAll("#cloned .link").filter(function () {
-                return this.id.startsWith(deletedStitchId + '-') // outgoing pair
-            }).each(function () {
+            d3.selectAll("#cloned .starts_at_"+deletedStitchId)
+            .each(function () {
                 var newXY = this.getAttribute("d").split(" ")[4]
-                var newEndId = this.id.replace(/.*-/,'')
+                var newEndId = nodeId(this, "end")
                 d3.selectAll(`#cloned .${findClass(this,"kiss_")}`).filter(function () {
                     // incoming pair, the same kissing pair as the outgoing pair
-                    return this.id.endsWith('-' + deletedStitchId)
+                    return endsAt(this, deletedStitchId)
                 }).each(function () {
                     var def = this.getAttribute("d").split(" ")
                     this.setAttribute("d", withMovedMid(def[1], def[4] = newXY, def))
-                    this.id = this.id.replace(/-(.*)/, '-'+newEndId)
+                    this.id = this.id.replace(/-(.*)/, '-'+newEndId)// TODO use classes
                     this.setAttribute("class",replaceEndsAt(this,newEndId))
                 })
                 this.parentNode.removeChild(this)
@@ -62,17 +61,34 @@ function clickedStitch(event) {
         break
     }
 }
+function nodeId(pathElem, at) {
+    return classArray(pathElem)
+        .filter(function(s) {return s.startsWith(at+'s_at_')})
+        .map(function(s) {return s.replace(at+'s_at_', "")})
+}
+function endsAt(pathElem, id) {
+
+    return classArray(pathElem).includes('ends_at_'+id)
+}
+function startsAt(pathElem, id) {
+
+    return classArray(pathElem).includes('starts_at_'+id)
+}
+function classArray(elem) {
+
+    return elem.classList.value.split(' ')
+}
 function findClass(elem, prefix) {
 
-    return elem.classList.value.split(" ").filter(function(s){ return s.startsWith(prefix) })[0]
+    return classArray(elem).filter(function(s){ return s.startsWith(prefix) })[0]
 }
 function replaceStartsAt(elem, id) {
-    return elem.classList.value.split(' ')
+    return classArray(elem)
         .filter(function(s) {return !s.startsWith('starts_at_')})
         .join(' ') + ' starts_at_'  + id
 }
 function replaceEndsAt(elem, id) {
-    return elem.classList.value.split(' ')
+    return classArray(elem)
         .filter(function(s) {return !s.startsWith('ends_at_')})
         .join(' ') + ' ends_at_'  + id
 }
@@ -282,15 +298,15 @@ function moveStitch() {
     }
     this.setAttribute("transform", `translate(${newXY})`)
     d3.selectAll(".link").filter(function () {
-        return this.getAttribute("id").startsWith(id+"-")
+        return startsAt(this, id)
     }).attr("d", moveStart)
     d3.selectAll(".link").filter(function () {
-        return this.getAttribute("id").endsWith("-"+id)
+        return endsAt(this, id)
     }).attr("d", moveEnd)
 }
 function splitLink(nearest, newID, newXY) {
     var p2 = document.createElementNS("http://www.w3.org/2000/svg", "path")
-    p2.setAttribute("id",newID+nearest.id.replace(/.*-/,"-"))
+    p2.setAttribute("id",newID+nearest.id.replace(/.*-/,"-"))//TODO uses classes
     p2.setAttribute("d", nearest.getAttribute("d"))
     p2.setAttribute("class", replaceStartsAt(nearest,newID))
     p2.setAttribute("style", nearest.getAttribute("style"))
@@ -298,7 +314,7 @@ function splitLink(nearest, newID, newXY) {
     p2.setAttribute("d", withMovedMid(defB[4], defB[1] = newXY, defB))
     var defB = nearest.getAttribute("d").split(" ")
     nearest.setAttribute("d", withMovedMid(defB[1], defB[4] = newXY, defB))
-    nearest.setAttribute("id", nearest.id.replace(/-.*/,"-")+newID)
+    nearest.setAttribute("id", nearest.id.replace(/-.*/,"-")+newID)//TODO uses classes
     nearest.setAttribute("class", replaceEndsAt(nearest,newID))
     d3.select(p2).on("click",clickedPair)
     dragLinks(d3.select(p2))
@@ -306,8 +322,12 @@ function splitLink(nearest, newID, newXY) {
 }
 function findKissingPairs(movedPair) {
 
-   // split the id of the manipulated link into the ids of its nodes
-   var involvedStitchIds = new Set(movedPair.getAttribute("id").split("-"))
+   // find the id-s of the nodes connected bij the selected link
+   var involvedStitchIds = new Set(
+       movedPair.classList.value.split(' ')
+        .filter(function(s){return s.includes("_at_")})
+        .map(function(s){return s.replace(/.*_at_/,"")})
+   )
 
    var thisClassNrs = findClass(movedPair,'kiss_').split('_').slice(1)
    var kissMin = Math.min(...thisClassNrs)*1

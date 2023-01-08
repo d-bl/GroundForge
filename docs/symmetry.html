@@ -34,8 +34,8 @@
             <input type="radio" id="variant1" name="variant" value="tile=-5-,5-5,-5-&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"><label for="variant1"><img src="images/variant-1.png" alt="1"/></label>
             <input type="radio" id="variant2" name="variant" value="tile=5-,-5&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2" checked="checked"><label for="variant2"><img src="images/variant-2.png" alt="2"/></label>
             <br>
-            <label for="width">width: </label><input type="number" id="width" value="5" min="3" step="2">
-            <label for="height">height: </label><input type="number" id="height" value="3" min="3" step="2">
+            <label for="width">width: </label><input type="number" id="width" value="9" min="3" step="2">
+            <label for="height">height: </label><input type="number" id="height" value="9" min="3" step="2">
             <br>
             <button onclick="initDiagram()"
             >create</button>
@@ -74,9 +74,10 @@
         <br>
         Click mode for stitches:
         <br>
-        <input type="radio" id="delete" name="editMode" value="delete"><label for="delete">delete (<em>download/reload is your only undo</em>)</label>
+        <input type="radio" id="delete" name="editMode" value="delete" checked="checked"
+        ><label for="delete">delete (<em>download/reload is your only undo</em>)</label>
         <br>
-        <input type="radio" id="change" name="editMode" value="change" checked="checked"
+        <input type="radio" id="change" name="editMode" value="change"
         ><label for="change">apply <input
             id="stitchDef"
             type="text"
