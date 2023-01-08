@@ -53,6 +53,7 @@ function clickedStitch(event) {
                     var def = this.getAttribute("d").split(" ")
                     this.setAttribute("d", withMovedMid(def[1], def[4] = newXY, def))
                     this.id = this.id.replace(/-(.*)/, '-'+newEndId)
+                    this.setAttribute("class",replaceEndsAt(this,newEndId))
                 })
                 this.parentNode.removeChild(this)
             })
@@ -65,10 +66,15 @@ function findClass(elem, prefix) {
 
     return elem.classList.value.split(" ").filter(function(s){ return s.startsWith(prefix) })[0]
 }
-function replaceStartAt(elem, id) {
+function replaceStartsAt(elem, id) {
     return elem.classList.value.split(' ')
         .filter(function(s) {return !s.startsWith('starts_at_')})
         .join(' ') + ' starts_at_'  + id
+}
+function replaceEndsAt(elem, id) {
+    return elem.classList.value.split(' ')
+        .filter(function(s) {return !s.startsWith('ends_at_')})
+        .join(' ') + ' ends_at_'  + id
 }
 function createLegend() {
     var w = (document.querySelector("#width").value - 1) * stitchDistance
@@ -286,13 +292,14 @@ function splitLink(nearest, newID, newXY) {
     var p2 = document.createElementNS("http://www.w3.org/2000/svg", "path")
     p2.setAttribute("id",newID+nearest.id.replace(/.*-/,"-"))
     p2.setAttribute("d", nearest.getAttribute("d"))
-    p2.setAttribute("class", replaceStartAt(nearest,newID))
+    p2.setAttribute("class", replaceStartsAt(nearest,newID))
     p2.setAttribute("style", nearest.getAttribute("style"))
     var defB = p2.getAttribute("d").split(" ")
     p2.setAttribute("d", withMovedMid(defB[4], defB[1] = newXY, defB))
     var defB = nearest.getAttribute("d").split(" ")
     nearest.setAttribute("d", withMovedMid(defB[1], defB[4] = newXY, defB))
     nearest.setAttribute("id", nearest.id.replace(/-.*/,"-")+newID)
+    nearest.setAttribute("class", replaceEndsAt(nearest,newID))
     d3.select(p2).on("click",clickedPair)
     dragLinks(d3.select(p2))
     return p2
@@ -306,10 +313,7 @@ function findKissingPairs(movedPair) {
    var kissMin = Math.min(...thisClassNrs)*1
    var kissMax = Math.max(...thisClassNrs)*1
    var kissClasses = `#cloned .kiss_${kissMin-1}_${kissMin}, #cloned .kiss_${kissMax}_${kissMax+1}`
-   return d3.selectAll(kissClasses).filter(function () {
-      var ids2 = this.getAttribute("id").split("-")
-      return !(involvedStitchIds.has(ids2[0]) || involvedStitchIds.has(ids2[1]))
-   })
+   return d3.selectAll(kissClasses)
    // TODO reduce to cycle
 }
 function withMovedMid(end, newEnd, def) {
