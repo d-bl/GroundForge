@@ -368,12 +368,14 @@ function readSingleFile(evt) {
             document.getElementById('template').innerHTML =  contents;
             activate(d3.selectAll(".link"))
             // find largest rYcX id value of nodes
-            var ids = []
+            var cols=0,rows=0
             d3.selectAll(".node")
               .filter(function(){ return this.id.startsWith("r") })
-              .each(function(){ ids[ids.length] = this.id.replace("r","").split("c") })
-            var rows = Math.max(...ids.map(function(a){return a[0]})) + 1
-            var cols = Math.max(...ids.map(function(a){return a[1]})) + 1
+              .each(function(){
+                 rc = this.id.replace("r","").split("c")
+                 rows = Math.max(rows,rc[0]*1)
+                 cols = Math.max(cols,rc[1]*1)
+              })
             document.querySelector("#width").value = cols
             document.querySelector("#height").value = rows
         }
