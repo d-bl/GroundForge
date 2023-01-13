@@ -246,6 +246,7 @@ function dragLinks(links){
         })(links)
 }
 function finishPinch() {
+    var defDragged = this.getAttribute("d")
     function dist(a) {
        var def = a.getAttribute("d").split(" ")
        var powX = Math.pow(def[2]*1 - d3.event.x, 2)
@@ -282,6 +283,21 @@ function finishPinch() {
     container.appendChild(el)
     container.insertBefore(splitLink(this, newID, newXY), container.firstChild)
     container.insertBefore(splitLink(nearest, newID, newXY), container.firstChild)
+
+    var def = defDragged.split(" ")
+    var start = def[1].split(",")
+    var end = def[4].split(",")
+    var mouse = [d3.event.x,d3.event.y]
+    console.log(`line: ${angle(start,end)} mouse: ${angle(start,mouse)}`)
+}
+function angle(start, end) {
+    var dx = end[0] - start[0]
+    var dy = end[1] - start[1]
+    var hyp = Math.sqrt(dx*dx + dy*dy)
+    var sin = dx / hyp
+    console.log(`dx=${dx} dy=${dy} hyp=${hyp} sin=${sin}`)
+    // TODO zero might be 180 degrees
+    return (Math.asin(sin)*180) / Math.PI
 }
 function moveStitch() {
     var stitchId = this.id
