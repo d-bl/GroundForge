@@ -246,7 +246,6 @@ function dragLinks(links){
         })(links)
 }
 function finishPinch() {
-    direction(this.getAttribute("d"))
     function dist(a) {
        var def = a.getAttribute("d").split(" ")
        var powX = Math.pow(def[2]*1 - d3.event.x, 2)
@@ -256,12 +255,11 @@ function finishPinch() {
     // moveCenter moved the mid point to the mouse position
     // that implies a drag, little chance a click exactly hits the mid point
     if (dist(this) != 0 ) return
-    kissingPairs = findKissingPairs(this)
-    kissingPairs.style("stroke","rgb(0,0,0)").style('stroke-opacity',"0.25")
+    d3.selectAll(".link").style("stroke","rgb(0,0,0)").style('stroke-opacity',"0.25")
 
     // find the edge with the centre closest to the mouse position
     var nearest = null
-    kissingPairs.each(function () {
+    findKissingPairs(this).each(function () {
         if (nearest == null) nearest = this
         else {
             var distThis = dist(this)
@@ -284,8 +282,8 @@ function finishPinch() {
     container.insertBefore(splitLink(this, newID, newXY), container.firstChild)
     container.insertBefore(splitLink(nearest, newID, newXY), container.firstChild)
 }
-function direction(lineAttributeD){
-    var def = lineAttributeD.split(" ")
+function direction(lineElem){
+    var def = lineElem.getAttribute("d").split(" ")
     var start = def[1].split(",")
     var end = def[4].split(",")
     var mid = [(start[0]*1+end[0]*1)/2, (start[1]*1+end[1]*1)/2]
@@ -294,7 +292,7 @@ function direction(lineAttributeD){
     var moveAngle = angle(mid,mouse)
     var diff = lineAngle - moveAngle
     var direction = - diff / Math.abs(diff)
-    console.log(`direction: ${direction}  Angles: line=${lineAngle} move=${moveAngle}`)
+//    console.log(`direction: ${direction}  Angles: line=${lineAngle} move=${moveAngle}`)
     return direction
 }
 function angle(start, end) {
@@ -304,12 +302,11 @@ function angle(start, end) {
 
     var hyp = Math.sqrt(dx*dx + dy*dy)
     var sin = dx / hyp
-    console.log(`dx=${dx} dy=${dy} hyp=${hyp} sin=${sin} asin=$(Math.asin(sin)) start:${start} end:${end}`)
+//    console.log(`dx=${dx} dy=${dy} hyp=${hyp} sin=${sin} asin=$(Math.asin(sin)) start:${start} end:${end}`)
     return (Math.asin(sin)*180) / Math.PI
 }
 function moveStitch() {
     var stitchId = this.id
-    // TODO for now it is the responsibility of the user to stay within the cycles
     var newXY = `${d3.event.x},${d3.event.y}`
 
     function moveEnd(){
@@ -355,8 +352,10 @@ function findKissingPairs(movedPair) {
 
    var thisClassNrs = findClass(movedPair,'kiss_').split('_').slice(1)
    var kissMin = Math.min(...thisClassNrs)*1
-   var kissMax = Math.max(...thisClassNrs)*1
-   var kissClasses = `#cloned .kiss_${kissMin-1}_${kissMin}, #cloned .kiss_${kissMax}_${kissMax+1}`
+   if ( 0 > direction(movedPair) )
+       var kissClasses = `#cloned .kiss_${kissMin-1}_${kissMin}`
+   else
+       var kissClasses = `#cloned .kiss_${kissMin + 1}_${kissMin +2}`
    return d3.selectAll(kissClasses)
    // TODO reduce to cycle
 }
