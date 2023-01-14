@@ -242,7 +242,7 @@ function dragLinks(links){
         .on("end", finishPinch)
         .on("drag", moveCenter)
         .on("start", function () {
-            findKissingPairs(this).style("stroke","rgb(0, 255, 0)").style('stroke-opacity',"0.25")
+            findKissingPair(this).style("stroke","rgb(0, 255, 0)").style('stroke-opacity',"0.25")
         })(links)
 }
 function finishPinch() {
@@ -259,7 +259,7 @@ function finishPinch() {
 
     // find the edge with the centre closest to the mouse position
     var nearest = null
-    findKissingPairs(this).each(function () {
+    findKissingPair(this).each(function () {
         if (nearest == null) nearest = this
         else {
             var distThis = dist(this)
@@ -341,22 +341,21 @@ function splitLink(nearest, newID, newXY) {
     dragLinks(d3.select(p2))
     return p2
 }
-function findKissingPairs(movedPair) {
+function findKissingPair(movedPair) {
 
-   // find the id-s of the nodes connected bij the selected link
-   var involvedStitchIds = new Set(
-       movedPair.classList.value.split(' ')
-        .filter(function(s){return s.includes("_at_")})
-        .map(function(s){return s.replace(/.*_at_/,"")})
-   )
+   var start = movedPair.classList.value.replace(/.*starts_at_/,"").replace(/ .*/,"")
+   var end = movedPair.classList.value.replace(/.*ends_at_/,"").replace(/ .*/,"")
 
    var thisClassNrs = findClass(movedPair,'kiss_').split('_').slice(1)
    var kissMin = Math.min(...thisClassNrs)*1
-   if ( 0 > direction(movedPair) )
-       var kissClasses = `#cloned .kiss_${kissMin-1}_${kissMin}`
-   else
-       var kissClasses = `#cloned .kiss_${kissMin + 1}_${kissMin +2}`
-   return d3.selectAll(kissClasses)
+   var toLeft = 0 > direction(movedPair)
+   var kissClassLeft = `#cloned .kiss_${kissMin - 1}_${kissMin}`
+   var kissClassRight = `#cloned .kiss_${kissMin + 1}_${kissMin +2}`
+   console.log(`${kissClassLeft} ${kissClassRight} toLeft=${toLeft} start=${start} end=${end}`)
+   return d3.selectAll(kissClassLeft + "," + kissClassRight)
+//   .filter(function () {
+//       return this.classList.value.includes(toLeft?'ends_at_'+end:'starts_at_'+start)
+//   })
    // TODO reduce to cycle
 }
 function withMovedMid(end, newEnd, def) {
