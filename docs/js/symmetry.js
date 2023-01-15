@@ -242,7 +242,7 @@ function dragLinks(links){
         .on("end", finishPinch)
         .on("drag", moveCenter)
         .on("start", function () {
-            findKissingPair(this).style("stroke","rgb(0, 255, 0)").style('stroke-opacity',"0.25")
+            findKissingPair(this, 0)
         })(links)
 }
 function finishPinch() {
@@ -255,11 +255,10 @@ function finishPinch() {
     // moveCenter moved the mid point to the mouse position
     // that implies a drag, little chance a click exactly hits the mid point
     if (dist(this) != 0 ) return
-    d3.selectAll(".link").style("stroke","rgb(0,0,0)").style('stroke-opacity',"0.25")
 
     // find the edge with the centre closest to the mouse position
     var nearest = null
-    findKissingPair(this).each(function () {
+    findKissingPair(this, direction(this)).each(function () {
         if (nearest == null) nearest = this
         else {
             var distThis = dist(this)
@@ -267,6 +266,7 @@ function finishPinch() {
             else if ( dist(nearest) > distThis) nearest = this
         }
     })
+    d3.selectAll(".link").style("stroke","rgb(0,0,0)").style('stroke-opacity',"0.25")
     if(nearest==null)return
     var newID = Date.now()
     var newXY = `${d3.event.x},${d3.event.y}`
@@ -341,22 +341,26 @@ function splitLink(nearest, newID, newXY) {
     dragLinks(d3.select(p2))
     return p2
 }
-function findKissingPair(movedPair) {
+function findKissingPair(movedPair, direction) {
 
-   var start = movedPair.classList.value.replace(/.*starts_at_/,"").replace(/ .*/,"")
-   var end = movedPair.classList.value.replace(/.*ends_at_/,"").replace(/ .*/,"")
+    var start = movedPair.classList.value.replace(/.*starts_at_/,"").replace(/ .*/,"")
+    var end = movedPair.classList.value.replace(/.*ends_at_/,"").replace(/ .*/,"")
 
-   var thisClassNrs = findClass(movedPair,'kiss_').split('_').slice(1)
-   var kissMin = Math.min(...thisClassNrs)*1
-   var toLeft = 0 > direction(movedPair)
-   var kissClassLeft = `#cloned .kiss_${kissMin - 1}_${kissMin}`
-   var kissClassRight = `#cloned .kiss_${kissMin + 1}_${kissMin +2}`
-   console.log(`${kissClassLeft} ${kissClassRight} toLeft=${toLeft} start=${start} end=${end}`)
-   return d3.selectAll(kissClassLeft + "," + kissClassRight)
-//   .filter(function () {
-//       return this.classList.value.includes(toLeft?'ends_at_'+end:'starts_at_'+start)
-//   })
-   // TODO reduce to cycle
+    var thisClassNrs = findClass(movedPair,'kiss_').split('_').slice(1)
+    var kissMin = Math.min(...thisClassNrs)*1
+    var kissClassLeft = `#cloned .kiss_${kissMin - 1}_${kissMin}`
+    var kissClassRight = `#cloned .kiss_${kissMin + 1}_${kissMin +2}`
+    console.log(`${kissClassLeft} ${kissClassRight} ${direction} start=${start} end=${end}`)
+    if (direction == 0) { // start move
+        var kissingPairs = d3.selectAll(kissClassLeft + "," + kissClassRight)
+        kissingPairs.style("stroke","rgb(0, 255, 0)").style('stroke-opacity',"0.25")
+        kissingPairs.filter(function(){
+         return this.classList.value.includes('_at_'+end)
+             || this.classList.value.includes('_at_'+start)
+        }).style("stroke","rgb(44,162,95)")
+    } else { // end move
+        return d3.selectAll(direction < 0 ? kissClassLeft : kissClassRight)
+    }
 }
 function withMovedMid(end, newEnd, def) {
     var endXY = newEnd.split(',')
