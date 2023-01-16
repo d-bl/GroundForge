@@ -217,8 +217,9 @@ function initDiagram() {
     var regex = /r[0-9]+c([0-9]+)-r[0-9]+c([0-9]+)/
     var links = d3.selectAll("#cloned .link")
     links.each(function () {
+        var n = Math.min(...(this.id.replace(regex,'$1_$2').split('_')))
         var classes = [this.id.replace(regex,'$1_$2'), this.id.replace(regex,'$2_$1')]
-        this.classList.add('kiss_'+classes.sort()[0])
+        this.classList.add('kiss_'+n)
     })
     links.style("stroke-width","5px") // wider lines are bigger targets
     links.style("stroke-opacity",0.25) // keep the twist marks visible
@@ -346,10 +347,9 @@ function findKissingPair(movedPair, direction) {
     var start = movedPair.classList.value.replace(/.*starts_at_/,"").replace(/ .*/,"")
     var end = movedPair.classList.value.replace(/.*ends_at_/,"").replace(/ .*/,"")
 
-    var thisClassNrs = findClass(movedPair,'kiss_').split('_').slice(1)
-    var kissMin = Math.min(...thisClassNrs)*1
-    var kissClassLeft = `#cloned .kiss_${kissMin - 1}_${kissMin}`
-    var kissClassRight = `#cloned .kiss_${kissMin + 1}_${kissMin +2}`
+    var thisKissNr = findClass(movedPair,'kiss_').replace(/kiss_/,'')*1
+    var kissClassLeft = `#cloned .kiss_${thisKissNr - 1}`
+    var kissClassRight = `#cloned .kiss_${thisKissNr + 1}`
     console.log(`${kissClassLeft} ${kissClassRight} ${direction} start=${start} end=${end}`)
     if (direction == 0) { // start move
         var kissingPairs = d3.selectAll(kissClassLeft + "," + kissClassRight)
