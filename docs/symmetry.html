@@ -96,7 +96,7 @@
     </p>
     </fieldset>
     <fieldset>
-        <legend>Swatches of templates</legend>
+        <legend><input type="checkbox" id="showSwatches" class="re_clone"><label for="showSwatches">swatches of templates</label></legend>
         <p class="inline">
             <label for="indentSteps">Indent rows/columns by</label>
             <input type="number" id="indentSteps" class="re_clone" value="0" min="0" step="2">
@@ -125,18 +125,17 @@
         &nbsp; &nbsp;
         <div class="inline">
           <div class="inline">
-            <label for="customPattern">4x4</label><br>
+            <label for="customPattern">4x4</label>
+            <button onclick="setCustom()">from 2nd</button>
+            <br>
             <textarea class="re_clone" id="customPattern" rows="4" cols="4"
                       autocapitalize="off" spellcheck="false"
             >dbdb
 qpqp
 bdbd
 pqpq</textarea>
+              <button>show</button>
           </div>
-            <p class="inline">
-            <button>show</button><br>
-            <button onclick="setCustom()">from 2nd</button>
-            </p>
         </div>
     </fieldset>
 </form>

@@ -61,37 +61,6 @@ function clickedStitch(event) {
         break
     }
 }
-function nodeId(pathElem, at) {
-    return classArray(pathElem)
-        .filter(function(s) {return s.startsWith(at+'s_at_')})
-        .map(function(s) {return s.replace(at+'s_at_', "")})
-}
-function endsAt(pathElem, id) {
-
-    return classArray(pathElem).includes('ends_at_'+id)
-}
-function startsAt(pathElem, id) {
-
-    return classArray(pathElem).includes('starts_at_'+id)
-}
-function classArray(elem) {
-
-    return elem.classList.value.split(' ')
-}
-function findClass(elem, prefix) {
-
-    return classArray(elem).filter(function(s){ return s.startsWith(prefix) })[0]
-}
-function replaceStartsAt(elem, id) {
-    return classArray(elem)
-        .filter(function(s) {return !s.startsWith('starts_at_')})
-        .join(' ') + ' starts_at_'  + id
-}
-function replaceEndsAt(elem, id) {
-    return classArray(elem)
-        .filter(function(s) {return !s.startsWith('ends_at_')})
-        .join(' ') + ' ends_at_'  + id
-}
 function createLegend() {
     var w = (document.querySelector("#width").value - 1) * stitchDistance
     var stitches = []
@@ -113,6 +82,17 @@ function clones () {
     var w = stitchDistance * dimX
     var h = stitchDistance * dimY
     var swatchScale = document.querySelector("#swatch_scale").value
+
+    // margin between legend ans swatches
+    var margin = (5 * stitchDistance) / swatchScale
+
+    if (!document.querySelector("#showSwatches").checked) {
+        d3.select('#template svg')
+            .attr("width", (w+3) * 1.8)
+            .attr("height", h * 1.8)
+        document.querySelector('#template #clones').innerHTML = ''
+        return
+    }
 
     // just one of the indent arguments is non-zero
     function swatch(swatchX, swatchY, templateArrangement, indentX, indentY, indentX2, indentY2){
@@ -152,9 +132,6 @@ function clones () {
     var bAndOneOther = document.querySelector("#bAndOneOther").value.split(",")
     var bdpqRowsCols = document.querySelector("#bdpqRowsCols").value.split(",")
     var customPattern = document.querySelector("#customPattern").value.replace(/\n/g,' ')
-
-    // margin between legend ans swatches
-    var margin = (5 * stitchDistance) / swatchScale
 
     // 4 base clones out of sight and on top of one another allow translates independent of b/d/p/q
     var f8 = stitchDistance * 0.8 // some margin for the template
@@ -283,29 +260,6 @@ function finishPinch() {
     container.insertBefore(splitLink(this, newID, newXY), container.firstChild)
     container.insertBefore(splitLink(nearest, newID, newXY), container.firstChild)
 }
-function direction(lineElem){
-    var def = lineElem.getAttribute("d").split(" ")
-    var start = def[1].split(",")
-    var end = def[4].split(",")
-    var mid = [(start[0]*1+end[0]*1)/2, (start[1]*1+end[1]*1)/2]
-    var mouse = [d3.event.x,d3.event.y]
-    var lineAngle = angle(start,end)
-    var moveAngle = angle(mid,mouse)
-    var diff = lineAngle - moveAngle
-    var direction = - diff / Math.abs(diff)
-//    console.log(`direction: ${direction}  Angles: line=${lineAngle} move=${moveAngle}`)
-    return direction
-}
-function angle(start, end) {
-    var dx = end[0] - start[0]
-    var dy = end[1] - start[1]
-    if (dx == 0 && dy < 0) return 180
-
-    var hyp = Math.sqrt(dx*dx + dy*dy)
-    var sin = dx / hyp
-//    console.log(`dx=${dx} dy=${dy} hyp=${hyp} sin=${sin} asin=$(Math.asin(sin)) start:${start} end:${end}`)
-    return (Math.asin(sin)*180) / Math.PI
-}
 function moveStitch() {
     var stitchId = this.id
     var newXY = `${d3.event.x},${d3.event.y}`
@@ -350,17 +304,107 @@ function findKissingPair(movedPair, direction) {
     var thisKissNr = findClass(movedPair,'kiss_').replace(/kiss_/,'')*1
     var kissClassLeft = `#cloned .kiss_${thisKissNr - 1}`
     var kissClassRight = `#cloned .kiss_${thisKissNr + 1}`
-    console.log(`${kissClassLeft} ${kissClassRight} ${direction} start=${start} end=${end}`)
-    if (direction == 0) { // start move
-        var kissingPairs = d3.selectAll(kissClassLeft + "," + kissClassRight)
-        kissingPairs.style("stroke","rgb(0, 255, 0)").style('stroke-opacity',"0.25")
-        kissingPairs.filter(function(){
-         return this.classList.value.includes('_at_'+end)
-             || this.classList.value.includes('_at_'+start)
-        }).style("stroke","rgb(44,162,95)")
-    } else { // end move
-        return d3.selectAll(direction < 0 ? kissClassLeft : kissClassRight)
-    }
+    var kissClassCenter = `#cloned .kiss_${thisKissNr}`
+    var kissingPairs = d3.selectAll(kissClassLeft + "," + kissClassRight)
+    kissingPairs.style("stroke","rgb(0, 255, 0)").style('stroke-opacity',"0.25")
+    kissingPairs.filter(function(){
+     return this.classList.value.includes('_at_'+end)
+         || this.classList.value.includes('_at_'+start)
+    }).style("stroke","rgb(44,162,95)")
+
+    leftNodes = orderedNodes(kissClassLeft)
+    rightNodes = orderedNodes(kissClassRight)
+    centerNodes = orderedNodes(kissClassCenter)
+    console.log(nodeId(movedPair,"start") + "," + nodeId(movedPair,"end")
+        + " shared left: "+intersect(leftNodes,centerNodes)
+        + " shared right: "+intersect(rightNodes,centerNodes)
+    )
+    console.log(
+        "shared with selected right: "+intersect(rightNodes,[start,end])
+       + " left: "+intersect(leftNodes,[start,end])
+    )
+    return kissingPairs
+}
+function intersect(a,b) {
+
+    return a.filter(v => b.includes(v))
+}
+function direction(lineElem){
+    var def = lineElem.getAttribute("d").split(" ")
+    var start = def[1].split(",")
+    var end = def[4].split(",")
+    var mid = [(start[0]*1+end[0]*1)/2, (start[1]*1+end[1]*1)/2]
+    var mouse = [d3.event.x,d3.event.y]
+    var lineAngle = angle(start,end)
+    var moveAngle = angle(mid,mouse)
+    var diff = lineAngle - moveAngle
+    var direction = - diff / Math.abs(diff)
+//    console.log(`direction: ${direction}  Angles: line=${lineAngle} move=${moveAngle}`)
+    return direction
+}
+function angle(start, end) {
+    var dx = end[0] - start[0]
+    var dy = end[1] - start[1]
+    if (dx == 0 && dy < 0) return 180
+
+    var hyp = Math.sqrt(dx*dx + dy*dy)
+    var sin = dx / hyp
+//    console.log(`dx=${dx} dy=${dy} hyp=${hyp} sin=${sin} asin=$(Math.asin(sin)) start:${start} end:${end}`)
+    return (Math.asin(sin)*180) / Math.PI
+}
+function nodeId(pathElem, at) {
+    return classArray(pathElem)
+        .filter(function(s) {return s.startsWith(at+'s_at_')})
+        .map(function(s) {return s.replace(at+'s_at_', "")})[0]
+}
+function endsAt(pathElem, id) {
+
+    return classArray(pathElem).includes('ends_at_'+id)
+}
+function startsAt(pathElem, id) {
+
+    return classArray(pathElem).includes('starts_at_'+id)
+}
+function classArray(elem) {
+
+    return elem.classList.value.split(' ')
+}
+function findClass(elem, prefix) {
+
+    return classArray(elem).filter(function(s){ return s.startsWith(prefix) })[0]
+}
+function replaceStartsAt(elem, id) {
+    return classArray(elem)
+        .filter(function(s) {return !s.startsWith('starts_at_')})
+        .join(' ') + ' starts_at_'  + id
+}
+function replaceEndsAt(elem, id) {
+    return classArray(elem)
+        .filter(function(s) {return !s.startsWith('ends_at_')})
+        .join(' ') + ' ends_at_'  + id
+}
+function orderedNodes(kissSelector) {
+    var nodeIds = []
+    var lastNodeId = ""
+    d3.selectAll(kissSelector).each(function(){
+        startNodeId = nodeId(this,"start")
+        if (startNodeId.startsWith('r0c')) {
+           nodeIds[0] = startNodeId
+           lastNodeId = nodeIds[1] = nodeId(this,"end")
+        }
+    })
+    var kissClass = kissSelector.split('.')[1]
+    do {
+        var lookFor = ".starts_at_"+lastNodeId
+        lastNodeId = ""
+        d3.selectAll(lookFor).each(function(){
+            if (this.classList.value.includes(kissClass)) {
+               lastNodeId = nodeId(this,"end")
+               nodeIds.push(lastNodeId)
+            }
+        })
+    } while (lastNodeId != "")
+    return nodeIds
 }
 function withMovedMid(end, newEnd, def) {
     var endXY = newEnd.split(',')
