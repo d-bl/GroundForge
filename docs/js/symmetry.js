@@ -246,7 +246,7 @@ function finishPinch() {
     })
     d3.selectAll(".link").style("stroke","rgb(0,0,0)").style('stroke-opacity',"0.25")
     if(nearest==null)return
-    var newID = Date.now()
+    var newID = 'n'+Date.now()
     var newXY = `${d3.event.x},${d3.event.y}`
 
     var el = document.createElementNS("http://www.w3.org/2000/svg", "g")
@@ -282,7 +282,7 @@ function moveStitch() {
 }
 function splitLink(nearest, newID, newXY) {
     var p2 = document.createElementNS("http://www.w3.org/2000/svg", "path")
-    p2.id = Date.now()
+    p2.id = 'l'+Date.now()
     p2.setAttribute("d", nearest.getAttribute("d"))
     p2.setAttribute("class", replaceStartsAt(nearest,newID))
     p2.setAttribute("style", nearest.getAttribute("style"))
@@ -290,7 +290,7 @@ function splitLink(nearest, newID, newXY) {
     p2.setAttribute("d", withMovedMid(defB[4], defB[1] = newXY, defB))
     var defB = nearest.getAttribute("d").split(" ")
     nearest.setAttribute("d", withMovedMid(defB[1], defB[4] = newXY, defB))
-    nearest.id = Date.now()
+    nearest.id = 'l'+Date.now()
     nearest.setAttribute("class", replaceEndsAt(nearest,newID))
     d3.select(p2).on("click",clickedPair)
     dragLinks(d3.select(p2))
@@ -312,22 +312,70 @@ function findKissingPair(movedPair, direction) {
          || this.classList.value.includes('_at_'+start)
     }).style("stroke","rgb(44,162,95)")
 
-    leftNodes = orderedNodes(kissClassLeft)
-    rightNodes = orderedNodes(kissClassRight)
-    centerNodes = orderedNodes(kissClassCenter)
+    var leftNodeIds = orderedNodeIds(kissClassLeft)
+    var rightNodeIds = orderedNodeIds(kissClassRight)
+    var centerNodeIds = orderedNodeIds(kissClassCenter)
+    function shared(id){return centerNodeIds.includes(id)}
+    var sharedLeft = leftNodeIds.map(shared)
+    var sharedRight = rightNodeIds.map(shared)
     console.log(nodeId(movedPair,"start") + "," + nodeId(movedPair,"end")
-        + " shared left: "+intersect(leftNodes,centerNodes)
-        + " shared right: "+intersect(rightNodes,centerNodes)
+        + " left nodes: "+leftNodeIds+ " right nodes: "+rightNodeIds
+        + " shared left: "+sharedLeft + " shared right: "+sharedRight
     )
-    console.log(
-        "shared with selected right: "+intersect(rightNodes,[start,end])
-       + " left: "+intersect(leftNodes,[start,end])
-    )
+    markStitch("clc",  findSource (end, leftNodeIds, sharedLeft).trim())
+    markStitch("crc",  findSource (end, rightNodeIds, sharedRight).trim())
+    markStitch("clcc", findSource (start, leftNodeIds, sharedLeft).trim())
+    markStitch("crcc", findSource (start, rightNodeIds, sharedRight).trim())
+    markStitch("cltc", findSink (end, leftNodeIds, sharedLeft).trim())
+    markStitch("ctrc", findSink (end, rightNodeIds, sharedRight).trim())
+    markStitch("cltc", findSink (start, leftNodeIds, sharedLeft).trim())
+    markStitch("ctrc", findSink (start, rightNodeIds, sharedRight).trim())
     return kissingPairs
 }
-function intersect(a,b) {
-
-    return a.filter(v => b.includes(v))
+function findSource (id, nodeIds, sharedNodes) {
+    var i = nodeIds.indexOf(id)
+    while(i>=0){
+        if(sharedNodes[i]) return nodeIds[i]
+        i--
+    }
+    return ""
+}
+function findSink (id, nodeIds, sharedNodes) {
+    var i = nodeIds.indexOf(id)
+    if (i<0) return ""
+    while(i<nodeIds.length ) {
+        if (sharedNodes[i]) return nodeIds[i]
+        i++
+    }
+    return ""
+}
+function markStitch (instruction, id){
+    if(id)d3.select("#"+id).html(function() {
+        return "<title>"+instruction+"</title>"+PairSvg.shapes(instruction)
+    })
+}
+function orderedNodeIds(kissSelector) {
+    var nodeIds = []
+    var lastNodeId = ""
+    d3.selectAll(kissSelector).each(function(){
+        startNodeId = nodeId(this,"start")
+        if (startNodeId.startsWith('r0c')) {
+           nodeIds[0] = startNodeId
+           lastNodeId = nodeIds[1] = nodeId(this,"end")
+        }
+    })
+    var kissClass = kissSelector.split('.')[1]
+    do {
+        var lookFor = ".starts_at_"+lastNodeId
+        lastNodeId = ""
+        d3.selectAll(lookFor).each(function(){
+            if (this.classList.value.includes(kissClass)) {
+               lastNodeId = nodeId(this,"end")
+               nodeIds.push(lastNodeId)
+            }
+        })
+    } while (lastNodeId != "")
+    return nodeIds
 }
 function direction(lineElem){
     var def = lineElem.getAttribute("d").split(" ")
@@ -382,29 +430,6 @@ function replaceEndsAt(elem, id) {
     return classArray(elem)
         .filter(function(s) {return !s.startsWith('ends_at_')})
         .join(' ') + ' ends_at_'  + id
-}
-function orderedNodes(kissSelector) {
-    var nodeIds = []
-    var lastNodeId = ""
-    d3.selectAll(kissSelector).each(function(){
-        startNodeId = nodeId(this,"start")
-        if (startNodeId.startsWith('r0c')) {
-           nodeIds[0] = startNodeId
-           lastNodeId = nodeIds[1] = nodeId(this,"end")
-        }
-    })
-    var kissClass = kissSelector.split('.')[1]
-    do {
-        var lookFor = ".starts_at_"+lastNodeId
-        lastNodeId = ""
-        d3.selectAll(lookFor).each(function(){
-            if (this.classList.value.includes(kissClass)) {
-               lastNodeId = nodeId(this,"end")
-               nodeIds.push(lastNodeId)
-            }
-        })
-    } while (lastNodeId != "")
-    return nodeIds
 }
 function withMovedMid(end, newEnd, def) {
     var endXY = newEnd.split(',')
