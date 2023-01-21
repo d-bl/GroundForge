@@ -322,14 +322,14 @@ function findKissingPair(movedPair, direction) {
         + " left nodes: "+leftNodeIds+ " right nodes: "+rightNodeIds
         + " shared left: "+sharedLeft + " shared right: "+sharedRight
     )
-    markStitch("clc",  findSource (end, leftNodeIds, sharedLeft).trim())
-    markStitch("crc",  findSource (end, rightNodeIds, sharedRight).trim())
-    markStitch("clcc", findSource (start, leftNodeIds, sharedLeft).trim())
-    markStitch("crcc", findSource (start, rightNodeIds, sharedRight).trim())
-    markStitch("cltc", findSink (end, leftNodeIds, sharedLeft).trim())
-    markStitch("ctrc", findSink (end, rightNodeIds, sharedRight).trim())
-    markStitch("cltc", findSink (start, leftNodeIds, sharedLeft).trim())
-    markStitch("ctrc", findSink (start, rightNodeIds, sharedRight).trim())
+//    markStitch("clc",  findSource (end, leftNodeIds, sharedLeft).trim())
+//    markStitch("crc",  findSource (end, rightNodeIds, sharedRight).trim())
+//    markStitch("clcc", findSource (start, leftNodeIds, sharedLeft).trim())
+//    markStitch("crcc", findSource (start, rightNodeIds, sharedRight).trim())
+//    markStitch("cltc", findSink (end, leftNodeIds, sharedLeft).trim())
+//    markStitch("ctrc", findSink (end, rightNodeIds, sharedRight).trim())
+//    markStitch("cltc", findSink (start, leftNodeIds, sharedLeft).trim())
+//    markStitch("ctrc", findSink (start, rightNodeIds, sharedRight).trim())
     return kissingPairs
 }
 function findSource (id, nodeIds, sharedNodes) {
