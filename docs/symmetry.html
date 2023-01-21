@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title lang="en">GF: pair diagram symmetries</title>
+    <style>
+        input[type=number] { width: 3em; }
+        #swatch_scale { width: 4em; }
+        input[type=text] { width: 7em; }
+        .inline { display: inline-block; }
+        figure { display: inline-block; margin: 2px; }
+        input, select, textarea { font-weight: bold }
+        fieldset { display: inline-block; padding 0px; margin: 2px; margin-top: 1em; margin-bottom: 0.5em; vertical-align: top; }
+        #fileinput { font-weight: normal }
+        #gallery { display: block; }
+        p { padding: 0; margin: 2px; line-height: 1.5; }
+        button a { color: black; text-decoration: none; }
+    </style>
+    <script src="js/d3.v4.min.js" type="text/javascript"></script>
+    <script src="js/GroundForge-opt.js" type="text/javascript"></script>
+    <script src="js/symmetry.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    </script>
+</head>
+<body onload="initDiagram();loadStitchExamples()" lang="en">
+<h1>Bobbin lace pair diagrams with symmetries</h1>
+<a href="/GroundForge-help/symmetry" target="_blank">Reference guide.</a>
+<em>To be developed: tutorials</em>
+<form action="" onSubmit="return false;">
+    <fieldset>
+        <legend>Template</legend>
+        <p>
+            variant
+            <input type="radio" id="variant1" name="variant" value="tile=-5-,5-5,-5-&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2"><label for="variant1"><img src="images/variant-1.png" alt="1"/></label>
+            <input type="radio" id="variant2" name="variant" value="tile=5-,-5&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2" checked="checked"><label for="variant2"><img src="images/variant-2.png" alt="2"/></label>
+            <br>
+            Be gentle for your system with modest
+            <br>
+            dimensions: 400 maintained copies.
+            <br>
+            <label for="width">width: </label><input type="number" id="width" value="9" min="3" step="2">
+            <label for="height">height: </label><input type="number" id="height" value="11" min="3" step="2">
+            <br>
+            <button onclick="initDiagram()"
+            >create</button>
+        </p>
+    </fieldset>
+    <fieldset>
+        <legend>Export/import</legend>
+        <p>
+        <button>
+            <a href="javascript:d3.select('#download2').attr('href',getWrappedSVG('#template')).style('display','inline')"
+               onfocus="this.href=getWrappedSVG('#template')"
+               onblur="this.href='#?'"
+               download="GF-template.svg"
+               title="download"
+            >Download</a></button>
+        current set of diagrams
+        <a href="#"
+           style="display:none"
+           id="download2"
+           download="GF-template.svg"
+           onclick="this.style.display='none'"
+        >get</a>
+        <br>
+        <label for="fileinput">Reload a downloaded file:</label>
+        <input type="file" id="fileinput" accept="image/svg+xml" onchange="readSingleFile(event)"/>
+        <br>
+        <label for="fileinput"><em>Warning:</em> No security check for third party files.</label>
+    </p>
+    </fieldset>
+    <br>
+    <div id="gallery"></div>
+    <fieldset>
+        <legend>Modify template</legend>
+    <p>
+        Drag stitches. Drag pairs to pinch for new stitches.
+        <br>
+        Click mode for stitches:
+        <br>
+        <input type="radio" id="delete" name="editMode" value="delete" checked="checked"
+        ><label for="delete">delete (<em>download/reload is your only undo</em>)</label>
+        <br>
+        <input type="radio" id="change" name="editMode" value="change"
+        ><label for="change">apply <input
+            id="stitchDef"
+            type="text"
+            value="clcrrrclttc"
+            onfocus="showStitches()"
+    > (<em>leading and trailing twists are ignored</em>)
+    </label>
+        <br>
+        <label for="twists">Click on a line between stitches for</label>
+        <input type="number" id="twists" value="1" min="0" max="3">
+        <label for="twists">twist mark(s)</label>
+    </p>
+    </fieldset>
+    <fieldset>
+        <legend><input type="checkbox" id="showSwatches" class="re_clone"><label for="showSwatches">swatches of templates</label></legend>
+        <p class="inline">
+            <label for="indentSteps">Indent rows/columns by</label>
+            <input type="number" id="indentSteps" class="re_clone" value="0" min="0" step="2">
+            <br>1st row:
+            <strong>b</strong> +
+            <select id="bAndOneOther" class="re_clone">
+                <option value="bbbb bbbb bbbb bbbb,bbbb bbbb bbbb bbbb,bbbb bbbb bbbb bbbb">b</option>
+                <option value="bbbb dddd bbbb dddd,bdbd bdbd bdbd bdbd,bdbd dbdb bdbd dbdb" selected="selected">d</option>
+                <option value="bbbb pppp bbbb pppp,bpbp bpbp bpbp bpbp,bpbp pbpb bpbp pbpb">p</option>
+                <option value="bbbb qqqq bbbb qqqq,bqbq bqbq bqbq bqbq,bqbq qbqb bqbq qbqb">q</option>
+            </select>
+            <br>2nd row:
+            <select id="bdpqRowsCols" class="re_clone">
+                <option value="bdpq bdpq bdpq bdpq,bbbb dddd pppp qqqq">bdpq</option>
+                <option value="bdqp bdqp bdqp bdqp,bbbb dddd qqqq pppp">bdqp</option>
+                <option value="bpdq bpdq bpdq bpdq,bbbb pppp dddd qqqq">bpdq</option>
+                <option value="bpqp bpqp bpqp bpqp,bbbb pppp qqqq pppp">bpqp</option>
+                <option value="bqdp bqdp bqdp bqdp,bbbb qqqq dddd pppp">bqdp</option>
+                <option value="bqpd bqpd bqpd bqpd,bbbb qqqq pppp dddd">bqpd</option>
+            </select> &nbsp;
+            <br>
+            3rd row: see 4x4 field
+            <br>
+            Scale for the swatches: <input id="swatch_scale" type="number" value="0.2" min="0.2" max="0.5" step="0.05" class="re_clone">
+        </p>
+        &nbsp; &nbsp;
+        <div class="inline">
+          <div class="inline">
+            <label for="customPattern">4x4</label>
+            <button onclick="setCustom()">from 2nd</button>
+            <br>
+            <textarea class="re_clone" id="customPattern" rows="4" cols="4"
+                      autocapitalize="off" spellcheck="false"
+            >dbdb
+qpqp
+bdbd
+pqpq</textarea>
+              <button>show</button>
+          </div>
+        </div>
+    </fieldset>
+</form>
+<div id="template"></div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+        var sc_project=10865294;
+        var sc_invisible=0;
+        var sc_security="2e4f5d96";
+        var scJsHost = (("https:" == document.location.protocol) ?
+        "https://secure." : "http://www.");
+        document.write("<sc"+"ript type='text/javascript' src='" +
+        scJsHost+
+        "statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript>
+    <div class="statcounter"
+    ><a title="web analytics"
+        href="http://statcounter.com/"
+        target="_blank"><img
+            class="statcounter"
+            src="http://c.statcounter.com/10865294/0/2e4f5d96/0/"
+            alt="web analytics"
+    ></a></div>
+</noscript>
+<!-- End of StatCounter Code for Default Guide -->
+</body>
+</html>

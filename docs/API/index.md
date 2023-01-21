@@ -25,7 +25,9 @@ Current User Interfaces
 =======================
 
 * [pattern editor](/GroundForge/tiles)
+* [print/pdf friendly](/GroundForge/print)
 * [nets](/GroundForge/nets)
+* [symmetry](/GroundForge/symmetry)
 
 Demonstrators
 =============
@@ -47,7 +49,7 @@ additional user interfaces for special use cases.
 | source | examples see&nbsp;also&nbsp;[query](#url-query) | notes |
 |:---|---|:---|
 | [proto.html][protoCode]  | [spiders][protoSpiders],&nbsp;[rose][protoRose],&nbsp;[test][pairRose] | Pattern definition. |
-| [pair.html][pairCode]  | [spiders][pairSpiders], [rose][pairRose],[max][paiMax]  | 4 colors per stitch.<br> The page happens to be reasonably convenient to print the diagram and enumerated stitches together: position the scrollbars top left and resize the viewport to get (enough of) the diagrams visible. |
+| [pair.html][pairCode]  | [spiders][pairSpiders], [rose][pairRose], [max][pairMax]  | 4 colors per stitch. |
 | [thread.html][threadCode]  | [spiders][threadSpiders], [rose][threadRose]  | 1 color per stitch pair diagram and thread diagram.<br> Comment in the source explains how to tweak the code for droste patterns. |
 | [sheet.html][sheetCode]  | [sheet.html](sheet.html) | Pattern families.<br> A simplified hardcoded variant of the [page](https://jo-pol.github.io/GroundForge/sheet.html) that takes a family of [Tesselace patterns](GroundForge/tesselace-to-gf/) as parameter, you probably can make more and intermediate [variations][explanation]
 

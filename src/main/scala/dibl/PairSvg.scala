@@ -142,9 +142,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       case 1 | 2 | 3 => s"""; marker-mid: url("#twist-$twists")"""
       case _ => """; marker-mid: url("#twist-3")"""
     }
-    val d = linkPath(twists > 0, sX, sY, tX, tY)
+    val Array(start,end) = id.split("-")
+    val d = linkPath(sX, sY, tX, tY)
     val style = s"stroke: #000; stroke-width: 1px; fill: none; opacity: 1$marker"
-    s"<path id='$id' class='link' d='$d' style='$style'></path>"
+    s"<path id='$id' class='link starts_at_$start ends_at_$end' d='$d' style='$style'></path>"
   }
 
   private def scale(c: Int) = (c + 0.4) * 14
@@ -169,7 +170,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }.mkString
   }.mkString
 
-  private def shapes(stitch: String) = {
+  @JSExport
+  def shapes(stitch: String): String = {
     def colour(nrOfTwists: Int) = {
       // https://colorbrewer2.org/?type=diverging&scheme=RdBu&n=5
       //                 red        blue       peach     light blue
@@ -237,6 +239,24 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   }
 
   @JSExport
+  def bdpqLegend(s: String): String = {
+    val stitches = s.split(",")
+      .map(_.replaceAll("^[lrt]+", "").replaceAll("[lrt]+$", "").toLowerCase())
+    val withFlipped = stitches ++
+      stitches.map(flipAlongY) ++
+      stitches.map(_.reverse) ++
+      stitches.map(_.reverse).map(flipAlongY)
+    withFlipped.distinct.zipWithIndex
+      .map { case (stitch, i) =>
+        legendLine(stitch, i, stitch)
+      }.mkString("")
+  }
+
+  private def flipAlongY(str: String) = {
+    str.replaceAll("l", "R").replace("r", "l").replace("R", "r")
+  }
+
+  @JSExport
   def legend(itemMatrix: Seq[Seq[Item]]): String = {
     val itemList = listItems(itemMatrix)
     println(s"render pair legend [${itemMatrix.size},${itemMatrix.head.size}] with ${itemList.size} stitches")
@@ -250,17 +270,21 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     lines
       .sortBy { case (core, _) => core }
       .zipWithIndex.map { case ((core, seq), i) =>
-      val offset = i * 12 + 15
-      val transform = s"""transform="translate(10,${ offset - 4 })""""
-      val style = """style="font-size:8px;line-height:1.25;font-family:sans-serif"""
       val line = seq.groupBy { case (_, stitch, _) => stitch }.toSeq
         .sortBy {case (stitch, _) => stitch}
         .map { case (stitch, seq) =>
           seq.map { case (_, _, id) => id }.mkString(stitch + ": ", ", ", "")
         }.mkString(" --- ")
-      val text = s"""<text $style" x="25" y='$offset'><tspan x="22" y="$offset">$line</tspan></text>"""
-      s"""<g $transform>${ shapes(core) }</g>$text"""
+      legendLine(core, i, line)
     }.mkString(svgTag(height = lines.size * 24 + 33) + "<g transform='matrix(2,0,0,2,0,0)'>", "", "</g></svg>")
+  }
+
+  private def legendLine(core: String, i: Int, line: String) = {
+    val offset = i * 12 + 15
+    val transform = s"""transform="translate(10,${ offset - 4 })""""
+    val style = """style="font-size:8px;line-height:1.25;font-family:sans-serif"""
+    val text = s"""<text $style" x="25" y='$offset'><tspan x="22" y="$offset">$line</tspan></text>"""
+    s"""<g $transform>${ shapes(core) }</g>$text"""
   }
 
   private def listItems(itemMatrix: Seq[Seq[Item]]) = {
@@ -276,9 +300,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   val prolog = """<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->"""
 
   @JSExport
-  def linkPath(hasTwists: Boolean, sX: Double, sY: Double, tX: Double, tY: Double): String = {
-    if (!hasTwists) s"M $sX,$sY $tX,$tY"
-    else s"M $sX,$sY ${ sX + (tX - sX) / 2 } ${ sY + (tY - sY) / 2 } $tX,$tY"
+  def linkPath(sX: Double, sY: Double, tX: Double, tY: Double): String = {
+    s"M $sX,$sY ${ sX + (tX - sX) / 2 } ${ sY + (tY - sY) / 2 } $tX,$tY"
   }
 
   private def svgTag (width: Int = 744, height: Int = 1052) =
@@ -303,13 +326,16 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
             ): String = {
     val itemList = listItems(itemMatrix)
     println(s"render pair diagram [${itemMatrix.size},${itemMatrix.head.size}] with ${itemList.size} stitches")
+    // the group cloned (with a diagram on the foreground) and clones (empty on the background) are required by edit.js
     s"""${ svgTag(width, height) }
        |<defs>
        |  ${ twistMark(1) }
        |  ${ twistMark(2) }
        |  ${ twistMark(3) }
        |</defs>
-       |<g transform="matrix($zoom,0,0,$zoom,0,0)">
+       |<g id="clones"></g>
+       |<g id="bdpqLegend"></g>
+       |<g id="cloned" transform="scale($zoom,$zoom)">
        |${ renderLinks(itemMatrix, itemList) }
        |${ renderNodes(itemList) }
        |</g>
