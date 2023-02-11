@@ -8,9 +8,7 @@
 function nudgePairs(container, cx, cy) {
 
   var svg = container.select("svg")
-  var zoom = 1 * svg.select("#cloned").attr("transform").replace("matrix(","").replace(/,.*/,"")
-  var svgWidth = svg.attr("width")
-  var svgHeight = svg.attr("height")
+  svg.select("#cloned").attr("transform").replace("matrix(","").replace(/,.*/,"")
 
   // collect data of the SVG elements with class node
 
@@ -60,7 +58,7 @@ function nudgePairs(container, cx, cy) {
       var s = jsLink.source
       var t = jsLink.target
       // priority for preventing code duplication over less independency
-      return PairSvg.linkPath(jsLink.mid, s.x, s.y, t.x, t.y)
+      return PairSvg.linkPath(s.x, s.y, t.x, t.y)
   }
   var tickCounter = 0
   function onTick() {
@@ -81,7 +79,7 @@ function nudgePairs(container, cx, cy) {
           var s = jsLink.source
           var t = jsLink.target
           // priority for preventing code duplication over less independency
-          return PairSvg.linkPath(jsLink.mid, s.x - x, s.y-y, t.x - x, t.y -y)
+          return PairSvg.linkPath(s.x - x, s.y-y, t.x - x, t.y -y)
       }
       links.attr("d", drawPath);
       nodes.attr("transform", moveNode);
