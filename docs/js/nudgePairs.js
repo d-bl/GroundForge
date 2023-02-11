@@ -8,7 +8,7 @@
 function nudgePairs(container, cx, cy) {
 
   var svg = container.select("svg")
-  var zoom = 1 * svg.select("g").attr("transform").replace("matrix(","").replace(/,.*/,"")
+  var zoom = 1 * svg.select("#cloned").attr("transform").replace("matrix(","").replace(/,.*/,"")
   var svgWidth = svg.attr("width")
   var svgHeight = svg.attr("height")
 
