@@ -16,6 +16,7 @@
 * [Diagram editor](/GroundForge/tiles)
 * {% if page.name == 'about-us.md' %} [User guide](/GroundForge/) {% else %} User guide {% endif %}
 * [Net variations](/GroundForge/nets)
+* [Symmetries](/GroundForge/symmetry)
 
 * * *
 
