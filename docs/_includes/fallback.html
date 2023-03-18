@@ -10,7 +10,7 @@
 <script>
   var args = window.location.href.replace(/[^?]+/,"")
   document.getElementById("toWayBack").value = args
-  if (args && args.trim() != "") {
+  if (args && args.includes("matrix")) {
     document.getElementById("fallBack").style = "display:block"
   }
 </script>
