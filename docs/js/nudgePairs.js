@@ -5,9 +5,9 @@
  * https://devdocs.io/d3~4/d3-force
  * https://devdocs.io/d3~4/d3-selection
  */
-function nudgePairs(container, cx, cy) {
+function nudgePairs(containerId, cx, cy) {
 
-  var svg = container.select("svg")
+  var svg = d3.select(containerId+" svg")
   svg.select("#cloned").attr("transform").replace("matrix(","").replace(/,.*/,"")
 
   // collect data of the SVG elements with class node
