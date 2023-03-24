@@ -1,0 +1,14 @@
+
+#pair, #thread, #enum {
+    display: inline-block; overflow: hidden; resize: both;
+    width: 300px; height: 300px;
+    vertical-align: text-top;
+    border: solid 1px #DDD;
+    margin-top: 3px;
+}
+#enum { display: block; height: 4em; width: 600px; }
+#whiting {display: none; }
+form div {display: inline-block; vertical-align: top; }
+#paintStitches { width: 6em }
+#threadColor { width: 2.5em }
+div input { width: 3em }

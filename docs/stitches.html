@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title lang="en">GF: Stitches and threads</title>
+    <script src="js/d3.v4.min.js" type="text/javascript"></script>
+    <script src="js/GroundForge-opt.js" type="text/javascript"></script>
+    <script src="js/nudgePairs.js" type="text/javascript"></script>
+    <script src="js/showGraph.js" type="text/javascript"></script>
+    <script src="js/stitches.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/header.css" type="text/css">
+    <link rel="stylesheet" href="css/stitches.css" type="text/css">
+
+    <link rel="apple-touch-icon" sizes="120x120" href="/GroundForge/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/GroundForge/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/GroundForge/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/GroundForge/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/GroundForge/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/GroundForge/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/GroundForge/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body onload="load()">
+    <header>
+        <div>
+            <h1><a href="/">Diagrams for Bobbin Lace</a></h1>
+            <h2>GroundForge: Stitches and threads</h2>
+        </div>
+    </header>
+    <main>
+        <p>
+            <a id="def" href="#" target="_blank">Pattern definition</a>
+        </p>
+        <form  onsubmit="return false">
+            <button id="forces" onclick="return false">apply</button>
+            <label for="forces">forces to pair diagram</label>
+            <br>
+            <label for="threadColor">Click a bobbin or thread start to assign</label>
+            <input type="color" id="threadColor" name="threadColor" value="#ff0000">
+            <label for="threadColor">click click the button to select another color.</label>
+            <br>
+            <em>Under construction:</em><br>
+            <label for="paintStitches">Click a stitch to assign </label>
+            <input type="text" id="paintStitches" name="paintStitches" value="ct">
+            or <button onclick="clearStitches();return false">assign to all</button>
+            <button onclick="flipStitch()">flip the stitch</button>
+            <br>
+            <label for="patchWidth">
+                Swatch size:
+            </label>
+            <div>
+                <input type="number" name="patchWidth" id="patchWidth" min="3" max="28" value="7" onchange="showProto()" autofocus>
+                <label for="patchWidth">columns</label>
+                <a href="/GroundForge-help/Patch-Size" target="_blank"><img src="images/information-icon.png" title="swatch size"></a>
+                <br>
+                <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="7" onchange="showProto()">
+                <label for="patchHeight">rows</label>
+            </div>
+            <br>
+            <label for="draggable">Draggable:</label>&nbsp;
+            <input type="checkbox" id="draggable" onchange="clear2();showDiagrams()" title="make threads draggable">
+            <label for="draggable"><a href="/GroundForge-help/untangle" target="_blank"><img src="images/information-icon.png" title="untangle clutter"></a></label>
+        </form>
+        <p id="whiting"></p><br>
+        <div id="enum"></div>
+        <div id="pair"></div>
+        <div id="thread"></div>
+    </main>
+    <!-- Start of StatCounter Code for Default Guide -->
+    <script type="text/javascript">
+        var sc_project=10865294;
+        var sc_invisible=0;
+        var sc_security="2e4f5d96";
+        var scJsHost = (("https:" == document.location.protocol) ?
+            "https://secure." : "http://www.");
+        document.write("<sc"+"ript type='text/javascript' src='" +
+            scJsHost+
+            "statcounter.com/counter/counter.js'></"+"script>");
+    </script>
+    <noscript>
+        <div class="statcounter"
+        ><a title="web analytics"
+            href="http://statcounter.com/"
+            target="_blank"><img
+                class="statcounter"
+                src="http://c.statcounter.com/10865294/0/2e4f5d96/0/"
+                alt="web analytics"
+        ></a></div>
+    </noscript>
+    <!-- End of StatCounter Code for Default Guide -->
+</body>
+</html>

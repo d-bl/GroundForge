@@ -12,30 +12,34 @@ function load() {
     var itemMatrix = cfg.getItemMatrix
     var svg = PairSvg.render(itemMatrix, width, height, zoom)
     d3.select('#def').attr("href","tiles?"+q)
-    d3.select('#enum4perStitch').html(PairSvg.legend(itemMatrix))
-    d3.select('#pair4perStitch').html(svg)
-    d3.select('#pair4perStitchAnimated').html(svg)
-    d3.select('#proto').html(PrototypeDiagram.create(cfg))
-    nudgePairs('#pair4perStitchAnimated', cfg.totalCols*6, cfg.totalRows*6)
+    d3.select('#enum').html(PairSvg.legend(itemMatrix))
+    d3.select('#pair').html(svg)
+    d3.select('#forces').on("click",function () {
+        nudgePairs('#pair', cfg.totalCols*6,cfg.totalRows*6)
+    })
     var pairDiagram = NewPairDiagram.create(cfg)
     var threadDiagram = ThreadDiagram.create(pairDiagram)
-    d3.select('#pair1perStitch').html(DiagramSvg.render(pairDiagram, stroke, true, width, height, opacity))
-    showGraph(d3.select('#pair1perStitchAnimated'), pairDiagram, stroke, width, height, opacity)
     showGraph(d3.select('#thread'), threadDiagram, stroke, width, height, opacity)
     d3.select('#thread g').attr("transform","scale(0.5,0.5)")
-    var keyValues = q.split("&")
-    keyValues.find(whiting)
-    keyValues.forEach(patch)
+    q.split("&").find(whiting)
 }
-var seqNr = 1
-function patch (kv) {
-    if (!kv.trim().startsWith("patch=")) return false
-    var a = kv.replace("patch=","").split(";")
-    var matrix = a[0]
-    var shiftStyle = a[1]
-    var svg = new SheetSVG(1,"height='90mm' width='330mm'", seqNr++)
-          .add(a[0], a[1]).toSvgDoc().trim()
-    d3.select("body").append("div").node().innerHTML = svg
+function paintStitchValue () {
+
+  return d3.select("#paintStitches").node().value
+}
+function flipStitch() {
+  var n = d3.select('#paintStitches').node()
+  n.value=n.value.toLowerCase().replace(/l/g,"R").replace(/r/g,"l").replace(/R/g,"r")
+  return false;
+}
+function clickedStitch(event) {
+
+  var id = event.currentTarget.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
+  d3.select('#'+id).attr("value", paintStitchValue())
+}
+function clearStitches() {
+
+  d3.selectAll("svg input").attr("value",paintStitchValue())
 }
 function whiting (kv) {
     var k = kv.trim().replace(/[^a-zA-Z0-9]/g,"")
@@ -57,3 +61,4 @@ function clickedThread(event) {
     threadSegments.style("stroke", color)
     threadSegments.filter(".node").style("fill", color)
 }
+
