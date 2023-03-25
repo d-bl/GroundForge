@@ -11,7 +11,7 @@ function load() {
     var stroke = 2
     var itemMatrix = cfg.getItemMatrix
     var svg = PairSvg.render(itemMatrix, width, height, zoom)
-    d3.select('#def').attr("href","tiles?"+q)
+    d3.select('#def').attr("href","pattern.html?"+q)
     d3.select('#enum').html(PairSvg.legend(itemMatrix))
     d3.select('#pair').html(svg)
     d3.select('#forces').on("click",function () {
