@@ -17,6 +17,11 @@ function submitQuery() {
     .map(toKeyValueString)
     .join("&")
 }
+function maximize(containerId) {
+  // TODO width is not 90% of page width
+  d3.select(containerId).style("width","100%").style("height","100%")
+  return false;
+}
 function tesselace(query){
 
   // keep tesselace reference as long as tile definition is unchanged
