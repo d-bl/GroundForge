@@ -23,6 +23,14 @@ function load() {
     d3.select('#thread g').attr("transform","scale(0.5,0.5)")
     q.split("&").find(whiting)
 }
+function maximize(containerId) {
+    d3.select(containerId).style("width","100%").style("height","100%")
+    return false;
+}
+function minimize(containerId) {
+    d3.select(containerId).style("width","250px").style("height","250px")
+    return false;
+}
 function paintStitchValue () {
 
   return d3.select("#paintStitches").node().value
