@@ -64,7 +64,8 @@ function showProto(q) {
 
   console.log("cleared")
   //var encoded = encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8"?-->' + svg)
-  d3.select("#link").node().href = "stitches?" + query
+  d3.select("#to_self").node().href = "pattern?" + query
+  d3.select("#to_stitches").node().href = "stitches.html?" + query
   d3.select("#poc").node().href = "poc?" + pocRef(query)
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)

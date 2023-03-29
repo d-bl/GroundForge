@@ -11,7 +11,8 @@ function show(q) {
     var zoom = 1.9
     var itemMatrix = cfg.getItemMatrix
     var svg = PairSvg.render(itemMatrix, width, height, zoom)
-    d3.select('#def').attr("href","pattern.html?"+q)
+    d3.select('#to_self').attr("href","stitches.html?"+q)
+    d3.select('#to_pattern').attr("href","pattern?"+q)
     d3.select('#enum').html(PairSvg.legend(itemMatrix))
     d3.select('#pair').html(svg)
     d3.select('#forces').on("click",function () {
@@ -21,7 +22,7 @@ function show(q) {
     return cfg
 }
 function redrawThreads(){
-    var q = d3.select('#def').attr('href')
+    var q = d3.select('#to_pattern').attr('href')
     showThread(TilesConfig(q))
 }
 function showThread(cfg) {
@@ -58,7 +59,7 @@ function clickedStitch(event) {
     var id = event.currentTarget.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
     var replacement = `${id}=${paintStitchValue()}`
     var search = new RegExp(`${id}=[ctlr]+`,'g')
-    let attr = d3.select('#def').attr('href');
+    let attr = d3.select('#to_pattern').attr('href');
     if (search.test(attr))
         q = attr.replace(search,replacement)
     else
@@ -69,14 +70,14 @@ function clickedStitch(event) {
 function setAllStitches() {
     var replacement = `=${paintStitchValue()}`
     var search = new RegExp(`=[ctlr]+`,'g')
-    let q = d3.select('#def').attr('href')
+    let q = d3.select('#to_pattern').attr('href')
         .replace(search,replacement)
     show(q)
 }
 function setIgnoredStitches() {
     var replacement = `=${paintStitchValue()}`
     var search = new RegExp(`=-`,'g')
-    let q = d3.select('#def').attr('href')
+    let q = d3.select('#to_pattern').attr('href')
         .replace(search,replacement)
     show(q)
 }

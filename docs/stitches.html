@@ -29,10 +29,11 @@
         </div>
     </header>
     <main>
-        <p>
-            Modify the <a id="def" href="#" target="_blank">pattern definition</a> or create a new one.
-        </p>
+        <a id="to_self" href="#">Stitches and threads</a>
         <form  onsubmit="return false">
+            <p>
+                Modify the <a id="to_pattern" href="#">pattern definition</a> or create a new one.
+            </p>
             <button id="forces" onclick="return false">apply</button>
             <label for="forces">forces to the pair diagram</label>
             <br>
@@ -65,9 +66,9 @@
         <figure >
             <figcaption>
                 Stitch enumeration
+                <a href="/GroundForge-help/color-rules" target="_blank"><img src="images/information-icon.png" title="color code (4 per stitch)"></a>
                 <img src="images/maximize.png" onclick="javascript:maximize('#enum')" title="maximize room for the diagram"/>
-                <img src="images/minimize.png" onclick="javascript:minimize('#enum')" title="minimize room for the diagram"/>
-                <a href="/GroundForge-help/color-rules" target="_blank"><img src="images/information-icon.png" title="swatch size"></a>
+                <img src="images/minimize.png" onclick="javascript:minimize('#enum')" title="reset room for the diagram"/>
             </figcaption>
             <div id="enum"></div>
         </figure>
@@ -76,8 +77,7 @@
             <figcaption>
                 Pairs
                 <img src="images/maximize.png" onclick="javascript:maximize('#pair')" title="maximize room for the diagram"/>
-                <img src="images/minimize.png" onclick="javascript:minimize('#pair')" title="minimize room for the diagram"/>
-                <a href="/GroundForge-help/color-rules" target="_blank"><img src="images/information-icon.png" title="swatch size"></a>
+                <img src="images/minimize.png" onclick="javascript:minimize('#pair')" title="reset room for the diagram"/>
             </figcaption>
             <div id="pair"></div>
         </figure>
