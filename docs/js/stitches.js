@@ -1,14 +1,14 @@
 function load() {
-    var q = window.location.search.substr(1)
+    showThread(show(window.location.search.substr(1)))
+}
+function show(q) {
     var cfg = TilesConfig(q)
 
     // dimensions for an A1
     var width = 2245
     var height = 3178
 
-    var opacity = 0
     var zoom = 1.9
-    var stroke = 2
     var itemMatrix = cfg.getItemMatrix
     var svg = PairSvg.render(itemMatrix, width, height, zoom)
     d3.select('#def').attr("href","pattern.html?"+q)
@@ -17,11 +17,24 @@ function load() {
     d3.select('#forces').on("click",function () {
         nudgePairs('#pair', cfg.totalCols*6,cfg.totalRows*6)
     })
-    var pairDiagram = NewPairDiagram.create(cfg)
+    q.split("&").find(whiting)
+    return cfg
+}
+function redrawThreads(){
+    var q = d3.select('#def').attr('href')
+    showThread(TilesConfig(q))
+}
+function showThread(cfg) {
+    // dimensions for an A1
+    var width = 2245
+    var height = 3178
+
+    var opacity = 0
+    var stroke = 2
+    var pairDiagram = NewPairDiagram.create(cfg) // old style pair diagram
     var threadDiagram = ThreadDiagram.create(pairDiagram)
     showGraph(d3.select('#thread'), threadDiagram, stroke, width, height, opacity)
     d3.select('#thread g').attr("transform","scale(0.5,0.5)")
-    q.split("&").find(whiting)
 }
 function maximize(containerId) {
     d3.select(containerId).style("width","100%").style("height","100%")
@@ -33,7 +46,7 @@ function minimize(containerId) {
 }
 function paintStitchValue () {
 
-  return d3.select("#paintStitches").node().value
+  return d3.select("#paintStitches").node().value.toLowerCase().replace(/[^ctlrp-]/g,'')
 }
 function flipStitch() {
   var n = d3.select('#paintStitches').node()
@@ -42,12 +55,30 @@ function flipStitch() {
 }
 function clickedStitch(event) {
 
-  var id = event.currentTarget.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
-  d3.select('#'+id).attr("value", paintStitchValue())
+    var id = event.currentTarget.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
+    var replacement = `${id}=${paintStitchValue()}`
+    var search = new RegExp(`${id}=[ctlr]+`,'g')
+    let attr = d3.select('#def').attr('href');
+    if (search.test(attr))
+        q = attr.replace(search,replacement)
+    else
+        q = attr + "&" + replacement
+    d3.select('#thread').node().innerHTML = ''
+    show(q)
 }
-function clearStitches() {
-
-  d3.selectAll("svg input").attr("value",paintStitchValue())
+function setAllStitches() {
+    var replacement = `=${paintStitchValue()}`
+    var search = new RegExp(`=[ctlr]+`,'g')
+    let q = d3.select('#def').attr('href')
+        .replace(search,replacement)
+    show(q)
+}
+function setIgnoredStitches() {
+    var replacement = `=${paintStitchValue()}`
+    var search = new RegExp(`=-`,'g')
+    let q = d3.select('#def').attr('href')
+        .replace(search,replacement)
+    show(q)
 }
 function whiting (kv) {
     var k = kv.trim().replace(/[^a-zA-Z0-9]/g,"")
