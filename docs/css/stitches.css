@@ -18,6 +18,7 @@ form div {display: inline-block; vertical-align: top; }
 #paintStitches { width: 6em }
 #threadColor { width: 2.5em }
 div input { width: 3em }
+
 #to_self { display: none }
 @media print {
     form, header, figcaption { display: none }

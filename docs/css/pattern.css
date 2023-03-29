@@ -23,6 +23,9 @@ foreignObject input:focus { opacity: 1; width:30px; padding: 1px; padding-left: 
 input[type="number"] { width:3em; margin-right: 2px; text-align: right; }
 main div { display: inline-block; vertical-align: top; }
 button a { text-decoration: none; color: black; }
+
+#to_self { display: none }
 @media print {
   form, img, header, figcaption, .pattern svg, td button { display: none }
+  #to_self { display: block }
 }
