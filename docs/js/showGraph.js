@@ -55,4 +55,27 @@ function showGraph(container, diagram, stroke, width, height, opacity) {
         .alpha(0.0035)
         .on("tick", onTick)
         .on("end", moveToNW)
+
+    let node = d3.select("#draggable").node();
+    if (node && node.checked) {
+        function dragstarted(d) {
+            if (!d3.event.active) sim.alpha(0.005).restart()
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+        function dragged(d) {
+            d.fx = d3.event.x;
+            d.fy = d3.event.y;
+        }
+        function dragended(d) {
+            step = 0
+            if (!d3.event.active) sim.alpha(0.005).restart()
+            d.fx = null;
+            d.fy = null;
+        }
+        nodes.call(d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended))
+    }
 }

@@ -85,16 +85,6 @@
             <label for="patchHeight">rows</label>
         </div><br>
   </form>
-        <figure >
-            <figcaption>
-                Pattern
-                <img src="images/maximize.png" onclick="javascript:maximize('#prototype')" title="maximize room for the diagram"/>
-                <img src="images/minimize.png" onclick="javascript:minimize('#prototype')" title="reset room for the diagram"/>
-            </figcaption>
-            <div id="prototype">
-            </div>
-        </figure>
-
         <figure class="pattern">
             <figcaption>Pattern definition
                 <a href="/GroundForge-help/Advanced" target="_blank"><img src="images/information-icon.png" title="how to define the pattern and foot sides"></a>
@@ -230,6 +220,15 @@
                     <br>
                     <input type="number" name="shiftRowsSE" id="shiftRowsSE" min="0" max="12" value="2" onchange="showProto()"><label for="shiftRowsSE">row(s)</label>
                 </div>
+            </div>
+        </figure>
+        <figure >
+            <figcaption>
+                Pattern
+                <img src="images/maximize.png" onclick="javascript:maximize('#prototype')" title="maximize room for the diagram"/>
+                <img src="images/minimize.png" onclick="javascript:minimize('#prototype')" title="reset room for the diagram"/>
+            </figcaption>
+            <div id="prototype">
             </div>
         </figure>
 </main>

@@ -34,6 +34,24 @@
             <p>
                 Modify the <a id="to_pattern" href="#">pattern definition</a> or create a new one.
             </p>
+            <label for="patchWidth">
+                Swatch size:
+            </label>
+            <div>
+                <input type="number" name="patchWidth" id="patchWidth" min="3" max="28" value="7" onchange="dimChanged()" autofocus>
+                <label for="patchWidth">columns</label>
+                <a href="/GroundForge-help/Patch-Size" target="_blank"><img src="images/information-icon.png" title="swatch size"></a>
+                <br>
+                <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="7" onchange="dimChanged()">
+                <label for="patchHeight">rows</label>
+            </div>
+            <br>
+            <label for="draggable">Draggable <em>(under construction)</em>:</label>&nbsp;
+            <input type="checkbox" id="draggable" onchange="redrawThreads()" title="make threads draggable">
+            <label for="draggable">to <a href="/GroundForge-help/images/drag.gif" target="_blank"
+            >untangle</a> unfinished animations or analyze <a href="/GroundForge/stitches.html?patchWidth=12&patchHeight=12&c1=ctct&b1=ctct&c2=ctct&a2=ctct&tile=XM8,FX1&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=3&shiftRowsSE=2"
+            >cluttered</a> patterns.</label>
+            <br>
             <button id="forces" onclick="return false">apply</button>
             <label for="forces">forces to the pair diagram</label>
             <br>
@@ -41,26 +59,14 @@
             <input type="color" id="threadColor" name="threadColor" value="#ff0000">
             <label for="threadColor">click the button to select another color.</label>
             <br>
-            <br>
             <label for="paintStitches">Click a stitch to assign </label>
-            <input type="text" id="paintStitches" name="paintStitches" value="ct">
-            <button onclick="flipStitch()">flip the stitch</button>
+            <input type="text" id="paintStitches" name="paintStitches" value="ct" onclick="return false">
+            <button onclick="flipStitch(); return false;">flip the stitch</button>
             <br>
             or <button onclick="setAllStitches();return false">assign to all</button>
             or <button onclick="setIgnoredStitches();return false">assign to ignored</button>
             <br>
             <br>
-            <label for="patchWidth">
-                Swatch size:
-            </label>
-            <div>
-                <input type="number" name="patchWidth" id="patchWidth" min="3" max="28" value="7" onchange="showProto()" autofocus>
-                <label for="patchWidth">columns</label>
-                <a href="/GroundForge-help/Patch-Size" target="_blank"><img src="images/information-icon.png" title="swatch size"></a>
-                <br>
-                <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="7" onchange="showProto()">
-                <label for="patchHeight">rows</label>
-            </div>
         </form>
         <p id="whiting"></p><br>
         <figure >

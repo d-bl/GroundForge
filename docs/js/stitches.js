@@ -1,16 +1,36 @@
 function load() {
+
+    let q = window.location.search.substr(1)+""
+    let w = q.replace(/.*patchWidth=/,"").replace(/&.*/,"");
+    let h = q.replace(/.*patchHeight=/,"").replace(/&.*/,"");
+    d3.select("#patchHeight").attr("value",h)
+    d3.select("#patchWidth").attr("value",w)
     showThread(show(window.location.search.substr(1)))
+}
+
+function getQ() {
+    return d3.select('#to_pattern').attr('href').replace(/.*[?]/, "");
+}
+
+function dimChanged() {
+    let q = getQ()
+    let w = d3.select("#patchWidth").node().value
+    let h = d3.select("#patchHeight").node().value
+    q = getQ()
+        .replace(new RegExp('patchWidth=[0-9]+'),'patchWidth='+w)
+        .replace(new RegExp('patchHeight=[0-9]+'),'patchHeight='+h)
+    showThread(show(q))
 }
 function show(q) {
     var cfg = TilesConfig(q)
 
     // dimensions for an A1
-    var width = 2245
-    var height = 3178
+    let width = 2245
+    let height = 3178
 
-    var zoom = 1.9
-    var itemMatrix = cfg.getItemMatrix
-    var svg = PairSvg.render(itemMatrix, width, height, zoom)
+    let zoom = 1.9
+    let itemMatrix = cfg.getItemMatrix
+    let svg = PairSvg.render(itemMatrix, width, height, zoom)
     d3.select('#to_self').attr("href","stitches.html?"+q)
     d3.select('#to_pattern').attr("href","pattern?"+q)
     d3.select('#enum').html(PairSvg.legend(itemMatrix))
@@ -22,8 +42,7 @@ function show(q) {
     return cfg
 }
 function redrawThreads(){
-    var q = d3.select('#to_pattern').attr('href')
-    showThread(TilesConfig(q))
+    showThread(TilesConfig(getQ()))
 }
 function showThread(cfg) {
     // dimensions for an A1
@@ -59,7 +78,7 @@ function clickedStitch(event) {
     var id = event.currentTarget.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
     var replacement = `${id}=${paintStitchValue()}`
     var search = new RegExp(`${id}=[ctlr]+`,'g')
-    let attr = d3.select('#to_pattern').attr('href');
+    let attr = getQ();
     if (search.test(attr))
         q = attr.replace(search,replacement)
     else
@@ -70,16 +89,12 @@ function clickedStitch(event) {
 function setAllStitches() {
     var replacement = `=${paintStitchValue()}`
     var search = new RegExp(`=[ctlr]+`,'g')
-    let q = d3.select('#to_pattern').attr('href')
-        .replace(search,replacement)
-    show(q)
+    show(getQ().replace(search, replacement))
 }
 function setIgnoredStitches() {
     var replacement = `=${paintStitchValue()}`
     var search = new RegExp(`=-`,'g')
-    let q = d3.select('#to_pattern').attr('href')
-        .replace(search,replacement)
-    show(q)
+    show(getQ().replace(search, replacement))
 }
 function whiting (kv) {
     var k = kv.trim().replace(/[^a-zA-Z0-9]/g,"")
