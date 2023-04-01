@@ -8,6 +8,7 @@
     <script src="js/nudgePairs.js" type="text/javascript"></script>
     <script src="js/showGraph.js" type="text/javascript"></script>
     <script src="js/stitches.js" type="text/javascript"></script>
+    <script src="js/download.js"></script>
     <link rel="stylesheet" href="css/header.css" type="text/css">
     <link rel="stylesheet" href="css/stitches.css" type="text/css">
 
@@ -66,8 +67,6 @@
             <br>
             or <button onclick="setAllStitches();return false">assign to all</button>
             or <button onclick="setIgnoredStitches();return false">assign to ignored</button>
-            <br>
-            <br>
         </form>
         <p id="whiting"></p><br>
         <figure >
@@ -83,6 +82,15 @@
         <figure >
             <figcaption>
                 Pairs
+                <a href="javascript:prepareDownload(`#pair`)"
+                   onfocus="this.href=getDownloadContent('#pair')"
+                   onblur="this.href='javascript:prepareDownload(`#pair`)'"
+                   download="GF-prototype.svg" class="download"
+                   title="download for 3rd party vector based editor"
+                ><img src="images/download.jpg"></a>
+                <a id="pairDownloadLink" download="GF-thread-diagram.svg"
+                   href="#?pleasePrepareFirst" onblur="this.href='#?pleasePrepareFirst'"
+                   style="display:none" onclick="this.style.display = 'none'">download</a>
                 <img src="images/maximize.png" onclick="javascript:maximize('#pair')" title="maximize room for the diagram"/>
                 <img src="images/minimize.png" onclick="javascript:minimize('#pair')" title="reset room for the diagram"/>
             </figcaption>
@@ -91,6 +99,15 @@
         <figure >
             <figcaption>
                 Threads
+                <a href="javascript:prepareDownload(`#thread`)"
+                   onfocus="this.href=getDownloadContent('#thread')"
+                   onblur="this.href='javascript:prepareDownload(`#thread`)'"
+                   download="GF-prototype.svg" class="download"
+                   title="download for 3rd party vector based editor"
+                ><img src="images/download.jpg"></a>
+                <a id="threadDownloadLink" download="GF-thread-diagram.svg"
+                   href="#?pleasePrepareFirst" onblur="this.href='#?pleasePrepareFirst'"
+                   style="display:none" onclick="this.style.display = 'none'">download</a>
                 <img src="images/wand.png" onclick="javascript:redrawThreads()" title="reload the diagram"/>
                 <img src="images/maximize.png" onclick="javascript:maximize('#thread')" title="maximize room for the diagram"/>
                 <img src="images/minimize.png" onclick="javascript:minimize('#thread')" title="minimize room for the diagram"/>

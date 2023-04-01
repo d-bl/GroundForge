@@ -66,7 +66,6 @@ function showProto(q) {
   //var encoded = encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8"?-->' + svg)
   d3.select("#to_self").node().href = "pattern?" + query
   d3.select("#to_stitches").node().href = "stitches.html?" + query
-  d3.select("#poc").node().href = "poc?" + pocRef(query)
   d3.selectAll("#pattern textarea").attr("rows", config.maxTileRows + 1)
   d3.select("#footside").attr("cols", config.leftMatrixCols + 2)
   d3.select("#tile"    ).attr("cols", config.centerMatrixCols + 2)
@@ -103,29 +102,6 @@ function scrollToIfPossible(container, x, y) {
     container.scrollTop = y
     container.scrollLeft = x
   }
-}
-function getInkscapeTemplate() {
-  var s = InkscapeTemplate.fromUrl(submitQuery())
-  return 'data:text/plain,' + encodeURIComponent(s)
-}
-function getDownloadContent (id) {
-  svg = d3.select(id).node().innerHTML.
-      replace('pointer-events="all"', '').
-      replace(/<path[^>]+opacity: 0[;"].+?path>/g, '').
-      replace(/<foreignObject[\s\S]*?foreignObject>/g, '')
-  return 'data:image/svg+xml,' + encodeURIComponent('<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->' + svg)
-}
-function prepareDownload(contentId) {
-    // touch devices follow the href before onfocus changed it
-    // in that case we temporarily need another link
-    // that link is hidden when followed
-    var linkId = contentId + "DownloadLink"
-    d3.select(linkId)
-      .attr("href",getDownloadContent(contentId))
-      .style("display","inline-block")
-}
-function prepareTemplateDownload() {
-    alert('Sorry, Inkscape templates are not available for your device')
 }
 function setField (keyValueString) {
 
