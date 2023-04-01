@@ -48,11 +48,13 @@
                 <label for="patchHeight">rows</label>
             </div>
             <br>
-            <label for="draggable">Draggable <em>(under construction)</em>:</label>&nbsp;
+            <label for="draggable">Draggable:</label>&nbsp;
             <input type="checkbox" id="draggable" onchange="redrawThreads()" title="make threads draggable">
             <label for="draggable">to <a href="/GroundForge-help/images/drag.gif" target="_blank"
-            >untangle</a> unfinished animations or analyze <a href="/GroundForge/stitches.html?patchWidth=11&patchHeight=12&tile=L-O-,---5,H-E-,-5--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4&c1=ctctttt&a1=ctctttt&d2=-&c3=ctctttt&a3=ctctttt&b4=ctctttt"
-            >cluttered</a> patterns.</label>
+            >untangle</a> unfinished animations or analyze cluttered patterns.
+                <a href="/GroundForge-help/untangle" target="_blank"
+                ><img src="images/information-icon.png" title="untangle clutter"></a>
+            </label>
             <br>
             <button id="forces" onclick="applyForces()">apply</button>
             <label for="forces">forces to the pair diagram</label>

@@ -23,8 +23,20 @@ function showGraph(container, diagram, stroke, width, height, opacity) {
         links.attr("d", drawPath);
         nodes.attr("transform", moveNode);
     }
+    function  isDraggable() {
+        let n = d3.select("#draggable").node();
+        return n && n.checked
+    }
 
+    let containerNode = container.node();
     function moveToNW() {
+        if (isDraggable()) {
+            // in this case, scroll into view
+            containerNode.scrollTop = height/2
+            containerNode.scrollLeft = width/2
+            return;
+        }
+
         var x = nodeDefs.reduce(minX).x - 3
         var y = nodeDefs.reduce(minY).y - 3
         function moveNode(jsNode) { return 'translate('+(jsNode.x-x)+','+(jsNode.y-y)+')' }
@@ -48,16 +60,15 @@ function showGraph(container, diagram, stroke, width, height, opacity) {
         .strength(strength)
         .distance(12)
         .iterations(30)
-    d3.forceSimulation(nodeDefs)
+    var sim = d3.forceSimulation(nodeDefs)
         .force("charge", d3.forceManyBody().strength(-1000))
         .force("link", forceLink)
-        .force("center", d3.forceCenter(width/2, height/2))
+        .force("center", d3.forceCenter(width, height))
         .alpha(0.0035)
         .on("tick", onTick)
         .on("end", moveToNW)
 
-    let node = d3.select("#draggable").node();
-    if (node && node.checked) {
+    if (isDraggable()) {
         function dragstarted(d) {
             if (!d3.event.active) sim.alpha(0.005).restart()
             d.fx = d.x;
