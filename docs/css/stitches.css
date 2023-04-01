@@ -19,7 +19,8 @@ form div {display: inline-block; vertical-align: top; }
 #threadColor { width: 2.5em }
 div input { width: 3em }
 
-#to_self { display: none }
+/* the first button on the form (dummy) is activated when typing enter in an input field */
+#to_self, #dummy { display: none }
 @media print {
     form, header, figcaption { display: none }
     #to_self { display: block }

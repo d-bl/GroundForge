@@ -30,7 +30,8 @@
     </header>
     <main>
         <a id="to_self" href="#">Stitches and threads</a>
-        <form  onsubmit="return false">
+        <form onsubmit="return false" action="javascript:void(0);">
+            <button id="dummy" onclick="return false"></button>
             <p>
                 Modify the <a id="to_pattern" href="#">pattern definition</a> or create a new one.
             </p>
@@ -38,7 +39,7 @@
                 Swatch size:
             </label>
             <div>
-                <input type="number" name="patchWidth" id="patchWidth" min="3" max="28" value="7" onchange="dimChanged()" autofocus>
+                <input type="number" name="patchWidth" id="patchWidth" min="3" max="28" value="7" onchange="dimChanged();return false" autofocus>
                 <label for="patchWidth">columns</label>
                 <a href="/GroundForge-help/Patch-Size" target="_blank"><img src="images/information-icon.png" title="swatch size"></a>
                 <br>
@@ -49,10 +50,10 @@
             <label for="draggable">Draggable <em>(under construction)</em>:</label>&nbsp;
             <input type="checkbox" id="draggable" onchange="redrawThreads()" title="make threads draggable">
             <label for="draggable">to <a href="/GroundForge-help/images/drag.gif" target="_blank"
-            >untangle</a> unfinished animations or analyze <a href="/GroundForge/stitches.html?patchWidth=12&patchHeight=12&c1=ctct&b1=ctct&c2=ctct&a2=ctct&tile=XM8,FX1&footsideStitch=ctctt&tileStitch=ctct&headsideStitch=ctctt&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=3&shiftRowsSE=2"
+            >untangle</a> unfinished animations or analyze <a href="/GroundForge/stitches.html?patchWidth=11&patchHeight=12&tile=L-O-,---5,H-E-,-5--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4&c1=ctctttt&a1=ctctttt&d2=-&c3=ctctttt&a3=ctctttt&b4=ctctttt"
             >cluttered</a> patterns.</label>
             <br>
-            <button id="forces" onclick="return false">apply</button>
+            <button id="forces" onclick="applyForces()">apply</button>
             <label for="forces">forces to the pair diagram</label>
             <br>
             <label for="threadColor">Click a bobbin or thread start to assign</label>
@@ -60,7 +61,7 @@
             <label for="threadColor">click the button to select another color.</label>
             <br>
             <label for="paintStitches">Click a stitch to assign </label>
-            <input type="text" id="paintStitches" name="paintStitches" value="ct" onclick="return false">
+            <input type="text" id="paintStitches" name="paintStitches" value="ct" onclick="return false" onsubmit="return false">
             <button onclick="flipStitch(); return false;">flip the stitch</button>
             <br>
             or <button onclick="setAllStitches();return false">assign to all</button>

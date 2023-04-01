@@ -7,7 +7,10 @@ function load() {
     d3.select("#patchWidth").attr("value",w)
     showThread(show(window.location.search.substr(1)))
 }
-
+function applyForces() {
+    var cfg = TilesConfig(getQ())
+    nudgePairs('#pair', cfg.totalCols*6,cfg.totalRows*6)
+}
 function getQ() {
     return d3.select('#to_pattern').attr('href').replace(/.*[?]/, "");
 }
@@ -35,9 +38,6 @@ function show(q) {
     d3.select('#to_pattern').attr("href","pattern?"+q)
     d3.select('#enum').html(PairSvg.legend(itemMatrix))
     d3.select('#pair').html(svg)
-    d3.select('#forces').on("click",function () {
-        nudgePairs('#pair', cfg.totalCols*6,cfg.totalRows*6)
-    })
     q.split("&").find(whiting)
     return cfg
 }
