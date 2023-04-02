@@ -34,8 +34,9 @@ function show(q) {
     let zoom = 1.9
     let itemMatrix = cfg.getItemMatrix
     let svg = PairSvg.render(itemMatrix, width, height, zoom)
-    d3.select('#to_self').attr("href","stitches.html?"+q)
-    d3.select('#to_pattern').attr("href","pattern?"+q)
+    d3.select('#to_self').attr("href","stitches?"+q)
+    d3.select('#to_pattern').attr("href","pattern.html?"+q)
+    d3.select('#to_droste').attr("href","droste.html?"+q)
     d3.select('#enum').html(PairSvg.legend(itemMatrix))
     d3.select('#pair').html(svg)
     q.split("&").find(whiting)
@@ -45,15 +46,9 @@ function redrawThreads(){
     showThread(TilesConfig(getQ()))
 }
 function showThread(cfg) {
-    // dimensions for an A1
-    var width = 2245
-    var height = 3178
-
-    var opacity = 0
-    var stroke = 2
     var pairDiagram = NewPairDiagram.create(cfg) // old style pair diagram
     var threadDiagram = ThreadDiagram.create(pairDiagram)
-    showGraph(d3.select('#thread'), threadDiagram, stroke, width, height, opacity)
+    showGraph('#thread', threadDiagram)
     d3.select('#thread g').attr("transform","scale(0.5,0.5)")
 }
 function maximize(containerId) {
