@@ -1,5 +1,14 @@
-function showGraph(container, diagram, stroke, width, height, opacity) {
+function showGraph(containerId, diagram) {
 // copied from API/thread.html, added moveToNW by js/print.js
+
+    var container = d3.select(containerId)
+
+    // dimensions for an A1
+    var width = 2245
+    var height = 3178
+
+    var opacity = 0
+    var stroke = 2
 
     var markers = true // use false for slow devices and IE-11, set them at onEnd
     container.html(DiagramSvg.render(diagram, stroke, markers, width, height, opacity))
@@ -23,20 +32,8 @@ function showGraph(container, diagram, stroke, width, height, opacity) {
         links.attr("d", drawPath);
         nodes.attr("transform", moveNode);
     }
-    function  isDraggable() {
-        let n = d3.select("#draggable").node();
-        return n && n.checked
-    }
 
-    let containerNode = container.node();
     function moveToNW() {
-        if (isDraggable()) {
-            // in this case, scroll into view
-            containerNode.scrollTop = height/2
-            containerNode.scrollLeft = width/2
-            return;
-        }
-
         var x = nodeDefs.reduce(minX).x - 3
         var y = nodeDefs.reduce(minY).y - 3
         function moveNode(jsNode) { return 'translate('+(jsNode.x-x)+','+(jsNode.y-y)+')' }
@@ -54,39 +51,17 @@ function showGraph(container, diagram, stroke, width, height, opacity) {
     function minY (min, node) { return min.y < node.y ? min : node }
 
     // read 'weak' as 'invisible'
-    function strength(link){ return link.weak ? link.withPin ? 40 : 10 : 50 }
+    function strength(link){ return link.withPin ? 10 : 50 }
     var forceLink = d3
         .forceLink(linkDefs)
         .strength(strength)
         .distance(12)
         .iterations(30)
-    var sim = d3.forceSimulation(nodeDefs)
+    d3.forceSimulation(nodeDefs)
         .force("charge", d3.forceManyBody().strength(-1000))
         .force("link", forceLink)
-        .force("center", d3.forceCenter(width, height))
+        .force("center", d3.forceCenter(width/2, height/2))
         .alpha(0.0035)
         .on("tick", onTick)
         .on("end", moveToNW)
-
-    if (isDraggable()) {
-        function dragstarted(d) {
-            if (!d3.event.active) sim.alpha(0.005).restart()
-            d.fx = d.x;
-            d.fy = d.y;
-        }
-        function dragged(d) {
-            d.fx = d3.event.x;
-            d.fy = d3.event.y;
-        }
-        function dragended(d) {
-            step = 0
-            if (!d3.event.active) sim.alpha(0.005).restart()
-            d.fx = null;
-            d.fy = null;
-        }
-        nodes.call(d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended))
-    }
 }

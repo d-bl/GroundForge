@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title lang="en">GF: Pair diagrams from thread diagrams</title>
+    <script src="js/d3.v4.min.js" type="text/javascript"></script>
+    <script src="js/GroundForge-opt.js" type="text/javascript"></script>
+    <script src="js/showGraph.js" type="text/javascript"></script>
+    <script src="js/droste.js" type="text/javascript"></script>
+    <script src="js/download.js"></script>
+    <link rel="stylesheet" href="css/header.css" type="text/css">
+    <link rel="stylesheet" href="css/stitches.css" type="text/css">
+
+    <link rel="apple-touch-icon" sizes="120x120" href="/GroundForge/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/GroundForge/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/GroundForge/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/GroundForge/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/GroundForge/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/GroundForge/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/GroundForge/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body onload="load()">
+<header>
+    <div>
+        <h1><a href="/">Diagrams for Bobbin Lace</a></h1>
+        <h2>GroundForge: Pair diagrams from thread diagrams</h2>
+    </div>
+</header>
+<main>
+    <a id="to_self" href="#">Stitches and threads</a>
+    <form onsubmit="return false" action="javascript:void(0);">
+        <button id="dummy" onclick="return false"></button>
+        <p>
+            Back to the initail <a id="to_stitches" href="#"
+        >pair diagram</a>.
+        </p>
+        <p>
+            <label for="threadColor">Click a bobbin or thread start to assign</label>
+            <input type="color" id="threadColor" name="threadColor" value="#ff0000">
+            <label for="threadColor">click the button to select another color.</label>
+        </p>
+    </form>
+    <figure >
+        <figcaption>
+            Thread diagram
+            <img src="images/maximize.png" onclick="javascript:maximize('#thread')" title="maximize room for the diagram"/>
+            <img src="images/minimize.png" onclick="javascript:minimize('#thread')" title="minimize room for the diagram"/>
+        </figcaption>
+        <div id="thread"></div>
+    </figure>
+    <h3>First level</h3>
+    <figure>
+        <figcaption>
+            Stitches
+            <a href="#" onclick="showDroste(2)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></a>
+            <a href="/GroundForge-help/Droste-effect" target="_blank"><img src="images/information-icon.png" title="help"></a>
+        </figcaption>
+        <textarea id="droste2" name="droste2" rows="8" cols="30" spellcheck="false" onchange="clear2()" placeholder="Type stitch definition here.
+If nothing is typed, the stitch 'ctc' will be used.
+
+Example:
+
+twist=ct
+cross=ctct"></textarea>
+    </figure>
+    <figure>
+        <figcaption>
+            Pairs
+            <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
+            <img class="swatches" src="images/swatches.png" onclick="showColorCode('#drosteFields2')" title="stitch enumeration">
+            <a href="javascript:prepareDownload('#drostePair2')" onfocus="this.href=getDownloadContent('#drostePair2')" onblur="this.href='javascript:prepareDownload(`#drostePair2`)'" download="GF-droste-pair-diagram.svg" title="download" class="download"><img src="images/download.jpg"></a>
+            <img src="images/maximize.png" onclick="maximize('#drostePair2')" title="maximize room for the diagram"/>
+            <img src="images/minimize.png" onclick="minimize('#drostePair2')" title="minimize room for the diagram"/>
+        </figcaption>
+        <div id="drostePair2"></div>
+    </figure>
+    <figure>
+        <figcaption>
+            Threads
+            <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
+            <a href="javascript:prepareDownload('#drosteThread2')" onfocus="this.href=getDownloadContent('#drosteThread2')" onblur="this.href='javascript:prepareDownload(`#drosteThread2`)'" download="GF-droste-thread-diagram.svg" title="download" class="download"><img src="images/download.jpg"></a>
+            <a id="drosteThread2DownloadLink" download="GF-droste-thread-diagram.svg" href="#?pleasePrepareFirst" onblur="this.href='#?pleasePrepareFirst'" style="display:none" onclick="this.style.display = 'none'">download</a>
+            <img src="images/maximize.png" onclick="javascript:maximize('#drosteThread2')" title="maximize room for the diagram"/>
+            <img src="images/minimize.png" onclick="javascript:minimize('#drosteThread2')" title="minimize room for the diagram"/>
+        </figcaption>
+        <div id="drosteThread2"></div>
+    </figure>
+    <h3>Second level</h3>
+    <figure>
+        <figcaption>
+            Stitches
+            <a href="#" onclick="showDroste(3)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></a>
+            <a href="/GroundForge-help/Advanced#thread-diagram-as-pair-diagram" target="_blank"><img src="images/information-icon.png" title="help"></a>
+        </figcaption>
+        <textarea id="droste3" name="droste3" rows="8" cols="30" spellcheck="false" onchange="clear3()" placeholder="Type stitch definition here.
+If nothing is typed, the stitch 'ctc' will be used.
+
+Example:
+
+ct
+a140=a150=b240=b250=ctcctct"></textarea>
+    </figure>
+    <figure>
+        <figcaption>
+            Pairs
+            <a href="/GroundForge-help/Color-Code" target="_blank"><img src="images/information-icon.png" title="color legend"></a>
+            <img class="swatches" src="images/swatches.png" onclick="showColorCode('#drosteFields3')" title="stitch enumeration">
+            <a href="javascript:prepareDownload('#drostePair3')" onfocus="this.href=getDownloadContent('#drostePair3')" onblur="this.href='javascript:prepareDownload(`#drostePair3`)'" download="GF-droste-next-pair-diagram.svg" title="download" class="download"><img src="images/download.jpg"></a>
+            <a id="drostePair3DownloadLink" download="GF-droste-next-pair-diagram.svg" href="#?pleasePrepareFirst" onblur="this.href='#?pleasePrepareFirst'" style="display:none" onclick="this.style.display = 'none'">download</a>
+            <img src="images/maximize.png" onclick="maximize('#drostePair3')" title="maximize room for the diagram"/>
+            <img src="images/minimize.png" onclick="minimize('#drostePair3')" title="minimize room for the diagram"/>
+        </figcaption>
+        <div id="drostePair3"></div>
+    </figure>
+    <figure>
+        <figcaption>
+            Threads
+            <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
+            <a href="javascript:prepareDownload('#drosteThread3')" onfocus="this.href=getDownloadContent('#drosteThread3')" onblur="this.href='javascript:prepareDownload(`#drosteThread3`)'" download="GF-droste-net-thread-diagram.svg" title="download" class="download"><img src="images/download.jpg"></a>
+            <a id="drosteThread3DownloadLink" download="GF-droste-net-thread-diagram.svg" href="#?pleasePrepareFirst" onblur="this.href='#?pleasePrepareFirst'" style="display:none" onclick="this.style.display = 'none'">download</a>
+            <img src="images/maximize.png" onclick="javascript:maximize('#drosteThread3')" title="maximize room for the diagram"/>
+            <img src="images/minimize.png" onclick="javascript:minimize('#drosteThread3')" title="minimize room for the diagram"/>
+        </figcaption>
+        <div id="drosteThread3"></div>
+    </figure>
+</main>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+    var sc_project=10865294;
+    var sc_invisible=0;
+    var sc_security="2e4f5d96";
+    var scJsHost = (("https:" == document.location.protocol) ?
+        "https://secure." : "http://www.");
+    document.write("<sc"+"ript type='text/javascript' src='" +
+        scJsHost+
+        "statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript>
+    <div class="statcounter"
+    ><a title="web analytics"
+        href="http://statcounter.com/"
+        target="_blank"><img
+            class="statcounter"
+            src="http://c.statcounter.com/10865294/0/2e4f5d96/0/"
+            alt="web analytics"
+    ></a></div>
+</noscript>
+<!-- End of StatCounter Code for Default Guide -->
+</body>
+</html>

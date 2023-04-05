@@ -1,14 +1,7 @@
 function load() {
     var q = window.location.search.substr(1)
     var cfg = TilesConfig(q)
-
-    // dimensions for an A1
-    var width = 2245
-    var height = 3178
-
-    var opacity = 0
     var zoom = 1.9
-    var stroke = 2
     var itemMatrix = cfg.getItemMatrix
     var svg = PairSvg.render(itemMatrix, width, height, zoom)
     d3.select('#def').attr("href","tiles?"+q)
@@ -20,8 +13,8 @@ function load() {
     var pairDiagram = NewPairDiagram.create(cfg)
     var threadDiagram = ThreadDiagram.create(pairDiagram)
     d3.select('#pair1perStitch').html(DiagramSvg.render(pairDiagram, stroke, true, width, height, opacity))
-    showGraph(d3.select('#pair1perStitchAnimated'), pairDiagram, stroke, width, height, opacity)
-    showGraph(d3.select('#thread'), threadDiagram, stroke, width, height, opacity)
+    showGraph('#pair1perStitchAnimated', pairDiagram)
+    showGraph('#thread', threadDiagram)
     d3.select('#thread g').attr("transform","scale(0.5,0.5)")
     var keyValues = q.split("&")
     keyValues.find(whiting)

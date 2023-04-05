@@ -34,7 +34,10 @@
         <form onsubmit="return false" action="javascript:void(0);">
             <button id="dummy" onclick="return false"></button>
             <p>
-                Modify the <a id="to_pattern" href="#">pattern definition</a> or create a new one.
+                Use the <a id="to_droste" href="#"
+                >thread diagram as pair diagram</a>,
+                modify the <a id="to_pattern" href="#"
+                >pattern definition</a> or create a new pattern from scratch.
             </p>
             <label for="patchWidth">
                 Swatch size:
@@ -47,14 +50,6 @@
                 <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="7" onchange="dimChanged()">
                 <label for="patchHeight">rows</label>
             </div>
-            <br>
-            <label for="draggable">Draggable:</label>&nbsp;
-            <input type="checkbox" id="draggable" onchange="redrawThreads()" title="make threads draggable">
-            <label for="draggable">to <a href="/GroundForge-help/images/drag.gif" target="_blank"
-            >untangle</a> unfinished animations or analyze cluttered patterns.
-                <a href="/GroundForge-help/untangle" target="_blank"
-                ><img src="images/information-icon.png" title="untangle clutter"></a>
-            </label>
             <br>
             <button id="forces" onclick="applyForces()">apply</button>
             <label for="forces">forces to the pair diagram</label>
