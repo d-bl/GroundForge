@@ -1,13 +1,43 @@
 function load() {
 
-    let q = window.location.search.substr(1)+""
+    let q = window.location.search.substring(1)+""
     d3.select('#to_stitches').attr('href','stitches.html?'+q)
+    d3.select('#to_self').attr('href','droste.html?'+q)
+    setDroste(2,q)
+    setDroste(3,q)
     showThread(TilesConfig(q))
+}
+function setDroste(level, q){
+    let id = 'droste'+level
+    d3.select("#" + id)
+        .on('change', instructionsChanged)
+    if(!q.includes(id)) return
+    let s = q
+        .replace(new RegExp(`.*${id}=`),"")
+        .replace(/&.*/,"");
+    d3.select("#" + id)
+        .property('value', s)
+}
+function instructionsChanged(event) {
+    clear2()
+    clear3()
+    let q = changeQ(3, changeQ(2, getQ()))
+    d3.select('#to_stitches').attr('href','stitches.html?'+q)
+    d3.select('#to_self').attr('href','droste.html?'+q)
+}
+function changeQ(level, q){
+    console.log('hello')
+    let id = 'droste'+level
+    let s = d3.select("#droste2").property('value')
+    if(q.includes(id))
+        q = q.replace(new RegExp(id+'=[^&]+'),`${id}=${s}`)
+    else q = `${q}&${id}=${s}`
+    console.log('------'+q)
+    return q
 }
 function getQ() {
     return d3.select('#to_stitches').attr('href').replace(/.*[?]/, "");
 }
-
 function showThread(cfg) {
     var pairDiagram = NewPairDiagram.create(cfg) // old style pair diagram
     var threadDiagram = ThreadDiagram.create(pairDiagram)
@@ -21,12 +51,6 @@ function maximize(containerId) {
 function minimize(containerId) {
     d3.select(containerId).style("width","250px").style("height","250px")
     return false;
-}
-function clickedThread(event) {
-    var threadSegments = d3.selectAll("#thread ." + event.currentTarget.textContent.replace(" ",""))
-    var color = d3.select('#threadColor').node().value
-    threadSegments.style("stroke", color)
-    threadSegments.filter(".node").style("fill", color)
 }
 function clear2() {
     d3.selectAll("#drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
@@ -72,7 +96,6 @@ function showDroste(level) {
     }
     return false
 }
-
 function setPairDiagram(containerID, diagram) {
     var container = d3.select(containerID)
     container.node().data = diagram
@@ -88,9 +111,7 @@ function setThreadDiagram(containerID, diagram) {
     container.selectAll(".bobbin").on("click", clickedThread)
 }
 function clickedThread(event) {
-    if (!d3 || !d3.event || !d3.event.target)
-        return
-    let classNameAsXpath = '.' + d3.event.currentTarget.textContent.replace(" ", "");
+    let classNameAsXpath = '.' + event.currentTarget.textContent.replace(" ", "");
     let threadSegments = d3.selectAll(classNameAsXpath)
     let color = d3.select('#threadColor').node().value
     threadSegments.style("stroke", color)
