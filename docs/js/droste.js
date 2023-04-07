@@ -88,8 +88,11 @@ function setThreadDiagram(containerID, diagram) {
     container.selectAll(".bobbin").on("click", clickedThread)
 }
 function clickedThread(event) {
-    var threadSegments = d3.selectAll("#thread ." + event.currentTarget.textContent.replace(" ",""))
-    var color = d3.select('#threadColor').node().value
+    if (!d3 || !d3.event || !d3.event.target)
+        return
+    let classNameAsXpath = '.' + d3.event.currentTarget.textContent.replace(" ", "");
+    let threadSegments = d3.selectAll(classNameAsXpath)
+    let color = d3.select('#threadColor').node().value
     threadSegments.style("stroke", color)
     threadSegments.filter(".node").style("fill", color)
 }
