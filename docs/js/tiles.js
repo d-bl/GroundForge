@@ -487,7 +487,7 @@ function paintThreadByBobbin() {
 function paintThread(eventTarget, className) {
 
   var containerID = eventTarget.parentNode.parentNode.parentNode.id
-  var segments = d3.selectAll("#" + containerID + " ." + className)
+  var segments = d3.selectAll(" ." + className)
   var old = segments.style("stroke")+""
   //       prototype              logo                issue #166
   var c1 = "rgb(255, 0, 0)"    // "rgb(202, 47, 42)"  "rgb(155, 2, 25)" //dark magenta
