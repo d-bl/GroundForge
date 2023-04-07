@@ -33,22 +33,20 @@ function setLinks(level, q){
         .property('value', s)
 }
 function instructionsChanged(event) {
-    if (event.currentTarget.id.endsWith('2'))
+    if (event && event.currentTarget.id.endsWith('2'))
         clear2()
     clear3()
-    let q = changeQ(3, changeQ(2, getQ())).split('\n').join(',')
+    let q = changeQ(3, changeQ(2, getQ()))
+    console.log("==="+q)
     d3.select('#to_stitches').attr('href','stitches.html?'+q)
     d3.select('#to_self').attr('href','droste.html?'+q)
 }
 function changeQ(level, q){
-    console.log('hello')
     let id = 'droste'+level
-    let s = d3.select("#droste2").property('value')
+    let s = d3.select("#"+id).property('value').split('\n').join(',')
     if(q.includes(id))
-        q = q.replace(new RegExp(id+'=[^&]+'),`${id}=${s}`)
-    else q = `${q}&${id}=${s}`
-    console.log('------'+q)
-    return q
+        return q.replace(new RegExp(id+'=[^&]+'),`${id}=${s}`)
+    else return `${q}&${id}=${s}`
 }
 function getQ() {
     return d3.select('#to_stitches').attr('href').replace(/.*[?]/, "");
@@ -89,11 +87,15 @@ function showDroste(level) {
     if (level == 2) {
         setPairDiagram("#drostePair2", drostePairs2)
         setThreadDiagram("#drosteThread2", drosteThreads2)
+        d3.select('#drosteThread2 g')
+            .attr("transform","scale(0.5,0.5)")
     } else if (level == 3) {
         // TODO regenerate level two with variant of unduplicate
         var drostePairs3 = PairDiagram.create(d3.select("#droste3").node().value, drosteThreads2)
         setPairDiagram("#drostePair3", drostePairs3)
         setThreadDiagram("#drosteThread3", ThreadDiagram.create(drostePairs3))
+        d3.select('#drosteThread3 g')
+            .attr("transform","scale(0.5,0.5)")
     }
     return false
 }
