@@ -52,7 +52,7 @@ function showThread(cfg) {
     d3.select('#thread g').attr("transform","scale(0.5,0.5)")
 }
 function maximize(containerId) {
-    d3.select(containerId).style("width","100%").style("height","100%")
+    d3.select(containerId).style("width","100%").style("height","90vh")
     return false;
 }
 function minimize(containerId) {

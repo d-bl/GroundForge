@@ -52,7 +52,7 @@ function getQ() {
     return d3.select('#to_stitches').attr('href').replace(/.*[?]/, "");
 }
 function maximize(containerId) {
-    d3.select(containerId).style("width","100%").style("height","100%")
+    d3.select(containerId).style("width","100%").style("height","90vh")
     return false;
 }
 function minimize(containerId) {
