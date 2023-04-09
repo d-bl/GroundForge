@@ -50,7 +50,6 @@ function showGraph(containerId, diagram) {
     function minX (min, node) { return min.x < node.x ? min : node }
     function minY (min, node) { return min.y < node.y ? min : node }
 
-    // read 'weak' as 'invisible'
     function strength(link){ return link.withPin ? 10 : 50 }
     var forceLink = d3
         .forceLink(linkDefs)

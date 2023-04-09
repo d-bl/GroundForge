@@ -7,7 +7,7 @@
     <script src="js/GroundForge-opt.js" type="text/javascript"></script>
     <script src="js/showGraph.js" type="text/javascript"></script>
     <script src="js/droste.js" type="text/javascript"></script>
-    <script src="js/download.js"></script>
+    <script src="js/diagram-figure.js"></script>
     <link rel="stylesheet" href="css/header.css" type="text/css">
     <link rel="stylesheet" href="css/stitches.css" type="text/css">
 
@@ -37,7 +37,7 @@
         >pair diagram</a>.
         </p>
         <p>
-            <label for="threadColor">Click a bobbin or thread start to assign</label>
+            <label for="threadColor">Click a bobbin or thread start to highlight a thread with</label>
             <input type="color" id="threadColor" name="threadColor" value="#ff0000">
             <label for="threadColor">click the button to select another color.</label>
         </p>
@@ -46,6 +46,7 @@
         <figcaption>
             Thread diagram
             <img src="images/maximize.png" onclick="javascript:maximize('#thread')" title="maximize room for the diagram"/>
+            <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#thread')" title="reset room for the diagram"/>
             <img src="images/minimize.png" onclick="javascript:minimize('#thread')" title="minimize room for the diagram"/>
         </figcaption>
         <div id="thread"></div>
@@ -54,8 +55,11 @@
     <figure>
         <figcaption>
             Stitches
-            <a href="#" onclick="showDroste(2)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></a>
             <a href="/GroundForge-help/Droste-effect" target="_blank"><img src="images/information-icon.png" title="help"></a>
+            <a href="#" onclick="showDroste(2)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></a>
+            <img src="images/maximize.png" onclick="javascript:maximize('#droste2')" title="maximize room for the diagram"/>
+            <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#droste2')" title="reset room for the diagram"/>
+            <img src="images/minimize.png" onclick="javascript:minimize('#droste2')" title="minimize room for the diagram"/>
         </figcaption>
         <textarea id="droste2" name="droste2" rows="8" cols="30" spellcheck="false" onchange="clear2()" placeholder="Type stitch definition here.
 If nothing is typed, the stitch 'ctc' will be used.
@@ -73,6 +77,7 @@ cross=ctct"></textarea>
             ></a>
             <a href="javascript:prepareDownload('#drostePair2')" onfocus="this.href=getDownloadContent('#drostePair2')" onblur="this.href='javascript:prepareDownload(`#drostePair2`)'" download="GF-droste-pair-diagram.svg" title="download" class="download"><img src="images/download.jpg"></a>
             <img src="images/maximize.png" onclick="maximize('#drostePair2')" title="maximize room for the diagram"/>
+            <img src="images/reset-dimensions.png" onclick="resetDimensions('#drostePair2')" title="reset room for the diagram"/>
             <img src="images/minimize.png" onclick="minimize('#drostePair2')" title="minimize room for the diagram"/>
         </figcaption>
         <div id="drostePair2"></div>
@@ -80,10 +85,10 @@ cross=ctct"></textarea>
     <figure>
         <figcaption>
             Threads
-            <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
             <a href="javascript:prepareDownload('#drosteThread2')" onfocus="this.href=getDownloadContent('#drosteThread2')" onblur="this.href='javascript:prepareDownload(`#drosteThread2`)'" download="GF-droste-thread-diagram.svg" title="download" class="download"><img src="images/download.jpg"></a>
             <a id="drosteThread2DownloadLink" download="GF-droste-thread-diagram.svg" href="#?pleasePrepareFirst" onblur="this.href='#?pleasePrepareFirst'" style="display:none" onclick="this.style.display = 'none'">download</a>
             <img src="images/maximize.png" onclick="javascript:maximize('#drosteThread2')" title="maximize room for the diagram"/>
+            <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#drosteThread2')" title="reset room for the diagram"/>
             <img src="images/minimize.png" onclick="javascript:minimize('#drosteThread2')" title="minimize room for the diagram"/>
         </figcaption>
         <div id="drosteThread2"></div>
@@ -92,8 +97,11 @@ cross=ctct"></textarea>
     <figure>
         <figcaption>
             Stitches
-            <a href="#" onclick="showDroste(3)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></a>
             <a href="/GroundForge-help/Advanced#thread-diagram-as-pair-diagram" target="_blank"><img src="images/information-icon.png" title="help"></a>
+            <a href="#" onclick="showDroste(3)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></a>
+            <img src="images/maximize.png" onclick="javascript:maximize('#droste3')" title="maximize room for the diagram"/>
+            <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#droste3')" title="reset room for the diagram"/>
+            <img src="images/minimize.png" onclick="javascript:minimize('#droste3')" title="minimize room for the diagram"/>
         </figcaption>
         <textarea id="droste3" name="droste3" rows="8" cols="30" spellcheck="false" onchange="clear3()" placeholder="Type stitch definition here.
 If nothing is typed, the stitch 'ctc' will be used.
@@ -112,6 +120,7 @@ a140=a150=b240=b250=ctcctct"></textarea>
             <a href="javascript:prepareDownload('#drostePair3')" onfocus="this.href=getDownloadContent('#drostePair3')" onblur="this.href='javascript:prepareDownload(`#drostePair3`)'" download="GF-droste-next-pair-diagram.svg" title="download" class="download"><img src="images/download.jpg"></a>
             <a id="drostePair3DownloadLink" download="GF-droste-next-pair-diagram.svg" href="#?pleasePrepareFirst" onblur="this.href='#?pleasePrepareFirst'" style="display:none" onclick="this.style.display = 'none'">download</a>
             <img src="images/maximize.png" onclick="maximize('#drostePair3')" title="maximize room for the diagram"/>
+            <img src="images/reset-dimensions.png" onclick="resetDimensions('#drostePair3')" title="reset room for the diagram"/>
             <img src="images/minimize.png" onclick="minimize('#drostePair3')" title="minimize room for the diagram"/>
         </figcaption>
         <div id="drostePair3"></div>
@@ -119,10 +128,10 @@ a140=a150=b240=b250=ctcctct"></textarea>
     <figure>
         <figcaption>
             Threads
-            <a href="/GroundForge-help/index#highlight-a-thread" target="_blank"><img src="images/information-icon.png" title="highlight threads"></a>
             <a href="javascript:prepareDownload('#drosteThread3')" onfocus="this.href=getDownloadContent('#drosteThread3')" onblur="this.href='javascript:prepareDownload(`#drosteThread3`)'" download="GF-droste-net-thread-diagram.svg" title="download" class="download"><img src="images/download.jpg"></a>
             <a id="drosteThread3DownloadLink" download="GF-droste-net-thread-diagram.svg" href="#?pleasePrepareFirst" onblur="this.href='#?pleasePrepareFirst'" style="display:none" onclick="this.style.display = 'none'">download</a>
             <img src="images/maximize.png" onclick="javascript:maximize('#drosteThread3')" title="maximize room for the diagram"/>
+            <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#drosteThread3')" title="reset room for the diagram"/>
             <img src="images/minimize.png" onclick="javascript:minimize('#drosteThread3')" title="minimize room for the diagram"/>
         </figcaption>
         <div id="drosteThread3"></div>

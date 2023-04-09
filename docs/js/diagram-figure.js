@@ -1,7 +1,3 @@
-function getInkscapeTemplate() {
-    var s = InkscapeTemplate.fromUrl(submitQuery())
-    return 'data:text/plain,' + encodeURIComponent(s)
-}
 function getDownloadContent (id) {
     svg = d3.select(id).node().innerHTML.
     replace('pointer-events="all"', '').
@@ -18,6 +14,15 @@ function prepareDownload(contentId) {
         .attr("href",getDownloadContent(contentId))
         .style("display","inline-block")
 }
-function prepareTemplateDownload() {
-    alert('Sorry, Inkscape templates are not available for your device')
+function maximize(containerId) {
+    d3.select(containerId).style("width","100%").style("height","90vh")
+    return false;
+}
+function minimize(containerId) {
+    d3.select(containerId).style("width","250px").style("height","0")
+    return false;
+}
+function resetDimensions(containerId) {
+    d3.select(containerId).style("width","250px").style("height","250px")
+    return false;
 }

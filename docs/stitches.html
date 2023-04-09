@@ -8,7 +8,7 @@
     <script src="js/nudgePairs.js" type="text/javascript"></script>
     <script src="js/showGraph.js" type="text/javascript"></script>
     <script src="js/stitches.js" type="text/javascript"></script>
-    <script src="js/download.js"></script>
+    <script src="js/diagram-figure.js"></script>
     <link rel="stylesheet" href="css/header.css" type="text/css">
     <link rel="stylesheet" href="css/stitches.css" type="text/css">
 
@@ -35,9 +35,9 @@
             <button id="dummy" onclick="return false"></button>
             <p>
                 Use the <a id="to_droste" href="#"
-                >thread diagram as pair diagram</a>,
-                modify the <a id="to_pattern" href="#"
-                >pattern definition</a> or create a new pattern from scratch.
+                >thread diagram as pair diagram</a>
+                or back to the <a id="to_pattern" href="#"
+                >pattern definition</a> to modify or create a new pattern from scratch.
             </p>
             <label for="patchWidth">
                 Swatch size:
@@ -54,7 +54,7 @@
             <button id="forces" onclick="applyForces()">apply</button>
             <label for="forces">forces to the pair diagram</label>
             <br>
-            <label for="threadColor">Click a bobbin or thread start to assign</label>
+            <label for="threadColor">Click a bobbin or thread start to highlight a thread with</label>
             <input type="color" id="threadColor" name="threadColor" value="#ff0000">
             <label for="threadColor">click the button to select another color.</label>
             <br>
@@ -71,7 +71,8 @@
                 Stitch enumeration
                 <a href="/GroundForge-help/color-rules" target="_blank"><img src="images/information-icon.png" title="color code (4 per stitch)"></a>
                 <img src="images/maximize.png" onclick="javascript:maximize('#enum')" title="maximize room for the diagram"/>
-                <img src="images/minimize.png" onclick="javascript:minimize('#enum')" title="reset room for the diagram"/>
+                <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#enum')" title="reset room for the diagram"/>
+                <img src="images/minimize.png" onclick="javascript:minimize('#enum')" title="minimise room for the diagram"/>
             </figcaption>
             <div id="enum"></div>
         </figure>
@@ -89,7 +90,8 @@
                    href="#?pleasePrepareFirst" onblur="this.href='#?pleasePrepareFirst'"
                    style="display:none" onclick="this.style.display = 'none'">download</a>
                 <img src="images/maximize.png" onclick="javascript:maximize('#pair')" title="maximize room for the diagram"/>
-                <img src="images/minimize.png" onclick="javascript:minimize('#pair')" title="reset room for the diagram"/>
+                <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#pair')" title="reset room for the diagram"/>
+                <img src="images/minimize.png" onclick="javascript:minimize('#pair')" title="minimise room for the diagram"/>
             </figcaption>
             <div id="pair"></div>
         </figure>
@@ -107,6 +109,7 @@
                    style="display:none" onclick="this.style.display = 'none'">download</a>
                 <img src="images/wand.png" onclick="javascript:redrawThreads()" title="reload the diagram"/>
                 <img src="images/maximize.png" onclick="javascript:maximize('#thread')" title="maximize room for the diagram"/>
+                <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#thread')" title="reset room for the diagram"/>
                 <img src="images/minimize.png" onclick="javascript:minimize('#thread')" title="minimize room for the diagram"/>
             </figcaption>
             <div id="thread"></div>

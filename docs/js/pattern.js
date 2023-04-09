@@ -17,14 +17,6 @@ function submitQuery() {
     .map(toKeyValueString)
     .join("&")
 }
-function maximize(containerId) {
-  d3.select(containerId).style("width","100%").style("height","100%")
-  return false;
-}
-function minimize(containerId) {
-  d3.select(containerId).style("width","250px").style("height","250px")
-  return false;
-}
 function tesselace(query){
 
   // keep tesselace reference as long as tile definition is unchanged
@@ -226,3 +218,11 @@ function swDown() {
   d3.select('#shiftRowsSW').node().value++
   showProto()
 }
+function getInkscapeTemplate() {
+  var s = InkscapeTemplate.fromUrl(submitQuery())
+  return 'data:text/plain,' + encodeURIComponent(s)
+}
+function prepareTemplateDownload() {
+  alert('Sorry, Inkscape templates are not available for your device')
+}
+

@@ -51,14 +51,6 @@ function changeQ(level, q){
 function getQ() {
     return d3.select('#to_stitches').attr('href').replace(/.*[?]/, "");
 }
-function maximize(containerId) {
-    d3.select(containerId).style("width","100%").style("height","90vh")
-    return false;
-}
-function minimize(containerId) {
-    d3.select(containerId).style("width","250px").style("height","250px")
-    return false;
-}
 function clear2() {
     d3.selectAll("#drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
     d3.selectAll(".colorCode").style("display", "none")
