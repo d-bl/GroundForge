@@ -34,10 +34,11 @@
         <form onsubmit="return false" action="javascript:void(0);">
             <button id="dummy" onclick="return false"></button>
             <p>
+                Back to the <a id="to_pattern" href="#"
+            >pattern definition</a> to modify or create a new pattern from scratch.
+                <br>
                 Use the <a id="to_droste" href="#"
-                >thread diagram as pair diagram</a>
-                or back to the <a id="to_pattern" href="#"
-                >pattern definition</a> to modify or create a new pattern from scratch.
+                >thread diagram as pair diagram</a>.
             </p>
             <label for="patchWidth">
                 Swatch size:
@@ -50,32 +51,36 @@
                 <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="7" onchange="dimChanged()">
                 <label for="patchHeight">rows</label>
             </div>
-            <br>
+            <p>
             <button id="forces" onclick="applyForces()">apply</button>
             <label for="forces">forces to the pair diagram</label>
-            <br>
+            </p>
             <label for="threadColor">Click a bobbin or thread start to highlight a thread with</label>
             <input type="color" id="threadColor" name="threadColor" value="#ff0000">
-            <label for="threadColor">click the button to select another color.</label>
             <br>
+            <label for="threadColor">click the button to select another color.</label>
+            <p>
             <label for="paintStitches">Click a stitch to assign </label>
             <input type="text" id="paintStitches" name="paintStitches" value="ct" onclick="return false" onsubmit="return false">
             <button onclick="flipStitch(); return false;">flip the stitch</button>
             <br>
             or <button onclick="setAllStitches();return false">assign to all</button>
             or <button onclick="setIgnoredStitches();return false">assign to ignored</button>
+            </p>
         </form>
-        <p id="whiting"></p><br>
-        <figure >
-            <figcaption>
-                Stitch enumeration
-                <a href="/GroundForge-help/color-rules" target="_blank"><img src="images/information-icon.png" title="color code (4 per stitch)"></a>
-                <img src="images/maximize.png" onclick="javascript:maximize('#enum')" title="maximize room for the diagram"/>
-                <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#enum')" title="reset room for the diagram"/>
-                <img src="images/minimize.png" onclick="javascript:minimize('#enum')" title="minimise room for the diagram"/>
-            </figcaption>
-            <div id="enum"></div>
-        </figure>
+        <div>
+            <p id="whiting"></p><br>
+            <figure >
+                <figcaption>
+                    Stitch enumeration
+                    <a href="/GroundForge-help/color-rules" target="_blank"><img src="images/information-icon.png" title="color code (4 per stitch)"></a>
+                    <img src="images/maximize.png" onclick="javascript:maximize('#enum')" title="maximize room for the diagram"/>
+                    <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#enum')" title="reset room for the diagram"/>
+                    <img src="images/minimize.png" onclick="javascript:minimize('#enum')" title="minimise room for the diagram"/>
+                </figcaption>
+                <div id="enum"></div>
+            </figure>
+        </div>
         <br>
         <figure >
             <figcaption>

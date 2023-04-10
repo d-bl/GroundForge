@@ -13,7 +13,7 @@ figure div {
     max-width:100%; max-height:100%;
     border: solid 1px #DDD;
 }
-#enum { display: block; height: 4em; width: 600px; }
+div, form { display: inline-block; vertical-align: bottom;}
 #whiting {display: none; }
 form div {display: inline-block; vertical-align: top; }
 #paintStitches { width: 6em }
