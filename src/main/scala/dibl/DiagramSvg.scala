@@ -36,7 +36,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     " C 5.86853,43.60204 3.4855,39.99659 0,40" +
     " L 0,0"
 
-  private val square = "M -6,-6 6,-6 6,6 -6,6 Z"
+  private val square = "M -18,-6 H 6 V 6 h -24 z"
   private val diamond = "M -5,0 0,8 5,0 0,-8 Z"
   private def shape(node: NodeProps) = // See https://www.w3.org/TR/SVG/paths.html#PathDataMovetoCommands
     if (node.pin) circle(4)

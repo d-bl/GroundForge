@@ -14,6 +14,7 @@ figure div {
     border: solid 1px #DDD;
 }
 div, form { display: inline-block; vertical-align: bottom;}
+main div { min-width: 35%; }
 #whiting {display: none; }
 form div {display: inline-block; vertical-align: top; }
 #paintStitches { width: 6em }

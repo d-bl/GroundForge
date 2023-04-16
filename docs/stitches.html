@@ -55,7 +55,7 @@
             <button id="forces" onclick="applyForces()">apply</button>
             <label for="forces">forces to the pair diagram</label>
             </p>
-            <label for="threadColor">Click a bobbin or thread start to highlight a thread with</label>
+            <label for="threadColor">Click components of the thread diagram to highlight threads and/or stitches</label>
             <input type="color" id="threadColor" name="threadColor" value="#ff0000">
             <br>
             <label for="threadColor">click the button to select another color.</label>
@@ -70,7 +70,7 @@
         </form>
         <div>
             <p id="whiting"></p><br>
-            <figure >
+            <figure>
                 <figcaption>
                     Stitch enumeration
                     <a href="/GroundForge-help/color-rules" target="_blank"><img src="images/information-icon.png" title="color code (4 per stitch)"></a>
@@ -88,7 +88,7 @@
                 <a href="javascript:prepareDownload(`#pair`)"
                    onfocus="this.href=getDownloadContent('#pair')"
                    onblur="this.href='javascript:prepareDownload(`#pair`)'"
-                   download="GF-prototype.svg" class="download"
+                   download="GF-pair-diagram.svg" class="download"
                    title="download for 3rd party vector based editor"
                 ><img src="images/download.jpg"></a>
                 <a id="pairDownloadLink" download="GF-thread-diagram.svg"
