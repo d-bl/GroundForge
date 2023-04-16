@@ -9,10 +9,12 @@ function load() {
     let cfg = TilesConfig(trimmed)
     let pairDiagram = NewPairDiagram.create(cfg) // old style pair diagram
     let threadDiagram = ThreadDiagram.create(pairDiagram)
-    showGraph('#thread', threadDiagram)
-    d3.select('#thread g')
+    d3.select("#droste2").node().data = threadDiagram
+    var drostePairs2 = PairDiagram.create(d3.select("#droste2").node().value, threadDiagram)
+
+    setPairDiagram("#drostePair2", drostePairs2)
+    d3.select('#drosteThread2 g')
         .attr("transform","scale(0.5,0.5)")
-        .node().data = threadDiagram
 }
 function unduplicate(s){
     return s // TODO a 'lrlr' sequence is not reduced
@@ -52,7 +54,10 @@ function getQ() {
     return d3.select('#to_stitches').attr('href').replace(/.*[?]/, "");
 }
 function clear2() {
-    d3.selectAll("#drostePair2, #drosteThread2, #drostePair3, #drosteThread3").html("")
+    var threadDiagram = d3.select("#droste2").node().data
+    var p2 = PairDiagram.create(d3.select("#droste2").node().value, threadDiagram)
+    setPairDiagram("#drostePair2", p2)
+    d3.selectAll("#drosteThread2, #drostePair3, #drosteThread3").html("")
     d3.selectAll(".colorCode").style("display", "none")
     d3.selectAll("#drostePair2DownloadLink, #drosteThread2DownloadLink, #drostePair3DownloadLink, #drosteThread3DownloadLink")
         .attr("href", "#?pleasePrepareFirst")
@@ -71,8 +76,7 @@ function showDroste(level) {
     var el = d3.select("#drosteThread" + level).node().firstElementChild
     if (el && el.id.startsWith("svg")) return
 
-    var drosteThreads1 = d3.select('#thread g').node().data
-    // TODO get rid of loose pairs
+    var drosteThreads1 = d3.select("#droste2").node().data
     var drostePairs2 = PairDiagram.create(d3.select("#droste2").node().value, drosteThreads1)
     var drosteThreads2 = ThreadDiagram.create(drostePairs2)
 
@@ -98,7 +102,6 @@ function setPairDiagram(containerID, diagram) {
 }
 function setThreadDiagram(containerID, diagram) {
     var container = d3.select(containerID)
-    container.node().data = diagram
     container.html(DiagramSvg.render(diagram, "2px", true, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>"))
     showGraph(containerID, diagram)
     container.selectAll(".threadStart").on("click", clickedThread)
