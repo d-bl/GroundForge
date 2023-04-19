@@ -39,6 +39,7 @@ function show(q) {
     d3.select('#to_droste').attr("href","droste.html?"+q)
     d3.select('#enum').html(PairSvg.legend(itemMatrix))
     d3.select('#pair').html(svg)
+    d3.select('#thread').node().innerHTML = ''
     q.split("&").find(whiting)
     return cfg
 }
@@ -80,7 +81,6 @@ function clickedStitch(event) {
         q = attr.replace(search,replacement)
     else
         q = attr + "&" + replacement
-    d3.select('#thread').node().innerHTML = ''
     show(q)
 }
 function setAllStitches() {
