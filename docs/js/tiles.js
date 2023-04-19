@@ -35,11 +35,6 @@ function clearStitches() {
   d3.selectAll("svg input").attr("value",paintStitchValue())
   showProto()
 }
-function setIgnoredStitches() {
-    var replacement = `=${paintStitchValue()}`
-    var search = new RegExp(`=-`,'g')
-    show(getQ().replace(search, replacement))
-}
 function toKeyValueString (formField) {
     var n = formField.name
     var v = formField.value
