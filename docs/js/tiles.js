@@ -233,6 +233,10 @@ function animateDiagram(container, forceCenterX, forceCenterY) {
     }
   }
 }
+function getInkscapeTemplate() {
+  var s = InkscapeTemplate.fromUrl(submitQuery())
+  return 'data:text/plain,' + encodeURIComponent(s)
+}
 function setField (keyValueString) {
 
     var k = keyValueString.replace(/=.*/,"").trim().replace(/[^a-zA-Z0-9]/g,"")
