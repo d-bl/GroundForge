@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title lang="en">GF: Stitches and threads</title>
+    <script src="js/d3.v4.min.js" type="text/javascript"></script>
+    <script src="js/GroundForge-opt.js" type="text/javascript"></script>
+    <script src="js/nudgePairs.js" type="text/javascript"></script>
+    <script src="js/showGraph.js" type="text/javascript"></script>
+    <script src="js/stitches.js" type="text/javascript"></script>
+    <script src="js/diagram-figure.js"></script>
+    <link rel="stylesheet" href="css/header.css" type="text/css">
+    <link rel="stylesheet" href="css/stitches.css" type="text/css">
+
+    <link rel="apple-touch-icon" sizes="120x120" href="/GroundForge/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/GroundForge/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/GroundForge/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/GroundForge/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/GroundForge/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/GroundForge/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/GroundForge/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body onload="load()">
+    <header>
+        <div>
+            <h1><a href="/">Diagrams for Bobbin Lace</a></h1>
+            <h2>GroundForge: Stitches and threads</h2>
+        </div>
+    </header>
+    <main>
+        <a id="to_self" href="#">Stitches and threads</a>
+        <form onsubmit="return false" action="javascript:void(0);">
+            <button id="dummy" onclick="return false"></button>
+            <p>
+                Back to the <a id="to_pattern" href="#"
+            >pattern definition</a> to modify or create a new pattern from scratch.
+                <br>
+                Use the <a id="to_droste" href="#"
+                >thread diagram as pair diagram</a>.
+            </p>
+            <label for="patchWidth">
+                Swatch size:
+            </label>
+            <div>
+                <input type="number" name="patchWidth" id="patchWidth" min="3" max="28" value="7" onchange="dimChanged();return false" autofocus>
+                <label for="patchWidth">columns</label>
+                <a href="/GroundForge-help/Patch-Size" target="_blank"><img src="images/information-icon.png" title="swatch size"></a>
+                <br>
+                <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="7" onchange="dimChanged()">
+                <label for="patchHeight">rows</label>
+            </div>
+            <p>
+            <button id="forces" onclick="applyForces()">apply</button>
+            <label for="forces">forces to the pair diagram</label>
+            </p>
+            <label for="threadColor">Click components of the thread diagram to highlight threads and/or stitches</label>
+            <input type="color" id="threadColor" name="threadColor" value="#ff0000">
+            <br>
+            <label for="threadColor">click the button to select another color.</label>
+            <p>
+            <label for="paintStitches">Click a stitch to assign </label>
+            <input type="text" id="paintStitches" name="paintStitches" value="ct" onclick="return false" onsubmit="return false">
+            <button onclick="flipStitch(); return false;">flip the stitch</button>
+            <br>
+            or <button onclick="setAllStitches();return false">assign to all</button>
+            or <button onclick="setIgnoredStitches();return false">assign to ignored</button>
+            </p>
+        </form>
+        <div>
+            <p id="whiting"></p><br>
+            <figure>
+                <figcaption>
+                    Stitch enumeration
+                    <a href="/GroundForge-help/color-rules" target="_blank"><img src="images/information-icon.png" title="color code (4 per stitch)"></a>
+                    <img src="images/maximize.png" onclick="javascript:maximize('#enum')" title="maximize room for the diagram"/>
+                    <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#enum')" title="reset room for the diagram"/>
+                    <img src="images/minimize.png" onclick="javascript:minimize('#enum')" title="minimise room for the diagram"/>
+                </figcaption>
+                <div id="enum"></div>
+            </figure>
+        </div>
+        <br>
+        <figure >
+            <figcaption>
+                Pairs
+                <a href="javascript:prepareDownload(`#pair`)"
+                   onfocus="this.href=getDownloadContent('#pair')"
+                   onblur="this.href='javascript:prepareDownload(`#pair`)'"
+                   download="GF-pair-diagram.svg" class="download"
+                   title="download for 3rd party vector based editor"
+                ><img src="images/download.jpg"></a>
+                <a id="pairDownloadLink" download="GF-thread-diagram.svg"
+                   href="#?pleasePrepareFirst" onblur="this.href='#?pleasePrepareFirst'"
+                   style="display:none" onclick="this.style.display = 'none'">download</a>
+                <img src="images/maximize.png" onclick="javascript:maximize('#pair')" title="maximize room for the diagram"/>
+                <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#pair')" title="reset room for the diagram"/>
+                <img src="images/minimize.png" onclick="javascript:minimize('#pair')" title="minimise room for the diagram"/>
+            </figcaption>
+            <div id="pair"></div>
+        </figure>
+        <figure >
+            <figcaption>
+                Threads
+                <a href="javascript:prepareDownload(`#thread`)"
+                   onfocus="this.href=getDownloadContent('#thread')"
+                   onblur="this.href='javascript:prepareDownload(`#thread`)'"
+                   download="GF-prototype.svg" class="download"
+                   title="download for 3rd party vector based editor"
+                ><img src="images/download.jpg"></a>
+                <a id="threadDownloadLink" download="GF-thread-diagram.svg"
+                   href="#?pleasePrepareFirst" onblur="this.href='#?pleasePrepareFirst'"
+                   style="display:none" onclick="this.style.display = 'none'">download</a>
+                <img src="images/wand.png" onclick="javascript:redrawThreads()" title="reload the diagram"/>
+                <img src="images/maximize.png" onclick="javascript:maximize('#thread')" title="maximize room for the diagram"/>
+                <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#thread')" title="reset room for the diagram"/>
+                <img src="images/minimize.png" onclick="javascript:minimize('#thread')" title="minimize room for the diagram"/>
+            </figcaption>
+            <div id="thread"></div>
+        </figure>
+    </main>
+    <!-- Start of StatCounter Code for Default Guide -->
+    <script type="text/javascript">
+        var sc_project=10865294;
+        var sc_invisible=0;
+        var sc_security="2e4f5d96";
+        var scJsHost = (("https:" == document.location.protocol) ?
+            "https://secure." : "http://www.");
+        document.write("<sc"+"ript type='text/javascript' src='" +
+            scJsHost+
+            "statcounter.com/counter/counter.js'></"+"script>");
+    </script>
+    <noscript>
+        <div class="statcounter"
+        ><a title="web analytics"
+            href="http://statcounter.com/"
+            target="_blank"><img
+                class="statcounter"
+                src="http://c.statcounter.com/10865294/0/2e4f5d96/0/"
+                alt="web analytics"
+        ></a></div>
+    </noscript>
+    <!-- End of StatCounter Code for Default Guide -->
+</body>
+</html>

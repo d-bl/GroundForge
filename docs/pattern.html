@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/GroundForge-opt.js" type="text/javascript"></script>
+    <title lang="en">GF: assemble a pair diagram</title>
+    <meta name="description" content="Choose patterns and stitches to generate diagrams for grounds of bobbin lace">
+    <meta name="keywords" content="bobbin lace, pair diagram, thread diagram, patterns, stitches">
+    <script src="js/pattern.js"></script>
+    <script src="js/diagram-figure.js"></script>
+    <script src="js/nudgePairs.js"></script>
+    <script src="js/d3.v4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/header.css"/>
+    <link rel="stylesheet" href="css/pattern.css" type="text/css">
+
+    <link rel="apple-touch-icon" sizes="120x120" href="/GroundForge/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/GroundForge/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/GroundForge/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/GroundForge/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/GroundForge/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/GroundForge/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/GroundForge/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body onload="load()">
+<header>
+    <div>
+        <h1><a href="/">Diagrams for Bobbin Lace</a></h1>
+        <h2>GroundForge: assemble a pair diagram</h2>
+    </div>
+</header>
+<main>
+  <a id="to_self" href="#">Assemble a pair diagram.</a>
+  <form onsubmit="return false" id="download">
+        <p>
+            <label for="to_stitches">Use the pattern below to experiment with</label>
+            <a id="to_stitches" href="#">stitches and threads</a>.
+        </p>
+        <p>
+            Download a
+            <button type="button"
+                    id="textDownloadButton"
+            ><a href="javascript:prepareTemplateDownload()"
+               download="GF-inkscape-template.txt"
+               title="download"
+               class="download"
+               onfocus="this.href=getInkscapeTemplate()"
+               onblur="this.href='javascript:prepareTemplateDownload()'"
+            >text file</a>
+            </button>
+            <label for="textDownloadButton"
+            >for an Inkscape <a href="/inkscape-bobbinlace/Ground-from-Template" target="_blank">plugin</a>
+                that generates regular or polar prickings.
+            </label>
+        </p>
+        <label for="patchWidth">
+            Swatch size:
+        </label>
+        <div>
+            <input type="number" name="patchWidth" id="patchWidth" min="3" max="28" value="7" onchange="showProto()" autofocus>
+            <label for="patchWidth">columns</label>
+            <a href="/GroundForge-help/Patch-Size" target="_blank"><img src="images/information-icon.png" title="swatch size"></a>
+            <br>
+            <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="7" onchange="showProto()">
+            <label for="patchHeight">rows</label>
+        </div><br>
+  </form>
+        <figure class="pattern">
+            <figcaption>Pattern definition
+                <a href="/GroundForge-help/Advanced" target="_blank"><img src="images/information-icon.png" title="how to define the pattern and foot sides"></a>
+            </figcaption>
+            <div>
+                <table>
+                    <tr>
+                        <td><textarea id="footside" name="footside" rows="5" cols="3"
+                                      spellcheck="false"
+                                      onchange="showProto()"></textarea></td>
+                        <td><textarea id="tile" name="tile" rows="5" cols="7" spellcheck="false"
+                                      onchange="showProto()">5-&#13;&#10;-5</textarea></td>
+                        <td><textarea id="headside" name="headside" rows="5" cols="3"
+                                      spellcheck="false"
+                                      onchange="showProto()"></textarea></td>
+                        <td><button onclick="flip();return false" title="flip left foot side into right foot side">flip</button></td>
+                    </tr>
+                    <tr>
+                    </tr>
+                </table>
+                <div>
+                    <img src="images/matrix-template.png" alt="cheat sheet" onclick="toggleCheatSheet(this)" title="click to show all">
+                </div>
+            </div>
+        </figure>
+
+        <figure class="pattern">
+            <figcaption>
+                Tile layout
+                <a href="/GroundForge-help/Change-tiles" target="_blank"
+                ><img src="images/information-icon.png" title="how to change tiles"></a>
+            </figcaption>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg2" width="297.11" height="130.39" viewBox="0 0 278.54 122.24">
+                    <path d="m99.088 17.821 14.712 16.075" fill="none" stroke="#834bce" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    <path d="m114.85 31.041 0.89586 5.2108-4.9606-1.8296z" fill="#834bce" stroke-width="1.2031"/>
+                    <g fill="none" stroke-linecap="round">
+                        <path d="m161.66 5.0235h29.959c0.18301 0 0.33031 0.14732 0.33031 0.33033v29.959c0 0.183-0.1473 0.33032-0.33031 0.33032h-29.959c-0.183 0-0.33031-0.14732-0.33031-0.33032v-29.959c0-0.18301 0.14731-0.33033 0.33031-0.33033z" stroke="#ccc" stroke-width="3.0447"/>
+                        <rect x="228.48" y="4.6766" width="30.62" height="30.62" ry=".33032" stroke="#ccc" stroke-width="3.0447"/>
+                        <path d="m210.05 53.736 33.403 33.403" stroke="#834bce" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    </g>
+                    <path d="m244.24 84.188-3.7387 3.7387 5.1072 1.3684z" fill="#834bce" stroke-width="1.2031"/>
+                    <path d="m210.05 53.736-33.403 33.403" fill="none" stroke="#029807" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    <path d="m175.86 84.188 3.7387 3.7387-5.1072 1.3684z" fill="#029807" stroke-width="1.2031"/>
+                    <path d="m99.088 17.821v30.141" fill="none" stroke="#029807" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    <path d="m101.73 46.435h-5.2874l2.6437 4.579z" fill="#029807"/>
+                    <path d="m45.238 89.602 18.359 14.712" fill="none" stroke="#834bce" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    <path d="m64.573 101.42 1.0171 5.1888-5.0022-1.7137z" fill="#834bce" stroke-width="1.2032"/>
+                    <path d="m45.238 89.602-12.056 14.712" fill="none" stroke="#029807" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                    <path d="m31.855 101.57-0.38725 5.2732 4.7603-2.3013z" fill="#029807" stroke-width="1.2031"/>
+                    <path d="m30.573 18.397 30.141 30.141" fill="none" stroke="#834bce" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1279"/>
+                    <a transform="matrix(1.2031 0 0 1.2031 -185.51 -32.637)" xlink:href="javascript:asSimple()" xlink:title="simple layout">
+                        <rect x="168.27" y="31.08" width="22.675" height="22.675" ry=".24461" fill="#0d6efd" fill-opacity=".5" stroke="#0d6efd" stroke-linecap="round" stroke-width="1.9481"/>
+                    </a>
+                    <g fill="none" stroke-linecap="round">
+                        <path d="m30.573 18.397 2e-5 30.141" stroke="#029807" stroke-linejoin="bevel" stroke-width="1.1279"/>
+                        <g stroke-width="2.3437">
+                            <rect x="16.933" y="34.897" width="27.28" height="27.28" ry=".2943" stroke="#029807"/>
+                            <rect x="47.083" y="34.897" width="27.28" height="27.28" ry=".2943" stroke="#834bce"/>
+                            <rect x="47.083" y="4.7567" width="27.28" height="27.28" ry=".2943" stroke="#ccc"/>
+                            <rect x="49.828" y="98.252" width="27.529" height="12.134" ry=".1309" stroke="#834bce"/>
+                        </g>
+                    </g>
+                    <a transform="matrix(2.0094 0 0 2.0094 -525.01 -221.74)" xlink:href="javascript:asHorBricks()" xlink:title="brick layout">
+                        <rect x="276.94" y="151.48" width="13.7" height="6.2044" ry=".066932" fill="#0d6efd" fill-opacity=".5" stroke="#0d6efd" stroke-linecap="round" stroke-width="1.1664"/>
+                    </a>
+                    <g fill="none" stroke-linecap="round">
+                        <g stroke-width="2.3438">
+                            <rect x="61.888" y="82.822" width="27.529" height="12.134" ry=".1309" stroke="#ccc"/>
+                            <rect transform="matrix(0,1,1,0,0,0)" x="50.547" y="108.29" width="27.529" height="12.467" ry=".13449" stroke="#ccc"/>
+                            <rect transform="matrix(0,1,1,0,0,0)" x="19.064" y="108.45" width="27.529" height="12.134" ry=".1309" stroke="#844bce"/>
+                        </g>
+                        <rect transform="matrix(0,1,1,0,0,0)" x="34.472" y="92.688" width="27.529" height="12.467" ry=".13449" stroke="#029807" stroke-width="2.3437"/>
+                    </g>
+                    <a transform="matrix(1.2031 0 0 1.2031 -204.64 -39.702)" xlink:href="javascript:asVerBricks()" xlink:title="vertical brick layout">
+                        <rect transform="matrix(0,1,1,0,0,0)" x="36.371" y="247.27" width="22.881" height="10.362" ry=".11179" fill="#0d6efd" fill-opacity=".5" stroke="#0d6efd" stroke-linecap="round" stroke-width="1.9481"/>
+                    </a>
+                    <a transform="matrix(.6752 0 0 .6752 158.49 8.4686)" xlink:href="javascript:asCornerToCorner()" xlink:title="corner-to-corner layout">
+                        <rect x="53.668" y="44.369" width="45.35" height="45.35" ry=".48922" fill="#0d6efd" fill-opacity=".5" stroke="#0d6efd" stroke-linecap="round" stroke-width="4.5094"/>
+                    </a>
+                    <g>
+                        <a transform="rotate(90 118.37 117.97)" xlink:href="javascript:swToRight()">
+                            <path d="m95.085 41.366-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="translate(79.28 27.533)" xlink:href="javascript:swUp()">
+                            <path d="m104.91 41.366-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="rotate(-90 142.66 -7.3525)" xlink:href="javascript:seToLeft()">
+                            <path d="m55.71 75.116-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="matrix(.86616 0 0 .86616 37.798 -19.206)" xlink:href="javascript:brickUp()">
+                            <path d="m96.121 43.274-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width="1.0824"/>
+                        </a>
+                        <a transform="rotate(90 52.338 69.285)" xlink:href="javascript:brickToRight()">
+                            <path d="m94.916 41.366-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="rotate(-90 96.162 95.919)" xlink:href="javascript:brickToLeft()">
+                            <path d="m95.314 16.107-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="matrix(-.86616 0 0 -.86616 189.56 95.997)" xlink:href="javascript:brickDown()">
+                            <path d="m94.184 17.788-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width="1.0824"/>
+                        </a>
+                        <a transform="rotate(180 153.8 56.751)" xlink:href="javascript:seDown()">
+                            <path d="m71.692 7.6153-15.094 0.00403 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="translate(132.18 -6.0762)" xlink:href="javascript:seUp()">
+                            <path d="m118.81 75.116-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="rotate(90 154.78 115.02)" xlink:href="javascript:seToRight()">
+                            <path d="m134.45 7.6153-15.094 0.00403 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="rotate(180 127.17 73.474)" xlink:href="javascript:swDown()">
+                            <path d="m85.252 41.366-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                        <a transform="rotate(-90 145.72 28.956)" xlink:href="javascript:swToLeft()">
+                            <path d="m95.085 41.366-15.094 4e-3 7.5434-13.073z" opacity=".883" stroke="#fff" stroke-linejoin="round" stroke-width=".9375"/>
+                        </a>
+                    </g>
+                    <rect x="161.33" y="71.83" width="30.62" height="30.62" ry=".33032" fill="none" opacity=".883" stroke="#029807" stroke-linecap="round" stroke-width="3.0447"/>
+                    <rect x="228.13" y="71.83" width="30.62" height="30.62" ry=".33032" fill="none" stroke="#834bce" stroke-linecap="round" stroke-width="3.0447"/>
+                    <path d="m33.223 47.011h-5.2874l2.6437 4.579z" fill="#029807"/>
+                    <path d="m61.507 45.593-3.7387 3.7387 5.1072 1.3684z" fill="#834bce" stroke-width="1.2031"/>
+                    <rect x="19.418" y="98.082" width="27.529" height="12.467" ry=".13449" fill="none" stroke="#029807" stroke-linecap="round" stroke-width="2.3438"/>
+                </svg>
+
+                <p style="max-width: 22em"></p>
+                <div style="border:3px solid #029807;border-radius: 3px; padding: 2px;">
+                    <input type="number" name="shiftColsSW" id="shiftColsSW" min="-12" max="0" value="0" onchange="showProto()"><label for="shiftColsSW">column(s)</label>
+                    <br>
+                    <input type="number" name="shiftRowsSW" id="shiftRowsSW" min="0" max="12" value="2" onchange="showProto()"><label for="shiftRowsSW">row(s)</label>
+                </div>
+                <div style="border:3px solid #834bce;border-radius: 3px; padding: 2px;">
+                    <input type="number" name="shiftColsSE" id="shiftColsSE" min="0" max="12" value="2" onchange="showProto()"><label for="shiftColsSE">column(s)</label>
+                    <br>
+                    <input type="number" name="shiftRowsSE" id="shiftRowsSE" min="0" max="12" value="2" onchange="showProto()"><label for="shiftRowsSE">row(s)</label>
+                </div>
+            </div>
+        </figure>
+        <figure >
+            <figcaption>
+                Pattern
+                <a href="javascript:prepareDownload(`#prototype`)"
+                   onfocus="this.href=getDownloadContent('#prototype')"
+                   onblur="this.href='javascript:prepareDownload(`#prototype`)'"
+                   download="GF-prototype.svg" class="download"
+                   title="download for 3rd party vector based editor"
+                ><img src="images/download.jpg"></a>
+                <a id="prototypeDownloadLink" download="GF-prototype.svg"
+                   href="#?pleasePrepareFirst" onblur="this.href='#?pleasePrepareFirst'"
+                   style="display:none" onclick="this.style.display = 'none'">download</a>
+                <img src="images/maximize.png" onclick="javascript:maximize('#prototype')" title="maximize room for the diagram"/>
+                <img src="images/minimize.png" onclick="javascript:resetDimensions('#prototype')" title="reset room for the diagram"/>
+            </figcaption>
+            <div id="prototype">
+            </div>
+        </figure>
+</main>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+    var sc_project=10865294;
+    var sc_invisible=0;
+    var sc_security="2e4f5d96";
+    var scJsHost = (("https:" == document.location.protocol) ?
+        "https://secure." : "http://www.");
+    document.write("<sc"+"ript type='text/javascript' src='" +
+        scJsHost+
+        "statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web analytics"
+                                      href="http://statcounter.com/"
+                                      target="_blank"><img
+        class="statcounter"
+        src="http://c.statcounter.com/10865294/0/2e4f5d96/0/"
+        alt="web analytics"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+</body>
+</html>

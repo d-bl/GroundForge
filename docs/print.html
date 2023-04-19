@@ -6,7 +6,9 @@
     <script src="js/d3.v4.min.js" type="text/javascript"></script>
     <script src="js/GroundForge-opt.js" type="text/javascript"></script>
     <script src="js/nudgePairs.js" type="text/javascript"></script>
+    <script src="js/showGraph.js" type="text/javascript"></script>
     <script src="js/print.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/header.css" type="text/css">
     <link rel="stylesheet" href="css/print.css" type="text/css">
 
     <link rel="apple-touch-icon" sizes="120x120" href="/GroundForge/favicon/apple-touch-icon.png">
@@ -20,6 +22,13 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body onload="load()">
+  <header>
+      <div>
+          <h1><a href="/">Diagrams for Bobbin Lace</a></h1>
+          <h2>GroundForge: PDF/print friendly</h2>
+      </div>
+  </header>
+  <main>
     <form  onsubmit="return false">
         <a href="/GroundForge-help/print-pdf" target="_blank"><img src="images/information-icon.png" title="swatch size"></a>
         <label for="threadColor">Thread color</label>
@@ -37,5 +46,28 @@
     <div id="proto"></div>
     <div id="pair1perStitch"></div>
     <div id="pair1perStitchAnimated"></div>
+  </main>
+  <!-- Start of StatCounter Code for Default Guide -->
+  <script type="text/javascript">
+      var sc_project=10865294;
+      var sc_invisible=0;
+      var sc_security="2e4f5d96";
+      var scJsHost = (("https:" == document.location.protocol) ?
+          "https://secure." : "http://www.");
+      document.write("<sc"+"ript type='text/javascript' src='" +
+          scJsHost+
+          "statcounter.com/counter/counter.js'></"+"script>");
+  </script>
+  <noscript>
+      <div class="statcounter"
+      ><a title="web analytics"
+          href="http://statcounter.com/"
+          target="_blank"><img
+              class="statcounter"
+              src="http://c.statcounter.com/10865294/0/2e4f5d96/0/"
+              alt="web analytics"
+      ></a></div>
+  </noscript>
+  <!-- End of StatCounter Code for Default Guide -->
 </body>
 </html>

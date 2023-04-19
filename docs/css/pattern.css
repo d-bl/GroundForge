@@ -1,0 +1,24 @@
+
+figure { max-width:100%; display: inline-block; margin-left: 0; margin-top: 0; margin-right: 0.5em; margin-bottom: 0; }
+figcaption { text-align: center; background-color: #ddd; border-radius: 3px; margin-top: 0.3em; padding-left: 0.5em; padding-right: 0.5em; }
+figcaption img { vertical-align: middle; margin-left: 1em; }
+#prototype {
+  resize:both;
+  overflow:auto;
+  display:inline-block;
+  width:250px; height:250px;
+  max-width:100%; max-height:100%;
+  border: solid 1px  #ddd;
+  margin-bottom: 5em;
+}
+foreignObject { display: none }
+
+input[type="number"] { width:3em; margin-right: 2px; text-align: right; }
+main div { display: inline-block; vertical-align: top; }
+button a { text-decoration: none; color: black; }
+
+#to_self { display: none }
+@media print {
+  form, img, header, figcaption, .pattern svg, td button { display: none }
+  #to_self { display: block }
+}

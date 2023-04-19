@@ -1,4 +1,4 @@
-div {
+main div {
     display: inline-block; overflow: hidden; resize: both;
     width: 300px; height: 300px;
     vertical-align: text-top;
@@ -9,4 +9,3 @@ div {
 input { display: none }
 #threadColor, form { display: inline-block }
 form { vertical-align: text-top }
-@media print { form {display: none} }

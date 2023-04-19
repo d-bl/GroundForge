@@ -32,10 +32,12 @@ function load() {
   var b = urlParams.get("b")
   if (b) b = b.toLowerCase().replace(/[^ctlr]/g,"").trim()
   d3.select('#b').node().value = b
-  if (!b) b = "crctl"
+  if (!b) b = "ctcl"
   generate(b, "", urlParams.has("colors"))
 }
 function generate (b, set, colors) {
+  if (b != "ctcl")
+    d3.select('#mirrors').style('display','none')
   const d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
   const p = b.split("").reverse().join("")
   const q = d.split("").reverse().join("")
@@ -48,7 +50,7 @@ function generate (b, set, colors) {
   d3.select('#md').text(d)
   d3.select('#mp').text(p)
   d3.select('#mq').text(q)
-  d3.select('#legend').text(`${ b == p ? "b=p , q=d, " : ""} ${ b == d ? "b=d, q=p" : ""}`)
+  d3.select('#legend').text(`${ b == p ? "b=p, q=d, " : ""} ${ b == d ? "b=d, q=p" : ""}`)
 
 // https://jo-pol.github.io/GroundForge/tiles?patchWidth=11&patchHeight=16&h1=ctc&d1=ctc&a1=ctct&o2=ctct&n2=ctct&i2=ctc&g2=ctc&e2=ctc&c2=ctc&b2=ctct&a2=ctctctctll&o3=ctct&n3=ctct&j3=ctc&f3=ctc&b3=ctct&o4=ctctctctrr&n4=ctct&i4=ctc&g4=ctc&e4=ctc&c4=ctc&b4=ctct&a4=ctct&footside=rx,r8,x4,11&tile=-5---5--,6v9v6v9v,---5---5,2z0z2z0z&headside=xx,88,7r,1r&footsideStitch=ctct&tileStitch=ctc&headsideStitch=ctct&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=8&shiftRowsSE=4
 
@@ -132,7 +134,7 @@ function showGraph(caption, q) {
   const container = fig.append("div")
   container.html(svg.replace("<g>","<g transform='scale(0.5,0.5)'>"))
   fig.append("figcaption").append("pre").append("a")
-     .text(caption).attr("href",'tiles?' + q).attr("target", '_blank')
+     .text(caption).attr("href",'stitches.html?' + q).attr("target", '_blank')
 
   // nudge nodes with force graph of the  D3js library
   // TODO variations of the rest of this function are found in other scripts too

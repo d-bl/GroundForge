@@ -1,0 +1,29 @@
+
+figure { max-width:90%; display: inline-block; margin-left: 0; margin-top: 0; margin-right: 0.5em; margin-bottom: 0; }
+figcaption { text-align: center; background-color: #ddd; border-radius: 3px; margin-top: 0.3em; padding-left: 0.5em; padding-right: 0.5em; }
+figcaption img { vertical-align: middle; margin-left: 1em; }
+figure { vertical-align: top;}
+
+figure div {
+    resize: both;
+    overflow: auto;
+    display: inline-block;
+    width: 250px; height: 250px;
+    vertical-align: text-top;
+    max-width:100%; max-height:100%;
+    border: solid 1px #DDD;
+}
+div, form { display: inline-block; vertical-align: bottom;}
+main div { min-width: 35%; }
+#whiting {display: none; }
+form div {display: inline-block; vertical-align: top; }
+#paintStitches { width: 6em }
+#threadColor { width: 2.5em }
+div input { width: 3em }
+
+/* the first button on the form (dummy) is activated when typing enter in an input field */
+#to_self, #dummy { display: none }
+@media print {
+    form, header, figcaption { display: none }
+    #to_self { display: block }
+}
