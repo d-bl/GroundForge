@@ -48,7 +48,6 @@
         <figcaption>
             Stitches
             <a href="/GroundForge-help/Droste-effect" target="_blank"><img src="images/information-icon.png" title="help"></a>
-            <a href="#" onclick="showDroste(2)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></a>
             <img src="images/maximize.png" onclick="javascript:maximize('#droste2')" title="maximize room for the diagram"/>
             <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#droste2')" title="reset room for the diagram"/>
             <img src="images/minimize.png" onclick="javascript:minimize('#droste2')" title="minimize room for the diagram"/>
@@ -77,6 +76,7 @@ cross=ctct"></textarea>
     <figure>
         <figcaption>
             Threads
+            <a href="#" onclick="showDroste(2)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></a>
             <a href="javascript:prepareDownload('#drosteThread2')" onfocus="this.href=getDownloadContent('#drosteThread2')" onblur="this.href='javascript:prepareDownload(`#drosteThread2`)'" download="GF-droste-thread-diagram.svg" title="download" class="download"><img src="images/download.jpg"></a>
             <a id="drosteThread2DownloadLink" download="GF-droste-thread-diagram.svg" href="#?pleasePrepareFirst" onblur="this.href='#?pleasePrepareFirst'" style="display:none" onclick="this.style.display = 'none'">download</a>
             <img src="images/maximize.png" onclick="javascript:maximize('#drosteThread2')" title="maximize room for the diagram"/>

@@ -1,6 +1,7 @@
 function load() {
 
     let q = window.location.search.substring(1)+""
+    if(!q) q = "patchWidth=12&patchHeight=10&footside=b-,-5,y-,-y,,&tile=L-O-,---5,H-E-,-5--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4&e1=ct&c1=ct&a1=ctctcl&f2=ct&b2=ctctctcl&e3=ct&c3=ctc&d4=ct&droste2=twist=ct&droste3=#"
     d3.select('#to_stitches').attr('href','stitches.html?'+q)
     d3.select('#to_self').attr('href','droste.html?'+q)
     setLinks(2, q)
@@ -81,7 +82,7 @@ function showDroste(level) {
     var drosteThreads2 = ThreadDiagram.create(drostePairs2)
 
     if (level == 2) {
-        setPairDiagram("#drostePair2", drostePairs2)
+        //setPairDiagram("#drostePair2", drostePairs2)
         setThreadDiagram("#drosteThread2", drosteThreads2)
         d3.select('#drosteThread2 g')
             .attr("transform","scale(0.5,0.5)")

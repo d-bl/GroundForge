@@ -1,11 +1,13 @@
 function load() {
 
     let q = window.location.search.substr(1)+""
+    if(!q)
+        q = 'patchWidth=8&patchHeight=8&footside=r,1&tile=888,111&headside=8,r&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2&a1=ctctctcll&j2=ctctctcrr&b2=ct'
     let w = q.replace(/.*patchWidth=/,"").replace(/&.*/,"");
     let h = q.replace(/.*patchHeight=/,"").replace(/&.*/,"");
     d3.select("#patchHeight").attr("value",h)
     d3.select("#patchWidth").attr("value",w)
-    showThread(show(window.location.search.substr(1)))
+    showThread(show(q))
 }
 function applyForces() {
     var cfg = TilesConfig(getQ())
