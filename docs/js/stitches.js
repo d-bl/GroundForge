@@ -66,10 +66,10 @@ function minimize(containerId) {
 }
 function paintStitchValue () {
 
-  return d3.select("#paintStitches").node().value.toLowerCase().replace(/[^ctlrp-]/g,'')
+  return d3.select("#stitchDef").node().value.toLowerCase().replace(/[^ctlrp-]/g,'')
 }
 function flipStitch() {
-  var n = d3.select('#paintStitches').node()
+  var n = d3.select('#stitchDef').node()
   n.value=n.value.toLowerCase().replace(/l/g,"R").replace(/r/g,"l").replace(/R/g,"r")
   return false;
 }

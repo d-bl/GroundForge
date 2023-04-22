@@ -13,11 +13,12 @@ figure div {
     max-width:100%; max-height:100%;
     border: solid 1px #DDD;
 }
+#gallery caption { text-align: center; }
 div, form { display: inline-block; vertical-align: bottom;}
 main div { min-width: 35%; }
 #whiting {display: none; }
 form div {display: inline-block; vertical-align: top; }
-#paintStitches { width: 6em }
+#stitchDef { width: 6em }
 #threadColor { width: 2.5em }
 div input { width: 3em }
 

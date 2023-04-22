@@ -8,6 +8,7 @@
     <script src="js/nudgePairs.js" type="text/javascript"></script>
     <script src="js/showGraph.js" type="text/javascript"></script>
     <script src="js/stitches.js" type="text/javascript"></script>
+    <script src="js/stitch-gallery.js" type="text/javascript"></script>
     <script src="js/diagram-figure.js"></script>
     <link rel="stylesheet" href="css/header.css" type="text/css">
     <link rel="stylesheet" href="css/stitches.css" type="text/css">
@@ -22,7 +23,7 @@
     <meta name="msapplication-config" content="/GroundForge/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body onload="load()">
+<body onload="load();loadStitchExamples()">
     <header>
         <div>
             <h1><a href="/">Diagrams for Bobbin Lace</a></h1>
@@ -59,9 +60,10 @@
             <input type="color" id="threadColor" name="threadColor" value="#ff0000">
             <br>
             <label for="threadColor">click the button to select another color.</label>
+            <br><br><div id="gallery"></div>
             <p>
-            <label for="paintStitches">Click a stitch to assign </label>
-            <input type="text" id="paintStitches" name="paintStitches" value="ct" onclick="return false" onsubmit="return false">
+            <label for="stitchDef">Click a stitch to assign </label>
+            <input type="text" id="stitchDef" name="stitchDef" value="ct" onclick="return false" onsubmit="return false">
             <button onclick="flipStitch(); return false;">flip the stitch</button>
             <br>
             or <button onclick="setAllStitches();return false">assign to all</button>
