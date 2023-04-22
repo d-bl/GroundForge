@@ -15,7 +15,7 @@ figure div {
 }
 #gallery { display: block; }
 #gallery figure { display: inline-block; margin: 0; background-color: white; vertical-align: bottom;}
-#gallery figcaption { background-color: white}
+#gallery figcaption { background-color: white; padding-left: 0; }
 #gallery figcaption { text-align: left}
 div, form { display: inline-block; vertical-align: bottom;}
 main div { min-width: 35%; }
