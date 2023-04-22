@@ -1,16 +1,15 @@
 function loadStitchExamples() {
     var stitches = [
-        ["clcrclc", "crclcrc", ""],
-        ["crclct", "clcrct", ""],
-        ["ctclctc", "ctcrctc", ""],
+        ["ct", "", ""],
         ["ctct", "", ""],
         ["ctctc", "", ""],
-        ["ctcttctc", "", ""],
+        ["crclct", "clcrct", ""],
+        ["clcrclc", "crclcrc", ""],
+        ["ctclctc", "ctcrctc", ""],
         ["ctclcrctc", "ctcrclctc", ""],
+        ["ctcttctc", "", ""],
         ["cllcrrcllcrrc", "crrcllcrrcllc", ""],
-        ["ct", "", ""],
-        ["tctctllctctr", "ltctctrrctct", ""],
-
+        ["tctctllctctr", "ltctctrrctct", "winkie pin"],
 ]
     for (let alts of stitches) {
         document.querySelector("#gallery").innerHTML += `
