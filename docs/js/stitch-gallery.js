@@ -1,16 +1,15 @@
 function loadStitchExamples() {
     var stitches = [
         ["clcrclc", "crclcrc", ""],
-        ["cllcrrcllc", "crrcllcrrc", ""],
         ["crclct", "clcrct", ""],
         ["ctclctc", "ctcrctc", ""],
         ["ctct", "", ""],
         ["ctctc", "", ""],
         ["ctcttctc", "", ""],
         ["ctclcrctc", "ctcrclctc", ""],
-        ["cllcrrcllcrrc", "", ""],
+        ["cllcrrcllcrrc", "crrcllcrrcllc", ""],
         ["ct", "", ""],
-        ["tctctllctctr", "", ""],
+        ["tctctllctctr", "ltctctrrctct", ""],
 
 ]
     for (let alts of stitches) {
