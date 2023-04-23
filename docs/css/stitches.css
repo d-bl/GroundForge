@@ -13,10 +13,14 @@ figure div {
     max-width:100%; max-height:100%;
     border: solid 1px #DDD;
 }
+
+#gallery { overflow: auto; height: 100px; min-width: 65%; }
 #gallery { display: block; }
+#gallery svg { display: inline-block; }
 #gallery figure { display: inline-block; margin: 0; background-color: white; vertical-align: bottom;}
 #gallery figcaption { background-color: white; padding-left: 0; }
 #gallery figcaption { text-align: left}
+
 div, form { display: inline-block; vertical-align: bottom;}
 main div { min-width: 35%; }
 #whiting {display: none; }

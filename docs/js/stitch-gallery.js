@@ -14,8 +14,17 @@ function loadStitchExamples() {
     for (let alts of stitches) {
         document.querySelector("#gallery").innerHTML += `
             <figure>
+                <svg width="20" height="54">
+                  <g transform="scale(2,2)">
+                    <g transform="translate(5,6)">
+                      ${PairSvg.shapes(alts[0])}
+                    </g>
+                    <g transform="translate(5,21)">
+                      ${PairSvg.shapes(alts[1])}
+                    </g>
+                  </g>
+                </svg>
                 <img src="/GroundForge/images/stitches/${alts[0]}.png"
-                     alt="${alts[0]}"
                      title="${alts[0]}&#013${alts[1]}&#013${alts[2]}">
                 <figcaption>
                     <a href="javaScript:setStitch('${alts[0]}')">${alts[0]}</a><br>
