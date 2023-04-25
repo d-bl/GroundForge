@@ -4,13 +4,16 @@ function loadStitchExamples() {
         ["ctct", "", ""],
         ["ctctc", "", ""],
         ["crclct", "clcrct", ""],
+        ["crcllrrrc", "crrrllclc", ""],
+        ["ctctctc", "", ""],
         ["clcrclc", "crclcrc", ""],
         ["ctclctc", "ctcrctc", ""],
         ["ctclcrctc", "ctcrclctc", ""],
         ["ctcttctc", "", ""],
         ["cllcrrcllcrrc", "crrcllcrrcllc", ""],
         ["tctctllctctr", "ltctctrrctct", "winkie pin"],
-]
+    ]
+    let list1 = d3.selectAll("#pair title")
     for (let alts of stitches) {
         document.querySelector("#gallery").innerHTML += `
             <figure>

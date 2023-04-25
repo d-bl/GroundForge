@@ -66,7 +66,7 @@ function showGraph(containerId, diagram) {
         .force("charge", d3.forceManyBody().strength(-1000))
         .force("link", forceLink)
         .force("center", d3.forceCenter(width/2, height/2))
-        .alpha(0.0035)
+        .alpha(0.01035)
         .on("tick", onTick)
         .on("end", moveToNW)
 }
