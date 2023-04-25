@@ -5,11 +5,11 @@ function loadStitchExamples() {
         ["ctctc", "", ""],
         ["crclct", "clcrct", ""],
         ["crcllrrrc", "crrrllclc", ""],
-        ["ctctctc", "", ""],
         ["clcrclc", "crclcrc", ""],
         ["ctclctc", "ctcrctc", ""],
         ["ctclcrctc", "ctcrclctc", ""],
         ["ctcttctc", "", ""],
+        ["ctctctc", "", ""],
         ["cllcrrcllcrrc", "crrcllcrrcllc", ""],
         ["tctctllctctr", "ltctctrrctct", "winkie pin"],
     ]
