@@ -4,9 +4,9 @@ function loadStitchExamples() {
         ["ctctctc", "", ""],
         ["ct", "", ""],
         ["ctct", "", ""],
-        ["ctctc", "", ""],
         ["crcllrrrc", "crcttrc", ""],
         ["clcrclc", "crclcrc", ""],
+        ["ctctc", "", ""],
         ["ctclctc", "ctcrctc", ""],
         ["crclct", "clcrct", ""],
         ["ctclcrctc", "ctcrclctc", ""],
@@ -40,4 +40,5 @@ function setStitch(stitch) {
     n = document.querySelector("#stitchDef")
     n.value = stitch
     n.focus()
+    setColorCode() // only exists in stitches.js !!!
 }

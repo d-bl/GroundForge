@@ -7,6 +7,7 @@ function load() {
     let h = q.replace(/.*patchHeight=/,"").replace(/&.*/,"");
     d3.select("#patchHeight").attr("value",h)
     d3.select("#patchWidth").attr("value",w)
+    setColorCode()
     showThread(show(q))
 }
 function applyForces() {
@@ -68,10 +69,33 @@ function paintStitchValue () {
 
   return d3.select("#stitchDef").node().value.toLowerCase().replace(/[^ctlrp-]/g,'')
 }
-function flipStitch() {
+function setColorCode() {
+    d3.select("#colorCode").html(`
+        <svg width="20" height="25">
+          <g transform="scale(2,2)">
+            <g transform="translate(5,6)">
+              ${PairSvg.shapes(d3.select("#stitchDef").node().value)}
+            </g>
+          </g>
+        </svg>`)
+}
+function flip2d() {
   var n = d3.select('#stitchDef').node()
-  n.value=n.value.toLowerCase().replace(/l/g,"R").replace(/r/g,"l").replace(/R/g,"r")
+  n.value = n.value.toLowerCase().replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
+  setColorCode()
+  n.focus()
   return false;
+}
+function flip2p() {
+  var n = d3.select('#stitchDef').node()
+  n.value = n.value.toLowerCase().split("").reverse().join("")
+  setColorCode()
+  n.focus()
+  return false;
+}
+function flip2q() {
+  flip2d()
+  flip2p()
 }
 function clickedStitch(event) {
 

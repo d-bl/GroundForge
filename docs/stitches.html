@@ -36,7 +36,7 @@
             <button id="dummy" onclick="return false"></button>
             <p>
                 Back to the <a id="to_pattern" href="#"
-            >pattern definition</a> to modify or create a new pattern.
+            >pattern definition</a>.
                 <br>
                 Use the <a id="to_droste" href="#"
                 >thread diagram as pair diagram</a>.
@@ -62,9 +62,12 @@
             <label for="threadColor">click the button to select another color.</label>
             <br><br><div id="gallery"></div>
             <p>
-            <label for="stitchDef">Click a stitch to assign </label>
-            <input type="text" id="stitchDef" name="stitchDef" value="ct" onclick="return false" onsubmit="return false">
-            <button onclick="flipStitch(); return false;">flip the stitch</button>
+            <label for="stitchDef">Click a stitch to assign <span id="colorCode"></span></label>
+            <input type="text" id="stitchDef" name="stitchDef" value="ct" onkeyup="setColorCode()" onclick="return false" onsubmit="return false">
+            flip:
+            <button onclick="flip2d()">|</button>
+            <button onclick="flip2p()">&mdash;</button>
+            <button onclick="flip2q()">both</button>
             <br>
             or <button onclick="setAllStitches();return false">assign to all</button>
             or <button onclick="setIgnoredStitches();return false">assign to ignored</button>
