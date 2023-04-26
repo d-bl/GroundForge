@@ -117,7 +117,8 @@ function clickedThread(event) {
 }
 function clickedNode(event) {
     const selectedClass = d3.event.currentTarget.classList.toString().replace(/ *node */,'')
-    const color = d3.select('#threadColor').node().value
+    if (selectedClass == "threadStart") return
+    var color = d3.select('#threadColor').node().value
     d3.selectAll("#thread ." + selectedClass)
         .style("stroke", color).style("fill", color).style('opacity',"0.4")
 }

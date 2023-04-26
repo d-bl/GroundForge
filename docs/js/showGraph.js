@@ -17,6 +17,7 @@ function showGraph(containerId, diagram) {
     var linkDefs = diagram.jsLinks()//can't inline
     var links = container.selectAll(".link").data(linkDefs)
     var nodes = container.selectAll(".node").data(nodeDefs)
+    container.selectAll('.threadStart').style("fill","rgb(0,0,0)").style('opacity',"0.4")
     function moveNode(jsNode) {
         return 'translate('+jsNode.x+','+jsNode.y+')'
     }

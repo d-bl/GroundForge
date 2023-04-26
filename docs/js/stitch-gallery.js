@@ -1,16 +1,16 @@
 function loadStitchExamples() {
     var stitches = [
+        ["cllcrrcllcrrc", "crrcllcrrcllc", ""],
+        ["ctctctc", "", ""],
         ["ct", "", ""],
         ["ctct", "", ""],
         ["ctctc", "", ""],
-        ["crclct", "clcrct", ""],
-        ["crcllrrrc", "crrrllclc", ""],
+        ["crcllrrrc", "crcttrc", ""],
         ["clcrclc", "crclcrc", ""],
         ["ctclctc", "ctcrctc", ""],
+        ["crclct", "clcrct", ""],
         ["ctclcrctc", "ctcrclctc", ""],
         ["ctcttctc", "", ""],
-        ["ctctctc", "", ""],
-        ["cllcrrcllcrrc", "crrcllcrrcllc", ""],
         ["tctctllctctr", "ltctctrrctct", "winkie pin"],
     ]
     let list1 = d3.selectAll("#pair title")

@@ -14,7 +14,7 @@ figure div {
     border: solid 1px #DDD;
 }
 
-#gallery { overflow: auto; height: 100px; min-width: 65%; }
+#gallery { height: 103px; width: 540px; overflow: auto; resize: both; border: solid 1px #DDD;}
 #gallery { display: block; }
 #gallery svg { display: inline-block; }
 #gallery figure { display: inline-block; margin: 0; background-color: white; vertical-align: bottom;}
