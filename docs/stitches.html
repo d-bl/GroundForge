@@ -62,15 +62,17 @@
             <label for="threadColor">click the button to select another color.</label>
             <br><br><div id="gallery"></div>
             <p>
-            <label for="stitchDef">Click a stitch to assign <span id="colorCode"></span></label>
+            <label for="stitchDef"><span id="colorCode"></span></label>
             <input type="text" id="stitchDef" name="stitchDef" value="ct" onkeyup="setColorCode()" onclick="return false" onsubmit="return false">
             flip:
             <button onclick="flip2d()">|</button>
             <button onclick="flip2p()">&mdash;</button>
             <button onclick="flip2q()">both</button>
+            <a href="no-video-uploaded-yet" target="_blank"> &rtrif; 0:35</a>
             <br>
-            or <button onclick="setAllStitches();return false">assign to all</button>
-            or <button onclick="setIgnoredStitches();return false">assign to ignored</button>
+            <button onclick="setAllStitches();return false">assign to all</button>
+            <button onclick="setIgnoredStitches();return false">assign to ignored</button>
+                or click a stitch in the diagram.
             </p>
         </form>
         <div>
