@@ -18,10 +18,14 @@ function load() {
         .attr("transform","scale(0.5,0.5)")
 }
 function unduplicate(s){
-    return s // TODO a 'lrlr' sequence is not reduced
-        .replace(/[tlrp]+t[tlrp]+/g, 't')
-        .replace(/[lp]+l[lp]+/g, 't')
-        .replace(/[rp]+r[rp]+/g, 't')
+    // prevent invisible floating nodes caused by repeated twists and/or crossings
+    return s
+        .replace(/[tlrp]*t[tlrp]+/g, 't')
+        .replace(/[tlrp]+t/g, 't')
+        .replace(/[lp]*[rp]+l[lp]+/g, 't')
+        .replace(/[lp]+[rp]+/g, 't')
+        .replace(/[lp]+/g, 'l')
+        .replace(/[rp]+/g, 'r')
         .replace(/[cp]+c[cp]+/g, '')
 }
 function setLinks(level, q){
