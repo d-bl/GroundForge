@@ -2,7 +2,14 @@ function load() {
     var q = window.location.search.substr(1)
     var cfg = TilesConfig(q)
     var zoom = 1.9
+    var stroke = 2
+    var opacity = 0
     var itemMatrix = cfg.getItemMatrix
+
+    // dimensions for an A4
+    var width = 744
+    var height = 1052
+
     var svg = PairSvg.render(itemMatrix, width, height, zoom)
     d3.select('#def').attr("href","tiles?"+q)
     d3.select('#enum4perStitch').html(PairSvg.legend(itemMatrix))
