@@ -7,7 +7,7 @@ header {
 header h1 { font-size: 450%; font-weight: 300; margin-top: 0; margin-bottom: 0.2em; letter-spacing: -1px;}
 header h2 { font-size: 163%; font-weight: 300; margin-top: 0; margin-bottom: 0; }
 
-body, header { margin: 0; padding: 0; }
+body, header { margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, serif; }
 header div { margin: 0; padding: 1.6em; }
 main, article { margin: 0; padding: 1em; }
 
@@ -17,3 +17,18 @@ header  div {
 header h1 a { color: white; text-decoration: none;}
 header h2 { color: #9ddcff; }
 /*https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure*/
+
+button, .button {
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 4px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    border-radius: 4px;
+    margin: 3px;
+    line-height: 1.8em;
+}
+/*p, figcaption{line-height: 170%}*/

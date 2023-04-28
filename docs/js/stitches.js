@@ -7,6 +7,7 @@ function load() {
     let h = q.replace(/.*patchHeight=/,"").replace(/&.*/,"");
     d3.select("#patchHeight").attr("value",h)
     d3.select("#patchWidth").attr("value",w)
+    // document.getElementById("helpMenuButton").focus()
     setColorCode()
     showThread(show(q))
 }
@@ -59,11 +60,9 @@ function showThread(cfg) {
 }
 function maximize(containerId) {
     d3.select(containerId).style("width","100%").style("height","90vh")
-    return false;
 }
 function minimize(containerId) {
     d3.select(containerId).style("width","250px").style("height","250px")
-    return false;
 }
 function paintStitchValue () {
 
@@ -84,14 +83,12 @@ function flip2d() {
   n.value = n.value.toLowerCase().replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
   setColorCode()
   n.focus()
-  return false;
 }
 function flip2p() {
   var n = d3.select('#stitchDef').node()
   n.value = n.value.toLowerCase().split("").reverse().join("")
   setColorCode()
   n.focus()
-  return false;
 }
 function flip2q() {
   flip2d()
@@ -150,10 +147,9 @@ function clickedNode(event) {
 function toggleVisibility(id) {
     console.log('toggleVisibility '+id)
     var x = document.getElementById(id);
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
+    if (x.style.display === "block") {
         x.style.display = "none";
+    } else {
+        x.style.display = "block";
     }
-    return false
 }

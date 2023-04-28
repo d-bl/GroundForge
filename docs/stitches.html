@@ -31,8 +31,8 @@
     </header>
     <main>
         <a id="to_self" href="#">Stitches and threads</a>
-        <form onsubmit="return false">
-            <button onclick="toggleVisibility('helpMenu')">show/hide help links</button>
+        <form  onsubmit="return false" action="javascript:return false" target="javascript:return false">
+            <a class="button" href="javascript:toggleVisibility('helpMenu')">show/hide help links</a>
             <ul id="helpMenu" onclick="toggleVisibility('helpMenu')">
                 <li>text with stills
                     <ul>
@@ -68,23 +68,22 @@
                 <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="7" onchange="dimChanged()">
                 <label for="patchHeight">rows</label>
             </div>
-            <p>
-            <button id="forces" onclick="applyForces()">apply</button>
+            <p><a class="button" id="forces" type="button" href="javascript:applyForces()">apply</a>
             <label for="forces">forces to the pair diagram</label>
             </p>
-            <label for="threadColor">Threads/stitch highlights</label>
+            <label for="threadColor">Thread/stitch highlights</label>
             <input type="color" id="threadColor" name="threadColor" value="#ff0000">
             <br><br><div id="gallery"></div>
             <p>
             <label for="stitchDef"><span id="colorCode"></span></label>
             <input type="text" id="stitchDef" name="stitchDef" value="ct" onkeyup="setColorCode()" onclick="return false" onsubmit="return false">
             flip:
-            <button onclick="flip2d()">&harr;</button>
-            <button onclick="flip2p()">&varr;</button>
-            <button onclick="flip2q()">both</button>
+            <a class="button" href="javascript:flip2d()">&harr;</a>
+            <a class="button" href="javascript:flip2p()">&varr;</a>
+            <a class="button" href="javascript:flip2q()">both</a>
             <br>
-            <button onclick="setAllStitches();return false">assign to all</button>
-            <button onclick="setIgnoredStitches();return false">assign to ignored</button>
+            <a class="button" href="javascript:setAllStitches()">assign to all</a>
+            <a class="button" href="javascript:setIgnoredStitches()">assign to ignored</a>
                 or click a stitch in the diagram.
             </p>
         </form>
