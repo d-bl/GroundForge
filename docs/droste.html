@@ -31,6 +31,13 @@
 <main>
     <a id="to_self" href="#">Stitches and threads</a>
     <form onsubmit="return false" action="javascript:void(0);">
+        <a class="button" href="javascript:toggleVisibility('helpMenu')">show/hide help links</a>
+        <ul id="helpMenu" onclick="toggleVisibility('helpMenu')">
+            <li><a target="_blank" href="/GroundForge-help/Droste-effect">Droste effect</a></li>
+            <li><a target="_blank" href="/GroundForge-help/Color-Code#for-the-droste-diagrams">Color code (1 color per stitch)</a></li>
+            <li><a target="_blank" href="/GroundForge-help/resize-panels">resize panels</a></li>
+            <li><a target="_blank" href="/GroundForge-help/clips/pdf">save as PDF</a> (half minute video)</li>
+        </ul>
         <button id="dummy" onclick="return false"></button>
         <p>
             Back to the initial <a id="to_stitches" href="#"
@@ -47,7 +54,6 @@
     <figure>
         <figcaption>
             Stitches
-            <a href="/GroundForge-help/Droste-effect" target="_blank"><img src="images/information-icon.png" title="help"></a>
             <img src="images/maximize.png" onclick="javascript:maximize('#droste2')" title="maximize room for the diagram"/>
             <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#droste2')" title="reset room for the diagram"/>
             <img src="images/minimize.png" onclick="javascript:minimize('#droste2')" title="minimize room for the diagram"/>
@@ -63,9 +69,6 @@ cross=ctct"></textarea>
     <figure>
         <figcaption>
             Pairs
-            <a href="/GroundForge-help/Color-Code#for-the-droste-diagrams" target="_blank"
-            ><img class="swatches" src="images/swatches.png" title="color legend"
-            ></a>
             <a href="javascript:prepareDownload('#drostePair2')" onfocus="this.href=getDownloadContent('#drostePair2')" onblur="this.href='javascript:prepareDownload(`#drostePair2`)'" download="GF-droste-pair-diagram.svg" title="download" class="download"><img src="images/download.jpg"></a>
             <img src="images/maximize.png" onclick="maximize('#drostePair2')" title="maximize room for the diagram"/>
             <img src="images/reset-dimensions.png" onclick="resetDimensions('#drostePair2')" title="reset room for the diagram"/>
@@ -89,7 +92,6 @@ cross=ctct"></textarea>
     <figure>
         <figcaption>
             Stitches
-            <a href="/GroundForge-help/Advanced#thread-diagram-as-pair-diagram" target="_blank"><img src="images/information-icon.png" title="help"></a>
             <a href="#" onclick="showDroste(3)" title="regenerate pair diagram and thread diagram"><img alt="wand" src="images/wand.png"></a>
             <img src="images/maximize.png" onclick="javascript:maximize('#droste3')" title="maximize room for the diagram"/>
             <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#droste3')" title="reset room for the diagram"/>
@@ -106,9 +108,6 @@ a140=a150=b240=b250=ctcctct"></textarea>
     <figure>
         <figcaption>
             Pairs
-            <a href="/GroundForge-help/Color-Code#for-the-droste-diagrams" target="_blank"
-            ><img class="swatches" src="images/swatches.png" title="color legend"
-            ></a>
             <a href="javascript:prepareDownload('#drostePair3')" onfocus="this.href=getDownloadContent('#drostePair3')" onblur="this.href='javascript:prepareDownload(`#drostePair3`)'" download="GF-droste-next-pair-diagram.svg" title="download" class="download"><img src="images/download.jpg"></a>
             <a id="drostePair3DownloadLink" download="GF-droste-next-pair-diagram.svg" href="#?pleasePrepareFirst" onblur="this.href='#?pleasePrepareFirst'" style="display:none" onclick="this.style.display = 'none'">download</a>
             <img src="images/maximize.png" onclick="maximize('#drostePair3')" title="maximize room for the diagram"/>

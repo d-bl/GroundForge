@@ -31,4 +31,4 @@ button, .button {
     margin: 3px;
     line-height: 1.8em;
 }
-/*p, figcaption{line-height: 170%}*/
+#helpMenu { background-color: #EEEEEE; margin-top: 0; padding-top: 0.5em; padding-bottom: 0.5em; }

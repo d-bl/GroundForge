@@ -30,9 +30,8 @@ form div {display: inline-block; vertical-align: top; }
 div input { width: 3em }
 
 /* the first button on the form (dummy) is activated when typing enter in an input field */
-#to_self, #dummy { display: none }
+#to_self, #dummy, #helpMenu { display: none }
 @media print {
     form, header, figcaption { display: none }
     #to_self { display: block }
 }
-#helpMenu { display: none; }

@@ -34,6 +34,14 @@
 <main>
   <a id="to_self" href="#">Assemble a pair diagram.</a>
   <form onsubmit="return false" id="download">
+        <a class="button" href="javascript:toggleVisibility('helpMenu')">show/hide help links</a>
+        <ul id="helpMenu" onclick="toggleVisibility('helpMenu')">
+            <li><a target="_blank" href="/GroundForge-help/Patch-Size">swatch size</a></li>
+            <li><a target="_blank" href="/GroundForge-help/Advanced">Pattern definition</a></li>
+            <li><a target="_blank" href="/GroundForge-help/Change-tiles">Tile layout</a></li>
+            <li><a target="_blank" href="/GroundForge-help/resize-panels">resize panels</a></li>
+            <li><a target="_blank" href="/GroundForge-help/clips/pdf">save as PDF</a> (half minute video)</li>
+        </ul>
         <p>
             <label for="to_stitches">Use the pattern below to experiment with</label>
             <a id="to_stitches" href="#">stitches and threads</a>.
@@ -61,16 +69,13 @@
         <div>
             <input type="number" name="patchWidth" id="patchWidth" min="3" max="28" value="7" onchange="showProto()" autofocus>
             <label for="patchWidth">columns</label>
-            <a href="/GroundForge-help/Patch-Size" target="_blank"><img src="images/information-icon.png" title="swatch size"></a>
             <br>
             <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="7" onchange="showProto()">
             <label for="patchHeight">rows</label>
         </div><br>
   </form>
         <figure class="pattern">
-            <figcaption>Pattern definition
-                <a href="/GroundForge-help/Advanced" target="_blank"><img src="images/information-icon.png" title="how to define the pattern and foot sides"></a>
-            </figcaption>
+            <figcaption>Pattern definition</figcaption>
             <div>
                 <table>
                     <tr>
@@ -94,11 +99,7 @@
         </figure>
 
         <figure class="pattern">
-            <figcaption>
-                Tile layout
-                <a href="/GroundForge-help/Change-tiles" target="_blank"
-                ><img src="images/information-icon.png" title="how to change tiles"></a>
-            </figcaption>
+            <figcaption>Tile layout</figcaption>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg2" width="297.11" height="130.39" viewBox="0 0 278.54 122.24">
                     <path d="m99.088 17.821 14.712 16.075" fill="none" stroke="#834bce" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="1.1279"/>

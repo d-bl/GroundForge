@@ -119,3 +119,13 @@ function clickedThread(event) {
     threadSegments.style("stroke", color)
     threadSegments.filter(".node").style("fill", color)
 }
+
+function toggleVisibility(id) {
+    console.log('toggleVisibility '+id)
+    var x = document.getElementById(id);
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
