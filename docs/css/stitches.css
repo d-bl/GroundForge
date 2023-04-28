@@ -14,7 +14,7 @@ figure div {
     border: solid 1px #DDD;
 }
 
-#gallery { height: 103px; width: 560px; overflow: auto; resize: both; border: solid 1px #DDD;}
+#gallery { height: 85px; width: 560px; overflow: auto; resize: both; border: solid 1px #DDD;}
 #gallery { display: block; }
 #gallery svg { display: inline-block; }
 #gallery figure { display: inline-block; margin: 0; background-color: white; vertical-align: bottom; padding-right: 1em;}
@@ -35,3 +35,4 @@ div input { width: 3em }
     form, header, figcaption { display: none }
     #to_self { display: block }
 }
+#helpMenu { display: none; }

@@ -147,3 +147,13 @@ function clickedNode(event) {
         .style("stroke", color).style("fill", color).style('opacity',"0.4")
 }
 
+function toggleVisibility(id) {
+    console.log('toggleVisibility '+id)
+    var x = document.getElementById(id);
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+    return false
+}
