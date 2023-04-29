@@ -19,7 +19,8 @@ function load() {
 }
 function unduplicate(s){
     // prevent invisible floating nodes caused by repeated twists and/or crossings
-    return s
+    var kv = s.split('=')
+    return kv[0]+'='+kv[1]
         .replace(/[tlrp]*t[tlrp]+/g, 't')
         .replace(/[tlrp]+t/g, 't')
         .replace(/[lp]*[rp]+l[lp]+/g, 't')
@@ -63,19 +64,15 @@ function clear2() {
     var p2 = PairDiagram.create(d3.select("#droste2").node().value, threadDiagram)
     setPairDiagram("#drostePair2", p2)
     d3.selectAll("#drosteThread2, #drostePair3, #drosteThread3").html("")
-    d3.selectAll(".colorCode").style("display", "none")
     d3.selectAll("#drostePair2DownloadLink, #drosteThread2DownloadLink, #drostePair3DownloadLink, #drosteThread3DownloadLink")
         .attr("href", "#?pleasePrepareFirst")
         .style("display", "none")
-    return false
 }
 function clear3() {
     d3.selectAll("#drostePair3, #drosteThread3").html("")
-    d3.selectAll(".colorCode").style("display", "none")
     d3.selectAll("#drostePair3DownloadLink, #drosteThread3DownloadLink")
         .attr("href", "#?pleasePrepareFirst")
         .style("display", "none")
-    return false
 }
 function showDroste(level) {
     var el = d3.select("#drosteThread" + level).node().firstElementChild
@@ -98,7 +95,6 @@ function showDroste(level) {
         d3.select('#drosteThread3 g')
             .attr("transform","scale(0.5,0.5)")
     }
-    return false
 }
 function setPairDiagram(containerID, diagram) {
     var container = d3.select(containerID)
