@@ -3,10 +3,7 @@ function load() {
     let q = window.location.search.substr(1)+""
     if(!q)
         q = 'patchWidth=8&patchHeight=8&footside=r,1&tile=888,111&headside=8,r&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2&a1=ctctctcll&j2=ctctctcrr&b2=ct'
-    let w = q.replace(/.*patchWidth=/,"").replace(/&.*/,"");
-    let h = q.replace(/.*patchHeight=/,"").replace(/&.*/,"");
-    d3.select("#patchHeight").attr("value",h)
-    d3.select("#patchWidth").attr("value",w)
+    dimInit(q);
     // document.getElementById("helpMenuButton").focus()
     setColorCode()
     showThread(show(q))
@@ -16,17 +13,30 @@ function applyForces() {
     nudgePairs('#pair', cfg.totalCols*6,cfg.totalRows*6)
 }
 function getQ() {
-    return d3.select('#to_pattern').attr('href').replace(/.*[?]/, "");
+    return d3.select('#to_self').attr('href').replace(/.*[?]/, "");
 }
 
+function getDim(q) {
+    let w = q.replace(/.*patchWidth=/, "").replace(/&.*/, "");
+    let h = q.replace(/.*patchHeight=/, "").replace(/&.*/, "");
+    return [w,h]
+}
+function dimInit(q) {
+    let [w,h] = getDim(q);
+    d3.select("#patchHeight").attr("value", h).on("change", dimChanged)
+    d3.select("#patchWidth").attr("value", w).on("change", dimChanged)
+}
 function dimChanged() {
     let q = getQ()
     let w = d3.select("#patchWidth").node().value
     let h = d3.select("#patchHeight").node().value
+    let [wq, hq] = getDim(q)
+    if (w == wq && h == hq) return // apparently first action on the page
     q = getQ()
         .replace(new RegExp('patchWidth=[0-9]+'),'patchWidth='+w)
         .replace(new RegExp('patchHeight=[0-9]+'),'patchHeight='+h)
-    showThread(show(q))
+    showThread(show(q)) // TODO spoiler to reuse methods on pattern and droste
+    return void(0)
 }
 function show(q) {
     var cfg = TilesConfig(q)
@@ -152,4 +162,5 @@ function toggleVisibility(id) {
     } else {
         x.style.display = "block";
     }
+    return void(0)
 }
