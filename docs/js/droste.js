@@ -19,14 +19,33 @@ function load() {
 
     d3.select('#droste2').on('keyup',clearThreadLevel2)
     d3.select('#droste3').on('keyup',clearThreadLevel3)
+    d3.select('#droste2').on('change',clearAll)
     d3.select('#wandPairLevel2').on('click',setPairLevel2)
     d3.select('#wandPairLevel3').on('click',setPairLevel3)
     d3.select('#wandThreadLevel2').on('click',setThreadLevel2)
     d3.select('#wandThreadLevel3').on('click',setThreadLevel3)
 }
+function clearAll(){
+    document.getElementById('drostePair2').innerHTML = ""
+    clearThreadLevel2()
+}
+function setLinks(level){
+    let t = document.getElementById("droste" + level).value
+        .replace(/\n+/g,',').replace(/[^a-z0-9=]/g,'')
+    let l = d3.select('#to_self').attr('href')
+    if (!l.includes(`droste${level}=`))
+        l = `${l}&droste${level}=${t}`
+    else {
+        const search = new RegExp(`droste${level}=[ctlrp*]`)
+        l = l.replace(search, `droste${level}=${t}`)
+    }
+    d3.select('#to_self').attr('href',l)
+    d3.select('#to_stitches').attr('href',l.replace('droste.html','stitches.html'))
+}
 function unduplicate(s){
     // prevent invisible floating nodes caused by repeated twists and/or crossings
     var kv = s.split('=')
+    if(!kv[1]) return s
     return kv[0]+'='+kv[1]
         .replace(/[tlrp]*t[tlrp]+/g, 't')
         .replace(/[tlrp]+t/g, 't')
@@ -52,13 +71,15 @@ function getQ() {
     return d3.select('#to_stitches').attr('href').replace(/.*[?]/, "");
 }
 function clearThreadLevel2() { // level 2 == step 1
+    setLinks(2)
     d3.selectAll("#drosteThread2, #drostePair3, #drosteThread3").html("")
-    d3.selectAll("#drostePair2, #drosteThread2, #drostePair3, #drosteThread3").data("")
+    d3.selectAll("#drostePair2, #drosteThread2, #drostePair3, #drosteThread3").property("data","")
     clearDownloadLinks();
 }
 function clearThreadLevel3() { // level 3 == step 2
+    setLinks(3)
     d3.selectAll("#drosteThread3").html("")
-    d3.selectAll("#drostePair3, #drosteThread3").data("")
+    d3.selectAll("#drostePair3, #drosteThread3").property(data,"")
     clearDownloadLinks();
 }
 function clearDownloadLinks() {
@@ -83,6 +104,7 @@ function getPairLevel2() {
     let pairContainer = document.getElementById('drostePair2');
     let pairDiagram = pairContainer.data
     if (!pairDiagram) {
+        pairContainer.innerHTML = ''
         let textValue = document.getElementById("droste2").value;
         let threadLevel1 = document.getElementById("droste2").data;
         pairDiagram = PairDiagram.create(textValue, threadLevel1)
@@ -139,7 +161,6 @@ function clickedThread(event) {
 }
 
 function toggleVisibility(id) {
-    console.log('toggleVisibility '+id)
     var x = document.getElementById(id);
     if (x.style.display === "block") {
         x.style.display = "none";
