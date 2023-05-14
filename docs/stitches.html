@@ -33,7 +33,7 @@
         <a id="to_self" href="#">Stitches and threads</a>
         <form  onsubmit="return false" action="javascript:return false" target="javascript:return false">
             <a class="button" href="javascript:toggleVisibility('helpMenu')">show/hide help links</a>
-            <ul id="helpMenu" onclick="toggleVisibility('helpMenu')">
+            <ul id="helpMenu">
                 <li>text with stills
                     <ul>
                         <li><a target="_blank" href="/GroundForge-help/Patch-Size">swatch size</a></li>
@@ -43,7 +43,7 @@
                 </li>
                 <li>Half minute videos
                     <ul>
-                        <li><a target="_blank" href="/GroundForge-help/clips/color">Colors in thread diagrams</a> NB: color chooser vary by browser/OS</li>
+                        <li><a target="_blank" href="/GroundForge-help/clips/color">Colors in thread diagrams</a> NB: color choosers vary by browser/OS</li>
                         <li><a target="_blank" href="/GroundForge-help/clips/flip">flip and rotate stitches</a></li>
                         <li><a target="_blank" href="/GroundForge-help/clips/ignore">ignore/restore stitches</a></li>
                         <li><a target="_blank" href="/GroundForge-help/clips/pdf">save as PDF</a></li>
@@ -68,8 +68,8 @@
                 <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="7" onchange="dimChanged()">
                 <label for="patchHeight">rows</label>
             </div>
-            <p><a class="button" id="forces" type="button" href="javascript:applyForces()">apply</a>
-            <label for="forces">forces to the pair diagram</label>
+            <p><a class="button" id="forces" type="button" href="javascript:applyForces()">apply forces</a>
+            <label for="forces"> to the pair diagram</label>
             </p>
             <label for="threadColor">Thread/stitch highlights</label>
             <input type="color" id="threadColor" name="threadColor" value="#ff0000">
@@ -87,19 +87,7 @@
                 or click a stitch in the diagram.
             </p>
         </form>
-        <div>
-            <p id="whiting"></p><br>
-            <figure>
-                <figcaption>
-                    Stitch enumeration
-                    <img src="images/maximize.png" onclick="javascript:maximize('#enum')" title="maximize room for the diagram"/>
-                    <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#enum')" title="reset room for the diagram"/>
-                    <img src="images/minimize.png" onclick="javascript:minimize('#enum')" title="minimise room for the diagram"/>
-                </figcaption>
-                <div id="enum"></div>
-            </figure>
-        </div>
-        <br>
+        <p id="whiting"></p><br>
         <figure >
             <figcaption>
                 Pairs
@@ -136,6 +124,15 @@
                 <img src="images/minimize.png" onclick="javascript:minimize('#thread')" title="minimize room for the diagram"/>
             </figcaption>
             <div id="thread"></div>
+        </figure>
+        <figure>
+            <figcaption>
+                Stitch enumeration
+                <img src="images/maximize.png" onclick="javascript:maximize('#enum')" title="maximize room for the diagram"/>
+                <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#enum')" title="reset room for the diagram"/>
+                <img src="images/minimize.png" onclick="javascript:minimize('#enum')" title="minimise room for the diagram"/>
+            </figcaption>
+            <div id="enum"></div>
         </figure>
     </main>
     <!-- Start of StatCounter Code for Default Guide -->
