@@ -134,6 +134,7 @@ function getPairLevel3() {
     return pairDiagram;
 }
 function setPairDiagram(level, threadDiagram) {
+    setLinks(level)
     const containerId = 'drostePair' + level;
     const textValue = document.getElementById("droste2").value;
     const pairDiagram = PairDiagram.create(textValue, threadDiagram)
@@ -143,6 +144,7 @@ function setPairDiagram(level, threadDiagram) {
     showGraph('#'+containerId, pairDiagram)
 }
 function setThreadDiagram(level, pairDiagram) {
+    setLinks(level)
     let containerID = 'drosteThread'+level
     var threadDiagram = ThreadDiagram.create(pairDiagram)
     var container = document.getElementById(containerID)
