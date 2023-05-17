@@ -17,8 +17,8 @@ function load() {
     document.getElementById("droste2").data = ThreadDiagram.create(pairDiagram)
     setPairLevel2()
 
-    d3.select('#droste2').on('keyup',clearThreadLevel2)
-    d3.select('#droste3').on('keyup',clearThreadLevel3)
+    d3.select('#droste2').on('keyup touchend',clearThreadLevel2)
+    d3.select('#droste3').on('keyup touchend',clearThreadLevel3)
     d3.select('#droste2').on('change',clearAll)
     d3.select('#wandPairLevel2').on('click',setPairLevel2)
     d3.select('#wandPairLevel3').on('click',setPairLevel3)
@@ -36,7 +36,7 @@ function setLinks(level){
     if (!l.includes(`droste${level}=`))
         l = `${l}&droste${level}=${t}`
     else {
-        const search = new RegExp(`droste${level}=[ctlrp*]`)
+        const search = new RegExp(`droste${level}=[ctlrp]+`, 'g')
         l = l.replace(search, `droste${level}=${t}`)
     }
     d3.select('#to_self').attr('href',l)
@@ -72,15 +72,15 @@ function getQ() {
 }
 function clearThreadLevel2() { // level 2 == step 1
     setLinks(2)
+    clearDownloadLinks()
     d3.selectAll("#drosteThread2, #drostePair3, #drosteThread3").html("")
     d3.selectAll("#drostePair2, #drosteThread2, #drostePair3, #drosteThread3").property("data","")
-    clearDownloadLinks();
 }
 function clearThreadLevel3() { // level 3 == step 2
     setLinks(3)
+    clearDownloadLinks()
     d3.selectAll("#drosteThread3").html("")
     d3.selectAll("#drostePair3, #drosteThread3").property(data,"")
-    clearDownloadLinks();
 }
 function clearDownloadLinks() {
     d3.selectAll("#drostePair2DownloadLink, #drosteThread2DownloadLink, #drostePair3DownloadLink, #drosteThread3DownloadLink")
