@@ -17,8 +17,10 @@ function load() {
     document.getElementById("droste2").data = ThreadDiagram.create(pairDiagram)
     setPairLevel2()
 
-    d3.select('#droste2').on('keyup input',clearThreadLevel2)
-    d3.select('#droste3').on('keyup input',clearThreadLevel3)
+    d3.select('#droste2').on('keyup',clearThreadLevel2)
+    d3.select('#droste3').on('keyup',clearThreadLevel3)
+    d3.select('#droste2').on('input',clearThreadLevel2)
+    d3.select('#droste3').on('input',clearThreadLevel3)
     d3.select('#droste2').on('change',clearAll)
     d3.select('#wandPairLevel2').on('click',setPairLevel2)
     d3.select('#wandPairLevel3').on('click',setPairLevel3)
