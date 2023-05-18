@@ -1,12 +1,9 @@
 function load() {
 
     let q = window.location.search.substring(1)+""
-    if(!q) q = "patchWidth=12&patchHeight=10&footside=b-,-5,y-,-y,,&tile=L-O-,---5,H-E-,-5--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4&e1=ct&c1=ct&a1=ctctcl&f2=ct&b2=ctctctcl&e3=ct&c3=ctc&d4=ct&droste2=twist=ct&droste3=#"
-    d3.select('#to_stitches').attr('href','stitches.html?'+q)
-    d3.select('#to_self').attr('href','droste.html?'+q)
-
-    d3.select('#to_stitches').attr('href','stitches.html?'+q)
-    d3.select('#to_self').attr('href','droste.html?'+q)
+    if(!q) q = "patchWidth=12&patchHeight=10&footside=b-,-5,y-,-y,,&tile=L-O-,---5,H-E-,-5--&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4&e1=ct&c1=ct&a1=ctctcl&f2=ct&b2=ctctctcl&e3=ct&c3=ctc&d4=ct&droste2=twist=ct"
+    document.getElementById('to_stitches').href = 'stitches.html?'+q
+    document.getElementById('to_self').href = 'droste.html?'+q
 
     setTextArea(2, q)
     setTextArea(3, q)
@@ -17,8 +14,8 @@ function load() {
     document.getElementById("droste2").data = ThreadDiagram.create(pairDiagram)
     setPairLevel2()
 
-    d3.select('#droste2').on('keyup',clearThreadLevel2)
-    d3.select('#droste3').on('keyup',clearThreadLevel3)
+    d3.select('#droste2').on('keypress',clearThreadLevel2)
+    d3.select('#droste3').on('keypress',clearThreadLevel3)
     d3.select('#droste2').on('input',clearThreadLevel2)
     d3.select('#droste3').on('input',clearThreadLevel3)
     d3.select('#droste2').on('change',clearAll)
@@ -32,17 +29,16 @@ function clearAll(){
     clearThreadLevel2()
 }
 function setLinks(level){
-    let t = document.getElementById("droste" + level).value
-        .replace(/\n+/g,',').replace(/[^a-z0-9=]/g,'')
-    let l = d3.select('#to_self').attr('href')
-    if (!l.includes(`droste${level}=`))
-        l = `${l}&droste${level}=${t}`
-    else {
-        const search = new RegExp(`droste${level}=[ctlrp]+`, 'g')
-        l = l.replace(search, `droste${level}=${t}`)
-    }
-    d3.select('#to_self').attr('href',l)
-    d3.select('#to_stitches').attr('href',l.replace('droste.html','stitches.html'))
+    let key = "droste" + level;
+    let value = document.getElementById(key).value
+        .replace(/\n+/g,',').replace(/[^a-z0-9=,]/g,'')
+    let l = document.getElementById('to_self')
+        .href
+        .split('&').filter(function (s) {return !s.startsWith(key+'=')})
+        .join('&') + `&${key}=${value}`
+    console.log('new link: '+l)
+    document.getElementById('to_self').href = l
+    document.getElementById('to_stitches').href = l.replace('droste.html','stitches.html')
 }
 function unduplicate(s){
     // prevent invisible floating nodes caused by repeated twists and/or crossings
@@ -58,11 +54,11 @@ function unduplicate(s){
         .replace(/[cp]+c[cp]+/g, '')
 }
 function setTextArea(level, q){ // level 2 == step 1
-    let id = 'droste'+level
-    if(!q.includes(id)) return // level mentioned in query?
-    document.getElementById(id).value = q
-        .replace(new RegExp(`.*[?&]${id}=`),"")
-        .replace(/&.*/,"")
+    let key = 'droste'+level
+    if(!q.includes(key+'=')) return // level mentioned in query?
+    let value = q.split('&').filter(function (s) {return s.startsWith(key+'=')});
+    document.getElementById(key).value = value[0].replace(key+'=','')
+        .replace(/[^[a-zA-Z0-9=,]/g,"")
 }
 function changeQ(level, q){
     let id = 'droste'+level
@@ -70,7 +66,7 @@ function changeQ(level, q){
     return `${q.replace(new RegExp(id+'=[^&]+'),'')}&${id}=${s}`
 }
 function getQ() {
-    return d3.select('#to_stitches').attr('href').replace(/.*[?]/, "");
+    return document.getElementById('to_stitches').href.replace(/.*[?]/, "");
 }
 function clearThreadLevel2() { // level 2 == step 1
     setLinks(2)
@@ -159,7 +155,7 @@ function setThreadDiagram(level, pairDiagram) {
 function clickedThread(event) {
     let classNameAsXpath = '.' + event.currentTarget.textContent.replace(" ", "");
     let threadSegments = d3.selectAll(classNameAsXpath)
-    let color = d3.select('#threadColor').node().value
+    let color = document.getElementById('threadColor').value
     threadSegments.style("stroke", color)
     threadSegments.filter(".node").style("fill", color)
 }
