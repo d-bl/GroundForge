@@ -31,7 +31,7 @@ function clearAll(){
 function setLinks(level){
     let key = "droste" + level;
     let value = document.getElementById(key).value
-        .replace(/\n+/g,',').replace(/[^a-z0-9=,]/g,'')
+        .replace(/\n+/g,',').replace(/[^a-zA-Z0-9=,]/g,'')
     let l = document.getElementById('to_self')
         .href
         .split('&').filter(function (s) {return !s.startsWith(key+'=')})
