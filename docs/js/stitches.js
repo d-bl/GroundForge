@@ -59,14 +59,12 @@ function show(q) {
 }
 function redrawThreads(){
     showThread(TilesConfig(getQ()))
-    d3.selectAll("#thread .node").on("click",clickedNode)
 }
 function showThread(cfg) {
     var pairDiagram = NewPairDiagram.create(cfg) // old style pair diagram
     var threadDiagram = ThreadDiagram.create(pairDiagram)
     showGraph('#thread', threadDiagram)
     d3.select('#thread g').attr("transform","scale(0.5,0.5)")
-    d3.selectAll("#thread .node").on("click",clickedNode)
 }
 function maximize(containerId) {
     d3.select(containerId).style("width","100%").style("height","90vh")
@@ -140,20 +138,6 @@ function whiting (kv) {
         "of '<em>A Lace Guide for Makers and Collectors</em>' by Gertrude Whiting; 1920."
     return true
 }
-function clickedThread(event) {
-    var threadSegments = d3.selectAll("#thread ." + event.currentTarget.textContent.replace(" ",""))
-    var color = d3.select('#threadColor').node().value
-    threadSegments.style("stroke", color)
-    threadSegments.filter(".node").style("fill", color)
-}
-function clickedNode(event) {
-    const selectedClass = d3.event.currentTarget.classList.toString().replace(/ *node */,'')
-    if (selectedClass == "threadStart") return
-    var color = d3.select('#threadColor').node().value
-    d3.selectAll("#thread ." + selectedClass)
-        .style("stroke", color).style("fill", color).style('opacity',"0.4")
-}
-
 function toggleVisibility(id) {
     console.log('toggleVisibility '+id)
     var x = document.getElementById(id);

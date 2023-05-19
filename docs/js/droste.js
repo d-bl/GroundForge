@@ -149,16 +149,8 @@ function setThreadDiagram(level, pairDiagram) {
     showGraph('#'+containerID, threadDiagram)
     d3.select(`#${containerID} g`)
         .attr("transform","scale(0.5,0.5)")
-    d3.selectAll(`#${containerID} .threadStart`).on("click", clickedThread)
-    d3.selectAll(`#${containerID} .bobbin`).on("click", clickedThread)
 }
-function clickedThread(event) {
-    let classNameAsXpath = '.' + event.currentTarget.textContent.replace(" ", "");
-    let threadSegments = d3.selectAll(classNameAsXpath)
-    let color = document.getElementById('threadColor').value
-    threadSegments.style("stroke", color)
-    threadSegments.filter(".node").style("fill", color)
-}
+
 
 function toggleVisibility(id) {
     var x = document.getElementById(id);
