@@ -1,6 +1,6 @@
 
 figure { max-width:90%; display: inline-block; margin-left: 0; margin-top: 0; margin-right: 0.5em; margin-bottom: 0; }
-figcaption { text-align: center; background-color: #ddd; border-radius: 3px; margin-top: 0.3em; padding-left: 0.5em; padding-right: 0.5em; }
+figcaption { text-align: center; background-color: #ddd; border-radius: 3px; margin-top: 0.3em; padding-left: 0.5em; padding-right: 0.5em; padding-top: 3px; }
 figcaption img { vertical-align: middle; margin-left: 1em; }
 figure { vertical-align: top;}
 
@@ -14,10 +14,10 @@ figure div {
     border: solid 1px #DDD;
 }
 
-#gallery { overflow: auto; height: 100px; min-width: 65%; }
+#gallery { height: 85px; width: 560px; overflow: auto; resize: both; border: solid 1px #DDD;}
 #gallery { display: block; }
 #gallery svg { display: inline-block; }
-#gallery figure { display: inline-block; margin: 0; background-color: white; vertical-align: bottom;}
+#gallery figure { display: inline-block; margin: 0; background-color: white; vertical-align: bottom; padding-right: 1em;}
 #gallery figcaption { background-color: white; padding-left: 0; }
 #gallery figcaption { text-align: left}
 
@@ -30,7 +30,7 @@ form div {display: inline-block; vertical-align: top; }
 div input { width: 3em }
 
 /* the first button on the form (dummy) is activated when typing enter in an input field */
-#to_self, #dummy { display: none }
+#to_self, #dummy, #helpMenu { display: none }
 @media print {
     form, header, figcaption { display: none }
     #to_self { display: block }

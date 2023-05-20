@@ -102,7 +102,7 @@ function setField (keyValueString) {
     if (k) d3.select('#'+k).property("value", v)
 }
 function load() {
-
+  console.log("loading")
   var q = window.location.search.substr(1)
   var keyValueStrings = q.split("&")
   keyValueStrings.forEach(setField)
@@ -226,3 +226,13 @@ function prepareTemplateDownload() {
   alert('Sorry, Inkscape templates are not available for your device')
 }
 
+
+function toggleVisibility(id) {
+  console.log('toggleVisibility '+id)
+  var x = document.getElementById(id);
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}

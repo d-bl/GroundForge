@@ -3,10 +3,9 @@ function load() {
     let q = window.location.search.substr(1)+""
     if(!q)
         q = 'patchWidth=8&patchHeight=8&footside=r,1&tile=888,111&headside=8,r&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2&a1=ctctctcll&j2=ctctctcrr&b2=ct'
-    let w = q.replace(/.*patchWidth=/,"").replace(/&.*/,"");
-    let h = q.replace(/.*patchHeight=/,"").replace(/&.*/,"");
-    d3.select("#patchHeight").attr("value",h)
-    d3.select("#patchWidth").attr("value",w)
+    dimInit(q);
+    // document.getElementById("helpMenuButton").focus()
+    setColorCode()
     showThread(show(q))
 }
 function applyForces() {
@@ -14,17 +13,30 @@ function applyForces() {
     nudgePairs('#pair', cfg.totalCols*6,cfg.totalRows*6)
 }
 function getQ() {
-    return d3.select('#to_pattern').attr('href').replace(/.*[?]/, "");
+    return d3.select('#to_self').attr('href').replace(/.*[?]/, "");
 }
 
+function getDim(q) {
+    let w = q.replace(/.*patchWidth=/, "").replace(/&.*/, "");
+    let h = q.replace(/.*patchHeight=/, "").replace(/&.*/, "");
+    return [w,h]
+}
+function dimInit(q) {
+    let [w,h] = getDim(q);
+    d3.select("#patchHeight").attr("value", h).on("change", dimChanged)
+    d3.select("#patchWidth").attr("value", w).on("change", dimChanged)
+}
 function dimChanged() {
     let q = getQ()
     let w = d3.select("#patchWidth").node().value
     let h = d3.select("#patchHeight").node().value
+    let [wq, hq] = getDim(q)
+    if (w == wq && h == hq) return // apparently first action on the page
     q = getQ()
         .replace(new RegExp('patchWidth=[0-9]+'),'patchWidth='+w)
         .replace(new RegExp('patchHeight=[0-9]+'),'patchHeight='+h)
-    showThread(show(q))
+    showThread(show(q)) // TODO spoiler to reuse methods on pattern and droste
+    return void(0)
 }
 function show(q) {
     var cfg = TilesConfig(q)
@@ -47,31 +59,48 @@ function show(q) {
 }
 function redrawThreads(){
     showThread(TilesConfig(getQ()))
-    d3.selectAll("#thread .node").on("click",clickedNode)
 }
 function showThread(cfg) {
     var pairDiagram = NewPairDiagram.create(cfg) // old style pair diagram
     var threadDiagram = ThreadDiagram.create(pairDiagram)
     showGraph('#thread', threadDiagram)
     d3.select('#thread g').attr("transform","scale(0.5,0.5)")
-    d3.selectAll("#thread .node").on("click",clickedNode)
 }
 function maximize(containerId) {
     d3.select(containerId).style("width","100%").style("height","90vh")
-    return false;
 }
 function minimize(containerId) {
     d3.select(containerId).style("width","250px").style("height","250px")
-    return false;
 }
 function paintStitchValue () {
 
   return d3.select("#stitchDef").node().value.toLowerCase().replace(/[^ctlrp-]/g,'')
 }
-function flipStitch() {
+function setColorCode() {
+    d3.select("#colorCode").html(`
+        <svg width="20" height="25">
+          <g transform="scale(2,2)">
+            <g transform="translate(5,6)">
+              ${PairSvg.shapes(d3.select("#stitchDef").node().value)}
+            </g>
+          </g>
+        </svg>`)
+}
+function flip2d() {
   var n = d3.select('#stitchDef').node()
-  n.value=n.value.toLowerCase().replace(/l/g,"R").replace(/r/g,"l").replace(/R/g,"r")
-  return false;
+  n.value = n.value.toLowerCase().replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
+  setColorCode()
+  n.focus()
+}
+function flip2p() {
+  var n = d3.select('#stitchDef').node()
+  n.value = n.value.toLowerCase().split("").reverse().join("")
+  setColorCode()
+  n.focus()
+}
+function flip2q() {
+  flip2d()
+  flip2p()
 }
 function clickedStitch(event) {
 
@@ -109,16 +138,13 @@ function whiting (kv) {
         "of '<em>A Lace Guide for Makers and Collectors</em>' by Gertrude Whiting; 1920."
     return true
 }
-function clickedThread(event) {
-    var threadSegments = d3.selectAll("#thread ." + event.currentTarget.textContent.replace(" ",""))
-    var color = d3.select('#threadColor').node().value
-    threadSegments.style("stroke", color)
-    threadSegments.filter(".node").style("fill", color)
+function toggleVisibility(id) {
+    console.log('toggleVisibility '+id)
+    var x = document.getElementById(id);
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+    return void(0)
 }
-function clickedNode(event) {
-    const selectedClass = d3.event.currentTarget.classList.toString().replace(/ *node */,'')
-    const color = d3.select('#threadColor').node().value
-    d3.selectAll("#thread ." + selectedClass)
-        .style("stroke", color).style("fill", color).style('opacity',"0.4")
-}
-
