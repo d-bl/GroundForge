@@ -12,6 +12,7 @@ figcaption img { vertical-align: middle; margin-left: 1em; }
   margin-bottom: 5em;
 }
 foreignObject { display: none }
+form { display: inline-block; }
 
 input[type="number"] { width:3em; margin-right: 2px; text-align: right; }
 main div { display: inline-block; vertical-align: top; }
