@@ -8,7 +8,7 @@ function showGraph(containerId, diagram) {
     var height = 3178
 
     var opacity = 0
-    var stroke = 2
+    var stroke = containerId.toLowerCase().includes('thread') ? 4 : 2
 
     var markers = true // use false for slow devices and IE-11, set them at onEnd
     container.html(DiagramSvg.render(diagram, stroke, markers, width, height, opacity))
