@@ -13,7 +13,7 @@
 
 ## GroundForge
 
-* [Diagram editor](/GroundForge/tiles)
+* [Diagram editor](/GroundForge/pattern)
 * {% if page.name == 'about-us.md' %} [User guide](/GroundForge/) {% else %} User guide {% endif %}
 * [Net variations](/GroundForge/nets)
 * [Symmetries](/GroundForge/symmetry)
