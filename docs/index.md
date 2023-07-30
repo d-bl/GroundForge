@@ -4,6 +4,7 @@ title: GroundForge - Home
 ---
 
 {% include fallback.html %}
+{% include fork-warning.js %}
 
 What is GroundForge?
 --------------------

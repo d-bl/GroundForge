@@ -17,7 +17,7 @@ header  div {
 header h1 a { color: white; text-decoration: none;}
 header h2 { color: #9ddcff; }
 /*https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure*/
-.deprecated {background: darkorange}
+.deprecated { background: darkorange; padding: 2px; }
 
 button, .button {
     text-decoration: none;
