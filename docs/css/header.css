@@ -1,13 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Architects+Daughter");
+body { font-family: 'Helvetica Neue', Helvetica, Arial, serif; }
 header {
     background: url(../assets/images/header-bg-left.png) top right repeat;
     font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
 
 }
 header h1 { font-size: 450%; font-weight: 300; margin-top: 0; margin-bottom: 0.2em; letter-spacing: -1px;}
-header h2 { font-size: 163%; font-weight: 300; margin-top: 0; margin-bottom: 0; }
 
-body, header { margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, serif; }
+header h2 { font-size: 163%; font-weight: 300; margin-top: 0; margin-bottom: 0; }
+body, header { margin: 0; padding: 0; }
 header div { margin: 0; padding: 1.6em; }
 main, article { margin: 0; padding: 1em; }
 
