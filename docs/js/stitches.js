@@ -105,7 +105,7 @@ function clickedStitch(event) {
 
     var id = event.currentTarget.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
     var replacement = `${id}=${paintStitchValue()}`
-    var search = new RegExp(`${id}=[ctlr]+`,'g')
+    var search = new RegExp(`${id}=[ctlr]+`,'gi')
     let attr = getQ();
     if (search.test(attr))
         q = attr.replace(search,replacement)
@@ -115,8 +115,8 @@ function clickedStitch(event) {
 }
 function setAllStitches() {
     var replacement = `=${paintStitchValue()}&`
-    var search = new RegExp(`=[ctlr]+&`,'g')
-    var searchLast = new RegExp(`=[ctlr]+$`,'g')
+    var search = new RegExp(`=[ctlr]+&`,'gi')
+    var searchLast = new RegExp(`=[ctlr]+$`,'gi')
     show(getQ().replace(search, replacement))
     show(getQ().replace(searchLast, replacement))
 }
