@@ -116,7 +116,7 @@ function clickedStitch(event) {
 function setAllStitches() {
     var replacement = `=${paintStitchValue()}&`
     var search = new RegExp(`=[ctlr]+&`,'g')
-    var searchLast = new RegExp(`=[ctlr]+^`,'g')
+    var searchLast = new RegExp(`=[ctlr]+$`,'g')
     show(getQ().replace(search, replacement))
     show(getQ().replace(searchLast, replacement))
 }
