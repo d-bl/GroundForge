@@ -59,6 +59,7 @@ function setTextArea(level, q){ // level 2 == step 1
     let value = q.split('&').filter(function (s) {return s.startsWith(key+'=')});
     document.getElementById(key).value = value[0].replace(key+'=','')
         .replace(/[^[a-zA-Z0-9=,]/g,"")
+        .replace(/,/g,"\n")
 }
 function changeQ(level, q){
     let id = 'droste'+level
@@ -132,7 +133,7 @@ function getPairLevel3() {
 function setPairDiagram(level, threadDiagram) {
     setLinks(level)
     const containerId = 'drostePair' + level;
-    const textValue = document.getElementById("droste2").value;
+    const textValue = document.getElementById("droste"+level).value;
     const pairDiagram = PairDiagram.create(textValue, threadDiagram)
     const container = document.getElementById(containerId)
     container.data = pairDiagram
