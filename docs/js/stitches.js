@@ -116,13 +116,21 @@ function clickedStitch(event) {
 }
 function setAllStitches() {
     var replacement = `=${paintStitchValue()}`
-    var search = new RegExp(`=[ctlr]+`,'g')
-    show(getQ().replace(search, replacement))
+    var search = new RegExp(`=[ctlr]+&`,'g')
+    var searchLast = new RegExp(`=[ctlr]+$`,'g')
+    let q = getQ()
+        .replace(search, replacement)
+        .replace(searchLast, replacement)
+    show(q)
 }
 function setIgnoredStitches() {
     var replacement = `=${paintStitchValue()}`
-    var search = new RegExp(`=-`,'g')
-    show(getQ().replace(search, replacement))
+    var search = new RegExp(`=-&`,'g')
+    var searchLast = new RegExp(`=-^`,'g')
+    let q = getQ()
+        .replace(search, replacement)
+        .replace(searchLast, replacement)
+    show(q)
 }
 function whiting (kv) {
     var k = kv.trim().replace(/[^a-zA-Z0-9]/g,"")
