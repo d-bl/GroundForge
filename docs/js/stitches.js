@@ -35,7 +35,7 @@ function dimChanged() {
     q = getQ()
         .replace(new RegExp('patchWidth=[0-9]+'),'patchWidth='+w)
         .replace(new RegExp('patchHeight=[0-9]+'),'patchHeight='+h)
-    showThread(show(q)) // TODO spoiler to reuse methods on pattern and droste
+    show(q) // TODO spoiler to reuse methods on pattern and droste
     return void(0)
 }
 function show(q) {
@@ -47,13 +47,12 @@ function show(q) {
 
     let zoom = 1.9
     let itemMatrix = cfg.getItemMatrix
-    let svg = PairSvg.render(itemMatrix, width, height, zoom)
-    d3.select('#to_self').attr("href","stitches?"+q)
-    d3.select('#to_pattern').attr("href","pattern.html?"+q)
-    d3.select('#to_droste').attr("href","droste.html?"+q)
-    d3.select('#enum').html(PairSvg.legend(itemMatrix))
-    d3.select('#pair').html(svg)
-    d3.select('#thread').node().innerHTML = ''
+    document.getElementById('to_self').href = "stitches?"+q
+    document.getElementById('to_pattern').href = "pattern.html?"+q
+    document.getElementById('to_droste').href = "droste.html?"+q
+    document.getElementById('enum').innerHTML = PairSvg.legend(itemMatrix)
+    document.getElementById('pair').innerHTML = PairSvg.render(itemMatrix, width, height, zoom)
+    document.getElementById('thread').innerHTML = ''
     q.split("&").find(whiting)
     return cfg
 }
@@ -106,7 +105,7 @@ function clickedStitch(event) {
 
     var id = event.currentTarget.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
     var replacement = `${id}=${paintStitchValue()}`
-    var search = new RegExp(`${id}=[ctlr]+`,'g')
+    var search = new RegExp(`${id}=[ctlr]+`,'gi')
     let attr = getQ();
     if (search.test(attr))
         q = attr.replace(search,replacement)
@@ -115,13 +114,15 @@ function clickedStitch(event) {
     show(q)
 }
 function setAllStitches() {
-    var replacement = `=${paintStitchValue()}`
-    var search = new RegExp(`=[ctlr]+&`,'g')
+    var replacement = `=${paintStitchValue()}&`
+    var search = new RegExp(`=[ctlr]+&`,'gi')
+    var searchLast = new RegExp(`=[ctlr]+$`,'gi')
     var searchLast = new RegExp(`=[ctlr]+$`,'g')
     let q = getQ()
         .replace(search, replacement)
         .replace(searchLast, replacement)
     show(q)
+    show(getQ().replace(searchLast, replacement))
 }
 function setIgnoredStitches() {
     var replacement = `=${paintStitchValue()}`

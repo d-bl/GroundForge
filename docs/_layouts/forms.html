@@ -16,6 +16,16 @@
     {% include favicon.html %}
 </head>
 <body onload="load()">
+<div class="deprecated">
+    <h1>Deprecated page</h1>
+    <p> The three sections of the page are split into separate pages.
+        Please update your links and favorites or bookmarks:
+        Simply replace <code>tiles</code> with
+        <code>pattern</code> (construction of a pair diagram),
+        <code>stitches</code> (select stitches and thread highlights) or
+        <code>droste</code> (thread diagrams used as pair diagrams).
+    </p>
+</div>
 <article>
     <a id="logo" href="/GroundForge/" title="Main page"><img src="images/logo-medium.png" alt="DiBL logo"></a>
     <h1>GroundForge - Diagrams of bobbin lace patterns</h1>
@@ -26,6 +36,7 @@
         <li>Tutorials: <a href="/GroundForge-help/index" target="_blank">Getting started</a>, <a href="/GroundForge-help/Icons" target="_blank">Icons</a>, <a href="/GroundForge-help/Advanced" target="_blank">Create a pattern</a>, <a href="index" target="_blank">More...</a></li>
     </ul>
     <div id="whiting"></div>
+    <script src="js/fork-warning.js"></script>
 </article>
 <form onsubmit="return false" id="download">
     <fieldset id="diagrams">
@@ -254,7 +265,7 @@
     ><img id="browsers" src="images/browsers.png"
     ></a><!-- image assembled from http://www.iconarchive.com -->
     &mdash;
-    Powered&nbsp;by:&nbsp;<a href="https://web.archive.org/web/20221127125331/https://tesselace.com/" title="Algorithmically designed lace tessellations" target="_blank"
+    Powered&nbsp;by:&nbsp;<a href="https://tesselacedotcom.wordpress.com/" title="Algorithmically designed lace tessellations" target="_blank"
 >TesseLace</a>,&nbsp;<a href="https://d3js.org" title="Data Driven Documents" target="_blank"
 >D3.js</a>
 </p>

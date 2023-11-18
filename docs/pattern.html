@@ -32,16 +32,25 @@
     </div>
 </header>
 <main>
+  <script src="js/fork-warning.js"></script>
   <a id="to_self" href="#">Assemble a pair diagram.</a>
   <form onsubmit="return false" action="javascript:void(0)">
         <a class="button" href="javascript:toggleVisibility('helpMenu')">show/hide help links</a>
         <ul id="helpMenu">
-            <li><a target="_blank" href="/GroundForge-help/Advanced">Pattern definition</a></li>
-            <li><a target="_blank" href="/GroundForge-help/Change-tiles">Tile layout</a></li>
-            <li><a target="_blank" href="/GroundForge-help/Patch-Size">Swatch size</a></li>
-            <li><a target="_blank" href="/GroundForge-help/resize-panels">Resize panels</a></li>
-            <li><a target="_blank" href="/GroundForge-help/Download">Download</a></li>
-            <li><a target="_blank" href="/GroundForge-help/clips/print-as-pdf">Print as PDF</a> (half minute video)</li>
+            <li>Features on this page
+                <ul>
+                    <li><a target="_blank" href="/GroundForge-help/Advanced">Pattern definition</a></li>
+                    <li><a target="_blank" href="/GroundForge-help/Change-tiles">Tile layout</a></li>
+                    <li><a target="_blank" href="/GroundForge-help/Patch-Size">Swatch size</a></li>
+                    <li><a target="_blank" href="/GroundForge-help/Download">Download</a></li>
+                </ul>
+            </li>
+            <li>Half minute soundless videos
+                <ul>
+                    <li><a target="_blank" href="/GroundForge-help/clips/resize">Resize panels</a></li>
+                    <li><a target="_blank" href="/GroundForge-help/clips/print-as-pdf">Print as PDF</a></li>
+                </ul>
+            </li>
         </ul>
         <p>
             <label for="to_stitches">Use the pattern below to experiment with</label>
@@ -74,7 +83,7 @@
             <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="7" onchange="showProto()">
             <label for="patchHeight">rows</label>
         </div><br>
-  </form>
+  </form><br>
         <figure class="pattern">
             <figcaption>Pattern definition</figcaption>
             <div>

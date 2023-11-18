@@ -13,7 +13,7 @@ See https://d-bl.github.io/GroundForge/
 
 ### for developers:
 * `src/scala/main/*` is translated to : `docs/js/GroundForge-opt.js`
-* This is connected client side to HTML with : `docs/js/tiles.js`
+* This is connected client side to HTML with : `docs/js/*.js`
 * The source runs also in a JVM environment for server-side or batch processing,
   for example something like : `src/test/Demo4Java.java`
 
