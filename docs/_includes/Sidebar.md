@@ -1,24 +1,4 @@
-## Contact
-
-* <a href="https://groups.io/g/GroundForge" target="_blank">User group</a>
-* <a href="https://groundforge.wordpress.com" target="_blank">Support</a>
-* {% if page.name == 'about-us.md' %} About us {% else %} [About us](/GroundForge-help/about-us) {% endif %}
-
-## Catalogues
-
-* [TesseLace index](/tesselace-to-gf)
-* [Gertrude Whiting sampler](/gw-lace-to-gf)
-* [Many Attractive Examples](/MAE-gf/)
-* [Literature](/MAE-gf/docs/literature)
-
-## GroundForge
-
-* [Diagram editor](/GroundForge/pattern)
-* {% if page.name == 'about-us.md' %} [User guide](/GroundForge/) {% else %} User guide {% endif %}
-* [Net variations](/GroundForge/nets)
-* [Symmetries](/GroundForge/symmetry)
-
-* * *
+## [Home](https://d-bl/github.io) - <a href="https://groundforge.wordpress.com" target="_blank">contact</a>
 
 ## User guide
 
