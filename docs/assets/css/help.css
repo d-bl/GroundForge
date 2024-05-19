@@ -19,6 +19,21 @@ header h1, header h2 {width:100%}
 
 #main-content ul ul { margin-bottom: 0px; }
 
+#hamburger-menu {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 30px;
+    height: 30px;
+}
+@media (max-width: 767px) {
+    #hamburger-menu {
+        display: block;
+    }
+}
+
 figure { display: inline-block; margin-left: 0; margin-top: 0; margin-right: 0.5em; }
 figure image, figcaption { display: block; }
 figcaption { text-align: center; background-color: #ddd; border-radius: 3px; margin-top: 0.3em; }
