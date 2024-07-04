@@ -34,3 +34,14 @@ button, .button {
     line-height: 1.8em;
 }
 #helpMenu { background-color: #EEEEEE; margin-top: 0; padding-top: 0.5em; padding-bottom: 0.5em; }
+
+
+
+/* Abusing extended URLs:
+ * query arguments can play the role of classes in HTML that are not available in MarkDown.
+ * Be careful with the this "ends with" condition:
+ * "?abc=right-hand" would also match: [src~="c=right"]
+ */
+img[src$="align=right"] { float: right; margin-left:1em }
+img[src$="align=left"] { float: left; margin-right:1em }
+img[src$="align=center"] { text-align: center }
