@@ -11,7 +11,7 @@ OIDFA Bulletin 4 - 2019
 Page 29 refers to this page for an interactive version of the diagrams in _figure 2_.
 
 We have two versions of the Binche pattern, one [with] a footside, one [without]. 
-The interface has changed over the years. The main differences are that there are fewer diagrams on a single page and the [colour code] accommodates the less conventional stitches. A [tutorial] explains how to play with this pattern.
+The interface has changed over the years. The main differences are that there are fewer diagrams on a single page and the [colour code] accommodates less conventional stitches. A [tutorial] explains how to play with this pattern.
 
 [tutorial]: /GroundForge/help/Binche
 
