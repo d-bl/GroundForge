@@ -1,7 +1,7 @@
-----
+---
 layout: default
-title: Snow in paris
-----
+title: Snow in Paris
+---
 
 <a name=BK-31></a>
 
