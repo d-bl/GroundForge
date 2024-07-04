@@ -3,7 +3,7 @@ layout: default
 title: Snow in Paris
 ---
 
-<a name=BK-31></a>
+<a name="BK-31"></a>
 
 OIDFA Bulletin 4 - 2019
 =======================
