@@ -40,3 +40,14 @@ figcaption { text-align: center; background-color: #ddd; border-radius: 3px; mar
 
 .hide { display: none; }
 .show { display: block; }
+
+
+/* Abusing extended URLs:
+ * query arguments can play the role of classes in HTML that are not available in MarkDown.
+ * Be careful with the this "ends with" condition:
+ * "?abc=right-hand" would also match: [src~="c=right"]
+ */
+img[src$="align=right"] { float: right; margin-left:1em }
+img[src$="align=left"] { float: left; margin-right:1em }
+img[src$="align=center"] { text-align: center }
+
