@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Snow in Paris
+title: OIDFA Bulletin references 
 ---
 
 <a id="BK-31"> </a>
@@ -10,7 +10,7 @@ OIDFA Bulletin 4 - 2019
 
 Page 29 refers to this page for online content.
 
-The interface has changed over the years. Striking differences are that there are fewer diagrams on a single page and the [colour code] accommodates less conventional stitches.
+The interface has changed over the years. Striking differences are that there are fewer diagrams on a single page and a new [colour code] which accommodates less conventional stitches.
 
 * figure 2: interactive versions [with] a footside and [without] and a [tutorial].
 * [figure 1](https://jo-pol.github.io/flanders/) the very first diagram generator
