@@ -3,16 +3,13 @@ layout: default
 title: stitches for snowflakes
 ---
 
-Stitches for snowflakes
-=======================
-
 <script>{% include no-bounce/snow.js %}</script>
 {% include no-bounce/snow.html %}
 
 &nbsp;
 
 Quick demo
-----------
+==========
 
 Result of the form above with the default values.
 These thread diagrams are used as pair diagrams for the actual snowflakes.
@@ -23,7 +20,7 @@ More explanations on [MAE-gf](/MAE-gf/docs/snow-stitches/).
 
 
 TO DO
------
+=====
 
 The page is still under construction.
 

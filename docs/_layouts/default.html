@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}" media="screen" type="text/css">
-    <link rel="stylesheet" href="{{ '/assets/css/print.css' | relative_url }}" media="print" type="text/css">
+    <link rel="stylesheet" href="{{ '/{{ site.github.repository_name }}/assets/css/print.css' | relative_url }}" media="print" type="text/css">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -26,7 +26,7 @@
     <div class="outer">
       <div class="inner">
         <h1><a href="https://d-bl.github.io">Diagrams for Bobbin Lace</a></h1>
-        <h2>GroundForge</h2>
+        <h2>GroundForge: {{ page.title }}</h2>
       </div>
     </div>
 </header>
