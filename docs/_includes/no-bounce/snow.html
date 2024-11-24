@@ -1,0 +1,65 @@
+<head>
+    <script src="snow.js" type="text/javascript"></script>
+    <!-- dirty trick to test stand alone,
+         in markdown you have to include both js and html
+     -->
+</head>
+
+<form>
+    <label for="no_bounce_blobs">Blobs:</label>
+    <select id="no_bounce_plait" onchange="no_bounce_update()">
+        <option value="rc">right</option>
+        <option value="lc" selected>left</option>
+    </select>
+    <input value="tc,rclcrc,clcrcl,ct" type="text" id="no_bounce_blobs" width="35" spellcheck="false" onchange="no_bounce_update()">
+    <button type="button" onclick="flipDef('no_bounce')">flip</button>
+    <br>
+    Variant:
+    <br>
+    <input type="radio" name="no-bounce-pattern" value="diamond" id="no-bounce-pattern-diamond" onchange="no_bounce_update()" > <label for="no-bounce-pattern-diamond">diamond</label>
+    <br>
+    <input type="radio" name="no-bounce-pattern" value="square" id="no-bounce-pattern-square" onchange="no_bounce_update()"> <label for="no-bounce-pattern-square">square</label>
+    <br>
+    <input type="radio" name="no-bounce-pattern" value="honeycomb" id="no-bounce-pattern-honeycomb" onchange="no_bounce_update()" checked>
+    <div style="display: inline-block; vertical-align: top">
+        <label for="no-bounce-pattern-honeycomb">honeycomb on its tip</label>
+        <br>
+        <select id="honeycomb_top_plait" onchange="no_bounce_update()">
+            <option value="rc">right</option>
+            <option value="lc" selected>left</option>
+        </select>
+        <input value="cl,ctc,ctc,rc" type="text" id="honeycomb_top_blobs" width="35" spellcheck="false" onchange="no_bounce_update()">
+        <label for="honeycomb_top_blobs">(top|bottom)</label>
+        <br>
+        <select id="honeycomb_ne_plait" onchange="no_bounce_update()">
+            <option value="rc">right</option>
+            <option value="lc" selected>left</option>
+        </select>
+        <input value="cr,ctc,ctc,lc" type="text" id="honeycomb_ne_blobs" width="35" spellcheck="false" onchange="no_bounce_update()">
+        <label for="honeycomb_ne_blobs">(ne/sw)</label>
+        <button type="button" onclick="flipDef('honeycomb_ne')">flip</button>
+        <button type="button" onclick="flipToNwSe()">flip to nw&bsol;se</button>
+        <br>
+        <select id="honeycomb_nw_plait" onchange="no_bounce_update()">
+            <option value="rc">right</option>
+            <option value="lc" selected>left</option>
+        </select>
+        <input value="cr,ctc,ctc,lc" type="text" id="honeycomb_nw_blobs" width="35" spellcheck="false" onchange="no_bounce_update()">
+        <label for="honeycomb_nw_blobs">(nw&bsol;se)</label>
+            <button type="button" onclick="flipDef('honeycomb_nw')">flip</button>
+        <button type="button" onclick="flipToNeSw()">flip to ne/sw</button>
+    </div>
+    <br>
+    Footside:
+    <input type="radio" name="no-bounce-footside" value="nothing" id="no-bounce-no-footside-stitch" onchange="no_bounce_update()" checked> <label for="no-bounce-no-footside-stitch">do nothing</label>
+    <input type="radio" name="no-bounce-footside" value="twist" id="no-bounce-footside-twist" onchange="no_bounce_update()"> <label for="no-bounce-footside-twist">just twist</label>
+    <br>
+    Swatch size:
+    <label for="no-bounce-patch-width">columns</label>&nbsp;<input type="number" id="no-bounce-patch-width" min="2" max="10" value="6" onchange="no_bounce_update()" step="2" style="width:3em">
+    <label for="no-bounce-patch-height">rows</label>&nbsp;<input type="number" id="no-bounce-patch-height" min="3" max="11" value="9" onchange="no_bounce_update()" style="width:3em">
+    <br>
+    <a id="hex_no_bounce_link" href="#" target="_blank">
+        <button type="button">to pairs from threads page</button>
+    </a>
+</form>
+<script>no_bounce_update()</script>
