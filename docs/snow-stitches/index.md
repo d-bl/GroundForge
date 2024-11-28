@@ -5,6 +5,9 @@ title: Snowflakes
 
 So far, about a [template] intended for fun with snowflakes.
 
+Introduction
+------------
+
 ![sample](sample.png?align=left)
 We saw a double ring pair around snowflakes in a design by [Kumiko Nakazaki].
 It is a variation of ground B4.1 in [Viele Gute Gründe] by Ulrike Volker-Löhr.
@@ -22,10 +25,17 @@ More examples (and explanations) on [MAE-gf](/MAE-gf/docs/snow-stitches/#example
 The image above shows a reconstruction of a ground with a double ring pair.
 See also the [color coding](/GroundForge-help/color-rules).
 The star in the center of the hexagonal ring is yet another snowflake.
-Below a fraction of this reconstruction. The pinkish dots represent snowflakes, each consisting of four blobs.
-Most of the snowflakes start on the left, one on the right.
 
-![capture-extract.svg](capture-extract.svg)
+For now, you have to assign sixteen stitches one by one to this [template]:
+one for each corner of the pink squares shown below.
+
+Under construction
+------------------
+
+![capture-extract.svg](capture-extract.svg?align=left)
+The pink squares are a single repeat in the reconstruction above.
+Each pink square represents a snowflake consisting of four blobs.
+Most of the snowflakes start on the left, one on the right.
 
 <form>
 <input value="tc,rclcrc,clcrcl,ct" spellcheck="false">
@@ -38,7 +48,6 @@ Most of the snowflakes start on the left, one on the right.
 </form>
 
 The form is not yet active. A click on a pink dot should assign the stitches for one snowflake.
-For now, you have to assign the sixteen stitches one by one to this [template].
 Subsequently, follow the links to the _pairs from threads_ page to assign stitches for the actual snowflakes.
 Even without that last step it can be fun to play with configurations of snowflakes.
 
