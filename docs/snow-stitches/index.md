@@ -1,17 +1,17 @@
 ---
 layout: default
-title: snow with double ring pairs
+title: Snowflakes
 ---
 
-So far, about a [template].
+So far, about a [template] intended for fun with snowflakes.
 
-![sample](sample.png?align=left)  
+![sample](sample.png?align=left)
 We saw a double ring pair around snowflakes in a design by [Kumiko Nakazaki].
 It is a variation of ground B4.1 in [Viele Gute Gründe] by Ulrike Volker-Löhr.
 The corners of te ring pairs are in fact compact snowflakes.
 Curiosity led to a method to generate all kinds of variations with GroundForge.
 
-![pairs as threads for a snowflake](blobs.png?align=right)  
+![pairs as threads for a snowflake](blobs.png?align=right) 
 We can interpret pair diagrams of snowflakes as thread diagrams.
 The figure on the right highlights four stitches in such a thread diagram.
 The caption enumerates these stitches in the order they are worked.
@@ -19,7 +19,6 @@ The R means we start working with the two pairs on the right.
 More examples (and explanations) on [MAE-gf](/MAE-gf/docs/snow-stitches/#examples).
 
 ![img.png](capture-of-double-ring-pair.png)  
-
 The image above shows a reconstruction of a ground with a double ring pair.
 See also the [color coding](/GroundForge-help/color-rules).
 The star in the center of the hexagonal ring is yet another snowflake.
@@ -30,19 +29,21 @@ Most of the snowflakes start on the left, one on the right.
 
 <form>
 <input value="tc,rclcrc,clcrcl,ct" spellcheck="false">
-flip:
-<button>&harr;</button> 
-<button>&varr;</button> 
-<button>both</button> 
+<span style="display: inline-block">
+    flip:
+    <button>&harr;</button> 
+    <button>&varr;</button> 
+    <button>both</button>
+</span>
 </form>
 
 The form is not yet active. A click on a pink dot should assign the stitches for one snowflake.
-For now, you have to assign the sixteen stitches manually to this [template].
+For now, you have to assign the sixteen stitches one by one to this [template].
 Subsequently, follow the links to the _pairs from threads_ page to assign stitches for the actual snowflakes.
-Even without that step it can be fun to play with configurations of snowflakes.
+Even without that last step it can be fun to play with configurations of snowflakes.
 
-Another challenge is to support a mix of varying number of blobs and starting sides.
-For that purpose we should be able to combine four of the following elements into a valid diagram.
+Another challenge is to support a variety of blob counts and starting sides.
+For that purpose we should be able to combine any of the following elements into a valid diagram.
 
 ![](plaits.svg)
 
