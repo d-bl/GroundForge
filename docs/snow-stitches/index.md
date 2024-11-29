@@ -16,17 +16,20 @@ Curiosity led to a method to generate all kinds of variations with GroundForge.
 
 ![pairs as threads for a snowflake](blobs.png?align=right) 
 We can interpret pair diagrams of snowflakes as thread diagrams.
-The figure on the right highlights four stitches in such a thread diagram.
+The figure on the right we see blobs highlighting four stitches in such a thread diagram.
 The caption enumerates these stitches in the order they are worked.
 The R means we start working with the two pairs on the right.
 More examples (and explanations) on [MAE-gf](/MAE-gf/docs/snow-stitches/#examples).
 
-![img.png](capture-of-double-ring-pair.png)  
-![](capture-extract.svg?align=right)
-The image above shows a [reconstruction] of a ground with a double ring pair.
+We can assign the stitches from the blobs to a template to get diagrams as in the screenshot below.
+This is example is a [reconstruction] of a ground with a double ring pair.
 See also the [color coding](/GroundForge-help/color-rules).
+
+![img.png](capture-of-double-ring-pair.png)  
+
+![](capture-extract.svg?align=right)
 The star in the center of the hexagonal ring is a snowflake 
-which could become one of B3.47-B3.51.
+which can become one of B3.47-B3.51 and more.
 
 For now, you have to assign sixteen stitches one by one to this [template]:
 one for each corner of the squares shown on the right.
@@ -45,7 +48,7 @@ Subsequently, follow the links to the _pairs from threads_ page to assign stitch
 Even without that last step it can be fun to play with configurations of snowflakes.
 
 Another challenge is to support a variety of blob counts and starting sides.
-For that purpose we should be able to combine any of the following elements into a valid diagram.
+For that purpose we should be able to combine any of the following elements into a valid template.
 
 ![](plaits.svg)
 
