@@ -16,7 +16,7 @@ Curiosity led to a method to generate all kinds of variations with GroundForge.
 
 ![pairs as threads for a snowflake](blobs.png?align=right) 
 We can interpret pair diagrams of snowflakes as thread diagrams.
-The figure on the right we see blobs highlighting four stitches in such a thread diagram.
+In the figure on the right we see blobs highlighting four stitches in such a thread diagram.
 The caption enumerates these stitches in the order they are worked.
 The R means we start working with the two pairs on the right.
 More examples (and explanations) on [MAE-gf](/MAE-gf/docs/snow-stitches/#examples).
@@ -39,11 +39,12 @@ Under construction
 ------------------
 
 The hexagons below match the squares above.
+Note that one of the black arrows has another direction.
 
 <script>{% include snow/hexa.js %}</script>
 {% include snow/hexa.html %}
 
-The form is not yet active. A click on a hexagon should assign the stitches in the text field and show the diagrams changes.
+The form is not yet active. A click on a hexagon should assign the stitches in the text field and show the changes in the template.
 Subsequently, follow the links to the _pairs from threads_ page to assign stitches for the actual snowflakes.
 Even without that last step it can be fun to play with configurations of snowflakes.
 
