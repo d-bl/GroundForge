@@ -22,9 +22,9 @@ The R means we start working with the two pairs on the right.
 More examples (and explanations) on [MAE-gf](/MAE-gf/docs/snow-stitches/#examples).
 
 ![img.png](capture-of-double-ring-pair.png)  
-The image above shows a reconstruction of a ground with a double ring pair.
+The image above shows a [reconstruction] of a ground with a double ring pair.
 See also the [color coding](/GroundForge-help/color-rules).
-The star in the center of the hexagonal ring is yet another snowflake.
+The star in the center of the hexagonal ring is just another snowflake.
 
 For now, you have to assign sixteen stitches one by one to this [template]:
 one for each corner of the pink squares shown below.
