@@ -19,6 +19,7 @@ which can become one of B3.47-B3.51 and more.
 
 The [template] requires to replace sixteen stitches:
 one for each corner of the squares shown on the right.
+The form below reduces that tedious work to four actions.
 The hexagons below match the squares above.
 Note that in both cases one element is flipped.
 
