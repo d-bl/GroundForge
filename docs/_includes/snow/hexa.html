@@ -1,5 +1,8 @@
 <head>
     <script src="hexa.js" type="text/javascript"></script>
+    <script src="../../js/d3.v4.min.js" type="text/javascript"></script>
+    <script src="../../js/showGraph.js" type="text/javascript"></script>
+    <script src="../../js/GroundForge-opt.js" type="text/javascript"></script>
     <!-- dirty trick to test stand alone,
          in markdown you have to include both js and html
      -->
@@ -27,58 +30,61 @@
             </marker>
         </defs>
         <path
+                style="opacity:0.3;fill:#ff0202;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Send-0)"
+                d="M 1e-5,22.677165 21.185619,35.017906"/>
+        <path
+                style="opacity:0.3;fill:#ff0202;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Send-0)"
+                d="M 26.185333,68.031508 47.710666,80.451192"/>
+        <path
                 style="fill:#ff0202;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Send-0)"
-                d="m 72.009683,18.897637 -9.8195,17.007874"/>
+                d="M 78.556013,22.677164 57.282376,35.080708"/>
+        <path
+                style="fill:#ff0202;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Send-0)"
+                d="M 26.185343,37.795276 47.262909,50.284152"/>
+        <path
+                style="fill:#ff0202;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Send-0)"
+                d="M 52.370683,52.913385 73.365035,64.915531"/>
+        <path
+                style="opacity:0.3;fill:#ff0202;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Send-0)"
+                d="M 26.185333,52.913386 4.4903859,65.33713"/>
+        <path
+                style="fill:#ff0202;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Send-0)"
+                d="m 26.185343,7.559055 21.328948,12.46637"/>
         <path
                 style="opacity:0.2;fill:#ff0202"
                 d="m 65.463353,15.118109 13.09266,7.559055 V 37.795275 L 65.463353,45.35433 52.370683,37.795275 V 22.677164 Z"
                 onclick="setHref(this.id, 'replacement','toDiagrams')" id="hexaNE"/>
         <path
-                style="fill:#ff0202;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Send-0)"
-                d="m 32.731663,34.015748 9.8195,17.007874"/>
-        <path
                 style="opacity:0.2;fill:#ff0202"
                 d="m 39.277993,30.23622 -13.09266,7.559055 v 15.118111 l 13.09266,7.559052 13.09267,-7.559052 V 37.795275 Z"
                 onclick="setHref(this.id, 'replacement', 'toDiagrams')" id="hexaCenter"/>
-        <path
-                style="fill:#ff0202;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Send-0)"
-                d="m 58.917013,49.133858 9.8195,17.00787"/>
         <path
                 style="opacity:0.2;fill:#ff0202"
                 d="m 65.463343,45.35433 -13.09266,7.559055 v 15.118113 l 13.09266,7.55905 13.09267,-7.55905 V 52.913385 Z"
                 onclick="setHref(this.id, 'replacement', 'toDiagrams')" id="hexaSE"/>
         <path
-                style="fill:#ff0202;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Send-0)"
-                d="m 32.731673,3.779528 9.8195,17.007874"/>
-        <path
                 style="opacity:0.2;fill:#ff0202"
                 d="m 39.278003,0 -13.09266,7.559055 v 15.118111 l 13.09266,7.559055 13.09267,-7.559055 V 7.559055 Z"
                 onclick="setHref(this.id, 'replacement', 'toDiagrams')" id="hexaN"/>
-        <path
-                style="opacity:0.3;fill:#ff0202;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Send-0)"
-                d="M 19.639,49.133859 9.8195,66.141728"/>
         <path
                 style="opacity:0.2;fill:#ff0202"
                 d="m 13.09267,45.354331 13.092663,7.559055 V 68.031498 L 13.09267,75.590548 0,68.031498 V 52.913386 Z"
                 onclick="setHref(this.id, 'replacement', 'toDiagrams')" id="hexaSW"/>
         <path
-                style="opacity:0.3;fill:#ff0202;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Send-0)"
-                d="m 32.731663,64.251978 9.8195,17.00787"/>
-        <path
                 style="opacity:0.2;fill:#ff0202"
                 d="m 39.277993,60.472448 -13.09266,7.55906 v 15.11811 l 13.09266,7.55905 13.09267,-7.55905 v -15.11811 z"
                 onclick="setHref(this.id, 'replacement', 'toDiagrams')" id="hexaS"/>
-        <path
-                style="opacity:0.3;fill:#ff0202;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Send-0)"
-                d="m 6.54634,18.897638 9.8195,17.007874"/>
         <path
                 style="opacity:0.2;fill:#ff0202"
                 d="M 13.09267,15.11811 1e-5,22.677165 v 15.118111 l 13.09266,7.559055 13.092673,-7.559055 V 22.677165 Z"
                 onclick="setHref(this.id, 'replacement', 'toDiagrams')" id="hexaNW"/>
     </svg>
+    <div id="pairs" style=" display: inline-block; width: 180px; height: 150px; overflow: auto; background: #ffffff"></div>
+    <div id="threads" style="display: inline-block; width: 280px; height: 200px; overflow: auto; background: #ffffff"></div>
+    <br>
     <button>
-        <a id="toDiagrams" target="_blank" href="https://d-bl.github.io/GroundForge/stitches?patchWidth=11&patchHeight=10&footside=b,-,b,-&tile=3217,1783,3248,1731,&headside=7,8,-,c&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=2&m1=llctt&e1=ctc&d1=rc&c1=tc&b1=lcrclc&a1=rrctt&m2=llctt&e2=ctc&d2=cr&c2=crclcr&b2=ct&e3=lc&d3=ctc&c3=cr&b3=ctc&a3=rrctt&m4=llctt&e4=cl&d4=ctc&c4=ctc&b4=lc">
-            to diagrams
+        <a id="toDiagrams" target="_blank" href="#">
+            to pairs from threads
         </a>
     </button>
 </form>

@@ -1,4 +1,4 @@
-const stitchesURL = "https://d-bl.github.io/GroundForge/stitches?";
+const stitchesURL = "https://d-bl.github.io/GroundForge/droste?";
 
 function setHref(hexaId, stitchesId, hrefId) {
     const hrefNode = document.getElementById(hrefId);
@@ -53,8 +53,26 @@ function setHref(hexaId, stitchesId, hrefId) {
         .from(q.entries())
         .map(([key, value]) => `${encodeURIComponent(key)}=${value.replace(/%2C/g, ',').replace(/%2D/g, '-')}`)
         .join('&');
-    console.log(newQ);
     hrefNode.setAttribute('href', stitchesURL + newQ);
+    diagrams(newQ);
+}
+
+function diagrams(q) {
+    console.log("--------"+q)
+    const config = TilesConfig(q);
+    showGraph('#threads', ThreadDiagram.create(NewPairDiagram.create(config)))
+    d3.select('#threads g').attr("transform","scale(0.5,0.5)")
+
+    var cfg = TilesConfig(q)
+    var zoom = 1.9
+    var itemMatrix = cfg.getItemMatrix
+
+    // dimensions for an A4
+    var width = 744
+    var height = 1052
+
+    var svg = PairSvg.render(itemMatrix, width, height, zoom)
+    d3.select('#pairs').html(svg)
 }
 
 function getQueryParams(url) {
@@ -83,8 +101,10 @@ function flip_b2p(id) {
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    const q = document.URL.split('?')[1];
-    if (q) {
-        document.getElementById('toDiagrams').setAttribute("href", stitchesURL + q);
+    var q = document.URL.split('?')[1];
+    if (!q) {
+        q = "patchWidth=11&patchHeight=10&footside=b,-,b,-&tile=3217,1783,3248,1731,&headside=7,8,-,c&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=2&m1=llctt&e1=ctc&d1=rc&c1=tc&b1=lcrclc&a1=rrctt&m2=llctt&e2=ctc&d2=cr&c2=crclcr&b2=ct&e3=lc&d3=ctc&c3=cr&b3=ctc&a3=rrctt&m4=llctt&e4=cl&d4=ctc&c4=ctc&b4=lc";
     }
+    document.getElementById('toDiagrams').setAttribute("href", stitchesURL + q);
+    diagrams(q);
 })

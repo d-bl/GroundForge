@@ -14,7 +14,9 @@
 
     <link rel="stylesheet" href="/{{ site.github.repository_name }}/assets/css/help.css" type="text/css">
     {% if page.javascript %}
-    <script src="{{ page.javascript }}"></script>
+        {% for javascript in page.javascript %}
+            <script src="/GroundForge/js/{{ javascript }}"></script>
+        {% endfor %}
     {% endif %}
 
     {% seo %}
