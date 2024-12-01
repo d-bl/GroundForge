@@ -3,12 +3,12 @@ layout: default
 title: Snowflakes
 ---
 
-A recipe for snowflake fun with a [template].
+A recipe for snowflake fun based on a [template].
 
 ![sample](sample.png?align=left)
 Babette posted her invention of a double ring pair around snowflakes.
 It is a variation of ground B4.1 in [Viele Gute Gründe] by Ulrike Volker-Löhr,
-Curiosity by the GroundForge team led to a recipe to generate all kinds of variations.
+Curiosity by the GroundForge team led to a recipe for all kinds of variations.
 
 ![](capture-extract.svg?align=right)
 The recipe boils down to replace three-pair spiders in a template and use the resulting thread diagram as pair diagram.
@@ -19,7 +19,7 @@ which can become one of B3.47-B3.51 and more.
 
 The [template] requires to replace sixteen stitches:
 one for each corner of the squares shown on the right.
-The form below reduces that tedious work to four actions.
+The form below reduces that task to four actions.
 The hexagons below match the squares above.
 Note that in both cases one element is flipped.
 

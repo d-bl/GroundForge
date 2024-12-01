@@ -1,22 +1,12 @@
-function flip_b2d(id) {
-    const n = document.getElementById(id);
-    n.value = n.value.toLowerCase().replace(/l/g,"R").replace(/r/g,"L").toLowerCase();
-    n.focus();
-}
-
-function flip_b2p(id) {
-    const n = document.getElementById(id);
-    n.value = n.value.toLowerCase().split("").reverse().join("")
-    n.focus()
-}
+const stitchesURL = "https://d-bl.github.io/GroundForge/stitches?";
 
 function setHref(hexaId, stitchesId, hrefId) {
     const hrefNode = document.getElementById(hrefId);
     const stitchArray = document.getElementById(stitchesId).value.toLowerCase().split(",");
     const nrOfStitches = stitchArray.length;
     if (nrOfStitches !== 4) {
-        alert("Sorry, replacement only works for 4 stitches in the text field "+stitchArray)
-        return
+        alert("Sorry, replacement only works for 4 stitches in the text field "+stitchArray);
+        return;
     }
     const q = getQueryParams(hrefNode.getAttribute("href"));
     switch (hexaId) {
@@ -64,7 +54,7 @@ function setHref(hexaId, stitchesId, hrefId) {
         .map(([key, value]) => `${encodeURIComponent(key)}=${value.replace(/%2C/g, ',').replace(/%2D/g, '-')}`)
         .join('&');
     console.log(newQ);
-    hrefNode.setAttribute('href', "https://d-bl.github.io/GroundForge/stitches?" + newQ);
+    hrefNode.setAttribute('href', stitchesURL + newQ);
 }
 
 function getQueryParams(url) {
@@ -79,3 +69,22 @@ function getQueryParams(url) {
     }
     return queryParams;
 }
+
+function flip_b2d(id) {
+    const n = document.getElementById(id);
+    n.value = n.value.toLowerCase().replace(/l/g, "R").replace(/r/g, "L").toLowerCase();
+    n.focus();
+}
+
+function flip_b2p(id) {
+    const n = document.getElementById(id);
+    n.value = n.value.toLowerCase().split("").reverse().join("");
+    n.focus();
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const q = document.URL.split('?')[1];
+    if (q) {
+        document.getElementById('toDiagrams').setAttribute("href", stitchesURL + q);
+    }
+})
