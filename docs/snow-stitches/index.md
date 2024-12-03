@@ -14,8 +14,8 @@ The [default](?) diagram reconstructs a double hexagonal ring pair with an arbit
 the sample shown on the left is invented by Babette.
 
 ![](capture-extract.svg?align=right)
-On the right the currently static template with four groups of stitches to replace.
-The top left square matches the center hexagon below.
+On the right an extract of the [default](?) template: four groups of stitches to replace.
+The top left group matches the center hexagon below.
 The faint arrows in the hexagons are duplicates of the dark ones, or the other way around.
 Note that one group starts with the right two  pairs, the others start left.
 [MAE-gf] has some examples for replacements and a recipe for more.
