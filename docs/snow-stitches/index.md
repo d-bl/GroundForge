@@ -5,6 +5,7 @@ javascript:
   - d3.v4.min.js
   - GroundForge-opt.js
   - showGraph.js
+  - nudgePairs.js
 ---
 
 ![sample](sample.png?align=left)
