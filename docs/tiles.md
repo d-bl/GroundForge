@@ -3,7 +3,7 @@ layout: default
 title: GroundForge - obsolete 
 ---
 
-This page has been split:
+In April 2023, this page has been split:
 
 * <a href="/GroundForge/pattern" id="pattern">pattern</a> - (re)assemble the pair diagram from scratch.
 * <a href="/GroundForge/stitches" id="stitches">stitches</a> - choose stitches on the pair diagram (with the new [color code]) to generate a thread diagram. 
