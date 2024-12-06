@@ -1,5 +1,5 @@
 function showGraph(containerId, diagram) {
-// copied from API/thread.html, added moveToNW by js/print.js
+// copied from API/thread.html, added moveToNW
 
     var container = d3.select(containerId)
 

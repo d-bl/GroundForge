@@ -11,34 +11,29 @@
 ### Features
 
 * [Icons](/GroundForge-help/Icons)
-* [Thread properties](/GroundForge-help/Thread-Properties) ![-](/GroundForge-help/images/toggle-thread.png)
 * [Drop/restore stitches](/GroundForge-help/Replace) ![-](/GroundForge-help/images/toggle-stitch.png)
 * [Tile layout](/GroundForge-help/Change-tiles) ![-](/GroundForge-help/images/brick-menu-icon.png)
-* [Save, refresh, undo](/GroundForge-help/Undo) ![-](/GroundForge/images/link.png) ![-](/GroundForge/images/wand.png)
+* [Reload](/GroundForge-help/Icons) ![-](/GroundForge/images/wand.png)
 * [Panel size](/GroundForge-help/Icons)
-  ![-](/GroundForge/images/size-inc.jpg)
-  ![-](/GroundForge/images/size-dec.jpg)
   ![-](/GroundForge/images/maximize.png)
   ![-](/GroundForge/images/reset-dimensions.png)
   ![-](/GroundForge/images/minimize.png)
-* [Animate](/GroundForge-help/Icons) ![-](/GroundForge/images/animate.png)
-* [Untangle](/GroundForge-help/untangle)
+* [Apply forces](/GroundForge-help/Icons) ![-](/GroundForge/images/animate.png)
 * [Download](/GroundForge-help/Download) ![-](/GroundForge/images/download.jpg)
-* [Print/PDF friendly](/GroundForge-help/print-pdf) ![-](/GroundForge/images/print.png)
 * Color codes, twist marks
     * [1 color per stitch](/GroundForge-help/Color-Code)
     * [up to 4 per stitch](/GroundForge-help/color-rules) ![-](/GroundForge/images/to-color-rules.png)
-    * [enumerate stitches](/GroundForge-help/Icons) ![-](/GroundForge/images/swatches.png)
 
 ### Tutorials
 
 * [Getting Started](/GroundForge-help/index)
-* [Create a pattern](/GroundForge-help/Advanced)
-* [Swatch Size](/GroundForge-help/Patch-Size) (rows/columns)
-* [Droste effect](/GroundForge-help/Droste-effect)
-* [Reshape pair diagrams](/GroundForge-help/Reshape-Patterns)
-* [Printed patterns to GF](/GroundForge-help/Reversed-engineering-of-patterns)
 * [Binche](/GroundForge-help/Binche) sampler
+* [Swatch Size](/GroundForge-help/Patch-Size) (rows/columns)
+* [Reshape pair diagrams](/GroundForge-help/Reshape-Patterns)
+* Advanced
+  * [Create a pattern](/GroundForge-help/Advanced)
+  * [Printed patterns to GF](/GroundForge-help/Reversed-engineering-of-patterns)
+  * [Droste effect](/GroundForge-help/Droste-effect)
 
 ### Notes
 
