@@ -8,22 +8,26 @@ javascript:
   - nudgePairs.js
 ---
 
+Compositions of three/six-pair connections.
+==========================================
+
 ![sample](sample.png?align=left)
-This convenience form lets you replace groups of stitches at once.
+A thread diagram of a three pair connection can serve as a pair diagram for a six-pair connection alias snowflake.
+A convenience form lets you replace the stitches that composes a three pair connection at once.
 
 The [default](?) diagram reconstructs a double hexagonal ring pair with an arbitrary snowflake,
 the sample shown on the left is invented by Babette.
 
 ![](capture-extract.svg?align=right)
-On the right an extract of the [default](?) template: four groups of stitches to replace.
-The top left group matches the center hexagon below.
-The faint arrows in the hexagons are duplicates of the dark ones, or the other way around.
-Note that one group starts with the right two  pairs, the others start left.
+On the right the first repeat of the [default](?) template: four groups of stitches to replace with the content of the text field.
+The colors match the hexagons below.
+Note that the light blue group starts with the right two  pairs, the others start left.
 [MAE-gf] has some examples for replacements and a recipe for more.
-See also the color code [legend]. 
+The pair diagram has a [color code] that caters for unorthodox stitches. 
+Otherwise, corresponding elements in different diagrams have the same color. 
 
 [MAE-gf]: /MAE-gf/docs/snow-stitches/#examples
-[legend]: /GroundForge-help/color-rules
+[color code]: /GroundForge-help/color-rules
 
 Click one of the hexagons to apply the stitches in the text field.
 
@@ -37,6 +41,5 @@ Challenge for the form developer:
 Support a variety of replacement stitch counts and starting sides.
 For that purpose it should be possible to combine any of the following elements into a valid template
 and keep track of counts and directions.
-With up to six stitches to construct a snowflake, we would get 256 templates.
 
 ![](plaits.svg)
