@@ -8,28 +8,28 @@ javascript:
   - nudgePairs.js
 ---
 
-Compositions of 3/6-pair connections.
-=====================================
+3/6-pair connections
+====================
 
 ![sample](sample.png?align=left)
 A thread diagram of a three pair connection can serve as a pair diagram for a six-pair connection alias snowflake.
-A convenience form lets you replace the stitches that composes a three pair connection at once.
+Each connection is composed with a group of two pair stitches. A convenience form lets you replace such a group of at once.
 
-The [default](?) diagram reconstructs a double hexagonal ring pair with an arbitrary snowflake,
-the sample shown on the left is invented by Babette.
+The [default](?) diagram reconstructs a double hexagonal ring pair with an arbitrary snowflake.
+This double ring is invented by Babette, a sample is shown on the left.
 
 ![](capture-extract.svg?align=right)
-On the right the first repeat of the [default](?) template: four groups of stitches to replace with the content of the text field.
-The colors match the hexagons below.
-Note that the light blue group starts with the right two  pairs, the others start left.
-[MAE-gf] has some examples for replacements and a recipe for more.
-The pair diagram has a [color code] that caters for unorthodox stitches. 
-Otherwise, corresponding elements in different diagrams have the same color. 
+On the right the first repeat of the [default](?) template: 
+four groups of stitches to replace with the content of the text field.
+The colors match the hexagons below and the thread diagram.
+Note that the light blue group starts with the left two  pairs, the others start right.
+The pair diagram has a [color code] that caters for unorthodox stitches.
+
+[MAE-gf] has some examples for replacements to put in the text field and a recipe for more.
+Click one of the hexagons to apply the stitches in the text field.
 
 [MAE-gf]: /MAE-gf/docs/snow-stitches/#examples
 [color code]: /GroundForge-help/color-rules
-
-Click one of the hexagons to apply the stitches in the text field.
 
 <script>{% include snow/hexa.js %}</script>
 {% include snow/hexa.html %}
