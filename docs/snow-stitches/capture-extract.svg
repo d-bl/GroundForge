@@ -24,12 +24,12 @@
      showguides="false"
      inkscape:zoom="7.2173658"
      inkscape:cx="42.328463"
-     inkscape:cy="58.054422"
-     inkscape:window-width="2256"
-     inkscape:window-height="1435"
-     inkscape:window-x="0"
-     inkscape:window-y="41"
-     inkscape:window-maximized="1"
+     inkscape:cy="58.123699"
+     inkscape:window-width="1473"
+     inkscape:window-height="970"
+     inkscape:window-x="704"
+     inkscape:window-y="286"
+     inkscape:window-maximized="0"
      inkscape:current-layer="svg2">
     <inkscape:grid
        type="axonomgrid"
@@ -361,27 +361,28 @@
      d="m 86.948072,71.068546 -2.31657,13.29241 -2.31657,13.2924"
      style="fill:none;stroke:#000000;stroke-width:1.9px" />
   <circle
-     style="opacity:0.5;fill:#f4a582;fill-opacity:1;stroke:#f4a582;stroke-width:5.70681;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+     style="opacity:0.75;fill:#0571b0;fill-opacity:1;stroke:#0571b0;stroke-width:5.70681;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
      id="circle3304"
      cx="18.318142"
      cy="24.12385"
      r="13.95793" />
-  <circle
-     style="opacity:0.5;fill:#f4a582;fill-opacity:1;stroke:#f4a582;stroke-width:5.70681;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+  <ellipse
+     style="opacity:0.75;fill:#ca0020;fill-opacity:1;stroke:#ca0020;stroke-width:5.70681;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
      id="circle5000"
      cx="26.732494"
      cy="69.69297"
-     r="13.95793" />
+     rx="13.958"
+     ry="13.95793" />
   <circle
-     style="opacity:0.5;fill:#f4a582;fill-opacity:1;stroke:#f4a582;stroke-width:5.70681;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+     style="opacity:0.75;fill:#92c5de;fill-opacity:1;stroke:#92c5de;stroke-width:5.70681;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
      id="circle5002"
-     cx="71.934998"
-     cy="90.756996"
+     cx="70.82206"
+     cy="27.106375"
      r="13.95793" />
   <circle
-     style="opacity:0.5;fill:#f4a582;fill-opacity:1;stroke:#f4a582;stroke-width:5.70681;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+     style="opacity:0.75;fill:#f4a582;fill-opacity:1;stroke:#f4a582;stroke-width:5.70681;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
      id="circle5004"
-     cx="71.159363"
-     cy="26.888437"
+     cx="71.914917"
+     cy="92.08168"
      r="13.95793" />
 </svg>
