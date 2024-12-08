@@ -8,8 +8,8 @@ javascript:
   - nudgePairs.js
 ---
 
-Compositions of three/six-pair connections.
-==========================================
+Compositions of 3/6-pair connections.
+=====================================
 
 ![sample](sample.png?align=left)
 A thread diagram of a three pair connection can serve as a pair diagram for a six-pair connection alias snowflake.
