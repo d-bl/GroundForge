@@ -4,7 +4,6 @@ const stitchesURL = "https://d-bl.github.io/GroundForge/stitches?";
 function setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
     const hrefNode = document.getElementById(drosteHrefId);
     const stitchArray = document.getElementById(stitchesId).value.toLowerCase().split(",");
-    const startsLeft = document.getElementById(startId).value === "left";
     const nrOfStitches = stitchArray.length;
     if (nrOfStitches !== 4) {
         alert("Sorry, replacement only works for 4 stitches in the text field " + stitchArray);
@@ -13,7 +12,9 @@ function setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
     const q = getQueryParams(hrefNode.getAttribute("href"));
 
     function replaceTile(row, col) {
-        // return; // TODO make elements of plaits.svg fit together, remove arrows from hexagons
+        const htmlElement = document.getElementById(startId);
+        if (!htmlElement) return; // no start pairs
+        const startsLeft = htmlElement.value === "left";
         const matrix = q.get("tile").split(",").map(str => str.split(''));
         let endsLeft = matrix[(row + 3) % 4] === '1'; // the one above
         if (startsLeft) {
@@ -54,22 +55,22 @@ function setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
         //         d1,e1
         case "hexaCenter":
             replaceStitches(["c1", "b1", "c2", "b5"]);
-            // replaceTile(0, 0);
+            replaceTile(0, 0);
             break;
         case "hexaNW":
         case "hexaSE":
             replaceStitches(["d5", "e5", "d6", "e9"]);
-            // replaceTile(1, 2);
+            replaceTile(1, 2);
             break;
         case "hexaN":
         case "hexaS":
             replaceStitches(["b9", "c9", "c10", "b13"]);
-            // replaceTile(2, 0);
+            replaceTile(2, 0);
             break;
         case "hexaNE":
         case "hexaSW":
             replaceStitches(["e13", "d13", "e14", "d1"]);
-            // replaceTile(3, 2);
+            replaceTile(3, 2);
             break;
     }
     let newQ = Array
