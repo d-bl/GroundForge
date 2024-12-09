@@ -118,10 +118,12 @@ function diagrams(q) {
         nudgePairs('#pairs', cfg.totalCols * 6, cfg.totalRows * 6)
         d3.selectAll(".bobbin").remove();
 
-        paintThreadIntersections(/[bc][1-5][0-9]$/, '#0571b0ff');
-        paintThreadIntersections(/[de][5-9][0-9]$/, '#92c5deff');
-        paintThreadIntersections(/[bc](9|(1[0-3]))[0-9]$/, '#ca0020ff');
-        paintThreadIntersections(/[de](1|(1[3-6]))[0-9]$/, '#f4a582ff');
+        if (!Element.prototype.matches) {
+            paintThreadIntersections(/[bc][1-5][0-9]$/, '#0571b0ff');
+            paintThreadIntersections(/[de][5-9][0-9]$/, '#92c5deff');
+            paintThreadIntersections(/[bc](9|(1[0-3]))[0-9]$/, '#ca0020ff');
+            paintThreadIntersections(/[de](1|(1[3-6]))[0-9]$/, '#f4a582ff');
+        }
     }, 0);
 }
 
