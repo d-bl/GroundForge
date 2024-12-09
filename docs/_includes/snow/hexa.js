@@ -118,18 +118,16 @@ function diagrams(q) {
         nudgePairs('#pairs', cfg.totalCols * 6, cfg.totalRows * 6)
         d3.selectAll(".bobbin").remove();
 
-        if (!Element.prototype.matches) {
-            paintThreadIntersections(/[bc][1-5][0-9]$/, '#0571b0ff');
-            paintThreadIntersections(/[de][5-9][0-9]$/, '#92c5deff');
-            paintThreadIntersections(/[bc](9|(1[0-3]))[0-9]$/, '#ca0020ff');
-            paintThreadIntersections(/[de](1|(1[3-6]))[0-9]$/, '#f4a582ff');
-        }
+        paintThreadIntersections(/[bc][1-5][0-9]$/, '#0571b0ff');
+        paintThreadIntersections(/[de][5-9][0-9]$/, '#92c5deff');
+        paintThreadIntersections(/[bc](9|(1[0-3]))[0-9]$/, '#ca0020ff');
+        paintThreadIntersections(/[de](1|(1[3-6]))[0-9]$/, '#f4a582ff');
     }, 0);
 }
 
 function getQueryParams(url) {
     const queryParams = new Map();
-    const queryString = url.split('?')[1];
+    const queryString = url.split(/[?#]/)[1];
     if (queryString) {
         const pairs = queryString.split('&');
         pairs.forEach(pair => {
@@ -153,7 +151,7 @@ function flip_b2p(id) {
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    var q = document.URL.split('?')[1];
+    var q = document.URL.split(/[?#]/)[1];
     if (!q) {
         q = "patchWidth=12&patchHeight=35&footside=r,x,x,x,x,4,r,r&tile=31rx,17x-,rxx-,rxx-,rx83,-w48,-xxr,-xxr,31xr,17-x,rx-x,rx-x,rx31,-w17,-xrx,-xrx,&headside=8,r,r,r,r,x,x,x&shiftColsSW=0&shiftRowsSW=16&shiftColsSE=4&shiftRowsSE=8&d1=rc&c1=tc&b1=lcrclc&a1=rrctt&c2=crclcr&n5=llctt&d5=cr&b5=ct&e9=lc&c9=cr&e13=cl&b13=lc";
     }
