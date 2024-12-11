@@ -2,43 +2,79 @@ const drosteURL = "https://d-bl.github.io/GroundForge/droste?";
 const stitchesURL = "https://d-bl.github.io/GroundForge/stitches?";
 
 function setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
+    function parseMatrix(str) {
+        return str.split(',').map(row => row.split(''));
+    }
+    function matrixToString(matrix) {
+        return matrix.map(row => row.join('')).join(',');
+    }
     const hrefNode = document.getElementById(drosteHrefId);
     const stitchArray = document.getElementById(stitchesId).value.toLowerCase().split(",");
     const nrOfStitches = stitchArray.length;
-    if (nrOfStitches !== 4) {
-        alert("Sorry, replacement only works for 4 stitches in the text field " + stitchArray);
-        return;
-    }
     const q = getQueryParams(hrefNode.getAttribute("href"));
+    const startsLeft = document.getElementById("left").checked;
 
-    function replaceTile(row, col) {
-        const htmlElement = document.getElementById(startId);
-        if (!htmlElement) return; // no start pairs
-        const startsLeft = htmlElement.value === "left";
-        const matrix = q.get("tile").split(",").map(str => str.split(''));
-        let endsLeft = matrix[(row + 3) % 4] === '1'; // the one above
-        if (startsLeft) {
-            matrix[row][col] = (endsLeft ? '8' : '6');
-            matrix[row][col + 1] = '3';
-            matrix[(row + 1) % 4][col] = '4';
-            matrix[(row + 1) % 4][col + 1] = '8';
-            // TODO matrix[(row + 2) % 4][col + (1)] = '8';
-        } else {
-            matrix[row][col] = '3';
-            matrix[row][col + 1] = (endsLeft ? '2' : '4');
-            matrix[(row + 1) % 4][col] = '1';
-            matrix[(row + 1) % 4][col + 1] = '7';
-            // TODO matrix[(row + 2) % 4][col + (1)] = '4';
-        }
-        q.set("tile", matrix.map(row => row.join('')).join(','));
+    const replacement = parseMatrix(startsLeft ? "x-,x-,x-,83,48,xr,xr,xr" : "-x,-x,-x,31,17,rx,rx,rx");
+    // replace xr/rx rows with previous row as far as needed
+    const max = 3 + Math.ceil(nrOfStitches / 2)
+    for (let i = 5; i < max; i++) {
+        replacement[i] = replacement[i-1];
     }
+    console.log("replacement: ", nrOfStitches, max, matrixToString(replacement));
 
     function replaceStitches(stitchIds) {
+        if (!startsLeft) {
+            for (let i = 0; i < stitchIds.length - 1; i += 2) {
+                [stitchIds[i], stitchIds[i + 1]] = [stitchIds[i + 1], stitchIds[i]];
+            }
+        }
         const minLength = Math.min(stitchIds.length, stitchArray.length);
         var i = 0;
         for (; i < minLength; i++) {
             q.set(stitchIds[i], stitchArray[i]);
         }
+        if (startsLeft) {
+            q.set(stitchIds[10], stitchArray[stitchArray.length - 1]);
+        } else {
+            q.set(stitchIds[9], stitchArray[stitchArray.length - 1]);
+        }
+    }
+
+    function replaceTile(row, col) {
+        const matrix = parseMatrix(q.get("tile"));
+        // replace the sub-matrix
+        for (let i = 0; i < 8; i++) {
+            for (let j = 0; j < 2; j++) {
+                matrix[(row + i) % 16][(col + j)] = replacement[i][j];
+            }
+        }
+        function reconnect (row, col) {
+            const slice1 = matrix[(row + 15) % 16].slice(col, col + 2);
+            const slice2 = matrix[row % 16].slice(col, col + 2);
+            const transition = matrixToString([slice1, slice2]);
+            console.log("reconnect: ", row, col, transition, startsLeft, hexaId, matrixToString(replacement));
+            switch (transition) {
+                case "rx,-x":
+                case "17,-x":
+                    matrix[row][col+1] = "w";
+                    break;
+                case "xr,x-":
+                case "48,x-":
+                    matrix[row][col] = "y";
+                    break;
+                case "rx,y-":
+                case "17,y-":
+                    matrix[row][col] = "x";
+                    break;
+                case "xr,-w":
+                case "48,-w":
+                    matrix[row][col+1] = "x";
+                    break;
+            }
+        }
+        reconnect(row, col);
+        reconnect((row+8)%16, col);
+        q.set("tile", matrixToString(matrix))
     }
 
     switch (hexaId) {
@@ -54,23 +90,23 @@ function setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
         //           S                  NE/SW
         //         d1,e1
         case "hexaCenter":
-            replaceStitches(["c1", "b1", "c2", "b5"]);
-            replaceTile(0, 0);
+            replaceTile(13, 0);
+            replaceStitches(["b1", "c1", "b2", "c2", "b3", "c3", "b4", "c4", "b5", "c5"]);
             break;
         case "hexaNW":
         case "hexaSE":
-            replaceStitches(["d5", "e5", "d6", "e9"]);
             replaceTile(1, 2);
+            replaceStitches(["d5", "e5", "d6", "e6", "d7", "e7", "d8", "e8", "d9", "e9"]);
             break;
         case "hexaN":
         case "hexaS":
-            replaceStitches(["b9", "c9", "c10", "b13"]);
-            replaceTile(2, 0);
+            replaceTile(5, 0);
+            replaceStitches(["b9", "c9", "b10", "c10", "b11", "c11", "b12", "c12", "b13", "c13"]);
             break;
         case "hexaNE":
         case "hexaSW":
-            replaceStitches(["e13", "d13", "e14", "d1"]);
-            replaceTile(3, 2);
+            replaceTile(9, 2);
+            replaceStitches(["d13", "e13", "d14", "e14", "d15", "e15", "d16", "e16", "d1", "e1"]);
             break;
     }
     let newQ = Array

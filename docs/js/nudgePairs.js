@@ -70,10 +70,10 @@ function nudgePairs(containerId, cx, cy) {
   // final position of diagram
 
   function moveToNW() {
-      console.log(new Date().getMilliseconds())
+      // console.log(new Date().getMilliseconds())
       var x = nodeData.reduce(minX).x - 3
       var y = nodeData.reduce(minY).y - 3
-      console.log(`minX = ${x}; minY = ${y}`)
+      // console.log(`minX = ${x}; minY = ${y}`)
       function moveNode(jsNode) { return 'translate('+(jsNode.x-x)+','+(jsNode.y-y)+')' }
       function drawPath(jsLink) {
           var s = jsLink.source
@@ -83,7 +83,7 @@ function nudgePairs(containerId, cx, cy) {
       }
       links.attr("d", drawPath);
       nodes.attr("transform", moveNode);
-      console.log(new Date().getMilliseconds())
+      // console.log(new Date().getMilliseconds())
   }
   function minX (min, node) { return min.x < node.x ? min : node }
   function minY (min, node) { return min.y < node.y ? min : node }

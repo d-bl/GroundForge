@@ -10,12 +10,12 @@
 </head>
 
 <form onsubmit="return false">
-<!--    <label for="start_pairs">Start with the two pairs on the</label>-->
-<!--    <select id="start_pairs">-->
-<!--        <option value="left" selected>left</option>-->
-<!--        <option value="right">right</option>-->
-<!--    </select>-->
-<!--    <br>-->
+    Start with the two pairs on the
+    <input type="radio" id="left" name="start_pairs" value="left" checked>
+    <label for="left">Left</label>
+    <input type="radio" id="right" name="start_pairs" value="right">
+    <label for="right">Right</label>
+    <br>
     <input id="replacement" value="tc,rclcrc,clcrcl,ct" spellcheck="false">
     <span style="display: inline-block">
     flip:
