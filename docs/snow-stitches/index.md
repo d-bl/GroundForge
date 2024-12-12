@@ -27,9 +27,11 @@ The pair diagram has a [color code] that caters for unorthodox stitches.
 
 [MAE-gf] has some examples for replacements to put in the text field and a recipe for more.
 Click one of the hexagons to apply the stitches in the text field.
+An odd number of stitches needs a [workaround].
 
 [MAE-gf]: /MAE-gf/docs/snow-stitches/#examples
 [color code]: /GroundForge-help/color-rules
+[workaround]: https://github.com/d-bl/GroundForge/blob/master/docs/_includes/snow/README.md#odd-number-of-stitches
 
 <script>{% include snow/hexa.js %}</script>
 {% include snow/hexa.html %}
@@ -37,4 +39,3 @@ Click one of the hexagons to apply the stitches in the text field.
 When satisfied with the result, you can follow the link to the _pairs from threads_ page to assign stitches for the actual snowflakes.
 Even without that last step it can be fun to play with configurations of snowflakes.
 
-Work around for an odd number of stitches [here](https://github.com/d-bl/GroundForge/blob/master/docs/_includes/snow/README.md#odd-number-of-stitches)
