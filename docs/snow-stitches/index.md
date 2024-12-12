@@ -36,10 +36,3 @@ Click one of the hexagons to apply the stitches in the text field.
 
 When satisfied with the result, you can follow the link to the _pairs from threads_ page to assign stitches for the actual snowflakes.
 Even without that last step it can be fun to play with configurations of snowflakes.
-
-Challenge for the form developer:  
-Support a variety of replacement stitch counts and starting sides.
-For that purpose it should be possible to combine any of the following elements into a valid template
-and keep track of counts and directions.
-
-![](plaits.svg)
