@@ -14,6 +14,17 @@ function setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
     const q = getQueryParams(hrefNode.getAttribute("href"));
     const startsLeft = document.getElementById("left").checked;
 
+    switch (stitchArray.length) {
+        case 4:
+        case 6:
+        case 8:
+        case 10:
+            break;
+        default:
+            alert("Please enter 4, 6, 8 or 10 stitches.");
+            return;
+    }
+
     const replacement = parseMatrix(startsLeft ? "x-,x-,x-,83,48,xr,xr,xr" : "-x,-x,-x,31,17,rx,rx,rx");
     // replace xr/rx rows with previous row as far as needed
     const max = 3 + Math.ceil(nrOfStitches / 2)
@@ -23,21 +34,24 @@ function setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
     console.log("replacement: ", nrOfStitches, max, matrixToString(replacement));
 
     function replaceStitches(stitchIds) {
-        if (!startsLeft) {
-            for (let i = 0; i < stitchIds.length - 1; i += 2) {
-                [stitchIds[i], stitchIds[i + 1]] = [stitchIds[i + 1], stitchIds[i]];
+        const ids = [];
+        if (startsLeft) {
+            for (let i = 0; i < stitchIds.length ; i += 1) {
+                ids[i] = stitchIds[i];
+            }
+        } else {
+            for (let i = 0; i < stitchIds.length ; i += 2) {
+                ids[i] = stitchIds[i + 1];
+                ids[i+1] = stitchIds[i];
             }
         }
-        const minLength = Math.min(stitchIds.length, stitchArray.length);
-        var i = 0;
-        for (; i < minLength; i++) {
-            q.set(stitchIds[i], stitchArray[i]);
+        if ((stitchArray.length % 2) === 1)
+            stitchArray[stitchArray.length] = '-';
+        const minLength = Math.min(ids.length, stitchArray.length);
+        for (let i = 0; i < minLength; i++) {
+            q.set(ids[i], stitchArray[i]);
         }
-        if (startsLeft) {
-            q.set(stitchIds[10], stitchArray[stitchArray.length - 1]);
-        } else {
-            q.set(stitchIds[9], stitchArray[stitchArray.length - 1]);
-        }
+        q.set(ids[9], stitchArray[stitchArray.length - 1]);
     }
 
     function replaceTile(row, col) {
@@ -78,17 +92,6 @@ function setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
     }
 
     switch (hexaId) {
-        // S and Z represent the working orders of the stitches
-        //
-        // b1,c1
-        //   S               center
-        // b2,c2   d2,e2
-        //           Z                  SE/NW
-        // b3,c3   d3,e3
-        //   S               N/S
-        // b4,c4   d4,e4
-        //           S                  NE/SW
-        //         d1,e1
         case "hexaCenter":
             replaceTile(13, 0);
             replaceStitches(["b1", "c1", "b2", "c2", "b3", "c3", "b4", "c4", "b5", "c5"]);
