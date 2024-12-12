@@ -8,8 +8,8 @@ javascript:
   - nudgePairs.js
 ---
 
-3/6-pair connections
-====================
+three/six-pair connections
+==========================
 
 ![sample](sample.png?align=left)
 A thread diagram of a three pair connection can serve as a pair diagram for a six-pair connection alias snowflake.
@@ -36,3 +36,5 @@ Click one of the hexagons to apply the stitches in the text field.
 
 When satisfied with the result, you can follow the link to the _pairs from threads_ page to assign stitches for the actual snowflakes.
 Even without that last step it can be fun to play with configurations of snowflakes.
+
+Work around for an odd number of stitches [here](https://github.com/d-bl/GroundForge/blob/master/docs/_includes/snow/README.md#odd-number-of-stitches)
