@@ -12,8 +12,10 @@ three/six-pair connections
 ==========================
 
 ![sample](sample.png?align=left)
-A thread diagram of a three pair connection can serve as a pair diagram for a six-pair connection alias snowflake.
-Each connection is composed with a group of two pair stitches. A convenience form lets you replace such a group of at once.
+A thread diagram of a three pair connection can serve as a 
+pair diagram for a six-pair connection alias snowflake.
+Each connection is composed with a group of two pair stitches.
+A convenience form lets you replace such a group at once.
 
 The [default](?) diagram reconstructs a double hexagonal ring pair with an arbitrary snowflake.
 This double ring is invented by Babette, a sample is shown on the left.

@@ -14,7 +14,7 @@ the blue items in and beneath the tile are fixed to properly connect the tiles.
 The black part of the diagram becomes the final pattern definition, 
 the grey parts are repetitions.
 
-function setHref.replaceStites
+function setHref.replaceStitches
 ------------------------------
 
 The pair diagram collapses the x/r elements into single lines.
@@ -24,7 +24,12 @@ the black dots in the right diagram, not next to the last blue stitch.
 Odd number of stitches
 -----------------------
 
-Workaround: add additional twists for the legs. 
-This may mean unwanted crossed legs when using the thread diagram as pair diagram for the snowflakes. 
+Workaround: add twists for the legs.  
+Add either left or right twists to the last stitch 
+and make the number of stitches even with a "stitch" that just twists.
+This approach is highlighted in the text field of the screenshot below.
+
+The additional twists may cause unwanted crossed legs when using the thread diagram as pair diagram for the snowflakes.
+Another option might be to split the last stitch in two.
 
 ![](additional-twists.png)

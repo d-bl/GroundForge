@@ -5,6 +5,7 @@ main div {
     border: solid 1px #DDD;
     margin-top: 3px;
 }
+aside, #sidebar { display: none }
 #whiting {display: none; }
 input { display: none }
 #threadColor, form { display: inline-block }
