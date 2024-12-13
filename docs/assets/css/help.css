@@ -5,6 +5,9 @@ Header { background: #3679cd url(../images/header-bg-left.png) top right repeat;
         background-color: #3679cd
     }
 }
+@media only print {
+    aside, #sidebar { display: none }
+}
 header a{color: #fff}
 header a:hover {color: #9ddcff}
 .deprecated { background: darkorange; padding: 2px; }
