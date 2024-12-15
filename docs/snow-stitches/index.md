@@ -30,7 +30,7 @@ The colors match the hexagons below and the thread diagram.
 The pair diagram has a [color code] that caters for unorthodox stitches.
 
 Click one of the hexagons to apply the stitches in the text field.
-You can enter up to 10 stitches.
+We support up to 10 stitches.
 An odd number of stitches (minimal three) needs a [workaround].
 Just a few recipes for the form [here](/MAE-gf/docs/snow-stitches/563412-145236.svg)
 and [here](/MAE-gf/docs/misca#3-paired-join),
