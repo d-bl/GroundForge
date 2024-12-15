@@ -22,7 +22,7 @@ This double ring is invented by Babette, a sample is shown on the left.
 
 ![](capture-extract.svg?align=right)
 On the right the first repeat of the [default](?) template: 
-four groups of stitches, you can replace them one by one through the form.
+four groups of stitches with three pairs, you can replace them one by one through the form.
 The colors match the hexagons below and the thread diagram.
 The pair diagram has a [color code] that caters for unorthodox stitches.
 
