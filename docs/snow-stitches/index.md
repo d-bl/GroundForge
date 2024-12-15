@@ -22,14 +22,15 @@ This double ring is invented by Babette, a sample is shown on the left.
 
 ![](capture-extract.svg?align=right)
 On the right the first repeat of the [default](?) template: 
-four groups of stitches, you can replace each with the content of the text field.
+four groups of stitches, you can replace them one by one through the form.
 The colors match the hexagons below and the thread diagram.
-Note that (in this initial example) the light blue group starts with the left two  pairs, the others start right.
 The pair diagram has a [color code] that caters for unorthodox stitches.
 
-[MAE-gf] has some examples for replacements to put in the text field and a recipe for more.
 Click one of the hexagons to apply the stitches in the text field.
 An odd number of stitches needs a [workaround].
+Just a few recipes for the form [here](/MAE-gf/docs/snow-stitches/563412-145236.svg)
+and [here](/MAE-gf/docs/misca#3-paired-join),
+we suggest to create and collect your own [recipes](/MAE-gf/docs/snow-stitches/#pair-diagrams-interpreted-as-thread-diagrams-with-blobs).
 
 [MAE-gf]: /MAE-gf/docs/snow-stitches/#examples
 [color code]: /GroundForge-help/color-rules
@@ -43,6 +44,6 @@ When satisfied with the result, you can follow the link to the _pairs from threa
 Even without that last step it can be fun to play with configurations of snowflakes.
 
 Links in a [saved PDF] may lead you back to the _stitches_ or _droste_ page. 
-Change that part in the address bar to _snow_stitches_ to return to this page.
-This will only work for patterns created on this page.
+For patterns created by this page, you can replace that part in the address bar
+with _snow_stitches_ to return to this page.
 
