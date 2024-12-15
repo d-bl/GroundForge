@@ -10,19 +10,19 @@
 </head>
 
 <form onsubmit="return false">
+    <input id="replacement" value="tc,rclcrc,clcrcl,ct" spellcheck="false">
+    <span style="display: inline-block">
+        flip:
+        <button onclick="flip_b2d('replacement')">&harr;</button>
+        <button onclick="flip_b2p('replacement')">&varr;</button>
+        <button onclick="flip_b2d('replacement');flip_b2p('replacement')">both</button>
+    </span>
+    <br>
     Start with the two pairs on the
     <input type="radio" id="left" name="start_pairs" value="left" checked>
     <label for="left">Left</label>
     <input type="radio" id="right" name="start_pairs" value="right">
     <label for="right">Right</label>
-    <br>
-    <input id="replacement" value="tc,rclcrc,clcrcl,ct" spellcheck="false">
-    <span style="display: inline-block">
-    flip:
-    <button onclick="flip_b2d('replacement')">&harr;</button>
-    <button onclick="flip_b2p('replacement')">&varr;</button>
-    <button onclick="flip_b2d('replacement');flip_b2p('replacement')">both</button>
-</span>
     <br>
 
     <svg id="svg2" width="78.556015" height="90.708672" xmlns="http://www.w3.org/2000/svg">

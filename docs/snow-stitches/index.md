@@ -14,8 +14,8 @@ three/six-pair connections
 ![sample](sample.png?align=left)
 On the left a sample of lace by Babette.
 She invented a double hexagonal ring pair around a snowflake.
-This is a variation on snowflakes in a Paris ground.
 The intersections of the double ring pairs are in fact compact snowflakes.
+This inspired to explore a mix of snowflakes in general. 
 
 The pair diagram of a six pair snowflake can be interpreted
 as a thread diagram of a three pair connection. 
