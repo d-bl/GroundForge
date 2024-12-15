@@ -9,7 +9,7 @@ function setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
         return matrix.map(row => row.join('')).join(',');
     }
     const hrefNode = document.getElementById(drosteHrefId);
-    const stitchArray = document.getElementById(stitchesId).value.toLowerCase().split(",");
+    const stitchArray = document.getElementById(stitchesId).value.toLowerCase().replaceAll(' ','').split(",");
     const nrOfStitches = stitchArray.length;
     const q = getQueryParams(hrefNode.getAttribute("href"));
     const startsLeft = document.getElementById("left").checked;
