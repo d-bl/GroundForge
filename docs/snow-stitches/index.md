@@ -34,7 +34,8 @@ You can enter up to 10 stitches.
 An odd number of stitches (minimal three) needs a [workaround].
 Just a few recipes for the form [here](/MAE-gf/docs/snow-stitches/563412-145236.svg)
 and [here](/MAE-gf/docs/misca#3-paired-join),
-we suggest to create and collect your own [recipes](/MAE-gf/docs/snow-stitches/#pair-diagrams-interpreted-as-thread-diagrams-with-blobs).
+we suggest to [create](/MAE-gf/docs/snow-stitches/#pair-diagrams-interpreted-as-thread-diagrams-with-blobs)
+and collect your own recipes.
 
 [MAE-gf]: /MAE-gf/docs/snow-stitches/#examples
 [color code]: /GroundForge-help/color-rules
