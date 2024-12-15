@@ -42,6 +42,7 @@ An odd number of stitches needs a [workaround].
 When satisfied with the result, you can follow the link to the _pairs from threads_ page to assign stitches for the actual snowflakes.
 Even without that last step it can be fun to play with configurations of snowflakes.
 
-Links in a [saved PDF] lead you back to the _stitches_ or _droste_ page. 
+Links in a [saved PDF] may lead you back to the _stitches_ or _droste_ page. 
 Change that part in the address bar to _snow_stitches_ to return to this page.
+This will only work for patterns created on this page.
 
