@@ -38,7 +38,7 @@ function setLinks(level){
         .join('&') + `&${key}=${value}`
     console.log('new link: '+l)
     document.getElementById('to_self').href = l
-    var source = window.location.search.replace(/.*[source=]/,'').replace(/&.*/,'')
+    var source = window.location.search.replace(/.*source=/,'').replace(/&.*/,'')
     if (!source)
         source = 'stitches'
     document.getElementById('to_stitches').href = l.replace('droste.html',source)
