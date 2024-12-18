@@ -48,7 +48,7 @@ The following links (work in progress) assign a recipe to the form:<!-- true: st
 ring:
 [╱](javascript:recipe('cl,ctc,ctcrrr,rcttt',false)) &nbsp;
 [│](javascript:recipe('cr,ctc,ctcrtt,lcttt',false)) &nbsp;
-[╲](javascript:recipe('cr,ctc,ctclll,lcttt',true),
+[╲╲](javascript:recipe('cr,ctc,ctclll,lcttt',true),
 weaving [4x4](javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)).
 We have more [here](/MAE-gf/docs/snow-stitches/#examples)
 and [here](/MAE-gf/docs/misca#3-paired-join).
