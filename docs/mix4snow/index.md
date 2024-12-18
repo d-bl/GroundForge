@@ -8,8 +8,8 @@ javascript:
   - nudgePairs.js
 ---
 
-three/six-pair connections
-==========================
+Mix three/six-pair connections
+==============================
 
 ![sample](sample.png?align=left)
 On the left a sample of lace by Babette.

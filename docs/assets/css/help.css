@@ -6,7 +6,7 @@ Header { background: #3679cd url(../images/header-bg-left.png) top right repeat;
     }
 }
 @media only print {
-    aside, #sidebar { display: none }
+    header, aside, #sidebar { display: none }
 }
 header a{color: #fff}
 header a:hover {color: #9ddcff}
