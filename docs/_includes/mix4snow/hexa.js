@@ -1,5 +1,5 @@
-const drosteURL = "https://d-bl.github.io/GroundForge/droste?source=mix4snow&";
-const stitchesURL = "https://d-bl.github.io/GroundForge/stitches?=mix4snow&";
+const drosteURL = "/GroundForge/droste?source=mix4snow&";
+const stitchesURL = "/GroundForge/stitches?=mix4snow&";
 
 function setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
     function parseMatrix(str) {
