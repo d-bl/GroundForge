@@ -41,8 +41,7 @@ We support up to 10 stitches.
 <script>{% include mix4snow/hexa.js %}</script>
 {% include mix4snow/hexa.html %}
 
-A catalog with recipes can barely scratch the surface of the possibilities.
-Click an image below to assign a recipe to the form:<!-- true: start left -->  
+Click an image below to assign its recipe to the form:<!-- true: start left -->  
 [![weaving-4x4](weaving-4x4.png)](javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)) &nbsp;
 [![triangle.png](triangle.png)](javascript:recipe('ctc,ctc,ctcl,t',true)) &nbsp;
 [![star](star.png)](javascript:recipe('tc,rclcrc,clcrcl,ct',true)) &nbsp;
@@ -50,7 +49,8 @@ Click an image below to assign a recipe to the form:<!-- true: start left -->
 [![│](ring-s.png)](javascript:recipe('cr,ctc,ctcr,lc',false)) &nbsp;
 [![╱](ring-e.png)](javascript:recipe('cr,ctc,ctc,lc',true))
 
-We have more [here](/MAE-gf/docs/snow-stitches/#examples)
+A catalog with recipes can barely scratch the surface of the possibilities.
+We have a few more [here](/MAE-gf/docs/snow-stitches/#examples)
 and [here](/MAE-gf/docs/misca#3-paired-join).
 and instructions to [create](/MAE-gf/docs/snow-stitches/#pair-diagrams-interpreted-as-thread-diagrams-with-blobs)
 your own recipes from pair diagrams you find in literature.
