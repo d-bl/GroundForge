@@ -1,5 +1,5 @@
-const drosteURL = "https://d-bl.github.io/GroundForge/droste?";
-const stitchesURL = "https://d-bl.github.io/GroundForge/stitches?";
+const drosteURL = "https://d-bl.github.io/GroundForge/droste?source=mix4snow&";
+const stitchesURL = "https://d-bl.github.io/GroundForge/stitches?=mix4snow&";
 
 function setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
     function parseMatrix(str) {
@@ -9,7 +9,7 @@ function setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
         return matrix.map(row => row.join('')).join(',');
     }
     const hrefNode = document.getElementById(drosteHrefId);
-    const stitchArray = document.getElementById(stitchesId).value.toLowerCase().replaceAll(' ','').split(",");
+    const stitchArray = document.getElementById(stitchesId).value.toLowerCase().replaceAll(' ','').split(/[,.]/);
     const nrOfStitches = stitchArray.length;
     const q = getQueryParams(hrefNode.getAttribute("href"));
     const startsLeft = document.getElementById("left").checked;
@@ -114,7 +114,7 @@ function setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
     }
     let newQ = Array
         .from(q.entries())
-        .map(([key, value]) => `${encodeURIComponent(key)}=${value.replace(/%2C/g, ',').replace(/%2D/g, '-')}`)
+        .map(([key, value]) => !value?'':`${encodeURIComponent(key)}=${value.replace(/%2C/g, ',').replace(/%2D/g, '-')}`)
         .join('&');
     hrefNode.setAttribute('href', drosteURL + newQ);
     let element = document.getElementById(printHrefId);
@@ -153,16 +153,25 @@ function diagrams(q) {
             .style('fill', fillColor)
             .style('opacity', 0.5);
     }
-
     setTimeout(() => {
         nudgePairs('#pairs', cfg.totalCols * 6, cfg.totalRows * 6)
         d3.selectAll(".bobbin").remove();
+        d3.select('#pairs').selectAll(".node").attr("onclick",null)
+        d3.select('#pairs').selectAll(".node").on("click",clickedPairStitch)
 
         paintThreadIntersections(/[bc][1-5][0-9]$/, '#0571b0ff');
         paintThreadIntersections(/[de][5-9][0-9]$/, '#92c5deff');
         paintThreadIntersections(/[bc](9|(1[0-3]))[0-9]$/, '#ca0020ff');
         paintThreadIntersections(/[de](1|(1[3-6]))[0-9]$/, '#f4a582ff');
     }, 0);
+}
+
+
+function clickedPairStitch(event) {
+    const selectedClass = d3.select(d3.event.currentTarget)
+                            .select('title').text().replace(/.* /g, '');
+    console.log("selectedClass: ", selectedClass)
+    d3.select('#threads').selectAll(".ct-" + selectedClass).style('opacity',"0")
 }
 
 function getQueryParams(url) {

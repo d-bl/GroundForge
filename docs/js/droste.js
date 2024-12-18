@@ -38,7 +38,10 @@ function setLinks(level){
         .join('&') + `&${key}=${value}`
     console.log('new link: '+l)
     document.getElementById('to_self').href = l
-    document.getElementById('to_stitches').href = l.replace('droste.html','stitches.html')
+    var source = window.location.search.replace(/.*[source=]/,'').replace(/&.*/,'')
+    if (!source)
+        source = 'stitches'
+    document.getElementById('to_stitches').href = l.replace('droste.html',source)
 }
 function unduplicate(s){
     // prevent invisible floating nodes caused by repeated twists and/or crossings
