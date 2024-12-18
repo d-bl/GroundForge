@@ -166,6 +166,11 @@ function diagrams(q) {
     }, 0);
 }
 
+function recipe(stitches,startsLeft) {
+    document.getElementById('replacement').value = stitches
+    document.getElementById('left').checked = startsLeft
+}
+
 
 function clickedPairStitch(event) {
     const selectedClass = d3.select(d3.event.currentTarget)

@@ -41,11 +41,19 @@ We support up to 10 stitches.
 <script>{% include mix4snow/hexa.js %}</script>
 {% include mix4snow/hexa.html %}
 
-A catalog with recipes can only scratch the surface of the possibilities.
-Create your own collection in a document and open it side by side with this page to copy-paste.
-We have some [here](/MAE-gf/docs/snow-stitches/#examples)
-and [here](/MAE-gf/docs/misca#3-paired-join)
-and instructions to [create](/MAE-gf/docs/snow-stitches/#pair-diagrams-interpreted-as-thread-diagrams-with-blobs)
+A catalog with recipes can barely scratch the surface of the possibilities.
+The following links (work in progress) assign a recipe to the form:<!-- true: start left -->
+[triangle](javascript:recipe('ctc,ctc,ctcll,tt',true)),
+[star](javascript:recipe('tc,rclcrc,clcrcl,ct',true)),
+ring:
+[╱](javascript:recipe('cl,ctc,ctcrrr,rcttt,false)) &nbsp;
+[│](javascript:recipe('cr,ctc,ctcrtt,lcttt',false)) &nbsp;
+[╲](javascript:recipe('cr,ctc,ctclll,lcttt',true)),
+weaving [4x4](javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)).
+We have more [here](/MAE-gf/docs/snow-stitches/#examples)
+and [here](/MAE-gf/docs/misca#3-paired-join).
+
+Instructions to [create](/MAE-gf/docs/snow-stitches/#pair-diagrams-interpreted-as-thread-diagrams-with-blobs)
 your own recipes from pair diagrams you find in literature.
 Clicking a stitch in the pair diagram will remove the color from the corresponding stitch in the thread diagram.
 This can help to trouble shoot a recipe.
@@ -53,4 +61,7 @@ This can help to trouble shoot a recipe.
 When satisfied with the result, you can follow the link to the _pairs from threads_ page
 to assign stitches for the actual snowflakes.
 Even without that last step it can be fun to play with configurations of snowflakes.
+
+Hint: print this page as PDF to collect your own recipes. 
+Reopen in the browser to copy-paste the text field.
 
