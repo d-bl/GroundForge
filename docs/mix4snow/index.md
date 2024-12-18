@@ -43,12 +43,12 @@ We support up to 10 stitches.
 
 A catalog with recipes can barely scratch the surface of the possibilities.
 The following links (work in progress) assign a recipe to the form:<!-- true: start left -->
-[triangle](javascript:recipe('ctc,ctc,ctcll,tt',true)),
+[triangle](javascript:recipe('ctc,ctc,ctcl,t',true)),
 [star](javascript:recipe('tc,rclcrc,clcrcl,ct',true)),
 ring:
-[╱](javascript:recipe('cl,ctc,ctcrrr,rcttt',false)) &nbsp;
-[│](javascript:recipe('cr,ctc,ctcrtt,lcttt',false)) &nbsp;
-[╲](javascript:recipe('cr,ctc,ctclll,lcttt',true)),
+[╱](javascript:recipe('cl,ctc,ctc,rc',false)) &nbsp;
+[│](javascript:recipe('cr,ctc,ctcr,lc',false)) &nbsp;
+[╲](javascript:recipe('cr,ctc,ctc,lc',true)),
 weaving [4x4](javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)).
 We have more [here](/MAE-gf/docs/snow-stitches/#examples)
 and [here](/MAE-gf/docs/misca#3-paired-join).
