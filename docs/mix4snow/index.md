@@ -42,18 +42,17 @@ We support up to 10 stitches.
 {% include mix4snow/hexa.html %}
 
 A catalog with recipes can barely scratch the surface of the possibilities.
-The following links/images (work in progress) assign a recipe to the form:<!-- true: start left -->  
-[triangle](javascript:recipe('ctc,ctc,ctcl,t',true)),
-[![star](star.png)](javascript:recipe('tc,rclcrc,clcrcl,ct',true)),
-ring:
-[╱](javascript:recipe('cl,ctc,ctc,rc',false)) &nbsp;
-[│](javascript:recipe('cr,ctc,ctcr,lc',false)) &nbsp;
-[╲](javascript:recipe('cr,ctc,ctc,lc',true)),
-weaving [4x4](javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)).
+Click an image below to assign a recipe to the form:<!-- true: start left -->  
+[![weaving-4x4](weaving-4x4.png)](javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)) &nbsp;
+[![triangle.png](triangle.png)](javascript:recipe('ctc,ctc,ctcl,t',true)) &nbsp;
+[![star](star.png)](javascript:recipe('tc,rclcrc,clcrcl,ct',true)) &nbsp;
+[![╲](ring-w.png)](javascript:recipe('cl,ctc,ctc,rc',false)) &nbsp;
+[![│](ring-s.png)](javascript:recipe('cr,ctc,ctcr,lc',false)) &nbsp;
+[![╱](ring-e.png)](javascript:recipe('cr,ctc,ctc,lc',true))
+
 We have more [here](/MAE-gf/docs/snow-stitches/#examples)
 and [here](/MAE-gf/docs/misca#3-paired-join).
-
-Instructions to [create](/MAE-gf/docs/snow-stitches/#pair-diagrams-interpreted-as-thread-diagrams-with-blobs)
+and instructions to [create](/MAE-gf/docs/snow-stitches/#pair-diagrams-interpreted-as-thread-diagrams-with-blobs)
 your own recipes from pair diagrams you find in literature.
 Clicking a stitch in the pair diagram will remove the color from the corresponding stitch in the thread diagram.
 This can help to trouble shoot a recipe.
