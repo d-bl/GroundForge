@@ -168,7 +168,10 @@ function diagrams(q) {
 
 function recipe(stitches,startsLeft) {
     document.getElementById('replacement').value = stitches
-    document.getElementById('left').checked = startsLeft
+    if (startsLeft)
+        document.getElementById('left').checked = true
+    else
+        document.getElementById('right').checked = true
 }
 
 
