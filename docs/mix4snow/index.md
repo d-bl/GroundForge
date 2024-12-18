@@ -8,8 +8,8 @@ javascript:
   - nudgePairs.js
 ---
 
-Mix three/six-pair connections
-==============================
+Mix four snowflakes
+===================
 
 ![sample](sample.png?align=left)
 On the left a sample of lace by Babette.
