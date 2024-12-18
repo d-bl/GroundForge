@@ -42,9 +42,9 @@ We support up to 10 stitches.
 {% include mix4snow/hexa.html %}
 
 A catalog with recipes can barely scratch the surface of the possibilities.
-The following links (work in progress) assign a recipe to the form:<!-- true: start left -->
+The following links/images (work in progress) assign a recipe to the form:<!-- true: start left -->  
 [triangle](javascript:recipe('ctc,ctc,ctcl,t',true)),
-[star](javascript:recipe('tc,rclcrc,clcrcl,ct',true)),
+[![star](star.png)](javascript:recipe('tc,rclcrc,clcrcl,ct',true)),
 ring:
 [╱](javascript:recipe('cl,ctc,ctc,rc',false)) &nbsp;
 [│](javascript:recipe('cr,ctc,ctcr,lc',false)) &nbsp;
