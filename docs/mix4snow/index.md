@@ -25,7 +25,7 @@ The form below starts with the last step to provide building blocks for a combin
 ![](capture-extract.svg?align=right)
 On the right the first repeat of the [default](?) template:
 four groups of stitches with three pairs.
-The groups in this example reconstructs a double hexagonal ring pair with an arbitrary snowflake.
+The groups in this example reconstruct a double hexagonal ring pair with an arbitrary snowflake.
 The colors of the groups match the hexagons below and the thread diagram.
 The pair diagram has a [color code] that caters for unorthodox stitches.
 
@@ -42,12 +42,13 @@ We support up to 10 stitches.
 {% include mix4snow/hexa.html %}
 
 Click an image below to assign its recipe to the form:<!-- true: start left -->  
-[![weaving-4x4](weaving-4x4.png)](javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)) &nbsp;
-[![triangle.png](triangle.png)](javascript:recipe('ctc,ctc,ctcl,t',true)) &nbsp;
-[![star](star.png)](javascript:recipe('tc,rclcrc,clcrcl,ct',true)) &nbsp;
-[![╲](ring-w.png)](javascript:recipe('cl,ctc,ctc,rc',false)) &nbsp;
-[![│](ring-s.png)](javascript:recipe('cr,ctc,ctcr,lc',false)) &nbsp;
-[![╱](ring-e.png)](javascript:recipe('cr,ctc,ctc,lc',true))
+[![weaving-4x4](weaving-4x4.png)](javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false) "family 123") &nbsp;
+[![triangle.png](triangle.png)](javascript:recipe('ctc,ctc,ctcl,t',true) "family 321") &nbsp;
+[![star](star.png)](javascript:recipe('tc,rclcrc,clcrcl,ct',true) "family 321") &nbsp;
+[![square](square.png)](javascript:recipe('ttrcl,rrctc,crll,tt',true) "family 456123") &nbsp;
+[![╲](ring-w.png)](javascript:recipe('cr,ctc,ctc,lc',true) "family 321")
+[![│](ring-s.png)](javascript:recipe('cr,ctc,ctcr,lc',false) "family 321") &nbsp;
+[![╱](ring-e.png)](javascript:recipe('cl,ctc,ctc,rc',false) "family 321") &nbsp;
 
 A catalog with recipes can barely scratch the surface of the possibilities.
 We have a few more [here](/MAE-gf/docs/snow-stitches/#examples)
