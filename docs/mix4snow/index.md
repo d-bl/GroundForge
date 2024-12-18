@@ -50,9 +50,9 @@ Click an image below to assign its recipe to the form:<!-- true: start left -->
 [![│](ring-s.png)](javascript:recipe('cr,ctc,ctcr,lc',false) "family 321") &nbsp;
 [![╱](ring-e.png)](javascript:recipe('cl,ctc,ctc,rc',false) "family 321") &nbsp;
 
-A catalog with recipes can barely scratch the surface of the possibilities.
-We have a few more [here](/MAE-gf/docs/snow-stitches/#examples)
-and [here](/MAE-gf/docs/misca#3-paired-join).
+A collection with recipes can barely scratch the surface of the possibilities
+as explained on [counting snow families](https://d-bl.github.io/MAE-gf/docs/counting-snow/)
+We have a few [more](/MAE-gf/docs/snow-stitches/#examples)
 and instructions to [create](/MAE-gf/docs/snow-stitches/#pair-diagrams-interpreted-as-thread-diagrams-with-blobs)
 your own recipes from pair diagrams you find in literature.
 Clicking a stitch in the pair diagram will remove the color from the corresponding stitch in the thread diagram.
