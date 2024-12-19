@@ -42,13 +42,14 @@ We support up to 10 stitches.
 {% include mix4snow/hexa.html %}
 
 Click an image below to assign its recipe to the form:<!-- true: start left -->  
-[![weaving-4x4](weaving-4x4.png)](javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false) "family 123") &nbsp;
-[![triangle.png](triangle.png)](javascript:recipe('ctc,ctc,ctcl,t',true) "family 321") &nbsp;
+[![diamond](diamond.png)](javascript:recipe('ttrcl,rrctc,crll,tt',true) "family 456123") &nbsp;
 [![star](star.png)](javascript:recipe('tc,rclcrc,clcrcl,ct',true) "family 321") &nbsp;
-[![square](square.png)](javascript:recipe('ttrcl,rrctc,crll,tt',true) "family 456123") &nbsp;
-[![╲](ring-w.png)](javascript:recipe('cr,ctc,ctc,lc',true) "family 321")
-[![│](ring-s.png)](javascript:recipe('cr,ctc,ctcr,lc',false) "family 321") &nbsp;
-[![╱](ring-e.png)](javascript:recipe('cl,ctc,ctc,rc',false) "family 321") &nbsp;
+[![ring ╲](ring-w.png)](javascript:recipe('cr,ctc,ctc,lc',true) "family 321")
+[![ring │](ring-s.png)](javascript:recipe('cr,ctc,ctcr,lc',false) "family 321") &nbsp;
+[![ring ╱](ring-e.png)](javascript:recipe('cl,ctc,ctc,rc',false) "family 321") &nbsp;
+[![triangle.png](triangle.png)](javascript:recipe('ctc,ctc,ctcl,t',true) "family 321") &nbsp;
+[![weaving 4x4](weaving-4x4.png)](javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false) "family 123") &nbsp;
+[![spider with 2 heads](spider-2heads.png)](javascript:recipe('lc,crc,ctc,lcrcl,ctc,crc,c,r',false) "family 623451") &nbsp;
 
 A collection with recipes can barely scratch the surface of the possibilities
 as explained on [counting snow families](https://d-bl.github.io/MAE-gf/docs/counting-snow/)
