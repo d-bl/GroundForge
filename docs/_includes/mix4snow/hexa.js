@@ -208,8 +208,11 @@ function flip_b2p(id) {
 document.addEventListener('DOMContentLoaded', (event) => {
     var q = document.URL.split(/[?#]/)[1];
     if (!q) {
-        q = "patchWidth=14" +
-            "&patchHeight=35&footside=x,x,x,x,4,r,r,r&tile=31rx,17x-,rxx-,rxx-,rx83,-w48,-xxr,-xxr,31xr,17-x,rx-x,rx-x,rx31,-w17,-xrx,-xrx,&headside=x,x,x,8,r,r,r,r&shiftColsSW=0&shiftRowsSW=16&shiftColsSE=4&shiftRowsSE=8&d1=rc&c1=tc&b1=lcrclc&a1=rrctt&c2=crclcr&n5=llctt&d5=cr&b5=ct&e9=lc&c9=cr&e13=cl&b13=lc";
+        q = "tile=48x-,xrx-,xrx-,xr83,-x48,-xxr,-xxr,31xr,17-x,rx-x,rx-x,rx31,x-17,x-rx,x-rx,83rx" +
+            "&footside=x,x,x,x,4,r,r,r&headside=x,x,x,8,r,r,r,r&shiftColsSW=0&shiftRowsSW=16&shiftColsSE=4&shiftRowsSE=8&patchWidth=14&patchHeight=35" +
+            "&d1=rc&c1=ct&b1=clcrcl&a1=rrctt&c2=crclcr&n5=llctt&d5=ctc&b5=ct&e9=lc&c9=ctc&e13=ctc&b13=lc&b16=tc&c16=rclcrc&c4=ct&c8=cr&b8=ctc&b9=lc&b12=lc&d12=ctc&e12=cl&d13=rc&e16=lc&e4=ctc&d4=cr&e5=lc&d8=rc&e8=lc&d16=rc" +
+            "&a8=llttcrr&p8=rrttcll" +
+            "&droste2=b160=b161=c160=ttctc,b15=c41=c42=ctctt,b80=b81=e120=e121=lllctc,c80=c81=rrrctc,b120=b121=ctclll,c92=c93=d160=d161=ctcrrr";
     }
     document.getElementById('toDiagrams').setAttribute("href", drosteURL + q);
     document.getElementById('toPrintFriendly').setAttribute("href", stitchesURL + q);
