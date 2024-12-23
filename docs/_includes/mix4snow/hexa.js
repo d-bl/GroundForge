@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "&droste2=g160=g161=h160=ttctc,g15=h41=h42=ctctt" +
             ",,g80=j120=j121=lllctc,g81=lllctcl,h80=rrrctc,h81=rrrctcr,g120=g121=ctclll,h92=h93=i160=i161=ctcrrr" +
             ",j121=lllctcl,j133=ctcl,i53=i41=ctcr" +
-            ",,f80=p81=ctcttttttttttttlllctc,f82=rrtctctrr"+
+            ",,f80=p81=ctcttttttttttlllllctc,f82=rrtctctrr,f83=rrttctc"+
             ",,u82=ctc,u81=tttttttctctttttt,u83=tttttctc,u80=tttctc";
     }
     document.getElementById('toDiagrams').setAttribute("href", drosteURL + q);
