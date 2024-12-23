@@ -209,8 +209,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     var q = document.URL.split(/[?#]/)[1];
     if (!q) {
         q = "tile=48x-,xrx-,xrx-,xr83,-x48,-xxr,-xxr,31xr,17-x,rx-x,rx-x,rx31,x-17,x-rx,x-rx,83rx" +
-            "&f8=llttcrr&footside=-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r,-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r&" +
-            "&u8=rrttcll&headside=x,x,x,8,r,r,r,r,x,x,x,8,r,r,r,r" +
+            "&f8=llttcrr&f16=llttcrr&footside=-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r,-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r&" +
+            "&u8=rrttcll&u16=rrttcll&headside=x,x,x,8,r,r,r,r,x,x,x,8,r,r,r,r" +
             "&shiftColsSW=0&shiftRowsSW=16&shiftColsSE=4&shiftRowsSE=8&patchWidth=14&patchHeight=35" +
             "&i1=rc&h1=ct&g1=clcrcl&h2=crclcr&n5=llctt&i5=ctc&g5=ct&j9=lc&h9=ctc&j13=ctc&g13=lc&g16=tc&h16=rclcrc&h4=ct&h8=cr&g8=ctc&g9=lc&g12=lc&i12=ctc&j12=cl&i13=rc&j16=lc&j4=ctc&i4=cr&j5=lc&i8=rc&j8=lc&i16=rc" +
             "&droste2=g160=g161=h160=ttctc,g15=h41=h42=ctctt" +
