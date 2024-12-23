@@ -94,22 +94,22 @@ function setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
     switch (hexaId) {
         case "hexaCenter":
             replaceTile(12, 0);
-            replaceStitches(["b16", "c16", "b1", "c1", "b2", "c2", "b3", "c3", "b4", "c4"]);
+            replaceStitches(["g16", "h16", "g1", "h1", "g2", "h2", "g3", "h3", "g4", "h4"]);
             break;
         case "hexaNW":
         case "hexaSE":
             replaceTile(0, 2);
-            replaceStitches(["d4", "e4", "d5", "e5", "d6", "e6", "d7", "e7", "d8", "e8"]);
+            replaceStitches(["i4", "j4", "i5", "j5", "i6", "j6", "i7", "j7", "i8", "j8"]);
             break;
         case "hexaN":
         case "hexaS":
             replaceTile(4, 0);
-            replaceStitches(["b8", "c8", "b9", "c9", "b10", "c10", "b11", "c11", "b12", "c12"]);
+            replaceStitches(["g8", "h8", "g9", "h9", "g10", "h10", "g11", "h11", "g12", "h12"]);
             break;
         case "hexaNE":
         case "hexaSW":
             replaceTile(8, 2);
-            replaceStitches(["d12", "e12", "d13", "e13", "d14", "e14", "d15", "e15", "d16", "e16"]);
+            replaceStitches(["i12", "j12", "i13", "j13", "i14", "j14", "i15", "j15", "i16", "j16"]);
             break;
     }
     let newQ = Array
@@ -158,10 +158,10 @@ function diagrams(q) {
         d3.select('#pairs').selectAll(".node").attr("onclick",null)
         d3.select('#pairs').selectAll(".node").on("click",clickedPairStitch)
 
-        paintThreadIntersections(/[bc]([1-4]|(16))[0-9]$/, '#0571b0ff');
-        paintThreadIntersections(/[de][4-8][0-9]$/, '#92c5deff');
-        paintThreadIntersections(/[bc]([89]|(1[0-2]))[0-9]$/, '#ca0020ff');
-        paintThreadIntersections(/[de](1[2-6])[0-9]$/, '#f4a582ff');
+        paintThreadIntersections(/[gh]([1-4]|(16))[0-9]$/, '#0571b0ff');
+        paintThreadIntersections(/[ij][4-8][0-9]$/, '#92c5deff');
+        paintThreadIntersections(/[gh]([89]|(1[0-2]))[0-9]$/, '#ca0020ff');
+        paintThreadIntersections(/[ij](1[2-6])[0-9]$/, '#f4a582ff');
     }, 0);
 }
 
@@ -209,12 +209,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
     var q = document.URL.split(/[?#]/)[1];
     if (!q) {
         q = "tile=48x-,xrx-,xrx-,xr83,-x48,-xxr,-xxr,31xr,17-x,rx-x,rx-x,rx31,x-17,x-rx,x-rx,83rx" +
-            "&footside=x,x,x,x,4,r,r,r&headside=x,x,x,8,r,r,r,r&shiftColsSW=0&shiftRowsSW=16&shiftColsSE=4&shiftRowsSE=8&patchWidth=14&patchHeight=35" +
-            "&d1=rc&c1=ct&b1=clcrcl&a1=rrctt&c2=crclcr&n5=llctt&d5=ctc&b5=ct&e9=lc&c9=ctc&e13=ctc&b13=lc&b16=tc&c16=rclcrc&c4=ct&c8=cr&b8=ctc&b9=lc&b12=lc&d12=ctc&e12=cl&d13=rc&e16=lc&e4=ctc&d4=cr&e5=lc&d8=rc&e8=lc&d16=rc&a8=llttcrr&p8=rrttcll" +
-            "&droste2=b160=b161=c160=ttctc,b15=c41=c42=ctctt" +
-            ",,b80=b81=e120=e121=lllctc,c80=c81=rrrctc,b120=b121=ctclll,c92=c93=d160=d161=ctcrrr" +
-            ",e121=lllctcl,e133=ctcl,d53=ctcr,d41=ctcr" +
-            ",,a80=p81=ctctctctctcctctctc,a82=rrtctctrr,p82=lltctctll";
+            "&footside=-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r&headside=x,x,x,8,r,r,r,r&shiftColsSW=0&shiftRowsSW=16&shiftColsSE=4&shiftRowsSE=8&patchWidth=14&patchHeight=35" +
+            "&i1=rc&h1=ct&g1=clcrcl&h2=crclcr&n5=llctt&i5=ctc&g5=ct&j9=lc&h9=ctc&j13=ctc&g13=lc&g16=tc&h16=rclcrc&h4=ct&h8=cr&g8=ctc&g9=lc&g12=lc&i12=ctc&j12=cl&i13=rc&j16=lc&j4=ctc&i4=cr&j5=lc&i8=rc&j8=lc&i16=rc&f8=llttcrr&u8=rrttcll" +
+            "&droste2=g160=g161=h160=ttctc,g15=h41=h42=ctctt" +
+            ",,g80=g81=j120=j121=lllctc,h80=h81=rrrctc,g120=g121=ctclll,h92=h93=i160=i161=ctcrrr" +
+            ",j121=lllctcl,j133=g81=ctcl,i53=i41=h81=ctcr" +
+            ",,f80=u81=ctctctctctcctctctc,u82=rrtctctrr,u82=lltctctll";
     }
     document.getElementById('toDiagrams').setAttribute("href", drosteURL + q);
     document.getElementById('toPrintFriendly').setAttribute("href", stitchesURL + q);
