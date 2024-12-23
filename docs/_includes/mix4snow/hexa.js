@@ -209,12 +209,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
     var q = document.URL.split(/[?#]/)[1];
     if (!q) {
         q = "tile=48x-,xrx-,xrx-,xr83,-x48,-xxr,-xxr,31xr,17-x,rx-x,rx-x,rx31,x-17,x-rx,x-rx,83rx" +
-            "&footside=-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r&headside=x,x,x,8,r,r,r,r&shiftColsSW=0&shiftRowsSW=16&shiftColsSE=4&shiftRowsSE=8&patchWidth=14&patchHeight=35" +
-            "&i1=rc&h1=ct&g1=clcrcl&h2=crclcr&n5=llctt&i5=ctc&g5=ct&j9=lc&h9=ctc&j13=ctc&g13=lc&g16=tc&h16=rclcrc&h4=ct&h8=cr&g8=ctc&g9=lc&g12=lc&i12=ctc&j12=cl&i13=rc&j16=lc&j4=ctc&i4=cr&j5=lc&i8=rc&j8=lc&i16=rc&f8=llttcrr&u8=rrttcll" +
+            "&f8=llttcrr&footside=-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r&" +
+            "&u8=rrttcll&headside=x,x,x,8,r,r,r,r" +
+            "&shiftColsSW=0&shiftRowsSW=16&shiftColsSE=4&shiftRowsSE=8&patchWidth=14&patchHeight=35" +
+            "&i1=rc&h1=ct&g1=clcrcl&h2=crclcr&n5=llctt&i5=ctc&g5=ct&j9=lc&h9=ctc&j13=ctc&g13=lc&g16=tc&h16=rclcrc&h4=ct&h8=cr&g8=ctc&g9=lc&g12=lc&i12=ctc&j12=cl&i13=rc&j16=lc&j4=ctc&i4=cr&j5=lc&i8=rc&j8=lc&i16=rc" +
             "&droste2=g160=g161=h160=ttctc,g15=h41=h42=ctctt" +
             ",,g80=g81=j120=j121=lllctc,h80=h81=rrrctc,g120=g121=ctclll,h92=h93=i160=i161=ctcrrr" +
             ",j121=lllctcl,j133=g81=ctcl,i53=i41=h81=ctcr" +
-            ",,f80=u81=ctctctctctcctctctc,u82=rrtctctrr,u82=lltctctll";
+            ",,f82=ctc,f81=tctc,f83=ctctttt,f80=lllttttctctttt" +
+            ",,u80=ttctc,u83=ctcttttttr,u82=ctctrrrrrrrrrrr,u81=rrrrrrrtctctttttttttttrrrrrr";
     }
     document.getElementById('toDiagrams').setAttribute("href", drosteURL + q);
     document.getElementById('toPrintFriendly').setAttribute("href", stitchesURL + q);
