@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "&i1=rc&h1=ct&g1=clcrcl&h2=crclcr&n5=llctt&i5=ctc&g5=ct&j9=lc&h9=ctc&j13=ctc&g13=lc&g16=tc&h16=rclcrc&h4=ct&h8=cr&g8=ctc&g9=lc&g12=lc&i12=ctc&j12=cl&i13=rc&j16=lc&j4=ctc&i4=cr&j5=lc&i8=rc&j8=lc&i16=rc" +
             "&droste2=g160=g161=h160=ttctc,g15=h41=h42=ctctt" +
             ",,g80=g81=j120=j121=lllctc,h80=h81=rrrctc,g120=g121=ctclll,h92=h93=i160=i161=ctcrrr" +
-            ",j121=lllctcl,j133=g81=ctcl,i53=i41=h81=ctcr" +
+            ",j121=lllctcl,j133=ctcl,i53=i41=h81=ctcr" +
             ",,f82=ctc,f81=tctc,f83=ctctttt,f80=lllttttctctttt" +
             ",,u80=ttctc,u83=ctcttttttr,u82=ctctrrrrrrrrrrr,u81=rrrrrrrtctctttttttttttrrrrrr";
     }
