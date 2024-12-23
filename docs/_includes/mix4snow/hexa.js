@@ -186,7 +186,7 @@ function getQueryParams(url) {
     if (queryString) {
         const pairs = queryString.split('&');
         pairs.forEach(pair => {
-            const [key, value] = pair.split('=');
+            const [key, value] = pair.split(/=(.+)/);
             queryParams.set(decodeURIComponent(key), decodeURIComponent(value));
         });
     }
@@ -211,10 +211,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
         q = "tile=48x-,xrx-,xrx-,xr83,-x48,-xxr,-xxr,31xr,17-x,rx-x,rx-x,rx31,x-17,x-rx,x-rx,83rx" +
             "&footside=x,x,x,x,4,r,r,r&headside=x,x,x,8,r,r,r,r&shiftColsSW=0&shiftRowsSW=16&shiftColsSE=4&shiftRowsSE=8&patchWidth=14&patchHeight=35" +
             "&d1=rc&c1=ct&b1=clcrcl&a1=rrctt&c2=crclcr&n5=llctt&d5=ctc&b5=ct&e9=lc&c9=ctc&e13=ctc&b13=lc&b16=tc&c16=rclcrc&c4=ct&c8=cr&b8=ctc&b9=lc&b12=lc&d12=ctc&e12=cl&d13=rc&e16=lc&e4=ctc&d4=cr&e5=lc&d8=rc&e8=lc&d16=rc&a8=llttcrr&p8=rrttcll" +
-            "&droste2=b160%3Db161%3Dc160%3Dttctc,b15%3Dc41%3Dc42%3Dctctt" +
-            ",,b80%3Db81%3De120%3De121%3Dlllctc,c80%3Dc81%3Drrrctc,b120%3Db121%3Dctclll,c92%3Dc93%3Dd160%3Dd161%3Dctcrrr" +
-            ",e121%3Dlllctcl,e133%3Dctcl,d53%3Dctcr,d41%3Dctcr" +
-            ",,a80%3Dp81%3Dctctctctctcctctctc,a82%3Drrtctctrr,p82%3Dlltctctll";
+            "&droste2=b160=b161=c160=ttctc,b15=c41=c42=ctctt" +
+            ",,b80=b81=e120=e121=lllctc,c80=c81=rrrctc,b120=b121=ctclll,c92=c93=d160=d161=ctcrrr" +
+            ",e121=lllctcl,e133=ctcl,d53=ctcr,d41=ctcr" +
+            ",,a80=p81=ctctctctctcctctctc,a82=rrtctctrr,p82=lltctctll";
     }
     document.getElementById('toDiagrams').setAttribute("href", drosteURL + q);
     document.getElementById('toPrintFriendly').setAttribute("href", stitchesURL + q);
