@@ -38,9 +38,11 @@ function setLinks(level){
         .join('&') + `&${key}=${value}`
     console.log('new link: '+l)
     document.getElementById('to_self').href = l
-    var source = window.location.search.replace(/.*source=/,'').replace(/&.*/,'')
+    if (!window.location.search.includes('source=')) return
     if (!source)
         source = 'stitches'
+    else
+        source = window.location.search.replace(/.*source=/,'').replace(/&.*/,'')
     document.getElementById('to_stitches').href = l.replace('droste.html',source)
 }
 function unduplicate(s){
