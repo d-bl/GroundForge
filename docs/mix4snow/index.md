@@ -31,4 +31,5 @@ Click an image below to select its recipe.<!-- true: start left -->
 [![weaving 4x4](weaving-4x4.png)](javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false) "family 123") &nbsp;
 [![spider with 2 heads](spider-2heads.png)](javascript:recipe('lc,crc,ctc,lcrcl,ctc,crc,c,r',false) "family 623451") &nbsp;
 
-See the [tutorial](/GroundForge-help/snow-mix) for more information and recipes.
+See the <a href="/GroundForge-help/snow-mix">tutorial</a>
+for more information and (how to create) more recipes.
