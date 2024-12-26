@@ -193,15 +193,22 @@ function getQueryParams(url) {
     return queryParams;
 }
 
+function flipRadio() {
+    const startsLeft = document.getElementById("left").checked;
+    document.getElementById(startsLeft ? 'right' : 'left').checked = true
+}
+
 function flip_b2d(id) {
     const n = document.getElementById(id);
     n.value = n.value.toLowerCase().replace(/l/g, "R").replace(/r/g, "L").toLowerCase();
+    flipRadio();
     n.focus();
 }
 
 function flip_b2p(id) {
     const n = document.getElementById(id);
     n.value = n.value.toLowerCase().split("").reverse().join("");
+    flipRadio();
     n.focus();
 }
 
