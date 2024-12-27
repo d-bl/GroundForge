@@ -24,7 +24,7 @@ The pair diagram has a [color code] that caters for unorthodox stitches.
 * Click an image below to select its recipe.<!-- true: start left -->  
 [![diamond](diamond.png)](javascript:recipe('tcl,rctc,crl,r',true) "family 456123") &nbsp;
 [![star](star.png)](javascript:recipe('tc,rclcrc,clcrcl,ct',true) "family 321") &nbsp;
-[![leaning crossed spider](leaning-spider.png)](javascript:recipe('ctc,ctcl,ctc,ctc',true) "family 651342") &nbsp;
+[![leaning crossed spider](leaning-spider.png)](javascript:recipe('ctc,ctcl,ctc,ctc',true) "family 651234") &nbsp;
 [![ring │](ring-s.png)](javascript:recipe('cr,ctc,ctc,lc',false) "family 321") &nbsp;
 [![ring ╱](ring-e.png)](javascript:recipe('cl,ctc,ctc,rc',false) "family 321") &nbsp;
 [![triangle.png](triangle.png)](javascript:recipe('tctc,rctc,ctcl,t',true) "family 321") &nbsp;
