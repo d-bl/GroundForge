@@ -95,14 +95,19 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
                              sourceThreadNode: String,
                              targetThreadNode: String
                             ) = {
-    val nrOfTwists: Int =
-      (sourceThreadNode, targetThreadNode) match {
-        case ("cross", "cross") => sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsLeft
-        case ("twist", "cross") => sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsLeft
-        case ("cross", "twist") => sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsRight
-        case ("twist", "twist") => sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsRight
-        case _ => 0
-      }
+    val sourceX = sourcePairNode.x
+    val targetX = targetPairNode.x
+    val smaller: Boolean = {
+      if (sourceX == targetX)
+        sourcePairNode.id < targetPairNode.id
+      else sourceX < targetX
+    }
+    val nrOfTwists: Int = {
+      if (smaller)
+          sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsLeft
+        else
+          sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsRight
+    }
     pairLink(source, target,
       start = sourcePairNode.color,
       mid = nrOfTwists - 1,
