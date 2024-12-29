@@ -45,25 +45,6 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   @JSExport
   val markerDefinitions: String = {
-    def startMarker(colorName: String) = endMarker(colorName, "start", "")
-
-    def endMarker(colorName: String,
-                  idPrefix: String = "end",
-                  properties: String = """refX="10""""
-                 ): String =
-      s"""<marker $properties
-         | id="$idPrefix-$colorName"
-         | viewBox="0 -5 10 10"
-         | markerWidth="6"
-         | markerHeight="8"
-         | orient="auto"
-         | markerUnits="userSpaceOnUse">
-         | <path d="M0,0L10,0"
-         |  stroke-width="3"
-         |  stroke="${Stitches.colors(colorName)}"></path>
-         |</marker>
-         |""".
-        stripMargin.stripLineEnd.replaceAll("[\n\r]", "")
 
     def threadMarker() = pairMarker("thread", square)
 
@@ -98,20 +79,6 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
        |  ${threadMarker()}
        |  ${pairMarker()}
        |  ${twistMark()}
-       |  ${startMarker("red")}
-       |  ${startMarker("blue")}
-       |  ${startMarker("green")}
-       |  ${startMarker("brown")}
-       |  ${startMarker("purple")}
-       |  ${startMarker("yellow")}
-       |  ${startMarker("turquoise")}
-       |  ${endMarker("red")}
-       |  ${endMarker("blue")}
-       |  ${endMarker("green")}
-       |  ${endMarker("brown")}
-       |  ${endMarker("purple")}
-       |  ${endMarker("yellow")}
-       |  ${endMarker("turquoise")}
        |</defs>""".stripMargin.stripLineEnd
   }
 
@@ -147,12 +114,10 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
                          ): String = diagram.links.map { link =>
     val opacity = if (link.border) opacityOfHiddenObjects else 1
     val pd = pathDescription(diagram, link)
-    val markers = link.markers.map{
-      case ("mid",_) if link.nrOfTwists > 0 => s"; marker-mid: url('#twist-1')"
-      case ("mid",_) => ""
-      case (key,value) => s"; marker-$key: url('#$key-$value')"
-      case _ => ""
-    }.mkString("")
+    val markers = {
+      if (link.nrOfTwists <= 0) ""
+      else s"; marker-mid: url('#twist-1')"
+    }
     // TODO no stroke color/width would allow styling threads with CSS
     // what in turn allows changes without repeating the simulation
     // stand-alone SVG does require stroke details
@@ -182,7 +147,6 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
                 else if (title.contains("thread")) "onclick='clickedThread(event)'"
                 else "onclick='clickedStitch(event)'"
     if (extraClass == "")
-      // TODO scale up 240%
       s"""<g $event
          | class="${ node.cssClasses }"
          | transform="translate(${ node.x },${ node.y })"

@@ -39,13 +39,9 @@ sealed abstract class LinkProps extends Props {
     jsItem("target") = target
     jsItem("weak") = weak // TODO rename to invisible
     jsItem("withPin") = withPin
-    jsItem("start") = start
-    jsItem("end") = end
-    jsItem("mid") = nrOfTwists
     jsItem
   }
 
-  val markers: Map[String, Any] = props.filter{case (k,_) => Seq("start", "end", "mid").contains(k)}
   val start: String = props.getOrElse("start", "").asInstanceOf[String]
   val end: String = props.getOrElse("end", "").asInstanceOf[String]
   val nrOfTwists: Int = props.getOrElse("mid", 0).asInstanceOf[Int]
