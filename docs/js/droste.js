@@ -75,14 +75,16 @@ function getQ() {
 function clearThreadLevel2() { // level 2 == step 1
     setLinks(2)
     clearDownloadLinks()
-    d3.selectAll("#drosteThread2, #drostePair3, #drosteThread3").html("")
-    d3.selectAll("#drostePair2, #drosteThread2, #drostePair3, #drosteThread3").property("data","")
+    let panels = d3.selectAll("#drostePair2, #drosteThread2, #drostePair3, #drosteThread3");
+    panels.property("data","")
+    panels.style("background-color","#DDD")
 }
 function clearThreadLevel3() { // level 3 == step 2
     setLinks(3)
     clearDownloadLinks()
-    d3.selectAll("#drosteThread3").html("")
-    d3.selectAll("#drostePair3, #drosteThread3").property(data,"")
+    let panels = d3.selectAll("#drostePair3, #drosteThread3");
+    panels.property(data,"")
+    panels.style("background-color","#DDD")
 }
 function clearDownloadLinks() {
     d3.selectAll("#drostePair2DownloadLink, #drosteThread2DownloadLink, #drostePair3DownloadLink, #drosteThread3DownloadLink")
@@ -141,6 +143,7 @@ function setPairDiagram(level, threadDiagram) {
     const container = document.getElementById(containerId)
     container.data = pairDiagram
     container.innerHtml = DiagramSvg.render(pairDiagram, "1px", true, 744, 1052, 0.0)
+    container.style.backgroundColor = '#FFF';
     showGraph('#'+containerId, pairDiagram)
 }
 function setThreadDiagram(level, pairDiagram) {
@@ -150,6 +153,7 @@ function setThreadDiagram(level, pairDiagram) {
     var container = document.getElementById(containerID)
     container.data = threadDiagram
     container.innerHTML  = DiagramSvg.render(threadDiagram, "2px", true, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>")
+    container.style.backgroundColor = '#FFF';
     showGraph('#'+containerID, threadDiagram)
     d3.select(`#${containerID} g`)
         .attr("transform","scale(0.5,0.5)")
