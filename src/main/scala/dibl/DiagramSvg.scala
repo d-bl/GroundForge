@@ -181,6 +181,13 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     val event = if (title.contains("cross") || title.contains("twist")) ""
                 else if (title.contains("thread")) "onclick='clickedThread(event)'"
                 else "onclick='clickedStitch(event)'"
+    if (extraClass == "")
+      // TODO scale up 240%
+      s"""<g $event
+         | class="${ node.cssClasses }"
+         | transform="translate(${ node.x },${ node.y })"
+         |><title>$title</title><g transform="scale(1.8)">${ PairSvg.shapes(title.replace(" .*", "")) }</g></g>""".stripMargin
+    else
     s"""<path $event
        | class="${node.cssClasses}$extraClass"
        | d="${shape(node)}"
