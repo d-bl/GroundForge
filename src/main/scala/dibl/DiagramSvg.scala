@@ -61,24 +61,33 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
          |</marker>
          |""".stripMargin.stripLineEnd.replaceAll("[\n\r]", "")
 
-    def twistMark(count: Int = 1) =
+    def twistMark(count: Int = 1) = {
+      // another scale in PairSvg
+      val xl = 2 * 1.2
+      val xs = 1.5 * 1.2
+      val d = if (count == 1) s"M 0,$xl 0,-$xl"
+              else if (count == 2) s"M -1,$xl V -$xl M 1,$xl 1,-$xl"
+                   else s"M -$xs,$xl V -$xl M $xs,$xl $xs,-$xl  M 0,$xl 0,-$xl"
+
       s"""<marker id="twist-$count"
-         | viewBox="-2 -2 4 4"
-         | markerWidth="5"
-         | markerHeight="5"
+         | viewBox="-3 -3 6 6"
+         | markerWidth="7"
+         | markerHeight="7"
          | orient="auto"
          | markerUnits="userSpaceOnUse">
-         | <path d="M 0,2 0,-2"
+         | <path d="$d"
          |  fill="#000"
          |  stroke="#000"
          |  stroke-width="1px"></path>
          |</marker>
          |""".stripMargin.stripLineEnd.replaceAll("[\n\r]", "")
-
+    }
     s"""<defs>
        |  ${threadMarker()}
        |  ${pairMarker()}
-       |  ${twistMark()}
+       |  ${ twistMark(1) }
+       |  ${ twistMark(2) }
+       |  ${ twistMark(3) }
        |</defs>""".stripMargin.stripLineEnd
   }
 
@@ -115,8 +124,13 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     val opacity = if (link.border) opacityOfHiddenObjects else 1
     val pd = pathDescription(diagram, link)
     val markers = {
-      if (link.nrOfTwists <= 0) ""
-      else s"; marker-mid: url('#twist-1')"
+      val twists = {
+        if (link.nrOfTwists > 3) 3
+        else link.nrOfTwists
+      }
+
+      if (twists <= 0) ""
+      else s"; marker-mid: url('#twist-$twists')"
     }
     // TODO no stroke color/width would allow styling threads with CSS
     // what in turn allows changes without repeating the simulation
