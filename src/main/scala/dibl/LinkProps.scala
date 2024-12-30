@@ -216,27 +216,13 @@ object LinkProps {
     "thread" -> threadNr
   )
 
-  def pairLink(source: Int,
-               target: Int,
-               start: String,
-               mid: Int,
-               end: String,
-               weak: Boolean = false
-              ): LinkProps = PlainLink(
+  def pairLink(source: Int, target: Int, mid: Int, weak: Boolean = false): LinkProps = PlainLink(
     Map(
       "source" -> source,
       "target" -> target,
-      "start" -> start,
       "mid" -> mid,
-      "end" -> end
     ), weak = weak
   )
-
-  def simpleLink(source: Int, target: Int): LinkProps =
-    PlainLink(Map(
-      "source" -> source,
-      "target" -> target
-    ))
 
   def transparentLinks(nodes: Seq[Int]): Seq[LinkProps] =
     if (2 > nodes.length) Seq.empty

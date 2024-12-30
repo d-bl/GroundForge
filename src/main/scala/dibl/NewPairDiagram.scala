@@ -90,18 +90,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       val leftNode = findNode(target.srcLeft, target.target)
       val rightNode = findNode(target.srcRight, target.target)
       Seq(
-        LinkProps.pairLink(
-          source = leftNode.seqNr,
-          target = target.seqNr,
-          start = leftNode.color,
-          mid = leftNode.twistsToLeftOf(target) - 1,
-          end = target.color),
-        LinkProps.pairLink(
-          source = rightNode.seqNr,
-          target = target.seqNr,
-          start = rightNode.color,
-          mid = rightNode.twistsToRightOf(target) - 1,
-          end = target.color)
+        LinkProps.pairLink(source = leftNode.seqNr, target = target.seqNr, mid = leftNode.twistsToLeftOf(target) - 1),
+        LinkProps.pairLink(source = rightNode.seqNr, target = target.seqNr, mid = rightNode.twistsToRightOf(target) - 1)
       )
     }
 

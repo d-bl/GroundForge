@@ -63,22 +63,22 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
     def twistMark(count: Int = 1) = {
       // another scale in PairSvg
-      val xl = 2 * 1.2
-      val xs = 1.5 * 1.2
+      val xl = 4 * 1.2
+      val xs = 2.5 * 1.2
       val d = if (count == 1) s"M 0,$xl 0,-$xl"
               else if (count == 2) s"M -1,$xl V -$xl M 1,$xl 1,-$xl"
                    else s"M -$xs,$xl V -$xl M $xs,$xl $xs,-$xl  M 0,$xl 0,-$xl"
 
       s"""<marker id="twist-$count"
          | viewBox="-3 -3 6 6"
-         | markerWidth="7"
-         | markerHeight="7"
+         | markerWidth="6"
+         | markerHeight="6"
          | orient="auto"
          | markerUnits="userSpaceOnUse">
          | <path d="$d"
          |  fill="#000"
          |  stroke="#000"
-         |  stroke-width="1px"></path>
+         |  stroke-width="1.5px"></path>
          |</marker>
          |""".stripMargin.stripLineEnd.replaceAll("[\n\r]", "")
     }
@@ -164,7 +164,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       s"""<g $event
          | class="${ node.cssClasses }"
          | transform="translate(${ node.x },${ node.y })"
-         |><title>$title</title><g transform="scale(1.8)">${ PairSvg.shapes(title.replace(" .*", "")) }</g></g>""".stripMargin
+         |><title>$title</title><g transform="scale(1.5)">${ PairSvg.shapes(title.replace(" .*", "")) }</g></g>""".stripMargin
     else
     s"""<path $event
        | class="${node.cssClasses}$extraClass"

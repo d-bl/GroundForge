@@ -74,44 +74,38 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       }
     }
 
+    def findOther(source: Int, originalTarget: Int): Option[Int] = {
+      threadDiagram.filterLinks.collectFirst {
+        case (src, target) if src == source && target != originalTarget => target
+      }
+    }
+
     val pairNodes = threadDiagram.nodes.map(n => node(translateTitle(n), n.x, n.y))
     val links = threadDiagram
       .filterLinks
       .map { case (source, target) =>
-        createPairLink(
-          source, target,
-          pairNodes(source),
-          pairNodes(target),
-          threadDiagram.nodes(source).instructions,
-          threadDiagram.nodes(target).instructions
-        )
+        createPairLink(source, target, pairNodes(source), pairNodes(target), findOther(source, target).map(i => pairNodes(i)))
       }
     Diagram(pairNodes, links)
   }
 
-  private def createPairLink(source: Int, target: Int,
-                             sourcePairNode: NodeProps,
-                             targetPairNode: NodeProps,
-                             sourceThreadNode: String,
-                             targetThreadNode: String
-                            ) = {
-    val sourceX = sourcePairNode.x
-    val targetX = targetPairNode.x
-    val smaller: Boolean = {
-      if (sourceX == targetX)
-        sourcePairNode.id < targetPairNode.id
-      else sourceX < targetX
+  private def createPairLink(source: Int, target: Int, sourcePairNode: NodeProps, targetPairNode: NodeProps, maybeOtherTarget: Option[NodeProps]) = {
+    val actualX = targetPairNode.x
+    val otherX = maybeOtherTarget.map(_.x).getOrElse(actualX)
+    val toRight: Boolean = {
+      if (actualX == otherX)
+        targetPairNode.id > maybeOtherTarget.map(_.id).getOrElse(targetPairNode.id)
+      else actualX > otherX
     }
     val nrOfTwists: Int = {
-      if (smaller)
-          sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsLeft
-        else
-          sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsRight
+      if (toRight) {
+        sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsLeft
+      }
+      else {
+        sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsRight
+      }
     }
-    pairLink(source, target,
-      start = sourcePairNode.color,
-      mid = nrOfTwists - 1,
-      end = targetPairNode.color
-    )
+    println(s"pair link with $nrOfTwists twists toRight=$toRight $sourcePairNode => $targetPairNode ===== $maybeOtherTarget")
+    pairLink(source, target, mid = nrOfTwists)
   }
 }
