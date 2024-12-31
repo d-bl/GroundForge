@@ -15,7 +15,7 @@
 */
 package dibl
 
-import dibl.LinkProps.pairLink
+import dibl.LinkProps.{ WhiteStart, pairLink }
 import dibl.NodeProps.node
 
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
@@ -81,31 +81,35 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     }
 
     val pairNodes = threadDiagram.nodes.map(n => node(translateTitle(n), n.x, n.y))
+
+    def createPairLink(source: Int, target: Int) = {
+      val sourcePairNode = pairNodes(source)
+      val targetPairNode = pairNodes(target)
+
+      def twistsToRight = {
+        sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsLeft
+      }
+
+      def twistsToLeft = {
+        sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsRight
+      }
+      val nrOfTwists = threadDiagram.links.collectFirst { case l if
+        l.source == source && l.target == target =>
+        (l.getClass.getSimpleName, threadDiagram.node(l.source).instructions) match {
+          case ("WhiteStart", "cross") => twistsToLeft
+          case ("WhiteStart", "twist") => twistsToRight
+          case ("WhiteEnd", "cross") => twistsToRight
+          case ("WhiteEnd", "twist") => twistsToLeft
+          case _ => 0
+        }
+      }.getOrElse(0)
+      pairLink(source, target, mid = nrOfTwists)
+    }
     val links = threadDiagram
       .filterLinks
       .map { case (source, target) =>
-        createPairLink(source, target, pairNodes(source), pairNodes(target), findOther(source, target).map(i => pairNodes(i)))
+        createPairLink(source, target)
       }
     Diagram(pairNodes, links)
-  }
-
-  private def createPairLink(source: Int, target: Int, sourcePairNode: NodeProps, targetPairNode: NodeProps, maybeOtherTarget: Option[NodeProps]) = {
-    val actualX = targetPairNode.x
-    val otherX = maybeOtherTarget.map(_.x).getOrElse(actualX)
-    val toRight: Boolean = {
-      if (actualX == otherX)
-        targetPairNode.id > maybeOtherTarget.map(_.id).getOrElse(targetPairNode.id)
-      else actualX > otherX
-    }
-    val nrOfTwists: Int = {
-      if (toRight) {
-        sourcePairNode.closingTwistsRight + targetPairNode.openingTwistsLeft
-      }
-      else {
-        sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsRight
-      }
-    }
-    println(s"pair link with $nrOfTwists twists toRight=$toRight $sourcePairNode => $targetPairNode ===== $maybeOtherTarget")
-    pairLink(source, target, mid = nrOfTwists)
   }
 }

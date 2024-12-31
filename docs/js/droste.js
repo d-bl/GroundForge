@@ -145,6 +145,8 @@ function setPairDiagram(level, threadDiagram) {
     container.innerHtml = DiagramSvg.render(pairDiagram, "1px", true, 744, 1052, 0.0)
     container.style.backgroundColor = '#FFF';
     showGraph('#'+containerId, pairDiagram)
+    d3.select(`#${containerId} g`)
+        .attr("transform","scale(1.3)")
 }
 function setThreadDiagram(level, pairDiagram) {
     setLinks(level)
@@ -152,11 +154,11 @@ function setThreadDiagram(level, pairDiagram) {
     var threadDiagram = ThreadDiagram.create(pairDiagram)
     var container = document.getElementById(containerID)
     container.data = threadDiagram
-    container.innerHTML  = DiagramSvg.render(threadDiagram, "2px", true, 744, 1052, 0.0).replace("<g>","<g transform='scale(0.5,0.5)'>")
+    container.innerHTML  = DiagramSvg.render(threadDiagram, "2px", true, 744, 1052, 0.0)
     container.style.backgroundColor = '#FFF';
     showGraph('#'+containerID, threadDiagram)
     d3.select(`#${containerID} g`)
-        .attr("transform","scale(0.5,0.5)")
+        .attr("transform","scale(0.5)")
 }
 
 
