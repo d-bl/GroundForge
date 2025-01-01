@@ -24,6 +24,64 @@ function load() {
     d3.select('#wandThreadLevel2').on('click',setThreadLevel2)
     d3.select('#wandThreadLevel3').on('click',setThreadLevel3)
 }
+function clickedStitch(event) {
+    function circle() {
+        const svgNS = "http://www.w3.org/2000/svg";
+        const circle = document.createElementNS(svgNS, "circle");
+        circle.setAttribute("cx", 0);
+        circle.setAttribute("cy", 0);
+        circle.setAttribute("r", 9);
+        circle.setAttribute("fill", '#000');
+        circle.style.opacity = 0.15;
+        return circle;
+    }
+
+// Example usage:
+    const svgElement = document.querySelector('svg');
+
+    // Find the closest ancestor with the onclick attribute
+    const targetElement = event.currentTarget.closest('[onclick]');
+
+    const eventTitle = targetElement.getElementsByTagName("title")[0].innerHTML;
+
+    const containerId = event.currentTarget.closest('svg').parentNode.id;
+    const textId = 'droste' + containerId.charAt(containerId.length - 1);
+    const threadId = 'drosteThread' + containerId.charAt(containerId.length - 1);
+    const stitchId = eventTitle.replace(/.* /,"");
+    const stitchDef = document.getElementById("stitchDef").value
+
+    // Add the stitch to the textarea
+    document.getElementById(textId).value += `\n${stitchId}=${stitchDef}`;
+
+    // shade for out of date diagram panels
+    if (textId === 'droste2') {
+        clearThreadLevel2()
+    }else {
+        clearThreadLevel3()
+    }
+
+    // highlight out of date nodes in thread diagram (their titles contain stitchId)
+    const threads  = document.getElementById(threadId)
+    for (let path of threads.getElementsByTagName('path')) {
+        const titleEl = path.getElementsByTagName("title")[0];
+        if (!titleEl) continue;
+        let title = titleEl.innerHTML;
+        if (title.includes(' - ' + stitchId)) {
+            console.log(`title: ${title} ${path.style.fill}`)
+            path.style.opacity = 1;
+        }
+    }
+
+    // highlight out of date nodes in pair diagram
+    const matchingSiblings = [];
+    for (sibling of targetElement.parentNode.children) {
+        let titleEl = sibling.getElementsByTagName("title")[0];
+        if (titleEl && eventTitle === titleEl.innerHTML) {
+            sibling.appendChild(circle());
+            // TODO changing shape would be better but thread marks are a problem
+        }
+    }
+}
 function clearAll(){
     document.getElementById('drostePair2').innerHTML = ""
     clearThreadLevel2()
@@ -77,14 +135,14 @@ function clearThreadLevel2() { // level 2 == step 1
     clearDownloadLinks()
     let panels = d3.selectAll("#drostePair2, #drosteThread2, #drostePair3, #drosteThread3");
     panels.property("data","")
-    panels.style("background-color","#DDD")
+    panels.style("background-color","#EEE")
 }
 function clearThreadLevel3() { // level 3 == step 2
     setLinks(3)
     clearDownloadLinks()
     let panels = d3.selectAll("#drostePair3, #drosteThread3");
     panels.property(data,"")
-    panels.style("background-color","#DDD")
+    panels.style("background-color","#EEE")
 }
 function clearDownloadLinks() {
     d3.selectAll("#drostePair2DownloadLink, #drosteThread2DownloadLink, #drostePair3DownloadLink, #drosteThread3DownloadLink")

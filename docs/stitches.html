@@ -22,7 +22,7 @@
     <meta name="msapplication-config" content="/GroundForge/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body onload="load();loadStitchExamples()">
+<body onload="load();loadStitchExamples();loadStitchForm(false)">
     <header>
         <div>
             <h1><a href="/">Diagrams for Bobbin Lace</a></h1>
@@ -83,18 +83,6 @@
             <label for="threadColor">Thread/stitch highlights</label>
             <input type="color" id="threadColor" name="threadColor" value="#ff0000">
             <br><br><div id="gallery"></div>
-            <p>
-            <label for="stitchDef"><span id="colorCode"></span></label>
-            <input type="text" id="stitchDef" name="stitchDef" value="ct" onkeyup="setColorCode()" onclick="return false" onsubmit="return false">
-            flip:
-            <a class="button" href="javascript:flip2d()">&harr;</a>
-            <a class="button" href="javascript:flip2p()">&varr;</a>
-            <a class="button" href="javascript:flip2q()">both</a>
-            <br>
-            <a class="button" href="javascript:setAllStitches()">assign to all</a>
-            <a class="button" href="javascript:setIgnoredStitches()">assign to ignored</a>
-                or click a stitch in the diagram.
-            </p>
         </form>
         <p id="whiting"></p><br>
         <figure >

@@ -71,36 +71,6 @@ function maximize(containerId) {
 function minimize(containerId) {
     d3.select(containerId).style("width","250px").style("height","250px")
 }
-function paintStitchValue () {
-
-  return d3.select("#stitchDef").node().value.toLowerCase().replace(/[^ctlrp-]/g,'')
-}
-function setColorCode() {
-    d3.select("#colorCode").html(`
-        <svg width="20" height="25">
-          <g transform="scale(2,2)">
-            <g transform="translate(5,6)">
-              ${PairSvg.shapes(d3.select("#stitchDef").node().value)}
-            </g>
-          </g>
-        </svg>`)
-}
-function flip2d() {
-  var n = d3.select('#stitchDef').node()
-  n.value = n.value.toLowerCase().replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
-  setColorCode()
-  n.focus()
-}
-function flip2p() {
-  var n = d3.select('#stitchDef').node()
-  n.value = n.value.toLowerCase().split("").reverse().join("")
-  setColorCode()
-  n.focus()
-}
-function flip2q() {
-  flip2d()
-  flip2p()
-}
 function clickedStitch(event) {
 
     var id = event.currentTarget.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
