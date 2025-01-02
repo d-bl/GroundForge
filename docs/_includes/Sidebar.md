@@ -20,9 +20,7 @@
   ![-](/GroundForge/images/minimize.png)
 * [Apply forces](/GroundForge-help/Icons) ![-](/GroundForge/images/animate.png)
 * [Download](/GroundForge-help/Download) ![-](/GroundForge/images/download.jpg)
-* Color codes, twist marks
-    * [1 color per stitch](/GroundForge-help/Color-Code)
-    * [up to 4 per stitch](/GroundForge-help/color-rules) ![-](/GroundForge/images/to-color-rules.png)
+* [color-code](/GroundForge-help/color-rules) ![-](/GroundForge/images/to-color-rules.png)
 
 ### Tutorials
 

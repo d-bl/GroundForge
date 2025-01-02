@@ -154,7 +154,7 @@ Animation alias nudging nodes
 ### pair.html
 
 The function `PairSvg.render` generates the SVG content for a pair diagram
-with [4-colors-per-stitch](/GroundForge-help/Color-Code).
+with [4-colors-per-stitch](/GroundForge-help/color-rules).
 The generated elements with class `link` have identifiers that concatenate 
 the identifiers of the source/target elements with class `node`. 
 The identifiers of the SVG elements are unique.

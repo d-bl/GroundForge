@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Snowflakes
+title: GF; Mix Snowflakes
 javascript:
   - d3.v4.min.js
   - GroundForge-opt.js
