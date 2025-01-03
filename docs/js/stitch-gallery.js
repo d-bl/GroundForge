@@ -48,11 +48,7 @@ function loadStitchForm(isDroste) {
             flip: 
             <a class="button" href="javascript:flip2d()">&harr;</a>
             <a class="button" href="javascript:flip2p()">&varr;</a>
-            <a class="button" href="javascript:flip2q()">both</a>
-            <br>
-            ${ign}
-            <a class="button" href="javascript:setAllStitches()">assign to all</a>            
-            or click a stitch in the diagram. ${note}`
+            <a class="button" href="javascript:flip2q()">both</a>`
     let element = document.querySelector("#gallery");
     element.parentNode.insertBefore(p, element.nextSibling)
     setStitch("ct")
