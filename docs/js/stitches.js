@@ -96,12 +96,14 @@ function setAllStitches() {
 }
 function setIgnoredStitches() {
     var replacement = `=${paintStitchValue()}`
-    var search = new RegExp(`=-&`,'g')
-    var searchLast = new RegExp(`=-^`,'g')
-    let q = getQ()
-        .replace(search, replacement)
-        .replace(searchLast, replacement)
+    let q = getQ().split('&').map((kv => replaceIgnored(kv, replacement))).join('&')
     show(q)
+}
+function replaceIgnored(kv, replacement) {
+    if (/[a-z][0-9]+=-/.test(kv)) {
+        return kv.replace(/=-/, replacement);
+    }
+    return kv;
 }
 function whiting (kv) {
     var k = kv.trim().replace(/[^a-zA-Z0-9]/g,"")
