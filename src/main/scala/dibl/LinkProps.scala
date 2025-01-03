@@ -16,10 +16,10 @@
 package dibl
 
 import java.lang.Math.sqrt
-
 import dibl.Force.Point
 import dibl.LinkProps.Path
 
+import scala.collection.Seq
 import scala.scalajs.js
 
 sealed abstract class LinkProps extends Props {
@@ -39,9 +39,11 @@ sealed abstract class LinkProps extends Props {
     jsItem("target") = target
     jsItem("weak") = weak // TODO rename to invisible
     jsItem("withPin") = withPin
+    jsItem("start") = start
     jsItem
   }
 
+  val markers: Map[String, Any] = props.filter{case (k,v) => Seq("start", "end", "mid").contains(k)}
   val start: String = props.getOrElse("start", "").asInstanceOf[String]
   val end: String = props.getOrElse("end", "").asInstanceOf[String]
   val nrOfTwists: Int = props.getOrElse("mid", 0).asInstanceOf[Int]
