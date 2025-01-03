@@ -164,7 +164,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       s"""<g $event
          | class="${ node.cssClasses }"
          | transform="translate(${ node.x },${ node.y })"
-         |><title>$title</title><g transform="scale(1.5)">${ PairSvg.shapes(title.replace(" .*", "")) }</g></g>""".stripMargin
+         |><title>$title</title><g transform="scale(1.5)">${ PairSvg.shapes(title.replaceAll(" .*", "")) }</g></g>""".stripMargin
     else
     s"""<path $event
        | class="${node.cssClasses}$extraClass"
