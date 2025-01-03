@@ -57,14 +57,14 @@ function loadStitchForm(isDroste) {
 function flip2d() {
     var n = d3.select('#stitchDef').node()
     n.value = n.value.toLowerCase().replace(/l/g, "R").replace(/r/g, "L").toLowerCase()
-    setColorCode(document.querySelector("#colorCode"))
+    setColorCode()
     n.focus()
 }
 
 function flip2p() {
     var n = d3.select('#stitchDef').node()
     n.value = n.value.toLowerCase().split("").reverse().join("")
-    setColorCode(document.querySelector("#colorCode"))
+    setColorCode()
     n.focus()
 }
 
@@ -73,10 +73,10 @@ function flip2q() {
     flip2p()
 }
 
-function setColorCode(element) {
+function setColorCode() {
     let node = d3.select("#stitchDef").node();
     if (node)
-        element.innerHTML = `
+        document.querySelector('#colorCode').innerHTML = `
         <svg width="20px" height="25px">
           <g transform="scale(2,2)">
             <g transform="translate(5,6)">
@@ -90,5 +90,5 @@ function setStitch(stitch) {
     const n = document.querySelector("#stitchDef")
     n.value = stitch
     n.focus()
-    setColorCode(document.querySelector("#colorCode"));
+    setColorCode();
 }
