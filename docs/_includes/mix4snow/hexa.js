@@ -120,11 +120,11 @@ function setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
     let element = document.getElementById(printHrefId);
     element
         .setAttribute("href", stitchesURL + newQ)
-    diagrams(newQ);
+    diagrams(twistFootsides(newQ));
 }
 
 function diagrams(q) {
-    console.log("--------" + q)
+    console.log("--------" + q.replace("f8=llttcrr&f16=llttcrr","f8=c&f16=c").replace("u8=rrttcll&u16=rrttcll","u8=c&u16=c","u8=c&u16=c"))
     const config = TilesConfig(q);
     showGraph('#threads', ThreadDiagram.create(NewPairDiagram.create(config)))
     d3.select('#threads g').attr("transform", "scale(0.5,0.5)")
@@ -212,6 +212,10 @@ function flip_b2p(id) {
     n.focus();
 }
 
+function twistFootsides(q) {
+    return q.replace("f8=c&f16=c", "f8=llttcrr&f16=llttcrr").replace("u8=c&u16=c", "u8=rrttcll&u16=rrttcll");
+}
+
 document.addEventListener('DOMContentLoaded', (event) => {
     var q = document.URL.split(/[?#]/)[1];
     if (!q) {
@@ -226,7 +230,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             ",,f80=f160=ctctttttlllllctclllllll"+
             ",u80=u160=ctctttttrrrrrctcrrrrrrr";
     }
-    diagrams(q.replace("f8=c&f16=c","f8=llttcrr&f16=llttcrr").replace("u8=c&u16=c","u8=rrttcll&u16=rrttcll"));
+    diagrams(twistFootsides(q));
     document.getElementById('toDiagrams').setAttribute("href", drosteURL + q);
     document.getElementById('toPrintFriendly').setAttribute("href", stitchesURL + q);
 })
