@@ -223,10 +223,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "&droste2=g160=g161=h160=ttctc,g15=h41=h42=ctctt" +
             ",,g80=j120=j121=lllctc,g81=lllctcl,h80=rrrctc,h81=rrrctcr,g120=g121=ctclll,h92=h93=i160=i161=ctcrrr" +
             ",j121=lllctcl,j133=ctcl,i53=i41=ctcr" +
-            ",,f80=p81=f160=p161=ctcttttttttttlllllctc,f82=f162=rrtctctrr,f83=f163=rrttctc"+
-            ",,u82=u162=ctc,u81=u161=tttttttctctttttt,u83=u163=tttttctc,u80=u160=tttctc";
+            ",,f80=f160=ctctttttlllllctclllllll"+
+            ",u80=u160=ctctttttrrrrrctcrrrrrrr";
     }
+    diagrams(q.replace("f8=c&f16=c","f8=llttcrr&f16=llttcrr").replace("u8=c&u16=c","u8=rrttcll&u16=rrttcll"));
     document.getElementById('toDiagrams').setAttribute("href", drosteURL + q);
     document.getElementById('toPrintFriendly').setAttribute("href", stitchesURL + q);
-    diagrams(q);
 })
