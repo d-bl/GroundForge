@@ -213,22 +213,24 @@ function flip_b2p(id) {
 }
 
 function twistFootsides(q) {
-    return q.replace("f8=c&f16=c", "f8=llttcrr&f16=llttcrr").replace("u8=c&u16=c", "u8=rrttcll&u16=rrttcll");
+    return q.replace("f8=crc&f16=crc", "f8=ttcrctt&f16=ttcrctt").replace("u8=clc&u16=clc", "u8=tclcttt&u16=tclcttt");
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
     var q = document.URL.split(/[?#]/)[1];
     if (!q) {
         q = "tile=48x-,xrx-,xrx-,xr83,-x48,-xxr,-xxr,31xr,17-x,rx-x,rx-x,rx31,x-17,x-rx,x-rx,83rx" +
-            "&f8=c&f16=c&footside=-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r,-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r&" +
-            "&u8=c&u16=c&headside=x,x,x,8,r,r,r,r,x,x,x,8,r,r,r,r" +
+            "&f8=crc&f16=crc&footside=-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r,-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r&" +
+            "&u8=clc&u16=clc&headside=x,x,x,8,r,r,r,r,x,x,x,8,r,r,r,r" +
             "&shiftColsSW=0&shiftRowsSW=16&shiftColsSE=4&shiftRowsSE=8&patchWidth=14&patchHeight=35" +
             "&i1=rc&h1=ct&g1=clcrcl&h2=crclcr&n5=llctt&i5=ctc&g5=ct&j9=lc&h9=ctc&j13=ctc&g13=lc&g16=tc&h16=rclcrc&h4=ct&h8=cr&g8=ctc&g9=lc&g12=lc&i12=ctc&j12=cl&i13=rc&j16=lc&j4=ctc&i4=cr&j5=lc&i8=rc&j8=lc&i16=rc" +
             "&droste2=g160=g161=h160=ttctc,g15=h41=h42=ctctt" +
             ",,g80=j120=j121=lllctc,g81=lllctcl,h80=rrrctc,h81=rrrctcr,g120=g121=ctclll,h92=h93=i160=i161=ctcrrr" +
             ",j121=lllctcl,j133=ctcl,i53=i41=ctcr" +
-            ",,f80=f160=ctctttttlllllctclllllll"+
-            ",u80=u160=ctctttttrrrrrctcrrrrrrr";
+            ",,f80=f82=f160=f162=ctcllllllll" +
+            ",f81=f161=lllllctclllll" +
+            ",u80=u82=u160=u162=ctcrrrrrrrr" +
+            ",u81=u161=rrrrrctcrrrrr";
     }
     diagrams(twistFootsides(q));
     document.getElementById('toDiagrams').setAttribute("href", drosteURL + q);
