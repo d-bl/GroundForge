@@ -15,7 +15,7 @@
 */
 package dibl
 
-import dibl.LinkProps.{ WhiteStart, pairLink }
+import dibl.LinkProps.pairLink
 import dibl.NodeProps.node
 
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
@@ -74,15 +74,8 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       }
     }
 
-    def findOther(source: Int, originalTarget: Int): Option[Int] = {
-      threadDiagram.filterLinks.collectFirst {
-        case (src, target) if src == source && target != originalTarget => target
-      }
-    }
-
     val pairNodes = threadDiagram.nodes.map(n => node(translateTitle(n), n.x, n.y))
-
-    def createPairLink(source: Int, target: Int) = {
+    def nrOfTwists(source: Int, target: Int) = {
       val sourcePairNode = pairNodes(source)
       val targetPairNode = pairNodes(target)
 
@@ -93,7 +86,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       def twistsToLeft = {
         sourcePairNode.closingTwistsLeft + targetPairNode.openingTwistsRight
       }
-      val nrOfTwists = threadDiagram.links.collectFirst { case l if
+      threadDiagram.links.collectFirst { case l if
         l.source == source && l.target == target =>
         (l.getClass.getSimpleName, threadDiagram.node(l.source).instructions) match {
           case ("WhiteStart", "cross") => twistsToLeft
@@ -103,13 +96,22 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
           case _ => 0
         }
       }.getOrElse(0)
-      pairLink(source, target, mid = nrOfTwists)
     }
-    val links = threadDiagram
-      .filterLinks
-      .map { case (source, target) =>
-        createPairLink(source, target)
-      }
-    Diagram(pairNodes, links)
+
+    val diagramLinks = threadDiagram.filterLinks
+    val leftValues = diagramLinks.map(_._1).toSet
+    val rightValues = diagramLinks.map(_._2).toSet
+
+    val filteredLinks = diagramLinks.filter { case (left, right) =>
+      // remove links that are not connected to any other link
+      leftValues.contains(right) || rightValues.contains(left)
+    }
+    val usedNodeIndices = filteredLinks.flatMap{case (source, target) => Seq(source, target)}.distinct
+    val indexMap = usedNodeIndices.zipWithIndex.toMap
+
+    val links = filteredLinks.map { case (source, target) =>
+      pairLink(indexMap(source), indexMap(target), mid = nrOfTwists(source, target))
+    }
+    Diagram(usedNodeIndices.map(pairNodes), links)
   }
 }

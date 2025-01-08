@@ -9,8 +9,7 @@ function load() {
     setTextArea(3, q)
 
     // initial thread diagram used as pair diagram
-    let trimmed = q.split('&').map(unduplicate).join('&')
-    let pairDiagram = NewPairDiagram.create(TilesConfig(trimmed)) // old style pair diagram
+    let pairDiagram = NewPairDiagram.create(TilesConfig(q)) // old style pair diagram
     document.getElementById("droste2").data = ThreadDiagram.create(pairDiagram)
     setPairLevel2()
 
@@ -100,19 +99,6 @@ function setLinks(level){
     if (window.location.search.includes('source='))
         source = window.location.search.replace(/.*source=/,'').replace(/&.*/,'')
     document.getElementById('to_stitches').href = l.replace('droste.html',source)
-}
-function unduplicate(s){
-    // prevent invisible floating nodes caused by repeated twists and/or crossings
-    var kv = s.split('=')
-    if(!kv[1]) return s
-    return kv[0]+'='+kv[1]
-        .replace(/[tlrp]*t[tlrp]+/g, 't')
-        .replace(/[tlrp]+t/g, 't')
-        .replace(/[lp]*[rp]+l[lp]+/g, 't')
-        .replace(/[lp]+[rp]+/g, 't')
-        .replace(/[lp]+/g, 'l')
-        .replace(/[rp]+/g, 'r')
-        .replace(/[cp]+c[cp]+/g, '')
 }
 function setTextArea(level, q){ // level 2 == step 1
     let key = 'droste'+level
