@@ -40,8 +40,8 @@ function showGraph(containerId, diagram) {
     }
 
     function moveToNW() {
-        var x = nodeDefs.reduce(minX).x - 14
-        var y = nodeDefs.reduce(minY).y - 14
+        var x = nodeDefs.filter(notFloating).reduce(minX).x - 14
+        var y = nodeDefs.filter(notFloating).reduce(minY).y - 14
         function moveNode(jsNode) { return 'translate('+(jsNode.x-x)+','+(jsNode.y-y)+')' }
         function drawPath(jsLink) {
             var s = jsLink.source
@@ -52,6 +52,11 @@ function showGraph(containerId, diagram) {
         }
         links.attr("d", drawPath);
         nodes.attr("transform", moveNode);
+    }
+
+    function notFloating(min) {
+        let s = nodes.nodes()[min.index].textContent;
+        return !(s.endsWith('- ') || s.startsWith("Pair") || s.startsWith("thread"));
     }
 
     function minX (min, node) { return min.x < node.x ? min : node }
