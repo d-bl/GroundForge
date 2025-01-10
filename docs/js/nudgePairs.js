@@ -1,14 +1,31 @@
 
 /**
  * container: d3.selection of element containing an SVG generated with PairSvg.create
- * height and width of the container must be set in pixels
- * https://devdocs.io/d3~4/d3-force
- * https://devdocs.io/d3~4/d3-selection
+ * in other words: the primary pair diagram
  */
-function nudgePairs(containerId, cx, cy) {
+function nudgePairs(containerId) {
 
-  var svg = d3.select(containerId+" svg")
-  svg.select("#cloned").attr("transform").replace("matrix(","").replace(/,.*/,"")
+    var svg = d3.select(containerId+" svg")
+    svg.select("#cloned").attr("transform").replace("matrix(","").replace(/,.*/,"")
+
+    nudgeDiagram(svg);
+}
+
+/**
+ * @param svg has
+ *  - elements with
+ *    - class node
+ *    - an id attribute
+ *    - an attribute transform="translate(x,y)"
+ *  - elements with
+ *    - class link
+ *    - an id attribute containing the IDs of their nodes separated with '-'
+ *    - an attribute d defining a path with or without a midpoint
+ * See also
+ *   https://devdocs.io/d3~4/d3-force
+ *   https://devdocs.io/d3~4/d3-selection
+ */
+function nudgeDiagram(svg) {
 
   // collect data of the SVG elements with class node
 
@@ -32,11 +49,9 @@ function nudgePairs(containerId, cx, cy) {
   // each link-id is split into the IDs of their nodes
 
   function getLinkData(n){
-    var hasMidPoint = n.attributes["d"].nodeValue
-                       .replace(/[^ ]/g,"").length > 2
     var ids = n.attributes["id"].nodeValue.split("-")
     return {
-      mid: hasMidPoint,
+      sectionType: n.attributes["class"].nodeValue.replace(/.*White/,"White").replace(/ .*/,""),
       source: nodeMap.get(ids[0]),
       target: nodeMap.get(ids[1])
     }
@@ -58,11 +73,11 @@ function nudgePairs(containerId, cx, cy) {
       var s = jsLink.source
       var t = jsLink.target
       // priority for preventing code duplication over less independency
-      return PairSvg.linkPath(s.x, s.y, t.x, t.y)
+      return DiagramSvg.linkPath(jsLink.sectionType, s.x, s.y, t.x, t.y)
   }
   var tickCounter = 0
   function onTick() {
-      if (0 !=  (tickCounter++ % 5) ) return
+      if (0 !==  (tickCounter++ % 5) ) return
       links.attr("d", drawPath);
       nodes.attr("transform", moveNode);
   }
@@ -70,16 +85,21 @@ function nudgePairs(containerId, cx, cy) {
   // final position of diagram
 
   function moveToNW() {
+
+      function notFloating(min) {
+          let s = nodes.nodes()[min.index].textContent;
+          return !(s.endsWith('- ') || s.startsWith("Pair") || s.startsWith("thread"));
+      }
       // console.log(new Date().getMilliseconds())
-      var x = nodeData.reduce(minX).x - 3
-      var y = nodeData.reduce(minY).y - 3
+      var x = nodeData.filter(notFloating).reduce(minX).x - 3
+      var y = nodeData.filter(notFloating).reduce(minY).y - 3
       // console.log(`minX = ${x}; minY = ${y}`)
       function moveNode(jsNode) { return 'translate('+(jsNode.x-x)+','+(jsNode.y-y)+')' }
       function drawPath(jsLink) {
           var s = jsLink.source
           var t = jsLink.target
           // priority for preventing code duplication over less independency
-          return PairSvg.linkPath(s.x - x, s.y-y, t.x - x, t.y -y)
+          return DiagramSvg.linkPath(jsLink.sectionType, s.x - x, s.y-y, t.x - x, t.y -y)
       }
       links.attr("d", drawPath);
       nodes.attr("transform", moveNode);
@@ -90,15 +110,14 @@ function nudgePairs(containerId, cx, cy) {
 
   // define forces with the collected data
 
-  var forceLink = d3
-    .forceLink(linkData)
-    .strength(50)
-    .distance(11.5)
-    .iterations(30)
   d3.forceSimulation(nodeData)
     .force("charge", d3.forceManyBody().strength(-1000))
-    .force("link", forceLink)
-    .force("center", d3.forceCenter(cx, cy))
+    .force("link", d3
+        .forceLink(linkData)
+        .strength(50)
+        .distance(11.5)
+        .iterations(30))
+    .force("center", d3.forceCenter(100, 100))
     .alpha(0.0035)
     .on("tick", onTick)
     .on("end", moveToNW)

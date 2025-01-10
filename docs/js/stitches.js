@@ -10,7 +10,7 @@ function load() {
 }
 function applyForces() {
     var cfg = TilesConfig(getQ())
-    nudgePairs('#pair', cfg.totalCols*6,cfg.totalRows*6)
+    nudgePairs('#pair')
 }
 function getQ() {
     return d3.select('#to_self').attr('href').replace(/.*[?]/, "");

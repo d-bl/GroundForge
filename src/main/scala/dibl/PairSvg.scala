@@ -143,7 +143,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       case _ => """; marker-mid: url("#twist-3")"""
     }
     val Array(start,end) = id.split("-")
-    val d = linkPath(sX, sY, tX, tY)
+    val d = DiagramSvg.linkPath("", sX, sY, tX, tY)
     val style = s"stroke: #000; stroke-width: 1px; fill: none; opacity: 1$marker"
     s"<path id='$id' class='link starts_at_$start ends_at_$end' d='$d' style='$style'></path>"
   }
@@ -301,7 +301,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   @JSExport
   def linkPath(sX: Double, sY: Double, tX: Double, tY: Double): String = {
-    s"M $sX,$sY ${ sX + (tX - sX) / 2 } ${ sY + (tY - sY) / 2 } $tX,$tY"
+    val mX = sX + (tX - sX) / 2
+    val mY = sY + (tY - sY) / 2
+    s"M $sX,$sY $mX $mY $tX,$tY"
   }
 
   private def svgTag (width: Int = 744, height: Int = 1052) =

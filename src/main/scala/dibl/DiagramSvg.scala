@@ -17,7 +17,7 @@
 package dibl
 
 import dibl.Force.Point
-import dibl.LinkProps.Path
+import dibl.LinkProps.{ Path, WhiteEnd, WhiteEndLeft, WhiteStart, WhiteStartLeft, WhiteStartRight }
 
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
@@ -101,6 +101,35 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     pathDescription(link, sX, sY, tX, tY)
   }
 
+
+  @JSExport
+  def linkPath(sectionType: String, sX: Double, sY: Double, tX: Double, tY: Double): String = {
+    val simplePath = Path(Point(sX, sY), Point(tX, tY))
+
+    def straight(threadSection: LinkProps) = {
+      val Path(s, t, _) = threadSection.renderedPath(simplePath)
+      s"M ${ s.x },${ s.y } ${ t.x },${ t.y }"
+    }
+
+    def curved(threadSection: LinkProps) = {
+      val Path(s, t, Some(c)) = threadSection.renderedPath(simplePath)
+      s"M ${ s.x },${ s.y } S ${ c.x},${c.y} ${ t.x },${ t.y }"
+    }
+
+    sectionType match {
+      case "WhiteStart" => straight(WhiteStart(Map()))
+      case "WhiteStartLeft" => curved(WhiteStartLeft(Map()))
+      case "WhiteStartRight" => curved(WhiteStartRight(Map()))
+      case "WhiteEnd" => straight(WhiteEnd(Map()))
+      case "WhiteEndLeft" => curved(WhiteEndLeft(Map()))
+      case "WhiteEndRight" => curved(WhiteEndLeft(Map()))
+      case _ =>
+        val mX = sX + (tX - sX) / 2
+        val mY = sY + (tY - sY) / 2
+        s"M $sX,$sY $mX $mY $tX,$tY"
+    }
+  }
+
   @JSExport
   def pathDescription(link: LinkProps, sX: Double, sY: Double, tX: Double, tY: Double): String = {
 
@@ -132,11 +161,13 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       if (twists <= 0) ""
       else s"; marker-mid: url('#twist-$twists')"
     }
+    val extraClass =  if (link.getClass.getSimpleName.startsWith("White")) link.getClass.getSimpleName else ""
     // TODO no stroke color/width would allow styling threads with CSS
     // what in turn allows changes without repeating the simulation
     // stand-alone SVG does require stroke details
     s"""<path
-       | class="${link.cssClass}"
+       | class="${link.cssClass} $extraClass"
+       | id="n${link.source}-n${link.target}"
        | d="$pd"
        | style="stroke: rgb(0, 0, 0); stroke-width: $strokeWidth; fill: none; opacity: $opacity$markers"
        |></path>""".stripMargin
@@ -144,7 +175,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   private def renderNodes(nodes: Seq[NodeProps],
                           opacityOfHiddenObjects: Double = 0
-                         ): String = nodes.map { node =>
+                         ): String = nodes.zipWithIndex.map { case(node, i) =>
     val opacity = if (node.bobbin || node.pin) 1 else opacityOfHiddenObjects
     val stroke = if (node.bobbin) "rgb(0, 0, 0); stroke-width: 2px" else "none"
     val title = if (node.bobbin) node.cssClasses.replaceAll(".*d", "thread ")
@@ -163,11 +194,13 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     if (extraClass == "" && !title.contains("thread"))
       s"""<g $event
          | class="${ node.cssClasses }"
+         | id="n$i"
          | transform="translate(${ node.x },${ node.y })"
          |><title>$title</title><g transform="scale(1.5)">${ PairSvg.shapes(title.replaceAll(" .*", "")) }</g></g>""".stripMargin
     else
     s"""<path $event
        | class="${node.cssClasses}$extraClass"
+       | id="n$i"
        | d="${shape(node)}"
        | style="fill: rgb(0, 0, 0); stroke: $stroke; opacity: $opacity"
        | transform="translate(${node.x},${node.y})"
@@ -176,14 +209,6 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
   /** Prefix required when writing to an SVG file */
   val prolog = "<?xml version='1.0' encoding='UTF-8'?>"
-
-  def threadsCSS(colors: Array[String]
-                 = ("f00,f00,000,000,00f,00f,000,000"*20).split(",")
-                ): String =
-    colors.indices
-      .map(i => s".thread$i { color: #${colors(i)} }")
-      .mkString("\n")
-
 
   /** @param diagram     collections of nodes and links
     * @param strokeWidth recommended values: "1px" for pair diagrams, "2px" for thread diagrams

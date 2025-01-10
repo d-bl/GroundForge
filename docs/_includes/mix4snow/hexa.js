@@ -154,7 +154,7 @@ function diagrams(q) {
             .style('opacity', 0.5);
     }
     setTimeout(() => {
-        nudgePairs('#pairs', cfg.totalCols * 6, cfg.totalRows * 6)
+        nudgePairs('#pairs')
         d3.select('#pairs').selectAll(".node").attr("onclick",null)
         d3.select('#pairs').selectAll(".node").on("click",clickedPairStitch)
 

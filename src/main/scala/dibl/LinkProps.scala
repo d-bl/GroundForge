@@ -91,7 +91,7 @@ object LinkProps {
                                override val withPin: Boolean = false
                               ) extends LinkProps
 
-  private case class WhiteEnd(override val props: Map[String, Any]) extends LinkProps {
+  case class WhiteEnd(override val props: Map[String, Any]) extends LinkProps {
 
     override def markedAsStart: LinkProps = WhiteEnd(props + threadStartMarker)
 
@@ -109,7 +109,7 @@ object LinkProps {
     }
   }
 
-  private case class WhiteEndRight(override val props: Map[String, Any]) extends LinkProps {
+  case class WhiteEndRight(override val props: Map[String, Any]) extends LinkProps {
 
     override def markedAsStart: LinkProps = WhiteEndRight(props + threadStartMarker)
 
@@ -126,7 +126,7 @@ object LinkProps {
     }
   }
 
-  private case class WhiteEndLeft(override val props: Map[String, Any]) extends LinkProps {
+  case class WhiteEndLeft(override val props: Map[String, Any]) extends LinkProps {
 
     override def markedAsStart: LinkProps = WhiteEndLeft(props + threadStartMarker)
 
@@ -143,7 +143,7 @@ object LinkProps {
     }
   }
 
-  private case class WhiteStartRight(override val props: Map[String, Any]) extends LinkProps {
+  case class WhiteStartRight(override val props: Map[String, Any]) extends LinkProps {
 
     override def markedAsStart: LinkProps = WhiteStartRight(props + threadStartMarker)
 
@@ -160,7 +160,7 @@ object LinkProps {
     }
   }
 
-  private case class WhiteStartLeft(override val props: Map[String, Any]) extends LinkProps {
+  case class WhiteStartLeft(override val props: Map[String, Any]) extends LinkProps {
 
     override def markedAsStart: LinkProps = WhiteStartLeft(props + threadStartMarker)
 
