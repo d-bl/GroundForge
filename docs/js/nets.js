@@ -135,37 +135,5 @@ function showGraph(caption, q) {
   container.html(svg.replace("<g>","<g transform='scale(0.5,0.5)'>"))
   fig.append("figcaption").append("pre").append("a")
      .text(caption).attr("href",'stitches.html?' + q).attr("target", '_blank')
-
-  // nudge nodes with force graph of the  D3js library
-  // TODO variations of the rest of this function are found in other scripts too
-
-  const links = container.selectAll(".link").data(linkDefs)
-  const nodes = container.selectAll(".node").data(nodeDefs)
-  function moveNode(jsNode) {
-      return 'translate('+jsNode.x+','+jsNode.y+')'
-  }
-  function drawPath(jsLink) {
-      const s = jsLink.source
-      const t = jsLink.target
-      const l = diagram.link(jsLink.index)
-      return DiagramSvg.pathDescription(l, s.x, s.y, t.x, t.y)
-  }
-  var count = 0
-  function onTick() {
-      if ((count++ % 3) != 0) return;
-      links.attr("d", drawPath);
-      nodes.attr("transform", moveNode);
-  }
-  const forceLink = d3
-    .forceLink(linkDefs)
-    .strength(50)
-    .distance(12)
-    .iterations(30)
-  d3.forceSimulation(nodeDefs)
-    .force("charge", d3.forceManyBody().strength(-1000))
-    .force("link", forceLink)
-    .force("center", d3.forceCenter(width/2, height/2))
-    .alpha(0.0035)
-    .alphaDecay(0.03)
-    .on("tick", onTick)
+  nudgeDiagram(container.select("svg"))
 }

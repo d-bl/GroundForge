@@ -6,76 +6,32 @@
     <style>div { display: inline-block; overflow: auto; resize: both; width: 600px; height: 800px; }</style>
     <script src="../js/d3.v4.min.js" type="text/javascript"></script>
     <script src="../js/GroundForge-opt.js" type="text/javascript"></script>
+    <script src="../js/nudgePairs.js" type="text/javascript"></script>
     <script type="text/javascript">
-       function clickedThread(event) {
-         var threadSegments = d3.selectAll("#thread ." + event.currentTarget.textContent.replace(" ",""))
-         threadSegments.style("stroke", "#F00")
-         threadSegments.filter(".node").style("fill", "#F00")
-       }
-        function clickedStitch(event) {
-            alert(`you clicked ${event.currentTarget.id}: ${event.currentTarget.textContent}`)
-        }
        function load() {
-         var q = window.location.search.substr(1)
-         var config = TilesConfig(q)
-         var pairDiagram = NewPairDiagram.create(config)
-         var threadDiagram = ThreadDiagram.create(pairDiagram)
+         let q = window.location.search
+         let config = TilesConfig(q?q:"patchWidth=11&patchHeight=11&c1=tc&d1=tctc&e1=tc&c2=tctc&e2=tctc&d3=tc&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2&footside=-5,B-,-2,b-,,&tile=831,4-7,-5-&headside=5-,-c,6-,-c")
+         let pairDiagram = NewPairDiagram.create(config)
+         let threadDiagram = ThreadDiagram.create(pairDiagram)
 
          // for Droste you can use (or even repeat) the following lines
-         // var pairDiagram = PairDiagram.create("twist=ct\nb24=c34=c35=d25=ctct", threadDiagram)
-         // var threadDiagram = ThreadDiagram.create(pairDiagram)
+         // let threadDiagram2 = ThreadDiagram.create(PairDiagram.create("twist=ct,b24=c34=c35=d25=ctct", threadDiagram))
 
-         var nodeTransparency = 0.05
-         var strokeWidth = "2px"
+         let nodeTransparency = 0.05
+         let strokeWidth = "2px"
 
          // dimensions for an A4
-         var width = 744
-         var height = 1052
+         let width = 744
+         let height = 1052
 
-         showGraph(d3.select('#pair'), pairDiagram, strokeWidth, width, height, 0)
-         showGraph(d3.select('#thread'), threadDiagram, strokeWidth, width, height, nodeTransparency)
-       }
-       function showGraph(container, diagram, stroke, width, height, transparency) {
-         var markers = true // use false for slow devices and IE-11, set them at onEnd
-         container.html(DiagramSvg.render(diagram, stroke, markers, width, height, transparency))
-
-         var nodeDefs = diagram.jsNodes()
-         var linkDefs = diagram.jsLinks()//can't inline
-         var links = container.selectAll(".link").data(linkDefs)
-         var nodes = container.selectAll(".node").data(nodeDefs)
-         function moveNode(jsNode) {
-             return 'translate('+jsNode.x+','+jsNode.y+')'
-         }
-         function drawPath(jsLink) {
-             var s = jsLink.source
-             var t = jsLink.target
-             var l = diagram.link(jsLink.index)
-             return DiagramSvg.pathDescription(l, s.x, s.y, t.x, t.y)
-         }
-         var tickCounter = 0
-         function onTick() {
-             if (0 !=  (tickCounter++ % 5) ) return
-             links.attr("d", drawPath);
-             nodes.attr("transform", moveNode);
-         }
-         // read 'weak' as 'invisible'
-         function strength(link){ return link.weak ? link.withPin ? 40 : 10 : 50 }
-         var forceLink = d3
-           .forceLink(linkDefs)
-           .strength(strength)
-           .distance(12)
-           .iterations(30)
-         d3.forceSimulation(nodeDefs)
-           .force("charge", d3.forceManyBody().strength(-1000))
-           .force("link", forceLink)
-           .force("center", d3.forceCenter(width/2, height/2))
-           .alpha(0.0035)
-           .on("tick", onTick)
+         let markers = true // use false for slow devices and IE-11, set them at onEnd
+         let svg = DiagramSvg.render(threadDiagram, strokeWidth, markers, width, height, nodeTransparency);
+         d3.select('#thread').html(svg)
+         nudgeDiagram(d3.select('#thread').select("svg"))
        }
     </script>
 </head>
 <body onload="load()">
-    <div id="pair"></div>
     <div id="thread"></div>
 </body>
 </html>

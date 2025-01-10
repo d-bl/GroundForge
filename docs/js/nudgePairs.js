@@ -72,12 +72,11 @@ function nudgeDiagram(svg) {
   function drawPath(jsLink) {
       var s = jsLink.source
       var t = jsLink.target
-      // priority for preventing code duplication over less independency
       return DiagramSvg.linkPath(jsLink.sectionType, s.x, s.y, t.x, t.y)
   }
   var tickCounter = 0
   function onTick() {
-      if (0 !==  (tickCounter++ % 5) ) return
+      if (0 !==  (++tickCounter % 10) ) return
       links.attr("d", drawPath);
       nodes.attr("transform", moveNode);
   }
@@ -85,31 +84,31 @@ function nudgeDiagram(svg) {
   // final position of diagram
 
   function moveToNW() {
+      function minX (min, node) { return min.x < node.x ? min : node }
+      function minY (min, node) { return min.y < node.y ? min : node }
 
       function notFloating(min) {
-          let s = nodes.nodes()[min.index].textContent;
+          if (min.index === undefined) return true;
+          let s = nodes.nodes()[min.index?min.index:0].textContent;
           return !(s.endsWith('- ') || s.startsWith("Pair") || s.startsWith("thread"));
       }
       // console.log(new Date().getMilliseconds())
-      var x = nodeData.filter(notFloating).reduce(minX).x - 3
-      var y = nodeData.filter(notFloating).reduce(minY).y - 3
-      // console.log(`minX = ${x}; minY = ${y}`)
+      let filtered = nodeData.filter(notFloating);
+      if (filtered.length === 0) return; // Exit if no nodes are left after filtering
+      var x = filtered.reduce(minX).x - 3
+      var y = filtered.reduce(minY).y - 3
       function moveNode(jsNode) { return 'translate('+(jsNode.x-x)+','+(jsNode.y-y)+')' }
       function drawPath(jsLink) {
           var s = jsLink.source
           var t = jsLink.target
-          // priority for preventing code duplication over less independency
           return DiagramSvg.linkPath(jsLink.sectionType, s.x - x, s.y-y, t.x - x, t.y -y)
       }
       links.attr("d", drawPath);
       nodes.attr("transform", moveNode);
       // console.log(new Date().getMilliseconds())
   }
-  function minX (min, node) { return min.x < node.x ? min : node }
-  function minY (min, node) { return min.y < node.y ? min : node }
 
   // define forces with the collected data
-
   d3.forceSimulation(nodeData)
     .force("charge", d3.forceManyBody().strength(-1000))
     .force("link", d3

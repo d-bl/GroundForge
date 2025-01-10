@@ -10,33 +10,13 @@
     <script src="../js/d3.v4.min.js" type="text/javascript"></script>
     <script src="../js/GroundForge-opt.js" type="text/javascript"></script>
     <script>
-        function resetStitch(event){
-            var el = document.getElementById(event.currentTarget.dataset.formid)
-            el.style.display = "block"
-            el.focus()
-        }
-        function showProto(event){
-            alert("input field " + event.currentTarget.name + " changed to: " + event.currentTarget.value)
-            d3.selectAll('input').style("display","none")
-        }
-        function flip(node){
-            var a = window.location.search.substr(1).split("tile=")
-            var qHead = a[0]
-            var tile = a[1].replace(/&.*/,"")
-            var qTail = a[1].replace(/[^&]+/,"")
-            // TODO get and reassemble from TilesConfig. Flip stitches too, other wall papers?
-            load(qHead + "tile=" + Matrix.flip(tile).replace(/\n/g,",") + qTail)
-            // disable: just once in this context. TODO: use node not d3.select
-            d3.select("a").style("display","none")
-        }
         function load(q) {
-            var config = TilesConfig(q)
+            var config = TilesConfig(q?q:"patchWidth=11&patchHeight=11&c1=tc&d1=tctc&e1=tc&c2=tctc&e2=tctc&d3=tc&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2&footside=-5,B-,-2,b-,,&tile=831,4-7,-5-&headside=5-,-c,6-,-c")
             d3.select('#proto').html(PrototypeDiagram.create(config))
         }
     </script>
 </head>
-<body onload="load(window.location.search.substr(1))">
-    <a href="javascript:flip(this)">flip tile</a><br>
+<body onload="load(window.location.search)">
     <div id="proto"></div>
 </body>
 </html>
