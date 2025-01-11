@@ -11,24 +11,25 @@ javascript:
 Mix four snowflakes
 ===================
 
-The colors of the hexagons match the thread diagram.
-The pair diagram has a [color code] that can express unorthodox stitches.
-
 [color code]: /GroundForge-help/color-rules
 [saved PDF]: /GroundForge-help/clips/print-as-pdf
 
 <script>{% include mix4snow/hexa.js %}</script>
 {% include mix4snow/hexa.html %}
 
-* Select a recipe with a click on one of the following images.<!-- true: start left -->  
-  [![diamond](diamond.png)](javascript:recipe('tcl,rctc,crl,r',true) "family 456123") &nbsp;
-  [![star](star.png)](javascript:recipe('tc,rclcrc,clcrcl,ct',true) "family 321") &nbsp;
-  [![leaning crossed spider](leaning-spider.png)](javascript:recipe('ctc,ctcl,ctc,ctc',true) "family 651234") &nbsp;
-  [![ring │](ring-s.png)](javascript:recipe('cr,ctc,ctc,lc',false) "family 321") &nbsp;
-  [![ring ╱](ring-e.png)](javascript:recipe('cl,ctc,ctc,rc',false) "family 321") &nbsp;
-  [![triangle.png](triangle.png)](javascript:recipe('tctc,rctc,ctcl,t',true) "family 321") &nbsp;
-  [![weaving 4x4](weaving-4x4.png)](javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false) "family 123") &nbsp;
-  [![spider with 2 heads](spider-2heads.png)](javascript:recipe('lc,crc,ctc,lcrcl,ctc,crc,c,r',false) "family 623451") &nbsp;
-* Apply a recipe with a click one of the hexagons.
-* See the <a href="/GroundForge-help/snow-mix" target="_blank">tutorial</a>
-to change recipes, create new recipes and more subjects.
+<fieldset><legend>Select a recipe</legend>
+<a href="javascript:recipe('tcl,rctc,crl,r',true)" title="family 456123"><img src="diamond.png" alt="diamond"></a> &nbsp;
+<a href="javascript:recipe('tc,rclcrc,clcrcl,ct',true)" title="family 321"><img src="star.png" alt="star"></a> &nbsp;
+<a href="javascript:recipe('ctc,ctcl,ctc,ctc',true)" title="family 651234"><img src="leaning-spider.png" alt="leaning crossed spider"></a> &nbsp;
+<a href="javascript:recipe('cr,ctc,ctc,lc',false)" title="family 321"><img src="ring-s.png" alt="ring │"></a> &nbsp;
+<a href="javascript:recipe('cl,ctc,ctc,rc',false)" title="family 321"><img src="ring-e.png" alt="ring ╱"></a> &nbsp;
+<a href="javascript:recipe('tctc,rctc,ctcl,t',true)" title="family 321"><img src="triangle.png" alt="triangle"></a> &nbsp;
+<a href="javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)" title="family 123"><img src="weaving-4x4.png" alt="weaving 4x4"></a> &nbsp;
+<a href="javascript:recipe('lc,crc,ctc,lcrcl,ctc,crc,c,r',false)" title="family 623451"><img src="spider-2heads.png" alt="spider with 2 heads"></a> &nbsp;
+</fieldset>
+
+The colors of the hexagons match the thread diagram.
+The pair diagram has a [color code] that can express unorthodox stitches.
+
+A <a href="/GroundForge-help/snow-mix" target="_blank">tutorial</a>
+explains how to change recipes, create new recipes and more subjects.
