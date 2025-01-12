@@ -27,7 +27,7 @@ Mix four snowflakes
 <a href="javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)" title="family 123"><img src="weaving-4x4.png" alt="weaving 4x4"></a> &nbsp;
 <a href="javascript:recipe('lc,crc,ctc,lcrcl,ctc,crc,c,r',false)" title="family 623451"><img src="spider-2heads.png" alt="spider with 2 heads"></a> &nbsp;
 </fieldset>
-
+<br>
 The colors of the hexagons match the thread diagram.
 The pair diagram has a [color code] that can express unorthodox stitches.
 
