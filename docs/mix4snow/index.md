@@ -11,9 +11,6 @@ javascript:
 Mix four snowflakes
 ===================
 
-[color code]: /GroundForge-help/color-rules
-[saved PDF]: /GroundForge-help/clips/print-as-pdf
-
 <script>{% include mix4snow/hexa.js %}</script>
 {% include mix4snow/hexa.html %}
 
@@ -28,8 +25,11 @@ Mix four snowflakes
 <a href="javascript:recipe('lc,crc,ctc,lcrcl,ctc,crc,c,r',false)" title="family 623451"><img src="spider-2heads.png" alt="spider with 2 heads"></a> &nbsp;
 </fieldset>
 <br>
-The colors of the hexagons match the thread diagram.
-The pair diagram has a [color code] that can express unorthodox stitches.
+The same set of four colors serve two independent purposes.
+The colors of the hexagons match groups of stitches in the thread diagram.
+The pair diagram has a [color-code] that can express unorthodox stitches.
 
-A <a href="/GroundForge-help/snow-mix" target="_blank">tutorial</a>
-explains how to change recipes, create new recipes and more subjects.
+A [tutorial] explains how to change recipes, create new recipes and more subjects.
+
+[color-code]: /GroundForge-help/color-rules
+[tutorial]: /GroundForge-help/snow-mix
