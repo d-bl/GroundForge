@@ -217,7 +217,7 @@ function twistFootsides(q) {
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    var q = document.URL.split(/[?#]/)[1];
+    var q = window.location.search.substring(1);
     if (!q) {
         q = "tile=48x-,xrx-,xrx-,xr83,-x48,-xxr,-xxr,31xr,17-x,rx-x,rx-x,rx31,x-17,x-rx,x-rx,83rx" +
             "&f8=crc&f16=crc&footside=-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r,-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r&" +
