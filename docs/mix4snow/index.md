@@ -30,7 +30,8 @@ The colors of the hexagons match groups of stitches in the thread diagram.
 The pair diagram has a [color-code] that can express unorthodox stitches.
 Clicking a stitch in the pair diagram de-colors the corresponding stitch in the thread diagram
 
-A [tutorial] explains how to change recipes, create new recipes and more subjects.
+A [tutorial] not only explains how to modify and create recipes, 
+but also how to choose stitches for six pair snowflakes and see their flow of threads.
 
 [color-code]: /GroundForge-help/color-rules
 [tutorial]: /GroundForge-help/snow-mix
