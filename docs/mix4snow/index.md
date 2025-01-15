@@ -8,9 +8,6 @@ javascript:
   - nudgePairs.js
 ---
 
-Mix four snowflakes
-===================
-
 <script>{% include mix4snow/hexa.js %}</script>
 {% include mix4snow/hexa.html %}
 
@@ -25,15 +22,21 @@ Mix four snowflakes
 <a href="javascript:recipe('lc,crc,ctc,lcrcl,ctc,crc,c,r',false)" title="family 623451"><img src="spider-2heads.png" alt="spider with 2 heads"></a> &nbsp;
 </fieldset>
 <br>
+
 The same set of four colors serve two independent purposes.
 The colors of the hexagons match groups of stitches in the thread diagram.
 The pair diagram has a [color-code] that can express unorthodox stitches.
-Clicking a stitch in the pair diagram de-colors the corresponding stitch in the thread diagram
 
-The go-to buttons lead to pages where you can highlight threads 
-for three-pair respectively six-pair connections, see the help links on these pages.
-The [tutorial] explains how to choose stitches for six pair connections and elaborates on foot sides.
-It also explains how to modify and create recipes.
+Click a stitch in the pair diagram to remove the color from the corresponding stitch in the thread diagram.
+The go-to buttons lead to pages where you can [highlight] threads 
+for three-pair respectively six-pair connections and [replace stitches].
+You can save all three pages as a [PDF] document.
+The [tutorial] elaborates choosing stitches and has some bonus subjects like
+foot sides and modify or create recipes.
 
 [color-code]: /GroundForge-help/color-rules
 [tutorial]: /GroundForge-help/snow-mix
+[highlight]: /GroundForge-help/clips/color
+[replace stitches]: /GroundForge-help/clips/flip
+[PDF]: /GroundForge-help/clips/print-as-pdf
+
