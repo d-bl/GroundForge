@@ -54,6 +54,4 @@ img[src$="align=right"] { float: right; margin-left:1em }
 img[src$="align=left"] { float: left; margin-right:1em }
 img[src$="align=center"] { text-align: center }
 
-form { padding: 0.7em; }
-form + form { padding-top: 0; }
-fieldset + fieldset { margin-top: 0.5em; }
+fieldset + fieldset, form + fieldset { margin-top: 0.7em; }

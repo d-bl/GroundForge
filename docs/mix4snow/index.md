@@ -14,7 +14,6 @@ Mix four snowflakes
 <script>{% include mix4snow/hexa.js %}</script>
 {% include mix4snow/hexa.html %}
 
-<form>
 <fieldset><legend>Select a recipe</legend>
 <a href="javascript:recipe('tcl,rctc,crl,r',true)" title="family 456123"><img src="diamond.png" alt="diamond"></a> &nbsp;
 <a href="javascript:recipe('tc,rclcrc,clcrcl,ct',true)" title="family 321"><img src="star.png" alt="star"></a> &nbsp;
@@ -25,7 +24,6 @@ Mix four snowflakes
 <a href="javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)" title="family 123"><img src="weaving-4x4.png" alt="weaving 4x4"></a> &nbsp;
 <a href="javascript:recipe('lc,crc,ctc,lcrcl,ctc,crc,c,r',false)" title="family 623451"><img src="spider-2heads.png" alt="spider with 2 heads"></a> &nbsp;
 </fieldset>
-</form>
 <br>
 The same set of four colors serve two independent purposes.
 The colors of the hexagons match groups of stitches in the thread diagram.
