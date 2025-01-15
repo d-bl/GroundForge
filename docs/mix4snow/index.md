@@ -26,7 +26,7 @@ Mix four snowflakes
 <a href="javascript:recipe('lc,crc,ctc,lcrcl,ctc,crc,c,r',false)" title="family 623451"><img src="spider-2heads.png" alt="spider with 2 heads"></a> &nbsp;
 </fieldset>
 </form>
-
+<br>
 The same set of four colors serve two independent purposes.
 The colors of the hexagons match groups of stitches in the thread diagram.
 The pair diagram has a [color-code] that can express unorthodox stitches.
