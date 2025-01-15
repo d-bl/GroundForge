@@ -1,9 +1,4 @@
-[![Build Status](https://travis-ci.org/d-bl/GroundForge.svg?branch=master)](https://travis-ci.org/d-bl/GroundForge)
-
 _A toolbox to design bobbin lace grounds with matching sets of pair/thread diagrams._
-
-The table of contents icon <img src="docs/assets/images/toc.png" width="25" height="25" />
-in the top left corner of this document gets you to a specific section quickly.
 
 Short intros
 =============
