@@ -1,6 +1,6 @@
 ---
 layout: default
-title: GF; Mix Snowflakes
+title: Mix Snowflakes
 javascript:
   - d3.v4.min.js
   - GroundForge-opt.js
@@ -14,7 +14,7 @@ Mix four snowflakes
 <script>{% include mix4snow/hexa.js %}</script>
 {% include mix4snow/hexa.html %}
 
-<fieldset><legend>Select a recipe</legend>
+<fieldset style="background: #FFF"><legend>Select a recipe</legend>
 <a href="javascript:recipe('tcl,rctc,crl,r',true)" title="family 456123"><img src="diamond.png" alt="diamond"></a> &nbsp;
 <a href="javascript:recipe('tc,rclcrc,clcrcl,ct',true)" title="family 321"><img src="star.png" alt="star"></a> &nbsp;
 <a href="javascript:recipe('ctc,ctcl,ctc,ctc',true)" title="family 651234"><img src="leaning-spider.png" alt="leaning crossed spider"></a> &nbsp;
