@@ -14,16 +14,17 @@ javascript:
 <fieldset style="background: #FFF"><legend>Select a recipe</legend>
 <a href="javascript:recipe('tcl,rctc,crl,r',true)" title="family 456123"><img src="diamond.png" alt="diamond"></a> &nbsp;
 <a href="javascript:recipe('tc,rclcrc,clcrcl,ct',true)" title="family 321"><img src="star.png" alt="star"></a> &nbsp;
-<a href="javascript:recipe('ctc,ctcl,ctc,ctc',true)" title="family 651234"><img src="leaning-spider.png" alt="leaning crossed spider"></a> &nbsp;
-<a href="javascript:recipe('cr,ctc,ctc,lc',false)" title="family 321"><img src="ring-s.png" alt="ring │"></a> &nbsp;
-<a href="javascript:recipe('cl,ctc,ctc,rc',false)" title="family 321"><img src="ring-e.png" alt="ring ╱"></a> &nbsp;
+<a href="javascript:recipe('tctc,rctcl,ctcl,ctct',true)" title="family 651234"><img src="leaning-spider.png" alt="leaning crossed spider"></a> &nbsp;
+<a href="javascript:recipe('tcr,lctc,ctcr,lct',false)" title="family 321"><img src="ring-s.png" alt="ring │"></a> &nbsp;
+<a href="javascript:recipe('tcl,lctc,ctcr,rct',false)" title="family 321"><img src="ring-e.png" alt="ring ╱"></a> &nbsp;
 <a href="javascript:recipe('tctc,rctc,ctcl,t',true)" title="family 321"><img src="triangle.png" alt="triangle"></a> &nbsp;
 <a href="javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)" title="family 123"><img src="weaving-4x4.png" alt="weaving 4x4"></a> &nbsp;
 <a href="javascript:recipe('lc,crc,ctc,lcrcl,ctc,crc,c,r',false)" title="family 623451"><img src="spider-2heads.png" alt="spider with 2 heads"></a> &nbsp;
 </fieldset>
 <br>
 
-The same set of four colors serve two independent purposes.
+
+The same set of four colors serves two independent purposes.
 The colors of the hexagons match groups of stitches in the thread diagram.
 The pair diagram has a [color-code] that can express unorthodox stitches.
 
