@@ -17,8 +17,8 @@ javascript:
 <a href="javascript:recipe('tcr,lctc,ctcr,lct',false)" title="family 321"><img src="ring-s.png" alt="ring │"></a> &nbsp;
 <a href="javascript:recipe('tcl,lctc,ctcr,rct',false)" title="family 321"><img src="ring-e.png" alt="ring ╱"></a> &nbsp;
 <a href="javascript:recipe('tctc,rctc,ctcl,t',true)" title="family 321"><img src="triangle.png" alt="triangle"></a> &nbsp;
-<a href="javascript:recipe('tcl,rctc,crl,r',true)" title="family 456123"><img src="diamond.png" alt="diamond"></a> &nbsp;
 <a href="javascript:recipe('lc,crclclc,crcrclc,cr',false)" title="family 426153"><img src="open.png" alt="open"></a> &nbsp;
+<a href="javascript:recipe('tcl,rctc,crl,r',true)" title="family 456123"><img src="diamond.png" alt="diamond"></a> &nbsp;
 <a href="javascript:recipe('c,ctc,rclc,ctc,rc,rcl,ctc,c',false)" title="family 456123"><img src="dogwood.png" alt="dogwood"></a> &nbsp;
 <a href="javascript:recipe('lcr,ctclc,crclc,cr',false)" title="family 531642"><img src="acorn.png" alt="acorn"></a> &nbsp;
 <a href="javascript:recipe('lcrc,clcrc,clcrc,clcr',false)" title="family 564312"><img src="flanders.png" alt="ringed flanders"></a> &nbsp;
