@@ -9,13 +9,12 @@ function load() {
     showThread(show(q))
 }
 function reloadPair() {
-    var cfg = TilesConfig(q)
     // dimensions for an A1
     let width = 2245
     let height = 3178
 
     let zoom = 1.9
-    let itemMatrix = cfg.getItemMatrix
+    let itemMatrix = TilesConfig(getQ()).getItemMatrix
     document.getElementById('pair').innerHTML = PairSvg.render(itemMatrix, width, height, zoom)
 }
 function getQ() {
