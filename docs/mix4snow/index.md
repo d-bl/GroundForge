@@ -20,6 +20,7 @@ javascript:
 <a href="javascript:recipe('tctc,rctc,ctcl,t',true)" title="family 321"><img src="triangle.png" alt="triangle"></a> &nbsp;
 <a href="javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)" title="family 123"><img src="weaving-4x4.png" alt="weaving 4x4"></a> &nbsp;
 <a href="javascript:recipe('lc,crc,ctc,lcrcl,ctc,crc,c,r',false)" title="family 623451"><img src="spider-2heads.png" alt="spider with 2 heads"></a> &nbsp;
+<a href="javascript:recipe('lc,crclclc,crcrclc,cr',false)" title="family 426153"><img src="open.png" alt="open"></a> &nbsp;
 </fieldset>
 <br>
 

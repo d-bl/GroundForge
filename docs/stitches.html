@@ -77,7 +77,7 @@
                 <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="7" onchange="dimChanged()">
                 <label for="patchHeight">rows</label>
             </div>
-            <p><a class="button" id="forces" type="button" href="javascript:applyForces()">apply forces</a>
+            <p><a class="button" id="forces" type="button" href="javascript:nudgePairs('#pair')">apply forces</a>
             <label for="forces"> to the pair diagram</label>
             </p>
             <label for="threadColor">Thread/stitch highlights</label>
@@ -94,6 +94,8 @@
         <figure >
             <figcaption>
                 Pairs
+                <img src="images/wand.png" onclick="javascript:reloadPair()" title="reload the diagram"/>
+                <a href="javascript:nudgeDiagram(d3.select('#pair svg'))" title="resume animation"><img src="images/play.png" alt="nudege"></a>
                 <a href="javascript:prepareDownload(`#pair`)"
                    onfocus="this.href=getDownloadContent('#pair')"
                    onblur="this.href='javascript:prepareDownload(`#pair`)'"
@@ -112,6 +114,8 @@
         <figure >
             <figcaption>
                 Threads
+                <img src="images/wand.png" onclick="javascript:redrawThreads()" title="reload the diagram"/>
+                <a href="javascript:nudgeDiagram(d3.select('#thread svg'))" title="resume animation"><img src="images/play.png" alt="nudege"></a>
                 <a href="javascript:prepareDownload(`#thread`)"
                    onfocus="this.href=getDownloadContent('#thread')"
                    onblur="this.href='javascript:prepareDownload(`#thread`)'"
@@ -121,7 +125,6 @@
                 <a id="threadDownloadLink" download="GF-thread-diagram.svg"
                    href="#?pleasePrepareFirst" onblur="this.href='#?pleasePrepareFirst'"
                    style="display:none" onclick="this.style.display = 'none'">download</a>
-                <img src="images/wand.png" onclick="javascript:redrawThreads()" title="reload the diagram"/>
                 <img src="images/maximize.png" onclick="javascript:maximize('#thread')" title="maximize room for the diagram"/>
                 <img src="images/reset-dimensions.png" onclick="javascript:resetDimensions('#thread')" title="reset room for the diagram"/>
                 <img src="images/minimize.png" onclick="javascript:minimize('#thread')" title="minimize room for the diagram"/>

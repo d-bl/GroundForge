@@ -8,9 +8,15 @@ function load() {
     setColorCode()
     showThread(show(q))
 }
-function applyForces() {
-    var cfg = TilesConfig(getQ())
-    nudgePairs('#pair')
+function reloadPair() {
+    var cfg = TilesConfig(q)
+    // dimensions for an A1
+    let width = 2245
+    let height = 3178
+
+    let zoom = 1.9
+    let itemMatrix = cfg.getItemMatrix
+    document.getElementById('pair').innerHTML = PairSvg.render(itemMatrix, width, height, zoom)
 }
 function getQ() {
     return d3.select('#to_self').attr('href').replace(/.*[?]/, "");
