@@ -11,13 +11,14 @@ javascript:
 <script>{% include mix4snow/hexa.js %}</script>
 {% include mix4snow/hexa.html %}
 
-<fieldset style="background: #FFF"><legend>Select a recipe</legend>
+<fieldset style="background: #FFF; max-width:90%; max-height:160px; overflow: auto"><legend>Select a recipe</legend>
 <a href="javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)" title="family 123"><img src="weaving-4x4.png" alt="weaving 4x4"></a> &nbsp;
 <a href="javascript:recipe('tc,rclcrc,clcrcl,ct',true)" title="family 321"><img src="star.png" alt="star"></a> &nbsp;
 <a href="javascript:recipe('tcr,lctc,ctcr,lct',false)" title="family 321"><img src="ring-s.png" alt="ring │"></a> &nbsp;
 <a href="javascript:recipe('tcl,lctc,ctcr,rct',false)" title="family 321"><img src="ring-e.png" alt="ring ╱"></a> &nbsp;
 <a href="javascript:recipe('tctc,rctc,ctcl,t',true)" title="family 321"><img src="triangle.png" alt="triangle"></a> &nbsp;
 <a href="javascript:recipe('lc,crclclc,crcrclc,cr',false)" title="family 426153"><img src="open.png" alt="open"></a> &nbsp;
+<a href="javascript:recipe('tctc,lctctc,ctcr,t',false)" title="family 154326"><img src="pagoda.png" alt="pagoda"></a> &nbsp;
 <a href="javascript:recipe('tcl,rctc,crl,r',true)" title="family 456123"><img src="diamond.png" alt="diamond"></a> &nbsp;
 <a href="javascript:recipe('c,ctc,rclc,ctc,rc,rcl,ctc,c',false)" title="family 456123"><img src="dogwood.png" alt="dogwood"></a> &nbsp;
 <a href="javascript:recipe('lcr,ctclc,crclc,cr',false)" title="family 531642"><img src="acorn.png" alt="acorn"></a> &nbsp;
@@ -26,6 +27,7 @@ javascript:
 <a href="javascript:recipe('tctc,rctcl,ctcl,ctct',true)" title="family 651234"><img src="leaning-spider.png" alt="leaning crossed spider"></a> &nbsp;
 </fieldset>
 <br>
+
 
 The same set of four colors serves two independent purposes.
 The colors of the hexagons match groups of stitches in the thread diagram.
