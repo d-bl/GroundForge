@@ -11,7 +11,7 @@ javascript:
 <script>{% include mix4snow/hexa.js %}</script>
 {% include mix4snow/hexa.html %}
 
-<fieldset style="background: #FFF; max-width:90%; max-height:160px; overflow: auto"><legend>Select a recipe</legend>
+<fieldset style="background: #FFF; max-width:90%; max-height:145px; overflow: auto"><legend>Select a recipe</legend>
 <a href="javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)" title="family 123"><img src="weaving-4x4.png" alt="weaving 4x4"></a> &nbsp;
 <a href="javascript:recipe('tc,rclcrc,clcrcl,ct',true)" title="family 321"><img src="star.png" alt="star"></a> &nbsp;
 <a href="javascript:recipe('tcr,lctc,ctcr,lct',false)" title="family 321"><img src="ring-s.png" alt="ring │"></a> &nbsp;
