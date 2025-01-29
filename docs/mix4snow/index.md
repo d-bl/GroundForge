@@ -20,7 +20,8 @@ javascript:
 <a href="javascript:recipe('lc,crclclc,crcrclc,cr',false)" title="family 426153"><img src="open.png" alt="open"></a> &nbsp;
 <a href="javascript:recipe('tctc,lctctc,ctcr,t',false)" title="family 154326"><img src="pagoda.png" alt="pagoda"></a> &nbsp;
 <a href="javascript:recipe('tcl,rctc,crl,r',true)" title="family 456123"><img src="diamond.png" alt="diamond"></a> &nbsp;
-<a href="javascript:recipe('c,ctc,rclc,ctc,rc,rcl,ctc,c',false)" title="family 456123"><img src="dogwood.png" alt="dogwood"></a> &nbsp;
+<a href="javascript:recipe('c,ctc,rclc,ctc,rc,rcl,ctc,c',false)" title="family 456123"><img src="dogwood.png" alt="dogwood 1"></a> &nbsp;
+<a href="javascript:recipe('cr,ctcl,ctcr,ctcl,ctc,c',false)" title="family 526143"><img src="dogwood2.png" alt="dogwood 2"></a> &nbsp;
 <a href="javascript:recipe('lcr,ctclc,crclc,cr',false)" title="family 531642"><img src="acorn.png" alt="acorn"></a> &nbsp;
 <a href="javascript:recipe('lcrc,clcrc,clcrc,clcr',false)" title="family 564312"><img src="flanders.png" alt="ringed flanders"></a> &nbsp;
 <a href="javascript:recipe('lc,crc,ctc,lcrcl,ctc,crc,c,r',false)" title="family 623451"><img src="spider-2heads.png" alt="spider with 2 heads"></a> &nbsp;
