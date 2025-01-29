@@ -17,8 +17,9 @@ javascript:
 <a href="javascript:recipe('tcr,lctc,ctcr,lct',false)" title="family 321"><img src="ring-s.png" alt="ring │"></a> &nbsp;
 <a href="javascript:recipe('tcl,lctc,ctcr,rct',false)" title="family 321"><img src="ring-e.png" alt="ring ╱"></a> &nbsp;
 <a href="javascript:recipe('tctc,rctc,ctcl,t',true)" title="family 321"><img src="triangle.png" alt="triangle"></a> &nbsp;
-<a href="javascript:recipe('lc,crclclc,crcrclc,cr',false)" title="family 426153"><img src="open.png" alt="open"></a> &nbsp;
+<a href="javascript:recipe('tc,lctc,rclcr,ctc,cr,t',false)" title="family 153426"><img src="spider.png" alt="leaning crossed spider"></a> &nbsp;
 <a href="javascript:recipe('tctc,lctctc,ctcr,t',false)" title="family 154326"><img src="pagoda.png" alt="pagoda"></a> &nbsp;
+<a href="javascript:recipe('lc,crclclc,crcrclc,cr',false)" title="family 426153"><img src="open.png" alt="open"></a> &nbsp;
 <a href="javascript:recipe('tcl,rctc,crl,r',true)" title="family 456123"><img src="diamond.png" alt="diamond"></a> &nbsp;
 <a href="javascript:recipe('c,ctc,rclc,ctc,rc,rcl,ctc,c',false)" title="family 456123"><img src="dogwood.png" alt="dogwood 1"></a> &nbsp;
 <a href="javascript:recipe('cr,ctcl,ctcr,ctcl,ctc,c',false)" title="family 526143"><img src="dogwood2.png" alt="dogwood 2"></a> &nbsp;
