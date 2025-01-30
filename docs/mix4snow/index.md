@@ -27,6 +27,7 @@ javascript:
 <a href="javascript:recipe('lcrc,clcrc,clcrc,clcr',false)" title="family 564312"><img src="flanders.png" alt="ringed flanders"></a> &nbsp;
 <a href="javascript:recipe('lc,crc,ctc,lcrcl,ctc,crc,c,r',false)" title="family 623451"><img src="spider-2heads.png" alt="spider with 2 heads"></a> &nbsp;
 <a href="javascript:recipe('tctc,rctcl,ctcl,ctct',true)" title="family 651234"><img src="leaning-spider.png" alt="leaning crossed spider"></a> &nbsp;
+<a href="/GroundForge-help/snow-mix#recipes-for-the-mixer" title="more recipes">more...</a>
 </fieldset>
 <br>
 
