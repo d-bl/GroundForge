@@ -12,22 +12,22 @@ javascript:
 {% include mix4snow/hexa.html %}
 
 <fieldset style="background: #FFF; max-width:90%; max-height:145px; overflow: auto"><legend>Select a recipe</legend>
-<a href="javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)" title="family 123"><img src="weaving-4x4.png" alt="weaving 4x4"></a> &nbsp;
-<a href="javascript:recipe('tc,rclcrc,clcrcl,ct',true)" title="family 321"><img src="star.png" alt="star"></a> &nbsp;
-<a href="javascript:recipe('tcr,lctc,ctcr,lct',false)" title="family 321"><img src="ring-s.png" alt="ring │"></a> &nbsp;
-<a href="javascript:recipe('tcl,lctc,ctcr,rct',false)" title="family 321"><img src="ring-e.png" alt="ring ╱"></a> &nbsp;
-<a href="javascript:recipe('t,lctc,ctcr,ctct',false)" title="family 321"><img src="triangle.png" alt="triangle"></a> &nbsp;
-<a href="javascript:recipe('t,rc,ctc,rclcr,ctcl,ct',true)" title="family 153426"><img src="spider.png" alt="leaning crossed spider"></a> &nbsp;
-<a href="javascript:recipe('t,rctc,ctctcl,ctct',true)" title="family 154326"><img src="pagoda.png" alt="pagoda"></a> &nbsp;
-<a href="javascript:recipe('lc,crclclc,crcrclc,cr',false)" title="family 426153"><img src="open.png" alt="open"></a> &nbsp;
-<a href="javascript:recipe('r,lrc,ctcr,lct',false)" title="family 456123"><img src="diamond.png" alt="diamond"></a> &nbsp;
-<a href="javascript:recipe('c,ctc,rclc,ctc,rc,rcl,ctc,c',false)" title="family 456123"><img src="dogwood.png" alt="dogwood 1"></a> &nbsp;
-<a href="javascript:recipe('cr,ctcl,ctcr,ctcl,ctc,c',false)" title="family 526143"><img src="dogwood2.png" alt="dogwood 2"></a> &nbsp;
-<a href="javascript:recipe('lcr,ctclc,crclc,cr',false)" title="family 531642"><img src="acorn.png" alt="acorn"></a> &nbsp;
-<a href="javascript:recipe('lcrc,clcrc,clcrc,clcr',false)" title="family 564312"><img src="flanders.png" alt="ringed flanders"></a> &nbsp;
-<a href="javascript:recipe('r,c,crc,ctc,lcrcl,ctc,crc,cl',true)" title="family 623451"><img src="spider-2heads.png" alt="spider with 2 heads"></a> &nbsp;
-<a href="javascript:recipe('tctc,rctcl,ctcl,ctct',true)" title="family 651234"><img src="leaning-spider.png" alt="leaning crossed spider"></a> &nbsp;
-<a href="/GroundForge-help/snow-mix#recipes-for-the-mixer" title="more recipes">more...</a>
+<a href="javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)" title="family 123"><img src="123.png" alt="weaving 4x4"></a> &nbsp;
+<a href="javascript:recipe('tc,rclcrc,clcrcl,ct',true)" title="family 321"><img src="321-a.png" alt="star"></a> &nbsp;
+<a href="javascript:recipe('tcr,lctc,ctcr,lct',false)" title="family 321"><img src="321-b.png" alt="ring │"></a> &nbsp;
+<a href="javascript:recipe('tcl,lctc,ctcr,rct',false)" title="family 321"><img src="321-c.png" alt="ring ╱"></a> &nbsp;
+<a href="javascript:recipe('t,lctc,ctcr,ctct',false)" title="family 321"><img src="321-d.png" alt="triangle"></a> &nbsp;
+<a href="javascript:recipe('t,rc,ctc,rclcr,ctcl,ct',true)" title="family 153426"><img src="153426-a.png" alt="leaning crossed spider"></a> &nbsp;
+<a href="javascript:recipe('t,rctc,ctctcl,ctct',true)" title="family 154326"><img src="154326-a.png" alt="pagoda"></a> &nbsp;
+<a href="javascript:recipe('lc,crclclc,crcrclc,cr',false)" title="family 426153"><img src="426153-a.png" alt="open"></a> &nbsp;
+<a href="javascript:recipe('r,lrc,ctcr,lct',false)" title="family 456123"><img src="456123-a.png" alt="diamond"></a> &nbsp;
+<a href="javascript:recipe('c,ctc,rclc,ctc,rc,rcl,ctc,c',false)" title="family 456123"><img src="456123-b.png" alt="dogwood 1"></a> &nbsp;
+<a href="javascript:recipe('cr,ctcl,ctcr,ctcl,ctc,c',false)" title="family 526143"><img src="526143-a.png" alt="dogwood 2"></a> &nbsp;
+<a href="javascript:recipe('lcr,ctclc,crclc,cr',false)" title="family 531642"><img src="531642-a.png" alt="acorn"></a> &nbsp;
+<a href="javascript:recipe('lcrc,clcrc,clcrc,clcr',false)" title="family 564312"><img src="564312-b.png" alt="ringed flanders"></a> &nbsp;
+<a href="javascript:recipe('r,c,crc,ctc,lcrcl,ctc,crc,cl',true)" title="family 623451"><img src="623451-a.png" alt="spider with 2 heads"></a> &nbsp;
+<a href="javascript:recipe('tctc,rctcl,ctcl,ctct',true)" title="family 651234"><img src="651234-a.png" alt="leaning crossed spider"></a> &nbsp;
+<a href="/GroundForge-help/snow-mix#recipes-for-the-mixer">more...</a>
 </fieldset>
 <br>
 
