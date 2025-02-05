@@ -36,7 +36,6 @@ javascript:
 <a href="javascript:recipe('rc,clcrc,clctc,rcl',true)" title="family 462513"><img src="462513-a.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('lcrc,clcrc,clcrc,clcr',false)" title="family 564312"><img src="564312-b.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('r,c,crc,ctc,lcrcl,ctc,crc,cl',true)" title="family 623451"><img src="623451-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('-,ctc,ct,crc,ctc,ctc',true)" title="family 623541"><img src="623541-b.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('-,cl,ctctcr,ct,ctc,c',false)" title="family 623541"><img src="623541-c.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('-,c,ctctc,clcr,rctc,c',false)" title="family 623541"><img src="623541-d.png" alt=""></a> &nbsp;
 <a href="/GroundForge-help/snow-mix#recipes-for-the-mixer">more...</a>
