@@ -20,11 +20,11 @@ javascript:
 <a href="javascript:recipe('tcl,lctc,ctcr,rct',false)" title="321-c"><img src="321-c.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('t,lctc,ctcr,ctct',false)" title="321-d"><img src="321-d.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('-,c,ctctc,ctctc,ctctc,c',true)" title="126453-a"><img src="126453-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('-,cr,crcl,clcrclcr,rcrcl,c',false)" title="152126-a"><img src="152126-a.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('t,rc,ctc,rclcr,ctcl,ct',true)" title="153426-a"><img src="153426-a.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('t,rctc,ctctcl,ctct',true)" title="154326-a"><img src="154326-a.png" alt=""></a> &nbsp;
+<a href="javascript:recipe('-,cr,crcl,clcrclcr,rcrcl,c',false)" title="156423-a"><img src="156423-a.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('cr,crcl,clcr,crcl,clcr,c',true)" title="234561-a"><img src="234561-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('-,cr,crcl,clcr,crcl,cl',false)" title="253451-a"><img src="253451-a.png" alt=""></a> &nbsp;
+<a href="javascript:recipe('-,cr,crcl,clcr,crcl,cl',false)" title="263451-a"><img src="263451-a.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('-,cl,ctcl,crcrcr,rcr,c',true)" title="321546-a"><img src="321546-a.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('-,lc,crc,clcrc,clcr,c,crc,cl',true)" title="321654-a"><img src="321654-a.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('-,cr,ctcr,clclc,lcl,c',false)" title="321654-b"><img src="321654-b.png" alt=""></a> &nbsp;
