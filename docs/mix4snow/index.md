@@ -48,12 +48,17 @@ The same set of four colors serves two independent purposes.
 The colors of the hexagons match groups of stitches in the thread diagram.
 The pair diagram has a [color-code] that can express unorthodox stitches.
 
-Click a stitch in the pair diagram to remove the color from the corresponding stitch in the thread diagram.
+Some recipes put more stitches in the recipe box than others.
+They may clutter the perimeters of the pair diagram.
+Resize the panel (drag the bottom right corner) or move the content around for a better view.
+To study the anatomy of the recipes:
+Hover over a stitch in the pair diagram for a tooltip, 
+click to remove the color from the corresponding stitch in the thread diagram.
+
 The go-to buttons lead to pages where you can [highlight] threads 
 for three-pair respectively six-pair connections and [replace stitches].
 You can save all three pages as a [PDF] document.
-The [tutorial] elaborates choosing stitches and has some bonus subjects like
-foot sides and modify or create recipes.
+A [tutorial] gives a general introduction, elaborates choosing stitches, footsides and recipes.
 
 [color-code]: /GroundForge-help/color-rules
 [tutorial]: /GroundForge-help/snow-mix
