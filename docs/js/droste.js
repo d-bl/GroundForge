@@ -215,13 +215,14 @@ function toggleVisibility(id) {
         x.style.display = "block";
     }
 }
-function cleanupStitches() {
-    const textValue = document.getElementById('droste2').value
+function cleanupStitches(id) {
+    const textValue = document.getElementById(id).value
     let id2instruction = {}
-    textValue.split(/[\n,]/ ).forEach(function (line) {
+    let inputLines = textValue.split(/[\n,]/ );
+    inputLines.forEach(function (line) {
         if(line.includes('=')) {
             let stitchValue = line.replace(/.*=/, "")
-            let stitchIds = line.replace(/=.*/, "").split(/=/)
+            let stitchIds = line.replace(/=[^=]+$/, "").split(/=/)
             stitchIds.forEach(function (stitchId) {
                 id2instruction[stitchId] = stitchValue
             })
@@ -235,20 +236,11 @@ function cleanupStitches() {
         }
         invertedMap[value].push(key);
     }
-    let longestKey = null;
-    let maxLength = 0;
 
+    let outputLines= inputLines.filter(line => /^((twist=)|(cross=))?[^=]+$/.test(line));
     for (const [key, valueArray] of Object.entries(invertedMap)) {
-        if (valueArray.length > maxLength) {
-            maxLength = valueArray.length;
-            longestKey = key;
-        }
+        outputLines.push(valueArray.join('=') + '=' + key)
     }
-    let lines= [longestKey]
-    for (const [key, valueArray] of Object.entries(invertedMap)) {
-        if(key!==longestKey)
-            lines.push(valueArray.join('=') + '=' + key)
-    }
-    document.getElementById('droste2').value = lines.join('\n')
+    document.getElementById(id).value = outputLines.join('\n')
     setLinks(2)
 }
