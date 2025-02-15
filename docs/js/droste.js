@@ -80,6 +80,7 @@ function clickedStitch(event) {
             // TODO changing shape would be better but thread marks are a problem
         }
     }
+    setLinks(2)
 }
 function clearAll(){
     document.getElementById('drostePair2').innerHTML = ""
@@ -213,4 +214,41 @@ function toggleVisibility(id) {
     } else {
         x.style.display = "block";
     }
+}
+function cleanupStitches() {
+    const textValue = document.getElementById('droste2').value
+    let id2instruction = {}
+    textValue.split(/[\n,]/ ).forEach(function (line) {
+        if(line.includes('=')) {
+            let stitchValue = line.replace(/.*=/, "")
+            let stitchIds = line.replace(/=.*/, "").split(/=/)
+            stitchIds.forEach(function (stitchId) {
+                id2instruction[stitchId] = stitchValue
+            })
+        }
+    })
+    let invertedMap = {};
+
+    for (const [key, value] of Object.entries(id2instruction)) {
+        if (!invertedMap[value]) {
+            invertedMap[value] = [];
+        }
+        invertedMap[value].push(key);
+    }
+    let longestKey = null;
+    let maxLength = 0;
+
+    for (const [key, valueArray] of Object.entries(invertedMap)) {
+        if (valueArray.length > maxLength) {
+            maxLength = valueArray.length;
+            longestKey = key;
+        }
+    }
+    let lines= [longestKey]
+    for (const [key, valueArray] of Object.entries(invertedMap)) {
+        if(key!==longestKey)
+            lines.push(valueArray.join('=') + '=' + key)
+    }
+    document.getElementById('droste2').value = lines.join('\n')
+    setLinks(2)
 }
