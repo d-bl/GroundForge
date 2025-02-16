@@ -238,8 +238,10 @@ function cleanupStitches(id) {
     }
 
     let outputLines= inputLines.filter(line => /^((twist=)|(cross=))?[^=]+$/.test(line));
-    for (const [key, valueArray] of Object.entries(invertedMap)) {
-        outputLines.push(valueArray.join('=') + '=' + key)
+    const keys = Object.keys(invertedMap).sort();
+    for (const key of keys) {
+        const values = invertedMap[key].sort();
+        outputLines.push(values.join('=') + '=' + key)
     }
     document.getElementById(id).value = outputLines.join('\n')
     setLinks(2)
