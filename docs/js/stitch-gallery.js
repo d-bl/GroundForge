@@ -13,7 +13,6 @@ function loadStitchExamples() {
         "ctcttctc",
         "tctctllctctr",
     ]
-    let list1 = d3.selectAll("#pair title")
     for (let stitch of stitches) {
         document.querySelector("#gallery").innerHTML += `
             <figure>
