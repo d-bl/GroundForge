@@ -45,6 +45,7 @@ function load() {
   if (!b) b = "ctcl"
   d3.select('#stitchDef').node().value = b
   generate(b, 1, urlParams.has("colors"))
+  d3.select('#stitchDef').attr("onchange", "stitchWand()")
 }
 function generate (b, set, colors) {
   const d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
