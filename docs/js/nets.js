@@ -13,10 +13,6 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
-function more(set, button) {
-  generate(d3.select('#stitchDef').node().value, set, d3.select('#colors').node().checked)
-  return false
-}
 function stitchWand(){
   d3.select('#diagrams1').selectAll('*').remove()
   d3.select('#diagrams2').selectAll('*').remove()
@@ -44,10 +40,11 @@ function load() {
   if (b) b = b.toLowerCase().replace(/[^ctlr]/g,"").trim()
   if (!b) b = "ctcl"
   d3.select('#stitchDef').node().value = b
-  generate(b, 1, urlParams.has("colors"))
   d3.select('#stitchDef').attr("onchange", "stitchWand()")
+  generate(1, urlParams.has("colors"))
 }
-function generate (b, set, colors) {
+function generate(set, colors) {
+  const b = (d3.select('#stitchDef').node().value)
   const d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
   const p = b.split("").reverse().join("")
   const q = d.split("").reverse().join("")
@@ -60,49 +57,58 @@ function generate (b, set, colors) {
   d3.select('#md').text(d)
   d3.select('#mp').text(p)
   d3.select('#mq').text(q)
-  d3.select('#legend').text(`${ b == p ? "b=p, q=d, " : ""} ${ b == d ? "b=d, q=p" : ""}`)
 
 // https://jo-pol.github.io/GroundForge/tiles?patchWidth=11&patchHeight=16&h1=ctc&d1=ctc&a1=ctct&o2=ctct&n2=ctct&i2=ctc&g2=ctc&e2=ctc&c2=ctc&b2=ctct&a2=ctctctctll&o3=ctct&n3=ctct&j3=ctc&f3=ctc&b3=ctct&o4=ctctctctrr&n4=ctct&i4=ctc&g4=ctc&e4=ctc&c4=ctc&b4=ctct&a4=ctct&footside=rx,r8,x4,11&tile=-5---5--,6v9v6v9v,---5---5,2z0z2z0z&headside=xx,88,7r,1r&footsideStitch=ctct&tileStitch=ctc&headsideStitch=ctct&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=8&shiftRowsSE=4
 
   d3.select('#more'+set).style('display', "none")
 
-  if (!set || set == "1") {
+  if (!set || set == 1) {
     d3.select('#colors').node().checked = colors
     showGraph (set,"diamond", `a1=${b}&n2=${b}&d2=${b}&b2=${b}&c3=${b}&c1=${b}&${diamond}`)
     showGraph (set,"Paris / kat", `d1=${b}&b1=${b}&e2=${b}&a2=${b}&d3=${b}&b3=${b}&s4=${b}&c4=${b}&d5=${b}&b5=${b}&e6=${b}&d7=${b}&b7=${b}&c8=${b}&${kat}`)
     showGraph (set,"weaving kat", `h1=${b}&d1=${b}&a1=${b}&s2=${b}&r2=${b}&i2=${b}&g2=${b}&e2=${b}&c2=${b}&b2=${b}&a2=${b}&s3=${b}&r3=${b}&j3=${b}&f3=${b}&b3=${b}&s4=${b}&r4=${b}&i4=${b}&g4=${b}&e4=${b}&c4=${b}&b4=${b}&a4=${b}&${weavingKat}`)
     showGraph (set,"bb ->\nbb <-", `b1=${b}&c1=${b}&b2=${b}&c2=${b}&${hor2x2}`)
   }
-  if (set == "2") {
-    if (b != d) {
-      showGraph (set,"bb ->\ndd <-", `b1=${b}&c1=${b}&b2=${d}&c2=${d}&${hor2x2}`)
-      showGraph (set,"bd ->\nbd <-", `b1=${b}&c1=${d}&b2=${b}&c2=${d}&${hor2x2}`)
-      showGraph (set,"bd ->\ndb <-", `b1=${b}&c1=${d}&b2=${d}&c2=${b}&${hor2x2}`)
+  if (set == 2) {
+    if (b !== d) {
+      showGraph(set, "bb ->\ndd <-", `b1=${b}&c1=${b}&b2=${d}&c2=${d}&${hor2x2}`)
+      showGraph(set, "bd ->\nbd <-", `b1=${b}&c1=${d}&b2=${b}&c2=${d}&${hor2x2}`)
+      showGraph(set, "bd ->\ndb <-", `b1=${b}&c1=${d}&b2=${d}&c2=${b}&${hor2x2}`)
     }
-    if (b != p) {
-      showGraph (set,"bb ->\npp <-", `b1=${b}&c1=${b}&b2=${p}&c2=${p}&${hor2x2}`)
-      showGraph (set,"bp ->\nbp <-", `b1=${b}&c1=${p}&b2=${b}&c2=${p}&${hor2x2}`)
-      showGraph (set,"bp ->\npb <-", `b1=${b}&c1=${p}&b2=${p}&c2=${b}&${hor2x2}`)
+    if (b !== p) {
+      showGraph(set, "bb ->\npp <-", `b1=${b}&c1=${b}&b2=${p}&c2=${p}&${hor2x2}`)
+      showGraph(set, "bp ->\nbp <-", `b1=${b}&c1=${p}&b2=${b}&c2=${p}&${hor2x2}`)
+      showGraph(set, "bp ->\npb <-", `b1=${b}&c1=${p}&b2=${p}&c2=${b}&${hor2x2}`)
     }
-    if (b != q) {
-      showGraph (set,"bb ->\nqq <-", `b1=${b}&c1=${b}&b2=${q}&c2=${q}&${hor2x2}`)
-      showGraph (set,"bq ->\nbq <-", `b1=${b}&c1=${q}&b2=${b}&c2=${q}&${hor2x2}`)
-      showGraph (set,"bq ->\nqb <-", `b1=${b}&c1=${q}&b2=${q}&c2=${b}&${hor2x2}`)
+    if (b !== d && b!==p) {
+      showGraph(set, "bb ->\nqq <-", `b1=${b}&c1=${b}&b2=${q}&c2=${q}&${hor2x2}`)
+      showGraph(set, "bq ->\nbq <-", `b1=${b}&c1=${q}&b2=${b}&c2=${q}&${hor2x2}`)
+      showGraph(set, "bq ->\nqb <-", `b1=${b}&c1=${q}&b2=${q}&c2=${b}&${hor2x2}`)
+    }
+    if (b === d && b === p && b === q) {
+      d3.select(`#diagrams` + set).append("p").text("b=d=p=q, see diagrams with only b")
     }
   }
-  if (set == "4") {
-    showGraph (set,"bd ->\npq <-", `b1=${b}&c1=${d}&b2=${p}&c2=${q}&${hor2x2}`)
-    showGraph (set,"bd ->\nqp <-", `b1=${b}&c1=${d}&b2=${q}&c2=${p}&${hor2x2}`)
-    showGraph (set,"bp ->\ndq <-", `b1=${b}&c1=${p}&b2=${d}&c2=${q}&${hor2x2}`)
-    showGraph (set,"bp ->\nqd <-", `b1=${b}&c1=${p}&b2=${q}&c2=${d}&${hor2x2}`)
-    showGraph (set,"bq ->\ndp <-", `b1=${b}&c1=${q}&b2=${d}&c2=${p}&${hor2x2}`)
-    showGraph (set,"bq ->\npd <-", `b1=${b}&c1=${q}&b2=${p}&c2=${d}&${hor2x2}`)
+  if (set == 4) {
+    if (b === d && b === p && b === q) {
+      d3.select(`#diagrams`+set).append("p").text("b=d=p=q, see diagrams with only b")
+    } else if (b === d ) {
+      d3.select(`#diagrams`+set).append("p").text("b=d, see diagrams with b+p")
+    } else if (b === p ) {
+      d3.select(`#diagrams`+set).append("p").text("b=p, see diagrams with b+d")
+    } else {
+        showGraph(set, "bd ->\npq <-", `b1=${b}&c1=${d}&b2=${p}&c2=${q}&${hor2x2}`)
+        showGraph(set, "bd ->\nqp <-", `b1=${b}&c1=${d}&b2=${q}&c2=${p}&${hor2x2}`)
+        showGraph (set,"bp ->\nqd <-", `b1=${b}&c1=${p}&b2=${q}&c2=${d}&${hor2x2}`)
+        showGraph (set,"bq ->\npd <-", `b1=${b}&c1=${q}&b2=${p}&c2=${d}&${hor2x2}`)
+        showGraph(set, "bp ->\ndq <-", `b1=${b}&c1=${p}&b2=${d}&c2=${q}&${hor2x2}`)
+        showGraph(set, "bq ->\ndp <-", `b1=${b}&c1=${q}&b2=${d}&c2=${p}&${hor2x2}`)
+    }
   }
   setColors(colors)
 }
 function setColors(colors) {
   if(!colors) {
-    d3.select('#color-hint').style("display", "none")
     d3.selectAll('.node').style("opacity","0")
     d3.select('#pairs').attr("src","images/dots-legend-without.png")
   } else {
