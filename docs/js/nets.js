@@ -116,13 +116,13 @@ function setColors(colors) {
     d3.select('#pairs').attr("src","images/dots-legend.png")
 
     d3.selectAll('.ct-b1, .ct-c4, .ct-c3, .ct-d7, .ct-g2')
-        .style("fill",'#377eb8').style("opacity","0.4")
+        .style("fill",'#0571b0ff').style("opacity","0.5")
     d3.selectAll('.ct-b2, .ct-d1, .ct-b3, .ct-d5, .ct-b7, .ct-f3, .ct-i4, .ct-i2')
-        .style("fill",'#e41a1c').style("opacity","0.4")
+        .style("fill",'#ca0020ff').style("opacity","0.5")
     d3.selectAll('.ct-c1, .ct-e2, .ct-b5, .ct-j3, .ct-g4')
-        .style("fill",'#984ea3').style("opacity","0.4")
+        .style("fill",'#f4a582ff').style("opacity","0.5")
     d3.selectAll('.ct-c2, .ct-e4, .ct-d3, .ct-e6, .ct-c8, .ct-h1, .ct-d2')
-        .style("fill",'#4daf4a').style("opacity","0.4")
+        .style("fill",'#92c5deff').style("opacity","0.5")
 
   }
   d3.selectAll('.bobbin').style("opacity","1")
@@ -136,14 +136,14 @@ function showGraph(nr, caption, q) {
 
   // render
 
-  const height = 280
-  const width = 280
+  const height = 250
+  const width = 250
   const stroke = "3px"
   const markers = false // use true for pair diagrams on fast devices and other browsers than IE-11
   const svg = DiagramSvg.render(diagram, stroke, markers, width, height)
   const fig = d3.select(`#diagrams`+nr).append("figure")
   const container = fig.append("div")
-  container.html(svg.replace("<g>","<g transform='scale(0.7,0.7)'>"))
+  container.html(svg.replace("<g>","<g transform='scale(0.6,0.6)'>"))
   fig.append("figcaption").append("pre").append("a")
      .text(caption).attr("href",'stitches.html?' + q).attr("target", '_blank')
   nudgeDiagram(container.select("svg"))
