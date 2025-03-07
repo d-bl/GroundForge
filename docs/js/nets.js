@@ -136,14 +136,14 @@ function showGraph(nr, caption, q) {
 
   // render
 
-  const height = 180
-  const width = 180
+  const height = 280
+  const width = 280
   const stroke = "3px"
   const markers = false // use true for pair diagrams on fast devices and other browsers than IE-11
   const svg = DiagramSvg.render(diagram, stroke, markers, width, height)
   const fig = d3.select(`#diagrams`+nr).append("figure")
   const container = fig.append("div")
-  container.html(svg.replace("<g>","<g transform='scale(0.5,0.5)'>"))
+  container.html(svg.replace("<g>","<g transform='scale(0.7,0.7)'>"))
   fig.append("figcaption").append("pre").append("a")
      .text(caption).attr("href",'stitches.html?' + q).attr("target", '_blank')
   nudgeDiagram(container.select("svg"))
