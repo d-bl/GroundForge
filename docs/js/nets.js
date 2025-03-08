@@ -36,10 +36,9 @@ function load() {
   if (img) d3.select('#diagrams1').append("img")
     .attr("src", '/MAE-gf/images/ctrl/'+img+'.jpg')
     .attr("onload", "this.width/=3;this.onload=null;")
-  var b = urlParams.get("b")
-  if (b) b = b.toLowerCase().replace(/[^ctlr]/g,"").trim()
-  if (!b) b = "ctcl"
-  d3.select('#stitchDef').node().value = b
+  var b = urlParams.get("b") // backward compatible with old links
+  if (!b) b = urlParams.get("stitchDef") // new submits
+  d3.select('#stitchDef').node().value = !b ? "ctcl": b.toLowerCase().replace(/[^ctlr]/g,"").trim()
   d3.select('#stitchDef').attr("onchange", "stitchWand()")
   generate(1, urlParams.has("colors"))
 }
