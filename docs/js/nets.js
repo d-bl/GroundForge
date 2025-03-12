@@ -14,12 +14,10 @@
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
 function stitchWand(){
-  d3.select('#diagrams1').selectAll('*').remove()
-  d3.select('#diagrams2').selectAll('*').remove()
-  d3.select('#diagrams4').selectAll('*').remove()
-  d3.select('#more1').style('display', "inline")
-  d3.select('#more2').style('display', "inline")
-  d3.select('#more4').style('display', "inline")
+  for (set of ['1','2','4','1d','2d','4d']) {
+    d3.select('#diagrams'+set).selectAll('*').remove()
+    d3.select('#more'+set).style('display', "inline")
+  }
   const b = d3.select('#stitchDef').node().value.toLowerCase().replace(/[^ctlr]/g,"").trim()
   const d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
   const p = b.split("").reverse().join("")
@@ -38,57 +36,55 @@ function load() {
     .attr("onload", "this.width/=3;this.onload=null;")
   var b = urlParams.get("b") // backward compatible with old links
   if (!b) b = urlParams.get("stitchDef") // new submits
-  d3.select('#stitchDef').node().value = !b ? "ctcl": b.toLowerCase().replace(/[^ctlr]/g,"").trim()
+  d3.select('#stitchDef').node().value = !b ? "crcl": b.toLowerCase().replace(/[^ctlr]/g,"").trim()
   d3.select('#stitchDef').attr("onchange", "stitchWand()")
-  generate(1, urlParams.has("colors"))
+  d3.select('#colors').node().checked = urlParams.has("colors")
+
+  generate('1')
 }
-function generate(set, colors) {
+function generate(set) {
   const b = (d3.select('#stitchDef').node().value)
   const d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
   const p = b.split("").reverse().join("")
   const q = d.split("").reverse().join("")
-  const hor2x2 = "tile=88,11&a1=rctctctctt&l2=lctctctctt&shiftColsSW=0&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=10&patchHeight=12&headside=x,7&footside=4,x"
-  const diamond = "tile=-5-,5-5,-5-&a1=ctctctl&n2=ctctctr&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=2&shiftRowsSE=2&patchWidth=12&patchHeight=12&headside=x,7&footside=4,x"
-  const kat = "tile=B-C-,---5,C-B-,-5--,B-C-,---5,C-B-,-5--&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=4&shiftRowsSE=8&patchWidth=17&patchHeight=18&footside=x,4,x,x&headside=x,x,x,7&a2=ctctctctll&s4=ctctctctrr"
-  const weavingKat = "tile=-5---5--,6v9v6v9v,---5---5,2z0z2z0z&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=8&shiftRowsSE=4&patchWidth=17&patchHeight=16&footside=rx,r8,x4,11&headside=7X,88,xr,1r&a2=ctctctctll&u4=ctctctctrr"
+  // patchWidth=9&patchHeight=11&footside=--,-b,&tile=5-5,-5-,5-5&headside=-,c,&shiftColsSW=-4&shiftRowsSW=2&shiftColsSE=3&shiftRowsSE=1
+  const hor2x2  = "patchWidth=16&patchHeight=18&footside=--r-,----,--g-,--r-&tile=n-n-,---,g-g,---&headside=n,r,r,-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
+  const diamond = "patchWidth=11&patchHeight=14&footside=----,---b,&tile=5-5,-5-,5-5&headside=-,c,&shiftColsSW=-4&shiftRowsSW=2&shiftColsSE=3&shiftRowsSE=1"
   d3.select('#stitchDef').node().value = b
   d3.select('#mb').text(b)
   d3.select('#md').text(d)
   d3.select('#mp').text(p)
   d3.select('#mq').text(q)
 
-// https://jo-pol.github.io/GroundForge/tiles?patchWidth=11&patchHeight=16&h1=ctc&d1=ctc&a1=ctct&o2=ctct&n2=ctct&i2=ctc&g2=ctc&e2=ctc&c2=ctc&b2=ctct&a2=ctctctctll&o3=ctct&n3=ctct&j3=ctc&f3=ctc&b3=ctct&o4=ctctctctrr&n4=ctct&i4=ctc&g4=ctc&e4=ctc&c4=ctc&b4=ctct&a4=ctct&footside=rx,r8,x4,11&tile=-5---5--,6v9v6v9v,---5---5,2z0z2z0z&headside=xx,88,7r,1r&footsideStitch=ctct&tileStitch=ctc&headsideStitch=ctct&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=8&shiftRowsSE=4
-
   d3.select('#more'+set).style('display', "none")
 
-  if (!set || set == 1) {
-    d3.select('#colors').node().checked = colors
-    showGraph (set,"diamond", `a1=${b}&n2=${b}&d2=${b}&b2=${b}&c3=${b}&c1=${b}&${diamond}`)
-    showGraph (set,"Paris / kat", `d1=${b}&b1=${b}&e2=${b}&a2=${b}&d3=${b}&b3=${b}&s4=${b}&c4=${b}&d5=${b}&b5=${b}&e6=${b}&d7=${b}&b7=${b}&c8=${b}&${kat}`)
-    showGraph (set,"weaving kat", `h1=${b}&d1=${b}&a1=${b}&s2=${b}&r2=${b}&i2=${b}&g2=${b}&e2=${b}&c2=${b}&b2=${b}&a2=${b}&s3=${b}&r3=${b}&j3=${b}&f3=${b}&b3=${b}&s4=${b}&r4=${b}&i4=${b}&g4=${b}&e4=${b}&c4=${b}&b4=${b}&a4=${b}&${weavingKat}`)
-    showGraph (set,"bb ->\nbb <-", `b1=${b}&c1=${b}&b2=${b}&c2=${b}&${hor2x2}`)
+  if (!set || set === '1') {
+    showGraph (set+'d',"diagonal", `e1=${b}&g1=${b}&e3=${b}&g3=${b}&${diamond}`)
+    showGraph (set,"horizontal",       `e1=${b}&g1=${b}&e3=${b}&g3=${b}&${hor2x2}`)
   }
-  if (set == 2) {
+  const pattern = set.endsWith('d') ? diamond : hor2x2;
+
+  if (set.startsWith('2')) {
     if (b !== d) {
-      showGraph(set, "bb ->\ndd <-", `b1=${b}&c1=${b}&b2=${d}&c2=${d}&${hor2x2}`)
-      showGraph(set, "bd ->\nbd <-", `b1=${b}&c1=${d}&b2=${b}&c2=${d}&${hor2x2}`)
-      showGraph(set, "bd ->\ndb <-", `b1=${b}&c1=${d}&b2=${d}&c2=${b}&${hor2x2}`)
+      showGraph(set, "bb\ndd", `e1=${b}&g1=${b}&e3=${d}&g3=${d}&${pattern}`)
+      showGraph(set, "bd\nbd", `e1=${b}&g1=${d}&e3=${b}&g3=${d}&${pattern}`)
+      showGraph(set, "bd\ndb", `e1=${b}&g1=${d}&e3=${d}&g3=${b}&${pattern}`)
     }
     if (b !== p) {
-      showGraph(set, "bb ->\npp <-", `b1=${b}&c1=${b}&b2=${p}&c2=${p}&${hor2x2}`)
-      showGraph(set, "bp ->\nbp <-", `b1=${b}&c1=${p}&b2=${b}&c2=${p}&${hor2x2}`)
-      showGraph(set, "bp ->\npb <-", `b1=${b}&c1=${p}&b2=${p}&c2=${b}&${hor2x2}`)
+      showGraph(set, "bb\npp", `e1=${b}&g1=${b}&e3=${p}&g3=${p}&${pattern}`)
+      showGraph(set, "bp\nbp", `e1=${b}&g1=${p}&e3=${b}&g3=${p}&${pattern}`)
+      showGraph(set, "bp\npb", `e1=${b}&g1=${p}&e3=${p}&g3=${b}&${pattern}`)
     }
     if (b !== d && b!==p) {
-      showGraph(set, "bb ->\nqq <-", `b1=${b}&c1=${b}&b2=${q}&c2=${q}&${hor2x2}`)
-      showGraph(set, "bq ->\nbq <-", `b1=${b}&c1=${q}&b2=${b}&c2=${q}&${hor2x2}`)
-      showGraph(set, "bq ->\nqb <-", `b1=${b}&c1=${q}&b2=${q}&c2=${b}&${hor2x2}`)
+      showGraph(set, "bb\nqq", `e1=${b}&g1=${b}&e3=${q}&g3=${q}&${pattern}`)
+      showGraph(set, "bq\nbq", `e1=${b}&g1=${q}&e3=${b}&g3=${q}&${pattern}`)
+      showGraph(set, "bq\nqb", `e1=${b}&g1=${q}&e3=${q}&g3=${b}&${pattern}`)
     }
     if (b === d && b === p && b === q) {
       d3.select(`#diagrams` + set).append("p").text("b=d=p=q, see diagrams with only b")
     }
   }
-  if (set == 4) {
+  if (set.startsWith('4')) {
     if (b === d && b === p && b === q) {
       d3.select(`#diagrams`+set).append("p").text("b=d=p=q, see diagrams with only b")
     } else if (b === d ) {
@@ -96,37 +92,31 @@ function generate(set, colors) {
     } else if (b === p ) {
       d3.select(`#diagrams`+set).append("p").text("b=p, see diagrams with b+d")
     } else {
-        showGraph(set, "bd ->\npq <-", `b1=${b}&c1=${d}&b2=${p}&c2=${q}&${hor2x2}`)
-        showGraph(set, "bd ->\nqp <-", `b1=${b}&c1=${d}&b2=${q}&c2=${p}&${hor2x2}`)
-        showGraph (set,"bp ->\nqd <-", `b1=${b}&c1=${p}&b2=${q}&c2=${d}&${hor2x2}`)
-        showGraph (set,"bq ->\npd <-", `b1=${b}&c1=${q}&b2=${p}&c2=${d}&${hor2x2}`)
-        showGraph(set, "bp ->\ndq <-", `b1=${b}&c1=${p}&b2=${d}&c2=${q}&${hor2x2}`)
-        showGraph(set, "bq ->\ndp <-", `b1=${b}&c1=${q}&b2=${d}&c2=${p}&${hor2x2}`)
+        showGraph(set, "bd\npq", `e1=${b}&g1=${d}&e3=${p}&g3=${q}&${pattern}`)
+        showGraph(set, "bd\nqp", `e1=${b}&g1=${d}&e3=${q}&g3=${p}&${pattern}`)
+        showGraph (set,"bp\nqd", `e1=${b}&g1=${p}&e3=${q}&g3=${d}&${pattern}`)
+        showGraph (set,"bq\npd", `e1=${b}&g1=${q}&e3=${p}&g3=${d}&${pattern}`)
+        showGraph(set, "bp\ndq", `e1=${b}&g1=${p}&e3=${d}&g3=${q}&${pattern}`)
+        showGraph(set, "bq\ndp", `e1=${b}&g1=${q}&e3=${d}&g3=${p}&${pattern}`)
     }
   }
-  setColors(colors)
+  setColors()
 }
-function setColors(colors) {
+function setColors() {
+  const colors = d3.select('#colors').node().checked
   if(!colors) {
     d3.selectAll('.node').style("opacity","0")
     d3.select('#pairs').attr("src","images/dots-legend-without.png")
   } else {
-    d3.select('#color-hint').style("display", "inline")
-    d3.select('#pairs').attr("src","images/dots-legend.png")
-
-    d3.selectAll('.ct-b1, .ct-c4, .ct-c3, .ct-d7, .ct-g2')
-        .style("fill",'#0571b0ff').style("opacity","0.5")
-    d3.selectAll('.ct-b2, .ct-d1, .ct-b3, .ct-d5, .ct-b7, .ct-f3, .ct-i4, .ct-i2')
-        .style("fill",'#ca0020ff').style("opacity","0.5")
-    d3.selectAll('.ct-c1, .ct-e2, .ct-b5, .ct-j3, .ct-g4')
-        .style("fill",'#f4a582ff').style("opacity","0.5")
-    d3.selectAll('.ct-c2, .ct-e4, .ct-d3, .ct-e6, .ct-c8, .ct-h1, .ct-d2')
-        .style("fill",'#92c5deff').style("opacity","0.5")
-
+    d3.select('#pairs').attr("src","images/dots-legend.svg")
+    d3.selectAll('.ct-e1').style("fill", '#0571b0ff').style("opacity", "0.5")
+    d3.selectAll('.ct-e3').style("fill", '#ca0020ff').style("opacity", "0.5")
+    d3.selectAll('.ct-g1').style("fill", '#f4a582ff').style("opacity", "0.5")
+    d3.selectAll('.ct-g3').style("fill", '#92c5deff').style("opacity", "0.5")
+    d3.selectAll('.bobbin').style("opacity","0")
   }
-  d3.selectAll('.bobbin').style("opacity","1")
 }
-function showGraph(nr, caption, q) {
+function showGraph(set, caption, q) {
 
   // model
 
@@ -140,7 +130,7 @@ function showGraph(nr, caption, q) {
   const stroke = "3px"
   const markers = false // use true for pair diagrams on fast devices and other browsers than IE-11
   const svg = DiagramSvg.render(diagram, stroke, markers, width, height)
-  const fig = d3.select(`#diagrams`+nr).append("figure")
+  const fig = d3.select(`#diagrams`+set).append("figure")
   const container = fig.append("div")
   container.html(svg.replace("<g>","<g transform='scale(0.6,0.6)'>"))
   fig.append("figcaption").append("pre").append("a")

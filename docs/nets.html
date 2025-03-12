@@ -78,34 +78,49 @@
         </table>
         <button onclick="stitchWand()"><img src="images/wand.png"></button>
         <h3>Diagrams</h3>
+        <p>
+            <img src="images/dots-legend-without.png" id="pairs" alt="pair diagrams: torchon, paris/lat, ..., square">
+        </p>
         <form>
             <input type="checkbox" id="colors" name="colors" onChange="setColors(this.checked)">
             <label for="colors" title="initially checked when address bar has 'color', ignoring its value">Highlight corresponding stitches</label>
         </form>
-        <p>
-            <img src="images/dots-legend-without.png" id="pairs" alt="pair diagrams: torchon, paris/lat, ..., square">
-        </p>
     </div>
     <fieldset>
         <legend>
-            <button onclick="generate(1,this)" id="more1"><img src="images/wand.png"></button>
+            <button onclick="generate('1',this)" id="more1"><img src="images/wand.png"></button>
             only b
         </legend>
-        <div id="diagrams1"></div>
+        <span id="diagrams1"></span>
+        <span id="diagrams1d"></span>
     </fieldset>
     <fieldset>
         <legend>
-            <button onclick="generate(4,this)" id="more4"><img src="images/wand.png"></button>
-            b+d+p+q
+            <button onclick="generate('4',this)" id="more4"><img src="images/wand.png"></button>
+            horizontal: b+d+p+q
         </legend>
         <div id="diagrams4"></div>
     </fieldset>
     <fieldset>
         <legend>
-            <button onclick="generate(2,this)" id="more2"><img src="images/wand.png"></button>
-            2 times b and 2 times either d, p or q
+            <button onclick="generate('4d',this)" id="more4d"><img src="images/wand.png"></button>
+            diagonal: b+d+p+q
+        </legend>
+        <div id="diagrams4d"></div>
+    </fieldset>
+    <fieldset>
+        <legend>
+            <button onclick="generate('2',this)" id="more2"><img src="images/wand.png"></button>
+            horizontal: 2 times b and 2 times either d, p or q
         </legend>
         <div id="diagrams2"></div>
+    </fieldset>
+    <fieldset>
+        <legend>
+            <button onclick="generate('2d',this)" id="more2d"><img src="images/wand.png"></button>
+            diagonal: 2 times b and 2 times either d, p or q
+        </legend>
+        <div id="diagrams2d"></div>
     </fieldset>
 </main>
 <!-- Start of StatCounter Code for Default Guide -->
