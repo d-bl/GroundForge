@@ -39,7 +39,9 @@ function load() {
   d3.select('#stitchDef').node().value = !b ? "crcl": b.toLowerCase().replace(/[^ctlr]/g,"").trim()
   d3.select('#stitchDef').attr("onchange", "stitchWand()")
   d3.select('#colors').node().checked = urlParams.has("colors")
-
+  d3.selectAll('#gallery a').attr("href", function() {
+    return this.href + ';stitchWand()'
+  })
   generate('1')
 }
 function generate(set) {
