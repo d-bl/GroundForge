@@ -5,9 +5,9 @@ header {
     font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
 
 }
-header h1 { font-size: 46px; font-weight: normal; margin-top: 0; margin-bottom: 0.2em; letter-spacing: -1px; width: 100%; }
+header h1 { font-size: 48px; font-weight: normal; margin-top: 0; margin-bottom: 0.2em; letter-spacing: -1px; width: 100%; }
 
-header h2 { font-size: 130%; font-weight: 300; margin-top: 0; margin-bottom: 0; }
+header h2 { font-size: 150%; font-weight: 300; margin-top: 0; margin-bottom: 0; }
 body, header { margin: 0; padding: 0; }
 header div { margin: 0; padding: 1.6em; }
 main, article { margin: 0; padding: 1em; }
