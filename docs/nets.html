@@ -23,6 +23,8 @@
         fieldset {margin-top:1em; padding-bottom: 0}
         #gallery figure { vertical-align: bottom; }
         #gallery { max-width: 90%; height: 100px; overflow: auto; resize: both; }
+        fieldset {display: inline-block;vertical-align: top }
+        legend { line-height: 2.5em; }
         @media print {
             form, button { display: none }
         }
@@ -88,12 +90,12 @@
             <label for="colors" title="initially checked when address bar has 'color', ignoring its value">Highlight corresponding stitches</label>
         </form>
     </div>
+    <img src="images/dots-legend-without.png" id="pairs" alt="pair diagrams: torchon, paris/lat, ..., square" style="margin: 2em; ">
     <fieldset>
         <legend>
             <button onclick="generate('1',this)" id="more1"><img src="images/wand.png"></button>
             only b
         </legend>
-        <img src="images/dots-legend-without.png" id="pairs" alt="pair diagrams: torchon, paris/lat, ..., square">
         <span id="diagrams1"></span>
         <span id="diagrams1d"></span>
     </fieldset>
