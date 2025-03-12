@@ -22,6 +22,7 @@
         #gallery svg, #colorCode svg {display: none}
         fieldset {margin-top:1em; padding-bottom: 0}
         #gallery figure { vertical-align: bottom; }
+        #gallery { max-width: 90%; height: 100px; overflow: auto; resize: vertical; }
         @media print {
             form, button { display: none }
         }
@@ -81,7 +82,6 @@
         <button onclick="stitchWand()"><img src="images/wand.png"></button>
         <h3>Diagrams</h3>
         <p>
-            <img src="images/dots-legend-without.png" id="pairs" alt="pair diagrams: torchon, paris/lat, ..., square">
         </p>
         <form>
             <input type="checkbox" id="colors" name="colors" onChange="setColors(this.checked)">
@@ -93,6 +93,7 @@
             <button onclick="generate('1',this)" id="more1"><img src="images/wand.png"></button>
             only b
         </legend>
+        <img src="images/dots-legend-without.png" id="pairs" alt="pair diagrams: torchon, paris/lat, ..., square">
         <span id="diagrams1"></span>
         <span id="diagrams1d"></span>
     </fieldset>

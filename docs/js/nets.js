@@ -61,7 +61,7 @@ function generate(set) {
   d3.select('#more'+set).style('display', "none")
 
   if (!set || set === '1') {
-    showGraph (set+'d',"diagonal", `e1=${b}&g1=${b}&e3=${b}&g3=${b}&${diamond}`)
+    showGraph (set+'d',"diagonal", `e1=${b}&g1=${b}&e3=${b}&g3=${b}&f2=${b}&${diamond}`)
     showGraph (set,"horizontal",       `e1=${b}&g1=${b}&e3=${b}&g3=${b}&${hor2x2}`)
   }
   const pattern = set.endsWith('d') ? diamond : hor2x2;
