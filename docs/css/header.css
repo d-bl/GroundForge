@@ -5,7 +5,7 @@ header {
     font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
 
 }
-header h1 { font-size: 50px; font-weight: normal; margin-top: 0; margin-bottom: 0.2em; letter-spacing: -1px; width: 100%; }
+header h1 { font-size: 42px; font-weight: normal; margin-top: 0; margin-bottom: 0.2em; letter-spacing: -1px; width: 100%; }
 
 header h2 { font-size: 163%; font-weight: 300; margin-top: 0; margin-bottom: 0; }
 body, header { margin: 0; padding: 0; }
