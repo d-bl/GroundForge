@@ -154,7 +154,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.9892546"
-     inkscape:cx="126.78746"
+     inkscape:cx="99.355873"
      inkscape:cy="148.19748"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -531,23 +531,18 @@
        id="path6603"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:#377eb8;fill-opacity:0.533333;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2027)"
-       d="m 27.447168,111.33191 v 42.33334"
-       id="path1084"
-       sodipodi:nodetypes="cc" />
-    <path
-       style="fill:#377eb8;fill-opacity:0.533333;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2027)"
-       d="m 35.913835,111.33191 v 42.33334"
+       style="fill:#377eb8;fill-opacity:0.533333;stroke:#000000;stroke-width:0.529;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 35.913835,111.33191 0,38.44335"
        id="path1166"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:#377eb8;fill-opacity:0.533333;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2027)"
-       d="m 44.380502,111.33191 v 42.33334"
+       style="fill:#377eb8;fill-opacity:0.533333;stroke:#000000;stroke-width:0.529;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 44.380502,111.33191 0,38.44335"
        id="path1168"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:#377eb8;fill-opacity:0.533333;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2027)"
-       d="m 52.847169,111.33191 v 42.33334"
+       style="fill:#377eb8;fill-opacity:0.533333;stroke:#000000;stroke-width:0.529;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 52.847169,111.33191 0,38.44335"
        id="path1170"
        sodipodi:nodetypes="cc" />
     <path
@@ -637,8 +632,8 @@
        rx="2.3838544"
        ry="2.6409011" />
     <path
-       style="fill:#377eb8;fill-opacity:0.533333;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2027)"
-       d="m 27.447168,111.33191 v 42.33334"
+       style="fill:#377eb8;fill-opacity:0.533333;stroke:#000000;stroke-width:0.529;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 27.447168,111.33191 0,38.44335"
        id="path987"
        sodipodi:nodetypes="cc" />
     <circle
