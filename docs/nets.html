@@ -5,10 +5,6 @@
     <title lang="en">GF: Net variations</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        figure { display: inline-block; margin: 10px; vertical-align: top; }
-        #diagrams img { margin-top: 1em; }
-        button { vertical-align: top }
-        legend button { vertical-align: middle  }
         table { border-collapse: collapse; margin-top: 1em; }
         td { padding: 0 5px 0 5px;  }
         .sn { border-top: solid 1px; }
@@ -19,12 +15,26 @@
         .de { border-right: dashed 1px; }
         .ds { border-bottom: dashed 1px; }
         .dw { border-left: dashed 1px; }
-        #gallery svg, #colorCode svg {display: none}
-        fieldset {margin-top:1em; padding-bottom: 0}
-        #gallery figure { vertical-align: bottom; }
-        #gallery { max-width: 90%; height: 100px; overflow: auto; resize: both; }
-        fieldset {display: inline-block;vertical-align: top }
-        legend { line-height: 2.5em; }
+
+        /* hide color code of stitches for this page */
+        #gallery svg, #colorCode svg { display: none }
+
+        /* at most one row of stitches, especially on small devices */
+        #gallery figure { vertical-align: bottom; max-width: 95%; height: 100px; overflow: auto; resize: both; }
+
+        /* for stitch gallery as well as groups of diagrams */
+        #fieldset figure { display: inline-block; margin: 10px; vertical-align: top; }
+
+        button { vertical-align: top } /* for wand in stitches section */
+        legend button { vertical-align: middle  } /* override for wands in diagrams sections */
+        legend { line-height: 2.5em; } /* provide space for wands */
+
+        /* first small group of thread diagrams on the same line as the pair diagrams (on big enough screens) */
+        #firstDiagrams {display: inline-block;vertical-align: top }
+        #pairs {  margin: 2em  ;  }
+
+        fieldset { margin-top:1em; padding-bottom: 0; }
+
         @media print {
             form, button { display: none }
         }
@@ -90,8 +100,8 @@
             <label for="colors" title="initially checked when address bar has 'color', ignoring its value">Highlight corresponding stitches</label>
         </form>
     </div>
-    <img src="images/dots-legend-without.png" id="pairs" alt="pair diagrams: torchon, paris/lat, ..., square" style="margin: 2em; ">
-    <fieldset>
+    <img src="images/dots-legend-without.png" id="pairs" alt="pair diagrams: torchon, paris/lat, ..., square">
+    <fieldset id="firstDiagrams">
         <legend>
             <button onclick="generate('1',this)" id="more1"><img src="images/wand.png"></button>
             only b
