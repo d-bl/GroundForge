@@ -35,6 +35,7 @@ javascript:
 <a href="javascript:recipe('c,ctc,rclc,ctc,rc,rcl,ctc,c',false)" title="456123-b"><img src="456123-b.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('rc,clcrc,clctc,rcl',true)" title="462513-a"><img src="462513-a.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('lcrc,clcrc,clcrc,clcr',false)" title="564312-b"><img src="564312-b.png" alt=""></a> &nbsp;
+<a href="javascript:recipe('-,c,ctctc,clcr,rctc,c',false)" title="563412-c"><img src="563412-c.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('r,c,crc,ctc,lcrcl,ctc,crc,cl',true)" title="623451-a"><img src="623451-a.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('-,ctc,ct,crc,ctc,ctc',true)" title="623541-b"><img src="623541-b.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('-,cl,ctctcr,ct,ctc,c',false)" title="623541-c"><img src="623541-c.png" alt=""></a> &nbsp;
@@ -42,7 +43,6 @@ javascript:
 <a href="/GroundForge-help/snow-mix#recipes-for-the-mixer">more...</a>
 </fieldset>
 <br>
-
 
 The same set of four colors serves two independent purposes.
 The colors of the hexagons match groups of stitches in the thread diagram.
