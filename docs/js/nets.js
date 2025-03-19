@@ -18,7 +18,7 @@ function stitchWand(){
     d3.select('#diagrams'+set).selectAll('*').remove()
     d3.select('#more'+set).style('display', "inline")
   }
-  const b = d3.select('#stitchDef').node().value.toLowerCase().replace(/[^ctlr]/g,"").trim()
+  const b = sanitizeStitch(d3.select('#stitchDef').node().value)
   const d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
   const p = b.split("").reverse().join("")
   const q = d.split("").reverse().join("")
@@ -27,17 +27,35 @@ function stitchWand(){
   d3.select('#mp').text(p)
   d3.select('#mq').text(q)
 }
+
+function sanitizeStitch(b) {
+  return b.toLowerCase().replace(/[^ctlr]/g, "").trim();
+}
+
 function load() {
   const search = window.location.search.replace(/set=./,'')
   const urlParams = new URLSearchParams(search)
-  var img = urlParams.get("img")
-  if (img) d3.select('#diagrams1').append("img")
-    .attr("src", '/MAE-gf/images/ctrl/'+img+'.jpg')
-    .attr("onload", "this.width/=3;this.onload=null;")
-  var b = urlParams.get("b") // backward compatible with old links
+  let img = urlParams.get("img")
+  if (img) {
+    img = img.replace(/[^a-zA-Z0-9-_]/g, "")
+    d3.select('#diagrams1').append("img")
+        .attr("src", '/MAE-gf/images/ctrl/'+img+'.jpg')
+        .attr("onload", "this.width/=3;this.onload=null;")
+  }
+
+  let b = urlParams.get("b") // backward compatible with old links
   if (!b) b = urlParams.get("stitchDef") // new submits
-  d3.select('#stitchDef').node().value = !b ? "crcl": b.toLowerCase().replace(/[^ctlr]/g,"").trim()
-  d3.select('#stitchDef').attr("onchange", "stitchWand()")
+  let stitchDefInput = d3.select('#stitchDef').node();
+  stitchDefInput.value = !b ? "crcl": sanitizeStitch(b)
+  let previousValue = stitchDefInput.value
+  stitchDefInput.addEventListener('keyup', function() {
+    let newValue = sanitizeStitch(stitchDefInput.value)
+    if (newValue !== previousValue) {
+      previousValue = stitchDefInput.value
+      stitchWand()
+    }
+  })
+
   d3.select('#colors').node().checked = urlParams.has("colors")
   d3.selectAll('#gallery a').attr("href", function() {
     return this.href + ';stitchWand()'
@@ -45,7 +63,7 @@ function load() {
   generate('1')
 }
 function generate(set) {
-  const b = (d3.select('#stitchDef').node().value)
+  const b = sanitizeStitch(d3.select('#stitchDef').node().value)
   const d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
   const p = b.split("").reverse().join("")
   const q = d.split("").reverse().join("")

@@ -40,7 +40,7 @@ javascript:
 <a href="javascript:recipe('-,ctc,ct,crc,ctc,ctc',true)" title="623541-b"><img src="623541-b.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('-,cl,ctctcr,ct,ctc,c',false)" title="623541-c"><img src="623541-c.png" alt=""></a> &nbsp;
 <a href="javascript:recipe('-,c,ctctc,clcr,rctc,c',false)" title="623541-d"><img src="623541-d.png" alt=""></a> &nbsp;
-<a href="/GroundForge-help/snow-mix#recipes-for-the-mixer">more...</a>
+<a href="/GroundForge-help/snow-mix#recipes-for-the-mixer" rel="help">more...</a>
 </fieldset>
 <br>
 
