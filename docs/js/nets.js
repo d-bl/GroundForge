@@ -37,7 +37,7 @@ function setSample(b) {
   document.getElementById('sample').addEventListener('error', function () {
     this.style.display = 'none';
   });
-  let img = 'images/nets/' + b + ".jpg" // TODO sort sequences of crl, use lexicographically smallest of bdpq
+  let img = '/GroundForge/images/nets/' + b + ".jpg" // TODO sort sequences of crl, use lexicographically smallest of bdpq
   let sample = document.getElementById("sample");
   sample.style.display = 'inline-block';
   sample.setAttribute("src", img)
