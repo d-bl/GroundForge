@@ -13,7 +13,7 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see http://www.gnu.org/licenses/gpl.html dibl
 */
-function stitchWand(){
+function stitchChanged(){
   for (set of ['1','2','4','1d','2d','4d']) {
     d3.select('#diagrams'+set).selectAll('*').remove()
     d3.select('#more'+set).style('display', "inline")
@@ -37,10 +37,16 @@ function load() {
   const urlParams = new URLSearchParams(search)
   let img = urlParams.get("img")
   if (img) {
-    img = img.replace(/[^a-zA-Z0-9-_]/g, "")
-    d3.select('#diagrams1').append("img")
-        .attr("src", '/MAE-gf/images/ctrl/'+img+'.jpg')
-        .attr("onload", "this.width/=3;this.onload=null;")
+    document.getElementById('sample').addEventListener('error', function() {
+      this.style.display = 'none';
+    });
+
+    img = '/MAE-gf/images/ctrl/'
+        + img.replace(/[^a-zA-Z0-9-_]/g, "")
+        +".jpg"
+    let sample = document.getElementById("sample");
+    sample.style.display = 'inline-block';
+    sample.setAttribute("src",img)
   }
 
   let b = urlParams.get("b") // backward compatible with old links
@@ -52,7 +58,7 @@ function load() {
     let newValue = sanitizeStitch(stitchDefInput.value)
     if (newValue !== previousValue) {
       previousValue = stitchDefInput.value
-      stitchWand()
+      stitchChanged()
     }
   })
 
