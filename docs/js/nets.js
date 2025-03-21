@@ -26,16 +26,26 @@ function stitchChanged(){
   d3.select('#md').text(d)
   d3.select('#mp').text(p)
   d3.select('#mq').text(q)
+  setSample(b)
 }
 
 function sanitizeStitch(b) {
   return b.toLowerCase().replace(/[^ctlr]/g, "").trim();
 }
 
+function setSample(b) {
+  document.getElementById('sample').addEventListener('error', function () {
+    this.style.display = 'none';
+  });
+  let img = 'images/nets/' + b + ".jpg" // TODO sort sequences of crl, use lexicographically smallest of bdpq
+  let sample = document.getElementById("sample");
+  sample.style.display = 'inline-block';
+  sample.setAttribute("src", img)
+}
+
 function load() {
   const search = window.location.search.replace(/set=./,'')
   const urlParams = new URLSearchParams(search)
-  let img = urlParams.get("img")
 
   let b = urlParams.get("b") // backward compatible with old links
   if (!b) b = urlParams.get("stitchDef") // new submits
@@ -50,15 +60,7 @@ function load() {
       stitchChanged()
     }
   })
-  if (img) {
-    document.getElementById('sample').addEventListener('error', function() {
-      this.style.display = 'none';
-    });
-    img = 'images/nets/' + b +".jpg" // TODO sort sequences of crl, use lexicographically smallest of bdpq
-    let sample = document.getElementById("sample");
-    sample.style.display = 'inline-block';
-    sample.setAttribute("src",img)
-  }
+  setSample(b);
 
   d3.select('#colors').node().checked = urlParams.has("colors")
   d3.selectAll('#gallery a').attr("href", function() {
