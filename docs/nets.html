@@ -26,6 +26,7 @@
         legend { line-height: 2.5em; }
         form{ padding-bottom: 1em; }
         form p { margin-bottom: 0; }
+        #sample { height: 120px; }
         @media print {
             form, button { display: none }
         }
@@ -84,13 +85,13 @@
         <h3>Diagrams</h3>
         <p>
         </p>
-        <form>
-            <input type="checkbox" id="colors" name="colors" onChange="setColors(this.checked)">
-            <label for="colors" title="initially checked when address bar has 'color', ignoring its value">Highlight corresponding stitches</label>
-        </form>
     </div>
     <img src="images/dots-legend-without.png" id="pairs" alt="pair diagrams: diagonal, horizontal">
     <img id="sample">
+    <form>
+        <input type="checkbox" id="colors" name="colors" onChange="setColors(this.checked)">
+        <label for="colors" title="initially checked when address bar has 'color', ignoring its value">Highlight corresponding stitches</label>
+    </form>
     <fieldset>
         <legend>
             <button onclick="generate('1',this)" id="more1"><img src="images/wand.png"></button>

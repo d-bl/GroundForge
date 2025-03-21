@@ -36,23 +36,12 @@ function load() {
   const search = window.location.search.replace(/set=./,'')
   const urlParams = new URLSearchParams(search)
   let img = urlParams.get("img")
-  if (img) {
-    document.getElementById('sample').addEventListener('error', function() {
-      this.style.display = 'none';
-    });
-
-    img = '/MAE-gf/images/ctrl/'
-        + img.replace(/[^a-zA-Z0-9-_]/g, "")
-        +".jpg"
-    let sample = document.getElementById("sample");
-    sample.style.display = 'inline-block';
-    sample.setAttribute("src",img)
-  }
 
   let b = urlParams.get("b") // backward compatible with old links
   if (!b) b = urlParams.get("stitchDef") // new submits
+  b = sanitizeStitch(b)
   let stitchDefInput = d3.select('#stitchDef').node();
-  stitchDefInput.value = !b ? "crcl": sanitizeStitch(b)
+  stitchDefInput.value = !b ? "crcl": b
   let previousValue = stitchDefInput.value
   stitchDefInput.addEventListener('keyup', function() {
     let newValue = sanitizeStitch(stitchDefInput.value)
@@ -61,6 +50,15 @@ function load() {
       stitchChanged()
     }
   })
+  if (img) {
+    document.getElementById('sample').addEventListener('error', function() {
+      this.style.display = 'none';
+    });
+    img = 'images/nets/' + b +".jpg" // TODO sort sequences of crl, use lexicographically smallest of bdpq
+    let sample = document.getElementById("sample");
+    sample.style.display = 'inline-block';
+    sample.setAttribute("src",img)
+  }
 
   d3.select('#colors').node().checked = urlParams.has("colors")
   d3.selectAll('#gallery a').attr("href", function() {
