@@ -29,7 +29,6 @@
 
         figure img, figcaption { display: block; }
         figure img { padding-bottom: 0.5em; }
-        #sample { height: 122px; }
         @media print {
             form, button { display: none }
         }
@@ -51,50 +50,49 @@
     </div>
 </header>
 <main>
-    <div>
-        <script src="js/fork-warning.js"></script>
-        <p><a href="/GroundForge-help/Nets" target="_blank" rel="help">tutorial</a></p>
-        <h3>Stitches</h3>
-        <form>
-            <div id="gallery"></div>
-        </form>
-        <table>
-            <tr>
-                <td class="sn sw"><code id="mb">crcl</code></td>
-                <td class="sn de"></td>
-                <td class="sn dw"></td>
-                <td class="sn se"><code id="md">clcr</code></td>
-            </tr>
-            <tr>
-                <td class="ds sw"></td>
-                <td class="ds de">b</td>
-                <td class="ds dw">d</td>
-                <td class="ds se"></td>
-            </tr>
-            <tr>
-                <td class="dn sw"></td>
-                <td class="dn de">p</td>
-                <td class="dn dw">q</td>
-                <td class="dn se"></td>
-            </tr>
-            <tr>
-                <td class="ss sw"><code id="mp">lcrc</code></td>
-                <td class="ss de"></td>
-                <td class="ss dw"></td>
-                <td class="ss se"><code id="mq">rclc</code></td>
-                <td id="legend"></td>
-            </tr>
-        </table>
-        <h3>Diagrams</h3>
-        <p>
-        </p>
-    </div>
-    <img src="images/dots-legend-without.png" id="pairs" alt="pair diagrams: diagonal, horizontal">
-    <figure>
-        <img id="sample">
-        sample by S. Babbs from <a href="/MAE-gf/docs/stitches¨">MAE</a>
-    </figure>
     <form>
+        <div>
+            <script src="js/fork-warning.js"></script>
+            <p><a href="/GroundForge-help/Nets" target="_blank" rel="help">tutorial</a></p>
+            <h3>Stitches</h3>
+                <div id="gallery"></div>
+            <table>
+                <tr>
+                    <td class="sn sw"><code id="mb">crcl</code></td>
+                    <td class="sn de"></td>
+                    <td class="sn dw"></td>
+                    <td class="sn se"><code id="md">clcr</code></td>
+                </tr>
+                <tr>
+                    <td class="ds sw"></td>
+                    <td class="ds de">b</td>
+                    <td class="ds dw">d</td>
+                    <td class="ds se"></td>
+                </tr>
+                <tr>
+                    <td class="dn sw"></td>
+                    <td class="dn de">p</td>
+                    <td class="dn dw">q</td>
+                    <td class="dn se"></td>
+                </tr>
+                <tr>
+                    <td class="ss sw"><code id="mp">lcrc</code></td>
+                    <td class="ss de"></td>
+                    <td class="ss dw"></td>
+                    <td class="ss se"><code id="mq">rclc</code></td>
+                    <td id="legend"></td>
+                </tr>
+            </table>
+            <h3>Diagrams</h3>
+            <p>
+            </p>
+        </div>
+        <img src="images/dots-legend-without.png" id="pairs" alt="pair diagrams: diagonal, horizontal">
+        <figure>
+            <img id="sample">
+            sample by S. Babbs from <a href="/MAE-gf/docs/stitches¨">MAE</a>
+        </figure>
+        <br>
         <input type="checkbox" id="colors" name="colors" onChange="setColors(this.checked)">
         <label for="colors" title="initially checked when address bar has 'color', ignoring its value">Highlight corresponding stitches</label>
     </form>
