@@ -18,7 +18,28 @@ function stitchChanged(){
     d3.select('#diagrams'+set).selectAll('*').remove()
     d3.select('#more'+set).style('display', "inline")
   }
-  const b = sanitizeStitch(d3.select('#stitchDef').node().value)
+}
+
+function updateMatrix(input) {
+
+  // normalize input
+  let twistSequences = input.toLowerCase().replace(/[^ctlr]/g, "")
+      .replace(/[^c]+/g, (match) => {
+    return match.split('').sort((a, b) => {
+      const order = { 't': 0, 'r': 1, 'l': 2 };
+      return order[a] - order[b];
+    }).join('');
+  }).split('c');
+  for(i = 0; i<twistSequences.length; i++) {
+    let ts = twistSequences[i]
+    while (ts && ts.includes('rl')) {
+      ts = 't'+ts.replace(/rl/g, '');
+    }
+    twistSequences[i] = ts;
+  }
+
+  // update matrix
+  const b = twistSequences.flat().join('c');
   const d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
   const p = b.split("").reverse().join("")
   const q = d.split("").reverse().join("")
@@ -26,41 +47,36 @@ function stitchChanged(){
   d3.select('#md').text(d)
   d3.select('#mp').text(p)
   d3.select('#mq').text(q)
-  setSample(b)
-}
 
-function sanitizeStitch(b) {
-  return b.toLowerCase().replace(/[^ctlr]/g, "").trim();
-}
-
-function setSample(b) {
-  document.getElementById('sample').addEventListener('error', function () {
-    this.style.display = 'none';
-  });
-  let img = 'images/nets/' + b + ".jpg" // TODO sort sequences of crl, use lexicographically smallest of bdpq
+  // update sample
+  let img = 'images/nets/' + [b, d, p, q].sort()[0] + ".jpg"
   let sample = document.getElementById("sample");
   sample.style.display = 'inline-block';
   sample.setAttribute("src", img)
+
+  return b;
 }
 
 function load() {
+  document.getElementById('sample').addEventListener('error', function () {
+    this.style.display = 'none';
+  });
   const search = window.location.search.replace(/set=./,'')
   const urlParams = new URLSearchParams(search)
 
   let b = urlParams.get("b") // backward compatible with old links
   if (!b) b = urlParams.get("stitchDef") // new submits
-  b = sanitizeStitch(b)
+  if (!b) b = "crcl" // default
   let stitchDefInput = d3.select('#stitchDef').node();
-  stitchDefInput.value = !b ? "crcl": b
+  stitchDefInput.value = updateMatrix(b)
   let previousValue = stitchDefInput.value
   stitchDefInput.addEventListener('keyup', function() {
-    let newValue = sanitizeStitch(stitchDefInput.value)
+    let newValue = updateMatrix(stitchDefInput.value)
     if (newValue !== previousValue) {
       previousValue = stitchDefInput.value
       stitchChanged()
     }
   })
-  setSample(b);
 
   d3.select('#colors').node().checked = urlParams.has("colors")
   d3.selectAll('#gallery a').attr("href", function() {
@@ -69,23 +85,18 @@ function load() {
   generate('1')
 }
 function generate(set) {
-  const b = sanitizeStitch(d3.select('#stitchDef').node().value)
+  const b = updateMatrix(d3.select('#stitchDef').node().value)
   const d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
   const p = b.split("").reverse().join("")
   const q = d.split("").reverse().join("")
-  // patchWidth=9&patchHeight=11&footside=--,-b,&tile=5-5,-5-,5-5&headside=-,c,&shiftColsSW=-4&shiftRowsSW=2&shiftColsSE=3&shiftRowsSE=1
+
   const hor2x2  = "patchWidth=16&patchHeight=18&footside=--r-,----,--g-,--r-&tile=n-n-,---,g-g,---&headside=n,r,r,-&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=4&shiftRowsSE=4"
   const diamond = "patchWidth=11&patchHeight=14&footside=----,---b,&tile=5-5,-5-,5-5&headside=-,c,&shiftColsSW=-4&shiftRowsSW=2&shiftColsSE=3&shiftRowsSE=1"
-  d3.select('#stitchDef').node().value = b
-  d3.select('#mb').text(b)
-  d3.select('#md').text(d)
-  d3.select('#mp').text(p)
-  d3.select('#mq').text(q)
 
   d3.select('#more'+set).style('display', "none")
 
   if (!set || set === '1') {
-    showGraph (set+'d',"diagonal", `e1=${b}&g1=${b}&e3=${b}&g3=${b}&f2=${b}&${diamond}`)
+    showGraph (set+'d',"diagonal", `e1=${b}&g1=${b}&e3=${b}&g3=${b}&f2=${b}&f3=${b}&${diamond}`)
     showGraph (set,"horizontal",       `e1=${b}&g1=${b}&e3=${b}&g3=${b}&${hor2x2}`)
   }
   const pattern = set.endsWith('d') ? diamond : hor2x2;
