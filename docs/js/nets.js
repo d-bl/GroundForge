@@ -51,15 +51,15 @@ function updateMatrix(input) {
   // update sample
   let img = 'images/nets/' + [b, d, p, q].sort()[0] + ".jpg"
   let sample = document.getElementById("sample");
-  sample.style.display = 'inline-block';
   sample.setAttribute("src", img)
+  sample.parentNode.style.display = 'inline-block';
 
   return b;
 }
 
 function load() {
   document.getElementById('sample').addEventListener('error', function () {
-    this.style.display = 'none';
+    this.parentNode.style.display = 'none';
   });
   const search = window.location.search.replace(/set=./,'')
   const urlParams = new URLSearchParams(search)

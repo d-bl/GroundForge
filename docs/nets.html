@@ -26,7 +26,10 @@
         legend { line-height: 2.5em; }
         form{ padding-bottom: 1em; }
         form p { margin-bottom: 0; }
-        #sample { height: 120px; }
+
+        figure img, figcaption { display: block; }
+        figure img { padding-bottom: 0.5em; }
+        #sample { height: 122px; }
         @media print {
             form, button { display: none }
         }
@@ -87,7 +90,10 @@
         </p>
     </div>
     <img src="images/dots-legend-without.png" id="pairs" alt="pair diagrams: diagonal, horizontal">
-    <a href="/MAE-gf/docs/stitches¨" title="sample by S. Babs from MAE"><img id="sample"></a>
+    <figure>
+        <img id="sample">
+        sample by S. Babs from <a href="/MAE-gf/docs/stitches¨">MAE</a>
+    </figure>
     <form>
         <input type="checkbox" id="colors" name="colors" onChange="setColors(this.checked)">
         <label for="colors" title="initially checked when address bar has 'color', ignoring its value">Highlight corresponding stitches</label>
