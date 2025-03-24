@@ -17,7 +17,7 @@
 package dibl
 
 import dibl.Force.Point
-import dibl.LinkProps.{ Path, WhiteEnd, WhiteEndLeft, WhiteStart, WhiteStartLeft, WhiteStartRight }
+import dibl.LinkProps.{ Path, WhiteEnd, WhiteEndLeft, WhiteEndRight, WhiteStart, WhiteStartLeft, WhiteStartRight }
 
 import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
@@ -122,7 +122,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
       case "WhiteStartRight" => curved(WhiteStartRight(Map()))
       case "WhiteEnd" => straight(WhiteEnd(Map()))
       case "WhiteEndLeft" => curved(WhiteEndLeft(Map()))
-      case "WhiteEndRight" => curved(WhiteEndLeft(Map()))
+      case "WhiteEndRight" => curved(WhiteEndRight(Map()))
       case _ =>
         val mX = sX + (tX - sX) / 2
         val mY = sY + (tY - sY) / 2
