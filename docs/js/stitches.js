@@ -80,7 +80,7 @@ function clickedStitch(event) {
 
     var id = event.currentTarget.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
     var replacement = `${id}=${paintStitchValue()}`
-    var search = new RegExp(`${id}=[ctlr]+`,'gi')
+    var search = new RegExp(`(?<=[?&])${id}=[ctlr]+`,'gi')
     let attr = getQ();
     if (search.test(attr))
         q = attr.replace(search,replacement)
