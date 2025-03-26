@@ -95,8 +95,8 @@ function nudgeDiagram(svg) {
       // console.log(new Date().getMilliseconds())
       let filtered = nodeData.filter(notFloating);
       if (filtered.length === 0) return; // Exit if no nodes are left after filtering
-      var x = filtered.reduce(minX).x - 3
-      var y = filtered.reduce(minY).y - 3
+      var x = filtered.reduce(minX).x - 30
+      var y = filtered.reduce(minY).y - 30
       function moveNode(jsNode) { return 'translate('+(jsNode.x-x)+','+(jsNode.y-y)+')' }
       function drawPath(jsLink) {
           var s = jsLink.source
