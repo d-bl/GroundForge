@@ -158,10 +158,10 @@ function diagrams(q) {
         d3.select('#pairs').selectAll(".node").attr("onclick",null)
         d3.select('#pairs').selectAll(".node").on("click",clickedPairStitch)
 
-        paintThreadIntersections(/[gh]([1-4]|(16))[0-9]$/, '#0571b0ff');
-        paintThreadIntersections(/[ij][4-8][0-9]$/, '#92c5deff');
-        paintThreadIntersections(/[gh]([89]|(1[0-2]))[0-9]$/, '#ca0020ff');
-        paintThreadIntersections(/[ij](1[2-6])[0-9]$/, '#f4a582ff');
+        paintThreadIntersections(/[gh]([1-4]|(16))[0-9a-z]$/, '#0571b0ff');
+        paintThreadIntersections(/[ij][4-8][0-9a-z]$/, '#92c5deff');
+        paintThreadIntersections(/[gh]([89]|(1[0-2]))[0-9a-z]$/, '#ca0020ff');
+        paintThreadIntersections(/[ij](1[2-6])[0-9a-z]$/, '#f4a582ff');
     }, 0);
 }
 
