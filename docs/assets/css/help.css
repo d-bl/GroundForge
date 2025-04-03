@@ -55,3 +55,18 @@ img[src$="align=left"] { float: left; margin-right:1em }
 img[src$="align=center"] { text-align: center }
 
 fieldset + fieldset, form + fieldset { margin-top: 0.7em; }
+
+/* for the gallery of the snow mixer */
+
+fieldset a[data-title] {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+}
+fieldset a[data-title]::after {
+    content: attr(data-title);
+    display: block;
+    font-size: 12px;
+    margin-top: 0;
+    margin-bottom: 0.8em;
+}
