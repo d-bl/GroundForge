@@ -12,35 +12,34 @@ javascript:
 {% include mix4snow/hexa.html %}
 
 <fieldset style="background: #FFF; max-width:95%; height:145px; overflow: auto; resize: both"><legend>Select a recipe</legend>
-<a href="javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)" data-title="123-a"><img src="123-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('-,ctc,ctc,ctc,ctc,ctc',false)" data-title="132-a"><img src="132-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('tctc,rctcl,ctcl,ctct',true)" data-title="312-a"><img src="312-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('tc,rclcrc,clcrcl,ct',true)" data-title="321-a"><img src="321-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('tcr,lctc,ctcr,lct',false)" data-title="321-b"><img src="321-b.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('tcl,lctc,ctcr,rct',false)" data-title="321-c"><img src="321-c.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('t,lctc,ctcr,ctct',false)" data-title="321-d"><img src="321-d.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('-,c,ctctc,ctctc,ctctc,c',true)" data-title="126453-a"><img src="126453-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('t,rc,ctc,rclcr,ctcl,ct',true)" data-title="153426-a"><img src="153426-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('t,rctc,ctctcl,ctct',true)" data-title="154326-a"><img src="154326-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('-,cr,crcl,clcrclcr,rcrcl,c',false)" data-title="156423-a"><img src="156423-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('cr,crcl,clcr,crcl,clcr,c',true)" data-title="234561-a"><img src="234561-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('-,cr,crcl,clcr,crcl,cl',false)" data-title="263451-a"><img src="263451-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('-,cl,ctcl,crcrcr,rcr,c',true)" data-title="321546-a"><img src="321546-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('-,lc,crc,clcrc,clcr,c,crc,cl',true)" data-title="321654-a"><img src="321654-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('-,cr,ctcr,clclc,lcl,c',false)" data-title="321654-b"><img src="321654-b.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('ctct,ct,ct,ct,cl,ctc',false)" data-title="354612-a"><img src="354612-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('lc,crclclc,crcrclc,cr',false)" data-title="426153-a"><img src="426153-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('cr,ctcl,ctcr,ctcl,ctc,c',false)" data-title="426153-b"><img src="426153-b.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('r,lrc,ctcr,lct',false)" data-title="456123-a"><img src="456123-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('c,ctc,rclc,ctc,rc,rcl,ctc,c',false)" data-title="456123-b"><img src="456123-b.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('rc,clcrc,clctc,rcl',true)" data-title="462513-a"><img src="462513-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('lcrc,clcrc,clcrc,clcr',false)" data-title="564312-b"><img src="564312-b.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('-,c,ctctc,clcr,rctc,c',false)" data-title="563412-c"><img src="563412-c.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('r,c,crc,ctc,lcrcl,ctc,crc,cl',true)" data-title="623451-a"><img src="623451-a.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('-,ctc,ct,crc,ctc,ctc',true)" data-title="623541-b"><img src="623541-b.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('-,cl,ctctcr,ct,ctc,c',false)" data-title="623541-c"><img src="623541-c.png" alt=""></a> &nbsp;
-<a href="javascript:recipe('rcl,ctc,crcllc,crrclcr,ctc,cl',true)" data-title="pea"><img src="pea.png" alt=""></a> &nbsp;
-&nbsp;
+<a data-title="123-a" href="javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)"><img src="123-a.png" alt=""></a> &nbsp;
+<a data-title="123-b" href="javascript:recipe('rcl,ctc,crcllc,crrclcr,ctc,cl',true)"><img src="123-b.png" alt=""></a> &nbsp;
+<a data-title="132-a" href="javascript:recipe('-,ctc,ctc,ctc,ctc,ctc',false)"><img src="132-a.png" alt=""></a> &nbsp;
+<a data-title="312-a" href="javascript:recipe('tctc,rctcl,ctcl,ctct',true)"><img src="312-a.png" alt=""></a> &nbsp;
+<a data-title="321-a" href="javascript:recipe('tc,rclcrc,clcrcl,ct',true)"><img src="321-a.png" alt=""></a> &nbsp;
+<a data-title="321-b" href="javascript:recipe('tcr,lctc,ctcr,lct',false)"><img src="321-b.png" alt=""></a> &nbsp;
+<a data-title="321-c" href="javascript:recipe('tcl,lctc,ctcr,rct',false)"><img src="321-c.png" alt=""></a> &nbsp;
+<a data-title="321-d" href="javascript:recipe('t,lctc,ctcr,ctct',false)"><img src="321-d.png" alt=""></a> &nbsp;
+<a data-title="126453-a" href="javascript:recipe('-,c,ctctc,ctctc,ctctc,c',true)"><img src="126453-a.png" alt=""></a> &nbsp;
+<a data-title="153426-a" href="javascript:recipe('t,rc,ctc,rclcr,ctcl,ct',true)"><img src="153426-a.png" alt=""></a> &nbsp;
+<a data-title="154326-a" href="javascript:recipe('t,rctc,ctctcl,ctct',true)"><img src="154326-a.png" alt=""></a> &nbsp;
+<a data-title="156423-a" href="javascript:recipe('-,cr,crcl,clcrclcr,rcrcl,c',false)"><img src="156423-a.png" alt=""></a> &nbsp;
+<a data-title="234561-a" href="javascript:recipe('cr,crcl,clcr,crcl,clcr,c',true)"><img src="234561-a.png" alt=""></a> &nbsp;
+<a data-title="263451-a" href="javascript:recipe('-,cr,crcl,clcr,crcl,cl',false)"><img src="263451-a.png" alt=""></a> &nbsp;
+<a data-title="321546-a" href="javascript:recipe('-,cl,ctcl,crcrcr,rcr,c',true)"><img src="321546-a.png" alt=""></a> &nbsp;
+<a data-title="321654-a" href="javascript:recipe('-,lc,crc,clcrc,clcr,c,crc,cl',true)"><img src="321654-a.png" alt=""></a> &nbsp;
+<a data-title="321654-b" href="javascript:recipe('-,cr,ctcr,clclc,lcl,c',false)"><img src="321654-b.png" alt=""></a> &nbsp;
+<a data-title="354612-a" href="javascript:recipe('ctct,ct,ct,ct,cl,ctc',false)"><img src="354612-a.png" alt=""></a> &nbsp;
+<a data-title="426153-a" href="javascript:recipe('lc,crclclc,crcrclc,cr',false)"><img src="426153-a.png" alt=""></a> &nbsp;
+<a data-title="426153-b" href="javascript:recipe('cr,ctcl,ctcr,ctcl,ctc,c',false)"><img src="426153-b.png" alt=""></a> &nbsp;
+<a data-title="456123-a" href="javascript:recipe('r,lrc,ctcr,lct',false)"><img src="456123-a.png" alt=""></a> &nbsp;
+<a data-title="456123-b" href="javascript:recipe('c,ctc,rclc,ctc,rc,rcl,ctc,c',false)"><img src="456123-b.png" alt=""></a> &nbsp;
+<a data-title="462513-a" href="javascript:recipe('rc,clcrc,clctc,rcl',true)"><img src="462513-a.png" alt=""></a> &nbsp;
+<a data-title="564312-b" href="javascript:recipe('lcrc,clcrc,clcrc,clcr',false)"><img src="564312-a.png" alt=""></a> &nbsp;
+<a data-title="563412-c" href="javascript:recipe('-,c,ctctc,clcr,rctc,c',false)"><img src="563412-a.png" alt=""></a> &nbsp;
+<a data-title="623451-a" href="javascript:recipe('r,c,crc,ctc,lcrcl,ctc,crc,cl',true)"><img src="623451-a.png" alt=""></a> &nbsp;
+<a data-title="623541-a" href="javascript:recipe('-,ctc,ct,crc,ctc,ctc',true)"><img src="623541-a.png" alt=""></a> &nbsp;
+<a data-title="623541-b" href="javascript:recipe('-,cl,ctctcr,ct,ctc,c',false)"><img src="623541-b.png" alt=""></a> &nbsp;
 <a href="/GroundForge-help/snow-mix#recipes-for-the-mixer" rel="help">variations and more...</a>
 </fieldset>
 <br>
