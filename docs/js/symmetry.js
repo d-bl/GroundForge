@@ -22,6 +22,7 @@ function clickedStitch(event) {
     switch (document.querySelector("input[name=editMode]:checked").value) {
     case "change":
         var txt = dropTwists(document.querySelector("#stitchDef").value)
+        if (txt === "") break;
         var w = document.querySelector("#width").value - 1
         var h = document.querySelector("#height").value - 1
         function isTopBottom(elem) { return elem.id.startsWith("r0c") || elem.id.startsWith(`r${h}c`) }
@@ -73,7 +74,10 @@ function createLegend() {
 }
 function dropTwists(s) {
 
-    return s.toLowerCase().replace(/[tlr]*([tlrc]*c)[tlr]*/,'$1')
+    return s.toLowerCase()
+        .replace(/^[tlr]*/i,'')
+        .replace(/[tlr]*$/i,'')
+        .replace(/[^ctlr]/i,'')
 }
 function clones () {
     d3.select("#download2").style("display","none")
