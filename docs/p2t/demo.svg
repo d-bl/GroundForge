@@ -85,13 +85,19 @@
         </text>
     </g>
     <g id="cloned" transform="scale(1.8)">
-        <path id="l1748500195685" d="M 61.66666793823242,47.46297073364258 61.633333969116215 54.53148536682129 61.60000000000001,61.60000000000001"
-              class="link ends_at_r4c4 kiss_4 starts_at_n1748500195683"
-              style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel; marker-mid: url(&quot;#twist-1&quot;);"></path>
-        <path id="l1748500195685" d="M 61.66666793823242,47.46297073364258 54.63333396911621 47.531485366821286 47.6,47.6" class="link ends_at_r3c3 kiss_3 starts_at_n1748500195683"
-              style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel; marker-mid: url(&quot;#twist-1&quot;);"></path>
-        <path id="r0c0-r2c0" class="link starts_at_r0c0 kiss_0 ends_at_r2c0" d="M 5.6000000000000005,5.6000000000000005 5.6000000000000005 19.6 5.6000000000000005,33.6"
+        <path id="l1748602578396" d="M 61.111114501953125,47.833343505859375 61.35555725097657 54.71667175292969 61.60000000000001,61.60000000000001"
+              class="link kiss_4 ends_at_r4c4 starts_at_n1748602578395" style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
+        <path id="l1748602578396" d="M 61.111114501953125,47.833343505859375 54.35555725097656 47.716671752929685 47.6,47.6" class="link kiss_3 ends_at_r3c3 starts_at_n1748602578395"
               style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
+        <path id="l1748602578396" d="M 73.8888931274414,47.19447326660156 67.50000381469727 47.51390838623047 61.111114501953125,47.833343505859375"
+              class="link kiss_4 starts_at_n1748602427781 ends_at_n1748602578395"
+              style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
+        <path id="l1748602427786" d="M 73.8888931274414,47.19447326660156 81.74444656372071 40.39723663330078 89.60000000000001,33.6" class="link ends_at_r2c6 kiss_5 starts_at_n1748602427781"
+              style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
+
+
+        <path id="r0c0-r2c0" class="link starts_at_r0c0 kiss_0 ends_at_r2c0" d="M 5.6000000000000005,5.6000000000000005 5.6000000000000005 19.6 5.6000000000000005,33.6"
+              style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel; marker-mid: url(&quot;#twist-1&quot;);"></path>
         <path id="r0c2-r2c2" class="link starts_at_r0c2 kiss_1 ends_at_r2c2" d="M 33.6,5.6000000000000005 33.6 19.6 33.6,33.6"
               style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
         <path id="r0c2-r1c3" class="link starts_at_r0c2 ends_at_r1c3 kiss_2" d="M 33.6,5.6000000000000005 40.6 12.599999999999998 47.6,19.599999999999998"
@@ -108,7 +114,8 @@
               style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
         <path id="r1c5-r2c4" class="link starts_at_r1c5 ends_at_r2c4 kiss_4" d="M 75.60000000000001,19.599999999999998 68.60000000000001 26.6 61.60000000000001,33.6"
               style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
-        <path id="r1c5-r2c6" class="link starts_at_r1c5 ends_at_r2c6 kiss_5" d="M 75.60000000000001,19.599999999999998 82.60000000000001 26.6 89.60000000000001,33.6"
+        <path id="l1748602427786" class="link starts_at_r1c5 kiss_5 ends_at_n1748602427781"
+              d="M 75.60000000000001,19.599999999999998 74.74444656372071 33.39723663330078 73.8888931274414,47.19447326660156"
               style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
         <path id="r2c0-r3c1" class="link starts_at_r2c0 ends_at_r3c1 kiss_0" d="M 5.6000000000000005,33.6 12.599999999999998 40.6 19.599999999999998,47.6"
               style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
@@ -116,12 +123,12 @@
               style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
         <path id="r2c2-r3c3" class="link starts_at_r2c2 ends_at_r3c3 kiss_2" d="M 33.6,33.6 40.6 40.6 47.6,47.6"
               style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
-        <path id="l1748500195685" class="link starts_at_r2c4 kiss_3 ends_at_n1748500195683" d="M 61.60000000000001,33.6 61.633333969116215 40.531485366821286 61.66666793823242,47.46297073364258"
+        <path id="l1748602578396" class="link starts_at_r2c4 kiss_3 ends_at_n1748602578395" d="M 61.60000000000001,33.6 61.35555725097657 40.716671752929685 61.111114501953125,47.833343505859375"
+              style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
+        <path id="l1748602572466" class="link starts_at_r2c4 kiss_4 ends_at_n1748602427781" d="M 61.60000000000001,33.6 67.74444656372071 40.39723663330078 73.8888931274414,47.19447326660156"
+              style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
+        <path id="r2c6-r4c6" class="link starts_at_r2c6 kiss_5 ends_at_r4c6" d="M 89.60000000000001,33.6 89.60000000000001 47.60000000000001 89.60000000000001,61.60000000000001"
               style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel; marker-mid: url(&quot;#twist-1&quot;);"></path>
-        <path id="r2c4-r3c5" class="link starts_at_r2c4 ends_at_r3c5 kiss_4" d="M 61.60000000000001,33.6 68.60000000000001 40.6 75.60000000000001,47.6"
-              style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
-        <path id="r2c6-r3c5" class="link starts_at_r2c6 ends_at_r3c5 kiss_5" d="M 89.60000000000001,33.6 82.60000000000001 40.6 75.60000000000001,47.6"
-              style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
         <path id="r3c1-r4c0" class="link starts_at_r3c1 ends_at_r4c0 kiss_0" d="M 19.599999999999998,47.6 12.6 54.60000000000001 5.6000000000000005,61.60000000000001"
               style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
         <path id="r3c1-r4c2" class="link starts_at_r3c1 ends_at_r4c2 kiss_1" d="M 19.599999999999998,47.6 26.6 54.60000000000001 33.6,61.60000000000001"
@@ -130,10 +137,8 @@
               style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
         <path id="r3c3-r4c4" class="link starts_at_r3c3 ends_at_r4c4 kiss_3" d="M 47.6,47.6 54.60000000000001 54.60000000000001 61.60000000000001,61.60000000000001"
               style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
-        <path id="l1748500195685" class="link starts_at_r3c5 kiss_4 ends_at_n1748500195683" d="M 75.60000000000001,47.6 68.63333396911622 47.531485366821286 61.66666793823242,47.46297073364258"
-              style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel; marker-mid: url(&quot;#twist-1&quot;);"></path>
-        <path id="r3c5-r4c6" class="link starts_at_r3c5 ends_at_r4c6 kiss_5" d="M 75.60000000000001,47.6 82.60000000000001 54.60000000000001 89.60000000000001,61.60000000000001"
-              style="stroke: rgb(0, 0, 0); stroke-width: 5px; fill: none; opacity: 1; stroke-opacity: 0.25; stroke-linejoin: bevel;"></path>
+
+
         <g id="r0c0" onclick="clickedStitch(event)" class="node" transform="translate(5.6000000000000005,5.6000000000000005)">
             <title>ctc</title>
             <path d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z" style="fill: #0571b0; stroke: none; opacity: 0.85"></path>
@@ -195,11 +200,7 @@
             <path d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z" style="fill: #0571b0; stroke: none; opacity: 0.85"></path>
             <path d="M 0,-3.2 H 3.2 V 3.2 H 0 Z" style="fill: #0571b0; stroke: none; opacity: 0.85"></path>
         </g>
-        <g id="r3c5" onclick="clickedStitch(event)" class="node" transform="translate(75.60000000000001,47.6)">
-            <title>ctc</title>
-            <path d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z" style="fill: #0571b0; stroke: none; opacity: 0.85"></path>
-            <path d="M 0,-3.2 H 3.2 V 3.2 H 0 Z" style="fill: #0571b0; stroke: none; opacity: 0.85"></path>
-        </g>
+
         <g id="r4c0" onclick="clickedStitch(event)" class="node" transform="translate(5.6000000000000005,61.60000000000001)">
             <title>ctc</title>
             <path d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z" style="fill: #0571b0; stroke: none; opacity: 0.85"></path>
@@ -220,7 +221,12 @@
             <path d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z" style="fill: #0571b0; stroke: none; opacity: 0.85"></path>
             <path d="M 0,-3.2 H 3.2 V 3.2 H 0 Z" style="fill: #0571b0; stroke: none; opacity: 0.85"></path>
         </g>
-        <g transform="translate(61.66666793823242,47.46297073364258)" onclick="clickedStitch(event)" class="node" id="n1748500195683">
+
+        <g transform="translate(73.8888931274414,47.19447326660156)" onclick="clickedStitch(event)" class="node" id="n1748602427781">
+            <path d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z" style="fill: #0571b0; stroke: none; opacity: 0.85"></path>
+            <path d="M 0,-3.2 H 3.2 V 3.2 H 0 Z" style="fill: #0571b0; stroke: none; opacity: 0.85"></path>
+        </g>
+        <g transform="translate(61.111114501953125,47.833343505859375)" onclick="clickedStitch(event)" class="node" id="n1748602578395">
             <title>c</title>
             <path d="M 3.23,0 A 3.23,3.23 0 0 1 0,3.23 3.23,3.23 0 0 1 -3.23,0 3.23,3.23 0 0 1 0,-3.23 3.23,3.23 0 0 1 3.23,0 Z" style="fill: #000000; stroke: none; opacity: 0.85"></path>
         </g>

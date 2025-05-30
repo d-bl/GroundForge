@@ -333,6 +333,46 @@ const GF_svgP2T = {
     createDiagram(templateElement, w, h) {
         document.body.insertAdjacentHTML("beforeend", "<hr><p>Under construction (pinched/moved stitches cause overlap, a thread may have multiple colors): </p>");
 
+        function leftOrRight(startAtId, twistedPair) {
+            const siblings = templateElement.querySelectorAll(".starts_at_" + startAtId)
+            switch (siblings.length) {
+                case 2:
+                    const sibling = Array.from(siblings).filter(el => el !==twistedPair)[0]
+                    const kissingPath = Array.from(twistedPair.classList)
+                        .filter(cls => cls.startsWith("kiss_"))[0];
+                    const kissingPathOfSibling = Array.from(sibling.classList)
+                        .filter(cls => cls.startsWith("kiss_"))[0];
+                    return  kissingPath < kissingPathOfSibling ? 'l' : 'r';
+                case 1:
+                    return (twistedPair.classList.contains("kiss_0")) ? 'r' : 'l';
+                default:
+                    return 'l';
+            }
+        }
+        function twistIndex() {
+            const index = {};
+
+            Array.from(templateElement.querySelectorAll("path"))
+                .forEach(pair => {
+                    const classes = Array.from(pair.classList);
+                    const startsAtClass = classes.find(cls => cls.startsWith("starts_at_"));
+                    const midMarker = pair.getAttribute("marker-mid");
+                    if (startsAtClass && midMarker) {
+                        const nrOfTwists = midMarker.replace(/.*-/,"" ).replace(/[^0-9]*$/, '');
+                        const startAtId = startsAtClass.replace("starts_at_","");
+                        const twist = leftOrRight(startAtId, pair);
+                        if (index[startAtId]) // TODO combine l+r into t
+                            index[startAtId] += twist.repeat(nrOfTwists);
+                        else
+                            index[startAtId] = twist.repeat(nrOfTwists);
+
+                    }
+                 });
+            return index;
+        }
+
+        const additionalTwists = twistIndex();
+
         const svg = GF_svgP2T.newSVG((w*6.5)+"", h*3.5);
         document.body.appendChild(svg);
         const bigG = document.createElementNS(GF_svgP2T.svgNS, "g");
@@ -344,8 +384,14 @@ const GF_svgP2T = {
             const [x, y] = element.getAttribute("transform")
                 .match(/translate\(([^)]+)\)/)[1]
                 .split(",");
-            const stitchInputValue = element.querySelectorAll("title")[0].textContent;
-            // TODO add twists of outgoing pairs
+            const titles = element.querySelectorAll("title");
+            let stitchInputValue = 'ctc';
+            if (titles.length !== 0) {
+                stitchInputValue = titles[0].textContent;
+                // otherwise a stitch has been added without explicitly assigning actions
+            }
+            if(additionalTwists[element.id])
+                stitchInputValue += additionalTwists[element.id];
             const tmpSVG = GF_svgP2T.newSVG(125, 80);
             const g = document.createElementNS(GF_svgP2T.svgNS, "g");
             const nrOfNodes = GF_svgP2T.newStitch(stitchInputValue, 0, 0, tmpSVG);
