@@ -238,14 +238,21 @@ const GF_svgP2T = {
 
     newLegendStitch(stitchInputValue, colorCodeElement) {
 
-        const threadSvg = GF_svgP2T.newSVG("80","120");
-        const colorCodeSvg =GF_svgP2T.newSVG("27","35");
-        colorCodeSvg.appendChild(colorCodeElement)
-        colorCodeElement.setAttribute("transform", "translate(13,17) scale(3)")
-        document.body.insertAdjacentHTML("beforeend", `<span>${stitchInputValue.replace(/[^ctlr]/gi, '')}: </span>`);
-        document.body.appendChild(colorCodeSvg);
-        document.body.appendChild(threadSvg);
-        // hint: add a temporary invisible box (fill and stroke "none") when passing in an empty group
+        const threadSvg = GF_svgP2T.newSVG("80", "120");
+        const colorCodeSvg = GF_svgP2T.newSVG("27", "35");
+        colorCodeSvg.appendChild(colorCodeElement);
+        colorCodeElement.setAttribute("transform", "translate(13,17) scale(3)");
+
+        const figure = document.createElement("figure");
+        figure.appendChild(threadSvg);
+        const figcaption = document.createElement("figcaption");
+        figcaption.appendChild(colorCodeSvg);
+        const textNode = document.createTextNode(stitchInputValue.replace(/[^ctlr]/gi, ''));
+        figcaption.appendChild(textNode);
+        figure.appendChild(figcaption);
+        document.body.appendChild(figure);
+
+        // Generate the stitch in the thread SVG
         GF_svgP2T.newStitch(stitchInputValue, 0, 0, threadSvg);
     },
 

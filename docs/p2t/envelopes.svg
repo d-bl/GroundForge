@@ -1,0 +1,3893 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="607.40845"
+   height="481.71802"
+   version="1.1"
+   id="svg1079"
+   sodipodi:docname="envelopes.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1083">
+    <linearGradient
+       id="strokeGradient"
+       gradientUnits="userSpaceOnUse"
+       x1="0"
+       x2="100%"
+       y1="0"
+       y2="0">
+      <stop
+         offset="0%"
+         stop-color="black"
+         stop-opacity="1"
+         id="stop2" />
+      <stop
+         offset="100%"
+         stop-color="black"
+         stop-opacity="1"
+         id="stop4" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="namedview1081"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="1.4656488"
+     inkscape:cx="157.95053"
+     inkscape:cy="279.73959"
+     inkscape:window-width="2256"
+     inkscape:window-height="1435"
+     inkscape:window-x="0"
+     inkscape:window-y="41"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1079"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <g
+     id="cloned"
+     transform="matrix(5.7280498,0,0,5.7280498,33.458204,49.673212)">
+    <path
+       id="l1748602578396"
+       d="M 61.111115,47.833344 61.355557,54.716672 61.6,61.6"
+       class="link kiss_4 ends_at_r4c4 starts_at_n1748602578395"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="path927"
+       d="M 61.111115,47.833344 54.355557,47.716672 47.6,47.6"
+       class="link kiss_3 ends_at_r3c3 starts_at_n1748602578395"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="path929"
+       d="m 73.888893,47.194473 -6.388889,0.319435 -6.388889,0.319436"
+       class="link kiss_4 starts_at_n1748602427781 ends_at_n1748602578395"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="l1748602427786"
+       d="M 73.888893,47.194473 81.744447,40.397237 89.6,33.6"
+       class="link ends_at_r2c6 kiss_5 starts_at_n1748602427781"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="r0c0-r2c0"
+       class="link starts_at_r0c0 kiss_0 ends_at_r2c0"
+       d="m 5.6,5.6 v 14 14"
+       stroke-width="2"
+       stroke="#bbbbbb"
+       marker-mid="url(&quot;#twist-1&quot;)" />
+    <path
+       id="r0c2-r2c2"
+       class="link starts_at_r0c2 kiss_1 ends_at_r2c2"
+       d="m 33.6,5.6 v 14 14"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="r0c2-r1c3"
+       class="link starts_at_r0c2 ends_at_r1c3 kiss_2"
+       d="m 33.6,5.6 7,7 7,7"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="r0c4-r1c3"
+       class="link starts_at_r0c4 ends_at_r1c3 kiss_3"
+       d="m 61.6,5.6 -7,7 -7,7"
+       stroke-width="2"
+       stroke="#bbbbbb"
+       marker-mid="url(&quot;#twist-3&quot;)" />
+    <path
+       id="r0c4-r1c5"
+       class="link starts_at_r0c4 ends_at_r1c5 kiss_4"
+       d="m 61.6,5.6 7,7 7,7"
+       stroke-width="2"
+       stroke="#bbbbbb"
+       marker-mid="url(&quot;#twist-2&quot;)" />
+    <path
+       id="r0c6-r1c5"
+       class="link starts_at_r0c6 ends_at_r1c5 kiss_5"
+       d="m 89.6,5.6 -7,7 -7,7"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="r1c3-r2c2"
+       class="link starts_at_r1c3 ends_at_r2c2 kiss_2"
+       d="m 47.6,19.6 -7,7 -7,7"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="r1c3-r2c4"
+       class="link starts_at_r1c3 ends_at_r2c4 kiss_3"
+       d="m 47.6,19.6 7,7 7,7"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="r1c5-r2c4"
+       class="link starts_at_r1c5 ends_at_r2c4 kiss_4"
+       d="m 75.6,19.6 -7,7 -7,7"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="path941"
+       class="link starts_at_r1c5 kiss_5 ends_at_n1748602427781"
+       d="M 75.6,19.6 74.744447,33.397237 73.888893,47.194473"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="r2c0-r3c1"
+       class="link starts_at_r2c0 ends_at_r3c1 kiss_0"
+       d="m 5.6,33.6 7,7 7,7"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="r2c2-r3c1"
+       class="link starts_at_r2c2 ends_at_r3c1 kiss_1"
+       d="m 33.6,33.6 -7,7 -7,7"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="r2c2-r3c3"
+       class="link starts_at_r2c2 ends_at_r3c3 kiss_2"
+       d="m 33.6,33.6 7,7 7,7"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="path946"
+       class="link starts_at_r2c4 kiss_3 ends_at_n1748602578395"
+       d="m 61.6,33.6 -0.244443,7.116672 -0.244442,7.116672"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="l1748602572466"
+       class="link starts_at_r2c4 kiss_4 ends_at_n1748602427781"
+       d="m 61.6,33.6 6.144447,6.797237 6.144446,6.797236"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="r2c6-r4c6"
+       class="link starts_at_r2c6 kiss_5 ends_at_r4c6"
+       d="m 89.6,33.6 v 14 14"
+       stroke-width="2"
+       stroke="#bbbbbb"
+       marker-mid="url(&quot;#twist-1&quot;)"
+       style="fill:none" />
+    <path
+       id="r3c1-r4c0"
+       class="link starts_at_r3c1 ends_at_r4c0 kiss_0"
+       d="m 19.6,47.6 -7,7 -7,7"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="r3c1-r4c2"
+       class="link starts_at_r3c1 ends_at_r4c2 kiss_1"
+       d="m 19.6,47.6 7,7 7,7"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="r3c3-r4c2"
+       class="link starts_at_r3c3 ends_at_r4c2 kiss_2"
+       d="m 47.6,47.6 -7,7 -7,7"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <path
+       id="r3c3-r4c4"
+       class="link starts_at_r3c3 ends_at_r4c4 kiss_3"
+       d="m 47.6,47.6 7,7 7,7"
+       stroke-width="2"
+       stroke="#bbbbbb" />
+    <g
+       id="r0c0"
+       class="node"
+       transform="translate(5.6,5.6)">
+      <title
+         id="title954">ctc</title>
+      <path
+         d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path956" />
+      <path
+         d="M 0,-3.2 H 3.2 V 3.2 H 0 Z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path958" />
+    </g>
+    <g
+       id="r0c2"
+       class="node"
+       transform="translate(33.6,5.6)">
+      <title
+         id="title961">ctc</title>
+      <path
+         d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path963" />
+      <path
+         d="M 0,-3.2 H 3.2 V 3.2 H 0 Z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path965" />
+    </g>
+    <g
+       id="r0c4"
+       class="node"
+       transform="translate(61.6,5.6)">
+      <title
+         id="title968">ctc</title>
+      <path
+         d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path970" />
+      <path
+         d="M 0,-3.2 H 3.2 V 3.2 H 0 Z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path972" />
+    </g>
+    <g
+       id="r0c6"
+       class="node"
+       transform="translate(89.6,5.6)">
+      <title
+         id="title975">ctc</title>
+      <path
+         d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path977" />
+      <path
+         d="M 0,-3.2 H 3.2 V 3.2 H 0 Z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path979" />
+    </g>
+    <g
+       id="r1c3"
+       class="node"
+       transform="translate(47.6,19.6)">
+      <title
+         id="title982">crcllrrrc</title>
+      <path
+         d="M -4.6,0 0,-4.6 V 0 Z"
+         style="opacity:0.85;fill:#ca0020;stroke:none"
+         id="path984" />
+      <path
+         d="M 4.6,0 0,-4.6 V 0 Z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path986" />
+      <path
+         d="M -4.6,0 0,4.6 V 0 Z"
+         style="opacity:0.85;fill:#f4a582;stroke:none"
+         id="path988" />
+      <path
+         d="M 4.6,0 0,4.6 V 0 Z"
+         style="opacity:0.85;fill:#92c5de;stroke:none"
+         id="path990" />
+    </g>
+    <g
+       id="r1c5"
+       class="node"
+       transform="translate(75.6,19.6)">
+      <title
+         id="title993">ctcctc</title>
+      <path
+         d="M 3.8,0 A 3.8,3.8 0 0 1 0,3.8 3.8,3.8 0 0 1 -3.8,0 3.8,3.8 0 0 1 0,-3.8 3.8,3.8 0 0 1 3.8,0 Z"
+         style="opacity:0.85;fill:#f7f7f7;stroke:none"
+         id="path995" />
+    </g>
+    <g
+       id="r2c0"
+       class="node"
+       transform="translate(5.6,33.6)">
+      <title
+         id="title998">ctc</title>
+      <path
+         d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1000" />
+      <path
+         d="M 0,-3.2 H 3.2 V 3.2 H 0 Z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1002" />
+    </g>
+    <g
+       id="r2c2"
+       class="node"
+       transform="translate(33.6,33.6)">
+      <title
+         id="title1005">ctc</title>
+      <path
+         d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1007" />
+      <path
+         d="M 0,-3.2 H 3.2 V 3.2 H 0 Z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1009" />
+    </g>
+    <g
+       id="r2c4"
+       class="node"
+       transform="translate(61.6,33.6)">
+      <title
+         id="title1012">ctc</title>
+      <path
+         d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1014" />
+      <path
+         d="M 0,-3.2 H 3.2 V 3.2 H 0 Z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1016" />
+    </g>
+    <g
+       id="r2c6"
+       class="node"
+       transform="translate(89.6,33.6)">
+      <title
+         id="title1019">ctc</title>
+      <path
+         d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1021" />
+      <path
+         d="M 0,-3.2 H 3.2 V 3.2 H 0 Z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1023" />
+    </g>
+    <g
+       id="r3c1"
+       class="node"
+       transform="translate(19.6,47.6)">
+      <title
+         id="title1026">cllcrrcllcrrc</title>
+      <path
+         d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z"
+         style="opacity:0.85;fill:#000000;stroke:none"
+         id="path1028" />
+      <path
+         d="M 0,-3.2 H 3.2 V 3.2 H 0 Z"
+         style="opacity:0.85;fill:#000000;stroke:none"
+         id="path1030" />
+    </g>
+    <g
+       id="r3c3"
+       class="node"
+       transform="translate(47.6,47.6)">
+      <title
+         id="title1033">ctc</title>
+      <path
+         d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1035" />
+      <path
+         d="M 0,-3.2 H 3.2 V 3.2 H 0 Z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1037" />
+    </g>
+    <g
+       id="r4c0"
+       class="node"
+       transform="translate(5.6,61.6)">
+      <title
+         id="title1040">ctc</title>
+      <path
+         d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1042" />
+      <path
+         d="M 0,-3.2 H 3.2 V 3.2 H 0 Z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1044" />
+    </g>
+    <g
+       id="r4c2"
+       class="node"
+       transform="translate(33.6,61.6)">
+      <title
+         id="title1047">ctc</title>
+      <path
+         d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1049" />
+      <path
+         d="M 0,-3.2 H 3.2 V 3.2 H 0 Z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1051" />
+    </g>
+    <g
+       id="r4c4"
+       class="node"
+       transform="translate(61.6,61.6)">
+      <title
+         id="title1054">ctc</title>
+      <path
+         d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1056" />
+      <path
+         d="M 0,-3.2 H 3.2 V 3.2 H 0 Z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1058" />
+    </g>
+    <g
+       id="r4c6"
+       class="node"
+       transform="translate(89.6,61.6)">
+      <title
+         id="title1061">ctc</title>
+      <path
+         d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1063" />
+      <path
+         d="M 0,-3.2 H 3.2 V 3.2 H 0 Z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1065" />
+    </g>
+    <g
+       transform="translate(73.888893,47.194473)"
+       class="node"
+       id="n1748602427781">
+      <path
+         d="M -3.2,-3.2 H 0 v 6.4 h -3.2 z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1068" />
+      <path
+         d="M 0,-3.2 H 3.2 V 3.2 H 0 Z"
+         style="opacity:0.85;fill:#0571b0;stroke:none"
+         id="path1070" />
+    </g>
+    <g
+       transform="translate(61.111115,47.833344)"
+       class="node"
+       id="n1748602578395">
+      <title
+         id="title1073">c</title>
+      <path
+         d="M 3.23,0 A 3.23,3.23 0 0 1 0,3.23 3.23,3.23 0 0 1 -3.23,0 3.23,3.23 0 0 1 0,-3.23 3.23,3.23 0 0 1 3.23,0 Z"
+         style="opacity:0.85;fill:#000000;stroke:none"
+         id="path1075" />
+    </g>
+  </g>
+  <g
+     id="original"
+     transform="translate(-30.146172,14.792703)">
+    <g
+       transform="translate(31.92,31.36)"
+       id="g45">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_2 white_end thread_0"
+         d="M 0,0 16.468518,25.295644"
+         id="path2" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_2 white_end thread_2"
+         d="M 20.833333,32 3.1851495,72.661415"
+         id="path4" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 48.011431,4.8727786 62.5,16"
+         id="path6"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start ends_right_at_2 thread_2"
+         d="M 55.031696,18.867829 20.833333,32"
+         id="path8"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_2 white_start ends_left_at_4 thread_0"
+         d="M 28.301637,34.867829 62.5,48"
+         id="path10"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_4 white_start thread_3"
+         d="M 58.135185,54.704356 41.666667,80"
+         id="path12"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 68.844764,11.127221"
+         id="path14" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end ends_left_at_3 thread_1"
+         d="M 62.5,16 96.698363,29.132171"
+         id="path16" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_3 white_end ends_right_at_4 thread_3"
+         d="M 104.16667,32 69.968304,45.132171"
+         id="path18" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_4 white_end ends_left_at_5 thread_0"
+         d="M 62.5,48 96.698363,61.132171"
+         id="path20" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_5 white_end thread_1"
+         d="M 104.16667,64 89.678097,75.127221"
+         id="path22" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_3 white_start thread_3"
+         d="M 120.63518,6.704356 104.16667,32"
+         id="path24"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_5 white_start starts_right_at_3 thread_1"
+         d="M 104.16667,40 V 64"
+         id="path26"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_5 white_start thread_0"
+         d="M 110.51143,68.872779 125,80"
+         id="path28"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="16"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="1"
+         class="cross">
+        <title
+           id="title30">cross - 1</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="32"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="2"
+         class="twist">
+        <title
+           id="title33">left twist - 2</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="32"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="3"
+         class="twist">
+        <title
+           id="title36">right twist - 3</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="48"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="4"
+         class="cross">
+        <title
+           id="title39">cross - 4</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="64"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="5"
+         class="twist">
+        <title
+           id="title42">right twist - 5</title>
+      </circle>
+    </g>
+    <g
+       transform="translate(191.52,31.36)"
+       id="g87">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_2 white_end thread_0"
+         d="M 0,0 17.137858,32.904687"
+         id="path47" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_2 white_end thread_2"
+         d="M 20.833333,40 3.6954754,72.904687"
+         id="path49" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 47.437765,5.5402546 62.5,20"
+         id="path51"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start ends_right_at_2 thread_2"
+         d="M 55.287816,23.461849 20.833333,40"
+         id="path53"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_2 white_start ends_left_at_4 thread_0"
+         d="M 28.045518,43.461849 62.5,60"
+         id="path55"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_4 white_start thread_3"
+         d="M 56.728901,65.540255 41.666667,80"
+         id="path57"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 68.271099,14.459745"
+         id="path59" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end ends_left_at_3 thread_1"
+         d="M 62.5,20 96.954482,36.538151"
+         id="path61" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_3 white_end ends_right_at_4 thread_3"
+         d="M 104.16667,40 69.712184,56.538151"
+         id="path63" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_4 white_end thread_0"
+         d="M 62.5,60 77.562235,74.459745"
+         id="path65" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_3 white_start thread_3"
+         d="M 121.30452,7.0953127 104.16667,40"
+         id="path67"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_3 white_start thread_1"
+         d="M 107.86214,47.095313 125,80"
+         id="path69"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="20"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle73"
+         class="cross">
+        <title
+           id="title71">cross - 1</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle77"
+         class="twist">
+        <title
+           id="title75">left twist - 2</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle81"
+         class="twist">
+        <title
+           id="title79">right twist - 3</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="60"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle85"
+         class="cross">
+        <title
+           id="title83">cross - 4</title>
+      </circle>
+    </g>
+    <g
+       transform="translate(351.12,31.36)"
+       id="g165">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_2 white_end thread_0"
+         d="M 0,0 14.74784,12.584824"
+         id="path89" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_5 white_end starts_left_at_2 thread_2"
+         d="m 20.833333,17.777778 v 9.777778"
+         id="path91" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_5 white_end ends_left_at_6 thread_3"
+         d="M 20.833333,35.555556 Q 0.83333333,40 12.833333,42.666667"
+         id="path93" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_6 white_end ends_left_at_7 thread_2"
+         d="m 20.833333,44.444444 q -19.99999967,4.444445 -8,7.111112"
+         id="path95" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_7 white_end thread_3"
+         d="M 20.833333,53.333333 4.9251523,73.695805"
+         id="path97" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 49.024892,3.1395095 62.5,8.8888889"
+         id="path99"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start ends_right_at_2 thread_2"
+         d="M 54.676057,10.557997 20.833333,17.777778"
+         id="path101"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_2 white_start ends_left_at_4 thread_0"
+         d="M 28.657276,19.446886 62.5,26.666667"
+         id="path103"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_4 white_start ends_right_at_5 thread_3"
+         d="M 54.676057,28.335774 20.833333,35.555556"
+         id="path105"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_5 white_start ends_right_at_6 thread_2"
+         d="m 28.833333,37.333333 q 12,2.666667 -8,7.111111"
+         id="path107"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_6 white_start ends_right_at_7 thread_3"
+         d="m 28.833333,46.222222 q 12,2.666667 -8,7.111111"
+         id="path109"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_7 white_start thread_2"
+         d="M 25.758486,59.637528 41.666667,80"
+         id="path111"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 69.858225,5.7493794"
+         id="path113" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end ends_left_at_3 thread_1"
+         d="M 62.5,8.8888889 96.342724,16.10867"
+         id="path115" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_3 white_end ends_right_at_4 thread_3"
+         d="M 104.16667,17.777778 70.323943,24.997559"
+         id="path117" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_left_at_8 white_end starts_right_at_4 thread_0"
+         d="M 62.5,26.666667 98.081174,57.029268"
+         id="path119" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_8 white_end ends_left_at_9 thread_1"
+         d="m 104.16667,62.222222 q -20.000003,4.444445 -8.000003,7.111111"
+         id="path121" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_9 white_end thread_0"
+         d="m 104.16667,71.111111 -13.475111,5.74938"
+         id="path123" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_3 white_start thread_3"
+         d="M 118.91451,5.1929542 104.16667,17.777778"
+         id="path125"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_8 white_start starts_right_at_3 thread_1"
+         d="M 104.16667,25.777778 V 62.222222"
+         id="path127"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_8 white_start ends_right_at_9 thread_0"
+         d="m 112.16667,64 q 12,2.666667 -8,7.111111"
+         id="path129"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_9 white_start thread_1"
+         d="M 111.52489,74.250621 125,80"
+         id="path131"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="8.8888893"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle135"
+         class="cross">
+        <title
+           id="title133">cross - 1</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="17.777779"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle139"
+         class="twist">
+        <title
+           id="title137">left twist - 2</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="17.777779"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle143"
+         class="twist">
+        <title
+           id="title141">right twist - 3</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="26.666666"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle147"
+         class="cross">
+        <title
+           id="title145">cross - 4</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="35.555557"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle151"
+         class="twist">
+        <title
+           id="title149">left twist - 5</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="44.444443"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="6"
+         class="twist">
+        <title
+           id="title153">left twist - 6</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="53.333332"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="7"
+         class="twist">
+        <title
+           id="title156">left twist - 7</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="62.222221"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="8"
+         class="twist">
+        <title
+           id="title159">right twist - 8</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="71.111115"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="9"
+         class="twist">
+        <title
+           id="title162">right twist - 9</title>
+      </circle>
+    </g>
+    <g
+       transform="translate(510.72,31.36)"
+       id="g207">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_2 white_end thread_0"
+         d="M 0,0 17.137858,32.904687"
+         id="path167" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_2 white_end thread_2"
+         d="M 20.833333,40 3.6954754,72.904687"
+         id="path169" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 47.437765,5.5402546 62.5,20"
+         id="path171"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start ends_right_at_2 thread_2"
+         d="M 55.287816,23.461849 20.833333,40"
+         id="path173"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_2 white_start ends_left_at_4 thread_0"
+         d="M 28.045518,43.461849 62.5,60"
+         id="path175"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_4 white_start thread_3"
+         d="M 56.728901,65.540255 41.666667,80"
+         id="path177"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 68.271099,14.459745"
+         id="path179" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end ends_left_at_3 thread_1"
+         d="M 62.5,20 96.954482,36.538151"
+         id="path181" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_3 white_end ends_right_at_4 thread_3"
+         d="M 104.16667,40 69.712184,56.538151"
+         id="path183" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_4 white_end thread_0"
+         d="M 62.5,60 77.562235,74.459745"
+         id="path185" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_3 white_start thread_3"
+         d="M 121.30452,7.0953127 104.16667,40"
+         id="path187"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_3 white_start thread_1"
+         d="M 107.86214,47.095313 125,80"
+         id="path189"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="20"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle193"
+         class="cross">
+        <title
+           id="title191">cross - 1</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle197"
+         class="twist">
+        <title
+           id="title195">left twist - 2</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle201"
+         class="twist">
+        <title
+           id="title199">right twist - 3</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="60"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle205"
+         class="cross">
+        <title
+           id="title203">cross - 4</title>
+      </circle>
+    </g>
+    <g
+       transform="translate(271.32,109.76)"
+       id="g289">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_4 white_end thread_0"
+         d="M 0,0 16.468518,25.295644"
+         id="path209" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_4 white_end ends_left_at_5 thread_3"
+         d="m 20.833333,32 q -19.99999967,4 -8,6.4"
+         id="path211" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_5 white_end thread_0"
+         d="M 20.833333,40 3.6954754,72.904687"
+         id="path213" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 49.13497,2.8678286 62.5,8"
+         id="path215"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_3 white_start starts_left_at_1 thread_2"
+         d="m 62.5,16 v 8"
+         id="path217"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_3 white_start ends_right_at_4 thread_3"
+         d="M 54.6435,25.508448 20.833333,32"
+         id="path219"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_4 white_start ends_right_at_5 thread_0"
+         d="m 28.833333,33.6 q 12,2.4 -8,6.4"
+         id="path221"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_9 white_start starts_right_at_5 thread_3"
+         d="M 27.178097,44.872779 62.5,72"
+         id="path223"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_9 white_start thread_1"
+         d="M 55.031696,74.867829 41.666667,80"
+         id="path225"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 69.968304,5.1321714"
+         id="path227" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end ends_left_at_2 thread_1"
+         d="m 62.5,8 33.810167,6.491552"
+         id="path229" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_2 white_end ends_right_at_3 thread_3"
+         d="M 104.16667,16 70.3565,22.491552"
+         id="path231" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_left_at_6 white_end starts_right_at_3 thread_2"
+         d="M 62.5,24 97.234414,44.007022"
+         id="path233" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_6 white_end ends_left_at_7 thread_1"
+         d="m 104.16667,48 q -20.000003,4 -8.000003,6.4"
+         id="path235" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_7 white_end ends_left_at_8 thread_2"
+         d="m 104.16667,56 q -20.000003,4 -8.000003,6.4"
+         id="path237" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_8 white_end ends_right_at_9 thread_1"
+         d="M 104.16667,64 70.3565,70.491552"
+         id="path239" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_9 white_end thread_3"
+         d="m 62.5,72 13.36503,5.132171"
+         id="path241" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_2 white_start thread_3"
+         d="M 118.65524,4.8727786 104.16667,16"
+         id="path243"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_6 white_start starts_right_at_2 thread_1"
+         d="M 104.16667,24 V 48"
+         id="path245"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_6 white_start ends_right_at_7 thread_2"
+         d="m 112.16667,49.6 q 12,2.4 -8,6.4"
+         id="path247"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_7 white_start ends_right_at_8 thread_1"
+         d="m 112.16667,57.6 q 12,2.4 -8,6.4"
+         id="path249"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_8 white_start thread_2"
+         d="M 110.51143,68.872779 125,80"
+         id="path251"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="8"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle255"
+         class="cross">
+        <title
+           id="title253">cross - 1</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="16"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle259"
+         class="twist">
+        <title
+           id="title257">right twist - 2</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="24"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle263"
+         class="cross">
+        <title
+           id="title261">cross - 3</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="32"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle267"
+         class="twist">
+        <title
+           id="title265">left twist - 4</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle271"
+         class="twist">
+        <title
+           id="title269">left twist - 5</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="48"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle275"
+         class="twist">
+        <title
+           id="title273">right twist - 6</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="56"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle279"
+         class="twist">
+        <title
+           id="title277">right twist - 7</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="64"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle283"
+         class="twist">
+        <title
+           id="title281">right twist - 8</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="72"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle287"
+         class="cross">
+        <title
+           id="title285">cross - 9</title>
+      </circle>
+    </g>
+    <g
+       transform="translate(430.92,109.76)"
+       id="g363">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_2 white_end thread_0"
+         d="M 0,0 15.444292,16.944594"
+         id="path291" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_6 white_end starts_left_at_2 thread_2"
+         d="M 20.833333,22.857143 V 49.142857"
+         id="path293" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_6 white_end thread_0"
+         d="M 20.833333,57.142857 5.3890416,74.087451"
+         id="path295" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 48.680621,3.8476548 62.5,11.428571"
+         id="path297"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start ends_right_at_2 thread_2"
+         d="M 54.78495,13.5447 20.833333,22.857143"
+         id="path299"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_2 white_start ends_left_at_4 thread_0"
+         d="M 28.548384,24.973271 62.5,34.285714"
+         id="path301"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_4 white_start ends_left_at_5 thread_3"
+         d="M 54.5,36.571429 Q 42.5,40 62.5,45.714286"
+         id="path303"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_5 white_start ends_right_at_6 thread_0"
+         d="M 54.78495,47.830414 20.833333,57.142857"
+         id="path305"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_6 white_start ends_left_at_8 thread_2"
+         d="M 28.548384,59.258985 62.5,68.571429"
+         id="path307"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_8 white_start thread_1"
+         d="M 55.486046,72.419083 41.666667,80"
+         id="path309"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 69.513954,7.5809166"
+         id="path311" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end ends_left_at_3 thread_1"
+         d="m 62.5,11.428571 33.951616,9.312444"
+         id="path313" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_3 white_end ends_right_at_4 thread_3"
+         d="M 104.16667,22.857143 70.21505,32.169586"
+         id="path315" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_4 white_end ends_right_at_5 thread_0"
+         d="M 62.5,34.285714 Q 82.5,40 70.5,43.428571"
+         id="path317" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_5 white_end ends_left_at_7 thread_3"
+         d="m 62.5,45.714286 33.951616,9.312443"
+         id="path319" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_7 white_end ends_right_at_8 thread_1"
+         d="M 104.16667,57.142857 70.21505,66.4553"
+         id="path321" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_8 white_end thread_2"
+         d="m 62.5,68.571429 13.819379,7.580916"
+         id="path323" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_3 white_start thread_3"
+         d="M 119.61096,5.9125485 104.16667,22.857143"
+         id="path325"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_7 white_start starts_right_at_3 thread_1"
+         d="M 104.16667,30.857143 V 57.142857"
+         id="path327"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_7 white_start thread_3"
+         d="M 109.55571,63.055406 125,80"
+         id="path329"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="11.428572"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle333"
+         class="cross">
+        <title
+           id="title331">cross - 1</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="22.857143"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle337"
+         class="twist">
+        <title
+           id="title335">left twist - 2</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="22.857143"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle341"
+         class="twist">
+        <title
+           id="title339">right twist - 3</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="34.285713"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle345"
+         class="cross">
+        <title
+           id="title343">cross - 4</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="45.714287"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle349"
+         class="cross">
+        <title
+           id="title347">cross - 5</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="57.142857"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle353"
+         class="twist">
+        <title
+           id="title351">left twist - 6</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="57.142857"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle357"
+         class="twist">
+        <title
+           id="title355">right twist - 7</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="68.571426"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle361"
+         class="cross">
+        <title
+           id="title359">cross - 8</title>
+      </circle>
+    </g>
+    <g
+       transform="translate(31.92,188.16)"
+       id="g405">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_2 white_end thread_0"
+         d="M 0,0 17.137858,32.904687"
+         id="path365" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_2 white_end thread_2"
+         d="M 20.833333,40 3.6954754,72.904687"
+         id="path367" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 47.437765,5.5402546 62.5,20"
+         id="path369"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start ends_right_at_2 thread_2"
+         d="M 55.287816,23.461849 20.833333,40"
+         id="path371"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_2 white_start ends_left_at_4 thread_0"
+         d="M 28.045518,43.461849 62.5,60"
+         id="path373"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_4 white_start thread_3"
+         d="M 56.728901,65.540255 41.666667,80"
+         id="path375"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 68.271099,14.459745"
+         id="path377" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end ends_left_at_3 thread_1"
+         d="M 62.5,20 96.954482,36.538151"
+         id="path379" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_3 white_end ends_right_at_4 thread_3"
+         d="M 104.16667,40 69.712184,56.538151"
+         id="path381" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_4 white_end thread_0"
+         d="M 62.5,60 77.562235,74.459745"
+         id="path383" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_3 white_start thread_3"
+         d="M 121.30452,7.0953127 104.16667,40"
+         id="path385"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_3 white_start thread_1"
+         d="M 107.86214,47.095313 125,80"
+         id="path387"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="20"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle391"
+         class="cross">
+        <title
+           id="title389">cross - 1</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle395"
+         class="twist">
+        <title
+           id="title393">left twist - 2</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle399"
+         class="twist">
+        <title
+           id="title397">right twist - 3</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="60"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle403"
+         class="cross">
+        <title
+           id="title401">cross - 4</title>
+      </circle>
+    </g>
+    <g
+       transform="translate(191.52,188.16)"
+       id="g447">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_2 white_end thread_0"
+         d="M 0,0 17.137858,32.904687"
+         id="path407" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_2 white_end thread_2"
+         d="M 20.833333,40 3.6954754,72.904687"
+         id="path409" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 47.437765,5.5402546 62.5,20"
+         id="path411"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start ends_right_at_2 thread_2"
+         d="M 55.287816,23.461849 20.833333,40"
+         id="path413"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_2 white_start ends_left_at_4 thread_0"
+         d="M 28.045518,43.461849 62.5,60"
+         id="path415"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_4 white_start thread_3"
+         d="M 56.728901,65.540255 41.666667,80"
+         id="path417"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 68.271099,14.459745"
+         id="path419" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end ends_left_at_3 thread_1"
+         d="M 62.5,20 96.954482,36.538151"
+         id="path421" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_3 white_end ends_right_at_4 thread_3"
+         d="M 104.16667,40 69.712184,56.538151"
+         id="path423" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_4 white_end thread_0"
+         d="M 62.5,60 77.562235,74.459745"
+         id="path425" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_3 white_start thread_3"
+         d="M 121.30452,7.0953127 104.16667,40"
+         id="path427"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_3 white_start thread_1"
+         d="M 107.86214,47.095313 125,80"
+         id="path429"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="20"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle433"
+         class="cross">
+        <title
+           id="title431">cross - 1</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle437"
+         class="twist">
+        <title
+           id="title435">left twist - 2</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle441"
+         class="twist">
+        <title
+           id="title439">right twist - 3</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="60"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle445"
+         class="cross">
+        <title
+           id="title443">cross - 4</title>
+      </circle>
+    </g>
+    <g
+       transform="translate(351.12,188.16)"
+       id="g489">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_2 white_end thread_0"
+         d="M 0,0 17.137858,32.904687"
+         id="path449" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_2 white_end thread_2"
+         d="M 20.833333,40 3.6954754,72.904687"
+         id="path451" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 47.437765,5.5402546 62.5,20"
+         id="path453"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start ends_right_at_2 thread_2"
+         d="M 55.287816,23.461849 20.833333,40"
+         id="path455"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_2 white_start ends_left_at_4 thread_0"
+         d="M 28.045518,43.461849 62.5,60"
+         id="path457"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_4 white_start thread_3"
+         d="M 56.728901,65.540255 41.666667,80"
+         id="path459"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 68.271099,14.459745"
+         id="path461" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end ends_left_at_3 thread_1"
+         d="M 62.5,20 96.954482,36.538151"
+         id="path463" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_3 white_end ends_right_at_4 thread_3"
+         d="M 104.16667,40 69.712184,56.538151"
+         id="path465" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_4 white_end thread_0"
+         d="M 62.5,60 77.562235,74.459745"
+         id="path467" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_3 white_start thread_3"
+         d="M 121.30452,7.0953127 104.16667,40"
+         id="path469"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_3 white_start thread_1"
+         d="M 107.86214,47.095313 125,80"
+         id="path471"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="20"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle475"
+         class="cross">
+        <title
+           id="title473">cross - 1</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle479"
+         class="twist">
+        <title
+           id="title477">left twist - 2</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle483"
+         class="twist">
+        <title
+           id="title481">right twist - 3</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="60"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle487"
+         class="cross">
+        <title
+           id="title485">cross - 4</title>
+      </circle>
+    </g>
+    <g
+       transform="translate(510.72,188.16)"
+       id="g539">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_2 white_end thread_0"
+         d="M 0,0 16.468518,25.295644"
+         id="path491" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_5 white_end starts_left_at_2 thread_2"
+         d="M 20.833333,32 V 56"
+         id="path493" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_5 white_end thread_3"
+         d="M 20.833333,64 6.3447639,75.127221"
+         id="path495" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 48.011431,4.8727786 62.5,16"
+         id="path497"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start ends_right_at_2 thread_2"
+         d="M 55.031696,18.867829 20.833333,32"
+         id="path499"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_2 white_start ends_left_at_4 thread_0"
+         d="M 28.301637,34.867829 62.5,48"
+         id="path501"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_4 white_start ends_right_at_5 thread_3"
+         d="M 55.031696,50.867829 20.833333,64"
+         id="path503"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_5 white_start thread_2"
+         d="M 27.178097,68.872779 41.666667,80"
+         id="path505"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 68.844764,11.127221"
+         id="path507" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end ends_left_at_3 thread_1"
+         d="M 62.5,16 96.698363,29.132171"
+         id="path509" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_3 white_end ends_right_at_4 thread_3"
+         d="M 104.16667,32 69.968304,45.132171"
+         id="path511" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_4 white_end thread_0"
+         d="M 62.5,48 78.968518,73.295644"
+         id="path513" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_3 white_start thread_3"
+         d="M 120.63518,6.704356 104.16667,32"
+         id="path515"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_3 white_start thread_1"
+         d="M 107.35182,39.338585 125,80"
+         id="path517"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="16"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle521"
+         class="cross">
+        <title
+           id="title519">cross - 1</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="32"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle525"
+         class="twist">
+        <title
+           id="title523">left twist - 2</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="32"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle529"
+         class="twist">
+        <title
+           id="title527">right twist - 3</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="48"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle533"
+         class="cross">
+        <title
+           id="title531">cross - 4</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="64"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle537"
+         class="twist">
+        <title
+           id="title535">left twist - 5</title>
+      </circle>
+    </g>
+    <g
+       transform="translate(111.72,266.56)"
+       id="g649">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_2 white_end thread_0"
+         d="M 0,0 13.819379,7.5809166"
+         id="path541" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_2 white_end ends_left_at_3 thread_2"
+         d="M 20.833333,11.428571 Q 0.83333333,14.285714 12.833333,16"
+         id="path543" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_8 white_end starts_left_at_3 thread_0"
+         d="M 20.833333,17.142857 V 37.714286"
+         id="path545" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_8 white_end ends_left_at_9 thread_2"
+         d="m 20.833333,45.714286 q -19.99999967,2.857143 -8,4.571428"
+         id="path547" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_9 white_end thread_0"
+         d="M 20.833333,51.428571 4.7133773,73.53594"
+         id="path549" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 49.381717,2.1161281 62.5,5.7142857"
+         id="path551"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start ends_right_at_2 thread_2"
+         d="M 54.574188,6.8012542 20.833333,11.428571"
+         id="path553"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_2 white_start ends_right_at_3 thread_0"
+         d="m 28.833333,12.571429 q 12,1.714285 -8,4.571428"
+         id="path555"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_3 white_start ends_left_at_4 thread_2"
+         d="M 28.759146,18.229826 62.5,22.857143"
+         id="path557"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_7 white_start starts_left_at_4 thread_1"
+         d="M 62.5,30.857143 V 40"
+         id="path559"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_7 white_start ends_right_at_8 thread_2"
+         d="M 54.574188,41.086969 20.833333,45.714286"
+         id="path561"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_8 white_start ends_right_at_9 thread_0"
+         d="m 28.833333,46.857143 q 12,1.714286 -8,4.571428"
+         id="path563"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_9 white_start ends_left_at_10 thread_2"
+         d="M 28.759146,52.51554 62.5,57.142857"
+         id="path565"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_13 white_start starts_left_at_10 thread_1"
+         d="m 62.5,65.142857 v 9.142857"
+         id="path567"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_13 white_start thread_2"
+         d="M 54.78495,76.401842 41.666667,80"
+         id="path569"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 70.21505,3.5981576"
+         id="path571" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_4 white_end starts_right_at_1 thread_1"
+         d="M 62.5,5.7142857 V 14.857143"
+         id="path573" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_4 white_end ends_left_at_5 thread_2"
+         d="M 62.5,22.857143 96.240854,27.48446"
+         id="path575" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_5 white_end ends_left_at_6 thread_3"
+         d="m 104.16667,28.571429 q -20.000003,2.857142 -8.000003,4.571428"
+         id="path577" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_6 white_end ends_right_at_7 thread_2"
+         d="M 104.16667,34.285714 70.425812,38.913031"
+         id="path579" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_10 white_end starts_right_at_7 thread_1"
+         d="m 62.5,40 v 9.142857"
+         id="path581" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_10 white_end ends_left_at_11 thread_2"
+         d="m 62.5,57.142857 33.740854,4.627317"
+         id="path583" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_11 white_end ends_left_at_12 thread_3"
+         d="m 104.16667,62.857143 q -20.000003,2.857143 -8.000003,4.571428"
+         id="path585" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_12 white_end ends_right_at_13 thread_2"
+         d="M 104.16667,68.571429 70.425812,73.198746"
+         id="path587" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_13 white_end thread_1"
+         d="m 62.5,74.285714 13.118283,3.598158"
+         id="path589" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_5 white_start thread_3"
+         d="M 120.28662,6.4640602 104.16667,28.571429"
+         id="path591"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_5 white_start ends_right_at_6 thread_2"
+         d="m 112.16667,29.714286 q 12,1.714285 -8,4.571428"
+         id="path593"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_11 white_start starts_right_at_6 thread_3"
+         d="M 104.16667,42.285714 V 62.857143"
+         id="path595"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_11 white_start ends_right_at_12 thread_2"
+         d="m 112.16667,64 q 12,1.714286 -8,4.571429"
+         id="path597"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_12 white_start thread_3"
+         d="M 111.18062,72.419083 125,80"
+         id="path599"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="5.7142859"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle603"
+         class="cross">
+        <title
+           id="title601">cross - 1</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="11.428572"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle607"
+         class="twist">
+        <title
+           id="title605">left twist - 2</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="17.142857"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle611"
+         class="twist">
+        <title
+           id="title609">left twist - 3</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="22.857143"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle615"
+         class="cross">
+        <title
+           id="title613">cross - 4</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="28.571428"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle619"
+         class="twist">
+        <title
+           id="title617">right twist - 5</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="34.285713"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle623"
+         class="twist">
+        <title
+           id="title621">right twist - 6</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle627"
+         class="cross">
+        <title
+           id="title625">cross - 7</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="45.714287"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle631"
+         class="twist">
+        <title
+           id="title629">left twist - 8</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="51.42857"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle635"
+         class="twist">
+        <title
+           id="title633">left twist - 9</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="57.142857"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="10"
+         class="cross">
+        <title
+           id="title637">cross - 10</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="62.857143"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="11"
+         class="twist">
+        <title
+           id="title640">right twist - 11</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="68.571426"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="12"
+         class="twist">
+        <title
+           id="title643">right twist - 12</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="74.285713"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="13"
+         class="cross">
+        <title
+           id="title646">cross - 13</title>
+      </circle>
+    </g>
+    <g
+       transform="translate(271.32,266.56)"
+       id="g691">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_2 white_end thread_0"
+         d="M 0,0 17.137858,32.904687"
+         id="path651" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_2 white_end thread_2"
+         d="M 20.833333,40 3.6954754,72.904687"
+         id="path653" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 47.437765,5.5402546 62.5,20"
+         id="path655"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start ends_right_at_2 thread_2"
+         d="M 55.287816,23.461849 20.833333,40"
+         id="path657"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_2 white_start ends_left_at_4 thread_0"
+         d="M 28.045518,43.461849 62.5,60"
+         id="path659"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_4 white_start thread_3"
+         d="M 56.728901,65.540255 41.666667,80"
+         id="path661"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 68.271099,14.459745"
+         id="path663" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end ends_left_at_3 thread_1"
+         d="M 62.5,20 96.954482,36.538151"
+         id="path665" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_3 white_end ends_right_at_4 thread_3"
+         d="M 104.16667,40 69.712184,56.538151"
+         id="path667" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_4 white_end thread_0"
+         d="M 62.5,60 77.562235,74.459745"
+         id="path669" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_3 white_start thread_3"
+         d="M 121.30452,7.0953127 104.16667,40"
+         id="path671"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_3 white_start thread_1"
+         d="M 107.86214,47.095313 125,80"
+         id="path673"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="20"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle677"
+         class="cross">
+        <title
+           id="title675">cross - 1</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle681"
+         class="twist">
+        <title
+           id="title679">left twist - 2</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle685"
+         class="twist">
+        <title
+           id="title683">right twist - 3</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="60"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle689"
+         class="cross">
+        <title
+           id="title687">cross - 4</title>
+      </circle>
+    </g>
+    <g
+       transform="translate(31.92,344.96)"
+       id="g733">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_2 white_end thread_0"
+         d="M 0,0 17.137858,32.904687"
+         id="path693" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_2 white_end thread_2"
+         d="M 20.833333,40 3.6954754,72.904687"
+         id="path695" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 47.437765,5.5402546 62.5,20"
+         id="path697"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start ends_right_at_2 thread_2"
+         d="M 55.287816,23.461849 20.833333,40"
+         id="path699"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_2 white_start ends_left_at_4 thread_0"
+         d="M 28.045518,43.461849 62.5,60"
+         id="path701"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_4 white_start thread_3"
+         d="M 56.728901,65.540255 41.666667,80"
+         id="path703"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 68.271099,14.459745"
+         id="path705" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end ends_left_at_3 thread_1"
+         d="M 62.5,20 96.954482,36.538151"
+         id="path707" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_3 white_end ends_right_at_4 thread_3"
+         d="M 104.16667,40 69.712184,56.538151"
+         id="path709" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_4 white_end thread_0"
+         d="M 62.5,60 77.562235,74.459745"
+         id="path711" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_3 white_start thread_3"
+         d="M 121.30452,7.0953127 104.16667,40"
+         id="path713"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_3 white_start thread_1"
+         d="M 107.86214,47.095313 125,80"
+         id="path715"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="20"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle719"
+         class="cross">
+        <title
+           id="title717">cross - 1</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle723"
+         class="twist">
+        <title
+           id="title721">left twist - 2</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle727"
+         class="twist">
+        <title
+           id="title725">right twist - 3</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="60"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle731"
+         class="cross">
+        <title
+           id="title729">cross - 4</title>
+      </circle>
+    </g>
+    <g
+       transform="translate(191.52,344.96)"
+       id="g775">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_2 white_end thread_0"
+         d="M 0,0 17.137858,32.904687"
+         id="path735" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_2 white_end thread_2"
+         d="M 20.833333,40 3.6954754,72.904687"
+         id="path737" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 47.437765,5.5402546 62.5,20"
+         id="path739"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start ends_right_at_2 thread_2"
+         d="M 55.287816,23.461849 20.833333,40"
+         id="path741"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_2 white_start ends_left_at_4 thread_0"
+         d="M 28.045518,43.461849 62.5,60"
+         id="path743"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_4 white_start thread_3"
+         d="M 56.728901,65.540255 41.666667,80"
+         id="path745"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 68.271099,14.459745"
+         id="path747" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end ends_left_at_3 thread_1"
+         d="M 62.5,20 96.954482,36.538151"
+         id="path749" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_3 white_end ends_right_at_4 thread_3"
+         d="M 104.16667,40 69.712184,56.538151"
+         id="path751" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_4 white_end thread_0"
+         d="M 62.5,60 77.562235,74.459745"
+         id="path753" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_3 white_start thread_3"
+         d="M 121.30452,7.0953127 104.16667,40"
+         id="path755"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_3 white_start thread_1"
+         d="M 107.86214,47.095313 125,80"
+         id="path757"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="20"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle761"
+         class="cross">
+        <title
+           id="title759">cross - 1</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle765"
+         class="twist">
+        <title
+           id="title763">left twist - 2</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle769"
+         class="twist">
+        <title
+           id="title767">right twist - 3</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="60"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle773"
+         class="cross">
+        <title
+           id="title771">cross - 4</title>
+      </circle>
+    </g>
+    <g
+       transform="translate(351.12,344.96)"
+       id="g817">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_2 white_end thread_0"
+         d="M 0,0 17.137858,32.904687"
+         id="path777" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_2 white_end thread_2"
+         d="M 20.833333,40 3.6954754,72.904687"
+         id="path779" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 47.437765,5.5402546 62.5,20"
+         id="path781"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start ends_right_at_2 thread_2"
+         d="M 55.287816,23.461849 20.833333,40"
+         id="path783"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_2 white_start ends_left_at_4 thread_0"
+         d="M 28.045518,43.461849 62.5,60"
+         id="path785"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_4 white_start thread_3"
+         d="M 56.728901,65.540255 41.666667,80"
+         id="path787"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 68.271099,14.459745"
+         id="path789" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end ends_left_at_3 thread_1"
+         d="M 62.5,20 96.954482,36.538151"
+         id="path791" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_3 white_end ends_right_at_4 thread_3"
+         d="M 104.16667,40 69.712184,56.538151"
+         id="path793" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_4 white_end thread_0"
+         d="M 62.5,60 77.562235,74.459745"
+         id="path795" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_3 white_start thread_3"
+         d="M 121.30452,7.0953127 104.16667,40"
+         id="path797"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_3 white_start thread_1"
+         d="M 107.86214,47.095313 125,80"
+         id="path799"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="20"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle803"
+         class="cross">
+        <title
+           id="title801">cross - 1</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle807"
+         class="twist">
+        <title
+           id="title805">left twist - 2</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle811"
+         class="twist">
+        <title
+           id="title809">right twist - 3</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="60"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle815"
+         class="cross">
+        <title
+           id="title813">cross - 4</title>
+      </circle>
+    </g>
+    <g
+       transform="translate(510.72,344.96)"
+       id="g859">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_2 white_end thread_0"
+         d="M 0,0 17.137858,32.904687"
+         id="path819" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_2 white_end thread_2"
+         d="M 20.833333,40 3.6954754,72.904687"
+         id="path821" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 47.437765,5.5402546 62.5,20"
+         id="path823"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start ends_right_at_2 thread_2"
+         d="M 55.287816,23.461849 20.833333,40"
+         id="path825"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_2 white_start ends_left_at_4 thread_0"
+         d="M 28.045518,43.461849 62.5,60"
+         id="path827"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_4 white_start thread_3"
+         d="M 56.728901,65.540255 41.666667,80"
+         id="path829"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 68.271099,14.459745"
+         id="path831" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end ends_left_at_3 thread_1"
+         d="M 62.5,20 96.954482,36.538151"
+         id="path833" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_3 white_end ends_right_at_4 thread_3"
+         d="M 104.16667,40 69.712184,56.538151"
+         id="path835" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_4 white_end thread_0"
+         d="M 62.5,60 77.562235,74.459745"
+         id="path837" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_3 white_start thread_3"
+         d="M 121.30452,7.0953127 104.16667,40"
+         id="path839"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_3 white_start thread_1"
+         d="M 107.86214,47.095313 125,80"
+         id="path841"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="20"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle845"
+         class="cross">
+        <title
+           id="title843">cross - 1</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle849"
+         class="twist">
+        <title
+           id="title847">left twist - 2</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle853"
+         class="twist">
+        <title
+           id="title851">right twist - 3</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="60"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle857"
+         class="cross">
+        <title
+           id="title855">cross - 4</title>
+      </circle>
+    </g>
+    <g
+       transform="translate(421.16669,264.28905)"
+       id="g901">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 ends_left_at_2 white_end thread_0"
+         d="M 0,0 17.137858,32.904687"
+         id="path861" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 starts_left_at_2 white_end thread_2"
+         d="M 20.833333,40 3.6954754,72.904687"
+         id="path863" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_1"
+         d="M 47.437765,5.5402546 62.5,20"
+         id="path865"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start ends_right_at_2 thread_2"
+         d="M 55.287816,23.461849 20.833333,40"
+         id="path867"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_right_at_2 white_start ends_left_at_4 thread_0"
+         d="M 28.045518,43.461849 62.5,60"
+         id="path869"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_4 white_start thread_3"
+         d="M 56.728901,65.540255 41.666667,80"
+         id="path871"
+         style="stroke:#ff0000" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_2"
+         d="M 83.333333,0 68.271099,14.459745"
+         id="path873" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end ends_left_at_3 thread_1"
+         d="M 62.5,20 96.954482,36.538151"
+         id="path875" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_left_at_3 white_end ends_right_at_4 thread_3"
+         d="M 104.16667,40 69.712184,56.538151"
+         id="path877" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_4 white_end thread_0"
+         d="M 62.5,60 77.562235,74.459745"
+         id="path879" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 ends_right_at_3 white_start thread_3"
+         d="M 121.30452,7.0953127 104.16667,40"
+         id="path881"
+         style="stroke:#ff0000" />
+      <path
+         stroke="blue"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 starts_right_at_3 white_start thread_1"
+         d="M 107.86214,47.095313 125,80"
+         id="path883"
+         style="stroke:#ff0000" />
+      <circle
+         cx="62.5"
+         cy="20"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle887"
+         class="cross">
+        <title
+           id="title885">cross - 1</title>
+      </circle>
+      <circle
+         cx="20.833334"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle891"
+         class="twist">
+        <title
+           id="title889">left twist - 2</title>
+      </circle>
+      <circle
+         cx="104.16666"
+         cy="40"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle895"
+         class="twist">
+        <title
+           id="title893">right twist - 3</title>
+      </circle>
+      <circle
+         cx="62.5"
+         cy="60"
+         r="7"
+         fill="#000000"
+         opacity="0.15"
+         id="circle899"
+         class="cross">
+        <title
+           id="title897">cross - 4</title>
+      </circle>
+    </g>
+    <g
+       transform="matrix(0.21099448,0.26379368,-0.22425717,0.34433838,405.71328,460.71845)"
+       id="g919"
+       style="stroke:#ff0000;stroke-width:9.53842;stroke-miterlimit:4;stroke-dasharray:none">
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_0 thread_0"
+         d="m -286.99923,-282.61436 -10.08277,65.51201"
+         id="path903"
+         style="stroke:#ff0000;stroke-width:7.72612;stroke-miterlimit:4;stroke-dasharray:none" />
+      <path
+         stroke="#0000ff"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 ends_left_at_1 white_start thread_0"
+         d="m -251.20312,-279.0545 9.71452,26.09541"
+         id="path905"
+         style="stroke:#ff0000;stroke-width:7.72612;stroke-miterlimit:4;stroke-dasharray:none" />
+      <path
+         stroke="#0000ff"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_1 starts_left_at_1 white_start thread_1"
+         d="m -245.37187,-246.9654 -18.00878,27.79589"
+         id="path907"
+         style="stroke:#ff0000;stroke-width:7.72612;stroke-miterlimit:4;stroke-dasharray:none" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 ends_right_at_1 white_end thread_1"
+         d="m -219.59655,-286.74867 -18.00877,27.79589"
+         id="path909"
+         style="stroke:#ff0000;stroke-width:7.72612;stroke-miterlimit:4;stroke-dasharray:none" />
+      <path
+         stroke="#ff0000"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_2 starts_right_at_1 white_end thread_0"
+         d="m -241.4886,-252.95909 9.71453,26.09541"
+         id="path911"
+         style="stroke:#ff0000;stroke-width:7.72612;stroke-miterlimit:4;stroke-dasharray:none" />
+      <path
+         stroke="#0000ff"
+         stroke-width="4"
+         opacity="null"
+         fill="none"
+         class="kissing_path_3 thread_3"
+         d="m -185.8952,-288.81582 -10.08277,65.512"
+         id="path913"
+         style="stroke:#ff0000;stroke-width:7.72612;stroke-miterlimit:4;stroke-dasharray:none" />
+      <ellipse
+         cx="-283.62531"
+         cy="-273.5062"
+         fill="#000000"
+         opacity="0.15"
+         id="circle917"
+         class="cross"
+         style="stroke:#ff0000;stroke-width:7.81576;stroke-miterlimit:4;stroke-dasharray:none"
+         rx="5.6724663"
+         ry="5.7997952"
+         transform="matrix(0.99812415,-0.06122236,-0.15211599,0.98836265,0,0)">
+        <title
+           id="title915">cross - 1</title>
+      </ellipse>
+    </g>
+  </g>
+  <path
+     id="rect3777"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="m 271.25714,125.048 h 75.23443 c 8e-5,0 1.3e-4,6e-5 1.3e-4,1.3e-4 v 74.5246 c 0,7e-5 -5e-5,1.3e-4 -1.3e-4,1.3e-4 h -75.23443 c -7e-5,0 -1.2e-4,-6e-5 -1.2e-4,-1.3e-4 v -74.5246 c 0,-7e-5 5e-5,-1.3e-4 1.2e-4,-1.3e-4 z" />
+  <path
+     id="rect3817"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="m 351.29817,204.32975 h 75.23443 c 6e-5,0 1.2e-4,6e-5 1.2e-4,1.3e-4 v 74.5246 c 0,7e-5 -6e-5,1.3e-4 -1.2e-4,1.3e-4 h -43.27443 c -8e-5,0 -1.1e-4,-7e-5 -1.4e-4,-1.3e-4 l -31.96,-74.5246 c -2e-5,-6e-5 6e-5,-1.3e-4 1.4e-4,-1.3e-4 z"
+     sodipodi:nodetypes="sssssssss" />
+  <path
+     id="rect3899"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="m 431.04916,281.25601 30.11442,-39.48 1.4e-4,1.3e-4 43.24,40.68459 -1.4e-4,1.3e-4 -80.87442,39.48 -1.3e-4,-1.3e-4 7.52,-40.68459 z"
+     sodipodi:nodetypes="ccccccccc" />
+  <path
+     id="rect3901"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="m 431.32725,124.79316 h 75.23442 c 8e-5,0 1.6e-4,7e-5 1.3e-4,1.4e-4 l -45.12,112.12459 c -2e-5,6e-5 -8e-5,1.8e-4 -1.3e-4,1.3e-4 l -30.11442,-37.6 c -5e-5,-6e-5 -1.3e-4,-6e-5 -1.3e-4,-1.3e-4 V 124.7933 c 0,-8e-5 5e-5,-1.4e-4 1.3e-4,-1.4e-4 z"
+     sodipodi:nodetypes="sssssssss" />
+  <path
+     id="rect3903"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="m 351.32547,43.611525 h 37.63442 c 8e-5,0 1.1e-4,6.6e-5 1.3e-4,1.29e-4 l 37.6,74.524596 c 4e-5,6e-5 -5e-5,1.3e-4 -1.3e-4,1.3e-4 h -75.23442 c -8e-5,0 -1.3e-4,-6e-5 -1.3e-4,-1.3e-4 V 43.611654 c 0,-7.1e-5 5e-5,-1.29e-4 1.3e-4,-1.29e-4 z"
+     sodipodi:nodetypes="sssssssss" />
+  <path
+     id="rect3905"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="m 548.93172,6.0106281 37.63443,37.5999999 c 5e-5,5.3e-5 1.5e-4,6.2e-5 1.3e-4,1.3e-4 l -37.6,112.124592 c -3e-5,7e-5 -8e-5,1.9e-4 -1.3e-4,1.3e-4 l -37.63443,-37.6 c -5e-5,-5e-5 -1.6e-4,-6e-5 -1.3e-4,-1.3e-4 l 37.6,-112.1245922 c 2e-5,-6.77e-5 8e-5,-1.833e-4 1.3e-4,-1.297e-4 z"
+     sodipodi:nodetypes="sssssssss" />
+  <path
+     id="rect3907"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="m 548.96534,166.0164 -37.63442,112.8 c -3e-5,8e-5 -1.9e-4,8e-5 -1.3e-4,1.3e-4 l 37.6,36.92459 c 5e-5,6e-5 7e-5,1.9e-4 1.3e-4,1.3e-4 l 37.63442,-37.6 c 6e-5,-5e-5 1.6e-4,-5e-5 1.3e-4,-1.3e-4 l -37.6,-112.12459 c -3e-5,-7e-5 -10e-5,-2.1e-4 -1.3e-4,-1.3e-4 z"
+     sodipodi:nodetypes="sssssssss" />
+  <path
+     id="rect3909"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="m 548.93094,326.01152 37.63442,37.6 c 6e-5,6e-5 1.6e-4,6e-5 1.3e-4,1.3e-4 l -37.6,112.1246 c -3e-5,7e-5 -7e-5,1.8e-4 -1.3e-4,1.3e-4 l -37.63442,-37.6 c -6e-5,-6e-5 -1.6e-4,-6e-5 -1.3e-4,-1.3e-4 l 37.6,-112.1246 c 3e-5,-7e-5 7e-5,-1.8e-4 1.3e-4,-1.3e-4 z"
+     sodipodi:nodetypes="sssssssss" />
+  <path
+     id="rect3911"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="m 351.32547,363.61152 h 37.63442 c 8e-5,0 1e-4,7e-5 1.3e-4,1.3e-4 l 37.6,74.5246 c 4e-5,6e-5 -5e-5,1.3e-4 -1.3e-4,1.3e-4 h -75.23442 c -8e-5,0 -1.3e-4,-6e-5 -1.3e-4,-1.3e-4 v -74.5246 c 0,-7e-5 5e-5,-1.3e-4 1.3e-4,-1.3e-4 z"
+     sodipodi:nodetypes="sssssssss" />
+  <path
+     id="rect3913"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="m 191.33359,364.79659 h 75.23442 c 7e-5,0 1.3e-4,6e-5 1.3e-4,1.4e-4 v 74.52459 c 0,7e-5 -7e-5,7e-5 -1.3e-4,1.3e-4 l -37.63442,37.6 c -6e-5,6e-5 -1.1e-4,-6e-5 -1.4e-4,-1.3e-4 l -37.6,-112.12459 c -2e-5,-8e-5 6e-5,-1.4e-4 1.4e-4,-1.4e-4 z"
+     sodipodi:nodetypes="sssssssss" />
+  <path
+     id="rect3915"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="m 66.930604,326.01152 37.634436,37.6 c 5e-5,6e-5 1.6e-4,6e-5 1.3e-4,1.3e-4 l -37.600002,112.1246 c -1.9e-5,7e-5 -7.5e-5,1.8e-4 -1.32e-4,1.3e-4 l -37.634429,-37.6 c -5.1e-5,-5e-5 -1.53e-4,-6e-5 -1.3e-4,-1.3e-4 l 37.600005,-112.1246 c 1.9e-5,-7e-5 7.5e-5,-1.7e-4 1.22e-4,-1.3e-4 z"
+     sodipodi:nodetypes="sssssssss" />
+  <path
+     id="rect3917"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="m 29.330838,278.8164 37.634429,-112.8 c 2.9e-5,-8e-5 1.04e-4,6e-5 1.32e-4,1.3e-4 L 104.5654,278.14112 c 3e-5,8e-5 -8e-5,8e-5 -1.3e-4,1.3e-4 l -37.634435,37.6 c -4.7e-5,5e-5 -7.5e-5,-7e-5 -1.31e-4,-1.3e-4 L 29.330708,278.81653 c -5.6e-5,-5e-5 1.08e-4,-6e-5 1.3e-4,-1.3e-4 z"
+     sodipodi:nodetypes="sssssssss" />
+  <path
+     id="rect3919"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="M 66.931288,6.0115245 104.56572,43.611525 c 6e-5,5.2e-5 1.5e-4,6.4e-5 1.3e-4,1.29e-4 L 66.965852,155.73625 c -2.8e-5,6e-5 -7.5e-5,1.8e-4 -1.31e-4,1.3e-4 l -37.63443,-37.6 c -5e-5,-5e-5 -1.53e-4,-6e-5 -1.29e-4,-1.3e-4 L 66.931166,6.0116543 c 1.9e-5,-6.77e-5 7.5e-5,-1.805e-4 1.22e-4,-1.298e-4 z"
+     sodipodi:nodetypes="sssssssss" />
+  <path
+     id="rect3921"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="m 226.93359,164.82645 37.63442,37.6 c 6e-5,6e-5 1.3e-4,6e-5 1.3e-4,1.3e-4 v 74.52459 c 0,8e-5 -6e-5,1.4e-4 -1.3e-4,1.4e-4 h -75.23442 c -8e-5,0 -1.6e-4,-6e-5 -1.4e-4,-1.4e-4 l 37.6,-112.12459 c 3e-5,-7e-5 8e-5,-1.9e-4 1.4e-4,-1.3e-4 z"
+     sodipodi:nodetypes="sssssssss" />
+  <path
+     id="rect3923"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="m 189.33322,44.796597 h 75.23442 c 8e-5,0 1.3e-4,5.8e-5 1.3e-4,1.29e-4 v 74.524594 c 0,7e-5 -7e-5,7e-5 -1.3e-4,1.3e-4 l -37.63442,37.6 c -6e-5,6e-5 -1e-4,-6e-5 -1.3e-4,-1.3e-4 l -37.6,-112.124594 c -2e-5,-6.5e-5 5e-5,-1.29e-4 1.3e-4,-1.29e-4 z"
+     sodipodi:nodetypes="sssssssss" />
+  <path
+     id="rect3925"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="m 109.36783,282.89329 h 75.23443 c 7e-5,0 1.3e-4,6e-5 1.3e-4,1.3e-4 v 74.5246 c 0,7e-5 -6e-5,1.3e-4 -1.3e-4,1.3e-4 h -75.23443 c -8e-5,0 -1.3e-4,-6e-5 -1.3e-4,-1.3e-4 v -74.5246 c 0,-7e-5 5e-5,-1.3e-4 1.3e-4,-1.3e-4 z" />
+  <path
+     id="rect3927"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.19749;stroke-linecap:square"
+     d="m 271.25714,283.61691 75.23443,37.6 c 7e-5,3e-5 1.3e-4,5e-5 1.3e-4,1.3e-4 v 36.92459 c 0,7e-5 -5e-5,1.3e-4 -1.3e-4,1.3e-4 h -75.23443 c -7e-5,0 -1.2e-4,-6e-5 -1.2e-4,-1.3e-4 v -74.52459 c 0,-8e-5 6e-5,-1.6e-4 1.2e-4,-1.3e-4 z"
+     sodipodi:nodetypes="sssssssss" />
+  <path
+     id="rect3929"
+     style="opacity:0.5;fill:#ffffff;stroke:#aad400;stroke-width:3.66036;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 384.23518,285.90344 32.75025,36.51026 c 3e-5,4e-5 3e-5,9e-5 0,1.1e-4 l -32.44126,32.44127 c -2e-5,3e-5 -8e-5,3e-5 -1.1e-4,0 L 351.7938,322.10482 c -3e-5,-4e-5 -3e-5,-9e-5 -10e-6,-1.1e-4 l 32.44127,-36.20128 c 2e-5,-2e-5 8e-5,-2e-5 1.2e-4,10e-6 z"
+     sodipodi:nodetypes="sssssssss"
+     stroke="url(#strokeGradient)" />
+</svg>
