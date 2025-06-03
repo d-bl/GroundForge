@@ -1,12 +1,15 @@
 const GF_svgP2T = {
     svgNS: "http://www.w3.org/2000/svg",
 
-    newSVG(w,h) {
-        const threadSvg = document.createElementNS(GF_svgP2T.svgNS, "svg");
-        threadSvg.setAttribute("width", w);
-        threadSvg.setAttribute("height", h);
-        threadSvg.setAttribute("xmlns", GF_svgP2T.svgNS);
-        return threadSvg;
+    newSVG(w, h) {
+        const svg = document.createElementNS(this.svgNS, "svg");
+        svg.setAttribute("width", w);
+        svg.setAttribute("height", h);
+        svg.setAttribute("xmlns", this.svgNS);
+
+        // show full width of lines on the edge of the viewpBox
+        svg.setAttribute("viewBox", "-4 -4 " + (w + 8) + " " + (h + 8));
+        return svg;
     },
 
     newStitch(stitchInputValue, firstKissingPathNr, firstNodeNr, svgContainer) {
@@ -122,7 +125,7 @@ const GF_svgP2T = {
         }
 
         // Make the paths kiss
-        let currentNodeNr = firstNodeNr
+        let currentNodeNr = firstNodeNr;
         for (let i = 0; i < nrOfInitialPathNodes; i++) {
             switch (stitch[i]) {
                 case 'c':
@@ -139,7 +142,7 @@ const GF_svgP2T = {
                     mergeNodes(i + '-2', i + '-3', ++currentNodeNr, 'right twist');
                     break;
                 default:
-                    break
+                    break;
             }
         }
 
@@ -177,8 +180,8 @@ const GF_svgP2T = {
             const y2 = line.getAttribute("y2") * 1;
 
             // Calculate the direction vector of the line segment
-            let dx = (parseFloat(x2) - parseFloat(x1));
-            let dy = (parseFloat(y2) - parseFloat(y1));
+            let dx = x2 - x1;
+            let dy = y2 - y1;
             const length = Math.sqrt(dx * dx + dy * dy);
             dx = dx / length;
             dy = dy / length;
@@ -198,15 +201,15 @@ const GF_svgP2T = {
             if (classes.length > 1) {
                 const id0 = classes[0].replace(/.*_/g, "");
                 const id1 = classes[1].replace(/.*_/g, "");
-                const n0 = svgContainer.getElementById(id0).classList[0]
-                const n1 = svgContainer.getElementById(id1).classList[0]
+                const n0 = svgContainer.getElementById(id0).classList[0];
+                const n1 = svgContainer.getElementById(id1).classList[0];
                 const startsLeft = classes[0].includes("starts_left");
                 const startsRight = classes[0].includes("starts_right");
                 // TODO Conditions seems to work. Which coincidence eliminates bends for twist with a cross in between?
                 if (n0 === n1 && (startsLeft || startsRight)) {
                     // Calculate the midpoint of the line segment
-                    const mx = (parseFloat(x1) + parseFloat(x2)) / 2;
-                    const my = (parseFloat(y1) + parseFloat(y2)) / 2;
+                    const mx = (x1 + x2) / 2;
+                    const my = (y1 + y2) / 2;
 
                     // Rotate the direction vector to get the perpendicular vector for the control point
                     const px = dy * 20; // Perpendicular x (scaled by 20)
@@ -232,28 +235,26 @@ const GF_svgP2T = {
 
             line.replaceWith(path);
         });
-        GF_svgP2T.addThreadClasses(svgContainer, svgNS);
+        this.addThreadClasses(svgContainer, svgNS);
         return currentNodeNr;
     },
 
     newLegendStitch(stitchInputValue, colorCodeElement) {
 
-        const threadSvg = GF_svgP2T.newSVG("80", "120");
-        const colorCodeSvg = GF_svgP2T.newSVG("27", "35");
-        colorCodeSvg.appendChild(colorCodeElement);
+        const threadSvg = this.newSVG(80, 120);
+        this.newStitch(stitchInputValue, 0, 0, threadSvg);
+
+        const colorCodeSvg = this.newSVG(27, 35);
         colorCodeElement.setAttribute("transform", "translate(13,17) scale(3)");
+        colorCodeSvg.appendChild(colorCodeElement);
+
+        const figcaption = document.createElement("figcaption");
+        figcaption.append(colorCodeSvg, document.createTextNode(stitchInputValue.replace(/[^ctlr]/gi, '')));
 
         const figure = document.createElement("figure");
-        figure.appendChild(threadSvg);
-        const figcaption = document.createElement("figcaption");
-        figcaption.appendChild(colorCodeSvg);
-        const textNode = document.createTextNode(stitchInputValue.replace(/[^ctlr]/gi, ''));
-        figcaption.appendChild(textNode);
-        figure.appendChild(figcaption);
-        document.body.appendChild(figure);
+        figure.appendChild(threadSvg, figcaption);
 
-        // Generate the stitch in the thread SVG
-        GF_svgP2T.newStitch(stitchInputValue, 0, 0, threadSvg);
+        document.body.appendChild(figure);
     },
 
     addThreadClasses(svg) {
@@ -266,8 +267,8 @@ const GF_svgP2T = {
             }
             classes.forEach(className => {
                 classToPath[className] = path;
-            })
-        })
+            });
+        });
         const threadStartKeys = Object.keys(threadStarts);
         const nrOfThreads = threadStartKeys.length;
         for (let threadNr = 0; threadNr < nrOfThreads; threadNr++) {
@@ -296,66 +297,73 @@ const GF_svgP2T = {
                 currentClass = Array.from(currentPath.classList).find(className => className.startsWith('ends_'));
             }
         }
-        // threads not twisted at all 
+        // threads not twisted at all
         Array.from(svg.querySelectorAll("path"))
             .forEach(path => {
                 if (!Array.from(path.classList).join('').includes("thread")) {
                     // use kissing_path number
-                    path.classList.add("thread_" + path.classList[0].replace(/.*_/,''));
+                    path.classList.add("thread_" + path.classList[0].replace(/.*_/, ''));
                 }
-           });
+            });
     },
 
     appendUploadedSvg(svgInput) {
+        document.querySelectorAll("svg,figure,hr,.note").forEach(el => el.remove());
+        document.body.insertAdjacentHTML("beforeend", "<hr>");
 
-        const twistMarkDefs = svgInput.querySelector("defs");
-        const templateElement = svgInput.getElementById("cloned");
-        const linkElements = Array.from(templateElement.querySelectorAll(".link"));
-        const yValues = linkElements.map(element => element.getAttribute("d").replace(/.*,/g, '') * 1);
-        const xValues = linkElements.map(element => element.getAttribute("d").replace(/.* /g, '').replace(/,.*/g, '') * 1);
-        const legendElement = svgInput.getElementById("bdpqLegend");
-        const legendTextEntries = legendElement.querySelectorAll("tspan");
-        const legendColorCodeEntries = legendElement.querySelectorAll("g");
-        const w = Math.max(...xValues) * 3 + 12 + '';
-        const h = Math.max(...yValues) * 3 + 12 + '';
-        const svg = GF_svgP2T.newSVG(w, h);
-        templateElement.setAttribute("transform", "scale(3)");
-        svg.appendChild(twistMarkDefs);
-        svg.appendChild(templateElement);
-        svg.querySelectorAll('.link').forEach(element => {
-            element.setAttribute("stroke-width", "2");
-            element.setAttribute("stroke", "#bbbbbb");
-            const marker = element.getAttribute('style').replace(/.*marker-mid: */, "").replace(/;.*/, '');
-            if (marker.startsWith("url")) element.setAttribute("marker-mid", marker);
-            element.removeAttribute('style');
+        const template = svgInput.getElementById("cloned");
+        const legend = svgInput.getElementById("bdpqLegend");
+        const legendTexts = legend.querySelectorAll("tspan");
+        const legendColors = legend.querySelectorAll("g");
+
+        // Calculate width and height from link elements
+        const links = template.querySelectorAll(".link");
+        const xVals = Array.from(links, el => +el.getAttribute("d").split(" ").pop().split(",")[0]);
+        const yVals = Array.from(links, el => +el.getAttribute("d").split(",").pop());
+        const w = Math.max(...xVals) * 3 + 12;
+        const h = Math.max(...yVals) * 3 + 12;
+
+        const svg = this.newSVG(w, h);
+        template.setAttribute("transform", "scale(3)");
+        svg.append(svgInput.querySelector("defs"), template);
+
+        svg.querySelectorAll('.link').forEach(el => {
+            el.setAttribute("stroke-width", "2");
+            el.setAttribute("stroke", "#bbbbbb");
+            const marker = el.getAttribute('style')?.match(/marker-mid:\s*([^;]+)/)?.[1];
+            if (marker?.startsWith("url")) el.setAttribute("marker-mid", marker);
+            el.removeAttribute('style');
         });
+
         document.body.appendChild(svg);
-        const nrOfLegendEntries = Math.min(legendTextEntries.length, legendColorCodeEntries.length);
-        for (let i = 0; i < nrOfLegendEntries; i++) {
-            GF_svgP2T.newLegendStitch(legendTextEntries[i].textContent, legendColorCodeEntries[i]);
+
+        const n = Math.min(legendTexts.length, legendColors.length);
+        for (let i = 0; i < n; i++) {
+            this.newLegendStitch(legendTexts[i].textContent, legendColors[i]);
         }
-        GF_svgP2T.createDiagram(templateElement,w,h);
+
+        this.createDiagram(template, w, h);
     },
 
     createDiagram(templateElement, w, h) {
-        document.body.insertAdjacentHTML("beforeend", "<hr><p>Under construction (pinched/moved stitches cause overlap, a thread may have multiple colors): </p>");
 
         function leftOrRight(startAtId, twistedPair) {
             const siblings = templateElement.querySelectorAll(".starts_at_" + startAtId)
             switch (siblings.length) {
                 case 2:
-                    const sibling = Array.from(siblings).filter(el => el !==twistedPair)[0]
+                    const sibling = Array.from(siblings).filter(el => el !== twistedPair)[0]
                     const kissingPath = Array.from(twistedPair.classList)
                         .filter(cls => cls.startsWith("kiss_"))[0];
                     const kissingPathOfSibling = Array.from(sibling.classList)
                         .filter(cls => cls.startsWith("kiss_"))[0];
-                    return  kissingPath < kissingPathOfSibling ? 'l' : 'r';
+                    return kissingPath < kissingPathOfSibling ? 'l' : 'r';
                 case 1:
                     return (twistedPair.classList.contains("kiss_0")) ? 'r' : 'l';
                 default:
                     return 'l';
             }
         }
+
         function twistIndex() {
             const index = {};
 
@@ -364,100 +372,93 @@ const GF_svgP2T = {
                     const classes = Array.from(pair.classList);
                     const startsAtClass = classes.find(cls => cls.startsWith("starts_at_"));
                     const midMarker = pair.getAttribute("marker-mid");
-                    if (startsAtClass && midMarker) {
-                        const nrOfTwists = midMarker.replace(/.*-/,"" ).replace(/[^0-9]*$/, '');
-                        const startAtId = startsAtClass.replace("starts_at_","");
+                    if (startsAtClass && midMarker) { // mid-marker values are supposed to be: url("#twist-<n>")
+                        const nrOfTwists = midMarker.replace(/[^0-9]*/g, '');
+                        const startAtId = startsAtClass.replace("starts_at_", "");
                         const twist = leftOrRight(startAtId, pair);
                         if (index[startAtId]) // TODO combine l+r into t
                             index[startAtId] += twist.repeat(nrOfTwists);
                         else
                             index[startAtId] = twist.repeat(nrOfTwists);
-
                     }
-                 });
+                });
             return index;
         }
 
-        const additionalTwists = twistIndex();
-
-        const svg = GF_svgP2T.newSVG((w*6.5)+"", h*3.5);
-        document.body.appendChild(svg);
-        const bigG = document.createElementNS(GF_svgP2T.svgNS, "g");
-        bigG.setAttribute("id", "original");
-        svg.appendChild(bigG);
+        const diagramGroup = document.createElementNS(this.svgNS, "g");
+        diagramGroup.setAttribute("id", "original");
         let kissingPathNr = 0;
         let nodeNr = 0;
-        templateElement.querySelectorAll("g").forEach(element => {
-            const [x, y] = element.getAttribute("transform")
+        const additionalTwists = twistIndex();
+
+        templateElement.querySelectorAll("g").forEach(templateNode => {
+            const [x, y] = templateNode.getAttribute("transform")
                 .match(/translate\(([^)]+)\)/)[1]
                 .split(",");
-            const titles = element.querySelectorAll("title");
-            let stitchInputValue = 'ctc';
-            if (titles.length !== 0) {
-                stitchInputValue = titles[0].textContent;
-                // otherwise a stitch has been added without explicitly assigning actions
-            }
-            if(additionalTwists[element.id])
-                stitchInputValue += additionalTwists[element.id];
-            const tmpSVG = GF_svgP2T.newSVG(125, 80);
-            const g = document.createElementNS(GF_svgP2T.svgNS, "g");
-            const nrOfNodes = GF_svgP2T.newStitch(stitchInputValue, 0, 0, tmpSVG);
+            const titles = templateNode.querySelectorAll("title");
+            let stitchInputValue = titles.length === 0 ? 'ctc' : titles[0].textContent;
+            if (additionalTwists[templateNode.id])
+                stitchInputValue += additionalTwists[templateNode.id];
+
+            // detour because getElementById (used in newStitch) does not exist for group elements
+            // and querySelector("#\\0-1") did also not work
+            // TODO adjust IDs into n_0_1 in uploadeded template
+            const tmpSVG = this.newSVG(125, 80);
+
+            const stitchGroup = document.createElementNS(this.svgNS, "g");
+            const nrOfNodes = this.newStitch(stitchInputValue, 0, 0, tmpSVG);
             nodeNr += nrOfNodes;
             kissingPathNr += 4;
-            g.setAttribute("transform", `translate(${ x*5.7 }, ${ y*5.6 })`);
+            stitchGroup.setAttribute("transform", `translate(${x * 5.7}, ${y * 5.6})`);
             tmpSVG.childNodes.forEach(child => {
-                g.appendChild(child.cloneNode(true));
+                stitchGroup.appendChild(child.cloneNode(true));
             });
-            bigG.appendChild(g);
-        })
-        svg.insertAdjacentHTML("beforeend", `<use xlink:href="#original" id="clone_b" x="${w*4}" transform="scale(0.7,0.7)"></use>`);
-        svg.insertAdjacentHTML("beforeend", `<use xlink:href="#original" id="clone_d" x="${-w*8.8}" y="0" transform="scale(-0.7,0.7)"></use>`);
-        svg.insertAdjacentHTML("beforeend", `<use xlink:href="#original" id="clone_p" x="${w*4}" y="${-h*4.8}" transform="scale(0.7,-0.7)"></use>`);
-        svg.insertAdjacentHTML("beforeend", `<use xlink:href="#original" id="clone_q" x="${-w*8.8}" y="${-h*4.8}" transform="scale(-0.7,-0.7)"></use>`);
+            diagramGroup.appendChild(stitchGroup);
+        });
+
+        const svg = this.newSVG((w * 6.5) + "", h * 3.5);
+        svg.appendChild(diagramGroup);
+        svg.insertAdjacentHTML("beforeend", `
+            <use xlink:href="#original" id="clone_b" x="${w * 4}" transform="scale(0.7,0.7)"></use>
+            <use xlink:href="#original" id="clone_d" x="${-w * 8.8}" y="0" transform="scale(-0.7,0.7)"></use>
+            <use xlink:href="#original" id="clone_p" x="${w * 4}" y="${-h * 4.8}" transform="scale(0.7,-0.7)"></use>
+            <use xlink:href="#original" id="clone_q" x="${-w * 8.8}" y="${-h * 4.8}" transform="scale(-0.7,-0.7)"></use>
+        `);
+
+        document.body.insertAdjacentHTML("beforeend", `
+            <hr>
+            <p class='note'>
+            Under construction (added/moved stitches cause overlap, a thread may have multiple colors): 
+            </p>
+        `);
+        document.body.appendChild(svg);
         // TODO connect threads (at least by color), enable download, squeeze pinched stitches
         //  see also https://d-bl.github.io/GroundForge-help/symmetry/#file-structure
     },
 
-    loadSVGFile(event) {
-        // Retrieve the first (and only!) File from the FileList object
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                // cleanup of previous upload TODO more specific selectors for integration on symmetry page
-                document.querySelectorAll("svg,span")
-                    .forEach(svg => svg.remove())
-                const svgContent = DOMPurify.sanitize(
-                    e.target.result,
-                    {USE_PROFILES: {svg: true, svgFilters: true}}
-                );
-                const parsedSvg = new DOMParser().parseFromString(svgContent, "image/svg+xml");
-                GF_svgP2T.appendUploadedSvg(parsedSvg);
-            };
-            reader.readAsText(file);
-        } else {
+    async loadSVGFile(file) {
+        if (!file) {
             alert("Failed to load file");
+            return;
         }
+        const svgContent = await file.text();
+        const sanitized = DOMPurify.sanitize(svgContent, { USE_PROFILES: { svg: true, svgFilters: true } });
+        return new DOMParser().parseFromString(sanitized, "image/svg+xml");
     },
-    init(){
-        document.getElementById("upload").addEventListener("change", GF_svgP2T.loadSVGFile);
-        // default file upload for quick testing purposes
-        fetch('demo.svg')
-            .then(response => response.text())
-            .then(svgContent => {
-                const file = new File([svgContent], "demo.svg", { type: "image/svg+xml" });
 
-                const dataTransfer = new DataTransfer();
-                dataTransfer.items.add(file);
+    async init() {
+        document.getElementById("upload").addEventListener("change", async event => {
+            const file = event.target.files[0];
+            this.appendUploadedSvg(await this.loadSVGFile(file));
+        });
 
-                const event = new Event("change");
-                Object.defineProperty(event, "target", {
-                    value: { files: dataTransfer.files },
-                    writable: false
-                });
-
-                GF_svgP2T.loadSVGFile(event);
-            })
-            .catch(error => console.error("Error loading the file:", error));
+        try {
+            const response = await fetch('demo.svg');
+            const svgContent = await response.text();
+            const file = new File([svgContent], "demo.svg", {type: "image/svg+xml"});
+            this.appendUploadedSvg(await this.loadSVGFile(file));
+        } catch (error) {
+            console.error("Error loading the file:", error);
+        }
     }
 }

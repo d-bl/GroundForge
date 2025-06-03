@@ -84,3 +84,11 @@ Instead, it seems we should initialize the kissing threads bending along with th
 Like sketched below for one stitch. Not sure how that will look like.
 
 ![](init-bend-kissing.svg)
+
+This looks like we need lines perpendicular to the edges of the pair diagram.
+These can determine the start and end points of the initial kissing paths.
+The sketch below has bright green for starting points and brownish green for end points.
+The length of these perpendicular lines depend on the legth of the edges
+but also on the angle with neighboring edges.
+
+![](perpendicular.svg)
