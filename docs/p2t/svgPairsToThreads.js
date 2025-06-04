@@ -12,7 +12,7 @@ const GF_svgP2T = {
         return svg;
     },
 
-    newStitch(stitchInputValue, firstKissingPathNr, firstNodeNr, svgContainer) {
+    newStitch: function (stitchInputValue, firstKissingPathNr, firstNodeNr, svgContainer) {
         let stitch = stitchInputValue
             .toLowerCase()
             .replace(/[^clrt]/g, '');
@@ -32,10 +32,60 @@ const GF_svgP2T = {
             line.setAttribute("y1", (y - nodeSpacing) + '');
             line.setAttribute("x2", x);
             line.setAttribute("y2", y);
-            line.setAttribute("stroke", "black");
-            line.setAttribute("stroke-width", "4");
             svgContainer.appendChild(line);
             return line;
+        }
+
+        function calculatePathDefinition(line) {
+            const x1 = line.getAttribute("x1") * 1;
+            const y1 = line.getAttribute("y1") * 1;
+            const x2 = line.getAttribute("x2") * 1;
+            const y2 = line.getAttribute("y2") * 1;
+
+            // Calculate the direction vector of the line segment
+            let dx = x2 - x1;
+            let dy = y2 - y1;
+            const length = Math.sqrt(dx * dx + dy * dy);
+
+            // make one end shorter for over/under effect
+            const gap = 8; // circle radius + 1
+            dx = (dx / length) * gap;
+            dy = (dy / length) * gap;
+
+            const whiteStart = line.classList.contains("white_start");
+            const whiteEnd = line.classList.contains("white_end");
+
+            const classes = Array.from(line.classList).filter(className => className.includes('_at_'));
+            if (classes.length > 1) {
+                const id0 = classes[0].replace(/.*_/g, "");
+                const id1 = classes[1].replace(/.*_/g, "");
+                const n0 = svgContainer.getElementById(id0).classList[0];
+                const n1 = svgContainer.getElementById(id1).classList[0];
+                const startsLeft = classes[0].includes("starts_left");
+                const startsRight = classes[0].includes("starts_right");
+                // TODO Conditions seems to work. Which coincidence eliminates bends for twist with a cross in between?
+                if (n0 === n1 && (startsLeft || startsRight)) {
+                    // curved when straight would be on top of one another
+                    const midX = (x1 + x2) / 2;
+                    const midY = (y1 + y2) / 2;
+                    const gapFraction = 0.4;
+                    const controlPointDistance = 2 + gapFraction;
+                    const controlPointDirection = startsLeft ? -1 : 1;
+                    const controlPointX = midX + dy * controlPointDirection * controlPointDistance;
+                    const controlPointY = midY - dx * controlPointDirection * controlPointDistance;
+                    const startX = !whiteStart ? x1 : x1 + (controlPointX - x1) * gapFraction;
+                    const startY = !whiteStart ? y1 : y1 + (controlPointY - y1) * gapFraction;
+                    const endX = !whiteEnd ? x2 : x2 + (controlPointX - x2) * gapFraction;
+                    const endY = !whiteEnd ? y2 : y2 + (controlPointY - y2) * gapFraction;
+                    return `M ${startX} ${startY} Q ${controlPointX} ${controlPointY} ${endX} ${endY}`;
+                }
+            }
+            // default: straight line
+            const startX = !whiteStart ? x1 : x1 + dx;
+            const startY = !whiteStart ? y1 : y1 + dy;
+            const endX = !whiteEnd ? x2 : x2 - dx;
+            const endY = !whiteEnd ? y2 : y2 - dy;
+            return `M ${startX} ${startY} L ${endX} ${endY}`;
         }
 
         function drawCircle(x, y, id, description) {
@@ -43,8 +93,6 @@ const GF_svgP2T = {
             circle.setAttribute("cx", x + '');
             circle.setAttribute("cy", y + '');
             circle.setAttribute("r", "7");
-            circle.setAttribute("fill", "black");
-            circle.setAttribute("opacity", "0.15");
             circle.setAttribute("id", id);
             circle.setAttribute("class", (description ? description : '').replace(/.* /g, ''));
             const title = document.createElementNS(svgNS, "title");
@@ -113,7 +161,6 @@ const GF_svgP2T = {
                 // Draw an edge to the node
                 const line = drawLine(x, y);
                 line.setAttribute("class", "kissing_path_" + pathNr);
-                line.setAttribute("stroke", kissingPathColors[pathNr % 4]);
                 if (nodeNr > 0) addToEdgeMap(nodeNr - 1, pathNr, line, edgeStartMap);
                 addToEdgeMap(nodeNr, pathNr, line, edgeEndMap);
             }
@@ -121,7 +168,6 @@ const GF_svgP2T = {
             const line = drawLine(x, (nrOfInitialPathNodes + 1) * nodeSpacing);
             line.setAttribute("class", "kissing_path_" + pathNr);
             addToEdgeMap(nrOfInitialPathNodes - 1, pathNr, line, edgeStartMap);
-            line.setAttribute("stroke", kissingPathColors[pathNr]);
         }
 
         // Make the paths kiss
@@ -165,74 +211,10 @@ const GF_svgP2T = {
             }
         });
 
-        // Replace all line elements with path elements for short ends and bends
         svgContainer.querySelectorAll("line").forEach(line => {
             const path = document.createElementNS(svgNS, "path");
-            path.setAttribute("stroke", line.getAttribute("stroke"));
-            path.setAttribute("stroke-width", line.getAttribute("stroke-width"));
-            path.setAttribute("opacity", line.getAttribute("opacity"));
-            path.setAttribute("fill", "none");
             path.setAttribute("class", line.getAttribute("class"));
-
-            const x1 = line.getAttribute("x1") * 1;
-            const y1 = line.getAttribute("y1") * 1;
-            const x2 = line.getAttribute("x2") * 1;
-            const y2 = line.getAttribute("y2") * 1;
-
-            // Calculate the direction vector of the line segment
-            let dx = x2 - x1;
-            let dy = y2 - y1;
-            const length = Math.sqrt(dx * dx + dy * dy);
-            dx = dx / length;
-            dy = dy / length;
-
-            // calculate the shortened ends
-            const whiteStart = line.classList.contains("white_start");
-            const whiteEnd = line.classList.contains("white_end");
-            const gap = 8;
-            const x1s = !whiteStart ? x1 : x1 + (dx * gap);
-            const y1s = !whiteStart ? y1 : y1 + (dy * gap);
-            const x2s = !whiteEnd ? x2 : x2 - (dx * gap);
-            const y2s = !whiteEnd ? y2 : y2 - (dy * gap);
-            path.setAttribute("d", `M ${x1s} ${y1s} L ${x2s} ${y2s}`);
-
-            // Override d to bend the line if it is a repetition of the same type of stitch
-            const classes = Array.from(line.classList).filter(className => className.includes('_at_'));
-            if (classes.length > 1) {
-                const id0 = classes[0].replace(/.*_/g, "");
-                const id1 = classes[1].replace(/.*_/g, "");
-                const n0 = svgContainer.getElementById(id0).classList[0];
-                const n1 = svgContainer.getElementById(id1).classList[0];
-                const startsLeft = classes[0].includes("starts_left");
-                const startsRight = classes[0].includes("starts_right");
-                // TODO Conditions seems to work. Which coincidence eliminates bends for twist with a cross in between?
-                if (n0 === n1 && (startsLeft || startsRight)) {
-                    // Calculate the midpoint of the line segment
-                    const mx = (x1 + x2) / 2;
-                    const my = (y1 + y2) / 2;
-
-                    // Rotate the direction vector to get the perpendicular vector for the control point
-                    const px = dy * 20; // Perpendicular x (scaled by 20)
-                    const py = dx * 20;  // Perpendicular y (scaled by 20)
-
-                    // note the signs after mx/my
-                    const fraction = 0.4;
-                    if (startsLeft) {
-                        const x1s = !whiteStart ? x1 : x1 + (mx - px - x1) * fraction;
-                        const y1s = !whiteStart ? y1 : y1 + (my + py - y1) * fraction;
-                        const x2s = !whiteEnd ? x2 : x2 + (mx - px - x2) * fraction;
-                        const y2s = !whiteEnd ? y2 : y2 + (my + py - y2) * fraction;
-                        path.setAttribute("d", `M ${x1s} ${y1s} Q ${(mx - px)} ${(my + py)} ${x2s} ${y2s}`);
-                    } else {
-                        const x1s = !whiteStart ? x1 : x1 + (mx + px - x1) * fraction;
-                        const y1s = !whiteStart ? y1 : y1 + (my - py - y1) * fraction;
-                        const x2s = !whiteEnd ? x2 : x2 + (mx + px - x2) * fraction;
-                        const y2s = !whiteEnd ? y2 : y2 + (my - py - y2) * fraction;
-                        path.setAttribute("d", `M ${x1s} ${y1s} Q ${(mx + px)} ${(my - py)} ${x2s} ${y2s}`);
-                    }
-                }
-            }
-
+            path.setAttribute("d", calculatePathDefinition(line));
             line.replaceWith(path);
         });
         this.addThreadClasses(svgContainer, svgNS);
@@ -311,10 +293,8 @@ const GF_svgP2T = {
         document.querySelectorAll("svg,figure,hr,.note").forEach(el => el.remove());
         document.body.insertAdjacentHTML("beforeend", "<hr>");
 
+        // the uploaded template element
         const template = svgInput.getElementById("cloned");
-        const legend = svgInput.getElementById("bdpqLegend");
-        const legendTexts = legend.querySelectorAll("tspan");
-        const legendColors = legend.querySelectorAll("g");
 
         // Calculate width and height from link elements
         const links = template.querySelectorAll(".link");
@@ -325,18 +305,22 @@ const GF_svgP2T = {
 
         const svg = this.newSVG(w, h);
         template.setAttribute("transform", "scale(3)");
-        svg.append(svgInput.querySelector("defs"), template);
+        const twistMarkDefinitions = svgInput.querySelector("defs");
+        svg.append(twistMarkDefinitions, template);
 
-        svg.querySelectorAll('.link').forEach(el => {
-            el.setAttribute("stroke-width", "2");
-            el.setAttribute("stroke", "#bbbbbb");
-            const marker = el.getAttribute('style')?.match(/marker-mid:\s*([^;]+)/)?.[1];
-            if (marker?.startsWith("url")) el.setAttribute("marker-mid", marker);
-            el.removeAttribute('style');
+        svg.querySelectorAll('.link').forEach(linkElement => {
+            // replace the style attribute with presentation attribute (allows override with CSS)
+            const marker = linkElement.style.getPropertyValue('marker-mid');
+            if (marker?.startsWith("url")) linkElement.setAttribute("marker-mid", marker);
+            linkElement.removeAttribute('style');
         });
 
         document.body.appendChild(svg);
 
+        // loop over pairs of tspan/g elements in #bdpqLegend (text and color code)
+        const legend = svgInput.getElementById("bdpqLegend");
+        const legendTexts = legend.querySelectorAll("tspan");
+        const legendColors = legend.querySelectorAll("g");
         const n = Math.min(legendTexts.length, legendColors.length);
         for (let i = 0; i < n; i++) {
             this.newLegendStitch(legendTexts[i].textContent, legendColors[i]);
