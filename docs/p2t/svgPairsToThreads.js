@@ -2,7 +2,7 @@ const GF_svgP2T = {
     svgNS: "http://www.w3.org/2000/svg",
     gap: 8,
 
-    newSVG(w, h) {
+    newSVG: function (w, h) {
         const svg = document.createElementNS(this.svgNS, "svg");
         svg.setAttribute("width", w);
         svg.setAttribute("height", h);
@@ -222,7 +222,7 @@ const GF_svgP2T = {
         return currentNodeNr;
     },
 
-    newLegendStitch(stitchInputValue, colorCodeElement) {
+    newLegendStitch: function (stitchInputValue, colorCodeElement) {
 
         const threadSvg = this.newSVG(80, 120);
         this.newStitch(stitchInputValue, 0, 0, threadSvg);
@@ -240,7 +240,7 @@ const GF_svgP2T = {
         document.body.appendChild(figure);
     },
 
-    addThreadClasses(svg) {
+    addThreadClasses: function (svg) {
         const threadStarts = {};
         const classToPath = {};
         svg.querySelectorAll("path").forEach(path => {
@@ -290,13 +290,7 @@ const GF_svgP2T = {
             });
     },
 
-    appendUploadedSvg(svgInput) {
-        document.querySelectorAll("svg,figure,hr,.note").forEach(el => el.remove());
-        document.body.insertAdjacentHTML("beforeend", "<hr>");
-
-        // the uploaded template element
-        const template = svgInput.getElementById("cloned");
-
+    coyModifiedTemplateToDoc: function (template, svgInput) {
         // Calculate width and height from link elements
         const links = template.querySelectorAll(".link");
         const xVals = Array.from(links, el => +el.getAttribute("d").split(" ").pop().split(",")[0]);
@@ -316,26 +310,27 @@ const GF_svgP2T = {
             linkElement.removeAttribute('style');
             linkElement.classList.forEach(c => {
                 if (c.startsWith("kiss_")) {
-                    linkElement.classList.add('kiss_' + ((c.replace("kiss_", "")*1)%2? 'odd' : 'even'));
+                    linkElement.classList.add('kiss_' + ((c.replace("kiss_", "") * 1) % 2 ? 'odd' : 'even'));
                 }
             })
         });
 
         document.body.appendChild(svg);
+        return {w, h};
+    },
 
+    addCaptionedLegendElementsToDoc: function (svgInput) {
         // loop over pairs of tspan/g elements in #bdpqLegend (text and color code)
         const legend = svgInput.getElementById("bdpqLegend");
         const legendTexts = legend.querySelectorAll("tspan");
-        const legendColors = legend.querySelectorAll("g");
-        const n = Math.min(legendTexts.length, legendColors.length);
+        const legendColorCodes = legend.querySelectorAll("g");
+        const n = Math.min(legendTexts.length, legendColorCodes.length);
         for (let i = 0; i < n; i++) {
-            this.newLegendStitch(legendTexts[i].textContent, legendColors[i]);
+            this.newLegendStitch(legendTexts[i].textContent, legendColorCodes[i]);
         }
-
-        this.createDiagram(template, w, h);
     },
 
-    createDiagram(templateElement, w, h) {
+    addThreadDiagramToDoc: function (templateElement, w, h) {
 
         function leftOrRight(startAtId, twistedPair) {
             const siblings = templateElement.querySelectorAll(".starts_at_" + startAtId)
@@ -396,8 +391,7 @@ const GF_svgP2T = {
             const tmpSVG = this.newSVG(125, 80);
 
             const stitchGroup = document.createElementNS(this.svgNS, "g");
-            const nrOfNodes = this.newStitch(stitchInputValue, 0, 0, tmpSVG);
-            nodeNr += nrOfNodes;
+            nodeNr = this.newStitch(stitchInputValue, 0, nodeNr, tmpSVG);
             kissingPathNr += 4;
             stitchGroup.setAttribute("transform", `translate(${x * 5.7}, ${y * 5.6})`);
             tmpSVG.childNodes.forEach(child => {
@@ -426,9 +420,21 @@ const GF_svgP2T = {
         //  see also https://d-bl.github.io/GroundForge-help/symmetry/#file-structure
     },
 
-    async loadSVGFile(file) {
+    processUploadedSvg: function (svgInput) {
+        document.querySelectorAll("svg,figure,hr,.note").forEach(el => el.remove());
+        document.body.insertAdjacentHTML("beforeend", "<hr>");
+
+        // the uploaded template element
+        const template = svgInput.getElementById("cloned");
+        const {w, h} = this.coyModifiedTemplateToDoc(template, svgInput);
+        this.addCaptionedLegendElementsToDoc(svgInput);
+
+        this.addThreadDiagramToDoc(template, w, h);
+    },
+
+    async readSVGFile(file) {
         if (!file) {
-            alert("Failed to load file");
+            alert("Failed to readd file" + file.name);
             return;
         }
         const svgContent = await file.text();
@@ -439,14 +445,14 @@ const GF_svgP2T = {
     async init() {
         document.getElementById("upload").addEventListener("change", async event => {
             const file = event.target.files[0];
-            this.appendUploadedSvg(await this.loadSVGFile(file));
+            this.processUploadedSvg(await this.readSVGFile(file));
         });
 
         try {
             const response = await fetch('demo.svg');
             const svgContent = await response.text();
             const file = new File([svgContent], "demo.svg", {type: "image/svg+xml"});
-            this.appendUploadedSvg(await this.loadSVGFile(file));
+            this.processUploadedSvg(await this.readSVGFile(file));
         } catch (error) {
             console.error("Error loading the file:", error);
         }
