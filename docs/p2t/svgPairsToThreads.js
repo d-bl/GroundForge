@@ -1,5 +1,6 @@
 const GF_svgP2T = {
     svgNS: "http://www.w3.org/2000/svg",
+    gap: 8,
 
     newSVG(w, h) {
         const svg = document.createElementNS(this.svgNS, "svg");
@@ -48,9 +49,8 @@ const GF_svgP2T = {
             const length = Math.sqrt(dx * dx + dy * dy);
 
             // make one end shorter for over/under effect
-            const gap = 8; // circle radius + 1
-            dx = (dx / length) * gap;
-            dy = (dy / length) * gap;
+            dx = (dx / length) * GF_svgP2T.gap;
+            dy = (dy / length) * GF_svgP2T.gap;
 
             const whiteStart = line.classList.contains("white_start");
             const whiteEnd = line.classList.contains("white_end");
@@ -92,7 +92,7 @@ const GF_svgP2T = {
             const circle = document.createElementNS(svgNS, "circle");
             circle.setAttribute("cx", x + '');
             circle.setAttribute("cy", y + '');
-            circle.setAttribute("r", "7");
+            circle.setAttribute("r", (GF_svgP2T.gap - 1) + '');
             circle.setAttribute("id", id);
             circle.setAttribute("class", (description ? description : '').replace(/.* /g, ''));
             const title = document.createElementNS(svgNS, "title");
@@ -150,7 +150,6 @@ const GF_svgP2T = {
         }
 
         // Create 4 paths each with the number of subnodes needed by the stitch
-        const kissingPathColors = ['red', 'blue', 'red', 'blue']; // for debugging purposes
         for (let pathNr = firstKissingPathNr; pathNr < 4 + firstKissingPathNr; pathNr++) {
             const x = (pathNr) * pathSpacing; // X-coordinate for the current path
 
@@ -160,13 +159,15 @@ const GF_svgP2T = {
 
                 // Draw an edge to the node
                 const line = drawLine(x, y);
-                line.setAttribute("class", "kissing_path_" + pathNr);
+                line.setAttribute("class", "kiss_" + pathNr);
+                line.classList.add("kiss_" + (pathNr%2 ? 'odd' : 'even'));
                 if (nodeNr > 0) addToEdgeMap(nodeNr - 1, pathNr, line, edgeStartMap);
                 addToEdgeMap(nodeNr, pathNr, line, edgeEndMap);
             }
             // Draw an edge out of the last node
             const line = drawLine(x, (nrOfInitialPathNodes + 1) * nodeSpacing);
-            line.setAttribute("class", "kissing_path_" + pathNr);
+            line.setAttribute("class", "kiss_" + pathNr);
+            line.classList.add("kiss_" + (pathNr%2 ? 'odd' : 'even'));
             addToEdgeMap(nrOfInitialPathNodes - 1, pathNr, line, edgeStartMap);
         }
 
@@ -234,7 +235,7 @@ const GF_svgP2T = {
         figcaption.append(colorCodeSvg, document.createTextNode(stitchInputValue.replace(/[^ctlr]/gi, '')));
 
         const figure = document.createElement("figure");
-        figure.appendChild(threadSvg, figcaption);
+        figure.append(threadSvg, figcaption);
 
         document.body.appendChild(figure);
     },
@@ -313,6 +314,11 @@ const GF_svgP2T = {
             const marker = linkElement.style.getPropertyValue('marker-mid');
             if (marker?.startsWith("url")) linkElement.setAttribute("marker-mid", marker);
             linkElement.removeAttribute('style');
+            linkElement.classList.forEach(c => {
+                if (c.startsWith("kiss_")) {
+                    linkElement.classList.add('kiss_' + ((c.replace("kiss_", "")*1)%2? 'odd' : 'even'));
+                }
+            })
         });
 
         document.body.appendChild(svg);

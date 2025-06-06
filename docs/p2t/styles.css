@@ -1,12 +1,14 @@
 figure { display : inline-block; margin-right: 1em; }
 figcaption svg { vertical-align: middle; margin-right: 0.2em; }
-circle { fill: black; opacity: 0.15 }
-.thread_0, .thread_1, .thread_2, .thread_3, .thread_4, .white_start, .white_end { stroke-width: 4; fill: none;}
+
+/* you might want to adjust GF_P2T.gap  together with the sroke width */
+.kiss_even, .kiss_odd { stroke-width: 4; fill: none;}
 .thread_0 {stroke: rgb(146, 197, 222)}
 .thread_1 {stroke: rgb(5, 113, 176)}
 .thread_2 {stroke: rgb(202, 0, 32)}
 .thread_3 {stroke: rgb(244, 165, 130)}
 .link { stroke-width: 2; stroke: #bbbbbb; }
+circle { fill: black; opacity: 0.15 }
 
-/*.kissing_path_0, .kissing_path_2, .kiss_0, .kiss_2, .kiss_4, .kiss_6  {stroke: red; stroke-width: 2; fill: none;}*/
-/*.kissing_path_1, .kissing_path_3, .kiss_1, .kiss_3, .kiss_5, .kiss_7 {stroke: blue; stroke-width: 2; fill: none;}*/
+/* .kiss_even  {stroke: rgb(202, 0, 32); }*/
+/* .kiss_odd {stroke: rgb(5, 113, 176); }*/
