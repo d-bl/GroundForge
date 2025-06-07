@@ -106,7 +106,7 @@ const GF_svgP2T = {
             const rightNode = svgContainer.getElementById(rightNodeId);
 
             if (!leftNode || !rightNode) {
-                console.error("One or both nodes not found");
+                console.error(`One or both nodes not found ${leftNodeId}=${leftNode} or ${rightNodeId}=${rightNode} ${id}`);
                 return;
             }
 
@@ -150,7 +150,7 @@ const GF_svgP2T = {
         }
 
         // Create 4 paths each with the number of subnodes needed by the stitch
-        for (let pathNr = firstKissingPathNr; pathNr < 4 + firstKissingPathNr; pathNr++) {
+        for (let pathNr = 0; pathNr < 4; pathNr++) {
             const x = (pathNr) * pathSpacing; // X-coordinate for the current path
 
             for (let nodeNr = 0; nodeNr < nrOfInitialPathNodes; nodeNr++) {
@@ -159,14 +159,14 @@ const GF_svgP2T = {
 
                 // Draw an edge to the node
                 const line = drawLine(x, y);
-                line.setAttribute("class", "kiss_" + pathNr);
+                line.setAttribute("class", "kiss_" + (pathNr + firstKissingPathNr));
                 line.classList.add("kiss_" + (pathNr%2 ? 'odd' : 'even'));
                 if (nodeNr > 0) addToEdgeMap(nodeNr - 1, pathNr, line, edgeStartMap);
                 addToEdgeMap(nodeNr, pathNr, line, edgeEndMap);
             }
             // Draw an edge out of the last node
             const line = drawLine(x, (nrOfInitialPathNodes + 1) * nodeSpacing);
-            line.setAttribute("class", "kiss_" + pathNr);
+            line.setAttribute("class", "kiss_" + (pathNr + firstKissingPathNr));
             line.classList.add("kiss_" + (pathNr%2 ? 'odd' : 'even'));
             addToEdgeMap(nrOfInitialPathNodes - 1, pathNr, line, edgeStartMap);
         }
@@ -304,7 +304,7 @@ const GF_svgP2T = {
         svg.append(twistMarkDefinitions, template);
 
         svg.querySelectorAll('.link').forEach(linkElement => {
-            // replace the style attribute with presentation attribute (allows override with CSS)
+            // replace the style attribute to allow override with CSS
             const marker = linkElement.style.getPropertyValue('marker-mid');
             if (marker?.startsWith("url")) linkElement.setAttribute("marker-mid", marker);
             linkElement.removeAttribute('style');
@@ -349,22 +349,31 @@ const GF_svgP2T = {
             }
         }
 
-        function twistIndex() {
+        function pairNodeInde() {
             const index = {};
 
             Array.from(templateElement.querySelectorAll("path"))
                 .forEach(pair => {
                     const classes = Array.from(pair.classList);
-                    const startsAtClass = classes.find(cls => cls.startsWith("starts_at_"));
-                    const midMarker = pair.getAttribute("marker-mid");
-                    if (startsAtClass && midMarker) { // mid-marker values are supposed to be: url("#twist-<n>")
-                        const nrOfTwists = midMarker.replace(/[^0-9]*/g, '');
-                        const startAtId = startsAtClass.replace("starts_at_", "");
-                        const twist = leftOrRight(startAtId, pair);
-                        if (index[startAtId]) // TODO combine l+r into t
-                            index[startAtId] += twist.repeat(nrOfTwists);
-                        else
-                            index[startAtId] = twist.repeat(nrOfTwists);
+                    const atClass = classes.find(cls => cls.includes("_at_"));
+                    const atId = atClass?.replace(/.*_at_/, "");
+                    if(atId !== undefined){
+                        if (!index[atId]) index[atId] = {}
+                        const twist = leftOrRight(atId, pair);
+
+                        // for just one of the potential 4 edges on a node, something like [l|r]_kiss_<n>
+                        index[atId]["pair"] = twist + '_' + classes.find(cls => /kiss_[0-9]+/.test(cls));
+
+                        if (atClass.startsWith("starts_")) {
+                            const midMarker = pair.getAttribute("marker-mid");
+                            if (midMarker) { // mid-marker values are supposed to be: url("#twist-<n>")
+                                const nrOfTwists = midMarker.replace(/[^0-9]*/g, '');
+                                if (!index[atId]["twists"])
+                                    index[atId]["twists"] = '';
+                                // TODO combine l+r into t
+                                index[atId]["twists"] += twist.repeat(nrOfTwists);
+                            }
+                        }
                     }
                 });
             return index;
@@ -372,18 +381,14 @@ const GF_svgP2T = {
 
         const diagramGroup = document.createElementNS(this.svgNS, "g");
         diagramGroup.setAttribute("id", "original");
-        let kissingPathNr = 0;
-        let nodeNr = 0;
-        const additionalTwists = twistIndex();
+        let lastThreadNodeNr = 0;
+        const pairNodes = pairNodeInde();
 
         templateElement.querySelectorAll("g").forEach(templateNode => {
-            const [x, y] = templateNode.getAttribute("transform")
-                .match(/translate\(([^)]+)\)/)[1]
-                .split(",");
             const titles = templateNode.querySelectorAll("title");
             let stitchInputValue = titles.length === 0 ? 'ctc' : titles[0].textContent;
-            if (additionalTwists[templateNode.id])
-                stitchInputValue += additionalTwists[templateNode.id];
+            if (pairNodes[templateNode.id])
+                stitchInputValue += pairNodes[templateNode.id]["twists"];
 
             // detour because getElementById (used in newStitch) does not exist for group elements
             // and querySelector("#\\0-1") did also not work
@@ -391,9 +396,28 @@ const GF_svgP2T = {
             const tmpSVG = this.newSVG(125, 80);
 
             const stitchGroup = document.createElementNS(this.svgNS, "g");
-            nodeNr = this.newStitch(stitchInputValue, 0, nodeNr, tmpSVG);
-            kissingPathNr += 4;
+
+            let firstKissingPathNr = 0;
+            if (pairNodes[templateNode.id] !== undefined ){
+                const kissPairInfo = pairNodes[templateNode.id]["pair"];
+                const kissPairNr = kissPairInfo?.replace(/._kiss_/, "");
+                // TODO needs debugging e.g. with style rule: .kiss_<n> {stroke: aqua; }
+                if (kissPairInfo?.startsWith("l_kiss_")) {
+                    firstKissingPathNr = kissPairNr * 2;
+                } else if (kissPairInfo?.startsWith("r_kiss_")) {
+                    firstKissingPathNr = kissPairNr * 2;
+                }
+            }
+
+            lastThreadNodeNr = this.newStitch(stitchInputValue, firstKissingPathNr, lastThreadNodeNr, tmpSVG);
+
+            // position the stitch group
+            const [x, y] = templateNode.getAttribute("transform")
+                .match(/translate\(([^)]+)\)/)[1]
+                .split(",");
             stitchGroup.setAttribute("transform", `translate(${x * 5.7}, ${y * 5.6})`);
+
+            // copy the stitch elements from the temporary SVG to the stitch group
             tmpSVG.childNodes.forEach(child => {
                 stitchGroup.appendChild(child.cloneNode(true));
             });
@@ -428,7 +452,6 @@ const GF_svgP2T = {
         const template = svgInput.getElementById("cloned");
         const {w, h} = this.coyModifiedTemplateToDoc(template, svgInput);
         this.addCaptionedLegendElementsToDoc(svgInput);
-
         this.addThreadDiagramToDoc(template, w, h);
     },
 

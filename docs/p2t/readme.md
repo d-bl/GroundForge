@@ -1,7 +1,20 @@
-High level documentation of the script
-======================================
-
 A technical birds eye overview.
+===============================
+
+
+The `GF_svgP2T` object in `svgPairsToThreads.js` provides functions for generating thread diagrams from color coded pair diagrams for bobbin lace.
+
+The most important functions:
+* `init` and `readSvgFile` take care of I/O and listen to upload events.
+* `processUploadedSvg` calls
+  * `coyModifiedTemplateToDoc`
+  * `addCaptionedLegendElementsToDoc` iterates over elements of an uploaded `#bdqpLegend` element.  
+    * to call `newLegendStitch` which in turn calls `newStitch`.
+  * `addThreadDiagramToDoc`, this iterates over elements of an uploaded `#template` element
+    * to call `newStitch` which generates an indivudual stitch. The stitches are not yet connected to one another.
+* `addThreadClasses` is currently called stitch by stitch. Once the stitches are connected,
+  it should be called for the whole pair diagram.
+
 
 Uploads
 -------
@@ -16,33 +29,36 @@ Page structure
 --------------
 
 The page has little static content: a button and its label to upload files.
-The dynamic content is rendered by JavaScipt:
-* A [modified](https://github.com/d-bl/GroundForge/blob/731783fbf208789e0882ce9fd7e0c6fb8d0df94d/docs/p2t/svgPairsToThreads.js#L318-L324)
-  version of the template found in the upload. This is a color-coded pair diagram.
-  The modifications simplify further processing.
-* Legend elements from the upload: the text label, the color code and a thread diagram.
+The dynamic content is rendered by JavaScript:
+* A modified version of the template found in the upload. This is a color-coded pair diagram.
+  The style attribute is replaced to allow static and interactive styling with CSS.
+* Tthe color code and text label from the legend in the upload become captions for little thread diagrams.
 * A larger version of the thread diagram and smaller set of bdpq versions.
   These mirrored version are intended to build swatches.
-  Currently, the d and p versions have the wrong over/user effect.
+  Currently, the d and p versions have the wrong over/under effect.
   The b (top-left) and q (bottom-right) versions are correct.
 
 Function newStitch
 ------------------
 
-The function is used for the legend entries as wel as stitches in the pair diagram.
+Core function: parse a stitch notation string (e.g., "ctc", "ctlr") and create an SVG thread diagram.
 
-The function starts with four paths, each with as may nodes as there are legal characters to define a stitch.
-Legal characters are ctlr. A loop over the characters dictates between which paths nodes should meet in the middle:
-The two left, two right, two center or (in case of a t) two left and two right paths.
-Some of the original nodes are not moved together. They are deleted and their edges merged.
+The following images show steps leading to a thread diagram from `ctc`.
+
+![](stitch-stages.svg)
+
+A `t` makes two pairs of nodes at the same height kiss one another.
+This explains why the following two stitches have the same color code, 
+will be also identical in real lace, yet are drawn differently.
+
+![](same-or-not.png)
 
 Classes for the SVG elements provide structural information.
 We have two groups of classes for edges: starts/ends_left/right_at_<node-id> and starts/ends_white.
 The edges also inherit the kissing path number of the original four paths.
 This kissing path number (and corresponding color) helped to debug the direction of bends for repeated actions.
-Not sure this number has any further use.
-You can reveal the kissing path colors with the inspector of your browser:
-remove the [thread styles](https://github.com/d-bl/GroundForge/blob/0d59a2d3183c57987966bb6827e230c7b4718129/docs/p2t/index.html#L10-L13).
+In `styles.css` you can uncomment the `.kiss_` rules at the bottom to override the thread colors,
+the thread diagrams still needs debugging.
 
 Composing the thread diagram
 ----------------------------
