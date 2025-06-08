@@ -300,6 +300,7 @@ const GF_svgP2T = {
 
         const svg = this.newSVG(w, h);
         template.setAttribute("transform", "scale(3)");
+        template.setAttribute("id", "templatePairs");
         const twistMarkDefinitions = svgInput.querySelector("defs");
         svg.append(twistMarkDefinitions, template);
 
@@ -349,40 +350,41 @@ const GF_svgP2T = {
             }
         }
 
-        function pairNodeInde() {
+        function pairNodeIndex() {
             const index = {};
 
             Array.from(templateElement.querySelectorAll("path"))
                 .forEach(pair => {
                     const classes = Array.from(pair.classList);
-                    const atClass = classes.find(cls => cls.includes("_at_"));
-                    const atId = atClass?.replace(/.*_at_/, "");
-                    if(atId !== undefined){
-                        if (!index[atId]) index[atId] = {}
-                        const twist = leftOrRight(atId, pair);
+                    classes.filter(cls => cls.includes("_at_")).forEach(atClass => {
+                        const atId = atClass?.replace(/.*_at_/, "");
+                        if(atId !== undefined){
+                            if (!index[atId]) index[atId] = {}
+                            const twist = leftOrRight(atId, pair);
 
-                        // for just one of the potential 4 edges on a node, something like [l|r]_kiss_<n>
-                        index[atId]["pair"] = twist + '_' + classes.find(cls => /kiss_[0-9]+/.test(cls));
+                            if (!index[atId]["pair"]) index[atId]["pair"] = [];
+                            index[atId]["pair"].push( twist + '_' + classes.find(cls => /kiss_[0-9]+/.test(cls)));
 
-                        if (atClass.startsWith("starts_")) {
-                            const midMarker = pair.getAttribute("marker-mid");
-                            if (midMarker) { // mid-marker values are supposed to be: url("#twist-<n>")
-                                const nrOfTwists = midMarker.replace(/[^0-9]*/g, '');
-                                if (!index[atId]["twists"])
-                                    index[atId]["twists"] = '';
-                                // TODO combine l+r into t
-                                index[atId]["twists"] += twist.repeat(nrOfTwists);
+                            if (atClass.startsWith("starts_")) {
+                                const midMarker = pair.getAttribute("marker-mid");
+                                if (midMarker) { // mid-marker values are supposed to be: url("#twist-<n>")
+                                    const nrOfTwists = midMarker.replace(/[^0-9]*/g, '');
+                                    if (!index[atId]["twists"])
+                                        index[atId]["twists"] = '';
+                                    // TODO combine l+r into t
+                                    index[atId]["twists"] += twist.repeat(nrOfTwists);
+                                }
                             }
                         }
-                    }
+                    })
                 });
             return index;
         }
 
         const diagramGroup = document.createElementNS(this.svgNS, "g");
-        diagramGroup.setAttribute("id", "original");
+        diagramGroup.setAttribute("id", "templateThreads");
         let lastThreadNodeNr = 0;
-        const pairNodes = pairNodeInde();
+        const pairNodes = pairNodeIndex();
 
         templateElement.querySelectorAll("g").forEach(templateNode => {
             const titles = templateNode.querySelectorAll("title");
@@ -392,14 +394,16 @@ const GF_svgP2T = {
 
             // detour because getElementById (used in newStitch) does not exist for group elements
             // and querySelector("#\\0-1") did also not work
-            // TODO adjust IDs into n_0_1 in uploadeded template
+            // TODO adjust IDs into n_0_1 in uploaded template
             const tmpSVG = this.newSVG(125, 80);
 
             const stitchGroup = document.createElementNS(this.svgNS, "g");
 
             let firstKissingPathNr = 0;
             if (pairNodes[templateNode.id] !== undefined ){
-                const kissPairInfo = pairNodes[templateNode.id]["pair"];
+                const list = pairNodes[templateNode.id]["pair"];
+                console.log(`templateNode.id=${templateNode.id} lastThreadNodeNr=${lastThreadNodeNr} pairs=${list}`);
+                const kissPairInfo = list[list.length-1]; // TODO last element for now
                 const kissPairNr = kissPairInfo?.replace(/._kiss_/, "");
                 // TODO needs debugging e.g. with style rule: .kiss_<n> {stroke: aqua; }
                 if (kissPairInfo?.startsWith("l_kiss_")) {
@@ -407,6 +411,8 @@ const GF_svgP2T = {
                 } else if (kissPairInfo?.startsWith("r_kiss_")) {
                     firstKissingPathNr = kissPairNr * 2;
                 }
+            } else {
+                console.log(`templateNode.id=${templateNode.id}`);
             }
 
             lastThreadNodeNr = this.newStitch(stitchInputValue, firstKissingPathNr, lastThreadNodeNr, tmpSVG);
@@ -427,10 +433,10 @@ const GF_svgP2T = {
         const svg = this.newSVG((w * 6.5) + "", h * 3.5);
         svg.appendChild(diagramGroup);
         svg.insertAdjacentHTML("beforeend", `
-            <use xlink:href="#original" id="clone_b" x="${w * 4}" transform="scale(0.7,0.7)"></use>
-            <use xlink:href="#original" id="clone_d" x="${-w * 8.8}" y="0" transform="scale(-0.7,0.7)"></use>
-            <use xlink:href="#original" id="clone_p" x="${w * 4}" y="${-h * 4.8}" transform="scale(0.7,-0.7)"></use>
-            <use xlink:href="#original" id="clone_q" x="${-w * 8.8}" y="${-h * 4.8}" transform="scale(-0.7,-0.7)"></use>
+            <use xlink:href="#templateThreads" id="clone_b" x="${w * 4}" transform="scale(0.7,0.7)"></use>
+            <use xlink:href="#templateThreads" id="clone_d" x="${-w * 8.8}" y="0" transform="scale(-0.7,0.7)"></use>
+            <use xlink:href="#templateThreads" id="clone_p" x="${w * 4}" y="${-h * 4.8}" transform="scale(0.7,-0.7)"></use>
+            <use xlink:href="#templateThreads" id="clone_q" x="${-w * 8.8}" y="${-h * 4.8}" transform="scale(-0.7,-0.7)"></use>
         `);
 
         document.body.insertAdjacentHTML("beforeend", `
