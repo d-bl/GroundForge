@@ -244,6 +244,7 @@ const GF_svgP2T = {
         const threadStarts = {};
         const classToPath = {};
         svg.querySelectorAll("path").forEach(path => {
+            // TODO not twisted threads have no _at_ classes
             const classes = Array.from(path.classList).filter(className => className.includes('_at_'));
             if (classes.length === 1 && classes[0].startsWith("ends_")) {
                 threadStarts[classes[0]] = path;
@@ -309,11 +310,16 @@ const GF_svgP2T = {
             const marker = linkElement.style.getPropertyValue('marker-mid');
             if (marker?.startsWith("url")) linkElement.setAttribute("marker-mid", marker);
             linkElement.removeAttribute('style');
-            linkElement.classList.forEach(c => {
-                if (c.startsWith("kiss_")) {
-                    linkElement.classList.add('kiss_' + ((c.replace("kiss_", "") * 1) % 2 ? 'odd' : 'even'));
+            linkElement.classList.forEach(kissClass => {
+                if (kissClass.startsWith("kiss_")) {
+                    const oddEven = (kissClass.replace("kiss_", "") * 1) % 2 ? 'odd' : 'even';
+                    linkElement.classList.add('kiss_' + oddEven);
+                    Array.from(linkElement.classList).filter(cls => cls.includes("_at_")).forEach(atClass => {
+                        const nodeId = atClass.replace(/.*_/, '');
+                        svg.getElementById(nodeId)?.classList.add(kissClass);
+                    })
                 }
-            })
+            });
         });
 
         document.body.appendChild(svg);
@@ -350,33 +356,23 @@ const GF_svgP2T = {
             }
         }
 
-        function pairNodeIndex() {
+        function twistIndex() {
             const index = {};
 
             Array.from(templateElement.querySelectorAll("path"))
                 .forEach(pair => {
                     const classes = Array.from(pair.classList);
-                    classes.filter(cls => cls.includes("_at_")).forEach(atClass => {
-                        const atId = atClass?.replace(/.*_at_/, "");
-                        if(atId !== undefined){
-                            if (!index[atId]) index[atId] = {}
-                            const twist = leftOrRight(atId, pair);
-
-                            if (!index[atId]["pair"]) index[atId]["pair"] = [];
-                            index[atId]["pair"].push( twist + '_' + classes.find(cls => /kiss_[0-9]+/.test(cls)));
-
-                            if (atClass.startsWith("starts_")) {
-                                const midMarker = pair.getAttribute("marker-mid");
-                                if (midMarker) { // mid-marker values are supposed to be: url("#twist-<n>")
-                                    const nrOfTwists = midMarker.replace(/[^0-9]*/g, '');
-                                    if (!index[atId]["twists"])
-                                        index[atId]["twists"] = '';
-                                    // TODO combine l+r into t
-                                    index[atId]["twists"] += twist.repeat(nrOfTwists);
-                                }
-                            }
-                        }
-                    })
+                    const startsAtClass = classes.find(cls => cls.startsWith("starts_at_"));
+                    const midMarker = pair.getAttribute("marker-mid");
+                    if (startsAtClass && midMarker) { // mid-marker values are supposed to be: url("#twist-<n>")
+                        const nrOfTwists = midMarker.replace(/[^0-9]*/g, '');
+                        const startAtId = startsAtClass.replace("starts_at_", "");
+                        const twist = leftOrRight(startAtId, pair);
+                        if (index[startAtId]) // TODO combine l+r into t
+                            index[startAtId] += twist.repeat(nrOfTwists);
+                        else
+                            index[startAtId] = twist.repeat(nrOfTwists);
+                    }
                 });
             return index;
         }
@@ -384,13 +380,13 @@ const GF_svgP2T = {
         const diagramGroup = document.createElementNS(this.svgNS, "g");
         diagramGroup.setAttribute("id", "templateThreads");
         let lastThreadNodeNr = 0;
-        const pairNodes = pairNodeIndex();
+        const additionalTwists = twistIndex();
 
         templateElement.querySelectorAll("g").forEach(templateNode => {
             const titles = templateNode.querySelectorAll("title");
             let stitchInputValue = titles.length === 0 ? 'ctc' : titles[0].textContent;
-            if (pairNodes[templateNode.id])
-                stitchInputValue += pairNodes[templateNode.id]["twists"];
+            if (additionalTwists[templateNode.id])
+                stitchInputValue += additionalTwists[templateNode.id];
 
             // detour because getElementById (used in newStitch) does not exist for group elements
             // and querySelector("#\\0-1") did also not work
@@ -399,22 +395,9 @@ const GF_svgP2T = {
 
             const stitchGroup = document.createElementNS(this.svgNS, "g");
 
-            let firstKissingPathNr = 0;
-            if (pairNodes[templateNode.id] !== undefined ){
-                const list = pairNodes[templateNode.id]["pair"];
-                console.log(`templateNode.id=${templateNode.id} lastThreadNodeNr=${lastThreadNodeNr} pairs=${list}`);
-                const kissPairInfo = list[list.length-1]; // TODO last element for now
-                const kissPairNr = kissPairInfo?.replace(/._kiss_/, "");
-                // TODO needs debugging e.g. with style rule: .kiss_<n> {stroke: aqua; }
-                if (kissPairInfo?.startsWith("l_kiss_")) {
-                    firstKissingPathNr = kissPairNr * 2;
-                } else if (kissPairInfo?.startsWith("r_kiss_")) {
-                    firstKissingPathNr = kissPairNr * 2;
-                }
-            } else {
-                console.log(`templateNode.id=${templateNode.id}`);
-            }
-
+            const strings = Array.from(templateNode.classList).filter(cl => cl.startsWith("kiss_"));
+            const pairKissNr = strings.sort()[0]?.replace(/.*_/,'');
+            const firstKissingPathNr = pairKissNr * 2 + (pairKissNr==='0' && strings.length===1 ? 0 : 2);
             lastThreadNodeNr = this.newStitch(stitchInputValue, firstKissingPathNr, lastThreadNodeNr, tmpSVG);
 
             // position the stitch group
