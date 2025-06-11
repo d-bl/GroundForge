@@ -241,54 +241,33 @@ const GF_svgP2T = {
     },
 
     addThreadClasses: function (svg) {
-        const threadStarts = {};
-        const classToPath = {};
+        const threadStarts = [];
+        const startAtClassToPath = {};
         svg.querySelectorAll("path").forEach(path => {
-            // TODO not twisted threads have no _at_ classes
-            const classes = Array.from(path.classList).filter(className => className.includes('_at_'));
-            if (classes.length === 1 && classes[0].startsWith("ends_")) {
-                threadStarts[classes[0]] = path;
+            const startClass = Array.from(path.classList).filter(className => className.startsWith('starts_'));
+            if (startClass.length === 0) {
+                threadStarts.push(path);
             }
-            classes.forEach(className => {
-                classToPath[className] = path;
+            path.classList.forEach(className => {
+                if( className.startsWith('starts_'))
+                    startAtClassToPath[className] = path;
             });
         });
-        const threadStartKeys = Object.keys(threadStarts);
-        const nrOfThreads = threadStartKeys.length;
-        for (let threadNr = 0; threadNr < nrOfThreads; threadNr++) {
-            let currentClass = threadStartKeys[threadNr];
-            let currentPath = threadStarts[currentClass];
-
-            while (true) {
+        for (let threadNr = 0; threadNr < threadStarts.length; threadNr++) {
+            let currentPath = threadStarts[threadNr];
+            while (currentPath) {
                 currentPath.classList.add('thread_' + threadNr);
-                // find next edge
-                if (currentClass == null) {
+                // TODO assign threadNr on top to node
+                const ensaAtClass = Array.from(currentPath.classList).filter(className => className.startsWith('ends_'))
+                if (ensaAtClass?.length === 0) {
                     break; // End of the thread
                 }
-                switch (currentClass.replace(/_at_.*/, "")) {
-                    case "ends_left":
-                        currentPath = classToPath[currentClass.replace("ends_left", "starts_right")];
-                        break;
-                    case "ends_right":
-                        currentPath = classToPath[currentClass.replace("ends_right", "starts_left")];
-                        break;
-                    default:
-                        currentPath = null;
-                }
-                if (currentPath == null) {
-                    break; // End of the thread
-                }
-                currentClass = Array.from(currentPath.classList).find(className => className.startsWith('ends_'));
+                const nextStartsAtClass = ensaAtClass[0]
+                    .replace(/ends_left/, 'starts_right')
+                    .replace(/ends_right/, 'starts_left');
+                currentPath = startAtClassToPath[nextStartsAtClass];
             }
         }
-        // threads not twisted at all
-        Array.from(svg.querySelectorAll("path"))
-            .forEach(path => {
-                if (!Array.from(path.classList).join('').includes("thread")) {
-                    // use kissing_path number
-                    path.classList.add("thread_" + path.classList[0].replace(/.*_/, ''));
-                }
-            });
     },
 
     coyModifiedTemplateToDoc: function (template, svgInput) {

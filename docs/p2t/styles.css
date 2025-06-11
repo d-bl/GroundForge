@@ -5,8 +5,8 @@ figcaption svg { vertical-align: middle; margin-right: 0.2em; }
 .kiss_even, .kiss_odd { stroke-width: 4; fill: none; }
 .thread_0 {stroke: rgb(146, 197, 222)}
 .thread_1 {stroke: rgb(5, 113, 176)}
-.thread_2, .thread_8 {stroke: rgb(202, 0, 32)}
-.thread_3, .thread_11 {stroke: rgb(244, 165, 130)}
+.thread_2 {stroke: rgb(202, 0, 32)}
+.thread_3 {stroke: rgb(244, 165, 130)}
 .link { stroke-width: 2; stroke: #bbbbbb; }
 circle { fill: black; opacity: 0.15 }
 
@@ -14,4 +14,4 @@ circle { fill: black; opacity: 0.15 }
  /*.kiss_odd {stroke: rgb(5, 113, 176); }*/
 
  /* pick any number for debugging de pair diagram */
- #templatePairs .kiss_5, #templateThreads .kiss_0 {stroke: aqua; }
+ /*#templatePairs .kiss_5, #templateThreads .kiss_0 {stroke: aqua; }*/
