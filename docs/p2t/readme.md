@@ -60,6 +60,7 @@ The page has little static content: a button and its label to upload files.
 The dynamic content is rendered by JavaScript:
 * A modified version of the template found in the upload. This is a color-coded pair diagram.
   The style attributes are replaced to allow static and interactive styling with CSS.
+  Also, some classes are added to simplify the conversion to a thread diagram.
 * The color code and text label from the legend in the upload become captions for little thread diagrams.
 * A larger version of the thread diagram and smaller set of bdpq versions.
   These mirrored version are intended to build swatches.
@@ -82,11 +83,15 @@ will be also identical in real lace, yet are drawn differently.
 ![](same-or-not.png)
 
 Classes for the SVG elements provide structural information.
-We have two groups of classes for edges: starts/ends_left/right_at_<node-id> and starts/ends_white.
-This kissing path number (and corresponding color) in single stitches 
+We have multiple groups of classes for edges:
+* starts/ends_left/right_at_<node-id>
+* starts/ends_white
+* thread_<nr> (nodes also have a thread number for the thread on top of the stitch)
+* kiss_<nr> (nodes have two kiss numbers, one for each thread/pair)
+This kissing path number (and corresponding color) 
 helped to debug the direction of bends for repeated actions.
-The kissing path numbers for thread diagrams are still under construction.
-In `styles.css` you can uncomment the `.kiss_` rules at the bottom to override the thread colors.
+Hint: The developer tools of the mayor browsers have a style editor. 
+Uncomment the `.kiss_` rules at the bottom of `styles.css` to override the thread colors.
 
 Composing the thread diagram
 ----------------------------
@@ -96,8 +101,8 @@ Currently, the stitches all get the same size and orientation.
 This is okay for a torchon net, when just dropping stitches from a torchon net,
 we get no more problems than gaps in threads.
 
-When adding and/or moving stitches we run into problems.
-The following image is an overlay of the thread diagram, the pair diagram
+When adding and/or moving stitches we run into more problems.
+The following image is an overlay of the demo diagrams: the thread diagram, the pair diagram
 and green shapes with corners at the mid-points of edges around the noes of the pair diagram.
 
 ![](envelopes.svg)
@@ -130,11 +135,12 @@ Like sketched below for one stitch. Not sure how that will look like.
 
 ![](init-bend-kissing.svg)
 
-The sketch below has bright green lines traversing along starting points 
+The sketch below has bright green lines traversing along starting points of kissing paths
 and brownish green traversing along end points of kissing paths.
 These lines start and end with segments perpendicular to adjacent edges in the pair diagram.
 The length of these segments depend on the length of the edges 
 as well as the angle with neighboring edges.
-The three segments might need more or less the same length, this may be a conflicting requirement.
+The three segments might need more or less the same length.
+This may be a conflicting requirements.
 
 ![](perpendicular.svg)

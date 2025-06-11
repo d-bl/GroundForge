@@ -1,6 +1,7 @@
 const GF_svgP2T = {
     svgNS: "http://www.w3.org/2000/svg",
     gap: 8,
+    lastID: 0,
 
     newSVG: function (w, h) {
         const svg = document.createElementNS(this.svgNS, "svg");
@@ -257,12 +258,23 @@ const GF_svgP2T = {
             let currentPath = threadStarts[threadNr];
             while (currentPath) {
                 currentPath.classList.add('thread_' + threadNr);
-                // TODO assign threadNr on top to node
-                const ensaAtClass = Array.from(currentPath.classList).filter(className => className.startsWith('ends_'))
-                if (ensaAtClass?.length === 0) {
+                const endsAtClasses = Array.from(currentPath.classList).filter(className => className.startsWith('ends_'))
+                if (endsAtClasses?.length === 0) {
                     break; // End of the thread
                 }
-                const nextStartsAtClass = ensaAtClass[0]
+                // assign top thread to node to allow painting threads by clicking a node
+                const endsAtClass = endsAtClasses[0];
+                const targetNode = svg.getElementById(endsAtClass?.replace(/.*_/, ''));
+                if (targetNode) {
+                    // TODO numbers of nodes, threads and kissing paths should not be unique per SVG but per page, use (++this.lastID)
+                    if (endsAtClass.startsWith('ends_left') && targetNode.classList.contains("cross")) {
+                        targetNode.classList.add('thread_' + threadNr);
+                    } else if (endsAtClass.startsWith('ends_right') && targetNode.classList.contains("twist")) {
+                        targetNode.classList.add('thread_' + threadNr);
+                    }
+                }
+                // find next segment
+                const nextStartsAtClass = endsAtClass
                     .replace(/ends_left/, 'starts_right')
                     .replace(/ends_right/, 'starts_left');
                 currentPath = startAtClassToPath[nextStartsAtClass];
@@ -367,9 +379,7 @@ const GF_svgP2T = {
             if (additionalTwists[templateNode.id])
                 stitchInputValue += additionalTwists[templateNode.id];
 
-            // detour because getElementById (used in newStitch) does not exist for group elements
-            // and querySelector("#\\0-1") did also not work
-            // TODO adjust IDs into n_0_1 in uploaded template
+            // TODO detour: newStitch should use ownerSVGElement.getElementById to accecpt group elements
             const tmpSVG = this.newSVG(125, 80);
 
             const stitchGroup = document.createElementNS(this.svgNS, "g");
@@ -408,13 +418,12 @@ const GF_svgP2T = {
             </p>
         `);
         document.body.appendChild(svg);
-        // TODO connect threads (at least by color), enable download, squeeze pinched stitches
-        //  see also https://d-bl.github.io/GroundForge-help/symmetry/#file-structure
     },
 
     processUploadedSvg: function (svgInput) {
         document.querySelectorAll("svg,figure,hr,.note").forEach(el => el.remove());
         document.body.insertAdjacentHTML("beforeend", "<hr>");
+        this.lastID = 0;
 
         // the uploaded template element
         const template = svgInput.getElementById("cloned");
