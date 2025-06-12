@@ -14,14 +14,19 @@ const GF_svgP2T = {
         return svg;
     },
 
-    newStitch: function (stitchInputValue, firstKissingPathNr, firstNodeNr, svgContainer) {
+    findSvgDoc: function(svgContainer) {
+        let svgDoc = svgContainer;
+        while (svgDoc.ownerSVGElement) svgDoc = svgDoc.ownerSVGElement; // find the root SVG document
+        return svgDoc;
+    },
+
+    newStitch: function (stitchInputValue, firstKissingPathNr, firstNodeNr, svgContainer, containerWidth, containerHeight) {
         let stitch = stitchInputValue
             .toLowerCase()
             .replace(/[^clrt]/g, '');
 
+        const svgDoc = this.findSvgDoc(svgContainer);
         const svgNS = svgContainer.namespaceURI;
-        const containerHeight = svgContainer.getAttribute('height');
-        const containerWidth = svgContainer.getAttribute('width');
         const nrOfInitialPathNodes = stitch.length;
         const nodeSpacing = containerHeight / (nrOfInitialPathNodes + 1); // Vertical spacing between subnodes
         const pathSpacing = containerWidth / 3; // Horizontal spacing between paths
@@ -60,8 +65,8 @@ const GF_svgP2T = {
             if (classes.length > 1) {
                 const id0 = classes[0].replace(/.*_/g, "");
                 const id1 = classes[1].replace(/.*_/g, "");
-                const n0 = svgContainer.getElementById(id0).classList[0];
-                const n1 = svgContainer.getElementById(id1).classList[0];
+                const n0 = svgDoc.getElementById(id0).classList[0];
+                const n1 = svgDoc.getElementById(id1).classList[0];
                 const startsLeft = classes[0].includes("starts_left");
                 const startsRight = classes[0].includes("starts_right");
                 // TODO Conditions seems to work. Which coincidence eliminates bends for twist with a cross in between?
@@ -103,8 +108,8 @@ const GF_svgP2T = {
         }
 
         function mergeNodes(leftNodeId, rightNodeId, id, description) {
-            const leftNode = svgContainer.getElementById(leftNodeId);
-            const rightNode = svgContainer.getElementById(rightNodeId);
+            const leftNode = svgDoc.getElementById(leftNodeId);
+            const rightNode = svgDoc.getElementById(rightNodeId);
 
             if (!leftNode || !rightNode) {
                 console.error(`One or both nodes not found ${leftNodeId}=${leftNode} or ${rightNodeId}=${rightNode} ${id}`);
@@ -209,7 +214,7 @@ const GF_svgP2T = {
                 svgContainer.removeChild(inEdge);
                 delete edgeStartMap[nodeId];
                 delete edgeEndMap[nodeId];
-                svgContainer.getElementById(nodeId).remove();
+                svgDoc.getElementById(nodeId).remove();
             }
         });
 
@@ -226,7 +231,7 @@ const GF_svgP2T = {
     newLegendStitch: function (stitchInputValue, colorCodeElement) {
 
         const threadSvg = this.newSVG(80, 120);
-        this.newStitch(stitchInputValue, 0, 0, threadSvg);
+        this.newStitch(stitchInputValue, 0, 0, threadSvg, 80, 120);
 
         const colorCodeSvg = this.newSVG(27, 35);
         colorCodeElement.setAttribute("transform", "translate(13,17) scale(3)");
@@ -241,10 +246,11 @@ const GF_svgP2T = {
         document.body.appendChild(figure);
     },
 
-    addThreadClasses: function (svg) {
+    addThreadClasses: function (svgContainer, svgNS) {
+        const svgDoc = this.findSvgDoc(svgContainer);
         const threadStarts = [];
         const startAtClassToPath = {};
-        svg.querySelectorAll("path").forEach(path => {
+        svgContainer.querySelectorAll("path").forEach(path => {
             const startClass = Array.from(path.classList).filter(className => className.startsWith('starts_'));
             if (startClass.length === 0) {
                 threadStarts.push(path);
@@ -264,7 +270,7 @@ const GF_svgP2T = {
                 }
                 // assign top thread to node to allow painting threads by clicking a node
                 const endsAtClass = endsAtClasses[0];
-                const targetNode = svg.getElementById(endsAtClass?.replace(/.*_/, ''));
+                const targetNode = svgDoc.getElementById(endsAtClass?.replace(/.*_/, ''));
                 if (targetNode) {
                     // TODO numbers of nodes, threads and kissing paths should not be unique per SVG but per page, use (++this.lastID)
                     if (endsAtClass.startsWith('ends_left') && targetNode.classList.contains("cross")) {
@@ -370,6 +376,8 @@ const GF_svgP2T = {
 
         const diagramGroup = document.createElementNS(this.svgNS, "g");
         diagramGroup.setAttribute("id", "templateThreads");
+        const svg = this.newSVG((w * 6.5) + "", h * 3.5);
+        svg.appendChild(diagramGroup);
         let lastThreadNodeNr = 0;
         const additionalTwists = twistIndex();
 
@@ -379,31 +387,21 @@ const GF_svgP2T = {
             if (additionalTwists[templateNode.id])
                 stitchInputValue += additionalTwists[templateNode.id];
 
-            // TODO detour: newStitch should use ownerSVGElement.getElementById to accecpt group elements
-            const tmpSVG = this.newSVG(125, 80);
-
             const stitchGroup = document.createElementNS(this.svgNS, "g");
+            diagramGroup.appendChild(stitchGroup);
 
             const strings = Array.from(templateNode.classList).filter(cl => cl.startsWith("kiss_"));
             const pairKissNr = strings.sort()[0]?.replace(/.*_/,'');
             const firstKissingPathNr = pairKissNr * 2 + (pairKissNr==='0' && strings.length===1 ? 0 : 2);
-            lastThreadNodeNr = this.newStitch(stitchInputValue, firstKissingPathNr, lastThreadNodeNr, tmpSVG);
+            lastThreadNodeNr = this.newStitch(stitchInputValue, firstKissingPathNr, lastThreadNodeNr, stitchGroup, 125, 80);
 
             // position the stitch group
             const [x, y] = templateNode.getAttribute("transform")
                 .match(/translate\(([^)]+)\)/)[1]
                 .split(",");
             stitchGroup.setAttribute("transform", `translate(${x * 5.7}, ${y * 5.6})`);
-
-            // copy the stitch elements from the temporary SVG to the stitch group
-            tmpSVG.childNodes.forEach(child => {
-                stitchGroup.appendChild(child.cloneNode(true));
-            });
-            diagramGroup.appendChild(stitchGroup);
         });
 
-        const svg = this.newSVG((w * 6.5) + "", h * 3.5);
-        svg.appendChild(diagramGroup);
         svg.insertAdjacentHTML("beforeend", `
             <use xlink:href="#templateThreads" id="clone_b" x="${w * 4}" transform="scale(0.7,0.7)"></use>
             <use xlink:href="#templateThreads" id="clone_d" x="${-w * 8.8}" y="0" transform="scale(-0.7,0.7)"></use>
