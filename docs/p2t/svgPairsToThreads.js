@@ -272,7 +272,7 @@ const GF_svgP2T = {
                 const endsAtClass = endsAtClasses[0];
                 const targetNode = svgDoc.getElementById(endsAtClass?.replace(/.*_/, ''));
                 if (targetNode) {
-                    // TODO numbers of nodes, threads and kissing paths should not be unique per SVG but per page, use (++this.lastID)
+                    // TODO numbers of nodes should not be unique per SVG but per page, use (++this.lastID)
                     if (endsAtClass.startsWith('ends_left') && targetNode.classList.contains("cross")) {
                         targetNode.classList.add('thread_' + threadNr);
                     } else if (endsAtClass.startsWith('ends_right') && targetNode.classList.contains("twist")) {
@@ -311,11 +311,17 @@ const GF_svgP2T = {
                 if (kissClass.startsWith("kiss_")) {
                     const oddEven = (kissClass.replace("kiss_", "") * 1) % 2 ? 'odd' : 'even';
                     linkElement.classList.add('kiss_' + oddEven);
-                    Array.from(linkElement.classList).filter(cls => cls.includes("_at_")).forEach(atClass => {
+                    const atClasses = Array.from(linkElement.classList).filter(cls => cls.includes("_at_"));
+                    atClasses.forEach(atClass => {
                         const nodeId = atClass.replace(/.*_/, '');
                         svg.getElementById(nodeId)?.classList.add(kissClass);
                     })
-                }
+                    const [source, target] = atClasses[0].startsWith("starts_")
+                        ? [atClasses[0], atClasses[1]]
+                        : [atClasses[1], atClasses[0]];
+                    const sourceNodeId = source.replace(/.*_/, '');
+                    const targetNodeId = target.replace(/.*_/, '');
+                    svg.getElementById(targetNodeId)?.classList.add('from_' + sourceNodeId);                }
             });
         });
 
@@ -380,6 +386,11 @@ const GF_svgP2T = {
         svg.appendChild(diagramGroup);
         let lastThreadNodeNr = 0;
         const additionalTwists = twistIndex();
+
+        // TODO: use from/kiss classes to determine how to connect the stitches,
+        //  - start with nodes without a from_ class
+        //  - then process nodes starting at previously processed nodes
+        //  - continue until all nodes are processed
 
         templateElement.querySelectorAll("g").forEach(templateNode => {
             const titles = templateNode.querySelectorAll("title");

@@ -1,48 +1,40 @@
 A technical birds eye overview
 ===============================
 
-The file `svgPairsToThreads.js` defines a JavaScript object called `GF_svgP2T`, 
-which provides a set of functions for processing and generating SVG diagrams.
+The file `svgPairsToThreads.js` defines a JavaScript object called `GF_svgP2T`.
+This object provides a set of functions for processing and generating bobbin lace diagrams.
 Color coded pair diagrams provide instructions for a bobbin lace maker.
 Thread diagrams visualise how the threads flow through the lace.
 Given a pair diagram, the script generates the corresponding thread diagram.
 
-Various classes on the SVG elements have different functions:
-* Chances for custom presentation by CSS rules and interaction in pages displaying the diagrams.
-* Structural information for further processing.
+Uploaded SVG diagrams are supposed to be created by the symmetry page of GroundForge.
+This page lets you add, drop and move stitches in a template diagram. 
+This template is then combined in various reflected compositions. 
+Reflections are indicated with bdpq versions of the template.
 
-Call structure
---------------
-
-### High-level Call Flow
+High-level Call Flow
+--------------------
 
 * `init()` is the main entry point and sets up the application.
-  * On file upload or demo load:
+  * On file upload or initial load of a demo file:
     * `readSVGFile()`
     * `processUploadedSvg()`
       * `coyModifiedTemplateToDoc()`
       * `addCaptionedLegendElementsToDoc()` iterates over elements of an uploaded `#bdqpLegend` element.
-      * `addThreadDiagramToDoc()` iterates over elements of an uploaded `#template` element
-* `newStitch()` is called by functions that need to draw stitches, including:
+      * `addThreadDiagramToDoc()` iterates over stitch elements of an uploaded `#template` element
+* `newStitch()` is called by functions that need to draw stitches:
   * `newLegendStitch()`
   * `addThreadDiagramToDoc()`
-* `addThreadClasses()` is currently called at the end of newStitch().
-  The structural classes for the thread diagram are still under construction. 
-  Once complete, this function will be called by `addThreadDiagramToDoc()` and `newLegendStitch()`.
+* `addThreadClasses()` 
+  Once stitches are connected (read: their loose ends merged into single edges),
+  this function will be called at the end of `addThreadDiagramToDoc()` and `newLegendStitch()`.
 
-### Summary Table:
+Customize the init function for integration in another page.
+You might want just one or two of the ...ToDoc functions, each adding different components to a web page.
+Or even bypass addCaptionedLegendElementsToDoc to pass your own color code symbols into newLegendStitch.
+Once not only the template but also a swatch of the symmetry page can be processed, 
+you might want to react on a click on a dot next to one of the swatches.
 
-| Function                        | Called By                                  | Calls (main)                                                                             |
-|---------------------------------|--------------------------------------------|------------------------------------------------------------------------------------------|
-| init                            | (external, on page load)                   | readSVGFile <br> processUploadedSvg                                                      |
-| readSVGFile                     | init, (file upload)                        | (none)                                                                                   |
-| processUploadedSvg              | init, (file upload)                        | coyModifiedTemplateToDoc <br> addCaptionedLegendElementsToDoc <br> addThreadDiagramToDoc |
-| coyModifiedTemplateToDoc        | processUploadedSvg                         | newSVG                                                                                   |
-| addCaptionedLegendElementsToDoc | processUploadedSvg                         | newLegendStitch                                                                          |
-| addThreadDiagramToDoc           | processUploadedSvg                         | newSVG <br> newStitch                                                                    |
-| newLegendStitch                 | addCaptionedLegendElementsToDoc            | newSVG <br> newStitch                                                                    |
-| newStitch                       | newLegendStitch <br> addThreadDiagramToDoc | addThreadClasses, (several local helpers)                                                |
-| addThreadClasses                | newStitch                                  | (none)                                                                                   |
 
 Uploads
 -------
@@ -51,7 +43,7 @@ Uploads are sanitized. This excludes `<use>` elements, because of href attribute
 In practise this means we don´t get the swatches from the symmetry page.
 We will get the dots next to the swatches.
 The titles of these dots provide tooltips with the swatch parameters.
-Neither the swatches nor the dots are used in the script.
+Neither the swatches nor the dots are currently used in the script.
 
 Page structure
 --------------
@@ -82,15 +74,29 @@ will be also identical in real lace, yet are drawn differently.
 
 ![](same-or-not.png)
 
-Classes for the SVG elements provide structural information.
+Classes
+-------
+
+Various classes on the SVG elements have different functions:
+* Chances for custom presentation by CSS rules and interaction in pages displaying the diagrams.
+* Structural information used during construction of the diagrams and for further processing.
+
 We have multiple groups of classes for edges:
-* starts/ends_left/right_at_<node-id>
-* starts/ends_white
-* thread_<nr> (nodes also have a thread number for the thread on top of the stitch)
-* kiss_<nr> (nodes have two kiss numbers, one for each thread/pair)
+
+| pattern                              | diagram typee  | element type | note                                            |
+|--------------------------------------|----------------|--------------|-------------------------------------------------|
+| starts/ends_left/right_at_\<node-id> | both           | edgs         | left/right only on thread diagrams              |
+| white_start/end                      | threads        | edges        | for the over/under effect                       |
+| thread_\<nr>                         | threads        | edges        | for the thread number                           |
+| cross/twist_\<nr>                    | threads        | nodes        |                                                 |
+| kiss_\<nr>                           | both           | edges        |                                                 |
+| , ,                                  | enhanced pairs | nodes        | two per node except on left/right perimeter     |
+| from_\<node_id>                      | enhanced pairs | nodes        |                                                 |
+| link                                 | pairs          | edges        | legacy (in other contexts nodes might be paths) |
+
 This kissing path number (and corresponding color) 
 helped to debug the direction of bends for repeated actions.
-Hint: The developer tools of the mayor browsers have a style editor. 
+_Hint_: The developer tools of the mayor browsers have a style editor. 
 Uncomment the `.kiss_` rules at the bottom of `styles.css` to override the thread colors.
 
 Composing the thread diagram
