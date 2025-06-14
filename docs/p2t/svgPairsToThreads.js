@@ -387,6 +387,7 @@ const GF_svgP2T = {
         let lastThreadNodeNr = 0;
         const additionalTwists = twistIndex();
 
+        const pairNodeIdToThreadGroup = {};
         const notProessed = new Set(templateElement.querySelectorAll("g"));
         const processed = [];
         let toProcess = Array.from(notProessed).filter(node => !Array.from(node.classList).some(cls => cls.startsWith('from_')));
@@ -405,16 +406,27 @@ const GF_svgP2T = {
                     .match(/translate\(([^)]+)\)/)[1]
                     .split(",");
                 stitchGroup.setAttribute("transform", `translate(${x * 5.7}, ${y * 5.6})`);
+                pairNodeIdToThreadGroup[templateNode.id] = stitchGroup;
+                const pairNodeClasses = Array.from(templateNode.classList);
 
-                const pairKissClasses = Array.from(templateNode.classList).filter(cl => cl.startsWith("kiss_"));
+                const pairKissClasses = pairNodeClasses.filter(cl => cl.startsWith("kiss_"));
                 const firstPairKissNr = pairKissClasses.sort()[0]?.replace(/.*_/, '');
                 const firstThreadKissingPathNr = firstPairKissNr * 2 + (firstPairKissNr === '0' && pairKissClasses.length === 1 ? 0 : 2);
-                lastThreadNodeNr = this.newStitch(stitchInputValue, firstThreadKissingPathNr, lastThreadNodeNr, stitchGroup, 125, 80);
                 stitchGroup.classList.add("first_kiss_"+firstThreadKissingPathNr);
+                lastThreadNodeNr = this.newStitch(stitchInputValue, firstThreadKissingPathNr, lastThreadNodeNr, stitchGroup, 125, 80);
 
-                // TODO connect starts of the new with tails of its from_<id> stitches.
-                //  The from_<id> stitch with the smallest firstKissingPathNr is the left one:
-                //  merge edges with starts_right_at_ class and no ends_ class ...
+                if (processed.length > 0) {
+                    const fromStitches = pairNodeClasses
+                        .filter(cls => cls.startsWith("from_"))
+                        .map(fromClass => pairNodeIdToThreadGroup[fromClass.replace("from_", "")])
+                        .sort((a, b) => a.classList[0] - b.classList[0]); // one class on stitch groups: first_kiss_<nr>
+                    const tailEdges = fromStitches.flatMap(stitch =>
+                        Array.from(stitch.querySelectorAll('path'))
+                            .filter(path => !Array.from(path.classList).join("").includes("ends_"))
+                    );
+                    console.log(firstThreadKissingPathNr + ' === ' + tailEdges.map(path => Array.from(path.classList).filter(cl => cl.startsWith("kiss_"))[0]));
+                    // TODO connect tails with startEdges of stitchGroup with same kiss nr
+                }
 
                 // iteration
                 processed.push(templateNode);
