@@ -89,6 +89,7 @@ We have multiple groups of classes for edges:
 | white_start/end                      | threads        | edges        | for the over/under effect                       |
 | thread_\<nr>                         | threads        | edges        | for the thread number                           |
 | cross/twist_\<nr>                    | threads        | nodes        |                                                 |
+| first_kiss_\<nr>                     | threads        | nodes        | the group node of a set of cross/twist nodes    |
 | kiss_\<nr>                           | both           | edges        |                                                 |
 | , ,                                  | enhanced pairs | nodes        | two per node except on left/right perimeter     |
 | from_\<node_id>                      | enhanced pairs | nodes        |                                                 |

@@ -224,7 +224,7 @@ const GF_svgP2T = {
             path.setAttribute("d", calculatePathDefinition(line));
             line.replaceWith(path);
         });
-        this.addThreadClasses(svgContainer, svgNS);
+        this.addThreadClasses(svgContainer);
         return currentNodeNr;
     },
 
@@ -246,7 +246,7 @@ const GF_svgP2T = {
         document.body.appendChild(figure);
     },
 
-    addThreadClasses: function (svgContainer, svgNS) {
+    addThreadClasses: function (svgContainer) {
         const svgDoc = this.findSvgDoc(svgContainer);
         const threadStarts = [];
         const startAtClassToPath = {};
@@ -387,31 +387,46 @@ const GF_svgP2T = {
         let lastThreadNodeNr = 0;
         const additionalTwists = twistIndex();
 
-        // TODO: use from/kiss classes to determine how to connect the stitches,
-        //  - start with nodes without a from_ class
-        //  - then process nodes starting at previously processed nodes
-        //  - continue until all nodes are processed
+        const notProessed = new Set(templateElement.querySelectorAll("g"));
+        const processed = [];
+        let toProcess = Array.from(notProessed).filter(node => !Array.from(node.classList).some(cls => cls.startsWith('from_')));
+        while (toProcess.length > 0) {
+            toProcess.forEach(templateNode => {
+                // collect instructions from stitch and twists on pairs leaving the stitch
+                const title = templateNode.querySelectorAll("title");
+                let stitchInputValue = title.length === 0 ? 'ctc' : title[0].textContent;
+                if (additionalTwists[templateNode.id])
+                    stitchInputValue += additionalTwists[templateNode.id];
 
-        templateElement.querySelectorAll("g").forEach(templateNode => {
-            const titles = templateNode.querySelectorAll("title");
-            let stitchInputValue = titles.length === 0 ? 'ctc' : titles[0].textContent;
-            if (additionalTwists[templateNode.id])
-                stitchInputValue += additionalTwists[templateNode.id];
+                // create group for the stitch at the position dictated bij the template node
+                const stitchGroup = document.createElementNS(this.svgNS, "g");
+                diagramGroup.appendChild(stitchGroup);
+                const [x, y] = templateNode.getAttribute("transform")
+                    .match(/translate\(([^)]+)\)/)[1]
+                    .split(",");
+                stitchGroup.setAttribute("transform", `translate(${x * 5.7}, ${y * 5.6})`);
 
-            const stitchGroup = document.createElementNS(this.svgNS, "g");
-            diagramGroup.appendChild(stitchGroup);
+                const pairKissClasses = Array.from(templateNode.classList).filter(cl => cl.startsWith("kiss_"));
+                const firstPairKissNr = pairKissClasses.sort()[0]?.replace(/.*_/, '');
+                const firstThreadKissingPathNr = firstPairKissNr * 2 + (firstPairKissNr === '0' && pairKissClasses.length === 1 ? 0 : 2);
+                lastThreadNodeNr = this.newStitch(stitchInputValue, firstThreadKissingPathNr, lastThreadNodeNr, stitchGroup, 125, 80);
+                stitchGroup.classList.add("first_kiss_"+firstThreadKissingPathNr);
 
-            const strings = Array.from(templateNode.classList).filter(cl => cl.startsWith("kiss_"));
-            const pairKissNr = strings.sort()[0]?.replace(/.*_/,'');
-            const firstKissingPathNr = pairKissNr * 2 + (pairKissNr==='0' && strings.length===1 ? 0 : 2);
-            lastThreadNodeNr = this.newStitch(stitchInputValue, firstKissingPathNr, lastThreadNodeNr, stitchGroup, 125, 80);
+                // TODO connect starts of the new with tails of its from_<id> stitches.
+                //  The from_<id> stitch with the smallest firstKissingPathNr is the left one:
+                //  merge edges with starts_right_at_ class and no ends_ class ...
 
-            // position the stitch group
-            const [x, y] = templateNode.getAttribute("transform")
-                .match(/translate\(([^)]+)\)/)[1]
-                .split(",");
-            stitchGroup.setAttribute("transform", `translate(${x * 5.7}, ${y * 5.6})`);
-        });
+                // iteration
+                processed.push(templateNode);
+                notProessed.delete(templateNode);
+            });
+            toProcess = Array.from(notProessed).filter(node => {
+                const fromClasses = Array.from(node.classList).filter(cls => cls.startsWith('from_'));
+                return fromClasses.every(fromCls =>
+                    processed.some(procNode => procNode.id === fromCls.replace('from_', ''))
+                );
+            });
+        }
 
         svg.insertAdjacentHTML("beforeend", `
             <use xlink:href="#templateThreads" id="clone_b" x="${w * 4}" transform="scale(0.7,0.7)"></use>
