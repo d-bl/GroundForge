@@ -3,10 +3,38 @@ figcaption svg { vertical-align: middle; margin-right: 0.2em; }
 
 /* you might want to adjust GF_P2T.gap together with the stroke width */
 .kiss_even, .kiss_odd { stroke-width: 4; fill: none; }
-.thread_0 {stroke: rgb(146, 197, 222)}
-.thread_1 {stroke: rgb(5, 113, 176)}
-.thread_2 {stroke: rgb(202, 0, 32)}
-.thread_3 {stroke: rgb(244, 165, 130)}
+#templateThreads .kiss_even, #templateThreads .kiss_odd { stroke: black; }
+#templateThreads .thread_0,
+#templateThreads .thread_4,
+#templateThreads .thread_8,
+#templateThreads .thread_12,
+.thread_0 {
+    stroke: rgb(146, 197, 222);
+}
+
+#templateThreads .thread_1,
+#templateThreads .thread_5,
+#templateThreads .thread_9,
+#templateThreads .thread_13,
+.thread_1 {
+    stroke: rgb(5, 113, 176);
+}
+
+#templateThreads .thread_2,
+#templateThreads .thread_6,
+#templateThreads .thread_10,
+#templateThreads .thread_14,
+.thread_2 {
+    stroke: rgb(202, 0, 32);
+}
+
+#templateThreads .thread_3,
+#templateThreads .thread_7,
+#templateThreads .thread_11,
+#templateThreads .thread_15,
+.thread_3 {
+    stroke: rgb(244, 165, 130);
+}
 .link { stroke-width: 2; stroke: #bbbbbb; }
 circle { fill: black; opacity: 0.15 }
 

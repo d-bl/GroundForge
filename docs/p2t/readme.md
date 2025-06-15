@@ -22,19 +22,15 @@ High-level Call Flow
       * `coyModifiedTemplateToDoc()`
       * `addCaptionedLegendElementsToDoc()` iterates over elements of an uploaded `#bdqpLegend` element.
       * `addThreadDiagramToDoc()` iterates over stitch elements of an uploaded `#template` element
-* `newStitch()` is called by functions that need to draw stitches:
+* `newStitch()` and `addThreadClasses()` are called by functions that draw stitches:
   * `newLegendStitch()`
   * `addThreadDiagramToDoc()`
-* `addThreadClasses()` 
-  Once stitches are connected (read: their loose ends merged into single edges),
-  this function will be called at the end of `addThreadDiagramToDoc()` and `newLegendStitch()`.
 
 Customize the init function for integration in another page.
 You might want just one or two of the ...ToDoc functions, each adding different components to a web page.
 Or even bypass addCaptionedLegendElementsToDoc to pass your own color code symbols into newLegendStitch.
 Once not only the template but also a swatch of the symmetry page can be processed, 
 you might want to react on a click on a dot next to one of the swatches.
-
 
 Uploads
 -------
@@ -109,8 +105,8 @@ This is okay for a torchon net, when just dropping stitches from a torchon net,
 we get no more problems than gaps in threads.
 
 When adding and/or moving stitches we run into more problems.
-The following image is an overlay of the demo diagrams: the thread diagram, the pair diagram
-and green shapes with corners at the mid-points of edges around the noes of the pair diagram.
+The following image is an overlay of the demo diagrams: the thread diagram (before connecting the stitches),
+the pair diagram and green shapes with corners at the mid-points of edges around the noes of the pair diagram.
 
 ![](envelopes.svg)
 

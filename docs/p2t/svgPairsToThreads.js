@@ -224,7 +224,6 @@ const GF_svgP2T = {
             path.setAttribute("d", calculatePathDefinition(line));
             line.replaceWith(path);
         });
-        this.addThreadClasses(svgContainer);
         return currentNodeNr;
     },
 
@@ -242,6 +241,7 @@ const GF_svgP2T = {
 
         const figure = document.createElement("figure");
         figure.append(threadSvg, figcaption);
+        this.addThreadClasses(threadSvg);
 
         document.body.appendChild(figure);
     },
@@ -391,6 +391,52 @@ const GF_svgP2T = {
         const notProessed = new Set(templateElement.querySelectorAll("g"));
         const processed = [];
         let toProcess = Array.from(notProessed).filter(node => !Array.from(node.classList).some(cls => cls.startsWith('from_')));
+
+        function findFringes(fromStitches, fringeType) {
+            return fromStitches
+                .flatMap(stitch => Array.from(stitch.querySelectorAll('path'))
+                    .filter(path => !Array.from(path.classList).join("").includes(fringeType)))
+                .reduce((acc, tailEdge) => {
+                    const kissClass = Array.from(tailEdge.classList).find(cl => /^kiss_\d+$/.test(cl));
+                    if (kissClass) acc[kissClass] = tailEdge;
+                    return acc;
+                }, {});
+        }
+
+        function combineStraightPaths(path1, path2) {
+            function parseTranslate(path) {
+                return (path.closest('g')?.getAttribute('transform') || '')
+                    .replace('translate(', '').replace(')', '').split(',');
+            }
+
+            function parseDef(path) {
+                return path.getAttribute('d')
+                    .match(/M\s*([\d.]+)\s*([\d.]+)\s*L\s*([\d.]+)\s*([\d.]+)/);
+            }
+
+            // paths are in different groups with different translations
+            const t1 = parseTranslate(path1);
+            const t2 = parseTranslate(path2);
+            dx = t1[0] - t2[0];
+            dy = t1[1] - t2[1];
+
+            const match1 = parseDef(path1);
+            const match2 = parseDef(path2);
+            if (!match1 || !match2) return;
+
+            // Start at path1's start, end at path2's end
+            const d = `M ${match1[1]} ${match1[2]} L ${match2[3] - dx} ${match2[4] - dy}`;
+            path1.setAttribute('d', d);
+            Array.from(path2.classList)
+                .filter(cls => cls.includes("end"))
+                .forEach(cls => {
+                    path1.classList.add(cls);
+                })
+        }
+        function arraysHaveSameElements(a, b) {
+            if (a.length !== b.length) return false;
+            return a.every(val => b.includes(val));
+        }
         while (toProcess.length > 0) {
             toProcess.forEach(templateNode => {
                 // collect instructions from stitch and twists on pairs leaving the stitch
@@ -420,12 +466,24 @@ const GF_svgP2T = {
                         .filter(cls => cls.startsWith("from_"))
                         .map(fromClass => pairNodeIdToThreadGroup[fromClass.replace("from_", "")])
                         .sort((a, b) => a.classList[0] - b.classList[0]); // one class on stitch groups: first_kiss_<nr>
-                    const tailEdges = fromStitches.flatMap(stitch =>
-                        Array.from(stitch.querySelectorAll('path'))
-                            .filter(path => !Array.from(path.classList).join("").includes("ends_"))
-                    );
-                    console.log(firstThreadKissingPathNr + ' === ' + tailEdges.map(path => Array.from(path.classList).filter(cl => cl.startsWith("kiss_"))[0]));
-                    // TODO connect tails with startEdges of stitchGroup with same kiss nr
+                    const kissNrToTailEdge = findFringes(fromStitches, 'ends_');
+                    const kissNrToStartEdge = findFringes([stitchGroup], 'starts_');
+                    const startKissClasses = Object.keys(kissNrToStartEdge);
+                    const tailKissClasses = Object.keys(kissNrToTailEdge);
+                    let kissClassArray = Array.from(startKissClasses);
+                    if (firstThreadKissingPathNr === 0 && !arraysHaveSameElements(startKissClasses, tailKissClasses))
+                        secondHalf = tailKissClasses.slice(Math.floor(kissClassArray.length / 2));
+                    kissClassArray.forEach(kissNr => {
+                        const tailEdge = kissNrToTailEdge[kissNr];
+                        if (tailEdge) {
+                            const startEdge = kissNrToStartEdge[kissNr];
+                            console.log('connect ' + tailEdge + ' with ' + startEdge);
+                            combineStraightPaths(tailEdge, startEdge);
+                            // TODO fix the added stitch (whether c or ctc does not matter) and vertical edges at the versy sides
+                            startEdge.remove();
+                        }
+                    })
+
                 }
 
                 // iteration
@@ -450,9 +508,10 @@ const GF_svgP2T = {
         document.body.insertAdjacentHTML("beforeend", `
             <hr>
             <p class='note'>
-            Under construction (added/moved stitches cause overlap, a thread may have multiple colors): 
+            Under construction (added/moved stitches cause overlap, some stitches are not properly connected): 
             </p>
         `);
+        this.addThreadClasses(svg);
         document.body.appendChild(svg);
     },
 
