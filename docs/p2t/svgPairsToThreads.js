@@ -1,7 +1,7 @@
 const GF_svgP2T = {
     svgNS: "http://www.w3.org/2000/svg",
     gap: 8,
-    lastID: 0,
+    lastID: 0, // to be used for unique IDs of over all SVGs on the page
 
     newSVG: function (w, h) {
         const svg = document.createElementNS(this.svgNS, "svg");
@@ -433,10 +433,6 @@ const GF_svgP2T = {
                     path1.classList.add(cls);
                 })
         }
-        function arraysHaveSameElements(a, b) {
-            if (a.length !== b.length) return false;
-            return a.every(val => b.includes(val));
-        }
         while (toProcess.length > 0) {
             toProcess.forEach(templateNode => {
                 // collect instructions from stitch and twists on pairs leaving the stitch
@@ -469,11 +465,7 @@ const GF_svgP2T = {
                     const kissNrToTailEdge = findFringes(fromStitches, 'ends_');
                     const kissNrToStartEdge = findFringes([stitchGroup], 'starts_');
                     const startKissClasses = Object.keys(kissNrToStartEdge);
-                    const tailKissClasses = Object.keys(kissNrToTailEdge);
-                    let kissClassArray = Array.from(startKissClasses);
-                    if (firstThreadKissingPathNr === 0 && !arraysHaveSameElements(startKissClasses, tailKissClasses))
-                        secondHalf = tailKissClasses.slice(Math.floor(kissClassArray.length / 2));
-                    kissClassArray.forEach(kissNr => {
+                    Array.from(startKissClasses).forEach(kissNr => {
                         const tailEdge = kissNrToTailEdge[kissNr];
                         if (tailEdge) {
                             const startEdge = kissNrToStartEdge[kissNr];
