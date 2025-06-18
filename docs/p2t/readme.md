@@ -79,12 +79,12 @@ Various classes on the SVG elements have different functions:
 
 We have multiple groups of classes for edges:
 
-| pattern                              | diagram typee  | element type | note                                            |
+| pattern                              | diagram type   | element type | note                                            |
 |--------------------------------------|----------------|--------------|-------------------------------------------------|
-| starts/ends_left/right_at_\<node-id> | both           | edgs         | left/right only on thread diagrams              |
+| starts/ends_left/right_at_\<node-id> | both           | edges        | left/right component only on thread diagrams    |
 | white_start/end                      | threads        | edges        | for the over/under effect                       |
 | thread_\<nr>                         | threads        | edges        | for the thread number                           |
-| cross/twist_\<nr>                    | threads        | nodes        |                                                 |
+| cross/twist                          | threads        | nodes        |                                                 |
 | first_kiss_\<nr>                     | threads        | nodes        | the group node of a set of cross/twist nodes    |
 | kiss_\<nr>                           | both           | edges        |                                                 |
 | , ,                                  | enhanced pairs | nodes        | two per node except on left/right perimeter     |
@@ -106,7 +106,7 @@ we get no more problems than gaps in threads.
 
 When adding and/or moving stitches we run into more problems.
 The following image is an overlay of the demo diagrams: the thread diagram (before connecting the stitches),
-the pair diagram and green shapes with corners at the mid-points of edges around the noes of the pair diagram.
+the pair diagram and green shapes with corners at the mid-points of edges around the nodes of the pair diagram.
 
 ![](envelopes.svg)
 
