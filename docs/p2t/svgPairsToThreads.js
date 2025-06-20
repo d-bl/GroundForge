@@ -388,7 +388,7 @@ const GF_svgP2T = {
         document.body.insertAdjacentHTML("beforeend", `
             <hr>
             <p class='note'>
-            Under construction (added/moved stitches cause overlap, some stitches are not properly connected): 
+            Under construction (added/moved stitches cause overlap): 
             </p>
         `);
         document.body.appendChild(svg);
@@ -428,30 +428,29 @@ const GF_svgP2T = {
 
             function parseDef(path) {
                 return path.getAttribute('d')
-                    .match(/M\s*([\d.]+)\s*([\d.]+)\s*L\s*([\d.]+)\s*([\d.]+)/);
+                    .match(/M\s*(-?\d+(?:\.\d+)?)\s*(-?\d+(?:\.\d+)?)\s*L\s*(-?\d+(?:\.\d+)?)\s*(-?\d+(?:\.\d+)?)/);
             }
 
             // edges are in different groups with different translations
             const t1 = parseTranslate(tailEdge);
             const t2 = parseTranslate(startEdge);
-            dx = t1[0]*1 - t2[0]*1;
-            dy = t1[1]*1 - t2[1]*1;
+            const dx = t1[0] * 1 - t2[0] * 1;
+            const dy = t1[1] * 1 - t2[1] * 1;
+            console.log("dx, dy: ", dx, dy);
 
-            const match1 = parseDef(tailEdge);
-            const match2 = parseDef(startEdge);
-            if (!match1 || !match2) return;
+            const [t, tx1, ty1] = parseDef(tailEdge) || [];
+            const [s, , , sx2, sy2] = parseDef(startEdge) || [];
+            if (!t || !s) return;
 
-            // Start at path1's start, end at path2's end
-            startEdge.setAttribute('d', `M ${match1[1]*1 + dx} ${match1[2]*1 + dy} L ${match2[3]*1} ${match2[4]*1}`);
+            // Start at tailEdge's start, end at startEdge's end
+            startEdge.setAttribute('d', `M ${tx1 * 1 + dx} ${ty1 * 1 + dy} L ${sx2 * 1} ${sy2 * 1}`);
             Array.from(tailEdge.classList)
                 .filter(cls => cls.includes("start"))
                 .forEach(cls => {
                     startEdge.classList.add(cls);
-                })
+                });
             tailEdge.remove();
         }
-
-        toProcessLoop: // TODO remove after debugging
         while (toProcess.length > 0) {
             for(const templateNode of toProcess) {
                 // collect instructions from stitch and twists on pairs leaving the stitch
@@ -485,21 +484,15 @@ const GF_svgP2T = {
                     const kissNrToStartEdge = findFringes([stitchGroup], 'starts_');
                     const tailtKissClasses = Object.keys(kissNrToTailEdge);
                     const startKissClasses = Object.keys(kissNrToStartEdge);
-                    stitchGroup.setAttribute("log",templateNode.id + " == tails: "
-                        + Object.keys(findFringes(fromStitches.slice(0, 1), 'ends_')) + " = " + tailtKissClasses
-                        + " == starts: " + startKissClasses
-                    );
+                    // const logMessage = templateNode.id + " == tails: " + tailtKissClasses + " == starts: " + startKissClasses;
+                    // stitchGroup.setAttribute("log",logMessage);
                     for (const kissNr of Array.from(startKissClasses)) {
                         const tailEdge = kissNrToTailEdge[kissNr];
                         if (tailEdge) {
                             const startEdge = kissNrToStartEdge[kissNr];
                             combineStraightPaths(tailEdge, startEdge);
-                            // TODO fix the added stitch (whether c or ctc does not matter) and vertical edges at the versy sides
                         }
                     }
-                    // if (templateNode.id=== "r3c3") {
-                    //     break toProcessLoop; // TODO remove after debugging
-                    // }
                 }
                 // iteration
                 processed.push(templateNode);
