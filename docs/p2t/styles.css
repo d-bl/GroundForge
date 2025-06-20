@@ -8,6 +8,8 @@ figcaption svg { vertical-align: middle; margin-right: 0.2em; }
 #templateThreads .thread_4,
 #templateThreads .thread_8,
 #templateThreads .thread_12,
+#templateThreads .thread_18,
+#templateThreads .thread_20,
 .thread_0 {
     stroke: rgb(146, 197, 222);
 }
@@ -16,6 +18,8 @@ figcaption svg { vertical-align: middle; margin-right: 0.2em; }
 #templateThreads .thread_5,
 #templateThreads .thread_9,
 #templateThreads .thread_13,
+#templateThreads .thread_19,
+#templateThreads .thread_21,
 .thread_1 {
     stroke: rgb(5, 113, 176);
 }
@@ -24,6 +28,8 @@ figcaption svg { vertical-align: middle; margin-right: 0.2em; }
 #templateThreads .thread_6,
 #templateThreads .thread_10,
 #templateThreads .thread_14,
+#templateThreads .thread_16,
+#templateThreads .thread_22,
 .thread_2 {
     stroke: rgb(202, 0, 32);
 }
@@ -32,6 +38,8 @@ figcaption svg { vertical-align: middle; margin-right: 0.2em; }
 #templateThreads .thread_7,
 #templateThreads .thread_11,
 #templateThreads .thread_15,
+#templateThreads .thread_17,
+#templateThreads .thread_23,
 .thread_3 {
     stroke: rgb(244, 165, 130);
 }
@@ -40,8 +48,5 @@ circle { fill: black; opacity: 0.15 }
 
  /*.kiss_even  {stroke: rgb(202, 0, 32); }*/
  /*.kiss_odd {stroke: rgb(5, 113, 176); }*/
-
- /* pick any number for debugging de pair diagram */
  /*#templatePairs .kiss_5, #templateThreads .kiss_0 {stroke: aqua; }*/
-
-/*#templateThreads .kiss_6,#templateThreads .kiss_7,#templateThreads  .kiss_9,#templateThreads  .kiss_10{stroke: greenyellow}*/
+ /*#templateThreads .kiss_6, #templateThreads .kiss_7 {stroke: greenyellow}*/

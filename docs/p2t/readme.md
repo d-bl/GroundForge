@@ -10,7 +10,57 @@ Given a pair diagram, the script generates the corresponding thread diagram.
 Uploaded SVG diagrams are supposed to be created by the symmetry page of GroundForge.
 This page lets you add, drop and move stitches in a template diagram. 
 This template is then combined in various reflected compositions. 
-Reflections are indicated with bdpq versions of the template.
+These reflections are indicated with bdpq versions of the template.
+
+Page structure
+--------------
+
+The proof of concept page has little static content: a button and its label to upload files.
+The dynamic content is rendered by JavaScript:
+* A modified version of the template found in the upload. This is a color-coded pair diagram.
+  The style attributes are replaced to allow static and interactive styling with CSS.
+  Also, some classes are added to simplify the conversion to a thread diagram.
+* The color code and text label from the legend in the upload become captions for little thread diagrams.
+* A larger version of the thread diagram and smaller set of bdpq versions.
+  These mirrored version are intended to build swatches.
+  Currently, the d and p versions have the wrong over/under effect.
+  The b (top-left) and q (bottom-right) versions are correct.
+
+Uploads
+-------
+
+Uploads are sanitized for safety reasons. This excludes `<use>` elements, because of href attributes.
+In practise this means we don't get the swatches from the symmetry page.
+We will get the dots next to the swatches, if present in the uploaded file.
+The titles of these dots provide tooltips with the swatch parameters.
+Neither the swatches nor the dots are currently used in the script.
+
+Classes
+-------
+
+The classes on the SVG elements have different functions:
+* Chances for custom presentation by CSS rules and interaction in pages displaying the diagrams.
+* Structural information used during construction of the diagrams and for further processing.
+
+We have multiple groups of classes:
+
+| pattern                              | diagram type   | element type | note                                                       |
+|--------------------------------------|----------------|--------------|------------------------------------------------------------|
+| starts/ends_left/right_at_\<node-id> | both           | edges        | left/right component only on thread diagrams               |
+| white_start/end                      | threads        | edges        | for the over/under effect                                  |
+| thread_\<nr>                         | threads        | edges        | for styling purposes                                       |
+| cross/twist                          | threads        | nodes        |                                                            |
+| first_kiss_\<nr>                     | threads        | nodes        | the group node of a set of cross/twist nodes               |
+| kiss_odd/even                        | both           | edges        | for styling purposes                                       |
+| kiss_\<nr>                           | both           | edges        | for processing purposes                                    |
+| , ,                                  | enhanced pairs | nodes        | two per node except on left/right perimeter                |
+| from_\<node_id>                      | enhanced pairs | nodes        | to determine a valid working order and to connect stitches |
+| link                                 | pairs          | edges        | legacy (in other contexts nodes might be paths)            |
+
+Colors on odd/even kissing paths in the thread diagrams 
+helped to debug the direction of bends for repeated actions.
+_Hint_: The developer tools of the mayor browsers have a style editor. 
+Uncomment the `.kiss_` rules at the bottom of `styles.css` to override the thread colors.
 
 High-level Call Flow
 --------------------
@@ -29,31 +79,8 @@ High-level Call Flow
 Customize the init function for integration in another page.
 You might want just one or two of the ...ToDoc functions, each adding different components to a web page.
 Or even bypass addCaptionedLegendElementsToDoc to pass your own color code symbols into newLegendStitch.
-Once not only the template but also a swatch of the symmetry page can be processed, 
+Once not only the template but also a swatch of the symmetry page can be processed,
 you might want to react on a click on a dot next to one of the swatches.
-
-Uploads
--------
-
-Uploads are sanitized. This excludes `<use>` elements, because of href attributes.
-In practise this means we don´t get the swatches from the symmetry page.
-We will get the dots next to the swatches.
-The titles of these dots provide tooltips with the swatch parameters.
-Neither the swatches nor the dots are currently used in the script.
-
-Page structure
---------------
-
-The page has little static content: a button and its label to upload files.
-The dynamic content is rendered by JavaScript:
-* A modified version of the template found in the upload. This is a color-coded pair diagram.
-  The style attributes are replaced to allow static and interactive styling with CSS.
-  Also, some classes are added to simplify the conversion to a thread diagram.
-* The color code and text label from the legend in the upload become captions for little thread diagrams.
-* A larger version of the thread diagram and smaller set of bdpq versions.
-  These mirrored version are intended to build swatches.
-  Currently, the d and p versions have the wrong over/under effect.
-  The b (top-left) and q (bottom-right) versions are correct.
 
 Function newStitch
 ------------------
@@ -65,39 +92,31 @@ The following images show steps leading to a thread diagram from `ctc`.
 ![](stitch-stages.svg)
 
 A `t` makes two pairs of nodes at the same height kiss one another.
-This explains why the following two stitches have the same color code, 
+This explains why the following two stitches have the same color code,
 will be also identical in real lace, yet are drawn differently.
 
 ![](same-or-not.png)
 
-Classes
--------
+Function addThreadDiagramToDoc
+------------------------------
 
-Various classes on the SVG elements have different functions:
-* Chances for custom presentation by CSS rules and interaction in pages displaying the diagrams.
-* Structural information used during construction of the diagrams and for further processing.
+Core function: iterate over stitch elements in a pair diagram to create a thread diagram
 
-We have multiple groups of classes for edges:
+Iterate in a valid working order:  
+* First the stitches without a from_ class.
+* Then the stitches with both from_ classes matching stitches that are already in the diagram.
 
-| pattern                              | diagram type   | element type | note                                            |
-|--------------------------------------|----------------|--------------|-------------------------------------------------|
-| starts/ends_left/right_at_\<node-id> | both           | edges        | left/right component only on thread diagrams    |
-| white_start/end                      | threads        | edges        | for the over/under effect                       |
-| thread_\<nr>                         | threads        | edges        | for the thread number                           |
-| cross/twist                          | threads        | nodes        |                                                 |
-| first_kiss_\<nr>                     | threads        | nodes        | the group node of a set of cross/twist nodes    |
-| kiss_\<nr>                           | both           | edges        |                                                 |
-| , ,                                  | enhanced pairs | nodes        | two per node except on left/right perimeter     |
-| from_\<node_id>                      | enhanced pairs | nodes        |                                                 |
-| link                                 | pairs          | edges        | legacy (in other contexts nodes might be paths) |
+To connect stitches we use the from_ classes again. 
+Usually we have two from_ nodes per new stitch. 
+To find the fringes of the involved stitches we select edges without an ends_at_ class for the source stitches
+and without a starts_at_ class for the target stitches. 
+Once the fringes are selected, the ones with the same kiss_ class are connected into a single new edge.
+Along the perimeter we have just one from_ class.
+The example below shows another case with a single from class.
+The difference is the number off kiss_ classes on the target stitches.
+With a single kiss_ class in the pair diagram, we should not connect all fringes of the target stitch but the two inner fringes only.
 
-This kissing path number (and corresponding color) 
-helped to debug the direction of bends for repeated actions.
-_Hint_: The developer tools of the mayor browsers have a style editor. 
-Uncomment the `.kiss_` rules at the bottom of `styles.css` to override the thread colors.
-
-Composing the thread diagram
-----------------------------
+![img.png](double-pairs.png)
 
 The position of stitches in the thread diagram is defined by the position of stitches in the pair diagram.
 Currently, the stitches all get the same size and orientation.

@@ -388,7 +388,7 @@ const GF_svgP2T = {
         document.body.insertAdjacentHTML("beforeend", `
             <hr>
             <p class='note'>
-            Under construction (added/moved stitches cause overlap): 
+            Under construction (added/moved stitches cause overlap, larger template may have black threads): 
             </p>
         `);
         document.body.appendChild(svg);
@@ -436,7 +436,6 @@ const GF_svgP2T = {
             const t2 = parseTranslate(startEdge);
             const dx = t1[0] * 1 - t2[0] * 1;
             const dy = t1[1] * 1 - t2[1] * 1;
-            console.log("dx, dy: ", dx, dy);
 
             const [t, tx1, ty1] = parseDef(tailEdge) || [];
             const [s, , , sx2, sy2] = parseDef(startEdge) || [];
@@ -482,10 +481,19 @@ const GF_svgP2T = {
                         .sort((a, b) => a.classList[0] - b.classList[0]); // one class on stitch groups: first_kiss_<nr>
                     const kissNrToTailEdge = findFringes(fromStitches, 'ends_');
                     const kissNrToStartEdge = findFringes([stitchGroup], 'starts_');
-                    const tailtKissClasses = Object.keys(kissNrToTailEdge);
-                    const startKissClasses = Object.keys(kissNrToStartEdge);
-                    // const logMessage = templateNode.id + " == tails: " + tailtKissClasses + " == starts: " + startKissClasses;
-                    // stitchGroup.setAttribute("log",logMessage);
+                    let startKissClasses = Object.keys(kissNrToStartEdge);
+                    if (pairKissClasses.length === 1) {
+                        // connect only the inner two pairs
+                        if (pairKissClasses[0] === "kiss_0") {
+                            startKissClasses = ["kiss_2", "kiss_3"];
+                        } else {
+                            startKissClasses = startKissClasses
+                                .map(cls => parseInt(cls.replace('kiss_', ''), 10))
+                                .sort((a, b) => a - b)
+                                .slice(0, 2)
+                                .map(n => `kiss_${n}`);
+                        }
+                    }
                     for (const kissNr of Array.from(startKissClasses)) {
                         const tailEdge = kissNrToTailEdge[kissNr];
                         if (tailEdge) {
@@ -497,7 +505,7 @@ const GF_svgP2T = {
                 // iteration
                 processed.push(templateNode);
                 notProessed.delete(templateNode);
-            };
+            }
             toProcess = Array.from(notProessed).filter(node => {
                 const fromClasses = Array.from(node.classList).filter(cls => cls.startsWith('from_'));
                 return fromClasses.every(fromCls =>
