@@ -44,18 +44,19 @@ The classes on the SVG elements have different functions:
 
 We have multiple groups of classes:
 
-| pattern                              | diagram type   | element type | note                                                       |
-|--------------------------------------|----------------|--------------|------------------------------------------------------------|
-| starts/ends_left/right_at_\<node-id> | both           | edges        | left/right component only on thread diagrams               |
-| white_start/end                      | threads        | edges        | for the over/under effect                                  |
-| thread_\<nr>                         | threads        | edges        | for styling purposes                                       |
-| cross/twist                          | threads        | nodes        |                                                            |
-| first_kiss_\<nr>                     | threads        | nodes        | the group node of a set of cross/twist nodes               |
-| kiss_odd/even                        | both           | edges        | for styling purposes                                       |
-| kiss_\<nr>                           | both           | edges        | for processing purposes                                    |
-| , ,                                  | enhanced pairs | nodes        | two per node except on left/right perimeter                |
-| from_\<node_id>                      | enhanced pairs | nodes        | to determine a valid working order and to connect stitches |
-| link                                 | pairs          | edges        | legacy (in other contexts nodes might be paths)            |
+| pattern                              | diagram type   | element type | note                                                                  |
+|--------------------------------------|----------------|--------------|-----------------------------------------------------------------------|
+| starts/ends_left/right_at_\<node-id> | both           | edges        | left/right component only on thread diagrams                          |
+| white_start/end                      | threads        | edges        | for the over/under effect                                             |
+| thread_\<nr>                         | threads        | edges        | for styling purposes                                                  |
+| cross/twist                          | threads        | nodes        |                                                                       |
+| first_kiss_\<nr>                     | threads        | nodes        | the group node of a set of cross/twist nodes                          |
+| kiss_odd/even                        | both           | edges        | for styling purposes                                                  |
+| kiss_\<nr>                           | both           | edges        | for processing purposes                                               |
+| , ,                                  | enhanced pairs | nodes        | two per node except on left/right perimeter                           |
+| from_\<node_id>                      | enhanced pairs | nodes        | to determine a valid working order and to connect stitches            |
+| to_\<node_id>                        | enhanced pairs | nodes        | like from_ used to calculate (dx,dy) for the edges around a pair node |
+| link                                 | pairs          | edges        | legacy (in other contexts nodes might be paths)                       |
 
 Colors on odd/even kissing paths in the thread diagrams 
 helped to debug the direction of bends for repeated actions.
@@ -120,10 +121,10 @@ With a single kiss_ class in the pair diagram, we should not connect all fringes
 
 The position of stitches in the thread diagram is defined by the position of stitches in the pair diagram.
 Currently, the stitches all get the same size and orientation.
-This is okay for a torchon net, when just dropping stitches from a torchon net,
-we get no more problems than gaps in threads.
+This is okay for a torchon net, we can even drop stitches.
+When finalizing the diagram the gaps will be connected.
 
-When adding and/or moving stitches we run into more problems.
+When adding and/or moving stitches we run into problems.
 The following image is an overlay of the demo diagrams: the thread diagram (before connecting the stitches),
 the pair diagram and green shapes with corners at the mid-points of edges around the nodes of the pair diagram.
 
@@ -143,7 +144,7 @@ In the thread diagrams, the twists should also be drawn independently, not as pa
 ### Reshaping stitches
 
 When widening the green squares in the drawing above by 50%, 
-we get the bounding boxes for the currently generated thread stitches.
+we get bounding boxes for the currently generated thread stitches.
 That works well for a plain Torchon ground.
 As an alternative to some matrix transformation to distort the stitches after creation, 
 we could start the kissing paths as shown in blue below. 
@@ -164,5 +165,8 @@ The length of these segments depend on the length of the edges
 as well as the angle with neighboring edges.
 The three segments might need more or less the same length.
 This may be a conflicting requirements.
+
+The inner function logEdges calculates (dx,dy) values of the edges around a node in a pair diagram.
+These values are stored in the temporary log attribute of pair nodes.
 
 ![](perpendicular.svg)

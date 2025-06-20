@@ -321,7 +321,9 @@ const GF_svgP2T = {
                         : [atClasses[1], atClasses[0]];
                     const sourceNodeId = source.replace(/.*_/, '');
                     const targetNodeId = target.replace(/.*_/, '');
-                    svg.getElementById(targetNodeId)?.classList.add('from_' + sourceNodeId);                }
+                    svg.getElementById(targetNodeId)?.classList.add('from_' + sourceNodeId);
+                    svg.getElementById(sourceNodeId)?.classList.add('to_' + targetNodeId);
+                }
             });
         });
 
@@ -421,19 +423,14 @@ const GF_svgP2T = {
         }
 
         function combineStraightPaths(tailEdge, startEdge) {
-            function parseTranslate(path) {
-                return (path.closest('g')?.getAttribute('transform') || '')
-                    .replace('translate(', '').replace(')', '').split(',');
-            }
-
             function parseDef(path) {
                 return path.getAttribute('d')
                     .match(/M\s*(-?\d+(?:\.\d+)?)\s*(-?\d+(?:\.\d+)?)\s*L\s*(-?\d+(?:\.\d+)?)\s*(-?\d+(?:\.\d+)?)/);
             }
 
             // edges are in different groups with different translations
-            const t1 = parseTranslate(tailEdge);
-            const t2 = parseTranslate(startEdge);
+            const t1 = parseTranslate(tailEdge.closest('g'));
+            const t2 = parseTranslate(startEdge.closest('g'));
             const dx = t1[0] * 1 - t2[0] * 1;
             const dy = t1[1] * 1 - t2[1] * 1;
 
@@ -450,6 +447,38 @@ const GF_svgP2T = {
                 });
             tailEdge.remove();
         }
+
+        function logEdges(templateNode) {
+            if(!templateNode) return;
+            const classes = templateNode.classList;
+            let logMsg = "";
+            const [x,y] =parseTranslate(templateNode);
+            for (const cls of classes) {
+                if(cls.startsWith("to_")) {
+                    const toNode = pairNodeIdToThreadGroup[cls.replace("to_", "")];
+                    if (toNode) {
+                        const [tx, ty] = parseTranslate(toNode);
+                        logMsg += ` (${tx - x},${ty - y})`;
+                    }
+                } else if (cls.startsWith("from_")) {
+                    const fromNode = pairNodeIdToThreadGroup[cls.replace("from_", "")];
+                    if(fromNode) {
+                        const [fx, fy] = parseTranslate(fromNode);
+                        logMsg += ` (${x - fx},${y - fy})`;
+                    }
+                }
+            }
+            templateNode.setAttribute('log',logMsg);
+        }
+
+        function parseTranslate(templateNode) {
+            const [x,y] = templateNode.getAttribute("transform")
+                ?.replace('translate(', '')
+                .replace(')', '')
+                .split(",");
+            return [x*1,y*1];// return as numbers
+        }
+
         while (toProcess.length > 0) {
             for(const templateNode of toProcess) {
                 // collect instructions from stitch and twists on pairs leaving the stitch
@@ -461,9 +490,7 @@ const GF_svgP2T = {
                 // create group for the stitch at the position dictated bij the template node
                 const stitchGroup = document.createElementNS(this.svgNS, "g");
                 diagramGroup.appendChild(stitchGroup);
-                const [x, y] = templateNode.getAttribute("transform")
-                    .match(/translate\(([^)]+)\)/)[1]
-                    .split(",");
+                const [x, y] = parseTranslate(templateNode);
                 stitchGroup.setAttribute("transform", `translate(${x * 5.7}, ${y * 5.6})`);
                 pairNodeIdToThreadGroup[templateNode.id] = stitchGroup;
                 const pairNodeClasses = Array.from(templateNode.classList);
@@ -512,6 +539,9 @@ const GF_svgP2T = {
                     processed.some(procNode => procNode.id === fromCls.replace('from_', ''))
                 );
             });
+        }
+        for(const templateNode of processed) {
+            logEdges(templateNode);
         }
         this.addThreadClasses(svg);
     },
