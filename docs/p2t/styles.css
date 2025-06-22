@@ -50,3 +50,5 @@ circle { fill: black; opacity: 0.15 }
  /*.kiss_odd {stroke: rgb(5, 113, 176); }*/
  /*#templatePairs .kiss_5, #templateThreads .kiss_0 {stroke: aqua; }*/
  /*#templateThreads .kiss_6, #templateThreads .kiss_7 {stroke: greenyellow}*/
+.frame { fill:none; }
+/*.frame { stroke:cyan; stroke-width: 0.5; }*/

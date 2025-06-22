@@ -390,7 +390,7 @@ const GF_svgP2T = {
         document.body.insertAdjacentHTML("beforeend", `
             <hr>
             <p class='note'>
-            Under construction (added/moved stitches cause overlap, larger template may have black threads): 
+            Under construction (added/moved stitches cause overlap, larger templates may have black threads): 
             </p>
         `);
         document.body.appendChild(svg);
@@ -401,7 +401,6 @@ const GF_svgP2T = {
             <use xlink:href="#templateThreads" id="clone_p" x="${w * 4}" y="${-h * 4.8}" transform="scale(0.7,-0.7)"></use>
             <use xlink:href="#templateThreads" id="clone_q" x="${-w * 8.8}" y="${-h * 4.8}" transform="scale(-0.7,-0.7)"></use>
         `);
-
 
         let lastThreadNodeNr = 0;
         const additionalTwists = twistIndex();
@@ -448,27 +447,25 @@ const GF_svgP2T = {
             tailEdge.remove();
         }
 
-        function logEdges(templateNode) {
+        function wip(templateNode) {
             if(!templateNode) return;
             const classes = templateNode.classList;
             let logMsg = "";
-            const [x,y] =parseTranslate(templateNode);
+            const [cx,cy] =parseTranslate(templateNode);
+            const svgDoc = GF_svgP2T.findSvgDoc(templateNode);
+            let points = "M 0,0";//`${x},${y} `;
             for (const cls of classes) {
-                if(cls.startsWith("to_")) {
-                    const toNode = pairNodeIdToThreadGroup[cls.replace("to_", "")];
-                    if (toNode) {
-                        const [tx, ty] = parseTranslate(toNode);
-                        logMsg += ` (${tx - x},${ty - y})`;
-                    }
-                } else if (cls.startsWith("from_")) {
-                    const fromNode = pairNodeIdToThreadGroup[cls.replace("from_", "")];
-                    if(fromNode) {
-                        const [fx, fy] = parseTranslate(fromNode);
-                        logMsg += ` (${x - fx},${y - fy})`;
-                    }
+                if(cls.startsWith("to_") || cls.startsWith("from_")) {
+                    const id = cls.replace(/.*_/, "");
+                    const [x, y] = parseTranslate(svgDoc.getElementById(id));
+                    points += ` L ${(x-cx)*0.4},${(y-cy)*0.4}`;
+                    logMsg += ` $id=(${x},${y})`;
                 }
             }
-            templateNode.setAttribute('log',logMsg);
+            const framePath = document.createElementNS(GF_svgP2T.svgNS, "path");
+            framePath.setAttribute("d", points);
+            framePath.classList.add("frame");
+            templateNode.appendChild(framePath);
         }
 
         function parseTranslate(templateNode) {
@@ -477,6 +474,9 @@ const GF_svgP2T = {
                 .replace(')', '')
                 .split(",");
             return [x*1,y*1];// return as numbers
+        }
+        for(const templateNode of notProessed) {
+            wip(templateNode);
         }
 
         while (toProcess.length > 0) {
@@ -539,9 +539,6 @@ const GF_svgP2T = {
                     processed.some(procNode => procNode.id === fromCls.replace('from_', ''))
                 );
             });
-        }
-        for(const templateNode of processed) {
-            logEdges(templateNode);
         }
         this.addThreadClasses(svg);
     },

@@ -132,41 +132,43 @@ the pair diagram and green shapes with corners at the mid-points of edges around
 
 The green shapes are drawn a little smaller to avoid confusion.
 The shapes along the perimeter apply to a swatch with only b tiles without indents.
-Other titling will need different shapes along the perimeter.
+When widening the green squares in the drawing above by 50%,
+we get bounding boxes for the currently generated thread stitches.
+That works well for a plain Torchon ground.
+Other tiling will need different shapes along the perimeter.
 
-One stitch appears outside its green shape: it means trouble when washing the real lace.
+One stitch appears outside its green shape: 
+it has a pair going up and means trouble when washing the real lace.
 
+The twist are defined on edges between stitches.
 From repeating the template we learn something from the third stitch in the top row:
-The twist are defined on edges between stitches. 
 In the thread diagrams, the twists should also be drawn independently, not as part of either stitch.
 
 
-### Reshaping stitches
-
-When widening the green squares in the drawing above by 50%, 
-we get bounding boxes for the currently generated thread stitches.
-That works well for a plain Torchon ground.
-As an alternative to some matrix transformation to distort the stitches after creation, 
-we could start the kissing paths as shown in blue below. 
-The arrows on the red lines indicate how to make th threads kiss for a ctc stitch.
-
-![](init-kissing.svg)
-
-However, the green shapes discussed so far, are no basis for bounding shapes of stitches.
-Instead, it seems we should initialize the kissing threads bending along with the kissing pairs.
-Like sketched below for one stitch. Not sure how that will look like.
+### Shaping stitches
+It might be better to start the kissing paths as shown in blue below. 
 
 ![](init-bend-kissing.svg)
 
-The sketch below has bright green lines traversing along starting points of kissing paths
+The sketch below has green lines traversing along starting points of kissing paths
 and brownish green traversing along end points of kissing paths.
 These lines start and end with segments perpendicular to adjacent edges in the pair diagram.
 The length of these segments depend on the length of the edges 
 as well as the angle with neighboring edges.
-The three segments might need more or less the same length.
-This may be a conflicting requirements.
-
-The inner function logEdges calculates (dx,dy) values of the edges around a node in a pair diagram.
-These values are stored in the temporary log attribute of pair nodes.
 
 ![](perpendicular.svg)
+
+The inner function `wip` (work in progress) calculates (dx,dy) values
+of the edges around a node in a pair diagram.
+These can be visualized by uncommenting the style rules for the `.frame` class.
+The top and bottom nodes are currently in random order, though top before bottom.
+
+The image below is an attempt to figure out 
+general construction rules to approach the greenish lines.
+The stitch width a pair going up looks even more complicated.
+If somehow he can establish a rule for the black curve,
+it seems we have to divide it into 5 sections to get the start/end pint of the kissing paths.
+The length of these sections depend on the agnles between the pairs.
+
+
+![](frame.svg)
