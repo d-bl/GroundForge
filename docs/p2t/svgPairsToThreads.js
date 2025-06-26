@@ -531,7 +531,7 @@ const GF_svgP2T = {
                 stitchGroup.classList.add("first_kiss_"+firstThreadKissingPathNr);
 
                 // TODO with a valid Id, the hack shows a hardcoded distorted stitch (work in progress in the proof of concept)
-                const distortHack = templateNode.id==="r3c3";
+                const distortHack = templateNode.id==="r3c3xx";
                 const scale = distortHack? 0.5: 1;
                 const width = defaultWidth * (distortHack? scale : 1);
                 const height = defaultHeight * (distortHack? scale : 1);
