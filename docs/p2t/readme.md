@@ -144,9 +144,47 @@ The twist are defined on edges between stitches.
 From repeating the template we learn something from the third stitch in the top row:
 In the thread diagrams, the twists should also be drawn independently, not as part of either stitch.
 
+Inner function combineStraightPaths
+-----------------------------------
 
-### Shaping stitches
-It might be better to start the kissing paths as shown in blue below. 
+Core function: combine the dashed lines into the thin line.
+
+Note that the function is called one by one for each pair of edges to combine.
+
+| illustrating the core function | screenshot without compensation for a rotation of -30 degrees |
+|:-------------------------------|--------------------------------------------------------------:|
+| ![](combine-paths.svg)         |                                             ![](rotation.png) |
+
+The colors and widths in the left diagram above serve the explanation.
+The blue lines (and their dots) are in the source group.
+The red lines (and their dots) are in the target group.
+Each group has a translation determining position of the stitch as a whole in the thread diagram.
+
+When adjusting the coordinates of the dashed red line into the coordinates of the thin red line,
+we can't simply copy-paste the x-y values of the start of the blue dashed line.
+We have to compensate for the different translations.
+
+The groups won't have scaling, the function newStitch gets container size parameters.
+The stitches are generated to fit the container.
+
+The groups may have a rotation.
+The yellow markings on the screenshot show which compensations are required.
+The compensation is implemented for the incoming threads of the example stitch,
+read: when the blue group (the source argument) has a rotation.
+No solution found yet for the outgoing threads,
+read: when the red group (the target argument) has a rotation.
+Not even tried a situation with a rotation on both groups.
+
+For now, the variable distortHack elsewhere in the script switches a hardcoded distortion on or off.
+With a valid id, a hardcoded distortion is witched on. 
+It is the intention to commit the code with an invalid id to switch the distortion off.
+
+Shaping stitches
+----------------
+
+A potential but more complex solution than the rotation described above,
+is to shape the stitches via the initial kissing paths.
+Perhaps as shown in blue below. 
 
 ![](init-bend-kissing.svg)
 

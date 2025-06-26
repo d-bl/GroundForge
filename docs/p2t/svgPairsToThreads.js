@@ -200,7 +200,7 @@ const GF_svgP2T = {
         }
 
         // Cleanup of nodes that did not merge, join their links
-        Object.keys(edgeStartMap).forEach(nodeId => {
+        for (const nodeId of Object.keys(edgeStartMap)) {
             if (edgeStartMap[nodeId] && edgeEndMap[nodeId]) {
                 const outEdge = edgeStartMap[nodeId];
                 const inEdge = edgeEndMap[nodeId];
@@ -216,14 +216,14 @@ const GF_svgP2T = {
                 delete edgeEndMap[nodeId];
                 svgDoc.getElementById(nodeId).remove();
             }
-        });
+        }
 
-        svgContainer.querySelectorAll("line").forEach(line => {
+        for (const line of svgContainer.querySelectorAll("line")) {
             const path = document.createElementNS(svgNS, "path");
             path.setAttribute("class", line.getAttribute("class"));
             path.setAttribute("d", calculatePathDefinition(line));
             line.replaceWith(path);
-        });
+        }
         return currentNodeNr;
     },
 
@@ -250,7 +250,7 @@ const GF_svgP2T = {
         const svgDoc = this.findSvgDoc(svgContainer);
         const threadStarts = [];
         const startAtClassToPath = {};
-        svgContainer.querySelectorAll("path").forEach(path => {
+        for (const path of svgContainer.querySelectorAll("path")) {
             const startClass = Array.from(path.classList).filter(className => className.startsWith('starts_'));
             if (startClass.length === 0) {
                 threadStarts.push(path);
@@ -259,7 +259,7 @@ const GF_svgP2T = {
                 if( className.startsWith('starts_'))
                     startAtClassToPath[className] = path;
             });
-        });
+        }
         for (let threadNr = 0; threadNr < threadStarts.length; threadNr++) {
             let currentPath = threadStarts[threadNr];
             while (currentPath) {
@@ -302,7 +302,7 @@ const GF_svgP2T = {
         const twistMarkDefinitions = svgInput.querySelector("defs");
         svg.append(twistMarkDefinitions, template);
 
-        svg.querySelectorAll('.link').forEach(linkElement => {
+        for (const linkElement of svg.querySelectorAll('.link')) {
             // replace the style attribute to allow override with CSS
             const marker = linkElement.style.getPropertyValue('marker-mid');
             if (marker?.startsWith("url")) linkElement.setAttribute("marker-mid", marker);
@@ -312,10 +312,10 @@ const GF_svgP2T = {
                     const oddEven = (kissClass.replace("kiss_", "") * 1) % 2 ? 'odd' : 'even';
                     linkElement.classList.add('kiss_' + oddEven);
                     const atClasses = Array.from(linkElement.classList).filter(cls => cls.includes("_at_"));
-                    atClasses.forEach(atClass => {
+                    for (const atClass of atClasses) {
                         const nodeId = atClass.replace(/.*_/, '');
                         svg.getElementById(nodeId)?.classList.add(kissClass);
-                    })
+                    }
                     const [source, target] = atClasses[0].startsWith("starts_")
                         ? [atClasses[0], atClasses[1]]
                         : [atClasses[1], atClasses[0]];
@@ -325,7 +325,7 @@ const GF_svgP2T = {
                     svg.getElementById(sourceNodeId)?.classList.add('to_' + targetNodeId);
                 }
             });
-        });
+        }
 
         document.body.appendChild(svg);
         return {w, h};
@@ -343,6 +343,36 @@ const GF_svgP2T = {
     },
 
     addThreadDiagramToDoc: function (templateElement, w, h) {
+        const diagramGroup = document.createElementNS(this.svgNS, "g");
+        diagramGroup.setAttribute("id", "templateThreads");
+        const svg = this.newSVG((w * 6.5) + "", h * 3.5);
+        svg.appendChild(diagramGroup);
+
+        document.body.insertAdjacentHTML("beforeend", `
+            <hr>
+            <p class='note'>
+            Under construction (added/moved stitches cause overlap, larger templates may have black threads): 
+            </p>
+        `);
+        document.body.appendChild(svg);
+
+        const defaultWidth = 120;
+        const defaultHeight = 100;
+        // TODO use the defaults to position the clones
+        svg.insertAdjacentHTML("beforeend", `
+            <use xlink:href="#templateThreads" id="clone_b" x="${w * 4}" transform="scale(0.7,0.7)"></use>
+            <use xlink:href="#templateThreads" id="clone_d" x="${-w * 9.4}" y="0" transform="scale(-0.7,0.7)"></use>
+            <use xlink:href="#templateThreads" id="clone_p" x="${w * 4}" y="${-h * 4.8}" transform="scale(0.7,-0.7)"></use>
+            <use xlink:href="#templateThreads" id="clone_q" x="${-w * 9.4}" y="${-h * 4.8}" transform="scale(-0.7,-0.7)"></use>
+        `);
+
+        let lastThreadNodeNr = 0;
+        const additionalTwists = twistIndex();
+
+        const pairNodeIdToThreadGroup = {};
+        const notProessed = new Set(templateElement.querySelectorAll("g"));
+        const processed = [];
+        let toProcess = Array.from(notProessed).filter(node => !Array.from(node.classList).some(cls => cls.startsWith('from_')));
 
         function leftOrRight(startAtId, twistedPair) {
             const siblings = templateElement.querySelectorAll(".starts_at_" + startAtId)
@@ -364,51 +394,46 @@ const GF_svgP2T = {
         function twistIndex() {
             const index = {};
 
-            Array.from(templateElement.querySelectorAll("path"))
-                .forEach(pair => {
-                    const classes = Array.from(pair.classList);
-                    const startsAtClass = classes.find(cls => cls.startsWith("starts_at_"));
-                    const midMarker = pair.getAttribute("marker-mid");
-                    if (startsAtClass && midMarker) { // mid-marker values are supposed to be: url("#twist-<n>")
-                        const nrOfTwists = midMarker.replace(/[^0-9]*/g, '');
-                        const startAtId = startsAtClass.replace("starts_at_", "");
-                        const twist = leftOrRight(startAtId, pair);
-                        if (index[startAtId]) // TODO combine l+r into t
-                            index[startAtId] += twist.repeat(nrOfTwists);
-                        else
-                            index[startAtId] = twist.repeat(nrOfTwists);
-                    }
-                });
+            for (const pair of Array.from(templateElement.querySelectorAll("path"))) {
+                const classes = Array.from(pair.classList);
+                const startsAtClass = classes.find(cls => cls.startsWith("starts_at_"));
+                const midMarker = pair.getAttribute("marker-mid");
+                if (startsAtClass && midMarker) { // mid-marker values are supposed to be: url("#twist-<n>")
+                    const nrOfTwists = midMarker.replace(/[^0-9]*/g, '');
+                    const startAtId = startsAtClass.replace("starts_at_", "");
+                    const twist = leftOrRight(startAtId, pair);
+                    if (index[startAtId]) // TODO combine l+r into t
+                        index[startAtId] += twist.repeat(nrOfTwists);
+                    else
+                        index[startAtId] = twist.repeat(nrOfTwists);
+                }
+            }
             return index;
         }
+        function parseDef(path) {
+            const d= path.getAttribute("d");
+            const [[p1x,p1y],[p2x,p2y]] = d.split(' L ').map(p => p.replace('M ', '').trim().split(' '));
+            return [p1x*1.0,p1y*1.0, p2x*1.0,p2y*1.0]; // return as numbers
+            // TODO properly process the result without dummy
+        }
 
-        const diagramGroup = document.createElementNS(this.svgNS, "g");
-        diagramGroup.setAttribute("id", "templateThreads");
-        const svg = this.newSVG((w * 6.5) + "", h * 3.5);
-        svg.appendChild(diagramGroup);
+        function parseTranslate(templateNode) {
+            const [x,y] = templateNode.getAttribute("transform")
+                ?.replace(/.*translate[(]/, '')
+                .replace(/[)].*/, '')
+                .split(",");
+            return [x*1,y*1];// return as numbers
+        }
 
-        document.body.insertAdjacentHTML("beforeend", `
-            <hr>
-            <p class='note'>
-            Under construction (added/moved stitches cause overlap, larger templates may have black threads): 
-            </p>
-        `);
-        document.body.appendChild(svg);
-
-        svg.insertAdjacentHTML("beforeend", `
-            <use xlink:href="#templateThreads" id="clone_b" x="${w * 4}" transform="scale(0.7,0.7)"></use>
-            <use xlink:href="#templateThreads" id="clone_d" x="${-w * 8.8}" y="0" transform="scale(-0.7,0.7)"></use>
-            <use xlink:href="#templateThreads" id="clone_p" x="${w * 4}" y="${-h * 4.8}" transform="scale(0.7,-0.7)"></use>
-            <use xlink:href="#templateThreads" id="clone_q" x="${-w * 8.8}" y="${-h * 4.8}" transform="scale(-0.7,-0.7)"></use>
-        `);
-
-        let lastThreadNodeNr = 0;
-        const additionalTwists = twistIndex();
-
-        const pairNodeIdToThreadGroup = {};
-        const notProessed = new Set(templateElement.querySelectorAll("g"));
-        const processed = [];
-        let toProcess = Array.from(notProessed).filter(node => !Array.from(node.classList).some(cls => cls.startsWith('from_')));
+        function parseRotate(templateNode) {
+            let attribute = templateNode.getAttribute("transform");
+            if (!attribute.includes("rotate")) return [0,0,0];
+            const [a, x,y] = attribute
+                ?.replace(/.*rotate[(]/, '')
+                .replace(/[)].*/, '')
+                .split(",");
+            return [a*1,x*1,y*1];// return as numbers
+        }
 
         function findFringes(fromStitches, fringeType) {
             return fromStitches
@@ -421,30 +446,44 @@ const GF_svgP2T = {
                 }, {});
         }
 
-        function combineStraightPaths(tailEdge, startEdge) {
-            function parseDef(path) {
-                return path.getAttribute('d')
-                    .match(/M\s*(-?\d+(?:\.\d+)?)\s*(-?\d+(?:\.\d+)?)\s*L\s*(-?\d+(?:\.\d+)?)\s*(-?\d+(?:\.\d+)?)/);
+        function rotatePoint(newX, newY, cx, cy, angleDegrees) {
+            if(!angleDegrees) return [newX, newY];
+            const angleRadians = angleDegrees * Math.PI / 180;
+            const dx = newX - cx;
+            const dy = newY - cy;
+            const rotatedX = dx * Math.cos(angleRadians) - dy * Math.sin(angleRadians) + cx;
+            const rotatedY = dx * Math.sin(angleRadians) + dy * Math.cos(angleRadians) + cy;
+            console.log(`Rotating point (${newX}, ${newY}) around (${cx}, ${cy}) by ${angleDegrees} degrees to (${rotatedX}, ${rotatedY})`);
+            return [rotatedX, rotatedY];
+        }
+
+        function combineStraightPaths(source, target) {
+
+            // edges are in different groups
+            const sourceGroup = source.closest('g');
+            const targetGroup = target.closest('g');
+
+            const sourceTranslation = parseTranslate(sourceGroup);
+            const targetTranslation = parseTranslate(targetGroup);
+            const dx = sourceTranslation[0] * 1 - targetTranslation[0] * 1;
+            const dy = sourceTranslation[1] * 1 - targetTranslation[1] * 1;
+
+            const [targetAngle, targetCx, targetCy] = parseRotate(targetGroup);
+            const [sourceAngle, sourceCx, sourceCy] = parseRotate(targetGroup);
+
+            const [sx1, sy1] = parseDef(source) || [];
+            const [, , tx2, ty2] = parseDef(target) || [];
+
+            // Start at adjusted start of the source edge, keep the end the same
+            const [newX, newY] = rotatePoint(sx1 + dx, sy1 + dy, sourceCx, sourceCy, -sourceAngle);
+            const [newX2, newY2] = rotatePoint(newX, newY, targetCx, targetCy, targetAngle);
+            target.setAttribute('d', `M ${newX} ${newY} L ${tx2} ${ty2}`);
+
+            for (const cls of Array.from(source.classList)) {
+                if (cls.includes("start"))
+                    target.classList.add(cls);
             }
-
-            // edges are in different groups with different translations
-            const t1 = parseTranslate(tailEdge.closest('g'));
-            const t2 = parseTranslate(startEdge.closest('g'));
-            const dx = t1[0] * 1 - t2[0] * 1;
-            const dy = t1[1] * 1 - t2[1] * 1;
-
-            const [t, tx1, ty1] = parseDef(tailEdge) || [];
-            const [s, , , sx2, sy2] = parseDef(startEdge) || [];
-            if (!t || !s) return;
-
-            // Start at tailEdge's start, end at startEdge's end
-            startEdge.setAttribute('d', `M ${tx1 * 1 + dx} ${ty1 * 1 + dy} L ${sx2 * 1} ${sy2 * 1}`);
-            Array.from(tailEdge.classList)
-                .filter(cls => cls.includes("start"))
-                .forEach(cls => {
-                    startEdge.classList.add(cls);
-                });
-            tailEdge.remove();
+            source.remove();
         }
 
         function wip(templateNode) {
@@ -467,14 +506,6 @@ const GF_svgP2T = {
             framePath.classList.add("frame");
             templateNode.appendChild(framePath);
         }
-
-        function parseTranslate(templateNode) {
-            const [x,y] = templateNode.getAttribute("transform")
-                ?.replace('translate(', '')
-                .replace(')', '')
-                .split(",");
-            return [x*1,y*1];// return as numbers
-        }
         for(const templateNode of notProessed) {
             wip(templateNode);
         }
@@ -491,7 +522,6 @@ const GF_svgP2T = {
                 const stitchGroup = document.createElementNS(this.svgNS, "g");
                 diagramGroup.appendChild(stitchGroup);
                 const [x, y] = parseTranslate(templateNode);
-                stitchGroup.setAttribute("transform", `translate(${x * 5.7}, ${y * 5.6})`);
                 pairNodeIdToThreadGroup[templateNode.id] = stitchGroup;
                 const pairNodeClasses = Array.from(templateNode.classList);
 
@@ -499,9 +529,20 @@ const GF_svgP2T = {
                 const firstPairKissNr = pairKissClasses.sort()[0]?.replace(/.*_/, '');
                 const firstThreadKissingPathNr = firstPairKissNr * 2 + (firstPairKissNr === '0' && pairKissClasses.length === 1 ? 0 : 2);
                 stitchGroup.classList.add("first_kiss_"+firstThreadKissingPathNr);
-                lastThreadNodeNr = this.newStitch(stitchInputValue, firstThreadKissingPathNr, lastThreadNodeNr, stitchGroup, 110, 75);
+
+                // TODO with a valid Id, the hack shows a hardcoded distorted stitch (work in progress in the proof of concept)
+                const distortHack = templateNode.id==="r3c3";
+                const scale = distortHack? 0.5: 1;
+                const width = defaultWidth * (distortHack? scale : 1);
+                const height = defaultHeight * (distortHack? scale : 1);
+                const rotation = distortHack ? ` rotate(-30, 25, 18)` : "";
+                const x1 = x * (width/18) / scale + ((1-scale) * defaultWidth/2);
+                const y1 = y * (height/18) / scale + ((1-scale) * defaultHeight/2);
+                stitchGroup.setAttribute("transform", `translate(${x1}, ${y1})` + rotation);
+                lastThreadNodeNr = this.newStitch(stitchInputValue, firstThreadKissingPathNr, lastThreadNodeNr, stitchGroup, width, height);
 
                 if (processed.length > 0) {
+                    // connect with previously generated stitches
                     const fromStitches = pairNodeClasses
                         .filter(cls => cls.startsWith("from_"))
                         .map(fromClass => pairNodeIdToThreadGroup[fromClass.replace("from_", "")])
@@ -544,7 +585,9 @@ const GF_svgP2T = {
     },
 
     processUploadedSvg: function (svgInput) {
-        document.querySelectorAll("svg,figure,hr,.note").forEach(el => el.remove());
+        for (const el of document.querySelectorAll("svg,figure,hr,.note")) {
+            el.remove();
+        }
         document.body.insertAdjacentHTML("beforeend", "<hr>");
         this.lastID = 0;
 
