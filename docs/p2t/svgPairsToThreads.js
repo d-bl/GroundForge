@@ -3,7 +3,7 @@ const GF_svgP2T = {
     gap: 8,
     lastID: 0, // to be used for unique IDs of over all SVGs on the page
 
-    newSVG: function (w, h) {
+    newSVG(w, h) {
         const svg = document.createElementNS(this.svgNS, "svg");
         svg.setAttribute("width", w);
         svg.setAttribute("height", h);
@@ -14,13 +14,13 @@ const GF_svgP2T = {
         return svg;
     },
 
-    findSvgDoc: function(svgContainer) {
+    findSvgDoc(svgContainer) {
         let svgDoc = svgContainer;
         while (svgDoc.ownerSVGElement) svgDoc = svgDoc.ownerSVGElement; // find the root SVG document
         return svgDoc;
     },
 
-    newStitch: function (stitchInputValue, firstKissingPathNr, firstNodeNr, svgContainer, containerWidth, containerHeight) {
+    newStitch(stitchInputValue, firstKissingPathNr, firstNodeNr, svgContainer, containerWidth, containerHeight) {
         let stitch = stitchInputValue
             .toLowerCase()
             .replace(/[^clrt]/g, '');
@@ -227,7 +227,7 @@ const GF_svgP2T = {
         return currentNodeNr;
     },
 
-    newLegendStitch: function (stitchInputValue, colorCodeElement) {
+    newLegendStitch(stitchInputValue, colorCodeElement) {
 
         const threadSvg = this.newSVG(80, 120);
         this.newStitch(stitchInputValue, 0, 0, threadSvg, 80, 120);
@@ -246,7 +246,7 @@ const GF_svgP2T = {
         document.body.appendChild(figure);
     },
 
-    addThreadClasses: function (svgContainer) {
+    addThreadClasses(svgContainer) {
         const svgDoc = this.findSvgDoc(svgContainer);
         const threadStarts = [];
         const startAtClassToPath = {};
@@ -288,7 +288,7 @@ const GF_svgP2T = {
         }
     },
 
-    coyModifiedTemplateToDoc: function (template, svgInput) {
+    coyModifiedTemplateToDoc(template, svgInput) {
         // Calculate width and height from link elements
         const links = template.querySelectorAll(".link");
         const xVals = Array.from(links, el => +el.getAttribute("d").split(" ").pop().split(",")[0]);
@@ -331,7 +331,7 @@ const GF_svgP2T = {
         return {w, h};
     },
 
-    addCaptionedLegendElementsToDoc: function (svgInput) {
+    addCaptionedLegendElementsToDoc(svgInput) {
         // loop over pairs of tspan/g elements in #bdpqLegend (text and color code)
         const legend = svgInput.getElementById("bdpqLegend");
         const legendTexts = legend.querySelectorAll("tspan");
@@ -342,7 +342,7 @@ const GF_svgP2T = {
         }
     },
 
-    addThreadDiagramToDoc: function (templateElement, w, h) {
+    addThreadDiagramToDoc(templateElement, w, h) {
         const diagramGroup = document.createElementNS(this.svgNS, "g");
         diagramGroup.setAttribute("id", "templateThreads");
         const svg = this.newSVG((w * 6.5) + "", h * 3.5);
@@ -584,7 +584,7 @@ const GF_svgP2T = {
         this.addThreadClasses(svg);
     },
 
-    processUploadedSvg: function (svgInput) {
+    processUploadedSvg(svgInput) {
         for (const el of document.querySelectorAll("svg,figure,hr,.note")) {
             el.remove();
         }
