@@ -453,7 +453,6 @@ const GF_svgP2T = {
             const dy = newY - cy;
             const rotatedX = dx * Math.cos(angleRadians) - dy * Math.sin(angleRadians) + cx;
             const rotatedY = dx * Math.sin(angleRadians) + dy * Math.cos(angleRadians) + cy;
-            console.log(`Rotating point (${newX}, ${newY}) around (${cx}, ${cy}) by ${angleDegrees} degrees to (${rotatedX}, ${rotatedY})`);
             return [rotatedX, rotatedY];
         }
 
@@ -469,45 +468,21 @@ const GF_svgP2T = {
             const dy = sourceTranslation[1] * 1 - targetTranslation[1] * 1;
 
             const [targetAngle, targetCx, targetCy] = parseRotate(targetGroup);
-            const [sourceAngle, sourceCx, sourceCy] = parseRotate(targetGroup);
+            const [sourceAngle, sourceCx, sourceCy] = parseRotate(sourceGroup);
 
             const [sx1, sy1] = parseDef(source) || [];
             const [, , tx2, ty2] = parseDef(target) || [];
 
             // Start at adjusted start of the source edge, keep the end the same
-            const [newX, newY] = rotatePoint(sx1 + dx, sy1 + dy, sourceCx, sourceCy, -sourceAngle);
-            const [newX2, newY2] = rotatePoint(newX, newY, targetCx, targetCy, targetAngle);
-            target.setAttribute('d', `M ${newX} ${newY} L ${tx2} ${ty2}`);
+            const [newX, newY] = rotatePoint(sx1 + dx, sy1 + dy, targetCx, targetCy, -targetAngle);
+            const [newX2, newY2] = rotatePoint(newX, newY, sourceCx + dx, sourceCy + dy, sourceAngle);
+            target.setAttribute('d', `M ${newX2} ${newY2} L ${tx2} ${ty2}`);
 
             for (const cls of Array.from(source.classList)) {
                 if (cls.includes("start"))
                     target.classList.add(cls);
             }
             source.remove();
-        }
-
-        function wip(templateNode) {
-            if(!templateNode) return;
-            const classes = templateNode.classList;
-            let logMsg = "";
-            const [cx,cy] =parseTranslate(templateNode);
-            const svgDoc = GF_svgP2T.findSvgDoc(templateNode);
-            let points = "M 0,0";//`${x},${y} `;
-            for (const cls of classes) {
-                if(cls.startsWith("to_") || cls.startsWith("from_")) {
-                    const id = cls.replace(/.*_/, "");
-                    const [x, y] = parseTranslate(svgDoc.getElementById(id));
-                    points += ` L ${(x-cx)*0.4},${(y-cy)*0.4}`;
-                    logMsg += ` $id=(${x},${y})`;
-                }
-            }
-            const framePath = document.createElementNS(GF_svgP2T.svgNS, "path");
-            framePath.setAttribute("d", points);
-            framePath.classList.add("frame");
-            templateNode.appendChild(framePath);
-        }
-        for(const templateNode of notProessed) {
-            wip(templateNode);
         }
 
         while (toProcess.length > 0) {
@@ -531,8 +506,8 @@ const GF_svgP2T = {
                 stitchGroup.classList.add("first_kiss_"+firstThreadKissingPathNr);
 
                 // TODO with a valid Id, the hack shows a hardcoded distorted stitch (work in progress in the proof of concept)
-                const distortHack = templateNode.id==="r3c3xx";
-                const scale = distortHack? 0.5: 1;
+                const distortHack = templateNode.id==="r3c3";
+                const scale = distortHack? 0.7: 1;
                 const width = defaultWidth * (distortHack? scale : 1);
                 const height = defaultHeight * (distortHack? scale : 1);
                 const rotation = distortHack ? ` rotate(-30, 25, 18)` : "";
