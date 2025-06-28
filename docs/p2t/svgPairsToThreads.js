@@ -475,7 +475,12 @@ const GF_svgP2T = {
 
             // Start at adjusted start of the source edge, keep the end the same
             const [newX, newY] = rotatePoint(sx1 + dx, sy1 + dy, targetCx, targetCy, -targetAngle);
-            const [newX2, newY2] = rotatePoint(newX, newY, sourceCx + dx, sourceCy + dy, sourceAngle);
+            let [newX2, newY2] = rotatePoint(newX, newY, sourceCx + dx, sourceCy + dy, sourceAngle);
+            if (sourceAngle && targetAngle) {
+                // TODO this works almost and only for the current hardcoded values.
+                newX2 -= dx/2;
+                newY2 -= dy/2;
+            }
             target.setAttribute('d', `M ${newX2} ${newY2} L ${tx2} ${ty2}`);
 
             for (const cls of Array.from(source.classList)) {
@@ -506,11 +511,11 @@ const GF_svgP2T = {
                 stitchGroup.classList.add("first_kiss_"+firstThreadKissingPathNr);
 
                 // TODO with a valid Id, the hack shows a hardcoded distorted stitch (work in progress in the proof of concept)
-                const distortHack = templateNode.id==="r3c3";
-                const scale = distortHack? 0.7: 1;
+                const distortHack = templateNode.id==="r2c6" || templateNode.id==="n1748602427781";
+                const scale = distortHack? 0.6: 1;
                 const width = defaultWidth * (distortHack? scale : 1);
                 const height = defaultHeight * (distortHack? scale : 1);
-                const rotation = distortHack ? ` rotate(-30, 25, 18)` : "";
+                const rotation = distortHack ? ` rotate(-40, 25, 18)` : "";
                 const x1 = x * (width/18) / scale + ((1-scale) * defaultWidth/2);
                 const y1 = y * (height/18) / scale + ((1-scale) * defaultHeight/2);
                 stitchGroup.setAttribute("transform", `translate(${x1}, ${y1})` + rotation);

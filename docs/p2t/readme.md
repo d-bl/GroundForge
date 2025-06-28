@@ -169,15 +169,8 @@ The stitches are generated to fit the container.
 
 The groups may have a rotation.
 The yellow markings on the screenshot show which compensations are required.
-The compensation is implemented for the incoming threads of the example stitch,
-read: when the blue group (the source argument) has a rotation.
-No solution found yet for the outgoing threads,
-read: when the red group (the target argument) has a rotation.
-Not even tried a situation with a rotation on both groups.
-
-For now, the variable distortHack elsewhere in the script switches a hardcoded distortion on or off.
-With a valid id, a hardcoded distortion is witched on. 
-It is the intention to commit the code with an invalid id to switch the distortion off.
+For now, we have a hardcoded rotation for two stitches in the demo template.
+A rotation on both stitches is still a problem.
 
 Shaping stitches
 ----------------
