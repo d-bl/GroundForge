@@ -171,7 +171,6 @@ The stitches are generated to fit the container.
 The group elements may have a rotation.
 The yellow markings on the screenshot show which compensations are required.
 For now, we scale and rotate two stitches with hardcoded values in the demo template.
-A rotation on both stitches is still a problem.
 
 Shaping stitches
 ----------------

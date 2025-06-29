@@ -351,7 +351,7 @@ const GF_svgP2T = {
         document.body.insertAdjacentHTML("beforeend", `
             <hr>
             <p class='note'>
-            Under construction (added/moved stitches cause overlap, larger templates may have black threads): 
+            Under construction (d/p reflections have wrong over/under effect, more threads will be black) 
             </p>
         `);
         document.body.appendChild(svg);
@@ -462,7 +462,12 @@ const GF_svgP2T = {
         }
 
         // To map a point from source to target group coordinates:
-        function mapPointBetweenGroups(x, y, sourceTranslate, sourceRotate, targetTranslate, targetRotate) {
+        function mapPointBetweenGroups(x, y, sourceGroup, targetGroup) {
+            const sourceTranslate = parseTranslate(sourceGroup);
+            const targetTranslate = parseTranslate(targetGroup);
+            const sourceRotate = parseRotate(sourceGroup);
+            const targetRotate = parseRotate(targetGroup);
+
             // Apply source transform
             let [sx, sy] = applyTransform(x, y, sourceTranslate, sourceRotate);
             // Undo target transform (inverse)
@@ -477,18 +482,11 @@ const GF_svgP2T = {
 
         function combineStraightPaths(source, target) {
 
-            // edges are in different groups
-            const sourceGroup = source.closest('g');
-            const targetGroup = target.closest('g');
-
-            const sourceTranslation = parseTranslate(sourceGroup);
-            const targetTranslation = parseTranslate(targetGroup);
-
             const [sx1, sy1] = parseDef(source) || [];
             const [, , tx2, ty2] = parseDef(target) || [];
 
             // Start at adjusted start of the source edge, keep the end the same
-            const [newX, newY] = mapPointBetweenGroups(sx1,sy1, sourceTranslation, parseRotate(sourceGroup), targetTranslation, parseRotate(targetGroup))
+            const [newX, newY] = mapPointBetweenGroups(sx1,sy1, source.closest('g'), target.closest('g'));
             target.setAttribute('d', `M ${newX} ${newY} L ${tx2} ${ty2}`);
 
             for (const cls of Array.from(source.classList)) {
@@ -496,6 +494,48 @@ const GF_svgP2T = {
                     target.classList.add(cls);
             }
             source.remove();
+        }
+
+        function distortion(templateNode) {
+            const svgDoc = GF_svgP2T.findSvgDoc(templateNode);
+            const [cx, cy] = parseTranslate(templateNode);
+            let minLength = Infinity;
+            let fromPoints = [];
+            let toPoints = [];
+            for (const cls of templateNode.classList) {
+                if (cls.startsWith("from_")) {
+                    const id = cls.replace(/.*_/, "");
+                    fromPoints.push(parseTranslate(svgDoc.getElementById(id)));
+                }
+                if (cls.startsWith("to_")) {
+                    const id = cls.replace(/.*_/, "");
+                    toPoints.push(parseTranslate(svgDoc.getElementById(id)));
+                }
+            }
+            // Calculate scale
+            for (const [x, y] of [...fromPoints, ...toPoints]) {
+                const dx = x - cx;
+                const dy = y - cy;
+                const length = Math.sqrt(dx * dx + dy * dy);
+                if (length < minLength) minLength = length;
+            }
+            const scale = minLength === Infinity || minLength > 19 ? 1 : minLength / 20;
+
+            if (fromPoints.length === 0 || toPoints.length === 0) {
+                return [scale, 0];
+            }
+            // Calculate midpoints
+            function midpoint(points) {
+                const sum = points.reduce(([sx, sy], [x, y]) => [sx + x, sy + y], [0, 0]);
+                return [sum[0] / points.length, sum[1] / points.length];
+            }
+            const [fromMidX, fromMidY] = midpoint(fromPoints);
+            const [toMidX, toMidY] = midpoint(toPoints);
+
+            // Angle from from-midpoint to to-midpoint (in degrees)
+            const angle = Math.atan2(toMidY - fromMidY, toMidX - fromMidX) * 180 / Math.PI;
+
+            return [scale, angle - 90];
         }
 
         while (toProcess.length > 0) {
@@ -520,8 +560,8 @@ const GF_svgP2T = {
 
                 // TODO with valid ID-s, the hack shows hardcoded scaled/rotated stitches (work in progress in the proof of concept)
                 const hardcodedDistortion = templateNode.id==="r2c6" || templateNode.id==="n1748602427781";
-                const rotationAngle = hardcodedDistortion ? -40 : 0;
-                const scale = hardcodedDistortion? 0.6 : 1;
+                // const rotationAngle = hardcodedDistortion ? -40 : 0;
+                const [scale, rotationAngle] = distortion(templateNode);
 
                 const actualWidth = defaultWidth * scale;
                 const actualHeight = defaultHeight * scale;
@@ -537,15 +577,13 @@ const GF_svgP2T = {
 
                 lastThreadNodeNr = this.newStitch(stitchInputValue, firstThreadKissingPathNr, lastThreadNodeNr, stitchGroup, actualWidth, actualHeight);
 
-                if (rotationAngle){
-                    // show rotation centre  for debugging purposes
-                    const circle = document.createElementNS(this.svgNS, "circle");
-                    circle.setAttribute("cx", actualWidth / 2 + '');
-                    circle.setAttribute("cy", actualHeight / 2 + '');
-                    circle.setAttribute("r", '1');
-                    circle.setAttribute("fill", "purple");
-                    stitchGroup.appendChild(circle);
-                }
+                // show rotation centre  for debugging purposes
+                const circle = document.createElementNS(this.svgNS, "circle");
+                circle.setAttribute("cx", actualWidth / 2 + '');
+                circle.setAttribute("cy", actualHeight / 2 + '');
+                circle.setAttribute("r", '1');
+                circle.setAttribute("fill", "purple");
+                stitchGroup.appendChild(circle);
 
                 if (processed.length > 0) {
                     // connect with previously generated stitches
