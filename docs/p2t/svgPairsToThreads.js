@@ -446,14 +446,33 @@ const GF_svgP2T = {
                 }, {});
         }
 
-        function rotatePoint(x, y, cx, cy, angleDegrees) {
-            if(!angleDegrees) return [x, y];
-            const angleRadians = angleDegrees * Math.PI / 180;
-            const dx = x - cx;
-            const dy = y - cy;
-            const rotatedX = dx * Math.cos(angleRadians) - dy * Math.sin(angleRadians) + cx;
-            const rotatedY = dx * Math.sin(angleRadians) + dy * Math.cos(angleRadians) + cy;
-            return [rotatedX, rotatedY];
+        function applyTransform(x, y, translate, rotate) {
+            // translate: [tx, ty], rotate: [angle, cx, cy]
+            let [tx, ty] = translate;
+            let [angle, cx, cy] = rotate;
+            // Move to origin for rotation
+            let px = x - cx;
+            let py = y - cy;
+            // Rotate
+            let rad = angle * Math.PI / 180;
+            let rx = px * Math.cos(rad) - py * Math.sin(rad);
+            let ry = px * Math.sin(rad) + py * Math.cos(rad);
+            // Move back and translate
+            return [rx + cx + tx, ry + cy + ty];
+        }
+
+        // To map a point from source to target group coordinates:
+        function mapPointBetweenGroups(x, y, sourceTranslate, sourceRotate, targetTranslate, targetRotate) {
+            // Apply source transform
+            let [sx, sy] = applyTransform(x, y, sourceTranslate, sourceRotate);
+            // Undo target transform (inverse)
+            let [angle, cx, cy] = targetRotate;
+            let rad = -angle * Math.PI / 180;
+            let px = sx - (cx + targetTranslate[0]);
+            let py = sy - (cy + targetTranslate[1]);
+            let rx = px * Math.cos(rad) - py * Math.sin(rad);
+            let ry = px * Math.sin(rad) + py * Math.cos(rad);
+            return [rx + cx, ry + cy];
         }
 
         function combineStraightPaths(source, target) {
@@ -464,24 +483,13 @@ const GF_svgP2T = {
 
             const sourceTranslation = parseTranslate(sourceGroup);
             const targetTranslation = parseTranslate(targetGroup);
-            const dx = sourceTranslation[0] * 1 - targetTranslation[0] * 1;
-            const dy = sourceTranslation[1] * 1 - targetTranslation[1] * 1;
-
-            const [targetAngle, targetCx, targetCy] = parseRotate(targetGroup);
-            const [sourceAngle, sourceCx, sourceCy] = parseRotate(sourceGroup);
 
             const [sx1, sy1] = parseDef(source) || [];
             const [, , tx2, ty2] = parseDef(target) || [];
 
             // Start at adjusted start of the source edge, keep the end the same
-            const [newX, newY] = rotatePoint(sx1 + dx, sy1 + dy, targetCx, targetCy, -targetAngle);
-            let [newX2, newY2] = rotatePoint(newX, newY, sourceCx + dx, sourceCy + dy, sourceAngle);
-            if (sourceAngle && targetAngle) {
-                // TODO dirty hack that almost works, and even then only for +/- 40 degrees.
-                newX2 -= dx/2;
-                newY2 -= dy/2;
-            }
-            target.setAttribute('d', `M ${newX2} ${newY2} L ${tx2} ${ty2}`);
+            const [newX, newY] = mapPointBetweenGroups(sx1,sy1, sourceTranslation, parseRotate(sourceGroup), targetTranslation, parseRotate(targetGroup))
+            target.setAttribute('d', `M ${newX} ${newY} L ${tx2} ${ty2}`);
 
             for (const cls of Array.from(source.classList)) {
                 if (cls.includes("start"))
