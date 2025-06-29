@@ -446,11 +446,11 @@ const GF_svgP2T = {
                 }, {});
         }
 
-        function rotatePoint(newX, newY, cx, cy, angleDegrees) {
-            if(!angleDegrees) return [newX, newY];
+        function rotatePoint(x, y, cx, cy, angleDegrees) {
+            if(!angleDegrees) return [x, y];
             const angleRadians = angleDegrees * Math.PI / 180;
-            const dx = newX - cx;
-            const dy = newY - cy;
+            const dx = x - cx;
+            const dy = y - cy;
             const rotatedX = dx * Math.cos(angleRadians) - dy * Math.sin(angleRadians) + cx;
             const rotatedY = dx * Math.sin(angleRadians) + dy * Math.cos(angleRadians) + cy;
             return [rotatedX, rotatedY];
@@ -477,7 +477,7 @@ const GF_svgP2T = {
             const [newX, newY] = rotatePoint(sx1 + dx, sy1 + dy, targetCx, targetCy, -targetAngle);
             let [newX2, newY2] = rotatePoint(newX, newY, sourceCx + dx, sourceCy + dy, sourceAngle);
             if (sourceAngle && targetAngle) {
-                // TODO this works almost and only for the current hardcoded values.
+                // TODO dirty hack that almost works, and even then only for +/- 40 degrees.
                 newX2 -= dx/2;
                 newY2 -= dy/2;
             }
@@ -501,7 +501,7 @@ const GF_svgP2T = {
                 // create group for the stitch at the position dictated bij the template node
                 const stitchGroup = document.createElementNS(this.svgNS, "g");
                 diagramGroup.appendChild(stitchGroup);
-                const [x, y] = parseTranslate(templateNode);
+                const [pairX, pairY] = parseTranslate(templateNode);
                 pairNodeIdToThreadGroup[templateNode.id] = stitchGroup;
                 const pairNodeClasses = Array.from(templateNode.classList);
 
@@ -510,16 +510,34 @@ const GF_svgP2T = {
                 const firstThreadKissingPathNr = firstPairKissNr * 2 + (firstPairKissNr === '0' && pairKissClasses.length === 1 ? 0 : 2);
                 stitchGroup.classList.add("first_kiss_"+firstThreadKissingPathNr);
 
-                // TODO with a valid Id, the hack shows a hardcoded distorted stitch (work in progress in the proof of concept)
-                const distortHack = templateNode.id==="r2c6" || templateNode.id==="n1748602427781";
-                const scale = distortHack? 0.6: 1;
-                const width = defaultWidth * (distortHack? scale : 1);
-                const height = defaultHeight * (distortHack? scale : 1);
-                const rotation = distortHack ? ` rotate(-40, 25, 18)` : "";
-                const x1 = x * (width/18) / scale + ((1-scale) * defaultWidth/2);
-                const y1 = y * (height/18) / scale + ((1-scale) * defaultHeight/2);
-                stitchGroup.setAttribute("transform", `translate(${x1}, ${y1})` + rotation);
-                lastThreadNodeNr = this.newStitch(stitchInputValue, firstThreadKissingPathNr, lastThreadNodeNr, stitchGroup, width, height);
+                // TODO with valid ID-s, the hack shows hardcoded scaled/rotated stitches (work in progress in the proof of concept)
+                const hardcodedDistortion = templateNode.id==="r2c6" || templateNode.id==="n1748602427781";
+                const rotationAngle = hardcodedDistortion ? -40 : 0;
+                const scale = hardcodedDistortion? 0.6 : 1;
+
+                const actualWidth = defaultWidth * scale;
+                const actualHeight = defaultHeight * scale;
+
+                // for the scale difference between pair and thread diagram: ...*(default/18)
+                // to scale a thread stitch group relative to its center: ... + (default - actual) / 2
+                const threadX = pairX * (defaultWidth/18) + (defaultWidth - actualWidth) / 2;
+                const threadY = pairY * (defaultHeight/18) + (defaultHeight - actualHeight) / 2;
+
+                const translation = ` translate(${threadX}, ${threadY}) `;
+                const rotation = ` rotate(${rotationAngle}, ${defaultWidth / 2}, ${defaultHeight / 2}) `;
+                stitchGroup.setAttribute("transform", translation + rotation);
+
+                lastThreadNodeNr = this.newStitch(stitchInputValue, firstThreadKissingPathNr, lastThreadNodeNr, stitchGroup, actualWidth, actualHeight);
+
+                if (rotationAngle){
+                    // show rotation centre  for debugging purposes
+                    const circle = document.createElementNS(this.svgNS, "circle");
+                    circle.setAttribute("cx", defaultWidth / 2 + '');
+                    circle.setAttribute("cy", defaultHeight / 2 + '');
+                    circle.setAttribute("r", '1');
+                    circle.setAttribute("fill", "purple");
+                    stitchGroup.appendChild(circle);
+                }
 
                 if (processed.length > 0) {
                     // connect with previously generated stitches

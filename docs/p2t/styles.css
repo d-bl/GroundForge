@@ -44,7 +44,7 @@ figcaption svg { vertical-align: middle; margin-right: 0.2em; }
     stroke: rgb(244, 165, 130);
 }
 .link { stroke-width: 2; stroke: #bbbbbb; }
-circle { fill: black; opacity: 0.15 }
+.cross, .twist { fill: black; opacity: 0.15 }
 
  /*.kiss_even  {stroke: rgb(202, 0, 32); }*/
  /*.kiss_odd {stroke: rgb(5, 113, 176); }*/

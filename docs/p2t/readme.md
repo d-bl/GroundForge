@@ -162,14 +162,15 @@ Each group has a translation determining position of the stitch as a whole in th
 
 When adjusting the coordinates of the dashed red line into the coordinates of the thin red line,
 we can't simply copy-paste the x-y values of the start of the blue dashed line.
-We have to compensate for the different translations.
+We have to compensate with the deltas between both translations.
 
-The groups won't have scaling, the function newStitch gets container size parameters.
+The group elements won't have scaling
+The function newStitch gets container size parameters.
 The stitches are generated to fit the container.
 
-The groups may have a rotation.
+The group elements may have a rotation.
 The yellow markings on the screenshot show which compensations are required.
-For now, we have a hardcoded rotation for two stitches in the demo template.
+For now, we scale and rotate two stitches with hardcoded values in the demo template.
 A rotation on both stitches is still a problem.
 
 Shaping stitches
