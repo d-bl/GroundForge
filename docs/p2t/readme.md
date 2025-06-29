@@ -15,7 +15,10 @@ These reflections are indicated with bdpq versions of the template.
 Page structure
 --------------
 
-The proof of concept page has little static content: a button and its label to upload files.
+The proof of concept page has little static content: 
+* a button and its label to upload files.
+* fields to change the color of threads.
+
 The dynamic content is rendered by JavaScript:
 * A modified version of the template found in the upload. This is a color-coded pair diagram.
   The style attributes are replaced to allow static and interactive styling with CSS.

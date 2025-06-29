@@ -7,6 +7,27 @@
     <script src="../js/dompurify_3.2.6.js"></script>
     <link rel="stylesheet" href="styles.css" type="text/css">
     <title>Pairs to Threads, proof of concept</title>
+    <script>
+        document.addEventListener('click', function (event) {
+            if (event.target.classList.contains('cross') || event.target.classList.contains('twist')) {
+                event.target.classList.forEach(cls => {
+                    if (cls.startsWith('thread')) {
+                        const color = document.getElementById('color').value;
+                        document.querySelectorAll(`#templateThreads path.${cls}`).forEach(path => {
+                            path.style.stroke = color;
+                        });
+                    }
+                })
+            }
+        });
+
+        function setAll() {
+            const color = document.getElementById('color').value;
+            document.querySelectorAll(`#templateThreads path`).forEach(path => {
+                path.style.stroke = color;
+            })
+        }
+    </script>
 </head>
 <body onload="GF_svgP2T.init()">
 <h1>Pairs to Threads, proof of concept</h1>
@@ -14,5 +35,8 @@
 <p>
     <label for="upload">Select another file downloaded from the <a href="../symmetry.html" target="_blank">symmetry</a> page:</label>
     <input id="upload" type="file" accept="image/svg+xml"/>
+    <input id="color" type="color">
+    <a href="javascript:setAll()">set all threads</a>
+    or click a cross or twist.
 </p>
 </body>
