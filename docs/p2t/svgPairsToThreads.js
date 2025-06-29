@@ -532,7 +532,7 @@ const GF_svgP2T = {
                 const threadY = pairY * (defaultHeight/18) + (defaultHeight - actualHeight) / 2;
 
                 const translation = ` translate(${threadX}, ${threadY}) `;
-                const rotation = ` rotate(${rotationAngle}, ${defaultWidth / 2}, ${defaultHeight / 2}) `;
+                const rotation = ` rotate(${rotationAngle}, ${actualWidth / 2}, ${actualHeight / 2}) `;
                 stitchGroup.setAttribute("transform", translation + rotation);
 
                 lastThreadNodeNr = this.newStitch(stitchInputValue, firstThreadKissingPathNr, lastThreadNodeNr, stitchGroup, actualWidth, actualHeight);
@@ -540,8 +540,8 @@ const GF_svgP2T = {
                 if (rotationAngle){
                     // show rotation centre  for debugging purposes
                     const circle = document.createElementNS(this.svgNS, "circle");
-                    circle.setAttribute("cx", defaultWidth / 2 + '');
-                    circle.setAttribute("cy", defaultHeight / 2 + '');
+                    circle.setAttribute("cx", actualWidth / 2 + '');
+                    circle.setAttribute("cy", actualHeight / 2 + '');
                     circle.setAttribute("r", '1');
                     circle.setAttribute("fill", "purple");
                     stitchGroup.appendChild(circle);
