@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="/GroundForge/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/GroundForge/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/GroundForge/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/GroundForge/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/GroundForge/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/GroundForge/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../css/header.css" type="text/css">
+
     <script src="svgPairsToThreads.js" type="text/javascript"></script>
     <script src="../js/dompurify_3.2.6.js"></script>
     <link rel="stylesheet" href="styles.css" type="text/css">
-    <title>Pairs to Threads, proof of concept</title>
+    <title>Pairs to Threads (proof of concept)</title>
     <script>
         document.addEventListener('click', function (event) {
             if (event.target.classList.contains('cross') || event.target.classList.contains('twist')) {
@@ -30,13 +40,25 @@
     </script>
 </head>
 <body onload="GF_svgP2T.init()">
-<h1>Pairs to Threads, proof of concept</h1>
-<p><a href="https://github.com/d-bl/GroundForge/tree/master/docs/p2t#readme">Technical info</a></p>
-<p>
-    <label for="upload">Select another file downloaded from the <a href="../symmetry.html" target="_blank">symmetry</a> page:</label>
-    <input id="upload" type="file" accept="image/svg+xml"/>
-    <input id="color" type="color">
-    <a href="javascript:setAll()">set all threads</a>
-    or click a cross or twist.
-</p>
+<header>
+    <div>
+        <h1><a href="/">Diagrams for Bobbin Lace</a></h1>
+        <h2>GroundForge: Pairs To Threads (proof of concept)</h2>
+    </div>
+</header>
+<main>
+    <script src="../js/fork-warning.js"></script>
+
+    <p><a href="https://github.com/d-bl/GroundForge/tree/master/docs/p2t#readme">Under the hood</a></p>
+    <p>
+        <label for="upload">Select another file downloaded from the <a href="../symmetry.html" target="_blank">symmetry</a> page:</label>
+        <input id="upload" type="file" accept="image/svg+xml"/>
+        <input id="color" type="color">
+        <label for="color">
+            set <a href="javascript:setAll()"
+            >all threads</a>
+            or click a cross or twist.
+        </label>
+    </p>
+</main>
 </body>

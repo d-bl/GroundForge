@@ -16,6 +16,7 @@ Page structure
 --------------
 
 The proof of concept page has little static content: 
+* A standard GroundForge header
 * a button and its label to upload files.
 * fields to change the color of threads.
 

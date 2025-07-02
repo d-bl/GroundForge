@@ -351,7 +351,7 @@ const GF_svgP2T = {
         document.body.insertAdjacentHTML("beforeend", `
             <hr>
             <p class='note'>
-            Under construction (d/p reflections have wrong over/under effect, more threads will be black) 
+            Under construction (d/p reflections have wrong over/under effect, threads will be black when there are too many) 
             </p>
         `);
         document.body.appendChild(svg);
