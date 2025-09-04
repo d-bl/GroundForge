@@ -41,8 +41,7 @@
 </header>
 <main>
 <script src="js/fork-warning.js"></script>
-<a rel="help" href="/GroundForge-help/symmetry" target="_blank">Reference guide.</a>
-<em>To be developed: tutorials</em>
+<a rel="help" href="/GroundForge-help/symmetry" target="_blank">Intro / reference guide</a>
 <form action="" onSubmit="return false;">
     <fieldset>
         <legend>Template</legend>
@@ -68,7 +67,7 @@
                download="GF-template.svg"
                title="download"
             >Download</a></button>
-        current set of diagrams
+        current set of diagrams.
         <a href="#"
            style="display:none"
            id="download2"
@@ -80,7 +79,12 @@
         <input type="file" id="file_input" accept="image/svg+xml" onchange="readSingleFile(event)"/>
         <br>
         <label for="file_input"><em>Warning:</em> No security check for third party files.</label>
-    </p>
+        </p>
+        <p>
+            Or use the download for a <a href="p2t" target="_blank"
+            >thread diagram</a> or <a href="reflect" target="_blank"
+            >flipped templates</a> with proper tooltips.
+        </p>
     </fieldset>
     <br>
     <div id="gallery"></div>
@@ -91,10 +95,10 @@
         <br>
         Click mode for stitches:
         <br>
-        <input type="radio" id="delete" name="editMode" value="delete" checked="checked"
+        <input type="radio" id="delete" name="editMode" value="delete"
         ><label for="delete">delete (<em>download/reload is your only undo</em>)</label>
         <br>
-        <input type="radio" id="change" name="editMode" value="change"
+        <input type="radio" id="change" name="editMode" value="change" checked="checked"
         ><label for="change">apply <input
             id="stitchDef"
             type="text"

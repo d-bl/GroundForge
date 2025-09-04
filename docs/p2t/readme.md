@@ -98,7 +98,7 @@ The following images show steps leading to a thread diagram from `ctc`.
 
 A `t` makes two pairs of nodes at the same height kiss one another.
 This explains why the following two stitches have the same color code,
-will be also identical in real lace, yet are drawn differently.
+will be also identical in real lace, yet are drawn with twists at different heights.
 
 ![](same-or-not.png)
 
