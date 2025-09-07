@@ -92,12 +92,20 @@ Function newStitch
 
 Core function: parse a stitch notation string (e.g., "ctc", "ctlr") and create an SVG thread diagram.
 
-The following images show steps leading to a thread diagram from `ctc`.
+The following images show the first steps transforming `ctc` to a thread diagram.
 
 ![](stitch-stages.svg)
 
 A `t` makes two pairs of nodes at the same height kiss one another.
-This explains why the following two stitches have the same color code,
+A `l` or `r` makes one pair kiss.
+A `c` makes the two inner pairs kiss.
+
+These line segments are then replaced by paths. 
+These paths have shorter ends or starts for the over/under effect.
+The paths get bends where segments are on top of one another,
+due to repeated twists or crosses.
+
+The `l`, `r`, `t` approach explains why the following two stitches have the same color code,
 will be also identical in real lace, yet are drawn with twists at different heights.
 
 ![](same-or-not.png)

@@ -658,13 +658,18 @@ const GF_svgP2T = {
             this.processUploadedSvg(await this.readSVGFile(file));
         });
 
-        try {
-            const response = await fetch('demo.svg');
-            const svgContent = await response.text();
-            const file = new File([svgContent], "demo.svg", {type: "image/svg+xml"});
-            this.processUploadedSvg(await this.readSVGFile(file));
-        } catch (error) {
-            console.error("Error loading the file:", error);
+        const uri = document.documentURI;
+        const isLocalhost = uri.startsWith('http://localhost') || uri.startsWith('https://localhost');
+        const isFile = uri.startsWith('file://');
+        if (isLocalhost || isFile) {
+            try {
+                const response = await fetch('demo.svg');
+                const svgContent = await response.text();
+                const file = new File([svgContent], "demo.svg", {type: "image/svg+xml"});
+                this.processUploadedSvg(await this.readSVGFile(file));
+            } catch (error) {
+                console.error("Error loading the file:", error);
+            }
         }
     }
 }
