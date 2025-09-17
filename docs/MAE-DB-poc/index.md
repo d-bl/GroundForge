@@ -6,14 +6,17 @@ title: MAE-gf database poc
 Database for Many Attractive Examples
 =====================================
 
-Proof of Concept
-----------------
+A Proof of Concept
+
+Filter
+------
 
 Select filters to limit the set of patterns to browse through.
 
 <div id="facets"></div>
 
-### results
+Results
+-------
 
 <div id="examples"></div>
 <script src="browse.js"></script>
