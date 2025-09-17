@@ -114,7 +114,8 @@ function renderExamples() {
             <button id="nextExample" ${currentExampleIndex === filteredExamples.length - 1 ? 'disabled' : ''}>Next &gt;</button>
         </div>
         <div class="example">
-            <a href="${e.url}">link to GroundForge</a>
+            <a href="${e.url}">link</a>
+            <strong>tags:</strong>
             ${e.tags.map(tag => `${tag}`).join(', ')}
             <br>
             <img src="${e.image}" alt="Example" width="200"/>
