@@ -1,10 +1,9 @@
 ---
 layout: default
-title: GroundForge - Home
+title: MAE-gf - database
 ---
 
 
 <div id="facets"></div>
-<hr>
 <div id="examples"></div>
 <script src="browse.js"></script></body>
