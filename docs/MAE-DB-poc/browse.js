@@ -2,8 +2,7 @@
 const data = {
     "tags": [
         {
-            "value": "3-pair join",
-            "description": "3-pair join"
+            "value": "3-pair join"
         },
         {
             "value": "4-pair join"
@@ -80,28 +79,56 @@ function getFilteredTagCounts(filteredExamples) {
 function renderFacets() {
     const filteredExamples = getFilteredExamples();
     const filteredTagCounts = getFilteredTagCounts(filteredExamples);
-    const filteredTags = Object.keys(filteredTagCounts);
+    const filteredTagsSet = new Set(Object.keys(filteredTagCounts));
 
     const facetsDiv = document.getElementById('facets');
-    facetsDiv.innerHTML = filteredTags.map(tag =>
-        `<p></p><label class="facet" title="">
-            <input type="checkbox" data-tag="${tag}" ${selectedTags.includes(tag) ? 'checked' : ''}>
-            <strong>${tag} (${filteredTagCounts[tag]})</strong>
-            ${tagDescriptions[tag] || tag}
-        </label></p>`
-    ).join('');
+    facetsDiv.innerHTML = data.tags
+        .filter(t => filteredTagsSet.has(t.value))
+        .map(t =>
+            `<p></p><label class="facet" title="">
+                <input type="checkbox" data-tag="${t.value}" ${selectedTags.includes(t.value) ? 'checked' : ''}>
+                <strong>${t.value} (${filteredTagCounts[t.value]})</strong>
+                ${tagDescriptions[t.value] || t.value}
+            </label></p>`
+        ).join('');
 }
+
+let currentExampleIndex = 0;
 
 function renderExamples() {
     const filteredExamples = getFilteredExamples();
+    // Clamp index
+    if (currentExampleIndex < 0) currentExampleIndex = 0;
+    if (currentExampleIndex >= filteredExamples.length) currentExampleIndex = filteredExamples.length - 1;
+
     const examplesDiv = document.getElementById('examples');
-    examplesDiv.innerHTML = filteredExamples.map(e =>
-        `<div class="example">
-            <img src="${e.image}" alt="Example" width="200"/>
-            <a href="${e.url}">&infin;</a>
+    if (filteredExamples.length === 0) {
+        examplesDiv.innerHTML = '<p>No examples found</p>';
+        return;
+    }
+    const e = filteredExamples[currentExampleIndex];
+    examplesDiv.innerHTML = `
+        <div>
+            <button id="prevExample" ${currentExampleIndex === 0 ? 'disabled' : ''}>&lt; Previous</button>
+            ${currentExampleIndex + 1} of ${filteredExamples.length}
+            <button id="nextExample" ${currentExampleIndex === filteredExamples.length - 1 ? 'disabled' : ''}>Next &gt;</button>
+        </div>
+        <div class="example">
+            <a href="${e.url}">link to GroundForge</a>
             ${e.tags.map(tag => `${tag}`).join(', ')}
-        </div>`
-    ).join('');
+            <br>
+            <img src="${e.image}" alt="Example" width="200"/>
+        </div>
+    `;
+
+    document.getElementById('prevExample').onclick = () => {
+        currentExampleIndex--;
+        renderExamples();
+    };
+    document.getElementById('nextExample').onclick = () => {
+        currentExampleIndex++;
+        renderExamples();
+    };
 }
 
 document.getElementById('facets').addEventListener('change', e => {
