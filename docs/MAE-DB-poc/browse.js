@@ -84,10 +84,11 @@ function renderFacets() {
 
     const facetsDiv = document.getElementById('facets');
     facetsDiv.innerHTML = filteredTags.map(tag =>
-        `<label class="facet" title="${tagDescriptions[tag] || tag}">
+        `<p></p><label class="facet" title="">
             <input type="checkbox" data-tag="${tag}" ${selectedTags.includes(tag) ? 'checked' : ''}>
-            ${tag} (${filteredTagCounts[tag]})
-        </label>`
+            <strong>${tag} (${filteredTagCounts[tag]})</strong>
+            ${tagDescriptions[tag] || tag}
+        </label></p>`
     ).join('');
 }
 
@@ -98,7 +99,7 @@ function renderExamples() {
         `<div class="example">
             <img src="${e.image}" alt="Example" width="200"/>
             <a href="${e.url}">&infin;</a>
-            ${e.tags.map(tag => `<span title="${tagDescriptions[tag] || tag}">${tag}</span>`).join(', ')}
+            ${e.tags.map(tag => `${tag}`).join(', ')}
         </div>`
     ).join('');
 }
