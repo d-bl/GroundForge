@@ -8,10 +8,10 @@ Database for Many Attractive Examples
 
 A Proof of Concept
 
-Filter
-------
+Filters
+-------
 
-Select filters to limit the set of patterns to browse through.
+Select tags to limit the results.
 
 <div id="facets"></div>
 
