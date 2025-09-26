@@ -8,8 +8,9 @@ javascript:
   - nudgePairs.js
 ---
 
-<script>{% include mix4snow/hexa.js %}</script>
-{% include mix4snow/hexa.html %}
+<div id="fragmentDiv"></div>
+<script type="text/javascript" src="mix.js"></script>
+<script type="text/javascript">GF_snow_mixer.init()</script>
 
 <fieldset style="background: #FFF; max-width:95%; height:145px; overflow: auto; resize: both"><legend>Select a recipe</legend>
 <a data-title="123-a" href="javascript:recipe('crc,crclctc,ctcrc,rcl,c,c',false)"><img src="123-a.png" alt=""></a> &nbsp;
