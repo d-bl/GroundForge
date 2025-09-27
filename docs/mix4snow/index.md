@@ -59,7 +59,7 @@ The go-to buttons lead to pages where you can [highlight] threads
 for three-pair respectively six-pair connections and [replace stitches].
 You can save all three pages as a [PDF] document.
 A [tutorial] gives a general introduction, elaborates choosing stitches, footsides and recipes.
-
+ 
 [color-code]: /GroundForge-help/color-rules
 [tutorial]: /GroundForge-help/snow-mix
 [highlight]: /GroundForge-help/clips/color
