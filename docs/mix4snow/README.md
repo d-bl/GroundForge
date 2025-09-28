@@ -18,7 +18,7 @@ function setHref.replaceStitches
 ------------------------------
 
 The pair diagram collapses the x/r elements into single lines.
-Therefor the last stitch sits always at the bottom of the tile:
+Therefore, the last stitch sits always at the bottom of the tile:
 the black dots in the right diagram, not next to the last blue stitch.
 
 Odd number of stitches

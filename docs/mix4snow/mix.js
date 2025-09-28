@@ -247,14 +247,13 @@ const GF_snow_mixer = {
                          ",f81=f161=lllllctclllll" +
                          ",u80=u82=u160=u162=ctcrrrrrrrr" +
                          ",u81=u161=rrrrrctcrrrrr";
-                     q2 = "tile=48,xr,xr,xr,-x,-x,-x,31" +
+                     q2 = "/GroundForge/droste?tile=48,xr,xr,xr,y-,x-,x-,83" +
                          "&f8=crc&f16=crc&footside=-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r&" +
                          "&u8=clc&u16=clc&headside=x,x,x,8,r,r,r,r" +
                          "&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=2&shiftRowsSE=4&patchWidth=14&patchHeight=35" +
-                         "&i1=rc&h1=ct&g1=clcrcl&h2=crclcr&n5=llctt&i5=ctc&g5=ct&j9=lc&h9=ctc&j13=ctc&g13=lc&g16=tc&h16=rclcrc&h4=ct&h8=cr&g8=ctc&g9=lc&g12=lc&i12=ctc&j12=cl&i13=rc&j16=lc&j4=ctc&i4=cr&j5=lc&i8=rc&j8=lc&i16=rc" +
+                         "&h1=ct&g1=clcrcl&h2=crclcr&g5=ct&h9=ct&h4=ct&h8=rclcrc&g8=tc&j4=rclcrc&i4=tc&j5=ct&i8=rc&j8=ct&i16=rc" +
                          "&droste2=g160=g161=h160=ttctc,g15=h41=h42=ctctt" +
-                         ",,g80=j120=j121=lllctc,g81=lllctcl,h80=rrrctc,h81=rrrctcr,g120=g121=ctclll,h92=h93=i160=i161=ctcrrr" +
-                         ",j121=lllctcl,j133=ctcl,i53=i41=ctcr" +
+                         ",,g80=j120=lllctc,g81=lllctcl,h80=rrrctc,h81=rrrctcr,g120=g121=ctclll,h92=h93=ctcrrr" +
                          ",,f80=f82=f160=f162=ctcllllllll" +
                          ",f81=f161=lllllctclllll" +
                          ",u80=u82=u160=u162=ctcrrrrrrrr" +
@@ -263,7 +262,7 @@ const GF_snow_mixer = {
                  GF_snow_mixer.diagrams(GF_snow_mixer.twistFootsides(q));
                  document.getElementById('toDiagrams').setAttribute("href", this.drosteURL + q);
                  document.getElementById('toPrintFriendly').setAttribute("href", this.stitchesURL + q);
-                 document.getElementById('singleRecipe').setAttribute("href", this.drosteURL + q2);
+                 document.getElementById('singleRecipe').setAttribute("href", q2);
              })
              .catch(err => console.error('Failed to load fragment:', err));
 
