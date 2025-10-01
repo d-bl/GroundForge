@@ -17,8 +17,16 @@
             <label for="right">Right</label>
         </span>
     </fieldset>
+    <p>
+        <input type="radio" name="nr" id="mix4" value="4" checked  onchange="GF_snow_mixer.radioChanged(this.value)"/><label for="mix4">mix 4 snowflakes</label>
+        <input type="radio" name="nr" id="mix1" value="1"  onchange="GF_snow_mixer.radioChanged(this.value)"/><label for="mix1">single snowflake</label>
+        <input type="button"
+               value="Apply recipe"
+               id="apply_single_recipe"
+               onclick="GF_snow_mixer.setHref('hexaNE', 'replacement','toDiagrams', 'toPrintFriendly', 'start_pairs')" />
+    </p>
 
-    <fieldset style="display: inline-block; vertical-align: top">
+    <fieldset id="hexas" style="display: inline-block; vertical-align: top">
         <legend>Apply recipe</legend>
         <svg id="svg2" width="78.6" height="90.7" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -63,11 +71,6 @@
         <button>
             <a id="toDiagrams" target="_blank" href="#">
                 6 pair snow
-            </a>
-        </button>
-        <button>
-            <a id="singleRecipe" target="_blank" href="#">
-                single recipe
             </a>
         </button>
     </p>

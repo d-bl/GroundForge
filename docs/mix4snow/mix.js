@@ -2,6 +2,31 @@ const GF_snow_mixer = {
 
     drosteURL: "/GroundForge/droste?source=mix4snow&",
     stitchesURL: "/GroundForge/stitches?source=mix4snow&",
+    q4: "tile=48x-,xrx-,xrx-,xr83,-x48,-xxr,-xxr,31xr,17-x,rx-x,rx-x,rx31,x-17,x-rx,x-rx,83rx" +
+        // foot side and head side are repeated to support two different snowflakes along the edge
+        "&f8=crc&f16=crc&footside=-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r,-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r&" +
+        "&u8=clc&u16=clc&headside=x,x,x,8,r,r,r,r,x,x,x,8,r,r,r,r" +
+        "&shiftColsSW=0&shiftRowsSW=16&shiftColsSE=4&shiftRowsSE=8&patchWidth=14&patchHeight=35" +
+        "&i1=rc&h1=ct&g1=clcrcl&h2=crclcr&n5=llctt&i5=ctc&g5=ct&j9=lc&h9=ctc&j13=ctc&g13=lc&g16=tc&h16=rclcrc&h4=ct&h8=cr&g8=ctc&g9=lc&g12=lc&i12=ctc&j12=cl&i13=rc&j16=lc&j4=ctc&i4=cr&j5=lc&i8=rc&j8=lc&i16=rc" +
+        "&droste2=g160=g161=h160=ttctc,g15=h41=h42=ctctt" +
+        ",,g80=j120=j121=lllctc,g81=lllctcl,h80=rrrctc,h81=rrrctcr,g120=g121=ctclll,h92=h93=i160=i161=ctcrrr" +
+        ",j121=lllctcl,j133=ctcl,i53=i41=ctcr" +
+        ",,f80=f82=f160=f162=ctcllllllll" +
+        ",f81=f161=lllllctclllll" +
+        ",u80=u82=u160=u162=ctcrrrrrrrr" +
+        ",u81=u161=rrrrrctcrrrrr",
+    q1: "tile=48,xr,xr,xr,y-,x-,x-,83" +
+        "&f8=crc&f16=crc&footside=-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r&" +
+        "&u8=clc&u16=clc&headside=x,x,x,8,r,r,r,r" +
+        "&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=2&shiftRowsSE=4&patchWidth=14&patchHeight=35" +
+        "&h1=ct&g1=clcrcl&h2=crclcr&g5=ct&h9=ct&h4=ct&h8=rclcrc&g8=tc&j4=rclcrc&i4=tc&j5=ct&i8=rc&j8=ct&i16=rc" +
+        "&droste2=g160=g161=h160=ttctc,g15=h41=h42=ctctt" +
+        ",,g80=j120=lllctc,g81=lllctcl,h80=rrrctc,h81=rrrctcr,g120=g121=ctclll,h92=h93=ctcrrr" +
+        ",,f80=f82=f160=f162=ctcllllllll" +
+        ",f81=f161=lllllctclllll" +
+        ",u80=u82=u160=u162=ctcrrrrrrrr" +
+        ",u81=u161=rrrrrctcrrrrr",
+
 
     setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
         function parseMatrix(str) {
@@ -60,6 +85,8 @@ const GF_snow_mixer = {
 
         function replaceTile(row, col) {
             const matrix = parseMatrix(q.get("tile"));
+            const h = matrix.length;
+            const w = matrix[0].length;
             // replace the sub-matrix
             for (let i = 0; i < 8; i++) {
                 for (let j = 0; j < 2; j++) {
@@ -225,7 +252,31 @@ const GF_snow_mixer = {
         return q.replace("f8=crc&f16=crc", "f8=ttcrctt&f16=ttcrctt").replace("u8=clc&u16=clc", "u8=tclcttt&u16=tclcttt");
      },
 
-     init () {
+     radioChanged(stringValue) {
+         switch (stringValue) {
+             case "1":
+                 this.updatePattern(this.q1);
+                 break;
+             case "4":
+                 this.updatePattern(this.q4);
+                 break;
+         }
+     },
+
+    updatePattern(q) {
+        if (q.includes('shiftRowsSW=16')) {
+            document.getElementById('apply_single_recipe').style.display = 'none';
+            document.getElementById('hexas').style.display = 'inline-block';
+        } else {
+            document.getElementById('apply_single_recipe').style.display = 'inline-block';
+            document.getElementById('hexas').style.display = 'none';
+        }
+        document.getElementById('toDiagrams').setAttribute("href", this.drosteURL + q);
+        document.getElementById('toPrintFriendly').setAttribute("href", this.stitchesURL + q);
+        GF_snow_mixer.diagrams(GF_snow_mixer.twistFootsides(q));
+    },
+
+    init () {
          fetch('fragment.html')
              .then(response => response.text())
              .then(html => {
@@ -234,39 +285,13 @@ const GF_snow_mixer = {
                  var q = window.location.search.substring(1);
                  // the search string may have been set by webstorm
                  if (!q || !q.includes('tile')) {
-                     q = "tile=48x-,xrx-,xrx-,xr83,-x48,-xxr,-xxr,31xr,17-x,rx-x,rx-x,rx31,x-17,x-rx,x-rx,83rx" +
-                         // foot side and head side are repeated to support two different snowflakes along the edge
-                         "&f8=crc&f16=crc&footside=-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r,-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r&" +
-                         "&u8=clc&u16=clc&headside=x,x,x,8,r,r,r,r,x,x,x,8,r,r,r,r" +
-                         "&shiftColsSW=0&shiftRowsSW=16&shiftColsSE=4&shiftRowsSE=8&patchWidth=14&patchHeight=35" +
-                         "&i1=rc&h1=ct&g1=clcrcl&h2=crclcr&n5=llctt&i5=ctc&g5=ct&j9=lc&h9=ctc&j13=ctc&g13=lc&g16=tc&h16=rclcrc&h4=ct&h8=cr&g8=ctc&g9=lc&g12=lc&i12=ctc&j12=cl&i13=rc&j16=lc&j4=ctc&i4=cr&j5=lc&i8=rc&j8=lc&i16=rc" +
-                         "&droste2=g160=g161=h160=ttctc,g15=h41=h42=ctctt" +
-                         ",,g80=j120=j121=lllctc,g81=lllctcl,h80=rrrctc,h81=rrrctcr,g120=g121=ctclll,h92=h93=i160=i161=ctcrrr" +
-                         ",j121=lllctcl,j133=ctcl,i53=i41=ctcr" +
-                         ",,f80=f82=f160=f162=ctcllllllll" +
-                         ",f81=f161=lllllctclllll" +
-                         ",u80=u82=u160=u162=ctcrrrrrrrr" +
-                         ",u81=u161=rrrrrctcrrrrr";
-                     q2 = "/GroundForge/droste?tile=48,xr,xr,xr,y-,x-,x-,83" +
-                         "&f8=crc&f16=crc&footside=-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r&" +
-                         "&u8=clc&u16=clc&headside=x,x,x,8,r,r,r,r" +
-                         "&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=2&shiftRowsSE=4&patchWidth=14&patchHeight=35" +
-                         "&h1=ct&g1=clcrcl&h2=crclcr&g5=ct&h9=ct&h4=ct&h8=rclcrc&g8=tc&j4=rclcrc&i4=tc&j5=ct&i8=rc&j8=ct&i16=rc" +
-                         "&droste2=g160=g161=h160=ttctc,g15=h41=h42=ctctt" +
-                         ",,g80=j120=lllctc,g81=lllctcl,h80=rrrctc,h81=rrrctcr,g120=g121=ctclll,h92=h93=ctcrrr" +
-                         ",,f80=f82=f160=f162=ctcllllllll" +
-                         ",f81=f161=lllllctclllll" +
-                         ",u80=u82=u160=u162=ctcrrrrrrrr" +
-                         ",u81=u161=rrrrrctcrrrrr";
+                     q = this.q4;
                  }
-                 GF_snow_mixer.diagrams(GF_snow_mixer.twistFootsides(q));
-                 document.getElementById('toDiagrams').setAttribute("href", this.drosteURL + q);
-                 document.getElementById('toPrintFriendly').setAttribute("href", this.stitchesURL + q);
-                 document.getElementById('singleRecipe').setAttribute("href", q2);
+                 this.updatePattern(q);
+
              })
              .catch(err => console.error('Failed to load fragment:', err));
 
      }
 
 }
-
