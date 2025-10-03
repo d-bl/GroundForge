@@ -125,7 +125,7 @@ const GF_snow_mixer = {
                 if (value === "left") {
                     matrix[4][0] = "y";
                 } else {
-                    matrix[4][0] = "w";
+                    matrix[3][1] = "8";
                 }
             }
             q.set("tile", matrixToString(matrix))
