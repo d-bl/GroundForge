@@ -204,10 +204,10 @@ const GF_snow_mixer = {
 
             const value = document.querySelector('input[name="nr"]:checked').value;
             if (value === "1") {
-                paintThreadIntersections(/[g][02468]/, '#0571b0ff');
-                paintThreadIntersections(/[h][13579]/, '#92c5deff');
-                paintThreadIntersections(/[h][02468]/, '#ca0020ff');
-                paintThreadIntersections(/[g][13579]/, '#f4a582ff');
+                paintThreadIntersections(/[g][02469]/, '#0571b0ff');
+                paintThreadIntersections(/[h][02469]/, '#ca0020ff');
+                paintThreadIntersections(/[h][13578]/, '#92c5deff');
+                paintThreadIntersections(/[g][13578]/, '#f4a582ff');
             } else {
                 paintThreadIntersections(/[gh]([1-4]|(16))[0-9a-z]$/, '#0571b0ff');
                 paintThreadIntersections(/[ij][4-8][0-9a-z]$/, '#92c5deff');
