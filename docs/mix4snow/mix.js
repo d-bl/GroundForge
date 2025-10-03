@@ -60,7 +60,6 @@ const GF_snow_mixer = {
         for (let i = 5; i < max; i++) {
             replacement[i] = replacement[i - 1];
         }
-        console.log("replacement: ", nrOfStitches, max, matrixToString(replacement));
 
         function replaceStitches(stitchIds) {
             const ids = [];
@@ -90,7 +89,7 @@ const GF_snow_mixer = {
             // replace the sub-matrix
             for (let i = 0; i < 8; i++) {
                 for (let j = 0; j < 2; j++) {
-                    matrix[(row + i) % 16][(col + j)] = replacement[i][j];
+                    matrix[(row + i) % h][(col + j)] = replacement[i][j];
                 }
             }
 
@@ -98,7 +97,6 @@ const GF_snow_mixer = {
                 const slice1 = matrix[(row + 15) % 16].slice(col, col + 2);
                 const slice2 = matrix[row % 16].slice(col, col + 2);
                 const transition = matrixToString([slice1, slice2]);
-                console.log("reconnect: ", row, col, transition, startsLeft, hexaId, matrixToString(replacement));
                 switch (transition) {
                     case "rx,-x":
                     case "17,-x":
@@ -119,13 +117,24 @@ const GF_snow_mixer = {
                 }
             }
 
-            reconnect(row, col);
-            reconnect((row + 8) % 16, col);
+            if(hexaId !== "hexaOne") {
+                reconnect(row, col);
+                reconnect((row + 8) % 16, col);
+            } else {
+                const value = document.querySelector('input[name="start_pairs"]:checked').value;
+                if (value === "left") {
+                    matrix[4][0] = "y";
+                } else {
+                    matrix[4][0] = "w";
+                }
+            }
             q.set("tile", matrixToString(matrix))
         }
 
         switch (hexaId) {
             case "hexaOne":
+                replaceTile(4, 0);
+                replaceStitches(["g8", "h8", "g1", "h1", "g2", "h2", "g3", "h3", "g4", "h4"]);
                 break;
             case "hexaCenter":
                 replaceTile(12, 0);
@@ -159,7 +168,6 @@ const GF_snow_mixer = {
     },
 
      diagrams(q) {
-        console.log("--------" + q.replace("f8=llttcrr&f16=llttcrr", "f8=c&f16=c").replace("u8=rrttcll&u16=rrttcll", "u8=c&u16=c", "u8=c&u16=c"))
         const config = TilesConfig(q);
         showGraph('#threads', ThreadDiagram.create(NewPairDiagram.create(config)))
         d3.select('#threads g').attr("transform", "scale(0.5,0.5)")
@@ -194,10 +202,18 @@ const GF_snow_mixer = {
             d3.select('#pairs').selectAll(".node").attr("onclick", null)
             d3.select('#pairs').selectAll(".node").on("click", this.clickedPairStitch)
 
-            paintThreadIntersections(/[gh]([1-4]|(16))[0-9a-z]$/, '#0571b0ff');
-            paintThreadIntersections(/[ij][4-8][0-9a-z]$/, '#92c5deff');
-            paintThreadIntersections(/[gh]([89]|(1[0-2]))[0-9a-z]$/, '#ca0020ff');
-            paintThreadIntersections(/[ij](1[2-6])[0-9a-z]$/, '#f4a582ff');
+            const value = document.querySelector('input[name="nr"]:checked').value;
+            if (value === "1") {
+                paintThreadIntersections(/[g][02468]/, '#0571b0ff');
+                paintThreadIntersections(/[h][13579]/, '#92c5deff');
+                paintThreadIntersections(/[h][02468]/, '#ca0020ff');
+                paintThreadIntersections(/[g][13579]/, '#f4a582ff');
+            } else {
+                paintThreadIntersections(/[gh]([1-4]|(16))[0-9a-z]$/, '#0571b0ff');
+                paintThreadIntersections(/[ij][4-8][0-9a-z]$/, '#92c5deff');
+                paintThreadIntersections(/[gh]([89]|(1[0-2]))[0-9a-z]$/, '#ca0020ff');
+                paintThreadIntersections(/[ij](1[2-6])[0-9a-z]$/, '#f4a582ff');
+            }
         }, 0);
     },
 
@@ -212,7 +228,6 @@ const GF_snow_mixer = {
      clickedPairStitch(event) {
         const selectedClass = d3.select(d3.event.currentTarget)
             .select('title').text().replace(/.* /g, '');
-        console.log("selectedClass: ", selectedClass)
         d3.select('#threads').selectAll(".ct-" + selectedClass).style('opacity', "0")
     },
 
