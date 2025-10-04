@@ -1,19 +1,23 @@
 <form onsubmit="return false" name="recipe">
     <fieldset>
         <legend>Recipe</legend>
-        <input id="replacement" placeholder="tc,rclcrc,clcrcl,ct" spellcheck="false" style="width: 95%" value="cr,crcl,clcr,crcl,clcr,c">
+        <div style="display: flex; align-items: center; gap: 0.5em; flex-wrap: wrap;">
+            <label for="start_pairs" style="white-space: nowrap;">Start on the</label>
+            <select id="start_pairs" size="1">
+                <option value="left" id="left" selected>left</option>
+                <option value="right" id="right">right</option>
+            </select>
+            <label for="replacement" style="white-space: nowrap;">with</label>
+            <input id="replacement" placeholder="tc,rclcrc,clcrcl,ct" spellcheck="false"
+                   style="flex: 1 1 0; min-width: 17em; box-sizing: border-box;">
+        </div>
+        <br>
         <span style="display: inline-block">
-            flip:
+            Flip:
             <button onclick="GF_snow_mixer.flip_b2d()">&harr;</button>
             <button onclick="GF_snow_mixer.flip_b2p()">&varr;</button>
             <button onclick="GF_snow_mixer.flip_b2d();flip_b2p()">both</button>
         </span>
-        <br>
-        <label for="start_pairs">Start with pairs on the</label>
-        <select id="start_pairs" size="1">
-            <option value="left" id="left" selected>left</option>
-            <option value="right" id="right">right</option>
-        </select>
     </fieldset>
 
     <fieldset style="display: inline-block; vertical-align: top">
