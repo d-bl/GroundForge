@@ -46,14 +46,10 @@ const GF_snow_mixer = {
         return document.getElementById('replacement').value
         .toLowerCase().replaceAll(/[^crlt,]/g, '')
     },
-    recipe(stitches, startsLeft) {
-        // used as link like javascript:recipe("ctc,...",true/false)
-        document.getElementById('replacement').value = stitches
-        if (startsLeft) {
-            document.getElementById('right').selected = true
-        } else{
-            document.getElementById('left').selected = true
-        }
+    recipe(recipeStitches, startSide) {
+        // used as link like javascript:recipe('ctc,...','left')
+        document.getElementById('replacement').value = recipeStitches
+        document.getElementById(startSide).selected = true
     },
     flipRadio() {
         if (this.getPairsStartLeft()) {
