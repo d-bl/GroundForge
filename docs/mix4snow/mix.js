@@ -77,6 +77,7 @@ const GF_snow_mixer = {
         } else {
             document.getElementById('apply_single_recipe').style.display = 'inline-block';
             document.getElementById('hexas').style.display = 'none';
+            document.getElementById('replacement').value = 'tc,rclcrc,clcrcl,ct';
         }
         document.getElementById('toDiagrams').setAttribute("href", this.drosteURL + q);
         document.getElementById('toPrintFriendly').setAttribute("href", this.stitchesURL + q);
