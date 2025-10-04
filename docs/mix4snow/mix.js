@@ -37,7 +37,7 @@ const GF_snow_mixer = {
         return document.getElementById('nrOfSnowFlakes').value;
     },
     getPairsStartLeft() {
-        return document.getElementById("left").checked
+        return document.getElementById("start_pairs").value === "left";
     },
     getFormContainer() {
         return document.getElementById('fragmentDiv');
@@ -49,33 +49,40 @@ const GF_snow_mixer = {
     recipe(stitches, startsLeft) {
         // used as link like javascript:recipe("ctc,...",true/false)
         document.getElementById('replacement').value = stitches
-        document.getElementById(startsLeft ? 'left' : 'right').checked = true
+        if (startsLeft) {
+            document.getElementById('right').selected = true
+        } else{
+            document.getElementById('left').selected = true
+        }
     },
     flipRadio() {
-        const startsLeft = document.getElementById("left").checked;
-        document.getElementById(startsLeft ? 'right' : 'left').checked = true
+        if (this.getPairsStartLeft()) {
+            document.getElementById('right').selected = true
+        } else{
+            document.getElementById('left').selected = true
+        }
     },
 
     flip_b2d(id) {
-        const n = document.getElementById(id);
-        n.value = n.value.toLowerCase().replace(/l/g, "R").replace(/r/g, "L").toLowerCase();
+        const n = document.getElementById('replacement');
+        n.value = this.getRecipeStitches().replace(/l/g, "R").replace(/r/g, "L").toLowerCase();
         this.flipRadio();
         n.focus();
     },
 
     flip_b2p(id) {
-        const n = document.getElementById(id);
-        n.value = n.value.toLowerCase().split("").reverse().join("");
+        const n = document.getElementById('replacement');
+        n.value = this.getRecipeStitches().split("").reverse().join("");
         this.flipRadio();
         n.focus();
     },
 
     updatePattern(q) {
         if (q.includes('shiftRowsSW=16')) {
-            document.getElementById('apply_single_recipe').style.display = 'none';
+            document.getElementById('singleHexa').style.display = 'none';
             document.getElementById('hexas').style.display = 'inline-block';
         } else {
-            document.getElementById('apply_single_recipe').style.display = 'inline-block';
+            document.getElementById('singleHexa').style.display = 'inline-block';
             document.getElementById('hexas').style.display = 'none';
             document.getElementById('replacement').value = 'tc,rclcrc,clcrcl,ct';
         }
