@@ -18,12 +18,15 @@
         </span>
     </fieldset>
     <p>
-        <input type="radio" name="nr" id="mix4" value="4" checked  onchange="GF_snow_mixer.radioChanged(this.value)"/><label for="mix4">mix 4 snowflakes</label>
-        <input type="radio" name="nr" id="mix1" value="1"  onchange="GF_snow_mixer.radioChanged(this.value)"/><label for="mix1">single snowflake</label>
+        <label for="nrOfSnowFlakes">Choose</label>
+        <select id="nrOfSnowFlakes" size="2" onchange="GF_snow_mixer.nrOfSnowFlakesChanged()">
+            <option value="4" selected>mix 4 snowflakes</option>
+            <option value="1" title="less elaborate to set stitches for 6 pairs">single snowflake</option>
+        </select>
         <input type="button"
                value="Apply recipe"
                id="apply_single_recipe"
-               onclick="GF_snow_mixer.setHref('hexaOne', 'replacement','toDiagrams', 'toPrintFriendly', 'start_pairs')" />
+               onclick="GF_snow_mixer.setHref('hexaOne')" />
     </p>
 
     <fieldset id="hexas" style="display: inline-block; vertical-align: top">
@@ -32,31 +35,31 @@
             <path
                     style="opacity:0.75;fill:#f4a582ff"
                     d="m 65.463353,15.118109 13.09266,7.559055 V 37.795275 L 65.463353,45.35433 52.370683,37.795275 V 22.677164 Z"
-                    onclick="GF_snow_mixer.setHref(this.id, 'replacement','toDiagrams', 'toPrintFriendly', 'start_pairs')" id="hexaNE"/>
+                    onclick="GF_snow_mixer.setHref(this.id)" id="hexaNE"/>
             <path
                     style="opacity:0.75;fill:#0571b0ff"
                     d="m 39.277993,30.23622 -13.09266,7.559055 v 15.118111 l 13.09266,7.559052 13.09267,-7.559052 V 37.795275 Z"
-                    onclick="GF_snow_mixer.setHref(this.id, 'replacement', 'toDiagrams', 'toPrintFriendly', 'start_pairs')" id="hexaCenter"/>
+                    onclick="GF_snow_mixer.setHref(this.id)" id="hexaCenter"/>
             <path
                     style="opacity:0.75;fill:#92c5deff"
                     d="m 65.463343,45.35433 -13.09266,7.559055 v 15.118113 l 13.09266,7.55905 13.09267,-7.55905 V 52.913385 Z"
-                    onclick="GF_snow_mixer.setHref(this.id, 'replacement', 'toDiagrams', 'toPrintFriendly', 'start_pairs')" id="hexaSE"/>
+                    onclick="GF_snow_mixer.setHref(this.id)" id="hexaSE"/>
             <path
                     style="opacity:0.75;fill:#ca0020ff"
                     d="m 39.278003,0 -13.09266,7.559055 v 15.118111 l 13.09266,7.559055 13.09267,-7.559055 V 7.559055 Z"
-                    onclick="GF_snow_mixer.setHref(this.id, 'replacement', 'toDiagrams', 'toPrintFriendly', 'start_pairs')" id="hexaN"/>
+                    onclick="GF_snow_mixer.setHref(this.id)" id="hexaN"/>
             <path
                     style="opacity:0.75;fill:#f4a582ff"
                     d="m 13.09267,45.354331 13.092663,7.559055 V 68.031498 L 13.09267,75.590548 0,68.031498 V 52.913386 Z"
-                    onclick="GF_snow_mixer.setHref(this.id, 'replacement', 'toDiagrams', 'toPrintFriendly', 'start_pairs')" id="hexaSW"/>
+                    onclick="GF_snow_mixer.setHref(this.id)" id="hexaSW"/>
             <path
                     style="opacity:0.75;fill:#ca0020ff"
                     d="m 39.277993,60.472448 -13.09266,7.55906 v 15.11811 l 13.09266,7.55905 13.09267,-7.55905 v -15.11811 z"
-                    onclick="GF_snow_mixer.setHref(this.id, 'replacement', 'toDiagrams', 'toPrintFriendly', 'start_pairs')" id="hexaS"/>
+                    onclick="GF_snow_mixer.setHref(this.id)" id="hexaS"/>
             <path
                     style="opacity:0.75;fill:#92c5deff"
                     d="M 13.09267,15.11811 1e-5,22.677165 v 15.118111 l 13.09266,7.559055 13.092673,-7.559055 V 22.677165 Z"
-                    onclick="GF_snow_mixer.setHref(this.id, 'replacement', 'toDiagrams', 'toPrintFriendly', 'start_pairs')" id="hexaNW"/>
+                    onclick="GF_snow_mixer.setHref(this.id)" id="hexaNW"/>
         </svg>
     </fieldset>
     <div id="pairs" style=" display: inline-block; width: 180px; height: 200px; overflow: auto; resize: both"></div>

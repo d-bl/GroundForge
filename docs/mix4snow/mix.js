@@ -34,7 +34,7 @@ const GF_snow_mixer = {
         return document.getElementById('toPrintFriendly')
     },
     getNrOfSnowflakes() {
-        return document.querySelector('input[name="nr"]:checked').value
+        return document.getElementById('nrOfSnowFlakes').value;
     },
     getPairsStartLeft() {
         return document.getElementById("left").checked
@@ -83,8 +83,8 @@ const GF_snow_mixer = {
         GF_snow_mixer.diagrams(GF_snow_mixer.twistFootsides(q));
     },
 
-    radioChanged(stringValue) {
-        switch (stringValue) {
+    nrOfSnowFlakesChanged() {
+        switch (GF_snow_mixer.getNrOfSnowflakes()) {
             case "1":
                 this.updatePattern(this.q1);
                 break;
@@ -95,7 +95,7 @@ const GF_snow_mixer = {
     },
 
 
-    setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
+    setHref(hexaId) {
         function parseMatrix(str) {
             return str.split(',').map(row => row.split(''));
         }
@@ -268,10 +268,16 @@ const GF_snow_mixer = {
             d3.select('#pairs').selectAll(".node").on("click", this.clickedPairStitch)
 
             if (GF_snow_mixer.getNrOfSnowflakes() === "1") {
-                paintThreadIntersections(/[g][02468]/, '#0571b0ff');
-                paintThreadIntersections(/[h][02469]/, '#ca0020ff');
-                paintThreadIntersections(/[h][13578]/, '#92c5deff');
-                paintThreadIntersections(/[g][13579]/, '#f4a582ff');
+                // 8 is the first row, 1, the second, 4 the last and optionally 2 and 3 between
+                const nrOfRows = Math.ceil(GF_snow_mixer.getRecipeStitches().split(',').length / 2);
+                paintThreadIntersections(/[g][248]/, '#0571b0ff');
+                paintThreadIntersections(/[h][248]/, '#ca0020ff');
+                paintThreadIntersections(/[h][13]/, '#92c5deff');
+                paintThreadIntersections(/[g][13]/, '#f4a582ff');
+                if (nrOfRows === 2 || nrOfRows === 4) {
+                    paintThreadIntersections(/h4/, '#92c5deff');
+                    paintThreadIntersections(/g4/, '#f4a582ff');
+                }
             } else {
                 paintThreadIntersections(/[gh]([1-4]|(16))[0-9a-z]$/, '#0571b0ff');
                 paintThreadIntersections(/[ij][4-8][0-9a-z]$/, '#92c5deff');

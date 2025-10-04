@@ -45,16 +45,19 @@ javascript:
 </fieldset>
 <br>
 
-The same set of four colors serves two independent purposes.
-The colors of the hexagons match groups of stitches in the thread diagram.
-The pair diagram has a [color-code] that can express unorthodox stitches.
+The same set of four colors serves different independent purposes.
+* The colors of the hexagons match groups of stitches in the thread diagram.
+* The pair diagram has a [color-code] that can express unorthodox stitches.
+* In case of a single snowflake:
+  neighbouring stitches in the thread diagram have different colors.
+
+To study the anatomy of the recipes when mixing four snowflakes:
+Hover over a stitch in the pair diagram for a tooltip, 
+click to remove the color from the corresponding stitch in the thread diagram.
 
 Some recipes put more stitches in the recipe box than others.
 They may clutter the perimeters of the pair diagram.
 Resize the panel (drag the bottom right corner) or move the content around for a better view.
-To study the anatomy of the recipes:
-Hover over a stitch in the pair diagram for a tooltip, 
-click to remove the color from the corresponding stitch in the thread diagram.
 
 The go-to buttons lead to pages where you can [highlight] threads 
 for three-pair respectively six-pair connections and [replace stitches].
