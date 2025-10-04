@@ -27,6 +27,73 @@ const GF_snow_mixer = {
         ",u80=u82=u160=u162=ctcrrrrrrrr" +
         ",u81=u161=rrrrrctcrrrrr",
 
+    getToDrosteElement() {
+        return document.getElementById('toDiagrams')
+        },
+    getToStitchesElement() {
+        return document.getElementById('toPrintFriendly')
+    },
+    getNrOfSnowflakes() {
+        return document.querySelector('input[name="nr"]:checked').value
+    },
+    getPairsStartLeft() {
+        return document.getElementById("left").checked
+    },
+    getFormContainer() {
+        return document.getElementById('fragmentDiv');
+    },
+    getRecipeStitches() {
+        return document.getElementById('replacement').value
+        .toLowerCase().replaceAll(/[^crlt,]/g, '')
+    },
+    recipe(stitches, startsLeft) {
+        // used as link like javascript:recipe("ctc,...",true/false)
+        document.getElementById('replacement').value = stitches
+        document.getElementById(startsLeft ? 'left' : 'right').checked = true
+    },
+    flipRadio() {
+        const startsLeft = document.getElementById("left").checked;
+        document.getElementById(startsLeft ? 'right' : 'left').checked = true
+    },
+
+    flip_b2d(id) {
+        const n = document.getElementById(id);
+        n.value = n.value.toLowerCase().replace(/l/g, "R").replace(/r/g, "L").toLowerCase();
+        this.flipRadio();
+        n.focus();
+    },
+
+    flip_b2p(id) {
+        const n = document.getElementById(id);
+        n.value = n.value.toLowerCase().split("").reverse().join("");
+        this.flipRadio();
+        n.focus();
+    },
+
+    updatePattern(q) {
+        if (q.includes('shiftRowsSW=16')) {
+            document.getElementById('apply_single_recipe').style.display = 'none';
+            document.getElementById('hexas').style.display = 'inline-block';
+        } else {
+            document.getElementById('apply_single_recipe').style.display = 'inline-block';
+            document.getElementById('hexas').style.display = 'none';
+        }
+        document.getElementById('toDiagrams').setAttribute("href", this.drosteURL + q);
+        document.getElementById('toPrintFriendly').setAttribute("href", this.stitchesURL + q);
+        GF_snow_mixer.diagrams(GF_snow_mixer.twistFootsides(q));
+    },
+
+    radioChanged(stringValue) {
+        switch (stringValue) {
+            case "1":
+                this.updatePattern(this.q1);
+                break;
+            case "4":
+                this.updatePattern(this.q4);
+                break;
+        }
+    },
+
 
     setHref(hexaId, stitchesId, drosteHrefId, printHrefId, startId) {
         function parseMatrix(str) {
@@ -37,11 +104,11 @@ const GF_snow_mixer = {
             return matrix.map(row => row.join('')).join(',');
         }
 
-        const hrefNode = document.getElementById(drosteHrefId);
-        const stitchArray = document.getElementById(stitchesId).value.toLowerCase().replaceAll(' ', '').split(/[,.]/);
+        const hrefNode = this.getToDrosteElement();
+        const stitchArray = this.getRecipeStitches().split(/[,.]/);
         const nrOfStitches = stitchArray.length;
         const q = this.getQueryParams(hrefNode.getAttribute("href"));
-        const startsLeft = document.getElementById("left").checked;
+        const startsLeft = this.getPairsStartLeft();
 
         switch (stitchArray.length) {
             case 4:
@@ -121,8 +188,7 @@ const GF_snow_mixer = {
                 reconnect(row, col);
                 reconnect((row + 8) % 16, col);
             } else {
-                const value = document.querySelector('input[name="start_pairs"]:checked').value;
-                if (value === "left") {
+                if (GF_snow_mixer.getPairsStartLeft()) {
                     matrix[4][0] = "y";
                 } else {
                     matrix[3][1] = "8";
@@ -161,8 +227,7 @@ const GF_snow_mixer = {
             .map(([key, value]) => !value ? '' : `${encodeURIComponent(key)}=${value.replace(/%2C/g, ',').replace(/%2D/g, '-')}`)
             .join('&');
         hrefNode.setAttribute('href', this.drosteURL + newQ);
-        let element = document.getElementById(printHrefId);
-        element
+        this.getToStitchesElement()
             .setAttribute("href", this.stitchesURL + newQ)
         this.diagrams(this.twistFootsides(newQ));
     },
@@ -202,12 +267,11 @@ const GF_snow_mixer = {
             d3.select('#pairs').selectAll(".node").attr("onclick", null)
             d3.select('#pairs').selectAll(".node").on("click", this.clickedPairStitch)
 
-            const value = document.querySelector('input[name="nr"]:checked').value;
-            if (value === "1") {
-                paintThreadIntersections(/[g][02469]/, '#0571b0ff');
+            if (GF_snow_mixer.getNrOfSnowflakes() === "1") {
+                paintThreadIntersections(/[g][02468]/, '#0571b0ff');
                 paintThreadIntersections(/[h][02469]/, '#ca0020ff');
                 paintThreadIntersections(/[h][13578]/, '#92c5deff');
-                paintThreadIntersections(/[g][13578]/, '#f4a582ff');
+                paintThreadIntersections(/[g][13579]/, '#f4a582ff');
             } else {
                 paintThreadIntersections(/[gh]([1-4]|(16))[0-9a-z]$/, '#0571b0ff');
                 paintThreadIntersections(/[ij][4-8][0-9a-z]$/, '#92c5deff');
@@ -216,13 +280,6 @@ const GF_snow_mixer = {
             }
         }, 0);
     },
-
-     recipe(stitches, startsLeft) {
-        // used as link  in a markdown containing the form
-        // javascript:recipe("ctc,...",true/false)
-        document.getElementById('replacement').value = stitches
-        document.getElementById(startsLeft ? 'left' : 'right').checked = true
-     },
 
 
      clickedPairStitch(event) {
@@ -244,58 +301,15 @@ const GF_snow_mixer = {
         return queryParams;
     },
 
-     flipRadio() {
-        const startsLeft = document.getElementById("left").checked;
-        document.getElementById(startsLeft ? 'right' : 'left').checked = true
-    },
-
-     flip_b2d(id) {
-        const n = document.getElementById(id);
-        n.value = n.value.toLowerCase().replace(/l/g, "R").replace(/r/g, "L").toLowerCase();
-        this.flipRadio();
-        n.focus();
-    },
-
-     flip_b2p(id) {
-        const n = document.getElementById(id);
-        n.value = n.value.toLowerCase().split("").reverse().join("");
-        this.flipRadio();
-        n.focus();
-    },
-
-     twistFootsides(q) {
+    twistFootsides(q) {
         return q.replace("f8=crc&f16=crc", "f8=ttcrctt&f16=ttcrctt").replace("u8=clc&u16=clc", "u8=tclcttt&u16=tclcttt");
-     },
-
-     radioChanged(stringValue) {
-         switch (stringValue) {
-             case "1":
-                 this.updatePattern(this.q1);
-                 break;
-             case "4":
-                 this.updatePattern(this.q4);
-                 break;
-         }
-     },
-
-    updatePattern(q) {
-        if (q.includes('shiftRowsSW=16')) {
-            document.getElementById('apply_single_recipe').style.display = 'none';
-            document.getElementById('hexas').style.display = 'inline-block';
-        } else {
-            document.getElementById('apply_single_recipe').style.display = 'inline-block';
-            document.getElementById('hexas').style.display = 'none';
-        }
-        document.getElementById('toDiagrams').setAttribute("href", this.drosteURL + q);
-        document.getElementById('toPrintFriendly').setAttribute("href", this.stitchesURL + q);
-        GF_snow_mixer.diagrams(GF_snow_mixer.twistFootsides(q));
     },
 
     init () {
          fetch('fragment.html')
              .then(response => response.text())
              .then(html => {
-                 document.getElementById('fragmentDiv').innerHTML = html;
+                 this.getFormContainer().innerHTML = html;
 
                  var q = window.location.search.substring(1);
                  // the search string may have been set by webstorm
