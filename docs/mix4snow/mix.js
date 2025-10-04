@@ -59,14 +59,14 @@ const GF_snow_mixer = {
         }
     },
 
-    flip_b2d(id) {
+    flip_b2d() {
         const n = document.getElementById('replacement');
         n.value = this.getRecipeStitches().replace(/l/g, "R").replace(/r/g, "L").toLowerCase();
         this.flipRadio();
         n.focus();
     },
 
-    flip_b2p(id) {
+    flip_b2p() {
         const n = document.getElementById('replacement');
         n.value = this.getRecipeStitches().split("").reverse().join("");
         this.flipRadio();
