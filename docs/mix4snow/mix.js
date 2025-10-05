@@ -44,7 +44,7 @@ const GF_snow_mixer = {
     },
     getRecipeStitches() {
         return document.getElementById('replacement').value
-        .toLowerCase().replaceAll(/[^crlt,]/g, '')
+        .toLowerCase().replaceAll(/[^crlt,-]/g, '')
     },
     recipe(recipeStitches, startSide) {
         // used as link like javascript:recipe('ctc,...','left')
