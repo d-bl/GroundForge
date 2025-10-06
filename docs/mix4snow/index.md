@@ -8,7 +8,7 @@ javascript:
   - nudgePairs.js
 ---
 
-<fieldset style="background: #FFF; max-width:95%; height:145px; overflow: auto; resize: both"><legend>Select a recipe</legend>
+<fieldset style="height:145px; overflow: auto; resize: both"><legend>Select a recipe</legend>
 <a data-title="123-a" href="javascript:GF_snow_mixer.recipe('crc,crclctc,ctcrc,rcl,c,c','right')"><img src="123-a.png" alt=""></a> &nbsp;
 <a data-title="123-b" href="javascript:GF_snow_mixer.recipe('rcl,ctc,crcllc,crrclcr,ctc,cl','left')"><img src="123-b.png" alt=""></a> &nbsp;
 <a data-title="132-a" href="javascript:GF_snow_mixer.recipe('-,ctc,ctc,ctc,ctc,ctc','right')"><img src="132-a.png" alt=""></a> &nbsp;
