@@ -38,7 +38,6 @@ javascript:
 <a data-title="623541-a" href="javascript:GF_snow_mixer.recipe('-,ctc,ct,crc,ctc,ctc','left')"><img src="623541-a.png" alt=""></a> &nbsp;
 <a data-title="623541-b" href="javascript:GF_snow_mixer.recipe('-,cl,ctctcr,ct,ctc,c','right')"><img src="623541-b.png" alt=""></a> &nbsp;
 </fieldset>
-<br>
 
 <div id="fragmentDiv"></div>
 <script type="text/javascript" src="mix.js"></script>
