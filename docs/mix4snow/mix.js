@@ -80,11 +80,9 @@ const GF_snow_mixer = {
         } else {
             document.getElementById('singleHexa').style.display = 'inline-block';
             document.getElementById('hexas').style.display = 'none';
-            document.getElementById('replacement').value = 'tc,rclcrc,clcrcl,ct';
         }
         document.getElementById('toDiagrams').setAttribute("href", this.drosteURL + q);
         document.getElementById('toPrintFriendly').setAttribute("href", this.stitchesURL + q);
-        GF_snow_mixer.diagrams(GF_snow_mixer.twistFootsides(q));
     },
 
     nrOfSnowFlakesChanged() {
@@ -96,6 +94,8 @@ const GF_snow_mixer = {
                 this.updatePattern(this.q4);
                 break;
         }
+        document.getElementById('pairs').innerHTML = '';
+        document.getElementById('threads').innerHTML = '<p style="color:grey">select/tweak a recipe, then click a hexagon for diagrams</p>';
     },
 
 
@@ -327,7 +327,7 @@ const GF_snow_mixer = {
                      q = this.q4;
                  }
                  this.updatePattern(q);
-
+                 GF_snow_mixer.diagrams(GF_snow_mixer.twistFootsides(q));
              })
              .catch(err => console.error('Failed to load fragment:', err));
 

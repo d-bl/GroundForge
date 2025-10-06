@@ -8,10 +8,6 @@ javascript:
   - nudgePairs.js
 ---
 
-<div id="fragmentDiv"></div>
-<script type="text/javascript" src="mix.js"></script>
-<script type="text/javascript">GF_snow_mixer.init()</script>
-
 <fieldset style="background: #FFF; max-width:95%; height:145px; overflow: auto; resize: both"><legend>Select a recipe</legend>
 <a data-title="123-a" href="javascript:GF_snow_mixer.recipe('crc,crclctc,ctcrc,rcl,c,c','right')"><img src="123-a.png" alt=""></a> &nbsp;
 <a data-title="123-b" href="javascript:GF_snow_mixer.recipe('rcl,ctc,crcllc,crrclcr,ctc,cl','left')"><img src="123-b.png" alt=""></a> &nbsp;
@@ -41,9 +37,12 @@ javascript:
 <a data-title="623451-a" href="javascript:GF_snow_mixer.recipe('r,c,crc,ctc,lcrcl,ctc,crc,cl','left')"><img src="623451-a.png" alt=""></a> &nbsp;
 <a data-title="623541-a" href="javascript:GF_snow_mixer.recipe('-,ctc,ct,crc,ctc,ctc','left')"><img src="623541-a.png" alt=""></a> &nbsp;
 <a data-title="623541-b" href="javascript:GF_snow_mixer.recipe('-,cl,ctctcr,ct,ctc,c','right')"><img src="623541-b.png" alt=""></a> &nbsp;
-<a href="/GroundForge-help/snow-mix#recipes-for-the-mixer" rel="help">variations and more...</a>
 </fieldset>
 <br>
+
+<div id="fragmentDiv"></div>
+<script type="text/javascript" src="mix.js"></script>
+<script type="text/javascript">GF_snow_mixer.init()</script>
 
 The same set of four colors serves different independent purposes.
 * The colors of the hexagons match groups of stitches in the thread diagram.
