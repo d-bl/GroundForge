@@ -95,7 +95,7 @@ const GF_snow_mixer = {
                 break;
         }
         document.getElementById('pairs').innerHTML = '';
-        document.getElementById('threads').innerHTML = '<p style="color:grey">select/tweak a recipe, then click a hexagon for diagrams</p>';
+        document.getElementById('threads').innerHTML = '<br><p style="color:grey">select/tweak a recipe, then click a hexagon for diagrams</p>';
     },
 
 
