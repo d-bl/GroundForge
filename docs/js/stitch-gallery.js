@@ -79,7 +79,7 @@ function setColorCode() {
         <svg width="20px" height="25px">
           <g transform="scale(2,2)">
             <g transform="translate(5,6)">
-              ${PairSvg.shapes(node.value.toLowercase())}
+              ${PairSvg.shapes(node.value.toLowerCase())}
             </g>
           </g>
         </svg>`
