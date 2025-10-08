@@ -241,7 +241,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   @JSExport
   def bdpqLegend(s: String): String = {
     val stitches = s.split(",")
-      .map(_.replaceAll("^[lrt]+", "").replaceAll("[lrt]+$", "").toLowerCase())
+      .map(_.toLowerCase().replaceAll("^[lrt]+", "").replaceAll("[lrt]+$", ""))
     val withFlipped = stitches ++
       stitches.map(flipAlongY) ++
       stitches.map(_.reverse) ++

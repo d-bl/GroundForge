@@ -155,7 +155,7 @@ private class Pattern (tileMatrix: String,
                          s"shiftColsSW=0&shiftRowsSW=$tileRows&shiftColsSE=$tileCols&shiftRowsSE=$tileRows"
                        else
                          s"shiftColsSW=-${tileCols/2}&shiftRowsSW=$tileRows&shiftColsSE=${tileCols/2}&shiftRowsSE=$tileRows"
-  private val url = "https://d-bl.github.io/GroundForge/tiles.html"
+  private val url = "https://d-bl.github.io/GroundForge/stitches.html"
   private def createPatch: String =
     s"""
        |  <text style='font-family:Arial;font-size:11pt'>
