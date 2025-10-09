@@ -202,6 +202,7 @@ const GF_snow_mixer = {
                     matrix[7][0] = "2";
                     q.set("footside", "-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----x");
                     q.set("headside", "x,x,x,7,r,r,r,r")
+                    q.set("f7", "ttctctt");
                 }
             }
             q.set("tile", matrixToString(matrix))
