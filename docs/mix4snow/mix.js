@@ -194,8 +194,14 @@ const GF_snow_mixer = {
             } else {
                 if (GF_snow_mixer.getPairsStartLeft()) {
                     matrix[4][0] = "y";
+                    q.set("headside", "x,x,x,8,r,r,r,r")
+                    q.set("footside", "-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r"); // TODO do not repeat
                 } else {
-                    matrix[3][1] = "8";
+                    matrix[4][1] = "w";
+                    matrix[3][1] = "-";
+                    matrix[7][0] = "2";
+                    q.set("footside", "-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----x");
+                    q.set("headside", "x,x,x,7,r,r,r,r")
                 }
             }
             q.set("tile", matrixToString(matrix))

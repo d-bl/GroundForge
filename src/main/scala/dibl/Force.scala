@@ -28,6 +28,7 @@ import scala.util.Try
   */
 object Force {
 
+  // TODO Move to another class
   case class Point(x: Double, y: Double)
 
 }
