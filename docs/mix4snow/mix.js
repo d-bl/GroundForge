@@ -19,13 +19,11 @@ const GF_snow_mixer = {
         "&f8=crc&f16=crc&footside=-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r&" +
         "&u8=clc&u16=clc&headside=x,x,x,8,r,r,r,r" +
         "&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=2&shiftRowsSE=4&patchWidth=14&patchHeight=35" +
-        "&h1=ct&g1=clcrcl&h2=crclcr&g5=ct&h9=ct&h4=ct&h8=rclcrc&g8=tc&j4=rclcrc&i4=tc&j5=ct&i8=rc&j8=ct&i16=rc" +
-        "&droste2=g160=g161=h160=ttctc,g15=h41=h42=ctctt" +
-        ",,g80=j120=lllctc,g81=lllctcl,h80=rrrctc,h81=rrrctcr,g120=g121=ctclll,h92=h93=ctcrrr" +
-        ",,f80=f82=f160=f162=ctcllllllll" +
-        ",f81=f161=lllllctclllll" +
-        ",u80=u82=u160=u162=ctcrrrrrrrr" +
-        ",u81=u161=rrrrrctcrrrrr",
+        "&f7=ttctt&f8=ttctt&u8=ttctt" +
+        "&droste2=f70=f71=f81=f84=f85=f86=u80=u81=u82=u84=u85=u86=tttcttt" +
+        "&droste3=f800=f801=f802=f803=f810=f811=f816=f817=f818=f840=f846=f847=f848=f850=f856=f857=f858=f866=f867=f868=" +
+        "u800=u801=u802=u803=u810=u811=u816=u817=u818=u840=u846=u847=u848=u850=u856=u857=u858=u866=u867=u868=" +
+        "f700=f701=f702=f703=f710=f711=f716=f717=f718=f740=f746=f747=f748=f750=f756=f757=f758=f766=f767=f768=ttttctttt",
 
     getToDrosteElement() {
         return document.getElementById('toDiagrams')
@@ -202,7 +200,6 @@ const GF_snow_mixer = {
                     matrix[7][0] = "2";
                     q.set("footside", "-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----x");
                     q.set("headside", "x,x,x,7,r,r,r,r")
-                    q.set("f7", "ttctctt");
                 }
             }
             q.set("tile", matrixToString(matrix))
@@ -240,7 +237,7 @@ const GF_snow_mixer = {
         hrefNode.setAttribute('href', this.drosteURL + newQ);
         this.getToStitchesElement()
             .setAttribute("href", this.stitchesURL + newQ)
-        this.diagrams(this.twistFootsides(newQ));
+        this.diagrams(newQ);
     },
 
      diagrams(q) {
@@ -319,6 +316,7 @@ const GF_snow_mixer = {
     },
 
     twistFootsides(q) {
+        // special footside for the initial pattern
         return q.replace("f8=crc&f16=crc", "f8=ttcrctt&f16=ttcrctt").replace("u8=clc&u16=clc", "u8=tclcttt&u16=tclcttt");
     },
 
