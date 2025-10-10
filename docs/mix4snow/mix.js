@@ -276,12 +276,7 @@ const GF_snow_mixer = {
             d3.select('#pairs').selectAll(".node").on("click", this.clickedPairStitch)
 
             if (GF_snow_mixer.getNrOfSnowflakes() === "1") {
-                // 8 is the first row, 1, the second, 4 the last and optionally 2 and 3 between
-                const nrOfRows = Math.ceil(GF_snow_mixer.getRecipeStitches().split(',').length / 2);
-                paintThreadIntersections(/[g][248]/, '#0571b0ff');
-                paintThreadIntersections(/[h][248]/, '#ca0020ff');
-                paintThreadIntersections(/[h][13]/, '#92c5deff');
-                paintThreadIntersections(/[g][13]/, '#f4a582ff');
+                paintThreadIntersections(/[gh][12348]/, '#92c5deff');
                 if (nrOfRows === 2 || nrOfRows === 4) {
                     paintThreadIntersections(/h4/, '#92c5deff');
                     paintThreadIntersections(/g4/, '#f4a582ff');
