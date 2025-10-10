@@ -42,7 +42,7 @@ const GF_snow_mixer = {
     },
     getRecipeStitches() {
         return document.getElementById('replacement').value
-        .toLowerCase().replaceALl('.', ',').replaceAll(/[^crlt,-]/g, '')
+        .toLowerCase().replaceAll('.', ',').replaceAll(/[^crlt,-]/g, '')
     },
     recipe(recipeStitches, startSide) {
         // used as link like javascript:recipe('ctc,...','left')
@@ -276,11 +276,7 @@ const GF_snow_mixer = {
             d3.select('#pairs').selectAll(".node").on("click", this.clickedPairStitch)
 
             if (GF_snow_mixer.getNrOfSnowflakes() === "1") {
-                paintThreadIntersections(/[gh][12348]/, '#92c5deff');
-                if (nrOfRows === 2 || nrOfRows === 4) {
-                    paintThreadIntersections(/h4/, '#92c5deff');
-                    paintThreadIntersections(/g4/, '#f4a582ff');
-                }
+                paintThreadIntersections(/[gh][12348]/, '#0571b0ff');
             } else {
                 paintThreadIntersections(/[gh]([1-4]|(16))[0-9a-z]$/, '#0571b0ff');
                 paintThreadIntersections(/[ij][4-8][0-9a-z]$/, '#92c5deff');
