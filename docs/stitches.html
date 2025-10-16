@@ -37,6 +37,7 @@
             <ul id="helpMenu">
                 <li>Features on this page
                     <ul>
+                        <li><a target="_blank" rel="help" href="/GroundForge-help/icons">Icons</a></li>
                         <li><a target="_blank" rel="help" href="/GroundForge-help/color-rules">Color code (4 per stitch)</a></li>
                         <li><a target="_blank" rel="help" href="/GroundForge-help/Patch-Size">Swatch size</a></li>
                         <li><a target="_blank" rel="help" href="/GroundForge-help/Download">Download</a></li>
@@ -77,16 +78,13 @@
                 <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="7" onchange="dimChanged()">
                 <label for="patchHeight">rows</label>
             </div>
-            <p><a class="button" id="forces" type="button" href="javascript:nudgePairs('#pair')">apply forces</a>
-            <label for="forces"> to the pair diagram</label>
-            </p>
             <label for="threadColor">Thread/stitch highlights</label>
             <input type="color" id="threadColor" name="threadColor" value="#ff0000">
             <br><br><div id="gallery"></div>
             <p>
                 <a class="button" href="javascript:setAllStitches()">assign to all</a>
                 <a class="button" href="javascript:setIgnoredStitches()">assign to ignored</a>
-                or click a stitch in the diagram.
+                or click a stitch in the pair diagram.
             </p>
 
         </form>

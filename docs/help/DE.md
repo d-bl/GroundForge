@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Die Spitze 1-2020 Literaturhinweise 
+title: Die Spitze 1-2020 Literaturhinweis
 ---
 
 <a id="BK-31"> </a>
@@ -13,7 +13,7 @@ Seite 50 verweist auf diese Seite für Online-Inhalte.
 Die Benutzeroberfläche hat sich im Laufe der Jahre verändert. Auffallende Unterschiede sind, dass es weniger Diagramme auf einer einzigen Seite gibt und eine neue [Farbcode] der weniger herkömmliche Schlage bietet.
 
 * Figur 2: interaktive Versionen [mit] eine Innen/Ausen-rand und [ohne] und ein [tutorial].
-* [Figur 1](https://jo-pol.github.io/flanders/) der allerer erste Diagrammgenerator
+* [Figur 1](https://jo-pol.github.io/flanders/) der allererste Diagrammgenerator
 * [Figur 4 a](https://archive.org/details/laceguideformak00whit/page/185/mode/1up) Seite 185 in "A Lace Guide for Maker and Collector" von Gertrude Whiting mit patch F9 of her sampler
 * [Figur 4 b and c](https://d-bl.github.io/GroundForge/stitches?whiting=F9_P185&patchWidth=26&patchHeight=26&m1=ctc&e1=ctc&o3=llcttctt&k3=cttctt&g3=ctcrrrctc&e3=ctc&c3=ctcllctc&g4=ctc&e4=ctc&i5=llctctt&g5=ctc&e5=ctc&c5=ctc&a5=rrctctt&e6=ctc&c6=ctc&o7=cttctt&k7=cttctt&g7=ctcrrctcrr&e7=ctc&c7=ctcllctcll&tile=--x-5-x---x-c-x-,-----w-----y-w--,--g-g-c---b---c-,---w8-mv-yx---xw,h-g-f-f-5-x---x-,-w8-mv---w-----y,--f-f-c---c---b-,--xw--x---xw-yx-&footsideStitch=ctctt&tileStitch=ctc&headsideStitch=ctctt&shiftColsSW=-8&shiftRowsSW=8&shiftColsSE=8&shiftRowsSE=8) eine interactive Version of patch F9, showing distortions when compared to traditional diagrams
 

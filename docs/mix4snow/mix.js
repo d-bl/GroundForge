@@ -19,13 +19,11 @@ const GF_snow_mixer = {
         "&f8=crc&f16=crc&footside=-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r&" +
         "&u8=clc&u16=clc&headside=x,x,x,8,r,r,r,r" +
         "&shiftColsSW=0&shiftRowsSW=8&shiftColsSE=2&shiftRowsSE=4&patchWidth=14&patchHeight=35" +
-        "&h1=ct&g1=clcrcl&h2=crclcr&g5=ct&h9=ct&h4=ct&h8=rclcrc&g8=tc&j4=rclcrc&i4=tc&j5=ct&i8=rc&j8=ct&i16=rc" +
-        "&droste2=g160=g161=h160=ttctc,g15=h41=h42=ctctt" +
-        ",,g80=j120=lllctc,g81=lllctcl,h80=rrrctc,h81=rrrctcr,g120=g121=ctclll,h92=h93=ctcrrr" +
-        ",,f80=f82=f160=f162=ctcllllllll" +
-        ",f81=f161=lllllctclllll" +
-        ",u80=u82=u160=u162=ctcrrrrrrrr" +
-        ",u81=u161=rrrrrctcrrrrr",
+        "&f7=ttctt&f8=ttctt&u8=ttctt" +
+        "&droste2=f70=f71=f81=f84=f85=f86=u80=u81=u82=u84=u85=u86=tttcttt" +
+        "&droste3=f800=f801=f802=f803=f810=f811=f816=f817=f818=f840=f846=f847=f848=f850=f856=f857=f858=f866=f867=f868=" +
+        "u800=u801=u802=u803=u810=u811=u816=u817=u818=u840=u846=u847=u848=u850=u856=u857=u858=u866=u867=u868=" +
+        "f700=f701=f702=f703=f710=f711=f716=f717=f718=f740=f746=f747=f748=f750=f756=f757=f758=f766=f767=f768=ttttctttt",
 
     getToDrosteElement() {
         return document.getElementById('toDiagrams')
@@ -44,7 +42,7 @@ const GF_snow_mixer = {
     },
     getRecipeStitches() {
         return document.getElementById('replacement').value
-        .toLowerCase().replaceAll(/[^crlt,-]/g, '')
+        .toLowerCase().replaceAll('.', ',').replaceAll(/[^crlt,-]/g, '')
     },
     recipe(recipeStitches, startSide) {
         // used as link like javascript:recipe('ctc,...','left')
@@ -80,11 +78,9 @@ const GF_snow_mixer = {
         } else {
             document.getElementById('singleHexa').style.display = 'inline-block';
             document.getElementById('hexas').style.display = 'none';
-            document.getElementById('replacement').value = 'tc,rclcrc,clcrcl,ct';
         }
         document.getElementById('toDiagrams').setAttribute("href", this.drosteURL + q);
         document.getElementById('toPrintFriendly').setAttribute("href", this.stitchesURL + q);
-        GF_snow_mixer.diagrams(GF_snow_mixer.twistFootsides(q));
     },
 
     nrOfSnowFlakesChanged() {
@@ -96,6 +92,8 @@ const GF_snow_mixer = {
                 this.updatePattern(this.q4);
                 break;
         }
+        document.getElementById('pairs').innerHTML = '';
+        document.getElementById('threads').innerHTML = '<br><p style="color:grey">select/tweak a recipe, then click a hexagon for diagrams</p>';
     },
 
 
@@ -194,8 +192,14 @@ const GF_snow_mixer = {
             } else {
                 if (GF_snow_mixer.getPairsStartLeft()) {
                     matrix[4][0] = "y";
+                    q.set("headside", "x,x,x,8,r,r,r,r")
+                    q.set("footside", "-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----r"); // TODO do not repeat
                 } else {
-                    matrix[3][1] = "8";
+                    matrix[4][1] = "w";
+                    matrix[3][1] = "-";
+                    matrix[7][0] = "2";
+                    q.set("footside", "-----x,-----x,-----x,-----x,-----4,-----r,-----r,-----x");
+                    q.set("headside", "x,x,x,7,r,r,r,r")
                 }
             }
             q.set("tile", matrixToString(matrix))
@@ -233,7 +237,7 @@ const GF_snow_mixer = {
         hrefNode.setAttribute('href', this.drosteURL + newQ);
         this.getToStitchesElement()
             .setAttribute("href", this.stitchesURL + newQ)
-        this.diagrams(this.twistFootsides(newQ));
+        this.diagrams(newQ);
     },
 
      diagrams(q) {
@@ -272,16 +276,7 @@ const GF_snow_mixer = {
             d3.select('#pairs').selectAll(".node").on("click", this.clickedPairStitch)
 
             if (GF_snow_mixer.getNrOfSnowflakes() === "1") {
-                // 8 is the first row, 1, the second, 4 the last and optionally 2 and 3 between
-                const nrOfRows = Math.ceil(GF_snow_mixer.getRecipeStitches().split(',').length / 2);
-                paintThreadIntersections(/[g][248]/, '#0571b0ff');
-                paintThreadIntersections(/[h][248]/, '#ca0020ff');
-                paintThreadIntersections(/[h][13]/, '#92c5deff');
-                paintThreadIntersections(/[g][13]/, '#f4a582ff');
-                if (nrOfRows === 2 || nrOfRows === 4) {
-                    paintThreadIntersections(/h4/, '#92c5deff');
-                    paintThreadIntersections(/g4/, '#f4a582ff');
-                }
+                paintThreadIntersections(/[gh][12348]/, '#0571b0ff');
             } else {
                 paintThreadIntersections(/[gh]([1-4]|(16))[0-9a-z]$/, '#0571b0ff');
                 paintThreadIntersections(/[ij][4-8][0-9a-z]$/, '#92c5deff');
@@ -312,6 +307,7 @@ const GF_snow_mixer = {
     },
 
     twistFootsides(q) {
+        // special footside for the initial pattern
         return q.replace("f8=crc&f16=crc", "f8=ttcrctt&f16=ttcrctt").replace("u8=clc&u16=clc", "u8=tclcttt&u16=tclcttt");
     },
 
@@ -327,7 +323,7 @@ const GF_snow_mixer = {
                      q = this.q4;
                  }
                  this.updatePattern(q);
-
+                 GF_snow_mixer.diagrams(GF_snow_mixer.twistFootsides(q));
              })
              .catch(err => console.error('Failed to load fragment:', err));
 

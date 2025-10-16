@@ -8,11 +8,9 @@ javascript:
   - nudgePairs.js
 ---
 
-<div id="fragmentDiv"></div>
-<script type="text/javascript" src="mix.js"></script>
-<script type="text/javascript">GF_snow_mixer.init()</script>
+You can find some hints below the forms and diagrams.
 
-<fieldset style="background: #FFF; max-width:95%; height:145px; overflow: auto; resize: both"><legend>Select a recipe</legend>
+<fieldset style="height:145px; overflow: auto; resize: both"><legend>Select a recipe</legend>
 <a data-title="123-a" href="javascript:GF_snow_mixer.recipe('crc,crclctc,ctcrc,rcl,c,c','right')"><img src="123-a.png" alt=""></a> &nbsp;
 <a data-title="123-b" href="javascript:GF_snow_mixer.recipe('rcl,ctc,crcllc,crrclcr,ctc,cl','left')"><img src="123-b.png" alt=""></a> &nbsp;
 <a data-title="132-a" href="javascript:GF_snow_mixer.recipe('-,ctc,ctc,ctc,ctc,ctc','right')"><img src="132-a.png" alt=""></a> &nbsp;
@@ -41,27 +39,32 @@ javascript:
 <a data-title="623451-a" href="javascript:GF_snow_mixer.recipe('r,c,crc,ctc,lcrcl,ctc,crc,cl','left')"><img src="623451-a.png" alt=""></a> &nbsp;
 <a data-title="623541-a" href="javascript:GF_snow_mixer.recipe('-,ctc,ct,crc,ctc,ctc','left')"><img src="623541-a.png" alt=""></a> &nbsp;
 <a data-title="623541-b" href="javascript:GF_snow_mixer.recipe('-,cl,ctctcr,ct,ctc,c','right')"><img src="623541-b.png" alt=""></a> &nbsp;
-<a href="/GroundForge-help/snow-mix#recipes-for-the-mixer" rel="help">variations and more...</a>
 </fieldset>
-<br>
+
+<div id="fragmentDiv"></div>
+<script type="text/javascript" src="mix.js"></script>
+<script type="text/javascript">GF_snow_mixer.init()</script>
 
 The same set of four colors serves different independent purposes.
-* The colors of the hexagons match groups of stitches in the thread diagram.
+* The colors of the hexagons in _apply recipe_ match groups of stitches in the thread diagram.
 * The pair diagram has a [color-code] that can express unorthodox stitches.
-* In case of a single snowflake:
-  neighbouring stitches in the thread diagram have different colors.
 
-To study the anatomy of the recipes when mixing four snowflakes:
-Hover over a stitch in the pair diagram for a tooltip, 
-click to remove the color from the corresponding stitch in the thread diagram.
+To study the anatomy of the recipes:
+* Hover over stitches for tooltips,
+the tooltips in the thread diagram will show stitch IDs
+that start with the same value as the corresponding stitch in the pair diagram.
+* Click a stitch in the pair diagram to remove the color from the corresponding stitch in the thread diagram.
+Apply the last recipe again to restore the colors.
 
 Some recipes put more stitches in the recipe box than others.
-They may clutter the perimeters of the pair diagram.
-Resize the panel (drag the bottom right corner) or move the content around for a better view.
+They may clutter the perimeters of the diagrams.
+You can move the content for a better view.
 
 The go-to buttons lead to pages where you can [highlight] threads 
 for three-pair respectively six-pair connections and [replace stitches].
 You can save all three pages as a [PDF] document.
+After tweak footside, you can return here via the droste page (threads as pairs).
+
 A [tutorial] gives a general introduction, elaborates choosing stitches, footsides and recipes.
  
 [color-code]: /GroundForge-help/color-rules

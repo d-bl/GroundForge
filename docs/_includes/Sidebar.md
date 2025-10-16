@@ -5,28 +5,16 @@
 ## User guide
 
 ### Introduction
+[de](https://github.com/d-bl/GroundForge/blob/oidfa-article/docs/help/DE.md), [en](/GroundForge/), [fr](http://gibritte.over-blog.com/2020/05/jouer-groundforge.html), [nl](https://github.com/d-bl/GroundForge/blob/oidfa-article/docs/help/NL.md)
 
-* [de](https://github.com/d-bl/GroundForge/blob/oidfa-article/docs/help/DE.md), [en](/GroundForge/), [fr](http://gibritte.over-blog.com/2020/05/jouer-groundforge.html), [nl](https://github.com/d-bl/GroundForge/blob/oidfa-article/docs/help/NL.md)
-
-### Features
-
-* [Icons](/GroundForge-help/Icons)
-* [Drop/restore stitches](/GroundForge-help/Replace) ![-](/GroundForge-help/images/toggle-stitch.png)
-* [Tile layout](/GroundForge-help/Change-tiles) ![-](/GroundForge-help/images/brick-menu-icon.png)
-* [Reload/resume](/GroundForge-help/Icons) ![-](/GroundForge/images/wand.png) ![-](/GroundForge/images/play.png)
-* [Panel size](/GroundForge-help/Icons)
-  ![-](/GroundForge/images/maximize.png)
-  ![-](/GroundForge/images/reset-dimensions.png)
-  ![-](/GroundForge/images/minimize.png)
-* [Apply forces](/GroundForge-help/Icons) ![-](/GroundForge/images/animate.png)
-* [Download](/GroundForge-help/Download) ![-](/GroundForge/images/download.jpg)
-* [Color code](/GroundForge-help/color-rules) ![-](/GroundForge/images/to-color-rules.png)
+[Navigation](/GroundForge-help/navigation)  
+[Icons](/GroundForge-help/Icons)  
+[Color code](/GroundForge-help/color-rules) ![-](/GroundForge/images/to-color-rules.png)
 
 ### Tutorials
 
 * [Nets](/GroundForge-help/Nets)
-* [Getting Started](/GroundForge-help/index)
-* [Swatch Size](/GroundForge-help/Patch-Size) (rows/columns)
+* [Customize diagrams](/GroundForge-help/index)
 * Binche
   * [sampler](/GroundForge-help/Binche)
   * [snow mixer](/GroundForge-help/snow-mix)
@@ -38,6 +26,7 @@
 
 ### Notes
 
+* [print as PDF](/GroundForge-help/clips/print-as-pdf)
 * [Pin distances and angles](/GroundForge-help/Pin-distances-and-angles)
 * [Head/foot-sides](/GroundForge-help/footsides)
 
