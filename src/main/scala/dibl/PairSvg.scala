@@ -197,15 +197,15 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
     val pale = "#f7f7f7" // center one of color brewer list
     val black = "#000000"
 
-    val str = stitch
+    val str = stitch.toLowerCase
       .replaceAll("[^tlrc]", "") // ignore pins and rubbish
       .replaceAll("^[tlr]*", "") // ignore leading twists
       .replaceAll("[tlr]*$", "") // ignore trailing twists
       .replaceAll("p", "") // ignore pins
       .replaceAll("t", "lr")
     val cs = str.replaceAll("[^c]", "").length
-    val twists = str.split("c").filterNot(_.isEmpty).map(_.sortBy(identity))
-    // println(s"$stitch ${ twists.mkString }")
+    val twists = str.split("c", -1).drop(1).dropRight(1)
+    // println(s"--- $stitch --- $str --- ${ twists.mkString("[",",","]") }")
 
     (cs, twists) match {
       case (_, _) if str == "c" => // just one c
