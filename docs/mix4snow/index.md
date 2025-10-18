@@ -9,6 +9,9 @@ javascript:
   - nudgePairs.js
 ---
 
+Snow Mixer
+==========
+
 You can find some hints below the diagrams and more via links in the sidebar.
 
 <fieldset style="height:145px; overflow: auto; resize: both"><legend>Select a recipe</legend>
