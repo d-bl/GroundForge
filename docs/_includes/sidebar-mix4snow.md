@@ -1,0 +1,6 @@
+* [navigation](/GroundForge-help/navigation)
+* [mixer navigation](/GroundForge-help/snow-mix/#footside-detour-navigation)
+* [color code for pair diagrams](/GroundForge-help/color-rules)
+* [tweak recipe](/GroundForge-help/snow-mix#recipes-for-the-mixer)
+* [tweak footside](/GroundForge-help/snow-mix/#footsides)
+* [print as PDF](/GroundForge-help/clips/print-as-pdf)

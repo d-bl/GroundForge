@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Mix Snowflakes
+sidebar: mix4snow
 javascript:
   - d3.v4.min.js
   - GroundForge-opt.js
@@ -8,7 +9,7 @@ javascript:
   - nudgePairs.js
 ---
 
-You can find some hints below the forms and diagrams.
+You can find some hints below the diagrams and more via links in the sidebar.
 
 <fieldset style="height:145px; overflow: auto; resize: both"><legend>Select a recipe</legend>
 <a data-title="123-a" href="javascript:GF_snow_mixer.recipe('crc,crclctc,ctcrc,rcl,c,c','right')"><img src="123-a.png" alt=""></a> &nbsp;
@@ -63,7 +64,7 @@ You can move the content for a better view.
 The go-to buttons lead to pages where you can [highlight] threads 
 for three-pair respectively six-pair connections and [replace stitches].
 You can save all three pages as a [PDF] document.
-After tweak footside, you can return here via the droste page (threads as pairs).
+After tweak footside, you can return here via the droste page (follow _threads as pairs_).
 
 A [tutorial] gives a general introduction, elaborates choosing stitches, footsides and recipes.
  

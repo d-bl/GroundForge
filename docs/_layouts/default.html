@@ -45,8 +45,17 @@
         </section>
 
         <aside id="sidebar" lang="en">
-            {% capture my_include %}{% include Sidebar.md %}{% endcapture %}
-            {{ my_include | markdownify }}
+            {% capture my_include_header %}{% include Sidebar-header.md %}{% endcapture %}
+            {{ my_include_header | markdownify }}
+            {% if page.javascript %}
+                {% capture my_include_body %}{% include Sidebar-{{ page.javascript }}.md %}{% endcapture %}
+                {{ my_include_body | markdownify }}
+            {% else %}
+                {% capture my_include_body %}{% include Sidebar-default.md %}{% endcapture %}
+                {{ my_include_body | markdownify }}
+            {% endif %}
+            {% capture my_include_footer %}{% include Sidebar-footer.md %}{% endcapture %}
+            {{ my_include_footer | markdownify }}
         </aside>
     </div>
 </div>
