@@ -20,7 +20,7 @@ Other changes
 * The pages are made [print friendly] by themselves: clutter is removed.
   You can also use the print function of the browser to save the diagrams as a PDF document. 
   A link in the document will bring you back to the current state of the pattern except for colors in threads digrams.
-* The top lines in the banner (and the home button at the top of the sidebar)
+* The top lines in the banner
   always leads to the landing page with an overview of the tools and galleries.
 
 [color code]: /GroundForge-help/color-rules

@@ -12,7 +12,7 @@ javascript:
 Snow Mixer
 ==========
 
-You can find some hints below the diagrams and more via links in the sidebar.
+You can find some hints below the diagrams.
 
 <fieldset style="height:145px; overflow: auto; resize: both"><legend>Select a recipe</legend>
 <a data-title="123-a" href="javascript:GF_snow_mixer.recipe('crc,crclctc,ctcrc,rcl,c,c','right')"><img src="123-a.png" alt=""></a> &nbsp;
