@@ -69,11 +69,13 @@ for three-pair respectively six-pair connections and [replace stitches].
 You can save all three pages as a [PDF] document.
 After tweak footside, you can return here via the droste page (follow _threads as pairs_).
 
-A [tutorial] gives a general introduction, elaborates choosing stitches, footsides and recipes.
+A [tutorial] gives a general introduction, elaborates choosing stitches and tweaking [footsides] and [recipes].
  
 [color-code]: /GroundForge-help/color-rules
 [tutorial]: /GroundForge-help/snow-mix
 [highlight]: /GroundForge-help/clips/color
 [replace stitches]: /GroundForge-help/clips/flip
 [PDF]: /GroundForge-help/clips/print-as-pdf
+[footsides]: /GroundForge-help/snow-mix#footsides
+[recipes]: /GroundForge-help/snow-mix#recipes-for-the-mixer
 
