@@ -1,7 +1,3 @@
-## [Home](https://d-bl.github.io) - <a href="https://groundforge.wordpress.com" target="_blank">contact</a>
-
-* * *
-
 ## User guide
 
 ### Introduction
@@ -29,12 +25,3 @@
 * [print as PDF](/GroundForge-help/clips/print-as-pdf)
 * [Pin distances and angles](/GroundForge-help/Pin-distances-and-angles)
 * [Head/foot-sides](/GroundForge-help/footsides)
-
-* * *
-
-### Contribute
-
-* [Share and reuse](/GroundForge-help/Reuse)
-* [propose changes]({{site.github.repository_url}}/edit/master/docs/{{page.path}} "typo's, grammar, whatever") to this page.
-* [![-](/GroundForge/assets/images/CC_some_rights_reserved.png)](https://github.com/d-bl/GroundForge/#licenses)  
-    The [code](https://github.com/d-bl/GroundForge/tree/master/src) has a [GPL-v3](https://github.com/d-bl/GroundForge#licenses) license, the [pages](https://github.com/d-bl/GroundForge/tree/master/docs) a [cc-by](http://creativecommons.org/licenses/by/4.0/) license.
