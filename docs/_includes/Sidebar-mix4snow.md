@@ -9,4 +9,3 @@
 
 * [Color code for pair diagrams](/GroundForge-help/color-rules)
 * [Print as PDF](/GroundForge-help/clips/print-as-pdf)
-#recipes-for-the-mixer
