@@ -3,8 +3,8 @@
 * [Tweak footside](/GroundForge-help/snow-mix/#footsides)
 
 
-* [With two droste steps](/GroundForge/snow-mix/droste)
-* [Experiments](/GroundForge/snow-mix/experiments)
+* [With two droste steps](/GroundForge-help/snow-mix/droste)
+* [Experiments](/GroundForge-help/snow-mix/experiments)
 
 
 * [Color code for pair diagrams](/GroundForge-help/color-rules)
