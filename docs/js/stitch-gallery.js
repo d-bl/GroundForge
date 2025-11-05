@@ -1,20 +1,48 @@
-function loadStitchExamples() {
-    var stitches = [
-        "cllcrrcllcrrc",
-        "ctctctc",
-        "ct",
-        "ctct",
-        "crcllrrrc",
-        "clcrclc",
-        "ctctc",
-        "ctclctc",
-        "crclct",
-        "ctclcrctc",
-        "ctcttctc",
-        "tctctllctctr",
-    ]
-    for (let stitch of stitches) {
-        document.querySelector("#gallery").innerHTML += `
+const GF_stitches = {
+
+
+    lastValidStitchValue: "ct", // the initial value by loadStitchForm
+
+    fixStitchValue(inputField) {
+        const value = inputField.value.toLowerCase();
+        inputField.value = value
+        if (/^([-]|([tclr])*)$/.test(value)) {
+            GF_stitches.lastValidStitchValue = value;
+        } else {
+            const pos1 = inputField.selectionStart - 1;
+            const pos2 = inputField.selectionEnd - 1;
+            inputField.value = GF_stitches.lastValidStitchValue;
+            inputField.setSelectionRange(pos1, pos2);
+            if (typeof window.AudioContext !== "undefined") {
+                const ctx = new window.AudioContext();
+                const o = ctx.createOscillator();
+                o.type = "sine";
+                o.frequency.value = 440;
+                o.connect(ctx.destination);
+                o.start();
+                o.stop(ctx.currentTime + 0.05);
+            }
+        }
+    },
+
+
+    loadStitchExamples() {
+        var stitches = [
+            "cllcrrcllcrrc",
+            "ctctctc",
+            "ct",
+            "ctct",
+            "crcllrrrc",
+            "clcrclc",
+            "ctctc",
+            "ctclctc",
+            "crclct",
+            "ctclcrctc",
+            "ctcttctc",
+            "tctctllctctr",
+        ]
+        for (let stitch of stitches) {
+            document.querySelector("#gallery").innerHTML += `
             <figure>
                 <svg width="20" height="54">
                   <g transform="scale(2,2)">
@@ -26,56 +54,66 @@ function loadStitchExamples() {
                 <img src="/GroundForge/images/stitches/${stitch}.png"
                      title="${stitch}">
                 <figcaption>
-                    <a href="javaScript:setStitch('${stitch}')">${stitch}</a>&nbsp;
+                    <a href="javaScript:GF_stitches.setStitch('${stitch}')">${stitch}</a>&nbsp;
                 </figcaption>
             </figure>`
-    }
-}
+        }
+    },
 
-function paintStitchValue() {
+    paintStitchValue() {
+        return d3.select("#stitchDef").node().value.toLowerCase().replace(/[^ctlrp-]/g, '')
+    },
 
-    return d3.select("#stitchDef").node().value.toLowerCase().replace(/[^ctlrp-]/g, '')
-}
+    load(isDroste) {
+        this.loadStitchExamples();
+        this.loadStitchForm(isDroste);
+        this.setColorCode();
+    },
 
-function loadStitchForm(isDroste) {
-    let p = document.createElement("p")
-    const ign = isDroste ? '' : `<a class="button" href="javascript:setIgnoredStitches()">assign to ignored</a>`
-    const note = !isDroste ? '' : 'Out of date diagrams/stitches are highlighted.'
-    p.innerHTML += `
+    loadStitchForm(isDroste) {
+        let p = document.createElement("p")
+        const ign = isDroste ? '' : `<a class="button" href="javascript:setIgnoredStitches()">assign to ignored</a>`
+        const note = !isDroste ? '' : 'Out of date diagrams/stitches are highlighted.'
+        p.innerHTML += `
             <span id="colorCode"></span>
-            <input type="text" id="stitchDef" name="stitchDef" value="ct" onkeyup="setColorCode()" onclick="return false" onsubmit="return false">
+            <input type="text" value="ct"
+                   id="stitchDef" name="stitchDef"
+                   onkeyup="GF_stitches.setColorCode()"
+                   oninput="GF_stitches.fixStitchValue(this)"
+                   onclick="return false" onsubmit="return false"
+            >
             flip: 
-            <a class="button" href="javascript:flip2d()">&harr;</a>
-            <a class="button" href="javascript:flip2p()">&varr;</a>
-            <a class="button" href="javascript:flip2q()">both</a>`
-    let element = document.querySelector("#gallery");
-    element.parentNode.insertBefore(p, element.nextSibling)
-    setStitch("ct")
-}
+            <a class="button" href="javascript:GF_stitches.flip2d()">&harr;</a>
+            <a class="button" href="javascript:GF_stitches.flip2p()">&varr;</a>
+            <a class="button" href="javascript:GF_stitches.flip2q()">both</a>`
+        let element = document.querySelector("#gallery");
+        element.parentNode.insertBefore(p, element.nextSibling)
+        this.setStitch("ct")
+    },
 
-function flip2d() {
-    var n = d3.select('#stitchDef').node()
-    n.value = n.value.toLowerCase().replace(/l/g, "R").replace(/r/g, "L").toLowerCase()
-    setColorCode()
-    n.focus()
-}
+    flip2d() {
+        var n = d3.select('#stitchDef').node()
+        n.value = n.value.toLowerCase().replace(/l/g, "R").replace(/r/g, "L").toLowerCase()
+        this.setColorCode()
+        n.focus()
+    },
 
-function flip2p() {
-    var n = d3.select('#stitchDef').node()
-    n.value = n.value.toLowerCase().split("").reverse().join("")
-    setColorCode()
-    n.focus()
-}
+    flip2p() {
+        var n = d3.select('#stitchDef').node()
+        n.value = n.value.toLowerCase().split("").reverse().join("")
+        this.setColorCode()
+        n.focus()
+    },
 
-function flip2q() {
-    flip2d()
-    flip2p()
-}
+    flip2q() {
+        this.flip2d()
+        this.flip2p()
+    },
 
-function setColorCode() {
-    let node = d3.select("#stitchDef").node();
-    if (node)
-        document.querySelector('#colorCode').innerHTML = `
+    setColorCode() {
+        let node = d3.select("#stitchDef").node();
+        if (node)
+            document.querySelector('#colorCode').innerHTML = `
         <svg width="20px" height="25px">
           <g transform="scale(2,2)">
             <g transform="translate(5,6)">
@@ -83,11 +121,13 @@ function setColorCode() {
             </g>
           </g>
         </svg>`
-}
+    },
 
-function setStitch(stitch) {
-    const n = document.querySelector("#stitchDef")
-    n.value = stitch
-    n.focus()
-    setColorCode();
+    setStitch(stitch) {
+        const n = document.querySelector("#stitchDef")
+        n.value = stitch
+        n.focus()
+        this.lastValidStitchValue = stitch;
+        this.setColorCode();
+    }
 }

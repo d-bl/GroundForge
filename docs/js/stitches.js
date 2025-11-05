@@ -5,7 +5,6 @@ function load() {
         q = 'patchWidth=8&patchHeight=8&footside=r,1&tile=888,111&headside=8,r&shiftColsSW=-2&shiftRowsSW=2&shiftColsSE=1&shiftRowsSE=2&a1=ctctctcll&j2=ctctctcrr&b2=ct'
     dimInit(q);
     // document.getElementById("helpMenuButton").focus()
-    setColorCode()
     showThread(show(q))
 }
 function reloadPair() {
@@ -79,7 +78,7 @@ function minimize(containerId) {
 function clickedStitch(event) {
 
     var id = event.currentTarget.getElementsByTagName("title")[0].innerHTML.replace(/.* /,"")
-    var replacement = `${id}=${paintStitchValue()}`
+    var replacement = `${id}=${GF_stitches.paintStitchValue()}`
     var search = new RegExp(`(?<=[?&])${id}=[ctlr]+`,'gi')
     let attr = getQ();
     if (search.test(attr))
@@ -89,7 +88,7 @@ function clickedStitch(event) {
     show(q)
 }
 function setAllStitches() {
-    var replacement = `=${paintStitchValue()}&`
+    var replacement = `=${GF_stitches.paintStitchValue()}&`
     var search = new RegExp(`=[ctlr]+&`,'gi')
     var searchLast = new RegExp(`=[ctlr]+$`,'gi')
     var searchLast = new RegExp(`=[ctlr]+$`,'g')
@@ -100,7 +99,7 @@ function setAllStitches() {
     show(getQ().replace(searchLast, replacement))
 }
 function setIgnoredStitches() {
-    var replacement = `=${paintStitchValue()}`
+    var replacement = `=${GF_stitches.paintStitchValue()}`
     let q = getQ().split('&').map((kv => replaceIgnored(kv, replacement))).join('&')
     show(q)
 }

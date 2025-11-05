@@ -9,7 +9,20 @@
         <br>
         <div style="display: flex; align-items: center; gap: 0.5em;">
             <label for="replacement" style="white-space: nowrap;">with</label>
-            <input id="replacement" placeholder="4,6,8 or 10 stitches, e.g: -,ctc,ctc,ctc" spellcheck="false" style="flex: 1 1 0; min-width: 15em;">
+            <input id="replacement"
+                   spellcheck="false"
+                   oninput="GF_snow_mixer.fixRecipeValue(this)"
+                   placeholder="4,6,8 or 10 stitches, e.g: -,ctc,ctc,ctc"
+                   style="flex: 1 1 0; min-width: 15em;"
+                   list="replacement-options"
+            >
+            <datalist id="replacement-options">
+                <option value="-,c,ctctc,clcr,rctc,c">
+                <option value="cr.ctcl.ctcr.ctcl.ctc.c">
+                <option value="t,rc,ctc,rclcr,ctcl,ct">
+                <option value="r,lrc,ctcr,lct">
+                <option value="lcrc,clcrc,clcrc,clcr">
+            </datalist>
         </div>
         <br>
         <span style="display: inline-block">

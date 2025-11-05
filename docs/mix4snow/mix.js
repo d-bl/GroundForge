@@ -25,6 +25,31 @@ const GF_snow_mixer = {
         "u800=u801=u802=u803=u810=u811=u816=u817=u818=u840=u846=u847=u848=u850=u856=u857=u858=u866=u867=u868=" +
         "f700=f701=f702=f703=f710=f711=f716=f717=f718=f740=f746=f747=f748=f750=f756=f757=f758=f766=f767=f768=ttttctttt",
 
+    lastValidRecipeValue: "",
+
+    fixRecipeValue(inputField) {
+        const value = inputField.value.toLowerCase();
+        inputField.value = value
+        // during typing, we can't require an even number of stitches of 4-10
+        if (/^([-]|([tclr])*)([.,][tclr]*){0,9}$/.test(value)) {
+            GF_snow_mixer.lastValidRecipeValue = value;
+        } else {
+            const pos1 = inputField.selectionStart - 1;
+            const pos2 = inputField.selectionEnd - 1;
+            inputField.value = GF_snow_mixer.lastValidRecipeValue;
+            inputField.setSelectionRange(pos1, pos2);
+            if (typeof window.AudioContext !== "undefined") {
+                const ctx = new window.AudioContext();
+                const o = ctx.createOscillator();
+                o.type = "sine";
+                o.frequency.value = 440;
+                o.connect(ctx.destination);
+                o.start();
+                o.stop(ctx.currentTime + 0.05);
+            }
+        }
+    },
+
     getToDrosteElement() {
         return document.getElementById('toDiagrams')
         },
@@ -312,7 +337,7 @@ const GF_snow_mixer = {
     },
 
     init () {
-         fetch('fragment.html')
+        fetch('fragment.html')
              .then(response => response.text())
              .then(html => {
                  this.getFormContainer().innerHTML = html;
