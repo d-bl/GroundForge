@@ -14,7 +14,7 @@ See https://d-bl.github.io/GroundForge/
 
 ### licenses
 
-The help pages and examples have a [CC-BY](http://creativecommons.org/licenses/by/4.0/)
+The help pages and examples have a [CC-BY](https://creativecommons.org/licenses/by/4.0/)
 license.
 The code has a [GPL-v3](https://github.com/d-bl/GroundForge/blob/master/LICENSE)
 license.
@@ -83,10 +83,10 @@ the big green button then changes to `propose changes`.
 [gw-lace-to-gf]: https://d-bl.github.io/gw-lace-to-gf/fork
 [w-sb]: https://github.com/d-bl/gw-lace-to-gf/tree/master/docs/_includes/Sidebar.html
 
-[tesselace-to-gf]: https://d-bl.github.io/tesselace-to-gf/fork
+[tesselace-to-gf]: /tesselace-to-gf/fork
 [t-sb]: https://github.com/d-bl/tesselace-to-gf/tree/master/docs/_includes/Sidebar.html
 
-[MAE-gf]: https://d-bl.github.io/MAE-gf/fork
+[MAE-gf]: /MAE-gf/fork
 [mae-sb]: https://github.com/d-bl/MAE-gf/tree/master/docs/_includes/Sidebar.html
 
 
