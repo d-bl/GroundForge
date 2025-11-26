@@ -6,7 +6,7 @@ title: GroundForge - API
 * [Current User Interfaces](#current-user-interfaces)
 * [Demonstrators](#demonstrators)
 * [Create your own variant](#create-your-own-variant)
-* [IDE and build](#ide-and-build)
+* [Java environment](#java-environment)
 * [Notes on the HTML/JS code](#notes-on-the-htmljs-code)
   * [URL query](#url-query)
   * [Inline SVG](#inline-svg)
@@ -17,15 +17,16 @@ title: GroundForge - API
   * [Download SVG](#download-svg)
 
 GroundForge is a library to generate tread diagrams from pair diagrams for bobbin lace.
-It is partly written in ScalaJS. 
-The ScalaJS code runs on a JVM platform as well as in a JavaScript environment.
-Additional JavaScript functions create interaction between the web page components.
 
 Current User Interfaces
 =======================
 
-* [pattern editor](/GroundForge/tiles)
+* The former pattern editor is split into
+  * [pattern editor](/GroundForge/pattern)
+  * [stitches](/GroundForge/stitches)
+  * [droste](/GroundForge/droste)
 * [nets](/GroundForge/nets)
+* [snow mixer](/GroundForge/mix4snow)
 * [symmetry](/GroundForge/symmetry)
 
 Demonstrators
@@ -75,18 +76,17 @@ Steps to create your own variations of the demonstrator pages.
 * download raw versions of the [source(s)](https://github.com/d-bl/GroundForge/tree/master/docs/API) of your choice into the `api` directory
 * download raw versions of the referenced [scripts](https://github.com/d-bl/GroundForge/tree/master/docs/js) into the `js` directory
 * your local page(s) should now behave like the public versions,
-  you can grab other URL queries from the [pattern editor](/GroundForge/tiles). 
+  you can grab other URL queries from the examples on [MAE-gf](/MAE-gf). 
 
 Now you can fiddle around with your own knowledge of HTML, JavaScript, CSS, whatever framework you fancy to add or embed something on your own web pages.
+
+Java environment
+================
 
 Note that the functions called from `GroundForge-opt.js` are also available for a JVM environment on the server side.
 For that purpose you can look around in the [releases](https://github.com/d-bl/GroundForge/releases)
 for a `jar` asset. The downloads above then should be taken
 from the source code zip or tar of the same release.
-
-
-IDE and build
-=============
 
 An alternative to wait for an irregular release:
 create a local clone from the github project and 
@@ -186,7 +186,7 @@ A download link can be created as follows:
     el.setAttribute('href', 'data:image/svg+xml,' + encoded)
     el.setAttribute('download', 'some-file-name.svg')
 
-The `pattern editor` is a very crowded user interface.
+The former `tiles` page used to be a very crowded user interface.
 Too many copies of too much data on the page might overwhelm browsers.
 Some detours are implemented that set the download content only when needed.
 For desktop browsers the href is set at `onHover` events, touch devices don't have such an event.
