@@ -211,7 +211,7 @@ Usage example:
     </body>
 
 Adjust the path to the script, get the raw version from:  
-https://github.com/d-bl/GroundForge/blob/master/docs/js/stitch-gallery.js
+[https://github.com/d-bl/GroundForge/blob/master/docs/js/stitch-gallery.js](https://github.com/d-bl/GroundForge/blob/master/docs/js/stitch-gallery.js)
 
 HTML genarated after `<div id="gallery"></div>`:
 
