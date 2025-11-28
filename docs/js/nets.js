@@ -144,7 +144,7 @@ function setColors() {
   const colors = d3.select('#colors').node().checked
   if(!colors) {
     d3.selectAll('.node').style("opacity","0")
-    d3.select('#pairs').attr("src","images/dots-legend-without.png")
+    d3.select('#pairs').attr("src","images/dots-legend-without.svg")
   } else {
     d3.select('#pairs').attr("src","images/dots-legend.svg")
     d3.selectAll('.ct-e1').style("fill", '#0571b0ff').style("opacity", "0.5")
