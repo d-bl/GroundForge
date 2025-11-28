@@ -75,10 +75,14 @@ function load() {
     if (newValue !== previousValue) {
       previousValue = stitchDefInput.value
       stitchChanged()
+      generate("1")
     }
   })
 
   d3.select('#colors').node().checked = urlParams.has("colors")
+  d3.selectAll('#gallery a').attr("href", function() {
+    return this.href + ';stitchChanged();generate("1")'
+  })
   generate('1')
 }
 function generate(set) {
