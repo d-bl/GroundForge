@@ -1,6 +1,6 @@
 ---
 layout: default
-title: GroundForge - Home
+title: GF - Home
 ---
 
 {% include fallback.html %}

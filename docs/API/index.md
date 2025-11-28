@@ -1,6 +1,6 @@
 ---
 layout: default
-title: GroundForge - API
+title: GF - API
 ---
 
 * [Current User Interfaces](#current-user-interfaces)

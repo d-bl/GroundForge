@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Mix Snowflakes
+title: GF - Mix Snowflakes
 sidebar: mix4snow
 javascript:
   - d3.v4.min.js
