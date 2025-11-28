@@ -1,7 +1,21 @@
 const GF_stitches = {
 
-
     lastValidStitchValue: "ct", // the initial value by loadStitchForm
+    imagesLocation: "/GroundForge/images/stitches",
+    stitches: [
+        "cllcrrcllcrrc",
+        "ctctctc",
+        "ct",
+        "ctct",
+        "crcllrrrc",
+        "clcrclc",
+        "ctctc",
+        "ctclctc",
+        "crclct",
+        "ctclcrctc",
+        "ctcttctc",
+        "tctctllctctr",
+    ],
 
     fixStitchValue(inputField) {
         const value = inputField.value.toLowerCase();
@@ -27,21 +41,7 @@ const GF_stitches = {
 
 
     loadStitchExamples() {
-        var stitches = [
-            "cllcrrcllcrrc",
-            "ctctctc",
-            "ct",
-            "ctct",
-            "crcllrrrc",
-            "clcrclc",
-            "ctctc",
-            "ctclctc",
-            "crclct",
-            "ctclcrctc",
-            "ctcttctc",
-            "tctctllctctr",
-        ]
-        for (let stitch of stitches) {
+        for (let stitch of GF_stitches.stitches) {
             document.querySelector("#gallery").innerHTML += `
             <figure>
                 <svg width="20" height="54">
@@ -51,7 +51,7 @@ const GF_stitches = {
                     </g>
                   </g>
                 </svg>
-                <img src="/GroundForge/images/stitches/${stitch}.png"
+                <img src="${GF_stitches.imagesLocation}/${stitch}.png"
                      title="${stitch}">
                 <figcaption>
                     <a href="javaScript:GF_stitches.setStitch('${stitch}')">${stitch}</a>&nbsp;
