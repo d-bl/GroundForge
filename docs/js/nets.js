@@ -67,7 +67,7 @@ function load() {
   let b = urlParams.get("b") // backward compatible with old links
   if (!b) b = urlParams.get("stitchDef") // new submits
   if (!b) b = "crcl" // default
-  let stitchDefInput = d3.select('#stitchDef').node();
+  let stitchDefInput = document.getElementById('stitchDef');
   stitchDefInput.value = updateMatrix(b)
   let previousValue = stitchDefInput.value
   stitchDefInput.addEventListener('keyup', function() {
@@ -78,15 +78,14 @@ function load() {
       generate("1")
     }
   })
-
-  d3.select('#colors').node().checked = urlParams.has("colors")
+  document.getElementById('colors').checked = urlParams.has("colors")
   d3.selectAll('#gallery a').attr("href", function() {
     return this.href + ';stitchChanged();generate("1")'
   })
   generate('1')
 }
 function generate(set) {
-  const b = updateMatrix(d3.select('#stitchDef').node().value)
+  const b = updateMatrix(document.getElementById('stitchDef').value)
   const d = b.replace(/l/g,"R").replace(/r/g,"L").toLowerCase()
   const p = b.split("").reverse().join("")
   const q = d.split("").reverse().join("")
@@ -141,7 +140,7 @@ function generate(set) {
   setColors()
 }
 function setColors() {
-  const colors = d3.select('#colors').node().checked
+  const colors = document.getElementById('colors').checked
   if(!colors) {
     d3.selectAll('.node').style("opacity","0")
     d3.select('#pairs').attr("src","images/dots-legend-without.svg")

@@ -70,10 +70,8 @@ const GF_stitches = {
         this.setColorCode();
     },
 
-    loadStitchForm(isDroste) {
+    loadStitchForm() {
         let p = document.createElement("p")
-        const ign = isDroste ? '' : `<a class="button" href="javascript:setIgnoredStitches()">assign to ignored</a>`
-        const note = !isDroste ? '' : 'Out of date diagrams/stitches are highlighted.'
         p.innerHTML += `
             <span id="colorCode"></span>
             <input type="text" value="ct"

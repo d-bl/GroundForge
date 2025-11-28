@@ -15,6 +15,7 @@ title: GF - API
     * [pair.html](#pairhtml)
     * [thread.html](#threadhtml)
   * [Download SVG](#download-svg)
+* [Stitch gallery](#stitch-gallery)
 
 GroundForge is a library to generate tread diagrams from pair diagrams for bobbin lace.
 
@@ -190,3 +191,45 @@ The former `tiles` page used to be a very crowded user interface.
 Too many copies of too much data on the page might overwhelm browsers.
 Some detours are implemented that set the download content only when needed.
 For desktop browsers the href is set at `onHover` events, touch devices don't have such an event.
+
+Stitch Gallery
+==============
+
+Used on [stitches](/GroundForge/stitches), [nets](/GroundForge/nets) and [droste](/GroundForge/droste)
+
+Usage example:
+
+    <head>
+        ...
+        <script src="stitch-gallery.js" type="text/javascript"></script>
+        ...
+    </head>
+    <body onload="GF_stitches.load();GF_stitches.lastValidStitchValue='crcl'; ...">
+        ...
+        <div id="gallery"></div>
+        ...
+    </body>
+
+Adjust the path to the script, get the raw version from:  
+https://github.com/d-bl/GroundForge/blob/master/docs/js/stitch-gallery.js
+
+HTML genarated after `<div id="gallery"></div>`:
+
+    <p>
+      <span id="colorCode">...</span>
+      <textarea id="stitchDef" ...>...</textarea>
+    </p>
+
+* `#gallery`: will get `<figure>` elements generated from the configurable variable `GF_stitches.stitches`
+* `#colorCode`: contains a visual representation (SVG) of the `#stitchDef` value
+* `#stitchDef`: the stitch value, other controls on the page can read the value
+
+Customization variables:
+
+* `GF_stitches.lastValidStitchValue`: controls invalid input in the generated `<textarea>`, default: `ct`
+* `GF_stitches.stitches`: an array of stitch values to show in the gallery.
+  You need `png` images in the `imageLocation` directory with names identical to the configured stitch values.
+* `GF_stitches.imagesLocation `: the location of the stitch images (the default: `/GroundForge/images/stitches` works in the d-bl environment or your own forks)
+
+[Styling](https://github.com/d-bl/GroundForge/blob/6b3716a66acf36bc68cc56fd14880e22a96d9861/docs/css/stitches.css#L17-L22)
+suggestions.
