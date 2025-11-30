@@ -17,7 +17,7 @@ Widget demo
 
 <style>
   #gallery {max-height: 120px; overflow: auto; resize: both;}
-  a.button {color: #2879d0;}
+  p:has(#stitcDef) a.button {color: #2879d0;}
 </style>
 <script src="/GroundForge/js/d3.v4.min.js" type="text/javascript"></script>
 <script src="/GroundForge/js/GroundForge-opt.js" type="text/javascript"></script>
@@ -29,11 +29,11 @@ Usage in github.io markdown
 ---------------------------
 
 See [source]({{site.github.repository_url}}/blame/master/docs/{{page.path}}#L18-L26).
+This example assumes you have a fork of this repository and its docs folder configured as GitHub pages.
 
 ### Styles
 
 Please note that it is better practice to move the styles into your own CSS files.
-This example assumes you have a fork of this repository and its docs folder configured as GitHub pages.
 
 You might want to restrict the max-height to narrow devices like mobile phones,
 or hide the textarea and flip links/buttons:
