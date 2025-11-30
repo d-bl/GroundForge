@@ -17,7 +17,7 @@ Widget demo
 
 <style>
   #gallery {max-height: 120px; overflow: auto; resize: both;}
-  p:has(#stitcDef) a.button {color: #2879d0;}
+  p:has(#stitchDef) a.button {color: #2879d0;}
 </style>
 <script src="/GroundForge/js/d3.v4.min.js" type="text/javascript"></script>
 <script src="/GroundForge/js/GroundForge-opt.js" type="text/javascript"></script>
