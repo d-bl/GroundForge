@@ -6,18 +6,24 @@ title: API demo
 Demo - Stitch Gallery
 =====================
 
-<div id="gallery" style="height: 95px; overflow: auto; resize: both;"></div>  
+<div id="gallery" style="height: 120px; overflow: auto; resize: both;"></div>  
 <script src="/GroundForge/js/GroundForge-opt.js" type="text/javascript"></script>  
 <script src="/GroundForge/js/stitch-gallery.js" type="text/javascript"></script>  
 <script type="text/javascript">  
 GF_stitches.load();  
-GF_stitches.lastValidStitchValue='crcl';  
+GF_stitches.lastValidStitchValue='crcl';
+document.querySelectorAll('.button')
+  .forEach(el => {
+    el.style.color = 'blue';
+  });
+
 </script>
 
 Usage in github.io markdown
 ============================
 
 See [source]({{site.github.repository_url}}/blob/master/docs/{{page.path}}).
+Of course, you can set the styles in your own CSS files.
 
 Widget description
 ==================
