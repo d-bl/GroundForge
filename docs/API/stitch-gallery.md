@@ -36,7 +36,7 @@ This example assumes you have a fork of this repository and its docs folder conf
 Please note that it is better practice to move the styles into your own CSS files.
 
 You might want to restrict the max-height to narrow devices like mobile phones,
-or hide the textarea and flip links/buttons:
+or hide the text input and flip links/buttons:
 
     p:has(#stitchDef) { display: none; }
 
@@ -47,7 +47,7 @@ Widget description
 ------------------
 
 This widget is used on [stitches](/GroundForge/stitches), [nets](/GroundForge/nets) and [droste](/GroundForge/droste) pages.
-The [symmetry](/GroundForge/symmetry) page uses a simple _textarea_ in a more complex context.
+The [symmetry](/GroundForge/symmetry) page uses a plain text input in a more complex context.
 
 You may need your own copy of the [scripts](/GroundForge/blob/master/docs/js/)
 and [images](/GroundForge/tree/master/images/stitches).
@@ -85,8 +85,8 @@ Some HTML is generated after `<div id="gallery"></div>`:
 Customization variables
 -----------------------
 
-* `GF_stitches.lastValidStitchValue`: controls invalid input in the generated `<textarea>`, default: `ct`,
-  this value is also used to initialize the `<textarea>` of the widget.
+* `GF_stitches.lastValidStitchValue`: controls invalid input in the generated text input field, default: `ct`,
+  this value is also used to initialize the text input field of the widget.
 * `GF_stitches.stitches`: an array of stitch values to show in the gallery.
   You need `png` images in the `imageLocation` directory with names identical to the configured stitch values.
 * `GF_stitches.imagesLocation `: the location of the stitch images (the default: `/GroundForge/images/stitches` works in the d-bl environment or your own forks)
