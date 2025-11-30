@@ -7,6 +7,7 @@ Demo - Stitch Gallery
 =====================
 
 <div id="gallery" style="height: 120px; overflow: auto; resize: both;"></div>  
+<script src="/GroundForge/js/d3.v4.min.js" type="text/javascript"></script>  
 <script src="/GroundForge/js/GroundForge-opt.js" type="text/javascript"></script>  
 <script src="/GroundForge/js/stitch-gallery.js" type="text/javascript"></script>  
 <script type="text/javascript">  
@@ -14,7 +15,7 @@ GF_stitches.load();
 GF_stitches.lastValidStitchValue='crcl';
 document.querySelectorAll('.button')
   .forEach(el => {
-    el.style.color = 'blue';
+    el.style.color = '#2879d0';
   });
 
 </script>
@@ -39,6 +40,7 @@ Usage example:
 
     <head>
         ...
+        <script src="d3.v4.min.js" type="text/javascript"></script>
         <script src="GroundForge-opt.js" type="text/javascript"></script>
         <script src="stitch-gallery.js" type="text/javascript"></script>
         ...
