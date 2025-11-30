@@ -49,7 +49,7 @@ Widget description
 This widget is used on [stitches](/GroundForge/stitches), [nets](/GroundForge/nets) and [droste](/GroundForge/droste) pages.
 The [symmetry](/GroundForge/symmetry) page uses a simple _textarea_ in a more complex context.
 
-Get a copy of the [scripts](/GroundForge/blob/master/docs/js/)
+You may need your own copy of the [scripts](/GroundForge/blob/master/docs/js/)
 and [images](/GroundForge/tree/master/images/stitches).
 Adjust the path to the scripts in the usage example as needed.
 
