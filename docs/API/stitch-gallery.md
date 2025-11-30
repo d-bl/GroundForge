@@ -25,6 +25,8 @@ Usage in github.io markdown
 See [source]({{site.github.repository_url}}/blame/master/docs/{{page.path}}#L9-L20).
 Please note that it is better practice to move the styles into your own CSS files,
 some [suggestions](/GroundForge/blob/6b3716a66acf36bc68cc56fd14880e22a96d9861/docs/css/stitches.css#L17-L22).
+This example assumes you have a fork of this repository and the docs folder configured as GitHub pages.
+
 
 Widget description
 ==================
