@@ -3,28 +3,28 @@ layout: default
 title: API demo
 ---
 
-Demo - Stitch Gallery
-=====================
+Widget demo - Stitch Gallery
+============================
 
-<div id="gallery" style="height: 120px; overflow: auto; resize: both;"></div>  
+<style>
+  #gallery {height: 120px; overflow: auto; resize: both;}
+  .button {color: #2879d0;}
+</style>
 <script src="/GroundForge/js/d3.v4.min.js" type="text/javascript"></script>  
 <script src="/GroundForge/js/GroundForge-opt.js" type="text/javascript"></script>  
 <script src="/GroundForge/js/stitch-gallery.js" type="text/javascript"></script>  
+<div id="gallery"></div>  
 <script type="text/javascript">  
-GF_stitches.load();  
-GF_stitches.lastValidStitchValue='crcl';
-document.querySelectorAll('.button')
-  .forEach(el => {
-    el.style.color = '#2879d0';
-  });
-
+  GF_stitches.load();  
+  GF_stitches.lastValidStitchValue='crcl';
 </script>
 
 Usage in github.io markdown
 ============================
 
-See [source]({{site.github.repository_url}}/blob/master/docs/{{page.path}}).
-Of course, you can set the styles in your own CSS files.
+See [source]({{site.github.repository_url}}/blame/master/docs/{{page.path}}#L9-L20).
+Please note that it is better practice to move the styles into your own CSS files,
+some [suggestions](/GroundForge/blob/6b3716a66acf36bc68cc56fd14880e22a96d9861/docs/css/stitches.css#L17-L22).
 
 Widget description
 ==================
@@ -39,6 +39,8 @@ Adjust the path to the scripts in the usage example as needed.
 Usage example:
 
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         ...
         <script src="d3.v4.min.js" type="text/javascript"></script>
         <script src="GroundForge-opt.js" type="text/javascript"></script>
@@ -51,7 +53,7 @@ Usage example:
         ...
     </body>
 
-HTML genarated after `<div id="gallery"></div>`:
+HTML generated after `<div id="gallery"></div>`:
 
     <p>
       <span id="colorCode">...</span>
@@ -68,6 +70,3 @@ Customization variables:
 * `GF_stitches.stitches`: an array of stitch values to show in the gallery.
   You need `png` images in the `imageLocation` directory with names identical to the configured stitch values.
 * `GF_stitches.imagesLocation `: the location of the stitch images (the default: `/GroundForge/images/stitches` works in the d-bl environment or your own forks)
-
-[Styling](https://github.com/d-bl/GroundForge/blob/6b3716a66acf36bc68cc56fd14880e22a96d9861/docs/css/stitches.css#L17-L22)
-suggestions.
