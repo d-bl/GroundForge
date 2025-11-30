@@ -7,6 +7,7 @@ Demo - Stitch Gallery
 =====================
 
 <div id="gallery" style="height: 85px; overflow: auto; resize: both;"></div>
+<script src="/GroundForge/js/GroundForge-opt.js" type="text/javascript"></script>
 <script src="/GroundForge/js/stitch-gallery.js" type="text/javascript"></script>
 <script type="text/javascript">
 GF_stitches.load();
@@ -24,14 +25,15 @@ Widget description
 This widget is used on [stitches](/GroundForge/stitches), [nets](/GroundForge/nets) and [droste](/GroundForge/droste) pages.
 The [symmetry](/GroundForge/symmetry) page uses a simple _textarea_ in a more complex context.
 
-Get a copy of the [raw version](/GroundForge/blob/master/docs/js/stitch-gallery.js)
-of the script and the [images](/GroundForge/tree/master/images/stitches).
-Adjust the path to the script in the usage example as needed.
+Get a copy of the [scripts](/GroundForge/blob/master/docs/js/)
+and [images](/GroundForge/tree/master/images/stitches).
+Adjust the path to the scripts in the usage example as needed.
 
 Usage example:
 
     <head>
         ...
+        <script src="GroundForge-opt.js" type="text/javascript"></script>
         <script src="stitch-gallery.js" type="text/javascript"></script>
         ...
     </head>

@@ -15,7 +15,7 @@ title: API
     * [pair.html](#pairhtml)
     * [thread.html](#threadhtml)
   * [Download SVG](#download-svg)
-* [Stitch gallery](#stitch-gallery)
+* [Stitch gallery](stitch-gallery)
 
 GroundForge is a library to generate tread diagrams from pair diagrams for bobbin lace.
 
@@ -66,6 +66,8 @@ additional user interfaces for special use cases.
 [sheetCode]: {{ site.github.repository_url }}/blob/master/docs/API/sheet.html
 
 [GFCode]: {{ site.github.repository_url }}/blob/master/src/main/scala/dibl
+
+[stitch-galllery]: stitch-galllery
 
 
 Create your own variant
