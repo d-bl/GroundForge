@@ -74,7 +74,7 @@ Some HTML is generated after `<div id="gallery"></div>`:
 
     <p>
       <span id="colorCode">...</span>
-      <input id="stitchDef" type="text" value="ct" ...>
+      <input id="stitchDef" type="text" ...>
       ...
     </p>
 
