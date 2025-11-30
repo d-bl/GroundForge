@@ -38,7 +38,7 @@ Please note that it is better practice to move the styles into your own CSS file
 You might want to restrict the max-height to narrow devices like mobile phones,
 or hide the textarea and flip links/buttons:
 
-    p:has(#stitcDef) { display: none; }
+    p:has(#stitchDef) { display: none; }
 
 Some other [suggestions](/GroundForge/blob/6b3716a66acf36bc68cc56fd14880e22a96d9861/docs/css/stitches.css#L17-L22).
 
