@@ -3,33 +3,48 @@ layout: default
 title: API demo
 ---
 
-Widget demo - Stitch Gallery
-============================
+Stitch Gallery
+==============
+
+* [Widget demo](#widget-demo)
+* [Usage in github.io markdown](#usage-in-githubio-markdown)
+  * [Styles](#styles)
+* [Widget description](#widget-description)
+* [Customization variables](#customization-variables)
+
+Widget demo
+-----------
 
 <style>
-  #gallery {height: 120px; overflow: auto; resize: both;}
+  #gallery {max-height: 120px; overflow: auto; resize: both;}
   .button {color: #2879d0;}
 </style>
-<script src="/GroundForge/js/d3.v4.min.js" type="text/javascript"></script>  
-<script src="/GroundForge/js/GroundForge-opt.js" type="text/javascript"></script>  
-<script src="/GroundForge/js/stitch-gallery.js" type="text/javascript"></script>  
-<div id="gallery"></div>  
-<script type="text/javascript">  
-  GF_stitches.load();  
-  GF_stitches.lastValidStitchValue='crcl';
-</script>
+<script src="/GroundForge/js/d3.v4.min.js" type="text/javascript"></script>
+<script src="/GroundForge/js/GroundForge-opt.js" type="text/javascript"></script>
+<script src="/GroundForge/js/stitch-gallery.js" type="text/javascript"></script>
+<div id="gallery"></div>
+<script type="text/javascript"> GF_stitches.load(); </script>
 
 Usage in github.io markdown
-============================
+---------------------------
 
-See [source]({{site.github.repository_url}}/blame/master/docs/{{page.path}}#L9-L20).
-Please note that it is better practice to move the styles into your own CSS files,
-some [suggestions](/GroundForge/blob/6b3716a66acf36bc68cc56fd14880e22a96d9861/docs/css/stitches.css#L17-L22).
-This example assumes you have a fork of this repository and the docs folder configured as GitHub pages.
+See [source]({{site.github.repository_url}}/blame/master/docs/{{page.path}}#L18-L26).
+
+### Styles
+
+Please note that it is better practice to move the styles into your own CSS files.
+This example assumes you have a fork of this repository and its docs folder configured as GitHub pages.
+
+You might want to restrict the max-height to narrow devices like mobile phones,
+or hide the textarea and flip links/buttons:
+
+    p:has(#stitcDef) { display: none; }
+
+Some other [suggestions](/GroundForge/blob/6b3716a66acf36bc68cc56fd14880e22a96d9861/docs/css/stitches.css#L17-L22).
 
 
 Widget description
-==================
+------------------
 
 This widget is used on [stitches](/GroundForge/stitches), [nets](/GroundForge/nets) and [droste](/GroundForge/droste) pages.
 The [symmetry](/GroundForge/symmetry) page uses a simple _textarea_ in a more complex context.
@@ -55,20 +70,23 @@ Usage example:
         ...
     </body>
 
-HTML generated after `<div id="gallery"></div>`:
+Some HTML is generated after `<div id="gallery"></div>`:
 
     <p>
       <span id="colorCode">...</span>
-      <textarea id="stitchDef" ...>...</textarea>
+      <input id="stitchDef" type="text" value="ct" ...>
+      ...
     </p>
 
 * `#gallery`: will get `<figure>` elements generated from the configurable variable `GF_stitches.stitches`
 * `#colorCode`: contains a visual representation (SVG) of the `#stitchDef` value
 * `#stitchDef`: the stitch value, other controls on the page can read the value
 
-Customization variables:
+Customization variables
+-----------------------
 
-* `GF_stitches.lastValidStitchValue`: controls invalid input in the generated `<textarea>`, default: `ct`
+* `GF_stitches.lastValidStitchValue`: controls invalid input in the generated `<textarea>`, default: `ct`,
+  this value is also used to initialize the `<textarea>` of the widget.
 * `GF_stitches.stitches`: an array of stitch values to show in the gallery.
   You need `png` images in the `imageLocation` directory with names identical to the configured stitch values.
 * `GF_stitches.imagesLocation `: the location of the stitch images (the default: `/GroundForge/images/stitches` works in the d-bl environment or your own forks)
