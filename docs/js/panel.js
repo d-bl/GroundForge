@@ -5,20 +5,20 @@ const GF_panel = {
         const isArray = Array.isArray(controls);
 
         const cleanup = isArray && controls.includes('cleanup') ? `
-            <a href="javascript:cleanUp(d3.select('#${id} svg'))" title="clean up"><img src="images/broom.png" alt="broom stick"></a>
+            <a href="javascript:cleanUp(d3.select('#${id} svg'))" title="clean up"><img src="/GroundForge/images/broom.png" alt="broom stick"></a>
         ` : '';
         const diagram = isArray && controls.includes('diagram') ? `
-            <a href="javascript:reload()"  title="reload"><img src="images/wand.png" alt="wand"></a>
-            <a href="javascript:nudgeDiagram(d3.select('#${id} svg'))" title="resume animation"><img src="images/play.png" alt="resume"></a>
-            <a href="javascript:download(d3.select('#${id} svg'))" title="download"><img src="images/download.jpg" alt="nudge"></a>
+            <a href="javascript:reload()"  title="reload"><img src="/GroundForge/images/wand.png" alt="wand"></a>
+            <a href="javascript:nudgeDiagram(d3.select('#${id} svg'))" title="resume animation"><img src="/GroundForge/images/play.png" alt="resume"></a>
+            <a href="javascript:download(d3.select('#${id} svg'))" title="download"><img src="/GroundForge/images/download.jpg" alt="nudge"></a>
         ` : '';
         const colorChooser = isArray && controls.includes('color') ? `
             <input type="color" id="${id}ColorChooser" name="threadColor" value="#ff0000">
         ` : '';
         const resize = isArray && controls.includes('resize') ? `
-            <a href="javascript:maximize('#${id}')" title="maximize"><img src="images/maximize.png" alt="maximize"></a>
-            <a href="javascript:resetDimensions('#${id}')" title="reset to default"><img src="images/reset-dimensions.png" alt="default"></a>
-            <a href="javascript:minimize('#${id}')" title="minimize"><img src="images/minimize.png" alt="minimize"></a>
+            <a href="javascript:maximize('#${id}')" title="maximize"><img src="/GroundForge/images/maximize.png" alt="maximize"></a>
+            <a href="javascript:resetDimensions('#${id}')" title="reset to default"><img src="/GroundForge/images/reset-dimensions.png" alt="default"></a>
+            <a href="javascript:minimize('#${id}')" title="minimize"><img src="/GroundForge/images/minimize.png" alt="minimize"></a>
         ` : '';
         const figure = document.createElement('figure');
         figure.innerHTML = `

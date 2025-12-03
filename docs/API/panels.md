@@ -24,6 +24,7 @@ Widget demo's
 <script src="/GroundForge/js/nudgePairs.js" type="text/javascript"></script>
 <style>
         figure {max-width: 90%; display: inline-block;}
+        figure textarea {display: inline-block;}
         figure div {width: 400px;height: 400px;overflow: auto;}
         figcaption {text-align: center;background-color: #ddd;padding: 5px; border-radius: 5px;}
         figcaption img {padding-left: 0.5em;}
@@ -47,8 +48,9 @@ Widget demo's
 
 ### 3
 <script type="text/javascript"> 
-  GF_panel.load({caption:"<pre>bd\npq</pre>", id:"nets", controls: ['cleanup','resize']}); 
-  document.getElementById('pairs').innerHTML = "no content for this demo";
+  GF_panel.load({caption:"<pre>bd
+pq</pre>", id:"nets", controls: ['cleanup','resize']}); 
+  document.getElementById('nets').innerHTML = "no content for this demo";
 </script>
 
 ### 4
