@@ -24,8 +24,8 @@ Widget demo's
 <script src="/GroundForge/js/nudgePairs.js" type="text/javascript"></script>
 <style>
         figure {max-width: 90%; display: inline-block;}
-        figure textarea {display: inline-block;}
-        figure div {width: 400px;height: 400px;overflow: auto;}
+        figure pre {display: inline-block; padding:0; margin:0; background: #ddd}
+        figure div {width: 400px;height: 150px;overflow: auto;}
         figcaption {text-align: center;background-color: #ddd;padding: 5px; border-radius: 5px;}
         figcaption img {padding-left: 0.5em;}
 </style>
@@ -41,7 +41,7 @@ Widget demo's
 
 ### 2
 <script type="text/javascript"> 
-  GF_panel.load({caption: "thread diagram", id: "pairs", controls: ['cleanup','diagram', 'color','resize']});
+  GF_panel.load({caption: "thread diagram", id: "threads", controls: ['cleanup','diagram', 'color','resize']});
   document.getElementById('threads').innerHTML = GF_panel.primaryThreadSVG(window.q);
   nudgeDiagram(d3.select('#threads').select("svg"))
 </script>
