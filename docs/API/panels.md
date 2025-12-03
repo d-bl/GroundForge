@@ -48,14 +48,13 @@ Widget demo's
 
 ### 3
 <script type="text/javascript"> 
-  GF_panel.load({caption:"<pre>bd
-pq</pre>", id:"nets", controls: ['cleanup','resize']}); 
+  GF_panel.load({caption:"<pre>bd\npq</pre>", id:"nets", controls: ['cleanup','resize']}); 
   document.getElementById('nets').innerHTML = "no content for this demo";
 </script>
 
 ### 4
 <script type="text/javascript"> 
-  GF_panel.load({caption:"stitches", id:"droste",controls: ['cleanup','resize']});´
+  GF_panel.load({caption:"stitches", id:"droste",controls: ['cleanup','resize']});
   const inner = '<textarea id="droste" name="droste2">ctc,cross=ct</textarea>' 
   document.getElementById('droste').innerHTML = inner;
 </script>
