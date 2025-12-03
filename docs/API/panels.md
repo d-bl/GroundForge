@@ -26,7 +26,7 @@ Widget demo's
         figure {max-width: 90%; display: inline-block;}
         figure pre {display: inline-block; padding:0; margin:0; background: #ddd}
         figure div {width: 400px;height: 150px;overflow: auto;}
-        figcaption {text-align: center;background-color: #ddd;padding: 5px; border-radius: 5px;}
+        figcaption {text-align: center;background-color: #ddd;padding: 5px; border-radius: 5px; display: flex; align-items: center;}
         figcaption img {padding-left: 0.5em;}
 </style>
 <script type="text/javascript"> 
@@ -35,26 +35,26 @@ Widget demo's
 
 ### 1
 <script type="text/javascript"> 
-  GF_panel.load({caption: "pair diagram", id: "pairs", controls: ['cleanup','diagram', 'color','resize']});
+  GF_panel.load({caption: "pair diagram", id: "pairs", controls: ['cleanup','diagram', 'resize']});
   document.getElementById('pairs').innerHTML = GF_panel.primaryPairSVG(window.q);
 </script>
 
 ### 2
 <script type="text/javascript"> 
-  GF_panel.load({caption: "thread diagram", id: "threads", controls: ['cleanup','diagram', 'color','resize']});
+  GF_panel.load({caption: "thread diagram", id: "threads", controls: ['cleanup','diagram', 'color', 'resize']});
   document.getElementById('threads').innerHTML = GF_panel.primaryThreadSVG(window.q);
   nudgeDiagram(d3.select('#threads').select("svg"))
 </script>
 
 ### 3
 <script type="text/javascript"> 
-  GF_panel.load({caption:"<pre>bd\npq</pre>", id:"nets", controls: ['cleanup','resize']}); 
+  GF_panel.load({caption:"<pre>bd\npq</pre>", id:"nets", controls: ['resize']}); 
   document.getElementById('nets').innerHTML = "no content for this demo";
 </script>
 
 ### 4
 <script type="text/javascript"> 
-  GF_panel.load({caption:"stitches", id:"droste",controls: ['cleanup','resize']});
+  GF_panel.load({caption:"stitches", id:"droste",controls: ['cleanup', 'resize']});
   const inner = '<textarea id="droste" name="droste2">ctc,cross=ct</textarea>' 
   document.getElementById('droste').innerHTML = inner;
 </script>
