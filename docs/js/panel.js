@@ -1,6 +1,7 @@
 const GF_panel = {
     svgSize: {width: 744, height: 1052}, // A1
-    panelSize: {width: 250, height: 250},
+    panelSize: {width: '300px', height: '300px'},
+
     load(config) {
         const { caption, id, controls = [] } = config;
         const isArray = Array.isArray(controls);
@@ -11,7 +12,7 @@ const GF_panel = {
         const diagram = isArray && controls.includes('diagram') ? `
             <a href="javascript:reload()"  title="reload"><img src="/GroundForge/images/wand.png" alt="wand"></a>
             <a href="javascript:nudgeDiagram(d3.select('#${id} svg'))" title="resume animation"><img src="/GroundForge/images/play.png" alt="resume"></a>
-            <a href="javascript:GF_panel.downloadSVG('${id}')" title="download"><img src="/GroundForge/images/download.png" alt="download"></a>
+            <a href="javascript:GF_panel.downloadSVG('${id}')" title="download"><img src="/GroundForge/images/download.jpg" alt="download"></a>
         ` : '';
         const colorChooser = isArray && controls.includes('color') ? `
             <input type="color" id="${id}ColorChooser" name="threadColor" value="#ff0000">
@@ -77,18 +78,19 @@ const GF_panel = {
         }
         return false;
     },
-    primaryPairSVG(query){
+    diagramSVG(args){
+        const { type='pair', step = 0, query } = args;
         const config = TilesConfig(query)
-        const zoom = 1.9
-        return PairSvg.render(config.getItemMatrix, this.svgSize.width, this.svgSize.height, zoom)
-    },
-    primaryThreadSVG(query){
-        const config = TilesConfig(query)
+        if (type === 'pair' && step === 0) {
+            const zoom = 1.9
+            return PairSvg.render(config.getItemMatrix, this.svgSize.width, this.svgSize.height, zoom)
+        }
+        const pairDiagram = NewPairDiagram.create(config)
+        const threadDiagram = ThreadDiagram.create(pairDiagram)
+        // implement droste steps
         const nodeTransparency = 0.05
         const strokeWidth = "2px"
         const markers = true // use false for slow devices and IE-11, set them at onEnd
-        const pairDiagram = NewPairDiagram.create(config)
-        const threadDiagram = ThreadDiagram.create(pairDiagram)
         return DiagramSvg.render(threadDiagram, strokeWidth, markers, this.svgSize.width, this.svgSize.height, nodeTransparency);
     }
 }

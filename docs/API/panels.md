@@ -35,28 +35,28 @@ Widget demo's
 
 ### 1
 <script type="text/javascript"> 
-  GF_panel.load({caption: "pair diagram", id: "pairs", controls: ['cleanup','diagram', 'resize']});
-  document.getElementById('pairs').innerHTML = GF_panel.primaryPairSVG(window.q);
+  GF_panel.load({caption: "pair diagram", id: "pairs", controls: ['diagram', 'resize']});
+  document.getElementById('pairs').innerHTML = GF_panel.diagramSVG({query:window.q});
 </script>
 
 ### 2
 <script type="text/javascript"> 
-  GF_panel.load({caption: "thread diagram", id: "threads", controls: ['cleanup','diagram', 'color', 'resize']});
-  document.getElementById('threads').innerHTML = GF_panel.primaryThreadSVG(window.q);
+  GF_panel.load({caption: "thread diagram", id: "threads", controls: ['diagram', 'color', 'resize']});
+  document.getElementById('threads').innerHTML = GF_panel.diagramSVG({query:window.q, type:'thread'});
   nudgeDiagram(d3.select('#threads').select("svg"))
 </script>
 
 ### 3
 <script type="text/javascript"> 
   GF_panel.load({caption:"<pre>bd\npq</pre>", id:"nets", controls: ['resize']}); 
-  document.getElementById('nets').innerHTML = "no content for this demo";
+  document.getElementById('nets').innerHTML = "no content, just a demo of multiline caption";
 </script>
 
 ### 4
 <script type="text/javascript"> 
   GF_panel.load({caption:"stitches", id:"droste",controls: ['cleanup', 'resize']});
-  const inner = '<textarea id="droste" name="droste2">ctc,cross=ct</textarea>' 
-  document.getElementById('droste').innerHTML = inner;
+  const content = '<textarea id="droste" name="droste2">ctc,cross=ct</textarea>';
+  document.getElementById('droste').outerHTML = content;
 </script>
 
 
