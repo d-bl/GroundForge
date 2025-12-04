@@ -25,7 +25,7 @@ Widget demo's
 <style>
         figure {max-width: 90%; display: inline-block;}
         figure pre {display: inline-block; padding:0; margin:0; background: #ddd}
-        figure div {width: 400px;height: 150px;overflow: auto;}
+        figure div {overflow: auto;resize: both}
         figcaption {text-align: center;background-color: #ddd;padding: 5px; border-radius: 5px; display: flex; align-items: center;}
         figcaption img {padding-left: 0.5em;}
 </style>
