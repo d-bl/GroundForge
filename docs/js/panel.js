@@ -17,7 +17,7 @@ const GF_panel = {
             <a href="javascript:cleanUp(d3.select('#${id} svg'))" title="clean up"><img src="/GroundForge/images/broom.png" alt="broom stick"></a>
         ` : '';
         const diagram = isArray && controls.includes('diagram') ? `
-            <a href="javascript:reload()"  title="reload"><img src="/GroundForge/images/wand.png" alt="wand"></a>
+            <a href="javascript:return false"  title="reload"><img src="/GroundForge/images/wand.png" alt="wand"></a>
             <a href="javascript:nudgeDiagram(d3.select('#${id} svg'))" title="resume animation"><img src="/GroundForge/images/play.png" alt="resume"></a>
             <a href="javascript:GF_panel.downloadSVG('${id}')" title="download"><img src="/GroundForge/images/download.jpg" alt="download"></a>
         ` : '';
@@ -30,8 +30,9 @@ const GF_panel = {
             <a href="javascript:GF_panel.minimize('${id}')" title="minimize"><img src="/GroundForge/images/minimize.png" alt="minimize"></a>
         ` : '';
         const figure = document.createElement('figure');
+        figure.className = 'gf_panel';
         figure.innerHTML = `
-            <figcaption>
+            <figcaption">
                 ${caption.trim()}
                 ${cleanup.trim()}
                 ${diagram.trim()}
@@ -77,6 +78,9 @@ const GF_panel = {
         }
         return false;
     },
+    nudge(containerId) {
+        nudgeDiagram(d3.select('#' + containerId).select("svg"));
+    },
     resetDimensions(containerId, size = this.panelSize) {
         const el = document.getElementById(containerId);
         const {width, height} = {
@@ -90,23 +94,30 @@ const GF_panel = {
         return false;
     },
     diagramSVG(namedArgs) {
-        const { type='pair', step = 0, query, size = this.svgSize } = namedArgs;
+        const { id, type='pair', step = 0, query, size = this.svgSize } = namedArgs;
         const {width, height} = {
             ...this.svgSize[step < this.svgSize.length ? step : this.svgSize.length],
             ...(typeof size === 'object' && size !== null ? size : {})
         };
         const config = TilesConfig(query)
-        if (type === 'pair' && step === 0) {
+        const isPrimaryPairDiagrem = type === 'pair' && step === 0;
+        if (isPrimaryPairDiagrem) {
             const zoom = 1.9
-            x = PairSvg.render(config.getItemMatrix, width, height, zoom)
-            return x;
+            svg = PairSvg.render(config.getItemMatrix, width, height, zoom)
+        } else {
+            const pairDiagram = NewPairDiagram.create(config)
+            const threadDiagram = ThreadDiagram.create(pairDiagram)
+            // implement droste steps
+            const nodeTransparency = 0.05
+            const strokeWidth = "2px"
+            const markers = true // use false for slow devices and IE-11, set them at onEnd
+            svg = DiagramSvg.render(threadDiagram, strokeWidth, markers, width, height, nodeTransparency);
         }
-        const pairDiagram = NewPairDiagram.create(config)
-        const threadDiagram = ThreadDiagram.create(pairDiagram)
-        // implement droste steps
-        const nodeTransparency = 0.05
-        const strokeWidth = "2px"
-        const markers = true // use false for slow devices and IE-11, set them at onEnd
-        return DiagramSvg.render(threadDiagram, strokeWidth, markers, width, height, nodeTransparency);
+        if (id) {
+            document.getElementById(id).innerHTML = svg;
+            if (!isPrimaryPairDiagrem)
+                this.nudge(id);
+        }
+        else return svg;
     }
 }

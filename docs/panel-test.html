@@ -16,9 +16,8 @@
 <script>
   GF_panel.load({caption: "pair diagram   ", id: "pairs", controls: ['cleanup','diagram', 'color','resize']});
   q = "patchWidth=3&patchHeight=5&c1=tc&d1=tctc&e1=tc&c2=tctc&e2=tctc&d3=tc&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2&footside=-5,B-,-2,b-,,&tile=831,4-7,-5-&headside=5-,-c,6-,-c"
-  const svgStr = GF_panel.diagramSVG({query: q, type: 'pair'});
-  document.getElementById('pairs').innerHTML = svgStr;
-  nudgeDiagram(d3.select('#pairs').select("svg"))
+  GF_panel.diagramSVG({id: 'pairs', query: q, type: 'pair'});
+  GF_panel.nudge('pairs');
 </script>
 </body>
 </html>
