@@ -8,8 +8,8 @@ Panels
 
 Under construction.
 
-This widget is intended to replace hardcoded content on the pages [
-stitches](/GroundForge/stitches), 
+This widget is intended to replace hardcoded content on the pages
+[stitches](/GroundForge/stitches), 
 [nets](/GroundForge/nets), 
 [droste](/GroundForge/droste) and the
 [snow mixer](/GroundForge/mix4snow).
@@ -30,12 +30,12 @@ Widget demo's
         figcaption img {padding-left: 0.5em;}
 </style>
 <script type="text/javascript"> 
-  window.q = "patchWidth=11&patchHeight=11&c1=tc&d1=tctc&e1=tc&c2=tctc&e2=tctc&d3=tc&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2&footside=-5,B-,-2,b-,,&tile=831,4-7,-5-&headside=5-,-c,6-,-c"
+  window.q = "patchWidth=3&patchHeight=5&c1=tc&d1=tctc&e1=tc&c2=tctc&e2=tctc&d3=tc&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2&footside=-5,B-,-2,b-,,&tile=831,4-7,-5-&headside=5-,-c,6-,-c"
 </script>
 
 ### 1
 <script type="text/javascript"> 
-  GF_panel.load({caption: "pair diagram", id: "pairs", controls: ['diagram', 'resize']});
+  GF_panel.load({caption: "pair diagram", id: "pairs", controls: ['diagram', 'resize'], size: {width: "400px", height: "200px"}});
   document.getElementById('pairs').innerHTML = GF_panel.diagramSVG({query:window.q});
 </script>
 
@@ -48,15 +48,14 @@ Widget demo's
 
 ### 3
 <script type="text/javascript"> 
-  GF_panel.load({caption:"<pre>bd\npq</pre>", id:"nets", controls: ['resize']}); 
+  GF_panel.load({caption:"<pre>bd\npq</pre>", id:"nets", controls: ['resize'], size: { width:"400px", height: "2em"}}); 
   document.getElementById('nets').innerHTML = "no content, just a demo of multiline caption";
 </script>
 
 ### 4
 <script type="text/javascript"> 
-  GF_panel.load({caption:"stitches", id:"droste",controls: ['cleanup', 'resize']});
-  const content = '<textarea id="droste" name="droste2">ctc,cross=ct</textarea>';
-  document.getElementById('droste').outerHTML = content;
+  GF_panel.load({caption: "stitches", id: "droste", controls: ['cleanup', 'resize'], size: {width: "400px", height: "200px"}});
+  document.getElementById('droste').outerHTML = '<textarea id="droste" name="droste">ctc,cross=ct</textarea>';
 </script>
 
 

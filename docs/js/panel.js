@@ -1,10 +1,17 @@
 const GF_panel = {
-    svgSize: {width: 744, height: 1052}, // A1
-    panelSize: {width: '300px', height: '300px'},
+    svgSize: [ // portrait pages, size increases per droste step
+        {width: 793.70079, height: 1122.5197}, // A4
+        {width: 1122.5197, height: 1587.4016}, // A3
+        {width: 1587.4016, height: 2245.3094} // A2
+    ],
+    panelSize: {width: '300px', height: '300px'}, // default panel size
 
     load(config) {
-        const { caption, id, controls = [] } = config;
+        const { caption, id, controls = [], size = this.panelSize } = config;
         const isArray = Array.isArray(controls);
+        const sizeStr = JSON.stringify(size)
+            .replace(/\n/g, "")
+            .replace(/"/g, "'");
 
         const cleanup = isArray && controls.includes('cleanup') ? `
             <a href="javascript:cleanUp(d3.select('#${id} svg'))" title="clean up"><img src="/GroundForge/images/broom.png" alt="broom stick"></a>
@@ -19,7 +26,7 @@ const GF_panel = {
         ` : '';
         const resize = isArray && controls.includes('resize') ? `
             <a href="javascript:GF_panel.maximize('${id}')" title="maximize"><img src="/GroundForge/images/maximize.png" alt="maximize"></a>
-            <a href="javascript:GF_panel.resetDimensions('${id}')" title="reset to default"><img src="/GroundForge/images/reset-dimensions.png" alt="default"></a>
+            <a href="javascript:GF_panel.resetDimensions('${id}',${sizeStr})" title="reset to default"><img src="/GroundForge/images/reset-dimensions.png" alt="default"></a>
             <a href="javascript:GF_panel.minimize('${id}')" title="minimize"><img src="/GroundForge/images/minimize.png" alt="minimize"></a>
         ` : '';
         const figure = document.createElement('figure');
@@ -34,7 +41,7 @@ const GF_panel = {
             <div id="${id}"></div>
         `.trim();
         document.currentScript.parentNode.append(figure);
-        this.resetDimensions(id)
+        this.resetDimensions(id, size);
     },
     downloadSVG(containerId, filename = "diagram.svg") {
         const el = document.querySelector('#'+ containerId + " svg");
@@ -65,25 +72,34 @@ const GF_panel = {
     minimize(containerId) {
         const el = document.getElementById(containerId);
         if (el) {
-            el.style.width = this.panelSize.width;
-            el.style.height = "0";
+            el.style.width = "200px";
+            el.style.height = "0px";
         }
         return false;
     },
-    resetDimensions(containerId) {
+    resetDimensions(containerId, size = this.panelSize) {
         const el = document.getElementById(containerId);
+        const {width, height} = {
+            ...this.panelSize,
+            ...(typeof size === 'object' && size !== null ? size : this.panelSize)
+        };
         if (el) {
-            el.style.width = this.panelSize.width;
-            el.style.height = this.panelSize.height;
+            el.style.width = width;
+            el.style.height = height;
         }
         return false;
     },
-    diagramSVG(args){
-        const { type='pair', step = 0, query } = args;
+    diagramSVG(namedArgs) {
+        const { type='pair', step = 0, query, size = this.svgSize } = namedArgs;
+        const {width, height} = {
+            ...this.svgSize[step < this.svgSize.length ? step : this.svgSize.length],
+            ...(typeof size === 'object' && size !== null ? size : {})
+        };
         const config = TilesConfig(query)
         if (type === 'pair' && step === 0) {
             const zoom = 1.9
-            return PairSvg.render(config.getItemMatrix, this.svgSize.width, this.svgSize.height, zoom)
+            x = PairSvg.render(config.getItemMatrix, width, height, zoom)
+            return x;
         }
         const pairDiagram = NewPairDiagram.create(config)
         const threadDiagram = ThreadDiagram.create(pairDiagram)
@@ -91,6 +107,6 @@ const GF_panel = {
         const nodeTransparency = 0.05
         const strokeWidth = "2px"
         const markers = true // use false for slow devices and IE-11, set them at onEnd
-        return DiagramSvg.render(threadDiagram, strokeWidth, markers, this.svgSize.width, this.svgSize.height, nodeTransparency);
+        return DiagramSvg.render(threadDiagram, strokeWidth, markers, width, height, nodeTransparency);
     }
 }
