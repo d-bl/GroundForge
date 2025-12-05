@@ -32,7 +32,7 @@ Widget demo's
         figure {max-width: 90%; display: inline-block;}
         figure pre {display: inline-block; padding:0; margin:0; background: #ddd}
         figure div {overflow: auto;resize: both}
-        figcaption {text-align: center;background-color: #ddd;padding: 5px; border-radius: 5px; display: flex; align-items: center; min-width: 20em;}
+        figcaption {text-align: center;background-color: #ddd;padding: 5px; border-radius: 5px; display: flex; align-items: center;}
         figcaption img {padding-left: 0.5em;}
 </style>
 <script type="text/javascript"> 
