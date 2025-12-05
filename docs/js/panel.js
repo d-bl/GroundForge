@@ -32,7 +32,7 @@ const GF_panel = {
         const figure = document.createElement('figure');
         figure.className = 'gf_panel';
         figure.innerHTML = `
-            <figcaption">
+            <figcaption class="gf_panel">
                 ${caption.trim()}
                 ${cleanup.trim()}
                 ${diagram.trim()}
