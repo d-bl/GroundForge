@@ -94,7 +94,7 @@ Options:
     - ![](/GroundForge/images/wand.png) the java code in the href should be set by the page adding the panel.
     - ![](/GroundForge/images/play.png) starts/continues nudging stitch positions, requires the _nudgePairs.js_ script.
   - `color`: color chooser, may vary per browser. Value to be used elsewhere on the page.
-  - `resize`: ![](/GroundForge/images/maximise.png) ![](/GroundForge/images/reset-dimensions.png) ![](/GroundForge/images/minimise.png)
+  - `resize`: ![](/GroundForge/images/maximize.png) ![](/GroundForge/images/reset-dimensions.png) ![](/GroundForge/images/minimize.png)
 - `size`: optional, object with `width` and `height` properties, e.g. `{width: "400px", height: "200px"}`.
 
 ### `GF_panel.diagramSVG(options)`
