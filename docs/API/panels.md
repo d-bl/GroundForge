@@ -86,14 +86,14 @@ Therefore, these actions are not part of the widget.
 Creates a panel with a caption.
 
 Options:
-- `caption`: HTML string or plain text for the caption.
-- `id`: id for the panel div.
-- `controls`: array of strings with control names, currently supported:
-  - `cleanup`: ![](/GroundForge/images/broom.png) not yet implemented.
+- `caption`: mandatory string, plain text or HTML string for the caption.
+- `id`: mandatory string, id for the panel div.
+- `controls`: optional array of strings, default empty, currently supported values:
+  - `cleanup`: ![](/GroundForge/images/broom.png) _not yet implemented_.
   - `diagram`:
     - ![](/GroundForge/images/wand.png) the java code in the href should be set by the page adding the panel.
     - ![](/GroundForge/images/play.png) starts/continues nudging stitch positions, requires the _nudgePairs.js_ script.
-  - `color`: color chooser, looks may vary per browser. Not yet implemented.
+  - `color`: color chooser, looks and dialog may vary per browser. Its value is used to highlight threads or stitches in thread diagrams.
   - `resize`: ![](/GroundForge/images/maximize.png) ![](/GroundForge/images/reset-dimensions.png) ![](/GroundForge/images/minimize.png)
 - `size`: optional, object with `width` and `height` properties, e.g. `{width: "400px", height: "200px"}`.
 
@@ -101,9 +101,16 @@ Options:
 Generates an SVG diagram, it calls a few functions from _GroundForge-opt.js_.
 
 Options:
-- `id`: optional, id of the panel div, same value as in `GF_panel.load`.
+- `id`: optional string, id of a panel previously created with `GF_panel.load`.
   If omitted, an SVG is returned as string to be used outside a panel context, no nudging is applied.
-- `query`: string with the pattern definition and stitches.
-- `type`: optional, either `thread` or `pair`, default is `pair`.
-- 'step': optional, number, default is 0, > 0 for (not yet implemented) droste steps.
+- `query`: mandatory string with the pattern definition and stitches.
+- `type`: optional string, either `thread` or `pair`, default is `pair`.
+- `step`: optional number, default is 0, > 0 for (_not yet implemented_) droste steps.
 
+### `GF_panel.nudge(id)`
+
+Nudges the stitch positions in the panel with the given id.
+
+Called by default for all diagrams except for the primary pair diagram.
+Also called by ![](/GroundForge/images/play.png).
+A page may call this function explicitely for its primary pair diagram as well.

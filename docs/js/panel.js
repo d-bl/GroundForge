@@ -18,12 +18,14 @@ const GF_panel = {
         ` : '';
         const diagram = isArray && controls.includes('diagram') ? `
             <a href="javascript:return false"  title="reload"><img src="/GroundForge/images/wand.png" alt="wand"></a>
-            <a href="javascript:nudgeDiagram(d3.select('#${id} svg'))" title="resume animation"><img src="/GroundForge/images/play.png" alt="resume"></a>
+            <a href="javascript:GF_panel.nudge(${id})" title="resume animation"><img src="/GroundForge/images/play.png" alt="resume"></a>
             <a href="javascript:GF_panel.downloadSVG('${id}')" title="download"><img src="/GroundForge/images/download.jpg" alt="download"></a>
         ` : '';
         const colorChooser = isArray && controls.includes('color') ? `
             <input type="color" id="${id}ColorChooser" name="threadColor" value="#ff0000">
         ` : '';
+        const hasColorChooser = isArray && controls.includes('color')
+            ? "class='hasColorChooser'" : '';
         const resize = isArray && controls.includes('resize') ? `
             <a href="javascript:GF_panel.maximize('${id}')" title="maximize"><img src="/GroundForge/images/maximize.png" alt="maximize"></a>
             <a href="javascript:GF_panel.resetDimensions('${id}',${sizeStr})" title="reset to default"><img src="/GroundForge/images/reset-dimensions.png" alt="default"></a>
@@ -39,7 +41,7 @@ const GF_panel = {
                 ${colorChooser.trim()}
                 ${resize.trim()}
             </figcaption>
-            <div id="${id}"></div>
+            <div id="${id}" ${hasColorChooser}></div>
         `.trim();
         document.currentScript.parentNode.append(figure);
         this.resetDimensions(id, size);
@@ -113,11 +115,42 @@ const GF_panel = {
             const markers = true // use false for slow devices and IE-11, set them at onEnd
             svg = DiagramSvg.render(threadDiagram, strokeWidth, markers, width, height, nodeTransparency);
         }
-        if (id) {
-            document.getElementById(id).innerHTML = svg;
-            if (!isPrimaryPairDiagrem)
-                this.nudge(id);
+        if (!id) return svg;
+        const container = document.getElementById(id);
+        container.innerHTML = svg;
+        if (!isPrimaryPairDiagrem)
+            this.nudge(id);
+        if (type==='thread' && container.classList.contains("hasColorChooser")) {
+            document.querySelectorAll('.threadStart, .bobbin').forEach(el => {
+                el.addEventListener('click', function(event) {
+                    GF_panel.clickedThread(event, id + 'ColorChooser');
+                });
+            });
+
+            document.querySelectorAll('.node').forEach(el => {
+                el.addEventListener('click', function(event) {
+                    GF_panel.clickedNode(event, id + 'ColorChooser');
+                });
+            });
         }
-        else return svg;
+    },
+    clickedThread(event, colorId) {
+        const selectedClass = event.currentTarget.textContent.replace(" ", "");
+        const color = document.getElementById(colorId).value;
+        document.querySelectorAll('.' + selectedClass).forEach(seg => {
+            seg.style.stroke = color;
+            seg.style.fill = color;
+        });
+    },
+
+    clickedNode(event, colorId) {
+        const selectedClass = event.currentTarget.textContent.replace(" ", "");
+        if (selectedClass === "threadStart") return;
+        const color = document.getElementById(colorId).value;
+        document.querySelectorAll("." + selectedClass).forEach(el => {
+            el.style.stroke = color;
+            el.style.fill = color;
+            el.style.opacity = "0.4";
+        });
     }
 }
