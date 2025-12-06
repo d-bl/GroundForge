@@ -14,7 +14,7 @@ const GF_panel = {
             .replace(/"/g, "'");
 
         const cleanup = isArray && controls.includes('cleanup') ? `
-            <a href="javascript:cleanUp(d3.select('#${id} svg'))" title="clean up"><img src="/GroundForge/images/broom.png" alt="broom stick"></a>
+            <a href="javascript:GF_panel.cleanupStitches('${id}')" title="clean up"><img src="/GroundForge/images/broom.png" alt="broom"></a>
         ` : '';
         const diagram = isArray && controls.includes('diagram') ? `
             <a href="javascript:return false"  title="reload"><img src="/GroundForge/images/wand.png" alt="wand"></a>
@@ -121,15 +121,14 @@ const GF_panel = {
         if (!isPrimaryPairDiagrem)
             this.nudge(id);
         if (type==='thread' && container.classList.contains("hasColorChooser")) {
-            document.querySelectorAll('.threadStart, .bobbin').forEach(el => {
-                el.addEventListener('click', function(event) {
-                    GF_panel.clickedThread(event, id + 'ColorChooser');
-                });
-            });
-
-            document.querySelectorAll('.node').forEach(el => {
+            document.querySelectorAll(`#${id} .node`).forEach(el => {
                 el.addEventListener('click', function(event) {
                     GF_panel.clickedNode(event, id + 'ColorChooser');
+                });
+            });
+            document.querySelectorAll(`#${id} .threadStart, #${id} .bobbin`).forEach(el => {
+                el.addEventListener('click', function(event) {
+                    GF_panel.clickedThread(event, id + 'ColorChooser');
                 });
             });
         }
@@ -137,14 +136,15 @@ const GF_panel = {
     clickedThread(event, colorId) {
         const selectedClass = event.currentTarget.textContent.replace(" ", "");
         const color = document.getElementById(colorId).value;
-        document.querySelectorAll('.' + selectedClass).forEach(seg => {
-            seg.style.stroke = color;
-            seg.style.fill = color;
+        document.querySelectorAll('.' + selectedClass).forEach(el => {
+            el.style.stroke = color;
+            el.style.fill = color;
+            el.style.opacity = "1";
         });
     },
 
     clickedNode(event, colorId) {
-        const selectedClass = event.currentTarget.textContent.replace(" ", "");
+        const selectedClass = event.currentTarget.classList.toString().replace(/ *node */,'');
         if (selectedClass === "threadStart") return;
         const color = document.getElementById(colorId).value;
         document.querySelectorAll("." + selectedClass).forEach(el => {
@@ -152,5 +152,36 @@ const GF_panel = {
             el.style.fill = color;
             el.style.opacity = "0.4";
         });
+    },
+    cleanupStitches(id) {
+        const textValue = document.getElementById(id).value
+        let id2instruction = {}
+        let inputLines = textValue.split(/[\n,]/ );
+        inputLines.forEach(function (line) {
+            if(line.includes('=')) {
+                let stitchValue = line.replace(/.*=/, "")
+                let stitchIds = line.replace(/=[^=]+$/, "").split(/=/)
+                stitchIds.forEach(function (stitchId) {
+                    id2instruction[stitchId] = stitchValue
+                })
+            }
+        })
+        let invertedMap = {};
+
+        for (const [key, value] of Object.entries(id2instruction)) {
+            if (!invertedMap[value]) {
+                invertedMap[value] = [];
+            }
+            invertedMap[value].push(key);
+        }
+
+        let outputLines= inputLines.filter(line => /^((twist=)|(cross=))?[^=]+$/.test(line));
+        const keys = Object.keys(invertedMap).sort();
+        for (const key of keys) {
+            const values = invertedMap[key].sort();
+            outputLines.push(values.join('=') + '=' + key)
+        }
+        document.getElementById(id).value = outputLines.join('\n')
+        setLinks(2)
     }
 }

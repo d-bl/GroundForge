@@ -54,7 +54,7 @@ Widget demo's
 ### 3
 <script type="text/javascript"> 
   GF_panel.load({caption: "stitches", id: "droste", controls: ['cleanup', 'resize'], size: {width: "400px", height: "200px"}});
-  document.getElementById('droste').outerHTML = '<textarea id="droste" name="droste">ctc,cross=ct</textarea>';
+  document.getElementById('droste').outerHTML = '<textarea id="droste" name="droste">ctc,cross=ct,a1=ct</textarea>';
 </script>
 
 ### 4
@@ -79,26 +79,38 @@ and images used by the _panel.js_ and adjust all their paths.
 Widget description
 ------------------
 
-Actions for the wand, stitches and thread diagrams vary per page context.
+Actions for the wand and stitches in the pair diagrams vary per page context.
 Therefore, these actions are not part of the widget.
 
+To use the widget functions on your own page, include (copies of) the following scripts:
+[d3.v4.min.js](/GroundForge/js/d3.v4.min.js),
+[GroundForge-opt.js](/GroundForge/js/GroundForge-opt.js),
+[nudgePairs.js](/GroundForge/js/nudgePairs.js) and
+[panel.js](/GroundForge/js/panel.js)
+
 ### `GF_panel.load(options)`
-Creates a panel with a caption.
+
+Creates a panel with a caption title and optional buttons.
 
 Options:
 - `caption`: mandatory string, plain text or HTML string for the caption.
 - `id`: mandatory string, id for the panel div.
 - `controls`: optional array of strings, default empty, currently supported values:
-  - `cleanup`: ![](/GroundForge/images/broom.png) _not yet implemented_.
+  - `cleanup`: ![](/GroundForge/images/broom.png) removes overridden stitch definitions in a textarea.
   - `diagram`:
     - ![](/GroundForge/images/wand.png) the java code in the href should be set by the page adding the panel.
-    - ![](/GroundForge/images/play.png) starts/continues nudging stitch positions, requires the _nudgePairs.js_ script.
+    - ![](/GroundForge/images/play.png) starts/continues nudging stitch positions
   - `color`: color chooser, looks and dialog may vary per browser. Its value is used to highlight threads or stitches in thread diagrams.
   - `resize`: ![](/GroundForge/images/maximize.png) ![](/GroundForge/images/reset-dimensions.png) ![](/GroundForge/images/minimize.png)
 - `size`: optional, object with `width` and `height` properties, e.g. `{width: "400px", height: "200px"}`.
 
 ### `GF_panel.diagramSVG(options)`
-Generates an SVG diagram, it calls a few functions from _GroundForge-opt.js_.
+
+Generates an SVG diagram.
+
+To be called by the wand button.
+Where to get the query depends on the page context.
+So the page has to set the href of the wand button accordingly.
 
 Options:
 - `id`: optional string, id of a panel previously created with `GF_panel.load`.
@@ -111,6 +123,6 @@ Options:
 
 Nudges the stitch positions in the panel with the given id.
 
-Called by default for all diagrams except for the primary pair diagram.
-Also called by ![](/GroundForge/images/play.png).
-A page may call this function explicitely for its primary pair diagram as well.
+Called by default for all diagrams except for a primary pair diagram (type _pair_, step _0_),
+also called by ![](/GroundForge/images/play.png).
+A page may call this function explicitly for its primary pair diagram as well.
