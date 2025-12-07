@@ -107,13 +107,21 @@ const GF_panel = {
             const zoom = 1.9
             svg = PairSvg.render(config.getItemMatrix, width, height, zoom)
         } else {
-            const pairDiagram = NewPairDiagram.create(config)
-            const threadDiagram = ThreadDiagram.create(pairDiagram)
-            // implement droste steps
+            let pairDiagram = NewPairDiagram.create(config)
+            let threadDiagram = ThreadDiagram.create(pairDiagram)
+            for (let i = 0; i < step; i++) {
+                const stitches = "twist=ct,cross=ctc"; // TODO get from input
+                pairDiagram = PairDiagram.create(stitches, threadDiagram);
+                threadDiagram = ThreadDiagram.create(pairDiagram) // TODO skip for last step if pairs
+            }
             const nodeTransparency = 0.05
             const strokeWidth = "2px"
             const markers = true // use false for slow devices and IE-11, set them at onEnd
-            svg = DiagramSvg.render(threadDiagram, strokeWidth, markers, width, height, nodeTransparency);
+            if (namedArgs.type === 'pair') {
+                svg = DiagramSvg.render(pairDiagram, "1px", markers, width, height, nodeTransparency)
+            } else {
+                svg = DiagramSvg.render(threadDiagram, strokeWidth, markers, width, height, nodeTransparency);
+            }
         }
         if (!id) return svg;
         const container = document.getElementById(id);

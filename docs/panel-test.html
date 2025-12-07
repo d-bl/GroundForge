@@ -16,10 +16,10 @@
 <body>
 <script>
     q = "patchWidth=3&patchHeight=5&c1=tc&d1=tctc&e1=tc&c2=tctc&e2=tctc&d3=tc&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2&footside=-5,B-,-2,b-,,&tile=831,4-7,-5-&headside=5-,-c,6-,-c"
-    GF_panel.load({caption: "select stitch", id: "panel", controls: ['diagram', "resize"]});
+    GF_panel.load({caption: "primary pair", id: "panel", controls: ['diagram', "resize"]});
     GF_panel.diagramSVG({id: 'panel', query: q, type: 'pair'});
-    GF_panel.load({caption: "select stitch", id: "panel2", controls: ['diagram', "resize", "color"]});
-    GF_panel.diagramSVG({id: 'panel2', query: q, type: 'thread'});
+    GF_panel.load({caption: "thread step 1", id: "panel2", controls: ['diagram', "resize", "color"]});
+    GF_panel.diagramSVG({id: 'panel2', query: q, type: 'pair', step: 2});
   // document.getElementById('panel').outerHTML = '<textarea id="panel" name="panel">ctc,cross=ct,cross=ct</textarea>';
   // GF_stitches.load()
 </script>
