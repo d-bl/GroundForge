@@ -117,7 +117,7 @@ Options:
   If omitted, an SVG is returned as string to be used outside a panel context, no nudging is applied.
 - `query`: mandatory string with the pattern definition and stitches.
 - `type`: optional string, either `thread` or `pair`, default is `pair`.
-- `step`: array of strings, default empty, droste stitch definitions:
+- `steps`: array of strings, default empty, droste stitch definitions:
   for each element a pair diagram is created from the (previous) thread diagram.
 
 ### `GF_panel.nudge(id)`
