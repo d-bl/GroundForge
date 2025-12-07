@@ -97,7 +97,7 @@ Options:
 - `controls`: optional array of strings, default empty, specifies buttons to generate in the `figcaption`:
   - `cleanup`: ![](/GroundForge/images/broom.png) removes overridden stitch definitions in a textarea.
   - `diagram`:
-    - ![](/GroundForge/images/wand.png) the java code in the href should be set by the page creating the panel.
+    - ![](/GroundForge/images/wand.png) the href should be set by the page creating the panel.
     - ![](/GroundForge/images/play.png) starts/continues nudging stitch positions
   - `color`: color chooser, looks and dialog may vary per browser. Its value is used to highlight threads or stitches in thread diagrams.
   - `resize`: ![](/GroundForge/images/maximize.png) ![](/GroundForge/images/reset-dimensions.png) ![](/GroundForge/images/minimize.png)
