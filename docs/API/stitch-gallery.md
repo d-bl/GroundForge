@@ -22,26 +22,14 @@ Widget demo
 -----------
 
 <style>
-  #gallery {overflow: auto; resize: both;}
+  #gallery {max-height: 120px; overflow: auto; resize: both;}
   p:has(#stitchDef) a.button {color: #2879d0;}
 </style>
 <script src="/GroundForge/js/d3.v4.min.js" type="text/javascript"></script>
 <script src="/GroundForge/js/GroundForge-opt.js" type="text/javascript"></script>
 <script src="/GroundForge/js/stitch-gallery.js" type="text/javascript"></script>
-<script src="/GroundForge/js/panel.js" type="text/javascript"></script>
-
-### Stand alone
 <div id="gallery"></div>
 <script type="text/javascript"> GF_stitches.load(); </script>
-
-### In a panel
-_Under construction_
-
-<script type="text/javascript">
-    GF_panel.load({caption: "Stitch gallery", id: "galery2", controls: ['resize'], size: {width: "400px", height: "200px"}});
-    GF_stitches.load("galery2");
-</script>
-
 
 Usage in github.io markdown
 ---------------------------
@@ -56,8 +44,8 @@ and adjust the paths in the example.
 
 Please note that it is better practice to move the styles into your own CSS files.
 
-You might want to restrict the height for narrow devices like mobile phones.
-The example height shows one and a half row to make users aware there is more to see.
+You might want to restrict the max-height to narrow devices like mobile phones.
+The example height shows one and a halve row to make users aware there is more to see.
 
 To hide the text input and flip links/buttons:
 
