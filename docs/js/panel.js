@@ -96,22 +96,21 @@ const GF_panel = {
         return false;
     },
     diagramSVG(namedArgs) {
-        const { id, type='pair', step = 0, query, size = this.svgSize } = namedArgs;
+        const { id, type='pair', steps: steps = [], query, size = this.svgSize } = namedArgs;
         const {width, height} = {
-            ...this.svgSize[step < this.svgSize.length ? step : this.svgSize.length],
+            ...this.svgSize[steps.length < this.svgSize.length ? steps.length : this.svgSize.length],
             ...(typeof size === 'object' && size !== null ? size : {})
         };
         const config = TilesConfig(query)
-        const isPrimaryPairDiagrem = type === 'pair' && step === 0;
+        const isPrimaryPairDiagrem = type === 'pair' && steps.length === 0;
         if (isPrimaryPairDiagrem) {
             const zoom = 1.9
             svg = PairSvg.render(config.getItemMatrix, width, height, zoom)
         } else {
             let pairDiagram = NewPairDiagram.create(config)
             let threadDiagram = ThreadDiagram.create(pairDiagram)
-            for (let i = 0; i < step; i++) {
-                const stitches = "twist=ct,cross=ctc"; // TODO get from input
-                pairDiagram = PairDiagram.create(stitches, threadDiagram);
+            for (let i = 0; i < steps.length; i++) {
+                pairDiagram = PairDiagram.create(steps[i], threadDiagram);
                 threadDiagram = ThreadDiagram.create(pairDiagram) // TODO skip for last step if pairs
             }
             const nodeTransparency = 0.05

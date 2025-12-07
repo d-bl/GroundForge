@@ -110,15 +110,15 @@ Options:
 Generates an SVG diagram inside the `div` with the specified _id_.
 
 Also to be called by the wand button.
-Where to get the query depends on the page context.
-So the page has to set the href of the wand button accordingly.
+The page context determines where to get the query and droste steps.
 
 Options:
 - `id`: optional string, id of a panel previously created with `GF_panel.load`.
   If omitted, an SVG is returned as string to be used outside a panel context, no nudging is applied.
 - `query`: mandatory string with the pattern definition and stitches.
 - `type`: optional string, either `thread` or `pair`, default is `pair`.
-- `step`: optional number, default is 0, > 0 for (_not yet implemented_) droste steps.
+- `step`: array of strings, default empty, droste stitch definitions:
+  for each element a pair diagram is created from the (previous) thread diagram.
 
 ### `GF_panel.nudge(id)`
 
