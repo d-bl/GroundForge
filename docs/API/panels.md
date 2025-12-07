@@ -30,6 +30,7 @@ Widget demo's
         .gf_panel > div {width: 100%; overflow: auto; resize:both; border: #ddd solid 1px; }
         .gf_panel > figcaption {width: 100%; box-sizing: border-box; background-color: #ddd; }
         .gf_panel > figcaption img, .gf_panel > figcaption > input {margin-left: 0.5em;}
+        .gf_panel > figcaption > pre {padding:0; margin:0; background: #ddd}
 </style>
 
 <script src="/GroundForge/js/d3.v4.min.js" type="text/javascript"></script>
@@ -68,7 +69,7 @@ Widget demo's
 Usage in github.io markdown
 ---------------------------
 
-See [source]({{site.github.repository_url}}/blame/master/docs/{{page.path}}#L36-L66).
+See [source]({{site.github.repository_url}}/blame/master/docs/{{page.path}}#L28-L66).
 
 This example assumes you have a fork of this repository
 and its _docs_ folder [configured](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-from-a-branch)
