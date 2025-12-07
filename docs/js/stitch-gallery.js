@@ -40,9 +40,9 @@ const GF_stitches = {
     },
 
 
-    loadStitchExamples() {
+    loadStitchExamples(id) {
         for (let stitch of GF_stitches.stitches) {
-            document.querySelector("#gallery").innerHTML += `
+            document.querySelector("#" + id).innerHTML += `
             <figure>
                 <svg width="20" height="54">
                   <g transform="scale(2,2)">
@@ -64,13 +64,13 @@ const GF_stitches = {
         return d3.select("#stitchDef").node().value.toLowerCase().replace(/[^ctlrp-]/g, '')
     },
 
-    load(isDroste) {
-        this.loadStitchExamples();
-        this.loadStitchForm(isDroste);
+    load(id = "gallery") {
+        this.loadStitchExamples(id);
+        this.loadStitchForm(id);
         this.setColorCode();
     },
 
-    loadStitchForm() {
+    loadStitchForm(id) {
         let p = document.createElement("p")
         p.innerHTML += `
             <span id="colorCode"></span>
@@ -84,7 +84,7 @@ const GF_stitches = {
             <a class="button" href="javascript:GF_stitches.flip2d()">&harr;</a>
             <a class="button" href="javascript:GF_stitches.flip2p()">&varr;</a>
             <a class="button" href="javascript:GF_stitches.flip2q()">both</a>`
-        let element = document.querySelector("#gallery");
+        let element = document.querySelector("#" + id);
         element.parentNode.insertBefore(p, element.nextSibling)
         this.setStitch("ct")
     },

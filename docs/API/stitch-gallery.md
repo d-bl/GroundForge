@@ -38,8 +38,8 @@ Widget demo
 _Under construction_
 
 <script type="text/javascript">
-    GF_panel.load({caption: "Stitch gallery", id: "galery", controls: ['resize'], size: {width: "400px", height: "200px"}});
-    GF_stitches.load();
+    GF_panel.load({caption: "Stitch gallery", id: "galery2", controls: ['resize'], size: {width: "400px", height: "200px"}});
+    GF_stitches.load("galery2");
 </script>
 
 
