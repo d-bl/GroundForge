@@ -26,11 +26,10 @@ Widget demo's
 -------------
 
 <style>
-        figure, figure div {max-width: 90%;}
-        figure div {overflow: auto;resize: both}
-        figcaption {background-color: #ddd;padding: 5px; border-radius: 5px; }
-        figcaption img {padding-left: 0.5em;}
-        figcaption pre {display: inline-block; padding:0; margin:0; background: #ddd}
+        .gf_panel {display: inline-block;}
+        .gf_panel > div {width: 100%; overflow: auto; resize:both; border: #ddd solid 1px; }
+        .gf_panel > figcaption {width: 100%; box-sizing: border-box; background-color: #ddd; }
+        .gf_panel > figcaption img, .gf_panel > figcaption > input {margin-left: 0.5em;}
 </style>
 
 <script src="/GroundForge/js/d3.v4.min.js" type="text/javascript"></script>
