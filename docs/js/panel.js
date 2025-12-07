@@ -18,7 +18,7 @@ const GF_panel = {
         ` : '';
         const diagram = isArray && controls.includes('diagram') ? `
             <a href="javascript:return false"  title="reload"><img src="/GroundForge/images/wand.png" alt="wand"></a>
-            <a href="javascript:GF_panel.nudge(${id})" title="resume animation"><img src="/GroundForge/images/play.png" alt="resume"></a>
+            <a href="javascript:GF_panel.nudge('${id}')" title="resume animation"><img src="/GroundForge/images/play.png" alt="resume"></a>
             <a href="javascript:GF_panel.downloadSVG('${id}')" title="download"><img src="/GroundForge/images/download.jpg" alt="download"></a>
         ` : '';
         const colorChooser = isArray && controls.includes('color') ? `

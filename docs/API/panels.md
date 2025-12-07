@@ -62,7 +62,7 @@ Widget demo's
 ### 4
 <script type="text/javascript"> 
   GF_panel.load({caption:"<pre>bd\npq</pre>", id:"nets", size: { width:"400px", height: "2em"}});
-  document.getElementById('nets').innerHTML = "No significant content, just a demo of multiline caption.";
+  document.getElementById('nets').innerHTML = "No significant content, just a demo of a multiline caption.";
 </script>
 
 
