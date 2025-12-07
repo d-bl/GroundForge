@@ -13,6 +13,7 @@ Under construction.
 * [Widget description](#widget-description)
   * [`GF_panel.load(options)`](#gf_panelloadoptions)
   * [`GF_panel.diagramSVG(options)`](#gf_paneldiagramsvgoptions)
+  * [`GF_panel.nudge(id)`](#gf_panelnudgeid)
 
 This widget is intended to replace hardcoded content on the pages
 [stitches](/GroundForge/stitches), 
@@ -24,17 +25,18 @@ This widget is intended to replace hardcoded content on the pages
 Widget demo's
 -------------
 
+<style>
+        figure, figure div {max-width: 90%;}
+        figure div {overflow: auto;resize: both}
+        figcaption {background-color: #ddd;padding: 5px; border-radius: 5px; }
+        figcaption img {padding-left: 0.5em;}
+        figcaption pre {display: inline-block; padding:0; margin:0; background: #ddd}
+</style>
+
 <script src="/GroundForge/js/d3.v4.min.js" type="text/javascript"></script>
 <script src="/GroundForge/js/GroundForge-opt.js" type="text/javascript"></script>
 <script src="/GroundForge/js/panel.js" type="text/javascript"></script>
 <script src="/GroundForge/js/nudgePairs.js" type="text/javascript"></script>
-<style>
-        figure {max-width: 90%; display: inline-block;}
-        figure pre {display: inline-block; padding:0; margin:0; background: #ddd}
-        figure div {overflow: auto;resize: both}
-        figcaption {text-align: center;background-color: #ddd;padding: 5px; border-radius: 5px; display: flex; align-items: center;}
-        figcaption img {padding-left: 0.5em;}
-</style>
 <script type="text/javascript"> 
   window.q = "patchWidth=3&patchHeight=5&c1=tc&d1=tctc&e1=tc&c2=tctc&e2=tctc&d3=tc&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2&footside=-5,B-,-2,b-,,&tile=831,4-7,-5-&headside=5-,-c,6-,-c"
 </script>
@@ -67,9 +69,7 @@ Widget demo's
 Usage in github.io markdown
 ---------------------------
 
-See [source]({{site.github.repository_url}}/blame/master/docs/{{page.path}}#L27-L64).
-Please note that it is better practice to move the styles into your own CSS files.
-The generated figure has a class _gf_panel_, this class is not used in the demo.
+See [source]({{site.github.repository_url}}/blame/master/docs/{{page.path}}#L36-L66).
 
 This example assumes you have a fork of this repository
 and its _docs_ folder [configured](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-from-a-branch)
@@ -79,36 +79,37 @@ and images used by the _panel.js_ and adjust all their paths.
 Widget description
 ------------------
 
-Actions for the wand and stitches in the pair diagrams vary per page context.
-Therefore, these actions are not part of the widget.
-
 To use the widget functions on your own page, include (copies of) the following scripts:
 [d3.v4.min.js](/GroundForge/js/d3.v4.min.js),
 [GroundForge-opt.js](/GroundForge/js/GroundForge-opt.js),
 [nudgePairs.js](/GroundForge/js/nudgePairs.js) and
-[panel.js](/GroundForge/js/panel.js)
+[panel.js](/GroundForge/js/panel.js).
 
 ### `GF_panel.load(options)`
 
-Creates a panel with a caption title and optional buttons.
+Genrerates the panel structure:
+
+    <figure class="gf-panel"><figcaption>...</figcaption><div id="..."></div></figure>
 
 Options:
-- `caption`: mandatory string, plain text or HTML string for the caption.
-- `id`: mandatory string, id for the panel div.
-- `controls`: optional array of strings, default empty, currently supported values:
+- `caption`: mandatory string, plain text or HTML string generated at the start of the `figcaption`.
+- `id`: mandatory string, id for the generated `div`.
+- `controls`: optional array of strings, default empty, specifies buttons to generate in the `figcaption`:
   - `cleanup`: ![](/GroundForge/images/broom.png) removes overridden stitch definitions in a textarea.
   - `diagram`:
-    - ![](/GroundForge/images/wand.png) the java code in the href should be set by the page adding the panel.
+    - ![](/GroundForge/images/wand.png) the java code in the href should be set by the page creating the panel.
     - ![](/GroundForge/images/play.png) starts/continues nudging stitch positions
   - `color`: color chooser, looks and dialog may vary per browser. Its value is used to highlight threads or stitches in thread diagrams.
   - `resize`: ![](/GroundForge/images/maximize.png) ![](/GroundForge/images/reset-dimensions.png) ![](/GroundForge/images/minimize.png)
+    For a `div` with CSS style `overflow: auto; resize: both;`.
+    A border makes the hot corner at the right bottom easy to find, even when a browser hides scroll bars.
 - `size`: optional, object with `width` and `height` properties, e.g. `{width: "400px", height: "200px"}`.
 
 ### `GF_panel.diagramSVG(options)`
 
-Generates an SVG diagram.
+Generates an SVG diagram inside the `div` with the specified _id_.
 
-To be called by the wand button.
+Also to be called by the wand button.
 Where to get the query depends on the page context.
 So the page has to set the href of the wand button accordingly.
 
