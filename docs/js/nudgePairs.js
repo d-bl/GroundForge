@@ -26,7 +26,7 @@ function nudgePairs(containerId) {
  *   https://devdocs.io/d3~4/d3-selection
  */
 function nudgeDiagram(svg) {
-
+  console.time("nudgeDiagram");
   // collect data of the SVG elements with class node
 
   function getNodeData(n){
@@ -105,9 +105,7 @@ function nudgeDiagram(svg) {
       }
       links.attr("d", drawPath);
       nodes.attr("transform", moveNode);
-      // console.log(new Date().getMilliseconds())
   }
-
   // define forces with the collected data
   d3.forceSimulation(nodeData)
     .force("charge", d3.forceManyBody().strength(-1000))
@@ -119,5 +117,8 @@ function nudgeDiagram(svg) {
     .force("center", d3.forceCenter(100, 100))
     .alpha(0.0035)
     .on("tick", onTick)
-    .on("end", moveToNW)
+    .on("end", function() {
+          moveToNW();
+          console.timeEnd("nudgeDiagram"); // End timer after simulation
+    });
 }

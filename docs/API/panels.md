@@ -120,10 +120,16 @@ Options:
 - `steps`: array of strings, default empty, droste stitch definitions:
   for each element a pair diagram is created from the (previous) thread diagram.
 
+Note that the URL query keys _droste2_ and _droste3_ are the equivalent of _steps[0]_ and _steps[1]_ respectively.
+The widget uses the values of the _steps_ option.
+The pages of GroundForge use the query parameters to pass a pattern 
+back and forth between _pattern_, _stitches_ and _droste_.
+The query keys were numbered with 2nd and 3rd pair diagram in mind.
+
 ### `GF_panel.nudge(id)`
 
 Nudges the stitch positions in the panel with the given id.
 
-Called by default for all diagrams except for a primary pair diagram (type _pair_, step _0_),
+Called by default for all diagrams except for a primary pair diagram (`type` _pair_, no `steps`),
 also called by ![](/GroundForge/images/play.png).
 A page may call this function explicitly for its primary pair diagram as well.

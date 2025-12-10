@@ -96,6 +96,7 @@ const GF_panel = {
         return false;
     },
     diagramSVG(namedArgs) {
+        console.time('diagramSVG');
         const { id, type='pair', steps: steps = [], query, size = this.svgSize } = namedArgs;
         const {width, height} = {
             ...this.svgSize[steps.length < this.svgSize.length ? steps.length : this.svgSize.length],
@@ -103,30 +104,31 @@ const GF_panel = {
         };
         const config = TilesConfig(query)
         const isPrimaryPairDiagrem = type === 'pair' && steps.length === 0;
-        if (isPrimaryPairDiagrem) {
-            const zoom = 1.9
-            svg = PairSvg.render(config.getItemMatrix, width, height, zoom)
-        } else {
-            let pairDiagram = NewPairDiagram.create(config)
-            let threadDiagram = ThreadDiagram.create(pairDiagram)
-            for (let i = 0; i < steps.length; i++) {
-                pairDiagram = PairDiagram.create(steps[i], threadDiagram);
-                threadDiagram = ThreadDiagram.create(pairDiagram) // TODO skip for last step if pairs
+        let pairDiagram = NewPairDiagram.create(config);
+        let threadDiagram = isPrimaryPairDiagrem ? null : ThreadDiagram.create(pairDiagram);
+        for (let i = 0; i < steps.length; i++) {
+            console.time("step "+i)
+            pairDiagram = PairDiagram.create(steps[i], threadDiagram);
+            if(type==='thread' || i+1 < steps.length) {
+                threadDiagram = ThreadDiagram.create(pairDiagram)
             }
-            const nodeTransparency = 0.05
-            const strokeWidth = "2px"
-            const markers = true // use false for slow devices and IE-11, set them at onEnd
-            if (namedArgs.type === 'pair') {
-                svg = DiagramSvg.render(pairDiagram, "1px", markers, width, height, nodeTransparency)
-            } else {
-                svg = DiagramSvg.render(threadDiagram, strokeWidth, markers, width, height, nodeTransparency);
-            }
+            console.timeEnd("step "+i)
+            // Preserving the intermediate results between calls to diagramSVG may not be worth the bookkeeping trouble.
+            // Sampling shows that execution time grows exponentially with the number of steps.
+            // Nudging is more linear if not constant. The second step may take as much time as nudging.
         }
+        const nodeTransparency = 0.05
+        const markers = true // use false for slow devices and IE-11, set them at onEnd
+        let svg;
+        if (namedArgs.type === 'pair') {
+            svg = DiagramSvg.render(pairDiagram, "1px", markers, width, height, nodeTransparency)
+        } else {
+            svg = DiagramSvg.render(threadDiagram, "2px", markers, width, height, nodeTransparency);
+        }
+        // TODO extract method of the part above?
         if (!id) return svg;
         const container = document.getElementById(id);
         container.innerHTML = svg;
-        if (!isPrimaryPairDiagrem)
-            this.nudge(id);
         if (type==='thread' && container.classList.contains("hasColorChooser")) {
             document.querySelectorAll(`#${id} .node`).forEach(el => {
                 el.addEventListener('click', function(event) {
@@ -138,6 +140,10 @@ const GF_panel = {
                     GF_panel.clickedThread(event, id + 'ColorChooser');
                 });
             });
+        }
+        console.timeEnd('diagramSVG');
+        if (!isPrimaryPairDiagrem) {
+            this.nudge(id);
         }
     },
     clickedThread(event, colorId) {
