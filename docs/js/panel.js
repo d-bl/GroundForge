@@ -97,7 +97,7 @@ const GF_panel = {
     },
     diagramSVG(namedArgs) {
         console.time('diagramSVG');
-        const { id, type='pair', steps: steps = [], query, size = this.svgSize } = namedArgs;
+        const { id, type='pair', steps: steps = [], query, size = this.svgSize[2] } = namedArgs;
         const {width, height} = {
             ...this.svgSize[steps.length < this.svgSize.length ? steps.length : this.svgSize.length],
             ...(typeof size === 'object' && size !== null ? size : {})
@@ -119,16 +119,20 @@ const GF_panel = {
         }
         const nodeTransparency = 0.05
         const markers = true // use false for slow devices and IE-11, set them at onEnd
+        const isPairDiagram = namedArgs.type === 'pair';
         let svg;
-        if (namedArgs.type === 'pair') {
-            svg = DiagramSvg.render(pairDiagram, "1px", markers, width, height, nodeTransparency)
+        if (isPairDiagram) {
+            svg = DiagramSvg.render(pairDiagram, "1.7px", markers, width, height, nodeTransparency)
         } else {
-            svg = DiagramSvg.render(threadDiagram, "2px", markers, width, height, nodeTransparency);
+            svg = DiagramSvg.render(threadDiagram, "4px", markers, width, height, nodeTransparency);
         }
         // TODO extract method of the part above?
         if (!id) return svg;
         const container = document.getElementById(id);
         container.innerHTML = svg;
+        const svgElement = container.querySelectorAll("svg>g")[0];
+        svgElement.setAttribute("transform", isPairDiagram ? "scale(1.3)" : "scale(0.5)");
+
         if (type==='thread' && container.classList.contains("hasColorChooser")) {
             document.querySelectorAll(`#${id} .node`).forEach(el => {
                 el.addEventListener('click', function(event) {

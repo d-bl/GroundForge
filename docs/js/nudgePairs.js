@@ -21,13 +21,15 @@ function nudgePairs(containerId) {
  *    - class link
  *    - an id attribute containing the IDs of their nodes separated with '-'
  *    - an attribute d defining a path with or without a midpoint
+ * @param forceOptions options for the force simulation
  * See also
  *   https://devdocs.io/d3~4/d3-force
  *   https://devdocs.io/d3~4/d3-selection
  */
-function nudgeDiagram(svg, forceOptions={
+function nudgeDiagram(svg, forceOptions= {
     forceManyBody: { strength: -1000 },
-    link: { strength: 50, distance: 11.5, iterations: 30 }
+    link: { strength: 50, distance: 18, iterations: 30 },
+    alpha: 0.0035
 }) {
   console.time("nudgeDiagram");
   // collect data of the SVG elements with class node
@@ -114,11 +116,11 @@ function nudgeDiagram(svg, forceOptions={
     .force("charge", d3.forceManyBody().strength(forceOptions.forceManyBody.strength))
     .force("link", d3
         .forceLink(linkData)
-        .strength(forceOptions.forceManyBody.strength)
-        .distance(forceOptions.forceManyBody.distance)
-        .iterations(forceOptions.forceManyBody.iterations))
+        .strength(forceOptions.link.strength)
+        .distance(forceOptions.link.distance)
+        .iterations(forceOptions.link.iterations))
     .force("center", d3.forceCenter(100, 100))
-    .alpha(0.0035)
+    .alpha(forceOptions.alpha)
     .on("tick", onTick)
     .on("end", function() {
           moveToNW();
