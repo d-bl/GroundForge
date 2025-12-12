@@ -16,13 +16,46 @@
 </head>
 <body>
 <script>
+    function generate() {
+        const diagramType = document.querySelector('input[name="diagram"]:checked').value;
+        const checkedDroste = document.querySelector('input[name="droste"]:checked');
+        const drosteIndex = parseInt(checkedDroste.value, 10);
+        const stepValues = [];
+        for (let i = 1; i <= drosteIndex; i++) {
+            const textarea = document.getElementById('droste' + i);
+            txt =  textarea && textarea.value.trim() ? textarea.value.trim() : "ct";
+            stepValues.push(txt);
+        }
+        console.log(stepValues);
+        GF_panel.diagramSVG({id: 'panel2', query: q, type: diagramType, steps: stepValues});
+    }
     q = "patchWidth=3&patchHeight=5&c1=tc&d1=tctc&e1=tc&c2=tctc&e2=tctc&d3=tc&shiftColsSE=2&shiftRowsSE=2&shiftColsSW=-2&shiftRowsSW=2&footside=-5,B-,-2,b-,,&tile=831,4-7,-5-&headside=5-,-c,6-,-c"
-    GF_panel.load({caption: "primary pair", id: "panel", controls: ['diagram', "resize"]});
-    GF_panel.diagramSVG({id: 'panel', query: q, type: 'pair'});
-    GF_panel.load({caption: "thread step 1", id: "panel2", controls: ['diagram', "resize", "color"]});
-    GF_panel.diagramSVG({id: 'panel2', query: q, type: 'thread', steps: ["tc,cross=ctc"]});
-  // document.getElementById('panel').outerHTML = '<textarea id="panel" name="panel">ctc,cross=ct,cross=ct</textarea>';
-  // GF_stitches.load()
+    GF_panel.load({caption: "options", id: "options", controls: ["resize"]});
+    document.getElementById('options').innerHTML = `<br>
+        <div style="display: flex; width: 100%;">
+          <input type="radio" name="droste" value="0" checked style="flex: 0 0 auto;">
+          <input type="text" id="droste0" value="${q}" style="flex: 1 1 0; width: 0; min-width: 0;">
+        </div>
+        <div style="display: flex; width: 100%;">
+          <input type="radio" name="droste" value="1" checked style="flex: 0 0 auto;">
+          <textarea id="droste1" style="flex: 1 1 0; width: 0; min-width: 0;" placeholder="droste step 1, default all: ct"></textarea>
+        </div>
+        <div style="display: flex; width: 100%;">
+          <input type="radio" name="droste" value="2" checked style="flex: 0 0 auto;">
+          <textarea id="droste2" style="flex: 1 1 0; width: 0; min-width: 0;" placeholder="droste step 2, default all: ct"></textarea>
+        </div>
+        <div style="display: flex; width: 100%;">
+          <input type="radio" name="droste" value="3" checked style="flex: 0 0 auto;">
+          <textarea id="droste3" style="flex: 1 1 0; width: 0; min-width: 0;" placeholder="droste step 3, default all: ct"></textarea>
+        </div>
+        Diagram type:
+        <input type="radio" name="diagram" value="pair" checked> pair
+        <input type="radio" name="diagram" value="thread" checked> thread
+        `
+    GF_panel.load({caption: "diagram", id: "panel2", controls: ['diagram', "resize", "color"]});
+    const firstLink = document.getElementById('panel2').parentElement.querySelector('a');
+    firstLink.href = 'javascript:generate()';
+    GF_panel.diagramSVG({id: 'panel2', query: q, type: 'pair', steps: []});
 </script>
 </body>
 </html>
