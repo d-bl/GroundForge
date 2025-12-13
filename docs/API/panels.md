@@ -44,7 +44,7 @@ Widget demo's
 ### 1
 <script type="text/javascript"> 
   GF_panel.load({caption: "pair diagram", id: "pairs", controls: ['diagram', 'resize'], size: {width: "400px", height: "200px"}});
-  GF_panel.diagramSVG({id: 'pairs', query:window.q});
+  GF_panel.diagramSVG({id: 'pairs', query:window.q, type: "pair"});
 </script>
 
 ### 2
