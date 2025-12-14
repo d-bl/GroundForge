@@ -43,29 +43,29 @@ Widget demo's
 
 ### 1
 <script type="text/javascript"> 
-  const opts = {caption: "pair diagram", id: "pairs", wandHref: 'javascript: return 0', controls: ['resize'], size: {width: "400px", height: "200px"}};
-  GF_panel.load(opts, document.currentScript.parentNode);
+  const opts1 = {caption: "pair diagram", id: "pairs", wandHref: 'javascript: return 0', controls: ['resize'], size: {width: "400px", height: "200px"}};
+  GF_panel.load(opts1, document.currentScript.parentNode);
   GF_panel.diagramSVG({id: 'pairs', query:window.q, type: "pair"});
 </script>
 
 ### 2
 <script type="text/javascript"> 
-  const opts = {caption: "thread diagram", id: "thread_panel", wandHref: 'javascript: return 0', controls: ['color', 'resize']};
-  GF_panel.load(opts, document.currentScript.parentNode);
+  const opts2 = {caption: "thread diagram", id: "thread_panel", wandHref: 'javascript: return 0', controls: ['color', 'resize']};
+  GF_panel.load(opts2, document.currentScript.parentNode);
   GF_panel.diagramSVG({id: 'thread_panel    ', query:window.q, type:'thread'});
 </script>
 
 ### 3
 <script type="text/javascript"> 
-  const opts = {caption: "stitches", id: "droste", controls: ['cleanup', 'resize'], size: {width: "400px", height: "200px"}};
-  GF_panel.load(opts, document.currentScript.parentNode);
+  const opts3 = {caption: "stitches", id: "droste", controls: ['cleanup', 'resize'], size: {width: "400px", height: "200px"}};
+  GF_panel.load(opts3, document.currentScript.parentNode);
   document.getElementById('droste').outerHTML = '<textarea id="droste" name="droste">ctc,cross=ct,a1=ct</textarea>';
 </script>
 
 ### 4
 <script type="text/javascript"> 
-  const opts = {caption:"<pre>bd\npq</pre>", id:"nets", size: { width:"400px", height: "2em"}};
-  GF_panel.load(opts, document.currentScript.parentNode);
+  const opts4 = {caption:"<pre>bd\npq</pre>", id:"nets", size: { width:"400px", height: "2em"}};
+  GF_panel.load(opts4, document.currentScript.parentNode);
   document.getElementById('nets').innerHTML = "No significant content, just a demo of a multiline caption.";
 </script>
 
