@@ -52,7 +52,7 @@ Widget demo's
 <script type="text/javascript"> 
   const opts2 = {caption: "thread diagram", id: "thread_panel", wandHref: 'javascript: return 0', controls: ['color', 'resize']};
   GF_panel.load(opts2, document.currentScript.parentNode);
-  GF_panel.diagramSVG({id: 'thread_panel    ', query:window.q, type:'thread'});
+  GF_panel.diagramSVG({id: 'thread_panel', query:window.q, type:'thread'});
 </script>
 
 ### 3
