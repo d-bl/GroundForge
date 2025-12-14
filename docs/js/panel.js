@@ -6,8 +6,8 @@ const GF_panel = {
     ],
     panelSize: {width: '300px', height: '300px'}, // default panel size
 
-    load(config) {
-        const { caption, id, controls = [], size = this.panelSize } = config;
+    load(config, parent) {
+        const { caption, id, wandHref, controls = [], size = this.panelSize } = config;
         const isArray = Array.isArray(controls);
         const sizeStr = JSON.stringify(size)
             .replace(/\n/g, "")
@@ -16,16 +16,16 @@ const GF_panel = {
         const cleanup = isArray && controls.includes('cleanup') ? `
             <a href="javascript:GF_panel.cleanupStitches('${id}')" title="clean up"><img src="/GroundForge/images/broom.png" alt="broom"></a>
         ` : '';
-        const diagram = isArray && controls.includes('diagram') ? `
-            <a href="javascript:return false"  title="reload"><img src="/GroundForge/images/wand.png" alt="wand"></a>
-            <a href="javascript:GF_panel.nudge('${id}')" title="resume animation"><img src="/GroundForge/images/play.png" alt="resume"></a>
-            <a href="javascript:GF_panel.downloadSVG('${id}')" title="download"><img src="/GroundForge/images/download.jpg" alt="download"></a>
-        ` : '';
-        const colorChooser = isArray && controls.includes('color') ? `
+        const hasColorChooser = isArray && controls.includes('color');
+        const colorChooser = hasColorChooser ? `
             <input type="color" id="${id}ColorChooser" name="threadColor" value="#ff0000">
         ` : '';
-        const hasColorChooser = isArray && controls.includes('color')
-            ? "class='hasColorChooser'" : '';
+        const type = hasColorChooser ? "thread" : "pair";
+        const diagram = wandHref ? `
+            <a href="${wandHref}"  title="reload"><img src="/GroundForge/images/wand.png" alt="wand"></a>
+            <a href="javascript:GF_panel.nudge('${id}','${type}')" title="resume animation"><img src="/GroundForge/images/play.png" alt="resume"></a>
+            <a href="javascript:GF_panel.downloadSVG('${id}')" title="download"><img src="/GroundForge/images/download.jpg" alt="download"></a>
+        ` : '';
         const resize = isArray && controls.includes('resize') ? `
             <a href="javascript:GF_panel.maximize('${id}')" title="maximize"><img src="/GroundForge/images/maximize.png" alt="maximize"></a>
             <a href="javascript:GF_panel.resetDimensions('${id}',${sizeStr})" title="reset to default"><img src="/GroundForge/images/reset-dimensions.png" alt="default"></a>
@@ -41,9 +41,9 @@ const GF_panel = {
                 ${colorChooser.trim()}
                 ${resize.trim()}
             </figcaption>
-            <div id="${id}" ${hasColorChooser}></div>
+            <div id="${id}"></div>
         `.trim();
-        document.currentScript.parentNode.append(figure);
+        parent.append(figure);
         this.resetDimensions(id, size);
     },
     downloadSVG(containerId, filename = "diagram.svg") {
@@ -80,8 +80,9 @@ const GF_panel = {
         }
         return false;
     },
-    nudge(containerId) {
-        nudgeDiagram(d3.select('#' + containerId).select("svg"));
+    nudge(containerId, type = 'thread') {
+        console.log(`nudge called for container ${containerId} and diagram type ${type}`);
+        nudgeDiagram(d3.select('#' + containerId).select("svg"), type);
     },
     resetDimensions(containerId, size = this.panelSize) {
         const el = document.getElementById(containerId);
@@ -147,7 +148,7 @@ const GF_panel = {
         }
         console.timeEnd('diagramSVG');
         if (!isPrimaryPairDiagrem) {
-            this.nudge(id);
+            this.nudge(id, type);
         }
     },
     clickedThread(event, colorId) {

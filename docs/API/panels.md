@@ -43,14 +43,14 @@ Widget demo's
 
 ### 1
 <script type="text/javascript"> 
-  GF_panel.load({caption: "pair diagram", id: "pairs", controls: ['diagram', 'resize'], size: {width: "400px", height: "200px"}});
+  GF_panel.load({caption: "pair diagram", id: "pairs", wandHref: 'javascript: return 0', controls: ['resize'], size: {width: "400px", height: "200px"}});
   GF_panel.diagramSVG({id: 'pairs', query:window.q, type: "pair"});
 </script>
 
 ### 2
 <script type="text/javascript"> 
-  GF_panel.load({caption: "thread diagram", id: "threads", controls: ['diagram', 'color', 'resize']});
-  GF_panel.diagramSVG({id: 'threads', query:window.q, type:'thread'});
+  GF_panel.load({caption: "thread diagram", id: "thread_panel", wandHref: 'javascript: return 0', controls: ['color', 'resize']});
+  GF_panel.diagramSVG({id: 'thread_panel    ', query:window.q, type:'thread'});
 </script>
 
 ### 3
@@ -94,11 +94,12 @@ Genrerates the panel structure:
 Options:
 - `caption`: mandatory string, plain text or HTML string generated at the start of the `figcaption`.
 - `id`: mandatory string, id for the generated `div`.
+- `wnadHref`: typlicaly `javascript:...` to generate the diagram. 
+  Creates the controls
+     ![wand](/GroundForge/images/wand.png) and
+     ![resume](/GroundForge/images/play.png) the latter calls nudge with diagramType 'thread' if control `color` is specified.
 - `controls`: optional array of strings, default empty, specifies buttons to generate in the `figcaption`:
   - `cleanup`: ![](/GroundForge/images/broom.png) removes overridden stitch definitions in a textarea.
-  - `diagram`:
-    - ![](/GroundForge/images/wand.png) the href should be set by the page creating the panel.
-    - ![](/GroundForge/images/play.png) starts/continues nudging stitch positions
   - `color`: color chooser, looks and dialog may vary per browser. Its value is used to highlight threads or stitches in thread diagrams.
   - `resize`: ![](/GroundForge/images/maximize.png) ![](/GroundForge/images/reset-dimensions.png) ![](/GroundForge/images/minimize.png)
     For a `div` with CSS style `overflow: auto; resize: both;`.
@@ -126,9 +127,11 @@ The pages of GroundForge use the query parameters to pass a pattern
 back and forth between _pattern_, _stitches_ and _droste_.
 The query keys were numbered with 2nd and 3rd pair diagram in mind.
 
-### `GF_panel.nudge(id)`
+### `GF_panel.nudge(id, diagramType)`
 
 Nudges the stitch positions in the panel with the given id.
+
+Default for `diagramType` is _pair_.
 
 Called by default for all diagrams except for a primary pair diagram (`type` _pair_, no `steps`),
 also called by ![](/GroundForge/images/play.png).
