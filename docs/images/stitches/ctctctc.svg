@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<svg
+   id="svg2"
+   version="1.1"
+   width="54.023033"
+   height="55.503727"
+   sodipodi:docname="ctctctc.svg"
+   inkscape:export-filename="ctctctc.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs244" />
+  <sodipodi:namedview
+     id="namedview244"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="3.7914095"
+     inkscape:cx="4.0881893"
+     inkscape:cy="17.012143"
+     inkscape:window-width="2400"
+     inkscape:window-height="1261"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g244" />
+  <g
+     transform="matrix(0.5,0,0,0.5,-483.53459,-721.0889)"
+     id="g244">
+    <defs
+       id="defs5">
+      <marker
+         id="start-thread"
+         viewBox="-7 -7 14 14"
+         markerWidth="12"
+         markerHeight="12"
+         orient="auto"
+         markerUnits="userSpaceOnUse">
+        <path
+           d="M -18,-6 H 6 V 6 h -24 z"
+           fill="#000000"
+           style="opacity:0.5"
+           id="path1" />
+      </marker>
+      <marker
+         id="start-pair"
+         viewBox="-7 -7 14 14"
+         markerWidth="12"
+         markerHeight="12"
+         orient="auto"
+         markerUnits="userSpaceOnUse">
+        <path
+           d="M -5,0 0,8 5,0 0,-8 Z"
+           fill="#000000"
+           style="opacity:0.5"
+           id="path2" />
+      </marker>
+      <marker
+         id="twist-1"
+         viewBox="-3 -3 6 6"
+         markerWidth="6"
+         markerHeight="6"
+         orient="auto"
+         markerUnits="userSpaceOnUse">
+        <path
+           d="M 0,4.8 V -4.8"
+           fill="#000000"
+           stroke="#000000"
+           stroke-width="1.5px"
+           id="path3" />
+      </marker>
+      <marker
+         id="twist-2"
+         viewBox="-3 -3 6 6"
+         markerWidth="6"
+         markerHeight="6"
+         orient="auto"
+         markerUnits="userSpaceOnUse">
+        <path
+           d="M -1,4.8 V -4.8 M 1,4.8 V -4.8"
+           fill="#000000"
+           stroke="#000000"
+           stroke-width="1.5px"
+           id="path4" />
+      </marker>
+      <marker
+         id="twist-3"
+         viewBox="-3 -3 6 6"
+         markerWidth="6"
+         markerHeight="6"
+         orient="auto"
+         markerUnits="userSpaceOnUse">
+        <path
+           d="M -3,4.8 V -4.8 M 3,4.8 V -4.8 M 0,4.8 v -9.6"
+           fill="#000000"
+           stroke="#000000"
+           stroke-width="1.5px"
+           id="path5" />
+      </marker>
+    </defs>
+    <path
+       class="link thread34 WhiteStart"
+       id="n3109-n3242"
+       d="m 1016.211,1540.3585 -43.10245,11.8626"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread33 WhiteEnd"
+       id="n3107-n3240"
+       d="m 996.04278,1522.5081 -21.85555,5.8406"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none"
+       sodipodi:nodetypes="cc" />
+    <path
+       class="link thread35 WhiteEnd"
+       id="n3109-n3221"
+       d="m 1021.996,1538.7664 42.9062,11.4088"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread36 WhiteStart"
+       id="n3108-n3220"
+       d="m 1052.9512,1523.5988 21.9161,5.6093"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none"
+       sodipodi:nodetypes="cc" />
+    <path
+       class="link thread35 WhiteStart"
+       id="n3107-n3109"
+       d="m 1001.1275,1525.6934 20.8685,13.073"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread34 WhiteEnd"
+       id="n3108-n3109"
+       d="m 1047.1386,1522.111 -20.1406,13.3419"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread36 WhiteEnd"
+       id="n3106-n3108"
+       d="m 1021.5858,1511.9285 19.979,7.9615"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread34 WhiteStart"
+       id="n3105-n3108"
+       d="m 1038.784,1502.862 8.3546,19.249"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread35 WhiteEnd"
+       id="n3104-n3107"
+       d="m 1006.7728,1497.6955 -8.3485,19.3054"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread33 WhiteStart"
+       id="n3106-n3107"
+       d="m 1016.0424,1514.2245 -19.99962,8.2836"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread36 WhiteStart"
+       id="n3104-n3106"
+       d="m 1011.0993,1501.8526 10.4865,10.0759"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread33 WhiteEnd"
+       id="n3105-n3106"
+       d="m 1036.3952,1497.3581 -10.5324,10.3624"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread34 WhiteEnd"
+       id="n3103-n3105"
+       d="m 1021.6588,1483.5246 10.3618,9.727"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread33 WhiteStart"
+       id="n3102-n3105"
+       d="m 1045.4428,1478.0019 -9.0476,19.3562"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread36 WhiteEnd"
+       id="n3101-n3104"
+       d="m 995.20737,1472.9348 9.02623,19.3245"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread35 WhiteStart"
+       id="n3103-n3104"
+       d="m 1017.3131,1487.6615 -10.5403,10.034"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread34 WhiteStart"
+       id="n3101-n3103"
+       d="m 1000.7776,1475.1648 20.8812,8.3598"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread35 WhiteEnd"
+       id="n3102-n3103"
+       d="m 1047.9836,1472.5664 -20.7855,8.6523"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread33 WhiteEnd"
+       id="n3100-n3102"
+       d="m 1021.2249,1456.4024 21.6229,13.0616"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread35 WhiteStart"
+       id="n2929-n3102"
+       d="m 1069.7504,1466.6274 -21.7668,5.939"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none"
+       sodipodi:nodetypes="cc" />
+    <path
+       class="link thread34 WhiteEnd"
+       id="n2949-n3101"
+       d="m 967.32245,1465.6346 11.04026,2.8903 11.04027,2.8903"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none"
+       sodipodi:nodetypes="ccc" />
+    <path
+       class="link thread36 WhiteStart"
+       id="n3100-n3101"
+       d="m 1016.1608,1459.6203 -20.95343,13.3145"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread33 WhiteStart"
+       id="n2948-n3100"
+       d="m 976.58004,1444.9822 44.64486,11.4202"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+    <path
+       class="link thread36 WhiteEnd"
+       id="n2927-n3100"
+       d="m 1071.2274,1443.1444 -44.2029,11.7202"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-dasharray:none" />
+  </g>
+</svg>
