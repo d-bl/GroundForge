@@ -22,7 +22,7 @@ Widget demo
 -----------
 
 <style>
-  #gallery {max-height: 120px; overflow: auto; resize: both;}
+  #gallery {max-width: 100%; overflow: hidden; resize: both;}
   p:has(#stitchDef) a.button {color: #2879d0;}
 </style>
 <script src="/GroundForge/js/d3.v4.min.js" type="text/javascript"></script>
