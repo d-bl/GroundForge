@@ -51,7 +51,7 @@ const GF_stitches = {
                     </g>
                   </g>
                 </svg>
-                <img src="${GF_stitches.imagesLocation}/${stitch}.png"
+                <img src="${GF_stitches.imagesLocation}/${stitch}.svg"
                      title="${stitch}">
                 <figcaption>
                     <a href="javaScript:GF_stitches.setStitch('${stitch}')">${stitch}</a>&nbsp;
