@@ -13,7 +13,6 @@ const GF_stitches = {
         "crclct",
         "ctclcrctc",
         "ctcttctc",
-        "-",
         "crcllrrrc",
         "tctctllctctr",
     ],
@@ -55,8 +54,7 @@ const GF_stitches = {
                 <img src="${GF_stitches.imagesLocation}/${stitch}.svg"
                      title="${stitch}">
                 <figcaption>
-                    {stitch === "-" ?  '' : `<a href="javaScript:GF_stitches.setStitch('${stitch}')">${stitch}</a>`}&nbsp;
-                    <a href="javaScript:GF_stitches.setStitch('${stitch}')">${stitch}</a>&nbsp;
+                     <a href="javaScript:GF_stitches.setStitch('${stitch}')">${stitch}</a>&nbsp;
                 </figcaption>
             </figure>`
         }
