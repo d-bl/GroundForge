@@ -14,7 +14,6 @@
 * [Reshape pair diagrams](/GroundForge-help/Reshape-Patterns)
 * Advanced
   * [Create a pattern](/GroundForge-help/Advanced)
-  * [Printed patterns to GF](/GroundForge-help/Reversed-engineering-of-patterns)
   * [Droste effect](/GroundForge-help/Droste-effect)
 
 ### Notes
