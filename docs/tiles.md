@@ -5,7 +5,7 @@ title: obsolete
 
 In April 2023, the tiles page was split and in December 2024 the content reduced to the following links:
 
-* <a href="/GroundForge/pattern" id="pattern">pattern</a> - (re)assemble the pair diagram from scratch.
+* <a href="/GroundForge/pattern" id="pattern">pattern</a> - (re)define the pair diagram from scratch.
 * <a href="/GroundForge/stitches" id="stitches">stitches</a> - choose stitches on the pair diagram to generate a thread diagram. 
 * <a href="/GroundForge/droste" id="droste">droste</a> - use thread diagram as pair diagram.
 
