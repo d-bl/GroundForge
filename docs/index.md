@@ -1,6 +1,6 @@
 ---
 layout: default
-title: GF - Home
+title: Introduction
 ---
 
 {% include fallback.html %}

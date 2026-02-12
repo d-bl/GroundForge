@@ -164,6 +164,7 @@ A mark-down pages start with a metadata section, something like
     ---
 
 Browsers show `XYZ` as tab title. Keep it short and catchy.
+The value also appears in the subtitle of the banner.
 Other lines might have a more technical purpose.
 Don't touch them, unless you know what you are doing.
 

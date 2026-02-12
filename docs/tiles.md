@@ -1,6 +1,6 @@
 ---
 layout: default
-title: GF - obsolete 
+title: obsolete 
 ---
 
 In April 2023, the tiles page was split and in December 2024 the content reduced to the following links:
