@@ -45,34 +45,29 @@ GF_tiles = {
         parent.insertAdjacentHTML('beforeend', `<div id="previews"></div>`);
         this.loadGallery({});
     },
-    loadGallery(namedArgs) {
+    async loadGallery(namedArgs) {
         const {
             jsAction = 'GF_tiles.showPreviews(this)',
             containerId = 'patterns'
         } = namedArgs;
-        for(const svg of this.gallery) {
-            fetch(`${this.content_home}/tileGallery/${svg}`) // as <img src> it would not be part of the dom
-                .then(response => response.text())
-                .then(svg => {
-                    const containerEl = document.getElementById(containerId);
-                    containerEl.insertAdjacentHTML('beforeend', svg);
-                    const svgEl = containerEl.lastElementChild;
-                    svgEl.querySelectorAll(`:scope a`).forEach(el => {
-                        const link = el.getAttribute('xlink:href');
-                        if (link !== null) {
-                            el.setAttribute('xlink:href', link.replace(/.*io.GroundForge/, '/GroundForge'));
-                            if (link.includes('?')) {
-                                el.setAttribute('onclick', `javascript:${jsAction};return false;`);
-                            }
-                        }
-                    })
-                    const units = svgEl.getAttribute('width').replace(/[0-9]/g, '');
-                    const w = svgEl.getAttribute('width').replace(/[^0-9]/g, '');
-                    const h = svgEl.getAttribute('height').replace(/[^0-9]/g, '');
-                    // scale by changing page dimensions
-                    svgEl.setAttribute('width', (w * 0.65) + units);
-                    svgEl.setAttribute('height', (h * 0.65) + units)
-                });
+        const containerEl = document.getElementById(containerId);
+        for (const svg of this.gallery) {
+            // as <img src> it would not be part of the dom
+            const response = await fetch(`${this.content_home}/tileGallery/${svg}`);
+            const svgText = await response.text();
+            containerEl.insertAdjacentHTML('beforeend', svgText);
+            const svgEl = containerEl.lastElementChild;
+            svgEl.querySelectorAll(`:scope a`).forEach(el => {
+                const link = el.getAttribute('xlink:href');
+                if (link !== null) {
+                    el.setAttribute('xlink:href', link.replace(/.*io.GroundForge/, '/GroundForge'));
+                    if (link.includes('?')) {
+                        el.setAttribute('onclick', `javascript:${jsAction};return false;`);
+                    }
+                }
+            });
+            svgEl.setAttribute('width', "100");
+            svgEl.removeAttribute('height');
         }
     }
 };
