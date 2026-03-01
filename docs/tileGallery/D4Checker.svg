@@ -13,7 +13,7 @@
   <a transform="matrix(2 0 0 2 -14.482 -147.24)" xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=7&amp;patchHeight=8&amp;footside=---b,----&amp;tile=-5,5-,-5,5-&amp;headside=c,-&amp;shiftColsSW=0&amp;shiftRowsSW=4&amp;shiftColsSE=2&amp;shiftRowsSE=4&amp;footsideStitch=tr&amp;headsideStitch=tl&amp;tileStitch=ct&amp;e2=crc&amp;f3=clc&amp;e4=ctcc">
    <text x="24.575508" y="153.90761" fill="#000000" fill-opacity=".99854" font-size="2.1167px" stroke-linecap="square" stroke-width=".565" xml:space="preserve"><tspan x="24.575508" y="153.90761" fill="#000000" stroke-width=".565">V</tspan></text>
   </a>
-  <a transform="matrix(2 0 0 2 -.50597 -149.69)" xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=7&amp;patchHeight=8&amp;footside=---b,----&amp;tile=-5-5,5-5-&amp;headside=c,-&amp;shiftColsSW=0&amp;shiftRowsSW=2&amp;shiftColsSE=4&amp;shiftRowsSE=2&amp;footsideStitch=tr&amp;headsideStitch=tl&amp;tileStitch=ct&amp;f1=ct&amp;g2=crc&amp;e2=clc">
+  <a transform="matrix(2 0 0 2 -.50597 -149.69)" xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=7&amp;patchHeight=8&amp;footside=---b,----&amp;tile=-5-5,5-5-&amp;headside=c,-&amp;shiftColsSW=0&amp;shiftRowsSW=2&amp;shiftColsSE=4&amp;shiftRowsSE=2&amp;l1=tl&amp;h1=tctct&amp;f1=ct&amp;d1=tr&amp;g2=crc&amp;e2=clc">
    <text y="155.06731" fill="#000000" fill-opacity=".99854" font-size="2.1167px" stroke-linecap="square" stroke-width=".565" xml:space="preserve"><tspan x="22.76034" y="155.06731" fill="#000000" stroke-width=".565">H</tspan></text>
   </a>
  </g>
