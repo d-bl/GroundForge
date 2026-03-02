@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34.369mm" height="40.018mm" version="1.1" viewBox="0 0 34.369 40.018" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns="https://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF>
+   <ns:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+   </ns:Work>
+  </rdf:RDF>
+ </metadata>
+ <path d="m5.1292 39.717-4.8239-4.8239m14.559 4.9116-14.647-14.647m24.207 14.559-24.207-24.207m33.855 24.207-33.855-33.855m33.855 24.207-24.207-24.207m24.207 4.9116-4.8239-4.8239m4.8239 14.472-14.647-14.647m-14.296 0.08776-4.8239 4.8239m14.559-4.9116-14.647 14.647m24.207-14.559-24.207 24.207m33.855-24.207-33.855 33.855m33.855-24.207-24.207 24.207m24.207-14.559-14.647 14.647m14.647-4.9994-4.8239 4.8239" fill="#377eb8" fill-opacity=".53333" stroke="#000" stroke-linejoin="bevel" stroke-width=".60299"/>
+ <g transform="translate(-25.015 -157.04)">
+  <a transform="matrix(2 0 0 2 -14.482 -147.56)" xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=7&amp;patchHeight=8&amp;footside=----,---b&amp;tile=5-&amp;headside=-,c&amp;shiftColsSW=-1&amp;shiftRowsSW=1&amp;shiftColsSE=1&amp;shiftRowsSE=1&amp;footsideStitch=tr&amp;headsideStitch=tl&amp;tileStitch=ct&amp;e1=ctc">
+   <text x="24.575508" y="153.90761" fill="#000000" fill-opacity=".99854" font-size="2.1167px" stroke-linecap="square" stroke-width=".565" xml:space="preserve"><tspan x="24.575508" y="153.90761" fill="#000000" stroke-width=".565">b</tspan></text>
+  </a>
+ </g>
+ <rect x=".52916" y="6.1732" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="10.201" y="6.1732" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="19.873" y="6.1732" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="29.545" y="6.1732" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="5.3652" y="11.009" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="15.037" y="11.009" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="24.643" y="10.991" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x=".52916" y="15.845" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="10.201" y="15.845" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="19.873" y="15.845" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="29.545" y="15.845" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="5.3652" y="20.681" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="15.037" y="20.681" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="24.643" y="20.663" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x=".54275" y="25.507" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="10.215" y="25.507" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="19.887" y="25.507" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="29.559" y="25.507" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="5.3788" y="30.343" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="15.051" y="30.343" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="24.656" y="30.324" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x=".61086" y="35.198" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="10.283" y="35.198" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="19.955" y="35.198" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="29.627" y="35.198" width="4.2129" height="4.2129" rx="2.1064" ry="2.1064" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+</svg>

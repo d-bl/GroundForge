@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35.659mm" height="39.969mm" version="1.1" viewBox="0 0 35.659 39.969" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns="https://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <marker id="marker2027" overflow="visible" orient="auto">
+   <path transform="matrix(-.4 0 0 -.4 -4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <ns:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+   </ns:Work>
+  </rdf:RDF>
+ </metadata>
+ <path d="m30.983 5.2062v33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
+ <path d="m0.89591 10.042h33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
+ <path d="m34.763 18.307h-33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
+ <path d="m14.196 5.2062v33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
+ <path d="m5.732 5.2062 2e-6 33.852" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
+ <path d="m0.89591 26.976h33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
+ <path d="m34.763 35.392h-33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
+ <path d="m22.658 5.2062v33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
+ <rect x="2.9199" y="7.74" width="5.6242" height="11.974" rx="2.0482" ry="2.269" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="11.283" y="7.74" width="5.6242" height="11.974" rx="2.0482" ry="2.269" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="19.846" y="7.74" width="5.6242" height="11.974" rx="2.0482" ry="2.269" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="28.171" y="7.9969" width="5.6242" height="11.974" rx="2.0482" ry="2.269" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="2.9199" y="24.666" width="5.6242" height="11.974" rx="2.0482" ry="2.269" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="11.384" y="25.002" width="5.6242" height="11.974" rx="2.0482" ry="2.269" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="19.846" y="24.666" width="5.6242" height="11.974" rx="2.0482" ry="2.269" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="28.171" y="24.93" width="5.6242" height="11.974" rx="2.0482" ry="2.269" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <g transform="translate(-24.366 -157.04)">
+  <a transform="matrix(2,0,0,2,-14.482,-147.56)" xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=6&amp;patchHeight=6&amp;footside=----,---b,&amp;tile=1,8&amp;headside=c,-,&amp;shiftColsSW=0&amp;shiftRowsSW=2&amp;shiftColsSE=1&amp;shiftRowsSE=2&amp;k1=ctctr&amp;e1=ct&amp;e2=ctct&amp;d2=ctctl">
+   <text x="24.575508" y="153.90761" fill="#000000" fill-opacity=".99854" font-size="2.1167px" stroke-linecap="square" stroke-width=".565" xml:space="preserve"><tspan x="24.575508" y="153.90761" fill="#000000" stroke-width=".565">b</tspan></text>
+  </a>
+ </g>
+</svg>

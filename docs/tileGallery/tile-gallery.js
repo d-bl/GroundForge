@@ -1,7 +1,20 @@
 GF_tiles = {
     content_home: '/GroundForge',
     gallery: [
-        "index.svg"
+        "H2Checker.svg",
+        "H4Bathroom.svg",
+        "H4Checker.svg",
+        "D1.svg",
+        "D2Metro.svg",
+        "D2Diagonal.svg",
+        "D3Metro.svg",
+        "D3Bathroom.svg",
+        "D4Metro.svg",
+        "D4Checker.svg",
+        "D4Bathroom.svg",
+        "D4Diamonds.svg",
+        "D4Steps.svg",
+        "D5Steps.svg"
     ],
     showPreviews(clickedElement) {
         const previewDiv = document.getElementById('previews');

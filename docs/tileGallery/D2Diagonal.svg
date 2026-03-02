@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34.281mm" height="39.79mm" version="1.1" viewBox="0 0 34.281 39.79" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns="https://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF>
+   <ns:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+   </ns:Work>
+  </rdf:RDF>
+ </metadata>
+ <path d="m5.1248 39.489-4.8239-4.8239m14.559 4.9116-14.647-14.647m24.207 14.559-24.207-24.207m33.855 24.207-33.855-33.855m33.855 24.207-24.207-24.207m24.207 4.9116-4.8239-4.8239m4.8239 14.472-14.647-14.647m-14.296 0.0878-4.8239 4.8239m14.559-4.9116-14.647 14.647m24.207-14.559-24.207 24.207m33.855-24.207-33.855 33.855m33.855-24.207-24.207 24.207m24.207-14.559-14.647 14.647m14.647-4.9994-4.8239 4.8239" fill="#377eb8" fill-opacity=".53333" stroke="#000" stroke-linejoin="bevel" stroke-width=".60299"/>
+ <g transform="translate(-13.387 -199.52)">
+  <a transform="matrix(2 0 0 2 -26.653 -105.22)" xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=7&amp;patchHeight=8&amp;footside=---b,----&amp;tile=-5,5-&amp;headside=c,-&amp;shiftColsSW=0&amp;shiftRowsSW=2&amp;shiftColsSE=2&amp;shiftRowsSE=2&amp;footsideStitch=tr&amp;headsideStitch=tl&amp;tileStitch=ct&amp;f1=clcrclc&amp;e2=ctc">
+   <text x="24.575508" y="153.90761" fill="#000000" fill-opacity=".99854" font-size="2.1167px" stroke-linecap="square" stroke-width=".565" xml:space="preserve"><tspan x="24.575508" y="153.90761" fill="#000000" stroke-width=".565">V</tspan></text>
+  </a>
+ </g>
+ <rect transform="matrix(-.70711 .70711 .70711 .70711 0 0)" x="-5.3722" y="12.362" width="11.465" height="4.1871" rx="2.245" ry="1.8028" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="matrix(-.70711 .70711 .70711 .70711 0 0)" x="-12.211" y="19.201" width="11.465" height="4.1871" rx="2.245" ry="1.8028" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="matrix(-.70711 .70711 .70711 .70711 0 0)" x="-19.051" y="26.04" width="11.465" height="4.1871" rx="2.245" ry="1.8028" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="matrix(-.70711 .70711 .70711 .70711 0 0)" x="-5.3722" y="26.04" width="11.465" height="4.1871" rx="2.245" ry="1.8028" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="matrix(-.70711 .70711 .70711 .70711 0 0)" x="-12.211" y="32.879" width="11.465" height="4.1871" rx="2.245" ry="1.8028" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="matrix(-.70711 .70711 .70711 .70711 0 0)" x="8.306" y="26.04" width="11.465" height="4.1871" rx="2.245" ry="1.8028" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="matrix(-.70711 .70711 .70711 .70711 0 0)" x="1.4669" y="32.879" width="11.465" height="4.1871" rx="2.245" ry="1.8028" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="matrix(-.70711 .70711 .70711 .70711 0 0)" x="-5.3722" y="39.718" width="11.465" height="4.1871" rx="2.245" ry="1.8028" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="matrix(-.70711 .70711 .70711 .70711 0 0)" x="1.4669" y="19.201" width="11.465" height="4.1871" rx="2.245" ry="1.8028" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="matrix(-.70711 .70711 .70711 .70711 0 0)" x="1.4498" y="5.5142" width="11.465" height="4.1871" rx="2.245" ry="1.8028" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="matrix(-.70711 .70711 .70711 .70711 0 0)" x="15.128" y="19.192" width="11.465" height="4.1871" rx="2.245" ry="1.8028" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="matrix(-.70711 .70711 .70711 .70711 0 0)" x="14.596" y="32.433" width="11.465" height="4.1871" rx="2.245" ry="1.8028" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="matrix(-.70711 .70711 .70711 .70711 0 0)" x="7.7565" y="39.273" width="11.465" height="4.1871" rx="2.245" ry="1.8028" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="matrix(-.70711 .70711 .70711 .70711 0 0)" x=".91737" y="46.112" width="11.465" height="4.1871" rx="2.245" ry="1.8028" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="matrix(-.70711 .70711 .70711 .70711 0 0)" x="21.418" y="25.586" width="11.465" height="4.1871" rx="2.245" ry="1.8028" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="matrix(-.70711 .70711 .70711 .70711 0 0)" x="8.2889" y="12.353" width="11.465" height="4.1871" rx="2.245" ry="1.8028" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+</svg>

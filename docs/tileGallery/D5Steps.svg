@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34.281mm" height="39.973mm" version="1.1" viewBox="0 0 34.281 39.973" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns="https://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF>
+   <ns:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+   </ns:Work>
+  </rdf:RDF>
+ </metadata>
+ <path d="m5.1248 39.672-4.8239-4.8239m14.559 4.9116-14.647-14.647m24.207 14.559-24.207-24.207m33.855 24.207-33.855-33.855m33.855 24.207-24.207-24.207m24.207 4.9116-4.8239-4.8239m4.8239 14.472-14.647-14.647m-14.296 0.0878-4.8239 4.8239m14.559-4.9116-14.647 14.647m24.207-14.559-24.207 24.207m33.855-24.207-33.855 33.855m33.855-24.207-24.207 24.207m24.207-14.559-14.647 14.647m14.647-4.9994-4.8239 4.8239" fill="#377eb8" fill-opacity=".53333" stroke="#000" stroke-linejoin="bevel" stroke-width=".60299"/>
+ <g transform="translate(-108.41 -248.35)">
+  <a transform="matrix(2 0 0 2 66.468 -56.247)" xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=7&amp;patchHeight=8&amp;footside=----,---b,&amp;tile=5-5,-5-,5-5&amp;headside=-,c,&amp;shiftColsSW=-4&amp;shiftRowsSW=2&amp;shiftColsSE=3&amp;shiftRowsSE=1&amp;footsideStitch=tr&amp;headsideStitch=tl&amp;tileStitch=ct&amp;g1=ccrc&amp;e1=cclc&amp;f2=crcc&amp;&amp;g3=clcc&amp;e3=cc">
+   <text x="24.575508" y="153.90761" fill="#000000" fill-opacity=".99854" font-size="2.1167px" stroke-linecap="square" stroke-width=".565" xml:space="preserve"><tspan x="24.575508" y="153.90761" fill="#000000" stroke-width=".565">b</tspan></text>
+  </a>
+  <a transform="matrix(2 0 0 2 78.662 -56.247)" xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=7&amp;patchHeight=8&amp;footside=----,---b,&amp;tile=5-5,-5-,5-5&amp;headside=-,c,&amp;shiftColsSW=-3&amp;shiftRowsSW=1&amp;shiftColsSE=1&amp;shiftRowsSE=3&amp;footsideStitch=tr&amp;headsideStitch=tl&amp;tileStitch=ct&amp;g1=ccrc&amp;e1=clcc&amp;&amp;f2=cclc&amp;g3=crcc&amp;e3=ctc">
+   <text x="24.575508" y="153.90761" fill="#000000" fill-opacity=".99854" font-size="2.1167px" stroke-linecap="square" stroke-width=".565" xml:space="preserve"><tspan x="24.575508" y="153.90761" fill="#000000" stroke-width=".565">d</tspan></text>
+  </a>
+ </g>
+ <rect x="1.1868" y="6.7025" width="12.7" height="12.7" rx="2.1723" ry="2.4065" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="15.614" y="11.57" width="12.7" height="12.7" rx="2.1723" ry="2.4065" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="10.775" y="26.069" width="12.7" height="12.7" rx="2.1723" ry="2.4065" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <path d="m20.348 5.8048v1.8268c0 1.3332 0.96903 2.4066 2.1725 2.4066h8.355c1.2034 0 2.1725-1.0733 2.1725-2.4066v-1.8268" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="-3.0466" y="20.99" width="12.7" height="12.7" rx="2.1723" ry="2.4065" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="30.215" y="16.027" width="12.7" height="12.7" rx="2.1723" ry="2.4065" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="25.225" y="30.006" width="12.7" height="12.7" rx="2.1723" ry="2.4065" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="-5.1511" y="35.746" width="12.7" height="12.7" rx="2.1723" ry="2.4065" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+</svg>

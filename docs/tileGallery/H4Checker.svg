@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35.659mm" height="39.988mm" version="1.1" viewBox="0 0 35.659 39.988" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns="https://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <marker id="marker2027-2" overflow="visible" orient="auto">
+   <path transform="matrix(-.4 0 0 -.4 -4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <ns:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+   </ns:Work>
+  </rdf:RDF>
+ </metadata>
+ <g transform="translate(-108.66 -114.71)">
+  <a transform="matrix(2,0,0,2,70.185,-189.89)" xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=6&amp;patchHeight=6&amp;footside=----,---b,&amp;tile=11,88&amp;headside=c,-,&amp;shiftColsSW=0&amp;shiftRowsSW=2&amp;shiftColsSE=2&amp;shiftRowsSE=2&amp;k1=ctcrr&amp;f1=crcl&amp;e1=ct&amp;f2=ctc&amp;e2=clcr&amp;d2=ctcll">
+   <text x="24.575508" y="153.90761" fill="#000000" fill-opacity=".99854" font-size="2.1167px" stroke-linecap="square" stroke-width=".565" xml:space="preserve"><tspan x="24.575508" y="153.90761" fill="#000000" stroke-width=".565">b</tspan></text>
+  </a>
+ </g>
+ <rect x="19.946" y="7.9444" width="12.7" height="12.7" rx="2.1723" ry="2.4065" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="19.946" y="24.878" width="12.7" height="12.7" rx="2.1723" ry="2.4065" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="3.0126" y="7.9444" width="12.7" height="12.7" rx="2.1723" ry="2.4065" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect x="3.0126" y="24.878" width="12.7" height="12.7" rx="2.1723" ry="2.4065" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <path d="m30.983 5.225v33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027-2)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
+ <path d="m0.89593 10.061h33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027-2)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
+ <path d="m34.763 18.326h-33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027-2)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
+ <path d="m14.196 5.225v33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027-2)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
+ <path d="m5.732 5.225v33.852" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027-2)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
+ <path d="m0.89593 26.995h33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027-2)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
+ <path d="m34.763 35.411h-33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027-2)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
+ <path d="m22.658 5.225v33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027-2)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
+</svg>

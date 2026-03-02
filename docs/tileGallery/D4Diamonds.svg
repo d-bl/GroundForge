@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34.281mm" height="39.887mm" version="1.1" viewBox="0 0 34.281 39.887" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns="https://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF>
+   <ns:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+   </ns:Work>
+  </rdf:RDF>
+ </metadata>
+ <path d="m5.1248 39.586-4.8239-4.8239m14.559 4.9116-14.647-14.647m24.207 14.559-24.207-24.207m33.855 24.207-33.855-33.855m33.855 24.207-24.207-24.207m24.207 4.9116-4.8239-4.8239m4.8239 14.472-14.647-14.647m-14.296 0.0878-4.8239 4.8239m14.559-4.9116-14.647 14.647m24.207-14.559-24.207 24.207m33.855-24.207-33.855 33.855m33.855-24.207-24.207 24.207m24.207-14.559-14.647 14.647m14.647-4.9994-4.8239 4.8239" fill="#377eb8" fill-opacity=".53333" stroke="#000" stroke-linejoin="bevel" stroke-width=".60299"/>
+ <g transform="translate(-56.104 -157.04)">
+  <a transform="matrix(2 0 0 2 23.353 -189.4)" xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=7&amp;patchHeight=8&amp;footside=---b,----&amp;tile=-5-,5-5,-5-&amp;headside=c,-&amp;shiftColsSW=-2&amp;shiftRowsSW=2&amp;shiftColsSE=2&amp;shiftRowsSE=2&amp;footsideStitch=tr&amp;headsideStitch=tl&amp;tileStitch=ct&amp;f1=ct&amp;g2=crc&amp;e2=clc&amp;f3=cctc">
+   <text x="21.097168" y="174.83191" fill="#000000" fill-opacity=".99854" font-size="2.1167px" stroke-linecap="square" stroke-width=".565" xml:space="preserve"><tspan x="21.097168" y="174.83191" fill="#000000" stroke-width=".565">b</tspan></text>
+  </a>
+ </g>
+ <rect transform="rotate(45)" x="11.773" y="-5.4294" width="11.857" height="11.857" rx="2.0959" ry="2.3219" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="rotate(45)" x="11.936" y="8.2489" width="11.857" height="11.857" rx="2.0959" ry="2.3219" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="rotate(45)" x="25.452" y="-5.4294" width="11.857" height="11.857" rx="2.0959" ry="2.3219" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="rotate(45)" x="25.452" y="8.2489" width="11.857" height="11.857" rx="2.0959" ry="2.3219" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="rotate(45)" x="26.525" y="-19.108" width="11.857" height="11.857" rx="2.0959" ry="2.3219" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="rotate(45)" x="39.292" y="-6.34" width="11.857" height="11.857" rx="2.0959" ry="2.3219" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="rotate(45)" x="39.292" y="8.2489" width="11.857" height="11.857" rx="2.0959" ry="2.3219" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+ <rect transform="rotate(45)" x="25.614" y="21.927" width="11.857" height="11.857" rx="2.0959" ry="2.3219" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
+</svg>
