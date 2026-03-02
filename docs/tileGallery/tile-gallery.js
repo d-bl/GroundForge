@@ -54,7 +54,7 @@ GF_tiles = {
         return false;
     },
     load(parent = document.body) {
-        GF_panel.load({caption: "w.i.p.", id: "patterns", controls: ["resize"], size:{width:'310px', height: '300px'}, parent: parent});
+        GF_panel.load({caption: "configurations", id: "patterns", controls: ["resize"], size:{width:'310px', height: '300px'}, parent: parent});
         parent.insertAdjacentHTML('beforeend', `<div id="previews"></div>`);
         this.loadGallery({});
     },
