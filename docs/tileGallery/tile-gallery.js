@@ -28,14 +28,13 @@ GF_tiles = {
                 const q = xlink.split('?')[1];
                 const text = (element.textContent || '').trim();
                 const safePanelId = `preview_${text.replace(/[^\w-]/g, '_')}`;
-                const hrefAttr = element.getAttribute('href');
                 GF_panel.load({
                     id: safePanelId,
                     parent: previewDiv,
                     caption: `
                     ${text}: change&nbsp;
-                    <a href="${hrefAttr}">pattern</a>&nbsp;or&nbsp;
-                    <a href="${(hrefAttr||'').replace(/pattern.html/, 'stitches.html')}">stitches</a>&nbsp;
+                    <a href="${xlink}">pattern</a>&nbsp;or&nbsp;
+                    <a href="${(xlink||'').replace(/pattern.html/, 'stitches.html')}">stitches</a>&nbsp;
                     `
                 });
                 GF_panel.diagramSVG({id: safePanelId, query: q, type: 'pair'});
