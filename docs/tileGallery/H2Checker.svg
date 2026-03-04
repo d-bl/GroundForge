@@ -29,9 +29,7 @@
  <rect x="11.384" y="25.002" width="5.6242" height="11.974" rx="2.0482" ry="2.269" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
  <rect x="19.846" y="24.666" width="5.6242" height="11.974" rx="2.0482" ry="2.269" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
  <rect x="28.171" y="24.93" width="5.6242" height="11.974" rx="2.0482" ry="2.269" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
- <g transform="translate(-24.366 -157.04)">
-  <a transform="matrix(2,0,0,2,-14.482,-147.56)" xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=6&amp;patchHeight=6&amp;footside=----,---b,&amp;tile=1,8&amp;headside=c,-,&amp;shiftColsSW=0&amp;shiftRowsSW=2&amp;shiftColsSE=1&amp;shiftRowsSE=2&amp;k1=ctctr&amp;e1=ct&amp;e2=ctct&amp;d2=ctctl">
-   <text x="24.575508" y="153.90761" fill="#000000" fill-opacity=".99854" font-size="2.1167px" stroke-linecap="square" stroke-width=".565" xml:space="preserve"><tspan x="24.575508" y="153.90761" fill="#000000" stroke-width=".565">b</tspan></text>
+  <a xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=6&amp;patchHeight=6&amp;footside=----,---b,&amp;tile=1,8&amp;headside=c,-,&amp;shiftColsSW=0&amp;shiftRowsSW=2&amp;shiftColsSE=1&amp;shiftRowsSE=2&amp;k1=ctctr&amp;e1=ct&amp;e2=ctct&amp;d2=ctctl">
+   <text fill="#000000" font-size="5.5px" x="16" y="4">b</text>
   </a>
- </g>
 </svg>

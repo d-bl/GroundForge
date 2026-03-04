@@ -21,11 +21,9 @@
  <path d="m0.89594 26.858h33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027-4)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
  <path d="m34.763 35.275h-33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027-4)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
  <path d="m22.658 5.0891v33.867" fill="#377eb8" fill-opacity=".53333" marker-end="url(#marker2027-4)" stroke="#000" stroke-linejoin="bevel" stroke-width=".45465"/>
- <g transform="translate(-59.191 -114.02)">
-  <a transform="matrix(2,0,0,2,27.851,-189.89)" xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=6&amp;patchHeight=6&amp;footside=----,---b,&amp;tile=11,88&amp;headside=c,-,&amp;shiftColsSW=-1&amp;shiftRowsSW=2&amp;shiftColsSE=1&amp;shiftRowsSE=2&amp;k1=ctcrr&amp;f1=crcl&amp;e1=ct&amp;f2=ctc&amp;e2=crcl&amp;d2=ctctl">
-   <text x="20.995592" y="153.75635" fill="#000000" fill-opacity=".99854" font-size="2.6458px" stroke-linecap="square" stroke-width=".565" xml:space="preserve"><tspan x="20.995592" y="153.75635" fill="#000000" font-family="Calibri" font-size="2.6458px" stroke-width=".565">b</tspan></text>
+  <a xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=6&amp;patchHeight=6&amp;footside=----,---b,&amp;tile=11,88&amp;headside=c,-,&amp;shiftColsSW=-1&amp;shiftRowsSW=2&amp;shiftColsSE=1&amp;shiftRowsSE=2&amp;k1=ctcrr&amp;f1=crcl&amp;e1=ct&amp;f2=ctc&amp;e2=crcl&amp;d2=ctctl">
+   <text fill="#000000" font-size="5.5px" x="16" y="4">b</text>
   </a>
- </g>
  <rect x="3.0027" y="7.6994" width="12.7" height="12.7" rx="2.1723" ry="2.4065" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
  <rect x="19.946" y="7.8085" width="12.7" height="12.7" rx="2.1723" ry="2.4065" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>
  <rect x="12.001" y="24.433" width="12.7" height="12.7" rx="2.1723" ry="2.4065" fill="#808080" opacity=".25" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583"/>

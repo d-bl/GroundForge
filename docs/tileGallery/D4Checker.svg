@@ -9,14 +9,12 @@
   </rdf:RDF>
  </metadata>
  <path d="m5.1248 39.427-4.8239-4.8239m14.559 4.9116-14.647-14.647m24.207 14.559-24.207-24.207m33.855 24.207-33.855-33.855m33.855 24.207-24.207-24.207m24.207 4.9116-4.8239-4.8239m4.8239 14.472-14.647-14.647m-14.296 0.0878-4.8239 4.8239m14.559-4.9116-14.647 14.647m24.207-14.559-24.207 24.207m33.855-24.207-33.855 33.855m33.855-24.207-24.207 24.207m24.207-14.559-14.647 14.647m14.647-4.9994-4.8239 4.8239" fill="#377eb8" fill-opacity=".53333" stroke="#000" stroke-linejoin="bevel" stroke-width=".60299"/>
- <g transform="translate(-25.58 -157.36)">
-  <a transform="matrix(2 0 0 2 -14.482 -147.24)" xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=7&amp;patchHeight=8&amp;footside=---b,----&amp;tile=-5,5-,-5,5-&amp;headside=c,-&amp;shiftColsSW=0&amp;shiftRowsSW=4&amp;shiftColsSE=2&amp;shiftRowsSE=4&amp;footsideStitch=tr&amp;headsideStitch=tl&amp;tileStitch=ct&amp;e2=crc&amp;f3=clc&amp;e4=ctcc">
-   <text x="24.575508" y="153.90761" fill="#000000" fill-opacity=".99854" font-size="2.1167px" stroke-linecap="square" stroke-width=".565" xml:space="preserve"><tspan x="24.575508" y="153.90761" fill="#000000" stroke-width=".565">V</tspan></text>
+  <a xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=7&amp;patchHeight=8&amp;footside=---b,----&amp;tile=-5,5-,-5,5-&amp;headside=c,-&amp;shiftColsSW=0&amp;shiftRowsSW=4&amp;shiftColsSE=2&amp;shiftRowsSE=4&amp;footsideStitch=tr&amp;headsideStitch=tl&amp;tileStitch=ct&amp;e2=crc&amp;f3=clc&amp;e4=ctcc">
+   <text fill="#000000" font-size="5.5px" x="7" y="4">V</text>
   </a>
-  <a transform="matrix(2 0 0 2 -.50597 -149.69)" xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=7&amp;patchHeight=8&amp;footside=---b,----&amp;tile=-5-5,5-5-&amp;headside=c,-&amp;shiftColsSW=0&amp;shiftRowsSW=2&amp;shiftColsSE=4&amp;shiftRowsSE=2&amp;l1=tl&amp;h1=tctct&amp;f1=ct&amp;d1=tr&amp;g2=crc&amp;e2=clc">
-   <text y="155.06731" fill="#000000" fill-opacity=".99854" font-size="2.1167px" stroke-linecap="square" stroke-width=".565" xml:space="preserve"><tspan x="22.76034" y="155.06731" fill="#000000" stroke-width=".565">H</tspan></text>
+  <a xlink:href="https://d-bl.github.io/GroundForge/pattern.html?patchWidth=7&amp;patchHeight=8&amp;footside=---b,----&amp;tile=-5-5,5-5-&amp;headside=c,-&amp;shiftColsSW=0&amp;shiftRowsSW=2&amp;shiftColsSE=4&amp;shiftRowsSE=2&amp;l1=tl&amp;h1=tctct&amp;f1=ct&amp;d1=tr&amp;g2=crc&amp;e2=clc">
+   <text fill="#000000" font-size="5.5px" x="23" y="4">H</text>
   </a>
- </g>
  <rect x="1.2175" y="5.5575" width="7.8147" height="19.169" rx="2.4623" ry="2.269" fill="#808080" opacity=".25" stop-color="#000000" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583" style="-inkscape-stroke:none;font-variation-settings:normal"/>
  <rect x="10.953" y="5.4698" width="7.8147" height="19.169" rx="2.4623" ry="2.269" fill="#808080" opacity=".25" stop-color="#000000" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583" style="-inkscape-stroke:none;font-variation-settings:normal"/>
  <rect x="20.513" y="5.5575" width="7.8147" height="19.169" rx="2.4623" ry="2.269" fill="#808080" opacity=".25" stop-color="#000000" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.0583" style="-inkscape-stroke:none;font-variation-settings:normal"/>
