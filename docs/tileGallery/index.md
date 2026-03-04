@@ -12,6 +12,7 @@ Pattern gallery
 
 **Work in progress, to do**:
 * Sidebar subjects?
+* The [nets](/GroundForge/nets) pages uses only two of the square configuration options.
 
 ---
 
