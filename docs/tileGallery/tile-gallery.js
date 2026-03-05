@@ -48,8 +48,8 @@ GF_tiles = {
                     .setAttribute('transform','scale(1.3) translate(-65,-18)');
                 panelContent.lastElementChild.setAttribute('width', 182);
                 panelContent.lastElementChild.setAttribute('height', 166);
+
                 panelContent.insertAdjacentHTML('beforeend', PrototypeDiagram.create(TilesConfig(q)));
-                // panelContent.lastElementChild.querySelector('foreignObject').removeChild('')
                 panelContent.lastElementChild.getElementById("layer1")
                     .setAttribute('transform','translate(-90,-1900) scale(2.0)');
                 panelContent.lastElementChild.setAttribute('width', 170);
