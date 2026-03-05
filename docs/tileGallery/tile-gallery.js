@@ -31,23 +31,31 @@ GF_tiles = {
                 GF_panel.load({
                     id: safePanelId,
                     parent: previewDiv,
+                    size:{width:'360px', height: '200px'},
                     caption: `
                     ${text}: change&nbsp;
-                    <a href="${xlink}">pattern</a>&nbsp;or&nbsp;
-                    <a href="${(xlink||'').replace(/pattern.html/, 'stitches.html')}">stitches</a>&nbsp;
+                    <a href="${(xlink||'').replace(/pattern.html/, 'stitches.html')}" target="_blank">stitches</a>&nbsp;
+                    &nbsp;or&nbsp;
+                    <a href="${xlink}" target="_blank">pattern</a>
                     `
                 });
                 GF_panel.diagramSVG({id: safePanelId, query: q, type: 'pair'});
-                const diagram = document.getElementById(safePanelId);
-                if (!diagram) return;
-                diagram.style.resize = 'none';
-                diagram.style.overflow = 'hidden';
-                diagram.style.width = '182px';
-                diagram.style.height = '166px';
-                const g = diagram.querySelector(':scope > svg > g');
-                if (g) {
-                    g.setAttribute('transform','scale(1.3) translate(-65,-18)');
-                }
+                const panelContent = document.getElementById(safePanelId);
+                if (!panelContent) return;
+                panelContent.style.resize = 'none';
+                panelContent.style.overflow = 'hidden';
+                panelContent.lastElementChild.querySelector(':scope > g')
+                    .setAttribute('transform','scale(1.3) translate(-65,-18)');
+                panelContent.lastElementChild.setAttribute('width', 182);
+                panelContent.lastElementChild.setAttribute('height', 166);
+                panelContent.insertAdjacentHTML('beforeend', PrototypeDiagram.create(TilesConfig(q)));
+                // panelContent.lastElementChild.querySelector('foreignObject').removeChild('')
+                panelContent.lastElementChild.getElementById("layer1")
+                    .setAttribute('transform','translate(-90,-1900) scale(2.0)');
+                panelContent.lastElementChild.setAttribute('width', 170);
+                panelContent.lastElementChild.setAttribute('height', 190);
+                panelContent.lastElementChild.querySelectorAll('foreignObject')
+                    .forEach(foreignObj => foreignObj.remove());
             });
         GF_panel.scrollIfTooLittleIsVisible(previewDiv);
         return false;
