@@ -53,7 +53,7 @@ GF_tiles = {
                 panelContent.lastElementChild.getElementById("layer1")
                     .setAttribute('transform','translate(-90,-1900) scale(2.0)');
                 panelContent.lastElementChild.setAttribute('width', 170);
-                panelContent.lastElementChild.setAttribute('height', 190);
+                panelContent.lastElementChild.setAttribute('height', 210);
                 panelContent.lastElementChild.querySelectorAll('foreignObject')
                     .forEach(foreignObj => foreignObj.remove());
             });
@@ -61,7 +61,7 @@ GF_tiles = {
         return false;
     },
     load(parent = document.body) {
-        GF_panel.load({caption: "configurations", id: "patterns", controls: ["resize"], size:{width:'310px', height: '300px'}, parent: parent});
+        GF_panel.load({caption: "configurations", id: "patterns", controls: ["resize"], size:{width:'100%', height: '300px'}, parent: parent});
         parent.insertAdjacentHTML('beforeend', `<div id="previews"></div>`);
         this.loadGallery({});
     },
