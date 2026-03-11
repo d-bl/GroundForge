@@ -10,9 +10,7 @@ Pattern gallery
 ===============
 
 Explore stitch combinations:
-Click a letter and follow 
-* a _stitches_ link to try stitch combinations, 
-* or a _pattern_ link to create yet another configuration.
+Click a letter and follow a _stitches_ link to try stitch combinations, or a _pattern_ link to create yet another configuration.
 
 <style>
     .gf_panel {display: inline-block; margin: 4px; }
