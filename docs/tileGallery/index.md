@@ -10,7 +10,9 @@ Pattern gallery
 ===============
 
 Explore stitch combinations:
-Click a letter and follow a _stitches_ link, or follow a _pattern_ link to create yet another configuration.
+Click a letter and follow 
+* a _stitches_ link to try stitch combinations, 
+* or a _pattern_ link to create yet another configuration.
 
 <style>
     .gf_panel {display: inline-block; margin: 4px; }
@@ -26,10 +28,9 @@ Click a letter and follow a _stitches_ link, or follow a _pattern_ link to creat
 <script> GF_tiles.load(document.getElementById('main-content')); </script>
 <div id="previews"> </div>
 
-* [Embellished cloth work](/MAE-gf/docs/ec) explores stitch variations with weaving pairs.
-* The [nets](/GroundForge/nets) pages uses two of the configuration options with squares.
-  It applies various combinations of mirrored and rotated versions of a stitch to the these base patterns at once.
-* **Here** you can start experimenting with stitch combinations one by one.
+* The [nets](/GroundForge/nets) pages uses two of the configuration options.
+  It can show combinations of mirrored and rotated versions of a stitch for these patterns at once.
+* Via **this page** you can try another pattern with one stitch combination at a time.
 * Wish list:
     * Sidebar subjects?
     * Colors in the pattern diagram showing how the base set of stitches (shown dark) are repeated.
