@@ -83,7 +83,9 @@ const GF_stitches = {
             flip: 
             <a class="button" href="javascript:GF_stitches.flip2d()">&harr;</a>
             <a class="button" href="javascript:GF_stitches.flip2p()">&varr;</a>
-            <a class="button" href="javascript:GF_stitches.flip2q()">both</a>`
+            <a class="button" href="javascript:GF_stitches.flip2q()">both</a>
+            random stitch:
+            <a class="button" href="javascript:GF_stitches.stgen()">generate</a>`
         let element = document.querySelector("#gallery");
         element.parentNode.insertBefore(p, element.nextSibling)
         this.setStitch("ct")
@@ -106,6 +108,13 @@ const GF_stitches = {
     flip2q() {
         this.flip2d()
         this.flip2p()
+    },
+
+    stgen() {
+        let n = d3.select('#stitchDef').node()
+        n.value = toLowerCase(genStitch(4,1,1,1))
+        this.setColorCode()
+        n.focus()
     },
 
     setColorCode() {
