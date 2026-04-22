@@ -112,7 +112,8 @@ const GF_stitches = {
 
     stgen() {
         let n = d3.select('#stitchDef').node()
-        n.value = toLowerCase(genStitch(4,1,1,1))
+        let r = genStitch(4,1,1,1)
+        n.value = r.toLowerCase()
         this.setColorCode()
         n.focus()
     },
