@@ -12,6 +12,8 @@ javascript:
 Snow Mixer
 ==========
 
+<link rel="stylesheet" href="css/header.css" type="text/css">
+
 You can find some hints below the diagrams.
 
 <fieldset style="height:145px; overflow: auto; resize: both"><legend>Select a recipe</legend>
