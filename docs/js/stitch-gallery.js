@@ -39,7 +39,6 @@ const GF_stitches = {
         }
     },
 
-
     loadStitchExamples() {
         for (let stitch of GF_stitches.stitches) {
             document.querySelector("#gallery").innerHTML += `
@@ -110,6 +109,7 @@ const GF_stitches = {
         this.flip2p()
     },
 
+    /* genStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore,  maxTwistsAfter)   */
     stgen() {
         let n = d3.select('#stitchDef').node()
         n.value = genStitch(4,1,1,1).toLowerCase()
