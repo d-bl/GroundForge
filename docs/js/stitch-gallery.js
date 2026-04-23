@@ -94,14 +94,12 @@ const GF_stitches = {
         var n = d3.select('#stitchDef').node()
         n.value = n.value.toLowerCase().replace(/l/g, "R").replace(/r/g, "L").toLowerCase()
         this.setColorCode()
-        n.focus()
     },
 
     flip2p() {
         var n = d3.select('#stitchDef').node()
         n.value = n.value.toLowerCase().split("").reverse().join("")
         this.setColorCode()
-        n.focus()
     },
 
     flip2q() {
@@ -114,7 +112,6 @@ const GF_stitches = {
         let n = d3.select('#stitchDef').node()
         n.value = genStitch(4,1,1,1).toLowerCase()
         this.setColorCode()
-        n.focus()
     },
 
     setColorCode() {
