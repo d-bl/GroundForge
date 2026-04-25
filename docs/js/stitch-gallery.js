@@ -90,16 +90,32 @@ const GF_stitches = {
         this.setStitch("ct")
     },
 
+    /*
     flip2d() {
         var n = d3.select('#stitchDef').node()
         n.value = n.value.toLowerCase().replace(/l/g, "R").replace(/r/g, "L").toLowerCase()
         this.setColorCode()
+        n.focus()
     },
 
     flip2p() {
         var n = d3.select('#stitchDef').node()
         n.value = n.value.toLowerCase().split("").reverse().join("")
         this.setColorCode()
+        n.focus()
+    },
+    */
+
+    flip2d() {
+        let n = d3.select('#stitchDef').node()
+        let s = n.value.toLowerCase().replace(/l/g, "R").replace(/r/g, "L").toLowerCase()
+        this.setStitch(s)
+    },
+
+    flip2p() {
+        let n = d3.select('#stitchDef').node()
+        let s = n.value.toLowerCase().split("").reverse().join("")
+        this.setStitch(s)
     },
 
     flip2q() {
@@ -109,9 +125,8 @@ const GF_stitches = {
 
     /* genStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore,  maxTwistsAfter)   */
     stgen() {
-        let n = d3.select('#stitchDef').node()
-        n.value = genStitch(4,1,1,1).toLowerCase()
-        this.setColorCode()
+        let s = genStitch(4,1,1,1).toLowerCase()
+        this.setStitch(s)
     },
 
     setColorCode() {
