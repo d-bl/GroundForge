@@ -1,10 +1,14 @@
 
 #gallery { height: 85px; width: 560px; overflow: auto; resize: both; border: solid 1px #DDD;}
 #gallery { display: block; }
-#gallery svg { display: inline-block; }
+/*#gallery svg { display: inline-block; } */
 #gallery figure { display: inline-block; margin: 0; background-color: white; vertical-align: bottom; padding-right: 1em;}
 #gallery figcaption { background-color: white; padding-left: 0; }
 #gallery figcaption { text-align: left}
+
+#stitchDef { width: 6em }
+#threadColor { width: 2.5em }
+div input { width: 3em }
 
 /* the first button on the form (dummy) is activated when typing enter in an input field */
 #to_self, #dummy, #helpMenu { display: none }
