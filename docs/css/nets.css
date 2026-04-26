@@ -1,8 +1,40 @@
+/* see styles.css */
+
+figure { display: inline-block; margin: 10px; vertical-align: top; }
+figure img, figcaption { display: block; }
+figure img { padding-bottom: 0.5em; }
+
+#diagrams img { margin-top: 1em; }
+
+button { vertical-align: top }
+legend button { vertical-align: middle  }
+
+table { border-collapse: collapse; }
+td { padding: 0 5px 0 5px;  }
+.sn { border-top: solid 1px; }
+.se { border-right: solid 1px; }
+.ss { border-bottom: solid 1px; }
+.sw { border-left: solid 1px; }
+.dn { border-top: dashed 1px; }
+.de { border-right: dashed 1px; }
+.ds { border-bottom: dashed 1px; }
+.dw { border-left: dashed 1px; }
+
+fieldset { margin-top:1em; padding-bottom: 0; max-width: fit-content; }
+
+legend { line-height: 2.5em; }
+
+form{ padding-bottom: 1em; }
+form p { margin-bottom: 0; }
 
 #gallery { height: 85px; width: 560px; overflow: auto; resize: both; border: solid 1px #DDD;}
+/*#gallery { max-width: 90%; height: 100px; overflow: auto; resize: both; }*/
 #gallery { display: block; }
 /*#gallery svg { display: inline-block; } */
-#gallery figure { display: inline-block; margin: 0; background-color: white; vertical-align: bottom; padding-right: 1em;}
+#gallery svg, #colorCode svg {display: none}
+/*#gallery figure { display: inline-block; margin: 0; background-color: white; vertical-align: bottom; padding-right: 1em;}*/
+#gallery figure { display: inline-block; margin: 0; background-color: white; vertical-align: bottom; padding-right: 1em; text-align: center;}
+/*#gallery figure { vertical-align: bottom; text-align: center; }*/
 #gallery figcaption { background-color: white; padding-left: 0; }
 #gallery figcaption { text-align: left}
 
