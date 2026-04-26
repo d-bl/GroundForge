@@ -90,22 +90,6 @@ const GF_stitches = {
         this.setStitch("ct")
     },
 
-    /*
-    flip2d() {
-        var n = d3.select('#stitchDef').node()
-        n.value = n.value.toLowerCase().replace(/l/g, "R").replace(/r/g, "L").toLowerCase()
-        this.setColorCode()
-        n.focus()
-    },
-
-    flip2p() {
-        var n = d3.select('#stitchDef').node()
-        n.value = n.value.toLowerCase().split("").reverse().join("")
-        this.setColorCode()
-        n.focus()
-    },
-    */
-
     flip2d() {
         let n = d3.select('#stitchDef').node()
         let s = n.value.toLowerCase().replace(/l/g, "R").replace(/r/g, "L").toLowerCase()
@@ -145,7 +129,6 @@ const GF_stitches = {
     setStitch(stitch) {
         const n = document.querySelector("#stitchDef")
         n.value = stitch
-        /*n.focus()*/
         this.lastValidStitchValue = stitch;
         this.setColorCode();
     }

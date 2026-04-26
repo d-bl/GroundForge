@@ -1,4 +1,3 @@
-/* see styles.css */
 
 figure { display: inline-block; margin: 10px; vertical-align: top; }
 figure img, figcaption { display: block; }
@@ -28,13 +27,9 @@ form{ padding-bottom: 1em; }
 form p { margin-bottom: 0; }
 
 #gallery { height: 85px; width: 560px; overflow: auto; resize: both; border: solid 1px #DDD;}
-/*#gallery { max-width: 90%; height: 100px; overflow: auto; resize: both; }*/
 #gallery { display: block; }
-/*#gallery svg { display: inline-block; } */
 #gallery svg, #colorCode svg {display: none}
-/*#gallery figure { display: inline-block; margin: 0; background-color: white; vertical-align: bottom; padding-right: 1em;}*/
 #gallery figure { display: inline-block; margin: 0; background-color: white; vertical-align: bottom; padding-right: 1em; text-align: center;}
-/*#gallery figure { vertical-align: bottom; text-align: center; }*/
 #gallery figcaption { background-color: white; padding-left: 0; }
 #gallery figcaption { text-align: left}
 
