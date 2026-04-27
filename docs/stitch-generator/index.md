@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Stitch Generator
-sidebar: Sidebar
+sidebar: Sidebar-default
 javascript:
   - stitchGen.js
 ---
