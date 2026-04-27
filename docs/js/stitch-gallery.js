@@ -79,11 +79,11 @@ const GF_stitches = {
                    oninput="GF_stitches.fixStitchValue(this)"
                    onclick="return false" onsubmit="return false"
             >
-            flip: 
+            Flip: 
             <a class="button" href="javascript:GF_stitches.flip2d()">&harr;</a>
             <a class="button" href="javascript:GF_stitches.flip2p()">&varr;</a>
             <a class="button" href="javascript:GF_stitches.flip2q()">both</a>
-            random stitch:
+            Random stitch:
             <a class="button" href="javascript:GF_stitches.stgen()">generate</a>`
         let element = document.querySelector("#gallery");
         element.parentNode.insertBefore(p, element.nextSibling)
