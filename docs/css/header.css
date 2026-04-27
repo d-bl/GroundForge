@@ -20,17 +20,4 @@ header h2 { color: #9ddcff; }
 /*https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure*/
 .deprecated { background: rgb(244, 165, 130); padding: 2px; }
 
-button, .button {
-    text-decoration: none;
-    background-color: #EEEEEE;
-    color: #333333;
-    padding: 4px 6px 2px 6px;
-    border-top: 1px solid #CCCCCC;
-    border-right: 1px solid #333333;
-    border-bottom: 1px solid #333333;
-    border-left: 1px solid #CCCCCC;
-    border-radius: 4px;
-    margin: 3px;
-    line-height: 1.8em;
-}
 #helpMenu { background-color: #EEEEEE; margin-top: 0; padding-top: 0.5em; padding-bottom: 0.5em; }

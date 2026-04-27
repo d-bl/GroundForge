@@ -12,7 +12,7 @@ javascript:
 Snow Mixer
 ==========
 
-<link rel="stylesheet" href="../css/header.css" type="text/css">
+<link rel="stylesheet" href="../css/buttons.css" type="text/css">
 
 You can find some hints below the diagrams.
 
