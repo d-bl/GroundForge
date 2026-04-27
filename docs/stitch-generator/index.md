@@ -6,7 +6,7 @@ javascript:
   - stitchGen.js
 ---
 
-<script type="text/javascript" src="stitchGen.js"></script>
+<script type="text/javascript" src="../js/stitchGen.js"></script>
 <link rel="stylesheet" href="../css/buttons.css" type="text/css">
 <link rel="stylesheet" href="../css/stitchGen.css" type="text/css">
 
