@@ -17,6 +17,6 @@ button, .button {
     margin: 3px;
 }
 button {
-    padding: 1px 6px 0px 6px;
-    margin: 0px 3px 3px 3px;
+    padding: 1px 6px 0 6px;
+    margin: 0 3px 3px 3px;
 }
