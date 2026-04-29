@@ -8,11 +8,15 @@ button, .button {
     border-bottom: 1px solid #333333;
     border-left: 1px solid #CCCCCC;
     border-radius: 4px;
-    margin: 3px;
     line-height: 1.8em;
 }
 
 /* only needed for <a class="button" ..> */
 .button {
     padding: 4px 6px 2px 6px;
+    margin: 3px;
+}
+button {
+    padding: 1px 6px 0px 6px;
+    margin: 0px 3px 3px 3px;
 }
