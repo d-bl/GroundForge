@@ -80,8 +80,8 @@ const GF_stitches = {
                    onclick="return false" onsubmit="return false"
             >
             Flip: 
-            <button onclick="GF_stitches.flip2d()">↔</button>
-            <button onclick="GF_stitches.flip2p()">↕</button>
+            <button onclick="GF_stitches.flip2d()">&harr;</button>
+            <button onclick="GF_stitches.flip2p()">&varr;</button>
             <button onclick="GF_stitches.flip2q()">both</button>
             Random stitch:
             <button onclick="GF_stitches.stgen()">generate</button>`
