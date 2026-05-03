@@ -11,7 +11,7 @@ button, .button {
     line-height: 1.8em;
 }
 
-/* <a class="button" ..>, font-size from body (15 px) */
+/* <a class="button" ..> */
 .button {
     padding: 4px 6px 2px 6px;
     margin: 3px;
@@ -20,5 +20,5 @@ button, .button {
 button {
     padding: 1px 6px 0 6px;
     margin: 0 3px 3px 3px;
-    font-size: 15px;
+    font-size: medium;
 }
