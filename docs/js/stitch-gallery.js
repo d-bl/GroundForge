@@ -96,8 +96,11 @@ const GF_stitches = {
         /* genStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore,  maxTwistsAfter)   */
         let s = genStitch(4,1,1,1).toLowerCase()
         this.setStitch(s)
-        stitchChanged()
-        generate("1")
+        // TODO dirty dependency
+        if(window.location.pathname.includes("GroundForge/nets") || window.location.pathname.includes("GroundForge/docs/nets")) {
+            stitchChanged()
+            generate("1")
+        }
     },
 
     flip2d() {
