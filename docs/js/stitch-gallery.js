@@ -93,13 +93,15 @@ const GF_stitches = {
     },
 
     setRandomStitch() {
-        /* genStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore,  maxTwistsAfter)   */
-        let s = genStitch(4,1,1,1).toLowerCase()
+        /* genRandomStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore,  maxTwistsAfter)   */
+        let s = genRandomStitch(4,1,1,1).toLowerCase()
         this.setStitch(s)
-        // TODO dirty dependency
-        if(window.location.pathname.includes("GroundForge/nets") || window.location.pathname.includes("GroundForge/docs/nets")) {
-            stitchChanged()
-            generate("1")
+        // TODO dirty dependency and not very unique/meaningfull function names
+        if (typeof stitchChanged === "function") {
+            stitchChanged();
+        }
+        if (typeof generate === "function") {
+            generate();
         }
     },
 

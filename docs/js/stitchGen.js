@@ -1,4 +1,4 @@
-function genStitchList(pS,pC,pTBC,pTBS,pB,pA)
+function genRandomStitchList(pS,pC,pTBC,pTBS,pB,pA)
 {
     //const stitchArray = [];
     let stitchString = "";
@@ -53,14 +53,14 @@ function genStitchList(pS,pC,pTBC,pTBS,pB,pA)
     if (stitchesRequired > 25) {        stitchesRequired = 25;    }
 
     for (let countStitches = 1; countStitches <= stitchesRequired; countStitches++) {
-        //stitchArray += genStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore, maxTwistsAfter) + "<br>";
-        stitchString += genStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore, maxTwistsAfter) + "<br>";
+        //stitchArray += genRandomStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore, maxTwistsAfter) + "<br>";
+        stitchString += genRandomStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore, maxTwistsAfter) + "<br>";
     }
     // returning array gives warning about type in getElementById
     return stitchString;
 }
 
-function genStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore,  maxTwistsAfter)
+function genRandomStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore, maxTwistsAfter)
 {
     // define & initialize variables
     let stitch = "";
