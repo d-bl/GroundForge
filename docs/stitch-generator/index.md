@@ -57,7 +57,7 @@ Please note: a number that is too low or too high will be set to 1 resp. the max
 
 <div>
     <br>
-    <button onclick="document.getElementById('slag').innerHTML = genTandomStitchList()">
+    <button onclick="document.getElementById('slag').innerHTML = genRandomStitchList()">
         Generate list of stitches</button>
     <br><br>
 </div>

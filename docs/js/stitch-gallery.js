@@ -84,8 +84,8 @@ const GF_stitches = {
             <a class="button" href="javascript:GF_stitches.flip2d()">&harr;</a>
             <a class="button" href="javascript:GF_stitches.flip2p()">&varr;</a>
             <a class="button" href="javascript:GF_stitches.flip2q()">both</a>
-            <label for="">Random stitch</label>
-            <a class="button" href="javascript:GF_stitches.setRandomStitch()">generate</a>
+            <label for="setRandom">Random stitch</label>
+            <a id="setRandom" class="button" href="javascript:GF_stitches.setRandomStitch()">generate</a>
 `
         let element = document.querySelector("#gallery");
         element.parentNode.insertBefore(p, element.nextSibling)
@@ -96,7 +96,7 @@ const GF_stitches = {
         /* genRandomStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore,  maxTwistsAfter)   */
         let s = genRandomStitch(4,1,1,1).toLowerCase()
         this.setStitch(s)
-        // TODO dirty dependency and not very unique/meaningfull function names
+        // TODO dirty dependency and not very unique/meaningful function names
         if (typeof stitchChanged === "function") {
             stitchChanged();
         }
