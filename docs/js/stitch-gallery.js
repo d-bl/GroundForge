@@ -133,7 +133,6 @@ const GF_stitches = {
     setStitch(stitch) {
         const n = document.querySelector("#stitchDef")
         n.value = stitch
-        n.focus()
         this.lastValidStitchValue = stitch;
         this.setColorCode();
     }
