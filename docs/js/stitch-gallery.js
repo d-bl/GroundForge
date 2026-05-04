@@ -85,11 +85,19 @@ const GF_stitches = {
             <a class="button" href="javascript:GF_stitches.flip2p()">&varr;</a>
             <a class="button" href="javascript:GF_stitches.flip2q()">both</a>
             <label for="">Random stitch</label>
-            <a class="button" href="javascript:GF_stitches.stgen()">generate</a>
+            <a class="button" href="javascript:GF_stitches.setRandomStitch()">generate</a>
 `
         let element = document.querySelector("#gallery");
         element.parentNode.insertBefore(p, element.nextSibling)
         this.setStitch("ct")
+    },
+
+    setRandomStitch() {
+        /* genStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore,  maxTwistsAfter)   */
+        let s = genStitch(4,1,1,1).toLowerCase()
+        this.setStitch(s)
+        stitchChanged()
+        generate("1")
     },
 
     flip2d() {
