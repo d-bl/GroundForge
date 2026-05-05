@@ -32,6 +32,9 @@ const GF_stitches = {
                 const o = ctx.createOscillator();
                 o.type = "sine";
                 o.frequency.value = 440;
+                o.onended = function () {
+                    ctx.close();
+                };
                 o.connect(ctx.destination);
                 o.start();
                 o.stop(ctx.currentTime + 0.05);
