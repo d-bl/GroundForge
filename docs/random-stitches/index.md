@@ -7,13 +7,13 @@ javascript:
 ---
 
 <link rel="stylesheet" href="../css/buttons.css" type="text/css">
-<link rel="stylesheet" href="stitchGen.css" type="text/css">
+<link rel="stylesheet" href="random-stitches.css" type="text/css">
 
 # Stitches Generator
 
 ![][p-alfa1]
 
-[p-alfa1]: stitch-generator.svg "stitch-generator in Alphabet 1, by M. Tempels"
+[p-alfa1]: random-stitches.svg "stitch-generator in Alphabet 1, by M. Tempels"
 
 This feature generates a list of random stitches.  
 Please note: a number that is too low or too high will be set to 1 resp. the maximal number allowed.   
