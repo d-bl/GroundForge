@@ -2,12 +2,10 @@
 layout: default
 title: Stitch Generator
 sidebar: default
-javascript:
-  - stitchGen.js
 ---
 
-<link rel="stylesheet" href="../css/buttons.css" type="text/css">
 <link rel="stylesheet" href="random-stitches.css" type="text/css">
+<script src="../js/random-stitches.js"></script>
 
 # Stitches Generator
 
