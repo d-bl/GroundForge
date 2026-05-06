@@ -32,6 +32,9 @@ const GF_stitches = {
                 const o = ctx.createOscillator();
                 o.type = "sine";
                 o.frequency.value = 440;
+                o.onended = function () {
+                    ctx.close();
+                };
                 o.connect(ctx.destination);
                 o.start();
                 o.stop(ctx.currentTime + 0.05);
@@ -80,27 +83,42 @@ const GF_stitches = {
                    oninput="GF_stitches.fixStitchValue(this)"
                    onclick="return false" onsubmit="return false"
             >
-            flip: 
+            Flip: 
             <a class="button" href="javascript:GF_stitches.flip2d()">&harr;</a>
             <a class="button" href="javascript:GF_stitches.flip2p()">&varr;</a>
-            <a class="button" href="javascript:GF_stitches.flip2q()">both</a>`
+            <a class="button" href="javascript:GF_stitches.flip2q()">both</a>
+            <label for="setRandom">Random stitch</label>
+            <a id="setRandom" class="button" href="javascript:GF_stitches.setRandomStitch()">generate</a>
+`
         let element = document.querySelector("#gallery");
         element.parentNode.insertBefore(p, element.nextSibling)
         this.setStitch("ct")
+    },
+
+    setRandomStitch() {
+        /* genRandomStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore,  maxTwistsAfter)   */
+        if (typeof genRandomStitch !== "function") return
+        let s = genRandomStitch(4, 1, 1, 1).toLowerCase()
+        GF_stitches.setStitch(s)
+        // TODO dirty dependency and not very unique/meaningful function names
+        if (typeof stitchChanged === "function") {
+            stitchChanged();
+        }
+        if (typeof generate === "function") {
+            generate("1");
+        }
     },
 
     flip2d() {
         var n = d3.select('#stitchDef').node()
         n.value = n.value.toLowerCase().replace(/l/g, "R").replace(/r/g, "L").toLowerCase()
         this.setColorCode()
-        n.focus()
     },
 
     flip2p() {
         var n = d3.select('#stitchDef').node()
         n.value = n.value.toLowerCase().split("").reverse().join("")
         this.setColorCode()
-        n.focus()
     },
 
     flip2q() {
@@ -124,7 +142,6 @@ const GF_stitches = {
     setStitch(stitch) {
         const n = document.querySelector("#stitchDef")
         n.value = stitch
-        n.focus()
         this.lastValidStitchValue = stitch;
         this.setColorCode();
     }

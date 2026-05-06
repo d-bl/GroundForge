@@ -28,6 +28,7 @@ Widget demo
 <script src="/GroundForge/js/d3.v4.min.js" type="text/javascript"></script>
 <script src="/GroundForge/js/GroundForge-opt.js" type="text/javascript"></script>
 <script src="/GroundForge/js/stitch-gallery.js" type="text/javascript"></script>
+<script src="/GroundForge/js/stitchGen.js" type="text/javascript"></script>
 <div id="gallery"></div>
 <script type="text/javascript"> GF_stitches.load(); </script>
 

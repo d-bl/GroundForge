@@ -1,0 +1,5 @@
+
+/* table in stitch-generator/index.md */
+.stgen td {text-align:left; vertical-align:top; padding: 5px 15px 5px 5px; border-style:hidden;}
+.stgen th {text-align:left; vertical-align:top; padding: 5px 15px 5px 5px; border-style:hidden; font-weight:bold;}
+
