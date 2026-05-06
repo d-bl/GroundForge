@@ -97,16 +97,15 @@ const GF_stitches = {
 
     setRandomStitch() {
         /* genRandomStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore,  maxTwistsAfter)   */
-        if (typeof genRandomStitch === "function") {
-            let s = genRandomStitch(4, 1, 1, 1).toLowerCase()
-        }
-        this.setStitch(s)
+        if (typeof genRandomStitch !== "function") return
+        let s = genRandomStitch(4, 1, 1, 1).toLowerCase()
+        GF_stitches.setStitch(s)
         // TODO dirty dependency and not very unique/meaningful function names
         if (typeof stitchChanged === "function") {
             stitchChanged();
         }
         if (typeof generate === "function") {
-            generate();
+            generate("1");
         }
     },
 
