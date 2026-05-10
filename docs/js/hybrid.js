@@ -145,6 +145,14 @@ const GF_hybrid = {
                 title.parentNode.addEventListener('click', stitchHandler)
         });
     },
+    bothPairsTwistedAndDroste(basicStitchEl, drosteStitchEl) {
+        const basicValue = basicStitchEl.value.toLowerCase();
+        if (drosteStitchEl.value !== '' && (basicValue.includes('t') || (basicValue.includes('r') && basicValue.includes('l')))) {
+            alert('not implemented for 4/8 pairs droste')
+            return true;
+        }
+        return false;
+    },
     flip_b2d() {
         function flip(n) {
             return n.value.toLowerCase()
@@ -153,10 +161,21 @@ const GF_hybrid = {
                 .replace(/r/g, "L")
                 .toLowerCase();
         }
-        const n = document.getElementById('drosteStitches');
-        n.value = flip(n);
-        const n2 = document.getElementById('basicStitchInput');
-        n2.value = flip(n2);
+        const basicEl = document.getElementById('basicStitchInput');
+        const drosteEl = document.getElementById('drosteStitches');
+        if (this.bothPairsTwistedAndDroste(basicEl, drosteEl)) return;
+        drosteEl.value = flip(drosteEl);
+        basicEl.value = flip(basicEl);
+    },
+    flip_b2p() {
+        const basicEl = document.getElementById('basicStitchInput');
+        const drosteEl = document.getElementById('drosteStitches');
+        if (this.bothPairsTwistedAndDroste(basicEl, drosteEl)) return;
+        basicEl.value = basicEl.value.toLowerCase().split("").reverse().join("")
+        drosteEl.value = drosteEl.value.toLowerCase()
+            .replaceAll('.', ',')
+            .replaceAll(/[^crlt,.]/g, '')
+            .split(/[,.]/).reverse().join(",");
     },
     scrollIfTooLittleIsVisible(elementId) {
         const threadPanel = document.getElementById(elementId);
@@ -179,14 +198,6 @@ const GF_hybrid = {
         document.getElementById('selfRef').style.display = 'none';
         document.getElementById('thread_panel').innerHTML = '';
         GF_panel.scrollIfTooLittleIsVisible(document.getElementById('pair_panel'));
-    },
-    flip_b2p() {
-        const n = document.getElementById('drosteStitches');
-        n.value = n.value.toLowerCase()
-            .replaceAll('.', ',')
-            .replaceAll(/[^crlt,.]/g, '')
-            .split(/[,.]/).reverse().join(",");
-        n.focus();
     },
     otherGallery(chooser, initialIndex){
         chooser.parentNode.parentNode.style.display = 'none';
