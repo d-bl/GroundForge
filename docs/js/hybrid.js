@@ -175,7 +175,7 @@ const GF_hybrid = {
         drosteEl.value = drosteEl.value.toLowerCase()
             .replaceAll('.', ',')
             .replaceAll(/[^crlt,.]/g, '')
-            .split(/[,.]/).reverse().join(",");
+            .split("").reverse().join("");
     },
     scrollIfTooLittleIsVisible(elementId) {
         const threadPanel = document.getElementById(elementId);
