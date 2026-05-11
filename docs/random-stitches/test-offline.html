@@ -83,14 +83,14 @@
 
         <div>
             <br>
-            <a id="slag0" class="button" type="button" href="javascript:genRandomStitchList()">Generate list of stitches on a new page</a>
-            <button class="button" type="button" onclick="document.getElementById('slag1').innerHTML = genRandomStitchList()">
+            <a id="slag0" class="button" type="button" href="javascript:GF_Random.genRandomStitchList()">Generate list of stitches on a new page</a>
+            <button class="button" type="button" onclick="document.getElementById('slag1').innerHTML = GF_Random.genRandomStitchList()">
                 Generate list of stitches
             </button>
-            <button class="button" type="button" onclick="document.getElementById('slag2').innerHTML = genRandomStitchList(3,2,1,2,false,true)">
+            <button class="button" type="button" onclick="document.getElementById('slag2').innerHTML = GF_Random.genRandomStitchList(3,2,1,2,false,true)">
                 Generate list of stitches with fixed attributes
             </button>
-            <button class="button" type="button" onclick="document.getElementById('slag3').innerHTML = genRandomStitch(3,1,0,2)">
+            <button class="button" type="button" onclick="document.getElementById('slag3').innerHTML = GF_Random.genRandomStitch(3,1,0,2)">
                 Generate one stitch with fixed attributes
             </button>
             <br><br>
