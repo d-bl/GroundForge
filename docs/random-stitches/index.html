@@ -17,7 +17,13 @@
     <meta name="msapplication-config" content="/GroundForge/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
+    <style>
+        main h1 {
+            font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+            font-size: 46px; font-weight: normal; margin-top: 0; margin-bottom: 0.2em; letter-spacing: -1px; width: 100%; }
+    </style>
 </head>
+
 <body>
     <header>
         <div>
@@ -25,62 +31,78 @@
            <h2>GroundForge: Random stitches generator</h2>
         </div>
     </header>
+
     <main>
         <script src="../js/fork-warning.js"></script>
-    <div>
-        <img src="random-stitches.svg" alt="stitch-generator in Alphabet 1, by M. Tempels" title="abc 1"><br>
+        <div>
+            <h1>Stitches Generator</h1>
 
-        <p>
-        This feature generates a list of random stitches.<br>
-        Please note: a number that is too low or too high will be set to 1 resp. the maximal number allowed.</p>
-    </div>
+            <img src="random-stitches.svg" alt="stitch-generator in Alphabet 1, by M. Tempels" title="abc 1"><br>
 
-    <table class="stgen">
-        <tr>
-            <td><label for="stitchesRequired">The number of stitches required </label></td>
-            <td><input type="number" name="stitchesRequired" id="stitchesRequired" min="1" max="25" value="1" onchange="genVal(this)" ></td>
-            <td>Minimal 1, maximal 25.</td>
-        </tr>
-        <tr>
-            <td><label for="maxCrosses">The maximal number of crosses in a stitch </label></td>
-            <td><input type="number" name="maxCrosses" id="maxCrosses" min="1" max="5" value="3" onchange="genVal(this)" ></td>
-            <td>Between 1 and 5.<br>
+            <p>
+            This feature generates a list of random stitches.<br>
+            Please note: a number that is too low or too high will be set to 1 resp. the maximal number allowed.
+            </p>
+        </div>
+
+        <table class="stgen">
+            <tr>
+              <td><label for="stitchesRequired">The number of stitches required </label></td>
+              <td><input type="number" name="stitchesRequired" id="stitchesRequired" min="1" max="25" value="1" onchange="genVal(this)" ></td>
+              <td>Minimal 1, maximal 25.</td>
+            </tr>
+            <tr>
+              <td><label for="maxCrosses">The maximal number of crosses in a stitch </label></td>
+              <td><input type="number" name="maxCrosses" id="maxCrosses" min="1" max="5" value="3" onchange="genVal(this)" ></td>
+              <td>Between 1 and 5.<br>
                 The generated stitch has at least one cross.</td>
-        </tr>
-        <tr>
-            <td><label for="maxTwistsBetweenCrosses">The maximal number of twists between two crosses </label></td>
-            <td><input type="number" name="maxTwistsBetweenCrosses" id="maxTwistsBetweenCrosses" min="1" max="5" value="1" onchange="genVal(this)" ></td>
-            <td>Between 1 and 5.<br>
-                The generated stitch can have 0 twists between two crosses, e.g. "cc".</td>
-        </tr>
-        <tr>
-            <td><label for="maxTwistsBetweenStitches">The maximal number of twists between two stitches </label></td>
-            <td><input type="number" name="maxTwistsBetweenStitches" id="maxTwistsBetweenStitches" min="1" max="5" value="2" onchange="genVal(this)" ></td>
-            <td>Between 1 and 5. <br>
-                The generated stitch can have 0 twists at the front and at the back, e.g. "ctc".</td>
-        </tr>
-        <tr>
-            <td>Position of twists between stitches</td>
-            <td><input type="checkbox" id="twistsBefore" name="twistsBefore" value="tBefore">
-                <label for="twistsBefore">before</label>
-                <br>
-                <input type="checkbox" id="twistsAfter" name="twistsAfter" value="tAfter" checked>
-                <label for="twistsAfter">after</label>
-            </td>
-            <td>Between two stitches, twists can be at the front (Rctc), at the back (ctcL), at front and back (RctcL) of the generated stitch or none (ctc).</td>
-        </tr>
-    </table>
+            </tr>
+            <tr>
+               <td><label for="maxTwistsBetweenCrosses">The maximal number of twists between two crosses </label></td>
+                <td><input type="number" name="maxTwistsBetweenCrosses" id="maxTwistsBetweenCrosses" min="1" max="5" value="1" onchange="genVal(this)" ></td>
+                <td>Between 1 and 5.<br>
+                    The generated stitch can have 0 twists between two crosses, e.g. "cc".</td>
+            </tr>
+            <tr>
+                <td><label for="maxTwistsBetweenStitches">The maximal number of twists between two stitches </label></td>
+                <td><input type="number" name="maxTwistsBetweenStitches" id="maxTwistsBetweenStitches" min="1" max="5" value="2" onchange="genVal(this)" ></td>
+                <td>Between 1 and 5. <br>
+                    The generated stitch can have 0 twists at the front and at the back, e.g. "ctc".</td>
+            </tr>
+            <tr>
+                <td>Position of twists between stitches</td>
+                <td><input type="checkbox" id="twistsBefore" name="twistsBefore" value="tBefore">
+                    <label for="twistsBefore">before</label>
+                    <br>
+                    <input type="checkbox" id="twistsAfter" name="twistsAfter" value="tAfter" checked>
+                    <label for="twistsAfter">after</label>
+                </td>
+                <td>Between two stitches, twists can be at the front (Rctc), at the back (ctcL), at front and back (RctcL) of the generated stitch or none (ctc).</td>
+            </tr>
+        </table>
 
-    <div>
+        <div>
+            <br>
+            <button onclick="document.getElementById('slag').innerHTML = genRandomStitchList()">
+                Generate list of stitches
+            </button>
+            <button onclick="document.getElementById('slag2').innerHTML = genStitchList(3,2,1,2,false,true)">
+                Generate list of stitches with fixed attributes
+            </button>
+            <button onclick="document.getElementById('slag3').innerHTML = genRandomStitch(3,1,0,2)">
+                Generate one stitch with fixed attributes
+            </button>
+            <br><br>
+        </div>
+
+        <p id="slag"></p>
         <br>
-        <button onclick="document.getElementById('slag').innerHTML = genRandomStitchList()">
-            Generate list of stitches
-        </button>
-        <br><br>
-    </div>
+        <br>
+        <p id="slag2"></p>
+        <br>
+        <br>
+        <p id="slag3"></p>
 
-    <p id="slag"></p>
-
-</main>
+    </main>
 </body>
 </html>
