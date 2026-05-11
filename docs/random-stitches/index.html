@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>test stand alone</title>
+    <meta charset="UTF-8">
+    <title lang="en">GF: Random stitches generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../js/randomStitch.js"></script>
+    <link rel="stylesheet" href="../css/buttons.css" type="text/css">
+    <link rel="stylesheet" href="random-stitches.css" type="text/css">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/GroundForge/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/GroundForge/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/GroundForge/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/GroundForge/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/GroundForge/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/GroundForge/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
 </head>
 <body>
 
-    <link rel="stylesheet" href="../css/buttons.css" type="text/css">
-    <link rel="stylesheet" href="random-stitches.css" type="text/css">
-    <script type="text/javascript" src="../js/randomStitch.js"></script>
+    <div>
+        <img src="random-stitches.svg" alt="stitch-generator in Alphabet 1, by M. Tempels" title="abc 1"><br>
 
-    <img alt="abc 1" src="random-stitches.svg" title="abc 1" />
+        <p>
+        This feature generates a list of random stitches.<br>
+        Please note: a number that is too low or too high will be set to 1 resp. the maximal number allowed.</p>
+    </div>
 
     <table class="stgen">
         <tr>
@@ -20,13 +37,13 @@
         <tr>
             <td><label for="maxCrosses">The maximal number of crosses in a stitch </label></td>
             <td><input type="number" name="maxCrosses" id="maxCrosses" min="1" max="5" value="3" onchange="genVal(this)" ></td>
-            <td>Between 1 and 5. <br>
+            <td>Between 1 and 5.<br>
                 The generated stitch has at least one cross.</td>
         </tr>
         <tr>
             <td><label for="maxTwistsBetweenCrosses">The maximal number of twists between two crosses </label></td>
             <td><input type="number" name="maxTwistsBetweenCrosses" id="maxTwistsBetweenCrosses" min="1" max="5" value="1" onchange="genVal(this)" ></td>
-            <td>Between 1 and 5. <br>
+            <td>Between 1 and 5.<br>
                 The generated stitch can have 0 twists between two crosses, e.g. "cc".</td>
         </tr>
         <tr>
@@ -52,21 +69,10 @@
         <button onclick="document.getElementById('slag').innerHTML = genRandomStitchList()">
             Generate list of stitches
         </button>
-        <button onclick="document.getElementById('slag2').innerHTML = genStitchList(3,2,1,2,false,true)">
-            Generate list of stitches with fixed attributes
-        </button>
-        <button onclick="document.getElementById('slag3').innerHTML = genRandomStitch(3,1,0,2)">
-            Generate one stitch with fixed attributes
-        </button>
         <br><br>
     </div>
 
     <p id="slag"></p>
-    <br>
-    <br>
-    <p id="slag2"></p>
-    <br>
-    <br>
-    <p id="slag3"></p>
 
 </body>
+</html>
