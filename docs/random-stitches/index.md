@@ -54,7 +54,7 @@ Please note: a number that is too low or too high will be set to 1 resp. the max
 
 <div>
     <br>
-    <button class="button" type="button" onclick="document.getElementById('setRandomList').innerHTML = genRandomStitchList()">
+    <button class="button" type="button" onclick="document.getElementById('setRandomList').innerHTML = GF_Random.genRandomStitchList()">
         Generate list of stitches</button>
     <br><br>
 </div>
