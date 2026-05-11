@@ -76,7 +76,7 @@ function genRandomStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore, m
     if (maxTwistsAfter > 5) {        maxTwistsAfter = 5;    }
 
     // how many crosses, minimal 1 cross, therefor add 1 to random integer
-    let lengthCrosses = Math.floor(Math.random() * 10000)%maxCrosses + 1;
+    let lengthCrosses = Math.floor(Math.random() * maxCrosses) + 1;
 
     // twists before first C
     if (maxTwistsBefore > 0) {
@@ -101,11 +101,11 @@ function genRandomStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore, m
 }
 
 // generate a string with "T", "L", "R"
-// note: string of 0, 1, ..., maxTwists "L" or "R", therefor modulo (maxTwists + 1)
+// note: string of 0, 1, ..., maxTwists "L" or "R", therefor (maxTwists + 1)
 function genTwists(maxTwists)
 {
-    let lengthL = Math.floor(Math.random() * 10000)%(maxTwists + 1);
-    let lengthR = Math.floor(Math.random() * 10000)%(maxTwists + 1);
+    let lengthL = Math.floor(Math.random() * (maxTwists + 1));
+    let lengthR = Math.floor(Math.random() * (maxTwists + 1));
     let lengthT = Math.min(lengthL, lengthR);
 
     lengthL = lengthL-lengthT;

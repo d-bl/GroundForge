@@ -88,7 +88,7 @@ const GF_stitches = {
             <a class="button" href="javascript:GF_stitches.flip2p()">&varr;</a>
             <a class="button" href="javascript:GF_stitches.flip2q()">both</a>
             <label for="setRandom">Random stitch</label>
-            <a id="setRandom" class="button" href="javascript:GF_stitches.setRandomStitch()">generate</a>
+            <a id="setRandom:" class="button" href="javascript:GF_stitches.setRandomStitch()">generate</a>
 `
         let element = document.querySelector("#gallery");
         element.parentNode.insertBefore(p, element.nextSibling)
