@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Stitch Generator
-sidebar: default
+sidebar: randomstitch
 ---
 
 <link rel="stylesheet" href="random-stitches.css" type="text/css">
