@@ -133,15 +133,19 @@ const GF_Random = {
         let lengthR = 0;
 
         lengthL = Math.floor(Math.random() * (lengthAll + 1));
+        lengthR = Math.floor(Math.random() * (lengthAll + 1));
         // = 0 if lengthAll = 0
 
         // make sure that max(lengthL, lengthR) = lengthAll
-        if (lengthL < lengthAll) {
-            lengthR = lengthAll;
-        } else {
-            lengthR = Math.floor(Math.random() * (lengthAll + 1));
+        if (Math.max(lengthL, lengthR ) !== lengthAll) {
+            let LorR = Math.floor(Math.random() * 2);
+            if (LorR == 0) {
+                lengthL = lengthAll;
+            } else {
+                lengthR = lengthAll;
+            }
         }
-        
+
         let lengthT = Math.min(lengthL, lengthR);
         lengthL = lengthL - lengthT;
         lengthR = lengthR - lengthT;
