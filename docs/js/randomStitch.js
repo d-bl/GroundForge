@@ -129,11 +129,9 @@ const GF_Random = {
     // simply generating a number of L- and of R-twists, gives a change for zero twists of square(maxTwists)
     genTwists(maxTwists) {
         let lengthAll = Math.floor(Math.random() * (maxTwists + 1));
-        let lengthL = 0;
-        let lengthR = 0;
 
-        lengthL = Math.floor(Math.random() * (lengthAll + 1));
-        lengthR = Math.floor(Math.random() * (lengthAll + 1));
+        let lengthL = Math.floor(Math.random() * (lengthAll + 1));
+        let lengthR = Math.floor(Math.random() * (lengthAll + 1));
         // = 0 if lengthAll = 0
 
         // make sure that max(lengthL, lengthR) = lengthAll
