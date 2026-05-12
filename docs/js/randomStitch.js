@@ -124,13 +124,25 @@ const GF_Random = {
         return stitch;
     },
 
-// generate a string with "T", "L", "R"
-// note: string of 0, 1, ..., maxTwists "L" or "R", therefor (maxTwists + 1)
+    // generate a string with "T", "L", "R"
+    // note: string of 0, 1, ..., maxTwists twists, therefor (maxTwists + 1)
+    // simply generating a number of L- and of R-twists, gives a change for zero twists of square(maxTwists)
     genTwists(maxTwists) {
-        let lengthL = Math.floor(Math.random() * (maxTwists + 1));
-        let lengthR = Math.floor(Math.random() * (maxTwists + 1));
-        let lengthT = Math.min(lengthL, lengthR);
+        let lengthAll = Math.floor(Math.random() * (maxTwists + 1));
+        let lengthL = 0;
+        let lengthR = 0;
 
+        lengthL = Math.floor(Math.random() * (lengthAll + 1));
+        // = 0 if lengthAll = 0
+
+        // make sure that max(lengthL, lengthR) = lengthAll
+        if (lengthL < lengthAll) {
+            lengthR = lengthAll;
+        } else {
+            lengthR = Math.floor(Math.random() * (lengthAll + 1));
+        }
+        
+        let lengthT = Math.min(lengthL, lengthR);
         lengthL = lengthL - lengthT;
         lengthR = lengthR - lengthT;
 
