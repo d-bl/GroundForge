@@ -138,8 +138,7 @@ const GF_Random = {
 
         // make sure that max(lengthL, lengthR) = lengthAll
         if (Math.max(lengthL, lengthR ) !== lengthAll) {
-            let LorR = Math.floor(Math.random() * 2);
-            if (LorR == 0) {
+            if ( Math.floor(Math.random() * 2) === 0) {
                 lengthL = lengthAll;
             } else {
                 lengthR = lengthAll;
