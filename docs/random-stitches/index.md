@@ -5,7 +5,7 @@ sidebar: randomstitch
 ---
 
 <link rel="stylesheet" href="random-stitches.css" type="text/css">
-<script src="../js/randomStitch.js"></script>
+<script src="../js/stitch-gallery.js"></script>
 
 # Stitches Generator
 
