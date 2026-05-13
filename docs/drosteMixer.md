@@ -17,5 +17,5 @@ css:
 
 <script src="tileGallery/tile-gallery.js" type="text/javascript"></script>
 <script>
-GF_hybrid.load(document.getElementById('main-content'));
+GF_hybrid.loadDrosteMixer(document.getElementById('main-content'));
 </script>

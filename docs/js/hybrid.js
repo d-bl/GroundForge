@@ -8,7 +8,6 @@
  * - GroundForge-opt.js
  * - nudgePairs.js (nudgeDiagram)
  * - panel.js
- * - hybrid.css
  * - stitch-gallery.js
  * @namespace
  */
@@ -319,7 +318,7 @@ const GF_hybrid = {
         let q = new URL(document.documentURI).search.slice(1)
             .replaceAll(/[^a-zA-Z0-9=,.-]/g,'');
         if (q === "" || !q.includes('shiftRows')) {
-            q = "patchWidth=7&patchHeight=8&footside=----,---b&tile=5-&headside=-,c&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1&footsideStitch=tr&headsideStitch=tl&tileStitch=ct&e1=ctc"
+            q = "patchWidth=7&patchHeight=7&footside=---x,---4,---x,---4&tile=5-,-5,5-,-5&headside=-,c,-,c,&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=2&e1=lclc&l2=llctt&f2=rcrc&d2=rrctt&e3=rcrc&l4=llctt&f4=lclc&d4=rrctt&droste2=e12=clcrcl,e13=ct,f42=ctcl,e32=f22=ctcr,e33=f43=lct,e31=f21=lctc,e11=rclcrc,f23=rct,f41=rctc,e10=tc,f20=tcl,e30=f40=tcr"
         }
         galleryPanels();
         GF_panel.load({caption: "tweak selected stitch", id: "tweak", size:{width:'98%', height: 'auto'}, parent: container});
@@ -428,7 +427,7 @@ const GF_hybrid = {
      * @param {!HTMLElement} container receives the generated components
      */
     loadDroste(container){
-        this.loadSimple(container, 1, ['drosteStitches', 'pairStep', 'threadStep', 'snow3'] );
+        this.loadSimple(container, 1, ['drosteStitches', 'pairStep', 'threadStep', 'snow3', 'snow4'] );
     },
     /**
      * Wrapper for loadSimple. Initial step is 0 and specs panel is initially hidden, shown when step becomes larger.
@@ -436,7 +435,16 @@ const GF_hybrid = {
      * @param {!HTMLElement} container receives the generated components
      * */
     loadStitches(container){
-        this.loadSimple(container, 0, ['drosteStitches', 'pairStep', 'threadStep', 'snow3', 'specs'] );
+        this.loadSimple(container, 0, ['drosteStitches', 'pairStep', 'threadStep', 'snow3',  'snow4', 'drosteStep', 'specs'] );
+    },
+    /**
+     * Wrapper for load. Hides the third step field
+     *
+     * @param {!HTMLElement} container receives the generated components
+     * */
+    loadDrosteMixer(container){
+        this.load(container);
+        document.getElementById('drosteStep').parentNode.style.display = 'none';
     },
     /**
      * Wrapper for load. Hiding some elements.
