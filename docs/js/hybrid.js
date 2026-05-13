@@ -160,27 +160,32 @@ const GF_hybrid = {
         const basicValue = basicEl.value.toLowerCase()
             .replaceAll(/[^crlt]/g, '')
         if (drosteEl && drosteEl.value.trim()  !== '') {
-            const tLessBasicValue = basicValue.replace(/[t]/g, 'lr');
-            const arr = Array(tLessBasicValue.length).fill('ctc');
-            const keyValuePairs = drosteEl.value.toLowerCase()
-                .replaceAll(/[^crltx0-9=;,.]/g, '')
-                .split(/[;,.]/)
-            for(const kv of keyValuePairs) {
-                const value = kv.replace(/.*=/,'')
-                const keys = kv.replace(/=[^=]*$/,'').split(/=/)
-                for (const key of keys) {
-                    arr[parseInt(key.replace('x',''))] = value;
+            if (drosteEl.value.includes('=')) {
+                const tLessBasicValue = basicValue.replace(/[t]/g, 'lr');
+                const arr = Array(tLessBasicValue.length).fill('ctc');
+                const keyValuePairs = drosteEl.value.toLowerCase()
+                    .replaceAll(/[^crltx0-9=;,.]/g, '')
+                    .split(/[;,.]/)
+                for (const kv of keyValuePairs) {
+                    const value = kv.replace(/.*=/, '')
+                    const keys = kv.replace(/=[^=]*$/, '').split(/=/)
+                    for (const key of keys) {
+                        arr[parseInt(key.replace('x', ''))] = value;
+                    }
                 }
+                const flipped = flip2(arr.join(';'))
+                    .split(';');
+                for (let i = 0; i < flipped.length; i++) {
+                    flipped[i] = `x${i}=${flipped[i]}`;
+                }
+                drosteEl.value = flipped.join(';')
+                    .replace(/x[0-9]+=ctc(;|$)/g,'')
+                    .replace(/;$/,'');
+                basicEl.value = flip2(tLessBasicValue);
+            } else {
+                drosteEl.value = flip2(drosteEl.value);
+                basicEl.value = flip2(basicValue);
             }
-            const flipped = flip2(arr.join(';'))
-                .split(';');
-            for (let i = 0; i < flipped.length; i++) {
-                flipped[i] = `x${i}=${flipped[i]}`;
-            }
-            drosteEl.value = flipped.join(';')
-                .replace(/x[0-9]+=ctc(;|$)/g,'')
-                .replace(/;$/,'');
-            basicEl.value = flip2(tLessBasicValue);
         } else {
             basicEl.value = flip2(basicValue);
         }
