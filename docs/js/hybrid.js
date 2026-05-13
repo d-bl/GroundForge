@@ -17,11 +17,11 @@ const GF_hybrid = {
     snow4:[
         // screenshots taken at 50% zoom level
         // ndb: patterns from "naar de bron" by Nora Andries
-        ['ndb-9Z.png','rctcr','x0=cl,x1=llclcr,x2=llclcrclcll,x3=crclcrcl,x4=clcrll,x5=c','x00=x70=c,x80=x81=x90=x91=tt '],
-        ['ndb-10N.png','clctcrct','x0=x7=c,x1=rclcr,x2=crc,x3=rctc,x4=ctcl,x5=clcr,x6=crcl,x8=x9=tt','x00=,x70=c,x80=x81=x90=x91=tt '],
-        ['spider-1-ring.png','ctct','x1=x2=ctctc,x4=x5=tt'],
-        ['spider-2-rings.png','ctct','x1=ctcrctc,x2=ctclctc,x4=x5=tt'],
-        ['spider-3-rings.png','ctcctct','x3=ctcctc,x8=x9=tt','x33=ctcctc,x80=x81=x90=x91=tt']
+        ['ndb-9Z.png','rclrcr','x0=cl,x1=llclcr,x2=llclcrclcll,x3=crclcrcl,x4=clcrll,x5=c','x00=x70=c,x80=x81=x90=x91=lrt '],
+        ['ndb-10N.png','clclrcrclr','x0=x7=c,x1=rclcr,x2=crc,x3=rctc,x4=ctcl,x5=clcr,x6=crcl,x8=x9=tt','x00=,x70=c,x80=x81=x90=x91=tt '],
+        ['spider-1-ring.png','clrclr','x1=x2=ctctc,x4=x5=tt'],
+        ['spider-2-rings.png','clrclr','x1=ctcrctc,x2=ctclctc,x4=x5=tt'],
+        ['spider-3-rings.png','clrcclrclr','x3=ctcctc,x8=x9=tt','x33=ctcctc,x80=x81=x90=x91=tt']
     ],
     snow3: [
         ['123-a',   'rcrcrc','crc,crclctc,ctcrc,rcl,c,c'],
@@ -145,37 +145,46 @@ const GF_hybrid = {
                 title.parentNode.addEventListener('click', stitchHandler)
         });
     },
-    bothPairsTwistedAndDroste(basicStitchEl, drosteStitchEl) {
-        const basicValue = basicStitchEl.value.toLowerCase();
-        if (drosteStitchEl.value !== '' && (basicValue.includes('t') || (basicValue.includes('r') && basicValue.includes('l')))) {
-            alert('not implemented for 4/8 pairs droste')
-            return true;
-        }
-        return false;
-    },
-    flip_b2d() {
-        function flip(n) {
-            return n.value.toLowerCase()
-                .replaceAll(/[^crlt,.]/g, '')
-                .replace(/l/g, "R")
-                .replace(/r/g, "L")
-                .toLowerCase();
+    flip(direction) {
+        function flip2(value) {
+            switch (direction) {
+                case 'b2d': return value
+                        .replace(/l/g, "R")
+                        .replace(/r/g, "L")
+                        .toLowerCase();
+                case 'b2p': return value
+                    .split("").reverse().join("");
+            }
         }
         const basicEl = document.getElementById('basicStitchInput');
         const drosteEl = document.getElementById('drosteStitches');
-        if (this.bothPairsTwistedAndDroste(basicEl, drosteEl)) return;
-        drosteEl.value = flip(drosteEl);
-        basicEl.value = flip(basicEl);
-    },
-    flip_b2p() {
-        const basicEl = document.getElementById('basicStitchInput');
-        const drosteEl = document.getElementById('drosteStitches');
-        if (this.bothPairsTwistedAndDroste(basicEl, drosteEl)) return;
-        basicEl.value = basicEl.value.toLowerCase().split("").reverse().join("")
-        drosteEl.value = drosteEl.value.toLowerCase()
-            .replaceAll('.', ',')
-            .replaceAll(/[^crlt,.]/g, '')
-            .split("").reverse().join("");
+        const basicValue = basicEl.value.toLowerCase()
+            .replaceAll(/[^crlt]/g, '')
+        if (drosteEl && drosteEl.value.trim()  !== '') {
+            const tLessBasicValue = basicValue.replace(/[t]/g, 'lr');
+            const arr = Array(tLessBasicValue.length).fill('ctc');
+            const keyValuePairs = drosteEl.value.toLowerCase()
+                .replaceAll(/[^crltx0-9=;,.]/g, '')
+                .split(/[;,.]/)
+            for(const kv of keyValuePairs) {
+                const value = kv.replace(/.*=/,'')
+                const keys = kv.replace(/=[^=]*$/,'').split(/=/)
+                for (const key of keys) {
+                    arr[parseInt(key.replace('x',''))] = value;
+                }
+            }
+            const flipped = flip2(arr.join(';'))
+                .split(';');
+            for (let i = 0; i < flipped.length; i++) {
+                flipped[i] = `x${i}=${flipped[i]}`;
+            }
+            drosteEl.value = flipped.join(';')
+                .replace(/x[0-9]+=ctc(;|$)/g,'')
+                .replace(/;$/,'');
+            basicEl.value = flip2(tLessBasicValue);
+        } else {
+            basicEl.value = flip2(basicValue);
+        }
     },
     scrollIfTooLittleIsVisible(elementId) {
         const threadPanel = document.getElementById(elementId);
@@ -276,12 +285,9 @@ const GF_hybrid = {
                 const chooser = `<select onchange="GF_hybrid.otherGallery(this, ${i});">${options}</select>`;
                 const sizeOptions = {width:'100%', height: galleries[key1]['height']};
                 GF_panel.load({caption: chooser, id: key1, controls: ["resize"], size: sizeOptions, parent: container});
-                if (key1 === 'snow3') {
-                    document.getElementById(key1).parentNode.style.display = 'block';
-                } else {
-                    document.getElementById(key1).parentNode.style.display = 'none';
-                }
+                document.getElementById(key1).parentNode.style.display = 'none';
             }
+            document.getElementById('snow4').parentNode.style.display = 'block';
             GF_tiles.loadGallery({jsAction: 'GF_hybrid.setPattern(this);return false;', containerId: 'pattern'});
             const snow3Gallery = document.getElementById('snow3')
             for(let [img,basicStitch,droste] of GF_hybrid.snow3){
@@ -313,7 +319,7 @@ const GF_hybrid = {
         let q = new URL(document.documentURI).search.slice(1)
             .replaceAll(/[^a-zA-Z0-9=,.-]/g,'');
         if (q === "" || !q.includes('shiftRows')) {
-            q = "patchWidth=7&patchHeight=7&footside=---x,---4,---x,---4&tile=5-,-5,5-,-5&headside=-,c,-,c,&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=2&e1=lclc&l2=llctt&f2=rcrc&d2=rrctt&e3=rcrc&l4=llctt&f4=lclc&d4=rrctt&droste2=e12=clcrcl,e13=ct,f42=ctcl,e32=f22=ctcr,e33=f43=lct,e31=f21=lctc,e11=rclcrc,f23=rct,f41=rctc,e10=tc,f20=tcl,e30=f40=tcr"
+            q = "patchWidth=7&patchHeight=8&footside=----,---b&tile=5-&headside=-,c&shiftColsSW=-1&shiftRowsSW=1&shiftColsSE=1&shiftRowsSE=1&footsideStitch=tr&headsideStitch=tl&tileStitch=ct&e1=ctc"
         }
         galleryPanels();
         GF_panel.load({caption: "tweak selected stitch", id: "tweak", size:{width:'98%', height: 'auto'}, parent: container});
@@ -342,9 +348,9 @@ const GF_hybrid = {
                 <input type="text" id="drosteStitches" value="tc,rclcrc,clcrcl,ct" placeholder="Example: cl,cr,tt; As many as clr actions in basic stitch (t=lr)" />
             </label>
             </p><p>Flip:
-            <button onclick="GF_hybrid.flip_b2d()">&harr;</button>
-            <button onclick="GF_hybrid.flip_b2p()">&varr;</button>
-            <button onclick="GF_hybrid.flip_b2d();GF_hybrid.flip_b2p()">both</button>
+            <button onclick="GF_hybrid.flip('b2d')">&harr;</button>
+            <button onclick="GF_hybrid.flip('b2p')">&varr;</button>
+            <button onclick="GF_hybrid.flip('b2d');GF_hybrid.flip('b2p')">both</button>
             </p>
         `);
         const params = new URLSearchParams(q);
