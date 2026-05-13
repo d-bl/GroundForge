@@ -135,8 +135,8 @@ const GF_Random = {
         // = 0 if lengthAll = 0
 
         // make sure that max(lengthL, lengthR) = lengthAll
-        // For some reason, the simplified version: if lengthL < lengthAll then lengthR = lengthAll
-        // doesn't work well. It somehow generates more R's than L's.
+        // The simplified version: if lengthL < lengthAll then lengthR = lengthAll doesn't work well. It generates more R's than L's.
+        // Because: chance(lengthL == lengthAll) = 1/lengthAll and chance(lengthL < lengthAll) = ((lengthAll-1)/lenghtAll).
         if (Math.max(lengthL, lengthR ) !== lengthAll) {
             if ( Math.floor(Math.random() * 2) === 0) {
                 lengthL = lengthAll;
