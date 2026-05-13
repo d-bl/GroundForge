@@ -132,7 +132,7 @@ const GF_hybrid = {
             droste0.value = decodeURIComponent(params.toString());
             document.getElementById('selfRef').href = '?' + droste0.value
             document.getElementById('selfRef').style.display = 'inline';
-            // last as it may fail when stepLevel is too high for the froste applied to basic stitch
+            // last as it may fail when stepLevel is too high for the droste applied to basic stitch
             document.getElementById(drosteId).value += extraSteps + '\n';
         }
 
@@ -456,7 +456,7 @@ const GF_hybrid = {
         this.snow4 = []; // clear for performance
 
         this.load(container, initialStep);
-        for (let id of ['pairStep', 'threadStep']) {
+        for (let id of ['pairStep', 'threadStep', 'drosteStep']) {
             document.getElementById(id).value = initialStep;
         }
         for (let id of hiddenElements) {

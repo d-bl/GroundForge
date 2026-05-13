@@ -13,7 +13,7 @@ css:
   - hybrid.css
 ---
 
-[W.I.P.](https://github.com/d-bl/GroundForge/issues/259)
+Notes on [W.I.P.](https://github.com/d-bl/GroundForge/issues/259)
 
 <script src="tileGallery/tile-gallery.js" type="text/javascript"></script>
 <script>
