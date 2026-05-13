@@ -42,7 +42,8 @@ Please note: a number that is too low or too high will be set to 1 resp. the max
     </tr>
     <tr>
        <td>Position of twists between stitches</td>
-       <td><input type="checkbox" id="twistsBefore" name="twistsBefore" value="tBefore">
+       <td class="nowrap">
+           <input type="checkbox" id="twistsBefore" name="twistsBefore" value="tBefore">
            <label for="twistsBefore">before</label>
        <br>
            <input type="checkbox" id="twistsAfter" name="twistsAfter" value="tAfter" checked>

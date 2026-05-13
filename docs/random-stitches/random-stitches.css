@@ -3,3 +3,29 @@
 .stgen td {text-align:left; vertical-align:top; padding: 5px 15px 5px 5px; border-style:hidden;}
 .stgen th {text-align:left; vertical-align:top; padding: 5px 15px 5px 5px; border-style:hidden; font-weight:bold;}
 
+td.nowrap { white-space:nowrap;}
+
+/* buttons, see header.css */
+button, .button {
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    border-radius: 4px;
+    line-height: 1.8em;
+}
+
+/* <a class="button" ..> */
+.button {
+    padding: 4px 6px 2px 6px;
+    margin: 3px;
+}
+/* <button> */
+button {
+    padding: 1px 6px 0 6px;
+    margin: 0 3px 3px 3px;
+    font-size: medium;
+}

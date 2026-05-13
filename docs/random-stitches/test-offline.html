@@ -21,6 +21,7 @@
         main h1 {
             font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
             font-size: 46px; font-weight: normal; margin-top: 0; margin-bottom: 0.2em; letter-spacing: -1px; width: 100%; }
+        main td.nowrap { white-space:nowrap;}
     </style>
 </head>
 
@@ -71,7 +72,8 @@
             </tr>
             <tr>
                 <td>Position of twists between stitches</td>
-                <td><input type="checkbox" id="twistsBefore" name="twistsBefore" value="tBefore">
+                <td class="nowrap">
+                    <input type="checkbox" id="twistsBefore" name="twistsBefore" value="tBefore">
                     <label for="twistsBefore">before</label>
                     <br>
                     <input type="checkbox" id="twistsAfter" name="twistsAfter" value="tAfter" checked>
