@@ -23,3 +23,8 @@ button {
     margin: 0 3px 3px 3px;
     font-size: medium;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 375px 50px ;
+}

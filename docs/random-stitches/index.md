@@ -1,19 +1,13 @@
 ---
 layout: default
-title: Stitch Generator
+title: Random stitch generator
 sidebar: randomstitch
 ---
 
 <link rel="stylesheet" href="random-stitches.css" type="text/css">
 <script src="../js/stitch-gallery.js"></script>
-<style>
-.grid-container {
-  display: grid;
-  grid-template-columns: 500px 50px ;
-  }
-</style>
 
-# Stitches Generator
+# Random stitches generator
 
 ![][p-alfa1]
 
@@ -40,12 +34,14 @@ Between 1 and 5. The generated stitch can have 0 twists between two crosses, e.g
 <span class="grid-container">
 The maximal number of twists at the front of the stitch, e.g. Tctc. 
 <input type="number" name="maxTwistsBefore" id="maxTwistsBefore" min="0" max="5" value="0" onchange="GF_Random.genVal(this)" ></span>
-Between 0 and 5. Use 0 if no twists at the front of a stitch are required. The generated stitch can have 0 twists at the front, e.g. "ctc".    
+Between 0 and 5. Use 0 if no twists at the front of a stitch are required.    
+The generated stitch can have 0 twists at the front, e.g. "ctc".    
 
 <span class="grid-container">
 The maximal number of twists at the end of the stitch, e.g. ctcT. 
 <input type="number" name="maxTwistsAfter" id="maxTwistsAfter" min="0" max="5" value="2" onchange="GF_Random.genVal(this)" ></span>
-Between 0 and 5. Use 0 if no twists at the end of a stitch are required. The generated stitch can have 0 twists at the end, e.g. "ctc".     
+Between 0 and 5. Use 0 if no twists at the end of a stitch are required.     
+The generated stitch can have 0 twists at the end, e.g. "ctc".     
 
 <p>
 <button class="button" type="button" onclick="document.getElementById('setRandomList').innerHTML = GF_Random.genRandomStitchList()">
