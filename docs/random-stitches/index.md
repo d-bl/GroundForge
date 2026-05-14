@@ -32,16 +32,16 @@ The maximal number of twists between two crosses.
 Between 1 and 5. The generated stitch can have 0 twists between two crosses, e.g. "cc".    
 
 <span class="grid-container">
-The maximal number of twists at the front of the stitch, e.g. Tctc. 
+The maximal number of twists at the front of the stitch. 
 <input type="number" name="maxTwistsBefore" id="maxTwistsBefore" min="0" max="5" value="0" onchange="GF_Random.genVal(this)" ></span>
-Between 0 and 5. Use 0 if no twists at the front of a stitch are required.    
-The generated stitch can have 0 twists at the front, e.g. "ctc".    
+Between 0 and 5. E.g. Tctc. The generated stitch can have 0 twists at the front, e.g. "ctc".    
+Use 0 if no twists at the front of a stitch are required.       
 
 <span class="grid-container">
-The maximal number of twists at the end of the stitch, e.g. ctcT. 
+The maximal number of twists at the end of the stitch.
 <input type="number" name="maxTwistsAfter" id="maxTwistsAfter" min="0" max="5" value="2" onchange="GF_Random.genVal(this)" ></span>
-Between 0 and 5. Use 0 if no twists at the end of a stitch are required.     
-The generated stitch can have 0 twists at the end, e.g. "ctc".     
+Between 0 and 5. E.g. ctcT. The generated stitch can have 0 twists at the end, e.g. "ctc".    
+Use 0 if no twists at the end of a stitch are required.         
 
 <p>
 <button class="button" type="button" onclick="document.getElementById('setRandomList').innerHTML = GF_Random.genRandomStitchList()">
