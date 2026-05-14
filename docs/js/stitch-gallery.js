@@ -149,12 +149,10 @@ const GF_stitches = {
 
 const GF_Random = {
 
-    genRandomStitchList(pS, pC, pTBC, pTBS, pB, pA) {
+    genRandomStitchList(pS, pC, pTC, pTB, pTA) {
         //const stitchArray = [];
         let stitchString = "";
-        let stitchesRequired, maxCrosses, maxTwistsBetweenCrosses, maxTwistsBetweenStitches;
-        let twistsBefore, twistsAfter;
-        let maxTwistsBefore = 0, maxTwistsAfter = 0;
+        let stitchesRequired, maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore, maxTwistsAfter;
 
         // The function can be called with or without attributes.
         // without Number(), document.value is a string. With unexpected results in function genTwists.
@@ -172,37 +170,25 @@ const GF_Random = {
             maxCrosses = pC;
         }
         // maximum number of twists between two crosses
-        if (pTBC === undefined) {
+        if (pTC === undefined) {
             maxTwistsBetweenCrosses = Number(document.getElementById("maxTwistsBetweenCrosses").value);
         } else {
-            maxTwistsBetweenCrosses = pTBC;
+            maxTwistsBetweenCrosses = pTC;
         }
-        // maximum number of twists between two stitches
-        if (pTBS === undefined) {
-            maxTwistsBetweenStitches = Number(document.getElementById("maxTwistsBetweenStitches").value);
+        // maximum number of twists before stitch
+        if (pTB === undefined) {
+            maxTwistsBefore = Number(document.getElementById("maxTwistsBefore").value);
         } else {
-            maxTwistsBetweenStitches = pTBS;
+            maxTwistsBefore = pTB;
         }
-        // twists before stitch
-        if (pB === undefined) {
-            twistsBefore = document.getElementById("twistsBefore").checked;
+        // maximum number of twists after stitch
+        if (pTA === undefined) {
+            maxTwistsAfter = Number(document.getElementById("maxTwistsAfter").value);
         } else {
-            twistsBefore = pB;
-        }
-        if (twistsBefore) {
-            maxTwistsBefore = maxTwistsBetweenStitches;
-        }
-        // twists after stitch
-        if (pA === undefined) {
-            twistsAfter = document.getElementById("twistsAfter").checked;
-        } else {
-            twistsAfter = pA;
-        }
-        if (twistsAfter) {
-            maxTwistsAfter = maxTwistsBetweenStitches;
+            maxTwistsAfter = pTA;
         }
 
-        // validate input - needed if called without arguments.
+        // validate input - needed if called with arguments.
         if (stitchesRequired < 1) {
             stitchesRequired = 1;
         }

@@ -35,22 +35,17 @@ Please note: a number that is too low or too high will be set to 1 resp. the max
             The generated stitch can have 0 twists between two crosses, e.g. "cc".</td>
     </tr>
     <tr>
-        <td><label for="maxTwistsBetweenStitches">The maximal number of twists between two stitches </label></td>
-        <td><input type="number" name="maxTwistsBetweenStitches" id="maxTwistsBetweenStitches" min="1" max="5" value="2" onchange="GF_Random.genVal(this)" ></td>
-        <td>Between 1 and 5. <br> 
-            The generated stitch can have 0 twists at the front and at the back, e.g. "ctc".</td>
-    </tr>
-    <tr>
-       <td>Position of twists between stitches</td>
-       <td class="nowrap">
-           <input type="checkbox" id="twistsBefore" name="twistsBefore" value="tBefore">
-           <label for="twistsBefore">before</label>
-       <br>
-           <input type="checkbox" id="twistsAfter" name="twistsAfter" value="tAfter" checked>
-           <label for="twistsAfter">after</label>
-       </td>
-       <td>Between two stitches, twists can be at the front (Rctc), at the back (ctcL), at front and back (RctcL) of the generated stitch or none (ctc).</td>
-    </tr>
+         <td><label for="maxTwistsBefore">The maximal number of twists at the front of stitch. </label></td>
+         <td><input type="number" name="maxTwistsBefore" id="maxTwistsBefore" min="0" max="5" value="2" onchange="GF_Random.genVal(this)" ></td>
+         <td>Between 0 and 5. <br>
+                    0 if no twists at the front of a stitch are required. The generated stitch can have 0 twists at the front, e.g. "ctc".</td>
+        </tr>
+        <tr>
+           <td><label for="maxTwistsAfter">The maximal number of twists between two stitches </label></td>
+           <td><input type="number" name="maxTwistsAfter" id="maxTwistsAfter" min="0" max="5" value="2" onchange="GF_Random.genVal(this)" ></td>
+           <td>Between 0 and 5. <br>
+              0 if no twists at the end of a stitch are required. The generated stitch can have 0 twists at the end, e.g. "ctc".</td>
+        </tr>
 </table>
 
 <div>
