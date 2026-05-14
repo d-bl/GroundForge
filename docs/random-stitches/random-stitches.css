@@ -26,5 +26,5 @@ button {
 
 .grid-container {
     display: grid;
-    grid-template-columns: 375px 50px ;
+    grid-template-columns: auto 50px ;
 }
