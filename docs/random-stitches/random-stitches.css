@@ -1,5 +1,9 @@
 
 /* table in stitch-generator/index.md */
-.stgen td {text-align:left; vertical-align:top; padding: 5px 15px 5px 5px; border-style:hidden;}
-.stgen th {text-align:left; vertical-align:top; padding: 5px 15px 5px 5px; border-style:hidden; font-weight:bold;}
-
+input[type="number"] { width: 3em; }
+p:has(> input:first-child) {
+    text-indent: -5em;
+    padding-left: 5em;
+    white-space: normal;
+}
+#between { display: inline-block; }
