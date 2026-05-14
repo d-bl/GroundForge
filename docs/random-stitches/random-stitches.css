@@ -1,10 +1,4 @@
 
-/* table in random-stiches/index */
-.stgen td {text-align:left; vertical-align:top; padding: 5px 15px 5px 5px; border-style:hidden;}
-.stgen th {text-align:left; vertical-align:top; padding: 5px 15px 5px 5px; border-style:hidden; font-weight:bold;}
-
-td.nowrap { white-space:nowrap;}
-
 /* buttons, see header.css */
 button, .button {
     text-decoration: none;

@@ -65,13 +65,13 @@
                     The generated stitch can have 0 twists between two crosses, e.g. "cc".</td>
             </tr>
             <tr>
-                <td><label for="maxTwistsBefore">The maximal number of twists at the front of stitch. </label></td>
-                <td><input type="number" name="maxTwistsBefore" id="maxTwistsBefore" min="0" max="5" value="2" onchange="GF_Random.genVal(this)" ></td>
+                <td><label for="maxTwistsBefore">The maximal number of twists at the front of the stitch, e.g. Tctc. </label></td>
+                <td><input type="number" name="maxTwistsBefore" id="maxTwistsBefore" min="0" max="5" value="0" onchange="GF_Random.genVal(this)" ></td>
                 <td>Between 0 and 5. <br>
                     0 if no twists at the front of a stitch are required. The generated stitch can have 0 twists at the front, e.g. "ctc".</td>
             </tr>
             <tr>
-                <td><label for="maxTwistsAfter">The maximal number of twists between two stitches </label></td>
+                <td><label for="maxTwistsAfter">The maximal number of twists at the end of the stitch, e.g. ctcT. </label></td>
                 <td><input type="number" name="maxTwistsAfter" id="maxTwistsAfter" min="0" max="5" value="2" onchange="GF_Random.genVal(this)" ></td>
                 <td>Between 0 and 5. <br>
                     0 if no twists at the end of a stitch are required. The generated stitch can have 0 twists at the end, e.g. "ctc".</td>
