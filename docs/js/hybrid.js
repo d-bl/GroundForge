@@ -256,6 +256,22 @@ const GF_hybrid = {
                 <br>`)
         });
     },
+    showToast(message) {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.style.display = 'block';
+
+        function hideToast() {
+            toast.style.display = 'none';
+            window.removeEventListener('mousedown', hideToast);
+            window.removeEventListener('keydown', hideToast);
+            window.removeEventListener('focus', hideToast, true);
+        }
+
+        window.addEventListener('mousedown', hideToast);
+        window.addEventListener('keydown', hideToast);
+        window.addEventListener('focus', hideToast, true);
+    },
     /**
      * Loads all components required for the droste mixer.
      * @memberof GF_hybrid
@@ -321,7 +337,7 @@ const GF_hybrid = {
         const threadWandHref = "javascript:GF_hybrid.generateSelectedDiagram('thread')";
         const legendWandHref = "javascript:GF_hybrid.generateLegend()";
         let q = new URL(document.documentURI).search.slice(1)
-            .replaceAll(/[^a-zA-Z0-9=,.-]/g,'');
+            .replaceAll(/[^a-zA-Z0-9=,.&-]/g,'');
         if (q === "" || !q.includes('shiftRows')) {
             q = "patchWidth=7&patchHeight=7&footside=---x,---4,---x,---4&tile=5-,-5,5-,-5&headside=-,c,-,c,&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=2&e1=lclc&l2=llctt&f2=rcrc&d2=rrctt&e3=rcrc&l4=llctt&f4=lclc&d4=rrctt&droste2=e12=clcrcl,e13=ct,f42=ctcl,e32=f22=ctcr,e33=f43=lct,e31=f21=lctc,e11=rclcrc,f23=rct,f41=rctc,e10=tc,f20=tcl,e30=f40=tcr"
         }
@@ -330,13 +346,14 @@ const GF_hybrid = {
         container.insertAdjacentHTML('beforeend',`
             <p>
                 Assign tweaked stitch <button onclick="GF_hybrid.assignToAll()">to all</button>
-                <button onclick="alert('not yet implemented')" id="ignored">to ignored</button>
+                <button onclick="GF_hybrid.showToast('Assign to ignored is not yet implemented')" id="ignored">to ignored</button>
                 or click a stich in the pair diagram.
                 <a href="?${q}" id="selfRef" style="display:none;">Updated pattern</a>
             </p>
             <p>
                 <label>Droste step number: ${twister("droste")}</label>
             </p>
+            <div id="toast"></div>
         `);
         GF_panel.load({caption: prefixedTwister("pair"), id: "pair_panel", wandHref: pairWandHref, controls: ["resize"], parent: container});
         GF_panel.load({caption: prefixedTwister("thread"), id: "thread_panel", wandHref: threadWandHref, controls: ["resize", "color"], parent: container});
@@ -474,33 +491,38 @@ const GF_hybrid = {
     },
     assignToAll() {
         const stepValue = document.getElementById('pairStep').value * 1;
+        const stitchValue = document.getElementById('basicStitchInput').value;
+        const stitchTitles = Array.from(document.getElementById('pair_panel')
+            .getElementsByTagName('title')
+        );
         if (document.getElementById('drosteStitches').value.trim() !== '') {
-            alert("not implemented for droste applied to basic stitch")
+            this.showToast("Not implemented for droste applied to basic stitch")
+        } else if (stepValue !== 0) {
+            document.getElementById('droste' + stepValue).value =
+                stitchValue; // default for this droste level
+        } else if (!stitchTitles || stitchTitles.length === 0) {
+            this.showToast("No stitches found in the pair diagram")
         } else {
-            const stitchValue = document.getElementById('basicStitchInput').value;
+            document.getElementById('pair_panel').style.backgroundColor = "#f0f0f0"; // TODO share code with markDirty
             const d0 = document.getElementById('droste0');
-            document.getElementById('pair_panel').style.backgroundColor = "#f3f3f3"; // TODO share code with markDirty
-            if (stepValue !== 0) {
-                document.getElementById('droste' + stepValue).value =
-                    stitchValue;
-            } else {
-                const params = new URLSearchParams(d0.value);
-                for (const key of Array.from(params.keys())) {
-                    if (/^[a-zA-Z]\d+$/.test(key)) {
-                        params.delete(key);
-                    }
+            const params = new URLSearchParams(d0.value);
+            const regex = /^[a-zA-Z]{1,2}\d+$/;
+            // remove predefined stitches
+            for (const key of Array.from(params.keys())) {
+                if (regex.test(key)) {
+                    params.delete(key);
                 }
-                Array.from(document.getElementById('pair_panel')
-                    .getElementsByTagName('title')
-                ).forEach(el => {
-                    const [stitch,tag = ''] = el.textContent.toLowerCase().split(/ - /);
-                    if (tag !== '') {
-                        params.set(tag, stitchValue);
-                    }
-                });
-                d0.value = Array.from(params).map(([k, v]) => `${k}=${v}`).join('&');
-                console.log("---------"+d0.value);
             }
+            // add stitches with ID-s from diagram
+            stitchTitles.forEach(el => {
+                const [stitch,tag = ''] = el.textContent.toLowerCase().split(/ - /);
+                if (tag !== '') {
+                    params.set(tag, stitchValue);
+                }
+            });
+            d0.value = Array.from(params).map(([k, v]) => `${k}=${v}`).join('&');
+            console.log("---------"+d0.value);
+
         }
     }
 }
