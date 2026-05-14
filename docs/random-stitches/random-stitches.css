@@ -1,8 +1,8 @@
 
 /* table in stitch-generator/index.md */
 input[type="number"] { width: 3em; }
-p:has(> input:first-child), p:has(> #between:first-child) {
-    text-indent: -5em;
-    padding-left: 5em;
+p:has(> input:first-child) {
+    text-indent: -4em;
+    padding-left: 4em;
     white-space: normal;
 }
