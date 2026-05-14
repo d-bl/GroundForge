@@ -97,7 +97,6 @@ const GF_stitches = {
 
     setRandomStitch() {
         /* genRandomStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore,  maxTwistsAfter)   */
-        if (typeof GF_Random.genRandomStitch !== "function") return
         let s = GF_Random.genRandomStitch(4, 1, 1, 1).toLowerCase()
         GF_stitches.setStitch(s)
         // TODO dirty dependency and not very unique/meaningful function names
