@@ -16,41 +16,41 @@ const GF_hybrid = {
     snow4:[
         // screenshots taken at 50% zoom level
         // ndb: patterns from "naar de bron" by Nora Andries
-        ['ndb-9Z.png','rclrcr','x0=cl,x1=llclcr,x2=llclcrclcll,x3=crclcrcl,x4=clcrll,x5=c','x00=x70=c,x80=x81=x90=x91=lrt '],
-        ['ndb-10N.png','clclrcrclr','x0=x7=c,x1=rclcr,x2=crc,x3=rctc,x4=ctcl,x5=clcr,x6=crcl,x8=x9=tt','x00=,x70=c,x80=x81=x90=x91=tt '],
-        ['spider-1-ring.png','clrclr','x1=x2=ctctc,x4=x5=tt'],
-        ['spider-2-rings.png','clrclr','x1=ctcrctc,x2=ctclctc,x4=x5=tt'],
-        ['spider-3-rings.png','clrcclrclr','x3=ctcctc,x8=x9=tt','x33=ctcctc,x80=x81=x90=x91=tt']
+        ['ndb-9Z.png',        'RCLRCR','X0=CL,X1=LLCLCR,X2=LLCLCRCLCLL,X3=CRCLCRCL,X4=CLCRLL,X5=C','X00=X70=C,X80=X81=X90=X91=LRT '],
+        ['ndb-10N.png',       'ClClRCRClR','X0=X7=C,X1=RClCR,X2=CRC,X3=RCTC,X4=CTCl,X5=ClCR,X6=CRCl,X8=X9=TT','X00=,X70=C,X80=X81=X90=X91=TT '],
+        ['spider-1-ring.png', 'ClRClR','X1=X2=CTCTC,X4=X5=TT'],
+        ['spider-2-rings.png','ClRClR','X1=CTCRCTC,X2=CTClCTC,X4=X5=TT'],
+        ['spider-3-rings.png','ClRCClRClR','X3=CTCCTC,X8=X9=TT','X33=CTCCTC,X80=X81=X90=X91=TT']
     ],
     snow3: [
-        ['123-a',   'rcrcrc','crc,crclctc,ctcrc,rcl,c,c'],
-        ['123-b',   'lclclc','rcl,ctc,crcllc,crrclcr,ctc,cl'],
-        ['132-a',   'crcrc','ctc,ctc,ctc,ctc,ctc'],
-        ['312-a',   'lclc','tctc,rctcl,ctcl,ctct'],
-        ['321-a',   'lclc','tc,rclcrc,clcrcl,ct'],
-        ['321-b',   'rcrc','tcr,lctc,ctcr,lct'],
-        ['321-c',   'rcrc','tcl,lctc,ctcr,rct'],
-        ['321-d',   'rcrc','t,lctc,ctcr,ctct'],
-        ['126453-a','clclc','c,ctctc,ctctc,ctctc,c'],
-        ['153426-a','lclclc','t,rc,ctc,rclcr,ctcl,ct'],
-        ['154326-a','lclc','t,rctc,ctctcl,ctct'],
-        ['156423-a','crcrc','cr,crcl,clcrclcr,rcrcl,c'],
-        ['234561-a','lclclc','cr,crcl,clcr,crcl,clcr,c'],
-        ['263451-a','crcrc','cr,crcl,clcr,crcl,cl'],
-        ['321546-a','clclc','cl,ctcl,crcrcr,rcr,c'],
-        ['321654-a','clclclc','lc,crc,clcrc,clcr,c,crc,cl'],
-        ['321654-b','crcrc','cr,ctcr,clclc,lcl,c'],
-        ['354612-a','rcrcrc','ctct,ct,ct,ct,cl,ctc'],
-        ['426153-a','rcrc','lc,crclclc,crcrclc,cr'],
-        ['426153-b','rcrcrc','cr,ctcl,ctcr,ctcl,ctc,c'],
-        ['456123-a','rcrc','r,lrc,ctcr,lct'],
-        ['456123-b','rcrcrcrc','c,ctc,rclc,ctc,rc,rcl,ctc,c'],
-        ['462513-a','lclc','rc,clcrc,clctc,rcl'],
-        ['564312-a','rcrc','lcrc,clcrc,clcrc,clcr'],
-        ['563412-a','crcrc','c,ctctc,clcr,rctc,c'],
-        ['623451-a','lclclclc','r,c,crc,ctc,lcrcl,ctc,crc,cl'],
-        ['623541-a','clclc','ctc,ct,crc,ctc,ctc'],
-        ['623541-b','crcrc','cl,ctctcr,ct,ctc,c']
+        ['123-a',   'RCRCRC','CRC,CRCLCTC,CTCRC,RCL,C,C'],
+        ['123-b',   'LCLCLC','RCL,CTC,CRCLLC,CRRCLCR,CTC,CL'],
+        ['132-a',   'CRCRC','CTC,CTC,CTC,CTC,CTC'],
+        ['312-a',   'LCLC','TCTC,RCTCL,CTCL,CTCT'],
+        ['321-a',   'LCLC','TC,RCLCRC,CLCRCL,CT'],
+        ['321-b',   'RCRC','TCR,LCTC,CTCR,LCT'],
+        ['321-c',   'RCRC','TCL,LCTC,CTCR,RCT'],
+        ['321-d',   'RCRC','T,LCTC,CTCR,CTCT'],
+        ['126453-a','CLCLC','C,CTCTC,CTCTC,CTCTC,C'],
+        ['153426-a','LCLCLC','T,RC,CTC,RCLCR,CTCL,CT'],
+        ['154326-a','LCLC','T,RCTC,CTCTCL,CTCT'],
+        ['156423-a','CRCRC','CR,CRCL,CLCRCLCR,RCRCL,C'],
+        ['234561-a','LCLCLC','CR,CRCL,CLCR,CRCL,CLCR,C'],
+        ['263451-a','CRCRC','CR,CRCL,CLCR,CRCL,CL'],
+        ['321546-a','CLCLC','CL,CTCL,CRCRCR,RCR,C'],
+        ['321654-a','CLCLCLC','LC,CRC,CLCRC,CLCR,C,CRC,CL'],
+        ['321654-b','CRCRC','CR,CTCR,CLCLC,LCL,C'],
+        ['354612-a','RCRCRC','CTCT,CT,CT,CT,CL,CTC'],
+        ['426153-a','RCRC','LC,CRCLCLC,CRCRCLC,CR'],
+        ['426153-b','RCRCRC','CR,CTCL,CTCR,CTCL,CTC,C'],
+        ['456123-a','RCRC','R,LRC,CTCR,LCT'],
+        ['456123-b','RCRCRCRC','C,CTC,RCLC,CTC,RC,RCL,CTC,C'],
+        ['462513-a','LCLC','RC,CLCRC,CLCTC,RCL'],
+        ['564312-a','RCRC','LCRC,CLCRC,CLCRC,CLCR'],
+        ['563412-a','CRCRC','C,CTCTC,CLCR,RCTC,C'],
+        ['623451-a','LCLCLCLC','R,C,CRC,CTC,LCRCL,CTC,CRC,CL'],
+        ['623541-a','CLCLC','CTC,CT,CRC,CTC,CTC'],
+        ['623541-b','CRCRC','CL,CTCTCR,CT,CTC,C']
     ],
     lastValidBasicStitchValue: '',
     lastValidDrosteOnBasicValue: '',
@@ -421,7 +421,7 @@ const GF_hybrid = {
             <label>Basic stitch:
                 <input type="text" 
                         id="basicStitchInput"
-                        value="lclc"
+                        value="LCLC"
                         placeholder="Type ? for info"
                         onKeyUp="GF_hybrid.fixBasicStitchValue(this,document.getElementById('drosteStitches'))"
                 />
@@ -430,7 +430,7 @@ const GF_hybrid = {
             <label>Droste applied to basic stitch:
                 <input type="text"
                         id="drosteStitches"
-                        value="tc,rclcrc,clcrcl,ct"
+                        value="TC,RCLCRC,CLCRCL,CT"
                         placeholder="Type ? for info"
                         onkeyup="GF_hybrid.fixDrosteOnBasic(document.getElementById('basicStitchInput'), this)"
                 />
