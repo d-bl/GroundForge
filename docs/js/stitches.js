@@ -109,6 +109,18 @@ function replaceIgnored(kv, replacement) {
     }
     return kv;
 }
+function setAllRandomStitches() {
+    let q = getQ().split('&').map((kv => replaceRandom(kv))).join('&')
+    show(q)
+}
+function replaceRandom(kv) {
+    if (/[a-z][0-9]+=/.test(kv)) {
+        let replacement = GF_Random.genRandomStitch(4,1,1,1)
+        return kv.replace(/=[ctrl]/, replacement);
+    }
+    return kv;
+}
+
 function whiting (kv) {
     var k = kv.trim().replace(/[^a-zA-Z0-9]/g,"")
     if (!kv.trim().startsWith("whiting")) return false
