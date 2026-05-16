@@ -52,63 +52,86 @@ const GF_hybrid = {
         ['623541-a','CLCLC','CTC,CT,CRC,CTC,CTC'],
         ['623541-b','CRCRC','CL,CTCTCR,CT,CTC,C']
     ],
-    lastValidBasicStitchValue: '',
-    lastValidDrosteOnBasicValue: '',
-    fixBasicStitchValue(basicStitchEl, drostOnBasicEl) {
-        let value = basicStitchEl.value.toLowerCase().trim();
-        const hasDroste = drostOnBasicEl && drostOnBasicEl.value.trim() !== '';
-        const regexp = hasDroste ? /^[tclr]*$/ : /^(-|([tclr])*)$/;
-        if (!regexp.test(value)) {
-            basicStitchEl.value = this.lastValidBasicStitchValue;
-            const pos1 = basicStitchEl.selectionStart - 1;
-            const pos2 = basicStitchEl.selectionEnd - 1;
-            basicStitchEl.setSelectionRange(pos1, pos2);
-            this.showToast(`
+    basicStitch: {
+        lastValid: 'LCLC',
+        htmlString() {
+            return `
+            <label>Basic stitch:
+                <input type="text" id="basicStitchInput"
+                        value="${this.lastValid}" placeholder="Type ? for info"
+                        oninput="GF_hybrid.basicStitch.fixInput(this,document.getElementById('drosteStitches'))"
+                />
+             </label>`
+        },
+        msg: `
             Basic stitch only allows the characters  T, C, L, R.
             When "Droste applied to basic stitch" has content,
             T is replaced with LR for proper flipping.
             Without droste, just a "-" is also allowed to drop stitches. 
-            `);
-            return;
-        }
-        if (hasDroste) {
-            value = value.replace(/[tT]/g, 'LR');
-        }
-        basicStitchEl.value = value.toUpperCase()
-        GF_hybrid.lastValidBasicStitchValue = value;
+            `,
+        fixInput(basicStitchEl, drostOnBasicEl) {
+            let value = basicStitchEl.value.toLowerCase().trim();
+            const hasDroste = drostOnBasicEl && drostOnBasicEl.value.trim() !== '';
+            const regexp = hasDroste ? /^[tclr]*$/ : /^(-|([tclr])*)$/;
+            if (!regexp.test(value)) {
+                basicStitchEl.value = this.lastValid;
+                const pos1 = basicStitchEl.selectionStart - 1;
+                const pos2 = basicStitchEl.selectionEnd - 1;
+                basicStitchEl.setSelectionRange(pos1, pos2);
+                GF_hybrid.showToast(this.msg);
+                return;
+            }
+            if (hasDroste) {
+                value = value.replace(/[tT]/g, 'LR');
+            }
+            basicStitchEl.value = value.toUpperCase()
+            this.lastValid = value;
+        },
     },
-    fixDrosteOnBasic(basicStitchEl, drosteOnBasicEl) {
-        function isValid(str) {
-            if(str === '') return true
-            const validChars = /[^x0-9=ctlr,.;]/i
-            const repeatedSeparator = /[,.;][,.;]/;
-            const groupRegex = /^(x(([0-9]+)=?)?)?[ctlr]*$/i;
-            if (validChars.test(str)) return false;
-            if (repeatedSeparator.test(str)) return false;
-            const stitches = str.split(/[,.;]/);
-            if (stitches.length > drosteOnBasicEl.value.length) return false;
-            return stitches.every(g => groupRegex.test(g));
-        }
-        const value = drosteOnBasicEl.value.trim().toUpperCase();
-        drosteOnBasicEl.value = value;
-        if (isValid(value)) {
-            GF_hybrid.lastValidDrosteOnBasicValue = value;
-            drosteOnBasicEl.value = value;
-        } else {
-            drosteOnBasicEl.value = GF_hybrid.lastValidDrosteOnBasicValue;
-            const pos1 = drosteOnBasicEl.selectionStart - 1;
-            const pos2 = drosteOnBasicEl.selectionEnd - 1;
-            drosteOnBasicEl.setSelectionRange(pos1, pos2);
-            GF_hybrid.showToast(`
+    drosteOnBasicStitch: {
+        lastValid: 'TC,RCLCRC,CLCRCL,CT',
+        htmlString() {
+            return `
+            <label>Droste applied to basic stitch:
+                <input type="text" id="drosteStitches"
+                        value="${this.lastValid}" placeholder="Type ? for info"
+                        oninput="GF_hybrid.drosteOnBasicStitch.fixInput(document.getElementById('basicStitchInput'), this)"
+                />
+            </label>`
+        },
+        msg: `
             "Droste applied to basic stitch" needs either numbered stitches,
              or as many stitches as characters in "Basic stitch".
              Allowed separators between stitches: ";.," 
              Example of a numbered stitch: "X12=CTCT".
              Default for not specified stitches is "CTC".
-            `);
-        }
+            `,
+        fixInput(basicStitchEl, drosteOnBasicEl) {
+            function isValid(str) {
+                if(str === '') return true
+                const validChars = /[^x0-9=ctlr,.;]/i
+                const repeatedSeparator = /[,.;][,.;]/;
+                const groupRegex = /^(x(([0-9]+)=?)?)?[ctlr]*$/i;
+                if (validChars.test(str)) return false;
+                if (repeatedSeparator.test(str)) return false;
+                const stitches = str.split(/[,.;]/);
+                if (stitches.length > basicStitchEl.value.length) return false;
+                return stitches.every(g => groupRegex.test(g));
+            }
+            const value = drosteOnBasicEl.value.trim().toUpperCase();
+            drosteOnBasicEl.value = value;
+            if (isValid(value)) {
+                GF_hybrid.drosteOnBasicStitch.lastValid = value;
+                drosteOnBasicEl.value = value;
+            } else {
+                drosteOnBasicEl.value = GF_hybrid.drosteOnBasicStitch.lastValid;
+                const pos1 = drosteOnBasicEl.selectionStart - 1;
+                const pos2 = drosteOnBasicEl.selectionEnd - 1;
+                drosteOnBasicEl.setSelectionRange(pos1, pos2);
+                GF_hybrid.showToast(this.msg);
+            }
+        },
     },
-
     generateSelectedDiagram(diagramType) {
         const drosteIndex = parseInt(document.getElementById(`${diagramType}Step`).value, 10);
         const steps = [];
@@ -418,31 +441,15 @@ const GF_hybrid = {
         GF_panel.load({caption: "specifications", id: "specs", controls: ["resize"], size:{width: '100%', height: '300px'}, parent: container});
         document.getElementById('tweak').insertAdjacentHTML('beforeend',`
             <p>
-            <label>Basic stitch:
-                <input type="text" 
-                        id="basicStitchInput"
-                        value="LCLC"
-                        placeholder="Type ? for info"
-                        onKeyUp="GF_hybrid.fixBasicStitchValue(this,document.getElementById('drosteStitches'))"
-                />
-            </label>
-            <br>
-            <label>Droste applied to basic stitch:
-                <input type="text"
-                        id="drosteStitches"
-                        value="TC,RCLCRC,CLCRCL,CT"
-                        placeholder="Type ? for info"
-                        onkeyup="GF_hybrid.fixDrosteOnBasic(document.getElementById('basicStitchInput'), this)"
-                />
-            </label>
-            </p><p>Flip:
+            ${this.basicStitch.htmlString()} <br>
+            ${this.drosteOnBasicStitch.htmlString()}
+            </p>
+            <p>Flip:
             <button onclick="GF_hybrid.flip('b2d')">&harr;</button>
             <button onclick="GF_hybrid.flip('b2p')">&varr;</button>
             <button onclick="GF_hybrid.flip('b2d');GF_hybrid.flip('b2p')">both</button>
             </p>
         `);
-        this.lastValidBasicStitchValue = document.getElementById('basicStitchInput').value.trim();
-        this.lastValidDrosteOnBasicValue = document.getElementById('drosteStitches').value.trim();
         const params = new URLSearchParams(q);
         document.getElementById('tweak').parentNode.style = `width: calc(100% - 7px)`;
         document.getElementById('pairStep').value = params.get('pairStep') || 0;
