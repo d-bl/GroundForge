@@ -115,8 +115,7 @@ function setAllRandomStitches() {
 }
 function replaceRandom(kv) {
     if (/[a-z][0-9]+=/.test(kv)) {
-        let replacement = GF_Random.genRandomStitch(4,1,1,1)
-        return kv.replace(/=[ctrl]/, replacement);
+        kv = kv.split('=')[0] + "=" + GF_Random.genRandomStitch(4,1,1,1).toLowerCase()
     }
     return kv;
 }
