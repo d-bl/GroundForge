@@ -110,10 +110,10 @@ function replaceIgnored(kv, replacement) {
     return kv;
 }
 function setAllRandomStitches() {
-    let q = getQ().split('&').map((kv => replaceRandom(kv))).join('&')
+    let q = getQ().split('&').map((kv => replaceAllRandom(kv))).join('&')
     show(q)
 }
-function replaceRandom(kv) {
+function replaceAllRandom(kv) {
     if (/[a-z][0-9]+=/.test(kv)) {
         kv = kv.split('=')[0] + "=" + GF_Random.genRandomStitch(4,1,1,1).toLowerCase()
     }
