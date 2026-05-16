@@ -99,7 +99,7 @@ const GF_stitches = {
         /* genRandomStitch(maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore,  maxTwistsAfter)   */
         let s = GF_Random.genRandomStitch(4, 1, 1, 1).toLowerCase()
         GF_stitches.setStitch(s)
-        // TODO dirty dependency and not very unique/meaningful function names
+        // TODO the next function calls depend on the presence of nets.js, the name generate is too general
         if (typeof stitchChanged === "function") {
             stitchChanged();
         }
