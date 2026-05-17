@@ -23,43 +23,45 @@ const GF_hybrid = {
         ['spider-3-rings.png','ClRCClRClR','X3=CTCCTC,X8=X9=TT','X33=CTCCTC,X80=X81=X90=X91=TT']
     ],
     snow3: [
-        ['123-a',   'RCRCRC','CRC,CRCLCTC,CTCRC,RCL,C,C'],
-        ['123-b',   'LCLCLC','RCL,CTC,CRCLLC,CRRCLCR,CTC,CL'],
-        ['132-a',   'CRCRC','CTC,CTC,CTC,CTC,CTC'],
-        ['312-a',   'LCLC','TCTC,RCTCL,CTCL,CTCT'],
-        ['321-a',   'LCLC','TC,RCLCRC,CLCRCL,CT'],
-        ['321-b',   'RCRC','TCR,LCTC,CTCR,LCT'],
-        ['321-c',   'RCRC','TCL,LCTC,CTCR,RCT'],
-        ['321-d',   'RCRC','T,LCTC,CTCR,CTCT'],
-        ['126453-a','CLCLC','C,CTCTC,CTCTC,CTCTC,C'],
-        ['153426-a','LCLCLC','T,RC,CTC,RCLCR,CTCL,CT'],
-        ['154326-a','LCLC','T,RCTC,CTCTCL,CTCT'],
-        ['156423-a','CRCRC','CR,CRCL,CLCRCLCR,RCRCL,C'],
-        ['234561-a','LCLCLC','CR,CRCL,CLCR,CRCL,CLCR,C'],
-        ['263451-a','CRCRC','CR,CRCL,CLCR,CRCL,CL'],
-        ['321546-a','CLCLC','CL,CTCL,CRCRCR,RCR,C'],
-        ['321654-a','CLCLCLC','LC,CRC,CLCRC,CLCR,C,CRC,CL'],
-        ['321654-b','CRCRC','CR,CTCR,CLCLC,LCL,C'],
-        ['354612-a','RCRCRC','CTCT,CT,CT,CT,CL,CTC'],
-        ['426153-a','RCRC','LC,CRCLCLC,CRCRCLC,CR'],
-        ['426153-b','RCRCRC','CR,CTCL,CTCR,CTCL,CTC,C'],
-        ['456123-a','RCRC','R,LRC,CTCR,LCT'],
-        ['456123-b','RCRCRCRC','C,CTC,RCLC,CTC,RC,RCL,CTC,C'],
-        ['462513-a','LCLC','RC,CLCRC,CLCTC,RCL'],
-        ['564312-a','RCRC','LCRC,CLCRC,CLCRC,CLCR'],
-        ['563412-a','CRCRC','C,CTCTC,CLCR,RCTC,C'],
-        ['623451-a','LCLCLCLC','R,C,CRC,CTC,LCRCL,CTC,CRC,CL'],
-        ['623541-a','CLCLC','CTC,CT,CRC,CTC,CTC'],
-        ['623541-b','CRCRC','CL,CTCTCR,CT,CTC,C']
+        ['123-a.png',   'RCRCRC','CRC,CRCLCTC,CTCRC,RCL,C,C'],
+        ['123-b.png',   'LCLCLC','RCL,CTC,CRCLLC,CRRCLCR,CTC,CL'],
+        ['132-a.png',   'CRCRC','CTC,CTC,CTC,CTC,CTC'],
+        ['312-a.png',   'LCLC','TCTC,RCTCL,CTCL,CTCT'],
+        ['321-a.png',   'LCLC','TC,RCLCRC,CLCRCL,CT'],
+        ['321-b.png',   'RCRC','TCR,LCTC,CTCR,LCT'],
+        ['321-c.png',   'RCRC','TCL,LCTC,CTCR,RCT'],
+        ['321-d.png',   'RCRC','T,LCTC,CTCR,CTCT'],
+        ['126453-a.png','CLCLC','C,CTCTC,CTCTC,CTCTC,C'],
+        ['153426-a.png','LCLCLC','T,RC,CTC,RCLCR,CTCL,CT'],
+        ['154326-a.png','LCLC','T,RCTC,CTCTCL,CTCT'],
+        ['156423-a.png','CRCRC','CR,CRCL,CLCRCLCR,RCRCL,C'],
+        ['234561-a.png','LCLCLC','CR,CRCL,CLCR,CRCL,CLCR,C'],
+        ['263451-a.png','CRCRC','CR,CRCL,CLCR,CRCL,CL'],
+        ['321546-a.png','CLCLC','CL,CTCL,CRCRCR,RCR,C'],
+        ['321654-a.png','CLCLCLC','LC,CRC,CLCRC,CLCR,C,CRC,CL'],
+        ['321654-b.png','CRCRC','CR,CTCR,CLCLC,LCL,C'],
+        ['354612-a.png','RCRCRC','CTCT,CT,CT,CT,CL,CTC'],
+        ['426153-a.png','RCRC','LC,CRCLCLC,CRCRCLC,CR'],
+        ['426153-b.png','RCRCRC','CR,CTCL,CTCR,CTCL,CTC,C'],
+        ['456123-a.png','RCRC','R,LRC,CTCR,LCT'],
+        ['456123-b.png','RCRCRCRC','C,CTC,RCLC,CTC,RC,RCL,CTC,C'],
+        ['462513-a.png','LCLC','RC,CLCRC,CLCTC,RCL'],
+        ['564312-a.png','RCRC','LCRC,CLCRC,CLCRC,CLCR'],
+        ['563412-a.png','CRCRC','C,CTCTC,CLCR,RCTC,C'],
+        ['623451-a.png','LCLCLCLC','R,C,CRC,CTC,LCRCL,CTC,CRC,CL'],
+        ['623541-a.png','CLCLC','CTC,CT,CRC,CTC,CTC'],
+        ['623541-b.png','CRCRC','CL,CTCTCR,CT,CTC,C']
     ],
     basicStitch: {
+        id: 'basicStitchInput',
         lastValid: 'LCLC',
         htmlString() {
+            const other = `document.getElementById('${GF_hybrid.drosteOnBasicStitch.id}`;
             return `
             <label>Basic stitch:
-                <input type="text" id="basicStitchInput"
+                <input type="text" id="${this.id}"
                         value="${this.lastValid}" placeholder="Type ? for info"
-                        oninput="GF_hybrid.basicStitch.fixInput(this,document.getElementById('drosteStitches'))"
+                        oninput="GF_hybrid.basicStitch.fixInput(this,${other}'))"
                 />
              </label>`
         },
@@ -89,13 +91,15 @@ const GF_hybrid = {
         },
     },
     drosteOnBasicStitch: {
+        id: 'drosteStitches',
         lastValid: 'TC,RCLCRC,CLCRCL,CT',
         htmlString() {
+            const other = `document.getElementById('${GF_hybrid.basicStitch.id}`;
             return `
             <label>Droste applied to basic stitch:
-                <input type="text" id="drosteStitches"
+                <input type="text" id="${this.id}"
                         value="${this.lastValid}" placeholder="Type ? for info"
-                        oninput="GF_hybrid.drosteOnBasicStitch.fixInput(document.getElementById('basicStitchInput'), this)"
+                        oninput="GF_hybrid.drosteOnBasicStitch.fixInput(${other}'), this)"
                 />
             </label>`
         },
@@ -149,7 +153,7 @@ const GF_hybrid = {
     setStitchEvents() {
         function stitchHandler(event) {
             const newStitchValue = document.getElementById('basicStitchInput').value;
-            const drosteValue = document.getElementById('drosteStitches').value;
+            const drosteValue = document.getElementById(GF_hybrid.drosteOnBasicStitch.id).value;
             if (newStitchValue === '') return;
 
             const selectedText = event.currentTarget.textContent;
@@ -236,7 +240,7 @@ const GF_hybrid = {
             }
         }
         const basicEl = document.getElementById('basicStitchInput');
-        const drosteEl = document.getElementById('drosteStitches');
+        const drosteEl = document.getElementById(GF_hybrid.drosteOnBasicStitch.id);
         const basicValue = basicEl.value.toLowerCase()
             .replaceAll(/[^crlt]/g, '')
         if (drosteEl && drosteEl.value.trim()  !== '') {
@@ -361,9 +365,21 @@ const GF_hybrid = {
         console.log('================ Loading panels ================');
         GF_stitches.setStitch = function(stitch) {
             document.getElementById('basicStitchInput').value = stitch;
-            document.getElementById('drosteStitches').value = "";
+            document.getElementById(GF_hybrid.drosteOnBasicStitch.id).value = "";
             GF_hybrid.setColorCode();
         }
+
+        function createSnowGallery(recipes, containerId, imgPath) {
+            const container = document.getElementById(containerId);
+            for (let [img, basicStitch, droste1, droste2] of recipes) {
+                container.insertAdjacentHTML('beforeend', `
+                    <a href="javascript:GF_hybrid.setRecipe('${basicStitch}','${droste1}','${droste2}')">
+                    <img src="${GF_hybrid.content_home}/${imgPath}/${img}" alt="${img}">
+                    </a>
+                `);
+            }
+        }
+
         function galleryPanels() {
             const galleries = {
                 'pattern': {caption: 'Pattern gallery', height: '150px'},
@@ -387,24 +403,9 @@ const GF_hybrid = {
                 GF_panel.load({caption: chooser, id: key1, controls: ["resize"], size: sizeOptions, parent: container});
                 document.getElementById(key1).parentNode.style.display = 'none';
             }
-            document.getElementById('snow4').parentNode.style.display = 'block';
             GF_tiles.loadGallery({jsAction: 'GF_hybrid.setPattern(this);return false;', containerId: 'pattern'});
-            const snow3Gallery = document.getElementById('snow3')
-            for(let [img,basicStitch,droste] of GF_hybrid.snow3){
-                snow3Gallery.insertAdjacentHTML('beforeend', `
-                    <a href="javascript:GF_hybrid.setRecipe('${basicStitch}','${droste}')">
-                    <img src="${GF_hybrid.content_home}/mix4snow/${img}.png" alt="${img}">
-                    </a>
-                `);
-            }
-            const snow4Gallery = document.getElementById('snow4')
-            for(let [img,basicStitch,droste1, droste2] of GF_hybrid.snow4){
-                snow4Gallery.insertAdjacentHTML('beforeend', `
-                    <a href="javascript:GF_hybrid.setRecipe('${basicStitch}','${droste1}','${droste2}')">
-                    <img src="${GF_hybrid.content_home}/images/4-8-legs/${img}" alt="${img}">
-                    </a> 
-                `);
-            }
+            createSnowGallery(GF_hybrid.snow3, 'snow3', `mix4snow`);
+            createSnowGallery(GF_hybrid.snow4, 'snow4', `images/4-8-legs`);
             GF_stitches.loadStitchExamples("#stitches");
         }
         function twister(type) {
@@ -516,7 +517,7 @@ const GF_hybrid = {
     },
     setRecipe(basicStitch, drosteStitches) {
         document.getElementById('basicStitchInput').value = basicStitch;
-        document.getElementById('drosteStitches').value = drosteStitches;
+        document.getElementById(GF_hybrid.drosteOnBasicStitch.id).value = drosteStitches;
         // TODO: second step of droste stitches, requires more intelligence in resetting previously assigned stitches
     },
     /**
@@ -525,7 +526,7 @@ const GF_hybrid = {
      * @param {!HTMLElement} container receives the generated components
      */
     loadDroste(container){
-        this.loadSimple(container, 1, ['drosteStitches', 'pairStep', 'threadStep', 'snow3', 'snow4'] );
+        this.loadSimple(container, 1, [GF_hybrid.drosteOnBasicStitch.id, 'pairStep', 'threadStep', 'snow3', 'snow4'] );
     },
     /**
      * Wrapper for loadSimple. Initial step is 0 and specs panel is initially hidden, shown when step becomes larger.
@@ -533,7 +534,7 @@ const GF_hybrid = {
      * @param {!HTMLElement} container receives the generated components
      * */
     loadStitches(container){
-        this.loadSimple(container, 0, ['drosteStitches', 'pairStep', 'threadStep', 'snow3',  'snow4', 'drosteStep', 'specs'] );
+        this.loadSimple(container, 0, [GF_hybrid.drosteOnBasicStitch.id, 'pairStep', 'threadStep', 'snow3',  'snow4', 'drosteStep', 'specs'] );
     },
     /**
      * Wrapper for load. Hides the third step field
@@ -542,6 +543,7 @@ const GF_hybrid = {
      * */
     loadDrosteMixer(container){
         this.load(container);
+        document.getElementById('snow4').parentNode.style.display = 'block';
         document.getElementById('drosteStep').parentNode.style.display = 'none';
     },
     /**
@@ -571,7 +573,7 @@ const GF_hybrid = {
         const stitchTitles = Array.from(document.getElementById('pair_panel')
             .getElementsByTagName('title')
         );
-        if (document.getElementById('drosteStitches').value.trim() !== '') {
+        if (document.getElementById(GF_hybrid.drosteOnBasicStitch.id).value.trim() !== '') {
             this.showToast("Assign to all is not implemented for droste applied to basic stitch")
         } else if (stepValue !== 0) {
             document.getElementById('droste' + stepValue).value =
