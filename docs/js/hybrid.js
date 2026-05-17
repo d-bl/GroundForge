@@ -190,7 +190,7 @@ const GF_hybrid = {
             if (drosteValue.trim() === '') {
                 return;
             }
-            let extraSteps = ''
+            let extraSteps = '\n'
             if (drosteValue.includes('=')) {
                 const count = newStitchValue.replaceAll(/t/g, 'lr').length;
                 for (let i = 0; i < count; i++) {
@@ -456,13 +456,17 @@ const GF_hybrid = {
         document.getElementById('pairStep').value = params.get('pairStep') || 0;
         document.getElementById('threadStep').value = params.get('threadStep') || 1;
         const specsPanelContent = document.getElementById('specs');
+        function drosteTextField(level) {
+            const paramValue = (params.get('droste'+(level+1)) || '').replaceAll(',','\n') + '\n' || '';
+            return `<textarea id="droste${level}" spellcheck="false" placeholder="droste step ${level}, default all: ctc">${paramValue}</textarea>`
+        }
         specsPanelContent.innerHTML = `
           <a href="javascript:['droste1','droste2','droste3'].forEach(GF_panel.cleanupStitches)" title="Reduce panel content"><img src="${this.content_home}/images/broom.png"></a>
           Specs collected from URL and clicks:
           <input type="text" id="droste0" value="${q}">
-          <textarea id="droste1" spellcheck="false" placeholder="droste step 1, default all: ctc">${(params.get('droste2')||'').replaceAll(',','\n') || ''}</textarea>
-          <textarea id="droste2" spellcheck="false" placeholder="droste step 2, default all: ctc">${(params.get('droste3')||'').replaceAll(',','\n') || ''}</textarea>
-          <textarea id="droste3" spellcheck="false" placeholder="droste step 3, default all: ctc">${(params.get('droste4')||'').replaceAll(',','\n') || ''}</textarea>
+          ${drosteTextField(1)}
+          ${drosteTextField(2)}
+          ${drosteTextField(3)}
         `;
         specsPanelContent.parentNode.style.display = "block";
         specsPanelContent.style.width = "100%";
