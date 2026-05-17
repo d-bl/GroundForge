@@ -16,11 +16,11 @@ const GF_hybrid = {
     snow4:[
         // screenshots taken at 50% zoom level
         // ndb: patterns from "naar de bron" by Nora Andries
-        ['ndb-9Z.png',        'RCLRCR','X0=CL,X1=LLCLCR,X2=LLCLCRCLCLL,X3=CRCLCRCL,X4=CLCRLL,X5=C','X00=X70=C,X80=X81=X90=X91=LRT '],
-        ['ndb-10N.png',       'ClClRCRClR','X0=X7=C,X1=RClCR,X2=CRC,X3=RCTC,X4=CTCl,X5=ClCR,X6=CRCl,X8=X9=TT','X00=,X70=C,X80=X81=X90=X91=TT '],
-        ['spider-1-ring.png', 'ClRClR','X1=X2=CTCTC,X4=X5=TT'],
-        ['spider-2-rings.png','ClRClR','X1=CTCRCTC,X2=CTClCTC,X4=X5=TT'],
-        ['spider-3-rings.png','ClRCClRClR','X3=CTCCTC,X8=X9=TT','X33=CTCCTC,X80=X81=X90=X91=TT']
+        ['ndb-9Z.png','RCLRCR','X0=CL,X1=LLCLCR,X2=LLCLCRCLCLL,X3=CRCLCRCL,X4=CLCRLL,X5=C','X00=X70=C,X80=X81=X90=X91=LRT '],
+        ['ndb-10N.png','CLCLRCRCLR','X0=X7=C,X1=RCLCR,X2=CRC,X3=RCTC,X4=CTCL,X5=CLCR,X6=CRCL,X8=X9=TT','X00=,X70=C,X80=X81=X90=X91=TT '],
+        ['spider-1-ring.png','CLRCLR','X1=X2=CTCTC,X4=X5=TT'],
+        ['spider-2-rings.png','CLRCLR','X1=CTCRCTC,X2=CTCLCTC,X4=X5=TT'],
+        ['spider-3-rings.png','CLRCCLRCLR','X3=CTCCTC,X8=X9=TT','X33=CTCCTC,X80=X81=X90=X91=TT']
     ],
     snow3: [
         ['123-a.png',   'RCRCRC','CRC,CRCLCTC,CTCRC,RCL,C,C'],
@@ -199,7 +199,7 @@ const GF_hybrid = {
                     extraSteps += `${selectedStitchId}${i}=`;
                 }
                 extraSteps += 'ctc\n';
-                extraSteps += drosteValue.replaceAll(/x/g, selectedStitchId);
+                extraSteps += drosteValue.replaceAll(/x/gi, selectedStitchId);
             } else {
                 const newDrosteStitches = drosteValue.split(/[,.]/);
                 for (let i = 0; i < newDrosteStitches.length; i++) {
@@ -254,7 +254,7 @@ const GF_hybrid = {
                     const value = kv.replace(/.*=/, '')
                     const keys = kv.replace(/=[^=]*$/, '').split(/=/)
                     for (const key of keys) {
-                        arr[parseInt(key.replace('x', ''))] = value;
+                        arr[parseInt(key.replace(/x/i, ''))] = value;
                     }
                 }
                 const flipped = flip2(arr.join(';'))
@@ -263,7 +263,7 @@ const GF_hybrid = {
                     flipped[i] = `x${i}=${flipped[i]}`;
                 }
                 drosteEl.value = flipped.join(';')
-                    .replace(/x[0-9]+=ctc(;|$)/g,'')
+                    .replace(/x[0-9]+=ctc(;|$)/gi,'')
                     .replace(/;$/,'');
                 basicEl.value = flip2(tLessBasicValue);
             } else {
