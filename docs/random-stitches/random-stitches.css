@@ -1,8 +1,27 @@
 
-/* table in stitch-generator/index.md */
-input[type="number"] { width: 3em; }
-p:has(> input:first-child) {
-    text-indent: -4em;
-    padding-left: 4em;
-    white-space: normal;
+/* buttons, see header.css */
+button, .button {
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    border-radius: 4px;
+    line-height: 1.8em;
 }
+
+/* <a class="button" ..> */
+.button {
+    padding: 4px 6px 2px 6px;
+    margin: 3px;
+}
+/* <button> */
+button {
+    padding: 1px 6px 0 6px;
+    margin: 0 3px 3px 3px;
+    font-size: medium;
+}
+
+input {width: 50px}
