@@ -54,23 +54,26 @@ const GF_hybrid = {
     ],
     basicStitch: {
         id: 'basicStitchInput',
-        lastValid: 'LCLC',
+        lastValid: '',
         htmlString() {
             const other = `document.getElementById('${GF_hybrid.drosteOnBasicStitch.id}`;
             return `
             <label>Basic stitch:
                 <input type="text" id="${this.id}"
-                        value="${this.lastValid}" placeholder="Type ? for info"
+                        value="${this.lastValid}" placeholder="empty=random; type ? for more info"
                         oninput="GF_hybrid.basicStitch.fixInput(this,${other}'))"
                 />
              </label>`
         },
-        msg: `
+        msg() { // TODO adjust to page and droste level
+            return `
             Basic stitch only allows the characters  T, C, L, R.
+            Select examples from a stitches or snow gallery.
             When "Droste applied to basic stitch" has content,
             T is replaced with LR for proper flipping.
             Without droste, just a "-" is also allowed to drop stitches. 
-            `,
+            `
+        },
         fixInput(basicStitchEl, drostOnBasicEl) {
             let value = basicStitchEl.value.toLowerCase().trim();
             const hasDroste = drostOnBasicEl && drostOnBasicEl.value.trim() !== '';
@@ -80,7 +83,7 @@ const GF_hybrid = {
                 const pos1 = basicStitchEl.selectionStart - 1;
                 const pos2 = basicStitchEl.selectionEnd - 1;
                 basicStitchEl.setSelectionRange(pos1, pos2);
-                GF_hybrid.showToast(this.msg);
+                GF_hybrid.showToast(this.msg());
                 return;
             }
             if (hasDroste) {
@@ -92,7 +95,7 @@ const GF_hybrid = {
     },
     drosteOnBasicStitch: {
         id: 'drosteStitches',
-        lastValid: 'TC,RCLCRC,CLCRCL,CT',
+        lastValid: '',
         htmlString() {
             const other = `document.getElementById('${GF_hybrid.basicStitch.id}`;
             return `
@@ -103,13 +106,13 @@ const GF_hybrid = {
                 />
             </label>`
         },
-        msg: `
+        msg() { return `
             "Droste applied to basic stitch" needs either numbered stitches,
              or as many stitches as characters in "Basic stitch".
              Allowed separators between stitches: ";.," 
              Example of a numbered stitch: "X12=CTCT".
              Default for not specified stitches is "CTC".
-            `,
+        `},
         fixInput(basicStitchEl, drosteOnBasicEl) {
             function isValid(str) {
                 if(str === '') return true
@@ -132,7 +135,7 @@ const GF_hybrid = {
                 const pos1 = drosteOnBasicEl.selectionStart - 1;
                 const pos2 = drosteOnBasicEl.selectionEnd - 1;
                 drosteOnBasicEl.setSelectionRange(pos1, pos2);
-                GF_hybrid.showToast(this.msg);
+                GF_hybrid.showToast(this.msg());
             }
         },
     },
@@ -152,9 +155,11 @@ const GF_hybrid = {
     },
     setStitchEvents() {
         function stitchHandler(event) {
-            const newStitchValue = document.getElementById('basicStitchInput').value;
             const drosteValue = document.getElementById(GF_hybrid.drosteOnBasicStitch.id).value;
-            if (newStitchValue === '') return;
+            const newStitchInput = document.getElementById('basicStitchInput').value;
+            const newStitchValue = newStitchInput
+                ? newStitchValue
+                : GF_Random.genRandomStitch(3,2,2,0);
 
             const selectedText = event.currentTarget.textContent;
             const selectedStitchId = selectedText.replace(/.* /, "");
@@ -426,7 +431,7 @@ const GF_hybrid = {
         GF_panel.load({caption: "tweak selected stitch", id: "tweak", size:{width:'98%', height: 'auto'}, parent: container});
         container.insertAdjacentHTML('beforeend',`
             <p>
-                Assign tweaked stitch <button onclick="GF_hybrid.assignToAll()">to all</button>
+                Assign tweaked stitch <button onclick="GF_hybrid.assignToAll()" >to all</button>
                 <button onclick="GF_hybrid.showToast('Assign to ignored is not yet implemented')" id="ignored">to ignored</button>
                 or click a stich in the pair diagram.
                 <a href="?${q}" id="selfRef" style="display:none;">Updated pattern</a>
@@ -579,7 +584,7 @@ const GF_hybrid = {
         );
         if (document.getElementById(GF_hybrid.drosteOnBasicStitch.id).value.trim() !== '') {
             this.showToast("Assign to all is not implemented for droste applied to basic stitch")
-        } else if (stepValue !== 0) {
+        } else if (stepValue !== 0 && stitchValue) {
             document.getElementById('droste' + stepValue).value =
                 stitchValue; // default for this droste level
         } else if (!stitchTitles || stitchTitles.length === 0) {
@@ -599,7 +604,10 @@ const GF_hybrid = {
             stitchTitles.forEach(el => {
                 const [stitch,tag = ''] = el.textContent.toLowerCase().split(/ - /);
                 if (tag !== '') {
-                    params.set(tag, stitchValue);
+                    const newValue = stitchValue
+                        ? stitchValue
+                        : GF_Random.genRandomStitch(3,2,2,0);
+                    params.set(tag, newValue);
                 }
             });
             d0.value = Array.from(params).map(([k, v]) => `${k}=${v}`).join('&');
