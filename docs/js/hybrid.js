@@ -213,15 +213,14 @@ const GF_hybrid = {
                 }
             }
             const drosteId = 'droste' + (drosteIndex + 1);
-            const droste0 = document.getElementById('droste0');
-            const params = new URLSearchParams(droste0.value);
+            const queryField = document.getElementById('droste0');
+            const params = new URLSearchParams(queryField.value);
             params.set(selectedStitchId, newStitchValue);
             params.set("pairStep", document.getElementById('pairStep').value);
             params.set("threadStep", document.getElementById('threadStep').value);
             params.set(drosteId, extraSteps.replaceAll('\n', ',').trim());
-            droste0.value = decodeURIComponent(params.toString());
-            document.getElementById('selfRef').href = '?' + droste0.value
-            document.getElementById('selfRef').style.display = 'inline';
+            queryField.value = decodeURIComponent(params.toString());
+            this.updatePatternLink(queryField.value);
             // last as it may fail when stepLevel is too high for the droste applied to basic stitch
             document.getElementById(drosteId).value += extraSteps + '\n';
         }
@@ -578,6 +577,12 @@ const GF_hybrid = {
         stitchesEl.style.display = 'block'; // make visible, whichever gallery is visible by default
         stitchesEl.getElementsByTagName('select')[0].outerHTML = 'select stitch example'; // no choice for other galleries
     },
+    updatePatternLink(value) {
+        const selRef = document.getElementById('selfRef');
+        selRef.href = '?' + value;
+        selRef.style.display = 'inline';
+        console.log("---------" + value);
+    },
     assignToIgnored() {
         const stepValue = document.getElementById('pairStep').value * 1;
         const stitchValue = document.getElementById('basicStitchInput').value;
@@ -594,7 +599,6 @@ const GF_hybrid = {
         } else if (!regexp.test(queryField.value)) {
             this.showToast("No ignored stitches.")
         } else {
-            document.getElementById('pair_panel').style.backgroundColor = GF_hybrid.dirtyBackGround;
             if (stitchValue) {
                 queryField.value = queryField.value.replace(regexp, `$1$2${stitchValue}$3`);
             } else {
@@ -603,6 +607,8 @@ const GF_hybrid = {
                     return `${sep}${keyEq}${rnd}${tail}`;
                 });
             }
+            document.getElementById('pair_panel').style.backgroundColor = GF_hybrid.dirtyBackGround;
+            this.updatePatternLink(queryField.value);
         }
     },
     assignToAll() {
@@ -620,8 +626,8 @@ const GF_hybrid = {
             this.showToast("No stitches found in the pair diagram.")
         } else {
             document.getElementById('pair_panel').style.backgroundColor = GF_hybrid.dirtyBackGround;
-            const d0 = document.getElementById('droste0');
-            const params = new URLSearchParams(d0.value);
+            const queryField = document.getElementById('droste0');
+            const params = new URLSearchParams(queryField.value);
             const regex = /^[a-zA-Z]{1,2}\d+$/;
             // remove predefined stitches
             for (const key of Array.from(params.keys())) {
@@ -639,8 +645,9 @@ const GF_hybrid = {
                     params.set(tag, newValue);
                 }
             });
-            d0.value = Array.from(params).map(([k, v]) => `${k}=${v}`).join('&');
-            console.log("---------"+d0.value);
+            queryField.value = Array.from(params).map(([k, v]) => `${k}=${v}`).join('&');
+            this.updatePatternLink(queryField.value);
+
         }
     }
 }
