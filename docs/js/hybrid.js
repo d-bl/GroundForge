@@ -13,6 +13,7 @@
  */
 const GF_hybrid = {
     content_home: '.',
+    dirtyBackGround: "#f0f0f0",
     snow4:[
         // screenshots taken at 50% zoom level
         // ndb: patterns from "naar de bron" by Nora Andries
@@ -158,7 +159,7 @@ const GF_hybrid = {
             const drosteValue = document.getElementById(GF_hybrid.drosteOnBasicStitch.id).value;
             const newStitchInput = document.getElementById('basicStitchInput').value;
             const newStitchValue = newStitchInput
-                ? newStitchValue
+                ? newStitchInput
                 : GF_Random.genRandomStitch(3,2,2,0);
 
             const selectedText = event.currentTarget.textContent;
@@ -432,7 +433,7 @@ const GF_hybrid = {
         container.insertAdjacentHTML('beforeend',`
             <p>
                 Assign tweaked stitch <button onclick="GF_hybrid.assignToAll()" >to all</button>
-                <button onclick="GF_hybrid.showToast('Assign to ignored is not yet implemented')" id="ignored">to ignored</button>
+                <button onclick="GF_hybrid.assignToIgnored()" id="ignored">to ignored</button>
                 or click a stich in the pair diagram.
                 <a href="?${q}" id="selfRef" style="display:none;">Updated pattern</a>
             </p>
@@ -489,8 +490,9 @@ const GF_hybrid = {
 
             panelIds.forEach(pid => {
                 const panelEl = document.getElementById(pid);
-                if (panelEl.getElementsByTagName('svg').length > 0)
-                    panelEl.style.backgroundColor = "#f3f3f3";
+                if (panelEl.getElementsByTagName('svg').length > 0) {
+                    panelEl.style.backgroundColor = GF_hybrid.dirtyBackGround;
+                }
             });
         }
         function stepNrChanged(e) {
@@ -576,6 +578,33 @@ const GF_hybrid = {
         stitchesEl.style.display = 'block'; // make visible, whichever gallery is visible by default
         stitchesEl.getElementsByTagName('select')[0].outerHTML = 'select stitch example'; // no choice for other galleries
     },
+    assignToIgnored() {
+        const stepValue = document.getElementById('pairStep').value * 1;
+        const stitchValue = document.getElementById('basicStitchInput').value;
+        const queryField = document.getElementById('droste0');
+
+        // key=- where key is letters+digits (e.g. e1=-, f42=-)
+        // this also matches droste1=- but not expecting just a dash as content for the droste specs
+        const regexp = /(^|&)([a-z]+[0-9]+=)-(&|$)/gi
+
+        if (document.getElementById(GF_hybrid.drosteOnBasicStitch.id).value.trim() !== '') {
+            this.showToast("Assign to ignored is not implemented for droste applied to basic stitch")
+        } else if (stepValue !== 0 && stitchValue) {
+            this.showToast("Assign to ignored is only implemented for step 1")
+        } else if (!regexp.test(queryField.value)) {
+            this.showToast("No ignored stitches.")
+        } else {
+            document.getElementById('pair_panel').style.backgroundColor = GF_hybrid.dirtyBackGround;
+            if (stitchValue) {
+                queryField.value = queryField.value.replace(regexp, `$1$2${stitchValue}$3`);
+            } else {
+                queryField.value = queryField.value.replace(regexp, (match, sep, keyEq, tail) => {
+                    const rnd = GF_Random.genRandomStitch(3, 2, 1, 1);
+                    return `${sep}${keyEq}${rnd}${tail}`;
+                });
+            }
+        }
+    },
     assignToAll() {
         const stepValue = document.getElementById('pairStep').value * 1;
         const stitchValue = document.getElementById('basicStitchInput').value;
@@ -590,7 +619,7 @@ const GF_hybrid = {
         } else if (!stitchTitles || stitchTitles.length === 0) {
             this.showToast("No stitches found in the pair diagram.")
         } else {
-            document.getElementById('pair_panel').style.backgroundColor = "#f0f0f0"; // TODO share code with markDirty
+            document.getElementById('pair_panel').style.backgroundColor = GF_hybrid.dirtyBackGround;
             const d0 = document.getElementById('droste0');
             const params = new URLSearchParams(d0.value);
             const regex = /^[a-zA-Z]{1,2}\d+$/;
@@ -606,13 +635,12 @@ const GF_hybrid = {
                 if (tag !== '') {
                     const newValue = stitchValue
                         ? stitchValue
-                        : GF_Random.genRandomStitch(3,2,2,0);
+                        : GF_Random.genRandomStitch(3,2,1,1);
                     params.set(tag, newValue);
                 }
             });
             d0.value = Array.from(params).map(([k, v]) => `${k}=${v}`).join('&');
             console.log("---------"+d0.value);
-
         }
     }
 }
