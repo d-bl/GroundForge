@@ -14,131 +14,186 @@
 const GF_hybrid = {
     content_home: '.',
     dirtyBackGround: "#f0f0f0",
-    snow4:[
-        // screenshots taken at 50% zoom level
-        // ndb: patterns from "naar de bron" by Nora Andries
-        ['ndb-9Z.png','RCLRCR','X0=CL,X1=LLCLCR,X2=LLCLCRCLCLL,X3=CRCLCRCL,X4=CLCRLL,X5=C','X00=X70=C,X80=X81=X90=X91=LRT '],
-        ['ndb-10N.png','CLCLRCRCLR','X0=X7=C,X1=RCLCR,X2=CRC,X3=RCTC,X4=CTCL,X5=CLCR,X6=CRCL,X8=X9=TT','X00=,X70=C,X80=X81=X90=X91=TT '],
-        ['spider-1-ring.png','CLRCLR','X1=X2=CTCTC,X4=X5=TT'],
-        ['spider-2-rings.png','CLRCLR','X1=CTCRCTC,X2=CTCLCTC,X4=X5=TT'],
-        ['spider-3-rings.png','CLRCCLRCLR','X3=CTCCTC,X8=X9=TT','X33=CTCCTC,X80=X81=X90=X91=TT']
-    ],
-    snow3: [
-        ['123-a.png',   'RCRCRC','CRC,CRCLCTC,CTCRC,RCL,C,C'],
-        ['123-b.png',   'LCLCLC','RCL,CTC,CRCLLC,CRRCLCR,CTC,CL'],
-        ['132-a.png',   'CRCRC','CTC,CTC,CTC,CTC,CTC'],
-        ['312-a.png',   'LCLC','TCTC,RCTCL,CTCL,CTCT'],
-        ['321-a.png',   'LCLC','TC,RCLCRC,CLCRCL,CT'],
-        ['321-b.png',   'RCRC','TCR,LCTC,CTCR,LCT'],
-        ['321-c.png',   'RCRC','TCL,LCTC,CTCR,RCT'],
-        ['321-d.png',   'RCRC','T,LCTC,CTCR,CTCT'],
-        ['126453-a.png','CLCLC','C,CTCTC,CTCTC,CTCTC,C'],
-        ['153426-a.png','LCLCLC','T,RC,CTC,RCLCR,CTCL,CT'],
-        ['154326-a.png','LCLC','T,RCTC,CTCTCL,CTCT'],
-        ['156423-a.png','CRCRC','CR,CRCL,CLCRCLCR,RCRCL,C'],
-        ['234561-a.png','LCLCLC','CR,CRCL,CLCR,CRCL,CLCR,C'],
-        ['263451-a.png','CRCRC','CR,CRCL,CLCR,CRCL,CL'],
-        ['321546-a.png','CLCLC','CL,CTCL,CRCRCR,RCR,C'],
-        ['321654-a.png','CLCLCLC','LC,CRC,CLCRC,CLCR,C,CRC,CL'],
-        ['321654-b.png','CRCRC','CR,CTCR,CLCLC,LCL,C'],
-        ['354612-a.png','RCRCRC','CTCT,CT,CT,CT,CL,CTC'],
-        ['426153-a.png','RCRC','LC,CRCLCLC,CRCRCLC,CR'],
-        ['426153-b.png','RCRCRC','CR,CTCL,CTCR,CTCL,CTC,C'],
-        ['456123-a.png','RCRC','R,LRC,CTCR,LCT'],
-        ['456123-b.png','RCRCRCRC','C,CTC,RCLC,CTC,RC,RCL,CTC,C'],
-        ['462513-a.png','LCLC','RC,CLCRC,CLCTC,RCL'],
-        ['564312-a.png','RCRC','LCRC,CLCRC,CLCRC,CLCR'],
-        ['563412-a.png','CRCRC','C,CTCTC,CLCR,RCTC,C'],
-        ['623451-a.png','LCLCLCLC','R,C,CRC,CTC,LCRCL,CTC,CRC,CL'],
-        ['623541-a.png','CLCLC','CTC,CT,CRC,CTC,CTC'],
-        ['623541-b.png','CRCRC','CL,CTCTCR,CT,CTC,C']
-    ],
-    basicStitch: {
-        id: 'basicStitchInput',
-        lastValid: '',
-        htmlString() {
-            const other = `document.getElementById('${GF_hybrid.drosteOnBasicStitch.id}`;
-            return `
+    recipes: {
+        snow4: [
+            // screenshots taken at 50% zoom level
+            // ndb: patterns from "naar de bron" by Nora Andries
+            ['ndb-9Z.png', 'RCLRCR', 'X0=CL,X1=LLCLCR,X2=LLCLCRCLCLL,X3=CRCLCRCL,X4=CLCRLL,X5=C', 'X00=X70=C,X80=X81=X90=X91=LRT '],
+            ['ndb-10N.png', 'CLCLRCRCLR', 'X0=X7=C,X1=RCLCR,X2=CRC,X3=RCTC,X4=CTCL,X5=CLCR,X6=CRCL,X8=X9=TT', 'X00=,X70=C,X80=X81=X90=X91=TT '],
+            ['spider-1-ring.png', 'CLRCLR', 'X1=X2=CTCTC,X4=X5=TT'],
+            ['spider-2-rings.png', 'CLRCLR', 'X1=CTCRCTC,X2=CTCLCTC,X4=X5=TT'],
+            ['spider-3-rings.png', 'CLRCCLRCLR', 'X3=CTCCTC,X8=X9=TT', 'X33=CTCCTC,X80=X81=X90=X91=TT']
+        ],
+        snow3: [
+            ['123-a.png', 'RCRCRC', 'CRC,CRCLCTC,CTCRC,RCL,C,C'],
+            ['123-b.png', 'LCLCLC', 'RCL,CTC,CRCLLC,CRRCLCR,CTC,CL'],
+            ['132-a.png', 'CRCRC', 'CTC,CTC,CTC,CTC,CTC'],
+            ['312-a.png', 'LCLC', 'TCTC,RCTCL,CTCL,CTCT'],
+            ['321-a.png', 'LCLC', 'TC,RCLCRC,CLCRCL,CT'],
+            ['321-b.png', 'RCRC', 'TCR,LCTC,CTCR,LCT'],
+            ['321-c.png', 'RCRC', 'TCL,LCTC,CTCR,RCT'],
+            ['321-d.png', 'RCRC', 'T,LCTC,CTCR,CTCT'],
+            ['126453-a.png', 'CLCLC', 'C,CTCTC,CTCTC,CTCTC,C'],
+            ['153426-a.png', 'LCLCLC', 'T,RC,CTC,RCLCR,CTCL,CT'],
+            ['154326-a.png', 'LCLC', 'T,RCTC,CTCTCL,CTCT'],
+            ['156423-a.png', 'CRCRC', 'CR,CRCL,CLCRCLCR,RCRCL,C'],
+            ['234561-a.png', 'LCLCLC', 'CR,CRCL,CLCR,CRCL,CLCR,C'],
+            ['263451-a.png', 'CRCRC', 'CR,CRCL,CLCR,CRCL,CL'],
+            ['321546-a.png', 'CLCLC', 'CL,CTCL,CRCRCR,RCR,C'],
+            ['321654-a.png', 'CLCLCLC', 'LC,CRC,CLCRC,CLCR,C,CRC,CL'],
+            ['321654-b.png', 'CRCRC', 'CR,CTCR,CLCLC,LCL,C'],
+            ['354612-a.png', 'RCRCRC', 'CTCT,CT,CT,CT,CL,CTC'],
+            ['426153-a.png', 'RCRC', 'LC,CRCLCLC,CRCRCLC,CR'],
+            ['426153-b.png', 'RCRCRC', 'CR,CTCL,CTCR,CTCL,CTC,C'],
+            ['456123-a.png', 'RCRC', 'R,LRC,CTCR,LCT'],
+            ['456123-b.png', 'RCRCRCRC', 'C,CTC,RCLC,CTC,RC,RCL,CTC,C'],
+            ['462513-a.png', 'LCLC', 'RC,CLCRC,CLCTC,RCL'],
+            ['564312-a.png', 'RCRC', 'LCRC,CLCRC,CLCRC,CLCR'],
+            ['563412-a.png', 'CRCRC', 'C,CTCTC,CLCR,RCTC,C'],
+            ['623451-a.png', 'LCLCLCLC', 'R,C,CRC,CTC,LCRCL,CTC,CRC,CL'],
+            ['623541-a.png', 'CLCLC', 'CTC,CT,CRC,CTC,CTC'],
+            ['623541-b.png', 'CRCRC', 'CL,CTCTCR,CT,CTC,C']
+        ],
+        createSnowGallery(recipes, containerId, imgPath) {
+            const container = document.getElementById(containerId);
+            for (let [img, basicStitch, droste1, droste2] of recipes) {
+                container.insertAdjacentHTML('beforeend', `
+                            <button type="button"
+                                    class="recipe-btn">
+                              <img src="${GF_hybrid.content_home}/${imgPath}/${img}"
+                                   onclick="GF_hybrid.recipes.setRecipe('${basicStitch}','${droste1}','${droste2 ?? ''}')"
+                                   alt="${basicStitch} ; ${droste1}${droste2 ? ' ; ' + droste2 : ''}">
+                            </button>
+                        `);
+            }
+        },
+        createStitchGallery(containerId) {
+            GF_stitches.loadStitchExamples("#" + containerId);
+            GF_stitches.setStitch = function(stitch) {
+                GF_hybrid.recipes.setRecipe(stitch);
+            }
+        },
+        setRecipe(basicStitch, droste1Stitches = '', droste2Stitches = '') {
+            document.getElementById(GF_hybrid.recipes.basicStitch.id).value = basicStitch;
+            document.getElementById(GF_hybrid.recipes.drosteOnBasicStitch.id).value = droste1Stitches;
+            // TODO setColorCode();
+            GF_hybrid.recipes.basicStitch.lastValid = basicStitch;
+            GF_hybrid.recipes.drosteOnBasicStitch.lastValid = droste1Stitches;
+            // TODO: second step of droste stitches, requires more intelligence in resetting previously assigned stitches
+        },
+        basicStitch: {
+            id: 'basicStitchInput',
+            lastValid: '',
+            htmlString() {
+                const other = `document.getElementById('${GF_hybrid.recipes.drosteOnBasicStitch.id}`;
+                return `
             <label>Basic stitch:
                 <input type="text" id="${this.id}"
                         value="${this.lastValid}" placeholder="empty=random; type ? for more info"
-                        oninput="GF_hybrid.basicStitch.fixInput(this,${other}'))"
+                        oninput="GF_hybrid.recipes.basicStitch.fixInput(this,${other}'))"
                 />
              </label>`
-        },
-        msg() { // TODO adjust to page and droste level
-            return `
+            },
+            msg() { // TODO adjust to page and droste level
+                return `
             Basic stitch only allows the characters  T, C, L, R.
             Select examples from a stitches or snow gallery.
             When "Droste applied to basic stitch" has content,
             T is replaced with LR for proper flipping.
             Without droste, just a "-" is also allowed to drop stitches. 
             `
+            },
+            fixInput(basicStitchEl, drostOnBasicEl) {
+                let value = basicStitchEl.value.toLowerCase().trim();
+                const hasDroste = drostOnBasicEl && drostOnBasicEl.value.trim() !== '';
+                const regexp = hasDroste ? /^[tclr]*$/ : /^(-|([tclr])*)$/;
+                if (!regexp.test(value)) {
+                    basicStitchEl.value = this.lastValid;
+                    const pos1 = basicStitchEl.selectionStart - 1;
+                    const pos2 = basicStitchEl.selectionEnd - 1;
+                    basicStitchEl.setSelectionRange(pos1, pos2);
+                    GF_hybrid.showToast(this.msg());
+                    return;
+                }
+                if (hasDroste) {
+                    value = value.replace(/[tT]/g, 'LR');
+                }
+                basicStitchEl.value = value.toUpperCase()
+                this.lastValid = value;
+            },
         },
-        fixInput(basicStitchEl, drostOnBasicEl) {
-            let value = basicStitchEl.value.toLowerCase().trim();
-            const hasDroste = drostOnBasicEl && drostOnBasicEl.value.trim() !== '';
-            const regexp = hasDroste ? /^[tclr]*$/ : /^(-|([tclr])*)$/;
-            if (!regexp.test(value)) {
-                basicStitchEl.value = this.lastValid;
-                const pos1 = basicStitchEl.selectionStart - 1;
-                const pos2 = basicStitchEl.selectionEnd - 1;
-                basicStitchEl.setSelectionRange(pos1, pos2);
-                GF_hybrid.showToast(this.msg());
-                return;
-            }
-            if (hasDroste) {
-                value = value.replace(/[tT]/g, 'LR');
-            }
-            basicStitchEl.value = value.toUpperCase()
-            this.lastValid = value;
-        },
-    },
-    drosteOnBasicStitch: {
-        id: 'drosteStitches',
-        lastValid: '',
-        htmlString() {
-            const other = `document.getElementById('${GF_hybrid.basicStitch.id}`;
-            return `
+        drosteOnBasicStitch: {
+            id: 'drosteStitches',
+            lastValid: '',
+            htmlString() {
+                const other = `document.getElementById('${GF_hybrid.recipes.basicStitch.id}`;
+                return `
             <label>Droste applied to basic stitch:
                 <input type="text" id="${this.id}"
                         value="${this.lastValid}" placeholder="Type ? for info"
-                        oninput="GF_hybrid.drosteOnBasicStitch.fixInput(${other}'), this)"
+                        oninput="GF_hybrid.recipes.drosteOnBasicStitch.fixInput(${other}'), this)"
                 />
             </label>`
-        },
-        msg() { return `
+            },
+            msg() { return `
             "Droste applied to basic stitch" needs either numbered stitches,
              or as many stitches as characters in "Basic stitch".
              Allowed separators between stitches: ";.," 
              Example of a numbered stitch: "X12=CTCT".
              Default for not specified stitches is "CTC".
         `},
-        fixInput(basicStitchEl, drosteOnBasicEl) {
-            function isValid(str) {
-                if(str === '') return true
-                const validChars = /[^x0-9=ctlr,.;]/i
-                const repeatedSeparator = /[,.;][,.;]/;
-                const groupRegex = /^(x(([0-9]+)=?)?)?[ctlr]*$/i;
-                if (validChars.test(str)) return false;
-                if (repeatedSeparator.test(str)) return false;
-                const stitches = str.split(/[,.;]/);
-                if (stitches.length > basicStitchEl.value.length) return false;
-                return stitches.every(g => groupRegex.test(g));
-            }
-            const value = drosteOnBasicEl.value.trim().toUpperCase();
-            drosteOnBasicEl.value = value;
-            if (isValid(value)) {
-                GF_hybrid.drosteOnBasicStitch.lastValid = value;
+            fixInput(basicStitchEl, drosteOnBasicEl) {
+                function isValid(str) {
+                    if(str === '') return true
+                    const validChars = /[^x0-9=ctlr,.;]/i
+                    const repeatedSeparator = /[,.;][,.;]/;
+                    const groupRegex = /^(x(([0-9]+)=?)?)?[ctlr]*$/i;
+                    if (validChars.test(str)) return false;
+                    if (repeatedSeparator.test(str)) return false;
+                    const stitches = str.split(/[,.;]/);
+                    if (stitches.length > basicStitchEl.value.length) return false;
+                    return stitches.every(g => groupRegex.test(g));
+                }
+                const value = drosteOnBasicEl.value.trim().toUpperCase();
                 drosteOnBasicEl.value = value;
-            } else {
-                drosteOnBasicEl.value = GF_hybrid.drosteOnBasicStitch.lastValid;
-                const pos1 = drosteOnBasicEl.selectionStart - 1;
-                const pos2 = drosteOnBasicEl.selectionEnd - 1;
-                drosteOnBasicEl.setSelectionRange(pos1, pos2);
-                GF_hybrid.showToast(this.msg());
-            }
+                if (isValid(value)) {
+                    GF_hybrid.recipes.drosteOnBasicStitch.lastValid = value;
+                    drosteOnBasicEl.value = value;
+                } else {
+                    drosteOnBasicEl.value = GF_hybrid.recipes.drosteOnBasicStitch.lastValid;
+                    const pos1 = drosteOnBasicEl.selectionStart - 1;
+                    const pos2 = drosteOnBasicEl.selectionEnd - 1;
+                    drosteOnBasicEl.setSelectionRange(pos1, pos2);
+                    GF_hybrid.showToast(this.msg());
+                }
+            },
         },
+    },
+    patternInfo: {
+        linkHtmlString(q) {return `<a href="${q}" id="selfRef" style="display:none;">Updated pattern</a>`},
+        specsHtmlString(q) {return `<input type="text" id="droste0" value="${q}">`},
+        setValue(value) {
+            const specsField = document.getElementById('droste0');
+            if(specsField) {
+                specsField.value = value;
+            }
+            const patternLink = document.getElementById('selfRef');
+            if(patternLink) {
+                patternLink.href = '?' + value;
+                patternLink.style.display = 'inline';
+            }
+            console.log("---------" + value);
+        },
+        getValue() {
+            const specsField = document.getElementById('droste0');
+            if(specsField) {
+                return specsField.value;
+            }
+            const patternLink = document.getElementById('selfRef');
+            if(patternLink) {
+                return patternLink.href.split('?')[1];
+            }
+        }
     },
     generateSelectedDiagram(diagramType) {
         const drosteIndex = parseInt(document.getElementById(`${diagramType}Step`).value, 10);
@@ -148,7 +203,7 @@ const GF_hybrid = {
             const txt = textarea && textarea.value.trim() ? textarea.value.trim() : "ctc";
             steps.push(txt);
         }
-        const q = document.getElementById('droste0').value;
+        const q = this.patternInfo.getValue();
         GF_panel.diagramSVG({id: diagramType+ '_panel', query: q, type: diagramType, steps: steps});
         document.getElementById(diagramType+ '_panel').style.backgroundColor = "";
         if(diagramType==='pair')
@@ -156,8 +211,8 @@ const GF_hybrid = {
     },
     setStitchEvents() {
         function stitchHandler(event) {
-            const drosteValue = document.getElementById(GF_hybrid.drosteOnBasicStitch.id).value;
-            const newStitchInput = document.getElementById('basicStitchInput').value;
+            const drosteValue = document.getElementById(GF_hybrid.recipes.drosteOnBasicStitch.id).value;
+            const newStitchInput = document.getElementById(GF_hybrid.recipes.basicStitch.id).value;
             const newStitchValue = newStitchInput
                 ? newStitchInput
                 : GF_Random.genRandomStitch(3,2,2,0);
@@ -213,14 +268,12 @@ const GF_hybrid = {
                 }
             }
             const drosteId = 'droste' + (drosteIndex + 1);
-            const queryField = document.getElementById('droste0');
-            const params = new URLSearchParams(queryField.value);
+            const params = new URLSearchParams(GF_hybrid.patternInfo.getValue());
             params.set(selectedStitchId, newStitchValue);
             params.set("pairStep", document.getElementById('pairStep').value);
             params.set("threadStep", document.getElementById('threadStep').value);
             params.set(drosteId, extraSteps.replaceAll('\n', ',').trim());
-            queryField.value = decodeURIComponent(params.toString());
-            this.updatePatternLink(queryField.value);
+            GF_hybrid.patternInfo.setValue(decodeURIComponent(params.toString()));
             // last as it may fail when stepLevel is too high for the droste applied to basic stitch
             document.getElementById(drosteId).value += extraSteps + '\n';
         }
@@ -244,8 +297,8 @@ const GF_hybrid = {
                     .split("").reverse().join("");
             }
         }
-        const basicEl = document.getElementById('basicStitchInput');
-        const drosteEl = document.getElementById(GF_hybrid.drosteOnBasicStitch.id);
+        const basicEl = document.getElementById(GF_hybrid.recipes.basicStitch.id);
+        const drosteEl = document.getElementById(GF_hybrid.recipes.drosteOnBasicStitch.id);
         const basicValue = basicEl.value.toLowerCase()
             .replaceAll(/[^crlt]/g, '')
         if (drosteEl && drosteEl.value.trim()  !== '') {
@@ -290,14 +343,13 @@ const GF_hybrid = {
     },
     setPattern(element) {
         let q = element.getAttribute('xlink:href').split('?')[1];
+        this.patternInfo.setValue(q);
         document.getElementById('pairStep').value = 0;
-        document.getElementById('droste0').value = q;
         document.getElementById('droste1').value = '';
         document.getElementById('droste2').value = '';
         document.getElementById('droste3').value = '';
         this.generateSelectedDiagram('pair');
         GF_hybrid.setStitchEvents();
-        document.getElementById('selfRef').style.display = 'none';
         document.getElementById('thread_panel').innerHTML = '';
         GF_panel.scrollIfTooLittleIsVisible(document.getElementById('pair_panel'));
     },
@@ -368,22 +420,6 @@ const GF_hybrid = {
      */
     load(container) {
         console.log('================ Loading panels ================');
-        GF_stitches.setStitch = function(stitch) {
-            document.getElementById('basicStitchInput').value = stitch;
-            document.getElementById(GF_hybrid.drosteOnBasicStitch.id).value = "";
-            GF_hybrid.setColorCode();
-        }
-
-        function createSnowGallery(recipes, containerId, imgPath) {
-            const container = document.getElementById(containerId);
-            for (let [img, basicStitch, droste1, droste2] of recipes) {
-                container.insertAdjacentHTML('beforeend', `
-                    <a href="javascript:GF_hybrid.setRecipe('${basicStitch}','${droste1}','${droste2}')">
-                    <img src="${GF_hybrid.content_home}/${imgPath}/${img}" alt="${img}">
-                    </a>
-                `);
-            }
-        }
 
         function galleryPanels() {
             const galleries = {
@@ -409,9 +445,9 @@ const GF_hybrid = {
                 document.getElementById(key1).parentNode.style.display = 'none';
             }
             GF_tiles.loadGallery({jsAction: 'GF_hybrid.setPattern(this);return false;', containerId: 'pattern'});
-            createSnowGallery(GF_hybrid.snow3, 'snow3', `mix4snow`);
-            createSnowGallery(GF_hybrid.snow4, 'snow4', `images/4-8-legs`);
-            GF_stitches.loadStitchExamples("#stitches");
+            GF_hybrid.recipes.createSnowGallery(GF_hybrid.recipes.snow3, 'snow3', `mix4snow`);
+            GF_hybrid.recipes.createSnowGallery(GF_hybrid.recipes.snow4, 'snow4', `images/4-8-legs`);
+            GF_hybrid.recipes.createStitchGallery('stitches');
         }
         function twister(type) {
             return `<input type='number' min='0' max='3' value='0' id='${type}Step' name='${type}Step' title='droste step'></label>`;
@@ -434,7 +470,7 @@ const GF_hybrid = {
                 Assign tweaked stitch <button onclick="GF_hybrid.assignToAll()" >to all</button>
                 <button onclick="GF_hybrid.assignToIgnored()" id="ignored">to ignored</button>
                 or click a stich in the pair diagram.
-                <a href="?${q}" id="selfRef" style="display:none;">Updated pattern</a>
+                ${this.patternInfo.linkHtmlString(q)}
             </p>
             <p>
                 <label>Droste step number: ${twister("droste")}</label>
@@ -447,8 +483,8 @@ const GF_hybrid = {
         GF_panel.load({caption: "specifications", id: "specs", controls: ["resize"], size:{width: '100%', height: '300px'}, parent: container});
         document.getElementById('tweak').insertAdjacentHTML('beforeend',`
             <p>
-            ${this.basicStitch.htmlString()} <br>
-            ${this.drosteOnBasicStitch.htmlString()}
+            ${this.recipes.basicStitch.htmlString()} <br>
+            ${this.recipes.drosteOnBasicStitch.htmlString()}
             </p>
             <p>Flip:
             <button onclick="GF_hybrid.flip('b2d')">&harr;</button>
@@ -468,7 +504,7 @@ const GF_hybrid = {
         specsPanelContent.innerHTML = `
           <a href="javascript:['droste1','droste2','droste3'].forEach(GF_panel.cleanupStitches)" title="Reduce panel content"><img src="${this.content_home}/images/broom.png"></a>
           Specs collected from URL and clicks:
-          <input type="text" id="droste0" value="${q}">
+          ${this.patternInfo.specsHtmlString(q)}
           ${drosteTextField(1)}
           ${drosteTextField(2)}
           ${drosteTextField(3)}
@@ -525,18 +561,13 @@ const GF_hybrid = {
         });
         console.log('================ Loaded panels ================');
     },
-    setRecipe(basicStitch, drosteStitches) {
-        document.getElementById('basicStitchInput').value = basicStitch;
-        document.getElementById(GF_hybrid.drosteOnBasicStitch.id).value = drosteStitches;
-        // TODO: second step of droste stitches, requires more intelligence in resetting previously assigned stitches
-    },
     /**
      * Wrapper for loadSimple. Initial step is 1 and specs panel is shown immediately
      *
      * @param {!HTMLElement} container receives the generated components
      */
     loadDroste(container){
-        this.loadSimple(container, 1, [GF_hybrid.drosteOnBasicStitch.id, 'pairStep', 'threadStep', 'snow3', 'snow4'] );
+        this.loadSimple(container, 1, [GF_hybrid.recipes.drosteOnBasicStitch.id, 'pairStep', 'threadStep', 'snow3', 'snow4'] );
     },
     /**
      * Wrapper for loadSimple. Initial step is 0 and specs panel is initially hidden, shown when step becomes larger.
@@ -544,7 +575,7 @@ const GF_hybrid = {
      * @param {!HTMLElement} container receives the generated components
      * */
     loadStitches(container){
-        this.loadSimple(container, 0, [GF_hybrid.drosteOnBasicStitch.id, 'pairStep', 'threadStep', 'snow3',  'snow4', 'drosteStep', 'specs'] );
+        this.loadSimple(container, 0, [GF_hybrid.recipes.drosteOnBasicStitch.id, 'pairStep', 'threadStep', 'snow3',  'snow4', 'drosteStep', 'specs'] );
     },
     /**
      * Wrapper for load. Hides the third step field
@@ -562,62 +593,56 @@ const GF_hybrid = {
     loadSimple(container, initialStep, hiddenElements){
         // Clear galleries that will not be used
         GF_tiles = {loadGallery (namedArgs){ }}; // dummy to avoid errors
-        this.snow3 = []; // clear for performance
-        this.snow4 = []; // clear for performance
+        GF_hybrid.recipes.snow3 = []; // clear for performance
+        GF_hybrid.recipes.snow4 = []; // clear for performance
 
-        this.load(container, initialStep);
+        this.load(container);
         for (let id of ['pairStep', 'threadStep', 'drosteStep']) {
             document.getElementById(id).value = initialStep;
         }
         for (let id of hiddenElements) {
             document.getElementById(id).parentNode.style.display = 'none';
         }
-        document.getElementById('basicStitchInput').previousSibling.remove(); // remove label
+        document.getElementById(GF_hybrid.recipes.basicStitch.id).previousSibling.remove(); // remove label
         const stitchesEl = document.getElementById('stitches').parentNode;
         stitchesEl.style.display = 'block'; // make visible, whichever gallery is visible by default
         stitchesEl.getElementsByTagName('select')[0].outerHTML = 'select stitch example'; // no choice for other galleries
     },
-    updatePatternLink(value) {
-        const selRef = document.getElementById('selfRef');
-        selRef.href = '?' + value;
-        selRef.style.display = 'inline';
-        console.log("---------" + value);
-    },
     assignToIgnored() {
         const stepValue = document.getElementById('pairStep').value * 1;
-        const stitchValue = document.getElementById('basicStitchInput').value;
-        const queryField = document.getElementById('droste0');
+        const stitchValue = document.getElementById(GF_hybrid.recipes.basicStitch.id).value;
+        let query = this.patternInfo.getValue();
 
         // key=- where key is letters+digits (e.g. e1=-, f42=-)
         // this also matches droste1=- but not expecting just a dash as content for the droste specs
         const regexp = /(^|&)([a-z]+[0-9]+=)-(&|$)/gi
 
-        if (document.getElementById(GF_hybrid.drosteOnBasicStitch.id).value.trim() !== '') {
+        if (document.getElementById(GF_hybrid.recipes.drosteOnBasicStitch.id).value.trim() !== '') {
             this.showToast("Assign to ignored is not implemented for droste applied to basic stitch")
         } else if (stepValue !== 0 && stitchValue) {
             this.showToast("Assign to ignored is only implemented for step 1")
-        } else if (!regexp.test(queryField.value)) {
+        } else if (!regexp.test(query)) {
             this.showToast("No ignored stitches.")
         } else {
             if (stitchValue) {
-                queryField.value = queryField.value.replace(regexp, `$1$2${stitchValue}$3`);
+                query = query.replace(regexp, `$1$2${stitchValue}$3`);
             } else {
-                queryField.value = queryField.value.replace(regexp, (match, sep, keyEq, tail) => {
+                query = query.replace(regexp, (match, sep, keyEq, tail) => {
                     const rnd = GF_Random.genRandomStitch(3, 2, 1, 1);
                     return `${sep}${keyEq}${rnd}${tail}`;
                 });
             }
             document.getElementById('pair_panel').style.backgroundColor = GF_hybrid.dirtyBackGround;
-            this.updatePatternLink(queryField.value);
+            this.patternInfo.setValue(query);
         }
     },
     assignToAll() {
         const stepValue = document.getElementById('pairStep').value * 1;
-        const stitchValue = document.getElementById('basicStitchInput').value;
+        const stitchValue = document.getElementById(GF_hybrid.recipes.basicStitch.id).value;
         const stitchTitles = Array.from(document.getElementById('pair_panel')
             .getElementsByTagName('title')
         );
-        if (document.getElementById(GF_hybrid.drosteOnBasicStitch.id).value.trim() !== '') {
+        if (document.getElementById(GF_hybrid.recipes.drosteOnBasicStitch.id).value.trim() !== '') {
             this.showToast("Assign to all is not implemented for droste applied to basic stitch")
         } else if (stepValue !== 0 && stitchValue) {
             document.getElementById('droste' + stepValue).value =
@@ -626,8 +651,7 @@ const GF_hybrid = {
             this.showToast("No stitches found in the pair diagram.")
         } else {
             document.getElementById('pair_panel').style.backgroundColor = GF_hybrid.dirtyBackGround;
-            const queryField = document.getElementById('droste0');
-            const params = new URLSearchParams(queryField.value);
+            const params = new URLSearchParams(this.patternInfo.getValue());
             const regex = /^[a-zA-Z]{1,2}\d+$/;
             // remove predefined stitches
             for (const key of Array.from(params.keys())) {
@@ -645,9 +669,7 @@ const GF_hybrid = {
                     params.set(tag, newValue);
                 }
             });
-            queryField.value = Array.from(params).map(([k, v]) => `${k}=${v}`).join('&');
-            this.updatePatternLink(queryField.value);
-
+            this.patternInfo.setValue(Array.from(params).map(([k, v]) => `${k}=${v}`).join('&'));
         }
     }
 }
