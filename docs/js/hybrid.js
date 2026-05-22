@@ -73,12 +73,18 @@ const GF_hybrid = {
                 GF_hybrid.recipes.setRecipe(stitch);
             }
         },
-        setRecipe(basicStitch, droste1Stitches = '', droste2Stitches = '') {
-            document.getElementById(GF_hybrid.recipes.basicStitch.id).value = basicStitch;
-            document.getElementById(GF_hybrid.recipes.drosteOnBasicStitch.id).value = droste1Stitches;
-            // TODO setColorCode();
-            GF_hybrid.recipes.basicStitch.lastValid = basicStitch;
-            GF_hybrid.recipes.drosteOnBasicStitch.lastValid = droste1Stitches;
+        setRecipe(basicStitch, droste1Stitches, droste2Stitches) {
+            const basicEl = document.getElementById(this.basicStitch.id);
+            if (basicEl) {
+                basicEl.value = basicStitch ?? '';
+                this.basicStitch.lastValid = basicStitch ?? '';
+                // TODO setColorCode();
+            }
+            const drosteOnBasicEl = document.getElementById(this.drosteOnBasicStitch.id);
+            if (drosteOnBasicEl) {
+                drosteOnBasicEl.value = droste1Stitches ?? '';
+                this.drosteOnBasicStitch.lastValid = droste1Stitches ?? '';
+            }
             // TODO: second step of droste stitches, requires more intelligence in resetting previously assigned stitches
         },
         basicStitch: {
@@ -89,7 +95,7 @@ const GF_hybrid = {
                 return `
             <label>Basic stitch:
                 <input type="text" id="${this.id}"
-                        value="${this.lastValid}" placeholder="empty=random; type ? for more info"
+                        value="${GF_hybrid.recipes.basicStitch.lastValid}" placeholder="empty=random; type ? for more info"
                         oninput="GF_hybrid.recipes.basicStitch.fixInput(this,${other}'))"
                 />
              </label>`
@@ -168,6 +174,63 @@ const GF_hybrid = {
                 }
             },
         },
+        flip: {
+            htmlString() {
+                return `<p>Flip:
+                        <button onclick="GF_hybrid.recipes.flip.apply('b2d')">&harr;</button>
+                        <button onclick="GF_hybrid.recipes.flip.apply('b2p')">&varr;</button>
+                        <button onclick="GF_hybrid.recipes.flip.apply('b2d');GF_hybrid.recipes.flip.apply('b2p')">both</button>
+                        </p>
+                        `;
+            },
+            apply(direction) {
+                function flip2(value) {
+                    switch (direction) {
+                        case 'b2d': return value
+                            .replace(/l/g, "R")
+                            .replace(/r/g, "L")
+                            .toLowerCase();
+                        case 'b2p': return value
+                            .split("").reverse().join("");
+                    }
+                }
+                const basicEl = document.getElementById(GF_hybrid.recipes.basicStitch.id);
+                const drosteEl = document.getElementById(GF_hybrid.recipes.drosteOnBasicStitch.id);
+                const basicValue = basicEl.value.toLowerCase()
+                    .replaceAll(/[^crlt]/g, '')
+                if (drosteEl && drosteEl.value.trim()  !== '') {
+                    if (drosteEl.value.includes('=')) {
+                        const tLessBasicValue = basicValue.replace(/[t]/g, 'lr');
+                        const arr = Array(tLessBasicValue.length).fill('ctc');
+                        const keyValuePairs = drosteEl.value.toLowerCase()
+                            .replaceAll(/[^crltx0-9=;,.]/g, '')
+                            .split(/[;,.]/)
+                        for (const kv of keyValuePairs) {
+                            const value = kv.replace(/.*=/, '')
+                            const keys = kv.replace(/=[^=]*$/, '').split(/=/)
+                            for (const key of keys) {
+                                arr[parseInt(key.replace(/x/i, ''))] = value;
+                            }
+                        }
+                        const flipped = flip2(arr.join(';'))
+                            .split(';');
+                        for (let i = 0; i < flipped.length; i++) {
+                            flipped[i] = `x${i}=${flipped[i]}`;
+                        }
+                        GF_hybrid.recipes.setRecipe(
+                            flip2(tLessBasicValue),
+                            flipped.join(';')
+                                .replace(/x[0-9]+=ctc(;|$)/gi,'')
+                                .replace(/;$/,'')
+                        );
+                    } else {
+                        GF_hybrid.recipes.setRecipe(flip2(basicValue), flip2(drosteEl.value));
+                    }
+                } else {
+                    GF_hybrid.recipes.setRecipe(flip2(basicValue));
+                }
+            },
+        }
     },
     patternInfo: {
         linkHtmlString(q) {return `<a href="${q}" id="selfRef" style="display:none;">Updated pattern</a>`},
@@ -285,52 +348,6 @@ const GF_hybrid = {
             if (!title.textContent.startsWith('Pair'))
                 title.parentNode.addEventListener('click', stitchHandler)
         });
-    },
-    flip(direction) {
-        function flip2(value) {
-            switch (direction) {
-                case 'b2d': return value
-                        .replace(/l/g, "R")
-                        .replace(/r/g, "L")
-                        .toLowerCase();
-                case 'b2p': return value
-                    .split("").reverse().join("");
-            }
-        }
-        const basicEl = document.getElementById(GF_hybrid.recipes.basicStitch.id);
-        const drosteEl = document.getElementById(GF_hybrid.recipes.drosteOnBasicStitch.id);
-        const basicValue = basicEl.value.toLowerCase()
-            .replaceAll(/[^crlt]/g, '')
-        if (drosteEl && drosteEl.value.trim()  !== '') {
-            if (drosteEl.value.includes('=')) {
-                const tLessBasicValue = basicValue.replace(/[t]/g, 'lr');
-                const arr = Array(tLessBasicValue.length).fill('ctc');
-                const keyValuePairs = drosteEl.value.toLowerCase()
-                    .replaceAll(/[^crltx0-9=;,.]/g, '')
-                    .split(/[;,.]/)
-                for (const kv of keyValuePairs) {
-                    const value = kv.replace(/.*=/, '')
-                    const keys = kv.replace(/=[^=]*$/, '').split(/=/)
-                    for (const key of keys) {
-                        arr[parseInt(key.replace(/x/i, ''))] = value;
-                    }
-                }
-                const flipped = flip2(arr.join(';'))
-                    .split(';');
-                for (let i = 0; i < flipped.length; i++) {
-                    flipped[i] = `x${i}=${flipped[i]}`;
-                }
-                drosteEl.value = flipped.join(';')
-                    .replace(/x[0-9]+=ctc(;|$)/gi,'')
-                    .replace(/;$/,'');
-                basicEl.value = flip2(tLessBasicValue);
-            } else {
-                drosteEl.value = flip2(drosteEl.value);
-                basicEl.value = flip2(basicValue);
-            }
-        } else {
-            basicEl.value = flip2(basicValue);
-        }
     },
     scrollIfTooLittleIsVisible(elementId) {
         const threadPanel = document.getElementById(elementId);
@@ -457,7 +474,6 @@ const GF_hybrid = {
         }
         const pairWandHref = "javascript:GF_hybrid.generateSelectedDiagram('pair');GF_hybrid.setStitchEvents()";
         const threadWandHref = "javascript:GF_hybrid.generateSelectedDiagram('thread')";
-        const legendWandHref = "javascript:GF_hybrid.generateLegend()";
         let q = new URL(document.documentURI).search.slice(1)
             .replaceAll(/[^a-zA-Z0-9=,.&-]/g,'');
         if (q === "" || !q.includes('shiftRows')) {
@@ -486,11 +502,7 @@ const GF_hybrid = {
             ${this.recipes.basicStitch.htmlString()} <br>
             ${this.recipes.drosteOnBasicStitch.htmlString()}
             </p>
-            <p>Flip:
-            <button onclick="GF_hybrid.flip('b2d')">&harr;</button>
-            <button onclick="GF_hybrid.flip('b2p')">&varr;</button>
-            <button onclick="GF_hybrid.flip('b2d');GF_hybrid.flip('b2p')">both</button>
-            </p>
+            ${this.recipes.flip.htmlString()}
         `);
         const params = new URLSearchParams(q);
         document.getElementById('tweak').parentNode.style = `width: calc(100% - 7px)`;
@@ -502,7 +514,9 @@ const GF_hybrid = {
             return `<textarea id="droste${level}" spellcheck="false" placeholder="droste step ${level}, default all: ctc">${paramValue}</textarea>`
         }
         specsPanelContent.innerHTML = `
-          <a href="javascript:['droste1','droste2','droste3'].forEach(GF_panel.cleanupStitches)" title="Reduce panel content"><img src="${this.content_home}/images/broom.png"></a>
+          <a href="javascript:['droste1','droste2','droste3'].forEach(GF_panel.cleanupStitches)" 
+             title="Reduce panel content"
+             ><img src="${this.content_home}/images/broom.png"></a>
           Specs collected from URL and clicks:
           ${this.patternInfo.specsHtmlString(q)}
           ${drosteTextField(1)}
