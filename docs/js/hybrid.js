@@ -78,7 +78,7 @@ const GF_hybrid = {
             if (basicEl) {
                 basicEl.value = basicStitch ?? '';
                 this.basicStitch.lastValid = basicStitch ?? '';
-                // TODO setColorCode();
+                this.basicStitch.setColorCode();
             }
             const drosteOnBasicEl = document.getElementById(this.drosteOnBasicStitch.id);
             if (drosteOnBasicEl) {
@@ -94,6 +94,7 @@ const GF_hybrid = {
                 const other = `document.getElementById('${GF_hybrid.recipes.drosteOnBasicStitch.id}`;
                 return `
             <label>Basic stitch:
+                <span id="colorCode"></span>
                 <input type="text" id="${this.id}"
                         value="${GF_hybrid.recipes.basicStitch.lastValid}" placeholder="empty=random; type ? for more info"
                         oninput="GF_hybrid.recipes.basicStitch.fixInput(this,${other}'))"
@@ -108,6 +109,16 @@ const GF_hybrid = {
             T is replaced with LR for proper flipping.
             Without droste, just a "-" is also allowed to drop stitches. 
             `
+            },
+            setColorCode() {
+                document.querySelector('#colorCode').innerHTML = `
+                    <svg width="20px" height="25px">
+                      <g transform="scale(2,2)">
+                        <g transform="translate(5,6)">
+                          ${PairSvg.shapes(this.lastValid.toUpperCase())}
+                        </g>
+                      </g>
+                    </svg>`
             },
             fixInput(basicStitchEl, drostOnBasicEl) {
                 let value = basicStitchEl.value.toLowerCase().trim();
@@ -161,7 +172,6 @@ const GF_hybrid = {
                     return stitches.every(g => groupRegex.test(g));
                 }
                 const value = drosteOnBasicEl.value.trim().toUpperCase();
-                drosteOnBasicEl.value = value;
                 if (isValid(value)) {
                     GF_hybrid.recipes.drosteOnBasicStitch.lastValid = value;
                     drosteOnBasicEl.value = value;
