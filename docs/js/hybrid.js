@@ -69,9 +69,13 @@ const GF_hybrid = {
         },
         createStitchGallery(containerId) {
             GF_stitches.loadStitchExamples("#" + containerId);
-            GF_stitches.setStitch = function(stitch) {
-                GF_hybrid.recipes.setRecipe(stitch);
-            }
+            document.querySelectorAll(`#${containerId} a`)
+                .forEach(a => {
+                    const href = a.getAttribute('href') || '';
+                    if (href) {
+                        a.setAttribute('href', href.replace('GF_stitches.setStitch', 'GF_hybrid.recipes.setRecipe'));
+                    }
+                });
         },
         setRecipe(basicStitch, droste1Stitches, droste2Stitches) {
             const basicEl = document.getElementById(this.basicStitch.id);
@@ -242,6 +246,57 @@ const GF_hybrid = {
             },
         }
     },
+    galleryPanels: {
+        specs: {
+            'pattern': {caption: 'Pattern gallery', height: '150px', load(){GF_tiles.loadGallery({jsAction: 'GF_hybrid.setPattern(this);return false;', containerId: 'pattern'});} },
+            'snow3': {caption: '3/6 pair snow gallery', height: '50px', load(){GF_hybrid.recipes.createSnowGallery(GF_hybrid.recipes.snow3, 'snow3', `mix4snow`);}},
+            'snow4': {caption: '4/8 pair snow gallery', height: '65px', load(){GF_hybrid.recipes.createSnowGallery(GF_hybrid.recipes.snow4, 'snow4', `images/4-8-legs`);}},
+            'stitches': {caption: 'Stitches gallery', height: '100px', load(){GF_hybrid.recipes.createStitchGallery('stitches');}}
+        },
+        createHTML(container) {
+            const galleryKeys = Object.keys(this.specs);
+            for(let i = 0; i<galleryKeys.length; i++){
+                const key1 = galleryKeys[i];
+                let options = ''
+                galleryKeys.forEach(function (key2) {
+                    const caption = GF_hybrid.galleryPanels.specs[key2].caption;
+                    if (key2 === key1) {
+                        options += `<option value='${key2}' disabled selected>${caption}</option>`;
+                    } else {
+                        options += `<option value='${key2}'>${caption}</option>`;
+                    }
+                });
+                const chooser = `<select onchange="GF_hybrid.galleryPanels.switchVisibleGallery(this, ${i});">${options}</select>`;
+                const sizeOptions = {width:'100%', height: this.specs[key1].height};
+                GF_panel.load({caption: chooser, id: key1, controls: ["resize"], size: sizeOptions, parent: container});
+                document.getElementById(key1).parentNode.style.display = 'none';
+            }
+            // allways needed; image location is wrong when calling switch/init-VisibleGallery from test-docs.hybrid.html
+            this.specs.stitches.load();
+            this.specs.stitches.loaded = true;
+        },
+        switchVisibleGallery(chooser, initialIndex){
+            chooser.parentNode.parentNode.style.display = 'none';
+            this.initVisibleGallery(chooser.value);
+            chooser.options[initialIndex].disabled = false;
+            chooser.selectedIndex = initialIndex;
+            chooser.options[initialIndex].disabled = true;
+        },
+        initVisibleGallery(galleryId){
+            if (!this.specs[galleryId].loaded) {
+                this.specs[galleryId].load()
+                this.specs[galleryId].loaded = true;
+            }
+            document.getElementById(galleryId).parentNode.style.display = 'block';
+        },
+        onlyStitches(){
+            // show panel containing the gallery
+            const stitchesEl = document.getElementById('stitches').parentNode;
+            stitchesEl.style.display = 'block';
+            // no choice for other galleries in panel caption:
+            stitchesEl.getElementsByTagName('select')[0].outerHTML = 'select stitch example';
+        }
+    },
     patternInfo: {
         linkHtmlString(q) {return `<a href="${q}" id="selfRef" style="display:none;">Updated pattern</a>`},
         specsHtmlString(q) {return `<input type="text" id="droste0" value="${q}">`},
@@ -380,13 +435,6 @@ const GF_hybrid = {
         document.getElementById('thread_panel').innerHTML = '';
         GF_panel.scrollIfTooLittleIsVisible(document.getElementById('pair_panel'));
     },
-    otherGallery(chooser, initialIndex){
-        chooser.parentNode.parentNode.style.display = 'none';
-        document.getElementById(chooser.value).parentNode.style.display = 'block';
-        chooser.options[initialIndex].disabled = false;
-        chooser.selectedIndex = initialIndex;
-        chooser.options[initialIndex].disabled = true;
-    },
     generateLegend(){
         const dict = {};
         Array.from(document.getElementById('pair_panel')
@@ -447,40 +495,11 @@ const GF_hybrid = {
      */
     load(container) {
         console.log('================ Loading panels ================');
-
-        function galleryPanels() {
-            const galleries = {
-                'pattern': {caption: 'Pattern gallery', height: '150px'},
-                'snow3': {caption: '3/6 pair snow gallery', height: '50px'},
-                'snow4': {caption: '4/8 pair snow gallery', height: '65px'},
-                'stitches': {caption: 'Stitches gallery', height: '100px'}
-            };
-            const galleryKeys = Object.keys(galleries);
-            for(i = 0; i<galleryKeys.length; i++){
-                const key1 = galleryKeys[i];
-                let options = ''
-                galleryKeys.forEach(function (key2) {
-                    if (key2 === key1) {
-                        options += `<option value='${key2}' disabled selected>${galleries[key2]['caption']}</option>`;
-                    } else {
-                        options += `<option value='${key2}'>${galleries[key2]['caption']}</option>`;
-                    }
-                });
-                const chooser = `<select onchange="GF_hybrid.otherGallery(this, ${i});">${options}</select>`;
-                const sizeOptions = {width:'100%', height: galleries[key1]['height']};
-                GF_panel.load({caption: chooser, id: key1, controls: ["resize"], size: sizeOptions, parent: container});
-                document.getElementById(key1).parentNode.style.display = 'none';
-            }
-            GF_tiles.loadGallery({jsAction: 'GF_hybrid.setPattern(this);return false;', containerId: 'pattern'});
-            GF_hybrid.recipes.createSnowGallery(GF_hybrid.recipes.snow3, 'snow3', `mix4snow`);
-            GF_hybrid.recipes.createSnowGallery(GF_hybrid.recipes.snow4, 'snow4', `images/4-8-legs`);
-            GF_hybrid.recipes.createStitchGallery('stitches');
-        }
-        function twister(type) {
+        function stepTwister(type) {
             return `<input type='number' min='0' max='3' value='0' id='${type}Step' name='${type}Step' title='droste step'></label>`;
         }
         function prefixedTwister(type){
-            return `${type}s<label>, step: ${twister(type)}`;
+            return `${type}s<label>, step: ${stepTwister(type)}`;
         }
         const pairWandHref = "javascript:GF_hybrid.generateSelectedDiagram('pair');GF_hybrid.setStitchEvents()";
         const threadWandHref = "javascript:GF_hybrid.generateSelectedDiagram('thread')";
@@ -489,7 +508,7 @@ const GF_hybrid = {
         if (q === "" || !q.includes('shiftRows')) {
             q = "patchWidth=7&patchHeight=7&footside=---x,---4,---x,---4&tile=5-,-5,5-,-5&headside=-,c,-,c,&shiftColsSW=0&shiftRowsSW=4&shiftColsSE=2&shiftRowsSE=2&e1=lclc&l2=llctt&f2=rcrc&d2=rrctt&e3=rcrc&l4=llctt&f4=lclc&d4=rrctt&droste2=e12=clcrcl,e13=ct,f42=ctcl,e32=f22=ctcr,e33=f43=lct,e31=f21=lctc,e11=rclcrc,f23=rct,f41=rctc,e10=tc,f20=tcl,e30=f40=tcr"
         }
-        galleryPanels();
+        this.galleryPanels.createHTML(container);
         GF_panel.load({caption: "tweak selected stitch", id: "tweak", size:{width:'98%', height: 'auto'}, parent: container});
         container.insertAdjacentHTML('beforeend',`
             <p>
@@ -499,7 +518,7 @@ const GF_hybrid = {
                 ${this.patternInfo.linkHtmlString(q)}
             </p>
             <p>
-                <label>Droste step number: ${twister("droste")}</label>
+                <label>Droste step number: ${stepTwister("droste")}</label>
             </p>
             <div id="toast"></div>
         `);
@@ -608,29 +627,21 @@ const GF_hybrid = {
      * */
     loadDrosteMixer(container){
         this.load(container);
-        document.getElementById('snow4').parentNode.style.display = 'block';
+        this.galleryPanels.initVisibleGallery('snow4');
         document.getElementById('drosteStep').parentNode.style.display = 'none';
     },
     /**
      * Wrapper for load. Hiding some elements.
      */
     loadSimple(container, initialStep, hiddenElements){
-        // Clear galleries that will not be used
-        GF_tiles = {loadGallery (namedArgs){ }}; // dummy to avoid errors
-        GF_hybrid.recipes.snow3 = []; // clear for performance
-        GF_hybrid.recipes.snow4 = []; // clear for performance
-
         this.load(container);
+        GF_hybrid.galleryPanels.onlyStitches();
         for (let id of ['pairStep', 'threadStep', 'drosteStep']) {
             document.getElementById(id).value = initialStep;
         }
         for (let id of hiddenElements) {
             document.getElementById(id).parentNode.style.display = 'none';
         }
-        document.getElementById(GF_hybrid.recipes.basicStitch.id).previousSibling.remove(); // remove label
-        const stitchesEl = document.getElementById('stitches').parentNode;
-        stitchesEl.style.display = 'block'; // make visible, whichever gallery is visible by default
-        stitchesEl.getElementsByTagName('select')[0].outerHTML = 'select stitch example'; // no choice for other galleries
     },
     assignToIgnored() {
         const stepValue = document.getElementById('pairStep').value * 1;

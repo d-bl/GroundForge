@@ -50,3 +50,10 @@
 }
 
 .recipe-btn {background: #FFF; border: none}
+.recipe-btn:focus {
+    outline: 1px solid #0571b0;   /* mouse + keyboard */
+    outline-offset: 2px;
+}
+.recipe-btn:focus-visible {
+    outline: 2px solid #0571b0;   /* stronger keyboard ring */
+}
