@@ -90,7 +90,6 @@ const GF_hybrid = {
             element.innerHTML += `
               <button type="button" class="recipe-btn"
                       onclick="GF_hybrid.recipes.setRecipe(GF_hybrid.getRandomStitch())">
-                <svg width="20" height="24"></svg>
                 <img src="${GF_hybrid.content_home}/images/wand.png" title="random stitch">
                 <br>random
               </button>`;
@@ -331,6 +330,23 @@ const GF_hybrid = {
             stitchesEl.getElementsByTagName('select')[0].outerHTML = 'select stitch example';
         }
     },
+    swatchSize: {
+        htmlString() { return `
+            <p>Swatch size:
+            <span style="display: inline-block; vertical-align: top">
+                <input type="number" name="patchWidth" id="patchWidth" min="3" max="28" value="?" oninput="GF_hybrid.swatchSize.valueChanged()" autofocus="">
+                <label for="patchWidth">columns</label>
+                <br>
+                <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="?" oninput="GF_hybrid.swatchSize.valueChanged()">
+                <label for="patchHeight">rows</label>
+            </span>
+            </p>
+            `;},
+        valueChanged() {
+            // TODO validate input, update first specs field and mark diagrams dirty
+            GF_hybrid.showToast('Swatch size is not yet implemented. Workaround: patchWidth=NN&patchHeight=NN in first specifications field, then click wand.');
+        }
+    },
     patternInfo: {
         linkHtmlString(q) {return `<a href="${q}" id="selfRef" style="display:none;">Updated pattern</a>`},
         specsHtmlString(q) {return `<input type="text" id="droste0" value="${q}">`},
@@ -554,6 +570,7 @@ const GF_hybrid = {
             <p>
                 <label>Droste step number: ${stepTwister("droste")}</label>
             </p>
+            ${GF_hybrid.swatchSize.htmlString()}
             <div id="toast"></div>
         `);
         GF_panel.load({caption: prefixedTwister("pair"), id: "pair_panel", wandHref: pairWandHref, controls: ["resize"], parent: container});
