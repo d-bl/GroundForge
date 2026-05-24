@@ -4,16 +4,19 @@
  * The surrounding page should take care of the house style like headers footers and menu's with help pages..
  *
  * Requires:
- * - d3.v4.min.js
- * - GroundForge-opt.js
- * - nudgePairs.js (nudgeDiagram)
+ * - d3.v4.min.js for nudgeDiagram
+ * - GroundForge-opt.js to render diagrams and color code
+ * - nudgeDiagram of nudgePairs.js
  * - panel.js
- * - stitch-gallery.js
+ * - GF_Random of stitch-gallery.js
  * @namespace
  */
 const GF_hybrid = {
     content_home: '.',
     dirtyBackGround: "#f0f0f0",
+    getRandomStitch() {
+        return GF_Random.genRandomStitch(3, 2, 1, 1);
+    },
     recipes: {
         snow4: [
             // screenshots taken at 50% zoom level
@@ -54,6 +57,20 @@ const GF_hybrid = {
             ['623541-a.png', 'CLCLC', 'CTC,CT,CRC,CTC,CTC'],
             ['623541-b.png', 'CRCRC', 'CL,CTCTCR,CT,CTC,C']
         ],
+        stitches: [
+            "cllcrrcllcrrc",
+            "ctctctc",
+            "ct",
+            "ctct",
+            "clcrclc",
+            "ctctc",
+            "ctclctc",
+            "crclct",
+            "ctclcrctc",
+            "ctcttctc",
+            "crcllrrrc",
+            "tctctllctctr",
+        ],
         createSnowGallery(recipes, containerId, imgPath) {
             const container = document.getElementById(containerId);
             for (let [img, basicStitch, droste1, droste2] of recipes) {
@@ -68,14 +85,31 @@ const GF_hybrid = {
             }
         },
         createStitchGallery(containerId) {
-            GF_stitches.loadStitchExamples("#" + containerId);
-            document.querySelectorAll(`#${containerId} a`)
-                .forEach(a => {
-                    const href = a.getAttribute('href') || '';
-                    if (href) {
-                        a.setAttribute('href', href.replace('GF_stitches.setStitch', 'GF_hybrid.recipes.setRecipe'));
-                    }
-                });
+            const element = document.querySelector("#" + containerId);
+            // random
+            element.innerHTML += `
+              <button type="button" class="recipe-btn"
+                      onclick="GF_hybrid.recipes.setRecipe(GF_hybrid.getRandomStitch())">
+                <svg width="20" height="24"></svg>
+                <img src="${GF_hybrid.content_home}/images/wand.png" title="random stitch">
+                <br>random
+              </button>`;
+            // set of predefined stitches
+            for (let stitch of GF_hybrid.recipes.stitches) {
+                element.innerHTML += `
+            <button type="button" class="recipe-btn" onclick="GF_hybrid.recipes.setRecipe('${stitch}')">
+                <svg width="20" height="24">
+                  <g transform="scale(2,2)">
+                    <g transform="translate(5,6)">
+                      ${PairSvg.shapes(stitch)}
+                    </g>
+                  </g>
+                </svg>
+                <img src="${GF_hybrid.content_home}/images/stitches/${stitch}.svg"
+                     title="${stitch}">
+                <br>${stitch}
+            </button>`
+            }
         },
         setRecipe(basicStitch, droste1Stitches, droste2Stitches) {
             const basicEl = document.getElementById(this.basicStitch.id);
@@ -343,7 +377,7 @@ const GF_hybrid = {
             const newStitchInput = document.getElementById(GF_hybrid.recipes.basicStitch.id).value;
             const newStitchValue = newStitchInput
                 ? newStitchInput
-                : GF_Random.genRandomStitch(3,2,2,0);
+                : this.getRandomStitch();
 
             const selectedText = event.currentTarget.textContent;
             const selectedStitchId = selectedText.replace(/.* /, "");
@@ -663,7 +697,7 @@ const GF_hybrid = {
                 query = query.replace(regexp, `$1$2${stitchValue}$3`);
             } else {
                 query = query.replace(regexp, (match, sep, keyEq, tail) => {
-                    const rnd = GF_Random.genRandomStitch(3, 2, 1, 1);
+                    const rnd = this.getRandomStitch();
                     return `${sep}${keyEq}${rnd}${tail}`;
                 });
             }
@@ -700,7 +734,7 @@ const GF_hybrid = {
                 if (tag !== '') {
                     const newValue = stitchValue
                         ? stitchValue
-                        : GF_Random.genRandomStitch(3,2,1,1);
+                        : this.getRandomStitch();
                     params.set(tag, newValue);
                 }
             });

@@ -49,11 +49,21 @@
     z-index: 1000;
 }
 
-.recipe-btn {background: #FFF; border: none}
-.recipe-btn:focus {
+.recipe-btn {
+    background: transparent;
+    border: none
+}
+.recipe-btn:focus,
+#stitches a:focus,
+#pattern a:focus {
     outline: 1px solid #0571b0;   /* mouse + keyboard */
     outline-offset: 2px;
 }
-.recipe-btn:focus-visible {
+.recipe-btn:focus-visible,
+#stitches a:focus-visible,
+#pattern a:focus-visible {
     outline: 2px solid #0571b0;   /* stronger keyboard ring */
+}
+a {
+    color: #0571b0;
 }
