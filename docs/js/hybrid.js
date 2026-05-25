@@ -90,7 +90,7 @@ const GF_hybrid = {
             element.innerHTML += `
               <button type="button" class="recipe-btn"
                       onclick="GF_hybrid.recipes.setRecipe(GF_hybrid.getRandomStitch())">
-                <img src="${GF_hybrid.content_home}/images/wand.png" title="random stitch">
+                <img src="${GF_hybrid.content_home}/images/dice.svg" title="random stitch">
                 <br>random
               </button>`;
             // set of predefined stitches
