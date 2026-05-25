@@ -608,7 +608,7 @@ const GF_hybrid = {
         specsPanelContent.style.height = "0";
         for (let type of ["pair", "thread"]) {
             const panelEl = document.getElementById(type + '_panel');
-            panelEl.innerHTML = "Click/tap the wand to (re)generate the diagram.";
+            panelEl.innerHTML = "Click/tap the wand to (re)generate the diagram. Large diagrams may take several seconds.";
             panelEl.style.color = "#bbbbbb";
         }
 
@@ -655,6 +655,49 @@ const GF_hybrid = {
         });
         console.log('================ Loaded panels ================');
     },
+    deferredLoadingHandle: null,
+
+    deferredLoading() {
+        if (this.deferredLoadingHandle && this.deferredLoadingHandle.cancel) {
+            this.deferredLoadingHandle.cancel();
+        }
+
+        let canceled = false;
+        let timer = null;
+        const cancel = () => {
+            canceled = true;
+            if (timer) clearTimeout(timer);
+        };
+
+        const scheduleIdle = (fn) => {
+            if ("requestIdleCallback" in window) {
+                requestIdleCallback(() => {
+                    if (!canceled) fn();
+                }); // no timeout: wait for real idle
+            } else {
+                setTimeout(() => {
+                    if (!canceled) fn();
+                }, 0);
+            }
+        };
+
+        this.deferredLoadingHandle = { cancel };
+
+        // Give images/layout a head start
+        timer = setTimeout(() => {
+            scheduleIdle(() => {
+                this.generateSelectedDiagram("pair");
+                this.setStitchEvents();
+
+                scheduleIdle(() => {
+                    this.generateSelectedDiagram("thread");
+                    if (this.deferredLoadingHandle?.cancel === cancel) {
+                        this.deferredLoadingHandle = null;
+                    }
+                });
+            });
+        }, 30); // tune 80-200ms
+    },
     /**
      * Wrapper for loadSimple. Initial step is 1 and specs panel is shown immediately
      *
@@ -680,6 +723,7 @@ const GF_hybrid = {
         this.load(container);
         this.galleryPanels.initVisibleGallery('snow4');
         document.getElementById('drosteStep').parentNode.style.display = 'none';
+        GF_hybrid.deferredLoading();
     },
     /**
      * Wrapper for load. Hiding some elements.
@@ -693,6 +737,7 @@ const GF_hybrid = {
         for (let id of hiddenElements) {
             document.getElementById(id).parentNode.style.display = 'none';
         }
+        GF_hybrid.deferredLoading();
     },
     assignToIgnored() {
         const stepValue = document.getElementById('pairStep').value * 1;
