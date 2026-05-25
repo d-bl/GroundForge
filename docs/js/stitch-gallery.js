@@ -238,13 +238,13 @@ const GF_Random = {
 
         // twists before first C
         if (maxTwistsBefore > 0) {
-            stitch += GF_Random.genTwists(maxTwistsBefore);
+            stitch += GF_Random.genTwistsBA(maxTwistsBefore);
         }
 
         // generate part of stitch
         for (let countCrosses = 1; countCrosses <= lengthCrosses - 1; countCrosses++) {
             stitch += "C";
-            stitch += GF_Random.genTwists(maxTwistsBetweenCrosses);
+            stitch += GF_Random.genTwistsCC(maxTwistsBetweenCrosses);
         }
 
         // last Cross
@@ -252,16 +252,16 @@ const GF_Random = {
 
         // twists after last C
         if (maxTwistsAfter > 0) {
-            stitch += GF_Random.genTwists(maxTwistsAfter);
+            stitch += GF_Random.genTwistsBA(maxTwistsAfter);
         }
 
         return stitch;
     },
 
-    // generate a string with "T", "L", "R"
+    // generate a string with "L", "R".
     // note: string of 0, 1, ..., maxTwists twists, therefor (maxTwists + 1)
-    // simply generating a number of L- and of R-twists, gives a change for zero twists of square(maxTwists)
-    genTwists(maxTwists) {
+    // This function gives a chance of 0 twists of (1 / maxTwitst)
+    genTwistsBA(maxTwists) {
         let lengthAll = Math.floor(Math.random() * (maxTwists + 1));
 
         let lengthL = Math.floor(Math.random() * (lengthAll + 1));
@@ -279,6 +279,23 @@ const GF_Random = {
             }
         }
 
+        // "T" is short for combination of "L" and "R".
+        let lengthT = Math.min(lengthL, lengthR);
+        lengthL = lengthL - lengthT;
+        lengthR = lengthR - lengthT;
+
+        return "T".repeat(lengthT) + "L".repeat(lengthL) + "R".repeat(lengthR);
+    },
+
+    // generate a string with "L", "R".
+    // note: string of 0, 1, ..., maxTwists twists, therefor (maxTwists + 1)
+    // This function gives a change for zero twists of (1 / square(maxTwists))
+    genTwistsCC(maxTwists) {
+
+        let lengthL = Math.floor(Math.random() * (maxTwists + 1));
+        let lengthR = Math.floor(Math.random() * (maxTwists + 1));
+
+        // "T" is short for combination of "L" and "R".
         let lengthT = Math.min(lengthL, lengthR);
         lengthL = lengthL - lengthT;
         lengthR = lengthR - lengthT;
