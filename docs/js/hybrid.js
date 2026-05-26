@@ -72,13 +72,14 @@ const GF_hybrid = {
             "tctctllctctr",
         ],
         createSnowGallery(recipes, containerId, imgPath) {
+            // TODO make imgPath member of object
             const container = document.getElementById(containerId);
             for (let [img, basicStitch, droste1, droste2] of recipes) {
                 container.insertAdjacentHTML('beforeend', `
                             <button type="button"
                                     class="recipe-btn">
                               <img src="${GF_hybrid.content_home}/${imgPath}/${img}"
-                                   onclick="GF_hybrid.recipes.setRecipe('${basicStitch}','${droste1}','${droste2 ?? ''}')"
+                                   onclick="GF_hybrid.tweak.setRecipe('${basicStitch}','${droste1}','${droste2 ?? ''}')"
                                    alt="${basicStitch} ; ${droste1}${droste2 ? ' ; ' + droste2 : ''}">
                             </button>
                         `);
@@ -89,14 +90,14 @@ const GF_hybrid = {
             // random
             element.innerHTML += `
               <button type="button" class="recipe-btn"
-                      onclick="GF_hybrid.recipes.setRecipe(GF_hybrid.getRandomStitch())">
+                      onclick="GF_hybrid.tweak.setRecipe(GF_hybrid.getRandomStitch())">
                 <img src="${GF_hybrid.content_home}/images/stitches/random.svg" title="random stitch">
                 <br>random
               </button>`;
             // set of predefined stitches
             for (let stitch of GF_hybrid.recipes.stitches) {
                 element.innerHTML += `
-            <button type="button" class="recipe-btn" onclick="GF_hybrid.recipes.setRecipe('${stitch}')">
+            <button type="button" class="recipe-btn" onclick="GF_hybrid.tweak.setRecipe('${stitch}')">
                 <svg width="20" height="24">
                   <g transform="scale(2,2)">
                     <g transform="translate(5,6)">
@@ -110,31 +111,27 @@ const GF_hybrid = {
             </button>`
             }
         },
-        setRecipe(basicStitch, droste1Stitches, droste2Stitches) {
-            const basicEl = document.getElementById(this.basicStitch.id);
-            if (basicEl) {
-                basicEl.value = basicStitch ?? '';
-                this.basicStitch.lastValid = basicStitch ?? '';
-                this.basicStitch.setColorCode();
-            }
-            const drosteOnBasicEl = document.getElementById(this.drosteOnBasicStitch.id);
-            if (drosteOnBasicEl) {
-                drosteOnBasicEl.value = droste1Stitches ?? '';
-                this.drosteOnBasicStitch.lastValid = droste1Stitches ?? '';
-            }
-            // TODO: second step of droste stitches, requires more intelligence in resetting previously assigned stitches
+    },
+    tweak: {
+        htmlString() { return `
+            <p>
+            ${this.basicStitch.htmlString()} <br>
+            ${this.drosteOnBasicStitch.htmlString()}
+            </p>
+            ${this.flip.htmlString()}
+        `;
         },
         basicStitch: {
             id: 'basicStitchInput',
             lastValid: '',
             htmlString() {
-                const other = `document.getElementById('${GF_hybrid.recipes.drosteOnBasicStitch.id}`;
+                const other = `document.getElementById('${GF_hybrid.tweak.drosteOnBasicStitch.id}`;
                 return `
             <label>Basic stitch:
                 <span id="colorCode"></span>
                 <input type="text" id="${this.id}"
-                        value="${GF_hybrid.recipes.basicStitch.lastValid}" placeholder="empty=random; type ? for more info"
-                        oninput="GF_hybrid.recipes.basicStitch.fixInput(this,${other}'))"
+                        value="${GF_hybrid.tweak.basicStitch.lastValid}" placeholder="empty=random; type ? for more info"
+                        oninput="GF_hybrid.tweak.basicStitch.fixInput(this,${other}'))"
                 />
              </label>`
             },
@@ -180,12 +177,12 @@ const GF_hybrid = {
             id: 'drosteStitches',
             lastValid: '',
             htmlString() {
-                const other = `document.getElementById('${GF_hybrid.recipes.basicStitch.id}`;
+                const other = `document.getElementById('${GF_hybrid.tweak.basicStitch.id}`;
                 return `
             <label>Droste applied to basic stitch:
                 <input type="text" id="${this.id}"
                         value="${this.lastValid}" placeholder="Type ? for info"
-                        oninput="GF_hybrid.recipes.drosteOnBasicStitch.fixInput(${other}'), this)"
+                        oninput="GF_hybrid.tweak.drosteOnBasicStitch.fixInput(${other}'), this)"
                 />
             </label>`
             },
@@ -210,10 +207,10 @@ const GF_hybrid = {
                 }
                 const value = drosteOnBasicEl.value.trim().toUpperCase();
                 if (isValid(value)) {
-                    GF_hybrid.recipes.drosteOnBasicStitch.lastValid = value;
+                    this.lastValid = value;
                     drosteOnBasicEl.value = value;
                 } else {
-                    drosteOnBasicEl.value = GF_hybrid.recipes.drosteOnBasicStitch.lastValid;
+                    drosteOnBasicEl.value = this.lastValid;
                     const pos1 = drosteOnBasicEl.selectionStart - 1;
                     const pos2 = drosteOnBasicEl.selectionEnd - 1;
                     drosteOnBasicEl.setSelectionRange(pos1, pos2);
@@ -224,9 +221,9 @@ const GF_hybrid = {
         flip: {
             htmlString() {
                 return `<p>Flip:
-                        <button onclick="GF_hybrid.recipes.flip.apply('b2d')">&harr;</button>
-                        <button onclick="GF_hybrid.recipes.flip.apply('b2p')">&varr;</button>
-                        <button onclick="GF_hybrid.recipes.flip.apply('b2d');GF_hybrid.recipes.flip.apply('b2p')">both</button>
+                        <button onclick="GF_hybrid.tweak.flip.apply('b2d')">&harr;</button>
+                        <button onclick="GF_hybrid.tweak.flip.apply('b2p')">&varr;</button>
+                        <button onclick="GF_hybrid.tweak.flip.apply('b2d');GF_hybrid.recipes.flip.apply('b2p')">both</button>
                         </p>
                         `;
             },
@@ -241,8 +238,8 @@ const GF_hybrid = {
                             .split("").reverse().join("");
                     }
                 }
-                const basicEl = document.getElementById(GF_hybrid.recipes.basicStitch.id);
-                const drosteEl = document.getElementById(GF_hybrid.recipes.drosteOnBasicStitch.id);
+                const basicEl = document.getElementById(GF_hybrid.tweak.basicStitch.id);
+                const drosteEl = document.getElementById(GF_hybrid.tweak.drosteOnBasicStitch.id);
                 const basicValue = basicEl.value.toLowerCase()
                     .replaceAll(/[^crlt]/g, '')
                 if (drosteEl && drosteEl.value.trim()  !== '') {
@@ -264,19 +261,34 @@ const GF_hybrid = {
                         for (let i = 0; i < flipped.length; i++) {
                             flipped[i] = `x${i}=${flipped[i]}`;
                         }
-                        GF_hybrid.recipes.setRecipe(
+                        GF_hybrid.tweak.setRecipe(
                             flip2(tLessBasicValue),
                             flipped.join(';')
                                 .replace(/x[0-9]+=ctc(;|$)/gi,'')
                                 .replace(/;$/,'')
                         );
                     } else {
-                        GF_hybrid.recipes.setRecipe(flip2(basicValue), flip2(drosteEl.value));
+                        GF_hybrid.tweak.setRecipe(flip2(basicValue), flip2(drosteEl.value));
                     }
                 } else {
-                    GF_hybrid.recipes.setRecipe(flip2(basicValue));
+                    GF_hybrid.tweak.setRecipe(flip2(basicValue));
                 }
             },
+        },
+        setRecipe(basicStitch, droste1Stitches, droste2Stitches) {
+            // TODO move to separate object (tweak?) with basicStitch, basicOnDroste and flip
+            const basicEl = document.getElementById(this.basicStitch.id);
+            if (basicEl) {
+                basicEl.value = basicStitch ?? '';
+                this.basicStitch.lastValid = basicStitch ?? '';
+                this.basicStitch.setColorCode();
+            }
+            const drosteOnBasicEl = document.getElementById(this.drosteOnBasicStitch.id);
+            if (drosteOnBasicEl) {
+                drosteOnBasicEl.value = droste1Stitches ?? '';
+                this.drosteOnBasicStitch.lastValid = droste1Stitches ?? '';
+            }
+            // TODO: second step of droste stitches, requires more intelligence in resetting previously assigned stitches
         }
     },
     galleryPanels: {
@@ -389,8 +401,8 @@ const GF_hybrid = {
     },
     setStitchEvents() {
         function stitchHandler(event) {
-            const drosteValue = document.getElementById(GF_hybrid.recipes.drosteOnBasicStitch.id).value;
-            const newStitchInput = document.getElementById(GF_hybrid.recipes.basicStitch.id).value;
+            const drosteValue = document.getElementById(GF_hybrid.tweak.drosteOnBasicStitch.id).value;
+            const newStitchInput = document.getElementById(GF_hybrid.tweak.basicStitch.id).value;
             const newStitchValue = newStitchInput
                 ? newStitchInput
                 : this.getRandomStitch();
@@ -577,13 +589,7 @@ const GF_hybrid = {
         GF_panel.load({caption: prefixedTwister("thread"), id: "thread_panel", wandHref: threadWandHref, controls: ["resize", "color"], parent: container});
         GF_panel.load({caption: 'stitch enumeration', id: "legend_panel", controls: ["resize"], parent: container});
         GF_panel.load({caption: "specifications", id: "specs", controls: ["resize"], size:{width: '100%', height: '300px'}, parent: container});
-        document.getElementById('tweak').insertAdjacentHTML('beforeend',`
-            <p>
-            ${this.recipes.basicStitch.htmlString()} <br>
-            ${this.recipes.drosteOnBasicStitch.htmlString()}
-            </p>
-            ${this.recipes.flip.htmlString()}
-        `);
+        document.getElementById('tweak').insertAdjacentHTML('beforeend', GF_hybrid.tweak.htmlString());
         const params = new URLSearchParams(q);
         document.getElementById('tweak').parentNode.style = `width: calc(100% - 7px)`;
         document.getElementById('pairStep').value = params.get('pairStep') || 0;
@@ -704,7 +710,7 @@ const GF_hybrid = {
      * @param {!HTMLElement} container receives the generated components
      */
     loadDroste(container){
-        this.loadSimple(container, 1, [GF_hybrid.recipes.drosteOnBasicStitch.id, 'pairStep', 'threadStep', 'snow3', 'snow4'] );
+        this.loadSimple(container, 1, [GF_hybrid.tweak.drosteOnBasicStitch.id, 'pairStep', 'threadStep', 'snow3', 'snow4'] );
     },
     /**
      * Wrapper for loadSimple. Initial step is 0 and specs panel is initially hidden, shown when step becomes larger.
@@ -712,7 +718,7 @@ const GF_hybrid = {
      * @param {!HTMLElement} container receives the generated components
      * */
     loadStitches(container){
-        this.loadSimple(container, 0, [GF_hybrid.recipes.drosteOnBasicStitch.id, 'pairStep', 'threadStep', 'snow3',  'snow4', 'drosteStep', 'specs'] );
+        this.loadSimple(container, 0, [GF_hybrid.tweak.drosteOnBasicStitch.id, 'pairStep', 'threadStep', 'snow3',  'snow4', 'drosteStep', 'specs'] );
     },
     /**
      * Wrapper for load. Hides the third step field
@@ -741,14 +747,14 @@ const GF_hybrid = {
     },
     assignToIgnored() {
         const stepValue = document.getElementById('pairStep').value * 1;
-        const stitchValue = document.getElementById(GF_hybrid.recipes.basicStitch.id).value;
+        const stitchValue = document.getElementById(GF_hybrid.tweak.basicStitch.id).value;
         let query = this.patternInfo.getValue();
 
         // key=- where key is letters+digits (e.g. e1=-, f42=-)
         // this also matches droste1=- but not expecting just a dash as content for the droste specs
         const regexp = /(^|&)([a-z]+[0-9]+=)-(&|$)/gi
 
-        if (document.getElementById(GF_hybrid.recipes.drosteOnBasicStitch.id).value.trim() !== '') {
+        if (document.getElementById(GF_hybrid.tweak.drosteOnBasicStitch.id).value.trim() !== '') {
             this.showToast("Assign to ignored is not implemented for droste applied to basic stitch")
         } else if (stepValue !== 0 && stitchValue) {
             this.showToast("Assign to ignored is only implemented for step 1")
@@ -769,11 +775,11 @@ const GF_hybrid = {
     },
     assignToAll() {
         const stepValue = document.getElementById('pairStep').value * 1;
-        const stitchValue = document.getElementById(GF_hybrid.recipes.basicStitch.id).value;
+        const stitchValue = document.getElementById(GF_hybrid.tweak.basicStitch.id).value;
         const stitchTitles = Array.from(document.getElementById('pair_panel')
             .getElementsByTagName('title')
         );
-        if (document.getElementById(GF_hybrid.recipes.drosteOnBasicStitch.id).value.trim() !== '') {
+        if (document.getElementById(GF_hybrid.tweak.drosteOnBasicStitch.id).value.trim() !== '') {
             this.showToast("Assign to all is not implemented for droste applied to basic stitch")
         } else if (stepValue !== 0 && stitchValue) {
             document.getElementById('droste' + stepValue).value =
