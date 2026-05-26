@@ -113,18 +113,18 @@ const GF_hybrid = {
         },
     },
     tweak: {
-        htmlString() { return `
+        getHtmlString() { return `
             <p>
-            ${this.basicStitch.htmlString()} <br>
-            ${this.drosteOnBasicStitch.htmlString()}
+            ${this.basicStitch.getHtmlString()} <br>
+            ${this.drosteOnBasicStitch.getHtmlString()}
             </p>
-            ${this.flip.htmlString()}
+            ${this.flip.getHtmlString()}
         `;
         },
         basicStitch: {
             id: 'basicStitchInput',
             lastValid: '',
-            htmlString() {
+            getHtmlString() {
                 const other = `document.getElementById('${GF_hybrid.tweak.drosteOnBasicStitch.id}`;
                 return `
             <label>Basic stitch:
@@ -135,7 +135,7 @@ const GF_hybrid = {
                 />
              </label>`
             },
-            msg() { // TODO adjust to page and droste level
+            getMsg() { // TODO adjust to page and droste level
                 return `
             Basic stitch only allows the characters  T, C, L, R.
             Select examples from a stitches or snow gallery.
@@ -163,7 +163,7 @@ const GF_hybrid = {
                     const pos1 = basicStitchEl.selectionStart - 1;
                     const pos2 = basicStitchEl.selectionEnd - 1;
                     basicStitchEl.setSelectionRange(pos1, pos2);
-                    GF_hybrid.showToast(this.msg());
+                    GF_hybrid.showToast(this.getMsg());
                     return;
                 }
                 if (hasDroste) {
@@ -176,7 +176,7 @@ const GF_hybrid = {
         drosteOnBasicStitch: {
             id: 'drosteStitches',
             lastValid: '',
-            htmlString() {
+            getHtmlString() {
                 const other = `document.getElementById('${GF_hybrid.tweak.basicStitch.id}`;
                 return `
             <label>Droste applied to basic stitch:
@@ -186,7 +186,7 @@ const GF_hybrid = {
                 />
             </label>`
             },
-            msg() { return `
+            getMsg() { return `
             "Droste applied to basic stitch" needs either numbered stitches,
              or as many stitches as characters in "Basic stitch".
              Allowed separators between stitches: ";.," 
@@ -214,12 +214,12 @@ const GF_hybrid = {
                     const pos1 = drosteOnBasicEl.selectionStart - 1;
                     const pos2 = drosteOnBasicEl.selectionEnd - 1;
                     drosteOnBasicEl.setSelectionRange(pos1, pos2);
-                    GF_hybrid.showToast(this.msg());
+                    GF_hybrid.showToast(this.getMsg());
                 }
             },
         },
         flip: {
-            htmlString() {
+            getHtmlString() {
                 return `<p>Flip:
                         <button onclick="GF_hybrid.tweak.flip.apply('b2d')">&harr;</button>
                         <button onclick="GF_hybrid.tweak.flip.apply('b2p')">&varr;</button>
@@ -343,7 +343,7 @@ const GF_hybrid = {
         }
     },
     swatchSize: {
-        htmlString() { return `
+        getHtmlString() { return `
             <p>Swatch size:
             <span style="display: inline-block; vertical-align: top">
                 <input type="number" name="patchWidth" id="patchWidth" min="3" max="28" value="?" oninput="GF_hybrid.swatchSize.valueChanged()" autofocus="">
@@ -360,8 +360,8 @@ const GF_hybrid = {
         }
     },
     patternInfo: {
-        linkHtmlString(q) {return `<a href="${q}" id="selfRef" style="display:none;">Updated pattern</a>`},
-        specsHtmlString(q) {return `<input type="text" id="droste0" value="${q}">`},
+        getLinkHtmlString(q) {return `<a href="${q}" id="selfRef" style="display:none;">Updated pattern</a>`},
+        getSpecsHtmlString(q) {return `<input type="text" id="droste0" value="${q}">`},
         setValue(value) {
             const specsField = document.getElementById('droste0');
             if(specsField) {
@@ -577,19 +577,19 @@ const GF_hybrid = {
                 Assign tweaked stitch <button onclick="GF_hybrid.assignToAll()" >to all</button>
                 <button onclick="GF_hybrid.assignToIgnored()" id="ignored">to ignored</button>
                 or click a stich in the pair diagram.
-                ${this.patternInfo.linkHtmlString(q)}
+                ${this.patternInfo.getLinkHtmlString(q)}
             </p>
             <p>
                 <label>Droste step number: ${stepTwister("droste")}</label>
             </p>
-            ${GF_hybrid.swatchSize.htmlString()}
+            ${GF_hybrid.swatchSize.getHtmlString()}
             <div id="toast"></div>
         `);
         GF_panel.load({caption: prefixedTwister("pair"), id: "pair_panel", wandHref: pairWandHref, controls: ["resize"], parent: container});
         GF_panel.load({caption: prefixedTwister("thread"), id: "thread_panel", wandHref: threadWandHref, controls: ["resize", "color"], parent: container});
         GF_panel.load({caption: 'stitch enumeration', id: "legend_panel", controls: ["resize"], parent: container});
         GF_panel.load({caption: "specifications", id: "specs", controls: ["resize"], size:{width: '100%', height: '300px'}, parent: container});
-        document.getElementById('tweak').insertAdjacentHTML('beforeend', GF_hybrid.tweak.htmlString());
+        document.getElementById('tweak').insertAdjacentHTML('beforeend', GF_hybrid.tweak.getHtmlString());
         const params = new URLSearchParams(q);
         document.getElementById('tweak').parentNode.style = `width: calc(100% - 7px)`;
         document.getElementById('pairStep').value = params.get('pairStep') || 0;
@@ -604,7 +604,7 @@ const GF_hybrid = {
              title="Reduce panel content"
              ><img src="${this.content_home}/images/broom.png"></a>
           Specs collected from URL and clicks:
-          ${this.patternInfo.specsHtmlString(q)}
+          ${this.patternInfo.getSpecsHtmlString(q)}
           ${drosteTextField(1)}
           ${drosteTextField(2)}
           ${drosteTextField(3)}
