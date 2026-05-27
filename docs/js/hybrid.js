@@ -186,13 +186,13 @@ const GF_hybrid = {
                 />
             </label>`
             },
-            getMsg() { return `
-            "Droste applied to basic stitch" needs either numbered stitches,
-             or as many stitches as characters in "Basic stitch".
-             Allowed separators between stitches: ";.," 
-             Example of a numbered stitch: "X12=CTCT".
-             Default for not specified stitches is "CTC".
-        `},
+            msg: `
+                "Droste applied to basic stitch" needs either numbered stitches,
+                 or as many stitches as characters in "Basic stitch".
+                 Allowed separators between stitches: ";.," 
+                 Example of a numbered stitch: "X12=CTCT".
+                 Default for not specified stitches is "CTC".
+            `,
             fixInput(basicStitchEl, drosteOnBasicEl) {
                 function isValid(str) {
                     if(str === '') return true
@@ -214,18 +214,18 @@ const GF_hybrid = {
                     const pos1 = drosteOnBasicEl.selectionStart - 1;
                     const pos2 = drosteOnBasicEl.selectionEnd - 1;
                     drosteOnBasicEl.setSelectionRange(pos1, pos2);
-                    GF_hybrid.showToast(this.getMsg());
+                    GF_hybrid.showToast(this.msg);
                 }
             },
         },
         flip: {
-            getHtmlString() {
-                return `<p>Flip:
-                        <button onclick="GF_hybrid.tweak.flip.apply('b2d')">&harr;</button>
-                        <button onclick="GF_hybrid.tweak.flip.apply('b2p')">&varr;</button>
-                        <button onclick="GF_hybrid.tweak.flip.apply('b2d');GF_hybrid.recipes.flip.apply('b2p')">both</button>
-                        </p>
-                        `;
+            getHtmlString() { return `
+                <p>Flip:
+                <button onclick="GF_hybrid.tweak.flip.apply('b2d')">&harr;</button>
+                <button onclick="GF_hybrid.tweak.flip.apply('b2p')">&varr;</button>
+                <button onclick="GF_hybrid.tweak.flip.apply('b2d');GF_hybrid.recipes.flip.apply('b2p')">both</button>
+                </p>
+                `;
             },
             apply(direction) {
                 function flip2(value) {
@@ -316,7 +316,7 @@ const GF_hybrid = {
                 GF_panel.load({caption: chooser, id: key1, controls: ["resize"], size: sizeOptions, parent: container});
                 document.getElementById(key1).parentNode.style.display = 'none';
             }
-            // allways needed; image location is wrong when calling switch/init-VisibleGallery from test-docs.hybrid.html
+            // allways needed
             this.specs.stitches.load();
             this.specs.stitches.loaded = true;
         },
@@ -344,22 +344,25 @@ const GF_hybrid = {
     },
     swatchSize: {
         getHtmlString() { return `
-            <p>Swatch size:
+            Swatch size:
             <span style="display: inline-block; vertical-align: top">
-                <input type="number" name="patchWidth" id="patchWidth" min="3" max="28" value="?" oninput="GF_hybrid.swatchSize.valueChanged()" autofocus="">
-                <label for="patchWidth">columns</label>
+                <label>
+                    <input type="number" name="patchWidth" id="patchWidth" min="3" max="28" value="?" oninput="GF_hybrid.swatchSize.valueChanged()" autofocus="">
+                    columns
+                </label>
                 <br>
-                <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="?" oninput="GF_hybrid.swatchSize.valueChanged()">
-                <label for="patchHeight">rows</label>
+                <label>
+                    <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="?" oninput="GF_hybrid.swatchSize.valueChanged()">
+                    rows
+                </label>
             </span>
-            </p>
             `;},
         valueChanged() {
             // TODO validate input, update first specs field and mark diagrams dirty
             GF_hybrid.showToast('Swatch size is not yet implemented. Workaround: patchWidth=NN&patchHeight=NN in first specifications field, then click wand.');
         }
     },
-    patternInfo: {
+    patternInfo: { // TODO also the specs fields for droste
         getLinkHtmlString(q) {return `<a href="${q}" id="selfRef" style="display:none;">Updated pattern</a>`},
         getSpecsHtmlString(q) {return `<input type="text" id="droste0" value="${q}">`},
         setValue(value) {
@@ -383,6 +386,95 @@ const GF_hybrid = {
             if(patternLink) {
                 return patternLink.href.split('?')[1];
             }
+        }
+    },
+    steps:{
+        getHtmlString(type){ return `
+            <label >
+                ${type === 'droste'
+                ? '<span>Droste step number: ' // one that rules the hidden others (pair/thread)
+                : `${type}s<span>, step: `
+                }
+                <input type='number' min='0' max='3' value='0'
+                id='${type}Step' name='${type}Step' title='droste step' >
+            </label>
+            `;
+        },
+        init(type) {
+            const specs = document.getElementById('droste0');
+            const params = new URLSearchParams(specs ? specs.value : '');
+            const pairStep = document.getElementById('pairStep');
+            const threadStep = document.getElementById('threadStep');
+            let hide = [];
+            switch(type) {
+                case 'drosteMixer':
+                    pairStep.value = params.get('pairStep') || 0;
+                    threadStep.value = params.get('threadStep') || 1;
+                    GF_hybrid.hideParents(['drosteStep']);
+                    break;
+                case 'droste':
+                    pairStep.value = params.get('pairStep') || 1;
+                    threadStep.value = params.get('pairStep') || 1;
+                    GF_hybrid.hideParents(['pairStep','threadStep']);
+                    break;
+                default: // in practice: stitches
+                    pairStep.value = 0;
+                    threadStep.value = 0;
+                    GF_hybrid.hideParents(['pairStep','threadStep', 'drosteStep']);
+            }
+        },
+        setListeners() {
+            function markDirty(id) {
+                const panelIds = id === 'drosteStep'
+                    ? ['pair_panel', 'thread_panel']
+                    : [id.replace('Step', '') + '_panel'];
+
+                panelIds.forEach(pid => {
+                    const panelEl = document.getElementById(pid);
+                    if (panelEl.getElementsByTagName('svg').length > 0) {
+                        panelEl.style.backgroundColor = GF_hybrid.dirtyBackGround;
+                    }
+                });
+            }
+            function isVisible(id) {
+                const el = document.getElementById(id);
+                if (!el) return false;
+                const cs = window.getComputedStyle(el);
+                if (cs.display === 'none' || cs.visibility === 'hidden' || cs.opacity === '0') return false;
+                const rect = el.getBoundingClientRect();
+                return rect.width > 0 && rect.height > 0;
+            }
+            function fixStepNr(e) {
+                const val = parseInt(e.target.value, 10);
+                const snowVisible = isVisible(("snow3")) || isVisible(("snow4"));
+                const max = snowVisible && e.target.id === 'pairStep' ? 2 : 3;
+                const step = isNaN(val) ? 0 : Math.min(max, Math.max(0, val));
+                if (val !== step) GF_hybrid.showToast("Steps: min=0, max=3, max for pairs is 2 when a snow gallery is visible.")
+                e.target.value = step;
+                markDirty(e.target.id);
+                return step;
+            }
+            function setDisplayValues(step) {
+                document.getElementById('ignored').style.display = step === 0 ? 'inline-block' : 'none';
+                if (step > 0) {
+                    const specsStyle = document.getElementById('specs').style;
+                    if (specsStyle.display === 'none')
+                        specsStyle.height = '0';
+                    specsStyle.display = 'block';
+                }
+            }
+            document.getElementById('threadStep').addEventListener('input', fixStepNr);
+            document.getElementById('pairStep').addEventListener('input', e => {
+                const step = fixStepNr(e);
+                setDisplayValues(step);
+                document.getElementById('drosteStep').value = step;
+            });
+            document.getElementById('drosteStep').addEventListener('input', e => {
+                const step = fixStepNr(e);
+                setDisplayValues(step);
+                document.getElementById('threadStep').value = step;
+                document.getElementById('pairStep').value = step;
+            });
         }
     },
     generateSelectedDiagram(diagramType) {
@@ -557,12 +649,6 @@ const GF_hybrid = {
      */
     load(container) {
         console.log('================ Loading panels ================');
-        function stepTwister(type) {
-            return `<input type='number' min='0' max='3' value='0' id='${type}Step' name='${type}Step' title='droste step'></label>`;
-        }
-        function prefixedTwister(type){
-            return `${type}s<label>, step: ${stepTwister(type)}`;
-        }
         const pairWandHref = "javascript:GF_hybrid.generateSelectedDiagram('pair');GF_hybrid.setStitchEvents()";
         const threadWandHref = "javascript:GF_hybrid.generateSelectedDiagram('thread')";
         let q = new URL(document.documentURI).search.slice(1)
@@ -580,20 +666,19 @@ const GF_hybrid = {
                 ${this.patternInfo.getLinkHtmlString(q)}
             </p>
             <p>
-                <label>Droste step number: ${stepTwister("droste")}</label>
-            </p>
+            ${this.steps.getHtmlString("droste")}
             ${GF_hybrid.swatchSize.getHtmlString()}
+            </p>
             <div id="toast"></div>
         `);
-        GF_panel.load({caption: prefixedTwister("pair"), id: "pair_panel", wandHref: pairWandHref, controls: ["resize"], parent: container});
-        GF_panel.load({caption: prefixedTwister("thread"), id: "thread_panel", wandHref: threadWandHref, controls: ["resize", "color"], parent: container});
+        GF_panel.load({caption: this.steps.getHtmlString("pair"), id: "pair_panel", wandHref: pairWandHref, controls: ["resize"], parent: container});
+        GF_panel.load({caption: this.steps.getHtmlString("thread"), id: "thread_panel", wandHref: threadWandHref, controls: ["resize", "color"], parent: container});
         GF_panel.load({caption: 'stitch enumeration', id: "legend_panel", controls: ["resize"], parent: container});
         GF_panel.load({caption: "specifications", id: "specs", controls: ["resize"], size:{width: '100%', height: '300px'}, parent: container});
+        this.steps.setListeners();
         document.getElementById('tweak').insertAdjacentHTML('beforeend', GF_hybrid.tweak.getHtmlString());
         const params = new URLSearchParams(q);
         document.getElementById('tweak').parentNode.style = `width: calc(100% - 7px)`;
-        document.getElementById('pairStep').value = params.get('pairStep') || 0;
-        document.getElementById('threadStep').value = params.get('threadStep') || 1;
         const specsPanelContent = document.getElementById('specs');
         function drosteTextField(level) {
             const paramValue = (params.get('droste'+(level+1)) || '').replaceAll(',','\n') + '\n' || '';
@@ -618,47 +703,6 @@ const GF_hybrid = {
             panelEl.style.color = "#bbbbbb";
         }
 
-        function markDirty(id) {
-            const panelIds = id === 'drosteStep'
-                ? ['pair_panel', 'thread_panel']
-                : [id.replace('Step', '') + '_panel'];
-
-            panelIds.forEach(pid => {
-                const panelEl = document.getElementById(pid);
-                if (panelEl.getElementsByTagName('svg').length > 0) {
-                    panelEl.style.backgroundColor = GF_hybrid.dirtyBackGround;
-                }
-            });
-        }
-        function stepNrChanged(e) {
-            const val = parseInt(e.target.value, 10);
-            // TODO: in case of a snow gallery: limit to 2
-            const step = isNaN(val) ? 0 : Math.min(3, Math.max(0, val));
-            e.target.value = step;
-            markDirty(e.target.id);
-            return step;
-        }
-        function setDisplayValues(step) {
-            document.getElementById('ignored').style.display = step === 0 ? 'inline-block' : 'none';
-            if (step > 0) {
-                const specsStyle = document.getElementById('specs').style;
-                if (specsStyle.display === 'none')
-                    specsStyle.height = '0';
-                specsStyle.display = 'block';
-            }
-        }
-        document.getElementById('threadStep').addEventListener('change', stepNrChanged);
-        document.getElementById('pairStep').addEventListener('change', e => {
-            const step = stepNrChanged(e);
-            setDisplayValues(step);
-            document.getElementById('drosteStep').value = step;
-        });
-        document.getElementById('drosteStep').addEventListener('change', e => {
-            const step = stepNrChanged(e);
-            setDisplayValues(step);
-            document.getElementById('threadStep').value = step;
-            document.getElementById('pairStep').value = step;
-        });
         console.log('================ Loaded panels ================');
     },
     deferredLoadingHandle: null,
@@ -704,21 +748,34 @@ const GF_hybrid = {
             });
         }, 30); // tune 80-200ms
     },
+    hideParents(hiddenElements) {
+        for (let id of hiddenElements) {
+            document.getElementById(id).parentNode.style.display = 'none';
+        }
+    },
     /**
-     * Wrapper for loadSimple. Initial step is 1 and specs panel is shown immediately
+     * Wrapper for load. Initial step is 1 and specs panel is shown immediately
      *
      * @param {!HTMLElement} container receives the generated components
      */
     loadDroste(container){
-        this.loadSimple(container, 1, [GF_hybrid.tweak.drosteOnBasicStitch.id, 'pairStep', 'threadStep', 'snow3', 'snow4'] );
+        this.load(container);
+        GF_hybrid.galleryPanels.onlyStitches();
+        this.hideParents([GF_hybrid.tweak.drosteOnBasicStitch.id]);
+        this.steps.init('droste');
+        GF_hybrid.deferredLoading();
     },
     /**
-     * Wrapper for loadSimple. Initial step is 0 and specs panel is initially hidden, shown when step becomes larger.
+     * Wrapper for load. Initial step is 0 and specs panel is initially hidden, shown when step becomes larger.
      *
      * @param {!HTMLElement} container receives the generated components
      * */
     loadStitches(container){
-        this.loadSimple(container, 0, [GF_hybrid.tweak.drosteOnBasicStitch.id, 'pairStep', 'threadStep', 'snow3',  'snow4', 'drosteStep', 'specs'] );
+        this.load(container);
+        GF_hybrid.galleryPanels.onlyStitches();
+        this.hideParents([GF_hybrid.tweak.drosteOnBasicStitch.id, 'specs']);
+        this.steps.init('stitches');
+        GF_hybrid.deferredLoading();
     },
     /**
      * Wrapper for load. Hides the third step field
@@ -728,21 +785,7 @@ const GF_hybrid = {
     loadDrosteMixer(container){
         this.load(container);
         this.galleryPanels.initVisibleGallery('snow4');
-        document.getElementById('drosteStep').parentNode.style.display = 'none';
-        GF_hybrid.deferredLoading();
-    },
-    /**
-     * Wrapper for load. Hiding some elements.
-     */
-    loadSimple(container, initialStep, hiddenElements){
-        this.load(container);
-        GF_hybrid.galleryPanels.onlyStitches();
-        for (let id of ['pairStep', 'threadStep', 'drosteStep']) {
-            document.getElementById(id).value = initialStep;
-        }
-        for (let id of hiddenElements) {
-            document.getElementById(id).parentNode.style.display = 'none';
-        }
+        this.steps.init('drosteMixer');
         GF_hybrid.deferredLoading();
     },
     assignToIgnored() {
