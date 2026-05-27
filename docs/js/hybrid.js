@@ -135,15 +135,6 @@ const GF_hybrid = {
                 />
              </label>`
             },
-            getMsg() { // TODO adjust to page and droste level
-                return `
-            Basic stitch only allows the characters  T, C, L, R.
-            Select examples from a stitches or snow gallery.
-            When "Droste applied to basic stitch" has content,
-            T is replaced with LR for proper flipping.
-            Without droste, just a "-" is also allowed to drop stitches. 
-            `
-            },
             setColorCode() {
                 document.querySelector('#colorCode').innerHTML = `
                     <svg width="20px" height="25px">
@@ -163,14 +154,23 @@ const GF_hybrid = {
                     const pos1 = basicStitchEl.selectionStart - 1;
                     const pos2 = basicStitchEl.selectionEnd - 1;
                     basicStitchEl.setSelectionRange(pos1, pos2);
-                    GF_hybrid.showToast(this.getMsg());
+                    if (!GF_hybrid.isVisible('drosteStep') && !GF_hybrid.isVisible('pairStep')) {
+                        GF_hybrid.showToast("Possible stitch characters: CTLR, or a single '-' to ignore a stitch."  );
+                    } else if (GF_hybrid.isVisible('drosteStep')) {
+                        GF_hybrid.showToast("Possible stitch characters: CTLR, or (at step level zero) a single '-' to ignore a stitch."  );
+                    } else if (GF_hybrid.isVisible('drosteStep')) {
+                        GF_hybrid.showToast("Possible stitch characters: CTLR. At pair step level zero, a single '-' is possible to ignore a stitch. " +
+                            "With content in 'droste on basic stitches', T is replaced with LR for proper flipping."
+                        );
+                    }
                     return;
                 }
                 if (hasDroste) {
                     value = value.replace(/[tT]/g, 'LR');
                 }
-                basicStitchEl.value = value.toUpperCase()
+                basicStitchEl.value = value.toUpperCase();
                 this.lastValid = value;
+                this.setColorCode();
             },
         },
         drosteOnBasicStitch: {
@@ -276,7 +276,6 @@ const GF_hybrid = {
             },
         },
         setRecipe(basicStitch, droste1Stitches, droste2Stitches) {
-            // TODO move to separate object (tweak?) with basicStitch, basicOnDroste and flip
             const basicEl = document.getElementById(this.basicStitch.id);
             if (basicEl) {
                 basicEl.value = basicStitch ?? '';
@@ -388,6 +387,14 @@ const GF_hybrid = {
             }
         }
     },
+    isVisible(id) {
+        const el = document.getElementById(id);
+        if (!el) return false;
+        const cs = window.getComputedStyle(el);
+        if (cs.display === 'none' || cs.visibility === 'hidden' || cs.opacity === '0') return false;
+        const rect = el.getBoundingClientRect();
+        return rect.width > 0 && rect.height > 0;
+    },
     steps:{
         getHtmlString(type){ return `
             <label >
@@ -436,21 +443,13 @@ const GF_hybrid = {
                     }
                 });
             }
-            function isVisible(id) {
-                const el = document.getElementById(id);
-                if (!el) return false;
-                const cs = window.getComputedStyle(el);
-                if (cs.display === 'none' || cs.visibility === 'hidden' || cs.opacity === '0') return false;
-                const rect = el.getBoundingClientRect();
-                return rect.width > 0 && rect.height > 0;
-            }
             function fixStepNr(e) {
                 const val = parseInt(e.target.value, 10);
-                const snowVisible = isVisible(("snow3")) || isVisible(("snow4"));
+                const snowVisible = GF_hybrid.isVisible(("snow3")) || GF_hybrid.isVisible(("snow4"));
                 const max = snowVisible && e.target.id === 'pairStep' ? 2 : 3;
                 const step = isNaN(val) ? 0 : Math.min(max, Math.max(0, val));
                 if (val !== step) {
-                    if (isVisible('drosteStep')) {
+                    if (GF_hybrid.isVisible('drosteStep')) {
                         GF_hybrid.showToast("Steps: min=0, max=3.");
                     }
                     else {
