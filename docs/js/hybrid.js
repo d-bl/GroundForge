@@ -449,7 +449,14 @@ const GF_hybrid = {
                 const snowVisible = isVisible(("snow3")) || isVisible(("snow4"));
                 const max = snowVisible && e.target.id === 'pairStep' ? 2 : 3;
                 const step = isNaN(val) ? 0 : Math.min(max, Math.max(0, val));
-                if (val !== step) GF_hybrid.showToast("Steps: min=0, max=3, max for pairs is 2 when a snow gallery is visible.")
+                if (val !== step) {
+                    if (isVisible('drosteStep')) {
+                        GF_hybrid.showToast("Steps: min=0, max=3.");
+                    }
+                    else {
+                        GF_hybrid.showToast("Steps: min=0, max=3, max for pairs is 2 when a snow gallery is visible.");
+                    }
+                }
                 e.target.value = step;
                 markDirty(e.target.id);
                 return step;
