@@ -412,7 +412,7 @@ const GF_hybrid = {
             const params = new URLSearchParams(specs ? specs.value : '');
             const pairStep = document.getElementById('pairStep');
             const threadStep = document.getElementById('threadStep');
-            let hide = [];
+            const drosteStep = document.getElementById('drosteStep');
             switch(type) {
                 case 'drosteMixer':
                     pairStep.value = params.get('pairStep') || 0;
@@ -420,13 +420,11 @@ const GF_hybrid = {
                     GF_hybrid.hideParents(['drosteStep']);
                     break;
                 case 'droste':
-                    pairStep.value = params.get('pairStep') || 1;
-                    threadStep.value = params.get('pairStep') || 1;
+                    pairStep.value = threadStep.value = drosteStep.value = params.get('pairStep') || 1;
                     GF_hybrid.hideParents(['pairStep','threadStep']);
                     break;
                 default: // in practice: stitches
-                    pairStep.value = 0;
-                    threadStep.value = 0;
+                    pairStep.value = threadStep.value = drosteStep.value = 0;
                     GF_hybrid.hideParents(['pairStep','threadStep', 'drosteStep']);
             }
         },
@@ -460,24 +458,18 @@ const GF_hybrid = {
                 markDirty(e.target.id);
                 return step;
             }
-            function setDisplayValues(step) {
+            function toggleIgnoredVisible(step) {
                 document.getElementById('ignored').style.display = step === 0 ? 'inline-block' : 'none';
-                if (step > 0) {
-                    const specsStyle = document.getElementById('specs').style;
-                    if (specsStyle.display === 'none')
-                        specsStyle.height = '0';
-                    specsStyle.display = 'block';
-                }
             }
             document.getElementById('threadStep').addEventListener('input', fixStepNr);
             document.getElementById('pairStep').addEventListener('input', e => {
                 const step = fixStepNr(e);
-                setDisplayValues(step);
+                toggleIgnoredVisible(step);
                 document.getElementById('drosteStep').value = step;
             });
             document.getElementById('drosteStep').addEventListener('input', e => {
                 const step = fixStepNr(e);
-                setDisplayValues(step);
+                toggleIgnoredVisible(step);
                 document.getElementById('threadStep').value = step;
                 document.getElementById('pairStep').value = step;
             });
