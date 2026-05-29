@@ -16,7 +16,7 @@
     if(window.location.origin.includes('localhost'))
         GF_tiles.content_home = GF_hybrid.content_home =
             window.location.origin + '/GroundForge/docs'
-    GF_hybrid.loadDroste(document.body)
+    GF_hybrid.loadDrosteMixer(document.body)
     document.querySelectorAll('figcaption img').forEach(img => {
         img.src = img.src.replace(/.*GroundForge/g, GF_hybrid.content_home);
     });

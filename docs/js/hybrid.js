@@ -304,13 +304,14 @@ const GF_hybrid = {
                 let options = ''
                 galleryKeys.forEach(function (key2) {
                     const caption = GF_hybrid.galleryPanels.specs[key2].caption;
+                    const clazz = `${key2.startsWith('snow') ? 'class= "snowOption"' : ''}`;
                     if (key2 === key1) {
-                        options += `<option value='${key2}' disabled selected>${caption}</option>`;
+                        options += `<option ${clazz} value='${key2}' disabled selected>${caption}</option>`;
                     } else {
-                        options += `<option value='${key2}'>${caption}</option>`;
+                        options += `<option ${clazz} value='${key2}'>${caption}</option>`;
                     }
                 });
-                const chooser = `<select onchange="GF_hybrid.galleryPanels.switchVisibleGallery(this, ${i});">${options}</select>`;
+                const chooser = `<select class="galleryChooser" onchange="GF_hybrid.galleryPanels.switchVisibleGallery(this, ${i});">${options}</select>`;
                 const sizeOptions = {width:'100%', height: this.specs[key1].height};
                 GF_panel.load({caption: chooser, id: key1, controls: ["resize"], size: sizeOptions, parent: container});
                 document.getElementById(key1).parentNode.style.display = 'none';
@@ -319,6 +320,11 @@ const GF_hybrid = {
             this.specs.stitches.load();
             this.specs.stitches.loaded = true;
         },
+        toggleSnowOptions(disable) {
+            Array.from(document.getElementsByClassName('snowOption'))
+                .forEach(option => { option.disabled = disable; });
+        },
+
         switchVisibleGallery(chooser, initialIndex){
             chooser.parentNode.parentNode.style.display = 'none';
             this.initVisibleGallery(chooser.value);
@@ -339,6 +345,9 @@ const GF_hybrid = {
             stitchesEl.style.display = 'block';
             // no choice for other galleries in panel caption:
             stitchesEl.getElementsByTagName('select')[0].outerHTML = 'select stitch example';
+        },
+        isSnowVisible() {
+            return GF_hybrid.isVisible(("snow3")) || GF_hybrid.isVisible(("snow4"));
         }
     },
     swatchSize: {
@@ -407,13 +416,13 @@ const GF_hybrid = {
             </label>
             `;
         },
-        init(type) {
+        init(pageType) {
             const specs = document.getElementById('droste0');
             const params = new URLSearchParams(specs ? specs.value : '');
             const pairStep = document.getElementById('pairStep');
             const threadStep = document.getElementById('threadStep');
             const drosteStep = document.getElementById('drosteStep');
-            switch(type) {
+            switch(pageType) {
                 case 'drosteMixer':
                     pairStep.value = params.get('pairStep') || 0;
                     threadStep.value = params.get('threadStep') || 1;
@@ -443,8 +452,7 @@ const GF_hybrid = {
             }
             function fixStepNr(e) {
                 const val = parseInt(e.target.value, 10);
-                const snowVisible = GF_hybrid.isVisible(("snow3")) || GF_hybrid.isVisible(("snow4"));
-                const max = snowVisible && e.target.id === 'pairStep' ? 2 : 3;
+                const max = GF_hybrid.galleryPanels.isSnowVisible() && e.target.id === 'pairStep' ? 2 : 3;
                 const step = isNaN(val) ? 0 : Math.min(max, Math.max(0, val));
                 if (val !== step) {
                     if (GF_hybrid.isVisible('drosteStep')) {
@@ -454,6 +462,7 @@ const GF_hybrid = {
                         GF_hybrid.showToast("Steps: min=0, max=3, max for pairs is 2 when a snow gallery is visible.");
                     }
                 }
+                GF_hybrid.galleryPanels.toggleSnowOptions(step === 3);
                 e.target.value = step;
                 markDirty(e.target.id);
                 return step;
@@ -495,7 +504,7 @@ const GF_hybrid = {
             const newStitchInput = document.getElementById(GF_hybrid.tweak.basicStitch.id).value;
             const newStitchValue = newStitchInput
                 ? newStitchInput
-                : this.getRandomStitch();
+                : GF_hybrid.getRandomStitch();
 
             const selectedText = event.currentTarget.textContent;
             const selectedStitchId = selectedText.replace(/.* /, "");
@@ -700,7 +709,6 @@ const GF_hybrid = {
             panelEl.innerHTML = "Click/tap the wand to (re)generate the diagram. Large diagrams may take several seconds.";
             panelEl.style.color = "#bbbbbb";
         }
-
         console.log('================ Loaded panels ================');
     },
     deferredLoadingHandle: null,
@@ -782,8 +790,14 @@ const GF_hybrid = {
      * */
     loadDrosteMixer(container){
         this.load(container);
-        this.galleryPanels.initVisibleGallery('snow4');
         this.steps.init('drosteMixer');
+        const pairStep = document.getElementById('pairStep').value * 1;
+        GF_hybrid.galleryPanels.toggleSnowOptions(pairStep === 3)
+        if (pairStep === 3) {
+            this.galleryPanels.initVisibleGallery('stitches');
+        } else {
+            this.galleryPanels.initVisibleGallery('snow4');
+        }
         GF_hybrid.deferredLoading();
     },
     assignToIgnored() {
