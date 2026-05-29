@@ -316,6 +316,15 @@ const GF_hybrid = {
                 GF_panel.load({caption: chooser, id: key1, controls: ["resize"], size: sizeOptions, parent: container});
                 document.getElementById(key1).parentNode.style.display = 'none';
             }
+            document.getElementById('pattern').parentNode.insertAdjacentHTML(
+                'beforeend',`
+                <div style="display: inline-block">More on
+                <a href="/tesselace-gf">tesselace-gf</a>,
+                <a href="/MAE-gf">MAE-gf</a> or
+                <a href="/GroundForge/pattern">D.I.Y.</a>
+                </div>
+                `);
+
             // allways needed
             this.specs.stitches.load();
             this.specs.stitches.loaded = true;

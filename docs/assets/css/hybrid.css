@@ -62,6 +62,7 @@
     outline: 1px solid #0571b0;   /* mouse + keyboard */
     outline-offset: 2px;
 }
+#pattern svg text {fill:#0571b0; text-decoration: underline;}
 .recipe-btn:focus-visible,
 #stitches a:focus-visible,
 #pattern a:focus-visible {
