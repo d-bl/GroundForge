@@ -47,6 +47,10 @@
     padding: 12px 24px;
     border-radius: 4px;
     z-index: 1000;
+    /* height cap */
+    max-height: 40vh;   /* fallback */
+    max-height: 40dvh;  /* keyboard-aware visual viewport */
+    overflow: auto;
 }
 
 .recipe-btn {

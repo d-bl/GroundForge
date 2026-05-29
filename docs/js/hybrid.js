@@ -154,11 +154,11 @@ const GF_hybrid = {
                     const pos1 = basicStitchEl.selectionStart - 1;
                     const pos2 = basicStitchEl.selectionEnd - 1;
                     basicStitchEl.setSelectionRange(pos1, pos2);
-                    if (!GF_hybrid.isVisible('drosteStep') && !GF_hybrid.isVisible('pairStep')) {
-                        GF_hybrid.showToast("Possible stitch characters: CTLR, or a single '-' to ignore a stitch."  );
-                    } else if (GF_hybrid.isVisible('drosteStep')) {
+                    if (GF_hybrid.isVisible('drosteStep')) {
                         GF_hybrid.showToast("Possible stitch characters: CTLR, or (at step level zero) a single '-' to ignore a stitch."  );
-                    } else if (GF_hybrid.isVisible('drosteStep')) {
+                    } else if (!GF_hybrid.isVisible('pairStep')) {
+                        GF_hybrid.showToast("Possible stitch characters: CTLR, or a single '-' to ignore a stitch."  );
+                    } else {
                         GF_hybrid.showToast("Possible stitch characters: CTLR. At pair step level zero, a single '-' is possible to ignore a stitch. " +
                             "With content in 'droste on basic stitches', T is replaced with LR for proper flipping."
                         );
