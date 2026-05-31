@@ -43,9 +43,9 @@ const GF_stitches = {
     },
 
 
-    loadStitchExamples() {
+    loadStitchExamples(gallryID = "#gallery") {
         for (let stitch of GF_stitches.stitches) {
-            document.querySelector("#gallery").innerHTML += `
+            document.querySelector(gallryID).innerHTML += `
             <figure>
                 <svg width="20" height="54">
                   <g transform="scale(2,2)">
@@ -67,9 +67,9 @@ const GF_stitches = {
         return d3.select("#stitchDef").node().value.toLowerCase().replace(/[^ctlrp-]/g, '')
     },
 
-    load(isDroste) {
+    load() {
         this.loadStitchExamples();
-        this.loadStitchForm(isDroste);
+        this.loadStitchForm();
         this.setColorCode();
     },
 
