@@ -41,9 +41,9 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
   @JSExport
   val maxTileRows: Int = Math.max(centerMatrixRows, Math.max(leftMatrix.length, rightMatrix.length))
 
-  // patch size is at least tile-size; default 2x2 tiles
-  val patchHeight: Int = Math.max(queryFields.getOrElse("patchHeight", (4*centerMatrixRows).toString).safeToInt, centerMatrixRows)
-  val patchWidth: Int = Math.max(queryFields.getOrElse("patchWidth", (6*centerMatrixCols).toString).safeToInt, centerMatrixCols)
+  // default 4x6 tiles
+  val patchHeight: Int = queryFields.getOrElse("patchHeight", (4*centerMatrixRows).toString).safeToInt
+  val patchWidth: Int = queryFields.getOrElse("patchWidth", (6*centerMatrixCols).toString).safeToInt
   // defaults for a checker matrix
   val shiftRowsSE: Int = queryFields.getOrElse("shiftRowsSE", centerMatrixRows.toString).safeToInt
   val shiftRowsSW: Int = queryFields.getOrElse("shiftRowsSW", centerMatrixRows.toString).safeToInt

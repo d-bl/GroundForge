@@ -123,7 +123,7 @@ const GF_hybrid = {
         },
         basicStitch: {
             id: 'basicStitchInput',
-            lastValid: '',
+            lastValid: '', // TODO make it a data attribute
             getHtmlString() {
                 const other = `document.getElementById('${GF_hybrid.tweak.drosteOnBasicStitch.id}`;
                 return `
@@ -175,7 +175,7 @@ const GF_hybrid = {
         },
         drosteOnBasicStitch: {
             id: 'drosteStitches',
-            lastValid: '',
+            lastValid: '',  // TODO make it a data attribute
             getHtmlString() {
                 const other = `document.getElementById('${GF_hybrid.tweak.basicStitch.id}`;
                 return `
@@ -364,24 +364,58 @@ const GF_hybrid = {
             Swatch size:
             <span style="display: inline-block; vertical-align: top">
                 <label>
-                    <input type="number" name="patchWidth" id="patchWidth" min="3" max="28" value="?" oninput="GF_hybrid.swatchSize.valueChanged()" autofocus="">
+                    <input type="number" name="patchWidth" id="patchWidth" min="1" max="28" value="3" oninput="GF_hybrid.swatchSize.valueChanged(this)" autofocus="">
                     columns
                 </label>
                 <br>
                 <label>
-                    <input type="number" name="patchHeight" id="patchHeight" min="3" max="35" value="?" oninput="GF_hybrid.swatchSize.valueChanged()">
+                    <input type="number" name="patchHeight" id="patchHeight" min="1" max="35" value="3" oninput="GF_hybrid.swatchSize.valueChanged(this)">
                     rows
                 </label>
             </span>
             `;},
-        valueChanged() {
-            // TODO validate input, update first specs field and mark diagrams dirty
-            GF_hybrid.showToast('Swatch size is not yet implemented. Workaround: patchWidth=NN&patchHeight=NN in first specifications field, then click wand.');
+        init(width,height){
+            const widthEl = document.getElementById('patchWidth');
+            widthEl.value = width;
+            widthEl.setAttribute("data-last-valid", width);
+            const heightEl = document.getElementById('patchHeight');
+            heightEl.value = height;
+            heightEl.setAttribute("data-last-valid", width);
+        },
+        valueChanged(changedEl) {
+            if (changedEl.validity.badInput) {
+                GF_hybrid.showToast("Please enter positive numbers for the swatch size.");
+                return;
+            }
+            if (changedEl.value === "")
+                return; // allow empty field, but don't update specs
+            const q = GF_hybrid.patternInfo.changeParam(changedEl.name, changedEl.value);
+
+            const config = TilesConfig(q);
+            const width = Number.parseInt(document.getElementById('patchWidth')?.value ?? '', 10) || 0;
+            const height = Number.parseInt(document.getElementById('patchHeight')?.value ?? '', 10) || 0;
+            if (config.centerMatrixRows * 1.5 > height || config.centerMatrixCols * 1.5 > width) {
+                GF_hybrid.showToast(
+                    `Recommended swatch size: at least 1.5 tiles. Tile size is ${config.centerMatrixCols}x${config.centerMatrixRows}.`
+                );
+            } else if( changedEl.rangeOverflow ){
+                GF_hybrid.showToast("Large dense swatches cause slow diagrams and may choke browsers.");
+            }
+            console.log('');
         }
     },
     patternInfo: { // TODO also the specs fields for droste
         getLinkHtmlString(q) {return `<a href="${q}" id="selfRef" style="display:none;">Updated pattern</a>`},
         getSpecsHtmlString(q) {return `<input type="text" id="droste0" value="${q}">`},
+        changeParam(paramName,paramValue) {
+            const specsEl = document.getElementById('droste0');
+            const params = new URLSearchParams(specsEl.value);
+            params.set(paramName,paramValue);
+            const newQuery = decodeURIComponent(params.toString());
+            specsEl.value = newQuery;
+            this.setValue(newQuery);
+            return newQuery;
+        },
         setValue(value) {
             const specsField = document.getElementById('droste0');
             if(specsField) {
