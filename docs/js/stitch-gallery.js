@@ -352,6 +352,16 @@ const GF_Random = {
 
     colorCodeWithTwistMarks(randomStitch, colorCodeWithTwistsSvg) {
 
+        function twistMarkerBase(path, swne) {
+            return `<path d="M 26 26 ${path}" style="stroke: #000; stroke-width: 1.7px; marker-mid: url('#twist-${swne}');"></path>`;
+        }
+
+        function twistMarkerDash(twistId, path) {
+            return `<marker id="${twistId}" viewBox="-6 -6 12 12" markerWidth="9" markerHeight="9" orient="auto" markerUnits="userSpaceOnUse">
+                    <path d="${path}" fill="#000" stroke="#000" stroke-width="0.8px"></path>
+                    </marker>`
+        }
+
         // set variables for twistmarks
         let southEast = ((randomStitch.substring(randomStitch.lastIndexOf("C") + 1)).replaceAll("L", "")).length.toString();
         let southWest = ((randomStitch.substring(randomStitch.lastIndexOf("C") + 1)).replaceAll("R", "")).length.toString();
@@ -364,22 +374,12 @@ const GF_Random = {
         if (northEast > 5) { northEast = 5 }
         if (northWest > 5) { northWest = 5 }
 
-        // note: these dashes have to fit in the viewbox defined at twistMarkerLine.
+        // note: these dashes have to fit in the viewbox defined on twistMarkerDash.
         let t1 = "M 0.0 6 L 0.0 -6";
         let t2 = t1 + " M 5.0 6 L 5.0 -6";
         let t3 = t2 + " M 2.5 6 L 2.5-6";
         let t4 = t3 + " M -2.5 6 L -2.5 -6";
         let t5 = t4 + " M -5.0 6 L -5.0 -6";
-
-        function twistMarkerBase(path, swne) {
-            return `<path d="M 26 26 ${path}" style="stroke: #000; stroke-width: 1.7px; marker-mid: url('#twist-${swne}');"></path>`;
-        }
-
-        function twistMarkerDash(twistId, path) {
-            return `<marker id="${twistId}" viewBox="-6 -6 12 12" markerWidth="9" markerHeight="9" orient="auto" markerUnits="userSpaceOnUse">
-                    <path d="${path}" fill="#000" stroke="#000" stroke-width="0.8px"></path>
-                    </marker>`
-        }
 
         // the middle of the base-path has to be at least 10 units of the centre, else to close to colourcode-block
         colorCodeWithTwistsSvg.innerHTML = `
