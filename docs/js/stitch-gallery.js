@@ -320,6 +320,7 @@ const GF_Random = {
         let displayStitch;
         let displayElement;
         let threadSvg, colorCodeWithTwistsSvg;
+        let figureThreadSvg, figureColorCodeWithTwistsSvg;
 
         displayElement = document.getElementById("displayRandomArray");
         displayElement.innerHTML = "";
@@ -327,6 +328,8 @@ const GF_Random = {
         for (let i = 0; i < GF_Random.stitchArray.length; i++) {
 
             displayStitch = GF_Random.stitchArray[i];
+
+            // Create picture with thread-diagram.
 
             let containerWidth = 60;
             let containerHeight = Math.max(60, displayStitch.length * 10);
@@ -337,16 +340,25 @@ const GF_Random = {
             GF_svgP2T.newStitch(displayStitch, 0, 0, threadSvg, containerWidth, containerHeight);
             GF_svgP2T.addThreadClasses(threadSvg);          // this gives the lines their color
 
+            // Create picture with colorCode, extended with twistMarks before and after.
+
             colorCodeWithTwistsSvg = GF_svgP2T.newSVG(50, 50);
             colorCodeWithTwistsSvg = GF_Random.colorCodeWithTwistMarks(displayStitch,colorCodeWithTwistsSvg );
 
-            // To display the elements, we have to group them in one element. (If put in seperate ID's, we get first the thread-svg's, then the CCWT-svg's, then the texts.
-            displayElement.appendChild(threadSvg);
-            displayElement.innerHTML += "&nbsp;".repeat(5);
-            displayElement.appendChild(colorCodeWithTwistsSvg);
-            displayElement.innerHTML += "&nbsp;".repeat(5) + displayStitch;
-            displayElement.innerHTML += "<br>";
+            // Display.
 
+            // The code works without these extra figure-elements.
+            figureThreadSvg = document.createElement("figure");
+            figureThreadSvg.append(threadSvg);
+            figureColorCodeWithTwistsSvg = document.createElement("figure");
+            figureColorCodeWithTwistsSvg.append(colorCodeWithTwistsSvg);
+
+            // To display the elements, we have to group them in one element. (If put in separate ID's, we get first the thread-svg's, followed by the CCWT-svg's, followed by the texts.)
+            displayElement.appendChild(figureThreadSvg);
+            displayElement.appendChild(figureColorCodeWithTwistsSvg);
+            displayElement.innerHTML += "&nbsp;".repeat(5);
+            displayElement.innerHTML += displayStitch;
+            displayElement.innerHTML += "<br>";
         }
     },
 
