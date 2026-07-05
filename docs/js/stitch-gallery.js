@@ -344,7 +344,7 @@ const GF_Random = {
             displayElement.appendChild(threadSvg);
             displayElement.innerHTML += "&nbsp;".repeat(5);
             displayElement.appendChild(colorCodeWithTwistsSvg);
-            displayElement.innerHTML += "&nbsp;".repeat(5)+ displayStitch;
+            displayElement.innerHTML += "&nbsp;".repeat(5) + displayStitch;
             displayElement.innerHTML += "<br>";
 
         }
