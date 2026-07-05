@@ -319,7 +319,7 @@ const GF_Random = {
 
         let displayStitch;
         let displayElement;
-        let threadSvg, colorCodeWithTwistsSvg, figure;
+        let threadSvg, colorCodeWithTwistsSvg;
 
         displayElement = document.getElementById("displayRandomArray");
         displayElement.innerHTML = "";
@@ -340,12 +340,10 @@ const GF_Random = {
             colorCodeWithTwistsSvg = GF_svgP2T.newSVG(50, 50);
             colorCodeWithTwistsSvg = GF_Random.colorCodeWithTwistMarks(displayStitch,colorCodeWithTwistsSvg );
 
-            figure = document.createElement("figure");
-            figure.append(threadSvg);
-
-            displayElement.appendChild(figure);
+            displayElement.appendChild(threadSvg);
+            displayElement.innerHTML += "&nbsp;".repeat(5);
             displayElement.appendChild(colorCodeWithTwistsSvg);
-            displayElement.innerHTML += "&nbsp;" + "&nbsp;" + displayStitch;
+            displayElement.innerHTML += "&nbsp;".repeat(5)+ displayStitch;
             displayElement.innerHTML += "<br>";
 
         }
@@ -381,8 +379,6 @@ const GF_Random = {
                     <path d="${path}" fill="#000" stroke="#000" stroke-width="0.8px"></path>
                     </marker>`
         }
-
-
 
         // the middle of the base-path has to be at least 10 units of the centre, else to close to colourcode-block
         colorCodeWithTwistsSvg.innerHTML = `
