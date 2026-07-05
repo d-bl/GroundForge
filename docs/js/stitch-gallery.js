@@ -239,8 +239,8 @@ const GF_Random = {
         // make sure that max(lengthL, lengthR) = lengthAll
         // The simplified version: if lengthL < lengthAll then lengthR = lengthAll doesn't work well. It generates more R's than L's.
         // Because: chance(lengthL == lengthAll) = 1/lengthAll and chance(lengthL < lengthAll) = ((lengthAll-1)/lenghtAll).
-        if (Math.max(lengthL, lengthR ) !== lengthAll) {
-            if ( Math.floor(Math.random() * 2) === 0) {
+        if (Math.max(lengthL, lengthR) !== lengthAll) {
+            if (Math.floor(Math.random() * 2) === 0) {
                 lengthL = lengthAll;
             } else {
                 lengthR = lengthAll;
@@ -312,12 +312,14 @@ const GF_Random = {
     // I want to keep genRandomStitchList and genRandomStitch as flexible as is. Therefore, construct as below.
     // Why this display-function, as <p setRandomList> also displays stitchArray = genRandomStitchList?
     // We want to add the colorcode and the threaddiagram to the list. See p2t.newlegendStitch.
+
+    // Functionality taken from P2T.newLegendStitch, GF_stitches.setcolorcode().
+    // NewLegendStitch does not clean up previous result (document.body.appendChild(figure).
     displayRandomStitchList() {
 
         let displayStitch;
         let displayElement;
-        let threadSvg, colorCodeSvg, figure;
-        let southEast, southWest, northEast, northWest;
+        let threadSvg, colorCodeWithTwistsSvg, figure;
 
         displayElement = document.getElementById("displayRandomArray");
         displayElement.innerHTML = "";
@@ -326,79 +328,84 @@ const GF_Random = {
 
             displayStitch = GF_Random.stitchArray[i];
 
-            // Copied from newLegendStitch, as "document.body.appendChild(figure)" does not clean up previous result, and picts to large.
-            // Without "figcaption", and with much other changes.
-
             let containerWidth = 60;
             let containerHeight = Math.max(60, displayStitch.length * 10);
 
-            threadSvg = GF_svgP2T.newSVG(containerWidth,containerHeight);
+            threadSvg = GF_svgP2T.newSVG(containerWidth, containerHeight);
             // Overrule viewbox settings from newSVG. Also necessary to line out on bottom of colorcode-element.
             threadSvg.setAttribute("viewBox", "-10 -10 " + (containerWidth + 12) + " " + (containerHeight + 12));
-            GF_svgP2T.newStitch(displayStitch, 0,0, threadSvg,containerWidth,containerHeight);
+            GF_svgP2T.newStitch(displayStitch, 0, 0, threadSvg, containerWidth, containerHeight);
             GF_svgP2T.addThreadClasses(threadSvg);          // this gives the lines their color
 
-            // set variables for twistmarks
-            southEast = ((displayStitch.substring(displayStitch.lastIndexOf("C")+1)).replaceAll("L","")).length.toString();
-            southWest = ((displayStitch.substring(displayStitch.lastIndexOf("C")+1)).replaceAll("R","")).length.toString();
-            northEast = ((displayStitch.substring(0, displayStitch.indexOf("C"))).replaceAll("L","")).length.toString();
-            northWest = ((displayStitch.substring(0, displayStitch.indexOf("C"))).replaceAll("R","")).length.toString();
-            // User-input is limited to max 5; programmers-input to max 8. Because of view-box definition we show a maximum of 5 dashes.
-            if (southEast > 5) {southEast = 5}
-            if (southWest > 5) {southWest = 5}
-            if (northEast > 5) {northEast = 5}
-            if (northWest > 5) {northWest = 5}
-
-            // note: these dashes have to fit in the viewbox defined at twistMarkerLine.
-            let t1 = "M 0.0 6 L 0.0 -6";
-            let t2 = t1 + " M 5.0 6 L 5.0 -6";
-            let t3 = t2 + " M 2.5 6 L 2.5-6";
-            let t4 = t3 + " M -2.5 6 L -2.5 -6";
-            let t5 = t4 + " M -5.0 6 L -5.0 -6";
-
-            function twistMarkerBase(path,swne) {
-                return `<path d="M 26 26 ${path}" style="stroke: #000; stroke-width: 1.7px; marker-mid: url('#twist-${swne}');"></path>`;
-            }
-            function twistMarkerDash(twistId, path) {
-                return `<marker id="${twistId}" viewBox="-6 -6 12 12" markerWidth="9" markerHeight="9" orient="auto" markerUnits="userSpaceOnUse">
-                    <path d="${path}" fill="#000" stroke="#000" stroke-width="0.8px"></path>
-                    </marker>`
-            }
-
-            // copied from GF_stitches.setcolorcode()
-            colorCodeSvg = document.createElement("colorCodeSvg");
-
-            // the middle of the base-path has to be at least 10 units of the centre, else to close to colourcode-block
-            colorCodeSvg.innerHTML = `
-                <svg width="50px" height="50px" fill="none">
-                <defs>
-                   ${twistMarkerDash("twist-1",`${t1}` )}
-                   ${twistMarkerDash("twist-2",`${t2}` )}
-                   ${twistMarkerDash("twist-3",`${t3}` )}
-                   ${twistMarkerDash("twist-4",`${t4}` )}
-                   ${twistMarkerDash("twist-5",`${t5}` )}
-                </defs>
-                ${twistMarkerBase("L 36 36 M 36 36 L 52 52", southEast)}
-                ${twistMarkerBase("L 16 36 M 16 36 L  0 52", southWest)}
-                ${twistMarkerBase("L 16 16 M 16 16 L  0  0", northWest)}
-                ${twistMarkerBase("L 36 16 M 36 16 L 52  0", northEast)}
-                 
-            <g transform="scale(2,2)">
-            <g transform="translate(13,13)">
-              ${PairSvg.shapes(displayStitch.toLowerCase())}
-            </g>
-            </g>
-            </svg>`;
+            colorCodeWithTwistsSvg = GF_svgP2T.newSVG(50, 50);
+            colorCodeWithTwistsSvg = GF_Random.colorCodeWithTwistMarks(displayStitch,colorCodeWithTwistsSvg );
 
             figure = document.createElement("figure");
             figure.append(threadSvg);
 
             displayElement.appendChild(figure);
-            displayElement.appendChild(colorCodeSvg);
+            displayElement.appendChild(colorCodeWithTwistsSvg);
             displayElement.innerHTML += "&nbsp;" + "&nbsp;" + displayStitch;
             displayElement.innerHTML += "<br>";
 
         }
+    },
+
+    colorCodeWithTwistMarks(randomStitch, colorCodeWithTwistsSvg) {
+
+        // set variables for twistmarks
+        let southEast = ((randomStitch.substring(randomStitch.lastIndexOf("C") + 1)).replaceAll("L", "")).length.toString();
+        let southWest = ((randomStitch.substring(randomStitch.lastIndexOf("C") + 1)).replaceAll("R", "")).length.toString();
+        let northEast = ((randomStitch.substring(0, randomStitch.indexOf("C"))).replaceAll("L", "")).length.toString();
+        let northWest = ((randomStitch.substring(0, randomStitch.indexOf("C"))).replaceAll("R", "")).length.toString();
+
+        // User-input is limited to max 5; programmers-input to max 8. Because of view-box definition we show a maximum of 5 dashes.
+        if (southEast > 5) { southEast = 5 }
+        if (southWest > 5) { southWest = 5 }
+        if (northEast > 5) { northEast = 5 }
+        if (northWest > 5) { northWest = 5 }
+
+        // note: these dashes have to fit in the viewbox defined at twistMarkerLine.
+        let t1 = "M 0.0 6 L 0.0 -6";
+        let t2 = t1 + " M 5.0 6 L 5.0 -6";
+        let t3 = t2 + " M 2.5 6 L 2.5-6";
+        let t4 = t3 + " M -2.5 6 L -2.5 -6";
+        let t5 = t4 + " M -5.0 6 L -5.0 -6";
+
+        function twistMarkerBase(path, swne) {
+            return `<path d="M 26 26 ${path}" style="stroke: #000; stroke-width: 1.7px; marker-mid: url('#twist-${swne}');"></path>`;
+        }
+
+        function twistMarkerDash(twistId, path) {
+            return `<marker id="${twistId}" viewBox="-6 -6 12 12" markerWidth="9" markerHeight="9" orient="auto" markerUnits="userSpaceOnUse">
+                    <path d="${path}" fill="#000" stroke="#000" stroke-width="0.8px"></path>
+                    </marker>`
+        }
+
+
+
+        // the middle of the base-path has to be at least 10 units of the centre, else to close to colourcode-block
+        colorCodeWithTwistsSvg.innerHTML = `
+              <defs>
+                   ${twistMarkerDash("twist-1", `${t1}`)}
+                   ${twistMarkerDash("twist-2", `${t2}`)}
+                   ${twistMarkerDash("twist-3", `${t3}`)}
+                   ${twistMarkerDash("twist-4", `${t4}`)}
+                   ${twistMarkerDash("twist-5", `${t5}`)}
+              </defs>
+              ${twistMarkerBase("L 36 36 M 36 36 L 52 52", southEast)}
+              ${twistMarkerBase("L 16 36 M 16 36 L  0 52", southWest)}
+              ${twistMarkerBase("L 16 16 M 16 16 L  0  0", northWest)}
+              ${twistMarkerBase("L 36 16 M 36 16 L 52  0", northEast)}
+                 
+            <g transform="scale(2,2)">
+            <g transform="translate(13,13)">
+              ${PairSvg.shapes(randomStitch.toLowerCase())}
+            </g>
+            </g>
+            </svg>`;
+
+        return colorCodeWithTwistsSvg;
     },
 
     makeRandomStitchList(stitchesRequired, maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore, maxTwistsAfter) {
@@ -432,6 +439,5 @@ const GF_Random = {
         return GF_Random.stitchArray;
     },
 }
-
 
 
