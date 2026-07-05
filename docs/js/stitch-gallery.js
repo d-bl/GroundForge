@@ -340,6 +340,7 @@ const GF_Random = {
             colorCodeWithTwistsSvg = GF_svgP2T.newSVG(50, 50);
             colorCodeWithTwistsSvg = GF_Random.colorCodeWithTwistMarks(displayStitch,colorCodeWithTwistsSvg );
 
+            // To display the elements, we have to group them in one element. (If put in seperate ID's, we get first the thread-svg's, then the CCWT-svg's, then the texts.
             displayElement.appendChild(threadSvg);
             displayElement.innerHTML += "&nbsp;".repeat(5);
             displayElement.appendChild(colorCodeWithTwistsSvg);
