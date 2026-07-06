@@ -367,16 +367,16 @@ const GF_Random = {
         }
 
         // set variables for twistmarks
-        let southEast = ((randomStitch.substring(randomStitch.lastIndexOf("C") + 1)).replaceAll("L", "")).length.toString();
-        let southWest = ((randomStitch.substring(randomStitch.lastIndexOf("C") + 1)).replaceAll("R", "")).length.toString();
-        let northEast = ((randomStitch.substring(0, randomStitch.indexOf("C"))).replaceAll("L", "")).length.toString();
-        let northWest = ((randomStitch.substring(0, randomStitch.indexOf("C"))).replaceAll("R", "")).length.toString();
+        let southEast = ((randomStitch.substring(randomStitch.lastIndexOf("C") + 1)).replaceAll("L", "")).length;
+        let southWest = ((randomStitch.substring(randomStitch.lastIndexOf("C") + 1)).replaceAll("R", "")).length;
+        let northEast = ((randomStitch.substring(0, randomStitch.indexOf("C"))).replaceAll("L", "")).length;
+        let northWest = ((randomStitch.substring(0, randomStitch.indexOf("C"))).replaceAll("R", "")).length;
 
         // User-input is limited to max 5; programmers-input to max 8. Because of view-box definition we show a maximum of 5 dashes.
-        if (Number(southEast) > 5) { southEast = "5" }
-        if (Number(southWest) > 5) { southWest = "5" }
-        if (Number(northEast) > 5) { northEast = "5" }
-        if (Number(northWest) > 5) { northWest = "5" }
+        southEast = Math.min(southEast, 5);
+        southWest = Math.min(southWest, 5);
+        northEast = Math.min(northEast, 5);
+        northWest = Math.min(northWest, 5);
 
         // note: these dashes have to fit in the viewbox defined on twistMarkerDash.
         let t1 = "M 0.0 6 L 0.0 -6";
@@ -389,11 +389,11 @@ const GF_Random = {
         // The colorCodeBlock is transparant. Therefor, start baseline a bit off.
         colorCodeWithTwistsSvg.innerHTML = `
               <defs>
-                   ${twistMarkerDash("twist-1", `${t1}`)}
-                   ${twistMarkerDash("twist-2", `${t2}`)}
-                   ${twistMarkerDash("twist-3", `${t3}`)}
-                   ${twistMarkerDash("twist-4", `${t4}`)}
-                   ${twistMarkerDash("twist-5", `${t5}`)}
+                   ${twistMarkerDash("twist-1", t1)}
+                   ${twistMarkerDash("twist-2", t2)}
+                   ${twistMarkerDash("twist-3", t3)}
+                   ${twistMarkerDash("twist-4", t4)}
+                   ${twistMarkerDash("twist-5", t5)}
               </defs>
               ${twistMarkerBase("M 36 36 L 42 42 L 52 52", southEast)}
               ${twistMarkerBase("M 16 36 L 10 42 L  0 52", southWest)}
