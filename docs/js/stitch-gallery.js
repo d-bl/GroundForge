@@ -239,8 +239,8 @@ const GF_Random = {
         // make sure that max(lengthL, lengthR) = lengthAll
         // The simplified version: if lengthL < lengthAll then lengthR = lengthAll doesn't work well. It generates more R's than L's.
         // Because: chance(lengthL == lengthAll) = 1/lengthAll and chance(lengthL < lengthAll) = ((lengthAll-1)/lenghtAll).
-        if (Math.max(lengthL, lengthR ) !== lengthAll) {
-            if ( Math.floor(Math.random() * 2) === 0) {
+        if (Math.max(lengthL, lengthR) !== lengthAll) {
+            if (Math.floor(Math.random() * 2) === 0) {
                 lengthL = lengthAll;
             } else {
                 lengthR = lengthAll;
@@ -312,11 +312,14 @@ const GF_Random = {
     // I want to keep genRandomStitchList and genRandomStitch as flexible as is. Therefore, construct as below.
     // Why this display-function, as <p setRandomList> also displays stitchArray = genRandomStitchList?
     // We want to add the colorcode and the threaddiagram to the list. See p2t.newlegendStitch.
+
+    // Functionality taken from P2T.newLegendStitch, GF_stitches.setcolorcode().
+    // NewLegendStitch does not clean up previous result (document.body.appendChild(figure).
     displayRandomStitchList() {
 
         let displayStitch;
         let displayElement;
-        let threadSvg, colorCodeSvg, figure;
+        let threadSvg, colorCodeWithTwistsSvg;
 
         displayElement = document.getElementById("displayRandomArray");
         displayElement.innerHTML = "";
@@ -325,35 +328,87 @@ const GF_Random = {
 
             displayStitch = GF_Random.stitchArray[i];
 
-            // copied from newLegendStitch, as "document.body.appendChild(figure)" does not clean up previous result, and picts to large
-            // without "figcaption"
+            // Create picture with thread-diagram.
 
-            threadSvg = GF_svgP2T.newSVG(40,60);
-            GF_svgP2T.newStitch(displayStitch, 0,0, threadSvg,40,60);
+            let containerWidth = 60;
+            let containerHeight = Math.max(60, displayStitch.length * 10);
+
+            threadSvg = GF_svgP2T.newSVG(containerWidth, containerHeight);
+            // Overrule viewbox settings from newSVG. Also necessary to line out on bottom of colorcode-element.
+            threadSvg.setAttribute("viewBox", "-10 -10 " + (containerWidth + 12) + " " + (containerHeight + 12));
+            GF_svgP2T.newStitch(displayStitch, 0, 0, threadSvg, containerWidth, containerHeight);
             GF_svgP2T.addThreadClasses(threadSvg);          // this gives the lines their color
 
-            // copied from GF_stitches.setcolorcode()
-            colorCodeSvg = document.createElement("colorCodeSvg");
-            colorCodeSvg.innerHTML = `
-            <svg width="20px" height="25px">
-            <g transform="scale(2,2)">
-            <g transform="translate(5,6)">
-              ${PairSvg.shapes(displayStitch.toLowerCase())}
-            </g>
-            </g>
-            </svg>`
+            // Create picture with colorCode, extended with twistMarks before and after.
 
-            figure = document.createElement("figure");
-            figure.append(threadSvg);
+            colorCodeWithTwistsSvg = GF_svgP2T.newSVG(50, 50);
+            colorCodeWithTwistsSvg = GF_Random.colorCodeWithTwistMarks(displayStitch,colorCodeWithTwistsSvg );
 
-            displayElement.appendChild(figure);
-            displayElement.appendChild(colorCodeSvg);
-            displayElement.innerHTML += "&nbsp;" + "&nbsp;" + displayStitch;
+            // To display the elements, we have to group them in one element. (If put in separate ID's, we get first the thread-svg's, followed by the CCWT-svg's, followed by the texts.)
+            displayElement.appendChild(threadSvg);
+            displayElement.innerHTML += "&nbsp;".repeat(5);
+            displayElement.appendChild(colorCodeWithTwistsSvg);
+            displayElement.innerHTML += "&nbsp;".repeat(5);
+            displayElement.innerHTML += displayStitch;
             displayElement.innerHTML += "<br>";
-
         }
     },
 
+    colorCodeWithTwistMarks(randomStitch, colorCodeWithTwistsSvg) {
+
+        function twistMarkerBase(path, swne) {
+            return `<path d="${path}" style="stroke: #000; stroke-width: 1.7px; marker-mid: url('#twist-${swne}');"></path>`;
+        }
+
+        function twistMarkerDash(twistId, path) {
+            return `<marker id="${twistId}" viewBox="-6 -6 12 12" markerWidth="9" markerHeight="9" orient="auto" markerUnits="userSpaceOnUse">
+                    <path d="${path}" fill="#000" stroke="#000" stroke-width="0.8px"></path>
+                    </marker>`
+        }
+
+        // set variables for twistmarks
+        let southEast = ((randomStitch.substring(randomStitch.lastIndexOf("C") + 1)).replaceAll("L", "")).length;
+        let southWest = ((randomStitch.substring(randomStitch.lastIndexOf("C") + 1)).replaceAll("R", "")).length;
+        let northEast = ((randomStitch.substring(0, randomStitch.indexOf("C"))).replaceAll("L", "")).length;
+        let northWest = ((randomStitch.substring(0, randomStitch.indexOf("C"))).replaceAll("R", "")).length;
+
+        // User-input is limited to max 5; programmers-input to max 8. Because of view-box definition we show a maximum of 5 dashes.
+        southEast = Math.min(southEast, 5);
+        southWest = Math.min(southWest, 5);
+        northEast = Math.min(northEast, 5);
+        northWest = Math.min(northWest, 5);
+
+        // note: these dashes have to fit in the viewbox defined on twistMarkerDash.
+        let t1 = "M 0.0 6 L 0.0 -6";
+        let t2 = t1 + " M 5.0 6 L 5.0 -6";
+        let t3 = t2 + " M 2.5 6 L 2.5-6";
+        let t4 = t3 + " M -2.5 6 L -2.5 -6";
+        let t5 = t4 + " M -5.0 6 L -5.0 -6";
+
+        // The middle of the base-path has to be at least 10 units of the centre, else to close to colourcode-block.
+        // The colorCodeBlock is transparant. Therefor, start baseline a bit off.
+        colorCodeWithTwistsSvg.innerHTML = `
+              <defs>
+                   ${twistMarkerDash("twist-1", t1)}
+                   ${twistMarkerDash("twist-2", t2)}
+                   ${twistMarkerDash("twist-3", t3)}
+                   ${twistMarkerDash("twist-4", t4)}
+                   ${twistMarkerDash("twist-5", t5)}
+              </defs>
+              ${twistMarkerBase("M 36 36 L 42 42 L 52 52", southEast)}
+              ${twistMarkerBase("M 16 36 L 10 42 L  0 52", southWest)}
+              ${twistMarkerBase("M 16 16 L 10 10 L  0  0", northWest)}
+              ${twistMarkerBase("M 36 16 L 42 10 L 52  0", northEast)}
+                 
+            <g transform="scale(2,2)">
+            <g transform="translate(13,13)">
+              ${PairSvg.shapes(randomStitch.toLowerCase())}
+            </g>
+            </g>
+            </svg>`;
+
+        return colorCodeWithTwistsSvg;
+    },
 
     makeRandomStitchList(stitchesRequired, maxCrosses, maxTwistsBetweenCrosses, maxTwistsBefore, maxTwistsAfter) {
         // The function can be called with or without attributes.
@@ -386,7 +441,5 @@ const GF_Random = {
         return GF_Random.stitchArray;
     },
 }
-
-
 
 
