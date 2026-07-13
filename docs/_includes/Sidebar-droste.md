@@ -1,0 +1,16 @@
+- Features on this page
+  - [Icons](/GroundForge-help/Icons)
+  - [Droste effect](/GroundForge-help/Droste-effect)
+  - [Color code](/GroundForge-help/color-rules)
+  - [Swatch size](/GroundForge-help/Patch-Size) (NYI)
+  - [Download](/GroundForge-help/Download)
+- Half minute captures
+  - [Flip and rotate stitches](/GroundForge-help/clips/flip)
+  - [Colors in thread diagrams](/GroundForge-help/clips/color)
+  - [Resize panels](/GroundForge-help/clips/resize)
+  - [Print as PDF](/GroundForge-help/clips/print-as-pdf)
+- Pattern galleries
+  - [Basic](tileGallery) 
+  - [Tesselace](/tesselace-to-gf "computer generated pair diagrams")
+  - [MAE](/MAE-gf "More Attractive Examples (community contributions)")
+  - [Sampler by G. Whiting](/gw-lace-to-gf "donated to the MET")

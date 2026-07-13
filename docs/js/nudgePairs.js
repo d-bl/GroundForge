@@ -1,8 +1,3 @@
-
-/**
- * container: d3.selection of element containing an SVG generated with PairSvg.create
- * in other words: the primary pair diagram
- */
 function nudgePairs(containerId) {
 
     var svg = d3.select(containerId+" svg")
@@ -12,20 +7,22 @@ function nudgePairs(containerId) {
 }
 
 /**
- * @param svg has
- *  - elements with
- *    - class node
- *    - an id attribute
- *    - an attribute transform="translate(x,y)"
- *  - elements with
- *    - class link
- *    - an id attribute containing the IDs of their nodes separated with '-'
- *    - an attribute d defining a path with or without a midpoint
- * See also
- *   https://devdocs.io/d3~4/d3-force
- *   https://devdocs.io/d3~4/d3-selection
+ * Spreads nodes in a pair diagram to reduce overlaps.
+ *
+ * **SVG requirements:**
+ * - Elements with class `node` and an `id` attribute
+ *   - Must have attribute `transform="translate(x,y)"`
+ * - Elements with class `link` and an `id` attribute containing node IDs separated by `-`
+ *   - Must have attribute `d` defining a path
+ *
+ * Uses d3-force to apply forces to the nodes and links of the diagram.
+ * Requires d3.js and DiagramSvg.linkPath function of GroundForge-opt.js. See also
+ * - https://devdocs.io/d3~4/d3-force
+ * - https://devdocs.io/d3~4/d3-selection
+ * @param svg SVG element selected with d3.select
+ * @param diagramType 'pair' or 'thread' (default: 'thread')
  */
-function nudgeDiagram(svg) {
+function nudgeDiagram(svg, diagramType='thread') {
 
   // collect data of the SVG elements with class node
 
@@ -109,12 +106,13 @@ function nudgeDiagram(svg) {
   }
 
   // define forces with the collected data
-  d3.forceSimulation(nodeData)
+    const forceDistance = diagramType === 'thread' ? 11.5 : 18;
+    d3.forceSimulation(nodeData)
     .force("charge", d3.forceManyBody().strength(-1000))
     .force("link", d3
         .forceLink(linkData)
         .strength(50)
-        .distance(11.5)
+        .distance(forceDistance)
         .iterations(30))
     .force("center", d3.forceCenter(100, 100))
     .alpha(0.0035)

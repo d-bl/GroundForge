@@ -86,14 +86,12 @@ const GF_snow_mixer = {
         const n = document.getElementById('replacement');
         n.value = this.getRecipeStitches().replace(/l/g, "R").replace(/r/g, "L").toLowerCase();
         this.flipRadio();
-        n.focus();
     },
 
     flip_b2p() {
         const n = document.getElementById('replacement');
         n.value = this.getRecipeStitches().split("").reverse().join("");
         this.flipRadio();
-        n.focus();
     },
 
     updatePattern(q) {

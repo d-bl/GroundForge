@@ -6,16 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}" media="screen" type="text/css">
-    <link rel="stylesheet" href="{{ '/{{ site.github.repository_name }}/assets/css/print.css' | relative_url }}" media="print" type="text/css">
+    <link rel="stylesheet" href="{{ /{{ site.github.repository_name }}/assets/css/print.css }}" media="print" type="text/css">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <link rel="stylesheet" href="/{{ site.github.repository_name }}/assets/css/help.css" type="text/css">
+    {% if page.css %}
+        {% for css in page.css %}
+            <link rel="stylesheet" href="/{{ site.github.repository_name }}/assets/css/{{ css }}" type="text/css">
+        {% endfor %}
+    {% endif %}
     {% if page.javascript %}
         {% for javascript in page.javascript %}
-            <script src="/GroundForge/js/{{ javascript }}"></script>
+            <script src="/{{ site.github.repository_name }}/js/{{ javascript }}"></script>
         {% endfor %}
     {% endif %}
 
@@ -37,9 +42,9 @@
     <div class="inner clearfix">
         <section id="main-content">
             <a href="#sidebar" id="hamburger-menu">
-                <img src="/GroundForge/assets/images/hamburger.png" alt="Menu">
+                <img src="/{{ site.github.repository_name }}/assets/images/hamburger.png" alt="Menu">
             </a>
-            <script src="/GroundForge/js/fork-warning.js"></script>
+            <script src="/{{ site.github.repository_name }}/js/fork-warning.js"></script>
             {{ content }}
         </section>
 

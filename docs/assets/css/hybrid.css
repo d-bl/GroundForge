@@ -1,0 +1,73 @@
+.gf_panel {display: inline-block; margin: 4px;}
+.gf_panel > div {width: 100%; overflow: auto; resize:both; border: #ddd solid 1px; }
+.gf_panel > figcaption {width: 100%; height:2.5em; padding-bottom: 0.2em; padding-left:0.5em; margin-left:0; margin-bottom:0; box-sizing: border-box; display: flex; align-items: center; background-color: #ddd; }
+.gf_panel > figcaption img {margin-left: 0.5em;}
+.gf_panel > figcaption > input {margin-left: 0.5em; width: 3em;}
+.gf_panel > div > textarea { height: 6em; width: 100%}
+.gf_panel > div > input { width: calc(100% - 1px)}
+.gf_panel > #stitches > figure { display: inline-block; margin: 2px; }
+.gf_panel > #stitches > figure > figcaption{ background-color: #ffffff; }
+#tweak {resize: none;}
+#tweak input {width: calc(100% - 2.5em); margin-left: 2em; }
+#snow3 {resize: vertical;}
+
+/* use full page width but leave room for sidebar */
+.inner { width: calc(100% - 6em); margin-left: 2em; margin-right: 2em; }
+#main-content { width: calc(100% - 260px); }
+@media (max-width: 767px) {
+    .inner { margin-left: 0.5em; margin-right: 0.5em; }
+    .inner { width: calc(100% - 1.5em); }
+    #main-content { width: 100%; }
+}
+
+#main-content > ul, #main-content > ol, #main-content > p, #main-content > h1, #main-content > h2, #main-content > h3, #main-content > h4, #main-content > pre, #main-content > blockquote, #main-content > hr, #main-content > table, #main-content > .deprecated {
+    max-width: 690px;
+}
+
+@media print {
+    .gf_panel > a, .gf_panel > input[type="color"] { display: none }
+    .gf_panel > div { overflow: hidden; }
+    .gf_panel > figcaption { outline: 2px solid #ddd;}
+    .gf_panel:not(.hidden):not([style*="display: none"]) {
+        display: inline-block !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        vertical-align: top;
+    }
+}
+
+#toast {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 12px;
+    margin-right: 12px;
+    background: #333;
+    color: #fff;
+    padding: 6px 12px;
+    z-index: 1000;
+    /* height cap */
+    max-height: 25vh;   /* fallback */
+    max-height: 25dvh;  /* keyboard-aware visual viewport */
+    overflow: auto;
+}
+
+.recipe-btn {
+    background: transparent;
+    border: none
+}
+.recipe-btn:focus,
+#stitches a:focus,
+#pattern a:focus {
+    outline: 1px solid #0571b0;   /* mouse + keyboard */
+    outline-offset: 2px;
+}
+#pattern svg text {fill:#0571b0; text-decoration: underline;}
+.recipe-btn:focus-visible,
+#stitches a:focus-visible,
+#pattern a:focus-visible {
+    outline: 2px solid #0571b0;   /* stronger keyboard ring */
+}
+a {
+    color: #0571b0;
+}

@@ -1,0 +1,91 @@
+name: Generate JSDoc
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+  release:
+    types: [published]
+jobs:
+  build-jsdoc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Create temporary package.json
+        run: |
+          echo '{
+            "name": "temp-jsdoc",
+            "version": "1.0.0",
+            "devDependencies": {
+              "jsdoc": "^3.6.3",
+              "docdash": "^2.0.0"
+            }
+          }' > package.json
+
+      - name: Install dependencies
+        run: |
+          npm install
+          npm install --save-dev jsdoc-baseline
+
+      - name: Generate JSDoc
+        run: npx jsdoc docs/js -d docs/jsdoc -t ./node_modules/jsdoc-baseline
+
+      - name: Install Puppeteer and pdf-lib
+        run: npm install puppeteer pdf-lib
+
+      - name: Generate PDF from selected JSDoc HTML files
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+          const puppeteer = require('puppeteer');
+          const { PDFDocument } = require('pdf-lib');
+          
+          (async () => {
+            const dir = path.join(process.cwd(), 'docs/jsdoc');
+            const files = fs.readdirSync(dir)
+              .filter(f => f.endsWith('.html') && f !== 'index.html' && !f.endsWith('.js.html'))
+              .map(f => path.join(dir, f));
+          
+            const browser = await puppeteer.launch({args: ['--no-sandbox']});
+            const pdfBuffers = [];
+            for (const file of files) {
+              const page = await browser.newPage();
+              await page.goto('file://' + file, {waitUntil: 'networkidle0'});
+              const pdf = await page.pdf({format: 'A4'});
+              pdfBuffers.push(pdf);
+              await page.close();
+            }
+            await browser.close();
+          
+            // Merge PDFs
+            const mergedPdf = await PDFDocument.create();
+            for (const pdfBytes of pdfBuffers) {
+              const pdf = await PDFDocument.load(pdfBytes);
+              const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+              copiedPages.forEach((p) => mergedPdf.addPage(p));
+            }
+            const mergedBytes = await mergedPdf.save();
+            fs.writeFileSync(path.join(dir, 'jsdoc.pdf'), mergedBytes);
+          })();
+          "
+
+      - name: Upload JSDoc to artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jsdoc
+          path: docs/jsdoc/jsdoc.pdf
+
+      - name: Upload PDF to GitHub Release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: docs/jsdoc/jsdoc.pdf

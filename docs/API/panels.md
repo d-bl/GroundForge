@@ -43,25 +43,45 @@ Widget demo's
 
 ### 1
 <script type="text/javascript"> 
-  GF_panel.load({caption: "pair diagram", id: "pairs", controls: ['diagram', 'resize'], size: {width: "400px", height: "200px"}});
-  GF_panel.diagramSVG({id: 'pairs', query:window.q});
+  GF_panel.load({
+    caption: "pair diagram",
+    id: "pairs",
+    wandHref: 'javascript: return 0',
+    controls: ['resize'],
+    size: {width: "400px", height: "200px"},
+    parent: document.currentScript.parentNode
+  });
+  GF_panel.diagramSVG({id: 'pairs', query:window.q, type: "pair"});
 </script>
 
 ### 2
 <script type="text/javascript"> 
-  GF_panel.load({caption: "thread diagram", id: "threads", controls: ['diagram', 'color', 'resize']});
-  GF_panel.diagramSVG({id: 'threads', query:window.q, type:'thread'});
+  GF_panel.load({
+    caption: "thread diagram",
+    id: "thread_panel",
+    wandHref: 'javascript: return 0',
+    controls: ['color', 'resize'],
+    parent: document.currentScript.parentNode
+  });
+  GF_panel.diagramSVG({id: 'thread_panel', query:window.q, type:'thread'});
 </script>
 
 ### 3
 <script type="text/javascript"> 
-  GF_panel.load({caption: "stitches", id: "droste", controls: ['cleanup', 'resize'], size: {width: "400px", height: "200px"}});
+  GF_panel.load({
+    caption: "stitches",
+    id: "droste",
+    controls: ['cleanup', 'resize'],
+    size: {width: "400px", height: "200px"},
+    parent: document.currentScript.parentNode
+  });
   document.getElementById('droste').outerHTML = '<textarea id="droste" name="droste">ctc,cross=ct,a1=ct</textarea>';
 </script>
 
 ### 4
 <script type="text/javascript"> 
-  GF_panel.load({caption:"<pre>bd\npq</pre>", id:"nets", size: { width:"400px", height: "2em"}});
+  const opts4 = {caption:"<pre>bd\npq</pre>", id:"nets", size: { width:"400px", height: "2em"}, parent: document.currentScript.parentNode};
+  GF_panel.load(opts4);
   document.getElementById('nets').innerHTML = "No significant content, just a demo of a multiline caption.";
 </script>
 
@@ -79,51 +99,4 @@ and images used by the _panel.js_ and adjust all their paths.
 Widget description
 ------------------
 
-To use the widget functions on your own page, include (copies of) the following scripts:
-[d3.v4.min.js](/GroundForge/js/d3.v4.min.js),
-[GroundForge-opt.js](/GroundForge/js/GroundForge-opt.js),
-[nudgePairs.js](/GroundForge/js/nudgePairs.js) and
-[panel.js](/GroundForge/js/panel.js).
-
-### `GF_panel.load(options)`
-
-Genrerates the panel structure:
-
-    <figure class="gf-panel"><figcaption>...</figcaption><div id="..."></div></figure>
-
-Options:
-- `caption`: mandatory string, plain text or HTML string generated at the start of the `figcaption`.
-- `id`: mandatory string, id for the generated `div`.
-- `controls`: optional array of strings, default empty, specifies buttons to generate in the `figcaption`:
-  - `cleanup`: ![](/GroundForge/images/broom.png) removes overridden stitch definitions in a textarea.
-  - `diagram`:
-    - ![](/GroundForge/images/wand.png) the href should be set by the page creating the panel.
-    - ![](/GroundForge/images/play.png) starts/continues nudging stitch positions
-  - `color`: color chooser, looks and dialog may vary per browser. Its value is used to highlight threads or stitches in thread diagrams.
-  - `resize`: ![](/GroundForge/images/maximize.png) ![](/GroundForge/images/reset-dimensions.png) ![](/GroundForge/images/minimize.png)
-    For a `div` with CSS style `overflow: auto; resize: both;`.
-    A border makes the hot corner at the right bottom easy to find, even when a browser hides scroll bars.
-- `size`: optional, object with `width` and `height` properties, e.g. `{width: "400px", height: "200px"}`.
-
-### `GF_panel.diagramSVG(options)`
-
-Generates an SVG diagram inside the `div` with the specified _id_.
-
-Also to be called by the wand button.
-The page context determines where to get the query and droste steps.
-
-Options:
-- `id`: optional string, id of a panel previously created with `GF_panel.load`.
-  If omitted, an SVG is returned as string to be used outside a panel context, no nudging is applied.
-- `query`: mandatory string with the pattern definition and stitches.
-- `type`: optional string, either `thread` or `pair`, default is `pair`.
-- `steps`: array of strings, default empty, droste stitch definitions:
-  for each element a pair diagram is created from the (previous) thread diagram.
-
-### `GF_panel.nudge(id)`
-
-Nudges the stitch positions in the panel with the given id.
-
-Called by default for all diagrams except for a primary pair diagram (type _pair_, step _0_),
-also called by ![](/GroundForge/images/play.png).
-A page may call this function explicitly for its primary pair diagram as well.
+See jsDoc, either in the source code or as generated with a GitHub workflow, uploaded with releases.
