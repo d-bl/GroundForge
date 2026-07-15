@@ -360,8 +360,9 @@ const GF_Random = {
             return `<path d="${path}" style="stroke: #000; stroke-width: 1.5px; marker-mid: url('#twist-${swne}');"></path>`;
         }
 
+        // markerWidth and -Heigth have influence on the stroke-width shown.
         function twistMarkerDash(twistId, path) {
-            return `<marker id="${twistId}" viewBox="-6 -6 12 12" markerWidth="12" markerHeight="12" orient="auto" markerUnits="userSpaceOnUse">
+            return `<marker id="${twistId}" viewBox="-12 -12 24 24" markerWidth="24" markerHeight="24" orient="auto" markerUnits="userSpaceOnUse">
                     <path d="${path}" fill="#000" stroke="#000" stroke-width="1.7px"></path>
                     </marker>`
         }
@@ -379,11 +380,11 @@ const GF_Random = {
         northWest = Math.min(northWest, 5);
 
         // note: these dashes have to fit in the viewbox defined on twistMarkerDash.
-        let t1 = "M 0.0 6 L 0.0 -6";
-        let t2 = t1 + " M 5.0 6 L 5.0 -6";
-        let t3 = t2 + " M 2.5 6 L 2.5 -6";
-        let t4 = t3 + " M -2.5 6 L -2.5 -6";
-        let t5 = t4 + " M -5.0 6 L -5.0 -6";
+        let t1 = "M 3.0 8 L 3.0 -8";
+        let t2 = t1 + " M 11.0 8 L 11.0 -8";
+        let t3 = t2 + " M 7.0 8 L 7.0 -8";
+        let t4 = t3 + " M -1.0 8 L -1.0 -8";
+        let t5 = t4 + " M -5.0 8 L -5.0 -8";
 
         // The middle of the base-path has to be at least 10 units of the centre, else to close to colourcode-block.
         // The colorCodeBlock is transparant. Therefor, start baseline a bit off.
