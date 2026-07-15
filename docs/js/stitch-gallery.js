@@ -341,7 +341,7 @@ const GF_Random = {
 
             // Create picture with colorCode, extended with twistMarks before and after.
 
-            colorCodeWithTwistsSvg = GF_svgP2T.newSVG(50, 50);
+            colorCodeWithTwistsSvg = GF_svgP2T.newSVG(60, 60);
             colorCodeWithTwistsSvg = GF_Random.colorCodeWithTwistMarks(displayStitch,colorCodeWithTwistsSvg );
 
             // To display the elements, we have to group them in one element. (If put in separate ID's, we get first the thread-svg's, followed by the CCWT-svg's, followed by the texts.)
@@ -357,12 +357,12 @@ const GF_Random = {
     colorCodeWithTwistMarks(randomStitch, colorCodeWithTwistsSvg) {
 
         function twistMarkerBase(path, swne) {
-            return `<path d="${path}" style="stroke: #000; stroke-width: 1.7px; marker-mid: url('#twist-${swne}');"></path>`;
+            return `<path d="${path}" style="stroke: #000; stroke-width: 1.5px; marker-mid: url('#twist-${swne}');"></path>`;
         }
 
         function twistMarkerDash(twistId, path) {
-            return `<marker id="${twistId}" viewBox="-6 -6 12 12" markerWidth="9" markerHeight="9" orient="auto" markerUnits="userSpaceOnUse">
-                    <path d="${path}" fill="#000" stroke="#000" stroke-width="0.8px"></path>
+            return `<marker id="${twistId}" viewBox="-6 -6 12 12" markerWidth="12" markerHeight="12" orient="auto" markerUnits="userSpaceOnUse">
+                    <path d="${path}" fill="#000" stroke="#000" stroke-width="1.7px"></path>
                     </marker>`
         }
 
@@ -381,7 +381,7 @@ const GF_Random = {
         // note: these dashes have to fit in the viewbox defined on twistMarkerDash.
         let t1 = "M 0.0 6 L 0.0 -6";
         let t2 = t1 + " M 5.0 6 L 5.0 -6";
-        let t3 = t2 + " M 2.5 6 L 2.5-6";
+        let t3 = t2 + " M 2.5 6 L 2.5 -6";
         let t4 = t3 + " M -2.5 6 L -2.5 -6";
         let t5 = t4 + " M -5.0 6 L -5.0 -6";
 
@@ -395,13 +395,13 @@ const GF_Random = {
                    ${twistMarkerDash("twist-4", t4)}
                    ${twistMarkerDash("twist-5", t5)}
               </defs>
-              ${twistMarkerBase("M 36 36 L 42 42 L 52 52", southEast)}
-              ${twistMarkerBase("M 16 36 L 10 42 L  0 52", southWest)}
-              ${twistMarkerBase("M 16 16 L 10 10 L  0  0", northWest)}
-              ${twistMarkerBase("M 36 16 L 42 10 L 52  0", northEast)}
+              ${twistMarkerBase("M 40 40 L 45 45 L 60 60", southEast)}
+              ${twistMarkerBase("M 20 40 L 15 45 L  0 60", southWest)}
+              ${twistMarkerBase("M 20 20 L 15 15 L  0  0", northWest)}
+              ${twistMarkerBase("M 40 20 L 45 15 L 60  0", northEast)}
                  
-            <g transform="scale(2,2)">
-            <g transform="translate(13,13)">
+            <g transform="scale(3,3)">
+            <g transform="translate(9.95,9.95)">
               ${PairSvg.shapes(randomStitch.toLowerCase())}
             </g>
             </g>
