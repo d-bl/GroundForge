@@ -23,8 +23,8 @@ Please note: a number that is too low or too high will be set to 1 resp. the max
 The number of stitches required. Minimal 1, maximal 25.    
 
 <input type="number" name="maxCrosses" id="maxCrosses" min="1" max="5" value="3" onchange="GF_Random.genVal(this)" > 
-The maximal number of crosses in a stitch. Minimal 1, maximal 5.    
-The generated stitch has at least one cross.     
+The maximal number of crosses in a stitch. Minimal 1, maximal 5.  
+The generated stitch has at least one cross.   
 
 <input type="number" name="maxTwistsBetweenCrosses" id="maxTwistsBetweenCrosses" min="1" max="5" value="1" onchange="GF_Random.genVal(this)" >
 The maximal number of twists between two crosses. Minimal 1, maximal 5.    
