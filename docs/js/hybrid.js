@@ -486,14 +486,9 @@ const GF_hybrid = {
                 const val = parseInt(e.target.value, 10);
                 const snowVisible = GF_hybrid.galleryPanels.isSnowVisible() || document.getElementById("drosteStitches").value.trim() !== '';
                 const max = snowVisible && e.target.id === 'pairStep' ? 2 : 3;
-                const step = Number.isNaN(val) ? 0 : Math.min(max, Math.max(0, val));
-                if (val !== step) {
-                    if (GF_hybrid.isVisible('drosteStep')) {
-                        GF_hybrid.toast.show("Steps: min=0, max=3.");
-                    }
-                    else {
-                        GF_hybrid.toast.show("Steps: min=0, max=3, max for pairs is 2 when a snow gallery is visible.");
-                    }
+                const step = Number.isNaN(val) ? 0 : Math.max(0, val);
+                if (val !== step || step > max) {
+                        GF_hybrid.toast.show("Step: min=0, large numbers overwelm browsers.");
                 }
                 GF_hybrid.galleryPanels.toggleSnowOptions(step === 3);
                 e.target.value = step;
