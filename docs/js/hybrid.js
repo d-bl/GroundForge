@@ -359,26 +359,33 @@ const GF_hybrid = {
             Swatch size:
             <span style="display: inline-block; vertical-align: top">
                 <label>
-                    <input type="number" name="patchWidth" id="patchWidth"
-                     min="1" max="28" value="${GF_hybrid.patternLink.getValueOf('patchWidth')}"
-                      oninput="GF_hybrid.swatchSize.valueChanged(this)">
+                    <input type="number" name="patchWidth" id="patchWidth" min="1" max="28" >
                     columns
                 </label>
                 <br>
                 <label>
-                    <input type="number" name="patchHeight" id="patchHeight"
-                     min="1" max="35" value="${GF_hybrid.patternLink.getValueOf('patchHeight')}"
-                      oninput="GF_hybrid.swatchSize.valueChanged(this)">
+                    <input type="number" name="patchHeight" id="patchHeight" min="1" max="35" >
                     rows
                 </label>
             </span>
             `;},
-        valueChanged(changedEl) {
-            if (Number.isNaN(changedEl.valueAsNumber) || changedEl.valueAsNumber < 1 ) {
+        init(){
+            document.querySelectorAll('#patchWidth, #patchHeight')
+                .forEach(el => {
+                    el.value = GF_hybrid.patternLink.getValueOf(el.id);
+                    el.addEventListener('input', GF_hybrid.swatchSize.fixSwatchSize);
+                    el.dataset.lastValid = el.value;
+                });
+        },
+        fixSwatchSize(changedEl) {
+            const currentTarget = changedEl.currentTarget;
+            if (Number.isNaN(currentTarget.valueAsNumber) || currentTarget.valueAsNumber < 1 ) {
                 GF_hybrid.toast.show("Please enter positive numbers for the swatch size.");
+                currentTarget.value = currentTarget.dataset.lastValid;
                 return;
             }
-            GF_hybrid.patternLink.setKeyValue(changedEl.name, changedEl.value);
+            currentTarget.dataset.lastValid = currentTarget.value;
+            GF_hybrid.patternLink.setKeyValue(currentTarget.name, currentTarget.value);
 
             const config = TilesConfig(GF_hybrid.patternLink.getValue());
             const width = Number.parseInt(document.getElementById('patchWidth')?.value ?? '', 10) || 0;
@@ -387,10 +394,9 @@ const GF_hybrid = {
                 GF_hybrid.toast.show(
                     `Recommended swatch size: at least 1.5 tiles. Tile size is ${config.centerMatrixCols}x${config.centerMatrixRows}.`
                 );
-            } else if( changedEl.validity.rangeOverflow ){
+            } else if( currentTarget.validity.rangeOverflow ){
                 GF_hybrid.toast.show("Large, dense swatches may slow down diagram rendering and overload browsers.");
             }
-            console.log('');
         }
     },
     patternLink: {
@@ -438,14 +444,15 @@ const GF_hybrid = {
         return rect.width > 0 && rect.height > 0;
     },
     steps:{
-        getHtmlString(type){ return `
+        getHtmlString(diagramType){ return `
             <label >
-                ${type === 'droste'
+                ${diagramType === 'droste'
                 ? '<span>Droste step number: ' // one that rules the hidden others (pair/thread)
-                : `${type}s<span>, step: `
+                : `${diagramType}s<span>, step: ` // the start of the diagram label should always be visible
                 }
                 <input type='number' min='0' max='3' value='0'
-                id='${type}Step' name='${type}Step' title='droste step' >
+                id='${diagramType}Step' name='${diagramType}Step' title='droste step' >
+                </span>
             </label>
             `;
         },
@@ -721,6 +728,7 @@ const GF_hybrid = {
             </p>
             <div id="toast"></div>
         `);
+        GF_hybrid.swatchSize.init();
         const saveBtn = document.getElementById('saveDiagramsBtn');
         if (saveBtn) {
             saveBtn.addEventListener('pointerenter', e => this.toast.showSaveHint(e));
